@@ -51,7 +51,7 @@ B0Evaluation::"usage" =
     "B0Evaluation is an option of VeltmanB0 and VeltmanExpand, specifying how \
 the function should be evaluated.  Possible settings are \"none\", \"direct1\" and \
 \"jbar\" for VeltmanB0.\n\n
-With the setting B0Evaluation -> \"Direct1\" VeltmanB0 will return an expression \
+With the setting B0Evaluation -> \"direct1\" VeltmanB0 will return an expression \
 depending on D and d, where D is the setting of the option Dimension\ and
 d is the setting of the option DimensionExpand (d and D may be the same).  If \
 DimensionExpand is set to False no expansion of power functions of (d-4) is done.\n\n
@@ -99,7 +99,7 @@ Default setting : \"Spence\" for VeltmanC0 and \
 \"none\" for VeltmanExpand.";
 
 D0Evaluation::"usage" =
-    "C0Evaluation is an option of VeltmanD0 and VeltmanExpand, specifying how \
+    "D0Evaluation is an option of VeltmanD0 and VeltmanExpand, specifying how \
 the function should be evaluated.  The fastest and most reliable setting is \
 VeltmanC0.  The others are redundant.  Possible settings are \"none\", \
 \"Spence\", \"C0\", and \"direct1\".\n\n
