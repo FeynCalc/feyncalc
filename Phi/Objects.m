@@ -2786,22 +2786,6 @@ IsoVector[a_[b__, (op___Rule | op___List)], opts___][
 
 
 
-(* Commented out 5/3-2000. I think its redundant and definitions on NM slow down \
-everything. *)
-
-(*NM[a___, b : IsoVector[__][_], c___][
-        i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] := NM[a, b[i], c];*)
-(*NM[a___, b : IsoVector[__], c___][
-        i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] := NM[a, b[i], c];*)
-(*Times[a___, b : IsoVector[__][_], c___][
-        i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ^:=
-      Times[a, b[i], c];*)
-(*Times[a___, b : IsoVector[__], c___][
-        i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ^:=
-      Times[a, b[i], c];*)
-
-
-
 (* IsoVectors - fixing special cases: *)
 
 fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
@@ -3036,6 +3020,8 @@ UIndicesSupply1[(HighEnergyPhysics`FeynCalc`DOT`DOT | Dot)[aa1_, aa2___,
                     p1[Flatten[
                           Cases[{c}, _uix, Infinity, Heads -> True]][[1]]],
                 e]} /. nnmm -> NM /. tempdot -> fcdot;
+
+                
 UIndicesSupply1[UTrace1[aa_], opts___] :=
     UIndicesSupply1[
             aa /.(*tracing single matrices*){UTrace[
@@ -3054,6 +3040,7 @@ fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__, uis_uix,
         lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex][ui_uix] :=
     fcqf[ders, a, ui, uis, lors, isosp, iis];
+
 
 
 

@@ -87,6 +87,13 @@ MakeBoxes[DiracTrace[a],TraditionalForm];
 
 (* ************************************************************** *)
 
+(* Change a few FeynArts definitions *)
+
+(* FeynArts 3 uses CTOrder instead of CountertermOrder *)
+
+If[FileNames["*.jar", {ToFileName[$FeynCalcDirectory, "FeynArts"]}]=!=
+{}, CountertermOrder = HighEnergyPhysics`FeynArts`CTOrder];
+
 (* Labels for lines of Feynman diagrams.
    If the FeynArts TeXToPS works on your system,
    you can use e.g. "\\phi instead of "\[CurlyPhi]",
@@ -144,7 +151,7 @@ HighEnergyPhysics`FeynArts`TheLabel[PseudoScalar0]:="P";
 
 (* ************************************************************** *)
 
-(* If FeynCalc is loaded, change some options *)
+(* Change a few FeynCalc options *)
 
 If[StringQ[$FeynCalcDirectory],
 
@@ -177,6 +184,20 @@ Clear[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex];
 HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex/:
 MakeBoxes[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[p_],
 TraditionalForm]:=ToBoxes[p, TraditionalForm],
+
+(* Commented out 5/3-2000.
+   I think its redundant and definitions on SUNIndex slow down everything. *)
+(* Well - not quite so. Uncommented again 21/5-2001 *)
+
+NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[fcsuni[i]], c];
+NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[fcsuni[i]], c];
+Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[fcsuni[i]], c];
+Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[fcsuni[i]], c];
+
+NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
+NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
+Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
+Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c],
 
 Remove[$FeynCalcDirectory]
 
@@ -245,7 +266,6 @@ tmp`olddir=tmp`olddir1;
 
   $ULagrangians=
     {ChPT2[2],ChPT2[4]};
-    (*{ChPT2[2],ChPT2[4]};*)
     (*{ChPT2Photon[2],ChPT2Photon[4]};*)
     (*{ChPT3[2],ChPT3[4]};*)
     (*{ChPTW3[2],ChPTW3[4]};*)
