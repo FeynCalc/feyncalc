@@ -28,8 +28,13 @@ MakeContext[Factoring];
    
 Options[Collect3] = {Factoring -> False, Head -> Plus};
 
+Collect3[a_,b_,c_Symbol, opts___?OptionQ]:= Collect3[a, b, Factoring -> c, opts];
+
 Collect3[expr_, vars_/;Head[vars]=!=List, opts___Rule] :=
+ Collect3[expr, {vars}, opts];
+(*
  Collect3[expr, Cases[expr, HoldPattern[vars[___]], -1], opts];
+*)
 
 Collect3[expr_, vars_List, opts___?OptionQ] := Block[{fac, hva, mli},
      fac = Factoring/.{opts}/.Options[Collect3];
@@ -42,9 +47,7 @@ Collect3[expr_, vars_List, opts___?OptionQ] := Block[{fac, hva, mli},
 *)
      hva = (Hold[HoldPattern][#[___]]& /@ ( Hold/@vars ) ) /. Hold[a_] :> a;
      hva = Alternatives @@ hva;
-     mli = MonomialList[expr, Union@Cases[expr,hva,-1], 
-                        CoefficientDomain -> RationalFunctions ];
-     If[fac =!= False, mli = Map[fac, mli]];
+     mli = MonomialList[expr, Union@Cases[expr,hva,-1], CoefficientDomain -> RationalFunctions ]; If[fac =!= False, mli = Map[fac, mli]];
      Apply[Head/.{opts}/.Options[Collect3], mli]
 ];
 
