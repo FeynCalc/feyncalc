@@ -124,9 +124,8 @@ Quitting the Mathematica kernel."];
 (* ------------------------------------------------------------------------ *)
 
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
-  {"tarcer",
-   "Phi",".AppleDouble",
-   "FeynArts","GraphInfo","Models","Documentation"};
+  {"tarcer", "Phi", ".AppleDouble",
+   "FeynArts", "GraphInfo", "Models", "documentation", "Documentation"};
 
 HighEnergyPhysics`FeynCalc`Private`configfile= "FCConfig.m";
 
@@ -184,7 +183,7 @@ HighEnergyPhysics`FeynCalc`$FeynCalcDirectory;
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
 
-If[Global`$LoadTARCER === True,
+If[Global`$LoadTARCER ===True,
 
 SetDirectory["tarcer"];
 If[StringQ[ Global`$LoadTARCER ],
@@ -449,7 +448,7 @@ Maison gamma5 - scheme.";
   $AchmedRoss::usage= "experimental";
 
 $Abbreviations::usage=
-"$Abbreviations are a list of string substitution rules used by when \
+"$Abbreviations are a list of string substitution rules used when \
 generating names for storing intermediate results. \
 It is used by OneLoop and PaVeReduce.\
 The elements of the list should be of the form \"name\" -> \"abbreviation\".";
@@ -1504,7 +1503,7 @@ MyBeginPackage["HighEnergyPhysics`FeynCalc`CouplingConstant`",
              "HighEnergyPhysics`FeynCalc`"];
 
 CouplingConstant::usage =
-"CouplingConstant is an option for several Feynman rule fucntions and
+"CouplingConstant is an option for several Feynman rule functions and
 for CovariantD and FieldStrength.";
 
 (* ------------------------------------------------------------------------ *)
