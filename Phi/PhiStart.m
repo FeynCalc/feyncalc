@@ -265,6 +265,9 @@ have a meson-field dependence.";
      $UMatrices if ExpandPartialD is to work for the new UMatrices) *)
    DeclareNonCommutative /@ $UMatrices;
    
+   (* Have WFRenormalize work with Dirac matrices *)
+   DeclareNonCommutative[WFFactor1];
+
    HighEnergyPhysics`Phi`Objects`FunctionalDerivative::"usage" = 
        "FunctionalDerivative is FunctionalD adapted for use with Phi";
    HighEnergyPhysics`Phi`Objects`FunctionalDerivative[x_, o__] :=
