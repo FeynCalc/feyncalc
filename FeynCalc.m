@@ -179,13 +179,7 @@ If[($VersionNumber < 3.0),
    Quit[]; Exit[];
   ];
 
-(* From Mathematica 4.0 onwards there is  "Tr" functions;
-   we'll just rename it in FeynCalc
-*)
-
 If[$VersionNumber>3.4,
-   Unprotect@@{ToExpression["Tr"]};
-   Remove@@{ToExpression["Tr"]};
    (*And, well, System`MonomialList is gone;
     we construct a replacement for use in Collect3.
     F.Orellana, 17/9-2002*)
@@ -969,6 +963,21 @@ If[$Notebooks===True,
 Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
+
+
+(* From Mathematica 4.0 onwards there is  "Tr" functions;
+   Overload Tr to use TR
+*)
+If[$VersionNumber>3.4,
+   Unprotect@@{ToExpression["Tr"]};
+   Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /; !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD];
+   Tr::usage="Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
+   generalized trace, combining terms with f instead of Plus. Tr[list, f, n]
+   goes down to level n in list. \n \n
+Tr[ expression ] calculates the DiracTrace, i.e.,  TR[ expression ],
+if any of DiracGamma, DiracSlash, GA, GAD, GS or GSD are present in expression.";
+
+  ];
 
 SetDirectory[savethisdir];
 Clear[savethisdir];
