@@ -587,15 +587,16 @@ diagonal quark charge matrix.";
 
 UChiralSpurion::"usage" =
     "UMatrix[UChiralSpurion[]][x] represents some \
-spurion.  It is merely a symbol with display rules.";
+spurion.  It should be defined in the model configuration files.  \
+Usually it is set the the quark charge matrix in the end.";
 
 UChiralSpurionLeft::"usage" =
     "UMatrix[UChiralSpurionLeft[]][x] represents some lefthanded \
-spurion.  It is merely a symbol with display rules.";
+spurion.";
 
 UChiralSpurionRight::"usage" =
     "UMatrix[UChiralSpurionRight[]][x] represents some lefthanded \
-spurion.  It is merely a symbol with display rules.";
+spurion.";
 
 UChiralSpurionMatrix::"usage" =
     "UChiralSpurionMatrix[opts]:=UMatrix[UChiralSpurion[opts]][x].";
