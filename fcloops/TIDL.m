@@ -49,18 +49,29 @@ tidlist = {
 tidl[{{q_,mu_}},{},n_] :> 0
 ,
 (* Amunu *)
-tidl[{{q_,mu_},{q_,nu_}},{},n_] :>
+tidl[{{q1_,mu_},{q2_,nu_}},{},n_] :>
    Pair[LorentzIndex[mu, n], LorentzIndex[nu, n]]/n *
-    Pair[Momentum[q, n], Momentum[q, n]]
+    Pair[Momentum[q1, n], Momentum[q2, n]]
 ,
 (* Amunurho *)
 tidl[{{q_,mu_},{q_,nu_},{q_,rho_}},{},n_] :> 0
 ,
-(* Amunurhosi *)
 tidl[{{q_,mu_},{q_,nu_},{q_,rho_},{q_,si_}},{},n_] :>
 ((MT[mu, si]*MT[nu, rho] + MT[mu, rho]*MT[nu, si] + 
        MT[mu, nu]*MT[rho, si])*SP[q, q]^2)/(n*(2 + n))
 ,
+tidl[{{q1_,mu_},{q2_,nu_},{q3_,rho_},{q4_,si_}},{},n_] :>
+(* Amunurhosi *)
+Block[
+{X1 -> n, X2 -> SP[q1, q2], X3 -> SP[q1, q3], X4 -> SP[q1, q4],
+  X5 -> SP[q2, q3], X6 -> SP[q2, q4], X7 -> SP[q3, q4]},
+ChangeDimension[
+ -(((X4*X5 + X1*X4*X5 - X3*X6 - X2*X7)*MT[mu, si]*MT[nu, rho])/
+    ((1 - X1)*X1*(2 + X1))) + ((1 + X1)*(X4*X5 - X3*X6 - X1*X3*X6 + X2*X7)*
+    MT[mu, rho]*MT[nu, si])/(X1*(2 + X1)*(1 - X1^2)) +
+  ((1 + X1)*(X4*X5 + X3*X6 - X2*X7 - X1*X2*X7)*MT[mu, nu]*MT[rho, si])/
+   (X1*(2 + X1)*(1 - X1^2)), n ]
+],
 (* Bmu *)
 tidl[{{q_,mu_}},{p_},n_] :> 
 (
