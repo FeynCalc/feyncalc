@@ -1263,7 +1263,14 @@ If[traceev =!= (fcdtrev /. Options[FAToFC]),
      DiracGamma[LorentzIndex[Index[Lorentz, 1]]]*)
      fcli[fcli[mu_, d___],___] :> fcli[mu, d] /.
 (* added Sept. 27 2003 Rolf Mertig*)
-   tmpdiga :> fcdiga;
+   tmpdiga :> fcdiga /.
+(* Added 12/4-2004 to allow coupling files to use DiracSlash.
+   Their momenta will be wrapped in Momentum by the rules above, which is wrong since
+   DiracSlash is an input function *)
+   fadsl[a_?(!FreeQ[#, fcmom[__]]&)] :> fadsl[dum + a] //.
+   {fadsl[dum + a___*fcmom[b__] + c___] :> fadsl[dum + a*{b}[[1]] + c], 
+    fadsl[dum + fcmom[b__] + c___] :> fadsl[dum + {b}[[1]] + c]} /. 
+   dum :> Sequence[];
 
 DoSumOver[exp_, opts___Rule] := 
   Block[{rr, res, suminds},
