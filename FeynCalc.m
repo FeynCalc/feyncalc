@@ -945,15 +945,9 @@ If[$Notebooks===True,
 	  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
 	  ". FeynArts can be downloaded from www.feynarts.de\n"];
      ],
-Block[{$Path = {HighEnergyPhysics`FeynArts`$FeynArtsProgramDir}}, Needs["Utilities`"];
-  Needs["Topology`"];
-  Needs["Initialize`"];
-  Needs["Insert`"];
-  Needs["Analytic`"];
-  Needs["Graphics`"];
+(* This only removes FeynArts formatting rules which interfer with FeynCalc formatting rules *)
 Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
-];
 ];
 
 SetDirectory[savethisdir];
