@@ -205,5 +205,6 @@ Only up to order 2 is implemented in terms of USmall and CovariantNabla.  (If \
 you have the energy, please do work out the expansion and send it to \
 feyncalc@feyncalc.org).";
 UPerturb::"badlim" = "Error: `1` is not a valid summation limit.";
+DiscardOrders::wffac = "Warning: Expression contains unknown renormalization factor(s).";
 
 End[];
