@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:01 *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: Tf *) 
 
@@ -16,7 +14,12 @@ BeginPackage["HighEnergyPhysics`qcd`Tf`",
              "HighEnergyPhysics`FeynCalc`"];
 
 Tf::"usage" = 
-"Tf is 1/2 for SU(N).";
+"Tf is a group constant (sometimes called TR, as in eq. (2.5.133) in T. Muta,
+Foundation of Quantum Chromodynamics). Tf is 1/2 for SU(N). 
+Tf is defined by 
+SUNTrace[SUNT[a].SUNT[b]] = Tf*SUNDelta[a, b]. 
+Tf is useful to keep around in order to 
+identify contributions from internal quark loops.";
 
 (* ------------------------------------------------------------------------ *)
 
