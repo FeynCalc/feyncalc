@@ -213,12 +213,11 @@ If[StringQ[ Global`$LoadTARCER ],
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
 FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
 "Tarcer"}],IgnoreCase->True];
-  ];
+  sdfj];
 
 If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 
 tarcerloadedflag = True;
-If[Global`$FeynCalcStartupMessages=!=False,
 If[$Notebooks ===True,
    FeynCalcCellPrint[Cell[TextData[{"Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
@@ -227,7 +226,6 @@ HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last]
   ];
 Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
-  ];
 Clear[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames];,
 
 If[$Notebooks ===True,
