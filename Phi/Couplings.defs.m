@@ -362,7 +362,7 @@ Default value of Sum : True.";
 WFRenormalize::"usage" = 
     "WFRenormalize[exp] calculates the wave function renormalization factors \
 for the propagators of exp.  Exp must be of the form TopologyList[__][__] as returned \
-by CreateFeynAmp.  WFRenormalize is also an option of FAToFC.  \
+by InsertFields.  WFRenormalize is also an option of FAToFC.  \
 When set to True, WFRenormalize is applied.  WFRenormalize uses \
 the results stored in the directory \"Factors\".  The names of the files to load are \
 generated using $Configuration and the option PerturbationOrder.  Default value : False.";
