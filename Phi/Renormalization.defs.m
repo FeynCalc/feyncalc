@@ -26,7 +26,7 @@ options";
 
 FeynmanIntegral::"usage" =
     "FeynmanIntegral[p1^2,m1^2,m2^2,n1,n2,d,d1] is the one-loop Feynman \
-integral with integrand 1/((p1-q)^2-m1^2+I*IEps)^n1*(p1^2-m2^2+I*IEps)^n2).  \
+integral with integrand 1/((p1-q)^2-m1^2+I*SmallEpsilon)^n1*(p1^2-m2^2+I*SmallEpsilon)^n2).  \
 d and d1 are the number of space-time dimensions used for the gamma function \
 and other factors respectively.  FeynmanIntegral is used by VeltmanB0 when \
 B0Evaluation is set to Direct1";
@@ -40,8 +40,9 @@ VeltmanD0::"usage" =
 Passarino-Veltman four-point function";
 
 VeltmanExpand::"usage" =
-    "VeltmanExpand[amp] expands the Passarino-Veltman B0, C0 and D0 \
-functions";
+    "VeltmanExpand[amp, opts] expands the Passarino-Veltman B0, C0 and D0 \
+functions using the options opts.  Besides VeltmanExpand's own options \
+any options of VeltmanB0, VeltmanC0 and VeltmanD0 may be given";
 
 B0Evaluation::"usage" =
     "B0Evaluation is an option of VeltmanB0 and VeltmanExpand, specifying how \
@@ -123,16 +124,6 @@ Urech (1997) valid below 0.  The fifth argument of VeltmanC0 is the (infinitesim
 infrared regulator. The external momenta correponding to the first two arguments \
 must be on-shell and equal";
 
-
-SmallIEps::"usage" =
-    "SmallIEps is simply a symbol with a display definitions.  It is used as \
-the default setting of IEps";
-
-IEps::"usage" =
-    "IEps is an option for FeynmanIntegral, VeltmanB0, VeltmanC0, VeltmanD0 \
-and VeltmanExpand.  It is the infinitesimal quantity (if set to a symbol, \
-this symbol is assumed to be positive) multiplying I, which is added to minus \
-the squared mass in FeynmanIntegral.  Default setting : SmallIEps";
 
 ExpandGammas::"usage" =
     "ExpandGammas[expr] expands the Gamma functions in expr in (dim-4) around fp to \
@@ -216,11 +207,6 @@ ExplicitLeutwylerJBar::"usage" =
 VeltmanExpand, specifying whether the function should be evaluated or not.  \
 Default setting : False";
 
-ScaleMu::"usage" =
-    "ScaleMu is the symbol used as the default setting for the \
-VeltmanExpand-option MassScale, the mass scale inserted in the D-dimensional \
-integrals used for dimensional regularization of loop integrals";
-
 MassScale::"usage" =
     "MassScale is an option for VeltmanExpand specifying the mass scale \
 inserted in the D-dimensional integrals used for dimensional regularization \
@@ -256,25 +242,18 @@ InfinityFactor::"usage" =
     "InfinityFactor is an options of Renormalize specifying the \
 renormalization scheme.  Default value : LeutwylerLambda[]";
 
-FeynmanParameterize::usage =
+FeynmanParameterize::"usage" =
     "FeynmanParameterize[expr,k(,l(,j))] computes the integral of expr over k \
 (divided by (2 Pi)^d), then computes the integral of the result over l \
 (divided by (2 Pi)^d) if the third argument is provided and, finally, \
 computes the integral of this result over j (divided by (2 Pi)^d), if the \
 fourth argument is given.  It uses the algorithm of feynpar by Todd West";
 
-FeynmanX::usage = "FeynmanX[1], FeynmanX[2], etc. are Feynman parameters";
+FeynmanX::"usage" = "FeynmanX[1], FeynmanX[2], etc. are Feynman parameters";
 
-FeynmanY::usage = "FeynmanY[1], FeynmanY[2], etc. are Feynman parameters";
+FeynmanY::"usage" = "FeynmanY[1], FeynmanY[2], etc. are Feynman parameters";
 
-FeynmanZ::usage = "FeynmanZ[1], FeynmanZ[2], etc. are Feynman parameters";
-
-ILimit::usage = "ILimit[exp, a -> b] checks functions specified by the option \
-FunctionLimits and takes the limit a->b of these functions only if it is finite.  \
-For the rest of the expression exp, the limit is taken";
-
-FunctionLimits::usage = "FunctionLimits is an option of ILimit, specifying which \
-functions should be checked for finiteness";
+FeynmanZ::"usage" = "FeynmanZ[1], FeynmanZ[2], etc. are Feynman parameters";
 
 (*
 Errors
@@ -291,9 +270,6 @@ Begin["`Private`"];
 (*
 Boxes
 *)
-
-SmallIEps /: MakeBoxes[SmallIEps, TraditionalForm] :=
-MakeBoxes[StyleForm["\[Epsilon]", FontSlant -> "Italic"]];
 
 IntegrateHeld /: MakeBoxes[IntegrateHeld[a__,
           b : _List .. ], TraditionalForm] :=
@@ -319,16 +295,15 @@ FeynmanZ /: MakeBoxes[FeynmanZ[i_], TraditionalForm] :=
     SubscriptBox[MakeBoxes[StyleForm["z", FontSlant -> "Italic"]][[1]],
       MakeBoxes[TraditionalForm[i]]];
 
-ScaleMu /: MakeBoxes[ScaleMu, TraditionalForm] :=
-
-    MakeBoxes[StyleForm["\[Mu]", FontSlant -> "Italic"]];
 LeutwylerSigma /: Format[LeutwylerSigma[___], TraditionalForm] :=
     StyleForm["\[Sigma]", FontSlant -> "Italic"];
+
 LeutwylerJBar /: MakeBoxes[LeutwylerJBar[q_, m__, ___Rule], TraditionalForm] :=
      RowBox[{SubscriptBox[
           MakeBoxes[StyleForm[OverBar["J"], FontSlant -> "Italic"]][[1]],
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {m}]], "(",
         MakeBoxes[TraditionalForm[q]], ")"}];
+
 LeutwylerJ0 /: MakeBoxes[LeutwylerJ0[___], TraditionalForm] :=
     RowBox[{MakeBoxes[StyleForm["J", FontSlant -> "Italic"]], "(", "0", ")"}];
 
