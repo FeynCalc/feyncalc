@@ -57,6 +57,8 @@ Options[CheckF] = {Directory -> ToFileName[{$FeynCalcDirectory}, "fcdb"],
 
 (* ------------------------------------------------------------------------ *)
 
+VerbosePrint[n_Integer,s__]:=If[$VeryVerbose>=n,Print[s]];
+
 eliminateDoubles[s_String] :=
     Block[{str},
       str = FixedPoint[
