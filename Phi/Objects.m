@@ -78,6 +78,8 @@ FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
 CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFieldDerivative"];
 DotExpand := DotExpand = MakeContext["DotExpand"];
 FourVector := FourVector = MakeContext["FourVector"];
+FDr := FDr = MakeContext["FDr"];
+CDr := CDr = MakeContext["CDr"];
 
 
 (* Defaults *)
@@ -368,8 +370,9 @@ SelfConjugation[(a : $ScalarHeads)[i_]] := True;
 
 Options[UGenerator] = { fcsunn -> 2, UDimension -> Automatic};
 Options[UIdentity] = { fcsunn -> 2, UDimension -> Automatic};
+(* Most of this Projection business is no longer necessary. Dropped, 11/5-2003 *)
 Options[ExpandU] = { fcsunn -> 2, UDimension -> Automatic,
-      CommutatorReduce -> True, RemoveIntegerIndices -> False};
+      CommutatorReduce -> True(*Commented out 11/5-2003*)(*, RemoveIntegerIndices -> False*)};
 Options[ExpandUGenerators] = { fcsunn -> 2, UDimension -> Automatic,
       IsoIndicesString -> "i", CommutatorReduce -> False};
 Options[UNMSplit] = { DropOrder -> 4};
@@ -395,16 +398,17 @@ Options[FieldsSet] = {ParticlesNumber -> 4, MomentumVariablesString -> "p",
 Options[MomentaSumRule] = {ParticlesNumber -> 4, MomentaSumLeft -> All,
       MomentumVariablesString -> "p"};
 Options[UQuarkMass] = {fcexpt -> True, QuarkToMesonMasses -> True, DiagonalToU -> False,
-      RemoveIntegerIndices -> False, fcsunn -> 2,
+      (*Commented out 11/5-2003*)(*RemoveIntegerIndices -> False,*) fcsunn -> 2,
       UDimension -> Automatic};
-Options[UQuarkCharge] = {fcexpt -> True, DiagonalToU -> False, RemoveIntegerIndices -> False,
+Options[UQuarkCharge] = {fcexpt -> True, DiagonalToU -> False,
+     (*Commented out 11/5-2003*)(* RemoveIntegerIndices -> False,*)
       fcsunn -> 2, UDimension -> Automatic};
 Options[UChi] = {fcexpt -> True, DiagonalToU -> False, fcsunn -> 2,
-      QuarkToMesonMasses -> True, RemoveIntegerIndices -> False,
+      QuarkToMesonMasses -> True(*Commented out 11/5-2003*)(*, RemoveIntegerIndices -> False*),
       UDimension -> Automatic};
 (* Changed the strings below from "k", "k" to "l", "l"
    in order to avoid problems with IndicesCleanup. *)
-Options[PhiToFC] = {RemoveIntegerIndices -> False, FreeIsoIndexString -> "l",
+Options[PhiToFC] = {(*Commented out 11/5-2003*)(*RemoveIntegerIndices -> False,*) FreeIsoIndexString -> "l",
       FreeIsoIndicesString -> "l", NumerateFree -> True};
 Options[MM] = {fcexpt -> True};
 Options[SMM] = {fcexpt -> True};
@@ -414,8 +418,8 @@ Options[FieldStrengthTensorFull] = {fcexpt -> True};
 Options[UFieldMatrix] = { ExpansionOrder -> 4, DropOrder -> Infinity, Constant -> Automatic};
 Options[UFieldMatrixSeries] = { ExpansionOrder -> 4, Constant -> Automatic};
 Options[WriteOutUMatrices] = {fcsunn -> 2, UDimension -> Automatic,
-      QuarkToMesonMasses -> True, DiagonalToU -> False,
-      RemoveIntegerIndices -> False};
+      QuarkToMesonMasses -> True, DiagonalToU -> False(*Commented out 11/5-2003*)(*,
+      RemoveIntegerIndices -> False*)};
 Options[WriteOutIsoVectors] = {fcsunn -> 2};
 Options[VariableBoxes] = {ParticlesNumber -> 4};
 patterns = (BlankSequence | BlankNullSequence | Pattern);
@@ -817,8 +821,9 @@ gaugedimcheck[f_, expr___] :=
 SU(3) and the standard representations.  This will have to wait till some
 other time... *)
 
+(* Change 11/5-2003: Have heads on everything, including Integers *)
 removeints =
-    UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer], opts___],
+    UMatrix[UGenerator[i:(fcsuni | fcexsuni)[_Integer], opts___],
         optst___] :> (IsoDot[
           ProjectionIsoVector[i,
             Sequence @@ OptionsSelect[IsoVector, opts, optst]],
@@ -827,10 +832,11 @@ removeints =
               Union[OptionsSelect[UMatrix, opts, optst],
                 OptionsSelect[IsoVector, opts, optst],
                 OptionsSelect[UGenerator, opts, optst]]]]);
+
 putints =
-    IsoDot[IsoVector[Projection[i_Integer], opts___],
+    IsoDot[IsoVector[Projection[i_(*Integer*)], opts___],
         IsoVector[UMatrix[UGenerator[ops___], ___], optst___]] :> (UMatrix[
-          UGenerator[fcsuni[i],
+          UGenerator[(*fcsuni[i]*)i,
             Sequence @@ OptionsSelect[UGenerator, ops, opts, optst]],
           Sequence @@ OptionsSelect[UMatrix, ops, opts, optst]]);
 ExpandU[a_,
@@ -849,10 +855,10 @@ ExpandU[a_,
             VerbosePrint[2, "Expanding the NM products"];
             NMExpand[
                 a /. Power -> NMPower /. removeints] //. (VerbosePrint[2,
-                  "Applying expansion rules"]; sigrules[gg])] /.
+                  "Applying expansion rules"]; sigrules[gg])] /. putints (*Changed 11/5-2003*)(*/.
             If[(RemoveIntegerIndices /. Flatten[{opts}] /. Options[ExpandU]),
             VerbosePrint[2, "Removing integer indices"]; removeints,
-            VerbosePrint[2, "Putting (back) on integer indices"]; putints],
+            VerbosePrint[2, "Putting (back) on integer indices"]; putints]*),
         Message[ExpandU::baddim, gg, gd]]);
 
 
@@ -954,8 +960,10 @@ IsoDot[IsoVector[UMatrix[UGenerator, optsm___], optsv___],
 
 (* The projection function: *)
 
-Projection[i_Integer][(fcsuni | fcexsuni)[j_Integer]] := If[i == j, 1, 0];
-Projection[i_Integer][j_Integer] := If[i == j, 1, 0];
+(*Changed 11/5-2003*)
+(*Projection[i_Integer][(fcsuni | fcexsuni)[j_Integer]] := If[i == j, 1, 0];
+Projection[i_Integer][j_Integer] := If[i == j, 1, 0];*)
+Projection[i_][j_] := fcsundel[i, j];
 
 
 
@@ -963,7 +971,7 @@ Projection[i_Integer][j_Integer] := If[i == j, 1, 0];
 
 IsoDot[IsoVector[Projection[i_], opts1___],
       IsoVector[Projection[j_], opts2___]] :=
-    If[! FreeQ[jj[opts1, opts2, Options[IsoVector]], fcsunn -> 3],
+    If[!FreeQ[jj[opts1, opts2, Options[IsoVector]], fcsunn -> 3],
       SU3Delta[i, j], SU2Delta[i, j]];
 
 
@@ -1008,12 +1016,12 @@ IsoCross[a_, b_] /; btss[a, b] := Conjugate[a]*b;
 
 (* IsoCross of projection iso-vectors: *)
 
-IsoCross[IsoVector[Projection[i_], opts1___],
-        IsoVector[Projection[j_], opts2___]] /; (IntegerQ[i] &&
-          IntegerQ[j]) := (gg = (fcsunn /. Flatten[{opts1, opts2}] /.
+IsoCross[IsoVector[i:(Projection[uindxx[_Integer]]|Projection[_Integer]), opts1___],
+        IsoVector[j:(Projection[uindxx[_Integer]]|Projection[_Integer]), opts2___]] :=
+     (gg = (fcsunn /. Flatten[{opts1, opts2}] /.
             Options[IsoVector]);
       Sum[Which[gg == 2, SU2F[i, j, k], gg == 3, SU3F[i, j, k], True,
-            fcsunf[i, j, k]]*IsoVector[Projection[k], opts1], {k,
+            fcsunf[i, j, k]]*IsoVector[Projection[fcsuni[k]], opts1], {k,
           gg^2 - 1}]);
 
 
@@ -1066,12 +1074,12 @@ IsoSymmetricCross[a_, b_] /; btss[a, b] := Conjugate[a]*b;
 
 (* IsoSymmetricCross of projection iso-vectors: *)
 
-IsoSymmetricCross[IsoVector[Projection[i_], opts1___],
-        IsoVector[Projection[j_], opts2___]] /; (IntegerQ[i] &&
-          IntegerQ[j]) := (gg = (fcsunn /. Flatten[{opts1, opts2}] /.
+IsoSymmetricCross[IsoVector[Projection[i:(Projection[uindxx[_Integer]]|Projection[_Integer])], opts1___],
+        IsoVector[Projection[j:(Projection[uindxx[_Integer]]|Projection[_Integer])], opts2___]] :=
+     (gg = (fcsunn /. Flatten[{opts1, opts2}] /.
             Options[IsoVector]);
       Sum[Which[gg == 2, SU2D[i, j, k], gg == 3, SU3D[i, j, k], True,
-            fcsund[i, j, k]]*IsoVector[Projection[k], opts1], {k,
+            fcsund[i, j, k]]*IsoVector[Projection[fcsuni[k]], opts1], {k,
           gg^2 - 1}]);
 
 
@@ -1301,16 +1309,16 @@ UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
             2) && (gaugedimcheck[UMatrix, opts1, opts] == 2)  && (fcexpt /. Flatten[{opts}] /.
                 Options[UQuarkCharge]) :=
     DiagonalUMatrix[{2/3*fccoupl[QED[1],st,sc,qs], -1/3*
-            fccoupl[QED[1],st,sc,qs]}, opts, opts1] /.
+            fccoupl[QED[1],st,sc,qs]}, opts, opts1] (*Commented out 11/5-2003*)(*/.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
             Options[UQuarkCharge]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
-            IsoDot[ProjectionIsoVector[i, ##] & @@
+            IsoDot[ProjectionIsoVector[fcsuni[i], ##] & @@
                 OptionsSelect[IsoVector, optst],
               UGeneratorMatrixIsoVector[##] & @@
                 Union[OptionsSelect[UMatrix, optst],
                   OptionsSelect[IsoVector, optst],
-                  OptionsSelect[UGenerator, optst]]]}, {}];
+                  OptionsSelect[UGenerator, optst]]]}, {}]*);
 
 UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ],
@@ -1322,16 +1330,16 @@ UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
                 Options[UQuarkCharge]) :=
     DiagonalUMatrix[{2/3*fccoupl[QED[1],st,sc,qs], -1/3*
             fccoupl[QED[1],st,sc,qs], -1/3*fccoupl[QED[1],st,sc,qs]}, opts,
-        opts1] /.
+        opts1] (*Commented out 11/5-2003*)(*/.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
             Options[UQuarkCharge]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
-            IsoDot[ProjectionIsoVector[i, ##] & @@
+            IsoDot[ProjectionIsoVector[fcsuni[i], ##] & @@
                 OptionsSelect[IsoVector, optst],
               UGeneratorMatrixIsoVector[##] & @@
                 Union[OptionsSelect[UMatrix, optst],
                   OptionsSelect[IsoVector, optst],
-                  OptionsSelect[UGenerator, optst]]]}, {}];
+                  OptionsSelect[UGenerator, optst]]]}, {}]*);
 
 
 
@@ -1353,16 +1361,16 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                   OptionsSelect[UMatrix, opts1] +
                 1/2*UIdentityMatrix[opts1]) /.
         If[(QuarkToMesonMasses /. Flatten[{opts}] /.
-              Options[UQuarkMass]), $QuarkToPionMassesRules, {}] /.
+              Options[UQuarkMass]), $QuarkToPionMassesRules, {}] (*Commented out 11/5-2003*)(*/.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
             Options[UQuarkMass]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
-            IsoDot[ProjectionIsoVector[i, ##] & @@
+            IsoDot[ProjectionIsoVector[fcsuni[i], ##] & @@
                 OptionsSelect[IsoVector, optst],
               UGeneratorMatrixIsoVector[##] & @@
                 Union[OptionsSelect[UMatrix, optst],
                   OptionsSelect[IsoVector, optst],
-                  OptionsSelect[UGenerator, optst]]]}, {}];
+                  OptionsSelect[UGenerator, optst]]]}, {}]*);
                   
 UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ],
@@ -1397,16 +1405,16 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                   OptionsSelect[UMatrix, opts1] +
                 1/3*UIdentityMatrix[opts1]) /.
         If[(QuarkToMesonMasses /. Flatten[{opts}] /.
-              Options[UQuarkMass]), $QuarkToMesonMassesRules, {}] /.
+              Options[UQuarkMass]), $QuarkToMesonMassesRules, {}] (*Commented out 11/5-2003*)(*/.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
             Options[UQuarkMass]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
-            IsoDot[ProjectionIsoVector[i, ##] & @@
+            IsoDot[ProjectionIsoVector[fcsuni[i], ##] & @@
                 OptionsSelect[IsoVector, optst],
               UGeneratorMatrixIsoVector[##] & @@
                 Union[OptionsSelect[UMatrix, optst],
                   OptionsSelect[IsoVector, optst],
-                  OptionsSelect[UGenerator, optst]]]}, {}];
+                  OptionsSelect[UGenerator, optst]]]}, {}]*);
 
 
 
@@ -1514,25 +1522,26 @@ IsoVector[fcqf[a__][x_], opts___] := IsoVector[fcqf[a], opts][x];
 
 (* Right- and left-handed fields: *)
 
+(*Explicit has to be written out. Otherwise later changes (in context Global`) will not work*)
 setLeftRightComponents :=
 (
 IsoVector[fcqf[aa___, Particle[LeftComponent[a_, opts0___Rule], i___], bb___], opts___][
-      x_] /; (fcexpt /. {opts0} /. Options[LeftComponent]) :=
+      x_] /; (HighEnergyPhysics`FeynCalc`Explicit`Explicit /. {opts0} /. Options[LeftComponent]) :=
        1/2*(IsoVector[fcqf[aa, Particle[Vector[a], i], bb], opts][x] +
           IsoVector[fcqf[aa, Particle[AxialVector[a], i], bb], opts][x]);
 
 IsoVector[fcqf[aa___, Particle[RightComponent[a_, opts0___Rule], i___], bb___], opts___][
-      x_] /; (fcexpt /. {opts0} /. Options[RightComponent]) :=
+      x_] /; (HighEnergyPhysics`FeynCalc`Explicit`Explicit /. {opts0} /. Options[RightComponent]) :=
        1/2*(IsoVector[fcqf[aa, Particle[Vector[a], i], bb], opts][x] -
           IsoVector[fcqf[aa, Particle[AxialVector[a], i], bb], opts][x]);
 
 fcqf[aa___, Particle[LeftComponent[a_, opts0___Rule], i___], bb___][
-       x_] /; (fcexpt /. {opts0} /. Options[LeftComponent]) :=
+       x_] /; (HighEnergyPhysics`FeynCalc`Explicit`Explicit /. {opts0} /. Options[LeftComponent]) :=
         1/2*(fcqf[aa, Particle[Vector[a], i], bb][x] +
           fcqf[aa, Particle[AxialVector[a], i], bb][x]);
 
 fcqf[aa___, Particle[RightComponent[a_, opts0___Rule], i___], bb___][
-        x_] /; (fcexpt /. {opts0} /. Options[RightComponent]) :=
+        x_] /; (HighEnergyPhysics`FeynCalc`Explicit`Explicit /. {opts0} /. Options[RightComponent]) :=
          1/2*(fcqf[aa, Particle[Vector[a], i], bb][x] -
           fcqf[aa, Particle[AxialVector[a], i], bb][x]);
 );
@@ -1755,7 +1764,7 @@ WriteOutUMatrices1[aa_, (optss___Rule | optss___List)] :=
 uindxx = (uix | fcsuni | fcexsuni);
 
 WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
-  aa /. (*UTrace1 checks only for UMatrices not for
+  aa /. (*UTrace2 checks only for UMatrices not for
        explicit matrices when pulling out factors*)
        UTrace1 -> tr/.
             Power -> NMPower /. {UMatrix[a_[ind___, op___Rule], opts___][x___] :>
@@ -1779,8 +1788,12 @@ WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
                 gaugedimcheck[UVector, UVector[a, opts], optss]}]} /.
       tbl -> Table /. tr -> UTrace1;
 
+(*Why were the substitutions below necessary? They breake things with e.g.
+  NM[a[x], UMatrix[b]] + UMatrix[UIdentity] a. This is because e.g.
+  a+{{b11,b12},{b21,b22}} gives {{a + b11, a + b12}, {a + b21, a + b22}}.
+  14/6-2003*)
 WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := 
-  WriteOutUMatrices1[WriteOutUMatrices2[aa/.NM->nm,optss],optss]/.nm->NM;
+  WriteOutUMatrices1[WriteOutUMatrices2[aa(*/.NM->nm*),optss],optss](*/.nm->NM*);
 
 UIdentity[i : uindxx[_], j : uindxx[_], opts___?OptionQ] :=
     Which[(fcsunn /. Flatten[{opts}] /. Options[UMatrix]) == 2 &&
@@ -2009,10 +2022,11 @@ Adjoint[IsoVector[a_, b___]] := IsoVector[Adjoint[a], b];
 
 Adjoint[Projection[i_]] = Projection[i];
 
-Adjoint[Projection[i_][j_]] = Projection[i][j];
+(*Commented out 11/5-2003*)
+(*Adjoint[Projection[i_][j_]] = Projection[i][j];
 
 Projection /:
-Conjugate[Projection[i_][j_]] = Projection[i][j];
+Conjugate[Projection[i_][j_]] = Projection[i][j];*)
 
 Projection /:
 Conjugate[Projection[i_]] = Projection[i];
@@ -2068,9 +2082,6 @@ Conjugate[IsoSymmetricCross[b_, c_]] :=
     
 Conjugate[NM[b__, c_]] := NM[Conjugate[b], Conjugate[c]];
 
-(* Hack to deal with issue with WriteOutIsoVectors. *)
-Conjugate[Conjugate[a_][(fcsuni | fcexsuni)[i_]]] := a[fcsuni[i]];
-
 
 (* The generator matrices are self-adjoined
    (in the standad representation only). *)
@@ -2092,9 +2103,9 @@ Conjugate[a : (SU2Delta | SU3Delta | fcsundel)[__]] := a;
 
 Conjugate[UMatrix[UIdentity, opts___]] := UIdentityMatrix[opts];
 
-Conjugate[IsoVector[a_, b___]] := IsoVector[Conjugate[a], b];
+Conjugate[IsoVector[a_, b___]] := IsoVector[Conjugate[a], b] /; FreeQ[{a,b}, _sunitemp];
 
-Conjugate[IsoVector[a_, b___][x_]] := IsoVector[Conjugate[a], b][x];
+Conjugate[IsoVector[a_, b___][x_]] := IsoVector[Conjugate[a], b][x] /; FreeQ[{a,b,x}, _sunitemp];
 
 Protect[Conjugate];
 
@@ -2314,7 +2325,17 @@ CycleUTraces[expr_, sf___] :=
 
 SetAttributes[SU2Delta, Orderless];
 
-SU2Delta[a___, uindxx[b_Integer], c___] := SU2Delta[a, b, c];
+(*SU2Delta[a___, uindxx[b_Integer], c___] := SU2Delta[a, b, c];*)
+(*This should not be necessary anymore, since now ExplicitSUNIndex
+  is automatically tagging integers. Commented out 11/5-2003*)
+
+(*Added 11/5-2003, see above*)
+
+SU2Delta[uindxx[i_Integer], uindxx[i_Integer]] := 1;
+
+SU2Delta[uindxx[i_Integer], uindxx[j_Integer]] := 0;
+
+(**)
 
 SU2Delta[i_Integer, i_Integer] := 1;
 
@@ -2335,17 +2356,25 @@ SU2Delta[fcsuni[i_Symbol], fcsuni[i_Symbol]] /;
 
 (* This definition is covered by the one below, but I hope it is faster... *)
 
-SU2F[a : (uindxx[_Integer]) ..] := SU2F[Sequence @@ (((#[[1]]) &) /@ {a})];
+(* Commented out 9/6-2003, forgotten 13/5-2003. See below *)
 
-SU2F[a___, uindxx[b_Integer], c___] := SU2F[a, b, c];
+(*SU2F[a : (uindxx[_Integer]) ..] := SU2F[Sequence @@ (((#[[1]]) &) /@ {a})];
+
+SU2F[a___, uindxx[b_Integer], c___] := SU2F[a, b, c];*)
 
 SU2F[a__] /; (OrderedQ[{a}] != True && $StandardSUNBasis) :=
     Signature[{a}]*SU2F @@ Sort[{a}];
 
-SU2F[a_, b_, c_] /; (! OrderedQ[{a, b}]) :=
+SU2F[a_, b_, c_] /; (!OrderedQ[{a, b}]) :=
     Signature[{a, b}]*SU2F[##, c] & @@ Sort[{a, b}];
 
 SU2F[a__Integer] /; $StandardSUNBasis := 0;
+
+(*Added 11/5-2003, see above*)
+(*Commented out 10/6-2003*)
+(*SU2F[uindxx[_Integer]..] /; $StandardSUNBasis := 0;*)
+SU2F[uindxx[a_Integer], uindxx[b_Integer], uindxx[c_Integer]] := SU2F[a, b, c];
+(**)
 
 SU2F[a_, a_, b_] /; $StandardSUNBasis := 0;
 
@@ -2359,7 +2388,17 @@ SU2F[a_, b_, a_] /; $StandardSUNBasis := 0;
 
 SetAttributes[SU3Delta, Orderless];
 
-SU3Delta[a___, uindxx[b_Integer], c___] := SU3Delta[a, b, c];
+(*SU3Delta[a___, uindxx[b_Integer], c___] := SU3Delta[a, b, c];*)
+(*This should not be necessary anymore, since now ExplicitSUNIndex
+  is automatically tagging integers. Commented out 11/5-2003*)
+
+(*Added 11/5-2003, see above*)
+
+SU3Delta[uindxx[i_Integer], uindxx[i_Integer]] := 1;
+
+SU3Delta[uindxx[i_Integer], uindxx[j_Integer]] := 0;
+
+(**)
 
 SU3Delta[i_Integer, i_Integer] := 1;
 
@@ -2379,9 +2418,10 @@ Standard Model, (II.2.10)): *)
 
 (* This definition is covered by the one below, but I hope it is faster... *)
 
-SU3F[a : (uindxx[_Integer]) ..] := SU3F[Sequence @@ (((#[[1]]) &) /@ {a})];
+(* Change 13/5-2003. Keep heads on integers, instead SUNIndex -> ExplicitSUNIndex *)
+ (*SU3F[a : (uindxx[_Integer]) ..] := SU3F[Sequence @@ (((#[[1]]) &) /@ {a})];
 
-SU3F[a___, uindxx[b_Integer], c___] := SU3F[a, b, c];
+SU3F[a___, uindxx[b_Integer], c___] := SU3F[a, b, c];*)
 
 
 
@@ -2393,15 +2433,26 @@ pairs[a_] :=
 
 pairsd[a_] := Union[Sort /@ Flatten[Outer[List, a, a], 1]];
 
-SU3F[a__] /; (! OrderedQ[{a}] && $StandardSUNBasis) :=
+SU3F[a__] /; (!OrderedQ[{a}] && $StandardSUNBasis) :=
     Signature[{a}]*SU3F @@ Sort[{a}];
 
-SU3F[a_, b_, c_] /; (! OrderedQ[{a, b}]) :=
+SU3F[a_, b_, c_] /; (!OrderedQ[{a, b}]) :=
     Signature[{a, b}]*SU3F[##, c] & @@ Sort[{a, b}];
+
+(*Added 17/6-2003. See below*)
+SU3F[___, 0, ___] := 0;
+SU3F[___, uindxx[0], ___] := 0;
 
 SU3F[a_Integer, b_Integer,
         c_] /; (MemberQ[fzeropairlist, Sort[{a, b}]] && $StandardSUNBasis) :=
     0;
+
+(*Added 11/5-2003, see above*)
+SU3F[uindxx[a_Integer], uindxx[b_Integer],
+        c_] /; (MemberQ[fzeropairlist, Sort[{a, b}]] && $StandardSUNBasis) :=
+    0;
+SU3F[uindxx[a_Integer], uindxx[b_Integer], uindxx[c_Integer]] := SU3F[a, b, c];
+(**)
 
 SU3F[a_, a_, b_] /; $StandardSUNBasis := 0;
 
@@ -2410,17 +2461,19 @@ SU3F[a_, b_, b_] /; $StandardSUNBasis := 0;
 SU3F[a_, b_, a_] /; $StandardSUNBasis := 0;
 
 pairsfunc[a_] :=
-    Rule[HoldPattern[SU3F[##]] & @@
+    Rule[(*HoldPattern[*)SU3F[##](*]*)& @@
             Join[#, {i_}], (SU3F[Sequence @@ #, Complement[a, #][[1]]])*
-            SU3Delta[i, Complement[a, #][[1]]]] & /@ pairs[a];
+            SU3Delta[i, Complement[a, #][[1]]]]& /@ pairs[a];
 
 
 
 (* This definition is covered by the one below, but I hope it is faster... *)
 
-SU3D[a : (uindxx[_Integer]) ..] := SU3D[Sequence @@ (((#[[1]]) &) /@ {a})];
+(* Change 13/5-2003. Keep heads on integers, instead SUNIndex -> ExplicitSUNIndex *)
 
-SU3D[a___, uindxx[b_Integer], c___] := SU3D[a, b, c];
+(*SU3D[a : (uindxx[_Integer]) ..] := SU3D[Sequence @@ (((#[[1]]) &) /@ {a})];
+
+SU3D[a___, uindxx[b_Integer], c___] := SU3D[a, b, c];*)
 
 SetAttributes[SU3D, Orderless];
 
@@ -2433,11 +2486,25 @@ B. R. Holstein, Dynamics of the Standard Model): *)
 (* We may as well take these directly from the matrices so it is easier to
    change basis. *)
 
+(* Added the check for 0. 17/6-2003. SUNIndex[0] is used to indicate SU(N) singlet
+   QuantumFields and occurs in some Feynman rules. *)
+
+SU3D[___, 0, ___] := 0;
+SU3D[___, uindxx[0], ___] := 0;
+
 SU3D[a_Integer, b_Integer,
         c_] /; ($StandardSUNBasis && MemberQ[dzeropairlist, Sort[{a, b}]]) :=
     0;
 
-SU3D[___, a : fcsuni[_?(((! IntegerQ[#]) &&
+(*Added 11/5-2003, see above*)
+SU3D[uindxx[a_Integer], uindxx[b_Integer],
+        c_] /; ($StandardSUNBasis && MemberQ[dzeropairlist, Sort[{a, b}]]) :=
+    0;
+
+SU3D[uindxx[a_Integer], uindxx[b_Integer], uindxx[c_Integer]] := SU3D[a, b, c];
+(**)
+
+SU3D[___, a : fcsuni[_?(((!IntegerQ[#]) &&
                       FreeQ[$ConstantIsoIndices, #]) &)], ___,
         a_, ___] /; $StandardSUNBasis := 0;
 
@@ -2455,7 +2522,7 @@ pairsall[a_] :=
 
 pairsfuncd[a_] :=
     Union[Rule[
-            HoldPattern[SU3D[##]] & @@ Join[#, {i_}], (SU3D @@ a)*
+            (*HoldPattern[*)SU3D[##](*]*)& @@ Join[#, {i_}], (SU3D @@ a)*
               SU3Delta[i, ComplementAll[a, #][[1]]]] & /@ pairsall[a]];
 
 
@@ -2586,7 +2653,7 @@ dzeropairlist =
 
       (*When two indices are integers,
         only some values of the third will give a non -
-          zero result.$SU3FReduceList is the corresponding list of rules,
+          zero result. $SU3FReduceList is the corresponding list of rules,
         substituting SU3F with SU3Delta*)
 
       $SU3FReduceList =
@@ -2602,6 +2669,12 @@ dzeropairlist =
                 Union[FlattenAt[Evaluate[pairsfuncd /@ dnlist],
                     Table[{i}, {i, Length[dnlist]}]]]] //. {a___, b_ -> c_,
                   b_ -> d_, e___} -> {a, b -> c + d, e}], {}];
+
+      (* Change 13/5-2003. Keep heads on integers, instead SUNIndex -> ExplicitSUNIndex *)
+       $SU3FReduceList = $SU3FReduceList //. (f:(SU3F|SU3Delta))[a___, b_Integer, c___] ->
+                                             f[a, fcexsuni[b], c];
+       $SU3DReduceList = $SU3DReduceList //. (f:(SU3D|SU3Delta))[a___, b_Integer, c___] ->
+                                             f[a, fcexsuni[b], c];
 
       If[HighEnergyPhysics`Phi`$Phi, $SUNRules =
           Join[$SUNDeltaRules,
@@ -2646,14 +2719,17 @@ generated anew each time.  Here follow how the different objects interpret
 this additional isospin dependence *)
 
 IsoVector[a_[ii : uindxx[_], jj : uindxx[_], op___Rule | op___List], opts___][
-      i__?fcsuniQ] := (a[i, ##] & @@
-          OptionsSelect[a, opts, op])[ii, jj];
+      i__?fcsuniQ] := (a[i, ##]& @@ OptionsSelect[a, opts, op])[ii, jj];
 IsoVector[a_[b__, (op___Rule | op___List)], opts___][x_][
-      i__?fcsuniQ] := (a[b, ##] & @@
-            OptionsSelect[a, op, opts])[i][x];
+      i__?fcsuniQ] := (a[b, ##]& @@ OptionsSelect[a, op, opts])[i][x];
 IsoVector[a_[b__, (op___Rule | op___List)], opts___][
-      i__?fcsuniQ] := (a[b, ##] & @@
-          OptionsSelect[a, op, opts])[i];
+      i__?fcsuniQ] := (a[b, ##]& @@ OptionsSelect[a, op, opts])[i];
+(*Added 16/5-2003 to support the simple cases of
+  IsoDot[IsoVector[a], IsoVector[b]]//IsoIndicesSupply and
+  IsoDot[IsoVector[a][x], IsoVector[b][]]//IsoIndicesSupply*)
+IsoVector[a_Symbol, opts___][i__?fcsuniQ] := a[i];
+IsoVector[a_Symbol, opts___][x_][i__?fcsuniQ] := a[x][i];
+
 
 
 
@@ -2665,6 +2741,12 @@ ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
         iis___?fcsuniQ][isosp_?fcsuniQ] :=
     fcqf[ders, a, lors, isosp, iis];
 
+fcqf[
+ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
+        lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        iis___?fcsuniQ][ui_UIndex] :=
+    fcqf[ders, a, lors, iis, ui];
+
 UMatrix[UGenerator[op___], opts___][
       i_?fcsuniQ] :=
     UMatrix[UGenerator[i, op], opts];
@@ -2673,6 +2755,13 @@ Unprotect[Conjugate];
   Conjugate[UMatrix[UGenerator[op___], opts___]][
       i_?fcsuniQ] :=
     Conjugate[UMatrix[UGenerator[i, op], opts]];
+
+(* Hack to deal with issue with WriteOutIsoVectors. *)
+(*Conjugate[Conjugate[a_][(fcsuni | fcexsuni)[i_]]] := a[fcsuni[i]];*)
+(*Added 16/5-2003*)
+(*Conjugate[Conjugate[a_][(fcsuni | fcexsuni)[i_]][x_Symbol]] := a[fcsuni[i]][x];*)
+(*Changed 19/5-2003, see below*)
+
 
 Protect[Conjugate];
 
@@ -2762,7 +2851,10 @@ IsoIndicesSupply[
           wrap[___] ->
             ToExpression[
               FreeIsoIndexString /. Flatten[{optss}] /.
-                Options[IsoIndicesSupply]] /. times1 -> Times);
+                Options[IsoIndicesSupply]] /. times1 -> Times /.
+             (*Added 19/5-2003, see above*)
+             {Conjugate[a_Symbol][(fcsuni | fcexsuni)[i_]][x_Symbol] :> Conjugate[a[fcsuni[i]][x]],
+              Conjugate[a_Symbol][(fcsuni | fcexsuni)[i_]] :> Conjugate[a[fcsuni[i]]]});
 
 
 
@@ -2783,8 +2875,8 @@ nnm[opts___] :=
 (* UIndicesSupply: *)
 
 UIndicesSupply[a_, opts___] :=
-    UIndicesSupply1[a,
-              opts] /. {UMatrix[m_[ind_, op___], i_uix, j_uix, opt___] :>
+    UIndicesSupply1[a, opts] /.
+        {UMatrix[m_[ind_, op___], i_uix, j_uix, opt___] :>
                 m[ind, Sequence @@ OptionsSelect[m, opts, op, opt]][i, j],
               UMatrix[m_, i_uix, j_uix, opt___] :> m[i, j, opt]} /.
           If[(UIndexToSUNIndex /. Flatten[{opts}] /. Options[UIndicesSupply]),
@@ -2813,7 +2905,7 @@ UIndicesSupply1[a_ /; FreeQ[a, UMatrix | UVector], ___] := a;
 (* Unnested NMs: *)
 
 UIndicesSupply1[aa_NM, optss1___] /;
-      FreeQ[List @@ aa, NM | DOT] := (ui1 =
+      FreeQ[List @@ aa, NM | fcdot] := (ui1 =
         nnmm @@ Table[(If[! FreeQ[aa[[rep]], UMatrix],
                   indexpair = Sequence[nnn[optss1], nnm[optss1]]];
                 ReplacePart[aa,
@@ -2826,18 +2918,15 @@ UIndicesSupply1[aa_NM, optss1___] /;
 
 (* Nested NMs are NMExpanded: *)
 
-UIndicesSupply1[a_NM,
-        optss1___] /; (!
-          FreeQ[List @@ a, NM | DOT]) :=
+UIndicesSupply1[a_NM, optss1___] /; (!FreeQ[List @@ a, NM | fcdot]) :=
     UIndicesSupply1[NMExpand[a], optss1];
 
 
 
 (* A single UMatrix or UVector: *)
 
-UIndicesSupply1[aa_,
-        optss1___] /; (FreeQ[aa,
-            NM | DOT] && !
+UIndicesSupply1[aa_, optss1___] /; (FreeQ[aa,
+            NM | fcdot] && !
             FreeQ[aa, UVector | UMatrix]) := (indexpair =
         Sequence[nnn[optss1], nnm[optss1]]; UIndicesCounter++;
       aa /. {UMatrix[a_, opts___] :> UMatrix[a, indexpair, opts],
@@ -2852,14 +2941,13 @@ UIndicesSupply[] := Sequence[];
 (* When supplying indices to a dot product, the enclosed NM product is first
 supplied with indices, then the enclosing vectors are supplied with indices: *)
 
-UIndicesSupply1[(DOT (*| Dot*))[aa1_, aa2___,
-        aa3_], optss1___] :=
+UIndicesSupply1[(fcdot(* | Dot*))[aa1_, aa2___,
+        aa3_], optss1___] /; Length[aa1] == 1 && Length[aa3] == 1 :=
     tempdot[aa1, UIndicesSupply1[NM[aa2]],
               aa3] //. {(*vbar.m.v*)
                 tempdot[a___, b_, c__, d_,
-                    e___] /; (FreeQ[{c}, UVector] && !
-                        FreeQ[{b}, UVector] && ! FreeQ[{d}, UVector] && !
-                        FreeQ[{c}, UMatrix]) :>
+                    e___] /; (FreeQ[{c}, UVector] && !FreeQ[{b}, UVector] &&
+                              !FreeQ[{d}, UVector] && !FreeQ[{c}, UMatrix]) :>
                 tempdot[a,
                   b /. UVector[p_] ->
                       p[Flatten[
@@ -2870,22 +2958,22 @@ UIndicesSupply1[(DOT (*| Dot*))[aa1_, aa2___,
                             Cases[{c}, _uix, Infinity, Heads -> True]][[-1]]],
                    e],(*vbar.v*)
                 tempdot[a___, b_, c___, d_,
-                    e___] /; (FreeQ[{c}, UVector] && !
-                        FreeQ[{b}, UVector] && ! FreeQ[{d}, UVector] &&
+                    e___] /; (FreeQ[{c}, UVector] &&
+                       !FreeQ[{b}, UVector] && ! FreeQ[{d}, UVector] &&
                       FreeQ[{c}, UMatrix]) :> (index = nnn[optss1];
                   tempdot[a, b /. UVector[p2_] -> p2[index], c,
                     d /. UVector[p3_] -> p3[index], e])} //. {(*m.v*)
               tempdot[a___, c__, d_,
-                  e___] /; (FreeQ[{c}, UVector] && ! FreeQ[{d}, UVector] && !
-                      FreeQ[{c}, UMatrix]) :>
+                  e___] /; (FreeQ[{c}, UVector] && ! FreeQ[{d}, UVector] && 
+                            !FreeQ[{c}, UMatrix]) :>
               tempdot[a, c,
                 d /. UVector[p1_] ->
                     p1[Flatten[
                           Cases[{c}, _uix, Infinity, Heads -> True]][[-1]]],
                 e],(*v.m*)
               tempdot[a___, d_, c__,
-                  e___] /; (FreeQ[{c}, UVector] && ! FreeQ[{d}, UVector] && !
-                      FreeQ[{c}, UMatrix]) :>
+                  e___] /; (FreeQ[{c}, UVector] && ! FreeQ[{d}, UVector] &&
+                            !FreeQ[{c}, UMatrix]) :>
               tempdot[a, c,
                 d /. UVector[p1_] ->
                     p1[Flatten[
@@ -2928,7 +3016,8 @@ iinint[opts___] := (++$IsoIndicesCounter;
       ToExpression[(FreeIsoIndicesString /. Flatten[{opts}] /.
               Options[PhiToFC]) <> ToString[$IsoIndicesCounter]]);
 
-intindicesrules[
+(*Commented out 11/5-2003*)
+(*intindicesrules[
       opts___] := (fi =
         ToExpression[
           FreeIsoIndexString /. Flatten[{opts}] /.
@@ -2963,15 +3052,15 @@ intindicesruleslast1[opts___] :=
               NMPower | Power | NM | Times | Dot | fcdot | IsoDot | IsoCross |
                  IsoSymmetricCross]) :> (fi = fcsuni[iinint[opts]];
         ni = Cases[f, fcsuni[_Integer], Infinity][[1]]; (f /. ni -> fi)*
-          Projection[ni[[1]]][fi]);
+          Projection[ni[[1]]][fi]);*)
 
 PhiToFC[aa_, opts___?OptionQ] :=
     aa /. {(*UGenerator[fcsuni[i_Symbol /; FreeQ[$ConstantIsoIndices, i]],
                       opts___Rule | opts___List] -> 2*fcsunt[fcsuni[i]],*)NM ->
                    fcdot, fcqf[pp__][_] :> fcqf[pp], uix -> fcsuni,
                 SU2Delta -> fcsundel, SU3Delta -> fcsundel, SU2F -> fcsunf,
-                SU3F -> fcsunf, SU3D -> fcsund} /. (Power | NMPower)[
-                p_?(! FreeQ[#, fcsuni|fcexsuni, Infinity, Heads -> True] &), n_] :>
+                SU3F -> fcsunf, SU3D -> fcsund} (*Commented out 11/5-2003*)(*/. (Power | NMPower)[
+                p_?(!FreeQ[#, fcsuni|fcexsuni, Infinity, Heads -> True]&), n_] :>
               Times @@ MapIndexed[pp, Table[p, {n}]] /.
           If[(RemoveIntegerIndices /. Flatten[{opts}] /. Options[PhiToFC]),
             If[(NumerateFree /. Flatten[{opts}] /. Options[PhiToFC]),
@@ -2979,7 +3068,7 @@ PhiToFC[aa_, opts___?OptionQ] :=
         If[(RemoveIntegerIndices /. Flatten[{opts}] /. Options[PhiToFC]),
           If[(NumerateFree /. Flatten[{opts}] /. Options[PhiToFC]),
             intindicesruleslast1[opts], intindicesruleslast[opts]], {}] /.
-      pp[p_, _] -> p;
+      pp[p_, _] -> p*);
 
 
 
@@ -3137,6 +3226,7 @@ DiscardTerms1[l_, opts___Rule] :=
                       Length[retord]}]]) /.
             tempfac[tt___] /; FreeQ[{tt}, nodrop] -> 0 /.
           DropFactor[___] -> 1;
+      UndeclareUScalar[tempfac, ppf];
       If[(CommutatorReduce /. Flatten[{opts}] /. Options[DiscardTerms]),
         ddt // (VerbosePrint[2,
                   "Applying CommutatorReduce"]; CommutatorReduce[#,opts])&, ddt]];
