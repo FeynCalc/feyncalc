@@ -117,11 +117,13 @@ Return[False]];
 (* ------------------------------------------------------------------------------ *)
 (*Generic patching function*)
 
+patchPrint[x__]:=WriteString["stdout", StringJoin@@{x,"\n"}];	
+
 FilePatch[filename_, replacements_List] := 
 (
 (*Read and patch the file*)
 fname = ToFileName[{$FeynArtsDirectory}, filename];
-Print[fname]; str = ""; linelist = {}; foundrev = False; 
+patchPrint[fname]; str = ""; linelist = {}; foundrev = False; 
       strm = OpenRead[fname];
 While[ToString[str] != "EndOfFile", str = Read[strm, String]; str1 = str;
         Do[
@@ -136,7 +138,7 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String]; str1 = str;
                     MetaCharacters -> Automatic], "$1" -> repl]],
 		  {i, 1, Length[replacements]}]; 
         If[ToString[str] != "EndOfFile", 
-          If[str =!= str1, Print["Old: ", str, ", \nNew: ", str1]]; 
+          If[str =!= str1, patchPrint["Old: ", str, ", \nNew: ", str1]]; 
           linelist = Append[linelist, str1]]]; Close[strm];
 (*Write the file*)
 strm = OpenWrite[fname, PageWidth -> Infinity];
@@ -180,7 +182,7 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String];
       Print["This copy of FeynArts has already been patched!"]; 
 *)
 Close[strm]; Return[]]]; 
-  Close[strm], Print["Cannot find FeynArts.m!"]; Close[strm]; Return[]];
+  Close[strm], patchPrint["Cannot find FeynArts.m!"]; Close[strm]; Return[]];
 
 
 (*Launch confirm dialog*)
@@ -191,17 +193,17 @@ If[$ok === True,
           Input["An installation of FeynArts has been found in " <>
     StringReplace[ToString[$FeynArtsDirectory], {"\\" -> "\\\\", "\n" -> ""}] <>
     ". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue (yes/no/abort)?"]],
-        "yes", IgnoreCase -> True], Print["OK, starting.."], 
-      Print["OK, no files have been modified."]; 
+        "yes", IgnoreCase -> True], patchPrint["OK, starting.."], 
+      patchPrint["OK, no files have been modified."]; 
       If[StringMatchQ[test,"abort", IgnoreCase -> True],Abort[],Return[]]], 
-    Print["Your FeynArts installation is not complete or the version you have 
+    patchPrint["Your FeynArts installation is not complete or the version you have 
 cannot be handled by this program"]; Return[]];
 
 
 (* ------------------------------------------------------------------------------ *)
 (*Include the PHI particle patterns and set FeynCalc options*)
 
-Print[ "Altering P$Generic in Setup.m.\n
+patchPrint[ "Altering P$Generic in Setup.m.\n
 
    >Please check that this is actually done. If not, do it manually."];
 strm = OpenAppend[$FeynArtsDirectory <> $PathnameSeparator <> "Setup.m"];
@@ -305,14 +307,14 @@ Do[FilePatch[filelist[[i]], replacelist], {i, 1, Length[filelist]}];
 (* ------------------------------------------------------------------------------ *)
 (* Copy Automatic.gen and Automatic.mod over *)
 
-Print["Installing model files\n"];
+patchPrint["Installing model files\n"];
 
 CopyFile[ToFileName[{$FeynCalcDirectory,"Phi","Extras"},"Automatic.gen"],
          ToFileName[{$FeynArtsDirectory,"Models"},"Automatic.gen"]];
 CopyFile[ToFileName[{$FeynCalcDirectory,"Phi","Extras"},"Automatic.mod"],
          ToFileName[{$FeynArtsDirectory,"Models"},"Automatic.mod"]];
 
-Print["\nFinished!\n"];
+patchPrint["\nFinished!\n"];
 
 );
 
