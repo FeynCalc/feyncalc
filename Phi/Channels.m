@@ -1656,6 +1656,12 @@ IsoToChargedMasses[exp_] :=
                       Infinity]) & /@ $IsoSpinProjectionRules /. 
             seq -> Sequence // Flatten; exp /. subpar];
 
+(*Implementation from notebook:*)
+(*subpar = (((alt @@ ((ParticleMass[##, ___] & @@ #) & /@ (MapAt[(SUNIndex @@ #)&,
+#, {-1}] & /@ Cases[#[[2]], Iso[Alternatives @@ $ParticlesInUse,
+{_Integer}], {0, 3}]))) -> (ParticleMass[#[[1]]])) & /@
+$IsoSpinProjectionRules) /. alt[a_] :> a /. alt :> Alternatives*)
+
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 End[];
