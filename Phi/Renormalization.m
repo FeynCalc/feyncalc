@@ -7,16 +7,10 @@
 (* Author:  Frederik Orellana, fjob@cabocomm.dk
 
 
-   Date:  1/8-2000
+   Creation date:  1/8-2000
 
 
-   Context: HighEnergyPhysics`Phi`ChPTRenormalization`
-
-
-   Package version:  1.2
-
-
-   Mathematica version:  4.0 *)
+   Context: HighEnergyPhysics`Phi`ChPTRenormalization` *)
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -77,15 +71,15 @@ fca0tob0 := fca0tob0 = MakeContext["A0ToB0"];
 (* Defaults *)
 
 
-Options[VeltmanB0] = {fcsmeps -> fcsmeps, B0Evaluation -> LeutwylerJ,
+Options[VeltmanB0] = {fcsmeps -> fcsmeps, B0Evaluation -> "jbar",
       ExpandGammas -> True, FixPoint -> 0, TaylorOrder -> 2,
       fcdim -> D, MassScale -> fcscmu,
       fcint -> IntegrateHeld, DimensionExpand -> SpaceTimeDimensions,
-      ExplicitLeutwylerJBar -> False, ExplicitLeutwylerJ0 -> False,
+      LeutwylerJBarEvaluation -> "none", ExplicitLeutwylerJ0 -> False,
       ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> False};
-Options[VeltmanC0] = {fcsmeps -> fcsmeps, C0Evaluation -> Spence,
+Options[VeltmanC0] = {fcsmeps -> fcsmeps, C0Evaluation -> "Spence",
       fcint -> NIntegrate};
-Options[VeltmanD0] = {fcsmeps -> fcsmeps, D0Evaluation -> Spence,
+Options[VeltmanD0] = {fcsmeps -> fcsmeps, D0Evaluation -> "Spence",
       fcint -> NIntegrate};
 Options[FeynmanIntegral] = {fcsmeps -> fcsmeps,
       fcint -> IntegrateHeld};
@@ -94,12 +88,12 @@ Options[DimensionExpand] = {fcdim -> SpaceTimeDimensions, FixPoint -> 4,
       TaylorOrder -> 1};
 Options[ExpandGammas] = {FixPoint -> 0, TaylorOrder -> 2, fcdim -> D};
 Options[VeltmanExpand] = {(*fcdim -> D, MassScale -> fcscmu,
-      ExplicitLeutwylerLambda -> False, ExplicitLeutwylerJBar -> False,
+      ExplicitLeutwylerLambda -> False, LeutwylerJBarEvaluation -> "none",
       ExplicitLeutwylerSigma -> False, ExplicitLeutwylerJ0 -> False,
       fcsmeps -> fcsmeps,
       ExpandGammas -> True, DimensionExpand -> False, FixPoint -> 0,
-      TaylorOrder -> 2, B0Evaluation -> LeutwylerJ, C0Evaluation -> None,
-      D0Evaluation -> None,*) fcint -> IntegrateHeld,
+      TaylorOrder -> 2, B0Evaluation -> "jbar", C0Evaluation -> "none",
+      D0Evaluation -> "none",*) fcint -> IntegrateHeld,
       OnMassShell -> False, MomentumVariablesString -> "p",
       Masses -> {ParticleMass[Pion, RenormalizationState[0]],
           ParticleMass[Pion, RenormalizationState[0]],
@@ -110,14 +104,14 @@ Options[LeutwylerLambda] = {fcdim -> D,
 Options[LeutwylerJ0] = {MassScale -> fcscmu, ExplicitLeutwylerJ0 -> False,
       ExplicitLeutwylerLambda -> False};
 Options[LeutwylerSigma] = {ExplicitLeutwylerSigma -> False};
-Options[LeutwylerJBar] = {ExplicitLeutwylerJBar -> False,
+Options[LeutwylerJBar] = {LeutwylerJBarEvaluation -> "none",
       ExplicitLeutwylerSigma -> False};
 Options[Renormalize] = {fcsunn -> 2, InfinityFactor -> LeutwylerLambda[],
       RenormalizationCoefficientFunction[fccoupl[lag_, n_, ___]] :>
         RenormalizationCoefficients[lag][[n]]};
 Options[FeynmanParameterize] = {fcdim -> D,
       fcint ->
-      (Dot[HighEnergyPhysics`FeynCalc`Integratedx`Integratedx@@#2, #1] &),
+      (DOT[HighEnergyPhysics`FeynCalc`Integratedx`Integratedx@@#2, #1] &),
       fcfpana -> Automatic
       (*Compatibility with FeynmanParametrize:*)
       (*{Global`x,Global`y,Global`z, Global`\[Alpha]1,
@@ -176,11 +170,11 @@ FeynmanIntegral[p10_, m10_, m20_, n1_, n2_, d_, d1_,
 
 VeltmanB0[p10_, m10_, m20_,
         opts___?OptionQ] /; (B0Evaluation /. Flatten[{opts}] /. Options[VeltmanB0]) ===
-         None := fcb0[p10, m10, m20];
+         "none" := fcb0[p10, m10, m20];
 
 VeltmanB0[p10_, m10_, m20_,
         opts___?OptionQ] /; (B0Evaluation /. Flatten[{opts}] /. Options[VeltmanB0]) ===
-         Direct1 := (
+         "direct1" := (
         bdi = fcdim /. Flatten[{opts}] /. Options[VeltmanB0];
         dedi = DimensionExpand /. Flatten[{opts}] /. Options[VeltmanB0];
         dedim = If[dedi, bdi, bdi, dedi];
@@ -199,10 +193,10 @@ VeltmanB0[p10_, m10_, m20_,
                     Options[VeltmanB0]), (TaylorOrder /. Flatten[{opts}] /.
                     Options[VeltmanB0])], {}];
       If[(DimensionExpand /. Flatten[{opts}] /. Options[VeltmanB0]) =!= False,
-            Evaluate[DimensionExpand[iib0, fcdim->dedim,opts]], iib0] /.
+            Evaluate[DimensionExpand[iib0, fcdim->dedim, opts]], iib0] /.
           IntegrateHeld -> (fcint /. Flatten[{opts}] /.
-                Options[VeltmanB0]) /.
-        If[dedi =!= False && dedi =!= True, dedim -> bdi, {}]);
+                Options[VeltmanB0]) (*Why? 26/2-2003*)(*/.
+        If[dedi =!= False && dedi =!= True, dedim -> bdi, {}]*));
 
 
 (* Expansion of the Gamma functions of (D-4) around 0 starting with the term
@@ -244,48 +238,75 @@ Gasser and Leutwyler (1983), "Chiral Perturbation Theory to One Loop", Ann.
 Phys. 158, 142-210 by *)
 
 VeltmanB0[s_, m1s_, m1s_, opts___?OptionQ] /; (B0Evaluation /. Flatten[{opts}] /.
-            Options[VeltmanB0]) === LeutwylerJ :=
+            Options[VeltmanB0]) === "jbar" :=
      (16*Pi^2)*(
      LeutwylerJBar[s, m1s, Sequence@@OptionsSelect[LeutwylerJBar, opts]] +
      LeutwylerJ0[m1s, Sequence@@OptionsSelect[LeutwylerJ0, opts]]);
 
 
-(* Added 3/3-2000. From J.Gasser and H. Leutwyler (1985), Nuclear Physics B250,
-465-516: *)
+(* From J.Gasser and H. Leutwyler (1985), Nuclear Physics B250,
+   465-516: *)
 
 VeltmanB0[s_, m1s_, m2s_, opts___?OptionQ] /; (B0Evaluation /. Flatten[{opts}] /.
-            Options[VeltmanB0]) === LeutwylerJ :=
+            Options[VeltmanB0]) === "jbar" :=
           (16*Pi^2)*(
           LeutwylerJBar[s, m1s, m2s, Sequence@@OptionsSelect[LeutwylerJBar, opts]] +
           LeutwylerJ0[m1s, m2s, Sequence@@OptionsSelect[LeutwylerJ0, opts]]);
 
 
 (* Everything below is taken directly from Gasser and Leutwyler (no additional
-factors): *)
-
-(* NOTICE: The J-functions are below-threshold expressions. Should be generalized!*)
+   factors): *)
 
 LeutwylerJBar[0, __, opts___Rule] := 0;
 
 LeutwylerJBar[s_, m1s_, opts___Rule] /;
-    (s =!= 0 && (ExplicitLeutwylerJBar /. Flatten[{opts}] /.
-              Options[LeutwylerJBar])) :=
-    1/(16*Pi^2)*(LeutwylerSigma[s, m1s, ##]& @@ OptionsSelect[LeutwylerSigma, opts]*
-            Log[(LeutwylerSigma[s, m1s, ##]& @@ OptionsSelect[LeutwylerSigma, opts] - 1)/
-   (LeutwylerSigma[s, m1s, ##]& @@ OptionsSelect[LeutwylerSigma, opts] + 1)] + 2);
-
+    (s =!= 0 && MemberQ[{"subthreshold", "physical", "general"},
+     (LeutwylerJBarEvaluation /. Flatten[{opts}] /.
+                               Options[LeutwylerJBar])]) :=
+    1/(16*Pi^2)*(sig*Log[(sig - 1)/(sig + 1)] + 2) /.
+    sig -> (LeutwylerSigma[s, m1s, ##]& @@ OptionsSelect[LeutwylerSigma, opts]);
 
 (* Added 3/3-2000. From J.Gasser and H. Leutwyler (1985), Nuclear Physics B250,
-465-516: *)
+   465-516: *)
 
 LeutwylerJBar[s_, m1s_, m2s_, opts___Rule] /;
-    (s =!= 0 && (ExplicitLeutwylerJBar /. Flatten[{opts}] /.
-              Options[LeutwylerJBar])) :=
+    (s =!= 0 && ((LeutwylerJBarEvaluation /. Flatten[{opts}] /.
+              Options[LeutwylerJBar]) === "subthreshold")) :=
     1/(32*Pi^2)*(2 + delta/s*Log[m2s/m1s] - sigma/delta*Log[m2s/m1s] -
     nu/s*Log[((s + nu)^2 - delta^2)/((s - nu)^2 - delta^2)]) /.
         {delta -> m1s - m2s, sigma -> m1s + m2s,
         nu -> Sqrt[(s - (Sqrt[m1s] + Sqrt[m2s])^2)(s - (Sqrt[m1s] -
                         Sqrt[m2s])^2)]};
+
+(* JBar is defined by having the imaginary part equal to Pi/16 times the phase space,
+   see e.g. Knecht&Urech 1997 *)
+
+LeutwylerJBar[s_, m1s_, m2s_, opts___Rule] /;
+    (s =!= 0 && ((LeutwylerJBarEvaluation /. Flatten[{opts}] /.
+              Options[LeutwylerJBar]) === "physical")) :=
+    1/(32*Pi^2)*(2 + delta/s*Log[m2s/m1s] - sigma/delta*Log[m2s/m1s] +
+    nu/s*Log[((s - nu)^2 - delta^2)/((s + nu)^2 - delta^2)] +
+    2*Pi*I*nu/s) /.
+        {delta -> m1s - m2s, sigma -> m1s + m2s,
+        nu -> Sqrt[(s - (Sqrt[m1s] + Sqrt[m2s])^2)(s - (Sqrt[m1s] -
+                        Sqrt[m2s])^2)]};
+
+(*Gasser&Leutwyler (A.7) can be integrated explicitly by Mathematica*)
+(*g[m12_, m22_, x_, s_] := m12 - s x(1 - x) - (m12 - m22)x;
+-(16\[Pi]^2)^(-1)Integrate[
+      Log[g[m12, m22, x, s]/g[m12, m22, x, 0]], {x, 0, 1}] // FullSimplify*)
+
+LeutwylerJBar[s_, m1s_, m2s_, opts___Rule] /;
+    (s =!= 0 && ((LeutwylerJBarEvaluation /. Flatten[{opts}] /.
+              Options[LeutwylerJBar]) === "general")) :=
+((-(m1s - m2s)^2 + (m1s + m2s)*s)*Log[-m1s] + ((m1s - m2s)^2 - (m1s + m2s)*s)*Log[-m2s] + 
+  (m1s - m2s)*(2*s + I*Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]*
+     (Log[1 - (I*(m1s - m2s - s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] - 
+      Log[1 + (I*(m1s - m2s - s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] - 
+      Log[1 - (I*(m1s - m2s + s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] + 
+      Log[1 + (I*(m1s - m2s + s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]])))/
+ (32*(m1s - m2s)*Pi^2*s);
+
 
 LeutwylerJ0[s_, opts___Rule] /;
     (ExplicitLeutwylerJ0 /. Flatten[{opts}] /.
@@ -296,7 +317,7 @@ LeutwylerJ0[s_, opts___Rule] /;
 
 
 (* Added 3/3-2000. From J.Gasser and H. Leutwyler (1985), Nuclear Physics B250,
-465-516: *)
+   465-516: *)
 
 LeutwylerJ0[m1s_, m2s_, opts___Rule] /; (ExplicitLeutwylerJ0 /. Flatten[{opts}] /.
           Options[LeutwylerJ0]) :=
@@ -330,7 +351,7 @@ LeutwylerLambda[opts___Rule | opts___List] /;
 
 VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         None := fcc0[p10, p20, p12, m10, m20, m30];
+         "none" := fcc0[p10, p20, p12, m10, m20, m30];
 
 Spence[x_] := PolyLog[2, x];
 
@@ -362,7 +383,7 @@ veff[m30_, eps_] := m30 - I*eps;
 
 VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Direct1 :=
+         "direct1" :=
     Block[{a = veaa[p20], b = vebb[p10], c = vecc[p10, p20, p12],
         d = vedd[p20, m20, m30], e = veee[p10, p12, p20, m10, m20],
         eps = (fcsmeps /. Flatten[{opts}] /. Options[VeltmanC0]),
@@ -379,7 +400,7 @@ VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
 
 VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Direct2 :=
+         "direct2" :=
     Block[{a = veaa[p20], b = vebb[p10], c = vecc[p10, p20, p12],
         d = vedd[p20, m20, m30], e = veee[p10, p12, p20, m10, m20],
         eps = (fcsmeps /. Flatten[{opts}] /. Options[VeltmanC0]),
@@ -404,7 +425,7 @@ VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
 
 VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Direct3 :=
+         "direct3" :=
     Block[{a = veaa[p20], b = vebb[p10], c = vecc[p10, p20, p12],
         d = vedd[p20, m20, m30], e = veee[p10, p12, p20, m10, m20],
         eps = (fcsmeps /. Flatten[{opts}] /. Options[VeltmanC0]),
@@ -468,7 +489,7 @@ validity - ", imzero2]]];
 
 VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Spence :=
+         "Spence" :=
     Block[{a = veaa[p20], b = vebb[p10], c = vecc[p10, p20, p12],
         d = vedd[p20, m20, m30], e = veee[p10, p12, p20, m10, m20],
         eps = (fcsmeps /. Flatten[{opts}] /. Options[VeltmanC0]),
@@ -528,7 +549,7 @@ s33[a_, b_, c_, y0_, opts___] :=
 
 VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Direct4 :=
+         "direct4" :=
     Block[{a = veaa[p20], b = vebb[p10], c = vecc[p10, p20, p12],
         d = vedd[p20, m20, m30], e = veee[p10, p12, p20, m10, m20],
         eps = (fcsmeps /. Flatten[{opts}] /. Options[VeltmanC0]),
@@ -547,7 +568,7 @@ VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
 
 VeltmanC0[mmm10_, mmm30_, ss_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Infrared := If[mmm10=!=m10 || mmm30=!=m30, Message[VeltmanC0::nodef],
+         "infrared" := If[mmm10=!=m10 || mmm30=!=m30, Message[VeltmanC0::nodef],
     Block[{s,y1,y2,eps,f1,f2,res,yy1,yy2},s = -ss; 
         yy1 = alpha[-s, (s + m30 - m10), m10, 2];
         yy2 = alpha[-s, (s + m30 - m10), m10, 1];
@@ -568,7 +589,7 @@ VeltmanC0[mmm10_, mmm30_, ss_, m10_, m20_, m30_,
 
 VeltmanC0[mm10_,mm30_,s_,m10_,m20_,m30_,
         opts___?OptionQ]/;(C0Evaluation/.Flatten[{opts}]/.Options[VeltmanC0])===
-        Infrared1:=
+        "infrared1":=
     If[Union[{mm10,mm30,m10,m30}]=!={m10},Message[VeltmanC0::nodef1],
       Block[{sig},sig=
             LeutwylerSigma[s,m10,
@@ -581,7 +602,7 @@ VeltmanC0[mm10_,mm30_,s_,m10_,m20_,m30_,
 
 VeltmanC0[mm10_,mm30_,s_,m10_,m20_,m30_,
         opts___?OptionQ]/;(C0Evaluation/.Flatten[{opts}]/.Options[VeltmanC0])===
-        Infrared2:=
+        "infrared2":=
     If[Union[{mm10,mm30,m10,m30}]=!={m10},Message[VeltmanC0::nodef1],
       Block[{sig},sig=
             LeutwylerSigma[s,m10,
@@ -601,7 +622,7 @@ VeltmanC0[mm10_,mm30_,s_,m10_,m20_,m30_,
 
 VeltmanD0[p10_, p20_, p30_, p12_, p13_, p23_, m10_, m20_, m30_, m40_,
         opts___] /; (D0Evaluation /. Flatten[{opts}] /. Options[VeltmanD0]) ===
-         None := fcd0[p10, p20, p30, p12, p13, p23, m10, m20, m30, m40];
+         "none" := fcd0[p10, p20, p30, p12, p13, p23, m10, m20, m30, m40];
 
 
 (* In the following, p10,... are the p1^2,... appearing in the 't Hooft and
@@ -673,7 +694,7 @@ seems to improve agreement with FF: *)
 
 VeltmanD0[pf10_, pf20_, pf30_, pp10_, pp20_, pp30_, m10_, m20_, m30_, m40_,
         opts___] /; (D0Evaluation /. Flatten[{opts}] /. Options[VeltmanD0]) ===
-         VeltmanC0 :=
+         "C0" :=
     Block[{$MaxExtraPrecision =
           4000,(*The minus (from the Bjoerken -
                 Drell metric (-1, -1, -1, 1)) is put on here :*)p10 = pf10,
@@ -820,7 +841,7 @@ FeynCalc input momenta: *)
 
 VeltmanD0[pf10_, pf20_, pf30_, pp10_, pp20_, pp30_, m10_, m20_, m30_, m40_,
         opts___] /; (D0Evaluation /. Flatten[{opts}] /. Options[VeltmanD0]) ===
-         Spence :=
+         "Spence" :=
     Block[{(*The minus (from the Bjoerken -
                 Drell metric (-1, -1, -1, 1)) is put on here :*)p10 = pf10,
         p20 = -pf20, p30 = -pf30, p12 = -(pp20 - p10 - p20)/2,
@@ -943,7 +964,7 @@ VeltmanD0[pf10_, pf20_, pf30_, pp10_, pp20_, pp30_, m10_, m20_, m30_, m40_,
 
 VeltmanD0[pf10_, pf20_, pf30_, pp10_, pp20_, pp30_, m10_, m20_, m30_, m40_,
         opts___] /; (D0Evaluation /. Flatten[{opts}] /. Options[VeltmanD0]) ===
-         Direct1 :=
+         "direct1" :=
     Block[{(*The minus (from the Bjoerken -
                 Drell metric (-1, -1, -1, 1)) is put on here :*)p10 = pf10,
         p20 = -pf20, p30 = -pf30, p12 = -(pp20 - p10 - p20)/2,
@@ -1131,7 +1152,6 @@ privatefeyparamter[
         power, coefficientlist, ell, ellnumerator, elldenominator, msquared,
         msquaredminusellsquared, numerator, eyezero, alphaenn},
 
-(*F.Orellana*)
 Attributes[g] = {Orderless};
 
 g[x_, y_]*g[x_, z_] ^:= g[y, z] /;  ! NumberQ[x];
@@ -1144,7 +1164,7 @@ g /: g[x_, y_]^2 := dimension /;  ! NumberQ[x];
 g[x_, x_] := dimension /;  ! NumberQ[x];
 
 
-(* F.Orellana - pick out the FeynAmpdenominator and group identical
+(* Pick out the FeynAmpdenominator and group identical
    PropagatorDenominators*)
 
       denominator = ((List @@ ex) //.
@@ -1185,7 +1205,7 @@ over which we're integrating (kay). *)
       VerbosePrint[3,"Denominator after power fixing: ", denom];
 
 
-(* F.Orellana - Expand each term in the denominator. *)
+(* Expand each term in the denominator. *)
 
       denom = Map[Expand[#1 //. fcpd[a_, b_] :> a^2 - b^2] & , denom,
           2];
@@ -1225,7 +1245,6 @@ with a not equal to 1, divide this term by a. *)
 
  VerbosePrint[3,"Masses squared: ", StandardForm[msquared,msquaredminusellsquared]];
 
-(*F.Orellana*)
       numerator =
         Expand[fcmomcomb[Times[num]]/.
          fcpa[fcmom[mom1_,___],fcmom[mom2_,___]] :>
@@ -1473,7 +1492,7 @@ VeltmanExpand[amp_, opts___?OptionQ] := (
                 VeltmanD0[p10, p12, p23, p30, p20, p13, m10, m20, m30, m40, ##]& @@
                 OptionsSelect[VeltmanD0, opts, Sequence @@ 
                                                Select[Options[VeltmanExpand], FreeQ[#,fcint]&]]} /.
-              LeutwylerJ -> Direct1 /.
+              (B0Evaluation -> "jbar") :> (B0Evaluation -> "direct1") /.
               If[(OnMassShell /. Flatten[{opts}] /. Options[VeltmanExpand]),
                 Table[fcpa[fcmom[mv[irep], ___], fcmom[mv[irep], ___]] ->
                 masses1[irep]^2, {irep, Length[(Masses /. Flatten[{opts}] /.
