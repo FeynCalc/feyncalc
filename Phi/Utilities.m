@@ -60,6 +60,7 @@ ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
 SUNIndex := SUNIndex = MakeContext["SUNIndex"];
 ScaleMu := ScaleMu = MakeContext["ScaleMu"];
 CouplingConstant := CouplingConstant = MakeContext["CouplingConstant"];
+CheckF := CheckF = MakeContext["CheckF"];
 
 (* Tracer functions *)
 
@@ -87,10 +88,6 @@ Options[GammaSort] = {Gamma5AntiCommute -> False,
 Options[DiscardOrders] = {PerturbationOrder -> 4, DiscardMomenta -> True,
       ScalarProductForm -> MomentaScalarProduct};
 Options[FCToTracer] := {TracerIndicesString -> "l"};
-Options[CheckF] = {Directory ->
-        (*Directory[]*)
-ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,"Phi"}, "Storage"],
-ForceSave -> False, NoSave -> False};
 Options[SurfaceReduce] = {DifferenceOrder -> 2, UFields -> UPerturbation};
 Options[UReduce] = {SMMToMM -> False, FullReduce -> True, fcsunn -> 2, UDimension -> Automatic};
 Options[SMMToMM] = {fcsunn -> 2};
@@ -577,87 +574,6 @@ DiscardOrders[am_, opts___] /; FreeQ[am, WFFactor1] :=
           ditchmom[]^i_ /;
               i > (PerturbationOrder + 2 /. Flatten[{opts}] /.
                     Options[DiscardOrders]) -> 0 /. ditchmom[] -> 1);
-
-(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-(********************************************************************************)
-(* Evaluation using stored results *)
-(********************************************************************************)
-(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
-eliminateDoubles[s_String] :=
-    Block[{str},
-      str = FixedPoint[
-          StringReplace[#,
-              Evaluate[$PathnameSeparator <> $PathnameSeparator] ->
-                Evaluate[$PathnameSeparator]] &, s];
-      If[StringMatchQ[str, "*" <> $PathnameSeparator], StringDrop[str, -1],
-        str]];
-
-
-SetAttributes[CheckF, HoldFirst];
-
-CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
-    Block[{dir, file, finex, fs, ns},
-
-      If[StringQ[fi] =!= True, Message[CheckF::nostring, fi];
-        Return[ex]];
-
-      Which[
-         StringMatchQ[fi,"*.Gen"]===True||StringMatchQ[fi,"*.Mod"]===True,
-           dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
-	       $PathnameSeparator <>
-	       "Phi" <> $PathnameSeparator <> "CouplingVectors"],
-          StringMatchQ[fi,"*.Fac"]===True || StringMatchQ[fi,"*.Mass"]===True,
-           dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
-	       $PathnameSeparator <>
-	       "Phi" <> $PathnameSeparator <> "Factors"],
-	    True,
-          dir = (Directory /. Flatten[{opts}] /. Options[CheckF])
-      ];
-
-      Which[
-
-        (*File name given with full path*)
-        DirectoryName[fi] =!= "",
-        If[FileType[DirectoryName[fi]] === Directory, file = fi],
-
-        (*Directory specified ok*)
-        FileType[dir] === Directory,
-        file = eliminateDoubles[dir <> $PathnameSeparator <> fi],
-
-        (*Directory specified not ok, try Directory[]*)
-
-        FileType[eliminateDoubles[Directory[] <> $PathnameSeparator <> dir]] ===
-           Directory,
-        file = eliminateDoubles[
-              Directory[] <> $PathnameSeparator <> dir <> $PathnameSeparator <>
-                 fi,
-
-              True, (Message[CheckF::baddir, dir]; Return[ex])];
-
-        ];
-
-      VerbosePrint[1, "Using file name " <> file];
-
-      fs=(ForceSave/.Flatten[{opts}]/.Options[CheckF]);
-      ns=(NoSave/.Flatten[{opts}]/.Options[CheckF]);
-
-      If[FileType[file] === None || fs === True,
-      If[FileType[file] === None,
-        VerbosePrint[1, "File does not exist, evaluating"],
-        If[fs,VerbosePrint[1, "File exists, force evaluating"]]];
-        finex = Evaluate[ReleaseHold[ex]];
-        If[ns,
-          VerbosePrint[1, "NoSave set to True, will evaluate but not save"],
-          VerbosePrint[1, "Saving"];
-          Put[finex, file]],
-      VerbosePrint[1, "File exists, loading"];
-        finex = Get[file]
-      ];
-
-      finex
-
-      ];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)

@@ -84,29 +84,6 @@ TracerToFC::"usage" =
     "TracerToFC[exp] translates the expression exp traced with Tracer to \
 FeynCalc notation.";
 
-CheckF::"usage" = 
-    "CheckF[exp,fil] does the following:  Checks if the setting of the option Directory \
-is a valid directory name and if fil is a valid file name.  \
-Checks if file exists.  If it does, Get's \
-fil and returns the loaded expressions.  If fil does not exist, evaluates exp, saves it \
-to fil and returns the evaluated exp.  NOTICE : If fil ends with \".Gen\" or \".Mod\", \
-the setting of Directory is ignored and fil is saved in the \"CouplingVectors\" \
-subdirectory of \"phi\".  If fil ends with \".Fac\", \
-the setting of Directory is ignored and fil is saved in the \"Factors\" \
-subdirectory of \"phi\". If fil is a file name with full path, the setting of Directory \
-is also ignored.";
-
-ForceSave::"usage" = 
-    "ForceSave is an option of CheckF. Setting it to True forces the first argument to \
-be evaluated and saved, no matter if the file specified by the second argument exists \
-or not.  Default value : False.";
-
-NoSave::"usage" = 
-    "NoSave is an option of CheckF. If set to True, no results will be saved to disk. \
-It is there to allow \
-evaluating notebooks using CheckF without having to worry about overwriting old results \
-(SetOptions[CheckF,NoSave->True]).  Default value : False.";
-
 CharacteristicCoefficient::"usage" = 
     "CharacteristicCoefficient[a,opts][i] returns the i'th coefficient of the \
 characteristic polynomial of the square matrix a expressed in terms of traces of powers \
@@ -218,11 +195,6 @@ MandelstamU /: MakeBoxes[MandelstamU, TraditionalForm] :=
 Errors
 *)
 
-CheckF::nostring = 
-    "`1` is not a string.  Please give the file name as a string.";
-CheckF::baddir = 
-    "`1` is not a valid directory.  Please set the option Directory \
-correctly.";
 CayleyHamilton::baddim = 
     "Warning: You are requesting using Cayley-Hamilton on a sum with \
 a number of terms that does not agree with the dimension of the matrices. The \

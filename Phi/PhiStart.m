@@ -201,6 +201,10 @@ UNMSplit, that is, for UNMSplit to work, the 'extra' part apart from the \
 derivative of CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] should not \
 have a meson-field dependence.";
    
+   SetOptions[CheckF, Directory ->
+   ToFileName[{$FeynCalcDirectory,"Phi"}, "Storage"],
+   ForceSave -> False, NoSave -> False, Check -> False];
+
    SetOptions[ILimit, FunctionLimits -> {Log -> Log, 
    LeutwylerJBar -> (LeutwylerJBar[
    Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
