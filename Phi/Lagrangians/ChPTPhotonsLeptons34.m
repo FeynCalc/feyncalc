@@ -458,7 +458,7 @@ NM[FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],LorentzIndex[\[Nu]
 FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]+
 
 (* Lepton terms *)
-CouplingConstant[QED[1]]*
+CouplingConstant[QED[1]]^2*
 (
 XX1[0]*DecayConstant[PhiMeson]^2*
 NM[DOT[DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
