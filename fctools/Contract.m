@@ -469,14 +469,14 @@ tim = TimeUsed[];
   
 (*epscondef*)
   epscon/: epscon[a1_,a2_,a3_,a4_]^n_Integer?Positive :=  (   (
-           ( -Det[{{sCO[a1,a1],sCO[a1,a2],sCO[a1,a3],sCO[a1,a4]},
+           ( - ($LeviCivitaSign)^2 Det[{{sCO[a1,a1],sCO[a1,a2],sCO[a1,a3],sCO[a1,a4]},
                    {sCO[a2,a1],sCO[a2,a2],sCO[a2,a3],sCO[a2,a4]},
                     {sCO[a3,a1],sCO[a3,a2],sCO[a3,a3],sCO[a3,a4]},
                     {sCO[a4,a1],sCO[a4,a2],sCO[a4,a3],sCO[a4,a4]}}
                   ]//Expand
            )/.sCO->Pair ) epscon[a1,a2,a3,a4]^(n-2) );
   epscon/: epscon[a1_,a2_,a3_,a4_] epscon[b1_,b2_,b3_,b4_] :=
-           ( -Det[{{sCO[a1,b1],sCO[a1,b2],sCO[a1,b3],sCO[a1,b4]},
+           ( - ($LeviCivitaSign)^2 Det[{{sCO[a1,b1],sCO[a1,b2],sCO[a1,b3],sCO[a1,b4]},
                    {sCO[a2,b1],sCO[a2,b2],sCO[a2,b3],sCO[a2,b4]},
                    {sCO[a3,b1],sCO[a3,b2],sCO[a3,b3],sCO[a3,b4]},
                    {sCO[a4,b1],sCO[a4,b2],sCO[a4,b3],sCO[a4,b4]}}
@@ -573,7 +573,7 @@ If[$VeryVerbose > 0, Print["check1"]];
           If[ (contractepsopt===True) && (!FreeQ[ contractres,Eps ]),
               contractres = contractres//EpsEvaluate//EpsEvaluate
             ];
-Global`CCC3=contractres;
+(*Global`CCC3=contractres;*)
           contractres = contractres /. Pair->sCOS /. 
                                       sCOS -> sCO /.sCO->Pair;
 (*
