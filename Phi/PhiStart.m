@@ -70,6 +70,7 @@ VariableBoxes["i",ParticlesNumber->12];
 VariableBoxes["I",ParticlesNumber->12];
 VariableBoxes["n",ParticlesNumber->12];
 VariableBoxes["j",ParticlesNumber->12];
+VariableBoxes["k",ParticlesNumber->12];
 VariableBoxes["\[Mu]",ParticlesNumber->12];
 
 k/: Format[k,TraditionalForm] :=
