@@ -1750,6 +1750,18 @@ faopts = Sequence@@Select[OptionsSelect[facrfa, opts], FreeQ[#, faal]&];
     FAToFC[facrfa[amp, faal -> facl, faopts], opts]] //.
 
         {propGamma[ mom_, a_] :> fcdiga[ mom ] + a,
+	(*Support explicit setting the renormalization state of spinors of
+	external particles. This should be done by modifying
+	HighEnergyPhysics`Phi`Couplings`GenProps in the relevant .conf file.
+	Suggested by Paul Buettiker July 2004.*)
+         propSpinor[mom_, a_, b___, i___RenormalizationState,
+                   j___RenormalizationScheme, k___ExpansionState] :> (fads[mom, a, b] /.
+           {ParticleMass[p_, _RenormalizationState, r___] ->
+            ParticleMass[p, i, r]} /.
+            ParticleMass[p__, _RenormalizationScheme, r___] ->
+            ParticleMass[p, j, r] /.
+            ParticleMass[p__, _ExpansionState, r___] ->
+            ParticleMass[p, k, r]),
          propSpinor[mom_, a_, b___] :> fads[mom, a, b]}
 
 ];
