@@ -1246,8 +1246,11 @@ If[traceev =!= (fcdtrev /. Options[FAToFC]),
      fcli[fcli[mu_, d___], dd___] :> fcli[mu,Sequence@@Union[{d},{dd}]];
 
 DoSumOver[exp_, opts___Rule] := 
-  Block[{rr},
-    exp //. Times[f__, faso[i_, r_, ___]] :>          
+  Block[{rr, res, suminds},
+  (*Apart is to avoid summing sub-factors and leaving other factors with
+    SUNIndices untouched. No guarantee however.*)
+    suminds = Union[(#[[1]])& /@ Cases[exp, faso[__], Infinity, Heads->True]];
+    res= Apart[exp] //. Times[f__, faso[i_, r_, ___]] :>          
           (If[Head[r] =!= List, 
             VerbosePrint[2, "Summing ", i, " from 1 to ", r];
             rr = Range[1, r],
@@ -1256,7 +1259,11 @@ DoSumOver[exp_, opts___Rule] :=
             rr = r];
             Plus @@ ((Times[f] /. i -> #)& /@
             Select[rr, !MatchQ[(#/.fcsuni|fcexsuni->Identity),
-                       Alternatives @@ (Drop/.{opts}/.Options[DoSumOver])]&]))];
+                       Alternatives @@ (Drop/.{opts}/.Options[DoSumOver])]&]));
+    If[FreeQ[res, Alternatives@@suminds],
+         res,
+         Message[DoSumOver::"indleft", suminds]; res]
+];
 
 DeltaFunctionsCollect[ampf__, opts___] :=
     Collect[ampf,

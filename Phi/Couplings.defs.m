@@ -453,3 +453,8 @@ VerticesSpecifications::"oddferm"=
 CheckCouplingSign::"nosym" = 
     "Warning: There is a problem with the generic coupling vector `1`. It is \
 neither symmetric nor antisymmetric under the following permutations: `2`.";
+
+DoSumOver::"indleft" = 
+    "Warning: There still seem to be indices `1` left that should have been summed.  \
+ Please check.";
+
