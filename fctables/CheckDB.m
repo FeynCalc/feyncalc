@@ -53,7 +53,7 @@ Begin["`Private`"];
 
 (* ------------------------------------------------------------------------ *)
 
-Options[CheckDB] = {Directory -> ToFileName[{$FeynCalcDirectory}, "fcdb"],
+Options[CheckDB] = {Directory :> ToFileName[{$FeynCalcDirectory}, "fcdb"],
     ForceSave -> False, NoSave -> False, Check -> False};
 
 (* ------------------------------------------------------------------------ *)
