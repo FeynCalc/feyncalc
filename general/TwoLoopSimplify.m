@@ -10,14 +10,14 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`TwoLoopSimplify`",
+BeginPackage["HighEnergyPhysics`fcloops`TwoLoopSimplify`",
              "HighEnergyPhysics`FeynCalc`"];
 
-TwoLoopSimplify::usage= 
-"TwoLoopSimplify[amplitude,{qu1,qu2}] simplifies the 2-loop amplitude 
-(qu1 and qu2 denote the integration momenta). 
-TwoLoopSimplify[amplitude] transforms to 
-TwoLoopSimplify[amplitude, {Global`q1, Global`q2}], i.e., 
+TwoLoopSimplify::"usage"= 
+"TwoLoopSimplify[amplitude,{qu1,qu2}] simplifies the 2-loop amplitude
+(qu1 and qu2 denote the integration momenta).
+TwoLoopSimplify[amplitude] transforms to
+TwoLoopSimplify[amplitude, {Global`q1, Global`q2}], i.e.,
 the integration momenta in amplitude must be named q1 and q2.";
 
 (* ------------------------------------------------------------------------ *)
@@ -31,7 +31,7 @@ ChangeDimension, Collect2,
 Contract, Dimension, 
 DiracOrder,
 DiracSimplify,
-DiracTrace, DOT,
+DiracTrace,
 Eps,
 EpsContract,
 EpsEvaluate,
@@ -216,8 +216,8 @@ t9 = ScalarProductCancel[t9, q1, q2, Collecting -> False];
 If[(!FreeQ[t9,DiracTrace]) && Head[t9]===Plus,
    t9 = Select1[t9, DiracTrace] +
         Tr2[Select2[t9,DiracTrace]/.DiracTrace->DiracOrder];
-   t9 = t9/. DiracTrace[Eps[bb__] aa__Dot] :> (
-             Eps[bb] DiracTrace[aa])
+   t9 = t9/. DiracTrace[Eps[bb__] DOT[aa_,aa1__]] :> (
+             Eps[bb] DiracTrace[DOT[aa,aa1]])
   ];
 
 fastneglect[a___,PropagatorDenominator[Momentum[q2,D],0]..,b___] :=
