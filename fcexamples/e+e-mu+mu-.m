@@ -23,7 +23,7 @@ r = Contract[M2];
 Bracket e,s  
 statement of the FORM example
 *) 
-Print["the result is: ", res = Collect3[r, {e, s}]];
+Print["the result is: ", res = Collect[r, {e, s}, Factor2]];
 
 Print["calculation time used  = ", AbsoluteTime[]-starttime]
 
