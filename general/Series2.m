@@ -1445,6 +1445,19 @@ HypergeometricPFQ[{1, opem_, Epsilon/2 + opem_},
          6*PolyGamma[0, opem]*(2*EulerGamma + PolyGamma[0, opem]) + 
          18*PolyGamma[1, opem] - 12*SumS[1, 1, -1 + opem]))/24 +
     Epsilon^2 F32CHECK2
+,
+Hypergeometric2F1[1, -Epsilon, 1 + Epsilon, z_] :> 
+(com["SH2"];
+ 1 + Epsilon^2*Zeta2 + Epsilon*Log[1 - z] + 
+  2*Epsilon^3*Zeta2*Log[1 - z] + Epsilon^2*Log[1 - z]^2 + 
+  (2*Epsilon^3*Log[1 - z]^3)/3 - Epsilon^3*Zeta2*Log[z] - 
+  Epsilon^2*Log[1 - z]*Log[z] - Epsilon^3*Log[1 - z]^2*Log[z] + 
+  (Epsilon^3*Log[1 - z]*Log[z]^2)/2 + 
+  Epsilon^3*Nielsen[1, 2, 1 - z] - Epsilon^2*PolyLog[2, 1 - z] + 
+  Epsilon^3*Log[z]*PolyLog[2, 1 - z] - 
+  2*Epsilon^3*PolyLog[3, 1 - z] + Epsilon^3*Zeta[3]+
+Epsilon^4 F21CHECK
+)
              };
 (*
 0 == 
