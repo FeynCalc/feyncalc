@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 9 December '98 at 19:23 *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: define kinematical invariants *)
 
@@ -29,9 +27,12 @@ The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";
 
 Begin["`Private`"];
    
-
-
 ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
+FeynCalcExternal = MakeContext["FeynCalcExternal"];
+SP = MakeContext["SP"];
+SPD = MakeContext["SPD"];
+Cases2 = MakeContext["Cases2"];
+ChangeDimension = MakeContext["ChangeDimension"];
 FreeQ2 = MakeContext["FreeQ2"];
 Dimension = MakeContext["Dimension"];
 fci = MakeContext["FeynCalcInternal"];
@@ -41,9 +42,9 @@ Pair            = MakeContext["Pair"];
 ScalarProduct = MakeContext["ScalarProduct"];
 small = MakeContext["SmallVariable"];
 
-Options[SetMandelstam] = {Dimension -> {4,D}};
+Options[SetMandelstam] = {Dimension -> {4, D, ___}};
 
-     (*sma*)
+(*sma*)
 small2/: small2[x_]^n_ := small2[x^2] /; n > 0;
 small2/: small2[_] a_ :=0;
 small3/: small3[_] + a_ :=a;
@@ -60,13 +61,11 @@ SetMandelstam[s_,t_,u_, { {p1_, m12_}, {p2_, m22_} } ->
 SetMandelstam[s,t,u, p1, p2, -p3, -p4, Sqrt[m12], Sqrt[m22],
                                        Sqrt[m32], Sqrt[m42]];
 SetMandelstam[s_,t_,u_,p1_,p2_,p3_,p4_,m1_,m2_,m3_,m4_,opt___Rule]:=
- Block[ {settemp,oldmem,setvars,sol,pp1, pp2, pp3, pp4, dims},
-       dims = Dimension /. {opt} /. Options[SetMandelstam];
+ Block[ {settemp,oldmem,setvars,sol,pp1, pp2, pp3, pp4, dims, $MemoryAvailable = 0},
+       dims = Flatten[{Dimension /. {opt} /. Options[SetMandelstam]}];
        If[Head[dims] =!= List, dims = { dims }];
       (* note that p1, p2, p3, p4 may have have a minus - sign *)
-      {pp1, pp2, pp3, pp4} = #/NumericalFactor[#] & /@ {p1, p2, p3, p4};
-      oldmem = $MemoryAvailable;
-      $MemoryAvailable = 0;
+      {pp1, pp2, pp3, pp4} = #/NumericalFactor[#] & /@ {p1, p2, p3, p4} ;
      scd[a_,b_, 4] := ScalarProduct[a,b];
      scd[a_,b_, d_] := ScalarProduct[a,b,Dimension->d];
       settemp = Union[Flatten[Join[Table[{
@@ -83,17 +82,19 @@ SetMandelstam[s_,t_,u_,p1_,p2_,p3_,p4_,m1_,m2_,m3_,m4_,opt___Rule]:=
                       }, {i, Length[dims]}
                     ]]]];
     If[FreeQ2[{p1,p2,p3,p4}, {Plus,Times}],
-          sol = settemp /. Equal ->setit,
-      settemp = settemp//fci;
-      settemp = settemp//ExpandScalarProduct;
-      settemp = settemp//Expand;
-      setvars = Cases[settemp, _Pair,-1];
+       settemp = Union[settemp, FeynCalcExternal[settemp]];
+       sol = settemp /. Equal ->setit,
+       (* else *)
+       settemp = settemp//fci;
+       settemp = settemp//ExpandScalarProduct;
+       settemp = settemp//Expand;
+       settemp = Union[settemp, FeynCalcExternal[settemp]];
+(* want also for 4 or D dimensions to set SP[p,p] = ... etc. *)
+      setvars = Cases2[settemp, {Pair, SP, SPD}];
       If[MatchQ[setvars,{__Pair}], 
          sol = Solve[ settemp,setvars ]/.Rule->setit
         ];
       ];
- 
-     $MemoryAvailable = oldmem;
      sol
    ];
 
@@ -103,13 +104,16 @@ SetMandelstam[s_,t_,u_,p1_,p2_,p3_,p4_,m1_,m2_,m3_,m4_,opt___Rule]:=
 
 scalarproduct[a_, b_] := fci[ScalarProduct[a,b]]//ExpandScalarProduct;
 
-SetMandelstam[x_, pl_List, ml_List]:=Block[
-          {settemp,oldmem,setvars,sol,n=Length[ml], psu,pkl,sq2,eqq,ppl},
+SetMandelstam[x_, pl_List, ml_List, opt___?OptionQ]:=Block[
+          {settemp,oldmem,setvars,sol,n=Length[ml], psu,pkl,sq2,eqq,ppl,dims},
       oldmem = $MemoryAvailable;
       $MemoryAvailable = 0;
+     dims = Flatten[{Dimension /. {opt} /. Options[SetMandelstam]}];
      ppl = #/NumericalFactor[#] & /@ pl;
+(*
      Table[ setdel[ Momentum[ppl[[ij]], _Symbol], Momentum[ppl[[ij]]] ],
             {ij, Length[ppl]} ] /. setdel -> SetDelayed;
+*)
 
       settemp = Join[ Table[scalarproduct[pl[[i]], pl[[i]]] == ml[[i]]^2,
                             {i,1,n}],
@@ -121,9 +125,11 @@ SetMandelstam[x_, pl_List, ml_List]:=Block[
                     ]//ExpandScalarProduct//Expand;
 
       setvars = Cases[settemp, _Pair, -1];
-      If[MatchQ[setvars,{__Pair}], 
-         sol = Solve[ settemp,setvars ]/.Rule->setit
-        ];
+      settemp = Union[Join@@Map[ChangeDimension[settemp, #]&, dims]];
+      settemp = Union[Join[settemp, FeynCalcExternal[settemp]]];
+      setvars = Union[Join@@Map[ChangeDimension[setvars, #]&, dims]];
+      setvars = Union[Join[setvars, FeynCalcExternal[setvars]]];
+      sol = Solve[ settemp,setvars ]/.Rule->setit;
 
   sq2[y_]:=scalarproduct[y, y]//ExpandScalarProduct//Expand;
   pkl = {};
@@ -157,6 +163,12 @@ Do[
      ]    ]   ];
   var =  ExpandScalarProduct[scalarproduct@@#&/@pkl];
   var = Select[ Variables[var], Head[#]===Pair&];
+  If[Length[dims]>0,
+     eqq = Union[Join@@Map[ChangeDimension[eqq, #]&, dims]];
+     eqq = Union[Join[eqq, FeynCalcExternal[eqq]]];
+     var = Union[Join@@Map[ChangeDimension[var, #]&, dims]];
+     var = Union[Join[var, FeynCalcExternal[var]]];
+    ];
   If[Length[var] > 0,
   nsol = Solve[ eqq, var ];
   nsol = nsol /. Rule -> setit
