@@ -257,7 +257,7 @@ Lagrangian).  Setting $Lagrangians to a list of lagrangians in PhiStart.m \
 causes these lagrangians to be loaded at startup.";
 
 $ParticlesInUse::"usage" =
-    "$ParticlesInUse is a variable specifying which Phi-particles are \
+    "$ParticlesInUse is a variable specifying which PHI-particles are \
 recognized by FeynArts (modified as described in ReadMe.txt) as field names. \
  Default value : {Pion, Kaon, Photon}.";
 
@@ -275,7 +275,7 @@ changes should be made in the relevant configuration (.conf) files.";
 SetFAField::"usage" =
     "SetFAField[f] defines f[i][j] to be fi[j].  E.g. SetFAField[Fermion] \
 defines e.g. Fermion[7][0] to be Fermion7[0].  This truncation of particle \
-heads is a hack to make the pattern matching of FeynArts work with Phi \
+heads is a hack to make the pattern matching of FeynArts work with PHI \
 fields.";
 
 $ParticleHeads::"usage" =
