@@ -196,115 +196,115 @@ go[{k-p1,p2-k}, {al,ci1}, {be,ci2}, nonz] *
 - PolarizationVector[p1,mu] PolarizationVector[p2,nu] *
 SUNDelta[a,b] * Tf *
 (
-DiracTrace[
-    qo[{k-p1,p2-k}, nonz].
-      qp[k-p1].(I Gstrong GA[mu]). qp[k].(I Gstrong GA[nu]).
+DiracTrace[DOT[
+    qo[{k-p1,p2-k}, nonz] ,
+      qp[k-p1] , (I Gstrong GA[mu]) , qp[k] , (I Gstrong GA[nu]) ,
         qp[k-p2]
-          ] +
-DiracTrace[
-    qo[{p2-k,k-p1}, nonz].
-      qp[-k+p2].(I Gstrong GA[nu]).qp[-k].(I Gstrong GA[mu]).
+          ]] +
+DiracTrace[DOT[
+    qo[{p2-k,k-p1}, nonz] ,
+      qp[-k+p2] , (I Gstrong GA[nu]) , qp[-k] , (I Gstrong GA[mu]) ,
        qp[-k+p1]
-          ]
+          ]]
 ),
 "onop4" :>
 CF * 
-  Spinor[p2] . (I GA[al]) . qp[k-p2] .
-    qo[{k-p1,p2-k}, nonz].
-      qp[k-p1].(I GA[be]) . Spinor[-p1] gp[k,al,be]
+  DOT[Spinor[p2] , (I GA[al]) , qp[k-p2] ,
+    qo[{k-p1,p2-k}, nonz] ,
+      qp[k-p1] , (I GA[be]) , Spinor[-p1]] gp[k,al,be]
 ,
 "onop5" :>
 CF * 
-  Spinor[p2] . (I GA[al]) . qp[k-p2] .
-    qo[{k-p1,p2-k}, nonz].
-      qp[k-p1].(I GA[be]) . Spinor[-p1] gp[k,al,be]
+  DOT[Spinor[p2] , (I GA[al]) , qp[k-p2] ,
+    qo[{k-p1,p2-k}, nonz] ,
+      qp[k-p1] , (I GA[be]) , Spinor[-p1]] gp[k,al,be]
 ,
 "onec" :>
- qgv[al,a] . qp[k - p] . qo[k].
-    qp[k - p] . qgv[be,b]  gp[k,al,be]
+ DOT[qgv[al,a] , qp[k - p] , qo[k] ,
+    qp[k - p] , qgv[be,b]]  gp[k,al,be]
 ,
 "oned" :>
--DiracTrace[2 Tf qo[k].qp[k].qgv[mu,a].qp[k-p].
-            qgv[nu,b] . qp[k]
+-DiracTrace[2 Tf DOT[qo[k] , qp[k] , qgv[mu,a] , qp[k-p] ,
+            qgv[nu,b] , qp[k]]
            ] -
- DiracTrace[2 Tf qo[-k].qp[-k].qgv[nu,b].qp[p-k].
-            qgv[mu,a] . qp[-k]
+ DiracTrace[2 Tf DOT[qo[-k] , qp[-k] , qgv[nu,b] , qp[p-k] ,
+            qgv[mu,a] , qp[-k]]
            ]
 ,
 (*psqq*)
 "q2se2" :>  -1 * 
 DiracTrace[2 Tf *
-qpmi[-q1,7,8] . qgv[9] .
-qpmi[-(q1-q2),10,5] .  qgv[3] (*. qpm[-q1,4,6] . qo[-q1,6,7] *)
-          ]  *
+DOT[qpmi[-q1,7,8] , qgv[9] ,
+qpmi[-(q1-q2),10,5] ,  qgv[3] (*, qpm[-q1,4,6] , qo[-q1,6,7] *)
+          ]]  *
  gp[q2,1,3] * gp[q2,9,11] *
- qgv[11] . qpm[p-q2,2,12] . qgv[1]
+ DOT[qgv[11] , qpm[p-q2,2,12] , qgv[1]]
 ,
 "nsqq1" :> 
   1* (
-   qgv[4].qpm[p-q2].qgv[3].qpm[p-q1].
-   qo[p-q1].qpm[p-q1].qgv[2].qpm[p-q2].qgv[1] *
+   DOT[qgv[4] , qpm[p-q2] , qgv[3] , qpm[p-q1] , 
+   qo[p-q1] , qpm[p-q1] , qgv[2] , qpm[p-q2] , qgv[1]] *
    gp[q1-q2,2,3] gp[q2,1,4]
   )
 ,
 (* the 2-loop quark selfenergy graph similar to nsqq1 *)
 "q2se1" :> 1 * (
- qgv[4].qpm[p-q2].qgv[3].qpm[p-q1].
- (*qo[p-q1].qpm[p-q1].*)qgv[2].qpm[p-q2].qgv[1] *
+ DOT[qgv[4] , qpm[p-q2] , qgv[3] , qpm[p-q1] , 
+ (*qo[p-q1] , qpm[p-q1] , *)qgv[2] , qpm[p-q2] , qgv[1]] *
  gp[q1-q2,2,3] gp[q2,1,4]
            )
 ,
 "nsqq2" :> 2 * (
- qgv[4].qpm[q1].qgv[3].qpm[q2].gp[q1-q2,2,3].
- qo[q1,0,-q2,0,q2-q1,2].qpm[q1].qgv[1] *
+ DOT[qgv[4],qpm[q1],qgv[3],qpm[q2],gp[q1-q2,2,3],
+ qo[q1,0,-q2,0,q2-q1,2],qpm[q1].qgv[1]] *
  gp[p-q1,1,4]
            )
 ,
 "nsqq3" :> 2 * (
- qgv[2].qpm[q2].qgv[3].qpm[q1].qgv[4].
- qpm[q2].qo[q2].qpm[q2].qgv[1] gp[q2-p,1,2] gp[q1-q2,3,4]
+ DOT[qgv[2],qpm[q2],qgv[3],qpm[q1],qgv[4],
+ qpm[q2],qo[q2],qpm[q2],qgv[1]] gp[q2-p,1,2] gp[q1-q2,3,4]
            )
 ,
 "nsqq4" :> 2 * (
- qgv[1].qpm[q1].qgv[2].gp[q2,2,3].qpm[q1-q2].
- qgv[3].qpm[q1].qo[p,0,-q1,0,q1-p,4] gp[q1-p,1,4]
+ DOT[qgv[1],qpm[q1],qgv[2],gp[q2,2,3],qpm[q1-q2],
+ qgv[3],qpm[q1],qo[p,0,-q1,0,q1-p,4]] gp[q1-p,1,4]
                )
 ,
 "nsqq5" :> -1 * (
- qgv[4].qpm[p-q1].qo[p-q1].qpm[p-q1].qgv[1].
- gp[q1,1,6] . DiracTrace[qgv[6].qpmi[q2-q1].
- qgv[5].qpmi[q2] 2 Tf Nf] .
- gp[q1,4,5]     )
+ DOT[qgv[4],qpm[p-q1],qo[p-q1],qpm[p-q1],qgv[1],
+ gp[q1,1,6] , DiracTrace[DOT[qgv[6],qpmi[q2-q1],
+ qgv[5],qpmi[q2] 2 Tf Nf]] ,
+ gp[q1,4,5]]     )
 (*NEW*)
 ,
 "nsqq6" :> 1/2 * (
- qgv[4].qpm[p-q1].qo[p-q1].qpm[p-q1].qgv[1] * 
+ DOT[qgv[4],qpm[p-q1],qo[p-q1],qpm[p-q1],qgv[1]] * 
  gp[q1,1,2] gp[q1,3,4] gv[q1,2, -q2,8, q2-q1,6] *
  gv[-q1,3, q2,5, q1-q2, 7] gp[q2,8,5] gp[q1-q2,6,7]
                  )
 ,
 "nsqq7" :> -1* (
- qgv[4].qpm[p-q1].qo[p-q1].qpm[p-q1].qgv[1] .
- gp[q1,1,2].gp[q1,3,4].ggv[q1,2, q2-q1,6, -q2,8].
- ggv[q1,3, q2,5, q1-q2,7] *
+ DOT[qgv[4],qpm[p-q1],qo[p-q1],qpm[p-q1],qgv[1] ,
+ gp[q1,1,2],gp[q1,3,4],ggv[q1,2, q2-q1,6, -q2,8],
+ ggv[q1,3, q2,5, q1-q2,7]] *
  ghp[q2,5,8] ghp[q2-q1, 6,7]
                )
 ,
 "nsqq8" :> -2 * (
- qgv[4].qpm[p-q1].qo[p,0, -p+q1, 0, -q1,1] *
- DiracTrace[2 Tf Nf qgv[2].qpmi[q2-q1].qgv[3].qpmi[q2]]*
+ DOT[qgv[4],qpm[p-q1],qo[p,0, -p+q1, 0, -q1,1]] *
+ DiracTrace[2 Tf Nf DOT[qgv[2],qpmi[q2-q1],qgv[3],qpmi[q2]]]*
  gp[q1,1,2] gp[q1,3,4]
                 )
 ,
 "nsqq9" :> 1 * (
- qgv[4].qpm[p-q1].qo[p,0,q1-p,0, -q1,1] *
+ DOT[qgv[4],qpm[p-q1],qo[p,0,q1-p,0, -q1,1]] *
  gp[q1,1,2] gp[q1,3,4] gp[q2,6,8] gp[q2-q1,5,7] *
  gv[q1,2, q2-q1,5, -q2,6] gv[q2,8, -q1,3, q1-q2,7] 
                )
 ,
 (* similar to graph 9 *)
 "q2se3" :> 1/2 * (
- qgv[4].qpm[p-q1].(*qo[p,0,q1-p,0, -q1,1].*) qgv[1] *
+ DOT[qgv[4],qpm[p-q1],(*qo[p,0,q1-p,0, -q1,1],*) qgv[1]] *
  gp[q1,1,2] gp[q1,3,4] gp[q2,6,8] gp[q2-q1,5,7] *
  gv[q1,2, q2-q1,5, -q2,6] gv[q2,8, -q1,3, q1-q2,7]
                )
@@ -313,59 +313,59 @@ qpmi[-(q1-q2),10,5] .  qgv[3] (*. qpm[-q1,4,6] . qo[-q1,6,7] *)
 If[pol === 1,
         (-1) *
             DiracTrace[2 Tf pro *
-            qp[q2,1,3] .
-            qgv[mu,a] .
-            qp[(q2-p)] .
-            qgv[10] .
-            gp[(q1-p), 9, 10] .
-            gv[-p,nu,b, q1,8, p-q1, 9] .
-            gp[q1,7,8] .
-            qp[(q2-q1),6,12] .
-            qgv[7] .
-            qp[q2,4,5] .
-            qo[q2,3,4]
+            DOT[qp[q2,1,3] ,
+            qgv[mu,a] ,
+            qp[(q2-p)] ,
+            qgv[10] ,
+            gp[(q1-p), 9, 10] ,
+            gv[-p,nu,b, q1,8, p-q1, 9] ,
+            gp[q1,7,8] ,
+            qp[(q2-q1),6,12] ,
+            qgv[7] ,
+            qp[q2,4,5] ,
+            qo[q2,3,4]]
                      ] +
          (-1) *
             DiracTrace[2 Tf pro *
-            qp[-q2,4,5] .
-            qgv[7] .
-            qp[-(q2-q1),6,12] .
-            qgv[10] .
-            gp[q1,7,8] .
-            gv[-p,nu,b, q1,8, p-q1, 9] .
-            gp[q1-p, 9, 10] .
-            qp[-(q2-p)] .
-            qgv[mu,a] .
-            qp[-q2,1,3] .
-            qo[-q2,3,4]
+            DOT[qp[-q2,4,5] ,
+            qgv[7] ,
+            qp[-(q2-q1),6,12] ,
+            qgv[10] ,
+            gp[q1,7,8] ,
+            gv[-p,nu,b, q1,8, p-q1, 9] ,
+            gp[q1-p, 9, 10] ,
+            qp[-(q2-p)] ,
+            qgv[mu,a] ,
+            qp[-q2,1,3] ,
+            qo[-q2,3,4]]
                      ] +
          (-1) *
             DiracTrace[2 Tf pro *
-            qp[q2] .
-            qgv[3] .
-            qp[(q2-q1)] .
-            gp[q1,1,3] .
-            gv[p,mu,a, q1-p,2, -q1,1] .
-            gp[q1-p,2,12] .
-            qgv[12] .
-            qp[(q2-p)] .
-            qgv[nu,b] .
-            qp[q2] .
-            qo[q2,6,7]
+            DOT[qp[q2] ,
+            qgv[3] ,
+            qp[(q2-q1)] ,
+            gp[q1,1,3] ,
+            gv[p,mu,a, q1-p,2, -q1,1] ,
+            gp[q1-p,2,12] ,
+            qgv[12] ,
+            qp[(q2-p)] ,
+            qgv[nu,b] ,
+            qp[q2] ,
+            qo[q2,6,7]]
                       ] +
         (-1) *
             DiracTrace[2 Tf pro *
-            qp[-q2] .
-            qgv[nu,b] .
-            qp[-(q2-p)] .
-            qgv[12] .
-            gp[q1-p,2,12] .
-            gv[p,mu,a, q1-p,2, -q1,1] .
-            gp[q1,1,3] .
-            qp[-(q2-q1)] .
-            qgv[3] .
-            qp[-q2] .
-            qo[-q2,6,7]
+            DOT[qp[-q2] ,
+            qgv[nu,b] ,
+            qp[-(q2-p)] ,
+            qgv[12] ,
+            gp[q1-p,2,12] ,
+            gv[p,mu,a, q1-p,2, -q1,1] ,
+            gp[q1,1,3] ,
+            qp[-(q2-q1)] ,
+            qgv[3] ,
+            qp[-q2] ,
+            qo[-q2,6,7]]
                       ]
 ,
 nochnich
@@ -374,27 +374,27 @@ nochnich
 "qg2" :>
 If[pol === 1,
 -1 *        DiracTrace[2 Tf pro *
-            qp[q2,1,3] .
-            qgv[mu,a] .
-            qp[q2-p,2,10] .
-            qgv[9] .
-            gp[q1-q2, 4, 9] .
-            qp[q1-p,7,8] .
-            qgv[nu, b] .
-            qp[q1] .
-            qo[q2, 3, -q1, 5, q1-q2, 4]
+            DOT[qp[q2,1,3] ,
+            qgv[mu,a] ,
+            qp[q2-p,2,10] ,
+            qgv[9] ,
+            gp[q1-q2, 4, 9] ,
+            qp[q1-p,7,8] ,
+            qgv[nu, b] ,
+            qp[q1] ,
+            qo[q2, 3, -q1, 5, q1-q2, 4]]
                       ]     +
          (-1) *
             DiracTrace[2 Tf pro *
-            qp[-q1] .
-            qgv[nu, b] .
-            qp[-(q1-p),7,8] .
-            gp[q1-q2, 4, 9] .
-            qgv[9] .
-            qp[-(q2-p), 2, 10] .
-            qgv[mu,a] .
-            qp[-q2,1,3] .
-            qo[-q1, 5, q2, 3, q1-q2, 4]
+            DOT[qp[-q1] ,
+            qgv[nu, b] ,
+            qp[-(q1-p),7,8] ,
+            gp[q1-q2, 4, 9] ,
+            qgv[9] ,
+            qp[-(q2-p), 2, 10] ,
+            qgv[mu,a] ,
+            qp[-q2,1,3] ,
+            qo[-q1, 5, q2, 3, q1-q2, 4]]
                       ]
 ,
 nochnich
@@ -405,53 +405,53 @@ If[pol === 1,
 (* fermion loop at the left , anti clockwise *)
         (-1) *
             DiracTrace[2 Tf pro *
-            qp[q2,1,3] .
-            qgv[mu,a] .
-            qp[q2-p] .
-            qgv[8] .
-            qp[q2-q1,4,9] .
-            gp[q1-p,8,7] .
-            gv[-p,nu,b,p-q1,7,q1,6] .
-            gp[q1,5,6] .
-            qo[q2,3, q1-q2,4, -q1,5]
+            DOT[qp[q2,1,3] ,
+            qgv[mu,a] ,
+            qp[q2-p] ,
+            qgv[8] ,
+            qp[q2-q1,4,9] ,
+            gp[q1-p,8,7] ,
+            gv[-p,nu,b,p-q1,7,q1,6] ,
+            gp[q1,5,6] ,
+            qo[q2,3, q1-q2,4, -q1,5]]
                      ] +
         (-1) * (* fermion loop at the left, anti - clockwise *)
             DiracTrace[2 Tf pro *
-                      qp[-(q2-q1),4,9] .
-                      qgv[8] .
-                      qp[-(q2-p)] .
-                      qgv[mu,a] .
-                      qp[-q2,1,3] .
-                      gp[q1,5,6] .
-                      gv[-p,nu,b,p-q1,7,q1,6] .
-                      gp[(q1-p),8,7] .
-                      qo[q1-q2,4, q2,3, -q1,5]
+                      DOT[qp[-(q2-q1),4,9] ,
+                      qgv[8] ,
+                      qp[-(q2-p)] ,
+                      qgv[mu,a] ,
+                      qp[-q2,1,3] ,
+                      gp[q1,5,6] ,
+                      gv[-p,nu,b,p-q1,7,q1,6] ,
+                      gp[(q1-p),8,7] ,
+                      qo[q1-q2,4, q2,3, -q1,5]]
                       ] +
          (* fermion loop at the right, anti-clockwise *)
          (-1) *
               DiracTrace[2 Tf pro *
-                      qp[-q1,5,6] .
-                      qgv[nu,b] .
-                      qp[-(q1-p)] .
-                      qgv[10] .
-                      qp[-(q1-q2)] .
-                      qo[-q1,5, q1-q2,4, q2,3] .
-                      gp[q2-p,2,10] .
-                      gv[p,mu,a, -q2,1, q2-p,2] .
-                      gp[q2,1,3]
+                      DOT[qp[-q1,5,6] ,
+                      qgv[nu,b] ,
+                      qp[-(q1-p)] ,
+                      qgv[10] ,
+                      qp[-(q1-q2)] ,
+                      qo[-q1,5, q1-q2,4, q2,3] ,
+                      gp[q2-p,2,10] ,
+                      gv[p,mu,a, -q2,1, q2-p,2] ,
+                      gp[q2,1,3]]
                         ] +
           (* fermion loop at the right, clockwise *)
          (-1) *
               DiracTrace[2 Tf pro *
-                      qp[(q1-q2)] .
-                      qgv[10] .
-                      qp[(q1-p)] .
-                      qgv[nu,b] .
-                      qp[q1,5,6] .
-                      qo[q1-q2,4, -q1,5, q2,3] .
-                      gp[q2-p,2,10] .
-                      gv[p,mu,a, -q2,1, q2-p,2] .
-                      gp[q2,1,3]
+                      DOT[qp[(q1-q2)] ,
+                      qgv[10] ,
+                      qp[(q1-p)] ,
+                      qgv[nu,b] ,
+                      qp[q1,5,6] ,
+                      qo[q1-q2,4, -q1,5, q2,3] ,
+                      gp[q2-p,2,10] ,
+                      gv[p,mu,a, -q2,1, q2-p,2] ,
+                      gp[q2,1,3]]
                         ]
 ,
 nochnich
@@ -461,31 +461,31 @@ nochnich
 If[pol === 1,
 (-1) *
             DiracTrace[2 Tf pro *
-            qp[-(q2-q1),7,8] .
-            qgv[10] .
-            gp[q1-p,10,11] .
-            gv[-p,nu,b, p-q1,11, q1,12] .
-            gp[q1,5,12] .
-            qp[-(q2-p),9,2] .
-            qgv[mu,a] .
-            qp[-q2] .
-            qgv[5] .
-            qp[-(q2-q1)] .
-            qo[-(q2-q1),6,7]
+            DOT[qp[-(q2-q1),7,8] ,
+            qgv[10] ,
+            gp[q1-p,10,11] ,
+            gv[-p,nu,b, p-q1,11, q1,12] ,
+            gp[q1,5,12] ,
+            qp[-(q2-p),9,2] ,
+            qgv[mu,a] ,
+            qp[-q2] ,
+            qgv[5] ,
+            qp[-(q2-q1)] ,
+            qo[-(q2-q1),6,7]]
                      ] +
           (-1) *
             DiracTrace[2 Tf pro *
-            qp[(q2-q1)] .
-            qgv[5] .
-            qp[q2] .
-            qgv[mu,a] .
-            qp[(q2-p),9,2] .
-            gp[-q1,5,12] .
-            gv[-p,nu,b, p-q1,11, q1,12] .
-            gp[q1-p,10,11] .
-            qgv[10] .
-            qp[q2-q1,7,8] .
-            qo[q2-q1,6,7]
+            DOT[qp[(q2-q1)] ,
+            qgv[5] ,
+            qp[q2] ,
+            qgv[mu,a] ,
+            qp[(q2-p),9,2] ,
+            gp[-q1,5,12] ,
+            gv[-p,nu,b, p-q1,11, q1,12] ,
+            gp[q1-p,10,11] ,
+            qgv[10] ,
+            qp[q2-q1,7,8] ,
+            qo[q2-q1,6,7]]
                       ]
 ,
 nochnich
@@ -495,27 +495,27 @@ nochnich
 If[pol === 1,
 -1*
             DiracTrace[2 Tf pro *
-            qp[-q1,2,3] .
-            qgv[4] .
-            gp[q2-q1,4,8] .
-            qp[-q2,5,6] .
-            qgv[8] .
-            qp[-q1,7,9] .
-            qgv[nu,b] .
-            qp[-(q1-p),10,1] .
-            qo[-(q1-p),1, -q1,2, p,mu,a]
+            DOT[qp[-q1,2,3] ,
+            qgv[4] ,
+            gp[q2-q1,4,8] ,
+            qp[-q2,5,6] ,
+            qgv[8] ,
+            qp[-q1,7,9] ,
+            qgv[nu,b] ,
+            qp[-(q1-p),10,1] ,
+            qo[-(q1-p),1, -q1,2, p,mu,a]]
                      ] +
          -1*
             DiracTrace[2 Tf pro *
-          qp[(q1-p),10,1] .
-          qgv[nu,b] .
-          qp[q1,7,9] .
-          qgv[8] .
-         qp[q2,5,6] .
-          gp[q2-q1,4,8] .
-         qgv[4] .
-       qp[q1,2,3] .
-    qo[(q1-p),1, q1,2, p,mu,a]
+          DOT[qp[(q1-p),10,1] ,
+          qgv[nu,b] ,
+          qp[q1,7,9] ,
+          qgv[8] ,
+         qp[q2,5,6] ,
+          gp[q2-q1,4,8] ,
+         qgv[4] ,
+       qp[q1,2,3] ,
+    qo[(q1-p),1, q1,2, p,mu,a]]
                      ]
 ,
 nochnich
@@ -525,59 +525,59 @@ nochnich
 If[pol === 1,
 (-1) *
             DiracTrace[2 Tf  pro *
-            qp[-q2,4,5] .
-             qgv[6] .
-            gp[q1-q2,6,10] .
-            qp[-q1,7,8] .
-             qgv[10] .
-            qp[-q2,9,11] .
-             qgv[nu,b] .
-            qp[-(q2-p),12,2] .
-             qgv[mu,a] .
-            qp[-q2,1,3].
-            qo[-q2, 3,4]
+            DOT[qp[-q2,4,5] ,
+             qgv[6] ,
+            gp[q1-q2,6,10] ,
+            qp[-q1,7,8] ,
+             qgv[10] ,
+            qp[-q2,9,11] ,
+             qgv[nu,b] ,
+            qp[-(q2-p),12,2] ,
+             qgv[mu,a] ,
+            qp[-q2,1,3],
+            qo[-q2, 3,4]]
                       ] +
          (-1)*
             DiracTrace[2 Tf  pro *
-            qp[q2,1,3].
-             qgv[mu,a] .
-            qp[(q2-p),12,2] .
-             qgv[nu,b] .
-            qp[q2,9,11] .
-             qgv[10] .
-            qp[q1,7,8] .
-            gp[-(q1-q2),6,10] .
-             qgv[6] .
-            qp[q2,4,5] .
-            qo[q2, 3,4]
+            DOT[qp[q2,1,3],
+             qgv[mu,a] ,
+            qp[(q2-p),12,2] ,
+             qgv[nu,b] ,
+            qp[q2,9,11] ,
+             qgv[10] ,
+            qp[q1,7,8] ,
+            gp[-(q1-q2),6,10] ,
+             qgv[6] ,
+            qp[q2,4,5] ,
+            qo[q2, 3,4]]
                       ] +
          (-1)*
             DiracTrace[2 Tf  pro *
-            qp[q2] .
-            qgv[6] .
-            gp[q2-q1, 6,9] .
-            qp[q1,7,8] .
-            qgv[9] .
-            qp[q2] .
-            qgv[mu,a] .
-            qp[-(p-q2)] .
-            qgv[nu,b] .
-            qp[q2] .
-            qo[q2,3,4]
+            DOT[qp[q2] ,
+            qgv[6] ,
+            gp[q2-q1, 6,9] ,
+            qp[q1,7,8] ,
+            qgv[9] ,
+            qp[q2] ,
+            qgv[mu,a] ,
+            qp[-(p-q2)] ,
+            qgv[nu,b] ,
+            qp[q2] ,
+            qo[q2,3,4]]
                      ] +
           (-1)*
             DiracTrace[2 Tf  pro *
-            qp[-q2] .
-            qgv[nu,b] .
-            qp[(p-q2)] .
-            qgv[mu,a] .
-            qp[-q2] .
-            qgv[9] .
-            qp[-q1,7,8] .
-            gp[q2-q1, 6,9] .
-            qgv[6] .
-            qp[-q2] .
-            qo[-q2,3,4]
+            DOT[qp[-q2] ,
+            qgv[nu,b] ,
+            qp[(p-q2)] ,
+            qgv[mu,a] ,
+            qp[-q2] ,
+            qgv[9] ,
+            qp[-q1,7,8] ,
+            gp[q2-q1, 6,9] ,
+            qgv[6] ,
+            qp[-q2] ,
+            qo[-q2,3,4]]
                       ]
 ,
 nochnich
@@ -587,27 +587,27 @@ nochnich
 If[pol === 1,
 (-1)*
            DiracTrace[2 Tf  pro *
-              qp[-(q2-q1), 4, 8] .
-              qgv[8] .
-              qp[q1, 6, 5] .
-              qo[q1-q2, 4, -q1,5, q2,3] .
-              gp[q2,8,9] .
-              gv[q2,9, p-q2,10, -p, nu,b] .
-              gp[q2-p, 2, 10] .
-              gv[p,mu,a, -q2, 1, q2-p, 2] .
-              gp[q2, 1, 3]
+              DOT[qp[-(q2-q1), 4, 8] ,
+              qgv[8] ,
+              qp[q1, 6, 5] ,
+              qo[q1-q2, 4, -q1,5, q2,3] ,
+              gp[q2,8,9] ,
+              gv[q2,9, p-q2,10, -p, nu,b] ,
+              gp[q2-p, 2, 10] ,
+              gv[p,mu,a, -q2, 1, q2-p, 2] ,
+              gp[q2, 1, 3]]
                      ] +
            (-1)*
            DiracTrace[2 Tf  pro *
-             qp[-q1, 6, 5] .
-             qgv[8] .
-             qp[(q2-q1), 4, 8] .
-             qo[-q1,5, q1-q2,4, q2,3] .
-             gp[q2,8,9] .
-             gv[q2,9, p-q2,10, -p, nu,b] .
-             gp[q2-p, 2, 10] .
-             gv[p,mu,a, -q2, 1, q2-p, 2] .
-             gp[q2, 1, 3]
+             DOT[qp[-q1, 6, 5] ,
+             qgv[8] ,
+             qp[(q2-q1), 4, 8] ,
+             qo[-q1,5, q1-q2,4, q2,3] ,
+             gp[q2,8,9] ,
+             gv[q2,9, p-q2,10, -p, nu,b] ,
+             gp[q2-p, 2, 10] ,
+             gv[p,mu,a, -q2, 1, q2-p, 2] ,
+             gp[q2, 1, 3]]
                      ]
 ,
 nochnich
@@ -617,51 +617,51 @@ nochnich
 If[pol === 1,
 (-1) *
              DiracTrace[2 Tf  pro *
-            qp[q1-q2] .
-            qgv[7] .
-            gp[q1,4,7] .
-            qp[-q2,8,9] .
-            qgv[nu,b] .
-            qp[-(q2-p),2,10] .
-            qgv[mu,a] .
-            qp[-q2, 1,3] .
-            qo[q1-q2,5, q2,3,  -q1,4]
+            DOT[qp[q1-q2] ,
+            qgv[7] ,
+            gp[q1,4,7] ,
+            qp[-q2,8,9] ,
+            qgv[nu,b] ,
+            qp[-(q2-p),2,10] ,
+            qgv[mu,a] ,
+            qp[-q2, 1,3] ,
+            qo[q1-q2,5, q2,3,  -q1,4]]
                        ] +
           (-1) *
              DiracTrace[2 Tf  pro *
-            qp[q2, 1,3] .
-            qgv[mu,a] .
-            qp[(q2-p),2,10] .
-            qgv[nu,b] .
-            qp[q2,8,9] .
-            gp[q1,4,7] .
-            qgv[7] .
-            qp[-(q1-q2)] .
-            qo[q2,3, q1-q2,5, -q1,4]
+            DOT[qp[q2, 1,3] ,
+            qgv[mu,a] ,
+            qp[(q2-p),2,10] ,
+            qgv[nu,b] ,
+            qp[q2,8,9] ,
+            gp[q1,4,7] ,
+            qgv[7] ,
+            qp[-(q1-q2)] ,
+            qo[q2,3, q1-q2,5, -q1,4]]
                        ] +
           (-1) *
              DiracTrace[2 Tf  pro *
-            qp[-(q1-q2)] .
-            qgv[7] .
-            gp[q1,4,7] .
-            qp[q2] .
-            qgv[mu,a] .
-            qp[-(p-q2)] .
-            qgv[nu,b] .
-            qp[q2] .
-            qo[q2-q1,5, -q2,3,  q1,4]
+            DOT[qp[-(q1-q2)] ,
+            qgv[7] ,
+            gp[q1,4,7] ,
+            qp[q2] ,
+            qgv[mu,a] ,
+            qp[-(p-q2)] ,
+            qgv[nu,b] ,
+            qp[q2] ,
+            qo[q2-q1,5, -q2,3,  q1,4]]
                       ] +
            (-1) *
              DiracTrace[2 Tf  pro *
-            qp[-q2] .
-            qgv[nu,b] .
-            qp[-(q2-p)] .
-            qgv[mu,a] .
-            qp[-q2] .
-            gp[q1,4,7] .
-            qgv[7] .
-            qp[q1-q2] .
-            qo[-q2,3, q2-q1,5, q1,4]
+            DOT[qp[-q2] ,
+            qgv[nu,b] ,
+            qp[-(q2-p)] ,
+            qgv[mu,a] ,
+            qp[-q2] ,
+            gp[q1,4,7] ,
+            qgv[7] ,
+            qp[q1-q2] ,
+            qo[-q2,3, q2-q1,5, q1,4]]
                       ]
 ,
 nochnich
@@ -671,30 +671,30 @@ nochnich
 If[pol === 1,
 -1*
            DiracTrace[2 Tf  pro *
-            qp[-q1,7,9] .
-            gp[q2,9,11] .
-            gv[-p,nu,b, q2,11, -q2+p,12] .
-            gp[q2-p,2,12] .
-            gv[p,mu,a, -q2,1, q2-p,2] .
-            gp[q2,1,3] .
-            qgv[9] .
-            qp[-(q1-q2)] .
-            qgv[3] .
-            qp[-q1] .
-            qo[-q1,6,7]] +
+            DOT[qp[-q1,7,9] ,
+            gp[q2,9,11] ,
+            gv[-p,nu,b, q2,11, -q2+p,12] ,
+            gp[q2-p,2,12] ,
+            gv[p,mu,a, -q2,1, q2-p,2] ,
+            gp[q2,1,3] ,
+            qgv[9] ,
+            qp[-(q1-q2)] ,
+            qgv[3] ,
+            qp[-q1] ,
+            qo[-q1,6,7]]] +
          -1*
            DiracTrace[2 Tf  pro *
-           qp[q1] .
-           qgv[3] .
-           qp[(q1-q2)] .
-            qgv[9] .
-            gp[q2,1,3] .
-            gv[p,mu,a, -q2,1, q2-p,2] .
-            gp[q2-p,2,12] .
-            gv[-p,nu,b, q2,11, -q2+p,12] .
-            gp[q2,9,11] .
-            qp[q1,7,9] .
-            qo[q1,6,7]]
+           DOT[qp[q1] ,
+           qgv[3] ,
+           qp[(q1-q2)] ,
+            qgv[9] ,
+            gp[q2,1,3] ,
+            gv[p,mu,a, -q2,1, q2-p,2] ,
+            gp[q2-p,2,12] ,
+            gv[-p,nu,b, q2,11, -q2+p,12] ,
+            gp[q2,9,11] ,
+            qp[q1,7,9] ,
+            qo[q1,6,7]]]
 ,
 nochnich
 ]
@@ -702,31 +702,31 @@ nochnich
 "qg10" :>
 If[pol === 1,
 (-1)* DiracTrace[2 Tf  * pro * 
-            qp[-q1,7,9] .
-            qgv[10] .
-            gp[q1-q2,5,10] .
-            qp[-q2,9,11] .
-            qgv[nu,b] .
-            qp[-(q2-p),2,12] .
-            qgv[mu,a] .
-            qp[-q2,1,3] .
-            qgv[5] .
-            qp[-q1,4,6] .
-            qo[-q1,6,7]
+            DOT[qp[-q1,7,9] ,
+            qgv[10] ,
+            gp[q1-q2,5,10] ,
+            qp[-q2,9,11] ,
+            qgv[nu,b] ,
+            qp[-(q2-p),2,12] ,
+            qgv[mu,a] ,
+            qp[-q2,1,3] ,
+            qgv[5] ,
+            qp[-q1,4,6] ,
+            qo[-q1,6,7]]
                      ] +
           (-1)*
            DiracTrace[2 Tf  * pro *
-            qp[q1,6,4] .
-            qgv[5] .
-            qp[q2,1,3] .
-            qgv[mu,a] .
-            qp[(q2-p),2,12] .
-            qgv[nu,b] .
-            qp[q2,9,11] .
-            gp[q1-q2,5,10] .
-            qgv[10] .
-            qp[q1,7,9] .
-            qo[q1,6,7]
+            DOT[qp[q1,6,4] ,
+            qgv[5] ,
+            qp[q2,1,3] ,
+            qgv[mu,a] ,
+            qp[(q2-p),2,12] ,
+            qgv[nu,b] ,
+            qp[q2,9,11] ,
+            gp[q1-q2,5,10] ,
+            qgv[10] ,
+            qp[q1,7,9] ,
+            qo[q1,6,7]]
                      ]
 ,
 nochnich
@@ -735,29 +735,29 @@ nochnich
 "qg11" :>
 If[pol === 1,
 (-1) *DiracTrace[ 2 Tf  pro *
-            qp[-q2,4,5] .
-             qgv[nu,b] .
-            qp[(p-q2),6,7] .
-             qgv[8] .
-            qp[-(q1-p),9,10] .
-             gp[q2 - q1, 8, 12] .
-             qgv[12] .
-            qp[-(q2-p),11,2] .
-             qgv[mu,a] .
-            qp[-q2,1,3] .
-           qo[-q2,3,4]   ] +
+            DOT[qp[-q2,4,5] ,
+             qgv[nu,b] ,
+            qp[(p-q2),6,7] ,
+             qgv[8] ,
+            qp[-(q1-p),9,10] ,
+             gp[q2 - q1, 8, 12] ,
+             qgv[12] ,
+            qp[-(q2-p),11,2] ,
+             qgv[mu,a] ,
+            qp[-q2,1,3] ,
+           qo[-q2,3,4]]   ] +
          (-1) DiracTrace[ 2 Tf  pro *
-            qp[q2,1,3] .
-             qgv[mu,a] .
-            qp[(q2-p),11,2] .
-             qgv[12] .
-             gp[-(q2 - q1), 8, 12] .
-            qp[(q1-p),9,10] .
-             qgv[8] .
-            qp[-(p-q2),6,7] .
-             qgv[nu,b] .
-            qp[q2,4,5] .
-           qo[q2,3,4]   ]
+            DOT[qp[q2,1,3] ,
+             qgv[mu,a] ,
+            qp[(q2-p),11,2] ,
+             qgv[12] ,
+             gp[-(q2 - q1), 8, 12] ,
+            qp[(q1-p),9,10] ,
+             qgv[8] ,
+            qp[-(p-q2),6,7] ,
+             qgv[nu,b] ,
+            qp[q2,4,5] ,
+           qo[q2,3,4]]   ]
 ,
 nochnich
 ]
@@ -773,59 +773,59 @@ DiracTrace[FeynAmpDenominatorSimplify[FeynAmpDenominatorCombine[
 SUNSimplify[Trick[
 (-1) *
             DiracTrace[2 Tf pro *
-            qp[-q2,4,5] .
-            qgv[6] .
-            gp[q1-q2,6,12] .
-            qp[-q1,7,8] .
-            qgv[nu,b] .
-            qp[-(q1-p),9,10] .
-            qgv[12] .
-            qp[-(q2-p), 2, 11] .
-            qgv[mu,a] .
-            qp[-q2,1,3] .
-            qo[-q2,3,4]
+            DOT[qp[-q2,4,5] ,
+            qgv[6] ,
+            gp[q1-q2,6,12] ,
+            qp[-q1,7,8] ,
+            qgv[nu,b] ,
+            qp[-(q1-p),9,10] ,
+            qgv[12] ,
+            qp[-(q2-p), 2, 11] ,
+            qgv[mu,a] ,
+            qp[-q2,1,3] ,
+            qo[-q2,3,4]]
                       ] +
           (-1) *
             DiracTrace[2 Tf pro *
-            qp[q2,1,3] .
-            qgv[mu,a] .
-            qp[(q2-p), 2, 11] .
-            qgv[12] .
-            qp[(q1-p),9,10] .
-            qgv[nu,b] .
-            qp[q1,7,8] .
-            gp[q1-q2,6,12] .
-            qgv[6] .
-            qp[q2,4,5] .
-            qo[q2,3,4]
+            DOT[qp[q2,1,3] ,
+            qgv[mu,a] ,
+            qp[(q2-p), 2, 11] ,
+            qgv[12] ,
+            qp[(q1-p),9,10] ,
+            qgv[nu,b] ,
+            qp[q1,7,8] ,
+            gp[q1-q2,6,12] ,
+            qgv[6] ,
+            qp[q2,4,5] ,
+            qo[q2,3,4]]
                       ] +
 (-1) *
             DiracTrace[2 Tf pro *
-            qp[-q1] .
-            qgv[nu,b] .
-            qp[-(q1-p)] .
-            qgv[12] .
-            gp[q1-q2,5,12] .
-            qp[-(q2-p)] .
-            qgv[mu,a] .
-            qp[-q2] .
-            qgv[5] .
-            qp[-q1] .
-            qo[-q1,6,7]
+            DOT[qp[-q1] ,
+            qgv[nu,b] ,
+            qp[-(q1-p)] ,
+            qgv[12] ,
+            gp[q1-q2,5,12] ,
+            qp[-(q2-p)] ,
+            qgv[mu,a] ,
+            qp[-q2] ,
+            qgv[5] ,
+            qp[-q1] ,
+            qo[-q1,6,7]]
                       ] +
             (-1) *
             DiracTrace[2 Tf pro *
-            qp[q1] .
-            qgv[5] .
-            qp[q2] .
-            qgv[mu, a] .
-            qp[(q2-p)] .
-            gp[q1-q2,5,12] .
-            qgv[12] .
-            qp[(q1-p)] .
-            qgv[nu,b] .
-            qp[q1] .
-            qo[q1,6,7]
+            DOT[qp[q1] ,
+            qgv[5] ,
+            qp[q2] ,
+            qgv[mu, a] ,
+            qp[(q2-p)] ,
+            gp[q1-q2,5,12] ,
+            qgv[12] ,
+            qp[(q1-p)] ,
+            qgv[nu,b] ,
+            qp[q1] ,
+            qo[q1,6,7]]
                       ]
 ], SUNTrace->True]/.DiracTrace->FeynAmpDenominatorSimplify
          ], q1, q2]//Factor2
@@ -836,7 +836,7 @@ nochnich
 ,
 (*NEW*)
 "nsqq10" :> -2 * (
- qgv[4] . qpm[p-q1] . qo[p,0,q1-p,0, -q1,1] *
+ DOT[qgv[4] , qpm[p-q1] , qo[p,0,q1-p,0, -q1,1]] *
  gp[q1,1,2] gp[q1,3,4] ggv[q1,2, q2-q1,5, -q2,6] *
  ggv[-q1,3, q2,8, q1-q2,7] *
  ghp[q2,6,8] ghp[q2-q1, 5,7]
@@ -844,104 +844,104 @@ nochnich
 ,
 (* similar to graph 10 *)
 "q2se4" :> -1 * (
- qgv[4] . qpm[p-q1] . qgv[1](*. qo[p,0,q1-p,0, -q1,1]*) *
+ DOT[qgv[4] , qpm[p-q1] , qgv[1](*, qo[p,0,q1-p,0, -q1,1]*)] *
  gp[q1,1,2] gp[q1,3,4] ggv[q1,2, q2-q1,5, -q2,6] *
  ggv[q1,3, q2,8, q1-q2,7] *
  ghp[q2,6,8] ghp[q2-q1, 5,7]
                  )
 ,
 "nsqq11" :> 2 * (
- qgv[3].qpm[p-q1].qgv[4].qpm[q2-q1].
- qgv[2].qpm[q2].qo[q2].qpm[q2].qgv[1] *
+ DOT[qgv[3],qpm[p-q1],qgv[4],qpm[q2-q1],
+ qgv[2],qpm[q2],qo[q2],qpm[q2],qgv[1]] *
  gp[q2-p,1,4] gp[q1,2,3]
                 )
 ,
 (* the 2-loop quark selfenergy dervived from nsqq11 *)
 "q2se5" :> 1 * (
- qgv[3].qpm[p-q1].qgv[4].qpm[q2-q1].
- qgv[2].(*qpm[q2].qo[q2].*)qpm[q2].qgv[1] *
+ DOT[qgv[3],qpm[p-q1],qgv[4],qpm[q2-q1],
+ qgv[2],(*qpm[q2],qo[q2],*)qpm[q2],qgv[1]] *
  gp[q2-p,1,4] gp[q1,2,3]
                 )
 ,
 "nsqq12" :> 2 * (
- qgv[3].qpm[q2].qgv[2].qpm[q1].qo[q1].
- qpm[q1].qgv[1] gp[p-q1,1,4] gp[q1-q2,5,2] *
+ DOT[qgv[3],qpm[q2],qgv[2],qpm[q1],qo[q1],
+ qpm[q1],qgv[1] gp[p-q1,1,4] gp[q1-q2,5,2]] *
  gp[p-q2,6,3] gv[p-q1,4, q1-q2,5, q2-p,6]
                 )
 ,
 "nsqq13" :> 1 * (
- qgv[4].qpm[p-q1].qgv[3].qpm[q2-q1].
- qo[q2-q1].qpm[q2-q1].qgv[2].qpm[q2].
- qgv[1] gp[q2-p,1,3] gp[q1,2,4]
+ DOT[qgv[4],qpm[p-q1],qgv[3],qpm[q2-q1],
+ qo[q2-q1],qpm[q2-q1],qgv[2],qpm[q2],
+ qgv[1]] gp[q2-p,1,3] gp[q1,2,4]
                 ) 
 (*gives just the same as above*)
 (*+ 
 1 * (
- qgv[4] . qpm[q1] . qgv[2] . qpm[q1-q2] .
- qo[q1-q2] . qpm[q1-q2] . qgv[3] . qpm[p-q2] . 
- qgv[1] * gp[p-q1,4,3] gp[q2,2,1])
+ DOT[qgv[4] , qpm[q1] , qgv[2] , qpm[q1-q2] ,
+ qo[q1-q2] , qpm[q1-q2] , qgv[3] , qpm[p-q2] , 
+ qgv[1]] * gp[p-q1,4,3] gp[q2,2,1])
                    *)
 ,
 (* the 2-loop quark selfenergy dervived from nsqq13 *)
 "q2se7" :> 1 * (
- qgv[4].qpm[p-q1].qgv[3] . (*qpm[q2-q1].
- qo[q2-q1].*) qpm[q2-q1].qgv[2].qpm[q2].
- qgv[1] gp[q2-p,1,3] gp[q1,2,4]
+ DOT[qgv[4],qpm[p-q1],qgv[3] , (*qpm[q2-q1],
+ qo[q2-q1],*) qpm[q2-q1],qgv[2],qpm[q2],
+ qgv[1]] gp[q2-p,1,3] gp[q1,2,4]
               )
 ,
 "nsqq14" :> 2 * (
- qgv[4].qpm[q2].qgv[3].qpm[q2-q1].qgv[2].qpm[p-q1].
- qo[p,0, q1-p,0, -q1,1] gp[q1,1,3] gp[q2-p,2,4]
+ DOT[qgv[4],qpm[q2],qgv[3],qpm[q2-q1],qgv[2],qpm[p-q1],
+ qo[p,0, q1-p,0, -q1,1]] gp[q1,1,3] gp[q2-p,2,4]
                 )
 ,
 "nsqq15" :> 2 * (
- qgv[4].qpm[-q2+p].qgv[2].qpm[p-q1].
- qo[p,0, q1-p,0, -q1,1] gp[q1,1,3] gp[q1-q2,2,5] *
+ DOT[qgv[4],qpm[-q2+p],qgv[2],qpm[p-q1],
+ qo[p,0, q1-p,0, -q1,1]] gp[q1,1,3] gp[q1-q2,2,5] *
  gp[q2,4,6] gv[q1,3, -q1+q2,5, -q2,6]
                 )
 ,
 "nsqq16" :> 1 * (
- qgv[3].qpm[q2].qo[q1,0,-q2,0,q2-q1,2].qpm[q1] *
- qgv[1] gp[p-q1,1,5].gp[q2-q1,2,6] gp[p-q2,3,4] *
+ DOT[qgv[3],qpm[q2],qo[q1,0,-q2,0,q2-q1,2],qpm[q1]] *
+ DOT[qgv[1] gp[p-q1,1,5],gp[q2-q1,2,6] gp[p-q2,3,4]] *
  gv[p-q1,5, q1-q2,6, q2-p,4]
                 )
 ,
 "q2se6" :> 1 * (
- qgv[3].qpm[q2].(*qo[q1,0,-q2,0,q2-q1,2]*)qgv[2].qpm[q1].
- qgv[1] gp[p-q1,1,5].gp[q2-q1,2,6] gp[p-q2,3,4] *
+ DOT[qgv[3],qpm[q2],(*qo[q1,0,-q2,0,q2-q1,2]*)qgv[2],qpm[q1],
+ qgv[1]] DOT[gp[p-q1,1,5],gp[q2-q1,2,6]] gp[p-q2,3,4] *
  gv[p-q1,5, q1-q2,6, q2-p,4]
                 )
 ,
 "nsqq17" :> 2 * (
- qgv[4].qpm[p-q1].qgv[3].qpm[q2-q1].
- qo[q2,0,q1-q2,0,-q1,2] . qpm[q2].qgv[1] *
+ DOT[qgv[4],qpm[p-q1],qgv[3],qpm[q2-q1],
+ qo[q2,0,q1-q2,0,-q1,2] , qpm[q2],qgv[1]] *
  gp[q2-p,1,3] gp[q1,2,4]
                 ) 
 (*
 +
              1 (
- qgv[4].qpm[q1].qo[q1-q2,0,-q1,0,q2,1] . 
- qpm[q1-q2] . qgv[3] . qpm[p-q2] . qgv[2] 
+ DOT[qgv[4],qpm[q1],qo[q1-q2,0,-q1,0,q2,1] , 
+ qpm[q1-q2] , qgv[3] , qpm[p-q2] , qgv[2]]
  gp[q2,1,2] gp[q1-p,3,4]
                 )
 *)
 ,
 "nsqq18" :> 
  1* (
- qgv[4].qpm[p-q2].qo[p-q1,_,_,q2-p,_,_,q1,2,-q2,3].
- qpm[p-q1].qgv[1] *
+ DOT[qgv[4],qpm[p-q2],qo[p-q1,_,_,q2-p,_,_,q1,2,-q2,3],
+ qpm[p-q1],qgv[1]] *
  gp[q1,1,2] gp[q2,3,4] 
  ) 
 ,
 "nsqq19" :> 1 * (
- qgv[6].qpm[p-q1].qo[p,_,_, q1-p,_,_, q2-q1,2, -q2,1] *
+ DOT[qgv[6],qpm[p-q1],qo[p,_,_, q1-p,_,_, q2-q1,2, -q2,1]] *
  gp[q2-q1,2,4] gp[q2,1,3] gp[q1,5,6] *
  gv[-q1,5, q2,3, q1-q2,4]
                 )
 ,
 "nsqq20" :> 2 * (
- qgv[4].qpm[p-q2].qgv[3].qpm[q1-q2].
- qo[p,_,_, q2-q1,_,_, q1-p,1, -q2,2] *
+ DOT[qgv[4],qpm[p-q2],qgv[3],qpm[q1-q2],
+ qo[p,_,_, q2-q1,_,_, q1-p,1, -q2,2]] *
  gp[q1-p,1,3] gp[q2,2,4]
                 )
 (*
@@ -954,12 +954,12 @@ nochnich
           gp[q1, 5, 12] *
          gv[q2,3, q1-q2,4, -q1,5] *
          DiracTrace[
-                    qgv[12] .
-                    qp[p-q1, 10, 11] .
-                    qgv[8] .
-                    qp[p-q2, 2, 9] .
-                    qgv[1]   .
-                    (DiracSlash[p]/4) .  DiracGamma[5]
+                    DOT[qgv[12] ,
+                    qp[p-q1, 10, 11] ,
+                    qgv[8] ,
+                    qp[p-q2, 2, 9] ,
+                    qgv[1]   ,
+                    (DiracSlash[p]/4) ,  DiracGamma[5]]
                    ]
 *)
 ,
@@ -972,7 +972,7 @@ nochnich
             gp[q1-q2,6,10] *
            gv[q1,8, -q2,9, q2-q1,10] *
            gv[q2,5, q1-q2,6, -q1,7] *
-           qgv[11] . qp[p-q2,2,12] . qgv[1] 
+           DOT[qgv[11] , qp[p-q2,2,12] , qgv[1]]
          ) 
 ,
 "gq2" :> (-2 *
@@ -984,7 +984,7 @@ nochnich
             ghp[q1-q2,6,10] *
            ggv[-q2,9,q1,8, q2-q1,10] *
            ggv[q2,5, q1-q2,6, -q1,7] *
-           qgv[11] . qp[p-q2,2,12] . qgv[1] 
+           DOT[qgv[11] , qp[p-q2,2,12] , qgv[1]]
          )
 ,
 "gq3" :> (-2 *
@@ -992,22 +992,22 @@ nochnich
             gp[q2,1,3] *
             gp[q2,4,5] * gp[q2,9,11] *
            DiracTrace[ (2 Tf) Nf *
-                      qgv[5] .
-                      qp[q1] .
-                      qgv[9] .
-                      qp[q1-q2]
+                      DOT[qgv[5] ,
+                      qp[q1] ,
+                      qgv[9] ,
+                      qp[q1-q2]]
                      ] *
-                      qgv[11] . qp[p-q2,2,12] . qgv[1] 
+                      DOT[qgv[11] , qp[p-q2,2,12] , qgv[1]]
          )
 ,
 "gq4" :> (1 *
            go[q2,3,4] *
             gp[q2,1,3] *
             gp[q2,4,5] *
-             qgv[5] . qp[p-q2] . qgv[8] .
-             gp[q2 - q1, 8, 12] .
-             qp[p-q1] .
-             qgv[12] . qp[p-q2] . qgv[1] 
+             DOT[qgv[5] , qp[p-q2] , qgv[8] ,
+             gp[q2 - q1, 8, 12] ,
+             qp[p-q1] ,
+             qgv[12] , qp[p-q2] , qgv[1]]
          )
 ,
 "gq5" :> (go[q1,6,7] *
@@ -1018,7 +1018,7 @@ nochnich
             gp[q1-q2,5,10] *
            gv[q2,3, -q1,4, q1-q2,5] *
            gv[q1,8, -q2,9, q2-q1,10] *
-           qgv[11] . qp[p-q2,2,12] . qgv[1]
+           DOT[qgv[11] , qp[p-q2,2,12] , qgv[1]]
          )
 ,
 "gq6" :> (1 *
@@ -1028,18 +1028,18 @@ nochnich
             gp[q2,8,9] *
             gp[q1-q2,4,7]*
            gv[q1,6, q2-q1,7, -q2,8] *
-           qgv[9] . qp[p-q2,2,12] . qgv[1] 
+           DOT[qgv[9] , qp[p-q2,2,12] , qgv[1]]
          )
 ,
 "gq7" :> ( 1 *
            go[q1,6,7] *
             gp[q1,4,6] *
             gp[q1,7,8] *
-            qgv[12] . qp[q2,9,11] .
-            gp[q2-p,2,12] .
-            qgv[8] . qp[q2-q1] .
-            qgv[4] . qp[q2,1,3]  .
-            qgv[2] 
+            DOT[qgv[12] , qp[q2,9,11] ,
+            gp[q2-p,2,12] ,
+            qgv[8] , qp[q2-q1] ,
+            qgv[4] , qp[q2,1,3]  ,
+            qgv[2]]
          )
 ,
 "gq8" :> ( 2 *
@@ -1049,25 +1049,25 @@ nochnich
             gp[q1-q2,6,12] *
             gp[q1,7,8] *
             gv[q2,5, q1-q2,6, -q1, 7] *
-            qgv[8] .
-            qp[p - q1, 9, 10] .
-            qgv[12] .
-            qp[p - q2, 2, 12] .
-            qgv[1] 
+            DOT[qgv[8] ,
+            qp[p - q1, 9, 10] ,
+            qgv[12] ,
+            qp[p - q2, 2, 12] ,
+            qgv[1]]
          )
 ,
 "gq9" :> (2 *
            go[q2,3,4] *
             gp[q2,1,3] *
             gp[q2,4,5] *
-            gp[p - q1, 9, 10] .
-            qgv[9] .
-            qp[q1,7,8] .
-            qgv[5] .
-            qp[q1-q2,6,12] .
-            qgv[10] .
-            qp[p - q2, 2, 11] .
-            qgv[1] 
+            DOT[gp[p - q1, 9, 10] ,
+            qgv[9] ,
+            qp[q1,7,8] ,
+            qgv[5] ,
+            qp[q1-q2,6,12] ,
+            qgv[10] ,
+            qp[p - q2, 2, 11] ,
+            qgv[1]]
          )
 ,
 "gq10" :> (1 *
@@ -1077,17 +1077,17 @@ nochnich
            gp[q2, 1, 3] *
            gp[q1, 5, 12] *
            gv[q2,3, q1-q2,4, -q1,5] *
-                    qgv[12] .
-                    qp[p-q1, 10, 11] .
-                    qgv[8] .
-                    qp[p-q2, 2, 9] .
-                    qgv[1] 
+                    DOT[qgv[12] ,
+                    qp[p-q1, 10, 11] ,
+                    qgv[8] ,
+                    qp[p-q2, 2, 9] ,
+                    qgv[1]]
           )
 ,
 "gq11" :> (go[q2,3, q1-q2,4, -q1,5] *
           gp[q2,1,3] * gp[q1-q2,4,9] * gp[q1,5,6] *
-                    qgv[6] . qp[p-q1] . qgv[9] .
-                    qp[p-q2] . qgv[1]
+                    DOT[qgv[6] , qp[p-q1] , qgv[9] ,
+                    qp[p-q2] , qgv[1]]
            )
 ,
 "gg1" :> go[p,mu,a, -q1,1, q1-p,2] *
@@ -1465,129 +1465,129 @@ nochnich
 ,
 "gg30" :> (
 -2* DiracTrace[2 Tf *
-          go[p,mu,a, -q1,1, q1-p,2] .
-          gp[q1-p, 2, 3] gp[q1,   1, 10] .
-          qgv[10] .  qp[-q2] .
-          qgv[nu,b] .
-          qp[p-q2] .
-          qgv[3] .
-          qp[q1-q2]
+          DOT[go[p,mu,a, -q1,1, q1-p,2] ,
+          gp[q1-p, 2, 3] gp[q1,   1, 10] ,
+          qgv[10] ,  qp[-q2] ,
+          qgv[nu,b] ,
+          qp[p-q2] ,
+          qgv[3] ,
+          qp[q1-q2]]
                    ]
         )
 ,
 "gg31" :> (
 -2* DiracTrace[2 Tf  *
-         go[q2, 3, 4] .
-          gp[q2, 1, 3] .
-          gp[q2-p, 2, 11] .
-          gp[q2, 4, 5] .
-          qgv[11] .
-          qp[q2-q1, 6, 12] .
-          qgv[5] .
-          qp[-q1, 8, 7] .
-          qgv[nu,b].
-          qp[p-q1, 10, 9] .
-         gv[p,mu,a, -q2,1, q2-p, 2]
+         DOT[go[q2, 3, 4] ,
+          gp[q2, 1, 3] ,
+          gp[q2-p, 2, 11] ,
+          gp[q2, 4, 5] ,
+          qgv[11] ,
+          qp[q2-q1, 6, 12] ,
+          qgv[5] ,
+          qp[-q1, 8, 7] ,
+          qgv[nu,b],
+          qp[p-q1, 10, 9] ,
+         gv[p,mu,a, -q2,1, q2-p, 2]]
                      ]
           )
 ,
 "gg32" :> (
 -2*
           DiracTrace[2 Tf  *
-         go[q2, 3, 4] .
-          gp[q2, 1, 3] .
-          gp[q2-p, 2, 11] .
-          gp[q2, 4, 5] .
-          qgv[11] .
-          qp[-(p-q1), 10, 9] .
-          qgv[nu,b].
-          qp[q1, 8, 7] .
-          qgv[5] .
-          qp[q1-q2, 6, 12] .
-         gv[p,mu,a, -q2,1, q2-p, 2]
+         DOT[go[q2, 3, 4] ,
+          gp[q2, 1, 3] ,
+          gp[q2-p, 2, 11] ,
+          gp[q2, 4, 5] ,
+          qgv[11] ,
+          qp[-(p-q1), 10, 9] ,
+          qgv[nu,b],
+          qp[q1, 8, 7] ,
+          qgv[5] ,
+          qp[q1-q2, 6, 12] ,
+         gv[p,mu,a, -q2,1, q2-p, 2]]
                     ]
           )
 ,
 "gg33" :> (
 -1*
            DiracTrace[2 Tf  *
-         go[q2-q1, 6, 7] .
-          gp[q1-q2, 4, 6] .
-          gp[q1-q2, 7, 8] .
-          qp[q2, 1, 3] .
-           qgv[mu,a] .
-          qp[q2-p, 2, 9] .
-           qgv[8] .
-          qp[q1-p, 10, 11] .
-           qgv[nu,b].
-          qp[q1, 5, 12] .
-           qgv[4]
+         DOT[go[q2-q1, 6, 7] ,
+          gp[q1-q2, 4, 6] ,
+          gp[q1-q2, 7, 8] ,
+          qp[q2, 1, 3] ,
+           qgv[mu,a] ,
+          qp[q2-p, 2, 9] ,
+           qgv[8] ,
+          qp[q1-p, 10, 11] ,
+           qgv[nu,b],
+          qp[q1, 5, 12] ,
+           qgv[4]]
                      ]
           )
 ,
 "gg34" :> (
 -2*
            DiracTrace[2 Tf  *
-           go[q1,6,7] .
-            gp[q1,4,6] .
-            gp[q1,7,8] .
-            qp[-q2,1,3] .
-             qgv[4] .
-            qp[q1-q2,5,10] .
-             qgv[8] .
-            qp[-q2,9,11] .
-             qgv[nu,b] .
-            qp[p-q2,2,12] .
-             qgv[mu,a]
+           DOT[go[q1,6,7] ,
+            gp[q1,4,6] ,
+            gp[q1,7,8] ,
+            qp[-q2,1,3] ,
+             qgv[4] ,
+            qp[q1-q2,5,10] ,
+             qgv[8] ,
+            qp[-q2,9,11] ,
+             qgv[nu,b] ,
+            qp[p-q2,2,12] ,
+             qgv[mu,a]]
                      ]
           )
 ,
 "gg35" :> (
 -2*
            DiracTrace[2 Tf  *
-           go[p,mu,a, q1-p,1 ,-q1,2] .
-            gp[q1,2,3] .
-            gp[q1,7,9] .
-            gp[q1-p,1,10] .
-            qpm[-q2,5,6] .
-             qgv[7] .
-            qpm[q1-q2,4,8] .
-             qgv[3] .
-           gv[-p,nu,b, q1,9, p-q1,10]
+           DOT[go[p,mu,a, q1-p,1 ,-q1,2] ,
+            gp[q1,2,3] ,
+            gp[q1,7,9] ,
+            gp[q1-p,1,10] ,
+            qpm[-q2,5,6] ,
+             qgv[7] ,
+            qpm[q1-q2,4,8] ,
+             qgv[3] ,
+           gv[-p,nu,b, q1,9, p-q1,10]]
                      ]
           )
 ,
 "gg36" :> (
 -2 *
             DiracTrace[2 Tf  *
-          go[q2, 3,4] .
-            gp[q2,1,3] .
-            gp[q2,4,5] .
-            gp[q2,9,11] .
-            gp[q2-p,2,12] .
-            qp[q1-q2,6,10] .
-             qgv[9] .
-            qp[q1,7,8] .
-             qgv[5] .
-           gv[p,mu,a, -q2,1, q2-p,2] .
-           gv[-p,nu,b, q2,11, p-q2,12]
+          DOT[go[q2, 3,4] ,
+            gp[q2,1,3] ,
+            gp[q2,4,5] ,
+            gp[q2,9,11] ,
+            gp[q2-p,2,12] ,
+            qp[q1-q2,6,10] ,
+             qgv[9] ,
+            qp[q1,7,8] ,
+             qgv[5] ,
+           gv[p,mu,a, -q2,1, q2-p,2] ,
+           gv[-p,nu,b, q2,11, p-q2,12]]
                       ]
           )
 ,
 "gg37" :> (
 -1 *
            DiracTrace[ 2 Tf *
-           go[q2,3,4] .
-            gp[q2,1,3] .
-            gp[q2,4,5] .
-            gp[q2-p,2,11] .
-            gp[q2-p,7,6] .
-            qp[q1-p,9,10] .
-             qgv[7] .
-            qp[q1-q2,8,12] .
-             qgv[11] .
-           gv[p,mu,a, -q2,1, q2-p,2] .
-           gv[-p,nu,b, q2,5, p-q2,6]
+           DOT[go[q2,3,4] ,
+            gp[q2,1,3] ,
+            gp[q2,4,5] ,
+            gp[q2-p,2,11] ,
+            gp[q2-p,7,6] ,
+            qp[q1-p,9,10] ,
+             qgv[7] ,
+            qp[q1-q2,8,12] ,
+             qgv[11] ,
+           gv[p,mu,a, -q2,1, q2-p,2] ,
+           gv[-p,nu,b, q2,5, p-q2,6]]
                       ]
           )
 ,
