@@ -231,6 +231,9 @@ VerbosePrint[2,"Loading HighEnergyPhysics`Phi`PhiStart`"];
 
 Get["HighEnergyPhysics`Phi`PhiStart`"];
 
+(*Clean out doubles (strings and non-strings)  in $Lagrangians*)
+$Lagrangians = Union[(ToExpression[#[[0]]] @@ #) & /@ $Lagrangians];
+
 If[tmp`pconf=!=Null,$PaletteConfiguration=tmp`pconf];
 If[tmp`verb=!=Null,HighEnergyPhysics`FeynCalc`$VeryVerbose=tmp`verb];
 If[tmp`phi=!=Null,$Phi=tmp`phi];
