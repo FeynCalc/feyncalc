@@ -184,7 +184,7 @@ CovariantD and FieldStrength.";
    $Containers = {IsoVector, UVector, UMatrix};
 
    Options[CovariantFieldDerivative] = {Explicit->True, DiagonalToU->True,
-      RemoveIntegerIndices->False,  SUNN->2, UDimension->Automatic};
+      (*RemoveIntegerIndices->False,*)  SUNN->2, UDimension->Automatic};
 
    CovariantFieldDerivative::"usage" = 
     "CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is the covariant \
@@ -322,7 +322,7 @@ HighEnergyPhysics`fctables`Amplitude`Private`amplist =
 
 Options[CovariantFieldDerivative]=
   {Explicit->True, DiagonalToU->True,
-   RemoveIntegerIndices->True,
+   (*RemoveIntegerIndices->True,*)
    SUNN->2, UDimension->Automatic};
 
 CovariantFieldDerivative[aa_,x_,loris__LorentzIndex,lori1_LorentzIndex]:=
@@ -424,8 +424,6 @@ $VerticesSpecifications =
 
 (* Source fields *)
 (* Fields not needed should be set to 0 to speed up things *)
-(* Notice that some sources are defined in configuration files,
-   but can be redefined here*)
 
 (* Fields *)
 (*QuantumField[___,Particle[Scalar[0],___],___][_]:=0;*)
@@ -496,7 +494,7 @@ UNablaHatDelta[mu_] :> _];
 $Substitutions = Append[$Substitutions, UNablaHatDelta[mu_] :>
 
 (* The standard definition *)
--I*NM[SMM,
+(*-I*NM[SMM,
 UGeneratorMatrixIsoDot[QuantumField[Particle[
 LeftComponent[0]],{mu}]],
 UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
@@ -505,13 +503,13 @@ I*NM[SMM,
 UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
 UGeneratorMatrixIsoDot[QuantumField[Particle[
 LeftComponent[0]],{mu}]],
-Adjoint[SMM]]
+Adjoint[SMM]]*)
 
 (* Including a scalar 'source' with momentum *)
-(*NM[SMM,NM[
+NM[SMM,NM[
 FDr[QuantumField[Particle[Scalar[1]]],{mu}],
 UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
-Adjoint[SMM]]]*)
+Adjoint[SMM]]]
 ];
 
 (* ************************************************************** *)
