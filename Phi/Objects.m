@@ -768,9 +768,9 @@ IsoDot[UMatrix[UIdentity, opts___], 1] := UMatrix[UIdentity, opts];
 
 (* Distributivity: *)
 
-$DotDistribute = True;
-IsoDot[b__ + c_, d__] /; $DotDistribute := IsoDot[b, d] + IsoDot[c, d];
-IsoDot[a__, b__ + c_] /; $DotDistribute := IsoDot[a, b] + IsoDot[a, c];
+$IsoDotDistribute = True;
+IsoDot[b__ + c_, d__] /; $IsoDotDistribute := IsoDot[b, d] + IsoDot[c, d];
+IsoDot[a__, b__ + c_] /; $IsoDotDistribute := IsoDot[a, b] + IsoDot[a, c];
 
 
 
@@ -1130,14 +1130,21 @@ UDot[UMatrix[UIdentity, ___], UVector[a__][x_]] := UVector[a][x];
 
 (* Distributivity: *)
 
-$DotDistribute = True;
-UDot[b__ + c_, d__] /; $DotDistribute := UDot[b, d] + UDot[c, d];
-UDot[a__, b__ + c_] /; $DotDistribute := UDot[a, b] + UDot[a, c];
+$UDotDistribute = True;
+(*UDot[a_, b__ + c_, d_] /; $UDotDistribute := UDot[a, b, d] + UDot[a, c, d];*)
+UDot[b__ + c_, d__] /; $UDotDistribute := UDot[b, d] + UDot[c, d];
+UDot[a__, b__ + c_] /; $UDotDistribute := UDot[a, b] + UDot[a, c];
+
 
 (* "Inner flatnes" *)
 
 UDot[a_, aa___, UDot[b__, c_]] := UDot[a, NM[aa, b], c];
 UDot[UDot[a_, b__], cc___, c_] := UDot[a, NM[b, cc], c];
+
+(*Expanding sums*)
+
+UDotExpand[expr_] :=
+    expr //. UDot[a___, b_ + c_, d___] -> Distribute[UDot[a, b + c, d]];
 
 
 
@@ -4035,10 +4042,14 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
       b*cr[a, bb]
 
   };
+  
+  $CommutatorRules3 = {UDot[a___, Times[b_, bb_], c___] /;
+         FreeQ[b, UMatrix, Heads->True] && FreeQ[b, UVector, Heads->True] && FreeQ[b, noncommpatt]:>
+                       b*UDot[a, bb, c]};
 
 
   $CommutatorRules =
-      Join[$CommutatorRules1, $CommutatorRules2];
+      Join[$CommutatorRules1, $CommutatorRules2, $CommutatorRules3];
 
 
   If[(FullReduce /. Flatten[{op}] /. Options[CommutatorReduce]) =!= True,
