@@ -187,10 +187,12 @@ Options[AddExternalLegs] = {ExternalPropagators -> 1, faseens -> False};
 Options[DiscardTopologies] = {PerturbationOrder -> 2,
       OrderingPatterns -> {}};
 (*Using :> instead of -> below is important*)
-Options[WFRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
+Options[WFRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration,
+                          OnMassShell -> False};
 Options[PMRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[DCRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
-Options[WFFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
+Options[WFFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration,
+                     ChargeSymmetry -> True, OnMassShell -> False};
 Options[PMFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[DCFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[CreateFCAmp] = {WFRenormalize -> False, PerturbationOrder -> 2,
@@ -1330,28 +1332,34 @@ cruls := Block[{parts, part, rul, tmppart},(parts = {}; (part = #[[1]]; (rul = (
                 seq -> Sequence // Flatten)]; 
 
 WFFactor[pro_, opts___?OptionQ] := 
-    Block[{nam, dum, prop, res},
-      prop = pro /. cruls;
+    Block[{nam, dum, prop, res, ph, a},
+      prop = pro /. $LastModelRules /. cruls;
       DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[HighEnergyPhysics`fctables`ChekcDB`ChekcDB::"nostring"];
-      nam = XName[VertexFields -> {prop[[-1]]},
+      Off[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
+      nam = XName[VertexFields -> ({prop[[-1]]} /.
+             If[ChargeSymmetry /. {opts} /. Options[WFFactor],
+                -(ph : $ParticleHeads)[a_] -> ph[a],
+                {}]),
             Sequence @@ OptionsSelect[XName, opts, Options[WFFactor]],
-            XFileName -> Automatic] <> ".Fac";
+            XFileName -> Automatic] <>
+            If[MatchQ[prop[[0, 1]], fainc | faout | faext] &&
+               (OnMassShell/.Flatten[{opts}]/.Options[WFFactor]) === True, "-0", ""] <>
+            ".Fac";
       res=Which[MatchQ[prop[[0, 1]], 
           fainc | faout | faext],
        (*The factor loaded from disk is 1/Z*)
        (*External propagators get only the squareroot of a Z-factor*)
-       (3 - ChekcDB[dum, nam,
+       (3 - CheckDB[dum, nam,
               NoSave -> True,
               ForceSave -> False])/2 - 1, 
         MatchQ[prop[[0, 1]], faint | faloop], 
        (*Internal propagators get a full Z-factor*)
-        1 - ChekcDB[dum, nam,
+        1 - CheckDB[dum, nam,
             NoSave -> True,
             ForceSave -> False], True, 
         Message[WFFactor::"noprop", prop[[0, 1]]]; Return[]];
       EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[HighEnergyPhysics`fctables`ChekcDB`ChekcDB::"nostring"];
+      On[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
       If[FreeQ[res,dum], res, WFFactor1[prop(*nam*), opts]]
 ];
 
@@ -1403,15 +1411,15 @@ momtop[[0]] @@ ((#[[1]] /. #[[2]]) & /@
 PMFactor[mass_, opts___?OptionQ] := 
     Block[{nam, dum, res},
       DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[HighEnergyPhysics`fctables`ChekcDB`ChekcDB::"nostring"];
+      Off[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
       nam = XName[VertexFields -> {mass[[1]][0]}, 
             Sequence @@ OptionsSelect[XName, opts, Options[PMFactor]],
             XFileName -> Automatic] <> ".Mass";
-      res=ChekcDB[dum, nam, 
+      res=CheckDB[dum, nam, 
         NoSave -> True, 
         ForceSave -> False];
       EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[HighEnergyPhysics`fctables`ChekcDB`ChekcDB::"nostring"];
+      On[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
       If[FreeQ[res,dum], res, PMFactor1[mass, opts]]
     ];
 
@@ -1442,15 +1450,15 @@ PMRenormalize[amp_, opts___?OptionQ] :=
 DCFactor[ff_, opts___?OptionQ] := 
     Block[{nam, dum, res}, 
       DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[HighEnergyPhysics`fctables`ChekcDB`ChekcDB::"nostring"];
+      Off[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
       nam = XName[VertexFields -> {AxialVector[0][0], ff[[1]][0]}, 
             Sequence @@ OptionsSelect[XName, opts, Options[DCFactor]],
             XFileName -> Automatic] <> ".Fac";
-      res=ChekcDB[dum, nam, 
+      res=CheckDB[dum, nam, 
         NoSave -> True, 
         ForceSave -> False];
       EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[HighEnergyPhysics`fctables`ChekcDB`ChekcDB::"nostring"];
+      On[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
       If[FreeQ[res,dum], res, DCFactor1[ff, opts]]
     ];
 

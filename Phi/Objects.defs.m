@@ -81,12 +81,12 @@ RenormalizationsState[0]],ParticleMass[Pion,RenormalizationsState[0]],\
 ParticleMass[Pion,RenormalizationsState[0]]}.";
 
 OnMassShell::"usage" =
-    "OnMassShell is an option for MandelstamReduce, AmplitudeProjection and \
-VeltmanExpand, specifying whether the 4 momenta of the particles should be \
-put on-mass-shell.  MandelstamReduce and VeltmanExpand use the setting of the \
-option Masses, AmplitudeProjection the setting of the option Channel for the \
-numbering of the masses.  Default value : False for VeltmanExpand, True for \
-the others.";
+    "OnMassShell is an option for MandelstamReduce, AmplitudeProjection, \
+VeltmanExpand, WFFactor and WFRenormalize, specifying whether the 4-momenta \
+of the particles should be put on-mass-shell.  MandelstamReduce and VeltmanExpand \
+use the setting of the option Masses, AmplitudeProjection the setting of the \
+option Channel for the numbering of the masses.  Default value : False for \
+VeltmanExpand, WFFactor and WFRenormalize, True for the others.";
 
 PerturbationOrder::"usage" =
     "PerturbationOrder is an option for MomentaCollect, XName, \
@@ -1228,15 +1228,6 @@ MomentaSumRule, MomentaCollect, FAToFC, FAToFC, AmplitudeProjection, \
 MandelstamReduce and VeltmanExpand.  When MomentumVariablesString is set to \
 \"p\", the momentum variables used by these functions will be of the form p1, \
 p2, p3, ....  Default value : \"p\".";
-
-WFFactor1::"usage" = 
-    "WFFactor1[prop] is returned by WFFactor when the wave function renormalization \
-factor corresponding to the propagator prop is not found in the directory \"Factors\".";
-
-WFFactor::"usage" = 
-    "WFFactor[prop] searches the directory \"Factors\" and returns the wave \
-function renormalization factor corresponding to the propagator prop. \
-WFFactor is used by WFRenormalize.";
 
 (*
 Composed objects for construction of lagrangians

@@ -554,7 +554,8 @@ TracerToFC[
 (*Commented out 16/9-2002. Will look at DOT instead*)
 (*SetAttributes[ditchmom, NumericFunction];*)
 DiscardOrders[am_, opts___] :=
-  (If[!FreeQ[am, WFFactor1],Message[DiscardOrders::wffac]];
+  (If[!FreeQ[am, HighEnergyPhysics`Phi`Couplings`WFFactor1],
+        Message[DiscardOrders::wffac]];
   (spf = (HighEnergyPhysics`Phi`Objects`ScalarProductForm /.
               Flatten[{opts}] /. Options[DiscardOrders]);
       Cancel[ExpandAll[

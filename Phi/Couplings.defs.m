@@ -359,6 +359,22 @@ be set to True or Explicit.  In the latter case, SumOver[i,r]*exp, where \
 exp is some expression is summed explicitly over i from 1 to r.  \
 Default value of Sum : True.";
 
+WFFactor1::"usage" = 
+    "WFFactor1[prop] is returned by WFFactor when the wave function renormalization \
+factor corresponding to the propagator prop is not found in the directory \"Factors\".";
+
+WFFactor::"usage" = 
+    "WFFactor[prop] searches the directory \"Factors\" and returns the wave \
+function renormalization factor corresponding to the propagator prop. \
+WFFactor is used by WFRenormalize.\
+NOTICE : Wavefunction factors stored in the directory \"Factors\", with \
+a name with \"-0\" preceding the extension \".Fac\" are by convention \
+on-mass-shell.";
+
+ChargeSymmetry::"usage" = 
+    "ChargeSymmetry is an option of WFFactor specifying whether the renormalization factor of a \
+particle and its antiparticle are identical.";
+
 WFRenormalize::"usage" = 
     "WFRenormalize[exp] calculates the wave function renormalization factors \
 for the propagators of exp.  Exp must be of the form TopologyList[__][__] as returned \
