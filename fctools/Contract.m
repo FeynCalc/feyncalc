@@ -471,7 +471,16 @@ tim = TimeUsed[];
      sceins[0,_]:=0;                               (*sceinsdef*)
      sceins[a_LorentzIndex b_, c_] := b sceins[a, c];
      sceins[a_Momentum b_, c_] := b sceins[a, c];
-  
+
+
+dim[]=4;
+dim[d_]:=d;
+(* do this immediately, Oct. 2003 *)
+simplerules = {Pair[LorentzIndex[a_, di___], b_]*
+        Pair[LorentzIndex[a_, di___], c_] :> Pair[b, c], 
+      Pair[LorentzIndex[x_, di___], LorentzIndex[x_, di___]] :> 
+       dim[di], Pair[LorentzIndex[x_, di___], y_]^2 :> 
+       Pair[y, y]};
 (*
    contracT[x_,opt___Rule] := x /; FreeQ2[ x,{LorentzIndex,Eps,Momentum} ];
 *)
@@ -503,6 +512,8 @@ tim = TimeUsed[];
          ]
        ];
      If[ contractexpandopt === True,
+(* NEW October 2003, this speeds things up in general*)
+         contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
          contractres = contractres /. 
                        {((yy_Plus)  /;!FreeQ[yy, LorentzIndex])^2 :>
                         ((Contract @@ {yy/.sCO->Pair, yy/.sCO->Pair} 
