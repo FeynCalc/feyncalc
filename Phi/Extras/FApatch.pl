@@ -1,8 +1,10 @@
 #!/usr/bin/perl
 #
 # Perl script to patch FeynArts to work with Phi and FeynCalc.
+# There is absolutely no guarantee that this script will work
+# on your system or with any other FeynArts version than 2.2
 # 
-# Phi version 1.2, Frederik Orellana 2/8-2000.
+# Phi version 1.2, Frederik Orellana May 21 2001.
 #
 #
 
@@ -18,33 +20,6 @@ $confirm = <STDIN>;
 
 if ($confirm =~ "y" || $confirm =~ "yes") {
 
-# The list of files to be modified
-
-@FAfiles=("FeynArts.m","SetUp.m","FeynArts/Analytic.m",
-"FeynArts/Graphics.m","FeynArts/Initialize.m","FeynArts/Insert.m",
-"FeynArts/Topology.m","FeynArts/Utilities.m");
-
-# The list of names to be changed
-
-@FAnames=("Loop","Indices","Global`PolarizationVector","FeynAmp",
-"PropagatorDenominator","FeynAmpDenominator","GaugeXi","NonCommutative",
-"Global`DiracSpinor","Global`DiracTrace");
-
-# The list of names to be substituted in
-
-@FCnames=(
-"FALoop",
-"FAIndices",
-"Global`FAPolarizationVector",
-"FAFeynAmp",
-"HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator",
-"HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator",
-"HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi",
-"FANonCommutative",
-"HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
-"HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace"
-);
-
 # Get the base directory
 
 print "\nEnter the path to the directory containing FeynArts.m: \n\n";
@@ -54,6 +29,39 @@ $input_dir = <STDIN>;
 $input_dir =~ s/\n//g;
 
 print "\n";
+
+# The list of files to be modified
+
+# FeynArts 3, for some reason uses the name Setup.m instead of SetUp.m
+$setup="";
+if(open(DATA,"$input_dir/SetUp.m")){$setup="SetUp.m"}
+else{$setup="Setup.m"}
+
+@FAfiles=("FeynArts.m",$setup,"FeynArts/Analytic.m",
+"FeynArts/Graphics.m","FeynArts/Initialize.m","FeynArts/Insert.m",
+"FeynArts/Topology.m","FeynArts/Utilities.m");
+
+# The list of names to be changed
+
+@FAnames=("Loop","Indices","Global`PolarizationVector","FeynAmp",
+"PropagatorDenominator","FeynAmpDenominator","GaugeXi","NonCommutative",
+"Global`DiracSpinor","FeynArts`DiracSpinor","Global`DiracTrace");
+
+# The list of names to be substituted in
+
+@FCnames=(
+"HighEnergyPhysics`FeynCalc`Loop`Loop",
+"FAIndices",
+"Global`FAPolarizationVector",
+"FAFeynAmp",
+"HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator",
+"HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator",
+"HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi",
+"FANonCommutative",
+"HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
+"HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
+"HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace"
+);
 
 # Check if FeynArts.m can be found and has not already been patched
 
@@ -117,6 +125,8 @@ while (eof(DATA) <= 0){
 
     $add =~ s/Global`DiracSpinor\[ mom_, mass_, ___ \] \:\= Global`Spinor\[mom, mass\];/(*Global`DiracSpinor[ mom_, mass_, ___ ] := Global`Spinor[mom, mass];*)/;
 
+    $add =~ s/Global`DiracSpinor\[ mom_, mass_, ___ \] \:\= FeynArts`Spinor\[mom, mass\];/(*Global`DiracSpinor[ mom_, mass_, ___ ] := FeynArts`Spinor[mom, mass];*)/;
+
     $add =~ s/Attributes\[\s?FeynAmpDenominator\s?\]\s?\=\s?\{Orderless\}//;
 
     push(@lines,$add);
@@ -134,7 +144,7 @@ close(DATA);
 # Make it known that the FA code has been patched
 # and replace / with $PathnameSeparator
 
-print "Replacing \"/\" with \"\$PathnameSeparator\" and setting \$FeynArtsDir\n\n";
+print "Changing context to HighEnergyPhysics`FeynArts`, replacing \"/\" with \"\$PathnameSeparator\" and setting \$FeynArtsDir\n\n";
 
 open(DATA,"$input_dir/FeynArts.m") || die "Cannot open file for reading!\n";
 
@@ -146,10 +156,10 @@ while (eof(DATA) <= 0){
 
     $add =~ s/Have fun!/Have fun!!
 
-Patch FApatch (August 1 2000) applied for
+Patch FApatch (May 21 2001) applied for
 compatibility with Phi and FeynCalc/;
 
-    $add =~ s/Print\[\"last revision:(.*)\"\]/Print\["last revision: $1" \];
+    $add =~ s/Print\[\"last revis(.*)\"\]/Print\["last revis$1" \];
 Print\["patched for use with FeynCalc by Frederik Orellana"\];
 
 (* To avoid error messages on reload *)
@@ -157,9 +167,11 @@ If[NumberQ[HighEnergyPhysics`FeynArts`\$FeynArts],
 ClearAll[HighEnergyPhysics`FeynArts`Greek, HighEnergyPhysics`FeynArts`UCGreek],
 Remove[HighEnergyPhysics`FeynArts`\$FeynArts]];/;
 
+    $add =~ s/BeginPackage\[\"FeynArts\`\"\]/BeginPackage["HighEnergyPhysics`FeynArts`"]/;
+
     $add =~ s/\"(.*)\/(.*)\"/\"$1\" \<\> \$PathnameSeparator \<\> \"$2\"/;
 
-    $add =~ s/\$Platform = Environment\[\"HOSTTYPE\"\]/\$Platform = Environment[\"HOSTTYPE\"]
+    $add =~ s/\$FeynArtsDir = (.*)$/\$FeynArtsDir = $1;
 
 If[ValueQ[HighEnergyPhysics\`FeynCalc\`\$FeynCalcDirectory],
 \$FeynArtsDir = HighEnergyPhysics\`FeynCalc\`\$FeynCalcDirectory<>
@@ -208,14 +220,17 @@ foreach (@FAfiles) {
 
         # Have formatting only for TraditionalForm
 	
+        $add =~ s/InferFormat/tmpInfer/g;
 	$add =~ s/Format\[(.*)\]\s?\:\=/Format[$1, TraditionalForm] :=/g;
 	$add =~ s/Format\[(.*)\]\s?\=/Format[$1, TraditionalForm] =/g;
+        $add =~ s/tmpInfer/InferFormat/g;
 
         # Clean up unwanted replacements
 
-        $add =~ s/FALoopNr/LoopNr/g;
-        $add =~ s/FALoopPD/LoopPD/g;
-        $add =~ s/SetFALoop/SetLoop/g;
+        $add =~ s/HighEnergyPhysics`FeynCalc`Loop`LoopNr/LoopNr/g;
+        $add =~ s/\"HighEnergyPhysics`FeynCalc`Loop`Loop\"/\"Loop\"/g;
+        $add =~ s/HighEnergyPhysics`FeynCalc`Loop`LoopPD/LoopPD/g;
+        $add =~ s/SetHighEnergyPhysics`FeynCalc`Loop`Loop/SetLoop/g;
         $add =~ s/KinematicFAIndices/KinematicIndices/g;
         $add =~ s/CreateFAFeynAmp/CreateFeynAmp/g;
         $add =~ s/FADiracFASpinor/FADiracSpinor/g;
@@ -241,7 +256,7 @@ foreach (@FAfiles) {
 
 ################################################################################
 
-open(DATA,"$input_dir/SetUp.m") || die "Cannot open file for reading!\n";
+open(DATA,"$input_dir/$setup") || die "Cannot open file for reading!\n";
 
 @lines = ();
 
@@ -259,7 +274,7 @@ while (eof(DATA) <= 0){
 
 close(DATA);
 
-open(DATA,">$input_dir/SetUp.m") || die "Cannot open file for writing!\n";
+open(DATA,">$input_dir/$setup") || die "Cannot open file for writing!\n";
 for $ii (@lines) {print DATA "$ii";}
 close(DATA);
 
@@ -301,10 +316,16 @@ while (eof(DATA) <= 0){
 
     $add = <DATA>;
 
-    # Small fix to allow one-vertices
+    # Small fix to allow one-vertices (FA 2.2)
 
     $add =~ s/DeleteCases\[Take\[\#\, 2\]\, Vertex\[1\]\[_\]\]\&\/\@ top\,/(DeleteCases[Take[\#, 2], Vertex[1][_]] \& \/\@ (top \/. 
           p : Propagator[Internal][___, Vertex[1][_], ___] :> (p \/. 
+                Vertex[1] -> Vertex[vertexone]))) \/. vertexone -> 1,/;
+
+    # Small fix to allow one-vertices (FA3)
+
+    $add =~ s/DeleteCases\[Take\[\#\, 2\]\, Vertex\[1, ___\]\[_\]\]\&\/\@ top\,/(DeleteCases[Take[\#, 2], Vertex[1][_]] \& \/\@ (top \/. 
+          p : Propagator[Internal][___, Vertex[1, ___][_], ___] :> (p \/. 
                 Vertex[1] -> Vertex[vertexone]))) \/. vertexone -> 1,/;
 
     push(@lines,$add);
@@ -363,11 +384,19 @@ while (eof(DATA) <= 0){
 
     $add =~ s/ShortHand\[ type_ \] \:\= StringTake\[ ToString\[type\]\, 3 \]/ShortHand[ type_ ] := StringTake[ ToString[type],Min[3,StringLength[ToString[type]]] ]/;
 
-    # Use TraditionalForm formatting
+    # Use TraditionalForm formatting (FA 2.2)
 
     $add =~ s/SymbolChar\[ c_ \] \:\= FontForm\[c\, \{\"Symbol\"\, \#\}\]\&/(*SymbolChar[ c_ ] := FontForm[c, {"Symbol", #}]&*)/;
 
-    # Use Mathematica symbols with TeXToPS
+    # Use TraditionalForm formatting (FA 3)
+
+    $add =~ s/MmaChar\[ _\[c_\] \] \:= FontForm\[c\, \{\"Symbol\"\, fscale fsize\}\]\;/(*MmaChar[ _[c_] ] := FontForm[c, {"Symbol", fscale fsize}];*)/;
+
+    # Use TraditionalForm formatting (FA 3)
+
+    $add =~ s/StyleForm\[DisplayForm\[label\]\,(\s*)FontFamily(\s*)-\>(\s*)LabelFont\,/StyleForm[If[res=True; label \/\/. a_String :> (res = res && SyntaxQ[a]); res ,TraditionalForm[ToExpression[label] \/. Null -> \"\"],DisplayForm[label]], FontFamily -> LabelFont,/;
+
+    # Use Mathematica symbols with TeXToPS (FA 2.2)
 
     $add =~ s/TextChar\[ c_ \] \:\= FontForm\[c\, \{TextFont\, \#\}\]\&/(*TextChar[ c_ ] := FontForm[c, {TextFont, #}]&*)
 
@@ -380,9 +409,13 @@ SymbolChar[ c_ ] := StyleForm[form[c], FontFamily->TextFont, FontSize->#]&
 
 TextChar[ c_ ] := StyleForm[form[ToExpression[c]\/.Null->""], FontFamily->TextFont, FontSize->#]&/;
 
-    # Use font Times instead of Helvetica
+    # Use font Times instead of Helvetica (FA 2.2)
 
     $add =~ s/TextFont = "Helvetica"/TextFont = "Times"/;
+
+    # Use font Times instead of Helvetica (FA 3)
+
+    $add =~ s/LabelFont = \"Helvetica\"/LabelFont = "Times"/;
 
     # Use Mathematica symbols for arrows
 
