@@ -1152,6 +1152,7 @@ UExp[0, m_, n : (_Integer | _List)] :=
 
 (*9/7-2003. Fixed bug reported by Paul Buettiker: When zeros were in
   $UExpansionCoefficients the thing didn't work*)
+(*Having the function remember the values gives problems*)
 UExp[ii_, m_, n_Integer] := (*UExp[ii, m,  n] =*)
 Block[{ssuu, x, sumstart, pos, zero, uexpCoeffs},
        pos = Position[$UExpansionCoefficients,0,{1}];
@@ -1800,8 +1801,22 @@ WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
   NM[a[x], UMatrix[b]] + UMatrix[UIdentity] a. This is because e.g.
   a+{{b11,b12},{b21,b22}} gives {{a + b11, a + b12}, {a + b21, a + b22}}.
   14/6-2003*)
-WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := 
-  WriteOutUMatrices1[WriteOutUMatrices2[aa(*/.NM->nm*),optss],optss](*/.nm->NM*);
+(*Now we have problems with e.g.
+  NM[UMatrix[UChiralSpurionLeft1[]][x], UMatrix[UGenerator[ExplicitSUNIndex[1]]]],
+  so that was the reason: With a product, each factor is written out sequentially
+  and NM can do it's thing in between.
+  So let's try another hack: replacing Plus temporarily.*)
+(*And now "#¤% we have problems with e.g
+  NM[NM[a, UMatrix[aa]] + NM[b, UMatrix[bb]], UMatrix[cc]].
+  Fixed by declaring plus a UMatrix.*)
+WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := Block[
+  {plus, nm, tr, res},
+  DeclareUMatrix[plus];
+  res=WriteOutUMatrices1[WriteOutUMatrices2[aa/.UTrace1->tr/.NM->nm/.Plus->plus,optss],optss]/.
+    nm->NM/.plus->Plus/.tr->UTrace1;
+  UndclareUMatrix[plus];
+  res
+  ];
 
 UIdentity[i : uindxx[_], j : uindxx[_], opts___?OptionQ] :=
     Which[(fcsunn /. Flatten[{opts}] /. Options[UMatrix]) == 2 &&
