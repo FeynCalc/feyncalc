@@ -17,7 +17,7 @@ BeginPackage["HighEnergyPhysics`fcloops`TID`",
 
 TID::"usage" = 
 "TID[amp, q] does a 1-loop tensor integral decomposition, transforming the
-lorentz indices away from the integration momentum q.";
+Lorentz indices away from the integration momentum q.";
 
 (* ------------------------------------------------------------------------ *)
 
