@@ -1641,28 +1641,6 @@ AmplitudeProjection[amp_,
           Channel -> {{PionPlus, PionPlus} -> {PionPlus, PionPlus}},
           Sequence[opts]];
 
-(* After doing loops with FeynArts, particle masses with SU(N) indices come out.
-   They can be projected out in charged masses with IsoToChargedMasses *)
-
-IsoToChargedMasses[exp_] := 
-    Block[{part, rul, tmppart, parts, subpar, seq}, parts = {}; 
-      subpar = (part = #[[1]]; (rul = (tmppart = 
-                                ParticleMass[#[[1]], #[[2, 1]] | 
-                                    fcsuni[#[[2, 1]]], r___]; tmppart) -> 
-                            ParticleMass[part, r]; 
-                        If[FreeQ[parts /. Alternatives :> (({##}[[1]]) &), 
-                            tmppart], parts = Append[parts, tmppart]; rul, 
-                          seq[]]) & /@ 
-                    Cases[{#[[2]]}, _Iso, 
-                      Infinity]) & /@ $IsoSpinProjectionRules /. 
-            seq -> Sequence // Flatten; exp /. subpar];
-
-(*Implementation from notebook:*)
-(*subpar = (((alt @@ ((ParticleMass[##, ___] & @@ #) & /@ (MapAt[(SUNIndex @@ #)&,
-#, {-1}] & /@ Cases[#[[2]], Iso[Alternatives @@ $ParticlesInUse,
-{_Integer}], {0, 3}]))) -> (ParticleMass[#[[1]]])) & /@
-$IsoSpinProjectionRules) /. alt[a_] :> a /. alt :> Alternatives*)
-
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 End[];

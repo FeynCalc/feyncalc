@@ -6,7 +6,7 @@ Definitions for the package Couplings
 Usage
 *)
 
-FAParticleMass::Usage=
+FAParticleMass::"usage"=
 "FAParticleMass is a function used internally by the FeynArts model
 Automatic.mod provided by PHI. It is used for setting the ParticleMass of \
 the different PHI particles.";
@@ -276,11 +276,11 @@ unwanted.  Default value : SUNDelta.";
 MomentaCollect::"usage" = "MomentaCollect[m,opt] collects terms containing \
 the variables given by the setting of the options MomentumVariablesString and \
 ParticlesNumber.  If the option ExtendedCollect is set True, it also collects \
-terms containing elements from the environment variable $ExpansionQuantities. \
- NOTICE : When the output of this function is to be used for generating \
+terms containing elements from the environment variable $ExpansionQuantities.  \
+NOTICE : When the output of this function is to be used for generating \
 coupling vectors with GenericCoupling or ClassesCoupling, it should be \
 checked that the expansion factors are really overall factors of each term.  \
-NOTICE ALSO: When dealing with large expressions, the collection done be \
+NOTICE ALSO : When dealing with large expressions, the collection done be \
 MomentaCollect is inefficient because it collects too many redundant \
 patterns.  A faster way is to set $VeryVerbose to 3 and collect 'by hand' \
 using only the relevant patterns from the list of patterns displayed.";
@@ -359,6 +359,11 @@ be set to True or Explicit.  In the latter case, SumOver[i,r]*exp, where \
 exp is some expression is summed explicitly over i from 1 to r.  \
 Default value of Sum : True.";
 
+IsoToChargedMasses::"usage" = 
+    "IsoToChargedMasses projects out ParticleMass[p, SUNIndex[i]], where \
+p is a particle name to a ParticleMass of a particle in the charged basis using \\
+$IsoSpinProjectionRules.";
+
 WFFactor1::"usage" = 
     "WFFactor1[prop] is returned by WFFactor when the wave function renormalization \
 factor corresponding to the propagator prop is not found in the directory \"Factors\".";
@@ -366,7 +371,7 @@ factor corresponding to the propagator prop is not found in the directory \"Fact
 WFFactor::"usage" = 
     "WFFactor[prop] searches the directory \"Factors\" and returns the wave \
 function renormalization factor corresponding to the propagator prop. \
-WFFactor is used by WFRenormalize.\
+WFFactor is used by WFRenormalize.  \
 NOTICE : Wavefunction factors stored in the directory \"Factors\", with \
 a name with \"-0\" preceding the extension \".Fac\" are by convention \
 on-mass-shell.";
@@ -375,11 +380,13 @@ ChargeSymmetry::"usage" =
     "ChargeSymmetry is an option of WFFactor specifying whether the renormalization factor of a \
 particle and its antiparticle are identical.";
 
-WFRenormalize::"usage" = 
-    "WFRenormalize[exp] calculates the wave function renormalization factors \
+(*WFRenormalize[exp] calculates the wave function renormalization factors \
 for the propagators of exp.  Exp must be of the form TopologyList[__][__] as returned \
-by InsertFields.  WFRenormalize is also an option of FAToFC.  \
-When set to True, WFRenormalize is applied.  WFRenormalize uses \
+by InsertFields.*)
+
+WFRenormalize::"usage" = 
+    "WFRenormalize is an option of FAToFC.  \
+When set to True, wave function renormalization is performed.  WFRenormalize uses \
 the results stored in the directory \"Factors\".  The names of the files to load are \
 generated using $Configuration and the option PerturbationOrder.  Default value : False.";
 
@@ -473,4 +480,10 @@ neither symmetric nor antisymmetric under the following permutations: `2`.";
 DoSumOver::"indleft" = 
     "Warning: There still seem to be indices `1` left that should have been summed.  \
  Please check.";
+
+CreateFCAmp::"spinormismatch" = 
+    "Error: Cannot resolve spinors.";
+
+CreateFCAmp::"looprenorm"= 
+    "Warning: Renormalizing loop propagator.";
 

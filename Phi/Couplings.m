@@ -130,6 +130,7 @@ fatrru := fatrru = HighEnergyPhysics`FeynArts`M$TruncationRules;
 facol := facol = Global`Colour;
 faanalc := faanalc = HighEnergyPhysics`FeynArts`AnalyticalCoupling;
 fags := fags = HighEnergyPhysics`FeynArts`G;
+famass := famass = HighEnergyPhysics`FeynArts`Mass;
 
 
 (* Defaults *)
@@ -186,17 +187,20 @@ Options[DeltaFunctionProducts] = {ParticlesNumber -> 4,
 Options[AddExternalLegs] = {ExternalPropagators -> 1, faseens -> False};
 Options[DiscardTopologies] = {PerturbationOrder -> 2,
       OrderingPatterns -> {}};
-(*Using :> instead of -> below is important*)
-Options[WFRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration,
-                          OnMassShell -> False};
+(*Using :> instead of -> for PhiModel is important*)
+(*Options[WFRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration,
+                          OnMassShell -> False, fcmom :> fcmom[Global`p1, D]};*)
 Options[PMRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[DCRenormalize] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[WFFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration,
-                     ChargeSymmetry -> True, OnMassShell -> False};
+                     ChargeSymmetry -> True, OnMassShell -> False,
+                     fcmom :> fcmom[Global`p1, D]};
 Options[PMFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[DCFactor] = {PerturbationOrder -> 2, PhiModel :> Global`$Configuration};
 Options[CreateFCAmp] = {WFRenormalize -> False, PerturbationOrder -> 2,
-                          DropOrder -> 4, Method -> Plus};
+                          DropOrder -> 4, Method -> Plus,
+                        PhiModel :> Global`$Configuration,
+                          OnMassShell -> False, fcmom :> fcmom[Global`p1, D]};
 Options[DoSumOver] = {Drop -> {0}};
 
 
@@ -1063,7 +1067,7 @@ faind[falo, b_] :> fcli[ToExpression[$CouplingLorentzIndicesString <> ToString[b
 
 
 (* An amplitude in FeynArts syntax: *)
-classesamplitude[amm__ /; ! FreeQ[amm, facl]][opts___] :=
+classesamplitude[amm__ /; !FreeQ[amm, facl]][opts___] :=
 (**)(fapl[facl][amm] /.PropagatorDenominator1->fcprd //.
 {famatr[a___, b_, c___] /; UScalarQ[b] -> b*famatr[a, c],
 faferch[a___, b_, c___] /; UScalarQ[b] -> b*faferch[a, c]} /.
@@ -1314,12 +1318,10 @@ DisableMessage[msg_MessageName] := ( Unprotect[Message];
         Block[{$Messages = Null}, m] /; $Messages =!= Null; 
       Protect[Message]; ) ;
 
-SetAttributes[EnableMessage, HoldFirst] ;
+SetAttributes[EnableMessage, HoldFirst];
 
 EnableMessage[msg_MessageName] := ( Unprotect[Message]; 
-      Literal[m:Message[msg, args___]] =.; Protect[Message]; ) ;
-
-(* Help functions for wave function renormalization *)
+      Literal[m:Message[msg, args___]] =.; Protect[Message];);
 
 (*replace isospin with charged masses*)
 cruls := Block[{parts, part, rul, tmppart},(parts = {}; (part = #[[1]]; (rul = (tmppart = #[[1]][0,
@@ -1330,81 +1332,6 @@ cruls := Block[{parts, part, rul, tmppart},(parts = {}; (part = #[[1]]; (rul = (
                 Cases[{#[[2]]}, _Iso, Infinity])& /@
                   HighEnergyPhysics`Phi`Channels`$IsoSpinProjectionRules /. 
                 seq -> Sequence // Flatten)]; 
-
-WFFactor[pro_, opts___?OptionQ] := 
-    Block[{nam, dum, prop, res, ph, a},
-      prop = pro /. $LastModelRules /. cruls;
-      DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
-      nam = XName[VertexFields -> ({prop[[-1]]} /.
-             If[ChargeSymmetry /. {opts} /. Options[WFFactor],
-                -(ph : $ParticleHeads)[a_] -> ph[a],
-                {}]),
-            Sequence @@ OptionsSelect[XName, opts, Options[WFFactor]],
-            XFileName -> Automatic] <>
-            If[MatchQ[prop[[0, 1]], fainc | faout | faext] &&
-               (OnMassShell/.Flatten[{opts}]/.Options[WFFactor]) === True, "-0", ""] <>
-            ".Fac";
-      res=Which[MatchQ[prop[[0, 1]], 
-          fainc | faout | faext],
-       (*The factor loaded from disk is 1/Z*)
-       (*External propagators get only the squareroot of a Z-factor*)
-       (3 - CheckDB[dum, nam,
-              NoSave -> True,
-              ForceSave -> False])/2 - 1, 
-        MatchQ[prop[[0, 1]], faint | faloop], 
-       (*Internal propagators get a full Z-factor*)
-        1 - CheckDB[dum, nam,
-            NoSave -> True,
-            ForceSave -> False], True, 
-        Message[WFFactor::"noprop", prop[[0, 1]]]; Return[]];
-      EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
-      If[FreeQ[res,dum], res, WFFactor1[prop(*nam*), opts]]
-];
-
-WFRenormalize[exp : fatopl[oo___][tt___], opts___?OptionQ] := 
-    Block[{props, facs},
-      props = List @@ ((List @@ (#[[1]]/. 
-                          List @@ #[[2, 1, 2, 1]] /. cruls)) & /@ exp); 
-      VerbosePrint[3, "Renormalizing propagators ", props]; 
-      facs = (Rule[#, WFFactor[#,
-        Sequence @@ Complement[
-          OptionsSelect[WFFactor, opts, Options[WFRenormalize]],
-          Options[WFFactor]]]]& /@ #)& /@ props; 
-      VerbosePrint[3, "with factors ", facs]; 
-      fatopl[oo, fawfcr -> facs][tt]];
-
-appendMoms[toplist : fatopl[oo___][tt___]] := 
-    Block[{fieldsubs, momtop, oldmom, imom,
-        HighEnergyPhysics`FeynArts`Analytic`mc, 
-        HighEnergyPhysics`FeynArts`Analytic`next, 
-        info = List @@ toplist [[0]], 
-        HighEnergyPhysics`FeynArts`Analytic`gaugeru = 
-          GaugeRules /. Options[facrfa],
-HighEnergyPhysics`FeynArts`Analytic`truncru = 
-          If[TrueQ[Truncated /. Options[facrfa]], 
-            fatrru, {}], 
-        HighEnergyPhysics`FeynArts`Analytic`pref = 
-          PreFactor /. Options[facrfa]}, 
-      fieldsubs = (List @@ Take[#, {1, 2}][[2, 1, 1]]) & /@ List @@ toplist; 
-      HighEnergyPhysics`FeynArts`Analytic`next = 
-        Plus @@ Length /@ (Process /. {info}); 
-      momtop = (Clear[HighEnergyPhysics`FeynArts`Analytic`c, 
-                HighEnergyPhysics`FeynArts`Analytic`mc]; 
-              HighEnergyPhysics`FeynArts`Analytic`c[_] = 0; 
-              HighEnergyPhysics`FeynArts`Analytic`mc = 0; 
-              HighEnergyPhysics`FeynArts`Analytic`AppendMomentum /@ #[[1]])& /@
-(fapl[facl][toplist] /. (_ -> fains[_][]) :> 
-                  Seq[] /. (fafi[i_] -> fi_?AtomQ) -> (fafi[i] -> 
-                    fi[faind[fagen, i]])); 
-      oldmom = Union[
-          Cases[momtop, fafm[_HighEnergyPhysics`FeynArts`Analytic`ZZZ, _], 
-            Infinity]];
-imom = Apply[HighEnergyPhysics`FeynArts`Analytic`RenumberMom, oldmom, 1];
-momtop[[0]] @@ ((#[[1]] /. #[[2]]) & /@ 
-            Transpose[{(List @@ momtop /. Thread[oldmom -> imom]), 
-                fieldsubs}])];
 
 (* Help functions for mass renormalization *)
 
@@ -1523,7 +1450,162 @@ DCRenormalize[amp_, opts___?OptionQ] :=
       ]& /@ (ex=Expand[amp];If[Head[ex]===Plus,List@@ex,{ex}]))
    ];
 
-CreateFCAmp[amp_, opts___] := Block[{faopts, me, propmoms, pprops, wffacs, wffac},
+(* Help functions for wave function renormalization *)
+
+WFFactor[pro_, opts___?OptionQ] := 
+    Block[{nam, dum, prop, res, ph, a, rep, wfmomRul, mom, moms, newmom},
+      prop = pro /. $LastModelRules /. cruls;
+      newmom = (fcmom /. Flatten[{opts}] /. 
+        fcmom[a__] :> mom[a] /. Options[WFFactor] /. mom -> fcmom);
+      DisableMessage /@ {List::"string", StringJoin::"string"};
+      Off[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
+      nam = XName[VertexFields -> ({prop[[-1]]} /.
+             If[ChargeSymmetry /. {opts} /. Options[WFFactor],
+                -(ph : $ParticleHeads)[a_] -> ph[a],
+                {}]),
+            Sequence @@ OptionsSelect[XName, opts, Options[WFFactor]],
+            XFileName -> Automatic] <>
+            If[MatchQ[prop[[0, 1]], fainc | faout | faext] &&
+               (OnMassShell/.Flatten[{opts}]/.Options[WFFactor]) === True, "-0", ""] <>
+            ".Fac";
+      res=Which[(*(fcexpt /.Flatten[{opts}]/.Options[WFFactor])=!=True,
+       WFFactor1[prop, opts],*)(*Explicit -> False causes CreateFCAmp to return rubbish*)
+       MatchQ[prop[[0, 1]], 
+          fainc | faout | faext],
+       (*The factor loaded from disk is 1/Z*)
+       (*External propagators get only the squareroot of a Z-factor*)
+       (3 - CheckDB[dum, nam,
+              NoSave -> True,
+              ForceSave -> False])/2 - 1, 
+        MatchQ[prop[[0, 1]], faint | faloop], 
+       (*Internal propagators get a full Z-factor*)
+        1 - CheckDB[dum, nam,
+            NoSave -> True,
+            ForceSave -> False], True, 
+        Message[WFFactor::"noprop", prop[[0, 1]]]; Return[]];
+      If[(moms = Cases[res, fcmom[__], Infinity]) =!= {}, 
+         wfmomRul = moms[[1]] -> newmom, wfmomRul = {}];
+      VerbosePrint[2, "Replacing momenta in loaded factor ", StandardForm[wfmomRul]];
+      EnableMessage /@ {List::"string", StringJoin::"string"};
+      On[HighEnergyPhysics`fctables`CheckDB`CheckDB::"nostring"];
+      If[FreeQ[res,dum], res /. wfmomRul, WFFactor1[prop(*nam*), opts]]
+];
+
+nondiracWFRenormalize[exp : fatopl[oo___][tt___], opts___?OptionQ] := 
+    Block[{props, facs},
+      props = List @@ ((List @@ (#[[1]]/. 
+                          List @@ #[[2, 1, 2, 1]] /. cruls)) & /@ exp); 
+      VerbosePrint[3, "Renormalizing non-Dirac propagators ", props]; 
+      facs = (Rule[#, WFFactor[#,
+        Sequence @@ Complement[
+          OptionsSelect[WFFactor, opts, Options[(*WFRenormalize*)CreateFCAmp]],
+          Options[WFFactor]]]]& /@ #)& /@ props; 
+      VerbosePrint[2, "with factors ", facs]; 
+      fatopl[oo, fawfcr -> facs][tt]];
+
+(*Inserts fields and appends the relevant momentum as last argument of each Propagator*)
+appendMoms[toplist : fatopl[oo___][tt___]] := 
+    Block[{fieldsubs, momtop, oldmom, imom,
+        HighEnergyPhysics`FeynArts`Analytic`mc, 
+        HighEnergyPhysics`FeynArts`Analytic`next, 
+        info = List @@ toplist [[0]], 
+        HighEnergyPhysics`FeynArts`Analytic`gaugeru = 
+          GaugeRules /. Options[facrfa],
+HighEnergyPhysics`FeynArts`Analytic`truncru = 
+          If[TrueQ[Truncated /. Options[facrfa]], 
+            fatrru, {}], 
+        HighEnergyPhysics`FeynArts`Analytic`pref = 
+          PreFactor /. Options[facrfa]}, 
+      fieldsubs = (List @@ Take[#, {1, 2}][[2, 1, 1]]) & /@ List @@ toplist; 
+      HighEnergyPhysics`FeynArts`Analytic`next = 
+        Plus @@ Length /@ (Process /. {info}); 
+      momtop = (Clear[HighEnergyPhysics`FeynArts`Analytic`c, 
+                HighEnergyPhysics`FeynArts`Analytic`mc]; 
+              HighEnergyPhysics`FeynArts`Analytic`c[_] = 0; 
+              HighEnergyPhysics`FeynArts`Analytic`mc = 0; 
+              HighEnergyPhysics`FeynArts`Analytic`AppendMomentum /@ #[[1]])& /@
+(fapl[facl][toplist] /. (_ -> fains[_][]) :> 
+                  Seq[] /. (fafi[i_] -> fi_?AtomQ) -> (fafi[i] -> 
+                    fi[faind[fagen, i]])); 
+      oldmom = Union[
+          Cases[momtop, fafm[_HighEnergyPhysics`FeynArts`Analytic`ZZZ, _], 
+            Infinity]];
+imom = Apply[HighEnergyPhysics`FeynArts`Analytic`RenumberMom, oldmom, 1];
+momtop[[0]] @@ ((#[[1]] /. #[[2]]) & /@ 
+            Transpose[{(List @@ momtop /. Thread[oldmom -> imom]), 
+                fieldsubs}])];
+
+(* After doing loops with FeynArts, particle masses with SU(N) indices come out.
+   They can be projected out in charged masses with IsoToChargedMasses *)
+
+IsoToChargedMasses[exp_] := 
+    Block[{part, rul, tmppart, parts, subpar, seq}, parts = {}; 
+      subpar = (part = #[[1]]; (rul = (tmppart = 
+                                ParticleMass[#[[1]], #[[2, 1]] | 
+                                    fcsuni[#[[2, 1]]], r___]; tmppart) -> 
+                            ParticleMass[part, r]; 
+                        If[FreeQ[parts /. Alternatives :> (({##}[[1]]) &), 
+                            tmppart], parts = Append[parts, tmppart]; rul, 
+                          seq[]]) & /@ 
+                    Cases[{#[[2]]}, _Iso, 
+                      Infinity]) & /@ $IsoSpinProjectionRules /. 
+            seq -> Sequence // Flatten; 
+            VerbosePrint[2, "Using iso-spin substitution rules ", StandardForm[subpar]];
+            exp /. subpar /.
+            (subpar /. (ParticleMass -> ((RotateRight[Propagator[Internal][##]])&))) /.
+            (subpar /. (ParticleMass -> ((RotateRight[Propagator[External][##]])&)))];
+
+(*Implementation from notebook:*)
+(*subpar = (((alt @@ ((ParticleMass[##, ___] & @@ #) & /@ (MapAt[(SUNIndex @@ #)&,
+#, {-1}] & /@ Cases[#[[2]], Iso[Alternatives @@ $ParticlesInUse,
+{_Integer}], {0, 3}]))) -> (ParticleMass[#[[1]]])) & /@
+$IsoSpinProjectionRules) /. alt[a_] :> a /. alt :> Alternatives*)
+
+(*Renormalize fermion propagators*)
+(*propGamma and propSpinor are used in Automatic.gen*)
+(*a product is assumed*)
+diracRen1[amp_, opts___?OptionQ] := 
+    Block[{facsS, facsG, a, b, m, opt, mm, ff, s, ss, v1, v2, p, i},
+      If[FreeQ[amp, _propGamma | _propSpinor], 0,
+        facsS = Cases[amp, _propSpinor, Infinity];
+        facsG = Cases[amp, _propGamma, Infinity];
+        VerbosePrint[2,"Renormalizing fermion propagators with factors ",
+                       StandardForm[facsS], " : ", StandardForm[facsG]];
+        If[
+          MatchQ[amp, (___*_propSpinor.___._propSpinor) | (___*__._propGamma.__)] =!= True ||
+            Length[facsS] =!= Length[Union[facsS]] || 
+            Length[facsG] =!= Length[Union[facsG]], 
+          Message[CreateFCAmp::"spinormismatch"]];
+          (Plus @@ ((amp /.
+            {(# . a__) :> (# .
+              WFFactor[faprop[faext][favert[1][1], favert[1][1], #[[2]]], 
+               fcmom -> -#[[1]], Sequence @@ Select[OptionsSelect[WFFactor, opts, 
+               Options[(*WFRenormalize*)CreateFCAmp]], !MatchQ[#, (fcmom -> _) | (fcmom :> _)]&]] . a),
+              (a__ . #) :> (a .
+              WFFactor[faprop[faext][favert[1][1], favert[1][1], #[[2]]], 
+               fcmom -> -#[[1]], Sequence @@ Select[OptionsSelect[WFFactor, opts, 
+               Options[(*WFRenormalize*)CreateFCAmp]], !MatchQ[#, (fcmom -> _) | (fcmom :> _)]&]
+                      ] . #)})& /@ (facsS))) + 
+          (Plus @@ ((amp /.
+              # :> (WFFactor[faprop[faint][favert[1][1], favert[1][1], #[[2]]], 
+                     fcmom -> -#[[1]], Sequence @@ Select[OptionsSelect[WFFactor, opts, 
+                     Options[(*WFRenormalize*)CreateFCAmp]], !MatchQ[#, (fcmom -> _) | (fcmom :> _)]&]] .
+                    #))& /@ (facsG))) /.
+          WFFactor1[faprop[s_][a_, b_, m_ParticleMass], opt___?OptionQ] :> 
+          If[FreeQ[mm=IsoToChargedMasses[m], fcexsuni|suni, Heads->True]=!=True &&
+             FreeQ[ff=WFFactor[faprop[s][a, b, mm[[1]][0]], opt], WFFactor1, Heads->True],
+             ff,
+             WFFactor1[faprop[s][a, b, Sequence@@m], opt] /.
+             _RenormalizationState|_RenormalizationScheme|_ExpansionState :> Sequence[] /.
+             faprop[ss_][v1_, v2_, p_, ((fcexsuni | fcsuni)[i_])] :> 
+             faprop[ss][v1, v2, p[0, {i}]]]]];
+
+diracRen[amp_, opts___?OptionQ] := If[Head[amp]===Plus, diracRen1[#, opts]&/@amp,
+                                                        diracRen1[amp, opts]];
+
+wfren[fac_, amp_, opts___?OptionQ] := fac*amp + diracRen[amp, opts];
+
+CreateFCAmp[amp_, opts___] := Block[{(*faopts, me, propmoms, pprops, wffacs, wffac, f, tmp*)},
 
 (* need to transport options to CreateFeynAmp, e.g., Truncated -> True, 
 Rolf Mertig, Sept. 27th. 2003 *)
@@ -1536,17 +1618,58 @@ faopts = Sequence@@Select[OptionsSelect[facrfa, opts], FreeQ[#, faal]&];
    If[WFRenormalize /. Flatten[{opts}] /. Options[CreateFCAmp],
      VerbosePrint[2, "Doing wave function renormalization\n"];
 
-   propmoms = 
+ (*Momenta present in propagator*)
+  propmoms = 
      FAToFC /@ ((List @@ #) & /@ 
-        List @@ appendMoms[amp] /. 
-          faprop[a_][b__] :> ({b}[[-1]]));
+        List @@ (
+     (*Substitute Internal momenta with sum of vertex momenta*)
+   ((tmp=#;
+    tmp /. faprop[faint][v1_, v2_, f_, fafm[faint, i_]] :> 
+    Block[{mom},
+      VerbosePrint[2, "Fixing internal momenta using momentum conservation"];
+      Which[
+        Count[tmp, faprop[faint | faloop][___, v1, ___], Infinity] === 
+          1,
+        mom = -(Plus @@ ((#[[-1]])& /@ 
+                    Cases[tmp, faprop[fainc][___, v1, ___], 
+                      Infinity])) - (Plus @@ ((#[[-1]])& /@ 
+                    Cases[tmp, faprop[faout][___, v1, ___], 
+                      Infinity])),
+        Count[tmp, Propagator[faint | faloop][___, v2, ___], Infinity] === 
+          1,
+        mom = -(Plus @@ ((#[[-1]])& /@ 
+                    Cases[tmp, faprop[fainc][___, v2, ___], 
+                      Infinity])) - (Plus @@ ((#[[-1]])& /@ 
+                    Cases[tmp, faprop[faout][___, v2, ___], 
+                      Infinity])),
+        True,
+        Message[CreateFCAmp::"looprenorm"]; mom=fafm[faint, i]
+        ];
+        VerbosePrint[2, "Replacing ", fafm[faint, i] -> mom];
+        faprop[faint][v1, v2, f, mom]])& /@
+          appendMoms[amp]) /. 
+          (*faprop[a_][b__] :> ({b}[[-1]])*)
+          (*Take care of fermions separately*)
+          faprop[a_][b__] :> If[FreeQ[{b}, $FermionHeads], ({b}[[-1]]), seq[]] /.
+            seq :> Sequence));
 
-   pprops = (((#[[2]]) & /@ #) & /@ (fawfcr /. 
-          List @@ WFRenormalize[amp, opts][[0]]));
+  (*Renormalization factors*)
+     (*Take care of fermions separately*)
+   pprops = ((If[FreeQ[#[[1]], $FermionHeads], #[[2]], seq[]] & /@ #)& /@ (fawfcr /. 
+          List @@ nondiracWFRenormalize[amp, opts][[0]])) /. seq :> Sequence;
 
-   wffacs = ((#[[1]] /. (Append[Cases[#, fcmom[___], Infinity], 
+   wffacs = ((#[[1]] /. 
+
+   (*Momentum replacement; first, momentum present in renormalization factor*)
+   (Append[Cases[#, fcmom[___], Infinity],
+    (*default to replacing q1*)
     classesamplitude[{fafm[fainc, 1]}][opts][[1]]][[1]] /. 
-    D :> BlankNullSequence[]) -> #[[2]])& /@ #)& /@
+    D :> BlankNullSequence[]) ->
+   (*next, momentum present in propagator*)
+   #[[2]] /.
+   (*remember momenta*)
+    WFFactor1[f__] :> WFFactor1[f, fcmom -> #[[2]]])& /@ #)& /@
+
     (Transpose /@ Transpose[{pprops, propmoms}]);
 
    wffac = Which[(me=Method/.Flatten[{opts}]/.Options[CreateFCAmp]) ===
@@ -1563,16 +1686,20 @@ faopts = Sequence@@Select[OptionsSelect[facrfa, opts], FreeQ[#, faal]&];
           wffac and amp !!!*)
 
     (*(Times@@#)& /@ Transpose[{FAToFC[wffac],FAToFC[facrfa[amp, faal -> facl, faopts], opts]}] /.*)
-    FAToFC[((Times@@#)& /@ Transpose[{wffac,FAToFC[facrfa[amp, faal -> facl, faopts], Sum->True, opts]}]),
+    FAToFC[((wfren[Sequence@@#,opts])& /@ Transpose[{wffac,FAToFC[facrfa[amp, faal -> facl, faopts], Sum->True, opts]}]),
        opts] /.
     If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
        (*Not very general :-( But makes life easier for the user...*)
        PseudoScalar2[0, {_}] -> PseudoScalar2[0],{}] /.
     WFFactor1 -> WFFactor,
 
-    FAToFC[facrfa[amp, faal -> facl, faopts], opts]]
+    FAToFC[facrfa[amp, faal -> facl, faopts], opts]] //.
+
+        {propGamma[ mom_, a_] :> fcdiga[ mom ] + a,
+         propSpinor[mom_, a_, b___] :> fads[mom, a, b]}
 
 ];
+
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
