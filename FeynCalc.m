@@ -11781,12 +11781,12 @@ SUNF[a___, x_, b___, opt___Rule] := SUNF[a, sunindex[x], b] /;
 
 (* antisymmetry *)
 (* Four arguments are now allowed. SMQCD.mod uses that. F.Orellana, 20/8-2002 *)
-HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule|___List]] := 0 /;
+HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] := 0 /;
          (Head[x] === sunindex) && FreeQ[x, Pattern] &&
           Length[{a,x,b,x,c}] == 3;
-HoldPattern[SUNF[a___, x_, y_, b___, ___Rule|___List]] := -SUNF[a, y, x, b] /;
-FreeQ[{a,x,y,b}, Pattern] && Length[{a,x,b,x,c}] == 3 &&
-(!OrderedQ[{x, y}]) && (Head[x] === sunindex) && Head[y] === sunindex;
+HoldPattern[SUNF[a___, x_, y_, b___, ___Rule]] := -SUNF[a, y, x, b] /;
+FreeQ[{a,x,y,b}, Pattern] && Length[{a,x,y,b}] === 3 &&
+(!OrderedQ[{x, y}]) && Head[x] === sunindex && Head[y] === sunindex;
 
 SUNF[i_,j_,k_,Explicit -> False] := SUNF[i,j,k];
 HoldPattern[SUNF[i_,j_,k_,op___Rule|op___List]]:= 2 I (suntrace[ fci[sunt[i,k,j]] ] -
