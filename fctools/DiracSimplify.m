@@ -122,9 +122,10 @@ DiracSimplify[a_, opts___Rule] :=
   If[ (Expanding /. {opts} /. Options[DiracSimplify]) === False,
      If[(DiracSigmaExplicit /. {opts} /.
                    Options[DiracSimplify]) === True,
-        DiracSigmaExplicit[diracEq[dotLin[a // fcinter] /. DOT -> dS]
+(* extra change on 9/8-2003 by Rolf, due to missed copying from 27/3-2003 *)
+        DiracSigmaExplicit[diracEq[dotLin[a // fcinter](* /. DOT -> dS*)]
                                                   ],
-        diracEq[dotLin[a // fcinter] /. DOT -> dS]
+        diracEq[dotLin[a // fcinter] (*/. DOT -> dS*)]
        ],
        If[$VeryVerbose>2, Print["doing oldDiracSimplify on ", StandardForm[a]]];
        oldDiracSimplify[
@@ -206,15 +207,20 @@ MemSet[diracSimplify[x,in], Block[
         diracga67    = DiracSubstitute67/.diracopt;
         diracgasu    = DiracSimpCombine/.diracopt;
         diracsifac   = Factoring/.diracopt;
+
         diracdt = dotLin[ x//DiracGammaExpand ];
+
 If[$VeryVerbose > 2,Print["dir1"]];
         If[ diracgasu === True,
             diracdt = contractli[DiracGammaCombine[diracdt/.Pair->sCO]
                                 ] (*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
             diracdt = contractli[ diracdt ] (*/. DOT->dS*)
           ];
+(*
+Commented out Sept. 9 203 by RM, in order to fix the 27/3 2003 bug
 If[$VeryVerbose > 2,Print["dir2a"]];
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
+*)
         If[diractrlabel===True,
 
            diracdt = diracdt/.DOT->trIC/.trI->dS;
