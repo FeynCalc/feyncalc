@@ -10,52 +10,52 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`OneLoop`",
+BeginPackage["HighEnergyPhysics`fcloops`OneLoop`",
              "HighEnergyPhysics`FeynCalc`"];
 
-CancelQP::usage=
+CancelQP::"usage"=
 "CancelQP is an option for OneLoop. If set to True, cancelation of
 all q.p's and q^2 is performed.";
 
-CombineGraphs::usage=
+CombineGraphs::"usage"=
 "CombineGraphs is an option for OneLoopSum.";
 
-DenominatorOrder::usage=
-"DenominatorOrder is an option for OneLoop, if set to True the 
+DenominatorOrder::"usage"=
+"DenominatorOrder is an option for OneLoop, if set to True the
 PropagatorDenominator will be ordered in a standard way.";
 
-FinalFunction::usage="FinalFunction is an option for OneLoopSum.";
+FinalFunction::"usage"="FinalFunction is an option for OneLoopSum.";
 
-ExtraVariables::usage=
+ExtraVariables::"usage"=
 "ExtraVariables is an option for OneLoopSum; it may be set
 to a list of variables which are also bracketed out in the result,
 just like B0, C0, D0 and  PaVe.";
 
-OneLoop::usage=
+OneLoop::"usage"=
 "OneLoop[q, amplitude] calculates the one-loop Feynman diagram
 amplitude (n-point, where n<=4 and the highest tensor rank of the
 integration momenta (after cancellation of scalar products) may be 3;
 unless OneLoopSimplify is used).
-The argument q denotes the integration variable, i.e., 
+The argument q denotes the integration variable, i.e.,
 the loop momentum. \n
-OneLoop[name, q, amplitude] has as first argument a name of 
+OneLoop[name, q, amplitude] has as first argument a name of
 the amplitude. If the second argument has head FeynAmp then
-OneLoop[q, FeynAmp[name, k, expr]] and 
-OneLoop[FeynAmp[name, k, expr]] tranform to 
+OneLoop[q, FeynAmp[name, k, expr]] and
+OneLoop[FeynAmp[name, k, expr]] tranform to
 OneLoop[name, k, expr].";
 
-OneLoopSum::usage=
+OneLoopSum::"usage"=
 "OneLoopSum[ FeynAmp[ ... ], FeynAmp[ ... ] , ...]
-will calculate a list of Feynman amplitudes by  replacing
-FeynAmp  step by step by OneLoop.";
+will calculate a list of Feynman amplitudes by replacing
+FeynAmp step by step by OneLoop.";
 
-Prefactor::usage=
+Prefactor::"usage"=
 "Prefactor is an option for OneLoop and OneLoopSum.
 If set as option of OneLoop, the amplitude is multiplied by
 Prefactor before calculation; if specified as option of OneLoopSum,
 after calculation in the final result as a global factor.";
 
-SelectGraphs::usage=
+SelectGraphs::"usage"=
 "SelectGraphs is an option for OneLoopSum indicating that only a
 slected set of graphs of the list provided to OneLoopSum is to
 be calculated.
@@ -65,24 +65,24 @@ which indicates the graphs to be taken from the list provided
 to OneLoopSum. In the second setting the list {b, c} indicates that
 all amplitudes from b to c should be taken.";
 
-ReduceGamma::usage=
-"ReduceGamma is an otpion for OneLoop. If set to True all
+ReduceGamma::"usage"=
+"ReduceGamma is an option of OneLoop. If set to True all
 DiracMatrix[6] and DiracMatrix[7] (i.e. all ChiralityProjector)
 are reduced to Gamma5.";
 
-ReduceToScalars::usage=
+ReduceToScalars::"usage"=
 "ReduceToScalars is an option for OneLoop  and OneLoopSum that
 specifies whether the result will be reduced to scalar A0, B0, C0
 and D0 scalar integrals.";
 
-SmallVariables::usage=
+SmallVariables::"usage"=
 "SmallVariables is an option for OneLoop.
-\"SmallVariables->{Melectron}\" i.e. will 
+\"SmallVariables->{Melectron}\" i.e. will
 substitute \"SmallVariable[Melectron]\"
  for all Melectron's in the calculation.";
 
-StandardMatrixElement::usage=
-"StandardMatrixElement[ ... ] is the head for matrixelement abbreviations.";
+StandardMatrixElement::"usage"=
+"StandardMatrixElement[ ... ] is the head for matrix element abbreviations.";
 
 (* ******************************************************************* *)
 (*                             oneloop.m                               *)
@@ -90,27 +90,32 @@ StandardMatrixElement::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+StandardMatrixElement /:
+MakeBoxes[StandardMatrixElement[x_], TraditionalForm
+         ] :=
+RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];
+
 
 MakeContext[
- A0, A0ToB0, Apart2, B0, B00, B1, B11,   Cases2,
+   A0, A0ToB0, Apart2, B0, B00, B1, B11, Cases2,
    ChangeDimension, Chisholm, Collecting, Collect2, Combine, 
    Contract, C0, 
    Dimension, DiracGamma, DiracGammaCombine, 
    DiracOrder, DiracSimplify, DiracTrace, DiracTraceEvaluate, D0, DB0,
-   DotSimplify, DOT,
+   DotSimplify,
    Eps, EpsChisholm, EpsContract, EpsEvaluate, Expanding, 
    ExpandScalarProduct, FAD,
    FactorFull, Factoring, FactorTime, Factor2, 
- FeynAmp, FeynAmpList,
-  FeynCalcInternal,
+   FeynAmp, FeynAmpList,
+   FeynCalcInternal,
    FeynAmpDenominator, 
    FeynAmpDenominatorCombine, 
- FeynAmpDenominatorSimplify,
-FeynAmpDenominatorSplit,
-FeynCalcForm, FinalSubstitutions, FreeQ2, 
+   FeynAmpDenominatorSimplify,
+   FeynAmpDenominatorSplit,
+   FeynCalcForm, FinalSubstitutions, FreeQ2, 
    InitialSubstitutions, IntermediateSubstitutions, Isolate, 
-   IsolateHead, IsolateSplit, KK,
+   IsolateNames, IsolateSplit, KK,
    LorentzIndex, Mandelstam, MemSet,
    Momentum, MomentumExpand,   
    OneLoopSimplify,
@@ -120,7 +125,7 @@ FeynCalcForm, FinalSubstitutions, FreeQ2,
    PropagatorDenominatorExplicit, 
    ScalarProduct,  
    ScalarProductCancel,  
-SelectFree, SelectNotFree,
+   SelectFree, SelectNotFree,
    SmallVariable, 
    Spinor, SUNDelta, 
    SUNF, SUNFToTraces, SUNIndex, SUNSimplify, SUNT, Tr, Trick,
@@ -199,7 +204,7 @@ Options[OneLoop]={
                   FormatType                 -> InputForm,
                   InitialSubstitutions       -> {},
                   IntermediateSubstitutions  -> {},
-                  IsolateHead                -> False,
+                  IsolateNames                -> False,
                   Mandelstam                 -> {},  
                   OneLoopSimplify            -> False,
                   Prefactor                  -> 1,
@@ -259,7 +264,7 @@ If[Length[options] > 0,
  dim        = Dimension/.oneopt;
 If[ dim===True, dim = D ];
  formattype = FormatType/.oneopt;
- isolatehead= IsolateHead/.oneopt;
+ isolatehead= IsolateNames/.oneopt;
  oneloopsimplify = OneLoopSimplify/.oneopt;
  prefactor  =  Prefactor/.oneopt ;
  qpcancel   = CancelQP /. oneopt;
@@ -351,8 +356,8 @@ If[ FreeQ2[ oneamp , {FeynAmpDenominator,FAD}],
                       ] /; Head[x]=!=Plus;
 
 
-   If[ FreeQ[oneamp, Spinor[p1__] . a__ . Spinor[p2__] *
-                     Spinor[p3__] . b__ . Spinor[p4__]
+   If[ FreeQ[oneamp, DOT[Spinor[p1__] , a__ , Spinor[p2__] *
+                     Spinor[p3__] , b__ , Spinor[p4__]]
             ], HighEnergyPhysics`DiracSimplify`Private`$sirlin = False
      ];
 print3["$sirlin = ", HighEnergyPhysics`DiracSimplify`Private`$sirlin];
@@ -382,8 +387,8 @@ propagators  *)
 
 (* ONEAMPCHANGE: denominators *)
 
- If[ Cases[x, HoldPattern[Spinor[a_,_,_] . (___) . Spinor[b_,_,_] * 
-                          Spinor[c_,_,_] . (___) . Spinor[d_,_,_] 
+ If[ Cases[x, DOT[Spinor[a_,_,_] , (___) , Spinor[b_,_,_] * 
+                          Spinor[c_,_,_] , (___) , Spinor[d_,_,_] 
                          ] 
           ] =!= {},
      $fourfermion = True
@@ -462,7 +467,7 @@ redamp[x_,qu_] := Block[{pl, ml, fm, pp,res=x},
                          res] /; Head[x] =!= Plus;
     subdethold[x_Plus]:=x/;Length[x] < 4;
     subdethold[x_]:=ReleaseHold[Isolate[x, IsolateSplit->Infinity,
-                                   IsolateHead->SUB
+                                   IsolateNames->SUB
                                 ] /. SUB -> SUBDET
                                ];
 
@@ -496,7 +501,7 @@ If[Head[oneamp] === Times,
     newnewprefactor = Select[newprefactor, 
                              !FreeQ2[#, {dim, LorentzIndex, DiracGamma}]&];
     If[!FreeQ[newnewprefactor, DiracGamma], 
-       oneamp = newnewprefactor . oneamp,
+       oneamp = DOT[newnewprefactor , oneamp],
        oneamp = oneamp newnewprefactor
       ];
     newprefactor = smalld[newprefactor / newnewprefactor + nUUUl
@@ -677,9 +682,9 @@ Global`ONET[1]=oneamp;
 *)
    If[reducegamma67=!=True,
       oneamp = oneamp /.(* DiracGamma[5]->(DiracGamma[6]-DiracGamma[7])/.*)
-                 {HoldPattern[ Spinor[p1__].(a___).Spinor[p2__]] :>
-                   (Spinor[p1].a.DiracGamma[6].Spinor[p2] +
-                    Spinor[p1].a.DiracGamma[7].Spinor[p2]
+                 {DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
+                   (DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] +
+                    DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]
                    ) 
                  };
     ];
@@ -694,9 +699,9 @@ Global`ONET[1]=oneamp;
 
    print1["contraction, etc. "];
    diracorder[x_]:= x /; FreeQ[ x, DiracGamma ];
-   diracorder[x_]:=Collect2[DiracOrder[x(*, {q}*)], Dot,Factoring->False
+   diracorder[x_]:=Collect2[DiracOrder[x(*, {q}*)], DOT,Factoring->False
                            ] /; Head[x]=!=Plus;
-   diracorder[x_Plus]:=Collect2[ Map[DiracOrder[#(*, {q}*)]&, x], Dot,
+   diracorder[x_Plus]:=Collect2[ Map[DiracOrder[#(*, {q}*)]&, x], DOT,
                                   Factoring->False];
 
    $Test = True;
@@ -711,7 +716,7 @@ Global`ONET[1]=oneamp;
                  x
                 ];
    simpit[x_ /; FreeQ[x, DiracGamma]] := (print3["checkkkk"];consum2[x]);
-   simpit[x_] := diracorder[ Collect2[ consum2[x]//epsit, Dot, 
+   simpit[x_] := diracorder[ Collect2[ consum2[x]//epsit, DOT, 
                                         Factoring->False
                                      ] // DiracSimplify
                            ] /; !FreeQ[x, DiracGamma];
@@ -740,8 +745,8 @@ print2["time needed for Share = ",timsh];
 print1[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
   ];
 
-If[ FreeQ[neuamp, Dot],  oneamp = neuamp,
-   oneamp = Collect2[neuamp, Dot, Factoring->False];
+If[ FreeQ[neuamp, DOT],  oneamp = neuamp,
+   oneamp = Collect2[neuamp, DOT, Factoring->False];
   ];
 oneamp2 = oneamp; print3["oneamp2 = ",oneamp2];
 
@@ -781,7 +786,7 @@ print2[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
 (* Zwischenspiel... *)
   smadot[]=1;
   standard /: standard[a_] standard[b_] := standard[a b];
-  smadot[x___]:=standard[ dotlin[Dot[x]]/.dim->4 ] /.  
+  smadot[x___]:=standard[ dotlin[DOT[x]]/.dim->4 ] /.  
                 standard -> StandardMatrixElement;
   If[StandardMatrixElement =!= Identity,
      StandardMatrixElement[x_Plus]:=Map[StandardMatrixElement,x]
@@ -793,10 +798,10 @@ print2[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
 
 (* tostandmatdef *)
   tostandmat[xy_]:=Block[{te, standa},
-                          standa[a__]:= dotlin[Dot[a]] /; 
-                                           !FreeQ2[{a}, {Dot,Pair,Spinor}] ;
+                          standa[a__]:= dotlin[DOT[a]] /; 
+                                           !FreeQ2[{a}, {DOT,Pair,Spinor}] ;
                           standa[a_,b__]:=StandardMatrixElement[a,b]/;
-                                            FreeQ2[a, {Dot,Pair,Spinor}];
+                                            FreeQ2[a, {DOT,Pair,Spinor}];
 			  te = tempstandmat[Expand[xy]]//Expand;
 			  If[ !FreeQ[te, DiracGamma[6]],
 			      te = te/.StandardMatrixElement -> standa/.
@@ -816,13 +821,13 @@ print2[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
 			      te = DiracSimplify[te]//DiracOrder//Expand;
 			      te = tempstandmat[te//Contract]//Expand
                             ];
-                          te = te /.Dot->spinorsandpairs/.
+                          te = te /.DOT->spinorsandpairs/.
                                    spinorsandpairs->smadot;
                       te] /; reducegamma67 === True;
             
     tostandmat[xy_]:=Block[{te, standa, pluh, pluh2},
                           standa[xx_]:=xx/;!FreeQ2[xx,
-                                                {Dot,Pair,Polarization}];
+                                                {DOT,Pair,Polarization}];
                           standa[a_,b__]:=StandardMatrixElement[a,b];
                           pluh[x__]:=Plus[x] /; !FreeQ2[{x}, 
                           {Spinor,GellMannMatrix, SUNIndex, 
@@ -837,10 +842,10 @@ print2[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
     (* 1 = gamma6 + gamma7 *)
                               If[!FreeQ[te, Spinor],
                                  te = te //. {
-                                 Literal[
-                                 Spinor[p1__].(a___).Spinor[p2__] ]:>
-                                 (Spinor[p1].a.DiracGamma[6].Spinor[p2] +
-                                  Spinor[p1].a.DiracGamma[7].Spinor[p2]
+                                 DOT[
+                                 Spinor[p1__],(a___),Spinor[p2__] ]:>
+                                 (DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] +
+                                  DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]
                                  ) /; FreeQ2[{a}, {DiracGamma[6],
                                                    DiracGamma[7]} ]
                                                   };
@@ -849,7 +854,7 @@ print2[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
                                  te = Expand[ te, Pair ]
                                 ];
                               te = tempstandmat[te];
-                         te = te /.Dot->spinorsandpairs/.       
+                         te = te /.DOT->spinorsandpairs/.       
                                      spinorsandpairs->smadot;
                       te] /; reducegamma67 =!= True;
 
@@ -941,7 +946,7 @@ oneamp2 = oneamp;
        For[ii=1, ii<=lenneu2, ii++,
            print2["isolating; ii  = ", ii, " out of ", lenneu2];
            newoneamp = newoneamp + Isolate[oneamp[[ii]], qdi,
-                                           IsolateHead ->fFC, 
+                                           IsolateNames ->fFC, 
                                            IsolateSplit->Infinity]
           ];
        oneamp = newoneamp
@@ -970,15 +975,15 @@ $FactorTime=  timecoll;
 
 (*Global`ONET[4]=oneamp;*)
 
-sirlinsave = HighEnergyPhysics`FeynCalc`DiracSimplify`Private`$sirlin;
-HighEnergyPhysics`FeynCalc`DiracSimplify`Private`$sirlin = False;
+sirlinsave = HighEnergyPhysics`fctools`DiracSimplify`Private`$sirlin;
+HighEnergyPhysics`fctools`DiracSimplify`Private`$sirlin = False;
 print1["q = ",q];
    oneamp = tensint[ oneamp,dim,q,{Mandelstam->onemandel} ];
 (*Global`ONET[5]=oneamp;*)
    oneamp = oneamp /.{B1 :> bB1, B00 :> bB00, B11 :> bB11};
    oneamp = oneamp//smalld;
    oneamp = oneamp /.{bB1 :> B1, bB00 :> B00, bB11 :> B11};
-HighEnergyPhysics`FeynCalcDiracSimplify`Private`$sirlin = sirlinsave;
+HighEnergyPhysics`fctools`DiracSimplify`Private`$sirlin = sirlinsave;
    oneamp = FixedPoint[ReleaseHold, oneamp];
    print1["after tensint "];
    print3["after tensint : oneamp = ", oneamp];
@@ -1010,32 +1015,32 @@ print3["oneampsave = ", oneampsave];
    If[ (!FreeQ[ oneamp,Spinor ]),
            If[Length[oneamp]>42, 
               oneamp = Isolate[ oneamp, {Spinor, DiracGamma, Pair},
-                                IsolateHead-> fFCT, 
+                                IsolateNames-> fFCT, 
                                 IsolateSplit -> Infinity];
              ];
            print1["length of oneamp now: ",Length[oneamp]];
            If[(reducegamma67 === True) ||
-               (!FreeQ[oneamp, Literal[
-                       Spinor[p1__] . a___ . Spinor[p2__] *
-                       Spinor[p3__] . b___ . Spinor[p4__] ]
+               (!FreeQ[oneamp, 
+                       DOT[Spinor[p1__] , a___ , Spinor[p2__]] *
+                       DOT[Spinor[p3__] , b___ , Spinor[p4__]]
                       ]),
                oneamp = oneamp/. DiracGamma[7]->(1/2 - DiracGamma[5]/2)/.
                                  DiracGamma[6]->(1/2 + DiracGamma[5]/2);
              ];
 
-       oneamp = Expand[DiracSimplify[oneamp],Dot]//DiracOrder//
+       oneamp = Expand[DiracSimplify[oneamp],DOT]//DiracOrder//
                  ExpandScalarProduct;
        oneamp = DiracSimplify[oneamp];
 
            If[(reducegamma67 =!= True)  && 
-              (!FreeQ[oneamp, Literal[
-                      Spinor[p1__] . a___ . Spinor[p2__] *
-                      Spinor[p3__] . b___ . Spinor[p4__] ]
+              (!FreeQ[oneamp,
+                      DOT[Spinor[p1__] , a___ , Spinor[p2__]] *
+                      DOT[Spinor[p3__] , b___ , Spinor[p4__]]
                      ]),
                oneamp = oneamp /.
-                 {Literal[ Spinor[p1__].(a___).Spinor[p2__]] :>
-                   (Spinor[p1].a.DiracGamma[6].Spinor[p2] +
-                    Spinor[p1].a.DiracGamma[7].Spinor[p2]
+                 {DOT[ Spinor[p1__],(a___),Spinor[p2__]] :>
+                   (DOT[Spinor[p1],a,DiracGamma[6],Spinor[p2]] +
+                    DOT[Spinor[p1],a,DiracGamma[7],Spinor[p2]]
                    ) 
                  };
                oneamp = DiracSimplify[oneamp]
@@ -1068,7 +1073,7 @@ standmatd[xxx__]:=StandardMatrixElement[dotdotlin[xxx]];
 standmatd[]=1;
 (* this may take a lot of time ... *)
   If[  (StandardMatrixElement =!= Identity),
-  If[ !FreeQ2[ oneamp, {Dot, DiracGamma, Polarization,
+  If[ !FreeQ2[ oneamp, {DOT, DiracGamma, Polarization,
                         SUNF, SUNDelta, SUNT
                         } ] && FreeQ[ oneamp, Spinor ],
       If[Head[oneamp]===Plus,
@@ -1094,7 +1099,7 @@ standmatd[]=1;
      paone2 = Isolate[Collect2[paone[[2]], {Spinor,Polarization,SUNIndex},
                                Factoring -> False], 
                                {Spinor,Polarization,SUNIndex},
-                               IsolateHead -> tempFC,
+                               IsolateNames -> tempFC,
                                IsolateSplit->Infinity];
      oneamp = FixedPoint[ReleaseHold, tostandmat[paone2] ] + paone[[1]];
      print1["after tostandmat"];
@@ -1167,7 +1172,7 @@ fsub[x_, su_]:=Block[{nx=x,ij},
      ];
 
 (* Isolating *)
-   If[ isolatehead=!=False, isol[x_]:=Isolate[x,IsolateHead->isolatehead];
+   If[ isolatehead=!=False, isol[x_]:=Isolate[x,IsolateNames->isolatehead];
        sh[he_][x__]:=isol[he[x]];
        scaliso = {A0->sh[A0], B0->sh[B0], B1->sh[b1], B00->sh[B00], 
                   B11->sh[B11], C0->sh[C0], D0->sh[D0]};
@@ -1273,7 +1278,7 @@ print1["time needed for Share = ",timsh];
          
 print1[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
   ];
-  ] (* endIf IsolateHead *);
+  ] (* endIf IsolateNames *);
 
 (* ----------------------------------------------------------------- *)
 ]; (* end Timing *)
@@ -1320,7 +1325,7 @@ multiply with the Born diagrams
                       FormatType         -> InputForm,
                       InitialSubstitutions  -> {},
                       IntermediateSubstitutions -> {},
-                      IsolateHead        -> KK,
+                      IsolateNames        -> KK,
 (*
                       KeepOnly           -> False,
 *)
@@ -1334,7 +1339,7 @@ multiply with the Born diagrams
                       WriteOutPaVe       -> False
                     };
 (*
-KeepOnly::usage=
+KeepOnly::"usage"=
 "KeepOnly is an option of OneLoop.
 It may be set to B0, C0, D0 keeping only the corresponding
 coefficients. The default setting is False. If KeepOnly is set
@@ -1366,8 +1371,8 @@ born          = Born /. opsli;
 born          = 1;
 combinegraphs = CombineGraphs/.opsli;
 extravars     = ExtraVariables/.opsli;
-isolatehead   = IsolateHead/.opsli;
-If[isolatehead === True, isolatehead = IsolateHead/.Options[Isolate]];
+isolatehead   = IsolateNames/.opsli;
+If[isolatehead === True, isolatehead = IsolateNames/.Options[Isolate]];
 dims           = Dimension /.opsli;
 finalsubst    = FinalSubstitutions/.opsli;
 finfunc       = FinalFunction/.opsli;
@@ -1577,8 +1582,8 @@ If[ keeponly =!= False,
 *)
 
 
-dsi[x__]:=dsi[x]=DiracOrder[ DiracSimplify[ Dot[x] ] ];
-sres = sres /. Dot -> dsi;
+dsi[x__]:=dsi[x]=DiracOrder[ DiracSimplify[ DOT[x] ] ];
+sres = sres /. DOT -> dsi;
 (*
 If[!FreeQ[sres, StandardMatrixElement], 
    sres = Expand[ sres, StandardMatrixElement]
@@ -1704,7 +1709,7 @@ pavit[xXX_PaVe, dir_, prev_:False] := Block[{nx, file, temp, set,xxxa,abbs},
 tim = Timing[
                         If[prev === False,
                            temp = PaVeReduce[xXX, Dimension -> dims,
-                    (*Added 19/9-2000. F.Orellana*)WriteOutPaVe->nx(**)]//paveorder,
+                    (*Added 19/9-2000. F.Orellana*)WriteOutPaVe->dir(**)]//paveorder,
                            temp = paveorder[prev]
                           ];
             ][[1]];
@@ -1726,7 +1731,7 @@ If[ reduce === True,
 If[writeoutpave===True, writeoutpave = ""];
 If[ !StringQ[writeoutpave],
 tii=Timing[
-          nvd = PaVeReduce[ varpave[[j]], IsolateHead ->False, 
+          nvd = PaVeReduce[ varpave[[j]], IsolateNames ->False, 
                             Dimension -> dims
                           ] // paveorder
           ];
@@ -1940,15 +1945,15 @@ If[ isolatehead=!=False,
     isolfact[x_]:= isol2[x/.Plus->plupp0/.plupp0->plupp1]/.ains->1;
     If[ Length[mand]===4,
         isolmand[x_]:= Isolate[x, {mand[[1]],mand[[2]],mand[[3]]},
-                                       IsolateHead->isolatehead],
-        isolmand[x_]:=Isolate[x,IsolateHead->isolatehead ]
+                                       IsolateNames->isolatehead],
+        isolmand[x_]:=Isolate[x,IsolateNames->isolatehead ]
       ];
 
-    isolate0[x_]:=Isolate[x, IsolateHead->isolatehead ];
+    isolate0[x_]:=Isolate[x, IsolateNames->isolatehead ];
 
     isc[x_][y__]:=isol1[x][(TrickMandelstam[fsub[x[y]]/.dd0->D0,mand
                                            ]//paveorder)/.
-                            D0 -> dd0, IsolateHead->isolatehead];
+                            D0 -> dd0, IsolateNames->isolatehead];
 If[Length[mand]===4,
     isol1[_][x_, y_]:= Isolate[x, y] /; FreeQ2[x, Take[mand, 3]]
   ];
@@ -2037,9 +2042,9 @@ small4[x_^m_]:=SmallVariable[x]^m;
 (* ********************************************************************* *)
 
                                                (*spinorsandpairsdef*)
-   dotdotlin[x___]:=dotlin[Dot[x]];
+   dotdotlin[x___]:=dotlin[DOT[x]];
 (*tempstandmatdef*)
-   standma[x_]:=dotdotlin[x]/;!FreeQ2[x, {Polarization, Dot}];
+   standma[x_]:=dotdotlin[x]/;!FreeQ2[x, {Polarization, DOT}];
    tempstandmat[x_]:=Block[{ttt},
                      ttt = x;
 If[StandardMatrixElement =!= Identity,
@@ -2054,7 +2059,7 @@ If[LeafCount[ttt]>500, print2["expanding in tempstandmat done"]];
  
                      If[(Length[DownValues[spinorsandpairs]]>1) ||
                         ValueQ[StandardMatrixElement],
-                     ttt = x/.Dot->spinorsandpairs/.
+                     ttt = x/.DOT->spinorsandpairs/.
                            spinorsandpairs->StandardMatrixElement/.
                            StandardMatrixElement->standma/.standma->
                            StandardMatrixElement;
@@ -2157,15 +2162,15 @@ If[LeafCount[ttt]>500, print2["expanding in tempstandmat done"]];
             evalte = contractli[ evalte ];   
          ];
        evalte = FixedPoint[ReleaseHold,evalte]//to4d2;
-       evalte = Expand[ dotlin[ evalte ]//ExpandScalarProduct, Dot ];
-       If[(Length[evalte]>5) && !FreeQ[evalte, Dot] , 
-          evalte = Collect2[ evalte, Dot, Factoring -> False]
+       evalte = Expand[ dotlin[ evalte ]//ExpandScalarProduct, DOT ];
+       If[(Length[evalte]>5) && !FreeQ[evalte, DOT] , 
+          evalte = Collect2[ evalte, DOT, Factoring -> False]
          ];
        If[  !FreeQ[ evalte, DiracGamma], 
             evalte = Map[ dirsim, evalte + nul1 ]/.
                     dirsim->DiracSimplify/.nul1 -> 0;
             If[LeafCount[evalte]>100, 
-               evalte = Collect2[evalte,Dot, Factoring -> False];
+               evalte = Collect2[evalte,DOT, Factoring -> False];
               ];
             evalte = evalte + nul1 + nul2;
             neval = 0;
@@ -2176,7 +2181,7 @@ If[LeafCount[ttt]>500, print2["expanding in tempstandmat done"]];
                 nt = Contract[DiracOrder[evalte[[ie]]]
                              ]//ExpandScalarProduct;
                 nt = DiracSimplify[nt]//DiracOrder;
-                nt = Expand[nt, Dot];
+                nt = Expand[nt, DOT];
                 print3["length of nt = ",nt//Length];
                 neval = neval + nt
                ];
@@ -2549,8 +2554,8 @@ Options[SetStandardMatrixElements] = {WriteOut -> False};
         ]
      ];
   x = Flatten[x, 1];
- If[ Cases[x, Literal[Spinor[a_,_,_] . (___) . Spinor[b_,_,_] * 
-                       Spinor[c_,_,_] . (___) . Spinor[d_,_,_] ] 
+ If[ Cases[x, DOT[Spinor[a_,_,_] , (___) , Spinor[b_,_,_]] * 
+              DOT[Spinor[c_,_,_] , (___) , Spinor[d_,_,_]]
           ] =!= {},
     x = x /. DiracGamma[6] -> (1/2 + 1/2 DiracGamma[5]);
     x = x /. DiracGamma[7] -> (1/2 - 1/2 DiracGamma[5])
@@ -2566,7 +2571,7 @@ print2["ops= ",ops];
     ];
        
    nmat = Expand[ ExpandScalarProduct[mat] ]//smalld;
-   nmat = nmat /. Dot -> spinorsandpairs;
+   nmat = nmat /. DOT -> spinorsandpairs;
    isos[b_spinorsandpairs]:=b;
    isos[a_?NumberQ]:=a;
    isos[a_ b_spinorsandpairs]:= b isos[a];
@@ -2581,8 +2586,8 @@ print2["ops= ",ops];
    set2[a_, b_]:=Set @@ {a, b/.Pattern->pat};
  For[ i=1, i<=Length[mat],i++,
 print2["i = ",i," out of ", Length[mat]];
-      mat = Expand[ (mat//ExpandScalarProduct)/.spinorsandpairs->Dot ];
-      mat = mat /. Dot -> spinorsandpairs;
+      mat = Expand[ (mat//ExpandScalarProduct)/.spinorsandpairs->DOT ];
+      mat = mat /. DOT -> spinorsandpairs;
       mati1 = Expand[isolspc[mat[[i,1]]]];
       For[j=1,j<=nterms[mati1],j++,
           If[ nterms[mati1] === 1,
@@ -2592,11 +2597,11 @@ print2["i = ",i," out of ", Length[mat]];
         print2["sumand = ",sumand];
           If[!(FreeQ[sumand,spinorsandpairs]),
              sup = PartitHead[ sumand,spinorsandpairs]//Expand;
-            If[ (!MemberQ[ links,sup[[2]]/.spinorsandpairs->Dot/.
+            If[ (!MemberQ[ links,sup[[2]]/.spinorsandpairs->DOT/.
                                            Pair -> bier ]) &&
                 Head[ sup[[2]] ] === spinorsandpairs,
 print2["o.k1"];
-                links =  Append[ links, sup[[2]]/.spinorsandpairs->Dot/.
+                links =  Append[ links, sup[[2]]/.spinorsandpairs->DOT/.
                                                   Pair -> bier
                                ]//Expand;
                 neweq = set[ sup[[2]], Together/@(collin[
