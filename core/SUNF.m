@@ -20,7 +20,8 @@ FreeQ2 := FreeQ2 = MakeContext["FreeQ2"];
 Explicit := Explicit = MakeContext["Explicit"];
 sunt     := sunt     = MakeContext["SUNT"];
 suntrace := suntrace = MakeContext["SUNTrace"];
-MakeContext["TBox"];
+(*TBox is in context HighEnergyPhysics`FeynCalc`. F.Orellana, 30/11/2003*)
+(*MakeContext["TBox"];*)
 
 Options[SUNF] = {Explicit -> False(*, fci -> True*)};
 

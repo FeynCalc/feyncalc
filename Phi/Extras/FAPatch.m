@@ -72,7 +72,7 @@ Options[FAPatch] = {
       "InferFormat" -> "tmpInfer",
       "SetLoop" -> "tmpsetloop", 
       "CreateFeynAmp" -> "tmpcreatefeynamp", 
-      "$Verbose = 2" -> "$Verbose := " <> fullFCContext["$VeryVerbose"],
+      "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose" ,
       "Format" -> "format1",
       "GS" -> "Gstrong"
        }, fa2fc,
