@@ -60,15 +60,17 @@ Conjugate[x_Pair] := (x /. {Polarization[k_,a_,in___] :>
 Protect[Conjugate];
 (* ******************************************************************** *)
 
-
 Pair /:
    MakeBoxes[Pair[
 (HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex|
-HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[a_,___],
+HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[a_,d1___],
 (HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex|
-HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[b_,___] ],
+HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[b_,d2___] ],
              TraditionalForm
-            ] := SuperscriptBox["g",Tbox[a,b] ];
+            ] := If[$LorentzIndices===True,
+                    SuperscriptBox["g", Tbox[LorentzIndex[a,d1], LorentzIndex[b,d2]] ],
+                    SuperscriptBox["g", Tbox[a,b] ]
+                   ];
 
 MakeBoxes[Pair[a_,b_]^n_Integer?Positive, TraditionalForm] :=
  RowBox[{SuperscriptBox[Tbox[Pair[a,b]],n]}];

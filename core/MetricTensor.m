@@ -32,8 +32,12 @@ MetricTensor[a_, b_, opt___Rule] :=
       ] /; ( fci /. {opt} /. Options[MetricTensor] ) === True;
 
  MetricTensor /:
-   MakeBoxes[ MetricTensor[x_, y_], TraditionalForm] :=
-    SuperscriptBox["g", Tbox[x,y]]
+   MakeBoxes[ MetricTensor[x_, y_, opts___], TraditionalForm] :=
+   If[$LorentzIndices===True,
+      ReleaseHold[
+      Hold[MakeBoxes][fci[MetricTensor[x, y, opts]], TraditionalForm]],
+      SuperscriptBox["g", Tbox[x,y]]
+     ];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
