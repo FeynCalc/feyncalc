@@ -23,6 +23,9 @@ TrickIntegrate[t^(a Epsilon -1) f[t], t] gives
 f[0]/a/Epsilon + Hold[Integrate][t^(a Epsilon-1) (f[t]-f[0]),{t,0,1}],
 provided g[1] and f[0] do exist.";
 
+TrickIntegrate::"novar" =
+    "Could not resolve limit `1`.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -38,19 +41,19 @@ hopt[vau_,op___Rule][z_] := If[
                                , z
                                ];
 
-TrickIntegrate[exp_Plus, v_,opt___] := TrickIntegrate[#, v, opt]& /@ exp;
+TrickIntegrate[exp_Plus, v_,opt___] := (TrickIntegrate[#, v, opt]& /@ exp) //. holdLimit->limit;
 
 (* if there is nothing to substract, then : *)
 TrickIntegrate[w_/;Head[w]=!=Plus, v_, opt___] :=
  (hopt[v,opt][Select1[w, v](Hold[Integrate]@@ {Select2[w,v], {v,0,1}})]
- )/;
+ ) //. holdLimit->limit /;
    (!MatchQ[w,(1-v)^(a_. Epsilon-1) ex_.] &&
     !MatchQ[w,    v^(a_. Epsilon-1) ex_.] 
    );
 
 (* this is just linearity *)
 TrickIntegrate[exp_. y^a_. (1-y)^b_ (1-x_ y_)^g_, y_, opt___Rule] :=
-exp TrickIntegrate[y^a (1-y)^b (1-x y)^g, x, opt] /; FreeQ[exp, y];
+exp TrickIntegrate[y^a (1-y)^b (1-x y)^g, x, opt] //. holdLimit->limit /; FreeQ[exp, y];
 
 beta[x_, y_] := Gamma[x] Gamma[y]/Gamma[x+y];
 
@@ -68,25 +71,41 @@ TrickIntegrate[(1 - v_)^(a_. Epsilon-1) v_^(b_. Epsilon-1) exp_.,
                v_, opt___Rule
               ]:= TrickIntegrate[Apart3[
    (1-v)^(a Epsilon-1) v^(b Epsilon-1) exp, v], v, opt
-                                ];
+                                ] //. holdLimit->limit;
 
 TrickIntegrate[(1-v_)^(a_. Epsilon-1) exp_., v_,opt___Rule] := 
  TrickIntegrate[v^(a Epsilon-1) * Factor2[exp/.v->1-v],v,opt] /.
-  Hold[Integrate][xy_, gr_]:>Hold[Integrate][xy/.v->(1-v), gr];
+  Hold[Integrate][xy_, gr_]:>Hold[Integrate][xy/.v->(1-v), gr] //. holdLimit->limit;
 
 (* old
 TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_,opt___Rule] := 
  TrickIntegrate[(1-v)^(a Epsilon-1) * Factor2[exp/.v->1-v],v,opt];
 *)
 
+(* if v is not atomic, e.g. 1-t, find the right limit instead of v->0, e.g. t->0*)
+limit[x_, a_ -> b_]:=
+Block[{limes},
+If[AtomQ[a],
+  limes = a -> b;,
+  If[$VeryVerbose > 1, Print["Finding limit for ", a -> b]];
+  limes = Solve[a==b];
+  If[Length[limes]>0,
+    limes = limes[[1]];,
+    Message[TrickIntegrate::"novar", a->b]; Return[] ]
+];
+Limit[x, limes, Analytic->True]
+];
+
 TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_, opt___Rule
-              ]:= Block[{tt, pre, rr, integ, integg, lim, re},
+              ]:= Block[{tt, pre, rr, integ, integg, lim, re, res},
 tt  = Select2[exp, v]/.Hypergeometric2F1[a1_,a2_,a3_,z_]:>
       Hypergeometric2F1[a1,a2,a3,Factor2[z]];
 pre = Select1[exp, v];
-lim = Limit[tt, v -> 0]//Factor2;
+
+lim = holdLimit[tt, v->0]//Factor2;
 (* if limit does not exist or reveals a singularity in 
 v = 0 then: return the input *)
+res =
 If[(lim === Indeterminate) (*|| (!FreeQ[tt, Log[v]])*) ||
    (MatchQ[lim, _. (1-v)^(bb_. Epsilon-1)]),
    tt pre (v)^(a Epsilon-1)
@@ -97,13 +116,17 @@ If[(lim === Indeterminate) (*|| (!FreeQ[tt, Log[v]])*) ||
                 };
    rr =  1/a/Epsilon lim  + 
            integ[v^(a Epsilon-1) (tt-lim)];
-integg[0]=0;
+integg[0] = 0;
 integg[zz_] := Select1[zz, v] * 
                (Hold[Integrate]@@ {Select2[zz, v], {v,0,1}});
-re= pre (rr /. integ -> integg) /. (Hold[Integrate][1,{v,0,1}]) -> 1;
+re = pre (rr /. integ -> integg) /. (Hold[Integrate][1,{v,0,1}]) -> 1;
 Expand[ re = hopt[v,opt][re], v]
-] /. Hold[Integrate][1,{_,0,1}] -> 1
-                       ];
+] /. Hold[Integrate][1,{_,0,1}] -> 1;
+If[AtomQ[v],
+  res //. holdLimit->limit,
+  res
+]
+];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
