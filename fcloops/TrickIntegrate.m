@@ -71,7 +71,8 @@ TrickIntegrate[(1 - v_)^(a_. Epsilon-1) v_^(b_. Epsilon-1) exp_.,
                                 ];
 
 TrickIntegrate[(1-v_)^(a_. Epsilon-1) exp_., v_,opt___Rule] := 
- TrickIntegrate[v^(a Epsilon-1) * Factor2[exp/.v->1-v],v,opt];
+ TrickIntegrate[v^(a Epsilon-1) * Factor2[exp/.v->1-v],v,opt] /.
+  Hold[Integrate][xy_, gr_]:>Hold[Integrate][xy/.v->(1-v), gr];
 
 (* old
 TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_,opt___Rule] := 

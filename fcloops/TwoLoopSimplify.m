@@ -284,7 +284,10 @@ t15 = Collect2[t15,{q1,q2, FCIntegral,RHI}, Factoring -> False]//fdsimp;
 t15 = Collect2[t15,{q1,q2,FCIntegral,RHI},Factoring ->True];
 (* if IntegralTable -> SpecialTableBla *)
 If[Head[table] === Symbol,
+(*
    decomposelist = ListIntegrals[t15, {q1,q2}, Pair -> True];
+*)
+   decomposelist = {};
    decomposelist = FixedPoint[ReleaseHold, decomposelist];
    pe = Select1[Cases2[decomposelist, Momentum]/.Momentum[a_,___] :> a,
                 {q1,q2,OPEDelta}
