@@ -112,8 +112,8 @@ FeynArts: "Automatic.gen" and "Automatic.mod". These should be placed in the
 
 The names:
 
-Loop, PolarizationVector, FeynAmp, PropagatorDenominator, FeynAmpDenominator,
-GaugeXi, NonCommutative, DiracSpinor, DiracTrace,
+Loop, PolarizationVector, FeynAmp, FeynAmpDenominator, FeynAmpList,
+PropagatorDenominator, GaugeXi, NonCommutative, DiracSpinor, DiracTrace
 
 should be put explicitly in their corresponding FeynCalc context.
 That is, e.g. Loop should be replaced with HighenergyPhysics`FeynCalc`Loop`Loop
