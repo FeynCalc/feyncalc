@@ -16,7 +16,7 @@ MyBeginPackage["HighEnergyPhysics`fcloops`IFPDOn`",
              "HighEnergyPhysics`FeynCalc`"];
 
 IFPDOn::"usage" =
-"IFPDOn[exp_,q1_, q2_, ...] changes from
+"IFPDOn[exp, q1, q2, ...] changes from
 FeynAmpDenominator[ ...] representation to the IFPD one
 (Inverse Feynman Propagator Denominator).
 I.e., FeynAmpDenominator[PropagatorDenominator[a,b]] is replaced
@@ -92,9 +92,9 @@ If[!FreeQ[t3, IFPD[a_,b_/;b=!=0]],
   ];
 
 (* calculate  a canonical q.p  as a side effect*)
-If[$VeryVerbose >2, Print["before ifp"]];
+If[$VeryVerbose >2, Print["before ifp ", t3]];
 t3 = ifp[t3, qq];
-If[$VeryVerbose >2, Print["after ifp"]];
+If[$VeryVerbose >2, Print["after ifp ", t3]];
 
 
 sub = Table[(Pair @@ t3[[ij,1]]) -> t3[[ij,2]],{ij,Length[t3]}];
