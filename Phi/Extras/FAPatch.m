@@ -70,8 +70,6 @@ Options[FAPatch] = {
       "FeynAmp" -> "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmp",
       "PropagatorDenominator" -> 
         "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator", 
-      "FeynAmpDenominator" -> 
-        "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator", 
       "GaugeXi" -> "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi", 
       "NonCommutative" -> "HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative",
       "GS" -> "Gstrong", 
