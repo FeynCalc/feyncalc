@@ -5,11 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 20 January '99 at 17:07 *)
-(* ------------------------------------------------------------------------ *)
-
 (* :Summary: GluonVertex *) 
-
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`GluonVertex`",
@@ -34,7 +30,9 @@ or GluonVertex[ mu,a ,  nu,b ,  la,c ,  si,d ]
 yields the  4-gluon vertex. 
 \n
 The dimension  and the name of the coupling constant
-are determined by the options Dimension and CouplingConstant.";
+are determined by the options Dimension and CouplingConstant. \n
+The Option setting Explicit determines whether the explicit Feynman rule
+is returned or whether it is left as an operator.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -179,7 +177,7 @@ Block[{gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope,
                                                {r, lai, ci},
                                                {s, sii, di}]
         ];
-  gl4v];
+  gl4v] /; TrueQ[Explicit /. {opt} /. Options[GluonVertex]];
 
    GluonVertex /:
    MakeBoxes[GluonVertex[{p1_,mu1_},{p2_,mu2_},{p3_,mu3_}],
@@ -192,7 +190,16 @@ Block[{gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope,
              TraditionalForm
             ] := RowBox[{SuperscriptBox["V",Tbox[mu1,mu2,mu3,mu4]],
                         "(", Tbox[p1,", ",p2,", ", p3,", ",p4], ")"
+                        }];
+
+   GluonVertex /:
+   MakeBoxes[GluonVertex[{p1_,mu1_, a_},{p2_,mu2_,b_},{p3_,mu3_,c_},{p4_,mu4_,d_}],
+             TraditionalForm
+            ] := RowBox[{SubsuperscriptBox["V",Tbox[a,b,c,d],
+                                               Tbox[mu1,mu2,mu3,mu4] ],
+                        "(", Tbox[p1,", ",p2,", ", p3,", ",p4], ")"
                         }]
+SubsuperscriptBox
  
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
