@@ -199,6 +199,8 @@ M$GenericCouplings  =
   (G[csign[repp]]@@genericfields[repp]).genericcouplingvector[repp],
   {repp,Length[$VerticesSpecifications1]}]];
 
+FixCouplingSigns;
+
 (* ****************************************************************** *)
 
 (* FermionFlipRules: for a certain mapping of Fermion fields in a coupling
@@ -209,9 +211,7 @@ M$GenericCouplings  =
    FSS contains only omega[+/-], so none of the rules matches. FVV
    is antisymmetric and the rules match, resulting in
    ga_mu omega[+] ->  - ga_mu omega[-]
-   ga_mu omega[-] ->  - ga-mu omega[+].
-
-*)
+   ga_mu omega[-] ->  - ga-mu omega[+]. *)
 
 M$FermionFlipRule[ 1->2, 2->1, ___ ] =
 {
