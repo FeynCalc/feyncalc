@@ -921,7 +921,7 @@ faversion = FindList[ToFileName[{HighEnergyPhysics`FeynCalc`$FeynArtsDirectory},
 If[$Notebooks===True,
    FeynCalcCellPrint[Cell[TextData[{
    "FeynArts " <> faversion <> " patched for use with Phi and FeynCalc loaded"}], "Text"]],
-   Print["FeynArts " <> 
+   FeynCalcPrint["FeynArts " <> 
    faversion <> " patched for use with Phi and FeynCalc loaded"
         ] /; Global`$FeynCalcStartupMessages =!= False
 ]];
@@ -953,7 +953,9 @@ Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
 
+(* yes, it should be done somewhere else, but is does not work ...*)
 DeclareNonCommutative@MakeContext["QuarkGluonVertex"];
+DeclareNonCommutative@MakeContext["QuarkPropagator"];
 
 SetDirectory[savethisdir];
 Clear[savethisdir];
