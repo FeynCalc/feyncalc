@@ -28,7 +28,6 @@ Begin["`Private`"];
 
 Collect2      = MakeContext["Collect2"];  
 Contract      = MakeContext["Contract"];  
-dot           = MakeContext["DOT"];
 DiracGamma    = MakeContext["DiracGamma"];
 DiracTrace    = MakeContext["DiracTrace"];  
 Eps           = MakeContext["Eps"];  
@@ -56,9 +55,9 @@ dotLin[x_] := DotSimplify[x, Expanding -> False];
 (* FermionSpinSumdef *)
 trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
 (*
-trsimp[dot[d__]] := Tr[dot[d] ] /; Length[{d}] < 4;
+trsimp[DOT[d__]] := Tr[DOT[d] ] /; Length[{d}] < 4;
 *)
-trsimp[dot[d__]] := DiracTrace[dot[d] ] /; Length[{d}] < 4;
+trsimp[DOT[d__]] := DiracTrace[DOT[d] ] /; Length[{d}] < 4;
 Options[FermionSpinSum] = {SpinPolarizationSum -> Identity,
                            SpinorCollect -> False,
                            ExtraFactor -> 1};
@@ -90,9 +89,10 @@ FermionSpinSum[x_,ops___] := Block[
                         s First[{arg}])]] . dots)        ] /; 
            FreeQ[{dots}, Spinor] ;
 
-   dirtri = DiracTrace[n_. a_dot] DiracTrace[m_. b_dot] :>
-             DiracTrace[ DiracTrace[n a] m b] /; Length[a] <= Length[b] &&
-               Head[n] =!= dot && Head[m] =!= dot;
+   dirtri = DiracTrace[n_. DOT[a1_,a2__]] DiracTrace[m_. DOT[b1_,b2__]] :>
+             DiracTrace[ DiracTrace[n DOT[a1,a2]] m DOT[b1,b2]] /;
+               Length[DOT[a1,a2]] <= Length[DOT[b1,b2]] &&
+               Head[n] =!= DOT && Head[m] =!= DOT;
 (* FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF *)
 uNi=Unique[System`C];
 kK = Unique[System`C];
@@ -111,7 +111,7 @@ cOL[xy_] := Block[{temP = xy, nodot = 0, ntemP},
 print3["entering cOL"];
 temp0 = temP;
                    If[Head[temP] === Plus,
-                      nodot = Select[temP, FreeQ[#, dot]&];
+                      nodot = Select[temP, FreeQ[#, DOT]&];
                       temP = temP - nodot;
                       nodot = nodot/. {a_ DiracGamma[5] :> 0 /; 
                                FreeQ[a, DiracGamma]};
@@ -169,12 +169,12 @@ If[(memm > $MemoryAvailable) &&IntegerQ[is/10],
 (*
 epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
 *)
-epSimp[xxx_] := DiracSimplify[DiracOrder[xxx] /. dot -> doT /.
+epSimp[xxx_] := DiracSimplify[DiracOrder[xxx] /. DOT -> doT /.
     {doT[a__, DiracGamma[5]] :> 0 /; Length[{a}] < 4,
      doT[DiracGamma[5]] :> 0,
      doT[a__DiracGamma] :> 0 /; FreeQ2[{a}, {DiracGamma[5], DiracGamma[6], 
               DiracGamma[7]}] && OddQ[Length[{a}]]
-    } /. doT -> dot, Expanding -> False    ];
+    } /. doT -> DOT, Expanding -> False    ];
                         
 If[$VersionNumber > 2.2,
 HoldPattern[mulEx[mul_. DiracTrace[xy_]]] := 

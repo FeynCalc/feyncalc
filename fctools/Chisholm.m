@@ -28,8 +28,6 @@ Contract      = MakeContext["Contract"];
 DiracGamma  = MakeContext["DiracGamma"];
 DiracOrder  = MakeContext["DiracOrder"];
 DiracSimplify = MakeContext["DiracSimplify"];
-dot         = MakeContext["DOT"];
-DotSimplify = MakeContext["DotSimplify"];
 Eps         = MakeContext["Eps"];
 EpsContract = MakeContext["EpsContract"];
 FCI         = MakeContext["FeynCalcInternal"];
@@ -41,23 +39,23 @@ Rename      = MakeContext["Rename"];
 Chisholm[x_] := 
   Contract[DiracSimplify[FCI[x] //. chish1 //. chish2, Rename->True]];
 
-chish1 = (f_. dot[a_DiracGamma, b_DiracGamma, c_DiracGamma, 
+chish1 = (f_. DOT[a_DiracGamma, b_DiracGamma, c_DiracGamma, 
               d_DiracGamma, e_DiracGamma, f_DiracGamma, 
               g___]
          ) :> Chisholm[Contract[DiracSimplify[
-              dot[Chisholm[f dot[a,b,c]] ,Chisholm[d,e,f,g]]],Rename->False]];
+              DOT[Chisholm[f DOT[a,b,c]] ,Chisholm[d,e,f,g]]],Rename->False]];
 
- chish2 = dot[a___, DiracGamma[lv1_[pe1_]],DiracGamma[lv2_[pe2_]],
+ chish2 = DOT[a___, DiracGamma[lv1_[pe1_]],DiracGamma[lv2_[pe2_]],
                         DiracGamma[lv3_[pe3_]],b___
              ] :>  Block[{index},
                       index = Unique[$MU];
               Contract[DiracSimplify[
               (
-               Pair[lv1[pe1], lv2[pe2]] dot[a, DiracGamma[lv3[pe3]], b] -
-               Pair[lv1[pe1], lv3[pe3]] dot[a, DiracGamma[lv2[pe2]], b] +
-               Pair[lv2[pe2], lv3[pe3]] dot[a, DiracGamma[lv1[pe1]], b] +
+               Pair[lv1[pe1], lv2[pe2]] DOT[a, DiracGamma[lv3[pe3]], b] -
+               Pair[lv1[pe1], lv3[pe3]] DOT[a, DiracGamma[lv2[pe2]], b] +
+               Pair[lv2[pe2], lv3[pe3]] DOT[a, DiracGamma[lv1[pe1]], b] +
                I Eps[ lv1[pe1],lv2[pe2],lv3[pe3],LorentzIndex[index] ]*
-               dot[a, DiracGamma[LorentzIndex[index]].
+               DOT[a, DiracGamma[LorentzIndex[index]].
                       DiracGamma[5], b]
                             )
                                      ], EpsContract->True,

@@ -56,43 +56,43 @@ MakeContext[DiracGamma, DiracSimplify, Eps,
 SpinorChainEvaluate = DiracSimplify;
 scev = ExpandScalarProduct;
 
-  eepsrule={ m_. Dot[ x___,DiracGamma[LorentzIndex[in_]],y___] *
+  eepsrule={ m_. DOT[ x___,DiracGamma[LorentzIndex[in_]],y___] *
                     eeps[a___,LorentzIndex[in_],b_,c___] :>
-              -m Dot[x,DiracGamma[LorentzIndex[in]],y] *
+              -m DOT[x,DiracGamma[LorentzIndex[in]],y] *
                eeps[a,b,LorentzIndex[in],c]
            };
  epsspcrule0={
-            m_. Dot[ x___,DiracGamma[LorentzIndex[in_]],y___] *
+            m_. DOT[ x___,DiracGamma[LorentzIndex[in_]],y___] *
                eeps[a_,b_,c_,LorentzIndex[in_]] :>
-               (( - I m ( Dot[x,DiracGamma[a],DiracGamma[b],DiracGamma[c],
+               (( - I m ( DOT[x,DiracGamma[a],DiracGamma[b],DiracGamma[c],
                            DiracGamma[5],y
                           ] -
-                      scev[a,b] Dot[x,DiracGamma[c].DiracGamma[5],y] -
-                      scev[b,c] Dot[x,DiracGamma[a].DiracGamma[5],y] +
-                      scev[a,c] Dot[x,DiracGamma[b].DiracGamma[5],y]
+                      scev[a,b] DOT[x,DiracGamma[c].DiracGamma[5],y] -
+                      scev[b,c] DOT[x,DiracGamma[a].DiracGamma[5],y] +
+                      scev[a,c] DOT[x,DiracGamma[b].DiracGamma[5],y]
                      )//SpinorChainEvaluate
                 )//Expand
                ) /; FreeQ[{x,y}, Spinor[_, _Symbol,___]]
              };
  epsspcrule={
-            m_. Dot[ x___,DiracGamma[LorentzIndex[in_]],y___] *
+            m_. DOT[ x___,DiracGamma[LorentzIndex[in_]],y___] *
                eeps[a_,b_,c_,LorentzIndex[in_]] :>
-               ( - I m ( Dot[x,DiracGamma[a],DiracGamma[b],DiracGamma[c],
+               ( - I m ( DOT[x,DiracGamma[a],DiracGamma[b],DiracGamma[c],
                            DiracGamma[5],y
                           ] -
-                      scev[a,b] Dot[x,DiracGamma[c].DiracGamma[5],y] -
-                      scev[b,c] Dot[x,DiracGamma[a].DiracGamma[5],y] +
-                      scev[a,c] Dot[x,DiracGamma[b].DiracGamma[5],y]
+                      scev[a,b] DOT[x,DiracGamma[c].DiracGamma[5],y] -
+                      scev[b,c] DOT[x,DiracGamma[a].DiracGamma[5],y] +
+                      scev[a,c] DOT[x,DiracGamma[b].DiracGamma[5],y]
                      )//SpinorChainEvaluate
                )//Expand,
               DiracGamma[LorentzIndex[in_]] *
               eeps[a_,b_,c_,LorentzIndex[in_]] :>
-               ( - I ( Dot[x,DiracGamma[a],DiracGamma[b],DiracGamma[c],
+               ( - I ( DOT[x,DiracGamma[a],DiracGamma[b],DiracGamma[c],
                            DiracGamma[5],y
                           ] -
-                      scev[a,b] Dot[x,DiracGamma[c].DiracGamma[5],y] -
-                      scev[b,c] Dot[x,DiracGamma[a].DiracGamma[5],y] +
-                      scev[a,c] Dot[x,DiracGamma[b].DiracGamma[5],y]
+                      scev[a,b] DOT[x,DiracGamma[c].DiracGamma[5],y] -
+                      scev[b,c] DOT[x,DiracGamma[a].DiracGamma[5],y] +
+                      scev[a,c] DOT[x,DiracGamma[b].DiracGamma[5],y]
                      )//SpinorChainEvaluate
                )//Expand
             };

@@ -24,7 +24,7 @@ the functional derivative of expr with respect to the field list (with
 incoming momenta p, etc.) and does the fourier transform.
 
 FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ...
-SUNIndex[a]], ...}] calculates the functional derivate and does 
+SUNIndex[a]], ...}] calculates the functional derivative and does 
 partial integration but omits the x-space delta functions.";
 
 (* ------------------------------------------------------------------------ *)
@@ -35,7 +35,6 @@ Begin["`Private`"];
 FeynCalcForm = MakeContext["FeynCalcForm"];
 
 Collect2     = MakeContext["Collect2"];
-DOT          = MakeContext["DOT"];
 DotSimplify  = MakeContext["DotSimplify"];
 ExpandPartialD = MakeContext["ExpandPartialD"];
 Explicit      = MakeContext["Explicit"];
@@ -179,13 +178,13 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
   If[!FreeQ[r, ddelta], 
      If[Head[r] =!= Plus,
         r = ExpandPartialD[((Select2[r, ddelta] /. ddelta -> pard) .
-                             Select1[r, ddelta])/.Times->Dot
+                             Select1[r, ddelta])/.Times->DOT
                           ] 
         ,
         r = Sum[ExpandPartialD[((Select2[r[[i]], ddelta] /.
                                   ddelta -> pard) .
                                 Select1[r[[i]], ddelta]
-                                     ) /. Times -> Dot
+                                     ) /. Times -> DOT
                                     ],
                 {i, Length[r]}]
        ]

@@ -33,7 +33,6 @@ Begin["`Private`"];
 
 
 MakeContext[ Chisholm, Collect2, Contract];
-dot := dot          = MakeContext["DOT"];
 
 MakeContext[ DiracBasis, DiracGamma, DiracMatrix, DiracOrder,
 DiracSigma, DiracSigmaExplicit, DiracSimplify, DiracSubstitute67,
@@ -67,7 +66,7 @@ temp = Expand[temp, DiracGamma];
 (* introduce DiracSigma *)
 (* use gamma[m,n, 5] = 1/2 ( eps[m,n,r,s] sig[r,s] + 2 g[m,n] gamma[5] )
 *)
-temp = temp /. dot[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]], DiracGamma[5]
+temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]], DiracGamma[5]
                   ] :> ( un1 = Unique[mU1]; un2 = Unique[mU2];
                        Expand[
                          1/2 (Eps[a[xx], b[yy], LorentzIndex[un1],
@@ -82,7 +81,7 @@ temp = temp /. dot[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]], DiracGamma[5]
 temp = Contract[temp, Rename-> True];
 
 (* XXX *)
-temp = temp /. dot[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
+temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
                ( -I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]] +
                  Pair[b[yy], a[xx]] );
 temp = Contract[DiracSimplify[temp, DiracSigmaExplicit -> False]];
@@ -99,10 +98,10 @@ If[factoring === False, spart = Expand[spart] DiracBasis[1],
       spart = factoring[spart] DiracBasis[1]]
   ];
 
-ddb[y__] := DiracBasis[dot[y]];
+ddb[y__] := DiracBasis[DOT[y]];
 res = spart + (temp /. DiracSigma[a__] :> DiracBasis[FCE[DiracSigma[a]]] /.
-                       dot[DiracGamma[a_], DiracGamma[5]] :>
-                       DiracBasis[FCE[dot[DiracGamma[a], DiracGamma[5]]]] /.
+                       DOT[DiracGamma[a_], DiracGamma[5]] :>
+                       DiracBasis[FCE[DOT[DiracGamma[a], DiracGamma[5]]]] /.
                        DiracGamma[a_] :> DiracBasis[FCE[DiracGamma[a]]]);
 res = res /. finsub /. finsub;
 res = FCE[res];

@@ -44,7 +44,6 @@ diracmatrix     := diracmatrix     = MakeContext["DiracMatrix"];
 diracslash      := diracslash      = MakeContext["DiracSlash"];
 diractrace      := diractrace      = MakeContext["DiracTrace"];
 dimension       := dimension       = MakeContext["Dimension"];
-dot             := dot             = MakeContext["DOT"];
 Eps             := Eps             = MakeContext["Eps"];
 factor2         := factor2         = MakeContext["Factor2"];
 FAD             := FAD             = MakeContext["FAD"];
@@ -134,12 +133,12 @@ x /. rv
 (*
 If[ru =!={}, (MomentumCombine[x]/.su["DiracSigma", dirsig]/.
               su["Pair",pairback]/.ru
-             )/.dot->doc /. doc -> dot, x
+             )/.DOT->doc /. doc -> DOT, x
   ]
 *)
 ];
 
-dirsig[a__] := diracsigma[dot[a]];
+dirsig[a__] := diracsigma[DOT[a]];
 
 sundback[sunindex[a_], sunindex[b_], sunindex[c_]] := sund[a,b,c];
 

@@ -25,7 +25,6 @@ Begin["`Private`"];
 MakeContext[ DiracGamma, FreeQ2, LorentzIndex, Momentum, Spinor, Pair,
  PairContract];
 
-dot := dot               = MakeContext["DOT"];
 diractrick := diractrick = MakeContext["DiracTrick"];
 dotsimplify:=dotsimplify = MakeContext["DotSimplify"];
 expanding:=expanding     = MakeContext["Expanding"];
@@ -41,7 +40,7 @@ DiracEquation[x_,I]:=(*DiracEquation[x]=*)
     last[x_Plus]:=PowerExpand[Sqrt[Last[x]^2]];
 
    diraceq[x_]:=x/;FreeQ[x,Spinor];
-   diraceq[x_] := Expand[ x//.spCDieqRules, dot ];
+   diraceq[x_] := Expand[ x//.spCDieqRules, DOT ];
 
    spCDieqRules = {
     doot_[ z___,Spinor[n_. Momentum[p_] + k_. ,m_, op___],
@@ -76,11 +75,11 @@ DiracEquation[x_,I]:=(*DiracEquation[x]=*)
            DiracGamma[Momentum[p_,dim___],dim___],b___
          ] :> If[!FreeQ2[{a}, {DiracGamma[5], DiracGamma[6],
                              DiracGamma[7]}],
-                 diractrick[Dot[z,Spinor[n Momentum[p]+k,m,op],
+                 diractrick[DOT[z,Spinor[n Momentum[p]+k,m,op],
                                 a, Diracgamma[x[y],di],
                                 DiracGamma[Momentum[p,dim],dim],b
                                ]
-                           ] /. Dot -> doot,
+                           ] /. DOT -> doot,
       ( - doot[ z,Spinor[n Momentum[p]+k,m,op ],a,
                DiracGamma[Momentum[p,dim],dim],
                DiracGamma[x[y],di],b

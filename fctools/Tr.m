@@ -28,7 +28,7 @@ Begin["`Private`"];
 
 fci = MakeContext["FeynCalcInternal"];
 
-MakeContext[ DiracTrace, DiracTraceEvaluate, DOT,
+MakeContext[ DiracTrace, DiracTraceEvaluate,
 Factoring, FeynCalcExternal, LeviCivitaSign, Mandelstam,
 PairCollect, Schouten, Explicit, SUNIndex, ExplicitSUNIndex,
 SUNSimplify, SUNT, SUNTrace, TraceOfOne, Trick, SUNNToCACF];

@@ -24,7 +24,7 @@ Begin["`Private`"];
 
 
 MakeContext[Cases2,DiracGammaExpand,DiracSimplify,
-            DotSimplify,Contract,DOT,DiracGamma, FeynCalcInternal];
+            DotSimplify,Contract,DiracGamma, FeynCalcInternal];
 
 DiracSimplify2[exp_] := Block[{nn,tt},
 If[FreeQ[exp,DOT], exp,

@@ -29,7 +29,7 @@ Its setting should be a list of substitution rules of the form
 DotSimplifyRelations -> {a . b -> c, b^2 -> 0, ...}. In the
 rules, Condition should not be used and patterns should
 be avoided on the right-hand sides.\n\n
-NOTICE: The performance of DotSimplify scales inversely and
+NOTICE: The performance of DotSimplify scales
 very badly with the complexity of DotSimplifyRelations
 and the number of terms of the expression.";
 
@@ -38,7 +38,7 @@ and the number of terms of the expression.";
 Begin["`Private`"];
 
 MakeContext[ Commutator, CommutatorExplicit, DotPower, AntiCommutator,
-DOT, Expanding, FreeQ2, NonCommFreeQ, MemSet, SUNT,
+Expanding, FreeQ2, NonCommFreeQ, MemSet, SUNT,
 SUNTrace, DiracGamma, QuantumField, Momentum];
 
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=

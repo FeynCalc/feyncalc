@@ -29,8 +29,6 @@ Begin["`Private`"];
 
 MakeContext[ ChargeConjugationMatrix];
 
-dot := dot          = MakeContext["DOT"];
-
 MakeContext[ DiracGamma, DiracGammaT];
 
 expanding := expanding = MakeContext["Expanding"];
@@ -57,17 +55,17 @@ DiracTrick[]=1;
 DiracTrick[y___,z_/;Head[z]=!=Rule] :=
 
      drS[y, z]/.drS -> ds //.dr->drCOs /.
-                       drCO -> ds/.  dr->ds/.dr->dot(*]*);
+                       drCO -> ds/.  dr->ds/.dr->DOT(*]*);
 
 DiracTrick[x_,r___Rule] :=
   If[(expanding /. {r} /. Options[DiracTrick]) === True,
-     Expand[ fci[x] /. Dot -> dot /. (*Pair -> sCO /.*)
-                  dot -> drS /.drS -> ds //. dr -> drCOs/.
-                  drCO -> ds /.  dr -> ds /.  dr -> dot
+     Expand[ fci[x] (*/. Dot -> DOT*) /. (*Pair -> sCO /.*)
+                  DOT -> drS /.drS -> ds //. dr -> drCOs/.
+                  drCO -> ds /.  dr -> ds /.  dr -> DOT
            ],
-             fci[x] /. Dot -> dot /. (*Pair -> sCO /.*)
-                  dot -> drS /.drS -> ds //. dr -> drCOs/.
-                  drCO -> ds /.  dr -> ds /. dr -> dot (*/.
+             fci[x] (*/. Dot -> DOT*) /. (*Pair -> sCO /.*)
+                  DOT -> drS /.drS -> ds //. dr -> drCOs/.
+                  drCO -> ds /.  dr -> ds /. dr -> DOT (*/.
                   sCO -> Pair*)
     ];
 

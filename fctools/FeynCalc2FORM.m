@@ -118,7 +118,7 @@ other = SelectFree[Union[Cases[holdy, _Symbol, -1]],
                   ];
 
 noatomic = Union[Flatten[Map[Variables,
-Cases[holdy/.Dot->Times,h_ /;
+Cases[holdy/.DOT->Times,h_ /;
       (!MemberQ[{LorentzIndex,Momentum,DiracGamma,Eps,
                  DiracTrace,Pair,Symbol}, Head[y]]
       ),Infinity]]]];
@@ -173,7 +173,7 @@ dirtr[a_] := ($tracecount++;
              );
 
 new = (holdy /. lm2form /. Pair -> pair2f /. Eps -> eps2f /.
-       DiracGamma -> diracgamma /. Dot->NonCommutativeMultiply /.
+       DiracGamma -> diracgamma /. DOT->NonCommutativeMultiply /.
        DiracTrace -> dirtr /. diracgamma -> diracg/. n2form
       )[[1]];
 

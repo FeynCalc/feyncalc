@@ -36,9 +36,9 @@ EpsEvaluate[x_] := Block[{nx,cx, tx, rud},
    ]                    ];
 
 
-Epsev[A__] := ( Expand /@ (Distribute[Dot[A]]//
+Epsev[A__] := ( Expand /@ (Distribute[DOT[A]]//
                     ExpandScalarProduct) )/.
-              Dot->Epsevlin/.Epsevlin->Epsevantilin;
+              DOT->Epsevlin/.Epsevlin->Epsevantilin;
 Epsevlin[a___,b_ c_Momentum,d___] := b Epsevlin[a,c,d];
 Epsevlin[a___,b_ c_LorentzIndex,d___] := b Epsevlin[a,c,d];
 (*Added 21/9-2002. F.Orellana. We're assuming that the Lorentz indices run from 1 to 4,

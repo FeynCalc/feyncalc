@@ -44,7 +44,6 @@ Begin["`Private`"];
    Contract1                   = MakeContext["Contract1"];
    DataType                    = MakeContext["DataType"];
    DiracGamma  := DiracGamma   = MakeContext["DiracGamma"];
-   DOT                         = MakeContext["DOT"];
    DotSimplify  := DotSimplify = MakeContext["DotSimplify"];
    Eps         := Eps          = MakeContext["Eps"];
    EpsContract                 = MakeContext["EpsContract"];

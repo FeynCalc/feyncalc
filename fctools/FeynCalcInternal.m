@@ -38,7 +38,6 @@ diracmatrix     := diracmatrix     = MakeContext["DiracMatrix"];
 diracslash      := diracslash      = MakeContext["DiracSlash"];
 diractrace      := diractrace      = MakeContext["DiracTrace"];
 dimension       := dimension       = MakeContext["Dimension"];
-dot             := dot             = MakeContext["DOT"];
 FAD             := FAD             = MakeContext["FAD"];
 factor2         := factor2         = MakeContext["Factor2"];
 fourvector      := fourvector      = MakeContext["FourVector"];
@@ -136,7 +135,7 @@ ru =  Join[
  su["PropagatorDenominator", propagatorD],
  su["ScalarProduct", scalarP],
  su["MatrixTrace", diractrace], 
- If[CheckContext["DOT"], {Dot -> dot}, {}],
+ (*If[CheckContext["DOT"], {*){Dot -> DOT}(*}, {}]*),
  If[CheckContext["ChiralityProjector"], 
     If[$BreitMaison === True,
        {chiralityprojector[1] :> 1/2 + 1/2 diracgamma[5],
@@ -185,13 +184,13 @@ metricT[x_, x_,op_:{}]:=(dimension/.op/.Options[metrictensor]);
 diracM[n_?NumberQ y_]:=n diracM[y];
 diracmatrix[n_?NumberQ y_,{}]:=n diracM[y];
 diracM[n_?NumberQ y_,opt_]:=n diracM[y,opt];
-diracM[x_,y_]:=diracM[x].diracM[y]/;(FreeQ[y,Rule]&&y=!={});
-diracM[x_,y__,{}]:= diracM[Dot[x,y]];
-diracM[x_,y__,z_]:= diracM[Dot[x,y],z]/;!FreeQ[z,Rule];
-diracM[x_,y__,z_]:= diracM[Dot[x,y,z]]/; FreeQ[z,Rule];
+diracM[x_,y_]:=DOT[diracM[x],diracM[y]]/;(FreeQ[y,Rule]&&y=!={});
+diracM[x_,y__,{}]:= diracM[DOT[x,y]];
+diracM[x_,y__,z_]:= diracM[DOT[x,y],z]/;!FreeQ[z,Rule];
+diracM[x_,y__,z_]:= diracM[DOT[x,y,z]]/; FreeQ[z,Rule];
 diracM[x_ y_Plus,opt_:{}]:= diracM[Expand[x y],opt];
 diracM[x_Plus,opt_:{}]:= diracM[#,opt]& /@ x;
-diracM[x_Dot,opt_:{}] :=  diracM[#,opt]& /@ x;
+diracM[DOT[x_,y__],opt_:{}] :=  diracM[#,opt]& /@ DOT[x,y];
 diracM[n_Integer,___]:=diracgamma[n];
 diracM[5,opt_:{}]:=diracgamma[5];
 diracM[6,opt_:{}]:=diracgamma[6];
@@ -201,7 +200,7 @@ diracM["-"]:=diracgamma[7];
 diracM[x_,op_:{}] := diracgamma[lorentzindex[ x,
             (dimension/.op/.Options[diracmatrix])  ] ,
             (dimension/.op/.Options[diracmatrix])
-                               ]/;(Head[x]=!=Dot && !IntegerQ[x]);
+                               ]/;(Head[x]=!=DOT && !IntegerQ[x]);
 (* ---------------------------------------------------------------------- *)
 (* diracS *)
 (* ---------------------------------------------------------------------- *)
@@ -213,9 +212,9 @@ diracS[x_,y_]:=diracS[ndot[x,y]]/;(FreeQ[y,Rule]&&y=!={});
 diracS[x_,y__,{}]:=diracS[ndot[x,y]];
 diracS[x_,y__,z_]:=diracS[ndot[x,y],z]/;!FreeQ[z,Rule];
 diracS[x_,y__,z_]:=diracS[ndot[x,y,z]]/;FreeQ[z,Rule];
-diracS[x__]:= (diracS@@({x}/.Dot->ndot) )/;!FreeQ[{x},Dot];
+diracS[x__]:= (diracS@@({x}/.DOT->ndot) )/;!FreeQ[{x},DOT];
 diracS[n_Integer x_ndot,opt_:{}]:=n diracS[x,opt];
-diracS[x_ndot,opt_:{}] := Expand[ (diracS[#,opt]& /@ x) ]/.ndot->Dot;
+diracS[x_ndot,opt_:{}] := Expand[ (diracS[#,opt]& /@ x) ]/.ndot->DOT;
 (*   pull out a common numerical factor *)
 diracS[x_,op_:{}] := Block[{dtemp,dix,eins,numf,resd},
          dix = factor2[ eins Expand[x]];
@@ -224,7 +223,7 @@ diracS[x_,op_:{}] := Block[{dtemp,dix,eins,numf,resd},
            (dimension/.op/.Options[diracslash])  ] ,
            (dimension/.op/.Options[diracslash])
                                ]
-                          ]/;((Head[x]=!=Dot)&&(Head[x]=!=ndot));
+                          ]/;((Head[x]=!=DOT)&&(Head[x]=!=ndot));
 (* ---------------------------------------------------------------------- *)
 (* fourV *)
 (* ---------------------------------------------------------------------- *)
@@ -277,11 +276,11 @@ sunT[b_]  := sunT[sunindex[b]] /; FreeQ[b, sunindex] && FreeQ[b, Pattern] &&
 
 SetAttributes[setdel, HoldRest];
 setdel[x_, y_] := SetDelayed[x, y];
-setdel[HoldPattern[sunT[dottt[x__]]] /. dottt -> dot, dot@@( sunT /@ {x} ) ];
-setdel[HoldPattern[sunT[sunind[dottt[x__]]]] /. dottt -> dot /. sunind ->
-                    sunindex, dot@@( sunT /@ {x} ) ];
+setdel[HoldPattern[sunT[dottt[x__]]] /. dottt -> DOT, DOT@@( sunT /@ {x} ) ];
+setdel[HoldPattern[sunT[sunind[dottt[x__]]]] /. dottt -> DOT /. sunind ->
+                    sunindex, DOT@@( sunT /@ {x} ) ];
 
-sunT[a_, y__] := Apply[dot, sunT /@ {a, y}];
+sunT[a_, y__] := Apply[DOT, sunT /@ {a, y}];
 (* ---------------------------------------------------------------------- *)
 (* scalarP *)
 (* ---------------------------------------------------------------------- *)
@@ -339,9 +338,11 @@ mtd[a_,b_] := pair[lorentzindex[a, D], lorentzindex[b, D]];
 gs[a_]  :=  diracgamma[momentum[a]];
 gsd[a_] :=  diracgamma[momentum[a,D],D];
 
-ga[5] = diracgamma[5]; ga[6] = diracgamma[6];
+ga[5] = diracgamma[5];
+ga[6] = diracgamma[6];
 ga[7] = diracgamma[7];
-gad[5] = diracgamma[5]; gad[6] = diracgamma[6];
+gad[5] = diracgamma[5];
+gad[6] = diracgamma[6];
 gad[7] = diracgamma[7];
 ga[a_]  :=  diracgamma[lorentzindex[a]];
 gad[a_] :=  diracgamma[lorentzindex[a,D],D];

@@ -30,7 +30,6 @@ Cases2 = MakeContext["Cases2"];
 Collect2    := Collect2 = MakeContext["Collect2"];
 Contract    := Contract = MakeContext["Contract"];
 CovariantD := CovariantD = MakeContext["CovariantD"];
-DOT          = MakeContext["DOT"];
 DotSimplify  = MakeContext["DotSimplify"];
 DiracGamma   = MakeContext["DiracGamma"];
 diractrick  := diractrick = MakeContext["DiracTrick"];
@@ -582,7 +581,7 @@ result = PowerSimplify[result /. subs];
 result = Contract[dirdot[PowerSimplify[result]] /. dDelta -> Pair /.subs];
 *)
 If[!FreeQ[result, Eps], result = EpsEvaluate[result]];
-If[!FreeQ[result, Dot],
+If[!FreeQ[result, DOT],
    result = DotSimplify[result, Expanding -> False]
   ];
 If[$VeryVerbose > 0, Print["there are ", Length[result], " terms "]];

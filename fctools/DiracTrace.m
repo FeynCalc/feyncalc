@@ -20,7 +20,7 @@ DiracTrace::"usage" =
 Whether the trace is  evaluated depends on the option \
 DiracTraceEvaluate. See also Tr. \
 The argument expr may be a product of Dirac matrices or slashes \
-separated by the Mathematica Dot \".\".";
+separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -29,8 +29,6 @@ Begin["`Private`"];
 MakeContext[ Contract, Collect2, DiracCanonical, DiracGamma,
 DiracGammaCombine, DiracGammaExpand, DiracGammaT, DiracOrder,
 DiracSigmaExplicit, DiracSimplify, DiracTrick, DiracTraceEvaluate];
-
-dot := dot  = MakeContext["DOT"];
 
 MakeContext[ DotSimplify, Eps, EpsEvaluate, Factor2, EpsContract,
 Expanding, Expand2, Factoring, FeynCalcInternal, FeynCalcExternal,
@@ -96,8 +94,8 @@ diractraceevsimple[xx_,{opt___}] :=
  ( ( TraceOfOne /. {opt} /.Options[Tr] /. Options[DiracTrace] ) * xx
  )/;  FreeQ[xx, DiracGamma];
 
-diractraceevsimple[y_ x_Dot,{opt___}] :=
- y diractraceevsimple[x,{opt}] /; FreeQ[y, DiracGamma];
+diractraceevsimple[y_ DOT[x_,z__],{opt___}] :=
+ y diractraceevsimple[DOT[x,z],{opt}] /; FreeQ[y, DiracGamma];
 
 
 diractraceevsimple[x_Plus , {opt___}]:=Map[diractraceevsimple[#,{opt}]&, x];
@@ -112,27 +110,27 @@ diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x *
  (TraceOfOne /. {opt} /.Options[Tr] /. Options[DiracTrace] );
 (*diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x;*)
 
-diractraceevsimple[x_Dot, {opt___}]:=
+diractraceevsimple[DOT[x___], {opt___}]:=
 (If[FreeQ[#,LorentzIndex],#, #/.Pair->sCO/.sCO->Pair]&[
-     If[(*Length[x] > Length[Union[Variables /@ Apply[List,x]]],*)
+     If[(*Length[DOT[x]] > Length[Union[Variables /@ Apply[List,DOT[x]]]],*)
    (*More restrictive condition. I'm not sure about this... But the old stuff commented out above
       is wrong on e.g. Tr[DiracGamma[Momentum[p]].DiracGamma[Momentum[p]].DiracGamma[Momentum[r]]]
       see, Kapusta's bug report http://www.feyncalc.org/forum/0079.html. F.Orellana, 10/2002*)
-        Union[Length /@ Split[Sort[ Variables /@ Apply[List,x] ]]] === {2},
-        If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[x]]];
-        Factor[diractraceevsimpleplus[Expand[DiracTrick[x]], {opt}]],
-        If[$VeryVerbose >2, Print["using spursav on ", StandardForm[x]]];
+        Union[Length /@ Split[Sort[ Variables /@ Apply[List,DOT[x]] ]]] === {2},
+        If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[DOT[x]]]];
+        Factor[diractraceevsimpleplus[Expand[DiracTrick[DOT[x]]], {opt}]],
+        If[$VeryVerbose >2, Print["using spursav on ", StandardForm[DOT[x]]]];
        (TraceOfOne /. {opt} /.Options[Tr] /. Options[DiracTrace] )*
-        (spursav @@ x)
+        (spursav @@ DOT[x])
       ] ]
-)  /; (MatchQ[Apply[doo, x], doo[
+)  /; (MatchQ[Apply[doo, DOT[x]], doo[
        DiracGamma[(LorentzIndex | Momentum)[_,_],_]..]] ||
-         MatchQ[Apply[doo, x], doo[
+         MatchQ[Apply[doo, DOT[x]], doo[
          DiracGamma[(LorentzIndex | Momentum)[_]]..]] ||
-       MatchQ[Apply[doo, x], doo[
+       MatchQ[Apply[doo, DOT[x]], doo[
        DiracGamma[(LorentzIndex | Momentum)[_,_],_]..,
        DiracGamma[5 | 6 | 7]]] ||
-         MatchQ[Apply[doo, x], doo[
+         MatchQ[Apply[doo, DOT[x]], doo[
          DiracGamma[(LorentzIndex | Momentum)[_]]..,
          DiracGamma[5 | 6 | 7]]]
       );
@@ -218,7 +216,7 @@ diractraceev2[x_,opt_:{}]:=
  (* coneinsdef    *)
    coneins[ x_ ]  := MemSet[coneins[x], x/.Pair->sCO/.sCO->Pair ];
 
- (* If no dot's  but DiracGamma's are present *)
+ (* If no DOT's  but DiracGamma's are present *)
 (*XXX *)
  diractraceev3[y_,opt_:{}]:=Block[
                               {diractrpa,diractrtemp,diractrresu,four},
@@ -236,7 +234,7 @@ diractraceev2[x_,opt_:{}]:=
   If[!FreeQ[diractrresu, LorentzIndex],
      diractrresu = diractrresu /. Pair -> sCO /. sCO -> scev
     ];
-                  diractrresu] /;( FreeQ[y,dot] && !FreeQ[y,DiracGamma]);
+                  diractrresu] /;( FreeQ[y,DOT] && !FreeQ[y,DiracGamma]);
 
 
  (* #################################################################### *)
@@ -252,7 +250,7 @@ diractraceev2[x_,opt_:{}]:=
    diractrcoll=PairCollect/.opt;
    schoutenopt = Schouten /. opt;
    traceofone = TraceOfOne /.  opt;
-   nx = Collect2[coneins[nnx], dot, Factoring -> False];
+   nx = Collect2[coneins[nnx], DOT, Factoring -> False];
    nx = DiracGammaCombine[nx];
    If[ Head[nx]===Plus && Length[nx] > 142,
        diractrlnx = Length[nx]; diractrjj = 0;
@@ -274,7 +272,7 @@ If[$VeryVerbose > 1, Print["diractrjj = ", diractrjj,
               If[!FreeQ[diractrny, DiracGamma],
                                 (*DotSimplify added 16/10-2002, F.Orellana*)
                  diractrny = Expand2[DotSimplify[diractrny,Expanding -> False] /.
-                                      dot->spursav /.
+                                      DOT->spursav /.
                                       DiracGamma[5]->0/.
                                        DiracGamma[6]->(1/2)/.
                                         DiracGamma[7]->(1/2),
@@ -298,7 +296,7 @@ If[$VeryVerbose > 1, Print["diractrjj = ", diractrjj,
               If[!FreeQ[diractrny, DiracGamma],
                   (*DotSimplify added 16/10-2002, F.Orellana*)
                  diractrny = Expand2[DotSimplify[diractrny, Expanding -> True] /.
-                                     dot->spursav /.
+                                     DOT->spursav /.
                                       DiracGamma[5]->0/.
                                        DiracGamma[6]->(1/2)/.
                                         DiracGamma[7]->(1/2),
@@ -356,7 +354,7 @@ If[$VeryVerbose > 1, Print["CH3"]; Print[TimeUsed[]]];
    If[ diractrcoll===True,
    diractrpc[x__]:=Collect2[ Plus[x],Pair ,Factoring -> False];
        diractrres = diractrres/.Plus->diractrpc ];
-                      diractrres]/;!FreeQ2[nnx,{dot,DiracGamma}];
+                      diractrres]/;!FreeQ2[nnx,{DOT,DiracGamma}];
  (* endof diractraceev1 *)
  (* ************************************************************** *)
 
@@ -419,8 +417,8 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
         Rolf it's wrong *)
    (*spur[m_,n_,r_,s_,l_,t_,DiracGamma[5]]:= Block[{dirsign, sres, ltr},
      If[($Kreimer === True) && (!OrderedQ[{m,n,r,s,l,t}]),
-           Tr[1/(TraceOfOne/.Options[Tr]) DiracOrder[ m.n.r.s.
-                                              l.t.DiracGamma[5] ]
+           Tr[1/(TraceOfOne/.Options[Tr]) DiracOrder[ DOT[m,n,r,s,
+                                              l,t,DiracGamma[5]] ]
              ],
         If[$Larin === True &&
            !FreeQ[{m,n,r,s,l,t}, DiracGamma[LorentzIndex[_,_],_]]
@@ -434,8 +432,8 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
  (*drsi is usually -1/4 *)
           {f1, f2, f3} = LorentzIndex[#, D]& /@ Unique[{"L","L","L"}];
           Tr[drsi I/6 Eps[LorentzIndex[in, di], f1, f2, f3] *
-             a1.a2.a3.a4.a5.DiracGamma[f1, D] . DiracGamma[f2, D] .
-                            DiracGamma[f3, D]
+             DOT[a1,a2,a3,a4,a5,DiracGamma[f1, D] , DiracGamma[f2, D] ,
+                            DiracGamma[f3, D]]
             ]
          ];
            Which[ MatchQ[t, DiracGamma[ LorentzIndex[__], ___]],
@@ -680,8 +678,8 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
     fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
     DiracTrace @@
            ( {spx}/.DiracGamma[5]->
-             (dirsign I/24 (DiracGamma[fi[[1]]].DiracGamma[fi[[2]]].
-                    DiracGamma[fi[[3]]].DiracGamma[fi[[4]]]
+             (dirsign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
+                    DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]
                    ) (Eps@@fi)
              )
            )
@@ -694,7 +692,7 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
              (*drsi is usually -1/4 *)
              temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
                      Tr[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
-                         dot @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}]];
+                         DOT @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}]];
          ]  (*]*);
 
     If[($Larin === False) (*&& ($Kreimer === False)*) && ($West === True) &&

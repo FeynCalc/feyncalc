@@ -36,7 +36,6 @@ Begin["`Private`"];
 MakeContext[
 CouplingConstant,
 DeclareNonCommutative,
-DOT,
 Explicit,
 FreeQ2,
 GaugeField,
