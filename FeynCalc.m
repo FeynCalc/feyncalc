@@ -2,14 +2,16 @@
 
 (* :Version: 5.0.0beta1 *)
 
-(* :Author: Rolf Mertig  (rolfm@mertig.com) *)
+(* :Authors: Rolf Mertig  (rolf@mertig.com)
+             Frederik Orellana (fjob@cabocomm.dk)
+*)
 
 (* :Summary: Tools and Tables *)
 
 (* :Terms of use: GPL, see
                   http://www.feyncalc.org/licence.txt *)
 
-(* :Mathematica Version 3.0 or higher *)
+(* :Mathematica Version 4.0 or higher, compatible with Mahematica 5.0 *)
 
 (* :History:
 
