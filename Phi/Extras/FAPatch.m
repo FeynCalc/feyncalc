@@ -22,11 +22,11 @@ BeginPackage["HighEnergyPhysics`Phi`FAPatch`", {"HighEnergyPhysics`FeynCalc`"}];
 FAPatch::"usage" = 
     "If an unpatched copy of FeynArts is present in $FeynCalcDirectory, \
 evaluating FAPatch causes the files making up FeynArts to be modified in \
-order for FeynArts to be compatible with FeynCalc";
+order for FeynArts to be compatible with FeynCalc.";
 
 FilePatch::"usage" = 
     "FilePatch[f, rp] replaces the patterns given by rp in the file f.  \
-rp should be a list of the form {string -> string, ..}";
+rp should be a list of the form {string -> string, ..}.";
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -38,7 +38,7 @@ Begin["`Private`"];
 
 (*The list of files to be modified*)
 Options[FAPatch] = {
-File -> {"FeynArts.m", "Setup.m", 
+  File -> {"FeynArts.m", "Setup.m", 
       "FeynArts" <> $PathnameSeparator <> "Analytic.m", 
       "FeynArts" <> $PathnameSeparator <> "Graphics.m", 
       "FeynArts" <> $PathnameSeparator <> "Initialize.m", 
@@ -57,38 +57,43 @@ File -> {"FeynArts.m", "Setup.m",
       "Models" <> $PathnameSeparator <> "Lorentzbgf.gen",
       "Models" <> $PathnameSeparator <> "Lorentz.gen"},
 
-(*The list of replacements*)
-Replace -> {
-      "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose",
-      "InferFormat" -> "tmpInfer", "Format" -> "format1",
-      "format1[Global`a, Global`c]" -> "Format[Global`a, Global`c]",
+  (*The list of replacements*)
+  (*Some regular expression utilities would be VERY nice...*)
+  Replace -> {
+      "InferFormat" -> "tmpInfer",
       "SetLoop" -> "tmpsetloop", 
+
+      "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose",
+      "Format" -> "format1",
       "Loop" -> "HighEnergyPhysics`FeynCalc`Loop`Loop", 
-      "Indices" -> "FAIndices", 
-      (*"Global`PolarizationVector" -> "Global`FAPolarizationVector",*) 
-      "PolarizationVector" -> "FAPolarizationVector", 
-      "FeynAmp" -> "FAFeynAmp",
+      "PolarizationVector" -> "HighEnergyPhysics`FeynCalc`PolarizationVector`PolarizationVector",
+      "FeynAmp" -> "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmp",
       "PropagatorDenominator" -> 
         "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator", 
       "FeynAmpDenominator" -> 
         "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator", 
       "GaugeXi" -> "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi", 
-      "NonCommutative" -> "FANonCommutative", 
+      "NonCommutative" -> "HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative",
       "GS" -> "Gstrong", 
       "Global`DiracSpinor" -> 
         "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
       "FeynArts`DiracSpinor" -> 
         "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
       "Global`DiracTrace" -> 
-        "HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace", 
-      "tmpInfer" -> "InferFormat", "tmpsetloop" -> "SetLoop", 
+        "HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace",
+
+      "format1[Global`a, Global`c]" -> "Format[Global`a, Global`c]",
+      "tmpInfer" -> "InferFormat",
+      "tmpsetloop" -> "SetLoop", 
       "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr", 
       "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"", 
-      "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD", 
-      "KinematicFAIndices" -> "KinematicIndices", 
-      "CreateFAFeynAmp" -> "CreateFeynAmp", 
-      "FADiracFASpinor" -> "FADiracSpinor", "FAFA" -> "FA", 
-      "FAHighEnergyPhysics" -> "HighEnergyPhysics"}};
+      "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD",
+      "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpList" ->
+        "HighEnergyPhysics`FeynCalc`FeynAmpList`FeynAmpList",
+      "CreateHighEnergyPhysics`FeynCalc`FeynAmp`FeynAmp" ->
+        "CreateFeynAmp"
+  }
+};
 
 (*Error message*)
 $ok = True;
@@ -179,14 +184,18 @@ cannot be handled by this program"]; Return[]];
 
 
 (* ------------------------------------------------------------------------------ *)
-(*Include the Phi particle patterns*)
+(*Include the PHI particle patterns and set FeynCalc options*)
 
 Print[ "Altering P$Generic in Setup.m.\n
 
    >Please check that this is actually done. If not, do it manually."];
 strm = OpenAppend[$FeynCalcDirectory <> $PathnameSeparator <> "Setup.m"];
-WriteString[strm, "\nP$Generic = 
-Union[P$Generic, HighEnergyPhysics`Phi`Objects`$ParticleHeads]\n"]; 
+WriteString[strm,
+"\nP$Generic = Union[Flatten[P$Generic | $ParticleHeads]];\n
+P$NonCommuting =  Union[Flatten[P$NonCommuting | $FermionHeads]];\n
+SetOptions[FourVector, FeynCalcInternal -> False];\n
+SetOptions[MetricTensor, FeynCalcInternal -> False];\n
+SetOptions[DiracSlash, FeynCalcInternal -> False];\n"]; 
 Close[strm];
 
 
