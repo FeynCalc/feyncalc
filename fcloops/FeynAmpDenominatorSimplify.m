@@ -325,14 +325,15 @@ ftr[a_. FeynAmpDenominator[
   PropagatorDenominator[Momentum[q1_,di___] - Momentum[pe_,di___], m3_]
                           ], q1_
    ] := Expand2[EpsEvaluate[ExpandScalarProduct[
-(a FeynAmpDenominator[ PropagatorDenominator[Momentum[q1,di],m1],
+(a FeynAmpDenominator[ 
    PropagatorDenominator[Momentum[q1,di] - Momentum[pe,di],m2],
-   PropagatorDenominator[Momentum[q1,di] - Momentum[pe,di],m3]
+   PropagatorDenominator[Momentum[q1,di] - Momentum[pe,di],m3],
+   PropagatorDenominator[Momentum[q1,di],m1]
                      ]
 ) /. q1 -> (-q1 + pe),FeynCalcInternal -> False
                                                ]
                           ], q1
-              ] /; {m2,m3} =!= Sort[{m2,m3}];
+              ];(* /; {m2,m3} =!= Sort[{m2,m3}];*) (*should not be necessary, changed Oct. 2003 *)
 
 qtr[a_ OPESum[xx_,yy_], q1_] :=  (a OPESum[qtr[xx, q1],yy] 
                                  ) /; FreeQ[a, q1];
