@@ -368,6 +368,27 @@ SelfConjugation[(a : $VectorHeads)[i_]] := True;
 SelfConjugation[(a : $FermionHeads)[i_]] := False;
 SelfConjugation[(a : $ScalarHeads)[i_]] := True;
 
+(* --------------------------------------------------------------------- *)
+(*Functions in context HighEnergyPhysics`Private`*)
+
+BeginPackage["HighEnergyPhysics`FeynCalc`"];
+
+(*CombinationLists[l, n] returns a list of all possible sets containing n
+elements from the list l. (this function is probably in the combinatorics
+package, but we have enough in memory already)*)
+
+Begin["`Private`"];
+
+CombinationLists[m_List, n_Integer] :=
+  Union[Select[
+  Sort /@ Flatten[Outer[List, Sequence @@ Table[m, {n}]],
+  n - 1], (Union[#] === #) &]];
+
+End[]; EndPackage[];
+
+(* --------------------------------------------------------------------- *)
+
+
 Options[UGenerator] = { fcsunn -> 2, UDimension -> Automatic};
 Options[UIdentity] = { fcsunn -> 2, UDimension -> Automatic};
 (* Most of this Projection business is no longer necessary. Dropped, 11/5-2003 *)
@@ -1814,7 +1835,7 @@ WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := Block[
   DeclareUMatrix[plus];
   res=WriteOutUMatrices1[WriteOutUMatrices2[aa/.UTrace1->tr/.NM->nm/.Plus->plus,optss],optss]/.
     nm->NM/.plus->Plus/.tr->UTrace1;
-  UndclareUMatrix[plus];
+  UndeclareUMatrix[plus];
   res
   ];
 
