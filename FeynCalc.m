@@ -202,7 +202,7 @@ SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 (*Set defaults here, not in the config file*)
 If[!ValueQ[Global`$LoadTARCER], Global`$LoadTARCER = True];
 
-If[Global`$LoadTARCER ===True,
+If[StringQ[Global`$LoadTARCER] || (Global`$LoadTARCER === True ),
 
 If[StringQ[ Global`$LoadTARCER ],
    HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
@@ -223,8 +223,8 @@ HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
    FeynCalcPrint["Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last]
   ];
-Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
   ];
+Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
 Clear[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames];,
 
 If[$Notebooks ===True,
@@ -981,7 +981,8 @@ Remove[HighEnergyPhysics`FeynArts`SetForm];
 *)
 If[$VersionNumber>3.4,
    Unprotect@@{ToExpression["Tr"]};
-   Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /; !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD];
+   Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /; 
+       !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD | Pair];
    Tr::usage="Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
    generalized trace, combining terms with f instead of Plus. Tr[list, f, n]
    goes down to level n in list. \n \n
