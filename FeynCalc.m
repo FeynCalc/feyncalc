@@ -602,6 +602,8 @@ load everything in core which is, by definition, not in the core sub-Context
   *)
   SubContext[_String] := "FeynCalc`";
 
+SetAttributes[MakeContext, HoldAll];
+
   MakeContext[x_String, y_String] :=
     If[SubContext[x] === "FeynCalc`",
     ToExpression["HighEnergyPhysics`FeynCalc`"<> x <>"`" <> y],
@@ -610,12 +612,8 @@ load everything in core which is, by definition, not in the core sub-Context
      (*<>x<>"`" added 6/8-2000, F.Orellana*)
     )];
 
-SetAttributes[MakeContext, HoldAll];
-
   MakeFeynCalcPrivateContext[x_String] := MakeFeynCalcPrivateContext[x] =
 ToExpression["HighEnergyPhysics`FeynCalc`Private`"<>x];
-
-
 
 SetAttributes[MakeContext, HoldAll];
 
@@ -781,8 +779,18 @@ End[];
 MyEndPackage[];
 
 
+
 Map[HighEnergyPhysics`FeynCalc`Private`fcDeclarePackge,
     HighEnergyPhysics`FeynCalc`Private`declarepackagelist];
+
+SetDirectory[ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,"core"}]];
+(* need to do this first, otherwise $NonComm does not get built correctly *)
+Get["DataType.m"];
+Get["DeclareNonCommutative.m"];
+corefiles = FileNames["*.m"];
+Get/@corefiles;
+ResetDirectory[];
+
 
 (* take care of SubContext of the multifunpack values *)
 (* (avoid Global` symbols, F.Orellana, 14/9-2002) *)
@@ -805,6 +813,7 @@ Table[ Map[ HighEnergyPhysics`FeynCalc`Private`setsubcontext[#,
              Hold[Set][Hold[MakeContext][a], Hold[MakeContext][b]]}
 
 ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
+
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
@@ -849,10 +858,6 @@ Null
 ];
 Clear[feversion];
 
-SetDirectory[ToFileName[{$FeynCalcDirectory,"core"}]];
-Global`TEST = corefiles = FileNames["*.m"];
-Get/@corefiles;
-ResetDirectory[];
 
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
@@ -963,10 +968,6 @@ If[$Notebooks===True,
 Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
-
-(* yes, it should be done somewhere else, but it does not work ...*)
-DeclareNonCommutative@MakeContext["QuarkGluonVertex"];
-DeclareNonCommutative@MakeContext["QuarkPropagator"];
 
 SetDirectory[savethisdir];
 Clear[savethisdir];
