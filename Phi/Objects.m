@@ -16,10 +16,10 @@
 
 (* SECTIONS:
 
-   1)  Non-commutative multiplication
-   2)  Iso-vector products
-   3)  Power functions
-   4)  Scalars
+   1)  UMatrix and UScalar DataTypes
+   2)  Non-commutative multiplication
+   3)  Iso-vector products
+   4)  Power functions
    5)  Matrices
    6)  Iso-vectors
    7)  Explicit objects
@@ -38,7 +38,8 @@
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
-BeginPackage["HighEnergyPhysics`Phi`Objects`", {"HighEnergyPhysics`Phi`"}];
+BeginPackage["HighEnergyPhysics`Phi`Objects`", {"HighEnergyPhysics`Phi`",
+                                                 "HighEnergyPhysics`FeynCalc`"}];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -57,24 +58,27 @@ Begin["`Private`"];
 
 (* FeynCalc functions *)
 
-fcpd := fcpd = HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcli := fcli = HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcsuni := fcsuni = HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
-fcqf := fcqf = HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-fcsunn := fcsunn = HighEnergyPhysics`FeynCalc`SUNN`SUNN;
-fcsunt := fcsunt = HighEnergyPhysics`FeynCalc`SUNT`SUNT;
-fcsund := fcsund = HighEnergyPhysics`FeynCalc`SUND`SUND;
-fcsunf := fcsunf = HighEnergyPhysics`FeynCalc`SUNF`SUNF;
-fcsundel := fcsundel = HighEnergyPhysics`FeynCalc`SUNDelta`SUNDelta;
-fctr := fctr = HighEnergyPhysics`FeynCalc`SUNTrace`SUNTrace;
-fcdot := fcdot = HighEnergyPhysics`FeynCalc`DOT`DOT;
-fcexpt := fcexpt = HighEnergyPhysics`fctools`Explicit`Explicit;
-fcdots := fcdots = HighEnergyPhysics`FeynCalc`DotSimplify`DotSimplify;
-fcexsuni := fcexsuni = HighEnergyPhysics`qcd`ExplicitSUNIndex`ExplicitSUNIndex;
-fcpa := fcpa = HighEnergyPhysics`FeynCalc`Pair`Pair;
-fccc := fccc = HighEnergyPhysics`fctools`ComplexConjugate`ComplexConjugate;
-fclag := fclag = HighEnergyPhysics`fctables`Lagrangian`Lagrangian;
-fccoupl := fccoupl = HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant;
+fcpd := fcpd = MakeContext["PartialD"];
+fcli := fcli = MakeContext["LorentzIndex"];
+fcsuni := fcsuni = MakeContext["SUNIndex"];
+fcqf := fcqf = MakeContext["QuantumField"];
+fcsunn := fcsunn = MakeContext["SUNN"];
+fcsunt := fcsunt = MakeContext["SUNT"];
+fcsund := fcsund = MakeContext["SUND"];
+fcsunf := fcsunf = MakeContext["SUNF"];
+fcsundel := fcsundel = MakeContext["SUNDelta"];
+fctr := fctr = MakeContext["SUNTrace"];
+fcdot := fcdot = MakeContext["DOT"];
+fcexpt := fcexpt = MakeContext["Explicit"];
+fcdots := fcdots = MakeContext["DotSimplify"];
+fcexsuni := fcexsuni = MakeContext["ExplicitSUNIndex"];
+fcpa := fcpa = MakeContext["Pair"];
+fccc := fccc = MakeContext["ComplexConjugate"];
+fclag := fclag = MakeContext["Lagrangian"];
+fccoupl := fccoupl = MakeContext["CouplingConstant"];
+fcexli := fcexli = MakeContext["ExplicitLorentzIndex"];
+fcdt := fcdt = MakeContext["DataType"];
+fcms := fcms = MakeContext["MemSet"];
 
 
 
@@ -93,27 +97,27 @@ $ConstantIsoIndices =
 $ExpansionQuantities = {Global`FAFourVector[__], ParticleMass[Pion, a___],
       fccoupl[QED[1], c___]};
 UQuarkMassMatrix[st___RenormalizationState, sc___RenormalizationScheme,
-      qs___ExpansionState, (opts___Rule | opts___List)] :=
+      qs___ExpansionState, opts___?OptionQ] :=
     UMatrix[UQuarkMass[st, sc, qs, ##] & @@
             OptionsSelect[UQuarkMass, opts], ##] & @@
       OptionsSelect[UMatrix, opts];
 UQuarkChargeMatrix[st___RenormalizationState, sc___RenormalizationScheme,
-      qs___ExpansionState, (opts___Rule | opts___List)] :=
+      qs___ExpansionState, opts___?OptionQ] :=
     UMatrix[UQuarkCharge[st, sc, qs, ##] & @@
             OptionsSelect[UQuarkCharge, opts], ##] & @@
       OptionsSelect[UMatrix, opts];
 UChiralSpurionMatrix[x_,st___RenormalizationState, sc___RenormalizationScheme,
-      qs___ExpansionState, (opts___Rule | opts___List)] :=
+      qs___ExpansionState, opts___?OptionQ] :=
     (UMatrix[UChiralSpurion[st, sc, qs, ##] & @@
             OptionsSelect[UChiralSpurion, opts], ##] & @@
       OptionsSelect[UMatrix, opts])[x];
 UChiralSpurionRightMatrix[x_,st___RenormalizationState, sc___RenormalizationScheme,
-      qs___ExpansionState, (opts___Rule | opts___List)] :=
+      qs___ExpansionState, opts___?OptionQ] :=
     (UMatrix[UChiralSpurionRight[st, sc, qs, ##] & @@
             OptionsSelect[UChiralSpurionRight, opts], ##] & @@
       OptionsSelect[UMatrix, opts])[x];
 UChiralSpurionLeftMatrix[x_,st___RenormalizationState, sc___RenormalizationScheme,
-      qs___ExpansionState, (opts___Rule | opts___List)] :=
+      qs___ExpansionState, opts___?OptionQ] :=
     (UMatrix[UChiralSpurionLeft[st, sc, qs, ##] & @@
             OptionsSelect[UChiralSpurionLeft, opts], ##] & @@
       OptionsSelect[UMatrix, opts])[x];
@@ -146,8 +150,7 @@ UGeneratorMatrixIsoVector[opts___] :=
             OptionsSelect[UGenerator, opts]]],
       Sequence @@ OptionsSelect[IsoVector, opts]];
 ProjectionIsoVector[i_, opts___] := IsoVector[Projection[i], opts];
-(*Added 15/12/1999*)$UMatrices=
-MM|SMM|UChiMatrix|USmall|UFPlus|UFMinus|UChiPlus|UChiMinus|UGamma;
+
 $ParticleTypes = {Scalar, PseudoScalar, Vector, AxialVector, LeftComponent,
       RightComponent, Fermion};
 
@@ -175,27 +178,27 @@ $Particles = {PhiMeson, Pion, PionPlus, PionMinus, PionZero, Kaon, KaonPlus,
       XiZeroBaryon, SigmaMinusBaryon, XiMinusBaryon, Photon};
 (*Dynamic definition*)(*$UAllParticleHeads :=
       Alternatives @@ Union[Head /@ $Particles];*)
-(*Static definition*)$UAllParticleHeads :=
+(*Static definition*)$UAllParticleHeads =
     Scalar | PseudoScalar | Vector | PseudoVector;
-PhiMeson := PseudoScalar[1]; Pion := PseudoScalar[2]; PionPlus :=
-  PseudoScalar[3]; PionMinus := PseudoScalar[5]; PionZero =
-  PseudoScalar[4]; Kaon := PseudoScalar[6]; KaonPlus :=
-  PseudoScalar[7]; KaonZero := PseudoScalar[8]; KaonZeroBar :=
-  PseudoScalar[9]; KaonMinus := PseudoScalar[10]; EtaMeson :=
-  PseudoScalar[11]; UPerturbation := PseudoScalar[12];
-Photon := Vector[1];
-HiggsBoson := Scalar[1];
-Lepton := Fermion[1]; Neutrino := Fermion[2]; ElectronNeutrino :=
-  Fermion[3]; MuonNeutrino := Fermion[4]; TauonNeutrino :=
-  Fermion[5]; MassiveLepton := Fermion[6]; Electron := Fermion[7]; Muon :=
-  Fermion[8]; Tauon := Fermion[9]; Quark := Fermion[10]; LightQuark2 :=
-  Fermion[11]; LightQuark3 := Fermion[12]; DownQuark := Fermion[13]; UpQuark :=
-   Fermion[14]; StrangeQuark := Fermion[15]; CharmQuark =
-  Fermion[16]; BottomQuark = Fermion[17]; TopQuark = Fermion[18]; BBaryon :=
-  Fermion[19]; Nucleon := Fermion[20]; Proton := Fermion[21]; Neutron :=
-  Fermion[33]; LambdaBaryon := Fermion[23]; SigmaPlusBaryon :=
-  Fermion[24]; SigmaZeroBaryon := Fermion[25]; SigmaMinusBaryon :=
-  Fermion[26]; XiZeroBaryon := Fermion[27]; XiMinusBaryon := Fermion[28];
+PhiMeson = PseudoScalar[1]; Pion = PseudoScalar[2]; PionPlus =
+  PseudoScalar[3]; PionMinus = PseudoScalar[5]; PionZero =
+  PseudoScalar[4]; Kaon = PseudoScalar[6]; KaonPlus =
+  PseudoScalar[7]; KaonZero = PseudoScalar[8]; KaonZeroBar =
+  PseudoScalar[9]; KaonMinus = PseudoScalar[10]; EtaMeson =
+  PseudoScalar[11]; UPerturbation = PseudoScalar[12];
+Photon = Vector[1];
+HiggsBoson = Scalar[1];
+Lepton = Fermion[1]; Neutrino = Fermion[2]; ElectronNeutrino =
+  Fermion[3]; MuonNeutrino = Fermion[4]; TauonNeutrino =
+  Fermion[5]; MassiveLepton = Fermion[6]; Electron = Fermion[7]; Muon =
+  Fermion[8]; Tauon = Fermion[9]; Quark = Fermion[10]; LightQuark2 =
+  Fermion[11]; LightQuark3 = Fermion[12]; DownQuark = Fermion[13]; UpQuark =
+   Fermion[14]; StrangeQuark = Fermion[15]; CharmQuark =
+  Fermion[16]; BottomQuark = Fermion[17]; TopQuark = Fermion[18]; BBaryon =
+  Fermion[19]; Nucleon = Fermion[20]; Proton = Fermion[21]; Neutron =
+  Fermion[33]; LambdaBaryon = Fermion[23]; SigmaPlusBaryon =
+  Fermion[24]; SigmaZeroBaryon = Fermion[25]; SigmaMinusBaryon =
+  Fermion[26]; XiZeroBaryon = Fermion[27]; XiMinusBaryon = Fermion[28];
 
 
 
@@ -224,6 +227,9 @@ $ScalarHeads :=
       List -> Alternatives;
 HighEnergyPhysics`FeynArts`P$Generic := (HighEnergyPhysics`FeynArts`F | HighEnergyPhysics`FeynArts`S | HighEnergyPhysics`FeynArts`V | HighEnergyPhysics`FeynArts`U |
         HighEnergyPhysics`FeynArts`VS | HighEnergyPhysics`FeynArts`SV | $ParticleHeads);
+
+fcsuniQ[x_] := MatchQ[Head[x],(fcsuni|fcexsuni)];
+
 dropnumberr[phia_] := If[NumberQ[phia], numr, phia];
 takenumberr[phia_] := If[! NumberQ[phia], numr, phia];
 dropstringnumbers[phia_] :=
@@ -300,9 +306,6 @@ fclag[l_[ll___]] := Message[Lagrangian::noload, {l[ll]}[[1]]];
 $RenormalizationSuperscripts = {"", "r"};
 $RSSuperscripts = {"", ""};
 $ExpansionSuperscripts = {"", ""};
-$UScalars = {QuarkCondensate, ParticleMass, DecayConstant, fccoupl,
-      SU3D, SU3F, SU3Delta, Projection, fcsuni, fcsunf, fcsund, fcsundel, fcpa,
-			(*Added 24/2-2002*)fcsunn};
 $UMultiplications = {Times, NM, IsoDot, IsoCross, IsoSymmetricCross};
 $UDistributiveFunctions = {Conjugate,
                            (*added 17/6-2001*) fccc,
@@ -388,12 +391,6 @@ SelfConjugation[(a : $ScalarHeads)[i_]] := True;
                   List -> Alternatives)]) &]*)
 (*Changed 16/2 - 2000*)
 
-OptionsSelect[function_, opts___] :=
-  Select[(Cases[{opts}, _Rule,
-          Infinity] //. ({a___, b_ -> c_, d___, b_ -> e_, f___} -> {a, b -> c,
-               d, f})), (!
-          FreeQ[#, (Options[function] /. (a_ -> b_) -> a -> _ /.
-                List -> Alternatives)]) &]
 Options[UGenerator] = { fcsunn -> 2, UDimension -> Automatic};
 Options[UIdentity] = { fcsunn -> 2, UDimension -> Automatic};
 Options[ExpandU] = { fcsunn -> 2, UDimension -> Automatic,
@@ -433,7 +430,7 @@ Options[UChi] = {fcexpt -> True, DiagonalToU -> False, fcsunn -> 2,
       UDimension -> Automatic};
 (*Changed the strings below from "k", "k" to "l", "l" in order to avoid problems with IndicesCleanup.
   27/2-2002*)
-Options[PhiToFC] = {RemoveIntegerIndices -> True, FreeIsoIndexString -> "l",
+Options[PhiToFC] = {RemoveIntegerIndices -> False, FreeIsoIndexString -> "l",
       FreeIsoIndicesString -> "l", NumerateFree -> True};
 Options[MM] = {fcexpt -> True};
 Options[SMM] = {fcexpt -> True};
@@ -453,11 +450,94 @@ bti[c__] := (! FreeQ[{c}, UIdentity]);
 Options[CommutatorReduce] = {FullReduce -> True};
 Options[LeftComponent] = {fcexpt -> True};
 Options[RightComponent] = {fcexpt -> True};
-Options[CovariantFieldDerivative]=
-  {fcexpt->True, DiagonalToU->True,
-   RemoveIntegerIndices->True,
-   fcsunn->2, UDimension->Automatic};
+Options[CovariantFieldDerivative] = {fcexpt->True, DiagonalToU->True,
+   RemoveIntegerIndices->False,  fcsunn->2, UDimension->Automatic};
 Options[CovariantNabla] = {fcexpt -> True};
+
+
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* UMatrix and UScalar DataTypes *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+
+
+(* Declaring x as a scalar simply gives x the attribute NumericFunction and adds
+it to $UScalars, so that all multiplication functions etc. will bring it out
+(for some cases only when UScalarsOut is applied) *)
+
+(*us[i_] := $UScalars[[i]];*)
+
+(*DeclareUScalar[x_] := (If[MemberQ[$UScalars, x]=!=True,AppendTo[$UScalars,x]];
+			If[AtomQ[x], SetAttributes[x, {NumericFunction, NHoldAll}],
+            VerbosePrint[1, x,
+              " is not a symbol and cannot be assigned attribute \
+NumericFunction.  You'll have to use UScalarsOut"]];);*)
+
+(*Do[SetAttributes[Evaluate[us[i]], {NumericFunction, NHoldAll}];, {i,
+        Length[$UScalars]}];*)
+(*upar[i_] := {Scalar, PseudoScalar, Vector, AxialVector, Fermion}[[i]];*)
+(*Do[SetAttributes[Evaluate[upar[i]], {NumericFunction, NHoldAll}];, {i,
+        5}];*)
+(*SetAttributes[RenormalizationState, {NumericFunction, NHoldAll}];*)
+(*SetAttributes[RenormalizationScheme, {NumericFunction, NHoldAll}];*)
+(*SetAttributes[ExpansionState, {NumericFunction, NHoldAll}];*)
+
+
+
+(* When sums or products of the declared scalars are inside NM or IsoDot, it is
+necessary to either use Expand or UScalarsOut to get them out: *)
+
+(*SetAttributes[ppf, {NumericFunction, NHoldAll}];*)
+
+
+
+(* Commented out 6/3-2000 to accomodate no longer relying on the NumericFunction
+Attribute (got tired of the error messages from Mathematica 4 trying to
+evaluate things numerically). *)
+
+(*UScalarsOut[aa_] :=
+      Block[{tmpres, f, fc, i, j, a, b, c, pp, res}, $UScalars =
+          Union[$UScalars, {ppf}];
+        tmpres = (((aa //. (VerbosePrint[2,
+                          "Adding temporary arguments to $UScalars"];
+                        Flatten[{(Rule[#,
+                                    ppf[Position[$Particles, #][[1,
+                                        1]]]] & /@ $Particles), (Rule[
+                                    f_[a___, #, b___],
+                                    f[a, #[ppf[]] /. Pattern -> pp /.
+                                        pp[c_, ___] -> c, b]] & /@ $UScalars),
+                             (fcsuni | fcexsuni)[i_] /; FreeQ[i, ppf] :>
+                              fcsuni[
+                                ppf @@ ToCharacterCode[ToString[i]]]}])) /.
+                  Flatten[{(Rule[
+                              ppf[Position[$Particles, #][[1,
+                                    1]]], #] & /@ $Particles),
+                      (fcsuni | fcexsuni)[ppf[j___]] :>
+                        fcsuni[
+                          ToExpression[
+                            FromCharacterCode[{j}]]]}]) //.(*Added 25/2 -
+                  2000, to allow more complex patterns in $UScalars*)(VerbosePrint[2,
+                  "Pulling out composed $UScalars patterns from NM products"];
+                 a_NM /; (MemberQ[a, _[ppf[___]]]) :> (NM @@
+                        Select[
+                          List @@ a, ! MatchQ[#, _[ppf[___]]] &])*(Times @@
+                        Select[List @@ a, MatchQ[#, _[ppf[___]]] &])));
+        VerbosePrint[2, "Removing temporary arguments to $UScalars"];
+        VerbosePrint[3, "\nExpression with temporary arguments:\n",
+          StandardForm[tmpres]];
+        res = tmpres //. HoldPattern[fx_[ppf[___]]] -> fx; $UScalars =
+          Complement[$UScalars, {ppf}]; res];*)
+
+
+
+
+(* UMatrices *)
+
+(*Added 15/12/1999*)(*$UMatrices=
+{MM,SMM,UChiMatrix,USmall,UFPlus,UFMinus,UChiPlus,UChiMinus,UGamma};*)
 
 
 (* Check if c contains a matrix. Added Infinity 26/2-2000. *)
@@ -472,19 +552,102 @@ Options[CovariantNabla] = {fcexpt -> True};
 (* Added $UMatrices 13/3-2000. *)
 (* Added the trace stuff 16/6-2001. *)
 (* Added extra trace stuff $UMatrices->um, 24/2-2002 *)
+(* Added DataType stuff and speed optimization 17/9-2002 *)
 
-btu[c__] := (!FreeQ[{c} /. (UTrace1|tr)[ccc_] :> (UTrace1[ccc/.UMatrix->um/.$UMatrices->um]),
-                UMatrix[m__ /; FreeQ[{m}, UIdentity]] | $UMatrices,
-                Infinity]);
-btui[c__] := (!FreeQ[{c} /. (UTrace1|tr)[ccc_] :> UTrace1[ccc/.UMatrix->um/.$UMatrices->um],
-                UMatrix | $UMatrices, Infinity]);
-nbtui[c__] := FreeQ[{c} /. (UTrace1|tr)[ccc_] :> UTrace1[ccc/.UMatrix->um/.$UMatrices->um],
-               UMatrix | $UMatrices, Infinity];
+(*btui[c__] := (!FreeQ[{c} /. (UTrace1|tr)[ccc_] :> UTrace1[ccc/.UMatrix->um/.
+               (Alternatives@@$UMatrices)->um],
+                UMatrix | (Alternatives@@$UMatrices), Infinity]);*)
+
+(* Added 17/9-2002 *)
+
+$UMatrices = {};
+
+(*Variables used to avoid loops*)
+umset = False;
+umdec = False;
+
+DeclareUMatrix[x_] := (
+  Clear[nbtu,nbtui,btu,btui];
+  umdec=True;
+  If[umset,
+    $UMatrices=Append[$UMatrices, x],
+    $UMatrices=Union[$UMatrices, {x}]
+  ];
+  umdec = False;
+  nbtu[c__] := fcms[nbtu[c], (FreeQ[{c} /. (UTrace1|tr)[ccc_] :> (UTrace1[ccc/.UMatrix->um/.
+                                                 (Alternatives@@$UMatrices)->um]),
+              UMatrix[m__ /; FreeQ[{m}, UIdentity]] | (Alternatives@@(*$UMatrices*)(*Changed 1/2-2003*)
+                                                        Complement[$UMatrices, {UMatrix}]),
+                Infinity])] /; FreeQ[{c}, Pattern];
+  nbtui[c__] := fcms[nbtui[c], FreeQ[{c} /. (UTrace1|tr)[ccc_] :> UTrace1[ccc/.UMatrix->um/.
+                                                 (Alternatives@@$UMatrices)->um],
+               UMatrix | (Alternatives@@$UMatrices) , Infinity]] /; FreeQ[{c}, Pattern];
+  btu[c__] := Not[nbtu[c]];
+  btui[c__] := Not[nbtui[c]];);
+
+DeclareUMatrix[x_,y__] := DeclareUMatrix /@ {x,y};
+
+UndeclareUMatrix[x_] := (
+  Clear[nbtu,nbtui,btu,btui];
+  umdec = True;
+  $UMatrices=Complement[$UMatrices, {x}];
+  umdec = False;
+  nbtu[c__] := fcms[nbtu[c], (FreeQ[{c} /. (UTrace1|tr)[ccc_] :> (UTrace1[ccc/.UMatrix->um/.
+                                                 (Alternatives@@$UMatrices)->um]),
+                UMatrix[m__ /; FreeQ[{m}, UIdentity]] | (Alternatives@@
+                                                           Complement[$UMatrices, {UMatrix}]),
+                Infinity])] /; FreeQ[{c}, Pattern];
+  nbtui[c__] := fcms[nbtui[c], FreeQ[{c} /. (UTrace1|tr)[ccc_] :> UTrace1[ccc/.UMatrix->um/.
+                                                 (Alternatives@@$UMatrices)->um],
+               UMatrix | (Alternatives@@$UMatrices) , Infinity]] /; FreeQ[{c}, Pattern];
+  btu[c__] := Not[nbtu[c]];
+  btui[c__] := Not[nbtui[c]];);
+
+UndeclareUMatrix[x_,y__] := UndeclareUMatrix /@ {x,y};
+
+fcdt[x_, UMatrix] := btui[x];
+
+UMatrixQ = btui;
+
+HighEnergyPhysics`FeynCalc`DataType`DataType /:
+HoldPattern[Set[HighEnergyPhysics`FeynCalc`DataType`DataType[x_, UMatrix], True]] :=
+(DeclareUMatrix[x];True);
+
+HighEnergyPhysics`FeynCalc`DataType`DataType /:
+HoldPattern[Set[HighEnergyPhysics`FeynCalc`DataType`DataType[x_, UMatrix], False]] :=
+(UndeclareUMatrix[x];False);
+
+$UMatrices /: HoldPattern[Set[$UMatrices, m_]] :=
+      (umset = True;
+      UndeclareUMatrix@@$UMatrices;
+      DeclareUMatrix@@m;
+      umset = False;
+      $UMatrices) /; umdec===False;
 
 
-(* Check if a is a scalar: *)
+DeclareUMatrix[UMatrix,MM,SMM,UChiMatrix,USmall,UFPlus,UFMinus,UChiPlus,UChiMinus,UGamma];
 
-UScalarQ[a_] := (MemberQ[$UScalars, a] || NumericQ[a] ||
+(**)
+
+
+(* UScalars *)
+
+
+$UScalars = {};
+
+(*Variables used to avoid loops*)
+usset = False;
+usdec = False;
+
+DeclareUScalar[x_] := (
+  Clear[UScalarQ,btsbin,btsbin1,btss,btss1,nbts];
+  usdec=True;
+  If[usset,
+    $UScalars=Append[$UScalars, x],
+    $UScalars=Union[$UScalars, {x}]
+  ];
+  usdec = False;
+  UScalarQ[a_] := fcms[UScalarQ[a], (MemberQ[$UScalars, a] || NumericQ[a] ||
           MemberQ[$UScalars, Head[a]] ||
           MatchQ[a, (Alternatives @@ $UScalars)] ||
           MatchQ[a, (Alternatives @@ $UScalars)^_] ||
@@ -494,18 +657,18 @@ UScalarQ[a_] := (MemberQ[$UScalars, a] || NumericQ[a] ||
             MatchQ[a,
               fcqf[___, Particle[(Alternatives @@ $UScalars), ___], ___][_]] ||
              MatchQ[a,
-              fcqf[___, Particle[(Alternatives @@ $UScalars), ___], ___]]*));
+              fcqf[___, Particle[(Alternatives @@ $UScalars), ___], ___]]*))] /; FreeQ[{a}, Pattern];
 							(*Commented out 21/2-2002, think it's redundant*)(* &&FreeQ[a, allpatterns]*)
 
 
-btsbin[a_] := If[UScalarQ[a]&&FreeQ[a, allpatterns], 1, 0];
-btsbin1[a_] := If[UScalarQ[a], 1, 0];
+btsbin[a_] := fcms[btsbin[a], If[UScalarQ[a]&&FreeQ[a, allpatterns], 1, 0]] /; FreeQ[{a}, Pattern];
+btsbin1[a_] := fcms[btsbin1[a],  If[UScalarQ[a], 1, 0]] /; FreeQ[{a}, Pattern];
 
 (* btss[a__] is True if {a} contains at least one scalar: *)
 
-btss[a__] := Plus @@ btsbin /@ {a} > 0;
-btss1[a__] := Plus @@ btsbin1 /@ {a} > 0;
-nbts[a_] := ((! (NumericQ[a] || MemberQ[$UScalars, Head[a]] ||
+btss[a__] := fcms[btss[a], Plus @@ btsbin /@ {a} > 0] /; FreeQ[{a}, Pattern];
+btss1[a__] := fcms[btss1[a], Plus @@ btsbin1 /@ {a} > 0] /; FreeQ[{a}, Pattern];
+nbts[a_] := fcms[nbts[a], ((! (NumericQ[a] || MemberQ[$UScalars, Head[a]] ||
                 MatchQ[a, (Alternatives @@ $UScalars)^_] ||
                 MatchQ[a, (Alternatives @@ $UScalars)[___]^_] ||
                 MemberQ[$UScalars, Head[Head[a]]] || MemberQ[$UScalars, a] ||
@@ -515,8 +678,74 @@ nbts[a_] := ((! (NumericQ[a] || MemberQ[$UScalars, Head[a]] ||
                 MatchQ[a,
                   fcqf[___,
                     Particle[(Alternatives @@ $UScalars), ___], ___]])) &&
-        FreeQ[a, allpatterns]);
+        FreeQ[a, allpatterns])] /; FreeQ[{a}, Pattern];
+);
 
+DeclareUScalar[x_,y__] := DeclareUScalar /@ {x,y};
+
+UndeclareUScalar[x_] := (
+  Clear[UScalarQ,btsbin,btsbin1,btss,btss1,nbts];
+  usdec = True;
+  $UScalars=Complement[$UScalars, {x}];
+  usdec = False;
+  UScalarQ[a_] := fcms[UScalarQ[a], (MemberQ[$UScalars, a] || NumericQ[a] ||
+          MemberQ[$UScalars, Head[a]] ||
+          MatchQ[a, (Alternatives @@ $UScalars)] ||
+          MatchQ[a, (Alternatives @@ $UScalars)^_] ||
+          MatchQ[a, (Alternatives @@ $UScalars)[___]^_] ||
+          MemberQ[$UScalars, Head[Head[a]]](*Commented out 18/3 - 2000,
+          think it's redundant*)(*||
+            MatchQ[a,
+              fcqf[___, Particle[(Alternatives @@ $UScalars), ___], ___][_]] ||
+             MatchQ[a,
+              fcqf[___, Particle[(Alternatives @@ $UScalars), ___], ___]]*))] /; FreeQ[{a}, Pattern];
+							(*Commented out 21/2-2002, think it's redundant*)(* &&FreeQ[a, allpatterns]*)
+
+
+btsbin[a_] := fcms[btsbin[a], If[UScalarQ[a]&&FreeQ[a, allpatterns], 1, 0]] /; FreeQ[{a}, Pattern];
+btsbin1[a_] := fcms[btsbin1[a], If[UScalarQ[a], 1, 0]] /; FreeQ[{a}, Pattern];
+
+(* btss[a__] is True if {a} contains at least one scalar: *)
+
+btss[a__] := fcms[btss[a], Plus @@ btsbin /@ {a} > 0] /; FreeQ[{a}, Pattern];
+btss1[a__] := fcms[btss1[a], Plus @@ btsbin1 /@ {a} > 0] /; FreeQ[{a}, Pattern];
+nbts[a_] := fcms[nbts[a], ((! (NumericQ[a] || MemberQ[$UScalars, Head[a]] ||
+                MatchQ[a, (Alternatives @@ $UScalars)^_] ||
+                MatchQ[a, (Alternatives @@ $UScalars)[___]^_] ||
+                MemberQ[$UScalars, Head[Head[a]]] || MemberQ[$UScalars, a] ||
+                MatchQ[a,
+                  fcqf[___,
+                      Particle[(Alternatives @@ $UScalars), ___], ___][_]] ||
+                MatchQ[a,
+                  fcqf[___,
+                    Particle[(Alternatives @@ $UScalars), ___], ___]])) &&
+        FreeQ[a, allpatterns])] /; FreeQ[{a}, Pattern];
+);
+
+UndeclareUScalar[x_,y__] := UndeclareUScalar /@ {x,y};
+
+
+HighEnergyPhysics`FeynCalc`DataType`DataType /:
+HoldPattern[Set[HighEnergyPhysics`FeynCalc`DataType`DataType[x_, UScalar], True]] :=
+(DeclareUScalar[x];True);
+
+HighEnergyPhysics`FeynCalc`DataType`DataType /:
+HoldPattern[Set[HighEnergyPhysics`FeynCalc`DataType`DataType[x_, UScalar], False]] :=
+(UndeclareUScalar[x];False);
+
+fcdt[x_, UScalar] := UScalarQ[x];
+
+$UScalars /: HoldPattern[Set[$UScalars, m_]] :=
+      (usset = True;
+      UndeclareUScalar@@$UScalars;
+      DeclareUScalar@@m;
+      usset = False;
+      $UScalars) /; usdec===False;
+
+
+DeclareUScalar[QuarkCondensate, ParticleMass, DecayConstant, fccoupl,
+      SU3D, SU3F, SU3Delta, Projection, fcsuni, fcsunf, fcsund, fcsundel, fcpa,
+			(*Added 24/2-2002*)fcsunn];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -568,8 +797,7 @@ NM[m_ /; MatrixQ[m], n_ /; MatrixQ[n]] /; Length[m] == Length[n] :=
         Length[m]}, {j, 1, Length[m]}];
 (*NM[m__ /; Length[{m}] > 1, n_ /; MatrixQ[n]] := NM[NM[m], n];*)
 (*Changed 28/5-2002 to avoid infinite recursion*)
-NM[m__, n_] := 
-    NM[NM[m], n] /; (Length[{m}] > 1 && And @@ (MatrixQ /@ {m, n}));
+NM[m__, n_] := NM[NM[m], n] /; (Length[{m}] > 1 && And @@ (MatrixQ /@ {m, n}));
 (* Getting scalars out *)
 (*NM[m_ /; (! MatrixQ[m] && nbtui[m]), n_ /; MatrixQ[n]] :=
       Map[NM[m, #] &, n, {2}];*)
@@ -578,8 +806,7 @@ NM[m__, n_] :=
     2000*)(*NM[n_ /; MatrixQ[n], m_ /; (! MatrixQ[m] && nbtui[m])] :=
       Map[NM[#, m] &, n, {2}];*)
 (*Changed 13/3 - 2000*)
-  NM[m___, n_,
-        mm___] /; (MatrixQ[n] =!= True && nbtui[n] &&
+  NM[m___, n_, mm___] /; (MatrixQ[n] =!= True && nbtui[n] &&
           MemberQ[MatrixQ /@ {m, mm}, True]) :=
     NM[m, n*IdentityMatrix[Length[Cases[{m, mm}, _?MatrixQ][[1]]]], mm];
 
@@ -854,7 +1081,7 @@ SU(3) and the standard representations.  This will have to wait till some
 other time... *)
 
 removeints =
-    UMatrix[UGenerator[fcsuni[i_Integer], opts___],
+    UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer], opts___],
         optst___] :> (IsoDot[
           ProjectionIsoVector[i,
             Sequence @@ OptionsSelect[IsoVector, opts, optst]],
@@ -901,8 +1128,8 @@ iixint[opts___] := (++$IsoIndicesCounter;
       ToExpression[(IsoIndicesString /. Flatten[{opts}] /.
               Options[ExpandUGenerators]) <> ToString[$IsoIndicesCounter]]);
 surules[2, opts___] :=
-    NM[a___, UMatrix[UGenerator[fcsuni[i_], optsg___Rule], optsm___], mm___,
-          UMatrix[UGenerator[fcsuni[j_], ___], ___], b___] /;
+    NM[a___, UMatrix[UGenerator[(fcsuni|fcexsuni)[i_], optsg___Rule], optsm___], mm___,
+          UMatrix[UGenerator[(fcsuni|fcexsuni)[j_], ___], ___], b___] /;
         FreeQ[{a, mm}, UMatrix, Infinity, Heads -> True] :> (fi =
           fcsuni[iixint[opts]];
         2/2*SU2Delta[fcsuni[i], fcsuni[j]]*
@@ -910,8 +1137,8 @@ surules[2, opts___] :=
           I*SU2F[fcsuni[i], fcsuni[j], fi]*
             NM[a, mm, UMatrix[UGenerator[fi, optsg], optsm], b]);
 surules[3, opts___] :=
-    NM[a___, UMatrix[UGenerator[fcsuni[i_], optsg___Rule], optsm___], mm___,
-          UMatrix[UGenerator[fcsuni[j_], ___], ___], b___] /;
+    NM[a___, UMatrix[UGenerator[(fcsuni|fcexsuni)[i_], optsg___Rule], optsm___], mm___,
+          UMatrix[UGenerator[(fcsuni|fcexsuni)[j_], ___], ___], b___] /;
         FreeQ[{a, mm}, UMatrix, Infinity, Heads -> True] :> (fi =
           fcsuni[iixint[opts]];
         2/3*SU3Delta[fcsuni[i], fcsuni[j]]*
@@ -991,7 +1218,7 @@ IsoDot[IsoVector[UMatrix[UGenerator, optsm___], optsv___],
 
 (* The projection function (changed 16/12/1999): *)
 
-Projection[i_Integer][fcsuni[j_Integer]] := If[i == j, 1, 0];
+Projection[i_Integer][(fcsuni | fcexsuni)[j_Integer]] := If[i == j, 1, 0];
 Projection[i_Integer][j_Integer] := If[i == j, 1, 0];
 
 
@@ -1280,90 +1507,9 @@ UExpSeries[m_, n_Integer] :=
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
-(* Scalars *)
-(********************************************************************************)
-(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
-
-
-(* Declaring x as a scalar simply gives x the attribute NumericFunction and adds
-it to $UScalars, so that all multiplication functions etc. will bring it out
-(for some cases only when UScalarsOut is applied) *)
-
-DeclareUScalar[
-      x_] := (If[MemberQ[$UScalars, x]=!=True,AppendTo[$UScalars,x]];
-			(*If[AtomQ[x], SetAttributes[x, {NumericFunction, NHoldAll}],
-            VerbosePrint[1, x,
-              " is not a symbol and cannot be assigned attribute \
-NumericFunction.  You'll have to use UScalarsOut"]];*));
-UndeclareUScalar[
-      x_] := ($UScalars=Complement[$UScalars,
-        {x}];);
-us[i_] := $UScalars[[i]];
-(*Do[SetAttributes[Evaluate[us[i]], {NumericFunction, NHoldAll}];, {i,
-        Length[$UScalars]}];*)
-upar[i_] := {Scalar, PseudoScalar, Vector, AxialVector, Fermion}[[i]];
-(*Do[SetAttributes[Evaluate[upar[i]], {NumericFunction, NHoldAll}];, {i,
-        5}];*)
-(*SetAttributes[RenormalizationState, {NumericFunction, NHoldAll}];*)
-(*SetAttributes[RenormalizationScheme, {NumericFunction, NHoldAll}];*)
-(*SetAttributes[ExpansionState, {NumericFunction, NHoldAll}];*)
-
-
-
-(* When sums or products of the declared scalars are inside NM or IsoDot, it is
-necessary to either use Expand or UScalarsOut to get them out: *)
-
-(*SetAttributes[ppf, {NumericFunction, NHoldAll}];*)
-
-
-
-(* Commented out 6/3-2000 to accomodate no longer relying on the NumericFunction
-Attribute (got tired of the error messages from Mathematica 4 trying to
-evaluate things numerically). *)
-
-(*UScalarsOut[aa_] :=
-      Block[{tmpres, f, fc, i, j, a, b, c, pp, res}, $UScalars =
-          Union[$UScalars, {ppf}];
-        tmpres = (((aa //. (VerbosePrint[2,
-                          "Adding temporary arguments to $UScalars"];
-                        Flatten[{(Rule[#,
-                                    ppf[Position[$Particles, #][[1,
-                                        1]]]] & /@ $Particles), (Rule[
-                                    f_[a___, #, b___],
-                                    f[a, #[ppf[]] /. Pattern -> pp /.
-                                        pp[c_, ___] -> c, b]] & /@ $UScalars),
-                             fcsuni[i_] /; FreeQ[i, ppf] :>
-                              fcsuni[
-                                ppf @@ ToCharacterCode[ToString[i]]]}])) /.
-                  Flatten[{(Rule[
-                              ppf[Position[$Particles, #][[1,
-                                    1]]], #] & /@ $Particles),
-                      fcsuni[ppf[j___]] :>
-                        fcsuni[
-                          ToExpression[
-                            FromCharacterCode[{j}]]]}]) //.(*Added 25/2 -
-                  2000, to allow more complex patterns in $UScalars*)(VerbosePrint[2,
-                  "Pulling out composed $UScalars patterns from NM products"];
-                 a_NM /; (MemberQ[a, _[ppf[___]]]) :> (NM @@
-                        Select[
-                          List @@ a, ! MatchQ[#, _[ppf[___]]] &])*(Times @@
-                        Select[List @@ a, MatchQ[#, _[ppf[___]]] &])));
-        VerbosePrint[2, "Removing temporary arguments to $UScalars"];
-        VerbosePrint[3, "\nExpression with temporary arguments:\n",
-          StandardForm[tmpres]];
-        res = tmpres //. HoldPattern[fx_[ppf[___]]] -> fx; $UScalars =
-          Complement[$UScalars, {ppf}]; res];*)
-
-
-
-(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-(********************************************************************************)
 (* Matrices *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
-
 
 (* Getting the space-time dependence out of UVector: *)
 
@@ -1482,7 +1628,7 @@ DiagonalUMatrix[l_List,
 (* New definitions to allow changing the basis. 2/2-2000. *)
 
 UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)],
+          qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
             Options[UQuarkCharge]) && ((fcsunn /.
                   Flatten[OptionsSelect[UMatrix, opts1]] /.
@@ -1492,7 +1638,7 @@ UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
     DiagonalUMatrix[{2/3*fccoupl[QED[1],st,sc,qs], -1/3*
             fccoupl[QED[1],st,sc,qs]}, opts, opts1] /.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
-            Options[UQuarkCharge]), {UMatrix[UGenerator[fcsuni[i_Integer]],
+            Options[UQuarkCharge]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
             IsoDot[ProjectionIsoVector[i, ##] & @@
                 OptionsSelect[IsoVector, optst],
@@ -1502,7 +1648,7 @@ UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
                   OptionsSelect[UGenerator, optst]]]}, {}];
 
 UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)],
+          qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
             Options[UQuarkCharge]) && ((fcsunn /.
                   Flatten[OptionsSelect[UMatrix, opts1]] /.
@@ -1513,7 +1659,7 @@ UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
             fccoupl[QED[1],st,sc,qs], -1/3*fccoupl[QED[1],st,sc,qs]}, opts,
         opts1] /.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
-            Options[UQuarkCharge]), {UMatrix[UGenerator[fcsuni[i_Integer]],
+            Options[UQuarkCharge]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
             IsoDot[ProjectionIsoVector[i, ##] & @@
                 OptionsSelect[IsoVector, optst],
@@ -1527,7 +1673,7 @@ UMatrix[UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
 (* The quark mass matrix: *)
 
 UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)],
+          qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
             Options[UQuarkMass]) && ((fcsunn /.
                   Flatten[OptionsSelect[UMatrix, opts1]] /.
@@ -1544,7 +1690,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
         If[(QuarkToMesonMasses /. Flatten[{opts}] /.
               Options[UQuarkMass]), $QuarkToPionMassesRules, {}] /.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
-            Options[UQuarkMass]), {UMatrix[UGenerator[fcsuni[i_Integer]],
+            Options[UQuarkMass]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
             IsoDot[ProjectionIsoVector[i, ##] & @@
                 OptionsSelect[IsoVector, optst],
@@ -1553,7 +1699,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                   OptionsSelect[IsoVector, optst],
                   OptionsSelect[UGenerator, optst]]]}, {}];
 UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)],
+          qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (((! DiagonalToU) && QuarkToMesonMasses) /.
               Flatten[{opts}] /.
             Options[UQuarkMass]) && ((fcsunn /.
@@ -1563,7 +1709,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                 Options[UQuarkMass]) := ParticleMass[Pion, st, sc, qs]^2/(2*
             QuarkCondensate[st, sc, qs])*UIdentityMatrix[opts1];
 UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)],
+          qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
             Options[UQuarkMass]) && ((fcsunn /.
                   Flatten[OptionsSelect[UMatrix, opts1]] /.
@@ -1586,7 +1732,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
         If[(QuarkToMesonMasses /. Flatten[{opts}] /.
               Options[UQuarkMass]), $QuarkToMesonMassesRules, {}] /.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
-            Options[UQuarkMass]), {UMatrix[UGenerator[fcsuni[i_Integer]],
+            Options[UQuarkMass]), {UMatrix[UGenerator[(fcsuni | fcexsuni)[i_Integer]],
               optst___] :>
             IsoDot[ProjectionIsoVector[i, ##] & @@
                 OptionsSelect[IsoVector, optst],
@@ -1603,7 +1749,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
     2000*)(*Again 25/2 - 2000 - added options to Particle*)(*Again 26/5 - 2001 -
     dropped options to Particle[PseudoScalar[...]]*)
   UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)],
+          qs___ExpansionState, opts___?OptionQ],
         opts1 : (__Rule | __List)][x_] /; (fcexpt /. Flatten[{opts}] /.
                 Options[UChi]) :=
     2*(QuarkCondensate[st, sc, qs, ##] & @@
@@ -1620,7 +1766,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
     2000 - added options to Particle*)(*Again 26/5 - 2001 -
     dropped options to Particle[PseudoScalar[...]]*)
   UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)]][x_]  /; (fcexpt /. Flatten[{opts}] /.
+          qs___ExpansionState, opts___?OptionQ]][x_]  /; (fcexpt /. Flatten[{opts}] /.
                 Options[UChi]) :=
     2*(QuarkCondensate[st, sc, qs, ##] & @@
           OptionsSelect[QuarkCondensate,
@@ -1695,6 +1841,8 @@ IsoVector[fcqf[a__][x_], opts___] := IsoVector[fcqf[a], opts][x];
 
 (* Right- and left-handed fields: *)
 
+setLeftRightComponents :=
+(
 IsoVector[fcqf[aa___, Particle[LeftComponent[a_, opts0___Rule], i___], bb___], opts___][
       x_] /; (fcexpt /. {opts0} /. Options[LeftComponent]) :=
        1/2*(IsoVector[fcqf[aa, Particle[Vector[a], i], bb], opts][x] +
@@ -1711,7 +1859,9 @@ fcqf[aa___, Particle[RightComponent[a_, opts0___Rule], i___], bb___][
         x_] /; (fcexpt /. {opts0} /. Options[RightComponent]) :=
          1/2*(fcqf[aa, Particle[Vector[a], i], bb][x] -
           fcqf[aa, Particle[AxialVector[a], i], bb][x]);
+);
 
+setLeftRightComponents;
 
 
 (* FeynCalc heads are supplied rightaway: *)
@@ -1754,7 +1904,7 @@ FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
           p_Particle,
           lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
           lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-          iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex][x_], opts___Rule] /;
+          iis___?fcsuniQ][x_], opts___Rule] /;
 	  (fcexpt/.{opts}/.Options[FieldStrengthTensor]) :=
     fcqf[fcpd[der], ders1, p, lli, lis, iis][x] -
       fcqf[fcpd[lli], ders1, p, der, lis, iis][x];
@@ -1764,11 +1914,11 @@ FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
 	  (fcexpt/.{opts}/.Options[FieldStrengthTensor])  :=
    FieldDerivative[obj, x,
         der] - (obj /. {(fff_[
-                    ff_[a___ /; FreeQ[{a}, fcli],
+                    ff_[a___ /; FreeQ[{a}, fcli|fcexli],
                       b_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
                       c___], rest___][x] ->
                 FieldDerivative[fff[ff[a, der, c], rest][x], x,
-                  b]), (ff_[a___ /; FreeQ[{a}, fcli],
+                  b]), (ff_[a___ /; FreeQ[{a}, fcli|fcexli],
                     b_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
                     c___][x] -> FieldDerivative[ff[a, der, c][x], x, b])});
 (*A field might have been set to zero - added 23/7-2001*)
@@ -1972,8 +2122,8 @@ uix = UIndex;
             tbl[a[uix[tmp`i],
                 Sequence @@ OptionsSelect[a, opts, optss]], {tmp`i,
                 gaugedimcheck[UVector, UVector[a, opts], optss]}]} /.
-      tbl -> Table /. tr -> UTrace1(*/. (fcsunn -> _) -> Sequence[]*);
-uindxx = (uix | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex);
+      tbl -> Table /. tr -> UTrace1;
+uindxx = (uix | fcsuni | fcexsuni);
 
  (*added 28/5 - 2002*)
 WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
@@ -2000,13 +2150,12 @@ WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
             tbl[a[uix[tmp`i],
                 Sequence @@ OptionsSelect[a, opts, optss]][x], {tmp`i,
                 gaugedimcheck[UVector, UVector[a, opts], optss]}]} /.
-      tbl -> Table /. tr -> UTrace1(*/. (fcsunn -> _) -> Sequence[]*);
-uindxx = (uix | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex);
+      tbl -> Table /. tr -> UTrace1;
 
 WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := 
   WriteOutUMatrices1[WriteOutUMatrices2[aa/.NM->nm,optss],optss]/.nm->NM;
 
-UIdentity[i : uindxx[_], j : uindxx[_], (opts___Rule | opts___List)] :=
+UIdentity[i : uindxx[_], j : uindxx[_], opts___?OptionQ] :=
     Which[(fcsunn /. Flatten[{opts}] /. Options[UMatrix]) == 2 &&
         gaugedimcheck[UMatrix, opts] == 2,
       SU2Delta[i,
@@ -2018,12 +2167,12 @@ UIdentity[i : uindxx[_], j : uindxx[_], (opts___Rule | opts___List)] :=
 (* Change 29/11-1998: Added option dependence for the dimension -
    don't know why I didn't have that already ... *)
 
-(*UGenerator[fcsuni[i_Integer], opts___][uindxx[j_Integer],
+(*UGenerator[(fcsuni | fcexsuni)[i_Integer], opts___][uindxx[j_Integer],
         uindxx[k_Integer]] := $SUNBasis[
           gaugedimcheck[UGenerator,
             opts], ((fcsunn - 1)/2) /. Flatten[{opts}] /.
             Options[UGenerator]][[i, j, k]];*)
-(*UGenerator[fcsuni[i_Integer]][uindxx[j_Integer],
+(*UGenerator[(fcsuni | fcexsuni)[i_Integer]][uindxx[j_Integer],
         uindxx[k_Integer]] := $SUNBasis[
           fcsunn /. Options[UGenerator], ((fcsunn - 1)/2) /.
             Options[UGenerator]][[i, j, k]];*)
@@ -2051,14 +2200,14 @@ UGenerator[i_Integer][uindxx[j_Integer],
 (* UQuarkChargeMatrix is treated as a special case: *)
 
 UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)][uindxx[i_Integer],
+          qs___ExpansionState, opts___?OptionQ][uindxx[i_Integer],
          uindxx[j_Integer]] /; ((fcsunn /. Flatten[{opts}] /.
                 Options[UQuarkCharge]) == 2 &&
           gaugedimcheck[UQuarkCharge, opts] ==
             2) := ({{2/3*fccoupl[QED[1], st, sc, qs],
             0}, {0, -1/3*fccoupl[QED[1], st, sc, qs]}})[[i, j]];
 UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)][
+          qs___ExpansionState, opts___?OptionQ][
         uindxx[ii_Integer],
         uindxx[jj_Integer]] /; ((fcsunn /. Flatten[{opts}] /.
                 Options[UQuarkCharge]) == 3 &&
@@ -2072,7 +2221,7 @@ UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
 (* UQuarkMassMatrix is treated as a special case: *)
 
 UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)][uindxx[i_Integer],
+          qs___ExpansionState, opts___?OptionQ][uindxx[i_Integer],
          uindxx[j_Integer]] /; ((fcsunn /. Flatten[{opts}] /.
                 Options[UQuarkMass]) == 2 &&
           gaugedimcheck[UQuarkMass, opts] ==
@@ -2081,7 +2230,7 @@ UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
           If[(QuarkToMesonMasses /. Flatten[{opts}] /.
                 Options[UQuarkMass]), $QuarkToPionMassesRules, {}])[[i, j]];
 UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
-          qs___ExpansionState, (opts___Rule | opts___List)][
+          qs___ExpansionState, opts___?OptionQ][
         uindxx[ii_Integer],
         uindxx[jj_Integer]] /; ((fcsunn /. Flatten[{opts}] /.
                 Options[UQuarkMass]) == 3 &&
@@ -2119,10 +2268,10 @@ Transpose[DropFactor[a___]] ^:= DropFactor[a];
       DropFactor[p, ar, br, qs], 1];
 (*Change 20/12/1999; dropped qs___ExpansionState*)
   UFieldMatrix[(f_HighEnergyPhysics`FeynCalc`QuantumField`QuantumField)[x_](*,
-         qs___ExpansionState*), opts___] := UFieldMatrix[1, f[x],(*qs,*)opts];
+         qs___ExpansionState*), opts___?OptionQ] := UFieldMatrix[1, f[x],(*qs,*)opts];
 
 UFieldMatrix[
-      fcqf[f__][x_],(*qs___ExpansionState,*)opts___Rule | opts___List] :=
+      fcqf[f__][x_],(*qs___ExpansionState,*)opts___?OptionQ] :=
     UFieldMatrix[1, fcqf[f][x],(*qs,*)opts];
 
 (*Change 20/12/1999;
@@ -2132,8 +2281,8 @@ UFieldMatrix[
         Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
           qs___ExpansionState],
         lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex],
-      opts___] := (
+        iis___?fcsuniQ],
+      opts___?OptionQ] := (
   decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrix]);
   If[decon==Automatic,decon=DecayConstant[p, ar, br, qs]];
   Clear[DropFactor];
@@ -2159,8 +2308,8 @@ UFieldMatrix[ii_(*?NumberQ*),
           Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
             qs___ExpansionState],
           lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-          iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex][x_],
-      opts___] := (
+          iis___?fcsuniQ][x_],
+      opts___?OptionQ] := (
        decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrix]);
   If[decon==Automatic,decon=DecayConstant[p, ar, br, qs]];
      Clear[DropFactor];
@@ -2186,8 +2335,8 @@ UFieldMatrixSeries[
         Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
           qs___ExpansionState],
         lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex],
-      opts___] := (
+        iis___?fcsuniQ],
+      opts___?OptionQ] := (
     decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrixSeries]);
   If[decon==Automatic,decon=DecayConstant[p, ar, br, qs]];
   expon = IsoDot[((IsoVector[
@@ -2205,8 +2354,8 @@ UFieldMatrixSeries[
           Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
             qs___ExpansionState],
           lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-          iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex][x_],
-      opts___] := (
+          iis___?fcsuniQ][x_],
+      opts___?OptionQ] := (
   decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrixSeries]);
   If[decon==Automatic,decon=DecayConstant[p, ar, br, qs]];
   expon =IsoDot[((IsoVector[
@@ -2404,7 +2553,7 @@ Conjugate[IsoSymmetricCross[b_, c_]] :=
 Conjugate[NM[b__, c_]] := NM[Conjugate[b], Conjugate[c]];
 
 (* Cheap hack to deal with issue with WriteOutIsoVectors. Added 17/6-2001*)
-Conjugate[Conjugate[a_][fcsuni[i_]]] := a[fcsuni[i]];
+Conjugate[Conjugate[a_][(fcsuni | fcexsuni)[i_]]] := a[fcsuni[i]];
 
 
 (* The generator matrices are self-adjoined
@@ -2527,8 +2676,7 @@ UTrace2[a_ + b_, opts___] := UTrace2[a, opts] + UTrace2[b, opts];
 Of course, such expressions do not make sense - it would perhaps be better to
 issue a warning. 25/2-2000. *)
 
-UTrace1[a_Times,
-        opts___] /; (btui[a] && (Union[btui /@ (List @@ a)] =!= {True})) :=
+UTrace1[a_Times, opts___] /; (btui[a] && (Union[btui /@ (List @@ a)] =!= {True})) :=
     Times @@ Select[List @@ a, nbtui]*
       UTrace1[Times @@ Select[List @@ a, btui], opts];
 
@@ -2536,8 +2684,7 @@ UTrace1[a_Times,
 
 (* Getting scalars out: *)
 
-UTrace2[a_Times,
-        opts___] /; (btui[a] && (Union[btui /@ (List @@ a)] =!= {True})) :=
+UTrace2[a_Times, opts___] /; (btui[a] && (Union[btui /@ (List @@ a)] =!= {True})) :=
     Times @@ Select[List @@ a, nbtui]*
       UTrace2[Times @@ Select[List @@ a, btui], opts];
 
@@ -2558,8 +2705,7 @@ UTrace1[b_, opts___Rule] /; MatrixQ[b] :=
 
 (* Products where UIdentityMatrix is the only matrix: *)
 
-UTrace1[NM[aa__],
-        opts___Rule] /; (FreeQ[NM[aa] /. UMatrix[UIdentity, ___] -> tempm,
+(*UTrace1[NM[aa__], opts___Rule] /; (FreeQ[NM[aa] /. UMatrix[UIdentity, ___] -> tempm,
             UMatrix |(*Added 12/3 - 2000*)$UMatrices,
             Infinity] && (! FreeQ[NM[aa], UIdentity, Infinity]) &&
           gaugedimcheck[UMatrix, opts, aa] == 2) :=
@@ -2567,10 +2713,15 @@ UTrace1[NM[aa__],
 UTrace1[NM[aa__], opts___Rule] /;
       FreeQ[NM[aa] /. UMatrix[UIdentity, ___] -> tempm,
           UMatrix |(*Added 12/3 - 2000*)$UMatrices,
-          Infinity] && (!
-            FreeQ[NM[aa], UIdentity, Infinity]) && (gaugedimcheck[UMatrix,
-              opts, aa] == 3) := 3*NM[aa] /. UMatrix[UIdentity, ___] -> 1;
+          Infinity] && (!FreeQ[NM[aa], UIdentity, Infinity]) && (gaugedimcheck[UMatrix,
+              opts, aa] == 3) := 3*NM[aa] /. UMatrix[UIdentity, ___] -> 1;*)
 
+(*changed to use the caching (fast) functions btu and btui. 17/9-2002*)
+UTrace1[NM[aa__], opts___Rule] /; (nbtu[NM[aa]] && btui[NM[aa]] &&
+          gaugedimcheck[UMatrix, opts, aa] == 2) :=
+    2*NM[aa] /. UMatrix[UIdentity, ___] -> 1;
+UTrace1[NM[aa__], opts___Rule] /; nbtu[NM[aa]] && btui[NM[aa]] && (gaugedimcheck[UMatrix,
+              opts, aa] == 3) := 3*NM[aa] /. UMatrix[UIdentity, ___] -> 1;
 
 
 (* Products with one generator and no other matrices: *)
@@ -2579,25 +2730,30 @@ UTrace1[NM[aa__], opts___Rule] /;
 
 (* Change 15/12/1999: Added &&FreeQ[NM[aa],$UMatrices,Infinity], etc. *)
 (* Change 28/5-2002: Added MatrixQ stuff *)
+(* Change 17/9-2002: Changed to use nbtu *)
 
 HoldPattern[UTrace1[NM[aa__],
         opts___Rule]] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[NM[aa] /. Power -> NMPower,
                 UGenerator, Infinity, Heads -> True] == 1) &&
           FreeQ[NM[aa], UMatrix[a___ /; FreeQ[{a}, UGenerator]], Infinity] &&
-          FreeQ[NM[aa], $UMatrices, Infinity] && ((Or@@(MatrixQ/@{aa}))=!=True)) := 0;
+          nbtui[{aa} (*Added 1/3-2003, for the case when $UMatrices contain UMatrix*) /.
+                 UMatrix -> tmpUMatrix](*FreeQ[NM[aa], $UMatrices, Infinity]*) &&
+          ((Or@@(MatrixQ/@{aa}))=!=True)) := 0;
 UTrace1[IsoDot[aa__],
         opts___Rule] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[IsoDot[aa] /. Power -> NMPower,
                 UGenerator, Infinity, Heads -> True] == 1) &&
           FreeQ[IsoDot[aa], UMatrix[a___ /; FreeQ[{a}, UGenerator]],
-            Infinity] && FreeQ[IsoDot[aa], $UMatrices, Infinity]) := 0;
+            Infinity] && nbtui[{aa} /. UMatrix -> tmpUMatrix] 
+            (*FreeQ[IsoDot[aa], $UMatrices, Infinity]*)) := 0;
 UTrace1[IsoCross[aa__],
         opts___Rule] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[IsoCross[aa] /. Power -> NMPower,
                 UGenerator, Infinity, Heads -> True] == 1) &&
           FreeQ[IsoCross[aa], UMatrix[a___ /; FreeQ[{a}, UGenerator]],
-            Infinity] && FreeQ[IsoCross[aa], $UMatrices, Infinity]) := 0;
+            Infinity] && nbtui[{aa}UMatrix -> tmpUMatrix]
+          (*FreeQ[IsoCross[aa], $UMatrices, Infinity]*)) := 0;
 UTrace1[IsoSymmetricCross[aa__],
         opts___Rule] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[
@@ -2605,7 +2761,8 @@ UTrace1[IsoSymmetricCross[aa__],
                 Infinity, Heads -> True] == 1) &&
           FreeQ[IsoSymmetricCross[aa],
             UMatrix[a___ /; FreeQ[{a}, UGenerator]], Infinity] &&
-          FreeQ[IsoSymmetricCross[aa], $UMatrices, Infinity]) := 0;
+          nbtui[{aa}UMatrix -> tmpUMatrix]
+        (*FreeQ[IsoSymmetricCross[aa], $UMatrices, Infinity]*)) := 0;
 
 
 
@@ -2626,7 +2783,7 @@ UTraceToFCTrace[a_,
              3) := (trtemp = (a /. {UTrace1 -> utemp,
                 UTrace -> utemp}) /. {fcqf[b___fcpd, field_,
                 lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-                ii__HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ->
+                ii__?fcsuniQ] ->
               fieldtemp[pdrs[b], qf[field], pdrs[lis]][ii]};
       trtemp1 = trtemp /. utemp[aa_, b___] -> utemp[aa, fcexpt -> True];
       trtemp2 = trtemp1 /. utemp -> fctr;
@@ -2638,7 +2795,7 @@ UTraceToFCTrace[a_,
              3) := (trtemp = (a /. {UTrace1 -> utemp,
                 UTrace -> utemp}) /. {fcqf[b___fcpd, field_,
                 lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-                ii__HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ->
+                ii__?fcsuniQ] ->
               fieldtemp[pdrs[b], qf[field], pdrs[lis]][ii]};
       trtemp1 = trtemp /. utemp[aa_, b___] -> utemp[aa, fcexpt -> True];
       trtemp2 = trtemp1 /. utemp -> fctr;
@@ -2677,7 +2834,6 @@ CycleUTraces[expr_, sf___] :=
 (* The Kronecker delta function: *)
 
 SetAttributes[SU2Delta, Orderless];
-uindxx = (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex);
 SU2Delta[a___, uindxx[b_Integer], c___] := SU2Delta[a, b, c];
 SU2Delta[i_Integer, i_Integer] := 1;
 SU2Delta[i_Integer, j_Integer] := 0;
@@ -2718,10 +2874,8 @@ SetAttributes[SU3Delta, Orderless];
 SU3Delta[a___, uindxx[b_Integer], c___] := SU3Delta[a, b, c];
 SU3Delta[i_Integer, i_Integer] := 1;
 SU3Delta[i_Integer, j_Integer] := 0;
-SU3Delta[i_Symbol, i_Symbol
-] /; MemberQ[$ConstantIsoIndices, i] := 1;
-SU3Delta[uindxx[i_Symbol], uindxx[i_Symbol]] /;
-    MemberQ[$ConstantIsoIndices, i] := 1
+SU3Delta[i_Symbol, i_Symbol] /; MemberQ[$ConstantIsoIndices, i] := 1;
+SU3Delta[uindxx[i_Symbol], uindxx[i_Symbol]] /; MemberQ[$ConstantIsoIndices, i] := 1
 
 
 
@@ -2970,7 +3124,7 @@ FixSUN;
 (* Support functions for IsoIndicesSupply.  Index numerators, increasing by one
 each time applied: *)
 
-id[x_, (opts___Rule | opts___List)] := x;
+id[x_, opts___?OptionQ] := x;
 $IsoIndicesCounter = 0;
 iin[opts___] := (++$IsoIndicesCounter;
       ToExpression[(IsoIndicesString /. Flatten[{opts}] /.
@@ -2989,36 +3143,40 @@ generated anew each time.  Here follow how the different objects interpret
 this additional isospin dependence *)
 
 IsoVector[a_[ii : uindxx[_], jj : uindxx[_], op___Rule | op___List], opts___][
-      i__HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] := (a[i, ##] & @@
+      i__?fcsuniQ] := (a[i, ##] & @@
           OptionsSelect[a, opts, op])[ii, jj];
 IsoVector[a_[b__, (op___Rule | op___List)], opts___][x_][
-      i__HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] := (a[b, ##] & @@
+      i__?fcsuniQ] := (a[b, ##] & @@
             OptionsSelect[a, op, opts])[i][x];
 IsoVector[a_[b__, (op___Rule | op___List)], opts___][
-      i__HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] := (a[b, ##] & @@
+      i__?fcsuniQ] := (a[b, ##] & @@
           OptionsSelect[a, op, opts])[i];
 
 
 
 (* IsoVectors - fixing special cases: *)
 
-fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
+fcqf[
+ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
         lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex][
-      isosp_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] :=
+        iis___?fcsuniQ][isosp_?fcsuniQ] :=
     fcqf[ders, a, lors, isosp, iis];
+
 (*Changed 7/2 - 2000*)
   UMatrix[UGenerator[op___], opts___][
-      i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] :=
+      i_?fcsuniQ] :=
     UMatrix[UGenerator[i, op], opts];
+
 (*Added 17/6 - 2001*)
 Unprotect[Conjugate];
   Conjugate[UMatrix[UGenerator[op___], opts___]][
-      i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] :=
+      i_?fcsuniQ] :=
     Conjugate[UMatrix[UGenerator[i, op], opts]];
+
 Protect[Conjugate];
+
 (*Redundant - gives double option rules*)(*UGeneratorMatrixIsoVector[opts___][
-        i_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] := (UGenerator[
+        i_?fcsuniQ] := (UGenerator[
               i, ##] & @@ OptionsSelect[UGenerator, opts]);*)
 
 
@@ -3255,9 +3413,10 @@ UIndicesSupply1[UTrace1[aa_], opts___] :=
                 Cases[{a, b, c, d, e}, _uix, Infinity, Heads -> True];
               nmtemp[a, b, c, d /. uinds[[-1]] -> uinds[[1]], e])} /.
       nmtemp -> NM;
+
 fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__, uis_uix,
         lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex][ui_uix] :=
+        iis___?fcsuniQ][ui_uix] :=
     fcqf[ders, a, ui, uis, lors, isosp, iis];
 
 
@@ -3294,27 +3453,27 @@ intindicesruleslast[
       opts___] := (fi =
         ToExpression[
           FreeIsoIndexString /. Flatten[{opts}] /. Options[IsoIndicesSupply]];
-       f_ /; (Count[f, fcsuni[_Integer], Infinity] == 1 &&
+       f_ /; (Count[f, (fcsuni | fcexsuni)[_Integer], Infinity] == 1 &&
               FreeQ[{f},
                 NMPower | Power | NM | Times | Dot | fcdot | IsoDot |
                   IsoCross | IsoSymmetricCross]) :> (ni =
-            Cases[f, fcsuni[_Integer], Infinity][[1]]; (f /.
+            Cases[f, (fcsuni | fcexsuni)[_Integer], Infinity][[1]]; (f /.
                 ni -> fcsuni[fi])*Projection[ni[[1]]][fcsuni[fi]]));
 intindicesruleslast1[opts___] :=
-    f_ /; (Count[f, fcsuni[_Integer], Infinity] == 1 &&
+    f_ /; (Count[f, (fcsuni | fcexsuni)[_Integer], Infinity] == 1 &&
             FreeQ[{f},
               NMPower | Power | NM | Times | Dot | fcdot | IsoDot | IsoCross |
                  IsoSymmetricCross]) :> (fi = fcsuni[iinint[opts]];
         ni = Cases[f, fcsuni[_Integer], Infinity][[1]]; (f /. ni -> fi)*
           Projection[ni[[1]]][fi]);
 
-PhiToFC[aa_, (opts___Rule | opts___List)] :=
+PhiToFC[aa_, opts___?OptionQ] :=
     aa /. {(*UGenerator[fcsuni[i_Symbol /; FreeQ[$ConstantIsoIndices, i]],
                       opts___Rule | opts___List] -> 2*fcsunt[fcsuni[i]],*)NM ->
                    fcdot, fcqf[pp__][_] :> fcqf[pp], uix -> fcsuni,
                 SU2Delta -> fcsundel, SU3Delta -> fcsundel, SU2F -> fcsunf,
                 SU3F -> fcsunf, SU3D -> fcsund} /. (Power | NMPower)[
-                p_?(! FreeQ[#, fcsuni, Infinity, Heads -> True] &), n_] :>
+                p_?(! FreeQ[#, fcsuni|fcexsuni, Infinity, Heads -> True] &), n_] :>
               Times @@ MapIndexed[pp, Table[p, {n}]] /.
           If[(RemoveIntegerIndices /. Flatten[{opts}] /. Options[PhiToFC]),
             If[(NumerateFree /. Flatten[{opts}] /. Options[PhiToFC]),
@@ -3329,7 +3488,7 @@ PhiToFC[aa_, (opts___Rule | opts___List)] :=
 (* The (n-dimensional) isospin indices from 1 to IsoIndicesNumber, used by
 IsoIndicesSupply: *)
 
-IsoIndicesList[(opts___Rule | opts___List)] := (Table[
+IsoIndicesList[opts___?OptionQ] := (Table[
         ToExpression[(IsoIndicesString /. Flatten[{opts}] /.
                 Options[IsoIndicesList]) <> ToString[i]], {i, 1,
           IsoIndicesNumber /. Flatten[{opts}] /. Options[IsoIndicesList]}]);
@@ -3338,7 +3497,7 @@ IsoIndicesList[(opts___Rule | opts___List)] := (Table[
 
 (* The momenta of the incoming/outgoing particles: *)
 
-MomentumVariables[(opts___Rule | opts___List)] :=
+MomentumVariables[opts___?OptionQ] :=
     Table[ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
               Options[MomentumVariables]) <> ToString[i]], {i,
         ParticlesNumber /. Flatten[{opts}] /. Options[MomentumVariables]}];
@@ -3347,7 +3506,7 @@ MomentumVariables[(opts___Rule | opts___List)] :=
 
 (* The fields to be declared to FeynCalc (all are incoming): *)
 
-FieldsSet[body___fcqf, (opts___Rule | opts___List)] /;
+FieldsSet[body___fcqf, opts___?OptionQ] /;
       VectorQ[ParticlesNumber /. Flatten[{opts}] /.
           Options[FieldsSet]] := (pnr[
           x_] := (ParticlesNumber /. Flatten[{opts}] /.
@@ -3369,7 +3528,7 @@ FieldsSet[body___fcqf, (opts___Rule | opts___List)] /;
                     Options[FieldsSet]) <> ToString[pnr[j]]]], {j,
             Length[ParticlesNumber /. Flatten[{opts}] /.
                 Options[FieldsSet]]}] /. seq -> Sequence);
-FieldsSet[body___fcqf, (opts___Rule | opts___List)] /;
+FieldsSet[body___fcqf, opts___?OptionQ] /;
       IntegerQ[ParticlesNumber /. Flatten[{opts}] /. Options[FieldsSet]] :=
     Table[(fcqf1[##] & @@
                 Join[List @@
@@ -3409,14 +3568,15 @@ DiscardTerms[l_, opts___Rule] :=
     Block[{i, mme, res},(*Do[
             ClearAttributes[Evaluate[upar[i]], NumericFunction];, {i, 5}];*)
 	(*Added 8/3-2000 to have DiscardTerms work when DOT products are involved*)
-        SetAttributes[#, {NumericFunction, NHoldAll}]& /@ $ParticleTypes;
+   (*Commented out 16/9-2002. Will look at DOT instead*)
+        (*SetAttributes[#, {NumericFunction, NHoldAll}]& /@ $ParticleTypes;*)
         mme = (Method /. Flatten[{opts}] /. Options[DiscardTerms]);
       res = Which[mme === Expand, VerbosePrint[1, "Using Method->Expand"];
           DiscardTerms1[l, opts], mme === Coefficient,
           VerbosePrint[1, "Using Method->Coefficient"];
           DiscardTerms2[l, opts], True,
           Message[DiscardTerms::nomethod, mme]];
-	  ClearAttributes[#, {NumericFunction, NHoldAll}]& /@ $ParticleTypes;
+	  (*ClearAttributes[#, {NumericFunction, NHoldAll}]& /@ $ParticleTypes;*)
 	  (*Do[SetAttributes[Evaluate[upar[i]], NumericFunction];, {i, 5}];*)
         res];
 
@@ -3445,7 +3605,8 @@ DiscardTerms1[l_, opts___Rule] :=
       Clear[tempfac, tempfacts, retord, rf,ro];
       SetAttributes[
             tempfac, {NumericFunction, NHoldAll}];
-      $UScalars = Union[$UScalars, {tempfac, ppf}];
+      (*$UScalars = Union[$UScalars, {tempfac, ppf}];*)
+      DeclareUScalar[tempfac, ppf];
       Adjoint[tempfac[a___]] := tempfac[a];
       Conjugate[tempfac[a___]] ^:= tempfac[a];
       Transpose[tempfac[a___]] ^:= tempfac[a]; tempfacts = 1;
@@ -3472,7 +3633,7 @@ DiscardTerms1[l_, opts___Rule] :=
       VerbosePrint[2, "Expanding NM products"];
       ddt2 = NMExpand[ddt1];
       (*Commented out 4/3 -  2000.
-      Don't know why it's here and its really slow on large expressions*)
+      Don't know why it's here and it's really slow on large expressions*)
       (*3/8-2000: Well, it's here because of the UVector stuff.
       See DiscardTerms.nb. Uncommented and changed fcdots to DotExpand*)
       VerbosePrint[2, "Expanding DOT products"];
@@ -3490,8 +3651,9 @@ DiscardTerms1[l_, opts___Rule] :=
                       tempfac[ppf[]]^(ro + 2) -> 1}, {rep,
                       Length[retord]}]]) /.
             tempfac[tt___] /; FreeQ[{tt}, nodrop] -> 0 /.
-          DropFactor[___] -> 1; $UScalars =
-        Complement[$UScalars, {tempfac, ppf}];
+          DropFactor[___] -> 1;
+         (*$UScalars =
+        Complement[$UScalars, {tempfac, ppf}];*)
       If[(CommutatorReduce /. Flatten[{opts}] /. Options[DiscardTerms]),
         ddt // (VerbosePrint[2,
                   "Applying CommutatorReduce"]; CommutatorReduce[#,opts])&, ddt]];
@@ -3507,7 +3669,8 @@ DiscardTerms2[l_, opts___Rule] :=
     Block[{nodrop, tempfac, tempfacts, retord, rf, ro, ddt1, arg, p, x, ders,
         ar, br, qs, ttf, rest, pp, cc, tt, bb, aa, ddtt, ddt, ddt0},
       Clear[tempfac, tempfacts, tempfactcoeff, retord, rf, ro];
-      SetAttributes[tempfac, {NumericFunction, NHoldAll}];
+      (*Commented out 16/9-2002. Will look at DOT instead*)
+      (*SetAttributes[tempfac, {NumericFunction, NHoldAll}];*)
       $UScalars = Union[$UScalars, {tempfac, ppf}];
       Adjoint[tempfac[a___]] := tempfac[a];
       Conjugate[tempfac[a___]] ^:= tempfac[a];
@@ -3558,9 +3721,9 @@ SetCommutators := ($CommutatorRules /. Rule -> SetDelayed;);
 
 
 
-(* The substitution rule to eliminate one of the momentum variables: *)
+(* Substitution rule to eliminate one of the momentum variables: *)
 
-MomentaSumRule[(opts___Rule | opts___List)] :=
+MomentaSumRule[opts___?OptionQ] :=
     Which[(MomentaSumLeft /. Flatten[{opts}] /. Options[MomentaSumRule]) ===
         FirstHalf,
       ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
@@ -3780,12 +3943,12 @@ MMS[x_, h___, opts___Rule] /; (fcexpt/.Flatten[{opts}]/.Options[MMS]) :=
        Union[OptionsSelect[UFieldMatrix, opts], OptionsSelect[UMatrix, opts]];
 
 FST[p_, {mu_}, {nu_}, x_, a___RenormalizationState, b___RenormalizationScheme,
-       c___ExpansionState, (opts___Rule | opts___List)] :=
+       c___ExpansionState, opts___?OptionQ] :=
     FST[p, fcli[mu], fcli[nu], x, a, b, c, opts];
 (*FST[p_, mu_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         nu_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, x_,
         a___RenormalizationState, b___RenormalizationScheme,
-        c___ExpansionState, (opts___Rule | opts___List)] :=
+        c___ExpansionState, opts___?OptionQ] :=
       FieldStrengthTensorFull[mu,
 UGeneratorMatrixIsoDotFull[fcqf[Particle[p, a, b, c], nu][x], opts], x];*)
 
@@ -3796,7 +3959,7 @@ UGeneratorMatrixIsoDotFull[fcqf[Particle[p, a, b, c], nu][x], opts], x];*)
 FST[p_, mu_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
       nu_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, x_,
       a___RenormalizationState, b___RenormalizationScheme,
-      c___ExpansionState, (opts___Rule | opts___List)] :=
+      c___ExpansionState, opts___?OptionQ] :=
     FieldStrengthTensor[mu,
 UGeneratorMatrixIsoDotFull[fcqf[Particle[p, a, b, c], nu][x], opts], x, opts] +
       (*Think this was a bug - changed 14/11-2001*)(*2*I*UGeneratorMatrixIsoDotFull[*)
@@ -4063,18 +4226,25 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
     {MM6 -> MM, SMM6 -> SMM, MMS6 -> MMS} /.
 
     (*Added 25/2 - 2000*)UMatrix[UGenerator[i_]] :>
-     UMatrix[UGenerator[fcsuni[i], Sequence @@ o6], Sequence @@ o5]/;FreeQ[i,fcsuni];
+     UMatrix[UGenerator[fcsuni[i], Sequence @@ o6],
+                       Sequence @@ o5] /; FreeQ[i, fcsuni|fcexsuni];
 
 
 
 ArgumentsSupply[expr_, x_, ar___RenormalizationState,
-   br___RenormalizationScheme,cr___ExpansionState, (opts___Rule | opts___List)] :=
-   (If[ MemberQ[{Rule, RenormalizationState, RenormalizationScheme,
+   br___RenormalizationScheme,cr___ExpansionState, opts___?OptionQ] :=
+   (
+   (*Added to avoid tracing covariant derivatives as scalars before they are substituted in.
+    16/9-2002*)
+   $UMatrices = Join[$UMatrices, {CDr3, CNDr3, CNb3, CDr2, CNDr2, CNb2}];
+   If[ MemberQ[{Rule, RenormalizationState, RenormalizationScheme,
         ExpansionState}, Head[x]], Message[ArgumentsSupply::noarg]; Return[];];
-    If[!FreeQ[expr, x, Infinity, Heads -> True], Message[ArgumentsSupply::argxpr, x]];
-        ArgumentsSupply1[expr//.$PreSubstitutions[x,ar,br,cr,opts]//.
+   If[!FreeQ[expr, x, Infinity, Heads -> True], Message[ArgumentsSupply::argxpr, x]];
+   argres = ArgumentsSupply1[expr//.$PreSubstitutions[x,ar,br,cr,opts]//.
 				$Substitutions//.$PostSubstitutions[x,ar,br,cr,opts],
-				x, ar, br, cr, opts]);
+				x, ar, br, cr, opts];
+   $UMatrices = Drop[$UMatrices, -6];
+   argres);
 
 
 
@@ -4087,32 +4257,28 @@ ArgumentsSupply[expr_, x_, ar___RenormalizationState,
 
 (* CommutatorReduce: *)
 
-CommutatorReduce[expr_, (opts___Rule | opts___List)]  /; (FullReduce /. Flatten[{opts}] /.
-   Options[CommutatorReduce]) =!= True := expr //. $CommutatorRules;
-
 nsort[{a_, b_}] :=
     Block[{s}, s = Sort[{a, b}]; If[s === {a, b}, {a, b}, Conjugate /@ s]];
 
-CommutatorReduce[expr_, (opts___Rule | opts___List)] /; (FullReduce /. Flatten[{opts}] /.
-   Options[CommutatorReduce]) === True :=
-  Block[{a,b,exp,scq}, scq=!UScalarQ[UTrace1];DeclareUScalar[UTrace1];
-	exp=expr /.patternCommRule//. $CommutatorRules /.{(NM | NonCommutativeMultiply)[a__] :>
-      Times[a] /; FreeQ[{a}, Alternatives @@ $NonCommute],
-      (p:(IsoDot|IsoCross|IsoSymmetricCross))[a_,b_] :>
-      p@@nsort[{a,b}] /; (FreeQ[a, Alternatives @@ $NonCommute] ||
-                         FreeQ[b, Alternatives @@ $NonCommute])};
-			If[scq,UndeclareUScalar[UTrace1]];
-			exp];
-
 (* Patterns are considered non-scalars by NM, but here we force taking out UTrace1 of patterns *)
-  patternCommRule = HoldPattern[NM[a__]]  :>  (Times @@ Select[{a}, ((UScalarQ[#])&)])*(NM[##] & @@
-          Select[{a}, (! UScalarQ[#] &)]) /; btss1[a];
+  patternCommRule = HoldPattern[NM[a__]]  :>
+    (Times @@ Select[{a}, ((UScalarQ[# /. Pattern -> ({##}[[1]] &)] === True)&)])*
+    (NM @@ Select[{a}, ((UScalarQ[# /. Pattern -> ({##}[[1]] &)] =!= True)&)]) /; btss1[a];
 
+checksub[x_List, y_List] :=
+    Block[{xx, yy}, xx = StringJoin @@ (ToString /@ x);
+      yy = StringJoin @@ (ToString /@ y);
+      StringMatchQ[xx, "*" <> yy <> "*"] ||
+        StringMatchQ[yy, "*" <> xx <> "*"]];
+
+CommutatorReduce[expr_, op___?OptionQ] :=
+
+Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRules3},
 
 
 (* These non-commuting objects will not be taken out of NM: *)
 
-$NonCommute := Union[List @@ $UMatrices, {UMatrix, UVector, DiracBar,
+$UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
       HighEnergyPhysics`FeynCalc`DiracBasis`DiracBasis,
       HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma,
       HighEnergyPhysics`FeynCalc`DiracGammaT`DiracGammaT,
@@ -4121,17 +4287,13 @@ $NonCommute := Union[List @@ $UMatrices, {UMatrix, UVector, DiracBar,
       (*Added 12/1-2000*)FST
       (*Commented out PartialD 3/8-2000, don't know why it's here*)(*,
       HighEnergyPhysics`FeynCalc`PartialD`PartialD*)(*,
-        HighEnergyPhysics`FeynCalc`LeptonSpinor`LeptonSpinor,
-        HighEnergyPhysics`FeynCalc`QuarkSpinor`QuarkSpinor,
+        HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor,
         HighEnergyPhysics`FeynCalc`Spinor`Spinor,
         HighEnergyPhysics`FeynCalc`SpinorU`SpinorU,
         HighEnergyPhysics`FeynCalc`SpinorUBar`SpinorUBar, SpinorV`SpinorV,
         HighEnergyPhysics`FeynCalc`SpinorVBar`SpinorVBar*)}];
 
-(*Changed 13/3 - 2000*)
-noncommpatt :=
-  Alternatives @@ Union[$NonCommute, List @@ $UMatrices]
-(*noncommpatt := Alternatives @@ $NonCommute;*)
+noncommpatt = Alternatives @@ $UNonComm;
 
 
 
@@ -4197,12 +4359,6 @@ and c.  Is this always true?? *)
 (* Changed from using Intersection to using checksub to avoid e.g.
    NM[IsoDot[a,b],IsoDot[b,a]] being replaced with Times[...] because
    Intersect order the result *)
-
-checksub[x_List, y_List] :=
-    Block[{xx, yy}, xx = StringJoin @@ (ToString /@ x);
-      yy = StringJoin @@ (ToString /@ y);
-      StringMatchQ[xx, "*" <> yy <> "*"] ||
-        StringMatchQ[yy, "*" <> xx <> "*"]];
 
 $CommutatorRules2 =
 (*Changed to accomodate the new IsoDot, 1/2 - 2000*)
@@ -4306,6 +4462,21 @@ out to be redundant): *)
                 UScalarQ[b]) :> Times[a, UMatrix[b], c]};*)
 $CommutatorRules =
     Join[$CommutatorRules1, $CommutatorRules2(*, $CommutatorRules3*)];
+
+
+If[(FullReduce /. Flatten[{op}] /. Options[CommutatorReduce]) =!= True,
+
+expr //. $CommutatorRules,
+
+scq=!UScalarQ[UTrace1];DeclareUScalar[UTrace1];
+exp=expr /.patternCommRule//. $CommutatorRules /.
+      {(NM | NonCommutativeMultiply)[a__] :> Times[a] /; FreeQ[{a}, noncommpatt],
+      (p:(IsoDot|IsoCross|IsoSymmetricCross))[a_,b_] :> p@@nsort[{a,b}] /;
+                        (FreeQ[a, noncommpatt] || FreeQ[b, noncommpatt])};
+If[scq,UndeclareUScalar[UTrace1]];
+exp]
+];
+
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
