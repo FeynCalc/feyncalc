@@ -15,7 +15,8 @@
 BeginPackage["HighEnergyPhysics`qcd`OPE2TID`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPE2TID::"usage"= "OPE2TID[exp, k1, k2, p]. The setting of the option
+OPE2TID::"usage"= "OPE2TID[exp, k1, k2, p] does a tensor integral decomposition of exp. 
+The setting of the option
 EpsContract determines the dimension in which the Levi-Civita tensors
 are contracted.";
 
