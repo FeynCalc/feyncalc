@@ -16,7 +16,14 @@ BeginPackage["HighEnergyPhysics`fctools`ExpandPartialD`",
              "HighEnergyPhysics`FeynCalc`"];
 
 ExpandPartialD::"usage"=
-"ExpandPartialD[exp] expands all QuantumField's in exp."
+"ExpandPartialD[exp] expands DOT products of QuantumField's in exp
+using the Leibniz rule."
+
+(* Added 22/2-2003 in order to use FieldDerivative in a
+   flexible way. F.Orellana *)
+PartialDRelations::"usage"=
+"PartialDRelations is an option for ExpandPartialD. It is a list of rules
+applied by ExpandPartialD at the end."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -26,7 +33,6 @@ Begin["`Private`"];
 CovariantD := CovariantD = MakeContext["CovariantD"];
 DeclareNonCommutative = MakeContext["DeclareNonCommutative"];
 DiracGamma   = MakeContext["DiracGamma"];
-DOT          = MakeContext["DOT"];
 DotSimplify  = MakeContext["DotSimplify"];
 Eps     := Eps = MakeContext["Eps"];
 EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
@@ -57,8 +63,18 @@ SUNSimplify  := SUNSimplify = MakeContext["SUNSimplify"];
 *)
 
 (* ******************************************************************** *)
+
+Options[ExpandPartialD] =
+  (*Expensive, I'm afraid... F.Orellana*)
+  {PartialDRelations -> {DOT[a___, PartialD[x_,LorentzIndex[mu_]], b___] :>
+   DOT[a, FieldDerivative[DOT[b], x, LorentzIndex[mu]]]}};
+
+(* Expand one multiplication at a time. F.Orellana *)
+ExpandPartialD[x_, opts___Rule] := Fold[ExpandPartialD1[#1, #2, opts]&, x,
+                                   Complement[$Multiplications, {Times}]];
+
 (*
-ExpandPartialD[x_] := Expand[FixedPoint[qfe, FCI[x], 7], QuantumField];
+ExpandPartialD1[x_] := Expand[FixedPoint[qfe, FCI[x], 7], QuantumField];
 *)
 
 (* moet dat ???? *)
@@ -81,7 +97,7 @@ epskill[any_ /; FreeQ2[any,{RightPartialD, LeftPartialD}]] := any;
 (* careful, ..., LeftPartialD and RightPartialD are operators,
    thus here is no need to look at QuantumField's 
 *)
-epskill[prod_Times]:=( (prod /. DOT -> mydot) //. {
+epskill[prod_Times]:=( (prod /. (*DOT*)(fcdot/.Options[epskill]) -> mydot) //. {
        (Eps[a___, LorentzIndex[mu_,___],b___, 
             LorentzIndex[nu_, ___], c___
  ] * mydot[pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]],
@@ -186,30 +202,45 @@ epskill[prod_Times]:=( (prod /. DOT -> mydot) //. {
              QuantumField[p1,PartialD[LorentzIndex[nu, di]], p2, name, 
                           LorentzIndex[mu,de], rest], quf2]
             ) /; !OrderedQ[{mu, nu}]
-                                                  } /. mydot->DOT
+                                                  } /. mydot->(*DOT*)(fcdot/.Options[epskill])
                      ) /; !FreeQ2[prod, {Eps,LeftPartialD,RightPartialD}
                                  ] && $EpsRules===True;
 $EpsRules = True;
 
-ExpandPartialD[x_Plus] := Map[ExpandPartialD[#]&,x];
+ExpandPartialD1[x_Plus, dot_, opts___Rule] := Map[ExpandPartialD1[#,dot,opts]&,x];
 
-ExpandPartialD[x_] := If[FreeQ2[x, {PartialD, LeftPartialD, 
+(*Hack to allow other multiplications. F.Orellana. 24/2-2003*)
+Options[quanf]={fcdot->DOT};
+Options[epskill]={fcdot->DOT};
+
+ExpandPartialD1[x_, dot_, opts___Rule] := If[FreeQ2[x, {PartialD, LeftPartialD, 
                                    RightPartialD, LeftRightPartialD, 
                                    FieldStrength,
                                    QuantumField}
                               ], x,
+                        SetOptions[quanf, fcdot->dot];
+                        SetOptions[epskill, fcdot->dot];
                         epskill[Expand[
-                                   Expand[FixedPoint[qfe,FCI[x],3],
+                                   Expand[FixedPoint[qfe[dot,#]&,FCI[x],3],
                                  SUNIndex] // sunsi,Eps]
-                               ] /. epskill -> Identity
+                               ] /. epskill -> Identity //.
+                       (*Allow for other products through setting
+                         of PartialDRelations. This will of course
+                         manipulate these products only by applying
+                         PartialDRelations. Still...
+                         F.Orellana, 22/2-2003.*)
+                       (PartialDRelations/.{opts}/.Options[ExpandPartialD])
                        ] /; Head[x] =!= Plus;
 
 fcovcheck[y_] := If[CheckContext["CovariantD"] || 
                     CheckContext["FieldStrength"],
                    y /. FieldStrength[ab__] :>
                         FieldStrength[ab, Explicit -> True]/.
-                   CovariantD[ab__] :> 
-                   CovariantD[ab, Explicit -> True],
+                   (*Small change (condition) 26/2-2003. F.Orellana.
+                     Ignore CovariantD[x, LorentzIndex[mu]] - it will be
+                     caught by PartialDRelations*)
+                   CovariantD[ab__] :> CovariantD[ab, Explicit -> True] /;
+                   Length[{ab}] =!= 2 || Or@@((Head[#]===List)&/@{ab}),
                    y
                   ];
 
@@ -218,18 +249,18 @@ opesumplus2[y_,b__] := If[Head[y]===Plus,
                          ];
 opesumplus[a_,b__] := opesumplus2[Expand[a],b];
 
-qfe[x_] := MemSet[qfe[x],
+qfe[dot_, x_] := MemSet[qfe[dot,x],
            DotSimplify[
-            DotSimplify[ExplicitPartialD[fcovcheck[x/.Times->DOT]] /. 
+            DotSimplify[ExplicitPartialD[fcovcheck[x/.Times->dot]] /. 
  { PartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):> 
     PartialD[Momentum[OPEDelta]^mm],
    LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):> 
     LeftPartialD[Momentum[OPEDelta]^mm],
    RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):> 
     RightPartialD[Momentum[OPEDelta]^mm]
-  }                    ] /. DOT -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. 
+  }                    ] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. 
                        qf1 -> qf3 /. 
-                       qf3 -> qf5 /. qf5 -> DOT /. QuantumField ->
+                       qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
                        quanf /. quanf -> QuantumField /. OPESum -> 
                        opesumplus
                       ]
@@ -241,10 +272,10 @@ qf1[a__, OPESum[b_, c__], d___] := OPESum[qf1[a, b, d], c];
 qf1[a___, b_Plus, c___] := Expand[Map[qf1[a, #, c]&, b]];
 
 qf2[b___, n_ ,c___] := ( n qf2[b, c] ) /; 
-    FreeQ2[n, {Pattern, Blank, qf1, qf2}] && NonCommFreeQ[n];
+    FreeQ2[n, {Pattern, Blank, qf1, qf2}] && NonCommFreeQ[n] === True;
 
 qf2[b___, n_ f1_, c___] := 
-If[FreeQ2[n, {Pattern, Blank, qf1, qf2}] && NonCommFreeQ[n],
+If[FreeQ2[n, {Pattern, Blank, qf1, qf2}] && NonCommFreeQ[n] === True,
    n qf2[b, f1, c] ,
    qf2[b, n, f1, c]
   ];
@@ -345,7 +376,7 @@ qf5[a___,RightPartialD[Momentum[OPEDelta]^m_],
         )(* /; FreeQ[{a}, PartialD]*);
 
 quanf[quanf[a__], b___, c_ /; Head[c] =!= PartialD] :=
-      (DOT[quanf[a], qf5[b,c]]);
+      ((*DOT*)(fcdot/.Options[quanf])[quanf[a], qf5[b,c]]);
 
 quanf[f1___, PartialD[Momentum[OPEDelta]^m_],
              PartialD[Momentum[OPEDelta]],  
