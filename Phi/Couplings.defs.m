@@ -128,11 +128,17 @@ PhiModel::"usage" =
 be set before doing loop calculations with Phi and FeynArts.  Default value \
 : ChPT2";
 
+GenProps::"usage" = 
+    "GenProps is a function used by the generic FeynArts model Automatic \
+for constructing the list M$GenericPropagators. It returns predefined standard \
+values for $ScalarHeads, $VectorHeads and $FermionHeads.  It is however, \
+possible to use non-standard propagators by modifying this function";
+
 $PropagatorMassesStates::"usage" = 
     "$PropagatorMassesStates is a variable used by the FeynArts model file \
 Automatic.mod. It is a list specifying the optional arguments of ParticleMass \
 for the particles used.  Default value : \
-{Pion[0]->{RenormalizationState[0]},Kaon->{RenormalizationState[0]}}";
+{Pion[0]->{RenormalizationState[0]},Kaon[0]->{RenormalizationState[0]}}";
 
 $MixingFields::"usage" = 
     "$MixingFields is a variable used by the FeynArts model file \

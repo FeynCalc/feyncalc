@@ -58,7 +58,7 @@ $CouplingLorentzIndicesString<>ToString[i];
 (* ****************************************************************** *)
 
 (*
-  The function HighEnergyPhysics`Phi`Couplings`Private`GenProps[p]
+  The function HighEnergyPhysics`Phi`Couplings`GenProps[p]
   gives the propagator description for the particle type p.
   Standard definitions are used.
   Notice that the setting of $PropagatorMassesStates determines the 
@@ -66,19 +66,19 @@ $CouplingLorentzIndicesString<>ToString[i];
   particle
 *)
 
-HighEnergyPhysics`Phi`Couplings`Private`GenProps[a:$ScalarHeads]:={
+HighEnergyPhysics`Phi`Couplings`GenProps[a:$ScalarHeads]:={
 AnalyticalPropagator[External][ s a[i,p] ] == 1, 
 AnalyticalPropagator[Internal][ s a[i,p] ] == 
 I*PropagatorDenominator[p,Mass[a[i]]]};
 
-HighEnergyPhysics`Phi`Couplings`Private`GenProps[a:$VectorHeads]:={
+HighEnergyPhysics`Phi`Couplings`GenProps[a:$VectorHeads]:={
 AnalyticalPropagator[External][ s a[i, mom, {li2}] ] == 
 FAPolarizationVector[ a[i], mom, li2 ], 
 AnalyticalPropagator[Internal][ s a[i,mom,{li1}->{li2}] ] == 
 I*PropagatorDenominator[ mom , Mass[a[i]] ]*
 (-FAMetricTensor[li1, li2])};
 
-HighEnergyPhysics`Phi`Couplings`Private`GenProps[a:$FermionHeads]:={
+HighEnergyPhysics`Phi`Couplings`GenProps[a:$FermionHeads]:={
 AnalyticalPropagator[External][ s a[i, mom] ] == 
 FANonCommutative[ 
 DiracSpinor[ -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ], 
@@ -98,10 +98,11 @@ Flatten[Transpose[Transpose[
 $VerticesSpecifications1][[1]]/.Rule->List][[2]]],
 If[Length[$MixingFields]>0,Transpose[$MixingFields/.Rule->List][[1]],{}]]];
 
-(* The function HighEnergyPhysics`Phi`Couplings`Private`GenProps is used to create propagator definitions
-   for all particle types *)
+(* The function HighEnergyPhysics`Phi`Couplings`GenProps is used to
+   create propagator definitions for all particle types *)
 
-M$GenericPropagators = Flatten[HighEnergyPhysics`Phi`Couplings`Private`GenProps/@allfields];
+M$GenericPropagators =
+  Flatten[HighEnergyPhysics`Phi`Couplings`GenProps/@allfields];
 
 (* ****************************************************************** *)
 

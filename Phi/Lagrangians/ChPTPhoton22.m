@@ -1,6 +1,6 @@
 (* *************************************************************** *)
 (*                                                                 *)
-(*                      ChPT2Photon2                               *)
+(*                      ChPTPhoton22                               *)
 (*                                                                 *)
 (* *************************************************************** *)
 
@@ -23,8 +23,8 @@
 
 Begin["HighEnergyPhysics`Phi`Objects`"];
 
-ChPT2Photon2::"usage"=
-"ChPT2Photon2.m is the name of the file containing the definitions for
+ChPTPhoton22::"usage"=
+"ChPTPhoton22.m is the name of the file containing the definitions for
 ULagrangian[ChPT2PhotonPhoton[2]], which is the SU(2) lowest order ChPT
 lagrangian with coupling to a photon.  To evaluate use ArgumentsSupply";
 
@@ -35,7 +35,7 @@ fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[ChPT2Photon[2]]:=
+ULagrangian[ChPTPhoton2[2]]:=
 
 1/4*DecayConstant[Pion,RenormalizationState[0]]^2*
 
@@ -45,13 +45,13 @@ UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[MM,Adjoint[UChiMatrix]] ]);
 
 (* --------------------------------------------------------------- *)
 
-FieldsSet[ChPT2Photon[4]]:=
+FieldsSet[ChPTPhoton2[2]]:=
 {IsoVector[
 fcqf[Particle[Pion,RenormalizationState[0]]],
 fcqf[Particle[Photon,RenormalizationState[0]],LorentzIndex[\[Mu]]]
 ]};
 
-$ULagrangians=Union[$ULagrangians,{ChPT2Photon[2]}];
+$ULagrangians=Union[$ULagrangians,{ChPTPhoton2[2]}];
 
 End[];
 

@@ -101,7 +101,8 @@ fagen := fagen = System`Generic;
 fains := fains = HighEnergyPhysics`FeynArts`Insertions;
 fatop := fatop = HighEnergyPhysics`FeynArts`Topology;
 fagr := fagr = HighEnergyPhysics`FeynArts`Graph;
-faloop := faloop = HighEnergyPhysics`FeynArts`FALoop;
+(*faloop := faloop = HighEnergyPhysics`FeynArts`FALoop;*)
+faloop := faloop = HighEnergyPhysics`FeynCalc`Loop`Loop;
 faprop := faprop = HighEnergyPhysics`FeynArts`Propagator;
 (*fadsl := fadsl = Global`FADiracSlash;*)
 famatr := famatr = HighEnergyPhysics`FeynArts`MatrixTrace;
@@ -111,6 +112,8 @@ fatopl := fatopl = HighEnergyPhysics`FeynArts`TopologyList;
 faverti := faverti = HighEnergyPhysics`FeynArts`Vertices;
 facoupmat := facoupmat = HighEnergyPhysics`FeynArts`M$CouplingMatrices;
 faps := faps = HighEnergyPhysics`FeynArts`PSort;
+faseens := faseens = HighEnergyPhysics`FeynArts`SelfEnergies;
+
 
 
 
@@ -125,7 +128,7 @@ $VerticesSpecifications = {{VertexFields -> {Pion[0], Pion[0], Pion[0],
         PhiModel -> HighEnergyPhysics`Phi`Objects`ChPT2,
         XFileName -> Automatic}};
 $PropagatorMassesStates = {Pion[0] -> {RenormalizationState[0]},
-      Kaon -> {RenormalizationState[0]}};
+      Kaon[0] -> {RenormalizationState[0]}};
 $CouplingLorentzIndicesString = "\[Mu]";
 $CouplingMomentumVariablesString = "p";
 $CouplingIsoIndicesSpecifications = {Pion[
@@ -162,7 +165,7 @@ Options[DeltaFunctionsCollect] = {ParticlesNumber -> 4,
       IsoIndicesString -> "I"};
 Options[DeltaFunctionProducts] = {ParticlesNumber -> 4,
       IsoIndicesString -> "I", FADeltas -> False};
-Options[AddExternalLegs] = {ExternalPropagators -> 1};
+Options[AddExternalLegs] = {ExternalPropagators -> 1, faseens -> False};
 Options[DiscardTopologies] = {PerturbationOrder -> 2,
       OrderingPatterns -> {}};
 
@@ -696,13 +699,13 @@ TopPermute[fatop[_][props__]] :=
 Compare1[tops : _[]] = tops;
 Compare1[tops_] :=
     Block[{perm, p},
-      perm = TopPermute /@ (tops(*Make all vertices permutable. Added 22/6 -
-                2000*)(*/. favert[n__][i_?Positive] :> favert[n][-i]*)(**)
-		(*Was commented out. Uncommented again. 12/10-2000*));
+      perm = TopPermute /@ (tops/. favert[n_?((# > 1) &), nn___][i_?Positive] :> favert[n,nn][-i]
+        (*Make all vertices permutable. Added 22/6 - 2000*)
+		(*Was commented out. Uncommented again. 12/10-2000*)
+		(*Changed to make only non-external vertices permutable, 28/5-2001*));
       (p = Position[perm, #, 1];
-
-            tops[[p[[1,
-                    1]]]](*Commented out to avoid changing the symmetry factors*)(*/. fatop[s_][rest__] -> fatop[s/Length[p]][rest]*)) & /@
+     tops[[p[[1,1]]]](*/. fatop[s_][rest__] -> fatop[s/Length[p]][rest]*)
+     (*Commented out to avoid changing the symmetry factors*))& /@
         Union[perm]];
 
 
@@ -726,16 +729,19 @@ RemoveCT[top_, n_] := top /. favert[i_, 1][_] -> favert[i][n];
 
 (* AddCT generates diagrams with one of the vertices of the original diagrams
 replaced by a counterterm vertex: *)
-
-AddCT[t :
-        fatopl[__]] := (Sequence @@ (# /. (List /@ (Rule[#,
-                              MapAt[ss[#, 1] &, #, {0, 1}]] & /@
-                          Union[Cases[#,
-                              favert[_][_?(((*Added Abs 27/3 - 2000*)Abs[#] >
-                                        99) &)], Infinity,
-                              Heads -> True]])))) & /@ t /. ss -> Sequence;
-
-
+(*Changed 27/5-2001 because FeynArts 3 no longer uses the convention of
+        numbering internal vertices higher than 99*)
+(*Also, FeynArts 3 wants to have Internal propagators last*)
+gs[faprop[fainc][__], faprop[faout][__]] := True;
+gs[faprop[faout][__], faprop[fainc][__]] := False;
+gs[faprop[faout][__], faprop[faint][__]] := True;
+gs[faprop[faint][__], faprop[faout][__]] := False;
+AddCT[t : fatopl[__]] := Sort[#, gs] & /@ ((Sequence @@ (# /. (
+List /@ (Rule[#, MapAt[ss[#, 1] &, #, {0, 1}]] & /@
+Union[Union[Cases[Cases[#, faprop[faint | faloop[__]][__],
+  Infinity], favert[_][_], Infinity, Heads -> True],
+Cases[#, favert[_?((Abs[#] > 1) &)][_], Infinity, Heads -> True]]])))) & /@ t /.
+      ss -> Sequence);
 
 (* Combinations (this function is probably in the combinatorics package, but we
 have enough in memory already): *)
@@ -744,6 +750,33 @@ have enough in memory already): *)
     Union[Select[
         Sort /@ Flatten[Outer[List, Sequence @@ Table[m, {n}]],
             n - 1], (Union[#] === #) &]];*)
+
+
+(* DropInternalSelfEnergies drops topologies with selfenergy loops on internal legs.
+   Added 30/5-2001. *)
+   
+SelectRepeated[s_List]:=(
+set = {};
+((If[FreeQ[set, #], set = Union[set, {#}]; seq[], #]) & /@ s) /.
+seq -> Sequence);
+
+SelectInternalSelfEnergies[fatopl[mesonstop__]] :=
+Select[fatopl[mesonstop], (selfprops = {};
+      loopprops =
+        List @@ Select[#, MatchQ[#, faprop[faloop[_]][v1_, v2_]]&];
+      selfprops =
+        Union[SelectRepeated[loopprops],
+              Select[loopprops, MatchQ[#, faprop[faloop[_]][v_, v_]]&]];
+      selfverts = Alternatives @@ Union[Flatten[(List @@ #) & /@ selfprops]];
+      Length[Complement[
+                Select[List @@ #,
+                MatchQ[#, faprop[faint][___, selfverts, ___]]&],
+                selfprops]] === 2 &&
+             FreeQ[List @@ #,
+                faprop[faext|faout|fainc][___, selfverts, ___]])&];
+                
+DropInternalSelfEnergies[fatopl[mesonstop__]] :=
+Complement[fatopl[mesonstop],SelectInternalSelfEnergies[fatopl[mesonstop]]];
 
 
 
@@ -761,8 +794,8 @@ AddToLeg[faprop[h : (faint | faloop[__])][from : (favert[_][_]), to_], n_] :=
               fatop[s snew][p1, pnew, p2] /. AddToLeg1 -> AddToLeg /.
         seq -> Sequence;*)
 (*Changed 27/4 - 2000 to allow more than one external source*)
-  AddLeg[top_, n_,
-      opts___Rule] := (exprops = (ExternalPropagators /. Flatten[{opts}] /.
+  AddLeg[top_, n_, opts___Rule] :=
+  (exprops = (ExternalPropagators /. Flatten[{opts}] /.
             Options[AddExternalLegs]);
       posis = fccombs[Range[Length[top]], exprops];
       Map[If[MatchQ[#, {_, _}], #[[2]], #] &,
@@ -772,13 +805,15 @@ AddToLeg[faprop[h : (faint | faloop[__])][from : (favert[_][_]), to_], n_] :=
               fatop[s_][p1___, fatop[snew_][pnew__], p2___] :>
                 fatop[s snew][p1, pnew, p2] /. AddToLeg1 -> AddToLeg /.
           seq -> Sequence, {2}]);
-AddExternalLegs[tops : fatopl[__],
-      opts___Rule] := (maxv =
-        Max[(#[[1]]) & /@
+          
+AddExternalLegs[tops : fatopl[__], opts___Rule] := 
+If[faseens /. Flatten[{opts}] /. Options[AddExternalLegs],
+#,DropInternalSelfEnergies[#]]&[
+(maxv = Max[(#[[1]]) & /@
               Cases[tops, favert[_][_], Infinity, Heads -> True]] +
           1;(*Added Compare1, 22/6 - 2000*)Compare1[
         Select[AddLeg[#, maxv, opts] & /@ tops,
-          FreeQ[#, discard, Infinity, Heads -> True] &]]);
+          FreeQ[#, discard, Infinity, Heads -> True] &]])];
 
 
 
@@ -1162,7 +1197,7 @@ GenSave[modelname_String] :=
         "M$GenericPropagators = " <>
           ToString[
             InputForm[
-              Flatten[HighEnergyPhysics`Phi`Couplings`Private`GenProps /@ \
+              Flatten[HighEnergyPhysics`Phi`Couplings`GenProps /@ \
 (Join[Flatten[{List @@ $ScalarHeads} /. None -> Sequence[]],
                         Flatten[{List @@ $VectorHeads} /. None -> Sequence[]],
                          Flatten[{List @@ $FermionHeads} /.

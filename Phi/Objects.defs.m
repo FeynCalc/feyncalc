@@ -585,6 +585,10 @@ UQuarkCharge::"usage" =
     "UMatrix[UQuarkCharge[opts],opts] =: UQuarkChargeMatrix[opts] is the \
 diagonal quark charge matrix";
 
+UChiralSpurion::"usage" = 
+    "UMatrix[UChiralSpurion[spec],opts] represents some \
+spurion.  It is merely a symbol with display rules";
+
 UChiralSpurionLeft::"usage" = 
     "UMatrix[UChiralSpurionLeft[spec],opts] represents some lefthanded \
 spurion.  It is merely a symbol with display rules";
@@ -1130,8 +1134,7 @@ ParticlesNumber as incoming";
 IsoIndicesSupply::"usage" = 
     "IsoIndicesSupply[a,opts] returns the expression a with IsoVector[a][x] \
 replaced by a[SUNIndex[i1]][x], etc., where \"i\" is taken from the setting \
-of IsoIndicesString.  Often the application of IsoIndicesSupply should be \
-followed by the application of IsoIndicesTogether";
+of IsoIndicesString";
 
 IsoIndicesString::"usage" = 
     "IsoIndicesString is an option of IsoIndicesSupply, IsoIndicesList, \
@@ -1662,16 +1665,22 @@ UIndex /:
 UIdentity /: Format[UIdentity, TraditionalForm] := 
     StyleForm["\[DoubleStruckCapitalI]\[DoubleStruckD]", 
       FontSlant -> "Italic"];
+      
+     UChiralSpurion /:
+     MakeBoxes[UChiralSpurion, TraditionalForm] :=
+     
+    MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
+     
      UChiralSpurionLeft /:
-     MakeBoxes[UChiralSpurionLeft, 
-	  TraditionalForm] :=
+     MakeBoxes[UChiralSpurionLeft, TraditionalForm] :=
      
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]][[1]], "L"];
+     
      UChiralSpurionRight /:
-     MakeBoxes[UChiralSpurionRight, 
-	  TraditionalForm] :=
+     MakeBoxes[UChiralSpurionRight, TraditionalForm] :=
      
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]][[1]], "R"];
+     
      UChi /:
      MakeBoxes[UChi, 
 	  TraditionalForm] :=

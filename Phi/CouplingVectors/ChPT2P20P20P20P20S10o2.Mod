@@ -1,1 +1,3 @@
-{{((2*I)/3*(SU2Delta[0, I5]*SU2Delta[I1, I4]*SU2Delta[I2, I3] +         SU2Delta[0, I5]*SU2Delta[I1, I3]*SU2Delta[I2, I4] +         SU2Delta[0, I5]*SU2Delta[I1, I2]*SU2Delta[I3, I4]))/    DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2}}
+{{((2*I)/3*SUNDelta[0, I5]*(SUNDelta[I1, I4]*SUNDelta[I2, I3] + 
+     SUNDelta[I1, I3]*SUNDelta[I2, I4] + SUNDelta[I1, I2]*SUNDelta[I3, I4]))/
+   DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2}}

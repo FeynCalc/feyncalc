@@ -292,9 +292,12 @@ sig1[{___, a_, mm___, b_, ___}, {___, a_, m___,
 
 (* This function gives the signature of the permutations needed to turn one e.g.
 {a,b,c},{c,aa,bb} into {a,b,c},{aa,bb,c}: *)
+(*Bug fixed 25/5-2001: There might be an identical constant index in
+  the two argument lists besides the index to be permuted*)
 
-sig2[{a___, m_, b___}, {aa___, m_,
-        bb___}] := (-1)^(Length[{a}] - Length[{aa}]);
+sig2[{a___, m_?((!IntegerQ[#] && Head[#] =!= tmpsuni)&), b___},
+{aa___, m_?((!IntegerQ[#] && Head[#] =!= tmpsuni)&), bb___}] :=
+(-1)^(Length[{a}] - Length[{aa}]);
 
 
 
@@ -318,6 +321,11 @@ $SUNDeltaRules =(*the delta functions are orderless,
           fcsuni[i_]] :> 8,
       SU3Delta[i_, fcsuni[j_]]*SU3Delta[fcsuni[j_], k_] :> SU3Delta[i, k],
       SU3Delta[i_Integer, i_Integer] :> 1,
+      (*Added 5/5-2001*)
+      SU3Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU3Delta[i, j],
+      SU3Delta[i:tmpsuni[_Integer]|_Integer, k_]*
+        SU3Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /; (i =!= j),
+      (**)
       SU3Delta[tmpsuni[i_], fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       SU3Delta[fcsuni[i_], tmpsuni[j_]]^n_ /; EvenQ[n] :> 1,
       SU3Delta[i_Integer, fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
@@ -326,15 +334,17 @@ $SUNDeltaRules =(*the delta functions are orderless,
             j_?((IntegerQ[#] || Head[#] === tmpsuni) &)]^n_ :> SU3Delta[i, j],
        SU3Delta[fcsuni[i_], fcsuni[j_]]^n_ /; EvenQ[n] :> 8^(n/2),
       SU3Delta[i_, j_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex]*
-            expr_ /; (!
-                FreeQ[expr,
-                  j] && (FreeQ[expr,
-                    fcqf[___, j, ___] | fcqf[___, j, ___][_]] || !
-                    IntegerQ[i])) :> (expr /. j -> i),
+            expr_ /; (!FreeQ[expr, j] &&
+            (FreeQ[expr, fcqf[___, j, ___] | fcqf[___, j, ___][_]] ||
+            !IntegerQ[i])) :> (expr /. j -> i),
       SU2Delta[fcsuni[i_], fcsuni[i_]] :> 3,
       SU2Delta[i_, fcsuni[j_]]*SU2Delta[fcsuni[j_], k_] :> SU2Delta[i, k],
       SU2Delta[i_Integer, i_Integer] :> 1,
-      SU3Delta[i_Integer, i_Integer] :> 1,
+      (*Added 5/5-2001*)
+      SU2Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU2Delta[i, j],
+      SU2Delta[i:tmpsuni[_Integer]|_Integer, k_]*
+        SU2Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /; (i =!= j),
+      (**)
       SU2Delta[tmpsuni[i_], fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       SU2Delta[fcsuni[i_], tmpsuni[j_]]^n_ /; EvenQ[n] :> 1,
       SU2Delta[i_Integer, fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
@@ -389,36 +399,38 @@ $SUNDFRules = {(*contraction of three indices*)
         2000*)(SU3D[a_, b_, c_]*SU3F[d_, e_, f_]*
             rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
       0,(*contraction of one index -
-        is this formula true for SU(3)?*)(*NO its not - fixed,
-      but correct formula no really usefull,
-      16/12/1999*)(SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*
-            rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] ==
-            1) :> (((SU2Delta[#1, #3]*SU2Delta[#2, #4] -
-                      SU2Delta[#2, #3]*SU2Delta[#1, #4]) & @@
-                Join[Complement[{a, b,
-                      c}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}],
-                  Complement[{d, e,
-                      f}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}]])*
-            sig2[{a, b, c}, {d, e, f}])*
-        rest,(*(SU3F[a_, b_, c_]*SU3F[d_, e_, f_]*
-              rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] ==
-              1) :> (twonum = twoselect[{a, b, c}, {d, e, f}][[1, 1]];
-          morenums =
-            Join[Complement[{a, b, c}, {twonum}],
-              Complement[{d, e,
-                  f}, {twonum}]]; ((2/
-                        3((SU3Delta[#1, #3]*SU3Delta[#2, #4] -
-                                SU3Delta[#2, #3]*SU3Delta[#1, #4]) & @@
-                          morenums) + ((SU3D[#1, #3, twonum]*
-                                SU3D[#2, #4, twonum] -
-                              SU3D[#2, #3, twonum]*SU3D[#1, #4, twonum]) & @@
-                        morenums))*sig2[{a, b, c}, {d, e, f}])*
-            rest),*)(*integers should already be sorted and put first -
+        is this formula true for SU(3)?*)(*NO it's not - fixed,
+      but correct formula no really usefull, 16/12/1999*)
+      (SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*rest___) /;
+      (Length[twoselect[{a, b, c}, {d, e, f}]] == 1) :>
+      (((SU2Delta[#1, #3]*SU2Delta[#2, #4] - SU2Delta[#2, #3]*SU2Delta[#1, #4])& @@
+      Join[Complement[{a, b, c}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}],
+           Complement[{d, e, f}, {twoselect[{a, b, c}, {d, e, f}][[1, 1]]}]])*
+            sig2[{a, b, c}, {d, e, f}])*rest,
+      (*Added 5/6-2001*)
+      (SU2F[a_, b_, c_]^2) /;
+      (Length[twoselect[{a, b, c}, {a, b, c}]] == 1) :>
+      (((SU2Delta[#1, #3]*SU2Delta[#2, #4] - SU2Delta[#2, #3]*SU2Delta[#1, #4])& @@
+      Join[Complement[{a, b, c}, {twoselect[{a, b, c}, {a, b, c}][[1, 1]]}],
+           Complement[{a, b, c}, {twoselect[{a, b, c}, {a, b, c}][[1, 1]]}]])*
+            sig2[{a, b, c}, {a, b, c}]),
+      (*(SU3F[a_, b_, c_]*SU3F[d_, e_, f_]*rest___) /;
+      (Length[twoselect[{a, b, c}, {d, e, f}]] == 1) :>
+      (twonum = twoselect[{a, b, c}, {d, e, f}][[1, 1]];
+       morenums = Join[Complement[{a, b, c}, {twonum}],
+       Complement[{d, e, f}, {twonum}]];
+       ((2/3((SU3Delta[#1, #3]*SU3Delta[#2, #4] -
+              SU3Delta[#2, #3]*SU3Delta[#1, #4])& @@ morenums) +
+       ((SU3D[#1, #3, twonum]*SU3D[#2, #4, twonum] -
+         SU3D[#2, #3, twonum]*SU3D[#1, #4, twonum])& @@ morenums))*
+         sig2[{a, b, c}, {d, e, f}])*rest),*)
+      (*integers should already be sorted and put first -
         the following should also take care of SU2F[a_integer, c_integer,
               d_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex]^2, ...*)
-      SU2F[a_Integer, b_Integer,
-        c_] :> (-1)^(Complement[{1, 2, 3}, {a, b}][[1]] +
-              1)*(SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}]))}
+      SU2F[a_Integer, b_Integer, c_] :>
+      (-1)^(Complement[{1, 2, 3}, {a, b}][[1]] + 1)*
+      (SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}]))};
+      
 $SUNRules =
     Join[$SUNDeltaRules, $SUNDFRules, $SU3FReduceList, $SU3DReduceList];
 
@@ -435,8 +447,7 @@ SUNReduce2[aa_,
           NTo3iRules2[(GaugeGroup /. Flatten[{opts}] /.
                 Options[SUNReduce])] /. $SUNRules);
 
-SUNReduce[aa_,
-        opts___] /; (((SummationForm /. Flatten[{opts}] /.
+SUNReduce[aa_, opts___] /; (((SummationForm /. Flatten[{opts}] /.
                 Options[SUNReduce]) ==
             ImplicitSums) && (FullReduce /. Flatten[{opts}] /.
                     Options[SUNReduce]) === True) :=
@@ -448,9 +459,28 @@ Block[{op},
 ];
 
 SUNReduce[aa_Plus, opts___] := SUNReduce[#, opts] & /@ aa;
+(*Changed 7/6-2001*)
+(*SUNReduce[aa_Plus, opts___] :=
+If[MatchQ[aa,(___ + SU2Delta[i_, fcsuni[1]|1] + SU2Delta[i_, fcsuni[2]|2] + SU2Delta[i_, fcsuni[3]|3])|
+(___ + SU3Delta[fcsuni[1]|1, i_] + SU3Delta[fcsuni[2]|2, i_] +
+      SU3Delta[fcsuni[3]|3, i_] + SU3Delta[fcsuni[4]|4, i_] +
+      SU3Delta[fcsuni[5]|5, i_] + SU3Delta[fcsuni[6]|6, i_] +
+      SU3Delta[fcsuni[7]|7, i_] + SU3Delta[fcsuni[8]|8, i_])]===True,
+      aa /. (bb___ + SU2Delta[i_, fcsuni[1]|1] +
+      SU2Delta[i_, fcsuni[2]|2] + SU2Delta[i_, fcsuni[3]|3])|
+      (bb___ + SU3Delta[fcsuni[1]|1, i_] + SU3Delta[fcsuni[2]|2, i_] +
+      SU3Delta[fcsuni[3]|3, i_] + SU3Delta[fcsuni[4]|4, i_] +
+      SU3Delta[fcsuni[5]|5, i_] + SU3Delta[fcsuni[6]|6, i_] +
+      SU3Delta[fcsuni[7]|7, i_] + SU3Delta[fcsuni[8]|8, i_]) :> Plus[1, bb],
+   SUNReduce[#, opts] & /@ aa];*)
+(*Added 7/6-2001 - might slow down too much ? ... - well, yes it did*)      
+(*SUNReduce[Times[
+aa:((_?((FreeQ[#,fcsuni|SU2Delta|SU3Delta|fcsundel|SU2F|SU3F|SU3D|fcsunf|fcsund]===True)&))..),
+bb:((_?((FreeQ[#,fcsuni|SU2Delta|SU3Delta|fcsundel|SU2F|SU3F|SU3D|fcsunf|fcsund]===False)&))..)],
+opts___] :=
+Times[aa]*SUNReduce[Times[bb]];*)
 
-SUNReduce[aa_,
-        opts___] /; ((SummationForm /. Flatten[{opts}] /.
+SUNReduce[aa_, opts___] /; ((SummationForm /. Flatten[{opts}] /.
               Options[SUNReduce]) == ImplicitSums && (FullReduce /. Flatten[{opts}] /.
                     Options[SUNReduce]) =!= True) := (VerbosePrint[2,
         "Will use reduction rules"];
@@ -578,47 +608,96 @@ device a unique substitution of dummys. *)
 
 (*freemult = NM | NM1 | NM2;*)
 
+
+(* Label factors in nested structures like NM[NM[..]+NM[..], NM[..]+NM[..]].
+   The problem is that we cannot use identical indices on both sides. Thus,
+   we label the NM's sequentially and take one label out on each run. 
+   Added 2/6-2001. *)
+
+isowaitrules1 =
+(aa : HoldPattern[
+       (NM | NM1 | NM2)[Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, _(NM | NM1 | NM2)] &)] |
+       (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &)] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..]]) :>
+(waitcounter = 0; ((waitcounter++;
+ Replace[#, (nm1 : NM | NM1 | NM2)[b__] :>
+ nm1[b, isowait[waitcounter]] /; FreeQ[{b}, isowait[__]], {1, 3}]) &) /@ aa);
+                  
+isowaitrules2 =
+aa : HoldPattern[
+(NM | NM1 | NM2)[___,
+Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
+(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
+  isowait[__],___] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,
+  (_?((FreeQ[#,isowait[__]] &&
+  FreeQ[#,fcsuni[_?(FreeQ[#,IsoDummy|IsoExternDummy|IsoInternDummy]&)]])&))..]] :>
+(aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
+(isoexterndummycounter = Max[Union[{0},Cases[{aa}, fcsuni[IsoExternDummy][_], Infinity,
+                        Heads -> True]] /.
+                      fcsuni[IsoExternDummy][na_] -> na]+1;seq[])) /. seq -> Sequence);
+
+isowaitrules3 =
+aa : HoldPattern[
+(NM | NM1 | NM2)[___,
+Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
+(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
+  isowait[__],___] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,
+  (_?((FreeQ[#,isowait[__]])&))..]] :>
+(aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
+(isoexterndummycounter = Max[Union[{0},Cases[{aa}, fcsuni[IsoExternDummy][_], Infinity,
+                        Heads -> True]] /.
+                      fcsuni[IsoExternDummy][na_] -> na]+1;seq[])) /. seq -> Sequence);
+
+isowaitrules0 =
+aa : HoldPattern[
+(NM | NM1 | NM2)[Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
+(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
+  isowait[__]] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,___]] :>
+(aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
+                                    (seq[])) /. seq -> Sequence);
+
 (* Comparison between factors: *)
 
 (*Iso - indices*)(*Bug fixed, split in two, 21/12/1999*)
-  dummyrulesiso1a = {(nm1 : NM | NM1 | NM2)[fac___,
-            gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___][
-              x_], facc___] :> (nm1[fac,
-              gg[fi, a, la][x], facc(*, multdum*)] /.
-            a -> fcsuni[IsoExternDummy][1]) /; (! FreeQ[{fac, facc}, a] &&
-              FreeQ[{fac, facc}, IsoExternDummy] &&(*Added 21/12/1999*)(*Changed 26/9-2000*)
-                FreeQ[{fac, facc}, (*freemult[___, multdum]*)
-		(*(NM | NM1 | NM2)[___?(FreeQ[{##},isomult]&)]*)(*Changed 17/1-2000*)
-		(NM | NM1 | NM2)[___, _?((FreeQ[{##}, isomult] &&
-                   FreeQ[{##}, _HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ===
-                   False) &), ___]
-		])};
+  dummyrulesiso1a =
+{(nm1 : NM | NM1 | NM2)[
+   fac___, gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___][x_],
+   facc___] :>
+    (( (nm1[fac, gg[fi, a, la][x], facc] /.
+            a -> fcsuni[IsoExternDummy][isoexterndummycounter]) /;
+              (!FreeQ[{fac, facc}, a] &&  FreeQ[{fac, facc}, IsoExternDummy] &&
+              FreeQ[{fac, facc}, _isowait] &&
+              FreeQ[{fac, facc},
+                (NM | NM1 | NM2)[___, _?((FreeQ[{##}, isomult] &&
+                               FreeQ[{##}, _HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ===
+                               False)&), ___]
+		           ]
+		       )  ) )
+		 };
 (*Iso - indices*)
   dummyrulesiso1b = {(nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___],
-             facc___] :> (nm1[fac,
+             facc___] :> (((nm1[fac,
               gg[fi, a, la], facc(*, multdum*)] /.
-            a -> fcsuni[IsoExternDummy][1]) /; (! FreeQ[{fac, facc}, a] &&
-              FreeQ[{fac, facc}, IsoExternDummy] &&
+            a -> fcsuni[IsoExternDummy][isoexterndummycounter]) /; (! FreeQ[{fac, facc}, a] &&
+              FreeQ[{fac, facc}, IsoExternDummy] && FreeQ[{fac, facc}, _isowait] &&
               FreeQ[{fac, facc}, (*freemult[___, multdum]*)
 		(*(NM | NM1 | NM2)[___?(FreeQ[{##},isomult]&)]*)(*Changed 17/1-2000*)
 		(NM | NM1 | NM2)[___, _?((FreeQ[{##}, isomult] &&
                    FreeQ[{##}, _HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] ===
                    False) &), ___]
 
-		])};
+		]) ))};
 (*Iso - indices*)
   dummyrulesiso2 = {(nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___][
               x_], facc___] :> (nm1[fac,
               gg[fi, a, la][x], facc(*, multdum*)] /.
-            a ->
-              fcsuni[IsoExternDummy][
-                Max[Union[{0},Cases[{fac, facc}, fcsuni[IsoExternDummy][_], Infinity,
+              a -> fcsuni[IsoExternDummy][
+              Max[Union[{0},Cases[{fac, facc}, fcsuni[IsoExternDummy][_], Infinity,
                         Heads -> True]] /.
                       fcsuni[IsoExternDummy][na_] -> na] + 1]) /;
 		(! FreeQ[{fac, facc}, a] (*&& !FreeQ[{fac, facc}, IsoExternDummy]*) &&
-              FreeQ[{fac, facc}, (*freemult[___, multdum]*)
+           FreeQ[{fac, facc}, _isowait] && FreeQ[{fac, facc}, (*freemult[___, multdum]*)
 		(NM | NM1 | NM2)[___?(FreeQ[{##},isomult]&)]]),
 	      (nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___],
@@ -629,7 +708,7 @@ device a unique substitution of dummys. *)
                         Heads -> True]] /.
                       fcsuni[IsoExternDummy][na_] -> na] + 1]) /;
 		(! FreeQ[{fac, facc}, a] (*&& !FreeQ[{fac, facc}, IsoExternDummy]*) &&
-              FreeQ[{fac, facc}, (*freemult[___, multdum]*)
+           FreeQ[{fac, facc}, _isowait] && FreeQ[{fac, facc}, (*freemult[___, multdum]*)
 		(NM | NM1 | NM2)[___?(FreeQ[{##},isomult]&)]]) };
 
 (*Derivative indices*)
@@ -889,9 +968,10 @@ allpatterns = (Blank | BlankSequence | BlankNullSequence | Pattern);
 
 (*Change 26/9-2000: Commented out multdum in the substitutions above;
 added it below*)
+(*Change 2/6-2001: Added isowaitrules stuff*)
 
 IndicesCleanup1[w_, opts___] :=
-    w /. dummyrulesiso1a /. dummyrulesiso1b /. dummyrulesiso2 /.
+    w  /. dummyrulesiso1a /. dummyrulesiso1b /. dummyrulesiso2 /.
               dummyrulesder1a /. dummyrulesder1b /. dummyrulesder2 /.
         dummyruleslor1 /. dummyruleslor2(*change 19/1 -
       1999*)(*/. dummyrulessq1 /. dummyrulessq2*)/.
@@ -901,13 +981,15 @@ IndicesCleanup1[w_, opts___] :=
          FreeQ[{fac},isomult],
        (nm1:NM|NM1|NM2)[fac___] :> nm1[fac,lorentzmult] /;
          FreeQ[{fac},fcsuni[_?((FreeQ[#,LorentzDummy|LorentzExternDummy|LorentzInternDummy|
-         DerivativeExternDummy]&&!UScalarQ[#])&)]] && FreeQ[{fac},lorentzmult]};
+         DerivativeExternDummy]&&!UScalarQ[#])&)]] && FreeQ[{fac},lorentzmult]}  /. isowaitrules2 ;
 
 
 SetAttributes[NM1, Flat]; SetAttributes[NM2, Flat];
 
 
-IndicesCleanup[w_, opts___] := (
+IndicesCleanup[ww_, opts___] := (
+      
+      w=ww/.isowaitrules1/.isowaitrules0;
 
       larul = {{}, {}, {}};
 
@@ -933,6 +1015,7 @@ dimensions for all momenta, Dirac gamma matrices and Lorentz indices"];
 	];
 
       isodummycounter = 1;
+      isoexterndummycounter = 1;
       w1 = If[ExtendedCleanup /. Flatten[{opts}] /. Options[IndicesCleanup],
               VerbosePrint[1, "Using ExtendedCleanup->True"];
               w /. {SU2Delta -> su2delta1, SU2F -> su2f1,
@@ -950,7 +1033,7 @@ and NM products are present"]w] /.
 
       (*freemult = NM | NM1 | NM2;*)
 
-      subres = FixedPoint[(VerbosePrint[2, "Applying renaming rules"];
+      (*subres = FixedPoint[(VerbosePrint[2, "Applying renaming rules"];
               IndicesCleanup1[#, opts]) &,
           If[FCleanup /. Flatten[{opts}] /. Options[IndicesCleanup],
 
@@ -976,7 +1059,37 @@ and NM products are present"]w] /.
                   NM1, Times -> NM1,
                 Dot -> NM2,(*change 19/1 - 1999*)
                   Power[a_, b_ /; b > 0 && IntegerQ[b]] :>
-                  NM1 @@ Table[a, {ddum, 1, b}]}]];
+                  NM1 @@ Table[a, {ddum, 1, b}]}]];*)
+                  
+      subres = FixedPoint[
+      (If[FreeQ[#,isowait],w2=#/.isowaitrules3,w2=#];
+          FixedPoint[(VerbosePrint[2, "Applying renaming rules"];
+              IndicesCleanup1[#, opts]) &,
+          If[FCleanup /. Flatten[{opts}] /. Options[IndicesCleanup],
+
+	    VerbosePrint[2, "Using FCleanup->True"];
+            VerbosePrint[2,
+              "Renaming product functions and protecting constants"];
+            w2 /. {fcsuni[a_] :> protectisoconstant[a]/; (UScalarQ[a] || !
+                                  FreeQ[$ConstantIsoIndices, a]),
+                        fcli[a_] :> protectliconstant[a] /; UScalarQ[a]} /.
+                    dummyrulesf3 /. dummyrulesf2 /.
+                dummyrulesf1 /. {NM -> NM1(*Added NM 30/12 - 1999*),
+                Times -> NM1,
+                Dot -> NM2,(*change 19/1 - 1999*)
+                  Power[a_, b_ /; b > 0 && IntegerQ[b]] :>
+                  NM1 @@ Table[a, {ddum, 1, b}]},
+
+            VerbosePrint[2,
+              "Renaming product functions and protecting constants"];
+            w2 /. {fcsuni[a_/; (UScalarQ[a] || !
+                            FreeQ[$ConstantIsoIndices, a])]  ->
+                    protectisoconstant[a],
+                  fcli[a_] :> protectliconstant[a] /; UScalarQ[a] } /. {NM ->
+                  NM1, Times -> NM1,
+                Dot -> NM2,(*change 19/1 - 1999*)
+                  Power[a_, b_ /; b > 0 && IntegerQ[b]] :>
+                  NM1 @@ Table[a, {ddum, 1, b}]}]])&,w1];
 
 		  (*freemult = {};
         FixedPoint[IndicesCleanup1[#, opts] &, subres]*)

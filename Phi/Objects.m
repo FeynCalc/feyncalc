@@ -1482,7 +1482,8 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
 (* The UChi matrix: *)
 
 (*Change 6/3 - 1999*)(*Again 19/12 - 1999*)(*Again 10/1 -
-    2000*)(*Again 25/2 - 2000 - added options to Particle*)
+    2000*)(*Again 25/2 - 2000 - added options to Particle*)(*Again 26/5 - 2001 -
+    dropped options to Particle[PseudoScalar[...]]*)
   UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, (opts___Rule | opts___List)],
         opts1 : (__Rule | __List)][x_] :=
@@ -1491,12 +1492,13 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
             opts1])*((UGeneratorMatrixIsoDotFull[
                   fcqf[Particle[Scalar[0], st, sc, qs, ##]][x], ##] +
                 I*UGeneratorMatrixIsoDotFull[
-                    fcqf[Particle[PseudoScalar[0], st, sc, qs, ##]][
+                    fcqf[Particle[PseudoScalar[0], st, sc, qs]][
                       x], ##]) & @@
           Union[OptionsSelect[UChi, opts, opts1],
             OptionsSelect[UMatrix, opts, opts1]]);
 (*Change 6/3 - 1999*)(*Again 19/12/1999*)(*Again 10/1 - 2000*)(*Again 25/2 -
-    2000 - added options to Particle*)
+    2000 - added options to Particle*)(*Again 26/5 - 2001 -
+    dropped options to Particle[PseudoScalar[...]]*)
   UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, (opts___Rule | opts___List)]][x_] :=
     2*(QuarkCondensate[st, sc, qs, ##] & @@
@@ -1504,7 +1506,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
             opts])*((UGeneratorMatrixIsoDotFull[
                   fcqf[Particle[Scalar[0], st, sc, qs, ##]][x], ##] +
                 I*UGeneratorMatrixIsoDotFull[
-                    fcqf[Particle[PseudoScalar[0], st, sc, qs, ##]][
+                    fcqf[Particle[PseudoScalar[0], st, sc, qs]][
                       x], ##]) & @@
           Union[OptionsSelect[UChi, opts], OptionsSelect[UMatrix, opts]]);
 
@@ -3497,7 +3499,7 @@ USplit[exp_NM, x_, ar___RenormalizationState, br___RenormalizationScheme,
       Plus @@ Table[
           ReplacePart[
             exp, (USplit[#[[1]], x,
-	    (*RenormalizationState etc. are no longer in front after Selecting, fixex. 28/9-2000*)
+	    (*RenormalizationState etc. are no longer in front after Selecting, fixed. 28/9-2000*)
             Sequence @@ Join[
 	    {ar, br, cr},
 	    Select[{opts}, (MatchQ[#, ExpansionOrder -> _] =!= True) &]],

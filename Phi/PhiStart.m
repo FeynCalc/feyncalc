@@ -183,16 +183,16 @@ Union[HighEnergyPhysics`FeynCalc`$Abbreviations,
 Clear[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex];
 HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex/:
 MakeBoxes[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[p_],
-TraditionalForm]:=ToBoxes[p, TraditionalForm],
+TraditionalForm]:=ToBoxes[p, TraditionalForm];
 
 (* Commented out 5/3-2000.
    I think its redundant and definitions on SUNIndex slow down everything. *)
 (* Well - not quite so. Uncommented again 21/5-2001 *)
 
-NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[fcsuni[i]], c];
-NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[fcsuni[i]], c];
-Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[fcsuni[i]], c];
-Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[fcsuni[i]], c];
+NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
+NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
+Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
+Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
 
 NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
 NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
@@ -244,12 +244,13 @@ $UExpansionCoefficients=
 (* Which configuration should be used? *)
 
   $Configuration=
-    "ChPT2";      (*standard SU(2) ChPT*)
-    (*"ChPT2Photon";*)(*standard SU(2) ChPT with coupling to a photon*)
+    "ChPT2";       (*standard SU(2) ChPT*)
+    (*"ChPTPhoton2";*)(*standard SU(2) ChPT with coupling to a photon*)
     (*"ChPT3";*)      (*Standard SU(3) ChPT*)
     (*"ChPTW3";*)     (*Weak SU(3) ChPT*)
     (*"BChPT2";*)     (*Relativistic baryon SU(2) ChPT*)
     (*"HBChPT2";*)    (*Heavy baryon SU(2) ChPT*)
+    (*"ChPTEM2";*)        (*Standard SU(2) ChPT with virtual photons*)
     (*"QED";*)        (*QED with one lepton*)
     (*"QED2";*)       (*QED with three leptons*)
 
@@ -266,11 +267,12 @@ tmp`olddir=tmp`olddir1;
 
   $ULagrangians=
     {ChPT2[2],ChPT2[4]};
-    (*{ChPT2Photon[2],ChPT2Photon[4]};*)
+    (*{ChPTPhoton2[2],ChPTPhoton2[4]};*)
     (*{ChPT3[2],ChPT3[4]};*)
     (*{ChPTW3[2],ChPTW3[4]};*)
     (*{BChPT2[2]};*)
     (*{HBChPT2[2]};*)
+    (*{ChPTEM2[2],ChPTEM2[4]};*)
     (*{QED[1],QED[2]};*)
     (*{QED2[1],QED2[2]};*)
 

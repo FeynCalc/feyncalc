@@ -86,17 +86,19 @@ The following names:
 "GaugeXi",
 "NonCommutative",
 "Global`DiracSpinor",
+"FeynArts`DiracSpinor",
 "Global`DiracTrace"
 
 are renamed to:
 
-"FALoop",
+"HighEnergyPhysics`FeynCalc`Loop`Loop",
 "FAIndices",
 "Global`FAPolarizationVector",
 "FAFeynAmp",
 "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator",
 "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi",
 "FANonCommutative",
+"HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
 "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
 "HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace"
 

@@ -322,11 +322,18 @@ while (eof(DATA) <= 0){
           p : Propagator[Internal][___, Vertex[1][_], ___] :> (p \/. 
                 Vertex[1] -> Vertex[vertexone]))) \/. vertexone -> 1,/;
 
-    # Small fix to allow one-vertices (FA3)
+    # Small fix to allow one-vertices (FA 3)
 
     $add =~ s/DeleteCases\[Take\[\#\, 2\]\, Vertex\[1, ___\]\[_\]\]\&\/\@ top\,/(DeleteCases[Take[\#, 2], Vertex[1][_]] \& \/\@ (top \/. 
           p : Propagator[Internal][___, Vertex[1, ___][_], ___] :> (p \/. 
                 Vertex[1] -> Vertex[vertexone]))) \/. vertexone -> 1,/;
+                
+                
+    # Putting back in some ordering stuff that for some reason is dropped in FA 3
+    
+    $add =~ s/MapIndexed\[ Append\[\#1\, Field\@\@ \#2\]\&\, top/MapIndexed[ Append[\#1, Field\@\@ \#2\]\&\, Sort[ Sort[Take[\#\, 2]]\&\/\@ top \/\.
+        {Incoming -> AAA, Outgoing -> AAB} ] \/\.
+        {AAA -> Incoming, AAB -> Outgoing}/;
 
     push(@lines,$add);
 
