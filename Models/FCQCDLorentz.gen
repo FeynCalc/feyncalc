@@ -1,6 +1,6 @@
 (*
         QCDLorentz.gen
-QCD with one massive quark.
+QCD with one massive quark (with mass QuarkMass).
 *)
 
 (* quark *)
@@ -8,6 +8,7 @@ KinematicIndices[ F ] = {};
 (* Gluon *)
 KinematicIndices[ V ] = {Lorentz, Gluon};
 KinematicIndices[ U ] = {Gluon}
+PropagatorType[ V ] = Cycles;
 
 Appearance[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
 
@@ -22,7 +23,7 @@ M$GenericPropagators = {
  HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ DiracSpinor[-mom, Mass[F[i]]] ],
 
   AnalyticalPropagator[Internal][ s F[i, mom] ] ==
-     HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ QuarkPropagator[mom, Mass[F[i]]] ] ,
+     HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
 
         (* gluon propagator *)
 
@@ -87,42 +88,100 @@ M$TruncationRules = {
   MajoranaSpinor[__] -> 1
 }
 
-        (* LastGenericRules: the very last rules that are applied to an
-           amplitude before it is returned by CreateFeynAmp. *)
+(* LastGenericRules: the very last rules that are applied to an
+   amplitude before it is returned by CreateFeynAmp. *)
 
 HighEnergyPhysics`FeynArts`SumOver[HighEnergyPhysics`FeynArts`Index[Gluon,_],8,___] := 1;
 
+Global`$Debug = True;
+db[i_Integer]:=If[Global`$Debug, ToExpression["PRS"<>ToString[i]],1];
+
+$thismodelpropagators = {GhostPropagator, QuarkPropagator, GluonPropagator};
+
+getprops[z_] := 
+   Sort[Union[Replace[First /@ Cases[z, GhostPropagator[__] | 
+         QuarkPropagator[__] | GluonPropagator[__], -1], 
+          {a_, ___} :> a, 1]], Length[#1] < Length[#2] & ]; 
+
+shift[amps_, q1_, q2_, p_] := 
+ Switch[getprops[amps], 
+(* gluon self energy *)
+  {q2, q1, p - q1 - q2},                    (# /. q1 -> q1 + p /. q1 -> -q1)&,
+  {q1, q1 + q2, -q2, -q1 - q2},             (# /. q2 -> -q2)&,
+  {-q2, -q1, -p - q1, p + q1 - q2},         (# /. q2 -> -q2 + p /. q1 -> -q1)&,
+  {q2, q1, p - q2, -p - q1},                (# /. q1 -> -q1 ) &,
+  {q2, q1, -q1 - q2, -p + q1},              (# /. q2 -> -q2)&,
+  {q2, q1, -q1 - q2, p + q1},               (# /. q1 -> -q1)&,
+  {q2, q1, q1 + q2, -q1 - q2},              (# /. q2 -> -q2)&,
+  {q1, -q2, -q1 - q2, -p - q2, p - q1},     (# /. q2 -> -q2)&,
+  {q1, q1 + q2, -q2, -p - q2, -p + q1},     (# /. q2 -> -q2)&,
+  {q2, q1, p + q1, -p - q1, p + q1 - q2},   (# /. q2 -> -q2 + p /. q1 -> -q1 )&,
+  {q2, q1, p + q1, -p - q1, -p - q1 + q2},  (# /. q2 -> -q2 + p /. q1 -> -q1 )&,
+  {q2, q1, q1 + q2, -p - q2, p - q1},       (# /. q2 -> -q2)&,
+  {q2, -q1 - q2, -p - q2, -q1, p - q1},     (# /. q2 -> -q2)&,
+(* ghost self energy *)
+  {q2, q1, q1 + q2, p + q2, p - q1},        (# /. q2 -> -q2)&,
+  {q1, q1 + q2, -q2, -p - q2, p - q1},      (# /. q2 -> -q2)&,
+  {q2, p + q1, -q1, -p - q1, -p - q1 + q2}, (# /. q2 -> -q2 + p /. q1 -> -q1 )&,
+  {q2, q1, p + q1, p + q1 - q2},            (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+  {q2, p + q1, -q1, -p - q1, p + q1 - q2},  (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+  {q2, p, p - q2, -q1, -p - q1},            (# /. q1 -> -q1 )&,
+  _, Identity][amps];
+
+shift[x_, __] := x;
+
+NonCommutative[a___, 1, b___] := NonCommutative[a, b];
+
 M$LastGenericRules = {
+
+(* energy momentum conservation for self energies *)
+FeynAmp[grid_, Integral[q1_FourMomentum, q2_FourMomentum], amp_ ]:>
+     FeynAmp[grid, Integral[q1, q2],
+             amp /. FourMomentum[Outgoing, 1] :> -FourMomentum[Incoming, 1]
+            ] /; 
+             (Union[Flatten@{FourMomentum[Incoming,1], Cases[amp, FourMomentum[Incoming, _], -1]}
+                   ] === {FourMomentum[Incoming, 1]}
+             ) &&
+             (Union[Cases[amp, FourMomentum[Outgoing, _], -1]] === {FourMomentum[Outgoing, 1]}),
+
+FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
+
+FeynAmp[grid_, Integral[qq__Symbol], amp_ ]:>
+     FeynAmp[grid, Integral[q], 
 (*
-  MatrixTrace :> DiracTrace, 
-MatrixTrace :> (DiracTrace[2 Tf Nf #]&),
+             shift[#, qq,Sequence@@Union[Cases[amp, FourMomentum[Incoming,_],-1]] ]& @
 *)
-  MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy]], 
-  (a___ . 1 . b___) :> a . b,
-  NonCommutative :> Dot,
-  (* this is of course only true for a generic insertionlevel, however, this seems the 
-     only way to get it to work
-  *)
-  G[_][_][__][x_] :> 1,
-  Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
-  FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
-  FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
-(* all momenta are incoming !*)
-  FourMomentum[Outgoing, i_Integer] :> -ToExpression["k" <> ToString[i]],
-  Index[Lorentz, i_Integer]:>ToExpression["li" <> ToString[i]],
-  SUNDelta[a_, b_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
-  SUNDelta[a_, b_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
-  SUNDelta[a_, b_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
-  SUNDelta[b_, a_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
-  SUNDelta[b_, a_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
-  SUNDelta[b_, a_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
-  SUNDelta[a_, b_] SUNDelta[a_, c_]:> SUNDelta[b,c],
-  SUNDelta[a_, b_] SUNDelta[c_, a_]:> SUNDelta[b,c],
-  SUNDelta[a_, b_] SUNDelta[b_, c_]:> SUNDelta[a,c],
-  SUNDelta[a_, b_] SUNDelta[c_, b_]:> SUNDelta[a,c],
-        (* outgoing vector bosons: throw away signs of momenta *)
-  PolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
-    Conjugate[PolarizationVector][p, k, li]
+             shift[#, qq, p1 ]& @
+            (
+             amp /. MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy] ] /.
+                    G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
+                    Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
+                    FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
+                    FourMomentum[Outgoing, i_Integer] :> ToExpression["k" <> ToString[i]],
+                    Index[Lorentz, i_Integer]:>ToExpression["li" <> ToString[i]] ,
+                    (*y_ SUNDelta[a_, b_] :> (y/.a->b) /; !FreeQ[y,a],*)
+                    SUNDelta[a_, b_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
+                    SUNDelta[a_, b_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
+                    SUNDelta[a_, b_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
+                    SUNDelta[a_, b_] GluonVertex[c_, d_, e_, f_]:> (GluonVertex[c,d,e,f]/.a->b
+                    ) /; !FreeQ[GluonVertex[c,d,e,f], a],
+                    SUNDelta[a_, b_] GluonVertex[c_, d_, e_, f_]:> (GluonVertex[c,d,e,f]/.b->a
+                    ) /; !FreeQ[GluonVertex[c,d,e,f], b],
+                    SUNDelta[b_, a_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
+                    SUNDelta[b_, a_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
+                    SUNDelta[b_, a_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
+                    SUNDelta[a_, b_] SUNDelta[a_, c_]:> SUNDelta[b,c],
+                    SUNDelta[a_, b_] SUNDelta[c_, a_]:> SUNDelta[b,c],
+                    SUNDelta[a_, b_] SUNDelta[b_, c_]:> SUNDelta[a,c],
+                    SUNDelta[a_, b_] SUNDelta[c_, b_]:> SUNDelta[a,c],
+                    DiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.a->b]/;!FreeQ[y,a],
+                    DiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.b->a]/;!FreeQ[y,b]
+                   }/.NonCommutative -> Dot //. (a___ . 1 . b___) :> (a . b) /.
+                   (* outgoing vector bosons: throw away signs of momenta *)
+                   PolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
+                   Conjugate[PolarizationVector][p, k, li]
+             )
+            ]
 }
 
 

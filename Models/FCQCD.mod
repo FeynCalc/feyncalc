@@ -33,6 +33,10 @@ M$ClassesDescription = Join[ M$ClassesDescription, {
 	PropagatorArrow -> Forward }
 } ]
 
+(* This is necessary, since Paint with PaintLevel->{Generic} setting does not
+respect the PropagatorLabel setting above ... *)
+TheLabel[V]=TheLabel[F]=TheLabel[U]="";
+
 M$CouplingMatrices = Join[ M$CouplingMatrices, {
 
 (*--- gluon-gluon-gluon-gluon ------------------------------------------*)
