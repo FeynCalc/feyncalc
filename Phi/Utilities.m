@@ -1615,14 +1615,14 @@ PhiToLaTeX[x_] :=
             x /. _RenormalizationState -> Sequence[] /. 
                       SUNIndex | ExplicitSUNIndex -> Identity /. 
                     (SU2Delta|SU3Delta|fcsundel)[a_, b_] :> 
-                      "\delta_{" <> ToString[a] <> ToString[b] <> "}" /. 
+                      "\\delta_{" <> ToString[a] <> ToString[b] <> "}" /. 
                   fcpa[Momentum[p2], Momentum[p2]]^i_ :> 
                     "q^" <> ToString[2i] //.
 
               (*Phi`Renormalization` is not in $ContextPath *)
               {HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar[a__, __Rule] :>
                HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar[a],
-               QuarkCondensate[___] -> "B_0", Pi -> "\pi", Log -> "\log", 
+               QuarkCondensate[___] -> "B_0", Pi -> "\\pi", Log -> "\\log", 
                 Pair[_LorentzIndex, ___] -> Sequence[],
                 _DecayConstant -> "f",
                 CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 1] -> "c_2", 
@@ -1631,18 +1631,17 @@ PhiToLaTeX[x_] :=
                 CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPT3[4], i_, ___] :> "L_{" <> ToString[i] <> "}",
                 CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[4], i_, ___] :> "n_{" <> ToString[i] <> "}",
                 MandelstamT -> "t", MandelstamS -> "s", MandelstamU -> "u", 
-                ParticleMass[Pion] -> "m_{\rm \pi}", 
-                ParticleMass[Kaon] -> "m_{\rm K}", 
-                ParticleMass[EtaMeson] -> "m_{\rm \eta}",
-                ScaleMu -> "\mu", 
+                ParticleMass[Pion] -> "m_{\\rm \\pi}", 
+                ParticleMass[Kaon] -> "m_{\\rm K}", 
+                ParticleMass[EtaMeson] -> "m_{\\rm \\eta}",
+                ScaleMu -> "\\mu", 
                 fcpa[Momentum[p2], Momentum[p2]] -> "q^2"},
 
             FormatType -> InputForm, PageWidth -> 120],
           {"\"" -> "", 
-            "\pi" -> "pi", "\log" -> "log", "\delta" -> "delta", 
-            "\mu" -> "mu", "\eta" -> "eta", "I" -> "i", 
-            "\overline" -> "overline", "[" -> "(", "]" -> ")", "*" -> " ", 
-            "\n" -> "", "LeutwylerJBar" -> "\overline{J}"}
+            "I" -> "i", 
+            "[" -> "(", "]" -> ")", "*" -> " ", 
+            "\n" -> "", "LeutwylerJBar" -> "\\overline{J}"}
   ] // removeBlankSpace // StandardForm // InputForm;
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
