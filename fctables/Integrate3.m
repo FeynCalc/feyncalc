@@ -5291,7 +5291,8 @@ iT[z^m PolyLog[3, -((1 - z)/(1 + z))],{z,0,1}]+
       (7*Log[2]*Zeta[3])/4 - SumS[-1, m]*Zeta[3])] /; mcheck[m],
  iT[PolyLog[2, u_ + (z_) - u_*(z_)]/(1 - (z_)) , {z_, 0, 1}] :>
   RR["$BK[78]", Log[1 - u]*PolyLog[2, 1 - u] - 2*PolyLog[3, 1 - u]]/;
-   FreeQ[u,z]
+   FreeQ[u,z],
+ iT[Nielsen[1, 2, z_]/z_ , {z_, 0, 1}] :> Pi^4/360
 
 (* YYY *)
 (*
