@@ -22,7 +22,9 @@ SPD[a_] := SPD[a,a];
            MakeContext["FeynCalcInternal"][SPD[a,b]],
             TraditionalForm] ;
 
-
+MakeBoxes[SPD[a_,a_]^n_Integer, TraditionalForm] := (SuperscriptBox[TBox[a], #]&@@{2 n}
+ ) /; FreeQ[a, Plus];
+                                                                                                                        
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "SPD | \n "]];
