@@ -48,8 +48,7 @@ here in FCConfig.m
 (* $LoadPhi = False; *)
 (* $LoadFeynArts = False; *)
 
-(* You may specify the directory of your FeynArts installation,
-   the default is $FeynCalcDirectory *)
-   
-(* HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/tmp/fa" *)
-
+(* you can put the directory for your FeynArts installation here *)
+(* HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/opt/feynarts" *)
+(* if set to automatic, then FeynArts on the path is loaded *)
+HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic;
