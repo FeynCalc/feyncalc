@@ -16,8 +16,17 @@ BeginPackage["HighEnergyPhysics`fctools`CovariantD`",
              "HighEnergyPhysics`FeynCalc`"];
 
 CovariantD::"usage"=
-"CovariantD[mu, a, b] is the covariant derivative for a bosonic field.
-CovariantD[mu] is the covariant derivative for a fermionic field.
+"CovariantD[mu] is a generic covariant derivative with
+Lorentz index mu. With the option-setting Explicit -> True,
+an explicit expression for a fermionic field is returned,
+depending on the setting on the other options.\n\n
+CovariantD[x, mu] is a generic covariant derivative with respect to
+x^mu.\n\n
+CovariantD[mu, a, b] is a covariant derivative for a bosonic field;
+acting on QuantumField[f,{},{a,b}], where f is some field name and
+a and b are two SU(N) indices.
+Again, with the option-setting Explicit -> True, an explicit expression
+is returned, depending on the setting on the other options.\n\n
 CovariantD[OPEDelta, a, b] is a short form for 
 CovariantD[mu,a,b]*FourVector[OPEDelta, mu].
 CovariantD[{OPEDelta, a, b}, {n}] yields
@@ -27,7 +36,8 @@ gives the expanded form of CovariantD[OPEDelta, a, b]^m up to order
 g^n for the gluon, where n is an integer and g the coupling constant 
 indicated by the setting of the option CouplingConstant.
 CovariantD[OPEDelta, {m, n}] gives the expanded form of 
-CovariantD[OPEDelta]^m up to order g^n for the quark.";
+CovariantD[OPEDelta]^m up to order g^n of the fermionic field.
+";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -35,7 +45,7 @@ Begin["`Private`"];
    
 
 MakeContext[
- CouplingConstant, DeclareNonCommutative, DOT, 
+ CouplingConstant, DeclareNonCommutative, 
  DotSimplify, DummyIndex,
  Explicit, FeynCalcInternal, GaugeField, Gstrong, LorentzIndex, 
  Momentum, NumericalFactor,OPEDelta, OPEi, OPEj, OPEk, 
@@ -111,11 +121,11 @@ partial = PartialD /. {ru} /. Options[CovariantD];
 PartialDExplicit[
 *)
 (
-  partial[al] - g I (SUNT[SUNIndex[cC]] .
+  partial[al] - g I (DOT[SUNT[SUNIndex[cC]] ,
 If[(al === OPEDelta) || (Head[al]=== Momentum),
   QuantumField[aA, Momentum[al], SUNIndex[cC]],
   QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
-  ]                 )
+  ]]                 )
 )           (* ]*)
                                     ] /;
   (Explicit /. {ru} /. Options[CovariantD]);
@@ -169,27 +179,27 @@ g^o Expand[Trick[
   If[o=!=0,0, partiaL[OPEDelta]^m] + 
   If[(m o) === 0, 0, 
      If[m === o, 
-        (-1)^o isunt[c[1]] .  QuantumField[aA, Momentum[OPEDelta],
+        (-1)^o DOT[isunt[c[1]] ,  QuantumField[aA, Momentum[OPEDelta],
                                           SUNIndex[c[1]]
-                                         ] .
+                                         ] ,
         DOT@@ (Table @@ 
-         {isunt[c[j]] . 
-          QuantumField[aA, Momentum[OPEDelta], SUNIndex[c[j]]],
+         {DOT[isunt[c[j]] ,
+          QuantumField[aA, Momentum[OPEDelta], SUNIndex[c[j]]]],
           {j, 2, o}
-         }    ) 
+         }    )]
        ,
         (-1)^o * 
 (* wie kan dat in FORM doen ??? *)
  (Fold[summ, DOT @@ Join[{partiaL[OPEDelta]^i[1], 
-                         isunt[c[1]] . 
+                         DOT[isunt[c[1]] ,
                          QuantumField[aA, Momentum[OPEDelta],
                                           SUNIndex[c[1]]
-                                     ]
+                                     ]]
                         },
                          Flatten[Table[{partiaL[OPEDelta]^(i[j]-i[j-1]), 
-                                        isunt[c[j]] .
+                                        DOT[isunt[c[j]] ,
                                         QuantumField[aA, Momentum[OPEDelta],
-                                          SUNIndex[c[j]] ]
+                                          SUNIndex[c[j]] ]]
                                         },
                                         {j, 2, o}
                                       ]
@@ -263,8 +273,16 @@ g^o Expand[Trick[
    RowBox[{SubscriptBox["D",Tbox[mud]]}];
 
    CovariantD /: 
-   MakeBoxes[CovariantD[mud_, a__], TraditionalForm] := 
-   SubsuperscriptBox["D", Tbox[mud], Tbox[a]]/; Head[mud] =!= List;
+   MakeBoxes[CovariantD[mud_, a_, b_], TraditionalForm] := 
+   SubsuperscriptBox["D", Tbox[mud], Tbox[a, b]]/; Head[mud] =!= List;
+
+   CovariantD /:
+   MakeBoxes[CovariantD[x_, HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[mu__]],
+             TraditionalForm] :=
+    RowBox[{"\[PartialD]", "/", "D",
+            SuperscriptBox[ToBoxes[x,TraditionalForm], ToBoxes[LorentzIndex[mu],TraditionalForm]]
+            }];
+
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
