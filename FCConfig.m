@@ -1,5 +1,7 @@
 (* global Mathematica changes *) 
 
+SetOptions[Integrate, GenerateConditions -> False];
+
 Off[Needs::nocont]; 
 Off[Get::noopen]; 
 Off[General::spell]; 
@@ -47,7 +49,7 @@ here in FCConfig.m
    Set to False to load somewhat faster. *)
 
 (* Global`$LoadTARCER = False; *)
-(* Global`$LoadPhi = False; *)
+(* Global`$LoadPhi = False;   *)
 (* Global`$LoadFeynArts = False; *)
 
 (* You can put the directory for your FeynArts installation here
