@@ -18,7 +18,7 @@ but it fixes a Mathematica bug.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Apart1, ReadProtected];
+   
 
 Apart1[expr_, x_] := If[ FreeQ[expr, Complex], 
                          Apart[expr,x],

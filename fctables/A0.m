@@ -21,8 +21,8 @@ A0::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[A0, ReadProtected];
-ClearAttributes[A0, ReadProtected];
+   
+
 
 MakeContext[A0ToB0, B0, BReduce];
 small = MakeContext["SmallVariable"];

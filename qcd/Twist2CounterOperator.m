@@ -24,7 +24,7 @@ p3: incoming gluon (count1)).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Twist2CounterOperator, ReadProtected];
+   
 
 MakeContext[
 CA, CF, ChangeDimension, CouplingConstant, DeclareNonCommutative,

@@ -22,7 +22,7 @@ ChargeConjugationMatrix::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ChargeConjugationMatrix, ReadProtected];
+   
 If[FreeQ[$NonComm, ChargeConjugationMatrix] && Head[$NonComm] === List,
    AppendTo[$NonComm, ChargeConjugationMatrix]];
 

@@ -40,7 +40,7 @@ FortranForm results in FORTRAN syntax output.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Write2, ReadProtected];
+   
 
 
 D0Convention             = MakeContext["D0Convention"];
@@ -140,7 +140,9 @@ If[ !FreeQ[ eq, HoldForm ],
                ];
 
                If[prefortran =!= {""},
-                  If[FileNames[prefortran[[1]]] =!= {},
+                  (*Mac fix 18/9-2000, F.Orellana. Ditto for FileType below*)
+		  If[FileType[prefortran[[1]]] =!= None,
+		  (*If[FileNames[prefortran[[1]]] =!= {},*)
                   prerec = Flatten[ReadList[#, Record]& /@ prefortran],
                      prefortran = prefortran[[1]];
                      prerec = ReadList[StringToStream[prefortran], String]
@@ -285,7 +287,8 @@ If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
 
 If[(FormatType/.ops/.Options[Write2]) === FortranForm,
    If[postfortran =!= {""},
-   If[FileNames[postfortran[[1]]] =!= {},
+   If[FileType[postfortran[[1]]] =!= None,
+   (*If[FileNames[postfortran[[1]]] =!= {},*)
         If[Head[postfortran===String],
            prerec = ReadList[StringToStream[postfortran], String],
            prerec = Flatten[ReadList[#, Record]& /@ postfortran]

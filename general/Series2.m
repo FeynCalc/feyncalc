@@ -27,7 +27,7 @@ Series2[f, {e, 0, n}] is equivalent to Series[f, {e, 0, n}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Series2, ReadProtected];
+   
 MakeContext[Cases2, Collect2, Collecting, Epsilon,Factor2,
             Factoring, FinalSubstitutions, 
             GammaEpsilon, GammaExpand, 

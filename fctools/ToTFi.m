@@ -22,8 +22,8 @@ See TFi for details on the conventions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ToTFi, ReadProtected];
-ClearAttributes[ToTFi, ReadProtected];
+   
+
 
 MakeContext[Apart2,Cases2,Dimension,DOT, DotSimplify,Expanding,
 ExpandScalarProduct,

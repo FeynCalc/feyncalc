@@ -19,7 +19,7 @@ Apart2::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Apart2, ReadProtected];
+   
 
 MakeContext[Factor2, FeynAmpDenominator, FeynCalcInternal, 
 PropagatorDenominator];

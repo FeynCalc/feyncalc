@@ -22,7 +22,7 @@ PaVeReduce::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PaVeReduce, ReadProtected];
+   
 
 MakeContext[
 A0, B0, B00, B1, B11, 
@@ -313,33 +313,37 @@ PaVeReduce[x_, y___Rule]:= Block[{op, wriout, nnx = x},
           ];
               nnx];
 
-pavitp[xXX_PaVe, dir_,opts___] := Block[{nx, file, temp, set,xxx},
+pavitp[xXX_PaVe, dir_,opts___] := Block[{nx, file, temp, set,xxx,a,abbs,abbstr,dir1},
    paV[xy__, p_List, m_List] := PaVe[xy,C,p,C,m];
    xxx = paV@@xXX;
-   nx = StringReplace[ ToString[InputForm[xxx], PageWidth -> 222],
-                       {", "->"","^"->"","{"->"", "/" -> "",
-                        "Subscript"->"su","SmallVariable"->"sma",
-                       "}"->"", "["->"", "]"->"", "*" -> "", " " -> "" }
+   (*Changed 18/9-2000, F.Orellana*)
+   abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /. 
+          HoldPattern -> Identity;
+   nx = StringReplace[ ToString[InputForm[xxx/.abbs], PageWidth -> 222],
+                       $Abbreviations
                      ];
-                      nx = StringJoin[dir, nx, ".s"];
+    
+   nx = StringJoin[dir, nx, ".s"];
+   (**)
+    print2P["nx  =", nx];
     If[Streams[nx] === {},
-                      file = FileNames @@ {nx};
-                      If[file =!= {},
+                      (*Mac fix, 18/9-2000, F.Orellana*)
+                      file = FileType[nx];
+                      If[file === File,
                          print2P["file  =", file];
                          temp =( Get @@ {nx} ) // PaVeOrder;
  (* If something went wrong in writing the file *)
-                         If[ Head[temp]=!=Plus, file = {} ]
-                        ];
-                      If[file ==={} ,
-                          temp = FixedPoint[ReleaseHold,
+                         If[ Head[temp]=!=Plus, file = {} ]];
+		      If[file =!= File && file =!= Directory,
+                         temp = FixedPoint[ReleaseHold,
                                  PaVeReduce[xXX, WriteOutPaVe->False,opts
                                            ]]//PaVeOrder;
-                         print2P["writing result to ",nx];
+			 print2P["writing result to ",nx];
                          OpenWrite @@ {nx, FormatType -> InputForm };
                          WriteString @@ {nx, "( "};
                          Write @@ {nx, temp};
                          WriteString @@ {nx, "  ) "};
-                         Close @@ {nx}
+                         Close @@ {nx};
                         ],
         temp = PaVeReduce[xXX, WriteOutPaVe->False,opts]//PaVeOrder;
       ];
@@ -400,7 +404,7 @@ pavereduce[pvli_List,op___]:=Block[{i,set,le=Length[pvli],npvli},
 (* ***************************************************************** *)
 
 
-print2P[x_String] := If[$VeryVerbose > 1, Print[x]];
+print2P[x__] := If[$VeryVerbose > 1, Print[x]];
 collect3[x__]  := Collect2[x, Factoring -> True];
 
 pavereduce[brex_,optis___]:=Block[{sq,t,tt,ma,rest,lin,

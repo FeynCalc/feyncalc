@@ -27,7 +27,7 @@ defined in the FORM - file.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FORM2FeynCalc, ReadProtected];
+   
 
 MakeContext[
 ChangeDimension,
@@ -106,7 +106,7 @@ FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
               ru___Rule] := Block[
  {file, dim, ff, ffj, hh, dott, parsit, rr, vectors, indices,
   stringrules, vv, rv, nof, holdform , dotrule, holdplus,
-  myDot
+  myDot,myfile
  },
   Map[Unset, Hold[exprs, lastexpr]];
   dim = Dimension /. {ru}/. Options[FORM2FeynCalc];
@@ -122,10 +122,20 @@ FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
                ];
 
 file = ToString[fi, PageWidth->Infinity];
-If[FileNames[file] === {},
+(*Mac fix 18/9-2000, F.Orellana*)
+myfile=FileType[file];
+Which[myfile === File,
+   ff = ReadList[file, String];,
+   myfile === None,
+   ff = file,
+   True,
+   Print["There was a problem:\n",file," is inaccessible"];Return[]
+  ];
+
+(*If[FileNames[file] === {},
    ff = file,
    ff = ReadList[file, String];
-  ];
+  ];*)
 
 If[(Vectors /. {ru}) =!= Automatic,
    vectors = Vectors /. {ru},

@@ -26,7 +26,7 @@ option Integratedx -> False.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[HypergeometricIR, ReadProtected];
+   
 
 Integratedx = MakeContext["Integratedx"];
 Factor2     = MakeContext["Factor2"];

@@ -24,7 +24,7 @@ stands for a small positive number.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Epsilon, ReadProtected];
+   
 
 MakeContext[PositiveNumber];
 

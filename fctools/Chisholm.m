@@ -22,7 +22,7 @@ slashes by the Chisholm identity.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Chisholm, ReadProtected];
+   
 
 Contract      = MakeContext["Contract"];
 DiracGamma  = MakeContext["DiracGamma"];

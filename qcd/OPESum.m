@@ -21,7 +21,7 @@ The syntax is the same as for Sum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPESum, ReadProtected];
+   
 
 (*change 03/98 *)
 OPESum[a_,{j_,0,i_},{i_,0,em_}] :=

@@ -21,7 +21,7 @@ ExpandPartialD::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ExpandPartialD, ReadProtected];
+   
 
 CovariantD := CovariantD = MakeContext["CovariantD"];
 DeclareNonCommutative = MakeContext["DeclareNonCommutative"];

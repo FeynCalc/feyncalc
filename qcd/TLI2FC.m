@@ -25,7 +25,7 @@ TLI-integrals to the FAD - foorm.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TLI2FC, ReadProtected];
+   
 
 MakeContext[
 Dimension,

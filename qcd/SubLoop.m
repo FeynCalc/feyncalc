@@ -22,7 +22,7 @@ sub 1-loop tensorintegral decomposition is performed."
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SubLoop, ReadProtected];
+   
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

@@ -29,7 +29,7 @@ function Schouten will be applied .";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Schouten, ReadProtected];
+   
 
 collect2                 = MakeContext["Collect2"];
 eps                      = MakeContext["Eps"];

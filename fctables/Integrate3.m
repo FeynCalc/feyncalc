@@ -24,7 +24,7 @@ between 0 and 1.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Integrate3, ReadProtected];
+   
   
  MakeContext[Apart3,DataType, DeltaFunction, 
              (*DeltaFunctionDoublePrime, *)

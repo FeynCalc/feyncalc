@@ -1,0 +1,1 @@
+{{-2*I*SU2Delta[0, I3]*SU2Delta[I1, I2]}}

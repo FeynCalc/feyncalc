@@ -19,11 +19,11 @@ Integrate4::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Integrate4, ReadProtected];
+   
 
 Integrate5 = MakeContext["Integrate5"];
 
-ClearAttributes[Integrate4, ReadProtected];
+
 
 Integrate4[a__] := If[$VeryVerbose > 2, (*Global`INT = {a};*)
 (*

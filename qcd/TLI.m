@@ -33,7 +33,7 @@ TLI[{a,b,c,d,e}, {al,be,ga,de,ep}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TLI, ReadProtected];
+   
 
 Epsilon       = MakeContext["Epsilon"];
 EpsilonOrder  = MakeContext["EpsilonOrder"];
@@ -54,7 +54,7 @@ SOD            = MakeContext["SOD"];
 
 Options[TLI] =  {EpsilonOrder -> 0, Momentum -> Global`p}; 
 
-ClearAttributes[TLI, ReadProtected];
+
 
 TLI[a__, pr_ /; !FreeQ[pr, {_,0}], opt___Rule] := TLI[a, pr /. {b_,0} :> b];
 

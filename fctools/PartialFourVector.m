@@ -22,7 +22,7 @@ gives the multiple derivative.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PartialFourVector, ReadProtected];
+   
  
 Contract     = MakeContext["Contract"];
 DiracGamma   = MakeContext["DiracGamma"];

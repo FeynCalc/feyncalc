@@ -22,7 +22,7 @@ with respect to mu and nu.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RHP, ReadProtected];
+   
 
 MakeContext[
 Collect2,

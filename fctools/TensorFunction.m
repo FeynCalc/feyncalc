@@ -25,7 +25,6 @@ TensorFunction[{t, \"A\"}, mu, nu, ...].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TensorFunction, ReadProtected];
 
 Dimension    = MakeContext["Dimension"];
 LorentzIndex = MakeContext["LorentzIndex"];
@@ -53,7 +52,6 @@ TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule,
        ];
   f@@(Map[LorentzIndex[#, dim]&, {munu,last}])
                                    ];
-
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "TensorFunction | \n "]];

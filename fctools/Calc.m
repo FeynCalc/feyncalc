@@ -28,7 +28,7 @@ Contract[
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Calc, ReadProtected];
+   
 
 (*
 Contract3 = MakeContext["Contract", "Contract3"];

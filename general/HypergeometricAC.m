@@ -28,7 +28,7 @@ Applications\" by N.N.Lebedev).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[HypergeometricAC, ReadProtected];
+   
 
 Cases2   = MakeContext["Cases2"];
 Collect2 = MakeContext["Collect2"];

@@ -22,7 +22,7 @@ OPEDelta.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Uncontract, ReadProtected];
+   
 
 MakeContext[Cases2, Dimension, 
             DimensionalReduction,

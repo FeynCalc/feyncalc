@@ -20,7 +20,7 @@ Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Expand2, ReadProtected];
+   
 
 MakeContext[FreeQ2];
 

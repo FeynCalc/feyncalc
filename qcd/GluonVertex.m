@@ -39,7 +39,7 @@ are determined by the options Dimension and CouplingConstant.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[GluonVertex, ReadProtected];
+   
 
 MakeContext[
 CouplingConstant,

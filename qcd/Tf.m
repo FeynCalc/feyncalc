@@ -21,7 +21,7 @@ Tf::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Tf, ReadProtected];
+   
 
    Tf /:
    MakeBoxes[Tf  ,TraditionalForm] := SubscriptBox["T","f"];

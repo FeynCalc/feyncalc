@@ -20,7 +20,7 @@ OPEi::usage= "OPEi is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEi, ReadProtected];
+   
 
 
 Unprotect[Re];

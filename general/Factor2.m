@@ -26,7 +26,7 @@ There are four possible settings of the option Method (0,1,2,3).
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Factor2, ReadProtected];
+   
 
 MakeContext[ Expand2, Combine,
 FactorFull, MemSet, NumericalFactor];

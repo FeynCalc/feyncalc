@@ -23,7 +23,7 @@ and accepts the options Factoring and FinalSubstitutions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Solve2, ReadProtected];
+   
 MakeContext[ Collect2, Expanding , Factor1,Factor2,
              Factoring, FinalSubstitutions,Isolate, 
              IsolateHead 

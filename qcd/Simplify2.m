@@ -18,7 +18,7 @@ Simplify2::usage= "Simplify2 is a special ordering function.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Simplify2, ReadProtected];
+   
 
 MakeContext["CA","CF", "Collect2", "DeltaFunction",
             "Epsilon", "Factoring", "Tf", "PlusDistribution",

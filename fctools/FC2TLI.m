@@ -26,7 +26,7 @@ p.k1, p.k2 and k1.k2 (setting True).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FC2TLI, ReadProtected];
+   
 
 MakeContext[
 Cases2,

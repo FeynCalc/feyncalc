@@ -21,7 +21,7 @@ RightPartialD::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RightPartialD, ReadProtected];
+   
 
 DOT          = MakeContext["DOT"];
 FreeQ2       = MakeContext["FreeQ2"];

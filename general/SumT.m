@@ -22,7 +22,7 @@ For purely integer arguments SumT is evaluated.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SumT, ReadProtected];
+   
 
 Options[SumT] = {Reduce -> False};
 

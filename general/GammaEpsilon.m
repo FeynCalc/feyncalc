@@ -20,7 +20,7 @@ EulerGamma is neglected).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[GammaEpsilon, ReadProtected];
+   
 
 Epsilon = MakeContext["Epsilon"];
 

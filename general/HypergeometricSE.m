@@ -21,7 +21,7 @@ nu, running from 0 to Infinity is the summation index).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[HypergeometricSE, ReadProtected];
+   
 
 Options[HypergeometricSE] = {Simplify -> FullSimplify};
 

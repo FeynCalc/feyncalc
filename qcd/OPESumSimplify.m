@@ -21,7 +21,7 @@ simplifies OPESum's in exp.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPESumSimplify, ReadProtected];
+   
 
 Factor2 = MakeContext["Factor2"];
 FeynCalcInternal = MakeContext["FeynCalcInternal"];

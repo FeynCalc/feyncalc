@@ -21,7 +21,7 @@ nu is the summation index).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[HypExplicit, ReadProtected];
+   
 
 p2g[a_, n_] := Gamma[a + n] / Gamma[a];
 

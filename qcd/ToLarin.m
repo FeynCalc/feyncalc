@@ -22,7 +22,7 @@ ToLarin::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ToLarin, ReadProtected];
+   
 
 MakeContext[Dimension, DOT,LeviCivitaSign, LorentzIndex, 
             FeynCalcInternal,

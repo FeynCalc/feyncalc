@@ -20,7 +20,7 @@ OPEj::usage= "OPEj is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEj, ReadProtected];
+   
 
 MakeContext[PositiveInteger, DataType];
 DataType[OPEj, PositiveInteger] = True;

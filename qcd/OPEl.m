@@ -20,7 +20,7 @@ OPEl::usage= "OPEl is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEl, ReadProtected];
+   
 
 MakeContext[PositiveInteger, DataType];
 DataType[OPEl, PositiveInteger] = True;

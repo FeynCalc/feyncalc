@@ -26,7 +26,7 @@ SimplifyDeltaFunction[exp, Global`x]";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SimplifyDeltaFunction, ReadProtected];
+   
 
 MakeContext[ 
  Collect2,

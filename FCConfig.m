@@ -1,7 +1,5 @@
 (* global Mathematica changes *) 
 
-
-
 Off[Needs::nocont]; 
 Off[Get::noopen]; 
 Off[General::spell]; 
@@ -25,10 +23,17 @@ SubsuperscriptBox[x, y, z];
 This is the default installation directory which will be set
 in FeynCalc.m 
 
-$FeynCalcDirectory = $TopDirectory <> $PathnameSeparator <> "AddOns" <>
+HighEnergyPhysics`FeynCalc`$FeynCalcDirectory = $TopDirectory <> $PathnameSeparator <> "AddOns" <>
                      $PathnameSeparator <> "Applications" <> 
                      $PathnameSeparator <> "HighEnergyPhysics";
 *)
 
-If[!ValueQ[$LoadTARCER], $LoadTARCER = False];
+(* Optional modules *)
 
+If[!ValueQ[$LoadTARCER], $LoadTARCER = False];
+If[!ValueQ[$LoadPhi], $LoadPhi = False];
+If[!ValueQ[$LoadFeynArts], $LoadFeynArts = False];
+
+(* $LoadTARCER = True; *)
+(* $LoadPhi = True; *)
+(* $LoadFeynArts = True; *)

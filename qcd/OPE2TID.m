@@ -22,7 +22,7 @@ are contracted.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPE2TID, ReadProtected];
+   
 
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];
 Tr2 := Tr2 = MakeContext["Tr2"];

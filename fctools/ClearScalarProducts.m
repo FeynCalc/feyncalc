@@ -22,9 +22,9 @@ specific settings for ScalarProduct's.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ClearScalarProducts, ReadProtected];
+   
 
-ClearAttributes[ClearScalarProducts, ReadProtected];
+
 
 ClearScalarProducts := (
 DownValues[HighEnergyPhysics`FeynCalc`Pair`Pair] = 

@@ -20,7 +20,7 @@ OPEn::usage= "OPEn is n.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEn, ReadProtected];
+   
 
 MakeContext[PositiveInteger, DataType];
 DataType[OPEn, PositiveInteger] = True;

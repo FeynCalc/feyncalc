@@ -30,7 +30,7 @@ partial integration but omits the x-space delta functions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FunctionalD, ReadProtected];
+   
 
 FeynCalcForm = MakeContext["FeynCalcForm"];
 

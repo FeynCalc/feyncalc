@@ -20,7 +20,7 @@ RHM::usage= "RHM[] is like RHI[], gives Gamma functions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RHM, ReadProtected];
+   
 
 MakeContext[Epsilon, Epsilon2,
 Gamma1, Gamma3, Momentum, Power2, Series2, SP, SO,Zeta2];

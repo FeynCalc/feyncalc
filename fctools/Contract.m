@@ -35,8 +35,8 @@ Contract3::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Contract, ReadProtected];
-   SetAttributes[Contract, ReadProtected];
+   
+   
    
    Cases2                      = MakeContext["Cases2"];
    Collect2                    = MakeContext["Collect2"];

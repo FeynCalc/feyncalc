@@ -32,7 +32,7 @@ CovariantD[OPEDelta]^m up to order g^n for the quark.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[CovariantD, ReadProtected];
+   
 
 MakeContext[
  CouplingConstant, DeclareNonCommutative, DOT, 

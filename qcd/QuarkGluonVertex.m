@@ -31,7 +31,7 @@ are determined by the options Dimension and CouplingConstant.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[QuarkGluonVertex, ReadProtected];
+   
 
 MakeContext[
 CA,CF,

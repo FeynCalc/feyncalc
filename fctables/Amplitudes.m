@@ -18,7 +18,7 @@ Polarization -> 1, Gauge -> 1+GaugeXi].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Amplitudes, ReadProtected];
+   
 
 MakeContext[
 ChangeDimension,

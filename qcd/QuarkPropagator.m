@@ -27,7 +27,7 @@ QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[QuarkPropagator, ReadProtected];
+   
 
 MakeContext[Abbreviation,
             CF,

@@ -21,7 +21,7 @@ performs Sum[ x[[k]] a[[k]], {k, 0, 3}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[DotProduct, ReadProtected];
+   
 
 MakeContext[CrossProduct, ThreeVector];
 

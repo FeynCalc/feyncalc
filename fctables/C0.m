@@ -25,7 +25,7 @@ the first three arguments of C0 are the scalar products
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[C0, ReadProtected];
+   
 
    MakeBoxes[C0[a_,b_,c_,d_,e_,f_, ___Rule] ,TraditionalForm] :=
    Tbox[Subscript["C", "0"], "(", a, ",", b, ",", 

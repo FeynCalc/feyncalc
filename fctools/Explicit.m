@@ -26,7 +26,7 @@ by SUNTrace objects.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Explicit, ReadProtected];
+   
 
 MakeContext[ExpandScalarProduct];
 

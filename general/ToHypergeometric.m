@@ -22,7 +22,7 @@ Re[b]>0 and Re[c-b]>0 should hold.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ToHypergeometric, ReadProtected];
+   
 
 ToHypergeometric[exp_, t_] := 
  If[FreeQ[exp, t^b_. (1-t)^c_. ((u_/;FreeQ[u,t]) + t z_)^a_.], exp,

@@ -21,7 +21,7 @@ ChargeConjugationMatrix. It is substituted immediately by
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ChargeConjugationMatrixInv, ReadProtected];
+   
 
 ChargeConjugationMatrix = MakeContext["ChargeConjugationMatrix"];
 

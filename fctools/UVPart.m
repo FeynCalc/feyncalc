@@ -20,7 +20,7 @@ UVPart::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[UVPart, ReadProtected];
+   
 
 MakeContext[
 Cases2,

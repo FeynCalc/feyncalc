@@ -27,7 +27,7 @@ Series3[f, {e, 0, n}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Series3, ReadProtected];
+   
 MakeContext[Collect2, Epsilon,Factor2,
              Factoring, FinalSubstitutions, Nielsen,
             OPEm, FreeQ2, Select2, SumS, SumT, Zeta2];

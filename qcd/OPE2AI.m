@@ -18,7 +18,7 @@ OPE2AI::usage= "OPE2AI[tabname, listtodo, q1,q2,p] is ....";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPE2AI, ReadProtected];
+   
 
 MakeContext[Cases2, ChangeDimension, FeynCalcInternal, FeynCalcExternal, 
             OPEDelta, OPE2TID, OPEm,

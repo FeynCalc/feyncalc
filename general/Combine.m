@@ -25,7 +25,7 @@ sums in the denominator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Combine, ReadProtected];
+   
 
  MakeContext[Expanding];
 

@@ -23,7 +23,7 @@ a sum).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SelectNotFree, ReadProtected];
+   
 FreeQ2 = MakeContext["FreeQ2"];
 
 SelectNotFree[0,_] := 0;

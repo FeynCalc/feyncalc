@@ -23,7 +23,7 @@ RHI-integrals in FeynAmpDenominator form to the 2-loop OPE-integrals.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RHI2FC, ReadProtected];
+   
 
 MakeContext[
 Dimension,

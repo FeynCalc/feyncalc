@@ -19,7 +19,7 @@ CrossProduct::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[CrossProduct, ReadProtected];
+   
 
 MakeContext[DotProduct, ThreeVector];
 

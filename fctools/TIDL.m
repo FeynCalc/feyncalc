@@ -12,7 +12,7 @@ TIDL[exp, {{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] .";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TIDL, ReadProtected];
+   
 MakeContext[ 
 ChangeDimension,
 Dimension, ExpandScalarProduct, LorentzIndex,  Momentum, Pair,

@@ -20,9 +20,9 @@ reductions to A0 and B0 will be done. ";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[BReduce, ReadProtected];
+   
 
-ClearAttributes[BReduce, ReadProtected];
+
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

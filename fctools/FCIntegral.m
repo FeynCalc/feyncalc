@@ -21,7 +21,7 @@ Currently only implemented for 2-loop integrals.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FCIntegral, ReadProtected];
+   
 
 FCIntegral[1,___]=1;
 FCIntegral[0,___]=0;

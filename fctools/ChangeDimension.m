@@ -24,7 +24,7 @@ in FeynCalcInternal - representation).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ChangeDimension, ReadProtected];
+   
 
 MakeContext[DiracGamma, FeynCalcInternal, LorentzIndex, Momentum,
             Spinor, Pair];

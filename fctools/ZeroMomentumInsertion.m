@@ -19,7 +19,7 @@ ZeroMomentumInsertion::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ZeroMomentumInsertion, ReadProtected];
+   
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

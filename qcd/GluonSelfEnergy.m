@@ -21,7 +21,7 @@ GluonSelfEnergy::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[GluonSelfEnergy, ReadProtected];
+   
 
 MakeContext[
 CA,

@@ -20,7 +20,7 @@ OPEo::usage= "OPEo is n.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEo, ReadProtected];
+   
 
 MakeContext[PositiveInteger, DataType];
 DataType[OPEo, PositiveInteger] = True;

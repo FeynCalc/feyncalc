@@ -22,7 +22,7 @@ the coefficient function of p(mu) p(nu).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[B11, ReadProtected];
+   
 
 ClearAttributes[B11, ReadProtectecd];
 

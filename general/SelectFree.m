@@ -23,7 +23,7 @@ a sum).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SelectFree, ReadProtected];
+   
 FreeQ2 = MakeContext["FreeQ2"];
 
 

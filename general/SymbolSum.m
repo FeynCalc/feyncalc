@@ -18,7 +18,7 @@ SymbolSum::usage= "SymbolSum[] is like Sum but fixes a bug.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SymbolSum, ReadProtected];
+   
 
 
 ( SymbolSum[x_,y__,{iz_,jz_,kz_}] := 

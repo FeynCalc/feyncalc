@@ -20,7 +20,7 @@ Only the residue is calculated.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEIntegrate2, ReadProtected];
+   
 
 MakeContext[Uncontract,
             Cases2, ChangeDimension, Collect2, Collecting, 

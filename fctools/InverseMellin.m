@@ -22,7 +22,7 @@ polynomials in m.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[InverseMellin, ReadProtected];
+   
 
 MakeContext[Collect2, DeltaFunction,
             Factor2, OPEm, Pair, PlusDistribution, 

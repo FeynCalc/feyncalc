@@ -22,7 +22,7 @@ LeftRightPartialD[z] (and LeftRightPartialD2[z]).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ExplicitPartialD, ReadProtected];
+   
 
 DOT          = MakeContext["DOT"];
 FreeQ2       = MakeContext["FreeQ2"];

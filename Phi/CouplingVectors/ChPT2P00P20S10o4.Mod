@@ -1,0 +1,1 @@
+{{(64*I*(2*SU2Delta[0, I3]*SU2Delta[I1, I2]*         UCouplingConstant[ChPT2[4], 6, RenormalizationState[0]] +         SU2Delta[0, I3]*SU2Delta[I1, I2]*         UCouplingConstant[ChPT2[4], 8, RenormalizationState[0]]))/    DecayConstant[PseudoScalar[2], RenormalizationState[0]]}}

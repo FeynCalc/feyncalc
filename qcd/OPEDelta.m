@@ -20,7 +20,7 @@ OPEDelta::usage= "OPEDelta is the Delta.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEDelta, ReadProtected];
+   
 
 LorentzIndex  = MakeContext["LorentzIndex"];
 Momentum      = MakeContext["Momentum"];

@@ -26,7 +26,7 @@ Whether SUNF is replaced by traces is determined by the option Explicit.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SUNSimplify, ReadProtected];
+   
 
 (* repeat basically suntrace here, since several subfunctions are
    needed anyway 
@@ -143,6 +143,14 @@ suii[y_] := Block[{ste, ste2, dumy},
                   ste = Select[y dumy, !freeq2[#, {SUNIndex}]&];
                   ste2 = Select[y dumy, freeq2[#, {SUNIndex}]&];
                   (ste2 suI[ste])/.dumy->1](* /. suI -> Identity*);
+
+(* Added check for integers - noint. F.Orellana, 24/9-2000 *)
+noint[x___] := 
+    Not[Or @@ 
+        Join[IntegerQ /@ {x}, IntegerQ /@
+	({x} /. {SUNIndex -> Identity,
+	        HighEnergyPhysics`qcd`ExplicitSUNIndex`ExplicitSUNIndex -> Identity})]];
+	
 subst = {suI[sunt[SUNIndex[ii_]] ff_] :>
            (sam[ii, uh[]]; (sunt[SUNIndex[ii]] (ff /. suI -> Identity)) /. 
            SUNIndex[ii]-> uh[])/;
@@ -171,14 +179,14 @@ subst = {suI[sunt[SUNIndex[ii_]] ff_] :>
         suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]]*
              SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci7_]]*
              SUNF[SUNIndex[c_], SUNIndex[ci6_], SUNIndex[ci7_]] ef_.
-           ] :> (ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]),
+           ] :> (ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
         suI[ SUNF[SUNIndex[ci4_], SUNIndex[ci6_],SUNIndex[a_]]*
              SUNF[SUNIndex[ci4_], SUNIndex[ci7_],SUNIndex[b_]]*
              SUNF[SUNIndex[ci6_], SUNIndex[ci7_],SUNIndex[c_]] ef_.
-           ] :> (ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]),
+           ] :> (ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
         suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]]*
              SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci6_]] ef_.
-           ] :> (ef SUNN SUNDelta[SUNIndex[a], SUNIndex[b]]),
+           ] :> (ef SUNN SUNDelta[SUNIndex[a], SUNIndex[b]]) /; noint[ci4,ci6],
         suI[SUNF[A___,SUNIndex[ij_],B___] ff_] :> 
            (sam[ij, uh[]];(SUNF[A,SUNIndex[ij],B] ff
                           )/. SUNIndex[ij] -> uh[]
@@ -187,26 +195,26 @@ subst = {suI[sunt[SUNIndex[ii_]] ff_] :>
         suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]*
    SUNF[SUNIndex[a2_], SUNIndex[ci5_], SUNIndex[e_]]*
    SUNF[SUNIndex[a3_], SUNIndex[ci4_], SUNIndex[e_]] ef_.
-           ] :> -ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]]
+           ] :> -ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
           ,
         suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]*
    SUNF[SUNIndex[a2_], SUNIndex[ci4_], SUNIndex[e_]]*
    SUNF[SUNIndex[a3_], SUNIndex[ci5_], SUNIndex[e_]] ef_.
-           ] :> ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]]
+           ] :> ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
           ,
         suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]*
    SUNF[SUNIndex[a2_], SUNIndex[a3_], SUNIndex[e_]]*
    SUNF[SUNIndex[ci4_], SUNIndex[ci5_], SUNIndex[e_]] ef_.
-           ] :> ef CA SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]]
+           ] :> ef CA SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
            ,
-   SUNF[a_,b_,c_]^2 :> 2CA^2 CF
+   SUNF[a_,b_,c_]^2 :> 2CA^2 CF /; noint[a,b,c]
            ,
 (* SUNDRULES*)
-   SUND[a_,b_,c_]^2 :> -2 (4-CA^2) CF,
-   SUND[a_,b_,c_] SUND[d_,b_,c_] :> -(4 - CA^2) (CA - 2 CF) SUNDelta[a,d], 
-   SUNF[a_,b_,c_] SUND[d_,b_,c_] :> 0,
-   SUNF[b_,a_,c_] SUND[d_,b_,c_] :> 0,
-   SUNF[b_,c_,a_] SUND[d_,b_,c_] :> 0
+   SUND[a_,b_,c_]^2 :> -2 (4-CA^2) CF /; noint[a,b,c],
+   SUND[a_,b_,c_] SUND[d_,b_,c_] :> -(4 - CA^2) (CA - 2 CF) SUNDelta[a,d] /; noint[b,c], 
+   SUNF[a_,b_,c_] SUND[d_,b_,c_] :> 0 /; noint[b,c],
+   SUNF[b_,a_,c_] SUND[d_,b_,c_] :> 0 /; noint[b,c],
+   SUNF[b_,c_,a_] SUND[d_,b_,c_] :> 0 /; noint[b,c]
 (*
    SUNF[a_,b_,e_] SUNF[c_,d_,e_] :>  2/SUNN SUNDelta[a,b] SUNDelta[c,d] +
    SUND[a,c,e] SUND[b,d,e] - SUND[a,d,e] SUND[b,c,e]
@@ -280,49 +288,49 @@ If[(!FreeQ[temp, SUNIndex]) || (!FreeQ[temp, SUNN]),
 sunsi = {
          dot[xx___, sunt[a_SUNIndex],
                     sunt[a_SUNIndex], yy___] :>
-         ((SUNN^2 -1)/(2 SUNN) dotT[xx,yy]),
+         ((SUNN^2 -1)/(2 SUNN) dotT[xx,yy]) /; noint[a],
          dot[xx___, sunt[a_SUNIndex], sunt[b_SUNIndex],
                   sunt[a_SUNIndex], yy___] :>
-         ((-1)/(2 SUNN) dotT[xx, sunt[b], yy]),
+         ((-1)/(2 SUNN) dotT[xx, sunt[b], yy]) /; noint[a],
 
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
             dotT[aa___, sunt[xx_SUNIndex], sunt[yy_SUNIndex], 
                         sunt[zz_SUNIndex], bb___] :>
-            I/2 CA CF dotT[aa,bb],
+            I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
 
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
             dotT[aa___, sunt[xx_SUNIndex], sunt[zz_SUNIndex], 
                         sunt[yy_SUNIndex], bb___] :>
-           -I/2 CA CF dotT[aa,bb],
+           -I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
 
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
             dotT[aa___, sunt[zz_SUNIndex], sunt[xx_SUNIndex], 
                         sunt[yy_SUNIndex], bb___] :>
-            I/2 CA CF dotT[aa,bb],
+            I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
 
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
             dotT[aa___, sunt[yy_SUNIndex], sunt[xx_SUNIndex], 
                         sunt[zz_SUNIndex], bb___] :>
-           -I/2 CA CF dotT[aa,bb],
+           -I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
 
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
             dotT[aa___, sunt[yy_SUNIndex], sunt[zz_SUNIndex], 
                         sunt[xx_SUNIndex], bb___] :>
-            I/2 CA CF dotT[aa,bb],
+            I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
 
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] * 
             dotT[aa___, sunt[zz_SUNIndex], sunt[yy_SUNIndex],
                 bb___] :>
-          -I/2 SUNN dotT[aa,sunt[xx],bb],
+          -I/2 SUNN dotT[aa,sunt[xx],bb] /; noint[yy,zz],
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] * 
           dotT[aa___, sunt[yy_SUNIndex], sunt[zz_SUNIndex], bb___] :>
-          I/2 SUNN dotT[aa,sunt[xx],bb],
+          I/2 SUNN dotT[aa,sunt[xx],bb] /; noint[yy,zz],
           SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
                  sunt[xx_SUNIndex]  :>
-         I sunt[zz] . sunt[yy] - I sunt[yy] . sunt[zz],
+         I sunt[zz] . sunt[yy] - I sunt[yy] . sunt[zz] /; noint[xx],
           SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
                  sunt[zz_SUNIndex] :>
-         I sunt[yy] . sunt[xx] - I sunt[xx] . sunt[yy]
+         I sunt[yy] . sunt[xx] - I sunt[xx] . sunt[yy] /; noint[zz]
          }  /. dotT[] -> 1 //. {dotT[a___,1,b___] :> dotT[a,b]} /. 
                dotT[] -> 1 /. dotT -> dot;
 If[sft === True, 
@@ -405,7 +413,7 @@ If[jac === True && !FreeQ[temp, SUNF],
                      sUNF[SUNIndex[c], SUNIndex[d], SUNIndex[e]] +
                       sUNF[SUNIndex[b], SUNIndex[c], SUNIndex[e]]*
                       sUNF[SUNIndex[a], SUNIndex[d], SUNIndex[e]]
-                     ) /; Sort[{ {a,c,e, b,d,e}, {a,b,e, c,d,e}, 
+                     ) /; noint[e] && Sort[{ {a,c,e, b,d,e}, {a,b,e, c,d,e}, 
                                  {b,c,e, a,d,e} 
                                }][[1]] === {a,c,e, b,d,e}
                   } /. sUNF -> SUNF;

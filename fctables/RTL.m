@@ -19,7 +19,7 @@ to the finite part.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RTL, ReadProtected];
+   
 
 MakeContext[
 Apart3,

@@ -14,7 +14,7 @@ The more common ones are saved in TIDL.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Tdec, ReadProtected];
+   
 MakeContext[
 Cases2,
 Collect2,

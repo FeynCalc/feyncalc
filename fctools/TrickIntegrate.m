@@ -26,7 +26,7 @@ provided g[1] and f[0] do exist.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TrickIntegrate, ReadProtected];
+   
 
 MakeContext[Apart3, Collect2, Factor2, Epsilon, Map2, Select1, Select2];
 

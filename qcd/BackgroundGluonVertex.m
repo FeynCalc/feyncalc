@@ -39,7 +39,7 @@ with the default setting of GluonVertex.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[BackgroundGluonVertex, ReadProtected];
+   
 
 MakeContext[
 CouplingConstant,

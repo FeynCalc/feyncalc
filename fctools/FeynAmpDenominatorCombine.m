@@ -24,7 +24,7 @@ one FeynAmpDenominator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynAmpDenominatorCombine, ReadProtected];
+   
 
 MakeContext[
 Expand2,

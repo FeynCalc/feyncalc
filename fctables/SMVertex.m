@@ -27,7 +27,7 @@ SMVertex[\"HHH\", ___] give the three-higgs coupling.
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SMVertex, ReadProtected];
+   
 
 MakeContext[
 ChangeDimension,

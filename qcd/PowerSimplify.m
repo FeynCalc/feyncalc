@@ -27,7 +27,7 @@ an integer (even if it is symbolic). Furthermore
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PowerSimplify, ReadProtected];
+   
 
 MakeContext[Factor2, Power2, QCDScalemu, OPEm];
 

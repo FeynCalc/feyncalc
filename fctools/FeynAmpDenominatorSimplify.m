@@ -30,7 +30,7 @@ FDS::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynAmpDenominatorSimplify, ReadProtected];
+   
 FDS = FeynAmpDenominatorSimplify;
 
 MakeContext[

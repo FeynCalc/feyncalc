@@ -20,7 +20,7 @@ to the variables a1, a2, ... ";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[AntiSymmetrize, ReadProtected];
+   
 
 AntiSymmetrize[x_,v_List] := Block[{su},
                       su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];

@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`FeynCalc2FORM`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FeynCalc2FORM::usage= 
+FeynCalc2FORM::usage=
 "FeynCalc2FORM[expr] displays expr in FORM syntax.
 FeynCalc2FORM[file, x] writes x in FORM syntax to a file.
 FeynCalc2FORM[file, x==y] writes x=y to a file in FORM syntax.";
@@ -21,7 +21,7 @@ FeynCalc2FORM[file, x==y] writes x=y to a file in FORM syntax.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynCalc2FORM, ReadProtected];
+
 
 MakeContext[
 Cases2,
@@ -29,11 +29,11 @@ DiracGamma,
 DiracGammaExpand,
 DiracTrace,
 Eps,
-EpsDiscard, 
+EpsDiscard,
 ExpandScalarProduct,
 FeynCalcInternal,
-FORMEpilog, 
-FORMProlog, 
+FORMEpilog,
+FORMProlog,
 LorentzIndex,
 Momentum,
 MomentumExpand,
@@ -43,17 +43,17 @@ SelectNotFree,
 TraceDimension];
 
 (* for taking traces *)
-Options[FeynCalc2FORM] = {EpsDiscard -> False, 
+Options[FeynCalc2FORM] = {EpsDiscard -> False,
 FORMEpilog -> "", FORMProlog -> "write statistics;",
-Replace -> {"\[Alpha]"-> "al", "\[Beta]"->"be",
-"\[Gamma]" -> "ga", "\[Delta]" -> "de",
-"\[Mu]" -> "mu", "\[Nu]" -> "nu", "\[Rho]" -> "ro",
-"\[Sigma]" -> "si"
+Replace -> {"\\[Alpha]"-> "al", "\\[Beta]"->"be",
+"\\[Gamma]" -> "ga", "\\[Delta]" -> "de",
+"\\[Mu]" -> "mu", "\\[Nu]" -> "nu", "\\[Rho]" -> "ro",
+"\\[Sigma]" -> "si"
                  },
 TraceDimension -> 4      };
 
 FeynCalc2FORM[ file_:"tFc2F", xy_, ru___Rule] := Block[
-{holdy, lors, lors4, lorsn, lordim, other, noatomic, newx ,x,y, 
+{holdy, lors, lors4, lorsn, lordim, other, noatomic, newx ,x,y,
  srules, srule2, temp},
 If[Head[xy] === Equal,
    x = xy[[1]]; y = xy[[2]]
@@ -62,16 +62,16 @@ If[Head[xy] === Equal,
   ];
 srules = Replace /. {ru} /. Options[FeynCalc2FORM];
 srule2 = Table[StringJoin@@Rest[Drop[
-               Characters[ToString[InputForm[srules[[i,1]] ]]],-1]] -> 
+               Characters[ToString[InputForm[srules[[i,1]] ]]],-1]] ->
                srules[[i,2]],{i,Length[srules]}
               ];
 srules = Join[srules,srule2];
 
 holdy = Hold@@
   {(FeynCalcInternal[y]//DiracGammaExpand//MomentumExpand) /.
-    Pair -> ExpandScalarProduct /. 
-    {Pair[a_,b_]^2 :> (Pair[a,b] . Pair[a,b]) /; 
-     !FreeQ[{a,b}, LorentzIndex] 
+    Pair -> ExpandScalarProduct /.
+    {Pair[a_,b_]^2 :> (Pair[a,b] . Pair[a,b]) /;
+     !FreeQ[{a,b}, LorentzIndex]
     }
   };
 
@@ -109,20 +109,20 @@ other = SelectFree[Union[Cases[holdy, _Symbol, -1]],
                   ];
 
 noatomic = Union[Flatten[Map[Variables,
-Cases[holdy/.Dot->Times,h_ /; 
+Cases[holdy/.Dot->Times,h_ /;
       (!MemberQ[{LorentzIndex,Momentum,DiracGamma,Eps,
                  DiracTrace,Pair,Symbol}, Head[y]]
       ),Infinity]]]];
-noatomic = Select[noatomic, 
+noatomic = Select[noatomic,
                   (!MemberQ[{LorentzIndex,Momentum,DiracGamma,Eps,
-                             DiracTrace,Symbol,Pair}, 
+                             DiracTrace,Symbol,Pair},
                   Head[#]])&
                  ];
 
-(* replace the non-Symbol arguments of LorentzIndex and 
+(* replace the non-Symbol arguments of LorentzIndex and
    Momentum by Symbols *)
 nosyml = Select[Join[momentumlist, lors], Head[#] =!= Symbol &];
-lm2form = Table[ nosyml[[i]] -> 
+lm2form = Table[ nosyml[[i]] ->
                 ToExpression[ StringJoin[ "vFC", ToString[i] ] ],
                 {i, Length[nosyml]}
               ];
@@ -134,10 +134,10 @@ index4list = lors4 /. lm2form;
 indexnlist = lorsn /. lm2form;
 momentumlist = momentumlist /. lm2form;
 
-eps2f[a__] := -I Global`eE[a] /. Momentum[aa_,___] :> 
+eps2f[a__] := -I Global`eE[a] /. Momentum[aa_,___] :>
               aa /. LorentzIndex[bb_,___]:>bb;
 
-pair2f[LorentzIndex[a_,___], LorentzIndex[b_,___]] := 
+pair2f[LorentzIndex[a_,___], LorentzIndex[b_,___]] :=
 Global`dD[a/.lm2form, b/.lm2form];
 $tracecount = 0;
 diracg[5]      :=   Global`gA5[$tracecount];
@@ -164,8 +164,8 @@ dirtr[a_] := ($tracecount++;
              );
 
 new = (holdy /. lm2form /. Pair -> pair2f /. Eps -> eps2f /.
-       DiracGamma -> diracgamma /. Dot->Times /.
-       DiracTrace -> dirtr /. n2form
+       DiracGamma -> diracgamma /. Dot->NonCommutativeMultiply /.
+       DiracTrace -> dirtr /. diracgamma -> diracg/. n2form
       )[[1]];
 
 
@@ -178,10 +178,11 @@ newx = ReadList[
 Close[temp];
 
 DeleteFile[$TemporaryPrefix <> "teEmpf" ];
-                                                                             
 
 
-If[FileNames[file] =!= {}, DeletFile[file]];
+
+(*Mac fix 18/9-2000, F.Orellana. Ditto for FileType below*)
+If[FileType[file] === File, DeleteFile[file]];
 
 newx = StringReplace[StringReplace[newx,srules],
                           {"\""->"", "dD"->"d_", "["->"(", "\\"->"",
@@ -191,13 +192,15 @@ newx = StringReplace[StringReplace[newx,srules],
                            "gA7" -> "g7_",
                            "gA"->"g_",
                            "eE"->"e_",
-                           " . "->".", "$"->"_"
+                           " . "->".",
+                           "$"->"_",
+                           "**" -> "*"
                           }
                     ];
 
 (* construct the id  -  statements *)
 
-downp = Select[DownValues[Pair]/.Momentum[a_,___]:>Momentum[a], 
+downp = Select[DownValues[Pair]/.Momentum[a_,___]:>Momentum[a],
                FreeQ2[#, {Blank, Pattern}]&];
 idlist = {};
 For[i = 1, i<=Length[downp], i++,
@@ -265,7 +268,7 @@ If[formpro =!= "" && x =!= False,
    Write[file];
   ];
 
-If[x=!= False, 
+If[x=!= False,
    WriteString[file, "Local ",x , " = ( \n"];
   ];
    newxstr = "";
@@ -274,17 +277,17 @@ If[x=!= False,
        newxstr = newxstr <> newx[[jjj]];
        If[jjj < Length[newx],
           If[StringLength[newxstr<>newx[[jjj+1]]] > 79,
-             newxstr = ""; 
+             newxstr = "";
              WriteString[file, "\n"];
             ]
          ];
 (*Global`NEWX = newx;*)
        If[x===False && file === "tFc2F", Print[newx[[jjj]]]]
       ];
-If[x=!= False, 
+If[x=!= False,
    WriteString[file, " ); \n   \n"];
   ];
- 
+
 (* in case there are traces *)
 If[$tracecount > 0 && x =!= False,
    For[i = 1, i <= $tracecount, i++,
@@ -298,12 +301,12 @@ If[$tracecount > 0 && x =!= False,
 
 If[(EpsDiscard /. {ru} /. Options[FeynCalc2FORM]) &&
    x =!= False,
-   WriteString[file,  
+   WriteString[file,
                      "if ( count(e_,1) > 0 );\n",
                      "     discard;\n",
                      "endif;\n\n"  ]
   ];
-  
+
 If[Length[idlist] > 0 && x =!= False,
    Write[file];
    For[ij = 1, ij <= Length[idlist], ij++,
@@ -336,7 +339,7 @@ If[x=!= False,
 
 Close[file];
 
-If[file === "tFc2F", If[FileNames["tFc2F"]=!={}, DeleteFile["tFc2F"]]];
+If[file === "tFc2F", If[FileType["tFc2F"]===File, DeleteFile["tFc2F"]]];
 
 form2fc];
 End[]; EndPackage[];

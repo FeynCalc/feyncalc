@@ -33,7 +33,7 @@ dp is (OPEDelta.p).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TFi, ReadProtected];
+   
 
               
 TFi[depp__,{a___,b_Integer,c___}]:= TFi[depp,{a,{b,0},c}];

@@ -21,7 +21,7 @@ ConvoluteTable::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ConvoluteTable, ReadProtected];
+   
 
 MakeContext[DeltaFunction, Epsilon, MemSet, Nielsen,
             PlusDistribution, Zeta2];

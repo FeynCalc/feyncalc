@@ -18,7 +18,7 @@ BeginPackage["HighEnergyPhysics`fctables`SpinPolarizationSum`",
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SpinPolarizationSum, ReadProtected];
+   
 
 SpinPolarizationSum::usage=
 "SpinPolarizationSum is an option for SquareAmplitude and

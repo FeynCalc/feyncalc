@@ -20,7 +20,7 @@ a Levi Civita tensor (Eps) the Chisholm identity.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[EpsChisholm, ReadProtected];
+   
 
 
 MakeContext[DiracGamma, DiracSimplify, Eps, 

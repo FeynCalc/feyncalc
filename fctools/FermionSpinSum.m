@@ -24,7 +24,7 @@ SpinorCollect::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FermionSpinSum, ReadProtected];
+   
 
 Collect2      = MakeContext["Collect2"];  
 Contract      = MakeContext["Contract"];  
@@ -225,7 +225,7 @@ onx = nx;
     ];
 
 (* in case somthing went wrong .. *)
-If[nx =!= 0 && FreeQ[nx, DiracTrace], Print[MIST];Dialog[]; nx = x exf];
+If[nx =!= 0 && FreeQ[nx, DiracTrace], Print["MIST"];(*Dialog[];*) nx = x exf];
               ] (* endIfFreeQ[x, Spinor]*);
 (*
 If[!FreeQ2[exf, {LorentzIndex, Eps}],  

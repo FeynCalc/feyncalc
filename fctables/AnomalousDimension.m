@@ -19,7 +19,7 @@ gamma_{S,qg}^{(0),m} in the MS-bar scheme. etc. ...";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[AnomalousDimension, ReadProtected];
+   
 
 MakeContext[CA, CF, OPEm, Polarization, SumP, SumS, SumT, Nf, Tf, Zeta2];
 

@@ -31,7 +31,7 @@ RHI[{a,b,c,d,e}, {al,be,ga,de,ep}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RHI, ReadProtected];
+   
 
 TLI = MakeContext["TLI"];
 Epsilon  = MakeContext["Epsilon"];
@@ -61,7 +61,7 @@ Options[RHI] =  {Directory -> "rh/ope/diagrams/",
                  FORM -> False,
                  Momentum -> Global`p}; 
 
-ClearAttributes[RHI, ReadProtected];
+
 
 RHI[{v_,w_,x_,y_,z_},{a_,b_,c_,d_,e_}, 
     {al_,be_,ga_,de_,ep_}, {k1_, k2_},o___Rule ] := Block[
@@ -462,7 +462,9 @@ ind = {indi};
         file         = short[frh["RHI"@@Flatten[ind]
                                 ]
                             ] <> ".i";
-        checkifthere = FileNames[file, {$FeynCalcDirectory <>"/"<>save}];
+        
+	(*Mac fix, 18/9-2000, F.Orellana*)
+	checkifthere = FileNames[{file}, {$FeynCalcDirectory <>$PathnameSeparator<>save}];
   If[$VeryVerbose > 0, Print["checkifthere = ", checkifthere]];
      If[checkifthere =!= {}, 
         If[$VeryVerbose > 0, Print["Loading"]];

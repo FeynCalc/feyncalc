@@ -41,7 +41,7 @@ the color indices are omitted in the arguments of Twist2GluonOperator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Twist2GluonOperator, ReadProtected];
+   
 
 MakeContext[
 ChangeDimension,

@@ -23,7 +23,7 @@ the integration momenta in amplitude must be named q1 and q2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TwoLoopSimplify, ReadProtected];
+   
 
 MakeContext[
 Cases2,

@@ -20,7 +20,7 @@ with propagators. ScalarProductCancel[exp] cancels simple cases.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ScalarProductCancel, ReadProtected];
+   
 
 MakeContext[Cases2,
             ChangeDimension,
@@ -191,7 +191,7 @@ If[Head[t2] === Plus, Select1[t2,IFPD];
    t2 = Select2[t2, IFPD] ];
 
 (*
-]
+];
 *)
 
 If[$VeryVerbose > 1, Print["cancelling done in ScalarProductCancel"]];
@@ -231,9 +231,12 @@ If[$VeryVerbose > 2, Print["combining in SPC done "]];
             ]
          ];
        If[fads===True, 
+          If[$VeryVerbose > 1, 
+             Print["FeynAmpDenominatorSimplify starting on: ",StandardForm[t4]]
+            ];
           t4 = FeynAmpDenominatorSimplify[t4,qq,ql];
           If[$VeryVerbose > 1, 
-             Print["FeynAmpDenominatorSimplify done in ScalarProductCancel"]
+             Print["FeynAmpDenominatorSimplify done in ScalarProductCancel: ",t4]
             ]
          ];
  t4

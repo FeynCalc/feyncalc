@@ -28,7 +28,7 @@ PolarizationSum[mu, nu, k, 0] is equivalent to -g(mu nu)";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PolarizationSum, ReadProtected];
+   
 
 Collect2                 = MakeContext["Collect2"];
 Dimension                = MakeContext["Dimension"];

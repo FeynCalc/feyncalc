@@ -18,7 +18,7 @@ of hypergeometric functions, where possible.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TLIHYP, ReadProtected];
+   
 
 MakeContext[Epsilon, FeynmanParameterNames, OPEDelta, 
             ScalarProduct, Smu, TLI];

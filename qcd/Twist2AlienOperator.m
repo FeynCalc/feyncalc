@@ -23,7 +23,7 @@ p3: incoming gluon (count1)).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Twist2AlienOperator, ReadProtected];
+   
 
 MakeContext[
 CA,CF, DOT, CouplingConstant, DeclareNonCommutative,

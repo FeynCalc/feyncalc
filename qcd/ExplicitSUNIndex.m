@@ -22,7 +22,7 @@ ind is an integer.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ExplicitSUNIndex, ReadProtected];
+   
 
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
 

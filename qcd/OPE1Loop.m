@@ -23,7 +23,7 @@ decomposition.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPE1Loop, ReadProtected];
+   
 
 MakeContext["Contract", "Contract3"];
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];

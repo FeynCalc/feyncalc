@@ -28,7 +28,7 @@ p20 = p2^2, p13 = (p1-p3)^2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[D0, ReadProtected];
+   
 
    D0 /:
    MakeBoxes[D0[a_,b_,c_,d_,e_,f_,h_,i_,j_,k_, ___Rule]  ,TraditionalForm] :=

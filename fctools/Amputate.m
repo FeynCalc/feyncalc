@@ -22,7 +22,7 @@ OPEDelta.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Amputate, ReadProtected];
+   
 
 MakeContext[Cases2, Dimension, DiracSlash,
             DiracGamma, DotSimplify, Eps, Expanding, 

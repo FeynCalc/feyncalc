@@ -82,7 +82,7 @@ substitute \"SmallVariable[Melectron]\"
  for all Melectron's in the calculation.";
 
 StandardMatrixElement::usage=
-"StandardMatrixElement[ ... ] is the head for matrixelemnt abbreviations.";
+"StandardMatrixElement[ ... ] is the head for matrixelement abbreviations.";
 
 (* ******************************************************************* *)
 (*                             oneloop.m                               *)
@@ -90,7 +90,7 @@ StandardMatrixElement::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OneLoop, ReadProtected];
+   
 
 MakeContext[
  A0, A0ToB0, Apart2, B0, B00, B1, B11,   Cases2,
@@ -313,10 +313,11 @@ If[ StringQ[ name ] && StringQ[writeout], name= StringJoin[writeout, name]];
      ]      ];
 
 If[StringQ[name],
-oldfile = FileNames @@ {name};
-If[oldfile =!= {},
-   print1["oldfile  =", oldfile];
-   ftemp =( Get @@ {name} );
+(*Mac fix, 18/9-2000, F.Orellana. Ditto for FileType's below*)
+oldfile = FileType[name];
+If[oldfile === File,
+   print1["oldfile  =", name];
+   ftemp =( Get[name] );
    If[ValueQ[OneLoopResult[grname]] && FreeQ[ftemp, FeynAmpDenominator],
       oneamp = OneLoopResult[grname]
      ];
@@ -1659,27 +1660,38 @@ If[ !FreeQ[sres, PaVe],
     varpave = FixedPoint[ ReleaseHold, varpave ];
     lenpa = Length[varpave];
 
-pavit[xXX_PaVe, dir_, prev_:False] := Block[{nx, file, temp, set,xxx},
+pavit[xXX_PaVe, dir_, prev_:False] := Block[{nx, file, temp, set,xxxa,abbs},
    paV[xy__, p_List, m_List] := PaVe[xy,C,p,C,m];
    xxx = paV@@xXX;
-   nx = StringReplace[ ToString[InputForm[xxx], PageWidth -> 222],
-                       {", "->"","^"->"","{"->"", "/" -> "",
-                       "}"->"", "["->"", "]"->"", "*" -> "", " " -> "" }
+   (*Changed 18/9-2000, F.Orellana*)
+   abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /. 
+          HoldPattern -> Identity;
+   nx = StringReplace[ ToString[InputForm[xxx/.abbs], PageWidth -> 222],
+                       $Abbreviations
                      ];
+   (**)
+   (*nx = StringReplace[ ToString[InputForm[xxx], PageWidth -> 222],
+                       {", "->"","^"->"","{"->"", "/" -> "",
+                       "}"->"", "["->"", "]"->"", "*" -> "", " " -> "" ,
+		       (*Added 18/9-2000, F.Orellana*)"\n" -> "", "\r" -> "",
+		       "Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
+		       "ParticleMass" -> "m", "PseudoScalar" -> "PS", "Scalar" -> "S",
+		       "Vector" -> "V", "AxialVector" -> "AV"}
+                     ];*)
                       nx = StringJoin[dir, nx, ".s"];
                       print1["nx = ",nx];
-                      file = FileNames @@ {nx};
+                      file = FileType[nx];
                       print1["file  =", file];
-                      If[file =!= {},
+                      If[file === File,
                          temp =( Get @@ {nx} ) // paveorder;
  (* If something went wrong in writing the file *)                        
-                         If[ Head[temp]=!=Plus, file = {} ]
+                         If[ Head[temp]=!=Plus, file = None ]
                         ];
-                      If[(file ==={}) && (keeponly === False),
+                      If[(file === None) && (keeponly === False),
 tim = Timing[
                         If[prev === False,
-                           temp = PaVeReduce[xXX, Dimension -> dims
-                                            ]//paveorder,
+                           temp = PaVeReduce[xXX, Dimension -> dims,
+                    (*Added 19/9-2000. F.Orellana*)WriteOutPaVe->nx(**)]//paveorder,
                            temp = paveorder[prev]
                           ];
             ][[1]];
@@ -2503,9 +2515,9 @@ Options[SetStandardMatrixElements] = {WriteOut -> False};
   ops = {op}; enm = en;
   If[{ops}==={} || (!FreeQ[enm, WriteOut]), ops=en; enm = {}];
   filename = WriteOut /. ops /. Options[SetStandardMatrixElements];
-  If[StringQ[filename], file = FileNames @@ {filename}];
-     If[ValueQ[file] && (file =!= {}), 
-        temp = Get @@ file;
+  If[StringQ[filename], file = FileType[filename]];
+     If[ValueQ[file] && (file === File), 
+        temp = Get[filename];
         temp = Select[temp, !FreeQ[#,Spinor]&] 
        ];
      If[Length[temp]>0, temp/.Literal->Identity/.RuleDelayed->Set;

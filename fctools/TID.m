@@ -21,7 +21,7 @@ TID::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TID, ReadProtected];
+   
 
 MakeContext[Uncontract,
             Cases2,
@@ -47,7 +47,7 @@ MakeContext[Uncontract,
             IsolateNames,
             IsolateSplit,
             LorentzIndex, 
-          MemSet,
+            MemSet,
             Momentum, MomentumCombine, 
             MomentumExpand,
             OPEDelta,
@@ -120,7 +120,8 @@ If[FeynAmpDenominatorCombine /. {opt} /. Options[TID],
 
 If[t0 === 0, t0,
 originallistoflorentzindices = Cases[t0, LorentzIndex];
-t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred] /. 
+t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred,
+                (*Added 17/9-2000, F.Orellana*) Dimension -> n] /. 
      PropagatorDenominator -> procanonical[q];
 
 If[Head[t1] =!= Plus,
@@ -359,7 +360,8 @@ If[!FreeQ[res, Pair[Momentum[q, n], Momentum[q, n]]]
       res = ScalarProductCancel[res, q, 
                                 FeynAmpDenominatorSimplify -> fds,
                                 FeynAmpDenominatorCombine -> False,
-                                Collecting -> False
+                                Collecting -> False,(*Added 17/9-2000, F.Orellana*)
+				ChangeDimension -> chd
                                ];
       If[$VeryVerbose > 0, Print["collecting (3)  in TID "]];
       (* res = Collect2[res, q, Factoring -> True]; *)
@@ -380,7 +382,9 @@ If[(Head[res] === Plus) && (!FreeQ[res, Pair[Momentum[q, n], _]])
           ScalarProductCancel[SelectNotFree[res,Pair[Momentum[q,n],_]],q,
                               FeynAmpDenominatorSimplify -> fds,
                               FeynAmpDenominatorCombine -> False,
-                              Collecting -> False
+                              Collecting -> False,
+			      (*Added 17/9-2000, F.Orellana*)
+			      ChangeDimension -> chd
                               ];
 (*
          TID[Isolate[SelectNotFree[res, Pair[Momentum[q,n],_]],q,

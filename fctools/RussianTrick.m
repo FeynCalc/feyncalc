@@ -23,7 +23,7 @@ l is the momentum to be differentiated.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RussianTrick, ReadProtected];
+   
 
 MakeContext[
 Apart2,

@@ -24,7 +24,7 @@ by Times.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PropagatorDenominatorExplicit, ReadProtected];
+   
 
 Momentum              = MakeContext["Momentum"];
 Pair                  = MakeContext["Pair"];

@@ -19,7 +19,7 @@ PowerFactor::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PowerFactor, ReadProtected];
+   
 
 MakeContext[SelectFree, SelectNotFree];
 

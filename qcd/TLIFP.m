@@ -18,7 +18,7 @@ TLIFP::usage= "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TLIFP, ReadProtected];
+   
 
 MakeContext[ChangeDimension,Collect2, DeltaFunction,
             Epsilon, FeynmanParameterNames, GammaExpand, Momentum,

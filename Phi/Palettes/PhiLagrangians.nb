@@ -1,0 +1,256 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 4.0,
+MathReader 4.0, or any compatible application. The data for the notebook 
+starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      6313,        189]*)
+(*NotebookOutlinePosition[      7422,        230]*)
+(*  CellTagsIndexPosition[      7378,        226]*)
+(*WindowFrame->Palette*)
+
+
+
+Notebook[{
+Cell[BoxData[{
+    \(Load\ \), "\n", 
+    \(\ \(\(lagrangian\)\(:\)\)\)}], NotebookDefault,
+  CellFrame->False,
+  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
+  Evaluatable->False,
+  CellHorizontalScrolling->False,
+  LineSpacing->{1, 0},
+  FormatType->InputForm,
+  ScriptMinSize->9,
+  ShowStringCharacters->False,
+  FontFamily->"Times",
+  FontWeight->"Bold",
+  Background->GrayLevel[0.900008]],
+
+Cell[BoxData[
+    StyleBox[GridBox[{
+          {
+            ButtonBox["BChPT22",
+              ButtonFunction:>LoadLagrangian[ "BChPT22"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPT22",
+              ButtonFunction:>LoadLagrangian[ "ChPT22"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPT24",
+              ButtonFunction:>LoadLagrangian[ "ChPT24"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPT2Photon2",
+              ButtonFunction:>LoadLagrangian[ "ChPT2Photon2"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPT2Photon4",
+              ButtonFunction:>LoadLagrangian[ "ChPT2Photon4"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPT32",
+              ButtonFunction:>LoadLagrangian[ "ChPT32"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPT34",
+              ButtonFunction:>LoadLagrangian[ "ChPT34"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPTEM22",
+              ButtonFunction:>LoadLagrangian[ "ChPTEM22"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPTW32",
+              ButtonFunction:>LoadLagrangian[ "ChPTW32"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPTW34",
+              ButtonFunction:>LoadLagrangian[ "ChPTW34"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["ChPTWS32",
+              ButtonFunction:>LoadLagrangian[ "ChPTWS32"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["HBChPT22",
+              ButtonFunction:>LoadLagrangian[ "HBChPT22"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["QED1",
+              ButtonFunction:>LoadLagrangian[ "QED1"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["QED21",
+              ButtonFunction:>LoadLagrangian[ "QED21"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["QED22",
+              ButtonFunction:>LoadLagrangian[ "QED22"],
+              ButtonEvaluator->Automatic]},
+          {
+            ButtonBox["QED2",
+              ButtonFunction:>LoadLagrangian[ "QED2"],
+              ButtonEvaluator->Automatic]}
+          },
+        RowSpacings->0,
+        ColumnSpacings->0,
+        GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]],
+      ButtonBoxOptions->{ButtonEvaluator->Automatic,
+      Active->True,
+      ButtonStyle->"Evaluate"}]], NotebookDefault,
+  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakAbove->True,
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  CellLabelMargins->{{11, Inherited}, {Inherited, Inherited}},
+  DefaultFormatType->DefaultInputFormatType,
+  LineSpacing->{1.25, 0},
+  FormatType->InputForm,
+  ScriptMinSize->9,
+  ShowStringCharacters->True,
+  NumberMarks->True,
+  CounterIncrements->"Input",
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+
+Cell[BoxData[
+    StyleBox[GridBox[{
+          {
+            ButtonBox["Rebuild",
+              ButtonFunction:>RebuildLagrangiansPalette,
+              ButtonEvaluator->Automatic]}
+          },
+        RowSpacings->0,
+        ColumnSpacings->0],
+      ButtonBoxOptions->{ButtonEvaluator->Automatic,
+      Active->True,
+      ButtonStyle->"Evaluate"}]], NotebookDefault,
+  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakAbove->True,
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  CellLabelMargins->{{11, Inherited}, {Inherited, Inherited}},
+  DefaultFormatType->DefaultInputFormatType,
+  LineSpacing->{1.25, 0},
+  AutoItalicWords->{},
+  FormatType->InputForm,
+  ScriptMinSize->9,
+  ShowStringCharacters->True,
+  NumberMarks->True,
+  SingleLetterItalics->False,
+  CounterIncrements->"Input",
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Bold"]
+},
+FrontEndVersion->"4.0 for X",
+ScreenRectangle->{{0, 1152}, {0, 864}},
+Editable->False,
+WindowToolbars->{},
+PageWidth->342,
+WindowSize->{104, 390},
+WindowMargins->{{147, Automatic}, {Automatic, 0}},
+WindowFrame->"Palette",
+WindowElements->{},
+WindowFrameElements->"CloseBox",
+WindowClickSelect->False,
+WindowTitle->"Load lagrangian",
+ScrollingOptions->{"PagewiseScrolling"->True},
+ShowCellBracket->False,
+CellMargins->{{0, 0}, {Inherited, 0}},
+Active->True,
+CellOpen->True,
+ShowCellLabel->False,
+ShowCellTags->False,
+ImageMargins->{{0, Inherited}, {Inherited, 0}},
+Background->GrayLevel[0.900008],
+Magnification->1
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1718, 49, 403, 13, 35, NotebookDefault,
+  Evaluatable->False],
+Cell[2124, 64, 3196, 90, 328, NotebookDefault,
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  PageBreakAbove->True,
+  PageBreakWithin->False,
+  CounterIncrements->"Input"],
+Cell[5323, 156, 986, 31, 28, NotebookDefault,
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  PageBreakAbove->True,
+  PageBreakWithin->False,
+  CounterIncrements->"Input"]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+

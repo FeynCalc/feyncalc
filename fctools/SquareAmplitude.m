@@ -31,7 +31,7 @@ SelectedGraphs::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SquareAmplitude, ReadProtected];
+   
 
 ChangeDimension     =  MakeContext["ChangeDimension"];
 Chisholm     := Chisholm =   MakeContext["Chisholm"];
@@ -733,7 +733,7 @@ amp];
 SquareAmplitude[ exp_ /; FreeQ[exp, FeynAmp], ops___Rule ] := Block[
 {ts,sps,amp2,cts,plu3,neamp,intermed,amp, 
  amps1, amps2,pamp,lis, saveminamp, file,finsubst2, isolhead2,
- nwres, mand2, extrafact2,factoring2,epsAway},
+ nwres, mand2, extrafact2,factoring2,epsAway,myfile},
 
 ts = fci[exp] /. SUNDelta -> SUNDeltaContract /.  
                     SUNDeltaContract ->SUNDelta;
@@ -748,7 +748,18 @@ finsubst2  = fci[FinalSubstitutions  /. {ops} /.
                 Options[SquareAmplitude]];
 epsAway    = EpsDiscard /. {ops} /. Options[SquareAmplitude];
 
-If[StringQ[saveminamp], file = FileNames @@ {saveminamp}, file = {}];
+(*Mac fix, 18/9-2000, F.Orellana. Ditto for FileType's below*)
+If[StringQ[saveminamp], 
+myfile=FileType[saveminamp];
+Which[myfile === File,
+   file = {saveminamp};,
+   myfile === None,
+   file = {};,
+   True,
+   Print["There was a problem:\n",saveminamp," is inaccessible"];Return[]
+  ], 
+file = {}];
+(*If[StringQ[saveminamp], file = FileNames @@ {saveminamp}, file = {}];*)
 
 plu3[y__] := Isolate[Plus[y], 
               {DiracGamma, LorentzIndex,Spinor,Eps,SUNIndex},

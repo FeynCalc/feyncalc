@@ -32,7 +32,7 @@ are determined by the options Dimension and CouplingConstant.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[GluonGhostVertex, ReadProtected];
+   
 
 MakeContext[
 CouplingConstant,

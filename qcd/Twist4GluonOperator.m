@@ -20,7 +20,7 @@ Twist4GluonOperator::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Twist4GluonOperator, ReadProtected];
+   
 
 MakeContext[FV, FeynCalcInternal, MT, OPEDelta, SO, SP, SUND];
 

@@ -28,7 +28,7 @@ propagator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[GhostPropagator, ReadProtected];
+   
 
 MakeContext[
 Momentum,

@@ -23,7 +23,7 @@ B0[p2,m1^2,m2^2] with respect to p2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[DB0, ReadProtected];
+   
 
 B0 = MakeContext["B0"];
 SmallVariable = MakeContext["SmallVariable"];

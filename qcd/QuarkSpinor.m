@@ -20,7 +20,7 @@ QuarkSpinor::usage = "QuarkSpinor is equivalent to Spinor.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[QuarkSpinor, ReadProtected];
+   
 
 QuarkSpinor := QuarkSpinor =  MakeContext["Spinor"];
 

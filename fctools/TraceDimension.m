@@ -22,7 +22,7 @@ If set to 4: trace, if set to n: tracen.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TraceDimension, ReadProtected];
+   
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

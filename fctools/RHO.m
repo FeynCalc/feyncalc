@@ -23,7 +23,7 @@ be recovered by RHO[i, mu, nu, p].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[RHO, ReadProtected];
+   
 
 MakeContext[
 ChangeDimension,

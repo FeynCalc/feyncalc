@@ -1,0 +1,1 @@
+{{((-2*I)/3*(SU2Delta[I1, I4]*SU2Delta[I2, I3] +         SU2Delta[I1, I3]*SU2Delta[I2, I4] + SU2Delta[I1, I2]*SU2Delta[I3, I4]))/DecayConstant[PseudoScalar[2], RenormalizationState[0]]}}

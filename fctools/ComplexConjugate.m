@@ -12,7 +12,7 @@
              introducing complex conjugated indices automatically
 *)
 
-(* :Comments: ComplexConjugate does NOT work if complex 
+(* :Comments: ComplexConjugate does NOT work if complex
               quantities are in denominators!!!!!!!!!!!!!!!
 *)
 
@@ -27,13 +27,13 @@ It operates on  Fermion-lines, i.e., products
 of Spinor[..] .DiracMatrix[..] . Spinor[..], and changes all
 occuring LorentzIndex[mu] into LorentzIndex[ComplexIndex[mu]].
 For taking the spin sum (i.e. constructing the traces) use
-FermionSpinSum. /n/n
+FermionSpinSum.\n\n
 WARNING: In expr should be NO explicit I in denominators!";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ComplexConjugate, ReadProtected];
+
 
 ccm                 = MakeContext["ChargeConjugationMatrix"];
 ccmi                = MakeContext["ChargeConjugationMatrixInv"];
@@ -69,9 +69,10 @@ HoldPattern[ rev[yz__ /; FreeQ2[{yz}, {SUNT}] ] ]:=
 HoldPattern[ rev[yz__] ]:=
 Isolate[
 dot @@ (Reverse[FRH[{ yz }]]/.
+(*Changed 28/2-2001 by F.Orellana, because of bug report by T.Rashba*)(*
                     DiracGamma[5]->(-DiracGamma[5])/.
-                   {DiracGamma[6] :> DiracGamma[7], 
-                    DiracGamma[7]:>DiracGamma[6]}/.
+                   {DiracGamma[6] :> DiracGamma[7],
+                    DiracGamma[7]:>DiracGamma[6]}/.*)
                      ccm-> (-ccm) /.  ccmi -> (-ccmi)
        ), IsolateNames->c$CC, IsolateSplit->Infinity
        ] /; Length[Position[{yz}, Spinor]] < 3;
@@ -91,15 +92,15 @@ nenenen
 sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
 *)
 
-ComplexConjugate[b_HoldForm] := b /; FreeQ2[fci[FRH[b]], 
+ComplexConjugate[b_HoldForm] := b /; FreeQ2[fci[FRH[b]],
                                 {dot,LorentzIndex,SUNIndex,Complex}];
 
-ComplexConjugate[x_ /; (Head[x] =!= HoldForm)] := 
+ComplexConjugate[x_ /; (Head[x] =!= HoldForm)] :=
                  compcon[fci[x]/.SUNTrace->suntrac
                         ] /. SUNF -> sunfcomp /.
                     SUNDelta -> SUNDeltaContract /.
                        SUNDeltaContract -> sundeltacomp/.
-                          compcon -> compcon2 /. compcon2 ->  
+                          compcon -> compcon2 /. compcon2 ->
                              ComplexConjugate /. suntrac->
                               SUNTrace;
 
@@ -108,9 +109,9 @@ compcon[x_^n_?NumberQ] := compcon[x]^n;
 compcon[x_Plus] := compcon /@ x;
 compcon[x_Times]:= compcon /@ x;
 
-compcon[b_HoldForm] := b /; 
+compcon[b_HoldForm] := b /;
              FreeQ2[FRH[b], {dot,LorentzIndex,SUNIndex,Complex}];
-compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times)] := 
+compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times)] :=
              Block[{nx=x,oone, suntrac},
                   If[!FreeQ[nx, SUNF], nx = Expand[nx, SUNF]];
 (*CHANGE 26/07/94 *)
@@ -120,12 +121,17 @@ compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times)] :=
 (* this is wrong if nx had Head List ... (change 02/99)
                     nx = (dot[oone, nx] /. dot -> rev /. rev -> dot);
 *)
-                    nx = nx /. DiracGamma[a__]:> dot[oone, DiracGamma[a]]/.
+                    nx = nx /. DiracGamma[a__]:>
+                    dot[oone, DiracGamma[a]](*Added 28/2-2001 by F.Orellana - see above*)/;
+                    FreeQ[{5,6,7},Evaluate[{a}[[1]]]]/.
+                    DiracGamma[5]->(-DiracGamma[5])/.
+                   {DiracGamma[6] :> DiracGamma[7],
+                    DiracGamma[7]:>DiracGamma[6]}(**)/.
                          dot -> rev /. rev -> dot;
                     nx = nx //. c$CC -> c$CCfrh /. oone -> 1;
                     nx = nx /.
                           LorentzIndex -> cLIndex /.
-                          SUNIndex  -> cSIndex /.  
+                          SUNIndex  -> cSIndex /.
                           Complex[a_, b_] -> Complex[a, -b] ;
                     nx = dotlin[nx];
                 nx] /; FreeQ[x, HoldForm];

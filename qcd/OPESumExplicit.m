@@ -20,7 +20,7 @@ OPESumExplicit::usage= "OPESumExplicit[exp] calculates OPESum's.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPESumExplicit, ReadProtected];
+   
 
 MakeContext[OPEi, OPEj, OPESum];
 

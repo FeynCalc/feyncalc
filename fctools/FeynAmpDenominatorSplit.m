@@ -26,7 +26,7 @@ the second without q1.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynAmpDenominatorSplit, ReadProtected];
+   
 
 MakeContext[ Momentum, FeynAmpDenominator, 
              FeynCalcInternal, PropagatorDenominator,

@@ -20,7 +20,7 @@ OPEk::usage= "OPEk is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEk, ReadProtected];
+   
 
 MakeContext[PositiveInteger, DataType];
 DataType[OPEk, PositiveInteger] = True;

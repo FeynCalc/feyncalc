@@ -22,7 +22,7 @@ the option EpsilonOrder).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Gamma3, ReadProtected];
+   
 
 MakeContext[Epsilon, EpsilonOrder, Select1, Select2, Zeta2];
 
@@ -149,8 +149,6 @@ gamrules =
    2*Epsilon*(-1/4 + Zeta2/2) + (Epsilon^3*Zeta2)/4 - 
    2*Epsilon^2*(-1/8 - Zeta2/4 + Zeta[3]/3) + (Epsilon^3*Zeta[3])/3
  };
-
-Attributes[Epsilon] = {ReadProtected}
 
 End[]; EndPackage[];
 

@@ -20,9 +20,9 @@ double sums.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SymbolicSum2, ReadProtected];
+   
 
-ClearAttributes[SymbolicSum2, ReadProtected];
+
 
 MakeContext[Factor2,PowerSimplify,NumericalFactor,
             OPEi, OPEj, OPEm];

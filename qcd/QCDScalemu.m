@@ -20,7 +20,7 @@ QCDScalemu::usage= "QCDScalemu is ...";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[QCDScalemu, ReadProtected];
+   
 
    QCDScalemu /:
    MakeBoxes[QCDScalemu, TraditionalForm] := \[Mu];

@@ -20,7 +20,7 @@ functions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[CounterTerm, ReadProtected];
+   
 
 MakeContext[CA,CouplingConstant,
  CF,Dimension, Epsilon,Tf,Nf, Gauge, Gstrong];

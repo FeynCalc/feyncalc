@@ -20,7 +20,7 @@ Smu::usage= "Smu  is ...";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Smu, ReadProtected];
+   
 
 Smu/: MakeBoxes[Smu,TraditionalForm]:= SubscriptBox["S", "\[Mu]"];
 

@@ -19,7 +19,7 @@ The returned object is 0.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Hill, ReadProtected];
+   
 
 Factor2 = MakeContext["Factor2"];
 

@@ -32,7 +32,7 @@ used in expr. It is replaced in OPEIntDelta by (4+Epsilon).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEIntDelta, ReadProtected];
+   
 
 MakeContext[
 ChangeDimension,

@@ -19,7 +19,7 @@ Gamma functions expanded up to order Epsilon^2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Gamma1, ReadProtected];
+   
 
 MakeContext[Epsilon, EpsilonOrder, Zeta2];
 

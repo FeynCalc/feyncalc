@@ -21,7 +21,7 @@ Integrate5::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Integrate5, ReadProtected];
+   
 
 MakeContext[Collect2, DeltaFunction, Factor2, Factoring, FreeQ2,
             Integrate3,

@@ -24,7 +24,7 @@ Solve for systems involving rational polyonials.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Solve3, ReadProtected];
+   
 MakeContext[ Collect2, Combine,Expanding, Factor2,
              FinalSubstitutions,
              Factoring, Isolate, IsolateNames, IsolateSplit,

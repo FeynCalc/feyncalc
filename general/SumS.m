@@ -21,7 +21,7 @@ SumS::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SumS, ReadProtected];
+   
 
 Options[SumS] = {Reduce -> False};
 

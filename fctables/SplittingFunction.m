@@ -31,7 +31,7 @@ functions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SplittingFunction, ReadProtected];
+   
 
 Options[SplittingFunction] = {Polarization -> 1};
 

@@ -23,7 +23,7 @@ dimension mass^2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[B00, ReadProtected];
+   
 
 ClearAttributes[B00, ReadProtectecd];
 

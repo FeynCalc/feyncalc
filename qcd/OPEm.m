@@ -20,7 +20,7 @@ OPEm::usage= "OPEm is m of the operator product expansion.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEm, ReadProtected];
+   
 
 MakeContext[PositiveInteger, DataType, OPEi];
 DataType[OPEm, PositiveInteger] = True;

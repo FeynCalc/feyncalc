@@ -35,7 +35,7 @@ operator is returned.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Twist3QuarkOperator, ReadProtected];
+   
 
 MakeContext[
 DOT,

@@ -22,7 +22,7 @@ i = 96 to eq. 9.132.2 in Gradsteyn & Ryzhik.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Kummer, ReadProtected];
+   
 
 f = MakeContext["Factor2"];
 ps = MakeContext["PowerSimplify"];

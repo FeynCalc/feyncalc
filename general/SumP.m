@@ -20,7 +20,7 @@ SumP::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SumP, ReadProtected];
+   
 
 Explicit = MakeContext["Explicit"];
 SumS = MakeContext["SumS"];

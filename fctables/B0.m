@@ -31,7 +31,7 @@ by (B0[0,m2,m2]+1) and B0[m2,0,m2] simplifies to (B0[0,m2,m2]+2).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[B0, ReadProtected];
+   
 
 ClearAttributes[B0, ReadProtectecd];
 

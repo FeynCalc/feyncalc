@@ -25,7 +25,7 @@ It uses basically PolynomialGCD.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Factor1, ReadProtected];
+   
 
 numericalfactor = MakeContext["NumericalFactor"];
 

@@ -19,9 +19,6 @@ integration of the definite integral Integrate[exp,{t,0,1}].";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Private`"];
-   SetAttributes[PartialIntegrate, ReadProtected];
-
 Options[PartialIntegrate] = {Hold -> False};
 
 MakeContext[

@@ -23,7 +23,7 @@ mulitplied by their coefficients.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Collect3, ReadProtected];
+   
 
 Options[Collect3] = {Factor -> False, Head -> Plus};
 

@@ -19,7 +19,7 @@ Contract1::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Contract1, ReadProtected];
+   
 
 MakeContext[
 Dimension,
@@ -32,7 +32,7 @@ SelectNotFree,
 Upper
 ];
 
-ClearAttributes[Contract1, ReadProtected];
+
 
 SetAttributes[Contract1, HoldAll];
 SetAttributes[ct, HoldAll];

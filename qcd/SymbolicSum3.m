@@ -20,7 +20,7 @@ double sums.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SymbolicSum3, ReadProtected];
+   
 
 MakeContext[FreeQ2,OPEi,OPEj,OPEm];
 

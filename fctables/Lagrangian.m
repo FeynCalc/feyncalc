@@ -19,7 +19,7 @@ operator. Lagrangian[\"oqp\"] gives the polarized quark operator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Lagrangian, ReadProtected];
+   
 
 MakeContext[AntiQuarkField, CovariantD, DiracGamma,
             FieldStrength, GluonField, LeviCivita,Momentum,

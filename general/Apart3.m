@@ -20,7 +20,7 @@ Map2[Factor2, Collect2[Apart1[expr,x],x]].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Apart3, ReadProtected];
+   
 
 MakeContext[Apart1, Collect2, Factor2, Map2];
 

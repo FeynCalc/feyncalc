@@ -22,7 +22,7 @@ sw (in the Global` context).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SMP, ReadProtected];
+   
 
 SMP[] := SMP[] = 
 {"EL" :> Global`e,

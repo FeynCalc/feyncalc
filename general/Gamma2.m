@@ -20,7 +20,7 @@ integer arguments are given.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Gamma2, ReadProtected];
+   
 
 MakeContext[Epsilon, EpsilonOrder, Select1, Select2, Zeta2];
 

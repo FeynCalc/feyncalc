@@ -22,7 +22,7 @@ t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[HypInt, ReadProtected];
+   
 
 Integratedx=MakeContext["Integratedx"];
 

@@ -27,7 +27,7 @@ by the option FinalSubstitutions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynCalcInternal, ReadProtected];
+   
 FCI = FeynCalcInternal;
 
 

@@ -14,7 +14,7 @@ OPEIntDelta is replaced by (6 Zeta2).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Zeta2, ReadProtected];
+   
 
 Zeta2 /: N[Zeta2] = N[Zeta[2]];
 

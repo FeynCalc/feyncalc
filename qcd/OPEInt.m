@@ -25,7 +25,7 @@ the dimension in which the Levi-Civita tensors are contracted.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEInt, ReadProtected];
+   
 
 MakeContext[
 CA,

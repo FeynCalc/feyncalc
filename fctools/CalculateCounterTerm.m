@@ -19,7 +19,7 @@ calculates the residue of exp.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[CalculateCounterTerm, ReadProtected];
+   
 
 MakeContext[
 CA,CF,

@@ -18,7 +18,7 @@ SimplifyGTI::usage= "SimplifyGTI simplifies GTI's.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SimplifyGTI, ReadProtected];
+   
 
 Options[SimplifyGTI] = {Negative -> False};
 

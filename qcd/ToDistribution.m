@@ -28,7 +28,7 @@ a^3 Epsilon^3/6 Log[1-x]^3/(1-x)^2).
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ToDistribution, ReadProtected];
+   
 
 MakeContext[Apart3, 
 DeltaFunction, DeltaFunctionPrime, DeltaFunctionDoublePrime,

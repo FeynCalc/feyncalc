@@ -21,8 +21,8 @@ See TFi for details on the convention.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FromTFi, ReadProtected];
-ClearAttributes[FromTFi, ReadProtected];
+   
+
 
 MakeContext[ FAD, SPD, SOD,FeynCalcInternal, TLI, TLI2FC, TFi];
 (* Care about TVi and TJi later *)

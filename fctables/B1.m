@@ -23,7 +23,7 @@ All arguments are scalars and have dimension mass^2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[B1, ReadProtected];
+   
 
 ClearAttributes[B1, ReadProtectecd];
 

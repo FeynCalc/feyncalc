@@ -27,7 +27,7 @@ The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[SetMandelstam, ReadProtected];
+   
 
 
 ExpandScalarProduct = MakeContext["ExpandScalarProduct"];

@@ -25,7 +25,7 @@ Convolute[exp, {x1, x2}] assumes that exp is polynomial in x1 and x2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Convolute, ReadProtected];
+   
 
 MakeContext[Bracket,
             Collect2, ConvoluteTable, 

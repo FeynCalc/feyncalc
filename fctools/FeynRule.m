@@ -22,7 +22,7 @@ to the field configuration fields of the lagrangian lag.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynRule, ReadProtected];
+   
 FeynCalcForm = MakeContext["FeynCalcForm"];
 
 Anti5 = MakeContext["Anti5"];
@@ -85,6 +85,12 @@ SymbolicSum2 := SymbolicSum2 = MakeContext["SymbolicSum2"];
 UnDeclareNonCommutative := UnDeclareNonCommutative = 
   MakeContext["UnDeclareNonCommutative"];
 ZeroMomentumInsertion = MakeContext["ZeroMomentumInsertion"];
+
+(* Functions that are applied to the expression first.
+Added 3/8-2000 by Frederik Orellana to allow interoperability with Phi:
+InitialFunction could e.g. be set to PhiToFC *)
+
+InitialFunction = MakeContext["InitialFunction"];
 
 
 (* ******************************************************************** *)
@@ -385,7 +391,8 @@ Options[FeynRule] = {Anti5 -> -Infinity,
                      FinalSubstitutions -> {}, 
                      PartialD -> RightPartialD,
                      Schouten -> False,
-                     ZeroMomentumInsertion -> True
+                     ZeroMomentumInsertion -> True,
+                     InitialFunction -> Identity
                     };
 
 (*FeynRuledef*)
@@ -394,9 +401,10 @@ FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
         ] := FeynRule[a, {b,c,d}, e];
 
  FeynRule[lag_, fii_List, ru___Rule] := 
-  If[Length[lag] === 0, Print["well well ", lag, " does not 
-   look like a lagrangian"], 
-                             Block[{nlag = fcis[lag], temp1, temp,
+  If[Length[lag] === 0, Print["well well ", lag, " does not look like a lagrangian"], 
+                             Block[{(*InitialFunction stuff added by F.Orellana 3/8-2000*)
+			            initf = InitialFunction /. {ru} /. Options[FeynRule],
+			            nlag = fcis[initf[lag]], temp1, temp,
                                     fili = fii, lfili, qli,specope,
                                     groupindices,
                                     result,fields,tfields,plist,

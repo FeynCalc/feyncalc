@@ -32,7 +32,7 @@ option Expanding can be set to False.";
 
 Begin["`Private`"]
 
-   SetAttributes[Collect2, ReadProtected];
+   
 
 MakeContext[ Combine, Expanding ,
 Expand2, Factor2, Factoring, FeynCalcForm, FreeQ2,

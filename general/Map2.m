@@ -20,7 +20,7 @@ otherwise Map2[f, exp] gives f[exp].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Map2, ReadProtected];
+   
 
 NTerms = MakeContext["NTerms"];
 

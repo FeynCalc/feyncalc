@@ -30,7 +30,7 @@ by the option FinalSubstitutions. ";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[FeynCalcExternal, ReadProtected];
+   
 FCE = FeynCalcExternal;
 
 
@@ -49,7 +49,7 @@ dot             := dot             = MakeContext["DOT"];
 Eps             := Eps             = MakeContext["Eps"];
 factor2         := factor2         = MakeContext["Factor2"];
 FAD             := FAD             = MakeContext["FAD"];
-FV              := FV             = MakeContext["FV"];
+FV              := FV              = MakeContext["FV"];
 FVD             := FVD             = MakeContext["FVD"];
 fourvector      := fourvector      = MakeContext["FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
@@ -60,7 +60,8 @@ gsd             := gsd             = MakeContext["GSD"];
 LC              := LC              = MakeContext["LC"];
 LCD             := LCD             = MakeContext["LCD"];
 lorentzindex    := lorentzindex    = MakeContext["LorentzIndex"];
-metrictensor    := metrictensor    = MakeContext["MecmtricTensor"];
+metrictensor    := metrictensor    = MakeContext["MetricTensor"];
+levicivita      := levicivita      = MakeContext["LeviCivita"];
 mt              := mt              = MakeContext["MT"];
 mtd             := mtd             = MakeContext["MTD"];
 momentum        := momentum        = MakeContext["Momentum"];
@@ -157,29 +158,37 @@ doc[b:diracslash[_]..]  := Apply[diracslash,  {b}/. diracslash->Identity];
 metricmul[a_ b_] := metrictensor[a,b];
 scalarmul[a_ b_] := scalarproduct[a,b];
 
+(*dimension d_ stuff below added by F.Orellana 19/9-2000
+  to allow other dimension symbols than D*)
+
 pairback[lorentzindex[a_], lorentzindex[b_]] := mt[a,b];
 pairback[lorentzindex[a_,D], lorentzindex[b_,D]] := mtd[a,b];
+pairback[lorentzindex[a_,d_], lorentzindex[b_,d_]] /;d=!=D := metrictensor[a,b,dimension->d];
 (*
  metrictensor[a, b];
 *)
 pairback[lorentzindex[a_], momentum[b_]] := FV[b,a];
 pairback[lorentzindex[a_,D], momentum[b_,D]] := FVD[b,a];
+pairback[lorentzindex[a_,d_], momentum[b_,d_]] /;d=!=D := fourvector[b,a,dimension->d];
 (*
 pairback[lorentzindex[a_], momentum[b_]] := fourvector[b, a];
 *)
 pairback[momentum[OPEDelta], momentum[b_]] := SO[b];
 pairback[momentum[b_], momentum[OPEDelta] ] := SO[b];
 pairback[momentum[OPEDelta, D], momentum[b_, D]] := SOD[b];
+pairback[momentum[OPEDelta, d_], momentum[b_, d_]] /;d=!=D := pair[momentum[OPEDelta,d], momentum[q,d]];
 pairback[momentum[b_, D], momentum[OPEDelta, D]] := SOD[b];
-pairback[momentum[b_, D], momentum[OPEDelta, D]] := SOD[b];
+pairback[momentum[b_, d_], momentum[OPEDelta, d_]] /;d=!=D := pair[momentum[OPEDelta,d], momentum[q,d]];
 pairback[momentum[a_], momentum[b_]] := SP[a, b];
 pairback[momentum[a_, D], momentum[b_, D]] := SPD[a, b];
+pairback[momentum[a_, d_], momentum[b_, d_]] /;d=!=D := scalarproduct[a, b, dimension -> d];
 (*
 pairback[momentum[a_], momentum[b_]] := scalarproduct[a, b];
 *)
 diracback[lorentzindex[a_]] := ga[a];
 diracback[lorentzindex[a_,D],D] := gad[a];
-diracback[lm_[a_,n_/;n=!=D],en___] := DiracGamma[lm[a,n],en];
+diracback[lm_[a_,n_/;n=!=D],en___] :=
+                (*Corrected 19/9-2000. F.Orellana*)(*DiracGamma*)diracgamma[lm[a,n],en];
 diracback[momentum[a_]] := gs[a];
 diracback[momentum[a_, n_Symbol], n_Symbol] := gsd[a];
 diracback[5] := ga[5];
@@ -217,6 +226,21 @@ eps[lorentzindex[a_,D], lorentzindex[b_,D],
 eps[lorentzindex[a_,D],lorentzindex[b_,D],
     lorentzindex[c_,D],lorentzindex[d_,D]
    ] := LCD[a,b,c,d];
+
+eps[momentum[a_,dd_],momentum[b_,dd_],momentum[c_,dd_],momentum[d_,dd_]
+   ] /;dd=!=D := levicivita[dimension->dd][a,b,c,d,dimension->dd];
+eps[lorentzindex[a_,dd_],momentum[b_,dd_],
+    momentum[c_,dd_],momentum[d_,dd_]
+   ] /;dd=!=D := levicivita[a,dimension->dd][b,c,d,dimension->dd];
+eps[lorentzindex[a_],lorentzindex[b_],
+    momentum[c_,dd_],momentum[d_,dd_]
+   ] /;dd=!=D := levicivita[a,b,dimension->dd][c,d,dimension->dd];
+eps[lorentzindex[a_,dd_], lorentzindex[b_,dd_],
+    lorentzindex[c_,dd_], momentum[d_,dd_]
+   ] /;dd=!=D := levicivita[a,b,c,dimension->dd][d,dimension->dd];
+eps[lorentzindex[a_,dd_],lorentzindex[b_,dd_],
+    lorentzindex[c_,dd_],lorentzindex[d_,dd_]
+   ] /;dd=!=D := levicivita[a,b,c,d,dimension->dd];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

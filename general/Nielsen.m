@@ -18,7 +18,7 @@ Nielsen::usage= "Nielsen[i,j, x] denotes Nielsen's polylogarithm.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Nielsen, ReadProtected];
+   
 
 Zeta2 = MakeContext["Zeta2"];
 

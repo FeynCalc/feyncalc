@@ -1,0 +1,10 @@
+{FAFourVector[p1, \[Mu]3]*ParticleMass[PseudoScalar[2], 
+     RenormalizationState[0]]^2*
+   UCouplingConstant[QED[1], RenormalizationState[0]], 
+  FAFourVector[p2, \[Mu]3]*ParticleMass[PseudoScalar[2], 
+     RenormalizationState[0]]^2*
+   UCouplingConstant[QED[1], RenormalizationState[0]], 
+  FAFourVector[p2, \[Mu]3]*MomentaScalarProduct[p1, p3]*
+   UCouplingConstant[QED[1], RenormalizationState[0]], 
+  FAFourVector[p1, \[Mu]3]*MomentaScalarProduct[p2, p3]*
+   UCouplingConstant[QED[1], RenormalizationState[0]]}

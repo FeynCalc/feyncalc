@@ -25,7 +25,7 @@ with Pair -> False those are excluded.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ListIntegrals, ReadProtected];
+   
 
 MakeContext[Cases2, Expand2, FeynAmpDenominator,FeynCalcInternal,
             FeynCalcExternal,FC2TLI,TLI2FC,

@@ -28,7 +28,7 @@ for the scalar integrals.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PaVe, ReadProtected];
+   
 
 ClearAttributes[PaVe, ReadProtectecd];
 

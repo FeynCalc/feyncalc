@@ -21,7 +21,7 @@ ThreeVector::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[ThreeVector, ReadProtected];
+   
 
 ThreeVector /: MakeBoxes[ThreeVector[p_], TraditionalForm] :=
  MakeBoxes[Global`OverVector[p], TraditionalForm];

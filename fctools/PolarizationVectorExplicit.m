@@ -22,7 +22,7 @@ FeynCalc representation.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[PolarizationVectorExplicit, ReadProtected];
+   
 
 dimension            = MakeContext["Dimension"];
 fci                  = MakeContext["FeynCalcInternal"];

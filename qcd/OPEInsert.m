@@ -23,7 +23,7 @@ are contracted in 4 or D dimensions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[OPEInsert, ReadProtected];
+   
 
 MakeContext[Cases2, ChangeDimension, Collect2, CA,CF,Tf,Nf,
             Contract, DeltaFunction, Dimension,DiracGamma,

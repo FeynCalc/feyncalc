@@ -27,7 +27,7 @@ terms.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[TrickMandelstam, ReadProtected];
+   
 
 Collect2 = MakeContext["Collect2"];
 Factor2  = MakeContext["Factor2"];

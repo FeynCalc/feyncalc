@@ -29,7 +29,7 @@ with the option IsolateNames.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Isolate, ReadProtected];
+   
 
 MakeContext[ Cases2, FreeQ2, IsolateNames,
 IsolateSplit, IsolatePrint, KK, NumericalFactor];

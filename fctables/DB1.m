@@ -21,7 +21,7 @@ DB1::usage=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[DB1, ReadProtected];
+   
 
 BReduce = MakeContext["BReduce"];
 B1 = MakeContext["B1"];

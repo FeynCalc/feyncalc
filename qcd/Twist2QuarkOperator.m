@@ -42,7 +42,7 @@ operator is returned.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Twist2QuarkOperator, ReadProtected];
+   
 
 MakeContext[
 DOT,

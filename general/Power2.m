@@ -23,7 +23,7 @@ Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b]
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[Power2, ReadProtected];
+   
 
 MakeContext[Epsilon, Epsilon2, OPEm, PowerSimplify];
 

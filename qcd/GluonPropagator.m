@@ -35,7 +35,7 @@ The following settings of Gauge are possible:
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   SetAttributes[GluonPropagator, ReadProtected];
+   
 
 MakeContext[
 Abbreviation,
