@@ -92,8 +92,8 @@ Options[VeltmanExpand] = {(*fcdim -> D, MassScale -> fcscmu,
       ExplicitLeutwylerSigma -> False, ExplicitLeutwylerJ0 -> False,
       fcsmeps -> fcsmeps,
       ExpandGammas -> True, DimensionExpand -> False, FixPoint -> 0,
-      TaylorOrder -> 2, B0Evaluation -> "jbar", C0Evaluation -> "none",
-      D0Evaluation -> "none",*) fcint -> IntegrateHeld,
+      TaylorOrder -> 2,*) B0Evaluation -> "jbar", C0Evaluation -> "none",
+      D0Evaluation -> "none", fcint -> IntegrateHeld,
       OnMassShell -> False, MomentumVariablesString -> "p",
       Masses -> {ParticleMass[Pion, RenormalizationState[0]],
           ParticleMass[Pion, RenormalizationState[0]],
@@ -264,7 +264,8 @@ LeutwylerJBar[s_, m1s_, opts___Rule] /;
      (LeutwylerJBarEvaluation /. Flatten[{opts}] /.
                                Options[LeutwylerJBar])]) :=
     1/(16*Pi^2)*(sig*Log[(sig - 1)/(sig + 1)] + 2) /.
-    sig -> (LeutwylerSigma[s, m1s, ##]& @@ OptionsSelect[LeutwylerSigma, opts]);
+    sig -> (LeutwylerSigma[s, m1s, ##]& @@
+                OptionsSelect[LeutwylerSigma, opts, Options[LeutwylerJBar]]);
 
 (* Added 3/3-2000. From J.Gasser and H. Leutwyler (1985), Nuclear Physics B250,
    465-516: *)
