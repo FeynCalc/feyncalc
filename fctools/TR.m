@@ -26,7 +26,7 @@ Begin["`Private`"];
 
 fci = MakeContext["FeynCalcInternal"];
 
-MakeContext[ DiracTrace, DiracTraceEvaluate, Explicit, 
+MakeContext[ CA, CF, DiracTrace, DiracTraceEvaluate, Explicit, 
 Factoring, FeynCalcExternal, LeviCivitaSign, Mandelstam,
 PairCollect, Schouten, Explicit, SUNIndex, ExplicitSUNIndex,
 SUNSimplify, SUNT, SUNTrace, TraceOfOne, Trick, SUNNToCACF];
@@ -45,8 +45,10 @@ Options[ TR ] = { DiracTraceEvaluate -> True,
                   SUNNToCACF -> False
                 };
 
-TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev}, 
+TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf}, 
                           diractrev = DiracTraceEvaluate /. {rul} /. Options[TR];
+                          sunntocacf = SUNNToCACF/. {rul} /. Options[TR];
+                          If[!FreeQ[x,CF|CA], sunntocacf = True];
                              tt = fci[x];
                           If[(Explicit /. {rul} /. Options[TR])=== True,
                              tt = Explicit[tt]
@@ -60,6 +62,7 @@ TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev},
                                   Sequence@@Join[{DiracTraceEvaluate -> False},
                                                  {rul}, Options[TR]]];
                              tt = SUNSimplify[tt,
+                                              SUNNToCACF -> sunntocacf,
                                               SUNTrace -> True,
                                               Explicit -> False
                                              ]; (**)
@@ -67,6 +70,7 @@ TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev},
                              (DiracTraceEvaluate -> False) :>
                              (DiracTraceEvaluate -> diractrev) //
                                      SUNSimplify[#, SUNTrace -> False,
+                                                    SUNNToCACF -> sunntocacf,
                                                     Explicit -> False]&,
 
                              If[FreeQ[tt, SUNIndex|ExplicitSUNIndex],
@@ -76,16 +80,21 @@ TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev},
                                     (*Added 27/8-2002, F.Orellana*)
                                      If[(SUNTrace /. {rul} /. Options[TR])=== True,
                                      SUNSimplify[#, SUNTrace -> True,
+                                                    SUNNToCACF -> sunntocacf,
                                                     Explicit -> False], #]&;
                                 tt = tt /.
                                      (DiracTraceEvaluate -> False) :>
                                      (DiracTraceEvaluate -> diractrev) //
                                      SUNSimplify[#, SUNTrace -> False,
+                                                    SUNNToCACF -> sunntocacf,
                                                     Explicit -> False]&,
                                 (*!FreeQ[tt, SUNIndex|ExplicitSUNIndex] -> !SUNTrace*)
                                 tt = DiracTrace[Trick[tt]//
                                      SUNSimplify[#,
-                                     (**)Sequence@@Join[{rul},Options[TR]]]&,
+                                     SUNNToCACF -> sunntocacf,
+                                     SUNTrace -> (SUNTrace /. {rul} /. Options[TR]),
+                                     Explicit -> (Explicit /. {rul} /. Options[TR])
+                                     (* Sequence@@Join[{rul},Options[TR]] *)]&,
                                      (**)Sequence@@Join[{rul},Options[TR]]]
                                ]
                             ];
