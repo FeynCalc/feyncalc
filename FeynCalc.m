@@ -644,7 +644,7 @@ multifunpack=
 {"Isolate", "IsolatePrint", "IsolateSplit"},
 {"OneLoop", "CancelQP", "CombineGraphs", "DenominatorOrder", "FinalFunction", "ExtraVariables",
 "OneLoopSum", "Prefactor", "SelectGraphs", "ReduceGamma", "ReduceToScalars", "SmallVariables",
-"StandardMatrixElement"},
+"StandardMatrixElement", "SetStandardMatrixElements"},
 {"PropagatorDenominator", "PD"},
 {"QuarkGluonVertex", "QGV"},
 {"QuarkPropagator", "QP"},
@@ -3506,10 +3506,10 @@ feynCalcForm[x_,opt___Rule]:=Block[{xxxx = Evaluate[x], subs},
              polarization[ka_,I,___]:>"ep"[ka]
            }, {}
           ] /.
-         If[CC["ComplexIndex"],
+         (*If[CC["ComplexIndex"],
             {MakeContext["ComplexIndex"][i__] :> compind[i]},
             {}
-           ] /.
+           ] /.*)
          If[CC["ChiralityProjector"],
             chiralityprojector[+1] :> diracgamma[6],
             {}
