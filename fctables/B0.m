@@ -13,7 +13,9 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctables`B0`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`",
+              (*So the derivative of B0 will work also when DB0 has not been called *)
+              "HighEnergyPhysics`fctables`DB0`"}];
 
 B0::"usage"=
 "B0[pp,m1^2,m2^2] is the Passarino-Veltman two point integral.
@@ -38,7 +40,7 @@ ClearAttributes[B0, ReadProtectecd];
 A0 = MakeContext["A0"];
 BReduce = MakeContext["BReduce"];
 small = MakeContext["SmallVariable"];
-MakeContext["DB0"];
+(*MakeContext[DB0];*)
 
 (* B0def*)
  Options[B0] = { BReduce -> False, B0Unique -> False, B0Real -> False };

@@ -13,7 +13,9 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctables`B1`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`",
+             (*So the derivative of B1 will work also when DB0 has not been called *)
+             "HighEnergyPhysics`fctables`DB1`"}];
 
 
 B1::"usage"=
@@ -32,7 +34,7 @@ BReduce = MakeContext["BReduce"];
 Factor2 = MakeContext["Factor2"];
 FreeQ2 = MakeContext["FreeQ2"];
 small = MakeContext["SmallVariable"];
-MakeContext["DB1"];
+(*MakeContext[DB1];*)
 
  nos[x_] := If[(x =!= 0) && FreeQ[x, small], True, False];
 
