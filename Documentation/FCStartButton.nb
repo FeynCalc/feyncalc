@@ -1,16 +1,18 @@
-(***********************************************************************
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
 
                     Mathematica-Compatible Notebook
 
-This notebook can be used on any computer system with Mathematica 3.0,
-MathReader 3.0, or any compatible application. The data for the notebook 
-starts with the line of stars above.
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
 
-To get the notebook into a Mathematica-compatible application, do one of 
-the following:
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
 
 * Save the data starting with the line of stars above into a file
-  with a name ending in .nb, then open the file inside the application;
+  with a name ending in .nb, then open the file inside the
+  application;
 
 * Copy the data starting with the line of stars above to the
   clipboard, then use the Paste menu command inside the application.
@@ -20,9 +22,9 @@ sent directly in email or through ftp in text mode.  Newlines can be
 CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
 
 NOTE: If you modify the data for this notebook not in a Mathematica-
-compatible application, you must delete the line below containing the 
-word CacheID, otherwise Mathematica-compatible applications may try to 
-use invalid cache data.
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
 
 For more information on notebooks and Mathematica-compatible 
 applications, contact Wolfram Research:
@@ -32,16 +34,16 @@ applications, contact Wolfram Research:
 
 Notebook reader applications are available free of charge from 
 Wolfram Research.
-***********************************************************************)
+*******************************************************************)
 
 (*CacheID: 232*)
 
 
 (*NotebookFileLineBreakTest
 NotebookFileLineBreakTest*)
-(*NotebookOptionsPosition[      2187,         64]*)
-(*NotebookOutlinePosition[      3247,        104]*)
-(*  CellTagsIndexPosition[      3203,        100]*)
+(*NotebookOptionsPosition[      2395,         69]*)
+(*NotebookOutlinePosition[      3496,        109]*)
+(*  CellTagsIndexPosition[      3452,        105]*)
 (*WindowFrame->Palette*)
 
 
@@ -58,23 +60,27 @@ Cell[BoxData[
               Notebook[ {
                 Cell[ 
                   BoxData[ 
-                    RowBox[ {"<<", "HighEnergyPhysics`fc`"}]], "Input"]}]]]],
-      ButtonEvaluator->Automatic]], NotebookDefault,
+                    RowBox[ {"<<", "HighEnergyPhysics`FeynCalc`"}]], 
+                  "Input"]}, WindowSize -> {480, 160}, WindowMargins -> {{
+                Automatic, 1}, {Automatic, 1}}]]]],
+      ButtonEvaluator->Automatic,
+      Background->RGBColor[1, 0.839994, 0]]], NotebookDefault,
   PageBreakAbove->True]
 },
-FrontEndVersion->"X 3.0",
-ScreenRectangle->{{0, 1024}, {0, 768}},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1400}, {0, 967}},
+ClosingAutoSave->True,
 Editable->False,
 WindowToolbars->{},
-CellGrouping->Manual,
-PageWidth->333,
-WindowSize->{126, 25},
-WindowMargins->{{6, Automatic}, {Automatic, 22}},
+PageWidth->320,
+WindowSize->{Fit, Fit},
+WindowMargins->{{48, Automatic}, {Automatic, 68}},
 WindowFrame->"Palette",
 WindowElements->{},
 WindowFrameElements->"CloseBox",
 WindowClickSelect->False,
-ScrollingOptions->{"PagewiseScrolling"->True},
+ScrollingOptions->{"PagewiseScrolling"->True,
+"VerticalScrollRange"->Fit},
 ShowCellBracket->False,
 CellMargins->{{0, 0}, {Inherited, 0}},
 Active->True,
@@ -85,13 +91,12 @@ ImageMargins->{{0, Inherited}, {Inherited, 0}},
 Magnification->1
 ]
 
-
-(***********************************************************************
-Cached data follows.  If you edit this Notebook file directly, not using
-Mathematica, you must remove the line containing CacheID at the top of 
-the file.  The cache data will then be recreated when you save this file 
-from within Mathematica.
-***********************************************************************)
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
 
 (*CellTagsOutline
 CellTagsIndex->{}
@@ -103,7 +108,7 @@ CellTagsIndex->{}
 
 (*NotebookFileOutline
 Notebook[{
-Cell[1710, 49, 473, 13, 29, NotebookDefault,
+Cell[1755, 51, 636, 16, 27, NotebookDefault,
   PageBreakAbove->True]
 }
 ]
@@ -111,8 +116,7 @@ Cell[1710, 49, 473, 13, 29, NotebookDefault,
 
 
 
-
-(***********************************************************************
+(*******************************************************************
 End of Mathematica Notebook file.
-***********************************************************************)
+*******************************************************************)
 
