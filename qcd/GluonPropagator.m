@@ -45,6 +45,7 @@ CounterTerm,
 CouplingConstant,
 Dimension,
 Epsilon,
+Explicit,
 Gauge,
 Gstrong,
 LorentzIndex,
@@ -67,7 +68,9 @@ MakeContext["Twist2GluonOperator"];
 Options[GluonPropagator] = {
 CounterTerm -> False,
 CouplingConstant -> Gstrong,
-Dimension -> D, Gauge -> 1, OPE -> False };
+Dimension -> D, 
+Explicit -> False,
+Gauge -> 1, OPE -> False };
 
 GP = GluonPropagator;
 Abbreviation[GluonPropagator] = HoldForm[GP];
@@ -184,7 +187,15 @@ I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
                                );
   ];
   ]];
-   glp];
+   glp]/; (Explicit /. {opt} /. Options[GluonVertex])===True;
+
+GluonPropagator /:
+   MakeBoxes[GluonPropagator[p_,{mu_,a_},{nu_,b_}],
+             TraditionalForm
+            ] := RowBox[{SubsuperscriptBox["\[CapitalPi]",Tbox[a,b], Tbox[mu,nu]],
+                        "(", Tbox[p], ")"
+                        }];
+
  
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
