@@ -80,9 +80,15 @@ If[And@@((Head[GenProps[#]]===GenProps)&/@
 GenProps[a:$FermionHeads]:={
 AnalyticalPropagator[External][ s a[i, mom] ] == 
 NonCommutative[ 
-DiracSpinor[ -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ], 
+(*Tag, so WFRenormalize can do its thing*)
+(*DiracSpinor[
+  -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ]*)
+HighEnergyPhysics`Phi`Couplings`Private`propSpinor[
+  -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ], 
 AnalyticalPropagator[Internal][ s a[i,mom] ] == 
-NonCommutative[ DiracGamma[ -mom ] + Mass[a[i]] ]*
+NonCommutative[(*DiracGamma[ -mom ] + Mass[a[i]]*)
+HighEnergyPhysics`Phi`Couplings`Private`propGamma[
+  -mom, Mass[a[i]]] ]*
 I*PropagatorDenominator[ mom , Mass[a[i]] ]}];
 
 (* ****************************************************************** *)
@@ -198,6 +204,17 @@ M$GenericCouplings  =
   AnalyticalCoupling@@(genericfieldsmomenta[repp])==
   (G[csign[repp]]@@genericfields[repp]).genericcouplingvector[repp],
   {repp,Length[$VerticesSpecifications1]}]];
+
+(* Merge coupling vectors belonging to the same vertex *)
+
+multVertPosG = Position[M$GenericCouplings,#[[1]]]& /@ M$GenericCouplings;
+
+multVertsG = (Extract[M$GenericCouplings,#[[1]]]& /@ #)& /@ multVertPosG;
+
+vertsG =  Union[(#[[1,1]] == merge @@ ((#[[2]])& /@ #))& /@ multVertsG];
+
+M$GenericCouplings=
+    vertsG /. a:merge[(G[_][__].{__})..] :> a[[1,1]].(Join @@ ((#[[2]])& /@ a));
 
 FixCouplingSigns;
 
