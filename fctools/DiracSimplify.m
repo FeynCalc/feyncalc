@@ -325,7 +325,8 @@ If[$VeryVerbose>2, Print["dir5"]];
        diracndt = Factor2[ diracndt ] ];
 If[$VeryVerbose>2, Print["dir6"]];
 print3["exiting diracSimplify"];
-  diracndt]]];  (* end of diracSimplify *)
+  diracndt/.HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> DOT
+]]];  (* end of diracSimplify *)
 
 (* #################################################################### *)
                                                         (*dr67def*)

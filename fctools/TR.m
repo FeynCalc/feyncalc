@@ -26,12 +26,13 @@ Begin["`Private`"];
 
 fci = MakeContext["FeynCalcInternal"];
 
-MakeContext[ DiracTrace, DiracTraceEvaluate,
+MakeContext[ DiracTrace, DiracTraceEvaluate, Explicit, 
 Factoring, FeynCalcExternal, LeviCivitaSign, Mandelstam,
 PairCollect, Schouten, Explicit, SUNIndex, ExplicitSUNIndex,
 SUNSimplify, SUNT, SUNTrace, TraceOfOne, Trick, SUNNToCACF];
 
 Options[ TR ] = { DiracTraceEvaluate -> True,
+                  Explicit           -> True,
                   Factoring          -> False,
                   FeynCalcExternal   -> False,
                   LeviCivitaSign     -> I,
@@ -44,11 +45,14 @@ Options[ TR ] = { DiracTraceEvaluate -> True,
                   SUNNToCACF -> False
                 };
 
-TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev},
+TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev}, 
                           diractrev = DiracTraceEvaluate /. {rul} /. Options[TR];
                              tt = fci[x];
+                          If[(Explicit /. {rul} /. Options[TR])=== True,
+                             tt = Explicit[tt]
+                            ];
 
-                          If[(SUNTrace /. {rul} /. Options[Tr])=== True &&
+                          If[(SUNTrace /. {rul} /. Options[TR])=== True &&
                              (!FreeQ[tt, SUNIndex|ExplicitSUNIndex]),
 
                              tt = DiracTrace[tt,
