@@ -135,7 +135,7 @@ CheckDB[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
         If[FileType[file] === None && fs =!= True,
           VerbosePrint[1, "File does not exist, cannot load"];
           finex = ex,
-          VerbosePrint[1, "File exists, loading"]
+          VerbosePrint[1, "File exists, loading"];
           finex = Get[file];
           If[ch,
             VerbosePrint[1, "File exists, comparing"];
