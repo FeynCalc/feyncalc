@@ -5,7 +5,7 @@
 (* ************************************************************** *)
 (*
 
-This is the startup file of Phi.
+This is the startup file of PHI.
 
 You'll most likely only need to edit the section
 "CHOOSE CONFIGURATION AND LAGRANGIANS" below.
@@ -28,10 +28,10 @@ the present file in
 (create the necessary directories) and it will override
 the file in the installation directory.
 
-Coupling files for Phi and FeynArts are in the
+Coupling files for PHI and FeynArts are in the
 directory 'CouplingVectors'.
 
-Lagrangians for Phi are in the directory
+Lagrangians for PHI are in the directory
 'Lagrangians' and renormalization factors in the
 directory 'Factors'.
 
@@ -44,16 +44,9 @@ directory 'Factors'.
 (* Abbreviations *)
 
 HighEnergyPhysics`Phi`Objects`PMV::"usage"=
-"PMV[x_,opts___] := PhiMesonIsoVector[opts][x];";
-HighEnergyPhysics`Phi`Objects`FDr::"usage"=
-"FDr is the shorthand notation for FieldDerivative";
-HighEnergyPhysics`Phi`Objects`CDr::"usage"=
-"CDr is the shorthand notation for
-CovariantFieldDerivative";
+"PMV[x_,opts___] := PhiMesonIsoVector[opts][x].";
 
 PMV[x_,opts___]:=PhiMesonIsoVector[opts][x];
-FDr=FieldDerivative;
-CDr=CovariantFieldDerivative;
 
 (* ************************************************************** *)
 
@@ -162,71 +155,141 @@ HighEnergyPhysics`FeynArts`TheLabel[PseudoScalar0]:="P";
 
 If[StringQ[$FeynCalcDirectory],
 
-SetOptions[ILimit, FunctionLimits -> {Log -> Log, 
-LeutwylerJBar -> (LeutwylerJBar[
-Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
-ExplicitLeutwylerJBar -> True,
-ExplicitLeutwylerSigma -> True]&)}];
+  $FCS = Union[$FCS, {PMV}];
 
-SetOptions[B0,
-BReduce->False,B0Unique->True,B0Real->False];
+   HighEnergyPhysics`fctables`Lagrangian`Lagrangian::"usage" =
+    "Lagrangian[m[pars]] returns the raw form of the lagrangian of the model \
+m and with parameters pars (e.g. the dimension of the gauge group and the \
+order in the perturbative expansion).  To get the full form, use \
+ArgumentsSupply.  Lagrangian[\"oqu\"] gives the unpolarized quark operator. \
+Lagrangian[\"oqp\"] gives the polarized quark operator.";
 
-SetOptions[SetMandelstam,
-Dimension->{4,D,SpaceTimeDimensions}];
+   HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant::"usage" =
+    "CouplingConstant is the head of coupling constants.  CouplingConstant \
+takes three extra optional arguments, with head RenormalizationState, \
+RenormalizationScheme and ExpansionState respectively.  E.g. \
+CouplingConstant[QED[1]] is the unit charge, CouplingConstant[ChPT2[4],1] \
+is the first of the coupling constants of the lagrangian ChPT2[4].  \
+CouplingConstant[a_,b_,c___][i_] := \
+CouplingConstant[a,b,RenormalizationState[i],c].  \
+CouplingConstant is also an option for several Feynman rule functions and for \
+CovariantD and FieldStrength.";
 
-SetOptions[FeynRule,
-InitialFunction->PhiToFC];
+   $Multiplications = Union[$Multiplications,{Times, NM, IsoDot, IsoCross,
+                            IsoSymmetricCross}];
+   
+   $DistributiveFunctions = Union[$DistributiveFunctions,
+   {Conjugate, ComplexConjugate, Transpose, Adjoint, UTrace, UTrace1, Iso}];
+   
+   $Containers = {IsoVector, UVector, UMatrix};
 
-SetOptions[OneLoop,
-WriteOutPaVe -> ToFileName[
-{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
-$PathnameSeparator];
+   Options[CovariantFieldDerivative] = {Explicit->True, DiagonalToU->True,
+      RemoveIntegerIndices->False,  SUNN->2, UDimension->Automatic};
 
-SetOptions[PaVeReduce,
-WriteOutPaVe -> ToFileName[
-{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
-$PathnameSeparator];
+   CovariantFieldDerivative::"usage" = 
+    "CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is the covariant \
+derivative of f[x] with respect to space-time variables x and with Lorentz \
+indices li1, li2,... The default CovariantFieldDerivative is taken from \
+mesonic ChPT and includes the external sources Vector and AxialVector, which \
+by default are zero.  The definitions of the defaults are in the file \
+PhiStart.m and in the relevant configuration files and should be set \
+according to the process under consideration.  Also it may be neccesary to \
+introduce several covariant derivatives (see CovariantNabla).  \
+CovariantFieldDerivative is recognized by ArgumentsSupply and partly by \
+UNMSplit, that is, for UNMSplit to work, the 'extra' part apart from the \
+derivative of CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] should not \
+have a meson-field dependence.";
+   
+   SetOptions[ILimit, FunctionLimits -> {Log -> Log, 
+   LeutwylerJBar -> (LeutwylerJBar[
+   Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
+   ExplicitLeutwylerJBar -> True,
+   ExplicitLeutwylerSigma -> True]&)}];
+   
+   SetOptions[B0,
+   BReduce->False,B0Unique->True,B0Real->False];
+   
+   SetOptions[SetMandelstam,
+   Dimension->{4,D,SpaceTimeDimensions}];
+   
+   SetOptions[FeynRule,
+   InitialFunction->PhiToFC];
+   
+   SetOptions[OneLoop,
+   WriteOutPaVe -> ToFileName[
+   {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
+   $PathnameSeparator];
+   
+   SetOptions[PaVeReduce,
+   WriteOutPaVe -> ToFileName[
+   {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
+   $PathnameSeparator];
 
-HighEnergyPhysics`Phi`Objects`FunctionalDerivative::"usage" = 
-    "FunctionalDerivative is FunctionalD adapted for use with Phi";
-HighEnergyPhysics`Phi`Objects`FunctionalDerivative[x_, o__] :=
-    Block[{tr, r, nm, c, d, i, f}, i = 0; f := (++i);
-      FunctionalD[
-          PhiToFC[x /. HoldPattern[NM[d__]] :> Dot[nm[f], d]] /.
-            UTrace1 -> ((tr*#) &), o] //. {Dot[nm[_], c__] :> NM[c],
-          tr*r__ :> UTrace[Times[r]]}];
-                    
-$Abbreviations=
-Union[$Abbreviations,
-{"Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
-"ParticleMass" -> "m", "PseudoScalar" -> "PS", "Scalar" -> "S",
-"Vector" -> "V", "AxialVector" -> "AV", "Fermion" -> "F"}];
+  (*Compapatibility with PartialD-operator notation*)
+  SetOptions[ExpandPartialD,
+  PartialDRelations -> Union[
+   (*Original stuff*)(PartialDRelations /. Options[ExpandPartialD]),
+   (*Have ExpandPartialD use FieldDerivative for NM products*)
+    {NM[a___, (PartialD|RightPartialD)[x_,LorentzIndex[mu_]], b___] :>
+    NM[a, FieldDerivative[NM[b], x, LorentzIndex[mu]]],
+    NM[a___, (PartialD|RightPartialD)[LorentzIndex[mu_]], b___] :> 
+    NM[a, FieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go = 
+        False; {b} /. ((QuantumField[__][
+                  y_?AtomQ] | _[___, QuantumField[__], ___][
+                  y_?AtomQ]) :> (go = True; z = y)); go),
+    NM[a___, LeftPartialD[x_,LorentzIndex[mu_]], b___] :>
+    NM[FieldDerivative[NM[a], x, LorentzIndex[mu]], b],
+    NM[a___, LeftPartialD[LorentzIndex[mu_]], b___] :> 
+    NM[FieldDerivative[NM[a], z, LorentzIndex[mu]], b] /; (go = 
+        False; {a} /. ((QuantumField[__][
+                  y_?AtomQ] | _[___, QuantumField[__], ___][
+                  y_?AtomQ]) :> (go = True; z = y)); go),
+    NM[a___, CovariantD[x_,LorentzIndex[mu_]], b___] :>
+    NM[a, CovariantFieldDerivative[NM[b], x, LorentzIndex[mu]]],
+    NM[a___, CovariantD[LorentzIndex[mu_]], b___] :> 
+    NM[a, CovariantFieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go = 
+        False; {b} /. ((QuantumField[__][
+                  y_?AtomQ] | _[___, QuantumField[__], ___][
+                  y_?AtomQ]) :> (go = True; z = y)); go),
+    NM[UMatrix[UIdentity, ___],
+       (PartialD | RightPartialD | LeftPartialD)[__]] :> 0}
+  ]];
 
-
-(* Commented out 3/9-2002 to keep consistency with FeynCalc *)
-(* SUNReduce etc. will have to be modified to account for the automatic
-   substitution of SUNIndex[i] with ExplicitSUNIndex[i] when i is an
-   integer *)
-(*Clear[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex];
-HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex/:
-MakeBoxes[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[p_],
-TraditionalForm]:=ToBoxes[p, TraditionalForm];*)
-
-(* Commented out 5/3-2000.
-   I think its redundant and definitions on SUNIndex slow down everything. *)
-(* Well - not quite so. Uncommented again 21/5-2001 *)
-
-NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
-NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
-Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
-Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
-
-NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
-NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
-Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
-Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c],
-
-Remove[$FeynCalcDirectory]
+  (* A static hack. Not very pretty. Just to have ExpandPartialD work for
+     a few PHI examples (will have to be reevaluated when changing
+     $UMatrices if ExpandPartialD is to work for the new UMatrices) *)
+   DeclareNonCommutative /@ $UMatrices;
+   
+   HighEnergyPhysics`Phi`Objects`FunctionalDerivative::"usage" = 
+       "FunctionalDerivative is FunctionalD adapted for use with Phi";
+   HighEnergyPhysics`Phi`Objects`FunctionalDerivative[x_, o__] :=
+       Block[{tr, r, nm, c, d, i, f}, i = 0; f := (++i);
+         FunctionalD[
+             PhiToFC[x /. HoldPattern[NM[d__]] :> DOT[nm[f], d]] /.
+               UTrace1 -> ((tr*#) &), o] //. {DOT[nm[_], c__] :> NM[c],
+             tr*r__ :> UTrace[Times[r]]}];
+                       
+   $Abbreviations=
+   Union[$Abbreviations,
+   {"Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
+   "ParticleMass" -> "m", "PseudoScalar" -> "PS", "Scalar" -> "S",
+   "Vector" -> "V", "AxialVector" -> "AV", "Fermion" -> "F"}];
+      
+   (* Commented out 5/3-2000.
+      I think its redundant and definitions on SUNIndex slow down everything. *)
+   (* Well - not quite so. Uncommented again 21/5-2001 *)
+   
+   NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
+   NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
+   Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
+   Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
+   
+   NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
+   NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
+   Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
+   Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c],
+   
+   Remove[$FeynCalcDirectory]
 
 ];
 
@@ -462,7 +525,7 @@ If[AtomQ[$FrontEnd]=!=True,
   ToFileName[{$FeynCalcDirectory, "Phi"}, "Palettes"]]];
 
   (*Under Mathematica 4, the default highlighting unmatched brackets
-    highlights all right brackets gererated by Phi, so we disable it.
+    highlights all right brackets generated by PHI, so we disable it.
     This is the default: {"UnmatchedBracketStyle" -> "UnmatchedBracket"}*)
 
    SetOptions[$FrontEnd, AutoStyleOptions ->
