@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: TimedIntegrate*)
+(* :Title: TimedIntegrate *)
 
 (* :Author: Frederik Orellana *)
 
@@ -53,13 +53,13 @@ CheckAbort[
   TimeConstrained[
     Plus@@(int[#,vars,ops]&/@ex/.eps:>Epsilon),tim,
     If[$VeryVerbose > 0,Message[TimedIntegrate::"time",tim]];
-    Dot[Sequence@@((Integratedx@@#)& /@ {vars}), exp]
+    DOT[Sequence@@((Integratedx@@#)& /@ {vars}), exp]
   ],
   If[$VeryVerbose > 0,
     Message[TimedIntegrate::"abort"];
     Message[TimedIntegrate::"time",tim]
   ];
-  Dot[Sequence@@((Integratedx@@#)& /@ {vars}),exp]
+  DOT[Sequence@@((Integratedx@@#)& /@ {vars}),exp]
 ]
 ];
 
