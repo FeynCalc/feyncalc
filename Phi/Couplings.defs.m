@@ -32,6 +32,14 @@ renaming consists in prepending the first letter of an index to the index; \
 e.g. k1 would be renamed to kk1 or kkk1 or ...  FixCouplingIndices is \
 evaluated automatically by the model \"Automatic\".";
 
+CheckCouplingSign::"usage" = 
+    "CheckCouplingSign[c] calculates the symmetry sign of the coupling c, \
+where c is a coupling vector like the elements of M$GenericCouplings.";
+
+FixCouplingSigns::"usage" = 
+    "FixCouplingSigns checks the symmetry (specified by G[1] or G[-1]) \
+of all coupling vectors in M$GenericCouplings and fixes them if they are wrong.";
+
 Compare1::"usage" = 
     "Compare1 is like Compare except symmetry factors are not changed..";
 
@@ -134,6 +142,18 @@ CouplingSign->1,PhiModel->ChPT2,XFileName->Automatic},{VertexFields->{Pion[0],\
 Pion[0],Pion[0],Pion[0],Pion[0],Pion[0]},PerturbationOrder->{2},\
 CouplingSign->1,PhiModel->ChPT2,XFileName->Automatic}}.";
 
+VerticesSpecifications::"usage" = 
+    "VerticesSpecifications[conf, faparts, parttypes] returns \
+a list usable as the setting of $VerticesSpecifications, by reading the \
+directory of coupling vectors \"CouplingVectors\". conf is a configuration \
+(possible setting of $Configuration), faparts is a list of FeynArts particle \
+heads (possible setting of $FAParticlesInUse), parttypes is a list of \
+allowed PHI particle heads (possible setting of $ParticleTypes) \
+VerticesSpecifications[$Configuration, $FAParticlesInUse, $ParticleTypes] \
+will return all vertices found in \"CouplingVectors\" belonging to the current model.  \
+NOTICE : Currently, fermion violating vertices cannot be handled by VerticesSpecifications; \
+for such models you have to write $VerticesSpecifications by hand.";
+
 PhiModel::"usage" = 
     "PhiModel is one of the parameters in $VerticesSpecifications that should \
 be set before doing loop calculations with Phi and FeynArts.  Default value \
@@ -171,7 +191,7 @@ particles are to be restricted to.  Default value : \
 VertexFields::"usage" = 
     "VertexFields is one of the quantities of $VerticesSpecifications that \
 must be specified before doing loop calculations with the model 'Automatic'.  \
-NOTICE:  Any Phi particle-field with argument 0 is interpreted by \
+NOTICE : Any Phi particle-field with argument 0 is interpreted by \
 ParticleMass, DecayConstant and Particle as the particle-field without \
 argument.  E.g. ParticleMass[Pion[0]] := ParticleMass[Pion].  Default value \
 {Pion[0],Pion[0],Pion[0],Pion[0]}.";
@@ -410,3 +430,15 @@ WFRenormalize::"noprop" = "Unknown propagator type `1`.";
 CreateFCAmp::"nomethod" = "Unknown method `1`.";
 
 DCRenormalize::"nores" = "Cannot resolve power of `1`. Please renormalize by hand.";
+
+VerticesSpecifications::"multvert"=
+    "Error. Bad number of particles `2` matching `1`. Either your \
+\"CouplingVectors\" directory is in disarray or you are giving wrong \
+particles as arguments.";
+
+VerticesSpecifications::"oddferm"=
+    "Error. You seem to have an odd number of fermions in your vertex.";
+
+CheckCouplingSign::"nosym" = 
+    "Warning: There is a problem with the generic coupling vector `1`. It is \
+neither symmetric nor antisymmetric under the following permutations: `2`.";

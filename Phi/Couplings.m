@@ -90,7 +90,7 @@ faout := faout = HighEnergyPhysics`FeynArts`Outgoing;
 (*fafv := fafv = Global`FAFourVector;*)
 fafv := fafv = MakeContext["FourVector"];
 (*famt := famt = Global`FAMetricTensor;*)
-famt := famt = MakeContext["MetricTensor"];
+famt := famt = fcmt;
 falo := falo = Global`Lorentz;
 facrfa := facrfa = HighEnergyPhysics`FeynArts`CreateFeynAmp;
 faal := faal = HighEnergyPhysics`FeynArts`AmplitudeLevel;
@@ -123,6 +123,8 @@ fawfcr := fawfcr = HighEnergyPhysics`FeynArts`WFCorrections;
 fafi := fafi = HighEnergyPhysics`FeynArts`Field;
 fatrru := fatrru = HighEnergyPhysics`FeynArts`M$TruncationRules;
 facol := facol = Global`Colour;
+faanalc := faanalc = HighEnergyPhysics`FeynArts`AnalyticalCoupling;
+fags := fags = HighEnergyPhysics`FeynArts`G;
 
 
 (* Defaults *)
@@ -153,7 +155,8 @@ Options[FCToFA] = {ScalarProductForm -> MomentaScalarProduct,
       IsoIndicesString -> "I", FADeltas -> True, IsoCollect -> False};
 Options[MomentaCollect] = {ParticlesNumber -> 4, PerturbationOrder -> 2,
       ScalarProductForm -> (MomentaScalarProduct|fcpa),
-      fcmt -> Global`FAMetricTensor,
+      (*fcmt -> Global`FAMetricTensor,*)
+      fcmt -> fcmt,
       MomentumVariablesString -> "p", ExtendedCollect -> True,
       HoldMinuses -> False};
 Options[GenericCoupling] = {ScalarProductForm -> MomentaScalarProduct,
@@ -484,14 +487,23 @@ ClassesCoupling[m_,opts___] := Block[
 
 (* A  name is generated for the coupling files: *)
 
+(*This way we allow higher numbers than 9. E.g. PseudoScalar11 -> 11.*)
+(*Notice that the "generation number" must still be <10. E.g. PseudoScalar11[0]*)
+pnumber[p_] := 
+    Block[{char, chars, pchars, i}, chars = ""; char = ""; 
+      pchars = Characters[ToString[p]]; i = 1; 
+      While[StringMatchQ["0123456789", "*" <> pchars[[-i]] <> "*"], 
+        chars = chars <> pchars[[-i]]; ++i]; chars];
+
 xnamerule[opts___] :=
     XFileName ->
       ToString[PhiModel /. Flatten[{opts}] /.
             Options[XName]] <> ((VertexFields /. Flatten[{opts}] /.
                 Options[XName]) /. (p : $ParticleHeads)[ii_] :>
-              StringTake[ToString[p], {1}] <> StringTake[ToString[p], {-1}] <>
+              StringTake[ToString[p], {1}] <> (*StringTake[ToString[p], {-1}]*)pnumber[p] <>
                  ToString[ii]) <> "o" <>
         ToString[PerturbationOrder /. Flatten[{opts}] /. Options[XName]];
+
 XName[opts___] :=
     If[((XFileName /. Flatten[{opts}] /. Options[XName]) ===
           Automatic), (XFileName /.
@@ -526,6 +538,77 @@ Min[30, StringLength[XName[opts]]]] <> ".Mod"];
     SetDirectory[tmp`olddir];);
 
 
+
+(* Construct $VerticesSpecifications from directory listing *)
+
+
+(* Return e.g. "A00P10o2" from {{"A", "0", "0"}, {"P", "1", "0"}, {"o", "2"}} *)
+
+characterArray[css_]:=
+    Block[{cs,charArr,i,j},cs=Characters[css];charArr={};j=0;
+      Do[If[StringMatchQ["0123456789","*"<>cs[[i]]<>"*"]=!=True,++j;
+          charArr=Append[charArr,{cs[[i]]}],
+          charArr[[j]]=Append[charArr[[j]],cs[[i]]]],{i,Length[cs]}];charArr];
+
+
+(* Returns a particle name from e.g. toParticle[{"P", "1", "0"},
+   $FAParticlesInUse,$ParticleTypes] *)
+
+toParticle[arr_,pts_,parttps_]:=Block[{(*pars,types,parttypes,a*)},
+      parttypes=(ToString/@parttps)/.a_String:>
+            Sequence[a,"-"<>a]/;StringMatchQ[a,"Fermion"];
+      parts=(ToString/@pts)/.a_String:>
+            Sequence[a,"-"<>a]/;StringMatchQ[a,"Fermion*"];
+      pars=Select[
+          parts,(StringMatchQ[ToString[#],
+                  arr[[1]]<>"*"<>StringJoin@@Drop[Drop[arr,1],-1]]&&
+                Length[types=
+                      Select[parttypes,
+                        StringMatchQ[ToString[#],arr[[1]]<>"*"]&]]===
+                  1&&(StringLength[types[[1]]]+Length[arr]-2===
+                    StringLength[ToString[#]]))&];
+      If[Length[pars]===1,ToExpression[ToString[pars[[1]][arr[[-1]]]]],
+        Message[VerticesSpecifications::"multvert",arr,pars];Return[]]];
+
+
+(* Construct fermion vertices, 
+   respecting fermion number conservation. Like e.g.
+        {{"F","1","0"},{"F","1","0"},{"V","1","0"},{"o","2"}} --> 
+    Sequence[{{"-F","1","0"},{"F","1","0"},{"V","1","0"},{"o","2"}},{{"F","1",
+          "0"},{"-F","1","0"},{"V","1","0"},{"o","2"}}] *)
+
+fermionize[v_]:=Block[{(*pos,n*)},pos=Position[Drop[v,-1],{"F",__}]//Flatten;
+      If[IntegerQ[n=Length[pos]/2]=!=True,
+        Message[VerticesSpecifications::"oddferm"];Return[]];
+      If[pos=!={},
+        Sequence@@(MapAt[MapAt["-"<>#&,#,{1}]&,v,({#})&/@#]&/@
+              fccombs[pos,n]),v]];
+
+
+(*  Construct $VerticesSpecifications.
+      E.g. 
+      VerticesSpecifications[$Configuration,$FAParticlesInUse,$ParticleTypes]  *)
+
+VerticesSpecifications[conff_,parts_,parttypes_]:=
+    Block[{(*fils,verts,verts0,conf,olddir,vecdir*)},
+      conf=ToString[conff];
+      vecdir=
+        ToFileName[{HighEnergyPhysics`Phi`$HEPDir,"HighEnergyPhysics","Phi",
+            "CouplingVectors"}];
+      olddir=Directory[];SetDirectory[vecdir];
+      filsg=
+        StringDrop[#,StringLength[conf]]&/@(StringDrop[#,-4]&/@
+              FileNames[conf<>"*"<>".Gen"]);
+      filsm=
+        StringDrop[#,StringLength[conf]]&/@(StringDrop[#,-4]&/@
+              FileNames[conf<>"*"<>".Mod"]);
+      SetDirectory[olddir];fils=Intersection[filsg,filsm];
+      verts0=characterArray/@fils;
+      verts=fermionize/@verts0;
+      ({VertexFields->(toParticle[#,parts,parttypes]&/@Drop[#,-1]),
+              PhiModel->ToExpression[conf],
+              PerturbationOrder->{ToExpression[StringJoin@@(ToString/@
+                        Drop[#[[-1]],1])]},CouplingSign->1})&/@verts];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
@@ -790,7 +873,7 @@ DiscardTopologies[tops : (fatopl[___][__])] :=
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
-(* Fixing M$CouplingMatrices with dummy indices *)
+(* Fixing M$CouplingMatrices and M$GenericCouplings *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -848,6 +931,57 @@ FixCouplingIndices :=
               Length[HighEnergyPhysics`FeynArts`M$CouplingMatrices[[rep, 2, repp]]]}], {rep,
           Length[HighEnergyPhysics`FeynArts`M$CouplingMatrices]}];];
 
+
+
+
+(* Automatic.gen sets G[1] in all couplings. For antisymmetric couplings, it should
+   be -1. This is fixed by CheckCouplingSign *)
+
+CheckCouplingSign[coup : (faanalc[__] == fags[__][__]._List)] := 
+    Block[{parseRuls, mominds, groupedMominds, gmominds, ruls, ruls1, ruls2,
+           tests, tests2,att},
+      att = Attributes[HighEnergyPhysics`FeynCalc`MetricTensor`MetricTensor];
+      SetAttributes[HighEnergyPhysics`FeynCalc`MetricTensor`MetricTensor, Orderless];
+      parseRuls = ((n_*#[_, f___] :> # @@ 
+                    Flatten[{f}])) & /@ (List @@ $ParticleHeads); 
+      mominds = List @@ coup[[1]] /. parseRuls;
+      groupedMominds = (h = #; 
+              Select[mominds, (Head[#] === 
+                      h) &]) & /@ (List @@ $ParticleHeads);
+      gmominds = Select[groupedMominds, (# =!= {}) &];
+      ruls = (sub = #; ((RuleDelayed @@ #) & /@ Transpose[{sub, #}]) & /@ 
+                Drop[Permutations[sub], 1]) & /@ gmominds;
+      ruls1 = 
+        ruls /. ($ParticleHeads[f__] :> _[g__]) :> ((RuleDelayed @@ #) & /@ 
+                Transpose[{{f}, {g}}]); 
+      ruls2 = ((Union @@ #) & /@ Flatten[ruls1, 1]) /. RuleDelayed -> rd /. 
+            rd[b_, b_] :> Sequence[] /. rd :> RuleDelayed;
+      couplings = coup[[-1, -1]];
+      (*Check for symmetry*)
+      tests = (Union[couplings, couplings /. #] === Union[couplings]) & /@ 
+          ruls2;
+      res=If[And @@ tests =!= True, probs = Position[tests, False];
+        (*Check for symmetry or antisymmetry*)
+        tests2 = (Union[couplings, -couplings, couplings /. #] === 
+                  Union[couplings, -couplings]) & /@ Extract[ruls2, probs];
+        If[And @@ tests2 =!= True, probs2 = Position[tests2, False]; 
+          Message[CheckCouplingSign::"nosym", InputForm[coup], 
+            InputForm[Extract[Extract[ruls2, probs], probs2]]]; 
+          False,(*antisymmetric*)-1],(*symmetric*)1];
+        Attributes[HighEnergyPhysics`FeynCalc`MetricTensor`MetricTensor] = att;
+        res];
+
+
+FixCouplingSigns := Block[{ok, rcouplings, ch, res},
+      ok = True;
+      rcouplings = (res = 
+                ReplacePart[#, ch = CheckCouplingSign[#]; 
+                  If[ch === False, ok = False]; ch, {-1, 1, 0, 1}];
+              If[#[[-1, 1, 0, 1]] =!= ch && ch =!= False, 
+                VerbosePrint[1, "Changed ", #[[-1, 1, 0, 1]], " into ", ch, 
+                  " for ", #]];
+              res) & /@ HighEnergyPhysics`FeynArts`M$GenericCouplings;
+      If[ok, HighEnergyPhysics`FeynArts`M$GenericCouplings = rcouplings];];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)

@@ -409,6 +409,11 @@ tmp`olddir=tmp`olddir1;
 VerbosePrint[2,"Loading lagrangians ",Global`$Lagrangians];
 LoadLagrangian/@Global`$Lagrangians;
 
+(* Setting of $VerticesSpecifications using all stored vertices
+   belonging to the chosen configuration *)
+$VerticesSpecifications = 
+  VerticesSpecifications[$Configuration, $FAParticlesInUse, $ParticleTypes];
+
 (* ************************************************************** *)
 (* ****** END OF CHOOSE CONFIGURATION AND LAGRANGIANS *********** *)
 (* ************************************************************** *)
