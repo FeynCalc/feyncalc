@@ -216,11 +216,13 @@ mtr[a_. FeynAmpDenominator[
 
 mtr[a_. FeynAmpDenominator[
     b:PropagatorDenominator[Momentum[q1_,di___], _]..,
+(* needs to work also for more than 1-loop ... *)
+    c___PropagatorDenominator,
     d:PropagatorDenominator[pe_ + Momentum[q1_,di___], _].., 
     z___                    ],
     q1_
    ] := FeynAmpDenominatorSimplify[EpsEvaluate[ExpandScalarProduct[
- (a FeynAmpDenominator[ b,d,z
+ (a FeynAmpDenominator[ b, c, d, z
                       ]
  ) /. q1 -> (-q1), FeynCalcInternal -> False]]
          ] /; nufaQ[pe] ;
