@@ -36,10 +36,9 @@ Contract3::"usage"=
 
 Begin["`Private`"];
    
-   
-   
    Cases2                      = MakeContext["Cases2"];
    Collect2                    = MakeContext["Collect2"];
+   Collect3                    = MakeContext["Collect3"];
    Collecting                  = MakeContext["Collecting"];
    Contract1                   = MakeContext["Contract1"];
    DataType                    = MakeContext["DataType"];
@@ -243,7 +242,10 @@ tim = TimeUsed[];
    If[MatchQ[b, Apply[HoldPattern, {Times__Pair}]], contract21[ a, b ],
    
      If[MatchQ[b, HoldPattern[Times__Pair]], contract21[ a, b ],
+(*
         bb = Collect2[b, LorentzIndex, Factoring -> False];
+*)
+        bb = Collect3[b, Pair, Factor-> False];
         If[Head[bb] === Plus,
            contractLColl[a, bb], 
            contract21[a, bb]
@@ -348,14 +350,20 @@ tim = TimeUsed[];
   contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]} ] :=Block[{nxx},
       If[FreeQ[xx, LorentzIndex[mu,___]],
          nxx = Expand2[xx Pair[LorentzIndex[mu, di], alpha], Pair],
+         (* else *)
   If[$VeryVerbose > 1,Print["contra3c1111check"]];
+         nxx = xx;
+(*
          If[Head[xx]===Plus, nxx = Apply[List, xx], nxx = {xx}];
+*)
   If[$VeryVerbose > 1,Print["contra3c2222check"]];
   print2["contra3c : Length of xx now ", Length[nxx]];
          nxx = nxx /. LorentzIndex[mu, ___] -> alpha;
   print2["contra3c3333check"];
+(*
          nxx = Apply[Plus, nxx];
   print2["contra3c4check"];
+*)
         ];
            nxx];
 
