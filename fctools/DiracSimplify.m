@@ -177,8 +177,8 @@ print2["contracting in oldDiracSimpify done"];
 
 (* #################################################################### *)
 
-gamma67back[x_] := x/.DiracGamma[6] -> (1/2 + DiracGamma[5]/2)/.
-                      DiracGamma[7] -> (1/2 - DiracGamma[5]/2);
+gamma67back[x_] := x/. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2),
+                        DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
 
 DiracSubstitute67[x_] := gamma67back[x];
 
@@ -253,7 +253,10 @@ If[$VeryVerbose>2,Print["dir2done"]];
 
 (* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
 If[$VeryVerbose > 2,Print["dir2a"]];
+(*
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
+*)
+        diracdt = Expand[ scev[diracdt//fEx], DOT | Pair];
 
 If[$VeryVerbose>2,Print["dir3"]];
         If[FreeQ[diracdt,DOT],
@@ -261,7 +264,10 @@ If[$VeryVerbose>2,Print["dir3"]];
            If[diracga67 === True, diracndt = Expand[diracndt//gamma67back]]
            ,
 If[$VeryVerbose>2,Print["dir3 expanding "]];
+(*
            diracdt = Expand[ diracdt ];
+*)
+           diracdt = Expand[ diracdt, DOT ];
 If[$VeryVerbose>2,Print["dir3 expanding done ", Length[diracdt]]];
          If[ Head[diracdt] === Plus, diracldt=Length[diracdt],
              If[ diracdt===0, diracldt = 0, diracldt = 1 ]
@@ -299,6 +305,12 @@ If[$VeryVerbose>2,
                         Length[diracndt] ]
                ]
            ];
+  If[ diracga67===True,
+      If[!FreeQ[diacndt, DiracGamma[6]|DiracGamma[7]],
+         diracndt = gamma67back[ diracndt/.DOT->dr67 ],
+         diracndt = fEx[ diracndt ]
+        ]
+     ];
    diracndt = diracndt/.dr->DOT/.sCO->scev;
    diracndt = Expand[dotLin[diracndt]];
    If[ (diraccanopt===True ),
