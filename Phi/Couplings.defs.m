@@ -6,6 +6,12 @@ Definitions for the package Couplings
 Usage
 *)
 
+PropagatorDenominator1::"usage" = 
+    "PropagatorDenominator1 is a head for extra PropagatorDenominator's \
+used in the definition of propagators for FeynArts (FeynArts doesn't seem \
+to like products of PropagatorDenominator's). It is replaced with \
+PropagatorDenominator by FAToFC";
+
 Wrap::"usage" = 
     "Wrap is the head used by FixCouplingIndices to tag couplings with dummy \
 indices";

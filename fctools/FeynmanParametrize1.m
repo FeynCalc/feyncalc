@@ -44,59 +44,15 @@ LorentzIndex = MakeContext["LorentzIndex"];
 Uncontract = MakeContext["Uncontract"];
 Contract = MakeContext["Contract"];
 ScalarProductExpand = MakeContext["ScalarProductExpand"];
-FeynmanParametrize1 = MakeContext["FeynmanParametrize1"];
+(*FeynmanParametrize1 = MakeContext["FeynmanParametrize1"];*)
 Dimension = MakeContext["Dimension"];
 LorentzIndex = MakeContext["LorentzIndex"];
+CompleteSquare = MakeContext["CompleteSquare"];
 
 Options[FeynmanParametrize1] =
  {FeynmanParameterNames -> {Global`a, Global`b, Global`c, Global`d, Global`e},
- Method -> Denominator, Integrate -> True, Flatten -> True};
+ Method -> Denominator, Integrate -> True, Flatten -> True, CompleteSquare -> True};
 
-(* Completes the square of a second order polynomial e in x:
-   CompleteTheSquare[a q^2+b q+c,q]->
-           -b^2/(4 a)+c+a (b/(2a)+x)^2
-   CompleteTheSquare[a q^2+b q+c,q,y]->
-          {-b^2/(4 a)+c+ay^2,y->b/(2a)+x} *)
-
-CompleteTheSquare[e_, x_ ,y_:Null] :=
-Module[ {a, b, c, xx, ex, exp, dims, dim, rul, pa,p},
-
-  (* Make sure all momenta have the same dimension *)
-  dims = Union[Cases[e, (Dimension->_)|(Momentum[_,_]),Infinity]];
-  If[dims =!= {}, dims = Union[(#[[2]])& /@ dims]];
-  Which[
-    Length[dims] == 0,
-    dim = Sequence[]; xx = Momentum[x]; ex = e;,
-    Length[dims] == 1,
-    dim = dims[[1]]; xx = Momentum[x,dim]; ex = e;,
-    True,
-    dim = dims[[1]];
-    xx = Momentum[x, dim];
-    rul = ((Rule@@#)& /@ Transpose[
-    {dims, Table[dim,{Length[dims]}]}]);
-    ex = e //. rul;
-  ];
-
-  exp = Expand[ScalarProductExpand[Contract[ex]]]/.
-  {Pair[pp:Momentum[x,___],p:Momentum[_?(FreeQ[#,x]&),___]]:>p*pp,
-  Pair[p:Momentum[_?(FreeQ[#,x]&),___],pp:Momentum[x,___]]:>p*pp};
-
- pa = Pair[xx,xx];
-
- a = Coefficient[exp, pa, 1];
-
- If[Length[CoefficientList[exp,x]]>3||
-    Length[CoefficientList[exp,pa]]>2||a===0,
-
-    exp,
-
-    b = Coefficient[exp, xx, 1 ];
-    c = Coefficient[Coefficient[exp, xx, 0 ], pa, 0 ] ;
-    If[y===Null,
-    -Pair[b,b]/(4 a)+c +a Pair[(b/(2a)+xx),(b/(2a)+xx)],
-    {-Pair[b,b]/(4 a)+c +a Pair[Momentum[y,dim],Momentum[y,dim]],
-       Momentum[y,dim]->(b/(2a)+xx)}]]
-];
 
 fpar[{par__}][k_][
       f:FeynAmpDenominator[PropagatorDenominator[__]..]] :=
@@ -109,11 +65,11 @@ Sum[(Pair[f[[i,1]],f[[i,1]]]-f[[i,2]]^2)*
 
    ];
 
-epar[{par__}][k_][(f:FeynAmpDenominator[PropagatorDenominator[__]..])]:=
-    epar[{par}][k][dum*f]/.dum->1;
+epar[{par__}][k_][(f:FeynAmpDenominator[PropagatorDenominator[__]..]), opts___Rule]:=
+    epar[{par}][k][dum*f,opts]/.dum->1;
 
 epar[{par__}][k_][
-     (rest___)(f:FeynAmpDenominator[PropagatorDenominator[__]..])] :=
+     (rest___)(f:FeynAmpDenominator[PropagatorDenominator[__]..]), opts___Rule] :=
 Block[{i, n=Length[f], pars={par}, res, y, ee, rr, cc, exp,
        mom, res1, rest1, dum, k2coeff, p},
 
@@ -138,24 +94,29 @@ res1 = rest1[[1]]*(*(1/k2coeff)*)k2coeff
 (Dot@@Table[Integratedx[pars[[i]],0,Infinity],{i,n}]) .
 (Exp[rest1[[2]]] * Product[Exp[-k2coeff (Pair[f[[i,1]],f[[i,1]]]-f[[i,2]]^2)*
       pars[[i]] ],{i,n}]);
+      
+      
+If[CompleteSquare/.Flatten[{opts}]/.Options[FeynmanParametrize1],
 
 res = res1 /. Exp[ee_] :>
     (If[$VeryVerbose>=2,Print["Completing the square of ", k, " in the exponent ", ee]];
-     cc=CompleteTheSquare[ee,k,Unique["y"]];
+     cc=CompleteSquare[ee,k,Unique["y"]];
      (* The rules substituting the old with the
         new integration momentum and back *)
      squarerule=Solve[Equal@@cc[[2]],
      mom=Union[Cases[cc[[2]],Momentum[k,___],Infinity]][[1]]][[1,1]];
      endrule=cc[[2,1]]->mom;
-     Exp[cc[[1]]])
+     Exp[cc[[1]]]),
+
+ squarerule={}; endrule={}; res = res1]
 
    ];
 
 (* ********************************************************** *)
 
 FeynmanParametrize1[exp_,q_,opt___Rule] :=
-Block[{dim,dims,rul,aa,aaa,ee,qfacs,noqfacs,qq,res,par,
-efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd},
+Block[{(*dim,dims,rul,aa,aaa,ee,qfacs,noqfacs,qq,res,par,
+efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd*)},
     endrule={};
     qq = q/.Momentum[aaa_,___]:>aaa;
     par = FeynmanParameterNames/.{opt}/.Options[FeynmanParametrize1];
@@ -216,7 +177,7 @@ efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd},
 
     (rr___)*FeynAmpDenominator[aa__] :>
 
-    (
+    (rrdebug=rr;
 
           (* Operate only on denominator fators containing q *)
            qfacs=Select[{aa},((!FreeQ[#,qq])&)];
@@ -227,11 +188,11 @@ efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd},
 If[ (Integrate/.{opt}/.Options[FeynmanParametrize1])=!=True ||
               efpar=!=epar,
    (* No integration *)
-   ef=efpar[par][qq][FeynCalcInternal[qfacs]],
+   ef=efpar[par][qq][FeynCalcInternal[qfacs],opt],
    (* Integration *)
-   ef=efpar[par][qq][FeynCalcInternal[qfacs*Times@@Cases[{rr},E^(ee_?(!FreeQ[#,qq]&))]]] ]*
+   ef=efpar[par][qq][FeynCalcInternal[qfacs*Times@@Cases[{rr},E^(ee_?(!FreeQ[#,qq]&))]],opt] ]*
 
-   (* wrap is just so we can later absorb into the Dot[Integratedx...] stuff*)
+   (* wrap is just so we can later absorb into the Dot[Integratedx...] stuff *)
    wrap[If[(Integrate/.{opt}/.Options[FeynmanParametrize1])=!=True ||
               efpar=!=epar,
 
@@ -245,16 +206,21 @@ If[ (Integrate/.{opt}/.Options[FeynmanParametrize1])=!=True ||
           co=-Coefficient[(ef/._*dd_Dot:>dd)[[-1]]/.E^(ee_)->ee,Pair[y,y]];
           (* Do the y-integrals *)
            If[$VeryVerbose>=1,Print["Expanding and replacing tensor terms with integrated terms, using integration momentum ", endrule[[2]], " and coefficient ", co]];
-           Uncontract[Expand[ScalarProductExpand[Times@@Replace[{rr},E^(ee_?(!FreeQ[#,qq]&))->1,1] /.
-                    squarerule]],y[[1]],Pair->All]/.
+           Replace[
+           (undebug=Uncontract[Expand[ScalarProductExpand[Times@@Replace[{rr},E^(ee_?(!FreeQ[#,qq]&))->1,1] /.
+                    squarerule]],y[[1]],Pair->All]),
 
-            (HoldPattern[Times[t:(HighEnergyPhysics`FeynCalc`Pair`Pair[
-                         HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_,___],_]..),
-                         re__?(FreeQ[#,y]&)]]):>
+            HoldPattern[
+            Times[t : (HighEnergyPhysics`FeynCalc`Pair`Pair[
+              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___], _] ..),
+              re__?(FreeQ[#, y] &)]] | tt : HighEnergyPhysics`FeynCalc`Pair`Pair[
+              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___], _] |
+              ttt : (HighEnergyPhysics`FeynCalc`Pair`Pair[
+              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___], _] ..):>
               Contract[
-              lis1=Cases[{t},HighEnergyPhysics`FeynCalc`Pair`Pair[
+              lis1=Cases[{t, tt, ttt},HighEnergyPhysics`FeynCalc`Pair`Pair[
                              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_,___],y]];
-              sil=Complement[{t},lis1];
+              sil=Complement[{t, tt, ttt},lis1];
               lis=(#[[1]])&/@lis1;
               cc=Length[lis];
               Which[
@@ -263,9 +229,10 @@ If[ (Integrate/.{opt}/.Options[FeynmanParametrize1])=!=True ||
                 cc==2,(2 Pi)^4/(2 co (4 Pi co)^(dim/2)) Pair@@lis,
                 cc==4,(2 Pi)^4/(4 co^2 (4 Pi co)^(dim/2))*
                  Plus@@(Times[Pair@@#[[1]],Pair@@#[[2]]]&/@
-                      Union[Sort/@((Sort/@Partition[#,2])&/@Permutations[lis])])]*
+                      Union[Sort/@((Sort/@Partition[#,2])&/@Permutations[lis])]),
+                True, Print["Cannot do higher ranks than 4"]; Return[]]*
                       (Times@@sil)*Times[re]
-               ]
+               ] , 1]
              ] *
           (*Remove the integrated out momentum*)
            If[(Integrate/.{opt}/.Options[FeynmanParametrize1])===True &&

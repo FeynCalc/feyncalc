@@ -1,0 +1,16 @@
+{MomentaScalarProduct[p1, p2]*MomentaScalarProduct[p3, p4], 
+ MomentaScalarProduct[p1, p3]*MomentaScalarProduct[p2, p4], 
+ MomentaScalarProduct[p1, p4]*MomentaScalarProduct[p2, p3], 
+ ParticleMass[PseudoScalar[2], RenormalizationState[0]]^4, 
+ MomentaScalarProduct[p3, p4]*UCouplingConstant[QED[1], 
+    RenormalizationState[0]]^2, MomentaScalarProduct[p2, p4]*
+  UCouplingConstant[QED[1], RenormalizationState[0]]^2, 
+ MomentaScalarProduct[p2, p3]*UCouplingConstant[QED[1], 
+    RenormalizationState[0]]^2, MomentaScalarProduct[p1, p4]*
+  UCouplingConstant[QED[1], RenormalizationState[0]]^2, 
+ MomentaScalarProduct[p1, p3]*UCouplingConstant[QED[1], 
+    RenormalizationState[0]]^2, MomentaScalarProduct[p1, p2]*
+  UCouplingConstant[QED[1], RenormalizationState[0]]^2, 
+ ParticleMass[PseudoScalar[2], RenormalizationState[0]]^2*
+  UCouplingConstant[QED[1], RenormalizationState[0]]^2, 
+ UCouplingConstant[QED[1], RenormalizationState[0]]^4}

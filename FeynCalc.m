@@ -8971,7 +8971,7 @@ applying FeynCalcInternal.";
 Begin["`Private`"];
 
    LC/:
-   MakeBoxes[LC[x__][y__] ,TraditionalForm] :=
+   MakeBoxes[LC[x___][y___] ,TraditionalForm] :=
    SuperscriptBox["\[Epsilon]", Tbox[x,y]];
    LC/:
    MakeBoxes[LC[x__] ,TraditionalForm] :=
@@ -9010,7 +9010,7 @@ applying FeynCalcInternal.";
 Begin["`Private`"];
 
    LCD /:
-   MakeBoxes[LCD [x__][y__] ,TraditionalForm] :=
+   MakeBoxes[LCD [x___][y___] ,TraditionalForm] :=
    SuperscriptBox["\[Epsilon]", Tbox[x,y]];
    LCD /:
    MakeBoxes[LCD [x__] ,TraditionalForm] :=

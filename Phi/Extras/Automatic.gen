@@ -66,25 +66,36 @@ $CouplingLorentzIndicesString<>ToString[i];
   particle
 *)
 
+(* The condition added to allow redifining propagators
+   before loading FeynArts *)
+If[And@@((Head[HighEnergyPhysics`Phi`Couplings`GenProps[#]]===
+HighEnergyPhysics`Phi`Couplings`GenProps)&/@
+({$ScalarHeads /. Alternatives -> Sequence})),
 HighEnergyPhysics`Phi`Couplings`GenProps[a:$ScalarHeads]:={
 AnalyticalPropagator[External][ s a[i,p] ] == 1, 
 AnalyticalPropagator[Internal][ s a[i,p] ] == 
-I*PropagatorDenominator[p,Mass[a[i]]]};
+I*PropagatorDenominator[p,Mass[a[i]]]}];
 
+If[And@@((Head[HighEnergyPhysics`Phi`Couplings`GenProps[#]]===
+HighEnergyPhysics`Phi`Couplings`GenProps)&/@
+({$VectorHeads /. Alternatives -> Sequence})),
 HighEnergyPhysics`Phi`Couplings`GenProps[a:$VectorHeads]:={
 AnalyticalPropagator[External][ s a[i, mom, {li2}] ] == 
 FAPolarizationVector[ a[i], mom, li2 ], 
 AnalyticalPropagator[Internal][ s a[i,mom,{li1}->{li2}] ] == 
 I*PropagatorDenominator[ mom , Mass[a[i]] ]*
-(-FAMetricTensor[li1, li2])};
+(-FAMetricTensor[li1, li2])}];
 
+If[And@@((Head[HighEnergyPhysics`Phi`Couplings`GenProps[#]]===
+HighEnergyPhysics`Phi`Couplings`GenProps)&/@
+({$FermionHeads /. Alternatives -> Sequence})),
 HighEnergyPhysics`Phi`Couplings`GenProps[a:$FermionHeads]:={
 AnalyticalPropagator[External][ s a[i, mom] ] == 
 FANonCommutative[ 
 DiracSpinor[ -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ], 
 AnalyticalPropagator[Internal][ s a[i,mom] ] == 
 FANonCommutative[ DiracGamma[ -mom ] + Mass[a[i]] ]*
-I*PropagatorDenominator[ mom , Mass[a[i]] ]};
+I*PropagatorDenominator[ mom , Mass[a[i]] ]}];
 
 (* ****************************************************************** *)
 

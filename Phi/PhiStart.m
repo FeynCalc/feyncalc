@@ -174,6 +174,15 @@ WriteOutPaVe -> ToFileName[
 {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
 $PathnameSeparator];
 
+HighEnergyPhysics`Phi`Objects`FunctionalDerivative::"usage" = 
+    "FunctionalDerivative is FunctionalD adapted for use with Phi";
+HighEnergyPhysics`Phi`Objects`FunctionalDerivative[x_, o__] :=
+    Block[{tr, r, nm, c, d, i, f}, i = 0; f := (++i);
+      FunctionalD[
+          PhiToFC[x /. HoldPattern[NM[d__]] :> Dot[nm[f], d]] /.
+            UTrace1 -> ((tr*#) &), o] //. {Dot[nm[_], c__] :> NM[c],
+          tr*r__ :> UTrace[Times[r]]}];
+                    
 HighEnergyPhysics`FeynCalc`$Abbreviations=
 Union[HighEnergyPhysics`FeynCalc`$Abbreviations,
 {"Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
@@ -244,13 +253,14 @@ $UExpansionCoefficients=
 (* Which configuration should be used? *)
 
   $Configuration=
-    "ChPT2";       (*standard SU(2) ChPT*)
+    (*"ChPT2";*)      (*standard SU(2) ChPT*)
     (*"ChPTPhoton2";*)(*standard SU(2) ChPT with coupling to a photon*)
     (*"ChPT3";*)      (*Standard SU(3) ChPT*)
     (*"ChPTW3";*)     (*Weak SU(3) ChPT*)
     (*"BChPT2";*)     (*Relativistic baryon SU(2) ChPT*)
     (*"HBChPT2";*)    (*Heavy baryon SU(2) ChPT*)
-    (*"ChPTEM2";*)        (*Standard SU(2) ChPT with virtual photons*)
+    (*"ChPTEM2";*)    (*Standard SU(2) ChPT with virtual photons - Meissner, Steininger*)
+    "ChPTVirtualPhotons2";        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
     (*"QED";*)        (*QED with one lepton*)
     (*"QED2";*)       (*QED with three leptons*)
 
@@ -266,13 +276,14 @@ tmp`olddir=tmp`olddir1;
 (* Which lagrangians should be loaded? *)
 
   $ULagrangians=
-    {ChPT2[2],ChPT2[4]};
+    (*{ChPT2[2],ChPT2[4]};*)
     (*{ChPTPhoton2[2],ChPTPhoton2[4]};*)
     (*{ChPT3[2],ChPT3[4]};*)
     (*{ChPTW3[2],ChPTW3[4]};*)
     (*{BChPT2[2]};*)
     (*{HBChPT2[2]};*)
     (*{ChPTEM2[2],ChPTEM2[4]};*)
+    {ChPTVirtualPhotons2[2],ChPTVirtualPhotons2[4]};
     (*{QED[1],QED[2]};*)
     (*{QED2[1],QED2[2]};*)
 

@@ -64,7 +64,7 @@ Pair[Momentum[p1], Momentum[p2]], so to generate more readable coupling \
 files, ScalarProductForm can be set to some orderless function like e.g. \
 MomentaScalarProduct, which can then eventually (after generation of \
 amplitudes with FeynArts) be replaced with ScalarProduct. Default value : \
-MomentaScalarProduct";
+MomentaScalarProduct|Pair for MomentaCollect MomentaScalarProduct otherwise";
 
 Masses::"usage" = 
     "Masses is an option for MandelstamReduce and VeltmanExpand, specifying \
@@ -206,6 +206,9 @@ DotExpand::"usage" =
 NMSeriesExpand::"usage" = 
     "NMSeriesExpand[expr] expands series in NM products";
 
+NMFactor::"usage" = 
+    "NMFactor[expr] factors out overall factors in sums of NM products";
+
 FieldStrengthTensor::"usage" = 
     "FieldStrengthTensor[LorentzIndex[mu],QuantumField[Particle[p],\
 LorentzIndex[nu]][x]] gives the field strength tensor of the particle/source \
@@ -215,10 +218,10 @@ FieldStrengthTensor[obj,LorentzIndex[mu],x] tries to construct the field \
 strength tensor of the object obj";
 
 FieldStrengthTensorFull::"usage" = 
-    "FieldStrengthTensorFull[LorentzIndex[mu],IsoVector[obj][x],LorentzIndex[\
-nu],c] gives the field strength tensor of the object obj including the cross \
+    "FieldStrengthTensorFull[LorentzIndex[mu],IsoVector[obj[LorentzIndex[\
+nu]]][x],c] gives the field strength tensor of the object obj including the cross \
 product term.  \
-FieldStrengthTensorFull[LorentzIndex[mu],m,LorentzIndex[nu],x,c] gives the \
+FieldStrengthTensorFull[LorentzIndex[mu],m[LorentzIndex[nu]],x,c] gives the \
 field strength tensor of the iso-matrix object m including the commutator \
 term.  c is an optional parameter specifying the coupling constant \
 multiplying the cross product and commutator term respectively.  When not \
@@ -980,7 +983,7 @@ ExpandUGenerators and SUNReduce,  specifying whether or \
 not the commutator rules $CommutatorRules should be used for reductions.  To \
 speed up things the function SetCommutators can be used.  Also, \
 CommutatorReduce is a function which simply applies $CommutatorRules \
-repeatedly to it's argument.  Default value : False";
+repeatedly to it's argument.  Default value : True for ExpandU, False otherwise";
 
 FullReduce::"usage" =
   "FullReduce is an option for CommutatorReduce.  If set to True, the noncommutative \
@@ -991,7 +994,8 @@ QuantumField's will be Sort'ed.  Default value : False
 set to Implicitsums.  When set to True, a set of transformation rules are \
 applied untill the result no longer changes.  This can be extremely time \
 consuming for large expressions.  When set to False, the same set of \
-transformation rules are applied, but only once.  Default value : False";
+transformation rules are applied, but only once.  Default value : True for \
+CommutatorReduce False for SUNReduce";
 
 $CommutatorRules::"usage" =
   "$CommutatorRules is the list of rules DiscardFields and ExpandU use when \
@@ -1456,7 +1460,14 @@ Functions:
      
     RowBox[{MakeBoxes[AngleBracket[aua], TraditionalForm]}];
      FieldDerivative /:
-     MakeBoxes[FieldDerivative[a_, _, lis__fcpd], 
+     MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex], 
+	  TraditionalForm] :=
+     RowBox[{SubscriptBox[
+   MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]], 
+          RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
+        MakeBoxes[TraditionalForm[a]], ")"}];
+     FieldDerivative /:
+     MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]], 
@@ -1471,7 +1482,7 @@ Functions:
         MakeBoxes[TraditionalForm[a]], ")"}];
      CovariantFieldDerivative /:
      
-    MakeBoxes[CovariantFieldDerivative[a_, _, lis___fcpd], 
+    MakeBoxes[CovariantFieldDerivative[a_, _, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]][[1]], 
@@ -1486,7 +1497,7 @@ Functions:
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
      CovariantNabla /:
-     MakeBoxes[CovariantNabla[a_, _, lis___fcpd], 
+     MakeBoxes[CovariantNabla[a_, _, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[Del]", FontSlant -> "Italic"]][[1]], 
@@ -1503,7 +1514,7 @@ Functions:
      
     MakeBoxes[
       FieldStrengthTensor[fcli[li_], 
-        fcqf[ders___fcpd, p_, iis___fcsuni, lli_fcli, lis___fcli]], 
+        fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, p_, iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex]], 
 	  TraditionalForm] :=
      SubscriptBox[RowBox[{
 MakeBoxes[TraditionalForm[p]], "(", 
@@ -1581,7 +1592,7 @@ FST /: MakeBoxes[FST[p_, {mu_}, {nu_}], TraditionalForm] :=
     SubscriptBox[MakeBoxes[ TraditionalForm[Particle[p]]], 
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {mu, nu}]];
 FieldDerivative /:
-MakeBoxes[FieldDerivative[a_, lis___fcpd], 
+MakeBoxes[FieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]],
@@ -1596,7 +1607,7 @@ RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
 MakeBoxes[TraditionalForm[a]], ")"}];     
 CovariantFieldDerivative /:
 
-    MakeBoxes[CovariantFieldDerivative[a_, lis___fcpd], 
+    MakeBoxes[CovariantFieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]][[1]],
@@ -1621,9 +1632,7 @@ MakeBoxes[TraditionalForm[a]], ")"}];
 Objects:
 *)
 
-UMatrix /:
-     
-    MakeBoxes[
+UMatrix /: MakeBoxes[
       UMatrix[um_[
           i_], (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
           mi1_], (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
@@ -1633,9 +1642,8 @@ UMatrix /:
       RowBox[{"(", MakeBoxes[TraditionalForm[mi1]], 
           MakeBoxes[TraditionalForm[mi2]], ")"}], 
       MakeBoxes[TraditionalForm[i]]];
-UMatrix /:
-     
-    MakeBoxes[
+
+UMatrix /: MakeBoxes[
       UMatrix[um_, (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
           mi1_], (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
           mi2_], ___], 
@@ -1643,25 +1651,30 @@ UMatrix /:
     SubscriptBox[MakeBoxes[TraditionalForm[um]][[1, 1]], 
       RowBox[{"(", MakeBoxes[TraditionalForm[mi1]], 
           MakeBoxes[TraditionalForm[mi2]], ")"}]];
-UMatrix /:
-     
-    MakeBoxes[UMatrix[um_[i_ /; FreeQ[i, Rule], ___Rule], ___Rule], 
+
+UMatrix /: MakeBoxes[UMatrix[um_[i_ /; FreeQ[i, Rule], ___Rule], ___Rule], 
 	  TraditionalForm] := 
     SuperscriptBox[(MakeBoxes[
             TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]])[[1, 1, 1]],
        MakeBoxes[TraditionalForm[i]]];
-UMatrix /:
-     MakeBoxes[UMatrix[um_[___Rule], ___Rule], 
+       
+UMatrix /: MakeBoxes[UMatrix[um_[___Rule], ___Rule], 
 	  TraditionalForm] := (MakeBoxes[
           TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]])[[1, 1, 1]];
-UMatrix /:
-     MakeBoxes[UMatrix[um_ /; AtomQ[um], ___Rule | ___List], 
+
+UMatrix /: MakeBoxes[UMatrix[um_ /; AtomQ[um], ___Rule | ___List], 
 	  TraditionalForm] := 
     MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]][[1, 1, 
         1]];
-UIndex /:
-     MakeBoxes[UIndex[i_], 
+        
+(*Added 31/7-2001*)
+UMatrix /: MakeBoxes[UMatrix[um_, ___Rule][_], TraditionalForm] :=
+    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]];
+
+        
+UIndex /: MakeBoxes[UIndex[i_], 
 	  TraditionalForm] := MakeBoxes[TraditionalForm[i]];
+	  
 UIdentity /: Format[UIdentity, TraditionalForm] := 
     StyleForm["\[DoubleStruckCapitalI]\[DoubleStruckD]", 
       FontSlant -> "Italic"];

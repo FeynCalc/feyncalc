@@ -97,7 +97,9 @@ Checks if file exists.  If it does, Get's \
 fil and returns the loaded expressions.  If fil does not exist, evaluates exp, saves it \
 to fil and returns the evaluated exp.  NOTICE : If fil ends with \".Gen\" or \".Mod\", \
 the setting of Directory is ignored and fil is saved in the \"CouplingVectors\" \
-subdirectory of \"phi\".  If fil is a file name with full path, the setting of Directory \
+subdirectory of \"phi\".  If fil ends with \".Fac\", \
+the setting of Directory is ignored and fil is saved in the \"Factors\" \
+subdirectory of \"phi\". If fil is a file name with full path, the setting of Directory \
 is also ignored";
 
 ForceSave::"usage" = 

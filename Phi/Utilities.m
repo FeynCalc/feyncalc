@@ -566,11 +566,18 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
       If[StringQ[fi] =!= True, Message[PutIfNotThere::nostring, fi];
         Return[]];
 
-      If[StringMatchQ[fi,"*.Gen"]===True||StringMatchQ[fi,"*.Mod"]===True,
-         dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
-	 $PathnameSeparator <>
+      Which[
+         StringMatchQ[fi,"*.Gen"]===True||StringMatchQ[fi,"*.Mod"]===True,
+           dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
+	       $PathnameSeparator <>
 	       "Phi" <> $PathnameSeparator <> "CouplingVectors"],
-         dir = (Directory /. Flatten[{opts}] /. Options[CheckF])
+	     (*Added 24/7-2001*)
+	     StringMatchQ[fi,"*.Fac"]===True,
+           dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
+	       $PathnameSeparator <>
+	       "Phi" <> $PathnameSeparator <> "Factors"],
+	    True,
+          dir = (Directory /. Flatten[{opts}] /. Options[CheckF])
       ];
 
       Which[

@@ -1,0 +1,3 @@
+{FAFourVector[p1, \[Mu]2]*FAFourVector[p2, \[Mu]1], 
+ FAFourVector[p1, \[Mu]1]*FAFourVector[p2, \[Mu]2], 
+ FAMetricTensor[\[Mu]1, \[Mu]2]*MomentaScalarProduct[p1, p2]}

@@ -143,7 +143,7 @@ Options[FCToFA] = {ScalarProductForm -> MomentaScalarProduct,
       MomentumVariablesString -> "p", ParticlesNumber -> 4,
       IsoIndicesString -> "I", FADeltas -> True, IsoCollect -> False};
 Options[MomentaCollect] = {ParticlesNumber -> 4, PerturbationOrder -> 2,
-      ScalarProductForm -> MomentaScalarProduct,
+      ScalarProductForm -> (MomentaScalarProduct|Pair),
       MomentumVariablesString -> "p", ExtendedCollect -> True,
       HoldMinuses -> False};
 Options[GenericCoupling] = {ScalarProductForm -> MomentaScalarProduct,
@@ -271,7 +271,7 @@ melfeynartstemp[melsimplified_, opts___] :=(**)
                 SU2Delta -> $FADelta, SU3Delta -> $FADelta}, {}] /. {Dot ->
               fanoncom, fcdot -> fanoncom, fcsuni[a_] -> a,
             fcpa[a_HighEnergyPhysics`FeynCalc`Momentum`Momentum,
-                b_HighEnergyPhysics`FeynCalc`Momentum`Momentum] -> \
+                b_HighEnergyPhysics`FeynCalc`Momentum`Momentum] ->
 (ScalarProductForm /. Flatten[{opts}] /. Options[FCToFA])[a, b],
             fcpa[a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
                 b_HighEnergyPhysics`FeynCalc`Momentum`Momentum] -> fafv[b, a],
@@ -338,18 +338,19 @@ unset the numerical attribute temporarily. 18/12-1999. Nope, doesn't work. *)
         Union[$UScalars, numericheads, $UParticles];*)
 MomentaCollect[m_, opts___] :=
  (*(pc = (ScalarProductForm /. Flatten[{opts}] /. Options[MomentaCollect]);*)
- Block[{pc = (ScalarProductForm /. Flatten[{opts}] /.
-            Options[MomentaCollect]), a, b, c, d, e, j, pp, xf, xff, xfff, n1,
+ Block[{pc = (ScalarProductForm /. Flatten[{opts}] /. Options[MomentaCollect]),
+ pcc, a, b, c, d, e, j, pp, xf, xff, xfff, n1,
        n2, p, l, r, tminus, var, Head1},
-VerbosePrint[2, "Scalar product is ", pc];
+pcc = If[Head[pc]===Alternatives, Blank /@ pc, Blank[pc]];
+VerbosePrint[2, "Scalar product is ", pcc];
     VerbosePrint[1, "Building list of Collect patterns from momenta"];
     momentaslist1 =
       Join[{Times @@
             Table[(var = ToExpression["a" <> ToString[j]];
-                Pattern[Evaluate[var], Blank[pc]]), {j,
+                Pattern[Evaluate[var], pcc]), {j,
                 Ceiling[(PerturbationOrder /. Flatten[{opts}] /.
-                        Options[MomentaCollect])/2]}]}, {(Blank[
-                pc])^(Ceiling[(PerturbationOrder /. Flatten[{opts}] /.
+                        Options[MomentaCollect])/2]}]},
+                        {pcc^(Ceiling[(PerturbationOrder /. Flatten[{opts}] /.
                       Options[MomentaCollect])/2])},
         If[(ExtendedCollect /. Flatten[{opts}] /. Options[MomentaCollect]),
           VerbosePrint[1,
@@ -405,10 +406,10 @@ for FeynArts 2: *)
 
 expansionpatterns[opts___] :=
     Alternatives @@
-      Join[$ExpansionQuantities, {(*_Global`FAMetricTensor,*) \
-_HighEnergyPhysics`FeynCalc`MetricTensor`MetricTensor, (*_Global`FADiracMatrix,*) \
-(*_Global`FAChiralityProjector,*) \
-_HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma, \
+      Join[$ExpansionQuantities, {(*_Global`FAMetricTensor,*)
+_HighEnergyPhysics`FeynCalc`MetricTensor`MetricTensor, (*_Global`FADiracMatrix,*)
+(*_Global`FAChiralityProjector,*)
+_HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma,
 _HighEnergyPhysics`FeynCalc`ChiralityProjector`ChiralityProjector,
           Blank[ScalarProductForm /. Flatten[{opts}] /.
               Options[GenericCoupling]]}];
@@ -586,6 +587,17 @@ Min[30, StringLength[XName[opts]]]] <> ".Mod"];
 vertices, we get a factor n!: *)
 
 
+(* Added 11/7-2001 *)
+
+VerticesExtract[top:(fatop[_][__]->fains[fagen][fagr[__][__] ->
+                 fains[facl][
+                 fagr[__][__]], (fagr[__][__] ->
+                 fains[facl][fagr[__][__]]) ..])]:=
+Union @@ (VerticesExtract /@ (top /.
+((t : (fatop[_][__])) -> (i : (fains[fagen][
+fagr[__][__] ->fains[facl][fagr[__][__]], (fagr[__][__] ->
+fains[facl][fagr[__][__]]) ..]))) :>
+((Rule[t,fains[fagen][#]]) & /@ (List @@ i))));
 
 (* 9/12-1998: Changed t_fatop into t:(fatop[_][__]) below. I think I changed the
 pattern in the other functions some time ago, but must have forgotten the one
@@ -920,11 +932,10 @@ written out (FeynCalc does not accept it when written out): *)
 
 
 
-(* First a raw amplitude: *)
-
+(* A raw amplitude: *)
 classesamplitude[amm__ /; FreeQ[amm, facl]][
     opts___] :=
-(amm //.
+(amm /.PropagatorDenominator1->fcprd(*Added 19/7-2001*) //.
 {famatr[a___, b_, c___] /; UScalarQ[b] -> b*famatr[a, c],
 faferch[a___, b_, c___] /; UScalarQ[b] -> b*faferch[a, c]} /.
 fafm[faint, a_] :> fcmom[ToExpression[
@@ -941,10 +952,9 @@ faind[falo, b_] :> fcli[ToExpression[$CouplingLorentzIndicesString <> ToString[b
 
 
 
-(* Then an amplitude in FeynArts syntax: *)
-
+(* An amplitude in FeynArts syntax: *)
 classesamplitude[amm__ /; ! FreeQ[amm, facl]][opts___] :=
-(**)(fapl[facl][amm] //.
+(**)(fapl[facl][amm] /.PropagatorDenominator1->fcprd(*Added 19/7-2001*) //.
 {famatr[a___, b_, c___] /; UScalarQ[b] -> b*famatr[a, c],
 faferch[a___, b_, c___] /; UScalarQ[b] -> b*faferch[a, c]} /.
 fafm[faint, a_] :> fcmom[ToExpression[(InternalMomentumVariablesString /.
@@ -973,19 +983,21 @@ amptable[a_] := Table[amptablefunc[a, i], {i, Length[a]}];
 
 (* wrap = HighEnergyPhysics`Phi`Couplings`Wrap *)
 
-fixindices[amptab_List] :=
+fixindices[ampta_List] :=
   Block[{common, rep, repp, wraps, rules, l, inds, newinds, tmpinds, tmpwraps,
-       amptab1 = amptab},
+       amptab1 = ampta},
+      (*Products of identical couplings. Added 26/7-2001*)
+      amptab=ampta /.
+            HighEnergyPhysics`Phi`Couplings`Wrap[a_]^n_ :>
+            (Times @@ (HighEnergyPhysics`Phi`Couplings`Wrap[dumf[#]*a]& /@ Table[ii, {ii, 1, n}]));(**)
     Do[VerbosePrint[2, "Checking amplitude ", repp];
-      If[(l = Length[
-                  wraps =
-                    Cases[amptab[[repp]],
-                      HoldPattern[
-                        Plus[_HighEnergyPhysics`Phi`Couplings`Wrap*__ ..]], \
-{1}]]) > 1 && Head[amptab[[repp]]] === Times,
+      If[(l = Length[wraps = Cases[amptab[[repp]],
+  HoldPattern[Plus[_HighEnergyPhysics`Phi`Couplings`Wrap*__ ..]|
+              _HighEnergyPhysics`Phi`Couplings`Wrap], {1}]]) > 1 (*Added 26/7-2001*) &&             
+      Head[amptab[[repp]]] === Times,
         VerbosePrint[1, "Amplitude contains ", l,
           " factors with dummy indices. Renaming"]; inds = {};
-        Do[newinds = (#[[1]]) & /@
+        Do[newinds = (#[[1]])& /@
               Union[Cases[wraps[[l]],
                   HighEnergyPhysics`Phi`Couplings`Wrap[_?AtomQ], Infinity]];
           tmpinds = newinds;
@@ -1002,10 +1014,10 @@ fixindices[amptab_List] :=
         amptab1 =
           ReplacePart[
             amptab1, (((Times @@ (tmpwraps /@ Range[l]))*(amptab1[[repp]] /.
-                        HoldPattern[
-                            Plus[_HighEnergyPhysics`Phi`Couplings`Wrap*__ \
-..]] -> 1))) /. HighEnergyPhysics`Phi`Couplings`Wrap -> Identity,
-            repp]], {repp, Length[amptab1]}]; amptab1 /. Wrap -> Identity];
+            HoldPattern[Plus[_HighEnergyPhysics`Phi`Couplings`Wrap*__ ..]] -> 1 /.
+  HighEnergyPhysics`Phi`Couplings`Wrap[_?(!FreeQ[#,HighEnergyPhysics`Phi`Couplings`Wrap]&)] -> 1))) /.
+            HighEnergyPhysics`Phi`Couplings`Wrap -> Identity,
+            repp]], {repp, Length[amptab1]}]; amptab1 /. _dumf -> 1 /. Wrap -> Identity];
 
 
 
@@ -1044,8 +1056,8 @@ tmptable1 /.
 (*SU(N) delta function*)   $FADelta[aa_, bb_] -> fcsundel[fcsuni[aa],fcsuni[bb]] /.
 (*Four vectors and scalarproducts*){
    (*Changed 6/1 - 2000*)(*fafv -> fcpa*)
-   fafv[a_?((! FreeQ[#, fafm | fcmom]) &),b_?((Head[#] != fcli) &)] -> fcpa[a, fcli[b]],
-   fafv[a_?((! FreeQ[#, fafm | fcmom]) &),b_?((Head[#] == fcli) &)] -> fcpa[a, b],
+   fafv[a_?((!FreeQ[#, fafm | fcmom])&), b_?((Head[#] =!= fcli)&)] -> fcpa[a, fcli[b]],
+   fafv[a_?((!FreeQ[#, fafm | fcmom])&), b_?((Head[#] === fcli)&)] -> fcpa[a, b],
    famt[li1_, li2_] /; FreeQ[{li1, li2}, fcli] ->
       fcpa[fcli[li1, SpaceTimeDimensions],fcli[li2, SpaceTimeDimensions]],
    famt[li1_, li2_] /; !FreeQ[{li1, li2}, fcli] -> fcpa[li1, li2],
@@ -1074,7 +1086,7 @@ tmptable1 /.
 } /.
 (*Added 13/10-2000*)
 UGenerator[ii_,op___] :> UGenerator[fcsuni[ii],op] /.
-(*Polarization vecrtors*)
+(*Polarization vectors*)
 fcpa[a_,b : Plus[-1*_, __]] :> -fcpa[a, -b] /.
 (*polarization vectors*){
    Conjugate[fapolv][_, f_*fcmom[m_, d___],

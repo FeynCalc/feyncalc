@@ -721,7 +721,12 @@ aa : HoldPattern[
             a -> fcli[DerivativeExternDummy][1]) /; (! FreeQ[{fac, facc}, a] &&
               FreeQ[{fac, facc}, DerivativeExternDummy] &&
               FreeQ[{fac, facc}, (*freemult[___, multdum]*)
-		(NM | NM1 | NM2)[___?(FreeQ[{##},lorentzmult]&)]])};
+		(NM | NM1 | NM2)[___?(FreeQ[{##},lorentzmult]&)]]),
+   (*Added 15/7-2001*)
+   (ff_[fcpd[fcli[a_]], fi___,fcli[a_],if___][x_]) :> (ff[
+    fcpd[fcli[DerivativeInternDummy][0]],
+     fi,fcli[DerivativeInternDummy][0],if][x])/;
+    (FreeQ[a, DerivativeInternDummy])};
 (*Derivative indices*)
   dummyrulesder1b = {(nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___,
@@ -843,7 +848,7 @@ aa : HoldPattern[
                       fcsuni[IsoInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && !
                 FreeQ[{fi, la}, IsoInternDummy])};
 (*Derivative indices*)
-  dummyrulesderint1 = {(nm1 : NM | NM1 | NM2)[fac___,
+  (*dummyrulesderint1 = {(nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___,
                 fcpd[a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex],
                 la___][x_],
@@ -857,9 +862,9 @@ aa : HoldPattern[
             facc___] :> (nm1[fac,
               gg[fi, a, la], facc] /. a -> fcli[DerivativeInternDummy][1]) /;
 	      (! FreeQ[{fac, facc}, a] &&
-              FreeQ[{fi, la}, DerivativeInternDummy])};
+              FreeQ[{fi, la}, DerivativeInternDummy])};*)
 (*Derivative indices*)
-  dummyrulesderint2 = {(nm1 : NM | NM1 | NM2)[fac___,
+  (*dummyrulesderint2 = {(nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___,
                 fcpd[a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex],
                 la___][x_],
@@ -882,7 +887,7 @@ aa : HoldPattern[
                             Infinity, Heads -> True] /.
                           fcli[DerivativeInternDummy][na_] -> na] + 1] +
                   1])/; (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fi, la}, DerivativeInternDummy])};
+                FreeQ[{fi, la}, DerivativeInternDummy])};*)
 (*Lorentz indices*)
   dummyruleslorint1 = {(nm1 : NM | NM1 | NM2)[fac___,
             gg_[fi___, a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
@@ -925,41 +930,58 @@ aa : HoldPattern[
 (* Squared objects will not be catched by the previous rules (and we don't have
 higher powers with one iso-spin index), so we need a special set of rules: *)
 
-dummyrulessq1 = {(ff_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
-                  la___][x_])^2 :> (res = (ff[fi, fcsuni[IsoDummy][isodummycounter],
-                    la][x])^2; isodummycounter += 1;
-          res) /; (FreeQ[a,
-              IsoDummy]), (ff_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
-                la___])^2 :> (res = (ff[fi, fcsuni[IsoDummy][isodummycounter],
-                  la])^2; isodummycounter += 1;
-          res)/; (FreeQ[a,
-              IsoDummy]), (ff_[fi___,
-                  a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-                  la___][x_])^2 :> (ff[fi, fcli[LorentzDummy][1], la][
-              x])^2 /; (FreeQ[a,
-              LorentzDummy]), (ff_[fi___,
-                a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-                la___])^2 :> (ff[fi,
-              fcli[LorentzDummy][1],
-              la])^2/; (FreeQ[a, LorentzDummy]) , (ff_[fcpd[fcli[a_]], fi__][x_])^2 :> (ff[
-                fcpd[fcli[DerivativeExternDummy][1]], fi][
-              x])^2/; (FreeQ[a,
-              DerivativeExternDummy]), (ff_[fcpd[fcli[a_]], fi__])^2 :> (ff[
-              fcpd[fcli[DerivativeExternDummy][1]], fi])^2 /; (FreeQ[a,
-              DerivativeExternDummy])};
-dummyrulessq2 = {(ff_[fi___, fcsuni[ld_][ll_], fcsuni[ln_], la___][
-              x_])^2 :> (ff[fi, fcsuni[ld][ll], fcsuni[ln][ll + 1], la][
-              x])^2, (ff_[fi___, fcsuni[ld_][ll_], fcsuni[ln_],
-              la___])^2 :> (ff[fi, fcsuni[ld][ll], fcsuni[ln][ll + 1],
-              la])^2, (ff_[fi___, fcli[ld_][ll_], fcli[ln_], la___][
-              x_])^2 :> (ff[fi, fcli[ld][ll], fcli[ln][ll + 1], la][
-              x])^2, (ff_[fi___, fcli[ld_][ll_], fcli[ln_], la___])^2 :> (ff[
-              fi, fcli[ld][ll], fcli[ln][ll + 1],
-              la])^2, (ff_[fcpd[fcli[ld_][ll_]], fcpd[fcli[ln_]], fi__][
-              x_])^2 :> (ff[fcpd[fcli[ld][ll]], fcpd[fcli[ln][ll + 1]], fi][
-              x])^2, (ff_[fcpd[fcli[ld_][ll_]], fcpd[fcli[ln_]],
-              fi__])^2 :> (ff[fcpd[fcli[ld][ll]], fcpd[fcli[ln][ll + 1]],
-              fi])^2};
+dummyrulessq1 = {
+  (ff_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
+   la___][x_])^2 :> (res = (ff[fi, fcsuni[IsoDummy][isodummycounter], la][x])^2;
+   isodummycounter += 1; res) /; (FreeQ[a, IsoDummy]),
+   
+   (ff_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
+   la___])^2 :> (res = (ff[fi, fcsuni[IsoDummy][isodummycounter], la])^2;
+   isodummycounter += 1; res)/; (FreeQ[a, IsoDummy]),
+   
+   (ff_[fi___, a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+   la___][x_])^2 :> (ff[fi, fcli[LorentzDummy][1], la][x])^2 /; (FreeQ[a, LorentzDummy]),
+   
+   (ff_[fi___, a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+   la___])^2 :> (ff[fi, fcli[LorentzDummy][1], la])^2/; (FreeQ[a, LorentzDummy]),
+   
+   (ff_[fcpd[fcli[a_]], fi__][x_])^2 :> (ff[
+    fcpd[fcli[DerivativeExternDummy][1]], fi][x])^2/; (FreeQ[a, DerivativeExternDummy]),
+    
+   (ff_[fcpd[fcli[a_]], fi__])^2 :>
+   (ff[fcpd[fcli[DerivativeExternDummy][1]], fi])^2 /; (FreeQ[a, DerivativeExternDummy])};
+   
+dummyrulessq2 = {
+  (ff_[fi___, fcsuni[ld_][ll_], fcsuni[ln_], la___][x_])^2 :>
+  (ff[fi, fcsuni[ld][ll], fcsuni[ln][ll + 1], la][x])^2,
+  (ff_[fi___, fcsuni[ld_][ll_], fcsuni[ln_], la___])^2 :>
+  (ff[fi, fcsuni[ld][ll], fcsuni[ln][ll + 1], la])^2,
+  (ff_[fi___, fcli[ld_][ll_], fcli[ln_], la___][x_])^2 :>
+  (ff[fi, fcli[ld][ll], fcli[ln][ll + 1], la][x])^2,
+  (ff_[fi___, fcli[ld_][ll_], fcli[ln_], la___])^2 :>
+  (ff[fi, fcli[ld][ll], fcli[ln][ll + 1], la])^2,
+  (ff_[fcpd[fcli[ld_][ll_]], fcpd[fcli[ln_]], fi__][x_])^2 :>
+  (ff[fcpd[fcli[ld][ll]], fcpd[fcli[ln][ll + 1]], fi][x])^2,
+  (ff_[fcpd[fcli[ld_][ll_]], fcpd[fcli[ln_]], fi__])^2 :>
+  (ff[fcpd[fcli[ld][ll]], fcpd[fcli[ln][ll + 1]], fi])^2};
+  
+(* This is to clean up products of QuantumField[
+    PartialD[LorentzIndex[DerivativeInternDummy][0]], p, 
+    LorentzIndex[DerivativeInternDummy][0]][x] *)
+fixderindices1 = {NM->nmm1, NM1->nmm1}; 
+fixderindices2 = {nmm1[a__]?((FreeQ[#, nmm1[__?(!FreeQ[#,
+    fcli[DerivativeInternDummy][0]]&)]] && !FreeQ[#, DerivativeInternDummy])&) :>
+    (derindcounter = Max[Union[{0},
+    Cases[{a}, fcli[DerivativeInternDummy][_], Infinity, Heads->True] /. 
+      fcli[DerivativeInternDummy] -> Identity]]; 
+    nmm1 @@ ((# /. fcqf[
+    fcpd[fcli[DerivativeInternDummy][0]], p__, 
+    fcli[DerivativeInternDummy][0], r___] :>
+    (++derindcounter; fcqf[fcpd[fcli[
+    DerivativeInternDummy][derindcounter]], p, fcli[
+    DerivativeInternDummy][derindcounter], r]))& /@ {a}))};
+fixderindices3 = {nmm1->NM1}; 
+  
 allpatterns = (Blank | BlankSequence | BlankNullSequence | Pattern);
 
 
@@ -974,7 +996,9 @@ IndicesCleanup1[w_, opts___] :=
     w  /. dummyrulesiso1a /. dummyrulesiso1b /. dummyrulesiso2 /.
               dummyrulesder1a /. dummyrulesder1b /. dummyrulesder2 /.
         dummyruleslor1 /. dummyruleslor2(*change 19/1 -
-      1999*)(*/. dummyrulessq1 /. dummyrulessq2*)/.
+      1999*)(*/. dummyrulessq1 /. dummyrulessq2*)//.
+      (*Added 26/9-2000*)
+      fixderindices1 //. fixderindices2 //. fixderindices3 /.
       (*Added 26/9-2000*)
       {(nm1:NM|NM1|NM2)[fac___] :> nm1[fac,isomult] /;
          FreeQ[{fac},fcsuni[_?((FreeQ[#,IsoDummy|IsoExternDummy|IsoInternDummy]&&!UScalarQ[#])&)]] &&

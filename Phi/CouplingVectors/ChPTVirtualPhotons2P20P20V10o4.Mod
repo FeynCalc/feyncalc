@@ -1,0 +1,10 @@
+{{(-2*SU2F[3, I1, I2]*UCouplingConstant[ChPTVirtualPhotons2[4], 6, 
+     RenormalizationState[0]])/DecayConstant[PseudoScalar[2], 
+     RenormalizationState[0]]^2}, 
+ {(2*SU2F[3, I1, I2]*UCouplingConstant[ChPTVirtualPhotons2[4], 6, 
+     RenormalizationState[0]])/DecayConstant[PseudoScalar[2], 
+     RenormalizationState[0]]^2}, 
+ {(20*SU2F[3, I1, I2]*UCouplingConstant[ChPTVirtualPhotons2[4], 12, 
+     RenormalizationState[0]])/9}, 
+ {(-20*SU2F[3, I1, I2]*UCouplingConstant[ChPTVirtualPhotons2[4], 12, 
+     RenormalizationState[0]])/9}}
