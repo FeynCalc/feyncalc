@@ -1144,22 +1144,30 @@ UExp[m_, n_Integer] :=
           Sum[$UExpansionCoefficients[[i + 1]]*NMPower[m, i], {i, 1, n}],
           0] /. If[FreeQ[m, UMatrix, Infinity, Heads -> True],
         UMatrix[UIdentity, ___] -> 1, {}];
+
 UExp[0, m_, n : (_Integer | _List)] :=
     UIdentityMatrix[Sequence @@ OptionsSelect[UMatrix, m]] /.
       If[FreeQ[m, UMatrix, Infinity, Heads -> True],
         UMatrix[UIdentity, ___] -> 1, {}];
-UExp[ii_, m_,
-      n_Integer] := (ssuu = (Sum[$UExpansionCoefficients[[i]]*x^(i - 1), {i,
+
+(*9/7-2003. Fixed bug reported by Paul Buettiker: When zeros were in
+  $UExpansionCoefficients the thing didn't work*)
+UExp[ii_, m_, n_Integer] := UExp[ii, m,  n] =
+Block[{ssuu, x, sumstart, pos, zero, uexpCoeffs},
+       pos = Position[$UExpansionCoefficients,0,{1}];
+       uexpCoeffs = ReplacePart[$UExpansionCoefficients, zero, pos];
+       (ssuu = (Sum[uexpCoeffs[[i]]*x^(i - 1), {i,
                     1, n + 1}] + O[x]^(n + 1))^ii;
         sumstart = Max[ssuu[[4]], 1];
         If[n >= 0,
             ssuu[[3, 1]]*
-              UIdentityMatrix[Sequence @@ OptionsSelect[UMatrix, m]], 0] +
+              UIdentityMatrix[Sequence @@ OptionsSelect[UMatrix, m]] /.
+           zero -> 0, 0] +
           If[n >= 1,
-            Sum[ssuu[[3, i + 1]]*NMPower[m, i/ssuu[[6]]], {i, sumstart,
-                ssuu[[5]] - 1}], 0]) /.
+            Sum[ssuu[[3, i + 1]]*NMPower[m, i/ssuu[[6]]] /.
+                zero -> 0, {i, sumstart, ssuu[[5]] - 1}], 0]) /.
       If[FreeQ[m, UMatrix, Infinity, Heads -> True],
-        UMatrix[UIdentity, ___] -> 1, {}];
+        UMatrix[UIdentity, ___] -> 1, {}]];
 
 
 UExp[ii_, m_, l : {_Integer}] := UExp[ii, m, {l}];
