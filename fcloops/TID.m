@@ -16,7 +16,8 @@ BeginPackage["HighEnergyPhysics`fcloops`TID`",
              "HighEnergyPhysics`FeynCalc`"];
 
 TID::"usage" = 
-"TID[amp,q] performs a tensorial decomposition.";
+"TID[amp, q] does a 1-loop tensor integral decomposition, transforming the
+lorentz indices away from the integration momentum q.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -72,7 +73,7 @@ Options[TID] = {Collecting -> True,
                 FeynAmpDenominatorCombine -> True,
                 FeynAmpDenominatorSimplify -> False,
                 Isolate -> False,
-                ScalarProductCancel -> True};
+                ScalarProductCancel -> False};
 
 
 (* maybe not ... *)
@@ -120,9 +121,13 @@ If[FeynAmpDenominatorCombine /. {opt} /. Options[TID],
 
 If[t0 === 0, t0,
 originallistoflorentzindices = Cases[t0, LorentzIndex];
+(*
 t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred,
                 (*Added 17/9-2000, F.Orellana*) Dimension -> n] /. 
      PropagatorDenominator -> procanonical[q];
+*)
+
+t1 = t0 /.  PropagatorDenominator -> procanonical[q];
 
 If[Head[t1] =!= Plus,
    irrelevant = 0,
@@ -163,7 +168,14 @@ qQQprepare[FeynAmpDenominator[any__] f_ /; (!FreeQ[f, Momentum[q,___]])
                                               (* avoid tadpoles *)
   ) /; !FreeQ[SelectNotFree[f,q], OPEDelta] && (getfdp[any]=!=1);
 
-t3 = Map[(SelectFree[#, q] qQQprepare[SelectNotFree[#, q]])&, t2
+(* no need to uncontract, but then select for q and LorentzIndex here *)
+(*Global`T2 = t2; Dialog[t2];*)
+
+t3 = Map[(SelectFree[SelectFree[#, Pair[LorentzIndex[__],Momentum[q,___]]],
+                     FeynAmpDenominator]*
+          qQQprepare[SelectNotFree[#, FeynAmpDenominator]*
+                     SelectNotFree[#, Pair[LorentzIndex[__],Momentum[q,___]]]]
+         )&, t2
         ] /. {null1 :> 0, null2 :> 0, qQQprepare:>Identity};
 
 (* if there is something to substitute then ... *)
@@ -281,6 +293,7 @@ qQQ[ fdp[p_,k_, l_] *
               {p, k, l}, Dimension -> n]
  };
 
+(*Global`T3=t3; Dialog[t3];*)
 t5 = t3 /. qrule;
 scsav[a_Momentum,b_Momentum] := scsav[a,b] = ExpandScalarProduct[a,b]//Expand;
 t5 = t5 /. Pair -> scsav /. scsav -> Pair;
