@@ -54,7 +54,7 @@ DeclareNonCommutative[QuarkPropagator];
 Options[QuarkPropagator] = {CounterTerm -> False,
                             CouplingConstant -> Gstrong,
                             Dimension -> D,            
-                            Explicit -> True,
+                            Explicit -> False,
                             Loop -> 0,
                             OPE -> False,
                             Polarization -> 0};
@@ -62,7 +62,7 @@ Options[QuarkPropagator] = {CounterTerm -> False,
 QP = QuarkPropagator;
 Abbreviation[QuarkPropagator]=HoldForm[QP];
 
-QuarkPropagator[a_, b___, opt___Rule] := 
+QuarkPropagator[a_, __, b_/;Head[b]=!=Rule, opt___Rule] := 
 QuarkPropagator[a, opt];
 
 QuarkPropagator[pi_/;Head[pi]=!=List, opt___Rule] := 
@@ -107,6 +107,15 @@ Block[{dim, re, ope, pol, cou, loo},
         PropagatorDenominator[Momentum[pi,dim], m]]       ]
    ];
     re ]] /; (Explicit /. {opt} /.Options[QuarkPropagator])===True;
+
+
+QuarkPropagator /:
+   MakeBoxes[QuarkPropagator[{p_,m_}, ___?OptionQ],
+             TraditionalForm
+            ] := RowBox[{SubscriptBox["\[CapitalPi]","q"],
+                        "(", Tbox[p], ")"
+                        }];
+
 
 (*
 QuarkPropagator[{pi_, m_}, opt___Rule] :=  Block[{dim},
