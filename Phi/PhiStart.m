@@ -201,7 +201,7 @@ UNMSplit, that is, for UNMSplit to work, the 'extra' part apart from the \
 derivative of CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] should not \
 have a meson-field dependence.";
    
-   SetOptions[CheckF, Directory ->
+   SetOptions[CheckDB, Directory ->
    ToFileName[{$FeynCalcDirectory,"Phi"}, "Storage"],
    ForceSave -> False, NoSave -> False, Check -> False];
 
@@ -220,7 +220,7 @@ have a meson-field dependence.";
    SetOptions[FeynRule,
    InitialFunction->PhiToFC];
    
-   SetOptions[OneLoop,
+   (*SetOptions[OneLoop,
    WriteOutPaVe -> ToFileName[
    {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
    $PathnameSeparator];
@@ -228,7 +228,7 @@ have a meson-field dependence.";
    SetOptions[PaVeReduce,
    WriteOutPaVe -> ToFileName[
    {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
-   $PathnameSeparator];
+   $PathnameSeparator];*)
 
   (*Compapatibility with PartialD-operator notation*)
   SetOptions[ExpandPartialD,
@@ -318,9 +318,9 @@ dir = ToFileName[{$FeynCalcDirectory, "Phi", "CouplingVectors"}];
   StringReplace[StringReplace[#, dir -> ""], ".Gen" -> ""] & /@ 
     FileNames["*.Gen", 
       dir]; phiAmpList = (# :> 
-          FAToFC[{CheckF[dum, # <> ".Gen", ForceSave -> False, 
+          FAToFC[{CheckDB[dum, # <> ".Gen", ForceSave -> False, 
                     NoSave -> True].((#[[1]]) & /@ 
-                      CheckF[dum, # <> ".Mod", ForceSave -> False, 
+                      CheckDB[dum, # <> ".Mod", ForceSave -> False, 
                         NoSave -> True])}][[1]]) & /@ names;
 (*Modify amplist*)
 HighEnergyPhysics`fctables`Amplitude`Private`amplist = 

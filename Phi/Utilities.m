@@ -60,7 +60,6 @@ ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
 SUNIndex := SUNIndex = MakeContext["SUNIndex"];
 ScaleMu := ScaleMu = MakeContext["ScaleMu"];
 CouplingConstant := CouplingConstant = MakeContext["CouplingConstant"];
-CheckF := CheckF = MakeContext["CheckF"];
 
 (* Tracer functions *)
 
