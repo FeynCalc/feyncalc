@@ -79,8 +79,10 @@ Begin["`Private`"];
    
  (* #################################################################### *)
    
+(*
     expair[a_, b_] := If[!FreeQ[{a,b}, LorentzIndex], Pair[a,b],
                          Expand[ExpandScalarProduct[a,b]]];
+*)
    
    Contract3[x_Plus] := Map[Contract3, x];
    
@@ -123,7 +125,10 @@ Begin["`Private`"];
                            nec = Contract[nec, lipa[[ic]], Contract3->False]
                           ];
                         print2["expand scalar products"];
+			nec = ExpandScalarProduct[nec];
+(*
                         nec = nec /. Pair -> expair;
+*)
                         print2["expand scalar productsdone"];
 (*
          nec = Collect2[nec, LorentzIndex, Factoring -> True];
@@ -434,7 +439,7 @@ tim = TimeUsed[];
                          Expanding       -> True, 
                          Factoring       -> False,
                          fcint           -> True,
-                         MomentumCombine -> False,
+                         MomentumCombine -> True,
                          Rename          -> False,
                          Schouten        -> 0 
                        };
@@ -502,14 +507,21 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
      contractepsopt      = EpsContract/.contractopt;
      contractfactoring   = Factoring/.contractopt;
      contract3           = Contract3/.contractopt;
+
+     If[(MomentumCombine/.contractopt) === True,
+        contractres =  MomentumCombine[contractres]
+       ];
+
 (* NEW: September 16th 2003: adding Contract3 directly here ... *)
      If[contract3 && contractexpandopt,
      If[MemberQ[{Plus, Times}, Head[contractres]] (*&& !FreeQ[contractres, Plus]*),
-        contractres = Contract3[contractres]
+        contractres = Contract3[contractres];
+If[$VeryVerbose > 0, Print["Contract3 done"]];
        ]];
      contractres = contractres /. Pair -> sCOS /. sCOS -> sCO/.
                    sCO -> sceins /. sceins -> Pair;
      rename      = Rename /. contractopt;
+If[$VeryVerbose > 0, Print["extra done"]];
 (* optimization *)
      If[Head[contractres === Plus] && Length[contractres > 47],
        If[!FreeQ[contractres, Eps],
@@ -521,6 +533,7 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
           contractres = contractres //. es
          ]
        ];
+If[$VeryVerbose > 0, Print["check1"]];
      If[ contractexpandopt === True && contract3 === False && !FreeQ[contractres, LorentzIndex],
 (* NEW October 2003, this speeds things up in general*)
          contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
@@ -531,10 +544,6 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
                        };
        ];
      schout = Schouten /. contractopt;
-     If[(MomentumCombine/.contractopt) === True,
-        contractres =  MomentumCombine[contractres]
-       ];
-Global`CCC2=contractres;
           If[ contractexpandopt === True && 
               !FreeQ[contractres, LorentzIndex] 
               ,
