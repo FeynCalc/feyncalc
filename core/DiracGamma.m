@@ -18,7 +18,6 @@ DiraGamma[x, 4] simplifies to DiracGamma[x].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-
 MakeContext[ LorentzIndex, ExplicitLorentzIndex, Momentum,
              DeclareNonCommutative, DiracGammaT];
 

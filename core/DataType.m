@@ -21,7 +21,12 @@ DataType[x, PositiveInteger] = True.";
 Begin["`Private`"]
 
 
+(*
 MakeContext[NonCommFreeQ, NonCommQ, SelectFree];
+*)
+NonCommFreeQ := NonCommFreeQ = MakeContext["NonCommFreeQ"];
+NonCommQ := NonCommQ = MakeContext["NonCommQ"];
+SelectFree := SelectFree = MakeContext["SelectFree"];
 noncommutative := noncommutative = MakeContext["NonCommutative"];
 
 DataType[_] := soso /; Message[DataType::argrx, DataType, 1, "2 or more"];
