@@ -56,9 +56,13 @@ GhostPropagator[pi_, ai_, bi_, opts___?OptionQ] := Block[
 GhostPropagator /:
    MakeBoxes[GhostPropagator[p_,a_,b_],
              TraditionalForm
-            ] := RowBox[{SuperscriptBox["G", Tbox[a,b]],
+            ] := RowBox[{SubscriptBox["\[CapitalPi]", Tbox[a,b]],
                         "(", Tbox[p], ")"
                         }];
+GhostPropagator /:
+   MakeBoxes[GhostPropagator[p_],
+             TraditionalForm
+            ] := RowBox[{SubscriptBox["\[CapitalPi]", "u"], "(", Tbox[p], ")" }];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

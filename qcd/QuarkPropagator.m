@@ -36,6 +36,7 @@ MakeContext[Abbreviation,
             CouplingConstant,
             DeclareNonCommutative,
             Dimension, DiracGamma,Epsilon,
+            Explicit,
             FeynAmpDenominator,
             Gstrong, Loop,
             Momentum, MomentumExpand, OPE, Pair,
@@ -53,6 +54,7 @@ DeclareNonCommutative[QuarkPropagator];
 Options[QuarkPropagator] = {CounterTerm -> False,
                             CouplingConstant -> Gstrong,
                             Dimension -> D,            
+                            Explicit -> True,
                             Loop -> 0,
                             OPE -> False,
                             Polarization -> 0};
@@ -104,7 +106,7 @@ Block[{dim, re, ope, pol, cou, loo},
      MomentumExpand[
         PropagatorDenominator[Momentum[pi,dim], m]]       ]
    ];
-    re ]];
+    re ]] /; (Explicit /. {opt} /.Options[QuarkPropagator])===True;
 
 (*
 QuarkPropagator[{pi_, m_}, opt___Rule] :=  Block[{dim},

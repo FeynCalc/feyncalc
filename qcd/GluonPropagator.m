@@ -56,6 +56,7 @@ OPE,
 Pair,
 PairContract,
 FeynAmpDenominator,
+NumericalFactor,
 PropagatorDenominator,
 Sn,
 SUNDelta,
@@ -82,6 +83,9 @@ GluonPropagator[x___, i_Integer, y___] := GluonPropagator[x, l[i], c[i], y]/;2<L
 
 GluonPropagator[a_, b_,c_, d_,e_, opt___Rule] := 
 GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];
+
+GluonPropagator[q_, {li_},{mu_},opt___Rule] := GluonPropagator[-q, {li}, {mu}, opt] /; 
+   NumericalFactor[q] === -1;
 
 GluonPropagator[pi_, mu_, nu_, opt___Rule] := GluonPropagator[pi, {mu}, {nu}]/;
                !MemberQ[{Rule, List}, Head[mu]] &&
@@ -205,7 +209,7 @@ GluonPropagator /:
 GluonPropagator /:
    MakeBoxes[GluonPropagator[p_,{mu_},{nu_}, ___?OptionQ],
              TraditionalForm
-            ] := RowBox[{SuperscriptBox["\[CapitalPi]", Tbox[mu,nu]],
+            ] := RowBox[{SubsuperscriptBox["\[CapitalPi]", "g", Tbox[mu,nu]],
                         "(", Tbox[p], ")"
                         }];
 

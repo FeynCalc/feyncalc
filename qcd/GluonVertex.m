@@ -188,9 +188,7 @@ Block[{gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope,
    GluonVertex /:
    MakeBoxes[GluonVertex[{p1_,mu1_},{p2_,mu2_},{p3_,mu3_},{p4_,mu4_}],
              TraditionalForm
-            ] := RowBox[{SuperscriptBox["V",Tbox[mu1,mu2,mu3,mu4]],
-                        "(", Tbox[p1,", ",p2,", ", p3,", ",p4], ")"
-                        }];
+            ] := SuperscriptBox["W",Tbox[mu1,mu2,mu3,mu4]];
 
    GluonVertex /:
    MakeBoxes[GluonVertex[{p1_,mu1_, a_},{p2_,mu2_,b_},{p3_,mu3_,c_},{p4_,mu4_,d_}],
