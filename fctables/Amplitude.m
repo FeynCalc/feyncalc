@@ -32,6 +32,8 @@ Dimension,
 DiracGamma,
 DiracTrace,
 DiracSlash,
+DotSimplify,
+Expanding,
 Factor2,
 FeynAmpDenominatorCombine,
 FeynAmpDenominatorSimplify,
@@ -51,6 +53,7 @@ QuarkMass,
 QuarkPropagator,
 Spinor,
 SUNDelta,
+SUNDeltaContract,
 SUNSimplify,
 SUNTrace,
 Tf,
@@ -233,7 +236,7 @@ CF *
 ,
 (*psqq*)
 "q2se2" :>  -1 * 
-DiracTrace[2 Tf *
+DiracTrace[2 Tf * 
 DOT[qpmi[-q1,7,8] , qgv[9] ,
 qpmi[-(q1-q2),10,5] ,  qgv[3] (*, qpm[-q1,4,6] , qo[-q1,6,7] *)
           ]]  *
@@ -1615,8 +1618,9 @@ ampswitch = True;
 (* AMPLIST = amplist; *)
 If[{nam} == {opt} == {},
 (#[[1]])&/@amplist,
-ChangeDimension[ToString[nam] /. amplist /. nice,
-     Dimension /. {opt}/.Options[Amplitude]]
+SUNDeltaContract@
+DotSimplify[ChangeDimension[ToString[nam] /. amplist /. nice,
+     Dimension /. {opt}/.Options[Amplitude]],Expanding->False]
      ]
 ];
 
