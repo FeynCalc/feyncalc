@@ -19,7 +19,7 @@ BeginPackage["HighEnergyPhysics`qcd`QCDFeynmanRuleConvention`",
 QCDFeynmanRuleConvention::"usage" =
 "QCDFeynmanRuleConvention[GluonPropagator], 
 QCDFeynmanRuleConvention[GluonGhostVertex], etc. can be set to 
-different values. The default is the Itzikson-Zuber convention. ";
+different values. The default is the Itzykson-Zuber convention. ";
 
 (* ------------------------------------------------------------------------ *)
 
