@@ -11,7 +11,7 @@
 BeginPackage["HighEnergyPhysics`general`Complement1`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Complement1:usage=
+Complement1::usage=
 "Complement1[l1, l2], where l1 and l2 are lists returns a list of \
 elements from l1 not in l2. Multiple occurences of an element in l1 are \
 kept and multiple occurences of an element in l2 are dropped multiply if \
@@ -20,6 +20,14 @@ present in l1";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+
+(*
+If one does not need MatchQ, but just SameQ, then
+Complement1[x_List, y__List] :=
+ Replace[x, Dispatch[(# :> Sequence[]) & /@ Union[y]], 1]
+
+would be sufficient
+*)
 
 Complement1[a_List, b_List] := 
     Block[{len, len1, i, alt, p, drp, ii, go}, p = 0; i = 0; drp = {}; 

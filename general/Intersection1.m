@@ -11,7 +11,7 @@
 BeginPackage["HighEnergyPhysics`general`Intersection1`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Intersection1:usage=
+Intersection1::usage=
 "Intersection1[l1, l2], where l1 and l2 are lists returns a list of \
 elements both in l1 and l2. Multiple occurences of an element are \
 kept the minimum number of times it occures in l1 or l2";
