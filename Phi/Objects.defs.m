@@ -453,22 +453,22 @@ which represents Adjoint[QuantumField[Particle[p]]].DiracMatrix[LorentzIndex[0]]
 
 DeclareUMatrix::"usage" =
     "DeclareUMatrix[m] declares m as a matrix in flavor space for non-commutative \
-functions of Phi.  This includes adding m to the list $UMatrices.";
+functions of PHI.  This includes adding m to the list $UMatrices.";
 
 UndeclareUMatrix::"usage" =
     "UndeclareUMatrix[m] clears m as a matrix in flavor space for non-commutative \
-functions of Phi.  This includes removing m from the list $UMatrices.";
+functions of PHI.  This includes removing m from the list $UMatrices.";
 
 DeclareUScalar::"usage" =
     "DeclareUScalar[s] declares s as a scalar in flavor space for non-commutative \
-functions of Phi.  This includes adding s to the list $UScalars.";
+functions of PHI.  This includes adding s to the list $UScalars.";
 
 UndeclareUScalar::"usage" =
     "UndeclareUScalar[s] clears s as a scalar in flavor space for non-commutative \
-functions of Phi.  This includes removing s from the list $UScalars.";
+functions of PHI.  This includes removing s from the list $UScalars.";
 
 $UScalars::"usage" =
-    "$UScalars is a list of the scalars known by Phi. Members of this list \
+    "$UScalars is a list of the scalars known by PHI. Members of this list \
 are function names and they must be Atomic quantities. Apart from the default \
 scalars, others can be added with DeclareUScalar.  Default value : \
 {QuarkCondensate, ParticleMass, DecayConstant, CouplingConstant, SU3D, SU3F, \
@@ -508,7 +508,7 @@ should be performed.";
 
 UTrace1::"usage" =
   "UTrace1[a] is what UTrace[a] yields when the trace of a is not known by \
-Phi.";
+PHI.";
 
 TraceSimplify::"usage" =
   "TraceSimplify is an option for UTrace specifying whether some \
@@ -621,7 +621,8 @@ UGeneratorMatrix[SUNIndex[i],opts]) and UIdentityMatrix[opts].  Notice that \
 the transformation depends on the setting of $SUNBasis[n,j].  Default value : \
 False.";
 
-RemoveIntegerIndices::"usage" =
+(*Commented out 11/5-2003*)
+(*RemoveIntegerIndices::"usage" =
     "RemoveIntegerIndices is an option for UQuarkMass, UChi, UQuarkCharge, \
 ExpandU, SUNReduce and PhiToFC which determines whether or not isospin \
 functions of integer indices are substituted with a product involving a \
@@ -635,20 +636,13 @@ Projection[m][SUNIndex[n]] with SU2Delta[SUNIndex[m],SUNIndex[n]] or \
 SU3Delta[SUNIndex[m],SUNIndex[n]].  Default value : False.  \
 NOTICE : This option really is a hack to make up for the fact that \
 FeynCalc did not like integer valued arguments to SUN functions. It should be \
-completely redundant after version 4.1.0.3 of FeynCalc.";
+completely redundant after version 4.1.0.3 of FeynCalc.";*)
 
 ProjectionIsoVector::"usage" =
-    "With n some integer, UGenerator[n,opts] is substituted with \
-IsoDot[ProjectionIsoVector[n,opts],UGeneratorMatrixIsoVector[opts]] by \
-UQuarkMassMatrix when RemoveIntegerIndices is set to True.  This is further \
-substituted with Projection[i][SUNIndex[j]]*Generator[SUNIndex[j]] by \
-IsoIndicesSupply.";
+    "ProjectionIsoVector[i_, opts___] := IsoVector[Projection[i], opts].";
 
 Projection::"usage" =
-    "Projection[i][j] is the j'th component of ProjectionIsoVector[i,opts]. i \
-must be an integer (have head Integer), j must have head SUNIndex. If i is \
-also an integer, the Kronecker delta function of i and j is returned (0 or \
-1).";
+    "Projection[i_][j_] := SUNDelta[i, j].";
 
 PhiMeson::"usage" =
   "PhiMeson := PseudoScalar[1] represents the pseudoscalar octet of Goldstone \
@@ -1196,7 +1190,7 @@ PhiToFC::"usage" =
     "PhiToFC[a] returns the expression a with UGeneratorMatrix[i,opts] \
 replaced with SUNT[SUNIndex[i]], NM replaced with DOT and the space-time \
 dependence stripped of QuantumField. PhiToFC should always be applied to \
-expressions generated with Phi before using FeynRule or FunctionalD.";
+expressions generated with PHI before using FeynRule or FunctionalD.";
 
 $IsoIndicesCounter::"usage" =
     "$IsoIndicesCounter is a variable which is incremented with one each time \
@@ -1230,6 +1224,15 @@ MomentaSumRule, MomentaCollect, FAToFC, FAToFC, AmplitudeProjection, \
 MandelstamReduce and VeltmanExpand.  When MomentumVariablesString is set to \
 \"p\", the momentum variables used by these functions will be of the form p1, \
 p2, p3, ....  Default value : \"p\".";
+
+WFFactor1::"usage" = 
+    "WFFactor1[prop] is returned by WFFactor when the wave function renormalization \
+factor corresponding to the propagator prop is not found in the directory \"Factors\".";
+
+WFFactor::"usage" = 
+    "WFFactor[prop] searches the directory \"Factors\" and returns the wave \
+function renormalization factor corresponding to the propagator prop. \
+WFFactor is used by WFRenormalize.";
 
 (*
 Composed objects for construction of lagrangians
@@ -1318,8 +1321,8 @@ Lagrangian::noload =
 FeynCalc functions
 *)
 
-fcpd = MakeContext["PartialD"];
 fcli = MakeContext["LorentzIndex"];
+fcpd = MakeContext["PartialD"];
 fcsuni = MakeContext["SUNIndex"];
 fcqf = MakeContext["QuantumField"];
 
@@ -1347,40 +1350,48 @@ Notational box definitions:
 MomentaScalarProduct /:
     MakeBoxes[MomentaScalarProduct[aua_, aua_, ___Rule], TraditionalForm] :=
     SuperscriptBox @@ {MakeBoxes @@ {aua, TraditionalForm}, 2};
-     MomentaScalarProduct /:
-    MakeBoxes[MomentaScalarProduct[aua_Plus, b_], TraditionalForm] :=
 
+MomentaScalarProduct /:
+    MakeBoxes[MomentaScalarProduct[aua_Plus, b_], TraditionalForm] :=
     RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")",
           "\[EmptyVerySmallSquare]", MakeBoxes[b, TraditionalForm]} ] /;
       Head[b] =!= Plus;
-     MomentaScalarProduct /:
+
+MomentaScalarProduct /:
     MakeBoxes[MomentaScalarProduct[aua_, b_Plus], TraditionalForm] :=
     RowBox[{MakeBoxes[aua, TraditionalForm], "\[EmptyVerySmallSquare]", "(",
           MakeBoxes[b, TraditionalForm], ")"} ] /; Head[aua] =!= Plus;
-     MomentaScalarProduct /:
+
+MomentaScalarProduct /:
     MakeBoxes[MomentaScalarProduct[aua_Plus, b_Plus], TraditionalForm] :=
     RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")",
         "\[EmptyVerySmallSquare]", "(", MakeBoxes[b, TraditionalForm], ")"}];
-     MomentaScalarProduct /:
+
+MomentaScalarProduct /:
     MakeBoxes[MomentaScalarProduct[aua_, b_], TraditionalForm] :=
     RowBox[{MakeBoxes[aua, TraditionalForm], "\[EmptyVerySmallSquare]",
         MakeBoxes[b, TraditionalForm]}];
+
 SU2Delta /: MakeBoxes[SU2Delta[a_, b_], TraditionalForm] :=
   SubsuperscriptBox[MakeBoxes[StyleForm["\[Delta]"]],
     RowBox[{MakeBoxes[TraditionalForm[a]], MakeBoxes[TraditionalForm[b]]}],
     RowBox[{"(", "2", ")"}]];
+
 SU3Delta /: MakeBoxes[SU3Delta[a_, b_], TraditionalForm] :=
   SubsuperscriptBox[MakeBoxes[StyleForm["\[Delta]"]],
     RowBox[{MakeBoxes[TraditionalForm[a]], MakeBoxes[TraditionalForm[b]]}],
     RowBox[{"(", "3", ")"}]];
+
 SU2F /: MakeBoxes[SU2F[a_, b_, c_], TraditionalForm] :=
   SubsuperscriptBox[MakeBoxes[StyleForm["f"]],
     RowBox[{MakeBoxes[TraditionalForm[a]], MakeBoxes[TraditionalForm[b]],
         MakeBoxes[TraditionalForm[c]]}], RowBox[{"(", "2", ")"}]];
+
 SU3D /: MakeBoxes[SU3D[a_, b_, c_], TraditionalForm] :=
   SubsuperscriptBox[MakeBoxes[StyleForm["d"]],
     RowBox[{MakeBoxes[TraditionalForm[a]], MakeBoxes[TraditionalForm[b]],
         MakeBoxes[TraditionalForm[c]]}], RowBox[{"(", "3", ")"}]];
+
 SU3F /: MakeBoxes[SU3F[a_, b_, c_], TraditionalForm] :=
   SubsuperscriptBox[MakeBoxes[StyleForm["f"]],
     RowBox[{MakeBoxes[TraditionalForm[a]], MakeBoxes[TraditionalForm[b]],
@@ -1390,102 +1401,95 @@ SU3F /: MakeBoxes[SU3F[a_, b_, c_], TraditionalForm] :=
 Functions:
 *)
 
-     NM /:
-
+NM /:
     MakeBoxes[NM[aua : (_Plus | _SeriesData)], TraditionalForm] :=
-
     RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")"}];
-     NM /:
-     MakeBoxes[NM[aua_], TraditionalForm] :=
 
+NM /:
+     MakeBoxes[NM[aua_], TraditionalForm] :=
     MakeBoxes[aua, TraditionalForm];
-     NM /:
+
+NM /:
      MakeBoxes[NM[aua__, b : (_Plus | _SeriesData)],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[NM[aua], TraditionalForm], "\[SixPointedStar]", "(",
              MakeBoxes[b, TraditionalForm], ")"}];
-     NM /:
+
+NM /:
      MakeBoxes[NM[aua__, b_],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[NM[aua], TraditionalForm], "\[SixPointedStar]",
              MakeBoxes[b, TraditionalForm]}];
-     IsoDot /:
 
+IsoDot /:
     MakeBoxes[IsoDot[aua : (_Plus | _SeriesData)], TraditionalForm] :=
-
     RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")"}];
-     IsoDot /:
-     MakeBoxes[IsoDot[aua_], TraditionalForm] :=
 
+IsoDot /:
+     MakeBoxes[IsoDot[aua_], TraditionalForm] :=
     MakeBoxes[aua, TraditionalForm];
-     IsoDot /:
+
+IsoDot /:
      MakeBoxes[IsoDot[aua__, b : (_Plus | _SeriesData)],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[IsoDot[aua], TraditionalForm], "\[CenterDot]", "(",
              MakeBoxes[b, TraditionalForm], ")"}];
-     IsoDot /:
+
+IsoDot /:
      MakeBoxes[IsoDot[aua__, b_],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[IsoDot[aua], TraditionalForm], "\[CenterDot]",
              MakeBoxes[b, TraditionalForm]}];
-     IsoCross /:
 
+IsoCross /:
     MakeBoxes[IsoCross[aua : (_Plus | _SeriesData)], TraditionalForm] :=
-
     RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")"}];
-     IsoCross /:
-     MakeBoxes[IsoCross[aua_], TraditionalForm] :=
 
+IsoCross /:
+     MakeBoxes[IsoCross[aua_], TraditionalForm] :=
     MakeBoxes[aua, TraditionalForm];
-     IsoCross /:
+
+IsoCross /:
      MakeBoxes[IsoCross[aua__, b : (_Plus | _SeriesData)],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[IsoCross[aua], TraditionalForm], "\[Times]", "(",
              MakeBoxes[b, TraditionalForm], ")"}];
-     IsoCross /:
+
+IsoCross /:
      MakeBoxes[IsoCross[aua__, b_],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[IsoCross[aua], TraditionalForm], "\[Times]",
              MakeBoxes[b, TraditionalForm]}];
-     IsoSymmetricCross /:
 
+IsoSymmetricCross /:
     MakeBoxes[IsoSymmetricCross[aua : (_Plus | _SeriesData)],
       TraditionalForm] :=
-
     RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")"}];
-     IsoSymmetricCross /:
 
+IsoSymmetricCross /:
     MakeBoxes[IsoSymmetricCross[aua_], TraditionalForm] :=
-
     MakeBoxes[aua, TraditionalForm];
-     IsoSymmetricCross /:
 
+IsoSymmetricCross /:
     MakeBoxes[IsoSymmetricCross[aua__, b : (_Plus | _SeriesData)],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[IsoSymmetricCross[aua], TraditionalForm],
         "\[CircleTimes]", "(",
              MakeBoxes[b, TraditionalForm], ")"}];
 
-     IsoSymmetricCross /:
+IsoSymmetricCross /:
      MakeBoxes[IsoSymmetricCross[aua__, b_],
 	  TraditionalForm] :=
     RowBox[{MakeBoxes[IsoSymmetricCross[aua], TraditionalForm],
         "\[CircleTimes]",
              MakeBoxes[b, TraditionalForm]}];
 
-     Iso /:
+Iso /:
      MakeBoxes[Iso[aua___],
 	  TraditionalForm] :=
     RowBox[{MakeBoxes[AngleBracket[aua], TraditionalForm]}];
 
-     CovariantNabla /:
+CovariantNabla /:
      MakeBoxes[CovariantNabla[a_, _, lis__HighEnergyPhysics`FeynCalc`PartialD`PartialD,
      ___Rule], TraditionalForm] :=
      RowBox[{SubscriptBox[
@@ -1493,7 +1497,7 @@ Functions:
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
         MakeBoxes[TraditionalForm[a]], ")"}];
 
-     CovariantNabla /:
+CovariantNabla /:
      MakeBoxes[CovariantNabla[a_, _, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, ___Rule],
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
@@ -1501,7 +1505,7 @@ Functions:
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
         MakeBoxes[TraditionalForm[a]], ")"}];
 
-     CovariantNabla /:
+CovariantNabla /:
      MakeBoxes[CovariantNabla[a_, {lis___}, ___Rule],
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
@@ -1509,7 +1513,7 @@ Functions:
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
         MakeBoxes[TraditionalForm[a]], ")"}];
 
-   FieldStrengthTensor /:
+FieldStrengthTensor /:
     MakeBoxes[
       FieldStrengthTensor[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
@@ -1525,61 +1529,57 @@ Functions:
       HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[ders, p, iis, lis]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensor /:
+FieldStrengthTensor /:
     MakeBoxes[
       FieldStrengthTensor[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        fff___][_],
-   ___], TraditionalForm] /; {ff,lis,fff}=!={} :=
+        fff___][_], ___], TraditionalForm] /; {ff,lis,fff}=!={} :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f[ff, lis, fff]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensor /:
+FieldStrengthTensor /:
     MakeBoxes[
       FieldStrengthTensor[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        fff___],
-   ___], TraditionalForm]  /; {ff,lis,fff}=!={} :=
+        fff___], ___], TraditionalForm]  /; {ff,lis,fff}=!={} :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f[ff, lis, fff]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensor /:
+FieldStrengthTensor /:
     MakeBoxes[
       FieldStrengthTensor[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
-        ][_],
-   ___], TraditionalForm] :=
+        ][_], ___], TraditionalForm] :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensor /:
+FieldStrengthTensor /:
     MakeBoxes[
       FieldStrengthTensor[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
-        ],
-   ___], TraditionalForm] :=
+        ], ___], TraditionalForm] :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensorFull /:
+FieldStrengthTensorFull /:
     MakeBoxes[
       FieldStrengthTensorFull[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
@@ -1595,78 +1595,75 @@ Functions:
       HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[ders, p, iis, lis]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensorFull /:
+FieldStrengthTensorFull /:
     MakeBoxes[
       FieldStrengthTensorFull[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        fff___][_],
-   ___], TraditionalForm] /; {ff,lis,fff}=!={} :=
+        fff___][_], ___], TraditionalForm] /; {ff,lis,fff}=!={} :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f[ff, lis, fff]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensorFull /:
+FieldStrengthTensorFull /:
     MakeBoxes[
       FieldStrengthTensorFull[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-        fff___],
-   ___], TraditionalForm]  /; {ff,lis,fff}=!={} :=
+        fff___], ___], TraditionalForm]  /; {ff,lis,fff}=!={} :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f[ff, lis, fff]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensorFull /:
+FieldStrengthTensorFull /:
     MakeBoxes[
       FieldStrengthTensorFull[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
-        ][_],
-   ___], TraditionalForm] :=
+        ][_], ___], TraditionalForm] :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
-   FieldStrengthTensorFull /:
+FieldStrengthTensorFull /:
     MakeBoxes[
       FieldStrengthTensorFull[
         li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
         f_[
         lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
-        ],
-   ___], TraditionalForm] :=
+        ], ___], TraditionalForm] :=
    SubscriptBox[
       MakeBoxes[TraditionalForm[
       f]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
 
 Unprotect[Conjugate];
-     Conjugate /:
+
+Conjugate /:
      MakeBoxes[Conjugate[aua_],
 	  TraditionalForm] :=
-
     SuperscriptBox[MakeBoxes[StyleForm[TraditionalForm[aua]]], "\[GothicC]"];
-    Conjugate /:
+
+Conjugate /:
      MakeBoxes[Conjugate[Transpose[aua_]],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[SuperDagger[TraditionalForm[aua]]]}];
 Protect[Conjugate];
-     Adjoint /:
+
+Adjoint /:
      MakeBoxes[Adjoint[aua_],
 	  TraditionalForm] :=
-
     RowBox[{MakeBoxes[SuperDagger[TraditionalForm[aua]]]}];
-     DiracBar /:
+
+DiracBar /:
      MakeBoxes[DiracBar[aua_],
 	  TraditionalForm] :=
 
@@ -1680,8 +1677,7 @@ Protect[Conjugate];
    MakeBoxes[ "Tr"], MakeBoxes[ "1"]], "(", MakeBoxes[aua, TraditionalForm],
         ")"} ];  *)
 
-     UTrace1 /:
-
+UTrace1 /:
     MakeBoxes[UTrace1[aua_, (opts___Rule | opts___List)],
       TraditionalForm] :=
      RowBox[{"\[LeftAngleBracket]", MakeBoxes[aua, TraditionalForm],
@@ -1691,59 +1687,51 @@ Protect[Conjugate];
 Definitions for the "easy entering" part:
 *)
 
-   PionIsoVector /:
+PionIsoVector /:
      MakeBoxes[PionIsoVector,
 	  TraditionalForm] :=
     OverscriptBox[MakeBoxes[StyleForm["\[Pi]", FontSlant -> "Italic"]],
       MakeBoxes[StyleForm["\[Rule]"]]];
-   PhiMesonIsoVector /:
+
+PhiMesonIsoVector /:
      MakeBoxes[PhiMesonIsoVector,
 	  TraditionalForm] :=
     OverscriptBox[MakeBoxes[StyleForm["\[CurlyPhi]", FontSlant -> "Italic"]],
       MakeBoxes[StyleForm["\[Rule]"]]];
 
 MM /: MakeBoxes[MM[i_,_,___Rule], TraditionalForm] :=
-
     SuperscriptBox[MakeBoxes[StyleForm["\[ScriptCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]],MakeBoxes[i]];
 
 MM /: MakeBoxes[MM[_,___Rule], TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[ScriptCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]];
 
 SMM /: MakeBoxes[SMM[___], TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[ScriptU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]];
 
 MMS /: MakeBoxes[MMS[___], TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[GothicCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]];
 
 MM /: MakeBoxes[MM, TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[ScriptCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]];
 
 SMM /: MakeBoxes[SMM, TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[ScriptU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]];
 
 MMS /: MakeBoxes[MMS, TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[GothicCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]];
 
 FST /: MakeBoxes[FST[p_, mu_, nu_], TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[ TraditionalForm[p]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {mu, nu}]];
 
 FST /: MakeBoxes[FST[p_, {mu_}, {nu_}], TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[ TraditionalForm[p]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {mu, nu}]];
      FieldStrengthTensor /:
@@ -1822,116 +1810,103 @@ UIdentity /: Format[UIdentity, TraditionalForm] :=
     StyleForm["\[DoubleStruckCapitalI]\[DoubleStruckD]",
       FontSlant -> "Italic"];
 
-     UChiralSpurion /:
+UChiralSpurion /:
      MakeBoxes[UChiralSpurion[___], TraditionalForm] :=
-
     MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
 
-     UChiralSpurionLeft /:
+UChiralSpurionLeft /:
      MakeBoxes[UChiralSpurionLeft[___], TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]],
     MakeBoxes[StyleForm["L", FontSlant -> "Plain"]]];
 
-     UChiralSpurionRight /:
+UChiralSpurionRight /:
      MakeBoxes[UChiralSpurionRight[___], TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]],
     MakeBoxes[StyleForm["R", FontSlant -> "Plain"]]];
 
-     UChiralSpurion /:
+UChiralSpurion /:
      MakeBoxes[UChiralSpurion, TraditionalForm] :=
-
     MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
 
-     UChiralSpurionLeft /:
+UChiralSpurionLeft /:
      MakeBoxes[UChiralSpurionLeft, TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]],
     MakeBoxes[StyleForm["L", FontSlant -> "Plain"]]];
 
-     UChiralSpurionRight /:
+UChiralSpurionRight /:
      MakeBoxes[UChiralSpurionRight, TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]],
     MakeBoxes[StyleForm["R", FontSlant -> "Plain"]]];
 
-    UChiralSpurionMatrix /:
+UChiralSpurionMatrix /:
      MakeBoxes[UChiralSpurionMatrix,
 	  TraditionalForm] :=
-
     MakeBoxes[
         StyleForm["Q", FontSlant -> "Italic",
           FontWeight -> "Bold"]];
 
-     UChiralSpurionLeftMatrix /:
+UChiralSpurionLeftMatrix /:
      MakeBoxes[UChiralSpurionLeftMatrix, TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic",
         FontWeight -> "Bold"]],
         MakeBoxes[StyleForm["L", FontSlant -> "Plain"]]];
 
-     UChiralSpurionRightMatrix /:
+UChiralSpurionRightMatrix /:
      MakeBoxes[UChiralSpurionRightMatrix, TraditionalForm] :=
-
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic",
         FontWeight -> "Bold"]],
         MakeBoxes[StyleForm["R", FontSlant -> "Plain"]]];
 
-    UMatrix /:
+UMatrix /:
      MakeBoxes[UMatrix[UChi[___]][___],
 	  TraditionalForm] :=
-
     MakeBoxes[
         StyleForm["\[Chi]", FontSlant -> "Italic",
           FontWeight -> "Bold"]];
 
-     UChi /:
+UChi /:
      MakeBoxes[UChi,
 	  TraditionalForm] :=
-
     MakeBoxes[StyleForm["\[Chi]", FontSlant -> "Italic"]];
 
-    UChiMatrix /:
+UChiMatrix /:
      MakeBoxes[UChiMatrix,
 	  TraditionalForm] :=
-
     MakeBoxes[
         StyleForm["\[Chi]", FontSlant -> "Italic",
           FontWeight -> "Bold"]];
 
-     UQuarkChargeMatrix /:
+UQuarkChargeMatrix /:
      MakeBoxes[UQuarkChargeMatrix,
 	  TraditionalForm] :=
-
     MakeBoxes[
         StyleForm["Q", FontSlant -> "Italic", FontWeight -> "Bold"]];
+
 UQuarkCharge /:
      MakeBoxes[UQuarkCharge,
 	  TraditionalForm] :=
-
     MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
+
 UQuarkCharge /:
      MakeBoxes[UQuarkCharge[___],
 	  TraditionalForm] :=
-
     MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
+
 UQuarkMass /:
      MakeBoxes[UQuarkMass,
 	  TraditionalForm] :=
-
     MakeBoxes[StyleForm["m", FontSlant -> "Italic"]];
+
 UQuarkMass /:
      MakeBoxes[UQuarkMass[___],
 	  TraditionalForm] :=
-
     MakeBoxes[StyleForm["m", FontSlant -> "Italic"]];
      UGenerator /:
      MakeBoxes[UGenerator,
 	  TraditionalForm] :=
     MakeBoxes[StyleForm["\[Sigma]", FontSlant -> "Italic"]];
-     UGenerator /:
 
+UGenerator /:
     MakeBoxes[
       UGenerator[(HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex|
                   HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex)[i_], ___],
@@ -1939,8 +1914,8 @@ UQuarkMass /:
     SuperscriptBox[
       MakeBoxes[StyleForm["\[Sigma]", FontSlant -> "Italic"]],
       MakeBoxes[TraditionalForm[i]]];
-     UGenerator /:
 
+UGenerator /:
     MakeBoxes[
       UGenerator[
           (HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex|
@@ -1957,14 +1932,14 @@ UQuarkMass /:
           MakeBoxes[TraditionalForm[mi2]], ")"}],
       MakeBoxes[TraditionalForm[i]]];
 
-     UGeneratorMatrix /:
+UGeneratorMatrix /:
      MakeBoxes[UGeneratorMatrix,
 	  TraditionalForm] :=
     MakeBoxes[
         StyleForm["\[Sigma]", FontSlant -> "Italic",
           FontWeight -> "Bold"]];
-     IsoVector /:
 
+IsoVector /:
     MakeBoxes[
       IsoVector[
         UGenerator[(UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
@@ -1979,8 +1954,8 @@ UQuarkMass /:
         MakeBoxes[StyleForm["\[Rule]"]]],
       RowBox[{"(", MakeBoxes[TraditionalForm[mi1]],
           MakeBoxes[TraditionalForm[mi2]], ")"}]];
-   IsoVector /:
 
+IsoVector /:
     MakeBoxes[
       IsoVector[
         UMatrix[a_, (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
@@ -1994,8 +1969,8 @@ UQuarkMass /:
         MakeBoxes[StyleForm["\[Rule]"]]],
       RowBox[{"(", MakeBoxes[TraditionalForm[mi1]],
           MakeBoxes[TraditionalForm[mi2]], ")"}]];
-   IsoVector /:
 
+IsoVector /:
     MakeBoxes[
       IsoVector[
           HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
@@ -2010,8 +1985,8 @@ UQuarkMass /:
                 TraditionalForm[
                   HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
                     b]]], MakeBoxes[StyleForm["\[Rule]"]]], ")"}]];
-   IsoVector /:
 
+IsoVector /:
     MakeBoxes[
       IsoVector[
         HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
@@ -2026,17 +2001,18 @@ UQuarkMass /:
                 TraditionalForm[
                   HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
                     b]]], MakeBoxes[StyleForm["\[Rule]"]]], ")"}]];
-   IsoVector /:
+
+IsoVector /:
      MakeBoxes[IsoVector[a_, (opts___Rule | opts___List)],
 	  TraditionalForm] /; FreeQ[{a}, PartialD] :=
     OverscriptBox[MakeBoxes[TraditionalForm[a]], MakeBoxes[StyleForm["\[Rule]"]]];
-   IsoVector /:
 
+IsoVector /:
     MakeBoxes[IsoVector[a_, (opts___Rule | opts___List)][_],
 	  TraditionalForm] /; FreeQ[{a}, PartialD] :=
     OverscriptBox[MakeBoxes[TraditionalForm[a]], MakeBoxes[StyleForm["\[Rule]"]]];
-   UVector /:
 
+UVector /:
     MakeBoxes[
       UVector[HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
             a__HighEnergyPhysics`FeynCalc`PartialD`PartialD, b__], ___][_],
@@ -2049,8 +2025,8 @@ UQuarkMass /:
                   HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
                     b]]], MakeBoxes[StyleForm["\[RightVector]"]]],
           ")"}]];
-   UVector /:
 
+UVector /:
     MakeBoxes[
       UVector[HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
           a__HighEnergyPhysics`FeynCalc`PartialD`PartialD, b__], ___],
@@ -2063,176 +2039,235 @@ UQuarkMass /:
                   HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
                     b]]], MakeBoxes[StyleForm["\[RightVector]"]]],
           ")"}]];
-   UVector /:
+
+UVector /:
      MakeBoxes[UVector[a_, (opts___Rule | opts___List)],
 	  TraditionalForm] /; FreeQ[{a}, PartialD] :=
     OverscriptBox[MakeBoxes[TraditionalForm[a]],
       MakeBoxes[StyleForm["\[RightVector]"]]];
-   UVector /:
+
+UVector /:
      MakeBoxes[UVector[a_, (opts___Rule | opts___List)][_],
 	  TraditionalForm] /; FreeQ[{a}, PartialD] :=
     OverscriptBox[MakeBoxes[TraditionalForm[a]],
       MakeBoxes[StyleForm["\[RightVector]"]]];
+
 IndexBox /: MakeBoxes[IndexBox[a_], TraditionalForm] :=
     MakeBoxes[TraditionalForm[a]];
+
 IndexBox /: MakeBoxes[IndexBox[], TraditionalForm] := "";
 RenormalizationState /: MakeBoxes[RenormalizationState[], TraditionalForm] :=
     Sequence[];
 RenormalizationScheme /: MakeBoxes[RenormalizationScheme[], TraditionalForm] :=
      Sequence[];
+
 ExpansionState /: MakeBoxes[ExpansionState[], TraditionalForm] := Sequence[];
+
 RenormalizationState /:
     MakeBoxes[RenormalizationState[i_],
       TraditionalForm] := $RenormalizationSuperscripts[[i + 1]];
+
 RenormalizationScheme /:
     MakeBoxes[RenormalizationScheme[i_],
       TraditionalForm] := $RSSuperscripts[[i + 1]];
+
 ExpansionState /:
     MakeBoxes[ExpansionState[i_],
       TraditionalForm] := $ExpansionSuperscripts[[i + 1]];
+
 IndexBox /:
     MakeBoxes[IndexBox[RenormalizationState[i_]],
       TraditionalForm] := $RenormalizationSuperscripts[[i + 1]];
- Particle /:
 
+Particle /:
     MakeBoxes[
         Particle[p_, st___RenormalizationState, sc___RenormalizationScheme],
 	  TraditionalForm] /; MemberQ[$ParticleTypes, Head[p]] :=
     SuperscriptBox[MakeBoxes[TraditionalForm[p]][[1, 1]],
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}]]];
-   Particle /:
 
+Particle /:
     MakeBoxes[
       Particle[p_, st___RenormalizationState, sc___RenormalizationScheme],
 	  TraditionalForm] :=
     SuperscriptBox[MakeBoxes[TraditionalForm[p]],
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}]]];
-   Particle /:
+
+Particle /:
      MakeBoxes[Particle[p_],
 	  TraditionalForm] := MakeBoxes[TraditionalForm[p]];
-     Projection /:
-     MakeBoxes[Projection,
-	  TraditionalForm] :=
-    MakeBoxes[ StyleForm["\[DoubleStruckP]", FontSlant -> "Italic"]];
-     Projection /:
-
-    MakeBoxes[
-      Projection[i_][j_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
-                     j_HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex],
-	  TraditionalForm] :=
-    SuperscriptBox[MakeBoxes[TraditionalForm[Projection[i]]][[1, 1]],
-      MakeBoxes[TraditionalForm[j]]];
-     Projection /:
+   
+Projection /: MakeBoxes[Projection, TraditionalForm] := 
+    MakeBoxes[StyleForm["\[DoubleStruckP]"]];
+   
+Projection /:
      MakeBoxes[Projection[i_],
 	  TraditionalForm] :=
     RowBox[{MakeBoxes[
-            StyleForm["\[DoubleStruckP]", FontSlant -> "Italic"]], "(",
-        MakeBoxes[i], ")"}];
+            StyleForm["\[DoubleStruckP]"]], "(",
+        MakeBoxes[TraditionalForm[i]], ")"}];
+
+Projection /:
+    MakeBoxes[
+      Projection[i_][j_],
+	  TraditionalForm] :=
+    SuperscriptBox[MakeBoxes[TraditionalForm[Projection[i]]],
+      MakeBoxes[TraditionalForm[j]]];
+
 Vector /: MakeBoxes[Vector[1], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Gamma]"]];
+
 Vector /: MakeBoxes[Vector[_], TraditionalForm] :=
     MakeBoxes[StyleForm["V", FontSlant -> "Italic"]];
+
 AxialVector /: MakeBoxes[AxialVector[_], TraditionalForm] :=
     MakeBoxes[StyleForm["A", FontSlant -> "Italic"]];
+
 Scalar /: MakeBoxes[Scalar[_], TraditionalForm] :=
     MakeBoxes[StyleForm["s", FontSlant -> "Italic"]];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[_], TraditionalForm] :=
     MakeBoxes[StyleForm["p", FontSlant -> "Italic"]];
+
 LeftComponent /: MakeBoxes[LeftComponent, TraditionalForm] :=
     MakeBoxes[StyleForm["L", FontSlant -> "Italic"]];
+
 RightComponent /: MakeBoxes[RightComponent, TraditionalForm] :=
     MakeBoxes[StyleForm["R", FontSlant -> "Italic"]];
+
 LeftComponent /: MakeBoxes[LeftComponent[__], TraditionalForm] :=
     MakeBoxes[StyleForm["L", FontSlant -> "Italic"]];
+
 RightComponent /: MakeBoxes[RightComponent[__], TraditionalForm] :=
     MakeBoxes[StyleForm["R", FontSlant -> "Italic"]];
+
 Fermion /: MakeBoxes[Fermion[_], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Psi]"]];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[1], TraditionalForm] :=
     MakeBoxes[StyleForm["\[CurlyPhi]", FontSlant -> "Italic"]];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[2], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Pi]", FontSlant -> "Italic"]];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[3], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[Pi]"]], "+"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[4], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[Pi]"]], "0"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[5], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[Pi]"]], "-"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[6], TraditionalForm] :=
     MakeBoxes[StyleForm["K"]];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[7], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["K"]], "+"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[8], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["K"]], "0"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[9], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm[OverBar[K]]], "0"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[10], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["K"]], "-"];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[11], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Eta]"]];
+
 PseudoScalar /: MakeBoxes[PseudoScalar[12], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Xi]"]];
+
 Fermion /: MakeBoxes[Fermion[1], TraditionalForm] :=
     MakeBoxes[StyleForm["\[ScriptL]"]];
+
 Fermion /: MakeBoxes[Fermion[2], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Nu]"]];
+
 Fermion /: MakeBoxes[Fermion[3], TraditionalForm] :=
     SubscriptBox[MakeBoxes[StyleForm["\[Nu]"]],
       MakeBoxes[StyleForm["e"]]];
+
 Fermion /: MakeBoxes[Fermion[4], TraditionalForm] :=
     SubscriptBox[MakeBoxes[StyleForm["\[Nu]"]],
       MakeBoxes[StyleForm["\[Mu]"]]];
+
 Fermion /: MakeBoxes[Fermion[5], TraditionalForm] :=
     SubscriptBox[MakeBoxes[StyleForm["\[Nu]"]],
       MakeBoxes[StyleForm["\[Tau]"]]];
+
 Fermion /: MakeBoxes[Fermion[6], TraditionalForm] :=
     MakeBoxes[StyleForm["l"]];
+
 Fermion /: MakeBoxes[Fermion[7], TraditionalForm] :=
     MakeBoxes[StyleForm["e"]];
+
 Fermion /: MakeBoxes[Fermion[8], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Mu]"]];
+
 Fermion /: MakeBoxes[Fermion[9], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Tau]"]];
+
 Fermion /: MakeBoxes[Fermion[10], TraditionalForm] :=
     MakeBoxes[StyleForm["\[Psi]"]];
+
 Fermion /: MakeBoxes[Fermion[11], TraditionalForm] :=
     SubscriptBox[MakeBoxes[StyleForm["\[Psi]"]],
       MakeBoxes[StyleForm["2"]]];
+
 Fermion /: MakeBoxes[Fermion[12], TraditionalForm] :=
     SubscriptBox[MakeBoxes[StyleForm["\[Psi]"]],
       MakeBoxes[StyleForm["3"]]];
+
 Fermion /: MakeBoxes[Fermion[13], TraditionalForm] :=
     MakeBoxes[StyleForm["d"]];
+
 Fermion /: MakeBoxes[Fermion[14], TraditionalForm] :=
     MakeBoxes[StyleForm["u"]];
+
 Fermion /: MakeBoxes[Fermion[15], TraditionalForm] :=
     MakeBoxes[StyleForm["s"]];
+
 Fermion /: MakeBoxes[Fermion[16], TraditionalForm] :=
     MakeBoxes[StyleForm["c"]];
+
 Fermion /: MakeBoxes[Fermion[17], TraditionalForm] :=
     MakeBoxes[StyleForm["b"]];
+
 Fermion /: MakeBoxes[Fermion[18], TraditionalForm] :=
     MakeBoxes[StyleForm["t"]];
+
 Fermion /: MakeBoxes[Fermion[19], TraditionalForm] :=
     MakeBoxes[StyleForm["B"]];
+
 Fermion /: MakeBoxes[Fermion[20], TraditionalForm] :=
     MakeBoxes[StyleForm["N"]];
+
 Fermion /: MakeBoxes[Fermion[21], TraditionalForm] :=
     MakeBoxes[StyleForm["p"]];
+
 Fermion /: MakeBoxes[Fermion[22], TraditionalForm] :=
     MakeBoxes[StyleForm["n"]];
+
 Fermion /: MakeBoxes[Fermion[23], TraditionalForm] :=
     MakeBoxes[StyleForm["\[CapitalLambda]"]];
+
 Fermion /: MakeBoxes[Fermion[24], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[CapitalSigma]"]], "+"];
+
 Fermion /: MakeBoxes[Fermion[25], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[CapitalSigma]"]], "0"];
+
 Fermion /: MakeBoxes[Fermion[26], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[CapitalSigma]"]], "-"];
+
 Fermion /: MakeBoxes[Fermion[27], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[CapitalXi]"]], "0"];
+
 Fermion /: MakeBoxes[Fermion[28], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["\[CapitalXi]"]], "-"];
 
@@ -2252,6 +2287,7 @@ QuarkCondensate /:
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 ParticleMass /:
     MakeBoxes[
       ParticleMass[x_, iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex|
@@ -2264,6 +2300,7 @@ ParticleMass /:
               TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 DecayConstant /:
     MakeBoxes[
       DecayConstant[x_, iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex|
@@ -2276,6 +2313,7 @@ DecayConstant /:
               TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 ParticleMass /:
     MakeBoxes[
       ParticleMass[x_, st___RenormalizationState, sc___RenormalizationScheme,
@@ -2285,6 +2323,7 @@ ParticleMass /:
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 DecayConstant /:
     MakeBoxes[
       DecayConstant[x_, st___RenormalizationState, sc___RenormalizationScheme,
@@ -2294,11 +2333,13 @@ DecayConstant /:
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /:
     MakeBoxes[
       HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1], st___RenormalizationState,
         sc___RenormalizationScheme, qs___ExpansionState], TraditionalForm] :=
     MakeBoxes[StyleForm["e", FontSlant -> "Italic"]];
+
 HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /:
     MakeBoxes[
       HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1], st___RenormalizationState,
@@ -2307,6 +2348,7 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /:
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /:
     MakeBoxes[
         HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[x_, st___RenormalizationState,
@@ -2316,6 +2358,7 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /:
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
 HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /:
     MakeBoxes[
         HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[x_, i_, st___RenormalizationState,

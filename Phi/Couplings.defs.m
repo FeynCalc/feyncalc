@@ -148,10 +148,10 @@ a list usable as the setting of $VerticesSpecifications, by reading the \
 directory of coupling vectors \"CouplingVectors\". conf is a configuration \
 (possible setting of $Configuration), faparts is a list of FeynArts particle \
 heads (possible setting of $FAParticlesInUse), parttypes is a list of \
-allowed PHI particle heads (possible setting of $ParticleTypes) \
+allowed PHI particle heads (possible setting of $ParticleTypes). \
 VerticesSpecifications[$Configuration, $FAParticlesInUse, $ParticleTypes] \
 will return all vertices found in \"CouplingVectors\" belonging to the current model.  \
-NOTICE : Currently, fermion violating vertices cannot be handled by VerticesSpecifications; \
+NOTICE : Currently, fermion number violating vertices cannot be handled by VerticesSpecifications; \
 for such models you have to write $VerticesSpecifications by hand.";
 
 PhiModel::"usage" = 
@@ -367,14 +367,6 @@ When set to True, WFRenormalize is applied.  WFRenormalize uses \
 the results stored in the directory \"Factors\".  The names of the files to load are \
 generated using $Configuration and the option PerturbationOrder.  Default value : False.";
 
-WFFactor::"usage" = 
-    "WFFactor is the head of wave function renormalization factors not found in the \
-directory \"Factors\".";
-
-Shift::"usage" = 
-    "WFFactor is the head of renormalization corrections not found in the \
-directory \"Factors\".";
-
 PMRenormalize::"usage" = 
     "PMRenormalize[exp] replaces unrenormalized masses of the form \
 ParticleMass[p, RenormalizationState[0]]^2 with renormalized masses of the form \
@@ -395,6 +387,24 @@ constants necessitates expansion of the whole expression exp and the multiplicat
 each term with a renormalization factor.  Therefore the function is slow and returns \
 large expressions, which it, however, should be possible to clean up substantially.";
 
+DCFactor1::"usage" = 
+    "DCFactor1[f] is returned by DCFactor when the decay constant renormalization \
+factor corresponding to the decay constant f is not found in the directory \"Factors\".";
+
+DCFactor::"usage" = 
+    "DCFactor[f] searches the directory \"Factors\" and returns the decay \
+constant renormalization factor corresponding to the decay constant f. \
+DCFactor is used by DCRenormalize.";
+
+PMFactor1::"usage" = 
+    "PMFactor1[m] is returned by DCFactor when the particle mass renormalization \
+factor corresponding to the mass m is not found in the directory \"Factors\".";
+
+PMFactor::"usage" = 
+    "PMFactor[f] searches the directory \"Factors\" and returns the particle \
+mass renormalization factor corresponding to the particle mass f. \
+PMFactor is used by PMRenormalize.";
+
 EqualMasses::"usage" = 
     "EqualMasses is an option of FAToFC.  When set to True, indices are \
 removed from ParticleMass.  Default value : True.";
@@ -410,7 +420,8 @@ amplitude amp.  The isospin indices given by the setting of the option \
 IsoIndicesString are used.";
 
 DoSumOver::"usage" = 
-    "DoSumOver[exp] sums factors of SumOver (produced by FeynArts).";
+    "DoSumOver[exp] sums factors of SumOver (produced by FeynArts). The option \
+Drop specifies values of the indices to be left out of the sum.";
 
 
 (*
@@ -425,7 +436,7 @@ ClassesCoupling::"nores" =
     "Sorry, but I was unable to resolve the expression.  Please \
 generate the coupling by hand.";
 
-WFRenormalize::"noprop" = "Unknown propagator type `1`.";
+WFFactor::"noprop" = "Unknown propagator type `1`.";
 
 CreateFCAmp::"nomethod" = "Unknown method `1`.";
 

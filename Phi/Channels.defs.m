@@ -21,7 +21,7 @@ AmplitudeProjection::"usage" =
 isospin indices i1, i2, ... of the external particles, returns the amplitude \
 of the channel specified by the option Channel.  AmplitudeProjection uses the \
 rules specified in $IsoSpinProjectionRules.  NOTICE:  For the particles under \
-consideration, Phi must know their anti-particles.  That is, e.g. \
+consideration, PHI must know their anti-particles.  That is, e.g. \
 ChargeConjugate[PionPlus] is PionMinus.";
 
 IsoToChargedMasses::"usage" = 
@@ -91,7 +91,7 @@ Default value : True.";
 IndicesCleanup::"usage" = 
     "IndicesCleanup[expr] renames dummy indices in expr in a systematic way \
 in order to get cancellations and a simpler expression. The expression expr \
-should be in Phi notation, that is, involving the products NM and/or Times, \
+should be in PHI notation, that is, involving the products NM and/or Times, \
 not DOT or NonCommutativeMultiply.\n
 NOTICE : IndicesCleanup does not work \
 properly when the indices are nested more than one level down in factors.  \

@@ -300,4 +300,16 @@ LeutwylerJ0 /: MakeBoxes[LeutwylerJ0[___], TraditionalForm] :=
 LeutwylerLambda /: Format[LeutwylerLambda[___], TraditionalForm] :=
     StyleForm["\[Lambda]", FontSlant -> "Italic"];
 
+VeltmanB0 /: MakeBoxes[VeltmanB0, TraditionalForm] := SubscriptBox["B", "0"];
+VeltmanB0 /: MakeBoxes[VeltmanB0[x__, __Rule], TraditionalForm] := 
+    MakeBoxes[TraditionalForm[VeltmanB0[x]]];
+
+VeltmanC0 /: MakeBoxes[VeltmanC0, TraditionalForm] := SubscriptBox["C", "0"];
+VeltmanC0 /: MakeBoxes[VeltmanC0[x__, __Rule], TraditionalForm] := 
+    MakeBoxes[TraditionalForm[VeltmanC0[x]]];
+
+VeltmanD0 /: MakeBoxes[VeltmanD0, TraditionalForm] := SubscriptBox["D", "0"];
+VeltmanD0 /: MakeBoxes[VeltmanD0[x__, __Rule], TraditionalForm] := 
+    MakeBoxes[TraditionalForm[VeltmanD0[x]]];
+
 End[];

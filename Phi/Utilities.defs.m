@@ -196,6 +196,9 @@ $GellmannOkuboInv::"usage" =
     "$GellmannOkubo is a substitution rule putting back the eta-meson mass using the \
 Gell-mann-Okubo mass formula.";
 
+PhiToLaTeX::"usage" = 
+    "PhiToLaTeX[expr] constructs LaTeX from the expression expr.";
+
 
 Begin["`Private`"];
 

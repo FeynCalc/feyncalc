@@ -1,4 +1,4 @@
-PHI (Phenomenology of hadronic interactions) is a Mathematica package for
+PHI (Phenomenology of Hadronic Interactions) is a Mathematica package for
 computations in Chiral Perturbation Theory (ChPT). It is meant to be used
 in conjunction with the other Mathematica packages FeynArts (version 3 or
 higher) and FeynCalc (version 3 or higher).
@@ -13,7 +13,7 @@ the lightest 2 (or 3) quark masses and the external momenta.
 As of version 4.1.1 of FeynCalc, PHI is distributed with FeynCalc.
 A changelog and further information than given below can be found at
 http://www.feyncalc.org/phi/. Future changelogs will be given in in the
-main FeynCalc readme file FCReadme.txt
+main FeynCalc readme file FCReadme.txt.
 
 
 FEATURES:
