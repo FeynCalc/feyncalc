@@ -702,7 +702,7 @@ hepdirs = Select[FileNames[], FileType[#]===Directory&];
 hepdirs = { "fcdevel", "fcloops", "fctables", "fctools", "general",  "qcd" };
 
 (* fix for Mac OS *)
-If[StringMatchQ[$OperatingSystem, "*MacOS*"],
+If[StringMatchQ[$OperatingSystem, "MacOS"],
   hepdirs = If[StringMatchQ[#, ":*"], StringDrop[#, 1], #] & /@ hepdirs];
 
 (* Commented out for the moment ...
@@ -913,7 +913,7 @@ If[Global`$LoadPhi===True,
                   "Text"]],
       FeynCalcPrint["Loading PHI "]
    ];
-   If[StringMatchQ[$OperatingSystem, "*MacOS*"],
+   If[StringMatchQ[$OperatingSystem, "MacOS"],
    Get[$PathnameSeparator<>"Phi"<>$PathnameSeparator<>"Phi.m"],
    Get["Phi"<>$PathnameSeparator<>"Phi.m"]]
 ];
