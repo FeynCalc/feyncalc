@@ -23,8 +23,6 @@ See TFi for details on the conventions.";
 
 Begin["`Private`"];
    
-
-
 MakeContext[Apart2,Cases2,Dimension, DotSimplify,Expanding,
 ExpandScalarProduct,
 FeynCalcExternal,Pair,Momentum,OPEDelta,
@@ -45,6 +43,10 @@ ToTFi[z_Times, q1_,q2_,p_,opts___Rule] :=
 
 ToTFi[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
   saveToTFi[h, m];
+
+saveToTFi[z_Times, q1_, q2_, p_, opts___Rule] := 
+ (saveToTFi[Select2[z,{q1,q2}], q1,q2, p, opts] Select1[z,{q1,q2}] )/; 
+   Select1[z,{q1,q2}] =!= 1;
 
 saveToTFi[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] := 
 saveToTFi[z, q1,q2,p,opts] = 
