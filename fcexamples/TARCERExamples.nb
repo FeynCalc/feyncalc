@@ -1,0 +1,4445 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    183121,       4287]*)
+(*NotebookOutlinePosition[    184215,       4326]*)
+(*  CellTagsIndexPosition[    184078,       4318]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["TARCER examples", "Section",
+  CellTags->"T1.11.1"],
+
+Cell[BoxData[
+    \(<< HighEnergyPhysics`FeynCalc`\)], "Input"],
+
+Cell["\<\
+With $Comment one can switch the comment mechanism on. Changing True to False \
+will suppress the comment notebook.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\($Comment = True;\)\(\ \ \ \)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Simple Examples", "Subsection",
+  CellTags->"T1.11.1.1"],
+
+Cell[TextData[{
+  "This reduces (for ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\^2 = M\^2\)]],
+  ") \n",
+  Cell[BoxData[
+      InterpretationBox[
+        SubsuperscriptBox[
+          StyleBox["F",
+            SingleLetterItalics->False,
+            FontWeight->"Bold"], 
+          RowBox[{
+            FormBox[\({1, 0}\),
+              "TraditionalForm"], 
+            FormBox[\({1, M}\),
+              "TraditionalForm"], 
+            FormBox[\({1, M}\),
+              "TraditionalForm"], 
+            FormBox[\({1, 0}\),
+              "TraditionalForm"], 
+            FormBox[\({1, M}\),
+              "TraditionalForm"]}], 
+          RowBox[{"(", 
+            FormBox["d",
+              "TraditionalForm"], ")"}]],
+        TFI[ d, 
+          Power[ M, 2], {{1, 0}, {1, M}, {1, M}, {1, 0}, {1, M}}],
+        Editable->True]]],
+  " =\n\[Integral]\[Integral]  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(\(d\^d\ \(q\_1\) \(d\^d\) 
+            q\_2\)\/\(\(\(\([q\_1\%2]\)\ [
+                  q\_2\%2 - M\^2]\)\ [\((q\_1 - p)\)\^2 - 
+                  M\^2]\)\ [\((q\_2 - p)\)\^2]\)\ [\((q\_1 - q\_2)\)\^2 - 
+              M\^2]\)\)\)]]
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+ex1 = 
+   TarcerRecurse[TFI[d, M^2, 
+     {{1, 0}, {1, M}, {1, M}, {1, 0}, 
+      {1, M}}]]\
+\>", "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{"-", 
+          FractionBox[
+            RowBox[{"3", " ", \(\((d - 2)\)\^2\), " ", \((5\ d - 18)\), " ", 
+              SuperscriptBox[
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[\({1, M}\),
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["d",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ d, 0, {{1, M}}],
+                  Editable->True], 
+                "2"]}], \(32\ \((d - 4)\)\^2\ \((d - 3)\)\ M\^6\)]}], "+", 
+        FractionBox[
+          RowBox[{\((3\ d - 10)\), " ", \((3\ d - 8)\), " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["d",
+                    "TraditionalForm"], ")"}]],
+              TJI[ d, 
+                Power[ M, 2], {{1, M}, {1, 0}, {1, 0}}],
+              Editable->True]}], \(8\ \((d - 4)\)\ \((2\ d - 7)\)\ M\^4\)], 
+        "+", 
+        FractionBox[
+          RowBox[{\((3\ d - 10)\), " ", \((3\ d - 8)\), " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["d",
+                    "TraditionalForm"], ")"}]],
+              TJI[ d, 
+                Power[ M, 2], {{1, M}, {1, M}, {1, M}}],
+              Editable->True]}], \(16\ \((d - 4)\)\^2\ M\^4\)]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell["This expands up to the constant term.", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TarcerExpand[ex1, \ d -> 4 + \[CurlyEpsilon], 0]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        FractionBox[
+          RowBox[{\(\((M\^2)\)\^\[CurlyEpsilon]\), " ", 
+            SuperscriptBox[
+              InterpretationBox[
+                StyleBox[\(S\_\[CurlyEpsilon]\),
+                  FontWeight->"Bold"],
+                SEpsilon[ 
+                  Plus[ 4, \[CurlyEpsilon]]],
+                Editable->False], "2"]}], \(M\^2\)], ".", 
+        RowBox[{"(", 
+          RowBox[{\(6\ \(\[Zeta](2)\)\ \(log(2)\)\), "-", 
+            FractionBox[
+              RowBox[{"3", " ", 
+                TagBox[
+                  RowBox[{"\[Zeta]", "(", 
+                    TagBox["3",
+                      Zeta,
+                      Editable->True], ")"}],
+                  InterpretTemplate[ 
+                    Function[ BoxForm`e$, 
+                      Zeta[ BoxForm`e$]]]]}], "2"]}], ")"}]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(% // InputForm\)], "Input"],
+
+Cell["\<\
+(((M^2)^\[CurlyEpsilon]*SEpsilon[4 + \[CurlyEpsilon]]^2)/M^2) . 
+ (6*Zeta2*Log[2] - (3*Zeta[3])/2)\
+\>", "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Moment Examples", "Subsection",
+  CellTags->"T1.11.2.1"],
+
+Cell["\<\
+eg2[m_]:=TFI[d, M^2,\[CapitalDelta]p,{m,0}, 
+     {{2, M}, 1, 1, {1,M}, 
+      {1, M}}]\
+\>", "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TarcerRecurse[eg2[0]]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{"-", 
+          FractionBox[
+            
+            RowBox[{\(\((d - 2)\)\^2\), 
+              " ", \((49\ d\^3 - 652\ d\^2 + 2877\ d - 4194)\), " ", 
+              SuperscriptBox[
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[\({1, M}\),
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["d",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ d, 0, {{1, M}}],
+                  Editable->True], 
+                "2"]}], \(256\ \((d - 5)\)\^2\ \((d - 4)\)\ \((d - 
+                  3)\)\ M\^8\)]}], "-", 
+        FractionBox[
+          RowBox[{"3", " ", \((3\ d - 10)\), " ", \((3\ d - 8)\), " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["d",
+                    "TraditionalForm"], ")"}]],
+              TJI[ d, 
+                Power[ M, 2], {{1, M}, {1, 0}, {1, 0}}],
+              Editable->True]}], \(32\ \((d - 5)\)\ \((2\ d - 7)\)\ M\^6\)], 
+        "+", 
+        FractionBox[
+          RowBox[{"3", " ", \((3\ d - 10)\), " ", \((3\ d - 8)\), " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["d",
+                    "TraditionalForm"], ")"}]],
+              TJI[ d, 
+                Power[ M, 2], {{1, M}, {1, M}, {1, M}}],
+              Editable->True]}], \(128\ \((d - 4)\)\ M\^6\)]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TarcerExpand[%, d -> 4 + \[CurlyEpsilon], 0]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        FractionBox[
+          RowBox[{\(\((M\^2)\)\^\[CurlyEpsilon]\), " ", 
+            SuperscriptBox[
+              InterpretationBox[
+                StyleBox[\(S\_\[CurlyEpsilon]\),
+                  FontWeight->"Bold"],
+                SEpsilon[ 
+                  Plus[ 4, \[CurlyEpsilon]]],
+                Editable->False], "2"]}], \(M\^4\)], 
+        ".", \((\(-\(\(7\ \(\[Zeta](2)\)\)\/8\)\) - 
+            1\/\(2\ \[CurlyEpsilon]\^2\) + 1\/2)\)}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TarcerRecurse[eg2[1]]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{"-", 
+          FractionBox[
+            
+            RowBox[{\(\((d - 2)\)\^2\), 
+              " ", \((27\ d\^4 - 404\ d\^3 + 2175\ d\^2 - 4902\ d + 3776)\), 
+              " ", "\[CapitalDelta]p", " ", 
+              SuperscriptBox[
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[\({1, M}\),
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["d",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ d, 0, {{1, M}}],
+                  Editable->True], 
+                "2"]}], \(256\ \((d - 5)\)\^2\ \((d - 4)\)\^2\ \((d - 
+                  3)\)\ M\^8\)]}], "-", 
+        FractionBox[
+          
+          RowBox[{\((d - 2)\), " ", \((3\ d - 10)\), " ", \((3\ d - 8)\), " ",
+             "\[CapitalDelta]p", " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["d",
+                    "TraditionalForm"], ")"}]],
+              TJI[ d, 
+                Power[ M, 2], {{1, M}, {1, 0}, {1, 0}}],
+              
+              Editable->True]}], \(32\ \((d - 5)\)\ \((d - 4)\)\ \((2\ d - 
+                7)\)\ M\^6\)], "+", 
+        FractionBox[
+          RowBox[{
+          "d", " ", \((3\ d - 10)\), " ", \((3\ d - 8)\), " ", 
+            "\[CapitalDelta]p", " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, M}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["d",
+                    "TraditionalForm"], ")"}]],
+              TJI[ d, 
+                Power[ M, 2], {{1, M}, {1, M}, {1, M}}],
+              Editable->True]}], \(128\ \((d - 4)\)\^2\ M\^6\)]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TarcerExpand[%, d -> 4 + \[CurlyEpsilon], 0]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        FractionBox[
+          
+          RowBox[{\(\((M\^2)\)\^\[CurlyEpsilon]\), " ", "\[CapitalDelta]p", 
+            " ", 
+            SuperscriptBox[
+              InterpretationBox[
+                StyleBox[\(S\_\[CurlyEpsilon]\),
+                  FontWeight->"Bold"],
+                SEpsilon[ 
+                  Plus[ 4, \[CurlyEpsilon]]],
+                Editable->False], "2"]}], \(M\^4\)], ".", 
+        RowBox[{"(", 
+          
+          RowBox[{\(3\ \(log(2)\)\ \(\[Zeta](2)\)\), 
+            "-", \(\(11\ \(\[Zeta](2)\)\)\/8\), 
+            "-", \(1\/\(2\ \[CurlyEpsilon]\^2\)\), "-", 
+            FractionBox[
+              RowBox[{"3", " ", 
+                TagBox[
+                  RowBox[{"\[Zeta]", "(", 
+                    TagBox["3",
+                      Zeta,
+                      Editable->True], ")"}],
+                  InterpretTemplate[ 
+                    Function[ BoxForm`e$, 
+                      Zeta[ BoxForm`e$]]]]}], "4"], "+", \(1\/2\)}], ")"}]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["General massive examples", "Subsection",
+  CellTags->"T1.11.2.1"],
+
+Cell["Typesetting rules:", "Text"],
+
+Cell[BoxData[{
+    \(\(MakeBoxes[pp, fmt_] := 
+        InterpretationBox[SuperscriptBox["\<p\>", 2], pp];\)\), "\n", 
+    \(\(MakeBoxes[m2, fmt_] := 
+        InterpretationBox[SubscriptBox["\<m\>", 2], m2];\)\), "\n", 
+    \(\(MakeBoxes[m3, fmt_] := 
+        InterpretationBox[SubscriptBox["\<m\>", 3], m3];\)\), "\n", 
+    \(\(MakeBoxes[m4, fmt_] := 
+        InterpretationBox[SubscriptBox["\<m\>", 4], m4];\)\)}], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+    \(TraditionalForm\`Y\_234\%1\)]]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Timing[\n
+      y1234\  = \ 
+        TarcerRecurse[\ 
+          TFI[D, pp, {1, 0, 0, 0, 0}, {0, \ {1, m4}, {1, m2}, 
+              0, {1, m3}}]\ ]\n]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"{", 
+        RowBox[{\(0.11000000000000043`\ Second\), ",", 
+          RowBox[{
+            RowBox[{"-", 
+              FractionBox[
+                RowBox[{"4", " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"], "-", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m2}, {1, m4}, {1, m3}}],
+                    Editable->True], " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_2\),
+                      m2], "2"]}], \(3\ \((D - 2)\)\)]}], "+", 
+            RowBox[{\(1\/3\), " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_2\),
+                          m2]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m2}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_3\),
+                          m3]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m3}}],
+                Editable->True]}], "+", 
+            RowBox[{\(1\/3\), " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_2\),
+                          m2]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m2}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_4\),
+                          m4]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m4}}],
+                Editable->True]}], "+", 
+            RowBox[{\(1\/3\), " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_3\),
+                          m3]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m3}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_4\),
+                          m4]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m4}}],
+                Editable->True]}], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"7", " ", "D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"18", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"2", " ", "D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "+", 
+                    RowBox[{"6", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "-", 
+                    RowBox[{"2", " ", "D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "+", 
+                    RowBox[{"6", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "+", 
+                    RowBox[{"D", " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}], "-", 
+                    RowBox[{"2", " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{1, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], \(3\ \((D - 2)\)\)], "+", 
+            FractionBox[
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_3\),
+                    m3], "2"], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{\(-3\), " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_3\),
+                        m3], "2"], "+", 
+                    RowBox[{"3", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m3}, {1, m4}, {1, m2}}],
+                  Editable->True]}], \(3\ \((D - 2)\)\)], "+", 
+            FractionBox[
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{\(-3\), " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "+", 
+                    RowBox[{"3", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_4\),
+                        m4], "2"], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], \(3\ \((D - 2)\)\)]}]}], "}"}], 
+      TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+    \(TraditionalForm\`Y\_2345\%1\)]]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Timing[\n
+      y12345\  = \ 
+        TarcerRecurse[\ 
+          TFI[D, pp, {1, 0, 0, 0, 
+              0}, {0, \ {1, m4}, {1, m2}, {1, m4}, {1, m3}}]\ ]\n]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"{", 
+        RowBox[{\(3.9899999999999998`\ Second\), ",", 
+          RowBox[{
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_2\),
+                        m2], "2"], "-", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_3\),
+                        m3], "2"], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_4\),
+                        m4], "2"], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m2}, {1, m4}, {1, m3}}],
+                  Editable->True], " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_2\),
+                    m2], "2"]}], 
+              RowBox[{\((D - 2)\), " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "-", 
+            FractionBox[
+              RowBox[{
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_2\),
+                            m2]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m2}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_4\),
+                            m4]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m4}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "+", 
+            FractionBox[
+              RowBox[{
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_3\),
+                            m3]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m3}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_4\),
+                            m4]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m4}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "+", 
+            FractionBox[
+              RowBox[{
+                InterpretationBox[\(p\^2\),
+                  pp], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_2\),
+                            m2]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m2}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["B",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TBI[ D, pp, {{1, m4}, {1, m4}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"2", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_3\),
+                            m3]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m3}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["B",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TBI[ D, pp, {{1, m4}, {1, m4}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_2\),
+                        m2], "2"], "-", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_3\),
+                        m3], "2"], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_4\),
+                        m4], "2"]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["K",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, 0, {{1, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "-", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"3", " ", "D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"8", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"3", " ", "D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "+", 
+                    RowBox[{"8", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "+", 
+                    RowBox[{"D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "-", 
+                    RowBox[{"2", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{1, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", \((D - 2)\), " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "-", 
+            FractionBox[
+              RowBox[{
+                SuperscriptBox[
+                  InterpretationBox[\(m\_3\),
+                    m3], "2"], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"-", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_3\),
+                        m3], "2"], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_4\),
+                        m4], "2"], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m3}, {1, m4}, {1, m2}}],
+                  Editable->True]}], 
+              RowBox[{\((D - 2)\), " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]], "+", 
+            FractionBox[
+              RowBox[{"2", " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    InterpretationBox[\(m\_2\),
+                      m2], "-", 
+                    InterpretationBox[\(m\_3\),
+                      m3]}], ")"}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    InterpretationBox[\(m\_2\),
+                      m2], "+", 
+                    InterpretationBox[\(m\_3\),
+                      m3]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], \(D - 2\)], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"2", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"], " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{
+                      InterpretationBox[\(p\^2\),
+                        pp], " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "+", 
+                    RowBox[{
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"], " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}], "+", 
+                    RowBox[{
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"], " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["V",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TVI[ D, pp, {{1, m3}, {1, m4}, {1, m2}, {1, m4}}],
+                  Editable->True]}], 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"]}]]}]}], "}"}], TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+    \(TraditionalForm\`Y\_234\%11\)]]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Timing[\n
+      y11234\  = \ \(TarcerRecurse[\ 
+                TFI[D, pp, {2, 0, 0, 0, 0}, {0, \ {1, m4}, {1, m2}, 
+                    0, {1, m3}}]] /. 
+              Plus \[Rule] Hold[Plus]\) /. \(Hold[Plus]\)[a__] \[RuleDelayed] 
+              FullSimplify[Plus[a]] /; FreeQ2[{a}, {TAI, TBI, TVI}] // 
+          ReleaseHold\n]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"{", 
+        RowBox[{\(8.04`\ Second\), ",", 
+          RowBox[{
+            RowBox[{"-", 
+              FractionBox[
+                RowBox[{"8", " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"], "-", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}], ")"}], " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{\((2\ D - 3)\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{\((D - 3)\), " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_3\),
+                                m3], "2"], "+", 
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_4\),
+                                m4], "2"]}], ")"}]}], "+", 
+                      RowBox[{\((2\ D - 3)\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m2}, {1, m4}, {1, m3}}],
+                    Editable->True], " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_2\),
+                      m2], "2"]}], \(3\ \((D - 2)\)\ \((3\ D - 4)\)\)]}], "+",
+             
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"D", " ", 
+                      RowBox[{"(", 
+                        RowBox[{
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"], "+", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], "+", 
+                          RowBox[{"7", " ", 
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_4\),
+                                m4], "2"]}], "+", 
+                          InterpretationBox[\(p\^2\),
+                            pp]}], ")"}]}], "-", 
+                    RowBox[{"12", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_2\),
+                            m2]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m2}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_3\),
+                            m3]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m3}}],
+                  Editable->True]}], \(3\ \((3\ D - 4)\)\)], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"D", " ", 
+                      RowBox[{"(", 
+                        RowBox[{
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"], "+", 
+                          RowBox[{"7", " ", 
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_3\),
+                                m3], "2"]}], "+", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"], "+", 
+                          InterpretationBox[\(p\^2\),
+                            pp]}], ")"}]}], "-", 
+                    RowBox[{"12", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_2\),
+                            m2]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m2}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_4\),
+                            m4]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m4}}],
+                  Editable->True]}], \(3\ \((3\ D - 4)\)\)], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{\((7\ D - 12)\), " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"4", " ", \((2\ D - 3)\), " ", 
+                      RowBox[{"(", 
+                        RowBox[{
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], "+", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"]}], ")"}]}], "+", 
+                    RowBox[{"D", " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_3\),
+                            m3]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m3}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_4\),
+                            m4]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m4}}],
+                  Editable->True]}], \(3\ \((3\ D - 4)\)\)], "+", 
+            RowBox[{
+              RowBox[{"(", 
+                RowBox[{
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_3\),
+                      m3], "2"], "+", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_4\),
+                      m4], "2"]}], ")"}], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_4\),
+                          m4]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m4}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_3\),
+                          m3]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m3}}],
+                Editable->True]}], "+", 
+            RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\)\), 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{\((D\ \((25\ D - 102)\) + 96)\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"2", " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{\((19\ \((D - 4)\)\ D + 72)\), " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}], "-", 
+                            RowBox[{\((D - 3)\), " ", \((5\ D - 12)\), " ", 
+                              RowBox[{"(", 
+                                RowBox[{
+                                  SuperscriptBox[
+                                    InterpretationBox[\(m\_3\),
+                                      m3], "2"], "+", 
+                                  SuperscriptBox[
+                                    InterpretationBox[\(m\_4\),
+                                      m4], "2"]}], ")"}]}]}], ")"}], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{\((D - 2)\), " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"2", " ", \((D - 3)\), " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{"D", " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_3\),
+                                  m3], "4"]}], "+", 
+                            RowBox[{"2", " ", \((7\ D - 12)\), " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "2"], " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_3\),
+                                  m3], "2"]}], "+", 
+                            RowBox[{"D", " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "4"]}]}], ")"}]}], "+", 
+                      RowBox[{"2", " ", \((D - 4)\), " ", \((D - 3)\), " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_3\),
+                                m3], "2"], "+", 
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_4\),
+                                m4], "2"]}], ")"}], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{1, m4}, {1, m3}, {1, m2}}],
+                    Editable->True]}], ")"}]}], "-", 
+            RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\)\), 
+              RowBox[{"(", 
+                RowBox[{"2", " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_3\),
+                      m3], "2"], " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"3", " ", \((3\ D - 4)\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{\(-4\), " ", \((D - 3)\), " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_3\),
+                                  m3], "2"]}], "+", 
+                            RowBox[{"22", " ", "D", " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}], "-", 
+                            RowBox[{"36", " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}]}], ")"}], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"12", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{"3", " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_3\),
+                                  m3], "2"]}], "+", 
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_4\),
+                                m4], "2"], "-", 
+                            InterpretationBox[\(p\^2\),
+                              pp]}], ")"}]}], "+", 
+                      RowBox[{"D", " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{"-", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_3\),
+                                  m3], "4"]}], "-", 
+                            RowBox[{"22", " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "2"], " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_3\),
+                                  m3], "2"]}], "-", 
+                            RowBox[{"9", " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "4"]}], "+", 
+                            SuperscriptBox[
+                              InterpretationBox[\(p\^2\),
+                                pp], "2"], "+", 
+                            RowBox[{"4", " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "2"], " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}]}], ")"}]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m3}, {1, m4}, {1, m2}}],
+                    Editable->True]}], ")"}]}], "-", 
+            RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\)\), 
+              RowBox[{"(", 
+                RowBox[{"2", " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_4\),
+                      m4], "2"], " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"3", " ", \((3\ D - 4)\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{\(-4\), " ", \((D - 3)\), " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "2"]}], "+", 
+                            RowBox[{"22", " ", "D", " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}], "-", 
+                            RowBox[{"36", " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}]}], ")"}], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{\((12 - 9\ D)\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "+", 
+                      RowBox[{
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            RowBox[{\((36 - 22\ D)\), " ", 
+                              SuperscriptBox[
+                                InterpretationBox[\(m\_4\),
+                                  m4], "2"]}], "+", 
+                            RowBox[{"4", " ", \((D - 3)\), " ", 
+                              InterpretationBox[\(p\^2\),
+                                pp]}]}], ")"}]}], "+", 
+                      RowBox[{"D", " ", 
+                        RowBox[{"(", 
+                          RowBox[{
+                            SuperscriptBox[
+                              InterpretationBox[\(p\^2\),
+                                pp], "2"], "-", 
+                            SuperscriptBox[
+                              InterpretationBox[\(m\_4\),
+                                m4], "4"]}], ")"}]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m4}, {1, m3}, {1, m2}}],
+                    Editable->True]}], ")"}]}]}]}], "}"}], 
+      TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+    \(TraditionalForm\`Y\_234\%111\)]]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Timing[\n
+      y111234\  = \ 
+        TarcerRecurse[\ 
+          TFI[D, pp, {3, 0, 0, 0, 0}, {0, \ {1, m4}, {1, m2}, 
+              0, {1, m3}}]\ ]\n]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"{", 
+        RowBox[{\(38.46`\ Second\), ",", 
+          RowBox[{
+            RowBox[{"-", 
+              
+              RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\ \((3\ D - 
+                          2)\)\)\), 
+                RowBox[{"(", 
+                  RowBox[{"4", " ", 
+                    RowBox[{"(", 
+                      RowBox[{
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"], "-", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], ")"}], " ", 
+                    RowBox[{"(", 
+                      RowBox[{
+                        RowBox[{"13", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "4"]}], "-", 
+                        RowBox[{"28", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "4"]}], "+", 
+                        RowBox[{"12", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "4"]}], "-", 
+                        RowBox[{"4", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "+", 
+                        RowBox[{"12", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "-", 
+                        RowBox[{"4", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "+", 
+                        RowBox[{"12", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "+", 
+                        RowBox[{"38", " ", \(D\^2\), " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "-", 
+                        RowBox[{"72", " ", "D", " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "+", 
+                        RowBox[{"24", " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_2\),
+                              m2], "2"]}], "-", 
+                        RowBox[{"2", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "4"]}], "+", 
+                        RowBox[{"2", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "4"]}], "+", 
+                        RowBox[{"12", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "4"]}], "-", 
+                        RowBox[{"2", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "4"]}], "+", 
+                        RowBox[{"2", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "4"]}], "+", 
+                        RowBox[{"12", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "4"]}], "-", 
+                        RowBox[{"28", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"]}], "+", 
+                        RowBox[{"108", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"]}], "-", 
+                        RowBox[{"72", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"]}], "+", 
+                        RowBox[{"13", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(p\^2\),
+                              pp], "2"]}], "-", 
+                        RowBox[{"28", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(p\^2\),
+                              pp], "2"]}], "+", 
+                        RowBox[{"12", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(p\^2\),
+                              pp], "2"]}], "-", 
+                        RowBox[{"4", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp]}], "+", 
+                        RowBox[{"12", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_3\),
+                              m3], "2"], " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp]}], "-", 
+                        RowBox[{"4", " ", \(D\^2\), " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"], " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp]}], "+", 
+                        RowBox[{"12", " ", "D", " ", 
+                          SuperscriptBox[
+                            InterpretationBox[\(m\_4\),
+                              m4], "2"], " ", 
+                          InterpretationBox[\(p\^2\),
+                            pp]}]}], ")"}], " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[
+                            RowBox[{"{", 
+                              RowBox[{"2", ",", 
+                                InterpretationBox[\(m\_2\),
+                                  m2]}], "}"}],
+                            "TraditionalForm"], 
+                          FormBox[
+                            RowBox[{"{", 
+                              RowBox[{"1", ",", 
+                                InterpretationBox[\(m\_4\),
+                                  m4]}], "}"}],
+                            "TraditionalForm"], 
+                          FormBox[
+                            RowBox[{"{", 
+                              RowBox[{"1", ",", 
+                                InterpretationBox[\(m\_3\),
+                                  m3]}], "}"}],
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, pp, {{2, m2}, {1, m4}, {1, m3}}],
+                      Editable->True], " ", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_2\),
+                        m2], "2"]}], ")"}]}]}], "+", 
+            RowBox[{\(1\/\(3\ D\ \((3\ D - 4)\)\ \((3\ D - 2)\)\)\), 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"5", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"11", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"22", " ", \(D\^3\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"144", " ", \(D\^2\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"216", " ", "D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"96", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "+", 
+                      RowBox[{"25", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      RowBox[{"58", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"38", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"72", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"5", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"11", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m2}}],
+                    Editable->True], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m3}}],
+                    Editable->True]}], ")"}]}], "+", 
+            RowBox[{\(1\/\(3\ D\ \((3\ D - 4)\)\ \((3\ D - 2)\)\)\), 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"11", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"5", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"22", " ", \(D\^3\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"144", " ", \(D\^2\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"216", " ", "D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"96", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"25", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "-", 
+                      RowBox[{"58", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "+", 
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"38", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"72", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"11", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"5", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"18", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m2}}],
+                    Editable->True], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m4}}],
+                    Editable->True]}], ")"}]}], "+", 
+            RowBox[{\(1\/\(3\ \((3\ D - 4)\)\ \((3\ D - 2)\)\)\), 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"25", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"58", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"16", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"36", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"16", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"36", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"38", " ", \(D\^2\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"72", " ", "D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"24", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"26", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "+", 
+                      RowBox[{"56", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "-", 
+                      RowBox[{"26", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"56", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      RowBox[{"76", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"144", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"48", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{\(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"2", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"32", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"72", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"48", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"32", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"72", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"48", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m3}}],
+                    Editable->True], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m4}}],
+                    Editable->True]}], ")"}]}], "+", 
+            RowBox[{\(1\/\(D - 1\)\), 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"]}], "-", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "4"], "+", 
+                      RowBox[{"D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"]}], "-", 
+                      RowBox[{
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"]}], "+", 
+                      RowBox[{"2", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"]}], "+", 
+                      RowBox[{"2", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"]}], "-", 
+                      RowBox[{"D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"]}], "+", 
+                      RowBox[{
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"]}], "+", 
+                      RowBox[{"D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "4"], "+", 
+                      RowBox[{"D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m4}}],
+                    Editable->True], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["A",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TAI[ D, 0, {{1, m3}}],
+                    Editable->True]}], ")"}]}], "-", 
+            FractionBox[
+              RowBox[{"4", " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_3\),
+                    m3], "2"], " ", 
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_3\),
+                            m3]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m3}}],
+                  Editable->True], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["A",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    FormBox[
+                      RowBox[{"{", 
+                        RowBox[{"1", ",", 
+                          InterpretationBox[\(m\_4\),
+                            m4]}], "}"}],
+                      "TraditionalForm"], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TAI[ D, 0, {{1, m4}}],
+                  Editable->True]}], \(\((D - 1)\)\ D\)], "+", 
+            
+            RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\ \((3\ D - 2)\)\)\),
+               
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"79", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"376", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "+", 
+                      RowBox[{"516", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"192", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"18", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"98", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"132", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"18", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"98", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"132", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"291", " ", \(D\^3\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"1296", " ", \(D\^2\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"1604", " ", "D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"480", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"18", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"98", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"132", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"18", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"98", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"132", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"156", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"972", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"1800", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"864", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"141", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"632", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"828", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"288", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"12", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"124", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"360", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"288", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"12", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"124", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"360", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"288", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"2", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "+", 
+                      RowBox[{"12", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "-", 
+                      RowBox[{"2", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "+", 
+                      RowBox[{"2", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "+", 
+                      RowBox[{"12", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "-", 
+                      RowBox[{"126", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"638", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      RowBox[{"876", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"288", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{\(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "3"]}], "-", 
+                      RowBox[{"4", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "3"]}], "-", 
+                      RowBox[{"126", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"638", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"876", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"288", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"6", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"38", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"60", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"6", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"38", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"60", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"6", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"54", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"172", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"192", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"6", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"54", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"172", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"192", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"12", " ", \(D\^3\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"124", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"360", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"288", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{1, m4}, {1, m3}, {1, m2}}],
+                    Editable->True]}], ")"}]}], "-", 
+            
+            RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\ \((3\ D - 2)\)\)\),
+               
+              RowBox[{"(", 
+                RowBox[{"2", " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_3\),
+                      m3], "2"], " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"27", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"54", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"4", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"139", " ", \(D\^2\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"274", " ", "D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"96", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"8", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"56", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"216", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"144", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"89", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"186", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"72", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"56", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"216", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"144", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{\(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "-", 
+                      RowBox[{"2", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "-", 
+                      RowBox[{"27", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "+", 
+                      RowBox[{"54", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "-", 
+                      RowBox[{"139", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"274", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      RowBox[{"96", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{\(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "3"]}], "+", 
+                      RowBox[{"2", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "3"]}], "-", 
+                      RowBox[{"89", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"186", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"72", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"20", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"8", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"20", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"4", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m3}, {1, m4}, {1, m2}}],
+                    Editable->True]}], ")"}]}], "-", 
+            
+            RowBox[{\(1\/\(3\ \((D - 2)\)\ \((3\ D - 4)\)\ \((3\ D - 2)\)\)\),
+               
+              RowBox[{"(", 
+                RowBox[{"2", " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_4\),
+                      m4], "2"], " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      RowBox[{"27", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"54", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "6"]}], "-", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"4", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"139", " ", \(D\^2\), " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"274", " ", "D", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "+", 
+                      RowBox[{"96", " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "4"]}], "-", 
+                      RowBox[{"8", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"56", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"216", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"144", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"89", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"186", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"72", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"56", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"216", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "+", 
+                      RowBox[{"144", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_2\),
+                            m2], "2"]}], "-", 
+                      RowBox[{"27", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "+", 
+                      RowBox[{"54", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "6"]}], "-", 
+                      RowBox[{\(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "-", 
+                      RowBox[{"2", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "6"]}], "-", 
+                      RowBox[{"89", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{"186", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "-", 
+                      RowBox[{"72", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"]}], "+", 
+                      RowBox[{\(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "3"]}], "+", 
+                      RowBox[{"2", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "3"]}], "-", 
+                      RowBox[{"139", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"274", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "-", 
+                      RowBox[{"96", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"]}], "+", 
+                      RowBox[{"8", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"24", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "-", 
+                      RowBox[{"20", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "2"], " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(p\^2\),
+                            pp], "2"]}], "+", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"4", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_3\),
+                            m3], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"4", " ", \(D\^2\), " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "+", 
+                      RowBox[{"20", " ", "D", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}], "-", 
+                      RowBox[{"24", " ", 
+                        SuperscriptBox[
+                          InterpretationBox[\(m\_4\),
+                            m4], "4"], " ", 
+                        InterpretationBox[\(p\^2\),
+                          pp]}]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m4}, {1, m3}, {1, m2}}],
+                    Editable->True]}], ")"}]}]}]}], "}"}], 
+      TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+    \(TraditionalForm\`Y\_234\%5\)]]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Timing[\n
+      y5234\  = \ 
+        TarcerRecurse[\ 
+          TFI[D, pp, {0, 0, 1, 0, 0}, {0, \ {1, m4}, {1, m2}, 
+              0, {1, m3}}]\ ]\n]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"{", 
+        RowBox[{\(0.13`\ Second\), ",", 
+          RowBox[{
+            RowBox[{"-", 
+              FractionBox[
+                RowBox[{"2", " ", 
+                  RowBox[{"(", 
+                    RowBox[{
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"], "-", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}], ")"}], " ", 
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["J",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"2", ",", 
+                              InterpretationBox[\(m\_2\),
+                                m2]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_4\),
+                                m4]}], "}"}],
+                          "TraditionalForm"], 
+                        FormBox[
+                          RowBox[{"{", 
+                            RowBox[{"1", ",", 
+                              InterpretationBox[\(m\_3\),
+                                m3]}], "}"}],
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TJI[ D, pp, {{2, m2}, {1, m4}, {1, m3}}],
+                    Editable->True], " ", 
+                  SuperscriptBox[
+                    InterpretationBox[\(m\_2\),
+                      m2], "2"]}], \(3\ \((D - 2)\)\)]}], "+", 
+            RowBox[{\(1\/6\), " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_2\),
+                          m2]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m2}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_3\),
+                          m3]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m3}}],
+                Editable->True]}], "+", 
+            RowBox[{\(1\/6\), " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_2\),
+                          m2]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m2}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_4\),
+                          m4]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m4}}],
+                Editable->True]}], "-", 
+            RowBox[{\(1\/3\), " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_3\),
+                          m3]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m3}}],
+                Editable->True], " ", 
+              InterpretationBox[
+                SubsuperscriptBox[
+                  StyleBox["A",
+                    SingleLetterItalics->False,
+                    FontWeight->"Bold"], 
+                  FormBox[
+                    RowBox[{"{", 
+                      RowBox[{"1", ",", 
+                        InterpretationBox[\(m\_4\),
+                          m4]}], "}"}],
+                    "TraditionalForm"], 
+                  RowBox[{"(", 
+                    FormBox["D",
+                      "TraditionalForm"], ")"}]],
+                TAI[ D, 0, {{1, m4}}],
+                Editable->True]}], "+", 
+            FractionBox[
+              RowBox[{
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"2", " ", "D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"6", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "-", 
+                    RowBox[{"D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "+", 
+                    RowBox[{"3", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "-", 
+                    RowBox[{"D", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "+", 
+                    RowBox[{"3", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "+", 
+                    RowBox[{"2", " ", "D", " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}], "-", 
+                    RowBox[{"4", " ", 
+                      InterpretationBox[\(p\^2\),
+                        pp]}]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{1, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], \(3\ \((D - 2)\)\)], "+", 
+            FractionBox[
+              RowBox[{
+                SuperscriptBox[
+                  InterpretationBox[\(m\_3\),
+                    m3], "2"], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{\(-3\), " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_3\),
+                        m3], "2"], "+", 
+                    RowBox[{"3", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_4\),
+                          m4], "2"]}], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m3}, {1, m4}, {1, m2}}],
+                  Editable->True]}], \(3\ \((D - 2)\)\)], "+", 
+            FractionBox[
+              RowBox[{
+                SuperscriptBox[
+                  InterpretationBox[\(m\_4\),
+                    m4], "2"], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{\(-3\), " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_2\),
+                          m2], "2"]}], "+", 
+                    RowBox[{"3", " ", 
+                      SuperscriptBox[
+                        InterpretationBox[\(m\_3\),
+                          m3], "2"]}], "+", 
+                    SuperscriptBox[
+                      InterpretationBox[\(m\_4\),
+                        m4], "2"], "-", 
+                    InterpretationBox[\(p\^2\),
+                      pp]}], ")"}], " ", 
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["J",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"2", ",", 
+                            InterpretationBox[\(m\_4\),
+                              m4]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_3\),
+                              m3]}], "}"}],
+                        "TraditionalForm"], 
+                      FormBox[
+                        RowBox[{"{", 
+                          RowBox[{"1", ",", 
+                            InterpretationBox[\(m\_2\),
+                              m2]}], "}"}],
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TJI[ D, pp, {{2, m4}, {1, m3}, {1, m2}}],
+                  Editable->True]}], \(3\ \((D - 2)\)\)]}]}], "}"}], 
+      TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for X",
+ScreenRectangle->{{0, 1400}, {0, 1050}},
+WindowSize->{1253, 723},
+WindowMargins->{{Automatic, 65}, {115, Automatic}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "T1.11.1"->{
+    Cell[1776, 53, 57, 1, 113, "Section",
+      CellTags->"T1.11.1"]},
+  "T1.11.1.1"->{
+    Cell[2136, 69, 62, 1, 60, "Subsection",
+      CellTags->"T1.11.1.1"]},
+  "T1.11.2.1"->{
+    Cell[7209, 230, 62, 1, 60, "Subsection",
+      CellTags->"T1.11.2.1"],
+    Cell[14598, 451, 71, 1, 60, "Subsection",
+      CellTags->"T1.11.2.1"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"T1.11.1", 183721, 4303},
+  {"T1.11.1.1", 183809, 4306},
+  {"T1.11.2.1", 183901, 4309}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 57, 1, 113, "Section",
+  CellTags->"T1.11.1"],
+Cell[1836, 56, 63, 1, 39, "Input"],
+Cell[1902, 59, 139, 3, 46, "Text"],
+Cell[2044, 64, 67, 1, 39, "Input"],
+
+Cell[CellGroupData[{
+Cell[2136, 69, 62, 1, 60, "Subsection",
+  CellTags->"T1.11.1.1"],
+Cell[2201, 72, 1160, 35, 119, "Text"],
+
+Cell[CellGroupData[{
+Cell[3386, 111, 116, 5, 98, "Input"],
+Cell[3505, 118, 2375, 61, 75, "Output"]
+}, Open  ]],
+Cell[5895, 182, 53, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[5973, 186, 81, 1, 39, "Input"],
+Cell[6057, 189, 892, 24, 66, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6986, 218, 47, 1, 39, "Input"],
+Cell[7036, 221, 124, 3, 77, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7209, 230, 62, 1, 60, "Subsection",
+  CellTags->"T1.11.2.1"],
+Cell[7274, 233, 112, 4, 78, "Input"],
+
+Cell[CellGroupData[{
+Cell[7411, 241, 54, 1, 39, "Input"],
+Cell[7468, 244, 2473, 64, 75, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9978, 313, 77, 1, 39, "Input"],
+Cell[10058, 316, 538, 14, 66, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10633, 335, 54, 1, 39, "Input"],
+Cell[10690, 338, 2674, 70, 140, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13401, 413, 77, 1, 39, "Input"],
+Cell[13481, 416, 1068, 29, 66, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14598, 451, 71, 1, 60, "Subsection",
+  CellTags->"T1.11.2.1"],
+Cell[14672, 454, 34, 0, 46, "Text"],
+Cell[14709, 456, 424, 8, 108, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[15170, 469, 80, 1, 58, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[15275, 474, 182, 5, 85, "Input"],
+Cell[15460, 481, 12590, 307, 212, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[28099, 794, 81, 1, 58, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[28205, 799, 189, 5, 85, "Input"],
+Cell[28397, 806, 20370, 501, 280, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[48816, 1313, 81, 1, 58, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[48922, 1318, 363, 7, 131, "Input"],
+Cell[49288, 1327, 24102, 540, 460, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[73439, 1873, 82, 1, 58, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[73546, 1878, 184, 5, 85, "Input"],
+Cell[73733, 1885, 96465, 2072, 1389, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[170247, 3963, 80, 1, 58, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[170352, 3968, 182, 5, 85, "Input"],
+Cell[170537, 3975, 12544, 307, 212, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
