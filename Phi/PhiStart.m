@@ -203,7 +203,7 @@ have a meson-field dependence.";
    SetOptions[ILimit, FunctionLimits -> {Log -> Log, 
    LeutwylerJBar -> (LeutwylerJBar[
    Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
-   LeutwylerJBarEvaluation -> "physical",
+   LeutwylerJBarEvaluation -> "subthreshold",
    ExplicitLeutwylerSigma -> True]&)}];
    
    SetOptions[B0,
