@@ -4,13 +4,9 @@
 
 (* Author:  Frederik Orellana, fjob@cabocomm.dk
 
-   Date:  1/8-2000
+   Creation date:  1/8-2000
 
-   Context: HighEnergyPhysics`Phi`Channels
-
-   Package version:  1.2
-
-   Mathematica version:  4.0 *)
+   Context: HighEnergyPhysics`Phi`Utilities *)
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -41,7 +37,7 @@ fcsundel := fcsundel = MakeContext["SUNDelta"];
 fcexpscp := fcexpscp = MakeContext["ExpandScalarProduct"];
 fcfad := fcfad = MakeContext["FeynAmpDenominator"];
 fcli := fcli = MakeContext["LorentzIndex"];
-fcdot := fcdot = MakeContext["DOT"];
+fcdot := fcdot = DOT;
 fcdiga := fcdiga = MakeContext["DiracGamma"];
 fcdtr := fcdtr = MakeContext["DiracTrace"];
 fceps := fceps = MakeContext["Eps"];
@@ -57,6 +53,8 @@ fcpd := fcpd = MakeContext["PartialD"];
 fcsunn := fcsunn = MakeContext["SUNN"];
 fcpol := fcpol = MakeContext["Polarization"];
 fccombs := fccombs = MakeContext["Combinations"];
+FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
+CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFieldDerivative"];
 
 
 (* Tracer functions *)
@@ -290,7 +288,6 @@ IsoCrosses and IsoSymmetricCrosses of iso-spin vectors: *)
 LorentzIndicesSupply[aa_, (optss___Rule | optss___List)] :=
    (aa /.
       (fcpa | fcsp)[a_, b_]^n_ :> times1 @@ Table[fcdot[a, b], {rep, n}] /.
-      (*Added 11/1-2001*)
       Power[a_, b_ /; b > 0 && IntegerQ[b]] :>
                   times1 @@ Table[a, {ddum, 1, b}]/.
            {indicesdotrule1[optss], indicesdotrule2[optss]} /.
@@ -323,22 +320,6 @@ FourPoint[q_, a_*b_, opts___] /; FreeQ[a, q | fcprd] :=
     a*FourPoint[q, b, opts];
 
 
-
-MomentaApart[exp_] :=
-   exp /.
-   {
-   fcpa[fcli[a__], b : HoldPattern[
-      Plus[(___*HighEnergyPhysics`FeynCalc`Momentum`Momentum[__] |
-      HighEnergyPhysics`FeynCalc`Momentum`Momentum[__]) ..]]]  :>
-      (fcpa[fcli[a], #] & /@ b),
-   fcdiga[b : HoldPattern[
-      Plus[(___*HighEnergyPhysics`FeynCalc`Momentum`Momentum[__] |
-      HighEnergyPhysics`FeynCalc`Momentum`Momentum[__]) ..]],dim___]  :>
-      (fcdiga[#,dim] & /@ b)
-   };
-
-
-
 FourPoint[q_, aa_*fcfad[f___, fcprd[fcmom[q1_, d___] + fcmom[q2_,
           d___] + m___, m1_], l___], opts___] :=
     FourPoint[q, aa*fcmomcomb[fcfad[f, fcprd[fcmom[q1, d] +
@@ -357,11 +338,10 @@ FourPoint[q_,
     FourPoint[q,
       Expand[fcfad[fcprd[fcmom[q1, d], m1], fcprd[fcmom[q2, d], m2],
             fcprd[fcmom[q3, d], m3], fcprd[fcmom[q4, d], m4]]*
-          MomentaApart[
             fcmomex[fcpa[fcli[l1, d], fcmom[qq1, d]]*
                 fcpa[fcli[l2, d], fcmom[qq2, d]]*
                 fcpa[fcli[l3, d], fcmom[qq3, d]]*
-                fcpa[fcli[l4, d], fcmom[qq4, d]]]]], opts];
+                fcpa[fcli[l4, d], fcmom[qq4, d]]]], opts];
 
 FourPoint[q_, aa : HoldPattern[Times[___, (_[
   HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
@@ -628,8 +608,7 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
            dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
 	       $PathnameSeparator <>
 	       "Phi" <> $PathnameSeparator <> "CouplingVectors"],
-	     (*Added 24/7-2001*)(*Added .Mass 10/10-2001*)
-	     StringMatchQ[fi,"*.Fac"]===True || StringMatchQ[fi,"*.Mass"]===True,
+          StringMatchQ[fi,"*.Fac"]===True || StringMatchQ[fi,"*.Mass"]===True,
            dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
 	       $PathnameSeparator <>
 	       "Phi" <> $PathnameSeparator <> "Factors"],
@@ -1094,68 +1073,18 @@ bigURules = {nm[f___, SMM[x_], SMM[x_], l___] -> nm[f, MM[x], l],
         nm[f, Adjoint[MM[x]], l],
 				     nm[SMM[x_], m__, SMM[x_]] -> nm[MM[x], m],
              nm[Adjoint[SMM[x_]], m__, Adjoint[SMM[x_]]] ->
-             nm[m, Adjoint[MM[x]]](*,*)
-
-	 (*WRONG!*)
-	 (*Same reasoning as for the SU(2) rules above, but only one generator matrix
-	 taken down by the differentation and thus no need to specialize to SU(2)*)
-	 (* NM[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]],Adjoint[SMM[x_]]] :>
-	 1/2 NM[CovariantFieldDerivative[MM[x], x, fcli[mu1]],Adjoint[MM[x]]],
-	 UTrace1[NM[Adjoint[SMM[x_]],m__,CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]]] :>
-	 1/2 UTrace1[NM[Adjoint[MM[x]],m,CovariantFieldDerivative[MM[x], x, fcli[mu1]]]],
-	 NM[Adjoint[SMM[x_]], CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]] :>
-	 1/2 NM[Adjoint[MM[x]], CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
-	 UTrace1[NM[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]],m__,Adjoint[SMM[x_]]]] :>
-	 1/2 UTrace1[NM[CovariantFieldDerivative[MM[x], x, fcli[mu1]],m,Adjoint[MM[x]]]] *)
-
-	 (*Don't know how I cooked up these rules, but they are wrong*)(*,
-      nm[f___, FieldDerivative[SMM[x_], x_, fcli[li1_]],
-          Adjoint[FieldDerivative[SMM[x_], x_, fcli[li2_]]],
-          l___] -> -1/2 nm[f, FieldDerivative[MM[x], x, fcli[li1]],
-               Adjoint[FieldDerivative[MM[x], x, fcli[li2]]], l] +
-          1/2 nm[f, FieldDerivative[SMM[x], x, fcli[li1]],
-              FieldDerivative[SMM[x], x, fcli[li2]],
-              Adjoint[MM[x]], l] +
-          1/2 nm[f, MM[x],
-              Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]],
-              Adjoint[FieldDerivative[SMM[x], x, fcli[li2]]], l],
-      nm[f___, Adjoint[FieldDerivative[SMM[x_], x_, fcli[li1_]]],
-          FieldDerivative[SMM[x_], x_, fcli[li2_]],
-          l___] -> -1/2nm[f,
-              Adjoint[FieldDerivative[MM[x], x, fcli[li1]]],
-              FieldDerivative[MM[x], x, fcli[li2]], l] +
-          1/2 nm[f, Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]],
-               Adjoint[FieldDerivative[SMM[x], x, fcli[li2]]],
-              SMM[x], SMM[x], l] +
-          1/2 nm[f, Adjoint[SMM[x]], Adjoint[SMM[x]],
-              FieldDerivative[SMM[x], x, fcli[li1]],
-              FieldDerivative[SMM[x], x, fcli[li2]], l]*)};
+             nm[m, Adjoint[MM[x]]]};
 
 SMMToMM[exp_,opts___Rule] := (max = Max[(Length /@ Cases[exp, _NM, Infinity])];
       FixedPoint[(# /. bigURules /. diffURules  /.
-			 (*Added 24/1-2002*)diffBigURules[(fcsunn /. {opts} /.
+			                    diffBigURules[(fcsunn /. {opts} /.
 			                    Options[UReduce])]// NMExpand) &,
           exp /. NM -> nm, max] /. nm -> NM);
 
-(*Added 22/2-2002*)
-(*Have tr(d_mu U d_mu U^(+) d_nu U d_nu U^(+)) replaced with
+(* Have tr(d_mu U d_mu U^(+) d_nu U d_nu U^(+)) replaced with
    tr(d_mu U^(+)  d_mu Ud_nu U^(+) d_nu U).
-  Follows from writing in terms of u_mu's. If anyone should want to do higher order
-  calculations than p^8, well change the 8 below accordingly :-)*)
-(*DdURules = 
-  Table[(ex = (UTrace1[
-                NM @@ Table[
-                    seq[idd[CovariantFieldDerivative[MM[pat[x, _]], pat[x, _], 
-                          fcli[mu[i]]]], 
-                      adj[CovariantFieldDerivative[MM[pat[x, _]], pat[x, _], 
-                          fcli[mu[i]]]]], {i, 1, n}]] /. 
-              seq -> Sequence); (ex /. 
-                  mu :> (pat[ToExpression["mu" <> ToString[#]], 
-                          Blank[]] &) /. pat -> Pattern /. {idd -> Identity, 
-                adj -> Adjoint}) -> (ex /. 
-                  mu :> (ToExpression["mu" <> ToString[#]] &) /. {idd -> 
-                    Adjoint, adj -> Identity} /. pat[xx_, yy_] -> x)), {n, 2, 
-        8, 2}] // CycleUTraces;*)
+   Follows from writing in terms of u_mu's. If anyone should want to do higher order
+   calculations than p^8, well change the 8 below accordingly :-)*)
 
 ddURules=Table[(ex=(cut[UTrace1[
                   nm@@Table[
@@ -1200,12 +1129,12 @@ UReduce[exp_, opts___Rule] := Block[{res,opsMM,opsSMM,end},
 (*Added inner UPair in order to force cancellation in SU(3) CayleyHamiltonRules*) 
 FixedPoint[CycleUTraces[UPair[
        UTraceTrick[UIdTrick[UPair[NMExpand[# /. uDagRul /. UDagRul  /. ddURules /. ddURules1]],opts] /.
-			 (*Added 24/1-2002*)SUNURules[(fcsunn /. {opts} /.
+			                    SUNURules[(fcsunn /. {opts} /.
 			                    Options[UReduce])]],opts]]&,
       exp, 10],
  FixedPoint[CycleUTraces[SMMToMM[UPair[
        UTraceTrick[UIdTrick[UPair[NMExpand[# /. uDagRul /. UDagRul /. ddURules /.  ddURules1]],opts] /.
-			 (*Added 24/1-2002*)SUNURules[(fcsunn /. {opts} /.
+			                    SUNURules[(fcsunn /. {opts} /.
 			                    Options[UReduce])]],opts],opts]]&,
       exp, 10]];
  end=If[(FullReduce /. {opts} /. Options[UReduce]) === True,
