@@ -663,7 +663,7 @@ oneampd = oneamp;
    If[!FreeQ[oneamp,DiracTrace], print1["and calculation of Traces"]];
 
 (* ONEAMPCHANGE : contracting Lorentz indices and trace calculation *)
-oneampe = oneamp;
+(*oneampe = oneamp;*)
    If[ !FreeQ[oneamp, DiracTrace],
        neuamp = 0;
        oneamp = collin[ oneamp, DiracTrace, False];
@@ -680,9 +680,9 @@ oneampf = oneamp;
            oneamp = Collect2[neuamp, FeynAmpDenominator, Factoring -> False]
          ]
      ];
-  oneampzero = oneamp;
+  (*oneampzero = oneamp;*)
 
-Global`ONET[1]=oneamp;
+(*Global`ONET[1]=oneamp;*)
 
 (* ONEAMPCHANGE : bringing gamma5, gamma6 and gamma7 into standard 
    way according to the setting of the option ReduceGamma
@@ -730,7 +730,8 @@ Global`ONET[1]=oneamp;
     
 (* we want to keep the distinction in different graphs *)
 (* ONEAMPCHANGE *)
-oneamp1 = oneamp; print3["oneamp1 = ",oneamp1];
+(*oneamp1 = oneamp; *)
+print1["oneamp = ",oneamp];
    neuamp = 0;
    If[ Head[oneamp] === Plus, lenneu = Length[oneamp], lenneu = 1];
        For[ ip=1, ip <= lenneu, ip++,
@@ -923,8 +924,8 @@ print1["cancelling qp's"];
       oneamp = (intcan[oneamp//MomentumExpand]//ExpandScalarProduct)/.
                 intcan->Identity ;
     ];
-oneamp1 = oneamp;
-print1["simplifying again"];
+(*oneamp1 = oneamp;*)
+print1["simplifying again in ", oneamp];
 If[!FreeQ[oneamp, Spinor],
    oneamp = Map[spinorchainevaluate, oneamp +  nUUl]/.nUUl->0;
    oneamp = Expand[ ExpandScalarProduct[ oneamp ], q]
@@ -1298,14 +1299,15 @@ oneampresult /.
       
       (*New 31/7-2002. Support for FeynArts 3.0 SumOver. F.Orellana*)
       If[(Sum /. Flatten[{opts}] /. Options[OneLoop]) === False,
-          HighEnergyPhysics`FeynArts`SumOver[___] -> 1,
-          HighEnergyPhysics`FeynArts`SumOver[i_, r_, ___] ->
-            HighEnergyPhysics`FeynArts`SumOver[SUNIndex[i], r]] //.
+          HighEnergyPhysics`FeynArts`SumOver[___] -> 1, {}] //.
       If[(Sum /. Flatten[{opts}] /. Options[OneLoop]) === Explicit,
-           Times[f__, HighEnergyPhysics`FeynArts`SumOver[SUNIndex[i_], r_]] :>
-               (print2["Summing ", i, " from 1 to ", r];
-          Sum[Times[f], {i, 1, r}]), {}]
-
+            Times[f__, HighEnergyPhysics`FeynArts`SumOver[i_, r_, ___]] :>          
+            (If[Head[r] =!= List, 
+            print2["Summing ", i, " from 1 to ", r];
+            rr = Range[1, r],
+            print2["Summing ", i, " over ", r];
+            rr = r];
+            Plus @@ ((Times[f] /. i -> #)& /@ rr)), {}]
 ] /; FreeQ[q,Rule] && FreeQ[q,Plus];
 
 (* ******************************************************************* *)
