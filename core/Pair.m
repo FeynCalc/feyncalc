@@ -102,10 +102,11 @@ MakeBoxes[Pair[
         ToBoxes[Pair[MomentumCombine[a],MomentumCombine[b]],
                 TraditionalForm] /; !FreeQ[a, Momentum] &&
                                     !FreeQ[b, Momentum];*)
+
 Pair /: MakeBoxes[Pair[a_Plus, b_], TraditionalForm] :=
     RowBox[{"(", ToBoxes[TraditionalForm[a]], ")",".","(",
-          ToBoxes[TraditionalForm[b]], ")"}] /; ! FreeQ[a, Momentum] && !
-          FreeQ[b, Momentum];
+          ToBoxes[TraditionalForm[b]], ")"}] /; !FreeQ[a, Momentum] && 
+          !FreeQ[b, Momentum];
 
 Pair /:
         MakeBoxes[Pair[
@@ -180,23 +181,40 @@ Pair /:
                  ], TraditionalForm
             ] := SubsuperscriptBox[Tbox[b[[1]]], Tbox@@Rest[b],
                                     Tbox[LorentzIndex[a]]];
+ 
+Pair /:
+   MakeBoxes[Pair[
+              (HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex|
+      HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[a__],
+              HighEnergyPhysics`FeynCalc`Momentum`Momentum[b_,di___]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    Tbox[Momentum[b,di] ], Tbox[LorentzIndex[a]] 
+                   ]/;Head[b]=!=Plus;
 
 Pair /:
    MakeBoxes[Pair[
               (HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex|
       HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[a__],
-              HighEnergyPhysics`FeynCalc`Momentum`Momentum[b_,di___] + c_.
+              HighEnergyPhysics`FeynCalc`Momentum`Momentum[b_Plus,di___]
                  ],
              TraditionalForm
-            ] := If[$VersionNumber >=5,
-                    SuperscriptBox[
-                    Tbox[If[Head[b+c]===Plus,"(",""],
-                         MomentumCombine[Momentum[b,di] + c],
-                         If[Head[b+c]===Plus,")",""]
-                        ], Tbox[LorentzIndex[a]] ],
-                    SuperscriptBox[
-                    Tbox[MomentumCombine[Momentum[b,di] + c]], Tbox[LorentzIndex[a]] ]
-                   ];
+            ] := SuperscriptBox[
+                    Tbox[ "(",Momentum[b,di], ")"], Tbox[LorentzIndex[a]] ];
+
+Pair /:
+   MakeBoxes[Pair[
+              (HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex|
+      HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex)[a__],
+              HighEnergyPhysics`FeynCalc`Momentum`Momentum[b_, di___] +c_
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    Tbox[ "(",Momentum[b+c,di], ")"], Tbox[LorentzIndex[a]] ];
+
+
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "Pair | \n "]];
