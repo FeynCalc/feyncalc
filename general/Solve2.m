@@ -26,7 +26,7 @@ Begin["`Private`"];
    
 MakeContext[ Collect2, Expanding , Factor1,Factor2,
              Factoring, FinalSubstitutions,Isolate, 
-             IsolateHead 
+             IsolateNames 
            ];
 
 Options[Solve2] = {Factoring -> Factor2, FinalSubstitutions -> {}};
@@ -45,7 +45,7 @@ finsub = FinalSubstitutions/. {ops} /. Options[Solve2];
 fixeq[x_]:= Isolate[Collect2[
   If[Head[x] === Equal, x[[1]] - x[[2]], x],
                      b, Factoring -> factor ,Expanding -> False
-                            ], b, IsolateHead->$soso];
+                            ], b, IsolateNames->$soso];
 temp = Map[fixeq, a];
 (*
 soback /: HoldForm[soback[i_]] := soback[i];
