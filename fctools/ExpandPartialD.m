@@ -253,7 +253,10 @@ opesumplus[a_,b__] := opesumplus2[Expand[a],b];
 
 qfe[dot_, x_] := MemSet[qfe[dot,x],
            DotSimplify[
-            DotSimplify[ExplicitPartialD[fcovcheck[x/.Times->dot]] /. 
+           (*The replacement below commented out by F.Orellana, 12/3/2005.
+             It breaks the procedure of applying the expansion to all
+             products in $Multiplications (see above). What is it good for?*)
+            DotSimplify[ExplicitPartialD[fcovcheck[x(*/.Times->dot*)]] /. 
  { PartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):> 
     PartialD[Momentum[OPEDelta]^mm],
    LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):> 
