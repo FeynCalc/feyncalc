@@ -951,6 +951,7 @@ Block[{$Path = {HighEnergyPhysics`FeynArts`$FeynArtsProgramDir}}, Needs["Utiliti
   Needs["Insert`"];
   Needs["Analytic`"];
   Needs["Graphics`"];
+Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
 ];
