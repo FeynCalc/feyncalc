@@ -146,6 +146,8 @@ oldDiracSimplify[x_,y___Rule] := diracSimplify[x,y] /; FreeQ[x, Spinor];
 
 oldDiracSimplify[x_,yy___Rule] := Block[{dre},
 If[$VeryVerbose>2, Print["entering oldDiracSimplify", x]];
+factoring = Factoring /. {yy} /. Options[DiracSimplify];
+If[factoring === True, factoring = Factor2];
 (*NEW0796*)
 dre = Collect[DotSimplify[dR[DiracGammaCombine[x]]]/.
 DOT->dooo,dooo[__]]/.dooo->DOT;
@@ -170,7 +172,8 @@ print2["contracting in oldDiracSimpify done"];
             )//dotLin
      ];
    If[!FreeQ[dre, DiracGamma], dre = Expand2[dre, DiracGamma]];
-   If[LeafCount[dre] < 420, dre = Factor2[dre, FactorTime->10]];
+
+If[factoring =!= False, dre = factoring[dre]];
        dre                 ] /; !FreeQ[x,Spinor];
 
  collone[x_,y_]:=Collect2[x,y, Factoring -> False];
@@ -429,7 +432,8 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
                        DOT[Spinor[p3__] , (b__ /; FreeQ[{b}, DiracGamma[_,_]]
                             ) , Spinor[p4__]]
                   ], nz = Map[ spcev0,nz ],
-       nz = sirlin00[ Expand[Map[ spcev0,z//sirlin0 ]] ]
+(* added ,Spinor, Nov. 2003 , RM*)
+       nz = sirlin00[ Expand[Map[ spcev0,z//sirlin0 ], Spinor] ]
            ] ] ];                  nz];
  SpinorChainEvaluate[x_]:=
   If[$sirlin =!= True, Expand[spcev0[x], Spinor],
@@ -440,8 +444,9 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
                        DOT[Spinor[p3__] , (b__ /; FreeQ[{b}, DiracGamma[_,_]]
                             ) , Spinor[p4__]]
            ],
-     Expand[spcev0[x]],
-     sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ]] ]
+(* added ,Spinor, Nov. 2003 , RM*)
+     Expand[spcev0[x], Spinor],
+     sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ], Spinor] ]
     ]]/; !Head[x]===Plus;
 
 (* #################################################################### *)
@@ -530,7 +535,7 @@ print3["sirlin002"];
                           tg5 = Select[te, !FreeQ[#,DiracGamma[5]]& ];
                           ntg5 = te - tg5;
 (*i.e. te = tg5 + ntg5 *)
-                          test = Expand[tg5 + ChisholmSpinor[ntg5]];
+                          test = Expand[tg5 + ChisholmSpinor[ntg5], Spinor];
                           If[nterms[test] < Length[te], te=test]
                          ];
 print3["exiting sirlin00"];
