@@ -201,14 +201,15 @@ LoadLagrangian[fn_] /; Depth[fn] == 1 :=
       SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
       SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"]; 
       SetDirectory["Lagrangians"];
-       (*Allow using strings. 6.4.2002*)
-      VerbosePrint[3,
+       (*Allow using strings. 6/4-2002*)
+      (*Allow not using strings, keep context Global`. 13/5-2003*)
+      (*VerbosePrint[3,
        "Putting the following in context HighEnergyPhysics`Phi`Objects`: ",
         Global`$Lagrangians//FullForm];
       Global`$Lagrangians =
-        Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#]] & /@ Global`$Lagrangians];
-      VerbosePrint[3,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
+        Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#]] & /@ Global`$Lagrangians];*)
       Get[ToString[fn] <> ".m"]; 
+      VerbosePrint[2,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
       VerbosePrint[3, "Resetting to directory ", olddir]; 
       SetDirectory[olddir];
       FAUpdate;];
@@ -221,14 +222,14 @@ LoadLagrangian[fn_] /; Depth[fn] == 2 :=
       SetDirectory["Lagrangians"]; 
       (*Get[StringDrop[ToString[fn], -3] <> *) (*Change 17/9-2000*)
        (*Allow using strings. 6.4.2002*)
-      VerbosePrint[3,
+      (*VerbosePrint[3,
        "Putting the following in context HighEnergyPhysics`Phi`Objects`: ",
         Global`$Lagrangians//FullForm];
       Global`$Lagrangians =
-        Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#[[0]]]][#[[1]]] & /@ Global`$Lagrangians];
-      VerbosePrint[3,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
-     Get[ToString[ToExpression[ToString[fn]][[0]]] <> 
+        Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#[[0]]]][#[[1]]] & /@ Global`$Lagrangians];*)
+      Get[ToString[ToExpression[ToString[fn]][[0]]] <> 
           ToString[ToExpression[ToString[fn]][[1]]] <> ".m"]; 
+      VerbosePrint[2,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
       VerbosePrint[3, "Resetting to directory ", olddir]; 
       SetDirectory[olddir];
       FAUpdate;];
