@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:58 *)
+(* :History: changed slightly September 2003                                *)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: Calc does a lot *)
@@ -46,13 +46,14 @@ SUNSimplify,
 Trick
            ];
 
-Calc[exp_] :=
-Expand2[ExpandScalarProduct[
-DotSimplify[
+Calc[expr_] := Block[{calc},
+calc[exp_] :=calc[exp] = 
+Expand2[ExpandScalarProduct[ DotSimplify[
  DiracSimplify[EpsEvaluate[Contract[DiracSimplify[
-  Contract[Explicit[ SUNSimplify[Trick[exp]//PowerSimplify, 
-Explicit -> False] ]]
-               ]]]]]]//PowerSimplify];
+  Contract[Explicit[ SUNSimplify[Trick[exp]//PowerSimplify, Explicit -> False] ]]
+               ]]]]]]//PowerSimplify
+       ];
+FixedPoint[calc,expr, 5]];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
