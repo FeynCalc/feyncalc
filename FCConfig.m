@@ -20,13 +20,23 @@ SubsuperscriptBox[x, y, z];
 
 (*
 
-This is the default installation directory which will be set
-in FeynCalc.m 
+The default installation directory will be the first one found on 
+$Path.
 
-HighEnergyPhysics`FeynCalc`$FeynCalcDirectory = $TopDirectory <> $PathnameSeparator <> "AddOns" <>
-                     $PathnameSeparator <> "Applications" <> 
-                     $PathnameSeparator <> "HighEnergyPhysics";
+If you do not want to load the first installation on $Path you
+can either provide the full path, e.g.:
+
+<</opt/test/HighEnergyPhysics/FeynCalc.m
+
+or set
+
+HighEnergyPhysics`FeynCalc`$FeynCalcDirectory =
+"/opt/test/HighEnergyPhysics"
+
+here in FCConfig.m
+
 *)
+
 
 (* Optional modules *)
 
