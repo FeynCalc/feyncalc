@@ -16,7 +16,7 @@
 
 BeginPackage[
     "HighEnergyPhysics`Phi`Utilities`", {"HighEnergyPhysics`Phi`",
-      "HighEnergyPhysics`Phi`Objects`"}];
+    "HighEnergyPhysics`FeynCalc`", "HighEnergyPhysics`Phi`Objects`"}];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -35,26 +35,28 @@ Begin["`Private`"];
 
 (* FeynCalc functions *)
 
-fcpa := fcpa = HighEnergyPhysics`FeynCalc`Pair`Pair;
-fcmom := fcmom = HighEnergyPhysics`FeynCalc`Momentum`Momentum;
-fcsundel := fcsundel = HighEnergyPhysics`FeynCalc`SUNDelta`SUNDelta;
-fcexpscp := fcexpscp = HighEnergyPhysics`FeynCalc`ExpandScalarProduct`ExpandScalarProduct;
-fcfad := fcfad = HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator;
-fcli := fcli = HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcdot := fcdot = HighEnergyPhysics`FeynCalc`DOT`DOT;
-fcdiga := fcdiga = HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma;
-fcdtr := fcdtr = HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace;
-fceps := fceps = HighEnergyPhysics`FeynCalc`Eps`Eps;
-fcsp := fcsp = HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct;
-fcprd := fcprd = HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator;
-fcmomex := fcmomex = HighEnergyPhysics`FeynCalc`MomentumExpand`MomentumExpand;
-fcmomcomb := fcmomcomb = HighEnergyPhysics`FeynCalc`MomentumCombine`MomentumCombine;
-fcpave := fcpave = HighEnergyPhysics`fctools`PaVe`PaVe;
-fconeloop := fconeloop = HighEnergyPhysics`fctools`OneLoop`OneLoop;
-fcexpt := fcexpt = HighEnergyPhysics`fctools`Explicit`Explicit;
-fcqf := fcqf = HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-fcpd := fcpd = HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcsunn := fcsunn = HighEnergyPhysics`FeynCalc`SUNN`SUNN;
+fcpa := fcpa = MakeContext["Pair"];
+fcmom := fcmom = MakeContext["Momentum"];
+fcsundel := fcsundel = MakeContext["SUNDelta"];
+fcexpscp := fcexpscp = MakeContext["ExpandScalarProduct"];
+fcfad := fcfad = MakeContext["FeynAmpDenominator"];
+fcli := fcli = MakeContext["LorentzIndex"];
+fcdot := fcdot = MakeContext["DOT"];
+fcdiga := fcdiga = MakeContext["DiracGamma"];
+fcdtr := fcdtr = MakeContext["DiracTrace"];
+fceps := fceps = MakeContext["Eps"];
+fcsp := fcsp = MakeContext["ScalarProduct"];
+fcprd := fcprd = MakeContext["PropagatorDenominator"];
+fcmomex := fcmomex = MakeContext["MomentumExpand"];
+fcmomcomb := fcmomcomb = MakeContext["MomentumCombine"];
+fcpave := fcpave = MakeContext["PaVe"];
+fconeloop := fconeloop = MakeContext["OneLoop"];
+fcexpt := fcexpt = MakeContext["Explicit"];
+fcqf := fcqf = MakeContext["QuantumField"];
+fcpd := fcpd = MakeContext["PartialD"];
+fcsunn := fcsunn = MakeContext["SUNN"];
+fcpol := fcpol = MakeContext["Polarization"];
+fccombs := fccombs = MakeContext["Combinations"];
 
 
 (* Tracer functions *)
@@ -69,7 +71,8 @@ trtr := trtr = Tracer`GammaTrace; trid = Tracer`TrU; trsp :=
 (* Defaults *)
 
 Options[MandelstamReduce] = {MomentaSumLeft -> All, OnMassShell -> True,
-      MandelstamCancel -> MandelstamU, MomentumVariablesString -> "p",
+      Cancel -> MandelstamU, MomentumVariablesString -> "p",
+      MomentaSumRule -> True,
       Masses -> {ParticleMass[Pion, RenormalizationState[0]],
           ParticleMass[Pion, RenormalizationState[0]],
           ParticleMass[Pion, RenormalizationState[0]],
@@ -103,10 +106,12 @@ SetOptions[CovariantFieldDerivative, fcexpt -> False];
 SetOptions[MM, fcexpt -> False];
 Options[CayleyHamiltonTrick] = {fcsunn -> 2, UDimension -> 2,
     CommutatorReduce -> True, UReduce -> True,
-    UMatrices :> {{I NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, {\[Rho]1_}]], MM[x_]],
-    I NM[Adjoint[MM[x_]], CovariantFieldDerivative[MM[x_], x_, {\[Rho]2_}]],
-    NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, {\[Rho]1_}]],
-      CovariantFieldDerivative[MM[x_], x_, {\[Rho]2_}]]}}};
+    UMatrices :> {{I NM[Adjoint[CovariantFieldDerivative[MM[Global`x_],
+    Global`x_, {Global`\[Rho]1_}]], MM[Global`x_]],
+    I NM[Adjoint[MM[Global`x_]], CovariantFieldDerivative[MM[Global`x_],
+    Global`x_, {Global`\[Rho]2_}]],
+    NM[Adjoint[CovariantFieldDerivative[MM[Global`x_], Global`x_, {Global`\[Rho]1_}]],
+      CovariantFieldDerivative[MM[Global`x_], Global`x_, {Global`\[Rho]2_}]]}}};
 SetOptions[CovariantFieldDerivative, Sequence@@tmpoptscdr];
 SetOptions[MM, Sequence@@tmpoptsmm];
 
@@ -189,39 +194,45 @@ sturules[opts___] /; (MomentaSumLeft /. Flatten[{opts}] /.
               2 - (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
                   fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2};
 
-strules[opts___] := (MandelstamCancel /. Flatten[{opts}] /.
+strules[opts___] := (Cancel /. Flatten[{opts}] /.
             Options[MandelstamReduce]) ->
         mss[opts][1] + mss[opts][2] + mss[opts][3] + mss[opts][4] -
           Complement[{MandelstamS, MandelstamT,
-                MandelstamU}, {(MandelstamCancel /. Flatten[{opts}] /.
+                MandelstamU}, {(Cancel /. Flatten[{opts}] /.
                     Options[MandelstamReduce])}][[1]] -
           Complement[{MandelstamS, MandelstamT,
-                MandelstamU}, {(MandelstamCancel /. Flatten[{opts}] /.
+                MandelstamU}, {(Cancel /. Flatten[{opts}] /.
                     Options[MandelstamReduce])}][[2]];
 
-MandelstamReduce[amp_, opts___] := Collect[fcexpscp[
-                  amp //. manrul[opts] /. MomentaSumRule[
-                      Join[Select[
-                          Flatten[{opts}], (!
-                                FreeQ[#, (MomentumVariablesString -> _ |
+MandelstamReduce1[amp_, opts___Rule] := fcexpscp[
+                  amp /.
+                  (*We don't want a polarization vector Polarization[p1] to
+                    be replaced with Polarization[-p2-p3-p4]*)
+                  fcpol[a__] :> ToString/@fcpol[a] /.
+                  If[MomentaSumRule /. Flatten[{opts}] /. Options[MandelstamReduce],
+                     MomentaSumRule[
+                      Join[Select[Flatten[{opts}],
+                            (!FreeQ[#, (MomentumVariablesString -> _ |
                                         MomentaSumLeft -> _)]) &],
-                        Select[
-                          Options[
-                            MandelstamReduce], (!
-                                FreeQ[#, (MomentumVariablesString -> _ |
-                                        MomentaSumLeft -> _)]) &]]]] /.
+                        Select[Options[MandelstamReduce],
+                               (!FreeQ[#, (MomentumVariablesString -> _ |
+                                        MomentaSumLeft -> _)]) &]]], {}] /.
+                   fcpol[a__] :> ToExpression/@fcpol[a]] /.
                 sturules[opts] /.
               If[(OnMassShell /. Flatten[{opts}] /.
                     Options[MandelstamReduce]),
                 Table[fcpa[fcmom[mv[opts][irep], ___], fcmom[mv[opts][irep], ___]] ->
                     masses1[opts][irep]^2, {irep, 4}], {}] /.
-            If[! (MandelstamCancel /. Flatten[{opts}] /.
+            If[!(Cancel /. Flatten[{opts}] /.
                       Options[MandelstamReduce]) === None,
               strules[opts], {}] /.
           If[(OnMassShell /. Flatten[{opts}] /. Options[MandelstamReduce]),
             Table[fcpa[fcmom[mv[opts][irep], ___], fcmom[mv[opts][irep], ___]] ->
-                masses1[opts][irep]^2, {irep, 4}], {}], _fcsundel];
+                masses1[opts][irep]^2, {irep, 4}], {}];
 
+MandelstamReduce[amp_, opts___Rule] := MandelstamReduce1[
+                                         MandelstamReduce1[amp, opts] /.
+                                         manrul[opts], MomentaSumRule->False, opts];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -563,7 +574,8 @@ TracerToFC[
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
-SetAttributes[ditchmom, NumericFunction];
+(*Commented out 16/9-2002. Will look at DOT instead*)
+(*SetAttributes[ditchmom, NumericFunction];*)
 DiscardOrders[am_,
       opts___] := (spf = (HighEnergyPhysics`Phi`Objects`ScalarProductForm /.
               Flatten[{opts}] /. Options[DiscardOrders]);
@@ -703,7 +715,7 @@ CayleyHamilton[m__, opts___Rule] :=
                           UMatrix[b], i], {i, 0, n}] /.
                     UMatrix[b] -> Plus[m] // CycleUTraces // NMExpand //
               Expand // CycleUTraces,
-          Do[coms = HighEnergyPhysics`general`Combinations`Combinations[{m}, k];
+          Do[coms = fccombs[{m}, k];
             ch[k] = Sum[
                   Sum[CharacteristicCoefficient[UMatrix[b], opts][i]NMPower[
                                 UMatrix[b], i], {i, 0, n}] /.
@@ -725,22 +737,34 @@ CayleyHamilton[m__, opts___Rule] :=
                             Coefficient[el[sp], submat]el[sp], {sp, 1,
                           k - 1}]] // Expand, {k, 1, len}]; el[len]]];
 
+(*Support function for calhamSort*)
+(*Count number of adjacent Lorentz vectors*)
 licount = (Count[# /. UTrace1 -> tr /. Power -> NMPower /.
-              NM -> nm //. {nm[a___,
-                  l_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &),
-                  ll_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), b___] :>
-                nm[a, pp[Unique[pp]], b] /;
-                  Cases[l, fcli[__], Infinity] ===
-                    Cases[ll, fcli[__], Infinity],
-              nm[l_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), a__,
-                  ll_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &)] :>
-                nm[a, pp[Unique[pp]]] /;
-                  Cases[l, fcli[__], Infinity] ===
-                    Cases[ll, fcli[__], Infinity]}, _pp, Infinity] &);
+           NM -> nm //. 
+           {nm[a___, l_?((!FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &),
+              ll_?((!FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), b___] :>
+           nm[a, pp[Unique[pp]], b] /;
+              Cases[l, fcli[__], Infinity] === Cases[ll, fcli[__], Infinity],
+           nm[l_?((!FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), a__,
+              ll_?((!FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &)] :>
+           nm[a, pp[Unique[pp]]] /;
+              Cases[l, fcli[__], Infinity] ===
+              Cases[ll, fcli[__], Infinity]}, _pp, Infinity] &);
+
+(*Function to sort matrices to find left-hand side*)
+calhamSort = Block[{tmp = # . UTrace1 -> tr},
+               (Count[#1, _tr, Infinity] < Count[#2, _tr, Infinity] ||
+               Count[#1, _tr, Infinity] === Count[#2, _tr, Infinity] &&
+               licount[#1] < licount[#2] ||
+               Count[#1, _tr, Infinity] === Count[#2, _tr, Infinity] &&
+               licount[#1] == licount[#2] &&
+               LeafCount[#1] > LeafCount[#2]
+               ) ]&;
 
 CayleyHamiltonRules[mats_List, opts___Rule] :=
-    Block[{(*calham, fac, scalham, rightside, a, len, i, tr, submats, j,
-        calhamrules, subres*)}, calhamrules = {};
+Block[{(*calham, fac, scalham, rightside, a, len, i, tr, submats, j,
+calhamrules, subres*)},
+   calhamrules = {};
       VerbosePrint[3, Length[mats], " sets of matrices"];
       Do[VerbosePrint[2, j];
       len = Length[mats[[j]]];
@@ -759,9 +783,10 @@ CayleyHamiltonRules[mats_List, opts___Rule] :=
 	NMExpand // Expand // CycleUTraces) /.
 	(VerbosePrint[3, "Substituting matrices"];
 	(Rule @@ #) & /@
-                  Transpose[{Append[submats, UMatrix[a[len]]], mats[[j]]}]))//
+                  Transpose[{Append[submats, UMatrix[a[len]]], mats[[j]]}]) /.
+    (*Get scalars out of UTrace1*)Pattern -> pat /. pat -> Pattern)//
 	(VerbosePrint[3, "Reducing ", subres];#)& //
-             If[(UReduce/.{opts}/.Options[CayleyHamiltonRules])=!=False,
+             If[(UReduce /. {opts} /. Options[CayleyHamiltonRules])=!=False,
 						   VerbosePrint[1, "Doing UReduce"];
 							 UReduce[#, Sequence@@OptionsSelect[UReduce,
                Options[CayleyHamiltonRules],opts]] // CommutatorReduce // CycleUTraces,
@@ -770,21 +795,14 @@ CayleyHamiltonRules[mats_List, opts___Rule] :=
         VerbosePrint[2, "Finding left-hand side of ", calham];
 	scalham =
           Sort[List @@ Expand[calham /. UTrace1 -> tr /.
-                  Power -> NMPower], 
-           ((Count[#1, _tr, Infinity] <
-                      Count[#2, _tr, Infinity] ||
-                    Count[#1, _tr, Infinity] === Count[#2, _tr, Infinity] &&
-                      licount[#1] < licount[#2] ||
-                    licount[#1] == licount[#2] &&
-                      Count[#1, _tr, Infinity] === Count[#2, _tr, Infinity] &&
-                       LeafCount[#1] > LeafCount[#2]) &)];
+                  Power -> NMPower], calhamSort ];
         fac = scalham[[1]] /. _tr -> 1;
         rightside = (-(Plus @@ Drop[scalham/fac, 1]) /.
               Pattern -> (({##}[[1]]) &));
+        leftside = Cancel[scalham[[1]]/fac];
+        VerbosePrint[2, "Left-hand side is ", leftside];
         calhamrules =
-          Append[calhamrules, Cancel[scalham[[1]]/fac] -> rightside], {j, 1,
-          Length[mats]}];
-
+          Append[calhamrules, leftside -> rightside], {j, 1, Length[mats]}];
 
           If[(CommutatorReduce/.{opts}/.Options[CayleyHamiltonRules])=!=False,
           calhamrules /. tr -> UTrace // CommutatorReduce,
