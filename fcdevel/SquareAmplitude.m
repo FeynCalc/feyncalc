@@ -96,7 +96,7 @@ SUNTrace            = MakeContext["SUNTrace"];
 ScalarProduct       = MakeContext["ScalarProduct"];
 SpinPolarizationSum = MakeContext["SpinPolarizationSum"];
 Spinor              = MakeContext["Spinor"];
-Tr                  =  MakeContext["Tr"];
+TR                  =  MakeContext["TR"];
 TrickMandelstam     = MakeContext["TrickMandelstam"];
 Write2              = MakeContext["Write2"];
 WriteOut            = MakeContext["WriteOut"];
@@ -1011,7 +1011,7 @@ If[Head[neamp] === Times,
 *)
 
 SetOptions[DiracTrace, PairCollect -> True];
-SetOptions[Tr, PairCollect -> True];
+SetOptions[TR, PairCollect -> True];
 mom4[xyx_,___] := Momentum[xyx];
 
 lastsimp[yyy_] := Block[{rel, mul = 1, yy = yyy},
@@ -1041,7 +1041,7 @@ If[rel =!= 0, print2["TRESULT = ", rel//FeynCalcForm]];
                    rel];
 
 
-TRS[xyz__] := memset[TRS[xyz] , Tr[xyz]];
+TRS[xyz__] := memset[TRS[xyz] , TR[xyz]];
 epsimp[x__] := If[!FreeQ[{x},Eps], Schouten[Plus[x], 4444], Plus[x]];
 
 If[!FreeQ[ neamp, DiracGamma],
