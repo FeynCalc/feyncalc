@@ -212,12 +212,13 @@ If[StringQ[ Global`$LoadTARCER ],
    {Global`$LoadTARCER},
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
 FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
-"Tarcer"}],IgnoreCase->True];
-  sdfj];
+"Tarcer"}],IgnoreCase->True](*What is sdfj? F.Orellana, 12/10-2003*)(*;
+  sdfj*)];
 
 If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 
 tarcerloadedflag = True;
+If[Global`$FeynCalcStartupMessages=!=False,
 If[$Notebooks ===True,
    FeynCalcCellPrint[Cell[TextData[{"Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
@@ -226,6 +227,7 @@ HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last]
   ];
 Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
+  ];
 Clear[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames];,
 
 If[$Notebooks ===True,
@@ -613,6 +615,8 @@ SetAttributes[MakeContext, HoldAll];
   MakeFeynCalcPrivateContext[x_String] := MakeFeynCalcPrivateContext[x] =
 ToExpression["HighEnergyPhysics`FeynCalc`Private`"<>x];
 
+
+
 SetAttributes[MakeContext, HoldAll];
 
 SetAttributes[SetDel, HoldAll];
@@ -777,7 +781,6 @@ End[];
 MyEndPackage[];
 
 
-
 Map[HighEnergyPhysics`FeynCalc`Private`fcDeclarePackge,
     HighEnergyPhysics`FeynCalc`Private`declarepackagelist];
 
@@ -788,6 +791,7 @@ Get["DeclareNonCommutative.m"];
 corefiles = FileNames["*.m"];
 Get/@corefiles;
 ResetDirectory[];
+
 
 
 (* take care of SubContext of the multifunpack values *)
@@ -811,7 +815,6 @@ Table[ Map[ HighEnergyPhysics`FeynCalc`Private`setsubcontext[#,
              Hold[Set][Hold[MakeContext][a], Hold[MakeContext][b]]}
 
 ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
-
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
