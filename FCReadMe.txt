@@ -17,7 +17,7 @@ RELEASE NOTES FOR FEYNCALC 4.2.0.
 INSTALLATION
 ------------------------------------------------------------------------------------
 
-Download the file HighEnergyPhysics-4.2.0.tar.gz or HighEnergyPhysics-4.2.0.zip
+Download the file HighEnergyPhysics-4.2.0.0.tar.gz or HighEnergyPhysics-4.2.0.0.zip
 (if you're using using Windows you'll probably want the zip file).
 
 Place the file in the directory mathhome/AddOns/Applications, where mathhome is the
