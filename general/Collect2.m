@@ -60,9 +60,12 @@ Collect2[ expr_, vv_List,r___Rule ] := Block[
  times},
 {fa, ih, exo, dde} = {Factoring, IsolateNames, Expanding,Denominator}/. 
                 Join[{r}, Options[Collect2]];
-If[(Dot /. {r}/.Options[Collect2]) === True,
+Which[(Dot /. {r}/.Options[Collect2]) === True,
    times = Dot,
-   times = Times
+   (Dot /. {r}/.Options[Collect2]) === False,
+   times = Times,
+   True,
+   times = (Dot /. {r}/.Options[Collect2])
   ];
 If[fa === True || fa === Factor2, factor = Factor2,
    If[fa =!= False, factor = fa; fa = True, factor = Identity];
