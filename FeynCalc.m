@@ -4,20 +4,39 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 (NoPrint["EE ", Context[]]; EndPackage[]); 
 
-(*     F E Y N C A L C 4.1.0.1 *)
+(*     F E Y N C A L C 4.1.0.2 *)
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.1.0.1";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.1.0.2";
 
 (* This software is GPL-ed, see:
     http://www.feyncalc.org/licence.txt
 *)
 
+(* Find out where HighEnergyPhysics is installed *)
+
+(* Added support for loading from ~/.Mathematica,
+   Frederik Orellana, 31/7-2000 *)
+
 If[!ValueQ[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory],
-   HighEnergyPhysics`FeynCalc`$FeynCalcDirectory = 
-   $TopDirectory <> $PathnameSeparator <> "AddOns" <>
+   If[(HighEnergyPhysics`FeynCalc`$FeynCalcDirectory =
+   FileNames[$HomeDirectory <> $PathnameSeparator <> 
+    ".Mathematica" <> $PathnameSeparator <> "*" <> $PathnameSeparator <> 
+    "AddOns" <> $PathnameSeparator <> "Applications" <> $PathnameSeparator <> 
+    "HighEnergyPhysics"]) == {}, 
+      HighEnergyPhysics`FeynCalc`$FeynCalcDirectory = 
+      $TopDirectory <> $PathnameSeparator <> "AddOns" <>
                     $PathnameSeparator <> "Applications" <> 
-                    $PathnameSeparator <> "HighEnergyPhysics";
+                    $PathnameSeparator <> "HighEnergyPhysics",
+      HighEnergyPhysics`FeynCalc`$FeynCalcDirectory =
+      HighEnergyPhysics`FeynCalc`$FeynCalcDirectory[[1]]
+   ]
  ];
+
+If[FileNames[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory] == {},
+   Print["Could not find FeynCalc installation. 
+          Quitting the Mathematica kernel."]; 
+   Quit[]; Exit[];
+  ];
 
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
   {"tarcer"};
