@@ -22,13 +22,15 @@ expanding exp. If that is needed, use DiracSimplify.";
 Begin["`Private`"];
 
 
-MakeContext[ DiracGamma, FreeQ2, LorentzIndex, Momentum, Spinor, Pair,
- PairContract];
+MakeContext[ DiracGamma, ExpandScalarProduct, 
+FreeQ2, LorentzIndex, Momentum, Spinor, Pair, PairContract];
 
 diractrick := diractrick = MakeContext["DiracTrick"];
 dotsimplify:=dotsimplify = MakeContext["DotSimplify"];
 expanding:=expanding     = MakeContext["Expanding"];
 fci := fci               = MakeContext["FeynCalcInternal"];
+
+scev[a__] := scev[a] = ExpandScalarProduct[a];
 
 DiracEquation[x_]:=(*DiracEquation[x]=*)
     dotsimplify[diraceq[x//fci], expanding -> False];
