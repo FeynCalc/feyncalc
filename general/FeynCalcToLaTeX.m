@@ -55,6 +55,10 @@ f2tex[expr_, width_:500] := Module[{r, n, w,y,z},
     z=StringReplace[StringReplace[z,"\\\\\n"->"\n\\\\\n"],"\n\n"->""];
     z = StringReplace[z,"\n\\\\ (\n"-> "\n\\\\ \n( "];
     If[StringMatchQ[z,"*\\\\"], z=StringDrop[z,-2]];
+    If[StringLength[z]>1,
+       If[StringTake[z,1]==="{" && StringTake[z,-1]==="}", 
+           z = StringDrop[StringDrop[z, 1], -1]]
+      ];
     (*z = "$\n"<>z<>"\n$";*)
     (*not always useful, comment it out for now
      CellPrint[Cell[z, "Program"]]
@@ -63,7 +67,7 @@ f2tex[expr_, width_:500] := Module[{r, n, w,y,z},
 End[]; EndPackage[];
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-If[$VeryVerbose > 0,WriteString["stdout", "StringChomp| \n "]];
+If[$VeryVerbose > 0,WriteString["stdout", "FeynCalcToLaTeX| \n "]];
 Null
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
