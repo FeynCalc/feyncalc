@@ -113,13 +113,13 @@ Default setting : \"Spence\" for VeltmanD0 and \"none\" for VeltmanExpand.";
 ExpandGammas::"usage" =
     "ExpandGammas[expr] expands the Gamma functions in expr in (dim-4) around fp to \
 order oo, where dim, fp and oo are the setting of the options  Dimension, FixPoint and \
-TaylorOrder.  ExpandGammas is also an option for VeltmanB0 and VeltmanExpand with default \
+TaylorOrder.  ExpandGammas is also an option for VeltmanB0 with default \
 setting True.";
 
 DimensionExpand::"usage" =
     "DimensionExpand[expr] expands power functions of (D-4), where D is the \
 setting of the option Dimension.  DimensionExpand is also an option of \
-VeltmanB0 and VeltmanExpand.  As such it may be set to either True, False or a symbol.  \
+VeltmanB0.  As such it may be set to either True, False or a symbol.  \
 The default is False which implies that no expansion of power functions of (D-4) is done.  \
 When set to True, the function DimensionExpand will be applied to the expressions returned \
 by the VeltmanB0's, using the options Options[DimensionExpand] apart from the Dimension, \
@@ -134,13 +134,13 @@ Leibniz rule, so if you differentiating integrals of discontinuous functions, \
 do not use IntegrateHeld..";
 
 FixPoint::"usage" =
-    "FixPoint is an option for DimensionExpand, VeltmanB0 and VeltmanExpand, \
+    "FixPoint is an option for DimensionExpand and VeltmanB0, \
 specifying the point the Taylor series is expanded around.  Default setting : \
 0.";
 
 TaylorOrder::"usage" =
-    "TaylorOrder is an option for DimensionExpand, VeltmanB0 and \
-VeltmanExpand, specifying the truncation of the relevant Taylor series.  \
+    "TaylorOrder is an option for DimensionExpand and VeltmanB0, \
+specifying the truncation of the relevant Taylor series.  \
 Default setting : 2.";
 
 LeutwylerJ::"usage" =
@@ -154,8 +154,8 @@ ExplicitLeutwylerLambda is set to True an expression containing explicit \
 dimensional infinities is returned.";
 
 ExplicitLeutwylerLambda::"usage" =
-    "ExplicitLeutwylerLambda is an option for LeutwylerLambda, LeutwylerJ0, \
-VeltmanB0 and VeltmanExpand, specifying whether the infinities arising in the \
+    "ExplicitLeutwylerLambda is an option for LeutwylerLambda, LeutwylerJ0 and \
+VeltmanB0, specifying whether the infinities arising in the \
 D-dimensional integration should be expressed explicitly in terms of D (to \
 order (2-D)/2).  Default setting : False.";
 
@@ -166,8 +166,8 @@ LeutwylerSigma::"usage" =
 set to true.";
 
 ExplicitLeutwylerSigma::"usage" =
-    "ExplicitLeutwylerSigma is an option for LeutwylerSigma, LeutwylerJBar, \
-VeltmanB0 and VeltmanExpand, specifying whether the function should be \
+    "ExplicitLeutwylerSigma is an option for LeutwylerSigma, LeutwylerJBar and \
+VeltmanB0, specifying whether the function should be \
 evaluated or not.  Default setting : False.";
 
 LeutwylerJ0::"usage" =
@@ -178,8 +178,8 @@ B250, 465-516.  It returns an algebraic expression involving LeutwylerLambda \
 when ExplicitLeutwylerJ0 is set to True.";
 
 ExplicitLeutwylerJ0::"usage" =
-    "ExplicitLeutwylerJ0 is an option for LeutwylerJ0, VeltmanB0 and \
-VeltmanExpand, specifying whether the function should be evaluated or not.  \
+    "ExplicitLeutwylerJ0 is an option for LeutwylerJ0 and VeltmanB0, \
+specifying whether the function should be evaluated or not.  \
 Default setting : False.";
 
 LeutwylerJBar::"usage" =
@@ -190,15 +190,16 @@ Physics B250, 465-516.  It returns an algebraic expression \
 when LeutwylerJBarEvaluation is not set to \"none\".";
 
 LeutwylerJBarEvaluation::"usage" =
-    "LeutwylerJBarEvaluation is an option for LeutwylerJBar, VeltmanB0 and \
-VeltmanExpand, specifying how the function should be evaluated.  \
+    "LeutwylerJBarEvaluation is an option for LeutwylerJBar and VeltmanB0, \
+specifying how the function should be evaluated.  \
 Possible settings are \"none\", \"general\", \"subthreshold\" and \"physical\".  \
 \"subthreshold\" is applicable up to m1^2+m2^2,  \"physical\" above m1^2+m2^2.  \
 \"general\" is applicable everywhere but yields a somewhat longer expression.  \
 Default setting : \"none\".";
 
 MassScale::"usage" =
-    "MassScale is an option for VeltmanExpand specifying the mass scale \
+    "MassScale is an option of VeltmanB0, LeutwylerLambda and LeutwylerJ0, \
+specifying the mass scale \
 inserted in the D-dimensional integrals used for dimensional regularization \
 of loop integrals of meson-meson scattering.  Default setting : ScaleMu.";
 
