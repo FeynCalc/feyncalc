@@ -732,7 +732,7 @@ If[LeafCount[result]<10^4,
    result//PowerSimplify//OPESumSimplify,
    result
   ]/.Power2->Power
-]/. {localSUND :> SUND, localSUNF :> SUNF}];
+]/. {localSUND :> SUND, localSUNF :> sunf}];
 (* ******************************************************************** *)
 
 feinarbeit[fey_Times, pl_List] := SelectNotFree[fey, SUNIndex|ExplicitSUNIndex]  *
