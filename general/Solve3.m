@@ -19,7 +19,7 @@ Solve3::"usage"=
 "Solve3 is equivalent to Solve, except that it works only for
 linear equations (and returns just a list)
 and uses the \"high school algorithm\" and is sometimes better than
-Solve for systems involving rational polyonials.";
+Solve for systems involving rational polynomials.";
 
 (* ------------------------------------------------------------------------ *)
 
