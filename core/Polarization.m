@@ -46,11 +46,13 @@ Conjugate[x_Pair] := (x /. {Polarization[k_,a_,in___] :>
 Protect[Conjugate];
 
 Polarization /:
-   MakeBoxes[Polarization[a_,Complex[0, 1]], TraditionalForm] :=
+(* suppress color indices in the typesetting for the moment *)
+   MakeBoxes[Polarization[a_,Complex[0, 1],___], TraditionalForm] :=
         Tbox["\[CurlyEpsilon]","(",a,")"];
 
 Polarization /:
-   MakeBoxes[Polarization[a_, Complex[0, -1]], TraditionalForm] :=
+(* suppress color indices in the typesetting for the moment *)
+   MakeBoxes[Polarization[a_, Complex[0, -1],___], TraditionalForm] :=
         Tbox[Superscript["\[CurlyEpsilon]", "*"], "(", a, ")"];
 
 End[]; EndPackage[];
