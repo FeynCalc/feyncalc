@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
+(* :History: modified Sept. 2003 *)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: QuarkGluonVertex *) 
@@ -62,8 +62,8 @@ Options[QuarkGluonVertex] = {
                             };
 QGV = QuarkGluonVertex;
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 QuarkGluonVertex[x___, i_Integer, y___] := 
 QuarkGluonVertex[x, l[i], c[i], y];
 
