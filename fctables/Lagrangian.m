@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Lagrangian*)
+(* :Title: Lagrangian *)
 
 (* :Author: Rolf Mertig *)
 
@@ -13,8 +13,13 @@
 BeginPackage["HighEnergyPhysics`fctables`Lagrangian`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Lagrangian::"usage"= "Lagrangian[\"oqu\"] gives the unpolarized quark
-operator. Lagrangian[\"oqp\"] gives the polarized quark operator.";
+Lagrangian::"usage"= "Lagrangian[\"oqu\"] gives the unpolarized OPE quark
+operator.\n
+Lagrangian[\"oqp\"] gives the polarized quark OPE operator.\n
+Lagrangian[\"ogu\"] gives the unpolarized gluon OPE operator.\n
+Lagrangian[\"ogp\"] gives the polarized gluon OPE operator.\n
+Lagrangian[\"ogd\"] gives the sigma-term part of the QCD lagrangian.\n
+Lagrangian[\"QCD\"] gives the gluon self interaction part of the QCD lagrangian.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -49,36 +54,36 @@ If[$Notebooks,
     
 na = ToString[x];
 lali = {
-"oqu" :> I^(OPEm)   (QuantumField[AntiQuarkField].
-                       DiracGamma[Momentum[OPEDelta]].
-                       (CovariantD[OPEDelta]^(OPEm-1)).
-                        QuantumField[QuarkField])
+"oqu" :> I^(OPEm)   DOT[QuantumField[AntiQuarkField],
+                       DiracGamma[Momentum[OPEDelta]],
+                       (CovariantD[OPEDelta]^(OPEm-1)),
+                        QuantumField[QuarkField]]
 ,
-"oqp" :> I^OPEm   (QuantumField[AntiQuarkField].
-                        DiracGamma[5].
-                        DiracGamma[Momentum[OPEDelta]].
-                       (CovariantD[OPEDelta]^(OPEm-1)).
+"oqp" :> I^OPEm   DOT[QuantumField[AntiQuarkField],
+                        DiracGamma[5],
+                        DiracGamma[Momentum[OPEDelta]],
+                       (CovariantD[OPEDelta]^(OPEm-1)),
                        QuantumField[QuarkField]
-                  )
+                  ]
 ,
-"ogu" :> I^(OPEm-1)/2 (FieldStrength[al, OPEDelta,a] .
-                        (CovariantD[OPEDelta,a,b]^(OPEm-2)).
+"ogu" :> I^(OPEm-1)/2 DOT[FieldStrength[al, OPEDelta,a] ,
+                        (CovariantD[OPEDelta,a,b]^(OPEm-2)),
                          FieldStrength[al, OPEDelta,b]
-                      )
+                      ]
 ,
-"ogp" :> I^OPEm/2 (LeviCivita[al, be, ga][OPEDelta] .
-         FieldStrength[be, ga, a] .
-               (CovariantD[OPEDelta, a, b]^(OPEm-2)).
+"ogp" :> I^OPEm/2 DOT[LeviCivita[al, be, ga][OPEDelta] ,
+         FieldStrength[be, ga, a] ,
+               (CovariantD[OPEDelta, a, b]^(OPEm-2)),
          FieldStrength[al, OPEDelta, b]
-                      )
+                      ]
 ,
-"ogd" :> (LeviCivita[mu,nu,la,rho] . 
-         FieldStrength[mu,nu, a] .
+"ogd" :> DOT[LeviCivita[mu,nu,la,rho] , 
+         FieldStrength[mu,nu, a] ,
          FieldStrength[la,rho,a]
-         )
+         ]
 ,
-"QCD" :> -1/4 FieldStrength[al, be, a].
-              FieldStrength[al, be, a]
+"QCD" :> -1/4 DOT[FieldStrength[al, be, a] ,
+              FieldStrength[al, be, a]]
        };
 na /. lali];
 

@@ -8,7 +8,7 @@
 (* :History: File created on 20 February '98 at 16:34 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:   Gribov-Lipatov-Altarelli-Parisi splitting functions*)
+(* :Summary:   Gribov-Lipatov-Altarelli-Parisi splitting functions *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -105,13 +105,13 @@ If[pol === 1,
      (-2 + 4*z)*Log[z]^2)
        ,
          ij === "PGQ",
-(CA*CF) . (328/9 + (280*z)/9 + 16*z*Zeta2 + (80/3 + (8*z)/3)*Log[1 - z] + 
+DOT[(CA*CF) , (328/9 + (280*z)/9 + 16*z*Zeta2 + (80/3 + (8*z)/3)*Log[1 - z] + 
      (16 - 8*z)*Log[1 - z]^2 + (32 - 104*z)*Log[z] + 
      (-32 + 16*z)*Log[1 - z]*Log[z] + (16 + 8*z)*Log[z]^2 + 
-     (32 + 16*z)*Log[z]*Log[1 + z] + (32 + 16*z)*PolyLog[2, -z]) + 
-  CF^2 . (-68 + 32*z + (-16 - 8*z)*Log[1 - z] + (-16 + 8*z)*Log[1 - z]^2 - 
-     (64 + 32*z)*Log[z] + (48 + 36*z)*Log[z] + (8 - 4*z)*Log[z]^2) + 
-  (CF*Tf) . (-128/9 - (32*z)/9 + (-64/3 + (32*z)/3)*Log[1 - z])
+     (32 + 16*z)*Log[z]*Log[1 + z] + (32 + 16*z)*PolyLog[2, -z])] + 
+  DOT[CF^2 , (-68 + 32*z + (-16 - 8*z)*Log[1 - z] + (-16 + 8*z)*Log[1 - z]^2 - 
+     (64 + 32*z)*Log[z] + (48 + 36*z)*Log[z] + (8 - 4*z)*Log[z]^2)] + 
+  DOT[(CF*Tf) , (-128/9 - (32*z)/9 + (-64/3 + (32*z)/3)*Log[1 - z])]
                    ,
          ij === "PGG",
 (CA^2)  (-148/9 + 536/9 pld[1/(1 - z)] - (388*z)/9 + 

@@ -27,7 +27,7 @@ Integrate2[1/(1-y),{y,x,1}] --> Log[1-x].";
 Begin["`Private`"];
 
 
-MakeContext[Collect2, DeltaFunction, DOT, Epsilon,Expand2,Expanding,
+MakeContext[Collect2, DeltaFunction, Epsilon,Expand2,Expanding,
             Factor2, Factoring, FreeQ2,
             Integrate3,Integrate4,MemSet,Nielsen,PowerSimplify,
             SimplifyPolyLog,
