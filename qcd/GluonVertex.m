@@ -73,7 +73,7 @@ GluonVertex[x___, i_Integer, y___] := GluonVertex[x, l[i], c[i], y];
 (* 3 - vertex *)
 GluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y___Rule] :=
 GluonVertex[{x1,x2,x3}, {x4,x5,x6}, {x7,x8,x9} , y] /;
-FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8,x9}]], Integer];
+FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8,x9}]], Integer | Rule | RuleDelayed];
 
 GluonVertex[{pi_, mui_, ai_}, {qi_, nui_, bi_},
              {ki_, lai_, ci_}, opt___Rule] := 
@@ -135,12 +135,12 @@ Block[
 (* 4 - vertex *)
 GluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, y___Rule] :=
 GluonVertex[{x1,x2}, {x3,x4}, {x5,x6}, {x7,x8}, y] /;
-FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8}]], Integer];
+FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8}]], Integer | Rule | RuleDelayed];
 
 GluonVertex[_,x1_,x2_,_, x3_,x4_,_, x5_,x6_,_, x7_,x8_,
             y___Rule] := 
 GluonVertex[{x1,x2}, {x3,x4}, {x5,x6}, {x7,x8}, y] /;
-FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8}]], Integer];
+FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8}]], Integer | Rule | RuleDelayed];
 
 GluonVertex[{p___, mui_, ai_}, {q___, nui_, bi_},
             {r___, lai_, ci_}, {s___, sii_, di_}, opt___Rule
