@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 March '98 at 20:20 *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: Leibniz Rule on products of QuantumField *)
 
@@ -39,6 +37,8 @@ EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
 Explicit := Explicit = MakeContext["Explicit"];
 FCI          = MakeContext["FeynCalcInternal"];
 FieldStrength := FieldStrength = MakeContext["FieldStrength"];
+(* this is needed : *)
+FieldDerivative = MakeContext["FieldDerivative"];
 FreeQ2       = MakeContext["FreeQ2"];
 LorentzIndex = MakeContext["LorentzIndex"];
 MemSet       = MakeContext["MemSet"];
@@ -64,10 +64,12 @@ SUNSimplify  := SUNSimplify = MakeContext["SUNSimplify"];
 
 (* ******************************************************************** *)
 
+With[{lor=LorentzIndex, dot=DOT, fd = FieldDerivative},
 Options[ExpandPartialD] =
   (*Expensive, I'm afraid... F.Orellana*)
-  {PartialDRelations -> {DOT[a___, PartialD[x_,LorentzIndex[mu_]], b___] :>
-   DOT[a, FieldDerivative[DOT[b], x, LorentzIndex[mu]]]}};
+  {PartialDRelations -> {dot[Global`a___, PartialD[Global`x_,lor[Global`mu_]], Global`b___] :>
+   dot[Global`a, fd[dot[Global`b], Global`x, lor[Global`mu]]]}}
+];
 
 (* Expand one multiplication at a time. F.Orellana *)
 ExpandPartialD[x_, opts___Rule] := Fold[ExpandPartialD1[#1, #2, opts]&, x,
