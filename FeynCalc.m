@@ -284,12 +284,14 @@ FeynCalc::"usage"=
 "For installation notes visit www.feyncalc.org\n
 For a list of availabe objects type $FeynCalcStuff, \
 which contains a list of all functions and options in StringForm. \
-You can get on-line information by ?function, e.g., ?Contract.\n
+You can get on-line information by ?function, e.g. ?Contract.\n
 There are several useful functions for short input, type $FCS for a list of \
-short commands. Then type, e.g., ?GA.\n \n
-To get rid of the start-up messages put the line \n
-$FeynCalcStartupMessages = False; \n
- into your init.m or the HighEnergyPhysics/FeynCalcConfig.m file."
+short commands. Then type, e.g., ?GA.\n\n
+To enable/disable start-up messages, put the line\n
+$FeynCalcStartupMessages = True;\n
+or\n
+$FeynCalcStartupMessages = False;\n
+ into your \"init.m\" file or into your \"FCConfig.m\" file."
 ];
 
 Li2::"usage"="Li2 is an abbreviation for the dilog function, i.e., Li2 = PolyLog[2,#]&.";
