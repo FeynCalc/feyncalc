@@ -177,7 +177,7 @@ CouplingConstant is also an option for several Feynman rule functions and for \
 CovariantD and FieldStrength.";
 
    $Multiplications = Union[$Multiplications,{Times, NM, IsoDot, IsoCross,
-                            IsoSymmetricCross}];
+                            IsoSymmetricCross, UDot}];
    
    $DistributiveFunctions = Union[$DistributiveFunctions,
    {Conjugate, ComplexConjugate, Transpose, Adjoint, UTrace, UTrace1, Iso}];

@@ -418,10 +418,11 @@ UMatrixPower::"usage" =
 non-commutative multiplication NM instead of the usual multiplication between \
 the components.";
 
-UDotPower::"usage" =
+(*Not used I think. 29/10-2003*)
+(*UDotPower::"usage" =
     "UDotPower[v,n] is the n'th power of the U-vector v, with the \
 non-commutative IsoDot instead of the usual multiplication between the \
-components.";
+components.";*)
 
 NMPower::"usage" =
     "NMPower[a,n] is the n'th power of the quantity a, with the \
@@ -934,6 +935,10 @@ IsoDot::"usage" =
   "IsoDot is the dot product used for isospin vectors. IsoDot is neither \
 orderless nor flat.";
 
+UDot::"usage" =
+  "UDot is the dot product used for vectors with head UVector. UDot is neither \
+orderless nor flat.";
+
 ExpandU::"usage" =
   "ExpandU expands IsoDot products involving UGeneratorMatrixIsoVector[opts] \
 into products containing at most one UGeneratorMatrixIsoVector[opts]. In some \
@@ -1166,9 +1171,9 @@ SUNIndex.  UMatrix is also a DataType.";
 UVector::"usage" =
     "UVector[v] is a vector of the dimension of the representation used for \
 the gauge group SU(n).  This dimension is given by the setting of the option \
-UDimension.  To multiply some UMatrix[m] with UVector[v], use DOT, NOT \
-NM.  UIndicesSupply and WriteOutUmatrices will treat UVectors before a \
-UMatrix as horizontal and UVectors after a UMatrix as vertical.";
+UDimension.  To multiply some UMatrix[m] with UVector[v], use UDot.\
+  UIndicesSupply and WriteOutUmatrices will treat a UVector on the first  \
+place in a UDot product as horizontal on the last place as vertical.";
 
 UIndicesSupply::"usage" =
     "UIndicesSupply returns UMatrix[m,UIndex[n1],UIndex[n2]] and \

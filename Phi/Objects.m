@@ -1114,6 +1114,33 @@ IsoSymmetricCross[a_,
 
 
 
+
+(* The UDot product: *)
+
+
+(* Zero and one-elements, etc.: *)
+
+UDot[0, a_] := 0;
+UDot[a_, 0] := 0;
+UDot[a_] /; FreeQ[a, patterns] := a;
+UDot[UVector[a__][x_], UMatrix[UIdentity, ___]] := UVector[a][x];
+UDot[UMatrix[UIdentity, ___], UVector[a__][x_]] := UVector[a][x];
+
+
+
+(* Distributivity: *)
+
+$DotDistribute = True;
+UDot[b__ + c_, d__] /; $DotDistribute := UDot[b, d] + UDot[c, d];
+UDot[a__, b__ + c_] /; $DotDistribute := UDot[a, b] + UDot[a, c];
+
+(* "Inner flatnes" *)
+
+UDot[a_, aa___, UDot[b__, c_]] := UDot[a, NM[aa, b], c];
+UDot[UDot[a_, b__], cc___, c_] := UDot[a, NM[b, cc], c];
+
+
+
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
 (* Power functions *)
@@ -1255,20 +1282,22 @@ UMatrix /: (UMatrix[UIdentity, ___]*b_ /; btui[b]) := b;
 
 (* The identity matrix dotted with a UVector is the UVector: *)
 
-Unprotect[Dot];
-fcdot[a___, HoldPattern[Times[b___, UMatrix[UIdentity, ___], bb___]],
-        c___] /; (! FreeQ[{a}, UMatrix | UVector] || !
-            FreeQ[{c}, UMatrix | UVector]) := fcdot[a, Times[b, bb], c];
-fcdot[a___, HoldPattern[NM[b___, UMatrix[UIdentity, ___], bb___]],
-        c___] /; (! FreeQ[{a}, UMatrix | UVector] || !
-            FreeQ[{c}, UMatrix | UVector]) := fcdot[a, NM[b, bb], c];
-fcdot[a___, HoldPattern[NM[b___, ba__*UMatrix[UIdentity, ___], bb___]],
-        c___] /; (! FreeQ[{a}, UMatrix | UVector] || !
-            FreeQ[{c}, UMatrix | UVector]) := fcdot[a, NM[b, ba, bb], c];
-fcdot[a___, UMatrix[UIdentity, ___],
-        c___] /; (! FreeQ[{a}, UMatrix | UVector] || !
-            FreeQ[{c}, UMatrix | UVector]) := fcdot[a, c];
-fcdot[UMatrix[UIdentity, ___], b_ /; btui[b]] := b;
+(*Changed Dot to UDot for UVectors because the flatness of Dot gives problems.
+  29/10-2003.*)
+(*Unprotect[Dot];*)
+UDot[a___, HoldPattern[Times[b___, UMatrix[UIdentity, ___], bb___]],
+        c___] /; (!FreeQ[{a}, UMatrix | UVector] ||
+            !FreeQ[{c}, UMatrix | UVector]) := UDot[a, Times[b, bb], c];
+UDot[a___, HoldPattern[NM[b___, UMatrix[UIdentity, ___], bb___]],
+        c___] /; (!FreeQ[{a}, UMatrix | UVector] ||
+            !FreeQ[{c}, UMatrix | UVector]) := UDot[a, NM[b, bb], c];
+UDot[a___, HoldPattern[NM[b___, ba__*UMatrix[UIdentity, ___], bb___]],
+        c___] /; (!FreeQ[{a}, UMatrix | UVector] ||
+            !FreeQ[{c}, UMatrix | UVector]) := UDot[a, NM[b, ba, bb], c];
+UDot[a___, UMatrix[UIdentity, ___],
+        c___] /; (!FreeQ[{a}, UMatrix | UVector] ||
+            !FreeQ[{c}, UMatrix | UVector]) := UDot[a, c];
+UDot[UMatrix[UIdentity, ___], b_ /; btui[b]] := b;
 
 
 (* Any matrix to the 0th is the identity matrix: *)
@@ -2342,7 +2371,7 @@ UTraceToFCTrace[a_,
 
 CycleUTraces[expr_, sf___] :=
     Block[{a, tmplist, sortlist, smallest},
-      expr /. UTrace1[a : (fcdot | NM)[__]] :> (tmplist = List @@ a;
+      expr /. UTrace1[a : ((*fcdot*) UDot | NM)[__]] :> (tmplist = List @@ a;
             sortlist = Sort[tmplist, sf];
             smallest = sortlist[[1]];
 
@@ -2859,7 +2888,7 @@ indicessymmcrossrule[
    IsoIndicesSupply
    would not work.
    Not really tested... *)
-freeindicesrules0 = (t:(NM|Times|fcdot))[a__][fcsuni[i_]] /;
+freeindicesrules0 = (t:(NM|Times|UDot(*fcdot*)))[a__][fcsuni[i_]] /;
                      Count[t[a], _wrap, Infinity, Heads -> True] === 1 :>
                      (t[a] /. wrap[_] :> fcsuni[i])
 
@@ -2935,7 +2964,7 @@ UIndicesSupply[a_, opts___] :=
                 m[ind, Sequence @@ OptionsSelect[m, opts, op, opt]][i, j],
               UMatrix[m_, i_uix, j_uix, opt___] :> m[i, j, opt]} /.
           If[(UIndexToSUNIndex /. Flatten[{opts}] /. Options[UIndicesSupply]),
-             uix -> fcsuni, {}] /. fcdot -> NM /. nnmm -> NM;
+             uix -> fcsuni, {}] /. (*fcdot*)UDot -> NM /. nnmm -> NM;
 
 
 
@@ -2960,7 +2989,7 @@ UIndicesSupply1[a_ /; FreeQ[a, UMatrix | UVector], ___] := a;
 (* Unnested NMs: *)
 
 UIndicesSupply1[aa_NM, optss1___] /;
-      FreeQ[List @@ aa, NM | fcdot] := (ui1 =
+      FreeQ[List @@ aa, NM | UDot(*fcdot*)] := (ui1 =
         nnmm @@ Table[(If[! FreeQ[aa[[rep]], UMatrix],
                   indexpair = Sequence[nnn[optss1], nnm[optss1]]];
                 ReplacePart[aa,
@@ -2973,16 +3002,15 @@ UIndicesSupply1[aa_NM, optss1___] /;
 
 (* Nested NMs are NMExpanded: *)
 
-UIndicesSupply1[a_NM, optss1___] /; (!FreeQ[List @@ a, NM | fcdot]) :=
+UIndicesSupply1[a_NM, optss1___] /; (!FreeQ[List @@ a, NM | UDot(*fcdot*)]) :=
     UIndicesSupply1[NMExpand[a], optss1];
 
 
 
 (* A single UMatrix or UVector: *)
 
-UIndicesSupply1[aa_, optss1___] /; (FreeQ[aa,
-            NM | fcdot] && !
-            FreeQ[aa, UVector | UMatrix]) := (indexpair =
+UIndicesSupply1[aa_, optss1___] /; (FreeQ[aa, NM | UDot(*fcdot*)] &&
+        !FreeQ[aa, UVector | UMatrix]) := (indexpair =
         Sequence[nnn[optss1], nnm[optss1]]; UIndicesCounter++;
       aa /. {UMatrix[a_, opts___] :> UMatrix[a, indexpair, opts],
           UVector[a_, opts___] :> UVector[a, indexpair[[1]], opts]});
@@ -2996,7 +3024,7 @@ UIndicesSupply[] := Sequence[];
 (* When supplying indices to a dot product, the enclosed NM product is first
 supplied with indices, then the enclosing vectors are supplied with indices: *)
 
-UIndicesSupply1[(fcdot(* | Dot*))[aa1_, aa2___,
+UIndicesSupply1[(UDot(*fcdot*)(* | Dot*))[aa1_, aa2___,
         aa3_], optss1___] /; Length[aa1] == 1 && Length[aa3] == 1 :=
     tempdot[aa1, UIndicesSupply1[NM[aa2]],
               aa3] //. {(*vbar.m.v*)
@@ -3033,7 +3061,7 @@ UIndicesSupply1[(fcdot(* | Dot*))[aa1_, aa2___,
                 d /. UVector[p1_] ->
                     p1[Flatten[
                           Cases[{c}, _uix, Infinity, Heads -> True]][[1]]],
-                e]} /. nnmm -> NM /. tempdot -> fcdot;
+                e]} /. nnmm -> NM /. tempdot -> UDot(*fcdot*);
 
                 
 UIndicesSupply1[UTrace1[aa_], opts___] :=
@@ -3586,7 +3614,7 @@ UGeneratorMatrixIsoDotFull[fcqf[Particle[p, a, b, c], nu][x], opts], x, opts] +
               x], (IsoVector[fcqf[Particle[p, a, b, c], nu], ##] & @@
                   OptionsSelect[IsoVector, opts])[x]], opts];
 
-(*Why this?? ?*)
+(*Why this??*)
 fccoupl[a_, b_, rest__][i_] :=
     fccoupl[a, b, RenormalizationState[i], rest];
     
@@ -3600,7 +3628,7 @@ fccoupl[a_, b_][i_] :=
 (* The help function fdr knows how to do multiple partial derivations and the
    product rule: *)
 
-fdr[(tim : NM | Times | fcdot)[a__, b_], {\[Nu]_}] :=
+fdr[(tim : NM | Times | fcdot | UDot)[a__, b_], {\[Nu]_}] :=
     tim[a, fdr[b, {\[Nu]}]] + tim[fdr[tim[a], {\[Nu]}], b];
     
 fdr[((ad : (Adjoint | Conjugate | Transpose))[a_]), {\[Mu]__}] :=
