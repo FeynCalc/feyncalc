@@ -30,9 +30,9 @@ Begin["`Private`"];
    
 MakeContext[Cases2, Collect2, Collecting, Epsilon,Factor2,
             Factoring, FinalSubstitutions, 
-            GammaEpsilon, GammaExpand, 
-            Nielsen,
-            OPEm, FreeQ2, Select1, Select2, SumS, SumT, Zeta2];
+            GammaEpsilon, GammaExpand, Nielsen,
+            OPEm, FreeQ2, Select1, Select2, 
+            SumS, SumT, Zeta2];
 
 SimplifyPolyLog := SimplifyPolyLog = MakeContext["SimplifyPolyLog"];
 Apart3          := Apart3 = MakeContext["Apart3"];
@@ -42,7 +42,8 @@ EulerGamma -> 0,
 *)
 Options[Series2] = {Collecting -> False,
                       Factoring -> True, FinalSubstitutions -> 
-                     {EulerGamma -> 0}, Print -> False
+                     {EulerGamma -> 0}, Print -> False,
+                      SimplifyPolyLog -> True
                    };
 
 Series2[a_, e_, n_Integer, ops___Rule] := Series2[a, {e, 0, n}, ops];
@@ -149,16 +150,19 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series2];
 
 res =  res/.finsub;
 
-If[Collecting /. {ops} /. Options[Series],
- res = 
- If[Factoring /. {ops} /. Options[Series],
-    If[$VersionNumber > 2.2, Collect[res,x,Factor2],
-                             Collect2[res,x,Factoring -> True]
-      ] ,
-    res = Collect[res,x]
-   ] /.finsub
+If[SimplifyPolyLog /. {ops} /. Options[Series2], 
+   res = SimplifyPolyLog[res]//Expand];
+
+If[Collecting /. {ops} /. Options[Series2],
+   res = 
+   If[Factoring /. {ops} /. Options[Series2],
+      If[$VersionNumber > 2.2, Collect[res,x,Factor2],
+         Collect2[res,x,Factoring -> True]
+        ],
+      res = Collect[res,x]
+     ] /.finsub 
   ];
-res
+res = res /. finsub
  ];
 
 (* THE HYPERLIST *)
