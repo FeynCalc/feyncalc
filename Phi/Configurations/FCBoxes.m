@@ -9,11 +9,11 @@
 
    Mathematica Version: 3.0 
 
-   Requirements:        FeynCalc > 3, Phi 
+   Requirements:        FeynCalc > 3, PHI 
 
    Description:         The definitions in this file modifies the
                         way QuantumFields are displayed, so that
-                        outputs of calculations with Phi look nicer.  
+                        outputs of calculations with PHI look nicer.  
    
 *)
 
@@ -37,20 +37,22 @@ MakeBoxes[ QuantumField[a_][_], TraditionalForm
 QuantumField /: 
 MakeBoxes[ QuantumField[f_, lo_[mu_,___]][_], TraditionalForm
             ] := SubscriptBox[Tbox[f](*[[1]]*), Tbox[mu]] /; 
-                   lo === LorentzIndex;
+                   lo === LorentzIndex ||
+                   lo === HighEnergyPhysics`Phi`Objects`UIndex;
 
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
                           ][_], TraditionalForm
             ] := 
 SubsuperscriptBox[Tbox[f](*[[1]]*), Tbox[lori], Tbox[suni]]/; 
-           MatchQ[lo, LorentzIndex | Momentum] && 
+           MatchQ[lo, LorentzIndex | Momentum | HighEnergyPhysics`Phi`Objects`UIndex] && 
                   (sun === SUNIndex || sun === ExplicitSUNIndex);
 
 QuantumField /: 
    MakeBoxes[ QuantumField[
     HighEnergyPhysics`FeynCalc`PartialD`PartialD[pa_], a_,
- lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex |
+ lori___HighEnergyPhysics`Phi`Objects`UIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
  suni___HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex
                           ][_],
@@ -63,7 +65,8 @@ QuantumField /:
    MakeBoxes[ QuantumField[
     HighEnergyPhysics`FeynCalc`PartialD`PartialD[pa_]^m_, a_,
  (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
- lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex |
+ lori___HighEnergyPhysics`Phi`Objects`UIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
  suni___HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex
                           ][_],
@@ -76,7 +79,8 @@ QuantumField /:
    MakeBoxes[ QuantumField[
     pa__HighEnergyPhysics`FeynCalc`PartialD`PartialD, a_,
  (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
- lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex |
+ lori___HighEnergyPhysics`Phi`Objects`UIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
  suni___HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex
                           ][_],
@@ -105,10 +109,14 @@ QuantumField /:
 (* Modified original FeynCalc definitions*)
 
 QuantumField[f___,g_/;Head[g]=!=List,{lilo___}] :=
- QuantumField@@Join[{f,g},lori/@{lilo}];
+ QuantumField@@Join[{f,g},LorentzIndex/@{lilo}];
 
 QuantumField[f___,g_/;Head[g]=!=List,{lilo___},{suli___}] :=
- QuantumField@@Join[{f,g},lori/@{lilo},SUNIndex/@{suli}];
+ QuantumField@@Join[{f,g},LorentzIndex/@{lilo},SUNIndex/@{suli}];
+
+QuantumField[f___,g_/;Head[g]=!=List,{lilo___},{suli___}, {ui___}] :=
+ QuantumField@@Join[{f,g},LorentzIndex/@{lilo},SUNIndex/@{suli},
+                          HighEnergyPhysics`Phi`Objects`UIndex/@{ui}];
 
 QuantumField[f1_QuantumField] := f1;
 
@@ -124,31 +132,34 @@ QuantumField /:
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lo_[mu_,___]], TraditionalForm
             ] := SubscriptBox[Tbox[f](*[[1]]*), Tbox[mu]] /; 
-                   lo === LorentzIndex;
+                   lo === LorentzIndex ||
+                   lo === HighEnergyPhysics`Phi`Objects`UIndex;
 
 QuantumField /:
     MakeBoxes[
       QuantumField[f_,
-        lol : ((HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___])..)],
+        lol : (((HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex|
+                 HighEnergyPhysics`Phi`Objects`UIndex)[_, ___])..)],
         TraditionalForm] := SubscriptBox[Tbox[f][[1(*, 1*)]], Tbox[lol]];
 
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
      ], TraditionalForm
  ] := SubsuperscriptBox[Tbox[f](*[[1]]*), Tbox[lori], Tbox[suni]
-        ] /; MatchQ[lo, LorentzIndex | Momentum
+        ] /; MatchQ[lo, LorentzIndex | Momentum | HighEnergyPhysics`Phi`Objects`UIndex
                ] && (sun === SUNIndex || sun === ExplicitSUNIndex);
 
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
     ][_], TraditionalForm
  ] := SubsuperscriptBox[Tbox[f](*[[1]]*), Tbox[lori], Tbox[suni]] /;
-        MatchQ[lo, LorentzIndex | Momentum] && 
+        MatchQ[lo, LorentzIndex | Momentum | HighEnergyPhysics`Phi`Objects`UIndex] && 
                     (sun === SUNIndex || sun === ExplicitSUNIndex);
 QuantumField /: 
    MakeBoxes[ QuantumField[
     HighEnergyPhysics`FeynCalc`PartialD`PartialD[pa_], a_,
- lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex |
+ lori___HighEnergyPhysics`Phi`Objects`UIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
  suni___HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex
                           ],
@@ -161,7 +172,8 @@ QuantumField /:
    MakeBoxes[ QuantumField[
     HighEnergyPhysics`FeynCalc`PartialD`PartialD[pa_]^m_, a_,
  (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
- lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex |
+ lori___HighEnergyPhysics`Phi`Objects`UIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
  suni___HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex
                           ],
@@ -174,7 +186,8 @@ QuantumField /:
    MakeBoxes[ QuantumField[
     pa__HighEnergyPhysics`FeynCalc`PartialD`PartialD, a_,
  (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
- lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex |
+ lori___HighEnergyPhysics`Phi`Objects`UIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex |
  suni___HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`ExplicitSUNIndex
                           ],
@@ -196,6 +209,11 @@ QuantumField[ders___PartialD,a__, lors___LorentzIndex,
       iis___SUNIndex|iis___ExplicitSUNIndex][
       isosp_SUNIndex|isosp_ExplicitSUNIndex]:=
   QuantumField[ders,a,lors,isosp,iis];
+
+QuantumField[
+ders___PartialD, a__, lors___LorentzIndex,
+        iis___SUNIndex|iis___ExplicitSUNIndex][ui_UIndex] :=
+    QuantumField[ders, a, lors, iis, ui];
 
 HighEnergyPhysics`Phi`Objects`Private`setLeftRightComponents;
 
