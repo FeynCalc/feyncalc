@@ -23,8 +23,6 @@ LeftRightPartialD[z] (and LeftRightPartialD2[z]).";
 
 Begin["`Private`"];
    
-
-DOT          = MakeContext["DOT"];
 FreeQ2       = MakeContext["FreeQ2"];
 OPESum       = MakeContext["OPESum"];
 LeftPartialD  = MakeContext["LeftPartialD"];
@@ -42,7 +40,8 @@ leftr2 =
 If[FreeQ2[x, {LeftRightPartialD, leftr2}], 
    x,
    x /. { LeftRightPartialD[a_]^n_Integer :>
-          1/2^n (DOT @@ Table[(RightPartialD[a] - LeftPartialD[a]), {j, n}])
+          1/2^n ((*DOT*)(*Change to allow any mltiplication. F.Orellana, 24/2-2003.*)
+          Sequence @@ Table[(RightPartialD[a] - LeftPartialD[a]), {j, n}])
         } /. 
         { LeftRightPartialD2[a_]^n_Integer :>
                 (DOT @@ Table[(RightPartialD[a] + LeftPartialD[a]), {j, n}])
