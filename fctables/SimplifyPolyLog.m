@@ -41,7 +41,7 @@ logf[su_] := logf[su] =
 li2f[n_,su_] := li2f[n,su] =
   If[FreeQ[su,Plus], PolyLog[n,su],
                      PolyLog[n,Factor2[Cancel[Factor2[su]]]]];
-Expand2[y/.Zeta2->Pi^2/.loli/.simptab/.simptab/.
+Expand2[y/.Zeta2->(Pi^2/6)/.loli/.simptab/.simptab/.
         simptab/.simptab/.simptab/.simptab/.loli/.Pi^2->6Zeta2 , {Log,Pi}]/.
         {Pi^2 :> 6 Zeta2 , Pi^3 :> Pi 6 Zeta2,
          Log[4]:> 2 Log[2],Log[8] :> 3 Log[2] , Log[16] :> 4 Log[2],
