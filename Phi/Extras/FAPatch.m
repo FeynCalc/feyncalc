@@ -149,7 +149,8 @@ FAPatch[opts___Rule] := (
 
 (*Check that files are there*)
 
-If[StringQ[$FeynArtsDirectory] =!= True, Return[]];
+If[StringQ[$FeynArtsDirectory] =!= True, $ok = False];
+If[!checkok, Return[]];
 If[FileNames["FeynArts.m", $FeynArtsDirectory] === {}, $ok = False];
 If[FileNames["Setup.m", $FeynArtsDirectory] === {}, $ok = False];
 If[!checkok, Return[]];
