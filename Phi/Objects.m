@@ -3951,7 +3951,9 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
     CNb3 -> CovariantNabla} /.
 
     {Particle[pa_] -> Particle[pa, ar, br, cr],
-    ParticleMass[pa_] -> ParticleMass[pa, ar, br, cr],
+    ParticleMass[pa__?(! MatchQ[#,
+     _RenormalizationState | _RenormalizationScheme | _ExpansionState] &)] ->
+    ParticleMass[pa, ar, br, cr],
     DecayConstant[pa_] -> DecayConstant[pa, ar, br, cr],
     fccoupl[pa_] -> fccoupl[pa, ar, br, cr]} /.
 
