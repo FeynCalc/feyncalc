@@ -28,7 +28,7 @@ Options[ILimit] = {FunctionLimits -> {Log -> Log}};
 MakeContext["SmallVariable"];
 
 ILimit[exp_, lim_Rule, opts___Rule] := 
-    Block[{(*limruls, m, mm, ff, out*)}, m = lim[[1]];
+    Block[{limruls, m, mm, ff, out}, m = lim[[1]];
       limruls = 
         MapAt[( ( ( If[FreeQ[ff[##], lim[[1]]] || !FreeQ[out = Limit[
                                     Limit[ff[##] /.
