@@ -515,7 +515,7 @@ Begin["`Private`"]
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
-$IndexPrefix={"i","c"};
+$IndexPrefix={"li","ci"};
 
 $AchmedRoss = False;
 $BreitMaison =  False;
