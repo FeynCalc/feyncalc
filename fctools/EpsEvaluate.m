@@ -24,11 +24,12 @@ linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
 Begin["`Private`"];
 
 MakeContext[ Cases2, Eps , Expanding,
-ExpandScalarProduct, LorentzIndex, Momentum, Pair, PairContract,
+ExpandScalarProduct, FeynCalcInternal, LC, LCD, LorentzIndex, Momentum, Pair, PairContract,
 LorentzIndex, ExplicitLorentzIndex];
 
-EpsEvaluate[x_] := x /; FreeQ[x,Eps];     (*EpsEvaluatedef*)
-EpsEvaluate[x_] := Block[{nx,cx, tx, rud},
+EpsEvaluate[x_] := x /; FreeQ2[x,{LC,LCD,Eps}];     (*EpsEvaluatedef*)
+EpsEvaluate[ix_] := Block[{x = ix, nx,cx, tx, rud},
+ x = FeynCalcInternal[ix];
  If[LeafCount[x] < 1000,    x//.Eps->Epsev,
     cx = Cases2[x, Eps];
     tx = Dispatch[Thread[rud[cx, cx//.Eps->Epsev]] /. rud->RuleDelayed];
