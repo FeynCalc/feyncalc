@@ -183,6 +183,11 @@ FeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
 Global`AMP=
 *)
             (
+(* WARNING (Rolf Mertig, March 19th 2004: 
+           This Nf-substitution is probably not quite right for 2-loops in certain cases ...
+           Just take this as a working idea.
+           I will look into this further
+*) 
              amp /. MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy] ] /.
                     G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
                     Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
