@@ -145,10 +145,7 @@ Appearance[iii_]  := ToString[iii];
   is just ParticleMass[PseudoScalar[2][i]] for i!=0.
 *)
 
-HighEnergyPhysics`Phi`Couplings`FAParticleMass::Usage=
-"FAParticleMass is a function used internally by Phi"
-
-HighEnergyPhysics`Phi`Couplings`FAParticleMass[(a:$ParticleHeads)[i_]]:=
+FAParticleMass[(a:$ParticleHeads)[i_]]:=
   ParticleMass[a[i],##]&@@(
       a[i]/.$PropagatorMassesStates/.(aa:$ParticleHeads)[_]->{});
 
@@ -187,8 +184,8 @@ descr[(a:$VectorHeads)[i_]]:=
           SelfConjugate ->
           If[MemberQ[
           {True,False},SelfConjugation[a[i]]],SelfConjugation[a[i]],True], 
-                FAIndices -> isovars[a[i]],
-                Mass -> HighEnergyPhysics`Phi`Couplings`FAParticleMass[a[i]], 
+                Indices -> isovars[a[i]],
+                Mass -> FAParticleMass[a[i]], 
                 PropagatorLabel -> (*We use that Particle[aN][0]=Particle[a[N]]. For i=!=0 FALabel definitions must be modified*)
                 ComposedChar[Sequence@@Join[{FALabel[Particle[a[i]][[1]],i]},
                 isovars[a[i]]]], 
@@ -202,8 +199,8 @@ descr[(a:$FermionHeads)[i_]]:=
           SelfConjugate ->
           If[MemberQ[
           {True,False},SelfConjugation[a[i]]],SelfConjugation[a[i]],False], 
-                FAIndices -> isovars[a[i]], 
-                Mass -> HighEnergyPhysics`Phi`Couplings`FAParticleMass[a[i]], 
+                Indices -> isovars[a[i]], 
+                Mass -> FAParticleMass[a[i]], 
                 PropagatorLabel -> 
                 ComposedChar[Sequence@@Join[{FALabel[Particle[a[i]][[1]],i]},
                 isovars[a[i]]]],
@@ -218,7 +215,7 @@ descr[(a:$ScalarHeads)[i_]]:=
           SelfConjugate ->
           If[MemberQ[
           {True,False},SelfConjugation[a[i]]],SelfConjugation[a[i]],True], 
-          FAIndices -> isovars[a[i]], 
+          Indices -> isovars[a[i]], 
                 Mass -> FAParticleMass[a[i]], 
                 PropagatorLabel -> 
                 ComposedChar[Sequence@@Join[{FALabel[Particle[a[i]][[1]],i]},
@@ -233,7 +230,7 @@ descr[(a:$ScalarHeads)[i_]]:=
 (* The function descr is used to create descriptions for all particles *)
 
 M$ClassesDescription = (descr/@allfieldstot/.
-{(FAIndices->{}):>Sequence[],(MixingPartners->{}):>Sequence[],
+{(Indices->{}):>Sequence[],(MixingPartners->{}):>Sequence[],
 (InsertOnly->{}):>Sequence[]});
 
 (* ************************************************************************* *)
@@ -245,7 +242,7 @@ M$ClassesDescription = (descr/@allfieldstot/.
 *)
 
 olddir=Directory[];
-SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
+SetDirectory[$HEPDir];
 SetDirectory["HighEnergyPhysics"];
 SetDirectory["Phi"];
 SetDirectory["CouplingVectors"];

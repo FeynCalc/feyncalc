@@ -29,18 +29,7 @@ $VerticesSpecifications1:=($VerticesSpecifications/.-qu_[q__]->qu[q]);
 
 (* ****************************************************************** *)
 
-(* Two Global` symbols are introduced (FeynArts has some definitions
-   for FAFourVector) *)
-
-SetAttributes[FAMetricTensor,Orderless];
-
-FAFourVector/: 
-Times[ -1, FAFourVector[mom_, mu_] ] := 
-FAFourVector[ Expand[-mom], mu ];
-
-(* ****************************************************************** *)
-
-(* Standard definitions for all Phi particle types *)
+(* Standard definitions for all PHI particle types *)
 
 PropagatorType[$ScalarHeads]=Straight;
 PropagatorType[$VectorHeads]=Sine;
@@ -60,7 +49,7 @@ $CouplingLorentzIndicesString<>ToString[i];
 (* ****************************************************************** *)
 
 (*
-  The function HighEnergyPhysics`Phi`Couplings`GenProps[p]
+  The function GenProps[p]
   gives the propagator description for the particle type p.
   Standard definitions are used.
   Notice that the setting of $PropagatorMassesStates determines the 
@@ -70,33 +59,30 @@ $CouplingLorentzIndicesString<>ToString[i];
 
 (* The condition added to allow redifining propagators
    before loading FeynArts *)
-If[And@@((Head[HighEnergyPhysics`Phi`Couplings`GenProps[#]]===
-HighEnergyPhysics`Phi`Couplings`GenProps)&/@
+If[And@@((Head[GenProps[#]]===GenProps)&/@
 ({$ScalarHeads /. Alternatives -> Sequence})),
-HighEnergyPhysics`Phi`Couplings`GenProps[a:$ScalarHeads]:={
+GenProps[a:$ScalarHeads]:={
 AnalyticalPropagator[External][ s a[i,p] ] == 1, 
 AnalyticalPropagator[Internal][ s a[i,p] ] == 
 I*PropagatorDenominator[p,Mass[a[i]]]}];
 
-If[And@@((Head[HighEnergyPhysics`Phi`Couplings`GenProps[#]]===
-HighEnergyPhysics`Phi`Couplings`GenProps)&/@
+If[And@@((Head[GenProps[#]]===GenProps)&/@
 ({$VectorHeads /. Alternatives -> Sequence})),
-HighEnergyPhysics`Phi`Couplings`GenProps[a:$VectorHeads]:={
+GenProps[a:$VectorHeads]:={
 AnalyticalPropagator[External][ s a[i, mom, {li2}] ] == 
-FAPolarizationVector[ a[i], mom, li2 ], 
+PolarizationVector[ a[i], mom, li2 ], 
 AnalyticalPropagator[Internal][ s a[i,mom,{li1}->{li2}] ] == 
 I*PropagatorDenominator[ mom , Mass[a[i]] ]*
-(-FAMetricTensor[li1, li2])}];
+(-MetricTensor[li1, li2])}];
 
-If[And@@((Head[HighEnergyPhysics`Phi`Couplings`GenProps[#]]===
-HighEnergyPhysics`Phi`Couplings`GenProps)&/@
+If[And@@((Head[GenProps[#]]===GenProps)&/@
 ({$FermionHeads /. Alternatives -> Sequence})),
-HighEnergyPhysics`Phi`Couplings`GenProps[a:$FermionHeads]:={
+GenProps[a:$FermionHeads]:={
 AnalyticalPropagator[External][ s a[i, mom] ] == 
-FANonCommutative[ 
+NonCommutative[ 
 DiracSpinor[ -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ], 
 AnalyticalPropagator[Internal][ s a[i,mom] ] == 
-FANonCommutative[ DiracGamma[ -mom ] + Mass[a[i]] ]*
+NonCommutative[ DiracGamma[ -mom ] + Mass[a[i]] ]*
 I*PropagatorDenominator[ mom , Mass[a[i]] ]}];
 
 (* ****************************************************************** *)
@@ -111,11 +97,10 @@ Flatten[Transpose[Transpose[
 $VerticesSpecifications1][[1]]/.Rule->List][[2]]],
 If[Length[$MixingFields]>0,Transpose[$MixingFields/.Rule->List][[1]],{}]]];
 
-(* The function HighEnergyPhysics`Phi`Couplings`GenProps is used to
-   create propagator definitions for all particle types *)
+(* The function GenProps is used to create propagator definitions
+   for all particle types *)
 
-M$GenericPropagators =
-  Flatten[HighEnergyPhysics`Phi`Couplings`GenProps/@allfields];
+M$GenericPropagators = Flatten[GenProps/@allfields];
 
 (* ****************************************************************** *)
 
@@ -154,7 +139,7 @@ listrepl[{aa___,PerturbationOrder->b_List,bb___},nn_Integer] :=
 
 (
 olddir=Directory[];
-SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
+SetDirectory[$HEPDir];
 SetDirectory["HighEnergyPhysics"];
 SetDirectory["Phi"];
 SetDirectory["CouplingVectors"];
@@ -230,24 +215,24 @@ M$GenericCouplings  =
 
 M$FermionFlipRule[ 1->2, 2->1, ___ ] =
 {
-  FANonCommutative[ DiracGamma[li_],ChiralityProjector[ 1]] :>
-  - FANonCommutative[ DiracGamma[li], ChiralityProjector[-1] ],
-  FANonCommutative[ DiracGamma[li_],ChiralityProjector[-1]] :>
-  - FANonCommutative[ DiracGamma[li], ChiralityProjector[ 1] ]
+  NonCommutative[ DiracGamma[li_],ChiralityProjector[ 1]] :>
+  - NonCommutative[ DiracGamma[li], ChiralityProjector[-1] ],
+  NonCommutative[ DiracGamma[li_],ChiralityProjector[-1]] :>
+  - NonCommutative[ DiracGamma[li], ChiralityProjector[ 1] ]
 };
 
 (* ****************************************************************** *)
 
 M$LastGenericRules = {
 (* Outgoing vector bosons: throw away signs of momenta *)
-FAPolarizationVector[
+PolarizationVector[
 p_, _. k:(FourMomentum[ Outgoing, i_Integer ]), li_ ] :> 
-Conjugate[FAPolarizationVector][ p, k, li ] ,
+Conjugate[PolarizationVector][ p, k, li ] ,
 
 (* for the case of self-energies *)
-FAPolarizationVector[
+PolarizationVector[
 p_, k:(- FourMomentum[ Incoming, 1 ]), li_ ] :> 
-Conjugate[FAPolarizationVector][ p, k, li ],
+Conjugate[PolarizationVector][ p, k, li ],
 
 (* relicts of the truncation of spinors: *)
    
