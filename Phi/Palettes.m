@@ -1,21 +1,17 @@
 (* Palettes *)
 
-(* Palettes for Phi *)
+(* Palettes for PHI *)
 
 (* Author:  Frederik Orellana, fjob@cabocomm.dk
 
-   Date:  1/8-2000
+   Creation date:  1/8-2000
    
-   Rewritten 22/9-2000
+   Rewritten: 22/9-2000
 
-   Context: HighEnergyPhysics`Phi`Palettes`
-
-   Package version:  1.2
-
-   Mathematica version:  4.0 *)
+   Context: HighEnergyPhysics`Phi`Palettes` *)
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-m
+
 BeginPackage[
     "HighEnergyPhysics`Phi`Palettes`", {"HighEnergyPhysics`Phi`", 
     "HighEnergyPhysics`FeynCalc`", "HighEnergyPhysics`Phi`Objects`"}];

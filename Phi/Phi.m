@@ -1,16 +1,16 @@
 (* ******************************************************** *)
 (*                                                          *)
-(*                          Phi                             *)
+(*                          PHI                             *)
 (*                                                          *)
 (*                    Phenomenology of                      *)
-(*                 hadronic interactions                    *)
+(*                 Hadronic Interactions                    *)
 (*                                                          *)
 (* ******************************************************** *)
 
 
 (* ******************************************************** *)
 
-(* Title:    Phi *)
+(* Title:    PHI *)
 
 (* Author:   Frederik Orellana (fjob@cabocomm.dk) *)
 
@@ -24,7 +24,8 @@
              waves, Mandelstam variables, dispersion
              relations. *)
 
-(* History:  Version 1.2 May 2001
+(* History:  Version 1.3 March 2003
+             Version 1.2 May 2001
              Version 1.1 February 1999 *)
 
 (* Contexts: HighEnergyPhysics`Phi`,
@@ -35,9 +36,9 @@
              HighEnergyPhysics`Phi`Utilities`,
              HighEnergyPhysics`Phi`Palettes`. *)
 
-(* Package Version 1.2 *)
+(* Package Version 1.3 *)
 
-(* Mathematica Version 4.0 *)
+(* Mathematica Version >=3 *)
 
 (* ******************************************************** *)
 
@@ -87,47 +88,47 @@ BeginPackage["HighEnergyPhysics`Phi`"];
 
 $Phi::"usage" =
 "$Phi is a variable indicating whether or not Phi is loaded - it is set \
-to True when loading Phi";
+to True when loading Phi.";
 
 Global`$Configuration::"usage" =
 "$Configuration is a string variable determining which configuration is loaded \
 at startup or restart.  It can be set before loading FeynCalc, in PhiStart.m or with the \
 configurations palette.  If the palette is used for restarting, the setting \
 in PhiStart.m is overruled.  Possible values include \"ChPT2\" and \"QED\".  Default \
-value : \"None\"";
+value : \"None\".";
 
 $PaletteConfiguration::"usage" =
 "$PaletteConfiguration is a string variable set when clicking on the \
 configuration palette and overruling the setting of $Configuration.  Default \
-value : \"None\"";
+value : \"None\".";
 
 $Verboseness::"usage" =
 "$Verboseness is a variable determining how much informative output is \
 printed during calculations.  It's range is 0 (no output) to 3\
-(maximal output).  Default value : 1";
+(maximal output).  Default value : 1.";
 
 VerbosePrint::"usage" =
 "VerbosePrint[n,s], where n is an integer and s is one or more strings or expressions, \
-prints s if $Verboseness>=n";
+prints s if $Verboseness>=n.";
 
 $HEPDir::"usage" =
 "$HEPDir is a string variable specifying the full path to the parent \
 directory of the directory HighEnergyPhysics (containing Phi). It should be set \
-in the startup file First.m.  Default value : Directory[]";
+in the startup file First.m.  Default value : Directory[].";
 
 PhiSymbols::"usage" =
 "PhiSymbols[\"package\"] returns a list of symbols defined in the \
-context package";
+context package.";
 
 $PhiPackages::"usage" =
 "$PhiPackages is a list of the contexts (given as strings) of the \
 sub-packages of Phi.  Default value : {\"HighEnergyPhysics`Phi`Objects`\", \
 \"HighEnergyPhysics`Phi`Couplings`\", \"HighEnergyPhysics`Phi`Channels`\", \
 \"HighEnergyPhysics`Phi`Renormalization`\", \
-\"HighEnergyPhysics`Phi`Palettes`\"}";
+\"HighEnergyPhysics`Phi`Palettes`\"}.";
 
 $FAPatch::"usage" = "$FAPatch switches on and off checking for \
-an unpatched FeynArts installation on PHI startup.  Default value : True";
+an unpatched FeynArts installation on PHI startup.  Default value : True.";
 
 (* ************************************************************** *)
 
