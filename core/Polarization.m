@@ -1,5 +1,4 @@
 (* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: Head for polarization vectors *)
 
@@ -19,7 +18,8 @@ Momentum[ Polarization[ k, I ] ].
 With this notation transversality of polarization vectors is
 provided, i.e.  Pair[ Momentum[k],
 Momentum[ Polarization[k, I] ] ] yields 0.
-Polarization[k,-I] denotes the complex conjugate polarization.\n
+Polarization[k,-I] denotes the complex conjugate polarization 
+originating from application of the ComplexConjugate function.\n
 Polarization is also an option.
 The setting 0 denotes the unpolarized and 1 the polarized case.";
 
@@ -39,6 +39,7 @@ Polarization[k_] /;FreeQ[k,Blank|BlankSequence|BlankNullSequence] :=
 Polarization[-x_, I] := -Polarization[x,I];
 Polarization[-x_,-I] := -Polarization[x,-I];
 
+(* maybe this should go somewhere else *)
 Unprotect[Conjugate];
 Conjugate[x_Pair] := (x /. {Polarization[k_,a_,in___] :>
                             Polarization[k,Conjugate[a],in] }
