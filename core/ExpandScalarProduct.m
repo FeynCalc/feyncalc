@@ -26,6 +26,7 @@ momentum := momentum         = MakeContext["Momentum"];
 momentumexpand := momentumexpand = MakeContext["MomentumExpand"];
 sCO := sCO                   = MakeContext["PairContract"];
 pair := pair                 = MakeContext["Pair"];
+Cases2                       = MakeContext["Cases2"];
 
 Options[ExpandScalarProduct] = {fci -> True};
 
@@ -33,18 +34,27 @@ Options[ExpandScalarProduct] = {fci -> True};
 (* well, not used, so commented out. F.Orellana, 8/11-2002. *)
 (*FRH = FixedPoint[ReleaseHold, #]&;*)
 
+ExpandScalarProduct[x_, op___?OptionQ] := Block[{nx=x, pali},
+If[FreeQ[nx,pair], nx,
+   If[(fci /. {op} /. Options[ExpandScalarProduct]), nx = fci[nx]];
+(* this algorithm is much quicher on bigger expressions, maybe there should be a 
+   switch for smaller ones to not use this?
+   Changed Nov 2003, RM
+ *)
+   pali = Select[Cases2[x, pair], !FreeQ[#, lorentzindex|momentum]&];
+   If[pali =!= {}, nx = nx /. Dispatch[Thread[pali -> oldExpandScalarProduct[pali]]]];
+nx
+] ];
+
+oldExpandScalarProduct[x_,ru___Rule] :=
 (*
-(* schwachsinn *)
-ExpandScalarProduct[x_] := If[LeafCount[x]<42,
-     Expand[FixedPoint[pairexpand1,fci[x], 3]//momentumexpand ],
-            FixedPoint[pairexpand1,fci[x], 3]//momentumexpand
-                              ];
-*)
-ExpandScalarProduct[x_,ru___Rule] :=
 If[(fci /. {ru} /. Options[ExpandScalarProduct]),
    FixedPoint[pairexpand1,fci[x], 3]//momentumexpand,
-   FixedPoint[pairexpand1, x, 3]//momentumexpand
+*)
+   FixedPoint[pairexpand1, x, 3]//momentumexpand;
+(*
   ];
+*)
 
 ExpandScalarProduct[x_, y_ /;Head[y] =!= Rule] := scev[x, y];
 
