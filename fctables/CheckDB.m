@@ -12,7 +12,7 @@ BeginPackage["HighEnergyPhysics`fctables`CheckDB`",
              "HighEnergyPhysics`FeynCalc`"];
 
 CheckDB::"usage" = 
-"CheckDB[exp, fil] saves (with Put) or retrieves (with Get) exp from a file fil.
+"CheckDB[exp, fil] saves (with Put) or retrieves (with Get) exp to/from a file fil.
 It checks if the setting of the option Directory \
 is a valid directory name and if fil is a valid file name and does exist. \
 If it does, Get[fil] is executed. \
@@ -33,7 +33,7 @@ is also ignored.";
 ForceSave::"usage" = 
     "ForceSave is an option of CheckDB. Setting it to True forces the first argument to \
 be evaluated even if the file specified by the second argument exists.  \
-The expression is also saved if setting NoSave is set to False.  Default value : False.";
+The expression is also saved if NoSave is set to False.  Default value : False.";
 
 NoSave::"usage" = 
     "NoSave is an option of CheckDB. If set to True, no results will ever be saved to disk. \
