@@ -43,15 +43,20 @@ here in FCConfig.m
 *)
 
 
-(* Optional modules. By default all are loaded *)
+(* Optional modules. By default all are loaded.
+   Set to False to load somewhat faster. *)
 
 (* Global`$LoadTARCER = False; *)
 (* Global`$LoadPhi = False; *)
 (* Global`$LoadFeynArts = False; *)
 
-(* You can put the directory for your FeynArts installation here *)
+(* You can put the directory for your FeynArts installation here
+   if set to Automatic, then FeynArts on the path is loaded.
+   This is the default *)
+   
 (* HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/opt/feynarts" *)
-(* if set to Automatic, then FeynArts on the path is loaded *)
 
-(* Put this flag to False and no startup messages are printed *)
-(*Global`$FeynCalcStartupMessages = True;*)
+(* Put this flag to True to have startup messages are printed.
+   The default is False *)
+
+(* Global`$FeynCalcStartupMessages = True; *)
