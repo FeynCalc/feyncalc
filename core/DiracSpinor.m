@@ -7,17 +7,19 @@ BeginPackage["HighEnergyPhysics`FeynCalc`DiracSpinor`",
 
 DiracSpinor::"usage" =
 "DiracSpinor[p, m, ind] is a Dirac spinor for a fermion with momentum p \
-and mass m and indices ind.";
+and mass m and indices ind. DiracSpinor is the same as Spinor.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
-MakeContext[DeclareNonCommutative];
+MakeContext[DeclareNonCommutative, Spinor];
+
+DiracSpinor=Spinor;
 
 DeclareNonCommutative[DiracSpinor];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-If[$VeryVerbose > 0,WriteString["stdout", "DiracSigmaExplicit | \n "]];
+If[$VeryVerbose > 0,WriteString["stdout", "DiracSpinor| \n "]];
 Null
