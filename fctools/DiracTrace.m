@@ -72,8 +72,8 @@ DiracTrace[a___, x_,y_, z___]:=DiracTrace[a,x.y,z]/;
 
                                                (*DiracTracedef*)
 fcit[y_] := If[CheckContext["DiracSigma"],
-               FeynCalcInternal[DiracSigmaExplicit[y]],
-               FeynCalcInternal[y]
+               FeynCalcInternal[DiracSigmaExplicit[y]]//DiracGammaExpand,
+               FeynCalcInternal[y]//DiracGammaExpand
               ];
 
 fcex[ops___Rule][z_] := If[(FeynCalcExternal /. {ops} /.
