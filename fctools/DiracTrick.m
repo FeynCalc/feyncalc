@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:58 *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: contraction and simplification rules for gamma matrices *)
 
@@ -81,7 +79,7 @@ ds[x__] := memset[ds[x], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
 (* drdef *)
 
 ds[] = dr[]=1;
-dr[a___,y_ w_,b___] := dr[a, y, w, b] /; Head[y] === SUNT;
+dr[a___,y_SUNT w_,b___] := dr[a, y, w, b](* /; Head[y] === SUNT*);
 dr[a___,y_ w_,b___] := coneins[y ds[a,w,b]]/;(noncommQ[y]&&FreeQ[y,dr]);
 dr[a___,y_ ,b___]   := coneins[y ds[a,b] ] /;(noncommQ[y]&&FreeQ[y,dr]);
 
