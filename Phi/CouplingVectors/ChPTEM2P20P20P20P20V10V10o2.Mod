@@ -1,4 +1,4 @@
-{{((4*I)/3*(SUNDelta[3, I3]*SUNDelta[3, I4]*SUNDelta[I1, I2] + 
+{{(((4*I)/3)*(SUNDelta[3, I3]*SUNDelta[3, I4]*SUNDelta[I1, I2] + 
      SUNDelta[3, I2]*SUNDelta[3, I4]*SUNDelta[I1, I3] + 
      SUNDelta[3, I2]*SUNDelta[3, I3]*SUNDelta[I1, I4] + 
      SUNDelta[3, I1]*SUNDelta[3, I4]*SUNDelta[I2, I3] - 

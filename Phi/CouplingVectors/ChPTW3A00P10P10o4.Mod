@@ -1,1936 +1,1680 @@
-{{(-8*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-    CouplingConstant[ChPTW3[4], 20])/
+{{(-8*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 20]*
+    SU3D[I2, I3, k1]*SU3F[6, I1, k1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4}, 
- {(-8*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-    CouplingConstant[ChPTW3[4], 20])/
+ {(-8*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 20]*
+    SU3D[I2, I3, k1]*SU3F[6, I1, k1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4}, 
- {(-2*(24*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 8*Sqrt[3]*SU3F[6, I2, I3]*
-      SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3D[I1, k1, k2]*
-      SU3D[I3, k2, k3]*SU3F[6, I2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     12*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I2, k2]*
-      SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k3]*SU3F[I3, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I2, k2]*
-      SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     24*Sqrt[3]*SU3D[I1, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 24*I*Sqrt[3]*SU3D[I1, I3, k1]*
-      SU3F[6, I2, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     12*Sqrt[3]*SU3D[I1, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I2, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I2, k2]*SU3F[I1, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-     12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 24*SUNDelta[7, I2]*SUNDelta[I1, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     24*Sqrt[3]*SU3F[6, I2, I3]*SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 
-       1]*CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 6] + 72*SUNDelta[7, I2]*SUNDelta[I1, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 7] + 
-     36*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 8] + 6*I*SU3D[6, I3, k1]*SU3D[I1, I2, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     6*I*SU3D[6, I2, k1]*SU3D[I1, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 18*SU3D[7, I2, k1]*SU3D[I1, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     6*I*SU3D[6, I1, k1]*SU3D[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 6*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     6*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 6*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     18*I*SU3D[I1, I3, k1]*SU3F[7, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 6*SU3D[6, I3, k1]*SU3F[I1, I2, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     6*I*SU3F[6, I3, k1]*SU3F[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 6*SU3D[6, I1, k1]*SU3F[I2, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     6*I*SU3F[6, I1, k1]*SU3F[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I2, I3]*
-      SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 8*I*Sqrt[3]*SU3D[8, I1, I3]*
-      SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I1, I2]*
-      SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 16*I*Sqrt[3]*SU3D[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     12*I*Sqrt[3]*SU3D[6, I1, k1]*SU3D[I2, k2, k3]*SU3D[I3, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[I1, I3, k1]*
-      SU3D[k1, k2, k3]*SU3F[6, I2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     12*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[6, I1, k1]*
-      SU3D[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*I*Sqrt[3]*SU3D[I1, I3, k1]*SU3F[6, I2, k3]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 12*I*Sqrt[3]*SU3D[6, I3, k1]*
-      SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*I*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3D[k1, k2, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I1, k1, k2]*
-      SU3D[I2, k1, k3]*SU3F[6, I3, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 4*I*SUNDelta[6, I3]*SUNDelta[I1, I2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     4*I*SUNDelta[6, I1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 4*Sqrt[3]*SU3F[8, I1, I3]*
-      SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, k2, k3]*SU3F[I1, I2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*Sqrt[3]*SU3F[6, k2, k3]*SU3F[I1, I2, k2]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3F[6, I2, k2]*
-      SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     12*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[I1, I2, k1]*
-      SU3D[I3, k2, k3]*SU3F[6, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, k1, k3]*SU3F[I1, I2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 3*Sqrt[3]*SU3D[6, I2, k1]*
-      SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*I*Sqrt[3]*SU3D[I1, I2, k1]*SU3F[6, k1, k3]*SU3F[I3, k2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, I2, k1]*
-      SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     3*Sqrt[3]*SU3D[I1, I2, k1]*SU3D[I3, k2, k3]*SU3F[6, k1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[6, I2, k1]*
-      SU3D[I3, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I2, k2]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, k1, k2]*
-      SU3F[I1, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I2, k1]*SU3F[I3, k2, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3D[6, I2, k1]*
-      SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     I*SUNDelta[6, I3]*SUNDelta[I1, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 3*SUNDelta[7, I3]*SUNDelta[I1, I2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     2*I*Sqrt[3]*SU3D[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     2*Sqrt[3]*SU3F[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 4*Sqrt[3]*SU3F[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-     3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k1, k3]*SU3F[6, I1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-     3*I*Sqrt[3]*SU3D[I2, I3, k1]*SU3F[6, I1, k3]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k1, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     3*Sqrt[3]*SU3D[I2, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[k1, k2, k3]*
-      SU3F[6, I1, k2]*SU3F[I2, I3, k1]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, k1]*
-      SUNDelta[8, k1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     8*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 
-       1]*CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-     6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k1, k3]*SU3F[6, I1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     6*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-     6*I*Sqrt[3]*SU3D[I2, I3, k1]*SU3F[6, I1, k3]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k1, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     6*Sqrt[3]*SU3D[I2, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[k1, k2, k3]*
-      SU3F[6, I1, k2]*SU3F[I2, I3, k1]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, k1]*
-      SUNDelta[8, k1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 24*Sqrt[3]*SU3F[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 24]))/
+ {(2*((3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I3, k1]*SU3D[I1, I2, k1] + (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I3, k1]*SU3D[I1, I2, k1] - 
+     (3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I2, k1]*SU3D[I1, I3, k1] - (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] + 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I3, k1]*SU3F[I1, I2, k1] - 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I3, k1]*SU3F[I1, I2, k1] + 
+     (3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3F[6, I3, k1]*SU3F[I1, I2, k1] - (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3F[6, I3, k1]*SU3F[I1, I2, k1] - 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I2, k1]*SU3F[I1, I3, k1] + 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I2, k1]*SU3F[I1, I3, k1] - 
+     (3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3F[6, I2, k1]*SU3F[I1, I3, k1] + (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3F[6, I2, k1]*SU3F[I1, I3, k1] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I1, k1]*SU3F[I2, I3, k1] + (6*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 16]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] + 
+     (2*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SUNDelta[6, I3]*SUNDelta[I1, I2] + (2*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SUNDelta[6, I3]*SUNDelta[I1, I2] - 
+     (2*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SUNDelta[6, I2]*SUNDelta[I1, I3] - (2*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SUNDelta[6, I2]*SUNDelta[I1, I3]))/
+   (3*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
+ {(2*((-3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I3, k1]*SU3D[I1, I2, k1] - (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I3, k1]*SU3D[I1, I2, k1] + 
+     (3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I2, k1]*SU3D[I1, I3, k1] + (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] - 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I3, k1]*SU3F[I1, I2, k1] + 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I3, k1]*SU3F[I1, I2, k1] - 
+     (3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3F[6, I3, k1]*SU3F[I1, I2, k1] + (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3F[6, I3, k1]*SU3F[I1, I2, k1] + 
+     3*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I2, k1]*SU3F[I1, I3, k1] - 3*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3D[6, I2, k1]*SU3F[I1, I3, k1] + 
+     (3*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3F[6, I2, k1]*SU3F[I1, I3, k1] - (3*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SU3F[6, I2, k1]*SU3F[I1, I3, k1] - 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SU3D[6, I1, k1]*SU3F[I2, I3, k1] - (6*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 16]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] - 
+     (2*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SUNDelta[6, I3]*SUNDelta[I1, I2] - (2*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SUNDelta[6, I3]*SUNDelta[I1, I2] + 
+     (2*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 16]*
+      SUNDelta[6, I2]*SUNDelta[I1, I3] + (2*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 17]*SUNDelta[6, I2]*SUNDelta[I1, I3]))/
+   (3*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
+ {((24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I3, k1]*SU3D[I1, I2, k1] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, k1, k2]*SU3D[6, I3, k1]*
+     SU3D[I1, I2, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, k1, k2]*
+     SU3D[I1, I2, k2] - (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3D[8, I2, k2]*SU3D[I1, I3, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3D[8, I2, k1]*SU3D[I1, I3, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[6, I2, k2]*SU3D[I1, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, I2, k1]*SU3D[8, I3, k2]*SU3D[I1, k1, k2] - 
+    (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, k1]*SU3D[I2, I3, k1] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I3, k1]*SU3D[6, I1, k2]*
+     SU3D[I2, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[8, I3, k2]*
+     SU3D[I2, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, 6, k1]*SU3D[I1, I2, k2]*
+     SU3D[I3, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, 8, k1]*SU3D[I1, I2, k2]*
+     SU3D[I3, k1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[3, 6, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[I1, I3, k2]*
+     SU3F[3, I2, k1] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[3, I2, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[I1, I2, k2]*
+     SU3F[3, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, 8, k2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I1, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I1, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I1, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[I2, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I1, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[I2, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I1, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I2, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I2, k2] - 48*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 8]*
+     SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] + 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I2, k1]*SU3D[I1, k1, k2]*SU3F[6, I3, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I2, k1]*SU3D[I1, k1, k2]*SU3F[6, I3, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I1, k1]*SU3D[I2, k1, k2]*SU3F[6, I3, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I1, k1]*SU3D[I2, k1, k2]*SU3F[6, I3, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I2, k1, k2]*SU3F[3, I1, k1]*SU3F[6, I3, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I3, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I1, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I3, k2] - 
+    (72*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, I2, k1]*SU3F[3, k1, k2]*SU3F[6, I3, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I2, k1]*SU3F[3, k1, k2]*SU3F[6, I3, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I1, I3, k1]*SU3F[3, I2, k2]*SU3F[6, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[I2, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I1, k1] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[I1, I3, k2]*SU3F[8, I2, k1] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I2, k1] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I2, k1] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, I3, k1]*SU3D[I1, k1, k2]*SU3F[8, I2, k2] - 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[I1, I3, k1]*SU3F[6, k1, k2]*SU3F[8, I2, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I3, k1]*SU3D[I1, I2, k2]*SU3F[8, k1, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] + 
+    (24*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[I1, I2, k1]*SU3F[6, I3, k2]*SU3F[8, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[I1, I2, k1]*SU3F[6, I3, k2]*SU3F[8, k1, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3F[I1, I3, k1] - 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[8, I2, k2]*
+     SU3F[I1, I3, k1] + (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3F[6, I2, k1]*SU3F[I1, I3, k1] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[8, I2, k1]*SU3F[I1, I3, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3F[3, I2, k1]*SU3F[I1, I3, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[3, I2, k1]*SU3F[6, k1, k2]*SU3F[I1, I3, k2] - 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3F[8, I2, k1]*SU3F[I1, I3, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, k1, k2]*SU3F[8, I2, k1]*SU3F[I1, I3, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[6, I2, k2]*SU3F[I1, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3D[8, I3, k2]*SU3F[I1, k1, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, I3, k1]*SU3F[3, I2, k2]*SU3F[I1, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3F[6, I2, k2]*SU3F[I1, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I3, k1]*SU3F[6, I2, k2]*SU3F[I1, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[8, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[3, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[3, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, k1]*SU3F[I2, I3, k1] + (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] + 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[3, k1, k2]*SU3F[6, I1, k1]*SU3F[I2, I3, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[3, k1, k2]*SU3F[6, I1, k1]*SU3F[I2, I3, k2] - 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[6, I1, k2]*SU3F[I2, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, k1]*SU3D[8, I3, k2]*SU3F[I2, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[8, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[3, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I3, k1]*SU3F[8, I1, k2]*SU3F[I2, k1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, 6, k1]*SU3D[I1, I2, k2]*SU3F[I3, k1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, 8, k1]*SU3D[I1, I2, k2]*SU3F[I3, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I2, k1]*SU3F[3, 6, k2]*SU3F[I3, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[I1, I2, k1]*SU3F[6, 8, k2]*SU3F[I3, k1, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] + 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I2, I3]*SUNDelta[3, I1] + 72*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 6]*SU3F[6, I2, I3]*SUNDelta[3, I1] + 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] + 72*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 6]*SU3F[6, I1, I3]*SUNDelta[3, I2] - 
+    6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[3, I2] - 
+    (48*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, I2]*SUNDelta[3, I3] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[3, I3] - 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[3, I3] - 72*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 24]*SU3F[6, I1, I2]*SUNDelta[3, I3] - 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I2, I3]*SUNDelta[6, I1] + (8*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I2, I3]*SUNDelta[6, I1] - (24*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I1, I3]*SUNDelta[6, I2] + 
+    (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I1, I3]*SUNDelta[6, I2] + 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I1, I2]*SUNDelta[6, I3] - (8*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I1, I2]*SUNDelta[6, I3] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I1, I2]*SUNDelta[6, I3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[8, I1, I2]*SUNDelta[6, I3] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, I3]*SUNDelta[8, I1] - 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I2, I3]*SUNDelta[8, I1] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I3]*SUNDelta[8, I2] - 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] + 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I3]*SUNDelta[8, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] + (16*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, I2]*SUNDelta[8, I3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[8, I3] + 
+    8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[8, I3] + 24*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 24]*SU3F[6, I1, I2]*SUNDelta[8, I3] + 
+    (16*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SUNDelta[6, I3]*SUNDelta[I1, I2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, 6, I2]*SUNDelta[I1, I3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, 8, I2]*SUNDelta[I1, I3] - (8*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I2]*SUNDelta[I1, I3] - 
+    6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[3, 6, I1]*SUNDelta[I2, I3] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[3, 6, I1]*SUNDelta[I2, I3] - 
+    2*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, 8, I1]*SUNDelta[I2, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, 8, I1]*SUNDelta[I2, I3] - 
+    (8*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SUNDelta[6, I1]*SUNDelta[I2, I3])/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
- {(-48*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 24*SU3F[6, I2, I3]*SUNDelta[3, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    24*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3F[3, I3, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3F[3, I1, k2]*SU3F[I2, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 72*I*SU3D[I1, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[3, I3, k1]*SU3F[I1, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[3, I1, k1]*SU3F[I2, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 72*SU3D[3, k1, k2]*SU3D[I1, I3, k2]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3D[3, I1, k1]*SU3D[I3, k1, k2]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[I3, k1, k2]*SU3F[3, I1, k1]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[I1, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 8*Sqrt[3]*SU3F[6, I2, I3]*
-     SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I2, k2]*
-     SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I2, k2]*
-     SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    24*Sqrt[3]*SU3D[I1, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 24*I*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3F[6, I2, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*Sqrt[3]*SU3D[I1, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I2, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I2, k2]*SU3F[I1, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 48*SUNDelta[7, I2]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    72*SU3F[6, I2, I3]*SUNDelta[3, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] + 72*SU3F[6, I1, I2]*SUNDelta[3, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6] + 
-    24*Sqrt[3]*SU3F[6, I2, I3]*SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] + 144*SUNDelta[7, I2]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 7] - 
-    72*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 8] - 12*I*SU3D[6, I3, k1]*SU3D[I1, I2, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*SU3D[6, I2, k1]*SU3D[I1, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*SU3D[7, I2, k1]*SU3D[I1, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*SU3D[6, I1, k1]*SU3D[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*I*SU3D[I1, I3, k1]*SU3F[7, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[6, I3, k1]*SU3F[I1, I2, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*SU3F[6, I3, k1]*SU3F[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*SU3D[6, I1, k1]*SU3F[I2, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*SU3F[6, I1, k1]*SU3F[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 48*I*SU3D[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    24*I*SU3D[3, I2, I3]*SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I2, I3]*
-     SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 24*I*SU3D[3, I1, I3]*SUNDelta[6, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    8*I*Sqrt[3]*SU3D[8, I1, I3]*SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] - 24*I*SU3D[3, I1, I2]*
-     SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I1, I2]*
-     SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I2, k1]*SU3D[I1, k2, k3]*
-     SU3D[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*SU3D[I1, I3, k1]*SU3D[I2, k2, k3]*
-     SU3F[3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I2, k1]*SU3D[I3, k2, k3]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*I*SU3D[I1, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I2, k1]*SU3D[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I2, k1]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*I*SU3D[3, k1, k2]*SU3D[I1, I3, k2]*
-     SU3D[I2, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
-     SU3D[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*SU3D[3, k1, k2]*SU3D[I1, I3, k2]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 16*I*Sqrt[3]*SU3D[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*Sqrt[3]*SU3D[6, I1, k1]*SU3D[I2, k2, k3]*SU3D[I3, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[6, I1, k1]*
-     SU3D[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I1, I3, k1]*SU3F[6, I2, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3D[k1, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I2, k1, k3]*SU3F[6, I3, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*SUNDelta[6, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    8*I*SUNDelta[6, I1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*SU3F[3, I1, I3]*SUNDelta[6, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    4*Sqrt[3]*SU3F[8, I1, I3]*SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3F[3, I3, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 36*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3F[3, I3, k2]*SU3F[I1, I2, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[k1, k2, k3]*SU3F[3, I3, k1]*
-     SU3F[I1, I2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[I2, k1, k2]*SU3F[3, I3, k3]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[I1, I2, k1]*SU3F[3, I3, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*
-     SU3F[3, I3, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3D[I1, I2, k1]*SU3D[k1, k2, k3]*
-     SU3F[3, I3, k2]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 36*I*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[I1, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, k2, k3]*SU3F[I1, I2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3F[6, k2, k3]*SU3F[I1, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3F[6, I2, k2]*
-     SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    12*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[I1, I2, k1]*
-     SU3D[I3, k2, k3]*SU3F[6, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, k1, k3]*SU3F[I1, I2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 3*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*Sqrt[3]*SU3D[I1, I2, k1]*SU3F[6, k1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*Sqrt[3]*SU3D[I1, I2, k1]*SU3D[I3, k2, k3]*SU3F[6, k1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3D[I3, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, k1, k2]*
-     SU3F[I1, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 2*I*SUNDelta[6, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*I*SU3D[3, I3, k1]*SUNDelta[6, k1]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*SU3F[3, I3, k1]*SUNDelta[6, k1]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*SUNDelta[7, I3]*SUNDelta[I1, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 2*I*Sqrt[3]*SU3D[6, I3, k1]*
-     SUNDelta[8, k1]*SUNDelta[I1, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 2*Sqrt[3]*SU3F[6, I3, k1]*
-     SUNDelta[8, k1]*SUNDelta[I1, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    12*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 6*SU3F[6, I1, I2]*SUNDelta[3, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*SU3F[I2, I3, k2]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    9*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    9*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    18*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    18*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*I*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*SU3F[I2, I3, k1]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    4*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*I*Sqrt[3]*SU3D[I2, I3, k1]*SU3F[6, I1, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*Sqrt[3]*SU3D[I2, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[k1, k2, k3]*
-     SU3F[6, I1, k2]*SU3F[I2, I3, k1]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 6*SU3F[3, I1, k1]*SUNDelta[6, k1]*
-     SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, k1]*
-     SUNDelta[8, k1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 24*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    24*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 12*SU3F[6, I1, I2]*SUNDelta[3, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*SU3F[I2, I3, k2]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    36*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    36*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*I*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*SU3F[I2, I3, k1]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    8*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*I*Sqrt[3]*SU3D[I2, I3, k1]*SU3F[6, I1, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*Sqrt[3]*SU3D[I2, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[k1, k2, k3]*
-     SU3F[6, I1, k2]*SU3F[I2, I3, k1]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 12*SU3F[3, I1, k1]*SUNDelta[6, k1]*
-     SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, k1]*
-     SUNDelta[8, k1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 72*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24] + 
-    24*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 24])/
+ {((-12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I3, k1]*SU3D[I1, I2, k1] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[8, I3, k2]*SU3D[I1, I2, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3D[8, I3, k1]*SU3D[I1, I2, k2] + 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3D[I1, I3, k1] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, k1, k2]*SU3D[6, I2, k1]*
+     SU3D[I1, I3, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[8, k1, k2]*
+     SU3D[I1, I3, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[6, I3, k2]*
+     SU3D[I1, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, I2, k2]*
+     SU3D[I1, k1, k2] - (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[I2, I3, k1] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, 6, k1]*SU3D[I1, I3, k2]*SU3D[I2, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, 8, k1]*SU3D[I1, I3, k2]*SU3D[I2, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I2, k1]*SU3D[6, I1, k2]*SU3D[I3, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, I1, k1]*SU3D[8, I2, k2]*SU3D[I3, k1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*SU3F[3, 6, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[I1, I2, k2]*SU3F[3, I3, k1] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3F[3, I3, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3F[3, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, 8, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] - 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[6, I1, k2] - (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[6, I1, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[6, I1, k2] - (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[3, k1, k2]*
+     SU3F[6, I1, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, I3, k1]*SU3F[3, k1, k2]*
+     SU3F[6, I1, k2] - 48*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 8]*
+     SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] + 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I3, k1]*SU3D[I1, k1, k2]*SU3F[6, I2, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I3, k1]*SU3D[I1, k1, k2]*SU3F[6, I2, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I1, k1]*SU3D[I3, k1, k2]*SU3F[6, I2, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I1, k1]*SU3D[I3, k1, k2]*SU3F[6, I2, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I3, k1, k2]*SU3F[3, I1, k1]*SU3F[6, I2, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, k1, k2]*SU3F[3, I3, k1]*SU3F[6, I2, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I1, k1, k2]*SU3F[3, I3, k1]*SU3F[6, I2, k2] - 
+    (72*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I2, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I2, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I3, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I3, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I1, I2, k1]*SU3F[3, I3, k2]*
+     SU3F[6, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I3, k1, k2]*SU3F[6, I2, k2]*
+     SU3F[8, I1, k1] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[I1, I2, k2]*
+     SU3F[8, I3, k1] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[8, I3, k1] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[8, I3, k1] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[8, I3, k1] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*
+     SU3F[8, I3, k1] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*
+     SU3F[8, I3, k1] - 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[8, I3, k2] - (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I1, I2, k1]*SU3F[6, k1, k2]*
+     SU3F[8, I3, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*
+     SU3F[8, k1, k2] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[8, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[8, k1, k2] + (24*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[8, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[8, k1, k2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3F[I1, I2, k1] - 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[8, I3, k2]*SU3F[I1, I2, k1] + 
+    (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3F[6, I3, k1]*SU3F[I1, I2, k1] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[8, I3, k1]*
+     SU3F[I1, I2, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[I1, I2, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I3, k1]*SU3F[6, k1, k2]*
+     SU3F[I1, I2, k2] - (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3F[8, I3, k1]*
+     SU3F[I1, I2, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[6, k1, k2]*SU3F[8, I3, k1]*
+     SU3F[I1, I2, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[6, I3, k2]*
+     SU3F[I1, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, I2, k2]*
+     SU3F[I1, k1, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I2, k1]*SU3F[3, I3, k2]*
+     SU3F[I1, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[3, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[8, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[3, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3F[6, I3, k2]*
+     SU3F[I1, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3F[6, I3, k2]*
+     SU3F[I1, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I2, k1]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, k1]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[6, I2, k1]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k2] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3F[I2, I3, k1] - 
+    (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3F[6, I1, k1]*SU3F[I2, I3, k1] - (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] - 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[3, k1, k2]*SU3F[6, I1, k1]*
+     SU3F[I2, I3, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[3, k1, k2]*SU3F[6, I1, k1]*
+     SU3F[I2, I3, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, k1]*SU3F[8, k1, k2]*
+     SU3F[I2, I3, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, k1]*SU3F[8, k1, k2]*
+     SU3F[I2, I3, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, 6, k1]*SU3D[I1, I3, k2]*
+     SU3F[I2, k1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, 8, k1]*SU3D[I1, I3, k2]*
+     SU3F[I2, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[3, 6, k2]*
+     SU3F[I2, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, 8, k2]*
+     SU3F[I2, k1, k2] - (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*
+     SU3F[I2, k1, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*
+     SU3F[I2, k1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*
+     SU3F[I2, k1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[6, I1, k2]*
+     SU3F[I3, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[8, I2, k2]*
+     SU3F[I3, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[3, I1, k1]*SU3F[6, I2, k2]*
+     SU3F[I3, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[8, I1, k1]*SU3F[6, I2, k2]*
+     SU3F[I3, k1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[3, I1, k1]*SU3F[6, I2, k2]*
+     SU3F[I3, k1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, k1]*SU3F[8, I1, k2]*
+     SU3F[I3, k1, k2] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, I3]*SUNDelta[3, I1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I2, I3]*SUNDelta[3, I1] - (48*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, I3]*SUNDelta[3, I2] - 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[3, I2] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] + 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I2]*SUNDelta[3, I3] + 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I1, I2]*SUNDelta[3, I3] - 6*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[3, I3] - 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[3, I3] - (24*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, I3]*SUNDelta[6, I1] + 
+    (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I2, I3]*SUNDelta[6, I1] + 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I1, I3]*SUNDelta[6, I2] - (8*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I1, I3]*SUNDelta[6, I2] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I1, I3]*SUNDelta[6, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[8, I1, I3]*SUNDelta[6, I2] - (24*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I1, I2]*SUNDelta[6, I3] + 
+    (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I1, I2]*SUNDelta[6, I3] + 
+    8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I2, I3]*SUNDelta[8, I1] + 24*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 6]*SU3F[6, I2, I3]*SUNDelta[8, I1] + 
+    (16*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, I1, I3]*SUNDelta[8, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] + 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[8, I2] + 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I2]*SUNDelta[8, I3] - 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I1, I2]*SUNDelta[8, I3] + 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[8, I3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[8, I3] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, 6, I3]*SUNDelta[I1, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, 8, I3]*SUNDelta[I1, I2] - (8*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I3]*SUNDelta[I1, I2] + 
+    (16*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SUNDelta[6, I2]*SUNDelta[I1, I3] - 6*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[3, 6, I1]*SUNDelta[I2, I3] - 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[3, 6, I1]*SUNDelta[I2, I3] - 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, 8, I1]*SUNDelta[I2, I3] - 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, 8, I1]*SUNDelta[I2, I3] - (8*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I1]*SUNDelta[I2, I3])/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
- {(-48*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 24*SU3F[6, I2, I3]*SUNDelta[3, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    24*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3F[3, I3, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3F[3, I1, k2]*SU3F[I2, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 72*I*SU3D[I1, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[3, I3, k1]*SU3F[I1, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[3, I1, k1]*SU3F[I2, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 72*SU3D[3, k1, k2]*SU3D[I1, I3, k2]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3D[3, I1, k1]*SU3D[I3, k1, k2]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[I3, k1, k2]*SU3F[3, I1, k1]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[I1, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 8*Sqrt[3]*SU3F[6, I2, I3]*
-     SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I2, k2]*
-     SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I2, k2]*
-     SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    24*Sqrt[3]*SU3D[I1, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 24*I*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3F[6, I2, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*Sqrt[3]*SU3D[I1, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I2, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I2, k2]*SU3F[I1, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 72*SU3F[6, I2, I3]*SUNDelta[3, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6] - 
-    72*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] + 24*Sqrt[3]*SU3F[6, I2, I3]*
-     SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] - 72*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 8] - 
-    12*I*SU3D[6, I3, k1]*SU3D[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 48*I*SU3D[6, I2, k1]*SU3D[I1, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*SU3D[6, I1, k1]*SU3D[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    48*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3D[6, I3, k1]*SU3F[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*SU3F[6, I3, k1]*SU3F[I1, I2, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*SU3D[6, I1, k1]*SU3F[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*SU3F[6, I1, k1]*SU3F[I2, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    48*I*SU3D[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 24*I*SU3D[3, I2, I3]*SUNDelta[6, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    8*I*Sqrt[3]*SU3D[8, I2, I3]*SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] - 24*I*SU3D[3, I1, I3]*
-     SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*Sqrt[3]*SU3D[8, I1, I3]*
-     SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 24*I*SU3D[3, I1, I2]*SUNDelta[6, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    8*I*Sqrt[3]*SU3D[8, I1, I2]*SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] + 36*I*SU3D[3, I2, k1]*
-     SU3D[I1, k2, k3]*SU3D[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*SU3D[I1, I3, k1]*SU3D[I2, k2, k3]*SU3F[3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I2, k1]*SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*I*SU3D[I1, I3, k1]*SU3F[3, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I2, k1]*SU3D[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*I*SU3D[3, I2, k1]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*I*SU3D[3, k1, k2]*SU3D[I1, I3, k2]*SU3D[I2, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*I*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*SU3D[3, k1, k2]*SU3D[I1, I3, k2]*SU3F[I2, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    16*I*Sqrt[3]*SU3D[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*Sqrt[3]*SU3D[6, I1, k1]*SU3D[I2, k2, k3]*SU3D[I3, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[6, I1, k1]*
-     SU3D[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I1, I3, k1]*SU3F[6, I2, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3D[k1, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I2, k1, k3]*SU3F[6, I3, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*SUNDelta[6, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    48*I*SUNDelta[6, I2]*SUNDelta[I1, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*SUNDelta[6, I1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3F[3, I1, I3]*SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 4*Sqrt[3]*SU3F[8, I1, I3]*
-     SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[I2, k1, k2]*SU3F[3, I3, k3]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3F[3, I3, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 36*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3F[3, I3, k2]*SU3F[I1, I2, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[k1, k2, k3]*SU3F[3, I3, k1]*
-     SU3F[I1, I2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[I1, I2, k1]*SU3F[3, I3, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*
-     SU3F[3, I3, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3D[I1, I2, k1]*SU3D[k1, k2, k3]*
-     SU3F[3, I3, k2]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 36*I*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[I1, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, k2, k3]*SU3F[I1, I2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3F[6, k2, k3]*SU3F[I1, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3F[6, I2, k2]*
-     SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    12*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[I1, I2, k1]*
-     SU3D[I3, k2, k3]*SU3F[6, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, k1, k3]*SU3F[I1, I2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 3*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I2, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*Sqrt[3]*SU3D[I1, I2, k1]*SU3F[6, k1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*Sqrt[3]*SU3D[I1, I2, k1]*SU3D[I3, k2, k3]*SU3F[6, k1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3D[I3, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, k1, k2]*
-     SU3F[I1, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 4*I*SUNDelta[6, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*SU3D[3, I3, k1]*SUNDelta[6, k1]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*SU3F[3, I3, k1]*SUNDelta[6, k1]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    2*I*Sqrt[3]*SU3D[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    2*Sqrt[3]*SU3F[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 12*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    6*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*
-     SU3F[I2, I3, k2]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 9*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 9*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 18*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 18*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*I*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, I3, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 4*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*I*Sqrt[3]*SU3D[I2, I3, k1]*SU3F[6, I1, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*Sqrt[3]*SU3D[I2, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[k1, k2, k3]*
-     SU3F[6, I1, k2]*SU3F[I2, I3, k1]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 6*SU3F[3, I1, k1]*SUNDelta[6, k1]*
-     SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, k1]*
-     SUNDelta[8, k1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 24*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    24*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 12*SU3F[6, I1, I2]*SUNDelta[3, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*SU3F[I2, I3, k2]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    18*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    36*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    36*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*I*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    18*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*SU3F[I2, I3, k1]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    8*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*I*Sqrt[3]*SU3D[I2, I3, k1]*SU3F[6, I1, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*Sqrt[3]*SU3D[I2, I3, k1]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[k1, k2, k3]*
-     SU3F[6, I1, k2]*SU3F[I2, I3, k1]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 12*SU3F[3, I1, k1]*SUNDelta[6, k1]*
-     SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, k1]*
-     SUNDelta[8, k1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 72*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24] + 
-    24*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 24])/
+ {((24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I3, k1]*SU3D[I1, I2, k1] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, k1, k2]*SU3D[6, I3, k1]*
+     SU3D[I1, I2, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, k1, k2]*
+     SU3D[I1, I2, k2] - (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3D[8, I2, k2]*SU3D[I1, I3, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3D[8, I2, k1]*SU3D[I1, I3, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[6, I2, k2]*SU3D[I1, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, I2, k1]*SU3D[8, I3, k2]*SU3D[I1, k1, k2] - 
+    (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, k1]*SU3D[I2, I3, k1] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I3, k1]*SU3D[6, I1, k2]*
+     SU3D[I2, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[8, I3, k2]*
+     SU3D[I2, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, 6, k1]*SU3D[I1, I2, k2]*
+     SU3D[I3, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, 8, k1]*SU3D[I1, I2, k2]*
+     SU3D[I3, k1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[3, 6, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[I1, I3, k2]*
+     SU3F[3, I2, k1] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[3, I2, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[I1, I2, k2]*
+     SU3F[3, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, 8, k2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] + 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I1, k2] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I1, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I1, k2] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[I2, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I1, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[I2, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I1, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I2, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I2, k2] - 48*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 8]*
+     SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] + 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I2, k1]*SU3D[I1, k1, k2]*SU3F[6, I3, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I2, k1]*SU3D[I1, k1, k2]*SU3F[6, I3, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I1, k1]*SU3D[I2, k1, k2]*SU3F[6, I3, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I1, k1]*SU3D[I2, k1, k2]*SU3F[6, I3, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I2, k1, k2]*SU3F[3, I1, k1]*SU3F[6, I3, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I3, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I1, k1, k2]*SU3F[3, I2, k1]*SU3F[6, I3, k2] + 
+    (72*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, I2, k1]*SU3F[3, k1, k2]*SU3F[6, I3, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I2, k1]*SU3F[3, k1, k2]*SU3F[6, I3, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I1, I3, k1]*SU3F[3, I2, k2]*SU3F[6, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[I2, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I1, k1] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[I1, I3, k2]*SU3F[8, I2, k1] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I2, k1] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I2, k1] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, I3, k1]*SU3D[I1, k1, k2]*SU3F[8, I2, k2] - 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[I1, I3, k1]*SU3F[6, k1, k2]*SU3F[8, I2, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I3, k1]*SU3D[I1, I2, k2]*SU3F[8, k1, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] + 
+    (24*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[I1, I2, k1]*SU3F[6, I3, k2]*SU3F[8, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[I1, I2, k1]*SU3F[6, I3, k2]*SU3F[8, k1, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3F[I1, I3, k1] - 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[8, I2, k2]*
+     SU3F[I1, I3, k1] + (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3F[6, I2, k1]*SU3F[I1, I3, k1] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[8, I2, k1]*SU3F[I1, I3, k2] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3F[3, I2, k1]*SU3F[I1, I3, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[3, I2, k1]*SU3F[6, k1, k2]*SU3F[I1, I3, k2] - 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3F[8, I2, k1]*SU3F[I1, I3, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, k1, k2]*SU3F[8, I2, k1]*SU3F[I1, I3, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[6, I2, k2]*SU3F[I1, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3D[8, I3, k2]*SU3F[I1, k1, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, I3, k1]*SU3F[3, I2, k2]*SU3F[I1, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3F[6, I2, k2]*SU3F[I1, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I3, k1]*SU3F[6, I2, k2]*SU3F[I1, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[8, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[3, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[3, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, k1]*SU3F[I2, I3, k1] + (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[3, k1, k2]*SU3F[6, I1, k1]*SU3F[I2, I3, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[3, k1, k2]*SU3F[6, I1, k1]*SU3F[I2, I3, k2] - 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3D[6, I1, k2]*SU3F[I2, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, k1]*SU3D[8, I3, k2]*SU3F[I2, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      5]*SU3D[8, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[3, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I3, k1]*SU3F[8, I1, k2]*SU3F[I2, k1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, 6, k1]*SU3D[I1, I2, k2]*SU3F[I3, k1, k2] - 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, 8, k1]*SU3D[I1, I2, k2]*SU3F[I3, k1, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I2, k1]*SU3F[3, 6, k2]*SU3F[I3, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[I1, I2, k1]*SU3F[6, 8, k2]*SU3F[I3, k1, k2] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3D[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      22]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      23]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+    9*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[3, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] - 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I2, I3]*SUNDelta[3, I1] - 72*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 6]*SU3F[6, I2, I3]*SUNDelta[3, I1] - 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] - 72*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 6]*SU3F[6, I1, I3]*SUNDelta[3, I2] + 
+    6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[3, I2] + 
+    (48*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, I2]*SUNDelta[3, I3] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[3, I3] + 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[3, I3] + 72*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 24]*SU3F[6, I1, I2]*SUNDelta[3, I3] + 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I2, I3]*SUNDelta[6, I1] + (8*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I2, I3]*SUNDelta[6, I1] + (24*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I1, I3]*SUNDelta[6, I2] + 
+    (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I1, I3]*SUNDelta[6, I2] - 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I1, I2]*SUNDelta[6, I3] - (8*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I1, I2]*SUNDelta[6, I3] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I1, I2]*SUNDelta[6, I3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[8, I1, I2]*SUNDelta[6, I3] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, I3]*SUNDelta[8, I1] - 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I2, I3]*SUNDelta[8, I1] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I3]*SUNDelta[8, I2] - 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] + 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I3]*SUNDelta[8, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] + (16*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I1, I2]*SUNDelta[8, I3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[8, I3] + 
+    8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[8, I3] + 24*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 24]*SU3F[6, I1, I2]*SUNDelta[8, I3] + 
+    (16*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SUNDelta[6, I3]*SUNDelta[I1, I2] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, 6, I2]*SUNDelta[I1, I3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, 8, I2]*SUNDelta[I1, I3] - (8*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I2]*SUNDelta[I1, I3] + 
+    6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[3, 6, I1]*SUNDelta[I2, I3] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[3, 6, I1]*SUNDelta[I2, I3] - 
+    2*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, 8, I1]*SUNDelta[I2, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, 8, I1]*SUNDelta[I2, I3] - 
+    (8*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SUNDelta[6, I1]*SUNDelta[I2, I3])/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
- {(-2*(24*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I2, I3]*
-      SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3D[I1, k1, k2]*
-      SU3D[I2, k2, k3]*SU3F[6, I3, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     12*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I3, k2]*
-      SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k3]*SU3F[I2, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I3, k2]*
-      SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     24*Sqrt[3]*SU3D[I1, I2, k1]*SU3D[k1, k2, k3]*SU3F[6, I3, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 24*I*Sqrt[3]*SU3D[I1, I2, k1]*
-      SU3F[6, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-     12*Sqrt[3]*SU3D[I1, k1, k2]*SU3D[I2, k1, k3]*SU3F[6, I3, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] - 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-     12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[I2, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 5] + 24*SUNDelta[7, I3]*SUNDelta[I1, I2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-     24*Sqrt[3]*SU3F[6, I2, I3]*SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 
-       1]*CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 6] + 72*SUNDelta[7, I3]*SUNDelta[I1, I2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 7] + 
-     36*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 8] - 6*I*SU3D[6, I3, k1]*SU3D[I1, I2, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     18*SU3D[7, I3, k1]*SU3D[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 6*I*SU3D[6, I2, k1]*SU3D[I1, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     6*I*SU3D[6, I1, k1]*SU3D[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 6*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     6*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 6*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     18*I*SU3D[I1, I2, k1]*SU3F[7, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 6*SU3D[6, I2, k1]*SU3F[I1, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     6*I*SU3F[6, I2, k1]*SU3F[I1, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 6*SU3D[6, I1, k1]*SU3F[I2, I3, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     6*I*SU3F[6, I1, k1]*SU3F[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I2, I3]*
-      SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I1, I3]*
-      SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 8*I*Sqrt[3]*SU3D[8, I1, I2]*
-      SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 16*I*Sqrt[3]*SU3D[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I2, k3]*SU3F[I1, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[I1, I2, k1]*
-      SU3D[k1, k2, k3]*SU3F[6, I3, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     12*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[6, I1, k1]*
-      SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*I*Sqrt[3]*SU3D[I1, I2, k1]*SU3F[6, I3, k3]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 12*I*Sqrt[3]*SU3D[6, I2, k1]*
-      SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     12*I*Sqrt[3]*SU3D[6, I1, k1]*SU3D[I2, k1, k2]*SU3D[I3, k2, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[6, I3, k1]*
-      SU3D[I1, I2, k2]*SU3D[k1, k2, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I1, k1, k2]*
-      SU3D[I3, k1, k3]*SU3F[6, I2, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-     12*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I1, I2, k2]*SU3F[k1, k2, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 4*I*SUNDelta[6, I2]*SUNDelta[I1, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-     4*I*SUNDelta[6, I1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 9] + 4*Sqrt[3]*SU3F[8, I1, I2]*
-      SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, k2, k3]*SU3F[I1, I3, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I3, k3]*SU3F[I1, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*Sqrt[3]*SU3F[6, k2, k3]*SU3F[I1, I3, k2]*SU3F[I2, k1, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3F[6, I3, k2]*
-      SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 12*Sqrt[3]*SU3F[6, I1, k2]*
-      SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[I1, I3, k1]*
-      SU3D[I2, k2, k3]*SU3F[6, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, k1, k3]*SU3F[I1, I3, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 3*Sqrt[3]*SU3D[6, I3, k1]*
-      SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I1, I3, k1]*
-      SU3F[6, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     6*I*Sqrt[3]*SU3D[6, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     3*Sqrt[3]*SU3D[I1, I3, k1]*SU3D[I2, k2, k3]*SU3F[6, k1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[6, I3, k1]*
-      SU3D[I2, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I3, k2]*SU3F[I2, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] + 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[I2, k1, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, k1, k2]*
-      SU3F[I1, I3, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     3*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I3, k1]*SU3F[I2, k2, k3]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3D[6, I3, k1]*
-      SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     I*SUNDelta[6, I2]*SUNDelta[I1, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 21] - 3*SUNDelta[7, I2]*SUNDelta[I1, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     2*I*Sqrt[3]*SU3D[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-     2*Sqrt[3]*SU3F[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-     6*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 4*Sqrt[3]*SU3F[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-     3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] - 3*Sqrt[3]*SU3F[6, I1, k2]*
-      SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     3*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] - 3*I*Sqrt[3]*SU3D[I2, I3, k1]*
-      SU3F[6, I1, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, I3, k1]*
-      SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-     3*I*Sqrt[3]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SU3F[I2, I3, k1]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     2*Sqrt[3]*SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-     12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, I3]*
-      SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 8*Sqrt[3]*SU3F[6, I1, I2]*
-      SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-     6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*
-      SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] - 6*Sqrt[3]*SU3F[6, I1, k2]*
-      SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k1]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k1, k3]*
-      SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] - 6*I*Sqrt[3]*SU3D[I2, I3, k1]*
-      SU3F[6, I1, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     12*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, I3, k1]*
-      SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-     6*I*Sqrt[3]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SU3F[I2, I3, k1]*
-      SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-      CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-      SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     4*Sqrt[3]*SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]*
-      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-     24*Sqrt[3]*SU3F[6, I1, I2]*SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 
-       1]*CouplingConstant[ChPTW3[4], 24]))/
+ {((-12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I3, k1]*SU3D[I1, I2, k1] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[8, I3, k2]*SU3D[I1, I2, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      21]*SU3D[6, k1, k2]*SU3D[8, I3, k1]*SU3D[I1, I2, k2] + 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3D[I1, I3, k1] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, k1, k2]*SU3D[6, I2, k1]*
+     SU3D[I1, I3, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[8, k1, k2]*
+     SU3D[I1, I3, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[6, I3, k2]*
+     SU3D[I1, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, I2, k2]*
+     SU3D[I1, k1, k2] - (12*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[I2, I3, k1] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, 6, k1]*SU3D[I1, I3, k2]*SU3D[I2, k1, k2] - 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, 8, k1]*SU3D[I1, I3, k2]*SU3D[I2, k1, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I2, k1]*SU3D[6, I1, k2]*SU3D[I3, k1, k2] + 
+    (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, I1, k1]*SU3D[8, I2, k2]*SU3D[I3, k1, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*SU3F[3, 6, k2] + 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[I1, I2, k2]*SU3F[3, I3, k1] - 
+    18*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3F[3, I3, k2] - 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3F[3, k1, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, 8, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+    24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3D[I2, I3, k1]*SU3F[6, I1, k1] + 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, I1, k2] + 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, I1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, I1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[6, I1, k2] + (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[6, I1, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[6, I1, k2] + (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[3, k1, k2]*
+     SU3F[6, I1, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, I3, k1]*SU3F[3, k1, k2]*
+     SU3F[6, I1, k2] - 48*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 8]*
+     SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] + 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I3, k1]*SU3D[I1, k1, k2]*SU3F[6, I2, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I3, k1]*SU3D[I1, k1, k2]*SU3F[6, I2, k2] + 
+    36*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[3, I1, k1]*SU3D[I3, k1, k2]*SU3F[6, I2, k2] + 
+    12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[8, I1, k1]*SU3D[I3, k1, k2]*SU3F[6, I2, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I3, k1, k2]*SU3F[3, I1, k1]*SU3F[6, I2, k2] - 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, k1, k2]*SU3F[3, I3, k1]*SU3F[6, I2, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[I1, k1, k2]*SU3F[3, I3, k1]*SU3F[6, I2, k2] + 
+    (72*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3D[I1, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I2, k2] + 
+    (36*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I3, k1]*SU3F[3, k1, k2]*SU3F[6, I2, k2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I3, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[6, I3, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I1, I2, k1]*SU3F[3, I3, k2]*
+     SU3F[6, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I3, k1, k2]*SU3F[6, I2, k2]*
+     SU3F[8, I1, k1] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[I1, I2, k2]*
+     SU3F[8, I3, k1] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[8, I3, k1] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[8, I3, k1] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[8, I3, k1] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*
+     SU3F[8, I3, k1] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*
+     SU3F[8, I3, k1] - 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[8, I3, k2] - (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[I1, I2, k1]*SU3F[6, k1, k2]*
+     SU3F[8, I3, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[I1, I3, k2]*
+     SU3F[8, k1, k2] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[8, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[8, k1, k2] + (24*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[I1, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[8, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[8, k1, k2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3F[I1, I2, k1] - 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3D[6, k1, k2]*SU3D[8, I3, k2]*SU3F[I1, I2, k1] + 
+    (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3F[6, I3, k1]*SU3F[I1, I2, k1] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3D[8, I3, k1]*
+     SU3F[I1, I2, k2] - (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[I1, I2, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I3, k1]*SU3F[6, k1, k2]*
+     SU3F[I1, I2, k2] - (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, k1, k2]*SU3F[8, I3, k1]*
+     SU3F[I1, I2, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[6, k1, k2]*SU3F[8, I3, k1]*
+     SU3F[I1, I2, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[6, I3, k2]*
+     SU3F[I1, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, I2, k2]*
+     SU3F[I1, k1, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I2, k1]*SU3F[3, I3, k2]*
+     SU3F[I1, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[3, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[8, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[3, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I3, k1]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3F[6, I3, k2]*
+     SU3F[I1, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3F[6, I3, k2]*
+     SU3F[I1, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3D[6, I2, k1]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, k1]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[6, I2, k1]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k2] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3F[I2, I3, k1] - 
+    (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3F[6, I1, k1]*SU3F[I2, I3, k1] + (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I2, I3, k1] + 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[3, k1, k2]*SU3F[6, I1, k1]*
+     SU3F[I2, I3, k2] + 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[3, k1, k2]*SU3F[6, I1, k1]*
+     SU3F[I2, I3, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, k1]*SU3F[8, k1, k2]*
+     SU3F[I2, I3, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, k1]*SU3F[8, k1, k2]*
+     SU3F[I2, I3, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, 6, k1]*SU3D[I1, I3, k2]*
+     SU3F[I2, k1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, 8, k1]*SU3D[I1, I3, k2]*
+     SU3F[I2, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[3, 6, k2]*
+     SU3F[I2, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, 8, k2]*
+     SU3F[I2, k1, k2] + (9*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] - 9*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] - 18*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[3, I3, k1]*SU3F[6, I1, k2]*
+     SU3F[I2, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*
+     SU3F[I2, k1, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*
+     SU3F[I2, k1, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*
+     SU3F[I2, k1, k2] - 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3D[6, I1, k2]*
+     SU3F[I3, k1, k2] + 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[8, I2, k2]*
+     SU3F[I3, k1, k2] - (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (18*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[3, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[3, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] - (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k2] + (36*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[3, I1, k1]*SU3F[6, I2, k2]*
+     SU3F[I3, k1, k2] + (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3D[8, I1, k1]*SU3F[6, I2, k2]*
+     SU3F[I3, k1, k2] + 36*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[3, I1, k1]*SU3F[6, I2, k2]*
+     SU3F[I3, k1, k2] - 12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, k1]*SU3F[8, I1, k2]*
+     SU3F[I3, k1, k2] + 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I2, I3]*SUNDelta[3, I1] + 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I2, I3]*SUNDelta[3, I1] + (48*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, I3]*SUNDelta[3, I2] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] + 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[3, I2] + 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24]*
+     SU3F[6, I1, I3]*SUNDelta[3, I2] - 24*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I2]*SUNDelta[3, I3] - 
+    72*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I1, I2]*SUNDelta[3, I3] + 6*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[3, I3] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[3, I3] + (24*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I2, I3]*SUNDelta[6, I1] + 
+    (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I2, I3]*SUNDelta[6, I1] - 
+    (24*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[3, I1, I3]*SUNDelta[6, I2] - (8*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SU3D[8, I1, I3]*SUNDelta[6, I2] + 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, I1, I3]*SUNDelta[6, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[8, I1, I3]*SUNDelta[6, I2] + (24*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SU3D[3, I1, I2]*SUNDelta[6, I3] + 
+    (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[8, I1, I2]*SUNDelta[6, I3] + 
+    8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+     SU3F[6, I2, I3]*SUNDelta[8, I1] + 24*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 6]*SU3F[6, I2, I3]*SUNDelta[8, I1] + 
+    (16*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+      9]*SU3D[6, I1, I3]*SUNDelta[8, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] + 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[8, I2] + 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24]*
+     SU3F[6, I1, I3]*SUNDelta[8, I2] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I2]*SUNDelta[8, I3] - 
+    24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+     SU3F[6, I1, I2]*SUNDelta[8, I3] + 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[8, I3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, I1, I2]*SUNDelta[8, I3] - 12*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 21]*SU3F[3, 6, I3]*SUNDelta[I1, I2] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+     SU3F[6, 8, I3]*SUNDelta[I1, I2] - (8*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I3]*SUNDelta[I1, I2] + 
+    (16*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+     SUNDelta[6, I2]*SUNDelta[I1, I3] + 6*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 22]*SU3F[3, 6, I1]*SUNDelta[I2, I3] + 
+    12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[3, 6, I1]*SUNDelta[I2, I3] - 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, 8, I1]*SUNDelta[I2, I3] - 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+     SU3F[6, 8, I1]*SUNDelta[I2, I3] - (8*I)*CouplingConstant[ChPTW3[2], 1]*
+     CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I1]*SUNDelta[I2, I3])/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
- {(-48*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 24*SU3F[6, I2, I3]*SUNDelta[3, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    24*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3F[3, I2, k2]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3F[3, I1, k2]*SU3F[I2, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 72*I*SU3D[I1, I2, k1]*SU3F[3, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[3, I2, k1]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[3, I1, k1]*SU3F[I2, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 72*SU3D[3, k1, k2]*SU3D[I1, I2, k2]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3D[3, I1, k1]*SU3D[I2, k1, k2]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[I2, k1, k2]*SU3F[3, I1, k1]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*I*SU3D[I1, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I2, I3]*
-     SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I2, k2, k3]*SU3F[6, I3, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I3, k2]*
-     SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k3]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I3, k2]*
-     SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    24*Sqrt[3]*SU3D[I1, I2, k1]*SU3D[k1, k2, k3]*SU3F[6, I3, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 24*I*Sqrt[3]*SU3D[I1, I2, k1]*
-     SU3F[6, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*Sqrt[3]*SU3D[I1, k1, k2]*SU3D[I2, k1, k3]*SU3F[6, I3, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 48*SUNDelta[7, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    72*SU3F[6, I2, I3]*SUNDelta[3, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] + 72*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6] - 
-    24*Sqrt[3]*SU3F[6, I2, I3]*SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] + 144*SUNDelta[7, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 7] - 
-    72*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 8] + 12*I*SU3D[6, I3, k1]*SU3D[I1, I2, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[7, I3, k1]*SU3D[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*SU3D[6, I2, k1]*SU3D[I1, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*SU3D[6, I1, k1]*SU3D[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*I*SU3D[I1, I2, k1]*SU3F[7, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[6, I2, k1]*SU3F[I1, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*SU3F[6, I2, k1]*SU3F[I1, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[6, I1, k1]*SU3F[I2, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*SU3F[6, I1, k1]*SU3F[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 48*I*SU3D[6, I1, I2]*SUNDelta[3, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    24*I*SU3D[3, I2, I3]*SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I2, I3]*
-     SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 24*I*SU3D[3, I1, I3]*SUNDelta[6, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    8*I*Sqrt[3]*SU3D[8, I1, I3]*SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] + 24*I*SU3D[3, I1, I2]*
-     SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*Sqrt[3]*SU3D[8, I1, I2]*
-     SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I3, k1]*SU3D[I1, k2, k3]*
-     SU3D[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*SU3D[I1, I2, k1]*SU3D[I3, k2, k3]*
-     SU3F[3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I3, k1]*SU3D[I2, k2, k3]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I3, k1]*SU3D[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I3, k1]*SU3F[I1, k1, k3]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*I*SU3D[I1, I2, k1]*SU3F[3, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*I*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
-     SU3D[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*I*SU3D[3, k1, k2]*SU3D[I1, I2, k2]*
-     SU3D[I3, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 36*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
-     SU3F[I2, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 36*SU3D[3, k1, k2]*SU3D[I1, I2, k2]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 16*I*Sqrt[3]*SU3D[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I2, k3]*SU3F[I1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[I1, I2, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I3, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[6, I1, k1]*
-     SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I1, I2, k1]*SU3F[6, I3, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*Sqrt[3]*SU3D[6, I1, k1]*SU3D[I2, k1, k2]*SU3D[I3, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I1, I2, k2]*SU3D[k1, k2, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I2, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I1, I2, k2]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*SUNDelta[6, I2]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    8*I*SUNDelta[6, I1]*SUNDelta[I2, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*SU3F[3, I1, I2]*SUNDelta[6, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    4*Sqrt[3]*SU3F[8, I1, I2]*SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3F[3, I2, k2]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 36*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3F[3, I2, k2]*SU3F[I1, I3, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[k1, k2, k3]*SU3F[3, I2, k1]*
-     SU3F[I1, I3, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[I3, k1, k2]*SU3F[3, I2, k3]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[I1, I3, k1]*SU3F[3, I2, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*
-     SU3F[3, I2, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3D[I1, I3, k1]*SU3D[k1, k2, k3]*
-     SU3F[3, I2, k2]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 36*I*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[I1, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, k2, k3]*SU3F[I1, I3, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I3, k3]*SU3F[I1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3F[6, k2, k3]*SU3F[I1, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3F[6, I3, k2]*
-     SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 12*Sqrt[3]*SU3F[6, I1, k2]*
-     SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3D[I2, k2, k3]*SU3F[6, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, k1, k3]*SU3F[I1, I3, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 3*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3F[6, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*I*Sqrt[3]*SU3D[6, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*Sqrt[3]*SU3D[I1, I3, k1]*SU3D[I2, k2, k3]*SU3F[6, k1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I2, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, k1, k2]*
-     SU3F[I1, I3, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 2*I*SUNDelta[6, I2]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*I*SU3D[3, I2, k1]*SUNDelta[6, k1]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*SU3F[3, I2, k1]*SUNDelta[6, k1]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*SUNDelta[7, I2]*SUNDelta[I1, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 2*I*Sqrt[3]*SU3D[6, I2, k1]*
-     SUNDelta[8, k1]*SUNDelta[I1, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 2*Sqrt[3]*SU3F[6, I2, k1]*
-     SUNDelta[8, k1]*SUNDelta[I1, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    6*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 12*SU3F[6, I1, I2]*SUNDelta[3, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    9*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*SU3F[I2, I3, k2]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    9*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    18*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    9*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    18*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    9*I*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    9*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*SU3F[I2, I3, k1]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    2*Sqrt[3]*SU3F[6, I1, I3]*SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 4*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 3*Sqrt[3]*SU3F[6, I1, k2]*
-     SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 3*I*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3F[6, I1, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*I*Sqrt[3]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SU3F[I2, I3, k1]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    6*SU3F[3, I1, k1]*SUNDelta[6, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    2*Sqrt[3]*SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    24*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 12*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    24*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*
-     SU3F[I2, I3, k2]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 36*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 36*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*I*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, I3, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 8*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 6*Sqrt[3]*SU3F[6, I1, k2]*
-     SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 6*I*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3F[6, I1, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    12*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*I*Sqrt[3]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SU3F[I2, I3, k1]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    12*SU3F[3, I1, k1]*SUNDelta[6, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    4*Sqrt[3]*SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    72*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 24] + 24*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 24])/
+ {(2*((12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I3, k1]*SU3D[I1, I2, k1] + (12*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I3, k1]*SU3D[8, k1, k2]*SU3D[I1, I2, k2] - 
+     (6*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I2, k1]*SU3D[I1, I3, k1] + (3*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[8, I2, k2]*SU3D[I1, I3, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[6, k1, k2]*SU3D[8, I2, k1]*SU3D[I1, I3, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[6, I2, k1]*SU3D[8, I3, k2]*SU3D[I1, k1, k2] - 
+     (6*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3D[I2, I3, k1] - (12*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3D[8, I3, k2]*SU3D[I2, k1, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[6, 8, k1]*SU3D[I1, I2, k2]*SU3D[I3, k1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, 8, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 6*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+     12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 12*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I3, k1]*SU3D[I1, k1, k2]*SU3F[6, I2, k2] - 
+     24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 36*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 8]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 
+     12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 24*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[8, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, k1, k2]*SU3D[I1, I2, k1]*SU3F[6, I3, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[8, I2, k1]*SU3D[I1, k1, k2]*SU3F[6, I3, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[8, I1, k1]*SU3D[I2, k1, k2]*SU3F[6, I3, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[I2, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I1, k1] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[I1, I3, k2]*SU3F[8, I2, k1] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 21]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I2, k1] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I2, k1] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[8, I2, k1] + 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, I3, k1]*SU3D[I1, k1, k2]*SU3F[8, I2, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[I1, I3, k1]*SU3F[6, k1, k2]*SU3F[8, I2, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I3, k1]*SU3D[I1, I2, k2]*SU3F[8, k1, k2] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] - 
+     (24*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[I1, I2, k1]*SU3F[6, I3, k2]*SU3F[8, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3F[6, I3, k2]*SU3F[8, k1, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I2, k1]*SU3F[I1, I3, k1] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[8, I2, k2]*SU3F[I1, I3, k1] + 
+     (6*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3F[6, I2, k1]*SU3F[I1, I3, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[8, I2, k1]*SU3F[I1, I3, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[6, k1, k2]*SU3F[8, I2, k1]*SU3F[I1, I3, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3F[6, k1, k2]*SU3F[8, I2, k1]*SU3F[I1, I3, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I2, k1]*SU3D[8, I3, k2]*SU3F[I1, k1, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[8, I3, k1]*SU3F[6, I2, k2]*SU3F[I1, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[8, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3F[6, I3, k1]*SU3F[8, I2, k2]*SU3F[I1, k1, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3F[I2, I3, k1] + (6*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 9]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] + 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3D[8, I3, k2]*SU3F[I2, k1, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 23]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[8, I1, k1]*SU3F[6, I3, k2]*SU3F[I2, k1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I3, k1]*SU3F[8, I1, k2]*SU3F[I2, k1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, 8, k1]*SU3D[I1, I2, k2]*SU3F[I3, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[I1, I2, k1]*SU3F[6, 8, k2]*SU3F[I3, k1, k2] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, k1]*SU3F[8, I2, k2]*SU3F[I3, k1, k2] - 
+     (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       9]*SU3D[8, I2, I3]*SUNDelta[6, I1] - (8*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I1, I3]*SUNDelta[6, I2] + (8*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I1, I2]*SUNDelta[6, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 21]*SU3F[8, I1, I2]*SUNDelta[6, I3] + 
+     8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I2, I3]*SUNDelta[8, I1] + 24*Sqrt[3]*CouplingConstant[
+       ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*SU3F[6, I2, I3]*
+      SUNDelta[8, I1] + 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 5]*SU3F[6, I1, I3]*SUNDelta[8, I2] + 
+     24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*
+      SU3F[6, I1, I3]*SUNDelta[8, I2] - 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I3]*SUNDelta[8, I2] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, I3]*SUNDelta[8, I2] - (16*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, I2]*SUNDelta[8, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[8, I3] - 
+     8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, I2]*SUNDelta[8, I3] - 24*Sqrt[3]*CouplingConstant[
+       ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 24]*SU3F[6, I1, I2]*
+      SUNDelta[8, I3] + (8*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I3]*SUNDelta[I1, I2] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3F[6, 8, I2]*SUNDelta[I1, I3] - (4*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I2]*SUNDelta[I1, I3] + 
+     2*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, 8, I1]*SUNDelta[I2, I3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, 8, I1]*SUNDelta[I2, I3] - 
+     (4*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SUNDelta[6, I1]*SUNDelta[I2, I3]))/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}, 
- {(-48*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 24*SU3F[6, I2, I3]*SUNDelta[3, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    24*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3F[3, I2, k2]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*SU3F[3, I1, k2]*SU3F[I2, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 72*I*SU3D[I1, I2, k1]*SU3F[3, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[3, I2, k1]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[3, I1, k1]*SU3F[I2, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 72*SU3D[3, k1, k2]*SU3D[I1, I2, k2]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 36*SU3D[3, I1, k1]*SU3D[I2, k1, k2]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[I2, k1, k2]*SU3F[3, I1, k1]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 36*I*SU3D[I1, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I2, I3]*
-     SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 8*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I2, k2, k3]*SU3F[6, I3, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I3, k2]*
-     SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k3]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] + 12*Sqrt[3]*SU3F[6, I3, k2]*
-     SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    24*Sqrt[3]*SU3D[I1, I2, k1]*SU3D[k1, k2, k3]*SU3F[6, I3, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 24*I*Sqrt[3]*SU3D[I1, I2, k1]*
-     SU3F[6, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] + 
-    12*Sqrt[3]*SU3D[I1, k1, k2]*SU3D[I2, k1, k3]*SU3F[6, I3, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 12*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I3, k2]*SU3F[I1, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5] - 
-    12*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 5] - 72*SU3F[6, I2, I3]*SUNDelta[3, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6] - 
-    72*SU3F[6, I1, I3]*SUNDelta[3, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I2, I3]*
-     SUNDelta[8, I1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] - 24*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 6] - 72*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 8] + 
-    48*I*SU3D[6, I3, k1]*SU3D[I1, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*SU3D[6, I2, k1]*SU3D[I1, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*SU3D[6, I1, k1]*SU3D[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3D[I1, I3, k1]*SU3F[6, I2, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 48*SU3D[I1, I2, k1]*SU3F[6, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3D[6, I2, k1]*SU3F[I1, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*SU3F[6, I2, k1]*SU3F[I1, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3D[6, I1, k1]*SU3F[I2, I3, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*SU3F[6, I1, k1]*SU3F[I2, I3, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    48*I*SU3D[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 24*I*SU3D[3, I2, I3]*SUNDelta[6, I1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    8*I*Sqrt[3]*SU3D[8, I2, I3]*SUNDelta[6, I1]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] + 24*I*SU3D[3, I1, I3]*
-     SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 8*I*Sqrt[3]*SU3D[8, I1, I3]*
-     SUNDelta[6, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 24*I*SU3D[3, I1, I2]*SUNDelta[6, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    8*I*Sqrt[3]*SU3D[8, I1, I2]*SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] + 36*I*SU3D[3, I3, k1]*
-     SU3D[I1, k2, k3]*SU3D[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*SU3D[I1, I2, k1]*SU3D[I3, k2, k3]*SU3F[3, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I3, k1]*SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I3, k1]*SU3D[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*I*SU3D[3, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*I*SU3D[I1, I2, k1]*SU3F[3, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*I*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*I*SU3D[3, k1, k2]*SU3D[I1, I2, k2]*SU3D[I3, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    36*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    36*SU3D[3, k1, k2]*SU3D[I1, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[6, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    16*I*Sqrt[3]*SU3D[6, I1, I2]*SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 
-      1]*CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I2, k3]*SU3F[I1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I3, k1, k2]*SU3F[6, I1, k3]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[I1, I2, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I3, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*Sqrt[3]*SU3D[6, I2, k1]*SU3D[I3, k2, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*Sqrt[3]*SU3D[6, I1, k1]*
-     SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*I*Sqrt[3]*SU3D[I1, I2, k1]*SU3F[6, I3, k3]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 12*I*Sqrt[3]*SU3D[6, I2, k1]*
-     SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*I*Sqrt[3]*SU3D[6, I1, k1]*SU3D[I2, k1, k2]*SU3D[I3, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*I*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I1, I2, k2]*SU3D[k1, k2, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 12*Sqrt[3]*SU3D[I1, k1, k2]*
-     SU3D[I3, k1, k3]*SU3F[6, I2, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    12*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I1, I2, k2]*SU3F[k1, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] + 48*I*SUNDelta[6, I3]*SUNDelta[I1, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] - 
-    8*I*SUNDelta[6, I2]*SUNDelta[I1, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 9] - 8*I*SUNDelta[6, I1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9] + 
-    12*SU3F[3, I1, I2]*SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 4*Sqrt[3]*SU3F[8, I1, I2]*
-     SUNDelta[6, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[I3, k1, k2]*SU3F[3, I2, k3]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3F[3, I2, k2]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 36*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3F[3, I2, k2]*SU3F[I1, I3, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*I*SU3D[k1, k2, k3]*SU3F[3, I2, k1]*
-     SU3F[I1, I3, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[I1, I3, k1]*SU3F[3, I2, k3]*
-     SU3F[k1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 18*SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*
-     SU3F[3, I2, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*SU3D[I1, I3, k1]*SU3D[k1, k2, k3]*
-     SU3F[3, I2, k2]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 36*I*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 18*I*SU3D[I1, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3D[I3, k2, k3]*SU3F[6, I1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, k2, k3]*SU3F[I1, I3, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 3*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I3, k3]*SU3F[I1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3F[6, k2, k3]*SU3F[I1, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*Sqrt[3]*SU3F[6, I3, k2]*
-     SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 12*Sqrt[3]*SU3F[6, I1, k2]*
-     SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3D[I2, k2, k3]*SU3F[6, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, k1, k3]*SU3F[I1, I3, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 3*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I3, k3]*SU3F[I1, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I1, I3, k1]*
-     SU3F[6, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*I*Sqrt[3]*SU3D[6, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 6*I*Sqrt[3]*SU3D[I2, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    3*Sqrt[3]*SU3D[I1, I3, k1]*SU3D[I2, k2, k3]*SU3F[6, k1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 3*Sqrt[3]*SU3D[6, I3, k1]*
-     SU3D[I2, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*Sqrt[3]*SU3D[6, k1, k2]*SU3D[I1, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 12*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*Sqrt[3]*SU3D[I1, k1, k2]*SU3F[6, I3, k2]*SU3F[I2, k1, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] - 6*I*Sqrt[3]*SU3D[6, k1, k2]*
-     SU3F[I1, I3, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    6*Sqrt[3]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 21] + 4*I*SUNDelta[6, I2]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*I*SU3D[3, I2, k1]*SUNDelta[6, k1]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    6*SU3F[3, I2, k1]*SUNDelta[6, k1]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] + 
-    2*I*Sqrt[3]*SU3D[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    2*Sqrt[3]*SU3F[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21] - 
-    12*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 6*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    12*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 9*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*
-     SU3F[I2, I3, k2]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 9*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 18*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 9*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 18*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 9*I*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 9*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, I3, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 2*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 4*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 3*Sqrt[3]*SU3F[6, I1, k2]*
-     SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    3*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] - 3*I*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3F[6, I1, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    3*I*Sqrt[3]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SU3F[I2, I3, k1]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 22] + 3*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    6*SU3F[3, I1, k1]*SUNDelta[6, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] + 
-    2*Sqrt[3]*SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22] - 
-    24*SU3D[I2, I3, k1]*SU3F[6, I1, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 12*SU3F[6, I1, I3]*SUNDelta[3, I2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    24*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*
-     SU3F[I2, I3, k2]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*
-     SU3F[I3, k2, k3]*SUNDelta[6, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*I*SU3D[I2, I3, k1]*SU3F[3, k1, k3]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 36*I*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*
-     SU3F[I2, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*I*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*
-     SU3F[I3, k1, k3]*SUNDelta[6, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*SU3D[3, k1, k2]*SU3D[I2, I3, k2]*
-     SU3F[I1, k1, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 36*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 18*I*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*
-     SU3F[I1, k2, k3]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 18*I*SU3D[3, k1, k2]*SU3F[I1, k2, k3]*
-     SU3F[I2, I3, k1]*SUNDelta[6, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 4*Sqrt[3]*SU3F[6, I1, I3]*
-     SUNDelta[8, I2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 8*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*Sqrt[3]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*
-     SUNDelta[8, k1]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 6*Sqrt[3]*SU3F[6, I1, k2]*
-     SU3F[I2, I3, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k1]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    6*I*Sqrt[3]*SU3D[I2, k1, k2]*SU3F[6, I1, k3]*SU3F[I3, k1, k3]*
-     SUNDelta[8, k2]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] - 6*I*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3F[6, I1, k3]*SU3F[k1, k2, k3]*SUNDelta[8, k2]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    12*Sqrt[3]*SU3D[I2, k1, k2]*SU3D[I3, k1, k3]*SU3F[6, I1, k2]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*Sqrt[3]*SU3D[I2, I3, k1]*
-     SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    6*I*Sqrt[3]*SU3D[k1, k2, k3]*SU3F[6, I1, k2]*SU3F[I2, I3, k1]*
-     SUNDelta[8, k3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 23] + 6*I*Sqrt[3]*SU3D[I3, k1, k2]*
-     SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] - 
-    12*SU3F[3, I1, k1]*SUNDelta[6, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    4*Sqrt[3]*SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]*
-     CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23] + 
-    72*SU3F[6, I1, I2]*SUNDelta[3, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 24] + 24*Sqrt[3]*SU3F[6, I1, I2]*
-     SUNDelta[8, I3]*CouplingConstant[ChPTW3[2], 1]*
-     CouplingConstant[ChPTW3[4], 24])/
+ {(2*((-6*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I3, k1]*SU3D[I1, I2, k1] + (3*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[8, I3, k2]*SU3D[I1, I2, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[6, k1, k2]*SU3D[8, I3, k1]*SU3D[I1, I2, k2] + 
+     (12*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I2, k1]*SU3D[I1, I3, k1] + (12*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I2, k1]*SU3D[8, k1, k2]*SU3D[I1, I3, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[6, I3, k1]*SU3D[8, I2, k2]*SU3D[I1, k1, k2] - 
+     (6*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3D[I2, I3, k1] + (12*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, 8, k1]*SU3D[I1, I3, k2]*SU3D[I2, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[6, I1, k1]*SU3D[8, I2, k2]*SU3D[I3, k1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, 8, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 6*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 22]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+     12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3D[8, k1, k2]*SU3D[I2, I3, k1]*SU3F[6, I1, k2] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3D[8, I3, k1]*SU3D[I2, k1, k2]*SU3F[6, I1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*SU3F[6, I1, k2] - 
+     24*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 36*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 8]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 
+     12*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 24*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[8, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, k1, k2]*SU3D[I1, I3, k1]*SU3F[6, I2, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[8, I3, k1]*SU3D[I1, k1, k2]*SU3F[6, I2, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3D[8, I1, k1]*SU3D[I3, k1, k2]*SU3F[6, I2, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 12*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I2, k1]*SU3D[I1, k1, k2]*SU3F[6, I3, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[I3, k1, k2]*SU3F[6, I2, k2]*SU3F[8, I1, k1] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[I1, I2, k2]*SU3F[8, I3, k1] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 21]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I3, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I3, k1] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*SU3F[8, I3, k1] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[8, I3, k1] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[8, I3, k1] + 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3F[8, I3, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[I1, I2, k1]*SU3F[6, k1, k2]*SU3F[8, I3, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I2, k1]*SU3D[I1, I3, k2]*SU3F[8, k1, k2] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[I2, I3, k1]*SU3F[6, I1, k2]*SU3F[8, k1, k2] - 
+     (24*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[I1, I3, k1]*SU3F[6, I2, k2]*SU3F[8, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, I2, k2]*SU3F[8, k1, k2] + 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I3, k1]*SU3F[I1, I2, k1] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[8, I3, k2]*SU3F[I1, I2, k1] + 
+     (6*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3F[6, I3, k1]*SU3F[I1, I2, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3D[6, k1, k2]*SU3D[8, I3, k1]*SU3F[I1, I2, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[6, k1, k2]*SU3F[8, I3, k1]*SU3F[I1, I2, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3F[6, k1, k2]*SU3F[8, I3, k1]*SU3F[I1, I2, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I3, k1]*SU3D[8, I2, k2]*SU3F[I1, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[8, I3, k1]*SU3F[6, I2, k2]*SU3F[I1, k1, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3F[6, I3, k2]*SU3F[I1, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3D[6, I2, k1]*SU3F[8, I3, k2]*SU3F[I1, k1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I2, k1]*SU3F[8, I3, k2]*SU3F[I1, k1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 21]*
+      SU3F[6, I2, k1]*SU3F[8, I3, k2]*SU3F[I1, k1, k2] - 
+     6*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3F[I2, I3, k1] - (6*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 9]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[8, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, I3, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, k1]*SU3F[8, k1, k2]*SU3F[I2, I3, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, 8, k1]*SU3D[I1, I3, k2]*SU3F[I2, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[I1, I3, k1]*SU3F[6, 8, k2]*SU3F[I2, k1, k2] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       23]*SU3D[8, I3, k1]*SU3F[6, I1, k2]*SU3F[I2, k1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       21]*SU3F[6, I1, k1]*SU3F[8, I3, k2]*SU3F[I2, k1, k2] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, I1, k1]*SU3F[8, I3, k2]*SU3F[I2, k1, k2] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, k1]*SU3F[8, I3, k2]*SU3F[I2, k1, k2] - 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[6, I1, k1]*SU3D[8, I2, k2]*SU3F[I3, k1, k2] + 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 9]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       22]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 23]*SU3D[8, I2, k1]*SU3F[6, I1, k2]*SU3F[I3, k1, k2] - 
+     (12*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[
+       ChPTW3[4], 5]*SU3D[8, I1, k1]*SU3F[6, I2, k2]*SU3F[I3, k1, k2] + 
+     12*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I2, k1]*SU3F[8, I1, k2]*SU3F[I3, k1, k2] - 
+     (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       9]*SU3D[8, I2, I3]*SUNDelta[6, I1] + (8*I)*Sqrt[3]*
+      CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SU3D[8, I1, I3]*SUNDelta[6, I2] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 21]*SU3F[8, I1, I3]*SUNDelta[6, I2] - 
+     (8*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       9]*SU3D[8, I1, I2]*SUNDelta[6, I3] - 
+     8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I2, I3]*SUNDelta[8, I1] - 24*Sqrt[3]*CouplingConstant[
+       ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*SU3F[6, I2, I3]*
+      SUNDelta[8, I1] - (16*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 9]*SU3D[6, I1, I3]*SUNDelta[8, I2] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, I1, I3]*SUNDelta[8, I2] - 8*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, I1, I3]*SUNDelta[8, I2] - 
+     24*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 
+       24]*SU3F[6, I1, I3]*SUNDelta[8, I2] + 
+     8*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 5]*
+      SU3F[6, I1, I2]*SUNDelta[8, I3] + 24*Sqrt[3]*CouplingConstant[
+       ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 6]*SU3F[6, I1, I2]*
+      SUNDelta[8, I3] - 2*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 22]*SU3F[6, I1, I2]*SUNDelta[8, I3] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 23]*
+      SU3F[6, I1, I2]*SUNDelta[8, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 21]*SU3F[6, 8, I3]*SUNDelta[I1, I2] - 
+     (4*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SUNDelta[6, I3]*SUNDelta[I1, I2] + (8*I)*CouplingConstant[ChPTW3[2], 1]*
+      CouplingConstant[ChPTW3[4], 9]*SUNDelta[6, I2]*SUNDelta[I1, I3] + 
+     2*Sqrt[3]*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 22]*
+      SU3F[6, 8, I1]*SUNDelta[I2, I3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       1]*CouplingConstant[ChPTW3[4], 23]*SU3F[6, 8, I1]*SUNDelta[I2, I3] - 
+     (4*I)*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 9]*
+      SUNDelta[6, I1]*SUNDelta[I2, I3]))/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^4)}}

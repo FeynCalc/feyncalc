@@ -1,2 +1,2 @@
-{{2*I*DecayConstant[PseudoScalar[1], RenormalizationState[0]]*
-   SU3Delta[I1, I2]}}
+{{(2*I)*DecayConstant[PseudoScalar[1], RenormalizationState[0]]*
+   SUNDelta[I1, I2]}}

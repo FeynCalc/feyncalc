@@ -1,7 +1,4 @@
-{FourVector[p4, \[Mu]1]*MomentaScalarProduct[p2, p3], 
- FourVector[p3, \[Mu]1]*MomentaScalarProduct[p2, p4], 
- FourVector[p2, \[Mu]1]*MomentaScalarProduct[p3, p4], 
- FourVector[p4, \[Mu]1]*ParticleMass[PseudoScalar[7], 
+{FourVector[p4, \[Mu]1]*ParticleMass[PseudoScalar[7], 
     RenormalizationState[0]]^2, FourVector[p3, \[Mu]1]*
   ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2, 
  FourVector[p4, \[Mu]1]*ParticleMass[PseudoScalar[8], 
@@ -14,4 +11,7 @@
     RenormalizationState[0]]^2, FourVector[p2, \[Mu]1]*
   ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2, 
  FourVector[p2, \[Mu]1]*ParticleMass[PseudoScalar[2], 
-    RenormalizationState[0]]^2}
+    RenormalizationState[0]]^2, FourVector[p2, \[Mu]1]*
+  MomentaScalarProduct[p3, p4], FourVector[p3, \[Mu]1]*
+  MomentaScalarProduct[p2, p4], FourVector[p4, \[Mu]1]*
+  MomentaScalarProduct[p2, p3]}

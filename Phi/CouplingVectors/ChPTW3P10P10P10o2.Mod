@@ -1,360 +1,635 @@
-{{-(SUNDelta[6, si10]*CouplingConstant[ChPTW3[2], 1]*
-      UTrace1[NonCommutative[UMatrix[UGenerator[si10]], 
-        UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[I2]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si10]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si10]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si9]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si9]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si9]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si9]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {-(SUNDelta[6, si10]*CouplingConstant[ChPTW3[2], 1]*
-      UTrace1[NonCommutative[UMatrix[UGenerator[si10]], 
-        UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[I3]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si10]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si10]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si9]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si9]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si9]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si9]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {-(SUNDelta[6, si10]*CouplingConstant[ChPTW3[2], 1]*
-      UTrace1[NonCommutative[UMatrix[UGenerator[si10]], 
-        UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I3]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si10]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si10]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si9]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si9]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si9]*CouplingConstant[ChPTW3[2], 1]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si9]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]]]])/
-    (2*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {(SUNDelta[6, si15]*SUNDelta[8, si16]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si15]], 
-       UMatrix[UGenerator[si16]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si15]*SUNDelta[8, si16]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si15]], 
-       UMatrix[UGenerator[si16]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si15]*SUNDelta[8, si16]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si15]], 
-       UMatrix[UGenerator[si16]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si15]*SUNDelta[8, si16]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si15]], 
-       UMatrix[UGenerator[si16]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si15]*SUNDelta[8, si16]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si15]], 
-       UMatrix[UGenerator[si16]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si15]*SUNDelta[8, si16]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si15]], 
-       UMatrix[UGenerator[si16]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si25]*SUNDelta[8, si26]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si25]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si26]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si25]*SUNDelta[8, si26]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si25]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si26]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si25]*SUNDelta[8, si26]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si25]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si26]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si25]*SUNDelta[8, si26]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si25]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si26]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si25]*SUNDelta[8, si26]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si25]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si26]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si25]*SUNDelta[8, si26]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si25]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si26]]]])/
-    (3*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {(SUNDelta[3, si12]*SUNDelta[6, si11]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si11]], 
-       UMatrix[UGenerator[si12]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si12]*SUNDelta[6, si11]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si11]], 
-       UMatrix[UGenerator[si12]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si12]*SUNDelta[6, si11]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si11]], 
-       UMatrix[UGenerator[si12]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si12]*SUNDelta[6, si11]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si11]], 
-       UMatrix[UGenerator[si12]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si12]*SUNDelta[6, si11]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si11]], 
-       UMatrix[UGenerator[si12]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si12]*SUNDelta[6, si11]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si11]], 
-       UMatrix[UGenerator[si12]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si17]*SUNDelta[8, si18]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si17]], 
-       UMatrix[UGenerator[si18]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si17]*SUNDelta[8, si18]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si17]], 
-       UMatrix[UGenerator[si18]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si17]*SUNDelta[8, si18]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si17]], 
-       UMatrix[UGenerator[si18]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si17]*SUNDelta[8, si18]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si17]], 
-       UMatrix[UGenerator[si18]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si17]*SUNDelta[8, si18]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si17]], 
-       UMatrix[UGenerator[si18]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si17]*SUNDelta[8, si18]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si17]], 
-       UMatrix[UGenerator[si18]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si22]*SUNDelta[6, si21]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si21]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si22]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si22]*SUNDelta[6, si21]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si21]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si22]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si22]*SUNDelta[6, si21]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si21]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si22]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si22]*SUNDelta[6, si21]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si21]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si22]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si22]*SUNDelta[6, si21]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si21]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si22]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si22]*SUNDelta[6, si21]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si21]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si22]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si27]*SUNDelta[8, si28]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si27]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si28]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si27]*SUNDelta[8, si28]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si27]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si28]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si27]*SUNDelta[8, si28]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si27]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si28]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si27]*SUNDelta[8, si28]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si27]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si28]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si27]*SUNDelta[8, si28]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si27]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si28]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si27]*SUNDelta[8, si28]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si27]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si28]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {-(SUNDelta[3, si14]*SUNDelta[6, si13]*CouplingConstant[ChPTW3[2], 2]*
-      UTrace1[NonCommutative[UMatrix[UGenerator[si13]], 
-        UMatrix[UGenerator[si14]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si14]*SUNDelta[6, si13]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si13]], 
-       UMatrix[UGenerator[si14]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si14]*SUNDelta[6, si13]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si13]], 
-       UMatrix[UGenerator[si14]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si14]*SUNDelta[6, si13]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si13]], 
-       UMatrix[UGenerator[si14]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si14]*SUNDelta[6, si13]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si13]], 
-       UMatrix[UGenerator[si14]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[3, si14]*SUNDelta[6, si13]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si13]], 
-       UMatrix[UGenerator[si14]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si19]*SUNDelta[8, si20]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si19]], 
-       UMatrix[UGenerator[si20]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si19]*SUNDelta[8, si20]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si19]], 
-       UMatrix[UGenerator[si20]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si19]*SUNDelta[8, si20]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si19]], 
-       UMatrix[UGenerator[si20]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si19]*SUNDelta[8, si20]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si19]], 
-       UMatrix[UGenerator[si20]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si19]*SUNDelta[8, si20]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si19]], 
-       UMatrix[UGenerator[si20]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) - 
-   (SUNDelta[6, si19]*SUNDelta[8, si20]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si19]], 
-       UMatrix[UGenerator[si20]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si24]*SUNDelta[6, si23]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si23]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si24]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si24]*SUNDelta[6, si23]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si23]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si24]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si24]*SUNDelta[6, si23]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si23]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si24]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si24]*SUNDelta[6, si23]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si23]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si24]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si24]*SUNDelta[6, si23]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si23]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si24]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[3, si24]*SUNDelta[6, si23]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si23]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si24]]]])/
-    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si29]*SUNDelta[8, si30]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si29]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si30]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si29]*SUNDelta[8, si30]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si29]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si30]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si29]*SUNDelta[8, si30]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si29]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[si30]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si29]*SUNDelta[8, si30]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si29]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[I3]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si30]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si29]*SUNDelta[8, si30]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si29]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I1]], 
-       UMatrix[UGenerator[I2]], UMatrix[UGenerator[si30]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3) + 
-   (SUNDelta[6, si29]*SUNDelta[8, si30]*CouplingConstant[ChPTW3[2], 2]*
-     UTrace1[NonCommutative[UMatrix[UGenerator[si29]], 
-       UMatrix[UGenerator[I3]], UMatrix[UGenerator[I2]], 
-       UMatrix[UGenerator[I1]], UMatrix[UGenerator[si30]]]])/
-    (6*Sqrt[3]*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}}
+{{(3*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I3, k1]*SU3D[I1, I2, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] - 
+    6*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I1, k1]*SU3D[I2, I3, k1] - 
+    (6*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] - 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I3, k1]*SU3F[I1, I2, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3F[6, I3, k1]*SU3F[I1, I2, k1] - 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I2, k1]*SU3F[I1, I3, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3F[6, I2, k1]*SU3F[I1, I3, k1] + 
+    2*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I3]*SUNDelta[I1, I2] + 
+    2*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I2]*SUNDelta[I1, I3] - 
+    4*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I1]*SUNDelta[I2, I3])/
+   (3*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
+ {(3*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I3, k1]*SU3D[I1, I2, k1] - 
+    6*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I1, k1]*SU3D[I2, I3, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] - 
+    (6*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I3, k1]*SU3F[I1, I2, k1] - 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3F[6, I3, k1]*SU3F[I1, I2, k1] - 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I1, k1]*SU3F[I2, I3, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] + 
+    2*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I3]*SUNDelta[I1, I2] - 
+    4*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I2]*SUNDelta[I1, I3] + 
+    2*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I1]*SUNDelta[I2, I3])/
+   (3*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
+ {(-6*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I3, k1]*SU3D[I1, I2, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I2, k1]*SU3D[I1, I3, k1] + 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I1, k1]*SU3D[I2, I3, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I2, I3, k1]*SU3F[6, I1, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I1, I3, k1]*SU3F[6, I2, k1] - 
+    (6*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[I1, I2, k1]*SU3F[6, I3, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I2, k1]*SU3F[I1, I3, k1] - 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3F[6, I2, k1]*SU3F[I1, I3, k1] + 
+    (3*I)*CouplingConstant[ChPTW3[2], 1]*SU3D[6, I1, k1]*SU3F[I2, I3, k1] - 
+    3*CouplingConstant[ChPTW3[2], 1]*SU3F[6, I1, k1]*SU3F[I2, I3, k1] - 
+    4*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I3]*SUNDelta[I1, I2] + 
+    2*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I2]*SUNDelta[I1, I3] + 
+    2*CouplingConstant[ChPTW3[2], 1]*SUNDelta[6, I1]*SUNDelta[I2, I3])/
+   (3*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
+ {(12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, I3]*SUNDelta[3, I1] + 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, I3]*SUNDelta[3, I2] + 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, I2]*SUNDelta[3, I3] - 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, k2, k3]*
+     SU3D[I2, I3, k3]*SUNDelta[3, k1] - 18*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I1, I3, k3]*SU3D[I2, k2, k3]*SUNDelta[3, k1] - 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, I2, k3]*
+     SU3D[I3, k2, k3]*SUNDelta[3, k1] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3F[6, I3, k2]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[3, k1] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[3, k1] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3F[6, I2, k2]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[3, k1] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I2, I3, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[3, k2] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I3, k1]*SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[3, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I3, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[3, k2] + (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I1, I3, k3]*SU3F[I2, k1, k3]*SUNDelta[3, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[3, k2] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[3, k2] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[3, k2] + (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I1, I2, k3]*SU3F[I3, k1, k3]*SUNDelta[3, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I1, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[3, k2] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SU3D[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[3, k2] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3F[I1, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[3, k2] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[3, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[3, k3] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[3, k3] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I3, k1, k2]*SU3F[6, I2, k1]*
+     SU3F[I1, k2, k3]*SUNDelta[3, k3] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I2, k1, k2]*SU3F[6, I3, k1]*SU3F[I1, k2, k3]*SUNDelta[3, k3] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[I2, k2, k3]*SUNDelta[3, k3] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[3, k3] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3F[6, I3, k1]*
+     SU3F[I2, k2, k3]*SUNDelta[3, k3] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[3, k3] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3D[I2, k1, k2]*
+     SU3F[I3, k2, k3]*SUNDelta[3, k3] + 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, I3]*SUNDelta[6, I1] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I2, I3]*SUNDelta[6, I1] + 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, I3]*SUNDelta[6, I2] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I1, I3]*SUNDelta[6, I2] + 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, I2]*SUNDelta[6, I3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I1, I2]*SUNDelta[6, I3] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k1] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[3, I3, k3]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k1] - 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I3, k1, k2]*SU3F[8, I2, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k1] - 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[8, I3, k3]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k1] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3F[3, I3, k2]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[8, I3, k2]*
+     SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k1] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3F[3, I3, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k1] - 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I1, k1, k2]*SU3F[8, I3, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I3, k2]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k1] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3F[8, I3, k2]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k1] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3F[3, I2, k2]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[8, I2, k2]*
+     SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k1] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I3, k1]*SU3D[I1, k2, k3]*
+     SU3D[I2, k1, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I3, k1]*SU3D[I1, k2, k3]*SU3D[I2, k1, k3]*SUNDelta[6, k2] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, k1]*SU3D[I1, k2, k3]*
+     SU3D[I3, k1, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I2, k1]*SU3D[I1, k2, k3]*SU3D[I3, k1, k3]*SUNDelta[6, k2] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, k1]*SU3D[I2, k2, k3]*
+     SU3D[I3, k1, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I1, k1]*SU3D[I2, k2, k3]*SU3D[I3, k1, k3]*SUNDelta[6, k2] - 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, I3, k1]*SU3F[3, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[6, k2] - 18*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, I3, k1]*SU3F[3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I3, k1]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I3, k1]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k2] - 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*SU3F[3, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*SU3F[I1, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, k1]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*SU3F[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, k1]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*SU3F[I1, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k2] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, k1]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*SU3F[I2, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k2] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I3, k1]*SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*SUNDelta[6, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*SU3D[I1, k1, k2]*
+     SU3D[I2, k2, k3]*SUNDelta[6, k3] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, k1]*SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[6, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*SU3D[I1, k1, k2]*
+     SU3D[I3, k2, k3]*SUNDelta[6, k3] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, k1]*SU3D[I2, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[6, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*SU3D[I2, k1, k2]*
+     SU3D[I3, k2, k3]*SUNDelta[6, k3] - (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, k1, k2]*SU3D[I2, I3, k1]*SU3F[3, k2, k3]*SUNDelta[6, k3] - 
+    (18*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[3, k2, k3]*SUNDelta[6, k3] - (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*SU3F[3, k2, k3]*SUNDelta[6, k3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k3] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k3] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, k1]*SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+     SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3] + 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I3, k1, k2]*SU3F[3, I2, k1]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k3] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I2, k1, k2]*SU3F[3, I3, k1]*SU3F[I1, k2, k3]*SUNDelta[6, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I3, k1, k2]*SU3F[8, I1, k2]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k3] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I3, k1]*SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+     SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, k1]*SU3D[I3, k1, k2]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k3] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*SU3D[I3, k1, k2]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k3] + 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, k1, k2]*SU3F[3, I3, k1]*SU3F[I2, k2, k3]*SUNDelta[6, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[8, I1, k2]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I1, k1, k2]*SU3F[8, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[6, k3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k3] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k3] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, k1]*SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+     SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, I3]*
+     SUNDelta[8, I1] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, I3]*SUNDelta[8, I2] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I1, I2]*SUNDelta[8, I3] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, k2, k3]*
+     SU3D[I2, I3, k3]*SUNDelta[8, k1] - 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, k1, k2]*SU3D[I1, I3, k3]*SU3D[I2, k2, k3]*SUNDelta[8, k1] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, I2, k3]*
+     SU3D[I3, k2, k3]*SUNDelta[8, k1] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[8, k1] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[8, k1] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3F[6, I2, k2]*SU3F[I1, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[8, k1] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I2, I3, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[8, k2] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I2, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[8, k2] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I3, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[8, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I2, I3, k1]*SU3F[6, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+     SU3D[I1, I3, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*
+     SU3D[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+     SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*SU3F[6, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[8, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+     SU3D[I1, I2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*
+     SU3D[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+     SU3D[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*SU3F[6, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[8, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3F[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[8, k2] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, k2, k3]*SUNDelta[8, k3] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, k2, k3]*SUNDelta[8, k3] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, k2, k3]*SUNDelta[8, k3] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[8, k3] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[8, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*
+     SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+     SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k3]*SUNDelta[8, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*
+     SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+     SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3] - 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SUNDelta[3, k1]*
+     SUNDelta[I1, I2] - (12*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I3, k1]*
+     SUNDelta[6, k1]*SUNDelta[I1, I2] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2] + 
+    (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k1]*
+     SUNDelta[8, k1]*SUNDelta[I1, I2] - 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SUNDelta[3, k1]*SUNDelta[I1, I3] - 
+    (12*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I2, k1]*SUNDelta[6, k1]*
+     SUNDelta[I1, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3] + 
+    (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I2, k1]*
+     SUNDelta[8, k1]*SUNDelta[I1, I3] - 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SUNDelta[3, k1]*SUNDelta[I2, I3] - 
+    (12*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I1, k1]*SUNDelta[6, k1]*
+     SUNDelta[I2, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3] + 
+    (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I1, k1]*
+     SUNDelta[8, k1]*SUNDelta[I2, I3])/
+   (27*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
+ {(-12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, I3]*SUNDelta[3, I1] - 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, I3]*SUNDelta[3, I2] - 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, I2]*SUNDelta[3, I3] + 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, k2, k3]*
+     SU3D[I2, I3, k3]*SUNDelta[3, k1] + 18*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I1, I3, k3]*SU3D[I2, k2, k3]*SUNDelta[3, k1] + 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, I2, k3]*
+     SU3D[I3, k2, k3]*SUNDelta[3, k1] - (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I2, I3, k3]*SU3F[I1, k2, k3]*SUNDelta[3, k1] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[3, k1] - (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I1, I3, k3]*SU3F[I2, k2, k3]*SUNDelta[3, k1] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[3, k1] - (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, k1, k2]*SU3D[I1, I2, k3]*SU3F[I3, k2, k3]*SUNDelta[3, k1] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I2, k2]*SU3F[I1, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[3, k1] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[3, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[3, k2] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[3, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3F[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[3, k2] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[3, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3F[I2, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[3, k2] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I3, k1]*SU3D[I1, k2, k3]*SU3D[I2, k1, k2]*SUNDelta[3, k3] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*
+     SU3D[I2, k2, k3]*SUNDelta[3, k3] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SU3D[I1, k2, k3]*SU3D[I3, k1, k2]*SUNDelta[3, k3] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3D[I2, k2, k3]*
+     SU3D[I3, k1, k2]*SUNDelta[3, k3] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[3, k3] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3D[I2, k1, k2]*
+     SU3D[I3, k2, k3]*SUNDelta[3, k3] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[3, k3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[3, k3] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I3, k1, k2]*SU3F[6, I2, k1]*SU3F[I1, k2, k3]*SUNDelta[3, k3] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[6, I3, k1]*
+     SU3F[I1, k2, k3]*SUNDelta[3, k3] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I3, k1]*SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[3, k3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3D[I3, k1, k2]*
+     SU3F[I2, k2, k3]*SUNDelta[3, k3] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, k1, k2]*SU3F[6, I3, k1]*SU3F[I2, k2, k3]*SUNDelta[3, k3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I1, k1, k2]*
+     SU3F[I3, k2, k3]*SUNDelta[3, k3] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[3, k3] - 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, I3]*SUNDelta[6, I1] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, I3]*
+     SUNDelta[6, I1] - 12*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, I3]*
+     SUNDelta[6, I2] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[8, I1, I3]*SUNDelta[6, I2] - 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, I2]*SUNDelta[6, I3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I1, I2]*SUNDelta[6, I3] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I3, k2]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k1] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3F[8, I3, k2]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k1] + (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3F[3, I3, k2]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[8, I3, k2]*
+     SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1] + 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I2, k2]*SU3F[I1, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k1] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3F[8, I2, k2]*SU3F[I1, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k1] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I3, k1]*SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[6, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+     SU3D[I2, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[6, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, k1]*SU3D[I3, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[6, k2] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*SU3D[I3, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[6, k2] + 18*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I2, I3, k1]*SU3F[3, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[6, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I3, k1]*SU3D[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k2] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*SU3D[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k2] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, k1]*SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+     SU3D[I3, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2] + 
+    18*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*SU3F[3, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k2] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I3, k1]*SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[6, k2] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*SU3F[I1, k1, k3]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k2] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, k1]*SU3D[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+     SU3D[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, k1]*SU3D[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*SU3D[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + 18*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, I2, k1]*SU3F[3, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, k1]*SU3F[I1, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, k1]*SU3F[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I1, k1]*SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, k1]*SU3F[I1, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I2, k1]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, k1]*SU3F[I2, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[8, I1, k1]*SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[3, k2, k3]*SUNDelta[6, k3] + (18*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*SU3F[3, k2, k3]*SUNDelta[6, k3] + 
+    (18*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[3, k2, k3]*SUNDelta[6, k3] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I3, k1]*SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+     SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k3] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k3] - 9*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[I3, k1, k2]*SU3F[3, I2, k1]*SU3F[I1, k2, k3]*SUNDelta[6, k3] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[I1, k2, k3]*SUNDelta[6, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I3, k1, k2]*SU3F[8, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[6, k3] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k3] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*SU3D[I1, k1, k2]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k3] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I1, k1]*SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+     SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3] - 
+    9*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3F[3, I3, k1]*
+     SU3F[I2, k2, k3]*SUNDelta[6, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I2, k1, k2]*SU3F[8, I1, k2]*SU3F[I3, k1, k3]*SUNDelta[6, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3F[8, I2, k2]*
+     SU3F[I3, k1, k3]*SUNDelta[6, k3] - (9*I)*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[3, I2, k1]*SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+     SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3] - 
+    (9*I)*CouplingConstant[ChPTW3[2], 2]*SU3D[3, I1, k1]*SU3D[I2, k1, k2]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k3] + (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*SU3D[I2, k1, k2]*
+     SU3F[I3, k2, k3]*SUNDelta[6, k3] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I2, I3]*SUNDelta[8, I1] + 
+    4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, I3]*
+     SUNDelta[8, I2] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, I2]*SUNDelta[8, I3] - 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, k1, k2]*SU3D[I1, k2, k3]*SU3D[I2, I3, k3]*SUNDelta[8, k1] - 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, I3, k3]*
+     SU3D[I2, k2, k3]*SUNDelta[8, k1] - 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, k1, k2]*SU3D[I1, I2, k3]*SU3D[I3, k2, k3]*SUNDelta[8, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*
+     SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*
+     SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1] + 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I2, k2]*
+     SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+     SU3D[I2, I3, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, I3, k1]*SU3F[6, k2, k3]*
+     SU3F[I1, k1, k3]*SUNDelta[8, k2] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*SU3D[I1, I3, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[8, k2] + 6*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I1, I3, k1]*SU3F[6, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3F[I1, k2, k3]*
+     SU3F[I2, k1, k3]*SUNDelta[8, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I3, k1]*SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k2] + 
+    (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+     SU3D[I1, I2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+    6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*SU3F[6, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[8, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I2, k1]*SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3F[I2, k2, k3]*
+     SU3F[I3, k1, k3]*SUNDelta[8, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I2, k1]*SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k2] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3F[I2, k1, k3]*
+     SU3F[I3, k2, k3]*SUNDelta[8, k2] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I3, k1]*SU3D[I1, k2, k3]*SU3D[I2, k1, k2]*SUNDelta[8, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I1, k1, k2]*
+     SU3D[I2, k2, k3]*SUNDelta[8, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I2, k1]*SU3D[I1, k2, k3]*SU3D[I3, k1, k2]*SUNDelta[8, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3D[I2, k2, k3]*
+     SU3D[I3, k1, k2]*SUNDelta[8, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I2, k1]*SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[8, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SU3D[I2, k1, k2]*
+     SU3D[I3, k2, k3]*SUNDelta[8, k3] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*SU3D[I2, I3, k1]*
+     SU3F[6, k2, k3]*SUNDelta[8, k3] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[6, k2, k3]*SUNDelta[8, k3] + (6*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[6, k2, k3]*SUNDelta[8, k3] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SU3D[I2, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[8, k3] - (3*I)*Sqrt[3]*
+     CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SU3D[I3, k1, k2]*
+     SU3F[I1, k2, k3]*SUNDelta[8, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I3, k1, k2]*SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*
+     SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+     SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3] + 
+    3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*SU3F[6, I1, k2]*
+     SU3F[I3, k1, k3]*SUNDelta[8, k3] + 3*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[I1, k1, k2]*SU3F[6, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*
+     SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3] - 
+    (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+     SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3] + 
+    12*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SUNDelta[3, k1]*
+     SUNDelta[I1, I2] + (12*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I3, k1]*
+     SUNDelta[6, k1]*SUNDelta[I1, I2] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+      2]*SU3D[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2] + 
+    (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k1]*
+     SUNDelta[8, k1]*SUNDelta[I1, I2] + 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SUNDelta[3, k1]*SUNDelta[I1, I3] + 
+    (12*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I2, k1]*SUNDelta[6, k1]*
+     SUNDelta[I1, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3] + 
+    (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I2, k1]*
+     SUNDelta[8, k1]*SUNDelta[I1, I3] + 12*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SUNDelta[3, k1]*SUNDelta[I2, I3] + 
+    (12*I)*CouplingConstant[ChPTW3[2], 2]*SU3F[3, I1, k1]*SUNDelta[6, k1]*
+     SUNDelta[I2, I3] - 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+     SU3D[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3] + 
+    (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I1, k1]*
+     SUNDelta[8, k1]*SUNDelta[I2, I3])/
+   (27*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
+ {(-2*(4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, I3]*
+      SUNDelta[6, I1] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+      SU3D[8, I1, I3]*SUNDelta[6, I2] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       2]*SU3D[8, I1, I2]*SUNDelta[6, I3] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I3, k1, k2]*
+      SU3F[8, I2, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*
+      SU3F[8, I3, k3]*SU3F[I1, k2, k3]*SUNDelta[6, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[8, I3, k2]*
+      SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k1] - 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*
+      SU3F[8, I3, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[8, I3, k2]*
+      SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k1] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[8, I2, k2]*
+      SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k1] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3D[I1, k2, k3]*SU3D[I2, k1, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3D[I1, k2, k3]*SU3D[I3, k1, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3D[I2, k2, k3]*SU3D[I3, k1, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3F[I2, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[6, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3D[I1, k1, k2]*SU3D[I2, k2, k3]*SUNDelta[6, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3D[I1, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[6, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3D[I2, k1, k2]*SU3D[I3, k2, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3D[I2, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3D[I3, k2, k3]*SU3F[I1, k1, k2]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3D[I1, k2, k3]*SU3F[I2, k1, k2]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3D[I3, k2, k3]*SU3F[I2, k1, k2]*SUNDelta[6, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I3, k1, k2]*
+      SU3F[8, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I3, k1]*
+      SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3D[I1, k2, k3]*SU3F[I3, k1, k2]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3D[I2, k2, k3]*SU3F[I3, k1, k2]*SUNDelta[6, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*
+      SU3F[8, I1, k2]*SU3F[I3, k1, k3]*SUNDelta[6, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*
+      SU3F[8, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I2, k1]*
+      SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[8, I1, k1]*
+      SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[6, k3] + 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, I3]*
+      SUNDelta[8, I1] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+      SU3D[6, I1, I3]*SUNDelta[8, I2] + 4*Sqrt[3]*CouplingConstant[ChPTW3[2], 
+       2]*SU3D[6, I1, I2]*SUNDelta[8, I3] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+      SU3D[I1, k2, k3]*SU3D[I2, I3, k3]*SUNDelta[8, k1] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+      SU3D[I1, I3, k3]*SU3D[I2, k2, k3]*SUNDelta[8, k1] - 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+      SU3D[I1, I2, k3]*SU3D[I3, k2, k3]*SUNDelta[8, k1] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*
+      SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k1] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I3, k2]*
+      SU3F[I1, k1, k3]*SU3F[I2, k2, k3]*SUNDelta[8, k1] + 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3F[6, I2, k2]*
+      SU3F[I1, k1, k3]*SU3F[I3, k2, k3]*SUNDelta[8, k1] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+      SU3D[I2, I3, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2] + 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, I3, k1]*
+      SU3F[6, k2, k3]*SU3F[I1, k1, k3]*SUNDelta[8, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+      SU3D[I1, I3, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] + 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*
+      SU3F[6, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*
+      SU3F[I1, k2, k3]*SU3F[I2, k1, k3]*SUNDelta[8, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, k1, k2]*
+      SU3D[I1, I2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+     6*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*
+      SU3F[6, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*
+      SU3F[I1, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+      SU3F[I2, k2, k3]*SU3F[I3, k1, k3]*SUNDelta[8, k2] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*
+      SU3D[I2, I3, k1]*SU3F[6, k2, k3]*SUNDelta[8, k3] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I3, k1]*
+      SU3D[I2, k1, k2]*SU3F[6, k2, k3]*SUNDelta[8, k3] + 
+     (6*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, I2, k1]*
+      SU3D[I3, k1, k2]*SU3F[6, k2, k3]*SUNDelta[8, k3] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*
+      SU3D[I2, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[8, k3] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*
+      SU3D[I3, k1, k2]*SU3F[I1, k2, k3]*SUNDelta[8, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I3, k1, k2]*
+      SU3F[6, I1, k2]*SU3F[I2, k1, k3]*SUNDelta[8, k3] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*
+      SU3D[I1, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+      SU3D[I3, k1, k2]*SU3F[I2, k2, k3]*SUNDelta[8, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I2, k1, k2]*
+      SU3F[6, I1, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3] + 
+     3*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[I1, k1, k2]*
+      SU3F[6, I2, k2]*SU3F[I3, k1, k3]*SUNDelta[8, k3] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*
+      SU3D[I1, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3] - 
+     (3*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*
+      SU3D[I2, k1, k2]*SU3F[I3, k2, k3]*SUNDelta[8, k3] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I3, k1]*SUNDelta[8, k1]*
+      SUNDelta[I1, I2] + (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+      SU3F[6, I3, k1]*SUNDelta[8, k1]*SUNDelta[I1, I2] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I2, k1]*SUNDelta[8, k1]*
+      SUNDelta[I1, I3] + (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+      SU3F[6, I2, k1]*SUNDelta[8, k1]*SUNDelta[I1, I3] - 
+     4*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*SU3D[6, I1, k1]*SUNDelta[8, k1]*
+      SUNDelta[I2, I3] + (4*I)*Sqrt[3]*CouplingConstant[ChPTW3[2], 2]*
+      SU3F[6, I1, k1]*SUNDelta[8, k1]*SUNDelta[I2, I3]))/
+   (27*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}}
