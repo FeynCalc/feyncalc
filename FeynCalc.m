@@ -560,12 +560,14 @@ SPL := ToExpression["SimplifyPolyLog"];
   CheckContext[x_String] := MemberQ[$Packages,
    StringJoin["HighEnergyPhysics`", SubContext[x] <> x, "`"]];
 
+(*The implementation is a bit expensive; should be improved...*)
 OptionsSelect[function_, opts___] :=
-  Select[(Cases[{opts}, _Rule,
-          Infinity] //. ({a___, b_ -> c_, d___, b_ -> e_, f___} -> {a, b -> c,
-               d, f})), (!
-          FreeQ[#, (Options[function] /. (a_ -> b_) -> a -> _ /.
-                List -> Alternatives)]) &];
+  Select[(Cases[{opts}, _Rule|_RuleDelayed, Infinity] //.
+  {{a___, b_ -> c_, d___, b_ -> e_, f___} -> {a, b -> c, d, f},
+   {a___, b_ :> c_, d___, b_ :> e_, f___} -> {a, b :> c, d, f}}),
+  (!FreeQ[#, (Options[function] /.
+             {((a_ -> b_) | (a_ :> b_)) -> ((a -> _) | (a :> _))} /.
+              List -> Alternatives)])&];
 
 If[!ValueQ[$NonComm], $NonComm = {}];
 
@@ -653,7 +655,9 @@ multifunpack=
 {"Twist2QuarkOperator", "QO"},
 {"Write2", "FUNCTION", "PostFortranFile", "PreFortranFile"},
 {"DoPolarizationSums", "PolarizationUncontract", "EpsUncontract"},
-{"ILimit", "FunctionLimits"}
+{"ILimit", "FunctionLimits"},
+{"FieldDerivative", "FDr"},
+{"CovariantFieldDerivative", "CDr"}
 };
 
 
@@ -7931,7 +7935,7 @@ Begin["`Private`"];
 
 SetAttributes[SUND, Orderless];
 
-MakeContext[Explicit, SUNT, SUNTrace, SUNIndex];
+MakeContext[Explicit, SUNT, SUNTrace, SUNIndex, ExplicitSUNIndex];
 
 Options[SUND] = {Explicit -> False};
 
@@ -7939,10 +7943,11 @@ Options[SUND] = {Explicit -> False};
 noint[x___] :=
     Not[Or @@
         Join[IntegerQ /@ {x}, IntegerQ /@
-	({x} /. {SUNIndex -> Identity,
-	        HighEnergyPhysics`qcd`ExplicitSUNIndex`ExplicitSUNIndex -> Identity})]];
+	({x} /. {SUNIndex -> Identity, ExplicitSUNIndex -> Identity})]];
 
-SUND[a_,a_,b_,___Rule] := 0 /; noint[a];
+(*Added _SUNIndex to allow SUND in FeynArts couplings. F.Orellana. 4/7-2003*)
+
+SUND[a_SUNIndex,a_SUNIndex,b_,___Rule] := 0 /; noint[a];
 SUND[a_,b_,c_, opt___Rule] :=
  2 SUNTrace[SUNT[a,b,c]] + 2 SUNTrace[SUNT[b,a,c]] /;
   (Explicit /. {opt} /. Options[SUND]) === True;
@@ -8035,8 +8040,7 @@ SetAttributes[SUNDeltaContract, Orderless];
 noint[x___] :=
     Not[Or @@
         Join[IntegerQ /@ {x}, IntegerQ /@
-	({x} /. {SUNIndex -> Identity,
-	        HighEnergyPhysics`qcd`ExplicitSUNIndex`ExplicitSUNIndex -> Identity})]];
+	({x} /. {SUNIndex -> Identity, ExplicitSUNIndex -> Identity})]];
 
 SUNDeltaContract[expr_] := expr //. sundelta ->
   SUNDeltaContract /. SUNDeltaContract -> sundelta;
