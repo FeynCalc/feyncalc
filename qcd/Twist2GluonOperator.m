@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`Twist2GluonOperator`",
              "HighEnergyPhysics`FeynCalc`"];
 
-GO::usage =
+GO::"usage" =
 "GO is equivalent to Twist2GluonOperator.";
 
-Twist2GluonOperator::usage = 
+Twist2GluonOperator::"usage" = 
 "Twist2GluonOperator[{p,mu,a}, {nu,b}] or 
 Twist2GluonOperator[p, {mu,a}, {nu,b}] 
  or Twist2GluonOperator[p, mu,a, nu,b] 

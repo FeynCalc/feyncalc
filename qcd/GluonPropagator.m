@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`GluonPropagator`",
              "HighEnergyPhysics`FeynCalc`"];
 
-GP::usage =
+GP::"usage" =
 "GP is equivalent to GluonPropagator.";
 
-GluonPropagator::usage = 
+GluonPropagator::"usage" = 
 "GluonPropagator[p, {mu, a}, {nu, b}] or
  GluonPropagator[p,  mu, a ,  nu, b ] or
 yields the gluon propagator. 

@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`GhostPropagator`",
              "HighEnergyPhysics`FeynCalc`"];
 
-GHP::usage =
+GHP::"usage" =
 "GHP is equivalent to GhostPropagator.";
 
-GhostPropagator::usage = 
+GhostPropagator::"usage" = 
 "GhostPropagator[p, a, b] or
  GhostPropagator[p,  {any, a} ,  {anyy, b} ] or
  GhostPropagator[p,  any, a ,  anyy, b] or

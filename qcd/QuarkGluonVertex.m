@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`QuarkGluonVertex`",
              "HighEnergyPhysics`FeynCalc`"];
 
-QGV::usage =
+QGV::"usage" =
 "QGV is equivalent to QuarkGluonVertex.";
 
-QuarkGluonVertex::usage = 
+QuarkGluonVertex::"usage" = 
 "QuarkGluonVertex[mu,a] or 
 QuarkGluonVertex[{_,mu,a},  {_,_,_} ,  {_,_,_}]  or
 QuarkGluonVertex[{p,mu,a},  {k,___} ,  {q,___}]  or

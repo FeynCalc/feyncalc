@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`GluonVertex`",
              "HighEnergyPhysics`FeynCalc`"];
 
-GV::usage =
+GV::"usage" =
 "GV is equivalent to GluonVertex.";
 
-GluonVertex::usage = 
+GluonVertex::"usage" = 
 "GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or 
 GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the  
 3-gluon vertex. 

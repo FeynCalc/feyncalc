@@ -15,8 +15,8 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEInsert`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPEInsert::usage= "OPEInsert[diagram_String, name_, rhifile_String] or
-OPEInsert[diagram_String, name_]. The settin of the option
+OPEInsert::"usage"= "OPEInsert[diagram_String, name_, rhifile_String] or
+OPEInsert[diagram_String, name_]. The setting of the option
 EpsContract (4 or D) determines whether the Levi-Civita tensors
 are contracted in 4 or D dimensions.";
 

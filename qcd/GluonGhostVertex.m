@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`GluonGhostVertex`",
              "HighEnergyPhysics`FeynCalc`"];
 
-GGV::usage =
+GGV::"usage" =
 "GGV is equivalent to GluonGhostVertex.";
 
-GluonGhostVertex::usage =
+GluonGhostVertex::"usage" =
 "
 GluonGhostVertex[{p,mu,a}, {q,b}, {k,c}] or
 GluonGhostVertex[ p,mu,a ,  q,nu,b ,  k,rho,c ] 

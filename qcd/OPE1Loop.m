@@ -16,7 +16,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPE1Loop`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPE1Loop::usage=
+OPE1Loop::"usage"=
 "OPE1Loop[q1, amp].  OPE1Loop[{q1,q2}, amp] does sub-loop 
 decomposition.";
 
@@ -69,7 +69,6 @@ ScalarProductCancel,
 Select1,
 Select2,
 SubLoop,
-SUNF2,
 SUNFToTraces,
 SUNNToCACF,
 SUNSimplify,

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEi`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPEi::usage= "OPEi is an dummy index in OPESum.";
+OPEi::"usage"= "OPEi is an dummy index in OPESum.";
 
 (* ------------------------------------------------------------------------ *)
 

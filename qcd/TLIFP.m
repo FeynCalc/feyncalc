@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: TLIFP*)
+(* :Title: TLIFP *)
 
 (* :Author: Rolf Mertig *)
 
@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`qcd`TLIFP`",
              "HighEnergyPhysics`FeynCalc`"];
 
-TLIFP::usage= "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
+TLIFP::"usage"= "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
 
 (* ------------------------------------------------------------------------ *)
 

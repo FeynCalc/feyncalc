@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEo`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPEo::usage= "OPEo is n.";
+OPEo::"usage"= "OPEo is n.";
 
 (* ------------------------------------------------------------------------ *)
 

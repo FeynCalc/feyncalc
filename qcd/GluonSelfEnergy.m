@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`GluonSelfEnergy`",
              "HighEnergyPhysics`FeynCalc`"];
 
-GluonSelfEnergy::usage = 
+GluonSelfEnergy::"usage" = 
 "GluonSelfEnergy[{mu, a}, {nu,b}] yields the 1-loop Gluon selfenergy."
 
 (* ------------------------------------------------------------------------ *)
@@ -34,7 +34,7 @@ Gstrong,
 LorentzIndex,
 Momentum,
 Pair,
-QCDScalemu,
+ScaleMu,
 SUNDelta,
 SUNIndex,
 Tf
@@ -42,7 +42,7 @@ Tf
 
 Options[GluonSelfEnergy] = {Dimension -> D, CouplingConstant -> Gstrong,
                             FinalSubstitutions ->  
-                            {Log[QCDScalemu^2 _] :> 0,
+                            {Log[ScaleMu^2 _] :> 0,
                              EulerGamma :> Log[4 Pi]
                             },
                              Gauge -> 1,
@@ -67,8 +67,8 @@ zdeta = 2/Epsilon + EulerGamma - Log[4 Pi];
     Pair[LorentzIndex[mu, dim], LorentzIndex[nu, dim]] *
      Pair[Momentum[pe, dim], Momentum[pe, dim]]
   ) ( zdeta (10/3 + (1-alpha)) - 62/9 - 
-      10/3 Log[QCDScalemu^2/pe2] +
-      (1-alpha) ( 2 - Log[QCDScalemu^2/pe2]) - 1/2 (1-alpha)^2
+      10/3 Log[ScaleMu^2/pe2] +
+      (1-alpha) ( 2 - Log[ScaleMu^2/pe2]) - 1/2 (1-alpha)^2
     ) +
   I coup^2 Tf SUNDelta[SUNIndex[a], SUNIndex[b]] *
   (
@@ -76,7 +76,7 @@ zdeta = 2/Epsilon + EulerGamma - Log[4 Pi];
     Pair[Momentum[pe, dim], LorentzIndex[nu, dim]] -
     Pair[LorentzIndex[mu, dim], LorentzIndex[nu, dim]] *
      Pair[Momentum[pe, dim], Momentum[pe, dim]]
-  ) ( -4/3 zdeta + 20/9 + 4/3 Log[QCDScalemu^2/pe2])
+  ) ( -4/3 zdeta + 20/9 + 4/3 Log[ScaleMu^2/pe2])
 ) /. fin
                                                      ];
 

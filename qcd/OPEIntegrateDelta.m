@@ -18,7 +18,7 @@ BeginPackage["HighEnergyPhysics`qcd`OPEIntegrateDelta`",
 and the PlusDistribution[1/(1-x)].
 *)
 
-OPEIntegrateDelta::usage=
+OPEIntegrateDelta::"usage"=
 "OPEIntegrateDelta[expr, x, m] introduces
 the delta(1-x) (DeltaFunction[1-x]).
 The Mathematica Integrate function is called and each integration 
@@ -44,7 +44,7 @@ EpsilonOrder,
 Factor2,
 FinalSubstitutions,
 Integrate2,
-QCDScalemu,
+ScaleMu,
 PlusDistribution,
 Select1,
 Select2,
@@ -55,7 +55,7 @@ Zeta2    ];
 Options[OPEIntegrateDelta] = {Dimension -> D, EpsilonOrder -> 1,
                         PolynomialDivision -> True, 
                         FinalSubstitutions -> 
-                          {Log[QCDScalemu^2 _] :> 0}};
+                          {Log[ScaleMu^2 _] :> 0}};
 
 OPEIntegrateDelta[expr_, x_, m_, ops___Rule] := Block[
  {tt, locdim, null, xmpart, fypart, lpa, new, dim, reg, nonreg,

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`Twist3QuarkOperator`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Twist3QuarkOperator::usage = 
+Twist3QuarkOperator::"usage" = 
 "Twist3QuarkOperator[p] or
  Twist3QuarkOperator[p,_,_] 
 yields the  2-quark operator (p is momentum in the direction

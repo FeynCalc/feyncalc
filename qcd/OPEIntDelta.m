@@ -18,13 +18,13 @@ BeginPackage["HighEnergyPhysics`qcd`OPEIntDelta`",
 and the PlusDistribution[1/(1-x)].
 *)
 
-OPEIntDelta::usage=
+OPEIntDelta::"usage"=
 "OPEIntDelta[expr, x, m] introduces
 the delta(1-x) (DeltaFunction[1-x]).
-The Mathematica Integrate function is called and each integration 
+The Mathematica Integrate function is called and each integration
 (from 0 to 1) is
 recorded for reference (and bug-checking) in the global list
-$MIntegrate. \n
+$MIntegrate.\n
 Notice that
 the dimension specified by the option should also be the dimension
 used in expr. It is replaced in OPEIntDelta by (4+Epsilon).";
@@ -44,7 +44,7 @@ EpsilonOrder,
 Factor2,
 FinalSubstitutions,
 Integrate2,
-QCDScalemu,
+ScaleMu,
 PlusDistribution,
 Select1,
 Select2,
@@ -55,7 +55,7 @@ Zeta2    ];
 Options[OPEIntDelta] = {Dimension -> D, EpsilonOrder -> 1,
                         PolynomialDivision -> True, 
                         FinalSubstitutions -> 
-                          {Log[QCDScalemu^2 _] :> 0}};
+                          {Log[ScaleMu^2 _] :> 0}};
 
 OPEIntDelta[expr_, x_, m_, ops___Rule] := Block[
  {tt, locdim, null, xmpart, fypart, lpa, new, dim, reg, nonreg,

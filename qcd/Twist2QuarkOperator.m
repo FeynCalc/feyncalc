@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`qcd`Twist2QuarkOperator`",
              "HighEnergyPhysics`FeynCalc`"];
 
-QO::usage =
+QO::"usage" =
 "QO is equivalent to Twist2QuarkOperator.";
 
-Twist2QuarkOperator::usage = 
+Twist2QuarkOperator::"usage" = 
 "Twist2QuarkOperator[p] or Twist2QuarkOperator[p,_,_] yields 
 the quark-antiquark operator (p is momentum in the direction
 of the incoming quark).

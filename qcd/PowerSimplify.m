@@ -15,13 +15,13 @@
 BeginPackage["HighEnergyPhysics`qcd`PowerSimplify`",
              "HighEnergyPhysics`FeynCalc`"];
 
-PowerSimplify::usage=
+PowerSimplify::"usage"=
 "PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and
-(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is 
-an integer (even if it is symbolic). Furthermore 
+(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is
+an integer (even if it is symbolic). Furthermore
 (-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and
-(-1)^(n_Integer?EvenQ m) -> 1 and 
-(-1)^(n_Integer?OddQ m) -> (-1)^m and 
+(-1)^(n_Integer?EvenQ m) -> 1 and
+(-1)^(n_Integer?OddQ m) -> (-1)^m and
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 (* ------------------------------------------------------------------------ *)
@@ -29,14 +29,14 @@ an integer (even if it is symbolic). Furthermore
 Begin["`Private`"];
    
 
-MakeContext[Factor2, Power2, QCDScalemu, OPEm];
+MakeContext[Factor2, Power2, ScaleMu, OPEm];
 
 PowerSimplify[x_] := 
   Block[{nx, qcdsub = False, power3},
-If[!FreeQ[x, QCDScalemu],
+If[!FreeQ[x, ScaleMu],
    qcdsub = True;
-   nx = x /. pow_[any_ /QCDScalemu^2,exp_]:>
-             power3[pow][any/QCDScalemu^2,exp],
+   nx = x /. pow_[any_ /ScaleMu^2,exp_]:>
+             power3[pow][any/ScaleMu^2,exp],
    nx = x
   ];
   nx = nx /. {(a_/;Head[a]===Plus || Head[a] === Times)^(w_) :>

@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: OPEIntegrate2*)
+(* :Title: OPEIntegrate2 *)
 
 (* :Author: Rolf Mertig *)
 
@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEIntegrate2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPEIntegrate2::usage= 
+OPEIntegrate2::"usage"= 
 "OPEIntegrate2[exp, k] does special loop (tensorial) integrations. 
 Only the residue is calculated.";
 
@@ -29,7 +29,7 @@ MakeContext[Uncontract,
             Expanding, ExpandScalarProduct, 
             FeynAmpDenominatorSimplify, Factor2,
             Factoring, FeynCalcExternal, FeynCalcForm,
-            FeynCalcInternal, FeynmanParametrize1, FeynmanParameterNames,
+            FeynCalcInternal, FeynmanParametrize, FeynmanParameterNames,
             FinalSubstitutions, FRH, Integrate2, Integrate3,
             Integratedx, Isolate, IsolateNames, IsolateSplit,
             LorentzIndex, Momentum, OPEm, OPEl,OPEDelta,OPESum,
@@ -111,7 +111,7 @@ If[$VeryVerbose >1, Print["intvars ", intvars]];
 
 eventualfp[y_,k_,opt___Rule]:= 
    If[FreeQ[y,Integratedx],
-      FeynmanParametrize1[Uncontract[y,k,Pair-> All],k,
+      FeynmanParametrize[Uncontract[y,k,Pair-> All],k,
                          FeynmanParameterNames->(
                          FeynmanParameterNames/.{opt} /.
                          Options[OPEIntegrate2]  )

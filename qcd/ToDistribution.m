@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`qcd`ToDistribution`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ToDistribution::usage= 
+ToDistribution::"usage"= 
 "ToDistribution[exp,x] replaces (1-x)^(a Epsilon - 1) in exp by 
 1/(a Epsilon)  DeltaFunction[1-x] + 
 1/(1-x) + a Epsilon Log[1-x]/(1-x) +

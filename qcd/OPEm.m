@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEm`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPEm::usage= "OPEm is m of the operator product expansion.";
+OPEm::"usage"= "OPEm is m of the operator product expansion.";
 
 (* ------------------------------------------------------------------------ *)
 

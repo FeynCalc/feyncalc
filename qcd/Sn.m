@@ -8,14 +8,14 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:  the s_n for  OPEInt*)
+(* :Summary:  the s_n for  OPEInt *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`Sn`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Sn::usage= "Sn is Pi^(n/2)/(2 Pi)^n. "
+Sn::"usage"= "Sn is Pi^(n/2)/(2 Pi)^n."
 
 (* ------------------------------------------------------------------------ *)
 

@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPE2AI`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPE2AI::usage= "OPE2AI[tabname, listtodo, q1,q2,p] is ....";
+OPE2AI::"usage"= "OPE2AI[tabname, listtodo, q1,q2,p] is ....";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`SUNSimplify`",
              "HighEnergyPhysics`FeynCalc`"];
 
-SUNSimplify::usage =
+SUNSimplify::"usage" =
 "SUNSimplify simplifies products of sunt (and complex conjugated)
 matrices. Renaming of dummy indices may be performed.
 If the option SUNTrace is set to False, then any SUNT-matrices are
@@ -261,9 +261,11 @@ Options[SUNSimplify] = {
                         SUNIndexRename -> True,
                         SUNFJacobi   -> False,
                         SUNNToCACF   -> True, 
-                        suntrace   -> True};
+                        suntrace   -> False (*True*) (*Changed 4/9-2002.
+                                                       Frederik Orellana*)};
 
-SUNSimplify[x_, opts___Rule] := FixedPoint[sunsimp[#, opts]&, x, 6];
+SUNSimplify[x_, opts___Rule] := FixedPoint[sunsimp[#, opts]&, x, 6] /.
+                                dtr -> DiracTrace;
 
 sunsimp[x_, opts___Rule] := MemSet[sunsimp[x, opts],
            Block[{af, temp = fcis[x], sft, sunf, suntraceoption,surule,
@@ -284,7 +286,8 @@ If[Head[temp] === Times,
 
 temp = temp /. SUNDelta -> SUNDeltaContract;
 
-If[(!FreeQ[temp, SUNIndex]) || (!FreeQ[temp, SUNN]),
+If[(!FreeQ[temp, SUNIndex]) || (!FreeQ[temp, SUNN]) ||
+   (*Added 4/9-2002. Frederik Orellana*) suntraceoption,
 sunsi = {
          dot[xx___, sunt[a_SUNIndex],
                     sunt[a_SUNIndex], yy___] :>
@@ -358,28 +361,41 @@ If[$VeryVerbose > 0, Print["renaming in SUNSimplify done"]];
 If[CheckContext["DiracTrace"],
    If[!FreeQ[temp, DiracTrace],
       If[suntraceoption === True,
-       surule = {diractr[doot[xx__sunt] (dd_.) , dops___Rule] :>
+       surule = {(* Added 4/9-2002. Frederik Orellana.
+                    Expressions without SUNT
+                    (proportional to the identity matrix)
+                    were not SUNTrace'd *)
+                 diractr[dd_Times , dops___Rule] :>
+                 suntrace[Select2[dd, SUNIndex]]*
+                   dtr[Select1[dd, SUNIndex], dops] /;
+                   FreeQ[dd, sunt[___]],
+                 diractr[dd_?((Head[#]=!=Times)&) , dops___Rule] :>
+                 suntrace[dtr[dd]]/;
+                   FreeQ[dd, sunt[___]],
+
+                 (*Added Times to avoid Select2[a+b,SUNIndex] --> 0*)
+                 diractr[doot[xx__sunt] (*(dd_.)*)Optional[dd_Times] , dops___Rule] :>
                  suntrace[dot[xx] Select2[dd, SUNIndex]]*
                    DiracTrace[Select1[dd, SUNIndex], dops],
-                 diractr[doot[xx__sunt, y__] (dd_.), dops___Rule] :>
+                 diractr[doot[xx__sunt, y__] Optional[dd_Times], dops___Rule] :>
                  suntrace[dot[xx] Select2[dd, SUNIndex]] *
-                   DiracTrace[doot[y] Select1[dd, SUNIndex], dops ]/;
+                   DiracTrace[doot[y] Select1[dd, SUNIndex], dops ] /;
                   FreeQ[{y}, SUNIndex],
                  diractr[doot[sunt[_], dd_], ___Rule] :> 0 /; 
                   freeq2[dd,{SUNIndex,sunt}],
                  diractr[sunt[_]  dd_., ___Rule] :> 0 /; 
                   freeq2[dd,{SUNIndex,sunt}]
                 },
-       surule = {diractr[doot[xx__sunt] (dd_.) , dops___Rule] :>
+       surule = {diractr[doot[xx__sunt] Optional[dd_Times] , dops___Rule] :>
                   dot[xx] Select2[dd, SUNIndex] *
                     DiracTrace[Select1[dd, SUNIndex], dops],
-                 diractr[doot[xx__sunt, y__] (dd_.) , dops___Rule] :>
+                 diractr[doot[xx__sunt, y__] Optional[dd_Times] , dops___Rule] :>
                   dot[xx] Select2[dd, SUNIndex] *
                     DiracTrace[doot[y] Select1[dd, SUNIndex], dops] /;
                    FreeQ[{y}, SUNIndex]
                 }
         ];
-       temp = Trick[temp] /. DiracTrace->diractr /. 
+       temp = Trick[temp] /. DiracTrace -> diractr /. 
                                   dot -> doot /. surule /.
                                   doot -> dot /. diractr -> DiracTrace/.
                                   SUNDelta -> SUNDeltaContract /.

@@ -16,7 +16,7 @@ BeginPackage["HighEnergyPhysics`qcd`OPEInt`",
              "HighEnergyPhysics`FeynCalc`"];
 
 
-OPEInt::usage=
+OPEInt::"usage"=
 "OPEInt[expr, q, p, x]. 
 The dimension is changed to the one indicated by the option 
 Dimension. The setting of the option EpsContract determines 
@@ -63,7 +63,7 @@ OPESumExplicit,
 PowerSimplify,
 Power2,
 PropagatorDenominator, 
-QCDScalemu,
+ScaleMu,
 RHO,
 Select1,
 Select2,
@@ -79,7 +79,7 @@ Options[OPEInt] = {Dimension -> D,
                    EpsilonOrder -> 1,
                    Factorout -> 1/2,
                    FinalSubstitutions -> {D -> (4+Epsilon),
-                                          Log[QCDScalemu^2 _]:>0},
+                                          Log[ScaleMu^2 _]:>0},
                    OPEIntDelta -> False};
 
 OPEInt[exp_, kk_, pp_, x_, opt___Rule] := Block[
@@ -370,11 +370,11 @@ nex = nex /. Gamma[1 - Epsilon/2] :>
 
 n = n /. finsu;
 If[Head[nex] === Plus,
-   nex = Map[(# I Sn (*flowerpower[(-p2)/QCDScalemu^2, 
+   nex = Map[(# I Sn (*flowerpower[(-p2)/ScaleMu^2, 
                             Expand[(n/2 -2)]]*)
              )&, nex
             ],
-   nex = nex I Sn (*flowerpower[-p2/QCDScalemu^2, 
+   nex = nex I Sn (*flowerpower[-p2/ScaleMu^2, 
                          Expand[(n/2 -2)]]*)
   ];
 If[(OPEIntDelta /. {opt} /. Options[OPEInt]) === True,
@@ -397,7 +397,7 @@ nex = ( Factor2[(nex-noflow) /( (x (1-x))^(Epsilon/2) )] *
    epsorder = EpsilonOrder /. {opt} /.  Options[OPEInt];
 
    nex = nex /. flowerpower -> floweps;
-   nex = nex (-p2/QCDScalemu^2)^Expand[(n/2 -2)];
+   nex = nex (-p2/ScaleMu^2)^Expand[(n/2 -2)];
    nex = nex /. Momentum -> momentum4;
 (*
 Dialog[nex];
@@ -410,8 +410,8 @@ If[NumberQ[epsorder],
                 finsu,
    nex = nex /. finsu;
   ];
-   If[!FreeQ[nex, QCDScalemu],
-      nex = nex /. Log[-p2/QCDScalemu^2] -> (-Log[QCDScalemu^2/p2]);
+   If[!FreeQ[nex, ScaleMu],
+      nex = nex /. Log[-p2/ScaleMu^2] -> (-Log[ScaleMu^2/p2]);
      ];
    nex = Expand[nex,flowerpower];
    noflow = nex /. flowerpower[__] :> 0;
@@ -443,13 +443,13 @@ Dialog[nex];
      ];
    ccol[w_] := If[Head[w] =!= Times,
                   apa[Collect2[w,
-                           {DeltaFunction, QCDScalemu},
+                           {DeltaFunction, ScaleMu},
                            Factoring -> True 
                               ]
                      ],
                   Select2[w, Epsilon] *
                   apa[Collect2[Select1[w, Epsilon], 
-                           {DeltaFunction, QCDScalemu}, 
+                           {DeltaFunction, ScaleMu}, 
                            Factoring -> True 
                               ]
                      ]

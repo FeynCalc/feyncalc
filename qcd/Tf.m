@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`Tf`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Tf::usage = 
+Tf::"usage" = 
 "Tf is 1/2 for SU(N).";
 
 (* ------------------------------------------------------------------------ *)

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`BackgroundGluonVertex`",
              "HighEnergyPhysics`FeynCalc`"];
 
-BackgroundGluonVertex::usage = 
+BackgroundGluonVertex::"usage" = 
 "BackgroundGluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or 
 BackgroundGluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the  
 3-gluon vertex in the background field gauge, where the first

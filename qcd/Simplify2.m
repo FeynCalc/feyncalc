@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`qcd`Simplify2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Simplify2::usage= "Simplify2 is a special ordering function."; 
+Simplify2::"usage"= "Simplify2 is a special ordering function."; 
 
 (* ------------------------------------------------------------------------ *)
 

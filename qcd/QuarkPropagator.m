@@ -15,12 +15,12 @@
 BeginPackage["HighEnergyPhysics`qcd`QuarkPropagator`",
              "HighEnergyPhysics`FeynCalc`"];
 
-QP::usage =
+QP::"usage" =
 "QP is an alias for QuarkPropagator.
 QP[p] is the massless quark propagator.
 QP[{p,m}] gives the  quark propagator with mass m.";
 
-QuarkPropagator::usage = 
+QuarkPropagator::"usage" = 
 "QuarkPropagator[p] is the massless quark propagator.
 QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 
@@ -41,7 +41,7 @@ MakeContext[Abbreviation,
             Momentum, MomentumExpand, OPE, Pair,
             Polarization,
             PropagatorDenominator,
-            QCDScalemu,
+            ScaleMu,
             Sn
            ];
 
@@ -76,7 +76,7 @@ Block[{dim, re, ope, pol, cou, loo},
  loo    = Loop /. {opt} /. Options[QuarkPropagator];
 (* one-loop expression *)
  If[loo === 1 && m === 0,
-    (-(Pair[Momentum[pi], Momentum[pi]]/QCDScalemu^2))^(Epsilon/2)*
+    (-(Pair[Momentum[pi], Momentum[pi]]/ScaleMu^2))^(Epsilon/2)*
     (-I*CF*(2 - Epsilon)*cop^2*Sn*DiracGamma[Momentum[pi,dim],dim]
     )/Epsilon
     ,

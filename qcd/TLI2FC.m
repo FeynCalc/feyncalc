@@ -18,9 +18,9 @@ Roelofs notation  (eq. (3C.19)) into
 BeginPackage["HighEnergyPhysics`qcd`TLI2FC`",
              "HighEnergyPhysics`FeynCalc`"];
 
-TLI2FC::usage= 
-"TLI2FC[exp] transforms all 
-TLI-integrals to the FAD - foorm.";
+TLI2FC::"usage"= 
+"TLI2FC[exp] transforms all
+TLI-integrals in exp to the FAD form.";
 
 (* ------------------------------------------------------------------------ *)
 

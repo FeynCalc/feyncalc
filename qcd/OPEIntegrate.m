@@ -14,7 +14,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEIntegrate`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPEIntegrate::usage=
+OPEIntegrate::"usage"=
 "OPEIntegrate[expr, q, x]. 
 The dimension is changed to the one indicated by the option 
 Dimension. The setting of the option EpsContract determines 
@@ -66,8 +66,7 @@ OPESumSimplify,
 OPESumExplicit,
 PowerSimplify,
 Power2,
-PropagatorDenominator, 
-QCDScalemu,
+PropagatorDenominator,
 RHO,
 SelectFree,
 SelectNotFree,
@@ -77,7 +76,8 @@ SmallVariable,
 Sn,
 SUNIndex,
 SUNN,
-Zeta2       ];
+Zeta2,
+ScaleMu       ];
 
 
 Options[OPEIntegrate] = {Dimension -> D, 
@@ -203,7 +203,7 @@ nex = Map[qse, nex + null1 + null2];
 If[ Head[nex] === Plus, nex = (# dufa)& /@ nex, nex = dufa nex ];
 
 p2[pe_] := Pair[pe,pe];
-fp[pe_] := fp[pe]=(-p2[pe]/QCDScalemu^2)^Expand[(n/2 - 2)];
+fp[pe_] := fp[pe]=(-p2[pe]/ScaleMu^2)^Expand[(n/2 - 2)];
 
 irules0 = {
     anynonsense_. FeynAmpDenominator[PropagatorDenominator[k, 0]..]:>0,
@@ -397,7 +397,7 @@ Pair[de, ka]^m_ FeynAmpDenominator[
    ] :> (-
 I fp[p] em^(Epsilon/2) ( 2/Epsilon Pair[de, p]^m Gamma[1-Epsilon/2] x^m *
           (1-x)^Epsilon 
-       )) /. p2[p] -> em^2 /. QCDScalemu -> (-I em),
+       )) /. p2[p] -> em^2 /. ScaleMu -> (-I em),
 qqq[
 Pair[de, ka]^m_ FeynAmpDenominator[
                 PropagatorDenominator[k, em_ /; nos[em]],
@@ -506,9 +506,9 @@ If[!FreeQ2[nex, {Eps,LorentzIndex}],
 Global`NEX =  nex;
 
 If[!FreeQ[nex, OPESum], 
-   If[!FreeQ[nex, QCDScalemu], 
-      nex = nex /. (a_ / QCDScalemu^2)^b_ :>
-      power4[a/QCDScalemu^2,b]
+   If[!FreeQ[nex, ScaleMu], 
+      nex = nex /. (a_ / ScaleMu^2)^b_ :>
+      power4[a/ScaleMu^2,b]
      ];
    nex = OPESumExplicit[nex//OPESumSimplify]//Factor2;
    nex =  nex /. power4 -> Power
@@ -569,8 +569,8 @@ If[NumberQ[epsorder],
    nex = nex /. finsu;
   ];
 (*
-   If[!FreeQ[nex, QCDScalemu],
-      nex = nex /. Log[-p2/QCDScalemu^2] -> (-Log[QCDScalemu^2/p2]);
+   If[!FreeQ[nex, ScaleMu],
+      nex = nex /. Log[-p2/ScaleMu^2] -> (-Log[ScaleMu^2/p2]);
      ];
 *)
    nex = Expand[nex,flowerpower];
@@ -609,13 +609,13 @@ Dialog[nex];
      ];
    ccol[w_] := If[Head[w] =!= Times,
                   apa[Collect2[w,
-                           {DeltaFunction, QCDScalemu},
+                           {DeltaFunction, ScaleMu},
                            Factoring -> True 
                               ]
                      ],
                   SelectNotFree[w, Epsilon] *
                   apa[Collect2[SelectFree[w, Epsilon], 
-                           {DeltaFunction, QCDScalemu}, 
+                           {DeltaFunction, ScaleMu}, 
                            Factoring -> True 
                               ]
                      ]
