@@ -55,7 +55,10 @@ fcpol := fcpol = MakeContext["Polarization"];
 fccombs := fccombs = MakeContext["Combinations"];
 FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
 CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFieldDerivative"];
-
+ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
+SUNIndex := SUNIndex = MakeContext["SUNIndex"];
+ScaleMu := ScaleMu = MakeContext["ScaleMu"];
+CouplingConstant := CouplingConstant = MakeContext["CouplingConstant"];
 
 (* Tracer functions *)
 
@@ -71,10 +74,10 @@ trtr := trtr = Tracer`GammaTrace; trid = Tracer`TrU; trsp :=
 Options[MandelstamReduce] = {MomentaSumLeft -> All, OnMassShell -> True,
       Cancel -> MandelstamU, MomentumVariablesString -> "p",
       MomentaSumRule -> True,
-      Masses -> {ParticleMass[Pion, RenormalizationState[0]],
-          ParticleMass[Pion, RenormalizationState[0]],
-          ParticleMass[Pion, RenormalizationState[0]],
-          ParticleMass[Pion, RenormalizationState[0]]}};
+      Masses -> {ParticleMass[Pion, RenormalizationState[1]],
+          ParticleMass[Pion, RenormalizationState[1]],
+          ParticleMass[Pion, RenormalizationState[1]],
+          ParticleMass[Pion, RenormalizationState[1]]}};
 DeclareUScalar[MandelstamS]; DeclareUScalar[MandelstamT]; 
 DeclareUScalar[MandelstamU];
 Options[LorentzIndicesSupply] = {LorentzIndicesString -> "\[Nu]"};
@@ -556,8 +559,8 @@ TracerToFC[
 
 (*Commented out 16/9-2002. Will look at DOT instead*)
 (*SetAttributes[ditchmom, NumericFunction];*)
-DiscardOrders[am_,
-      opts___] := (spf = (HighEnergyPhysics`Phi`Objects`ScalarProductForm /.
+DiscardOrders[am_, opts___] /; FreeQ[am, WFFactor1] :=
+  (spf = (HighEnergyPhysics`Phi`Objects`ScalarProductForm /.
               Flatten[{opts}] /. Options[DiscardOrders]);
       Cancel[ExpandAll[
               ditchmom[]^2*am /.
@@ -601,7 +604,7 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
     Block[{dir, file, finex, fs, ns},
 
       If[StringQ[fi] =!= True, Message[CheckF::nostring, fi];
-        Return[]];
+        Return[ex]];
 
       Which[
          StringMatchQ[fi,"*.Gen"]===True||StringMatchQ[fi,"*.Mod"]===True,
@@ -634,7 +637,7 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
               Directory[] <> $PathnameSeparator <> dir <> $PathnameSeparator <>
                  fi,
 
-              True, (Message[CheckF::baddir, dir]; Return[])];
+              True, (Message[CheckF::baddir, dir]; Return[ex])];
 
         ];
 
@@ -662,7 +665,7 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
-(* Characteristic polynomial and Cayley-Hamilton*)
+(* Characteristic polynomial and Cayley-Hamilton *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -1537,7 +1540,7 @@ UCoefficient[UFPlus][1][li1_, li2_, x_] =
 UCoefficient[UFPlus][2][li1_, li2_, x_] = -1/4/DecayConstant[pm]^2 UCommutator[xi[x],
       UCommutator[xi[x], UFPlus[li1, li2][x]]];
 UCoefficient[UFPlus][do_?((# > 2) &)][li1_, li2_, x_] :=
-    UCoefficient[UChiPlus][do][x, li1, li2] = (Message[UPerturb::"nocoeff", do];
+    UCoefficient[UChiPlus][do][li1, li2, x] = (Message[UPerturb::"nocoeff", do];
         DiscardTerms[
             NM[uExpLeftAdj[x, ExpansionOrder -> do],
                     FieldStrengthTensorFull[{li1},
@@ -1561,7 +1564,7 @@ UCoefficient[UFMinus][2][li1_, li2_, x_] =
   -1/4/DecayConstant[pm]^2UCommutator[xi[x],
                     UCommutator[xi[x], UFMinus[li1, li2][x]]];
 UCoefficient[UFPlus][do_?((# > 2) &)][li1_, li2_, x_] :=
-    UCoefficient[UFMinus][do][x, li1, li2] = (Message[UPerturb::"nocoeff", do];
+    UCoefficient[UFMinus][do][li1, li2, x] = (Message[UPerturb::"nocoeff", do];
         DiscardTerms[
             NM[uExpLeftAdj[x, ExpansionOrder -> do],
                     FieldStrengthTensorFull[{li1},
@@ -1601,6 +1604,51 @@ UPerturb[exp_, opts___Rule] :=
             pm -> If[(fcsunn /. {opts} /. Options[UPerturb]) === 2,
             Pion, PhiMeson]];
 
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Conversion to LaTeX *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+removeBlankSpace[x_String] := FixedPoint[StringReplace[#, "  " -> " "] &, x];
+
+(*First sketch of a LaTeX output functions; - should be abstracted*)
+PhiToLaTeX[x_] := 
+    StringReplace[
+          ToString[
+            x /. _RenormalizationState -> Sequence[] /. 
+                      SUNIndex | ExplicitSUNIndex -> Identity /. 
+                    (SU2Delta|SU3Delta|fcsundel)[a_, b_] :> 
+                      "\delta_{" <> ToString[a] <> ToString[b] <> "}" /. 
+                  fcpa[Momentum[p2], Momentum[p2]]^i_ :> 
+                    "q^" <> ToString[2i] //.
+
+              (*Phi`Renormalization` is not in $ContextPath *)
+              {HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar[a__, __Rule] :>
+               HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar[a],
+               QuarkCondensate[___] -> "B_0", Pi -> "\pi", Log -> "\log", 
+                Pair[_LorentzIndex, ___] -> Sequence[],
+                _DecayConstant -> "f",
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 1] -> "c_2", 
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 2] -> "c_5", 
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPT2[4], i_, ___] :> "L_{" <> ToString[i] <> "}",
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPT3[4], i_, ___] :> "L_{" <> ToString[i] <> "}",
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[4], i_, ___] :> "n_{" <> ToString[i] <> "}",
+                MandelstamT -> "t", MandelstamS -> "s", MandelstamU -> "u", 
+                ParticleMass[Pion] -> "m_{\rm \pi}", 
+                ParticleMass[Kaon] -> "m_{\rm K}", 
+                ParticleMass[EtaMeson] -> "m_{\rm \eta}",
+                ScaleMu -> "\mu", 
+                fcpa[Momentum[p2], Momentum[p2]] -> "q^2"},
+
+            FormatType -> InputForm, PageWidth -> 120],
+          {"\"" -> "", 
+            "\pi" -> "pi", "\log" -> "log", "\delta" -> "delta", 
+            "\mu" -> "mu", "\eta" -> "eta", "I" -> "i", 
+            "\overline" -> "overline", "[" -> "(", "]" -> ")", "*" -> " ", 
+            "\n" -> "", "LeutwylerJBar" -> "\overline{J}"}
+  ] // removeBlankSpace // StandardForm // InputForm;
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
