@@ -1,5 +1,4 @@
 (* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: *)
 
@@ -29,17 +28,20 @@ des  := des                 = MakeContext["DiracTrick"];
 
 dotLin[z_] := dotsimplify[z(*/.Dot -> DOT*), expanding -> False];
 
+dicomm[a___,diracgamma[vl_[y__],di___],
+            diracgamma[lv_[z__],dim___],b___
+      ]:= memset[ dicomm[a, diracgamma[vl[y], di], diracgamma[lv[z], dim], b],
+          ( (-des[a,diracgamma[lv[z],dim], diracgamma[vl[y],di],b
+                 ] +( (2 sCO[vl[y],lv[z]] des[a,b])/.sCO->(*scev*)pair)
+             )/.sCO->(*scev*)pair
+           )    ]/; !OrderedQ[{lv[y],vl[z]}];
+
+dessav[x__] := memset[dessav[x], des[x]];
+
 diraccanonical[ x_,y__ ]:=diraccanonical[x.y];
    diraccanonical[x_]:=memset[diraccanonical[x],
          Block[{diraccanres},    (*diraccanonicaldef*)
-       diraccanres = x//.{
-    de_[a___,diracgamma[vl_[y__],di___],
-             diracgamma[lv_[z__],dim___],b___
-       ] :>( (-des[a,diracgamma[lv[z],dim], diracgamma[vl[y],di],b
-                 ] +( (2 sCO[vl[y],lv[z]] des[a,b])/.sCO->(*scev*)pair)
-             )/.sCO->(*scev*)pair
-           )/; !OrderedQ[{lv[y],vl[z]}]
-                         } /. DOT -> des /. des -> DOT;
+       diraccanres = x //. DOT -> dicomm /. dicomm -> DOT /. DOT-> dessav /. des -> DOT;
 (* change here in Expand : 24.5.93 *)
     diraccanres = Expand[dotLin[ diraccanres ], diracgamma
                         ] /. pair -> sCO /. sCO->pair;
