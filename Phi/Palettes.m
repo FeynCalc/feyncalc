@@ -18,7 +18,7 @@
 m
 BeginPackage[
     "HighEnergyPhysics`Phi`Palettes`", {"HighEnergyPhysics`Phi`", 
-      "HighEnergyPhysics`Phi`Objects`"}];
+    "HighEnergyPhysics`FeynCalc`", "HighEnergyPhysics`Phi`Objects`"}];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
