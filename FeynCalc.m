@@ -29,10 +29,11 @@
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
 System`MyBeginPackage[a_,b___] :=
-(NoPrint["MB ", a]; Hold[BeginPackage][a,b]//ReleaseHold);
+((*What is this? F.Orellana.23/2-2003*)(*NoPrint["MB ", a];*)
+ Hold[BeginPackage][a,b]//ReleaseHold);
 
 System`MyEndPackage[] :=
-(NoPrint["EE ", Context[]]; EndPackage[]);
+((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
 HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.2.0";
 
@@ -154,9 +155,10 @@ Quitting the Mathematica kernel."];
 (* ------------------------------------------------------------------------ *)
 
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
-  {"Tarcer", "tarcer", "Phi", ".AppleDouble",
-   "FeynArts", "GraphInfo", "Models", "documentation", "Documentation",
-   "CVS", "cvs"};
+  {"Tarcer", "tarcer", "Phi",
+   "FeynArts", "GraphInfo", "Models", "ShapeData",
+   "documentation", "Documentation",
+   "CVS", "cvs", ".AppleDouble"};
 
 HighEnergyPhysics`FeynCalc`Private`configfile= "FCConfig.m";
 
@@ -338,8 +340,8 @@ $FeynCalcVersion::"usage"=
 $FCS::"usage"="$FCS is a list of functions with a short name. \
 E.g. GA[nu] can be used instead of DiracGamma[nu]." ;
 
-$FCT::"usage"="If $FCT is set to True special typesetting rules are \
-applied (FeynCalcTypesetting).";
+$FCT::"usage"="If $FCT is set to True special typesetting rules for \
+built-in functions (like Dot) are changed.";
 
 $FortranContinuationCharacter::"usage"="$FortranContinuationCharacter \
 is the continuation character used in Write2.";
@@ -447,6 +449,21 @@ $Abbreviations = {", "->"","^"->"","{"->"", "/" -> "",
                   "}"->"", "["->"", "]"->"", "*" -> "", " " -> "" ,
 		  "\n" -> "", "\r" -> ""};
 
+(* Added 23/2-2003. F.Orellana. *)
+$Multiplications::"usage" =
+    "$Multiplications is a set functions which should be treated as
+(commutative or non-commutative) multiplications by FieldDerivative.";
+
+$DistributiveFunctions::"usage" =
+    "$DistributiveFunctions is a set of functions over which FieldDerivative
+should be distributed.";
+
+$Containers::"usage" =
+    "$FieldContainers is a set of heads over which FieldDerivative should
+distribute, in the following sense: Let c be a member of $Containers. Then
+FieldDerivative[c[f, g, h][x], x, {mu}] ->
+c[FieldDerivative[f[x], x, {mu}], FieldDerivative[f[x], x, {mu}],
+FieldDerivative[f[x], x, {mu}]].";
 
 TBox::"usage"="TBox[a, b, ...] produces a RowBox[{a,b, ...}] where \
 a,b, ... are boxed in TraditionalForm.";
@@ -458,7 +475,24 @@ OptionsSelect::"usage"= "OptionsSelect[function,opts] returns the option setting
 accepted by function.  When an option occurs several times in opts, the first \
 setting is selected";
 
+(* DOT moved into main context. 32/2-2003. F.Orellana.
+   The reason for this is the following: In order to use
+   DOT instead of Dot consistenly everywhere, we need to be
+   able to do e.g. f[DOT[a_,b_]]:=g[a,b]. Because DOT is immediately
+   set to something else (Dot), this works only if DOT is in
+   $ContextPath at the moment this definition is evaluated.
+   In the context of the packages, $ContextPath is typically
+   {"System`", "HighEnergyPhysics`package`", "HighEnergyPhysics`FeynCalc`"}. *)
 
+DOT::"usage" =
+"DOT[a, b, ...] is the FeynCalc function for non-commutative \
+multiplication. By default it is set to the Mathematica Dot \
+functions. By setting  \n
+DOT=. \n
+this can be disabled. \
+Note that then non-commutative products should to be entered \
+like DOT[ DiracMatrix[mu], m + DiracSlash[p], DiracMatrix[mu] ], \
+etc.";
 
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
@@ -483,7 +517,7 @@ $Covariant = False;
 $FCS = {"FAD", "FV", "FVD", "GA", "GA5", "GS",
           "GSD", "LC", "LCD", "MT","MTD", "SD", "SOD",
           "SP", "SPC", "SPD", "SPL", "FCI", "FCE", "FI",
-          "FC", "GGV", "GP", "QGV", "QO"
+          "FC", "GGV", "GP", "QGV", "QO", "FDr", "CDr"
          };
 
 $FCT  = False;
@@ -500,6 +534,12 @@ $SpinorMinimal = False;
 If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 
 $West = True;
+
+DOT = Dot;
+
+$Multiplications = {Times, DOT};
+$DistributiveFunctions = {Conjugate, Transpose};
+$Containers = {};
 
 FI := (Format[LineBreak[_]]:= ""; $PrePrint=InputForm;);
 FC := (Format[LineBreak[_]]:= "\n";
@@ -686,6 +726,7 @@ embo = MakeBoxes[Times[a], TraditionalForm];
 SetAttributes[Times, Orderless];
 embo ) /; $FCT === True;
 
+
 End[];
 MyEndPackage[];
 
@@ -826,7 +867,7 @@ Anti5[exp, -n] anticommutes all gamma5 n times to the left.";
 
 Begin["`Private`"];
 
-MakeContext[DiracGamma, DOT, FeynCalcInternal, MemSet];
+MakeContext[DiracGamma, FeynCalcInternal, MemSet];
 
 Anti5[a_/;FreeQ[a, DiracGamma[5]],_] := a;
 Anti5[x_, Infinity] := FixedPoint[Anti5, x, $RecursionLimit];
@@ -1254,8 +1295,7 @@ Begin["`Private`"];
 
 MakeContext[
 AntiCommutator,
-Commutator,
-DOT
+Commutator
 ];
 
 CommutatorExplicit[exp_] := exp /.
@@ -1285,6 +1325,8 @@ Null
 
 (* ------------------------------------------------------------------------ *)
 
+(*
+
 MyBeginPackage["HighEnergyPhysics`FeynCalc`ComplexIndex`",
              "HighEnergyPhysics`FeynCalc`"];
 
@@ -1305,6 +1347,8 @@ End[]; MyEndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "ComplexIndex | \n "]];
 Null
+
+*)
 
 
 
@@ -1365,46 +1409,6 @@ Begin["`Private`"];
 End[]; MyEndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "CouplingConstant | \n "]];
-Null
-
-
-
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-
-(* :Title: DOT *)
-
-(* :Author: Rolf Mertig *)
-
-(* ------------------------------------------------------------------------ *)
-(* :History: created 4 March '97 at 14:34 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: DOT *)
-
-(* ------------------------------------------------------------------------ *)
-
-MyBeginPackage["HighEnergyPhysics`FeynCalc`DOT`",
-             "HighEnergyPhysics`FeynCalc`"];
-
-DOT::"usage" =
-"DOT[a, b, ...] is the FeynCalc function for non-commutative \
-multiplication. By default it is set to the Mathematica Dot \
-functions. By setting  \n
-DOT=. \n
-this can be disabled. \
-Note that then non-commutative products should to be entered \
-like DOT[ DiracMatrix[mu], m + DiracSlash[p], DiracMatrix[mu] ], \
-etc.";
-
-(* ------------------------------------------------------------------------ *)
-
-Begin["`Private`"];
-
-DOT = Dot;
-
-End[]; MyEndPackage[];
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-If[$VeryVerbose > 0,WriteString["stdout", "DOT | \n "]];
 Null
 
 
@@ -1813,8 +1817,6 @@ DiraGamma[x, 4] simplifies to DiracGamma[x].";
 
 Begin["`Private`"];
 
-dot := dot = MakeContext["DOT"];
-
 MakeContext[ LorentzIndex, ExplicitLorentzIndex, Momentum,
              DeclareNonCommutative, DiracGammaT];
 
@@ -1838,28 +1840,28 @@ DiracGamma[_, 0]   := 0;
 DiracGamma[0]       = 0;
 DiracGamma[0, _]   := 0;
 DiracGamma[a_Plus] := Map[DiracGamma, a];
-DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___]] := dot[
+DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___]] := DOT[
   DiracGamma[Momentum[x,dix], dix], DiracGamma[Momentum[y,diy], diy]];
-DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___], z__] := dot[
+DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___], z__] := DOT[
   DiracGamma[Momentum[x,dix], dix], DiracGamma[Momentum[y,diy], diy],
 DiracGamma[z]];
 
-DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___]] := dot[
+DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___]] := DOT[
   DiracGamma[LorentzIndex[x,dix], dix],
     DiracGamma[LorentzIndex[y,diy], diy]];
-DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___], z__] := dot[
+DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___], z__] := DOT[
   DiracGamma[LorentzIndex[x,dix], dix],
   DiracGamma[LorentzIndex[y,diy], diy], DiracGamma[z]];
 
-DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___]] := dot[
+DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___]] := DOT[
   DiracGamma[LorentzIndex[x,dix], dix], DiracGamma[Momentum[y,diy], diy]];
-DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___], z__] := dot[
+DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___], z__] := DOT[
   DiracGamma[LorentzIndex[x,dix], dix], DiracGamma[Momentum[y,diy], diy],
    DiracGamma[z]];
 
-DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___]] := dot[
+DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___]] := DOT[
   DiracGamma[Momentum[x,dix], dix], DiracGamma[LorentzIndex[y,diy], diy]];
-DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___], z__] := dot[
+DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___], z__] := DOT[
   DiracGamma[Momentum[x,dix], dix], DiracGamma[LorentzIndex[y,diy], diy],
    DiracGamma[z]];
 
@@ -2012,9 +2014,16 @@ Begin["`Private`"];
 
 MakeContext[ DiracGamma, MomentumExpand, Momentum];
 
+(* Catch DiracGamma[Momentum[a] + Momentum [b] +...].
+   F.Orellana. 26/2-2003 *)
+(* Redundant I think.*)
+(*extraDiracRule = DiracGamma[b : HoldPattern[
+      Plus[(___*Momentum[__] | Momentum[__]) ..]], dim___]  :>
+      (DiracGamma[#, dim]& /@ b);*)
+
 DiracGammaExpand[x_] :=
 If[FreeQ[x, DiracGamma], MakeContext["FeynCalcInternal"][x], x
-  ] /. DiracGamma -> gaev /. gaevlin -> DiracGamma;
+  ] /. DiracGamma -> gaev /. gaevlin -> DiracGamma (*/. extraDiracRule*);
 gaev[x_,di___]       := gaevlin[Expand[x//MomentumExpand, Momentum], di];
 gaevlin[n_Integer]             := DiracGamma[n]; (* necessary !!!!!! *)
 gaevlin[x_Plus, di___]         := Map[gaevlin[#, di]&, x];
@@ -2116,11 +2125,12 @@ DiracMatrix[a_Integer] := DiracGamma[a];
    which will be translated by FCI anyway as soon as
    Contract, DiracSimplify, ... is applied.
    With this alternative input method, integers are wrapped
-   in ExplicitLorentzIndex, prohibiting DiracSimplify from working. *)
+   in ExplicitLorentzIndex, prohibiting DiracSimplify from working
+   (could of course easily be fixed). *)
 
-DiracMatrix[a_Dot, opt___Rule] := Map[DiracGamma[LorentzIndex[#,
+DiracMatrix[DOT[a_,b__], opt___Rule] := Map[DiracGamma[LorentzIndex[#,
  Dimension /. {opt} /. Options[DiracMatrix]],
- Dimension /. {opt} /. Options[DiracMatrix]]&, a];
+ Dimension /. {opt} /. Options[DiracMatrix]]&, DOT[a,b]];
 
 DiracMatrix[a_, opt___Rule] := (DiracGamma[LorentzIndex[a,
   Dimension /. {opt} /. Options[DiracMatrix]],
@@ -2183,11 +2193,10 @@ expanding := expanding      = MakeContext["Expanding"];
 fci := fci                  = MakeContext["FeynCalcInternal"];
 pair := pair                = MakeContext["Pair"];
 sCO  := sCO                 = MakeContext["PairContract"];
-dot  := dot                 = MakeContext["DOT"];
 des  := des                 = MakeContext["DiracTrick"];
 
 
-dotLin[z_] := dotsimplify[z(*/.Dot -> dot*), expanding -> False];
+dotLin[z_] := dotsimplify[z(*/.Dot -> DOT*), expanding -> False];
 
 diraccanonical[ x_,y__ ]:=diraccanonical[x.y];
    diraccanonical[x_]:=memset[diraccanonical[x],
@@ -2199,7 +2208,7 @@ diraccanonical[ x_,y__ ]:=diraccanonical[x.y];
                  ] +( (2 sCO[vl[y],lv[z]] des[a,b])/.sCO->(*scev*)pair)
              )/.sCO->(*scev*)pair
            )/; !OrderedQ[{lv[y],vl[z]}]
-                         } /. dot -> des /. des -> dot;
+                         } /. DOT -> des /. des -> DOT;
 (* change here in Expand : 24.5.93 *)
     diraccanres = Expand[dotLin[ diraccanres ], diracgamma
                         ] /. pair -> sCO /. sCO->pair;
@@ -2209,8 +2218,8 @@ DiracOrder[x__] := diracord@@fci[{x}];
 
 diracord[x_]              := FixedPoint[diraccanonical, x, 42];
 diracord[x_,y___,z_]      := FixedPoint[diraccanonical,
-                              dot[x,y,z], 42]/;Head[z]=!=List;
-diracord[x_,y__,ord_List] := diracord[dot[x,y],ord];
+                              DOT[x,y,z], 42]/;Head[z]=!=List;
+diracord[x_,y__,ord_List] := diracord[DOT[x,y],ord];
 
 diracord[x_,ord_List]     := memset[diracord[x,ord], Block[
      {diracordrev=Reverse[ord], diracordz,
@@ -2226,7 +2235,7 @@ diracord[x_,ord_List]     := memset[diracord[x,ord], Block[
         ( 2 sCO[vl[y],lv[diracordz0,dime]] des[a,b] )/.sCO->pair
       )
    ) /; !FreeQ[lv[diracordz0, dime], diracordz]
-            } /. dot -> des /. des -> dot, {diracordi,1,Length[ord]}
+            } /. DOT -> des /. des -> DOT, {diracordi,1,Length[ord]}
       ];
       (Expand[dotLin[diracordres], diracgamma])/.pair->sCO/.sCO->pair]];
 
@@ -2294,16 +2303,16 @@ MakeContext[ Dimension];
 
 fci := fci = MakeContext["FeynCalcInternal"];
 
-MakeContext[ DeclareNonCommutative, DiracGamma, DOT, Momentum];
+MakeContext[ DeclareNonCommutative, DiracGamma, Momentum];
 
 DeclareNonCommutative[DiracSlash];
 
 Options[DiracSlash] = {Dimension -> 4, fci -> True};
 
 
-DiracSlash[a_Dot, opt___Rule] := Map[DiracGamma[LorentzIndex[#,
+DiracSlash[DOT[a_,b__] opt___Rule] := Map[DiracGamma[LorentzIndex[#,
  Dimension /. {opt} /. Options[DiracSlash]],
- Dimension /. {opt} /. Options[DiracSlash]]&, a];
+ Dimension /. {opt} /. Options[DiracSlash]]&, DOT[a,b]];
 
 DiracSlash[a_, opt___Rule] :=
 DiracGamma[Momentum[a, Dimension /. {opt} /. Options[DiracSlash]],
@@ -2358,14 +2367,13 @@ Only antisymmetry is implemented.";
 
 Begin["`Private`"];
 
-dot := dot  = MakeContext["DOT"];
 MakeContext[ DiracGamma, DiracMatrix, DiracSlash];
 
 If[FreeQ[$NonComm, DiracSigma] && Head[$NonComm]===List,
    AppendTo[$NonComm, DiracSigma]];
 
 (* by definition *)
-DiracSigma[dot[a_,b_]] := DiracSigma[a,b];
+DiracSigma[DOT[a_,b_]] := DiracSigma[a,b];
 DiracSigma[___, 0, ___]       = 0;
 DiracSigma[a_, b_] := - DiracSigma[b, a] /; !OrderedQ[{a,b}];
 
@@ -2419,12 +2427,11 @@ DiracSimplify.";
 
 Begin["`Private`"];
 
-dot := dot  = MakeContext["DOT"];
 fci := fci  = MakeContext["FeynCalcInternal"];
 MakeContext[ DiracGamma, DiracMatrix, DiracSigma, DiracSlash];
 
 dirsigex[a_DiracGamma, b_DiracGamma] := dirsigex[a,b] =
-I/2 (dot[a, b] - dot[b, a]);
+I/2 (DOT[a, b] - DOT[b, a]);
 
 dirsigex[DiracMatrix[a_, b_]] := dirsigex[DiracMatrix[a,b]] =
  I/2 (DiracMatrix[a, b] - DiracMatrix[b, a]);
@@ -2901,7 +2908,14 @@ If[(fci /. {ru} /. Options[ExpandScalarProduct]),
 
 ExpandScalarProduct[x_, y_ /;Head[y] =!= Rule] := scev[x, y];
 
-pairexpand1[x_]:=  x/.pair->scevdoit;
+(* Catch Pair[LorentzIndex[mu], Momentum[a] + Momentum [b] +...].
+   F.Orellana. 26/2-2003 *)
+extraMomRule = pair[lorentzindex[a__],
+               b : Plus[(___*momentum[__] | momentum[__]),
+                        (___*momentum[__] | momentum[__]) ...]]  :>
+               (pair[lorentzindex[a], #]& /@ b);
+
+pairexpand1[x_]:=  x /. pair->scevdoit /. extraMomRule;
 
 
 (* not always a good idea (IFPD)
@@ -2984,7 +2998,7 @@ BeginPackage["HighEnergyPhysics`FeynCalc`Explicit`",
 
 Explicit::"usage" = 
 "Explicit is an option for FieldStrength, GluonVertex,
-SUNF, and Twist2GluonOperator. 
+SUNF, CovariantFieldDerivative, Twist2GluonOperator and others functions. 
 If set to True the full form of the operator is inserted. 
 Explicit[exp] inserts explicit expressions of FieldStrength, 
 GluonVertex and Twist2GluonOperator in exp. SUNF's are replaced 
@@ -3247,7 +3261,6 @@ DiracSigma   := DiracSigma    = MakeContext["DiracSigma"];
 diracslash   := diracslash    = MakeContext["DiracSlash"];
 diractrace   := diractrace    = MakeContext["DiracTrace"];
 DiracGammaT  := DiracGammaT   = MakeContext["DiracGammaT"];
-dot          := dot           = MakeContext["DOT"];
 eps          := eps           = MakeContext["Eps"];
 Epsilon      := Epsilon       = MakeContext["Epsilon"];
 FinalSubstitutions :=FinalSubstitutions = MakeContext["FinalSubstitutions"];
@@ -3428,7 +3441,7 @@ feynCalcForm[x_,opt___Rule]:=Block[{xxxx = Evaluate[x], subs},
                   xxxx = xxxx /. subs;
                   xxxx = xxxx/.(n_Real Second)->timefix[n];
                   xxxx = (xxxx/.
-         dot:>fcdot /.
+         DOT:>fcdot /.
          sub["SUNN", "N"]/.
          If[CC["SUNTrace"],  suntrace :> "tr", {}] /.
          If[CC["LeviCivita"],  levicivita[v__] :> epsd[v], {}] /.
@@ -3583,25 +3596,25 @@ feynCalcForm[x_,opt___Rule]:=Block[{xxxx = Evaluate[x], subs},
          If[CC["Spinor"],
             {
              fcdot[spinor[-p_, 0, ___], a__] :>
-               dot["v"[-p/.momentum->iDentity], a],
+               DOT["v"[-p/.momentum->iDentity], a],
              fcdot[spinor[p_, 0, ___], a__]  :>
-               dot["u"[p/.momentum->iDentity], a],
+               DOT["u"[p/.momentum->iDentity], a],
              fcdot[a__,spinor[-p_, 0, ___] ] :>
-               dot["v"[-p/.momentum->iDentity], a],
+               DOT["v"[-p/.momentum->iDentity], a],
              fcdot[a__, spinor[p_, 0, ___]]  :>
-               dot[a, "u"[p/.momentum->iDentity]]
+               DOT[a, "u"[p/.momentum->iDentity]]
             }, {}
            ]/.
          If[CC["Spinor"],
             {
              fcdot[spinor[-p_, mas_, _], a__] :>
-               dot["v"[-p/.momentum->iDentity,mas], a],
+               DOT["v"[-p/.momentum->iDentity,mas], a],
              fcdot[spinor[p_, mas_, _], a__]  :>
-               dot["u"[p/.momentum->iDentity,mas], a],
+               DOT["u"[p/.momentum->iDentity,mas], a],
              fcdot[a__,spinor[-p_, mas_, _] ] :>
-               dot[a, "v"[-p/.momentum->iDentity,mas]],
+               DOT[a, "v"[-p/.momentum->iDentity,mas]],
              fcdot[a__, spinor[p_, mas_, _]]  :>
-               dot[a, "u"[p/.momentum->iDentity,mas]]
+               DOT[a, "u"[p/.momentum->iDentity,mas]]
             }, {}
            ]/.
          If[CC["Spinor"],
@@ -3665,7 +3678,7 @@ feynCalcForm[x_,opt___Rule]:=Block[{xxxx = Evaluate[x], subs},
             { partial[a_] :> "P"[a]
             }, {}
            ]/.
-        fcdot:>fcdot2/. (*fcdot2 -> dot /.*)
+        fcdot:>fcdot2/. (*fcdot2 -> DOT /.*)
          If[CC["DiracTrace"], diractrace[v__] :> ditr[v], {}] /.
          lorentzindex[v__] :> didl[v]  /.
          If[CC["QuantumField"],
@@ -4008,7 +4021,7 @@ FCIntegrate::"usage"=
 "FCIntegrate is an option of certain Feynman integral related functions. \
 It determines which integration function is used to evaluate analytic \
 integrals. Possible settings include Integrate, NIntegrate,
-(Dot[Integratedx@@#2, #1] &).";
+(DOT[Integratedx@@#2, #1] &).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -4044,7 +4057,7 @@ which may return output containing both integrals that can be evaluated \
 and integrals that can only be evaluated numerically. \
 It then determines which integration function is used to evaluate numeric \
 integrals. Possible settings include NIntegrate, (0*#1)&, \
-(Dot[Integratedx@@#2, #1] &).";
+(DOT[Integratedx@@#2, #1] &).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -4248,7 +4261,7 @@ FeynAmpDenominator[ar__List] := FeynAmpDenominator[ar] =
 FeynCalcInternal[FAD[ar]];
 
     MakeBoxes[f_. FeynAmpDenominator[a__], TraditionalForm
-             ] := (MakeBoxes[#,TraditionalForm]&)@@{f/ Apply[Dot,
+             ] := (MakeBoxes[#,TraditionalForm]&)@@{f/ Apply[DOT,
                    Map[( (#[[1]]/.Momentum[aa_,___]:>aa)^2 -
                           #[[2]]^2 )&, {a}
                       ]
@@ -4342,7 +4355,7 @@ fci := fci = MakeContext["FeynCalcInternal"];
 
 MakeContext[ Dimension, LorentzIndex, Momentum, Pair];
 
-Options[FourVector]  = {Dimension -> 4, FeynCalcInternal -> True};
+Options[FourVector]  = {Dimension -> 4, fci -> True};
 
 (* experimentally *)
 FourVector[a_,b_, c___Rule] :=
@@ -4461,8 +4474,8 @@ Begin["`Private`"];
 
 MakeContext["DeclareNonCommutative"][GA];
 
-GA[x_Dot] := Map[GA,x];
-GA[x_, y__] := Dot @@ Map[GA,{x,y}];
+GA[DOT[x_,y__]] := Map[GA,DOT[x,y]];
+GA[x_, y__] := DOT @@ Map[GA,{x,y}];
 
 GA /:
   MakeBoxes[ GA[x_], TraditionalForm ] := If[$Covariant,
@@ -4539,8 +4552,8 @@ transformed into DiracMatrix[mu, Dimension->D] by FeynCalcInternal.";
 
 Begin["`Private`"];
 
-GAD[x_Dot] := Map[GAD, x];
-GAD[x_, y__] := Dot @@ Map[GAD,{x,y}];
+GAD[DOT[x_,y__]] := Map[GAD, DOT[x,y]];
+GAD[x_, y__] := DOT @@ Map[GAD,{x,y}];
 
 GAD /:
   MakeBoxes[ GAD[x_], TraditionalForm ] := If[$Covariant,
@@ -4582,9 +4595,9 @@ Begin["`Private`"];
 
 MakeContext["DeclareNonCommutative"][GS];
 
-GS[x_Dot] := Map[GS,x];
+GS[DOT[x_,y__]] := Map[GS,DOT[x,y]];
 
-GS[x_, y__] := Dot @@ Map[GS,{x,y}];
+GS[x_, y__] := DOT @@ Map[GS,{x,y}];
 
 GS/:
   MakeBoxes[ GS[a_/;FreeQ[a,Plus]],
@@ -4636,8 +4649,8 @@ Begin["`Private`"];
 
 MakeContext["DeclareNonCommutative"][GSD];
 
-GSD[x_Dot] := Map[GSD, x];
-GSD[x_, y__] := Dot @@ Map[GSD, {x, y}];
+GSD[DOT[x_,y__]] := Map[GSD, DOT[x,y]];
+GSD[x_, y__] := DOT @@ Map[GSD, {x, y}];
 
 GSD/:
   MakeBoxes[ GSD[a_/;FreeQ[a,Plus]],
@@ -5174,41 +5187,6 @@ If[$VeryVerbose > 0,WriteString["stdout", "IntermediateSubstitutions | \n "]];
 Null
 
 
-
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-
-(* :Title: IsolateHead *)
-
-(* :Author: Rolf Mertig *)
-
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:59 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: option for several functions *)
-
-(* ------------------------------------------------------------------------ *)
-
-MyBeginPackage["HighEnergyPhysics`FeynCalc`IsolateHead`",
-             "HighEnergyPhysics`FeynCalc`"];
-
-IsolateHead::"usage" =
-"IsolateHead is equivalent to IsolateNames.";
-
-(* ------------------------------------------------------------------------ *)
-
-Begin["`Private`"];
-
-(*Why?? Commentex out 8/9-2002, F.Orellana*)
-(*MakeContext[IsolateNames];*)
-
-End[]; MyEndPackage[];
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-If[$VeryVerbose > 0,WriteString["stdout", "IsolateHead | \n "]];
-Null
-
-
-
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: IsolateNames *)
@@ -5419,7 +5397,7 @@ LeftPartialD::"usage"=
 Begin["`Private`"];
 
 MakeContext[ Commutator, DeclareNonCommutative,
-    DOT, FreeQ2, LorentzIndex, Momentum, OPEDelta, RightPartialD];
+    FreeQ2, LorentzIndex, Momentum, OPEDelta, RightPartialD];
 (*Bug fix, 30/1-2003. F.Orellana*)
 DeclareNonCommutative[LeftPartialD];
 (* ******************************************************************** *)
@@ -5473,7 +5451,7 @@ MyBeginPackage["HighEnergyPhysics`FeynCalc`LeftRightPartialD`",
 
 LeftRightPartialD::"usage"=
 "LeftRightPartialD[mu] denotes partial_mu, acting to the left and
-right. PartialExplit[LeftRightPartialD[mu]] gives
+right. ExplicitPartialD[LeftRightPartialD[mu]] gives
 1/2 (RightPartialD[mu] - LeftPartialD[mu]).";
 
 (* ------------------------------------------------------------------------ *)
@@ -5481,7 +5459,7 @@ right. PartialExplit[LeftRightPartialD[mu]] gives
 Begin["`Private`"];
 
 MakeContext[DeclareNonCommutative,
-            DOT, FreeQ2, Momentum, LorentzIndex, OPEDelta];
+            FreeQ2, Momentum, LorentzIndex, OPEDelta];
 
 DeclareNonCommutative[LeftRightPartialD];
 
@@ -5534,7 +5512,7 @@ MyBeginPackage["HighEnergyPhysics`FeynCalc`LeftRightPartialD2`",
 
 LeftRightPartialD2::"usage"=
 "LeftRightPartialD2[mu] denotes partial_mu, acting to the left and
-right. ExplitPartialD[LeftRightPartialD2[mu]] gives
+right. ExplicitPartialD[LeftRightPartialD2[mu]] gives
 (RightPartialD[mu] + LeftPartialD[mu]).";
 
 (* ------------------------------------------------------------------------ *)
@@ -5542,7 +5520,7 @@ right. ExplitPartialD[LeftRightPartialD2[mu]] gives
 Begin["`Private`"];
 
 MakeContext[DeclareNonCommutative,
-       DOT, FreeQ2, Momentum, LorentzIndex, OPEDelta];
+       FreeQ2, Momentum, LorentzIndex, OPEDelta];
 
 DeclareNonCommutative[LeftRightPartialD2];
 
@@ -6864,14 +6842,14 @@ PairContract/: PairContract[LorentzIndex[z_,___],x_] f_[a__] :=
 sCO[Momentum[a_Symbol,b_Symbol]]:=Pair[Momentum[a],Momentum[b]];
 
 PairContract/:
-  HoldPattern[ Dot[A___, PairContract[lor_[z_,___],x_],B___,
-                 m_. f_[a__], c___ ] ] :=
- Dot[A,B,(m f[a]/.LorentzIndex[z,___]->x),c]/;
+   DOT[A___, HoldPattern[PairContract[lor_[z_,___],x_]], B___,
+                 m_. f_[a__], c___ ] :=
+ DOT[A,B,(m f[a]/.LorentzIndex[z,___]->x),c]/;
     ((!FreeQ[f[a], LorentzIndex[z,___]]) && (lor === LorentzIndex));
 
-PairContract/: HoldPattern[ Dot[A___, m_. f_[a__],B___,
-                   PairContract[lor_[z_,___],x_], c___ ] ] :=
- Dot[A.(m f[a]/.LorentzIndex[z,___]->x),B,c]/;
+PairContract/: DOT[A___, m_. f_[a__], B___,
+                   HoldPattern[PairContract[lor_[z_,___],x_]], c___ ] :=
+ DOT[A.(m f[a]/.LorentzIndex[z,___]->x),B,c]/;
    ((!FreeQ[f[a]//Hold,LorentzIndex[z,___]]) && (lor === LorentzIndex));
 (* **************************************************************** *)
 (* definitions for dimension = D-4                                  *)
@@ -7033,13 +7011,15 @@ MyBeginPackage["HighEnergyPhysics`FeynCalc`PartialD`",
              "HighEnergyPhysics`FeynCalc`"];
 
 PartialD::"usage"=
-"PartialD[mu] denotes partial_mu";
+"PartialD[mu] denotes partial_mu. PartialD[x, mu] denotes d/d x^mu.
+The first one acts on QuantumField[f], the second on QuantumField[f][x],
+where f is some field name and x is a space-time variable.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
-MakeContext[ DOT, FreeQ2, LorentzIndex, Momentum, OPEDelta,
+MakeContext[FreeQ2, LorentzIndex, Momentum, OPEDelta,
 DeclareNonCommutative];
 
 DeclareNonCommutative[PartialD];
@@ -7056,16 +7036,20 @@ PartialD[c:OPEDelta..] := PartialD @@ (Momentum /@ {c});
 PartialD[x_LorentzIndex, y__LorentzIndex] := DOT @@ Map[PartialD, {x, y}];
 PartialD[x_Momentum, y__Momentum] := DOT @@ Map[PartialD, {x, y}];
 
- PartialD /:
-   MakeBoxes[PartialD[x_ ^n_],TraditionalForm] :=
+PartialD /:
+   MakeBoxes[PartialD[x_ ^n_], TraditionalForm] :=
     SubsuperscriptBox["\[PartialD]", Tbox[x], Tbox[n]
                      ] /; Head[x] === Momentum;
 
-   HighEnergyPhysics`FeynCalc`PartialD`PartialD /:
-   MakeBoxes[ HighEnergyPhysics`FeynCalc`PartialD`PartialD[x_],
-              TraditionalForm
-            ] :=
+PartialD /:
+   MakeBoxes[ PartialD[x_], TraditionalForm] :=
     SubscriptBox["\[PartialD]", ToBoxes[x,TraditionalForm]];
+
+PartialD /:
+   MakeBoxes[ PartialD[x_, HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[mu__]], TraditionalForm] :=
+    RowBox[{"\[PartialD]", "/", "\[PartialD]",
+            SuperscriptBox[ToBoxes[x,TraditionalForm], ToBoxes[LorentzIndex[mu],TraditionalForm]]
+            }];
 
 End[]; MyEndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
@@ -7265,7 +7249,12 @@ sunindex := sunindex = MakeContext["SUNIndex"];
 
 PolarizationVector[x_,{y_,z_}]:= PolarizationVector[x, y, z];
 PolarizationVector[x__]:=
-(PolarizationVector[x]=polVec[x] )/; FreeQ[{x}, Pattern];
+(PolarizationVector[x]=polVec[x] )/; FreeQ[{x}, Pattern] &&
+(*Hack to keep unevaluated when given "FeynArts arguments". F.Orellana, 29/3-2003*)
+  (Length[{x}]===2 ||
+  (*FA uses particle name (which is alway not AtomQ) as first argument*)
+  AtomQ[{x}[[1]]] || 
+  Head[{x}[[-1]]===sunindex]);
 
 fourv[x__] := fci[fourvector[x]];
 polVec[k_polarization,mu_]:=
@@ -7647,9 +7636,7 @@ RightPartialD::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-DOT          = MakeContext["DOT"];
 FreeQ2       = MakeContext["FreeQ2"];
 LorentzIndex = MakeContext["LorentzIndex"];
 Momentum     = MakeContext["Momentum"];
@@ -9033,7 +9020,7 @@ Trick::"usage" =
 Begin["`Private`"];
 
 MakeContext[
-DOT, DotSimplify, EpsContract,
+DotSimplify, EpsContract,
 Expanding, FeynAmpDenominator, FeynAmpDenominatorCombine,
 FeynCalcInternal, LorentzIndex, SUNDelta, SUNF,
 SUNIndex, SUNDeltaContract, SUNSimplify, SUNT,
@@ -9274,10 +9261,11 @@ Null
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 (* ************************************************************************ *)
-(* Print startup message *)
+(* Finish and print startup message *)
 (* ************************************************************************ *)
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
+Protect[Dot];
 
 If[tarcerloadedflag===True, ToExpression["ToTFi"];
  Clear[tarcerloadedflag]];
