@@ -5,13 +5,15 @@
 (* *************************************************************** *)
 
 (*
-   Author:              F.Orellana 1998
+   Author:              F.Orellana
+
+   Year:                1998
 
    Mathematica Version: 3.0
 
-   Requirements:        FeynCalc > 3, Phi
+   Requirements:        FeynCalc > 3, PHI
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The standard QED lagrangian
                         for three leptons.

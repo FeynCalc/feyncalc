@@ -5,16 +5,15 @@
 (* ************************************************************** *)
 
 (*
-   Author:              Frederik Orellana 1999
+   Author:              Frederik Orellana
 
-   Additional contexts: HighEnergyPhysics`Phi`Objects`,
-                        HighEnergyPhysics`Phi`ChPTRenormalization`
+   Year:                1999
 
    Mathematica Version: 3.0
 
-   Requirements:        Feyncalc > 3, Phi
+   Requirements:        Feyncalc > 3, PHI
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The ChPT lagrangian for pion to fourth
                         order in the energy (mass).

@@ -5,13 +5,15 @@
 (* *************************************************************** *)
 
 (* 
-   Author:              F.Orellana 1999
+   Author:              F.Orellana
+
+   Year:                2000
 
    Mathematica Version: 3.0 
 
-   Requirements:        FeynCalc > 3, Phi 
+   Requirements:        FeynCalc > 3, PHI 
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The lowest order CP conserving weak ChPT
                         lagrangian with coupling to a scalar source.
@@ -25,10 +27,6 @@
 Begin["HighEnergyPhysics`Phi`Objects`"];
 
 (* -------------------------------------------------------------- *)
-
-(*This is just to get things in the right context*)
-HighEnergyPhysics`Phi`Objects`ChPTW3;
-HighEnergyPhysics`Phi`Objects`ChPT3;
 
 ChPTWS32::"usage"=
 "ChPTWS32 is the name of the file containing the definitions for 

@@ -5,13 +5,15 @@
 (* *************************************************************** *)
 
 (*
-   Author:              F.Orellana 1997
+   Author:              F.Orellana
+
+   Year:                1997
 
    Mathematica Version: 3.0
 
-   Requirements:        FeynCalc > 3, Phi
+   Requirements:        FeynCalc > 3, PHI
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The simplest ChPT lagrangian.
 

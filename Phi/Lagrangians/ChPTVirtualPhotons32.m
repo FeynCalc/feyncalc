@@ -5,13 +5,15 @@
 (* *************************************************************** *)
 
 (* 
-   Author:              F.Orellana 2001
+   Author:              F.Orellana
+
+   Year:                2001
 
    Mathematica Version: 4.0 
 
-   Requirements:        FeynCalc > 3, Phi 
+   Requirements:        FeynCalc > 3, PHI 
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The leading order ChPT lagrangian with 
                         electromagnetic couplings.
