@@ -72,8 +72,8 @@ M$GenericCouplings = {
   AnalyticalCoupling[ s1 U[i, mom1,{a}], s2 U[j, mom2,{b}],
       s3 V[k, mom3, {li3,c}] ] ==
    G[1][s1 U[i], s2 U[j], s3 V[k]] .
-      { SUNF[a,b,c] GluonGhostVertex[mom3, li3]
-       }
+      { SUNF[a,b,c] GluonGhostVertex[mom1, li3]
+      }
 }
 
         (* TruncationRules: rule for omitting the wave functions of
