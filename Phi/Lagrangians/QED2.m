@@ -33,21 +33,21 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 QED2::"usage"=
 "QED2.m is the name of the file containing the definitions for
-Lagrangian[QED[2]], which is the QED counterterm lagrangian";
+Lagrangian[QED[2]], which is the QED counterterm lagrangian.";
 
 DM::"usage"=
 "DM := CouplingConstant[QED[2],1] is one of the constants of the
-counterterm QED lagrangian - the mass counterterm";
+counterterm QED lagrangian - the mass counterterm.";
 
 Z2::"usage"=
 "Z2 := CouplingConstant[QED[2],2] is one of the constants of the
 counterterm QED lagrangian - the factor relating the bare to the
-physical electron field";
+physical electron field.";
 
 Z3::"usage"=
 "Z3 := CouplingConstant[QED[2],3] is one of the constants of the
 counterterm QED lagrangian - the factor relating the bare to the
-physical photon field";
+physical photon field.";
 
 (* --------------------------------------------------------------- *)
 

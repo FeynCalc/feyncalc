@@ -29,11 +29,11 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 HBChPT22::"usage"=
 "HBChPT22.m is the name of the file containing the definitions for
 Lagrangian[HBChPT2[2]], which is the SU(2)  ChPT pion-nucleon
-lagrangian.  To evaluate use ArgumentsSupply";
+lagrangian.  To evaluate use ArgumentsSupply.";
 
 GAV::"usage"=
 "GAV := CouplingConstant[HBChPT2[2]] is axial vector
-coupling constant";
+coupling constant.";
 
 (* ------------------------------------------------------------------ *)
 

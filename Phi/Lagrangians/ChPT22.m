@@ -30,7 +30,7 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 ChPT22::"usage"=
 "ChPT22.m is the name of the file containing the definitions for
 Lagrangian[ChPT2[2]], which is the SU(2) lowest order ChPT
-lagrangian.  To evaluate use ArgumentsSupply";
+lagrangian.  To evaluate use ArgumentsSupply.";
 
 (* --------------------------------------------------------------- *)
 

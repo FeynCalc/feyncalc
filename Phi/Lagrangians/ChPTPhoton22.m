@@ -30,7 +30,7 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 ChPTPhoton22::"usage"=
 "ChPTPhoton22.m is the name of the file containing the definitions for
 Lagrangian[ChPT2PhotonPhoton[2]], which is the SU(2) lowest order ChPT
-lagrangian with coupling to a photon.  To evaluate use ArgumentsSupply";
+lagrangian with coupling to a photon.  To evaluate use ArgumentsSupply.";
 
 (* --------------------------------------------------------------- *)
 

@@ -32,155 +32,155 @@ ChPTW34::"usage"=
 "ChPTW34.m is the name of the file containing the definitions for
 Lagrangian[ChPTW3[4]], the lext to leading order CP conserving
 weak ChPT lagrangian for delta S = 1.
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 N1::"usage"=
 "N1 := CouplingConstant[ChPTW3[4],1] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N2::"usage"=
 "N2 := CouplingConstant[ChPTW3[4],2] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N3::"usage"=
 "N3 := CouplingConstant[ChPTW3[4],3] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N4::"usage"=
 "N4 := CouplingConstant[ChPTW3[4],4] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N5::"usage"=
 "N5 := CouplingConstant[ChPTW3[4],5] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N6::"usage"=
 "L6 := CouplingConstant[ChPTW3[4],6] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N7::"usage"=
 "N7 := CouplingConstant[ChPTW3[4],7] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N8::"usage"=
 "N8 := CouplingConstant[ChPTW3[4],8] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N9::"usage"=
 "N9 := CouplingConstant[ChPTW3[4],9] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N10::"usage"=
 "N10 := CouplingConstant[ChPTW3[4],10] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N11::"usage"=
 "N11 := CouplingConstant[ChPTW3[4],11] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N12::"usage"=
 "N12 := CouplingConstant[ChPTW3[4],12] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N13::"usage"=
 "N13 := CouplingConstant[ChPTW3[4],13] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N14::"usage"=
 "N14 := CouplingConstant[ChPTW3[4],14] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N15::"usage"=
 "N15 := CouplingConstant[ChPTW3[4],15] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N16::"usage"=
 "N16 := CouplingConstant[ChPTW3[4],16] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N17::"usage"=
 "N17 := CouplingConstant[ChPTW3[4],17] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N18::"usage"=
 "N18 := CouplingConstant[ChPTW3[4],18] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N19::"usage"=
 "N19 := CouplingConstant[ChPTW3[4],19] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N20::"usage"=
 "N20 := CouplingConstant[ChPTW3[4],20] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N21::"usage"=
 "N21 := CouplingConstant[ChPTW3[4],21] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N22::"usage"=
 "N22 := CouplingConstant[ChPTW3[4],22] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N23::"usage"=
 "N23 := CouplingConstant[ChPTW3[4],23] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N24::"usage"=
 "N24 := CouplingConstant[ChPTW3[4],24] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N25::"usage"=
 "N25 := CouplingConstant[ChPTW3[4],25] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N26::"usage"=
 "N26 := CouplingConstant[ChPTW3[4],26] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N27::"usage"=
 "N27 := CouplingConstant[ChPTW3[4],27] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N28::"usage"=
 "N28 := CouplingConstant[ChPTW3[4],28] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N29::"usage"=
 "N29 := CouplingConstant[ChPTW3[4],29] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N30::"usage"=
 "N30 := CouplingConstant[ChPTW3[4],30] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N31::"usage"=
 "N31 := CouplingConstant[ChPTW3[4],31] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N32::"usage"=
 "N32 := CouplingConstant[ChPTW3[4],32] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N33::"usage"=
 "N33 := CouplingConstant[ChPTW3[4],33] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N34::"usage"=
 "N34 := CouplingConstant[ChPTW3[4],34] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N35::"usage"=
 "N35 := CouplingConstant[ChPTW3[4],35] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N36::"usage"=
 "N36 := CouplingConstant[ChPTW3[4],36] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 N37::"usage"=
 "N37 := CouplingConstant[ChPTW3[4],37] is one of the constants of the
-fourth order weak ChPT lagrangian";
+fourth order weak ChPT lagrangian.";
 
 (* -------------------------------------------------------------- *)
 

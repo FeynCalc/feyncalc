@@ -28,110 +28,110 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 (* -------------------------------------------------------------- *)
 
 ChPTVirtualPhotons24::"usage"=
-"\"ChPTVirtualPhotons24.m\" is the name of the file containing the definitions for
+"ChPTVirtualPhotons24.m is the name of the file containing the definitions for
 Lagrangian[ChPTVirtualPhotons2[4]], which is the pionic ChPT lagrangian
 including virtual photons to fourth order in the energy.
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 L1::"usage"=
 "L1 := CouplingConstant[ChPTVirtualPhotons2[4],1] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L2::"usage"=
 "L2 := CouplingConstant[ChPTVirtualPhotons2[4],2] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L3::"usage"=
 "L3 := CouplingConstant[ChPTVirtualPhotons2[4],3] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L4::"usage"=
 "L4 := CouplingConstant[ChPTVirtualPhotons2[4],4] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L5::"usage"=
 "L5 := CouplingConstant[ChPTVirtualPhotons2[4],5] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L6::"usage"=
 "L6 := CouplingConstant[ChPTVirtualPhotons2[4],6] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L7::"usage"=
 "L7 := CouplingConstant[ChPTVirtualPhotons2[4],7] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 H1::"usage"=
 "H1 := CouplingConstant[ChPTVirtualPhotons2[4],8] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 H2::"usage"=
 "H2 := CouplingConstant[ChPTVirtualPhotons2[4],9] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 H3::"usage"=
 "H3 := CouplingConstant[ChPTVirtualPhotons2[4],10] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K1::"usage"=
 "K1 := CouplingConstant[ChPTVirtualPhotons2[4],11] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K2::"usage"=
 "K2 := CouplingConstant[ChPTVirtualPhotons2[4],12] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K3::"usage"=
 "K3 := CouplingConstant[ChPTVirtualPhotons2[4],13] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K4::"usage"=
 "K4 := CouplingConstant[ChPTVirtualPhotons2[4],14] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K5::"usage"=
 "K5 := CouplingConstant[ChPTVirtualPhotons2[4],15] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K6::"usage"=
 "K6 := CouplingConstant[ChPTVirtualPhotons2[4],16] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K7::"usage"=
 "K7 := CouplingConstant[ChPTVirtualPhotons2[4],17] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K8::"usage"=
 "K8 := CouplingConstant[ChPTVirtualPhotons2[4],18] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K9::"usage"=
 "K9 := CouplingConstant[ChPTVirtualPhotons2[4],19] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K10::"usage"=
 "K10 := CouplingConstant[ChPTVirtualPhotons2[4],20] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K11::"usage"=
 "K11 := CouplingConstant[ChPTVirtualPhotons2[4],21] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K12::"usage"=
 "K12 := CouplingConstant[ChPTVirtualPhotons2[4],22] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K13::"usage"=
 "K13 := CouplingConstant[ChPTVirtualPhotons2[4],23] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K14::"usage"=
 "K14 := CouplingConstant[ChPTVirtualPhotons2[4],24] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K15::"usage"=
 "K15 := CouplingConstant[ChPTVirtualPhotons2[4],25] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 (* ---------------------------------------------------------------- *)
 

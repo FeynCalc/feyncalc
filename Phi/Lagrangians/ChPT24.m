@@ -33,7 +33,7 @@ ChPT24::"usage"=
 "ChPT24.m is the name of the file containing the definitions for
 Lagrangian[ChPT2[4]], which is the pionic ChPT lagrangian to
 fourth order in the energy, first written down by
-Gasser and Leutwyler.  To evaluate use ArgumentsSupply";
+Gasser and Leutwyler.  To evaluate use ArgumentsSupply.";
 
 L1::"usage"=
 "L1 := CouplingConstant[ChPT2[4],1] is one of the constants of the

@@ -33,55 +33,55 @@ ChPTPhoton24::"usage"=
 "ChPTPhoton24.m is the name of the file containing the definitions for
 Lagrangian[ChPTPhoton2[4]], which is the pionic ChPT lagrangian to
 fourth order in the energy, first written down by
-Gasser and Leutwyler.  To evaluate use ArgumentsSupply";
+Gasser and Leutwyler.  To evaluate use ArgumentsSupply.";
 
 L1::"usage"=
 "L1 := CouplingConstant[ChPTPhoton2[4],1] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L2::"usage"=
 "L2 := CouplingConstant[ChPTPhoton2[4],2] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L3::"usage"=
 "L3 := CouplingConstant[ChPTPhoton2[4],3] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L4::"usage"=
 "L4 := CouplingConstant[ChPTPhoton2[4],4] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L5::"usage"=
 "L5 := CouplingConstant[ChPTPhoton2[4],5] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L6::"usage"=
 "L6 := CouplingConstant[ChPTPhoton2[4],6] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L7::"usage"=
 "L7 := CouplingConstant[ChPTPhoton2[4],7] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L8::"usage"=
 "L8 := CouplingConstant[ChPTPhoton2[4],8] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L9::"usage"=
 "L9 := CouplingConstant[ChPTPhoton2[4],9] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 L10::"usage"=
 "L10 := CouplingConstant[ChPTPhoton2[4],10] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 H1::"usage"=
 "H1 := CouplingConstant[ChPTPhoton2[4],11] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 H2::"usage"=
 "H2 := CouplingConstant[ChPTPhoton2[4],12] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 (* ---------------------------------------------------------------- *)
 

@@ -31,67 +31,67 @@ ChPTEM24::"usage"=
 "ChPTEM24.m is the name of the file containing the definitions for
 Lagrangian[ChPTEM2[4]], which is the pionic ChPT lagrangian
 including virtual photons to fourth order in the energy.
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 K1::"usage"=
 "K1 := CouplingConstant[ChPTEM2[4],1] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K2::"usage"=
 "K2 := CouplingConstant[ChPTEM2[4],2] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K3::"usage"=
 "K3 := CouplingConstant[ChPTEM2[4],3] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K4::"usage"=
 "K4 := CouplingConstant[ChPTEM2[4],4] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K5::"usage"=
 "K5 := CouplingConstant[ChPTEM2[4],5] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K6::"usage"=
 "K6 := CouplingConstant[ChPTEM2[4],6] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K7::"usage"=
 "K7 := CouplingConstant[ChPTEM2[4],7] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K8::"usage"=
 "K8 := CouplingConstant[ChPTEM2[4],8] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K9::"usage"=
 "K9 := CouplingConstant[ChPTEM2[4],9] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K10::"usage"=
 "K10 := CouplingConstant[ChPTEM2[4],10] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K11::"usage"=
 "K11 := CouplingConstant[ChPTEM2[4],11] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K12::"usage"=
 "K12 := CouplingConstant[ChPTEM2[4],12] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K13::"usage"=
 "K13 := CouplingConstant[ChPTEM2[4],13] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K14::"usage"=
 "K14 := CouplingConstant[ChPTEM2[4],14] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 K15::"usage"=
 "K15 := CouplingConstant[ChPTEM2[4],15] is one of the constants of the
-fourth order ChPT lagrangian";
+fourth order ChPT lagrangian.";
 
 
 (* ---------------------------------------------------------------- *)
