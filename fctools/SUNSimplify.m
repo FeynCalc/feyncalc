@@ -283,7 +283,8 @@ If[Head[temp] === Times,
    temp = Select[temp, !freeq2[#, {SUNIndex, SUNN, CA, CF}]&];
   ];
 
-temp = temp /. SUNDelta -> SUNDeltaContract;
+temp = temp /. SUNDelta -> SUNDeltaContract/.
+       SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
 
 If[(!FreeQ[temp, SUNIndex]) || (!FreeQ[temp, SUNN]) ||
    (*Added 4/9-2002. Frederik Orellana*) suntraceoption,
@@ -438,7 +439,7 @@ If[jac === True && !FreeQ[temp, SUNF],
 (*If[!FreeQ[temp, ComplexIndex],
    temp = temp /. DOT -> dooot /. 
   {
-   (sunt[SUNIndex[unfL_]] /; FreeQ[{a}, ComplexIndex]) * 
+   (sunt[SUNIndex[a_]] /; FreeQ[{a}, ComplexIndex]) * 
     sunt[SUNIndex[ComplexIndex[b_]]] :>
    DOT[suntrace[sunt[SUNIndex[a]] , sunt[SUNIndex[b]]] ], 
 
