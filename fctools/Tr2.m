@@ -47,7 +47,7 @@ FCI := FCI = MakeContext["FeynCalcInternal"];
 
 MakeContext[ FreeQ2, InsideDiracTrace,
 LorentzIndex, NonCommFreeQ, Select1, Select2, Explicit,
-SUNIndex, SUNSimplify, SUNNToCACF, SUNTrace, Tf, Tr, Trick];
+SUNIndex, SUNSimplify, SUNNToCACF, SUNTrace, Tf, TR, Trick];
 
 Options[ Tr2 ] = {Factoring -> False};
 
@@ -62,14 +62,14 @@ dirtr[x_, ___Rule] := If[FreeQ[x, SUNIndex], DiracTrace[x],
 
 treasy[0] = 0;
 treasy[y_Plus] := Map[treasy, y];
-treasy[a_] := Tr[a] /; NonCommFreeQ[a];
+treasy[a_] := TR[a] /; NonCommFreeQ[a];
 
 treasy[fa_. DiracGamma[5]] := 0 /; FreeQ[fa, DiracGamma];
 treasy[fa_. DOT[x_,y__]] :=
  If[FreeQ[fa, DOT] &&
     (FreeQ2[{x,y}, {DiracGamma[5], DiracGamma[6],  DiracGamma[7]} ] ||
      Length[{x,y}] < 6
-    ), Tr[fa DOT[x,y]],
+    ), TR[fa DOT[x,y]],
     DiracTrace[fa DOT[x,y]]
    ];
 
