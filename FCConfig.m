@@ -45,15 +45,13 @@ here in FCConfig.m
 
 (* Optional modules. By default all are loaded *)
 
-(* $LoadTARCER = False; *)
-(* $LoadPhi = False; *)
-(* $LoadPhi = False; *)
-(* $LoadFeynArts = False; *)
+(* Global`$LoadTARCER = False; *)
+(* Global`$LoadPhi = False; *)
+(* Global`$LoadFeynArts = False; *)
 
-(* you can put the directory for your FeynArts installation here *)
+(* You can put the directory for your FeynArts installation here *)
 (* HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/opt/feynarts" *)
-(* if set to automatic, then FeynArts on the path is loaded *)
-HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic;
+(* if set to Automatic, then FeynArts on the path is loaded *)
 
-(* put this flag to False and no startup messages are printed *)
-Global`$FeynCalcStartupMessages = True;
+(* Put this flag to False and no startup messages are printed *)
+(*Global`$FeynCalcStartupMessages = True;*)
