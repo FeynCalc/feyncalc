@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:59 *)
+(* :History: fixed bug in axial gauge on Sept. 15th 2003 *)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: GluonPropagator *) 
@@ -161,6 +161,7 @@ Block[
 
 If[Head[gauge] === List,
    n = gauge[[1]];
+   If[FreeQ[n, Momentum], n = Momentum[n, dim]];
    glp = 
 I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
               sundelta * (- Pair[mu, nu] +
@@ -169,8 +170,9 @@ I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
                                   ) / Pair[n, p] -
                                   (Pair[n, n] Pair[p,mu] Pair[p,nu]-
                                    gauge[[2]] Pair[p,p] Pair[n,mu] *
-                                   Pair[n,nu]/Pair[n,p]^2
-                                  )
+                                   Pair[n,nu]
+(* bug fix September 14th 2003 ..., wrongly bracketed out ... *)
+                                  ) /Pair[n,p]^2
                           )
        ,
   
