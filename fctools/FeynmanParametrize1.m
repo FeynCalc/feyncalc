@@ -16,11 +16,10 @@ FeynmanParametrize1::usage=
 "FeynmanParametrize1[exp,k,Method->Denominator] introduces Feynman \
 parameters for all one-loop integrals in exp (k = integration momentum) using \
 formula (11.A.1) from \"The Quantum Theory of Fields\" vol. 1 by \
-Steven Weinberg.
-FeynmanParametrize1[exp,k,Method->Exp] introduces Feynman \
+Steven Weinberg.  FeynmanParametrize1[exp,k,Method->Exp] introduces Feynman \
 parameters for all one-loop integrals in exp (k = integration momentum) using \
-1/(A-I eps) = I Integrate[Exp[-I x (A-I eps)],{x,0,Infinity}, \
-    Assumptions->{Arg[A]==0,Arg[eps]==0}]. \
+1/(A-I eps) = I Integrate[Exp[-I x (A-I eps)],{x,0,Infinity}, \ 
+Assumptions->{Arg[A]==0,Arg[eps]==0}]. \
 In this case, when the option Integrate is set to True, odd factors of \
 k-tensors are dropped and even factors are replaced according to \
 Itzykson&Zuber (8-117).";
