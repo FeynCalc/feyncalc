@@ -1212,7 +1212,8 @@ fcpa[a_,b : Plus[-1*_, __]] :> -fcpa[a, -b] /.
 fanoncom[a_] :> (a/.fanoncom->Identity(*Changed 31/1-2002. I have no idea* why mma suddenly screws up here*))} /.
 (*famatr[mat__] -> fcdtr[fcdot[mat], fcdtrev -> False]*)
 If[traceev =!= (fcdtrev /. Options[FAToFC]),
-   famatr[mat__] -> fcdtr[fcdot[mat], fcdtrev -> traceev], {}] /.
+   famatr[mat__] -> fcdtr[fcdot[mat], fcdtrev -> traceev],
+   famatr[mat__] -> fcdtr[fcdot[mat]]] /.
 (*fixing the last momenta without D*)
 {fcpa -> fcpa1, fcmom -> fcmom1} /.
 {fcmom1[a_] -> fcmom1[a, D],fcli[a_] -> fcli[a, D]} /.
