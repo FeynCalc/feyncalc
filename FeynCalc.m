@@ -167,6 +167,9 @@ If[FileNames["*",{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory}] == {},
 
 (* ------------------------------------------------------------------------ *)
 
+(* Maybe this is not a good idea. It is probably better to positively 
+declare explicitly those directoreies which are Package declared 
+*)
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
   {"Tarcer", "tarcer", "Phi",
    "FeynArts", "GraphInfo", "Models", "ShapeData",
@@ -689,14 +692,20 @@ feyncalcdir =  HighEnergyPhysics`FeynCalc`$FeynCalcDirectory;
 SetDirectory[feyncalcdir];
 
 (* get all the directories (like general, qcd, fctools, fctables *)
+(* this is not a good idea, since it will also get files in, e.g., fcexamples ...
 hepdirs = Select[FileNames[], FileType[#]===Directory&];
+*)
+(* I think the only clean way is to list the directories explicitly here ..., or? *)
+hepdirs = { "fcdevel", "fcloops", "fctables", "fctools", "general",  "qcd" };
 
 (* fix for Mac OS *)
 If[StringMatchQ[$OperatingSystem, "*MacOS*"],
   hepdirs = If[StringMatchQ[#, ":*"], StringDrop[#, 1], #] & /@ hepdirs];
 
+(* uncommented for the moment ...
 hepdirs = Complement[ hepdirs,
       HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories];
+*)
 
 declarepackagelist ={};
 
@@ -977,6 +986,7 @@ If[$VersionNumber>3.4,
 Tr[ expression ] calculates the DiracTrace, i.e.,  TR[ expression ],
 if any of DiracGamma, DiracSlash, GA, GAD, GS or GSD are present in expression.";
 
+   Protect@@{ToExpression["Tr"]};
   ];
 
 SetDirectory[savethisdir];
