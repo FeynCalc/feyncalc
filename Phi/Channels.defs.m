@@ -92,11 +92,14 @@ IndicesCleanup::"usage" =
     "IndicesCleanup[expr] renames dummy indices in expr in a systematic way \
 in order to get cancellations and a simpler expression. The expression expr \
 should be in Phi notation, that is, involving the products NM and/or Times, \
-not Dot or NonCommutativeMultiply.  NOTICE : IndicesCleanup will not work \
+not Dot or NonCommutativeMultiply.\n
+NOTICE : IndicesCleanup does not work \
 properly when the indices are nested more than one level down in factors.  \
 The only exceptions to this are terms like NM[UTrace[NM[a]],UTrace[NM[b]]] with \
 a and b having isospin or Lorentz index dependence.  For these however, it may \
-be necessary to apply IndicesCleanup repeatedly";
+be necessary to apply IndicesCleanup repeatedly.\n
+NOTICE : IndicesCleanup does not work for D-dimensional Lorentz indices like \
+LorentzIndex[li, D].";
 
 CNM::"usage" = 
     "CNM[a,b] renames contracted Lorentz and SU(N) indices";
