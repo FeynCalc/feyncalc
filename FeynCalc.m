@@ -909,7 +909,7 @@ Block[{Print},
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
    loadfa = Needs["FeynArts`"];
    If[loadfa=!=$Failed, HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir] ,
-   loadfa = Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]];
+Block[{$Path = {HighEnergyPhysics`FeynCalc`$FeynArtsDirectory}}, loadfa =  Get["FeynArts`"];]
 ]];
 If[loadfa =!=$Failed,
 Block[{faversion},
