@@ -1,8 +1,10 @@
 ------------------------------------------------------------------------------------
-FeynCalc is a Mathematica package for algebraic calculations in elementary particle
-physics covered by the GNU Lesser General Public License.
+FeynCalc is a Mathematica package for algebraic calculations in
+elementary particle physics.
 
 For a descrition of FeynCalc, please see http://www.feyncalc.org/.
+
+This software is covered by the GNU Lesser General Public License.
 ------------------------------------------------------------------------------------
 
 
