@@ -119,20 +119,30 @@ CheckDB[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
       ns=(NoSave/.Flatten[{opts}]/.Options[CheckDB]);
       ch=(Check/.Flatten[{opts}]/.Options[CheckDB]);
 
-      If[FileType[file] === None || fs === True,
-      If[FileType[file] === None,
-        VerbosePrint[1, "File does not exist, evaluating"],
-        If[fs,VerbosePrint[1, "File exists, force evaluating"]]];
+      If[(FileType[file] === None || fs === True) && ch === False,
+      
+        If[FileType[file] === None,
+          VerbosePrint[1, "File does not exist, evaluating"],
+          If[fs,VerbosePrint[1, "File exists, force evaluating"]]
+        ];
         finex = Evaluate[ReleaseHold[ex]];
         If[ns,
           VerbosePrint[1, "NoSave set to True, will evaluate but not save"],
           VerbosePrint[1, "Saving"];
-          Put[finex, file]],
-      VerbosePrint[1, "File exists, loading"];
-        finex = Get[file];
-        If[ch,
-          VerbosePrint[1, "File exists, comparing"];
-          finex = (Expand[Evaluate[ReleaseHold[ex]] - finex] === 0)]
+          Put[finex, file]
+        ],
+        
+        If[FileType[file] === None && fs =!= True,
+          VerbosePrint[1, "File does not exist, cannot load"];
+          finex = ex,
+          VerbosePrint[1, "File exists, loading"]
+          finex = Get[file];
+          If[ch,
+            VerbosePrint[1, "File exists, comparing"];
+            finex = (Expand[Evaluate[ReleaseHold[ex]] - finex] === 0)
+          ]
+        ];
+        
       ];
 
       finex
