@@ -213,8 +213,10 @@ Pair /:
             ] := SuperscriptBox[
                     Tbox[ "(",Momentum[b+c,di], ")"], Tbox[LorentzIndex[a]] ];
 
-
-
+MakeBoxes[Pair[HighEnergyPhysics`FeynCalc`Momentum`Momentum[a_,___],
+               HighEnergyPhysics`FeynCalc`Momentum`Momentum[a_,___]
+              ]^n_Integer, TraditionalForm] := SuperscriptBox[TBox[a], #]&@@{2 n};
+                                                                                                                        
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "Pair | \n "]];
