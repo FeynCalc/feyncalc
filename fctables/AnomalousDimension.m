@@ -11,7 +11,7 @@
 BeginPackage["HighEnergyPhysics`fctables`AnomalousDimension`",
              "HighEnergyPhysics`FeynCalc`"];
 
-AnomalousDimension::usage= 
+AnomalousDimension::"usage"= 
 "AnomalousDimension[\"gnsqg0\"] yields the 
 non-singlet one-loop contribution to the anomalous dimension 
 gamma_{S,qg}^{(0),m} in the MS-bar scheme. etc. ...";

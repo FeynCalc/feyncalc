@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctables`Integrate3`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Integrate3::usage=
+Integrate3::"usage"=
 "Integrate3 is like Integrate, but for some integrals 
 which cannot be done directly by Integrate.
  All variables occuring in Integrate3 are supposed to be 
@@ -5283,7 +5283,7 @@ iT[z^m PolyLog[3, -((1 - z)/(1 + z))],{z,0,1}]+
 RR[a_,b_] := If[$VeryVerbose >2, Print[a];b,b];
 
 (*
-it = HighEnergyPhysics`FeynCalc`Integrate3`Private`iT;
+it = HighEnergyPhysics`fctables`Integrate3`Private`iT;
 
 intt = Hold@@{Global`SUPERTAB};
 

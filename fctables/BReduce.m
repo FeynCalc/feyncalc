@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctables`BReduce`",
              "HighEnergyPhysics`FeynCalc`"];
 
-BReduce::usage=
+BReduce::"usage"=
 "BReduce is an option for B0, B00, B1, B11 determining whether
 reductions to A0 and B0 will be done. ";
 

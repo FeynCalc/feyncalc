@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctables`Integrate5`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Integrate5::usage=
+Integrate5::"usage"=
 "Integrate5 is like Integrate2.";
 
 (* ------------------------------------------------------------------------ *)

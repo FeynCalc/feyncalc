@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctables`SMVertex`",
              "HighEnergyPhysics`FeynCalc`"];
 
-SMVertex::usage = 
+SMVertex::"usage" = 
 "SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives
 the photon-W-W vertex (p,mu correspond to the photon,
 q,nu to the (incoming) W+ and k,rho to the (incoming) W-.

@@ -15,8 +15,8 @@
 BeginPackage["HighEnergyPhysics`fctables`B00`",
              "HighEnergyPhysics`FeynCalc`"];
 
-B00::usage=
-"B00[pp,m1^2,m2^2] is the Passarino - Veltman B00-function, i.e. the
+B00::"usage"=
+"B00[pp,m1^2,m2^2] is the Passarino-Veltman B00-function, i.e. the
 coefficient function of g(mu nu). All arguments are scalars and have
 dimension mass^2.";
 

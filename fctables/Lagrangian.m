@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctables`Lagrangian`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Lagrangian::usage= "Lagrangian[\"oqu\"] gives the unpolarized quark
+Lagrangian::"usage"= "Lagrangian[\"oqu\"] gives the unpolarized quark
 operator. Lagrangian[\"oqp\"] gives the polarized quark operator.";
 
 (* ------------------------------------------------------------------------ *)

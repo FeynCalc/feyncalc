@@ -15,18 +15,18 @@
 BeginPackage["HighEnergyPhysics`fctables`B0`",
              "HighEnergyPhysics`FeynCalc`"];
 
-B0::usage=
-"B0[pp,m1^2,m2^2] is the Passarino - Veltman two point integral.
+B0::"usage"=
+"B0[pp,m1^2,m2^2] is the Passarino-Veltman two point integral.
 All arguments are scalars and have dimension mass^2.";
 
-B0Real::usage=
+B0Real::"usage"=
 "B0Real is an option of B0 (default False). If set to True,
 B0 is assumed to be real and
 the relation B0[a,0,a] = 2 + B0[0,a,a]  is applied.";
 
-B0Unique::usage=
-"B0Unique is an option for B0. If set to True, B0[0,0,m2] is replcaed
-by (B0[0,m2,m2]+1) and B0[m2,0,m2] simplifies to (B0[0,m2,m2]+2).";
+B0Unique::"usage"=
+"B0Unique is an option of B0. If set to True, B0[0,0,m2] is replaced
+with (B0[0,m2,m2]+1) and B0[m2,0,m2] simplifies to (B0[0,m2,m2]+2).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -38,6 +38,7 @@ ClearAttributes[B0, ReadProtectecd];
 A0 = MakeContext["A0"];
 BReduce = MakeContext["BReduce"];
 small = MakeContext["SmallVariable"];
+MakeContext["DB0"];
 
 (* B0def*)
  Options[B0] = { BReduce -> False, B0Unique -> False, B0Real -> False };

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctables`SplittingFunction`",
              "HighEnergyPhysics`FeynCalc`"];
 
-SplittingFunction::usage=
+SplittingFunction::"usage"=
 "SplittingFunction[\"Pqq\", x], SplittingFunction[\"Pqg\", x], 
 SplittingFunction[\"Pgq\", x]  and 
 SplittingFunction[\"Pgg\", x] yield the lowest order splitting functions. 

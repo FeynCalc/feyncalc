@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctables`ConvoluteTable`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ConvoluteTable::usage=
+ConvoluteTable::"usage"=
 "ConvoluteTable[f, g, x] yields the convolution of f and g.";
 
 (* ------------------------------------------------------------------------ *)

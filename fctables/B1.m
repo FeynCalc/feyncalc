@@ -16,8 +16,8 @@ BeginPackage["HighEnergyPhysics`fctables`B1`",
              "HighEnergyPhysics`FeynCalc`"];
 
 
-B1::usage=
-"B1[pp,m1^2,m2^2] is the Passarino - Veltman B1-function.
+B1::"usage"=
+"B1[pp,m1^2,m2^2] is the Passarino-Veltman B1-function.
 All arguments are scalars and have dimension mass^2.";
 
 (* ------------------------------------------------------------------------ *)
@@ -32,6 +32,7 @@ BReduce = MakeContext["BReduce"];
 Factor2 = MakeContext["Factor2"];
 FreeQ2 = MakeContext["FreeQ2"];
 small = MakeContext["SmallVariable"];
+MakeContext["DB1"];
 
  nos[x_] := If[(x =!= 0) && FreeQ[x, small], True, False];
 

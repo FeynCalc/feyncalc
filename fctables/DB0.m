@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DB0*)
+(* :Title: DB0 *)
 
 (* :Author: Rolf Mertig *)
 
@@ -8,14 +8,14 @@
 (* :History: File created on 2 July '97 at 14:41 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:  the m *)
+(* :Summary:  Derivative of B0 *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctables`DB0`",
              "HighEnergyPhysics`FeynCalc`"];
 
-DB0::usage=
+DB0::"usage"=
 "DB0[p2,m1^2,m2^2] is the derivative of the two-point function
 B0[p2,m1^2,m2^2] with respect to p2.";
 

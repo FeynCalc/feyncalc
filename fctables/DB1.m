@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DB1*)
+(* :Title: DB1 *)
 
 (* :Author: Rolf Mertig *)
 
@@ -8,14 +8,14 @@
 (* :History: File created on 19 October '97 at 0:53 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:  the m *)
+(* :Summary:  Derivative of B1 *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctables`DB1`",
              "HighEnergyPhysics`FeynCalc`"];
 
-DB1::usage=
+DB1::"usage"=
 "DB1[p2,m1^2,m2^2] is the derivative of B1[p2,m1^2,m2^2] with respect to p2.";
 
 (* ------------------------------------------------------------------------ *)

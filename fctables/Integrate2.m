@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctables`Integrate2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Integrate2::usage=
+Integrate2::"usage"=
 "Integrate2 is like Integrate, but, schematically,
 Integrate2[a_Plus, b__] := Map[Integrate2[#, b]&, a]  and
 Integrate[f[x] DeltaFunction[1-x], {x,0,1}] --> f[1].
