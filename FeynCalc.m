@@ -44,6 +44,9 @@ HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.0.0beta1";
    Added 21/9-2000 by F.Orellana to ease debugging *)
 (* ------------------------------------------------------------------------ *)
 
+(*Set defaults here, not in the config file*)
+If[!ValueQ[Global`$FeynCalcStartupMessages], Global`$FeynCalcStartupMessages = False];
+
 (*FeynCalcCellPrint=CellPrint;*)
 System`Private`cellmargs = CellMargins->{{Inherited,Inherited},{1,0}};
 System`FeynCalcCellPrint[ce_Cell] :=
@@ -215,6 +218,7 @@ FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory
 If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 
 tarcerloadedflag = True;
+If[Global`$FeynCalcStartupMessages=!=False,
 If[$Notebooks ===True,
    FeynCalcCellPrint[Cell[TextData[{"Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
@@ -223,25 +227,26 @@ HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last]
   ];
 Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
+  ];
 Clear[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames];,
 
 If[$Notebooks ===True,
-txt = {"WARNING! No TARCER*.mx file found. Please evaluate ",
-        ButtonBox["the notebook TARCER.nb",
+txt = {"WARNING! No TARCER*.mx file found. Please evaluate the notebook ",
+        ButtonBox["TARCER.nb",
           ButtonFunction.NotebookOpen1[
               ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
                   "Tarcer"}, "TARCER.nb"]], ButtonStyle -> "Hyperlink",
           ButtonNote -> "Open the notebook TARCER.nb"],
         " or get one of the preprocessed files at ",
         ButtonBox["www.feyncalc.org/tarcer",
-          ButtonData :> {URL["http://www.feyncalc.org/tarcer"], None},
+          ButtonData :> {URL["http://www.feyncalc.org/tarcer/"], None},
           ButtonStyle -> "Hyperlink",
-          ButtonNote -> "http://www.feyncalc.org/tarcer"]} /.
+          ButtonNote -> "http://www.feyncalc.org/tarcer/"]} /.
       Dot -> RuleDelayed /. NotebookOpen1 -> NotebookOpen; CellPrint[
   Cell[TextData[txt], "Text"]];Clear[txt,NotebookOpen1];,
    Print["WARNING! No TARCER*.mx file found. Please evaluate \
 the notebook TARCER.nb or get one of the preprocessed files at \
-http://www.feyncalc.org/tarcer"];
+http://www.feyncalc.org/tarcer/"];
   ];
 ];
 
@@ -819,12 +824,12 @@ If[$Notebooks===True,
        ButtonNote->"Open the help browser"],
      " or visit ",
      ButtonBox["www.feyncalc.org", ButtonData:>{
-      URL[ "http://www.feyncalc.org"], None},
-     ButtonStyle->"Hyperlink", ButtonNote->"http://www.feyncalc.org"]}
+      URL[ "http://www.feyncalc.org/"], None},
+     ButtonStyle->"Hyperlink", ButtonNote->"http://www.feyncalc.org/"]}
     ],"Text"]]
 ,
   WriteString["stdout", "FeynCalc " <> $FeynCalcVersion ,
-              " Type ?FeynCalc for help or visit http://www.feyncalc.org", "\n"];
+              " Type ?FeynCalc for help or visit http://www.feyncalc.org/", "\n"];
 ];
   ];
 If[$Notebooks===True && (!StringMatchQ[$Version, "*1996*"]),
@@ -879,6 +884,10 @@ If[($Notebooks =!= True) && (Global`$FeynCalcStartupMessages =!= False),
 savethisdir=Directory[];
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
+(*Default*)
+If[ValueQ![HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]=!=True,
+   HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic];
+
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
   search = FileNames["FeynArts.m", $Path, 2]/.{s_String,___} :> DirectoryName[s];
   If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
@@ -902,16 +911,18 @@ If[Global`$LoadPhi===True,
 If[ Global`$LoadFeynArts===True,
    If[$Notebooks===True,
       FeynCalcCellPrint[Cell[TextData[{
-     "Loading FeynArts, see www.feynarts.de for documentation"}],
+     "Loading FeynArts, see ", ButtonBox["www.feynarts.de", ButtonData:>{
+	   URL[ "http://www.feynarts.de/"], None},
+	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]," for documentation"}],
                   "Text"]],
       FeynCalcPrint["Loading FeynArts, see www.feynarts.de for documentation"]
    ];
 (* loading *)
-Block[{Print},
+Block[{Print, $Path = Union[$Path, {HighEnergyPhysics`FeynCalc`$FeynArtsDirectory}]},
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
-   loadfa = Needs["FeynArts`"];
+   loadfa = Get["FeynArts`"];
    If[loadfa=!=$Failed, HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir] ,
-Block[{$Path = {HighEnergyPhysics`FeynCalc`$FeynArtsDirectory}}, loadfa =  Get["FeynArts`"];]
+   loadfa =  Get["FeynArts`"];
 ]];
 If[loadfa =!=$Failed,
 Block[{faversion},
@@ -920,9 +931,9 @@ faversion = FindList[ToFileName[{HighEnergyPhysics`FeynCalc`$FeynArtsDirectory},
 
 If[$Notebooks===True,
    FeynCalcCellPrint[Cell[TextData[{
-   "FeynArts " <> faversion <> " patched for use with Phi and FeynCalc loaded"}], "Text"]],
+   "FeynArts " <> faversion <> " patched for use with FeynCalc"}], "Text"]],
    FeynCalcPrint["FeynArts " <> 
-   faversion <> " patched for use with Phi and FeynCalc loaded"
+   faversion <> " patched for use with FeynCalc"
         ] /; Global`$FeynCalcStartupMessages =!= False
 ]];
 ];
@@ -936,8 +947,8 @@ If[$Notebooks===True,
 	  "\n", "and reload FeynCalc",
 	  "\n","FeynArts can be downloaded from ",
 	  ButtonBox["www.feynarts.de", ButtonData:>{
-	   URL[ "http://www.feynarts.de"], None},
-	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de"]}
+	   URL[ "http://www.feynarts.de/"], None},
+	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]}
 	 ],"Text"]],
        WriteString["stdout",
           "FeynArts not found. Please install FeynArts, e.g., in\n ",
@@ -953,7 +964,7 @@ Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
 
-(* yes, it should be done somewhere else, but is does not work ...*)
+(* yes, it should be done somewhere else, but it does not work ...*)
 DeclareNonCommutative@MakeContext["QuarkGluonVertex"];
 DeclareNonCommutative@MakeContext["QuarkPropagator"];
 
