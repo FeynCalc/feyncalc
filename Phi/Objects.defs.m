@@ -13,27 +13,31 @@ Options and environment constants used in multiple sub-packages:
 *)
 
 $SUNRules::"usage" = "$SUNRules is an environment variable used by SUNReduce \
-to (hopefully) simpligy expressions involving the functions SU2Delta, \
+to (hopefully) simplify expressions involving the functions SU2Delta, \
 SU3Delta, SU2F, SU3F and/or SU3D. After changing it, FixSUN should be \
 evaluated"
 
 $SUNDeltaRules::"usage" = "$SUNDeltaRules is an environment variable used by \
-SUNReduce to (hopefully) simpligy expressions involving the functions \
+SUNReduce to (hopefully) simplify expressions involving the functions \
 SU2Delta and/or SU3Delta. After changing it, FixSUN should be evaluated"
 
 $SUNDFRules::"usage" = "$SUNDFRules is an environment variable used by \
-SUNReduce to (hopefully) simpligy expressions involving the functions SU2F, \
+SUNReduce to (hopefully) simplify expressions involving the functions SU2F, \
 SU3F and/or SU3D. After changing it, FixSUN should be evaluated"
 
 $SU3FReduceList::"usage" = "$SU3FReduceList is an environment variable used \
-by SUNReduce to (hopefully) simpligy expressions involving the function SU3F. \
+by SUNReduce to (hopefully) simplify expressions involving the function SU3F. \
 It is regenerated automatically upon evaluating FixSUN and should not be \
 modified by hand"
 
 $SU3DReduceList::"usage" = "$SU3DReduceList is an environment variable used \
-by SUNReduce to (hopefully) simpligy expressions involving the function SU3D. \
+by SUNReduce to (hopefully) simplify expressions involving the function SU3D. \
 It is regenerated automatically upon evaluating FixSUN and should not be \
 modified by hand"
+
+$SymSUNDFRUles::"usage" = "$SymSUNDFRUles is an environment variable used \
+by SUNReduce to (hopefully) simplify expressions involving the functions \
+SU2F, SU3F and SU3D"
 
 $ExpansionQuantities::"usage" = "$ExpansionQuantities is an environment \
 variable used by e.g. MomentaCollect, GenericCoupling and DiscardOrders, \
@@ -415,7 +419,7 @@ value : {Times,NM,IsoDot,IsoCross,IsoSymmetricCross}";
 $UDistributiveFunctions::"usage" = 
     "$UDistributiveFunctions is a set of functions over which FieldDerivative \
 should be distributed.  Default value : \
-{Conjugate,Transpose,Adjoint,UTrace,UTrace1,Iso}";
+{Conjugate,ComplexConjugate,Transpose,Adjoint,UTrace,UTrace1,Iso}";
 
 FieldDerivative::"usage" = 
     "FieldDerivative[f[x],x,li1,li2,...] is the derivative of f[x] with \

@@ -62,13 +62,18 @@ SummationForm set to ExplicitSums, large expressions that can be expanded to \
 a sum, should be expanded before applying SUNReduce (this will reduce \
 computation time dramatically)";
 
+SUDFSymmetrize::"usage" = 
+    "SUDFSymmetrize[a] renames factors multiplying SUND[i,j,k], \
+SU3D[i,j,k], SUNF[i,j,k], SU2F[i,j,k] or SU3F[i,j,k] in an attempt to \
+reduce a";
+
 IsoFunction::"usage" = 
     "IsoFunction is a head recognized by SUNReduce, so that for e.g. \
 IsoFunction[f][SUNIndex[i]*SUNDelta[SUNIndex[i],SUNIndex[j]] ocurring in an \
 expression will imply a sum over SUNIndex[i]";
 
-HoldSums::"usage" = 
-    "HoldSums is an option for SUNReduce specifying whether the sums should \
+SummationForm::"usage" = 
+    "SummationForm is an option for SUNReduce specifying whether the sums should \
 be performed by 'brute force' (ExplicitSums) or symbolically (ImplicitSums).  \
 Default value : ImplicitSums for SUNReduce, ExplicitSums for \
 AmplitudeProjection";
@@ -81,9 +86,9 @@ ExplicitSums::"usage" =
     "ExplicitSums is one of the two possible settings of the option \
 SummationForm of SUNReduce";
 
-SummationForm::"usage" = 
+HoldSums::"usage" = 
     "HoldSums is an option for SUNReduce and AnmplitudeProjection relevant \
-shen the option SummationForm is set to ExplicitSums.  When set to True, the \
+when the option SummationForm is set to ExplicitSums.  When set to True, the \
 isospin summations are not performed and USum is substituted with USumHeld.  \
 Default value : True for SUNReduce, False for AnmplitudeProjection";
 
@@ -92,7 +97,9 @@ IndicesCleanup::"usage" =
 in order to get cancellations and a simpler expression. The expression expr \
 should be in Phi notation, that is, involving the products NM and/or Times, \
 not Dot or NonCommutativeMultiply.  NOTICE : IndicesCleanup will not work \
-properly when the indices are nested more than one level down in factors";
+properly when the indices are nested more than one level down in factors (\
+the only exception being NM[UTrace[NM[a]],UTrace[NM[b]]] with a and b having \
+isospin dependence).";
 
 ExtendedCleanup::"usage" = 
     "ExtendedCleanup is an option for IndicesCleanup.  When set to True, \

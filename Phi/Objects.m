@@ -72,7 +72,7 @@ fcexpt := fcexpt = HighEnergyPhysics`fctools`Explicit`Explicit;
 fcdots := fcdots = HighEnergyPhysics`FeynCalc`DotSimplify`DotSimplify;
 fcexsuni := fcexsuni = HighEnergyPhysics`qcd`ExplicitSUNIndex`ExplicitSUNIndex;
 fcpa := fcpa = HighEnergyPhysics`FeynCalc`Pair`Pair;
-fccc := fccc = HighEnergyPhysics`FeynCalc`fctools`ConmplexConjugate;
+fccc := fccc = HighEnergyPhysics`fctools`ComplexConjugate`ComplexConjugate;
 
 
 
@@ -474,14 +474,13 @@ NM /: NM[] := Sequence[];
   NM[a_](*/; FreeQ[{a}, patterns]*):= a;
 (*Added 15/6-2001*)
 NM[f___, Adjoint[a_], a_, l___] := NM[f, a, Adjoint[a], l];
-NM[f___, UMatrix[a__], Adjoint[UMatrix[a__]], l___] := NM[f, UIdentityMatrix[
-        Sequence @@
-          OptionsSelect[UMatrix,
-            List @@ Union @@ Cases[{a}, _UMatrix, Infinity, Heads -> True]]], l];
+(*Hmm, not very general. Commented out 15/8-2001*)
+(*NM[f___, UMatrix[a__], Adjoint[UMatrix[a__]], l___] := NM[f, UIdentityMatrix[
+Sequence@@OptionsSelect[UMatrix,
+            List@@Union@@Cases[{a}, _UMatrix, Infinity, Heads->True]]], l];
 NM[f___, UMatrix[a__][x_], Adjoint[UMatrix[a__][x_]], l___] := NM[f, UIdentityMatrix[
-        Sequence @@
-          OptionsSelect[UMatrix,
-            List @@ Union @@ Cases[{a}, _UMatrix, Infinity, Heads -> True]]], l];
+Sequence@@OptionsSelect[UMatrix,
+            List@@Union@@Cases[{a}, _UMatrix, Infinity, Heads->True]]], l];*)
 (**)
 
 
@@ -2072,11 +2071,10 @@ FieldDerivative[aa_,
 
 distheads = Alternatives @@ $UDistributiveFunctions;
 FieldDerivative[a : (distheads[__]), x_,
-      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] := (Head[
-          a]) @@ Join[
-        FieldDerivative[#, x, lori] & /@
-          Select[{a}, ! MatchQ[#, (_ -> _) | ({(_ -> _) ...})] &],
-        Select[{a}, MatchQ[#, (_ -> _) | ({(_ -> _) ...})] &]];
+      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+  (Head[a]) @@ Join[
+        FieldDerivative[#, x, lori]& /@ Select[List@@a, (!MatchQ[#, (_ -> _) | ({(_ -> _) ...})]&)],
+        Select[List@@a, (MatchQ[#, (_ -> _) | ({(_ -> _) ...})]&)]];
 
 
 
@@ -2620,15 +2618,15 @@ pairsfuncd[a_] :=
 
 
 
-(* This is to allow changing basis matrices spanning SU(N) and have the change \
-propagate to the structure constants. Works only when staying in the usual \
+(* This is to allow changing basis matrices spanning SU(N) and have the change
+propagate to the structure constants. Works only when staying in the usual
 dimensional representations (2 for SU(2) and 3 for SU(3)). *)
 
 
 
-(* fnlist: List of ordered triplets yielding non-zero f. fnonzeropairlist:list \
-of all pairs of elements which will give f!=0 regardless of the third \
-argument.. fzeropairlist:list of all pairs of elements which will give f=0 \
+(* fnlist: List of ordered triplets yielding non-zero f. fnonzeropairlist:list
+of all pairs of elements which will give f!=0 regardless of the third
+argument.. fzeropairlist:list of all pairs of elements which will give f=0
 regardless of the third argument. *)
 
 FixSUN := (
@@ -3843,20 +3841,18 @@ $CommutatorRules2 =
 (*Changed to accomodate the new IsoDot, 1/2 - 2000*)
 {
    (*Added 5/2-2001*)
-   NM[a___, b_,
-      c___] /; ((FreeQ[b, noncommpatt] || FreeQ[{a, c}, noncommpatt]) &&
-        Length[tmpfield =
-              Union[Cases[
-                  b, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
-                  Infinity, Heads -> True]]] === 1 &&
+   (*Commented out stuff 17/8-2001, no need for all this*)
+   NM[a___, b_, c___] /; ((FreeQ[b, noncommpatt] || FreeQ[{a, c}, noncommpatt]) (*&&
+     Length[tmpfield =
+       Union[Cases[b, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+       Infinity, Heads -> True]]] === 1 &&
         Intersection[
             Cases[{b}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
               Infinity, Heads -> True],
-            Cases[{a,
-                c}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+            Cases[{a, c}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
               Infinity, Heads -> True]] ===
-          Cases[{b}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
-            Infinity, Heads -> True]) :> b*NM[a, c],
+        Cases[{b}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+            Infinity, Heads -> True]*)) :> b*NM[a, c],
 
    NM[a___, b_, c___] /;
    ((FreeQ[b, noncommpatt] || FreeQ[{a, c}, noncommpatt]) &&

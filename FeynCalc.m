@@ -23,6 +23,7 @@ Block[{fcallpaths,fcallsymbols,rl,fcv,fcd},
 
    fcv = HighEnergyPhysics`FeynCalc`$FeynCalcVersion;
    fcd = HighEnergyPhysics`FeynCalc`$FeynCalcDirectory;
+   fcvv = HighEnergyPhysics`FeynCalc`$VeryVerbose;
 
    If[HighEnergyPhysics`FeynCalc`$VeryVerbose>0,
       rl=True;
@@ -60,6 +61,7 @@ Block[{fcallpaths,fcallsymbols,rl,fcv,fcd},
 
    HighEnergyPhysics`FeynCalc`$FeynCalcVersion = fcv;
    HighEnergyPhysics`FeynCalc`$FeynCalcDirectory = fcd;
+   HighEnergyPhysics`FeynCalc`$VeryVerbose = fcvv;
 ];
 
 ];
@@ -99,7 +101,9 @@ $Path=Append[$Path,ParentDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory
    FileNames[$HomeDirectory <> $PathnameSeparator <>
     ".Mathematica" <> $PathnameSeparator <> "*" <> $PathnameSeparator <>
     "AddOns" <> $PathnameSeparator <> "Applications" <> $PathnameSeparator <>
-    "HighEnergyPhysics"]) != {},
+    "HighEnergyPhysics"]) != {} &&
+   FileNames[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory[[1]]<>
+   $PathnameSeparator <> "FeynCalc.m"] != {},
 
     HighEnergyPhysics`FeynCalc`$FeynCalcDirectory =
     HighEnergyPhysics`FeynCalc`$FeynCalcDirectory[[1]],
@@ -196,10 +200,10 @@ If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 tarcerloadedflag = True;
 If[Global`$FeynCalcStartupMessages=!=False,
 If[$Notebooks ===True,
-   CellPrint[Cell[TextData[{"loading TARCER ",
+   CellPrint[Cell[TextData[{"Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
                   "Text"]],
-   Print["loading TARCER ",
+   Print["Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last]
   ];
 Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
@@ -507,7 +511,7 @@ If[!ValueQ[$Kreimer],  $Kreimer = False];
   $PairBrackets = False;
   $MIntegrate = {};
   $SpinorMinimal = False;
-  $VeryVerbose   = 0;
+  If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 (*
   $VeryVerbose   = 3;
 *)
@@ -13293,9 +13297,9 @@ SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
 If[Global`$LoadPhi===True,
    If[$Notebooks===True,
-      CellPrint[Cell[TextData[{"loading Phi "}],
+      CellPrint[Cell[TextData[{"Loading PHI "}],
                   "Text"]],
-      Print["loading Phi "]
+      Print["Loading PHI "]
    ];
    If[StringMatchQ[$OperatingSystem, "*MacOS*"],
    Get[$PathnameSeparator<>"Phi"<>$PathnameSeparator<>"Phi.m"],
@@ -13304,11 +13308,27 @@ If[Global`$LoadPhi===True,
 
 If[Global`$LoadFeynArts===True,
    If[$Notebooks===True,
-      CellPrint[Cell[TextData[{"loading FeynArts "}],
+      CellPrint[Cell[TextData[{"Loading FeynArts "}],
                   "Text"]],
-      Print["loading FeynArts "]
+      Print["Loading FeynArts "]
    ];
-   Get["FeynArts.m"]
+   If[Get["FeynArts.m"]===$Failed,
+     If[$Notebooks===True,
+	CellPrint[Cell[TextData[{
+	  "FeynArts not found. Please put the files in\n", 
+	  HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
+	  "\n", "and reload FeynCalc",
+	  "\n","FeynArts can be downloaded from ",
+	  ButtonBox["www.feynarts.de", ButtonData:>{
+	   URL[ "http://www.feynarts.de"], None},
+	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de"]}
+	 ],"Text"]],
+       WriteString["stdout",
+          "FeynArts not found. Please put the files in ", 
+	  HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
+	  ". FeynArts can be downloaded from www.feynarts.de\n"];
+     ];
+  ];
 ];
 
 SetDirectory[savethisdir];

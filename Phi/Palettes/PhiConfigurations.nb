@@ -1,236 +1,79 @@
-(***********************************************************************
-
-                    Mathematica-Compatible Notebook
-
-This notebook can be used on any computer system with Mathematica 4.0,
-MathReader 4.0, or any compatible application. The data for the notebook 
-starts with the line containing stars above.
-
-To get the notebook into a Mathematica-compatible application, do one of 
-the following:
-
-* Save the data starting with the line of stars above into a file
-  with a name ending in .nb, then open the file inside the application;
-
-* Copy the data starting with the line of stars above to the
-  clipboard, then use the Paste menu command inside the application.
-
-Data for notebooks contains only printable 7-bit ASCII and can be
-sent directly in email or through ftp in text mode.  Newlines can be
-CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
-
-NOTE: If you modify the data for this notebook not in a Mathematica-
-compatible application, you must delete the line below containing the 
-word CacheID, otherwise Mathematica-compatible applications may try to 
-use invalid cache data.
-
-For more information on notebooks and Mathematica-compatible 
-applications, contact Wolfram Research:
-  web: http://www.wolfram.com
-  email: info@wolfram.com
-  phone: +1-217-398-0700 (U.S.)
-
-Notebook reader applications are available free of charge from 
-Wolfram Research.
-***********************************************************************)
-
-(*CacheID: 232*)
-
-
-(*NotebookFileLineBreakTest
-NotebookFileLineBreakTest*)
-(*NotebookOptionsPosition[      5614,        169]*)
-(*NotebookOutlinePosition[      6720,        210]*)
-(*  CellTagsIndexPosition[      6676,        206]*)
-(*WindowFrame->Palette*)
-
-
-
-Notebook[{
-Cell[BoxData[{
-    \(Load\ \), "\n", 
-    \(\ \(\(configuration\)\(:\)\)\)}], NotebookDefault,
-  CellFrame->False,
-  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
-  Evaluatable->False,
-  CellHorizontalScrolling->False,
-  LineSpacing->{1, 0},
-  FormatType->InputForm,
-  ScriptMinSize->9,
-  ShowStringCharacters->False,
-  FontFamily->"Times",
-  FontWeight->"Bold",
-  Background->GrayLevel[0.900008]],
-
-Cell[BoxData[
-    StyleBox[GridBox[{
-          {
-            ButtonBox["BChPT2",
-              ButtonFunction:>LoadConfiguration[ "BChPT2"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["ChPT2AVS",
-              ButtonFunction:>LoadConfiguration[ "ChPT2AVS"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["ChPT2",
-              ButtonFunction:>LoadConfiguration[ "ChPT2"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["ChPT2Photon",
-              ButtonFunction:>LoadConfiguration[ "ChPT2Photon"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["ChPT3",
-              ButtonFunction:>LoadConfiguration[ "ChPT3"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["ChPTEM2",
-              ButtonFunction:>LoadConfiguration[ "ChPTEM2"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["ChPTW3",
-              ButtonFunction:>LoadConfiguration[ "ChPTW3"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["HBChPT2",
-              ButtonFunction:>LoadConfiguration[ "HBChPT2"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["QED2",
-              ButtonFunction:>LoadConfiguration[ "QED2"],
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox["QED",
-              ButtonFunction:>LoadConfiguration[ "QED"],
-              ButtonEvaluator->Automatic]}
-          },
-        RowSpacings->0,
-        ColumnSpacings->0,
-        GridDefaultElement:>ButtonBox[ "\[Placeholder]"]],
-      ButtonBoxOptions->{ButtonEvaluator->Automatic,
-      Active->True,
-      ButtonStyle->"Evaluate"}]], NotebookDefault,
-  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
-  Evaluatable->True,
-  CellGroupingRules->"InputGrouping",
-  CellHorizontalScrolling->True,
-  PageBreakAbove->True,
-  PageBreakWithin->False,
-  GroupPageBreakWithin->False,
-  CellLabelMargins->{{11, Inherited}, {Inherited, Inherited}},
-  DefaultFormatType->DefaultInputFormatType,
-  LineSpacing->{1.25, 0},
-  FormatType->InputForm,
-  ScriptMinSize->9,
-  ShowStringCharacters->True,
-  NumberMarks->True,
-  CounterIncrements->"Input",
-  StyleMenuListing->None,
-  FontFamily->"Courier",
-  FontWeight->"Bold"],
-
-Cell[BoxData[
-    StyleBox[GridBox[{
-          {
-            ButtonBox["Rebuild",
-              ButtonFunction:>RebuildConfigurationsPalette,
-              ButtonEvaluator->Automatic]},
-          {
-            ButtonBox[\(Reload\ Phi\),
-              ButtonFunction:>ReloadPhiFA[ $PaletteConfiguration],
-              ButtonEvaluator->Automatic]}
-          },
-        RowSpacings->0,
-        ColumnSpacings->0],
-      ButtonBoxOptions->{ButtonEvaluator->Automatic,
-      Active->True,
-      ButtonStyle->"Evaluate"}]], NotebookDefault,
-  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
-  Evaluatable->True,
-  CellGroupingRules->"InputGrouping",
-  CellHorizontalScrolling->True,
-  PageBreakAbove->True,
-  PageBreakWithin->False,
-  GroupPageBreakWithin->False,
-  CellLabelMargins->{{11, Inherited}, {Inherited, Inherited}},
-  DefaultFormatType->DefaultInputFormatType,
-  LineSpacing->{1.25, 0},
-  AutoItalicWords->{},
-  FormatType->InputForm,
-  ScriptMinSize->9,
-  ShowStringCharacters->True,
-  NumberMarks->True,
-  SingleLetterItalics->False,
-  CounterIncrements->"Input",
-  StyleMenuListing->None,
-  FontFamily->"Courier",
-  FontWeight->"Bold"]
-},
-FrontEndVersion->"4.0 for X",
-ScreenRectangle->{{0, 1152}, {0, 864}},
-Editable->False,
-WindowToolbars->{},
-PageWidth->342,
-WindowSize->{95, 300},
-WindowMargins->{{45, Automatic}, {Automatic, 0}},
-WindowFrame->"Palette",
-WindowElements->{},
-WindowFrameElements->"CloseBox",
-WindowClickSelect->False,
-WindowTitle->"Configurations",
-ScrollingOptions->{"PagewiseScrolling"->True},
-ShowCellBracket->False,
-CellMargins->{{0, 0}, {Inherited, 0}},
-Active->True,
-CellOpen->True,
-ShowCellLabel->False,
-ShowCellTags->False,
-ImageMargins->{{0, Inherited}, {Inherited, 0}},
-Background->GrayLevel[0.900008],
-Magnification->1
-]
-
-
-(***********************************************************************
-Cached data follows.  If you edit this Notebook file directly, not using
-Mathematica, you must remove the line containing CacheID at the top of 
-the file.  The cache data will then be recreated when you save this file 
-from within Mathematica.
-***********************************************************************)
-
-(*CellTagsOutline
-CellTagsIndex->{}
-*)
-
-(*CellTagsIndex
-CellTagsIndex->{}
-*)
-
-(*NotebookFileOutline
-Notebook[{
-Cell[1718, 49, 406, 13, 35, NotebookDefault,
-  Evaluatable->False],
-Cell[2127, 64, 2329, 66, 208, NotebookDefault,
-  Evaluatable->True,
-  CellGroupingRules->"InputGrouping",
-  PageBreakAbove->True,
-  PageBreakWithin->False,
-  CounterIncrements->"Input"],
-Cell[4459, 132, 1151, 35, 48, NotebookDefault,
-  Evaluatable->True,
-  CellGroupingRules->"InputGrouping",
-  PageBreakAbove->True,
-  PageBreakWithin->False,
-  CounterIncrements->"Input"]
-}
-]
-*)
-
-
-
-
-(***********************************************************************
-End of Mathematica Notebook file.
-***********************************************************************)
-
+Notebook[{Cell[BoxData[StyleBox["Load \n configuration:"]], NotebookDefault, 
+   CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
+   Background -> GrayLevel[0.9], CellFrame -> False, Evaluatable -> False, 
+   CellHorizontalScrolling -> False, LineSpacing -> {1., 0}, 
+   FormatType -> InputForm, ScriptMinSize -> 9, ShowStringCharacters -> 
+    False, FontFamily -> "Times", FontWeight -> "Bold"], Cell[BoxData[
+    StyleBox[GridBox[{{ButtonBox["BChPT2", 
+          RuleDelayed[ButtonFunction, LoadConfiguration["BChPT2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["ChPT2", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["ChPT2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["ChPT3", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["ChPT3"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["ChPTEM2", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["ChPTEM2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["ChPTPhoton2", 
+          RuleDelayed[ButtonFunction, LoadConfiguration["ChPTPhoton2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["ChPTVirtualPhotons2", 
+          RuleDelayed[ButtonFunction, 
+           LoadConfiguration["ChPTVirtualPhotons2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["ChPTW3", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["ChPTW3"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["HBChPT2", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["HBChPT2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["QED2", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["QED2"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["QED", RuleDelayed[ButtonFunction, 
+           LoadConfiguration["QED"]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}}, RowSpacings -> 0, 
+       ColumnSpacings -> 0, GridDefaultElement :> \
+ButtonBox["\[Placeholder]"]], 
+      Rule[ButtonBoxOptions, List[Rule[ButtonEvaluator, Automatic], 
+        Rule[Active, True], Rule[ButtonStyle, "Evaluate"]]]]], 
+   NotebookDefault, CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
+   Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
+   CellHorizontalScrolling -> True, PageBreakAbove -> True, 
+   PageBreakWithin -> False, GroupPageBreakWithin -> False, 
+   CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
+   DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0}, 
+   FormatType -> InputForm, ScriptMinSize -> 9, ShowStringCharacters -> True, 
+   NumberMarks -> True, CounterIncrements -> "Input", 
+   StyleMenuListing -> None, FontFamily -> "Courier", FontWeight -> "Bold"], 
+  Cell[BoxData[
+    StyleBox[GridBox[{{ButtonBox["Rebuild", 
+          RuleDelayed[ButtonFunction, RebuildConfigurationsPalette], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}, 
+        {ButtonBox["Reload Phi", 
+          RuleDelayed[ButtonFunction, ReloadPhiFA[$PaletteConfiguration]], 
+          RuleDelayed[ButtonEvaluator, Automatic]]}}, RowSpacings -> 0, 
+       ColumnSpacings -> 0], Rule[ButtonBoxOptions, 
+       List[Rule[ButtonEvaluator, Automatic], Rule[Active, True], 
+        Rule[ButtonStyle, "Evaluate"]]]]], NotebookDefault, 
+   CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
+   Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
+   CellHorizontalScrolling -> True, PageBreakAbove -> True, 
+   PageBreakWithin -> False, GroupPageBreakWithin -> False, 
+   CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
+   DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0}, 
+   AutoItalicWords -> {}, FormatType -> InputForm, ScriptMinSize -> 9, 
+   ShowStringCharacters -> True, NumberMarks -> True, 
+   SingleLetterItalics -> False, CounterIncrements -> "Input", 
+   StyleMenuListing -> None, FontFamily -> "Courier", FontWeight -> "Bold"]}, 
+ Background -> GrayLevel[0.9], WindowTitle -> "Configurations", 
+ Editable -> False, WindowToolbars -> {}, PageWidth -> 342, 
+ WindowSize -> {165, 300}, WindowMargins -> {{0, Automatic}, {Automatic, 0}}, 
+ WindowFrame -> "Palette", WindowElements -> {}, 
+ WindowFrameElements -> "CloseBox", WindowClickSelect -> False, 
+ ScrollingOptions -> {"PagewiseScrolling" -> True}, ShowCellBracket -> False, 
+ CellMargins -> {{0, 0}, {Inherited, 0}}, Active -> True, CellOpen -> True, 
+ ShowCellLabel -> False, ShowCellTags -> False, 
+ ImageMargins -> {{0, Inherited}, {Inherited, 0}}, Magnification -> 1]

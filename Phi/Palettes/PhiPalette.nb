@@ -53,8 +53,7 @@ Cell[CellGroupData[{
 Cell["Constants", "Subsection"],
 
 Cell["\<\
-Different types of constants must have different heads (to allow \
-power counting and renormalization).\
+Different types of constants have different heads.\
 \>", NotebookDefault,
   CellMargins->{{Inherited, Inherited}, {7, Inherited}},
   PageBreakAbove->True,
@@ -86,7 +85,59 @@ Cell[BoxData[GridBox[{
           ButtonBox[
             \(UCouplingConstant[\[SelectionPlaceholder], \[Placeholder]]\)]},
         {
-          ButtonBox[\(DecayConstant[\[SelectionPlaceholder]]\)]},
+          ButtonBox[\(DecayConstant[\[SelectionPlaceholder]]\)]}},
+      RowSpacings->0,
+      ColumnSpacings->0,
+      GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]]], NotebookDefault,
+  CellMargins->{{Inherited, Inherited}, {5, Inherited}},
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakAbove->True,
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  CellLabelMargins->{{11, Inherited}, {Inherited, Inherited}},
+  DefaultFormatType->DefaultInputFormatType,
+  LineSpacing->{1.25, 0},
+  AutoItalicWords->{},
+  FormatType->InputForm,
+  ScriptMinSize->9,
+  ShowStringCharacters->True,
+  NumberMarks->True,
+  SingleLetterItalics->False,
+  CounterIncrements->"Input",
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+
+Cell["\<\
+An argument with head RenormalizationState may be given. The convention \
+is that 0 correponds to unrenormalized quantities, 1 to one-loop renormalized \
+quantities, etc.\
+\>", NotebookDefault,
+  CellMargins->{{Inherited, Inherited}, {7, Inherited}},
+  PageBreakAbove->True,
+  CellLabelMargins->{{12, Inherited}, {Inherited, Inherited}},
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica"},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  ScriptMinSize->9,
+  CounterIncrements->"Text"],
+
+Cell[BoxData[GridBox[{
         {
           ButtonBox[\(RenormalizationState[\[SelectionPlaceholder]]\)]}
         },
@@ -258,10 +309,8 @@ Cell[CellGroupData[{
 Cell["Operators", "Subsection"],
 
 Cell[TextData[{
-  "NM is to be used as non-commutative multiplication for ",
-  StyleBox["Phi",
-    FontSlant->"Italic"],
-  " objects like UMatrix[..]. IsoDot, IsoCross and IsoSymmetricCross is to be \
+  "NM is to be used as non-commutative multiplication for PHI \
+  objects like UMatrix[..]. IsoDot, IsoCross and IsoSymmetricCross is to be \
 used for vector products of IsoVector[..] objects. DOT for \"sandwiching\" \
 matrices between UVector[..] objects (tuplets of spinors)."
 }], NotebookDefault,
@@ -322,9 +371,7 @@ Cell[CellGroupData[{
 Cell[TextData["Composite objects"], "Subsection"],
 
 Cell[TextData[{
-  StyleBox["Phi",
-    FontSlant->"Italic"],
-  " comes with some objects constructed from the above building blocks. E.g."
+  "PHI comes with some objects constructed from the above building blocks. E.g."
 }], NotebookDefault,
   CellMargins->{{Inherited, Inherited}, {7, Inherited}},
   PageBreakAbove->True,
@@ -814,10 +861,8 @@ Cell[TextData[{
   StyleBox["FeynArts",
     FontSlant->"Italic"],
   " function for generating all topologies with a specified number of \
-incoming and outgoing particles and loops. $VerticesSpecifications is a ",
-  StyleBox["Phi",
-    FontSlant->"Italic"],
-  " varible which must be set to a list of the options one wishes \
+incoming and outgoing particles and loops. $VerticesSpecifications is a PHI \
+varible which must be set to a list of the options one wishes \
 \"Automatic.m\" to use. InsertFields is a ",
   StyleBox["FeynArts",
     FontSlant->"Italic"],
@@ -881,14 +926,10 @@ Cell["$VerticesSpecifications", "Subsection"],
 
 Cell[TextData[{
   "The list $VerticesSpecifications must be a list of lists of options - one \
-list for each vertex. VertexFields hould be set to a list of valid ",
-  StyleBox["Phi",
-    FontSlant->"Italic"],
-  " particle names with an extra argument (usually 0), e.g. Electron[0]. \
-PhiModel should be set to a valid ",
-  StyleBox["Phi",
-    FontSlant->"Italic"],
-  " model, e.g. \"QED\". PerturbationOrder to a list of the counter term \
+list for each vertex. VertexFields hould be set to a list of valid PHI \
+particle names with an extra argument (usually 0), e.g. Electron[0]. \
+PhiModel should be set to a valid PHI model, e.g. \"QED\". PerturbationOrder \
+to a list of the counter term \
 orders one wants and has defined lagrangian files for. E.g. {1,2}, \
 corresponding to model files \"QED1.m\" and \"QED2.m\". Also GaugeGroup, \
 CouplingSign and XFileName may be set."

@@ -109,11 +109,6 @@ VerbosePrint::"usage" =
 "VerbosePrint[n,s], where n is an integer and s is one or more strings or expressions, \
 prints s if $Verboseness>=n";
 
-$Palettes::"usage" =
-"$Palettes is a variable determining which palettes should be displayed \
-on startup.  The posible values are lists of the file names in the directory \
-Palettes (file names should be given as strings).  Default value : {}";
-
 $HEPDir::"usage" =
 "$HEPDir is a string variable specifying the full path to the parent \
 directory of the directory HighEnergyPhysics (containing Phi). It should be set \
@@ -129,6 +124,9 @@ sub-packages of Phi.  Default value : {\"HighEnergyPhysics`Phi`Objects`\", \
 \"HighEnergyPhysics`Phi`Couplings`\", \"HighEnergyPhysics`Phi`Channels`\", \
 \"HighEnergyPhysics`Phi`Renormalization`\", \
 \"HighEnergyPhysics`Phi`Palettes`\"}";
+
+$FAPatch::"usage" = "$FAPatch switches on and off checking for \
+an unpatched FeynArts installation on PHI startup.  Default value : True";
 
 (* ************************************************************** *)
 
@@ -159,6 +157,11 @@ HighEnergyPhysics`Phi`$HEPDir=
 ParentDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
 
 $Path=Union[$Path,{HighEnergyPhysics`Phi`$HEPDir}];
+
+(*Give first priority to First.m and PhiStart.m in homedir. Added 28/8-2001*)
+$Path=Join[FileNames[$HomeDirectory <> $PathnameSeparator <>
+    ".Mathematica" <> $PathnameSeparator <> "*" <> $PathnameSeparator <>
+    "AddOns" <> $PathnameSeparator <> "Applications"],$Path];
 
 Get["HighEnergyPhysics`Phi`First`"];
 
@@ -209,13 +212,13 @@ Remove[str,strm,sym,pos];
 
 (* Defaults *)
 
-$Palettes={};
-
 $Configuration="None";
 
 If[tmp`pconf=!=Null,$PaletteConfiguration=tmp`pconf];
 If[tmp`verb=!=Null,HighEnergyPhysics`FeynCalc`$VeryVerbose=tmp`verb];
 If[tmp`phi=!=Null,$Phi=tmp`phi];
+
+$FAPatch=True;
 
 (* ************************************************************** *)
 
@@ -231,34 +234,9 @@ If[tmp`phi=!=Null,$Phi=tmp`phi];
 
 (* ************************************************************** *)
 
-(* Loading of palettes *)
-
-(*KernelNotebookOpenDef =
-(Clear[KernelNotebookOpen];KernelNotebookOpen[fn_]:=
-Block[{nbl,nbcontents,nbrules,nb},
-nbl = Get[fn];
-nbcontents = Join @@ Select[nbl, (MatchQ[#, {_Cell ..}] &)];
-nbrules =
-  Select[nbl, (Head[#] === Rule && #[[1]] =!= WindowTitle) &];
-nb = NotebookCreate[Sequence @@ nbrules,
-      WindowTitle ->StringReplace[fn, ".nb" -> ""]];
-NotebookWrite[nb, nbcontents];
-]);*)
-
-If[$Palettes=!={}&&HighEnergyPhysics`Phi`$Phi=!=True,
-VerbosePrint[2,"Loading ","Palettes"];
-(*(KernelNotebookOpenDef;KernelNotebookOpen[#])&/@$Palettes;*)
-NotebookOpen[ToFileName[{HighEnergyPhysics`Phi`$HEPDir,"HighEnergyPhysics",
-"Phi","Palettes"},#]]& /@ $Palettes;
-];
-
-(* ************************************************************** *)
-
-(* Update particles and path *)
+(* Update particles *)
 
 FAUpdate;
-
-$Path=Union[$Path,{HighEnergyPhysics`Phi`$HEPDir}];
 
 (* ************************************************************** *)
 
@@ -270,26 +248,28 @@ Remove[HighEnergyPhysics`FeynArts`$FeynArts]];
 
 (* ************************************************************** *)
 
-(* Phi system variables *)
+(* Check if FeynArts is there and patch if wanted and needed *)
 
-$PaletteConfiguration="None";
+If[$FAPatch && $LoadFeynArts,
+str = "" ;$patch=True;
+If[FileNames["FeynArts.m", $FeynCalcDirectory] =!= {}, 
+  strm = OpenRead[$FeynCalcDirectory <> $PathnameSeparator <> "FeynArts.m"];
+  While[ToString[str] != "EndOfFile", str = Read[strm, String]; 
+    If[StringMatchQ[ToString[str], "*Frederik Orellana*", IgnoreCase -> True], 
+      $patch=False]];
+  Close[strm]];
+
+If[$patch, <<"HighEnergyPhysics`Phi`Extras`FAPatch`";
+  HighEnergyPhysics`Phi`FAPatch`FAPatch]
+];
+
+(* ************************************************************** *)
+
+(* Phi system variables *)
 
 $Phi=True;
 
-(* Startup message *)
-
-(*If[$Verboseness>0,
-If[AtomQ[$FrontEnd],
-(*no FrontEnd version*)Print["Phi 1.2.  http://phi.cabocomm.dk/"],
-(*FrontEnd version with hyperlink*)CellPrint[
-   Cell[TextData[StyleBox["Phi", FontSlant -> "Italic"] \
-   (*Uncommenting removes hyperlink style*)(*, ""*), "1.2.", " ",
-    ButtonBox[
-    StyleBox["http://phi.cabocomm.dk/", FontColor -> RGBColor[0, 0, 1]],
-    ButtonNote -> "The website of Phi",
-    ButtonData -> {URL["http://phi.cabocomm.dk"], None},
-    ButtonStyle -> "Hyperlink"]], "Text"]];
-]];*)
+$PaletteConfiguration="None";
 
 (* ************************************************************** *)
 

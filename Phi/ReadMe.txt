@@ -1,12 +1,12 @@
 DESCRIPTION:
 
-Phi (Phenomenology of hadronic interactions) is a Mathematica package for
+PHI (Phenomenology of hadronic interactions) is a Mathematica package for
 computations in Chiral Perturbation Theory (ChPT). It is meant to be used
-in conjunction with the other Mathematica packages FeynArts (version 2 or
+in conjunction with the other Mathematica packages FeynArts (version 3 or
 higher) and FeynCalc (version 3 or higher).
 
-Phi is designed for ChPT, but can in principle be adapted for any field
-theory. The distinguishing feature of ChPT is that it is not renormalizable,
+PHI is designed for ChPT, but can in principle be adapted for any field
+theory. One distinguishing feature of ChPT is that it is not renormalizable,
 with a new counterterm lagrangian for each order in the perturbative
 expansion and vertices with any number of legs. Also, the perturbative
 expansion is not in a coupling constant; instead it is a dual expansion in
@@ -18,7 +18,7 @@ FEATURES:
 A set of basic objects that can be composed and manipulated to form ChPT
 lagrangians.
 
-Compatibility with FeynArts 2 (and higher) for automatized generation of
+Compatibility with FeynArts for automatized generation of
 Feynman loop amplitudes including counter terms and starting from a user
 defined or built-in lagrangian. The renormalization procedure is partially
 automatized for ChPT one-loop processes.
@@ -35,46 +35,78 @@ The long term goal is to establish a database of amplitudes from phenomenologica
 effective lagrangians, well checked and easily extensible.
 
 
-INSTALLING AND RUNNING PHI:
+PHI QUICKSTART:
 
-Quickstart for FeynCalc >= 4.1.1:
+Make sure you have FeynCalc >= 4.1.1; if not, get it at
+http://www.feyncalc.org/.
+Get the FeynArts tarball from http://www.feynarts.de/ and unpack it in
+your "HighEnergyPhysics" directory. Set
+$LoadPhi=True; $LoadFeynArts=True;
+and load FeynCalc with
+<<"HighEnergyPhysics`FeynCalc`".
 
-Set $LoadPhi=True and load FeynCalc with
-<<"HighEnergyPhysics`fc.m".
 
-Detailed instructions:
+PHI INSTALLATION:
 
 Mathematica (version 3 or higher) is required. It is recomended not to have
 less than 128 MB of RAM and a reasonably fast processor (>300 MHz).
 
 FeynCalc (version 3 or higher) must be up and running. From version 4.1.0.3
-of FeynCalc, Phi is distributed with FeynCalc. Furthermore one should get and
-modify FeynArts (version 2.2 or higher) according to the description below.
+of FeynCalc, Phi is distributed with FeynCalc and no further installation of
+PHI files is needed.
 FeynCalc can be obtained at http://www.feyncalc.org/.
+
+Furthermore one should get and install FeynArts (version 3 or higher)
+according to the description below.
 FeynArts can be obtained at http://www.feynarts.de/.
 
-In the sub-directory Extras there are two model files meant to be read by
-FeynArts: Automatic.gen and Automatic.mod. These should be placed in the
-Models directory of FeynArts. There is also a perl script FApatch.pl which
-on a UNIX system should be run from a prompt (see below). It may work on
-other systems as well, but is tested only on Linux.
-
-The file PhiStart.m should be edited according to load the desired model.
-Model specific modifications of Phi objects should be made in the relevant
-model configuration file (in Phi/Configurations).
+Finally, the file PhiStart.m should be edited to load the desired model
+and lagrangians. Model specific modifications of PHI objects should be
+specified in the relevant model configuration file (in Phi/Configurations).
 
 
-CHANGES TO FEYNARTS:
+FEYNARTS INSTALLATION:
+
+After downloading the FeynArts tarball (FeynArts3.tar.gz), unpack it in
+the FeynCalc installation directory "HighEnergyPhysics".
+You can check where it is by loading FeynCalc (<<"HighEnergyPhysics`FeynCalc`")
+and evaluating $FeynCalcDirectory. The unpacking must be so that the file
+"FeynArts.m" is in "HighEnergyPhysics".
 
 Some changes need to be made to FeynArts. The changes serve to have
-FeynCalc and FeynArts loaded simultaneously and to be able to use the Phi
-fields directly.
+FeynCalc and FeynArts loaded simultaneously and to be able to use the PHI
+fields directly. These changes will be performed the first time you
+load PHI and FeynArts via FeynCalc. That is, the first time you load
+FeynCalc after having evaluated
+$LoadPhi=True; $LoadFeynArts=True;
+This can be done either directly before evaluating
+<<"HighEnergyPhysics`FeynCalc`"
+or you can put the line in your "FCConfig.m" file.
 
-The recomended way is to use the provided perl script FApatch.pl.  A diff
-file is not provided because FeynArts is updated frequently. If you cannot
-get the script to work, you may do the changes by hand or request a
-patched version of FeynArts from me at fjob@cabocomm.dk
-The more important changes done by the script are described below:
+The automatic modification of the FeynArts files is done by the Mathematica
+function FAPatch defined in "Extras/FAPatch.m". The reasons for doing it
+this way instead of distributing an alternative version of FeynArts or a true
+patch are: 1) To make it clear that FeynArts is a completely separate project
+from FeynCalc and have people credit the right authors. 2) We cannot
+assume that all users now how to apply a patch. 3) A patch would only
+work with one specific version of FeynArts.
+
+The backdraw is that we cannot be absolutely sure that FAPatch actually
+works with future versions of FeynArts. However, attempts will be made
+to keep it up to date. If it should not work, it should be possible to
+do the changes with a good text editor. Or you can contact fjob@cabocomm.dk
+to get a patched version of FeynArts.
+
+
+FEYNARTS CHANGES:
+
+Below follows a description of the most essential changes needed to be done
+to FeynArts. As described above, these will normally be done automatically;
+but should this fail, they need to be done manually.
+
+In the sub-directory "Extras" there are two model files meant to be read by
+FeynArts: "Automatic.gen" and "Automatic.mod". These should be placed in the
+"Models" directory.
 
 The following names:
 
@@ -89,7 +121,7 @@ The following names:
 "FeynArts`DiracSpinor",
 "Global`DiracTrace"
 
-are renamed to:
+should be renamed to:
 
 "HighEnergyPhysics`FeynCalc`Loop`Loop",
 "FAIndices",
@@ -106,7 +138,7 @@ In FeynArts.m, the line
 
 P$Generic = F | S | V | U | SV
 
-is changed to
+should be changed to
 
 P$Generic = F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$UParticleHeads
 
@@ -114,7 +146,7 @@ In Analytic.m,
 
 | F | U and F
 
-is changed to
+should be changed to
 
 F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads and
 F | HighEnergyPhysics`Phi`Objects`$FermionHeads.
@@ -141,7 +173,7 @@ is of course saving memory. Normally, because of the definitions in
 PhiStart.m and/or the configuration file chosen, effectively the
 sub-packages Objects, Couplings and Channels will be loaded on startup.
 
-The sub-packages of Phi are:
+The sub-packages of PHI are:
 
 Objects, containing all basic objects,
 
@@ -159,7 +191,7 @@ one-loop amplitudes,
 Palettes, a package generating palettes for loading configurations and
 lagrangians.
 
-The Phi directory also contains the directories Lagrangians (some predefined
+The PHI directory also contains the directories Lagrangians (some predefined
 lagrangians), Configurations (one configuration file for each family of
 lagrangians), Factors (renormalization factors), CouplingVectors (the
 coupling vector definitions used by the model files Automatic.gen and
@@ -168,7 +200,7 @@ results), the file First.m where user definitions should be put when they
 are to be loaded before anything else, and finally files containing usage,
 box, and error definitions for the sub-packages.
 
-In the Phi directory  are also the files Phi.m and PhiStart.m, which are
+In the PHI directory  are also the files Phi.m and PhiStart.m, which are
 respectively the startup file and the configuration file.
 
 
@@ -186,7 +218,7 @@ Comments and suggestions are also welcome.
 
 LICENSE:
 
-Phi is covered by the GNU Lesser General Public License which can be found
+PHI is covered by the GNU Lesser General Public License which can be found
 at http://www.feyncalc.org/license.txt.
 
 This roughly means:

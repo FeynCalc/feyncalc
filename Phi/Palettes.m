@@ -8,9 +8,7 @@
    
    Rewritten 22/9-2000
 
-   Main context: HighEnergyPhysics`Phi`Palettes`
-
-   Additional contexts: HighEnergyPhysics`Phi`, HighEnergyPhysics`Phi`Objects`
+   Context: HighEnergyPhysics`Phi`Palettes`
 
    Package version:  1.2
 
@@ -179,9 +177,9 @@ Block[{names, width, height, olddir, nb, bbc},
 
 	 ResetDirectory[]; 
 	 SetDirectory["Palettes"];
-	 Put[nb, "AllConfigurations.nb"];
+	 Put[nb, "PhiConfigurations.nb"];
 	 NotebookOpen[ToFileName[{HighEnergyPhysics`Phi`$HEPDir,"HighEnergyPhysics",
-            "Phi","Palettes"},"AllConfigurations.nb"]];
+            "Phi","Palettes"},"PhiConfigurations.nb"]];
 
    (* The directory is reset *)
 
@@ -331,9 +329,9 @@ Block[{names, width, height, olddir, nb, bbc},
 
 	 ResetDirectory[]; 
 	 SetDirectory["Palettes"];
-	 Put[nb, "AllLagrangians.nb"];
+	 Put[nb, "PhiLagrangians.nb"];
 	 NotebookOpen[ToFileName[{HighEnergyPhysics`Phi`$HEPDir,"HighEnergyPhysics",
-            "Phi","Palettes"},"AllLagrangians.nb"]];
+            "Phi","Palettes"},"PhiLagrangians.nb"]];
 
    (* The directory is reset *)
 

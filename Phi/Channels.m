@@ -285,8 +285,10 @@ twoselect[{a_, b_, c_}, {d_, e_, f_}] :=
 (* This function gives the signature of the permutations needed to turn one e.g.
 {a,b,cc},{c,a,b} into {a,b,cc},{a,b,c}: *)
 
-sig1[{___, a_, mm___, b_, ___}, {___, a_, m___,
-        b_, ___}] := (-1)^(Length[{mm}] - Length[{m}]);
+sig1[{___, a_, mm___, b_, ___}, {___, a_, m___, b_, ___}] :=
+  (-1)^(Length[{mm}] - Length[{m}]);
+sig1[{___, a_, mm___, b_, ___}, {___, b_, m___, a_, ___}] :=
+  (-1)^(Length[{mm}] - Length[{m}] + 1);
 
 
 
@@ -361,6 +363,7 @@ $SUNDeltaRules =(*the delta functions are orderless,
       Projection[i_Integer][fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       Projection[i_Integer][j_Integer] /; (i =!= j) :> 0,
       Projection[i_Integer][fcsuni[j_Integer]] /; (i =!= j) :> 0};
+
 $SUNDFRules = {(*contraction of three indices*)
       SU2F[a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
           c_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
@@ -395,12 +398,12 @@ $SUNDFRules = {(*contraction of three indices*)
             rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
       rest*5/3*SU3Delta @@
           Complement[{a, b, c, d, e,
-              f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])],(*Added 15/2 -
-        2000*)(SU3D[a_, b_, c_]*SU3F[d_, e_, f_]*
-            rest___) /; (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :>
-      0,(*contraction of one index -
-        is this formula true for SU(3)?*)(*NO it's not - fixed,
-      but correct formula no really usefull, 16/12/1999*)
+              f}, (Join @@ twoselect[{a, b, c}, {d, e, f}])],
+         (*Added 15/2 - 2000*)
+         (SU3D[a_, b_, c_]*SU3F[d_, e_, f_]*rest___) /;
+         (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :> 0,
+    (*contraction of one index - is this formula true for SU(3)?*)
+    (*NO it's not - fixed, but correct formula no really usefull, 16/12/1999*)
       (SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*rest___) /;
       (Length[twoselect[{a, b, c}, {d, e, f}]] == 1) :>
       (((SU2Delta[#1, #3]*SU2Delta[#2, #4] - SU2Delta[#2, #3]*SU2Delta[#1, #4])& @@
@@ -429,17 +432,19 @@ $SUNDFRules = {(*contraction of three indices*)
               d_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex]^2, ...*)
       SU2F[a_Integer, b_Integer, c_] :>
       (-1)^(Complement[{1, 2, 3}, {a, b}][[1]] + 1)*
-      (SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}]))};
+      (SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}])) };
+
+      (*Added 5/6-2001*)
+      (*(SUNF)SU3D is (anti)symmetric and thus factors may have their indices permuted*)
+
       
 $SUNRules =
     Join[$SUNDeltaRules, $SUNDFRules, $SU3FReduceList, $SU3DReduceList];
 
-SUNReduce2[aa_,
-        opts___] /; ((SummationForm /. Flatten[{opts}] /.
-                Options[SUNReduce]) ==
-            ImplicitSums) := (VerbosePrint[2,
-        "Applying reduction rules"];
-      VerbosePrint[3, "Reduction rules are:\n", $SUNRules];
+SUNReduce2[aa_, opts___] /;
+((SummationForm /. Flatten[{opts}] /. Options[SUNReduce]) == ImplicitSums) :=
+(VerbosePrint[2, "Applying reduction rules on ", StandardForm[aa]];
+ VerbosePrint[3, "Reduction rules are:\n", $SUNRules];
       aa /. If[(RemoveIntegerIndices /. Flatten[{opts}] /.
                     Options[SUNReduce]), {}, NTo3Rules1] /.
             NTo3Rules2[(GaugeGroup /. Flatten[{opts}] /.
@@ -516,6 +521,70 @@ _SU3D}] /.(*Change 31/1 - 1999*)tmpsuni -> fcsuni /.(*Added 9/1 - 2000*)
           faso[_Integer](*/; (!
                     FreeQ[i, Alternatives @@ $ConstantIsoIndices] ||
                   IntegerQ[i])*)-> 1);
+                  
+
+$SymSUNDFRules1 = {
+   Times[dd___, (sud:(fcsund|SU3D))[a_, b_, c_], d___] :>
+   Block[{inds0, originds, originds0, originds1, inds},
+    originds0 = {a, b, c} /. fcsuni -> Identity;
+    inds0 =(*Select instead of Intersection is used to preserve the order*)
+        Select[Sort[Cases[{dd, d}, fcqf[___, fcsuni[_], ___], Infinity,
+          Heads -> True]] /. fcqf[___, fcsuni[e_], ___] -> e, (MemberQ[originds0, #]) &];
+    originds1 = Select[originds0, (MemberQ[inds0, #]) &];
+    originds = Join[Complement[originds0, originds1], originds1];
+    inds = Join[Complement[originds, inds0], inds0];
+    If[Length[inds0] > 1 && Length[inds] < 4,
+       sud[a, b, c]*(Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
+       sud[a, b, c]*Times[dd, d]]],
+   Times[dd___, (suf:(fcsunf|SU2F|SU3F))[a_, b_, c_], d___] :>
+   Block[{inds0, originds, originds0, originds1, inds},
+    originds0 = {a, b, c} /. fcsuni -> Identity;
+    inds0 =(*Select instead of Intersection is used to preserve the order*)
+        Select[Sort[Cases[{dd, d}, fcqf[___, fcsuni[_], ___], Infinity,
+          Heads -> True]] /. fcqf[___, fcsuni[e_], ___] -> e, (MemberQ[originds0, #]) &];
+    originds1 = Select[originds0, (MemberQ[inds0, #]) &];
+    originds = Join[Complement[originds0, originds1], originds1];
+    inds = Join[Complement[originds, inds0], inds0];
+    If[Length[inds0] > 1 && Length[inds] < 4,
+      sig1[originds, inds]*
+       suf[a, b, c]*
+         (Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
+       suf[a, b, c]*Times[dd, d]]]
+        };
+
+$SymSUNDFRules2 = {
+   Times[dd___, (sud:(fcsund|SU3D))[a_, b_, c_], d___] :>
+   Block[{inds0, originds, originds0, originds1, inds},
+    originds0 = {a, b, c} /. fcsuni -> Identity;
+    inds0 =(*Select instead of Intersection is used to preserve the order*)
+        Select[Cases[{dd, d}, UMatrix[UGenerator[fcsuni[_]]], Infinity,
+        Heads -> True] /.
+      UMatrix[UGenerator[fcsuni[e_]]] -> e, (MemberQ[originds0, #]) &];
+    originds1 = Select[originds0, (MemberQ[inds0, #]) &];
+    originds = Join[Complement[originds0, originds1], originds1];
+    inds = Join[Complement[originds, inds0], inds0];
+    If[Length[inds0] > 1 && Length[inds] < 4,
+       sud[a, b, c]*(Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
+       sud[a, b, c]*Times[dd, d]]],
+   Times[dd___, (suf:(fcsunf|SU2F|SU3F))[a_, b_, c_], d___] :>
+   Block[{inds0, originds, originds0, originds1, inds},
+    originds0 = {a, b, c} /. fcsuni -> Identity;
+    inds0 =(*Select instead of Intersection is used to preserve the order*)
+        Select[Cases[{dd, d}, UMatrix[UGenerator[fcsuni[_]]], Infinity,
+        Heads -> True] /.
+      UMatrix[UGenerator[fcsuni[e_]]] -> e, (MemberQ[originds0, #]) &];
+    originds1 = Select[originds0, (MemberQ[inds0, #]) &];
+    originds = Join[Complement[originds0, originds1], originds1];
+    inds = Join[Complement[originds, inds0], inds0];
+    If[Length[inds0] > 1 && Length[inds] < 4,
+      sig1[originds, inds]*
+       suf[a, b, c]*
+         (Times[dd, d] /. ((Rule @@ #) & /@ Transpose[{originds, inds}])),
+       suf[a, b, c]*Times[dd, d]]]
+        };
+
+
+SUDFSymmetrize[exp_] := exp /. $SymSUNDFRules1 /. $SymSUNDFRules2;
 
 
 
@@ -614,18 +683,38 @@ device a unique substitution of dummys. *)
    we label the NM's sequentially and take one label out on each run. 
    Added 2/6-2001. *)
 
+(*Put on an isowait[..] tag if an NM product is of the above form*)
+(*Applied only once*)
 isowaitrules1 =
 (aa : HoldPattern[
-       (NM | NM1 | NM2)[Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, _(NM | NM1 | NM2)] &)] |
-       (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &)] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..]]) :>
+(NM | NM1 | NM2)[(Plus|(*Added 26/8-201*)UTrace1)[
+  (___*(NM | NM1 | NM2)[__?(FreeQ[#, _(NM | NM1 | NM2)] &)] |
+(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &)] |
+  _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..]]) :>
 (waitcounter = 0; ((waitcounter++;
  Replace[#, (nm1 : NM | NM1 | NM2)[b__] :>
- nm1[b, isowait[waitcounter]] /; FreeQ[{b}, isowait[__]], {1, 3}]) &) /@ aa);
+ nm1[b, isowait[waitcounter]] /; FreeQ[{b}, isowait[__]], {1, 3}]) &) /@ aa)/;
+ !FreeQ[aa,fcsuni[_]];
                   
+
+(*remove the highest tag*)
+(*Applied only once*)
+isowaitrules0 =
+aa : HoldPattern[
+(NM | NM1 | NM2)[(Plus|(*Added 26/8-201*)UTrace1)[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
+(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
+  _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,___]] :>
+(aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
+                                    (seq[])) /. seq -> Sequence)/;
+ !FreeQ[aa,fcsuni[_]];
+
+(*If an NM product is of the above form, already has a tag and ends with
+a factor that has no NM's, remove the highest tag and increment isoexterndummycounter by one*)
+(*Applied repeatdly (with IndicesCleanup1)*)
 isowaitrules2 =
 aa : HoldPattern[
 (NM | NM1 | NM2)[___,
-Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
+(Plus|(*Added 26/8-201*)UTrace1)[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
 (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
   isowait[__],___] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,
   (_?((FreeQ[#,isowait[__]] &&
@@ -633,31 +722,47 @@ Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],__
 (aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
 (isoexterndummycounter = Max[Union[{0},Cases[{aa}, fcsuni[IsoExternDummy][_], Infinity,
                         Heads -> True]] /.
-                      fcsuni[IsoExternDummy][na_] -> na]+1;seq[])) /. seq -> Sequence);
+                      fcsuni[IsoExternDummy][na_] -> na]+1;seq[])) /. seq -> Sequence)/;
+ !FreeQ[aa,fcsuni[_]];
 
+(*Same as above but no check fo last factor NM's*)
+(*Hmm, the way it is applies, it seems to be redundant. 26/8-2001*)
 isowaitrules3 =
 aa : HoldPattern[
 (NM | NM1 | NM2)[___,
-Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
+(Plus|(*Added 26/8-201*)UTrace1)[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
 (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
   isowait[__],___] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,
   (_?((FreeQ[#,isowait[__]])&))..]] :>
 (aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
 (isoexterndummycounter = Max[Union[{0},Cases[{aa}, fcsuni[IsoExternDummy][_], Infinity,
                         Heads -> True]] /.
-                      fcsuni[IsoExternDummy][na_] -> na]+1;seq[])) /. seq -> Sequence);
+                      fcsuni[IsoExternDummy][na_] -> na]+1;seq[])) /. seq -> Sequence)/;
+ !FreeQ[aa,fcsuni[_]];
 
-isowaitrules0 =
-aa : HoldPattern[
-(NM | NM1 | NM2)[Plus[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
-(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
-  isowait[__]] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,___]] :>
-(aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
-                                    (seq[])) /. seq -> Sequence);
+(* Rules for UTraces. This is the one exception to only allowing one level of nesting.
+   The strategy is to take out SUNIndices in UTraces via SUNDeltas, leaving a dummy
+   index without SUNIndex head in the UTrace and then later substitute back in the index *)
+(* Added 27/8-2001 *)
+tracerule1 = NM[a___, UTrace1[b_], c___]*
+    d_ :> (Times @@ (inxlist=(fcsundel[#, fcsuni[suninx[Unique["dum"]]]] & /@ ins)))*
+      NM[a, UTrace1[b] /. ((Rule[#[[1]],#[[2,1]]])& /@ inxlist) /.
+      fcsuni->sunix, c]*
+      d /; (ins =
+          Intersection[Cases[b, fcsuni[_], Infinity],
+            Join[Cases[{d}, fcsuni[_], Infinity],
+              Cases[{a}, fcsuni[_], Infinity],
+              Cases[{c}, fcsuni[_], Infinity]]]) =!= {};
+
+tracerule2 = fcsundel[fcsuni[suninx[f_]], j_]*
+    a_?((!FreeQ[#, suninx[f_]]&&FreeQ[#,fcsundel[___,fcsuni[suninx[_]],___]])&) :>
+    (a /. suninx[f] -> j);
+
+tracerule3 = sunix->fcsuni;
 
 (* Comparison between factors: *)
 
-(*Iso - indices*)(*Bug fixed, split in two, 21/12/1999*)
+(*Iso - indices*)(*Bug fixed, split in two, 21/12-1999*)
   dummyrulesiso1a =
 {(nm1 : NM | NM1 | NM2)[
    fac___, gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___][x_],
@@ -927,7 +1032,7 @@ aa : HoldPattern[
 
 
 
-(* Squared objects will not be catched by the previous rules (and we don't have
+(* Squared objects will not be caught by the previous rules (and we don't have
 higher powers with one iso-spin index), so we need a special set of rules: *)
 
 dummyrulessq1 = {
@@ -984,7 +1089,12 @@ fixderindices3 = {nmm1->NM1};
   
 allpatterns = (Blank | BlankSequence | BlankNullSequence | Pattern);
 
-
+(*Expand traces of products of sums*)
+fixtraceplus = aa:HoldPattern[UTrace1[NM[___,
+  Plus[___,_?(!FreeQ[#,HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
+  Heads->True]&),___],___]]] :>
+(VerbosePrint[1,"Found UTrace of NM Product of sums. Applying NMExpand"];
+NMExpand[aa]);
 
 (* The final cleanup function *)
 
@@ -993,10 +1103,9 @@ added it below*)
 (*Change 2/6-2001: Added isowaitrules stuff*)
 
 IndicesCleanup1[w_, opts___] :=
-    w  /. dummyrulesiso1a /. dummyrulesiso1b /. dummyrulesiso2 /.
+    w /. dummyrulesiso1a /. dummyrulesiso1b /. dummyrulesiso2 /.
               dummyrulesder1a /. dummyrulesder1b /. dummyrulesder2 /.
-        dummyruleslor1 /. dummyruleslor2(*change 19/1 -
-      1999*)(*/. dummyrulessq1 /. dummyrulessq2*)//.
+    dummyruleslor1 /. dummyruleslor2(*change 19/1 - 1999*)(*/. dummyrulessq1 /. dummyrulessq2*)//.
       (*Added 26/9-2000*)
       fixderindices1 //. fixderindices2 //. fixderindices3 /.
       (*Added 26/9-2000*)
@@ -1013,7 +1122,7 @@ SetAttributes[NM1, Flat]; SetAttributes[NM2, Flat];
 
 IndicesCleanup[ww_, opts___] := (
       
-      w=ww/.isowaitrules1/.isowaitrules0;
+      w=ww/.fixtraceplus//.tracerule1/.isowaitrules1/.isowaitrules0;
 
       larul = {{}, {}, {}};
 
@@ -1138,7 +1247,8 @@ and NM products are present"]w] /.
                   VerbosePrint[2,
                     "Applying $CommutatorRules"]; $CommutatorRules, {}]*) /.
               fcdiga -> dg /. Flatten[{larul[[1]], larul[[3]]}] /.
-          larul[[2]] /. dg -> fcdiga(*Added 26/9-2000*)/.Null->Sequence[]);
+          larul[[2]] /. dg -> fcdiga(*Added 26/9-2000*) /. Null->Sequence[] //.
+          tracerule2 /. tracerule3);
 
 
 
