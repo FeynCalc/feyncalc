@@ -77,7 +77,7 @@ Options[SUNReduce] = {HoldSums -> True, CommutatorReduce -> False,
       RemoveIntegerIndices -> False};
 Options[IndicesCleanup] := {IsoDummys -> {"j", "k", "l"},
       LorentzDummys -> {"\[Xi]", "\[Rho]", "\[Sigma]", "\[Tau]", "\[Omega]"},
-      ExtendedCleanup -> True, FCleanup -> False};
+      ExtendedCleanup -> True, FCleanup -> False, CommutatorReduce -> True};
 
 
 
@@ -159,8 +159,7 @@ NTo3Rules2[2] = {SU2D[x1_, x2_, x3_] :> 0,
       fcsunf[x1_, x2_, x3_] :>
         SU2F[removesunc[x1], removesunc[x2], removesunc[x3]],
       fcsundel[x1_, x2_] :> SU2Delta[removesunc[x1], removesunc[x2]]};
-NTo3Rules2[
-      3] = {SU3D[x1_, x2_, x3_] :>
+NTo3Rules2[3] = {SU3D[x1_, x2_, x3_] :>
         SU3D[removesunc[x1], removesunc[x2], removesunc[x3]],
       SU3F[x1_, x2_, x3_] :>
         SU3F[removesunc[x1], removesunc[x2], removesunc[x3]],
@@ -325,7 +324,8 @@ $SUNDeltaRules =(*the delta functions are orderless,
       (*Added 5/5-2001*)
       SU3Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU3Delta[i, j],
       SU3Delta[i:tmpsuni[_Integer]|_Integer, k_]*
-        SU3Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /; (i =!= j),
+        SU3Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0/;(*fixed problem when missing one head 9/10-2001*)
+                                ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)),
       (**)
       SU3Delta[tmpsuni[i_], fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       SU3Delta[fcsuni[i_], tmpsuni[j_]]^n_ /; EvenQ[n] :> 1,
@@ -344,7 +344,8 @@ $SUNDeltaRules =(*the delta functions are orderless,
       (*Added 5/5-2001*)
       SU2Delta[i:tmpsuni[_]|_Integer, j:tmpsuni[_]|_Integer]^_ :> SU2Delta[i, j],
       SU2Delta[i:tmpsuni[_Integer]|_Integer, k_]*
-        SU2Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /; (i =!= j),
+        SU2Delta[j:tmpsuni[_Integer]|_Integer, k_] :> 0 /;(*fixed problem when missing one head 9/10-2001*)
+                                ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)),
       (**)
       SU2Delta[tmpsuni[i_], fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       SU2Delta[fcsuni[i_], tmpsuni[j_]]^n_ /; EvenQ[n] :> 1,
@@ -361,7 +362,8 @@ $SUNDeltaRules =(*the delta functions are orderless,
                     IntegerQ[i])) :> (expr /. j -> i),
       Projection[i_Integer][fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       Projection[i_Integer][j_Integer] /; (i =!= j) :> 0,
-      Projection[i_Integer][fcsuni[j_Integer]] /; (i =!= j) :> 0};
+      Projection[i_Integer][fcsuni[j_Integer]]/;(*fixed problem when missing one head 9/10-2001*)
+                                ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)) :> 0};
 
 $SUNDFRules = {(*contraction of three indices*)
       SU2F[a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
@@ -1287,7 +1289,10 @@ and NM products are present"]w] /.
                     "Applying $CommutatorRules"]; $CommutatorRules, {}]*) /.
               fcdiga -> dg /. Flatten[{larul[[1]], larul[[3]]}] /.
           larul[[2]] /. dg -> fcdiga(*Added 26/9-2000*) /. Null->Sequence[] //.
-          tracerule2 /. tracerule3);
+          tracerule2 /. tracerule3 // (*Added 3/10-2001*)
+          If[(CommutatorReduce /. Flatten[{opts}] /. Options[IndicesCleanup]),
+        VerbosePrint[2, "Applying CommutatorReduce"];
+        # // ( CommutatorReduce[#,opts])&, #]&);
 
 
 

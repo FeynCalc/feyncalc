@@ -8,7 +8,7 @@
 This is the startup file of Phi.
 
 You'll most likely only need to edit the section
-"CHOICE OF CONFIGURATION AND LAGRANGIANS" below.
+"CHOOSE CONFIGURATION AND LAGRANGIANS" below.
 
 If you want to customize further, put here model independent
 definitions and/or definitions common to all models.
@@ -18,15 +18,21 @@ To have extra definitions read before anything else, put them
 in 'First.m'.
 
 Model specific definitions and usage definitions for classes of
-lagrangians should be put in the relevant configuration file in
+lagrangians are in the relevant configuration file in
 the directory 'Configurations'.
+You can override these in the present file
+(see "EXTRA CONFIGURATION").
+If you are running UNIX (Linux), you can put a copy of
+the present file in ~/.Mathematica/<version>/AddOns/Applications/HighEnergyPhysics/Phi/
+(create the necessary directories) and it will override
+the file in the installation directory.
 
-Coupling files for Phi and FeynArts should be placed in the
+Coupling files for Phi and FeynArts are in the
 directory 'CouplingVectors'.
 
-Lagrangians for Phi should be placed in the directory
+Lagrangians for Phi are in the directory
 'Lagrangians' and renormalization factors in the
-direcory 'Factors'.
+directory 'Factors'.
 
 *)
 
@@ -145,6 +151,9 @@ HighEnergyPhysics`FeynArts`TheLabel[Scalar0]:="S";
 FALabel[Scalar[1],0]:="S";
 FALabel[Scalar[1][0],_]:="S";
 HighEnergyPhysics`FeynArts`TheLabel[Scalar1]:="S";
+FALabel[Scalar[2],0]:="s";
+FALabel[Scalar[2][0],_]:="s";
+HighEnergyPhysics`FeynArts`TheLabel[Scalar2]:="s";
 FALabel[PseudoScalar[0],0]:="P";
 FALabel[PseudoScalar[0][0],_]:="P";
 HighEnergyPhysics`FeynArts`TheLabel[PseudoScalar0]:="P";
@@ -259,8 +268,8 @@ $UExpansionCoefficients=
   $Configuration=
     (*"ChPT2";*)      (*standard SU(2) ChPT*)
     (*"ChPTPhoton2";*)(*standard SU(2) ChPT with coupling to a photon source*)
-    "ChPT3";      (*Standard SU(3) ChPT*)
-    (*"ChPTW3";*)     (*Weak SU(3) ChPT*)
+    (*"ChPT3";*)      (*Standard SU(3) ChPT*)
+    "ChPTW3";     (*Weak SU(3) ChPT*)
     (*"BChPT2";*)     (*Relativistic baryon SU(2) ChPT*)
     (*"HBChPT2";*)    (*Heavy baryon SU(2) ChPT*)
     (*"ChPTEM2";*)    (*Standard SU(2) ChPT with virtual photons - Meissner, Steininger*)
@@ -282,8 +291,8 @@ tmp`olddir=tmp`olddir1;
   $ULagrangians=
     (*{ChPT2[2],ChPT2[4]};*)
     (*{ChPTPhoton2[2],ChPTPhoton2[4]};*)
-    {ChPT3[2],ChPT3[4]};
-    (*{ChPTW3[2],ChPTW3[4]};*)
+    (*{ChPT3[2],ChPT3[4]};*)
+    {ChPTW3[2],ChPTW3[4]};
     (*{BChPT2[2]};*)
     (*{HBChPT2[2]};*)
     (*{ChPTEM2[2],ChPTEM2[4]};*)
@@ -296,7 +305,99 @@ VerbosePrint[2,"Loading lagrangians ",$ULagrangians];
 LoadLagrangian/@$ULagrangians;
 
 (* ************************************************************** *)
-(* ****** END OF CHOICE OF CONFIGURATION AND LAGRANGIANS ******** *)
+(* ****** END OF CHOOSE CONFIGURATION AND LAGRANGIANS *********** *)
+(* ************************************************************** *)
+
+(* ************************************************************** *)
+(* ******************* EXTRA CONFIGURATION ********************** *)
+(* ************************************************************** *)
+
+(* Source fields *)
+(* Fields not needed should be set to 0 to speed up things *)
+(* Notice that some sources are defined in configuration files,
+   but can be redefined here*)
+
+(* Fields *)
+(*QuantumField[___,Particle[Scalar[0],___],___][_]:=0;*)
+(*QuantumField[___,Particle[Scalar[1],___],___][_]:=0;*)
+(*QuantumField[___,Particle[Scalar[2],___],___][_]:=0;*)
+QuantumField[___,Particle[PseudoScalar[0],___],___][_]:=0;
+(*QuantumField[___,Particle[Vector[0],___],___][_]:=0;
+QuantumField[___,Particle[AxialVector[0],___],___][_]:=0;*)
+
+(* Isovectors *)
+(*IsoVector[
+QuantumField[Particle[Scalar[0],___],___],___][_]:=0;*)
+IsoVector[
+QuantumField[Particle[Scalar[1],___],___],___][_]:=0;
+(*IsoVector[
+QuantumField[Particle[Scalar[2],___],___],___][_]:=0;*)
+IsoVector[
+QuantumField[Particle[PseudoScalar[0],___],___],___][_]:=0;
+(*IsoVector[
+QuantumField[Particle[Vector[0],___],___],___][_]:=0;
+IsoVector[
+QuantumField[Particle[AxialVector[0],___],___],___][_]:=0;*)
+
+(* Isosinglets *)
+(*QuantumField[___,Particle[Scalar[0],___],___,
+  SUNIndex[0],___][_]:=0;*)
+(*QuantumField[___,Particle[Scalar[1],___],___,
+  SUNIndex[0],___][_]:=0;*)
+(*QuantumField[___,Particle[Scalar[2],___],___,
+  SUNIndex[0],___][_]:=0;*)
+QuantumField[___,Particle[PseudoScalar[0],___],___,
+  SUNIndex[0],___][_]:=0;
+(*QuantumField[___,Particle[AxialVector[0],___],___,
+  SUNIndex[0],___][_]:=0;
+QuantumField[___,Particle[Vector[0],___],___,
+  SUNIndex[0],___][_]:=0;*)
+
+(* The setting below expands the zero'th Scalar[0]
+   source around the quark mass. The Scalar[2] source is
+   then the perturbation. (- in ChPTW3 we use Scalar[1] for the
+   hamiltonian source) *)
+
+IsoVector[QuantumField[Particle[
+Scalar[0],ar___RenormalizationState,
+br___RenormalizationScheme,cr___ExpansionState,
+opts___Rule|opts___List]],opts1___][x_]:=
+IsoVector[QuantumField[Particle[Scalar[2],ar,br,cr]],opts1][x];
+                        
+QuantumField[Particle[
+Scalar[0],ar___RenormalizationState,
+br___RenormalizationScheme,cr___ExpansionState,
+opts___Rule|opts___List], SUNIndex[0]][x_]:=
+UQuarkMassMatrix[ar,br,cr,opts]+
+QuantumField[Particle[Scalar[2],ar,br,cr,
+   Sequence@@OptionsSelect[Particle,opts]],
+SUNIndex[0]][x]*UIdentityMatrix[opts];
+
+(* If you're working with the weak lagrangian; have a momentum
+   carrying lagrangian or not *)
+
+UNablaHatDelta[mu_]:=
+
+(* The standard definition *)
+(*-I*NM[SMM,
+UGeneratorMatrixIsoDotFull[QuantumField[Particle[
+LeftComponent[0]],{mu}]],
+UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
+Adjoint[SMM]]+
+I*NM[SMM,
+UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
+UGeneratorMatrixIsoDotFull[QuantumField[Particle[
+LeftComponent[0]],{mu}]],
+Adjoint[SMM]];*)
+
+(* Including a scalar 'source' with momentum *)
+NM[SMM,NM[
+FDr[QuantumField[Particle[Scalar[1]]],{mu}],
+UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
+Adjoint[SMM]]];
+
+(* ************************************************************** *)
+(* ***************** END OF EXTRA CONFIGURATION ***************** *)
 (* ************************************************************** *)
 
 (* Add the palettes to the palette menu of Mathematica

@@ -118,6 +118,12 @@ QuantumField /:
             ] := SubscriptBox[Tbox[f][[1(*,1*)]], Tbox[mu]] /; 
                    lo === LorentzIndex;
 
+QuantumField /:
+    MakeBoxes[
+      QuantumField[f_,
+        lol : ((HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___])..)],
+        TraditionalForm] := SubscriptBox[Tbox[f][[1(*, 1*)]], Tbox[lol]];
+
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
      ], TraditionalForm

@@ -2473,21 +2473,19 @@ UTraceToFCTrace[a_,
 
 CycleUTraces[expr_] :=
     Block[{a, tmplist, sortlist, smallest},
-      expr /. UTrace1[a : (Dot | NM)[__]] :>
-      (tmplist = List @@ a;
-       sortlist = Sort[tmplist];
-       smallest = sortlist[[1]];
-       Do[
-         If[Count[sortlist, sortlist[[i]]] === 1,
-           smallest = sortlist[[i]]
-         ],
-       {i, 1, Length[sortlist]}];
-       While[tmplist[[1]] =!= smallest ||
-         tmplist[[1]] === smallest && tmplist[[-1]] === smallest,
-         tmplist = RotateLeft[tmplist]];
-         UTrace1[a[[0]] @@ tmplist])
-       ];
+      expr /. UTrace1[a : (Dot | NM)[__]] :> (tmplist = List @@ a;
+            sortlist = Sort[tmplist];
+            smallest = sortlist[[1]];
 
+            Do[If[Count[sortlist, sortlist[[i]]] === 1,
+                smallest = sortlist[[i]]; Break[]], {i, 1,
+                Length[sortlist]}];
+
+            While[! (tmplist[[1]] === smallest && tmplist[[-1]] =!= smallest ||
+                     tmplist[[1]] === smallest && Length[tmplist] <= 2 ||
+                    Length[Union[tmplist]] === 1),
+              tmplist = RotateLeft[tmplist]];
+            UTrace1[a[[0]] @@ tmplist])];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -2780,9 +2778,6 @@ $SU3DReduceList]];
 
       );
 FixSUN;
-(*Ahem - wrong,
-  30/12 - 1999*)(*SU3D[a_Symbol, a_Symbol, b_] /;
-        FreeQ[$ConstantIsoIndices, a] := 0;*)
 
 
 

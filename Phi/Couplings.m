@@ -143,7 +143,7 @@ Options[FCToFA] = {ScalarProductForm -> MomentaScalarProduct,
       MomentumVariablesString -> "p", ParticlesNumber -> 4,
       IsoIndicesString -> "I", FADeltas -> True, IsoCollect -> False};
 Options[MomentaCollect] = {ParticlesNumber -> 4, PerturbationOrder -> 2,
-      ScalarProductForm -> (MomentaScalarProduct|Pair),
+      ScalarProductForm -> (MomentaScalarProduct|fcpa),
       MomentumVariablesString -> "p", ExtendedCollect -> True,
       HoldMinuses -> False};
 Options[GenericCoupling] = {ScalarProductForm -> MomentaScalarProduct,
@@ -755,35 +755,33 @@ Union[Union[Cases[Cases[#, faprop[faint | faloop[__]][__],
 Cases[#, favert[_?((Abs[#] > 1) &)][_], Infinity, Heads -> True]]])))) & /@ t /.
       ss -> Sequence);
 
-(* Combinations (this function is probably in the combinatorics package, but we
-have enough in memory already): *)
-
-(*combs[m_, n_] :=
-    Union[Select[
-        Sort /@ Flatten[Outer[List, Sequence @@ Table[m, {n}]],
-            n - 1], (Union[#] === #) &]];*)
-
 
 (* DropInternalSelfEnergies drops topologies with selfenergy loops on internal legs.
    Added 30/5-2001. *)
    
-SelectRepeated[s_List]:=(
+(*Select elements that occur more than once in a list*)
+SelectRepeated[s_List]:=
+(*Added union to deal with more than 2 occurences*)Union[
 set = {};
 ((If[FreeQ[set, #], set = Union[set, {#}]; seq[], #]) & /@ s) /.
-seq -> Sequence);
+seq -> Sequence];
 
 SelectInternalSelfEnergies[fatopl[mesonstop__]] :=
 Select[fatopl[mesonstop], (selfprops = {};
+      (*Added ctverts to account also for CT's on internal lines. 10/10-2001*)
+      ctverts = Alternatives @@ SelectRepeated[Cases[Cases[#,
+                faprop[faint][_, _], Infinity], favert[2, ___][_], Infinity]];
       loopprops =
         List @@ Select[#, MatchQ[#, faprop[faloop[_]][v1_, v2_]]&];
       selfprops =
         Union[SelectRepeated[loopprops],
               Select[loopprops, MatchQ[#, faprop[faloop[_]][v_, v_]]&]];
       selfverts = Alternatives @@ Union[Flatten[(List @@ #) & /@ selfprops]];
-      Length[Complement[
+      (Length[Complement[
                 Select[List @@ #,
                 MatchQ[#, faprop[faint][___, selfverts, ___]]&],
-                selfprops]] === 2 &&
+                selfprops]] === 2 ||
+       FreeQ[#, ctverts] =!= True) &&
              FreeQ[List @@ #,
                 faprop[faext|faout|fainc][___, selfverts, ___]])&];
                 
@@ -798,7 +796,8 @@ versions of functions from FeynArts): *)
 AddToLeg[faprop[h : (faext | fainc | faout)][from : (favert[1][_]), to_],
       n_] := seq[faprop[h][from, favert[2][n]],
       faprop[faint][favert[2][n], to]];
-AddToLeg[faprop[h : (faint | faloop[__])][from : (favert[_][_]), to_], n_] :=
+AddToLeg[faprop[h : (faint | faloop[__])][
+  from : (favert[__(*Added _ to allow CTs. 10/10-2001*)][_]), to_], n_] :=
     faprop[discard][from, to];
 (*AddLeg[top_, n_] :=
       fatopl @@ Array[MapAt[AddToLeg1[#, n] &, top, #] &, Length[top]] /.
@@ -820,9 +819,9 @@ AddToLeg[faprop[h : (faint | faloop[__])][from : (favert[_][_]), to_], n_] :=
           
 AddExternalLegs[tops : fatopl[__], opts___Rule] := 
 If[faseens /. Flatten[{opts}] /. Options[AddExternalLegs],
-#,DropInternalSelfEnergies[#]]&[
-(maxv = Max[(#[[1]]) & /@
-              Cases[tops, favert[_][_], Infinity, Heads -> True]] +
+  #,DropInternalSelfEnergies[#]]&[
+  (maxv = Max[(#[[1]]) & /@
+              Cases[tops, favert[__(*Added _ to allow CTs. 10/10-2001*)][_], Infinity, Heads -> True]] +
           1;(*Added Compare1, 22/6 - 2000*)Compare1[
         Select[AddLeg[#, maxv, opts] & /@ tops,
           FreeQ[#, discard, Infinity, Heads -> True] &]])];

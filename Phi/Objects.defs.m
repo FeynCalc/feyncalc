@@ -356,7 +356,7 @@ on NM products.  Ordinary products should be replaced with NM before applying \
 UNMSplit";
 
 USplit::"usage" = 
-    "USplit is the support function for UNMSplit soing the actual work.  \
+    "USplit is the support function for UNMSplit doing the actual work.  \
 USplit[NM[expr],x,opts] returns NM[expr] with MM and SMM (without arguments) \
 expanded to the order given by the setting of the option ExpansionOrder in \
 the meson fields.  USplit has no options, but other options can be given, \
@@ -983,7 +983,7 @@ held out of the dropping algorithm.  A possible setting could be NoDrop -> \
 
 CommutatorReduce::"usage" =
   "CommutatorReduce is an option for DiscardTerms, ExpandU, \
-ExpandUGenerators and SUNReduce,  specifying whether or \
+ExpandUGenerators, IndicesCleanup and SUNReduce,  specifying whether or \
 not the commutator rules $CommutatorRules should be used for reductions.  To \
 speed up things the function SetCommutators can be used.  Also, \
 CommutatorReduce is a function which simply applies $CommutatorRules \

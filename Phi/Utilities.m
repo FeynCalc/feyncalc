@@ -571,8 +571,8 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
            dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
 	       $PathnameSeparator <>
 	       "Phi" <> $PathnameSeparator <> "CouplingVectors"],
-	     (*Added 24/7-2001*)
-	     StringMatchQ[fi,"*.Fac"]===True,
+	     (*Added 24/7-2001*)(*Added .Mass 10/10-2001*)
+	     StringMatchQ[fi,"*.Fac"]===True || StringMatchQ[fi,"*.Mass"]===True,
            dir = eliminateDoubles[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <>
 	       $PathnameSeparator <>
 	       "Phi" <> $PathnameSeparator <> "Factors"],
