@@ -60,6 +60,8 @@ ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
 SUNIndex := SUNIndex = MakeContext["SUNIndex"];
 ScaleMu := ScaleMu = MakeContext["ScaleMu"];
 CouplingConstant := CouplingConstant = MakeContext["CouplingConstant"];
+ExplicitLorentzIndex := ExplicitLorentzIndex = MakeContext["ExplicitLorentzIndex"];
+DiracSimplify := DiracSimplify = MakeContext["DiracSimplify"];
 
 (* Tracer functions *)
 
@@ -1586,6 +1588,27 @@ $GellmannOkuboInv = {ParticleMass[PseudoScalar[2], r___]^2 -
         3*ParticleMass[PseudoScalar[11], r]^2, 
       4/3 - ParticleMass[Pion]^2/(3 ParticleMass[Kaon]^2) :> 
         ParticleMass[EtaMeson]^2/(ParticleMass[Kaon]^2)};
+
+
+(* Substitute DiracBars with Adjoints, permute and substitute back *)
+(*First implementation - should be improved...*)
+FixFermionAdjoints[ex_] :=
+  ((ex /.
+  {fcqf[d___, DiracBar[Particle[Fermion[f_], r___]], rr___][x_] :> 
+   fcdot[Adjoint[fcqf[d, Particle[Fermion[f], r], rr][x]], 
+   fcdiga[ExplicitLorentzIndex[0]]], fcqf[d___, 
+     Adjoint[DiracBar[Particle[Fermion[f_], r___]]], rr___][x_] :> 
+   fcdot[fcdiga[ExplicitLorentzIndex[0]], 
+     fcqf[d, Particle[Fermion[f], r], rr][x]]} //
+   DiracSimplify) /. 
+   fcdot[Adjoint[fcdiga[fcli[mu_]]], 
+     fcdiga[ExplicitLorentzIndex[0]]] :> 
+   fcdot[fcdiga[ExplicitLorentzIndex[0]], 
+     fcdiga[fcli[mu]]] // DiracSimplify) /. 
+   fcdot[Adjoint[fcqf[d___, Particle[Fermion[f_], r___], rr___][x_]], 
+     fcdiga[ExplicitLorentzIndex[0]]] :> 
+   fcqf[d, DiracBar[Particle[Fermion[f], r]], rr][x] // 
+   DiracSimplify;
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 

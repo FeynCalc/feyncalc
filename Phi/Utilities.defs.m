@@ -176,6 +176,9 @@ Gell-mann-Okubo mass formula.";
 PhiToLaTeX::"usage" = 
     "PhiToLaTeX[expr] constructs LaTeX from the expression expr.";
 
+FixFermionAdjoints::"usage" = 
+    "FixFermionAdjoints[expr] substitutes DiracBars in expr with Adjoints, applies \
+DiracSimplify and substitutes back.";
 
 Begin["`Private`"];
 
