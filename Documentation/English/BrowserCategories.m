@@ -1,16 +1,15 @@
 BrowserCategory["High Energy Physics",
     None, {
-    Item["Introduction", "FeynCalcRef.nb", 
+    Item["Introduction", "FeynCalcManual.nb", 
           IndexTag -> "Short Overview", CopyTag -> "intro"],
 
-    Item["Starting FeynCalc", "FeynCalcRef.nb",
+    Item["Starting FeynCalc", "FeynCalcManual.nb",
           IndexTag -> "Load FeynCalc", CopyTag ->"start"],
 
     BrowserCategory["Example Calculations",
         None, {
-        Item["About Example Calculations", "FeynCalcRef.nb",
-          IndexTag -> "Example Calculations", CopyTag->"ex"],
-        Item["Pair Production", "FeynCalcRef.nb", IndexTag->"Tree level"],
+        Item["About Example Calculations", "FeynCalcManual.nb", IndexTag -> "ex"],
+        Item["Pair Production", "FeynCalcManual.nb", IndexTag->"Tree level"],
         Item["Moment Integral", "FeynCalcManual.nb", IndexTag->"A moment integral"]}
     ],
 
