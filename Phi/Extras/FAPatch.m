@@ -213,7 +213,6 @@ P$NonCommuting =  Union[Flatten[P$NonCommuting | $FermionHeads]];\n
 SetOptions[FourVector, FeynCalcInternal -> False];\n
 SetOptions[MetricTensor, FeynCalcInternal -> False];\n
 SetOptions[DiracSlash, FeynCalcInternal -> False];\n
-SetOptions[InsertFields, Model -> \"Automatic\", GenericModel -> \"Automatic\",\n
 InsertionLevel -> Classes];\n
 (*Important. OneLoop is broken if FeynAmpDenominator is orderless*)
 ClearAttributes[FeynAmpDenominator, Orderless];\n"]; 
