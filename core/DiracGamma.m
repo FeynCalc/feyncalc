@@ -38,8 +38,9 @@ DiracGamma[5, __] := DiracGamma[5];
 DiracGamma[6, __] := DiracGamma[6];
 DiracGamma[7, __] := DiracGamma[7];
 DiracGamma[_, 0]   := 0;
-DiracGamma[0]       = 0;
-DiracGamma[0, _]   := 0;
+(*Why?? F.Orellana, 21/11-2003*)
+(*DiracGamma[0]       = 0;
+DiracGamma[0, _]   := 0;*)
 DiracGamma[a_Plus] := Map[DiracGamma, a];
 DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___]] := DOT[
   DiracGamma[Momentum[x,dix], dix], DiracGamma[Momentum[y,diy], diy]];
