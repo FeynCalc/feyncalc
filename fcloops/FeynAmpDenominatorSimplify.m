@@ -760,6 +760,31 @@ nx = (Select1[nx, {q1, q2}]/.dufa -> 1) *
 (* special stuff *)
   (* f42 *)
           {qqq[fa_. FeynAmpDenominator[aa___PropagatorDenominator,
+                      PropagatorDenominator[Momentum[q1, dim___] +
+                                            Momentum[pe_ /; pe =!= q2,
+                                                     dim___], m_
+                                           ],
+                                 bb___PropagatorDenominator]
+              ] :> tran[fa FeynAmpDenominator[aa,
+                             PropagatorDenominator[-Momentum[q1, dim] -
+                                                   Momentum[pe, dim], m],
+                                           bb],
+                        q1, -q1, q2, q2
+                       ],
+           qqq[fa_. FeynAmpDenominator[aa___PropagatorDenominator,
+                      PropagatorDenominator[Momentum[q2, dim___] +
+                                            Momentum[pe_ /; pe =!= q1,
+                                                     dim___], m_
+                                           ],
+                                 bb___PropagatorDenominator]
+              ] :> tran[fa FeynAmpDenominator[aa,
+                             PropagatorDenominator[-Momentum[q2, dim] -
+                                                   Momentum[pe, dim], m],
+                                           bb],
+                        q1, q1, q2, -q2
+                       ]
+          }/.
+          {qqq[fa_. FeynAmpDenominator[aa___PropagatorDenominator,
                       PropagatorDenominator[Momentum[q1, dim___] -
                                             Momentum[pe_ /; pe =!= q2, 
                                                      dim___], m_
@@ -1043,17 +1068,19 @@ nx = (Select1[nx, {q1, q2}]/.dufa -> 1) *
           {qqq[(fa_.) *
                FeynAmpDenominator[a___,
                  PropagatorDenominator[Momentum[q1, dim___] +
-                                       Momentum[q2, dim___], 0], b___
+                                       Momentum[q2, dim___] , m_], b___
                                  ]
               ] :> (tran[fa FeynAmpDenominator[a, 
                               PropagatorDenominator[Momentum[q1, dim] +
-                                                    Momentum[q2, dim], 0
+                                                    Momentum[q2, dim], m
                                                    ], b],
-                         q2, -q2] /; FreeQ[{a, b},
+                         q2, -q2](* /; FreeQ[{a, b},
                                            PropagatorDenominator[
                                              Momentum[q2, ___] + pe_, 0]
-                                          ]
-                   ),
+                                          ] *)
+                   )
+(*
+,
            qqq[(fa_.) *
                FeynAmpDenominator[a___,
                  PropagatorDenominator[Momentum[q1, dim___] +
@@ -1068,17 +1095,18 @@ nx = (Select1[nx, {q1, q2}]/.dufa -> 1) *
                                              Momentum[q1, ___] + pe_, 0]
                                           ]
                    )
+*)
           } //.
           {qqq[(fa_.) *
              FeynAmpDenominator[a___,
                PropagatorDenominator[np_. Momentum[pe_,dimp___] +
                     nq2_. Momentum[q2, dim___] + 
-                    nq1_. Momentum[q1, dim___],0], b___
+                    nq1_. Momentum[q1, dim___], m_], b___
                                ]
               ] :> (tran[fa *
                          FeynAmpDenominator[a, PropagatorDenominator[
                          np Momentum[pe, dimp] + nq2 Momentum[q2, dim] +
-                         nq1 Momentum[q1, dim], 0], b],
+                         nq1 Momentum[q1, dim], m], b],
                          q1 , (q1/nq1 -np pe/nq1)
                         ]
                    ) /; FreeQ[fa, q1pw],
@@ -1086,12 +1114,12 @@ nx = (Select1[nx, {q1, q2}]/.dufa -> 1) *
              FeynAmpDenominator[a___,
                PropagatorDenominator[np_. Momentum[pe_,dimp___] +
                     nq2_. Momentum[q2, dim___] + 
-                    nq1_. Momentum[q1, dim___], 0], b___
+                    nq1_. Momentum[q1, dim___], m_], b___
                                ]
               ] :> (tran[fa *
                          FeynAmpDenominator[a, PropagatorDenominator[
                          np Momentum[pe, dimp] + nq2 Momentum[q2, dim] +
-                         nq1 Momentum[q1, dim], 0], b],
+                         nq1 Momentum[q1, dim], m], b],
                          q2, (q2/nq2 -np pe/nq2)
                         ]
                    ) /; FreeQ[fa, q2pw],
