@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: last changed July 19th 2000 *)
+(* :History: last changed September 25th 2003 *)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: DotSimplify *)
@@ -37,8 +37,8 @@ and the number of terms of the expression.";
 
 Begin["`Private`"];
 
-MakeContext[ Commutator, CommutatorExplicit, DotPower, AntiCommutator,
-Expanding, FreeQ2, NonCommFreeQ, MemSet, SUNT,
+MakeContext[ Commutator, CommutatorExplicit, DiracTrace,
+DotPower, AntiCommutator, Expanding, FreeQ2, NonCommFreeQ, MemSet, SUNT,
 SUNTrace, DiracGamma, QuantumField, Momentum];
 
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
@@ -315,7 +315,7 @@ x];
 
 If[CheckContext["SUNTrace"],
    If[!FreeQ[x, SUNTrace],
-      x = x  //. {DOT[a___,b_SUNTrace,c___] :> (b  DOT[a,c]) ,
+      x = x  /. {DOT[a___,b_SUNTrace,c___] :> (b  DOT[a,c]) ,
                   DOT[a___,b1_SUNTrace - b2_SUNTrace, c___] :>
                   (b1 DOT[a,c] - b2 DOT[a,c])
                  }
@@ -324,11 +324,14 @@ If[CheckContext["SUNTrace"],
   ];
 
 If[!FreeQ[x, SUNT],
-   x  = x /. {DOT[a__DiracGamma,b__SUNT, c___]:>
-               DOT[b, a, c],
+   x  = x //. {DOT[a__,b__SUNT, c___]:>
+               DOT[b, a, c] /; FreeQ[{a}, SUNT],
 (*
                DOT[a, c, b],
 *)
+(* implies that SUNT's in a DiracTrace are also to be summed over, need to document this ... *)
+              DiracTrace[f_. DOT[b__SUNT,c__] ] :>
+               f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; FreeQ[f,DiracGamma] && FreeQ[{f,c}, SUNT],
               DOT[a__, DiracTrace[b__]] :>
                DOT[a] DiracTrace[b] /; FreeQ[{a},DiracGamma]
              }
