@@ -13,8 +13,10 @@ Explicit::"usage" =
 SUNF, CovariantFieldDerivative, Twist2GluonOperator and others functions. 
 If set to True the full form of the operator is inserted. 
 Explicit[exp] inserts explicit expressions of FieldStrength, 
-GluonVertex and Twist2GluonOperator in exp. SUNF's are replaced 
-by SUNTrace objects.";
+GluonVertex, etc. in exp. \n
+The dimension of the objects is changed according to the setting of the
+option Dimension.
+SUNF's are replaced by SUNTrace objects.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -72,8 +74,10 @@ Explicit[y_, opts___?OptionQ] := Block[{dim, gh, gp, gvv, gv, qp, qgv, t2g, fis,
            If[CheckContext["FieldStrength"],
               fis[x__] := fis[x] = MakeContext["FieldStrength"][x, Explicit->True]; 
               r = r /. MakeContext["FieldStrength"] -> fis];
-
-                   ChangeDimension[r, dim]];
+  
+           (* use ChangeDimension only if there have been changes *)
+           If[r =!= y, r = ChangeDimension[r, dim]];
+r];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
