@@ -1,0 +1,6085 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    154320,       5956]*)
+(*NotebookOutlinePosition[    154968,       5979]*)
+(*  CellTagsIndexPosition[    154924,       5975]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The 2-loop ghost selfenergy ", "Subsection"],
+
+Cell[BoxData[
+    \(<< HighEnergyPhysics`FeynCalc`\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["The graphs", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(Paint[
+        inserts = 
+          InsertFields[
+            Rest@CreateTopologies[2, 1 \[Rule] 1, 
+                ExcludeTopologies \[Rule] {Tadpoles}], {U[5]} \[Rule] {U[5]}, 
+            InsertionLevel \[Rule] Classes, 
+            GenericModel \[Rule] "\<FCQCDLorentz\>", 
+            Model \[Rule] "\<FCQCD\>"], ColumnsXRows \[Rule] {4, 2}, 
+        SheetHeader \[Rule] False, PaintLevel \[Rule] {Generic}, 
+        Numbering \[Rule] None];\)\)], "Input"],
+
+Cell[GraphicsData["PostScript", "\<\
+%!
+%%Creator: Mathematica
+%%AspectRatio: .5 
+MathPictureStart
+/Mabs {
+Mgmatrix idtransform
+Mtmatrix dtransform
+} bind def
+/Mabsadd { Mabs
+3 -1 roll add
+3 1 roll add
+exch } bind def
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+-1.38778e-17 0.0113636 -6.93889e-18 0.0113636 [
+[ 0 0 0 0 ]
+[ 1 .5 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 .5 L
+0 .5 L
+closepath
+clip
+newpath
+% Start of sub-graphic
+p
+-1.38778e-17 0.25 0.25 0.5 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.31818 .5 L
+s
+.20909 .5 m
+.15455 .48182 L
+.15455 .51818 L
+F
+gsave
+.18182 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.68182 .5 L
+s
+.84545 .5 m
+.79091 .51818 L
+.79091 .48182 L
+F
+gsave
+.81818 .54296 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.49384 .49384 .17577 177.993 272.007 arc
+s
+gsave
+.35526 .35526 -65 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.68182 .5 m
+.68611 .49458 L
+.68924 .48824 L
+.69101 .48124 L
+.69126 .47393 L
+.68997 .4667 L
+.68721 .45994 L
+.68315 .45401 L
+.67803 .44917 L
+.67217 .44559 L
+.66589 .44334 L
+.6595 .44238 L
+.6533 .44257 L
+.64755 .44373 L
+.64247 .44562 L
+.63824 .448 L
+.63499 .45063 L
+.63284 .45331 L
+.63185 .45587 L
+.63205 .45816 L
+.63342 .46006 L
+.6359 .46147 L
+.63937 .46229 L
+.64367 .46242 L
+.64859 .46174 L
+.65386 .46016 L
+.6592 .45758 L
+.66429 .45394 L
+.6688 .44927 L
+.67243 .44362 L
+.6749 .43718 L
+.67599 .43019 L
+.67557 .42299 L
+.67362 .41594 L
+.67022 .40944 L
+.66556 .40382 L
+.6599 .39937 L
+.65357 .39627 L
+.64689 .39461 L
+.64021 .39436 L
+.63381 .39536 L
+.62795 .39743 L
+.6228 .40028 L
+.6185 .40364 L
+.61517 .40721 L
+.61284 .41073 L
+.61157 .41397 L
+.61137 .41675 L
+.61221 .4189 L
+.61405 .42032 L
+Mistroke
+.61679 .42094 L
+.62031 .42069 L
+.62441 .41953 L
+.62886 .41741 L
+.63338 .41432 L
+.63767 .41026 L
+.64142 .40527 L
+.64431 .39946 L
+.64607 .393 L
+.64649 .38613 L
+.64544 .37915 L
+.64289 .37241 L
+.63892 .36627 L
+.63373 .36108 L
+.62759 .35711 L
+.62085 .35456 L
+.61387 .35351 L
+.607 .35393 L
+.60054 .35569 L
+.59473 .35858 L
+.58974 .36233 L
+.58568 .36662 L
+.58259 .37114 L
+.58047 .37559 L
+.57931 .37969 L
+.57906 .38321 L
+.57968 .38595 L
+.5811 .38779 L
+.58325 .38863 L
+.58603 .38843 L
+.58927 .38716 L
+.59279 .38483 L
+.59636 .3815 L
+.59972 .3772 L
+.60257 .37205 L
+.60464 .36619 L
+.60564 .35979 L
+.60539 .35311 L
+.60373 .34643 L
+.60063 .3401 L
+.59618 .33444 L
+.59056 .32978 L
+.58406 .32638 L
+.57701 .32443 L
+.56981 .32401 L
+.56282 .3251 L
+.55638 .32757 L
+.55073 .3312 L
+.54606 .33571 L
+.54242 .3408 L
+Mistroke
+.53984 .34614 L
+.53826 .35141 L
+.53758 .35633 L
+.53771 .36063 L
+.53853 .3641 L
+.53994 .36658 L
+.54184 .36795 L
+.54413 .36815 L
+.54669 .36716 L
+.54937 .36501 L
+.552 .36176 L
+.55438 .35753 L
+.55627 .35245 L
+.55743 .3467 L
+.55762 .3405 L
+.55666 .33411 L
+.55441 .32783 L
+.55083 .32197 L
+.54599 .31685 L
+.54006 .31279 L
+.5333 .31003 L
+.52607 .30874 L
+.51876 .30899 L
+.51176 .31076 L
+.50542 .31389 L
+.5 .31818 L
+Mfstroke
+gsave
+.65075 .34925 -61 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ .005 .03 ] 0 setdash
+.5 .68182 m
+.5 .31818 L
+s
+gsave
+.5316 .5 -61 -8.90625 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.31818 .5 m
+.31381 .50529 L
+.31055 .51153 L
+.30863 .51845 L
+.3082 .52571 L
+.3093 .53294 L
+.31186 .53974 L
+.31573 .54576 L
+.32068 .55073 L
+.3264 .55447 L
+.33258 .5569 L
+.33891 .55806 L
+.3451 .55806 L
+.35087 .55708 L
+.35602 .55535 L
+.36036 .5531 L
+.36374 .55057 L
+.36607 .54795 L
+.36725 .54543 L
+.36727 .54313 L
+.36612 .54119 L
+.36386 .53969 L
+.3606 .53875 L
+.35647 .53845 L
+.35169 .5389 L
+.34648 .54023 L
+.34114 .54252 L
+.33597 .54583 L
+.33128 .5502 L
+.32739 .55555 L
+.32458 .56176 L
+.32307 .56858 L
+.32304 .57573 L
+.32452 .58283 L
+.32746 .58951 L
+.33173 .59542 L
+.33707 .60025 L
+.34318 .60377 L
+.34974 .6059 L
+.3564 .60662 L
+.36287 .60603 L
+.3689 .60433 L
+.37428 .60175 L
+.37885 .59858 L
+.38252 .59511 L
+.38521 .59159 L
+.38688 .58827 L
+.3875 .58535 L
+.38708 .58299 L
+.38565 .5813 L
+Mistroke
+.38328 .58037 L
+.38009 .58027 L
+.37624 .58104 L
+.37194 .58274 L
+.36744 .58538 L
+.36303 .58898 L
+.35902 .59352 L
+.35571 .59892 L
+.3534 .60506 L
+.35233 .61173 L
+.35267 .61866 L
+.35449 .62553 L
+.35776 .63197 L
+.36235 .63765 L
+.36803 .64224 L
+.37447 .64551 L
+.38134 .64733 L
+.38827 .64767 L
+.39494 .6466 L
+.40108 .64429 L
+.40648 .64098 L
+.41102 .63697 L
+.41462 .63256 L
+.41726 .62806 L
+.41896 .62376 L
+.41973 .61991 L
+.41963 .61672 L
+.4187 .61435 L
+.41701 .61292 L
+.41465 .6125 L
+.41173 .61312 L
+.40841 .61479 L
+.40489 .61748 L
+.40142 .62115 L
+.39825 .62572 L
+.39567 .6311 L
+.39397 .63713 L
+.39338 .6436 L
+.3941 .65026 L
+.39623 .65682 L
+.39975 .66293 L
+.40458 .66827 L
+.41049 .67254 L
+.41717 .67548 L
+.42427 .67696 L
+.43142 .67693 L
+.43824 .67542 L
+.44445 .67261 L
+.4498 .66872 L
+.45417 .66403 L
+Mistroke
+.45748 .65886 L
+.45977 .65352 L
+.4611 .64831 L
+.46155 .64353 L
+.46125 .6394 L
+.46031 .63614 L
+.45881 .63388 L
+.45687 .63273 L
+.45457 .63275 L
+.45205 .63393 L
+.44943 .63626 L
+.4469 .63964 L
+.44465 .64398 L
+.44292 .64913 L
+.44194 .6549 L
+.44194 .66109 L
+.4431 .66742 L
+.44553 .6736 L
+.44927 .67932 L
+.45424 .68427 L
+.46026 .68814 L
+.46706 .6907 L
+.47429 .6918 L
+.48155 .69137 L
+.48847 .68945 L
+.49471 .68619 L
+.5 .68182 L
+Mfstroke
+gsave
+.34806 .65194 -65 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ .005 .03 ] 0 setdash
+newpath
+.49953 .49953 .18229 .14916 89.8508 arc
+s
+gsave
+.64272 .64272 -61 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.5 .68182 Mdot
+.5 .31818 Mdot
+.31818 .5 Mdot
+.68182 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.25 0.25 0.5 0.5 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.31818 .5 L
+s
+.20909 .5 m
+.15455 .48182 L
+.15455 .51818 L
+F
+gsave
+.18182 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.68182 .5 L
+s
+.84545 .5 m
+.79091 .51818 L
+.79091 .48182 L
+F
+gsave
+.81818 .54296 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.49384 .49384 .17577 177.993 272.007 arc
+s
+gsave
+.35526 .35526 -65 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.49953 .50047 .18229 270.149 359.851 arc
+s
+gsave
+.64272 .35728 -61 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.5 .31818 m
+.49576 .32338 L
+.4924 .32924 L
+.49005 .3356 L
+.48881 .34228 L
+.48875 .34906 L
+.48986 .35576 L
+.49209 .36217 L
+.49535 .36809 L
+.4995 .37336 L
+.50436 .37785 L
+.50972 .38144 L
+.51534 .38407 L
+.52099 .38572 L
+.52642 .38639 L
+.53139 .38616 L
+.5357 .38511 L
+.53915 .38338 L
+.54159 .38114 L
+.54293 .37857 L
+.5431 .37586 L
+.54209 .37323 L
+.53995 .37087 L
+.53678 .36898 L
+.5327 .36772 L
+.5279 .36724 L
+.52257 .36765 L
+.51696 .36901 L
+.51131 .37136 L
+.50585 .37468 L
+.50082 .37892 L
+.49645 .38398 L
+.49292 .38974 L
+.49038 .39602 L
+.48894 .40266 L
+.48867 .40944 L
+.48957 .41617 L
+.49161 .42264 L
+.49469 .42866 L
+.4987 .43406 L
+.50344 .4387 L
+.50873 .44246 L
+.51432 .44526 L
+.51998 .44708 L
+.52547 .44793 L
+.53054 .44785 L
+.53498 .44694 L
+.53859 .44532 L
+.54123 .44316 L
+.54277 .44063 L
+Mistroke
+.54315 .43793 L
+.54235 .43527 L
+.54041 .43285 L
+.53741 .43086 L
+.53348 .42948 L
+.52879 .42885 L
+.52355 .42909 L
+.51797 .43028 L
+.5123 .43246 L
+.50679 .43561 L
+.50167 .43969 L
+.49717 .44461 L
+.49348 .45025 L
+.49075 .45646 L
+.48911 .46304 L
+.48862 .46981 L
+.48932 .47657 L
+.49116 .4831 L
+.49407 .48921 L
+.49792 .49474 L
+.50255 .49952 L
+.50775 .50344 L
+.51331 .50642 L
+.51898 .50842 L
+.52451 .50943 L
+.52967 .50951 L
+.53424 .50874 L
+.53801 .50724 L
+.54083 .50516 L
+.54257 .50268 L
+.54316 .5 L
+.54257 .49732 L
+.54083 .49484 L
+.53801 .49276 L
+.53424 .49126 L
+.52967 .49049 L
+.52451 .49057 L
+.51898 .49158 L
+.51331 .49358 L
+.50775 .49656 L
+.50255 .50048 L
+.49792 .50526 L
+.49407 .51079 L
+.49116 .5169 L
+.48932 .52343 L
+.48862 .53019 L
+.48911 .53696 L
+.49075 .54354 L
+.49348 .54975 L
+.49717 .55539 L
+Mistroke
+.50167 .56031 L
+.50679 .56439 L
+.5123 .56754 L
+.51797 .56972 L
+.52355 .57091 L
+.52879 .57115 L
+.53348 .57052 L
+.53741 .56914 L
+.54041 .56715 L
+.54235 .56473 L
+.54315 .56207 L
+.54277 .55937 L
+.54123 .55684 L
+.53859 .55468 L
+.53498 .55306 L
+.53054 .55215 L
+.52547 .55207 L
+.51998 .55292 L
+.51432 .55474 L
+.50873 .55754 L
+.50344 .5613 L
+.4987 .56594 L
+.49469 .57134 L
+.49161 .57736 L
+.48957 .58383 L
+.48867 .59056 L
+.48894 .59734 L
+.49038 .60398 L
+.49292 .61026 L
+.49645 .61602 L
+.50082 .62108 L
+.50585 .62532 L
+.51131 .62864 L
+.51696 .63099 L
+.52257 .63235 L
+.5279 .63276 L
+.5327 .63228 L
+.53678 .63102 L
+.53995 .62913 L
+.54209 .62677 L
+.5431 .62414 L
+.54293 .62143 L
+.54159 .61886 L
+.53915 .61662 L
+.5357 .61489 L
+.53139 .61384 L
+.52642 .61361 L
+.52099 .61428 L
+.51534 .61593 L
+.50972 .61856 L
+Mistroke
+.50436 .62215 L
+.4995 .62664 L
+.49535 .63191 L
+.49209 .63783 L
+.48986 .64424 L
+.48875 .65094 L
+.48881 .65772 L
+.49005 .6644 L
+.4924 .67076 L
+.49576 .67662 L
+.5 .68182 L
+Mfstroke
+gsave
+.57478 .5 -61 -8.90625 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.31818 .5 m
+.31381 .50529 L
+.31055 .51153 L
+.30863 .51845 L
+.3082 .52571 L
+.3093 .53294 L
+.31186 .53974 L
+.31573 .54576 L
+.32068 .55073 L
+.3264 .55447 L
+.33258 .5569 L
+.33891 .55806 L
+.3451 .55806 L
+.35087 .55708 L
+.35602 .55535 L
+.36036 .5531 L
+.36374 .55057 L
+.36607 .54795 L
+.36725 .54543 L
+.36727 .54313 L
+.36612 .54119 L
+.36386 .53969 L
+.3606 .53875 L
+.35647 .53845 L
+.35169 .5389 L
+.34648 .54023 L
+.34114 .54252 L
+.33597 .54583 L
+.33128 .5502 L
+.32739 .55555 L
+.32458 .56176 L
+.32307 .56858 L
+.32304 .57573 L
+.32452 .58283 L
+.32746 .58951 L
+.33173 .59542 L
+.33707 .60025 L
+.34318 .60377 L
+.34974 .6059 L
+.3564 .60662 L
+.36287 .60603 L
+.3689 .60433 L
+.37428 .60175 L
+.37885 .59858 L
+.38252 .59511 L
+.38521 .59159 L
+.38688 .58827 L
+.3875 .58535 L
+.38708 .58299 L
+.38565 .5813 L
+Mistroke
+.38328 .58037 L
+.38009 .58027 L
+.37624 .58104 L
+.37194 .58274 L
+.36744 .58538 L
+.36303 .58898 L
+.35902 .59352 L
+.35571 .59892 L
+.3534 .60506 L
+.35233 .61173 L
+.35267 .61866 L
+.35449 .62553 L
+.35776 .63197 L
+.36235 .63765 L
+.36803 .64224 L
+.37447 .64551 L
+.38134 .64733 L
+.38827 .64767 L
+.39494 .6466 L
+.40108 .64429 L
+.40648 .64098 L
+.41102 .63697 L
+.41462 .63256 L
+.41726 .62806 L
+.41896 .62376 L
+.41973 .61991 L
+.41963 .61672 L
+.4187 .61435 L
+.41701 .61292 L
+.41465 .6125 L
+.41173 .61312 L
+.40841 .61479 L
+.40489 .61748 L
+.40142 .62115 L
+.39825 .62572 L
+.39567 .6311 L
+.39397 .63713 L
+.39338 .6436 L
+.3941 .65026 L
+.39623 .65682 L
+.39975 .66293 L
+.40458 .66827 L
+.41049 .67254 L
+.41717 .67548 L
+.42427 .67696 L
+.43142 .67693 L
+.43824 .67542 L
+.44445 .67261 L
+.4498 .66872 L
+.45417 .66403 L
+Mistroke
+.45748 .65886 L
+.45977 .65352 L
+.4611 .64831 L
+.46155 .64353 L
+.46125 .6394 L
+.46031 .63614 L
+.45881 .63388 L
+.45687 .63273 L
+.45457 .63275 L
+.45205 .63393 L
+.44943 .63626 L
+.4469 .63964 L
+.44465 .64398 L
+.44292 .64913 L
+.44194 .6549 L
+.44194 .66109 L
+.4431 .66742 L
+.44553 .6736 L
+.44927 .67932 L
+.45424 .68427 L
+.46026 .68814 L
+.46706 .6907 L
+.47429 .6918 L
+.48155 .69137 L
+.48847 .68945 L
+.49471 .68619 L
+.5 .68182 L
+Mfstroke
+gsave
+.34806 .65194 -65 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.68182 .5 m
+.68611 .50542 L
+.68924 .51176 L
+.69101 .51876 L
+.69126 .52607 L
+.68997 .5333 L
+.68721 .54006 L
+.68315 .54599 L
+.67803 .55083 L
+.67217 .55441 L
+.66589 .55666 L
+.6595 .55762 L
+.6533 .55743 L
+.64755 .55627 L
+.64247 .55438 L
+.63824 .552 L
+.63499 .54937 L
+.63284 .54669 L
+.63185 .54413 L
+.63205 .54184 L
+.63342 .53994 L
+.6359 .53853 L
+.63937 .53771 L
+.64367 .53758 L
+.64859 .53826 L
+.65386 .53984 L
+.6592 .54242 L
+.66429 .54606 L
+.6688 .55073 L
+.67243 .55638 L
+.6749 .56282 L
+.67599 .56981 L
+.67557 .57701 L
+.67362 .58406 L
+.67022 .59056 L
+.66556 .59618 L
+.6599 .60063 L
+.65357 .60373 L
+.64689 .60539 L
+.64021 .60564 L
+.63381 .60464 L
+.62795 .60257 L
+.6228 .59972 L
+.6185 .59636 L
+.61517 .59279 L
+.61284 .58927 L
+.61157 .58603 L
+.61137 .58325 L
+.61221 .5811 L
+.61405 .57968 L
+Mistroke
+.61679 .57906 L
+.62031 .57931 L
+.62441 .58047 L
+.62886 .58259 L
+.63338 .58568 L
+.63767 .58974 L
+.64142 .59473 L
+.64431 .60054 L
+.64607 .607 L
+.64649 .61387 L
+.64544 .62085 L
+.64289 .62759 L
+.63892 .63373 L
+.63373 .63892 L
+.62759 .64289 L
+.62085 .64544 L
+.61387 .64649 L
+.607 .64607 L
+.60054 .64431 L
+.59473 .64142 L
+.58974 .63767 L
+.58568 .63338 L
+.58259 .62886 L
+.58047 .62441 L
+.57931 .62031 L
+.57906 .61679 L
+.57968 .61405 L
+.5811 .61221 L
+.58325 .61137 L
+.58603 .61157 L
+.58927 .61284 L
+.59279 .61517 L
+.59636 .6185 L
+.59972 .6228 L
+.60257 .62795 L
+.60464 .63381 L
+.60564 .64021 L
+.60539 .64689 L
+.60373 .65357 L
+.60063 .6599 L
+.59618 .66556 L
+.59056 .67022 L
+.58406 .67362 L
+.57701 .67557 L
+.56981 .67599 L
+.56282 .6749 L
+.55638 .67243 L
+.55073 .6688 L
+.54606 .66429 L
+.54242 .6592 L
+Mistroke
+.53984 .65386 L
+.53826 .64859 L
+.53758 .64367 L
+.53771 .63937 L
+.53853 .6359 L
+.53994 .63342 L
+.54184 .63205 L
+.54413 .63185 L
+.54669 .63284 L
+.54937 .63499 L
+.552 .63824 L
+.55438 .64247 L
+.55627 .64755 L
+.55743 .6533 L
+.55762 .6595 L
+.55666 .66589 L
+.55441 .67217 L
+.55083 .67803 L
+.54599 .68315 L
+.54006 .68721 L
+.5333 .68997 L
+.52607 .69126 L
+.51876 .69101 L
+.51176 .68924 L
+.50542 .68611 L
+.5 .68182 L
+Mfstroke
+gsave
+.65075 .65075 -61 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.5 .68182 Mdot
+.5 .31818 Mdot
+.31818 .5 Mdot
+.68182 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.5 0.25 0.75 0.5 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.31818 .5 L
+s
+.20909 .5 m
+.15455 .48182 L
+.15455 .51818 L
+F
+gsave
+.18182 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.68182 .5 L
+s
+.84545 .5 m
+.79091 .51818 L
+.79091 .48182 L
+F
+gsave
+.81818 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .5 .18182 180 360 arc
+s
+gsave
+.5 .28658 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.31818 .5 m
+.31289 .50533 L
+.30899 .51197 L
+.30683 .51952 L
+.30662 .52745 L
+.30837 .53518 L
+.31194 .54214 L
+.31703 .54786 L
+.32323 .55204 L
+.33006 .55455 L
+.33708 .55546 L
+.34385 .55496 L
+.35001 .55334 L
+.35526 .55095 L
+.35937 .5481 L
+.36215 .54508 L
+.36347 .54213 L
+.36327 .5394 L
+.36156 .53705 L
+.35844 .53519 L
+.35406 .53396 L
+.34868 .53354 L
+.34261 .5341 L
+.33625 .53585 L
+.33004 .53893 L
+.32442 .54341 L
+.31988 .54922 L
+.31681 .55614 L
+.31553 .56377 L
+.31621 .57162 L
+.31883 .57912 L
+.32322 .58569 L
+.32901 .59089 L
+.33576 .5944 L
+.34299 .5961 L
+.35022 .59605 L
+.35706 .59448 L
+.36316 .59174 L
+.36831 .58821 L
+.37231 .58431 L
+.37506 .5804 L
+.37647 .57681 L
+.37651 .57375 L
+.37516 .5714 L
+.37251 .56988 L
+.3687 .56927 L
+.36394 .56965 L
+.35854 .57112 L
+.35289 .57376 L
+.34742 .57763 L
+Mistroke
+.34261 .58272 L
+.33889 .58893 L
+.33669 .59602 L
+.33628 .60362 L
+.33782 .61125 L
+.34126 .61836 L
+.34638 .62443 L
+.3528 .629 L
+.36003 .63177 L
+.36755 .63264 L
+.37486 .63167 L
+.38157 .62911 L
+.38738 .62532 L
+.39211 .62073 L
+.39568 .61579 L
+.39804 .61094 L
+.39921 .60655 L
+.3992 .60291 L
+.39803 .60024 L
+.39579 .59869 L
+.39257 .59833 L
+.38856 .59919 L
+.38402 .60128 L
+.37929 .60459 L
+.37477 .60908 L
+.3709 .61466 L
+.36812 .62116 L
+.36682 .62832 L
+.36728 .63578 L
+.36962 .64307 L
+.3738 .64968 L
+.37957 .65512 L
+.38651 .65896 L
+.39411 .66093 L
+.40181 .66095 L
+.40909 .65909 L
+Mfstroke
+gsave
+.30483 .60137 -65 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .63864 .09318 12.6804 167.32 arc
+s
+gsave
+.5 .76342 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .67955 .09318 192.68 347.32 arc
+s
+gsave
+.5 .55476 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.68182 .5 m
+.68706 .50538 L
+.69089 .51205 L
+.69298 .51961 L
+.69313 .52752 L
+.69132 .53522 L
+.68771 .54214 L
+.68258 .54783 L
+.67637 .55197 L
+.66952 .55445 L
+.6625 .55532 L
+.65574 .55479 L
+.64958 .55314 L
+.64434 .55071 L
+.64025 .54784 L
+.63749 .54479 L
+.63619 .54181 L
+.6364 .53907 L
+.63813 .53671 L
+.64127 .53486 L
+.64565 .53364 L
+.65104 .53324 L
+.6571 .53384 L
+.66345 .53563 L
+.66965 .53874 L
+.67523 .54325 L
+.67975 .54908 L
+.68279 .556 L
+.68404 .56363 L
+.68334 .57147 L
+.6807 .57895 L
+.67631 .5855 L
+.67051 .59069 L
+.66376 .59418 L
+.65653 .59588 L
+.6493 .59583 L
+.64247 .59426 L
+.63636 .59152 L
+.63122 .588 L
+.62721 .58409 L
+.62446 .58018 L
+.62306 .57657 L
+.62303 .5735 L
+.62438 .57113 L
+.62704 .56959 L
+.63087 .56897 L
+.63563 .56935 L
+.64103 .57082 L
+.64668 .57346 L
+.65214 .57733 L
+Mistroke
+.65696 .58242 L
+.66067 .58863 L
+.66288 .59572 L
+.6633 .60331 L
+.66178 .61093 L
+.65835 .61804 L
+.65326 .62411 L
+.64686 .6287 L
+.63965 .63149 L
+.63215 .63239 L
+.62483 .63146 L
+.61811 .62893 L
+.61228 .62518 L
+.60752 .62061 L
+.60392 .6157 L
+.60153 .61085 L
+.60035 .60646 L
+.60036 .60281 L
+.60152 .60013 L
+.60377 .59855 L
+.607 .59816 L
+.61102 .59899 L
+.61557 .60105 L
+.62033 .60434 L
+.62487 .60881 L
+.62876 .61436 L
+.63157 .62085 L
+.63291 .62801 L
+.6325 .63547 L
+.63021 .64277 L
+.62608 .6494 L
+.62037 .65487 L
+.61347 .65876 L
+.6059 .66079 L
+.59821 .66087 L
+.59091 .65909 L
+Mfstroke
+gsave
+.69471 .60111 -61 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.59091 .65909 Mdot
+.40909 .65909 Mdot
+.31818 .5 Mdot
+.68182 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.75 0.25 1 0.5 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.31818 .5 L
+s
+.20909 .5 m
+.15455 .48182 L
+.15455 .51818 L
+F
+gsave
+.18182 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.68182 .5 L
+s
+.84545 .5 m
+.79091 .51818 L
+.79091 .48182 L
+F
+gsave
+.81818 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .5 .18182 180 360 arc
+s
+gsave
+.5 .28658 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.31818 .5 m
+.31289 .50533 L
+.30899 .51197 L
+.30683 .51952 L
+.30662 .52745 L
+.30837 .53518 L
+.31194 .54214 L
+.31703 .54786 L
+.32323 .55204 L
+.33006 .55455 L
+.33708 .55546 L
+.34385 .55496 L
+.35001 .55334 L
+.35526 .55095 L
+.35937 .5481 L
+.36215 .54508 L
+.36347 .54213 L
+.36327 .5394 L
+.36156 .53705 L
+.35844 .53519 L
+.35406 .53396 L
+.34868 .53354 L
+.34261 .5341 L
+.33625 .53585 L
+.33004 .53893 L
+.32442 .54341 L
+.31988 .54922 L
+.31681 .55614 L
+.31553 .56377 L
+.31621 .57162 L
+.31883 .57912 L
+.32322 .58569 L
+.32901 .59089 L
+.33576 .5944 L
+.34299 .5961 L
+.35022 .59605 L
+.35706 .59448 L
+.36316 .59174 L
+.36831 .58821 L
+.37231 .58431 L
+.37506 .5804 L
+.37647 .57681 L
+.37651 .57375 L
+.37516 .5714 L
+.37251 .56988 L
+.3687 .56927 L
+.36394 .56965 L
+.35854 .57112 L
+.35289 .57376 L
+.34742 .57763 L
+Mistroke
+.34261 .58272 L
+.33889 .58893 L
+.33669 .59602 L
+.33628 .60362 L
+.33782 .61125 L
+.34126 .61836 L
+.34638 .62443 L
+.3528 .629 L
+.36003 .63177 L
+.36755 .63264 L
+.37486 .63167 L
+.38157 .62911 L
+.38738 .62532 L
+.39211 .62073 L
+.39568 .61579 L
+.39804 .61094 L
+.39921 .60655 L
+.3992 .60291 L
+.39803 .60024 L
+.39579 .59869 L
+.39257 .59833 L
+.38856 .59919 L
+.38402 .60128 L
+.37929 .60459 L
+.37477 .60908 L
+.3709 .61466 L
+.36812 .62116 L
+.36682 .62832 L
+.36728 .63578 L
+.36962 .64307 L
+.3738 .64968 L
+.37957 .65512 L
+.38651 .65896 L
+.39411 .66093 L
+.40181 .66095 L
+.40909 .65909 L
+Mfstroke
+gsave
+.30483 .60137 -65 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ .005 .03 ] 0 setdash
+newpath
+.5 .63864 .09318 12.6804 167.32 arc
+s
+gsave
+.5 .76342 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .67955 .09318 192.68 347.32 arc
+s
+gsave
+.5 .55476 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.68182 .5 m
+.68706 .50538 L
+.69089 .51205 L
+.69298 .51961 L
+.69313 .52752 L
+.69132 .53522 L
+.68771 .54214 L
+.68258 .54783 L
+.67637 .55197 L
+.66952 .55445 L
+.6625 .55532 L
+.65574 .55479 L
+.64958 .55314 L
+.64434 .55071 L
+.64025 .54784 L
+.63749 .54479 L
+.63619 .54181 L
+.6364 .53907 L
+.63813 .53671 L
+.64127 .53486 L
+.64565 .53364 L
+.65104 .53324 L
+.6571 .53384 L
+.66345 .53563 L
+.66965 .53874 L
+.67523 .54325 L
+.67975 .54908 L
+.68279 .556 L
+.68404 .56363 L
+.68334 .57147 L
+.6807 .57895 L
+.67631 .5855 L
+.67051 .59069 L
+.66376 .59418 L
+.65653 .59588 L
+.6493 .59583 L
+.64247 .59426 L
+.63636 .59152 L
+.63122 .588 L
+.62721 .58409 L
+.62446 .58018 L
+.62306 .57657 L
+.62303 .5735 L
+.62438 .57113 L
+.62704 .56959 L
+.63087 .56897 L
+.63563 .56935 L
+.64103 .57082 L
+.64668 .57346 L
+.65214 .57733 L
+Mistroke
+.65696 .58242 L
+.66067 .58863 L
+.66288 .59572 L
+.6633 .60331 L
+.66178 .61093 L
+.65835 .61804 L
+.65326 .62411 L
+.64686 .6287 L
+.63965 .63149 L
+.63215 .63239 L
+.62483 .63146 L
+.61811 .62893 L
+.61228 .62518 L
+.60752 .62061 L
+.60392 .6157 L
+.60153 .61085 L
+.60035 .60646 L
+.60036 .60281 L
+.60152 .60013 L
+.60377 .59855 L
+.607 .59816 L
+.61102 .59899 L
+.61557 .60105 L
+.62033 .60434 L
+.62487 .60881 L
+.62876 .61436 L
+.63157 .62085 L
+.63291 .62801 L
+.6325 .63547 L
+.63021 .64277 L
+.62608 .6494 L
+.62037 .65487 L
+.61347 .65876 L
+.6059 .66079 L
+.59821 .66087 L
+.59091 .65909 L
+Mfstroke
+gsave
+.69471 .60111 -61 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.59091 .65909 Mdot
+.40909 .65909 Mdot
+.31818 .5 Mdot
+.68182 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+-1.38778e-17 -6.93889e-18 0.25 0.25 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.31818 .5 L
+s
+.20909 .5 m
+.15455 .48182 L
+.15455 .51818 L
+F
+gsave
+.18182 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.68182 .5 L
+s
+.84545 .5 m
+.79091 .51818 L
+.79091 .48182 L
+F
+gsave
+.81818 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.68182 .5 m
+.68597 .4946 L
+.68905 .48832 L
+.69085 .48141 L
+.69126 .47417 L
+.69022 .46695 L
+.68778 .46011 L
+.68409 .45398 L
+.67935 .44881 L
+.67382 .44479 L
+.6678 .44201 L
+.66158 .44046 L
+.65543 .44005 L
+.6496 .44063 L
+.64431 .44201 L
+.63973 .44396 L
+.63599 .44626 L
+.63323 .44872 L
+.6315 .45115 L
+.63086 .4534 L
+.63131 .45535 L
+.63284 .4569 L
+.63536 .45794 L
+.63878 .4584 L
+.64292 .45818 L
+.6476 .45719 L
+.65257 .45533 L
+.65757 .45254 L
+.66232 .44878 L
+.66653 .44405 L
+.66991 .43843 L
+.67221 .43207 L
+.67325 .4252 L
+.67288 .41809 L
+.67109 .41109 L
+.66791 .40453 L
+.66352 .39874 L
+.65812 .39398 L
+.65201 .39047 L
+.64548 .38829 L
+.63885 .38746 L
+.6324 .38789 L
+.62636 .38941 L
+.62093 .39181 L
+.61625 .39483 L
+.61242 .3982 L
+.6095 .40167 L
+.60753 .405 L
+.60652 .40798 L
+.60648 .41045 L
+Mistroke
+.60737 .41229 L
+.60914 .41339 L
+.6117 .41369 L
+.61493 .41315 L
+.61865 .41172 L
+.62266 .40938 L
+.62671 .40613 L
+.63053 .40198 L
+.63385 .39699 L
+.63637 .39125 L
+.63787 .38492 L
+.63814 .37821 L
+.63705 .37139 L
+.63457 .36476 L
+.63075 .35864 L
+.62575 .35335 L
+.6198 .34915 L
+.6132 .34625 L
+.60627 .34473 L
+.59935 .34463 L
+.59274 .34586 L
+.58667 .34825 L
+.58134 .35159 L
+.57687 .3556 L
+.57331 .36001 L
+.57067 .36451 L
+.56893 .36885 L
+.56804 .37278 L
+.56795 .3761 L
+.5686 .37864 L
+.56993 .38028 L
+.57184 .38093 L
+.57425 .38057 L
+.57703 .37918 L
+.58001 .37678 L
+.58299 .37341 L
+.58575 .36916 L
+.58804 .36411 L
+.58962 .35841 L
+.59025 .35223 L
+.58975 .3458 L
+.58799 .33937 L
+.58491 .33323 L
+.58056 .32769 L
+.5751 .32303 L
+.56874 .31951 L
+.56179 .3173 L
+.55459 .31652 L
+.5475 .31718 L
+.54083 .31918 L
+Mistroke
+.53486 .32238 L
+.52977 .32654 L
+.52569 .33139 L
+.52264 .33665 L
+.5206 .34203 L
+.51949 .34725 L
+.51918 .35205 L
+.51957 .35622 L
+.52052 .35958 L
+.52192 .36197 L
+.52366 .36331 L
+.52565 .36353 L
+.52777 .36262 L
+.5299 .3606 L
+.53192 .35755 L
+.53364 .35356 L
+.53489 .34877 L
+.53548 .34336 L
+.53521 .33753 L
+.53393 .33152 L
+.5315 .3256 L
+.52789 .32005 L
+.52313 .31516 L
+.51735 .31121 L
+.51076 .30843 L
+.50365 .307 L
+.49635 .307 L
+.48924 .30843 L
+.48265 .31121 L
+.47687 .31516 L
+.47211 .32005 L
+.4685 .3256 L
+.46607 .33152 L
+.46479 .33753 L
+.46452 .34336 L
+.46511 .34877 L
+.46636 .35356 L
+.46808 .35755 L
+.4701 .3606 L
+.47223 .36262 L
+.47435 .36353 L
+.47634 .36331 L
+.47808 .36197 L
+.47948 .35958 L
+.48043 .35622 L
+.48082 .35205 L
+.48051 .34725 L
+.4794 .34203 L
+.47736 .33665 L
+.47431 .33139 L
+Mistroke
+.47023 .32654 L
+.46514 .32238 L
+.45917 .31918 L
+.4525 .31718 L
+.44541 .31652 L
+.43821 .3173 L
+.43126 .31951 L
+.4249 .32303 L
+.41944 .32769 L
+.41509 .33323 L
+.41201 .33937 L
+.41025 .3458 L
+.40975 .35223 L
+.41038 .35841 L
+.41196 .36411 L
+.41425 .36916 L
+.41701 .37341 L
+.41999 .37678 L
+.42297 .37918 L
+.42575 .38057 L
+.42816 .38093 L
+.43007 .38028 L
+.4314 .37864 L
+.43205 .3761 L
+.43196 .37278 L
+.43107 .36885 L
+.42933 .36451 L
+.42669 .36001 L
+.42313 .3556 L
+.41866 .35159 L
+.41333 .34825 L
+.40726 .34586 L
+.40065 .34463 L
+.39373 .34473 L
+.3868 .34625 L
+.3802 .34915 L
+.37425 .35335 L
+.36925 .35864 L
+.36543 .36476 L
+.36295 .37139 L
+.36186 .37821 L
+.36213 .38492 L
+.36363 .39125 L
+.36615 .39699 L
+.36947 .40198 L
+.37329 .40613 L
+.37734 .40938 L
+.38135 .41172 L
+.38507 .41315 L
+.3883 .41369 L
+Mistroke
+.39086 .41339 L
+.39263 .41229 L
+.39352 .41045 L
+.39348 .40798 L
+.39247 .405 L
+.3905 .40167 L
+.38758 .3982 L
+.38375 .39483 L
+.37907 .39181 L
+.37364 .38941 L
+.3676 .38789 L
+.36115 .38746 L
+.35452 .38829 L
+.34799 .39047 L
+.34188 .39398 L
+.33648 .39874 L
+.33209 .40453 L
+.32891 .41109 L
+.32712 .41809 L
+.32675 .4252 L
+.32779 .43207 L
+.33009 .43843 L
+.33347 .44405 L
+.33768 .44878 L
+.34243 .45254 L
+.34743 .45533 L
+.3524 .45719 L
+.35708 .45818 L
+.36122 .4584 L
+.36464 .45794 L
+.36716 .4569 L
+.36869 .45535 L
+.36914 .4534 L
+.3685 .45115 L
+.36677 .44872 L
+.36401 .44626 L
+.36027 .44396 L
+.35569 .44201 L
+.3504 .44063 L
+.34457 .44005 L
+.33842 .44046 L
+.3322 .44201 L
+.32618 .44479 L
+.32065 .44881 L
+.31591 .45398 L
+.31222 .46011 L
+.30978 .46695 L
+.30874 .47417 L
+.30915 .48141 L
+.31095 .48832 L
+Mistroke
+.31403 .4946 L
+.31818 .5 L
+Mfstroke
+gsave
+.5 .27522 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ .005 .03 ] 0 setdash
+newpath
+.477 .51477 .1595 115.198 185.312 arc
+s
+gsave
+.3147 .59573 -65 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .63864 .09318 12.6804 167.32 arc
+s
+gsave
+.5 .76342 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.40909 .65909 m
+.40581 .65215 L
+.40456 .64425 L
+.4056 .63604 L
+.40891 .62827 L
+.41419 .62172 L
+.42089 .61698 L
+.42837 .61441 L
+.43595 .61406 L
+.44307 .61572 L
+.44935 .61898 L
+.4546 .62331 L
+.45874 .62815 L
+.4618 .63299 L
+.46382 .63739 L
+.4648 .64101 L
+.4647 .64365 L
+.4635 .64522 L
+.46117 .64571 L
+.45779 .64515 L
+.45353 .64358 L
+.44869 .64098 L
+.44367 .63731 L
+.43897 .63254 L
+.43515 .62667 L
+.43276 .61983 L
+.43225 .61235 L
+.43392 .60472 L
+.43782 .59758 L
+.4437 .59163 L
+.45105 .58747 L
+.45916 .58549 L
+.46724 .58582 L
+.4746 .58831 L
+.48072 .59258 L
+.48534 .59811 L
+.48845 .60435 L
+.4902 .61075 L
+.49087 .61684 L
+.49072 .62222 L
+.48998 .62654 L
+.48879 .62958 L
+.48719 .63118 L
+.48517 .63127 L
+.48275 .62987 L
+.48 .62708 L
+.47711 .62303 L
+.47439 .61787 L
+.47224 .61179 L
+.47114 .60504 L
+Mistroke
+.47154 .59794 L
+.47378 .59094 L
+.47801 .58459 L
+.4841 .57948 L
+.49165 .57616 L
+.5 .575 L
+.50835 .57616 L
+.5159 .57948 L
+.52199 .58459 L
+.52622 .59094 L
+.52846 .59794 L
+.52886 .60504 L
+.52776 .61179 L
+.52561 .61787 L
+.52289 .62303 L
+.52 .62708 L
+.51725 .62987 L
+.51483 .63127 L
+.51281 .63118 L
+.51121 .62958 L
+.51002 .62654 L
+.50928 .62222 L
+.50913 .61684 L
+.5098 .61075 L
+.51155 .60435 L
+.51466 .59811 L
+.51928 .59258 L
+.5254 .58831 L
+.53276 .58582 L
+.54084 .58549 L
+.54895 .58747 L
+.5563 .59163 L
+.56218 .59758 L
+.56608 .60472 L
+.56775 .61235 L
+.56724 .61983 L
+.56485 .62667 L
+.56103 .63254 L
+.55633 .63731 L
+.55131 .64098 L
+.54647 .64358 L
+.54221 .64515 L
+.53883 .64571 L
+.5365 .64522 L
+.5353 .64365 L
+.5352 .64101 L
+.53618 .63739 L
+.5382 .63299 L
+.54126 .62815 L
+.5454 .62331 L
+Mistroke
+.55065 .61898 L
+.55693 .61572 L
+.56405 .61406 L
+.57163 .61441 L
+.57911 .61698 L
+.58581 .62172 L
+.59109 .62827 L
+.5944 .63604 L
+.59544 .64425 L
+.59419 .65215 L
+.59091 .65909 L
+Mfstroke
+gsave
+.5 .5434 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ .005 .03 ] 0 setdash
+newpath
+.52045 .51331 .16192 -4.71441 64.2042 arc
+s
+gsave
+.68485 .59547 -61 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.59091 .65909 Mdot
+.40909 .65909 Mdot
+.31818 .5 Mdot
+.68182 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.25 -6.93889e-18 0.5 0.25 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.31818 .5 L
+s
+.20909 .5 m
+.15455 .48182 L
+.15455 .51818 L
+F
+gsave
+.18182 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.68182 .5 L
+s
+.84545 .5 m
+.79091 .51818 L
+.79091 .48182 L
+F
+gsave
+.81818 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.5 .5 .18182 180 360 arc
+s
+gsave
+.5 .28658 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.31818 .5 m
+.31289 .50533 L
+.30899 .51197 L
+.30683 .51952 L
+.30662 .52745 L
+.30837 .53518 L
+.31194 .54214 L
+.31703 .54786 L
+.32323 .55204 L
+.33006 .55455 L
+.33708 .55546 L
+.34385 .55496 L
+.35001 .55334 L
+.35526 .55095 L
+.35937 .5481 L
+.36215 .54508 L
+.36347 .54213 L
+.36327 .5394 L
+.36156 .53705 L
+.35844 .53519 L
+.35406 .53396 L
+.34868 .53354 L
+.34261 .5341 L
+.33625 .53585 L
+.33004 .53893 L
+.32442 .54341 L
+.31988 .54922 L
+.31681 .55614 L
+.31553 .56377 L
+.31621 .57162 L
+.31883 .57912 L
+.32322 .58569 L
+.32901 .59089 L
+.33576 .5944 L
+.34299 .5961 L
+.35022 .59605 L
+.35706 .59448 L
+.36316 .59174 L
+.36831 .58821 L
+.37231 .58431 L
+.37506 .5804 L
+.37647 .57681 L
+.37651 .57375 L
+.37516 .5714 L
+.37251 .56988 L
+.3687 .56927 L
+.36394 .56965 L
+.35854 .57112 L
+.35289 .57376 L
+.34742 .57763 L
+Mistroke
+.34261 .58272 L
+.33889 .58893 L
+.33669 .59602 L
+.33628 .60362 L
+.33782 .61125 L
+.34126 .61836 L
+.34638 .62443 L
+.3528 .629 L
+.36003 .63177 L
+.36755 .63264 L
+.37486 .63167 L
+.38157 .62911 L
+.38738 .62532 L
+.39211 .62073 L
+.39568 .61579 L
+.39804 .61094 L
+.39921 .60655 L
+.3992 .60291 L
+.39803 .60024 L
+.39579 .59869 L
+.39257 .59833 L
+.38856 .59919 L
+.38402 .60128 L
+.37929 .60459 L
+.37477 .60908 L
+.3709 .61466 L
+.36812 .62116 L
+.36682 .62832 L
+.36728 .63578 L
+.36962 .64307 L
+.3738 .64968 L
+.37957 .65512 L
+.38651 .65896 L
+.39411 .66093 L
+.40181 .66095 L
+.40909 .65909 L
+Mfstroke
+gsave
+.30483 .60137 -65 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.40909 .65909 m
+.40581 .66603 L
+.40456 .67393 L
+.4056 .68215 L
+.40891 .68991 L
+.41419 .69646 L
+.42089 .7012 L
+.42837 .70377 L
+.43595 .70412 L
+.44307 .70246 L
+.44935 .6992 L
+.4546 .69488 L
+.45874 .69003 L
+.4618 .68519 L
+.46382 .68079 L
+.4648 .67717 L
+.4647 .67453 L
+.4635 .67296 L
+.46117 .67247 L
+.45779 .67303 L
+.45353 .6746 L
+.44869 .6772 L
+.44367 .68087 L
+.43897 .68564 L
+.43515 .69151 L
+.43276 .69835 L
+.43225 .70583 L
+.43392 .71346 L
+.43782 .7206 L
+.4437 .72655 L
+.45105 .73071 L
+.45916 .73269 L
+.46724 .73236 L
+.4746 .72987 L
+.48072 .7256 L
+.48534 .72007 L
+.48845 .71383 L
+.4902 .70743 L
+.49087 .70134 L
+.49072 .69596 L
+.48998 .69164 L
+.48879 .6886 L
+.48719 .68701 L
+.48517 .68692 L
+.48275 .68831 L
+.48 .6911 L
+.47711 .69515 L
+.47439 .70031 L
+.47224 .70639 L
+.47114 .71314 L
+Mistroke
+.47154 .72024 L
+.47378 .72724 L
+.47801 .73359 L
+.4841 .7387 L
+.49165 .74203 L
+.5 .74318 L
+.50835 .74203 L
+.5159 .7387 L
+.52199 .73359 L
+.52622 .72724 L
+.52846 .72024 L
+.52886 .71314 L
+.52776 .70639 L
+.52561 .70031 L
+.52289 .69515 L
+.52 .6911 L
+.51725 .68831 L
+.51483 .68692 L
+.51281 .68701 L
+.51121 .6886 L
+.51002 .69164 L
+.50928 .69596 L
+.50913 .70134 L
+.5098 .70743 L
+.51155 .71383 L
+.51466 .72007 L
+.51928 .7256 L
+.5254 .72987 L
+.53276 .73236 L
+.54084 .73269 L
+.54895 .73071 L
+.5563 .72655 L
+.56218 .7206 L
+.56608 .71346 L
+.56775 .70583 L
+.56724 .69835 L
+.56485 .69151 L
+.56103 .68564 L
+.55633 .68087 L
+.55131 .6772 L
+.54647 .6746 L
+.54221 .67303 L
+.53883 .67247 L
+.5365 .67296 L
+.5353 .67453 L
+.5352 .67717 L
+.53618 .68079 L
+.5382 .68519 L
+.54126 .69003 L
+.5454 .69488 L
+Mistroke
+.55065 .6992 L
+.55693 .70246 L
+.56405 .70412 L
+.57163 .70377 L
+.57911 .7012 L
+.58581 .69646 L
+.59109 .68991 L
+.5944 .68215 L
+.59544 .67393 L
+.59419 .66603 L
+.59091 .65909 L
+Mfstroke
+gsave
+.5 .77478 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.40909 .65909 m
+.40581 .65215 L
+.40456 .64425 L
+.4056 .63604 L
+.40891 .62827 L
+.41419 .62172 L
+.42089 .61698 L
+.42837 .61441 L
+.43595 .61406 L
+.44307 .61572 L
+.44935 .61898 L
+.4546 .62331 L
+.45874 .62815 L
+.4618 .63299 L
+.46382 .63739 L
+.4648 .64101 L
+.4647 .64365 L
+.4635 .64522 L
+.46117 .64571 L
+.45779 .64515 L
+.45353 .64358 L
+.44869 .64098 L
+.44367 .63731 L
+.43897 .63254 L
+.43515 .62667 L
+.43276 .61983 L
+.43225 .61235 L
+.43392 .60472 L
+.43782 .59758 L
+.4437 .59163 L
+.45105 .58747 L
+.45916 .58549 L
+.46724 .58582 L
+.4746 .58831 L
+.48072 .59258 L
+.48534 .59811 L
+.48845 .60435 L
+.4902 .61075 L
+.49087 .61684 L
+.49072 .62222 L
+.48998 .62654 L
+.48879 .62958 L
+.48719 .63118 L
+.48517 .63127 L
+.48275 .62987 L
+.48 .62708 L
+.47711 .62303 L
+.47439 .61787 L
+.47224 .61179 L
+.47114 .60504 L
+Mistroke
+.47154 .59794 L
+.47378 .59094 L
+.47801 .58459 L
+.4841 .57948 L
+.49165 .57616 L
+.5 .575 L
+.50835 .57616 L
+.5159 .57948 L
+.52199 .58459 L
+.52622 .59094 L
+.52846 .59794 L
+.52886 .60504 L
+.52776 .61179 L
+.52561 .61787 L
+.52289 .62303 L
+.52 .62708 L
+.51725 .62987 L
+.51483 .63127 L
+.51281 .63118 L
+.51121 .62958 L
+.51002 .62654 L
+.50928 .62222 L
+.50913 .61684 L
+.5098 .61075 L
+.51155 .60435 L
+.51466 .59811 L
+.51928 .59258 L
+.5254 .58831 L
+.53276 .58582 L
+.54084 .58549 L
+.54895 .58747 L
+.5563 .59163 L
+.56218 .59758 L
+.56608 .60472 L
+.56775 .61235 L
+.56724 .61983 L
+.56485 .62667 L
+.56103 .63254 L
+.55633 .63731 L
+.55131 .64098 L
+.54647 .64358 L
+.54221 .64515 L
+.53883 .64571 L
+.5365 .64522 L
+.5353 .64365 L
+.5352 .64101 L
+.53618 .63739 L
+.5382 .63299 L
+.54126 .62815 L
+.5454 .62331 L
+Mistroke
+.55065 .61898 L
+.55693 .61572 L
+.56405 .61406 L
+.57163 .61441 L
+.57911 .61698 L
+.58581 .62172 L
+.59109 .62827 L
+.5944 .63604 L
+.59544 .64425 L
+.59419 .65215 L
+.59091 .65909 L
+Mfstroke
+gsave
+.5 .5434 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.68182 .5 m
+.68706 .50538 L
+.69089 .51205 L
+.69298 .51961 L
+.69313 .52752 L
+.69132 .53522 L
+.68771 .54214 L
+.68258 .54783 L
+.67637 .55197 L
+.66952 .55445 L
+.6625 .55532 L
+.65574 .55479 L
+.64958 .55314 L
+.64434 .55071 L
+.64025 .54784 L
+.63749 .54479 L
+.63619 .54181 L
+.6364 .53907 L
+.63813 .53671 L
+.64127 .53486 L
+.64565 .53364 L
+.65104 .53324 L
+.6571 .53384 L
+.66345 .53563 L
+.66965 .53874 L
+.67523 .54325 L
+.67975 .54908 L
+.68279 .556 L
+.68404 .56363 L
+.68334 .57147 L
+.6807 .57895 L
+.67631 .5855 L
+.67051 .59069 L
+.66376 .59418 L
+.65653 .59588 L
+.6493 .59583 L
+.64247 .59426 L
+.63636 .59152 L
+.63122 .588 L
+.62721 .58409 L
+.62446 .58018 L
+.62306 .57657 L
+.62303 .5735 L
+.62438 .57113 L
+.62704 .56959 L
+.63087 .56897 L
+.63563 .56935 L
+.64103 .57082 L
+.64668 .57346 L
+.65214 .57733 L
+Mistroke
+.65696 .58242 L
+.66067 .58863 L
+.66288 .59572 L
+.6633 .60331 L
+.66178 .61093 L
+.65835 .61804 L
+.65326 .62411 L
+.64686 .6287 L
+.63965 .63149 L
+.63215 .63239 L
+.62483 .63146 L
+.61811 .62893 L
+.61228 .62518 L
+.60752 .62061 L
+.60392 .6157 L
+.60153 .61085 L
+.60035 .60646 L
+.60036 .60281 L
+.60152 .60013 L
+.60377 .59855 L
+.607 .59816 L
+.61102 .59899 L
+.61557 .60105 L
+.62033 .60434 L
+.62487 .60881 L
+.62876 .61436 L
+.63157 .62085 L
+.63291 .62801 L
+.6325 .63547 L
+.63021 .64277 L
+.62608 .6494 L
+.62037 .65487 L
+.61347 .65876 L
+.6059 .66079 L
+.59821 .66087 L
+.59091 .65909 L
+Mfstroke
+gsave
+.69471 .60111 -61 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.59091 .65909 Mdot
+.40909 .65909 Mdot
+.31818 .5 Mdot
+.68182 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.5 -6.93889e-18 0.75 0.25 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0454545 0.0454545 0.0454545 0.0454545 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+0 g
+.005 w
+[ .005 .03 ] 0 setdash
+.04545 .5 m
+.18182 .5 L
+s
+.14091 .5 m
+.08636 .48182 L
+.08636 .51818 L
+F
+gsave
+.11364 .54296 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.95455 .5 m
+.81818 .5 L
+s
+.91364 .5 m
+.85909 .51818 L
+.85909 .48182 L
+F
+gsave
+.88636 .45704 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.59091 .5 m
+.40909 .5 L
+s
+gsave
+.5 .4684 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+newpath
+.70455 .5 .11364 0 180 arc
+s
+gsave
+.70455 .64524 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.81818 .5 m
+.82236 .49454 L
+.8253 .48805 L
+.82674 .48085 L
+.82653 .47335 L
+.82466 .46603 L
+.82124 .45936 L
+.81653 .45374 L
+.81084 .44947 L
+.80457 .44671 L
+.79807 .44545 L
+.79169 .44559 L
+.7857 .4469 L
+.78029 .4491 L
+.77561 .45188 L
+.77176 .45494 L
+.76881 .458 L
+.76682 .46083 L
+.76583 .46328 L
+.76588 .46523 L
+.76696 .46662 L
+.76904 .46741 L
+.77205 .46757 L
+.77585 .46706 L
+.78024 .46582 L
+.78499 .46378 L
+.78981 .46085 L
+.79436 .45697 L
+.79831 .45212 L
+.8013 .44637 L
+.80304 .43987 L
+.80328 .4329 L
+.80189 .42582 L
+.79886 .41905 L
+.79433 .41303 L
+.78857 .40816 L
+.78197 .40472 L
+.77495 .4029 L
+.76794 .40273 L
+.76131 .4041 L
+.75537 .40678 L
+.75028 .41049 L
+.74615 .41488 L
+.74296 .4196 L
+.74068 .42433 L
+.73922 .42877 L
+.7385 .43267 L
+.73849 .43581 L
+.73913 .43806 L
+.74039 .43934 L
+Mistroke
+.74225 .43959 L
+.74465 .43882 L
+.74747 .43705 L
+.75057 .43432 L
+.75372 .43068 L
+.75667 .4262 L
+.7591 .42095 L
+.76071 .41507 L
+.76119 .40875 L
+.76031 .40223 L
+.75793 .39584 L
+.75403 .38995 L
+.74872 .38493 L
+.74228 .38114 L
+.73508 .37885 L
+.72759 .3782 L
+.72029 .37922 L
+.7136 .38179 L
+.70787 .38566 L
+.70332 .39054 L
+.70005 .39608 L
+.69801 .40193 L
+.69707 .40777 L
+.69705 .41331 L
+.69772 .41832 L
+.69887 .42257 L
+.70033 .42592 L
+.70196 .42822 L
+.70368 .4294 L
+.70542 .4294 L
+.70713 .42822 L
+.70876 .42592 L
+.71022 .42257 L
+.71138 .41832 L
+.71204 .41331 L
+.71202 .40777 L
+.71108 .40193 L
+.70904 .39608 L
+.70577 .39054 L
+.70122 .38566 L
+.69549 .38179 L
+.6888 .37922 L
+.6815 .3782 L
+.67401 .37885 L
+.66681 .38114 L
+.66037 .38493 L
+.65506 .38995 L
+.65116 .39584 L
+.64878 .40223 L
+.6479 .40875 L
+Mistroke
+.64838 .41507 L
+.64999 .42095 L
+.65242 .4262 L
+.65537 .43068 L
+.65852 .43432 L
+.66162 .43705 L
+.66444 .43882 L
+.66684 .43959 L
+.6687 .43934 L
+.66996 .43806 L
+.6706 .43581 L
+.67059 .43267 L
+.66988 .42877 L
+.66841 .42433 L
+.66613 .4196 L
+.66294 .41488 L
+.65881 .41049 L
+.65373 .40678 L
+.64778 .4041 L
+.64116 .40273 L
+.63414 .4029 L
+.62712 .40472 L
+.62052 .40816 L
+.61476 .41303 L
+.61023 .41905 L
+.6072 .42582 L
+.60581 .4329 L
+.60605 .43987 L
+.60779 .44637 L
+.61078 .45212 L
+.61473 .45697 L
+.61929 .46085 L
+.6241 .46378 L
+.62885 .46582 L
+.63325 .46706 L
+.63704 .46757 L
+.64005 .46741 L
+.64213 .46662 L
+.64321 .46523 L
+.64326 .46328 L
+.64227 .46083 L
+.64028 .458 L
+.63733 .45494 L
+.63348 .45188 L
+.6288 .4491 L
+.6234 .4469 L
+.6174 .44559 L
+.61102 .44545 L
+.60453 .44671 L
+.59825 .44947 L
+Mistroke
+.59257 .45374 L
+.58785 .45936 L
+.58443 .46603 L
+.58256 .47335 L
+.58235 .48085 L
+.58379 .48805 L
+.58673 .49454 L
+.59091 .5 L
+Mfstroke
+gsave
+.70455 .3434 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ .005 .03 ] 0 setdash
+newpath
+.29545 .5 .11364 -180 0 arc
+s
+gsave
+.29545 .35476 -63 -13.8125 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+[ ] 0 setdash
+.18182 .5 m
+.17764 .50546 L
+.1747 .51195 L
+.17326 .51915 L
+.17347 .52665 L
+.17534 .53397 L
+.17876 .54064 L
+.18347 .54626 L
+.18916 .55053 L
+.19543 .55329 L
+.20193 .55455 L
+.20831 .55441 L
+.2143 .5531 L
+.21971 .5509 L
+.22439 .54812 L
+.22824 .54506 L
+.23119 .542 L
+.23318 .53917 L
+.23417 .53672 L
+.23412 .53477 L
+.23304 .53338 L
+.23096 .53259 L
+.22795 .53243 L
+.22415 .53294 L
+.21976 .53418 L
+.21501 .53622 L
+.21019 .53915 L
+.20564 .54303 L
+.20169 .54788 L
+.1987 .55363 L
+.19696 .56013 L
+.19672 .5671 L
+.19811 .57418 L
+.20114 .58095 L
+.20567 .58697 L
+.21143 .59184 L
+.21803 .59528 L
+.22505 .5971 L
+.23206 .59727 L
+.23869 .5959 L
+.24463 .59322 L
+.24972 .58951 L
+.25385 .58512 L
+.25704 .5804 L
+.25932 .57567 L
+.26078 .57123 L
+.2615 .56733 L
+.26151 .56419 L
+.26087 .56194 L
+.25961 .56066 L
+Mistroke
+.25775 .56041 L
+.25535 .56118 L
+.25253 .56295 L
+.24943 .56568 L
+.24628 .56932 L
+.24333 .5738 L
+.2409 .57905 L
+.23929 .58493 L
+.23881 .59125 L
+.23969 .59777 L
+.24207 .60416 L
+.24597 .61005 L
+.25128 .61507 L
+.25772 .61886 L
+.26492 .62115 L
+.27241 .6218 L
+.27971 .62078 L
+.2864 .61821 L
+.29213 .61434 L
+.29668 .60946 L
+.29995 .60392 L
+.30199 .59807 L
+.30293 .59223 L
+.30295 .58669 L
+.30228 .58168 L
+.30113 .57743 L
+.29967 .57408 L
+.29804 .57178 L
+.29632 .5706 L
+.29458 .5706 L
+.29287 .57178 L
+.29124 .57408 L
+.28978 .57743 L
+.28862 .58168 L
+.28796 .58669 L
+.28798 .59223 L
+.28892 .59807 L
+.29096 .60392 L
+.29423 .60946 L
+.29878 .61434 L
+.30451 .61821 L
+.3112 .62078 L
+.3185 .6218 L
+.32599 .62115 L
+.33319 .61886 L
+.33963 .61507 L
+.34494 .61005 L
+.34884 .60416 L
+.35122 .59777 L
+.3521 .59125 L
+Mistroke
+.35162 .58493 L
+.35001 .57905 L
+.34758 .5738 L
+.34463 .56932 L
+.34148 .56568 L
+.33838 .56295 L
+.33556 .56118 L
+.33316 .56041 L
+.3313 .56066 L
+.33004 .56194 L
+.3294 .56419 L
+.32941 .56733 L
+.33012 .57123 L
+.33159 .57567 L
+.33387 .5804 L
+.33706 .58512 L
+.34119 .58951 L
+.34627 .59322 L
+.35222 .5959 L
+.35884 .59727 L
+.36586 .5971 L
+.37288 .59528 L
+.37948 .59184 L
+.38524 .58697 L
+.38977 .58095 L
+.3928 .57418 L
+.39419 .5671 L
+.39395 .56013 L
+.39221 .55363 L
+.38922 .54788 L
+.38527 .54303 L
+.38071 .53915 L
+.3759 .53622 L
+.37115 .53418 L
+.36675 .53294 L
+.36296 .53243 L
+.35995 .53259 L
+.35787 .53338 L
+.35679 .53477 L
+.35674 .53672 L
+.35773 .53917 L
+.35972 .542 L
+.36267 .54506 L
+.36652 .54812 L
+.3712 .5509 L
+.3766 .5531 L
+.3826 .55441 L
+.38898 .55455 L
+.39547 .55329 L
+.40175 .55053 L
+Mistroke
+.40743 .54626 L
+.41215 .54064 L
+.41557 .53397 L
+.41744 .52665 L
+.41765 .51915 L
+.41621 .51195 L
+.41327 .50546 L
+.40909 .5 L
+Mfstroke
+gsave
+.29545 .6566 -63 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 17.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 11.250 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+/Times-Roman findfont 8.188 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+0.000 0.000 rmoveto
+63.000 11.250 moveto
+0.000 0.000 rmoveto
+1.000 setlinewidth
+grestore
+.04 w
+.59091 .5 Mdot
+.40909 .5 Mdot
+.18182 .5 Mdot
+.81818 .5 Mdot
+MathSubEnd
+P
+% End of sub-graphic
+% End of Graphics
+MathPictureEnd
+\
+\>"], "Graphics",
+  ImageSize->{288, 144},
+  ImageMargins->{{43, 0}, {0, 0}},
+  ImageRegion->{{0, 1}, {0, 1}},
+  ImageCache->GraphicsData["Bitmap", "\<\
+CF5dJ6E]HGAYHf4PAg9QL6QYHg<PAVmbKF5d0`40004P0000T2000`400?l00000o`00003oo`3ooolQ
+0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ
+0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ
+0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ
+0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ
+0?ooo`00o`3ooolQ0?ooo`008`3oool200000?/0oooo000O0?ooo`D0000000<0oooo000000000000
+0`00000o0?ooo`060000003oool000000000003oool00000/@3oool001h0oooo00<000000?ooo`3o
+ool00P0000030?ooo`030000003oool0oooo00800000?@3oool00`000000oooo0?ooo`030?ooo`03
+0000003oool0oooo0:l0oooo000K0?ooo`@000000P3oool200000080oooo0P0000030?ooo`<00000
+=`3oool00`000000oooo0?ooo`0;0?ooo`030000003oool0oooo0:/0oooo000J0?ooo`80000000D0
+oooo00000000000000000?ooo`0200000080oooo0P0000020?ooo`8000000P3oool00`000000oooo
+0?ooo`0d0?ooo`030000003oool0oooo00`0oooo00<000000?ooo`3oool0ZP3oool001X0oooo00<0
+00000?ooo`3oool00`0000090?ooo`8000000P3oool2000004D0oooo0P00002Z0?ooo`006@3oool3
+00000080oooo0P0000090?ooo`040000003oool0oooo0?ooo`<00000SP3oool8000005X0oooo000H
+0?ooo`030000003oool00000008000003P3oool3000000030?ooo`000000000002l0oooo0P00000o
+0?ooo`8000006@3oool300000080oooo0P0000020?ooo`<00000F03oool001L0oooo0P0000020?oo
+o`8000003P3oool300000080oooo00<000000?ooo`3oool0K03oool2000001X0oooo00<000000?oo
+o`0000000P000000103oool000000000003oool2000000030?ooo`000000000005L0oooo000G0?oo
+o`030000003oool0oooo01H0oooo00<000000?ooo`3oool0J`3oool00`000000oooo0?ooo`0I0?oo
+o`030000003oool0oooo00<0000000@0oooo000000000000oooo0P0000020?ooo`030000003oool0
+oooo05D0oooo000G0?ooo`@000004P3oool4000006d0oooo00<000000?ooo`3oool02@3oool20000
+00h0oooo0`0000000`3oool00000000000040?ooo`80000000@0oooo0000000000000000EP3oool0
+01H0oooo1@00000B0?ooo`<0000000<0oooo0000003oool0;03oool00`000000oooo0?ooo`0F0?oo
+o`030000003oool0oooo0240oooo00<000000?ooo`3oool06P3oool5000000P0oooo1@00001E0?oo
+o`005P3oool00`000000oooo0?ooo`0H0?ooo`030000003oool0oooo02/0oooo00<000000?ooo`3o
+ool05P3oool00`000000oooo0?ooo`0Q0?ooo`030000003oool0oooo01X0oooo00<000000?ooo`3o
+ool00P0000080?ooo`8000000P3oool00`000000oooo0?ooo`1C0?ooo`005P3oool00`000000oooo
+0?ooo`0H0?ooo`030000003oool0oooo08D0oooo00<000000?ooo`3oool03P3oool00`000000oooo
+0?ooo`1C0?ooo`000`3oool2000000<0oooo0P0000000`3oool0000000000002000000<0oooo0P00
+00020?ooo`800000603oool4000000<0oooo1`0000030?ooo`8000002P3oool2000000<0oooo1000
+00000`3oool00000000000030?ooo`<00000603oool2000000<0oooo0P0000020?ooo`@000000P3o
+ool2000000<0oooo0P0000050?ooo`80000000<0oooo0000000000000P0000020?ooo`8000003P3o
+ool3000000<0oooo0P0000030?ooo`@000003`3oool9000004h0oooo000;0?ooo`8000002P3oool0
+0`000000oooo0?ooo`0G0?ooo`030000003oool0oooo00D0oooo0P00000H0?ooo`8000002@3oool0
+0`000000oooo0?ooo`0G0?ooo`8000001P3oool2000001<0oooo0P0000040?ooo`8000003`3oool2
+000000/0oooo00<000000?ooo`3oool03@3oool2000000030?ooo`00000000000580oooo001M0?oo
+o`030000003oool0oooo01T0oooo00<000000?ooo`3oool07`3oool00`000000oooo0?ooo`0?0?oo
+o`030000003oool0oooo0700oooo001N0?ooo`@000004`3oool500000280oooo00<000000?ooo`00
+00000P0000080?ooo`D00000LP3oool001L0oooo00<000000?ooo`3oool0A03oool4000001<0oooo
+1000000S0?ooo`@000002@3oool4000007<0oooo000G0?ooo`030000003oool0oooo01H0oooo00<0
+00000?ooo`3oool0:`3oool00`000000oooo0?ooo`0200000140oooo0P0000020?ooo`030000003o
+ool0oooo0280oooo00@000000?ooo`3oool0oooo0P000000103oool000000?ooo`3oool200000080
+oooo00<000000?ooo`3oool0LP3oool00240oooo1`0000080?ooo`030000003oool0oooo02/0oooo
+1@0000050?ooo`L000001@3oool01@000000oooo0000003oool0000002@0oooo0P0000001@3oool0
+0000000000000000oooo0080000000<0oooo0000000000000P3oool00`000000oooo0?ooo`1b0?oo
+o`007`3oool2000000040?ooo`00000000000?ooo`@00000=P3oool600000080oooo10000000103o
+ool000000000003oool200000080oooo1@00000V0?ooo`@000000P3oool2000000030?ooo`000000
+0000008000004@3oool200000680oooo000I0?ooo`030000003oool0oooo00<0oooo00<000000?oo
+o`3oool01@0000000`3oool000000000000f0?ooo`030000003oool000000080000000@0oooo0000
+00000000oooo1@0000020?ooo`030000003oool00000008000000P3oool00`000000oooo0?ooo`0V
+0?ooo`8000000P3oool00`000000oooo0?ooo`02000001P0oooo0P00001M0?ooo`006@3oool01000
+0000oooo0?ooo`3oool>00000080oooo0P00000a0?oooaP00000:@3oool3000000040?ooo`000000
+0000000007P0oooo000M0?ooo`030000003oool000000080000000<0oooo0000003oool010000002
+0?ooo`030000003oool0oooo03<0oooo0P0000020?ooo`030000003oool0000000<0000000<0oooo
+0000003oool00`0000000`3oool000000?ooo`0200000:X0oooo000L0?ooo`8000000P3oool20000
+00@0oooo0P000000103oool0000000000000000f0?ooo`@000000P3oool2000000@0oooo0P000000
+1@3oool000000000003oool000000:/0oooo000M0?ooo`030000003oool0oooo00X0oooo00<00000
+0?ooo`3oool0=P3oool3000000`0oooo0P00002/0?ooo`00I03oool2000000040?ooo`0000000000
+000000@0oooo0P0000020?ooo`030000003oool0oooo0:/0oooo001U0?ooo`@0000000<0oooo0000
+000000001`00002]0?ooo`00IP3oool2000000030?ooo`000000oooo00<0000000@0oooo00000000
+00000000[P3oool006L0oooo00D000000?ooo`00000000000?ooo`02000000030?ooo`0000000000
+0:l0oooo000S0?ooo`800000@`3oool3000000030?ooo`000000000000800000/03oool006/0oooo
+0P00002c0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00o`3ooolQ0?ooo`00
+903oool400000?P0oooo000S0?ooo`8000000P3oool4000003d0oooo1@0000140?ooo`<0000000<0
+oooo000000000000@03oool2000000030?ooo`000000000002@0oooo000T0?ooo`030000003oool0
+oooo0080000000<0oooo000000000000?P3oool200000;@0oooo000L0?ooo`800000203oool30000
+0080oooo0P00000m0?ooo`8000001P3oool2000003L0oooo0P00001D0?ooo`8000007@3oool001X0
+oooo0P00000:0?ooo`<0000000@0oooo000000000000oooo0P00000c0?ooo`030000003oool0oooo
+00H0oooo1000000k0?ooo`030000003oool0oooo00l0oooo00<000000?ooo`3oool0<P3oool00`00
+0000oooo0?ooo`0?0?ooo`030000003oool0oooo01X0oooo000J0?ooo`030000003oool0oooo00`0
+oooo0`0000020?ooo`030000003oool0oooo0340oooo00<000000?ooo`3oool01P3oool200000003
+0?ooo`000000oooo00@0oooo0P00000c0?ooo`8000004@3oool00`000000oooo0?ooo`0b0?ooo`03
+0000003oool0oooo00l0oooo0P00000K0?ooo`006@3oool00`000000oooo0?ooo`080?ooo`030000
+003oool0oooo0080oooo0P0000020?ooo`<00000<03oool00`000000oooo0?ooo`080?ooo`040000
+003oool00000000003T0oooo00<000000?ooo`3oool04P3oool00`000000oooo0?ooo`0`0?ooo`03
+0000003oool0oooo0180oooo00<000000?ooo`3oool0603oool001T0oooo00<000000?ooo`3oool0
+203oool00`000000oooo0?ooo`050?ooo`D00000;`3oool00`000000oooo0?ooo`070?ooo`030000
+003oool0oooo03/0oooo00<000000?ooo`3oool04`3oool00`000000oooo0?ooo`0^0?ooo`030000
+003oool0oooo01<0oooo00<000000?ooo`3oool0603oool002`0oooo0P0000020?ooo`030000003o
+ool0oooo03P0oooo00<000000?ooo`3oool0/P3oool00300oooo00<000000?ooo`3oool0>03oool4
+00000;40oooo000]0?ooo`D00000>@3oool400000;40oooo000T0?ooo`030000003oool0oooo00H0
+oooo0`0000000`3oool000000?ooo`0g0?ooo`800000D`3oool2000005l0oooo000T0?ooo`030000
+003oool0oooo00X0oooo00<000000?ooo`3oool0=P3oool00`000000oooo0?ooo`2c0?ooo`002`3o
+ool2000000X0oooo00<000000?ooo`3oool05`3oool00`000000oooo0?ooo`050?ooo`800000603o
+ool2000000T0oooo00<000000?ooo`3oool02P3oool400000140oooo0P00000H0?ooo`8000002P3o
+ool00`000000oooo0?ooo`0G0?ooo`030000003oool0oooo00D0oooo0P00000H0?ooo`8000002@3o
+ool00`000000oooo0?ooo`0G0?ooo`030000003oool0oooo00D0oooo0P00000?0?ooo`000`3oool2
+000000<0oooo0P0000000`3oool0000000000002000000<0oooo0P0000020?ooo`800000603oool4
+000000<0oooo1`0000030?ooo`8000002P3oool2000000<0oooo100000000`3oool0000000000003
+0?ooo`<00000303oool4000000P0oooo0`0000020?ooo`8000000P3oool400000080oooo0P000003
+0?ooo`8000001@3oool2000000<0oooo0P0000000`3oool0000000000002000000<0oooo0P000002
+0?ooo`800000603oool4000000<0oooo1`0000030?ooo`8000002P3oool2000000<0oooo10000000
+0`3oool00000000000030?ooo`<00000603oool300000080oooo0P0000020?ooo`@000000P3oool2
+000000<0oooo0P0000040?ooo`005P3oool2000001T0oooo00<000000?ooo`3oool0:P3oool00`00
+0000oooo0?ooo`090?ooo`800000303oool2000002/0oooo0P00000I0?ooo`800000:P3oool20000
+01T0oooo0P00000G0?ooo`005P3oool010000000oooo0?ooo`00000:0?ooo`030000003oool0oooo
+00T0oooo00<000000?ooo`3oool0:`3oool010000000oooo0?ooo`0000080?ooo`030000003oool0
+oooo00P0oooo0P0000020?ooo`030000003oool0oooo02T0oooo00<000000?ooo`0000000P00000C
+0?ooo`80000000<0oooo000000000000:P3oool2000000030?ooo`000000000001<0oooo0`000000
+0`3oool000000?ooo`0F0?ooo`005P3oool5000000T0oooo00<000000?ooo`3oool02@3oool00`00
+0000oooo0?ooo`0[0?ooo`D00000203oool00`000000oooo000000070?ooo`D00000:`3oool50000
+0180oooo0P0000000`3oool000000000000/0?ooo`80000000<0oooo0000003oool04P3oool50000
+01L0oooo000G0?ooo`@00000A03oool3000000T0oooo100000060?ooo`@00000;@3oool3000001@0
+oooo1000000/0?ooo`@00000503oool3000001P0oooo000G0?ooo`050000003oool0oooo0?ooo`00
+0000@`3oool01@000000oooo0?ooo`3oool0000000L0oooo100000040?ooo`8000000`3oool00`00
+0000oooo0?ooo`0[0?ooo`030000003oool00000008000004@3oool3000000030?ooo`000000oooo
+02/0oooo00<000000?ooo`0000000P00000A0?ooo`<0000000<0oooo0000003oool05`3oool001L0
+oooo00<000000?ooo`3oool00`0000120?ooo`030000003oool00000008000001P3oool2000000L0
+oooo0`0000000`3oool000000000000]0?ooo`80000000<0oooo0000000000001P3oool5000000H0
+oooo1000000^0?ooo`@00000203oool2000000030?ooo`000000oooo00@0oooo1@00000H0?ooo`00
+603oool4000000P0oooo00<000000?ooo`3oool01`3oool2000002l0oooo1@0000060?ooo`800000
+203oool4000002l0oooo1P0000020?ooo`8000001@3oool200000080oooo0P0000000`3oool00000
+0000000`0?ooo`80000000<0oooo0000000000002@3oool010000000oooo0?ooo`3oool300000003
+0?ooo`000000000001T0oooo000I0?ooo`040000003oool0oooo0?ooo`8000001@3oool00`000000
+oooo0?ooo`0j0?ooo`030000003oool0oooo00<00000103oool400000080oooo0P0000030?ooo`03
+0000003oool0oooo02h0oooo00<000000?ooo`0000000P0000020?ooo`030000003oool0oooo00L0
+oooo00L000000?ooo`000000oooo0000003oool000000300oooo00D000000?ooo`000000oooo0000
+000>0?ooo`<0000000<0oooo0000003oool0603oool001T0oooo0P0000001@3oool000000?ooo`00
+0000oooo00800000?`3oool00`000000oooo0?ooo`0200000080oooo00<000000?ooo`3oool01@00
+00001P3oool00000000000000000oooo00000380oooo100000000`3oool000000?ooo`090?ooo`03
+0000003oool0oooo00@00000<03oool4000000l0oooo1000000J0?ooo`006P3oool400000080oooo
+0P0000090?ooo`030000003oool0oooo03<0oooo1@0000001P3oool00000000000000000oooo0000
+0080oooo0P0000020?ooo`@00000<`3oool2000000030?ooo`000000oooo00/0oooo00@000000?oo
+o`3oool00000=03oool00`000000oooo0?ooo`0?0?ooo`8000006`3oool001`0oooo0P0000020?oo
+o`8000001`3oool00`000000oooo0?ooo`0h0?ooo`030000003oool0oooo0080000000<0oooo0000
+003oool00P3oool200000080oooo0P00000f0?ooo`<000002`3oool4000003H0oooo0`00000;0?oo
+o`@00000703oool001d0oooo100000030?ooo`040000003oool000000?ooo`800000>P3oool50000
+0080oooo00@000000?ooo`3oool0oooo1000000i0?ooo`8000002P3oool2000003X0oooo00<00000
+0?ooo`3oool02P3oool00`000000oooo0?ooo`0L0?ooo`00803oool5000000030?ooo`000000oooo
+0400oooo2000000m0?ooo`030000003oool0oooo00P0oooo00<000000?ooo`3oool0>@3oool00`00
+0000oooo0?ooo`090?ooo`030000003oool0oooo01d0oooo000T0?ooo`030000003oool0oooo04@0
+oooo00<000000?ooo`3oool0@03oool00`000000oooo0?ooo`060?ooo`030000003oool0oooo03/0
+oooo00<000000?ooo`3oool01`3oool00`000000oooo0?ooo`0N0?ooo`00[`3oool00`000000oooo
+0?ooo`050?ooo`030000003oool0oooo03`0oooo00<000000?ooo`3oool09`3oool00;00oooo1`00
+00140?ooo`8000008`3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo
+8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo
+8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo
+8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo8@3oool00?l0oooo
+8@3oool00001\
+\>"],
+  ImageRangeCache->{{{0, 287}, {143, 0}} -> {-0.154288, -0.000220003, \
+0.307696, 0.307696}, {{0.5, 72}, {71.5, 0}} -> {-1.15396, -23.0004, 0.307696, \
+0.307696}, {{72, 143.5}, {71.5, 0}} -> {-23.1542, -23.0004, 0.307696, \
+0.307696}, {{143.5, 215}, {71.5, 0}} -> {-45.1544, -23.0004, 0.307696, \
+0.307696}, {{215, 286.5}, {71.5, 0}} -> {-67.1547, -23.0004, 0.307696, \
+0.307696}, {{0.5, 72}, {143, 71.5}} -> {-1.15396, -1.00011, 0.307696, \
+0.307696}, {{72, 143.5}, {143, 71.5}} -> {-23.1542, -1.00011, 0.307696, \
+0.307696}, {{143.5, 215}, {143, 71.5}} -> {-45.1544, -1.00011, 0.307696, \
+0.307696}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Calculating the bare 2-loop off-shell ghost selfenergy \
+diagrams\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(QuarkMass = 0;\)\)], "Input"],
+
+Cell["We need to put the AmplitudeLevel setting to Classes here.", "Text"],
+
+Cell[BoxData[
+    \(\(amps = \(\(\(CreateFeynAmp[inserts, Truncated \[Rule] True, 
+                  PreFactor \[Rule] I, AmplitudeLevel \[Rule] {Classes}] /. 
+                p1 \[RuleDelayed] p\) /. {li1 \[RuleDelayed] mu, 
+                li2 \[RuleDelayed] nu}\) /. 
+            FeynAmpList[__] \[RuleDelayed] List\)\  /. \ 
+          FeynAmp[_, _, x_] \[RuleDelayed] x;\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(amps // TableForm\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[GridBox[{
+            {
+              RowBox[{
+              "\[ImaginaryI]", " ", \(\(\[CapitalPi]\_u\)(q1)\), " ", 
+                RowBox[{\(\[CapitalPi]\_u\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_u\), "(", 
+                  FormBox[\(q1 - q2\),
+                    "TraditionalForm"], ")"}], 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li4\)(q1)\), " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^li3\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^mu\), "(", 
+                  FormBox[\(q1 - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], 
+                " ", \(\(\[CapitalPi]\_g\%\(mu  nu\)\)(q2)\), 
+                " ", \(f\_\(ci11  ci7  ci9\)\), 
+                " ", \(f\_\(ci2  ci11  ci5\)\), " ", \(f\_\(ci3  ci1  ci9\)\),
+                 " ", \(f\_\(ci7  ci3  ci5\)\)}]},
+            {
+              RowBox[{
+              "\[ImaginaryI]", " ", \(\(\[CapitalPi]\_u\)(q1)\), 
+                " ", \(\(\[CapitalPi]\_u\)(q2)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li6\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li4\)(q1)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(q2)\), " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(mu  nu\)\), "(", 
+                  FormBox[\(q1 - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li5  li6\)\), "(", 
+                  FormBox[\(q2 - p\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(V\^\(mu  li3  li5\)\), "(", 
+                  RowBox[{
+                    FormBox[\(q2 - q1\),
+                      "TraditionalForm"], \(\(,\)\(\ \)\), 
+                    FormBox[\(q1 - p\),
+                      "TraditionalForm"], \(\(,\)\(\ \)\), 
+                    FormBox[\(p - q2\),
+                      "TraditionalForm"]}], ")"}], 
+                " ", \(f\_\(ci2  ci5  ci11\)\), 
+                " ", \(f\_\(ci3  ci1  ci10\)\), " ", \(f\_\(ci5  ci3  ci8\)\),
+                 " ", \(f\_\(ci8  ci10  ci11\)\)}]},
+            {
+              RowBox[{\(-\[ImaginaryI]\), " ", 
+                RowBox[{"tr", "(", 
+                  FormBox[
+                    RowBox[{"2", " ", \(N\_f\), " ", \(T\_f\), " ", 
+                      RowBox[{
+                        RowBox[{\(\[CapitalPi]\_q\), "(", 
+                          FormBox[\(p - q2\),
+                            "TraditionalForm"], ")"}], ".", 
+                        SubscriptBox["T", 
+                          FormBox["ci5",
+                            "TraditionalForm"]], ".", \(Q\^mu\), ".", 
+                        RowBox[{\(\[CapitalPi]\_q\), "(", 
+                          FormBox[\(q1 - q2\),
+                            "TraditionalForm"], ")"}], ".", 
+                        SubscriptBox["T", 
+                          FormBox["ci7",
+                            "TraditionalForm"]], ".", \(Q\^li3\)}]}],
+                    "TraditionalForm"], ")"}], 
+                " ", \(\(\[CapitalPi]\_u\)(q1)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li4\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(q1)\), " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(mu  nu\)\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(q1 - p\),
+                    "TraditionalForm"], ")"}], " ", \(f\_\(ci2  ci3  ci7\)\), 
+                " ", \(f\_\(ci3  ci1  ci5\)\)}]},
+            {
+              
+              RowBox[{\(-\[ImaginaryI]\), " ", \(\(\[CapitalPi]\_u\)(q1)\), 
+                " ", 
+                RowBox[{\(\[CapitalPi]\_u\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_u\), "(", 
+                  FormBox[\(q1 - q2\),
+                    "TraditionalForm"], ")"}], 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li4\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(q1)\), " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^mu\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^li3\), "(", 
+                  FormBox[\(q1 - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(mu  nu\)\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(q1 - p\),
+                    "TraditionalForm"], ")"}], " ", \(f\_\(ci2  ci3  ci11\)\),
+                 " ", \(f\_\(ci3  ci1  ci5\)\), " ", \(f\_\(ci7  ci9  ci5\)\),
+                 " ", \(f\_\(ci9  ci7  ci11\)\)}]},
+            {
+              RowBox[{"\[ImaginaryI]", " ", 
+                SuperscriptBox[
+                  RowBox[{\(\[CapitalPi]\_u\), "(", 
+                    FormBox[\(p - q1\),
+                      "TraditionalForm"], ")"}], "2"], " ", 
+                RowBox[{\(\[CapitalPi]\_u\), "(", 
+                  FormBox[\(q2 - q1\),
+                    "TraditionalForm"], ")"}], 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(p)\), " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^li3\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^mu\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\(\[CapitalLambda]\&~\)\^li4\), "(", 
+                  FormBox[\(q2 - q1\),
+                    "TraditionalForm"], ")"}], 
+                " ", \(\(\[CapitalPi]\_g\%\(mu  nu\)\)(q1)\), " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", \(f\_\(ci11  ci7  ci9\)\),
+                 " ", \(f\_\(ci2  ci11  ci3\)\), 
+                " ", \(f\_\(ci5  ci1  ci3\)\), 
+                " ", \(f\_\(ci7  ci5  ci9\)\)}]},
+            {
+              
+              RowBox[{\(1\/2\), " ", "\[ImaginaryI]", 
+                " ", \(\(\[CapitalPi]\_u\)(q1)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li8\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(q1)\), " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(mu  nu\)\), "(", 
+                  FormBox[\(p - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li7  li8\)\), "(", 
+                  FormBox[\(q1 - p\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li5  li6\)\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(q2 - q1\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(V\^\(mu  li4  li6\)\), "(", 
+                  RowBox[{
+                    FormBox[\(q1 - p\),
+                      "TraditionalForm"], \(\(,\)\(\ \)\), 
+                    FormBox[\(q2 - q1\),
+                      "TraditionalForm"], \(\(,\)\(\ \)\), 
+                    FormBox[\(p - q2\),
+                      "TraditionalForm"]}], ")"}], " ", 
+                RowBox[{\(V\^\(li3  li5  li7\)\), "(", 
+                  RowBox[{
+                    FormBox[\(q1 - q2\),
+                      "TraditionalForm"], \(\(,\)\(\ \)\), 
+                    FormBox[\(q2 - p\),
+                      "TraditionalForm"], \(\(,\)\(\ \)\), 
+                    FormBox[\(p - q1\),
+                      "TraditionalForm"]}], ")"}], 
+                " ", \(f\_\(ci2  ci3  ci11\)\), " ", \(f\_\(ci3  ci1  ci6\)\),
+                 " ", \(f\_\(ci6  ci8  ci10\)\), 
+                " ", \(f\_\(ci8  ci10  ci11\)\)}]},
+            {
+              RowBox[{
+              "\[ImaginaryI]", " ", \(\(\[CapitalPi]\_u\)(p)\), 
+                " ", \(\(\[CapitalPi]\_u\)(q1)\), 
+                " ", \(\(\[CapitalPi]\_u\)(q2)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li3\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^nu\)(p)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^mu\)(q1)\), 
+                " ", \(\(\(\[CapitalLambda]\&~\)\^li4\)(q2)\), " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(mu  nu\)\), "(", 
+                  FormBox[\(q1 - p\),
+                    "TraditionalForm"], ")"}], " ", 
+                RowBox[{\(\[CapitalPi]\_g\%\(li3  li4\)\), "(", 
+                  FormBox[\(p - q2\),
+                    "TraditionalForm"], ")"}], " ", \(f\_\(ci2  ci5  ci7\)\), 
+                " ", \(f\_\(ci3  ci9  ci12\)\), " ", \(f\_\(ci5  ci3  ci7\)\),
+                 " ", \(f\_\(ci9  ci1  ci12\)\)}]}
+            },
+          RowSpacings->1,
+          ColumnSpacings->3,
+          RowAlignments->Baseline,
+          ColumnAlignments->{Left}],
+        TableForm[ {
+          Times[ 
+            Complex[ 0, 1], 
+            GhostPropagator[ q1], 
+            GhostPropagator[ 
+              Plus[ p, 
+                Times[ -1, q2]]], 
+            GhostPropagator[ 
+              Plus[ q1, 
+                Times[ -1, q2]]], 
+            GluonGhostVertex[ p, nu], 
+            GluonGhostVertex[ q1, li4], 
+            GluonGhostVertex[ 
+              Plus[ p, 
+                Times[ -1, q2]], li3], 
+            GluonGhostVertex[ 
+              Plus[ q1, 
+                Times[ -1, q2]], mu], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q1]], {li3}, {li4}], 
+            GluonPropagator[ q2, {mu}, {nu}], 
+            SUNF[ ci11, ci7, ci9], 
+            SUNF[ ci2, ci11, ci5], 
+            SUNF[ ci3, ci1, ci9], 
+            SUNF[ ci7, ci3, ci5]], 
+          Times[ 
+            Complex[ 0, 1], 
+            GhostPropagator[ q1], 
+            GhostPropagator[ q2], 
+            GluonGhostVertex[ p, li6], 
+            GluonGhostVertex[ q1, li4], 
+            GluonGhostVertex[ q2, nu], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q1]], {li3}, {li4}], 
+            GluonPropagator[ 
+              Plus[ q1, 
+                Times[ -1, q2]], {mu}, {nu}], 
+            GluonPropagator[ 
+              Plus[ 
+                Times[ -1, p], q2], {li5}, {li6}], 
+            GluonVertex[ {
+              Plus[ 
+                Times[ -1, q1], q2], mu}, {
+              Plus[ 
+                Times[ -1, p], q1], li3}, {
+              Plus[ p, 
+                Times[ -1, q2]], li5}], 
+            SUNF[ ci2, ci5, ci11], 
+            SUNF[ ci3, ci1, ci10], 
+            SUNF[ ci5, ci3, ci8], 
+            SUNF[ ci8, ci10, ci11]], 
+          Times[ 
+            Complex[ 0, -1], 
+            DiracTrace[ 
+              Times[ 2, Nf, Tf, 
+                Dot[ 
+                  QuarkPropagator[ {
+                    Plus[ p, 
+                      Times[ -1, q2]], 0}], 
+                  SUNT[ ci5], 
+                  QuarkGluonVertex[ mu], 
+                  QuarkPropagator[ {
+                    Plus[ q1, 
+                      Times[ -1, q2]], 0}], 
+                  SUNT[ ci7], 
+                  QuarkGluonVertex[ li3]]]], 
+            GhostPropagator[ q1], 
+            GluonGhostVertex[ p, li4], 
+            GluonGhostVertex[ q1, nu], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q1]], {mu}, {nu}], 
+            GluonPropagator[ 
+              Plus[ 
+                Times[ -1, p], q1], {li3}, {li4}], 
+            SUNF[ ci2, ci3, ci7], 
+            SUNF[ ci3, ci1, ci5]], 
+          Times[ 
+            Complex[ 0, -1], 
+            GhostPropagator[ q1], 
+            GhostPropagator[ 
+              Plus[ p, 
+                Times[ -1, q2]]], 
+            GhostPropagator[ 
+              Plus[ q1, 
+                Times[ -1, q2]]], 
+            GluonGhostVertex[ p, li4], 
+            GluonGhostVertex[ q1, nu], 
+            GluonGhostVertex[ 
+              Plus[ p, 
+                Times[ -1, q2]], mu], 
+            GluonGhostVertex[ 
+              Plus[ q1, 
+                Times[ -1, q2]], li3], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q1]], {mu}, {nu}], 
+            GluonPropagator[ 
+              Plus[ 
+                Times[ -1, p], q1], {li3}, {li4}], 
+            SUNF[ ci2, ci3, ci11], 
+            SUNF[ ci3, ci1, ci5], 
+            SUNF[ ci7, ci9, ci5], 
+            SUNF[ ci9, ci7, ci11]], 
+          Times[ 
+            Complex[ 0, 1], 
+            Power[ 
+              GhostPropagator[ 
+                Plus[ p, 
+                  Times[ -1, q1]]], 2], 
+            GhostPropagator[ 
+              Plus[ 
+                Times[ -1, q1], q2]], 
+            GluonGhostVertex[ p, nu], 
+            GluonGhostVertex[ 
+              Plus[ p, 
+                Times[ -1, q1]], li3], 
+            GluonGhostVertex[ 
+              Plus[ p, 
+                Times[ -1, q1]], mu], 
+            GluonGhostVertex[ 
+              Plus[ 
+                Times[ -1, q1], q2], li4], 
+            GluonPropagator[ q1, {mu}, {nu}], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q2]], {li3}, {li4}], 
+            SUNF[ ci11, ci7, ci9], 
+            SUNF[ ci2, ci11, ci3], 
+            SUNF[ ci5, ci1, ci3], 
+            SUNF[ ci7, ci5, ci9]], 
+          Times[ 
+            Complex[ 0, 
+              Rational[ 1, 2]], 
+            GhostPropagator[ q1], 
+            GluonGhostVertex[ p, li8], 
+            GluonGhostVertex[ q1, nu], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q1]], {mu}, {nu}], 
+            GluonPropagator[ 
+              Plus[ 
+                Times[ -1, p], q1], {li7}, {li8}], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q2]], {li5}, {li6}], 
+            GluonPropagator[ 
+              Plus[ 
+                Times[ -1, q1], q2], {li3}, {li4}], 
+            GluonVertex[ {
+              Plus[ 
+                Times[ -1, p], q1], mu}, {
+              Plus[ 
+                Times[ -1, q1], q2], li4}, {
+              Plus[ p, 
+                Times[ -1, q2]], li6}], 
+            GluonVertex[ {
+              Plus[ q1, 
+                Times[ -1, q2]], li3}, {
+              Plus[ 
+                Times[ -1, p], q2], li5}, {
+              Plus[ p, 
+                Times[ -1, q1]], li7}], 
+            SUNF[ ci2, ci3, ci11], 
+            SUNF[ ci3, ci1, ci6], 
+            SUNF[ ci6, ci8, ci10], 
+            SUNF[ ci8, ci10, ci11]], 
+          Times[ 
+            Complex[ 0, 1], 
+            GhostPropagator[ p], 
+            GhostPropagator[ q1], 
+            GhostPropagator[ q2], 
+            GluonGhostVertex[ p, li3], 
+            GluonGhostVertex[ p, nu], 
+            GluonGhostVertex[ q1, mu], 
+            GluonGhostVertex[ q2, li4], 
+            GluonPropagator[ 
+              Plus[ 
+                Times[ -1, p], q1], {mu}, {nu}], 
+            GluonPropagator[ 
+              Plus[ p, 
+                Times[ -1, q2]], {li3}, {li4}], 
+            SUNF[ ci2, ci5, ci7], 
+            SUNF[ ci3, ci9, ci12], 
+            SUNF[ ci5, ci3, ci7], 
+            SUNF[ ci9, ci1, ci12]]}]], TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A function to do self energy diagrams", "Subsection"],
+
+Cell["This is a substitution rule for a tensor integral of rank 1.", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(tsub1 = 
+      FCI[FVD[qu1 : \((q1 | q2)\), mu] FVD[qu2 : \((q1 | q2)\), nu]] :> 
+        TIDL[{{qu1, mu}, {qu2, nu}}, {p}]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{
+          RowBox[{"(", 
+            SuperscriptBox[
+              FormBox[\(qu1 : q1 | q2\),
+                "TraditionalForm"], 
+              FormBox[
+                FormBox["mu",
+                  "TraditionalForm"],
+                "TraditionalForm"]], ")"}], " ", 
+          RowBox[{"(", 
+            SuperscriptBox[
+              FormBox[\(qu2 : q1 | q2\),
+                "TraditionalForm"], 
+              FormBox[
+                FormBox["nu",
+                  "TraditionalForm"],
+                "TraditionalForm"]], ")"}]}], "\[RuleDelayed]", 
+        RowBox[{"TIDL", "(", 
+          RowBox[{
+            RowBox[{"(", "\[NoBreak]", GridBox[{
+                  {"qu1", "mu"},
+                  {"qu2", "nu"}
+                  }], "\[NoBreak]", ")"}], ",", \({p}\)}], ")"}]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell["This is a substitution rule for a tensor integral of rank 2.", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(tsub2 = 
+      FCI[FVD[qu : \((q1 | q2)\), al_]] :> TIDL[{{qu, al}}, {p}]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        SuperscriptBox[
+          FormBox[\(qu : q1 | q2\),
+            "TraditionalForm"], 
+          FormBox[
+            FormBox["al_",
+              "TraditionalForm"],
+            "TraditionalForm"]], "\[RuleDelayed]", 
+        RowBox[{"TIDL", "(", 
+          RowBox[{
+            RowBox[{"(", "\[NoBreak]", GridBox[{
+                  {"qu", "al"}
+                  }], "\[NoBreak]", ")"}], ",", \({p}\)}], ")"}]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(do2self[z_] := 
+      TarcerRecurse[
+          ch2 = FCE[
+              ToTFi[\(\((ch1 = 
+                        Expand[
+                          Contract[
+                            SUNSimplify[
+                                Explicit[z, Dimension \[Rule] D, 
+                                    Gauge \[Rule] 
+                                      1 - \[Xi]] /. \[InvisibleSpace]FCI[
+                                      FAD[p]] \[RuleDelayed] 1\/SPD[p, p], 
+                                Explicit \[Rule] 
+                                  True] /. \[InvisibleSpace]DiracTrace \
+\[Rule] TR], q1 | 
+                            q2])\) /. \[InvisibleSpace]tsub1\) \
+/. \[InvisibleSpace]tsub2, q1, q2, p]]; 
+          If[comment, 
+            Print["\<starting recursion on \>", 
+              Length[ch2], "\< integrals\>"]]; 
+          ch2] /. \[InvisibleSpace]x_Plus \[RuleDelayed] 
+          Collect2[x, {mu, nu}] /; FreeQ2[x, {TBI, TJI, TAI}]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Calculate the graphs one by one", "Subsection"],
+
+Cell[BoxData[
+    \(\(comment = True;\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Timing[\(res = 
+          Table[Print["\<doing \>", i, \ "\<  \>", 
+              Timing[re[i] = do2self[\((amps[\([i]\)])\)]]]; 
+            re[i], {i, Length[amps]}];\)]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]36\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 36, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "1", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(5.7700000000000005`\ Second\), ",", 
+              RowBox[{
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \(g\_s\%4\), " ", "\[Xi]", 
+                    " ", \((\[Xi]\ D\^3 - 8\ \[Xi]\ D\^2 + 2\ D\^2 + 
+                        17\ \[Xi]\ D - 6\ D - 8\ \[Xi])\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    FormBox[
+                      SuperscriptBox[
+                        FormBox["p",
+                          "TraditionalForm"], "2"],
+                      "TraditionalForm"], " ", 
+                    SuperscriptBox[
+                      InterpretationBox[
+                        SubsuperscriptBox[
+                          StyleBox["B",
+                            SingleLetterItalics->False,
+                            FontWeight->"Bold"], 
+                          RowBox[{
+                            FormBox[\({1, 0}\),
+                              "TraditionalForm"], 
+                            FormBox[\({1, 0}\),
+                              "TraditionalForm"]}], 
+                          RowBox[{"(", 
+                            FormBox["D",
+                              "TraditionalForm"], ")"}]],
+                        TBI[ D, 
+                          SPD[ p, p], {{1, 0}, {1, 0}}],
+                        Editable->True], "2"]}], \(64\ \((D - 4)\)\)], "-", 
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \((D - 3)\), " ", \(g\_s\%4\), 
+                    " ", \((2\ \[Xi]\^2\ D\^3 - 21\ \[Xi]\^2\ D\^2 + 
+                        10\ \[Xi]\ D\^2 + 68\ \[Xi]\^2\ D - 60\ \[Xi]\ D + 
+                        8\ D - 72\ \[Xi]\^2 + 96\ \[Xi] - 32)\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, 
+                        SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+                      Editable->True]}], \(16\ \((D - 4)\)\^2\)]}]}], "}"}]}],
+        
+        SequenceForm[ "doing ", 1, "  ", {
+          Times[ 5.7700000000000005, Second], 
+          Plus[ 
+            Times[ 
+              Rational[ 1, 64], 
+              Power[ CA, 2], 
+              Power[ 
+                Plus[ -4, D], -1], 
+              Power[ Gstrong, 4], \[Xi], 
+              Plus[ 
+                Times[ -6, D], 
+                Times[ 2, 
+                  Power[ D, 2]], 
+                Times[ -8, \[Xi]], 
+                Times[ 17, D, \[Xi]], 
+                Times[ -8, 
+                  Power[ D, 2], \[Xi]], 
+                Times[ 
+                  Power[ D, 3], \[Xi]]], 
+              SD[ ci1, ci2], 
+              SPD[ p, p], 
+              Power[ 
+                TBI[ D, 
+                  SPD[ p, p], {{1, 0}, {1, 0}}], 2]], 
+            Times[ 
+              Rational[ -1, 16], 
+              Power[ CA, 2], 
+              Power[ 
+                Plus[ -4, D], -2], 
+              Plus[ -3, D], 
+              Power[ Gstrong, 4], 
+              Plus[ -32, 
+                Times[ 8, D], 
+                Times[ 96, \[Xi]], 
+                Times[ -60, D, \[Xi]], 
+                Times[ 10, 
+                  Power[ D, 2], \[Xi]], 
+                Times[ -72, 
+                  Power[ \[Xi], 2]], 
+                Times[ 68, D, 
+                  Power[ \[Xi], 2]], 
+                Times[ -21, 
+                  Power[ D, 2], 
+                  Power[ \[Xi], 2]], 
+                Times[ 2, 
+                  Power[ D, 3], 
+                  Power[ \[Xi], 2]]], 
+              SD[ ci1, ci2], 
+              TJI[ D, 
+                SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}]]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]108\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 108, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "2", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(13.23`\ Second\), ",", 
+              RowBox[{
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \((D\ \[Xi] - 3\ \[Xi] + 2)\), 
+                    " ", \((3\ \[Xi]\ D\^2 - 19\ \[Xi]\ D - 8\ D + 
+                        28\ \[Xi] + 24)\), " ", \(\[Delta]\_\(ci1  ci2\)\), 
+                    " ", 
+                    FormBox[
+                      SuperscriptBox[
+                        FormBox["p",
+                          "TraditionalForm"], "2"],
+                      "TraditionalForm"], " ", 
+                    SuperscriptBox[
+                      InterpretationBox[
+                        SubsuperscriptBox[
+                          StyleBox["B",
+                            SingleLetterItalics->False,
+                            FontWeight->"Bold"], 
+                          RowBox[{
+                            FormBox[\({1, 0}\),
+                              "TraditionalForm"], 
+                            FormBox[\({1, 0}\),
+                              "TraditionalForm"]}], 
+                          RowBox[{"(", 
+                            FormBox["D",
+                              "TraditionalForm"], ")"}]],
+                        TBI[ D, 
+                          SPD[ p, p], {{1, 0}, {1, 0}}],
+                        Editable->True], "2"], 
+                    " ", \(g\_s\%4\)}], \(64\ \((D - 4)\)\)], "+", 
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \((D - 3)\), 
+                    " ", \((\[Xi]\ D + 4\ D - 4\ \[Xi] - 8)\), 
+                    " ", \((D\ \[Xi] - 3\ \[Xi] + 2)\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, 
+                        SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+                      Editable->True], 
+                    " ", \(g\_s\%4\)}], \(8\ \((D - 4)\)\^2\)]}]}], "}"}]}],
+        SequenceForm[ "doing ", 2, "  ", {
+          Times[ 13.23, Second], 
+          Plus[ 
+            Times[ 
+              Rational[ 1, 64], 
+              Power[ CA, 2], 
+              Power[ 
+                Plus[ -4, D], -1], 
+              Power[ Gstrong, 4], 
+              Plus[ 2, 
+                Times[ -3, \[Xi]], 
+                Times[ D, \[Xi]]], 
+              Plus[ 24, 
+                Times[ -8, D], 
+                Times[ 28, \[Xi]], 
+                Times[ -19, D, \[Xi]], 
+                Times[ 3, 
+                  Power[ D, 2], \[Xi]]], 
+              SD[ ci1, ci2], 
+              SPD[ p, p], 
+              Power[ 
+                TBI[ D, 
+                  SPD[ p, p], {{1, 0}, {1, 0}}], 2]], 
+            Times[ 
+              Rational[ 1, 8], 
+              Power[ CA, 2], 
+              Power[ 
+                Plus[ -4, D], -2], 
+              Plus[ -3, D], 
+              Power[ Gstrong, 4], 
+              Plus[ -8, 
+                Times[ 4, D], 
+                Times[ -4, \[Xi]], 
+                Times[ D, \[Xi]]], 
+              Plus[ 2, 
+                Times[ -3, \[Xi]], 
+                Times[ D, \[Xi]]], 
+              SD[ ci1, ci2], 
+              TJI[ D, 
+                SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}]]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]75\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 75, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "3", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(8.509999999999998`\ Second\), ",", 
+              RowBox[{"-", 
+                FractionBox[
+                  RowBox[{
+                  "2", " ", \(C\_A\), " ", \(\((D - 2)\)\^2\), 
+                    " ", \(g\_s\%4\), " ", \(N\_f\), " ", \(T\_f\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, 
+                        SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+                      Editable->True]}], \(\((D - 6)\)\ \((D - 4)\)\)]}]}], 
+            "}"}]}],
+        SequenceForm[ "doing ", 3, "  ", {
+          Times[ 8.509999999999998, Second], 
+          Times[ -2, CA, 
+            Power[ 
+              Plus[ -6, D], -1], 
+            Power[ 
+              Plus[ -4, D], -1], 
+            Power[ 
+              Plus[ -2, D], 2], 
+            Power[ Gstrong, 4], Nf, Tf, 
+            SD[ ci1, ci2], 
+            TJI[ D, 
+              SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]54\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 54, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "4", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(6.280000000000001`\ Second\), ",", 
+              RowBox[{"-", 
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \((D - 2)\), " ", \(g\_s\%4\), 
+                    " ", \((2\ D\ \[Xi]\^2 - 7\ \[Xi]\^2 - 4\ D\ \[Xi] + 
+                        14\ \[Xi] + 2\ D - 8)\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, 
+                        SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+                      Editable->True]}], \(4\ \((D - 6)\)\ \((D - 4)\)\)]}]}],
+             "}"}]}],
+        SequenceForm[ "doing ", 4, "  ", {
+          Times[ 6.2800000000000011, Second], 
+          Times[ 
+            Rational[ -1, 4], 
+            Power[ CA, 2], 
+            Power[ 
+              Plus[ -6, D], -1], 
+            Power[ 
+              Plus[ -4, D], -1], 
+            Plus[ -2, D], 
+            Power[ Gstrong, 4], 
+            Plus[ -8, 
+              Times[ 2, D], 
+              Times[ 14, \[Xi]], 
+              Times[ -4, D, \[Xi]], 
+              Times[ -7, 
+                Power[ \[Xi], 2]], 
+              Times[ 2, D, 
+                Power[ \[Xi], 2]]], 
+            SD[ ci1, ci2], 
+            TJI[ D, 
+              SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]56\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 56, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "5", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(7.02`\ Second\), ",", 
+              RowBox[{"-", 
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \((D - 3)\), " ", \(g\_s\%4\), 
+                    " ", \(\((D\ \[Xi] - 3\ \[Xi] + 2)\)\^2\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, 
+                        SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+                      Editable->True]}], \(4\ \((D - 4)\)\)]}]}], "}"}]}],
+        SequenceForm[ "doing ", 5, "  ", {
+          Times[ 7.0199999999999996, Second], 
+          Times[ 
+            Rational[ -1, 4], 
+            Power[ CA, 2], 
+            Power[ 
+              Plus[ -4, D], -1], 
+            Plus[ -3, D], 
+            Power[ Gstrong, 4], 
+            Power[ 
+              Plus[ 2, 
+                Times[ -3, \[Xi]], 
+                Times[ D, \[Xi]]], 2], 
+            SD[ ci1, ci2], 
+            TJI[ D, 
+              SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]514\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 514, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "6", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(85.1`\ Second\), ",", 
+              RowBox[{"-", 
+                FractionBox[
+                  
+                  RowBox[{\(C\_A\%2\), " ", \((D - 2)\), " ", \(g\_s\%4\), 
+                    " ", \((\[Xi]\^2\ D\^2 - 8\ \[Xi]\ D\^2 - 
+                        9\ \[Xi]\^2\ D + 44\ \[Xi]\ D - 16\ D + 
+                        18\ \[Xi]\^2 - 56\ \[Xi] + 24)\), 
+                    " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                    InterpretationBox[
+                      SubsuperscriptBox[
+                        StyleBox["J",
+                          SingleLetterItalics->False,
+                          FontWeight->"Bold"], 
+                        RowBox[{
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"], 
+                          FormBox[\({1, 0}\),
+                            "TraditionalForm"]}], 
+                        RowBox[{"(", 
+                          FormBox["D",
+                            "TraditionalForm"], ")"}]],
+                      TJI[ D, 
+                        SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+                      Editable->True]}], \(8\ \((D - 6)\)\ \((D - 4)\)\)]}]}],
+             "}"}]}],
+        SequenceForm[ "doing ", 6, "  ", {
+          Times[ 85.099999999999994, Second], 
+          Times[ 
+            Rational[ -1, 8], 
+            Power[ CA, 2], 
+            Power[ 
+              Plus[ -6, D], -1], 
+            Power[ 
+              Plus[ -4, D], -1], 
+            Plus[ -2, D], 
+            Power[ Gstrong, 4], 
+            Plus[ 24, 
+              Times[ -16, D], 
+              Times[ -56, \[Xi]], 
+              Times[ 44, D, \[Xi]], 
+              Times[ -8, 
+                Power[ D, 2], \[Xi]], 
+              Times[ 18, 
+                Power[ \[Xi], 2]], 
+              Times[ -9, D, 
+                Power[ \[Xi], 2]], 
+              Times[ 
+                Power[ D, 2], 
+                Power[ \[Xi], 2]]], 
+            SD[ ci1, ci2], 
+            TJI[ D, 
+              SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[\("starting recursion on "\[InvisibleSpace]25\
+\[InvisibleSpace]" integrals"\),
+        SequenceForm[ "starting recursion on ", 25, " integrals"],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    FormBox[
+      InterpretationBox[
+        RowBox[{"\<\"doing \"\>", "\[InvisibleSpace]", "7", 
+          "\[InvisibleSpace]", "\<\"  \"\>", "\[InvisibleSpace]", 
+          RowBox[{"{", 
+            RowBox[{\(1.4800000000000113`\ Second\), ",", 
+              
+              RowBox[{\(-\(1\/16\)\), " ", \(C\_A\%2\), " ", \(g\_s\%4\), 
+                " ", \(\((D\ \[Xi] - 3\ \[Xi] + 2)\)\^2\), 
+                " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+                FormBox[
+                  SuperscriptBox[
+                    FormBox["p",
+                      "TraditionalForm"], "2"],
+                  "TraditionalForm"], " ", 
+                SuperscriptBox[
+                  InterpretationBox[
+                    SubsuperscriptBox[
+                      StyleBox["B",
+                        SingleLetterItalics->False,
+                        FontWeight->"Bold"], 
+                      RowBox[{
+                        FormBox[\({1, 0}\),
+                          "TraditionalForm"], 
+                        FormBox[\({1, 0}\),
+                          "TraditionalForm"]}], 
+                      RowBox[{"(", 
+                        FormBox["D",
+                          "TraditionalForm"], ")"}]],
+                    TBI[ D, 
+                      SPD[ p, p], {{1, 0}, {1, 0}}],
+                    Editable->True], "2"]}]}], "}"}]}],
+        SequenceForm[ "doing ", 7, "  ", {
+          Times[ 1.4800000000000113, Second], 
+          Times[ 
+            Rational[ -1, 16], 
+            Power[ CA, 2], 
+            Power[ Gstrong, 4], 
+            Power[ 
+              Plus[ 2, 
+                Times[ -3, \[Xi]], 
+                Times[ D, \[Xi]]], 2], 
+            SD[ ci1, ci2], 
+            SPD[ p, p], 
+            Power[ 
+              TBI[ D, 
+                SPD[ p, p], {{1, 0}, {1, 0}}], 2]]}],
+        Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+    \(TraditionalForm\`{127.43`\ Second, Null}\)], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Do the expansion of the master integrals in \[CurlyEpsilon] and \
+compare with the literature\
+\>", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ghselftf\  = res[\([3]\)]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"-", 
+        FractionBox[
+          RowBox[{
+          "2", " ", \(C\_A\), " ", \(\((D - 2)\)\^2\), " ", \(g\_s\%4\), 
+            " ", \(N\_f\), " ", \(T\_f\), " ", \(\[Delta]\_\(ci1  ci2\)\), 
+            " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["D",
+                    "TraditionalForm"], ")"}]],
+              TJI[ D, 
+                SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+              Editable->True]}], \(\((D - 6)\)\ \((D - 4)\)\)]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(eta = \(Gamma[D\/2 - 1]\^2\ Gamma[3 - D\/2]\)\/Gamma[D - 3];\)\)], \
+"Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\((\((8  Select1[#, Epsilon^_])\) . 
+            Expand[1/8  Select2[#, Epsilon^_]])\) &\)[
+      Simplify[TarcerExpand[ghselftf\/eta\^2, D \[Rule] 4 - 2\ Epsilon, 
+          0]]]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{"(", 
+          
+          RowBox[{\(C\_A\), " ", \(g\_s\%4\), " ", \(N\_f\), " ", \(T\_f\), 
+            " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+            SuperscriptBox[
+              InterpretationBox[
+                StyleBox[\(S\_Epsilon\),
+                  FontWeight->"Bold"],
+                SEpsilon[ 
+                  Plus[ 4, 
+                    Times[ -2, Epsilon]]],
+                Editable->False], "2"], " ", 
+            SuperscriptBox[
+              RowBox[{"(", 
+                RowBox[{"-", 
+                  FormBox[
+                    SuperscriptBox[
+                      FormBox["p",
+                        "TraditionalForm"], "2"],
+                    "TraditionalForm"]}], ")"}], 
+              RowBox[{"1", "-", 
+                RowBox[{"2", " ", 
+                  TagBox["\[CurlyEpsilon]",
+                    TraditionalForm]}]}]]}], ")"}], ".", 
+        RowBox[{"(", 
+          RowBox[{\(53\/8\), "+", 
+            FractionBox["7", 
+              RowBox[{"4", " ", 
+                TagBox["\[CurlyEpsilon]",
+                  TraditionalForm]}]], "+", 
+            FractionBox["1", 
+              RowBox[{"2", " ", 
+                SuperscriptBox[
+                  TagBox["\[CurlyEpsilon]",
+                    TraditionalForm], "2"]}]]}], ")"}]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+  "The above is exactly what is given in eq. (6.13) of \"A.I. Davydychev, \
+P.Osland, O.V. Tarasov, Phy. Rev. D ",
+  StyleBox["58",
+    FontWeight->"Bold"],
+  ", 036007 (1998)\"."
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ghselfca\  = 
+      Collect2[\ 
+        res[\([1]\)] + res[\([2]\)] + \ res[\([4]\)] + res[\([5]\)] + \ 
+          res[\([6]\)], {TBI, TJI}]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{"-", 
+          FractionBox[
+            
+            RowBox[{\(C\_A\%2\), 
+              " ", \((2\ \[Xi]\^2\ D\^3 - 18\ \[Xi]\^2\ D\^2 + 
+                  51\ \[Xi]\^2\ D + 2\ \[Xi]\ D - 8\ D - 46\ \[Xi]\^2 - 
+                  8\ \[Xi] + 24)\), " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+              FormBox[
+                SuperscriptBox[
+                  FormBox["p",
+                    "TraditionalForm"], "2"],
+                "TraditionalForm"], " ", 
+              SuperscriptBox[
+                InterpretationBox[
+                  SubsuperscriptBox[
+                    StyleBox["B",
+                      SingleLetterItalics->False,
+                      FontWeight->"Bold"], 
+                    RowBox[{
+                      FormBox[\({1, 0}\),
+                        "TraditionalForm"], 
+                      FormBox[\({1, 0}\),
+                        "TraditionalForm"]}], 
+                    RowBox[{"(", 
+                      FormBox["D",
+                        "TraditionalForm"], ")"}]],
+                  TBI[ D, 
+                    SPD[ p, p], {{1, 0}, {1, 0}}],
+                  Editable->True], "2"], 
+              " ", \(g\_s\%4\)}], \(32\ \((4 - D)\)\)]}], "-", 
+        FractionBox[
+          
+          RowBox[{\(C\_A\%2\), 
+            " ", \((\(-6\)\ \[Xi]\^2\ D\^5 + 115\ \[Xi]\^2\ D\^4 - 
+                2\ \[Xi]\ D\^4 - 867\ \[Xi]\^2\ D\^3 + 130\ \[Xi]\ D\^3 + 
+                16\ D\^3 + 3216\ \[Xi]\^2\ D\^2 - 1188\ \[Xi]\ D\^2 - 
+                24\ D\^2 - 5884\ \[Xi]\^2\ D + 3840\ \[Xi]\ D - 432\ D + 
+                4256\ \[Xi]\^2 - 4160\ \[Xi] + 1024)\), 
+            " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+            InterpretationBox[
+              SubsuperscriptBox[
+                StyleBox["J",
+                  SingleLetterItalics->False,
+                  FontWeight->"Bold"], 
+                RowBox[{
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"], 
+                  FormBox[\({1, 0}\),
+                    "TraditionalForm"]}], 
+                RowBox[{"(", 
+                  FormBox["D",
+                    "TraditionalForm"], ")"}]],
+              TJI[ D, 
+                SPD[ p, p], {{1, 0}, {1, 0}, {1, 0}}],
+              Editable->True], 
+            " ", \(g\_s\%4\)}], \(16\ \((4 - D)\)\^2\ \((6 - D)\)\)]}], 
+      TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\((\((640\ Select1[#, Epsilon^_])\) . 
+            Collect3[Expand[1/640  Select2[#, Epsilon^_]], Epsilon])\) &\)[
+      Simplify[TarcerExpand[ghselfca\/eta\^2, D \[Rule] 4 - 2\ Epsilon, 
+          1]]]\)], "Input"],
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{
+        RowBox[{"(", 
+          
+          RowBox[{\(C\_A\%2\), " ", \(g\_s\%4\), 
+            " ", \(\[Delta]\_\(ci1  ci2\)\), " ", 
+            SuperscriptBox[
+              InterpretationBox[
+                StyleBox[\(S\_Epsilon\),
+                  FontWeight->"Bold"],
+                SEpsilon[ 
+                  Plus[ 4, 
+                    Times[ -2, Epsilon]]],
+                Editable->False], "2"], " ", 
+            SuperscriptBox[
+              RowBox[{"(", 
+                RowBox[{"-", 
+                  FormBox[
+                    SuperscriptBox[
+                      FormBox["p",
+                        "TraditionalForm"], "2"],
+                    "TraditionalForm"]}], ")"}], 
+              RowBox[{"1", "-", 
+                RowBox[{"2", " ", 
+                  TagBox["\[CurlyEpsilon]",
+                    TraditionalForm]}]}]]}], ")"}], ".", 
+        RowBox[{"(", 
+          RowBox[{
+            FractionBox[\(3\ \[Xi]\^2\), 
+              RowBox[{"32", " ", 
+                SuperscriptBox[
+                  TagBox["\[CurlyEpsilon]",
+                    TraditionalForm], "2"]}]], "+", 
+            RowBox[{
+              TagBox["\[CurlyEpsilon]",
+                TraditionalForm], " ", 
+              RowBox[{"(", 
+                RowBox[{\(-\(17\/8\)\), "+", \(\[Pi]\^4\/320\), "+", 
+                  FractionBox[
+                    RowBox[{"3", " ", 
+                      TagBox[
+                        RowBox[{"\[Zeta]", "(", 
+                          TagBox["3",
+                            Zeta,
+                            Editable->True], ")"}],
+                        InterpretTemplate[ 
+                          Function[ BoxForm`e$, 
+                            Zeta[ BoxForm`e$]]]]}], "4"]}], ")"}], 
+              " ", \(\[Xi]\^2\)}], "+", 
+            RowBox[{
+              RowBox[{"(", 
+                RowBox[{\(-\(3\/8\)\), "+", 
+                  FractionBox[
+                    RowBox[{"3", " ", 
+                      TagBox[
+                        RowBox[{"\[Zeta]", "(", 
+                          TagBox["3",
+                            Zeta,
+                            Editable->True], ")"}],
+                        InterpretTemplate[ 
+                          Function[ BoxForm`e$, 
+                            Zeta[ BoxForm`e$]]]]}], "16"]}], ")"}], 
+              " ", \(\[Xi]\^2\)}], "+", 
+            FractionBox[\(9\ \[Xi]\), 
+              RowBox[{"32", " ", 
+                TagBox["\[CurlyEpsilon]",
+                  TraditionalForm]}]], "-", 
+            FractionBox[\(3\ \[Xi]\), 
+              RowBox[{"16", " ", 
+                SuperscriptBox[
+                  TagBox["\[CurlyEpsilon]",
+                    TraditionalForm], "2"]}]], "+", 
+            RowBox[{
+              TagBox["\[CurlyEpsilon]",
+                TraditionalForm], " ", 
+              RowBox[{"(", 
+                RowBox[{\(639\/128\), "+", 
+                  FractionBox[
+                    RowBox[{"3", " ", 
+                      TagBox[
+                        RowBox[{"\[Zeta]", "(", 
+                          TagBox["3",
+                            Zeta,
+                            Editable->True], ")"}],
+                        InterpretTemplate[ 
+                          Function[ BoxForm`e$, 
+                            Zeta[ BoxForm`e$]]]]}], "2"]}], ")"}], " ", 
+              "\[Xi]"}], "+", \(\(73\ \[Xi]\)\/64\), "-", 
+            FractionBox["67", 
+              RowBox[{"16", " ", 
+                TagBox["\[CurlyEpsilon]",
+                  TraditionalForm]}]], "-", 
+            FractionBox["1", 
+              FormBox[
+                SuperscriptBox[
+                  TagBox["\[CurlyEpsilon]",
+                    TraditionalForm], "2"],
+                "TraditionalForm"]], "+", 
+            RowBox[{
+              TagBox["\[CurlyEpsilon]",
+                TraditionalForm], " ", 
+              RowBox[{"(", 
+                RowBox[{\(-\(3369\/64\)\), "+", \(\[Pi]\^4\/80\), "+", 
+                  FractionBox[
+                    RowBox[{"15", " ", 
+                      TagBox[
+                        RowBox[{"\[Zeta]", "(", 
+                          TagBox["3",
+                            Zeta,
+                            Editable->True], ")"}],
+                        InterpretTemplate[ 
+                          Function[ BoxForm`e$, 
+                            Zeta[ BoxForm`e$]]]]}], "2"]}], ")"}]}], "+", 
+            FractionBox[
+              RowBox[{"3", " ", 
+                TagBox[
+                  RowBox[{"\[Zeta]", "(", 
+                    TagBox["3",
+                      Zeta,
+                      Editable->True], ")"}],
+                  InterpretTemplate[ 
+                    Function[ BoxForm`e$, 
+                      Zeta[ BoxForm`e$]]]]}], "4"], "-", \(503\/32\)}], 
+          ")"}]}], TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+  "This verifies eq. (6.12) of \"A.I. Davydychev, P.Osland, O.V. Tarasov, \
+Phy. Rev. D ",
+  StyleBox["58",
+    FontWeight->"Bold"],
+  ", 036007 (1998)\"."
+}], "Text"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for X",
+ScreenRectangle->{{0, 1400}, {0, 1050}},
+WindowSize->{823, 896},
+WindowMargins->{{45, Automatic}, {Automatic, 25}},
+Magnification->1
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 50, 0, 38, "Subsection"],
+Cell[1829, 55, 63, 1, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[1917, 60, 35, 0, 28, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[1977, 64, 484, 10, 59, "Input"],
+Cell[2464, 76, 99687, 4502, 152, 87184, 4342, "GraphicsData", "PostScript", \
+"Graphics"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[102200, 4584, 98, 3, 28, "Subsubsection"],
+Cell[102301, 4589, 51, 1, 27, "Input"],
+Cell[102355, 4592, 74, 0, 32, "Text"],
+Cell[102432, 4594, 389, 6, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[102846, 4604, 50, 1, 27, "Input"],
+Cell[102899, 4607, 15940, 381, 199, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[118900, 4995, 59, 0, 38, "Subsection"],
+Cell[118962, 4997, 76, 0, 32, "Text"],
+
+Cell[CellGroupData[{
+Cell[119063, 5001, 156, 3, 27, "Input"],
+Cell[119222, 5006, 882, 26, 45, "Output"]
+}, Open  ]],
+Cell[120119, 5035, 76, 0, 32, "Text"],
+
+Cell[CellGroupData[{
+Cell[120220, 5039, 106, 2, 27, "Input"],
+Cell[120329, 5043, 499, 15, 31, "Output"]
+}, Open  ]],
+Cell[120843, 5061, 986, 21, 138, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[121866, 5087, 53, 0, 38, "Subsection"],
+Cell[121922, 5089, 52, 1, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[121999, 5094, 204, 4, 27, "Input"],
+Cell[122206, 5100, 251, 5, 24, "Print"],
+Cell[122460, 5107, 4537, 112, 49, "Print"],
+Cell[127000, 5221, 253, 5, 24, "Print"],
+Cell[127256, 5228, 4108, 102, 49, "Print"],
+Cell[131367, 5332, 251, 5, 24, "Print"],
+Cell[131621, 5339, 1878, 45, 48, "Print"],
+Cell[133502, 5386, 251, 5, 24, "Print"],
+Cell[133756, 5393, 2208, 55, 48, "Print"],
+Cell[135967, 5450, 251, 5, 24, "Print"],
+Cell[136221, 5457, 1925, 47, 48, "Print"],
+Cell[138149, 5506, 253, 5, 24, "Print"],
+Cell[138405, 5513, 2416, 61, 48, "Print"],
+Cell[140824, 5576, 251, 5, 24, "Print"],
+Cell[141078, 5583, 1898, 48, 41, "Print"],
+Cell[142979, 5633, 74, 1, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[143102, 5640, 123, 3, 38, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[143250, 5647, 58, 1, 27, "Input"],
+Cell[143311, 5650, 987, 26, 52, "Output"]
+}, Open  ]],
+Cell[144313, 5679, 99, 2, 52, "Input"],
+
+Cell[CellGroupData[{
+Cell[144437, 5685, 214, 4, 44, "Input"],
+Cell[144654, 5691, 1381, 38, 45, "Output"]
+}, Open  ]],
+Cell[146050, 5732, 207, 6, 32, "Text"],
+
+Cell[CellGroupData[{
+Cell[146282, 5742, 173, 4, 27, "Input"],
+Cell[146458, 5748, 2490, 61, 99, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[148985, 5814, 237, 4, 44, "Input"],
+Cell[149225, 5820, 4881, 124, 47, "Output"]
+}, Open  ]],
+Cell[154121, 5947, 183, 6, 32, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
