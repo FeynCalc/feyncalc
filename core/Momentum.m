@@ -26,9 +26,10 @@ Momentum[x_ n_?NumberQ, di___] := n Momentum[x, di];
 Momentum[x_, 4]                := Momentum[x];
 Momentum[0, ___]               := 0;
 Momentum[_, 0]                 := 0;
-Momentum[Momentum[x_, di___], di___] := Momentum[x, di];
+(* hm ... *)
+Momentum[Momentum[x_, di___], ___] := Momentum[x, di];
 
-   Momentum /:
+Momentum /:
    MakeBoxes[ Momentum[p_, in___], TraditionalForm
             ] := MakeBoxes[p, TraditionalForm];
 
