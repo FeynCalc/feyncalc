@@ -52,6 +52,9 @@ the right. The order of the Dirac matrices is not changed.";
 
 Begin["`Private`"];
 
+print1 = If[$VeryVerbose>0, Print[##]]&;
+print2 = If[$VeryVerbose>1, Print[##]]&;
+print3 = If[$VeryVerbose>2, Print[##]]&;
 
 MakeContext[ Collect2, Contract, DiracOrder,
 DiracEquation, DiracGamma, DiracGammaCombine, DiracGammaExpand,
