@@ -6,7 +6,8 @@
 BeginPackage["HighEnergyPhysics`FeynCalc`OPE`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OPE::"usage"= "OPE is used internally in OPE1Loop.";
+OPE::"usage"= "OPE is a convenience variable to separate OPE insertions. 
+OPE is also an option of several input functions like GluonPropagator.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -14,7 +15,7 @@ Begin["`Private`"];
 
 OPE /: OPE^_Integer?Positive := 0;
 
-   OPE /: MakeBoxes[OPE, TraditionalForm] := "\[Omega]"
+   OPE /: MakeBoxes[OPE, TraditionalForm] := "\[CapitalOmega]"
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

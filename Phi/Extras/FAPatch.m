@@ -20,7 +20,7 @@ BeginPackage["HighEnergyPhysics`Phi`FAPatch`", {"HighEnergyPhysics`FeynCalc`"}];
 
 
 FAPatch::"usage" = 
-    "If an unpatched copy of FeynArts is present in $FeynCalcDirectory, \
+    "If an unpatched copy of FeynArts is present in $FeynArtsDirectory, \
 evaluating FAPatch causes the files making up FeynArts to be modified in \
 order for FeynArts to be compatible with FeynCalc.";
 
@@ -33,6 +33,13 @@ rp should be a list of the form {string -> string, ..}.";
 Begin["`Private`"];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(*get the FeynCalc Contexts dynamically : *)
+fullFCContext[s_String] := Block[{$ContextPath},
+         ToString[HighEnergyPhysics`FeynCalc`MakeContext[s]]];
+
+fa2fc = (# -> (fullFCContext[#]))&/@ {
+"Loop", "PolarizationVector", "FeynAmp", "PropagatorDenominator", "GaugeXi", "NonCommutative"};
 
 (* Defaults *)
 
@@ -59,30 +66,25 @@ Options[FAPatch] = {
 
   (*The list of replacements*)
   (*Some regular expression utilities would be VERY nice...*)
-  Replace -> {
+
+  Replace -> Join[
+       {
       "InferFormat" -> "tmpInfer",
       "SetLoop" -> "tmpsetloop", 
-
-      "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose",
+      "CreateFeynAmp" -> "tmpcreatefeynamp", 
+      "$Verbose = 2" -> "$Verbose := " <> fullFCContext["$VeryVerbose"],
       "Format" -> "format1",
-      "Loop" -> "HighEnergyPhysics`FeynCalc`Loop`Loop", 
-      "PolarizationVector" -> "HighEnergyPhysics`FeynCalc`PolarizationVector`PolarizationVector",
-      "FeynAmp" -> "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmp",
-      "PropagatorDenominator" -> 
-        "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator", 
-      "GaugeXi" -> "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi", 
-      "NonCommutative" -> "HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative",
-      "GS" -> "Gstrong", 
-      "Global`DiracSpinor" -> 
-        "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
-      "FeynArts`DiracSpinor" -> 
-        "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
-      "Global`DiracTrace" -> 
-        "HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace",
+      "GS" -> "Gstrong"
+       }, fa2fc,
+      {
+      "Global`DiracSpinor" -> fullFCContext["DiracSpinor"],
+      "FeynArts`DiracSpinor" -> fullFCContext["DiracSpinor"],
+      "Global`DiracTrace" -> fullFCContext["DiracTrace"],
 
       "format1[Global`a, Global`c]" -> "Format[Global`a, Global`c]",
       "tmpInfer" -> "InferFormat",
       "tmpsetloop" -> "SetLoop", 
+
       "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr", 
       "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"", 
       "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD",
@@ -90,9 +92,9 @@ Options[FAPatch] = {
         "HighEnergyPhysics`FeynCalc`FeynAmpList`FeynAmpList",
       "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpDenominator" ->
         "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator",
-      "CreateHighEnergyPhysics`FeynCalc`FeynAmp`FeynAmp" ->
-        "CreateFeynAmp"
-  }
+      "tmpcreatefeynamp" -> "CreateFeynAmp"
+      }
+           ]
 };
 
 (*Error message*)
@@ -109,7 +111,7 @@ have cannot be handled by this program"]; Return[]];
 FilePatch[filename_, replacements_List] := 
 (
 (*Read and patch the file*)
-fname = $FeynCalcDirectory <> $PathnameSeparator <> filename;
+fname = ToFileName[{$FeynArtsDirectory}, filename];
 Print[fname]; str = ""; linelist = {}; foundrev = False; 
       strm = OpenRead[fname];
 While[ToString[str] != "EndOfFile", str = Read[strm, String]; str1 = str;
@@ -128,7 +130,7 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String]; str1 = str;
           If[str =!= str1, Print["Old: ", str, ", \nNew: ", str1]]; 
           linelist = Append[linelist, str1]]]; Close[strm];
 (*Write the file*)
-strm = OpenWrite[$FeynCalcDirectory <> $PathnameSeparator <> filename];
+strm = OpenWrite[fname, PageWidth -> Infinity];
 Do[WriteString[strm, linelist[[i]], "\n"], {i, 1, Length[linelist]}]; 
       Close[strm];
 );
@@ -138,15 +140,15 @@ FAPatch[opts___Rule] := (
 
 (*Check that files are there*)
 
-If[FileNames["FeynArts.m", $FeynCalcDirectory] === {}, $ok = False];
-If[FileNames["Setup.m", $FeynCalcDirectory] === {}, $ok = False];
+If[FileNames["FeynArts.m", $FeynArtsDirectory] === {}, $ok = False];
+If[FileNames["Setup.m", $FeynArtsDirectory] === {}, $ok = False];
 checkok;
 
 
 (*Check version number; must be >= 3*)
 
 $ok = False; str = ""; linelist = {}; strm = 
-  OpenRead[$FeynCalcDirectory <> $PathnameSeparator <> "FeynArts.m"];
+  OpenRead[ToFileName[{$FeynArtsDirectory}, "FeynArts.m"]];
 While[ToString[str] != "EndOfFile", str = Read[strm, String]; 
   If[StringMatchQ[ToString[str], "*FeynArts*Version*"], 
     Do[If[SyntaxQ[StringTake[str, -i]], 
@@ -155,11 +157,10 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String];
     If[num >= 3, $ok = True]]]; Close[strm];
 checkok;
 
-
 (*Check that patch has not already been applied*)
 
-str = ""; If[FileNames["FeynArts.m", $FeynCalcDirectory] =!= {}, 
-  strm = OpenRead[$FeynCalcDirectory <> $PathnameSeparator <> "FeynArts.m"];
+str = ""; If[FileNames["FeynArts.m", $FeynArtsDirectory] =!= {}, 
+  strm = OpenRead[$FeynArtsDirectory <> $PathnameSeparator <> "FeynArts.m"];
 While[ToString[str] != "EndOfFile", str = Read[strm, String]; 
     If[StringMatchQ[ToString[str], 
         "*Frederik Orellana*", 
@@ -174,8 +175,8 @@ If[$ok === True,
     If[StringMatchQ[
         test=ToString[
           Input["An installation of FeynArts has been found in " <>
-    StringReplace[ToString[$FeynCalcDirectory], {"\\" -> "\\\\", "\n" -> ""}] <>
-    ". I will now patch FeynArts to allow interoperation with FeynCalc. Continue (yes/no/abort)?"]],
+    StringReplace[ToString[$FeynArtsDirectory], {"\\" -> "\\\\", "\n" -> ""}] <>
+    ". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue (yes/no/abort)?"]],
         "yes", IgnoreCase -> True], Print["OK, starting.."], 
       Print["OK, no files have been modified."]; 
       If[StringMatchQ[test,"abort", IgnoreCase -> True],Abort[],Return[]]], 
@@ -189,7 +190,7 @@ cannot be handled by this program"]; Return[]];
 Print[ "Altering P$Generic in Setup.m.\n
 
    >Please check that this is actually done. If not, do it manually."];
-strm = OpenAppend[$FeynCalcDirectory <> $PathnameSeparator <> "Setup.m"];
+strm = OpenAppend[$FeynArtsDirectory <> $PathnameSeparator <> "Setup.m"];
 WriteString[strm,
 "\nP$Generic = Union[Flatten[P$Generic | $ParticleHeads]];\n
 P$NonCommuting =  Union[Flatten[P$NonCommuting | $FermionHeads]];\n
@@ -208,8 +209,8 @@ Close[strm];
 
 FilePatch["FeynArts" <> $PathnameSeparator <> "Analytic.m",
 {"F|U" -> "F | U", "F| U" -> "F | U", "F |U" -> "F | U", 
-"F | U" -> "F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads", 
-"F]" -> "F|HighEnergyPhysics`Phi`Objects`$FermionHeads]", 
+"F | U" -> "F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads", "F]" -> 
+"F|HighEnergyPhysics`Phi`Objects`$FermionHeads]", 
 "Global`DiracSpinor[*mom_*,*mass_*,*___*]*:=*FeynArts`Spinor[*mom*,*mass*]*;" -> 
 "", 
 "SequenceForm[StringTake[ToString[type], 3]" -> 
@@ -264,7 +265,7 @@ End[]",
    change to formatting in TraditionalForm only *)
 
 FilePatch["FeynArts.m", {"Print[*\"last revis*\"]" -> 
-"$1;\nPrint[\"patched for use with FeynCalc by Frederik Orellana\"];\n\n
+"$1;\nPrint[\"patched for use with FeynCalc by Frederik Orellana and Rolf Mertig\"];\n\n
 (*To avoid error messages on reload*)\n
 If[NumberQ[HighEnergyPhysics`FeynArts`$FeynArts],\n
 ClearAll[HighEnergyPhysics`FeynArts`Greek,HighEnergyPhysics`FeynArts`UCGreek],\n
@@ -272,8 +273,8 @@ Remove[HighEnergyPhysics`FeynArts`$FeynArts]];",
 "BeginPackage[\"FeynArts`\"]" -> 
 "BeginPackage[\"HighEnergyPhysics`FeynArts`\"];\n\nSetAttributes[SetForm, HoldAll];\nSetForm[Global`a_, Global`b_, Global`c_:TraditionalForm] := (Format[Global`a, Global`c] := Global`b;);\nformat1 /: SetDelayed[format1[Global`a_], Global`b_] := SetForm[Global`a, Global`b];\nformat1 /: Set[format1[Global`a_], Global`b_] := SetForm[Global`a, Global`b];\n\n",
 "LoadPackage*:=" -> 
-"If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory], $FeynArtsDir=HighEnergyPhysics`FeynCalc`$FeynCalcDirectory<>$PathnameSeparator,\n
-Remove[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]];\n\n$1",
+"If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory], $FeynArtsDir=HighEnergyPhysics`FeynCalc`$FeynArtsDirectory<>$PathnameSeparator,\n
+Remove[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]];\n\n$1",
 "F | S | V | U | SV" -> "F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$ParticleHeads"}];
 
 
@@ -293,9 +294,9 @@ Do[FilePatch[filelist[[i]], replacelist], {i, 1, Length[filelist]}];
 Print["Installing model files\n"];
 
 CopyFile[ToFileName[{$FeynCalcDirectory,"Phi","Extras"},"Automatic.gen"],
-         ToFileName[{$FeynCalcDirectory,"Models"},"Automatic.gen"]];
+         ToFileName[{$FeynArtsDirectory,"Models"},"Automatic.gen"]];
 CopyFile[ToFileName[{$FeynCalcDirectory,"Phi","Extras"},"Automatic.mod"],
-         ToFileName[{$FeynCalcDirectory,"Models"},"Automatic.mod"]];
+         ToFileName[{$FeynArtsDirectory,"Models"},"Automatic.mod"]];
 
 Print["\nFinished!\n"];
 

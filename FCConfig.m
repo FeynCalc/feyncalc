@@ -12,11 +12,15 @@ Format[Continuation[_], StringForm] := "";
 Format[Continuation[_]] := "";
 
 StringBreak[_] := "";
+(*
 SetOptions[ToString, PageWidth -> 67 ];
+*)
+SetOptions[ToString, PageWidth -> 137 ];
 
 Unprotect[SuperscriptBox];
 SuperscriptBox[FormBox[SubscriptBox[x_,y_],f_],z_] :=
 SubsuperscriptBox[x, y, z];
+
 
 (*
 
@@ -41,9 +45,13 @@ here in FCConfig.m
 (* Optional modules *)
 
 If[!ValueQ[$LoadTARCER], $LoadTARCER = True];
-If[!ValueQ[$LoadPhi], $LoadPhi = False];
-If[!ValueQ[$LoadFeynArts], $LoadFeynArts = False];
+If[!ValueQ[$LoadPhi], $LoadPhi = True];
+If[!ValueQ[$LoadFeynArts], $LoadFeynArts = True];
 
 (* $LoadTARCER = True; *)
 (* $LoadPhi = False; *)
 (* $LoadFeynArts = True; *)
+
+(*this should be the directory for your FeynArts installation *)
+HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/tmp/fa"
+

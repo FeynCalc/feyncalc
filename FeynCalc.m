@@ -334,6 +334,9 @@ built-in functions (like Dot) are changed.";
 $FortranContinuationCharacter::"usage"="$FortranContinuationCharacter \
 is the continuation character used in Write2.";
 
+$FortranFormatDoublePrecision::"usage"="If set to True
+FortranForm[2.] will give 2D0 and FortranForm[a/100] will give 1.D-2*a";
+
 $Gauge::"usage"=
 "$Gauge(= 1/xi) is a constant specifying the gauge fixing parameter of QED \
 in Lorentz gauge.  The usual choice is Feynman gauge, $Gauge=1. \
@@ -873,7 +876,7 @@ If[Global`$LoadFeynArts===True,
                   "Text"]],
       Print["Loading FeynArts "]
    ];
-   If[Get["FeynArts.m"]===$Failed,
+   If[Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]]===$Failed,
      If[$Notebooks===True,
 	CellPrint[Cell[TextData[{
 	  "FeynArts not found. Please put the files in\n",

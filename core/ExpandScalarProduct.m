@@ -50,9 +50,13 @@ ExpandScalarProduct[x_, y_ /;Head[y] =!= Rule] := scev[x, y];
 
 (* Catch Pair[LorentzIndex[mu], Momentum[a] + Momentum [b] +...].
    F.Orellana. 26/2-2003 *)
+(* simplify slightly, R. Merig, Sept. 13th 2003 *)
 extraMomRule = pair[lorentzindex[a__],
+               b : Plus[_. momentum[__], _. momentum[__]...]]  :>
+(*
                b : Plus[(___*momentum[__] | momentum[__]),
                         (___*momentum[__] | momentum[__]) ...]]  :>
+*)
                (pair[lorentzindex[a], #]& /@ b);
 
 pairexpand1[x_]:=  x /. pair->scevdoit /. extraMomRule;
