@@ -89,6 +89,20 @@ Dropped SUNF2.
 Changed option of SUNSimplify SUNTrace from True to False.
 Made SUNSimplify trace also term proportional to the identity matrix when SUNTrace is set to True.
 
+In FeynCalc.m: 
+   Added support for :> to OptionsSelect
+   Placed FDr and CDr in correct contexts.
+   Bugfixed check for integer arguments in SUND and SUNDeltaContract: Added ExplicitSUNIndex.
+   SUND: No longer set all SUND[a,a,b] to 0 if a is not an integer, only when a has head SUNIndex.
+
+In DiracSimplify.m:
+   Defined print1, print2, print3
+
+In OneLoop.m:
+   Changed a few debug printing statements.
+   Fixed SumOver to comply with FeynArts 3.
+
+
 PHI:
    As far as possible dropped using explicit contexts, use MakeContext instead.
    Small fix of ArgumentsSupply.
@@ -106,6 +120,50 @@ PHI:
    DiracSlash.
    End all usage difinitions with a full stop.
    Changed Dot to DOT.
+   In Objects.m:
+      Dropped RemoveIntegerIndices.
+      Changed to have head ExplicitSUNIndex on integers (instead of nothing) in compliance with FeynCalc.
+      setLeftRightComponents fixed to have Explicit in right context.
+      Fixed bug in WriteOutUMatrices causing NM[a[x], UMatrix[b]] + UMatrix[UIdentity] not to work
+      (reported by P.Buettiker).
+      Fixed bug in UIndicesSupply, putting DOT in correct context.
+   In Utilities.m: 
+      Added support for WFFactor in DiscardOrders (Don't discard if order is not known).
+      MandelstamReduce now has renormalized masses as default.
+      Added first sketch of PhiToLaTeX.
+   In Palettes.m:
+      LoadLagrangian now keeps lagrangians given as strings in context Global`
+      (instead of HighEnergyPhysics`Phi`Objects`).
+   In Renormalization.m:
+      Fixed small bug causing LeutwylerJBar causing problem with LeutwylerSigma.
+      Readded C0Evaluation -> "none", D0Evaluation -> "none" to Options[VeltmanExpand].
+   In Couplings.m
+      Added PhiModel as option of WFFactor, PMFactor, DCFactor.
+      Added Drop as option of DoSumOver.
+      Fixed problem with FCToFA causing possible substitution of multiple pairs of identical indices in a product
+      Added DiracSlash to FCToFA.
+      Dropped Projection in FCToFA, since RemoveIntegerIndices has been dropped.
+      Fixed bug in XName causing existing coupling vectors not to be found.
+      Fixed bug in VerticesSpecifications. Multiple order of a coupling are now correctly merged into
+      e.g. one coupling with orders {2, 4} instead of two couplings. (orderJoin).
+      Fixed problem with DiscardCT and FeynArts 3.
+      Fixed bug in FixCouplingIndices. SUNDelta, SUND and SUNF are now also supported in coupling vectors.
+      Updated DoSumOver to comply with FeynArts 3.
+      Improved WFFactor, DCFactor and PMFactor to behave better if a file is not there.
+      DCRenormalize now correctly uses the inverse factor.
+   In Channels.m
+      Dropped RemoveIntegerIndices  and Projection.
+      Fixed bug with SU2F in SUNReduce.
+      Added support for ExplicitSUNIndex.
+   In PhiStart.m
+      Dropped RemoveIntegerIndices.
+      Switched to UNablaHatDelta with "scalar weak source", remember to switch back if
+      vectors or axial-vectors are needed.
+   In ChPTW34.m
+      Bugfix: Missing comma in N29.
+   ChPTW32.m
+      Bugfix: Typo (QuantumField` instead of QuantumField).
+
 
 ------------------------------------------------------------------------------------
 CHANGELOG version 4.1.0.2 -> 4.1.1
