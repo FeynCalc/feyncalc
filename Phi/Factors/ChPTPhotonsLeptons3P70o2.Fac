@@ -2,12 +2,7 @@
    (-1 + 16*Pi^2*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
       ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2, 
       SmallVariable[ParticleMass[Vector[1], RenormalizationState[0]]]^2, 
-      LeutwylerJBarEvaluation -> "none", ExplicitLeutwylerJ0 -> True, 
-      Dimension -> D, MassScale -> ScaleMu, 
-      ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> False, 
-       ExpandGammas -> True, DimensionExpand -> False, 
-      FixPoint -> 0, TaylorOrder -> 2, B0Evaluation -> Direct1, 
-      FCIntegrate -> IntegrateHeld])*(Pair[Momentum[p1], Momentum[p1]] + 
+      LeutwylerJBarEvaluation -> "none"])*(Pair[Momentum[p1], Momentum[p1]] + 
     ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2) + 
   ((Pair[Momentum[p1], Momentum[p1]] - ParticleMass[PseudoScalar[7], 
        RenormalizationState[0]]^2)*
