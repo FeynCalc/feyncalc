@@ -103,29 +103,56 @@ getprops[z_] :=
          QuarkPropagator[__] | GluonPropagator[__], -1], 
           {a_, ___} :> a, 1]], Length[#1] < Length[#2] & ]; 
 
+(* 1-loop selfenergy *)
+shift[amps_, q_, p_] := 
+ Switch[getprops[amps], 
+  {q, q + p},                               (# /. q -> q - p)&,
+  {q, -q - p},                               (# /. q -> -q)&,
+  _, Identity][amps];
+
 shift[amps_, q1_, q2_, p_] := 
  Switch[getprops[amps], 
 (* gluon self energy *)
-  {q2, q1, p - q1 - q2},                    (# /. q1 -> q1 + p /. q1 -> -q1)&,
+  {q2, q1, - p - q1 - q2},                  (# /. q1 -> q1 - p /. q1 -> -q1)&,
   {q1, q1 + q2, -q2, -q1 - q2},             (# /. q2 -> -q2)&,
-  {-q2, -q1, -p - q1, p + q1 - q2},         (# /. q2 -> -q2 + p /. q1 -> -q1)&,
-  {q2, q1, p - q2, -p - q1},                (# /. q1 -> -q1 ) &,
-  {q2, q1, -q1 - q2, -p + q1},              (# /. q2 -> -q2)&,
-  {q2, q1, -q1 - q2, p + q1},               (# /. q1 -> -q1)&,
+  {-q2, -q1, p - q1, -p + q1 - q2},         (# /. q2 -> -q2 - p /. q1 -> -q1)&,
+  {q2, q1, -p - q2, p - q1},                (# /. q1 -> -q1 ) &,
+  {q2, q1, -q1 - q2, p + q1},               (# /. q2 -> -q2)&,
+  {q2, q1, -q1 - q2, -p + q1},              (# /. q1 -> -q1)&,
   {q2, q1, q1 + q2, -q1 - q2},              (# /. q2 -> -q2)&,
-  {q1, -q2, -q1 - q2, -p - q2, p - q1},     (# /. q2 -> -q2)&,
-  {q1, q1 + q2, -q2, -p - q2, -p + q1},     (# /. q2 -> -q2)&,
-  {q2, q1, p + q1, -p - q1, p + q1 - q2},   (# /. q2 -> -q2 + p /. q1 -> -q1 )&,
-  {q2, q1, p + q1, -p - q1, -p - q1 + q2},  (# /. q2 -> -q2 + p /. q1 -> -q1 )&,
-  {q2, q1, q1 + q2, -p - q2, p - q1},       (# /. q2 -> -q2)&,
-  {q2, -q1 - q2, -p - q2, -q1, p - q1},     (# /. q2 -> -q2)&,
+  {q1, -q2, -q1 - q2, p - q2, -p - q1},     (# /. q2 -> -q2)&,
+  {q1, q1 + q2, -q2, p - q2, p + q1},       (# /. q2 -> -q2)&,
+  {q2, q1, -p + q1, p - q1, -p + q1 - q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
+  {q2, q1, -p + q1, p - q1,  p - q1 + q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
+  {q2, q1, q1 + q2,  p - q2, -p - q1},      (# /. q2 -> -q2)&,
+  {q2, -q1 - q2, p - q2, -q1, -p - q1},     (# /. q2 -> -q2)&,
+  {q2, q1 - q2, -p - q1},                   (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, q1 - q2, -p - q1},               (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q1, q1 - q2, -p - q2, p + q1, -p - q1},  (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q1, -q1 + q2, -p - q2, p + q1, -p - q1}, (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, p + q2, q1 - q2, -p - q1},       (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, -q1 + q2, p + q2, -p - q1},      (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, -q1 + q2, p + q2, -q1, -p - q1},     (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, -p - q2, p + q1},                (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q1, q1 - q2, -p - q2, p + q1, -p - q1},  (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q1, -q1 + q2, -p - q2, p + q1, -p - q1}, (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q1, -q1 + q2, p + q2, p + q1},           (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, p + q2, q1 - q2, p + q1},        (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q1, -q1 + q2, p + q2, p + q1},           (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, -q1 + q2, p + q1},               (# /. q2 -> -q2 /. q1 -> -q1)&,
+  {q2, q1, p + q2, q1 - q2, p + q1},        (# /. q2 -> -q2 /. q1 -> -q1)&,
 (* ghost self energy *)
-  {q2, q1, q1 + q2, p + q2, p - q1},        (# /. q2 -> -q2)&,
-  {q1, q1 + q2, -q2, -p - q2, p - q1},      (# /. q2 -> -q2)&,
-  {q2, p + q1, -q1, -p - q1, -p - q1 + q2}, (# /. q2 -> -q2 + p /. q1 -> -q1 )&,
-  {q2, q1, p + q1, p + q1 - q2},            (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
-  {q2, p + q1, -q1, -p - q1, p + q1 - q2},  (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
-  {q2, p, p - q2, -q1, -p - q1},            (# /. q1 -> -q1 )&,
+  {q1, -q1 + q2, -q2, -p - q2, -p - q1},    (# /. q2 -> -q2 /. q1-> -q1)&,
+  {q2, q1, q1 - q2, -p -q2, -p - q1},       (# /. q2 -> -q2 /. q1-> -q1)&,
+  {q2, -p - q2, -q1, p - q1, -p},           (# /. q2 -> -q2 )&,
+
+  {q1, -q1 + q2, -p - q2, -p - q1},         (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+  {q2, q1, -p + q1, -p + q1 - q2},          (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+  {q1, q1 + q2, -q2, p - q2, -p - q1},      (# /. q2 -> -q2)&,
+  {q2, q1, q1 + q2, -p + q2, -p - q1},      (# /. q2 -> -q2)&,
+  {q2, -p + q1, -q1, p - q1, -p + q1 - q2}, (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+  {q2, -p + q1, -q1, p - q1, p - q1 + q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
+  {q2, q1, q1 - p, -p + q1 - q2},           (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
   _, Identity][amps];
 
 shift[x_, __] := x;
@@ -134,10 +161,10 @@ NonCommutative[a___, 1, b___] := NonCommutative[a, b];
 
 M$LastGenericRules = {
 
-(* energy momentum conservation for self energies *)
-FeynAmp[grid_, Integral[q1_FourMomentum, q2_FourMomentum], amp_ ]:>
-     FeynAmp[grid, Integral[q1, q2],
-             amp /. FourMomentum[Outgoing, 1] :> -FourMomentum[Incoming, 1]
+(* energy momentum conservation for n-loop self energies *)
+FeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
+     FeynAmp[grid, Integral[q],
+             amp /. FourMomentum[Outgoing, 1] :> FourMomentum[Incoming, 1]
             ] /; 
              (Union[Flatten@{FourMomentum[Incoming,1], Cases[amp, FourMomentum[Incoming, _], -1]}
                    ] === {FourMomentum[Incoming, 1]}
@@ -146,12 +173,15 @@ FeynAmp[grid_, Integral[q1_FourMomentum, q2_FourMomentum], amp_ ]:>
 
 FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
 
-FeynAmp[grid_, Integral[qq__Symbol], amp_ ]:>
-     FeynAmp[grid, Integral[q], 
+FeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
+     FeynAmp[grid, Integral[qq], 
 (*
              shift[#, qq,Sequence@@Union[Cases[amp, FourMomentum[Incoming,_],-1]] ]& @
 *)
              shift[#, qq, p1 ]& @
+((*
+Global`AMP=
+*)
             (
              amp /. MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy] ] /.
                     G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
@@ -181,6 +211,7 @@ FeynAmp[grid_, Integral[qq__Symbol], amp_ ]:>
                    PolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
                    Conjugate[PolarizationVector][p, k, li]
              )
+)
             ]
 }
 
