@@ -52,7 +52,14 @@ GhostPropagator[pi_, ai_, bi_, opts___?OptionQ] := Block[
        glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
               SUNDelta[a, b];
    glp] /; (Explicit /. {opts} /. Options[GhostPropagator]) === True;
- 
+
+GhostPropagator /:
+   MakeBoxes[GhostPropagator[p_,a_,b_],
+             TraditionalForm
+            ] := RowBox[{SuperscriptBox["G", Tbox[a,b]],
+                        "(", Tbox[p], ")"
+                        }];
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "GhostPropagator | \n "]];

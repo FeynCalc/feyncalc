@@ -89,6 +89,13 @@ re = QCDFeynmanRuleConvention[GluonGhostVertex] re;
    re] /; (Explicit /. {opt} /. Options[GluonGhostVertex]) === True  ;
 
 GluonGhostVertex /:
+   MakeBoxes[GluonGhostVertex[p3_,mu3_],
+             TraditionalForm
+            ] := RowBox[{SuperscriptBox[OverscriptBox["\[CapitalLambda]","~"],
+                         Tbox[mu3]],
+                        "(", Tbox[p3], ")"
+                        }];
+GluonGhostVertex /:
    MakeBoxes[GluonGhostVertex[{p1_,mu1_},{p2_,mu2_},{p3_,mu3_}],
              TraditionalForm
             ] := RowBox[{SuperscriptBox[OverscriptBox["\[CapitalLambda]","~"],

@@ -196,14 +196,14 @@ I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
    glp]/; (Explicit /. {opt} /. Options[GluonVertex])===True;
 
 GluonPropagator /:
-   MakeBoxes[GluonPropagator[p_,{mu_,a_},{nu_,b_}],
+   MakeBoxes[GluonPropagator[p_,{mu_,a_},{nu_,b_}, ___?OptionQ],
              TraditionalForm
             ] := RowBox[{SubsuperscriptBox["\[CapitalPi]",Tbox[a,b], Tbox[mu,nu]],
                         "(", Tbox[p], ")"
                         }];
 
 GluonPropagator /:
-   MakeBoxes[GluonPropagator[p_,{mu_},{nu_}],
+   MakeBoxes[GluonPropagator[p_,{mu_},{nu_}, ___?OptionQ],
              TraditionalForm
             ] := RowBox[{SuperscriptBox["\[CapitalPi]", Tbox[mu,nu]],
                         "(", Tbox[p], ")"
