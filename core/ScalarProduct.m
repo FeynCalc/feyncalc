@@ -1,5 +1,4 @@
 (* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: for scalar products *)
 
@@ -15,7 +14,8 @@ Expansion of sums of momenta in ScalarProduct is done with
 ExpandScalarProduct. Scalar products may be set, e.g.
 ScalarProduct[a, b] = m^2; but a and b may not contain sums.
 Note that ScalarProduct[a, b] = m^2 actually sets also:
-Pair[Momentum[a, ___], Momentum[b, ___]] = m^2.
+Pair[Momentum[a, ___], Momentum[b, ___]] = m^2 and
+SPD[a,b] = m^2 and SP[a,b]=m^2.
 It is enouraged to always set ScalarProduct's BEFORE any
 calculation. This improves the performance of FeynCalc .";
 
@@ -23,7 +23,7 @@ calculation. This improves the performance of FeynCalc .";
 
 Begin["`Private`"];
 
-MakeContext[ ChangeDimension, Dimension];
+MakeContext[ ChangeDimension, Dimension, SP, SPD];
 fci := fci = MakeContext["FeynCalcInternal"];
 nf  := nf = MakeContext["NumericalFactor"];
 
@@ -51,7 +51,10 @@ If[FreeQ[a, Pattern], ste = fci[ScalarProduct[a, b, c]];
       If[(Head[a] === Pattern) && (a === b),
          (SetDelayed @@ {ste, ScalarProduct[a[[1]], a[[1]]]})
          ,
-         Set@@{ste/nf[ste], z / nf[ste]}
+         Set@@{ste/nf[ste], z / nf[ste]};
+(* addition Sept. 2003, RM*)
+         SPD[a,b] = z;
+         SP[a,b] = z;
         ];
  If[(nf[a] === 1) && (nf[b] === 1), rst = z,
     If[(a =!= 0) && (b =!= 0),
