@@ -24,6 +24,7 @@ GluonPropagator::"usage" =
 yields the gluon propagator. 
 GluonPropagator[p, {mu}, {nu}] or
 GluonPropagator[p, mu, nu] omits the SUNDelta.
+Using {p,M} instead of p as the first argument gives the Gluon a mass.
 The gauge and the dimension 
 is determined by the option Gauge and Dimension. 
 The following settings of Gauge are possible: 
@@ -88,14 +89,19 @@ GluonPropagator[pi_, mu_, nu_, opt___Rule] := GluonPropagator[pi, {mu}, {nu}]/;
 
 GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt___Rule] := 
 Block[
-{gauge, dim, p, mu, nu, a, b, glp,n,ope, opepart, mud, nud, ad, 
+{gauge, gluemass, dim, p, mu, nu, a, b, glp,n,ope, opepart, mud, nud, ad, 
  bd, sundelta, p2, cou, gst, gmunu, pmu, pnu},
  gauge  = Gauge /. {opt} /. Options[GluonPropagator];
  dim    = Dimension /. {opt} /. Options[GluonPropagator];
  ope    = OPE /. {opt} /. Options[GluonPropagator];
  cou    = CounterTerm /. {opt} /. Options[GluonPropagator];
  gst    = CouplingConstant /. {opt} /. Options[GluonPropagator];
+ If[Head[pi]===List,
+      p = Momentum[pi[[1]], dim];
+      gluemass= pi[[2]],
       p = Momentum[pi, dim];
+      gluemass= 0;
+   ];
      mu = LorentzIndex[mui, dim];
      nu = LorentzIndex[nui, dim];
       If[Length[{ai}] === Length[{bi}] === 1,
@@ -166,7 +172,7 @@ If[Head[gauge] === List,
    n = gauge[[1]];
    If[FreeQ[n, Momentum], n = Momentum[n, dim]];
    glp = 
-I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
+I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
               sundelta * (- Pair[mu, nu] +
                                   (Pair[n, mu] Pair[p,nu] + 
                                    Pair[p, mu] Pair[n,nu]
@@ -179,11 +185,11 @@ I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
                           )
        ,
   
-   glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
+   glp  = I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
               sundelta * (- Pair[mu, nu] + 
                                  (1-gauge) Pair[p, mu] Pair[p, nu] *
              MomentumExpand[
-              FeynAmpDenominator[PropagatorDenominator[p, 0]]]
+              FeynAmpDenominator[PropagatorDenominator[p, gluemass]]]
                                );
   ];
   ]];
@@ -196,7 +202,13 @@ GluonPropagator /:
                         "(", Tbox[p], ")"
                         }];
 
- 
+GluonPropagator /:
+   MakeBoxes[GluonPropagator[p_,{mu_},{nu_}],
+             TraditionalForm
+            ] := RowBox[{SuperscriptBox["\[CapitalPi]", Tbox[mu,nu]],
+                        "(", Tbox[p], ")"
+                        }];
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "GluonPropagator | \n "]];

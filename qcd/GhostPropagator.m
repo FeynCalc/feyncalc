@@ -17,11 +17,7 @@ GHP::"usage" =
 "GHP is equivalent to GhostPropagator.";
 
 GhostPropagator::"usage" = 
-"GhostPropagator[p, a, b] or
- GhostPropagator[p,  {any, a} ,  {anyy, b} ] or
- GhostPropagator[p,  any, a ,  anyy, b] or
-yields the  ghost
-propagator.";
+"GhostPropagator[p, a, b] gives the  ghost propagator.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -29,6 +25,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+Explicit,
 Momentum,
 FeynAmpDenominator,
 PropagatorDenominator,
@@ -37,29 +34,24 @@ SUNIndex   ];
 
 GHP = GhostPropagator;
 
+Options[GhostPropagator] = {Explicit -> False};
+
 {l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
 
 GhostPropagator[x___, i_Integer, y___] := 
-GhostPropagator[x, l[i], c[i], y];
+GhostPropagator[x, c[i], y];
 
-GhostPropagator[a_/;Head[a]=!=Integer, 
-                b_/;Head[b]=!=Integer,
-                c_/;Head[c]=!=Integer] := 
-GhostPropagator[a,  {Null, b}, {Null,c}];
+GhostPropagator[p_, opts___?OptionQ] := 
+   (I FeynAmpDenominator[PropagatorDenominator[p, 0]]) /; 
+ 	(Explicit /. {opts} /. Options[GhostPropagator]) === True;
 
-GhostPropagator[a_, b_,c_, d_,e_] := GhostPropagator[a, {b,c}, {d,e}];
-
-GhostPropagator[p_] := I FeynAmpDenominator[PropagatorDenominator[p, 0]];
-
-GhostPropagator[pi_, {_,  ai_}, {_, bi_}] := Block[
+GhostPropagator[pi_, ai_, bi_, opts___?OptionQ] := Block[
 {p, a, b, glp},
       p = Momentum[pi];
-      a = SUNIndex[ai];
-      b = SUNIndex[bi];
-
+      a = SUNIndex[ai]; b = SUNIndex[bi];
        glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]] *
               SUNDelta[a, b];
-   glp];
+   glp] /; (Explicit /. {opts} /. Options[GhostPropagator]) === True;
  
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

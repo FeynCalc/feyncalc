@@ -41,6 +41,7 @@ DeclareNonCommutative,
 Dimension,
 DiracGamma,
 Epsilon,
+Explicit, 
 Gstrong,
 LorentzIndex,
 OPE,
@@ -57,9 +58,13 @@ Options[QuarkGluonVertex] = {
                               CounterTerm -> False,
                               CouplingConstant -> Gstrong,
                               Dimension -> D, 
+                              Explicit -> False,
                               OPE -> False,
                               Polarization -> 0
                             };
+DeclareNonCommutative[QuarkGluonVertex];
+DeclareNonCommutative[QGV];
+
 QGV = QuarkGluonVertex;
 
 {l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
@@ -106,7 +111,13 @@ Block[
       If[coun === False,
          gl3v = gl3v + I coup DOT[SUNT[a], DiracGamma[mu, dim]]
         ];
-  gl3v] /; FreeQ[Union[Map[Head, {mui,ai}]], Integer];
+  gl3v] /; (Explicit /. {opt} /. Options[QuarkGluonVertex]) && 
+           FreeQ[Union[Map[Head, {mui,ai}]], Integer];
+
+QuarkGluonVertex /:
+   MakeBoxes[QuarkGluonVertex[{p1_,mu1_, a_},{p2_,mu2_,b_},{p3_,mu3_,c_}, ___],
+             TraditionalForm
+            ] := SubsuperscriptBox["Q",Tbox[a], Tbox[mu1] ]
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
