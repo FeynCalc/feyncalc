@@ -315,7 +315,6 @@ If[!FreeQ[diractrny, DiracGamma],
                                      DiracCanonical->False
                     ]
   ];
-Global`D1=diractrny;
 
 If[$VeryVerbose > 1, Print["CH2"]; Print[TimeUsed[]]];
    If[!FreeQ[diractrny, LorentzIndex],
