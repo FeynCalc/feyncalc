@@ -45,7 +45,7 @@ Begin["`Private`"];
 
 
 
-(* LoadConfiguration is called in Phi.m *)
+(* LoadConfiguration is called in PhiStart.m *)
 
 LoadConfiguration["None"] := Null;
 LoadConfiguration[None] := Null;
@@ -58,7 +58,7 @@ LoadConfiguration[conf_] :=
       SetDirectory["Phi"]; 
       SetDirectory["Configurations"];
       VerbosePrint[3, "Loading configuration ", conf];
-      $Configuration = conf;
+      Global`$Configuration = conf;
       $PaletteConfiguration = conf;
       (* Set context for the name of the configuration *)
       Evaluate[ToExpression["HighEnergyPhysics`Phi`Objects`"<>conf]];
@@ -204,9 +204,18 @@ LoadLagrangian[fn_] /; Depth[fn] == 1 :=
       VerbosePrint[3, "Storing current directory ", olddir]; 
       SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
       SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"]; 
-      SetDirectory["Lagrangians"]; Get[ToString[fn] <> ".m"]; 
+      SetDirectory["Lagrangians"];
+       (*Allow using strings. 6.4.2002*)
+      VerbosePrint[3,
+       "Putting the following in context HighEnergyPhysics`Phi`Objects`: ",
+        Global`$Lagrangians//FullForm];
+      Global`$Lagrangians =
+        Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#]] & /@ Global`$Lagrangians];
+      VerbosePrint[3,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
+      Get[ToString[fn] <> ".m"]; 
       VerbosePrint[3, "Resetting to directory ", olddir]; 
-      SetDirectory[olddir];FAUpdate;];
+      SetDirectory[olddir];
+      FAUpdate;];
 
 LoadLagrangian[fn_] /; Depth[fn] == 2 := 
     Block[{olddir}, olddir = Directory[]; 
@@ -215,10 +224,18 @@ LoadLagrangian[fn_] /; Depth[fn] == 2 :=
       SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"]; 
       SetDirectory["Lagrangians"]; 
       (*Get[StringDrop[ToString[fn], -3] <> *) (*Change 17/9-2000*)
-      Get[ToString[ToExpression[ToString[fn]][[0]]] <> 
+       (*Allow using strings. 6.4.2002*)
+      VerbosePrint[3,
+       "Putting the following in context HighEnergyPhysics`Phi`Objects`: ",
+        Global`$Lagrangians//FullForm];
+      Global`$Lagrangians =
+        Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#[[0]]]][#[[1]]] & /@ Global`$Lagrangians];
+      VerbosePrint[3,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
+     Get[ToString[ToExpression[ToString[fn]][[0]]] <> 
           ToString[ToExpression[ToString[fn]][[1]]] <> ".m"]; 
       VerbosePrint[3, "Resetting to directory ", olddir]; 
-      SetDirectory[olddir];FAUpdate;];
+      SetDirectory[olddir];
+      FAUpdate;];
 
 LoadLagrangian[fn__] /; Length[{fn}]>1 := (LoadLagrangian /@ {fn};);
 

@@ -1,7 +1,7 @@
 {FAFourVector[p2, \[Mu]3]*MomentaScalarProduct[p1, p3]*
-  UCouplingConstant[QED[1], RenormalizationState[0]], 
+  CouplingConstant[QED[1], RenormalizationState[0]], 
  FAFourVector[p1, \[Mu]3]*MomentaScalarProduct[p2, p3]*
-  UCouplingConstant[QED[1], RenormalizationState[0]], 
- FAFourVector[p1, \[Mu]3]*UCouplingConstant[QED[1], RenormalizationState[0]]^
-   3, FAFourVector[p2, \[Mu]3]*UCouplingConstant[QED[1], 
+  CouplingConstant[QED[1], RenormalizationState[0]], 
+ FAFourVector[p1, \[Mu]3]*CouplingConstant[QED[1], RenormalizationState[0]]^
+   3, FAFourVector[p2, \[Mu]3]*CouplingConstant[QED[1], 
     RenormalizationState[0]]^3}

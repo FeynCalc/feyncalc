@@ -1,292 +1,292 @@
-{{(2*UCouplingConstant[ChPTW3[2], 1]*UCouplingConstant[ChPTW3[4], 20]*
+{{(2*CouplingConstant[ChPTW3[2], 1]*CouplingConstant[ChPTW3[4], 20]*
     (UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
        UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]] + 
      UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
        UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]]))/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3}, 
- {(UCouplingConstant[ChPTW3[2], 1]*(UCouplingConstant[ChPTW3[4], 20] - 
-     UCouplingConstant[ChPTW3[4], 26])*
+ {(CouplingConstant[ChPTW3[2], 1]*(CouplingConstant[ChPTW3[4], 20] - 
+     CouplingConstant[ChPTW3[4], 26])*
     (UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
        UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]] + 
      UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
        UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]]))/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3}, 
- {(UCouplingConstant[ChPTW3[2], 1]*(UCouplingConstant[ChPTW3[4], 20] + 
-     UCouplingConstant[ChPTW3[4], 26])*
+ {(CouplingConstant[ChPTW3[2], 1]*(CouplingConstant[ChPTW3[4], 20] + 
+     CouplingConstant[ChPTW3[4], 26])*
     (UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
        UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]] + 
      UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
        UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]]))/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3}, 
- {-(UCouplingConstant[ChPTW3[2], 1]*(6*UCouplingConstant[ChPTW3[4], 24]*
+ {-(CouplingConstant[ChPTW3[2], 1]*(6*CouplingConstant[ChPTW3[4], 24]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[3]], 
          UMatrix[UGenerator[I2]]]]*UTrace1[FANonCommutative[
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]] + 
-      2*UCouplingConstant[ChPTW3[4], 24]*UTrace1[FANonCommutative[
+      2*CouplingConstant[ChPTW3[4], 24]*UTrace1[FANonCommutative[
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]]*
        (Sqrt[3]*UTrace1[FANonCommutative[UMatrix[UGenerator[8]], 
            UMatrix[UGenerator[I2]]]] + 
         3*UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
            UMatrix[UGenerator[3]]]] + Sqrt[3]*UTrace1[FANonCommutative[
            UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]]]]) - 
-      2*UCouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
+      2*CouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[I2]]]] - 4*UCouplingConstant[ChPTW3[4], 23]*
+         UMatrix[UGenerator[I2]]]] - 4*CouplingConstant[ChPTW3[4], 23]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]] - 
-      4*UCouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
+      4*CouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[I1]]]] - 2*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[I1]]]] - 2*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]] + 
-      3*UCouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
+      3*CouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
          UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]] + 
-      6*UCouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
+      6*CouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
          UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]] + 
-      Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+      Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[8]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[8]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[I1]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[I1]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[3]], 
-         UMatrix[UGenerator[I2]]]] + 6*UCouplingConstant[ChPTW3[4], 23]*
+         UMatrix[UGenerator[I2]]]] + 6*CouplingConstant[ChPTW3[4], 23]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[3]], 
-         UMatrix[UGenerator[I2]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[I2]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[8]], 
-         UMatrix[UGenerator[I2]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[I2]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[8]], 
-         UMatrix[UGenerator[I2]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[I2]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[3]]]] + 6*UCouplingConstant[ChPTW3[4], 23]*
+         UMatrix[UGenerator[3]]]] + 6*CouplingConstant[ChPTW3[4], 23]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[3]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[3]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[8]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[8]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-         UMatrix[UGenerator[8]]]] + 6*UCouplingConstant[ChPTW3[4], 21]*
+         UMatrix[UGenerator[8]]]] + 6*CouplingConstant[ChPTW3[4], 21]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[3]], 
-         UMatrix[UGenerator[I1]]]] + 6*UCouplingConstant[ChPTW3[4], 23]*
+         UMatrix[UGenerator[I1]]]] + 6*CouplingConstant[ChPTW3[4], 23]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[3]], 
-         UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         21]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]], 
-         UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]], 
-         UMatrix[UGenerator[I1]]]] - 6*UCouplingConstant[ChPTW3[4], 21]*
+         UMatrix[UGenerator[I1]]]] - 6*CouplingConstant[ChPTW3[4], 21]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[3]]]] - 3*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[3]]]] - 3*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[3]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[3]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         21]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[8]]]] - Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[8]]]] - Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[8]]]] - 6*UCouplingConstant[ChPTW3[4], 21]*
+         UMatrix[UGenerator[8]]]] - 6*CouplingConstant[ChPTW3[4], 21]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
-         UMatrix[UGenerator[I1]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[I1]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
-         UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         21]*UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[8]], 
-         UMatrix[UGenerator[I1]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[I1]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[8]], 
-         UMatrix[UGenerator[I1]]]] + 6*UCouplingConstant[ChPTW3[4], 21]*
+         UMatrix[UGenerator[I1]]]] + 6*CouplingConstant[ChPTW3[4], 21]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[3]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[3]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[3]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+         UMatrix[UGenerator[3]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
         21]*UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-         UMatrix[UGenerator[8]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+         UMatrix[UGenerator[8]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
        UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
          UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
          UMatrix[UGenerator[8]]]]))/
    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {(UCouplingConstant[ChPTW3[2], 1]*(6*UCouplingConstant[ChPTW3[4], 24]*
+ {(CouplingConstant[ChPTW3[2], 1]*(6*CouplingConstant[ChPTW3[4], 24]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[3]], 
         UMatrix[UGenerator[I2]]]]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]] - 
-     2*UCouplingConstant[ChPTW3[4], 24]*UTrace1[FANonCommutative[
+     2*CouplingConstant[ChPTW3[4], 24]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]]*
       (Sqrt[3]*UTrace1[FANonCommutative[UMatrix[UGenerator[8]], 
           UMatrix[UGenerator[I2]]]] - 
        3*UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
           UMatrix[UGenerator[3]]]] + Sqrt[3]*UTrace1[FANonCommutative[
           UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]]]]) + 
-     2*UCouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
+     2*CouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[I2]]]] + 4*UCouplingConstant[ChPTW3[4], 23]*
+        UMatrix[UGenerator[I2]]]] + 4*CouplingConstant[ChPTW3[4], 23]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]] + 
-     4*UCouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
+     4*CouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I1]]]] + 2*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] + 2*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]] + 
-     3*UCouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
+     3*CouplingConstant[ChPTW3[4], 22]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]] + 
-     6*UCouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
+     6*CouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]]]] - 
-     Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+     Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[8]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[8]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I1]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[3]], 
-        UMatrix[UGenerator[I2]]]] + 6*UCouplingConstant[ChPTW3[4], 23]*
+        UMatrix[UGenerator[I2]]]] + 6*CouplingConstant[ChPTW3[4], 23]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[3]], 
-        UMatrix[UGenerator[I2]]]] - Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I2]]]] - Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I2]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I2]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I2]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I2]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[3]]]] + 6*UCouplingConstant[ChPTW3[4], 23]*
+        UMatrix[UGenerator[3]]]] + 6*CouplingConstant[ChPTW3[4], 23]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[3]]]] - Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[3]]]] - Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[8]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 23]*
+        UMatrix[UGenerator[8]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 23]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[8]]]] + 6*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[8]]]] + 6*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[3]], 
-        UMatrix[UGenerator[I1]]]] + 6*UCouplingConstant[ChPTW3[4], 23]*
+        UMatrix[UGenerator[I1]]]] + 6*CouplingConstant[ChPTW3[4], 23]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[3]], 
-        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        21]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] - 6*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[I1]]]] - 6*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[3]]]] - 3*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[3]]]] - 3*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[3]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[3]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[8]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[8]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[8]]]] - 6*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[8]]]] - 6*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
-        UMatrix[UGenerator[I1]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[3]], 
-        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        21]*UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] - Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] - Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] + 6*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[I1]]]] + 6*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[3]]]] + 3*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[3]]]] + 3*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[3]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[3]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[8]]]] - Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[8]]]] - Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
         UMatrix[UGenerator[8]]]]))/
    (6*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}, 
- {(UCouplingConstant[ChPTW3[2], 1]*
-    (2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 24]*
+ {(CouplingConstant[ChPTW3[2], 1]*
+    (2*Sqrt[3]*CouplingConstant[ChPTW3[4], 24]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]]]]*
       (UTrace1[FANonCommutative[UMatrix[UGenerator[8]], 
          UMatrix[UGenerator[I2]]]] + UTrace1[FANonCommutative[
          UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]]]]) + 
-     (UCouplingConstant[ChPTW3[4], 22] + 2*UCouplingConstant[ChPTW3[4], 23])*
+     (CouplingConstant[ChPTW3[4], 22] + 2*CouplingConstant[ChPTW3[4], 23])*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]]]] + 
-     2*UCouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
+     2*CouplingConstant[ChPTW3[4], 23]*UTrace1[FANonCommutative[
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I1]]]] + UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] + CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]]]] + 
-     Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+     Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[8]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[8]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[I1]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I2]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I2]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I2]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I2]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[8]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 23]*
+        UMatrix[UGenerator[8]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 23]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I1]], UMatrix[UGenerator[I2]], 
-        UMatrix[UGenerator[8]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[8]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        23]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        21]*UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[8]]]] - Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[8]]]] - Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[6]], 
         UMatrix[UGenerator[I2]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[8]]]] - 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 21]*
+        UMatrix[UGenerator[8]]]] - 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 21]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[I1]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[8]], 
-        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*UCouplingConstant[ChPTW3[4], 
+        UMatrix[UGenerator[I1]]]] + 2*Sqrt[3]*CouplingConstant[ChPTW3[4], 
        21]*UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
-        UMatrix[UGenerator[8]]]] + Sqrt[3]*UCouplingConstant[ChPTW3[4], 22]*
+        UMatrix[UGenerator[8]]]] + Sqrt[3]*CouplingConstant[ChPTW3[4], 22]*
       UTrace1[FANonCommutative[UMatrix[UGenerator[I2]], 
         UMatrix[UGenerator[6]], UMatrix[UGenerator[I1]], 
         UMatrix[UGenerator[8]]]]))/

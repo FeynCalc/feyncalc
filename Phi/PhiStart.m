@@ -69,7 +69,7 @@ UMatrix[UQuarkMass[a],b];
 DecayConstant/:Conjugate[ax_DecayConstant]=ax;
 ParticleMass/:Conjugate[ax_ParticleMass]=ax;
 QuarkCondensate/:Conjugate[ax_QuarkCondensate]=ax;
-UCouplingConstant/:Conjugate[ax_UCouplingConstant]=ax;
+CouplingConstant/:Conjugate[ax_CouplingConstant]=ax;
 
 (* ************************************************************** *)
 
@@ -228,9 +228,9 @@ Remove[$FeynCalcDirectory]
 (* Should usually not be altered *)
 
 Options[CovariantFieldDerivative]=
-{DiagonalToU->True,
-RemoveIntegerIndices->True,
-GaugeGroup->2,UDimension->Automatic};
+  {Explicit->True, DiagonalToU->True,
+   RemoveIntegerIndices->True,
+   SUNN->2, UDimension->Automatic};
 
 CovariantFieldDerivative[aa_,x_,loris__fcli,lori1_fcli]:=
 (newfuncc[1]=CovariantFieldDerivative[aa,x,lori1];
@@ -264,45 +264,57 @@ $UExpansionCoefficients=
 (* ************************************************************** *)
 
 (* Which configuration should be used? *)
+(* Overridden is set before loading FeynCalc *)
 
-  $Configuration=
-    (*"ChPT2";*)      (*standard SU(2) ChPT*)
+If[ValueQ[Global`$Configuration] =!= True || Global`$Configuration === None ||
+   Global`$Configuration === "None",
+
+Global`$Configuration=
+    "ChPT2";     (*standard SU(2) ChPT*)
     (*"ChPTPhoton2";*)(*standard SU(2) ChPT with coupling to a photon source*)
     (*"ChPT3";*)      (*Standard SU(3) ChPT*)
-    "ChPTW3";     (*Weak SU(3) ChPT*)
+    (*"ChPTW3";*)     (*Weak SU(3) ChPT*)
     (*"BChPT2";*)     (*Relativistic baryon SU(2) ChPT*)
     (*"HBChPT2";*)    (*Heavy baryon SU(2) ChPT*)
     (*"ChPTEM2";*)    (*Standard SU(2) ChPT with virtual photons - Meissner, Steininger*)
     (*"ChPTVirtualPhotons2";*)        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
+    (*"ChPTVirtualPhotons3";*)        (*Standard SU(2) ChPT with virtual photons - Urech, Knecht*)
     (*"QED";*)        (*QED with one lepton*)
     (*"QED2";*)       (*QED with three leptons*)
 
+]
+
 (* Actual loading of configuration *)
-If[$PaletteConfiguration=!="None"&&$Phi===True,
+If[$PaletteConfiguration=!="None"&&$PaletteConfiguration=!=None&&$Phi===True,
 VerbosePrint[2,"Using ",$PaletteConfiguration," chosen from palette"];
-$Configuration=Evaluate[$PaletteConfiguration]];
-VerbosePrint[2,"Loading configuration ",$Configuration];
+Global`$Configuration=Evaluate[$PaletteConfiguration]];
+VerbosePrint[2,"Loading configuration ",Global`$Configuration];
 tmp`olddir1=tmp`olddir;
-LoadConfiguration[$Configuration];
+LoadConfiguration[Global`$Configuration];
 tmp`olddir=tmp`olddir1;
 
 (* Which lagrangians should be loaded? *)
 
-  $ULagrangians=
-    (*{ChPT2[2],ChPT2[4]};*)
-    (*{ChPTPhoton2[2],ChPTPhoton2[4]};*)
-    (*{ChPT3[2],ChPT3[4]};*)
-    {ChPTW3[2],ChPTW3[4]};
-    (*{BChPT2[2]};*)
-    (*{HBChPT2[2]};*)
-    (*{ChPTEM2[2],ChPTEM2[4]};*)
-    (*{ChPTVirtualPhotons2[2],ChPTVirtualPhotons2[4]};*)
-    (*{QED[1],QED[2]};*)
-    (*{QED2[1],QED2[2]};*)
+ If[ValueQ[Global`$Lagrangians] =!= True || Global`$Lagrangians === {},
+
+ Global`$Lagrangians=
+    {"ChPT2"[2],"ChPT2"[4]};
+    (*{"ChPTPhoton2"[2],"ChPTPhoton2"[4]};*)
+    (*{"ChPT3"[2],"ChPT3"[4]};*)
+    (*{"ChPTW3"[2],"ChPTW3"[4]};*)
+    (*{"BChPT2"[2]};*)
+    (*{"HBChPT2"[2]};*)
+    (*{"ChPTEM2"[2],"ChPTEM2"[4]};*)
+    (*{"ChPTVirtualPhotons2"[2],"ChPTVirtualPhotons2"[4]};*)
+    (*{"ChPTVirtualPhotons3"[2],"ChPTVirtualPhotons3"[4]};*)
+    (*{"QED"[1],"QED"[2]};*)
+    (*{"QED2"[1],"QED2"[2]};*)
+
+]
 
 (* Actual loading of lagrangians *)
-VerbosePrint[2,"Loading lagrangians ",$ULagrangians];
-LoadLagrangian/@$ULagrangians;
+VerbosePrint[2,"Loading lagrangians ",Global`$Lagrangians];
+LoadLagrangian/@Global`$Lagrangians;
 
 (* ************************************************************** *)
 (* ****** END OF CHOOSE CONFIGURATION AND LAGRANGIANS *********** *)
@@ -321,22 +333,22 @@ LoadLagrangian/@$ULagrangians;
 (*QuantumField[___,Particle[Scalar[0],___],___][_]:=0;*)
 (*QuantumField[___,Particle[Scalar[1],___],___][_]:=0;*)
 (*QuantumField[___,Particle[Scalar[2],___],___][_]:=0;*)
-QuantumField[___,Particle[PseudoScalar[0],___],___][_]:=0;
-(*QuantumField[___,Particle[Vector[0],___],___][_]:=0;
-QuantumField[___,Particle[AxialVector[0],___],___][_]:=0;*)
+(*QuantumField[___,Particle[PseudoScalar[0],___],___][_]:=0;*)
+(*QuantumField[___,Particle[Vector[0],___],___][_]:=0;*)
+(*QuantumField[___,Particle[AxialVector[0],___],___][_]:=0;*)
 
 (* Isovectors *)
 (*IsoVector[
 QuantumField[Particle[Scalar[0],___],___],___][_]:=0;*)
-IsoVector[
-QuantumField[Particle[Scalar[1],___],___],___][_]:=0;
+(*IsoVector[
+QuantumField[Particle[Scalar[1],___],___],___][_]:=0;*)
 (*IsoVector[
 QuantumField[Particle[Scalar[2],___],___],___][_]:=0;*)
-IsoVector[
-QuantumField[Particle[PseudoScalar[0],___],___],___][_]:=0;
 (*IsoVector[
-QuantumField[Particle[Vector[0],___],___],___][_]:=0;
-IsoVector[
+QuantumField[Particle[PseudoScalar[0],___],___],___][_]:=0;*)
+(*IsoVector[
+QuantumField[Particle[Vector[0],___],___],___][_]:=0;*)
+(*IsoVector[
 QuantumField[Particle[AxialVector[0],___],___],___][_]:=0;*)
 
 (* Isosinglets *)
@@ -346,12 +358,16 @@ QuantumField[Particle[AxialVector[0],___],___],___][_]:=0;*)
   SUNIndex[0],___][_]:=0;*)
 (*QuantumField[___,Particle[Scalar[2],___],___,
   SUNIndex[0],___][_]:=0;*)
-QuantumField[___,Particle[PseudoScalar[0],___],___,
-  SUNIndex[0],___][_]:=0;
-(*QuantumField[___,Particle[AxialVector[0],___],___,
+(*QuantumField[___,Particle[PseudoScalar[0],___],___,
+  SUNIndex[0],___][_]:=0;*)
+QuantumField[___,Particle[AxialVector[0],___],___,
   SUNIndex[0],___][_]:=0;
 QuantumField[___,Particle[Vector[0],___],___,
-  SUNIndex[0],___][_]:=0;*)
+  SUNIndex[0],___][_]:=0;
+QuantumField[___,Particle[LeftComponent[0],___],___,
+  SUNIndex[0],___][_]:=0;
+QuantumField[___,Particle[RightComponent[0],___],___,
+  SUNIndex[0],___][_]:=0;
 
 (* The setting below expands the zero'th Scalar[0]
    source around the quark mass. The Scalar[2] source is
@@ -376,25 +392,29 @@ SUNIndex[0]][x]*UIdentityMatrix[opts];
 (* If you're working with the weak lagrangian; have a momentum
    carrying lagrangian or not *)
 
-UNablaHatDelta[mu_]:=
+$Substitutions = DeleteCases[$Substitutions,
+UNablaHatDelta[mu_] :> _];
+
+$Substitutions = Append[$Substitutions, UNablaHatDelta[mu_] :>
 
 (* The standard definition *)
-(*-I*NM[SMM,
-UGeneratorMatrixIsoDotFull[QuantumField[Particle[
+-I*NM[SMM,
+UGeneratorMatrixIsoDot[QuantumField[Particle[
 LeftComponent[0]],{mu}]],
 UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
 Adjoint[SMM]]+
 I*NM[SMM,
 UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
-UGeneratorMatrixIsoDotFull[QuantumField[Particle[
+UGeneratorMatrixIsoDot[QuantumField[Particle[
 LeftComponent[0]],{mu}]],
-Adjoint[SMM]];*)
+Adjoint[SMM]]
 
 (* Including a scalar 'source' with momentum *)
-NM[SMM,NM[
+(*NM[SMM,NM[
 FDr[QuantumField[Particle[Scalar[1]]],{mu}],
 UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
-Adjoint[SMM]]];
+Adjoint[SMM]]]*)
+];
 
 (* ************************************************************** *)
 (* ***************** END OF EXTRA CONFIGURATION ***************** *)

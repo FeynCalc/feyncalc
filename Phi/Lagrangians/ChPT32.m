@@ -25,7 +25,7 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 ChPT32::"usage"=
 "ChPT32.m is the name of the file containing the definitions for
-ULagrangian[ChPT3[2]], which is the SU(3) lowest order ChPT
+Lagrangian[ChPT3[2]], which is the SU(3) lowest order ChPT
 lagrangian.  To evaluate use ArgumentsSupply";
 
 Begin["`Private`"];
@@ -35,7 +35,7 @@ fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[ChPT3[2]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPT3[2]]:=
 
 1/4*DecayConstant[PhiMeson,RenormalizationState[0]]^2*
 
@@ -50,7 +50,7 @@ FieldsSet[ChPT3[2]]:=
 fcqf[Particle[PhiMeson,RenormalizationState[0]]]
 ]};
 
-$ULagrangians=Union[$ULagrangians,{ChPT3[2]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{ChPT3[2]}];
 
 End[];
 

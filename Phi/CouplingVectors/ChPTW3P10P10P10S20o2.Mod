@@ -61,5 +61,5 @@
       SUNDelta[I1, I3] + 4*SU3D[6, I2, I3]*SUNDelta[I1, I4] - 
      4*SU3D[6, I1, I4]*SUNDelta[I2, I3] + (4*I)*SU3F[6, I1, I4]*
       SUNDelta[I2, I3] + 4*SU3D[6, I1, I3]*SUNDelta[I2, I4] + 
-     4*SU3D[6, I1, I2]*SUNDelta[I3, I4])*UCouplingConstant[ChPTW3[2], 2])/
+     4*SU3D[6, I1, I2]*SUNDelta[I3, I4])*CouplingConstant[ChPTW3[2], 2])/
    (9*DecayConstant[PseudoScalar[1], RenormalizationState[0]]^3)}}

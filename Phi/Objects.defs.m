@@ -49,13 +49,13 @@ FAFourVector[a__], will cause collection only according to powers of \
 FAFourVector[a__], whereas the pure blank will collect only according to \
 FAFourVector[a__]*FAFourVector[b__] etc. To have both, both FAFourVector[__] \
 and FAFourVector[a__] should be included.  Patterns with more than one \
-sequence of blanks like UCouplingConstant[model[_],___] should be avoided or \
+sequence of blanks like CouplingConstant[model[_],___] should be avoided or \
 the blanks should be named.  Default value : \
-{FAFourVector[__],ParticleMass[Pion,a___],UCouplingConstant[QED[1],c___]}"
+{FAFourVector[__],ParticleMass[Pion,a___],CouplingConstant[QED[1],c___]}"
 
 SpaceTimeDimensions::"usage" = 
-    "SpaceTimeDimensions is the symbol Phi uses for the number of dimensions \
-of FeynCalc fourvectors (FeynCalc uses the symbol D).  DimensionExpand uses \
+    "SpaceTimeDimensions is the symbol Phi uses by default for the number of dimensions \
+of FeynCalc four-vectors (FeynCalc uses the symbol D).  DimensionExpand uses \
 SpaceTimeDimensions[1]";
 
 ScalarProductForm::"usage" = 
@@ -235,13 +235,13 @@ FST::"usage" = "FST is a shortcut for entering a complex object often needed \
 in e.g ChPT.  FST[p,mu,nu,x] := \
 FieldStrengthTensor[mu,UGeneratorMatrixIsoDot[QuantumField[Particle[p],nu][x]]\
 ,x]+2*I*IsoCross[IsoVector[QuantumField[Particle[p],mu],##][x],IsoVector[\
-QuantumField[Particle[p],nu]][x]].  p is a member of $UParticles, mu and nu \
+QuantumField[Particle[p],nu]][x]].  p is a member of $Particles, mu and nu \
 have head LorentzIndex.  FST takes three optional arguments with head \
 RenormalizationState, RenormalizationScheme and ExpansionState respectively \
-and the option GaugeGroup"
+and the option SUNN"
 
 QED::"usage" = 
-    "UCouplingConstant[QED[1],RenormalizationState[0]] is the bare unit \
+    "CouplingConstant[QED[1]] is the unit \
 charge";
 
 PhiMesonIsoVector::"usage" =
@@ -257,22 +257,22 @@ OptionsSelect::"usage" =
 accepted by function.  When an option occurs several times in opts, the first \
 setting is selected";
 
-$ULagrangians::"usage" = 
-    "$ULagrangians is a list of the lagrangians loaded (without heads \
-ULagrangian).  Setting $ULagrangians to a list of lagrangians in PhiStart.m \
+Global`$Lagrangians::"usage" = 
+    "$Lagrangians is a list of the lagrangians loaded (without heads \
+Lagrangian).  Setting $Lagrangians to a list of lagrangians in PhiStart.m \
 causes these lagrangians to be loaded at startup";
 
-$UParticlesInUse::"usage" = 
-    "$UParticlesInUse is a variable specifying which Phi-particles are \
+$ParticlesInUse::"usage" = 
+    "$ParticlesInUse is a variable specifying which Phi-particles are \
 recognized by FeynArts (modified as described in ReadMe.txt) as field names. \
  Default value : {Pion, Kaon, Photon}";
 
-$FAUParticlesInUse::"usage" = 
-    "$FAUParticlesInUse is $UParticlesInUse in the notation which is actually \
+$FAParticlesInUse::"usage" = 
+    "$FAParticlesInUse is $ParticlesInUse in the notation which is actually \
 fed to FeynArts.  Default value : {PseudoScalar2,PseudoScalar6,Vector1}";
 
 SelfConjugation::"usage" = 
-    "SelfConjugation is a function taking elements of $FAUParticlesInUse as \
+    "SelfConjugation is a function taking elements of $FAParticlesInUse as \
 argument and returning True or False.  Default values are assigned according \
 to the particle type (scalar, vector or fermion), but these can be changed \
 either also according to the particle type or on a per particle basis.  These \
@@ -284,25 +284,25 @@ defines e.g. Fermion[7][0] to be Fermion7[0].  This truncation of particle \
 heads is a hack to make the pattern matching of FeynArts work with Phi \
 fields";
 
-$UParticleHeads::"usage" = 
-    "$UParticleHeads is a pattern used by the patched version of FeynArts to \
-recognize the particles in $UParticlesInUse";
+$ParticleHeads::"usage" = 
+    "$ParticleHeads is a pattern used by the patched version of FeynArts to \
+recognize the particles in $ParticlesInUse";
 
 FAUpdate::"usage" = 
     "FAUpdate is a command that when issued forces the functions \
-ParticleMass, DecayConstant and Particle to reread $UParticlesInUse";
+ParticleMass, DecayConstant and Particle to reread $ParticlesInUse";
 
 $FermionHeads::"usage" = 
     "$FermionHeads is a pattern used by the patched version of FeynArts to \
-recognize the fermions in $UParticlesInUse";
+recognize the fermions in $ParticlesInUse";
 
 $VectorHeads::"usage" = 
     "$VectorHeads is a pattern used by the patched version of FeynArts to \
-recognize the vectors and axialvectors in $UParticlesInUse";
+recognize the vectors and axialvectors in $ParticlesInUse";
 
 $ScalarHeads::"usage" = 
     "$ScalarHeads is a pattern used by the patched version of FeynArts to \
-recognize the scalars and pseudoscalars in $UParticlesInUse";
+recognize the scalars and pseudoscalars in $ParticlesInUse";
 
 FALabel::"usage" = 
     "To specify a string l to be printed for a particle p[i] by FeynArts, \
@@ -310,11 +310,12 @@ where the index i is an obligatory index of FeynArts specifying that it is \
 the i'th kind of particle p, one should set FALabel[p,i] := l.  This can \
 conveniently be done in PhiStart.m or a relevant configuration file";
 
-ULagrangian::"usage" = 
-    "ULagrangian[m[pars]] returns the raw form of the lagrangian of the model \
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian::"usage" = 
+    "Lagrangian[m[pars]] returns the raw form of the lagrangian of the model \
 m and with parameters pars (e.g. the dimension of the gauge group and the \
 order in the perturbative expansion).  To get the full form, use \
-ArgumentsSupply";
+ArgumentsSupply.  Lagrangian[\"oqu\"] gives the unpolarized quark operator. \
+Lagrangian[\"oqp\"] gives the polarized quark operator.";
 
 UExp::"usage" = 
     "UExp[a,n] returns a power series (in normal form) in a, with \
@@ -351,7 +352,9 @@ resulting expressions.  Using this function on lagrangians before \
 ArgumentsSupply and DiscardTerms should significantly improve perfomance when \
 working with complicated lagrangians.  This is because NM products are \
 decomposed in sums of NM products with each factor containing only the \
-relevant term in the expansion in meson fields.  NOTICE:  UNMSplit works only \
+relevant term in the expansion in meson fields.  The list of \
+substitution rules $Substitutions is applied before anything else.  \
+NOTICE:  UNMSplit works only \
 on NM products.  Ordinary products should be replaced with NM before applying \
 UNMSplit";
 
@@ -369,12 +372,31 @@ derivatives, Lorentz and isospin arguments and without an extra pairs of \
 empty brackets for scalars.  ArgumentsSupply[expr,x,opts] then returns expr \
 with space-time argument x and options specifications and brackets supplied.  \
 The relevant option specifications for each function are taken from opts.  \
-ArgumentsSupply has no independent options of its own.  NOTICE:  For \
+ArgumentsSupply has no independent options of its own, but the list of \
+substitution rules $Substitutions is applied before anything else.  NOTICE:  For \
 FieldDerivative and CovariantFieldDerivative, the space-time argument  must \
 be ommited and the Lorentz indices must be collected between a pair of curly \
 brackets.  NOTICE ALSO:  Only standard objects (like MM, SMM, UChiMatrix) are \
 supported by ArgumentsSupply.  Non-standard UMatrix, IsoVector, etc. objects \
-must be entered 'by hand'";
+must either be entered 'by hand' or be made known by adding rules to $Substitutions";
+
+$Substitutions::"usage" = 
+    "$Substitutions is a list of substitution rules applied repeatedly by \
+ArgumentsSupply";
+
+$PreSubstitutions::"usage" = 
+    "$PreSubstitutions[x] is a list of substitution rules used by ArgumentsSupply";
+
+$PostSubstitutions::"usage" = 
+    "$PostSubstitutions[x] is a list of substitution rules used by ArgumentsSupply";
+
+SubX::"usage" = 
+    "SubX is a variable used in the definitions of $PreSubstitutions and \
+$PostSubstitutions";
+
+SubArgs::"usage" = 
+    "SubArgs is a variable used in the definitions of $PreSubstitutions and \
+$PostSubstitutions";
 
 DropOrder::"usage" = 
     "DropOrder is an option for UFieldMatrix.  When set to some integer \
@@ -487,7 +509,7 @@ $UScalars::"usage" =
     "$UScalars is a list of the scalars known by Phi. Members of this list \
 are function names and they must be Atomic quantities. Apart from the default \
 scalars, others can be added with DeclareUScalar.  Default value : \
-{QuarkCondensate, ParticleMass, DecayConstant, UCouplingConstant, SU3D, SU3F, \
+{QuarkCondensate, ParticleMass, DecayConstant, CouplingConstant, SU3D, SU3F, \
 SU3Delta, Projection, SUNIndex, SUNF, SUND, SUNDelta}";
 
 UScalarQ::"usage" = 
@@ -496,18 +518,19 @@ or  a Mathematica numeric quantity";
 
 UTrace::"usage" =
   "UTrace[ff] gives the trace of expressions involving matrices with defined \
-traces.  The option GaugeGroup specifies the trace of UIdentityMatrix:  For \
+traces.  The option SUNN specifies the trace of UIdentityMatrix:  For \
 UTrace[m[opts1],opts2], the setting given in the opts2 overrules the setting \
 of opts1, but when no setting is made in opts2, opts1 is used.  When no \
 setting is made in neither opts1 nor opts2, the default of UTrace is used.  \
 The option TraceSimplify specifies whether some simplification rules should \
 be implemented.  E.g.:  UTrace[UGeneratorMatrixIsoVector[opts]^2] is 6 (16) \
-for GaugeGroup 2 (3). For SU(2) UTrace[UGeneratorMatrixIsoVector[opts]^n] is \
+for SUNN 2 (3). For SU(2) UTrace[UGeneratorMatrixIsoVector[opts]^n] is \
 0 for odd n.  When UTrace cannot trace a quantity a, UTrace1[a] is returned";
 
 CycleUTraces::"usage" =
   "CycleUTraces[ex] rotates the factors in NM or Dot products inside UTrace1 \
-untill the 'lowest' factor is in front";
+untill the 'lowest' factor is in front.  CycleUTraces[ex, f] does the same \
+but using f as the ordering function";
 
 HoldUTrace::"usage" =
   "HoldUTrace is an option of UTrace specifying whether or not the trace \
@@ -520,7 +543,7 @@ Phi";
 TraceSimplify::"usage" =
   "TraceSimplify is an option for UTrace specifying whether some \
 simplification rules should be implemented.  E.g.:  \
-UTrace[UGeneratorMatrixIsoVector[opts]^2] is 6 (16) for GaugeGroup 2 (3). For \
+UTrace[UGeneratorMatrixIsoVector[opts]^2] is 6 (16) for SUNN 2 (3). For \
 SU(2) UTrace[UGeneratorMatrixIsoVector[opts]^n] is 0 for odd n.  Default \
 value : True";
 
@@ -576,7 +599,7 @@ quark mass matrix.  UQuarkMassMatrix  takes three optional arguments, with \
 head RenormalizationState, RenormalizationScheme and ExpansionState \
 respectively. Notice that it depends on the setting of the environment \
 variables $QuarkToPionMassesRules and $QuarkToMesonMassesRules, whose default \
-setting is equivalent to standard ChPT and iso-spin symmetry in SU(2)";
+setting is equivalent to standard ChPT and isospin symmetry in SU(2)";
 
 UQuarkMass::"usage" = 
     "UMatrix[UQuarkMass[opts],opts] =: UQuarkMassMatrix[opts] is the diagonal \
@@ -593,22 +616,22 @@ UQuarkCharge::"usage" =
 diagonal quark charge matrix";
 
 UChiralSpurion::"usage" = 
-    "UMatrix[UChiralSpurion[spec],opts] represents some \
+    "UMatrix[UChiralSpurion[]] represents some \
 spurion.  It is merely a symbol with display rules";
 
 UChiralSpurionLeft::"usage" = 
-    "UMatrix[UChiralSpurionLeft[spec],opts] represents some lefthanded \
+    "UMatrix[UChiralSpurionLeft[]] represents some lefthanded \
 spurion.  It is merely a symbol with display rules";
 
 UChiralSpurionRight::"usage" = 
-    "UMatrix[UChiralSpurionRight[spec],opts] represents some lefthanded \
+    "UMatrix[UChiralSpurionRight[]] represents some lefthanded \
 spurion.  It is merely a symbol with display rules";
 
 QuarkToMesonMasses::"usage" = 
     "QuarkToMesonMasses is an option for UQuarkMass specifying whether the \
 quark masses in the quark mass matrix should be expressed by the meson masses \
-using the mass relations $QuarkToPionMassesRules (when GaugeGroup is set to \
-2) or $QuarkToMesonMassesRules (when GaugeGroup is set to 3).  Default value \
+using the mass relations $QuarkToPionMassesRules (when SUNN is set to \
+2) or $QuarkToMesonMassesRules (when SUNN is set to 3).  Default value \
 : True";
 
 DiagonalToU::"usage" = 
@@ -621,7 +644,7 @@ False";
 
 RemoveIntegerIndices::"usage" = 
     "RemoveIntegerIndices is an option for UQuarkMass, UChi, UQuarkCharge, \
-ExpandU, SUNReduce and PhiToFC which determines whether or not iso-spin \
+ExpandU, SUNReduce and PhiToFC which determines whether or not isospin \
 functions of integer indices are substituted with a product involving a \
 projection operator (that is, a Kronecker delta function), e.g. \
 UGeneratorMatrix[n,opts] is substituted with \
@@ -694,6 +717,9 @@ KaonMinus::"usage" =
     "KaonMinus := PseudoScalar[10] represents the kaon of charge -1";
 
 EtaMeson::"usage" = "EtaMeson := PseudoScalar[11] represents the eta meson";
+
+UPerturbation::"usage" = "UPerturbation := PseudoScalar[12] represents the \
+perturbation of the meson matrix around the solution of the equation of motion";
 
 Lepton::"usage" = "Lepton := Fermion[1] represents a lepton";
 
@@ -804,8 +830,8 @@ Fermion::"usage" =
  Fermion[1] is reserved for the dublet or octuplet of baryons";
 
 Particle::"usage" = 
-    "Particle[p] is represents an operator field, where x is a space-time \
-variable and p is some particle or source from $UParticles.  Particle takes \
+    "Particle[p], where p is some particle or source from $Particles, \
+represents a quantum operator field.  Particle takes \
 three optional arguments with head RenormalizationState, \
 RenormalizationScheme and ExpansionState respectively.  E.g. \
 QuantumField[Particle[Pion],{},{i1}][x] is the pion field operator with \
@@ -813,30 +839,32 @@ isospin i1";
 
 ParticleMass::"usage" = 
     "ParticleMass[p] is the mass of the particle p.  \
-ParticleMass[p,SUNIndex[i]] is the mass of the particle p with iso-spin index \
+ParticleMass[p,SUNIndex[i]] is the mass of the particle p with isospin index \
 i.  ParticleMass takes three more optional arguments with head \
 RenormalizationState, RenormalizationScheme and ExpansionState respectively.  \
-The possible values of p are listed in $UParticles";
+The possible values of p are listed in $Particles";
 
 DecayConstant::"usage" = 
     "DecayConstant[p] is the decay constant of the particle p.  \
-DecayConstant[p,SUNIndex[i]] is the mass of the particle p with iso-spin \
+DecayConstant[p,SUNIndex[i]] is the mass of the particle p with isospin \
 index i.  DecayConstant takes three optional arguments, with head \
 RenormalizationState, RenormalizationScheme and ExpansionState respectively.  \
-The possible values of p are listed in $UParticles";
+The possible values of p are listed in $Particles";
 
-UCouplingConstant::"usage" = 
-    "UCouplingConstant is the head of couplingconstants.  UCouplingConstant \
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant::"usage" = 
+    "CouplingConstant is the head of couplingconstants.  CouplingConstant \
 takes three extra optional arguments, with head RenormalizationState, \
 RenormalizationScheme and ExpansionState respectively.  E.g. \
-UCouplingConstant[QED[1]] is the unit charge, UCouplingConstant[ChPT2[4],1] \
+CouplingConstant[QED[1]] is the unit charge, CouplingConstant[ChPT2[4],1] \
 is the first of the coupling constants of the lagrangian ChPT2[4].  \
-UCouplingConstant[a_,b_,c___][i_] := \
-UCouplingConstant[a,b,RenormalizationState[i],c]";
+CouplingConstant[a_,b_,c___][i_] := \
+CouplingConstant[a,b,RenormalizationState[i],c].  \
+CouplingConstant is also an option for several Feynman rule functions and for \
+CovariantD and FieldStrength.";
 
 RenormalizationState::"usage" = 
     "RenormalizationState is the head of an optional arguments of Particle, \
-UCouplingConstant, ParticleMass and DecayConstant.  Usually the inclusion of \
+CouplingConstant, ParticleMass and DecayConstant.  Usually the inclusion of \
 the index RenormalizationState[0] means that the quantity is unrenormalized \
 and RenormalizationState[1] that it is renormalized (to one loop).  If \
 working with only renormalized or unrenormalized quantities, the argument can \
@@ -845,36 +873,36 @@ specification of RenormalizationState or RenormalizationScheme should be made \
 since it is assumed that the fields are unrenormalized.  However, \
 specification of RenormalizationState, RenormalizationScheme and/or \
 ExpansionState may be given to ParticleMass, DecayConstant and/or \
-UCouplingConstant in the coupling files generated";
+CouplingConstant in the coupling files generated";
 
 RenormalizationScheme::"usage" = 
     "RenormalizationScheme is the head of an optional arguments of Particle, \
-UCouplingConstant, ParticleMass and DecayConstant.  The inclusion of the \
+CouplingConstant, ParticleMass and DecayConstant.  The inclusion of the \
 index RenormalizationScheme[s] means that the quantity is renormalized \
 according to the scheme with code or name s.  NOTICE:  When specifying fields \
 to FeynArts, no specification of RenormalizationState or \
 RenormalizationScheme should be made since it is assumed that the fields are \
 unrenormalized.  However, specification of RenormalizationState, \
 RenormalizationScheme and/or ExpansionState may be given to ParticleMass, \
-DecayConstant and/or UCouplingConstant in the coupling files generated";
+DecayConstant and/or CouplingConstant in the coupling files generated";
 
 ExpansionState::"usage" = 
     "ExpansionState is the head of an optional arguments of \
-UCouplingConstant, ParticleMass and DecayConstant.  Usually the inclusion of \
+CouplingConstant, ParticleMass and DecayConstant.  Usually the inclusion of \
 the index ExpansionState[i] means that the quantity is expanded to i\.b4th \
 order in the e.g. the quark mass or the electron charge.  NOTICE:  When \
 specifying fields to FeynArts, no specification of RenormalizationState or \
 RenormalizationScheme should be made since it is assumed that the fields are \
 unrenormalized.  However, specification of RenormalizationState, \
 RenormalizationScheme and/or ExpansionState may be given to ParticleMass, \
-DecayConstant and/or UCouplingConstant in the coupling files generated";
+DecayConstant and/or CouplingConstant in the coupling files generated";
 
-$UParticleTypes::"usage" = 
-    "$UParticleTypes is a list of the types of particles and sources \
+$ParticleTypes::"usage" = 
+    "$ParticleTypes is a list of the types of particles and sources \
 defined";
 
-$UParticles::"usage" = 
-    "$UParticles is a list of the particles and sources defined";
+$Particles::"usage" = 
+    "$Particles is a list of the particles and sources defined";
 
 FieldStrengthTensor::"usage" =
   "FieldStrengthTensor[der,p[x]], where p is usually of the form \
@@ -925,16 +953,22 @@ should be applied before WriteOutUMatrices";
 UIdentityMatrix::"usage" =
   "UIdentityMatrix[opts] := UMatrix[UIdentity,opts] is the identitymatrix. \
 The trace yielded by UTrace[UIdentityMatrix[opts1],opts] is  determined by \
-the setting of GaugeGroup (2 or 3), where opts overrules opts1";
+the setting of SUNN (2 or 3), where opts overrules opts1";
 
 UIdentity::"usage" =
   "UIdentityMatrix[opts] := UMatrix[UIdentity,opts] is the identitymatrix. \
 The trace yielded by UTrace[UIdentityMatrix[opts1],opts] is  determined by \
-the setting of GaugeGroup (2 or 3), where opts overrules opts1";
+the setting of SUNN (2 or 3), where opts overrules opts1";
 
 NM::"usage" =
   "NM is the noncommutative multiplication for multiplying matrices and/or \
 fields";
+
+UCommutator::"usage" =
+  "UCommutator[a_, b_] := NM[a, b] - NM[b, a]";
+
+UAntiCommutator::"usage" =
+  "UAntiCommutator[a_, b_] := NM[a, b] + NM[b, a]";
 
 IsoDot::"usage" =
   "IsoDot is the dot product used for isospin vectors. IsoDot is neither \
@@ -983,7 +1017,8 @@ held out of the dropping algorithm.  A possible setting could be NoDrop -> \
 
 CommutatorReduce::"usage" =
   "CommutatorReduce is an option for DiscardTerms, ExpandU, \
-ExpandUGenerators, IndicesCleanup and SUNReduce,  specifying whether or \
+ExpandUGenerators, IndicesCleanup, CayleyHamiltonRules, CayleyHamiltonTrick \
+and SUNReduce,  specifying whether or \
 not the commutator rules $CommutatorRules should be used for reductions.  To \
 speed up things the function SetCommutators can be used.  Also, \
 CommutatorReduce is a function which simply applies $CommutatorRules \
@@ -994,12 +1029,14 @@ FullReduce::"usage" =
 products (NM) involving QuantumField's but not elements from $NonCommute \
 will be replaced with ordinary products and similarly, dotproducts of IsoVector's of \
 QuantumField's will be Sort'ed.  Default value : False
-   FullReduce is also an option of SUNReduce relevant when SummationForm is \
-set to Implicitsums.  When set to True, a set of transformation rules are \
+   FullReduce is also an option of SUNReduce relevant when Explicit is \
+set to False.  When set to True, a set of transformation rules are \
 applied untill the result no longer changes.  This can be extremely time \
 consuming for large expressions.  When set to False, the same set of \
-transformation rules are applied, but only once.  Default value : True for \
-CommutatorReduce False for SUNReduce";
+transformation rules are applied, but only once.
+   FullReduce is also an option of UReduce, triggering a slower but more thorough \
+reduction.  Default value : True for CommutatorReduce, False for SUNReduce, \
+False for UReduce";
 
 $CommutatorRules::"usage" =
   "$CommutatorRules is the list of rules DiscardFields and ExpandU use when \
@@ -1029,23 +1066,16 @@ ZPlus::"usage" =
   "ZPlus is a setting for the option ExpansionOrder of DiscardFields implying \
 the retaining of terms to all orders in the meson fields";
 
-GaugeGroup::"usage" =
-  "GaugeGroup is an option for WriteOutUMatrices, WriteOutIsoVectors, \
-UQuarkMassMatrix, UMatrix, UVector, IsoVector, UFieldMatrix, \
-UGeneratorMatrixIsoDot (not found in Options[UFieldMatrix] or \
-Options[UGeneratorMatrixIsoDot]), ExpandU, ExpandUGenerators, UTrace, \
-UTraceToFCTrace, AmplitudeProjection, and SUNReduce, specifying whether the \
-meson multiplet is the SU(2) triplet or the SU(3) octuplet.  Default value : \
-2";
-
 UDimension::"usage" = 
     "UDimension is an option of  WriteOutUMatrices, UQuarkMassMatrix, \
 UMatrix, UVector, UFieldMatrix, UGeneratorMatrixIsoDot (not found in \
 Options[UFieldMatrix] or Options[UGeneratorMatrixIsoDot]), ExpandU, \
-ExpandUGenerators, UTrace, UTraceToFCTrace, specifying the dimension of the \
-representation of the gauge group SU(GaugeGroup), where GaugeGroup is an \
-integer (2 or 3).  With the default setting Automatic, UDimension is set \
-equal to GaugeGroup.  Default value : Automatic";
+ExpandUGenerators, UTrace, UTraceToFCTrace, SUNReduce, UReduce, \
+CharacteristicCoefficient, CayleyHamilton, CayleyHamiltonTrick and \
+CayleyHamiltonRules, specifying the \
+dimension of the representation of the gauge group SU(SUNN), where \
+SUNN is an integer (2 or 3).  With the default setting Automatic, \
+UDimension is set equal to SUNN.  Default value : Automatic";
 
 $UExpansionCoefficients::"usage" =
   "$UExpansionCoefficients is a system variable specifying the representation \
@@ -1055,15 +1085,15 @@ Default value : {1/0!,1/1!,1/2!,1/3!,1/4!,1/5!,1/6!,1/7!,1/8!,1/9!,1/10!}";
 
 $QuarkToPionMassesRules::"usage" = 
     "$QuarkToPionMassesRules is a set of rules used by WriteOutUMatrices when \
-the option GaugeGroup is set to 2, and by UQuarkMassMatrix when the option \
-DiagonalToU is enabled and GaugeGroup is set to 2. Notice that the default \
-default setting is equivalent to lowest order standard ChPT and iso-spin \
+the option SUNN is set to 2, and by UQuarkMassMatrix when the option \
+DiagonalToU is enabled and SUNN is set to 2. Notice that the default \
+default setting is equivalent to lowest order standard ChPT and isospin \
 symmetry";
 
 $QuarkToMesonMassesRules::"usage" = 
     "$QuarkToMesonMassesRules is the set of rules used by WriteOutUMatrices \
-when the option GaugeGroup is set to 3, and by UQuarkMassMatrix when the \
-option DiagonalToU is enabled and the option GaugeGroup is set to 3. Notice \
+when the option SUNN is set to 3, and by UQuarkMassMatrix when the \
+option DiagonalToU is enabled and the option SUNN is set to 3. Notice \
 that the default setting is equivalent to lowest order standard ChPT";
 
 $PionToQuarkMassesRule::"usage" = 
@@ -1101,7 +1131,7 @@ IsoIndicesString and \"p\" is the setting of MomentumVariablesString.  The \
 number of fields is given by the option ParticlesNumber.  When \
 LorentzIndicesString or IsoIndicesString are set to None, the respective \
 indices are not supplied.  FieldsSet[lag], where lag is a lagrangian from \
-$ULagrangians returns the field used by this lagrangians (without space-time \
+$Lagrangians returns the field used by this lagrangians (without space-time \
 or momentum dependence and with IsoVector notation instead of SUNIndex \
 notation)";
 
@@ -1167,7 +1197,7 @@ round of substitutions.  Default value : \"I\" (\"k\")";
 
 NumerateFree::"usage" = 
     "NumerateFree is an option of IsoIndicesSupply (PhiToFC) relevant when \
-there are uncontracted iso-indices (iso-spin functions with integer indices \
+there are uncontracted iso-indices (isospin functions with integer indices \
 and RemoveIntegerIndices is set to True).  When set to True, these indices \
 are numbered, when set to False they are all assigned the same symbol.  The \
 symbol(s) used is (are) given by the setting of FreeIsoIndexString \
@@ -1244,6 +1274,40 @@ MandelstamReduce and VeltmanExpand.  When MomentumVariablesString is set to \
 \"p\", the momentum variables used by these functions will be of the form p1, \
 p2, p3, ....  Default value : \"p\"";
 
+(*
+Composed objects for construction of lagrangians
+*)
+
+USmall::"usage"=
+"USmall[mu] is the u-field of WChPT
+(Ecker, Kambor and Wyler (1992), CERN-TH.6610/92).
+To evaluate use ArgumentsSupply.";
+
+UGamma::"usage"=
+"UGamma[mu] is the gamma-field of BChPT
+(Ecker, Kambor and Wyler (1992), CERN-TH.6610/92).
+To evaluate use ArgumentsSupply";
+
+UChiPlus::"usage"=
+"UChiPlus[opts] is the chi_plus-field of WChPT
+(Ecker, Kambor and Wyler (1992), CERN-TH.6610/92).
+To evaluate use ArgumentsSupply";
+
+UChiMinus::"usage"=
+"UChiMinus[opts] is the chi_minus-field of WChPT
+(Ecker, Kambor and Wyler (1992), CERN-TH.6610/92).
+To evaluate use ArgumentsSupply";
+
+UFMinus::"usage"=
+"UFMinus[mu,nu] is the f_minus-field of WChPT
+(Ecker, Kambor and Wyler (1992), CERN-TH.6610/92).
+To evaluate use ArgumentsSupply";
+
+UFPlus::"usage"=
+"UFPlus[mu,nu] is the f_plus-field of WChPT
+(Ecker, Kambor and Wyler (1992), CERN-TH.6610/92).
+To evaluate use ArgumentsSupply";
+
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 Begin["`Private`"];
@@ -1283,7 +1347,7 @@ ArgumentsSupply::argxpr =
 
 ArgumentsSupply::noarg = "No space-time argument supplied";
 
-ULagrangian::noload = 
+Lagrangian::noload = 
     "The lagrangian `1` is not loaded. Try LoadLagrangian[`1`]";
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -1451,18 +1515,19 @@ Functions:
     RowBox[{MakeBoxes[IsoSymmetricCross[aua], TraditionalForm], 
         "\[CircleTimes]", "(",
              MakeBoxes[b, TraditionalForm], ")"}];
+
      IsoSymmetricCross /:
      MakeBoxes[IsoSymmetricCross[aua__, b_], 
 	  TraditionalForm] :=
-     
     RowBox[{MakeBoxes[IsoSymmetricCross[aua], TraditionalForm], 
         "\[CircleTimes]",
              MakeBoxes[b, TraditionalForm]}];
+
      Iso /:
      MakeBoxes[Iso[aua___], 
 	  TraditionalForm] :=
-     
     RowBox[{MakeBoxes[AngleBracket[aua], TraditionalForm]}];
+
      FieldDerivative /:
      MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex], 
 	  TraditionalForm] :=
@@ -1470,6 +1535,15 @@ Functions:
    MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
+
+     FieldDerivative /:
+     MakeBoxes[FieldDerivative[a_, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex], 
+	  TraditionalForm] :=
+     RowBox[{SubscriptBox[
+   MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]], 
+          RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
+        MakeBoxes[TraditionalForm[a]], ")"}];
+
      FieldDerivative /:
      MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
 	  TraditionalForm] :=
@@ -1477,6 +1551,7 @@ Functions:
    MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
+
      FieldDerivative /:
      MakeBoxes[FieldDerivative[a_, {lis___}], 
 	  TraditionalForm] :=
@@ -1484,46 +1559,195 @@ Functions:
    MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
+
      CovariantFieldDerivative /:
-     
-    MakeBoxes[CovariantFieldDerivative[a_, _, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
+         MakeBoxes[CovariantFieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD,
+    ___Rule], TraditionalForm] :=
+     RowBox[{SubscriptBox[
+   MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]][[1]], 
+          RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
+        MakeBoxes[TraditionalForm[a]], ")"}];
+
+     CovariantFieldDerivative /:
+    MakeBoxes[CovariantFieldDerivative[a_, {lis___}, ___Rule], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
+        
      CovariantFieldDerivative /:
-     
-    MakeBoxes[CovariantFieldDerivative[a_, {lis___}], 
+    MakeBoxes[CovariantFieldDerivative[a_, _,
+    lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+    ___Rule], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
+        
      CovariantNabla /:
-     MakeBoxes[CovariantNabla[a_, _, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD], 
+     MakeBoxes[CovariantNabla[a_, _, lis__HighEnergyPhysics`FeynCalc`PartialD`PartialD,
+     ___Rule], TraditionalForm] :=
+     RowBox[{SubscriptBox[
+   MakeBoxes[ StyleForm["\[Del]", FontSlant -> "Italic"]][[1]], 
+          RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
+        MakeBoxes[TraditionalForm[a]], ")"}];
+        
+     CovariantNabla /:
+     MakeBoxes[CovariantNabla[a_, _, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, ___Rule], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[Del]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
+
      CovariantNabla /:
-     MakeBoxes[CovariantNabla[a_, {lis___}], 
+     MakeBoxes[CovariantNabla[a_, {lis___}, ___Rule], 
 	  TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ StyleForm["\[Del]", FontSlant -> "Italic"]][[1]], 
           RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(", 
         MakeBoxes[TraditionalForm[a]], ")"}];
-     FieldStrengthTensor /:
-     
+
+   FieldStrengthTensor /:
     MakeBoxes[
-      FieldStrengthTensor[fcli[li_], 
-        fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, p_, iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex]], 
-	  TraditionalForm] :=
-     SubscriptBox[RowBox[{
-MakeBoxes[TraditionalForm[p]], "(", 
-          MakeBoxes[ TraditionalForm[fcqf[ders, p, iis, lis]]], ")"}], 
+      FieldStrengthTensor[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
+            ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, p_,
+            iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
+            lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+            lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex][_],
+   ___], TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[ders, p, iis, lis]]],
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+      
+   FieldStrengthTensor /:
+    MakeBoxes[
+      FieldStrengthTensor[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        fff___][_],
+   ___], TraditionalForm] /; {ff,lis,fff}=!={} :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f[ff, lis, fff]]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+      
+   FieldStrengthTensor /:
+    MakeBoxes[
+      FieldStrengthTensor[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        fff___],
+   ___], TraditionalForm]  /; {ff,lis,fff}=!={} :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f[ff, lis, fff]]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+
+   FieldStrengthTensor /:
+    MakeBoxes[
+      FieldStrengthTensor[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
+        ][_],
+   ___], TraditionalForm] :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+      
+   FieldStrengthTensor /:
+    MakeBoxes[
+      FieldStrengthTensor[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
+        ],
+   ___], TraditionalForm] :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+
+   FieldStrengthTensorFull /:
+    MakeBoxes[
+      FieldStrengthTensorFull[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[
+            ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, p_,
+            iis___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
+            lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+            lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex][_],
+   ___], TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[ders, p, iis, lis]]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+      
+   FieldStrengthTensorFull /:
+    MakeBoxes[
+      FieldStrengthTensorFull[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        fff___][_],
+   ___], TraditionalForm] /; {ff,lis,fff}=!={} :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f[ff, lis, fff]]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+
+   FieldStrengthTensorFull /:
+    MakeBoxes[
+      FieldStrengthTensorFull[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[ff___?(FreeQ[{#},HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,Heads->True]&),
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        fff___],
+   ___], TraditionalForm]  /; {ff,lis,fff}=!={} :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f[ff, lis, fff]]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+
+   FieldStrengthTensorFull /:
+    MakeBoxes[
+      FieldStrengthTensorFull[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
+        ][_],
+   ___], TraditionalForm] :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+      
+   FieldStrengthTensorFull /:
+    MakeBoxes[
+      FieldStrengthTensorFull[
+        li_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        f_[
+        lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
+        ],
+   ___], TraditionalForm] :=
+   SubscriptBox[
+      MakeBoxes[TraditionalForm[
+      f]],
+      RowBox[MakeBoxes[TraditionalForm[#]] & /@ {li, lli}]];
+
 Unprotect[Conjugate];
      Conjugate /:
      MakeBoxes[Conjugate[aua_], 
@@ -1546,13 +1770,21 @@ Protect[Conjugate];
 	  TraditionalForm] :=
      
     RowBox[{MakeBoxes[OverBar[TraditionalForm[aua]]]}];
-     UTrace1 /:
+
+(*     UTrace1 /:
      
     MakeBoxes[UTrace1[aua_, (opts___Rule | opts___List)], 
       TraditionalForm] :=
      RowBox[{SubscriptBox[
    MakeBoxes[ "Tr"], MakeBoxes[ "1"]], "(", MakeBoxes[aua, TraditionalForm], 
-        ")"} ];
+        ")"} ];  *)
+
+     UTrace1 /:
+     
+    MakeBoxes[UTrace1[aua_, (opts___Rule | opts___List)], 
+      TraditionalForm] :=
+     RowBox[{"\[LeftAngleBracket]", MakeBoxes[aua, TraditionalForm], 
+        "\[RightAngleBracket]"} ];
 
 (*
 Definitions for the "easy entering" part:
@@ -1568,22 +1800,47 @@ Definitions for the "easy entering" part:
 	  TraditionalForm] := 
     OverscriptBox[MakeBoxes[StyleForm["\[CurlyPhi]", FontSlant -> "Italic"]], 
       MakeBoxes[StyleForm["\[Rule]"]]];
+
+MM /: MakeBoxes[MM[i_,_,___Rule], TraditionalForm] :=
+  
+    SuperscriptBox[MakeBoxes[StyleForm["\[ScriptCapitalU]", FontSlant -> "Italic",
+  FontWeight -> "Bold"]][[1]],MakeBoxes[i]];
+
+MM /: MakeBoxes[MM[_,___Rule], TraditionalForm] :=
+  
+    MakeBoxes[StyleForm["\[ScriptCapitalU]", FontSlant -> "Italic",
+  FontWeight -> "Bold"]][[1]];
+
+SMM /: MakeBoxes[SMM[___], TraditionalForm] :=
+  
+    MakeBoxes[StyleForm["\[ScriptU]", FontSlant -> "Italic",
+  FontWeight -> "Bold"]][[1]];
+
+MMS /: MakeBoxes[MMS[___], TraditionalForm] :=
+  
+    MakeBoxes[StyleForm["\[GothicCapitalU]", FontSlant -> "Italic",
+  FontWeight -> "Bold"]][[1]];
+
 MM /: MakeBoxes[MM, TraditionalForm] :=
   
     MakeBoxes[StyleForm["\[ScriptCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]][[1]];
+
 SMM /: MakeBoxes[SMM, TraditionalForm] :=
   
     MakeBoxes[StyleForm["\[ScriptU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]][[1]];
+
 MMS /: MakeBoxes[MMS, TraditionalForm] :=
   
     MakeBoxes[StyleForm["\[GothicCapitalU]", FontSlant -> "Italic",
   FontWeight -> "Bold"]][[1]];
+
 FST /: MakeBoxes[FST[p_, mu_, nu_], TraditionalForm] :=
   
     SubscriptBox[MakeBoxes[ TraditionalForm[p]], 
       RowBox[MakeBoxes[TraditionalForm[#]] & /@ {mu, nu}]];
+
 FST /: MakeBoxes[FST[p_, {mu_}, {nu_}], TraditionalForm] :=
   
     SubscriptBox[MakeBoxes[ TraditionalForm[p]], 
@@ -1637,10 +1894,19 @@ Objects:
 *)
 
 UMatrix /: MakeBoxes[
-      UMatrix[um_[
-          i_], (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
-          mi1_], (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
-          mi2_], ___], 
+      UMatrix[um_[lis:(HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_]..)],rr___][x_], TraditionalForm] := 
+      SuperscriptBox[MakeBoxes[TraditionalForm[UMatrix[um, rr][x]]], 
+      MakeBoxes[TraditionalForm[lis]]];
+
+UMatrix /: MakeBoxes[
+      UMatrix[um_[lis:(HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_]..), r__],rr___], TraditionalForm] := 
+      SuperscriptBox[MakeBoxes[TraditionalForm[UMatrix[um[r], rr][x]]], 
+      MakeBoxes[TraditionalForm[lis]]];
+
+UMatrix /: MakeBoxes[
+      UMatrix[um_[i_],
+        (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[mi1_],
+        (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[mi2_], ___], 
 	  TraditionalForm] := 
     SubsuperscriptBox[MakeBoxes[TraditionalForm[um]][[1, 1]], 
       RowBox[{"(", MakeBoxes[TraditionalForm[mi1]], 
@@ -1648,15 +1914,15 @@ UMatrix /: MakeBoxes[
       MakeBoxes[TraditionalForm[i]]];
 
 UMatrix /: MakeBoxes[
-      UMatrix[um_, (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
-          mi1_], (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[
-          mi2_], ___], 
+      UMatrix[um_,
+        (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[mi1_],
+        (UIndex | HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex)[mi2_], ___], 
 	  TraditionalForm] := 
     SubscriptBox[MakeBoxes[TraditionalForm[um]][[1, 1]], 
       RowBox[{"(", MakeBoxes[TraditionalForm[mi1]], 
           MakeBoxes[TraditionalForm[mi2]], ")"}]];
 
-UMatrix /: MakeBoxes[UMatrix[um_[i_ /; FreeQ[i, Rule], ___Rule], ___Rule], 
+UMatrix /: MakeBoxes[UMatrix[um_[i_ /; FreeQ[i, Rule|fcli], ___Rule], ___Rule], 
 	  TraditionalForm] := 
     SuperscriptBox[(MakeBoxes[
             TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]])[[1, 1, 1]],
@@ -1668,8 +1934,7 @@ UMatrix /: MakeBoxes[UMatrix[um_[___Rule], ___Rule],
 
 UMatrix /: MakeBoxes[UMatrix[um_ /; AtomQ[um], ___Rule | ___List], 
 	  TraditionalForm] := 
-    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]][[1, 1, 
-        1]];
+    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]][[1, 1, 1]];
         
 (*Added 31/7-2001*)
 UMatrix /: MakeBoxes[UMatrix[um_, ___Rule][_], TraditionalForm] :=
@@ -1683,6 +1948,21 @@ UIdentity /: Format[UIdentity, TraditionalForm] :=
     StyleForm["\[DoubleStruckCapitalI]\[DoubleStruckD]", 
       FontSlant -> "Italic"];
       
+     UChiralSpurion /:
+     MakeBoxes[UChiralSpurion[___], TraditionalForm] :=
+     
+    MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
+     
+     UChiralSpurionLeft /:
+     MakeBoxes[UChiralSpurionLeft[___], TraditionalForm] :=
+     
+    SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]][[1]], "L"];
+     
+     UChiralSpurionRight /:
+     MakeBoxes[UChiralSpurionRight[___], TraditionalForm] :=
+     
+    SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]][[1]], "R"];
+     
      UChiralSpurion /:
      MakeBoxes[UChiralSpurion, TraditionalForm] :=
      
@@ -1698,25 +1978,28 @@ UIdentity /: Format[UIdentity, TraditionalForm] :=
      
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]][[1]], "R"];
      
+     UMatrix /:
+     MakeBoxes[UMatrix[UChi[___]][___], 
+	  TraditionalForm] :=
+     
+    MakeBoxes[
+        StyleForm["\[Chi]", FontSlant -> "Italic", 
+          FontWeight -> "Bold"]][[1]];
+
      UChi /:
      MakeBoxes[UChi, 
 	  TraditionalForm] :=
      
     MakeBoxes[StyleForm["\[Chi]", FontSlant -> "Italic"]][[1]];
-     UChiMatrix /:
+    
+    UChiMatrix /:
      MakeBoxes[UChiMatrix, 
 	  TraditionalForm] :=
      
     MakeBoxes[
         StyleForm["\[Chi]", FontSlant -> "Italic", 
           FontWeight -> "Bold"]][[1]];
-     UChiMatrix /:
-     MakeBoxes[UChiMatrix[___], 
-	  TraditionalForm] :=
-     
-    MakeBoxes[
-        StyleForm["\[Chi]", FontSlant -> "Italic", 
-          FontWeight -> "Bold"]][[1]];
+
      UQuarkChargeMatrix /:
      MakeBoxes[UQuarkChargeMatrix, 
 	  TraditionalForm] :=
@@ -1916,7 +2199,7 @@ IndexBox /:
      
     MakeBoxes[
         Particle[p_, st___RenormalizationState, sc___RenormalizationScheme], 
-	  TraditionalForm] /; MemberQ[$UParticleTypes, Head[p]] := 
+	  TraditionalForm] /; MemberQ[$ParticleTypes, Head[p]] := 
     SuperscriptBox[MakeBoxes[TraditionalForm[p]][[1, 1]], 
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}]]];
@@ -1962,9 +2245,9 @@ LeftComponent /: MakeBoxes[LeftComponent, TraditionalForm] :=
     MakeBoxes[StyleForm["L", FontSlant -> "Italic"]][[1]];
 RightComponent /: MakeBoxes[RightComponent, TraditionalForm] := 
     MakeBoxes[StyleForm["R", FontSlant -> "Italic"]][[1]];
-LeftComponent /: MakeBoxes[LeftComponent[_], TraditionalForm] := 
+LeftComponent /: MakeBoxes[LeftComponent[__], TraditionalForm] := 
     MakeBoxes[StyleForm["L", FontSlant -> "Italic"]][[1]];
-RightComponent /: MakeBoxes[RightComponent[_], TraditionalForm] := 
+RightComponent /: MakeBoxes[RightComponent[__], TraditionalForm] := 
     MakeBoxes[StyleForm["R", FontSlant -> "Italic"]][[1]];
 Fermion /: MakeBoxes[Fermion[_], TraditionalForm] := 
     MakeBoxes[StyleForm["\[Psi]"]][[1]];
@@ -1990,6 +2273,8 @@ PseudoScalar /: MakeBoxes[PseudoScalar[10], TraditionalForm] :=
     SuperscriptBox[MakeBoxes[StyleForm["K"]][[1]], "-"];
 PseudoScalar /: MakeBoxes[PseudoScalar[11], TraditionalForm] := 
     MakeBoxes[StyleForm["\[Eta]"]][[1]];
+PseudoScalar /: MakeBoxes[PseudoScalar[12], TraditionalForm] := 
+    MakeBoxes[StyleForm["\[Xi]"]][[1]];
 Fermion /: MakeBoxes[Fermion[1], TraditionalForm] := 
     MakeBoxes[StyleForm["\[ScriptL]"]][[1]];
 Fermion /: MakeBoxes[Fermion[2], TraditionalForm] := 
@@ -2108,38 +2393,123 @@ DecayConstant /:
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
-UCouplingConstant /: 
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: 
     MakeBoxes[
-      UCouplingConstant[QED[1], st___RenormalizationState, 
+      HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1], st___RenormalizationState, 
         sc___RenormalizationScheme, qs___ExpansionState], TraditionalForm] := 
     MakeBoxes[StyleForm["e", FontSlant -> "Italic"]][[1]];
-UCouplingConstant /: 
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: 
     MakeBoxes[
-      UCouplingConstant[QED[1], st___RenormalizationState, 
+      HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1], st___RenormalizationState, 
         sc___RenormalizationScheme, qs___ExpansionState], TraditionalForm] := 
     SuperscriptBox[MakeBoxes[StyleForm["e", FontSlant -> "Italic"]][[1]], 
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
-UCouplingConstant /: 
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: 
     MakeBoxes[
-        UCouplingConstant[x_, st___RenormalizationState, 
+        HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[x_, st___RenormalizationState, 
           sc___RenormalizationScheme, qs___ExpansionState], TraditionalForm] /;
-       MatchQ[x, Alternatives @@ Union[$ULagrangians, {_QED}]] =!= True := 
+       MatchQ[x, Alternatives @@ Union[Global`$Lagrangians, {_QED,"QED"[___]}]] =!= True := 
     SuperscriptBox[MakeBoxes[StyleForm["C", FontSlant -> "Italic"]][[1]], 
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
-UCouplingConstant /: 
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: 
     MakeBoxes[
-        UCouplingConstant[x_, i_, st___RenormalizationState, 
+        HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[x_, i_, st___RenormalizationState, 
           sc___RenormalizationScheme, qs___ExpansionState], TraditionalForm] /;
-       MatchQ[x, Alternatives @@ Union[$ULagrangians, {_QED}]] =!= True := 
+       MatchQ[x, Alternatives @@ Union[Global`$Lagrangians, {_QED,"QED"[___]}]] =!= True := 
     SubsuperscriptBox[MakeBoxes[StyleForm["C", FontSlant -> "Italic"]][[1]], 
       MakeBoxes[TraditionalForm[i]], 
       RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
               TraditionalForm[IndexBox[qs]]]}]]];
+
+(*
+Composed objects for construction of lagrangians
+*)
+
+USmall /: MakeBoxes[USmall[{mu_}][_], TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[
+          StyleForm["u", FontSlant -> "Italic",
+          FontWeight -> "Bold"]][[1]],
+      MakeBoxes[TraditionalForm[mu]]];
+
+USmall /: MakeBoxes[USmall[
+   (*HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[*)mu_(*]*)][_],
+     TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[
+          StyleForm["u", FontSlant -> "Italic",
+          FontWeight -> "Bold"]][[1]],
+      MakeBoxes[TraditionalForm[mu]]];
+
+USmall /: MakeBoxes[USmall[mu_], TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[
+          StyleForm["u", FontSlant -> "Italic",
+          FontWeight -> "Bold"]][[1]],
+      MakeBoxes[TraditionalForm[mu]]];
+
+UGamma /: MakeBoxes[UGamma[mu_,___][_], TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[
+          StyleForm["\[CapitalGamma]", FontSlant -> "Italic",
+          FontWeight -> "Bold"]][[1]],
+      MakeBoxes[TraditionalForm[mu]]];
+
+UGamma /: MakeBoxes[UGamma[mu_,___], TraditionalForm] :=
+    SubscriptBox[
+      MakeBoxes[
+          StyleForm["\[CapitalGamma]", FontSlant -> "Italic",
+          FontWeight -> "Bold"]][[1]],
+      MakeBoxes[TraditionalForm[mu]]];
+
+UChiPlus/:MakeBoxes[UChiPlus[_], TraditionalForm] :=
+SubscriptBox[MakeBoxes[
+StyleForm["\[Chi]",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"+"];
+
+UChiMinus/:MakeBoxes[UChiMinus[_], TraditionalForm] :=
+SubscriptBox[MakeBoxes[
+StyleForm["\[Chi]",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"-"];
+
+UChiPlus/:MakeBoxes[UChiPlus, TraditionalForm] :=
+SubscriptBox[MakeBoxes[
+StyleForm["\[Chi]",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"+"];
+
+UChiMinus/:MakeBoxes[UChiMinus, TraditionalForm] :=
+SubscriptBox[MakeBoxes[
+StyleForm["\[Chi]",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"-"];
+
+UFPlus/:MakeBoxes[UFPlus[mu_,nu_][__], TraditionalForm] :=
+SubscriptBox[SubscriptBox[MakeBoxes[
+StyleForm["f",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"+"],RowBox[{MakeBoxes[TraditionalForm[mu]],
+             MakeBoxes[TraditionalForm[nu]]}]];
+
+UFPlus/:MakeBoxes[UFPlus[mu_,nu_], TraditionalForm] :=
+SubscriptBox[SubscriptBox[MakeBoxes[
+StyleForm["f",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"+"],RowBox[{MakeBoxes[TraditionalForm[mu]],
+             MakeBoxes[TraditionalForm[nu]]}]];
+
+UFMinus/:MakeBoxes[UFMinus[mu_,nu_][__], TraditionalForm] :=
+SubscriptBox[SubscriptBox[MakeBoxes[
+StyleForm["f",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"-"],RowBox[{MakeBoxes[TraditionalForm[mu]],
+             MakeBoxes[TraditionalForm[nu]]}]];
+
+UFMinus/:MakeBoxes[UFMinus[mu_,nu_], TraditionalForm] :=
+SubscriptBox[SubscriptBox[MakeBoxes[
+StyleForm["f",FontSlant->"Italic",FontWeight->"Bold"]][[1]],
+"-"],RowBox[{MakeBoxes[TraditionalForm[mu]],
+             MakeBoxes[TraditionalForm[nu]]}]];
 
 (*
 Notational boxes for isospin indices, momenta, etc.:

@@ -26,11 +26,11 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 HBChPT22::"usage"=
 "HBChPT22.m is the name of the file containing the definitions for
-ULagrangian[HBChPT2[2]], which is the SU(2)  ChPT pion-nucleon
+Lagrangian[HBChPT2[2]], which is the SU(2)  ChPT pion-nucleon
 lagrangian.  To evaluate use ArgumentsSupply";
 
 GAV::"usage"=
-"GAV := UCouplingConstant[HBChPT2[2]] is axial vector
+"GAV := CouplingConstant[HBChPT2[2]] is axial vector
 coupling constant";
 
 (* ------------------------------------------------------------------ *)
@@ -47,9 +47,10 @@ fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
 
 (* ------------------------------------------------------------------ *)
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[HBChPT2[2],st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+   HBChPT2[2],st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["g",FontSlant->"Italic"]][[1]],
@@ -60,11 +61,13 @@ UCouplingConstant/:
 
 (* ------------------------------------------------------------------ *)
 
-GAV := UCouplingConstant[HBChPT2[2]];
+GAV :=
+   HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+   HBChPT2[2]];
 
 (* ------------------------------------------------------------------ *)
 
-ULagrangian[HBChPT2[2]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[HBChPT2[2]]:=
 
 I*(UVector[
 DiracBar[fcqf[Particle[Nucleon]]]].
@@ -77,7 +80,8 @@ UVector[DiracBar[fcqf[Particle[Nucleon]]]].
 UVector[fcqf[Particle[Nucleon]]]+
 
 
-UCouplingConstant[HBChPT2[2],RenormalizationState[0]]/2*
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+HBChPT2[2],RenormalizationState[0]]/2*
 (UVector[DiracBar[fcqf[Particle[Nucleon]]]].
 fcdm[fcli[mu]].USmall[mu].
 UVector[fcqf[Particle[Nucleon]]]);
@@ -89,7 +93,7 @@ FieldsSet[HBChPT2[2]]:=
 fcqf[Particle[Pion,RenormalizationState[0]]]],
 UVector[fcqf[Particle[Nucleon,RenormalizationState[0]]]]};
 
-$ULagrangians=Union[$ULagrangians,{HBChPT2[2]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{HBChPT2[2]}];
 
 End[];
 

@@ -60,4 +60,4 @@
      SU3Delta[I2, I3] + 4*SU3D[6, I1, I3]*SU3Delta[I2, I4] + 
     4*I*SU3F[6, I1, I3]*SU3Delta[I2, I4] + 4*SU3D[6, I1, I2]*
      SU3Delta[I3, I4] + 4*I*SU3F[6, I1, I2]*SU3Delta[I3, I4])*
-   UCouplingConstant[ChPTW3[2], 2]}}
+   CouplingConstant[ChPTW3[2], 2]}}

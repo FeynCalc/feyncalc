@@ -44,9 +44,11 @@ FAFourVector[ Expand[-mom], mu ];
 
 PropagatorType[$ScalarHeads]=Straight;
 PropagatorType[$VectorHeads]=Sine;
-PropagatorType[$FermionHeads]=Dashing[{0.003,0.006}];
+(*PropagatorType[$FermionHeads]=Dashing[{0.003,0.006}];*)
+(*FA seems to have lost some flexibility in costumizing the graphics*)
+PropagatorType[$FermionHeads]=ScalarDash;
 
-PropagatorArrow[$UParticleHeads]=None;
+PropagatorArrow[$ParticleHeads]=None;
 
 KinematicIndices[$ScalarHeads] := {};
 KinematicIndices[$FermionHeads] := {};

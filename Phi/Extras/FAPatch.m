@@ -123,7 +123,7 @@ Print[ "Altering P$Generic in Setup.m.\n
    >Please check that this is actually done. If not, do it manually."];
 strm = OpenAppend[$FeynCalcDirectory <> $PathnameSeparator <> "Setup.m"];
 WriteString[strm, "\nP$Generic = 
-Union[P$Generic, HighEnergyPhysics`Phi`Objects`$UParticleHeads]\n"]; 
+Union[P$Generic, HighEnergyPhysics`Phi`Objects`$ParticleHeads]\n"]; 
 Close[strm];
 
 
@@ -195,7 +195,7 @@ Remove[HighEnergyPhysics`FeynArts`$FeynArts]];",
 "LoadPackage*:=" -> 
 "If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory], $FeynArtsDir=HighEnergyPhysics`FeynCalc`$FeynCalcDirectory<>$PathnameSeparator,\n
 Remove[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]];\n\n$1",
-"F | S | V | U | SV" -> "F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$UParticleHeads"}];
+"F | S | V | U | SV" -> "F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$ParticleHeads"}];
 
 
 (* ------------------------------------------------------------------------------ *)

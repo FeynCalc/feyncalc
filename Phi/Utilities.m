@@ -51,7 +51,10 @@ fcmomex := fcmomex = HighEnergyPhysics`FeynCalc`MomentumExpand`MomentumExpand;
 fcmomcomb := fcmomcomb = HighEnergyPhysics`FeynCalc`MomentumCombine`MomentumCombine;
 fcpave := fcpave = HighEnergyPhysics`fctools`PaVe`PaVe;
 fconeloop := fconeloop = HighEnergyPhysics`fctools`OneLoop`OneLoop;
-
+fcexpt := fcexpt = HighEnergyPhysics`fctools`Explicit`Explicit;
+fcqf := fcqf = HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
+fcpd := fcpd = HighEnergyPhysics`FeynCalc`PartialD`PartialD;
+fcsunn := fcsunn = HighEnergyPhysics`FeynCalc`SUNN`SUNN;
 
 
 (* Tracer functions *)
@@ -71,7 +74,7 @@ Options[MandelstamReduce] = {MomentaSumLeft -> All, OnMassShell -> True,
           ParticleMass[Pion, RenormalizationState[0]],
           ParticleMass[Pion, RenormalizationState[0]],
           ParticleMass[Pion, RenormalizationState[0]]}};
-DeclareUScalar[MandelstamS]; DeclareUScalar[MandelstamT]; \
+DeclareUScalar[MandelstamS]; DeclareUScalar[MandelstamT]; 
 DeclareUScalar[MandelstamU];
 Options[LorentzIndicesSupply] = {LorentzIndicesString -> "\[Nu]"};
 Options[GammaSort] = {Gamma5AntiCommute -> False,
@@ -83,7 +86,29 @@ Options[CheckF] = {Directory ->
         (*Directory[]*)
 ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,"Phi"}, "Storage"],
 ForceSave -> False, NoSave -> False};
-
+Options[SurfaceReduce] = {DifferenceOrder -> 2, UFields -> UPerturbation};
+Options[UReduce] = {SMMToMM -> False, FullReduce -> True, fcsunn -> 2, UDimension -> Automatic};
+Options[SMMToMM] = {fcsunn -> 2};
+Options[UPerturb] = {ExpansionOrder -> {1}, fcsunn -> 2,
+UFields -> {USmall, UChiPlus, UChiMinus, UFPlus, UFMinus, MM}};
+Options[CharacteristicCoefficient] = {UDimension -> 2};
+Options[CayleyHamilton] = {UDimension -> 2, Eliminate -> True};
+Options[CayleyHamiltonRules] = {fcsunn -> 2, UDimension -> 2,
+  CommutatorReduce->True, UReduce -> False};
+tmpoptscdr=Options[CovariantFieldDerivative];
+tmpoptscn=Options[CovariantNabla];
+tmpoptsmm=Options[MM];
+tmpoptssmm=Options[SMM];
+SetOptions[CovariantFieldDerivative, fcexpt -> False];
+SetOptions[MM, fcexpt -> False];
+Options[CayleyHamiltonTrick] = {fcsunn -> 2, UDimension -> 2,
+    CommutatorReduce -> True, UReduce -> True,
+    UMatrices :> {{I NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, {\[Rho]1_}]], MM[x_]],
+    I NM[Adjoint[MM[x_]], CovariantFieldDerivative[MM[x_], x_, {\[Rho]2_}]],
+    NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, {\[Rho]1_}]],
+      CovariantFieldDerivative[MM[x_], x_, {\[Rho]2_}]]}}};
+SetOptions[CovariantFieldDerivative, Sequence@@tmpoptscdr];
+SetOptions[MM, Sequence@@tmpoptsmm];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
@@ -563,7 +588,7 @@ SetAttributes[CheckF, HoldFirst];
 CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
     Block[{dir, file, finex, fs, ns},
 
-      If[StringQ[fi] =!= True, Message[PutIfNotThere::nostring, fi];
+      If[StringQ[fi] =!= True, Message[CheckF::nostring, fi];
         Return[]];
 
       Which[
@@ -598,7 +623,7 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
               Directory[] <> $PathnameSeparator <> dir <> $PathnameSeparator <>
                  fi,
 
-              True, (Message[PutIfNotThere::baddir, dir]; Return[])];
+              True, (Message[CheckF::baddir, dir]; Return[])];
 
         ];
 
@@ -619,10 +644,995 @@ CheckF[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
       VerbosePrint[1, "File exists, loading"];
         finex = Get[file]
       ];
-        
+
       finex
 
       ];
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Characteristic polynomial and Cayley-Hamilton*)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(*Se Karakteristisk polynomium og Newtonformler i H.A. Nielsen*)
+
+CharacteristicCoefficient[a_, opts___Rule][i_] /;
+      HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[
+          CharacteristicCoefficient, opts, a] === i := 
+					(-1)^(HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[
+                CharacteristicCoefficient, opts, a]) (*Bug fixed 19/2-2002*);
+
+CharacteristicCoefficient[a_, opts___Rule][i_] :=
+    Block[{n =
+          HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[
+            CharacteristicCoefficient, opts, a]},
+      1/(i - n)Sum[
+          UTrace[NMPower[a, k]]CharacteristicCoefficient[a, opts][i + k], {k,
+            1, n - i}]];
+
+CayleyHamilton[m__, opts___Rule] :=
+    CayleyHamilton[m, opts] =
+      Block[{n = HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[
+             CharacteristicCoefficient, opts, a], coms, len = Length[{m}],
+             ch, el, submat},
+        If[len =!= n || (Eliminate /. {opts} /. Options[CayleyHamilton]) =!=
+              True, If[len =!= n,
+            Message[CayleyHamilton::baddim]];
+          Sum[CharacteristicCoefficient[UMatrix[b], opts][i] NMPower[
+                          UMatrix[b], i], {i, 0, n}] /.
+                    UMatrix[b] -> Plus[m] // CycleUTraces // NMExpand //
+              Expand // CycleUTraces,
+          Do[coms = HighEnergyPhysics`general`Combinations`Combinations[{m}, k];
+            ch[k] = Sum[
+                  Sum[CharacteristicCoefficient[UMatrix[b], opts][i]NMPower[
+                                UMatrix[b], i], {i, 0, n}] /.
+                          UMatrix[b] -> (Plus @@ coms[[l]]) // CycleUTraces //
+                       NMExpand // Expand, {l, Length[coms]}] // CycleUTraces;
+             VerbosePrint[2, "Doing ", k, "-term Cayley-Hamilton"];
+            el[k] = ch[k] -
+                  If[k === 1, 0,
+                    Plus @@
+                      Table[submat =
+                          NM[Sequence @@
+                              Table[{m}[[1]], {dum, 1, len - sp + 1}],
+                            Sequence @@ Drop[{m}, len - sp + 1]];
+                        VerbosePrint[2, "Eliminating ", submat,
+                          " with coefficients", " ",
+                          Coefficient[ch[k], submat], " ",
+                          Coefficient[el[sp], submat]];
+                        Coefficient[ch[k], submat]/
+                            Coefficient[el[sp], submat]el[sp], {sp, 1,
+                          k - 1}]] // Expand, {k, 1, len}]; el[len]]];
+
+licount = (Count[# /. UTrace1 -> tr /. Power -> NMPower /.
+              NM -> nm //. {nm[a___,
+                  l_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &),
+                  ll_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), b___] :>
+                nm[a, pp[Unique[pp]], b] /;
+                  Cases[l, fcli[__], Infinity] ===
+                    Cases[ll, fcli[__], Infinity],
+              nm[l_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), a__,
+                  ll_?((! FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &)] :>
+                nm[a, pp[Unique[pp]]] /;
+                  Cases[l, fcli[__], Infinity] ===
+                    Cases[ll, fcli[__], Infinity]}, _pp, Infinity] &);
+
+CayleyHamiltonRules[mats_List, opts___Rule] :=
+    Block[{(*calham, fac, scalham, rightside, a, len, i, tr, submats, j,
+        calhamrules, subres*)}, calhamrules = {};
+      VerbosePrint[3, Length[mats], " sets of matrices"];
+      Do[VerbosePrint[2, j];
+      len = Length[mats[[j]]];
+        submats = Table[UMatrix[a[i]], {i, 1, len - 1}];
+        calham = (subres=(UTrace[
+                      NM[CayleyHamilton[
+		        If[j===1,
+			VerbosePrint[2, "Calling CayleyHamilton on ", submats,
+			             " (first time only)"]];
+		        Sequence @@ submats,
+                          Sequence @@
+                            OptionsSelect[CayleyHamilton, Eliminate -> True,
+                              opts, Options[CayleyHamiltonRules]]],
+                        UMatrix[a[len]]]] //
+	(VerbosePrint[3, "Expanding"];#)& //
+	NMExpand // Expand // CycleUTraces) /.
+	(VerbosePrint[3, "Substituting matrices"];
+	(Rule @@ #) & /@
+                  Transpose[{Append[submats, UMatrix[a[len]]], mats[[j]]}]))//
+	(VerbosePrint[3, "Reducing ", subres];#)& //
+             If[(UReduce/.{opts}/.Options[CayleyHamiltonRules])=!=False,
+						   VerbosePrint[1, "Doing UReduce"];
+							 UReduce[#, Sequence@@OptionsSelect[UReduce,
+               Options[CayleyHamiltonRules],opts]] // CommutatorReduce // CycleUTraces,
+							If[ (CommutatorReduce/.{opts}/.Options[CayleyHamiltonRules])=!=False,
+                                               # //NMExpand // CommutatorReduce // CycleUTraces, #]]&;
+        VerbosePrint[2, "Finding left-hand side of ", calham];
+	scalham =
+          Sort[List @@ Expand[calham /. UTrace1 -> tr /.
+                  Power -> NMPower], 
+           ((Count[#1, _tr, Infinity] <
+                      Count[#2, _tr, Infinity] ||
+                    Count[#1, _tr, Infinity] === Count[#2, _tr, Infinity] &&
+                      licount[#1] < licount[#2] ||
+                    licount[#1] == licount[#2] &&
+                      Count[#1, _tr, Infinity] === Count[#2, _tr, Infinity] &&
+                       LeafCount[#1] > LeafCount[#2]) &)];
+        fac = scalham[[1]] /. _tr -> 1;
+        rightside = (-(Plus @@ Drop[scalham/fac, 1]) /.
+              Pattern -> (({##}[[1]]) &));
+        calhamrules =
+          Append[calhamrules, Cancel[scalham[[1]]/fac] -> rightside], {j, 1,
+          Length[mats]}];
+
+
+          If[(CommutatorReduce/.{opts}/.Options[CayleyHamiltonRules])=!=False,
+          calhamrules /. tr -> UTrace // CommutatorReduce,
+          calhamrules /. tr -> UTrace]];
+
+
+CayleyHamiltonTrick[exp_, opts___Rule] := Block[{ruls},
+  ruls=
+  CayleyHamiltonRules[VerbosePrint[1, "Building Cayley-Hamilton rules..."];
+     UMatrices /. {opts} /. Options[CayleyHamiltonTrick],
+		   Sequence@@OptionsSelect[CayleyHamiltonRules, opts, Options[CayleyHamiltonTrick]]];
+  VerbosePrint[1, "Applying rules"];
+  exp /. ruls];
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Reduction of lagrangians *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(* Here we deal symbolically with SMM[x] and MM[x], which should thus not
+   be expanded *)
+SetOptions[MM, fcexpt -> False];
+SetOptions[SMM, fcexpt -> False];
+SetOptions[CovariantFieldDerivative, fcexpt -> False];
+
+(* With no scalar and pseudo-scalar sources, \[Chi] is self-adjoined: *)
+
+idRules = {nm[ff___, SMM[x_], Adjoint[SMM[x_]], ll___] -> nm[ff, ll],
+      nm[ff___, Adjoint[SMM[x_]], SMM[x_], ll___] -> nm[ff, ll],
+      nm[ff___, MM[x_], Adjoint[MM[x_]], ll___] -> nm[ff, ll],
+      nm[ff___, Adjoint[MM[x_]], MM[x_], ll___] -> nm[ff, ll],
+      nm[ff___, SMM[x_], Adjoint[MM[x_]], ll___] -> nm[ff, Adjoint[SMM[x]], ll],
+       nm[ff___, Adjoint[SMM[x_]], MM[x_], ll___] -> nm[ff, SMM[x], ll],
+      nm[ff___, Adjoint[MM[x_]], SMM[x_], ll___] -> nm[ff, Adjoint[SMM[x]], ll],
+       nm[ff___, MM[x_], Adjoint[SMM[x_]], ll___] -> nm[ff, SMM[x], ll],
+      UTrace1[nm[SMM[x_], ff___, Adjoint[SMM[x_]]]] :> UTrace1[nm[ff]],
+      UTrace1[nm[Adjoint[SMM[x_]], ff___, SMM[x_]]] :> UTrace1[nm[ff]],
+      UTrace1[nm[MM[x_], ff___, Adjoint[MM[x_]]]] :> UTrace1[nm[ff]],
+      UTrace1[nm[Adjoint[MM[x_]], ff___, MM[x_]]] :> UTrace1[nm[ff]],
+      Trace1[nm[SMM[x_], ff___, Adjoint[MM[x_]]]] :>
+        UTrace1[nm[ff, Adjoint[SMM[x]]]],
+      Trace1[nm[MM[x_], ff___, Adjoint[SMM[x_]]]] :> UTrace1[nm[ff, SMM[x]]],
+      UTrace1[nm[Adjoint[MM[x_]], ff___, SMM[x_]]] :>
+        UTrace1[nm[ff, Adjoint[SMM[x]]]],
+      UTrace1[nm[Adjoint[SMM[x_]], ff___, MM[x_]]] :> UTrace1[nm[ff, SMM[x]]]};
+
+
+UIdTrick[expr_,opts___Rule] := expr /. NM -> nm /. idRules /. nm -> NM /.
+     UTrace1[] :> (HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[UReduce,opts,expr]) ;
+
+(* At least with the exponential representation these traces are 0. Follows also
+   from det u =1. *)
+
+traceRules0 = {UTrace1[
+          NM[SMM[x_], Adjoint[FieldDerivative[SMM[x_], _, fcli[_]]]]] -> 0,
+	  UTrace1[
+          NM[Adjoint[SMM[x_]], FieldDerivative[SMM[x_], _, fcli[_]]]] -> 0,
+	  UTrace1[
+          NM[Adjoint[FieldDerivative[SMM[x_], _, fcli[_]]], SMM[x_]]] -> 0,
+	  UTrace1[
+          NM[FieldDerivative[SMM[x_], _, fcli[_]], Adjoint[SMM[x_]]]] -> 0,
+	  UTrace1[
+          NM[SMM[x_],
+            Adjoint[CovariantFieldDerivative[SMM[x_], _, fcli[_]]]]] -> 0,
+	    UTrace1[
+          NM[Adjoint[SMM[x_]],
+            CovariantFieldDerivative[SMM[x_], _, fcli[_]]]] -> 0,
+      UTrace1[NM[
+            Adjoint[CovariantFieldDerivative[SMM[x_], _, fcli[_]]],
+            SMM[x_]]] -> 0,
+      UTrace1[NM[CovariantFieldDerivative[SMM[x_], _, fcli[_]],
+            Adjoint[SMM[x_]]]] -> 0,
+      UTrace1[NM[
+            FieldDerivative[FieldDerivative[SMM[x_], x_, fcli[li2_]],
+               x_, fcli[li1_]], Adjoint[SMM[x_]]]] -> -UTrace1[
+            NM[FieldDerivative[SMM[x], x, fcli[li1]],
+              Adjoint[FieldDerivative[SMM[x], x, fcli[li2]]]]],
+      UTrace1[NM[SMM[x_],
+            Adjoint[FieldDerivative[
+                FieldDerivative[SMM[x_], x_, fcli[li2_]], x_,
+                fcli[li1_]]]]] -> -UTrace1[
+            NM[FieldDerivative[SMM[x], x, fcli[li2]],
+              Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]]]]};
+
+traceRules = Join[traceRules0, traceRules0 /. SMM -> MM];
+
+UTraceTrick := ((# /. traceRules) &);
+
+(* We will need to simplify using that total derivatives vanish: *)
+
+uDagRul =
+    NM[SMM[x_], Adjoint[FieldDerivative[
+       FieldDerivative[SMM[x_], x_, fcli[li2_]], x_, fcli[li1_]]]] :>
+    -(NM[FieldDerivative[SMM[x], x, fcli[li2]],
+              Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]]] +
+            NM[FieldDerivative[
+                FieldDerivative[SMM[x], x, fcli[li2]], x,
+                fcli[li1]], Adjoint[SMM[x]]] +
+            NM[FieldDerivative[SMM[x], x, fcli[li1]],
+              Adjoint[FieldDerivative[SMM[x], x, fcli[li2]]]]) (*/;
+      Sort[{li1,li2}]=!={li1,li2}*);
+
+UDagRul = uDagRul /. SMM -> MM;
+
+(* The derivative of the product of U and Adjoint[U] is 0. And the derived rules works
+also for the covariant derivative.
+That is, NM[CovariantFieldDerivative[U],Adjoint[U]] =
+         -NM[U,Adjoint[CovariantFieldDerivative[U]]] *)
+
+du[li1_][x_] = FieldDerivative[SMM[x], x, fcli[li1]];
+dua[li1_][x_] = Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]];
+
+
+ddu[li1_][x_] = CovariantFieldDerivative[SMM[x], x, fcli[li1]];
+ddua[li1_][x_] =
+  Adjoint[CovariantFieldDerivative[SMM[x], x, fcli[li1]]];
+
+uRules10 = {rul[nm[f___, duu[li1_][x_], Adjoint[SMM[x_]], g___],
+            cond[-nm[f, SMM[x], duaa[li1][x], g], (mq[pt[{dum, f}, -1],
+            SMM[_] | Adjoint[SMM[_]]] || mq[pt[{dum, dum, f}, {-2, -1}],
+	    {duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]],
+             duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]]}] ||
+             eq[{f}, {}] && (mq[pt[{dum, g}, -1],  SMM[_] | Adjoint[SMM[_]]] ||
+             mq[pt[{dum, dum, g}, {-2, -1}], {duu[_][_] |
+             duaa[_][_] | SMM[_] | Adjoint[SMM[_]], duu[_][_] | duaa[_][_] | SMM[_] |
+             Adjoint[SMM[_]]}]))]], rul[nm[f___, duaa[li1_][x_], SMM[x_], g___],
+             cond[-nm[f, Adjoint[SMM[x]], duu[li1][x], g], (mq[pt[{dum, f}, -1],
+             SMM[_] | Adjoint[SMM[_]]] || mq[pt[{dum, dum, f}, {-2, -1}],
+	     {duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]],
+             duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]]}] || eq[{f}, {}] &&
+	     (mq[pt[{dum, g}, -1], SMM[_] | Adjoint[SMM[_]]] ||
+              mq[pt[{dum, dum, g}, {-2, -1}], {duu[_][_] | duaa[_][_] | SMM[_] |
+	      Adjoint[SMM[_]], duu[_][_] | duaa[_][_] | SMM[_] |
+              Adjoint[SMM[_]]}]))]]} /. {{duu -> du, duaa -> dua},
+	      {duu -> ddu, duaa -> ddua}} /.
+              rul -> RuleDelayed /. cond -> Condition /. {mq -> MatchQ,
+            eq -> SameQ} /. pt -> Part // Flatten;
+
+uRules1 = Join[uRules10, uRules10 /. SMM -> MM];
+
+applyuRules1 = (# /. NM -> nm /. uRules1 /. nm -> NM) &;
+UOrder = (# /. NM -> nm /. (uRules1 /. Condition -> cc /. cc[a_, b_] -> a) /. nm -> NM) &;
+
+uRules20 = {rul[nm[f___, SMM[x_], duaa[li1_][x_], g___],
+            cond[-nm[f, duu[li1][x], Adjoint[SMM[x]], g],
+	    (mq[pt[{g, dum}, 1], SMM[_] | Adjoint[SMM[_]]] ||
+             mq[pt[{g, dum, dum}, {1, 2}], {duu[_][_] | duaa[_][_] |
+             SMM[_] | Adjoint[SMM[_]], duu[_][_] | duaa[_][_] | SMM[_] |
+	     Adjoint[SMM[_]]}] || eq[{g}, {}] && (mq[pt[{f, dum}, 1],
+             SMM[_] | Adjoint[SMM[_]]] || mq[pt[{f, dum, dum}, {1, 2}], {duu[_][_] |
+             duaa[_][_] | SMM[_] | Adjoint[SMM[_]], duu[_][_] | duaa[_][_] | SMM[_] |
+             Adjoint[SMM[_]]}]))]], rul[nm[f___, Adjoint[SMM[x_]], duu[li1_][x_], g___],
+             cond[-nm[f, duaa[li1][x], SMM[x], g], (mq[pt[{g, dum}, 1], SMM[_] | Adjoint[SMM[_]]] ||
+             mq[pt[{g, dum, dum}, {1, 2}], {duu[_][_] | duaa[_][_] |
+             SMM[_] | Adjoint[SMM[_]], duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]]}] ||
+             eq[{g}, {}] && (mq[pt[{f, dum}, 1], SMM[_] | Adjoint[SMM[_]]] ||
+             mq[pt[{f, dum, dum}, {1, 2}], {duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]],
+             duu[_][_] | duaa[_][_] | SMM[_] | Adjoint[SMM[_]]}]))]]} /.
+	     {{duu -> du,  duaa -> dua}, {duu -> ddu, duaa -> ddua}} /.
+              rul -> RuleDelayed /. cond -> Condition /.
+	      {mq -> MatchQ, eq -> SameQ} /. pt -> Part // Flatten;
+
+uRules2 = Join[uRules20, uRules20 /. SMM -> MM];
+
+applyuRules2 = (# /. NM -> nm /. uRules2 /. nm -> NM) &;
+UOrder1 = (# /. NM -> nm /. (uRules2 /. Condition -> cc /. cc[a_, b_] -> a) /. nm -> NM) &;
+
+applyuRules12 = (# /. NM -> nm /. uRules1 /. uRules2 /. nm -> NM) &;
+applyuRules12n = (# /. NM -> nm /. (uRules1 /. Condition -> cc /. cc[a_, b_] -> a) /.
+                    (uRules2 /. Condition -> cc /. cc[a_, b_] -> a) /. nm -> NM) &;
+
+applyuRules21 = (# /. NM -> nm /. uRules2 /. uRules1 /. nm -> NM) &;
+applyuRules21n = (# /. NM -> nm /. (uRules2 /. Condition -> cc /. cc[a_, b_] -> a) /.
+                    (uRules1 /. Condition -> cc /. cc[a_, b_] -> a) /. nm -> NM) &;
+
+(* Use this to get u's side by side: *)
+
+usurules = {(NM[f___, SMM[x_] | Adjoint[SMM[x_]], SMM[x_] | Adjoint[SMM[x_]],
+              l___] | NM[f___, MM[x_] | Adjoint[MM[x_]],
+              MM[x_] | Adjoint[MM[x_]], l___]) ->
+        NM[f, usu, l], (UTrace1[NM[SMM[x_] | Adjoint[SMM[x_]], f__,
+                SMM[x_] | Adjoint[SMM[x_]]]] |
+            UTrace1[NM[MM[x_] | Adjoint[MM[x_]], f__,
+                MM[x_] | Adjoint[MM[x_]]]]) -> NM[f, usu]};
+
+UPair[exp_, opts___Rule] := (exp /. (a : HoldPattern[NM[__]]) :> (tmpa = a // applyuRules1;
+                     If[Count[a /. usurules, usu, Infinity] >
+                        Count[tmpa /. usurules, usu, Infinity], a,
+                      tmpa]) /. (a : HoldPattern[NM[__]]) :> (tmpa =
+                    a // applyuRules2;
+                  If[Count[a /. usurules, usu, Infinity] >
+                      Count[tmpa /. usurules, usu, Infinity], a,
+                    tmpa]) /. (a : HoldPattern[NM[__]]) :> (tmpa =
+                  a // applyuRules12;
+                If[Count[a /. usurules, usu, Infinity] >
+                    Count[tmpa /. usurules, usu, Infinity], a, tmpa]) /. (a :
+                HoldPattern[NM[__]]) :> (tmpa = a // applyuRules21;
+              If[Count[a /. usurules, usu, Infinity] >
+                  Count[tmpa /. usurules, usu, Infinity], a, tmpa]) //
+        UIdTrick[#,opts]&);
+
+UDrop[exp_, opts___Rule] := Block[{(*tmpexp,tmpexp1,res*)},
+  tmpexp = exp // UOrder //  UIdTrick[#,opts]& // CycleUTraces;
+  tmpexp1 = exp /. UTrace1 -> (UTrace[RotateLeft[#]] &) // UOrder //  UIdTrick[#,opts]& // CycleUTraces;
+  res={exp,tmpexp,tmpexp1}[[Ordering[LeafCount/@{exp,tmpexp,tmpexp1}][[1]]]];
+  tmpexp = res // UOrder1 //  UIdTrick[#,opts]& // CycleUTraces;
+  tmpexp1 = res /. UTrace1 -> (UTrace[RotateLeft[#]] &) // UOrder1 //  UIdTrick[#,opts]& // CycleUTraces;
+  res={exp,tmpexp,tmpexp1}[[Ordering[LeafCount/@{exp,tmpexp,tmpexp1}][[1]]]];
+  tmpexp = res // applyuRules12n //  UIdTrick[#,opts]& // CycleUTraces;
+  tmpexp1 = res /. UTrace1 -> (UTrace[RotateLeft[#]] &) // applyuRules12n //  UIdTrick[#,opts]& // CycleUTraces;
+  res={exp,tmpexp,tmpexp1}[[Ordering[LeafCount/@{exp,tmpexp,tmpexp1}][[1]]]];
+  tmpexp = res // applyuRules21n //  UIdTrick[#,opts]& // CycleUTraces;
+  tmpexp1 = res /. UTrace1 -> (UTrace[RotateLeft[#]] &) // applyuRules21n //  UIdTrick[#,opts]& // CycleUTraces;
+  res={exp,tmpexp,tmpexp1}[[Ordering[LeafCount/@{exp,tmpexp,tmpexp1}][[1]]]];
+  res];
+
+
+(*SU(2) rules for tr(d_mu U d_mu U^(+) d_nu U d_nu U^(+)) - not Cayley-Hamilton, but follow from
+writing out the exponentials and using sigma.dphi sigma.dphi = dphi.dphi in SU(2) (no SU2D)
+- or from inserting U U^(+) and decomposing the traceless matrices dU U^(+) in Pauli matrices*)
+(*See Dobado,Gomez-Nicola,Maroto,Pelaez p. 149*)
+
+SUNURules[2] := If[(fcexpt/.Options[MM])===False && (fcexpt/.Options[SMM])===False,
+     {UTrace1[
+        NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, fcli[mu1_]]],
+          CovariantFieldDerivative[MM[x_], x_, fcli[mu2_]],
+          Adjoint[CovariantFieldDerivative[MM[x_], x_, fcli[mu2_]]],
+          CovariantFieldDerivative[MM[x_], x_, fcli[mu1_]]]] ->
+      1/2*UTrace[
+          NM[Adjoint[
+              CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
+            CovariantFieldDerivative[MM[x], x, fcli[mu1]]]]UTrace[
+          NM[Adjoint[
+              CovariantFieldDerivative[MM[x], x, fcli[mu2]]],
+            CovariantFieldDerivative[MM[x], x, fcli[mu2]]]],
+    UTrace1[NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, fcli[mu1_]]],
+          CovariantFieldDerivative[MM[x_], x_, fcli[mu1_]],
+          Adjoint[CovariantFieldDerivative[MM[x_], x_, fcli[mu2_]]],
+          CovariantFieldDerivative[MM[x_], x_, fcli[mu2_]]]] ->
+      1/2*UTrace[
+          NM[Adjoint[
+              CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
+            CovariantFieldDerivative[MM[x], x, fcli[mu1]]]]UTrace[
+          NM[Adjoint[
+              CovariantFieldDerivative[MM[x], x, fcli[mu2]]],
+            CovariantFieldDerivative[MM[x], x, fcli[mu2]]]]}, {}];
+
+
+SUNURules[_] := {};
+
+
+(*Going from u to U *)
+
+(*WRONG?!*)
+(*SU(2) rules like above*)
+(* diffBigURules[2] :=
+  {NM[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]],
+	    Adjoint[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]]] :>
+	 1/4 NM[CovariantFieldDerivative[MM[x], x, fcli[mu1]],
+	    Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu1]]]],
+	 UTrace1[NM[Adjoint[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]],
+	            m__,CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]]] :>
+	 1/4 UTrace1[NM[Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
+	    m,CovariantFieldDerivative[MM[x], x, fcli[mu1]]]],
+	NM[Adjoint[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]],
+	   CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]] :>
+	 1/4 NM[Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
+	        CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
+	 UTrace1[NM[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]],
+	 m__,Adjoint[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]]]] :>
+	 1/4 UTrace1[NM[CovariantFieldDerivative[MM[x], x, fcli[mu1]],
+	    m,Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu1]]]]]};	*)
+
+diffBigURules[_] := {};
+
+
+diffURules = {NM[FieldDerivative[SMM[x_], x_, fcli[li1_]], SMM[x_]] ->
+      FieldDerivative[MM[x], x, fcli[li1]] -
+        NM[SMM[x], FieldDerivative[SMM[x], x, fcli[li1]]],
+    NM[Adjoint[FieldDerivative[SMM[x_], x_, fcli[li1_]]],
+        Adjoint[SMM[x_]]] ->
+      Adjoint[FieldDerivative[MM[x], x, fcli[li1]]] -
+        NM[Adjoint[SMM[x]],
+          Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]]]};
+
+bigURules = {nm[f___, SMM[x_], SMM[x_], l___] -> nm[f, MM[x], l],
+      nm[f___, Adjoint[SMM[x_]], Adjoint[SMM[x_]], l___] ->
+        nm[f, Adjoint[MM[x]], l],
+				     nm[SMM[x_], m__, SMM[x_]] -> nm[MM[x], m],
+             nm[Adjoint[SMM[x_]], m__, Adjoint[SMM[x_]]] ->
+             nm[m, Adjoint[MM[x]]](*,*)
+
+	 (*WRONG!*)
+	 (*Same reasoning as for the SU(2) rules above, but only one generator matrix
+	 taken down by the differentation and thus no need to specialize to SU(2)*)
+	 (* NM[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]],Adjoint[SMM[x_]]] :>
+	 1/2 NM[CovariantFieldDerivative[MM[x], x, fcli[mu1]],Adjoint[MM[x]]],
+	 UTrace1[NM[Adjoint[SMM[x_]],m__,CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]]] :>
+	 1/2 UTrace1[NM[Adjoint[MM[x]],m,CovariantFieldDerivative[MM[x], x, fcli[mu1]]]],
+	 NM[Adjoint[SMM[x_]], CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]]] :>
+	 1/2 NM[Adjoint[MM[x]], CovariantFieldDerivative[MM[x], x, fcli[mu1]]],
+	 UTrace1[NM[CovariantFieldDerivative[SMM[x_], x_, fcli[mu1_]],m__,Adjoint[SMM[x_]]]] :>
+	 1/2 UTrace1[NM[CovariantFieldDerivative[MM[x], x, fcli[mu1]],m,Adjoint[MM[x]]]] *)
+
+	 (*Don't know how I cooked up these rules, but they are wrong*)(*,
+      nm[f___, FieldDerivative[SMM[x_], x_, fcli[li1_]],
+          Adjoint[FieldDerivative[SMM[x_], x_, fcli[li2_]]],
+          l___] -> -1/2 nm[f, FieldDerivative[MM[x], x, fcli[li1]],
+               Adjoint[FieldDerivative[MM[x], x, fcli[li2]]], l] +
+          1/2 nm[f, FieldDerivative[SMM[x], x, fcli[li1]],
+              FieldDerivative[SMM[x], x, fcli[li2]],
+              Adjoint[MM[x]], l] +
+          1/2 nm[f, MM[x],
+              Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]],
+              Adjoint[FieldDerivative[SMM[x], x, fcli[li2]]], l],
+      nm[f___, Adjoint[FieldDerivative[SMM[x_], x_, fcli[li1_]]],
+          FieldDerivative[SMM[x_], x_, fcli[li2_]],
+          l___] -> -1/2nm[f,
+              Adjoint[FieldDerivative[MM[x], x, fcli[li1]]],
+              FieldDerivative[MM[x], x, fcli[li2]], l] +
+          1/2 nm[f, Adjoint[FieldDerivative[SMM[x], x, fcli[li1]]],
+               Adjoint[FieldDerivative[SMM[x], x, fcli[li2]]],
+              SMM[x], SMM[x], l] +
+          1/2 nm[f, Adjoint[SMM[x]], Adjoint[SMM[x]],
+              FieldDerivative[SMM[x], x, fcli[li1]],
+              FieldDerivative[SMM[x], x, fcli[li2]], l]*)};
+
+SMMToMM[exp_,opts___Rule] := (max = Max[(Length /@ Cases[exp, _NM, Infinity])];
+      FixedPoint[(# /. bigURules /. diffURules  /.
+			 (*Added 24/1-2002*)diffBigURules[(fcsunn /. {opts} /.
+			                    Options[UReduce])]// NMExpand) &,
+          exp /. NM -> nm, max] /. nm -> NM);
+
+(*Added 22/2-2002*)
+(*Have tr(d_mu U d_mu U^(+) d_nu U d_nu U^(+)) replaced with
+   tr(d_mu U^(+)  d_mu Ud_nu U^(+) d_nu U).
+  Follows from writing in terms of u_mu's. If anyone should want to do higher order
+  calculations than p^8, well change the 8 below accordingly :-)*)
+(*DdURules = 
+  Table[(ex = (UTrace1[
+                NM @@ Table[
+                    seq[idd[CovariantFieldDerivative[MM[pat[x, _]], pat[x, _], 
+                          fcli[mu[i]]]], 
+                      adj[CovariantFieldDerivative[MM[pat[x, _]], pat[x, _], 
+                          fcli[mu[i]]]]], {i, 1, n}]] /. 
+              seq -> Sequence); (ex /. 
+                  mu :> (pat[ToExpression["mu" <> ToString[#]], 
+                          Blank[]] &) /. pat -> Pattern /. {idd -> Identity, 
+                adj -> Adjoint}) -> (ex /. 
+                  mu :> (ToExpression["mu" <> ToString[#]] &) /. {idd -> 
+                    Adjoint, adj -> Identity} /. pat[xx_, yy_] -> x)), {n, 2, 
+        8, 2}] // CycleUTraces;*)
+
+ddURules=Table[(ex=(cut[UTrace1[
+                  nm@@Table[
+                      seq[idd[
+                          CovariantFieldDerivative[MM[pat[x,_]],pat[x,_],
+                            fcli[mu[i]]]],
+                        adj[CovariantFieldDerivative[MM[pat[x,_]],pat[x,_],
+                            fcli[mu[i+1]]]]],{i,1,n,2}]]]/.seq->Sequence);
+          rull[(ex/.mu:>(pat[ToExpression["mu"<>ToString[#]],
+                            Blank[]]&)/.pat->Pattern/.{idd->
+                    Identity,adj->Adjoint}),
+            condd[(ex/.mu:>(ToExpression[
+                              "mu"<>ToString[#]]&)/.{idd->Adjoint,
+                      adj->Identity}/.pat[xx_,yy_]->x),
+              usq[sor[{mu1,mu2}],{mu1,mu2}]]]),{n,2,8,2}]/.{nm->NM,
+        rull->RuleDelayed,condd->Condition,usq->SameQ,
+        sor->Sort, cut->CycleUTraces};
+
+ddURules1=
+    Table[(ex=(cut[UTrace1[
+                  nm@@Table[
+                      seq[idd[
+                          CovariantFieldDerivative[MM[pat[x,_]],pat[x,_],
+                            fcli[mu[i]]]],
+                        adj[CovariantFieldDerivative[MM[pat[x,_]],pat[x,_],
+                            fcli[mu[i+1]]]]],{i,1,n,2}]]]/.seq->Sequence);
+          rull[(ex/.mu:>(pat[ToExpression["mu"<>ToString[#]],
+                            Blank[]]&)/.pat->Pattern/.{idd->Adjoint,
+                  adj->Identity}),
+            condd[(ex/.mu:>(ToExpression[
+                              "mu"<>ToString[#]]&)/.{idd->Identity,
+                      adj->Adjoint}/.pat[xx_,yy_]->x),
+              usq[sor[{mu1,mu2}],{mu1,mu2}]]]),{n,2,8,2}]/.{nm->NM,
+        rull->RuleDelayed,condd->Condition,usq->SameQ,
+        sor->Sort, cut->CycleUTraces};
+
+UReduce[exp_, opts___Rule] := Block[{res,opsMM,opsSMM,end},
+ opsMM=Options[MM];opsSMM=Options[SMM];
+ SetOptions[MM, fcexpt -> False];
+ SetOptions[SMM, fcexpt -> False];
+ res=If[(SMMToMM /. {opts} /. Options[UReduce]) =!= True,
+(*Added inner UPair in order to force cancellation in SU(3) CayleyHamiltonRules*) 
+FixedPoint[CycleUTraces[UPair[
+       UTraceTrick[UIdTrick[UPair[NMExpand[# /. uDagRul /. UDagRul  /. ddURules /. ddURules1]],opts] /.
+			 (*Added 24/1-2002*)SUNURules[(fcsunn /. {opts} /.
+			                    Options[UReduce])]],opts]]&,
+      exp, 10],
+ FixedPoint[CycleUTraces[SMMToMM[UPair[
+       UTraceTrick[UIdTrick[UPair[NMExpand[# /. uDagRul /. UDagRul /. ddURules /.  ddURules1]],opts] /.
+			 (*Added 24/1-2002*)SUNURules[(fcsunn /. {opts} /.
+			                    Options[UReduce])]],opts],opts]]&,
+      exp, 10]];
+ end=If[(FullReduce /. {opts} /. Options[UReduce]) === True,
+ FixedPoint[CycleUTraces[UDrop[UTraceTrick[UIdTrick[NMExpand[# /. uDagRul /. UDagRul],opts]],opts]]&,
+      res, 10],res];
+  Options[MM]=opsMM;Options[SMM]=opsSMM;
+  end];
+
+
+
+(* Total derivatives vanish upon integration *)
+
+(* Should be cleaned up and generalized to traces of products
+   involving covariant derivatives *)
+
+(*Disables checks for differentation orders all together*)
+(*surfaceRules[0]:=(surfaceRules[1]/. Condition -> cond /.
+cond[a_, __] -> (*a*) Condition[a,usq[fq[dd, ufis, Heads -> True],True]]);
+
+surfaceRules1[0]:=(surfaceRules1[1]/. Condition -> cond /.
+cond[a_, __] -> (*a*) Condition[a,usq[fq[dd, ufis, Heads -> True],True]]);*)
+
+surfaceRules[0]:=(surfaceRules[1] /. sr0 -> True);
+surfaceRules1[0]:=(surfaceRules1[1] /. sr0 -> True);
+
+surfaceRules[n_]:={
+  surdum + nm[f___,FieldDerivative[dd_,x_,fcli[li1_]],r___] :>
+         surdum + idd[-nm[fdr[nm[f,r],x,fcli[li1]],dd]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&&
+				(sr0 || Length[{f,r}]>0&&((m1=Max[Depth/@
+              Union[Cases[{f,r},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1)),
+
+   surdum + nm[uo___,NM[f___,FieldDerivative[dd_,x_,fcli[li1_]],r___],
+        ou___] :> surdum + idd[nm[
+          nm[uo,ou,-nm[NM[fdr[NM[f],x,fcli[li1]],dd,r]]-
+                    nm[NM[f,dd,fdr[NM[r],x,fcli[li1]]]]]-
+          nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,dd,r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
+
+    surdum + nm[uo___,
+          utr[NM[f___,FieldDerivative[dd_,x_,
+					HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[li1_]],
+              r___]],ou___]:>
+      surdum + idd[-nm[uo,ou,utr[
+                NM[fdr[NM[f],x,fcli[li1]],dd,r]+
+                 NM[f,dd,fdr[NM[r],x,fcli[li1]]]]]-
+      nm[fdr[nm[uo,ou],x,fcli[li1]],
+                utr[NM[f,dd,r]]]]/;
+       ( (FreeQ[dd, ufis, Heads->True] =!=True))&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
+
+    surdum + nm[uo___,NM[f___,Adjoint[FieldDerivative[dd_,x_,fcli[li1_]]],r___],
+        ou___] :>
+        surdum + idd[nm[
+          nm[uo,ou,-NM[fdr[NM[f],x,fcli[li1]],Adjoint[dd],r]-
+                    NM[f,Adjoint[dd],fdr[NM[r],x,fcli[li1]]]]-
+          nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,Adjoint[dd],r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
+
+		surdum +
+        nm[uo___,utr[NM[f___,Adjoint[FieldDerivative[dd_,x_,
+							HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[li1_]]],
+              r___]],ou___]:>
+       surdum + idd[-nm[uo,ou,
+			    utr[NM[fdr[NM[f],x,fcli[li1]],Adjoint[dd],r]
+                +NM[f,Adjoint[dd],fdr[NM[r],x,fcli[li1]]]]]-
+        nm[fdr[nm[uo,ou],x,fcli[li1]],
+          utr[NM[f,Adjoint[dd],r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<=
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n-1 || m1==-Infinity&&m2==-Infinity&&n<=1)};
+
+surfaceRules1[n_]:={
+  surdum + nm[f___,dd:(fcqf[fcpd[li1_,___], 
+          ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
+          fcqf[fcpd[li1_,___], __]][x_] | 
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+        IsoVector[UMatrix[UGenerator[___], ___], ___]]),r___] :>
+         surdum + idd[-nm[fdr[nm[f,r],x,fcli[li1]],dd/.fcpd[__]->Sequence[]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&&
+				(sr0 || Length[{f,r}]>0&&((m1=Max[Depth/@
+              Union[Cases[{f,r},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1)),
+
+   surdum + nm[uo___,NM[f___,dd:(fcqf[fcpd[li1_,___], 
+          ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
+          fcqf[fcpd[li1_,___], __]][x_] | 
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+        IsoVector[UMatrix[UGenerator[___], ___], ___]]),r___],
+        ou___] :> surdum + idd[nm[
+          nm[uo,ou,-nm[NM[fdr[NM[f],x,fcli[li1]],dd/.fcpd[__]->Sequence[],r]]-
+                    nm[NM[f,dd,fdr[NM[r],x,fcli[li1]]]]]-
+          nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,dd/.fcpd[__]->Sequence[],r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
+
+    surdum + nm[uo___,
+          utr[NM[f___,dd:(fcqf[fcpd[li1_,___], 
+          ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
+          fcqf[fcpd[li1_,___], __]][x_] | 
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+        IsoVector[UMatrix[UGenerator[___], ___], ___]]),
+              r___]],ou___]:>
+      surdum + idd[-nm[uo,ou,utr[
+                NM[fdr[NM[f],x,fcli[li1]],dd/.fcpd[__]->Sequence[],r]+
+                 NM[f,dd/.fcpd[__]->Sequence[],fdr[NM[r],x,fcli[li1]]]]]-
+      nm[fdr[nm[uo,ou],x,fcli[li1]],
+                utr[NM[f,dd/.fcpd[__]->Sequence[],r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
+
+    surdum + nm[uo___,NM[f___,Adjoint[dd:(fcqf[fcpd[li1_,___], 
+          ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
+          fcqf[fcpd[li1_,___], __]][x_] | 
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+        IsoVector[UMatrix[UGenerator[___], ___], ___]])],r___],
+        ou___] :>
+        surdum + idd[nm[
+          nm[uo,ou,-NM[fdr[NM[f],x,fcli[li1]],Adjoint[dd/.fcpd[__]->Sequence[]],r]-
+                    NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],fdr[NM[r],x,fcli[li1]]]]-
+          nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
+
+		surdum + 
+        nm[uo___,utr[NM[f___,Adjoint[dd:(fcqf[fcpd[li1_,___], 
+          ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
+          fcqf[fcpd[li1_,___], __]][x_] | 
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+        IsoVector[UMatrix[UGenerator[___], ___], ___]])],
+              r___]],ou___]:>
+       surdum + idd[-nm[uo,ou,
+			    utr[NM[fdr[NM[f],x,fcli[li1]],Adjoint[dd/.fcpd[__]->Sequence[]],r]
+                +NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],fdr[NM[r],x,fcli[li1]]]]]-
+        nm[fdr[nm[uo,ou],x,fcli[li1]],
+          utr[NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],r]]]]/;
+        (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+	      _FieldDerivative,Infinity,
+                  Heads->True]]])<=
+          (m2=Max[Depth/@
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+		_FieldDerivative,Infinity,
+                    Heads->True]]])+n-1 || m1==-Infinity&&m2==-Infinity&&n<=1)};
+
+SurfaceReduce[expr_,opts___Rule]:=
+Block[{n=DifferenceOrder/.{opts}/.Options[SurfaceReduce],re,res,qf,pd,r,x,isod},
+  ufis=UFields/.{opts}/.Options[SurfaceReduce];
+        re = Expand[surdum + expr] (*//.
+	{fcqf[pd:(fcpd[_]..), r__?(FreeQ[#, {fcpd}, Heads -> True] &)][x_] :>
+	FieldDerivative[qf[r][x], x, (fcli @@ #) & /@ {pd}],
+	IsoDot[IsoVector[
+        fcqf[pd : (fcpd[_] ..), r__?(FreeQ[#, {fcpd}, Heads -> True] &)]][x_],
+     l_] :> FieldDerivative[
+      isod[IsoVector[qf[r]][x], l], x, (fcli @@ #) & /@ {pd}] /;
+    FreeQ[l, fcpd | FieldDerivative | CovariantFieldDerivative |
+        CovariantNabla, Heads -> True]}*);
+
+	res=surdum + Expand[NMExpand[If[Head[#]===Times,nm@@#,nm[#]]&/@re]] /. UTrace1[a_]^n_ :>
+	  (Sequence@@Table[utr[a],{n}])  /. UTrace1->utr //.
+	(surfaceRules1[n]/.sr0->False/.fq->FreeQ/.usq->UnsameQ) //.
+      (surfaceRules[n]/.sr0->False/.fq->FreeQ/.usq->UnsameQ) /. idd -> Identity /. nm -> Times /. surdum -> 0/.
+	      qf -> fcqf /.isod -> IsoDot /. fdr -> FieldDerivative /.
+				utr -> UTrace/. FieldDerivative[_,fcli[_]]->0 //
+            UTraceTrick];
+
+(* Return to defaults *)
+SetOptions[MM, Sequence@@tmpoptsmm];
+SetOptions[SMM, Sequence@@tmpoptssmm];
+SetOptions[CovariantFieldDerivative, Sequence@@tmpoptscdr];
+
+
+(* (7.14) and (7.20) from Gasser and Leutwyler (1985) *)
+
+gammaRule =
+  FieldDerivative[UGamma[fcli[li1_],opts___Rule][x_], x_, fcli[li2_]] /;
+  Sort[{li1,li2}] =!= {li1,li2} :>
+     FieldDerivative[UGamma[fcli[li2],opts][x], x,
+        fcli[li1]] +
+      UCommutator[UGamma[fcli[li1],opts][x],
+        UGamma[fcli[li2],opts][x]] -
+      1/4 UCommutator[USmall[fcli[li1],Sequence@@OptionsSelect[USmall,opts]][x],
+          USmall[fcli[li2],Sequence@@OptionsSelect[USmall,opts]][x]] -
+      1/2 I NM[Adjoint[SMM[x,Sequence@@OptionsSelect[SMM,opts]]],
+          FieldStrengthTensorFull[{li1},
+            UGeneratorMatrixIsoDotFull[
+             fcqf[Particle[
+              LeftComponent[0,Sequence@@OptionsSelect[RightComponent,opts]]],
+	      {li2}][x]], x, I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
+		SMM[x,Sequence@@OptionsSelect[SMM,opts]]] -
+      1/2 I NM[SMM[x,Sequence@@OptionsSelect[SMM,opts]],
+          FieldStrengthTensorFull[{li1},
+            UGeneratorMatrixIsoDotFull[
+             fcqf[Particle[
+              RightComponent[0,Sequence@@OptionsSelect[LeftComponent,opts]]],
+	      {li2}][x]], x, I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
+		Adjoint[SMM[x,Sequence@@OptionsSelect[SMM,opts]]]];
+
+
+UGammaTrick[exp_] := exp /. gammaRule;
+
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Reduction using the equations of motion *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+$EOMRules :=
+
+{UTrace1[NM[Adjoint[MM[x_]], CovariantFieldDerivative[MM[x_], x_, fcli[mu_]],
+    Adjoint[UMatrix[UChi[chopts___]][x_]], CovariantFieldDerivative[MM[x_], x_,
+     fcli[mu_]]]] ->
+ -UTrace1[NM[MM[x], Adjoint[CovariantFieldDerivative[MM[x], x,
+      fcli[mu]]], UMatrix[UChi[chopts]][x],
+    Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu]]]]]-
+ Det[Adjoint[UMatrix[UChi[chopts]][x]]]/2 - Det[UMatrix[UChi[chopts]][x]]/2 -
+  UTrace1[NM[Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu]]],
+    CovariantFieldDerivative[UMatrix[UChi[chopts]][x], x, fcli[mu]]]] -
+  UTrace1[NM[Adjoint[CovariantFieldDerivative[UMatrix[UChi[chopts]][x], x,
+      fcli[mu]]], CovariantFieldDerivative[MM[x], x, fcli[mu]]]] +
+  UTrace1[NM[Adjoint[MM[x]], UMatrix[UChi[chopts]][x]]]^2/4 +
+  (UTrace1[NM[Adjoint[MM[x]], UMatrix[UChi[chopts]][x]]]*
+    UTrace1[NM[Adjoint[UMatrix[UChi[chopts]][x]], MM[x]]])/2 +
+  UTrace1[NM[Adjoint[UMatrix[UChi[chopts]][x]], MM[x]]]^2/4 -
+  UTrace1[NM[Adjoint[UMatrix[UChi[chopts]][x]], UMatrix[UChi[chopts]][x]]],
+
+UTrace1[NM[Adjoint[CovariantFieldDerivative[MM[x_], x_, fcli[mu_]]],
+CovariantFieldDerivative[MM[x_], x_, fcli[mu_]],
+    Adjoint[UMatrix[UChi[chopts___]][x_]], MM[x_]]] ->
+ -(-UTrace1[NM[MM[x], Adjoint[CovariantFieldDerivative[MM[x], x,
+      fcli[mu]]], UMatrix[UChi[chopts]][x],
+    Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu]]]]]-
+ Det[Adjoint[UMatrix[UChi[chopts]][x]]]/2 - Det[UMatrix[UChi[chopts]][x]]/2 -
+  UTrace1[NM[Adjoint[CovariantFieldDerivative[MM[x], x, fcli[mu]]],
+    CovariantFieldDerivative[UMatrix[UChi[chopts]][x], x, fcli[mu]]]] -
+  UTrace1[NM[Adjoint[CovariantFieldDerivative[UMatrix[UChi[chopts]][x], x,
+      fcli[mu]]], CovariantFieldDerivative[MM[x], x, fcli[mu]]]] +
+  UTrace1[NM[Adjoint[MM[x]], UMatrix[UChi[chopts]][x]]]^2/4 +
+  (UTrace1[NM[Adjoint[MM[x]], UMatrix[UChi[chopts]][x]]]*
+    UTrace1[NM[Adjoint[UMatrix[UChi[chopts]][x]], MM[x]]])/2 +
+  UTrace1[NM[Adjoint[UMatrix[UChi[chopts]][x]], MM[x]]]^2/4 -
+  UTrace1[NM[Adjoint[UMatrix[UChi[chopts]][x]], UMatrix[UChi[chopts]][x]]])};
+
+
+EOMTrick[expr_] := expr /.
+  Join[$EOMRules, (Expand[a_ * #[[1]]] -> a * #[[2]])& /@ $EOMRules];
+
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Expansion of the fields around the solution to the equations of motion *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(* Auxiliary functions*)
+
+xi[x_] :=
+  IsoDot[IsoVector[fcqf[Particle[PseudoScalar[12]]]][x],
+    IsoVector[UMatrix[UGenerator[]]]];
+
+(*See Ecker 1992, CERN-TH-6660/92*)
+
+uExpRight[x_,a___RenormalizationState,b___RenormalizationScheme,
+      c___ExpansionState,opts___Rule]:=
+    NM[SMM[x,Sequence@@OptionsSelect[SMM,opts]],
+      UFieldMatrix[
+        DecayConstant[UPerturbation,a,b,c]/DecayConstant[pm,a,b,c]/
+          Sqrt[2],fcqf[Particle[UPerturbation,a,b,c]][x],
+        Sequence@@OptionsSelect[UFieldMatrix,opts]]];
+
+uExpLeftAdj[x_,a___RenormalizationState,b___RenormalizationScheme,
+      c___ExpansionState,opts___Rule]:=
+    NM[UFieldMatrix[
+        DecayConstant[UPerturbation,a,b,c]/DecayConstant[pm,a,b,c]/
+          Sqrt[2],fcqf[Particle[UPerturbation,a,b,c]][x],
+        Sequence@@OptionsSelect[UFieldMatrix,opts]],
+      SMM[x,Sequence@@OptionsSelect[SMM,opts]]];
+
+(* The u_mu field *)
+
+(*Keep things compact*)
+SetOptions[CovariantNabla, fcexpt -> False];
+
+UCoefficient[USmall][0][li_, x_] = USmall[li][x];
+UCoefficient[USmall][1][li_, x_] =
+           -Sqrt[2]/DecayConstant[pm] CovariantNabla[xi[x], x, {li}];
+UCoefficient[USmall][2][li_, x_] =
+  1/4/DecayConstant[pm]^2 UCommutator[xi[x],
+      UCommutator[USmall[li][x], xi[x]]];
+UCoefficient[USmall][do_?((# > 2) &)][li_, x_] :=
+    UCoefficient[USmall][do][li, x] = (Message[UPerturb::"nocoeff", do];
+        DiscardTerms[
+            I*NM[Adjoint[uExpRight[x, ExpansionOrder -> do]],
+                    CDr[NM[uExpRight[x, ExpansionOrder -> do],
+                        uExpLeftAdj[x, ExpansionOrder -> do]], x, {li},
+                      Explicit -> True],
+                    Adjoint[uExpLeftAdj[x, ExpansionOrder -> do]]] //
+                NMExpand // Expand,
+            Retain -> {Particle[UPerturbation] -> do}](* // UReduce*));
+
+(*Return to defaults*)
+SetOptions[CovariantNabla, Sequence@@tmpoptscn];
+
+
+(* The chi_+ field*)
+
+UCoefficient[UChiPlus][0][x_] = UChiPlus[x];
+UCoefficient[UChiPlus][1][x_] =
+   -I/Sqrt[2]/DecayConstant[pm]UAntiCommutator[xi[x],
+      UChiMinus[x]];
+UCoefficient[UChiPlus][2][x_] =
+    -1/4/DecayConstant[pm]^2UAntiCommutator[xi[x],
+      UAntiCommutator[xi[x], UChiPlus[x]]];
+UCoefficient[UChiPlus][do_?((# > 2) &)][x_] :=
+    UCoefficient[UChiPlus][do][x] = (Message[UPerturb::"nocoeff", do];
+        DiscardTerms[
+            NM[Adjoint[uExpRight[x, ExpansionOrder -> do]],
+                    UMatrix[UChi[]][x],
+                    Adjoint[uExpLeftAdj[x, ExpansionOrder -> do]]] +
+                  NM[uExpLeftAdj[x, ExpansionOrder -> do],
+                    Adjoint[UMatrix[UChi[]][x]],
+                    uExpRight[x, ExpansionOrder -> do]] // NMExpand // Expand,
+             Retain -> {Particle[UPerturbation] -> do}] (*// UReduce*));
+
+(* The chi_- field*)
+
+UCoefficient[UChiMinus][0][x_] = UChiMinus[x];
+UCoefficient[UChiMinus][1][x_] =
+  -I/Sqrt[2]/DecayConstant[pm]UAntiCommutator[xi[x],
+      UChiPlus[x]];
+UCoefficient[UChiMinus][2][x_] = -1/4/DecayConstant[pm]^2 UAntiCommutator[xi[x],
+      UAntiCommutator[xi[x], UChiMinus[x]]];
+UCoefficient[UChiMinus][do_?((# > 2) &)][x_] :=
+    UCoefficient[UChiMinus][do][x] = (Message[UPerturb::"nocoeff", do];
+        DiscardTerms[
+            NM[Adjoint[uExpRight[x, ExpansionOrder -> do]],
+                    UMatrix[UChi[]][x],
+                    Adjoint[uExpLeftAdj[x, ExpansionOrder -> do]]] -
+                  NM[uExpLeftAdj[x, ExpansionOrder -> do],
+                    Adjoint[UMatrix[UChi[]][x]],
+                    uExpRight[x, ExpansionOrder -> do]] // NMExpand // Expand,
+             Retain -> {Particle[UPerturbation] -> do}] (*// UReduce*));
+
+(* The f_+ field*)
+
+UCoefficient[UFPlus][0][li1_, li2_, x_] = UFPlus[li1, li2][x];
+UCoefficient[UFPlus][1][li1_, li2_, x_] =
+  I/Sqrt[2]/DecayConstant[pm]UCommutator[xi[x], UFMinus[li1, li2][x]];
+UCoefficient[UFPlus][2][li1_, li2_, x_] = -1/4/DecayConstant[pm]^2 UCommutator[xi[x],
+      UCommutator[xi[x], UFPlus[li1, li2][x]]];
+UCoefficient[UFPlus][do_?((# > 2) &)][li1_, li2_, x_] :=
+    UCoefficient[UChiPlus][do][x, li1, li2] = (Message[UPerturb::"nocoeff", do];
+        DiscardTerms[
+            NM[uExpLeftAdj[x, ExpansionOrder -> do],
+                    FieldStrengthTensorFull[{li1},
+                      UGeneratorMatrixIsoDot[
+                        fcqf[Particle[LeftComponent[0]], {li2}][x]],
+                      x, -I], Adjoint[uExpLeftAdj[x, ExpansionOrder -> do]]] +
+                   NM[Adjoint[uExpRight[x, ExpansionOrder -> do]],
+                    FieldStrengthTensorFull[{li1},
+                      UGeneratorMatrixIsoDot[
+                        fcqf[Particle[RightComponent[0]], {li2}][x]],
+                      x, -I], uExpRight[x, ExpansionOrder -> do]] //
+                NMExpand // Expand,
+            Retain -> {Particle[UPerturbation] -> do}] (*// UReduce*));
+
+(* The f_- field*)
+
+UCoefficient[UFMinus][0][li1_, li2_, x_] = UFMinus[li1, li2][x];
+UCoefficient[UFMinus][1][li1_, li2_, x_] =
+  I/Sqrt[2]/DecayConstant[pm]UCommutator[xi[x], UFPlus[li1, li2][x]];
+UCoefficient[UFMinus][2][li1_, li2_, x_] =
+  -1/4/DecayConstant[pm]^2UCommutator[xi[x],
+                    UCommutator[xi[x], UFMinus[li1, li2][x]]];
+UCoefficient[UFPlus][do_?((# > 2) &)][li1_, li2_, x_] :=
+    UCoefficient[UFMinus][do][x, li1, li2] = (Message[UPerturb::"nocoeff", do];
+        DiscardTerms[
+            NM[uExpLeftAdj[x, ExpansionOrder -> do],
+                    FieldStrengthTensorFull[{li1},
+                      UGeneratorMatrixIsoDot[
+                        fcqf[Particle[LeftComponent[0]], {li2}][x]],
+                      x, -I], Adjoint[uExpLeftAdj[x, ExpansionOrder -> do]]] -
+                   NM[Adjoint[uExpRight[x, ExpansionOrder -> do]],
+                    FieldStrengthTensorFull[{li1},
+                      UGeneratorMatrixIsoDot[
+                        fcqf[Particle[RightComponent[0]], {li2}][x]],
+                      x, -I], uExpRight[x, ExpansionOrder -> do]] //
+                NMExpand // Expand,
+            Retain -> {Particle[UPerturbation] -> do}] (*// UReduce*));
+
+(* The U-field*)
+
+UCoefficient[MM][do_][x_] :=
+    UCoefficient[MM][do][x] = (
+        DiscardTerms[
+            NM[uExpRight[x, ExpansionOrder -> do],
+               uExpLeftAdj[x, ExpansionOrder -> do]]//
+                NMExpand // Expand,
+            Retain -> {Particle[UPerturbation] -> do}] (*// UReduce*));
+
+UPerturb[exp_, opts___Rule] :=
+    Block[{or, lim, quants, ruls, subs, a, b, i, summ, UCoeff},
+      or = ExpansionOrder /. {opts} /. Options[UPerturb];
+      lim = Which[NumericQ[or], {i, 0, or},
+          Head[or] ===
+              List && (Length[or] === 1 ||
+                Length[or] === 2) && (And @@ (NumericQ /@ or)), {i,
+            Sequence @@ or}, True, Message[UPerturb::"badlim", or]; Return[]];
+       quants = UFields /. {opts} /. Options[UPerturb];
+      subs = (#[a__][b__] :> #[a, b]) & /@ quants;
+      ruls = ((#[a__] -> ((summ[UCoeff[#][i][a], lim])) & /@ quants) /.
+            summ -> Sum); exp /. subs /. ruls /. UCoeff -> UCoefficient /.
+            pm -> If[(fcsunn /. {opts} /. Options[UPerturb]) === 2,
+            Pion, PhiMeson]];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -633,3 +1643,4 @@ End[];
 EndPackage[];
 
 If[$Verboseness > 0,WriteString["stdout", "Utilities | \n "]];
+

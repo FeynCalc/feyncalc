@@ -26,15 +26,15 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 ChPTW32::"usage"=
 "ChPTW32.m is the name of the file containing the definitions for
-ULagrangian[ChPTW3[2]] the simplest weak ChPT lagrangian.
+Lagrangian[ChPTW3[2]] the simplest weak ChPT lagrangian.
 To evaluate use ArgumentsSupply";
 
 C2::"usage"=
-"C2 := UCouplingConstant[ChPTW3[2],1] is one of the constants of the
+"C2 := CouplingConstant[ChPTW3[2],1] is one of the constants of the
 lowest order weak ChPT lagrangian";
 
 C5::"usage"=
-"C5 := UCouplingConstant[ChPTW3[2],2] is one of the constants of the
+"C5 := CouplingConstant[ChPTW3[2],2] is one of the constants of the
 lowest order weak ChPT lagrangian";
 
 Begin["`Private`"];
@@ -43,8 +43,8 @@ Begin["`Private`"];
 
 (* Abbreviations *)
 
-C2 := UCouplingConstant[ChPTW3[2],1];
-C5 := UCouplingConstant[ChPTW3[2],2];
+C2 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTW3[2],1];
+C5 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTW3[2],2];
 
 mu=(Global`\[Mu]);
 
@@ -54,9 +54,9 @@ fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
 
 (* Box definitions *)
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[ChPTW3[2],1,st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTW3[2],1,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["c",FontSlant->"Italic"]][[1]],
@@ -65,9 +65,9 @@ UCouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[ChPTW3[2],2,st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTW3[2],2,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["c",FontSlant->"Italic"]][[1]],
@@ -78,7 +78,7 @@ UCouplingConstant/:
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[ChPTW3[2]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTW3[2]]:=
 
 C2*UTrace[ NM[UGeneratorMatrix[6],
            Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ] +
@@ -93,7 +93,7 @@ FieldsSet[ChPTW3[2]]:=
 fcqf[Particle[PhiMeson,RenormalizationState[0]]]
 ]};
 
-$ULagrangians=Union[$ULagrangians,{ChPTW3[2]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTW3[2]}];
 
 End[];
 

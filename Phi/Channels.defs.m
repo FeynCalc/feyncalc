@@ -9,12 +9,12 @@ Usage
 MassArguments::"usage" = 
     "MassArguments is an option for AmplitudeProjection relevant when \
 OnMassShell is set to True, specifying the optional extra arguments supplied \
-to UParticleMass.  Default value : {RenormalizationState[0]}";
+to ParticleMass.  Default value : {RenormalizationState[0]}";
 
 FieldProjection::"usage" = 
     "FieldProjection[IsoVector[QuantumField[Particle[p]]],opts] returns the \
 field specified by  the option Channel as a linear combination of the \
-iso-spin components of QuantumField[Particle[p]]";
+isospin components of QuantumField[Particle[p]]";
 
 AmplitudeProjection::"usage" = 
     "AmplitudeProjection[amp,opts], where amp[i1,i2,...] is a function of the \
@@ -22,25 +22,29 @@ isospin indices i1, i2, ... of the external particles, returns the amplitude \
 of the channel specified by the option Channel.  AmplitudeProjection uses the \
 rules specified in $IsoSpinProjectionRules.  NOTICE:  For the particles under \
 consideration, Phi must know their anti-particles.  That is, e.g. \
-Conjugate[PionPlus] is PionMinus";
+ChargeConjugate[PionPlus] is PionMinus";
 
 $IsoSpinProjectionRules::"usage" = 
     "$IsoSpinProjectionRules is a set of rules used by FieldProjection and \
 AmplitudeProjection to project out in channels.  Changing the default setting \
 of this quantity should be done with care.  Notice that the setting of \
-
 $IsoSpinProjectionRules is related to the values of \
 WriteOutUmatrices[UGeneratorMatrix[i,opts]], where i is an integer.  The \
 default set of rules is not very large, but more rules in the same syntax may \
 easily be added";
 
+$SUNCompletenessRules::"usage" = "$SUNCompletenessRules is an environment \
+    variable used by SUNReduce to (hopefully) simplify expressions involving products of \
+traces of products of generator matrices (UMatrix[UGenerator[SUNIndex[j]]]) \
+with other matrices";
+
 Channel::"usage" = 
     "Channel is an option of FieldProjection and AmplitudeProjection, \
 specifying which channel the field or amplitude should be projected out in.  \
-For FieldProjection, the possible settings are listed in $UParticles.  For \
+For FieldProjection, the possible settings are listed in $Particles.  For \
 AmplitudeProjection, the possible settings are \
 {{p1,p2,...}->{pp1,pp2,...},{i,...}}, where  p1,.. and pp1,... are generic \
-particles from $UParticles like Pion etc. and i is the iso-spin, or simply \
+particles from $Particles like Pion etc. and i is the isospin, or simply \
 {{p1,p2,...}->{pp1,pp2,...}}, where p1,.. and pp1,... now have to be \
 iso-eigenstates like PionPlus etc..  Default value : PionPlus for \
 FieldProjection and {{Pion,Pion}->{Pion,Pion},{2}} for AmplitudeProjection";
@@ -58,48 +62,38 @@ SUNReduce::"usage" =
     "SUNReduce[a] finds SU(n) objects, simplifies using SU(2) or SU(3) rules \
 and sums over pairs of indices not in $ConstantIsoIndices.  Indices are \
 summed over only if they have head SUNIndex.  NOTICE: With the option \
-SummationForm set to ExplicitSums, large expressions that can be expanded to \
+Explicit set to True, large expressions that can be expanded to \
 a sum, should be expanded before applying SUNReduce (this will reduce \
 computation time dramatically)";
 
 SUDFSymmetrize::"usage" = 
-    "SUDFSymmetrize[a] renames factors multiplying SUND[i,j,k], \
+    "SUDFSymmetrize[exp] renames factors multiplying SUND[i,j,k], \
 SU3D[i,j,k], SUNF[i,j,k], SU2F[i,j,k] or SU3F[i,j,k] in an attempt to \
-reduce a";
+reduce exp";
 
 IsoFunction::"usage" = 
     "IsoFunction is a head recognized by SUNReduce, so that for e.g. \
 IsoFunction[f][SUNIndex[i]*SUNDelta[SUNIndex[i],SUNIndex[j]] ocurring in an \
 expression will imply a sum over SUNIndex[i]";
 
-SummationForm::"usage" = 
-    "SummationForm is an option for SUNReduce specifying whether the sums should \
-be performed by 'brute force' (ExplicitSums) or symbolically (ImplicitSums).  \
-Default value : ImplicitSums for SUNReduce, ExplicitSums for \
-AmplitudeProjection";
-
-ImplicitSums::"usage" = 
-    "ImplicitSums is one of the two possible settings of the option \
-SummationForm of SUNReduce";
-
-ExplicitSums::"usage" = 
-    "ExplicitSums is one of the two possible settings of the option \
-SummationForm of SUNReduce";
-
 HoldSums::"usage" = 
-    "HoldSums is an option for SUNReduce and AnmplitudeProjection relevant \
-when the option SummationForm is set to ExplicitSums.  When set to True, the \
+    "HoldSums is an option for SUNReduce relevant \
+when the option Explicit is set to True.  When set to True, the \
 isospin summations are not performed and USum is substituted with USumHeld.  \
-Default value : True for SUNReduce, False for AnmplitudeProjection";
+Default value : True";
 
 IndicesCleanup::"usage" = 
     "IndicesCleanup[expr] renames dummy indices in expr in a systematic way \
 in order to get cancellations and a simpler expression. The expression expr \
 should be in Phi notation, that is, involving the products NM and/or Times, \
 not Dot or NonCommutativeMultiply.  NOTICE : IndicesCleanup will not work \
-properly when the indices are nested more than one level down in factors (\
-the only exception being NM[UTrace[NM[a]],UTrace[NM[b]]] with a and b having \
-isospin dependence).";
+properly when the indices are nested more than one level down in factors.  \
+The only exceptions to this are terms like NM[UTrace[NM[a]],UTrace[NM[b]]] with \
+a and b having isospin or Lorentz index dependence.  For these however, it may \
+be necessary to apply IndicesCleanup repeatedly";
+
+CNM::"usage" = 
+    "CNM[a,b] renames contracted Lorentz and SU(N) indices";
 
 ExtendedCleanup::"usage" = 
     "ExtendedCleanup is an option for IndicesCleanup.  When set to True, \
@@ -152,11 +146,11 @@ DerivativeInternDummy::"usage" =
 renaming of indices";
 
 IsoDummys::"usage" = 
-    "IsoDummys is an option for IndicesCleanup.  It should be a list of two \
+    "IsoDummys is an option for IndicesCleanup and CNM.  It should be a list of two \
 three strings.  Default value : {\"j\",\"k\",\"l\"}";
 
 LorentzDummys::"usage" = 
-    "LorentzDummys is an option for IndicesCleanup.  It should be a list of \
+    "LorentzDummys is an option for IndicesCleanup and CNM.  It should be a list of \
 five strings.  Default value : {\"\[Xi]\",\"\[Rho]\",\"\[Sigma]\",\"\[Tau]\",\
 \"\[Omega]\"}";
 

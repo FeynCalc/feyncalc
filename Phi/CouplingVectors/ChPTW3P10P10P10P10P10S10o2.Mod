@@ -1281,7 +1281,7 @@
         SU3F[I4, I5, k6] + (4*SU3Delta[I2, I5]*SU3Delta[I3, I4])/9 - 
        (4*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 - 
        (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((SU3D[6, I4, I5]*SU3D[I1, I2, I3])/3 + (SU3D[6, I3, I5]*SU3D[I1, I2, I4])/
       3 - (2*SU3D[6, I3, I4]*SU3D[I1, I2, I5])/3 - 
@@ -2573,7 +2573,7 @@
         SU3F[I4, I5, k6] + (4*SU3Delta[I2, I5]*SU3Delta[I3, I4])/9 - 
        (4*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 - 
        (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((SU3D[6, I4, I5]*SU3D[I1, I2, I3])/3 - 
      (2*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/3 + 
@@ -3862,7 +3862,7 @@
         SU3F[I4, I5, k6] - (4*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 + 
        (4*SU3Delta[I2, I4]*SU3Delta[I3, I5])/9 - 
        (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((SU3D[6, I4, I5]*SU3D[I1, I2, I3])/3 - 
      (4*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/9 + 
@@ -5154,7 +5154,7 @@
         SU3F[I4, I5, k6] - (4*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 + 
        (4*SU3Delta[I2, I4]*SU3Delta[I3, I5])/9 - 
        (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((-4*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/9 - 
      (4*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/9 - 
@@ -6445,7 +6445,7 @@
        (2*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 - 
        (2*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 - 
        (2*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((-4*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/9 + 
      (SU3D[6, I3, I5]*SU3D[I1, I2, I4])/3 + 
@@ -7732,7 +7732,7 @@
        (2*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 - 
        (2*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 - 
        (2*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((SU3D[6, I4, I5]*SU3D[I1, I2, I3])/3 - 
      (4*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/9 + 
@@ -9015,7 +9015,7 @@
        (2*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 - 
        (2*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 - 
        (2*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((SU3D[6, I4, I5]*SU3D[I1, I2, I3])/3 + (SU3D[6, I3, I5]*SU3D[I1, I2, I4])/
       3 - (4*SU3D[6, I3, I4]*SU3D[I1, I2, I5])/9 + 
@@ -10299,7 +10299,7 @@
        (2*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 - 
        (2*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 - 
        (2*SU3Delta[I2, I3]*SU3Delta[I4, I5])/27))*
-    UCouplingConstant[ChPTW3[2], 1])/
+    CouplingConstant[ChPTW3[2], 1])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((-2*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/3 + 
      (SU3D[6, I3, I5]*SU3D[I1, I2, I4])/3 + 
@@ -11582,7 +11582,7 @@
        I/9*SU3D[I2, I5, k6]*SU3F[I3, I4, k6] - I/9*SU3D[I2, I4, k6]*
         SU3F[I3, I5, k6] - (4*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 - 
        (4*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 + 
-       (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/9))*UCouplingConstant[ChPTW3[2], 
+       (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/9))*CouplingConstant[ChPTW3[2], 
      1])/DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((-4*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/9 + 
      (SU3D[6, I3, I5]*SU3D[I1, I2, I4])/3 + 
@@ -12878,7 +12878,7 @@
        I/9*SU3D[I2, I5, k6]*SU3F[I3, I4, k6] + I/9*SU3D[I2, I4, k6]*
         SU3F[I3, I5, k6] - (4*SU3Delta[I2, I5]*SU3Delta[I3, I4])/27 - 
        (4*SU3Delta[I2, I4]*SU3Delta[I3, I5])/27 + 
-       (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/9))*UCouplingConstant[ChPTW3[2], 
+       (4*SU3Delta[I2, I3]*SU3Delta[I4, I5])/9))*CouplingConstant[ChPTW3[2], 
      1])/DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((-4*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/45 - 
      (4*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/45 - 
@@ -27126,7 +27126,7 @@
         SU3Delta[I3, I5] + SU3Delta[I2, I3]*((-4*SU3D[3, I4, I5])/135 - 
          (4*SU3D[8, I4, I5])/(135*Sqrt[3]) - (16*SU3Delta[I4, I5])/405) + 
        ((-4*SU3D[3, I2, I3])/135 - (4*SU3D[8, I2, I3])/(135*Sqrt[3]))*
-        SU3Delta[I4, I5]))*UCouplingConstant[ChPTW3[2], 2])/
+        SU3Delta[I4, I5]))*CouplingConstant[ChPTW3[2], 2])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((2*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/45 - (2*I)/15*SU3D[7, I4, I5]*
       SU3D[I1, I2, I3] + (2*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/45 - 
@@ -42063,7 +42063,7 @@
        (4*SU3D[6, I3, I4]*SU3Delta[8, I5])/(135*Sqrt[3]) - 
        (8*I)/135*SU3Delta[7, I5]*SU3Delta[I3, I4] - (8*I)/135*SU3Delta[7, I4]*
         SU3Delta[I3, I5] - (8*I)/135*SU3Delta[7, I3]*SU3Delta[I4, I5]))*
-    UCouplingConstant[ChPTW3[2], 2])/
+    CouplingConstant[ChPTW3[2], 2])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}, 
  {(((2*SU3D[6, I4, I5]*SU3D[I1, I2, I3])/45 + (2*I)/15*SU3D[7, I4, I5]*
       SU3D[I1, I2, I3] + (2*SU3D[6, I3, I5]*SU3D[I1, I2, I4])/45 + 
@@ -50423,5 +50423,5 @@
        (8*SU3D[6, I3, I4]*SU3Delta[8, I5])/(135*Sqrt[3]) + 
        (8*I)/135*SU3Delta[7, I5]*SU3Delta[I3, I4] + (8*I)/135*SU3Delta[7, I4]*
         SU3Delta[I3, I5] + (8*I)/135*SU3Delta[7, I3]*SU3Delta[I4, I5]))*
-    UCouplingConstant[ChPTW3[2], 2])/
+    CouplingConstant[ChPTW3[2], 2])/
    DecayConstant[PseudoScalar[1], RenormalizationState[0]]^5}}

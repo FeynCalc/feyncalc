@@ -24,15 +24,14 @@
 Begin["HighEnergyPhysics`Phi`Objects`"];
 
 ChPTVirtualPhotons22::"usage"=
-"ChPT22 is the name of the file containing the definitions for 
-ULagrangian[ChPT2EM[2]], which is the leading order pionic
-SU(2) ChPT lagrangian with couplings to virtual photons.
+   "\"ChPTVirtualPhotons22.m\" is the name of the file containing the definitions for \
+Lagrangian[ChPTVirtualPhotons[2]], which is the leading order pionic \
+SU(2) ChPT lagrangian with couplings to virtual photons. \
 To evaluate use ArgumentsSupply";
 
 GaugeFixingParameter::"usage"=
-"GaugeFixingParameter is the gauge fixing parameter of the lowest 
-order electromagnetic ChPT lagrangian ChPTVirtualPhotons22, the usual choice 
-is Lorentz gauge, GaugeFixingParameter=1";
+   "GaugeFixingParameter(=1/GaugeXi) is the gauge fixing parameter of QED in Lorentz gauge.  \
+the usual choice is Feynman gauge, GaugeFixingParameter=1";
 
 (* --------------------------------------------------------------- *)
 
@@ -58,9 +57,10 @@ pt/:MakeBoxes[pt[],TraditionalForm]:="";
 pt/:MakeBoxes[pt[RenormalizationState[1]],TraditionalForm]:="r";
 pt/:MakeBoxes[pt[RenormalizationState[0]],TraditionalForm]:="";
     
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[ChPTVirtualPhotons2[2],st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+  ChPTVirtualPhotons2[2],st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SuperscriptBox[MakeBoxes[StyleForm["C",FontSlant->"Italic"]][[1]],
@@ -79,7 +79,7 @@ SetAttributes[ChPTVirtualPhotons2,NumericFunction];
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[ChPTVirtualPhotons2[2]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTVirtualPhotons2[2]]:=
 
 1/4*DecayConstant[Pion]^2*
 
@@ -97,7 +97,7 @@ GaugeFixingParameter/2*
 FDr[fcqf[Particle[Photon],fcli[mu]],{mu}]*
 FDr[fcqf[Particle[Photon],fcli[nu]],{nu}]+
 
-UCouplingConstant[ChPTVirtualPhotons2[2]]*
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTVirtualPhotons2[2]]*
 UTrace[NM[UMatrix[UChiralSpurionRight],MM,
 UMatrix[UChiralSpurionLeft],Adjoint[MM]]];
     
@@ -107,7 +107,7 @@ FieldsSet[ChPTVirtualPhotons2[2]]:=
 {IsoVector[fcqf[Particle[Pion]]],
 fcqf[Particle[Photon]]};
 
-$ULagrangians=Union[$ULagrangians,{ChPTVirtualPhotons2[2]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTVirtualPhotons2[2]}];
 
 End[];
 

@@ -1,0 +1,51 @@
+(6912*Pi^2*CouplingConstant[ChPTVirtualPhotons2[2], RenormalizationState[0]]^
+    2*CouplingConstant[QED[1], RenormalizationState[0]]^4*LeutwylerLambda[] + 
+  12*CouplingConstant[ChPTVirtualPhotons2[2], RenormalizationState[0]]*
+   CouplingConstant[QED[1], RenormalizationState[0]]^2*
+   DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2*
+   (48*Pi^2*DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2*
+     (1 + 3*CouplingConstant[QED[1], RenormalizationState[0]]^2*
+       LeutwylerLambda[]) - 8*(44*Pi^2*LeutwylerLambda[] + 
+      Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+        ScaleMu^2])*ParticleMass[PseudoScalar[3], RenormalizationState[0]]^
+      2 + (256*Pi^2*LeutwylerLambda[] - 
+      Log[ParticleMass[PseudoScalar[4], RenormalizationState[0]]^2/
+        ScaleMu^2])*ParticleMass[PseudoScalar[4], RenormalizationState[0]]^
+      2) + DecayConstant[PseudoScalar[2], RenormalizationState[0]]^4*
+   (320*Pi^2*CouplingConstant[QED[1], RenormalizationState[0]]^4*
+     (CouplingConstant[ChPTVirtualPhotons2[4], 23, RenormalizationState[1]] + 
+      2*CouplingConstant[ChPTVirtualPhotons2[4], 24, RenormalizationState[
+         1]])*DecayConstant[PseudoScalar[2], RenormalizationState[0]]^4 + 
+    2*CouplingConstant[QED[1], RenormalizationState[0]]^2*
+     DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2*
+     (-((-36 + 320*Pi^2*CouplingConstant[ChPTVirtualPhotons2[4], 11, 
+           RenormalizationState[1]] + 320*Pi^2*CouplingConstant[
+           ChPTVirtualPhotons2[4], 12, RenormalizationState[1]] + 
+         432*Pi^2*LeutwylerLambda[] + 
+         27*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+            ScaleMu^2])*ParticleMass[PseudoScalar[3], RenormalizationState[
+           0]]^2) + 16*Pi^2*(20*CouplingConstant[ChPTVirtualPhotons2[4], 15, 
+          RenormalizationState[1]] + 92*CouplingConstant[ChPTVirtualPhotons2[
+           4], 16, RenormalizationState[1]] + 
+        4*CouplingConstant[ChPTVirtualPhotons2[4], 17, RenormalizationState[
+           1]] + 72*CouplingConstant[ChPTVirtualPhotons2[4], 18, 
+          RenormalizationState[1]] + 27*LeutwylerLambda[])*
+       ParticleMass[PseudoScalar[4], RenormalizationState[0]]^2) + 
+    3*(4*(32*Pi^2*LeutwylerLambda[] + 
+        Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+          ScaleMu^2])*ParticleMass[PseudoScalar[3], RenormalizationState[0]]^
+        4 + 2*(-32*Pi^2*LeutwylerLambda[] - 
+        2*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+           ScaleMu^2] + Log[ParticleMass[PseudoScalar[4], 
+            RenormalizationState[0]]^2/ScaleMu^2])*
+       ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2*
+       ParticleMass[PseudoScalar[4], RenormalizationState[0]]^2 + 
+      (192*Pi^2*CouplingConstant[ChPTVirtualPhotons2[4], 3, 
+          RenormalizationState[1]] - 64*Pi^2*LeutwylerLambda[] + 
+        Log[ParticleMass[PseudoScalar[4], RenormalizationState[0]]^2/
+          ScaleMu^2])*ParticleMass[PseudoScalar[4], RenormalizationState[0]]^
+        4 - 96*Pi^2*DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2*
+       (ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2 - 
+        ParticleMass[PseudoScalar[4], RenormalizationState[0]]^2))))/
+ (288*Pi^2*DecayConstant[PseudoScalar[2], RenormalizationState[0]]^6*
+  ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2)

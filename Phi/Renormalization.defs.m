@@ -52,7 +52,7 @@ C0Evaluation::"usage" =
     "C0Evaluation is an option of VeltmanC0 and VeltmanExpand, specifying how \
 the function should be evaluated.  The fastest and most reliable setting is \
 Spence.  the others are provided merely to illustrate e.g. the slow \
-convergence of the integrals.  Possible settings are None, Spence, Direct1 \
+convergence of the integrals.  Possible settings are None, Spence, Infrared, Direct1 \
 and Direct2.  When Direct1, Direct2 or Direct3 is chosen, the options of \
 NIntegrate may also be specified.  Default setting : Spence for VeltmanC0 and \
 None for VeltmanExpand";
@@ -104,7 +104,25 @@ because Mathematica does not implement the right cuts";
 
 Infrared::"usage" =
     "Infrared is a possible setting of the option C0Evaluation of VeltmanC0 \
-and VeltmanExpand";
+and VeltmanExpand.  It is an implementation of formulas (E.1-E.3) of 't Hooft and \
+Veltman (1979).  The fifth argument of VeltmanC0 is the (infinitesimal) \
+infrared regulator. The external momenta correponding to the first two arguments \
+must be on-shell";
+
+Infrared1::"usage" =
+    "Infrared1 is a possible setting of the option C0Evaluation of VeltmanC0 \
+and VeltmanExpand.  It is an implementation of formulas (A.22) of Knecht and \
+Urech (1997) valid above threshold.  The fifth argument of VeltmanC0 is the (infinitesimal) \
+infrared regulator. The external momenta correponding to the first two arguments \
+must be on-shell and equal";
+
+Infrared2::"usage" =
+    "Infrared2 is a possible setting of the option C0Evaluation of VeltmanC0 \
+and VeltmanExpand.  It is an implementation of formulas (4.13) of Knecht and \
+Urech (1997) valid below 0.  The fifth argument of VeltmanC0 is the (infinitesimal) \
+infrared regulator. The external momenta correponding to the first two arguments \
+must be on-shell and equal";
+
 
 SmallIEps::"usage" =
     "SmallIEps is simply a symbol with a display definitions.  It is used as \
@@ -188,7 +206,7 @@ Default setting : False";
 
 LeutwylerJBar::"usage" =
     "LeutwylerJBar[s,m^2]  is the (SU(2)) quantity J from J.Gasser and H. \
-Leutwyler (1984), Annals of Physics 158, 142-210.  LeutwylerJ0[s,m1^2,m2^2] \
+Leutwyler (1984), Annals of Physics 158, 142-210.  LeutwylerJBar[s,m1^2,m2^2] \
 is the (SU(3)) quantity J from J.Gasser and H. Leutwyler (1985), Nuclear \
 Physics B250, 465-516.  It returns an algebraic expression involving \
 LeutwylerSigma when ExplicitLeutwylerJBar is set to true";
@@ -219,11 +237,11 @@ RenormalizationCoefficientFunction::"usage" =
     "RenormalizationCoefficientFunction is an option of Renormalize, \
 specifying the function f, so that c = c0 - f[c]*l, where c is some \
 renormalized coupling constant, c0 is the unrenormalized equivalent (both \
-with heads UCouplingConstant) and f is the infinite quantity specified by the \
+with heads CouplingConstant) and f is the infinite quantity specified by the \
 option InfinityFactor.  The option actually to be specified is \
 RenormalizationCoefficientFunction[lag,i], which  returns the coefficient \
 used in the renormalization of the coupling constant \
-UCouplingConstant[lag,i,RenormalizationState[0]].  Default value : \
+CouplingConstant[lag,i,RenormalizationState[0]].  Default value : \
 RenormalizationCoefficients[lag][[i]]";
 
 Renormalize::"usage" =
@@ -250,6 +268,17 @@ FeynmanX::usage = "FeynmanX[1], FeynmanX[2], etc. are Feynman parameters.";
 FeynmanY::usage = "FeynmanY[1], FeynmanY[2], etc. are Feynman parameters.";
 
 FeynmanZ::usage = "FeynmanZ[1], FeynmanZ[2], etc. are Feynman parameters.";
+
+(*
+Errors
+*)
+
+VeltmanC0::nodef = 
+    "The two first particles are not on-mass-shell";
+
+VeltmanC0::nodef1 = 
+    "The two first particles must be on-mass-shell and have identical masses";
+
 Begin["`Private`"];
 
 (*

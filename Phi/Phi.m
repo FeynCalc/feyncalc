@@ -88,9 +88,9 @@ $Phi::"usage" =
 "$Phi is a variable indicating whether or not Phi is loaded - it is set \
 to True when loading Phi";
 
-$Configuration::"usage" =
+Global`$Configuration::"usage" =
 "$Configuration is a string variable determining which configuration is loaded \
-at startup or restart.  It should be set in PhiStart.m or with the \
+at startup or restart.  It can be set before loading FeynCalc, in PhiStart.m or with the \
 configurations palette.  If the palette is used for restarting, the setting \
 in PhiStart.m is overruled.  Possible values include \"ChPT2\" and \"QED\".  Default \
 value : \"None\"";
@@ -200,7 +200,7 @@ Do[
 
   Close[strm];,
 
-{i, Length[$PhiPackages]}]
+{i, Length[$PhiPackages]}];
 
 (VerbosePrint[2,"Declaring symbols from ",#];
 DeclarePackage[#, PhiSymbols[#]])&/@ $PhiPackages;
@@ -212,7 +212,9 @@ Remove[str,strm,sym,pos];
 
 (* Defaults *)
 
-$Configuration="None";
+If[ValueQ[Global`$Configuration] =!= True,
+  Global`$Configuration="None"
+];
 
 If[tmp`pconf=!=Null,$PaletteConfiguration=tmp`pconf];
 If[tmp`verb=!=Null,HighEnergyPhysics`FeynCalc`$VeryVerbose=tmp`verb];

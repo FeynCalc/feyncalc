@@ -26,156 +26,156 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 ChPTW34::"usage"=
 "ChPTW34.m is the name of the file containing the definitions for
-ULagrangian[ChPTW3[4]], the lext to leading order CP conserving
+Lagrangian[ChPTW3[4]], the lext to leading order CP conserving
 weak ChPT lagrangian for delta S = 1.
 To evaluate use ArgumentsSupply";
 
 N1::"usage"=
-"N1 := UCouplingConstant[ChPTW3[4],1] is one of the constants of the
+"N1 := CouplingConstant[ChPTW3[4],1] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N2::"usage"=
-"N2 := UCouplingConstant[ChPTW3[4],2] is one of the constants of the
+"N2 := CouplingConstant[ChPTW3[4],2] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N3::"usage"=
-"N3 := UCouplingConstant[ChPTW3[4],3] is one of the constants of the
+"N3 := CouplingConstant[ChPTW3[4],3] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N4::"usage"=
-"N4 := UCouplingConstant[ChPTW3[4],4] is one of the constants of the
+"N4 := CouplingConstant[ChPTW3[4],4] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N5::"usage"=
-"N5 := UCouplingConstant[ChPTW3[4],5] is one of the constants of the
+"N5 := CouplingConstant[ChPTW3[4],5] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N6::"usage"=
-"L6 := UCouplingConstant[ChPTW3[4],6] is one of the constants of the
+"L6 := CouplingConstant[ChPTW3[4],6] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N7::"usage"=
-"N7 := UCouplingConstant[ChPTW3[4],7] is one of the constants of the
+"N7 := CouplingConstant[ChPTW3[4],7] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N8::"usage"=
-"N8 := UCouplingConstant[ChPTW3[4],8] is one of the constants of the
+"N8 := CouplingConstant[ChPTW3[4],8] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N9::"usage"=
-"N9 := UCouplingConstant[ChPTW3[4],9] is one of the constants of the
+"N9 := CouplingConstant[ChPTW3[4],9] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N10::"usage"=
-"N10 := UCouplingConstant[ChPTW3[4],10] is one of the constants of the
+"N10 := CouplingConstant[ChPTW3[4],10] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N11::"usage"=
-"N11 := UCouplingConstant[ChPTW3[4],11] is one of the constants of the
+"N11 := CouplingConstant[ChPTW3[4],11] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N12::"usage"=
-"N12 := UCouplingConstant[ChPTW3[4],12] is one of the constants of the
+"N12 := CouplingConstant[ChPTW3[4],12] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N13::"usage"=
-"N13 := UCouplingConstant[ChPTW3[4],13] is one of the constants of the
+"N13 := CouplingConstant[ChPTW3[4],13] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N14::"usage"=
-"N14 := UCouplingConstant[ChPTW3[4],14] is one of the constants of the
+"N14 := CouplingConstant[ChPTW3[4],14] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N15::"usage"=
-"N15 := UCouplingConstant[ChPTW3[4],15] is one of the constants of the
+"N15 := CouplingConstant[ChPTW3[4],15] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N16::"usage"=
-"N16 := UCouplingConstant[ChPTW3[4],16] is one of the constants of the
+"N16 := CouplingConstant[ChPTW3[4],16] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N17::"usage"=
-"N17 := UCouplingConstant[ChPTW3[4],17] is one of the constants of the
+"N17 := CouplingConstant[ChPTW3[4],17] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N18::"usage"=
-"N18 := UCouplingConstant[ChPTW3[4],18] is one of the constants of the
+"N18 := CouplingConstant[ChPTW3[4],18] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N19::"usage"=
-"N19 := UCouplingConstant[ChPTW3[4],19] is one of the constants of the
+"N19 := CouplingConstant[ChPTW3[4],19] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N20::"usage"=
-"N20 := UCouplingConstant[ChPTW3[4],20] is one of the constants of the
+"N20 := CouplingConstant[ChPTW3[4],20] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N21::"usage"=
-"N21 := UCouplingConstant[ChPTW3[4],21] is one of the constants of the
+"N21 := CouplingConstant[ChPTW3[4],21] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N22::"usage"=
-"N22 := UCouplingConstant[ChPTW3[4],22] is one of the constants of the
+"N22 := CouplingConstant[ChPTW3[4],22] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N23::"usage"=
-"N23 := UCouplingConstant[ChPTW3[4],23] is one of the constants of the
+"N23 := CouplingConstant[ChPTW3[4],23] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N24::"usage"=
-"N24 := UCouplingConstant[ChPTW3[4],24] is one of the constants of the
+"N24 := CouplingConstant[ChPTW3[4],24] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N25::"usage"=
-"N25 := UCouplingConstant[ChPTW3[4],25] is one of the constants of the
+"N25 := CouplingConstant[ChPTW3[4],25] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N26::"usage"=
-"N26 := UCouplingConstant[ChPTW3[4],26] is one of the constants of the
+"N26 := CouplingConstant[ChPTW3[4],26] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N27::"usage"=
-"N27 := UCouplingConstant[ChPTW3[4],27] is one of the constants of the
+"N27 := CouplingConstant[ChPTW3[4],27] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N28::"usage"=
-"N28 := UCouplingConstant[ChPTW3[4],28] is one of the constants of the
+"N28 := CouplingConstant[ChPTW3[4],28] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N29::"usage"=
-"N29 := UCouplingConstant[ChPTW3[4],29] is one of the constants of the
+"N29 := CouplingConstant[ChPTW3[4],29] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N30::"usage"=
-"N30 := UCouplingConstant[ChPTW3[4],30] is one of the constants of the
+"N30 := CouplingConstant[ChPTW3[4],30] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N31::"usage"=
-"N31 := UCouplingConstant[ChPTW3[4],31] is one of the constants of the
+"N31 := CouplingConstant[ChPTW3[4],31] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N32::"usage"=
-"N32 := UCouplingConstant[ChPTW3[4],32] is one of the constants of the
+"N32 := CouplingConstant[ChPTW3[4],32] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N33::"usage"=
-"N33 := UCouplingConstant[ChPTW3[4],33] is one of the constants of the
+"N33 := CouplingConstant[ChPTW3[4],33] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N34::"usage"=
-"N34 := UCouplingConstant[ChPTW3[4],34] is one of the constants of the
+"N34 := CouplingConstant[ChPTW3[4],34] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N35::"usage"=
-"N35 := UCouplingConstant[ChPTW3[4],35] is one of the constants of the
+"N35 := CouplingConstant[ChPTW3[4],35] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N36::"usage"=
-"N36 := UCouplingConstant[ChPTW3[4],36] is one of the constants of the
+"N36 := CouplingConstant[ChPTW3[4],36] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 N37::"usage"=
-"N37 := UCouplingConstant[ChPTW3[4],37] is one of the constants of the
+"N37 := CouplingConstant[ChPTW3[4],37] is one of the constants of the
 fourth order weak ChPT lagrangian";
 
 Begin["`Private`"];
@@ -184,43 +184,45 @@ Begin["`Private`"];
 
 (* Abbreviations *)
 
-N1 := UCouplingConstant[ChPTW3[4],1];
-N2 := UCouplingConstant[ChPTW3[4],2];
-N3 := UCouplingConstant[ChPTW3[4],3];
-N4 := UCouplingConstant[ChPTW3[4],4];
-N5 := UCouplingConstant[ChPTW3[4],5];
-N6 := UCouplingConstant[ChPTW3[4],6];
-N7 := UCouplingConstant[ChPTW3[4],7];
-N8 := UCouplingConstant[ChPTW3[4],8];
-N9 := UCouplingConstant[ChPTW3[4],9];
-N10 := UCouplingConstant[ChPTW3[4],10];
-N11 := UCouplingConstant[ChPTW3[4],11];
-N12 := UCouplingConstant[ChPTW3[4],12];
-N13 := UCouplingConstant[ChPTW3[4],13];
-N14 := UCouplingConstant[ChPTW3[4],14];
-N15 := UCouplingConstant[ChPTW3[4],15];
-N16 := UCouplingConstant[ChPTW3[4],16];
-N17 := UCouplingConstant[ChPTW3[4],17];
-N18 := UCouplingConstant[ChPTW3[4],18];
-N19 := UCouplingConstant[ChPTW3[4],19];
-N20 := UCouplingConstant[ChPTW3[4],20];
-N21 := UCouplingConstant[ChPTW3[4],21];
-N22 := UCouplingConstant[ChPTW3[4],22];
-N23 := UCouplingConstant[ChPTW3[4],23];
-N24 := UCouplingConstant[ChPTW3[4],24];
-N25 := UCouplingConstant[ChPTW3[4],25];
-N26 := UCouplingConstant[ChPTW3[4],26];
-N27 := UCouplingConstant[ChPTW3[4],27];
-N28 := UCouplingConstant[ChPTW3[4],28];
-N29 := UCouplingConstant[ChPTW3[4],29];
-N30 := UCouplingConstant[ChPTW3[4],30];
-N31 := UCouplingConstant[ChPTW3[4],31];
-N32 := UCouplingConstant[ChPTW3[4],32];
-N33 := UCouplingConstant[ChPTW3[4],33];
-N34 := UCouplingConstant[ChPTW3[4],34];
-N35 := UCouplingConstant[ChPTW3[4],35];
-N36 := UCouplingConstant[ChPTW3[4],36];
-N37 := UCouplingConstant[ChPTW3[4],37];
+cc = HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant;
+
+N1 := cc[ChPTW3[4],1];
+N2 := cc[ChPTW3[4],2];
+N3 := cc[ChPTW3[4],3];
+N4 := cc[ChPTW3[4],4];
+N5 := cc[ChPTW3[4],5];
+N6 := cc[ChPTW3[4],6];
+N7 := cc[ChPTW3[4],7];
+N8 := cc[ChPTW3[4],8];
+N9 := cc[ChPTW3[4],9];
+N10 := cc[ChPTW3[4],10];
+N11 := cc[ChPTW3[4],11];
+N12 := cc[ChPTW3[4],12];
+N13 := cc[ChPTW3[4],13];
+N14 := cc[ChPTW3[4],14];
+N15 := cc[ChPTW3[4],15];
+N16 := cc[ChPTW3[4],16];
+N17 := cc[ChPTW3[4],17];
+N18 := cc[ChPTW3[4],18];
+N19 := cc[ChPTW3[4],19];
+N20 := cc[ChPTW3[4],20];
+N21 := cc[ChPTW3[4],21];
+N22 := cc[ChPTW3[4],22];
+N23 := cc[ChPTW3[4],23];
+N24 := cc[ChPTW3[4],24];
+N25 := cc[ChPTW3[4],25];
+N26 := cc[ChPTW3[4],26];
+N27 := cc[ChPTW3[4],27];
+N28 := cc[ChPTW3[4],28];
+N29 := cc[ChPTW3[4],29];
+N30 := cc[ChPTW3[4],30];
+N31 := cc[ChPTW3[4],31];
+N32 := cc[ChPTW3[4],32];
+N33 := cc[ChPTW3[4],33];
+N34 := cc[ChPTW3[4],34];
+N35 := cc[ChPTW3[4],35];
+N36 := cc[ChPTW3[4],36];
+N37 := cc[ChPTW3[4],37];
 
 mu=(Global`\[Mu]);
 nu=(Global`\[Nu]);
@@ -239,9 +241,10 @@ RenormalizationCoefficients[ChPTW3[4]]:=
 
 (* Box definitions *)
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[ChPTW3[4],i_,st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+      ChPTW3[4],i_,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["N",FontSlant->"Italic"]][[1]],
@@ -252,9 +255,9 @@ UCouplingConstant/:
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[ChPTW3[4]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTW3[4]]:=
 
-UCouplingConstant[ChPTW3[2],1]/
+cc[ChPTW3[2],1]/
 DecayConstant[PhiMeson]^2*(
 
 (* ............................................................... *)
@@ -327,7 +330,7 @@ N21*I*UTrace[ NM[UNablaHatDelta[mu], UChiPlus, USmall[mu]] -
              NM[UNablaHatDelta[mu], USmall[mu], UChiPlus] ] +
 
 (*N22*UTrace[ NM[UNablaHatDelta[mu], CovariantNabla[UChiPlus,{mu}]]  ] +*)
-N22*UTrace[ NM[UNablaHatDelta[mu], CovariantNablaUChiPlus[mu]]  ] +
+N22*UTrace[ NM[UNablaHatDelta[mu], NablaChiPlus[mu]]  ] +
 
 N23*I*UTrace[ NM[UNablaHatDelta[mu], UChiMinus, USmall[mu]] +
              NM[UNablaHatDelta[mu], USmall[mu], UChiMinus] ] +
@@ -426,7 +429,7 @@ FieldsSet[ChPTW3[2]]:=
 fcqf[Particle[PhiMeson,RenormalizationState[0]]]
 ]};
 
-$ULagrangians=Union[$ULagrangians,{ChPTW3[4]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTW3[4]}];
 
 End[];
 

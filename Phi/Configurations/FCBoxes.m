@@ -31,18 +31,18 @@ Begin["`Private`"];
 
 QuantumField /: 
    MakeBoxes[ QuantumField[a_][_], TraditionalForm
-            ] := Tbox[a][[1]];
+            ] := Tbox[a](*[[1]]*);
 
 QuantumField /: 
 MakeBoxes[ QuantumField[f_, lo_[mu_,___]][_], TraditionalForm
-            ] := SubscriptBox[Tbox[f][[1(*,1*)]], Tbox[mu]] /; 
+            ] := SubscriptBox[Tbox[f](*[[1]]*), Tbox[mu]] /; 
                    lo === LorentzIndex;
 
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
                           ][_], TraditionalForm
             ] := 
-SubsuperscriptBox[Tbox[f][[1]], Tbox[lori], Tbox[suni]]/; 
+SubsuperscriptBox[Tbox[f](*[[1]]*), Tbox[lori], Tbox[suni]]/; 
            MatchQ[lo, LorentzIndex | Momentum] && 
                             sun === SUNIndex;
 
@@ -54,29 +54,31 @@ QuantumField /:
                           ][_],
               TraditionalForm] :=
 RowBox[{SubscriptBox["\[PartialD]" , Tbox[pa]],
-SubsuperscriptBox[Tbox[a][[1(*,1*)]], Tbox[lori], Tbox[suni]]
+SubsuperscriptBox[Tbox[a](*[[1]]*), Tbox[lori], Tbox[suni]]
                         }];
 
 QuantumField /: 
    MakeBoxes[ QuantumField[
     HighEnergyPhysics`FeynCalc`PartialD`PartialD[pa_]^m_, a_,
- lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,
+ (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex
                           ][_],
               TraditionalForm] :=
               RowBox[{SuperscriptBox[Tbox[PartialD[pa]],Tbox[m]],
-SubsuperscriptBox[Tbox[a][[1(*,1*)]], Tbox[lori], Tbox[suni]]
+SubsuperscriptBox[Tbox[a](*[[1]]*), Tbox[lori], Tbox[suni]]
                       }];
 
 QuantumField /: 
    MakeBoxes[ QuantumField[
     pa__HighEnergyPhysics`FeynCalc`PartialD`PartialD, a_,
- lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,
+ (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex
                           ][_],
               TraditionalForm
             ] := RowBox[{TBox[pa],
-SubsuperscriptBox[Tbox[a][[1(*,1*)]], Tbox[lori], Tbox[suni]]
+SubsuperscriptBox[Tbox[a](*[[1]]*), Tbox[lori], Tbox[suni]]
                         }];
 
 (*----------------------------------------------------------------*)
@@ -84,12 +86,12 @@ SubsuperscriptBox[Tbox[a][[1(*,1*)]], Tbox[lori], Tbox[suni]]
 QuantumField /: 
    MakeBoxes[ QuantumField[f_,suni:sun_[_]..
                           ][_], TraditionalForm] := 
-      SuperscriptBox[Tbox[f][[1]],Tbox[suni]] /;sun === SUNIndex;
+      SuperscriptBox[Tbox[f](*[[1]]*),Tbox[suni]] /;sun === SUNIndex;
       
 QuantumField /: 
    MakeBoxes[ QuantumField[f_,suni:sun_[_]..
                           ], TraditionalForm
-            ] := SuperscriptBox[Tbox[f][[1]],Tbox[suni]
+            ] := SuperscriptBox[Tbox[f](*[[1]]*),Tbox[suni]
                                   ] /; sun === SUNIndex;
 
 (*----------------------------------------------------------------*)
@@ -107,15 +109,15 @@ QuantumField[f1_QuantumField] := f1;
   
 QuantumField /: 
    MakeBoxes[ QuantumField[a_][_], TraditionalForm
-            ] := Tbox[a][[1]];
+            ] := Tbox[a](*[[1]]*);
 
 QuantumField /: 
    MakeBoxes[ QuantumField[a_], TraditionalForm
-            ] := Tbox[a][[1]];
+            ] := Tbox[a](*[[1]]*);
 
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lo_[mu_,___]], TraditionalForm
-            ] := SubscriptBox[Tbox[f][[1(*,1*)]], Tbox[mu]] /; 
+            ] := SubscriptBox[Tbox[f](*[[1]]*), Tbox[mu]] /; 
                    lo === LorentzIndex;
 
 QuantumField /:
@@ -127,14 +129,14 @@ QuantumField /:
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
      ], TraditionalForm
- ] := SubsuperscriptBox[Tbox[f][[1]], Tbox[lori], Tbox[suni]
+ ] := SubsuperscriptBox[Tbox[f](*[[1]]*), Tbox[lori], Tbox[suni]
         ] /; MatchQ[lo, LorentzIndex | Momentum
                ] && sun === SUNIndex;
 
 QuantumField /: 
    MakeBoxes[ QuantumField[f_, lori:lo_[_,___].., suni:sun_[_]..
     ][_], TraditionalForm
- ] := SubsuperscriptBox[Tbox[f][[1]], Tbox[lori], Tbox[suni]] /;
+ ] := SubsuperscriptBox[Tbox[f](*[[1]]*), Tbox[lori], Tbox[suni]] /;
         MatchQ[lo, LorentzIndex | Momentum] && 
                             sun === SUNIndex;
 QuantumField /: 
@@ -145,29 +147,31 @@ QuantumField /:
                           ],
               TraditionalForm
        ] := RowBox[{SubscriptBox["\[PartialD]" , Tbox[pa]],
-        SubsuperscriptBox[Tbox[a][[1(*,1*)]], Tbox[lori], Tbox[suni]]
+        SubsuperscriptBox[Tbox[a](*[[1]]*), Tbox[lori], Tbox[suni]]
                         }];
 
 QuantumField /: 
    MakeBoxes[ QuantumField[
     HighEnergyPhysics`FeynCalc`PartialD`PartialD[pa_]^m_, a_,
- lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,
+ (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex
                           ],
               TraditionalForm
   ] := RowBox[{SuperscriptBox[Tbox[PartialD[pa]],Tbox[m]],
-    SubsuperscriptBox[Tbox[a][[1(*,1*)]], Tbox[lori], Tbox[suni]]
+    SubsuperscriptBox[Tbox[a](*[[1]]*), Tbox[lori], Tbox[suni]]
                       }];
 
 QuantumField /: 
    MakeBoxes[ QuantumField[
     pa__HighEnergyPhysics`FeynCalc`PartialD`PartialD, a_,
- lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,
+ (*lori___HighEnergyPhysics`FeynCalc`Momentum`Momentum,*)
+ lori___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
  suni___HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex
                           ],
               TraditionalForm
             ] := RowBox[{TBox[pa],
-                 SubsuperscriptBox[Tbox[a][[1(*,1*)]],
+                 SubsuperscriptBox[Tbox[a](*[[1]]*),
                  Tbox[lori], Tbox[suni]]
                         }];
 
@@ -183,12 +187,13 @@ fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD,a__,
     isosp_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex]:=
   fcqf[ders,a,lors,isosp,iis];
 
-fcqf[aa___, Particle[LeftComponent[a_],i___],bb___][x_]:=
-  1/2*(fcqf[aa, Particle[Vector[a],i],bb][x]+
-        fcqf[aa, Particle[AxialVector[a],i],bb][x]);
-
-fcqf[aa___, Particle[RightComponent[a_],i___],bb___][x_]:=
-  1/2*(fcqf[aa, Particle[Vector[a],i],bb][x]-
-        fcqf[aa, Particle[AxialVector[a],i],bb][x]);
+fcqf[aa___, Particle[LeftComponent[a_, opts0___Rule], i___], bb___][
+       x_] /; (Explicit /. {opts0} /. Options[LeftComponent]) :=
+        1/2*(fcqf[aa, Particle[Vector[a], i], bb][x] +
+          fcqf[aa, Particle[AxialVector[a], i], bb][x]);
+fcqf[aa___, Particle[RightComponent[a_, opts0___Rule], i___], bb___][
+        x_] /; (Explicit /. {opts0} /. Options[RightComponent]) :=
+         1/2*(fcqf[aa, Particle[Vector[a], i], bb][x] -
+          fcqf[aa, Particle[AxialVector[a], i], bb][x]);
 
 (* ************************************************************** *)

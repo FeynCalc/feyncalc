@@ -144,6 +144,7 @@ Options[FCToFA] = {ScalarProductForm -> MomentaScalarProduct,
       IsoIndicesString -> "I", FADeltas -> True, IsoCollect -> False};
 Options[MomentaCollect] = {ParticlesNumber -> 4, PerturbationOrder -> 2,
       ScalarProductForm -> (MomentaScalarProduct|fcpa),
+      fcmt -> Global`FAMetricTensor,
       MomentumVariablesString -> "p", ExtendedCollect -> True,
       HoldMinuses -> False};
 Options[GenericCoupling] = {ScalarProductForm -> MomentaScalarProduct,
@@ -333,31 +334,34 @@ bug?). So we replace numerical functions temporarily. Alternatively, we could
 unset the numerical attribute temporarily. 18/12-1999. Nope, doesn't work. *)
 
 (*dropnumrules := ((# -> ToExpression["tmp`Tmp" <> ToString[#]]) &) /@
-        Union[$UScalars, numericheads, $UParticles];*)
+        Union[$UScalars, numericheads, $Particles];*)
 (*setnumrules := ((ToExpression["tmp`Tmp" <> ToString[#]]) -> # &) /@
-        Union[$UScalars, numericheads, $UParticles];*)
+        Union[$UScalars, numericheads, $Particles];*)
 MomentaCollect[m_, opts___] :=
  (*(pc = (ScalarProductForm /. Flatten[{opts}] /. Options[MomentaCollect]);*)
- Block[{pc = (ScalarProductForm /. Flatten[{opts}] /. Options[MomentaCollect]),
- pcc, a, b, c, d, e, j, pp, xf, xff, xfff, n1,
+ Block[{mt = (fcmt /. Flatten[{opts}] /. Options[MomentaCollect]),
+  pc = (ScalarProductForm /. Flatten[{opts}] /. Options[MomentaCollect]),
+  pcc, a, b, c, d, e, j, pp, xf, xff, xfff, n1,
        n2, p, l, r, tminus, var, Head1},
-pcc = If[Head[pc]===Alternatives, Blank /@ pc, Blank[pc]];
-VerbosePrint[2, "Scalar product is ", pcc];
+  pcc = If[Head[pc]===Alternatives, Blank /@ pc, Blank[pc]];
+  VerbosePrint[2, "Scalar product is ", pcc];
     VerbosePrint[1, "Building list of Collect patterns from momenta"];
     momentaslist1 =
-      Join[{Times @@
+      Join[If[pc === None, {},
+          Join[{Times @@
             Table[(var = ToExpression["a" <> ToString[j]];
                 Pattern[Evaluate[var], pcc]), {j,
                 Ceiling[(PerturbationOrder /. Flatten[{opts}] /.
                         Options[MomentaCollect])/2]}]},
                         {pcc^(Ceiling[(PerturbationOrder /. Flatten[{opts}] /.
-                      Options[MomentaCollect])/2])},
+                      Options[MomentaCollect])/2])}]],
         If[(ExtendedCollect /. Flatten[{opts}] /. Options[MomentaCollect]),
           VerbosePrint[1,
             "Building list of Collect patterns from $ExpansionQuantities"];
           VerbosePrint[3, " ", $ExpansionQuantities];
           Select[momprod @@
-          Table[Join[$ExpansionQuantities, {Sqrt[pc[a___]]}](*/.dropnumrules*)/.
+          Table[Join[$ExpansionQuantities, 
+                    If[pc === None, {}, {Sqrt[pc[a___]]}]](*/.dropnumrules*)/.
 	     {Blank -> xf, BlankSequence -> xff, BlankNullSequence -> xfff} /.
              Pattern -> pp /.
 	    {pp[b_, xf[]] -> pp[b, Blank[]],
@@ -374,7 +378,7 @@ VerbosePrint[2, "Scalar product is ", pcc];
               Power[a_, Rational[n1_, 2]]*Power[b_, Rational[n2_, 2]] ->
                 Power[a, Rational[n1 + n2, 2]]*(1 + (-1)^(n1 + n2))/2 /.
             Sqrt[_]*__ -> Sequence[], {}](*, $ExpansionQuantities*)];
-    momentaslist2 = famt[__]*momentaslist1;
+    momentaslist2 = If[mt === None, {}, mt[__]*momentaslist1];
     (*momentaslist2 = fcmt[__]*momentaslist1;*)
     momentaslist = Join[momentaslist2, momentaslist1](*/. dropnumrules*);
     VerbosePrint[3, "I will collect ", StandardForm[momentaslist]];
@@ -530,7 +534,7 @@ xnamerule[opts___] :=
     XFileName ->
       ToString[PhiModel /. Flatten[{opts}] /.
             Options[XName]] <> ((VertexFields /. Flatten[{opts}] /.
-                Options[XName]) /. (p : $UParticleHeads)[ii_] :>
+                Options[XName]) /. (p : $ParticleHeads)[ii_] :>
               StringTake[ToString[p], {1}] <> StringTake[ToString[p], {-1}] <>
                  ToString[ii]) <> "o" <>
         ToString[PerturbationOrder /. Flatten[{opts}] /. Options[XName]];
@@ -587,17 +591,18 @@ Min[30, StringLength[XName[opts]]]] <> ".Mod"];
 vertices, we get a factor n!: *)
 
 
-(* Added 11/7-2001 *)
+(* Added 11/7-2001.
+   To deal with multiple-graph topologies.
+   Splits in separate one-graph topologies. *)
 
-VerticesExtract[top:(fatop[_][__]->fains[fagen][fagr[__][__] ->
-                 fains[facl][
-                 fagr[__][__]], (fagr[__][__] ->
-                 fains[facl][fagr[__][__]]) ..])]:=
-Union @@ (VerticesExtract /@ (top /.
-((t : (fatop[_][__])) -> (i : (fains[fagen][
-fagr[__][__] ->fains[facl][fagr[__][__]], (fagr[__][__] ->
-fains[facl][fagr[__][__]]) ..]))) :>
-((Rule[t,fains[fagen][#]]) & /@ (List @@ i))));
+VerticesExtract[top:(fatop[_][__] -> fains[fagen][
+                 fagr[__][__] -> fains[facl][fagr[__][__]],
+                (fagr[__][__] -> fains[facl][fagr[__][__]]) ..])]:=
+(*Union @@*) (VerticesExtract /@ (top /.
+             ((t : (fatop[_][__])) -> (i:(fains[fagen][
+                fagr[__][__] -> fains[facl][fagr[__][__]],
+                (fagr[__][__] -> fains[facl][fagr[__][__]]) ..]))) :>
+             ((Rule[t, fains[fagen][#]])& /@ (List @@ i))));
 
 (* 9/12-1998: Changed t_fatop into t:(fatop[_][__]) below. I think I changed the
 pattern in the other functions some time ago, but must have forgotten the one
@@ -605,18 +610,17 @@ below. *)
 
 (*Bug fix : For a vertex with a tadpole loop propagator,
   VerticesExtract would see only one leg from the loop, 17/6 - 2000*)
-  VerticesExtract[
-      t : (fatop[_][__]) ->
-        fains[fagen][
-          fagr[n_, r___][genins__] ->
+  VerticesExtract[t : (fatop[_][__]) -> fains[fagen][fagr[n_, r___][genins__] ->
             fains[facl][fagr[nn_, rr___][classins__]]]] := (verts =
         Union[Cases[t, favert[_][_], Infinity, Heads -> True]];
       vertsfull = (FullVertex @@
                 Cases[t(**)/. p : faprop[_][v_, v_, _] -> Sequence[p, p](**),
                   faprop[_][___, #, ___], Infinity, Heads -> True]) & /@
-          verts; vertsfull /. {classins} /.
-          faprop[_][_, _, fi_] -> fi /. (pa : $UParticleHeads)[i_, ___] :>
+          verts;
+      vertsfull /. {classins} /.
+          faprop[_][_, _, fi_] -> fi /. (pa : $ParticleHeads)[i_, ___] :>
           pa[i]);
+          
 splitinequals[l_] :=
     Union[Table[Select[l, MatchQ[#, l[[i]]] &], {i, Length[l]}]];
 VerticesSymmetryFactor[
@@ -893,7 +897,7 @@ FixCouplingIndices :=
                     NumberQ[#]) &] /. fcsuni[i_] -> i,
           Union[Flatten[
               HighEnergyPhysics`FeynArts`M$CouplingMatrices[[rep,
-                      1]] /. (Alternatives @@ $FAUParticlesInUse)[__,
+                      1]] /. (Alternatives @@ $FAParticlesInUse)[__,
                       is__List] -> is /. C -> List]]];
       If[newinds =!= {},
         VerbosePrint[1, "You're using dummy indices, ", newinds,
@@ -1102,7 +1106,8 @@ fcpa[a_,b : Plus[-1*_, __]] :> -fcpa[a, -b] /.
    tmpdiga[p_] -> fcdiga[p, SpaceTimeDimensions](*,
    fachiralp -> fcchiralp, fadsl[a_] :> fcdiga[a, SpaceTimeDimensions]*)
 } /.
-{fanoncom[a_, b__] :> fcdot[a, b], fanoncom[a_] :> a} /.
+{fanoncom[a_, b__] :> (fcdot[a, b]/.fanoncom->Identity), 
+fanoncom[a_] :> (a/.fanoncom->Identity(*Changed 31/1-2002. I have no idea* why mma suddenly screws up here*))} /.
 famatr[mat__] -> fcdtr[fcdot[mat], fcdtrev -> False] /.
 (*fixing the last momenta without SpaceTimeDimensions*)
 {fcpa -> fcpa1, fcmom -> fcmom1} /.

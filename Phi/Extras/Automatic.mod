@@ -75,21 +75,21 @@ Table[
 setd->SetDelayed;  
 
 
-isovar[(a:$UParticleHeads)[___],_]:={};
+isovar[(a:$ParticleHeads)[___],_]:={};
 
-isovars[(a:$UParticleHeads)[i_]]:=
+isovars[(a:$ParticleHeads)[i_]]:=
 Flatten[Table[isovar[a[i],indexnr],{indexnr,Length[
 a[i]/.$CouplingIsoIndicesSpecifications]}]];
 
-isovars[(a:$UParticleHeads)[___],_]:={};
+isovars[(a:$ParticleHeads)[___],_]:={};
 
-isoindexx[(a:$UParticleHeads)[___],_,_]:={"seq[]"};
+isoindexx[(a:$ParticleHeads)[___],_,_]:={"seq[]"};
 
-isoindexxx[(a:$UParticleHeads)[nr_],i_]:=
+isoindexxx[(a:$ParticleHeads)[nr_],i_]:=
 Flatten[Table[isoindexx[a[nr],indexnr,i],{indexnr,
 Length[a[nr]/.$CouplingIsoIndicesSpecifications]}]];
 
-isoindexxx[(a:$UParticleHeads)[___],_,_]:={"seq[]"};
+isoindexxx[(a:$ParticleHeads)[___],_,_]:={"seq[]"};
 
 (* ************************************************************************* *)
 
@@ -127,12 +127,12 @@ Do[
 
 (* ************************************************************************* *)
                                                                
-(* The appearance for particles in $FAUParticlesInUse is set.
+(* The appearance for particles in $FAParticlesInUse is set.
    FALabel gives the appearance, but is defined only for some particles *)
 
 Appearance[iii_]  := ToString[iii];
 
-(Appearance[#]=FALabel[Particle[#[0]][[1]],0])&/@$FAUParticlesInUse;
+(Appearance[#]=FALabel[Particle[#[0]][[1]],0])&/@$FAParticlesInUse;
 
 (* ************************************************************************* *)
 
@@ -148,25 +148,25 @@ Appearance[iii_]  := ToString[iii];
 HighEnergyPhysics`Phi`Couplings`FAParticleMass::Usage=
 "FAParticleMass is a function used internally by Phi"
 
-HighEnergyPhysics`Phi`Couplings`FAParticleMass[(a:$UParticleHeads)[i_]]:=
+HighEnergyPhysics`Phi`Couplings`FAParticleMass[(a:$ParticleHeads)[i_]]:=
   ParticleMass[a[i],##]&@@(
-      a[i]/.$PropagatorMassesStates/.(aa:$UParticleHeads)[_]->{});
+      a[i]/.$PropagatorMassesStates/.(aa:$ParticleHeads)[_]->{});
 
 (* The particles can have mixing partners.  This should be specified
    in $MixingFields *)
 
-mixps[(a:$UParticleHeads)[i_]]/;!FreeQ[$MixingFields,a[i]]:=
+mixps[(a:$ParticleHeads)[i_]]/;!FreeQ[$MixingFields,a[i]]:=
 a[i]/.$MixingFields;
 
-mixps[(a:$UParticleHeads)[_]]:={};
+mixps[(a:$ParticleHeads)[_]]:={};
 
 (* The particle may propagate only on a certain class of propagators.
    This should be specified in $InsertOnly *)
 
-inso[(a:$UParticleHeads)[i_]]/;!FreeQ[$InsertOnly,a[i]]:=
+inso[(a:$ParticleHeads)[i_]]/;!FreeQ[$InsertOnly,a[i]]:=
 a[i]/.$InsertOnly;
 
-inso[(a:$UParticleHeads)[_]]:={};
+inso[(a:$ParticleHeads)[_]]:={};
 
 (*
   descr[p[i]] returns the description for the particle p[i].
@@ -207,7 +207,8 @@ descr[(a:$FermionHeads)[i_]]:=
                 PropagatorLabel -> 
                 ComposedChar[Sequence@@Join[{FALabel[Particle[a[0]][[1]],0]},
                 isovars[a[i]]]],
-                PropagatorType -> Dashing[{0.003,0.006}],
+                (*PropagatorType -> Dashing[{0.003,0.006}],*)
+								PropagatorType -> ScalarDash,
                 PropagatorArrow -> Forward,
                 MixingPartners -> mixps[a[i]],
                 InsertOnly -> inso[a[i]] };

@@ -26,8 +26,8 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 QED21::"usage"=
 "QED21.m is the name of the file containing the definitions for
-ULagrangian[QED2[1]], which is the standard QED lagrangian,
-UCouplingConstant[QED2[1]] is the bare
+Lagrangian[QED2[1]], which is the standard QED lagrangian,
+CouplingConstant[QED2[1]] is the bare
 unit charge (the charge of the positron)";
 
 Begin["`Private`"];
@@ -42,12 +42,12 @@ ii=Global`i;
 
 (* --------------------------------------------------------------- *)
 
-HighEnergyPhysics`FeynCalc`Lagrangian`Lagrangian["QED2"]:=
-ULagrangian[QED2[1]];
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian["QED2"]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[QED2[1]];
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[QED2[1]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[QED2[1]]:=
 
 
 -1/4*
@@ -60,7 +60,7 @@ DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
 fcdm[fcli[mu]].
 (I*fcqf[fcpd[fcli[mu]],
 Particle[Lepton],fcsuni[ii]]+
-UCouplingConstant[QED[1]]*
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1]]*
 fcqf[Particle[Photon],fcli[mu]].
 fcqf[Particle[Lepton],fcsuni[ii]])-
 
@@ -74,7 +74,7 @@ FieldsSet[QED2[1]]:=
 {fcqf[Particle[Lepton]],
 fcqf[Particle[Photon],fcli[mu]]};
 
-$ULagrangians=Union[$ULagrangians,{QED2[1]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{QED2[1]}];
 
 End[];
 

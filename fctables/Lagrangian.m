@@ -25,7 +25,7 @@ MakeContext[AntiQuarkField, CovariantD, DiracGamma,
             FieldStrength, GluonField, LeviCivita,Momentum,
             OPEDelta, OPEm, Polarization, QuarkField, QuantumField];
 
-Lagrangian[x_] := Block[{na,lali,a,b,c,d,al,be,ga},
+Lagrangian[x_] /;Depth[x]===1:= Block[{na,lali,a,b,c,d,al,be,ga},
 If[ValueQ[Global`a], a = Unique["a"], a = Global`a];
 If[ValueQ[Global`b], b = Unique["b"], b = Global`b];
 

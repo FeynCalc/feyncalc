@@ -66,6 +66,9 @@ fccontr := fccontr = HighEnergyPhysics`fctools`Contract`Contract;
 fcintx := fcintx = HighEnergyPhysics`FeynCalc`Integratedx`Integratedx;
 fcfpana := fcfpana = HighEnergyPhysics`FeynCalc`FeynmanParameterNames`FeynmanParameterNames;
 fcint := fcint = HighEnergyPhysics`FeynCalc`FCIntegrate`FCIntegrate;
+fcsunn := fcsunn = HighEnergyPhysics`FeynCalc`SUNN`SUNN;
+fccoupl := fccoupl = HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant;
+
 
 
 (* Defaults *)
@@ -105,8 +108,8 @@ Options[LeutwylerJ0] = {MassScale -> ScaleMu, ExplicitLeutwylerJ0 -> False,
 Options[LeutwylerSigma] = {ExplicitLeutwylerSigma -> False};
 Options[LeutwylerJBar] = {ExplicitLeutwylerJBar -> False,
       ExplicitLeutwylerSigma -> False};
-Options[Renormalize] = {GaugeGroup -> 2, InfinityFactor -> LeutwylerLambda[],
-      RenormalizationCoefficientFunction[UCouplingConstant[lag_, n_, ___]] :>
+Options[Renormalize] = {fcsunn -> 2, InfinityFactor -> LeutwylerLambda[],
+      RenormalizationCoefficientFunction[fccoupl[lag_, n_, ___]] :>
         RenormalizationCoefficients[lag][[n]]};
 Options[FeynmanParameterize] = {fcdim -> SpaceTimeDimensions,
       fcint ->
@@ -314,9 +317,10 @@ LeutwylerJBar[s_, m1s_, m2s_,
               Options[LeutwylerJBar])) :=
     1/(32*Pi^2)*(2 + delta/s*Log[m2s/m1s] - sigma/delta*Log[m2s/m1s] -
             nu/s*Log[((s + nu)^2 - delta^2)/((s - nu)^2 -
-                      delta^2)]) /. {delta :> m1s - m2s, sigma :> m1s + m2s,
-        nu :> Sqrt[(s - (Sqrt[m1s] + Sqrt[m2s])^2)(s - (Sqrt[m1s] -
+                      delta^2)]) /. {delta -> m1s - m2s, sigma -> m1s + m2s,
+        nu -> Sqrt[(s - (Sqrt[m1s] + Sqrt[m2s])^2)(s - (Sqrt[m1s] -
                         Sqrt[m2s])^2)]};
+
 LeutwylerJ0[pionmasssquared_,
         opts___Rule] /; (ExplicitLeutwylerJ0 /. Flatten[{opts}] /.
           Options[LeutwylerJ0]) := -2*LeutwylerLambda[##] & @@
@@ -621,24 +625,54 @@ VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
 
 
 
-(* This is formulas (E.1-E.3) using Spence functions: *)
-
+(* This is formulas (E.1-E.3) using 2 Spence functions: *)
 
 VeltmanC0[mmm10_, mmm30_, ss_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
-         Infrared :=
-    Block[{s = -ss, mm10 = -mmm10, mm30 = -mmm30,
-        y1 = alpha[-s, (s + m30 - m10), m10, 2],
-        y2 = alpha[-s, (s + m30 - m10), m10, 1],
-        eps = (IEps /. Flatten[{opts}] /. Options[VeltmanC0]),
-        f1 = (-1/(s*(y1 - y2)))*(Log[(y1 - 1)/y1] - Log[(y2 - 1)/y2]),
+         Infrared := If[mmm10=!=m10 || mmm30=!=m30, Message[VeltmanC0::nodef],
+    Block[{s,y1,y2,eps,f1,f2,res,yy1,yy2},s = -ss; 
+        yy1 = alpha[-s, (s + m30 - m10), m10, 2];
+        yy2 = alpha[-s, (s + m30 - m10), m10, 1];
+        eps = (IEps /. Flatten[{opts}] /. Options[VeltmanC0]);
+        f1 = (-1/(s*(y1 - y2)))*(Log[(y1 - 1)/y1] - Log[(y2 - 1)/y2]);
         f2 = (f1*Log[-s - I*eps] -
               1/(s*(y1 - y2))*(1/2*(Log[1 - y1])^2 - 1/2*(Log[-y1])^2 -
                     1/2*(Log[1 - y2])^2 + 1/2*(Log[-y2])^2 -
                     Log[1 - y2]*Log[1 - y1] + Log[-y2]*Log[-y1] +
                     2*Log[(y1 - 1)/y1]*Log[y1 - y2] -
                     2*Spence[(y1 - 1)/(y1 - y2)] +
-                    2*Spence[y1/(y1 - y2)]))}, -1/2*(f1*Log[m20] - f2)];
+                    2*Spence[y1/(y1 - y2)]));
+       res=-1/2*(f1*Log[m20] - f2);
+       (*Symmetrization seems to be necessary??!?*)
+       ((res/.{y1->yy1,y2->yy2})+(res/.{y1->yy2,y2->yy1}))/2]];
+
+(* From Knecht&Urech *) (*Notice that their dilog[x] is -PolyLog[2,1-x]*)
+
+VeltmanC0[mm10_,mm30_,s_,m10_,m20_,m30_,
+        opts___?OptionQ]/;(C0Evaluation/.Flatten[{opts}]/.Options[VeltmanC0])===
+        Infrared1:=
+    If[Union[{mm10,mm30,m10,m30}]=!={m10},Message[VeltmanC0::nodef1],
+      Block[{sig},sig=
+            LeutwylerSigma[s,m10,
+              Sequence@@
+                OptionsSelect[LeutwylerSigma,opts]];
+           (*-*)1/(2s sig)(4(-PolyLog[
+                  2,1-(1-sig)/(1+sig)])+Pi^2/3+
+              Log[(sig-1)/(sig+1)]^2+2(Log[-s/m10]-
+                    Log[m20/m10]+2Log[sig])Log[(sig-1)/(sig+1)])]];
+
+VeltmanC0[mm10_,mm30_,s_,m10_,m20_,m30_,
+        opts___?OptionQ]/;(C0Evaluation/.Flatten[{opts}]/.Options[VeltmanC0])===
+        Infrared2:=
+    If[Union[{mm10,mm30,m10,m30}]=!={m10},Message[VeltmanC0::nodef1],
+      Block[{sig},sig=
+            LeutwylerSigma[s,m10,
+              Sequence@@
+                OptionsSelect[LeutwylerSigma,opts]];
+         (*-*)1/(2s sig)(4(-PolyLog[
+                  2,-(1-sig)/(1+sig)])+4Pi^2/3+
+              Log[(1-sig)/(1+sig)]^2+2(Log[s/m10]-
+                    Log[m20/m10]+2Log[sig])(Log[(1-sig)/(1+sig)]+I Pi))]];
 
 
 
@@ -1634,10 +1668,10 @@ and two loop renormalization should be added.... *)
 
 
 Renormalize[m_, opts___] :=
-  m /. UCouplingConstant[a_[l_], n_, aaa___, RenormalizationState[0],
-        b___] :> (UCouplingConstant[a[l], n, aaa, RenormalizationState[1],
+  m /. fccoupl[a_[l_], n_, aaa___, RenormalizationState[0],
+        b___] :> (fccoupl[a[l], n, aaa, RenormalizationState[1],
             b] + (RenormalizationCoefficientFunction[
-                    UCouplingConstant[a[l], n]] /. Flatten[{opts}] /.
+                    fccoupl[a[l], n]] /. Flatten[{opts}] /.
                 Options[Renormalize])*(InfinityFactor /. Flatten[{opts}] /.
                 Options[Renormalize]))
 

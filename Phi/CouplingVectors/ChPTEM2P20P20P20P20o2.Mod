@@ -20,19 +20,19 @@
       SUNDelta[I2, I4] - 2*SUNDelta[I1, I2]*SUNDelta[I3, I4]))/
    DecayConstant[PseudoScalar[2], RenormalizationState[0]]^2}, 
  {((-4*I)/3*(SUNDelta[3, I3]*SUNDelta[3, I4]*SUNDelta[I1, I2]*
-      UCouplingConstant[ChPTEM2[2], RenormalizationState[0]] + 
+      CouplingConstant[ChPTEM2[2], RenormalizationState[0]] + 
      SUNDelta[3, I2]*SUNDelta[3, I4]*SUNDelta[I1, I3]*
-      UCouplingConstant[ChPTEM2[2], RenormalizationState[0]] + 
+      CouplingConstant[ChPTEM2[2], RenormalizationState[0]] + 
      SUNDelta[3, I2]*SUNDelta[3, I3]*SUNDelta[I1, I4]*
-      UCouplingConstant[ChPTEM2[2], RenormalizationState[0]] + 
+      CouplingConstant[ChPTEM2[2], RenormalizationState[0]] + 
      SUNDelta[3, I1]*SUNDelta[3, I4]*SUNDelta[I2, I3]*
-      UCouplingConstant[ChPTEM2[2], RenormalizationState[0]] - 
-     2*SUNDelta[I1, I4]*SUNDelta[I2, I3]*UCouplingConstant[ChPTEM2[2], 
+      CouplingConstant[ChPTEM2[2], RenormalizationState[0]] - 
+     2*SUNDelta[I1, I4]*SUNDelta[I2, I3]*CouplingConstant[ChPTEM2[2], 
        RenormalizationState[0]] + SUNDelta[3, I1]*SUNDelta[3, I3]*
-      SUNDelta[I2, I4]*UCouplingConstant[ChPTEM2[2], RenormalizationState[
-        0]] - 2*SUNDelta[I1, I3]*SUNDelta[I2, I4]*UCouplingConstant[
+      SUNDelta[I2, I4]*CouplingConstant[ChPTEM2[2], RenormalizationState[
+        0]] - 2*SUNDelta[I1, I3]*SUNDelta[I2, I4]*CouplingConstant[
        ChPTEM2[2], RenormalizationState[0]] + SUNDelta[3, I1]*SUNDelta[3, I2]*
-      SUNDelta[I3, I4]*UCouplingConstant[ChPTEM2[2], RenormalizationState[
-        0]] - 2*SUNDelta[I1, I2]*SUNDelta[I3, I4]*UCouplingConstant[
+      SUNDelta[I3, I4]*CouplingConstant[ChPTEM2[2], RenormalizationState[
+        0]] - 2*SUNDelta[I1, I2]*SUNDelta[I3, I4]*CouplingConstant[
        ChPTEM2[2], RenormalizationState[0]]))/
    DecayConstant[PseudoScalar[2], RenormalizationState[0]]^4}}

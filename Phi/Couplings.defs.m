@@ -182,10 +182,10 @@ $CouplingIsoIndicesSpecifications::"usage" =
 Automatic.gen and Automatic.mod.  It is a list specifying the isospin indices \
 of each particle, the range of these indices and the string used as body of \
 the respective indices.  If a particle is not in this list, it is assumed \
-that it has no iso-spin indices.  If FieldsSet is used when generating the \
+that it has no isospin indices.  If FieldsSet is used when generating the \
 corresponding classes coupling vector, the setting of the string should agree \
 with that of the option IsoIndicesString of FieldsSet (FieldsSet operates \
-with only one iso-spin index).  Default value : \
+with only one isospin index).  Default value : \
 {Pion[0]->{IsoRange->{1,2,3},IsoIndicesString->\"I\"},Kaon[0]->{IsoRange->{1,\
 2},IsoIndicesString->\"J\"}}";
 
@@ -221,7 +221,7 @@ IsoIndicesString (this is the only thing FCToFA uses this option for)";
 
 IsoCollect::"usage" = 
     "IsoCollect is an option for FCToFA specifying whether the output should \
-be collected with respect to iso-spin.  Default value : False";
+be collected with respect to isospin.  Default value : False";
 
 FADeltas::"usage" = 
     "FADeltas is an option for FCToFA and DeltaFunctionProducts specifying if \
@@ -291,7 +291,7 @@ XName::"usage" =
 when XFileName is set to Automatic a name generated from the options (other \
 than XFileName) specified. The generated name uses VertexFields, \
 PerturbationOrder and PhiModel. When XFileName has another value than \
-Automatic, XName[opts] assumes this value. Notice that $UParticleHeads must \
+Automatic, XName[opts] assumes this value. Notice that $ParticleHeads must \
 contain heads of all particles involved";
 
 CouplingFilesGenerate::"usage" = 

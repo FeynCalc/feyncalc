@@ -31,19 +31,19 @@ Begin["HighEnergyPhysics`Phi`Objects`"];
 
 QED22::"usage"=
 "QED22.m is the name of the file containing the definitions for
-ULagrangian[QED2[2]], which is the QED counterterm lagrangian";
+Lagrangian[QED2[2]], which is the QED counterterm lagrangian";
 
 DM::"usage"=
-"DM := UCouplingConstant[QED2[2],1] is one of the constants of the
+"DM := CouplingConstant[QED2[2],1] is one of the constants of the
 counterterm QED lagrangian - the mass counterterm";
 
 Z2::"usage"=
-"Z2 := UCouplingConstant[QED2[2],2] is one of the constants of the
+"Z2 := CouplingConstant[QED2[2],2] is one of the constants of the
 counterterm QED lagrangian - the factor relating the bare to the
 physical Lepton field";
 
 Z3::"usage"=
-"Z3 := UCouplingConstant[QED2[2],3] is one of the constants of the
+"Z3 := CouplingConstant[QED2[2],3] is one of the constants of the
 counterterm QED lagrangian - the factor relating the bare to the
 physical photon field";
 
@@ -55,9 +55,10 @@ Begin["`Private`"];
 
 (* Box definitions *)
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[QED[2],1,st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+   QED[2],1,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
     SuperscriptBox[
@@ -66,9 +67,10 @@ UCouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[QED[2],2,st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+   QED[2],2,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["Z",FontSlant->"Italic"]][[1]],
@@ -77,9 +79,10 @@ UCouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-UCouplingConstant/:
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[QED[2],3,st___RenormalizationState,
+    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+   QED[2],3,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["Z",FontSlant->"Italic"]][[1]],
@@ -98,13 +101,13 @@ fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
 fcsuni:=fcsuni=HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
 ii=Global`i;
 
-DM := UCouplingConstant[QED[2],1];
-Z2 := UCouplingConstant[QED[2],2];
-Z3 := UCouplingConstant[QED[2],3];
+DM := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[2],1];
+Z2 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[2],2];
+Z3 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[2],3];
 
 (* --------------------------------------------------------------- *)
 
-ULagrangian[QED2[2]]:=
+HighEnergyPhysics`fctables`Lagrangian`Lagrangian[QED2[2]]:=
 
 
 -1/4*(Z3[0]-1)*
@@ -117,7 +120,7 @@ fcqf[Particle[Photon],fcli[nu]]]+
 (DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
 fcdm[fcli[mu]].
 (I*fcqf[fcpd[fcli[mu]],Particle[Lepton],fcsuni[ii]]+
-UCouplingConstant[QED[1]]*
+HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1]]*
 fcqf[Particle[Photon],fcli[mu]].
 fcqf[Particle[Lepton],fcsuni[ii]])-
 
@@ -135,7 +138,7 @@ FieldsSet[QED2[2]]:=
 {fcqf[Particle[Lepton,RenormalizationState[0]]],
 fcqf[Particle[Photon,RenormalizationState[0]],fcli[mu]]};
 
-$ULagrangians=Union[$ULagrangians,{QED2[2]}];
+Global`$Lagrangians=Union[Global`$Lagrangians,{QED2[2]}];
 
 End[];
 
