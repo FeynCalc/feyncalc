@@ -9,7 +9,7 @@ BeginPackage["HighEnergyPhysics`FeynCalc`DiracTraceEvaluate`",
              "HighEnergyPhysics`FeynCalc`"];
 
 DiracTraceEvaluate::"usage" =
-"DiracTraceEvaluate is an option for DiracTrace and Tr.
+"DiracTraceEvaluate is an option for DiracTrace and TR.
 If set to False, DiracTrace remains unevaluated.";
 
 (* ------------------------------------------------------------------------ *)

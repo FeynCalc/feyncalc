@@ -22,7 +22,9 @@ Begin["`Private`"];
    
 
 MakeContext[
+ChangeDimension,
 CouplingConstant,
+Dimension,
 ExpandScalarProduct,
 FieldStrength,
 Gauge,
@@ -40,16 +42,21 @@ QuarkGluonVertex
 
 FieldStrength := FieldStrength = MakeContext["FieldStrength"];
 
-Options[Explicit] = {Gauge -> 1, CouplingConstant -> Gstrong, OPE -> False};
+Options[Explicit] = {
+CouplingConstant -> Gstrong, 
+Dimension -> D,
+Gauge -> 1, 
+OPE -> False};
 
-Explicit[y_, opts___?OptionQ] := Block[{gh, gvv, gv, qp, qgv, t2g, fis, pr, r = y, op}, 
+Explicit[y_, opts___?OptionQ] := Block[{dim, gh, gp, gvv, gv, qp, qgv, t2g, fis, pr, r = y, op}, 
            op = Sequence@@Join[{opts}, Options[Explicit]];
-           gv[x__]  := gv[x]  = Expand[ExpandScalarProduct[ GluonVertex[x, Explicit -> True, op]]];
-           gp[x__]  := gp[x]  = Expand[ExpandScalarProduct[ GluonPropagator[x, Explicit -> True, op]]];
-           gh[x__]  := gh[x]  = Expand[ExpandScalarProduct[ GhostPropagator[x, Explicit -> True, op]]];
-           qp[x__]  := qp[x]  = Expand[ExpandScalarProduct[ QuarkPropagator[x, Explicit -> True, op]]];
-           gvv[x__] := ghv[x] = Expand[ExpandScalarProduct[ GluonGhostVertex[x, Explicit -> True, op]]];
-           qgv[x__] := qgv[x] = Expand[ExpandScalarProduct[ QuarkGluonVertex[x, Explicit -> True, op]]];
+	   dim = Dimension /. {op};
+           gv[x__]  := gv[x]  = ExpandScalarProduct[ GluonVertex[x, Explicit -> True, op]];
+           gp[x__]  := gp[x]  = ExpandScalarProduct[ GluonPropagator[x, Explicit -> True, op]];
+           gh[x__]  := gh[x]  = ExpandScalarProduct[ GhostPropagator[x, Explicit -> True, op]];
+           qp[x__]  := qp[x]  = ExpandScalarProduct[ QuarkPropagator[x, Explicit -> True, op]];
+           gvv[x__] := ghv[x] = ExpandScalarProduct[ GluonGhostVertex[x, Explicit -> True, op]];
+           qgv[x__] := qgv[x] = ExpandScalarProduct[ QuarkGluonVertex[x, Explicit -> True, op]];
            r = r /. {GluonVertex :> gv, GluonGhostVertex :> gvv, GhostPropagator :> gh, 
                      GluonPropagator :> gp, QuarkGluonVertex :> qgv
                     };
@@ -66,7 +73,7 @@ Explicit[y_, opts___?OptionQ] := Block[{gh, gvv, gv, qp, qgv, t2g, fis, pr, r = 
               fis[x__] := fis[x] = MakeContext["FieldStrength"][x, Explicit->True]; 
               r = r /. MakeContext["FieldStrength"] -> fis];
 
-                   r];
+                   ChangeDimension[r, dim]];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

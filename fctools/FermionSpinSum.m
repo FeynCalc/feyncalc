@@ -47,7 +47,7 @@ SUNSimplify   = MakeContext["SUNSimplify"];
 DiracOrder    = MakeContext["DiracOrder"];  
 DiracSimplify = MakeContext["DiracSimplify"];  
 DotSimplify   = MakeContext["DotSimplify"];
-Tr            = MakeContext["Tr"];
+TR            = MakeContext["TR"];
 
 FRH = FixedPoint[ReleaseHold, #]&;
 dotLin[x_] := DotSimplify[x, Expanding -> False];
@@ -55,7 +55,7 @@ dotLin[x_] := DotSimplify[x, Expanding -> False];
 (* FermionSpinSumdef *)
 trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
 (*
-trsimp[DOT[d__]] := Tr[DOT[d] ] /; Length[{d}] < 4;
+trsimp[DOT[d__]] := TR[DOT[d] ] /; Length[{d}] < 4;
 *)
 trsimp[DOT[d__]] := DiracTrace[DOT[d] ] /; Length[{d}] < 4;
 Options[FermionSpinSum] = {SpinPolarizationSum -> Identity,

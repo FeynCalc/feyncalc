@@ -76,7 +76,7 @@ Begin["`Private`"];
     print2[x__]:=Print[x]/;$VeryVerbose>1;
     print3[x__]:=Print[x]/;$VeryVerbose>2;
    
-   fci[x_] := If[(fcint /. Options[Contract]) === True, x, fcint[x] ];
+   fci[x_] := If[(fcint /. Options[Contract]) === True, fcint[x], x ];
    
  (* #################################################################### *)
    
@@ -129,11 +129,13 @@ Begin["`Private`"];
 (*
          nec = Collect2[nec, LorentzIndex, Factoring -> True];
 *)
+         If[!FreeQ[nec, LorentzIndex],
                         print2["expanding LorentzIndex now"];
 tim = TimeUsed[];
          nec = Expand[nec, LorentzIndex];
                         print2["expanding LorentzIndex DONE ",
                                TimeUsed[] - tim];
+            ];
                        ]; 
    If[Global`DIALOG === True, Dialog[nec]];
                    ];
@@ -418,15 +420,15 @@ tim = TimeUsed[];
     conall[ x_ ] := Contract[ x,                               (*conalldef*)
                     Expanding->True, EpsContract->True, Factoring->False ];
                                        (*Contractdef*)
-   Options[Contract] = { Collecting  -> True,
-                         Contract3 -> False,
-                         EpsContract -> True, 
-                         Expanding   -> True, 
-                         Factoring   -> False,
-                         fcint -> False,
+   Options[Contract] = { Collecting      -> True,
+                         Contract3       -> True,
+                         EpsContract     -> True, 
+                         Expanding       -> True, 
+                         Factoring       -> False,
+                         fcint           -> True,
                          MomentumCombine -> False,
-                         Rename -> False,
-                         Schouten    -> 0 
+                         Rename          -> False,
+                         Schouten        -> 0 
                        };
   
  dosi[x_, z___] := If[FreeQ2[x, {LorentzIndex,Eps}],x,
@@ -511,7 +513,7 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
           contractres = contractres //. es
          ]
        ];
-     If[ contractexpandopt === True,
+     If[ contractexpandopt === True && contract3 === False && !FreeQ[contractres, LorentzIndex],
 (* NEW October 2003, this speeds things up in general*)
          contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
          contractres = contractres /. 
@@ -524,14 +526,15 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
      If[(MomentumCombine/.contractopt) === True,
         contractres =  MomentumCombine[contractres]
        ];
+Global`CCC2=contractres;
           If[ contractexpandopt === True && 
               !FreeQ[contractres, LorentzIndex] 
               ,
-              contractres = Expand2[contractres,LorentzIndex]
+              contractres = Expand[contractres,LorentzIndex]
             ];
           If[ (!FreeQ[contractres, Eps]) && rename === True,
               contractres = doubleindex[
-                               Expand2[ contractres//EpsEvaluate, Eps 
+                               Expand[ contractres//EpsEvaluate, Eps 
                                      ] ];
             ];
           If[ contractepsopt === True,
@@ -541,11 +544,11 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
                 ](*,
               contractres = contractres//EpsEvaluate*)
             ];
-          If[ contractexpandopt=== True,
-              contractres = Expand2[ contractres, LorentzIndex ] ];
+          If[ contractexpandopt=== True &&  !FreeQ[contractres, LorentzIndex],
+              contractres = Expand[ contractres, LorentzIndex ] ];
           If[ (contractexpandopt===True) && (!FreeQ[contractres, Eps]) &&
               (contractepsopt===True),
-              contractres = Expand2[ contractres, Eps ] 
+              contractres = Expand[ contractres, Eps ] 
             ];
 (*
           If !FreeQ[ contractres,Eps ],
@@ -553,6 +556,7 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
           If[ (contractepsopt===True) && (!FreeQ[ contractres,Eps ]),
               contractres = contractres//EpsEvaluate//EpsEvaluate
             ];
+Global`CCC3=contractres;
           contractres = contractres /. Pair->sCOS /. 
                                       sCOS -> sCO /.sCO->Pair;
 (*
@@ -560,9 +564,11 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
                         sCOS -> ExpandScalarProduct/.
                          Pair -> sCO /.sCO->Pair;
 *)
+(*
          If[!FreeQ[contractres, ScalarProduct], 
             contractres = fcint[contractres];
            ];
+*)
          If[schout =!= 0,
             If[(contractepsopt===True) && (!FreeQ[contractres, Eps]) &&
                                           (!FreeQ[contractres, Pair]),
@@ -570,9 +576,11 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
                If[rename === True, contractres = doubleindex[contractres]]
               ]
            ];
+(*
           If[ contractexpandopt=== True,
-              contractres = Expand2[contractres, Pair]
+              contractres = Expand[contractres, Pair]
             ];
+*)
           If[ contractfactoring=== True,
               contractres = Factor2[ contractres ]
             ];

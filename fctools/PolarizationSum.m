@@ -30,6 +30,7 @@ PolarizationSum[mu, nu, k, 0] is equivalent to -g(mu nu)";
 Begin["`Private`"];
    
 
+ChangeDimension          = MakeContext["ChangeDimension"];
 Collect2                 = MakeContext["Collect2"];
 Dimension                = MakeContext["Dimension"];
 Factor2                  = MakeContext["Factor2"];
@@ -46,23 +47,24 @@ Options[PolarizationSum] = {Dimension -> 4};
 PolarizationSum[mu_,nu_, ops___Rule]:= fci[
     -MetricTensor[mu, nu, Dimension -> 
           (Dimension /. {ops} /. Options[PolarizationSum])]];  
-PolarizationSum[mu_,nu_,k_, ops___Rule]:= fci[
-   -MetricTensor[mu,nu, Dimension ->
-          (Dimension /. {ops} /. Options[PolarizationSum])] +
+PolarizationSum[mu_,nu_,k_, ops___Rule]:= 
+ChangeDimension[
+fci[
+   -MetricTensor[mu,nu] +
      FourVector[k,mu] FourVector[k,nu]/
-       Factor2[scev[ScalarProduct[k,k]]]];
-PolarizationSum[mu_,nu_,k_,0, ops___Rule] := fci[
- -MetricTensor[mu, nu,
- Dimension -> (Dimension /. {ops} /. Options[PolarizationSum])]];
-PolarizationSum[mu_,nu_,k_,n_, ops___Rule] := fci[Collect2[
-  -MetricTensor[mu,nu, Dimension ->
-          (Dimension /. {ops} /. Options[PolarizationSum])
-               ] - FourVector[k,mu] FourVector[k,nu]/
+       Factor2[scev[ScalarProduct[k,k]]]],
+ (Dimension /. {ops} /. Options[PolarizationSum])];
+PolarizationSum[mu_,nu_,k_,0, ops___Rule] := fci[ -MetricTensor[mu, nu]];
+PolarizationSum[mu_,nu_,k_,n_, ops___Rule] := ChangeDimension[
+ fci[Collect2[
+  -MetricTensor[mu,nu] - FourVector[k,mu] FourVector[k,nu]/
                Factor2[scev[Momentum[k],Momentum[n]]^2] *
                Factor2[scev[Momentum[n],Momentum[n]]] +
             ( FourVector[n,mu] FourVector[k,nu] +
               FourVector[n,nu] FourVector[k,mu] )/
-               Factor2[scev[Momentum[k],Momentum[n]]], Pair]];
+               Factor2[scev[Momentum[k],Momentum[n]]], Pair]],
+	 (Dimension /. {ops} /. Options[PolarizationSum])
+];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

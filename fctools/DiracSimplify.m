@@ -73,7 +73,7 @@ LorentzIndex, MemSet, NonCommFreeQ ];
 sCO := sCO   = MakeContext["PairContract"];
 scev := scev = MakeContext["ExpandScalarProduct"];
 
-MakeContext[ Pair, PartitHead, Spinor, GA, GAD, GS, GSD, SUNT, Tr];
+MakeContext[ Pair, PartitHead, Spinor, GA, GAD, GS, GSD, SUNT, TR];
 
 Options[DiracSimplify] = {
  DiracCanonical -> False,
