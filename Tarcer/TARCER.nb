@@ -1,5 +1,5 @@
 (************** Content-type: application/mathematica **************
-                     CreatedBy='Mathematica 5.0'
+                     CreatedBy='Mathematica 4.2'
 
                     Mathematica-Compatible Notebook
 
@@ -16665,7 +16665,7 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-FrontEndVersion->"5.0 for X",
+FrontEndVersion->"4.2 for X",
 ScreenRectangle->{{0, 1400}, {0, 1050}},
 WindowToolbars->"EditBar",
 WindowSize->{1059, 866},
@@ -16684,7 +16684,7 @@ you save this file from within Mathematica.
 (*CellTagsOutline
 CellTagsIndex->{
   "T1.1"->{
-    Cell[1776, 53, 73, 2, 100, "Title",
+    Cell[1776, 53, 73, 2, 120, "Title",
       CellTags->"T1.1"]},
   "T1.2"->{
     Cell[2032, 65, 434, 14, 104, "Text",
@@ -17411,7 +17411,7 @@ CellTagsIndex->{
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[1776, 53, 73, 2, 100, "Title",
+Cell[1776, 53, 73, 2, 120, "Title",
   CellTags->"T1.1"],
 Cell[1852, 57, 177, 6, 32, "Text"],
 Cell[2032, 65, 434, 14, 104, "Text",
