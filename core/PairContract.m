@@ -24,7 +24,7 @@ memset := memeset           = MakeContext["MemSet"];
 MakeContext[ Momentum, MomentumExpand, Pair];
 
 (* this option is only to by set by SetOptions ... *)
-Options[PairContract] = {Factoring -> False};
+Options[PairContract] = {factoring -> False};
 
 sCO = PairContract;
 
