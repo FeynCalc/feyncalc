@@ -21,26 +21,35 @@ by SUNTrace objects.";
 Begin["`Private`"];
    
 
-MakeContext[ExpandScalarProduct,
+MakeContext[
+CouplingConstant,
+ExpandScalarProduct,
 FieldStrength,
+Gauge,
 GluonPropagator,
 GhostPropagator,
+Gstrong,
 QuarkPropagator,
 GluonVertex,
 GluonGhostVertex,
 GluonGhostVertex,
+(*Loop,*)
+OPE,
 QuarkGluonVertex
 ];
 
 FieldStrength := FieldStrength = MakeContext["FieldStrength"];
 
-Explicit[y_] := Block[{gh, gvv, gv, t2g, fis, pr, r = y}, 
-           gv[x__]  := gv[x]  = Expand[ExpandScalarProduct[ GluonVertex[x, Explicit -> True]]];
-           gp[x__]  := gp[x]  = Expand[ExpandScalarProduct[ GluonPropagator[x, Explicit -> True]]];
-           gh[x__]  := gh[x]  = Expand[ExpandScalarProduct[ GhostPropagator[x, Explicit -> True]]];
-           qp[x__]  := qp[x]  = Expand[ExpandScalarProduct[ QuarkPropagator[x, Explicit -> True]]];
-           gvv[x__] := ghv[x] = Expand[ExpandScalarProduct[ GluonGhostVertex[x, Explicit -> True]]];
-           qgv[x__] := qgv[x] = Expand[ExpandScalarProduct[ QuarkGluonVertex[x, Explicit -> True]]];
+Options[Explicit] = {Gauge -> 1, CouplingConstant -> Gstrong, OPE -> False};
+
+Explicit[y_, opts___?OptionQ] := Block[{gh, gvv, gv, qp, qgv, t2g, fis, pr, r = y, op}, 
+           op = Sequence@@Join[{opts}, Options[Explicit]];
+           gv[x__]  := gv[x]  = Expand[ExpandScalarProduct[ GluonVertex[x, Explicit -> True, op]]];
+           gp[x__]  := gp[x]  = Expand[ExpandScalarProduct[ GluonPropagator[x, Explicit -> True, op]]];
+           gh[x__]  := gh[x]  = Expand[ExpandScalarProduct[ GhostPropagator[x, Explicit -> True, op]]];
+           qp[x__]  := qp[x]  = Expand[ExpandScalarProduct[ QuarkPropagator[x, Explicit -> True, op]]];
+           gvv[x__] := ghv[x] = Expand[ExpandScalarProduct[ GluonGhostVertex[x, Explicit -> True, op]]];
+           qgv[x__] := qgv[x] = Expand[ExpandScalarProduct[ QuarkGluonVertex[x, Explicit -> True, op]]];
            r = r /. {GluonVertex :> gv, GluonGhostVertex :> gvv, GhostPropagator :> gh, 
                      GluonPropagator :> gp, QuarkGluonVertex :> qgv
                     };
