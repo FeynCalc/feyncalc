@@ -7,7 +7,7 @@ BeginPackage["HighEnergyPhysics`FeynCalc`SUNF`",
 
 SUNF::"usage"=
 "SUNF[a, b, c] are the structure constants of SU(N).
-The arguments a,b,c should be of symbolic type."
+SUNF[a, b, c, d] is a shorthand notation for SUNF[a,b,i] SUNF[i,c,d]."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -20,6 +20,7 @@ FreeQ2 := FreeQ2 = MakeContext["FreeQ2"];
 Explicit := Explicit = MakeContext["Explicit"];
 sunt     := sunt     = MakeContext["SUNT"];
 suntrace := suntrace = MakeContext["SUNTrace"];
+MakeContext["TBox"];
 
 Options[SUNF] = {Explicit -> False(*, fci -> True*)};
 
@@ -44,6 +45,12 @@ HoldPattern[SUNF[i_,j_,k_,op___Rule|op___List]]:= 2 I (suntrace[ fci[sunt[i,k,j]
                                      )/;
      (Explicit/.Flatten[Join[{op},Options[SUNF]]]) === True;
 
+(* insert the definition SUNF[i, j, s] SUNF[s, k, l] *)
+HoldPattern[SUNF[i_,j_,k_,l_, op___Rule|op___List]]:= (
+      With[{sui=Unique["Global`s"]}, SUNF[i,j,sunindex[sui]] SUNF[sunindex[sui],k,l]]
+                                     )/;
+     (Explicit/.Flatten[Join[{op},Options[SUNF]]]) === True;
+
    tbox[a__] := RowBox @ Map[(MakeBoxes @@ {#, TraditionalForm})&, {a}];
 
 totr[Subscript[y_,in__Integer]] := SubscriptBox[totr[y],RowBox[{in}]];
@@ -54,14 +61,16 @@ totr[y_Symbol] := If[FormatValues[Evaluate[y]] === {},
 totr[y_String] := y;
 totr[y_] := ToBoxes[y, TraditionalForm] /; Head[y]=!=Symbol;
 
+(* this is not needed here any more, commented out 25th September 2003
 Tbox[a__] :=
 (RowBox @ (Insert[
   Map[totr, {a}], "\[NoBreak]",
     Array[{#}&,Length[{a}]-1,2]]));
+*)
 
    SUNF /:
    MakeBoxes[
-             SUNF[a_,b_,c_], TraditionalForm
+             SUNF[a_,b_,c__], TraditionalForm
             ] := SubscriptBox@@{"f", Tbox[a,b,c]};
 
 End[]; EndPackage[];
