@@ -62,7 +62,8 @@ fads := fads = MakeContext["DiracSpinor"];
 fcdtr := fcdtr = MakeContext["DiracTrace"];
 fcdtrev := fcdtrev = MakeContext["DiracTraceEvaluate"];
 fcmomc := fcmomc = MakeContext["MomentumCombine"];
-fccombs := fccombs = MakeContext["Combinations"];
+(*fccombs := fccombs = MakeContext["CombinationLists"];*)
+fccombs := fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
 fcexli := fcexli = MakeContext["ExplicitLorentzIndex"];
 fcexpt := fcexpt = MakeContext["Explicit"];
 fcsunt := fcsunt = MakeContext["SUNT"];
@@ -1243,7 +1244,7 @@ If[traceev =!= (fcdtrev /. Options[FAToFC]),
    (*Added 13/8-2002 because patching FA model files gives structures like
      DiracMatrix[Index[Lorentz, 1]] which is auto-expanded by FC into
      DiracGamma[LorentzIndex[Index[Lorentz, 1]]]*)
-     fcli[fcli[mu_, d___], dd___] :> fcli[mu,Sequence@@Union[{d},{dd}]] /.
+     fcli[fcli[mu_, d___],___] :> fcli[mu, d] /.
 (* added Sept. 27 2003 Rolf Mertig*)
    tmpdiga :> fcdiga;
 
@@ -1513,7 +1514,9 @@ CreateFCAmp[amp_, opts___] := Block[{faopts, me, propmoms, pprops, wffacs, wffac
 
 (* need to transport options to CreateFeynAmp, e.g., Truncated -> True, 
 Rolf Mertig, Sept. 27th. 2003 *)
-faopts = Sequence@@Select[Join[{opts}, Options@CreateFCAmp], MemberQ[First/@(Options@facrfa), #[[1]]]&];
+(*faopts = Sequence@@Select[Join[{opts}, Options@CreateFCAmp], MemberQ[First/@(Options@facrfa), #[[1]]]&];*)
+(*Use OptionsSelect, F.Orellana, 1/10-2003*)
+faopts = Sequence@@Select[OptionsSelect[facrfa, opts], FreeQ[#, faal]&];
 
    (*Wave function renormalization.*)
 
