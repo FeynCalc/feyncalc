@@ -37,12 +37,17 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.9.0.1";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.9.0.2beta";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
    Added 21/9-2000 by F.Orellana to ease debugging *)
 (* ------------------------------------------------------------------------ *)
+
+(*FeynCalcCellPrint=CellPrint;*)
+System`Private`cellmargs = CellMargins->{{Inherited,Inherited},{1,0}};
+System`FeynCalcCellPrint[ce_Cell] :=
+CellPrint[Append[ce(*/."Text"->"SmallText"*), System`Private`cellmargs]];
 
 If[MemberQ[$Packages,"HighEnergyPhysics`FeynCalc`"],
 
@@ -125,17 +130,24 @@ Block[{thisdir = Directory[]},
      ]
 ];
 
+If[$Notebooks ===True,
+   FeynCalcCellPrint[Cell[TextData[{"Loading FeynCalc from " <> 
+   HighEnergyPhysics`FeynCalc`$FeynCalcDirectory }],
+                  "Text"]],
 Print["Loading FeynCalc from ", HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
+  ];
 
 If[!MemberQ[$Path,Evaluate[ParentDirectory[
     HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]]],
-    AppendTo[$Path, ParentDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]]
+    AppendTo[$Path, ParentDirectory[
+    HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]]
 ];
 
 If[FileNames["*",{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory}] == {},
    Print["Could not find a FeynCalc installation. Quitting the Mathematica kernel."];
    Quit[]; Exit[];
 ];
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -201,7 +213,7 @@ If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 tarcerloadedflag = True;
 If[Global`$FeynCalcStartupMessages=!=False,
 If[$Notebooks ===True,
-   CellPrint[Cell[TextData[{"Loading TARCER ",
+   FeynCalcCellPrint[Cell[TextData[{"Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
                   "Text"]],
    Print["Loading TARCER ",
@@ -795,21 +807,21 @@ ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
 
 If[Global`$FeynCalcStartupMessages =!= False ,
 If[$Notebooks===True,
-   CellPrint[Cell[TextData[{StyleBox[ "FeynCalc" , FontWeight-> "Bold"], " ",
+   FeynCalcCellPrint[Cell[TextData[{StyleBox[ "FeynCalc" , FontWeight-> "Bold"], " ",
     $FeynCalcVersion,
-     "\nFor help, type ?FeynCalc,\nuse the built-in ",
+     " For help, type ?FeynCalc, use the built-in ",
      ButtonBox["help system",
        ButtonFunction -> (FrontEndExecute[FrontEnd`HelpBrowserLookup["AddOns", #]] &),
        ButtonData:>{ "Short Overview", "intro"},
        ButtonStyle->"AddOnsLink",
        ButtonNote->"Open the help browser"],
-     "\nor visit ",
+     " or visit ",
      ButtonBox["www.feyncalc.org", ButtonData:>{
       URL[ "http://www.feyncalc.org"], None},
      ButtonStyle->"Hyperlink", ButtonNote->"http://www.feyncalc.org"]}
     ],"Text"]]
 ,
-  WriteString["stdout", "\nFeynCalc " <> $FeynCalcVersion ,
+  WriteString["stdout", "FeynCalc " <> $FeynCalcVersion ,
               " Type ?FeynCalc for help or visit http://www.feyncalc.org", "\n"];
 ];
   ];
@@ -876,7 +888,7 @@ If[!ValueQ[Global`$LoadFeynArts], Global`$LoadFeynArts = True];
 
 If[Global`$LoadPhi===True,
    If[$Notebooks===True,
-      CellPrint[Cell[TextData[{"Loading PHI "}],
+      FeynCalcCellPrint[Cell[TextData[{"Loading PHI "}],
                   "Text"]],
       Print["Loading PHI "]
    ];
@@ -886,17 +898,30 @@ If[Global`$LoadPhi===True,
 ];
 
 If[Global`$LoadFeynArts===True,
-
    If[$Notebooks===True,
-      CellPrint[Cell[TextData[{"Loading FeynArts "}],
+      FeynCalcCellPrint[Cell[TextData[{
+     "Loading FeynArts, see www.feynarts.de for documentation"}],
                   "Text"]],
-      Print["Loading FeynArts "]
+      Print["Loading FeynArts, see www.feynarts.de for documentation"]
    ];
 (* loading *)
+Block[{Print},
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
    loadfa = Needs["FeynArts`"];
    If[loadfa=!=$Failed, HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir] ,
-   loadfa = Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]]
+   loadfa = Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]];
+]];
+If[loadfa =!=$Failed,
+Block[{faversion},
+faversion = FindList[ToFileName[{HighEnergyPhysics`FeynCalc`$FeynArtsDirectory},"FeynArts.m"],
+"$FeynArts = "] /. {s_String} :> StringDrop[s,12];
+
+If[$Notebooks===True,
+   FeynCalcCellPrint[Cell[TextData[{
+   "FeynArts " <> faversion <> " patched for use with Phi and FeynCalc loaded"}], "Text"]],
+   Print["FeynArts " <> 
+   faversion <> " patched for use with Phi and FeynCalc loaded"]
+]];
 ];
 
    If[loadfa === $Failed,
