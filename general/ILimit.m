@@ -25,23 +25,24 @@ Begin["`Private`"];
 
 Options[ILimit] = {FunctionLimits -> {Log -> Log}};
 
-MakeContext["SmallVariable"];
+SmallVariable = MakeContext["SmallVariable"];
 
 ILimit[exp_, lim_Rule, opts___Rule] := 
-    Block[{limruls, m, mm, ff, out}, m = lim[[1]];
-      limruls = 
-        MapAt[( ( ( If[FreeQ[ff[##], lim[[1]]] || !FreeQ[out = Limit[
-                                    Limit[ff[##] /.
-                                       SmallVariable[_?((! MatchQ[#, lim[[1]]])&)] -> 0, 
-                                      SmallVariable[lim[[1]]] -> lim[[2]]], 
-                                    lim], 
-                                DirectedInfinity[___] | Indeterminate], 
-                            fff[##] /. mm -> dum, 
-                            out]& ) )& ) /. {ff -> #[[2]], fff -> #[[1]], 
-                  mm -> m}, #, 2] & /@ (FunctionLimits /. {opts} /. 
-              Options[ILimit]); 
-      Limit[Limit[exp /. limruls, SmallVariable[lim[[1]]] -> lim[[2]]], 
-          lim] /. dum -> m];
+    Block[{(*limruls, m, ff, fff, out,res*)},
+    limruls = 
+        MapAt[(((If[FreeQ[ff[##], lim[[1]]] ||
+                    !FreeQ[out = Limit[Limit[ff[##] /.
+                                              SmallVariable[_?((!MatchQ[#, lim[[1]]])&)] -> 0, 
+                                             SmallVariable[lim[[1]]] -> lim[[2]]], 
+                                       lim], 
+                           DirectedInfinity[___] | Indeterminate | _Limit], 
+                     fff[##], 
+                     out]&))&) /. 
+                 {ff -> #[[2]], fff -> #[[1]]}, #, 2]& /@
+               (FunctionLimits /. {opts} /. Options[ILimit]);
+    res = exp /. limruls;
+    Limit[Limit[res, SmallVariable[lim[[1]]] -> lim[[2]]], 
+          lim]];
 
 End[]; EndPackage[];
 
