@@ -22,14 +22,6 @@ OPEi::"usage"= "OPEi is an dummy index in OPESum.";
 Begin["`Private`"];
    
 
-
-Unprotect[Re];
-Re /: Re[OPEi] > -3 := True;
-Re /: Re[OPEi] > -2 := True;
-Re /: Re[OPEi] > -1 := True;
-Re /: Re[OPEi] >  0 := True;
-Re /: Re[OPEi] >  1 := True;
-
 MakeContext[PositiveInteger, DataType];
 
 DataType[OPEi, PositiveInteger] = True;

@@ -25,18 +25,7 @@ Begin["`Private`"];
 MakeContext[PositiveInteger, DataType, OPEi];
 DataType[OPEm, PositiveInteger] = True;
 
-Unprotect[Re];
-Re /: Re[OPEm] > -4 = True;
-Re /: Re[OPEm] > -3 = True;
-Re /: Re[OPEm] > -2 = True;
-Re /: Re[OPEm] > -1 = True;
-Re /: Re[OPEm] >  0 = True;
-Re /: Re[OPEm] >  1 = True;
-Re /: Re[-OPEi + OPEm] > 0 = True;
-Re /: Re[-OPEi + OPEm] > 1 = True;
-Re /: Re[-OPEi + OPEm] > 2 = True;
-
-   OPEm /: 
+OPEm /: 
    MakeBoxes[OPEm ,TraditionalForm] := 
 If[$Color =!= True,
    "m",
