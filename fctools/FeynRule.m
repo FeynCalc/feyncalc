@@ -76,6 +76,7 @@ SelectNotFree      = MakeContext["SelectNotFree"];
 sund        := sund = MakeContext["SUNDelta"];
 sundc        := sundc = MakeContext["SUNDeltaContract"];
 SUNIndex       = MakeContext["SUNIndex"];
+SUND         := SUND = MakeContext["SUND"];
 sunf         = MakeContext["SUNF"];
 SUNT         = MakeContext["SUNT"];
 sunftotraces := sunftotraces = MakeContext["Explicit"];
@@ -415,6 +416,7 @@ FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
                                     leib,coup,cdp,cedepe,opexbin,
                                     zeromomentum,partiald
                                     },
+nlag = nlag /. SUND -> localSUND /. sunf -> localSUNF;
 anti5    = Anti5 /. {ru} /. Options[FeynRule];
 subs     = FinalSubstitutions /. {ru} /. Options[FeynRule];
 schouten = Schouten /. {ru} /. Options[FeynRule];
@@ -608,7 +610,8 @@ If[(!FreeQ[result, OPEDelta])(* && (Length[plist] < 4)*),
   ];
 
 result = Expand[result] /. Power2 -> Power;
-If[!FreeQ[result, sunf],
+(*change Nov 2003*)
+If[!FreeQ[result, SUNIndex],
    result = sunsimplify[result,Explicit->False];
    If[!FreeQ[result, SUNT], result = sunsimplify[result,Explicit->False]]
   ];
@@ -729,7 +732,7 @@ If[LeafCount[result]<10^4,
    result//PowerSimplify//OPESumSimplify,
    result
   ]/.Power2->Power
-]];
+]/. {localSUND :> SUND, localSUNF :> SUNF}];
 (* ******************************************************************** *)
 
 feinarbeit[fey_Times, pl_List] := SelectNotFree[fey, SUNIndex|ExplicitSUNIndex]  *
