@@ -1149,8 +1149,8 @@ round of substitutions.  Default value : \"I\" (\"k\").";
 
 NumerateFree::"usage" =
     "NumerateFree is an option of IsoIndicesSupply (PhiToFC) relevant when \
-there are uncontracted iso-indices (isospin functions with integer indices \
-and RemoveIntegerIndices is set to True).  When set to True, these indices \
+there are uncontracted iso-indices (isospin functions with integer indices).  \
+When set to True, these indices \
 are numbered, when set to False they are all assigned the same symbol.  The \
 symbol(s) used is (are) given by the setting of FreeIsoIndexString \
 (FreeIsoIndicesString).  Default value : False (True).";
