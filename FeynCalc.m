@@ -892,10 +892,21 @@ If[Global`$LoadFeynArts===True,
                   "Text"]],
       Print["Loading FeynArts "]
    ];
+(* loading *)
+If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
+   loadfa = Needs["FeynArts`"],
+   loadfa = Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]]
+];
+
+   If[loadfa === $Failed,
    If[Get[ToFileName[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
       "FeynArts.m"]]===$Failed,
      If[$Notebooks===True,
 	CellPrint[Cell[TextData[{
+	  "FeynArts not found. Please install FeynArts, e.g., in\n",
+          If[$VersionNumber >= 4.2, $UserAddOnsDirectory,
+             ToFileName[{$TopDirectory,"AddOns","Applications"}]
+            ],
 	  "FeynArts not found. Please put the files in\n",
 	  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
 	  "\n", "and reload FeynCalc",
@@ -905,6 +916,10 @@ If[Global`$LoadFeynArts===True,
 	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de"]}
 	 ],"Text"]],
        WriteString["stdout",
+          "FeynArts not found. Please install FeynArts, e.g., in\n ",
+          If[$VersionNumber >= 4.2, $UserAddOnsDirectory,
+             ToFileName[{$TopDirectory,"AddOns","Applications"}]
+            ],
           "FeynArts not found. Please put the files in ",
 	  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
 	  ". FeynArts can be downloaded from www.feynarts.de\n"];
