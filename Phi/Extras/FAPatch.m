@@ -90,6 +90,8 @@ Options[FAPatch] = {
       "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD",
       "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpList" ->
         "HighEnergyPhysics`FeynCalc`FeynAmpList`FeynAmpList",
+      "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpDenominator" ->
+        "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator",
       "CreateHighEnergyPhysics`FeynCalc`FeynAmp`FeynAmp" ->
         "CreateFeynAmp"
   }
