@@ -5,13 +5,15 @@
 (* *************************************************************** *)
 
 (*
-   Author:              F.Orellana 2000
+   Author:              F.Orellana
+
+   Year:                2000
 
    Mathematica Version: 3.0
 
-   Requirements:        FeynCalc > 3, Phi
+   Requirements:        FeynCalc > 3, PHI
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The next to leading order CP conserving
                         delta s = 1 weak ChPT lagrangian.
@@ -351,7 +353,7 @@ UTrace[ NM[USmall[\[Nu]], USmall[\[Rho]], USmall[\[Sigma]]] ]]+
 
 N29*UTrace[NM[UDelta,
 NM[LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*
-(UFPlus[\[Rho], \[Sigma]]-UFMinus[\[Rho], \[Sigma]])
+(UFPlus[\[Rho], \[Sigma]]-UFMinus[\[Rho], \[Sigma]]),
 USmall[\[Mu]], USmall[\[Nu]]] -
 NM[USmall[\[Mu]], USmall[\[Nu]],
 LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*

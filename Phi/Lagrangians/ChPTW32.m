@@ -5,13 +5,15 @@
 (* *************************************************************** *)
 
 (*
-   Author:              F.Orellana 1999
+   Author:              F.Orellana
+
+   Year:                2000
 
    Mathematica Version: 3.0
 
-   Requirements:        FeynCalc > 3, Phi
+   Requirements:        FeynCalc > 3, PHI
 
-   Summary:             Lagrangian for Phi
+   Summary:             Lagrangian for PHI
 
    Description:         The lowest order CP conserving weak ChPT
                         lagrangian.
@@ -90,7 +92,7 @@ C5*UTrace[ NM[UGeneratorMatrix[6], Adjoint[MM], UChiMatrix]+
 
 FieldsSet[ChPTW3[2]]:=
 {IsoVector[
-QuantumField`[Particle[PhiMeson,RenormalizationState[0]]]
+QuantumField[Particle[PhiMeson,RenormalizationState[0]]]
 ]};
 
 $Lagrangians=Union[$Lagrangians,{ChPTW3[2]}];
