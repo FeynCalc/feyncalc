@@ -304,7 +304,7 @@ CouplingConstant /: MakeBoxes[
 
 RenormalizationCoefficients[ChPTPhotonsLeptons3[4]] =
 {3/32,3/16,0,1/8,3/8,11/144,0,5/48,1/4,-1/4,-1/8,5/24,
-3/4, z, -3/4, 2 z, -9/4, 3/2 z, 0, z, -1/4, 1/4+3/2 z, 1/8, 1/4, 0, 0, 3/2 + 3 z + 20 z^2,
+3/4, z, -3/4, 2 z, -9/4, 3/2 z, 0, z, -1/4, 1/4+3/2 z, 1/8, 1/4, 0, 0, 3/2 + 3 z + 20 z^2, -3 -3/2 z -4 z^2, 3/2 - 3/2 z +2 z^2,
 0,-3/4,-3,-3/2,3/2,-5,-1,-4/3} /.
 z -> CouplingConstant[ChPTPhotonsLeptons3[2],RenormalizationState[0]]/
 DecayConstant[PhiMeson,RenormalizationState[0]]^4;

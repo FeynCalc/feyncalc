@@ -124,7 +124,7 @@ SelectFree, SelectNotFree,
    SmallVariable, 
    Spinor, SUNDelta, 
    SUNF, SUNFToTraces, SUNIndex, SUNSimplify, SUNT, Tr, Trick,
-   TrickMandelstam, WriteOut, WriteOutPaVe, Write2
+   TrickMandelstam, WriteOut, WriteOutPaVe, Write2, Explicit
 ];
 SpinorChainEvaluate = 
 HighEnergyPhysics`DiracSimplify`Private`SpinorChainEvaluate;
@@ -207,7 +207,8 @@ Options[OneLoop]={
                   ReduceToScalars            -> False,
                   SmallVariables             -> {}, 
                   WriteOut                   -> False,
-                  WriteOutPaVe               -> False
+                  WriteOutPaVe               -> False,
+                  Sum                       -> True
                  };
 (* setting WriteOut to "" retrieves also previously calculated results *)
 
@@ -1281,7 +1282,19 @@ If[grname=!=False,
    print1["CPU - time : ", tim[[1]]//FeynCalcForm]
   ];
 
-oneampresult]/;FreeQ[q,Rule] && FreeQ[q,Plus];
+oneampresult /. 
+      
+      (*New 31/7-2002. Support for FeynArts 3.0 SumOver. F.Orellana*)
+      If[(Sum /. Flatten[{opts}] /. Options[OneLoop]) === False,
+          HighEnergyPhysics`FeynArts`SumOver[___] -> 1,
+          HighEnergyPhysics`FeynArts`SumOver[i_, r_, ___] ->
+            HighEnergyPhysics`FeynArts`SumOver[SUNIndex[i], r]] //.
+      If[(Sum /. Flatten[{opts}] /. Options[OneLoop]) === Explicit,
+           Times[f__, HighEnergyPhysics`FeynArts`SumOver[SUNIndex[i_], r_]] :>
+               (print2["Summing ", i, " from 1 to ", r];
+          Sum[Times[f], {i, 1, r}]), {}]
+
+] /; FreeQ[q,Rule] && FreeQ[q,Plus];
 
 (* ******************************************************************* *)
 
@@ -2224,9 +2237,7 @@ oten1=tensdnp1;
             tenslep = Length[Position[tensdnp1,q ] ];
 (* BREAK EVENTUALLY *)
 (*Global`TENSLEP = tenslep; *)
-If[tenslep>3, Print["FYI: Tensor integrals of rank higher than 3 encountered;
-   Please use the option CancelQP -> True or OneLoopSimplify->True or
-   use another program."];
+If[tenslep>3, Print["FYI: Tensor integrals of rank higher than 3 encountered; Please use the option CancelQP -> True or OneLoopSimplify->True or use another program."];
 
    Throw[x]
 ];

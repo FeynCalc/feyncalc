@@ -91,7 +91,7 @@ the others";
 
 PerturbationOrder::"usage" = 
     "PerturbationOrder is an option for MomentaCollect, XName, \
-CouplingFilesGenerate and  DiscardOrders, specifying the maximum order in the \
+CouplingFilesGenerate,  DiscardOrders and FAToFC, specifying the maximum order in the \
 momentum and/or other perturbative expansion parameters from \
 $ExpansionQuantities. It is also and option for DiscardTopology, specifying \
 the order in some additional expansion.  Default value : 2.  NOTICE:  \
@@ -399,14 +399,18 @@ SubArgs::"usage" =
 $PostSubstitutions";
 
 DropOrder::"usage" = 
-    "DropOrder is an option for UFieldMatrix.  When set to some integer \
+    "DropOrder is an option for UFieldMatrix, UNMSplit and CreateFCAmp.  \
+When set to some integer \
 different from Infinity, all iso-vectors of the given field are multiplied \
 with the numeric quantity DropFactor[field] (which is brought out of all \
 non-commutative products).  Automatically all powers of DropFactor[] higher \
 than DropOrder are dropped.  Notice that when enabling this option, the \
 factor DropFactor[___] should after evaluation of all products be set to 1.  \
 This is done automatically by the funtions DiscardTerms and ArgumentsSupply.  \
-Default value : Infinity";
+For CreateFCAmp, DropOrder is only relevant when WaveFunctionRenormalize is set to \
+True, in which case it determines the order above which to drop powers of momenta and \
+objects from $ExpansionQuantities.
+Default value : Infinity for UFieldMatrix and 4 for FAToFC";
 
 DropFactor::"usage" = 
     "DropFactor[field] is the numeric factor used by UFieldMatrix[field,opts] \
@@ -1096,14 +1100,13 @@ $QuarkToPionMassesRules::"usage" =
     "$QuarkToPionMassesRules is a set of rules used by WriteOutUMatrices when \
 the option SUNN is set to 2, and by UQuarkMassMatrix when the option \
 DiagonalToU is enabled and SUNN is set to 2. Notice that the default \
-default setting is equivalent to lowest order standard ChPT and isospin \
-symmetry";
+setting corresponds to lowest order (isospin symmetric) standard ChPT ";
 
 $QuarkToMesonMassesRules::"usage" = 
     "$QuarkToMesonMassesRules is the set of rules used by WriteOutUMatrices \
 when the option SUNN is set to 3, and by UQuarkMassMatrix when the \
 option DiagonalToU is enabled and the option SUNN is set to 3. Notice \
-that the default setting is equivalent to lowest order standard ChPT";
+that the default setting corresponds to lowest order standard ChPT";
 
 $PionToQuarkMassesRule::"usage" = 
     "$PionToQuarkMassesRule is a set of rules specifying the transition from \
@@ -2549,11 +2552,13 @@ isoindexf[var_, j_] := {ToExpression[StringJoin[var, Evaluate[ToString[j]]]]};
 isoindextab[var_, (opts___Rule | opts___List)] := 
     Table[ isoindexf[var, j] , {j, 
         1, (ParticlesNumber /. Flatten[{opts}] /. Options[VariableBoxes])}];
+
 isoboxes[var_, (opts___Rule | opts___List)] := 
     MakeBoxes[#, TraditionalForm | yakk] & /@ Flatten[isoindextab[var, opts]];
   
 isoboxes1[var_, (opts___Rule | opts___List)] := 
     MakeBoxes[#, _] & /@ Flatten[isoindextab[var, opts]];
+
 isoright[var_, (opts___Rule | opts___List)] :=
   
     Table[{SubscriptBox[MakeBoxes[StyleForm[var, FontSlant -> "Italic"]][[1]],
@@ -2561,11 +2566,13 @@ isoright[var_, (opts___Rule | opts___List)] :=
         1, (ParticlesNumber /. Flatten[{opts}] /. 
               Options[VariableBoxes])}] //
     Flatten;
+
 VariableBoxes[var_, (opts___Rule | opts___List)] := 
     Do[Evaluate[Flatten[isoindextab[var, opts]][[j]]] /: 
         Evaluate[isoboxes[var, opts][[j]]] := 
         Evaluate[isoright[var, opts][[j]]], {j, 
         1, (ParticlesNumber /. Flatten[{opts}] /. Options[VariableBoxes])}];
+
 VariableBoxesAll[var_, (opts___Rule | opts___List)] := 
     Do[Evaluate[Flatten[isoindextab[var, opts]][[j]]] /: 
         Evaluate[isoboxes1[var, opts][[j]]] := 

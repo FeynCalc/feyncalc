@@ -8,14 +8,15 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:  the s_n for  OPEInt*)
+(* :Summary:  the s_n for  OPEInt *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`QCDScalemu`",
              "HighEnergyPhysics`FeynCalc`"];
 
-QCDScalemu::usage= "QCDScalemu is ...";
+QCDScalemu::usage= "QCDScalemu is the dimensionful arbitrary constant of \
+dimensional regularization.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,7 +24,7 @@ Begin["`Private`"];
    
 
    QCDScalemu /:
-   MakeBoxes[QCDScalemu, TraditionalForm] := \[Mu];
+   MakeBoxes[QCDScalemu, TraditionalForm] := "\[Mu]";
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

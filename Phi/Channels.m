@@ -1662,7 +1662,7 @@ CNM[aa_, bb_, cc__?(!MatchQ[#,Rule]&),opts___Rule] :=
 
 (*!!This whole section should be reworked if it's to be of any use,
    e.g. using ClebschGordan. 
-   think its even wrong!!*)
+   Think it's even wrong!!*)
 
 (* Projecting out IsoVectors in particle channels: *)
 
@@ -1807,6 +1807,22 @@ AmplitudeProjection[amp_,
       2*AmplitudeProjection[amp,
           Channel -> {{PionPlus, PionPlus} -> {PionPlus, PionPlus}},
           Sequence[opts]];
+
+(* After doing loops with FeynArts, particle masses with SU(N) indices come out.
+   They can be projected out in charged masses with IsoToChargedMasses *)
+
+IsoToChargedMasses[exp_] := 
+    Block[{part, rul, tmppart, parts, subpar, seq}, parts = {}; 
+      subpar = (part = #[[1]]; (rul = (tmppart = 
+                                ParticleMass[#[[1]], #[[2, 1]] | 
+                                    fcsuni[#[[2, 1]]], r___]; tmppart) -> 
+                            ParticleMass[part, r]; 
+                        If[FreeQ[parts /. Alternatives :> (({##}[[1]]) &), 
+                            tmppart], parts = Append[parts, tmppart]; rul, 
+                          seq[]]) & /@ 
+                    Cases[{#[[2]]}, _Iso, 
+                      Infinity]) & /@ $IsoSpinProjectionRules /. 
+            seq -> Sequence // Flatten; exp /. subpar];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 

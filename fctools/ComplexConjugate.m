@@ -87,6 +87,9 @@ conpa[x__] := Pair[x] /. {Polarization[k_, a_, in___] :>
 (* ComplexConjugatedef *)
 sunfcomp[a___] := SUNF @@ ({a}/.ComplexIndex -> Identity);
 sundeltacomp[a___] := SUNDelta @@ ({a}/.ComplexIndex -> Identity);
+(*Added SumOver stuff. F.Orellana. 20/8-2002*)
+sumovercomp[a___] := HighEnergyPhysics`FeynArts`SumOver @@ ({a}/.ComplexIndex -> Identity);
+
 (*
 nenenen
 sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
@@ -98,6 +101,7 @@ ComplexConjugate[b_HoldForm] := b /; FreeQ2[fci[FRH[b]],
 ComplexConjugate[x_ /; (Head[x] =!= HoldForm)] :=
                  compcon[fci[x]/.SUNTrace->suntrac
                         ] /. SUNF -> sunfcomp /.
+                    HighEnergyPhysics`FeynArts`SumOver -> sumovercomp /.
                     SUNDelta -> SUNDeltaContract /.
                        SUNDeltaContract -> sundeltacomp/.
                           compcon -> compcon2 /. compcon2 ->

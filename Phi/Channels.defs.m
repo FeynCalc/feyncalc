@@ -24,6 +24,12 @@ rules specified in $IsoSpinProjectionRules.  NOTICE:  For the particles under \
 consideration, Phi must know their anti-particles.  That is, e.g. \
 ChargeConjugate[PionPlus] is PionMinus";
 
+IsoToChargedMasses::"usage" = 
+    "IsoToChargedMasses projects out ParticleMass[p, SUNIndex[i]], where \
+p is a particle name to a ParticleMass of a particle in the charged basis using \\
+$IsoSpinProjectionRules";
+
+
 $IsoSpinProjectionRules::"usage" = 
     "$IsoSpinProjectionRules is a set of rules used by FieldProjection and \
 AmplitudeProjection to project out in channels.  Changing the default setting \

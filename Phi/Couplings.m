@@ -68,6 +68,9 @@ fcdtr := fcdtr = HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace;
 fcdtrev := fcdtrev = HighEnergyPhysics`FeynCalc`DiracTraceEvaluate`DiracTraceEvaluate;
 fcmomc := fcmomc = HighEnergyPhysics`FeynCalc`MomentumCombine`MomentumCombine;
 fccombs := fccombs = HighEnergyPhysics`general`Combinations`Combinations;
+fcexli := fcexli = HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex;
+fcexpt := fcexpt = HighEnergyPhysics`fctools`Explicit`Explicit;
+
 
 
 
@@ -113,8 +116,10 @@ faverti := faverti = HighEnergyPhysics`FeynArts`Vertices;
 facoupmat := facoupmat = HighEnergyPhysics`FeynArts`M$CouplingMatrices;
 faps := faps = HighEnergyPhysics`FeynArts`PSort;
 faseens := faseens = HighEnergyPhysics`FeynArts`SelfEnergies;
-
-
+fawfcr := fawfcr = HighEnergyPhysics`FeynArts`WFCorrections;
+fafi := fafi = HighEnergyPhysics`FeynArts`Field;
+fatrru := fatrru = HighEnergyPhysics`FeynArts`M$TruncationRules;
+facol := facol = Global`Color;
 
 
 (* Defaults *)
@@ -162,7 +167,7 @@ Options[CouplingFilesGenerate] = {VertexFields -> {Pion[0], Pion[0], Pion[0],
 Options[FAToFC] = {EqualMasses -> True, ParticlesNumber -> 4,
       ScalarProductForm -> MomentaScalarProduct,
       MomentumVariablesString -> "p", InternalMomentumVariablesString -> "q",
-      MomentaSumLeft -> All, fcdtrev -> False, NoSums -> False, FADeltas -> False};
+      MomentaSumLeft -> All, fcdtrev -> False, Sum -> True, FADeltas -> False};
 Options[DeltaFunctionsCollect] = {ParticlesNumber -> 4,
       IsoIndicesString -> "I"};
 Options[DeltaFunctionProducts] = {ParticlesNumber -> 4,
@@ -170,7 +175,11 @@ Options[DeltaFunctionProducts] = {ParticlesNumber -> 4,
 Options[AddExternalLegs] = {ExternalPropagators -> 1, faseens -> False};
 Options[DiscardTopologies] = {PerturbationOrder -> 2,
       OrderingPatterns -> {}};
-
+Options[WFRenormalize] = {PerturbationOrder -> 2};
+Options[PMRenormalize] = {PerturbationOrder -> 2};
+Options[DCRenormalize] = {PerturbationOrder -> 2};
+Options[CreateFCAmp] = {WFRenormalize -> False, PerturbationOrder -> 2,
+                          DropOrder -> 4, Method -> Plus};
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -259,15 +268,21 @@ DeltaFunctionProducts[opts___] :=
     Union[indicestemp[opts] /. (pll -> faid) /. ({faid[a__], b___} ->
               faid[a]*b)] /.
       If[(FADeltas /. Flatten[{opts}] /. Options[DeltaFunctionProducts]), faid -> $FADelta,
-        faid[a_, b_] -> fcsundel[fcsuni[a], fcsuni[b]]];
+        faid[a_, b_] :> fcsundel[fcsuni[a], fcsuni[b]] /;
+                        !FreeQ[{a,b}, IsoSpin, Heads -> True]];
 
 
 
 (* The vertex in FeynArts notation: *)
 
 melfeynartstemp[melsimplified_, opts___] :=(**)
-    fcdigaex[melsimplified](*/. {fcsunn -> Sqrt[2], fcca -> Sqrt[2],
+ (fcdigaex[melsimplified](*/. {fcsunn -> Sqrt[2], fcca -> Sqrt[2],
                   fccf -> 1/(2*Sqrt[2])}*)/.
+
+(*Added 28/6-2002*)
+fcdiga[fcmom[p_,___],___] :> fcdiga[fcli[ToExpression[$CouplingLorentzIndicesString<>ToString[p]]]]*
+fcpa[fcli[ToExpression[$CouplingLorentzIndicesString<>ToString[p]]],fcmom[p]] /.
+
             If[(FADeltas /. Flatten[{opts}] /.
                   Options[FCToFA]), {fcsundel -> $FADelta,
                 SU2Delta -> $FADelta, SU3Delta -> $FADelta}, {}] /. {Dot ->
@@ -292,9 +307,9 @@ melfeynartstemp[melsimplified_, opts___] :=(**)
                 ToString[
                   b + (ParticlesNumber/2 /. Flatten[{opts}] /.
                         Options[FCToFA])]]}, {b, (ParticlesNumber/2 /.
-                Flatten[{opts}] /. Options[FCToFA])}]];
+                Flatten[{opts}] /. Options[FCToFA])}]]) ;
 
-
+SetAttributes[nonc, Flat];
 
 (*Added IsoCollect 14/4 - 2000*)
   FCToFA[melsimplified_, opts___] :=
@@ -309,7 +324,8 @@ melfeynartstemp[melsimplified_, opts___] :=(**)
             fcsund[___]}, {UGenerator[__][__]}]],
       melfeynartstemp[
         melsimplified /. (Projection[pa_, ___][pb_]) :> fcsundel[pa, pb],
-        opts]];
+        opts]]  /. fanoncom -> nonc /. nonc -> fanoncom (*Added 28/6-2002*) ;
+
 negtest[b_] := Re[b] < 0 || Im[b] < 0;
 plus1[a : ((_?negtest*_) ..)] := -1*plus1 @@ ((-1*#) & /@ {a});
 momprod[pta_, ptab__] := Union[Flatten[Union @@ Outer[Times, pta, ptab]]];
@@ -394,17 +410,11 @@ MomentaCollect[m_, opts___] :=
         setnumrules*)];
 
 
-
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
 (* Generation of FeynArts 2 couplings *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
-
-
-CreateFCAmp[amp_, opts___] := FAToFC[facrfa[amp, faal -> facl], opts];
-
 
 (* Here is the kinematical coupling vector to be used in a generic model file
 for FeynArts 2: *)
@@ -490,14 +500,14 @@ GenericCoupling1[Plus[m_, mm___],opts___] := ((m + mm + tempp) /.
 
 ClassesCoupling1[m_, opts___] := (numerator = (m + tempp) /.
               Plus[aa__, tempp] -> llistt[aa][opts] /. HoldMinus -> -1 /.
-          llistt -> llist; classcoupl = numerator/GenericCoupling[m, opts];
+          llistt -> llist; classcoupl = numerator/GenericCoupling2[m, opts];
       Table[{classcoupl[[rep]]}, {rep, Length[numerator]}]);
 
 
 
 (* Should FCToFA be applied first? *)
 
-GenericCoupling[m_,opts___] := Block[
+GenericCoupling2[m_,opts___] := Block[
    {fctofa = FCToFA /. Flatten[{opts}] /.Options[GenericCoupling],tmpres,
    gencoup1 = GenericCoupling1},
    tmpres =
@@ -509,9 +519,14 @@ GenericCoupling[m_,opts___] := Block[
    ];
    If[Head[tmpres] =!= gencoup1,
       tmpres,
-      Message[GenericCoupling::nores];
+      Message[GenericCoupling::"nores"];
    ]
 ];
+
+GenericCoupling[m_,opts___] := GenericCoupling2[m,opts] //. 
+           (*Added 28/6-2002*) {a_*fanoncom[b_] :> fanoncom[a*b],
+                                              a_*fanoncom[b_,c__] :> fanoncom[a*b,c]} /.
+           fanoncom -> nonc /. nonc -> fanoncom ;
 
 ClassesCoupling[m_,opts___] := Block[
    {fctofa = FCToFA /. Flatten[{opts}] /.Options[ClassesCoupling],tmpres,
@@ -525,7 +540,7 @@ ClassesCoupling[m_,opts___] := Block[
    ];
    If[Head[tmpres] =!= classcoup1,
       tmpres,
-      Message[ClassesCoupling::nores];
+      Message[ClassesCoupling::"nores"];
    ]
 ];
 
@@ -700,8 +715,6 @@ LoopsSymmetryFactor[
 (* Feynman graphs with external sources *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
-
 
 (* Support functions for DiscardCT, taken from ../FeynArts/Utilities.m: *)
 
@@ -934,11 +947,8 @@ FeynCalc heads, and adding a Hold to FAFeynAmpDenominator to avoid having it
 written out (FeynCalc does not accept it when written out): *)
 
 
-
-
 (* A raw amplitude: *)
-classesamplitude[amm__ /; FreeQ[amm, facl]][
-    opts___] :=
+classesamplitude[amm__ /; FreeQ[amm, facl]][opts___] :=
 (amm /.PropagatorDenominator1->fcprd(*Added 19/7-2001*) //.
 {famatr[a___, b_, c___] /; UScalarQ[b] -> b*famatr[a, c],
 faferch[a___, b_, c___] /; UScalarQ[b] -> b*faferch[a, c]} /.
@@ -950,7 +960,7 @@ fafad[a__] -> Hold[fafad[a]] /.(*Change 15/3 - 1999*)
 If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
           ParticleMass[a_, b___][c_] -> ParticleMass[a, b],
           ParticleMass[a_, b___][c_] -> ParticleMass[a, fcsuni[c], b]]) /.
-{faind[IsoSpin[i_], b_] :> ToExpression[ToString[i] <> ToString[b]],
+{faind[(IsoSpin|facol)[i_], b_] :> ToExpression[ToString[i] <> ToString[b]],
 faind[falo, b_] :> fcli[ToExpression[$CouplingLorentzIndicesString <> ToString[b]],
    SpaceTimeDimensions]};
 
@@ -968,7 +978,7 @@ FeynAmpDenominator[a__] -> Hold[FeynAmpDenominator[a]] /.(*Change 15/3 - 1999*)
 If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
           ParticleMass[a_, b___][c_] -> ParticleMass[a, b],
           ParticleMass[a_, b___][c_] -> ParticleMass[a, fcsuni[c], b]]) /.
-{faind[IsoSpin[i_], b_] :> ToExpression[ToString[i] <> ToString[b]],
+{faind[(IsoSpin|facol)[i_], b_] :> ToExpression[ToString[i] <> ToString[b]],
 faind[falo, b_] :> fcli[ToExpression[$CouplingLorentzIndicesString <> ToString[b]],
           SpaceTimeDimensions]};
 
@@ -1023,16 +1033,13 @@ fixindices[ampta_List] :=
             HighEnergyPhysics`Phi`Couplings`Wrap -> Identity,
             repp]], {repp, Length[amptab1]}]; amptab1 /. _dumf -> 1 /. Wrap -> Identity];
 
-
-
 (* While[(common = Intersection[inds, tmpinds]) =!= {},
   tmpinds = (If[FreeQ[common, #], #,
             ToExpression[StringTake[ToString[#], 1] <> ToString[#]]] &) /@
       tmpinds]; rules = (((Rule @@ #) &) /@
       Select[Transpose[{newinds, tmpinds}], (#[[1]] =!= #[[2]]) &]); *)
 
-FAToFC[amm_,
-    opts___] := (traceev = (fcdtrev /. Flatten[{opts}] /. Options[FAToFC]);
+FAToFC[amm_, opts___] := (traceev = (fcdtrev /. Flatten[{opts}] /. Options[FAToFC]);
     (**)(*selecting the classes amplitude and transforming
     the four momenta and indices*)
 
@@ -1045,7 +1052,7 @@ FAToFC[amm_,
          tmptable1 = fixindices[tmptable];
 
     VerbosePrint[2, "\nApplying translation rules"];
-tmptable1 /.
+  tmptable1 /.
 (*Momenta*){
    fafm[fainc, b_] :> fcmom[ToExpression[(MomentumVariablesString /.
       Flatten[{opts}] /. Options[FAToFC]) <> ToString[b]], SpaceTimeDimensions],
@@ -1057,15 +1064,17 @@ tmptable1 /.
          Flatten[{opts}] /. Options[FAToFC]) <> ToString[b + ((ParticlesNumber/2) /.
          Flatten[{opts}] /. Options[FAToFC])]],SpaceTimeDimensions]]
 } /.
-(*SU(N) delta function*)   $FADelta[aa_, bb_] -> fcsundel[fcsuni[aa],fcsuni[bb]] /.
-(*Four vectors and scalarproducts*){
+(*SU(N) delta function*)   $FADelta[aa_, bb_] :> fcsundel[fcsuni[aa],fcsuni[bb]] /;
+                           !FreeQ[{aa,bb}, IsoSpin, Heads -> True] /.
+(*Four-vectors and scalar products*){
    (*Changed 6/1 - 2000*)(*fafv -> fcpa*)
    fafv[a_?((!FreeQ[#, fafm | fcmom])&), b_?((Head[#] =!= fcli)&)] -> fcpa[a, fcli[b]],
    fafv[a_?((!FreeQ[#, fafm | fcmom])&), b_?((Head[#] === fcli)&)] -> fcpa[a, b],
    famt[li1_, li2_] /; FreeQ[{li1, li2}, fcli] ->
       fcpa[fcli[li1, SpaceTimeDimensions],fcli[li2, SpaceTimeDimensions]],
    famt[li1_, li2_] /; !FreeQ[{li1, li2}, fcli] -> fcpa[li1, li2],
-   $FADelta[aa_, bb_] -> fcsundel[fcsuni[aa], fcsuni[bb]],
+   $FADelta[aa_, bb_] :> fcsundel[fcsuni[aa], fcsuni[bb]] /;
+                         !FreeQ[{aa,bb}, IsoSpin, Heads -> True],
    UGenerator[I5_, op___][J3_, J1_] ->
       UGenerator[fcsuni[I5], op][fcsuni[J3],fcsuni[J1]], (*fapd -> fcprd, *)
    fafad -> fcfad,
@@ -1104,7 +1113,9 @@ fcpa[a_,b : Plus[-1*_, __]] :> -fcpa[a, -b] /.
  }/.
 (*Dirac stuff*){
    (*fadm[p_] -> fcdiga[p, SpaceTimeDimensions],*)
-   tmpdiga[p_] -> fcdiga[p, SpaceTimeDimensions](*,
+   (*Change 28/6-2002*)
+   tmpdiga[p_?((!FreeQ[{#},fcmom|fcli])&)] :> fcdiga[p, SpaceTimeDimensions],
+   tmpdiga[p_?(FreeQ[{#},fcmom|fcli]&)] :>(fcdiga[fcli[p,SpaceTimeDimensions], SpaceTimeDimensions])(*,
    fachiralp -> fcchiralp, fadsl[a_] :> fcdiga[a, SpaceTimeDimensions]*)
 } /.
 {fanoncom[a_, b__] :> (fcdot[a, b]/.fanoncom->Identity), 
@@ -1116,10 +1127,15 @@ famatr[mat__] -> fcdtr[fcdot[mat], fcdtrev -> False] /.
 {fcmom1 -> fcmom, fcpa1 -> fcpa} /.
 (*Fermions*){fads -> fcspi, faferch -> fcdot} /.
 (fcdtrev -> False) -> (fcdtrev -> traceev) /.
-        If[(NoSums /. Flatten[{opts}] /. Options[FAToFC]),
-          faso[___] -> 1,
-	  (*Changed 9/1 - 2000 (was empty)*)faso[i_, r_] ->
-            faso[fcsuni[i]]] /.(*Changed 11/1 - 2000, added SUND and SUNF*)
+        If[(Sum /. Flatten[{opts}] /. Options[FAToFC]) === False,
+          faso[___] -> 1,faso[i_, r_, ___] :>
+            faso[fcsuni[i], r] /; !FreeQ[{i}, IsoSpin, Heads -> True]]
+	  (*Changed 9/1 - 2000 (was empty). Changed 17/7-2002 (keeping r)*)
+     (*Changed 21/8-2002. We might need other index types.*) //.
+      If[(Sum /. Flatten[{opts}] /. Options[FAToFC]) === fcexpt,
+           Times[f__, faso[i_, r_, ___]] :>
+         (VerbosePrint[2, "Summing ", i, " from 1 to ", r];
+          Sum[Times[f], {i, 1, r}]), {}] /.(*Changed 11/1 - 2000, added SUND and SUNF*)
 	{fcsundel[a_, b_] /; FreeQ[{a, b}, fcsuni] ->
           fcsundel[fcsuni[a], fcsuni[b]],
         fcsund[a_, b_, c_] /; FreeQ[{a, b, c}, fcsuni] ->
@@ -1131,9 +1147,15 @@ famatr[mat__] -> fcdtr[fcdot[mat], fcdtrev -> False] /.
         SU3D[a_, b_, c_] /; FreeQ[{a, b, c}, fcsuni] ->
           SU3D[fcsuni[a], fcsuni[b], fcsuni[c]],
         SU3F[a_, b_, c_] /; FreeQ[{a, b, c}, fcsuni] ->
-          SU3F[fcsuni[a], fcsuni[b], fcsuni[c]]});
+          SU3F[fcsuni[a], fcsuni[b], fcsuni[c]]} /.
+   (*Added 29/6-2002*) fcexli[a_, ___] -> a) //.
+   (*Added 13/8-2002 because patching FA model files gives structures like
+     DiracMatrix[Index[Lorentz, 1]] which is auto-expanded by FC into
+     DiracGamma[LorentzIndex[Index[Lorentz, 1]]]*)
+     fcli[fcli[mu_, d___], dd___] :> fcli[mu,Sequence@@Union[{d},{dd}]];
 
-
+DoSumOver[exp_] := exp //. Times[f__, faso[i_, r_, ___]] :>
+       (VerbosePrint[2, "Summing ", i, " from 1 to ", r];Sum[Times[f], {i, 1, r}]);
 
 DeltaFunctionsCollect[ampf__, opts___] :=
     Collect[ampf,
@@ -1145,10 +1167,231 @@ DeltaFunctionsCollect[ampf__, opts___] :=
                 Times -> List)] /. $FADelta -> fcsundel,
         Flatten[((DeltaFunctionProducts @@
                     Join[Flatten[{opts}], Options[DeltaFunctionsCollect]]) /.
-                Times -> List)] /. $FADelta[aa_, bb_] ->
-            fcsundel[fcsuni[aa], fcsuni[bb]]]];
+                Times -> List)] /. $FADelta[aa_, bb_] :>
+            fcsundel[fcsuni[aa], fcsuni[bb]] /;
+            !FreeQ[{aa,bb}, IsoSpin, Heads -> True]]];
 
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* CreateFCAmp *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
+(* Some reshuffling of code to other files might be in place, in order 
+   to minimize the use of giving explicit contexts like
+   HighEnergyPhysics`Phi`Utilities` . Some other time...*)
+
+(* Help functions for wave function renormalization *)
+
+genFac[prop_, opts___Rule] := 
+    Block[{nam, dum}, 
+      nam = XName[VertexFields -> {prop[[-1]]}, 
+            PerturbationOrder -> (PerturbationOrder /. {opts} /. 
+                  Options[WFRenormalize]), 
+            PhiModel -> Global`$Configuration, XFileName -> Automatic] <> ".Fac"; 
+      Which[MatchQ[prop[[0, 1]], 
+          fainc | faout | faext], (3 - 
+              HighEnergyPhysics`Phi`Utilities`CheckF[WFFactor[nam], nam,
+              HighEnergyPhysics`Phi`Utilities`NoSave -> True,
+              HighEnergyPhysics`Phi`Utilities`ForceSave -> False])/2 - 1, 
+        MatchQ[prop[[0, 1]], faint | faloop], 
+        3 - HighEnergyPhysics`Phi`Utilities`CheckF[WFFactor[nam], nam,
+            HighEnergyPhysics`Phi`Utilities`NoSave -> True,
+            HighEnergyPhysics`Phi`Utilities`ForceSave -> False] - 2, True, 
+        Message[WFRenormalize::"noprop", prop[[0, 1]]]; Return[]]];
+
+WFRenormalize[exp : fatopl[oo___][tt___], opts___Rule] := 
+    Block[{props, facs, cruls, parts, part, rul, tmppart}, 
+      cruls = (parts = {}; (part = #[[1]]; (rul = (tmppart = #[[1]][0,
+                 {#[[2, 1]] | fcsuni[#[[2, 1]]]}]; 
+                  tmppart) -> part[0];
+                  If[FreeQ[parts /. Alternatives :> (({##}[[1]]) &), 
+                   tmppart], parts = Append[parts, tmppart]; rul, seq[]]) & /@ 
+                      Cases[{#[[2]]}, _Iso, Infinity]) & /@
+      HighEnergyPhysics`Phi`Channels`$IsoSpinProjectionRules /. 
+              seq -> Sequence // Flatten); 
+      props = List @@ ((List @@ (#[[1]]/. 
+                          List @@ #[[2, 1, 2, 1]] /. cruls)) & /@ exp); 
+      VerbosePrint[3, "Renormalizing propagators ", props]; 
+      facs = (Rule[#, genFac[#, opts]] & /@ #) & /@ props; 
+      VerbosePrint[3, "with factors ", facs]; 
+      fatopl[oo, fawfcr -> facs][tt]];
+
+appendMoms[toplist : fatopl[oo___][tt___]] := 
+    Block[{fieldsubs, momtop, oldmom, imom,
+        HighEnergyPhysics`FeynArts`Analytic`mc, 
+        HighEnergyPhysics`FeynArts`Analytic`next, 
+        info = List @@ toplist [[0]], 
+        HighEnergyPhysics`FeynArts`Analytic`gaugeru = 
+          GaugeRules /. Options[facrfa],
+HighEnergyPhysics`FeynArts`Analytic`truncru = 
+          If[TrueQ[Truncated /. Options[facrfa]], 
+            fatrru, {}], 
+        HighEnergyPhysics`FeynArts`Analytic`pref = 
+          PreFactor /. Options[facrfa]}, 
+      fieldsubs = (List @@ Take[#, {1, 2}][[2, 1, 1]]) & /@ List @@ toplist; 
+      HighEnergyPhysics`FeynArts`Analytic`next = 
+        Plus @@ Length /@ (Process /. {info}); 
+      momtop = (Clear[HighEnergyPhysics`FeynArts`Analytic`c, 
+                HighEnergyPhysics`FeynArts`Analytic`mc]; 
+              HighEnergyPhysics`FeynArts`Analytic`c[_] = 0; 
+              HighEnergyPhysics`FeynArts`Analytic`mc = 0; 
+              HighEnergyPhysics`FeynArts`Analytic`AppendMomentum /@ #[[1]])& /@
+(fapl[facl][toplist] /. (_ -> fains[_][]) :> 
+                  Seq[] /. (fafi[i_] -> fi_?AtomQ) -> (fafi[i] -> 
+                    fi[faind[fagen, i]])); 
+      oldmom = Union[
+          Cases[momtop, fafm[_HighEnergyPhysics`FeynArts`Analytic`ZZZ, _], 
+            Infinity]];
+imom = Apply[HighEnergyPhysics`FeynArts`Analytic`RenumberMom, oldmom, 1];
+momtop[[0]] @@ ((#[[1]] /. #[[2]]) & /@ 
+            Transpose[{(List @@ momtop /. Thread[oldmom -> imom]), 
+                fieldsubs}])];
+
+(**)
+
+(* Help functions for mass renormalization *)
+
+genMass2[mass_, opts___Rule] := 
+    Block[{nam, dum}, 
+      nam = XName[VertexFields -> {mass[[1]][0]}, 
+            PerturbationOrder -> (PerturbationOrder /. {opts} /. 
+                  Options[PMRenormalize]), PhiModel -> Global`$Configuration, 
+            XFileName -> Automatic] <> ".Mass";
+      HighEnergyPhysics`Phi`Utilities`CheckF[Shift[nam], nam, 
+        HighEnergyPhysics`Phi`Utilities`NoSave -> True, 
+        HighEnergyPhysics`Phi`Utilities`ForceSave -> False]];
+
+PMRenormalize[amp_, opts___Rule] := 
+   Block[{i, p, m, r, rr, pm, por, drru},
+       por = (PerturbationOrder /. {opts} /. Options[PMRenormalize]);
+      (*Should be safe for corrections...*)
+      drru = {ParticleMass[pp_, RenormalizationState[0]] -> 
+                   ParticleMass[pp, RenormalizationState[1]],
+              (x : (Alternatives @@ $ExpansionQuantities)) :>
+              (x /. RenormalizationState[0] -> RenormalizationState[1])};
+
+      amp /. (l : (HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar | Log))[s__] :>
+      (l[s] /. ParticleMass -> pm) /.
+      {fcprd[p_, 
+              ParticleMass[m_, r___, RenormalizationState[0], rr___]] -> 
+         fcprd[p, 
+              ParticleMass[m, r, RenormalizationState[1], rr]], 
+       ParticleMass[p_, RenormalizationState[0]]^i_ :>
+         (ParticleMass[p, RenormalizationState[1]]^2 - 
+                  genMass2[ParticleMass[p, RenormalizationState[0]], opts]/.
+               drru)^(i/2)} /.
+      pm -> ((ParticleMass[##]/.drru)&)];
+
+(**)
+
+(* Help functions for decay constant renormalization *)
+
+genF2[ff_, opts___Rule] := 
+    Block[{nam, dum}, 
+      nam = XName[VertexFields -> {AxialVector[0][0], ff[[1]][0]}, 
+            PerturbationOrder -> (PerturbationOrder /. {opts} /. 
+                  Options[DCRenormalize]), PhiModel -> Global`$Configuration, 
+            XFileName -> Automatic] <> ".Fac";
+      HighEnergyPhysics`Phi`Utilities`CheckF[Shift[nam], nam, 
+        HighEnergyPhysics`Phi`Utilities`NoSave -> True, 
+        HighEnergyPhysics`Phi`Utilities`ForceSave -> False]];
+
+DCRenormalize[amp_, opts___Rule] := 
+    Block[{po, ca, xxs, ex,
+           $ExpansionQuantities = {ParticleMass[b__], CouplingConstant[QED[1], c___]},
+           mms, cou, ruls, ruls1, f, ff, g, x, fac, facinv, pop, len, por},
+   por = (PerturbationOrder /. {opts} /. Options[DCRenormalize]);
+   pop = HighEnergyPhysics`Phi`Utilities`DiscardOrders[#,
+                     PerturbationOrder -> por, DiscardMomenta -> False]&;
+
+   (*Should be safe for corrections...*)
+   drru = DecayConstant[pp_, RenormalizationState[0]] -> 
+                   DecayConstant[pp, RenormalizationState[1]];
+
+   Plus@@(
+   Which[(len=Length[ca=Cases[{#}, DecayConstant[_, RenormalizationState[0], ___],
+                          Infinity, Heads->True]])>1,
+       Message[DCRenormalize::"nores"]; #,
+
+       len === 0, #,
+
+       len === 1,
+
+       po = Exponent[#, ca[[1]]];
+
+       Which[po==0, Message[DCRenormalize::"nores"]; #,
+             po>0, fac = genF2[ca[[1]], opts]^po // pop;
+                   (fac/.drru)*(# /. DecayConstant[pp_, RenormalizationState[0]] -> 
+                   DecayConstant[pp, RenormalizationState[1]]),
+             po<0, VerbosePrint[2, "Negative power of decay constant ", ca[[1]]," ", po,
+                                   ". Doing Taylor expansion"];
+                   facinv = genF2[ca[[1]], opts];
+                   mms = Union[Cases[facinv,
+                         Alternatives @@ $ExpansionQuantities, Infinity]];
+                   (*Dummy variables x[1], x[2], ... One for each expansion quantity*)
+                   cou = 0; xxs = (++cou; x[cou]) & /@ mms;
+                   (*Substitution rules for switching between x[1], x[2], ...
+                     and the expansion quantities*)
+                   cou = 0; ruls = ((#^i_ -> (++cou; x[cou]^(i/2))) & /@ mms);
+                   cou = 0; ruls1 = (((++cou; x[cou]) -> #^2) & /@ mms);
+                   f[x_] = facinv /. _Log -> 0 /. ruls;
+                   (*Define the function g[x1_, x2_, ...]*)
+                   Evaluate[g @@ xxs /. 
+                     x[a_] :>
+                     Pattern[Evaluate[ToExpression[ToString[x] <> ToString[a]]], 
+                     Blank[]]] = f[x] - 1 /.
+                                 x[a_] :> ToExpression[ToString[x] <> ToString[a]];
+                   (*Multi-dimensional Taylor expansion of the inverse
+                     renormalization factor*)
+                   fac = ((Series[1/(1 + (ff @@ xxs)), Sequence @@ ({#, 0, 1}& /@ xxs)] /. 
+                     ff[_?((# === 0)&) ..] -> 0 // Normal) /. ff :> g /. ruls1)^(-po) // 
+                     pop;
+                   (fac/.drru)*(# /. DecayConstant[pp_, RenormalizationState[0]] -> 
+                     DecayConstant[pp, RenormalizationState[1]])
+             ]
+
+      ]& /@ (ex=Expand[amp];If[Head[ex]===Plus,List@@ex,{ex}]))
+   ];
+
+(**)
+
+CreateFCAmp[amp_, opts___] := Block[{me, propmoms, pprops, wffacs, wffac},
+
+   (*Wave function renormalization. 8/8-2002*)
+
+   If[WFRenormalize /. Flatten[{opts}] /. Options[CreateFCAmp],
+     VerbosePrint[2, "Doing wave function renormalization\n"];
+
+   propmoms = 
+     FAToFC /@ ((List @@ #) & /@ 
+        List @@ appendMoms[amp] /. 
+          faprop[a_][b__] :> ({b}[[-1]]));
+
+   pprops = (((#[[2]]) & /@ #) & /@ (fawfcr /. 
+          List @@ WFRenormalize[amp, opts][[0]]));
+
+   wffacs = ((#[[1]] /. (Append[Cases[#, fcmom[___], Infinity], 
+    classesamplitude[{fafm[fainc, 1]}][opts][[1]]][[1]] /. 
+    SpaceTimeDimensions :> BlankNullSequence[]) -> #[[2]])& /@ #)& /@
+    (Transpose /@ Transpose[{pprops, propmoms}]);
+
+   wffac = Which[(me=Method/.Flatten[{opts}]/.Options[CreateFCAmp]) ===
+        HighEnergyPhysics`Phi`Utilities`DiscardOrders,
+        HighEnergyPhysics`Phi`Utilities`DiscardOrders[
+         Times @@ ((1+#)&/@#), Sequence@@OptionsSelect[HighEnergyPhysics`Phi`Utilities`DiscardOrders,
+                      Flatten[{opts}/.Rule[PerturbationOrder,_]:>Sequence[]/.
+                              DropOrder->PerturbationOrder]]]& /@ wffacs,
+       me === Plus,
+                                ((1 + Plus @@ #) & /@ wffacs),
+      True, Message[CreateFCAmp::"nomethod", me]];
+
+    (Times@@#)&/@ Transpose[{wffac,FAToFC[facrfa[amp, faal -> facl], opts]}],
+
+    FAToFC[facrfa[amp, faal -> facl], opts]]
+   (**)
+
+];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)

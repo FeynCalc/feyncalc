@@ -816,7 +816,13 @@ If[Global`$FeynCalcStartupMessages =!= False ,
 If[$Notebooks===True,
    CellPrint[Cell[TextData[{StyleBox[ "FeynCalc" , FontWeight-> "Bold"], " ",
     $FeynCalcVersion,
-     "    ", " Evaluate ?FeynCalc for help or visit ",
+     "    For help, type ?FeynCalc,  ",
+     ButtonBox["use the built-in help system",
+       ButtonFunction -> (FrontEndExecute[FrontEnd`HelpBrowserLookup["AddOns", #]] &),
+       ButtonData:>{ "Short Overview", "intro"},
+       ButtonStyle->"AddOnsLink",
+       ButtonNote->"Open the help browser"],
+     "  or visit ",
      ButtonBox["www.feyncalc.org", ButtonData:>{
       URL[ "http://www.feyncalc.org"], None},
      ButtonStyle->"Hyperlink", ButtonNote->"http://www.feyncalc.org"]}
@@ -4131,7 +4137,7 @@ diractraceevsimple[x_Dot, {opt___}]:=
      If[(*Length[x] > Length[Union[Variables /@ Apply[List,x]]],*)
    (*More restrictive condition. I'm not sure about this... But the old stuff commented out above
       is wrong on e.g. Tr[DiracGamma[Momentum[p]].DiracGamma[Momentum[p]].DiracGamma[Momentum[r]]]
-      see, Kapustas bug report http://www.feyncalc.org/forum/0079.html*)
+      see, Kapusta's bug report http://www.feyncalc.org/forum/0079.html*)
         Union[Length /@ Split[Sort[ Variables /@ Apply[List,x] ]]] === {2},
         If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[x]]];
         Factor[diractraceevsimpleplus[Expand[DiracTrick[x]], {opt}]],
@@ -6050,8 +6056,8 @@ an integer.";
 
 Begin["`Private`"];
 
-
-MakeContext[ExplicitLorentzIndex];
+(*Commented out 18/6-2002 by F.Orellana. Don't know why it was there - it causes infinite recursion*)
+(*MakeContext[ExplicitLorentzIndex];*)
 
 SetAttributes[ExplicitLorentzIndex, Constant ];
 
@@ -11719,9 +11725,11 @@ SUNDeltaContract/: SUNDeltaContract[a_, i_SUNIndex ] *
                    SUNDeltaContract[a,b] /; noint[i];
 
 SUNDeltaContract/: SUNDeltaContract[i_SUNIndex, j_SUNIndex ] y_[z__] :=
-             ( y[z] /. i -> j ) /; !FreeQ[y[z]//Hold, i] &&
-                 FreeQ[y[z], SUNDeltaContract[__]^n_Integer?Negative] /;
-                 noint[i,j];
+             ( y[z] /. i -> j ) /; (*Added SumOver stuff. F.Orellana. 20/8-2002*)
+               FreeQ[y[z], _HighEnergyPhysics`FeynArts`SumOver] &&
+               !FreeQ[y[z]//Hold, i] &&
+               FreeQ[y[z], SUNDeltaContract[__]^n_Integer?Negative] /;
+               noint[i,j];
 
 End[]; MyEndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
@@ -11768,14 +11776,16 @@ SUNF[a___, x_, b___, opt___Rule] := SUNF[a, sunindex[x], b] /;
 *)
 
 (* antisymmetry *)
-HoldPattern[SUNF[a___, x_, b___, x_, c___]] := 0 /;
-         (Head[x] === sunindex) && FreeQ[x, Pattern];
-HoldPattern[SUNF[a___, x_, y_, b___]] := -SUNF[a, y, x, b] /;
-FreeQ[{a,x,y,b}, Pattern] &&
+(* Four arguments are now allowed. SMQCD.mod uses that. F.Orellana, 20/8-2002 *)
+HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule|___List]] := 0 /;
+         (Head[x] === sunindex) && FreeQ[x, Pattern] &&
+          Length[{a,x,b,x,c}] == 3;
+HoldPattern[SUNF[a___, x_, y_, b___, ___Rule|___List]] := -SUNF[a, y, x, b] /;
+FreeQ[{a,x,y,b}, Pattern] && Length[{a,x,b,x,c}] == 3 &&
 (!OrderedQ[{x, y}]) && (Head[x] === sunindex) && Head[y] === sunindex;
 
 SUNF[i_,j_,k_,Explicit -> False] := SUNF[i,j,k];
-HoldPattern[SUNF[i_,j_,k_,op___]]:= 2 I (suntrace[ fci[sunt[i,k,j]] ] -
+HoldPattern[SUNF[i_,j_,k_,op___Rule|op___List]]:= 2 I (suntrace[ fci[sunt[i,k,j]] ] -
                                       suntrace[ fci[sunt[i,j,k] ] ]
                                      )/;
      (Explicit/.Flatten[Join[{op},Options[SUNF]]]) === True;

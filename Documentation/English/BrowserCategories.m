@@ -1,24 +1,24 @@
 BrowserCategory["High Energy Physics", None,
 
-{    Item["Introduction", "FeynCalcBook.nb", CopyTag -> "intro"],
+{    Item["Introduction", "FeynCalcBook.nb", 
+          IndexTag -> "Short Overview", CopyTag -> "intro"],
 
-     Item["Starting FeynCalc", "FeynCalcBook.nb", CopyTag -> "start"],
+     Item["Starting FeynCalc", "FeynCalcBook.nb",
+          IndexTag -> "Load FeynCalc", CopyTag ->"start"],
 
       BrowserCategory["Example Calculations",
         None, {Item["About Example Calculations", "FeynCalcBook.nb",
-                 CopyTag -> "ex"],
-               Item["Pair Production", "FeynCalcBook.nb",
-                 CopyTag -> "Tree level"],
-               Item["Moment Integral", "FeynCalcBook.nb",
-                 CopyTag -> "A moment integral"]}],
+               IndexTag -> "Example Calculations", CopyTag->"ex"],
+               Item["Pair Production", "FeynCalcBook.nb", IndexTag->"Tree level"],
+               Item["Moment Integral", "FeynCalcBook.nb", IndexTag->"A moment integral"]}],
 
     BrowserCategory["Extras",
       None, {
       Item["About Extras", "FeynCalcBook.nb",
-        CopyTag -> "About Extras"],
-      Item["TARCER", "FeynCalcBook.nb",CopyTag -> "tarcer"],
-      Item["Phi", "FeynCalcBook.nb",CopyTag -> "phi"],
-      Item["FeynArts", "FeynCalcBook.nb",CopyTag -> "fa"]}],
+           IndexTag->"About Extras"],
+      Item["TARCER", "FeynCalcBook.nb", IndexTag->"tarcer"],
+      Item["Phi", "FeynCalcBook.nb", IndexTag->"phi"],
+      Item["FeynArts", "FeynCalcBook.nb", IndexTag->"fa"]}],
 
 
 BrowserCategory["Reference Guide", None, {BrowserCategory["Core",

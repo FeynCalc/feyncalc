@@ -116,7 +116,26 @@ SetOptions[MM, Sequence@@tmpoptsmm];
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
+mv[opts___][i_] := ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
+                Options[MandelstamReduce]) <> ToString[i]];
+mss[opts___][i_] := fcpa[fcmom[mv[opts][i]], fcmom[mv[opts][i]]];
+masses1[opts___][i_] := (Masses /. Flatten[{opts}] /.
+              Options[MandelstamReduce])[[i]];
 
+manrul[opts___] := {MandelstamS + MandelstamU + MandelstamT -> Sum[mss[opts][i], {i,1,4}],
+         -MandelstamS - MandelstamU - MandelstamT -> -Sum[mss[opts][i], {i,1,4}],
+          MandelstamU + MandelstamT -> -MandelstamS + Sum[mss[opts][i], {i,1,4}],
+         -MandelstamU - MandelstamT -> MandelstamS - Sum[mss[opts][i], {i,1,4}],
+          MandelstamS + MandelstamT -> -MandelstamU + Sum[mss[opts][i], {i,1,4}],
+         -MandelstamS - MandelstamT -> MandelstamU - Sum[mss[opts][i], {i,1,4}],
+          MandelstamS + MandelstamU -> -MandelstamT + Sum[mss[opts][i], {i,1,4}],
+         -MandelstamS - MandelstamU -> MandelstamT - Sum[mss[opts][i], {i,1,4}],
+          a_*MandelstamS + b_*MandelstamT + b_*MandelstamU ->
+            (a - b)*MandelstamS + b*Sum[mss[opts][i], {i,1,4}],
+          b_*MandelstamS + a_*MandelstamT + b_*MandelstamU ->
+            (a - b)*MandelstamT + b*Sum[mss[opts][i], {i,1,4}],
+         b_*MandelstamS + b_*MandelstamT + a_*MandelstamU ->
+            (a - b)*MandelstamU + b*Sum[mss[opts][i], {i,1,4}]};
 
 (* The convention used is:  s=(p1+p2)^2, t=(p2+p3)^2, u=(p1+p3)^2 with all \
 particles incoming (All) as in FeynCalc, that is s=(p1+p2)^2, t=(p2-p3)^2, \
@@ -124,77 +143,64 @@ u=(p1-p3)^2 (FirstHalf) where particles 1 and 2 are incoming and p3 and p4 \
 are outgoing: *)
 
 sturules[opts___] /; ((MomentaSumLeft /. Flatten[{opts}] /.
-              Options[MandelstamReduce]) === All) := (mv[i_] :=
-        ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
-                Options[MandelstamReduce]) <> ToString[i]]; {fcpa[
-            fcmom[mv[1], ___], fcmom[mv[2], ___]] ->
+              Options[MandelstamReduce]) === All) := {fcpa[
+            fcmom[mv[opts][1], ___], fcmom[mv[opts][2], ___]] ->
           MandelstamS/
-              2 - (fcpa[fcmom[mv[1]], fcmom[mv[1]]] +
-                  fcpa[fcmom[mv[2]], fcmom[mv[2]]])/2,
-        fcpa[fcmom[mv[2], ___], fcmom[mv[3], ___]] ->
+              2 - (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
+                  fcpa[fcmom[mv[opts][2]], fcmom[mv[opts][2]]])/2,
+        fcpa[fcmom[mv[opts][2], ___], fcmom[mv[opts][3], ___]] ->
           MandelstamT/
-              2 - (fcpa[fcmom[mv[2]], fcmom[mv[2]]] +
-                  fcpa[fcmom[mv[3]], fcmom[mv[3]]])/2,
-        fcpa[fcmom[mv[1], ___], fcmom[mv[3], ___]] ->
+              2 - (fcpa[fcmom[mv[opts][2]], fcmom[mv[opts][2]]] +
+                  fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2,
+        fcpa[fcmom[mv[opts][1], ___], fcmom[mv[opts][3], ___]] ->
           MandelstamU/
-              2 - (fcpa[fcmom[mv[1]], fcmom[mv[1]]] +
-                  fcpa[fcmom[mv[3]], fcmom[mv[3]]])/2});
+              2 - (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
+                  fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2};
+
 sturules[opts___] /; (MomentaSumLeft /. Flatten[{opts}] /.
             Options[MandelstamReduce]) ===
-        HighEnergyPhysics`Phi`Objects`FirstHalf := (mv[i_] :=
-        ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
-                Options[MandelstamReduce]) <> ToString[i]]; {fcpa[
-            fcmom[mv[1], ___], fcmom[mv[2], ___]] ->
+        HighEnergyPhysics`Phi`Objects`FirstHalf := {fcpa[
+            fcmom[mv[opts][1], ___], fcmom[mv[opts][2], ___]] ->
           MandelstamS/
-              2 - (fcpa[fcmom[mv[1]], fcmom[mv[1]]] +
-                  fcpa[fcmom[mv[2]], fcmom[mv[2]]])/2,
-        fcpa[fcmom[mv[2], ___],
-            fcmom[mv[3], ___]] -> -MandelstamT/
-              2 + (fcpa[fcmom[mv[2]], fcmom[mv[2]]] +
-                  fcpa[fcmom[mv[3]], fcmom[mv[3]]])/2,
-        fcpa[fcmom[mv[1], ___],
-            fcmom[mv[3], ___]] -> -MandelstamU/
-              2 + (fcpa[fcmom[mv[1]], fcmom[mv[1]]] +
-                  fcpa[fcmom[mv[3]], fcmom[mv[3]]])/2});
+              2 - (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
+                  fcpa[fcmom[mv[opts][2]], fcmom[mv[opts][2]]])/2,
+        fcpa[fcmom[mv[opts][2], ___],
+            fcmom[mv[opts][3], ___]] -> -MandelstamT/
+              2 + (fcpa[fcmom[mv[opts][2]], fcmom[mv[opts][2]]] +
+                  fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2,
+        fcpa[fcmom[mv[opts][1], ___],
+            fcmom[mv[opts][3], ___]] -> -MandelstamU/
+              2 + (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
+                  fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2};
+
 sturules[opts___] /; (MomentaSumLeft /. Flatten[{opts}] /.
             Options[MandelstamReduce]) ===
-        HighEnergyPhysics`Phi`Objects`Odd := (mv[i_] :=
-        ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
-                Options[MandelstamReduce]) <> ToString[i]]; {fcpa[
-            fcmom[mv[1], ___],
-            fcmom[mv[2], ___]] -> -MandelstamS/
-              2 + (fcpa[fcmom[mv[1]], fcmom[mv[1]]] +
-                  fcpa[fcmom[mv[2]], fcmom[mv[2]]])/2,
-        fcpa[fcmom[mv[2], ___],
-            fcmom[mv[3], ___]] -> -MandelstamT/
-              2 + (fcpa[fcmom[mv[2]], fcmom[mv[2]]] +
-                  fcpa[fcmom[mv[3]], fcmom[mv[3]]])/2,
-        fcpa[fcmom[mv[1], ___], fcmom[mv[3], ___]] ->
+        HighEnergyPhysics`Phi`Objects`Odd := {fcpa[
+            fcmom[mv[opts][1], ___],
+            fcmom[mv[opts][2], ___]] -> -MandelstamS/
+              2 + (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
+                  fcpa[fcmom[mv[opts][2]], fcmom[mv[opts][2]]])/2,
+        fcpa[fcmom[mv[opts][2], ___],
+            fcmom[mv[opts][3], ___]] -> -MandelstamT/
+              2 + (fcpa[fcmom[mv[opts][2]], fcmom[mv[opts][2]]] +
+                  fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2,
+        fcpa[fcmom[mv[opts][1], ___], fcmom[mv[opts][3], ___]] ->
           MandelstamU/
-              2 - (fcpa[fcmom[mv[1]], fcmom[mv[1]]] +
-                  fcpa[fcmom[mv[3]], fcmom[mv[3]]])/2});
-strules[opts___] := (mv[i_] :=
-        ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
-                Options[MandelstamReduce]) <> ToString[i]];
-      mss[i_] :=
-        fcpa[fcmom[mv[i]],
-          fcmom[mv[i]]]; (MandelstamCancel /. Flatten[{opts}] /.
+              2 - (fcpa[fcmom[mv[opts][1]], fcmom[mv[opts][1]]] +
+                  fcpa[fcmom[mv[opts][3]], fcmom[mv[opts][3]]])/2};
+
+strules[opts___] := (MandelstamCancel /. Flatten[{opts}] /.
             Options[MandelstamReduce]) ->
-        mss[1] + mss[2] + mss[3] + mss[4] -
+        mss[opts][1] + mss[opts][2] + mss[opts][3] + mss[opts][4] -
           Complement[{MandelstamS, MandelstamT,
                 MandelstamU}, {(MandelstamCancel /. Flatten[{opts}] /.
                     Options[MandelstamReduce])}][[1]] -
           Complement[{MandelstamS, MandelstamT,
                 MandelstamU}, {(MandelstamCancel /. Flatten[{opts}] /.
-                    Options[MandelstamReduce])}][[2]] );
-MandelstamReduce[amp_,
-      opts___] := (mv[i_] :=
-        ToExpression[(MomentumVariablesString /. Flatten[{opts}] /.
-                Options[MandelstamReduce]) <> ToString[i]];
-      masses1[i_] := (Masses /. Flatten[{opts}] /.
-              Options[MandelstamReduce])[[i]];
-      Collect[fcexpscp[
-                  amp /. MomentaSumRule[
+                    Options[MandelstamReduce])}][[2]];
+
+MandelstamReduce[amp_, opts___] := Collect[fcexpscp[
+                  amp //. manrul[opts] /. MomentaSumRule[
                       Join[Select[
                           Flatten[{opts}], (!
                                 FreeQ[#, (MomentumVariablesString -> _ |
@@ -207,14 +213,14 @@ MandelstamReduce[amp_,
                 sturules[opts] /.
               If[(OnMassShell /. Flatten[{opts}] /.
                     Options[MandelstamReduce]),
-                Table[fcpa[fcmom[mv[irep], ___], fcmom[mv[irep], ___]] ->
-                    masses1[irep]^2, {irep, 4}], {}] /.
+                Table[fcpa[fcmom[mv[opts][irep], ___], fcmom[mv[opts][irep], ___]] ->
+                    masses1[opts][irep]^2, {irep, 4}], {}] /.
             If[! (MandelstamCancel /. Flatten[{opts}] /.
                       Options[MandelstamReduce]) === None,
               strules[opts], {}] /.
           If[(OnMassShell /. Flatten[{opts}] /. Options[MandelstamReduce]),
-            Table[fcpa[fcmom[mv[irep], ___], fcmom[mv[irep], ___]] ->
-                masses1[irep]^2, {irep, 4}], {}], _fcsundel]);
+            Table[fcpa[fcmom[mv[opts][irep], ___], fcmom[mv[opts][irep], ___]] ->
+                masses1[opts][irep]^2, {irep, 4}], {}], _fcsundel];
 
 
 
@@ -346,10 +352,16 @@ FourPoint[q_,
                 fcpa[fcli[l3, d], fcmom[qq3, d]]*
                 fcpa[fcli[l4, d], fcmom[qq4, d]]]]], opts];
 
+FourPoint[q_, aa : HoldPattern[Times[___, (_[
+  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]), a_]], opts___] /;
+   !FreeQ[{a},q] && Head[a]===Times && !FreeQ[Head/@List@@a, Plus] :=
+    FourPoint[q, Times[aa]//ExpandAll, opts];
 
 
-(* Formula taken from the FeynCalc1.0 manual (don't know why Rolf didn't \
-implement it himself...): *)
+
+(* Formula taken from the FeynCalc1.0 manual (don't know why Rolf didn't
+   implement it himself...): *)
 
 FourPoint[q_,
       fcfad[fcprd[fcmom[q_, d___], m0_], fcprd[fcmom[q_ + q1_, d___], m1_],
@@ -406,19 +418,27 @@ FourPoint[q_,
 
 (* Tensor integrals of rank lower than four are simply handed to OneLoop: *)
 
-FourPoint[q_,
-        aa : HoldPattern[
-            Times[___, (ffaadd_[
-                  HighEnergyPhysics`FeynCalc`PropagatorDenominator`\
-PropagatorDenominator[
-                      HighEnergyPhysics`FeynCalc`Momentum`Momentum[_,
-                        d___], _] ..]), ___, \
-(HighEnergyPhysics`FeynCalc`Pair`Pair[
-                    HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_,
-                      d___], HighEnergyPhysics`FeynCalc`Momentum`Momentum[q_,
-                      d___]] ..), ___]], opts___] /; Length[a] < 4 :=
+FourPoint[q_, aa : HoldPattern[Times[___, (_[
+  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]), a___,
+  b:((HighEnergyPhysics`FeynCalc`Pair`Pair[
+     _[_, d___], HighEnergyPhysics`FeynCalc`Momentum`Momentum[q_,
+                      d___]]|HighEnergyPhysics`FeynCalc`Pair`Pair[
+     HighEnergyPhysics`FeynCalc`Momentum`Momentum[q_,
+                      d___], _[_, d___]]) ..), ___]], opts___] :=
+    fconeloop[q, Times[aa], opts] /;
+   Length[{b}] < 4 && FreeQ[{a},q];
+
+FourPoint[q_, aa : HoldPattern[Times[___, (_[
+  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]), a___]], opts___] /;
+   FreeQ[{a},q] :=
     fconeloop[q, Times[aa], opts];
 
+FourPoint[q_, aa : HoldPattern[_[
+  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]], opts___] :=
+    fconeloop[q, Times[aa], opts];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -1422,7 +1442,7 @@ UGammaTrick[exp_] := exp /. gammaRule;
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
-(* Reduction using the equations of motion *)
+(* Reduction using equations of motion *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
@@ -1633,6 +1653,33 @@ UPerturb[exp_, opts___Rule] :=
             summ -> Sum); exp /. subs /. ruls /. UCoeff -> UCoefficient /.
             pm -> If[(fcsunn /. {opts} /. Options[UPerturb]) === 2,
             Pion, PhiMeson]];
+
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Miscellaneous *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(* The Gell-mann Okubo mass formula *)
+
+$GellmannOkubo = {ParticleMass[EtaMeson, r___]^
+        n_ -> ((-ParticleMass[PionZero, r]^2 + 4ParticleMass[KaonZero, r]^2)/
+            3)^(n/2)};
+
+GellmannOkubo[exp_] := Block[{l, s, pm}, exp /.
+  (l : (HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar | Log))[s__] :>
+  (l[s] /. ParticleMass -> pm) /. $GellmannOkubo /. 
+  pm -> ParticleMass];
+
+$GellmannOkuboInv = {ParticleMass[PseudoScalar[2], r___]^2 - 
+          4 ParticleMass[PseudoScalar[6], r___]^2 :> -3*
+          ParticleMass[PseudoScalar[11], 
+              r]^2, -ParticleMass[PseudoScalar[2], r___]^2 + 
+          4 ParticleMass[PseudoScalar[6], r___]^2 :> 
+        3*ParticleMass[PseudoScalar[11], r]^2, 
+      4/3 - ParticleMass[Pion]^2/(3 ParticleMass[Kaon]^2) :> 
+        ParticleMass[EtaMeson]^2/(ParticleMass[Kaon]^2)};
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 

@@ -88,7 +88,7 @@ function FAPatch defined in "Extras/FAPatch.m". The reasons for doing it
 this way instead of distributing an alternative version of FeynArts or a true
 patch are: 1) To make it clear that FeynArts is a completely separate project
 from FeynCalc and have people credit the right authors. 2) We cannot
-assume that all users now how to apply a patch. 3) A patch would only
+assume that all users know how to apply a patch. 3) A patch would only
 work with one specific version of FeynArts.
 
 The backdraw is that we cannot be absolutely sure that FAPatch actually

@@ -263,11 +263,18 @@ FeynmanParameterize::usage =
 computes the integral of this result over j (divided by (2 Pi)^d), if the \
 fourth argument is given.  It uses the algorithm of feynpar by Todd West";
 
-FeynmanX::usage = "FeynmanX[1], FeynmanX[2], etc. are Feynman parameters.";
+FeynmanX::usage = "FeynmanX[1], FeynmanX[2], etc. are Feynman parameters";
 
-FeynmanY::usage = "FeynmanY[1], FeynmanY[2], etc. are Feynman parameters.";
+FeynmanY::usage = "FeynmanY[1], FeynmanY[2], etc. are Feynman parameters";
 
-FeynmanZ::usage = "FeynmanZ[1], FeynmanZ[2], etc. are Feynman parameters.";
+FeynmanZ::usage = "FeynmanZ[1], FeynmanZ[2], etc. are Feynman parameters";
+
+ILimit::usage = "ILimit[exp, a -> b] checks functions specified by the option \
+FunctionLimits and takes the limit a->b of these functions only if it is finite.  \
+For the rest of the expression exp, the limit is taken";
+
+FunctionLimits::usage = "FunctionLimits is an option of ILimit, specifying which \
+functions should be checked for finiteness";
 
 (*
 Errors
@@ -327,4 +334,5 @@ LeutwylerJ0 /: MakeBoxes[LeutwylerJ0[___], TraditionalForm] :=
 
 LeutwylerLambda /: Format[LeutwylerLambda[___], TraditionalForm] :=
     StyleForm["\[Lambda]", FontSlant -> "Italic"];
+
 End[];

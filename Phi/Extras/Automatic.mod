@@ -189,8 +189,8 @@ descr[(a:$VectorHeads)[i_]]:=
           {True,False},SelfConjugation[a[i]]],SelfConjugation[a[i]],True], 
                 FAIndices -> isovars[a[i]],
                 Mass -> HighEnergyPhysics`Phi`Couplings`FAParticleMass[a[i]], 
-                PropagatorLabel ->
-                ComposedChar[Sequence@@Join[{FALabel[Particle[a[0]][[1]],0]},
+                PropagatorLabel -> (*We use that Particle[aN][0]=Particle[a[N]]. For i=!=0 FALabel definitions must be modified*)
+                ComposedChar[Sequence@@Join[{FALabel[Particle[a[i]][[1]],i]},
                 isovars[a[i]]]], 
                 PropagatorType -> Sine, 
                 PropagatorArrow -> None,
@@ -205,7 +205,7 @@ descr[(a:$FermionHeads)[i_]]:=
                 FAIndices -> isovars[a[i]], 
                 Mass -> HighEnergyPhysics`Phi`Couplings`FAParticleMass[a[i]], 
                 PropagatorLabel -> 
-                ComposedChar[Sequence@@Join[{FALabel[Particle[a[0]][[1]],0]},
+                ComposedChar[Sequence@@Join[{FALabel[Particle[a[i]][[1]],i]},
                 isovars[a[i]]]],
                 (*PropagatorType -> Dashing[{0.003,0.006}],*)
 								PropagatorType -> ScalarDash,
@@ -221,7 +221,7 @@ descr[(a:$ScalarHeads)[i_]]:=
           FAIndices -> isovars[a[i]], 
                 Mass -> FAParticleMass[a[i]], 
                 PropagatorLabel -> 
-                ComposedChar[Sequence@@Join[{FALabel[Particle[a[0]][[1]],0]},
+                ComposedChar[Sequence@@Join[{FALabel[Particle[a[i]][[1]],i]},
                 isovars[a[i]]]],
                 PropagatorType -> Straight,
                 PropagatorArrow -> None,
@@ -341,9 +341,12 @@ FixCouplingIndices;
 
 (* ************************************************************************* *)
 
-M$LastModelRules =
+extraLastRuls={HoldPattern[IndexDelta[i_Integer,i_Integer]] -> 1,
+                         IndexDelta[i_Integer,j_Integer] -> 0};
 
- {IndexDelta[i_Integer,i_Integer] -> 1,
-IndexDelta[i_Integer,j_Integer] -> 0};
+M$LastModelRules = If[ListQ[M$LastModelRules ],
+ Union[M$LastModelRules, extraLastRuls,$LastModelRules ],
+ Union[extraLastRuls,$LastModelRules ]
+ ];
 
 (**)

@@ -68,6 +68,7 @@ fcfpana := fcfpana = HighEnergyPhysics`FeynCalc`FeynmanParameterNames`FeynmanPar
 fcint := fcint = HighEnergyPhysics`FeynCalc`FCIntegrate`FCIntegrate;
 fcsunn := fcsunn = HighEnergyPhysics`FeynCalc`SUNN`SUNN;
 fccoupl := fccoupl = HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant;
+fcsmv := fcsmv = HighEnergyPhysics`FeynCalc`SmallVariable`SmallVariable;
 
 
 
@@ -118,8 +119,11 @@ Options[FeynmanParameterize] = {fcdim -> SpaceTimeDimensions,
       (*Compatibility with FeynmanParametrize:*)
       (*{Global`x,Global`y,Global`z, Global`\[Alpha]1,
       Global`\[Alpha]2, Global`\[Alpha]3}*)};
-
-
+Options[ILimit] = {FunctionLimits -> {Log -> Log, 
+          LeutwylerJBar -> (LeutwylerJBar[
+                  Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)], 
+                  ExplicitLeutwylerJBar -> True, 
+                  ExplicitLeutwylerSigma -> True] &)}};
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -1652,15 +1656,11 @@ VeltmanExpand[amp_,
               Complement[Flatten[{oopp}], Options[LeutwylerLambda]]));
 
 
-
-
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
 (* Renormalization *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
-
 
 
 (* Wavefuntion and decay constant renormalization of the lowest order amplitudes
@@ -1673,8 +1673,32 @@ Renormalize[m_, opts___] :=
             b] + (RenormalizationCoefficientFunction[
                     fccoupl[a[l], n]] /. Flatten[{opts}] /.
                 Options[Renormalize])*(InfinityFactor /. Flatten[{opts}] /.
-                Options[Renormalize]))
+                Options[Renormalize]));
 
+
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+(********************************************************************************)
+(* Miscellaneous *)
+(********************************************************************************)
+(*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(* Infrared limits *)
+
+ILimit[exp_, lim_Rule, opts___Rule] := 
+    Block[{limruls, m, mm, ff, out}, m = lim[[1]];
+      limruls = 
+        MapAt[( ( ( If[FreeQ[ff[##], lim[[1]]] || !FreeQ[out = Limit[
+                                    Limit[ff[##] /.
+                                       fcsmv[_?((! MatchQ[#, lim[[1]]])&)] -> 0, 
+                                      fcsmv[lim[[1]]] -> lim[[2]]], 
+                                    lim], 
+                                DirectedInfinity[___] | Indeterminate], 
+                            fff[##] /. mm -> dum, 
+                            out]& ) )& ) /. {ff -> #[[2]], fff -> #[[1]], 
+                  mm -> m}, #, 2] & /@ (FunctionLimits /. {opts} /. 
+              Options[ILimit]); 
+      Limit[Limit[exp /. limruls, fcsmv[lim[[1]]] -> lim[[2]]], 
+          lim] /. dum -> m];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 

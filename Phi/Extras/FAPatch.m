@@ -24,11 +24,68 @@ FAPatch::"usage" =
 evaluating FAPatch causes the files making up FeynArts to be modified in \
 order for FeynArts to be compatible with FeynCalc";
 
+FilePatch::"usage" = 
+    "FilePatch[f, rp] replaces the patterns given by rp in the file f.  \
+rp should be a list of the form {string -> string, ..}";
+
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 Begin["`Private`"];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
+
+(* Defaults *)
+
+(*The list of files to be modified*)
+Options[FAPatch] = {
+File -> {"FeynArts.m", "Setup.m", 
+      "FeynArts" <> $PathnameSeparator <> "Analytic.m", 
+      "FeynArts" <> $PathnameSeparator <> "Graphics.m", 
+      "FeynArts" <> $PathnameSeparator <> "Initialize.m", 
+      "FeynArts" <> $PathnameSeparator <> "Insert.m", 
+      "FeynArts" <> $PathnameSeparator <> "Topology.m", 
+      "FeynArts" <> $PathnameSeparator <> "Utilities.m",
+
+      "Models" <> $PathnameSeparator <> "SMQCD.mod",
+      "Models" <> $PathnameSeparator <> "SMc.mod",
+      "Models" <> $PathnameSeparator <> "SMbgf.mod",
+      "Models" <> $PathnameSeparator <> "SM.mod",
+      "Models" <> $PathnameSeparator <> "QED.mod",
+      "Models" <> $PathnameSeparator <> "MSSMQCD.mod",
+      "Models" <> $PathnameSeparator <> "MSSM.mod",
+      "Models" <> $PathnameSeparator <> "QED.gen",
+      "Models" <> $PathnameSeparator <> "Lorentzbgf.gen",
+      "Models" <> $PathnameSeparator <> "Lorentz.gen"},
+
+(*The list of replacements*)
+Replace -> {
+      "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose",
+      "InferFormat" -> "tmpInfer", "SetLoop" -> "tmpsetloop", 
+      "Loop" -> "HighEnergyPhysics`FeynCalc`Loop`Loop", 
+      "Indices" -> "FAIndices", 
+      "Global`PolarizationVector" -> "Global`FAPolarizationVector", 
+      "FeynAmp" -> "FAFeynAmp",
+      "PropagatorDenominator" -> 
+        "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator", 
+      "FeynAmpDenominator" -> 
+        "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator", 
+      "GaugeXi" -> "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi", 
+      "NonCommutative" -> "FANonCommutative", 
+      "GS" -> "GStrong", 
+      "Global`DiracSpinor" -> 
+        "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
+      "FeynArts`DiracSpinor" -> 
+        "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
+      "Global`DiracTrace" -> 
+        "HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace", 
+      "tmpInfer" -> "InferFormat", "tmpsetloop" -> "SetLoop", 
+      "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr", 
+      "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"", 
+      "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD", 
+      "KinematicFAIndices" -> "KinematicIndices", 
+      "CreateFAFeynAmp" -> "CreateFeynAmp", 
+      "FADiracFASpinor" -> "FADiracSpinor", "FAFA" -> "FA", 
+      "FAHighEnergyPhysics" -> "HighEnergyPhysics"}};
 
 (*Error message*)
 $ok = True;
@@ -41,7 +98,7 @@ have cannot be handled by this program"]; Return[]];
 (* ------------------------------------------------------------------------------ *)
 (*Generic patching function*)
 
-patch[filename_, replacements_List] := 
+FilePatch[filename_, replacements_List] := 
 (
 (*Read and patch the file*)
 fname = $FeynCalcDirectory <> $PathnameSeparator <> filename;
@@ -66,7 +123,7 @@ Do[WriteString[strm, linelist[[i]], "\n"], {i, 1, Length[linelist]}];
 );
 
 
-FAPatch := (
+FAPatch[opts___Rule] := (
 
 (*Check that files are there*)
 
@@ -130,7 +187,7 @@ Close[strm];
 (* ------------------------------------------------------------------------------ *)
 (* Add fermion heads + small fixes in Analytic.m*)
 
-patch["FeynArts" <> $PathnameSeparator <> "Analytic.m",
+FilePatch["FeynArts" <> $PathnameSeparator <> "Analytic.m",
 {"F|U" -> "F | U", "F| U" -> "F | U", "F |U" -> "F | U", 
 "F | U" -> "F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads", 
 "F]" -> "F|HighEnergyPhysics`Phi`Objects`$FermionHeads]", 
@@ -145,7 +202,7 @@ patch["FeynArts" <> $PathnameSeparator <> "Analytic.m",
 (* ------------------------------------------------------------------------------ *)
 (* Allow one-vertices in Insert.m*)
 
-patch["FeynArts" <> $PathnameSeparator <> "Insert.m",
+FilePatch["FeynArts" <> $PathnameSeparator <> "Insert.m",
 {"DeleteCases[Take[#, 2], Vertex[1, ___][_]]&/@ top," -> 
 "(DeleteCases[Take[#,2],Vertex[1][_]]&/@(top/.p:Propagator[Internal][___,Vertex[1,___][_],___]:>(p/.Vertex[1]->Vertex[vertexone])))/.vertexone -> 1,",
 "MapIndexed[ Append[#1, Field@@ #2]&, top" -> 
@@ -155,7 +212,7 @@ patch["FeynArts" <> $PathnameSeparator <> "Insert.m",
 (* ------------------------------------------------------------------------------ *)
 (* Allow one-vertices in Utilities.m*)
 
-patch["FeynArts" <> $PathnameSeparator <> "Utilities.m",
+FilePatch["FeynArts" <> $PathnameSeparator <> "Utilities.m",
 {"Union[ Cases[top, Vertex[n__][_] /; {n} =!= {1}, {2}] ]" ->
 "Union[Join[Cases[Cases[top,Propagator[Internal][__]],Vertex[n__][_],Infinity],Cases[top,Vertex[n__][_]/;{n}=!={1},{2}]]]"}];
 
@@ -163,7 +220,7 @@ patch["FeynArts" <> $PathnameSeparator <> "Utilities.m",
 (* ------------------------------------------------------------------------------ *)
 (* Small fixes in Graphics.m*)
 
-patch["FeynArts" <> $PathnameSeparator <> "Graphics.m",
+FilePatch["FeynArts" <> $PathnameSeparator <> "Graphics.m",
 {"ShortHand[ type_ ] := StringTake[ ToString[type], 3 ]" ->
 "ShortHand[ type_ ] := StringTake[ ToString[type], Min[3,StringLength[ToString[type]]]]", 
 "MmaChar[ _[c_] ] := FontForm[c, {\"Symbol\", fscale fsize}];" -> 
@@ -184,7 +241,7 @@ End[]"}];
 (* ------------------------------------------------------------------------------ *)
 (* Make it known that the FA code has been patched and change context*)
 
-patch["FeynArts.m", {"Print[*\"last revis*\"]" -> 
+FilePatch["FeynArts.m", {"Print[*\"last revis*\"]" -> 
 "$1;\nPrint[\"patched for use with FeynCalc by Frederik Orellana\"];\n\n
 (*To avoid error messages on reload*)\n
 If[NumberQ[HighEnergyPhysics`FeynArts`$FeynArts],\n
@@ -201,45 +258,11 @@ Remove[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]];\n\n$1",
 (* ------------------------------------------------------------------------------ *)
 (* The files loop *)
 
-(*The list of files to be modified*)
-filelist = {"FeynArts.m", "Setup.m", 
-      "FeynArts" <> $PathnameSeparator <> "Analytic.m", 
-      "FeynArts" <> $PathnameSeparator <> "Graphics.m", 
-      "FeynArts" <> $PathnameSeparator <> "Initialize.m", 
-      "FeynArts" <> $PathnameSeparator <> "Insert.m", 
-      "FeynArts" <> $PathnameSeparator <> "Topology.m", 
-      "FeynArts" <> $PathnameSeparator <> "Utilities.m"};
+filelist = File /. {opts} /. Options[FAPatch];
 
-(*The list of replacements*)
-replacelist = {
-      "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose",
-      "InferFormat" -> "tmpInfer", "SetLoop" -> "tmpsetloop", 
-      "Loop" -> "HighEnergyPhysics`FeynCalc`Loop`Loop", 
-      "Indices" -> "FAIndices", 
-      "Global`PolarizationVector" -> "Global`FAPolarizationVector", 
-      "FeynAmp" -> "FAFeynAmp",
-      "PropagatorDenominator" -> 
-        "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator", 
-      "FeynAmpDenominator" -> 
-        "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator", 
-      "GaugeXi" -> "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi", 
-      "NonCommutative" -> "FANonCommutative", 
-      "Global`DiracSpinor" -> 
-        "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
-      "FeynArts`DiracSpinor" -> 
-        "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
-      "Global`DiracTrace" -> 
-        "HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace", 
-      "tmpInfer" -> "InferFormat", "tmpsetloop" -> "SetLoop", 
-      "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr", 
-      "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"", 
-      "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD", 
-      "KinematicFAIndices" -> "KinematicIndices", 
-      "CreateFAFeynAmp" -> "CreateFeynAmp", 
-      "FADiracFASpinor" -> "FADiracSpinor", "FAFA" -> "FA", 
-      "FAHighEnergyPhysics" -> "HighEnergyPhysics"};
-	
-Do[patch[filelist[[i]], replacelist], {i, 1, Length[filelist]}];
+replacelist = Replace /. {opts} /. Options[FAPatch];
+
+Do[FilePatch[filelist[[i]], replacelist], {i, 1, Length[filelist]}];
 
 
 (* ------------------------------------------------------------------------------ *)

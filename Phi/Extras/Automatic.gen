@@ -209,10 +209,10 @@ csign[rr_]:=CouplingSign/.$VerticesSpecifications1[[rr]];
    used for constructing the coupling definitions *)
 
 M$GenericCouplings  =
-  Table[
+  Union[Table[
   AnalyticalCoupling@@(genericfieldsmomenta[repp])==
   (G[csign[repp]]@@genericfields[repp]).genericcouplingvector[repp],
-  {repp,Length[$VerticesSpecifications1]}];
+  {repp,Length[$VerticesSpecifications1]}]];
 
 (* ****************************************************************** *)
 

@@ -44,10 +44,10 @@ Pair[LorentzIndex[mu],a]+Pair[LorentzIndex[mu],b]+...";
 FourPoint::"usage" = 
     "FourPoint[q,exp] expresses a rank four tensor integral (exp is the \
 integrand, q is the four-momentum to be integrated with respect to) in terms \
-of lower rank PaVe's according to the formula on page 22 in the FeynCalc1.0 \
+of lower rank PaVe's according to the formula on page 22 in the FeynCalc 1.0 \
 manual.  Any lower rank subexpressions resulting from the expansion of exp or \
-already in exp are passed to OneLoop, and FourPoint will accept the options \
-of OneLoop and pass them on";
+already in exp are passed to OneLoop, and FourPoint accepts the options \
+of OneLoop and passes them on";
 
 GammaSort::"usage" = 
     "GammaSort[exp] returns the expression with DOT products of gamma \
@@ -190,6 +190,17 @@ UCoefficient::"usage" =
 q in the perturbation field around the solution to the equations of motion used by UPerturb.  \
 If new quantities are introduced (functions of SMM), the corresponding UCoefficient's need to \
 be defined in order to get the expansion using UPerturb";
+
+$GellmannOkubo::"usage" = 
+    "$GellmannOkubo is a substitution rule for the eta-meson mass using the Gell-mann-Okubo \
+mass formula";
+
+GellmannOkubo::"usage" = 
+    "GellmannOkubo[exp] applies $GellmannOkubo to exp";
+
+$GellmannOkuboInv::"usage" = 
+    "$GellmannOkubo is a substitution rule putting back the eta-meson mass using the \
+Gell-mann-Okubo mass formula";
 
 
 Begin["`Private`"];

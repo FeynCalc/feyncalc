@@ -3611,6 +3611,7 @@ MomentaSumRule[(opts___Rule | opts___List)] :=
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
+
 (* The u_mu field *)
 
 $Substitutions = Append[$Substitutions,
@@ -4082,7 +4083,6 @@ ArgumentsSupply[expr_, x_, ar___RenormalizationState,
 (* Commutation rules *)
 (********************************************************************************)
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
-
 
 
 (* CommutatorReduce: *)

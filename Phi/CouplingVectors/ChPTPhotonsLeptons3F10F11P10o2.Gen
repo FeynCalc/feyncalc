@@ -1,1 +1,2 @@
-{FANonCommutative[FermiConstant*DiracGamma[p3], DiracGamma[7]]}
+{FANonCommutative[DiracGamma[\[Mu]p3]*FAFourVector[p3, \[Mu]p3], 
+  DiracGamma[7]]}

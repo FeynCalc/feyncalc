@@ -32,6 +32,7 @@
              HighEnergyPhysics`Phi`Couplings`,
              HighEnergyPhysics`Phi`Renormalization`,
              HighEnergyPhysics`Phi`Channels`,
+             HighEnergyPhysics`Phi`Utilities`,
              HighEnergyPhysics`Phi`Palettes`. *)
 
 (* Package Version 1.2 *)
@@ -64,14 +65,14 @@ If[HighEnergyPhysics`Phi`$Phi,
   ClearAll["HighEnergyPhysics`Phi`*"];
   Unprotect[$Packages];
   $Packages=Complement[$Packages,
-  {"HighEnergyPhysics`Phi`Renormalization`",
-  "HighEnergyPhysics`Phi`Palettes`", "HighEnergyPhysics`Phi`Objects`",
+  {"HighEnergyPhysics`Phi`Objects`",
+  "HighEnergyPhysics`Phi`Palettes`", "HighEnergyPhysics`Phi`Renormalization`",
   "HighEnergyPhysics`Phi`Channels`", "HighEnergyPhysics`Phi`Utilities`",
   "HighEnergyPhysics`Phi`Couplings`", "HighEnergyPhysics`Phi`"}];
   Protect[$Packages];
   $ContextPath=Complement[$ContextPath,
-  {"HighEnergyPhysics`Phi`Renormalization`",
-  "HighEnergyPhysics`Phi`Palettes`", "HighEnergyPhysics`Phi`Objects`",
+  {"HighEnergyPhysics`Phi`Objects`",
+  "HighEnergyPhysics`Phi`Palettes`", "HighEnergyPhysics`Phi`Renormalization`",
   "HighEnergyPhysics`Phi`Channels`", "HighEnergyPhysics`Phi`Utilities`",
   "HighEnergyPhysics`Phi`Couplings`", "HighEnergyPhysics`Phi`"}];
 ];
@@ -262,7 +263,7 @@ If[FileNames["FeynArts.m", $FeynCalcDirectory] =!= {},
   Close[strm]];
 
 If[$patch, <<"HighEnergyPhysics`Phi`Extras`FAPatch`";
-  HighEnergyPhysics`Phi`FAPatch`FAPatch]
+  HighEnergyPhysics`Phi`FAPatch`FAPatch[]]
 ];
 
 (* ************************************************************** *)
