@@ -407,6 +407,7 @@ BrowserCategory["High Energy Physics",
     BrowserCategory["QCD", None, {
         (* Functions *)
         Item["BackgroundGluonVertex", "FeynCalcRef.nb"],
+        Item["CalcColorFactor", "FeynCalcRef.nb"],
         Item["CalculateCounterTerm", "FeynCalcRef.nb"],
         Item["GhostPropagator", "FeynCalcRef.nb"],
         Item["GluonGhostVertex", "FeynCalcRef.nb"],
