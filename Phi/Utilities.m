@@ -304,8 +304,8 @@ LorentzIndicesSupply[aa_, (optss___Rule | optss___List)] :=
 
 
 
-(* A four point tensor integral of rank four can not be handled by FeynCalc.  We \
-reduce it to lower rank PaVe's. *)
+(* A four point tensor integral of rank four can not be handled by FeynCalc.  We
+   reduce it to lower rank PaVe's. *)
 
 
 

@@ -38,7 +38,7 @@ traces are calculated (but divided by a factor 4,
 i.e. :  DiracSimplify[DiracMatrix[a,b], InsideDiracTrace->True]
  yields  ScalarProduct[a,b]) \n
 Traces involving more than
-four DiracGamma's and DiracGamma[5] are not performed."
+four DiracGammas and DiracGamma[5] are not performed.";
 
 DiracSimplify::"usage"=
 "DiracSimplify[expr] simplifies products of Dirac matrices \
