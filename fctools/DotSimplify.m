@@ -38,7 +38,8 @@ and the number of terms of the expression.";
 Begin["`Private`"];
 
 MakeContext[ Commutator, CommutatorExplicit, DiracTrace,
-DotPower, AntiCommutator, Expanding, FreeQ2, NonCommFreeQ, MemSet, SUNT,
+DotPower, AntiCommutator, Expanding, FeynCalcInternal, 
+FreeQ2, NonCommFreeQ, MemSet, SUNT,
 SUNTrace, DiracGamma, QuantumField, Momentum];
 
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
@@ -72,7 +73,10 @@ also GS[a].GS[b*)
 (*simrel = simrel /. Power[aa_, bb_Integer?Positive] :>
    (DOT @@ Table[aa, {ijij, bb}]);*)
 
-xx = xxx /. (*Added to have example from guide work again*)
+(* this seems to be necessary ..., RM*)
+xx = FeynCalcInternal[xxx];
+
+xx = xx /. (*Added to have example from guide work again*)
             Momentum[p_] :> Momentum[FactorTerms[p]] /. 
             simrel;
 
@@ -331,9 +335,8 @@ If[!FreeQ[x, SUNT],
 *)
 (* implies that SUNT's in a DiracTrace are also to be summed over, need to document this ... *)
               DiracTrace[f_. DOT[b__SUNT,c__] ] :>
-               f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; FreeQ[f,DiracGamma] && FreeQ[{f,c}, SUNT],
-              DOT[a__, DiracTrace[b__]] :>
-               DOT[a] DiracTrace[b] /; FreeQ[{a},DiracGamma]
+               f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
+              DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b] 
              }
   ];
 
