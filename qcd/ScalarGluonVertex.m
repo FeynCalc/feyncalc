@@ -72,7 +72,7 @@ Block[{alpha, dim, mu, nu, a, b, gl3v},
   dim   = Dimension /. {opt} /. Options[ScalarGluonVertex];
 {mu,nu} = Map[LorentzIndex[#, dim]&, {mui,nui}];
  {a,b}  = Map[SUNIndex[#]&, {ai,bi}];
- gl4v   = I coup^2 * (SUNT[a] . SUNT[b] + SUNT[b] . SUNT[a]) *
+ gl4v   = I coup^2 * (DOT[SUNT[a] , SUNT[b] + SUNT[b] , SUNT[a]]) *
           Pair[mu, nu];
  gl4v];
  

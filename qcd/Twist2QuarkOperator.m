@@ -45,7 +45,6 @@ Begin["`Private`"];
    
 
 MakeContext[
-DOT,
 ChangeDimension,
 CouplingConstant,
 DeclareNonCommutative,
@@ -97,7 +96,7 @@ Twist2QuarkOperator[{p_, q_}, opt___Rule] := Block[{dim,pol},
     (Pair[Momentum[OPEDelta], Momentum[p]] - 
        Pair[Momentum[OPEDelta], Momentum[q]])^(-1 + OPEm))/2^OPEm
     ,
-    (2*GA[5] . GS[OPEDelta]*(SO[p] - SO[q])^(-1 + OPEm))/2^OPEm
+    (2*DOT[GA[5] , GS[OPEDelta]]*(SO[p] - SO[q])^(-1 + OPEm))/2^OPEm
    ],        dim]                                 ] /; !zerom[opt];
  
 
@@ -153,7 +152,7 @@ Block[{dim, coup},
             (SO[p1] - SO[p2] + SO[p3])^OPEi, 
             {OPEi, 0, -2 + OPEm}]*SUNT[a])/2^OPEm
       ,
-     (4*coup*SUNT[a] . GA[5] . GS[OPEDelta]*FV[OPEDelta, mu]*
+     (4*coup*DOT[SUNT[a] , GA[5] , GS[OPEDelta]]*FV[OPEDelta, mu]*
      OPESum[(SO[p1] - SO[p2] - SO[p3])^(-2 - OPEi + OPEm)*
        (SO[p1] - SO[p2] + SO[p3])^OPEi, {OPEi, 0, -2 + OPEm}])/2^OPEm
     ]      , dim]

@@ -38,7 +38,6 @@ Begin["`Private`"];
    
 
 MakeContext[
-DOT,
 CouplingConstant,
 Dimension,
 DiracGamma,

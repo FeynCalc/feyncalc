@@ -30,7 +30,7 @@ MakeContext[Cases2, ChangeDimension, Collect2, CA,CF,Tf,Nf,
             Divideout, Eps, EpsContract, Expanding,
             Epsilon, EpsilonOrder, Factoring, Factor2, FORM,FreeQ2, OPEm,
             FeynAmpDenominator,
-            FeynCalcInternal, Isolate, IsolateHead,Power2,
+            FeynCalcInternal, Isolate, (*IsolateHead,*)Power2,
             PowerSimplify, RHI, Select1, Select2, 
             Series2, Zeta2
            ];

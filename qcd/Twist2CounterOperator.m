@@ -29,7 +29,7 @@ Begin["`Private`"];
 MakeContext[
 CA, CF, ChangeDimension, CouplingConstant, DeclareNonCommutative,
 GS,FVD, SOD, MTD, FV, MT, SO, SP, SD, Power2, LC,
-Dimension, DiracGamma, DOT, Eps, Epsilon, Gstrong, LorentzIndex,
+Dimension, DiracGamma, Eps, Epsilon, Gstrong, LorentzIndex,
 Momentum, OPEDelta, OPEi, OPEl, OPEm, OPESum, OPESumExplicit, 
 Pair, Polarization, Sn, SumS, SUNDelta,SUNIndex,SUNF, SUNT, Tf];
 
@@ -66,7 +66,7 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  (4*CF*coup^2* (1-(-1)^OPEm)/2 *
     (2/OPEm - (1 + OPEm)^(-1))*
      Sn*
-     DiracGamma[del, dim] . DiracGamma[5]*
+     DOT[DiracGamma[del, dim] , DiracGamma[5]]*
      Pair[del, p]^(-1 + OPEm))/ Epsilon
   ,
 (* no Chisholm *)
@@ -76,11 +76,11 @@ li2 = LorentzIndex[Unique[$MU], dim];
 li3 = LorentzIndex[Unique[$MU], dim];
     re =  FUDGESIGN (1-(-1)^OPEm)/2 *
       (2*I*CF*coup^2*Sn*Pair[del, p]^(-2 + OPEm)*
-     (DiracGamma[li3] . DiracGamma[del] . DiracGamma[li2]*
+     (DOT[DiracGamma[li3] , DiracGamma[del] , DiracGamma[li2]]*
         Eps[li2, li3, del, p] - 
-       OPEm*DiracGamma[li3] . DiracGamma[del] . DiracGamma[li2]*
+       OPEm*DOT[DiracGamma[li3] , DiracGamma[del] , DiracGamma[li2]]*
         Eps[li2, li3, del, p] - 
-       DiracGamma[li3] . DiracGamma[li1] . DiracGamma[li2]*
+       DOT[DiracGamma[li3] , DiracGamma[li1] , DiracGamma[li2]]*
         Eps[del, li1, li2, li3]*Pair[del, p]))/(Epsilon*OPEm*(1 + OPEm))
 
    ];
@@ -122,7 +122,7 @@ FUDGESIGN*(
              {OPEi,0,OPEm-2}
             ] * (
   (-2/OPEm + (1 + OPEm)^(-1))*
-   SUNT[SUNIndex[a]] DiracGamma[Momentum[OPEDelta]] . DiracGamma[5]*
+   SUNT[SUNIndex[a]] DOT[DiracGamma[Momentum[OPEDelta]] , DiracGamma[5]]*
    Pair[LorentzIndex[mu], Momentum[OPEDelta]]
                 )
           ), dim]
@@ -188,19 +188,19 @@ Block[
    i = OPEi;
    m = OPEm;
 pa1 = OPESum[b^(m-2-i) c^i,{i,0,m-2}] *
-      (d DiracGamma[Momentum[OPEDelta]].DiracGamma[LorentzIndex[$MU[1]]]. 
-      DiracGamma[LorentzIndex[$MU[2]]]) (OPEm^(-1) - (1 + OPEm)^(-1));
+      (d DOT[DiracGamma[Momentum[OPEDelta]], DiracGamma[LorentzIndex[$MU[1]]],  
+      DiracGamma[LorentzIndex[$MU[2]]]]) (OPEm^(-1) - (1 + OPEm)^(-1));
 pa2 = A OPESum[b^(m-2-i) c^i,{i,0,m-2}] *
       ( e* (OPEm^(-1) - (1 + OPEm)^(-1))*
-     DiracGamma[LorentzIndex[$MU[1]]] . DiracGamma[LorentzIndex[$MU[2]]] . 
-      DiracGamma[LorentzIndex[$MU[3]]]);
+     DOT[DiracGamma[LorentzIndex[$MU[1]]] , DiracGamma[LorentzIndex[$MU[2]]] , 
+      DiracGamma[LorentzIndex[$MU[3]]]]);
 pa3 = ( (OPEm^(-1) - (1 + OPEm)^(-1))*
-     DiracGamma[Momentum[OPEDelta]] . DiracGamma[LorentzIndex[$MU[1]]] . 
-      DiracGamma[LorentzIndex[$MU[2]]])*
+     DOT[DiracGamma[Momentum[OPEDelta]] , DiracGamma[LorentzIndex[$MU[1]]] , 
+      DiracGamma[LorentzIndex[$MU[2]]]])*
       (-A OPESum[( (m-2-i) f + (i+1) g) b^(m-3-i) c^i,{i,0,m-3}]);
--I*((1 - (-1)^OPEm)/2) . (CA - 2*CF)*coup^3*Sn .(1/Epsilon). 
-SUNT[SUNIndex[a]].
-(pa1 + pa2 + pa3)];
+-I*DOT[((1 - (-1)^OPEm)/2) , (CA - 2*CF)*coup^3*Sn ,(1/Epsilon), 
+SUNT[SUNIndex[a]],
+(pa1 + pa2 + pa3)]];
 
 (* C3 *)
 (* Count3 *)
@@ -237,7 +237,7 @@ dp3 = Pair[Momentum[p3], Momentum[OPEDelta]];
 dp2 = dp1 - dp3;
 (
 ((1 - (-1)^OPEm)*CA*cou^3*(2 + OPEm)*Sn*
-     DiracGamma[Momentum[OPEDelta]] . DiracGamma[5]*
+     DOT[DiracGamma[Momentum[OPEDelta]] , DiracGamma[5]]*
      Pair[LorentzIndex[mu], Momentum[OPEDelta]]*SUNT[SUNIndex[a]])/
    (Epsilon*OPEm*(1 + OPEm))*
 OPESum[(dp2)^i (-dp3)^(m-i-2),{i,0,m-2}]
@@ -302,7 +302,7 @@ pc4[p1_, p3_, mu_, a_,cou_] :=Block[{dp1,dp3},
 dp1 = Pair[Momentum[p1], Momentum[OPEDelta]];
 dp3 = Pair[Momentum[p3], Momentum[OPEDelta]];
   ((1 - (-1)^OPEm)*CA*cou^3*Sn*
-     DiracGamma[Momentum[OPEDelta]] . DiracGamma[5]*
+     DOT[DiracGamma[Momentum[OPEDelta]] , DiracGamma[5]]*
      Pair[LorentzIndex[mu], Momentum[OPEDelta]]*SUNT[SUNIndex[a]])/Epsilon*
     (2/OPEm - 1/(OPEm+1)) *
    (OPESum[dp1^OPEi dp3^(OPEm-2-OPEi), {OPEi,0,OPEm-2}] -
@@ -1421,7 +1421,7 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 (* Count45  p2 outgoing *)
 (*for some reson there always is a global sign wrong  ....*)
 uc45[p1_, p2_, p3_, mu_, a_, coup_] := -Block[{j=OPEl},
-(CA*Gstrong^3*Sn*SUNT[a] . GS[OPEDelta]*FV[OPEDelta, mu]*
+(CA*Gstrong^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
      (2*SO[p1]^OPEm*SO[p2] - 2*SO[p1]*SO[p2]^OPEm -
        2*OPEm*OPESum[(SO[p1]^(-j + OPEm)*SO[p2]^(j - OPEm))/j,
          {j, 1, -1 + OPEm}]*SO[p1]*SO[p2]^OPEm +
@@ -1445,7 +1445,7 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 (* C46 *)
 (* Count46  p2 outgoing *)
 uc46[p1_, p2_, p3_, mu_, a_, coup_] := -Block[{j=OPEl},
--((CA*Gstrong^3*Sn*SUNT[a] . GS[OPEDelta]*FV[OPEDelta, mu]*
+-((CA*Gstrong^3*Sn*DOT[SUNT[a] , GS[OPEDelta]]*FV[OPEDelta, mu]*
        (OPEm*OPESum[(SO[p1]^(j - OPEm)*SO[p2]^(-j + OPEm))/j,
            {j, 1, -1 + OPEm}]*SO[p1]^(1 + OPEm) - 2*SO[p1]^OPEm*SO[p2] -
          2*OPEm*OPESum[(SO[p1]^(j - OPEm)*SO[p2]^(-j + OPEm))/j,

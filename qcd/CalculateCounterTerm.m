@@ -34,7 +34,6 @@ DiracMatrix,
 DiracOrder,
 DiracSimplify,
 DiracTrick,
-DOT,
 DotSimplify,
 Eps,
 Epsilon, 
@@ -199,8 +198,8 @@ pr["cancel scalar products"];
  If[chish === True, 
     pr["CHISHOLM"];
     t6 = Collect2[t6,DiracGamma,Eps, Factoring->False];
-     doc[y__] := doc[y] = Chisholm[Dot[y]];
-    t6 = Contract[t6 /. Dot -> doc];
+     doc[y__] := doc[y] = Chisholm[DOT[y]];
+    t6 = Contract[t6 /. DOT -> doc];
     t6 = Contract[t6,EpsContract->False, Rename -> True];
     t6 = ScalarProductCancel[t6,k];
    ];

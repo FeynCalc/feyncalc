@@ -26,7 +26,7 @@ Begin["`Private`"];
    
 
 MakeContext[
-CA,CF, DOT, CouplingConstant, DeclareNonCommutative,
+CA,CF, CouplingConstant, DeclareNonCommutative,
 Dimension, DiracGamma, Eps, Epsilon, Gstrong, LorentzIndex,
 Momentum, OPEDelta, OPEm, Pair, Polarization, Sn, SUNIndex,
 SUNT       ];
@@ -63,11 +63,11 @@ li1 = LorentzIndex[Unique[$MU], dim];
 li2 = LorentzIndex[Unique[$MU], dim];
 li3 = LorentzIndex[Unique[$MU], dim];
     re =  -(2*I*CF*coup^2*Sn*Pair[del, p]^(-2 + OPEm)*
-     (DiracGamma[li3] . DiracGamma[del] . DiracGamma[li2]*
+     (DOT[DiracGamma[li3] , DiracGamma[del] , DiracGamma[li2]]*
         Eps[li2, li3, del, p] - 
-       OPEm*DiracGamma[li3] . DiracGamma[del] . DiracGamma[li2]*
+       OPEm*DOT[DiracGamma[li3] , DiracGamma[del] , DiracGamma[li2]]*
         Eps[li2, li3, del, p] - 
-       DiracGamma[li3] . DiracGamma[li1] . DiracGamma[li2]*
+       DOT[DiracGamma[li3] , DiracGamma[li1] , DiracGamma[li2]]*
         Eps[del, li1, li2, li3]*Pair[del, p]))/(Epsilon*OPEm*(1 + OPEm))
 
    ];
