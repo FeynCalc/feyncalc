@@ -32,7 +32,7 @@ SetAttributes[CalcColorFactor, Listable];
 
 MakeContext[
 DiracGamma,
-DiracTriek,
+DiracTrick,
 Explicit,
 FeynCalcInternal,
 FreeQ2,
