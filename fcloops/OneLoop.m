@@ -84,6 +84,13 @@ substitute \"SmallVariable[Melectron]\"
 StandardMatrixElement::"usage"=
 "StandardMatrixElement[ ... ] is the head for matrix element abbreviations.";
 
+SetStandardMatrixElements::"usage"=
+"SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ...]. Set abbreviations
+abb1, abb2, ... for matrix elements sm1, sm2, ... \\
+SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ..., cons]. Set abbreviations
+abb1, abb2, ... for matrix elements sm1, sm2, ... using energy-momentum conservation cons,
+e.g. k2 -> p1 + p2 - k1";
+
 (* ******************************************************************* *)
 (*                             oneloop.m                               *)
 (* ******************************************************************* *)
@@ -2205,9 +2212,9 @@ If[LeafCount[ttt]>500, print2["expanding in tempstandmat done"]];
 (* ********************************************************************* *)
    (*tensintdef*)
 tensint[x_,dim_,q_,options___] := (*tensint[x,dim,q,options]=*)
-  Block[{tensj,tensi,tensic,tensg=0,mandel,tensx=x,tensdnp,tensdnp1,
-         tenslnt,tensldn,tensqmax,tenslep,tensdnqq,tensdnqqb,
-         tensqc,tensjq,tensfq,ltx
+  Block[{(*tensj,tensi,tensic,*)tensg=0,(*mandel,*)tensx=x(*,tensdnp,tensdnp1,*)
+         (*tenslnt,tensldn,tensqmax,tenslep,tensdnqq,tensdnqqb,*)
+         (*tensqc,tensjq*)(*,tensfq,ltx*)
         },
  tensg = Catch[
 print2["entering tensint "];
@@ -2216,12 +2223,13 @@ print3["entering tensint ",q,"  dimension  ",dim,"   ",x//FeynCalcForm];
  
    mandel =  Mandelstam /.Join[ options,Options[ tensint ] ];
 (* tensor integral decomposition *)
-   ltx = nterms[tensx];
+   (*ltx = nterms[tensx];*)
 
    If[  Head[tensx]===Plus, tenslnt = Length[tensx], tenslnt = 1  ];
  
 (* The tensj - loop runs over all different q-monomials *)
-    For[ tensj=1, tensj <= tenslnt, tensj++,
+     Clear[tensqc];
+     For[ tensj=1, tensj <= tenslnt, tensj++,
          print1["tensorintegral # ",tensj," / ",tenslnt ];
          tensqc[tensj][any_]:=0;
          If[ tenslnt===1,
@@ -2232,9 +2240,11 @@ print3["entering tensint ",q,"  dimension  ",dim,"   ",x//FeynCalcForm];
    tensdnp1 = Collect2[ tensdnp[[1]],q, Factoring -> False];
    pairpow/: pairpow[a___,Momentum[q,di___],b___]^n_Integer?Positive :=
             (pairpow[a,Momentum[q,di],b]^(n-1))**pairpow[a,Momentum[q,di],b];
-oten1=tensdnp1;
+(*oten1=tensdnp1;*)
    tensdnp1= tensdnp1/.Pair->pairpow/.pairpow->Pair;
- 
+
+   print1["Checking rank of ", tensdnp1];
+
    If[ Head[tensdnp1]===Plus, tensldn = Length[tensdnp1], tensldn = 1];
    tensqmax[tensj]=0;
    For[ tensic=1, tensic <= tensldn, tensic++,
@@ -2527,7 +2537,7 @@ Options[SetStandardMatrixElements] = {WriteOut -> False};
  SetStandardMatrixElements[rx_List,en_:{}, op___Rule]:=
  Block[{links={},nmat,mat,ix,i,ii,j,sup,newli= {}, ops, enm,
           savmem,neweq,mati,set,isos,isolspc,nullll,x,x2,sumand,
-          mati1,set2, filename},
+          mati1, set2, filename, temp},
   ops = {op}; enm = en;
   If[{ops}==={} || (!FreeQ[enm, WriteOut]), ops=en; enm = {}];
   filename = WriteOut /. ops /. Options[SetStandardMatrixElements];
@@ -2537,8 +2547,9 @@ Options[SetStandardMatrixElements] = {WriteOut -> False};
         temp = Select[temp, !FreeQ[#,Spinor]&] 
        ];
      If[Length[temp]>0, temp/.Literal->Identity/.RuleDelayed->Set;
- print2["loading old matrixelementdefinitions"]
-       ,
+        print2["loading old matrixelementdefinitions from ", filename];
+        print3["lold matrixelementdefinitions: ", temp]
+      ,
 
   savmem=$MemoryAvailable;
   $MemoryAvailable=0;
