@@ -15,7 +15,7 @@ BeginPackage["HighEnergyPhysics`qcd`OPEIntegrate`",
              "HighEnergyPhysics`FeynCalc`"];
 
 OPEIntegrate::"usage"=
-"OPEIntegrate[expr, q, x]. 
+"OPEIntegrate[expr, q, x] calculates a one-loop OPE-type integral. 
 The dimension is changed to the one indicated by the option 
 Dimension. The setting of the option EpsContract determines 
 the dimension in which the Levi-Civita tensors are contracted.";
@@ -196,7 +196,6 @@ qse[a_] := If[!FreeQ[a, sumk], a,
 
    
 nex = powsub[nex /. sumk -> opgeom];
-Global`NNN = nex;
 nex = Map[qse, nex + null1 + null2];
 
 If[ Head[nex] === Plus, nex = (# dufa)& /@ nex, nex = dufa nex ];
@@ -472,7 +471,6 @@ Contract[fun1[a,de,b] fun2[aa,de,bb]]/Pair[de,p]^2 em^2 *
         )
 ))
                 };
-Global`NEXB=nex;
 
 nex = 
  nex//.irules0 //. irules1 //. irules2 /. irulesmassive /. 
@@ -502,7 +500,6 @@ If[!FreeQ2[nex, {Eps,LorentzIndex}],
    nex = Contract[nex, EpsContract -> True]
   ];
 
-Global`NEX =  nex;
 
 If[!FreeQ[nex, OPESum], 
    If[!FreeQ[nex, ScaleMu], 
@@ -645,7 +642,6 @@ Dialog[nex];
 
 nex = nex/.flowerpower->Power;
 nex = nex //. finsu;
-Global`NEX3 = nex;
 (*
 nex = nfa . nex + noflow;
 *)
