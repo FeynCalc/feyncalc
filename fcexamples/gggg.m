@@ -31,13 +31,13 @@ Comment[Length[tmp2]," amplitudes created.  Time spent so far = ",
         Round[(AbsoluteTime[]-starttime) 10]/10., " seconds \n"];
 
 (* The calculation becomes easier if energy momentum conservation is applied *)
-enmomcon = k2 -> -p1 - p2 - k1;
+enmomcon = k2 -> p1 + p2 - k1;
 
 (* Here we specify the gauge (general covariant gauge) and the dimension *) 
 tmp3 = Explicit[Plus @@ tmp2, Gauge -> (1 - \[Alpha]), Dimension -> n] /. enmomcon;
 
-(* This introduces the usual Mandelstam variables, keeping in mind that p1+p2+k1+k2=0 as specified in the Model file *)
-SetMandelstam[s, t, -s - t, p1, p2, k1, k2, 0, 0, 0, 0, Dimension -> n];
+(* This introduces the usual Mandelstam variables, keeping in mind that p1+p2=k1+k2 as specified in the Model file *)
+SetMandelstam[s, t, -s - t, p1, p2, -k1, -k2, 0, 0, 0, 0, Dimension -> n];
 
 (* This replaces PropagatorDenominators by scalar products and simplifies the SU(N) algebra.
    With the setting Explicit->True all SUNF's are replaced by traces over SUNT's
