@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:58 *)
-(* ------------------------------------------------------------------------ *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -14,7 +12,9 @@ BeginPackage["HighEnergyPhysics`general`Collect3`",
              "HighEnergyPhysics`FeynCalc`"];
 
 Collect3::"usage"= 
-"Collect3[expr, {x, y, ...}] collects terms involving the same powers
+"Collect3[expr, head] collects all monoomials of the form head[..]*head[..]*..
+ in expr. \n
+Collect3[expr, {x, y, ...}] collects terms involving the same powers
 of monomials x^n1*y^n2 ... An option Factor -> True/False can be 
 given, which factors the coefficients. The option Head (default Plus)
 determines the applied function to the list of monomials 
@@ -24,8 +24,10 @@ mulitplied by their coefficients.";
 
 Begin["`Private`"];
    
-
 Options[Collect3] = {Factor -> False, Head -> Plus};
+
+Collect3[expr_, vars_/;Head[vars]=!=List, opts___Rule] :=
+ Collect3[expr, Cases[expr, HoldPattern[vars[___]], -1], opts];
 
 Collect3[expr_, vars_List, opts___Rule] :=
      Apply[Head/.{opts}/.Options[Collect3],
