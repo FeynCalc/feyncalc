@@ -1,6 +1,6 @@
 (* :Title: FeynCalc *)
 
-(* :Version: 4.9.1.0 *)
+(* :Version: 5.0.0beta1 *)
 
 (* :Author: Rolf Mertig  (rolfm@mertig.com) *)
 
@@ -20,7 +20,7 @@
    Version 4.2.0 : 2002, small bug fixes, more reorganization,
                    inclusion of help system, PHI and FeynArts
                    by Frederik Orellana, fjob@cabocomm.dk 
-   Version 4.9.0 : 2003, bug fixes, adjustments for M5.0 more reorganization,
+   Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization,
 *)
 
 
@@ -37,7 +37,7 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.9.0.2beta";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.0.0beta1";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
