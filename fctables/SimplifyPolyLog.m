@@ -5,7 +5,9 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 3 January '99 at 20:20 *)
+(* :History: clarified usage message in answer to 
+http://www.feyncalc.org/forum/0003.html
+*)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: SimplifyPolyLog *)
@@ -16,9 +18,10 @@ BeginPackage["HighEnergyPhysics`fctables`SimplifyPolyLog`",
              "HighEnergyPhysics`FeynCalc`"];
 
 SimplifyPolyLog::"usage" =
-"SimplifyPolyLog[y] performs several simplifications assuming
+"SimplifyPolyLog[y] performs several simplifications assuming 
 that the variables  occuring in the Log and PolyLog functions
-are between 0 and 1.";
+are between 0 and 1. The simplifications will in general not 
+be valid if the arguments are complex or outside the range between 0 and 1.";
 
 (* ------------------------------------------------------------------------ *)
 
