@@ -20,7 +20,7 @@ INSTALLATION
 Download the file HighEnergyPhysics-4.9.beta.zip
 
 Place the file preferrably in that directory which $UserAddOnsDirectory is
-set to (evaluate $UserAddOnsDirectory in Matheamtica).
+set to (evaluate $UserAddOnsDirectory in Mathematica).
 
 Start Mathematica.
 
