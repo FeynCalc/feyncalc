@@ -1152,7 +1152,7 @@ UExp[0, m_, n : (_Integer | _List)] :=
 
 (*9/7-2003. Fixed bug reported by Paul Buettiker: When zeros were in
   $UExpansionCoefficients the thing didn't work*)
-UExp[ii_, m_, n_Integer] := UExp[ii, m,  n] =
+UExp[ii_, m_, n_Integer] := (*UExp[ii, m,  n] =*)
 Block[{ssuu, x, sumstart, pos, zero, uexpCoeffs},
        pos = Position[$UExpansionCoefficients,0,{1}];
        uexpCoeffs = ReplacePart[$UExpansionCoefficients, zero, pos];
