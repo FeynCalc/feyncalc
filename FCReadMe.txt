@@ -33,7 +33,7 @@ the way if there is).
 Unpack the file: Under UNIX, type tar -xvzf HighEnergyPhysics-4.2.0.tar.gz;
 under MacOS and Windows, use some utility like StuffIt Expander or WinZip.
 
-If you've made any costumizations in the configuration file FCConfig.m or any
+If you've made any costumizations in the configuration file "FCConfig.m" or any
 other file(s), merge them from the file(s) you've moved away.
 
 Start Mathematica.
@@ -53,115 +53,213 @@ CHANGELOG version 4.1.1 -> 4.2.0
 ------------------------------------------------------------------------------------
 
 Changed to use DOT everywhere instead of DOT.
+
 FeynArts 3 support: Exclude "ShapeData" from autoloading.
+
 Keep PolarizationVector unevaluated when given "FeynArts arguments". 
+
 Added support for other multiplications than DOT.
+
 Added FieldDerivative and CovariantFieldDerivative.
+
 Added $Multiplications, $DistributiveFunctions and $Containers to allow customization of FieldDerivative.
+
 DOT moved into main context.
+
 Have ExpandScalarProduct expand also Pair[LorentzIndex[mu], Momentum[a] + Momentum [b] +...].
 Small bug fix of FourVector: fci not defined.
+
 IsolateHead dropped. IsolateNames used instead everwhere.
+
 Some more box definitions for PartialD.
+
 Split FeynCalcBook.nb in two.
+
 New directory "fcdevel" with files under development (or just unfinished).
+
 New directory "fcloops" with (1,2) loop related files.
+
 Changed usage into "usage".
+
 Had Contract contract also denominators.
+
 Moved Vectors into context FORM2FeynCalc`.
+
 Moved FORMEpilog, FORMProlog and TraceDimension into context FeynCalc2FORM`
 Fixed Breit-Maison problem of  FeynCalcInternal.
+
 Had FeynRule and FunctionalD know about ExplicitSUNIndex.
+
 Dropped Global` symbols in SquareAmplitude.
+
 Small bug fix in Uncontract.
+
 Let Uncontract accept option Dimension -> Automatic.
+
 Have Uncontract uncontract also denominators.
+
 Changed option of A0 A0ToB0 from True to False.
-Code moved from FeynCalc.m to new files; should improve maintainability.
-Moved SUNSimplify.m  and SUNTrace.m from qcd to fctools,
-qcd/InverseMellin.m -> fctables/InverseMellin.m and
-qcd/ToLarin.m -> fctools/ToLarin.m (corrections of Rolf).
+
+Code moved from "FeynCalc.m" to new files; should improve maintainability.
+
+Moved "SUNSimplify.m"  and "SUNTrace.m" from "qcd" to "fctools",
+"qcd/InverseMellin.m" -> "fctables/InverseMellin.m" and
+"qcd/ToLarin.m" -> "fctools/ToLarin.m" (corrections of Rolf).
+
 Moved a few more files to more logical places.
+
 Changed usage to "usage" everywhere.
+
 Moved IsolagePrint and IsolateSplit into context Isolate.
+
 Changed QCDScaleMu into ScaleMu.
+
 Dropped SUNF2.
+
 Changed option of SUNSimplify SUNTrace from True to False.
-Made SUNSimplify trace also term proportional to the identity matrix when SUNTrace is set to True.
 
-In FeynCalc.m: 
-   Added support for :> to OptionsSelect
+Made SUNSimplify trace also term proportional to the identity matrix when
+SUNTrace is set to True.
+
+"FeynCalc.m": 
+
+   Added support for :> to OptionsSelect.
+
    Placed FDr and CDr in correct contexts.
-   Bugfixed check for integer arguments in SUND and SUNDeltaContract: Added ExplicitSUNIndex.
-   SUND: No longer set all SUND[a,a,b] to 0 if a is not an integer, only when a has head SUNIndex.
 
-In DiracSimplify.m:
+   Bugfixed check for integer arguments in SUND and SUNDeltaContract:
+   Added ExplicitSUNIndex.
+
+   SUND: No longer set all SUND[a,a,b] to 0 if a is not an integer, only when
+   a has head SUNIndex.
+
+"DiracSimplify.m":
+
    Defined print1, print2, print3
 
-In OneLoop.m:
+"OneLoop.m":
+
    Changed a few debug printing statements.
+
    Fixed SumOver to comply with FeynArts 3.
 
 
 PHI:
+
    As far as possible dropped using explicit contexts, use MakeContext instead.
    Small fix of ArgumentsSupply.
-   Moved FieldDerivative and CovariantFieldDerivative (and CDr and FDr) into HighEnergyPhysics/fctools/.
+
+   Moved FieldDerivative and CovariantFieldDerivative (and CDr and FDr) into
+   HighEnergyPhysics/fctools/.
+
    Implemented compatibility with FeynCalc's PartialD-operator notation.
+
    Removed many comments. They don't give useful information and clutter things.
+
    Changed the possible settings of B0Evaluation to strings to facilitate extensibility
    and reduce the number of defined symbols.
+
    Introduced LeutwylerJBarEvaluation instead of ExplicitLeutwylerJBar.
+
    Implemented above-threshold evaluation of VeltmanB0 (and LeutwylerJBar).
-   Dropped FANonCommutative, FAMetricTensorm, FAPolarizationVector, FAFourVector, FADiracMatrix,
-   FAIndices  in favour of NonCommutative in consistence with FAPatch.m.
-   Had FAPatch.m add $FermionHeads to P$NonCommuting in Setup.m,
+
+   Dropped FANonCommutative, FAMetricTensorm, FAPolarizationVector, FAFourVector,
+   FADiracMatrix, FAIndices  in favour of NonCommutative in consistence with "FAPatch.m".
+
+   Had "FAPatch.m" add $FermionHeads to P$NonCommuting in "Setup.m",
    as well as set FeynCalcInternal -> False for FourVector, MetricTensor,
    DiracSlash.
+
    End all usage difinitions with a full stop.
+
    Changed Dot to DOT.
-   In Objects.m:
+
+   "Objects.m":
+
       Dropped RemoveIntegerIndices.
-      Changed to have head ExplicitSUNIndex on integers (instead of nothing) in compliance with FeynCalc.
+
+      Changed to have head ExplicitSUNIndex on integers (instead of nothing) in compliance
+      with FeynCalc.
+
       setLeftRightComponents fixed to have Explicit in right context.
-      Fixed bug in WriteOutUMatrices causing NM[a[x], UMatrix[b]] + UMatrix[UIdentity] not to work
-      (reported by P.Buettiker).
+
+      Fixed bug in WriteOutUMatrices causing NM[a[x], UMatrix[b]] + UMatrix[UIdentity] not
+      to work (reported by P.Buettiker).
+
       Fixed bug in UIndicesSupply, putting DOT in correct context.
-   In Utilities.m: 
+
+      Fixed bug in UExp (reported by Paul Buettiker):
+      When zeros were in $UExpansionCoefficients MM, UFieldMatrix didn't work.
+
+   "Utilities.m":
+
       Added support for WFFactor in DiscardOrders (Don't discard if order is not known).
+
       MandelstamReduce now has renormalized masses as default.
+
       Added first sketch of PhiToLaTeX.
-   In Palettes.m:
+
+   "Palettes.m":
+
       LoadLagrangian now keeps lagrangians given as strings in context Global`
       (instead of HighEnergyPhysics`Phi`Objects`).
-   In Renormalization.m:
+
+   "Renormalization.m":
+
       Fixed small bug causing LeutwylerJBar causing problem with LeutwylerSigma.
+
       Readded C0Evaluation -> "none", D0Evaluation -> "none" to Options[VeltmanExpand].
-   In Couplings.m
+
+   "Couplings.m":
+
       Added PhiModel as option of WFFactor, PMFactor, DCFactor.
+
       Added Drop as option of DoSumOver.
-      Fixed problem with FCToFA causing possible substitution of multiple pairs of identical indices in a product
+
+      Fixed problem with FCToFA causing possible substitution of multiple pairs of
+      identical indices in a product.
+
       Added DiracSlash to FCToFA.
+
       Dropped Projection in FCToFA, since RemoveIntegerIndices has been dropped.
+
       Fixed bug in XName causing existing coupling vectors not to be found.
-      Fixed bug in VerticesSpecifications. Multiple order of a coupling are now correctly merged into
-      e.g. one coupling with orders {2, 4} instead of two couplings. (orderJoin).
+
+      Fixed bug in VerticesSpecifications. Multiple order of a coupling are now
+      correctly merged into e.g. one coupling with orders {2, 4} instead of two
+      couplings. (orderJoin).
+
       Fixed problem with DiscardCT and FeynArts 3.
-      Fixed bug in FixCouplingIndices. SUNDelta, SUND and SUNF are now also supported in coupling vectors.
+
+      Fixed bug in FixCouplingIndices. SUNDelta, SUND and SUNF are now also supported in
+      coupling vectors.
+
       Updated DoSumOver to comply with FeynArts 3.
+
       Improved WFFactor, DCFactor and PMFactor to behave better if a file is not there.
       DCRenormalize now correctly uses the inverse factor.
-   In Channels.m
+
+   "Channels.m":
+
       Dropped RemoveIntegerIndices  and Projection.
+
       Fixed bug with SU2F in SUNReduce.
+
       Added support for ExplicitSUNIndex.
-   In PhiStart.m
+
+   "PhiStart.m":
+
       Dropped RemoveIntegerIndices.
+
       Switched to UNablaHatDelta with "scalar weak source", remember to switch back if
       vectors or axial-vectors are needed.
-   In ChPTW34.m
+
+   "ChPTW34.m":
+
       Bugfix: Missing comma in N29.
-   ChPTW32.m
+
+   ChPTW32.m":
+
       Bugfix: Typo (QuantumField` instead of QuantumField).
 
 
@@ -187,10 +285,10 @@ http://www.feyncalc.org/examples/phi/index.html.
 The ReadProtected Attribute has been removed from all functions.
 
 Moved the file FeynCalcBook.nb into the new directory English and
-added the file BrowserCategories.m to allow lookup via the
+added the file "BrowserCategories.m" to allow lookup via the
 Mathematica help browser.
 
-Changes in FeynCalc.m:
+Changes in "FeynCalc.m":
 
   All FeynCalc definitions are now cleared upon reload,
   hopefully improved the way filenames and paths are determined,
@@ -225,22 +323,22 @@ Added option InitialFunction to FeynRule.
 Fixed bug in ComplexConjugate's treatment of DiracGamma[5],
 reported by T.Rashba and V. Khotilovich.
 
-Fixed bugs related to Mac OS's filesystem in FeynCalc.m, FORM2FeynCalc.m,
-FeynCalc2FORM.m, OneLoop.m, PaVeReduce.m, RHI.m, SquareAmplitude.m, Write2.m.
+Fixed bugs related to Mac OS's filesystem in "FeynCalc.m", "FORM2FeynCalc.m",
+"FeynCalc2FORM.m", "OneLoop.m", "PaVeReduce.m", "RHI.m", "SquareAmplitude.m", "Write2.m".
 
-Fixed bug in FeynCalc2FORM.m reported by V. Khotilovich.
+Fixed bug in "FeynCalc2FORM.m" reported by V. Khotilovich.
 
-Fixed forgotten small bugs in FeynCalcExternal.m.
+Fixed forgotten small bugs in "FeynCalcExternal.m".
 
-Changed FeynCalcExternal.m, OneLoopSimplify.m, TID.m
+Changed "FeynCalcExternal.m", "OneLoopSimplify.m", "TID.m"
  to allow other symbols for Dimension than D.
 
-Completely rewrote FeynmanParametrize1.m. It is still experimental, but in
-progress and intended to be much more general than FeynmanParametrize.m.
+Completely rewrote "FeynmanParametrize1.m". It is still experimental, but in
+progress and intended to be much more general than "FeynmanParametrize.m".
 
-Small changes in OneLoop.m, PaVeReduce.m to write out to more readable file names.
+Small changes in "OneLoop.m", "PaVeReduce.m" to write out to more readable file names.
 
-Fixed forgotten Blank in SimplifyPolyLog.m
+Fixed forgotten Blank in "SimplifyPolyLog.m".
 
 Added the following new general utility functions:
 NumericQ1, Combinations, MLimit, TimedIntegrate, SelectSplit.
