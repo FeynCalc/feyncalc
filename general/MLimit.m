@@ -12,13 +12,17 @@ BeginPackage["HighEnergyPhysics`general`MLimit`",
              "HighEnergyPhysics`FeynCalc`"];
 
 MLimit::"usage"=
-"MLimit[expr, lims] takes multiple limits of expr using the limits lims.";
+"MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
-MLimit = Fold[Limit[#1, Flatten[{##2}][[1]]] &, #1, Flatten[{##2}]] &;
+Options[MLimit] = {Limit -> Limit};
+
+MLimit[x_, l_List, opts___?OptionQ] :=
+   Fold[(Limit/.Flatten[{opts}]/.Options[MLimit])[#1, Flatten[{##2}][[1]]]&,
+        x, l];
 
 End[]; EndPackage[];
 
