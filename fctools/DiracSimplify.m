@@ -58,7 +58,6 @@ DiracEquation, DiracGamma, DiracGammaCombine, DiracGammaExpand,
 DiracMatrix, DiracOrder, DiracSigmaExplicit, DiracSimpCombine, DiracSlash,
 DiracSubstitute67, DiracTrace];
 
-dot := dot  = MakeContext["DOT"];
 dR  := dR   = MakeContext["DiracTrick"];
 
 Eps := Eps  = MakeContext["Eps"];
@@ -83,10 +82,10 @@ Options[DiracSimplify] = {
  fcinte -> False,
  InsideDiracTrace -> False};
 
-fcinter[x_] := If[ (fcinter /. Options[DiracSimplify]) === True,
+fcinter[x_] := If[ (fcinte(*r*)(*Typo? F.Orellana. 22/2-2003*) /. Options[DiracSimplify]) === True,
                    x, fcinte[x] ];
 
-dotLin[x_] := If[FreeQ[x, Dot], x, DotSimplify[x, Expanding -> False]];
+dotLin[x_] := If[FreeQ[x, DOT], x, DotSimplify[x, Expanding -> False]];
 diracEq[x_]:= If[FreeQ[x, Spinor], x, DiracEquation[x]];
 
 Options[diracSimplify] =
@@ -101,7 +100,7 @@ dit[x_,ops___Rule]:=DiracTrace[diracSimplify@@Join[{x},{ops},
                                        ]
                    ];
 (* DiracSimplifydef*)
-DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[dot[x,y], z];
+DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[DOT[x,y], z];
 
 diracSimplify[z_, ru___Rule]:=
     (Contract[z]/.DiracTrace->dit)/;!FreeQ[z,DiracTrace];
@@ -112,7 +111,7 @@ dS[x__] := MemSet[dS[x], dR[x]];
 DiracSimplify[a_, opt___Rule] := (a /.
         (*Added 19/9-2002. F.Orellana. Covariant normalization convention
           NOT Bjorken&Drell convention*)
-        dot[xx___,y_Spinor,y_Spinor,z___] :> 2 y[[2]] rdot[xx,z] /. rdot[]:>Sequence[] /. rdot -> dot(**))/;
+        DOT[xx___,y_Spinor,y_Spinor,z___] :> 2 y[[2]] rdot[xx,z] /. rdot[]:>Sequence[] /. rdot -> DOT(**))/;
          FreeQ2[a, {DiracGamma,DiracSlash,DiracMatrix,
                     GA[__],GS[__],GAD[__],GSD[__]}];
 
@@ -120,17 +119,19 @@ DiracSimplify[a_, opts___Rule] :=
   If[ (Expanding /. {opts} /. Options[DiracSimplify]) === False,
      If[(DiracSigmaExplicit /. {opts} /.
                    Options[DiracSimplify]) === True,
-        DiracSigmaExplicit[diracEq[dotLin[a // fcinter] /. dot -> dS]
+        DiracSigmaExplicit[diracEq[dotLin[a // fcinter] /. DOT -> dS]
                                                   ],
-        diracEq[dotLin[a // fcinter] /. dot -> dS]
+        diracEq[dotLin[a // fcinter] /. DOT -> dS]
        ],
        If[$VeryVerbose>2, Print["doing oldDiracSimplify on ", StandardForm[a]]];
        oldDiracSimplify[
               If[(DiracSigmaExplicit /. {opts} /.
                  Options[DiracSimplify]) === True,
                  DiracSigmaExplicit[
-                 fcinter[a] /. Pair -> sCO /. dot -> dS],
-                 fcinter[a] /. Pair -> sCO /. dot -> dS
+                 fcinter[a] /. Pair -> sCO (*/. DOT -> dS*)
+                               (*27/3-2003. Fix by Rolf in response to bug report by
+                                 Francesco Tramontano. See http://www.feyncalc.org/forum/0126.html *)],
+                 fcinter[a] /. Pair -> sCO (*/. DOT -> dS*)
                 ],
                         opts
                        ] /. sCO -> Pair
@@ -143,7 +144,7 @@ oldDiracSimplify[x_,yy___Rule] := Block[{dre},
 If[$VeryVerbose>2, Print["entering oldDiracSimplify", x]];
 (*NEW0796*)
 dre = Collect[DotSimplify[dR[DiracGammaCombine[x]]]/.
-dot->dooo,dooo[__]]/.dooo->dot;
+DOT->dooo,dooo[__]]/.dooo->DOT;
                      dre =  FixedPoint[ SpinorChainEvaluate, dre, 142];
                      If[ !FreeQ[dre, Eps],
                          dre = Contract[dre, EpsContract -> True];
@@ -161,7 +162,7 @@ print2["contracting in oldDiracSimpify done"];
      ];
    If[Length[DownValues[SpinorsandPairs]
             ] > 1,
-      dre = (dre /. dot -> SpinorsandPairs/. SpinorsandPairs->dot
+      dre = (dre /. DOT -> SpinorsandPairs/. SpinorsandPairs->DOT
             )//dotLin
      ];
    If[!FreeQ[dre, DiracGamma], dre = Expand2[dre, DiracGamma]];
@@ -206,21 +207,21 @@ MemSet[diracSimplify[x,in], Block[
 If[$VeryVerbose > 2,Print["dir1"]];
         If[ diracgasu === True,
             diracdt = contractli[DiracGammaCombine[diracdt/.Pair->sCO]
-                                ] /. dot -> dS,
-            diracdt = contractli[ diracdt ]/.dot->dS
+                                ] (*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
+            diracdt = contractli[ diracdt ] (*/. DOT->dS*)
           ];
 If[$VeryVerbose > 2,Print["dir2a"]];
-        diracdt = Expand2[ scev[diracdt//fEx], {Pair, dot}];
+        diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
         If[diractrlabel===True,
 
-           diracdt = diracdt/.dot->trIC/.trI->dS;
+           diracdt = diracdt/.DOT->trIC/.trI->dS;
               (* optimization *)
            colle[a_]:=If[ (Length[a]<20(*00*))||(Head[a]=!=Plus), a,
-                          Collect2[a, dot, Factoring -> False] ];
-           dirfun[exp_]:=colle[exp/.dot->dS/.dot -> trIC /. trI->dot];
-           diracdt = FixedPoint[dirfun, diracdt]/.dot ->trIC/.trI->dS;
+                          Collect2[a, DOT, Factoring -> False] ];
+           dirfun[exp_]:=colle[exp/.DOT->dS/.DOT -> trIC /. trI->DOT];
+           diracdt = FixedPoint[dirfun, diracdt]/.DOT ->trIC/.trI->dS;
 If[$VeryVerbose>2,Print["dir2done"]];
-           If[ FreeQ[ diracdt, dot ],
+           If[ FreeQ[ diracdt, DOT ],
                diracdt = diracdt/.DiracGamma[_[__],___]->0;
                diracpag=PartitHead[diracdt,DiracGamma];
                    If[ diracpag[[2]] === DiracGamma[5], diracdt = 0 ];
@@ -230,8 +231,13 @@ If[$VeryVerbose>2,Print["dir2done"]];
                      ]
              ]
           ];
+
+(* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
+If[$VeryVerbose > 2,Print["dir2a"]];
+        diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
+
 If[$VeryVerbose>2,Print["dir3"]];
-        If[FreeQ[diracdt,dot],
+        If[FreeQ[diracdt,DOT],
            diracndt=Expand[(diracdt/.sCO->scev)//DiracGammaExpand];
            If[diracga67 === True, diracndt = Expand[diracndt//gamma67back]]
            ,
@@ -248,9 +254,9 @@ If[$VeryVerbose>2,
                diracpdt = diracdt, diracpdt = diracdt[[diracjj]]
               ];
             If[diractrlabel===True,
-               diracpdt = diracpdt/.dot->trIC/.trI->dS//.
-                          dot -> trIC/.trI->dS;
-               diracpdt = diracpdt//.dot -> dS
+               diracpdt = diracpdt/.DOT->trIC/.trI->dS//.
+                          DOT -> trIC/.trI->dS;
+               diracpdt = diracpdt//.DOT -> dS
               ];
 (* maybe insert some TimeConstrained here later *)
 If[$VeryVerbose>2,
@@ -258,23 +264,23 @@ If[$VeryVerbose>2,
        diracpdt = scev[ diracpdt ]//Expand;
 
             If[diractrlabel===True,
-               diracpdt = fEx[(diracpdt//DiracGammaExpand)/.dot->dS]/.
-                                    dot->trIC/.trI->dS//.dot->dS/.
-                                    dot->trIC/.trI->dS,
-               diracpdt = fEx[DiracGammaExpand[diracpdt]/.dot->dS]//.
-                                    dot->dS
+               diracpdt = fEx[(diracpdt//DiracGammaExpand)/.DOT->dS]/.
+                                    DOT->trIC/.trI->dS//.DOT->dS/.
+                                    DOT->trIC/.trI->dS,
+               diracpdt = fEx[DiracGammaExpand[diracpdt]/.DOT->dS]//.
+                                    DOT->dS
               ];
              If[ diracga67===True,
-                 diracpdt = gamma67back[ diracpdt/.dot->dr67 ],
+                 diracpdt = gamma67back[ diracpdt/.DOT->dr67 ],
                  diracpdt = fEx[ diracpdt ]
                ];
-             diracndt = diracndt + Expand2[ diracpdt, dot ];
+             diracndt = diracndt + Expand2[ diracpdt, DOT ];
              If[ info===True || $VeryVerbose > 2,
                  Print["# ",diracjj," / ",diracldt," = ",
                         Length[diracndt] ]
                ]
            ];
-   diracndt = diracndt/.dr->dot/.sCO->scev;
+   diracndt = diracndt/.dr->DOT/.sCO->scev;
    diracndt = Expand[dotLin[diracndt]];
    If[ (diraccanopt===True ),
    print3["diracordering in diracSimplify"];
@@ -303,12 +309,12 @@ print3["exiting diracSimplify"];
    dIex[ a___,x_ + y_, b___] := dS[a,x,b] + dS[a,y,b];   (*dIexdef*)
                                                          (*dixdef*)
 
-   dix[y_] :=  y/.dot->dIex/.dIex->dS;
+   dix[y_] :=  y/.DOT->dIex/.dIex->dS;
 (* #################################################################### *)
 (* ************************************************************** *)
 
 (* This is the tricky function which does the expansion of the dr's *)
-   fEx[z_]:=FixedPoint[ dix, z/.dot -> dS ];                (*fExdef*)
+   fEx[z_]:=FixedPoint[ dix, z/.DOT -> dS ];                (*fExdef*)
 (* ************************************************************** *)
 
 (* cyclic property *) (* Changed by F.Orellana, 14/1-2002.
@@ -369,12 +375,12 @@ print3["exiting diracSimplify"];
 (* #################################################################### *)
 
 spinlin[x_Plus]:=spinlin/@x;
-spinlin[a_] :=( (a/.dot->ddot)//.{
+spinlin[a_] :=( (a/.DOT->ddot)//.{
               ddot[x___,z_ b__,c___] :> z ddot[x,b,c]/;NonCommFreeQ[z]===True,
               ddot[x___,z_ ,c___]    :> z ddot[x,c]/;NonCommFreeQ[z]===True,
               ddot[x_Spinor,b___,c_Spinor,d_Spinor,e___,f_Spinor,g___]:>
               ddot[x,b,c] ddot[d,e,f,g] }
-              )/.ddot[]->1/.ddot->dot;
+              )/.ddot[]->1/.ddot->DOT;
 SetAttributes[ SpinorChainEvaluate, Listable ];
 SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
 
@@ -387,22 +393,22 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
    If[Length[nz]>20, nz= Collect2[ nz, Spinor,Factoring -> False] ];
    If[Head[nz]=!=Plus, nz = SpinorChainEvaluate[nz],
       If[$sirlin =!= True, nz = Map[ spcev0, nz ],
-         If[ FreeQ[nz, Spinor[p1__] .
+         If[ FreeQ[nz, DOT[Spinor[p1__] ,
                             (a__ /; FreeQ[{a}, DiracGamma[_,_]]
-                            ) . Spinor[p2__] *
-                       Spinor[p3__] . (b__ /; FreeQ[{b}, DiracGamma[_,_]]
-                            ) . Spinor[p4__]
+                            ) , Spinor[p2__]] *
+                       DOT[Spinor[p3__] , (b__ /; FreeQ[{b}, DiracGamma[_,_]]
+                            ) , Spinor[p4__]]
                   ], nz = Map[ spcev0,nz ],
        nz = sirlin00[ Expand[Map[ spcev0,z//sirlin0 ]] ]
            ] ] ];                  nz];
  SpinorChainEvaluate[x_]:=
   If[$sirlin =!= True, Expand[spcev0[x], Spinor],
   If[ FreeQ[x//DotSimplify,
-                       Spinor[p1__] .
+                       DOT[Spinor[p1__] ,
                             (a__ /; FreeQ[{a}, DiracGamma[_,_]]
-                            ) . Spinor[p2__] *
-                       Spinor[p3__] . (b__ /; FreeQ[{b}, DiracGamma[_,_]]
-                            ) . Spinor[p4__]
+                            ) , Spinor[p2__]] *
+                       DOT[Spinor[p3__] , (b__ /; FreeQ[{b}, DiracGamma[_,_]]
+                            ) , Spinor[p4__]]
            ],
      Expand[spcev0[x]],
      sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ]] ]
@@ -420,8 +426,8 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
    spcev000[y_Times] := Select[ y, FreeQ[#, Spinor]& ] spcev0ev[
                        Select[ y,!FreeQ[#, Spinor]& ]          ];
    spcev0ev[x_] := scev[Contract[
-                     Expand[spinlin[x](*, Spinor*)]/.dot->spcevs/.
-                                     spcev->dot, Expanding->False
+                     Expand[spinlin[x](*, Spinor*)]/.DOT->spcevs/.
+                                     spcev->DOT, Expanding->False
                                       ]
                              ](*//Expand*);
 
@@ -434,18 +440,18 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
          c___] := b spcev[a,c] /; NonCommFreeQ[b] === True;
    (*added to allow nested structures like phi.(gamm1.gamm2+gamma3.gamma4).phi
      F.Orellana, 26/9-2002*)
-   spcev[a__] := dot[a] /; FreeQ[{a}, Spinor];
+   spcev[a__] := DOT[a] /; FreeQ[{a}, Spinor];
    (**)
    spcev[] = 1;
     spcev[x___,Spinor[a__],y___] :=
      Expand[ DiracOrder[ DiracEquation[fEx[DiracGammaExpand[
-                                               x.Spinor[a].y]](*/.dR->dot*)
+                                               DOT[x,Spinor[a],y]]](*/.dR->DOT*)
                                           ] ] ]/; FreeQ[{x,y},Spinor];
     spcev[x___,Spinor[a__],b___,Spinor[c__],y___] :=
       Block[ {spcevdi,spcevre,spcevj},
 If[$VeryVerbose > 2, Print["entering spcev with ",
-InputForm[Dot@@{x,Spinor[a],b,Spinor[c],y}]]];
-        spcevdi = diracSimplify[dot[Spinor[a],b,Spinor[c]],
+InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]]];
+        spcevdi = diracSimplify[DOT[Spinor[a],b,Spinor[c]],
                                      InsideDiracTrace->False,
                                      DiracCanonical->False,
                                      diracInfo->False,
@@ -461,9 +467,9 @@ InputForm[Dot@@{x,Spinor[a],b,Spinor[c],y}]]];
                            {spcevj,1,Length[spcevdi]}
                          ];
           ];
-        spcevre = DotSimplify[spcevs[x].spcevre.spcevs[y]];
+        spcevre = DotSimplify[DOT[spcevs[x],spcevre,spcevs[y]]];
         If[ !FreeQ[spcevre, SUNT],
-            spcevre = (spcevre/.dot->dS)
+            spcevre = (spcevre/.DOT->dS)
           ];
          spcevre = spcevre//DotSimplify;
 If[$VeryVerbose > 2, Print["exiting spcev with ",InputForm[spcevre]]];
@@ -512,12 +518,12 @@ ident3[a_,_]:=a;
                          $MU->dum$y]/.dum$y->$MU)/.  sirlin3 -> Identity
 	       )//Contract;
  sirlin3[a_Plus]:=sirlin3 /@ a;
- sirlin3[ m_. Spinor[p1__]. (ga1___) .
-	     DiracGamma[ LorentzIndex[la_] ]. (ga2___) .
-	     Spinor[p2__] *
-	     Spinor[p3__]. (ga3___) .
-	     DiracGamma[ LorentzIndex[la_] ]. (ga4___) .
-             Spinor[p4__]
+ sirlin3[ m_. DOT[Spinor[p1__] , (ga1___) ,
+	     DiracGamma[ LorentzIndex[la_] ] , (ga2___) ,
+	     Spinor[p2__]] *
+	     DOT[Spinor[p3__], (ga3___) ,
+	     DiracGamma[ LorentzIndex[la_] ], (ga4___) ,
+             Spinor[p4__]]
         ]:= Block[{counter},
                    counter = 1;
 
@@ -526,25 +532,25 @@ ident3[a_,_]:=a;
                    counter = counter + 1
                   ];
        sirlin3[
-         m Spinor[p1] . ga1 .
-         DiracGamma[ LorentzIndex[$MU[counter]] ] . ga2 .  Spinor[p2] *
-         Spinor[p3] . ga3 .  DiracGamma[ LorentzIndex[$MU[counter]] ] .
-                      ga4 .
-         Spinor[p4]
+         m DOT[Spinor[p1] , ga1 ,
+         DiracGamma[ LorentzIndex[$MU[counter]] ] , ga2 ,  Spinor[p2]] *
+         DOT[Spinor[p3] , ga3 ,  DiracGamma[ LorentzIndex[$MU[counter]] ] ,
+                      ga4 ,
+         Spinor[p4]]
               ]  ] /; FreeQ[la, $MU];
 
- sirlin3[ m_. Spinor[p1__].(ga1___).
-             DiracGamma[ LorentzIndex[la_,di_],di_ ]. (ga2___) .
-             Spinor[p2__] *
-             Spinor[p3__].(ga3___).
-             DiracGamma[ LorentzIndex[la_,di_],di_ ]. (ga4___) .
-             Spinor[p4__]
-        ] := ( m Spinor[p1] . ga1 .
-                 DiracGamma[ LorentzIndex[$MU[1], di],di ] . ga2 .
-                 Spinor[p2] *
-                 Spinor[p3] . ga3 .
-                   DiracGamma[LorentzIndex[$MU[1], di], di] . ga4 .
-                 Spinor[p4]
+ sirlin3[ m_. DOT[Spinor[p1__],(ga1___),
+             DiracGamma[ LorentzIndex[la_,di_],di_ ], (ga2___) ,
+             Spinor[p2__]] *
+             DOT[Spinor[p3__],(ga3___),
+             DiracGamma[ LorentzIndex[la_,di_],di_ ], (ga4___) ,
+             Spinor[p4__]]
+        ] := ( m DOT[Spinor[p1] , ga1 ,
+                 DiracGamma[ LorentzIndex[$MU[1], di],di ] , ga2 ,
+                 Spinor[p2]] *
+                 DOT[Spinor[p3] , ga3 ,
+                   DiracGamma[LorentzIndex[$MU[1], di], di] , ga4 ,
+                 Spinor[p4]]
               ) /; FreeQ2[{ga1,ga2,ga3,ga4}, DiracGamma[_,_]];
 
 
@@ -577,7 +583,7 @@ If[$OperatingSystem === "Unix",
 
  sirlin0doit[a_Plus]:=timeconstrained[
 sirlin3a[Contract[
-		   (Expand[Map[sirlin1, a](*, dot*)]/.
+		   (Expand[Map[sirlin1, a](*, DOT*)]/.
 		    sirlin1->sirlin2) /.
 		   sirlin2 -> sirlin1/.sirlin1->sirlin2/.
                     sirlin2 -> Identity,EpsContract->True]
@@ -595,90 +601,90 @@ sirlin3a[Contract[
  sirlin2[a_Plus]:=sirlin2/@a;
 
 
- sirlin2[m_. Spinor[pa__] . DiracGamma[Momentum[pj_]] .
-                            DiracGamma[Momentum[pi_]] .
-                            DiracGamma[LorentzIndex[mu_]].(vg5___).
-             Spinor[pb__] *
-             Spinor[Momentum[pi_],0,qf___] .
-                    DiracGamma[LorentzIndex[mu_]] . (vg5___).
-             Spinor[Momentum[pj_],0,qf___]
-        ] := (-sirlin2[ m Spinor[pa] . DiracSlash[pi,pj] .
-                                       DiracMatrix[mu] . vg5 .
-                          Spinor[pb] *
-                          Spinor[Momentum[pi],0,qf] .
-                                       DiracMatrix[mu] . vg5 .
-                          Spinor[Momentum[pj],0,qf]
+ sirlin2[m_. DOT[Spinor[pa__] , DiracGamma[Momentum[pj_]] ,
+                            DiracGamma[Momentum[pi_]] ,
+                            DiracGamma[LorentzIndex[mu_]],(vg5___),
+             Spinor[pb__]] *
+             DOT[Spinor[Momentum[pi_],0,qf___] ,
+                    DiracGamma[LorentzIndex[mu_]] , (vg5___),
+             Spinor[Momentum[pj_],0,qf___]]
+        ] := (-sirlin2[ m DOT[Spinor[pa] , DiracSlash[pi,pj] ,
+                                       DiracMatrix[mu] , vg5 ,
+                          Spinor[pb]] *
+                          DOT[Spinor[Momentum[pi],0,qf] ,
+                                       DiracMatrix[mu] , vg5 ,
+                          Spinor[Momentum[pj],0,qf]]
                       ] +
                 2 m scev[Momentum[pi],Momentum[pj]] *
-                Spinor[pa] . DiracMatrix[mu] . vg5 .
-                Spinor[pb] *
-                          Spinor[Momentum[pi],0,qf] .
-                                       DiracMatrix[mu] . vg5 .
-                          Spinor[Momentum[pj],0,qf]
+                DOT[Spinor[pa] , DiracMatrix[mu] , vg5 ,
+                Spinor[pb]] *
+                          DOT[Spinor[Momentum[pi],0,qf] ,
+                                       DiracMatrix[mu] , vg5 ,
+                          Spinor[Momentum[pj],0,qf]]
              )/; ({vg5}==={}) || ({vg5}==={DiracGamma[5]});
 
 
- sirlin2[m_. Spinor[pa__] . DiracGamma[Momentum[pi_]] .
-                            DiracGamma[Momentum[pj_]] .
-                            DiracGamma[LorentzIndex[mu_]].(vg5___).
-             Spinor[pb__] *
-             Spinor[Momentum[pi_],0,qf___] .
-                    DiracGamma[LorentzIndex[mu_]] . (vg5___).
-             Spinor[Momentum[pj_],0,qf___]
+ sirlin2[m_. DOT[Spinor[pa__] , DiracGamma[Momentum[pi_]] ,
+                            DiracGamma[Momentum[pj_]] ,
+                            DiracGamma[LorentzIndex[mu_]],(vg5___),
+             Spinor[pb__]] *
+             DOT[Spinor[Momentum[pi_],0,qf___] ,
+                    DiracGamma[LorentzIndex[mu_]] , (vg5___),
+             Spinor[Momentum[pj_],0,qf___]]
         ] :=(m scev[Momentum[pi], Momentum[pj]] *
-              Spinor[pa] . DiracMatrix[$MU[1]] .
-              Spinor[pb] *
-              Spinor[Momentum[pi],0,qf] . DiracMatrix[$MU[1]] .
-              Spinor[Momentum[pj],0,qf] +
+              DOT[Spinor[pa] , DiracMatrix[$MU[1]] ,
+              Spinor[pb]] *
+              DOT[Spinor[Momentum[pi],0,qf] , DiracMatrix[$MU[1]] ,
+              Spinor[Momentum[pj],0,qf]] +
              m scev[Momentum[pi], Momentum[pj]] *
-              Spinor[pa] . DiracMatrix[$MU[1]]. DiracGamma[5] .
-              Spinor[pb] *
-              Spinor[Momentum[pi],0,qf] . DiracMatrix[$MU[1]] .
-              DiracGamma[5] . Spinor[Momentum[pj],0,qf]
+              DOT[Spinor[pa] , DiracMatrix[$MU[1]], DiracGamma[5] ,
+              Spinor[pb]] *
+              DOT[Spinor[Momentum[pi],0,qf] , DiracMatrix[$MU[1]] ,
+              DiracGamma[5] , Spinor[Momentum[pj],0,qf]]
             ) /; ({vg5}==={}) || ({vg5}==={DiracGamma[5]});
 
 
- sirlin2[m_. Spinor[p1__]. (ga1___) .
-	     DiracGamma[ LorentzIndex[la_] ].
-	     DiracGamma[ LorentzIndex[nu_] ].
-	     DiracGamma[6] .
-	     Spinor[p2__] *
-	     Spinor[p3__]. (ga2___) .
-	     DiracGamma[ LorentzIndex[la_] ].
-	     DiracGamma[ LorentzIndex[nu_] ].
-	     DiracGamma[7] .
-	     Spinor[p4__] ] :=  (
-    m 4 Spinor[p1] . ga1 . DiracGamma[6] . Spinor[p2] *
-        Spinor[p3] . ga2 . DiracGamma[7] . Spinor[p4] );
+ sirlin2[m_. DOT[Spinor[p1__], (ga1___) ,
+	     DiracGamma[ LorentzIndex[la_] ],
+	     DiracGamma[ LorentzIndex[nu_] ],
+	     DiracGamma[6] ,
+	     Spinor[p2__]] *
+	     DOT[Spinor[p3__], (ga2___) ,
+	     DiracGamma[ LorentzIndex[la_] ],
+	     DiracGamma[ LorentzIndex[nu_] ],
+	     DiracGamma[7] ,
+	     Spinor[p4__]] ] :=  (
+    m 4 DOT[Spinor[p1] , ga1 , DiracGamma[6] , Spinor[p2] *
+        Spinor[p3] , ga2 , DiracGamma[7] , Spinor[p4]] );
 
- sirlin2[m_. Spinor[p1__]. (ga1___) .
-	     DiracGamma[ LorentzIndex[la_] ].
-	     DiracGamma[ LorentzIndex[nu_] ].
-	     DiracGamma[7] .
-	     Spinor[p2__] *
-	     Spinor[p3__]. (ga2___) .
-	     DiracGamma[ LorentzIndex[la_] ].
-	     DiracGamma[ LorentzIndex[nu_] ].
-	     DiracGamma[6] .
-	     Spinor[p4__] ] :=  (
-    m 4 Spinor[p1] . ga1 . DiracGamma[7] . Spinor[p2] *
-        Spinor[p3] . ga2 . DiracGamma[6] . Spinor[p4] );
+ sirlin2[m_. DOT[Spinor[p1__], (ga1___) ,
+	     DiracGamma[ LorentzIndex[la_] ],
+	     DiracGamma[ LorentzIndex[nu_] ],
+	     DiracGamma[7] ,
+	     Spinor[p2__]] *
+	     DOT[Spinor[p3__], (ga2___) ,
+	     DiracGamma[ LorentzIndex[la_] ],
+	     DiracGamma[ LorentzIndex[nu_] ],
+	     DiracGamma[6] ,
+	     Spinor[p4__]] ] :=  (
+    m 4 DOT[Spinor[p1] , ga1 , DiracGamma[7] , Spinor[p2] *
+        Spinor[p3] , ga2 , DiracGamma[6] , Spinor[p4]] );
  (* #################################################################### *)
  (*                             Main444                                  *)
  (* #################################################################### *)
 
 
 (* eq. (8) *)
- sirlin2[m_. Spinor[p1__]. (ga1___) .
-              DiracGamma[ LorentzIndex[mu_] ].
-              DiracGamma[ lv_[rho_] ] .
-              DiracGamma[ LorentzIndex[nu_] ]. (ga2___) .
-            Spinor[p2__] *
-            Spinor[p3__]. (ga3___) .
-              DiracGamma[ LorentzIndex[mu_] ].
-              DiracGamma[ lvt_[tau_] ] .
-              DiracGamma[ LorentzIndex[nu_] ]. (ga4___) .
-            Spinor[p4__]
+ sirlin2[m_. DOT[Spinor[p1__], (ga1___) ,
+              DiracGamma[ LorentzIndex[mu_] ],
+              DiracGamma[ lv_[rho_] ] ,
+              DiracGamma[ LorentzIndex[nu_] ], (ga2___) ,
+            Spinor[p2__]] *
+            DOT[Spinor[p3__], (ga3___) ,
+              DiracGamma[ LorentzIndex[mu_] ],
+              DiracGamma[ lvt_[tau_] ] ,
+              DiracGamma[ LorentzIndex[nu_] ], (ga4___) ,
+            Spinor[p4__]]
        ] := Block[{ii=1, ind, la, grho, gtau, gam5},
                     While[!FreeQ[{ga1,ro,ga2,ga3,tau,ga4}, $MU[ii]],
                           ii++];
@@ -687,62 +693,62 @@ sirlin3a[Contract[
              gam5 = DiracGamma[5];
              Contract[
                2 m Pair[lv[rho], lvt[tau]] *
-                   Spinor[p1] . ga1 . la . ga2 .   Spinor[p2] *
-                   Spinor[p3] . ga3 . la . ga4 .   Spinor[p4] +
+                   DOT[Spinor[p1] , ga1 , la , ga2 ,   Spinor[p2]] *
+                   DOT[Spinor[p3] , ga3 , la , ga4 ,   Spinor[p4]] +
                2 m *
-                   Spinor[p1] . ga1 . gtau . ga2 . Spinor[p2] *
-                   Spinor[p3] . ga3 . grho . ga4 .   Spinor[p4] +
+                   DOT[Spinor[p1] , ga1 , gtau , ga2 , Spinor[p2]] *
+                   DOT[Spinor[p3] , ga3 , grho , ga4 ,   Spinor[p4]] +
                2 m Pair[lv[rho], lvt[tau]] *
-                   Spinor[p1] . ga1 . la . ga2 . gam5 . Spinor[p2] *
-                   Spinor[p3] . ga3 . la . ga4 . gam5 . Spinor[p4] -
+                   DOT[Spinor[p1] , ga1 , la , ga2 , gam5 , Spinor[p2]] *
+                   DOT[Spinor[p3] , ga3 , la , ga4 , gam5 , Spinor[p4]] -
                2 m *
-                   Spinor[p1] . ga1 . gtau . ga2 . gam5 . Spinor[p2] *
-                   Spinor[p3] . ga3 . grho . ga4 . gam5 . Spinor[p4]
+                   DOT[Spinor[p1] , ga1 , gtau , ga2 , gam5 , Spinor[p2]] *
+                   DOT[Spinor[p3] , ga3 , grho , ga4 , gam5 , Spinor[p4]]
                      ]
                    ];
 
 (* eq. (12) of Sirlin *)
 
- sirlin2[m_. Spinor[p1__]. DiracGamma[ LorentzIndex[mu_] ].
-                           DiracGamma[ lv_[rho_] ] .
-                           DiracGamma[ LorentzIndex[sigma_] ].
-                           DiracGamma[ lvt_[tau_] ].
-                           DiracGamma[ LorentzIndex[nu_] ]. om_ .
-             Spinor[p2__] *
-             Spinor[p3__]. DiracGamma[ LorentzIndex[mu_] ].
-                           DiracGamma[ lva_[alpha_] ] .
-                           DiracGamma[ LorentzIndex[sigma_] ].
-                           DiracGamma[ lvb_[beta_] ].
-                           DiracGamma[ LorentzIndex[nu_] ]. om_ .
-             Spinor[p4__]
+ sirlin2[m_. DOT[Spinor[p1__], DiracGamma[ LorentzIndex[mu_] ],
+                           DiracGamma[ lv_[rho_] ] ,
+                           DiracGamma[ LorentzIndex[sigma_] ],
+                           DiracGamma[ lvt_[tau_] ],
+                           DiracGamma[ LorentzIndex[nu_] ], om_ ,
+             Spinor[p2__]] *
+             DOT[Spinor[p3__], DiracGamma[ LorentzIndex[mu_] ],
+                           DiracGamma[ lva_[alpha_] ] ,
+                           DiracGamma[ LorentzIndex[sigma_] ],
+                           DiracGamma[ lvb_[beta_] ],
+                           DiracGamma[ LorentzIndex[nu_] ], om_ ,
+             Spinor[p4__]]
        ] := Contract[ m 16 Pair[lvt[tau],lvb[beta]] *
                             Pair[lv[rho], lva[alpha]] *
-                           Spinor[p1] . DiracMatrix[mu] . om .
-                           Spinor[p2] *
-                           Spinor[p3] . DiracMatrix[mu] . om .
-                           Spinor[p4]
+                           DOT[Spinor[p1] , DiracMatrix[mu] , om ,
+                           Spinor[p2]] *
+                           DOT[Spinor[p3] , DiracMatrix[mu] , om ,
+                           Spinor[p4]]
                      ] /; (om===DiracGamma[6]) ||
                           (om===DiracGamma[7]);
 
 (* eq. (13) of Sirlin *)
- sirlin2[m_. Spinor[p1__]. DiracGamma[ LorentzIndex[mu_] ].
-                           DiracGamma[ lv_[rho_] ] .
-                           DiracGamma[ LorentzIndex[sigma_] ].
-                           DiracGamma[ lvt_[tau_] ].
-                           DiracGamma[ LorentzIndex[nu_] ]. om1_ .
-             Spinor[p2__] *
-             Spinor[p3__]. DiracGamma[ LorentzIndex[mu_] ].
-                           DiracGamma[ lva_[alpha_] ] .
-                           DiracGamma[ LorentzIndex[sigma_] ].
-                           DiracGamma[ lvb_[beta_] ].
-                           DiracGamma[ LorentzIndex[nu_] ]. om2_ .
-             Spinor[p4__]
-       ] :=(m 4 Spinor[p1] . DiracMatrix[mu].DiracGamma[lv[rho]].
-                              DiracGamma[lv[beta]]. om1 .
-                 Spinor[p2] *
-                 Spinor[p3] . DiracMatrix[mu].DiracGamma[lva[alpha]].
-                              DiracGamma[lvt[tau]]. om2 .
-                                            Spinor[p4]
+ sirlin2[m_. DOT[Spinor[p1__], DiracGamma[ LorentzIndex[mu_] ],
+                           DiracGamma[ lv_[rho_] ] ,
+                           DiracGamma[ LorentzIndex[sigma_] ],
+                           DiracGamma[ lvt_[tau_] ],
+                           DiracGamma[ LorentzIndex[nu_] ], om1_ ,
+             Spinor[p2__]] *
+             DOT[Spinor[p3__], DiracGamma[ LorentzIndex[mu_] ],
+                           DiracGamma[ lva_[alpha_] ] ,
+                           DiracGamma[ LorentzIndex[sigma_] ],
+                           DiracGamma[ lvb_[beta_] ],
+                           DiracGamma[ LorentzIndex[nu_] ], om2_ ,
+             Spinor[p4__]]
+       ] :=(m 4 DOT[Spinor[p1] , DiracMatrix[mu],DiracGamma[lv[rho]],
+                              DiracGamma[lv[beta]], om1 ,
+                 Spinor[p2]] *
+                 DOT[Spinor[p3] , DiracMatrix[mu],DiracGamma[lva[alpha]],
+                              DiracGamma[lvt[tau]], om2 ,
+                                            Spinor[p4]]
             ) /; ( (om1===DiracGamma[6])&& (om2===DiracGamma[7]) )||
                  ( (om1===DiracGamma[7])&& (om2===DiracGamma[6]) );
  (* #################################################################### *)
@@ -751,26 +757,26 @@ sirlin3a[Contract[
 
 
 (* in case if no chiral projectors are present: *)
- sirlin2[m_. Spinor[p1__]. DiracGamma[ LorentzIndex[mu_] ].
-                           DiracGamma[ lv_[rho_] ] .
-                           DiracGamma[ LorentzIndex[sigma_] ].
-                           DiracGamma[ lvt_[tau_] ].
-                           DiracGamma[ LorentzIndex[nu_] ].
-             Spinor[p2__] *
-             Spinor[p3__]. DiracGamma[ LorentzIndex[mu_] ].
-                           DiracGamma[ lva_[alpha_] ] .
-                           DiracGamma[ LorentzIndex[sigma_] ].
-                           DiracGamma[ lvb_[beta_] ].
-                           DiracGamma[ LorentzIndex[nu_] ].
-             Spinor[p4__]
+ sirlin2[m_. DOT[Spinor[p1__], DiracGamma[ LorentzIndex[mu_] ],
+                           DiracGamma[ lv_[rho_] ] ,
+                           DiracGamma[ LorentzIndex[sigma_] ],
+                           DiracGamma[ lvt_[tau_] ],
+                           DiracGamma[ LorentzIndex[nu_] ],
+             Spinor[p2__]] *
+             DOT[Spinor[p3__]. DiracGamma[ LorentzIndex[mu_] ],
+                           DiracGamma[ lva_[alpha_] ] ,
+                           DiracGamma[ LorentzIndex[sigma_] ],
+                           DiracGamma[ lvb_[beta_] ],
+                           DiracGamma[ LorentzIndex[nu_] ],
+             Spinor[p4__]]
        ] := Block[{tmp,re},
-                    tmp[ome1_,ome2_]:= sirlin2[ m Spinor[p1].
-   DiracMatrix[mu].DiracGamma[lv[rho]].DiracMatrix[sigma].
-   DiracGamma[lvt[tau]].DiracMatrix[nu].DiracGamma[ome1] .
-   Spinor[p2] *
-   Spinor[p3].DiracMatrix[mu].DiracGamma[lva[alpha]].
-   DiracMatrix[sigma].DiracGamma[lvb[beta]].DiracMatrix[nu].
-   DiracGamma[ome2].  Spinor[p4]              ];
+                    tmp[ome1_,ome2_]:= sirlin2[ m DOT[Spinor[p1],
+   DiracMatrix[mu],DiracGamma[lv[rho]],DiracMatrix[sigma],
+   DiracGamma[lvt[tau]],DiracMatrix[nu],DiracGamma[ome1] ,
+   Spinor[p2]] *
+   DOT[Spinor[p3],DiracMatrix[mu],DiracGamma[lva[alpha]],
+   DiracMatrix[sigma],DiracGamma[lvb[beta]],DiracMatrix[nu],
+   DiracGamma[ome2],  Spinor[p4]]              ];
                    re = tmp[6,6] + tmp[6,7] + tmp[7,6] + tmp[7,7];
                re];
 
@@ -781,56 +787,56 @@ sirlin3a[Contract[
 (* These are the ones calculated by FeynCalc  *)
 
 sirlin2[
-m_.  Spinor[pi__] . x1___ . DiracGamma[ LorentzIndex[mu_] ] .
-               DiracGamma[ LorentzIndex[nu_] ] . x2___ .
-Spinor[pj__] *
-Spinor[pk__] .  x3___ . DiracGamma[ vm_[a_] ] .
-                DiracGamma[ LorentzIndex[mu_] ] .
-               DiracGamma[ LorentzIndex[nu_] ] . x4___ .
-Spinor[pl__]
+m_.  DOT[Spinor[pi__] , x1___ , DiracGamma[ LorentzIndex[mu_] ] ,
+               DiracGamma[ LorentzIndex[nu_] ] , x2___ ,
+Spinor[pj__]] *
+DOT[Spinor[pk__] ,  x3___ , DiracGamma[ vm_[a_] ] ,
+                DiracGamma[ LorentzIndex[mu_] ] ,
+               DiracGamma[ LorentzIndex[nu_] ] , x4___ ,
+Spinor[pl__]]
        ] := Contract[ m (
-2*Spinor[pi] . x1 . x2 . Spinor[pj]*
-   Spinor[pk] . x3 . DiracGamma[vm[a]] . x4 .
-    Spinor[pl] +
-  2*Spinor[pk] . x3 . DiracGamma[LorentzIndex[al$mu]] . x4 .
-    Spinor[pl]*
-   Spinor[pi] . x1 . DiracGamma[vm[a]] .
-    DiracGamma[LorentzIndex[al$mu]] . x2 . Spinor[pj] -
-  2*Spinor[pi] . x1 . DiracGamma[5] . x2 .
-    Spinor[pj]*
-   Spinor[pk] . x3 . DiracGamma[vm[a]] . DiracGamma[5] . x4 .
-    Spinor[pl] +
-  2*Spinor[pk] . x3 . DiracGamma[LorentzIndex[al$mu]] .
-    DiracGamma[5] . x4 .Spinor[pl]*
-   Spinor[pi] . x1 .  DiracGamma[vm[a]] .
-    DiracGamma[LorentzIndex[al$mu]] . DiracGamma[5] . x2 . Spinor[pj]
+2*DOT[Spinor[pi] , x1 , x2 , Spinor[pj]]*
+   DOT[Spinor[pk] , x3 , DiracGamma[vm[a]] , x4 ,
+    Spinor[pl]] +
+  2*DOT[Spinor[pk] , x3 , DiracGamma[LorentzIndex[al$mu]] , x4 ,
+    Spinor[pl]]*
+   DOT[Spinor[pi] , x1 , DiracGamma[vm[a]] ,
+    DiracGamma[LorentzIndex[al$mu]] , x2 , Spinor[pj]] -
+  2*DOT[Spinor[pi] , x1 , DiracGamma[5] , x2 ,
+    Spinor[pj]]*
+   DOT[Spinor[pk] , x3 , DiracGamma[vm[a]] , DiracGamma[5] , x4 ,
+    Spinor[pl]] +
+  2*DOT[Spinor[pk] , x3 , DiracGamma[LorentzIndex[al$mu]] ,
+    DiracGamma[5] , x4 ,Spinor[pl]]*
+   DOT[Spinor[pi] , x1 ,  DiracGamma[vm[a]] ,
+    DiracGamma[LorentzIndex[al$mu]] , DiracGamma[5] , x2 , Spinor[pj]]
              )];
 
 sirlin2[ m_. *
-Spinor[Momentum[pi_], 0, fq___] . DiracGamma[Momentum[pk_]] .
-     Spinor[Momentum[pj_], 0, fq___]*
-    Spinor[Momentum[pl_], 0, fq___] . DiracGamma[Momentum[pj_]] .
-     Spinor[Momentum[pk_], 0, fq___]
+DOT[Spinor[Momentum[pi_], 0, fq___] , DiracGamma[Momentum[pk_]] ,
+     Spinor[Momentum[pj_], 0, fq___]]*
+    DOT[Spinor[Momentum[pl_], 0, fq___] , DiracGamma[Momentum[pj_]] ,
+     Spinor[Momentum[pk_], 0, fq___]]
        ] := Contract[ m (
-   -((Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pl]] .
-          Spinor[Momentum[pj], 0, fq]*
-         Spinor[Momentum[pl], 0, fq] . DiracGamma[Momentum[pi]] .
-          Spinor[Momentum[pk], 0, fq]*Pair[Momentum[pj], Momentum[pk]])/
+   -((DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pl]] ,
+          Spinor[Momentum[pj], 0, fq]]*
+         DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[Momentum[pi]] ,
+          Spinor[Momentum[pk], 0, fq]]*Pair[Momentum[pj], Momentum[pk]])/
        Pair[Momentum[pi], Momentum[pl]]) +
-    (Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        DiracGamma[5] . Spinor[Momentum[pj], 0, fq]*
-       Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        DiracGamma[5] . Spinor[Momentum[pk], 0, fq]*
+    (DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        DiracGamma[5] , Spinor[Momentum[pj], 0, fq]]*
+       DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        DiracGamma[5] , Spinor[Momentum[pk], 0, fq]]*
        (-(Pair[Momentum[pi], Momentum[pl]]*
             Pair[Momentum[pj], Momentum[pk]]) +
          Pair[Momentum[pi], Momentum[pk]]*
           Pair[Momentum[pj], Momentum[pl]] -
          Pair[Momentum[pi], Momentum[pj]]*Pair[Momentum[pk], Momentum[pl]]))
       /(2*Pair[Momentum[pi], Momentum[pl]]) +
-    (Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        Spinor[Momentum[pj], 0, fq]*
-       Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        Spinor[Momentum[pk], 0, fq]*
+    (DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        Spinor[Momentum[pj], 0, fq]]*
+       DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        Spinor[Momentum[pk], 0, fq]]*
        (3*Pair[Momentum[pi], Momentum[pl]]*
           Pair[Momentum[pj], Momentum[pk]] +
          Pair[Momentum[pi], Momentum[pk]]*Pair[Momentum[pj], Momentum[pl]] -
@@ -838,108 +844,108 @@ Spinor[Momentum[pi_], 0, fq___] . DiracGamma[Momentum[pk_]] .
      (2*Pair[Momentum[pi], Momentum[pl]])
              ) ];
 sirlin2[ m_. *
-  Spinor[Momentum[pi_], 0, fq___] . DiracGamma[Momentum[pk_]] .
-     Spinor[Momentum[pj_], 0, fq___]*
-    Spinor[Momentum[pl_], 0, fq___] . DiracGamma[Momentum[pi_]] .
-     Spinor[Momentum[pk_], 0, fq___]
+  DOT[Spinor[Momentum[pi_], 0, fq___] , DiracGamma[Momentum[pk_]] ,
+     Spinor[Momentum[pj_], 0, fq___]]*
+    DOT[Spinor[Momentum[pl_], 0, fq___] , DiracGamma[Momentum[pi_]] ,
+     Spinor[Momentum[pk_], 0, fq___]]
        ] := Contract[ m (
-   -((Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pl]] .
-          Spinor[Momentum[pj], 0, fq]*
-         Spinor[Momentum[pl], 0, fq] . DiracGamma[Momentum[pj]] .
-          Spinor[Momentum[pk], 0, fq]*Pair[Momentum[pi], Momentum[pk]])/
+   -((DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pl]] ,
+          Spinor[Momentum[pj], 0, fq]]*
+         DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[Momentum[pj]] ,
+          Spinor[Momentum[pk], 0, fq]]*Pair[Momentum[pi], Momentum[pk]])/
        Pair[Momentum[pj], Momentum[pl]]) +
-    (Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        Spinor[Momentum[pj], 0, fq]*
-       Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        Spinor[Momentum[pk], 0, fq]*
+    (DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        Spinor[Momentum[pj], 0, fq]]*
+       DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        Spinor[Momentum[pk], 0, fq]]*
        (Pair[Momentum[pi], Momentum[pl]]*Pair[Momentum[pj], Momentum[pk]] +
          3*Pair[Momentum[pi], Momentum[pk]]*
           Pair[Momentum[pj], Momentum[pl]] -
          Pair[Momentum[pi], Momentum[pj]]*Pair[Momentum[pk], Momentum[pl]]))
       /(2*Pair[Momentum[pj], Momentum[pl]]) +
-    (Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        DiracGamma[5] . Spinor[Momentum[pj], 0, fq]*
-       Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-        DiracGamma[5] . Spinor[Momentum[pk], 0, fq]*
+    (DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        DiracGamma[5] , Spinor[Momentum[pj], 0, fq]]*
+       DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+        DiracGamma[5] , Spinor[Momentum[pk], 0, fq]]*
        (-(Pair[Momentum[pi], Momentum[pl]]*
             Pair[Momentum[pj], Momentum[pk]]) +
          Pair[Momentum[pi], Momentum[pk]]*Pair[Momentum[pj], Momentum[pl]] +
         Pair[Momentum[pi], Momentum[pj]]*Pair[Momentum[pk], Momentum[pl]]))/
      (2*Pair[Momentum[pj], Momentum[pl]])
                ) ] /; First[
-  Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pk]].
-    Spinor[Momentum[pj], 0, fq]*
-         Spinor[Momentum[pl], 0, fq] . DiracGamma[Momentum[pi]] .
-          Spinor[Momentum[pk], 0, fq]]===
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pk]].
-    Spinor[Momentum[pj], 0, fq];
+  DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pk]],
+    Spinor[Momentum[pj], 0, fq]]*
+         DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[Momentum[pi]] ,
+          Spinor[Momentum[pk], 0, fq]]]===
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pk]],
+    Spinor[Momentum[pj], 0, fq]];
 
 sirlin2[ m_. *
-  Spinor[Momentum[pi_], 0, fq___] . DiracGamma[Momentum[pk_]] .
-     DiracGamma[5] .
-     Spinor[Momentum[pj_], 0, fq___]*
-    Spinor[Momentum[pl_], 0, fq___] . DiracGamma[Momentum[pj_]] .
-         DiracGamma[5] .
-     Spinor[Momentum[pk_], 0, fq___]
+  DOT[Spinor[Momentum[pi_], 0, fq___] , DiracGamma[Momentum[pk_]] ,
+     DiracGamma[5] ,
+     Spinor[Momentum[pj_], 0, fq___]]*
+    DOT[Spinor[Momentum[pl_], 0, fq___] , DiracGamma[Momentum[pj_]] ,
+         DiracGamma[5] ,
+     Spinor[Momentum[pk_], 0, fq___]]
        ] := Contract[ m (
-   Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pk]] .
-      Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[Momentum[pj]] .
-      Spinor[Momentum[pk], 0, fq] -
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      Spinor[Momentum[pk], 0, fq]*Pair[Momentum[pj], Momentum[pk]] +
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      DiracGamma[5] . Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      DiracGamma[5] . Spinor[Momentum[pk], 0, fq]*
+   DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pk]] ,
+      Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[Momentum[pj]] ,
+      Spinor[Momentum[pk], 0, fq]] -
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      Spinor[Momentum[pk], 0, fq]]*Pair[Momentum[pj], Momentum[pk]] +
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      DiracGamma[5] , Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      DiracGamma[5] , Spinor[Momentum[pk], 0, fq]]*
      Pair[Momentum[pj], Momentum[pk]]
              )      ];
 
 sirlin2[ m_. *
-Spinor[Momentum[pi_], 0, fq___] . DiracGamma[Momentum[pk_]] .
-     DiracGamma[5] .
-     Spinor[Momentum[pj_], 0, fq___]*
-Spinor[Momentum[pl_], 0,fq___]. DiracGamma[Momentum[pi_]] .
-      DiracGamma[5] .
-     Spinor[Momentum[pk_], 0, fq___]
+DOT[Spinor[Momentum[pi_], 0, fq___] , DiracGamma[Momentum[pk_]] ,
+     DiracGamma[5] ,
+     Spinor[Momentum[pj_], 0, fq___]]*
+DOT[Spinor[Momentum[pl_], 0,fq___], DiracGamma[Momentum[pi_]] ,
+      DiracGamma[5] ,
+     Spinor[Momentum[pk_], 0, fq___]]
        ] :=  Contract[ m (
-   -(Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pk]] .
-        Spinor[Momentum[pj], 0, fq]*
-       Spinor[Momentum[pl], 0, fq] . DiracGamma[Momentum[pi]] .
-        Spinor[Momentum[pk], 0, fq]) +
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      Spinor[Momentum[pk], 0, fq]*Pair[Momentum[pi], Momentum[pk]] +
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      DiracGamma[5] . Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      DiracGamma[5] . Spinor[Momentum[pk], 0, fq]*
+   -(DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pk]] ,
+        Spinor[Momentum[pj], 0, fq]]*
+       DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[Momentum[pi]] ,
+        Spinor[Momentum[pk], 0, fq]]) +
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      Spinor[Momentum[pk], 0, fq]]*Pair[Momentum[pi], Momentum[pk]] +
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      DiracGamma[5] , Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      DiracGamma[5] , Spinor[Momentum[pk], 0, fq]]*
      Pair[Momentum[pi], Momentum[pk]]
               ) ];
 
 sirlin2[ m_. *
-Spinor[Momentum[pi_], 0, fq___] . DiracGamma[Momentum[pl_]] .
-     DiracGamma[5] .
-     Spinor[Momentum[pj_], 0, fq___]*
-Spinor[Momentum[pl_], 0, fq___] . DiracGamma[Momentum[pj_]] .
-        DiracGamma[5] .
-     Spinor[Momentum[pk_], 0, fq___]
+DOT[Spinor[Momentum[pi_], 0, fq___] , DiracGamma[Momentum[pl_]] ,
+     DiracGamma[5] ,
+     Spinor[Momentum[pj_], 0, fq___]]*
+DOT[Spinor[Momentum[pl_], 0, fq___] , DiracGamma[Momentum[pj_]] ,
+        DiracGamma[5] ,
+     Spinor[Momentum[pk_], 0, fq___]]
        ] := Contract[ m (
-   -(Spinor[Momentum[pi], 0, fq] . DiracGamma[Momentum[pl]] .
-        Spinor[Momentum[pj], 0, fq]*
-       Spinor[Momentum[pl], 0, fq] . DiracGamma[Momentum[pj]] .
-        Spinor[Momentum[pk], 0, fq]) +
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      Spinor[Momentum[pk], 0, fq]*Pair[Momentum[pj], Momentum[pl]] +
-    Spinor[Momentum[pi], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      DiracGamma[5] . Spinor[Momentum[pj], 0, fq]*
-     Spinor[Momentum[pl], 0, fq] . DiracGamma[LorentzIndex[la]] .
-      DiracGamma[5] . Spinor[Momentum[pk], 0, fq]*
+   -(DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[Momentum[pl]] ,
+        Spinor[Momentum[pj], 0, fq]]*
+       DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[Momentum[pj]] ,
+        Spinor[Momentum[pk], 0, fq]]) +
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      Spinor[Momentum[pk], 0, fq]]*Pair[Momentum[pj], Momentum[pl]] +
+    DOT[Spinor[Momentum[pi], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      DiracGamma[5] , Spinor[Momentum[pj], 0, fq]]*
+     DOT[Spinor[Momentum[pl], 0, fq] , DiracGamma[LorentzIndex[la]] ,
+      DiracGamma[5] , Spinor[Momentum[pk], 0, fq]]*
      Pair[Momentum[pj], Momentum[pl]]
               ) ];
 
@@ -951,27 +957,27 @@ dig[LorentzIndex[a_,___]]:=a;
 dig[Momentum[a_,___]]:=a;
 dig[x_]:=x/;(Head[x]=!=LorentzIndex)&&(Head[x]=!=Momentum);
 dig[n_?NumberQ]:={};
-getV[x_List]:=Select[Flatten[{x}/.dot->List]/.DiracGamma -> dige ,
+getV[x_List]:=Select[Flatten[{x}/.DOT->List]/.DiracGamma -> dige ,
 		     Head[#]===dige&]/.dige->dig;
 
 (* Get a list of equal gamma matrices *)
 schnitt[x___][y___]:=Intersection[
-Select[Flatten[{x}/.dot->List],!FreeQ[#,LorentzIndex]&],
-Select[Flatten[{y}/.dot->List],!FreeQ[#,LorentzIndex]&]
+Select[Flatten[{x}/.DOT->List],!FreeQ[#,LorentzIndex]&],
+Select[Flatten[{y}/.DOT->List],!FreeQ[#,LorentzIndex]&]
                                  ];
 
 (* get a list of not equal slashes and matrices *)
-comp[x___][y___]:=Select[ Complement[Flatten[Union[{x},{y}]/.dot->List],
+comp[x___][y___]:=Select[ Complement[Flatten[Union[{x},{y}]/.DOT->List],
                              schnitt[x][y] ],
                           !FreeQ2[#, {LorentzIndex, Momentum}]&
                         ];
 
 (* sirlin1def *)
 (* do some ordering with sirlin1 ... *)
-   sirlin1[m_. Spinor[p1__]. (gam1__) . Spinor[p2__] *
-               Spinor[p3__]. (gam2__) . Spinor[p4__]
-          ] :=  MemSet[sirlin1[m Spinor[p1].gam1.Spinor[p2] *
-                               Spinor[p3].gam2.Spinor[p4]
+   sirlin1[m_. DOT[Spinor[p1__], (gam1__) , Spinor[p2__]] *
+               DOT[Spinor[p3__], (gam2__) , Spinor[p4__]]
+          ] :=  MemSet[sirlin1[m DOT[Spinor[p1],gam1,Spinor[p2]] *
+                               DOT[Spinor[p3],gam2,Spinor[p4]]
                               ],
 Block[{schnittmenge, compmenge, result,order, orderl,orderr},
                       schnittmenge = schnitt[gam1][gam2];
@@ -994,8 +1000,8 @@ print3["entering sirlin1"];
                     ] // getV;
        result =
        Expand[m Contract[
-                 DiracOrder[ Spinor[p1].gam1.Spinor[p2], orderl ]*
-                 DiracOrder[ Spinor[p3].gam2.Spinor[p4], orderr ] ]
+                 DiracOrder[ DOT[Spinor[p1],gam1,Spinor[p2]], orderl ]*
+                 DiracOrder[ DOT[Spinor[p3],gam2,Spinor[p4]], orderr ] ]
              ]//sirlin2
        ];
 
@@ -1006,16 +1012,16 @@ print3["entering sirlin1"];
        order = Join[{First[schnittmenge]}, compmenge,
                     {Last[schnittmenge]} ] // getV;
        result = sirlin2[ Expand[ m  DiracOrder[
-                         Spinor[p1].gam1.Spinor[p2] *
-                         Spinor[p3].gam2.Spinor[p4], order]
+                         DOT[Spinor[p1],gam1,Spinor[p2]] *
+                         DOT[Spinor[p3],gam2,Spinor[p4]], order]
                                                 ]//Contract
                        ]
        ];
                 ];
            If[!ValueQ[result],
               result = sirlin2[m *
-                         Spinor[p1].gam1.Spinor[p2] *
-                         Spinor[p3].gam2.Spinor[p4]
+                         DOT[Spinor[p1],gam1,Spinor[p2]] *
+                         DOT[Spinor[p3],gam2,Spinor[p4]]
                                      ]
              ];
 print3["exiting sirlin1"];
@@ -1028,35 +1034,35 @@ print3["exiting sirlin1"];
                              Block[{new=x, indi},
 print3["entering ChisholmSpinor "];
   new = DotSimplify[new];
-  If[choice===1, new = new/.{ Spinor[a__].b__ .Spinor[c__] *
-                              Spinor[d__].e__ .Spinor[f__]:>
-                             nospinor[a].b.nospinor[c] *
-                              Spinor[d].e.Spinor[f]
+  If[choice===1, new = new/.{ DOT[Spinor[a__],b__ ,Spinor[c__]] *
+                              DOT[Spinor[d__],e__ ,Spinor[f__]]:>
+                             DOT[nospinor[a],b,nospinor[c]] *
+                              DOT[Spinor[d],e,Spinor[f]]
                             }
     ];
-  If[choice===2, new = new/.{ Spinor[a__].b__ .Spinor[c__] *
-                              Spinor[d__].e__ .Spinor[f__]:>
-                              Spinor[a].b.Spinor[c] *
-                              nospinor[d].e.nospinor[f]
+  If[choice===2, new = new/.{ DOT[Spinor[a__],b__ ,Spinor[c__]] *
+                              DOT[Spinor[d__],e__ ,Spinor[f__]]:>
+                              DOT[Spinor[a],b,Spinor[c]] *
+                              DOT[nospinor[d],e,nospinor[f]]
                             }
     ];
 
                     dsimp[Contract[dsimp[new/.{
-               (Spinor[pe1_, m_, ql___] . DiracGamma[lv_[k_]] . h___ .
-                Spinor[pe2_, m2_, ql___]) :> Block[{indi},
+               (DOT[Spinor[pe1_, m_, ql___] , DiracGamma[lv_[k_]] , h___ ,
+                Spinor[pe2_, m2_, ql___]]) :> Block[{indi},
                       indi = Unique["alpha"];
-     -1/Pair[pe1,pe2] ( Spinor[pe1, m, ql]. DiracGamma[pe1].
-                        DiracGamma[lv[k]] . DiracGamma[pe2].h.
-                        Spinor[pe2, m2, ql] -
-                        Pair[pe1,lv[k]] Spinor[pe1, m, ql].
-                            DiracGamma[pe2]. h . Spinor[pe2, m2, ql] -
-                        Pair[lv[k],pe2] Spinor[pe1, m, ql].
-                            DiracGamma[pe1] . h . Spinor[pe2, m2, ql]-
+     -1/Pair[pe1,pe2] ( DOT[Spinor[pe1, m, ql], DiracGamma[pe1],
+                        DiracGamma[lv[k]] , DiracGamma[pe2],h,
+                        Spinor[pe2, m2, ql]] -
+                        Pair[pe1,lv[k]] DOT[Spinor[pe1, m, ql],
+                            DiracGamma[pe2], h , Spinor[pe2, m2, ql]] -
+                        Pair[lv[k],pe2] DOT[Spinor[pe1, m, ql],
+                            DiracGamma[pe1] , h , Spinor[pe2, m2, ql]]-
                           I Eps[pe1,lv[k],pe2,LorentzIndex[indi]] *
-                        Spinor[pe1, m, ql].
-                            DiracGamma[LorentzIndex[indi]].
-                            DiracGamma[5].h.
-                        Spinor[pe2, m2, ql]
+                        DOT[Spinor[pe1, m, ql],
+                            DiracGamma[LorentzIndex[indi]],
+                            DiracGamma[5],h,
+                        Spinor[pe2, m2, ql]]
                       )] }/.nospinor->Spinor], EpsContract->True] ] ]];
 
 End[]; MyEndPackage[];
