@@ -7,6 +7,7 @@ Off[General::spell1];
 Off[DeclarePackage::aldec];
 Off[Attributes::locked];
 Off[Set::write];
+Off[SetOptions::optnf];
 
 Format[Continuation[_], StringForm] := "";
 Format[Continuation[_]] := "";
