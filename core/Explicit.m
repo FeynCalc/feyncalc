@@ -38,6 +38,7 @@ Explicit[y_] := Block[{gh, gvv, gv, t2g, fis, pr, r = y},
            gv[x__]  := gv[x]  = Expand[ExpandScalarProduct[ GluonVertex[x, Explicit -> True]]];
            gp[x__]  := gp[x]  = Expand[ExpandScalarProduct[ GluonPropagator[x, Explicit -> True]]];
            gh[x__]  := gh[x]  = Expand[ExpandScalarProduct[ GhostPropagator[x, Explicit -> True]]];
+           qp[x__]  := qp[x]  = Expand[ExpandScalarProduct[ QuarkPropagator[x, Explicit -> True]]];
            gvv[x__] := ghv[x] = Expand[ExpandScalarProduct[ GluonGhostVertex[x, Explicit -> True]]];
            qgv[x__] := qgv[x] = Expand[ExpandScalarProduct[ QuarkGluonVertex[x, Explicit -> True]]];
            r = r /. {GluonVertex :> gv, GluonGhostVertex :> gvv, GhostPropagator :> gh, 
