@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 8 February '98 at 0:32 *)
+(* :History: First version written 1995 for Tdec, slight modifications later*)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary:  Solve3 is like Solve, but only for linear equations *)
@@ -59,9 +59,9 @@ plh[a_,b_,c_] := a+b+c;
 plh[a_,b_,c_,d_] := a+b+c+d;
 col[x_] := (*col[x] =*) Block[{ccit,rr, lin, null1, null2, iii, lccit,fah},
 If[LeafCount[x]<100000 && $VersionNumber >2.2, 
-If[$VeryVerbose > 1, Print[" Danl's collect"]];
+If[$VeryVerbose > 1, Print[" Collect with Factor2 "]];
    ccit = Collect[x, cli, Factor2];
-If[$VeryVerbose > 1, Print[" Danl's collect done ..."]];
+If[$VeryVerbose > 1, Print[" Collect with Factor2 done ..."]];
    ccit
    ,
    ccit = Collect2[x, cli, Factoring -> False];
