@@ -23,7 +23,8 @@ the directory 'Configurations'.
 You can override these in the present file
 (see "EXTRA CONFIGURATION").
 If you are running UNIX (Linux), you can put a copy of
-the present file in ~/.Mathematica/<version>/AddOns/Applications/HighEnergyPhysics/Phi/
+the present file in
+~/.Mathematica/<version>/AddOns/Applications/HighEnergyPhysics/Phi/
 (create the necessary directories) and it will override
 the file in the installation directory.
 
@@ -50,14 +51,9 @@ HighEnergyPhysics`Phi`Objects`CDr::"usage"=
 "CDr is the shorthand notation for
 CovariantFieldDerivative";
 
-fcpd:=HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcli:=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcsuni:=HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-
-PMV[x_,opts___]:=PhiMesonIsoVector;
-FDr:=FieldDerivative;
-CDr:=CovariantFieldDerivative;
+PMV[x_,opts___]:=PhiMesonIsoVector[opts][x];
+FDr=FieldDerivative;
+CDr=CovariantFieldDerivative;
 
 (* ************************************************************** *)
 
@@ -166,21 +162,27 @@ HighEnergyPhysics`FeynArts`TheLabel[PseudoScalar0]:="P";
 
 If[StringQ[$FeynCalcDirectory],
 
-SetOptions[HighEnergyPhysics`fctables`B0`B0,
+SetOptions[ILimit, FunctionLimits -> {Log -> Log, 
+LeutwylerJBar -> (LeutwylerJBar[
+Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
+ExplicitLeutwylerJBar -> True,
+ExplicitLeutwylerSigma -> True]&)}];
+
+SetOptions[B0,
 BReduce->False,B0Unique->True,B0Real->False];
 
-SetOptions[HighEnergyPhysics`fctools`SetMandelstam`SetMandelstam,
+SetOptions[SetMandelstam,
 Dimension->{4,D,SpaceTimeDimensions}];
 
-SetOptions[HighEnergyPhysics`fctools`FeynRule`FeynRule,
+SetOptions[FeynRule,
 InitialFunction->PhiToFC];
 
-SetOptions[HighEnergyPhysics`fctools`OneLoop`OneLoop,
+SetOptions[OneLoop,
 WriteOutPaVe -> ToFileName[
 {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
 $PathnameSeparator];
 
-SetOptions[HighEnergyPhysics`fctools`PaVeReduce`PaVeReduce,
+SetOptions[PaVeReduce,
 WriteOutPaVe -> ToFileName[
 {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
 $PathnameSeparator];
@@ -194,16 +196,21 @@ HighEnergyPhysics`Phi`Objects`FunctionalDerivative[x_, o__] :=
             UTrace1 -> ((tr*#) &), o] //. {Dot[nm[_], c__] :> NM[c],
           tr*r__ :> UTrace[Times[r]]}];
                     
-HighEnergyPhysics`FeynCalc`$Abbreviations=
-Union[HighEnergyPhysics`FeynCalc`$Abbreviations,
+$Abbreviations=
+Union[$Abbreviations,
 {"Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
 "ParticleMass" -> "m", "PseudoScalar" -> "PS", "Scalar" -> "S",
 "Vector" -> "V", "AxialVector" -> "AV", "Fermion" -> "F"}];
 
-Clear[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex];
+
+(* Commented out 3/9-2002 to keep consistency with FeynCalc *)
+(* SUNReduce etc. will have to be modified to account for the automatic
+   substitution of SUNIndex[i] with ExplicitSUNIndex[i] when i is an
+   integer *)
+(*Clear[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex];
 HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex/:
 MakeBoxes[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[p_],
-TraditionalForm]:=ToBoxes[p, TraditionalForm];
+TraditionalForm]:=ToBoxes[p, TraditionalForm];*)
 
 (* Commented out 5/3-2000.
    I think its redundant and definitions on SUNIndex slow down everything. *)
@@ -223,6 +230,27 @@ Remove[$FeynCalcDirectory]
 
 ];
 
+
+(*Add PHI vertices to Amplitudes database*)
+(*First make sure amplist has a value*)
+Amplitude[];
+(*Get the PHI amps*)
+Block[{phiAmpList, dum, names, dir},
+dir = ToFileName[{$FeynCalcDirectory, "Phi", "CouplingVectors"}];
+ names = 
+  StringReplace[StringReplace[#, dir -> ""], ".Gen" -> ""] & /@ 
+    FileNames["*.Gen", 
+      dir]; phiAmpList = (# :> 
+          FAToFC[{CheckF[dum, # <> ".Gen", ForceSave -> False, 
+                    NoSave -> True].((#[[1]]) & /@ 
+                      CheckF[dum, # <> ".Mod", ForceSave -> False, 
+                        NoSave -> True])}][[1]]) & /@ names;
+(*Modify amplist*)
+HighEnergyPhysics`fctables`Amplitude`Private`amplist = 
+    Union[HighEnergyPhysics`fctables`Amplitude`Private`amplist,
+          phiAmpList]];
+
+
 (* ************************************************************** *)
 
 (* Recursive definition of multiple derivatives *)
@@ -234,7 +262,7 @@ Options[CovariantFieldDerivative]=
    RemoveIntegerIndices->True,
    SUNN->2, UDimension->Automatic};
 
-CovariantFieldDerivative[aa_,x_,loris__fcli,lori1_fcli]:=
+CovariantFieldDerivative[aa_,x_,loris__LorentzIndex,lori1_LorentzIndex]:=
 (newfuncc[1]=CovariantFieldDerivative[aa,x,lori1];
 Do[newfuncc[rep+1]=CovariantFieldDerivative[
 newfuncc[rep],x,##]&@@Take[{loris},{-rep}],
