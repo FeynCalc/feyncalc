@@ -52,9 +52,11 @@ soso /; Message[DotSimplify::argrx, DotSimplify, 0, 1];
 (*DotSimplifyRelation = DotSimplifyRelations;*)
 
 Options[DotSimplify] = {Expanding -> True, DotSimplifyRelations -> {},
-                        DotPower -> False(*True*)(*CHANGE 26/9-2002. 
+                        DotPower -> False, (*True*)(*CHANGE 26/9-2002. 
                         To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
-                                                  F.Orellana*)};
+                                                  F.Orellana*)
+                        FeynCalcInternal -> True
+                       };
 
 DotSimplify[xxx_, opts___Rule] := Block[
  {pid, ex, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
@@ -74,11 +76,15 @@ also GS[a].GS[b*)
    (DOT @@ Table[aa, {ijij, bb}]);*)
 
 (* this seems to be necessary ..., RM*)
-xx = FeynCalcInternal[xxx];
+If[(FeynCalcInternal /. {opts} /.  Options[DotSimplify]) =!= True,
+   xx=xxx,
+   xx = xxx /. (Thread[# -> FeynCalcInternal[#]]&[Variables[xxx]]) ;
+];
 
-xx = xx /. (*Added to have example from guide work again*)
-            Momentum[p_] :> Momentum[FactorTerms[p]] /. 
-            simrel;
+(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
+momf[x_]:=momf[x]=Momentum[FactorTerms[x]];
+xx = xx /. (*Added to have example from guide work again*) (*  which one ?? (RM)*)
+            Momentum[p_] :> momf[p] /.  simrel;
 
 x = Catch[
 If[simrel =!= {},

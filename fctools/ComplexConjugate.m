@@ -63,25 +63,30 @@ dotlin[x_] := DotSimplify[x, Expanding -> False];
 HoldPattern[ rev[yz__ /; FreeQ2[{yz}, {SUNT}] ] ]:=
 
 *)
-(* CHANGE 26/07/94 *)
+(*
 HoldPattern[ rev[yz__] ]:=
+*)
+rev[yz__]:=
+(*
 Isolate[
-DOT @@ (Reverse[FRH[{ yz }]]/.
+*)
+(DOT @@ (Reverse[FRH[{ yz }]]/.
 (*Changed 28/2-2001 by F.Orellana, because of bug report by T.Rashba*)(*
                     DiracGamma[5]->(-DiracGamma[5])/.
                    {DiracGamma[6] :> DiracGamma[7],
                     DiracGamma[7]:>DiracGamma[6]}/.*)
-                     ccm-> (-ccm) /.  ccmi -> (-ccmi)
-       ), IsolateNames->c$CC, IsolateSplit->Infinity
-       ] /; Length[Position[{yz}, Spinor]] < 3;
+                     {ccm :> (-ccm),  ccmi -> (-ccmi)}
+        )(*, IsolateNames->c$CC, IsolateSplit->Infinity
+       ]*) 
+) /; Length[Position[{yz}, Spinor]] < 3;
 
 c$CCfrh /: HoldForm[c$CCfrh[ii_]] := c$CC[ii];
 
 (*cLIndex[x_, dime___] := LorentzIndex[ComplexIndex[x], dime];
 cSIndex[x_]          := SUNIndex[ComplexIndex[x]];*)
 
-conpa[x__] := Pair[x] /. {Polarization[k_, a_, in___] :>
-                          Polarization[k, Conjugate[a], in]};
+conpa[x__] := conpa[x] = Pair[x] 
+
 (* ComplexConjugatedef *)
 (*sunfcomp[a___] := SUNF @@ ({a}/.ComplexIndex -> Identity);
 sundeltacomp[a___] := SUNDelta @@ ({a}/.ComplexIndex -> Identity);*)
@@ -98,11 +103,14 @@ nenenen
 sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
 *)
 
-ComplexConjugate[b_HoldForm] := b /; FreeQ2[fci[FRH[b]],
+(* for large expressions it is better to not use DotSimplify *)
+Options[ComplexConjugate] = {DotSimplify -> True};
+
+ComplexConjugate[b_HoldForm,opts___?OptionQ] := b /; FreeQ2[fci[FRH[b]],
                                 {DOT,LorentzIndex,SUNIndex,Complex}];
 
-ComplexConjugate[x_ /; (Head[x] =!= HoldForm)] :=
-                 compcon[fci[x]/.SUNTrace->suntrac
+ComplexConjugate[x_ /; (Head[x] =!= HoldForm), opts___?OptionQ] :=
+                 compcon[fci[x]/.SUNTrace->suntrac, opts
                         ] /. (*SUNF -> sunfcomp /.*)
                     (*HighEnergyPhysics`FeynArts`SumOver -> sumovercomp /.
                     HighEnergyPhysics`Phi`Objects`UGenerator -> ugencomp /.*)
@@ -112,20 +120,20 @@ ComplexConjugate[x_ /; (Head[x] =!= HoldForm)] :=
                              ComplexConjugate /. suntrac->
                               SUNTrace;
 
-compcon2[x_/;!FreeQ[x, HoldForm]] := compcon[FRH[x]];
-compcon[x_^n_?NumberQ] := compcon[x]^n;
-compcon[x_Plus] := compcon /@ x;
-compcon[x_Times]:= compcon /@ x;
+compcon2[x_/;!FreeQ[x, HoldForm], opts___?OptionQ] := compcon[FRH[x], opts];
+compcon[x_^n_?NumberQ, opts___?OptionQ] := compcon[x,opts]^n;
+compcon[x_Plus, opts___?OptionQ]  := compcon[#,opts]& /@ x;
+compcon[x_Times, opts___?OptionQ] := compcon[#,opts]& /@ x;
 
-compcon[b_HoldForm] := b /;
+
+compcon[b_HoldForm, opts___?OptionQ] := b /;
              FreeQ2[FRH[b], {DOT,LorentzIndex,SUNIndex,Complex}];
-compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times)] :=
-             Block[{nx=x,oone, suntrac},
+compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times), opts___?OptionQ] :=
+If[FreeQ[x, DOT | Complex | DiracGamma], x, 
+             Block[{nx=x,oone, suntrac, dotsim},
+                  dotsim = DotSimplify /. {opts} /. Options[ComplexConjugate];
                   If[!FreeQ[nx, SUNF], nx = Expand[nx, SUNF]];
-(*CHANGE 26/07/94 *)
-                    If[!FreeQ[nx,SUNT],
-                        nx = DotSimplify[nx, Expanding -> False];
-                      ];
+                  If[!FreeQ[nx,SUNT], If[dotsim, nx = dotlin[nx]]];
 (* this is wrong if nx had Head List ... (change 02/99)
                     nx = (DOT[oone, nx] /. DOT -> rev /. rev -> DOT);
 *)
@@ -135,14 +143,18 @@ compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times)] :=
                     DiracGamma[5]->(-DiracGamma[5])/.
                    {DiracGamma[6] :> DiracGamma[7],
                     DiracGamma[7]:>DiracGamma[6]}(**)/.
-                         DOT -> rev /. rev -> DOT;
+                         DOT -> rev /. rev -> DOT /. oone -> 1;
+(*
+I think this Isolate-optimization is outdated and causes too much overhead, RM, 14.10.2003
+
                     nx = nx //. c$CC -> c$CCfrh /. oone -> 1;
+*)
                     nx = nx /.
                           (*LorentzIndex -> cLIndex /.
                           SUNIndex  -> cSIndex /.*)
                           Complex[a_, b_] -> Complex[a, -b] ;
-                    nx = dotlin[nx];
-                nx] /; FreeQ[x, HoldForm];
+                    If[dotsim,  nx = dotlin[nx]];
+                nx]] /; FreeQ[x, HoldForm];
 
 (* CAREFUL: Complex[a_, b_] -> Complex[a, -b] is only true if no complex
    variables are in denominators!!!!, (which is the case in HEP, unless you
