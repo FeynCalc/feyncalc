@@ -42,16 +42,14 @@ here in FCConfig.m
 *)
 
 
-(* Optional modules *)
+(* Optional modules. By default all are loaded *)
 
-If[!ValueQ[$LoadTARCER], $LoadTARCER = True];
-If[!ValueQ[$LoadPhi], $LoadPhi = True];
-If[!ValueQ[$LoadFeynArts], $LoadFeynArts = True];
-
-(* $LoadTARCER = True; *)
+(* $LoadTARCER = False; *)
 (* $LoadPhi = False; *)
-(* $LoadFeynArts = True; *)
+(* $LoadFeynArts = False; *)
 
-(*this should be the directory for your FeynArts installation *)
-HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/tmp/fa"
+(* You may specify the directory of your FeynArts installation,
+   the default is $FeynCalcDirectory *)
+   
+(* HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/tmp/fa" *)
 

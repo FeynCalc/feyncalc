@@ -183,6 +183,8 @@ savethisdir=Directory[];
 HighEnergyPhysics`FeynCalc`$FeynCalcDirectory;
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
+(*Set defaults here, not in the config file*)
+If[!ValueQ[Global`$LoadTARCER], Global`$LoadTARCER = True];
 
 If[Global`$LoadTARCER ===True,
 
@@ -864,6 +866,14 @@ If[($Notebooks =!= True) && (Global`$FeynCalcStartupMessages =!= False),
 savethisdir=Directory[];
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
+If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory] =!= True,
+  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = $FeynCalcDirectory
+];
+
+(*Set defaults here, not in the config file*)
+If[!ValueQ[Global`$LoadPhi], Global`$LoadPhi = True];
+If[!ValueQ[Global`$LoadFeynArts], Global`$LoadFeynArts = True];
+
 If[Global`$LoadPhi===True,
    If[$Notebooks===True,
       CellPrint[Cell[TextData[{"Loading PHI "}],
@@ -876,16 +886,18 @@ If[Global`$LoadPhi===True,
 ];
 
 If[Global`$LoadFeynArts===True,
+
    If[$Notebooks===True,
       CellPrint[Cell[TextData[{"Loading FeynArts "}],
                   "Text"]],
       Print["Loading FeynArts "]
    ];
-   If[Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]]===$Failed,
+   If[Get[ToFileName[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
+      "FeynArts.m"]]===$Failed,
      If[$Notebooks===True,
 	CellPrint[Cell[TextData[{
 	  "FeynArts not found. Please put the files in\n",
-	  HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
+	  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
 	  "\n", "and reload FeynCalc",
 	  "\n","FeynArts can be downloaded from ",
 	  ButtonBox["www.feynarts.de", ButtonData:>{
@@ -894,7 +906,7 @@ If[Global`$LoadFeynArts===True,
 	 ],"Text"]],
        WriteString["stdout",
           "FeynArts not found. Please put the files in ",
-	  HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
+	  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
 	  ". FeynArts can be downloaded from www.feynarts.de\n"];
      ],
 Block[{$Path = {HighEnergyPhysics`FeynArts`$FeynArtsProgramDir}}, Needs["Utilities`"];
