@@ -1,7 +1,4 @@
 (* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
-
-(* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`FeynCalc`SPD`",
              "HighEnergyPhysics`FeynCalc`"];
@@ -21,6 +18,13 @@ SPD[a_] := SPD[a,a];
     ToBoxes[
            MakeContext["FeynCalcInternal"][SPD[a,b]],
             TraditionalForm] ;
+
+MakeBoxes[SPD[a_,a_]^n_Plus, TraditionalForm] := SuperscriptBox[
+   RowBox[{"(",SuperscriptBox[TBox[a], 2],")"}], TBox[n]];
+
+MakeBoxes[SPD[a_,a_]^n_Times, TraditionalForm] := SuperscriptBox[
+   RowBox[{"(",SuperscriptBox[TBox[a], 2],")"}], TBox[n]];
+
 
 MakeBoxes[SPD[a_,a_]^n_Integer, TraditionalForm] := (SuperscriptBox[TBox[a], #]&@@{2 n}
  ) /; FreeQ[a, Plus];
