@@ -36,25 +36,32 @@ Options[Amputate] = {Dimension -> D, Pair -> {}, Unique -> True};
 Amputate[x_Plus, q__] := Map[Amputate[#,q]&, x];
 Amputate[x_List, q__] := Map[Amputate[#,q]&, x];
 
-Amputate[x_, q1__, q2_ /; Head[q2] =!= Rule, opt___Rule
-        ] := Amputate[Amputate[x,q2],q1, opt];
+(* change September 2003 by Rolf Mertig,
+otherwise 
+Amputate[Pair[Momentum[k1, D], Momentum[q2, D]], q1, q2, Pair -> k1]
+would not work
+*)
+Amputate[x_, ___?OptionQ]:=x;
+Amputate[x_, q1_, q2__, opt___?OptionQ
+        ] := Amputate[Amputate[x,q1,opt],q2, opt];
 
-Amputate[ex_, q_ /; Head[q]=!=Rule, opt___Rule
-        ] := Block[{exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,a$AL},
+Amputate[ex_, qi_ /; Head[qi]=!=Rule, opt___Rule
+        ] := Block[{q,exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,a$AL},
    exp = FeynCalcInternal[ex];
-   par = Pair /.      {opt} /. Options[Amputate];
+   dim = Dimension /. {opt} /. Options[Amputate];
+   If[Head[qi]===Momentum, q = First[qi], q = qi];
+   par = Flatten[{Pair /. {opt} /. Options[Amputate]}];
    If[(Unique /. {opt} /. Options[Amputate]) === True, 
       a$AL = Unique[$AL], a$AL = $AL
      ];
    If[par===All, 
-      par = Map[First, Select1[Cases2[exp, Momentum], OPEDelta]]
+      par = Select1[Map[First, Select1[Cases2[exp, Momentum], OPEDelta]],q]
      ];
 
 If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) || 
    (Head[dummy exp] =!= Times),
    exp,
    nex = exp;
-   dim = Dimension /. {opt} /. Options[Amputate];
    If[FreeQ[nex, a$AL], inc = 0, 
       inc = (Max @@ Map[First, Cases2[nex, a$AL]]);
      ];
