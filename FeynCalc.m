@@ -168,7 +168,7 @@ If[FileNames["*",{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory}] == {},
 (* ------------------------------------------------------------------------ *)
 
 (* Maybe this is not a good idea. It is probably better to positively 
-declare explicitly those directoreies which are Package declared 
+declare explicitly those directories which are Package declared 
 *)
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
   {"Tarcer", "tarcer", "Phi",
@@ -702,7 +702,7 @@ hepdirs = { "fcdevel", "fcloops", "fctables", "fctools", "general",  "qcd" };
 If[StringMatchQ[$OperatingSystem, "*MacOS*"],
   hepdirs = If[StringMatchQ[#, ":*"], StringDrop[#, 1], #] & /@ hepdirs];
 
-(* uncommented for the moment ...
+(* Commented out for the moment ...
 hepdirs = Complement[ hepdirs,
       HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories];
 *)
