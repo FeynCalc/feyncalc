@@ -31,127 +31,127 @@ including virtual photons to fourth order in the energy.
 To evaluate use ArgumentsSupply";
 
 L1::"usage"=
-"L1 := UCouplingConstant[ChPTVirtualPhotons3[4],1] is one of the constants of the
+"L1 := CouplingConstant[ChPTVirtualPhotons3[4],1] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L2::"usage"=
-"L2 := UCouplingConstant[ChPTVirtualPhotons3[4],2] is one of the constants of the
+"L2 := CouplingConstant[ChPTVirtualPhotons3[4],2] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L3::"usage"=
-"L3 := UCouplingConstant[ChPTVirtualPhotons3[4],3] is one of the constants of the
+"L3 := CouplingConstant[ChPTVirtualPhotons3[4],3] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L4::"usage"=
-"L4 := UCouplingConstant[ChPTVirtualPhotons3[4],4] is one of the constants of the
+"L4 := CouplingConstant[ChPTVirtualPhotons3[4],4] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L5::"usage"=
-"L5 := UCouplingConstant[ChPTVirtualPhotons3[4],5] is one of the constants of the
+"L5 := CouplingConstant[ChPTVirtualPhotons3[4],5] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L6::"usage"=
-"L6 := UCouplingConstant[ChPTVirtualPhotons3[4],6] is one of the constants of the
+"L6 := CouplingConstant[ChPTVirtualPhotons3[4],6] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L7::"usage"=
-"L7 := UCouplingConstant[ChPTVirtualPhotons3[4],7] is one of the constants of the
+"L7 := CouplingConstant[ChPTVirtualPhotons3[4],7] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L8::"usage"=
-"L8 := UCouplingConstant[ChPTVirtualPhotons3[4],8] is one of the constants of the
+"L8 := CouplingConstant[ChPTVirtualPhotons3[4],8] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L9::"usage"=
-"L9 := UCouplingConstant[ChPTVirtualPhotons3[4],9] is one of the constants of the
+"L9 := CouplingConstant[ChPTVirtualPhotons3[4],9] is one of the constants of the
 fourth order ChPT lagrangian";
 
 L10::"usage"=
-"L10 := UCouplingConstant[ChPTVirtualPhotons3[4],10] is one of the constants of the
+"L10 := CouplingConstant[ChPTVirtualPhotons3[4],10] is one of the constants of the
 fourth order ChPT lagrangian";
 
 H1::"usage"=
-"H1 := UCouplingConstant[ChPTVirtualPhotons3[4],11] is one of the constants of the
+"H1 := CouplingConstant[ChPTVirtualPhotons3[4],11] is one of the constants of the
 fourth order ChPT lagrangian";
 
 H2::"usage"=
-"H2 := UCouplingConstant[ChPTVirtualPhotons3[4],12] is one of the constants of the
+"H2 := CouplingConstant[ChPTVirtualPhotons3[4],12] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K1::"usage"=
-"K1 := UCouplingConstant[ChPTVirtualPhotons3[4],13] is one of the constants of the
+"K1 := CouplingConstant[ChPTVirtualPhotons3[4],13] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K2::"usage"=
-"K2 := UCouplingConstant[ChPTVirtualPhotons3[4],14] is one of the constants of the
+"K2 := CouplingConstant[ChPTVirtualPhotons3[4],14] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K3::"usage"=
-"K3 := UCouplingConstant[ChPTVirtualPhotons3[4],15] is one of the constants of the
+"K3 := CouplingConstant[ChPTVirtualPhotons3[4],15] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K4::"usage"=
-"K4 := UCouplingConstant[ChPTVirtualPhotons3[4],16] is one of the constants of the
+"K4 := CouplingConstant[ChPTVirtualPhotons3[4],16] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K5::"usage"=
-"K5 := UCouplingConstant[ChPTVirtualPhotons3[4],17] is one of the constants of the
+"K5 := CouplingConstant[ChPTVirtualPhotons3[4],17] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K6::"usage"=
-"K6 := UCouplingConstant[ChPTVirtualPhotons3[4],18] is one of the constants of the
+"K6 := CouplingConstant[ChPTVirtualPhotons3[4],18] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K7::"usage"=
-"K7 := UCouplingConstant[ChPTVirtualPhotons3[4],19] is one of the constants of the
+"K7 := CouplingConstant[ChPTVirtualPhotons3[4],19] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K8::"usage"=
-"K8 := UCouplingConstant[ChPTVirtualPhotons3[4],20] is one of the constants of the
+"K8 := CouplingConstant[ChPTVirtualPhotons3[4],20] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K9::"usage"=
-"K9 := UCouplingConstant[ChPTVirtualPhotons3[4],21] is one of the constants of the
+"K9 := CouplingConstant[ChPTVirtualPhotons3[4],21] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K10::"usage"=
-"K10 := UCouplingConstant[ChPTVirtualPhotons3[4],22] is one of the constants of the
+"K10 := CouplingConstant[ChPTVirtualPhotons3[4],22] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K11::"usage"=
-"K11 := UCouplingConstant[ChPTVirtualPhotons3[4],23] is one of the constants of the
+"K11 := CouplingConstant[ChPTVirtualPhotons3[4],23] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K12::"usage"=
-"K12 := UCouplingConstant[ChPTVirtualPhotons3[4],24] is one of the constants of the
+"K12 := CouplingConstant[ChPTVirtualPhotons3[4],24] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K13::"usage"=
-"K13 := UCouplingConstant[ChPTVirtualPhotons3[4],25] is one of the constants of the
+"K13 := CouplingConstant[ChPTVirtualPhotons3[4],25] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K14::"usage"=
-"K14 := UCouplingConstant[ChPTVirtualPhotons3[4],26] is one of the constants of the
+"K14 := CouplingConstant[ChPTVirtualPhotons3[4],26] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K15::"usage"=
-"K15 := UCouplingConstant[ChPTVirtualPhotons3[4],27] is one of the constants of the
+"K15 := CouplingConstant[ChPTVirtualPhotons3[4],27] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K16::"usage"=
-"K16 := UCouplingConstant[ChPTVirtualPhotons3[4],28] is one of the constants of the
+"K16 := CouplingConstant[ChPTVirtualPhotons3[4],28] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K17::"usage"=
-"K17 := UCouplingConstant[ChPTVirtualPhotons3[4],29] is one of the constants of the
+"K17 := CouplingConstant[ChPTVirtualPhotons3[4],29] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K18::"usage"=
-"K18 := UCouplingConstant[ChPTVirtualPhotons3[4],30] is one of the constants of the
+"K18 := CouplingConstant[ChPTVirtualPhotons3[4],30] is one of the constants of the
 fourth order ChPT lagrangian";
 
 K19::"usage"=
-"K19 := UCouplingConstant[ChPTVirtualPhotons3[4],31] is one of the constants of the
+"K19 := CouplingConstant[ChPTVirtualPhotons3[4],31] is one of the constants of the
 fourth order ChPT lagrangian";
 
 (* ---------------------------------------------------------------- *)
@@ -166,47 +166,47 @@ QQ := UQuarkChargeMatrix;
 
 fcqf := HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
 
-L1 := UCouplingConstant[ChPTVirtualPhotons3[4],1];
-L2 := UCouplingConstant[ChPTVirtualPhotons3[4],2];
-L3 := UCouplingConstant[ChPTVirtualPhotons3[4],3];
-L4 := UCouplingConstant[ChPTVirtualPhotons3[4],4];
-L5 := UCouplingConstant[ChPTVirtualPhotons3[4],5];
-L6 := UCouplingConstant[ChPTVirtualPhotons3[4],6];
-L7 := UCouplingConstant[ChPTVirtualPhotons3[4],7];
-L8 := UCouplingConstant[ChPTVirtualPhotons3[4],8];
-L9 := UCouplingConstant[ChPTVirtualPhotons3[4],9];
-L10 := UCouplingConstant[ChPTVirtualPhotons3[4],10];
+L1 := CouplingConstant[ChPTVirtualPhotons3[4],1];
+L2 := CouplingConstant[ChPTVirtualPhotons3[4],2];
+L3 := CouplingConstant[ChPTVirtualPhotons3[4],3];
+L4 := CouplingConstant[ChPTVirtualPhotons3[4],4];
+L5 := CouplingConstant[ChPTVirtualPhotons3[4],5];
+L6 := CouplingConstant[ChPTVirtualPhotons3[4],6];
+L7 := CouplingConstant[ChPTVirtualPhotons3[4],7];
+L8 := CouplingConstant[ChPTVirtualPhotons3[4],8];
+L9 := CouplingConstant[ChPTVirtualPhotons3[4],9];
+L10 := CouplingConstant[ChPTVirtualPhotons3[4],10];
 
-H1 := UCouplingConstant[ChPTVirtualPhotons3[4],11];
-H2 := UCouplingConstant[ChPTVirtualPhotons3[4],12];
+H1 := CouplingConstant[ChPTVirtualPhotons3[4],11];
+H2 := CouplingConstant[ChPTVirtualPhotons3[4],12];
 
-K1 := UCouplingConstant[ChPTVirtualPhotons3[4],13];
-K2 := UCouplingConstant[ChPTVirtualPhotons3[4],14];
-K3 := UCouplingConstant[ChPTVirtualPhotons3[4],15];
-K4 := UCouplingConstant[ChPTVirtualPhotons3[4],16];
-K5 := UCouplingConstant[ChPTVirtualPhotons3[4],17];
-K6 := UCouplingConstant[ChPTVirtualPhotons3[4],18];
-K7 := UCouplingConstant[ChPTVirtualPhotons3[4],19];
-K8 := UCouplingConstant[ChPTVirtualPhotons3[4],20];
-K9 := UCouplingConstant[ChPTVirtualPhotons3[4],21];
-K10:= UCouplingConstant[ChPTVirtualPhotons3[4],22];
-K11 := UCouplingConstant[ChPTVirtualPhotons3[4],23];
-K12 := UCouplingConstant[ChPTVirtualPhotons3[4],24];
-K13 := UCouplingConstant[ChPTVirtualPhotons3[4],25];
-K14 := UCouplingConstant[ChPTVirtualPhotons3[4],26];
-K15 := UCouplingConstant[ChPTVirtualPhotons3[4],27];
-K16 := UCouplingConstant[ChPTVirtualPhotons3[4],28];
-K17 := UCouplingConstant[ChPTVirtualPhotons3[4],29];
-K18 := UCouplingConstant[ChPTVirtualPhotons3[4],30];
-K19 := UCouplingConstant[ChPTVirtualPhotons3[4],31];
+K1 := CouplingConstant[ChPTVirtualPhotons3[4],13];
+K2 := CouplingConstant[ChPTVirtualPhotons3[4],14];
+K3 := CouplingConstant[ChPTVirtualPhotons3[4],15];
+K4 := CouplingConstant[ChPTVirtualPhotons3[4],16];
+K5 := CouplingConstant[ChPTVirtualPhotons3[4],17];
+K6 := CouplingConstant[ChPTVirtualPhotons3[4],18];
+K7 := CouplingConstant[ChPTVirtualPhotons3[4],19];
+K8 := CouplingConstant[ChPTVirtualPhotons3[4],20];
+K9 := CouplingConstant[ChPTVirtualPhotons3[4],21];
+K10:= CouplingConstant[ChPTVirtualPhotons3[4],22];
+K11 := CouplingConstant[ChPTVirtualPhotons3[4],23];
+K12 := CouplingConstant[ChPTVirtualPhotons3[4],24];
+K13 := CouplingConstant[ChPTVirtualPhotons3[4],25];
+K14 := CouplingConstant[ChPTVirtualPhotons3[4],26];
+K15 := CouplingConstant[ChPTVirtualPhotons3[4],27];
+K16 := CouplingConstant[ChPTVirtualPhotons3[4],28];
+K17 := CouplingConstant[ChPTVirtualPhotons3[4],29];
+K18 := CouplingConstant[ChPTVirtualPhotons3[4],30];
+K19 := CouplingConstant[ChPTVirtualPhotons3[4],31];
 
 (* ---------------------------------------------------------------- *)
 
 (* Box definitions *)
 
-UCouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    UCouplingConstant[ChPTVirtualPhotons3[4],i_?((#<11)&),st___RenormalizationState,
+    CouplingConstant[ChPTVirtualPhotons3[4],i_?((#<11)&),st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["L",FontSlant->"Italic"]][[1]],
@@ -215,8 +215,8 @@ UCouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-UCouplingConstant /: MakeBoxes[
-      UCouplingConstant[ChPTVirtualPhotons3[4], i_?((10<#<13) &), st___RenormalizationState,
+CouplingConstant /: MakeBoxes[
+      CouplingConstant[ChPTVirtualPhotons3[4], i_?((10<#<13) &), st___RenormalizationState,
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
     Block[{ii = i - 10, jj},
@@ -227,8 +227,8 @@ UCouplingConstant /: MakeBoxes[
                   TraditionalForm[IndexBox[qs]]]}]]] /.
                   "HighEnergyPhysics`Phi`Objects`Private`jj" -> ToString[ii]];
 
-UCouplingConstant /: MakeBoxes[
-      UCouplingConstant[ChPTVirtualPhotons3[4], i_?((#>12)&), st___RenormalizationState,
+CouplingConstant /: MakeBoxes[
+      CouplingConstant[ChPTVirtualPhotons3[4], i_?((#>12)&), st___RenormalizationState,
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
     Block[{ii = i - 12, jj},
@@ -242,8 +242,9 @@ UCouplingConstant /: MakeBoxes[
 (* ---------------------------------------------------------------- *)
 
 RenormalizationCoefficients[ChPTVirtualPhotons3[4]] =
-{3/4, z, -3/4, 2 z, -9/4, 3/2 z, 0, z, -1/4, 1/4+3/2 z, 1/8, 1/4, 0, 0, 3/2 + 3 z + 20 z^2} /.
-z -> UCouplingConstant[ChPTVirtualPhotons3[2],RenormalizationState[0]]/
+{3/32,3/16,0,1/8,3/8,11/144,0,5/48,1/4,-1/4,-1/8,5/24,
+3/4, z, -3/4, 2 z, -9/4, 3/2 z, 0, z, -1/4, 1/4+3/2 z, 1/8, 1/4, 0, 0, 3/2 + 3 z + 20 z^2} /.
+z -> CouplingConstant[ChPTVirtualPhotons3[2],RenormalizationState[0]]/
 DecayConstant[PhiMeson,RenormalizationState[0]]^4;
 
 (* ---------------------------------------------------------------- *)

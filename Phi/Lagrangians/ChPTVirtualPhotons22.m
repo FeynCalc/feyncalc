@@ -98,8 +98,8 @@ FDr[fcqf[Particle[Photon],fcli[mu]],{mu}]*
 FDr[fcqf[Particle[Photon],fcli[nu]],{nu}]+
 
 HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTVirtualPhotons2[2]]*
-UTrace[NM[UMatrix[UChiralSpurionRight],MM,
-UMatrix[UChiralSpurionLeft],Adjoint[MM]]];
+UTrace[NM[UChiralSpurionRightMatrix, MM,
+UChiralSpurionLeftMatrix, Adjoint[MM]]];
     
 (* --------------------------------------------------------------- *)
 

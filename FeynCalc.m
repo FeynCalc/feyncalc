@@ -4128,9 +4128,15 @@ diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x *
 
 diractraceevsimple[x_Dot, {opt___}]:=
 (If[FreeQ[#,LorentzIndex],#, #/.Pair->sCO/.sCO->Pair]&[
-     If[Length[x] > Length[Union[Variables /@ Apply[List,x]]],
+     If[(*Length[x] > Length[Union[Variables /@ Apply[List,x]]],*)
+   (*More restrictive condition. I'm not sure about this... But the old stuff commented out above
+      is wrong on e.g. Tr[DiracGamma[Momentum[p]].DiracGamma[Momentum[p]].DiracGamma[Momentum[r]]]
+      see, Kapustas bug report http://www.feyncalc.org/forum/0079.html*)
+        Union[Length /@ Split[Sort[ Variables /@ Apply[List,x] ]]] === {2},
+        If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[x]]];
         Factor[diractraceevsimpleplus[Expand[DiracTrick[x]], {opt}]],
-        (TraceOfOne /. {opt} /.Options[Tr] /. Options[DiracTrace] )*
+        If[$VeryVerbose >2, Print["using spursav on ", StandardForm[x]]];
+       (TraceOfOne /. {opt} /.Options[Tr] /. Options[DiracTrace] )*
         (spursav @@ x)
       ] ]
 )  /; (MatchQ[Apply[doo, x], doo[

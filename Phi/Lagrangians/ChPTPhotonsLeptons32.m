@@ -1,6 +1,6 @@
 (* *************************************************************** *)
 (*                                                                 *)
-(*                      ChPTVirtualPhotons32                       *)
+(*                      ChPTPhotonsLeptons32                       *)
 (*                                                                 *)
 (* *************************************************************** *)
 
@@ -16,16 +16,18 @@
    Description:         The leading order ChPT lagrangian with 
                         electromagnetic couplings.
     
-                        Taken from Res Urech (1994), hep-ph/9405341
+                        Taken from
+                        M. Knecht, H. Neufeld, H. Rupertsberger, P. Talavera
+                        (1999), hep-ph/9909284
 *)
 
 
 Begin["HighEnergyPhysics`Phi`Objects`"];
 
-ChPTVirtualPhotons32::"usage"=
-   "ChPTVirtualPhotons32 is the name of the file containing the definitions for \
- Lagrangian[ChPTVirtualPhotons3[2]], which is the leading order mesonic \
-SU(3) ChPT lagrangian with couplings to virtual photons. \
+ChPTPhotonsLeptons32::"usage"=
+   "ChPTPhotonsLeptons32 is the name of the file containing the definitions for \
+ Lagrangian[ChPTPhotonsLeptons3[2]], which is the leading order mesonic \
+SU(3) ChPT lagrangian with couplings to virtual photons and leptons. \
 To evaluate use ArgumentsSupply";
 
 GaugeFixingParameter::"usage"=
@@ -46,6 +48,8 @@ fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
 
 mu=(Global`\[Mu]);
 nu=(Global`\[Nu]);
+ii=(Global`i);
+fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
 
 (* ---------------------------------------------------------------- *)
 
@@ -58,7 +62,7 @@ pt/:MakeBoxes[pt[RenormalizationState[0]],TraditionalForm]:="";
     
 CouplingConstant/:
   MakeBoxes[
-    CouplingConstant[ChPTVirtualPhotons3[2],st___RenormalizationState,
+    CouplingConstant[ChPTPhotonsLeptons3[2],st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SuperscriptBox[MakeBoxes[StyleForm["C",FontSlant->"Italic"]][[1]],
@@ -73,13 +77,13 @@ MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]][[1]];
 
 (* --------------------------------------------------------------- *)
 
-SetAttributes[ChPTVirtualPhotons3,NumericFunction];
+SetAttributes[ChPTPhotonsLeptons3,NumericFunction];
 
 (* --------------------------------------------------------------- *)
 
 
 HighEnergyPhysics`fctables`Lagrangian`Lagrangian[
-ChPTVirtualPhotons3[2]]:=
+ChPTPhotonsLeptons3[2]]:=
 
 1/4*DecayConstant[PhiMeson]^2*
 
@@ -97,17 +101,35 @@ GaugeFixingParameter/2*
 FDr[fcqf[Particle[Photon],fcli[mu]],{mu}]*
 FDr[fcqf[Particle[Photon],fcli[nu]],{nu}]+
 
-CouplingConstant[ChPTVirtualPhotons3[2]]*
-UTrace[NM[UMatrix[UChiralSpurionRight],MM,
-UMatrix[UChiralSpurionLeft],Adjoint[MM]]];
+CouplingConstant[ChPTPhotonsLeptons3[2]]*
+UTrace[NM[UChiralSpurionRightMatrix,MM,
+UChiralSpurionLeftMatrix,Adjoint[MM]]]+
+
+DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
+fcdm[fcli[mu]].
+(I*fcqf[fcpd[fcli[mu]],
+Particle[Lepton],fcsuni[ii]]+
+CouplingConstant[QED[1]]*
+fcqf[Particle[Photon],fcli[mu]].
+fcqf[Particle[Lepton],fcsuni[ii]])-
+
+ParticleMass[Lepton,fcsuni[ii]]*
+DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
+fcqf[Particle[Lepton],fcsuni[ii]]+
+
+DiracBar[fcqf[Particle[Neutrino],fcsuni[ii]]].
+fcdm[fcli[mu]].
+fcdm[6].
+I*fcqf[fcpd[fcli[mu]],
+Particle[Neutrino],fcsuni[ii]];
     
 (* --------------------------------------------------------------- *)
 
-FieldsSet[ChPTVirtualPhotons3[2]]:=
+FieldsSet[ChPTPhotonsLeptons3[2]]:=
 {IsoVector[fcqf[Particle[PhiMeson]]],
 fcqf[Particle[Photon]]};
 
-$Global`Lagrangians=Union[Global`$Lagrangians,{ChPTVirtualPhotons3[2]}];
+$Global`Lagrangians=Union[Global`$Lagrangians,{ChPTPhotonsLeptons3[2]}];
 
 End[];
 

@@ -140,7 +140,7 @@ P$Generic = F | S | V | U | SV
 
 should be changed to
 
-P$Generic = F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$UParticleHeads
+P$Generic = F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$ParticleHeads
 
 In Analytic.m,
 

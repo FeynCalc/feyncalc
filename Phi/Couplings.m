@@ -135,6 +135,7 @@ $CouplingIsoIndicesSpecifications = {Pion[
         0] -> {{IsoRange -> {1, 2, 3}, IsoIndicesString -> "I"}},
     Kaon[0] -> {{IsoRange -> {1, 2}, IsoIndicesString -> "J"}}};
 $MixingFields = {};
+$LastModelRules = {};
 $InsertOnly = {Vector[0][0] -> {fainc, faout, faext},
     AxialVector[0][0] -> {fainc, faout, faext}};
 $FADelta = fcsundel;

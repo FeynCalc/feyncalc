@@ -616,16 +616,25 @@ UQuarkCharge::"usage" =
 diagonal quark charge matrix";
 
 UChiralSpurion::"usage" = 
-    "UMatrix[UChiralSpurion[]] represents some \
+    "UMatrix[UChiralSpurion[]][x] represents some \
 spurion.  It is merely a symbol with display rules";
 
 UChiralSpurionLeft::"usage" = 
-    "UMatrix[UChiralSpurionLeft[]] represents some lefthanded \
+    "UMatrix[UChiralSpurionLeft[]][x] represents some lefthanded \
 spurion.  It is merely a symbol with display rules";
 
 UChiralSpurionRight::"usage" = 
-    "UMatrix[UChiralSpurionRight[]] represents some lefthanded \
+    "UMatrix[UChiralSpurionRight[]][x] represents some lefthanded \
 spurion.  It is merely a symbol with display rules";
+
+UChiralSpurionMatrix::"usage" = 
+    "UChiralSpurionMatrix[opts]:=UMatrix[UChiralSpurion[opts]][x]";
+
+UChiralSpurionLeftMatrix::"usage" = 
+    "UChiralSpurionLeftMatrix[opts]:=UMatrix[UChiralSpurionLeft[opts]][x]";
+
+UChiralSpurionRightMatrix::"usage" = 
+    "UChiralSpurionRightMatrix[opts] :=UMatrix[UChiralSpurionRight[]][x]";
 
 QuarkToMesonMasses::"usage" = 
     "QuarkToMesonMasses is an option for UQuarkMass specifying whether the \
@@ -1978,7 +1987,27 @@ UIdentity /: Format[UIdentity, TraditionalForm] :=
      
     SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]][[1]], "R"];
      
-     UMatrix /:
+    UChiralSpurionMatrix /:
+     MakeBoxes[UChiralSpurionMatrix, 
+	  TraditionalForm] :=
+     
+    MakeBoxes[
+        StyleForm["Q", FontSlant -> "Italic", 
+          FontWeight -> "Bold"]][[1]];
+
+     UChiralSpurionLeftMatrix /:
+     MakeBoxes[UChiralSpurionLeftMatrix, TraditionalForm] :=
+     
+    SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic",
+        FontWeight -> "Bold"]][[1]], "L"];
+
+     UChiralSpurionRightMatrix /:
+     MakeBoxes[UChiralSpurionRightMatrix, TraditionalForm] :=
+     
+    SubscriptBox[MakeBoxes[StyleForm["Q", FontSlant -> "Italic",
+        FontWeight -> "Bold"]][[1]], "R"];
+
+    UMatrix /:
      MakeBoxes[UMatrix[UChi[___]][___], 
 	  TraditionalForm] :=
      

@@ -83,7 +83,7 @@ Cell[BoxData[GridBox[{
         {
           
           ButtonBox[
-            \(UCouplingConstant[\[SelectionPlaceholder], \[Placeholder]]\)]},
+            \(CouplingConstant[\[SelectionPlaceholder], \[Placeholder]]\)]},
         {
           ButtonBox[\(DecayConstant[\[SelectionPlaceholder]]\)]}},
       RowSpacings->0,
@@ -434,7 +434,7 @@ chosen and the renormalization of the coupling constants should be specified.\
 Cell[BoxData[GridBox[{
         {
           
-          ButtonBox[\(ULagrangian[\[SelectionPlaceholder]] := \
+          ButtonBox[\(Lagrangian[\[SelectionPlaceholder]] := \
 \[Placeholder]\)]},
         {
           
@@ -499,7 +499,7 @@ least the following objects:\
 
 Cell[BoxData[GridBox[{
         {
-          ButtonBox["$UParticlesInUse"]},
+          ButtonBox["$ParticlesInUse"]},
         {
           ButtonBox["$PropagatorMassesStates"]},
         {
@@ -931,7 +931,7 @@ particle names with an extra argument (usually 0), e.g. Electron[0]. \
 PhiModel should be set to a valid PHI model, e.g. \"QED\". PerturbationOrder \
 to a list of the counter term \
 orders one wants and has defined lagrangian files for. E.g. {1,2}, \
-corresponding to model files \"QED1.m\" and \"QED2.m\". Also GaugeGroup, \
+corresponding to model files \"QED1.m\" and \"QED2.m\". Also SUNN, \
 CouplingSign and XFileName may be set."
 }], NotebookDefault,
   CellMargins->{{Inherited, Inherited}, {7, Inherited}},
@@ -949,7 +949,7 @@ Cell[BoxData[GridBox[{
         {
           ButtonBox[\(PerturbationOrder \[Rule] \[SelectionPlaceholder]\)]},
         {
-          ButtonBox[\(GaugeGroup \[Rule] \[SelectionPlaceholder]\)]},
+          ButtonBox[\(SUNN \[Rule] \[SelectionPlaceholder]\)]},
         {
           ButtonBox[\(CouplingSign \[Rule] \[SelectionPlaceholder]\)]},
         {

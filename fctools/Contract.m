@@ -17,7 +17,7 @@ BeginPackage["HighEnergyPhysics`fctools`Contract`",
 
 Contract::usage=
 "Contract[expr] contracts pairs of Lorentz indices of metric tensors,
-four-vectors and (depending on the optino EpsContract) of
+four-vectors and (depending on the option EpsContract) of
 Levi-Civita tensors in expr. For the contraction of Dirac matrices
 with each other use DiracSimplify. \n \n
 Contract[exp1, exp2] contracts (exp1*exp2), where exp1 and exp2 may be

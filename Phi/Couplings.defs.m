@@ -152,6 +152,10 @@ Automatic.mod. It is a list specifying optional mixing fields and their \
 partners, e.g. {PseudoScalar[0][-1]->{Pion[0],PseudoScalar[0][0]},...}.  Here \
 PseudoScalar[0][-1] is some intermediate field.  Default value : {}";
 
+$LastModelRules::"usage" = 
+    "$LastModelRules is a variable used by the FeynArts model file \
+Automatic.mod. It is merged with M$LastModelRules.  Default value : {}";
+
 $InsertOnly::"usage" = 
     "$InsertOnly is a variable used by the FeynArts model file \
 Automatic.mod. It is a list specifying optional propagator types the \
