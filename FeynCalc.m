@@ -209,8 +209,8 @@ If[StringQ[ Global`$LoadTARCER ],
    {Global`$LoadTARCER},
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
 FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
-"Tarcer"}],IgnoreCase->True](*What is sdfj? F.Orellana, 12/10-2003*)(*;
-  sdfj*)];
+"Tarcer"}],IgnoreCase->True]
+];
 
 If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 
@@ -684,7 +684,7 @@ multifunpack=
 {"ILimit", "FunctionLimits"},
 {"FieldDerivative", "FDr"},
 {"CovariantFieldDerivative", "CDr"},
-{"CheckF", "ForceSave", "NoSave"}
+{"CheckDB", "ForceSave", "NoSave"}
 };
 
 
@@ -872,9 +872,6 @@ Clear[feversion];
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
 Protect[Dot];
-
-If[tarcerloadedflag===True, ToExpression["ToTFi"];
- Clear[tarcerloadedflag]];
 
 If[$VersionNumber>3.4,
 Unprotect[Variables];
