@@ -899,12 +899,12 @@ If[Global`$LoadPhi===True,
    Get["Phi"<>$PathnameSeparator<>"Phi.m"]]
 ];
 
-If[Global`$FeynCalcStartupMessages =!= False && Global`$LoadFeynArts===True,
+If[ Global`$LoadFeynArts===True,
    If[$Notebooks===True,
       FeynCalcCellPrint[Cell[TextData[{
      "Loading FeynArts, see www.feynarts.de for documentation"}],
                   "Text"]],
-      Print["Loading FeynArts, see www.feynarts.de for documentation"]
+      FeynCalcPrint["Loading FeynArts, see www.feynarts.de for documentation"]
    ];
 (* loading *)
 Block[{Print},
