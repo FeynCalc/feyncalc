@@ -222,14 +222,23 @@ If[$VeryVerbose > 2,Print["dir2a"]];
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
 *)
         If[diractrlabel===True,
+(*
+Dialog[Global`D2 = diracdt];
+*)
 
            diracdt = diracdt/.DOT->trIC/.trI->dS;
+(*
+Dialog[Global`D3 = diracdt];
+*)
               (* optimization *)
            colle[a_]:=If[ (Length[a]<20(*00*))||(Head[a]=!=Plus), a,
                           Collect2[a, DOT, Factoring -> False] ];
            dirfun[exp_]:=colle[exp/.DOT->dS/.DOT -> trIC /. trI->DOT];
 (* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
            diracdt = FixedPoint[dirfun, diracdt, 3]/.DOT ->trIC/.trI->dS;
+(*
+Dialog[Global`D4 = diracdt];
+*)
 If[$VeryVerbose>2,Print["dir2done"]];
            If[ FreeQ[ diracdt, DOT ],
                diracdt = diracdt/.DiracGamma[_[__],___]->0;
@@ -345,7 +354,7 @@ print3["exiting diracSimplify"];
 
 (* Properties and special cases of traces (up to a factor 4) *)
    tris[x___] := tris[x] = trI[x];                  (*trisdef*)
-   trI[a_+b_] := tris[a] + tris[b];                  (*trIdef*)
+   trI[a_Plus] := Map[tris, a];
    trI[] = 1;
    trI[ DiracGamma[5] ] = 0;
    trI[ DiracGamma[6] ] = 1/2;

@@ -315,6 +315,7 @@ If[!FreeQ[diractrny, DiracGamma],
                                      DiracCanonical->False
                     ]
   ];
+Global`D1=diractrny;
 
 If[$VeryVerbose > 1, Print["CH2"]; Print[TimeUsed[]]];
    If[!FreeQ[diractrny, LorentzIndex],
@@ -384,6 +385,8 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 (*
    spursav[x___DiracGamma]:=MemSet[ spursav[x], spur[x] ];
 *)
+(* RM 09/12/2003 *)
+   spursav[x__ /; !FreeQ[{x},Plus]]:= DOT@@{x};
 
    spursav[x__DiracGamma] := MemSet[spursav[x], spur[x]];
    (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
