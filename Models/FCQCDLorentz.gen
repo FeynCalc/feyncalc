@@ -103,11 +103,12 @@ MatrixTrace :> (DiracTrace[2 Tf Nf #]&),
   (* this is of course only true for a generic insertionlevel, however, this seems the 
      only way to get it to work
   *)
-(*  G[_][_][__][x_] :> 1,*)
+  G[_][_][__][x_] :> 1,
   Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
   FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
   FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
-  FourMomentum[Outgoing, i_Integer] :> ToExpression["k" <> ToString[i]],
+(* all momenta are incoming !*)
+  FourMomentum[Outgoing, i_Integer] :> -ToExpression["k" <> ToString[i]],
   Index[Lorentz, i_Integer]:>ToExpression["li" <> ToString[i]],
   SUNDelta[a_, b_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
   SUNDelta[a_, b_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
