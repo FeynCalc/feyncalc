@@ -683,7 +683,8 @@ multifunpack=
 {"DoPolarizationSums", "PolarizationUncontract", "EpsUncontract"},
 {"ILimit", "FunctionLimits"},
 {"FieldDerivative", "FDr"},
-{"CovariantFieldDerivative", "CDr"}
+{"CovariantFieldDerivative", "CDr"},
+{"CheckF", "ForceSave", "NoSave"}
 };
 
 
