@@ -80,13 +80,13 @@ Pair /:
     HighEnergyPhysics`FeynCalc`Momentum`Momentum[a__],
     HighEnergyPhysics`FeynCalc`Momentum`Momentum[a__]
                  ], TraditionalForm
-            ] := SuperscriptBox[Tbox[Momentum[a]],2];
+            ] := SuperscriptBox[Tbox[Momentum[a]],2] /; FreeQ[{a},Plus];
 
 MakeBoxes[Pair[
     HighEnergyPhysics`FeynCalc`Momentum`Momentum[a__],
     HighEnergyPhysics`FeynCalc`Momentum`Momentum[a__]
                  ]^2, TraditionalForm
-            ] := SuperscriptBox[Tbox[Momentum[a]],4];
+            ] := SuperscriptBox[Tbox[Momentum[a]],4] /; FreeQ[{a},Plus];
 
 MakeBoxes[Pair[
     HighEnergyPhysics`FeynCalc`Momentum`Momentum[a__],
@@ -107,6 +107,20 @@ Pair /: MakeBoxes[Pair[a_Plus, b_], TraditionalForm] :=
     RowBox[{"(", ToBoxes[TraditionalForm[a]], ")",".","(",
           ToBoxes[TraditionalForm[b]], ")"}] /; !FreeQ[a, Momentum] && 
           !FreeQ[b, Momentum];
+
+Pair /:
+        MakeBoxes[Pair[
+          HighEnergyPhysics`FeynCalc`Momentum`Momentum[a_Plus,di___],
+          HighEnergyPhysics`FeynCalc`Momentum`Momentum[a_Plus,dii___]],
+                  TraditionalForm
+                 ] := SuperscriptBox[Tbox["(", a,")"],2];
+
+MakeBoxes[Pair[
+          HighEnergyPhysics`FeynCalc`Momentum`Momentum[a_,di___],
+          HighEnergyPhysics`FeynCalc`Momentum`Momentum[a_,dii___]
+              ]^m_Integer,
+          TraditionalForm
+         ] := SuperscriptBox[Tbox["(", a,")"], #]&@@{2m};
 
 Pair /:
         MakeBoxes[Pair[

@@ -14,7 +14,10 @@ Begin["`Private`"];
 SetAttributes[SPD, Orderless];
 SPD[a_] := SPD[a,a];
 
-   SPD/: MakeBoxes[SPD[a_, b_], TraditionalForm] :=
+MakeBoxes[SPD[a_,a_], TraditionalForm] := SuperscriptBox[
+   RowBox[{"(",TBox[a],")"}], 2] /; !FreeQ[a, Plus];
+
+SPD/: MakeBoxes[SPD[a_, b_], TraditionalForm] :=
     ToBoxes[
            MakeContext["FeynCalcInternal"][SPD[a,b]],
             TraditionalForm] ;
@@ -24,7 +27,6 @@ MakeBoxes[SPD[a_,a_]^n_Plus, TraditionalForm] := SuperscriptBox[
 
 MakeBoxes[SPD[a_,a_]^n_Times, TraditionalForm] := SuperscriptBox[
    RowBox[{"(",SuperscriptBox[TBox[a], 2],")"}], TBox[n]];
-
 
 MakeBoxes[SPD[a_,a_]^n_Integer, TraditionalForm] := (SuperscriptBox[TBox[a], #]&@@{2 n}
  ) /; FreeQ[a, Plus];
