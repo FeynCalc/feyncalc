@@ -1,2 +1,2 @@
-{FANonCommutative[FermiConstant*DiracGamma[\[Mu]p3]*
-   FAFourVector[p3, \[Mu]p3], DiracGamma[7]]}
+{NonCommutative[FermiConstant*DiracGamma[\[Mu]p3]*
+   FourVector[p3, \[Mu]p3], DiracGamma[7]]}
