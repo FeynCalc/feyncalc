@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 16 December '98 at 16:25 *)
+(* :History: RM: changed Sept. 13, 2003*)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: Write2 *) 
@@ -14,6 +14,9 @@
 
 BeginPackage["HighEnergyPhysics`fcloops`Write2`",
              "HighEnergyPhysics`FeynCalc`"];
+
+FortranFormatDoublePrecision::"usage"=
+"FortranFormatDoublePrecision is an option for Write2.";
 
 FUNCTION::"usage"=
 "FUNCTION[exp, string] is a head of an expression to be declared a
@@ -56,10 +59,14 @@ d0  :=  d0               = MakeContext["D0"];
 freeq2                   = MakeContext["FreeQ2"];
 small                    = MakeContext["SmallVariable"];
 
-Options[Write2]={ finalsubstitutions -> {},
-                  FormatType -> InputForm, D0Convention -> 0, 
+Options[Write2]={ 
+                  D0Convention -> 0, 
+                  finalsubstitutions -> {},
+                  FormatType -> InputForm, 
+ 	          FortranFormatDoublePrecision -> True,                 
                   PageWidth    -> 62,
-                  PreFortranFile -> "", PostFortranFile -> "",
+                  PostFortranFile -> "",
+                  PreFortranFile -> "", 
                   StringReplace->{}
                 };
 
@@ -106,7 +113,24 @@ vhf[y_] := Block[{te=y, var={}},
    var/.finsubst];
 
 If[(FormatType/.ops/.Options[Write2]) === FortranForm,
+(* N@ added by RM on Sept. 13th 2003, because of http://www.feyncalc.org/forum/0153.html*)
+eq = N[eq];
                oldopenops = Options[OpenWrite];
+
+togglerule  = False;
+Unprotect[Real];
+Real /: Format[r_Real, FortranForm] :=
+          ({mantissa, exponent} = MantissaExponent[r];
+            If[r === 0., exponent = 1];
+           If[Abs[r] < 10^16 && Chop[FractionalPart[r]] === 0,
+              togglerule=False;
+              SequenceForm[r//Floor, D, exponent-1]
+              ,
+              SequenceForm[10. mantissa,D,exponent-1]
+             ]
+          ) /; (togglerule = !  togglerule
+               ) && ((FortranFormatDoublePrecision/.{opts}/.Options[Write2])===True);
+
                SetOptions[OpenWrite, FormatType->FortranForm, 
                                      PageWidth-> pagewidth ];
 (*
@@ -288,7 +312,6 @@ If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
 If[(FormatType/.ops/.Options[Write2]) === FortranForm,
    If[postfortran =!= {""},
    If[FileType[postfortran[[1]]] =!= None,
-   (*If[FileNames[postfortran[[1]]] =!= {},*)
         If[Head[postfortran===String],
            prerec = ReadList[StringToStream[postfortran], String],
            prerec = Flatten[ReadList[#, Record]& /@ postfortran]
@@ -351,24 +374,15 @@ If[(FormatType/.ops/.Options[Write2]) === FortranForm,
             ]
       ];
 Close @@ {file};
+
+(* reestablish old FortranForm format behaviour *)
+If[(FormatType/.ops/.Options[Write2]) === FortranForm,
+   Unset[FormatValues[Real]];
+   Protect[Real];
+  ]
  ];
 If[ValueQ[oldopenops],SetOptions @@ Prepend[oldopenops, OpenWrite]];
 file];
-
-(* this is initiated by an idea of Mark Sofroniu *)
-togglerule  = False;
-Unprotect[Real];
-Real /: Format[r_Real, FortranForm] := 
-          ({mantissa, exponent} = MantissaExponent[r];
-            If[r === 0., exponent = 1];
-           If[Abs[r] < 10^16 && Chop[FractionalPart[r]] === 0,
-              togglerule=False;
-              SequenceForm[r//Floor, D, exponent-1]
-              ,
-              SequenceForm[10. mantissa,D,exponent-1]
-             ]
-          ) /; (togglerule = !togglerule);
-Protect[Real];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
