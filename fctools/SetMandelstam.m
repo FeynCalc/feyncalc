@@ -91,7 +91,8 @@ SetMandelstam[s_,t_,u_,p1_,p2_,p3_,p4_,m1_,m2_,m3_,m4_,opt___Rule]:=
        settemp = Union[settemp, FeynCalcExternal[settemp]];
 (* want also for 4 or D dimensions to set SP[p,p] = ... etc. *)
       setvars = Cases2[settemp, {Pair, SP, SPD}];
-      If[MatchQ[setvars,{__Pair}], 
+Global`SE=setvars;
+      If[Complement[Head/@setvars,{Pair, SP, SPD}] === {}, 
          sol = Solve[ settemp,setvars ]/.Rule->setit
         ];
       ];
