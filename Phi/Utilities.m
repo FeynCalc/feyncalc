@@ -552,7 +552,8 @@ TracerToFC[
 
 (*Commented out 16/9-2002. Will look at DOT instead*)
 (*SetAttributes[ditchmom, NumericFunction];*)
-DiscardOrders[am_, opts___] /; FreeQ[am, WFFactor1] :=
+DiscardOrders[am_, opts___] :=
+  (If[!FreeQ[am, WFFactor1],Message[DiscardOrders::wffac]];
   (spf = (HighEnergyPhysics`Phi`Objects`ScalarProductForm /.
               Flatten[{opts}] /. Options[DiscardOrders]);
       Cancel[ExpandAll[
@@ -573,7 +574,7 @@ DiscardOrders[am_, opts___] /; FreeQ[am, WFFactor1] :=
                   ff_[temprec] -> ff /. temprec -> Sequence[]]] /.
           ditchmom[]^i_ /;
               i > (PerturbationOrder + 2 /. Flatten[{opts}] /.
-                    Options[DiscardOrders]) -> 0 /. ditchmom[] -> 1);
+                    Options[DiscardOrders]) -> 0 /. ditchmom[] -> 1));
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
