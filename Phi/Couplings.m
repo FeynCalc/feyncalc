@@ -1143,7 +1143,7 @@ FAToFC[amm_, opts___] := (traceev = (fcdtrev /. Flatten[{opts}] /. Options[FAToF
          tmptable1 = fixindices[tmptable];
 
     VerbosePrint[2, "\nApplying translation rules"];
-  tmptable1 /.
+  (tmptable1 /.
 (*Momenta*){
    fafm[fainc, b_] :> fcmom[ToExpression[(MomentumVariablesString /.
       Flatten[{opts}] /. Options[FAToFC]) <> ToString[b]], D],
@@ -1226,11 +1226,10 @@ If[traceev =!= (fcdtrev /. Options[FAToFC]),
 (fcdtrev -> False) -> (fcdtrev -> traceev) /.
         If[(Sum /. Flatten[{opts}] /. Options[FAToFC]) === False,
           faso[___] -> 1,faso[i_, r_, ___] :>
-            faso[fcsuni[i], r] /; !FreeQ[{i}, IsoSpin, Heads -> True]] //.
+            faso[fcsuni[i], r] /; !FreeQ[{i}, IsoSpin, Heads -> True]] //
       If[(Sum /. Flatten[{opts}] /. Options[FAToFC]) === fcexpt,
-           Times[f__, faso[i_, r_, ___]] :>
-         (VerbosePrint[2, "Summing ", i, " from 1 to ", r];
-          Sum[Times[f], {i, 1, r}]), {}] /.
+           (VerbosePrint[3, "Summing ", StandardForm[#]];
+           DoSumOver[#,Sequence@@OptionsSelect[DoSumOver,opts]])&, Identity]) /.
 	{fcsundel[a_, b_] /; FreeQ[{a, b}, fcsuni|fcexsuni] ->
           fcsundel[fcsuni[a], fcsuni[b]],
         fcsund[a_, b_, c_] /; FreeQ[{a, b, c}, fcsuni|fcexsuni] ->
@@ -1256,7 +1255,10 @@ DoSumOver[exp_, opts___Rule] :=
   (*Apart is to avoid summing sub-factors and leaving other factors with
     SUNIndices untouched. No guarantee however.*)
     suminds = Union[(#[[1]])& /@ Cases[exp, faso[__], Infinity, Heads->True]];
-    res= Apart[exp] //. Times[f__, faso[i_, r_, ___]] :>          
+    (*F.Orellana, 9/11-2003. Apart factors out e.g. SUNDelta[ExplicitSUNIndex[I1,5]
+      and leaves a sum of terms with SumOver[...], causing the terms to be summed and
+      the SUNDelta to be forgotten.*)
+    res= Factor[Apart[exp]] //. Times[f__, faso[i_, r_, ___]] :>          
           (If[Head[r] =!= List, 
             VerbosePrint[2, "Summing ", i, " from 1 to ", r];
             rr = Range[1, r],
@@ -1549,7 +1551,12 @@ faopts = Sequence@@Select[OptionsSelect[facrfa, opts], FreeQ[#, faal]&];
                                 ((1 + Plus @@ #) & /@ wffacs),
       True, Message[CreateFCAmp::"nomethod", me]];
 
-    (Times@@#)&/@ Transpose[{FAToFC[wffac],FAToFC[facrfa[amp, faal -> facl, faopts], opts]}] /.
+    (*!!! We need to take care of internal propagators... FAToFC should be applied on the products of 
+          wffac and amp !!!*)
+
+    (*(Times@@#)& /@ Transpose[{FAToFC[wffac],FAToFC[facrfa[amp, faal -> facl, faopts], opts]}] /.*)
+    FAToFC[((Times@@#)& /@ Transpose[{wffac,FAToFC[facrfa[amp, faal -> facl, faopts], Sum->True, opts]}]),
+       opts] /.
     If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
        (*Not very general :-( But makes life easier for the user...*)
        PseudoScalar2[0, {_}] -> PseudoScalar2[0],{}] /.
