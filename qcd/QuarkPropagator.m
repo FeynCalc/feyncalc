@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: QuarkPropagator *) 
 
@@ -65,7 +63,7 @@ Abbreviation[QuarkPropagator]=HoldForm[QP];
 QuarkPropagator[a_, __, b_/;Head[b]=!=Rule, opt___Rule] := 
 QuarkPropagator[a, opt];
 
-QuarkPropagator[pi_/;Head[pi]=!=List, opt___Rule] := 
+QuarkPropagator[pi_/;(Head[pi]=!=List) && FreeQ[pi, BlankSequence], opt___Rule] := 
   QuarkPropagator[{pi,0}, opt];
 
 QuarkPropagator[{pi_, m_}, opt___Rule] := 
