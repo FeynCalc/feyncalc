@@ -2466,10 +2466,10 @@ isoindextab[var_, (opts___Rule | opts___List)] :=
         1, (ParticlesNumber /. Flatten[{opts}] /. Options[VariableBoxes])}];
 
 isoboxes[var_, (opts___Rule | opts___List)] :=
-    MakeBoxes[#, TraditionalForm | yakk] & /@ Flatten[isoindextab[var, opts]];
+    HoldPattern[MakeBoxes[#, TraditionalForm]] & /@ Flatten[isoindextab[var, opts]];
 
 isoboxes1[var_, (opts___Rule | opts___List)] :=
-    MakeBoxes[#, _] & /@ Flatten[isoindextab[var, opts]];
+    HoldPattern[MakeBoxes[#, _]] & /@ Flatten[isoindextab[var, opts]];
 
 isoright[var_, (opts___Rule | opts___List)] :=
 
