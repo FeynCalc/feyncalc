@@ -60,10 +60,13 @@ File -> {"FeynArts.m", "Setup.m",
 (*The list of replacements*)
 Replace -> {
       "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose",
-      "InferFormat" -> "tmpInfer", "SetLoop" -> "tmpsetloop", 
+      "InferFormat" -> "tmpInfer", "Format" -> "format1",
+      "format1[Global`a, Global`c]" -> "Format[Global`a, Global`c]",
+      "SetLoop" -> "tmpsetloop", 
       "Loop" -> "HighEnergyPhysics`FeynCalc`Loop`Loop", 
       "Indices" -> "FAIndices", 
-      "Global`PolarizationVector" -> "Global`FAPolarizationVector", 
+      (*"Global`PolarizationVector" -> "Global`FAPolarizationVector",*) 
+      "PolarizationVector" -> "FAPolarizationVector", 
       "FeynAmp" -> "FAFeynAmp",
       "PropagatorDenominator" -> 
         "HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator", 
@@ -71,7 +74,7 @@ Replace -> {
         "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator", 
       "GaugeXi" -> "HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi", 
       "NonCommutative" -> "FANonCommutative", 
-      "GS" -> "GStrong", 
+      "GS" -> "Gstrong", 
       "Global`DiracSpinor" -> 
         "HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor", 
       "FeynArts`DiracSpinor" -> 
@@ -110,7 +113,10 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String]; str1 = str;
              foundrev = True; repl = str1; 
             str1 = StringReplace[
                      StringReplace[
-                       str1, {replacements[[i, 1]] :> replacements[[i, 2]]}, 
+                       str1, {replacements[[i, 1]] -> 
+                       (* :> Not valid in mma 3.0, changed 11/10-2002 after
+                         bug report by Jeff Forshaw *)
+                       replacements[[i, 2]]}, 
                     MetaCharacters -> Automatic], "$1" -> repl]],
 		  {i, 1, Length[replacements]}]; 
         If[ToString[str] != "EndOfFile", 
@@ -195,7 +201,7 @@ FilePatch["FeynArts" <> $PathnameSeparator <> "Analytic.m",
 "", 
 "SequenceForm[StringTake[ToString[type], 3]" -> 
  "SequenceForm[StringTake[ToString[type],Min[3,StringLength[ToString[type]]]]",
-"Cases[p, PropagatorDenominator[__]]" :>
+"Cases[p, PropagatorDenominator[__]]" (*:>*) ->
 "Cases[p, HoldPattern[PropagatorDenominator[__]]]" }];
  
  
@@ -235,11 +241,14 @@ TeXToPS[\"\\\\leftarrow\"]:=SymbolChar[\"\\[LeftArrow]\"];
 TeXToPS[\"\\\\rightarrow\"]:=SmbolChar[\"\\[RightArrow]\"];
 TeXToPS[\"\\\\to\"]:=SymbolChar[\"\\[RightArrow]\"];
 
-End[]"}];
+End[]",
+"Orientation[ p1_, p2_ ] := N[ArcTan@@ (p2 - p1)]" ->
+"Orientation[ p1_, p2_ ] := N[(If[{##}=={0,0},0,ArcTan[##]]&)@@ (p2 - p1)]"}];
 
 
 (* ------------------------------------------------------------------------------ *)
-(* Make it known that the FA code has been patched and change context*)
+(* Make it known that the FA code has been patched, change context and
+   change to formatting in TraditionalForm only *)
 
 FilePatch["FeynArts.m", {"Print[*\"last revis*\"]" -> 
 "$1;\nPrint[\"patched for use with FeynCalc by Frederik Orellana\"];\n\n
@@ -248,7 +257,7 @@ If[NumberQ[HighEnergyPhysics`FeynArts`$FeynArts],\n
 ClearAll[HighEnergyPhysics`FeynArts`Greek,HighEnergyPhysics`FeynArts`UCGreek],\n
 Remove[HighEnergyPhysics`FeynArts`$FeynArts]];", 
 "BeginPackage[\"FeynArts`\"]" -> 
-"BeginPackage[\"HighEnergyPhysics`FeynArts`\"];",
+"BeginPackage[\"HighEnergyPhysics`FeynArts`\"];\n\nSetAttributes[SetForm, HoldAll];\nSetForm[Global`a_, Global`b_, Global`c_:TraditionalForm] := (Format[Global`a, Global`c] := Global`b;);\nformat1 /: SetDelayed[format1[Global`a_], Global`b_] := SetForm[Global`a, Global`b];\nformat1 /: Set[format1[Global`a_], Global`b_] := SetForm[Global`a, Global`b];\n\n",
 "LoadPackage*:=" -> 
 "If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory], $FeynArtsDir=HighEnergyPhysics`FeynCalc`$FeynCalcDirectory<>$PathnameSeparator,\n
 Remove[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory]];\n\n$1",
