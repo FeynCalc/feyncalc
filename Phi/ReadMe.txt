@@ -1,16 +1,19 @@
-DESCRIPTION:
-
 PHI (Phenomenology of hadronic interactions) is a Mathematica package for
 computations in Chiral Perturbation Theory (ChPT). It is meant to be used
 in conjunction with the other Mathematica packages FeynArts (version 3 or
 higher) and FeynCalc (version 3 or higher).
 
 PHI is designed for ChPT, but can in principle be adapted for any field
-theory. One distinguishing feature of ChPT is that it is not renormalizable,
-with a new counterterm lagrangian for each order in the perturbative
+theory. One distinguishing feature of ChPT is that it is not renormalizable
+but has a new counterterm lagrangian for each order in the perturbative
 expansion and vertices with any number of legs. Also, the perturbative
 expansion is not in a coupling constant; instead it is a dual expansion in
 the lightest 2 (or 3) quark masses and the external momenta.
+
+As of version 4.1.1 of FeynCalc, PHI is distributed with FeynCalc.
+A changelog and further information than given below can be found at
+http://www.feyncalc.org/phi/. Future changelogs will be given in in the
+main FeynCalc readme file FCReadme.txt
 
 
 FEATURES:
@@ -51,8 +54,8 @@ PHI INSTALLATION:
 Mathematica (version 3 or higher) is required. It is recomended not to have
 less than 128 MB of RAM and a reasonably fast processor (>300 MHz).
 
-FeynCalc (version 3 or higher) must be up and running. From version 4.1.0.3
-of FeynCalc, Phi is distributed with FeynCalc and no further installation of
+FeynCalc (version 3 or higher) must be up and running. From version 4.1.1
+of FeynCalc, PHI is distributed with FeynCalc and no further installation of
 PHI files is needed.
 FeynCalc can be obtained at http://www.feyncalc.org/.
 
@@ -73,11 +76,10 @@ You can check where it is by loading FeynCalc (<<"HighEnergyPhysics`FeynCalc`")
 and evaluating $FeynCalcDirectory. The unpacking must be so that the file
 "FeynArts.m" is in "HighEnergyPhysics".
 
-Some changes need to be made to FeynArts. The changes serve to have
-FeynCalc and FeynArts loaded simultaneously and to be able to use the PHI
-fields directly. These changes will be performed the first time you
-load PHI and FeynArts via FeynCalc. That is, the first time you load
-FeynCalc after having evaluated
+In order to have FeynCalc and FeynArts loaded simultaneously and to be able
+to use the PHI fields directly with FeynArts, some changes need to be made to FeynArts.
+These changes will be performed the first time you load PHI and FeynArts via FeynCalc.
+That is, the first time you load FeynCalc after having evaluated
 $LoadPhi=True; $LoadFeynArts=True;
 This can be done either directly before evaluating
 <<"HighEnergyPhysics`FeynCalc`"
@@ -102,54 +104,27 @@ FEYNARTS CHANGES:
 
 Below follows a description of the most essential changes needed to be done
 to FeynArts. As described above, these will normally be done automatically;
-but should this fail, they need to be done manually.
+but should this fail, they have to be done manually.
 
 In the sub-directory "Extras" there are two model files meant to be read by
 FeynArts: "Automatic.gen" and "Automatic.mod". These should be placed in the
 "Models" directory.
 
-The following names:
+The names:
 
-"Loop",
-"Indices",
-"Global`PolarizationVector",
-"FeynAmp",
-"PropagatorDenominator",
-"GaugeXi",
-"NonCommutative",
-"Global`DiracSpinor",
-"FeynArts`DiracSpinor",
-"Global`DiracTrace"
+Loop, PolarizationVector, FeynAmp, PropagatorDenominator, FeynAmpDenominator,
+GaugeXi, NonCommutative, DiracSpinor, DiracTrace,
 
-should be renamed to:
+should be put explicitly in their corresponding FeynCalc context.
+That is, e.g. Loop should be replaced with HighenergyPhysics`FeynCalc`Loop`Loop
 
-"HighEnergyPhysics`FeynCalc`Loop`Loop",
-"FAIndices",
-"Global`FAPolarizationVector",
-"FAFeynAmp",
-"HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator",
-"HighEnergyPhysics`FeynCalc`GaugeXi`GaugeXi",
-"FANonCommutative",
-"HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
-"HighEnergyPhysics`FeynCalc`DiracSpinor`DiracSpinor",
-"HighEnergyPhysics`FeynCalc`DiracTrace`DiracTrace"
+In Setup.m, the following lines should be added:
 
-In FeynArts.m, the line
-
-P$Generic = F | S | V | U | SV
-
-should be changed to
-
-P$Generic = F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$ParticleHeads
-
-In Analytic.m,
-
-| F | U and F
-
-should be changed to
-
-F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads and
-F | HighEnergyPhysics`Phi`Objects`$FermionHeads.
+P$Generic =  Union[Flatten[P$Generic | $ParticleHeads]];
+P$NonCommuting =  Union[Flatten[P$NonCommuting | $FermionHeads]];
+SetOptions[FourVector, FeynCalcInternal -> False];
+SetOptions[MetricTensor, FeynCalcInternal -> False];
+SetOptions[DiracSlash, FeynCalcInternal -> False];
 
 
 DOCUMENTATION:
@@ -206,8 +181,7 @@ respectively the startup file and the configuration file.
 
 FUTURE PLANS:
 
-Documentation, Verbose output, error messages, virtual photons, Baryon ChPT,
-NJL, two loops.
+More models, two loops.
 
 
 BUG REPORTS:
@@ -229,3 +203,10 @@ This roughly means:
 
 3. If you use this software or parts of it as part of another piece of
    software, you must acknowledge it in your documentation.
+
+
+
+Have fun.
+
+Frederik Orellana
+CERN, April 1, 2003
