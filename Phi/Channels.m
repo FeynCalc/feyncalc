@@ -46,7 +46,8 @@ fcpd := fcpd = MakeContext["PartialD"];
 fcdiga := fcdiga = MakeContext["DiracGamma"];
 fcexpt := fcexpt = MakeContext["Explicit"];
 fcexsuni := fcexsuni = MakeContext["ExplicitSUNIndex"];
-fccombs := fccombs = MakeContext["Combinations"];
+(*fccombs := fccombs = MakeContext["CombinationLists"];*)
+fccombs := fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
 FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
 
 

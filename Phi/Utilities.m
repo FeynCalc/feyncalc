@@ -52,7 +52,8 @@ fcqf := fcqf = MakeContext["QuantumField"];
 fcpd := fcpd = MakeContext["PartialD"];
 fcsunn := fcsunn = MakeContext["SUNN"];
 fcpol := fcpol = MakeContext["Polarization"];
-fccombs := fccombs = MakeContext["Combinations"];
+(*fccombs := fccombs = MakeContext["CombinationLists"];*)
+fccombs := fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
 FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
 CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFieldDerivative"];
 ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
