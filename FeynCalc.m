@@ -645,6 +645,7 @@ multifunpack=
 {"FeynCalcInternal", "FCI"},
 {"FeynCalcExternal", "FCE"},
 {"FeynCalc2FORM", "FORMEpilog", "FORMProlog", "TraceDimension"},
+{"FeynCalcToLaTeX", "F2L"},
 {"FieldStrength", "IndexPosition"},
 {"FORM2FeynCalc", "Vectors"},
 {"GluonGhostVertex", "GGV"},
