@@ -287,7 +287,16 @@ have a meson-field dependence.";
    NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
    NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
    Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
-   Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c],
+   Times[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
+
+    (*Added 3/11-2002 to contract also denominators. F.Orellana.
+    Unfortunately it slows down things, so we might want to add an option
+    to disable it...*)(*Moved here from Contract.m, 28/2-2003,
+    because Rolf commented it out there...*)
+    Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :> 
+    inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@ 
+          Select[{a, b, c}, ! MatchQ[#, _^-1] &]), opts] /. inv -> ((1/#)&))/;
+   !FreeQ[{x}, _Pair^-1];,
    
    Remove[$FeynCalcDirectory]
 
