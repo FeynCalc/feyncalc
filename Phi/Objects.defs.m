@@ -203,6 +203,9 @@ ExpansionState respectively.";
 NMExpand::"usage" =
     "NMExpand[expr] expands sums in NM products.";
 
+UDotExpand::"usage" =
+    "UDotExpand[expr] expands sums in UDot products.";
+
 (*DotExpand::"usage" =
     "DotExpand[expr] expands sums in DOT products";*)
 
@@ -1422,6 +1425,27 @@ NM /:
 	  TraditionalForm] :=
     RowBox[{MakeBoxes[NM[aua], TraditionalForm], "\[SixPointedStar]",
              MakeBoxes[b, TraditionalForm]}];
+
+UDot /:
+    MakeBoxes[UDot[aua : (_Plus | _SeriesData)], TraditionalForm] :=
+    RowBox[{"(", MakeBoxes[aua, TraditionalForm], ")"}];
+
+UDot /:
+     MakeBoxes[UDot[aua_], TraditionalForm] :=
+    MakeBoxes[aua, TraditionalForm];
+
+UDot /:
+     MakeBoxes[UDot[aua__, b : (_Plus | _SeriesData)],
+	  TraditionalForm] :=
+    RowBox[{MakeBoxes[UDot[aua], TraditionalForm], "\[Bullet]", "(",
+             MakeBoxes[b, TraditionalForm], ")"}];
+
+UDot /:
+     MakeBoxes[UDot[aua__, b_],
+	  TraditionalForm] :=
+    RowBox[{MakeBoxes[UDot[aua], TraditionalForm], "\[Bullet]",
+             MakeBoxes[b, TraditionalForm]}];
+
 
 IsoDot /:
     MakeBoxes[IsoDot[aua : (_Plus | _SeriesData)], TraditionalForm] :=
