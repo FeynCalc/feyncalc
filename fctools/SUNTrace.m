@@ -82,8 +82,10 @@ cvit[x_]:= (cvit[x]=ExpandAll[ x /. gellm1 -> gellm2 ]);
 (* this is the function which puts everything together ********* *)
 SUNTrace[expr_Plus, op___Rule] := Map[SUNTrace[#, op]&, expr];
 
+nopat[x_]:=FreeQ2[x, {Pattern, Blank, BlankSequence, BlankNullSequence}];
+
 HoldPattern[SUNTrace[n_, ___Rule]] :=
-  sunn n /; FreeQ[n, SUNT] && FreeQ[n, Pattern];
+  sunn n /; FreeQ2[n, {SUNT, Pattern, Blank, BlankSequence, BlankNullSequence}];
 
 (*new; suggested by Frederik Orellana *)
 SUNTrace[expr_Times,op___Rule] :=
@@ -105,9 +107,9 @@ SUNTrace[expr_Times,op___Rule] :=
 
 HoldPattern[SUNTrace[1 .., ___Rule]]= sunn;
 HoldPattern[SUNTrace[a_, ___Rule]] := 0 /; MatchQ[a, SUNT[SUNIndex[_]]] &&
-                                (fcis[a] === a);
+                                nopat[a] && (fcis[a] === a);
 
-HoldPattern[SUNTrace[a_, o___Rule]] := SUNTrace[fcis[a],o] /; (fcis[a]=!=a);
+HoldPattern[SUNTrace[a_, o___Rule]] := SUNTrace[fcis[a],o] /; (fcis[a]=!=a) && nopat[a];
 
 SUNTrace[DOT[SUNT[x_SUNIndex] , SUNT[y_SUNIndex]], ___Rule] :=
  SUNDelta[x, y]/2;
