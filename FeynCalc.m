@@ -866,8 +866,12 @@ If[($Notebooks =!= True) && (Global`$FeynCalcStartupMessages =!= False),
 savethisdir=Directory[];
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
-If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory] =!= True,
-  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = $FeynCalcDirectory
+If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
+  search = FileNames["FeynArts.m", $Path, 2]/.{s_String,___} :> DirectoryName[s];
+  If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
+];
+If[FileType[ToFileName[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory, "FeynArts.m"]] =!= File,
+   Global`$LoadFeynArts = False
 ];
 
 (*Set defaults here, not in the config file*)
@@ -894,13 +898,12 @@ If[Global`$LoadFeynArts===True,
    ];
 (* loading *)
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
-   loadfa = Needs["FeynArts`"],
+   loadfa = Needs["FeynArts`"];
+   If[ladfa=!=$Failed, HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir] ,
    loadfa = Get[ToFileName[$FeynArtsDirectory, "FeynArts.m"]]
 ];
 
    If[loadfa === $Failed,
-   If[Get[ToFileName[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
-      "FeynArts.m"]]===$Failed,
      If[$Notebooks===True,
 	CellPrint[Cell[TextData[{
 	  "FeynArts not found. Please install FeynArts, e.g., in\n",
