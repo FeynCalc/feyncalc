@@ -184,7 +184,7 @@ HighEnergyPhysics`FeynCalc`$FeynCalcDirectory;
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
 
-If[Global`$LoadTARCER =!=False,
+If[Global`$LoadTARCER === True,
 
 SetDirectory["tarcer"];
 If[StringQ[ Global`$LoadTARCER ],
