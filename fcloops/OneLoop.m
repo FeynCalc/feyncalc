@@ -98,6 +98,7 @@ e.g. k2 -> p1 + p2 - k1";
 
 Begin["`Private`"];
 
+
 StandardMatrixElement /:
 MakeBoxes[StandardMatrixElement[x_], TraditionalForm
          ] :=
@@ -135,7 +136,7 @@ MakeContext[
    SelectFree, SelectNotFree,
    SmallVariable, 
    Spinor, SUNDelta, 
-   SUNF, SUNFToTraces, SUNIndex, SUNSimplify, SUNT, Tr, Trick,
+   SUNF, SUNFToTraces, SUNIndex, SUNSimplify, SUNT, TR, Trick,
    TrickMandelstam, WriteOut, WriteOutPaVe, Write2, Explicit
 ];
 SpinorChainEvaluate = 
@@ -668,11 +669,11 @@ oneampd = oneamp;
        neuamp = 0;
        oneamp = collin[ oneamp, DiracTrace, False];
        If[ Head[oneamp] =!= Plus, 
-           oneamp = Expand[oneamp /. DiracTrace->Tr],
+           oneamp = Expand[oneamp /. DiracTrace->TR],
            For[i=1, i<=Length[oneamp], i++,
                print1["calculating trace # ",i,"  out of ",Length[oneamp]];
 timi = Timing[
-               neuamp = neuamp + Expand[ oneamp[[i]]/.DiracTrace->Tr]
+               neuamp = neuamp + Expand[ oneamp[[i]]/.DiracTrace->TR]
              ][[1]];
  print1["time needed = ",timi];
               ];

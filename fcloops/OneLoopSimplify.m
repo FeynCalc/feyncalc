@@ -80,7 +80,7 @@ TID,
 Trick];
 
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];
-Tr         := Tr  = MakeContext["Tr"];
+TR         := TR  = MakeContext["TR"];
 
 write[x_String, y_] :=
  (WriteString["stdout","\n\n", x, "\n\n"];
@@ -151,7 +151,7 @@ If[!FreeQ[t1, SUNIndex],
 
 If[!FreeQ[t2, DiracGamma],
    t2 = DiracTrick[t2];
-   t2 =  t2 /. DiracTrace -> Tr
+   t2 =  t2 /. DiracTrace -> TR
   ];
 If[$VeryVerbose > 0, Print["contracting ", t2]];
 If[FreeQ2[t2, {DiracGamma, Eps}], 
@@ -161,7 +161,7 @@ If[FreeQ2[t2, {DiracGamma, Eps}],
 If[(!FreeQ[t3, DiracGamma]) && (dirsimplify === True),
    If[$VeryVerbose > 0, Print["Applying DiracSimplify on ", t3]];
    t3 = DiracSimplify[Collect2[t3, DiracGamma, Factoring -> False]];
-   t3 =  t3 /. DiracTrace -> Tr
+   t3 =  t3 /. DiracTrace -> TR
   ];
 
 If[(!FreeQ[t3, DiracGamma]) &&  (dirsimplify === True), 
