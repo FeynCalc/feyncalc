@@ -1243,7 +1243,9 @@ If[traceev =!= (fcdtrev /. Options[FAToFC]),
    (*Added 13/8-2002 because patching FA model files gives structures like
      DiracMatrix[Index[Lorentz, 1]] which is auto-expanded by FC into
      DiracGamma[LorentzIndex[Index[Lorentz, 1]]]*)
-     fcli[fcli[mu_, d___], dd___] :> fcli[mu,Sequence@@Union[{d},{dd}]];
+     fcli[fcli[mu_, d___], dd___] :> fcli[mu,Sequence@@Union[{d},{dd}]] /.
+(* added Sept. 27 2003 Rolf Mertig*)
+   tmpdiga :> fcdiga;
 
 DoSumOver[exp_, opts___Rule] := 
   Block[{rr, res, suminds},
