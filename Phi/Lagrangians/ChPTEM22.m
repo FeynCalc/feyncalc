@@ -27,7 +27,7 @@ ChPTEM22::"usage"=
 "ChPT22 is the name of the file containing the definitions for 
 Lagrangian[ChPT2EM[2]], which is the leading order pionic
 SU(2) ChPT lagrangian with couplings to virtual photons.
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 (* --------------------------------------------------------------- *)
 

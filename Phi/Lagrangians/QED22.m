@@ -105,26 +105,28 @@ Lagrangian[QED2[2]]:=
 
 
 -1/4*(Z3[0]-1)*
+DOT[FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]],
 FieldStrengthTensor[LorentzIndex[\[Mu]],
-QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]].
-FieldStrengthTensor[LorentzIndex[\[Mu]],
-QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]+
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]+
 
 (Z2[0]-1)*
-(DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
+DOT[
+(DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
 (I*QuantumField[PartialD[LorentzIndex[\[Mu]]],Particle[Lepton],SUNIndex[i]]+
 CouplingConstant[QED[1]]*
-QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
-QuantumField[Particle[Lepton],SUNIndex[i]])-
+DOT[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],
+QuantumField[Particle[Lepton],SUNIndex[i]]])
+]-
 
 ParticleMass[Lepton,SUNIndex[i]]*
-DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
-QuantumField[Particle[Lepton],SUNIndex[i]])-
+DOT[DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
+QuantumField[Particle[Lepton],SUNIndex[i]]])-
 
 Z2[0]*DM[0]*
-DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
-QuantumField[Particle[Lepton],SUNIndex[i]];
+DOT[DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
+QuantumField[Particle[Lepton],SUNIndex[i]]];
 
 (* --------------------------------------------------------------- *)
 

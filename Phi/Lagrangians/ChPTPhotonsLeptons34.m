@@ -458,53 +458,53 @@ FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]
 (* Lepton terms *)
 
 XX1[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
-DiracMatrix[7].
-QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+NM[DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
+DiracMatrix[7],
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]]],
 UTrace[NM[USmall[\[Mu]],UAntiCommutator[QQ,UChiralSpurionLeft1Matrix]]]]+
 
 XX2[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
-DiracMatrix[7].
-QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+NM[DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
+DiracMatrix[7],
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]]],
 UTrace[NM[USmall[\[Mu]],UCommutator[QQ,UChiralSpurionLeft1Matrix]]]]+
 
 XX3[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
 ParticleMass[Lepton,ExplicitSUNIndex[i]]*
-NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-DiracMatrix[7].
-QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+NM[DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+DiracMatrix[7],
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]]],
 UTrace[NM[UChiralSpurionLeft1Matrix,QQ]]]+
 
 XX4[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-I*NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
-DiracMatrix[7].
-QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+I*NM[DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
+DiracMatrix[7],
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]]],
 UTrace[NM[UChiralSpurionLeft1Matrix,CQLeft[\[Mu]]]]]+
 
 XX5[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-I*NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
-DiracMatrix[7].
-QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+I*NM[DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
+DiracMatrix[7],
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]]],
 UTrace[NM[UChiralSpurionLeft1Matrix,CQRight[\[Mu]]]]]+
 
 XX6[0]*CouplingConstant[QED[1]]^2*
-DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
+DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
 (I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
 Particle[Lepton],ExplicitSUNIndex[i]]+
 CouplingConstant[QED[1]]*
-QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
-QuantumField[Particle[Lepton],ExplicitSUNIndex[i]])+
+DOT[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],
+QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]])]+
 
 XX7[0]*CouplingConstant[QED[1]]^2*
 ParticleMass[Lepton,ExplicitSUNIndex[i]]*
-DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
-QuantumField[Particle[Lepton],ExplicitSUNIndex[i]];
+DOT[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]],
+QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]];
 
 (* ---------------------------------------------------------------- *)
 

@@ -30,7 +30,7 @@ QED1::"usage"=
 "QED1.m is the name of the file containing the definitions for
 Lagrangian[QED[1]], which is the standard QED lagrangian,
 CouplingConstant[QED[1]] is the bare
-unit charge (the charge of the positron)";
+unit charge (the charge of the positron).";
 
 (* --------------------------------------------------------------- *)
 
@@ -46,21 +46,24 @@ Lagrangian[QED[1]] :=
 
 
 -1/4*
+DOT[
 FieldStrengthTensor[LorentzIndex[\[Mu]],
-QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]].
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]],
 FieldStrengthTensor[LorentzIndex[\[Mu]],
-QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]+
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]
+]+
 
-DiracBar[QuantumField[Particle[Electron]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
+DOT[DiracBar[QuantumField[Particle[Electron]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
 (I*QuantumField[PartialD[LorentzIndex[\[Mu]]],Particle[Electron]]+
 CouplingConstant[QED[1]]*
-QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
-QuantumField[Particle[Electron]])-
+DOT[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],
+QuantumField[Particle[Electron]]])
+]-
 
 ParticleMass[Electron]*
-DiracBar[QuantumField[Particle[Electron]]].
-QuantumField[Particle[Electron]];
+DOT[DiracBar[QuantumField[Particle[Electron]]],
+QuantumField[Particle[Electron]]];
 
 (* --------------------------------------------------------------- *)
 

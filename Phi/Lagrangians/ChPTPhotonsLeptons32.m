@@ -28,7 +28,7 @@ ChPTPhotonsLeptons32::"usage"=
    "ChPTPhotonsLeptons32 is the name of the file containing the definitions for \
  Lagrangian[ChPTPhotonsLeptons3[2]], which is the leading order mesonic \
 SU(3) ChPT lagrangian with couplings to virtual photons and leptons. \
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 (* --------------------------------------------------------------- *)
 
@@ -78,23 +78,23 @@ CouplingConstant[ChPTPhotonsLeptons3[2]]*
 UTrace[NM[UChiralSpurionRightMatrix,MM,
 UChiralSpurionLeftMatrix,Adjoint[MM]]]+
 
-DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
+DOT[DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
 (I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
 Particle[Lepton],SUNIndex[i]]+
 CouplingConstant[QED[1]]*
-QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
-QuantumField[Particle[Lepton],SUNIndex[i]])-
+DOT[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],
+QuantumField[Particle[Lepton],SUNIndex[i]]])]-
 
 ParticleMass[Lepton,SUNIndex[i]]*
-DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
-QuantumField[Particle[Lepton],SUNIndex[i]]+
+DOT[DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
+QuantumField[Particle[Lepton],SUNIndex[i]]]+
 
-DiracBar[QuantumField[Particle[Neutrino],SUNIndex[i]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
-DiracMatrix[6].
+DOT[DiracBar[QuantumField[Particle[Neutrino],SUNIndex[i]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
+DiracMatrix[6],
 I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
-Particle[Neutrino],SUNIndex[i]];
+Particle[Neutrino],SUNIndex[i]]];
     
 (* --------------------------------------------------------------- *)
 

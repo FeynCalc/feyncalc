@@ -29,7 +29,7 @@ ChPTVirtualPhotons22::"usage"=
    "\"ChPTVirtualPhotons22.m\" is the name of the file containing the definitions for \
 Lagrangian[ChPTVirtualPhotons[2]], which is the leading order pionic \
 SU(2) ChPT lagrangian with couplings to virtual photons. \
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 (* --------------------------------------------------------------- *)
 

@@ -26,7 +26,7 @@ ChPTVirtualPhotons32::"usage"=
    "ChPTVirtualPhotons32 is the name of the file containing the definitions for \
  Lagrangian[ChPTVirtualPhotons3[2]], which is the leading order mesonic \
 SU(3) ChPT lagrangian with couplings to virtual photons. \
-To evaluate use ArgumentsSupply";
+To evaluate use ArgumentsSupply.";
 
 (* --------------------------------------------------------------- *)
 

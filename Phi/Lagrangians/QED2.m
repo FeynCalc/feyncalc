@@ -105,26 +105,28 @@ Lagrangian[QED[2]]:=
 
 
 -1/4*(Z3[0]-1)*
+DOT[FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]],
 FieldStrengthTensor[LorentzIndex[\[Mu]],
-QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]].
-FieldStrengthTensor[LorentzIndex[\[Mu]],
-QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]+
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]+
 
 (Z2[0]-1)*
-(DiracBar[QuantumField[Particle[Electron]]].
-DiracMatrix[LorentzIndex[\[Mu]]].
+(DOT[
+DiracBar[QuantumField[Particle[Electron]]],
+DiracMatrix[LorentzIndex[\[Mu]]],
 (I*QuantumField[PartialD[LorentzIndex[\[Mu]]],Particle[Electron]]+
 CouplingConstant[QED[1]]*
-QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
-QuantumField[Particle[Electron]])-
+DOT[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],
+QuantumField[Particle[Electron]]])
+]-
 
 ParticleMass[Electron]*
-DiracBar[QuantumField[Particle[Electron]]].
-QuantumField[Particle[Electron]])-
+DOT[DiracBar[QuantumField[Particle[Electron]]],
+QuantumField[Particle[Electron]]])-
 
 Z2[0]*DM[0]*
-DiracBar[QuantumField[Particle[Electron]]].
-QuantumField[Particle[Electron]];
+DOT[DiracBar[QuantumField[Particle[Electron]]],
+QuantumField[Particle[Electron]]];
 
 (* --------------------------------------------------------------- *)
 
