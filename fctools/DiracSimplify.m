@@ -228,7 +228,8 @@ If[$VeryVerbose > 2,Print["dir2a"]];
            colle[a_]:=If[ (Length[a]<20(*00*))||(Head[a]=!=Plus), a,
                           Collect2[a, DOT, Factoring -> False] ];
            dirfun[exp_]:=colle[exp/.DOT->dS/.DOT -> trIC /. trI->DOT];
-           diracdt = FixedPoint[dirfun, diracdt]/.DOT ->trIC/.trI->dS;
+(* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
+           diracdt = FixedPoint[dirfun, diracdt, 3]/.DOT ->trIC/.trI->dS;
 If[$VeryVerbose>2,Print["dir2done"]];
            If[ FreeQ[ diracdt, DOT ],
                diracdt = diracdt/.DiracGamma[_[__],___]->0;
