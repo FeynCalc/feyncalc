@@ -4,7 +4,9 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 (NoPrint["EE ", Context[]]; EndPackage[]); 
 
-(*     F E Y N C A L C 4.1.0 *)
+(*     F E Y N C A L C 4.1.0.1 *)
+
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "4.1.0.1";
 
 (* This software is GPL-ed, see:
     http://www.feyncalc.org/licence.txt
@@ -20,21 +22,23 @@ If[!ValueQ[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory],
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
   {"tarcer"};
 
-HighEnergyPhysics`FeynCalc`Private`configfile=
- HighEnergyPhysics`FeynCalc`$FeynCalcDirectory <> 
-    $PathnameSeparator <> "FCConfig.m";
+HighEnergyPhysics`FeynCalc`Private`configfile= "FCConfig.m";
 
-If[FileNames[HighEnergyPhysics`FeynCalc`Private`configfile] =!= {},
-   Get@HighEnergyPhysics`FeynCalc`Private`configfile];
 
-(* search for FCV *)
+SetDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
+If[
+FileNames[HighEnergyPhysics`FeynCalc`Private`configfile] =!= {},
+ Get@HighEnergyPhysics`FeynCalc`Private`configfile;
+  ];
+ResetDirectory[];
 
-(*  AUTHOR (rolf@mertig.com) *)
+
+(*  AUTHOR (rolfm@xs4all.nl) *)
 
 
  (* :Title: FeynCalc *)
 
- (* :Author: Rolf Mertig  (rolf@mertig.com) *)
+ (* :Author: Rolf Mertig  (rolfm@xs4all.nl) *)
 
  (* :Summary: Tools and Tables *)
  (*           This file contains a lot of basic and small subpackages,
@@ -353,8 +357,6 @@ Hypergeometric2F1[a___,(n_Times)/;!FreeQ[n,Plus],c___]:=
           "FC", "GGV", "GP", "QGV", "QO"
          };
 
-(*FCV*)
-  $FeynCalcVersion = "4.1.0";
   $FCT  = False;
   $FortranContinuationCharacter = "&";
 If[!ValueQ[$Kreimer],  $Kreimer = False];
@@ -533,7 +535,8 @@ hepdirs = Complement[ Select[FileNames[], FileType[#]===Directory&],
 
    declarepackagelist ={};
 
-Do[ SetDirectory[hesubdir = hepdirs[[i]]];
+Do[ 
+    SetDirectory[hesubdir = hepdirs[[i]]];
     fils   = FileNames[{"*.m", "*.mx"}];
     If[fils =!= {},
        dotmfiles = StringReplace[fils,
@@ -542,8 +545,8 @@ Do[ SetDirectory[hesubdir = hepdirs[[i]]];
        ReleaseHold;
        filenams = Select[dotmfiles, FreeQ[multifunpack, #]&];
        declarepackagelist = Join[declarepackagelist, filenams];
-       ResetDirectory[] 
-      ] ,
+      ];
+       ResetDirectory[],
        {i, Length[hepdirs]}
    ];
 
@@ -11898,6 +11901,7 @@ MakeContext[ DotSimplify, Explicit, FreeQ2, SUNF, SUND,
 SUNDelta, SUNIndex, SUNT];
 
 sunn := sunn = MakeContext["SUNN"];
+SUNN := SUNN = MakeContext["SUNN"];
 
 Options[SUNTrace] = {Explicit -> False};
 
