@@ -14,11 +14,12 @@
 
 BeginPackage["HighEnergyPhysics`fctools`SetMandelstam`",
              "HighEnergyPhysics`FeynCalc`"];
-SetMandelstam::usage=
+SetMandelstam::"usage"=
 "SetMandelstam[s, t, u, p1, p2, p3, p4, m1, m2, m3, m4] defines the
 Mandelstam variables  s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 and sets
 the pi on-shell: p1^2=m1^2, p2^2=m2^2, p3^2=m3^2, p4^2=m4^2.
-Note that p1 +  p2 + p3 + p4 = 0 is assumed. \n
+Note that p1 +  p2 + p3 + p4 = 0 is assumed.\n\n
+
 SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}]
 defines x[i, j] = (pi+pj)^2 and sets the pi on-shell.
 The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctools`Contract`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Contract::usage=
+Contract::"usage"=
 "Contract[expr] contracts pairs of Lorentz indices of metric tensors,
 four-vectors and (depending on the option EpsContract) of
 Levi-Civita tensors in expr. For the contraction of Dirac matrices
@@ -26,10 +26,10 @@ Contract[exp1, exp2] should be used for polarization sums, where
 exp2 should be the product (or expanded sum) of the polarization
 sums for the vector bosons.";
 
-Contract2::usage=
+Contract2::"usage"=
 "Contract2[expr] (still experimental).";
 
-Contract3::usage=
+Contract3::"usage"=
 "Contract3[expr] (still experimental).";
 
 (* ------------------------------------------------------------------------ *)
@@ -213,6 +213,14 @@ tim = TimeUsed[];
    
  (* ******************************************************************** *)
    
+ (* Added 3/11-2002 to contract also denominators. F.Orellana.
+    Unfortunately it slows down things, so we might want to add an option
+    to disble it...*)
+ Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :> 
+    inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@ 
+          Select[{a, b, c}, ! MatchQ[#, _^-1] &]), opts] /. inv -> ((1/#)&))/;
+   !FreeQ[{x}, _Pair^-1];
+ 
  Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops___Rule] := 
     Block[{lc, new = 0, i},            print2["longcontract1"]; 
           lc = Contract[b, c, ops];    print2["longcontract1done"]; 

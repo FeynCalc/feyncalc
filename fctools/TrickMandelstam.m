@@ -16,7 +16,7 @@
 BeginPackage["HighEnergyPhysics`fctools`TrickMandelstam`",
              "HighEnergyPhysics`FeynCalc`"];
 
-TrickMandelstam::usage=
+TrickMandelstam::"usage"=
 "TrickMandelstam[expr, {s, t, u, m1^2 + m2^2 + m3^2 + m4^2}]
 simplifies all sums in expr so that one of the
 Mandelstam variables s, t or u is eliminated by the

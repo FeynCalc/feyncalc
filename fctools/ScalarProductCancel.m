@@ -13,8 +13,8 @@
 BeginPackage["HighEnergyPhysics`fctools`ScalarProductCancel`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ScalarProductCancel::usage= 
-"ScalarProductCancel[exp, q1, q2, ...] cancels scalar products 
+ScalarProductCancel::"usage"= 
+"ScalarProductCancel[exp, q1, q2, ...] cancels scalar products \
 with propagators. ScalarProductCancel[exp] cancels simple cases.";
 
 (* ------------------------------------------------------------------------ *)
@@ -31,7 +31,6 @@ MakeContext[Cases2,
             FeynAmpDenominator,
             FeynAmpDenominatorCombine,
             FeynAmpDenominatorSimplify, IFPD, IFPDOn, IFPDOff,
-            Isolate, IsolateNames, IsolateSplit,
             MemSet,
             Momentum,
             MomentumExpand,
@@ -59,9 +58,7 @@ cd[z_,op___Rule] := Block[{nd, moms, momr},
       ]
    ]];
 
-(*
-Expand3[a_,b_]:=If[Length[a]>343,a,Expand2[a,b]];
-*)
+
 Expand3 = Expand2;
 
 ScalarProductCancel[iexp_,opt___Rule] := Block[{sim,exp= cd[iexp,opt]},
@@ -106,8 +103,7 @@ If[prp === {}, exp = ex,
         pexp = ScalarProductCancel[exp - nexp];
        ];
    nexp + 
-   Expand3[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 2],{qs,qlast}](* /. 
-       HoldForm -> holdf /.  holdf->HoldForm*)
+   Expand3[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 2],{qs,qlast}]
                              
     ];
 If[prp =!= {}, re = ExpandScalarProduct[re /. prulb]];
@@ -155,25 +151,16 @@ Block[{t1=exp,t2,t3,t4,t5,fads,facs,col},
 If[FreeQ[exp, FeynAmpDenominator] || FreeQ[exp, Pair], exp,
 
 t4 = Catch[
-(*
-       If[!FreeQ[exp, FeynAmpDenominator] (*&& FreeQ[exp, spi]*),
-*)
+
           If[col === True,
-          t1 = Collect2[t1,{qq,ql}, Factoring -> False(*,
-                        IsolateNames -> spi, IsolateSplit->444I*)
+          t1 = Collect2[t1,{qq,ql}, Factoring -> False
                        ];
             ];
-(*
-          t1 = Collect2[t1, {qq, ql}, Factoring -> True,
-                        IsolateNames -> spi, IsolateSplit->444I
-                       ];
-*)
+
           t1 = checkpair[t1,qq,ql];
           If[FreeQ[t1, Pair], Throw[t1 /. noPair -> Pair]];
           t1 = IFPDOn[t1, qq, ql];
-(*
-         ];
-*)
+
 If[$VeryVerbose > 1, Print["IFPDOn done in ScalarProductCancel"]];
        If[LeafCount[t1]<200 && 
            FreeQ[t1, a_^(pp_ /;Head[pp]=!=Integer)],
@@ -183,16 +170,10 @@ If[$VeryVerbose > 1, Print["IFPDOn done in ScalarProductCancel"]];
 (* if q^2/q^2 occured then now there are terms without IFPD *)
 (* in dim. reg. these are 0 *)
 
-(*
-If[!FreeQ[exp, FeynAmpDenominator],
-*)
 If[FreeQ[t2, IFPD], t2 = 0];
 If[Head[t2] === Plus, Select1[t2,IFPD];
    t2 = Select2[t2, IFPD] ];
 
-(*
-];
-*)
 
 If[$VeryVerbose > 1, Print["cancelling done in ScalarProductCancel"]];
        t3 = IFPDOff[t2, qq, ql];

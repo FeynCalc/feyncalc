@@ -17,7 +17,7 @@
 BeginPackage["HighEnergyPhysics`fctools`FunctionalD`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FunctionalD::usage=
+FunctionalD::"usage"=
 "FunctionalD[expr, 
 {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] calculates
 the functional derivative of expr with respect to the field list (with
@@ -59,6 +59,7 @@ Select2      = MakeContext["Select2"];
 sund        := sund = MakeContext["SUNDelta"];
 sundc       := sundc = MakeContext["SUNDeltaContract"];
 SUNIndex     = MakeContext["SUNIndex"];
+ExplicitSUNIndex     = MakeContext["ExplicitSUNIndex"];
 SUNSimplify = MakeContext["SUNSimplify"];
 
 (* ********************************************************************** *)
@@ -102,14 +103,15 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
  FunctionalD[y_, {fi__, a_ }, op___] := 
     FunctionalD[FunctionalD[y, {a}, op], {fi}, op];
 
+(*Added ExplicitSUNIndex. F.Orellana, 16/9-2002*)
  FunctionalD[y_/;!FreeQ[y,field[__][___]], 
-            {field[nam_, lor___lorind, sun___SUNIndex][pp___]}]:=
+            {field[nam_, lor___lorind, sun___SUNIndex|sun___ExplicitSUNIndex][pp___]}]:=
   Block[{xX},
    D[If[!FreeQ[y, FieldStrength], Explicit[y],y] /.
     field[a___, nam, b___][pe___] -> field[a,nam,b][pe][xX], xX] /.
-    {field[py___PartialD, nam, li___lorind, col___SUNIndex][]'[xX] :>
+    {field[py___PartialD, nam, li___lorind, col___SUNIndex|col___ExplicitSUNIndex][]'[xX] :>
      If[{py} === {}, 1, ddl[py][pp]] * g[{lor}, {li}] d[{sun}, {col}],
-     field[py___PartialD, nam, li___mom, col___SUNIndex][]'[xX] :>
+     field[py___PartialD, nam, li___mom, col___SUNIndex|col___ExplicitSUNIndex][]'[xX] :>
      If[{py} === {}, 1, ddl[py][pp]] * g[{lor}, {li}] d[{sun}, {col}]
     } /. 
       {field[aa___, nam, bb___][pee___][xX] :> field[aa, nam, bb][pee],
@@ -123,13 +125,13 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
 (*Definition below added by Frederik Orellana 25/2-1999*)
 
  FunctionalD[y_/;FreeQ[y,field[__][___]],
- {field[nam_, lor___lorind, sun___SUNIndex][pp___]}]:=
+ {field[nam_, lor___lorind, sun___SUNIndex|sun___ExplicitSUNIndex][pp___]}]:=
   Block[{xX},
    D[y /.
     field[a___, nam, b___] -> field[a,nam,b][xX], xX] /.
-    {field[py___PartialD, nam, li___lorind, col___SUNIndex]'[xX] :>
+    {field[py___PartialD, nam, li___lorind, col___SUNIndex|col___ExplicitSUNIndex]'[xX] :>
      If[{py} === {}, 1, ddl[py][pp]] * g[{lor}, {li}] d[{sun}, {col}],
-     field[py___PartialD, nam, li___mom, col___SUNIndex]'[xX] :>
+     field[py___PartialD, nam, li___mom, col___SUNIndex|col___ExplicitSUNIndex]'[xX] :>
      If[{py} === {}, 1, ddl[py][pp]] * g[{lor}, {li}] d[{sun}, {col}]
     } /.
       {field[aa___, nam, bb___][xX] -> field[aa, nam, bb] /.
@@ -148,7 +150,7 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
                    final substitutions
                }
         *)
- FunctionalD[y_, {field[nam_, lor___lorind, sun___SUNIndex]
+ FunctionalD[y_, {field[nam_, lor___lorind, sun___SUNIndex|sun___ExplicitSUNIndex]
                  }, opin_:{-RightPartialD[#]&, {}}
             ] :=
   Block[{xX,  pard, r, lastrep = {}, op = opin, ddelta, partiald2},
@@ -161,7 +163,7 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
    D[If[!FreeQ[y, FieldStrength], Explicit[y],y] /.
     field[a___, nam, b___] -> field[a,nam,b][][xX], xX]
 ) /.
-    {field[py___PartialD, nam, li___lorind, col___SUNIndex][]'[xX] :>
+    {field[py___PartialD, nam, li___lorind, col___SUNIndex|col___ExplicitSUNIndex][]'[xX] :>
      If[{py} === {}, 1, (ddelta[py] /. PartialD ->
                 partiald2)] * g[{lor}, {li}] d[{sun}, {col}]
     } /. 
@@ -200,13 +202,6 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
 
   r = r /. lastrep /. DOT -> dot2 /. dot2 -> DOT;
 
- 
-  
-(*
-  If[!FreeQ[r, SUNIndex],
-     r = SUNSimplify@Collect2[r,SUNIndex]
-    ]; 
-*)
       r];
 
 End[]; EndPackage[];

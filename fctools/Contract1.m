@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`Contract1`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Contract1::usage=
+Contract1::"usage"=
 "Contract1[exp] contracts Upper and Lower indices.";
 
 (* ------------------------------------------------------------------------ *)

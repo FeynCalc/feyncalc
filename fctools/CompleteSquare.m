@@ -12,10 +12,10 @@
 BeginPackage["HighEnergyPhysics`fctools`CompleteSquare`",
              "HighEnergyPhysics`FeynCalc`"];
 
-CompleteSquare::usage=
+CompleteSquare::"usage"=
 "Completes the square of a second order polynomial in the momentum x. \
-CompleteSquare[a q^2+b q+c,q] -> -b^2/(4 a)+c+a (b/(2a)+x)^2. \
-CompleteSquare[a q^2+b q+c,q,y] -> {-b^2/(4 a)+c+ay^2,y->b/(2a)+x}.";
+CompleteSquare[a p^2+b p+c, p] -> -b^2/(4 a)+c+a (b/(2 a)+x)^2. \
+CompleteSquare[a p^2+b p+c, p, q] -> {-b^2/(4 a)+c+a q^2, q->b/(2 a)+p}.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -63,8 +63,8 @@ Module[ {a, b, c, xx, ex, exp, dims, dim, rul, pa,p},
     b = Coefficient[exp, xx, 1 ];
     c = Coefficient[Coefficient[exp, xx, 0 ], pa, 0 ] ;
     If[y===Null,
-    -Pair[b,b]/(4 a)+c +a Pair[(b/(2a)+xx),(b/(2a)+xx)],
-    {-Pair[b,b]/(4 a)+c +a Pair[Momentum[y,dim],Momentum[y,dim]],
+    -Pair[b,b]/(4 a) + c + a Pair[(b/(2a)+xx),(b/(2a)+xx)],
+    {-Pair[b,b]/(4 a) + c + a Pair[Momentum[y,dim],Momentum[y,dim]],
        Momentum[y,dim]->(b/(2a)+xx)}]]
 ];
 

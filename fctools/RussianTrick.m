@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: RussianTrick*)
+(* :Title: RussianTrick *)
 
 (* :Author: Rolf Mertig *)
 
@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`RussianTrick`",
              "HighEnergyPhysics`FeynCalc`"];
 
-RussianTrick::usage= 
+RussianTrick::"usage"= 
 "RussianTrick[exp, k, {q1,q2,p}] (=RussianTrick[exp,p,p,{q1,q2,p}])
 does the russian trick where p is the external momentum.
  RussianTrick[exp, k,l, {q1,q2,p}] (=RussianTrick[exp,k,l])

@@ -16,7 +16,7 @@
 BeginPackage["HighEnergyPhysics`fctools`PolarizationSum`",
              "HighEnergyPhysics`FeynCalc`"];
 
-PolarizationSum::usage=
+PolarizationSum::"usage"=
 "PolarizationSum[ mu,nu, ... ] defines
 (as abbreviations) different polarization sums.
 PolarizationSum[mu, nu] = -g(mu nu);

@@ -15,8 +15,8 @@
 BeginPackage["HighEnergyPhysics`fctools`FeynRule`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FeynRule::usage=
-"FeynRule[lag, {fields}] gives the feynmanrule corresponding
+FeynRule::"usage"=
+"FeynRule[lag, {fields}] gives the Feynman rule corresponding
 to the field configuration fields of the lagrangian lag.";
 
 (* ------------------------------------------------------------------------ *)
@@ -85,6 +85,8 @@ SymbolicSum2 := SymbolicSum2 = MakeContext["SymbolicSum2"];
 UnDeclareNonCommutative := UnDeclareNonCommutative = 
   MakeContext["UnDeclareNonCommutative"];
 ZeroMomentumInsertion = MakeContext["ZeroMomentumInsertion"];
+ExplicitSUNIndex     = MakeContext["ExplicitSUNIndex"];
+
 
 (* Functions that are applied to the expression first.
 Added 3/8-2000 by Frederik Orellana to allow interoperability with Phi:
@@ -97,9 +99,11 @@ InitialFunction = MakeContext["InitialFunction"];
  lorunique[a_] := lorunique[a] = lorind[Unique["Global`li"]];
  sununique[a_] := sununique[a] = SUNIndex[Unique["Global`si"]];
 
+(*Added ExplicitSUNIndex. F.Orellana, 16/9-2002*)
+
   pluc[xx__] := If[!FreeQ[{xx}, SUNIndex],
     Map[(#/.Plus->((Factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&, 
-        Factor1 /@ Collect2[Plus[xx], SUNIndex, Factoring -> False]],
+        Factor1 /@ Collect2[Plus[xx], SUNIndex|ExplicitSUNIndex, Factoring -> False]],
          Map[Factor1, 
            Collect2[Plus[xx], {Pair[lorind[_], lorind[_]] },
                     Factoring->False] ]
@@ -131,7 +135,7 @@ frex[nl_] := frex[nl] = Block[
 nlafirst = If[Head[nla]===Plus, nla[[1]], nla];
 (* get a list of all LorentzIndex *)
 lorindlist = Cases2[nla, lorind];
-sunindlist = Cases2[nla, SUNIndex];
+sunindlist = Cases2[nla, SUNIndex|ExplicitSUNIndex];
 (* select those which occur an even number of times *)
 newlorlist = {};
 newsunlist = {};
@@ -157,9 +161,6 @@ uniquelist = Join[Table[newlorlist[[ij]] ->
 If[$VeryVerbose > 0, Print["uniquelist = ", uniquelist]];
 
 nla = nla /. uniquelist;
-(*
-  nla = nla /. lorind -> lorunique/. SUNIndex -> sununique;
-*)
 
   nla = DotSimplify[nla, Expanding -> True];
   tem = Contract[Expand2[nla /. QuantumField -> 
@@ -441,11 +442,6 @@ If[!FreeQ[nlag, Sum], nlag = nlag /. Sum -> OPESum];
 If[$VeryVerbose > 0, Print["non-commutative expansion"]];
 If[!FreeQ[nlag, OPESum], nlag = opsum[nlag]];
 
-(*
-dotsunt[a_SUNT, b__]  := a DOT[b] /; FreeQ2[{b}, {SUNT, SUNIndex}];
-dotsunt[a_SUNT, b__SUNT, c__] := DOT[a, b] DOT[c] /; 
-                             FreeQ2[{c}, {SUNT, SUNIndex}];
-*)
 If[!FreeQ[nlag, OPEDelta],
    nlag = nlag /. PartialD[mom[OPEDelta]]^(mm_/; Head[mm]=!=Integer):>
                   PartialD[mom[OPEDelta]^mm]
@@ -477,7 +473,7 @@ cdp /: cdp[aa__]^(h_ /; Head[h]=!=Integer) :=
   ]
  ];
 If[!FreeQ[nlag, sund],
-   nlag = Expand2[nlag, SUNIndex]/.sund-> sundc/.
+   nlag = Expand2[nlag, SUNIndex|ExplicitSUNIndex]/.sund-> sundc/.
    sundc->sund 
   ];
 
@@ -506,8 +502,8 @@ While[(Length[tfields] > 0) && (Head[vert] === Plus),
      ];
 (* there might be still a sum ... *)
  If[Head[vert] === Plus,
-    qfi[___PartialD, fiii_, ___lorind, ___SUNIndex][___] := qqq[fiii];
-    qfi[___PartialD, fiii_, ___mom, ___SUNIndex][___] := qqq[fiii];
+    qfi[___PartialD, fiii_, ___lorind, ___SUNIndex|___ExplicitSUNIndex][___] := qqq[fiii];
+    qfi[___PartialD, fiii_, ___mom, ___SUNIndex|___ExplicitSUNIndex][___] := qqq[fiii];
     qfi[___BlankNullSequence, fiii_, ___Pattern][___] := qqq[fiii];
     puref = (Sort[Select[Variables[# /.   QuantumField -> qfi /.
                                               (*Plus-> List /.*)
@@ -529,7 +525,7 @@ While[(Length[tfields] > 0) && (Head[vert] === Plus),
 vert = Expand[ sunsimplify[dirdot[vert],Explicit->False] ];
 If[$VeryVerbose > 0, Print["functional differentiation "]];
 
-groupindices = Map[First,Cases2[{vert,fili},{SUNIndex,LorentzIndex}]];
+groupindices = Map[First,Cases2[{vert,fili},{SUNIndex,ExplicitSUNIndex,LorentzIndex}]];
 UnDeclareNonCommutative[groupindices];
 
 If[Head[vert] === Plus,
@@ -626,19 +622,7 @@ If[!FreeQ[result, sumBinomial],
    For[ib = 1, ib <= Length[$binindices], ib++,
 If[$VeryVerbose > 0, Print["ib = ",ib, " out of ", Length[$binindices]]];
        indd = $binindices[[ib]];
-(*
-If[$VeryVerbose > 0, Print["powerfactoring ", ib]];
-       result = PowerFactor[result];
-       result =  result/. {a_ a_^p_ :> a^(p+1),
-                           a_^p_ / a_ :> (a^(p-1))};
-If[$VeryVerbose > 0, Print["powerfactoring done ", ib]];
-*)
-(*
-       result = result //. { sumBinomial[up_, indd] (a_^(evtl_.+  indd))*
-                            (b_^(any_-indd)) :>
-                            (Power[(a + b),up] b^(any-up) a^evtl)
-                           };
-*)
+
        If[!FreeQ[result, sumBinomial],
           Clear[opsumb, opsumb2];
           opsumb[xx_Plus] := Map[opsumb, xx];
@@ -650,9 +634,7 @@ If[$VeryVerbose > 0, Print["powerfactoring done ", ib]];
               SymbolicSum2[xx Binomial[up,indd], {indd,0,up}
                           ] /. SymbolicSum2 -> SymbolicSum /. 
                SymbolicSum ->  OPESum;
-(*
-result>>"REE";
-*)
+
           result = opsumb[result] /. opsumupv -> OPESum;
 If[Length[result] < 500,
 If[$VeryVerbose > 0, Print["before OPESumSimplify"]];
@@ -701,9 +683,7 @@ If[!FreeQ[result, DiracGamma[5]], result = Anti5[result, anti5]];
 result = Expand[result] /. {(-1)^a_      :> PowerSimplify[(-1)^a],
                             Power2[-1,a] :> PowerSimplify[(-1)^a]
                            } /. subs;
-(*
-If(!FreeQ2[result, {SUNT, OPESum, DiracGamma}]) &&
-*)
+
 If[(!FreeQ2[result, {SUNT, OPESum, DiracGamma}]) &&
    Length[Cases2[result, OPESum]] <= 1,
 If[$VeryVerbose>1, Print["YESSSSSSSSSSSSSS"]];
@@ -715,8 +695,8 @@ If[zeromomentum === True,
    result = result /. Power2 -> Power;
    ,
 
-If[!FreeQ[result, SUNIndex],
-   result = Collect2[result, SUNIndex, Factoring -> False, 
+If[!FreeQ[result, SUNIndex|ExplicitSUNIndex],
+   result = Collect2[result, SUNIndex|ExplicitSUNIndex, Factoring -> False, 
                      Expanding -> False 
                     ];
   ];
@@ -753,11 +733,11 @@ If[LeafCount[result]<10^4,
 ]];
 (* ******************************************************************** *)
 
-feinarbeit[fey_Times, pl_List] := SelectNotFree[fey, SUNIndex]  *
-          feinarbeit[SelectFree[fey,  SUNIndex], pl] /; !FreeQ[fey,
-             SUNIndex];
+feinarbeit[fey_Times, pl_List] := SelectNotFree[fey, SUNIndex|ExplicitSUNIndex]  *
+          feinarbeit[SelectFree[fey,  SUNIndex|ExplicitSUNIndex], pl] /; !FreeQ[fey,
+             SUNIndex|ExplicitSUNIndex];
 
-feinarbeit[fey_ /; FreeQ[fey, SUNIndex], pli_List] := Block[
+feinarbeit[fey_ /; FreeQ[fey, SUNIndex|ExplicitSUNIndex], pli_List] := Block[
 {uniqli,onepm, onemm, resu, legs, fop, foop, ores, nopres,
  ple,pleps,power3,schau},
 
@@ -832,14 +812,8 @@ If[!FreeQ[resu, $SU], uniqli = {};
 If[(legs < 4) && FreeQ[resu, OPEDelta],
 resu = fce[resu] /. Power2 -> Power /. I^(2 a_) :> (-1)^a;
   ];
-(*
-scol[h_] := If[FreeQ[h, OPESum], 
-               If[FreeQ[h, Eps],
-                  Collect2[h, ScalarProduct], 
-                  h
-                 ]
-             h];
-*)
+
+
 resu =  resu /. Power2 -> Power;
 If[$VeryVerbose > 0, Print["last global factoring "]];
 resu = PowerSimplify[resu /. foop -> Identity];

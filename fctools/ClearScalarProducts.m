@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctools`ClearScalarProducts`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ClearScalarProducts::usage = 
+ClearScalarProducts::"usage" = 
 "ClearScalarProducts removes all user-performed 
 specific settings for ScalarProduct's.";
 

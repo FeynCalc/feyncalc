@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`fctools`ChangeDimension`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ChangeDimension::usage=
+ChangeDimension::"usage"=
 "ChangeDimension[exp, dim] changes all LorentzIndex and Momenta in
 exp to dimension dim (and thus also Dirac slashes and Dirac matrices
-in FeynCalcInternal - representation).";
+in FeynCalcInternal-representation).";
 
 
 (* ------------------------------------------------------------------------ *)

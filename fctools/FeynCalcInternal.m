@@ -16,12 +16,12 @@
 BeginPackage["HighEnergyPhysics`fctools`FeynCalcInternal`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FCI::usage=
-"FCI is just an abbreviatiooon of FeynCalcInternal.";
+FCI::"usage"=
+"FCI is just an abbreviation of FeynCalcInternal.";
 
-FeynCalcInternal::usage=
-"FeynCalcInternal[exp] translates exp into the internal FeynCalc 
-(data-type) representation. User defined rules can be given
+FeynCalcInternal::"usage"=
+"FeynCalcInternal[exp] translates exp into the internal FeynCalc
+representation. User defined rules can be given
 by the option FinalSubstitutions.";
 
 (* ------------------------------------------------------------------------ *)
@@ -52,9 +52,10 @@ mult            := mult            = MakeContext["Mult"];
 numericalfactor := numericalfactor = MakeContext["NumericalFactor"];
 OPEDelta                           = MakeContext["OPEDelta"];
 pair            := pair            = MakeContext["Pair"];
-polarizationvectorexplicit:= 
+(*Dropped PolarizationVectorExplicit. Not used anywhere. F.Orellana. 20/9-2002*)
+(*polarizationvectorexplicit:= 
     polarizationvectorexplicit     = MakeContext[
-                                             "PolarizationVectorExplicit"];
+                                             "PolarizationVectorExplicit"];*)
 feynampdenominator := feynampdenominator = MakeContext[
     "FeynAmpDenominator"];
 propagatordenominator := propagatordenominator =
@@ -111,7 +112,7 @@ ru =  Join[
  su["MetricTensor",metricT] ,
  su["DiracMatrix", diracM] ,  su["DiracSlash", diracS] ,
  su["FourVector", fourV] ,
- su["PolarizationVector", polarizationvectorexplicit] ,
+ (*su["PolarizationVector", polarizationvectorexplicit] ,*)
  su["SD", sdeltacont],
  su["SUNDelta", sdeltacont],
  su["SUND", tosund],
@@ -134,6 +135,8 @@ ru =  Join[
  su["SOD", sod],
  su["PropagatorDenominator", propagatorD],
  su["ScalarProduct", scalarP],
+ su["MatrixTrace", diractrace], 
+ If[CheckContext["DOT"], {Dot -> dot}, {}],
  If[CheckContext["ChiralityProjector"], 
     If[$BreitMaison === True,
        {chiralityprojector[1] :> 1/2 + 1/2 diracgamma[5],
@@ -143,20 +146,22 @@ ru =  Join[
         chiralityprojector[-1]:> diracgamma[7]
        }
       ],{}
-    ] , 
-  If[CheckContext["DOT"], {Dot -> dot}, {}
-    ] ,
-  su["MatrixTrace", diractrace]
+    ]
          ]      ;
+
+(* Dropped the last rules to avoid e.g.
+ (1/2 + DiracGamma[5]/2 // ScalarProductExpand ---> DiracGamma[6],
+  when $BreitMaison=True. 19/1-2003, F.Orellana*)
+revru = If[$BreitMaison === True, Map[Reverse, Drop[ru, -2]],  Map[Reverse, ru]];
+
 If[uru =!={}, ru = Join[ru,uru]];
 (*
 Print["fci time = ",ti//MakeContext["FeynCalcForm"]];
 Print["ru= ",ru];
 *)
 
-revru = Map[Reverse,ru];
-
-If[ru =!={}, x/.ru /. {mt :> MakeContext["MT"], 
+If[ru =!={}, ReplaceRepeated[x, ru, MaxIterations -> 20] /.
+                      {mt :> MakeContext["MT"], 
                        fv :> MakeContext["FV"], 
                        sd :> MakeContext["SD"]} /. revru, x
   ]

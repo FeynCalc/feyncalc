@@ -15,15 +15,11 @@
 BeginPackage["HighEnergyPhysics`fctools`Calc`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Calc::usage = 
+Calc::"usage" = 
 "Calc[exp] performs several simplifications.
 Calc[exp] is the same as
-DotSimplify[
- DiracSimplify[EpsEvaluate[Contract[DiracSimplify[
-Contract[
-  Explicit[ SUNSimplify[PowerSimplify[Trick[exp]],
- Explicit -> False] ]]
-               ]]]]].";
+DotSimplify[DiracSimplify[EpsEvaluate[Contract[DiracSimplify[Contract[Explicit[SUNSimplify[PowerSimplify[Trick[exp]],
+Explicit -> False]]]]]]]].";
 
 (* ------------------------------------------------------------------------ *)
 

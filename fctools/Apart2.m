@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`Apart2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Apart2::usage=
+Apart2::"usage"=
 "Apart2[expr] partial fractions FeynAmpDenominators.";
 
 (* ------------------------------------------------------------------------ *)

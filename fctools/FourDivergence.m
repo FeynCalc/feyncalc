@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`FourDivergence`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FourDivergence::usage = 
+FourDivergence::"usage" = 
 "FourDivergence[exp, FourVector[p, mu]] 
 calculates the partial derivative of exp w.r.t. p(mu).
 FourDivergence[exp, FourVector[p, mu], FourVector[p,nu], ...] 

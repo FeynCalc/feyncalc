@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`DotProduct`",
              "HighEnergyPhysics`FeynCalc`"];
 
-DotProduct::usage=
+DotProduct::"usage"=
 "DotProduct[x, y] denotes the three-dimensional dot-product.
 If x and y have Head List, DotProduct[x, a] (where a is a vector)
 performs Sum[ x[[k]] a[[k]], {k, 0, 3}].";

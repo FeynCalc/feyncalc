@@ -21,7 +21,7 @@
 BeginPackage["HighEnergyPhysics`fctools`ComplexConjugate`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ComplexConjugate::usage=
+ComplexConjugate::"usage"=
 "ComplexConjugate[expr] complex conjugates expr.
 It operates on  Fermion-lines, i.e., products
 of Spinor[..] .DiracMatrix[..] . Spinor[..], and changes all

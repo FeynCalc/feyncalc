@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`PartialFourVector`",
              "HighEnergyPhysics`FeynCalc`"];
 
-PartialFourVector::usage = 
+PartialFourVector::"usage" = 
 "PartialFourVector[exp, FourVector[p, mu]] 
 calculates the partial derivative of exp w.r.t. p(mu).
 PartialFourVector[exp, FourVector[p, mu], FourVector[p,nu], ...] 

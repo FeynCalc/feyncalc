@@ -15,13 +15,13 @@
 BeginPackage["HighEnergyPhysics`fctools`CovariantD`",
              "HighEnergyPhysics`FeynCalc`"];
 
-CovariantD::usage=
+CovariantD::"usage"=
 "CovariantD[mu, a, b] is the covariant derivative for a bosonic field.
 CovariantD[mu] is the covariant derivative for a fermionic field.
 CovariantD[OPEDelta, a, b] is a short form for 
 CovariantD[mu,a,b]*FourVector[OPEDelta, mu].
 CovariantD[{OPEDelta, a, b}, {n}] yields
-the product of m operators, where n is an integer. 
+the product of n operators, where n is an integer. 
 CovariantD[OPEDelta, a, b, {m, n}] 
 gives the expanded form of CovariantD[OPEDelta, a, b]^m up to order
 g^n for the gluon, where n is an integer and g the coupling constant 

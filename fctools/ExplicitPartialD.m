@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctools`ExplicitPartialD`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ExplicitPartialD::usage=
+ExplicitPartialD::"usage"=
 "ExplicitPartialD[exp] inserts in exp the definition for 
 LeftRightPartialD[z] (and LeftRightPartialD2[z]).";
 

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctools`ExpandPartialD`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ExpandPartialD::usage=
+ExpandPartialD::"usage"=
 "ExpandPartialD[exp] expands all QuantumField's in exp."
 
 (* ------------------------------------------------------------------------ *)

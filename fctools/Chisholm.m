@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`fctools`Chisholm`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Chisholm::usage=
+Chisholm::"usage"=
 "Chisholm[x] substitutes products of three Dirac matrices or
 slashes by the Chisholm identity.";
 

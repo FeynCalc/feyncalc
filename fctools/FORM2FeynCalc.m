@@ -15,14 +15,18 @@
 BeginPackage["HighEnergyPhysics`fctools`FORM2FeynCalc`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FORM2FeynCalc::usage=
+FORM2FeynCalc::"usage"=
 "FORM2FeynCalc[file] translates the FORM expression in file
 into FeynCalc notation.
-FORM2FeynCalc[file, x1, x2, ...] reads in a file in 
+FORM2FeynCalc[file, x1, x2, ...] reads in a file in
 FORM-format and translates the assignments for the variables
-x1, x2, ... into FeynCalc syntax. If the option Set is True, 
+x1, x2, ... into FeynCalc syntax. If the option Set is True,
 the variables x1, x2 are assigned to the right hand sides
-defined in the FORM - file.";
+defined in the FORM file.";
+
+Vectors::"usage"= "Vectors is an option for FORM2FeynCalc. Its default
+setting is Automatic. It may be set to a list, if the FORM-file does
+not contain a V(ectors) statement.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -42,8 +46,7 @@ Nielsen,
 Pair,
 ScalarProduct,
 Select2,
-SUNDelta,
-Vectors];
+SUNDelta];
 
 (* can be changed *)
 $ReplaceAlwaysFirst = 
@@ -59,7 +62,7 @@ Options[FORM2FeynCalc] =
 {Dimension -> 4, FinalSubstitutions -> {}, 
  Dot -> Dot,
  HoldForm -> True,
- LorentzIndex -> {Global`mu, Global`nu,Global`al,Global`be}, 
+ LorentzIndex -> {Global`mu, Global`nu, Global`al, Global`be}, 
  Set -> False, 
  Replace -> {   (*     "d_" -> "SUNDelta",*)
 (*

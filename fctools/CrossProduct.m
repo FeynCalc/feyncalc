@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`CrossProduct`",
              "HighEnergyPhysics`FeynCalc`"];
 
-CrossProduct::usage=
+CrossProduct::"usage"=
 "CrossProduct[a, b] denotes the three-dimensional cross-product.";
 
 (* ------------------------------------------------------------------------ *)

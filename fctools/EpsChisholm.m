@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`EpsChisholm`",
              "HighEnergyPhysics`FeynCalc`"];
 
-EpsChisholm::usage=
+EpsChisholm::"usage"=
 "EpsChisholm[expr] substitutes for a gamma matrix contracted with
 a Levi Civita tensor (Eps) the Chisholm identity.";
 

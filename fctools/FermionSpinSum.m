@@ -14,10 +14,10 @@
 BeginPackage["HighEnergyPhysics`fctools`FermionSpinSum`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FermionSpinSum::usage=
-"FermionSpinSum[x] constructs the Traces out of squared ampliudes.";
+FermionSpinSum::"usage"=
+"FermionSpinSum[x] constructs Traces out of squared ampliudes in x.";
 
-SpinorCollect::usage=
+SpinorCollect::"usage"=
 "SpinorCollect is an option for FermionSpinSum. If set to False the
  argument of FermionSpinSum has to be already collected w.r.t. Spinor.";
 

@@ -15,18 +15,18 @@
 BeginPackage["HighEnergyPhysics`fctools`SquareAmplitude`",
              "HighEnergyPhysics`FeynCalc`"];
 
-EnergyMomentumConservation::usage=
-"EnergyMomentumConservation is an option for SquareAmplitude";
+EnergyMomentumConservation::"usage"=
+"EnergyMomentumConservation is an option of SquareAmplitude (experimental).";
 
-SquareAmplitude::usage=
-"SquareAmplitude[amp] squares the amplitude amp. STILL EXPERIMENTAL!!!
-Don' rely on it.";
+SquareAmplitude::"usage"=
+"SquareAmplitude[amp] squares the amplitude amp. EXPERIMENTAL!!!
+Don't rely on it.";
 
-SpinSumExternalMomentum::usage=
-"experimental";
+SpinSumExternalMomentum::"usage"=
+"SpinSumExternalMomentum is an option of SquareAmplitude (experimental).";
 
-SelectedGraphs::usage=
-"SelectedGraphs is an option to SquareAmplitude";
+SelectedGraphs::"usage"=
+"SelectedGraphs is an option of SquareAmplitude (experimental).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -97,10 +97,11 @@ SUNTrace            = MakeContext["SUNTrace"];
 ScalarProduct       = MakeContext["ScalarProduct"];
 SpinPolarizationSum = MakeContext["SpinPolarizationSum"];
 Spinor              = MakeContext["Spinor"];
-Tr             =  MakeContext["Tr"];
+Tr                  =  MakeContext["Tr"];
 TrickMandelstam     = MakeContext["TrickMandelstam"];
 Write2              = MakeContext["Write2"];
 WriteOut            = MakeContext["WriteOut"];
+KK                  = MakeContext["KK"];
 
 (* ************************************************************* *)
 SetAttributes[print1, HoldAll];
@@ -220,8 +221,8 @@ Options[SquareAmplitude] = {
                   InitialSubstitutions -> {},
                   IntermediateSubstitutions -> {},
                   IsolateHead -> KK,
-                  IsolateSplit -> 4711 I,
-                  Mandelstam -> {Global`S, Global`T},
+(*                  IsolateSplit -> 4711 I,*)
+                  Mandelstam -> {Global`s, Global`t},
                   SelectedGraphs -> All,
                SpinPolarizationSum -> 1,
                SpinSumExternalMomentum -> Automatic,
@@ -247,7 +248,6 @@ collecting= Collecting /. {opts} /. Options[SquareAmplitude];
 factoring = Factoring   /. {opts} /. Options[SquareAmplitude];
 finsubst  = fci[FinalSubstitutions /. {opts} /. Options[SquareAmplitude]];
 isolhead  = IsolateHead /. {opts} /. Options[SquareAmplitude];
-isolsplit = IsolateSplit/. {opts} /. Options[SquareAmplitude];
 exmom     = SpinSumExternalMomentum /. {opts} /. Options[SquareAmplitude];
 extrafact = ExtraFactor /. {opts} /. Options[SquareAmplitude];
 extrafact = fci[extrafact];
@@ -296,8 +296,8 @@ Which[
 
 (*
 (* this has to be thought over again ... *)
-extrafact = extrafact ( NF^0 (*( (Length[Position[fields, Global`F[I]]] + 
-                             Length[Position[fields, Global`F[-I]]])/2
+extrafact = extrafact ( NF^0 (*( (Length[Position[fields, tmp`F[I]]] + 
+                             Length[Position[fields, tmp`F[-I]]])/2
                              )*)
                       );
 *)
@@ -319,7 +319,7 @@ If[MemberQ[{1 -> 2, 2 -> 1, 2 -> 2}, proctype],
   ];
 
 (* Oh je *)
-pair2 = HighEnergyPhysics`FeynCalc`Contract`Private`pair2;
+pair2 = HighEnergyPhysics`fctools`Contract`Private`pair2;
 
 scalP[a_, b_, c_] := If[dim =!= 4,
  Apply[ Set, {ScalarProduct[a,b, Dimension -> dim], c//Expand}];
@@ -370,22 +370,22 @@ If[ proctype === (2 ->3),
     scalP[k1, k1, m32];
     scalP[k2, k2, m42];
     scalP[k3, k3, m52];
-    scalP[p1, p2, Global`P[p1, p2]/2 - m12/2 - m22/2];
-    scalP[p1, k1,-Global`P[p1,-k1]/2 + m12/2 + m32/2];
-    scalP[p1, k2,-Global`P[p1,-k2]/2 + m12/2 + m42/2];
-    scalP[p1, k3,-Global`P[p1,-k3]/2 + m12/2 + m52/2];
-    scalP[p2, k1,-Global`P[p2,-k1]/2 + m22/2 + m32/2];
-    scalP[p2, k2,-Global`P[p2,-k2]/2 + m22/2 + m42/2];
-    scalP[p2, k3,-Global`P[p2,-k3]/2 + m22/2 + m52/2];
-    scalP[k1, k2, Global`P[k1, k2]/2 - m32/2 - m42/2];
-    scalP[k1, k3, Global`P[k1, k3]/2 - m32/2 - m52/2];
-    scalP[k2, k3, Global`P[k2, k3]/2 - m42/2 - m52/2];
+    scalP[p1, p2, tmp`P[p1, p2]/2 - m12/2 - m22/2];
+    scalP[p1, k1,-tmp`P[p1,-k1]/2 + m12/2 + m32/2];
+    scalP[p1, k2,-tmp`P[p1,-k2]/2 + m12/2 + m42/2];
+    scalP[p1, k3,-tmp`P[p1,-k3]/2 + m12/2 + m52/2];
+    scalP[p2, k1,-tmp`P[p2,-k1]/2 + m22/2 + m32/2];
+    scalP[p2, k2,-tmp`P[p2,-k2]/2 + m22/2 + m42/2];
+    scalP[p2, k3,-tmp`P[p2,-k3]/2 + m22/2 + m52/2];
+    scalP[k1, k2, tmp`P[k1, k2]/2 - m32/2 - m42/2];
+    scalP[k1, k3, tmp`P[k1, k3]/2 - m32/2 - m52/2];
+    scalP[k2, k3, tmp`P[k2, k3]/2 - m42/2 - m52/2];
   ];
 ];
 
 (*
 If[(k3 =!= 0) && (k4 =!= 0),
-    SetMandelstam[Global`P,  {p1, p2, -k1, -k2, -k3, -k4},
+    SetMandelstam[tmp`P,  {p1, p2, -k1, -k2, -k3, -k4},
                              {p1m1[[2]], p2m2[[2]], k1m3[[2]],
                               k2m4[[2]], k3m5[[2]], k4m6[[2]]}
                  ]
@@ -404,7 +404,7 @@ If[dim =!= 4,
    extrafact = ChangeDimension[extrafact, dim];
   ];
 
-(*Global`am = amp;*)
+(*tmp`am = amp;*)
 print2["amp = ",amp];
 print1["extrafact = ",extrafact];
 
@@ -453,14 +453,14 @@ If[!FreeQ[amp, SUNIndex],
    print1["collecting w.r.t. SUNIndex"];
    If[ $FeynContract === True, 
        pair2PAIR[a_, b_] := 
-            If[FreeQ[{a,b}, SUNIndex], Global`PAIR[a,b], Pair[a, b]];
+            If[FreeQ[{a,b}, SUNIndex], tmp`PAIR[a,b], Pair[a, b]];
        print1["substing PAIR"];
        amp = amp /. Pair -> pair2PAIR;
 amp00 = amp;
        print1["substing PAIR done"];
-       amp = Global`CCollect[amp, {Pair, SUNF, SUNT, SUNDelta}];
+       amp = tmp`CCollect[amp, {Pair, SUNF, SUNT, SUNDelta}];
        print1["back from CCollect"];
-       amp = amp /. Global`PAIR -> Pair,
+       amp = amp /. tmp`PAIR -> Pair,
        amp = Collect2[amp, SUNIndex,Factoring -> False];
      ];
    amp11=amp;
@@ -493,9 +493,9 @@ If[ $FeynContract === True,
        amp = amp /. Pair -> pair2PAIR;
        print1["substing PAIR( 2 ) done"];
 amp00 = amp;
-       amp = Global`CCollect[amp, {Pair, SUNF, SUNT, SUNDelta}];
+       amp = tmp`CCollect[amp, {Pair, SUNF, SUNT, SUNDelta}];
        print1["back from CCollect"];
-       amp = amp /. Global`PAIR -> Pair,
+       amp = amp /. tmp`PAIR -> Pair,
        amp = Collect2[amp, SUNIndex,Factoring -> False];
   ];
 
@@ -561,9 +561,9 @@ If[
        amp = amp /. Pair -> pair2PAIR;
        print1["substing PAIR( 3 ) done"];
 amp00 = amp;
-       amp = Global`CCollect[amp, {Pair, SUNF, SUNT, SUNDelta}];
+       amp = tmp`CCollect[amp, {Pair, SUNF, SUNT, SUNDelta}];
        print1["back from CCollect"];
-       amp = amp /. Global`PAIR -> Pair,
+       amp = amp /. tmp`PAIR -> Pair,
        amp = Collect2[amp, SUNIndex,Factoring -> False];
   ];
 
@@ -593,12 +593,12 @@ print2["fields = ", fields];
 For[ij = 1, ij < 7, ij++,
     If[pli =!= 0,
    (* check for photon *)
-    If[(fields[[ij]] === Global`V[1]) &&  !FreeQ[amp, mU[ij]],
+    If[(fields[[ij]] === tmp`V[1]) &&  !FreeQ[amp, mU[ij]],
        prod = prod (- MetricTensor[mU[ij], ComplexIndex[mU[ij]],
                            Dimension -> dim])
       ];
    (* check for gluon*)
-    If[(fields[[ij]] === Global`G[1]) && !FreeQ[amp, mU[ij,gL]],
+    If[(fields[[ij]] === tmp`G[1]) && !FreeQ[amp, mU[ij,gL]],
        If[exmom === Automatic,
           Which[
                 proctype === (2->3),
@@ -616,12 +616,12 @@ For[ij = 1, ij < 7, ij++,
        ];
    (* check for massive Vectorbosons *)
     If[MatchQ[fields[[ij]], 
-              Global`V[iii_ /; iii=!=1]] && !FreeQ[amp, mU[ij]],
+              tmp`V[iii_ /; iii=!=1]] && !FreeQ[amp, mU[ij]],
        prod = prod PolarizationSum[mU[ij], ComplexIndex[mU[ij]],
                          pli[[ij]], Dimension -> dim]
       ];
    (* check for ghosts *)
-    If[MatchQ[fields[[ij]], Global`U[_]],
+    If[MatchQ[fields[[ij]], tmp`U[_]],
 Print["GHOSTCHECK"];
        prod = I prod 
       ];
@@ -683,8 +683,8 @@ If[FreeQ2[nam, {SUNIndex, DiracGamma}],
 *)
 
 (*
-Global`$ZWISCHEN = True;
-If[Global`$ZWISCHEN === True, nam >> "nam.s"; 
+tmp`$ZWISCHEN = True;
+If[tmp`$ZWISCHEN === True, nam >> "nam.s"; 
 den1 >> "den1.s"; prod >>"prod.s" ]; 
 *)
 prod = Collect2[prod, LorentzIndex];
@@ -787,7 +787,7 @@ print2["enmo = ", enmo];
 If[file =!= {},
    print2["loading previous result ", file];
    (Get @@ {saveminamp});
-   ts = Global`$TSAMP;
+   ts = tmp`$TSAMP;
 lis = Length[ts];
 nuLlLL = Unique[System`C];
 (* 
@@ -873,12 +873,12 @@ print1["ts//Length = ",ts//Length];
 ts = ((#/.Plus->etl)& /@ (ts + nuLlLL)) /. nuLlLL->0;
 
 If[StringQ[saveminamp],
-   Write2 @@ {saveminamp, Global`$TSAMP == FRH[ts]}
+   Write2 @@ {saveminamp, tmp`$TSAMP == FRH[ts]}
   ];
 ];
 (* ++++++++++++++++++++++++ *)
 
-If[ValueQ[Global`ENM], enmLI = Global`ENM, enmLI = {}];
+If[ValueQ[tmp`ENM], enmLI = tmp`ENM, enmLI = {}];
 (*
 epsi[x_] := x /. Eps -> epsimP;
 epsimP[x__] := EpsEvaluate[Eps @@ ({x} /. enmLI)];
@@ -1023,7 +1023,7 @@ lastsimp[yyy_] := Block[{rel, mul = 1, yy = yyy},
                                    EpsContract -> True] ;
                        If[!FreeQ[rel,Pair],
                           rel = rel /. Momentum  -> mom4; 
-Global`REL=rel;
+tmp`REL=rel;
                           rel = ExpandScalarProduct[rel];
                          ];
 print2["beforefactor3"];
@@ -1060,7 +1060,7 @@ print2["changing list to sum"];
 amps2 = (Plus@@nwres);
 ];
 
-(*Global`AMPS2=amps2;*)
+(*tmp`AMPS2=amps2;*)
 
 If[factoring2 === True,  
    amps2 = Factor2[ExpandScalarProduct[

@@ -17,14 +17,13 @@
 BeginPackage["HighEnergyPhysics`fctools`FeynCalcExternal`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FCE::usage=
-"FCE is just an abbreviatiooon of FeynCalcExternal.";
+FCE::"usage"=
+"FCE is just an abbreviation of FeynCalcExternal.";
 
-FeynCalcExternal::usage=
-"FeynCalcExternal[exp] translates exp from the internal FeynCalc 
-(data-type) representation to the easier external one
-(i.e., FV, GA, GS, etc.).
- User defined rules can be given
+FeynCalcExternal::"usage"=
+"FeynCalcExternal[exp] translates exp from the internal FeynCalc
+representation to the simpler external one
+(i.e., FV, GA, GS, etc.). User defined rules can be given
 by the option FinalSubstitutions. ";
 
 (* ------------------------------------------------------------------------ *)
@@ -71,9 +70,6 @@ mult            := mult            = MakeContext["Mult"];
 numericalfactor := numericalfactor = MakeContext["NumericalFactor"];
 OPEDelta        =  MakeContext["OPEDelta"];
 pair            := pair            = MakeContext["Pair"];
-polarizationvectorexplicit:= 
-    polarizationvectorexplicit     = MakeContext[
-                                             "PolarizationVectorExplicit"];
 Power2 := Power2 = MakeContext["Power2"];
 propagatordenominator := 
             propagatordenominator  = MakeContext["PropagatorDenominator"];

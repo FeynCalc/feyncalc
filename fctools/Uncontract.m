@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Uncontract*)
+(* :Title: Uncontract *)
 
 (* :Author: Rolf Mertig *)
 
@@ -13,10 +13,10 @@
 BeginPackage["HighEnergyPhysics`fctools`Uncontract`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Uncontract::usage= "Uncontract[exp,q1,q2, ...] uncontracts Eps
+Uncontract::"usage"= "Uncontract[exp,q1,q2, ...] uncontracts Eps
 and DiracGamma. Uncontract[exp,q1,q2, Pair->{p}] uncontracts 
 also p.q1 and p.q2; Pair -> All uncontracts all except
-OPEDelta.";
+OPEDelta. Dimension -> Automatic leaves dimensions unchanged.";
 
 
 (* ------------------------------------------------------------------------ *)
@@ -33,7 +33,7 @@ MakeContext[Cases2, Dimension,
             ScalarProduct,Select1
            ];
 
-Options[Uncontract] = {Dimension -> D, 
+Options[Uncontract] = {Dimension -> Automatic (*D*) (*Change 6/10-2002. F.Orellana*), 
                        DimensionalReduction -> False,
                        Pair -> {}, Unique   -> True};
 
@@ -41,7 +41,7 @@ Uncontract[x_Plus, q__] := Map[Uncontract[#,q]&, x];
 Uncontract[x_List, q__] := Map[Uncontract[#,q]&, x];
 
 Uncontract[x_, q1__, q2_ /; Head[q2] =!= Rule, opt___Rule
-        ] := Uncontract[Uncontract[x,q2],q1, opt];
+        ] := Uncontract[Uncontract[x,q2,opt(*bug fix. F.Orellana.21/9-2002*)],q1, opt];
 
 Uncontract[ex_, q_ /; Head[q]=!=Rule, opt___Rule
         ] := Block[{exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,
@@ -72,45 +72,47 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
    If[!FreeQ[nex,Eps],
       nex = nex /. Eps -> eeps;
       nex = nex /. eeps[aaa__]^2 :> TIMES[eeps[aaa],eeps[aaa]];
-      nex = nex //. {eeps[a___,Momentum[q,___],b___] :>
-                    (li=LorentzIndex[a$AL[inc=inc+1],dim];
-                     Pair[Momentum[q,dim], li] *
+      nex = nex //. {eeps[a___,Momentum[q,d___],b___] :>
+                    (*Changed dim to If[...]. F.Orellana. 6/10-2002*)
+                    (li=LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim](*dim*)];
+                     Pair[Momentum[q,If[dim===Automatic,seq[d],dim](*dim*)], li] *
                      eeps[a,lidr[li],b]
                     )} /. eeps -> Eps /. TIMES -> Times;
      ];
       If[par=!={} && Length[par]>0 && Head[par]===List,
          nex = nex /. Pair[aa__/;!FreeQ2[{aa}, par]
-                          ]^n_Integer?Positive :>
-               Apply[times, Table[Pair[aa], {j,n}]];
+                          ]^n_Integer(*?Positive*) :> (*Uncontract denominators also.
+                                                        Change by F.Orellana. 3/11-2002*)
+               Apply[times, Table[Pair[aa], {j,Abs[n]}]]^Sign[n];
          If[MemberQ[par, q],
-            nex = nex //. Pair[Momentum[q,___], Momentum[q,___]] :>
-                          (li1 = LorentzIndex[a$AL[inc=inc+1], dim]; 
-                           li2 = LorentzIndex[a$AL[inc=inc+1], dim]; 
-                           Pair[Momentum[q, dim], li1] *
+            nex = nex //. Pair[Momentum[q,d___], Momentum[q,___]] :>
+                          (li1 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]]; 
+                           li2 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]]; 
+                           Pair[Momentum[q, If[dim===Automatic,seq[d],dim]], li1] *
 (* das ist vielleicht ein Bloedsinn mit dieser dimensionalen Reduktion:
   HIER darf man li1 und li2 nicht 4-dimensional setzen
 *)
-                           Pair[Momentum[q, dim], li2] *Pair[li1, li2]
+                           Pair[Momentum[q, If[dim===Automatic,seq[d],dim]], li2] *Pair[li1, li2]
                           );
             par = Select1[par, q];
            ];
          
-         nex = nex //.{Pair[Momentum[q,___], Momentum[pe_,___]
-                          ] :> (li=LorentzIndex[a$AL[inc=inc+1],dim];
-                      Pair[Momentum[q,dim], li] *    
-                      Pair[Momentum[pe,dim],lidr[li]])/;MemberQ[par,pe]
+         nex = nex //.{Pair[Momentum[q,d___], Momentum[pe_,___]
+                          ] :> (li=LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
+                      Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *    
+                      Pair[Momentum[pe,If[dim===Automatic,seq[d],dim]],lidr[li]])/;MemberQ[par,pe]
                      } /. times -> Times;
         ];
    If[!FreeQ[nex, DiracGamma],
       nex = nex /. DiracGamma -> dirg;
-      nex = nex //. dirg[Momentum[q,___],b___] :>
-                    (li = LorentzIndex[a$AL[inc=inc+1],dim];
-                     Pair[Momentum[q,dim], li] *
-                     dirg[lidr[li],dim]
+      nex = nex //. dirg[Momentum[q,d___],b___] :>
+                    (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
+                     Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *
+                     dirg[lidr[li],If[dim===Automatic,seq[d],dim]]
                     ) /. dirg -> DiracGamma;
       nex = DotSimplify[nex,Expanding -> False];
      ];
-        nex/.dummy->1]];
+        nex/.dummy->1/.seq:>Sequence]];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

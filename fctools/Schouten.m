@@ -15,15 +15,16 @@
 BeginPackage["HighEnergyPhysics`fctools`Schouten`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Schouten::usage = 
-"Schouten[expr] applies the Schouten identity on at most
-42 terms in a sum. If Schouten should operate on larger 
-expression you can give a second argument, e.g.: 
+Schouten::"usage" = 
+"Schouten[expr] applies the Schouten identity for four-vectors on at most
+42 terms in a sum. If Schouten should operate on larger
+expression you can give a second argument, e.g.:
 Schouten[expr, 4711] which will work
-on sums with less than 4711 terms.  \n
-Schouten is also an option of Contract and 
+on sums with less than 4711 terms.\n\n
+
+Schouten is also an option of Contract and
 DiracTrace. It may be set to an integer
-indicating the maximum number of terms onto which the 
+indicating the maximum number of terms onto which the
 function Schouten will be applied .";
 
 (* ------------------------------------------------------------------------ *)
