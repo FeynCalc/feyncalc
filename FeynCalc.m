@@ -927,10 +927,12 @@ If[ Global`$LoadFeynArts===True,
       FeynCalcPrint["Loading FeynArts, see www.feynarts.de for documentation"]
    ];
 (* loading *)
-Block[{Print, $Path = Union[$Path, {HighEnergyPhysics`FeynCalc`$FeynArtsDirectory}]},
+Block[{Print},
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
    loadfa = Get["FeynArts`"];
-   If[loadfa=!=$Failed, HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir] ,
+   If[loadfa=!=$Failed,
+   HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir],
+   $Path = Union[$Path, {ToString[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]}];
    loadfa =  Get["FeynArts`"];
 ]];
 If[loadfa =!=$Failed,
