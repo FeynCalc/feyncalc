@@ -60,8 +60,8 @@ Options[BackgroundGluonVertex] = {Dimension -> D,
                                   Gauge -> 1
                                  };
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 BackgroundGluonVertex[x___, i_Integer, y___] := 
 BackgroundGluonVertex[x, l[i], c[i], y];
 

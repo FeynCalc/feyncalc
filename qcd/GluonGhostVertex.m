@@ -47,8 +47,8 @@ SUNIndex   ];
 
 Options[GluonGhostVertex] = {Dimension -> D,
                              CouplingConstant -> Gstrong};
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
 
 GluonGhostVertex[x___, i_Integer, y___] := 
 GluonGhostVertex[x, l[i], c[i], y];

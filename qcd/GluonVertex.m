@@ -68,8 +68,8 @@ Explicit -> False, OPE -> False};
 GV = GluonVertex;
 Abbreviation[GluonVertex] = HoldForm[GV];
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 GluonVertex[x___, i_Integer, y___] := GluonVertex[x, l[i], c[i], y];
 
 (* 3 - vertex *)
