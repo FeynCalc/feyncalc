@@ -582,6 +582,12 @@ UQuarkCharge::"usage" =
     "UMatrix[UQuarkCharge[opts],opts] =: UQuarkChargeMatrix[opts] is the \
 diagonal quark charge matrix.";
 
+UNucleonChargeMatrix::"usage" =
+    "";
+
+UNucleonCharge::"usage" =
+    "";
+
 UChiralSpurion::"usage" =
     "UMatrix[UChiralSpurion[]][x] represents some \
 spurion.  It should be defined in the model configuration files.  \
@@ -1199,10 +1205,10 @@ $IsoIndicesCounter::"usage" =
 IsoIndicesSupply supplies an isospin index. To start with 1, simply set \
 $IsoIndicesCounter = 0.";
 
-UIndicesCounter::"usage" =
-    "UIndicesCounter is a variable which is incremented with one each time \
+$UIndicesCounter::"usage" =
+    "$UIndicesCounter is a variable which is incremented with one each time \
 IsoIndicesSupply supplies a pair of matrix indices. To start with 1, simply \
-set UIndicesCounter=0.";
+set $UIndicesCounter=0.";
 
 VariableBoxes::"usage" =
     "VariableBoxes[var,opts] declares TraditionalForm (or any other format, \
@@ -1910,6 +1916,22 @@ UQuarkCharge /:
      MakeBoxes[UQuarkCharge[___],
 	  TraditionalForm] :=
     MakeBoxes[StyleForm["Q", FontSlant -> "Italic"]];
+
+UNucleonChargeMatrix /:
+     MakeBoxes[UNucleonChargeMatrix,
+	  TraditionalForm] :=
+    MakeBoxes[
+        StyleForm["\[ScriptCapitalQ]", FontSlant -> "Italic", FontWeight -> "Bold"]];
+
+UNucleonCharge /:
+     MakeBoxes[UNucleonCharge,
+	  TraditionalForm] :=
+    MakeBoxes[StyleForm["\[ScriptCapitalQ]", FontSlant -> "Italic"]];
+
+UNucleonCharge /:
+     MakeBoxes[UNucleonCharge[___],
+	  TraditionalForm] :=
+    MakeBoxes[StyleForm["\[ScriptCapitalQ]", FontSlant -> "Italic"]];
 
 UQuarkMass /:
      MakeBoxes[UQuarkMass,

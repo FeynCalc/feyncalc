@@ -80,6 +80,8 @@ DotExpand := DotExpand = MakeContext["DotExpand"];
 FourVector := FourVector = MakeContext["FourVector"];
 FDr := FDr = MakeContext["FDr"];
 CDr := CDr = MakeContext["CDr"];
+fcdg := fcdg = MakeContext["DiracGamma"];
+
 
 
 (* Defaults *)
@@ -105,6 +107,12 @@ UQuarkChargeMatrix[st___RenormalizationState, sc___RenormalizationScheme,
       qs___ExpansionState, opts___?OptionQ] :=
     UMatrix[UQuarkCharge[st, sc, qs, ##] & @@
             OptionsSelect[UQuarkCharge, opts], ##] & @@
+      OptionsSelect[UMatrix, opts];
+(* UNucleonChargeMatrix added by P. Buettiker, 21-Oct-2003 *)
+UNucleonChargeMatrix[st___RenormalizationState, sc___RenormalizationScheme,
+      qs___ExpansionState, opts___?OptionQ] :=
+    UMatrix[UNucleonCharge[st, sc, qs, ##] & @@
+            OptionsSelect[UNucleonCharge, opts], ##] & @@
       OptionsSelect[UMatrix, opts];
 UChiralSpurionMatrix[x_,st___RenormalizationState, sc___RenormalizationScheme,
       qs___ExpansionState, opts___?OptionQ] :=
@@ -427,6 +435,9 @@ Options[UQuarkCharge] = {fcexpt -> True, DiagonalToU -> False,
 Options[UChi] = {fcexpt -> True, DiagonalToU -> False, fcsunn -> 2,
       QuarkToMesonMasses -> True(*Commented out 11/5-2003*)(*, RemoveIntegerIndices -> False*),
       UDimension -> Automatic};
+(* Options for UNucleonCharge added by P. Buettiker, 21-Oct-2003 *)
+Options[UNucleonCharge] = {fcexpt -> True, DiagonalToU -> False,
+                           fcsunn -> 2, UDimension -> Automatic};
 (* Changed the strings below from "k", "k" to "l", "l"
    in order to avoid problems with IndicesCleanup. *)
 Options[PhiToFC] = {(*Commented out 11/5-2003*)(*RemoveIntegerIndices -> False,*) FreeIsoIndexString -> "l",
@@ -1143,8 +1154,25 @@ UDot[UDot[a_, b__], cc___, c_] := UDot[a, NM[b, cc], c];
 
 (*Expanding sums*)
 
-UDotExpand[expr_] :=
-    expr //. UDot[a___, b_ + c_, d___] -> Distribute[UDot[a, b + c, d]];
+(*  The following was added by P. Buettiker, 13-Nov-03 *)
+UDotExpand[expr_] :=Block[{$UNonComm},
+
+  (* These non-commuting objects will not be taken out of NM: *)
+
+  $UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
+        HighEnergyPhysics`FeynCalc`DiracBasis`DiracBasis,
+        HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma,
+        HighEnergyPhysics`FeynCalc`DiracGammaT`DiracGammaT,
+        HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix,
+        HighEnergyPhysics`FeynCalc`DiracSlash`DiracSlash,
+        HighEnergyPhysics`FeynCalc`DiracSigma`DiracSigma,
+        FST}];
+    expr //. {UDot[a___, b_ + c_, d___] -> Distribute[UDot[a, b + c, d]],
+              UDot[a___,b_*c_,d___]/;UScalarQ[b] :> b*UDot[a,c,d],
+              UDot[a___,b_,d___]/;UScalarQ[b] :> b*UDot[a,d],
+              UDot[a___,b_,c___]/;FreeQ[b, (Alternatives @@ $UNonComm)] && 
+                           MatrixQ[c] =!= True:> b*UDot[a,c] }];
+
 
 
 
@@ -1418,14 +1446,17 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                   Flatten[OptionsSelect[UMatrix, opts1]] /.
                 Options[UMatrix]) == 2) && (gaugedimcheck[UMatrix, opts1] ==
             2)  && (fcexpt /. Flatten[{opts}] /.
-                Options[UQuarkMass]) := ParticleMass[UpQuark, st, sc,
+                Options[UQuarkMass]) := (*ParticleMass[UpQuark, st, sc,
               qs]*(-1/2*UGeneratorMatrix[fcsuni[3], ##] & @@
                   OptionsSelect[UMatrix, opts1] +
                 1/2*UIdentityMatrix[opts1]) +
           ParticleMass[DownQuark, st, sc,
               qs]*(1/2*UGeneratorMatrix[fcsuni[3], ##] & @@
                   OptionsSelect[UMatrix, opts1] +
-                1/2*UIdentityMatrix[opts1]) /.
+                1/2*UIdentityMatrix[opts1])*)
+          (*Simpler, more flexible implementation by Paul Buettiker. 19/11-2003*)
+          DiagonalUMatrix[{ParticleMass[UpQuark, st, sc,qs],
+          ParticleMass[DownQuark, st, sc,qs]},opts,opts1] /.
         If[(QuarkToMesonMasses /. Flatten[{opts}] /.
               Options[UQuarkMass]), $QuarkToPionMassesRules, {}] (*Commented out 11/5-2003*)(*/.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
@@ -1456,7 +1487,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                   Flatten[OptionsSelect[UMatrix, opts1]] /.
                 Options[UMatrix]) == 3) && (gaugedimcheck[UMatrix, opts1] ==
             3)  && (fcexpt /. Flatten[{opts}] /.
-                Options[UQuarkMass]) := ParticleMass[UpQuark, st, sc,
+                Options[UQuarkMass]) := (*ParticleMass[UpQuark, st, sc,
               qs]*(1/2*UGeneratorMatrix[fcsuni[3], ##] & @@
                         OptionsSelect[UMatrix, opts1] +
                       1/(2*Sqrt[3])*UGeneratorMatrix[fcsuni[8], ##] & @@
@@ -1469,7 +1500,11 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
           ParticleMass[StrangeQuark, st, sc,
               qs]*(-1/Sqrt[3]*UGeneratorMatrix[fcsuni[8], ##] & @@
                   OptionsSelect[UMatrix, opts1] +
-                1/3*UIdentityMatrix[opts1]) /.
+                1/3*UIdentityMatrix[opts1])*)
+       (*Simpler, more flexible implementation by Paul Buettiker. 19/11-2003*)
+        DiagonalUMatrix[{ParticleMass[UpQuark, st, sc,qs],
+          ParticleMass[DownQuark, st, sc,qs],
+          ParticleMass[StrangeQuark, st, sc,qs]},opts,opts1] /.
         If[(QuarkToMesonMasses /. Flatten[{opts}] /.
               Options[UQuarkMass]), $QuarkToMesonMassesRules, {}] (*Commented out 11/5-2003*)(*/.
       If[(RemoveIntegerIndices /. Flatten[{opts}] /.
@@ -1512,6 +1547,31 @@ UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
                       x], ##]) & @@
           Union[OptionsSelect[UChi, opts], OptionsSelect[UMatrix, opts]]);
 
+
+(* The nucleon charge matrix added by P. Buettiker 30-Jul-2003: *)
+
+UMatrix[UNucleonCharge[st___RenormalizationState, sc___RenormalizationScheme,
+          qs___ExpansionState, opts___?OptionQ],
+        opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
+            Options[UNucleonCharge]) && ((fcsunn /.
+                  Flatten[OptionsSelect[UMatrix, opts1]] /.
+                Options[UMatrix]) ==
+            2) && (gaugedimcheck[UMatrix, opts1, opts] == 2)  && (fcexpt /. Flatten[{opts}] /.
+                Options[UNucleonCharge]) :=
+    DiagonalUMatrix[{1*fccoupl[QED[1],st,sc,qs], 0*
+            fccoupl[QED[1],st,sc,qs]}, opts, opts1];
+
+UMatrix[UNucleonCharge[st___RenormalizationState, sc___RenormalizationScheme,
+          qs___ExpansionState, opts___?OptionQ],
+        opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
+            Options[UNucleonCharge]) && ((fcsunn /.
+                  Flatten[OptionsSelect[UMatrix, opts1]] /.
+                Options[UMatrix]) ==
+            3) && (gaugedimcheck[UMatrix, opts1, opts] == 3)  && (fcexpt /. Flatten[{opts}] /.
+                Options[UNucleonCharge]) :=
+    DiagonalUMatrix[{1*fccoupl[QED[1],st,sc,qs], 0*
+            fccoupl[QED[1],st,sc,qs], -1/3*fccoupl[QED[1],st,sc,qs]}, opts,
+        opts1];
 
 
 (* The vector representation commonly used for external sources: *)
@@ -1952,7 +2012,14 @@ UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                 Options[UQuarkMass]), $QuarkToMesonMassesRules, {}])[[ii,
         jj]];
 
-
+(* UNucleonChargeMatrix added by P. Buettiker 21-Oct-2003     *)
+UNucleonCharge[st___RenormalizationState, sc___RenormalizationScheme,
+          qs___ExpansionState, opts___?OptionQ][uindxx[i_Integer],
+         uindxx[j_Integer]] /; ((fcsunn /. Flatten[{opts}] /.
+                Options[UQuarkCharge]) == 2 &&
+          gaugedimcheck[UQuarkCharge, opts] ==
+            2) := ({{1*fccoupl[QED[1], st, sc, qs],
+            0}, {0, 0*fccoupl[QED[1], st, sc, qs]}})[[i, j]];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 (********************************************************************************)
@@ -2100,6 +2167,10 @@ Adjoint[IsoVector[a_, b___][x_]] := IsoVector[Adjoint[a], b][x];
 
 Adjoint[IsoVector[a_, b___]] := IsoVector[Adjoint[a], b];
 
+Adjoint[UVector[a_, b___][x_]] := UVector[Adjoint[a], b][x];
+
+Adjoint[UVector[a_, b___]] := UVector[Adjoint[a], b];
+
 Adjoint[Projection[i_]] = Projection[i];
 
 (*Commented out 11/5-2003*)
@@ -2139,9 +2210,13 @@ Adjoint[IsoSymmetricCross[b_, c_]] /; $StandardSUNBasis :=
 
 (* Operators and matrices are interchanged when adjoined: *)
 
-Adjoint[NM[b__, c_]] := NM[Adjoint[c], Adjoint[NM[b]]];
+(*Adjoint[NM[b__, c_]] := NM[Adjoint[c], Adjoint[NM[b]]];*)
+(*Probably faster...*)
+Adjoint[NM[a_,b__]] := NM @@ (Adjoint /@ Reverse[{a,b}]);
 
+Adjoint[UDot[a_,b__]] := UDot @@ (Adjoint /@ Reverse[{a,b}]);
 
+Adjoint[fcdot[a_,b__]] := fcdot @@ (Adjoint /@ Reverse[{a,b}]);
 
 (* Distributivity of conjugation: *)
 
@@ -2222,6 +2297,13 @@ Adjoint[a_?MatrixQ] := Conjugate[Transpose[a]];
 Adjoint[Conjugate[Transpose[a_]]] := a;
 
 
+(* Dirac stuff *)
+
+Adjoint[fcdg[fcexli[i:(1|2|3)]]] := -fcdg[fcexli[i]];
+Adjoint[fcdg[i:(1|2|3)]] := -fcdg[i];
+Adjoint[fcdg[fcexli[i:(0|5|6|7)]]] := fcdg[fcexli[i]];
+Adjoint[fcdg[i:(0|5|6|7)]] := fcdg[i];
+
 
 (* The Dirac bar: *)
 
@@ -2229,7 +2311,6 @@ DiracBar[fcqf[p__][x_]] := DiracBar[fcqf[p]][x];
 DiracBar[fcqf[ders___, Particle[p_, i___], c___]] :=
     fcqf[ders, DiracBar[Particle[p, i]], c];
 DiracBar[p_][ui_uix] := DiracBar[p[ui]];
-
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -2951,15 +3032,15 @@ IsoIndicesSupply[
 
 (* Support functions for UIndicesSupply: *)
 
-UIndicesCounter = 0;
+$UIndicesCounter = 0;
 nnn[opts___] :=
-    uix[(++UIndicesCounter;
+    uix[(++$UIndicesCounter;
         ToExpression[(UIndicesString /. Flatten[{opts}] /.
-                Options[UIndicesSupply]) <> ToString[UIndicesCounter]])];
+                Options[UIndicesSupply]) <> ToString[$UIndicesCounter]])];
 
 nnm[opts___] :=
     uix[(ToExpression[(UIndicesString /. Flatten[{opts}] /.
-                Options[UIndicesSupply]) <> ToString[UIndicesCounter + 1]])];
+                Options[UIndicesSupply]) <> ToString[$UIndicesCounter + 1]])];
 
 
 
@@ -2971,7 +3052,7 @@ UIndicesSupply[a_, opts___] :=
                 m[ind, Sequence @@ OptionsSelect[m, opts, op, opt]][i, j],
               UMatrix[m_, i_uix, j_uix, opt___] :> m[i, j, opt]} /.
           If[(UIndexToSUNIndex /. Flatten[{opts}] /. Options[UIndicesSupply]),
-             uix -> fcsuni, {}] /. (*fcdot*)UDot -> NM /. nnmm -> NM;
+             uix -> fcsuni, {}] /. (*fcdot*)UDot -> fcdot /. nnmm -> NM;
 
 
 
@@ -2979,14 +3060,18 @@ UIndicesSupply[a_, opts___] :=
 
 UIndicesSupply[a_ + b_, opts___] :=
     UIndicesSupply[a, opts] + UIndicesSupply[b, opts];
-UIndicesSupply[a_*b_, opts___] /; FreeQ[a, UMatrix | UVector] :=
+UIndicesSupply[a_*b_, opts___] /;
+    FreeQ[a /. UTrace1[aa_] :> UTrace1[aa/. {UMatrix->um, UVector->uv}], UMatrix | UVector] :=
     a*UIndicesSupply[b, opts];
-UIndicesSupply[a_ /; FreeQ[a, UMatrix | UVector], ___] := a;
+UIndicesSupply[a_, ___] /;
+  FreeQ[a /. UTrace1[aa_] :> UTrace1[aa/. {UMatrix->um, UVector->uv}], UMatrix | UVector] := a;
 UIndicesSupply1[a_ + b_, opts___] :=
     UIndicesSupply[a, opts] + UIndicesSupply[b, opts];
-UIndicesSupply1[a_*b_, opts___] /; FreeQ[a, UMatrix | UVector] :=
+UIndicesSupply1[a_*b_, opts___] /;
+  FreeQ[a /. UTrace1[aa_] :> UTrace1[aa/. {UMatrix->um, UVector->uv}], UMatrix | UVector] :=
     a*UIndicesSupply[b, opts];
-UIndicesSupply1[a_ /; FreeQ[a, UMatrix | UVector], ___] := a;
+UIndicesSupply1[a_, ___] /;
+  FreeQ[a /. UTrace1[aa_] :> UTrace1[aa/. {UMatrix->um, UVector->uv}], UMatrix | UVector] := a;
 
 
 
@@ -3003,7 +3088,7 @@ UIndicesSupply1[aa_NM, optss1___] /;
                     aa[[rep]] /.
                       UMatrix[a_, opts___] :> UMatrix[a, indexpair, opts],
                     rep][[rep]]), {rep, Length[aa]}] /. nnmm -> NM;
-      UIndicesCounter++; ui1);
+      $UIndicesCounter++; ui1);
 
 
 
@@ -3018,7 +3103,7 @@ UIndicesSupply1[a_NM, optss1___] /; (!FreeQ[List @@ a, NM | UDot(*fcdot*)]) :=
 
 UIndicesSupply1[aa_, optss1___] /; (FreeQ[aa, NM | UDot(*fcdot*)] &&
         !FreeQ[aa, UVector | UMatrix]) := (indexpair =
-        Sequence[nnn[optss1], nnm[optss1]]; UIndicesCounter++;
+        Sequence[nnn[optss1], nnm[optss1]]; $UIndicesCounter++;
       aa /. {UMatrix[a_, opts___] :> UMatrix[a, indexpair, opts],
           UVector[a_, opts___] :> UVector[a, indexpair[[1]], opts]});
 
@@ -3754,6 +3839,8 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
   o22 = Join[{ar, br, cr},Union[OptionsSelect[UFieldMatrixSeries, opts], OptionsSelect[UMatrix, opts]]];
   o3 = OptionsSelect[IsoVector, opts];
   o4 = Join[{ar, br, cr},Union[OptionsSelect[UQuarkCharge, opts], OptionsSelect[UMatrix, opts]]];
+  (* o41   added by P. Buettiker on 21-Oct-03 *)
+  o41 = Join[{ar, br, cr},Union[OptionsSelect[UNucleonCharge, opts], OptionsSelect[UMatrix, opts]]];
   o5 = OptionsSelect[UMatrix, opts];
   o6 = OptionsSelect[UGenerator, opts];
 
@@ -3768,7 +3855,9 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
               UQuarkMassMatrix, UChiMatrix,UChiralSpurionMatrix,
               UChiralSpurionRightMatrix,UChiralSpurionLeftMatrix,
               UQuarkChargeMatrix, UIdentityMatrix, QCM,
-				      a,b,pa,mu,nu,p,i,som,pp,lli,bbb,aa,lisxx},
+             (* UNucleonChargeMatrix added by P. Buettiker on 21-Oct-03: *)
+              UNucleonChargeMatrix,
+		    a,b,pa,mu,nu,p,i,som,pp,lli,bbb,aa,lisxx},
 
    NM := NM5;
    CovariantNabla := CNb2;
@@ -3797,11 +3886,12 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
    UIdentityMatrix := UIdentityMatrix2[##] & @@ o5;
    UQuarkMassMatrix := QuarkMassMatrix2[##] & @@ o1;
    UQuarkChargeMatrix := UQuarkChargeMatrix2[##] & @@ o4;
+   (* The following line added by P. Buettiker on 21-Oct-03  *)
+   UNucleonChargeMatrix := UNucleonChargeMatrix2[##] & @@ o41;
    UChiMatrix := (Chi2[x, ##] & @@ o1);
    UChiralSpurionMatrix := (UChiSp[x, ##] & @@ o1);
    UChiralSpurionRightMatrix := (UChiSpR[x, ##] & @@ o1);
-   UChiralSpurionLeftMatrix := (UChiSpL[x, ##] & @@ o1); expr]
-   ) /.
+   UChiralSpurionLeftMatrix := (UChiSpL[x, ##] & @@ o1); expr]   ) /.
 
    {CovariantFieldDerivative :> CDr2,
     FieldDerivative[aa_, {lis__}] :> FDr2[aa, {lis}]} /.
@@ -3819,6 +3909,8 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
    PV2 -> PhiMesonIsoVector,
    QuarkMassMatrix2 -> UQuarkMassMatrix,
    UQuarkChargeMatrix2 -> UQuarkChargeMatrix,
+   (* Next line added by P. Buettiker, 21-Oct-2003 *)
+   UNucleonChargeMatrix2 -> UNucleonChargeMatrix,
    Chi2 -> UChiMatrix,
    UChiSp -> UChiralSpurionMatrix,
    UChiSpR -> UChiralSpurionRightMatrix,
@@ -3828,7 +3920,16 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
 
    {CNb2[aa_, {lis__}] -> CNb3[aa, x, {lis}, ##] & @@ OptionsSelect[CovariantNabla, opts],
    CDr2[aa_, {lis__}] -> CDr3[aa, x, {lis}, ##] & @@ OptionsSelect[CovariantFieldDerivative, opts],
+(* Change of P. Buettiker 23-Oct-2003 
+   Sometimes it is useful to have the possibility of also supplying
+   RenormalizationState[i] etc. to Covariant(Nucleon)FieldDerivative,
+   see Configuration/paulBChPT2.conf.
+   Hence, I modified the definition CNDr2 below. F. Orellana's definition
+   is the following [commented out]:
    CNDr2[aa_, {lis__}] -> CNDr3[aa, x, {lis}, ##] & @@ OptionsSelect[CovariantNucleonFieldDerivative,
+       opts]
+*)
+   CNDr2[aa_, {lis__}] -> CNDr3[aa, x,{lis},ar,br,cr, ##] & @@ OptionsSelect[CovariantNucleonFieldDerivative,
        opts]} /.
 
     FDr2[aa_, {lis__}] -> FDr3[aa, x, {lis}] /.
@@ -3858,7 +3959,22 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
 
     UMatrix[UGenerator[i_]] :>
      UMatrix[UGenerator[fcsuni[i], Sequence @@ o6],
-                       Sequence @@ o5] /; FreeQ[i, fcsuni|fcexsuni];
+                       Sequence @@ o5] /; FreeQ[i, fcsuni|fcexsuni] /.
+
+(***************************************************************)
+(* The next few lines were added by P. Buettiker, 21-Oct-2003  *)
+(* Also the "/." above was a ";" earlier                       *)       
+(***************************************************************)   
+    {UMatrix[UQuarkCharge[st___RenormalizationState,sc___RenormalizationScheme,
+                          qs___ExpansionState]]:>
+      UMatrix[UQuarkCharge[st,sc,qs,Sequence @@ o4],o5],
+     UMatrix[UNucleonCharge[st___RenormalizationState,sc___RenormalizationScheme,
+                          qs___ExpansionState]]:>
+      UMatrix[UNucleonCharge[st,sc,qs,Sequence @@ o41],o5]};
+
+(******************************************************************)
+ (*End of the insertion of P. Buettiker, 21-Oct-2003              *)
+(******************************************************************)
 
 
 
@@ -3913,6 +4029,7 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
         HighEnergyPhysics`FeynCalc`DiracGammaT`DiracGammaT,
         HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix,
         HighEnergyPhysics`FeynCalc`DiracSlash`DiracSlash,
+        HighEnergyPhysics`FeynCalc`DiracSigma`DiracSigma,
         FST}];
 
   noncommpatt = Alternatives @@ $UNonComm;
