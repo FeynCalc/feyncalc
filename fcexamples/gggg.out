@@ -1,0 +1,91 @@
+Mathematica 5.0 for Linux
+Copyright 1988-2003 Wolfram Research, Inc.
+ -- Motif graphics initialized -- 
+
+In[1]:= 
+In[2]:= 
+In[2]:= 
+In[3]:= 
+In[3]:= 
+In[4]:= 
+In[4]:= 
+In[5]:= 
+In[5]:= 
+In[6]:= 
+In[6]:= 
+In[7]:= 
+In[8]:= 
+In[9]:= 
+In[9]:= 
+In[10]:= 
+In[11]:= 
+In[12]:= 
+In[12]:= 
+In[13]:= 
+In[14]:= 
+In[14]:= 
+In[15]:= 
+In[16]:= 4 amplitudes created.  Time spent so far = 3. seconds 
+
+In[17]:= 
+In[17]:= 
+In[18]:= 
+In[19]:= 
+In[19]:= 
+In[20]:= 
+In[21]:= 
+In[21]:= 
+In[22]:= 
+In[23]:= 
+In[23]:= 
+In[24]:= 
+Out[24]= {4.12 s, Null}
+
+In[25]:= 
+In[25]:= 
+In[26]:= 1 2 3 4 5 6 
+Out[26]= {4.23 s, Null}
+
+In[27]:= 
+In[27]:= 
+In[28]:= 
+In[29]:= 
+In[29]:= 
+In[30]:= 
+In[31]:= 
+In[31]:= 
+In[32]:= 
+In[33]:= 
+In[33]:= 
+In[34]:= 
+Out[34]= {9.45 s, Null}
+
+In[35]:= 
+In[35]:= 
+In[36]:= 
+In[37]:= 
+Out[37]= {ep(*)[k1] -> nu3, ep[k1] -> mu3, ep(*)[k2] -> nu4, ep[k2] -> mu4, 
+ 
+  ep(*)[p1] -> nu1, ep[p1] -> mu1, ep(*)[p2] -> nu2, ep[p2] -> mu2}
+
+In[38]:= 
+In[38]:= 
+In[39]:= 
+In[40]:= 
+In[40]:= 
+In[41]:= 
+In[42]:= 
+In[42]:= 
+In[43]:= Result = -(Gstrong^4*(2 - n)^2*SUNN^2*(1 - SUNN^2)*(s^2 + s*t + t^2)^3)/
+ 
+  (64*s^2*t^2*(s + t)^2)
+
+In[44]:= 
+In[44]:= 
+In[45]:= 
+In[46]:= 
+In[46]:= check with Field, p. 276, (7.2.34)  OK
+
+In[47]:= seconds of wall-clock time needed = 36.925834
+
+In[48]:= 
