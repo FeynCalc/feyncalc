@@ -43,7 +43,7 @@ ToTFi[z_Plus,qqp___, pe_/;Head[pe]=!=Rule, opts___Rule] :=
 ToTFi[z_Times, q1_,q2_,p_,opts___Rule] :=
  Select1[z, {q1, q2}] saveToTFi[Select2[z, {q1, q2}], q1, q2, p, opts];
 
-ToTFi[h_/;!MemberQ[{Plus,Times}],Head[ħ],m__] :=
+ToTFi[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
   saveToTFi[h, m];
 
 saveToTFi[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] := 
