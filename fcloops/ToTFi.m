@@ -42,10 +42,13 @@ ToTFi[z_Plus,qqp___, pe_/;Head[pe]=!=Rule, opts___Rule] :=
 
 (* 1-loop *)
 ToTFi[a_,q_,p_/;Head[p]=!=Rule,opts___Rule] := 
-  (ToExpression["TFIRecurse"][ ToTFi[ 
+  (ToExpression["TFIRecurse"][ 
+ FeynCalcExternal[
+     ToTFi[ 
 FeynAmpDenominatorCombine[
 	FeynCalcInternal[ Expand[ FAD[{qq, mM}] FeynAmpDenominatorSimplify[a,q] ] ]], 
-                      q, qq, p, opts]/.TFi->ToExpression["TFI"]
+                      q, qq, p, opts]
+                 ]/.TFi->ToExpression["TFI"]
                         ] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
   ) /; MemberQ[$ContextPath, "HighEnergyPhysics`Tarcer`"];
 
