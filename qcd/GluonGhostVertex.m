@@ -66,7 +66,7 @@ GGV = GluonGhostVertex;
 
 GluonGhostVertex[a_,b_,c_, d_,e_,f_, g_,h_,i_, opt___?OptionQ] :=
 GluonGhostVertex[{a,b,c},{d,e,f},{g,h,i},opt] /;
-   FreeQ[Map[Head,{a,b,c,d,e,f,g,h,i}], Integer|Rule|RuleDelayed|List];
+   FreeQ[Map[Head,{a,b,c,d,e,f,g,h,i}], Integer|Rule|RuleDelayed|List, Heads->False];
 
 GluonGhostVertex[{pi_, mui_, ai_}, {___, bi_},
                  {ki_, ___, ci_}, opt___?OptionQ] := 
