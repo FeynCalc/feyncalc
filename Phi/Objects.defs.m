@@ -487,7 +487,7 @@ UScalar::"usage" =
 as defined with DeclareUScalar or an explicit numerical quantity.";
 
 UMatrixQ::"usage" =
-    "UScalarQ[x] returns True if x is a scalar as defined with DeclareUMatrix \
+    "UMatrixQ[x] returns True if x is a matrix as defined with DeclareUMatrix \
 or an explicit matrix.";
 
 UTrace::"usage" =
