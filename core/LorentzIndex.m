@@ -30,7 +30,8 @@ Begin["`Private`"];
  MakeContext[ExplicitLorentzIndex];
 
 SetAttributes[LorentzIndex, Constant ];
-LorentzIndex[LorentzIndex[in_]]  := LorentzIndex[in];
+(* expanded because of CreateFCAmp's strange results  ... *)
+LorentzIndex[LorentzIndex[in_,d___], d___]  := LorentzIndex[in,d];
 LorentzIndex[x_, 4]              := LorentzIndex[x, 4] = LorentzIndex[x];
 LorentzIndex[_, 0]               := 0;
 LorentzIndex[in_Integer,dim___]  := ExplicitLorentzIndex[in,dim];
