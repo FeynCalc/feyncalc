@@ -225,18 +225,30 @@ If[$VeryVerbose > 2,Print["dir2a"]];
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
 *)
         If[diractrlabel===True,
-(*Dialog[Global`D2 = diracdt];*)
+(*
+Dialog[Global`D2 = diracdt];
+*)
 
+(* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
+(* 
            diracdt = diracdt/.DOT->trIC/.
+*)
+(*  only do cyclicity simplification if there is a simple structure of Dirac matrices *)
+           If[FreeQ[diracdt/. DOT -> dooT, dooT[a__/; !FreeQ[{a}, dooT]]],
+               diracdt = diracdt/.DOT->trIC/.  
 (* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
                {trI:>dS, HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> dS};
-(*Dialog[Global`D3 = diracdt];*)
+             ];
+(*
+Dialog[Global`D3 = diracdt];
+*)
               (* optimization *)
            colle[a_]:=If[ (Length[a]<200(*0*))||(Head[a]=!=Plus), a,
                           Collect2[a, DOT, Factoring -> False] ];
-           dirfun[exp_]:=colle[exp/.DOT->dS/.DOT -> trIC /. trI->DOT];
+           dirfun[exp_]:=colle[exp/.DOT->dS (*/.DOT -> trIC /. trI->DOT*)];
 (* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
-           diracdt = FixedPoint[dirfun, diracdt, 3]/.DOT ->trIC/.trI->dS;
+(* even be more careful: and get rid of cyclic simplifications hrere ... *)
+           diracdt = FixedPoint[dirfun, diracdt, 5](*/.DOT ->trIC/.trI->dS*);
 (*
 Dialog[Global`D4 = diracdt];
 *)
@@ -280,8 +292,11 @@ If[$VeryVerbose>2,
                diracpdt = diracdt, diracpdt = diracdt[[diracjj]]
               ];
             If[diractrlabel===True,
+(*
+change 2005-02-05
                diracpdt = diracpdt/.DOT->trIC/.trI->dS//.
                           DOT -> trIC/.trI->dS;
+*)
                diracpdt = diracpdt//.DOT -> dS
               ];
 (* maybe insert some TimeConstrained here later *)
@@ -290,9 +305,9 @@ If[$VeryVerbose>2,
        diracpdt = scev[ diracpdt ]//Expand;
 
             If[diractrlabel===True,
-               diracpdt = fEx[(diracpdt//DiracGammaExpand)/.DOT->dS]/.
+               diracpdt = fEx[(diracpdt//DiracGammaExpand)//.DOT->dS](*/.
                                     DOT->trIC/.trI->dS//.DOT->dS/.
-                                    DOT->trIC/.trI->dS,
+                                    DOT->trIC/.trI->dS *) ,
                diracpdt = fEx[DiracGammaExpand[diracpdt]/.DOT->dS]//.
                                     DOT->dS
               ];

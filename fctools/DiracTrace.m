@@ -20,7 +20,11 @@ DiracTrace::"usage" =
 Whether the trace is  evaluated depends on the option \
 DiracTraceEvaluate. See also TR. \
 The argument expr may be a product of Dirac matrices or slashes \
-separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).";
+separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).
+The option Factoring determines the final function to be applied. If 
+it is set to False no simplification is done.
+It might be set to, e.g., Factor or Factor2 to get simpler results.
+";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -49,8 +53,8 @@ Options[DiracTrace] = {EpsContract         -> False,
                        PairCollect         -> True,
                        DiracTraceEvaluate  -> False,
                        Schouten            -> 0,
-(* Change according to Th. Gehrmann *)
-                       LeviCivitaSign      -> I,
+(*Changed 2005-02-05 *)
+                       LeviCivitaSign      :> $LeviCivitaSign,
                        (*Added 27/8-2002, F.Orellana*)
                        TraceOfOne          -> 4
                       };
@@ -64,7 +68,7 @@ dotLin[x_] := DotSimplify[x, Expanding -> False];
 DiracTrace[0,___]:=0;
 
 DiracTrace[a_ /; (FreeQ[a, DiracGamma] && !FreeQ[a, DiracGammaT]),
-             b___Rule] :=
+             b___?OptionQ] :=
     DiracTrace[(a//Transpose)//Reverse, b];
 DiracTrace[a___, x_,y_, z___]:=DiracTrace[a,x.y,z]/;
        FreeQ2[y,{Rule,BlankNullSequence}]&&
@@ -76,23 +80,47 @@ fcit[y_] := If[CheckContext["DiracSigma"],
                FeynCalcInternal[y]//DiracGammaExpand
               ];
 
-fcex[ops___Rule][z_] := If[(FeynCalcExternal /. {ops} /.
+fcex[ops___?OptionQ][z_] := If[(FeynCalcExternal /. {ops} /.
                             Options[DiracTrace]
                            ) === True,
                            FeynCalcExternal[z], z
                           ];
-DiracTrace[x_,op___Rule] := fcex[op][
+
+(*
+DiracTrace[x_,op___?OptionQ] := fcex[op][
                          ( diractraceevsimple[
-                    fcit[x] ,{op}] /.  diractraceevsimple -> diractraceev /.
+                    fcit[x] ,Flatten[{op}]   ] /. diractraceevsimple -> diractraceev /.
                          diractraceev->diractraceev2
-                         )          ]/;
+                         )              ]/;
  (DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)
  ) === True;
+*)
+(* 2005-02-05 *)
+(* There is a problem with passing the options (e.g. for LeviCivitaSign),
+   so instead of passing them all through the global options will get changed
+   temporarily
+*)
+
+DiracTrace[x_, op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrace] },
+
+(*Global`OO= Sequence@@Join[{op}, globalstartops];*)
+                      SetOptions[DiracTrace, Sequence@@Join[{op}, globalstartops]];
+(*Global`GG=Options[DiracTrace];*)
+                      diTres = 
+                      fcex[op][
+                         ( diractraceevsimple[
+                    fcit[x] ,Flatten[{op}]   ] /. diractraceevsimple -> diractraceev /.
+                         diractraceev -> diractraceev2
+                         )              ];
+                      SetOptions[DiracTrace, Sequence@@globalstartops];
+                                     diTres] /; 
+    (DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)) === True;
+
 
  (*  special cases *)
 (*XXXX*)
 diractraceevsimple[xx_,{opt___}] :=
- ( ( TraceOfOne /. {opt} /.Options[TR] /. Options[DiracTrace] ) * xx
+ ( ( TraceOfOne /. {opt}  /. Options[DiracTrace] ) * xx
  )/;  FreeQ[xx, DiracGamma];
 
 diractraceevsimple[y_ DOT[x_,z__],{opt___}] :=
@@ -108,7 +136,7 @@ diractraceevsimpleplus[x_Plus,{opt___}] :=
 (*Fix by Rolf in response to Broniowski's observation that
   TR[DiracSlash[p,p]] gives p^2 instead of 4p^2. F.Orellana.*)
 diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x *
- (TraceOfOne /. {opt} /.Options[TR] /. Options[DiracTrace] );
+ (TraceOfOne /. {opt} /. Options[DiracTrace] );
 (*diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x;*)
 
 diractraceevsimple[DOT[x___], {opt___}]:=
@@ -121,7 +149,11 @@ diractraceevsimple[DOT[x___], {opt___}]:=
         If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[DOT[x]]]];
         Factor[diractraceevsimpleplus[Expand[DiracTrick[DOT[x]]], {opt}]],
         If[$VeryVerbose >2, Print["using spursav on ", StandardForm[DOT[x]]]];
-       (TraceOfOne /. {opt} /.Options[TR] /. Options[DiracTrace] )*
+(* small BUG found here 2005-02-05 by RM*) 
+(*
+       (TraceOfOne /. {opt} /.Options[DiracTrace] /. Options[DiracTrace] )*
+*)
+       (TraceOfOne /. {opt} /.Options[DiracTrace] )*
         (spursav @@ DOT[x])
       ] ]
 )  /; (MatchQ[Apply[doo, DOT[x]], doo[
@@ -207,7 +239,11 @@ diractraceev[x_, opt___] := Block[{trfa = 1, enx = x},
           diractraceev2[conall[enx], opt] trfa];
 
 diractraceev2[x_,opt_:{}]:=
-    ( TraceOfOne /. opt /.Options[TR] /. Options[DiracTrace] ) * x /;
+(* small BUG found here 2005-02-05 by RM*)
+(*
+    ( TraceOfOne /. opt /. Options[DiracTrace] ) * x /;
+*)
+    ( TraceOfOne /. opt /. Options[DiracTrace] ) * x /;
         FreeQ[x,DiracGamma];
 
  (* fr567def, special FreeQ - checking function *)
@@ -221,7 +257,7 @@ diractraceev2[x_,opt_:{}]:=
 (*XXX *)
  diractraceev3[y_,opt_:{}]:=Block[
                               {diractrpa,diractrtemp,diractrresu,four},
-  four = TraceOfOne/.opt /. Options[TR] /. Options[DiracTrace];
+  four = TraceOfOne/.opt /. Options[DiracTrace];
   diractrtemp = Expand[ conall[ y, opt ]//gamma67back];
   If[ Head[diractrtemp]===Plus,
       diractrresu = Map[ Apply[TR,Prepend[opt,#]]&,diractrtemp],
@@ -245,7 +281,7 @@ diractraceev2[x_,opt_:{}]:=
  diractraceev2[nnx_,in_:{}]:= Block[{diractrjj,diractrlnx,diractrres,
                                     diractrny=0,mand,diractrfact,nx ,
                                     diractrcoll,traceofone,schoutenopt},
-   opt = Join[ Flatten[{in}],Options[TR], Options[DiracTrace] ];
+   opt = Join[ Flatten[{in}], Options[DiracTrace] ];
    mand=Mandelstam/.opt;
    diractrfact=Factoring/.opt;
    diractrcoll=PairCollect/.opt;
@@ -345,7 +381,10 @@ If[$VeryVerbose > 1, Print["CH3"]; Print[TimeUsed[]]];
  (* this  2@#$^^$#%^@*#$ ... !!!!;
                            diractrres = Expand[ traceofone diractrny ]
  *)
-                           diractrres = traceofone diractrny
+       If[diractrfact===False, 
+          diractrres = traceofone diractrny,
+          diractrres = diractrfact[traceofone diractrny]
+         ]
      ];
    If[ Length[ mand ] >0,
        diractrres = TrickMandelstam @@ Prepend[ {mand}, diractrres ]
@@ -375,7 +414,9 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
  (* calculation of traces (recursively) --  up to a factor of 4 *)
    spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma,
            DiracGamma[5]]:=Block[{dirsign},
-        dirsign = LeviCivitaSign /. Options[TR];
+(* this was not right: the option does actually get inherited from TR into the options of DiracTrace;
+   and now (2005-02-05), this gets passed locally to Options[DiracTrace]  *)
+        dirsign = LeviCivitaSign /. Options[DiracTrace];
         dirsign I Apply[ Eps, {x,y,r,z}/.
                               DiracGamma[vl_[mp_,di___],di___]->vl[mp,di]
                  ]//EpsEvaluate];
@@ -419,7 +460,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
         Dropped Kreimer scheme. According to Rolf it's wrong *)
    (*spur[m_,n_,r_,s_,l_,t_,DiracGamma[5]]:= Block[{dirsign, sres, ltr},
      If[($Kreimer === True) && (!OrderedQ[{m,n,r,s,l,t}]),
-           TR[1/(TraceOfOne/.Options[TR]) DiracOrder[ DOT[m,n,r,s,
+           TR[1/(TraceOfOne/.Options[DiracTrace]) DiracOrder[ DOT[m,n,r,s,
                                               l,t,DiracGamma[5]] ]
              ],
         If[$Larin === True &&
@@ -429,8 +470,8 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
                  DiracGamma[LorentzIndex[in_,di___], di___]
                                        ] :=
     Block[{f1, f2, f3,drsi},
-          drsi = LeviCivitaSign /. Options[TR];
-          drsi = drsi/(TraceOfOne/.Options[TR]);
+          drsi = LeviCivitaSign /. Options[DiracTrace];
+          drsi = drsi/(TraceOfOne/.Options[DiracTrace]);
  (*drsi is usually -1/4 *)
           {f1, f2, f3} = LorentzIndex[#, D]& /@ Unique[{"L","L","L"}];
           TR[drsi I/6 Eps[LorentzIndex[in, di], f1, f2, f3] *
@@ -452,7 +493,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
                   -ltr[n,r,s,t,l][m]
                 ]
       ,(* nix Larin *)
-        dirsign = LeviCivitaSign /. Options[TR];
+        dirsign = LeviCivitaSign /. Options[DiracTrace];
        Expand[ + dirsign I (
         scev[ m//gc,n//gc ]  Apply[ Eps, {l,r,s,t}//gc ] -
         scev[ m//gc,r//gc ]  Apply[ Eps, {l,n,s,t}//gc ] +
@@ -473,7 +514,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]
     ]:= Block[{trsign,z1,z2,z3,z4,z5,z6,z7,z8},
 {z1,z2,z3,z4,z5,z6,z7,z8} =
 {w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
-trsign = LeviCivitaSign /. Options[TR];
+trsign = LeviCivitaSign /. Options[DiracTrace];
  (* trsign is usually  =  -1 *)
  (* factor 4 is put later *)
 trsign*I*(Eps[w5, w6, w7, w8]*Pair[w1, w4]*Pair[w2, w3] -
@@ -520,7 +561,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]
     ]:= Block[{trsign,z1,z2,z3,z4,z5,z6,z7,z8},
 {z1,z2,z3,z4,z5,z6,z7,z8} =
 {w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
-trsign = LeviCivitaSign /. Options[TR];
+trsign = LeviCivitaSign /. Options[DiracTrace];
  (* trsign is usually  =  -1 *)
  (* factor 4 is put later *)
 trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
@@ -676,7 +717,7 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
        Expand[ temp2/.spt->spursavg/.spursavg->spug] ,
       True,
        If[($BreitMaison === True) && ($West =!= True),
-        dirsign = LeviCivitaSign /. Options[TR];
+        dirsign = LeviCivitaSign /. Options[DiracTrace];
     fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
     DiracTrace @@
            ( {spx}/.DiracGamma[5]->
@@ -689,8 +730,8 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
        (*If[$Kreimer === True, NochNichtFertig,*)
           If[$Larin === True,
              {fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
-              drsi = LeviCivitaSign /. Options[TR];
-              drsi = drsi/(TraceOfOne/.Options[TR]);
+              drsi = LeviCivitaSign /. Options[DiracTrace];
+              drsi = drsi/(TraceOfOne/.Options[DiracTrace]);
              (*drsi is usually -1/4 *)
              temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
                      TR[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
@@ -769,7 +810,7 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
    cyclic[]:={};
 
    DiracTrace /:
-   MakeBoxes[DiracTrace[a__, opts___Rule], TraditionalForm
+   MakeBoxes[DiracTrace[a__, opts___?OptionQ], TraditionalForm
             ] :=
    RowBox[{"tr","(",TBox[a], ")"}]
 

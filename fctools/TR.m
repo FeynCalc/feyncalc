@@ -35,7 +35,8 @@ Options[ TR ] = { DiracTraceEvaluate -> True,
                   Explicit           -> True,
                   Factoring          -> False,
                   FeynCalcExternal   -> False,
-                  LeviCivitaSign     -> I,
+(* change 2005-02-5 *)
+                  LeviCivitaSign     :> $LeviCivitaSign,
                   Mandelstam         -> {},
                   PairCollect        -> False,
                   Schouten           -> 442,
@@ -45,7 +46,8 @@ Options[ TR ] = { DiracTraceEvaluate -> True,
                   SUNNToCACF -> False
                 };
 
-TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf}, 
+(* Change RM 2005-02-05 *)
+TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf}, 
                           diractrev = DiracTraceEvaluate /. {rul} /. Options[TR];
                           sunntocacf = SUNNToCACF/. {rul} /. Options[TR];
                           If[!FreeQ[x,CF|CA], sunntocacf = True];
@@ -75,8 +77,8 @@ TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf
 
                              If[FreeQ[tt, SUNIndex|ExplicitSUNIndex],
                                 tt = DiracTrace[tt,
-                                     (**)Sequence@@Join[{DiracTraceEvaluate -> False},
-                                                        {rul},Options[TR]]] // 
+                                     (**)Sequence@@Flatten[Join[{DiracTraceEvaluate -> False},
+                                                        {rul},Options[TR]]]] // 
                                     (*Added 27/8-2002, F.Orellana*)
                                      If[(SUNTrace /. {rul} /. Options[TR])=== True,
                                      SUNSimplify[#, SUNTrace -> True,
@@ -95,7 +97,7 @@ TR[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf
                                      SUNTrace -> (SUNTrace /. {rul} /. Options[TR]),
                                      Explicit -> (Explicit /. {rul} /. Options[TR])
                                      (* Sequence@@Join[{rul},Options[TR]] *)]&,
-                                     (**)Sequence@@Join[{rul},Options[TR]]]
+                                     (**)Sequence@@Flatten[Join[{rul},Options[TR]]]]
                                ]
                             ];
 
