@@ -188,10 +188,15 @@ Pair /:
               HighEnergyPhysics`FeynCalc`Momentum`Momentum[b_,di___] + c_.
                  ],
              TraditionalForm
-            ] := SuperscriptBox[
-                  Tbox[MomentumCombine[Momentum[b,di] + c]],
-                                     Tbox[LorentzIndex[a]]
-                               ];
+            ] := If[$VersionNumber >=5,
+                    SuperscriptBox[
+                    Tbox[If[Head[b+c]===Plus,"(",""],
+                         MomentumCombine[Momentum[b,di] + c],
+                         If[Head[b+c]===Plus,")",""]
+                        ], Tbox[LorentzIndex[a]] ],
+                    SuperscriptBox[
+                    Tbox[MomentumCombine[Momentum[b,di] + c]], Tbox[LorentzIndex[a]] ]
+                   ];
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "Pair | \n "]];
