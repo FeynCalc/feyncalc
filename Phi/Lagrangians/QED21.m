@@ -30,52 +30,41 @@ Lagrangian[QED2[1]], which is the standard QED lagrangian,
 CouplingConstant[QED2[1]] is the bare
 unit charge (the charge of the positron)";
 
-Begin["`Private`"];
+(* --------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);nu=(Global`\[Nu]);
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-fcpd:=HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcli:=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
-fcsuni:=fcsuni=HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
-ii=Global`i;
+End[];
 
 (* --------------------------------------------------------------- *)
 
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian["QED2"]:=
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[QED2[1]];
+Lagrangian["QED2"]:=Lagrangian[QED2[1]];
 
 (* --------------------------------------------------------------- *)
 
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[QED2[1]]:=
+Lagrangian[QED2[1]]:=
 
 
 -1/4*
-FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]].
-FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]]+
+FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]].
+FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]+
 
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcdm[fcli[mu]].
-(I*fcqf[fcpd[fcli[mu]],
-Particle[Lepton],fcsuni[ii]]+
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1]]*
-fcqf[Particle[Photon],fcli[mu]].
-fcqf[Particle[Lepton],fcsuni[ii]])-
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+(I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
+Particle[Lepton],SUNIndex[i]]+
+CouplingConstant[QED[1]]*
+QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
+QuantumField[Particle[Lepton],SUNIndex[i]])-
 
-ParticleMass[Lepton,fcsuni[ii]]*
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcqf[Particle[Lepton],fcsuni[ii]];
+ParticleMass[Lepton,SUNIndex[i]]*
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+QuantumField[Particle[Lepton],SUNIndex[i]];
 
 (* --------------------------------------------------------------- *)
 
 FieldsSet[QED2[1]]:=
-{fcqf[Particle[Lepton]],
-fcqf[Particle[Photon],fcli[mu]]};
+{QuantumField[Particle[Lepton]],
+QuantumField[Particle[Photon],LorentzIndex[\[Mu]]]};
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{QED2[1]}];
-
-End[];
-
-End[];
+$Lagrangians=Union[$Lagrangians,{QED2[1]}];

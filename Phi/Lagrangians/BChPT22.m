@@ -35,21 +35,19 @@ coupling constant";
 
 (* ------------------------------------------------------------------ *)
 
-Begin["`Private`"];
+End[];
 
 (* ------------------------------------------------------------------ *)
 
-mu=(Global`\[Mu]);
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-fcli:=fcli=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcsuni:=fcsuni=HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
-fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
+GAV = CouplingConstant[BChPT2[2]];
 
 (* ------------------------------------------------------------------ *)
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+(* Box definitions *)
+
+CouplingConstant /:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[BChPT2[2],st___RenormalizationState,
+CouplingConstant[BChPT2[2],st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["g",FontSlant->"Italic"]][[1]],
@@ -60,36 +58,28 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
 
 (* ------------------------------------------------------------------ *)
 
-GAV := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[BChPT2[2]];
+Lagrangian[BChPT2[2]]:=
 
-(* ------------------------------------------------------------------ *)
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[BChPT2[2]]:=
-
-I*(UVector[DiracBar[fcqf[Particle[Nucleon]]]].
-fcdm[fcli[mu]].
-CNDr[UVector[fcqf[Particle[Nucleon]]],{mu}])-
+I*(UVector[DiracBar[QuantumField[Particle[Nucleon]]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+CNDr[UVector[QuantumField[Particle[Nucleon]]],{\[Mu]}])-
 
 
 ParticleMass[Nucleon]*
-UVector[DiracBar[fcqf[Particle[Nucleon]]]].
-UVector[fcqf[Particle[Nucleon]]]+
+UVector[DiracBar[QuantumField[Particle[Nucleon]]]].
+UVector[QuantumField[Particle[Nucleon]]]+
 
 
-I*HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[BChPT2[2],RenormalizationState[0]]*
-(UVector[DiracBar[fcqf[Particle[Nucleon]]]].
-NM[fcdm[fcli[mu]],fcdm[5],GasserDelta[mu]].
-UVector[fcqf[Particle[Nucleon]]]);
+I*CouplingConstant[BChPT2[2],RenormalizationState[0]]*
+(UVector[DiracBar[QuantumField[Particle[Nucleon]]]].
+NM[DiracMatrix[LorentzIndex[\[Mu]]],DiracMatrix[5],GasserDelta[\[Mu]]].
+UVector[QuantumField[Particle[Nucleon]]]);
 
 (* ------------------------------------------------------------------ *)
 
 FieldsSet[BChPT2[2]]:=
 {IsoVector[
-fcqf[Particle[Pion,RenormalizationState[0]]]],
-fcqf[Particle[Nucleon,RenormalizationState[0]]]};
+QuantumField[Particle[Pion,RenormalizationState[0]]]],
+QuantumField[Particle[Nucleon,RenormalizationState[0]]]};
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{BChPT2[2]}];
-
-End[];
-
-End[];
+$Lagrangians=Union[$Lagrangians,{BChPT2[2]}];

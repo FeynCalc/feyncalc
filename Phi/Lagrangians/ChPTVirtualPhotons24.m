@@ -133,52 +133,49 @@ fourth order ChPT lagrangian";
 
 (* ---------------------------------------------------------------- *)
 
-Begin["`Private`"];
+End[];
 
 (* ---------------------------------------------------------------- *)
 
 (* Abbreviations *)
 
-QQ := UQuarkChargeMatrix;
-fcqf := HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-cc = HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant;
+QQ = UQuarkChargeMatrix;
 
+L1 = CouplingConstant[ChPTVirtualPhotons2[4],1];
+L2 = CouplingConstant[ChPTVirtualPhotons2[4],2];
+L3 = CouplingConstant[ChPTVirtualPhotons2[4],3];
+L4 = CouplingConstant[ChPTVirtualPhotons2[4],4];
+L5 = CouplingConstant[ChPTVirtualPhotons2[4],5];
+L6 = CouplingConstant[ChPTVirtualPhotons2[4],6];
+L7 = CouplingConstant[ChPTVirtualPhotons2[4],7];
 
-L1 := cc[ChPTVirtualPhotons2[4],1];
-L2 := cc[ChPTVirtualPhotons2[4],2];
-L3 := cc[ChPTVirtualPhotons2[4],3];
-L4 := cc[ChPTVirtualPhotons2[4],4];
-L5 := cc[ChPTVirtualPhotons2[4],5];
-L6 := cc[ChPTVirtualPhotons2[4],6];
-L7 := cc[ChPTVirtualPhotons2[4],7];
+H1 = CouplingConstant[ChPTVirtualPhotons2[4],8];
+H2 = CouplingConstant[ChPTVirtualPhotons2[4],9];
+H3 = CouplingConstant[ChPTVirtualPhotons2[4],10];
 
-H1 := cc[ChPTVirtualPhotons2[4],8];
-H2 := cc[ChPTVirtualPhotons2[4],9];
-H3 := cc[ChPTVirtualPhotons2[4],10];
-
-K1 := cc[ChPTVirtualPhotons2[4],11];
-K2 := cc[ChPTVirtualPhotons2[4],12];
-K3 := cc[ChPTVirtualPhotons2[4],13];
-K4 := cc[ChPTVirtualPhotons2[4],14];
-K5 := cc[ChPTVirtualPhotons2[4],15];
-K6 := cc[ChPTVirtualPhotons2[4],16];
-K7 := cc[ChPTVirtualPhotons2[4],17];
-K8 := cc[ChPTVirtualPhotons2[4],18];
-K9 := cc[ChPTVirtualPhotons2[4],19];
-K10:= cc[ChPTVirtualPhotons2[4],20];
-K11 := cc[ChPTVirtualPhotons2[4],21];
-K12 := cc[ChPTVirtualPhotons2[4],22];
-K13 := cc[ChPTVirtualPhotons2[4],23];
-K14 := cc[ChPTVirtualPhotons2[4],24];
-K15 := cc[ChPTVirtualPhotons2[4],25];
+K1 = CouplingConstant[ChPTVirtualPhotons2[4],11];
+K2 = CouplingConstant[ChPTVirtualPhotons2[4],12];
+K3 = CouplingConstant[ChPTVirtualPhotons2[4],13];
+K4 = CouplingConstant[ChPTVirtualPhotons2[4],14];
+K5 = CouplingConstant[ChPTVirtualPhotons2[4],15];
+K6 = CouplingConstant[ChPTVirtualPhotons2[4],16];
+K7 = CouplingConstant[ChPTVirtualPhotons2[4],17];
+K8 = CouplingConstant[ChPTVirtualPhotons2[4],18];
+K9 = CouplingConstant[ChPTVirtualPhotons2[4],19];
+K10= CouplingConstant[ChPTVirtualPhotons2[4],20];
+K11 = CouplingConstant[ChPTVirtualPhotons2[4],21];
+K12 = CouplingConstant[ChPTVirtualPhotons2[4],22];
+K13 = CouplingConstant[ChPTVirtualPhotons2[4],23];
+K14 = CouplingConstant[ChPTVirtualPhotons2[4],24];
+K15 = CouplingConstant[ChPTVirtualPhotons2[4],25];
 
 (* ---------------------------------------------------------------- *)
 
 (* Box definitions *)
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+    CouplingConstant[
       ChPTVirtualPhotons2[4],i_?((#<8)&),st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
@@ -188,8 +185,8 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: MakeBoxes[
-      HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+CouplingConstant /: MakeBoxes[
+      CouplingConstant[
         ChPTVirtualPhotons2[4], i_?((7<#<11) &), st___RenormalizationState,
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
@@ -199,10 +196,10 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: MakeBoxes[
           RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[qs]]]}]]] /. 
-                  "HighEnergyPhysics`Phi`Objects`Private`jj" -> ToString[ii]];
+                  "jj" -> ToString[ii]];
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: MakeBoxes[
-      HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+CouplingConstant /: MakeBoxes[
+      CouplingConstant[
         ChPTVirtualPhotons2[4], i_?((#>10)&), st___RenormalizationState,
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
@@ -212,7 +209,7 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant /: MakeBoxes[
           RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[qs]]]}]]] /. 
-                  "HighEnergyPhysics`Phi`Objects`Private`jj" -> ToString[ii]];
+                  "jj" -> ToString[ii]];
 
 (* ---------------------------------------------------------------- *)
 
@@ -224,42 +221,37 @@ RenormalizationCoefficients[ChPTVirtualPhotons2[4]] =
 1/4+2*z, 0, 1/8-z, 1/4, 0, 0,
 (* e^4 terms *)
 3/2-12/5*z+84/25*z^2, -3-3/5*z-12/5*z^2, 3/2+3*z+12*z^2, 1/30} /.
-z -> cc[ChPTVirtualPhotons2[2],RenormalizationState[0]]/
+z -> CouplingConstant[ChPTVirtualPhotons2[2],RenormalizationState[0]]/
 DecayConstant[Pion,RenormalizationState[0]]^4;
 
 (* ---------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);
-nu=(Global`\[Nu]);
-
-(* ---------------------------------------------------------------- *)
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTVirtualPhotons2[4]]:=
+Lagrangian[ChPTVirtualPhotons2[4]]:=
 
 (* p^4 *)
 
 L1[0]/4*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
-    UTrace[ NM[Adjoint[CDr[MM,{nu}]], CDr[MM,{nu}]] ] ] +
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
+    UTrace[ NM[Adjoint[CDr[MM,{\[Nu]}]], CDr[MM,{\[Nu]}]] ] ] +
     
 L2[0]/4*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{nu}]] ],
-    UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{nu}]] ] ] +
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Nu]}]] ],
+    UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Nu]}]] ] ] +
     
 L3[0]/16*
 NM[UTrace[ NM[Adjoint[UChiMatrix],MM] + NM[Adjoint[MM],UChiMatrix] ],
    UTrace[ NM[Adjoint[UChiMatrix],MM] + NM[Adjoint[MM],UChiMatrix] ] ] +
    
 L4[0]/4*
-UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[UChiMatrix,{mu}]] +
-        NM[Adjoint[CDr[UChiMatrix,{mu}]], CDr[MM,{mu}]] ] +
+UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[UChiMatrix,{\[Mu]}]] +
+        NM[Adjoint[CDr[UChiMatrix,{\[Mu]}]], CDr[MM,{\[Mu]}]] ] +
 
 L5[0]*
-UTrace[ NM[GRight[mu,nu], Adjoint[GLeft[mu,nu]]] ] +
+UTrace[ NM[GRight[\[Mu],\[Nu]], Adjoint[GLeft[\[Mu],\[Nu]]]] ] +
 
 L6[0]*I/2*
-UTrace[ NM[GRight[mu,nu], CDr[MM,{mu}], Adjoint[CDr[MM,{nu}]]] +
-        NM[GLeft[mu,nu], Adjoint[CDr[MM,{mu}]], CDr[MM,{nu}]] ] -
+UTrace[ NM[GRight[\[Mu],\[Nu]], CDr[MM,{\[Mu]}], Adjoint[CDr[MM,{\[Nu]}]]] +
+        NM[GLeft[\[Mu],\[Nu]], Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Nu]}]] ] -
 
 L7[0]/16*
 NM[UTrace[ NM[Adjoint[UChiMatrix], MM] - NM[Adjoint[MM], UChiMatrix] ] ,
@@ -272,30 +264,30 @@ UTrace[ NM[Adjoint[UChiMatrix], UChiMatrix] ] +
 Re[Det[UChiMatrix]] -
 
 H2[0]*
-UTrace[ NM[GRight[mu,nu], GRight[mu,nu]] +
-        NM[GLeft[mu,nu], GLeft[mu,nu]] ] +
+UTrace[ NM[GRight[\[Mu],\[Nu]], GRight[\[Mu],\[Nu]]] +
+        NM[GLeft[\[Mu],\[Nu]], GLeft[\[Mu],\[Nu]]] ] +
 
 (* e^2 p^2 *)
     
 DecayConstant[Pion]^2*(
 
 K1[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
     UTrace[ NMPower[QQ, 2] ] ] +
 
 K2[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
     UTrace[ NM[QQ, MM, QQ, Adjoint[MM]] ] ] +
 
 K3[0]*
-(NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], QQ, MM] ],
-     UTrace[ NM[Adjoint[CDr[MM,{mu}]], QQ, MM] ] ] +
- NM[ UTrace[ NM[CDr[MM,{mu}], QQ, Adjoint[MM]] ],
-     UTrace[ NM[CDr[MM,{mu}], QQ, Adjoint[MM]] ] ])+
+(NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], QQ, MM] ],
+     UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], QQ, MM] ] ] +
+ NM[ UTrace[ NM[CDr[MM,{\[Mu]}], QQ, Adjoint[MM]] ],
+     UTrace[ NM[CDr[MM,{\[Mu]}], QQ, Adjoint[MM]] ] ])+
 
 K4[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], QQ, MM] ],
-    UTrace[ NM[CDr[MM,{mu}], QQ, Adjoint[MM]] ] ] +
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], QQ, MM] ],
+    UTrace[ NM[CDr[MM,{\[Mu]}], QQ, Adjoint[MM]] ] ] +
 
 K5[0]*
 NM[ UTrace[ NM[Adjoint[UChiMatrix], MM] + NM[Adjoint[MM], UChiMatrix] ],
@@ -320,19 +312,19 @@ UTrace[ NM[ NM[UChiMatrix, Adjoint[MM]] - NM[MM, Adjoint[UChiMatrix]],
         QQ, Adjoint[MM], QQ, MM ] ] +
         
 K9[0]*
-UTrace[ NM[ Adjoint[CDr[MM,{mu}]],
-        NM[CQRight[mu], QQ] -
-        NM[QQ, CQRight[mu]], MM ] +
-        NM[ CDr[MM,{mu}],
-        NM[CQLeft[mu], QQ] -
-        NM[QQ, CQLeft[mu]], Adjoint[MM] ] ] +
+UTrace[ NM[ Adjoint[CDr[MM,{\[Mu]}]],
+        NM[CQRight[\[Mu]], QQ] -
+        NM[QQ, CQRight[\[Mu]]], MM ] +
+        NM[ CDr[MM,{\[Mu]}],
+        NM[CQLeft[\[Mu]], QQ] -
+        NM[QQ, CQLeft[\[Mu]]], Adjoint[MM] ] ] +
 
 K10[0]*
-UTrace[ NM[ CQRight[mu], MM, CQLeft[mu], Adjoint[MM] ] ] +
+UTrace[ NM[ CQRight[\[Mu]], MM, CQLeft[\[Mu]], Adjoint[MM] ] ] +
 
 K11[0]*
-UTrace[ NM[ CQRight[mu], CQRight[mu] ] +
-        NM[ CQLeft[mu], CQLeft[mu] ] ]
+UTrace[ NM[ CQRight[\[Mu]], CQRight[\[Mu]] ] +
+        NM[ CQLeft[\[Mu]], CQLeft[\[Mu]] ] ]
 
 ) +
 
@@ -356,17 +348,14 @@ NMPower[UTrace[ NM[QQ, MM, QQ, Adjoint[MM]]], 2]
 
 K15[0]*
 UTrace[NMPower[QQ,2]]*
-NM[FieldStrengthTensor[{mu}, fcqf[Particle[Photon],{nu}]],
-FieldStrengthTensor[{mu}, fcqf[Particle[Photon],{nu}]]];
+NM[FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],{\[Nu]}]],
+FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],{\[Nu]}]]];
 
 (* ---------------------------------------------------------------- *)
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTVirtualPhotons2[4]}];
+$Lagrangians=Union[$Lagrangians,{ChPTVirtualPhotons2[4]}];
 
 FieldsSet[ChPTVirtualPhotons2[4]]:=
-{IsoVector[fcqf[Particle[Pion,RenormalizationState[0]]]],
-fcqf[Particle[Photon,RenormalizationState[0]]]};
+{IsoVector[QuantumField[Particle[Pion,RenormalizationState[0]]]],
+QuantumField[Particle[Photon,RenormalizationState[0]]]};
 
-End[];
-
-End[];

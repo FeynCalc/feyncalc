@@ -29,25 +29,9 @@ Lagrangian[ChPT2EM[2]], which is the leading order pionic
 SU(2) ChPT lagrangian with couplings to virtual photons.
 To evaluate use ArgumentsSupply";
 
-GaugeFixingParameter::"usage"=
-"GaugeFixingParameter is the gauge fixing parameter of the lowest 
-order electromagnetic ChPT lagrangian ChPTEM22, the usual choice 
-is Lorentz gauge, GaugeFixingParameter=1";
-
 (* --------------------------------------------------------------- *)
 
-Begin["`Private`"];
-
-(* --------------------------------------------------------------- *)
-
-(* Abbreviations *)
-
-fcpd:=HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcli:=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-
-mu=(Global`\[Mu]);
-nu=(Global`\[Nu]);
+End[];
 
 (* ---------------------------------------------------------------- *)
 
@@ -58,9 +42,9 @@ pt/:MakeBoxes[pt[],TraditionalForm]:="";
 pt/:MakeBoxes[pt[RenormalizationState[1]],TraditionalForm]:="r";
 pt/:MakeBoxes[pt[RenormalizationState[0]],TraditionalForm]:="";
     
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[2],st___RenormalizationState,
+    CouplingConstant[ChPTEM2[2],st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SuperscriptBox[MakeBoxes[StyleForm["C",FontSlant->"Italic"]][[1]],
@@ -68,46 +52,33 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
           MakeBoxes[TraditionalForm[pt[sc]]]},{
           MakeBoxes[TraditionalForm[pt[qs]]]}]]];
 
-GaugeFixingParameter/:
-MakeBoxes[GaugeFixingParameter,TraditionalForm]:=
-MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]][[1]];
-
-
 (* --------------------------------------------------------------- *)
 
-SetAttributes[ChPTEM2,NumericFunction];
-
-(* --------------------------------------------------------------- *)
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTEM2[2]]:=
+Lagrangian[ChPTEM2[2]]:=
 
 1/4*DecayConstant[Pion]^2*
 
-(UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]] ] +
+(UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]] ] +
 
 UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[Adjoint[UChiMatrix],MM] ]) -
 
 1/4*
-NM[FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]],
-FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]]]-
+NM[FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]],
+FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]-
 
-GaugeFixingParameter/2*
-FDr[fcqf[Particle[Photon],fcli[mu]],{mu}]*
-FDr[fcqf[Particle[Photon],fcli[nu]],{nu}]+
+$Gauge/2*
+FDr[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],{\[Mu]}]*
+FDr[QuantumField[Particle[Photon],LorentzIndex[\[Nu]]],{\[Nu]}]+
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[2]]*
+CouplingConstant[ChPTEM2[2]]*
 UTrace[NM[UMatrix[UChiralSpurionRight],MM,
 UMatrix[UChiralSpurionLeft],Adjoint[MM]]];
     
 (* --------------------------------------------------------------- *)
 
 FieldsSet[ChPTEM2[2]]:=
-{IsoVector[fcqf[Particle[Pion]]], fcqf[Particle[Photon]]};
+{IsoVector[QuantumField[Particle[Pion]]], QuantumField[Particle[Photon]]};
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTEM2[2]}];
-
-End[];
-
-End[];
+$Lagrangians=Union[$Lagrangians,{ChPTEM2[2]}];

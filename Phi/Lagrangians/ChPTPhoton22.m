@@ -23,23 +23,24 @@
 
 Begin["HighEnergyPhysics`Phi`Objects`"];
 
+(* --------------------------------------------------------------- *)
+
 ChPTPhoton22::"usage"=
 "ChPTPhoton22.m is the name of the file containing the definitions for
 Lagrangian[ChPT2PhotonPhoton[2]], which is the SU(2) lowest order ChPT
 lagrangian with coupling to a photon.  To evaluate use ArgumentsSupply";
 
-Begin["`Private`"];
+(* --------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
+End[];
 
 (* --------------------------------------------------------------- *)
 
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTPhoton2[2]]:=
+Lagrangian[ChPTPhoton2[2]]:=
 
 1/4*DecayConstant[Pion,RenormalizationState[0]]^2*
 
-(UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]] ] +
+(UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]] ] +
 
 UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[MM,Adjoint[UChiMatrix]] ]);
 
@@ -47,12 +48,8 @@ UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[MM,Adjoint[UChiMatrix]] ]);
 
 FieldsSet[ChPTPhoton2[2]]:=
 {IsoVector[
-fcqf[Particle[Pion,RenormalizationState[0]]],
-fcqf[Particle[Photon,RenormalizationState[0]],LorentzIndex[\[Mu]]]
+QuantumField[Particle[Pion,RenormalizationState[0]]],
+QuantumField[Particle[Photon,RenormalizationState[0]],LorentzIndex[\[Mu]]]
 ]};
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTPhoton2[2]}];
-
-End[];
-
-End[];
+$Lagrangians=Union[$Lagrangians,{ChPTPhoton2[2]}];

@@ -83,34 +83,32 @@ fourth order ChPT lagrangian";
 
 (* ---------------------------------------------------------------- *)
 
-Begin["`Private`"];
+End[];
 
 (* ---------------------------------------------------------------- *)
 
 (* Abbreviations *)
 
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-
-L1 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],1];
-L2 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],2];
-L3 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],3];
-L4 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],4];
-L5 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],5];
-L6 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],6];
-L7 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],7];
-L8 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],8];
-L9 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],9];
-L10:= HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],10];
-H1 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],11];
-H2 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],12];
+L1 = CouplingConstant[ChPT2[4],1];
+L2 = CouplingConstant[ChPT2[4],2];
+L3 = CouplingConstant[ChPT2[4],3];
+L4 = CouplingConstant[ChPT2[4],4];
+L5 = CouplingConstant[ChPT2[4],5];
+L6 = CouplingConstant[ChPT2[4],6];
+L7 = CouplingConstant[ChPT2[4],7];
+L8 = CouplingConstant[ChPT2[4],8];
+L9 = CouplingConstant[ChPT2[4],9];
+L10= CouplingConstant[ChPT2[4],10];
+H1 = CouplingConstant[ChPT2[4],11];
+H2 = CouplingConstant[ChPT2[4],12];
 
 (* ---------------------------------------------------------------- *)
 
 (* Box definitions *)
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],11,st___RenormalizationState,
+    CouplingConstant[ChPT2[4],11,st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["H",FontSlant->"Italic"]][[1]],
@@ -119,9 +117,9 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],12,st___RenormalizationState,
+    CouplingConstant[ChPT2[4],12,st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["H",FontSlant->"Italic"]][[1]],
@@ -130,9 +128,9 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPT2[4],i_,st___RenormalizationState,
+    CouplingConstant[ChPT2[4],i_,st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["L",FontSlant->"Italic"]][[1]],
@@ -148,31 +146,26 @@ RenormalizationCoefficients[ChPT2[4]]:=
 
 (* ---------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);
-nu=(Global`\[Nu]);
-
-(* ---------------------------------------------------------------- *)
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPT2[4]]:=
+Lagrangian[ChPT2[4]]:=
 
 L1[0]*
-NM[ UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]]],
-    UTrace[ NM[CDr[MM,{nu}],Adjoint[CDr[MM,{nu}]]] ] ]+
+NM[ UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]]],
+    UTrace[ NM[CDr[MM,{\[Nu]}],Adjoint[CDr[MM,{\[Nu]}]]] ] ]+
 
 L2[0]*
-NM[ UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{nu}]]] ],
-    UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{nu}]]] ] ]+
+NM[ UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Nu]}]]] ],
+    UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Nu]}]]] ] ]+
 
 L3[0]*
-UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]],
-           CDr[MM,{nu}],Adjoint[CDr[MM,{nu}]]] ]+
+UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]],
+           CDr[MM,{\[Nu]}],Adjoint[CDr[MM,{\[Nu]}]]] ]+
 
 L4[0]*
-NM[ UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]]],
+NM[ UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]]],
     UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[MM,Adjoint[UChiMatrix]] ] ]+
 
 L5[0]*
-UTrace[ NM[NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]],
+UTrace[ NM[NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]],
         NM[UChiMatrix,Adjoint[MM]]+NM[MM,Adjoint[UChiMatrix]]] ]+
 
 L6[0]*
@@ -188,31 +181,27 @@ UTrace[ NM[UChiMatrix,Adjoint[MM],UChiMatrix,Adjoint[MM]]+
         NM[MM,Adjoint[UChiMatrix],MM,Adjoint[UChiMatrix]] ]+
 
 L9[0]*I*
-UTrace[ NM[FST[LeftComponent[0],{mu},{nu}],
-           CDr[MM,{mu}],Adjoint[CDr[MM,{nu}]]]+
-        NM[FST[RightComponent[0],{mu},{nu}],
-           Adjoint[CDr[MM,{mu}]],CDr[MM,{nu}]] ]+
+UTrace[ NM[FST[LeftComponent[0],{\[Mu]},{\[Nu]}],
+           CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Nu]}]]]+
+        NM[FST[RightComponent[0],{\[Mu]},{\[Nu]}],
+           Adjoint[CDr[MM,{\[Mu]}]],CDr[MM,{\[Nu]}]] ]+
 
 L10[0]*
-UTrace[ NM[FST[LeftComponent[0],{mu},{nu}],MM,
-           FST[RightComponent[0],{mu},{nu}],Adjoint[MM]] ]+
+UTrace[ NM[FST[LeftComponent[0],{\[Mu]},{\[Nu]}],MM,
+           FST[RightComponent[0],{\[Mu]},{\[Nu]}],Adjoint[MM]] ]+
 
 H1[0]*
-UTrace[ NM[FST[LeftComponent[0],{mu},{nu}],FST[LeftComponent[0],{mu},{nu}]]+
-        NM[FST[RightComponent[0],{mu},{nu}],FST[RightComponent[0],{mu},{nu}]] ]+
+UTrace[ NM[FST[LeftComponent[0],{\[Mu]},{\[Nu]}],FST[LeftComponent[0],{\[Mu]},{\[Nu]}]]+
+        NM[FST[RightComponent[0],{\[Mu]},{\[Nu]}],FST[RightComponent[0],{\[Mu]},{\[Nu]}]] ]+
 
 H2[0]*
 UTrace[ NM[Adjoint[UChiMatrix],UChiMatrix] ];
 
 (* ---------------------------------------------------------------- *)
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{ChPT2[4]}];
+$Lagrangians=Union[$Lagrangians,{ChPT2[4]}];
 
 FieldsSet[ChPT2[4]]:=
 {IsoVector[
-fcqf[Particle[Pion,RenormalizationState[0]]]
+QuantumField[Particle[Pion,RenormalizationState[0]]]
 ]};
-
-End[];
-
-End[];

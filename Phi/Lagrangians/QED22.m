@@ -49,15 +49,15 @@ physical photon field";
 
 (* --------------------------------------------------------------- *)
 
-Begin["`Private`"];
+End[];
 
 (* --------------------------------------------------------------- *)
 
 (* Box definitions *)
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+    CouplingConstant[
    QED[2],1,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
@@ -67,9 +67,9 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+    CouplingConstant[
    QED[2],2,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
@@ -79,9 +79,9 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
           MakeBoxes[TraditionalForm[IndexBox[qs]]]}]]];
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[
+    CouplingConstant[
    QED[2],3,st___RenormalizationState,
       sc___RenormalizationScheme,qs___ExpansionState],
     TraditionalForm]:=
@@ -93,53 +93,43 @@ HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
 
 (* --------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);nu=(Global`\[Nu]);
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-fcpd:=HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcli:=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
-fcsuni:=fcsuni=HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
-ii=Global`i;
+(* Abbreviations *)
 
-DM := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[2],1];
-Z2 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[2],2];
-Z3 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[2],3];
+DM = CouplingConstant[QED[2],1];
+Z2 = CouplingConstant[QED[2],2];
+Z3 = CouplingConstant[QED[2],3];
 
 (* --------------------------------------------------------------- *)
 
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[QED2[2]]:=
+Lagrangian[QED2[2]]:=
 
 
 -1/4*(Z3[0]-1)*
-FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]].
-FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]]+
+FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]].
+FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]+
 
 (Z2[0]-1)*
-(DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcdm[fcli[mu]].
-(I*fcqf[fcpd[fcli[mu]],Particle[Lepton],fcsuni[ii]]+
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[QED[1]]*
-fcqf[Particle[Photon],fcli[mu]].
-fcqf[Particle[Lepton],fcsuni[ii]])-
+(DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+(I*QuantumField[PartialD[LorentzIndex[\[Mu]]],Particle[Lepton],SUNIndex[i]]+
+CouplingConstant[QED[1]]*
+QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
+QuantumField[Particle[Lepton],SUNIndex[i]])-
 
-ParticleMass[Lepton,fcsuni[ii]]*
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcqf[Particle[Lepton],fcsuni[ii]])-
+ParticleMass[Lepton,SUNIndex[i]]*
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+QuantumField[Particle[Lepton],SUNIndex[i]])-
 
 Z2[0]*DM[0]*
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcqf[Particle[Lepton],fcsuni[ii]];
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+QuantumField[Particle[Lepton],SUNIndex[i]];
 
 (* --------------------------------------------------------------- *)
 
 FieldsSet[QED2[2]]:=
-{fcqf[Particle[Lepton,RenormalizationState[0]]],
-fcqf[Particle[Photon,RenormalizationState[0]],fcli[mu]]};
+{QuantumField[Particle[Lepton,RenormalizationState[0]]],
+QuantumField[Particle[Photon,RenormalizationState[0]],LorentzIndex[\[Mu]]]};
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{QED2[2]}];
-
-End[];
-
-End[];
+$Lagrangians=Union[$Lagrangians,{QED2[2]}];

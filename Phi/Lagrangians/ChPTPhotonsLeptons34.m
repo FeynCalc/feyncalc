@@ -186,66 +186,57 @@ XX7::"usage"=
 "XX7 := CouplingConstant[ChPTPhotonsLeptons3[4],38] is one of the constants of the
 fourth order ChPT lagrangian";
 
-
-
 (* ---------------------------------------------------------------- *)
 
-Begin["`Private`"];
+End[];
 
 (* ---------------------------------------------------------------- *)
 
 (* Abbreviations *)
 
-QQ := UQuarkChargeMatrix;
+QQ = UQuarkChargeMatrix;
 
-fcqf := HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-fcsuni:=HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex;
-fcli:=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-iii=(Global`i);
-fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
+L1 = CouplingConstant[ChPTPhotonsLeptons3[4],1];
+L2 = CouplingConstant[ChPTPhotonsLeptons3[4],2];
+L3 = CouplingConstant[ChPTPhotonsLeptons3[4],3];
+L4 = CouplingConstant[ChPTPhotonsLeptons3[4],4];
+L5 = CouplingConstant[ChPTPhotonsLeptons3[4],5];
+L6 = CouplingConstant[ChPTPhotonsLeptons3[4],6];
+L7 = CouplingConstant[ChPTPhotonsLeptons3[4],7];
+L8 = CouplingConstant[ChPTPhotonsLeptons3[4],8];
+L9 = CouplingConstant[ChPTPhotonsLeptons3[4],9];
+L10 = CouplingConstant[ChPTPhotonsLeptons3[4],10];
 
+H1 = CouplingConstant[ChPTPhotonsLeptons3[4],11];
+H2 = CouplingConstant[ChPTPhotonsLeptons3[4],12];
 
-L1 := CouplingConstant[ChPTPhotonsLeptons3[4],1];
-L2 := CouplingConstant[ChPTPhotonsLeptons3[4],2];
-L3 := CouplingConstant[ChPTPhotonsLeptons3[4],3];
-L4 := CouplingConstant[ChPTPhotonsLeptons3[4],4];
-L5 := CouplingConstant[ChPTPhotonsLeptons3[4],5];
-L6 := CouplingConstant[ChPTPhotonsLeptons3[4],6];
-L7 := CouplingConstant[ChPTPhotonsLeptons3[4],7];
-L8 := CouplingConstant[ChPTPhotonsLeptons3[4],8];
-L9 := CouplingConstant[ChPTPhotonsLeptons3[4],9];
-L10 := CouplingConstant[ChPTPhotonsLeptons3[4],10];
+K1 = CouplingConstant[ChPTPhotonsLeptons3[4],13];
+K2 = CouplingConstant[ChPTPhotonsLeptons3[4],14];
+K3 = CouplingConstant[ChPTPhotonsLeptons3[4],15];
+K4 = CouplingConstant[ChPTPhotonsLeptons3[4],16];
+K5 = CouplingConstant[ChPTPhotonsLeptons3[4],17];
+K6 = CouplingConstant[ChPTPhotonsLeptons3[4],18];
+K7 = CouplingConstant[ChPTPhotonsLeptons3[4],19];
+K8 = CouplingConstant[ChPTPhotonsLeptons3[4],20];
+K9 = CouplingConstant[ChPTPhotonsLeptons3[4],21];
+K10= CouplingConstant[ChPTPhotonsLeptons3[4],22];
+K11 = CouplingConstant[ChPTPhotonsLeptons3[4],23];
+K12 = CouplingConstant[ChPTPhotonsLeptons3[4],24];
+K13 = CouplingConstant[ChPTPhotonsLeptons3[4],25];
+K14 = CouplingConstant[ChPTPhotonsLeptons3[4],26];
+K15 = CouplingConstant[ChPTPhotonsLeptons3[4],27];
+K16 = CouplingConstant[ChPTPhotonsLeptons3[4],28];
+K17 = CouplingConstant[ChPTPhotonsLeptons3[4],29];
+K18 = CouplingConstant[ChPTPhotonsLeptons3[4],30];
+K19 = CouplingConstant[ChPTPhotonsLeptons3[4],31];
 
-H1 := CouplingConstant[ChPTPhotonsLeptons3[4],11];
-H2 := CouplingConstant[ChPTPhotonsLeptons3[4],12];
-
-K1 := CouplingConstant[ChPTPhotonsLeptons3[4],13];
-K2 := CouplingConstant[ChPTPhotonsLeptons3[4],14];
-K3 := CouplingConstant[ChPTPhotonsLeptons3[4],15];
-K4 := CouplingConstant[ChPTPhotonsLeptons3[4],16];
-K5 := CouplingConstant[ChPTPhotonsLeptons3[4],17];
-K6 := CouplingConstant[ChPTPhotonsLeptons3[4],18];
-K7 := CouplingConstant[ChPTPhotonsLeptons3[4],19];
-K8 := CouplingConstant[ChPTPhotonsLeptons3[4],20];
-K9 := CouplingConstant[ChPTPhotonsLeptons3[4],21];
-K10:= CouplingConstant[ChPTPhotonsLeptons3[4],22];
-K11 := CouplingConstant[ChPTPhotonsLeptons3[4],23];
-K12 := CouplingConstant[ChPTPhotonsLeptons3[4],24];
-K13 := CouplingConstant[ChPTPhotonsLeptons3[4],25];
-K14 := CouplingConstant[ChPTPhotonsLeptons3[4],26];
-K15 := CouplingConstant[ChPTPhotonsLeptons3[4],27];
-K16 := CouplingConstant[ChPTPhotonsLeptons3[4],28];
-K17 := CouplingConstant[ChPTPhotonsLeptons3[4],29];
-K18 := CouplingConstant[ChPTPhotonsLeptons3[4],30];
-K19 := CouplingConstant[ChPTPhotonsLeptons3[4],31];
-
-XX1 := CouplingConstant[ChPTPhotonsLeptons3[4],32];
-XX2 := CouplingConstant[ChPTPhotonsLeptons3[4],33];
-XX3 := CouplingConstant[ChPTPhotonsLeptons3[4],34];
-XX4 := CouplingConstant[ChPTPhotonsLeptons3[4],35];
-XX5 := CouplingConstant[ChPTPhotonsLeptons3[4],36];
-XX6 := CouplingConstant[ChPTPhotonsLeptons3[4],37];
-XX7 := CouplingConstant[ChPTPhotonsLeptons3[4],38];
+XX1 = CouplingConstant[ChPTPhotonsLeptons3[4],32];
+XX2 = CouplingConstant[ChPTPhotonsLeptons3[4],33];
+XX3 = CouplingConstant[ChPTPhotonsLeptons3[4],34];
+XX4 = CouplingConstant[ChPTPhotonsLeptons3[4],35];
+XX5 = CouplingConstant[ChPTPhotonsLeptons3[4],36];
+XX6 = CouplingConstant[ChPTPhotonsLeptons3[4],37];
+XX7 = CouplingConstant[ChPTPhotonsLeptons3[4],38];
 
 
 (* ---------------------------------------------------------------- *)
@@ -257,7 +248,7 @@ CouplingConstant/:
     CouplingConstant[ChPTPhotonsLeptons3[4],i_?((#<11)&),st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
-  SubsuperscriptBox[MakeBoxes[StyleForm["L",FontSlant->"Italic"]][[1]],
+  SubsuperscriptBox[MakeBoxes[StyleForm["L",FontSlant->"Italic"]],
     MakeBoxes[TraditionalForm[i]],
     RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]},{
           MakeBoxes[TraditionalForm[IndexBox[sc]]]},{
@@ -268,36 +259,36 @@ CouplingConstant /: MakeBoxes[
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
     Block[{ii = i - 10, jj},
-      SubsuperscriptBox[MakeBoxes[StyleForm["H", FontSlant -> "Italic"]][[1]],
+      SubsuperscriptBox[MakeBoxes[StyleForm["H", FontSlant -> "Italic"]],
            MakeBoxes[TraditionalForm[jj]],
           RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[qs]]]}]]] /.
-                  "HighEnergyPhysics`Phi`Objects`Private`jj" -> ToString[ii]];
+                  "jj" -> ToString[ii]];
 
 CouplingConstant /: MakeBoxes[
       CouplingConstant[ChPTPhotonsLeptons3[4], i_?((12<#<32)&), st___RenormalizationState,
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
     Block[{ii = i - 12, jj},
-      SubsuperscriptBox[MakeBoxes[StyleForm["K", FontSlant -> "Italic"]][[1]],
+      SubsuperscriptBox[MakeBoxes[StyleForm["K", FontSlant -> "Italic"]],
            MakeBoxes[TraditionalForm[jj]],
           RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[qs]]]}]]] /.
-                  "HighEnergyPhysics`Phi`Objects`Private`jj" -> ToString[ii]];
+                  "jj" -> ToString[ii]];
 
 CouplingConstant /: MakeBoxes[
       CouplingConstant[ChPTPhotonsLeptons3[4], i_?((31<#)&), st___RenormalizationState,
         sc___RenormalizationScheme, qs___QuarkMassExpansionState],
       TraditionalForm] :=
     Block[{ii = i - 31, jj},
-      SubsuperscriptBox[MakeBoxes[StyleForm["X", FontSlant -> "Italic"]][[1]],
+      SubsuperscriptBox[MakeBoxes[StyleForm["X", FontSlant -> "Italic"]],
            MakeBoxes[TraditionalForm[jj]],
           RowBox[Join[{MakeBoxes[TraditionalForm[IndexBox[st]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[sc]]]}, {MakeBoxes[
                   TraditionalForm[IndexBox[qs]]]}]]] /.
-                  "HighEnergyPhysics`Phi`Objects`Private`jj" -> ToString[ii]];
+                  "jj" -> ToString[ii]];
 
 
 (* ---------------------------------------------------------------- *)
@@ -311,35 +302,28 @@ DecayConstant[PhiMeson,RenormalizationState[0]]^4;
 
 (* ---------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);
-nu=(Global`\[Nu]);
-
-(* ---------------------------------------------------------------- *)
-
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[
-ChPTPhotonsLeptons3[4]]:=
+Lagrangian[ChPTPhotonsLeptons3[4]]:=
 
 (* p^4 *)
 
 L1[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
-    UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ] ] +
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
+    UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ] ] +
 
 L2[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{nu}]] ],
-    UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{nu}]] ] ] +
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Nu]}]] ],
+    UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Nu]}]] ] ] +
 
 L3[0]*
-UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}],
-                            Adjoint[CDr[MM,{nu}]], CDr[MM,{nu}]] ] +
+UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}],
+                            Adjoint[CDr[MM,{\[Nu]}]], CDr[MM,{\[Nu]}]] ] +
 
 L4[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
     UTrace[ NM[Adjoint[UChiMatrix],MM] + NM[UChiMatrix, Adjoint[MM]] ] ] +
 
 L5[0]*
-UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}],
+UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}],
                            NM[ Adjoint[UChiMatrix],MM] + NM[Adjoint[MM], UChiMatrix] ] ] +
 
 L6[0]*
@@ -355,15 +339,15 @@ UTrace[ NM[Adjoint[UChiMatrix], MM, Adjoint[UChiMatrix], MM] +
               NM[UChiMatrix, Adjoint[MM], UChiMatrix, Adjoint[MM]]] -
 
 L9[0]*I*
-UTrace[ NM[CDr[MM,{mu}], Adjoint[CDr[MM,{nu}]], GRight[mu,nu]] +
-        NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{nu}], GLeft[mu,nu]] ] +
+UTrace[ NM[CDr[MM,{\[Mu]}], Adjoint[CDr[MM,{\[Nu]}]], GRight[\[Mu],\[Nu]]] +
+        NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Nu]}], GLeft[\[Mu],\[Nu]]] ] +
 
 L10[0]*
-UTrace[ NM[GRight[mu,nu], MM, GLeft[mu,nu], Adjoint[MM]] ] +
+UTrace[ NM[GRight[\[Mu],\[Nu]], MM, GLeft[\[Mu],\[Nu]], Adjoint[MM]] ] +
 
 H1[0]*
-UTrace[ NM[GRight[mu,nu], GRight[mu,nu]] +
-              NM[GLeft[mu,nu], GLeft[mu,nu]] ] +
+UTrace[ NM[GRight[\[Mu],\[Nu]], GRight[\[Mu],\[Nu]]] +
+              NM[GLeft[\[Mu],\[Nu]], GLeft[\[Mu],\[Nu]]] ] +
 
 H2[0]*
 UTrace[ NM[Adjoint[UChiMatrix], UChiMatrix] ] +
@@ -373,31 +357,31 @@ UTrace[ NM[Adjoint[UChiMatrix], UChiMatrix] ] +
 DecayConstant[PhiMeson]^2*(
 
 K1[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
     UTrace[ NMPower[QQ, 2] ] ] +
 
 K2[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]] ],
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]] ],
     UTrace[ NM[QQ, MM, QQ, Adjoint[MM]] ] ] +
 
 K3[0]*
-(NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], QQ, MM] ],
-     UTrace[ NM[Adjoint[CDr[MM,{mu}]], QQ, MM] ] ] +
- NM[ UTrace[ NM[CDr[MM,{mu}], QQ, Adjoint[MM]] ],
-     UTrace[ NM[CDr[MM,{mu}], QQ, Adjoint[MM]] ] ])+
+(NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], QQ, MM] ],
+     UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], QQ, MM] ] ] +
+ NM[ UTrace[ NM[CDr[MM,{\[Mu]}], QQ, Adjoint[MM]] ],
+     UTrace[ NM[CDr[MM,{\[Mu]}], QQ, Adjoint[MM]] ] ])+
 
 K4[0]*
-NM[ UTrace[ NM[Adjoint[CDr[MM,{mu}]], QQ, MM] ],
-    UTrace[ NM[CDr[MM,{mu}], QQ, Adjoint[MM]] ] ] +
+NM[ UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], QQ, MM] ],
+    UTrace[ NM[CDr[MM,{\[Mu]}], QQ, Adjoint[MM]] ] ] +
 
 K5[0]*
-UTrace[ NM[NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}]]+
-             NM[ CDr[MM,{mu}], Adjoint[CDr[MM,{mu}]]],
+UTrace[ NM[NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}]]+
+             NM[ CDr[MM,{\[Mu]}], Adjoint[CDr[MM,{\[Mu]}]]],
         NMPower[QQ, 2]]  ] +
 
 K6[0]*
-UTrace[ NM[Adjoint[CDr[MM,{mu}]], CDr[MM,{mu}], QQ, Adjoint[MM], QQ, MM] +
-              NM[CDr[MM,{mu}], Adjoint[CDr[MM,{mu}]], QQ, MM, QQ, Adjoint[MM]]] +
+UTrace[ NM[Adjoint[CDr[MM,{\[Mu]}]], CDr[MM,{\[Mu]}], QQ, Adjoint[MM], QQ, MM] +
+              NM[CDr[MM,{\[Mu]}], Adjoint[CDr[MM,{\[Mu]}]], QQ, MM, QQ, Adjoint[MM]]] +
 
 K7[0]*
 NM[ UTrace[ NM[Adjoint[UChiMatrix], MM] + NM[Adjoint[MM], UChiMatrix] ],
@@ -425,26 +409,26 @@ UTrace[ NM[ NM[Adjoint[UChiMatrix], MM] - NM[Adjoint[MM], UChiMatrix],
         QQ, MM, QQ,Adjoint[MM] ] ] +
 
 K12[0]*
-UTrace[ NM[ Adjoint[CDr[MM,{mu}]],
-        NM[CQRight[mu], QQ] -
-        NM[QQ, CQRight[mu]], MM ] +
-        NM[ CDr[MM,{mu}],
-        NM[CQLeft[mu], QQ] -
-        NM[QQ, CQLeft[mu]], Adjoint[MM] ] ] +
+UTrace[ NM[ Adjoint[CDr[MM,{\[Mu]}]],
+        NM[CQRight[\[Mu]], QQ] -
+        NM[QQ, CQRight[\[Mu]]], MM ] +
+        NM[ CDr[MM,{\[Mu]}],
+        NM[CQLeft[\[Mu]], QQ] -
+        NM[QQ, CQLeft[\[Mu]]], Adjoint[MM] ] ] +
 
 K13[0]*
-UTrace[ NM[ CQRight[mu], MM, CQLeft[mu], Adjoint[MM] ] ] +
+UTrace[ NM[ CQRight[\[Mu]], MM, CQLeft[\[Mu]], Adjoint[MM] ] ] +
 
 K14[0]*
-UTrace[ NM[ CQRight[mu], CQRight[mu] ] +
-        NM[ CQLeft[mu], CQLeft[mu] ] ]+
+UTrace[ NM[ CQRight[\[Mu]], CQRight[\[Mu]] ] +
+        NM[ CQLeft[\[Mu]], CQLeft[\[Mu]] ] ]+
 
 (*Tentative correction of Urech*)
 K19[0]*
-UTrace[ NM[ Adjoint[CDr[MM,{mu}]],
-        QQ, MM, CQLeft[mu] ] +
-        NM[CDr[MM,{mu}],
-        QQ, Adjoint[MM], CQRight[mu] ] ] 
+UTrace[ NM[ Adjoint[CDr[MM,{\[Mu]}]],
+        QQ, MM, CQLeft[\[Mu]] ] +
+        NM[CDr[MM,{\[Mu]}],
+        QQ, Adjoint[MM], CQRight[\[Mu]] ] ] 
 
 ) +
 
@@ -468,68 +452,64 @@ NMPower[UTrace[ NM[QQ, QQ] ], 2]
 
 K18[0]*
 UTrace[NMPower[QQ,2]]*
-NM[FieldStrengthTensor[{mu}, fcqf[Particle[Photon],fcli[nu]]],
-FieldStrengthTensor[{mu}, fcqf[Particle[Photon],fcli[nu]]]]+
+NM[FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]],
+FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]+
 
 (* Lepton terms *)
 
 XX1[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-NM[DiracBar[fcqf[Particle[Lepton],fcsuni[iii]]].
-fcdm[fcli[mu]].
-fcdm[7].
-fcqf[Particle[Neutrino],fcsuni[iii]],
-UTrace[NM[USmall[mu],UAntiCommutator[QQ,UChiralSpurionLeft1Matrix]]]]+
+NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+DiracMatrix[7].
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+UTrace[NM[USmall[\[Mu]],UAntiCommutator[QQ,UChiralSpurionLeft1Matrix]]]]+
 
 XX2[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-NM[DiracBar[fcqf[Particle[Lepton],fcsuni[iii]]].
-fcdm[fcli[mu]].
-fcdm[7].
-fcqf[Particle[Neutrino],fcsuni[iii]],
-UTrace[NM[USmall[mu],UCommutator[QQ,UChiralSpurionLeft1Matrix]]]]+
+NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+DiracMatrix[7].
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+UTrace[NM[USmall[\[Mu]],UCommutator[QQ,UChiralSpurionLeft1Matrix]]]]+
 
 XX3[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-ParticleMass[Lepton,fcsuni[ii]]*
-NM[DiracBar[fcqf[Particle[Lepton],fcsuni[iii]]].
-fcdm[7].
-fcqf[Particle[Neutrino],fcsuni[iii]],
+ParticleMass[Lepton,ExplicitSUNIndex[i]]*
+NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+DiracMatrix[7].
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
 UTrace[NM[UChiralSpurionLeft1Matrix,QQ]]]+
 
 XX4[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-I*NM[DiracBar[fcqf[Particle[Lepton],fcsuni[iii]]].
-fcdm[fcli[mu]].
-fcdm[7].
-fcqf[Particle[Neutrino],fcsuni[iii]],
-UTrace[NM[UChiralSpurionLeft1Matrix,CQLeft[mu]]]]+
+I*NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+DiracMatrix[7].
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+UTrace[NM[UChiralSpurionLeft1Matrix,CQLeft[\[Mu]]]]]+
 
 XX5[0]*DecayConstant[PhiMeson]^2*CouplingConstant[QED[1]]^2*
-I*NM[DiracBar[fcqf[Particle[Lepton],fcsuni[iii]]].
-fcdm[fcli[mu]].
-fcdm[7].
-fcqf[Particle[Neutrino],fcsuni[iii]],
-UTrace[NM[UChiralSpurionLeft1Matrix,CQRight[mu]]]]+
+I*NM[DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+DiracMatrix[7].
+QuantumField[Particle[Neutrino],ExplicitSUNIndex[i]],
+UTrace[NM[UChiralSpurionLeft1Matrix,CQRight[\[Mu]]]]]+
 
 XX6[0]*CouplingConstant[QED[1]]^2*
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcdm[fcli[mu]].
-(I*fcqf[fcpd[fcli[mu]],
-Particle[Lepton],fcsuni[ii]]+
+DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+(I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
+Particle[Lepton],ExplicitSUNIndex[i]]+
 CouplingConstant[QED[1]]*
-fcqf[Particle[Photon],fcli[mu]].
-fcqf[Particle[Lepton],fcsuni[ii]])+
+QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
+QuantumField[Particle[Lepton],ExplicitSUNIndex[i]])+
 
 XX7[0]*CouplingConstant[QED[1]]^2*
-ParticleMass[Lepton,fcsuni[ii]]*
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcqf[Particle[Lepton],fcsuni[ii]];
+ParticleMass[Lepton,ExplicitSUNIndex[i]]*
+DiracBar[QuantumField[Particle[Lepton],ExplicitSUNIndex[i]]].
+QuantumField[Particle[Lepton],ExplicitSUNIndex[i]];
 
 (* ---------------------------------------------------------------- *)
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTPhotonsLeptons3[4]}];
+$Lagrangians=Union[$Lagrangians,{ChPTPhotonsLeptons3[4]}];
 
 FieldsSet[ChPTPhotonsLeptons3[4]]:=
-{IsoVector[fcqf[Particle[PhiMeson,RenormalizationState[0]]]],
-fcqf[Particle[Photon,RenormalizationState[0]]]};
-
-End[];
-
-End[];
+{IsoVector[QuantumField[Particle[PhiMeson,RenormalizationState[0]]]],
+QuantumField[Particle[Photon,RenormalizationState[0]]]};

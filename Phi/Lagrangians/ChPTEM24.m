@@ -94,37 +94,36 @@ fourth order ChPT lagrangian";
 
 (* ---------------------------------------------------------------- *)
 
-Begin["`Private`"];
+End[];
+
 
 (* ---------------------------------------------------------------- *)
 
 (* Abbreviations *)
 
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-
-K1 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],1];
-K2 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],2];
-K3 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],3];
-K4 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],4];
-K5 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],5];
-K6 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],6];
-K7 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],7];
-K8 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],8];
-K9 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],9];
-K10:= HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],10];
-K11 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],11];
-K12 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],12];
-K13 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],13];
-K14 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],14];
-K15 := HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],15];
+K1 = CouplingConstant[ChPTEM2[4],1];
+K2 = CouplingConstant[ChPTEM2[4],2];
+K3 = CouplingConstant[ChPTEM2[4],3];
+K4 = CouplingConstant[ChPTEM2[4],4];
+K5 = CouplingConstant[ChPTEM2[4],5];
+K6 = CouplingConstant[ChPTEM2[4],6];
+K7 = CouplingConstant[ChPTEM2[4],7];
+K8 = CouplingConstant[ChPTEM2[4],8];
+K9 = CouplingConstant[ChPTEM2[4],9];
+K10= CouplingConstant[ChPTEM2[4],10];
+K11 = CouplingConstant[ChPTEM2[4],11];
+K12 = CouplingConstant[ChPTEM2[4],12];
+K13 = CouplingConstant[ChPTEM2[4],13];
+K14 = CouplingConstant[ChPTEM2[4],14];
+K15 = CouplingConstant[ChPTEM2[4],15];
 
 (* ---------------------------------------------------------------- *)
 
 (* Box definitions *)
 
-HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant/:
+CouplingConstant/:
   MakeBoxes[
-    HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[4],i_,st___RenormalizationState,
+    CouplingConstant[ChPTEM2[4],i_,st___RenormalizationState,
       sc___RenormalizationScheme,qs___QuarkMassExpansionState],
     TraditionalForm]:=
   SubsuperscriptBox[MakeBoxes[StyleForm["k",FontSlant->"Italic"]][[1]],
@@ -139,17 +138,12 @@ RenormalizationCoefficients[ChPTEM2[4]] =
 {3/2+3*z+12*z^2, 2*z, -3/4, -2*z, -1/4, 0, 1/4+2*z,
 1/8(*-z*)(*I think the -z is a bug?!?*)(*Yes, it's not in the published version*),
 -3-3*z/5-12*z^2/5, -27/20-z/5, -1/4-z/5, 0, 3/2-12*z/5+84*z^2/25, 0, 1/30} /.
-z -> HighEnergyPhysics`FeynCalc`CouplingConstant`CouplingConstant[ChPTEM2[2],RenormalizationState[0]]/
+z -> CouplingConstant[ChPTEM2[2],RenormalizationState[0]]/
 DecayConstant[Pion,RenormalizationState[0]]^4;
 
 (* ---------------------------------------------------------------- *)
 
-mu=(Global`\[Mu]);
-nu=(Global`\[Nu]);
-
-(* ---------------------------------------------------------------- *)
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[ChPTEM2[4]]:=
+Lagrangian[ChPTEM2[4]]:=
 
 K1[0]*
 DecayConstant[Pion]^4*
@@ -160,32 +154,32 @@ K2[0]*
 DecayConstant[Pion]^2*
 NM[UTrace[ NM[UMatrix[UChiralSpurion],MM,
            UMatrix[UChiralSpurion],Adjoint[MM]]],
-UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]] ]]+
+UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]] ]]+
 
 K3[0]*
 DecayConstant[Pion]^2*
-(NMPower[UTrace[ NM[Adjoint[MM],CDr[MM,{mu}],UMatrix[UChiralSpurion]] ],2] +
- NMPower[UTrace[ NM[CDr[MM,{mu}],Adjoint[MM],UMatrix[UChiralSpurion]] ],2])+
+(NMPower[UTrace[ NM[Adjoint[MM],CDr[MM,{\[Mu]}],UMatrix[UChiralSpurion]] ],2] +
+ NMPower[UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[MM],UMatrix[UChiralSpurion]] ],2])+
 
 K4[0]*
 DecayConstant[Pion]^2*
-NM[UTrace[ NM[Adjoint[MM],CDr[MM,{mu}],UMatrix[UChiralSpurion]] ],
-UTrace[ NM[CDr[MM,{mu}],Adjoint[MM],UMatrix[UChiralSpurion]] ]]+
+NM[UTrace[ NM[Adjoint[MM],CDr[MM,{\[Mu]}],UMatrix[UChiralSpurion]] ],
+UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[MM],UMatrix[UChiralSpurion]] ]]+
 
 K5[0]*
 DecayConstant[Pion]^2*
-UTrace[NM[(NM[UMatrix[UChiralSpurion], CDr[UMatrix[UChiralSpurion],{mu}]]-
-           NM[CDr[UMatrix[UChiralSpurion],{mu}], UMatrix[UChiralSpurion]]),
-           Adjoint[MM], CDr[MM,{mu}]] -
+UTrace[NM[(NM[UMatrix[UChiralSpurion], CDr[UMatrix[UChiralSpurion],{\[Mu]}]]-
+           NM[CDr[UMatrix[UChiralSpurion],{\[Mu]}], UMatrix[UChiralSpurion]]),
+           Adjoint[MM], CDr[MM,{\[Mu]}]] -
         
-       NM[(NM[UMatrix[UChiralSpurion], CDr[UMatrix[UChiralSpurion],{mu}]]-
-           NM[CDr[UMatrix[UChiralSpurion],{mu}], UMatrix[UChiralSpurion]]),
-           CDr[MM,{mu}], Adjoint[MM]] ]+
+       NM[(NM[UMatrix[UChiralSpurion], CDr[UMatrix[UChiralSpurion],{\[Mu]}]]-
+           NM[CDr[UMatrix[UChiralSpurion],{\[Mu]}], UMatrix[UChiralSpurion]]),
+           CDr[MM,{\[Mu]}], Adjoint[MM]] ]+
 
 K6[0]*
 DecayConstant[Pion]^2*
-UTrace[NM[CDr[UMatrix[UChiralSpurion],{mu}], MM,
-          CDr[UMatrix[UChiralSpurion],{mu}], Adjoint[MM]] ]+
+UTrace[NM[CDr[UMatrix[UChiralSpurion],{\[Mu]}], MM,
+          CDr[UMatrix[UChiralSpurion],{\[Mu]}], Adjoint[MM]] ]+
 
 K7[0]*
 DecayConstant[Pion]^2*
@@ -207,7 +201,7 @@ UTrace[ NM[UMatrix[UChiralSpurion],MM,UMatrix[UChiralSpurion],Adjoint[MM]] ]]+
 K10[0]*
 DecayConstant[Pion]^2*
 NM[UTrace[ NMPower[UMatrix[UChiralSpurion], 2] ],
-UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]] ]]+
+UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]] ]]+
 
 K11[0]*
 DecayConstant[Pion]^2*
@@ -216,10 +210,10 @@ UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[MM,Adjoint[UChiMatrix]] ]]+
 
 K12[0]*
 DecayConstant[Pion]^2*
-UTrace[ NM[CDr[UMatrix[UChiralSpurionRight], {mu}],
-           CDr[UMatrix[UChiralSpurionRight], {mu}] ] +
-        NM[CDr[UMatrix[UChiralSpurionLeft], {mu}],
-           CDr[UMatrix[UChiralSpurionLeft], {mu}] ] ]+
+UTrace[ NM[CDr[UMatrix[UChiralSpurionRight], {\[Mu]}],
+           CDr[UMatrix[UChiralSpurionRight], {\[Mu]}] ] +
+        NM[CDr[UMatrix[UChiralSpurionLeft], {\[Mu]}],
+           CDr[UMatrix[UChiralSpurionLeft], {\[Mu]}] ] ]+
 
 K13[0]*
 DecayConstant[Pion]^4*
@@ -235,18 +229,15 @@ UTrace[UMatrix[UChiralSpurion] ]
 
 K15[0]*
 UTrace[NMPower[UMatrix[UChiralSpurion],2]]*
-NM[FieldStrengthTensor[{mu}, fcqf[Particle[Photon],{nu}]],
-FieldStrengthTensor[{mu}, fcqf[Particle[Photon],{nu}]]];
+NM[FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],{\[Nu]}]],
+FieldStrengthTensor[{\[Mu]}, QuantumField[Particle[Photon],{\[Nu]}]]];
 
 
 (* ---------------------------------------------------------------- *)
 
-Global`$Lagrangians=Union[Global`$Lagrangians,{ChPTEM2[4]}];
+$Lagrangians=Union[$Lagrangians,{ChPTEM2[4]}];
 
 FieldsSet[ChPTEM2[4]]:=
-{IsoVector[fcqf[Particle[Pion,RenormalizationState[0]]]],
-fcqf[Particle[Photon,RenormalizationState[0]]]};
+{IsoVector[QuantumField[Particle[Pion,RenormalizationState[0]]]],
+QuantumField[Particle[Photon,RenormalizationState[0]]]};
 
-End[];
-
-End[];

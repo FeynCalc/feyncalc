@@ -30,26 +30,9 @@ ChPTPhotonsLeptons32::"usage"=
 SU(3) ChPT lagrangian with couplings to virtual photons and leptons. \
 To evaluate use ArgumentsSupply";
 
-GaugeFixingParameter::"usage"=
-   "GaugeFixingParameter(=1/GaugeXi) is the gauge fixing parameter of QED in Lorentz gauge.  \
-the usual choice is Feynman gauge, GaugeFixingParameter=1";
-
 (* --------------------------------------------------------------- *)
 
-Begin["`Private`"];
-
-(* --------------------------------------------------------------- *)
-
-(* Abbreviations *)
-
-fcpd:=HighEnergyPhysics`FeynCalc`PartialD`PartialD;
-fcli:=HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex;
-fcqf:=HighEnergyPhysics`FeynCalc`QuantumField`QuantumField;
-
-mu=(Global`\[Mu]);
-nu=(Global`\[Nu]);
-ii=(Global`i);
-fcdm:=HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix;
+End[];
 
 (* ---------------------------------------------------------------- *)
 
@@ -70,67 +53,53 @@ CouplingConstant/:
           MakeBoxes[TraditionalForm[pt[sc]]]},{
           MakeBoxes[TraditionalForm[pt[qs]]]}]]];
 
-GaugeFixingParameter/:
-MakeBoxes[GaugeFixingParameter,TraditionalForm]:=
-MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]][[1]];
-
-
 (* --------------------------------------------------------------- *)
 
-SetAttributes[ChPTPhotonsLeptons3,NumericFunction];
-
-(* --------------------------------------------------------------- *)
-
-
-HighEnergyPhysics`fctables`Lagrangian`Lagrangian[
+Lagrangian[
 ChPTPhotonsLeptons3[2]]:=
 
 1/4*DecayConstant[PhiMeson]^2*
 
-(UTrace[ NM[CDr[MM,{mu}],Adjoint[CDr[MM,{mu}]]] ] +
+(UTrace[ NM[CDr[MM,{\[Mu]}],Adjoint[CDr[MM,{\[Mu]}]]] ] +
 
 UTrace[ NM[UChiMatrix,Adjoint[MM]]+NM[Adjoint[UChiMatrix],MM] ]) -
 
 1/4*
-NM[FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]],
-FieldStrengthTensor[fcli[mu],
-fcqf[Particle[Photon],fcli[nu]]]]-
+NM[FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]],
+FieldStrengthTensor[LorentzIndex[\[Mu]],
+QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]-
 
-GaugeFixingParameter/2*
-FDr[fcqf[Particle[Photon],fcli[mu]],{mu}]*
-FDr[fcqf[Particle[Photon],fcli[nu]],{nu}]+
+$Gauge/2*
+FDr[QuantumField[Particle[Photon],LorentzIndex[\[Mu]]],{\[Mu]}]*
+FDr[QuantumField[Particle[Photon],LorentzIndex[\[Nu]]],{\[Nu]}]+
 
 CouplingConstant[ChPTPhotonsLeptons3[2]]*
 UTrace[NM[UChiralSpurionRightMatrix,MM,
 UChiralSpurionLeftMatrix,Adjoint[MM]]]+
 
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcdm[fcli[mu]].
-(I*fcqf[fcpd[fcli[mu]],
-Particle[Lepton],fcsuni[ii]]+
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+(I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
+Particle[Lepton],SUNIndex[i]]+
 CouplingConstant[QED[1]]*
-fcqf[Particle[Photon],fcli[mu]].
-fcqf[Particle[Lepton],fcsuni[ii]])-
+QuantumField[Particle[Photon],LorentzIndex[\[Mu]]].
+QuantumField[Particle[Lepton],SUNIndex[i]])-
 
-ParticleMass[Lepton,fcsuni[ii]]*
-DiracBar[fcqf[Particle[Lepton],fcsuni[ii]]].
-fcqf[Particle[Lepton],fcsuni[ii]]+
+ParticleMass[Lepton,SUNIndex[i]]*
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]].
+QuantumField[Particle[Lepton],SUNIndex[i]]+
 
-DiracBar[fcqf[Particle[Neutrino],fcsuni[ii]]].
-fcdm[fcli[mu]].
-fcdm[6].
-I*fcqf[fcpd[fcli[mu]],
-Particle[Neutrino],fcsuni[ii]];
+DiracBar[QuantumField[Particle[Neutrino],SUNIndex[i]]].
+DiracMatrix[LorentzIndex[\[Mu]]].
+DiracMatrix[6].
+I*QuantumField[PartialD[LorentzIndex[\[Mu]]],
+Particle[Neutrino],SUNIndex[i]];
     
 (* --------------------------------------------------------------- *)
 
 FieldsSet[ChPTPhotonsLeptons3[2]]:=
-{IsoVector[fcqf[Particle[PhiMeson]]],
-fcqf[Particle[Photon]]};
+{IsoVector[QuantumField[Particle[PhiMeson]]],
+QuantumField[Particle[Photon]]};
 
-$Global`Lagrangians=Union[Global`$Lagrangians,{ChPTPhotonsLeptons3[2]}];
-
-End[];
-
-End[];
+$Lagrangians=Union[$Lagrangians,{ChPTPhotonsLeptons3[2]}];
