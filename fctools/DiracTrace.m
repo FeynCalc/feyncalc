@@ -49,7 +49,8 @@ Options[DiracTrace] = {EpsContract         -> False,
                        PairCollect         -> True,
                        DiracTraceEvaluate  -> False,
                        Schouten            -> 0,
-                       LeviCivitaSign      -> (I),
+(* Change according to Th. Gehrmann *)
+                       LeviCivitaSign      -> I,
                        (*Added 27/8-2002, F.Orellana*)
                        TraceOfOne          -> 4
                       };
@@ -409,7 +410,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 
  (* This is a definition of   Trace( 1.2.3.4. gamma[5] ) *)
    spur[x_,y_,r_,z_,DiracGamma[5]]:=Block[{dirsign},
-        dirsign = LeviCivitaSign /. Options[TR];
+        dirsign = LeviCivitaSign /. Options[DiracTrace];
         dirsign I Apply[Eps, {x,y,r,z}/.DiracGamma[vl_[mp_,dii___],___
                                                    ]->vl[mp,dii]
                        ]//EpsEvaluate];
@@ -472,7 +473,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]
     ]:= Block[{trsign,z1,z2,z3,z4,z5,z6,z7,z8},
 {z1,z2,z3,z4,z5,z6,z7,z8} =
 {w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
-trsign = LeviCivitaSign /. Options[Tr];
+trsign = LeviCivitaSign /. Options[TR];
  (* trsign is usually  =  -1 *)
  (* factor 4 is put later *)
 trsign*I*(Eps[w5, w6, w7, w8]*Pair[w1, w4]*Pair[w2, w3] -
