@@ -100,9 +100,18 @@ Options[FAPatch] = {
 (*Error message*)
 $ok = True;
 checkok := 
-    If[$ok =!= True, 
-      Print["Your FeynArts installation is not complete or the version you 
-have cannot be handled by this program"]; Return[]];
+If[$ok =!= True, 
+  If[Global`$FeynCalcStartupMessages =!= False ,
+    If[$Notebooks===True,
+       CellPrint[Cell[TextData[{
+	 "WARNING! Your FeynArts installation is not complete or the version you have cannot be used with this version of FeynCalc.\nFeynArts can be downloaded at ", ButtonBox["www.feynarts.de", ButtonData:>{
+	 URL[ "http://www.feynarts.de"], None},
+	 ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de"]}
+	],"Text"]],
+      WriteString["stdout", "Your FeynArts installation is not complete or the version you have cannot be used with this version of FeynCalc.\nFeynArts can be downloaded at http://www.feynarts.de/.\n"];
+    ];
+  ];
+Return[False]];
 
 
 (* ------------------------------------------------------------------------------ *)
@@ -142,7 +151,7 @@ FAPatch[opts___Rule] := (
 
 If[FileNames["FeynArts.m", $FeynArtsDirectory] === {}, $ok = False];
 If[FileNames["Setup.m", $FeynArtsDirectory] === {}, $ok = False];
-checkok;
+If[!checkok, Return[]];
 
 
 (*Check version number; must be >= 3*)
@@ -155,7 +164,7 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String];
         If[NumberQ[num1 = ToExpression[StringTake[str, -i]]], 
           num = num1]], {i, 1, 7}]; 
     If[num >= 3, $ok = True]]]; Close[strm];
-checkok;
+If[!checkok, Return[]];
 
 (*Check that patch has not already been applied*)
 
