@@ -222,16 +222,14 @@ If[$VeryVerbose > 2,Print["dir2a"]];
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
 *)
         If[diractrlabel===True,
-(*
-Dialog[Global`D2 = diracdt];
-*)
+(*Dialog[Global`D2 = diracdt];*)
 
-           diracdt = diracdt/.DOT->trIC/.trI->dS;
-(*
-Dialog[Global`D3 = diracdt];
-*)
+           diracdt = diracdt/.DOT->trIC/.
+(* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
+               {trI:>dS, HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> dS};
+(*Dialog[Global`D3 = diracdt];*)
               (* optimization *)
-           colle[a_]:=If[ (Length[a]<20(*00*))||(Head[a]=!=Plus), a,
+           colle[a_]:=If[ (Length[a]<200(*0*))||(Head[a]=!=Plus), a,
                           Collect2[a, DOT, Factoring -> False] ];
            dirfun[exp_]:=colle[exp/.DOT->dS/.DOT -> trIC /. trI->DOT];
 (* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
