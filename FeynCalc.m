@@ -898,7 +898,8 @@ If[ValueQ![HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]=!=True,
    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic];
 
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
-  search = FileNames["FeynArts.m", $Path, 2]/.{s_String,___} :> DirectoryName[s];
+  search = FileNames["FeynArts.m", FileNames["FeynArts",$Path,2], 3]/.{s_String,___} :> DirectoryName[s];
+
   If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
 ];
 
