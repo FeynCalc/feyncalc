@@ -15,19 +15,17 @@ option OnMassShell is set to True, the masses specified in the option Masses \
 are used.  The substituted Mandelstam variables depend on the value of the \
 option MomentaSumLeft.  E.g. For MomentaSumLeft set to All, the following \
 convention is used: s=(p1+p2)^2, t=(p2+p3)^2, u=(p1+p3)^2 with all particles \
-incoming";
+incoming.\n
+When the option Cancel is set to one of \
+MandelstamS, MandelstamT or MandelstamU, this variable is cancelled using the \
+Mandelstam relation.  The cancellation is disabled by setting \
+Cancel to None.  Default value of Cancel : MandelstamU";
 
 MandelstamS::"usage" = "MandelstamS is the Mandelstam s-variable";
 
 MandelstamT::"usage" = "MandelstamT is the Mandelstam t-variable";
 
 MandelstamU::"usage" = "MandelstamU is the Mandelstam u-variable";
-
-MandelstamCancel::"usage" = 
-    "MandelstamCancel is an option for MandelstamReduce.  When set to one of \
-MandelstamS, MandelstamT or MandelstamU, this variable is cancelled using the \
-Mandelstam relation.  The cancellation is disabled by setting \
-MandelstamCancel to None.  Default value : MandelstamU";
 
 $LorentzIndicesCounter::"usage" = 
     "$LorentzIndicesCounter is a variable numbering the indices supplied by \
@@ -121,7 +119,7 @@ of a. The dimension of a is specified by the option UDimension";
 CayleyHamilton::"usage" = 
     "CayleyHamilton[m1,m2, ...] returns the Cayley-Hamilton identity applied to the sum of \
 the square matrices m1, m2, ... If the option Eliminate is set to True and the number of \
-matrices agrees with the dimension of the matrices (specified by the option UDimension) \
+matrices agrees with the dimension of the matrices (specified by the option UDimension), \
 terms with products of identical matrices are recursively eliminated";
 
 CayleyHamiltonTrick::"usage" = 
