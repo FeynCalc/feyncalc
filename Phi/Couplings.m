@@ -662,16 +662,16 @@ vertices, we get a factor n!: *)
    Splits in separate one-graph topologies. *)
 
 VerticesExtract[top:(fatop[_][__] -> fains[fagen][
-                 fagr[__][__] -> fains[facl][fagr[__][__]],
-                (fagr[__][__] -> fains[facl][fagr[__][__]]) ..])]:=
+                 fagr[__][__] -> fains[facl][(fagr[__][__]) ..],
+                (fagr[__][__] -> fains[facl][(fagr[__][__]) ..]) ..])]:=
 (*Union @@*) (VerticesExtract /@ (top /.
              ((t : (fatop[_][__])) -> (i:(fains[fagen][
-                fagr[__][__] -> fains[facl][fagr[__][__]],
-                (fagr[__][__] -> fains[facl][fagr[__][__]]) ..]))) :>
+                fagr[__][__] -> fains[facl][(fagr[__][__]) ..],
+                (fagr[__][__] -> fains[facl][(fagr[__][__]) ..]) ..]))) :>
              ((Rule[t, fains[fagen][#]])& /@ (List @@ i))));
 
-  VerticesExtract[t : (fatop[_][__]) -> fains[fagen][fagr[n_, r___][genins__] ->
-            fains[facl][fagr[nn_, rr___][classins__]]]] := (verts =
+VerticesExtract[t : (fatop[_][__]) -> fains[fagen][fagr[n_, r___][genins__] ->
+            fains[facl][fagr[nn_, rr___][classins__],___]]] := (verts =
         Union[Cases[t, favert[_][_], Infinity, Heads -> True]];
       vertsfull = (FullVertex @@
                 Cases[t(**)/. p : faprop[_][v_, v_, _] -> Sequence[p, p](**),
@@ -895,26 +895,35 @@ tops1=If[faseens /. Flatten[{opts}] /. Options[AddExternalLegs],
 specified type of vertex. *)
 
 DiscardTopology[
-      t : (fatop[_][__] -> fains[fagen][__[__] -> fains[facl][__[__]]]),
-      opts___] :=
-    Block[{ops = (OrderingPatterns /. Flatten[{opts}] /.
-              Options[DiscardTopologies])},
-      Plus @@ (VerticesExtract[
-                  t /.(*Replace external vertex in a propagator with a dummy vertex*)
-		  {faprop[p : (faext | fainc | faout)][a_, favert[1, b___][c_], f__] ->
-                        faprop[p][a, favert[dummy], f],
-                      faprop[p : (faext | fainc | faout)][favert[1, b___][c_],
-                           a_, f__] ->
-                        faprop[p][favert[dummy], a,
-                          f]}] /.(*Replace vertices mathing one of the patterns with a 1*)
-			  Alternatives @@ ops -> 1 /.
-              FullVertex[__] ->
-                0(*and the rest with 0*)) <= (PerturbationOrder /.
-              Flatten[{opts}] /. Options[DiscardTopologies])];
-DiscardTopologies[tops : (fatopl[___][__])] :=
-    Block[{seq}, (If[DiscardTopology[#], #, seq[]] & /@ tops) /.
-        seq -> Sequence];
+      t : (fatop[_][__] -> fains[fagen][(_[__] -> fains[facl][_[__] ..]) ..]),
+       opts___] := Block[{v, p, b, c, a, f},
+      ops = (OrderingPatterns /. Flatten[{opts}] /. 
+            Options[DiscardTopologies]); (If[ArrayDepth[#] === 2, 
+              Plus @@ Transpose[#], {Plus @@ #}]) &[((v = 
+              VerticesExtract[
+                t /.(*Replace external vertex in a propagator with a dummy vertex*)
+                {faprop[p : (faext | fainc | faout)][a_, favert[1, b___][c_], f__] -> 
+                      faprop[p][a, favert[dummy], f], 
+                    faprop[p : (faext | fainc | faout)][favert[1, b___][c_], 
+                        a_, f__] -> faprop[p][favert[dummy], a, f]}]);
+          
+          v /.(*Replace vertices mathing one of the patterns with a 1*)
+                Alternatives @@ ops -> 1 /. 
+            FullVertex[__] -> 0(*and the rest with 0*))]];
 
+
+DiscardTopologies[tops : (fatopl[___][__]), opts___] := Block[{top, dis, i, seq, ins},
+      po = (PerturbationOrder /. Flatten[{opts}] /. 
+            Options[DiscardTopologies]);
+      (top = #; dis = DiscardTopology[top, opts];
+                
+                ins = Table[
+                    If[Plus @@ dis[[i]] <= po, top[[2, i]], seq[]], {i, 
+                      Length[dis]}];
+                top[[1]] -> (top[[2, 0]] @@ ins)
+                ) & /@ tops /. 
+          seq -> Sequence /. (fatop[_][__] -> fains[_][]) :> 
+          Sequence[]];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -1504,7 +1513,7 @@ nondiracWFRenormalize[exp : fatopl[oo___][tt___], opts___?OptionQ] :=
       fatopl[oo, fawfcr -> facs][tt]];
 
 (*Inserts fields and appends the relevant momentum as last argument of each Propagator*)
-appendMoms[toplist : fatopl[oo___][tt___]] := 
+(*appendMoms[toplist : fatopl[oo___][tt___]] := 
     Block[{fieldsubs, momtop, oldmom, imom,
         HighEnergyPhysics`FeynArts`Analytic`mc, 
         HighEnergyPhysics`FeynArts`Analytic`next, 
@@ -1533,7 +1542,45 @@ HighEnergyPhysics`FeynArts`Analytic`truncru =
 imom = Apply[HighEnergyPhysics`FeynArts`Analytic`RenumberMom, oldmom, 1];
 momtop[[0]] @@ ((#[[1]] /. #[[2]]) & /@ 
             Transpose[{(List @@ momtop /. Thread[oldmom -> imom]), 
-                fieldsubs}])];
+                fieldsubs}])];*)
+
+(*Inserts fields and appends the relevant momentum as last argument of each Propagator*)
+(*Notice that topologies with multiple insertions get flattened into multiple
+  topologies*)
+appendMoms[toplist : fatopl[oo___][tt___]] := 
+  Block[{fieldsubs, momtop, oldmom, imom,
+        HighEnergyPhysics`FeynArts`Analytic`mc, 
+      HighEnergyPhysics`FeynArts`Analytic`next, info = List @@ toplist[[0]], 
+      HighEnergyPhysics`FeynArts`Analytic`gaugeru = 
+        GaugeRules /. Options[facrfa], 
+      HighEnergyPhysics`FeynArts`Analytic`truncru = 
+        If[TrueQ[Truncated /. Options[facrfa]], fatrru, {}], 
+      HighEnergyPhysics`FeynArts`Analytic`pref = 
+        PreFactor /. Options[facrfa]},
+        
+    fieldsubs = (Table[((ll @@ Take[#, {1, 2}][[2, i, 1]])), {i, 1, 
+                  Length[#[[2]]]}] & /@ List @@ toplist) /. ll -> List;
+                  
+        HighEnergyPhysics`FeynArts`Analytic`next = 
+      Plus @@ Length /@ (Process /. {info});
+    momtop = (Clear[HighEnergyPhysics`FeynArts`Analytic`c, 
+              HighEnergyPhysics`FeynArts`Analytic`mc];
+            HighEnergyPhysics`FeynArts`Analytic`c[_] = 0;
+            HighEnergyPhysics`FeynArts`Analytic`mc = 0;
+            
+            HighEnergyPhysics`FeynArts`Analytic`AppendMomentum /@ #[[1]]) & /@
+            (fapl[facl][toplist] /. (_ -> fains[_][]) :> 
+                Seq[] /. (fafi[i_] -> fi_?AtomQ) -> (fafi[i] -> 
+                  fi[faind[fagen, i]]));
+    oldmom = 
+      Union[Cases[momtop, fafm[_HighEnergyPhysics`FeynArts`Analytic`ZZZ, _], 
+          Infinity]];
+    imom = Apply[HighEnergyPhysics`FeynArts`Analytic`RenumberMom, oldmom, 1];
+    momtop[[0]] @@ 
+      Flatten[((#[[1]] /. #[[2]]) & /@ 
+            Transpose[{(List @@ momtop /. Thread[oldmom -> imom]), 
+                fieldsubs}])]];
+
 
 (* After doing loops with FeynArts, particle masses with SU(N) indices come out.
    They can be projected out in charged masses with IsoToChargedMasses *)
