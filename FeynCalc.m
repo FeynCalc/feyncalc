@@ -188,14 +188,13 @@ If[!ValueQ[Global`$LoadTARCER], Global`$LoadTARCER = True];
 
 If[Global`$LoadTARCER ===True,
 
-SetDirectory["Tarcer"];
 If[StringQ[ Global`$LoadTARCER ],
    HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
    {Global`$LoadTARCER},
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
-FileNames["tarcer*.mx",IgnoreCase->True];
+FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
+"Tarcer"}],IgnoreCase->True];
   ];
-ResetDirectory[];
 
 If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 
