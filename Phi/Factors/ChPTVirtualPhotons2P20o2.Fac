@@ -51,9 +51,9 @@
             ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2, 
             ParticleMass[Vector[1], RenormalizationState[0]]^2, 
             ExplicitLeutwylerJBar -> False, ExplicitLeutwylerJ0 -> True, 
-            Dimension -> SpaceTimeDimensions, MassScale -> ScaleMu, 
+            Dimension -> D, MassScale -> ScaleMu, 
             ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> 
-             False, IEps -> SmallIEps, ExpandGammas -> True, 
+             False, ExpandGammas -> True, 
             DimensionExpand -> False, FixPoint -> 0, TaylorOrder -> 2, 
             B0Evaluation -> Direct1, FCIntegrate -> IntegrateHeld]*
            (-1 + SU2Delta[3, SUNIndex[i1]]) - 32*Pi^2*CouplingConstant[
@@ -81,9 +81,9 @@
              Momentum[p1]], ParticleMass[PseudoScalar[3], 
               RenormalizationState[0]]^2, ParticleMass[Vector[1], 
               RenormalizationState[0]]^2, ExplicitLeutwylerJBar -> False, 
-            ExplicitLeutwylerJ0 -> True, Dimension -> SpaceTimeDimensions, 
+            ExplicitLeutwylerJ0 -> True, Dimension -> D, 
             MassScale -> ScaleMu, ExplicitLeutwylerLambda -> False, 
-            ExplicitLeutwylerSigma -> False, IEps -> SmallIEps, 
+            ExplicitLeutwylerSigma -> False, 
             ExpandGammas -> True, DimensionExpand -> False, FixPoint -> 0, 
             TaylorOrder -> 2, B0Evaluation -> Direct1, FCIntegrate -> 
              IntegrateHeld]*(SU2Delta[1, SUNIndex[i1]] + SU2Delta[2, 
@@ -94,9 +94,9 @@
             ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2, 
             ParticleMass[Vector[1], RenormalizationState[0]]^2, 
             ExplicitLeutwylerJBar -> False, ExplicitLeutwylerJ0 -> True, 
-            Dimension -> SpaceTimeDimensions, MassScale -> ScaleMu, 
+            Dimension -> D, MassScale -> ScaleMu, 
             ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> 
-             False, IEps -> SmallIEps, ExpandGammas -> True, 
+             False, ExpandGammas -> True, 
             DimensionExpand -> False, FixPoint -> 0, TaylorOrder -> 2, 
             B0Evaluation -> Direct1, FCIntegrate -> IntegrateHeld]*
            (-1 + SU2Delta[3, SUNIndex[i1]]) - 48*Pi^2*LeutwylerLambda[]*

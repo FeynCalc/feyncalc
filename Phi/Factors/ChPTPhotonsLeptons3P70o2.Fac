@@ -3,9 +3,9 @@
       ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2, 
       SmallVariable[ParticleMass[Vector[1], RenormalizationState[0]]]^2, 
       ExplicitLeutwylerJBar -> False, ExplicitLeutwylerJ0 -> True, 
-      Dimension -> SpaceTimeDimensions, MassScale -> ScaleMu, 
+      Dimension -> D, MassScale -> ScaleMu, 
       ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> False, 
-      IEps -> SmallIEps, ExpandGammas -> True, DimensionExpand -> False, 
+       ExpandGammas -> True, DimensionExpand -> False, 
       FixPoint -> 0, TaylorOrder -> 2, B0Evaluation -> Direct1, 
       FCIntegrate -> IntegrateHeld])*(Pair[Momentum[p1], Momentum[p1]] + 
     ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2) + 
