@@ -1331,7 +1331,7 @@ WFFactor[pro_, opts___?OptionQ] :=
     Block[{nam, dum, prop, res},
       prop = pro /. cruls;
       DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[CheckF::"nostring"];
+      Off[HighEnergyPhysics`fctables`CheckF`CheckF::"nostring"];
       nam = XName[VertexFields -> {prop[[-1]]},
             Sequence @@ OptionsSelect[XName, opts, Options[WFFactor]],
             XFileName -> Automatic] <> ".Fac";
@@ -1349,7 +1349,7 @@ WFFactor[pro_, opts___?OptionQ] :=
             ForceSave -> False], True, 
         Message[WFFactor::"noprop", prop[[0, 1]]]; Return[]];
       EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[CheckF::"nostring"];
+      On[HighEnergyPhysics`fctables`CheckF`CheckF::"nostring"];
       If[FreeQ[res,dum], res, WFFactor1[prop(*nam*), opts]]
 ];
 
@@ -1401,7 +1401,7 @@ momtop[[0]] @@ ((#[[1]] /. #[[2]]) & /@
 PMFactor[mass_, opts___?OptionQ] := 
     Block[{nam, dum, res},
       DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[CheckF::"nostring"];
+      Off[HighEnergyPhysics`fctables`CheckF`CheckF::"nostring"];
       nam = XName[VertexFields -> {mass[[1]][0]}, 
             Sequence @@ OptionsSelect[XName, opts, Options[PMFactor]],
             XFileName -> Automatic] <> ".Mass";
@@ -1409,7 +1409,7 @@ PMFactor[mass_, opts___?OptionQ] :=
         NoSave -> True, 
         ForceSave -> False];
       EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[CheckF::"nostring"];
+      On[HighEnergyPhysics`fctables`CheckF`CheckF::"nostring"];
       If[FreeQ[res,dum], res, PMFactor1[mass, opts]]
     ];
 
@@ -1440,7 +1440,7 @@ PMRenormalize[amp_, opts___?OptionQ] :=
 DCFactor[ff_, opts___?OptionQ] := 
     Block[{nam, dum, res}, 
       DisableMessage /@ {List::"string", StringJoin::"string"};
-      Off[CheckF::"nostring"];
+      Off[HighEnergyPhysics`fctables`CheckF`CheckF::"nostring"];
       nam = XName[VertexFields -> {AxialVector[0][0], ff[[1]][0]}, 
             Sequence @@ OptionsSelect[XName, opts, Options[DCFactor]],
             XFileName -> Automatic] <> ".Fac";
@@ -1448,7 +1448,7 @@ DCFactor[ff_, opts___?OptionQ] :=
         NoSave -> True, 
         ForceSave -> False];
       EnableMessage /@ {List::"string", StringJoin::"string"};
-      On[CheckF::"nostring"];
+      On[HighEnergyPhysics`fctables`CheckF`CheckF::"nostring"];
       If[FreeQ[res,dum], res, DCFactor1[ff, opts]]
     ];
 
