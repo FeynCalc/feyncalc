@@ -56,7 +56,9 @@ f2tex[expr_, width_:500] := Module[{r, n, w,y,z},
     z = StringReplace[z,"\n\\\\ (\n"-> "\n\\\\ \n( "];
     If[StringMatchQ[z,"*\\\\"], z=StringDrop[z,-2]];
     (*z = "$\n"<>z<>"\n$";*)
-    CellPrint[Cell[z, "Program"]];z]
+    (*not always useful, comment it out for now
+     CellPrint[Cell[z, "Program"]]
+    *);z]
 
 End[]; EndPackage[];
 
