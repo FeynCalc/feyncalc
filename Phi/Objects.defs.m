@@ -1239,7 +1239,7 @@ substituted with SUNIndex after the indices have been supplied";
 UIndexToSUNIndex::"usage" = 
     "UIndexToSUNIndex is an option of UIndicesSupply.  When set to True, \
 UIndex is substituted with SUNIndex after the indices have been supplied.  \
-Default value : True";
+Default value : False";
 
 UIndicesString::"usage" = 
     "UIndicesString is an option of UIndicesSupply.  When UIndicesString is \

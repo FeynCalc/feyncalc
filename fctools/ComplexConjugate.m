@@ -90,6 +90,7 @@ sundeltacomp[a___] := SUNDelta @@ ({a}/.ComplexIndex -> Identity);
 (*Added SumOver stuff. F.Orellana. 20/8-2002*)
 sumovercomp[a___] := HighEnergyPhysics`FeynArts`SumOver @@ ({a}/.ComplexIndex -> Identity);
 
+ugencomp[a__] := HighEnergyPhysics`Phi`Objects`UGenerator @@ ({a}/.ComplexIndex -> Identity);
 (*
 nenenen
 sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
@@ -102,6 +103,7 @@ ComplexConjugate[x_ /; (Head[x] =!= HoldForm)] :=
                  compcon[fci[x]/.SUNTrace->suntrac
                         ] /. SUNF -> sunfcomp /.
                     HighEnergyPhysics`FeynArts`SumOver -> sumovercomp /.
+                    HighEnergyPhysics`Phi`Objects`UGenerator -> ugencomp /.
                     SUNDelta -> SUNDeltaContract /.
                        SUNDeltaContract -> sundeltacomp/.
                           compcon -> compcon2 /. compcon2 ->

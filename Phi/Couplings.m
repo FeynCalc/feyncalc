@@ -70,6 +70,7 @@ fcmomc := fcmomc = HighEnergyPhysics`FeynCalc`MomentumCombine`MomentumCombine;
 fccombs := fccombs = HighEnergyPhysics`general`Combinations`Combinations;
 fcexli := fcexli = HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`ExplicitLorentzIndex;
 fcexpt := fcexpt = HighEnergyPhysics`fctools`Explicit`Explicit;
+fcsunt := fcsunt = HighEnergyPhysics`FeynCalc`SUNT`SUNT;
 
 
 
@@ -119,7 +120,7 @@ faseens := faseens = HighEnergyPhysics`FeynArts`SelfEnergies;
 fawfcr := fawfcr = HighEnergyPhysics`FeynArts`WFCorrections;
 fafi := fafi = HighEnergyPhysics`FeynArts`Field;
 fatrru := fatrru = HighEnergyPhysics`FeynArts`M$TruncationRules;
-facol := facol = Global`Color;
+facol := facol = Global`Colour;
 
 
 (* Defaults *)
@@ -960,6 +961,8 @@ fafad[a__] -> Hold[fafad[a]] /.(*Change 15/3 - 1999*)
 If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
           ParticleMass[a_, b___][c_] -> ParticleMass[a, b],
           ParticleMass[a_, b___][c_] -> ParticleMass[a, fcsuni[c], b]]) /.
+fcsunt[faind[a__], faind[b__], faind[c__]] :>
+UGenerator[fcsuni[faind[a]], fcsunn -> 3][UIndex[faind[b]], UIndex[faind[c]]]/.
 {faind[(IsoSpin|facol)[i_], b_] :> ToExpression[ToString[i] <> ToString[b]],
 faind[falo, b_] :> fcli[ToExpression[$CouplingLorentzIndicesString <> ToString[b]],
    SpaceTimeDimensions]};
@@ -978,6 +981,8 @@ FeynAmpDenominator[a__] -> Hold[FeynAmpDenominator[a]] /.(*Change 15/3 - 1999*)
 If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
           ParticleMass[a_, b___][c_] -> ParticleMass[a, b],
           ParticleMass[a_, b___][c_] -> ParticleMass[a, fcsuni[c], b]]) /.
+fcsunt[faind[a__], faind[b__], faind[c__]] :>
+UGenerator[fcsuni[faind[a]], fcsunn -> 3][UIndex[faind[b]], UIndex[faind[c]]]/.
 {faind[(IsoSpin|facol)[i_], b_] :> ToExpression[ToString[i] <> ToString[b]],
 faind[falo, b_] :> fcli[ToExpression[$CouplingLorentzIndicesString <> ToString[b]],
           SpaceTimeDimensions]};
@@ -1075,8 +1080,10 @@ FAToFC[amm_, opts___] := (traceev = (fcdtrev /. Flatten[{opts}] /. Options[FAToF
    famt[li1_, li2_] /; !FreeQ[{li1, li2}, fcli] -> fcpa[li1, li2],
    $FADelta[aa_, bb_] :> fcsundel[fcsuni[aa], fcsuni[bb]] /;
                          !FreeQ[{aa,bb}, IsoSpin, Heads -> True],
-   UGenerator[I5_, op___][J3_, J1_] ->
-      UGenerator[fcsuni[I5], op][fcsuni[J3],fcsuni[J1]], (*fapd -> fcprd, *)
+   UGenerator[I5_, op___][J3_, J1_] :>
+      UGenerator[fcsuni[I5], op][UIndex[J3],UIndex[J1]] /;
+      FreeQ[{I5}, fcsuni, Heads->True] &&
+      FreeQ[{J3,J1}, fcsuni|UIndex, Heads->True], (*fapd -> fcprd, *)
    fafad -> fcfad,
    (ScalarProductForm /. Flatten[{opts}] /. Options[FAToFC])[
       a_, b_] /; FreeQ[{a, b}, fcmom] -> fcscp[a, b, fcdim -> SpaceTimeDimensions],

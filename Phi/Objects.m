@@ -413,7 +413,7 @@ Options[DiscardTerms] = {Method -> Coefficient,
 Options[IsoIndicesSupply] = {IsoIndicesString -> "i",
       FreeIsoIndexString -> "k", FreeIsoIndicesString -> "I",
       NumerateFree -> False};
-Options[UIndicesSupply] = {UIndicesString -> "n", UIndexToSUNIndex -> True};
+Options[UIndicesSupply] = {UIndicesString -> "n", UIndexToSUNIndex -> False};
 Options[IsoIndicesList] = {IsoIndicesNumber -> $IsoIndicesCounter,
       IsoIndicesString -> "i"};
 Options[MomentumVariables] = {ParticlesNumber -> 4,

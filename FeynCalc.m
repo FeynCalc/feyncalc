@@ -4060,7 +4060,7 @@ MemSet, Momentum, Pair, PairContract, PairCollect, PartitHead ];
 sCO := sCO = MakeContext["PairContract"];
 
 MakeContext[ ExpandScalarProduct, Schouten,
-Spinor, SUNSimplify, SUNT, Tr, TraceOfOne, TrickMandelstam];
+Spinor, SUNSimplify, SUNT, Tr, TraceOfOne, SUNTrace, TrickMandelstam];
 
 scev[a__] := scev[a] = ExpandScalarProduct[a];
 
@@ -4071,8 +4071,12 @@ Options[DiracTrace] = {EpsContract         -> False,
                        PairCollect         -> True,
                        DiracTraceEvaluate  -> False,
                        Schouten            -> 0,
-                       LeviCivitaSign      -> (-1)
+                       LeviCivitaSign      -> (-1),
+                       (*Added 27/8-2002, F.Orellana*)
+                       SUNTrace            -> True,
+                       TraceOfOne          -> 4
                       };
+
 
 dotLin[x_] := DotSimplify[x, Expanding -> False];
  (* gamma67backdef: reinsertion of gamma6 and gamm7 *)
@@ -12847,7 +12851,7 @@ fci                 = MakeContext["FeynCalcInternal"];
 MakeContext[ DiracTrace, DiracTraceEvaluate, DOT,
 Factoring, FeynCalcExternal, LeviCivitaSign, Mandelstam,
 PairCollect, Schouten, Explicit, SUNIndex, SUNSimplify,
-SUNT, SUNTrace, TraceOfOne, Trick];
+SUNT, SUNTrace, TraceOfOne, Trick, SUNNToCACF];
 
 Options[ Tr ] = { DiracTraceEvaluate -> True,
                   Factoring          -> False,
@@ -12857,7 +12861,9 @@ Options[ Tr ] = { DiracTraceEvaluate -> True,
                   PairCollect        -> False,
                   Schouten           -> 442,
                   SUNTrace           -> True,
-                  TraceOfOne         -> 4
+                  TraceOfOne         -> 4,
+                  (*Added 27/8-2002, F.Orellana*)
+                  SUNNToCACF -> False
                 };
 
 Tr[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex},
@@ -12869,8 +12875,11 @@ Tr[x_, rul___Rule] := Block[{tt, doot, diractr, dit, fcex},
                                               Explicit -> False
                                              ],
                              If[FreeQ[tt, SUNIndex],
-                                tt = DiracTrace[tt],
-                                tt = DiracTrace[Trick[tt]//SUNSimplify]
+                                tt = DiracTrace[tt,
+                (*Added 27/8-2002, F.Orellana*) Sequence@@Join[{rul},Options[Tr]]],
+                                tt = DiracTrace[Trick[tt]//
+                                     SUNSimplify[#,
+                                     (**)Sequence@@Join[{rul},Options[Tr]]]&]
                                ]
                             ];
 
