@@ -1204,14 +1204,10 @@ IsoIndicesSupply supplies a pair of matrix indices. To start with 1, simply \
 set UIndicesCounter=0.";
 
 VariableBoxes::"usage" =
-    "VariableBoxes[var,opts] declares TraditionalForm subscript boxes for \
+    "VariableBoxes[var,opts] declares TraditionalForm (or any other format, \
+specified by the option Format) subscript boxes for \
 var1,var2,...,varp, where var is a string and p is given by the option \
 ParticlesNumber.";
-
-VariableBoxesAll::"usage" =
-    "VariableBoxesAll[var,opts] declares subscript boxes for \
-var1,var2,...,varp for all output forms, where var is a string and p is given \
-by the option ParticlesNumber.";
 
 MomentaSumRule::"usage" =
     "MomentaSumRule[opts] is the momentum conservation rule eliminating the \
@@ -1788,20 +1784,20 @@ UMatrix /: MakeBoxes[
 UMatrix /: MakeBoxes[UMatrix[um_[i_ /; FreeQ[i, Rule|fcli], ___Rule], ___Rule],
 	  TraditionalForm] :=
     SuperscriptBox[(MakeBoxes[
-            TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]])[[1, 1, 1]],
+            TraditionalForm[StyleForm[um, FontWeight -> "Bold", SingleLetterItalics -> False]]])[[1, 1, 1]],
        MakeBoxes[TraditionalForm[i]]];
 
 UMatrix /: MakeBoxes[UMatrix[um_[___Rule], ___Rule],
 	  TraditionalForm] := (MakeBoxes[
-          TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]])[[1, 1, 1]];
+          TraditionalForm[StyleForm[um, FontWeight -> "Bold", SingleLetterItalics -> False]]])[[1, 1, 1]];
 
 UMatrix /: MakeBoxes[UMatrix[um_ /; AtomQ[um], ___Rule | ___List],
 	  TraditionalForm] :=
-    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]][[1, 1, 1]];
+    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold", SingleLetterItalics -> False]]][[1, 1, 1]];
 
 (*Added 31/7-2001*)
 UMatrix /: MakeBoxes[UMatrix[um_, ___Rule][_], TraditionalForm] :=
-    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold"]]];
+    MakeBoxes[TraditionalForm[StyleForm[um, FontWeight -> "Bold", SingleLetterItalics -> False]]];
 
 
 UIndex /: MakeBoxes[UIndex[i_],
@@ -2466,10 +2462,10 @@ isoindextab[var_, (opts___Rule | opts___List)] :=
         1, (ParticlesNumber /. Flatten[{opts}] /. Options[VariableBoxes])}];
 
 isoboxes[var_, (opts___Rule | opts___List)] :=
-    HoldPattern[MakeBoxes[#, TraditionalForm]] & /@ Flatten[isoindextab[var, opts]];
-
-isoboxes1[var_, (opts___Rule | opts___List)] :=
-    HoldPattern[MakeBoxes[#, _]] & /@ Flatten[isoindextab[var, opts]];
+   HoldPattern1[MakeBoxes1[Sequence@@##]]& /@
+   (seq[#,(Format /. Flatten[{opts}] /. Options[VariableBoxes])]& /@
+   Flatten[isoindextab[var, opts]]) /.
+   seq[a__] :> a /. HoldPattern1 -> HoldPattern /. MakeBoxes1 -> MakeBoxes;
 
 isoright[var_, (opts___Rule | opts___List)] :=
 
@@ -2482,12 +2478,6 @@ isoright[var_, (opts___Rule | opts___List)] :=
 VariableBoxes[var_, (opts___Rule | opts___List)] :=
     Do[Evaluate[Flatten[isoindextab[var, opts]][[j]]] /:
         Evaluate[isoboxes[var, opts][[j]]] :=
-        Evaluate[isoright[var, opts][[j]]], {j,
-        1, (ParticlesNumber /. Flatten[{opts}] /. Options[VariableBoxes])}];
-
-VariableBoxesAll[var_, (opts___Rule | opts___List)] :=
-    Do[Evaluate[Flatten[isoindextab[var, opts]][[j]]] /:
-        Evaluate[isoboxes1[var, opts][[j]]] :=
         Evaluate[isoright[var, opts][[j]]], {j,
         1, (ParticlesNumber /. Flatten[{opts}] /. Options[VariableBoxes])}];
 

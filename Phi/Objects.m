@@ -442,7 +442,7 @@ Options[WriteOutUMatrices] = {fcsunn -> 2, UDimension -> Automatic,
       QuarkToMesonMasses -> True, DiagonalToU -> False(*Commented out 11/5-2003*)(*,
       RemoveIntegerIndices -> False*)};
 Options[WriteOutIsoVectors] = {fcsunn -> 2};
-Options[VariableBoxes] = {ParticlesNumber -> 4};
+Options[VariableBoxes] = {ParticlesNumber -> 4, Format -> TraditionalForm};
 patterns = (BlankSequence | BlankNullSequence | Pattern);
 allpatterns = (Blank | BlankSequence | BlankNullSequence | Pattern);
 bti[c__] := (! FreeQ[{c}, UIdentity]);
