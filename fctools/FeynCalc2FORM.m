@@ -116,7 +116,6 @@ momentumlist = Union[Flatten[moms /. Momentum[a_,___] :> Variables[a]]];
 other = SelectFree[Union[Cases[holdy, _Symbol, -1]],
                    Join[lors, momentumlist]
                   ];
-
 noatomic = Union[Flatten[Map[Variables,
 Cases[holdy/.DOT->Times,h_ /;
       (!MemberQ[{LorentzIndex,Momentum,DiracGamma,Eps,
@@ -242,6 +241,7 @@ If[Length[newsymlist] > 0,
 
 index4list = Map[StringReplace[ToString[#],srules]&,index4list];
 indexnlist = Map[StringReplace[ToString[#],srules]&,indexnlist];
+
 If[Length[index4list] > 0 && x =!= False,
    WriteString[file, "Indices "];
    For[ij = 1, ij < Length[index4list], ij++,
@@ -291,7 +291,10 @@ If[x=!= False,
             ]
          ];
 (*Global`NEWX = newx;*)
-       If[x===False && file === "tFc2F", Print[newx[[jjj]]]]
+       If[x===False && file === "tFc2F", 
+(*Print[newx[[jjj]]]*)
+         WriteString["stdout", newx[[jjj]],"\n"]
+         ]
       ];
 If[x=!= False,
    WriteString[file, " ); \n   \n"];
