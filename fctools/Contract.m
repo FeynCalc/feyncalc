@@ -85,17 +85,17 @@ Begin["`Private`"];
    
    Contract3[x_Plus] := Map[Contract3, x];
    
-   Contract3[x_ /; (Head[x] =!= Times) && Head[x] =!= Plus] := Contract[x];
+   Contract3[x_ /; (Head[x] =!= Times) && Head[x] =!= Plus] := Contract[x, Contract3->False];
    Contract3[x_Times] := 
     If[!FreeQ[x, DiracGamma | Eps], 
-       Contract[x],
+       Contract[x, Contract3 -> False],
        If[FreeQ[fci[x], LorentzIndex], fci[x],
        Block[{nx = x, nonli, lipa, nec = 0, ic,epli},
-         nx = Contract[x , Expanding -> False];
+         nx = Contract[x , Expanding -> False, Contract3->False];
  (*
-         nx = Contract[ExpandScalarProduct[x] , Expanding -> False];
+         nx = Contract[ExpandScalarProduct[x] , Expanding -> False, Contract3->False];
  *)
-           If[Head[nx] =!= Times, nec = Contract[nx],
+           If[Head[nx] =!= Times, nec = Contract[nx, Contract3->False],
               nonli = Select[nx, FreeQ[#, LorentzIndex]&];
               lipa  = Select[nx,!FreeQ[#, LorentzIndex]&];
 (*
@@ -107,9 +107,9 @@ Begin["`Private`"];
               If[Head[lipa] =!= Times, 
                  If[Head[lipa] === Plus,
                     nec = Contract3[lipa (*epli*)],
-                    nec = Contract[lipa (*epli*)]
+                    nec = Contract[lipa (*epli*), Contract3->False]
                    ],
-                 If[Length[lipa] < 2, nec = Contract[lipa (*epli*)],
+                 If[Length[lipa] < 2, nec = Contract[lipa (*epli*), Contract3->False],
                     nec = lipa[[1]] (*epli*);
                     For[ic = 2, ic <= Length[lipa], ic++,
                         print2["ic = ", ic, " out of ",Length[lipa]];
@@ -120,8 +120,8 @@ Begin["`Private`"];
                               False
                              ]
                            ,
-                           nec = Contract[lipa[[ic]], nec],
-                           nec = Contract[nec, lipa[[ic]]]
+                           nec = Contract[lipa[[ic]], nec, Contract3->False],
+                           nec = Contract[nec, lipa[[ic]], Contract3->False]
                           ];
                         print2["expand scalar products"];
                         nec = nec /. Pair -> expair;
@@ -212,13 +212,21 @@ tim = TimeUsed[];
    
  (* ******************************************************************** *)
    
+
  (* Added 3/11-2002 to contract also denominators. F.Orellana.
     Unfortunately it slows down things, so we might want to add an option
     to disble it...*)
+(* This seems artificial.
+   It can never occur by normal Feynman rule application.
+   If anybody needs it they should copy this functions and call it differently.
+   Commented out September 16th 2003 by Rolf Mertig, in order to not slow
+   down things. Contract is a very vital function ...
+  
  Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :> 
     inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@ 
           Select[{a, b, c}, ! MatchQ[#, _^-1] &]), opts] /. inv -> ((1/#)&))/;
    !FreeQ[{x}, _Pair^-1];
+*)
  
  Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops___Rule] := 
     Block[{lc, new = 0, i},            print2["longcontract1"]; 
@@ -226,8 +234,8 @@ tim = TimeUsed[];
           new = Contract[lc, a, ops];
       new];
    
- Contract[x_, y_ /; Head[y]=!=Rule] := 
-          (Contract[fci[x]] y) /; FreeQ2[fci[y], {LorentzIndex,Eps}];
+ Contract[x_, y_ /; Head[y]=!=Rule, c___?OptionQ] := 
+          (Contract[fci[x], c] y) /; FreeQ2[fci[y], {LorentzIndex,Eps}];
  
  Contract[x_, y_Times] := Block[{a=fci[x], b=fci[y], bb},
    If[MatchQ[b, Apply[HoldPattern, {Times__Pair}]], contract21[ a, b ],
@@ -240,12 +248,14 @@ tim = TimeUsed[];
           ]
        ]]                        ];
    
+(* Is this really needed ? RM Sept 16th 2003
    Contract[x_ /; FreeQ2[x, {DiracGamma, Eps}],
             y_ /; !FreeQ2[y, {DiracGamma, Eps}]] := Contract[y,x];
+*)
    
    Contract[a_, b_ /; ((Head[b]=!=Times) && (Head[b] =!= Plus) && 
-                       (Head[b] =!= Rule))
-           ] := Contract[ a b ];
+                       (Head[b] =!= Rule)), c___?OptionQ
+           ] := Contract[ a b, c ];
    
    Contract[a_, b_Plus, ops___Rule] := 
      If[(Collecting /. {ops} /. Options[Contract]) === True,
@@ -409,6 +419,7 @@ tim = TimeUsed[];
                     Expanding->True, EpsContract->True, Factoring->False ];
                                        (*Contractdef*)
    Options[Contract] = { Collecting  -> True,
+                         Contract3 -> False,
                          EpsContract -> True, 
                          Expanding   -> True, 
                          Factoring   -> False,
@@ -464,14 +475,20 @@ tim = TimeUsed[];
 (*
    contracT[x_,opt___Rule] := x /; FreeQ2[ x,{LorentzIndex,Eps,Momentum} ];
 *)
-   contracT[x_,opt___Rule] := Block[{ contractres,epscontractopt,
+   contracT[x_,opt___Rule] := Module[{ contractres=x,epscontractopt,
            contractexpandopt, rename, es,
            lip,contractopt = Join[{opt},Options[Contract]]//Flatten,
-             schout },
+             contract3, schout },
      contractexpandopt   = Expanding/.contractopt;
      contractepsopt      = EpsContract/.contractopt;
      contractfactoring   = Factoring/.contractopt;
-     contractres = x /. Pair -> sCOS /. sCOS -> sCO/.
+     contract3           = Contract3/.contractopt;
+(* NEW: September 16th 2003: adding Contract3 directly here ... *)
+     If[contract3 && contractexpandopt,
+     If[MemberQ[{Plus, Times}, Head[contractres]] (*&& !FreeQ[contractres, Plus]*),
+        contractres = Contract3[contractres]
+       ]];
+     contractres = contractres /. Pair -> sCOS /. sCOS -> sCO/.
                    sCO -> sceins /. sceins -> Pair;
      rename      = Rename /. contractopt;
 (* optimization *)
