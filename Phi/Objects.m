@@ -3988,7 +3988,7 @@ ArgumentsSupply[expr_, x_, ar___RenormalizationState,
    argres = ArgumentsSupply1[expr//.$PreSubstitutions[x,ar,br,cr,opts]//.
 				$Substitutions//.$PostSubstitutions[x,ar,br,cr,opts],
 				x, ar, br, cr, opts];
-   $UMatrices = Drop[$UMatrices, -6];
+   $UMatrices = Complement[$UMatrices, {CDr3, CNDr3, CNb3, CDr2, CNDr2, CNb2}];
    argres);
 
 
