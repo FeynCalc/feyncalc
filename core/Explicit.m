@@ -25,7 +25,7 @@ MakeContext[ExpandScalarProduct];
 
 FieldStrength := FieldStrength = MakeContext["FieldStrength"];
 
-Explicit[y_] := Block[{gv, t2g, fi, r = y}, 
+Explicit[y_] := Block[{gv, t2g, fi, pr, r = y}, 
         If[
            CheckContext["GluonVertex"]
            ,
@@ -43,9 +43,16 @@ Explicit[y_] := Block[{gv, t2g, fi, r = y},
         If[
            CheckContext["FieldStrength"]
            ,
-           fi[x__] := 
+           fi[x__] := fi[x] = 
            MakeContext["FieldStrength"][x, Explicit->True];
            r = r /. MakeContext["FieldStrength"] -> fi 
+          ];
+        If[
+           CheckContext["GluonPropagator"]
+           ,
+           pr[x__] := pr[x] =
+           MakeContext["GluonPropagator"][x, Explicit->True];
+           r = r /. MakeContext["GluonPropagator"] -> pr
           ];
                    r];
 
