@@ -365,6 +365,9 @@ pavereduce[a_Times, ops___] :=
     SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe] =!= 1;
 *)
 
+(*Why was this commented out? Reintroduced the line below. F.Orellana. 3/8-2003*)
+pavereduce[w_,___] := w /; FreeQ[w, _PaVe, Heads -> True];
+
 pavereduce[ w_ (*Plus*),ops___ ]:=
      Block[{mpa,nw,nn,pre,re=0,nulll,op = Flatten[{ops}]},
             mpa = w/.StandardMatrixElement[__]->0;
