@@ -81,7 +81,6 @@ Block[
  {gauge, dim, p, q, k, mu, nu, la, a, b, c, gl3v,ope,expl,
   lorf, lorfix, momf, momfix
  },
-  coup  = CouplingConstant /.  {opt} /. Options[GluonVertex];
   dim   = Dimension /. {opt} /. Options[GluonVertex];
   ope   = OPE /. {opt} /. Options[GluonVertex];
   expl  = Explicit /. {opt} /. Options[GluonVertex];
@@ -97,7 +96,7 @@ Block[
                   ] // lorfix;
   {p,q,k}    = Map[Momentum[#, dim]&, {pi,qi,ki}]//momfix;
 
-   gl3v = coup SUNF[a,b,c] Apply[
+   gl3v = SUNF[a,b,c] Apply[
           GluonVertex, Join[{ {p,mu}, {q,nu}, {k,la} }, 
                             Select[{opt}, FreeQ[#, OPE]&]
                            ]
@@ -112,8 +111,9 @@ Block[
 
 GluonVertex[{pi_, mui_}, {qi_, nui_}, {ki_, lai_}, opt___Rule] := 
 Block[
- {dim, p, q, k, mu, nu, lorf, momf, momfix, lorfix},
+ {coup, dim, p, q, k, mu, nu, lorf, momf, momfix, lorfix},
   dim   = Dimension /. {opt} /. Options[GluonVertex];
+  coup  = CouplingConstant /.  {opt} /. Options[GluonVertex];
   lorfix[w_] := MomentumCombine[w] /. LorentzIndex -> lorf /. 
                   lorf -> LorentzIndex;
   lorf[y_lorf,di___] := y;
@@ -123,7 +123,7 @@ Block[
   {mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai}
                   ] // lorfix;
   {p,q,k}    = Map[Momentum[#, dim]&, {pi,qi,ki}]//momfix;
-              MomentumCombine[
+              coup MomentumCombine[
                               (Pair[q - k, mu] Pair[nu, la] +
                                Pair[k - p, nu] Pair[la, mu] +
                                Pair[p - q, la] Pair[mu, nu]
