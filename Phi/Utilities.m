@@ -211,13 +211,8 @@ MandelstamReduce1[amp_, opts___Rule] := fcexpscp[
                     be replaced with Polarization[-p2-p3-p4]*)
                   fcpol[a__] :> ToString/@fcpol[a] /.
                   If[MomentaSumRule /. Flatten[{opts}] /. Options[MandelstamReduce],
-                     MomentaSumRule[
-                      Join[Select[Flatten[{opts}],
-                            (!FreeQ[#, (MomentumVariablesString -> _ |
-                                        MomentaSumLeft -> _)]) &],
-                        Select[Options[MandelstamReduce],
-                               (!FreeQ[#, (MomentumVariablesString -> _ |
-                                        MomentaSumLeft -> _)]) &]]], {}] /.
+                     MomentaSumRule@@
+                     OptionsSelect[MomentaSumRule,opts,Options[MandelstamReduce]], {}] /.
                    fcpol[a__] :> ToExpression/@fcpol[a]] /.
                 sturules[opts] /.
               If[(OnMassShell /. Flatten[{opts}] /.
