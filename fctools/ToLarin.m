@@ -26,14 +26,14 @@ Begin["`Private`"];
 
 MakeContext[Dimension, LeviCivitaSign, LorentzIndex, 
             FeynCalcInternal,
-            TraceOfOne, Tr, Eps, DiracGamma
+            TraceOfOne, TR, Eps, DiracGamma
            ];
 Options[ToLarin] = {Dimension -> D};
 
 ToLarin[x_, ru___Rule] := Block[{tt,fi1,fi2,fi3,drsi,temp2, doot, dim},
 
 dim = Dimension /. {ru} /. Options[ToLarin];
-drsi = LeviCivitaSign /. Options[Tr];
+drsi = LeviCivitaSign /. Options[TR];
 (*drsi is usually -1 *)
 tt = FeynCalcInternal[x] /. DOT -> doot;
 temp2 = tt //. doot[a___, DiracGamma[mUU_,di___], DiracGamma[5],
