@@ -20,7 +20,12 @@ Integrate2::"usage"=
 Integrate2[a_Plus, b__] := Map[Integrate2[#, b]&, a]  and
 Integrate[f[x] DeltaFunction[1-x], {x,0,1}] --> f[1].
 Integrate2[1/(1-y),{y,x,1}] is intepreted as distribution, i.e. as
-Integrate2[1/(1-y),{y,x,1}] --> Log[1-x].";
+Integrate2[1/(1-y),{y,x,1}] --> Log[1-x]. \n
+Integrate2 accepts an option Table which can be
+set to a list of integrals. The format should be
+{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]
+}
+";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -33,7 +38,10 @@ MakeContext[Collect2, DeltaFunction, Epsilon,Expand2,Expanding,
             SimplifyPolyLog,
             PlusDistribution, Select1, Select2, Solve2, Trick, Zeta2];
 
+(*
 Options[Integrate2] = Options[Integrate];
+*)
+Options[Integrate2] = {Table:>{}};
 
 Integrate2[a_, b_List, c__List,opt___Rule] :=
    Integrate2[Integrate2[a,b], c,opt] /; FreeQ[Select2[a, b[[1]]],
@@ -96,20 +104,22 @@ simplifypoly[z_] :=
 If[FreeQ[z,Integrate3], SimplifyPolyLog[z](*//SimplifyPolyLog*),z];
 *)
 
-iIntegrate2[a_, b_, c___List,opt___Rule] :=
+iIntegrate2[a_, b_, c___List,opts___?OptionQ] :=
 (* FISHY *)
 Expand2[
 simplifypoly[
 simplifypoly[
 (
+(*
 If[{opt} =!= {} && {opt} =!= {Assumptions ->{True}},
    SetOptions@@Prepend[Integrate, {opt}]
   ];
+*)
 PowerSimplify[
 Expand[Factor2[
-                            If[FreeQ[a, Plus], integrateD[a, b, c],
+                            If[FreeQ[a, Plus], integrateD[a, b, c, opts],
                               If[Head[b] =!= List,
-                                 integrateD[a, b, c],
+                                 integrateD[a, b, c, opts],
                                  integrateD[
 Expand[
 Collect2[
@@ -122,15 +132,14 @@ Collect2[
                                              } /.
                          Log[uu_ - uu_^2] :> Log[1-uu] + Log[uu]
       ,Log]
-        , b, c
+        , b, c, opts
                                            ]
                                 ]
                               ] ] /.
                               {Pi^2 :> (6 Zeta2),
                                Zeta2^2 :> Zeta[2]^2,
                                PolyGamma[2,1] :> (-2 Zeta[3])
-                              }/.
-                              Integrate -> Integrate3 /.
+                              }/.(*  Integrate -> Integrate3 /.*)
                                (Hold@@{Integrate3}) ->
                               Integrate4]]
 )/.Hold[Integrate] -> Integrate3]], First[Flatten[{b}]]];

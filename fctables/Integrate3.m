@@ -19,7 +19,11 @@ Integrate3::"usage"=
 "Integrate3 is like Integrate, but for some integrals 
 which cannot be done directly by Integrate.
  All variables occuring in Integrate3 are supposed to be 
-between 0 and 1.";
+between 0 and 1. Integrate3 accepts an option Table which can be 
+set to a list of integrals. The format should be
+{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]
+}
+";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -29,7 +33,7 @@ Begin["`Private`"];
  MakeContext[Apart3,DataType, DeltaFunction, 
              (*DeltaFunctionDoublePrime, *)
              DeltaFunctionPrime, Factor2,
-             Epsilon, Nielsen, 
+             Epsilon, Integrate2, Nielsen, 
              PlusDistribution, PositiveInteger, 
              Select1, Select2, SimplifyPolyLog,SumS,
              SmallDelta, SmallEpsilon, Zeta2];
@@ -41,18 +45,22 @@ Begin["`Private`"];
    mcheck[y_] := If[Variables[y] === {}, False,
                     DataType[First[Variables[y]], PositiveInteger]
                    ];
+Options[Integrate3] = {Table -> { }}; 
 
-Integrate3[a_, {x_,0,1}] := a /; FreeQ[a, x];
-Integrate3[a_, {x_,y_,1}] := (1-y) a /; FreeQ[a, x];
+Integrate3[a_, {x_,0,1}, ___?OptionQ] := a /; FreeQ[a, x];
+Integrate3[a_, {x_,y_,1}, ___?OptionQ] := (1-y) a /; FreeQ[a, x];
 
 polys[z_ ,y_] := polys[z,y] = 
  Expand[FunctionExpand[PolyGamma[z,y]] /. {Log[4] :> 2 Log[2],
    Log[8] :> 3 Log[2], Log[16] :> 4 Log[2], EulerGamma:>0}];
 
- Integrate3[e_,{x_,b__}] := Block[{a,min1,res3, zetsub},
+ Integrate3[e_,{x_,b__}, opts___?OptionQ] := Block[{a,min1,res3, zetsub, extratab},
 (*
    zetsub = {Pi^2:>6 Zeta2, Pi^4 :> 36 Zeta2^2};
 *)
+(* inherit options for simplicity ... *)
+ extratab =  Join[Table /. {opts} /. Options[Integrate3],
+                  Table /. Options[Integrate2] ];
 
   zetsub = {Pi^2:>6 Zeta2, Zeta2^2:> Pi^4/36,
             PolyGamma[a_Integer,c_?NumberQ] :> polys[a,c], 
@@ -81,6 +89,12 @@ polys[z_ ,y_] := polys[z,y] =
          res3 = Select1[res3, Integrate3] + 
                 Apart[Select2[res3, Integrate3], x]]
      ];
+Global`EX = extratab;
+Global`RE = res3;
+   If[extratab =!= {},
+      If[!FreeQ[res3, Hold[Integrate3]], 
+         res3 = res3 /. extratab]
+     ];
    res3];
  
 (*
@@ -91,7 +105,7 @@ polys[z_ ,y_] := polys[z,y] =
 iT[(Log[1 + (x_)]*PolyLog[2, -(x_)])/(1 - (x_)), {x_, 0, 1}] = Pi^4/240 + 
     iT[(Log[1 - (x)]*PolyLog[2, -(x)])/(1 + (x)), {x, 0, 1}];
 
-  supertab = {
+  supertab = Dispatch@{
 iT[(Log[x_]*Log[x_*(1 - y_) + y_])/(1 - x_)^2,{x_, 0, 1}] :>
 (Zeta2 - y*Zeta2 - (y*Log[y]^2)/2 +
  PolyLog[2, 1 - y] - y*PolyLog[2, 1 - y]) /; FreeQ[y,x],
@@ -4248,6 +4262,8 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 ,
 (*X*)iT[Nielsen[1,2,x_]/(1-x_),{x_,0,1}] :> -Pi^4/30
 ,
+(*X*)iT[Nielsen[1,2,1-x_]/(x_),{x_,0,1}] :> -Pi^4/30
+,
 (*X*)iT[Nielsen[1,2,1-x_]/(1-x_),{x_,0,1}] :> Pi^4/360
 ,
 (*X*)iT[(Log[t_]*Log[1 - (t_)*(1 - (z_))])/((t_) + (z_) - (t_)*(z_)),
@@ -5272,7 +5288,11 @@ iT[z^m PolyLog[3, -((1 - z)/(1 + z))],{z,0,1}]+
      SumS[3, 1, m] - SumS[1, m]*Zeta[3]] /; mcheck[m], 
  iT[(Nielsen[1, 2, 1 - z_]*z_^(m_.))/(1 + z_), {z_, 0, 1}] :> 
   RR["$BK[77]", (-1)^(1 + m)*((19*Zeta2^2)/40 + SumS[-1, 3, m] - 
-      (7*Log[2]*Zeta[3])/4 - SumS[-1, m]*Zeta[3])] /; mcheck[m]
+      (7*Log[2]*Zeta[3])/4 - SumS[-1, m]*Zeta[3])] /; mcheck[m],
+ iT[PolyLog[2, u_ + (z_) - u_*(z_)]/(1 - (z_)) , {z_, 0, 1}] :>
+  RR["$BK[78]", Log[1 - u]*PolyLog[2, 1 - u] - 2*PolyLog[3, 1 - u]]/;
+   FreeQ[u,z]
+
 (* YYY *)
 (*
 ,

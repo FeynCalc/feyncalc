@@ -27,8 +27,8 @@ MakeContext[Collect2, DeltaFunction, Factor2, Factoring, FreeQ2,
             Integrate3,
             PlusDistribution, Select1, Select2, Solve2, Zeta2];
 
-Integrate5[a_, b_List, c__List] := 
-   Integrate5[Integrate5[a,b], c] /; FreeQ[Select2[a, b[[1]]], 
+Integrate5[a_, b_List, c__List, opts___?OptionQ] := 
+   Integrate5[Integrate5[a,b, opts], c, opts] /; FreeQ[Select2[a, b[[1]]], 
                                            DeltaFunction];
 
 (*
@@ -47,9 +47,9 @@ Integrate5[a_, b_, c___] := (
                                  integrateD[Collect2[a,b[[1]]], b, c]
                                 ]
 *)
-                              ] ) /. Pi^2 :> (6 Zeta2) /.
+                              ] ) /. Pi^2 :> (6 Zeta2)(* /.
                               Integrate -> Integrate3 /. Integrate3 ->
-                              Integrate;
+                              Integrate *);
 
 integrateD[a_, b_, c___] := Block[{i3, tt, nop, n1, n2},
 If[Head[i3 = Integrate3[a, b, c]] =!= Integrate3, i3,
