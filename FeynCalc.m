@@ -726,10 +726,14 @@ totr[y_] := ToBoxes[y, TraditionalForm] /; Head[y]=!=Symbol;
 (* somehow \[NoBreak] does not really work, but it does
 the spacing "right" ...*)
 
+Tbox[a_,b__] := RowBox @ Map[totr, {a,b}];
+
+(*
 Tbox[a_,b__] :=
 (RowBox @ (Insert[
   Map[totr, {a,b}], "\[NoBreak]",
     Array[{#}&,Length[{a,b}]-1,2]]));
+*)
 
 Unprotect[Dot];
 Dot /:
@@ -892,8 +896,15 @@ If[Global`$LoadFeynArts===True,
           "FeynArts not found. Please put the files in ",
 	  HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
 	  ". FeynArts can be downloaded from www.feynarts.de\n"];
-     ];
+     ],
+Block[{$Path = {HighEnergyPhysics`FeynArts`$FeynArtsProgramDir}}, Needs["Utilities`"];
+  Needs["Topology`"];
+  Needs["Initialize`"];
+  Needs["Insert`"];
+  Needs["Analytic`"];
+  Needs["Graphics`"];
   ];
+];
 ];
 
 SetDirectory[savethisdir];
