@@ -870,9 +870,6 @@ If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
   search = FileNames["FeynArts.m", $Path, 2]/.{s_String,___} :> DirectoryName[s];
   If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
 ];
-If[FileType[ToFileName[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory, "FeynArts.m"]] =!= File,
-   Global`$LoadFeynArts = False
-];
 
 (*Set defaults here, not in the config file*)
 If[!ValueQ[Global`$LoadPhi], Global`$LoadPhi = True];
