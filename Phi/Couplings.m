@@ -1507,7 +1507,11 @@ DCRenormalize[amp_, opts___?OptionQ] :=
       ]& /@ (ex=Expand[amp];If[Head[ex]===Plus,List@@ex,{ex}]))
    ];
 
-CreateFCAmp[amp_, opts___] := Block[{me, propmoms, pprops, wffacs, wffac},
+CreateFCAmp[amp_, opts___] := Block[{faopts, me, propmoms, pprops, wffacs, wffac},
+
+(* need to transport options to CreateFeynAmp, e.g., Truncated -> True, 
+Rolf Mertig, Sept. 27th. 2003 *)
+faopts = Sequence@@Select[Join[{opts}, Options@CreateFCAmp], MemberQ[First/@(Options@facrfa), #[[1]]]&];
 
    (*Wave function renormalization.*)
 
@@ -1537,13 +1541,13 @@ CreateFCAmp[amp_, opts___] := Block[{me, propmoms, pprops, wffacs, wffac},
                                 ((1 + Plus @@ #) & /@ wffacs),
       True, Message[CreateFCAmp::"nomethod", me]];
 
-    (Times@@#)&/@ Transpose[{FAToFC[wffac],FAToFC[facrfa[amp, faal -> facl], opts]}] /.
+    (Times@@#)&/@ Transpose[{FAToFC[wffac],FAToFC[facrfa[amp, faal -> facl, faopts], opts]}] /.
     If[(EqualMasses /. Flatten[{opts}] /. Options[FAToFC]),
        (*Not very general :-( But makes life easier for the user...*)
        PseudoScalar2[0, {_}] -> PseudoScalar2[0],{}] /.
     WFFactor1 -> WFFactor,
 
-    FAToFC[facrfa[amp, faal -> facl], opts]]
+    FAToFC[facrfa[amp, faal -> facl, faopts], opts]]
 
 ];
 
