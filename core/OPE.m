@@ -14,7 +14,7 @@ Begin["`Private`"];
 
 OPE /: OPE^_Integer?Positive := 0;
 
-   OPE /: MakeBoxes[OPE, TraditionalForm] := "\[CapitalKoppa]"
+   OPE /: MakeBoxes[OPE, TraditionalForm] := "\[Omega]"
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

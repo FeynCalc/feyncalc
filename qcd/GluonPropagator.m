@@ -52,10 +52,12 @@ Momentum,
 MomentumExpand,
 OPE,
 Pair,
+PairContract,
 FeynAmpDenominator,
 PropagatorDenominator,
 Sn,
 SUNDelta,
+SUNDeltaContract,
 SUNIndex,
 Tf   ];
 
@@ -70,16 +72,16 @@ Dimension -> D, Gauge -> 1, OPE -> False };
 GP = GluonPropagator;
 Abbreviation[GluonPropagator] = HoldForm[GP];
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
-GluonPropagator[x___, i_Integer, y___] := 
-GluonPropagator[x, l[i], c[i], y];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
+GluonPropagator[x___, i_Integer, y___] := GluonPropagator[x, l[i], c[i], y]/;2<Length[{x,i,y}];
 
 GluonPropagator[a_, b_,c_, d_,e_, opt___Rule] := 
-GluonPropagator[a, {b,c}, {d,e}, opt];
+GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];
 
-GluonPropagator[pi_, mu_/;Head[mu]=!=List, nu_/;Head[nu]=!=List, 
-                opt___Rule] := GluonPropagator[pi, {mu}, {nu}];
+GluonPropagator[pi_, mu_, nu_, opt___Rule] := GluonPropagator[pi, {mu}, {nu}]/;
+               !MemberQ[{Rule, List}, Head[mu]] &&
+               !MemberQ[{Rule, List}, Head[nu]];
 
 GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt___Rule] := 
 Block[
@@ -153,7 +155,9 @@ Block[
         OPE Twist2GluonOperator[pi, {mud, ad}, {nud, bd}] *
           GluonPropagator[pi, {nud, bd}, {nui, bi}, OPE -> False, opt
                          ] +
-         GluonPropagator[pi, {mui, ai}, {nui, bi}, OPE -> False, opt],
+         GluonPropagator[pi, {mui, ai}, {nui, bi}, OPE -> False, opt];
+    glp = SUNDeltaContract[glp] /. Pair->PairContract /. PairContract->Pair,
+   (* else *)
 
 If[Head[gauge] === List,
    n = gauge[[1]];

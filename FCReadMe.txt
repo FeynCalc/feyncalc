@@ -9,7 +9,7 @@ This software is covered by the GNU Lesser General Public License.
 
 
 ************************************************************************************
-RELEASE NOTES FOR FEYNCALC 4.2.0.
+RELEASE NOTES FOR FEYNCALC 4.9.0beta.
 ************************************************************************************
 
 
@@ -17,24 +17,10 @@ RELEASE NOTES FOR FEYNCALC 4.2.0.
 INSTALLATION
 ------------------------------------------------------------------------------------
 
-Download the file HighEnergyPhysics-4.2.0.0.tar.gz or HighEnergyPhysics-4.2.0.0.zip
-(if you're using using Windows you'll probably want the zip file).
+Download the file HighEnergyPhysics-4.9.beta.zip
 
-Place the file in the directory mathhome/AddOns/Applications, where mathhome is the
-directory containing your Mathematica installation. For Mathematica versions < 4.2
-on Unix, you can alternatively place the directory in
-~/.Mathematica/4.x/AddOns/Applications, where 4.x is the version of your
-Mathematica installation (if this directory does not exist,
-you can safely create it). For Mathematica versions >= 4.2 on Unix, you can
-alternatively place the directory in also be ~/.Mathematica/Applications.
-
-Make sure there is not already a directory 'HighEnergyPhysics' (and move it out of
-the way if there is).
-Unpack the file: Under UNIX, type tar -xvzf HighEnergyPhysics-4.2.0.tar.gz;
-under MacOS and Windows, use some utility like StuffIt Expander or WinZip.
-
-If you've made any costumizations in the configuration file "FCConfig.m" or any
-other file(s), merge them from the file(s) you've moved away.
+Place the file preferrably in that directory which $UserAddOnsDirectory is
+set to (evaluate $UserAddOnsDirectory in Matheamtica).
 
 Start Mathematica.
 
@@ -46,6 +32,15 @@ Type <<HighEnergyPhysics`FeynCalc` and try out one of the examples.
 ------------------------------------------------------------------------------------
 MAIN NEW FEATURES
 ------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+CHANGELOG version 4.2.1 -> 4.9.beta
+------------------------------------------------------------------------------------
+- fixed the cyclicity problem with Gamma[5]
+- simplified installation mechanism
+- fixed things for Mathematica 5.0
+- ...
+
 
 
 ------------------------------------------------------------------------------------

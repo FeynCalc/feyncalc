@@ -40,10 +40,10 @@ here in FCConfig.m
 
 (* Optional modules *)
 
-If[!ValueQ[$LoadTARCER], $LoadTARCER = False];
+If[!ValueQ[$LoadTARCER], $LoadTARCER = True];
 If[!ValueQ[$LoadPhi], $LoadPhi = False];
 If[!ValueQ[$LoadFeynArts], $LoadFeynArts = False];
 
 (* $LoadTARCER = True; *)
-(* $LoadPhi = True; *)
+(* $LoadPhi = False; *)
 (* $LoadFeynArts = True; *)

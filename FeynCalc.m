@@ -291,6 +291,11 @@ MakeContext is invoked at startup of FeynCalc. \
 MakeContext[a, b] construct the context path of b defined \
 in context of a.";
 
+MakeFeynCalcPrivateContext::"usage"=
+"MakeFeynCalcPrivateContext[val] constructs 
+HighEnergyPhysics`FeynCalc`Private`val.";
+
+
 SPC::"usage"=
 "SPC is an abbreviation for ScalarProductCancel.";
 
@@ -337,6 +342,10 @@ Notice that $Gauge is used by some functions, the option Gauge by others.";
 $Gauge/:
 MakeBoxes[$Gauge,TraditionalForm]:=
 MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]];
+
+$IndexPrefix::"usage"=
+"$IndexPrefix is a list of prefixes for default Lorentz and color indices 
+used by GluonPropagator and similar functions.";
 
 $BreitMaison::"usage"=
 "The Breitenlohner-Maison gamma5 scheme is currently not supported by \
@@ -490,6 +499,7 @@ Begin["`Private`"]
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
+$IndexPrefix={"i","c"};
 
 $AchmedRoss = False;
 $BreitMaison =  False;
@@ -502,6 +512,7 @@ $FCS = {"FAD", "FV", "FVD", "GA", "GA5", "GS",
           "SP", "SPC", "SPD", "SPL", "FCI", "FCE", "FI",
           "FC", "GGV", "GP", "QGV", "QO", "FDr", "CDr"
          };
+
 
 $FCT  = False;
 $FortranContinuationCharacter = "&";
@@ -575,6 +586,13 @@ load everything in core which is, by definition, not in the core sub-Context
      ToExpression["HighEnergyPhysics`"<>SubContext[x]<>x<>"`"<>y]
      (*<>x<>"`" added 6/8-2000, F.Orellana*)
     )];
+
+SetAttributes[MakeContext, HoldAll];
+
+  MakeFeynCalcPrivateContext[x_String] := MakeFeynCalcPrivateContext[x] =
+ToExpression["HighEnergyPhysics`FeynCalc`Private`"<>x];
+
+
 
 SetAttributes[MakeContext, HoldAll];
 
@@ -716,6 +734,19 @@ ClearAttributes[Times, Orderless];
 embo = MakeBoxes[Times[a], TraditionalForm];
 SetAttributes[Times, Orderless];
 embo ) /; $FCT === True;
+
+
+l[w_Integer] := l[w] = Block[{pre},
+     If[!MatchQ[pre = $IndexPrefix,{_String,_String}],
+        pre = {ToString[Unique["l"]], ToString[Unique["c"]]} ];
+     ToExpression[pre[[1]]<>ToString[w]]
+];
+
+c[w_Integer] := c[w] = Block[{pre},
+     If[!MatchQ[pre = $IndexPrefix,{_String,_String}],
+        pre = {ToString[Unique["l"]], ToString[Unique["c"]]} ];
+     ToExpression[pre[[2]]<>ToString[w]]
+];
 
 
 End[];
