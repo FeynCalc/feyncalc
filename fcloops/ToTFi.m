@@ -107,6 +107,8 @@ Module[
                 na ===  q1-q2,c5[b], na === -q1+q2,c5[b]
                ]; If[r === Null, $Failed, r]];
 
+(*Global`TT=t1 = t0 /. PropagatorDenominator -> prtoci;*)
+
    t1 = t0 /. PropagatorDenominator -> prtoci /.
         {FeynAmpDenominator[a__] :> Apply[Times, {a}] ,
          Pair[Momentum[OPEDelta,___], Momentum[q1, ___]] :> dq1,
