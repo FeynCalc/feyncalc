@@ -332,6 +332,14 @@ Table[
 
 {repp,Length[$VerticesSpecifications1]}];
 
+(* Merge coupling vectors belonging to the same vertex *)
+
+multVertPosC = Position[M$CouplingMatrices,#[[1]]]& /@ M$CouplingMatrices;
+
+multVertsC = (Extract[M$CouplingMatrices, #[[1]]] & /@ #) & /@ multVertPosC;
+
+M$CouplingMatrices = Union[(#[[1, 1]] == Join @@ ((#[[2]]) & /@ #)) & /@ multVertsC];
+
 FixCouplingIndices;
 
 (* ************************************************************************* *)
