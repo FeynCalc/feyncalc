@@ -3024,8 +3024,8 @@ IsoIndicesSupply[
             ToExpression[
               FreeIsoIndexString /. Flatten[{optss}] /.
                 Options[IsoIndicesSupply]] /. times1 -> Times /.
-             (*Added 19/5-2003, see above*)
-             {Conjugate[a_Symbol][(fcsuni | fcexsuni)[i_]][x_Symbol] :> Conjugate[a[fcsuni[i]][x]],
+             (*Added 19/5-2003, see above*)(*inconsistency; fixed by Paul Buettiker, 11-01-2004*)
+             {Conjugate[a_Symbol][(fcsuni | fcexsuni)[i_]][x_Symbol] :> Conjugate[a[x][fcsuni[i]](*[x]*)],
               Conjugate[a_Symbol][(fcsuni | fcexsuni)[i_]] :> Conjugate[a[fcsuni[i]]]});
 
 
