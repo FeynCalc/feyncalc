@@ -176,7 +176,10 @@ While[ToString[str] != "EndOfFile", str = Read[strm, String];
     If[StringMatchQ[ToString[str], 
         "*Frederik Orellana*", 
         IgnoreCase -> True], 
-      Print["This copy of FeynArts has already been patched!"]; Close[strm]; Return[]]]; 
+(* this is not really necessary to see, right?
+      Print["This copy of FeynArts has already been patched!"]; 
+*)
+Close[strm]; Return[]]]; 
   Close[strm], Print["Cannot find FeynArts.m!"]; Close[strm]; Return[]];
 
 
