@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: modified Sept. 2003 *)
+(* :History: modified Oct. 2003 *)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: QuarkGluonVertex *) 
@@ -74,7 +74,7 @@ QuarkGluonVertex[x, l[i], c[i], y];
 QuarkGluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y___Rule] :=
 QuarkGluonVertex[{x1,x2,x3}, {x4,x5,x6}, {x7,x8,x9} , y
                 ] /; 
-FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8,x9}]], Integer];
+FreeQ[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8,x9}]], Integer|Rule];
 
 QuarkGluonVertex[mui_, ai_/;Head[ai]=!=Rule, opt___Rule] :=     
  QuarkGluonVertex[{Null, mui, ai}, {Null, Null, Null}, 
