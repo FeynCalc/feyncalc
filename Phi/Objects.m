@@ -2851,20 +2851,30 @@ indicessymmcrossrule[
         indsuppsymmcross[a, b, wrap[iinintern], iin[optss], iin[optss]]);
 
 
-
 (* Catching free indices: *)
 
-freeindicesrules[
-      opts___] := (fi =
-        ToExpression[
-          FreeIsoIndexString /. Flatten[{opts}] /.
-            Options[IsoIndicesSupply]]; {f_[fcsuni[wrap[_]]] -> f,
-        IsoVector[a__][x_] :> IsoVector[a][x][fcsuni[fi]],
-        IsoVector[a__] :> IsoVector[a][fcsuni[fi]]});
+(* Catching products in vector products. Added 20/10-2003.
+   Fixes problem reported by Paul Buettiker. E.g.
+   IsoDot[NM[IsoVector[d], c], NM[IsoCross[IsoVector[b], IsoVector[bb]], a]] //
+   IsoIndicesSupply
+   would not work.
+   Not really tested... *)
+freeindicesrules0 = (t:(NM|Times|fcdot))[a__][fcsuni[i_]] /;
+                     Count[t[a], _wrap, Infinity, Heads -> True] === 1 :>
+                     (t[a] /. wrap[_] :> fcsuni[i])
 
-freeindicesrules1[opts___] := {f_[fcsuni[wrap[_]]] -> f,
-      IsoVector[a__][x_] :> IsoVector[a][x][fcsuni[iinfree[opts]]],
-      IsoVector[a__] :> IsoVector[a][fcsuni[iinfree[opts]]]};
+freeindicesrules[opts___] := (
+  fi = ToExpression[FreeIsoIndexString /. Flatten[{opts}] /.
+            Options[IsoIndicesSupply]];
+  {f_[fcsuni[wrap[_]]] -> f,
+   IsoVector[a__][x_] :> IsoVector[a][x][fcsuni[fi]],
+   IsoVector[a__] :> IsoVector[a][fcsuni[fi]]}
+);
+
+freeindicesrules1[opts___] :=
+  {f_[fcsuni[wrap[_]]] -> f,
+   IsoVector[a__][x_] :> IsoVector[a][x][fcsuni[iinfree[opts]]],
+   IsoVector[a__] :> IsoVector[a][fcsuni[iinfree[opts]]]};
 
 
 
@@ -2884,9 +2894,10 @@ IsoIndicesSupply[
                         times1 @@ Table[c, {n}]) /.
                   IsoSymmetricCross -> isctemp //. (VerbosePrint[2,
                     "Recursively resolving iso-vector products"];
-          {indicesdotrule[optss], indicescrossrule[optss],
+          {(*Sequence@@proddotrules,*) indicesdotrule[optss], indicescrossrule[optss],
                     indicessymmcrossrule[optss]}) /. {sunitemp -> fcsuni,
-                supptemp -> id, isctemp -> IsoSymmetricCross} /.
+                supptemp -> id, isctemp -> IsoSymmetricCross} //.
+            freeindicesrules0 /.
             If[NumerateFree /. Flatten[{optss}] /. Options[IsoIndicesSupply],
               VerbosePrint[2, "Non-contracted indices will be numerated"];
               freeindicesrules1[optss],
@@ -4008,7 +4019,7 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
 
   scq=!UScalarQ[UTrace1];DeclareUScalar[UTrace1];
 
-  exp=expr /.patternCommRule//. $CommutatorRules /.
+  exp=expr /. patternCommRule //. (*Change 20/10-2003*)($CommutatorRules/._checksub:>True) /.
         {(NM | NonCommutativeMultiply)[a__] :> Times[a] /; FreeQ[{a}, noncommpatt],
         (p:(IsoDot|IsoCross|IsoSymmetricCross))[a_,b_] :> p@@nsort[{a,b}] /;
                           (FreeQ[a, noncommpatt] || FreeQ[b, noncommpatt])};
