@@ -17,6 +17,7 @@ Begin["`Private`"];
    
 
 Zeta2 /: N[Zeta2] = N[Zeta[2]];
+Zeta2 /: N[Zeta2, prec_] := N[Zeta[2], prec];
 
    Zeta2 /: 
    MakeBoxes[Zeta2, TraditionalForm] := 
