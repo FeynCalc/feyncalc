@@ -74,7 +74,7 @@ Options[AmplitudeProjection] = {Channel -> {{Pion, Pion} -> {Pion,
       fcexpt -> True, fcsunn -> 2*)(*Dunno what these options were doing here. 5.4.2002*)};
 Options[SUNReduce] = {HoldSums -> True, CommutatorReduce -> False,
       fcexpt -> False, FullReduce -> False, fcsunn -> 2,
-      UDimension -> Automatic, RemoveIntegerIndices -> False};
+      UDimension -> Automatic(*Commented out 11/5-2003*)(*, RemoveIntegerIndices -> False*)};
 Options[IndicesCleanup] := {IsoDummys -> {"j", "k", "l"},
       LorentzDummys -> {"\[Xi]", "\[Rho]", "\[Sigma]", "\[Tau]", "\[Omega]"},
       ExtendedCleanup -> True, FCleanup -> False, CommutatorReduce -> True};
@@ -129,7 +129,7 @@ removesun[iii /; FreeQ[iii, (fcsuni | fcexsuni | UIndex)]] := iii;
    constants: *)
 
 removesunc[(fcsuni | fcexsuni | UIndex)[iii_]] /;
-     (IntegerQ[iii] || (! FreeQ[$ConstantIsoIndices, iii])) :=
+     (IntegerQ[iii] || (!FreeQ[$ConstantIsoIndices, iii])) :=
     tmpsuni[iii];
 removesunc[(fcsuni | fcexsuni)[iii_]] /;
      (!IntegerQ[iii] && (FreeQ[$ConstantIsoIndices, iii])) :=
@@ -143,15 +143,15 @@ removesunc[iii_] /; FreeQ[{iii}, (fcsuni | fcexsuni | UIndex)] := iii;
 
 
 (* Adding a head to the inner index of Projection: *)
-
-NTo3Rules1 = (Projection[pa_, ___][pb_]) :> fcsundel[pa, pb];
-NTo3Rules3 = {(fcsundel|SU2Delta|SU3Delta)[i_, j:((fcsuni|fcexsuni)[_])]*
+(* This Projection business is not necessary. Dropped, 11/5-2003 *)
+(*NTo3Rules1 = (Projection[pa_, ___][pb_]) :> fcsundel[pa, pb];*)
+NTo3Rules3 = {(fcsundel|SU2Delta|SU3Delta)[i_, j:((fcsuni(*|fcexsuni*)(*Bug fix, 11/5-2003*))[_])]*
             HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[a___, j_, b___][x_]  ->
             HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[a, fcsuni[i], b][x]};
 
 
 
-(* Removing heads from constants and changing from FeynCalc to Phi functions: *)
+(* Removing heads from constants and changing from FeynCalc to PHI functions: *)
 
 NTo3Rules2[2] = {SU2D[x1_, x2_, x3_] :> 0,
       SU2F[x1_, x2_, x3_] :>
@@ -214,7 +214,7 @@ SUNReduce2[aa_,
               fcsunn -> 3], (fcsunn^2 - 1 /. Flatten[{opts}] /.
               Options[SUNReduce]), 8];
       flatlist =
-        List1[(aa /. NTo3Rules1 /.
+        List1[(aa (*Commented out 11/5-2003*)(*/. NTo3Rules1*) /.
                   NTo3Rules2[(fcsunn /. Flatten[{opts}] /.
                         Options[SUNReduce])]) /. {NM -> List1,
                 Times ->
@@ -237,7 +237,7 @@ SUNReduce2[aa_,
                     ff_[a___, fcsuni[ind_]] /; FreeQ[ff, List] -> {ff[a],
                         fcsuni[ind]}})]], gennr1];
       VerbosePrint[3, "Found:\n", sumlist]; VerbosePrint[2, "Summing"];
-      tmpres=USum1[(aa /. NTo3Rules1 /.
+      tmpres=USum1[(aa (*Commented out 11/5-2003*)(*/. NTo3Rules1*) /.
                     NTo3Rules2[(fcsunn /. Flatten[{opts}] /.
                           Options[SUNReduce])]), ##] & @@ sumlist /.
           If[(HoldSums /. Flatten[{opts}] /. Options[SUNReduce]),
@@ -320,11 +320,11 @@ $SUNDeltaRules =(*the delta functions are orderless,
       SU2Delta[fcsuni[i_], fcsuni[j_]]^n_ /; EvenQ[n] :> 3^(n/2),
       SU2Delta[i_, j_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex]*
             expr_ :> (expr /. j -> i) /; (!FreeQ[expr, j] &&
-                (FreeQ[expr, HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[___, j, ___]] || !(IntegerQ[i]||Head[i]===tmpsuni&&IntegerQ[i[[1]]]))),
+                (FreeQ[expr, HighEnergyPhysics`FeynCalc`QuantumField`QuantumField[___, j, ___]] || !(IntegerQ[i]||Head[i]===tmpsuni&&IntegerQ[i[[1]]])))(*Commented out 11/5-2003*)(*,
       Projection[i_Integer][fcsuni[j_]]^n_ /; EvenQ[n] :> 1,
       Projection[i_Integer][j_Integer] /; (i =!= j) :> 0,
-      Projection[i_Integer][fcsuni[j_Integer]]/;(*fixed problem when missing one head 9/10-2001*)
-                                ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)) :> 0};
+      Projection[i_Integer][(fcsuni|fcexsuni)[j_Integer]]/;(*fixed problem when missing one head 9/10-2001*)
+                                ((i/.tmpsuni->Identity) =!= (j/.tmpsuni->Identity)) :> 0*)};
 
 $SUNDFRules = {(*contraction of three indices*)
       SU2F[a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
@@ -364,7 +364,7 @@ $SUNDFRules = {(*contraction of three indices*)
          (SU3D[a_, b_, c_]*SU3F[d_, e_, f_]*rest___) /;
          (Length[twoselect[{a, b, c}, {d, e, f}]] == 2) :> 0,
     (*contraction of one index - is this formula true for SU(3)?*)
-    (*NO it's not - fixed, but correct formula no really usefull, 16/12/1999*)
+    (*NO it's not - fixed, but correct formula not really useful, 16/12/1999*)
       (SU2F[a_, b_, c_]*SU2F[d_, e_, f_]*rest___) /;
       (Length[twoselect[{a, b, c}, {d, e, f}]] == 1) :>
       (((SU2Delta[#1, #3]*SU2Delta[#2, #4] - SU2Delta[#2, #3]*SU2Delta[#1, #4])& @@
@@ -380,9 +380,18 @@ $SUNDFRules = {(*contraction of three indices*)
       (*Integers should already be sorted and put first -
         the following should also take care of SU2F[a_integer, c_integer,
               d_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex]^2, ...*)
-      SU2F[a_Integer|(a:tmpsuni[_Integer]), b_Integer|(b:tmpsuni[_Integer]), c_] :>
+      SU2F[a_, b_Integer, c_Integer] :>
+      (-1)^(Complement[{1, 2, 3}, {b, c}][[1]] + 1)*
+      (SU2Delta[#, a] & @@ (Complement[{1, 2, 3}, {b, c}])),
+      SU2F[a_Integer, b_Integer, c_] :>
       (-1)^(Complement[{1, 2, 3}, {a, b}][[1]] + 1)*
-      (SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}])) };
+      (SU2Delta[#, c] & @@ (Complement[{1, 2, 3}, {a, b}])),
+      SU2F[a_, (b:tmpsuni[_Integer]), (c:tmpsuni[_Integer])] :>
+      (-1)^(Complement[{1, 2, 3}, {b[[1]], c[[1]]}][[1]] + 1)*
+      (SU2Delta[#, a] & @@ (Complement[tmpsuni/@{1, 2, 3}, {b, c}])),
+      SU2F[(a:tmpsuni[_Integer]), (b:tmpsuni[_Integer]), c_] :>
+      (-1)^(Complement[{1, 2, 3}, {a[[1]], b[[1]]}][[1]] + 1)*
+      (SU2Delta[#, c] & @@ (Complement[tmpsuni/@{1, 2, 3}, {a, b}])) };
 
       
 $SUNRules =
@@ -422,9 +431,9 @@ SUNReduce2[aa_, opts___] /;
 Block[{bb, cc},VerbosePrint[2, "Applying reduction rules on ", StandardForm[aa]];
  VerbosePrint[3, "Reduction rules are:\n", $SUNRules];
       bb =
-      If[(RemoveIntegerIndices /. Flatten[{opts}] /.  Options[SUNReduce]),
-          aa,
-          aa /. NTo3Rules1 (*7/4.2002*) /. NTo3Rules3] /.
+      (*Commented out 11/5-2003*)(*If[(RemoveIntegerIndices /. Flatten[{opts}] /.  Options[SUNReduce]),
+          aa,*)
+          aa (*/. NTo3Rules1*) (*7/4.2002*) /. NTo3Rules3(*]*) /.
 
       NTo3Rules2[(fcsunn /. Flatten[{opts}] /.Options[SUNReduce])];
 
@@ -434,7 +443,9 @@ Block[{bb, cc},VerbosePrint[2, "Applying reduction rules on ", StandardForm[aa]]
 
       VerbosePrint[2, "After NTo3iRules2, expression is:\n", StandardForm[cc]];
   
-      cc /. $SUNRules];
+      (*Changed below, 13/5-2003, to have $SU3FReduceList, $SU3DReduceList from
+        $SUNRules catch ExplicitSUNIndex[1], ... *)
+      cc /. ($SUNRules/.(fcsuni | fcexsuni | UIndex)[iii_Integer]->tmpsuni[iii])];
 
 SUNReduce[aa_, opts___] /;
     (((fcexpt /. Flatten[{opts}] /. Options[SUNReduce]) == False) &&
@@ -474,8 +485,8 @@ SUNReduce[aa_, opts___] /; ((fcexpt /. Flatten[{opts}] /.
                                 FreeQ[$ConstantIsoIndices, #]) &)]] :>
 (fcsunn /. Flatten[{opts}] /. Options[SUNReduce])^2 - 1,
               opts], {_fcfad, _SU2Delta, _SU2F, _SU2D}] /.
-             tmpsuni -> fcsuni /.{faso[_Integer] ->
-             1, faso[(fcsuni|fcexsuni)[_Integer]] -> 1});
+             tmpsuni -> fcsuni /.{faso[_Integer,___] ->
+             1, faso[(fcsuni|fcexsuni)[_Integer],___] -> 1});
 
 SUNReduce[aa_,
         opts___] /; ((fcexpt /. Flatten[{opts}] /.
@@ -490,7 +501,7 @@ SUNReduce[aa_,
                 ppl -> Plus /.
     ttt -> Together, {_fcfad, _SU2Delta, _SU3Delta, _SU2F, _SU3F, _SU3D}] /.
           tmpsuni -> fcsuni /.
-          faso[_Integer]-> 1);
+          faso[_Integer,___]-> 1);
                   
 
 $SymSUNDFRules1 = {
@@ -1364,10 +1375,11 @@ dimensions for all momenta, Dirac gamma matrices and Lorentz indices"];
               VerbosePrint[1,
                   "Using ExtendedCleanup->False\nWill not work if mixed Times \
 and NM products are present"]w] /.
-       (((fcsuni[#] -> protectisoconstant[#]) &) /@ (((Sequence @@ #) &) /@
-                    Cases[w, faso[_], Infinity])) /.
+       (*Cleaned up a bit below. 20/6-2003*)
+       (((fcsuni[#] -> protectisoconstant[#])&) /@ (((#[[1]])&) /@
+                    Cases[w, faso[_?((Head[#]=!=fcsuni)&),___], Infinity])) /.
 
-          faso[fcsuni[a_]] -> protectisoconstant[a];
+          faso[fcsuni[a_], b___] -> faso[protectisoconstant[a], b];
       
       VerbosePrint[3,"Doing reduction on ", w1//StandardForm];            
       
@@ -1392,12 +1404,10 @@ and NM products are present"]w] /.
 
             VerbosePrint[2,
               "Renaming product functions and protecting constants"];
-            w2 /. {fcsuni[a_/; (UScalarQ[a] || !
-                            FreeQ[$ConstantIsoIndices, a])]  ->
+            w2 /. {fcsuni[a_/; (UScalarQ[a] || !FreeQ[$ConstantIsoIndices, a])]  ->
                     protectisoconstant[a],
                   fcli[a_] :> protectliconstant[a] /; UScalarQ[a] } /. {NM ->
-                  NM1, Times -> NM1,
-                DOT -> NM2,(*change 19/1 - 1999*)
+                  NM1, Times -> NM1, DOT -> NM2,
                   Power[a_, b_ /; b > 0 && IntegerQ[b]] :>
                   NM1 @@ Table[a, {ddum, 1, b}]}]])&,w1];
 
@@ -1406,7 +1416,7 @@ and NM products are present"]w] /.
       subres /. {isomult->Sequence[],lorentzmult->Sequence[]} /.
       {NM1 ->NM, NM2 -> DOT} /. {protectisoconstant -> fcsuni,
                           protectliconstant -> fcli} /.
-                      faso[fcsuni[ii_]] -> faso[ii] /. {su2delta1 -> SU2Delta,
+  (*Commented out 20/6-2003*)(*faso[fcsuni[ii_]] -> faso[ii] /.*) {su2delta1 -> SU2Delta,
                        su2f1 -> SU2F, su3delta1 -> SU3Delta, su3f1 -> SU3F,
                       su3d1 -> SU3D, sundelta1 -> SUNDelta, sunf1 -> SUNF,
                       sund1 -> SUND} /.
