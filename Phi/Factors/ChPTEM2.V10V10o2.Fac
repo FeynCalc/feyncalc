@@ -1,0 +1,22 @@
+(-192*Pi^2*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
+    ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2, 
+    ExplicitLeutwylerJBar -> False, ExplicitLeutwylerJ0 -> True, 
+    Dimension -> SpaceTimeDimensions, MassScale -> ScaleMu, 
+    ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> False, 
+    IEps -> SmallIEps, ExpandGammas -> True, DimensionExpand -> False, 
+    FixPoint -> 0, TaylorOrder -> 2, B0Evaluation -> Direct1, 
+    FCIntegrate -> IntegrateHeld]*ParticleMass[PseudoScalar[3], 
+     RenormalizationState[0]]^2*UCouplingConstant[QED[1], 
+     RenormalizationState[0]]^2 + Pair[Momentum[p1], Momentum[p1]]*
+   (144*Pi^2 + UCouplingConstant[QED[1], RenormalizationState[0]]^2*
+     (-1 - 3*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+         ScaleMu^2] + 48*Pi^2*(LeutwylerJBar[Pair[Momentum[p1], 
+          Momentum[p1]], ParticleMass[PseudoScalar[3], RenormalizationState[
+            0]]^2, ExplicitLeutwylerJBar -> False, ExplicitLeutwylerJ0 -> 
+          True, Dimension -> SpaceTimeDimensions, MassScale -> ScaleMu, 
+         ExplicitLeutwylerLambda -> False, ExplicitLeutwylerSigma -> False, 
+         IEps -> SmallIEps, ExpandGammas -> True, DimensionExpand -> False, 
+         FixPoint -> 0, TaylorOrder -> 2, B0Evaluation -> Direct1, 
+         FCIntegrate -> IntegrateHeld] + 3*UCouplingConstant[ChPTEM2[4], 15, 
+          RenormalizationState[1]]))))/
+ (144*Pi^2*Pair[Momentum[p1], Momentum[p1]])

@@ -2472,11 +2472,21 @@ UTraceToFCTrace[a_,
 (* Cyclicity of the trace: *)
 
 CycleUTraces[expr_] :=
-    Block[{a, tmplist, smallest},
-      expr /. UTrace1[a : (Dot | NM)[__]] :> (tmplist = List @@ a;
-            smallest = Sort[tmplist][[1]];
-            While[tmplist[[1]] =!= smallest, tmplist = RotateLeft[tmplist]];
-            UTrace1[a[[0]] @@ tmplist])];
+    Block[{a, tmplist, sortlist, smallest},
+      expr /. UTrace1[a : (Dot | NM)[__]] :>
+      (tmplist = List @@ a;
+       sortlist = Sort[tmplist];
+       smallest = sortlist[[1]];
+       Do[
+         If[Count[sortlist, sortlist[[i]]] === 1,
+           smallest = sortlist[[i]]
+         ],
+       {i, 1, Length[sortlist]}];
+       While[tmplist[[1]] =!= smallest ||
+         tmplist[[1]] === smallest && tmplist[[-1]] === smallest,
+         tmplist = RotateLeft[tmplist]];
+         UTrace1[a[[0]] @@ tmplist])
+       ];
 
 
 

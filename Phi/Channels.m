@@ -49,7 +49,6 @@ fcpd := fcpd = HighEnergyPhysics`FeynCalc`PartialD`PartialD;
 fcdiga := fcdiga = HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma;
 
 
-
 (* FeynArts functions *)
 
 faso := faso = HighEnergyPhysics`FeynArts`SumOver;
@@ -687,7 +686,7 @@ device a unique substitution of dummys. *)
 (*Applied only once*)
 isowaitrules1 =
 (aa : HoldPattern[
-(NM | NM1 | NM2)[(Plus|(*Added 26/8-201*)UTrace1)[
+(NM | NM1 | NM2)[(Plus(*Added 26/8-201*)(*|UTrace1*))[
   (___*(NM | NM1 | NM2)[__?(FreeQ[#, _(NM | NM1 | NM2)] &)] |
 (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &)] |
   _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..]]) :>
@@ -701,7 +700,7 @@ isowaitrules1 =
 (*Applied only once*)
 isowaitrules0 =
 aa : HoldPattern[
-(NM | NM1 | NM2)[(Plus|(*Added 26/8-201*)UTrace1)[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
+(NM | NM1 | NM2)[(Plus(*Added 26/8-201*)(*|UTrace1*))[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
 (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__]] |
   _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,___]] :>
 (aa /. (isowait[(Max[(#[[1]]) & /@ Cases[aa, isowait[__], {3, 4}]])] ->
@@ -714,7 +713,7 @@ a factor that has no NM's, remove the highest tag and increment isoexterndummyco
 isowaitrules2 =
 aa : HoldPattern[
 (NM | NM1 | NM2)[___,
-(Plus|(*Added 26/8-201*)UTrace1)[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
+(Plus(*Added 26/8-201*)(*|UTrace1*))[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
 (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
   isowait[__],___] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,
   (_?((FreeQ[#,isowait[__]] &&
@@ -730,7 +729,7 @@ aa : HoldPattern[
 isowaitrules3 =
 aa : HoldPattern[
 (NM | NM1 | NM2)[___,
-(Plus|(*Added 26/8-201*)UTrace1)[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
+(Plus(*Added 26/8-201*)(*|UTrace1*))[(___*(NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &), isowait[__],___] |
 (NM | NM1 | NM2)[__?(FreeQ[#, (NM | NM1 | NM2)[__]] &),
   isowait[__],___] | _?(FreeQ[#, (NM | NM1 | NM2)[__]] &)) ..] ..,
   (_?((FreeQ[#,isowait[__]])&))..]] :>
@@ -744,21 +743,53 @@ aa : HoldPattern[
    The strategy is to take out SUNIndices in UTraces via SUNDeltas, leaving a dummy
    index without SUNIndex head in the UTrace and then later substitute back in the index *)
 (* Added 27/8-2001 *)
-tracerule1 = NM[a___, UTrace1[b_], c___]*
-    d_ :> (Times @@ (inxlist=(fcsundel[#, fcsuni[suninx[Unique["dum"]]]] & /@ ins)))*
-      NM[a, UTrace1[b] /. ((Rule[#[[1]],#[[2,1]]])& /@ inxlist) /.
-      fcsuni->sunix, c]*
-      d /; (ins =
+(*tracerule1 = NM[a___, UTrace1[b_], c___]*d_ :>
+(Times @@ (inxlist=(fcsundel[#, fcsuni[suninx[Unique["dum"]]]] & /@ ins)))*
+      NM[a, Print[inxlist, UTrace1[b]]; UTrace1[b] /. ((Rule[#[[1]],#[[2,1]]])& /@ inxlist) /.
+      fcsuni->sunix, c] * d /; (ins =
           Intersection[Cases[b, fcsuni[_], Infinity],
             Join[Cases[{d}, fcsuni[_], Infinity],
               Cases[{a}, fcsuni[_], Infinity],
-              Cases[{c}, fcsuni[_], Infinity]]]) =!= {};
+              Cases[{c}, fcsuni[_], Infinity]]]) =!= {};*)
+tracerule1 = {
+NM[a___, UTrace1[b_], c___]*d_ :>
+  (Times @@ (inxlist=(fcsundel[#, fcsuni[suninx[Unique["dum"]]]] & /@
+           Select[
+             Cases[Cases[{a,UTrace1[b],c,d}, UTrace1[_], Infinity], fcsuni[_], Infinity],
+           FreeQ[#,suninx]&])))*
+  (*Lorentz stuff added 23/9-2001*)
+  (Times @@ (linxlist=(fcpa[#, fcli[linx[Unique["dum"]]]] & /@
+           Select[
+             Cases[Cases[{a,UTrace1[b],c,d}, UTrace1[_], Infinity], fcli[_], Infinity],
+           FreeQ[#,linx]&])))(**)*
+      ((NM[a, UTrace1[b], c]/.UTrace1[e_]:>
+        UTrace1[e/.((Rule[#[[1]],#[[2,1]]])& /@ inxlist)(**)/.
+                   (*PartialD automatically put on head LorentzIndex which screws up things*)
+                   ((Rule[fcpd[#[[1]]],partd[#[[2,1]]]])& /@ linxlist)/.
+                   ((Rule[#[[1]],#[[2,1]]])& /@ linxlist)(**)])*(d)),
+(nm:(NM|Times))[a___, UTrace1[b_], c___] :>
+  (Times @@ (inxlist=(fcsundel[#, fcsuni[suninx[Unique["dum"]]]] & /@
+           Select[
+             Cases[Cases[{a,UTrace1[b],c}, UTrace1[_], Infinity], fcsuni[_], Infinity, Heads -> True],
+           FreeQ[#,suninx]&])))*
+  (*Lorentz stuff added 23/9-2001*)
+  (Times @@ (linxlist=(fcpa[#, fcli[linx[Unique["dum"]]]] & /@
+           Select[
+             Cases[Cases[{a,UTrace1[b],c}, UTrace1[_], Infinity], fcli[_], Infinity, Heads -> True],
+           FreeQ[#,linx]&])))(**)*
+      (nm[a, UTrace1[b], c]/.UTrace1[e_]:>
+        UTrace1[e/.((Rule[#[[1]],#[[2,1]]])& /@ inxlist)(**)/.
+                   ((Rule[fcpd[#[[1]]],partd[#[[2,1]]]])& /@ linxlist)/.
+                   ((Rule[#[[1]],#[[2,1]]])& /@ linxlist)(**)])};
 
-tracerule2 = fcsundel[fcsuni[suninx[f_]], j_]*
+tracerule2 = {fcsundel[fcsuni[suninx[f_]], j_]*
     a_?((!FreeQ[#, suninx[f_]]&&FreeQ[#,fcsundel[___,fcsuni[suninx[_]],___]])&) :>
-    (a /. suninx[f] -> j);
+    (a /. suninx[f] -> j),
+    fcpa[fcli[linx[f_]], j_]*
+    a_?((!FreeQ[#, linx[f_]]&&FreeQ[#,fcpa[___,fcli[linx[_]],___]])&) :>
+    (a /. linx[f] -> j)};
 
-tracerule3 = sunix->fcsuni;
+tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, partd->fcpd};
 
 (* Comparison between factors: *)
 
@@ -1089,12 +1120,20 @@ fixderindices3 = {nmm1->NM1};
   
 allpatterns = (Blank | BlankSequence | BlankNullSequence | Pattern);
 
-(*Expand traces of products of sums*)
-fixtraceplus = aa:HoldPattern[UTrace1[NM[___,
+(*Expand traces of products of sums and products of sums of traces*)
+fixtraceplus = {aa:HoldPattern[UTrace1[NM[___,
   Plus[___,_?(!FreeQ[#,HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex,
   Heads->True]&),___],___]]] :>
 (VerbosePrint[1,"Found UTrace of NM Product of sums. Applying NMExpand"];
-NMExpand[aa]);
+NMExpand[aa]),
+aa:(NM[___, _?((!FreeQ[#, UTrace1, Heads -> True] &&
+   !FreeQ[#,HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] &&
+      !MatchQ[#, UTrace1[_] | _*UTrace1[_]]) &), ___]) :>
+  (VerbosePrint[1,"Found NM Product of sums of UTraces. Applying NMExpand"];NMExpand[aa]),
+aa:(Times[___, _?((!FreeQ[#, UTrace1, Heads -> True] &&
+   !FreeQ[#,HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex] &&
+      !MatchQ[#, UTrace1[_] | _*UTrace1[_]]) &), ___]) :>
+  (VerbosePrint[1,"Found Product of sums of UTraces. Applying Expand"];Expand[aa])};
 
 (* The final cleanup function *)
 
