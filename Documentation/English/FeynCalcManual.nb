@@ -41,9 +41,9 @@ Wolfram Research.
 
 (*NotebookFileLineBreakTest
 NotebookFileLineBreakTest*)
-(*NotebookOptionsPosition[    110772,       3618]*)
-(*NotebookOutlinePosition[    125288,       4019]*)
-(*  CellTagsIndexPosition[    124807,       4000]*)
+(*NotebookOptionsPosition[    112076,       3627]*)
+(*NotebookOutlinePosition[    126589,       4028]*)
+(*  CellTagsIndexPosition[    126108,       4009]*)
 (*WindowFrame->Normal*)
 
 
@@ -401,48 +401,10 @@ Cell[TextData[{
 Cell["This loads FeynCalc:", "MathCaption",
   CellTags->"start"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
     RowBox[{"<<", "HighEnergyPhysics`FeynCalc`"}]], "Input",
-  CellLabel->"(Local) In[1]:=",
+  CellLabel->"In[1]:=",
   CellTags->"start"],
-
-Cell[BoxData[
-    FormBox[
-      InterpretationBox[
-        RowBox[{"\<\"Loading FeynCalc from \"\>", 
-          "\[InvisibleSpace]", "\<\"/opt/cvs/HighEnergyPhysics\"\>"}],
-        SequenceForm[ "Loading FeynCalc from ", "/opt/cvs/HighEnergyPhysics"],
-        
-        Editable->False], TraditionalForm]], "Print"],
-
-Cell["Loading TARCER tarcer06.mx", "Text",
-  GeneratedCell->True,
-  CellAutoOverwrite->True],
-
-Cell[TextData[{
-  StyleBox["FeynCalc",
-    FontWeight->"Bold"],
-  " ",
-  "4.9.0.1",
-  "\nFor help, type ?FeynCalc,\nuse the built-in ",
-  ButtonBox["help system",
-    ButtonFunction:>(FrontEndExecute[ 
-        FrontEnd`HelpBrowserLookup[ "AddOns", #]]&),
-    ButtonData:>{"Short Overview", "intro"},
-    ButtonStyle->"AddOnsLink",
-    ButtonNote->"Open the help browser"],
-  "\nor visit ",
-  ButtonBox["www.feyncalc.org",
-    ButtonData:>{
-      URL[ "http://www.feyncalc.org"], None},
-    ButtonStyle->"Hyperlink",
-    ButtonNote->"http://www.feyncalc.org"]
-}], "Text",
-  GeneratedCell->True,
-  CellAutoOverwrite->True]
-}, Open  ]],
 
 Cell[TextData[{
   "You can also put the last input line into your \"init.m\" file. This will \
@@ -478,7 +440,7 @@ Cell[BoxData[
               RowBox[{"\"\<Output\>\"", "\[Rule]", "StandardForm"}], 
               "}"}]}]}], "]"}],
       "Input"]], "Input",
-  CellLabel->"(Local) In[2]:=",
+  CellLabel->"In[2]:=",
   CellTags->"start"],
 
 Cell["This resets the default.", "Text"],
@@ -492,7 +454,7 @@ Cell[BoxData[
               RowBox[{"\"\<Output\>\"", "\[Rule]", "TraditionalForm"}], 
               "}"}]}]}], "]"}],
       "Input"]], "Input",
-  CellLabel->"(Local) In[3]:=",
+  CellLabel->"In[3]:=",
   CellTags->"start"],
 
 Cell[TextData[{
@@ -514,7 +476,7 @@ Cell[BoxData[
         RowBox[{
           RowBox[{"SubscriptBox", "[", 
             RowBox[{"q", ",", "1"}], "]"}], ",", "q1"}], "]"}]}]], "Input",
-  CellLabel->"(Local) In[4]:=",
+  CellLabel->"In[4]:=",
   CellTags->"start"],
 
 Cell[BoxData[
@@ -525,7 +487,7 @@ Cell[BoxData[
         RowBox[{
           RowBox[{"SubscriptBox", "[", 
             RowBox[{"q", ",", "2"}], "]"}], ",", "q2"}], "]"}]}]], "Input",
-  CellLabel->"(Local) In[5]:=",
+  CellLabel->"In[5]:=",
   CellTags->"start"],
 
 Cell[TextData[{
@@ -544,7 +506,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
     RowBox[{"{", 
       RowBox[{"q1", ",", "q2"}], "}"}]], "Input",
-  CellLabel->"(Local) In[6]:=",
+  CellLabel->"In[6]:=",
   CellTags->"start"],
 
 Cell[BoxData[
@@ -557,7 +519,7 @@ Cell[BoxData[
           InterpretationBox[
             SubscriptBox["q", "2"],
             q2]}], "}"}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[6]="]
+  CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell["\<\
@@ -570,13 +532,13 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
     RowBox[{"%", "//", "StandardForm"}]], "Input",
-  CellLabel->"(Local) In[7]:=",
+  CellLabel->"In[7]:=",
   CellTags->"start"],
 
 Cell[BoxData[
     RowBox[{"{", 
       RowBox[{"q1", ",", "q2"}], "}"}]], "Output",
-  CellLabel->"(Local) Out[7]//StandardForm="]
+  CellLabel->"Out[7]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -611,7 +573,7 @@ load the subpackage TARCER:\
 Cell[BoxData[
     RowBox[{
       RowBox[{"$LoadTARCER", "=", "True"}], ";"}]], "Input",
-  CellLabel->"(Local) In[8]:=",
+  CellLabel->"In[8]:=",
   CellTags->"About Extras"],
 
 Cell["\<\
@@ -725,7 +687,7 @@ found the directory \"Tarcer\" (if several are present, the last one found by \
 Cell[BoxData[
     RowBox[{
       RowBox[{"$LoadTARCER", "=", "True"}], ";"}]], "Input",
-  CellLabel->"(Local) In[9]:=",
+  CellLabel->"In[9]:=",
   CellTags->"tarcer"],
 
 Cell[TextData[{
@@ -748,7 +710,7 @@ Cell[TextData[{
   "."
 }], "Text",
   CellTags->"tarcer"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -780,7 +742,7 @@ Cell["To have FeynCalc load PHI, evaluate", "Text",
 Cell[BoxData[
     RowBox[{
       RowBox[{"$LoadPhi", "=", "True"}], ";"}]], "Input",
-  CellLabel->"(Local) In[10]:=",
+  CellLabel->"In[10]:=",
   CellTags->"phi"],
 
 Cell[TextData[{
@@ -803,7 +765,7 @@ Cell[TextData[{
   "."
 }], "Text",
   CellTags->"phi"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -871,7 +833,7 @@ Cell[BoxData[{
       RowBox[{"$LoadPhi", "=", "True"}], ";"}], "\[IndentingNewLine]", 
     RowBox[{
       RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]}], "Input",
-  CellLabel->"(Local) In[11]:=",
+  CellLabel->"In[11]:=",
   CellTags->{"fa", "extrafoor"}],
 
 Cell[TextData[{
@@ -973,28 +935,28 @@ Cell["\<\
 p1/: MakeBoxes[p1, fmt_] := InterpretationBox[SubscriptBox[p, 1], \
 p1]\
 \>", "Input",
-  CellLabel->"(Local) In[13]:=",
+  CellLabel->"In[13]:=",
   CellTags->"Tree level"],
 
 Cell["\<\
 k1/: MakeBoxes[k1, fmt_] := InterpretationBox[SubscriptBox[k, 1], \
 k1]\
 \>", "Input",
-  CellLabel->"(Local) In[14]:=",
+  CellLabel->"In[14]:=",
   CellTags->"Tree level"],
 
 Cell["\<\
 p2/: MakeBoxes[p2, fmt_] := InterpretationBox[SubscriptBox[p, 2], \
 p2]\
 \>", "Input",
-  CellLabel->"(Local) In[15]:=",
+  CellLabel->"In[15]:=",
   CellTags->"Tree level"],
 
 Cell["\<\
 k2/: MakeBoxes[k2, fmt_] := InterpretationBox[SubscriptBox[k, 2], \
 k2]\
 \>", "Input",
-  CellLabel->"(Local) In[16]:=",
+  CellLabel->"In[16]:=",
   CellTags->"Tree level"],
 
 Cell["Define slashes of external momenta to save future typing.", "Text",
@@ -1010,7 +972,7 @@ Cell[BoxData[
         RowBox[{"{", 
           RowBox[{"p1", ",", "p2", ",", "k1", ",", "k2"}], "}"}]}]}]], "Input",\
 
-  CellLabel->"(Local) In[17]:=",
+  CellLabel->"In[17]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1019,26 +981,27 @@ Cell[BoxData[
         RowBox[{
           RowBox[{
             FormBox["\<\"\[Gamma]\"\>",
-              "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", "\[NoBreak]", 
-            
+              "TraditionalForm"], "\[CenterDot]", 
             FormBox[
-              InterpretationBox[
-                SubscriptBox["p", "1"],
-                p1],
+              SubscriptBox[
+                TagBox[
+                  StyleBox["\<\"p\"\>",
+                    FontSlant->"Italic"],
+                  (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
               "TraditionalForm"]}], ",", 
           RowBox[{
             FormBox["\<\"\[Gamma]\"\>",
-              "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", "\[NoBreak]", 
-            
+              "TraditionalForm"], "\[CenterDot]", 
             FormBox[
-              InterpretationBox[
-                SubscriptBox["p", "2"],
-                p2],
+              SubscriptBox[
+                TagBox[
+                  StyleBox["\<\"p\"\>",
+                    FontSlant->"Italic"],
+                  (StyleForm[ #, FontSlant -> "Italic"]&)], "2"],
               "TraditionalForm"]}], ",", 
           RowBox[{
             FormBox["\<\"\[Gamma]\"\>",
-              "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", "\[NoBreak]", 
-            
+              "TraditionalForm"], "\[CenterDot]", 
             FormBox[
               InterpretationBox[
                 SubscriptBox["k", "1"],
@@ -1046,14 +1009,13 @@ Cell[BoxData[
               "TraditionalForm"]}], ",", 
           RowBox[{
             FormBox["\<\"\[Gamma]\"\>",
-              "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", "\[NoBreak]", 
-            
+              "TraditionalForm"], "\[CenterDot]", 
             FormBox[
               InterpretationBox[
                 SubscriptBox["k", "2"],
                 k2],
               "TraditionalForm"]}]}], "}"}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[17]="]
+  CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1144,7 +1106,7 @@ Cell[BoxData[
           RowBox[{"ScalarProduct", "[", 
             RowBox[{"p2", ",", "p2"}], "]"}], "=", 
           SuperscriptBox["m", "2"]}]}], ";"}]], "Input",
-  CellLabel->"(Local) In[18]:=",
+  CellLabel->"In[18]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1155,7 +1117,7 @@ Cell[BoxData[
         RowBox[{
           RowBox[{"ScalarProduct", "[", 
             RowBox[{"k2", ",", "k2"}], "]"}], "=", "0"}]}], ";"}]], "Input",
-  CellLabel->"(Local) In[19]:=",
+  CellLabel->"In[19]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1167,7 +1129,7 @@ Cell[BoxData[
           RowBox[{"ScalarProduct", "[", 
             RowBox[{"p1", ",", "p2"}], "]"}], "+", 
           SuperscriptBox["m", "2"]}]}], ";"}]], "Input",
-  CellLabel->"(Local) In[20]:=",
+  CellLabel->"In[20]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1177,7 +1139,7 @@ Cell[BoxData[
           RowBox[{"k1", ",", "p2"}], "]"}], "=", 
         RowBox[{"ScalarProduct", "[", 
           RowBox[{"k2", ",", "p1"}], "]"}]}], ";"}]], "Input",
-  CellLabel->"(Local) In[21]:=",
+  CellLabel->"In[21]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1187,7 +1149,7 @@ Cell[BoxData[
           RowBox[{"k2", ",", "p2"}], "]"}], "=", 
         RowBox[{"ScalarProduct", "[", 
           RowBox[{"k1", ",", "p1"}], "]"}]}], ";"}]], "Input",
-  CellLabel->"(Local) In[22]:=",
+  CellLabel->"In[22]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1201,7 +1163,7 @@ Cell[BoxData[
           SuperscriptBox["m", "2"], "+", 
           RowBox[{"ScalarProduct", "[", 
             RowBox[{"k1", ",", "p1"}], "]"}]}]}], ";"}]], "Input",
-  CellLabel->"(Local) In[23]:=",
+  CellLabel->"In[23]:=",
   CellTags->"Tree level"],
 
 Cell["Define the amplitudes.", "Text",
@@ -1216,7 +1178,7 @@ Cell[BoxData[
         RowBox[{"(", 
           RowBox[{"p1sl", "-", "k1sl", "+", "m"}], ")"}], ".", 
         RowBox[{"DiracMatrix", "[", "\[Nu]", "]"}]}]}]], "Input",
-  CellLabel->"(Local) In[24]:=",
+  CellLabel->"In[24]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1231,8 +1193,7 @@ Cell[BoxData[
           RowBox[{"m", "-", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "1"],
@@ -1240,19 +1201,20 @@ Cell[BoxData[
                 "TraditionalForm"]}], "+", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}], ")"}], ".", 
         SuperscriptBox["\[Gamma]", 
           FormBox[
             FormBox["\[Nu]",
               "TraditionalForm"],
             "TraditionalForm"]]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[24]="]
+  CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1264,7 +1226,7 @@ Cell[BoxData[
         RowBox[{"(", 
           RowBox[{"p1sl", "-", "k2sl", "+", "m"}], ")"}], ".", 
         RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}]}]}]], "Input",
-  CellLabel->"(Local) In[25]:=",
+  CellLabel->"In[25]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1279,8 +1241,7 @@ Cell[BoxData[
           RowBox[{"m", "-", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "2"],
@@ -1288,19 +1249,20 @@ Cell[BoxData[
                 "TraditionalForm"]}], "+", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}], ")"}], ".", 
         SuperscriptBox["\[Gamma]", 
           FormBox[
             FormBox["\[Mu]",
               "TraditionalForm"],
             "TraditionalForm"]]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[25]="]
+  CellLabel->"Out[25]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1312,7 +1274,7 @@ Cell[BoxData[
         RowBox[{"(", 
           RowBox[{"p1sl", "-", "k1sl", "+", "m"}], ")"}], ".", 
         RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}]}]}]], "Input",
-  CellLabel->"(Local) In[26]:=",
+  CellLabel->"In[26]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1327,8 +1289,7 @@ Cell[BoxData[
           RowBox[{"m", "-", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "1"],
@@ -1336,19 +1297,20 @@ Cell[BoxData[
                 "TraditionalForm"]}], "+", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}], ")"}], ".", 
         SuperscriptBox["\[Gamma]", 
           FormBox[
             FormBox["\[Mu]",
               "TraditionalForm"],
             "TraditionalForm"]]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[26]="]
+  CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1360,7 +1322,7 @@ Cell[BoxData[
         RowBox[{"(", 
           RowBox[{"p1sl", "-", "k2sl", "+", "m"}], ")"}], ".", 
         RowBox[{"DiracMatrix", "[", "\[Nu]", "]"}]}]}]], "Input",
-  CellLabel->"(Local) In[27]:=",
+  CellLabel->"In[27]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1375,8 +1337,7 @@ Cell[BoxData[
           RowBox[{"m", "-", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "2"],
@@ -1384,19 +1345,20 @@ Cell[BoxData[
                 "TraditionalForm"]}], "+", 
             RowBox[{
               FormBox["\<\"\[Gamma]\"\>",
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}], ")"}], ".", 
         SuperscriptBox["\[Gamma]", 
           FormBox[
             FormBox["\[Nu]",
               "TraditionalForm"],
             "TraditionalForm"]]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[27]="]
+  CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[" Calculation of the four traces.", "Text",
@@ -1405,7 +1367,7 @@ Cell[" Calculation of the four traces.", "Text",
 Cell[CellGroupData[{
 
 Cell["tr1 = Tr[(p1sl + m) . f1 . (p2sl - m) . f3]", "Input",
-  CellLabel->"(Local) In[28]:=",
+  CellLabel->"In[28]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1422,12 +1384,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}], "+", 
             RowBox[{"8", " ", 
@@ -1436,33 +1399,35 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               RowBox[{
                 FormBox[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}]}]}], ")"}]}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[28]="]
+  CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["tr2 = Tr[(p1sl + m) . f1 . (p2sl - m) . f4]", "Input",
-  CellLabel->"(Local) In[29]:=",
+  CellLabel->"In[29]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1479,12 +1444,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}], "+", 
             RowBox[{"4", " ", 
@@ -1493,22 +1459,23 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}]}], ")"}]}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[29]="]
+  CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["tr3 = Tr[(p1sl + m) . f2 . (p2sl - m) . f3]", "Input",
-  CellLabel->"(Local) In[30]:=",
+  CellLabel->"In[30]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1525,12 +1492,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}], "+", 
             RowBox[{"4", " ", 
@@ -1539,22 +1507,23 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}]}], ")"}]}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[30]="]
+  CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["tr4 = Tr[(p1sl + m) . f2 . (p2sl - m) . f4]", "Input",
-  CellLabel->"(Local) In[31]:=",
+  CellLabel->"In[31]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1571,12 +1540,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}], "+", 
             RowBox[{"8", " ", 
@@ -1585,27 +1555,29 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               RowBox[{
                 FormBox[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}]}]}], ")"}]}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[31]="]
+  CellLabel->"Out[31]="]
 }, Open  ]],
 
 Cell["Divide by the denominators and add everything up.", "Text",
@@ -1636,7 +1608,7 @@ Cell[BoxData[
               RowBox[{
                 RowBox[{"2", " ", "p1"}], ",", "k2"}], "]"}]}]]}]}]], "Input",\
 
-  CellLabel->"(Local) In[32]:=",
+  CellLabel->"In[32]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1655,12 +1627,13 @@ Cell[BoxData[
                       InterpretationBox[
                         SubscriptBox["k", "1"],
                         k1],
-                      "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                    "\[NoBreak]", 
+                      "TraditionalForm"], "\[CenterDot]", 
                     FormBox[
-                      InterpretationBox[
-                        SubscriptBox["p", "1"],
-                        p1],
+                      SubscriptBox[
+                        TagBox[
+                          StyleBox["\<\"p\"\>",
+                            FontSlant->"Italic"],
+                          (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                       "TraditionalForm"]}], " ", 
                   SuperscriptBox["m", "2"]}], "+", 
                 RowBox[{"4", " ", 
@@ -1669,12 +1642,13 @@ Cell[BoxData[
                       InterpretationBox[
                         SubscriptBox["k", "2"],
                         k2],
-                      "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                    "\[NoBreak]", 
+                      "TraditionalForm"], "\[CenterDot]", 
                     FormBox[
-                      InterpretationBox[
-                        SubscriptBox["p", "1"],
-                        p1],
+                      SubscriptBox[
+                        TagBox[
+                          StyleBox["\<\"p\"\>",
+                            FontSlant->"Italic"],
+                          (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                       "TraditionalForm"]}], " ", 
                   SuperscriptBox["m", "2"]}]}], ")"}]}], 
           RowBox[{
@@ -1683,24 +1657,26 @@ Cell[BoxData[
                 InterpretationBox[
                   SubscriptBox["k", "1"],
                   k1],
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}], " ", 
             RowBox[{
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "2"],
                   k2],
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}]], "+", 
         FractionBox[
           RowBox[{
@@ -1713,12 +1689,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}], "+", 
             RowBox[{"8", " ", 
@@ -1727,24 +1704,26 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               RowBox[{
                 FormBox[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}]}]}], 
           SuperscriptBox[
             FormBox[
@@ -1753,12 +1732,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}],
               "TraditionalForm"], "2"]], "+", 
         FractionBox[
@@ -1772,12 +1752,13 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               SuperscriptBox["m", "2"]}], "+", 
             RowBox[{"8", " ", 
@@ -1786,24 +1767,26 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "1"],
                     k1],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}], " ", 
               RowBox[{
                 FormBox[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}]}]}], 
           SuperscriptBox[
             FormBox[
@@ -1812,15 +1795,16 @@ Cell[BoxData[
                   InterpretationBox[
                     SubscriptBox["k", "2"],
                     k2],
-                  "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                "\[NoBreak]", 
+                  "TraditionalForm"], "\[CenterDot]", 
                 FormBox[
-                  InterpretationBox[
-                    SubscriptBox["p", "1"],
-                    p1],
+                  SubscriptBox[
+                    TagBox[
+                      StyleBox["\<\"p\"\>",
+                        FontSlant->"Italic"],
+                      (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                   "TraditionalForm"]}],
               "TraditionalForm"], "2"]]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[32]="]
+  CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell["Collect with respect to powers of m.", "Text",
@@ -1832,7 +1816,7 @@ Cell[BoxData[
     RowBox[{"r", "=", 
       RowBox[{"Collect2", "[", 
         RowBox[{"matrixsq", ",", "m"}], "]"}]}]], "Input",
-  CellLabel->"(Local) In[33]:=",
+  CellLabel->"In[33]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
@@ -1849,24 +1833,26 @@ Cell[BoxData[
                         InterpretationBox[
                           SubscriptBox["k", "1"],
                           k1],
-                        "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                      "\[NoBreak]", 
+                        "TraditionalForm"], "\[CenterDot]", 
                       FormBox[
-                        InterpretationBox[
-                          SubscriptBox["p", "1"],
-                          p1],
+                        SubscriptBox[
+                          TagBox[
+                            StyleBox["\<\"p\"\>",
+                              FontSlant->"Italic"],
+                            (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                         "TraditionalForm"]}], "+", 
                     RowBox[{
                       FormBox[
                         InterpretationBox[
                           SubscriptBox["k", "2"],
                           k2],
-                        "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                      "\[NoBreak]", 
+                        "TraditionalForm"], "\[CenterDot]", 
                       FormBox[
-                        InterpretationBox[
-                          SubscriptBox["p", "1"],
-                          p1],
+                        SubscriptBox[
+                          TagBox[
+                            StyleBox["\<\"p\"\>",
+                              FontSlant->"Italic"],
+                            (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                         "TraditionalForm"]}]}], ")"}], "2"], " ", 
               SuperscriptBox["m", "4"]}], 
             RowBox[{
@@ -1877,12 +1863,13 @@ Cell[BoxData[
                       InterpretationBox[
                         SubscriptBox["k", "1"],
                         k1],
-                      "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                    "\[NoBreak]", 
+                      "TraditionalForm"], "\[CenterDot]", 
                     FormBox[
-                      InterpretationBox[
-                        SubscriptBox["p", "1"],
-                        p1],
+                      SubscriptBox[
+                        TagBox[
+                          StyleBox["\<\"p\"\>",
+                            FontSlant->"Italic"],
+                          (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                       "TraditionalForm"]}],
                   "TraditionalForm"], "2"], " ", 
               SuperscriptBox[
@@ -1892,12 +1879,13 @@ Cell[BoxData[
                       InterpretationBox[
                         SubscriptBox["k", "2"],
                         k2],
-                      "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                    "\[NoBreak]", 
+                      "TraditionalForm"], "\[CenterDot]", 
                     FormBox[
-                      InterpretationBox[
-                        SubscriptBox["p", "1"],
-                        p1],
+                      SubscriptBox[
+                        TagBox[
+                          StyleBox["\<\"p\"\>",
+                            FontSlant->"Italic"],
+                          (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                       "TraditionalForm"]}],
                   "TraditionalForm"], "2"]}]]}], "+", 
         FractionBox[
@@ -1909,24 +1897,26 @@ Cell[BoxData[
                     InterpretationBox[
                       SubscriptBox["k", "1"],
                       k1],
-                    "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                  "\[NoBreak]", 
+                    "TraditionalForm"], "\[CenterDot]", 
                   FormBox[
-                    InterpretationBox[
-                      SubscriptBox["p", "1"],
-                      p1],
+                    SubscriptBox[
+                      TagBox[
+                        StyleBox["\<\"p\"\>",
+                          FontSlant->"Italic"],
+                        (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                     "TraditionalForm"]}], "+", 
                 RowBox[{
                   FormBox[
                     InterpretationBox[
                       SubscriptBox["k", "2"],
                       k2],
-                    "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                  "\[NoBreak]", 
+                    "TraditionalForm"], "\[CenterDot]", 
                   FormBox[
-                    InterpretationBox[
-                      SubscriptBox["p", "1"],
-                      p1],
+                    SubscriptBox[
+                      TagBox[
+                        StyleBox["\<\"p\"\>",
+                          FontSlant->"Italic"],
+                        (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                     "TraditionalForm"]}]}], ")"}], " ", 
             SuperscriptBox["m", "2"]}], 
           RowBox[{
@@ -1935,24 +1925,26 @@ Cell[BoxData[
                 InterpretationBox[
                   SubscriptBox["k", "1"],
                   k1],
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}], " ", 
             RowBox[{
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "2"],
                   k2],
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}]], "+", 
         FractionBox[
           RowBox[{"8", " ", 
@@ -1965,12 +1957,13 @@ Cell[BoxData[
                         InterpretationBox[
                           SubscriptBox["k", "1"],
                           k1],
-                        "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                      "\[NoBreak]", 
+                        "TraditionalForm"], "\[CenterDot]", 
                       FormBox[
-                        InterpretationBox[
-                          SubscriptBox["p", "1"],
-                          p1],
+                        SubscriptBox[
+                          TagBox[
+                            StyleBox["\<\"p\"\>",
+                              FontSlant->"Italic"],
+                            (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                         "TraditionalForm"]}],
                     "TraditionalForm"], "2"], "+", 
                 SuperscriptBox[
@@ -1980,12 +1973,13 @@ Cell[BoxData[
                         InterpretationBox[
                           SubscriptBox["k", "2"],
                           k2],
-                        "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-                      "\[NoBreak]", 
+                        "TraditionalForm"], "\[CenterDot]", 
                       FormBox[
-                        InterpretationBox[
-                          SubscriptBox["p", "1"],
-                          p1],
+                        SubscriptBox[
+                          TagBox[
+                            StyleBox["\<\"p\"\>",
+                              FontSlant->"Italic"],
+                            (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                         "TraditionalForm"]}],
                     "TraditionalForm"], "2"]}], ")"}]}], 
           RowBox[{
@@ -1994,26 +1988,28 @@ Cell[BoxData[
                 InterpretationBox[
                   SubscriptBox["k", "1"],
                   k1],
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}], " ", 
             RowBox[{
               FormBox[
                 InterpretationBox[
                   SubscriptBox["k", "2"],
                   k2],
-                "TraditionalForm"], "\[NoBreak]", "\[CenterDot]", 
-              "\[NoBreak]", 
+                "TraditionalForm"], "\[CenterDot]", 
               FormBox[
-                InterpretationBox[
-                  SubscriptBox["p", "1"],
-                  p1],
+                SubscriptBox[
+                  TagBox[
+                    StyleBox["\<\"p\"\>",
+                      FontSlant->"Italic"],
+                    (StyleForm[ #, FontSlant -> "Italic"]&)], "1"],
                 "TraditionalForm"]}]}]]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[33]="]
+  CellLabel->"Out[33]="]
 }, Open  ]],
 
 Cell["\<\
@@ -2033,12 +2029,12 @@ Cell[BoxData[
                 RowBox[{"k1", "\[RuleDelayed]", "k2"}], ",", " ", 
                 RowBox[{"k2", "\[RuleDelayed]", "k1"}]}], "}"}]}], ")"}]}], 
       ")"}]], "Input",
-  CellLabel->"(Local) In[34]:=",
+  CellLabel->"In[34]:=",
   CellTags->"Tree level"],
 
 Cell[BoxData[
     FormBox["0", TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[34]="]
+  CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell["\<\
@@ -2052,7 +2048,7 @@ Cell[BoxData[
       RowBox[{"Clear", "[", 
         RowBox[{"p1", ",", "p2", ",", "k1", ",", "k2", ",", "r"}], "]"}], 
       ";"}]], "Input",
-  CellLabel->"(Local) In[35]:=",
+  CellLabel->"In[35]:=",
   CellTags->"Tree level"],
 
 Cell[TextData[{
@@ -2148,14 +2144,14 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
     RowBox[{"e", " ", "=", " ", "Epsilon"}]], "Input",
-  CellLabel->"(Local) In[36]:=",
+  CellLabel->"In[36]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
     FormBox[
       TagBox["\[CurlyEpsilon]",
         TraditionalForm], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[36]="]
+  CellLabel->"Out[36]="]
 }, Open  ]],
 
 Cell["\<\
@@ -2210,7 +2206,7 @@ Cell[BoxData[
           ",", 
           RowBox[{"Dot", "\[Rule]", "Times"}], ",", 
           RowBox[{"HoldForm", "\[Rule]", "False"}]}], "]"}], ";"}]], "Input",
-  CellLabel->"(Local) In[37]:=",
+  CellLabel->"In[37]:=",
   CellTags->"A moment integral"],
 
 Cell["\<\
@@ -2848,14 +2844,14 @@ aqq=FORM2FeynCalc[\"
           
           \"]//ReleaseHold;\
 \>", "Input",
-  CellLabel->"(Local) In[38]:=",
+  CellLabel->"In[38]:=",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
     RowBox[{"Short", "[", "aqq", "]"}]], "Input",
-  CellLabel->"(Local) In[39]:=",
+  CellLabel->"In[39]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
@@ -2877,7 +2873,11 @@ Cell[BoxData[
             SuperscriptBox[
               TagBox["\[CurlyEpsilon]",
                 TraditionalForm], "2"]], "+", 
-          RowBox[{"\[LeftSkeleton]", "29", "\[RightSkeleton]"}], "+", 
+          FractionBox[
+            RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}], 
+            RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]], "+", 
+          RowBox[{"\[LeftSkeleton]", "27", "\[RightSkeleton]"}], "+", 
+          RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}], "+", 
           RowBox[{
             SuperscriptBox[
               RowBox[{"(", 
@@ -2890,19 +2890,28 @@ Cell[BoxData[
                   RowBox[{
                     SuperscriptBox["log", "3"], "(", "x", ")"}]}], "-", 
                 FractionBox[
-                  RowBox[{"2", 
-                    RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}], 
+                  RowBox[{"2", " ", 
                     RowBox[{
-                      RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}], 
-                      RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}], 
-                      RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}], 
-                      ")"}]}], 
+                      SuperscriptBox["log", "3"], "(", "x", ")"}]}], 
                   RowBox[{"x", "+", "1"}]], "+", 
-                RowBox[{"\[LeftSkeleton]", "101", "\[RightSkeleton]"}]}], 
-              ")"}], " ", 
+                RowBox[{"\[LeftSkeleton]", "96", "\[RightSkeleton]"}], "+", 
+                FractionBox[
+                  RowBox[{"4", " ", 
+                    RowBox[{"\[LeftSkeleton]", "1", "\[RightSkeleton]"}]}], 
+                  RowBox[{"x", "+", "1"}]], "-", 
+                RowBox[{"6", " ", 
+                  TagBox[
+                    RowBox[{"\[Zeta]", "(", 
+                      TagBox["3",
+                        Zeta,
+                        Editable->True], ")"}],
+                    InterpretTemplate[ 
+                      Function[ BoxForm`e$, 
+                        Zeta[ BoxForm`e$]]]]}], "-", 
+                FractionBox["41", "3"]}], ")"}], " ", 
             SubscriptBox["C", "F"]}]}],
         Short], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[39]//Short="]
+  CellLabel->"Out[39]//Short="]
 }, Open  ]],
 
 Cell["\<\
@@ -2914,7 +2923,7 @@ expression.\
 Cell[CellGroupData[{
 
 Cell["FORM2FeynCalc[\"-[(-1)^m]\"]", "Input",
-  CellLabel->"(Local) In[40]:=",
+  CellLabel->"In[40]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
@@ -2925,14 +2934,14 @@ Cell[BoxData[
             RowBox[{"(", 
               RowBox[{"-", "1"}], ")"}], "m"], "]"}]}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[40]="]
+  CellLabel->"Out[40]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
     RowBox[{"%", "//", "ReleaseHold"}]], "Input",
-  CellLabel->"(Local) In[41]:=",
+  CellLabel->"In[41]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
@@ -2941,7 +2950,7 @@ Cell[BoxData[
         SuperscriptBox[
           RowBox[{"(", 
             RowBox[{"-", "1"}], ")"}], "m"]}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[41]="]
+  CellLabel->"Out[41]="]
 }, Open  ]],
 
 Cell["Calculate moments", "Text",
@@ -2988,16 +2997,16 @@ Cell[BoxData[
           RowBox[{"{", 
             RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "]"}]], "Input",\
 
-  CellLabel->"(Local) In[42]:=",
+  CellLabel->"In[42]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
     FormBox[
       RowBox[{"{", 
         RowBox[{
-          RowBox[{"4.8500000000000005`", " ", "Second"}], ",", "0"}], "}"}], 
+          RowBox[{"4.91`", " ", "Second"}], ",", "0"}], "}"}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[42]="]
+  CellLabel->"Out[42]="]
 }, Open  ]],
 
 Cell["\<\
@@ -3022,16 +3031,16 @@ Cell[BoxData[
             RowBox[{"{", 
               RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "]"}], 
       "]"}]], "Input",
-  CellLabel->"(Local) In[43]:=",
+  CellLabel->"In[43]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
     FormBox[
       RowBox[{"{", 
         RowBox[{
-          RowBox[{"0.9899999999999992`", " ", "Second"}], ",", "0"}], "}"}], 
+          RowBox[{"1.03`", " ", "Second"}], ",", "0"}], "}"}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[43]="]
+  CellLabel->"Out[43]="]
 }, Open  ]],
 
 Cell["Define an auxiliary typesetting function.", "Text",
@@ -3054,7 +3063,7 @@ Cell[BoxData[
             "   ", 
             RowBox[{"FontSize", " ", "\[Rule]", " ", "18"}]}], "]"}]}], 
       ";"}]], "Input",
-  CellLabel->"(Local) In[44]:=",
+  CellLabel->"In[44]:=",
   CellTags->"A moment integral"],
 
 Cell["The second moment takes a little bit longer.", "Text",
@@ -3099,14 +3108,14 @@ Cell[BoxData[
                 RowBox[{"big", "[", 
                   RowBox[{"CF", " ", "Tf"}], "]"}], " ", "a"}], "]"}]}]}], 
         "}"}]}]], "Input",
-  CellLabel->"(Local) In[45]:=",
+  CellLabel->"In[45]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
     FormBox[
       RowBox[{"{", 
         RowBox[{
-          RowBox[{"6.329999999999999`", " ", "Second"}], ",", 
+          RowBox[{"7.059999999999999`", " ", "Second"}], ",", 
           RowBox[{
             TagBox[
               RowBox[{
@@ -3196,7 +3205,7 @@ Cell[BoxData[
                           Zeta[ BoxForm`e$]]]]}], "-", 
                   FractionBox["3452", "81"]}], ")"}]}]}]}], "}"}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[45]="]
+  CellLabel->"Out[45]="]
 }, Open  ]],
 
 Cell["\<\
@@ -3221,19 +3230,19 @@ Cell[BoxData[
                 RowBox[{"O2", "\[Rule]", "0"}]}], "/.", 
               RowBox[{"O1", "\[Rule]", "1"}]}], ",", "x"}], "]"}]}], 
       ";"}]], "Input",
-  CellLabel->"(Local) In[46]:=",
+  CellLabel->"In[46]:=",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
     RowBox[{"gqq", "//", "Length"}]], "Input",
-  CellLabel->"(Local) In[47]:=",
+  CellLabel->"In[47]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
     FormBox["102", TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[47]="]
+  CellLabel->"Out[47]="]
 }, Open  ]],
 
 Cell["\<\
@@ -3250,7 +3259,7 @@ Cell[BoxData[
             RowBox[{"{", 
               RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]}], 
       ";"}]], "Input",
-  CellLabel->"(Local) In[48]:=",
+  CellLabel->"In[48]:=",
   CellTags->"A moment integral"],
 
 Cell["\<\
@@ -3266,7 +3275,7 @@ Cell[BoxData[
     RowBox[{"Cases2", "[", 
       RowBox[{"ww", ",", 
         RowBox[{"Hold", "[", "Integrate3", "]"}]}], "]"}]], "Input",
-  CellLabel->"(Local) In[49]:=",
+  CellLabel->"In[49]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
@@ -3283,7 +3292,7 @@ Cell[BoxData[
                   SubscriptBox["S", 
                     RowBox[{
                       FormBox["1",
-                        "TraditionalForm"], "\[NoBreak]", 
+                        "TraditionalForm"], 
                       FormBox["2",
                         "TraditionalForm"]}]], "(", 
                   FormBox[
@@ -3300,7 +3309,7 @@ Cell[BoxData[
                   SubscriptBox["S", 
                     RowBox[{
                       FormBox["1",
-                        "TraditionalForm"], "\[NoBreak]", 
+                        "TraditionalForm"], 
                       FormBox["2",
                         "TraditionalForm"]}]], "(", 
                   FormBox[
@@ -3319,7 +3328,7 @@ Cell[BoxData[
                     SubscriptBox["S", 
                       RowBox[{
                         FormBox["1",
-                          "TraditionalForm"], "\[NoBreak]", 
+                          "TraditionalForm"], 
                         FormBox["2",
                           "TraditionalForm"]}]], "(", 
                     FormBox[
@@ -3400,7 +3409,7 @@ Cell[BoxData[
               RowBox[{"{", 
                 RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]}], "}"}], 
       TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[49]="]
+  CellLabel->"Out[49]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -3427,7 +3436,7 @@ Cell[BoxData[
         "\[RuleDelayed]", " ", 
         RowBox[{"HoldForm", "[", 
           RowBox[{"Integrate", "[", "z", "]"}], "]"}]}]}]], "Input",
-  CellLabel->"(Local) In[50]:=",
+  CellLabel->"In[50]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
@@ -3445,7 +3454,7 @@ Cell[BoxData[
                     SubscriptBox["S", 
                       RowBox[{
                         FormBox["1",
-                          "TraditionalForm"], "\[NoBreak]", 
+                          "TraditionalForm"], 
                         FormBox["2",
                           "TraditionalForm"]}]], "(", 
                     FormBox[
@@ -3465,7 +3474,7 @@ Cell[BoxData[
                       SubscriptBox["S", 
                         RowBox[{
                           FormBox["1",
-                            "TraditionalForm"], "\[NoBreak]", 
+                            "TraditionalForm"], 
                           FormBox["2",
                             "TraditionalForm"]}]], "(", 
                       FormBox[
@@ -3532,7 +3541,7 @@ Cell[BoxData[
                   RowBox[{"x", "+", "1"}]], 
                 RowBox[{"\[DifferentialD]", "x"}]}]}],
             HoldForm]}], "}"}], TraditionalForm]], "Output",
-  CellLabel->"(Local) Out[50]="]
+  CellLabel->"Out[50]="]
 }, Open  ]],
 
 Cell["\<\
@@ -3544,7 +3553,7 @@ Cell[BoxData[
     RowBox[{"Clear", "[", 
       RowBox[{"e", ",", "ww", ",", "gqq", ",", "big", ",", "aqq"}], 
       "]"}]], "Input",
-  CellLabel->"(Local) In[51]:=",
+  CellLabel->"In[51]:=",
   CellTags->"A moment integral"],
 
 Cell[BoxData[
@@ -3553,7 +3562,7 @@ Cell[BoxData[
         RowBox[{"FORM2FeynCalc", ",", 
           RowBox[{"Replace", "\[Rule]", 
             RowBox[{"{", "}"}]}]}], "]"}], ";"}]], "Input",
-  CellLabel->"(Local) In[52]:=",
+  CellLabel->"In[52]:=",
   CellTags->"A moment integral"],
 
 Cell[TextData[{
@@ -3623,8 +3632,8 @@ ShowPageBreaks->False,
 WindowToolbars->"EditBar",
 EvaluationCompletionAction->{},
 CellGrouping->Manual,
-WindowSize->{797, 925},
-WindowMargins->{{246, Automatic}, {36, Automatic}},
+WindowSize->{912, 925},
+WindowMargins->{{37, Automatic}, {33, Automatic}},
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
 PageHeaders->{{Inherited, Cell[ 
@@ -3677,7 +3686,7 @@ CellTagsIndex->{
     Cell[2417, 79, 96, 2, 71, "Section",
       PageBreakAbove->True,
       CellTags->{"Short Overview", "intro"}],
-    Cell[2516, 83, 903, 20, 109, "Text",
+    Cell[2516, 83, 903, 20, 93, "Text",
       CellTags->"intro"],
     Cell[3422, 105, 580, 15, 37, "Text",
       CellTags->"intro"],
@@ -3689,7 +3698,7 @@ CellTagsIndex->{
       CellTags->"intro"],
     Cell[7314, 268, 342, 14, 37, "Text",
       CellTags->"intro"],
-    Cell[7659, 284, 1152, 27, 117, "Text",
+    Cell[7659, 284, 1152, 27, 101, "Text",
       CellTags->"intro"],
     Cell[8814, 313, 273, 7, 53, "Text",
       CellTags->"intro"],
@@ -3716,303 +3725,303 @@ CellTagsIndex->{
       CellTags->"start"],
     Cell[11518, 400, 64, 1, 57, "MathCaption",
       CellTags->"start"],
-    Cell[11607, 405, 127, 3, 39, "Input",
+    Cell[11585, 403, 119, 3, 39, "Input",
       CellTags->"start"],
-    Cell[12785, 446, 241, 7, 37, "Text",
+    Cell[11707, 408, 241, 7, 37, "Text",
       CellTags->"start"],
-    Cell[13029, 455, 503, 14, 71, "Text",
+    Cell[11951, 417, 503, 14, 55, "Text",
       CellTags->"start"],
-    Cell[13535, 471, 369, 10, 39, "Input",
+    Cell[12457, 433, 361, 10, 39, "Input",
       CellTags->"start"],
-    Cell[13950, 485, 372, 10, 39, "Input",
+    Cell[12864, 447, 364, 10, 39, "Input",
       CellTags->"start"],
-    Cell[14325, 497, 246, 9, 57, "MathCaption",
+    Cell[13231, 459, 246, 9, 57, "MathCaption",
       CellTags->"start"],
-    Cell[14574, 508, 360, 9, 39, "Input",
+    Cell[13480, 470, 352, 9, 39, "Input",
       CellTags->"start"],
-    Cell[14937, 519, 360, 9, 39, "Input",
+    Cell[13835, 481, 352, 9, 39, "Input",
       CellTags->"start"],
-    Cell[15300, 530, 224, 9, 57, "MathCaption",
+    Cell[14190, 492, 224, 9, 57, "MathCaption",
       CellTags->"start"],
-    Cell[15549, 543, 134, 4, 39, "Input",
+    Cell[14439, 505, 126, 4, 39, "Input",
       CellTags->"start"],
-    Cell[16004, 562, 142, 4, 57, "MathCaption",
+    Cell[14878, 524, 142, 4, 57, "MathCaption",
       CellTags->"start"],
-    Cell[16171, 570, 117, 3, 39, "Input",
+    Cell[15045, 532, 109, 3, 39, "Input",
       CellTags->"start"]},
   "About Extras"->{
-    Cell[16468, 584, 88, 2, 71, "Section",
+    Cell[15326, 546, 88, 2, 71, "Section",
       PageBreakAbove->True,
       CellTags->"About Extras"],
-    Cell[16559, 588, 566, 14, 69, "Text",
+    Cell[15417, 550, 566, 14, 69, "Text",
       CellTags->"About Extras"],
-    Cell[17128, 604, 152, 4, 57, "MathCaption",
+    Cell[15986, 566, 152, 4, 57, "MathCaption",
       CellTags->"About Extras"],
-    Cell[17283, 610, 147, 4, 39, "Input",
+    Cell[16141, 572, 139, 4, 39, "Input",
       CellTags->"About Extras"],
-    Cell[17433, 616, 121, 4, 37, "Text",
+    Cell[16283, 578, 121, 4, 37, "Text",
       CellTags->"About Extras"],
-    Cell[17557, 622, 1310, 31, 96, "Text",
+    Cell[16407, 584, 1310, 31, 96, "Text",
       CellTags->"About Extras"],
-    Cell[18870, 655, 105, 1, 29, "Caption",
+    Cell[17720, 617, 105, 1, 29, "Caption",
       CellTags->"About Extras"]},
   "tarcer"->{
-    Cell[19000, 660, 195, 7, 77, "Subsection",
+    Cell[17850, 622, 195, 7, 77, "Subsection",
       CellTags->"tarcer"],
-    Cell[19198, 669, 69, 1, 45, "InspectorLevel2",
+    Cell[18048, 631, 69, 1, 45, "InspectorLevel2",
       CellTags->"tarcer"],
-    Cell[19270, 672, 240, 8, 37, "Text",
+    Cell[18120, 634, 240, 8, 37, "Text",
       CellTags->"tarcer"],
-    Cell[19513, 682, 237, 10, 37, "Text",
+    Cell[18363, 644, 237, 10, 37, "Text",
       CellTags->"tarcer"],
-    Cell[19753, 694, 61, 1, 47, "Subsubsection",
+    Cell[18603, 656, 61, 1, 47, "Subsubsection",
       CellTags->"tarcer"],
-    Cell[19817, 697, 629, 15, 69, "Text",
+    Cell[18667, 659, 629, 15, 69, "Text",
       CellTags->"tarcer"],
-    Cell[20449, 714, 330, 8, 53, "Text",
+    Cell[19299, 676, 330, 8, 53, "Text",
       CellTags->"tarcer"],
-    Cell[20782, 724, 141, 4, 39, "Input",
+    Cell[19632, 686, 133, 4, 39, "Input",
       CellTags->"tarcer"],
-    Cell[20926, 730, 258, 8, 37, "Text",
+    Cell[19768, 692, 258, 8, 37, "Text",
       CellTags->"tarcer"],
-    Cell[21187, 740, 303, 9, 37, "Text",
+    Cell[20029, 702, 303, 9, 37, "Text",
       CellTags->"tarcer"]},
   "phi"->{
-    Cell[21527, 754, 154, 6, 77, "Subsection",
+    Cell[20369, 716, 154, 6, 77, "Subsection",
       CellTags->"phi"],
-    Cell[21684, 762, 60, 1, 46, "InspectorLevel2",
+    Cell[20526, 724, 60, 1, 45, "InspectorLevel2",
       CellTags->"phi"],
-    Cell[21747, 765, 422, 9, 73, "Text",
+    Cell[20589, 727, 422, 9, 53, "Text",
       CellTags->"phi"],
-    Cell[22172, 776, 70, 1, 39, "Text",
+    Cell[21014, 738, 70, 1, 37, "Text",
       CellTags->"phi"],
-    Cell[22245, 779, 136, 4, 43, "Input",
+    Cell[21087, 741, 128, 4, 39, "Input",
       CellTags->"phi"],
-    Cell[22384, 785, 255, 8, 39, "Text",
+    Cell[21218, 747, 255, 8, 37, "Text",
       CellTags->"phi"],
-    Cell[22642, 795, 283, 9, 39, "Text",
+    Cell[21476, 757, 283, 9, 37, "Text",
       CellTags->"phi"]},
   "fa"->{
-    Cell[22962, 809, 63, 1, 54, "Subsection",
+    Cell[21796, 771, 63, 1, 54, "Subsection",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23028, 812, 112, 1, 45, "InspectorLevel2",
+    Cell[21862, 774, 112, 1, 45, "InspectorLevel2",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23143, 815, 251, 8, 37, "Text",
+    Cell[21977, 777, 251, 8, 37, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23397, 825, 327, 11, 37, "Text",
+    Cell[22231, 787, 327, 11, 37, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23727, 838, 465, 8, 69, "Text",
+    Cell[22561, 800, 465, 8, 69, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[24195, 848, 308, 6, 53, "Text",
+    Cell[23029, 810, 308, 6, 53, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[24506, 856, 387, 10, 53, "Text",
+    Cell[23340, 818, 387, 10, 53, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[24896, 868, 242, 6, 55, "Input",
+    Cell[23730, 830, 234, 6, 55, "Input",
       CellTags->{"fa", "extrafoor"}],
-    Cell[25141, 876, 269, 8, 37, "Text",
+    Cell[23967, 838, 269, 8, 37, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[25413, 886, 565, 16, 53, "Text",
+    Cell[24239, 848, 565, 16, 53, "Text",
       CellTags->{"fa", "extrafoor"}]},
   "extrafoor"->{
-    Cell[22962, 809, 63, 1, 54, "Subsection",
+    Cell[21796, 771, 63, 1, 54, "Subsection",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23028, 812, 112, 1, 45, "InspectorLevel2",
+    Cell[21862, 774, 112, 1, 45, "InspectorLevel2",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23143, 815, 251, 8, 37, "Text",
+    Cell[21977, 777, 251, 8, 37, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23397, 825, 327, 11, 37, "Text",
+    Cell[22231, 787, 327, 11, 37, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[23727, 838, 465, 8, 69, "Text",
+    Cell[22561, 800, 465, 8, 69, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[24195, 848, 308, 6, 53, "Text",
+    Cell[23029, 810, 308, 6, 53, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[24506, 856, 387, 10, 53, "Text",
+    Cell[23340, 818, 387, 10, 53, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[24896, 868, 242, 6, 55, "Input",
+    Cell[23730, 830, 234, 6, 55, "Input",
       CellTags->{"fa", "extrafoor"}],
-    Cell[25141, 876, 269, 8, 37, "Text",
+    Cell[23967, 838, 269, 8, 37, "Text",
       CellTags->{"fa", "extrafoor"}],
-    Cell[25413, 886, 565, 16, 53, "Text",
+    Cell[24239, 848, 565, 16, 53, "Text",
       CellTags->{"fa", "extrafoor"}]},
   "Example Calculations"->{
-    Cell[26027, 908, 107, 2, 71, "Section",
+    Cell[24853, 870, 107, 2, 71, "Section",
       PageBreakAbove->True,
       CellTags->{"Example Calculations", "ex"}]},
   "ex"->{
-    Cell[26027, 908, 107, 2, 71, "Section",
+    Cell[24853, 870, 107, 2, 71, "Section",
       PageBreakAbove->True,
       CellTags->{"Example Calculations", "ex"}],
-    Cell[26137, 912, 540, 15, 45, "Commentary",
+    Cell[24963, 874, 540, 15, 45, "Commentary",
       CellTags->"ex"],
-    Cell[26680, 929, 345, 10, 37, "Text",
+    Cell[25506, 891, 345, 10, 37, "Text",
       CellTags->"ex"]},
   "Tree level"->{
-    Cell[27050, 943, 342, 11, 54, "Subsection",
+    Cell[25876, 905, 342, 11, 54, "Subsection",
       CellTags->"Tree level"],
-    Cell[27395, 956, 324, 10, 37, "Text",
+    Cell[26221, 918, 324, 10, 37, "Text",
       CellTags->"Tree level"],
-    Cell[27722, 968, 85, 1, 37, "Text",
+    Cell[26548, 930, 85, 1, 37, "Text",
       CellTags->"Tree level"],
-    Cell[27810, 971, 155, 5, 41, "Input",
+    Cell[26636, 933, 147, 5, 41, "Input",
       CellTags->"Tree level"],
-    Cell[27968, 978, 155, 5, 41, "Input",
+    Cell[26786, 940, 147, 5, 41, "Input",
       CellTags->"Tree level"],
-    Cell[28126, 985, 155, 5, 41, "Input",
+    Cell[26936, 947, 147, 5, 41, "Input",
       CellTags->"Tree level"],
-    Cell[28284, 992, 155, 5, 41, "Input",
+    Cell[27086, 954, 147, 5, 41, "Input",
       CellTags->"Tree level"],
-    Cell[28442, 999, 99, 1, 37, "Text",
+    Cell[27236, 961, 99, 1, 37, "Text",
       CellTags->"Tree level"],
-    Cell[28566, 1004, 322, 9, 39, "Input",
+    Cell[27360, 966, 314, 9, 39, "Input",
       CellTags->"Tree level"],
-    Cell[30266, 1058, 2399, 77, 53, "Text",
+    Cell[29092, 1020, 2399, 77, 53, "Text",
       CellTags->"Tree level"],
-    Cell[32668, 1137, 356, 10, 41, "Input",
+    Cell[31494, 1099, 348, 10, 41, "Input",
       CellTags->"Tree level"],
-    Cell[33027, 1149, 324, 9, 39, "Input",
+    Cell[31845, 1111, 316, 9, 39, "Input",
       CellTags->"Tree level"],
-    Cell[33354, 1160, 356, 10, 41, "Input",
+    Cell[32164, 1122, 348, 10, 41, "Input",
       CellTags->"Tree level"],
-    Cell[33713, 1172, 291, 8, 39, "Input",
+    Cell[32515, 1134, 283, 8, 39, "Input",
       CellTags->"Tree level"],
-    Cell[34007, 1182, 291, 8, 39, "Input",
+    Cell[32801, 1144, 283, 8, 39, "Input",
       CellTags->"Tree level"],
-    Cell[34301, 1192, 449, 12, 41, "Input",
+    Cell[33087, 1154, 441, 12, 41, "Input",
       CellTags->"Tree level"],
-    Cell[34753, 1206, 64, 1, 37, "Text",
+    Cell[33531, 1168, 64, 1, 37, "Text",
       CellTags->"Tree level"],
-    Cell[34842, 1211, 321, 8, 39, "Input",
+    Cell[33620, 1173, 313, 8, 39, "Input",
       CellTags->"Tree level"],
-    Cell[36328, 1259, 321, 8, 39, "Input",
+    Cell[35114, 1221, 313, 8, 39, "Input",
       CellTags->"Tree level"],
-    Cell[37814, 1307, 321, 8, 39, "Input",
+    Cell[36608, 1269, 313, 8, 39, "Input",
       CellTags->"Tree level"],
-    Cell[39300, 1355, 321, 8, 39, "Input",
+    Cell[38102, 1317, 313, 8, 39, "Input",
       CellTags->"Tree level"],
-    Cell[40764, 1401, 74, 1, 37, "Text",
+    Cell[39574, 1363, 74, 1, 37, "Text",
       CellTags->"Tree level"],
-    Cell[40863, 1406, 119, 2, 41, "Input",
+    Cell[39673, 1368, 111, 2, 41, "Input",
       CellTags->"Tree level"],
-    Cell[42702, 1463, 119, 2, 41, "Input",
+    Cell[41703, 1428, 111, 2, 41, "Input",
       CellTags->"Tree level"],
-    Cell[44156, 1509, 119, 2, 41, "Input",
+    Cell[43279, 1476, 111, 2, 41, "Input",
       CellTags->"Tree level"],
-    Cell[45610, 1555, 119, 2, 41, "Input",
+    Cell[44855, 1524, 111, 2, 41, "Input",
       CellTags->"Tree level"],
-    Cell[47427, 1610, 91, 1, 37, "Text",
+    Cell[46863, 1582, 91, 1, 37, "Text",
       CellTags->"Tree level"],
-    Cell[47543, 1615, 868, 24, 104, "Input",
+    Cell[46979, 1587, 860, 24, 61, "Input",
       CellTags->"Tree level"],
-    Cell[54862, 1825, 78, 1, 37, "Text",
+    Cell[55114, 1809, 78, 1, 37, "Text",
       CellTags->"Tree level"],
-    Cell[54965, 1830, 186, 5, 39, "Input",
+    Cell[55217, 1814, 178, 5, 39, "Input",
       CellTags->"Tree level"],
-    Cell[61730, 2018, 118, 3, 37, "Text",
+    Cell[62822, 2014, 118, 3, 37, "Text",
       CellTags->"Tree level"],
-    Cell[61873, 2025, 408, 11, 39, "Input",
+    Cell[62965, 2021, 400, 11, 39, "Input",
       CellTags->"Tree level"],
-    Cell[62391, 2043, 135, 4, 37, "Text",
+    Cell[63467, 2039, 135, 4, 37, "Text",
       CellTags->"Tree level"],
-    Cell[62529, 2049, 245, 6, 39, "Input",
+    Cell[63605, 2045, 237, 6, 39, "Input",
       CellTags->"Tree level"],
-    Cell[62777, 2057, 649, 27, 37, "Text",
+    Cell[63845, 2053, 649, 27, 37, "Text",
       CellTags->"Tree level"]},
   "A moment integral"->{
-    Cell[63463, 2089, 72, 1, 54, "Subsection",
+    Cell[64531, 2085, 72, 1, 54, "Subsection",
       CellTags->"A moment integral"],
-    Cell[63538, 2092, 504, 17, 43, "Text",
+    Cell[64606, 2088, 504, 17, 43, "Text",
       CellTags->"A moment integral"],
-    Cell[64045, 2111, 127, 3, 37, "Text",
+    Cell[65113, 2107, 127, 3, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[64175, 2116, 409, 13, 43, "Text",
+    Cell[65243, 2112, 409, 13, 43, "Text",
       CellTags->"A moment integral"],
-    Cell[64587, 2131, 94, 1, 37, "Text",
+    Cell[65655, 2127, 94, 1, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[64684, 2134, 288, 10, 37, "Text",
+    Cell[65752, 2130, 288, 10, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[64997, 2148, 134, 3, 39, "Input",
+    Cell[66065, 2144, 126, 3, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[65295, 2160, 222, 5, 53, "Text",
+    Cell[66347, 2156, 222, 5, 53, "Text",
       CellTags->"A moment integral"],
-    Cell[65520, 2167, 2172, 46, 135, "Input",
+    Cell[66572, 2163, 2164, 46, 119, "Input",
       CellTags->"A moment integral"],
-    Cell[67695, 2215, 167, 4, 37, "Text",
+    Cell[68739, 2211, 167, 4, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[67865, 2221, 17169, 630, 10683, "Input",
+    Cell[68909, 2217, 17161, 630, 10683, "Input",
       CellTags->"A moment integral"],
-    Cell[85059, 2855, 129, 3, 39, "Input",
+    Cell[86095, 2851, 121, 3, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[87010, 2907, 154, 4, 45, "Commentary",
+    Cell[88580, 2916, 154, 4, 45, "Commentary",
       CellTags->"A moment integral"],
-    Cell[87189, 2915, 111, 2, 41, "Input",
+    Cell[88759, 2924, 103, 2, 41, "Input",
       CellTags->"A moment integral"],
-    Cell[87593, 2932, 129, 3, 39, "Input",
+    Cell[89147, 2941, 121, 3, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[87943, 2946, 66, 1, 37, "Text",
+    Cell[89481, 2955, 66, 1, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[88012, 2949, 251, 5, 53, "Text",
+    Cell[89550, 2958, 251, 5, 53, "Text",
       CellTags->"A moment integral"],
-    Cell[88266, 2956, 644, 19, 54, "Text",
+    Cell[89804, 2965, 644, 19, 54, "Text",
       CellTags->"A moment integral"],
-    Cell[88935, 2979, 423, 12, 39, "Input",
+    Cell[90473, 2988, 415, 12, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[89585, 3002, 203, 5, 53, "Text",
+    Cell[91093, 3011, 203, 5, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[89813, 3011, 532, 14, 39, "Input",
+    Cell[91321, 3020, 524, 14, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[90572, 3036, 90, 1, 37, "Text",
+    Cell[92050, 3045, 90, 1, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[90665, 3039, 698, 18, 55, "Input",
+    Cell[92143, 3048, 690, 18, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[91366, 3059, 93, 1, 37, "Text",
+    Cell[92836, 3068, 93, 1, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[91484, 3064, 1523, 38, 71, "Input",
+    Cell[92954, 3073, 1515, 38, 55, "Input",
       CellTags->"A moment integral"],
-    Cell[96867, 3201, 148, 4, 37, "Text",
+    Cell[98321, 3210, 148, 4, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[97018, 3207, 638, 17, 43, "Input",
+    Cell[98472, 3216, 630, 17, 43, "Input",
       CellTags->"A moment integral"],
-    Cell[97681, 3228, 126, 3, 39, "Input",
+    Cell[99127, 3237, 118, 3, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[97919, 3238, 152, 4, 37, "Text",
+    Cell[99349, 3247, 152, 4, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[98074, 3244, 302, 9, 39, "Input",
+    Cell[99504, 3253, 294, 9, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[98379, 3255, 218, 5, 53, "Text",
+    Cell[99801, 3264, 218, 5, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[98622, 3264, 202, 5, 39, "Input",
+    Cell[100044, 3273, 194, 5, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[104067, 3405, 268, 8, 37, "Text",
+    Cell[105431, 3414, 268, 8, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[104360, 3417, 482, 13, 43, "Input",
+    Cell[105724, 3426, 474, 13, 43, "Input",
       CellTags->"A moment integral"],
-    Cell[108888, 3537, 131, 3, 37, "Text",
+    Cell[110208, 3546, 131, 3, 37, "Text",
       CellTags->"A moment integral"],
-    Cell[109022, 3542, 198, 5, 39, "Input",
+    Cell[110342, 3551, 190, 5, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[109223, 3549, 266, 7, 39, "Input",
+    Cell[110535, 3558, 258, 7, 39, "Input",
       CellTags->"A moment integral"],
-    Cell[109492, 3558, 1240, 55, 53, "Text",
+    Cell[110796, 3567, 1240, 55, 37, "Text",
       CellTags->"A moment integral"]}
   }
 *)
 
 (*CellTagsIndex
 CellTagsIndex->{
-  {"Short Overview", 112779, 3671},
-  {"intro", 112908, 3675},
-  {"introfoot", 113931, 3705},
-  {"Load FeynCalc", 114041, 3708},
-  {"start", 114143, 3711},
-  {"About Extras", 115228, 3742},
-  {"tarcer", 115805, 3758},
-  {"phi", 116524, 3779},
-  {"fa", 117006, 3794},
-  {"extrafoor", 117834, 3815},
-  {"Example Calculations", 118673, 3836},
-  {"ex", 118805, 3840},
-  {"Tree level", 119081, 3848},
-  {"A moment integral", 121688, 3919}
+  {"Short Overview", 114082, 3680},
+  {"intro", 114211, 3684},
+  {"introfoot", 115233, 3714},
+  {"Load FeynCalc", 115343, 3717},
+  {"start", 115445, 3720},
+  {"About Extras", 116530, 3751},
+  {"tarcer", 117107, 3767},
+  {"phi", 117826, 3788},
+  {"fa", 118308, 3803},
+  {"extrafoor", 119136, 3824},
+  {"Example Calculations", 119975, 3845},
+  {"ex", 120107, 3849},
+  {"Tree level", 120383, 3857},
+  {"A moment integral", 122988, 3928}
   }
 *)
 
@@ -4031,11 +4040,11 @@ Cell[CellGroupData[{
 Cell[2417, 79, 96, 2, 71, "Section",
   PageBreakAbove->True,
   CellTags->{"Short Overview", "intro"}],
-Cell[2516, 83, 903, 20, 109, "Text",
+Cell[2516, 83, 903, 20, 93, "Text",
   CellTags->"intro"],
 Cell[3422, 105, 580, 15, 37, "Text",
   CellTags->"intro"],
-Cell[4005, 122, 1394, 62, 40, "Text"],
+Cell[4005, 122, 1394, 62, 24, "Text"],
 Cell[5402, 186, 84, 1, 37, "Text",
   CellTags->"intro"],
 Cell[5489, 189, 1708, 71, 53, "Text",
@@ -4044,7 +4053,7 @@ Cell[7200, 262, 111, 4, 37, "Text",
   CellTags->"intro"],
 Cell[7314, 268, 342, 14, 37, "Text",
   CellTags->"intro"],
-Cell[7659, 284, 1152, 27, 117, "Text",
+Cell[7659, 284, 1152, 27, 101, "Text",
   CellTags->"intro"],
 Cell[8814, 313, 273, 7, 53, "Text",
   CellTags->"intro"],
@@ -4067,374 +4076,368 @@ Cell[11158, 388, 357, 10, 53, "Text",
   CellTags->"start"],
 Cell[11518, 400, 64, 1, 57, "MathCaption",
   CellTags->"start"],
+Cell[11585, 403, 119, 3, 39, "Input",
+  CellTags->"start"],
+Cell[11707, 408, 241, 7, 37, "Text",
+  CellTags->"start"],
+Cell[11951, 417, 503, 14, 55, "Text",
+  CellTags->"start"],
+Cell[12457, 433, 361, 10, 39, "Input",
+  CellTags->"start"],
+Cell[12821, 445, 40, 0, 24, "Text"],
+Cell[12864, 447, 364, 10, 39, "Input",
+  CellTags->"start"],
+Cell[13231, 459, 246, 9, 57, "MathCaption",
+  CellTags->"start"],
+Cell[13480, 470, 352, 9, 39, "Input",
+  CellTags->"start"],
+Cell[13835, 481, 352, 9, 39, "Input",
+  CellTags->"start"],
+Cell[14190, 492, 224, 9, 57, "MathCaption",
+  CellTags->"start"],
 
 Cell[CellGroupData[{
-Cell[11607, 405, 127, 3, 39, "Input",
+Cell[14439, 505, 126, 4, 39, "Input",
   CellTags->"start"],
-Cell[11737, 410, 315, 7, 22, "Print"],
-Cell[12055, 419, 92, 2, 24, "Text"],
-Cell[12150, 423, 620, 20, 96, "Text"]
+Cell[14568, 511, 295, 10, 22, "Output"]
 }, Open  ]],
-Cell[12785, 446, 241, 7, 37, "Text",
-  CellTags->"start"],
-Cell[13029, 455, 503, 14, 71, "Text",
-  CellTags->"start"],
-Cell[13535, 471, 369, 10, 39, "Input",
-  CellTags->"start"],
-Cell[13907, 483, 40, 0, 24, "Text"],
-Cell[13950, 485, 372, 10, 39, "Input",
-  CellTags->"start"],
-Cell[14325, 497, 246, 9, 57, "MathCaption",
-  CellTags->"start"],
-Cell[14574, 508, 360, 9, 39, "Input",
-  CellTags->"start"],
-Cell[14937, 519, 360, 9, 39, "Input",
-  CellTags->"start"],
-Cell[15300, 530, 224, 9, 57, "MathCaption",
+Cell[14878, 524, 142, 4, 57, "MathCaption",
   CellTags->"start"],
 
 Cell[CellGroupData[{
-Cell[15549, 543, 134, 4, 39, "Input",
+Cell[15045, 532, 109, 3, 39, "Input",
   CellTags->"start"],
-Cell[15686, 549, 303, 10, 22, "Output"]
-}, Open  ]],
-Cell[16004, 562, 142, 4, 57, "MathCaption",
-  CellTags->"start"],
-
-Cell[CellGroupData[{
-Cell[16171, 570, 117, 3, 39, "Input",
-  CellTags->"start"],
-Cell[16291, 575, 128, 3, 34, "Output"]
+Cell[15157, 537, 120, 3, 34, "Output"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
-Cell[16468, 584, 88, 2, 71, "Section",
+Cell[15326, 546, 88, 2, 71, "Section",
   PageBreakAbove->True,
   CellTags->"About Extras"],
-Cell[16559, 588, 566, 14, 69, "Text",
+Cell[15417, 550, 566, 14, 69, "Text",
   CellTags->"About Extras"],
-Cell[17128, 604, 152, 4, 57, "MathCaption",
+Cell[15986, 566, 152, 4, 57, "MathCaption",
   CellTags->"About Extras"],
-Cell[17283, 610, 147, 4, 39, "Input",
+Cell[16141, 572, 139, 4, 39, "Input",
   CellTags->"About Extras"],
-Cell[17433, 616, 121, 4, 37, "Text",
+Cell[16283, 578, 121, 4, 37, "Text",
   CellTags->"About Extras"],
-Cell[17557, 622, 1310, 31, 96, "Text",
+Cell[16407, 584, 1310, 31, 96, "Text",
   CellTags->"About Extras"],
-Cell[18870, 655, 105, 1, 29, "Caption",
+Cell[17720, 617, 105, 1, 29, "Caption",
   CellTags->"About Extras"],
 
 Cell[CellGroupData[{
-Cell[19000, 660, 195, 7, 77, "Subsection",
+Cell[17850, 622, 195, 7, 77, "Subsection",
   CellTags->"tarcer"],
-Cell[19198, 669, 69, 1, 45, "InspectorLevel2",
+Cell[18048, 631, 69, 1, 45, "InspectorLevel2",
   CellTags->"tarcer"],
-Cell[19270, 672, 240, 8, 37, "Text",
+Cell[18120, 634, 240, 8, 37, "Text",
   CellTags->"tarcer"],
-Cell[19513, 682, 237, 10, 37, "Text",
+Cell[18363, 644, 237, 10, 37, "Text",
   CellTags->"tarcer"],
-Cell[19753, 694, 61, 1, 47, "Subsubsection",
+Cell[18603, 656, 61, 1, 47, "Subsubsection",
   CellTags->"tarcer"],
-Cell[19817, 697, 629, 15, 69, "Text",
+Cell[18667, 659, 629, 15, 69, "Text",
   CellTags->"tarcer"],
-Cell[20449, 714, 330, 8, 53, "Text",
+Cell[19299, 676, 330, 8, 53, "Text",
   CellTags->"tarcer"],
-Cell[20782, 724, 141, 4, 39, "Input",
+Cell[19632, 686, 133, 4, 39, "Input",
   CellTags->"tarcer"],
-Cell[20926, 730, 258, 8, 37, "Text",
+Cell[19768, 692, 258, 8, 37, "Text",
   CellTags->"tarcer"],
-Cell[21187, 740, 303, 9, 37, "Text",
+Cell[20029, 702, 303, 9, 37, "Text",
   CellTags->"tarcer"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
-Cell[21527, 754, 154, 6, 77, "Subsection",
+Cell[20369, 716, 154, 6, 77, "Subsection",
   CellTags->"phi"],
-Cell[21684, 762, 60, 1, 46, "InspectorLevel2",
+Cell[20526, 724, 60, 1, 45, "InspectorLevel2",
   CellTags->"phi"],
-Cell[21747, 765, 422, 9, 73, "Text",
+Cell[20589, 727, 422, 9, 53, "Text",
   CellTags->"phi"],
-Cell[22172, 776, 70, 1, 39, "Text",
+Cell[21014, 738, 70, 1, 37, "Text",
   CellTags->"phi"],
-Cell[22245, 779, 136, 4, 43, "Input",
+Cell[21087, 741, 128, 4, 39, "Input",
   CellTags->"phi"],
-Cell[22384, 785, 255, 8, 39, "Text",
+Cell[21218, 747, 255, 8, 37, "Text",
   CellTags->"phi"],
-Cell[22642, 795, 283, 9, 39, "Text",
+Cell[21476, 757, 283, 9, 37, "Text",
   CellTags->"phi"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
-Cell[22962, 809, 63, 1, 54, "Subsection",
+Cell[21796, 771, 63, 1, 54, "Subsection",
   CellTags->{"fa", "extrafoor"}],
-Cell[23028, 812, 112, 1, 45, "InspectorLevel2",
+Cell[21862, 774, 112, 1, 45, "InspectorLevel2",
   CellTags->{"fa", "extrafoor"}],
-Cell[23143, 815, 251, 8, 37, "Text",
+Cell[21977, 777, 251, 8, 37, "Text",
   CellTags->{"fa", "extrafoor"}],
-Cell[23397, 825, 327, 11, 37, "Text",
+Cell[22231, 787, 327, 11, 37, "Text",
   CellTags->{"fa", "extrafoor"}],
-Cell[23727, 838, 465, 8, 69, "Text",
+Cell[22561, 800, 465, 8, 69, "Text",
   CellTags->{"fa", "extrafoor"}],
-Cell[24195, 848, 308, 6, 53, "Text",
+Cell[23029, 810, 308, 6, 53, "Text",
   CellTags->{"fa", "extrafoor"}],
-Cell[24506, 856, 387, 10, 53, "Text",
+Cell[23340, 818, 387, 10, 53, "Text",
   CellTags->{"fa", "extrafoor"}],
-Cell[24896, 868, 242, 6, 55, "Input",
+Cell[23730, 830, 234, 6, 55, "Input",
   CellTags->{"fa", "extrafoor"}],
-Cell[25141, 876, 269, 8, 37, "Text",
+Cell[23967, 838, 269, 8, 37, "Text",
   CellTags->{"fa", "extrafoor"}],
-Cell[25413, 886, 565, 16, 53, "Text",
+Cell[24239, 848, 565, 16, 53, "Text",
   CellTags->{"fa", "extrafoor"}]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
-Cell[26027, 908, 107, 2, 71, "Section",
+Cell[24853, 870, 107, 2, 71, "Section",
   PageBreakAbove->True,
   CellTags->{"Example Calculations", "ex"}],
-Cell[26137, 912, 540, 15, 45, "Commentary",
+Cell[24963, 874, 540, 15, 45, "Commentary",
   CellTags->"ex"],
-Cell[26680, 929, 345, 10, 37, "Text",
+Cell[25506, 891, 345, 10, 37, "Text",
   CellTags->"ex"],
 
 Cell[CellGroupData[{
-Cell[27050, 943, 342, 11, 54, "Subsection",
+Cell[25876, 905, 342, 11, 54, "Subsection",
   CellTags->"Tree level"],
-Cell[27395, 956, 324, 10, 37, "Text",
+Cell[26221, 918, 324, 10, 37, "Text",
   CellTags->"Tree level"],
-Cell[27722, 968, 85, 1, 37, "Text",
+Cell[26548, 930, 85, 1, 37, "Text",
   CellTags->"Tree level"],
-Cell[27810, 971, 155, 5, 41, "Input",
+Cell[26636, 933, 147, 5, 41, "Input",
   CellTags->"Tree level"],
-Cell[27968, 978, 155, 5, 41, "Input",
+Cell[26786, 940, 147, 5, 41, "Input",
   CellTags->"Tree level"],
-Cell[28126, 985, 155, 5, 41, "Input",
+Cell[26936, 947, 147, 5, 41, "Input",
   CellTags->"Tree level"],
-Cell[28284, 992, 155, 5, 41, "Input",
+Cell[27086, 954, 147, 5, 41, "Input",
   CellTags->"Tree level"],
-Cell[28442, 999, 99, 1, 37, "Text",
-  CellTags->"Tree level"],
-
-Cell[CellGroupData[{
-Cell[28566, 1004, 322, 9, 39, "Input",
-  CellTags->"Tree level"],
-Cell[28891, 1015, 1360, 40, 35, "Output"]
-}, Open  ]],
-Cell[30266, 1058, 2399, 77, 53, "Text",
-  CellTags->"Tree level"],
-Cell[32668, 1137, 356, 10, 41, "Input",
-  CellTags->"Tree level"],
-Cell[33027, 1149, 324, 9, 39, "Input",
-  CellTags->"Tree level"],
-Cell[33354, 1160, 356, 10, 41, "Input",
-  CellTags->"Tree level"],
-Cell[33713, 1172, 291, 8, 39, "Input",
-  CellTags->"Tree level"],
-Cell[34007, 1182, 291, 8, 39, "Input",
-  CellTags->"Tree level"],
-Cell[34301, 1192, 449, 12, 41, "Input",
-  CellTags->"Tree level"],
-Cell[34753, 1206, 64, 1, 37, "Text",
+Cell[27236, 961, 99, 1, 37, "Text",
   CellTags->"Tree level"],
 
 Cell[CellGroupData[{
-Cell[34842, 1211, 321, 8, 39, "Input",
+Cell[27360, 966, 314, 9, 39, "Input",
   CellTags->"Tree level"],
-Cell[35166, 1221, 1125, 33, 35, "Output"]
+Cell[27677, 977, 1400, 40, 24, "Output"]
 }, Open  ]],
-
-Cell[CellGroupData[{
-Cell[36328, 1259, 321, 8, 39, "Input",
+Cell[29092, 1020, 2399, 77, 53, "Text",
   CellTags->"Tree level"],
-Cell[36652, 1269, 1125, 33, 35, "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[37814, 1307, 321, 8, 39, "Input",
+Cell[31494, 1099, 348, 10, 41, "Input",
   CellTags->"Tree level"],
-Cell[38138, 1317, 1125, 33, 35, "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[39300, 1355, 321, 8, 39, "Input",
+Cell[31845, 1111, 316, 9, 39, "Input",
   CellTags->"Tree level"],
-Cell[39624, 1365, 1125, 33, 35, "Output"]
-}, Open  ]],
-Cell[40764, 1401, 74, 1, 37, "Text",
+Cell[32164, 1122, 348, 10, 41, "Input",
+  CellTags->"Tree level"],
+Cell[32515, 1134, 283, 8, 39, "Input",
+  CellTags->"Tree level"],
+Cell[32801, 1144, 283, 8, 39, "Input",
+  CellTags->"Tree level"],
+Cell[33087, 1154, 441, 12, 41, "Input",
+  CellTags->"Tree level"],
+Cell[33531, 1168, 64, 1, 37, "Text",
   CellTags->"Tree level"],
 
 Cell[CellGroupData[{
-Cell[40863, 1406, 119, 2, 41, "Input",
+Cell[33620, 1173, 313, 8, 39, "Input",
   CellTags->"Tree level"],
-Cell[40985, 1410, 1680, 48, 36, "Output"]
+Cell[33936, 1183, 1141, 33, 24, "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
-Cell[42702, 1463, 119, 2, 41, "Input",
+Cell[35114, 1221, 313, 8, 39, "Input",
   CellTags->"Tree level"],
-Cell[42824, 1467, 1295, 37, 36, "Output"]
+Cell[35430, 1231, 1141, 33, 24, "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
-Cell[44156, 1509, 119, 2, 41, "Input",
+Cell[36608, 1269, 313, 8, 39, "Input",
   CellTags->"Tree level"],
-Cell[44278, 1513, 1295, 37, 36, "Output"]
+Cell[36924, 1279, 1141, 33, 24, "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
-Cell[45610, 1555, 119, 2, 41, "Input",
+Cell[38102, 1317, 313, 8, 39, "Input",
   CellTags->"Tree level"],
-Cell[45732, 1559, 1680, 48, 36, "Output"]
+Cell[38418, 1327, 1141, 33, 24, "Output"]
 }, Open  ]],
-Cell[47427, 1610, 91, 1, 37, "Text",
+Cell[39574, 1363, 74, 1, 37, "Text",
   CellTags->"Tree level"],
 
 Cell[CellGroupData[{
-Cell[47543, 1615, 868, 24, 104, "Input",
+Cell[39673, 1368, 111, 2, 41, "Input",
   CellTags->"Tree level"],
-Cell[48414, 1641, 6433, 181, 57, "Output"]
+Cell[39787, 1372, 1879, 51, 25, "Output"]
 }, Open  ]],
-Cell[54862, 1825, 78, 1, 37, "Text",
+
+Cell[CellGroupData[{
+Cell[41703, 1428, 111, 2, 41, "Input",
+  CellTags->"Tree level"],
+Cell[41817, 1432, 1425, 39, 25, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[43279, 1476, 111, 2, 41, "Input",
+  CellTags->"Tree level"],
+Cell[43393, 1480, 1425, 39, 25, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[44855, 1524, 111, 2, 41, "Input",
+  CellTags->"Tree level"],
+Cell[44969, 1528, 1879, 51, 25, "Output"]
+}, Open  ]],
+Cell[46863, 1582, 91, 1, 37, "Text",
   CellTags->"Tree level"],
 
 Cell[CellGroupData[{
-Cell[54965, 1830, 186, 5, 39, "Input",
+Cell[46979, 1587, 860, 24, 61, "Input",
   CellTags->"Tree level"],
-Cell[55154, 1837, 6561, 178, 59, "Output"]
+Cell[47842, 1613, 7257, 193, 46, "Output"]
 }, Open  ]],
-Cell[61730, 2018, 118, 3, 37, "Text",
+Cell[55114, 1809, 78, 1, 37, "Text",
   CellTags->"Tree level"],
 
 Cell[CellGroupData[{
-Cell[61873, 2025, 408, 11, 39, "Input",
+Cell[55217, 1814, 178, 5, 39, "Input",
   CellTags->"Tree level"],
-Cell[62284, 2038, 92, 2, 35, "Output"]
+Cell[55398, 1821, 7409, 190, 47, "Output"]
 }, Open  ]],
-Cell[62391, 2043, 135, 4, 37, "Text",
+Cell[62822, 2014, 118, 3, 37, "Text",
   CellTags->"Tree level"],
-Cell[62529, 2049, 245, 6, 39, "Input",
+
+Cell[CellGroupData[{
+Cell[62965, 2021, 400, 11, 39, "Input",
   CellTags->"Tree level"],
-Cell[62777, 2057, 649, 27, 37, "Text",
+Cell[63368, 2034, 84, 2, 22, "Output"]
+}, Open  ]],
+Cell[63467, 2039, 135, 4, 37, "Text",
+  CellTags->"Tree level"],
+Cell[63605, 2045, 237, 6, 39, "Input",
+  CellTags->"Tree level"],
+Cell[63845, 2053, 649, 27, 37, "Text",
   CellTags->"Tree level"]
 }, Open  ]],
 
 Cell[CellGroupData[{
-Cell[63463, 2089, 72, 1, 54, "Subsection",
+Cell[64531, 2085, 72, 1, 54, "Subsection",
   CellTags->"A moment integral"],
-Cell[63538, 2092, 504, 17, 43, "Text",
+Cell[64606, 2088, 504, 17, 43, "Text",
   CellTags->"A moment integral"],
-Cell[64045, 2111, 127, 3, 37, "Text",
+Cell[65113, 2107, 127, 3, 37, "Text",
   CellTags->"A moment integral"],
-Cell[64175, 2116, 409, 13, 43, "Text",
+Cell[65243, 2112, 409, 13, 43, "Text",
   CellTags->"A moment integral"],
-Cell[64587, 2131, 94, 1, 37, "Text",
+Cell[65655, 2127, 94, 1, 37, "Text",
   CellTags->"A moment integral"],
-Cell[64684, 2134, 288, 10, 37, "Text",
-  CellTags->"A moment integral"],
-
-Cell[CellGroupData[{
-Cell[64997, 2148, 134, 3, 39, "Input",
-  CellTags->"A moment integral"],
-Cell[65134, 2153, 146, 4, 35, "Output"]
-}, Open  ]],
-Cell[65295, 2160, 222, 5, 53, "Text",
-  CellTags->"A moment integral"],
-Cell[65520, 2167, 2172, 46, 135, "Input",
-  CellTags->"A moment integral"],
-Cell[67695, 2215, 167, 4, 37, "Text",
-  CellTags->"A moment integral"],
-Cell[67865, 2221, 17169, 630, 10683, "Input",
+Cell[65752, 2130, 288, 10, 37, "Text",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[85059, 2855, 129, 3, 39, "Input",
+Cell[66065, 2144, 126, 3, 39, "Input",
   CellTags->"A moment integral"],
-Cell[85191, 2860, 1804, 44, 53, "Output"]
+Cell[66194, 2149, 138, 4, 22, "Output"]
 }, Open  ]],
-Cell[87010, 2907, 154, 4, 45, "Commentary",
+Cell[66347, 2156, 222, 5, 53, "Text",
+  CellTags->"A moment integral"],
+Cell[66572, 2163, 2164, 46, 119, "Input",
+  CellTags->"A moment integral"],
+Cell[68739, 2211, 167, 4, 37, "Text",
+  CellTags->"A moment integral"],
+Cell[68909, 2217, 17161, 630, 10683, "Input",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[87189, 2915, 111, 2, 41, "Input",
+Cell[86095, 2851, 121, 3, 39, "Input",
   CellTags->"A moment integral"],
-Cell[87303, 2919, 253, 8, 35, "Output"]
+Cell[86219, 2856, 2346, 57, 47, "Output"]
 }, Open  ]],
-
-Cell[CellGroupData[{
-Cell[87593, 2932, 129, 3, 39, "Input",
-  CellTags->"A moment integral"],
-Cell[87725, 2937, 203, 6, 35, "Output"]
-}, Open  ]],
-Cell[87943, 2946, 66, 1, 37, "Text",
-  CellTags->"A moment integral"],
-Cell[88012, 2949, 251, 5, 53, "Text",
-  CellTags->"A moment integral"],
-Cell[88266, 2956, 644, 19, 54, "Text",
+Cell[88580, 2916, 154, 4, 45, "Commentary",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[88935, 2979, 423, 12, 39, "Input",
+Cell[88759, 2924, 103, 2, 41, "Input",
   CellTags->"A moment integral"],
-Cell[89361, 2993, 209, 6, 35, "Output"]
+Cell[88865, 2928, 245, 8, 22, "Output"]
 }, Open  ]],
-Cell[89585, 3002, 203, 5, 53, "Text",
+
+Cell[CellGroupData[{
+Cell[89147, 2941, 121, 3, 39, "Input",
+  CellTags->"A moment integral"],
+Cell[89271, 2946, 195, 6, 22, "Output"]
+}, Open  ]],
+Cell[89481, 2955, 66, 1, 37, "Text",
+  CellTags->"A moment integral"],
+Cell[89550, 2958, 251, 5, 53, "Text",
+  CellTags->"A moment integral"],
+Cell[89804, 2965, 644, 19, 54, "Text",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[89813, 3011, 532, 14, 39, "Input",
+Cell[90473, 2988, 415, 12, 39, "Input",
   CellTags->"A moment integral"],
-Cell[90348, 3027, 209, 6, 35, "Output"]
+Cell[90891, 3002, 187, 6, 22, "Output"]
 }, Open  ]],
-Cell[90572, 3036, 90, 1, 37, "Text",
-  CellTags->"A moment integral"],
-Cell[90665, 3039, 698, 18, 55, "Input",
-  CellTags->"A moment integral"],
-Cell[91366, 3059, 93, 1, 37, "Text",
+Cell[91093, 3011, 203, 5, 37, "Text",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[91484, 3064, 1523, 38, 71, "Input",
+Cell[91321, 3020, 524, 14, 39, "Input",
   CellTags->"A moment integral"],
-Cell[93010, 3104, 3842, 94, 90, "Output"]
+Cell[91848, 3036, 187, 6, 22, "Output"]
 }, Open  ]],
-Cell[96867, 3201, 148, 4, 37, "Text",
+Cell[92050, 3045, 90, 1, 37, "Text",
   CellTags->"A moment integral"],
-Cell[97018, 3207, 638, 17, 43, "Input",
+Cell[92143, 3048, 690, 18, 39, "Input",
+  CellTags->"A moment integral"],
+Cell[92836, 3068, 93, 1, 37, "Text",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[97681, 3228, 126, 3, 39, "Input",
+Cell[92954, 3073, 1515, 38, 55, "Input",
   CellTags->"A moment integral"],
-Cell[97810, 3233, 94, 2, 35, "Output"]
+Cell[94472, 3113, 3834, 94, 77, "Output"]
 }, Open  ]],
-Cell[97919, 3238, 152, 4, 37, "Text",
+Cell[98321, 3210, 148, 4, 37, "Text",
   CellTags->"A moment integral"],
-Cell[98074, 3244, 302, 9, 39, "Input",
-  CellTags->"A moment integral"],
-Cell[98379, 3255, 218, 5, 53, "Text",
+Cell[98472, 3216, 630, 17, 43, "Input",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[98622, 3264, 202, 5, 39, "Input",
+Cell[99127, 3237, 118, 3, 39, "Input",
   CellTags->"A moment integral"],
-Cell[98827, 3271, 5225, 131, 136, "Output"]
+Cell[99248, 3242, 86, 2, 22, "Output"]
 }, Open  ]],
-Cell[104067, 3405, 268, 8, 37, "Text",
+Cell[99349, 3247, 152, 4, 37, "Text",
+  CellTags->"A moment integral"],
+Cell[99504, 3253, 294, 9, 39, "Input",
+  CellTags->"A moment integral"],
+Cell[99801, 3264, 218, 5, 37, "Text",
   CellTags->"A moment integral"],
 
 Cell[CellGroupData[{
-Cell[104360, 3417, 482, 13, 43, "Input",
+Cell[100044, 3273, 194, 5, 39, "Input",
   CellTags->"A moment integral"],
-Cell[104845, 3432, 4028, 102, 96, "Output"]
+Cell[100241, 3280, 5175, 131, 123, "Output"]
 }, Open  ]],
-Cell[108888, 3537, 131, 3, 37, "Text",
+Cell[105431, 3414, 268, 8, 37, "Text",
   CellTags->"A moment integral"],
-Cell[109022, 3542, 198, 5, 39, "Input",
+
+Cell[CellGroupData[{
+Cell[105724, 3426, 474, 13, 43, "Input",
   CellTags->"A moment integral"],
-Cell[109223, 3549, 266, 7, 39, "Input",
+Cell[106201, 3441, 3992, 102, 42, "Output"]
+}, Open  ]],
+Cell[110208, 3546, 131, 3, 37, "Text",
   CellTags->"A moment integral"],
-Cell[109492, 3558, 1240, 55, 53, "Text",
+Cell[110342, 3551, 190, 5, 39, "Input",
+  CellTags->"A moment integral"],
+Cell[110535, 3558, 258, 7, 39, "Input",
+  CellTags->"A moment integral"],
+Cell[110796, 3567, 1240, 55, 37, "Text",
   CellTags->"A moment integral"]
 }, Open  ]]
 }, Open  ]]
