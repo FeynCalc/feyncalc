@@ -123,8 +123,8 @@ Twist2QuarkOperator[pi_, opt___Rule] := Block[{dim, p, re, pol, del},
    ];
                                      re] /; zerom[opt];
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 Twist2QuarkOperator[p_, i_Integer, j_Integer] := 
  Twist2QuarkOperator[p];
 Twist2QuarkOperator[x___, i_Integer, y___] := 

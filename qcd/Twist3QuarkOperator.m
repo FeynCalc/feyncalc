@@ -76,8 +76,8 @@ Twist3QuarkOperator[pi_, opt___Rule] := Block[{dim, p, re, pol, del},
    ];
                                      re];
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 Twist3QuarkOperator[p_, i_Integer, j_Integer] := QuarkOperator[p];
 Twist3QuarkOperator[x___, i_Integer, y___] := 
 QuarkOperator[x, l[i], c[i], y];

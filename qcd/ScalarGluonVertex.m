@@ -40,8 +40,8 @@ Pair, PropagatorDenominator, SUNDelta, SUNT, SUNIndex];
 Options[ScalarGluonVertex] = {Dimension -> D, 
                               CouplingConstant -> Gstrong
                              };
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 ScalarGluonVertex[x___, i_Integer, y___] := 
 ScalarGluonVertex[x, l[i], c[i], y];
 

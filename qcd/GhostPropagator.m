@@ -5,8 +5,6 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:59 *)
-(* ------------------------------------------------------------------------ *)
 
 (* :Summary: GhostPropagator *) 
 
@@ -39,8 +37,8 @@ SUNIndex   ];
 
 GHP = GhostPropagator;
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 GhostPropagator[x___, i_Integer, y___] := 
 GhostPropagator[x, l[i], c[i], y];
 

@@ -89,8 +89,8 @@ Options[Twist2GluonOperator] =
 GO = Twist2GluonOperator;
 
 
-l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
-c[w_Integer] := ToExpression["Global`ci"<>ToString[w]];
+{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
+
 Twist2GluonOperator[x___, i_Integer, y___] := 
 Twist2GluonOperator[x, l[i], c[i], y];
 
