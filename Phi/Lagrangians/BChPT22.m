@@ -60,7 +60,7 @@ CouplingConstant[BChPT2[2],st___RenormalizationState,
 
 (* ------------------------------------------------------------------ *)
 
-Lagrangian[BChPT2[2]]:=
+(*Lagrangian[BChPT2[2]]:=
 
 I*(DOT[UVector[DiracBar[QuantumField[Particle[Nucleon]]]],
 DiracMatrix[LorentzIndex[\[Mu]]],
@@ -75,7 +75,16 @@ UVector[QuantumField[Particle[Nucleon]]]]+
 I*CouplingConstant[BChPT2[2],RenormalizationState[0]]*
 (DOT[UVector[DiracBar[QuantumField[Particle[Nucleon]]]],
 NM[DiracMatrix[LorentzIndex[\[Mu]]],DiracMatrix[5],GasserDelta[\[Mu]]],
-UVector[QuantumField[Particle[Nucleon]]]]);
+UVector[QuantumField[Particle[Nucleon]]]]);*)
+
+(* Paul's lagrangian. F.Orellana *)
+Lagrangian[BChPT2[2]]:=
+
+UTrace[NM[USmall[\[Mu]],USmall[\[Nu]]]]* 
+(UDot[UVector[DiracBar[QuantumField[Particle[Nucleon]]]],
+  CNDr[CNDr[UVector[QuantumField[Particle[Nucleon]]],{\[Nu]}],{\[Mu]}]]+
+Adjoint[UDot[UVector[DiracBar[QuantumField[Particle[Nucleon]]]],
+  CNDr[CNDr[UVector[QuantumField[Particle[Nucleon]]],{\[Nu]}],{\[Mu]}]]]);
 
 (* ------------------------------------------------------------------ *)
 
