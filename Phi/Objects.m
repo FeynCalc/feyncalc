@@ -2373,7 +2373,10 @@ UTrace1[b_, opts___Rule] /; MatrixQ[b] :=
 
 UTrace1[NM[aa__], opts___Rule] /; (nbtu[NM[aa]] && btui[NM[aa]] &&
           gaugedimcheck[UMatrix, opts, aa] == 2) :=
-    2*NM[aa] /. UMatrix[UIdentity, ___] -> 1;
+    2*NM[aa (*bug fix by Paul Buettiker; take care of nested traces of sums*) //.
+           UTrace1[ccc_] :>
+           UTrace[ccc /. UMatrix[UIdentity, rest___] :> uident[rest]]] /.
+    UMatrix[UIdentity, ___] -> 1 //. uident[rest___] :> UMatrix[UIdentity, rest];
     
 UTrace1[NM[aa__], opts___Rule] /; nbtu[NM[aa]] && btui[NM[aa]] && (gaugedimcheck[UMatrix,
               opts, aa] == 3) := 3*NM[aa] /. UMatrix[UIdentity, ___] -> 1;
