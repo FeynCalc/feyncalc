@@ -131,13 +131,10 @@ an unpatched FeynArts installation on PHI startup.  Default value : True";
 
 (* ************************************************************** *)
 
-(* Global functions *)
-
 Begin["`Private`"];
 
 (* ************************************************************** *)
 
-(*$Verboseness=1;*)
 $Verboseness:=HighEnergyPhysics`FeynCalc`$VeryVerbose;
 
 VerbosePrint[n_Integer,s__]:=If[$Verboseness>=n,Print[s]];
@@ -161,6 +158,8 @@ $Path=Union[$Path,{HighEnergyPhysics`Phi`$HEPDir}];
 
 (*Give first priority to First.m and PhiStart.m in homedir. Added 28/8-2001*)
 $Path=Join[FileNames[$HomeDirectory <> $PathnameSeparator <>
+    ".Mathematica" <> $PathnameSeparator <> "Applications"],
+    FileNames[$HomeDirectory <> $PathnameSeparator <>
     ".Mathematica" <> $PathnameSeparator <> "*" <> $PathnameSeparator <>
     "AddOns" <> $PathnameSeparator <> "Applications"],$Path];
 
