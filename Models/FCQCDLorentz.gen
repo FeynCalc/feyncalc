@@ -1,0 +1,127 @@
+(*
+        QCDLorentz.gen
+QCD with one massive quark.
+*)
+
+(* quark *)
+KinematicIndices[ F ] = {};
+(* Gluon *)
+KinematicIndices[ V ] = {Lorentz, Gluon};
+KinematicIndices[ U ] = {Gluon}
+
+Appearance[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
+
+FourVector/: -FourVector[ mom_, mu_ ] := FourVector[Expand[-mom], mu];
+FourVector[ 0, _ ] = 0
+
+M$GenericPropagators = {
+
+        (* quark propagator: *)
+
+  AnalyticalPropagator[External][ s F[i, mom] ] ==
+ HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ DiracSpinor[-mom, Mass[F[i]]] ],
+
+  AnalyticalPropagator[Internal][ s F[i, mom] ] ==
+     HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ QuarkPropagator[mom, Mass[F[i]]] ] ,
+
+        (* gluon propagator *)
+
+  AnalyticalPropagator[External][ s V[i, mom, {li2, b}] ] ==
+    PolarizationVector[mom, {li2, b}],
+
+  AnalyticalPropagator[Internal][ s V[i, mom, {li1, a} -> {li2, b}] ] ==
+    SUNDelta[a,b] GluonPropagator[mom, li1, li2] ,
+
+        (* general Fadeev-Popov ghost propagator: *)
+
+  AnalyticalPropagator[External][ s U[i, mom, {a}] ] == 1,
+
+  AnalyticalPropagator[Internal][ s U[i, mom, {a} -> {b}] ] ==
+     SUNDelta[a,b] GhostPropagator[mom]
+
+}
+
+M$GenericCouplings = {
+
+        (* V-V-V-V: *)
+
+  AnalyticalCoupling[ s1 V[i, mom1, {li1, a}], s2 V[j, mom2, {li2, b}],
+      s3 V[k, mom3, {li3, c}], s4 V[l, mom4, {li4, d}] ] ==
+    G[1][s1 V[i], s2 V[j], s3 V[k], s4 V[l]] .
+      {GluonVertex[{mom1,li1,a},{mom2,li2,b},{mom3,li3,c},{mom4,li4,d}]
+      },
+
+        (* V-V-V: *)
+
+  AnalyticalCoupling[ s1 V[i, mom1, {li1, a}], s2 V[j, mom2, {li2, b}],
+      s3 V[k, mom3, {li3, c}] ] ==
+    G[1][s1 V[i], s2 V[j], s3 V[k]] .
+      { SUNF[a,b,c] GluonVertex[{mom1,li1},{mom2,li2},{mom3,li3}]
+      },
+
+        (* F-F-V: *)
+
+  AnalyticalCoupling[ s1 F[i, mom1], s2 F[j, mom2],
+      s3 V[k, mom3, {li3, a}] ] ==
+    G[-1][s1 F[i], s2 F[j], s3 V[k]] .
+      { NonCommutative[SUNT[a],QuarkGluonVertex[li3]]
+      },
+
+        (* U-U-V: *)
+
+  AnalyticalCoupling[ s1 U[i, mom1,{a}], s2 U[j, mom2,{b}],
+      s3 V[k, mom3, {li3,c}] ] ==
+   G[1][s1 U[i], s2 U[j], s3 V[k]] .
+      { SUNF[a,b,c] GluonGhostVertex[mom3, li3]
+       }
+}
+
+        (* TruncationRules: rule for omitting the wave functions of
+           external Propagators defined in this file. *)
+
+M$TruncationRules = {
+  PolarizationVector[__] -> 1,
+  Pair[LorentzIndex[__], Momentum[Polarization[pe_, __]]] :> 1,
+  DiracSpinor[__] -> 1,
+  Spinor[__] -> 1,
+  MajoranaSpinor[__] -> 1
+}
+
+        (* LastGenericRules: the very last rules that are applied to an
+           amplitude before it is returned by CreateFeynAmp. *)
+
+HighEnergyPhysics`FeynArts`SumOver[HighEnergyPhysics`FeynArts`Index[Gluon,_],8,___] := 1;
+
+M$LastGenericRules = {
+(*
+  MatrixTrace :> DiracTrace, 
+MatrixTrace :> (DiracTrace[2 Tf Nf #]&),
+*)
+  MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy]], 
+  (a___ . 1 . b___) :> a . b,
+  NonCommutative :> Dot,
+  (* this is of course only true for a generic insertionlevel, however, this seems the 
+     only way to get it to work
+  *)
+(*  G[_][_][__][x_] :> 1,*)
+  Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
+  FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
+  FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
+  FourMomentum[Outgoing, i_Integer] :> ToExpression["k" <> ToString[i]],
+  Index[Lorentz, i_Integer]:>ToExpression["li" <> ToString[i]],
+  SUNDelta[a_, b_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
+  SUNDelta[a_, b_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
+  SUNDelta[a_, b_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
+  SUNDelta[b_, a_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
+  SUNDelta[b_, a_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
+  SUNDelta[b_, a_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
+  SUNDelta[a_, b_] SUNDelta[a_, c_]:> SUNDelta[b,c],
+  SUNDelta[a_, b_] SUNDelta[c_, a_]:> SUNDelta[b,c],
+  SUNDelta[a_, b_] SUNDelta[b_, c_]:> SUNDelta[a,c],
+  SUNDelta[a_, b_] SUNDelta[c_, b_]:> SUNDelta[a,c],
+        (* outgoing vector bosons: throw away signs of momenta *)
+  PolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
+    Conjugate[PolarizationVector][p, k, li]
+}
+
+
