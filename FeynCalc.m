@@ -1,6 +1,6 @@
 (* :Title: FeynCalc *)
 
-(* :Version: 5.0.0beta1 *)
+(* :Version: 5.1.0beta1 *)
 
 (* :Authors: Rolf Mertig  (rolf@mertig.com)
              Frederik Orellana (fjob@cabocomm.dk)
@@ -39,7 +39,7 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.0.0beta1";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.1.0beta1";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
@@ -398,6 +398,11 @@ This has (FOR ONE AXIAL-VECTOR-CURRENT ONLY, it is not so clear \
 if this scheme also works for more than one fermion line \
 involving gamma5) the same effect as the \
 Breitenlohner-Maison-'t Hooft-Veltman scheme.";
+
+$LeviCivitaSign::"usage"=
+"$LeviCivitaSign is by default set to -1 which corresponds to the convention 
+Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d].
+Setting $LeviCivitaSign=I  will switch to the FORM-convention.";
 
 $LimitTo4::"usage"=
 "$LimitTo4 is a global variable with default setting True. \
@@ -976,6 +981,8 @@ Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
 
+$LeviCivitaSign=-1;
+
 
 (* From Mathematica 4.0 onwards there is  "Tr" functions;
    Overload Tr to use TR
@@ -984,11 +991,13 @@ If[$VersionNumber>3.4,
    Unprotect@@{ToExpression["Tr"]};
    Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /; 
        !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD | Pair];
-   Tr::usage="Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
+   Tr::usage="FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
    generalized trace, combining terms with f instead of Plus. Tr[list, f, n]
    goes down to level n in list. \n \n
 Tr[ expression ] calculates the DiracTrace, i.e.,  TR[ expression ],
 if any of DiracGamma, DiracSlash, GA, GAD, GS or GSD are present in expression.";
+
+Tr/:Options[Tr]:=Options[HighEnergyPhysics`fctools`TR`TR];
 
    Protect@@{ToExpression["Tr"]};
   ];
