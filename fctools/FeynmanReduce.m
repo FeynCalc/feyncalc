@@ -9,11 +9,12 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FeynmanReduce`",
+BeginPackage["HighEnergyPhysics`fcdevel`FeynmanReduce`",
              "HighEnergyPhysics`FeynCalc`"];
 
-FeynmanReduce::usage=
-"FeynmanReduce[exp,params] takes a Feynman parameterized expression \
+FeynmanReduce::"usage"=
+"***EXPERIMENTAL***\n
+FeynmanReduce[exp,params] takes a Feynman parameterized expression \
 exp (as e.g. generated with FeynmanParametrize1) and a list of \
 Feynman parameters as input and attempts to simplify the expression. \
 If no parameters are given, Integratedx variables in the expression \
@@ -41,16 +42,16 @@ FeynmanReduce[exp_Plus,params_List:dum,opts___Rule]:=
   FeynmanReduce[#,params,opts]&/@exp;
 FeynmanReduce[exp_Times,params_List:dum,opts___Rule]:=
   Times@@(FeynmanReduce[#,params,opts]& /@
-  (de=Select[ List@@exp,MatchQ[#,Dot[ints:(Integratedx[_,_,_]..),
+  (de=Select[ List@@exp,MatchQ[#,DOT[ints:(Integratedx[_,_,_]..),
     r_?(FreeQ[#,Integratedx]&)]]& ])) * Times@@Complement[List@@exp,de];
 
-FeynmanReduce[Dot[ints:(Integratedx[_,_,_]..),
+FeynmanReduce[DOT[ints:(Integratedx[_,_,_]..),
   HoldPattern[Plus[r:((_?(FreeQ[#,Integratedx]&))..)]]],
   params_List:dum,opts___Rule]:=
-  FeynmanReduce[Dot[ints,#],params,opts]& /@ Plus[r] /.
+  FeynmanReduce[DOT[ints,#],params,opts]& /@ Plus[r] /.
     (p:HoldPattern[Plus[
-      Dot[intss:(Integratedx[_,_,_]..),_?(FreeQ[#, Integratedx]&)]..]]):>
-      Dot[intss,(#[[-1]])&/@p];
+      DOT[intss:(Integratedx[_,_,_]..),_?(FreeQ[#, Integratedx]&)]..]]):>
+      DOT[intss,(#[[-1]])&/@p];
 
 
 FeynmanReduce[exp_,params_List:dum,opts___Rule]:=
@@ -61,14 +62,14 @@ go=False;
 dim = Dimension/.Flatten[{opts}]/.Options[FeynmanReduce];
 dr=r_^(b_?(!FreeQ[#,dim]&)):>r^(b/.dim->4);
 ex = exp //.
-(*First flatten out Dot products with Integratedx's*)
+(*First flatten out DOT products with Integratedx's*)
  If[(Flatten/.Flatten[{opts}]/.Options[FeynmanReduce])===True,
   If[$VeryVerbose>=2,Print["Flattening out Integratedx factors"]];
-  Dot[ints:(Integratedx[_,_,_]..),(b_?(((*!FreeQ[#,q]&&*)FreeQ[#,Integratedx])&))*
-    Dot[ints1:(Integratedx[_,_,_]..),
-    r_?(((*!FreeQ[#,q]&&*)FreeQ[#,Integratedx])&)]]:>Dot[ints,Dot[ints1,b*r]],{}] /.
- Dot[ints:(Integratedx[_,_,_]..),r_?(FreeQ[#,Integratedx]&)] :>
- (Dot[intss,
+  DOT[ints:(Integratedx[_,_,_]..),(b_?(((*!FreeQ[#,q]&&*)FreeQ[#,Integratedx])&))*
+    DOT[ints1:(Integratedx[_,_,_]..),
+    r_?(((*!FreeQ[#,q]&&*)FreeQ[#,Integratedx])&)]]:>DOT[ints,DOT[ints1,b*r]],{}] /.
+ DOT[ints:(Integratedx[_,_,_]..),r_?(FreeQ[#,Integratedx]&)] :>
+ (DOT[intss,
     (*The Feynman parameters to be considered*)
     ps = If[params === dum, (#[[1]])& /@ {ints},
             Intersection[params,(#[[1]])& /@ {ints}]];
@@ -100,8 +101,8 @@ ex = exp //.
     Plus@@Replace[rrr,
       {
       (*The trick for removing the exponential and shrinking
-        the upper integration limit from Infinity to 1*)
-      dumf * E^pp_ * PP_ :> (
+        the upper integration limit from Infinity to 1. See Murayama.*)
+      dumf * E^pp_ * PP_. :> (
           If[$VeryVerbose>=2,WriteString["stdout","#"]];
           cpp=Exponent[ppex=pp/.cprul/.
                     (-al)^e_ :> al^e /.

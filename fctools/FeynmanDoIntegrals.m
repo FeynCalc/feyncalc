@@ -9,11 +9,12 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FeynmanDoIntegrals`",
+BeginPackage["HighEnergyPhysics`fcdevel`FeynmanDoIntegrals`",
    "HighEnergyPhysics`FeynCalc`"];
 
-FeynmanDoIntegrals::usage = "FeynmanDoIntegrals[exp, moms, vars] \
-attempts to evaluate integrals over feynman parameters vars in an \
+FeynmanDoIntegrals::"usage" = "***EXPERIMENTAL***\n
+FeynmanDoIntegrals[exp, moms, vars] \
+attempts to evaluate integrals over Feynman parameters vars in an \
 expression exp as produced e.g. with FeynmanReduce. The variables \
 given must be atomic quantities (AtomQ). If vars is omitted \
 all variables in the integrals will be integrated. If vars is given, only the \
@@ -29,7 +30,9 @@ a very rough one. Using (TimedIntegrate[##, Integrate->Integrate]&) or \
 (TimedIntegrate[##, Integrate->NIntegrate]&) as the setting of one or both \
 allows for finer judging. Those that are judged neither analytically nor \
 numerically doable are left unevaluated, but can of course be attempted \
-evaluated by a simple sustitution.";
+evaluated by a simple sustitution. Beside the explicit options of FeynmanDoIntegrals \
+options of the integration functions specified (FCIntegrate and FCNIntegrate) \
+may be given and are passed on to these.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -45,12 +48,14 @@ TimedIntegrate = MakeContext["TimedIntegrate"];
 DeltaFunction = MakeContext["DeltaFunction"];
 Isolate = MakeContext["Isolate"];
 SelectSplit = MakeContext["SelectSplit"];
+EpsilonOrder= MakeContext["EpsilonOrder"];
+
 
 
 Options[FeynmanDoIntegrals] = {NIntegrate -> False, Dimension -> D,
     EpsilonOrder -> {-2,0}, FCIntegrate -> TimedIntegrate,
-    Simplify -> True, Expand -> True,
-    FCNIntegrate -> (Sequence @@ ((Integratedx@@#1)& ) /@ {##2} . #1 & )
+    Simplify -> True, Expand -> True, Series -> True,
+    FCNIntegrate -> (DOT[Sequence @@ ((Integratedx@@#1)& ) /@ {##2}, #1]&)
     (*((0*#1) &)*)(*TimedIntegrate[##, Timing -> 10, Integrate -> NIntegrate]*)};
 
 FeynmanDoIntegrals::"integrate"="There is a problem checking for \
@@ -90,6 +95,7 @@ factestN[vars_List] :=
       NumericQ1[#, vars]]&;
 
 (* Transforming a square into a triangle in general dimensions *)
+ChVars[x1_] := {x1};
 ChVars[c_, x1_] := c*{x1, 1 - x1};
 ChVars[c_, x1__, x2_] := Append[x2*ChVars[c, x1], c(1 - x2)];
 
@@ -97,39 +103,54 @@ ChVars[c_, x1__, x2_] := Append[x2*ChVars[c, x1], c(1 - x2)];
   - is there a generalization of this expression??*)
 ChVars[c_, x1_, x2_, x3_] :=
   c*{x3 x1, (1 - x3) x2, x3(1 - x1), (1 - x3) (1 - x2)};
+(*swapping third and fourth components works*)(*ChVars[c_, x1_, x2_, x3_] :=
+  c*{x3 x1, (1 - x3) x2, (1 - x3) (1 - x2), x3(1 - x1)};*)
 
 (* ********************************************************** *)
 
-(*Check for DeltaFunctions and try to factor them out*)
-FeynmanDoIntegrals[Dot[ints0:(Integratedx[_, _, _]..),
+FeynmanDoIntegrals[a_*DOT[ints0:(Integratedx[_, _, _]..),
+  (exp_?((FreeQ[#, Integratedx])&))],
+  moms0_List:dum, vars0_List:dum, opts___Rule] :=
+a * FeynmanDoIntegrals[DOT[ints0, exp], moms0, vars0, opts];
+
+FeynmanDoIntegrals[x_Plus,
+  moms0_List:dum, vars0_List:dum, opts___Rule] :=
+FeynmanDoIntegrals[#, moms0, vars0, opts]& /@ x;
+
+FeynmanDoIntegrals[DOT[ints0:(Integratedx[_, _, _]..),
   (exp_?((FreeQ[#, Integratedx])&))],
   moms0_List:dum, vars0_List:dum, opts___Rule] :=
 
-Block[{tc,tcc,tmpcol,a,res},
+Block[{tc,tcc,tmpcol,a,ress},
 
-If[!FreeQ[exp, DeltaFunction[_]],
+  (*Check for DeltaFunctions and try to factor them out*)
+  If[FreeQ[exp, DeltaFunction[_]] =!= False,
 
-If[$VeryVerbose>=2,
-    Print["DeltaFunctions found, resolving..."]];
-tc=If[Head[exp]===Plus,List@@exp,{exp}];
-If[And @@ ((Head[#]===Times && !FreeQ[#,DeltaFunction[_],{1,1}] &&
-  !FreeQ[DeltaFunction[_],#] || FreeQ[DeltaFunction[_],#])& /@ tc),
-    res=tc,
-    tcc = Collect[# /. DeltaFunction[a_] :>
-                      DeltaFunction[Expand[a]], DeltaFunction[_]]& /@ tc;
+    (*Delta functions*)
+    If[$VeryVerbose>=2,
+        Print["DeltaFunctions found, resolving..."]];
+    tc=If[Head[exp]===Plus,List@@exp,{exp}];
     If[And @@ ((Head[#]===Times && !FreeQ[#,DeltaFunction[_],{1,1}] &&
-      !FreeQ[DeltaFunction[_],#] || FreeQ[DeltaFunction[_],#])& /@ tcc),
-      res=tcc,
-      Message[FeynmanDoIntegrals::"nodeltaresolv",exp];Abort[]]
-];
-If[$VeryVerbose>=2,
-    Print["Found ",Length[res]," terms with ",
-      Count[res,DeltaFunction[_],Infinity]," DeltaFunctions"]];
-Plus@@(FeynmanDoIntegrals1[Dot[ints0, #], moms0, vars0, opts]& /@ res),
-If[Head[exp]===Plus,
-  FeynmanDoIntegrals1[Dot[ints0, #], moms0, vars0, opts]& /@ exp],
-  FeynmanDoIntegrals1[Dot[ints0, exp], moms0, vars0, opts]
-]
+      !FreeQ[DeltaFunction[_],#] || FreeQ[DeltaFunction[_],#])& /@ tc),
+        ress=tc,
+        tcc = Collect[# /. DeltaFunction[a_] :>
+                          DeltaFunction[Expand[a]], DeltaFunction[_]]& /@ tc;
+        If[And @@ ((Head[#]===Times && !FreeQ[#,DeltaFunction[_],{1,1}] &&
+          !FreeQ[DeltaFunction[_],#] || FreeQ[DeltaFunction[_],#])& /@ tcc),
+          ress=tcc,
+          Message[FeynmanDoIntegrals::"nodeltaresolv",exp];Abort[]]
+    ];
+    If[$VeryVerbose>=2,
+        Print["Found ",Length[ress]," terms with ",
+          Count[ress,DeltaFunction[_],Infinity]," DeltaFunctions"]];
+    Plus@@(FeynmanDoIntegrals1[DOT[ints0, #], moms0, vars0, opts]& /@ ress),
+    
+    (*No delta functions*)
+    If[Head[exp]===Plus,
+      FeynmanDoIntegrals1[DOT[ints0, #], moms0, vars0, opts]& /@ exp,
+      FeynmanDoIntegrals1[DOT[ints0, exp], moms0, vars0, opts]],
+ FeynmanDoIntegrals1[DOT[ints0, exp], moms0, vars0, opts]
+  ] /. Integrate -> int /. HoldPattern[If[x__]] :> (Evaluate /@ If[x]) /. int -> Integrate
 ];
 
 
@@ -139,15 +160,26 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
     varlims, varlims0, varlimsout, vars, Seriess, out, no,
     c, e, varp, ints, ints0, moms, rr, epsorder, transfac,
     ii, jj, serie0, int, nint, tmpres, seq, tmpcol,
-    expred, varsdrop, newvars, delcol, ChVars, x1, x2, res,*)
+    expred, varsdrop, newvars, delcol, ChVars, x1, x2, res, intopts, nintopts,
+    fci, fcin*)
     DD = Dimension /. Flatten[{opts}] /. Options[FeynmanDoIntegrals],
     epsorders=EpsilonOrder /. Flatten[{opts}] /. Options[FeynmanDoIntegrals]},
 
       varsdrop = {};
 
+    (*Options to pass to Integrate and NIntegrate*)
+     fci=FCIntegrate/.{opts}/.Options[FeynmanDoIntegrals];
+     fcin=FCNIntegrate/.{opts}/.Options[FeynmanDoIntegrals];
+     intopts = Union[OptionsSelect[fci, opts],
+               If[fci==TimedIntegrate,
+               OptionsSelect[Integrate/.{opts}/.Options[TimedIntegrate], opts],{},{}]];
+     nintopts = Union[OptionsSelect[fcin, opts],
+               If[fcin==TimedIntegrate,
+               OptionsSelect[Integrate/.{opts}/.Options[TimedIntegrate], opts],{},{}]];
+
       exp0 /.
 
-      Dot[ints0:(Integratedx[_, _, _]..),(rr_?(FreeQ[#, Integratedx]&))] :>
+      DOT[ints0:(Integratedx[_, _, _]..),(rr_?(FreeQ[#, Integratedx]&))] :>
 
       (
        exp = rr /. DD -> 4 - Epsilon;
@@ -234,11 +266,16 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
             Log[(a_?(!FreeQ[#, kk]&))*(b_?(FreeQ[#, kk]&))] :>
              Log[a] + Log[b] /.
              (cou = 0;
-             a_?( (!NumberQ[#] && NumericQ1[#, vars] &&
+             (*Not having Epsilon here
+             blows up things too much when considering xprime instead of x in the
+             Itzykson&Zuber calculation*)
+             a_?( (!NumberQ[#] && NumericQ1[#, Union[vars,{(*Epsilon*)}]] &&
                    PolynomialQ[(Denominator[#]* Numerator[#])& [
-                     Factor[# /. r_^(b_?((!FreeQ[#, DD])& )) :> r^(b /. {DD -> 4, Epsilon -> 0})]],
+                     Factor[# /. r_^(b_?((!FreeQ[#, DD|Epsilon])& )) :>
+                             r^(b /. {DD -> 4, Epsilon -> 0})]],
                      vars]) & ) :> (sym = Unique["r"];
-             ruls = Append[ruls, sym -> a]; sym))] /. ruls,
+             ruls = Append[ruls, sym -> a]; sym))] /. ruls;
+       If[$VeryVerbose>=3,Print["Expression now reads: ", serie]],
        serie = dumf*transfac*(expred)];
 
         If[Head[serie] =!= Plus, serie0 = {serie}, serie0 = List@@serie];
@@ -254,7 +291,8 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
           If[$VeryVerbose>=2,Print["Finished simplification. Size: ", LeafCount[serie1]]];,
           serie1 = PowerExpand /@ serie0];
 
-       (*Expand sub-factors n Epsilon*)
+       (*Expand sub-factors in Epsilon if so chosen*)
+       If[(Series /. Flatten[{opts}] /. Options[FeynmanDoIntegrals]),
        If[$VeryVerbose>=1,
          Print["Expanding sub-factors in Epsilon up to order ", epsorder+Max[epsorders]]];
        If[$VeryVerbose>1,WriteString["stdout", "\n"]];
@@ -262,16 +300,18 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
          ( If[$VeryVerbose>1,WriteString["stdout", "|"]];
            PowerExpand[#] /.
 
-           (* Don't expand sub-factors containing only one integration variable *)
-           {(a_)?(Count[{#}, varp, Infinity] === 1 & )^(b_)?( !FreeQ[#, Epsilon] & ) :>
-             (If[$VeryVerbose>1,WriteString["stdout", "."]];a^b /. Epsilon ->eps),
+           (* Don't expand sub-factors containing no integration variable *)
+           {(a_?((Count[{#}, varp, Infinity] == 0)&))^(b_?((!FreeQ[#, Epsilon])&)) :>
+             (If[$VeryVerbose>1,WriteString["stdout", "-"]];
+              If[$VeryVerbose>2,Print["Excluding ", a^b]];a^b /. Epsilon ->eps),
            (* Expand sub-factors containing more that one integration variable
            and keep only up to epsorder+Max[epsorders] terms *)
-            (a_)?(Count[{#}, varp, Infinity] > 1 & )^(b_)?( !FreeQ[#, Epsilon] & ) :>
-              (If[$VeryVerbose>1,WriteString["stdout", "."]];
+            (a_?((Count[{#}, varp, Infinity] >= 1)&))^(b_?((!FreeQ[#, Epsilon])&)) :>
+              (If[$VeryVerbose>1,WriteString["stdout", "+"]];
                Seriess[a^b,{Epsilon, 0, epsorder+Max[epsorders]}])} //.
 
-            dumf*Seriess[a__] :> dumf*Normal[Series[a]] /.
+            dumf*Seriess[a__] :> (If[$VeryVerbose>2,Print["Doing Series on ", {a}]];
+                                  dumf*Normal[Series[a]]) /.
 
             {c_*(dumf*a_ + dumf*b_) :> c*dumf*a + c*dumf*b,
              c_*(dumf_ + dumf*b_) :> c*dumf + c*dumf*b} /.
@@ -285,15 +325,20 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
                (If[$VeryVerbose>1,WriteString["stdout", "."]];
                 beta^(-1 + eps/2) + (1 - beta)^(-1 + eps/2))},{}] /.
 
-             eps -> Epsilon /. dumf -> 1)&  /@ serie1);
+             eps -> Epsilon /. dumf -> 1)&  /@ serie1),
+             
+         serie2=serie1];
 
 
        (*If so chosen, expand again without blowing up too much :*)
        If[(Expand /. Flatten[{opts}] /. Options[FeynmanDoIntegrals]),
        ruls = {};
        If[$VeryVerbose>=2,Print["Starting second expansion of expression size: ", LeafCount[serie2]]];
-       serie3 = Expand[ReleaseHold[ReleaseHold[
+       (*serie3 = Expand[ReleaseHold[ReleaseHold[
                   Isolate[serie2]]]] //.
+                    HoldForm -> Identity*)
+       serie3 = FixedPoint[ReleaseHold,
+                  Expand[Isolate[serie2]//ReleaseHold//ReleaseHold]] //.
                     HoldForm -> Identity,
        serie3 = serie2];
 
@@ -305,7 +350,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
        (*Simplify again if so chosen*)
        If[(Simplify /. Flatten[{opts}] /. Options[FeynmanDoIntegrals]),
        If[$VeryVerbose>=2,Print["Starting second simplification"];WriteString["stdout", "\n"]];
-       serie5 = (If[$VeryVerbose>=2,WriteString["stdout", "."]];Simplify[#])& /@
+       serie5 = (If[$VeryVerbose>=1,WriteString["stdout", "."]]; Simplify[#])& /@
          serie4;
        If[$VeryVerbose>=2,Print["Finished simplification. Size: ", LeafCount[serie1]]];,
          serie5 = serie4];
@@ -313,6 +358,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
        (*Tag (non-)integrable terms*)
        If[$VeryVerbose>1,
          Print["Finding (non-)analytically-integrable terms of ",Length[serie5]]];
+
        seri = {};
 
        If[$VeryVerbose>1,WriteString["stdout", "\n"]];
@@ -324,7 +370,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
           If[$VeryVerbose>1,WriteString["stdout", "."]];
 
           tmp =
-          SelectSplit[serie5[[i]] /.
+          SelectSplit[dum*serie5[[i]] /.
             {Momentum -> (Momentum[{#}[[1]]] &), LorentzIndex -> (LorentzIndex[{#}[[1]]] &)},                        {(*Analytically integrable logs*)
             MatchQ[#, (Log[_?(factest[vars][Together[#]]&)]|
                       (Log[_?(factest[vars][Together[#]]&)]^
@@ -355,10 +401,9 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
           FreeQ[#, varp | Epsilon]&,
           (*Constant factor with Epsilon dependence*)
           (FreeQ[#, varp] && FreeQ[#, Epsilon] === False)&},
-          Heads -> {int,nint,no,int,nint,no,out,out,int}] /.
+          Heads -> {int,nint,no,int,nint,no,out,out,int}] /. dum -> 1 /.
 
           (int|nint|out|no)[1] :> 1;
-
 
            (*Do the actual integrations*)
            Which[
@@ -367,8 +412,8 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 
             If[$VeryVerbose>2,
                Print["No need to integrate ",Times@@tmp]];
-            seri = Append[seri, Dot[ Sequence@@((Integratedx@@##)& /@ Join[varlimsout]),
-               (Times@@((#[[3]]-#[[2]])&/@varlims)) * tmp ]],
+            seri = Append[seri, DOT[Sequence@@((Integratedx@@##)& /@ Join[varlimsout]),
+               (Times@@((#[[3]]-#[[2]])&/@varlims)) * ((Times@@tmp)/.out->Identity) ]],
 
             FreeQ[tmp, no] && FreeQ[tmp, nint] && !FreeQ[tmp, int],
 
@@ -376,9 +421,10 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
                Print["Analytically integrating ",
                  Times@@tmp/.{int->Identity,nint->Identity,out->Identity}]];
             seri = Append[seri,
-              Dot[ Sequence@@((Integratedx@@##)& /@ varlimsout),
-               (FCIntegrate /. Flatten[{opts}] /. Options[FeynmanDoIntegrals])[
-                 Times @@ ((#[[1]])& /@ Cases[tmp,_int]), Sequence @@ varlims]*
+              DOT[ Sequence@@((Integratedx@@##)& /@ varlimsout),
+               fci[
+                 Times @@ ((#[[1]])& /@ Cases[tmp,_int]), Sequence @@ varlims,
+                 Sequence@@intopts]*
                  Times @@ ((#[[1]])& /@ Cases[tmp,_out])]],
 
            FreeQ[tmp, no] && (!FreeQ[tmp, nint] && FreeQ[tmp, int] ||
@@ -389,10 +435,11 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
                Print["\"Numerically\" integrating ",
                  Times@@tmp/.{int->Identity,nint->Identity,out->Identity}]];
            seri = Append[seri,
-               Dot[ Sequence@@((Integratedx@@##)& /@ varlimsout),
-               (FCNIntegrate /. Flatten[{opts}] /. Options[FeynmanDoIntegrals])[
+               DOT[ Sequence@@((Integratedx@@##)& /@ varlimsout),
+               fcin[
                  Times @@ ((#[[1]])& /@ Cases[tmp,_nint])*
-                 Times @@ ((#[[1]])& /@ Cases[tmp,_int]), Sequence @@ varlims]*
+                 Times @@ ((#[[1]])& /@ Cases[tmp,_int]), Sequence @@ varlims,
+                 Sequence@@nintopts]*
                  Times @@ ((#[[1]])& /@ Cases[tmp,_out])]],
 
             !FreeQ[tmp, no] || !FreeQ[tmp, nint] && !FreeQ[tmp, int],
@@ -400,7 +447,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
             If[$VeryVerbose>2,
                Print["Can't integrate ",Times@@tmp/.
                  {int->Identity,nint->Identity,out->Identity,no->Identity}]];
-            seri = Append[seri, Dot[ Sequence@@((Integratedx@@##)& /@ Join[varlimsout,varlims]),
+            seri = Append[seri, DOT[ Sequence@@((Integratedx@@##)& /@ Join[varlimsout,varlims]),
                   Times @@ tmp/.{int->Identity,nint->Identity,out->Identity,no->Identity} ]],
                  
            True,
@@ -411,7 +458,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 
        {i, 1, Length[serie5]}];
 
-       Plus @@ seri)];
+       (Plus @@ seri) /. dum -> 0)];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
