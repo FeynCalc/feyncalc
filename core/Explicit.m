@@ -60,7 +60,7 @@ Explicit[y_, opts___?OptionQ] := Block[{dim, gh, gp, gvv, gv, qp, qgv, t2g, fis,
            gvv[x__] := ghv[x] = ExpandScalarProduct[ GluonGhostVertex[x, Explicit -> True, op]];
            qgv[x__] := qgv[x] = ExpandScalarProduct[ QuarkGluonVertex[x, Explicit -> True, op]];
            r = r /. {GluonVertex :> gv, GluonGhostVertex :> gvv, GhostPropagator :> gh, 
-                     GluonPropagator :> gp, QuarkGluonVertex :> qgv
+                     GluonPropagator :> gp, QuarkGluonVertex :> qgv, QuarkPropagator :> qp
                     };
 
            If[CheckContext["Twist2GluonOperator"],
