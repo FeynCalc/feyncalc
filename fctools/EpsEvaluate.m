@@ -27,7 +27,7 @@ MakeContext[ Cases2, Eps , Expanding,
 ExpandScalarProduct, FeynCalcInternal, LC, LCD, LorentzIndex, Momentum, Pair, PairContract,
 LorentzIndex, ExplicitLorentzIndex];
 
-EpsEvaluate[x_] := x /; FreeQ2[x,{LC,LCD,Eps}];     (*EpsEvaluatedef*)
+EpsEvaluate[x_] := x /; FreeQ2[x,{LeviCivita, LC,LCD,Eps}];     (*EpsEvaluatedef*)
 EpsEvaluate[ix_] := Block[{x = ix, nx,cx, tx, rud},
  x = FeynCalcInternal[ix];
  If[LeafCount[x] < 1000,    x//.Eps->Epsev,
