@@ -18,6 +18,8 @@ transformed into DiracMatrix[mu, Dimension->D] by FeynCalcInternal.";
 
 Begin["`Private`"];
 
+MakeContext["DeclareNonCommutative"][GAD];
+
 GAD[DOT[x_,y__]] := Map[GAD, DOT[x,y]];
 GAD[x_, y__] := DOT @@ Map[GAD,{x,y}];
 

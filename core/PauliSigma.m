@@ -19,7 +19,7 @@ explicit Pauli matrices. PauliSigma[] yields
 
 Begin["`Private`"];
 
-DeclareNonCommutative[PauliSigma];
+MakeContext["DeclareNonCommutative"][PauliSigma];
 
 PauliSigma[1] = { {0, 1}, {1,0} };
 PauliSigma[2] = { {0,-I}, {I,0} };
