@@ -245,7 +245,7 @@ tim = TimeUsed[];
 (*
         bb = Collect2[b, LorentzIndex, Factoring -> False];
 *)
-        bb = Collect3[b, Pair, Factor-> False];
+        bb = Collect3[b, Pair, Factoring-> False];
         If[Head[bb] === Plus,
            contractLColl[a, bb], 
            contract21[a, bb]

@@ -171,10 +171,10 @@ dirtr[a_] := ($tracecount++;
               a /. diracgamma -> diracg
              );
 
-new = (holdy /. lm2form /. Pair -> pair2f /. Eps -> eps2f /.
+new =( (holdy /. lm2form /. Pair -> pair2f /. Eps -> eps2f /.
        DiracGamma -> diracgamma /. DOT->NonCommutativeMultiply /.
-       DiracTrace -> dirtr /. diracgamma -> diracg/. n2form
-      )[[1]];
+       DiracTrace -> dirtr /. diracgamma -> diracg
+      )[[1]] ) //.n2form;
 
 
 temp = OpenWrite[$TemporaryPrefix<>"teEmpf", FormatType -> InputForm];

@@ -45,10 +45,15 @@ Options[CalcColorFactor] = {SUNNToCACF -> True};
 
 SetAttributes[CalcColorFactor, Listable];
 
-CalcColorFactor[x_, opts___?OptionQ] := If[FreeQ2[FeynCalcInternal[x], SUNIndex], 
-   x, SUNSimplify[SUNSimplify[
-     (If[ !FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[
-      SUNSimplify[x]], Explicit -> False], Explicit -> True]]
+CalcColorFactor[x_Plus, opts___?OptionQ] := CalcColorFactor[#, opts]& /@ x;
+
+CalcColorFactor[x_, opts___?OptionQ] := Module[{tmp = FeynCalcInternal[x]},
+ If[FreeQ[tmp, SUNIndex], tmp, 
+    If[Head[tmp]=!=Times, fac = 1, fac = Select[tmp, FreeQ[#, SUNIndex]&]];
+    fac SUNSimplify[SUNSimplify[
+    (If[ !FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[
+     SUNSimplify[tmp/fac]], Explicit -> False], Explicit -> True]]
+];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
