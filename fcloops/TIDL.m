@@ -81,19 +81,18 @@ tidl[{{q_,mu_}},{p_},n_] :>
 ) /;  Pair[Momentum[p, n], Momentum[p, n]] =!= 0
 ,
 (* Bmunu *)
-tidl[{{q_,mu_},{q_,nu_}},{p_},n_] :>
+tidl[{{q1_,mu_},{q2_,nu_}},{p_},n_] :>
 (
- (Pair[LorentzIndex[mu, n], LorentzIndex[nu, n]]*
-      (Pair[Momentum[p, n], Momentum[q, n]]^2 - 
-        Pair[Momentum[p, n], Momentum[p, n]]*
-         Pair[Momentum[q, n], Momentum[q, n]]))/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) - 
-   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
-      Pair[LorentzIndex[nu, n], Momentum[p, n]]*
-      (n*Pair[Momentum[p, n], Momentum[q, n]]^2 - 
-        Pair[Momentum[p, n], Momentum[p, n]]*
-         Pair[Momentum[q, n], Momentum[q, n]]))/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2)
+(Pair[LorentzIndex[mu, n], LorentzIndex[nu, n]]*
+   (Pair[Momentum[p, n], Momentum[q1, n]]*Pair[Momentum[p, n],
+      Momentum[q2, n]] - Pair[Momentum[p, n], Momentum[p, n]]*
+     Pair[Momentum[q1, n], Momentum[q2, n]]))/
+  ((1 - D)*Pair[Momentum[p, n], Momentum[p, n]]) -
+ (Pair[LorentzIndex[mu, n], Momentum[p, n]]*Pair[LorentzIndex[nu, n],
+    Momentum[p, n]]*(D*Pair[Momentum[p, n], Momentum[q1, n]]*
+     Pair[Momentum[p, n], Momentum[q2, n]] -
+    Pair[Momentum[p, n], Momentum[p, n]]*Pair[Momentum[q1, n],
+      Momentum[q2, n]]))/((1 - D)*Pair[Momentum[p, n], Momentum[p, n]]^2)
 ) /; Pair[Momentum[p, n], Momentum[p, n]] =!= 0
 ,
 (* Bmunurho *)
