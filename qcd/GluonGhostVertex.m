@@ -55,7 +55,7 @@ Explicit -> False
 {l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
 
 
-GluonGhostVertex[{mui_, ai_}, {bi_}, {ki_, ci_}, opt___Rule] := 
+GluonGhostVertex[{mui_, ai_}, {bi_}, {ki_, ci_}, opt___?OptionQ] := 
    GluonGhostVertex[{x, y, ai}, {z,h,bi}, {ki,l,ci}, opt] /; 
 	(Explicit /. {opts} /. Options[GluonGhostVertex]) === True;
 
@@ -64,12 +64,12 @@ GluonGhostVertex[x, l[i], c[i], y];
 
 GGV = GluonGhostVertex;
 
-GluonGhostVertex[a_,b_,c_, d_,e_,f_, g_,h_,i_, opt___Rule] :=
+GluonGhostVertex[a_,b_,c_, d_,e_,f_, g_,h_,i_, opt___?OptionQ] :=
 GluonGhostVertex[{a,b,c},{d,e,f},{g,h,i},opt] /;
-   FreeQ[Map[Head,{a,b,c,d,e,f,g,h,i}], Integer];
+   FreeQ[Map[Head,{a,b,c,d,e,f,g,h,i}], Integer|Rule|RuleDelayed|List];
 
 GluonGhostVertex[{pi_, mui_, ai_}, {___, bi_},
-                 {ki_, ___, ci_}, opt___Rule] := 
+                 {ki_, ___, ci_}, opt___?OptionQ] := 
    SUNF[SUNIndex[ai], SUNIndex[bi], SUNIndex[ci]] GluonGhostVertex[ki,mui,opt];
 
 GluonGhostVertex[ki_, mui_, opt___?OptionQ] :=
