@@ -1,1 +1,1 @@
-{{-I}, {I*GaugeFixingParameter}, {I}}
+{{-I}, {I*$Gauge}, {I}}
