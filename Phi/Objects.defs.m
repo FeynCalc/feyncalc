@@ -527,19 +527,12 @@ This function must be used to do the replacement, a plain substitution will \
 NOT work.  Notice that FeynCalc treats all isospin indices as color indices.";
 
 UChiMatrix::"usage" =
-    "UChiMatrix[x,opts] := UMatrix[UChi[opts],opts][x] := \
-2*QuarkCondensate[opts]*(UQuarkMassMatrix[opts] + \
-UGeneratorMatrixIsoDotFull[QuantumField[Particle[Scalar[0]]][x],opts] + \
-UGeneratorMatrixIsoDotFull[QuantumField[Particle[PseudoScalar[0]]][x],opts]]).\
+    "UChiMatrix[x,opts] := UMatrix[UChi[opts],opts][x].\
   UChiMatrix  takes three optional arguments, with head RenormalizationState, \
 RenormalizationScheme and ExpansionState respectively.";
 
 UChi::"usage" =
-    "UChiMatrix[opts] := UMatrix[UChi[opts],opts] := \
-2*QuarkCondensate[opts]*(UQuarkMassMatrix[opts] + \
-UGeneratorMatrixIsoDotFull[QuantumField[Particle[Scalar[0]]][x],opts] + \
-UGeneratorMatrixIsoDotFull[QuantumField[Particle[PseudoScalar[0]]][x]opts]]).";
-
+    "UChiMatrix[opts] := UMatrix[UChi[opts],opts].";
 
 UGeneratorMatrixIsoDot::"usage" =
     "UGeneratorMatrixIsoDot[a[x],opts] := IsoDot[IsoVector[a,opts][x], \
