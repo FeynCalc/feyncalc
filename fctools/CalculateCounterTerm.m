@@ -10,10 +10,10 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`CalculateCounterTerm`",
+BeginPackage["HighEnergyPhysics`qcd`CalculateCounterTerm`",
              "HighEnergyPhysics`FeynCalc`"];
 
-CalculateCounterTerm::usage= "CalculateCounterTerm[exp, k] 
+CalculateCounterTerm::"usage"= "CalculateCounterTerm[exp, k] \
 calculates the residue of exp.";
 
 (* ------------------------------------------------------------------------ *)
@@ -34,7 +34,6 @@ DiracMatrix,
 DiracOrder,
 DiracSimplify,
 DiracTrick,
-DOT,
 DotSimplify,
 Eps,
 Epsilon, 
@@ -51,7 +50,6 @@ FinalSubstitutions,
 GluonVertex,
 Integratedx,
 Isolate,
-IsolateSplit,
 LeviCivita,
 LorentzIndex,
 Momentum,
@@ -87,11 +85,11 @@ pr[y__] := Print[y] /; $VeryVerbose > 0;
 
 mapart[y_Plus]  := mapart /@ y;
 mapart[y_Times] := Select1[y, OPEm] *
- Select2[Select2[y,OPEm], {(-1)^(_. + OPEm) ,Pair}] *
-  Apart[Select1[Select2[y,OPEm], {(-1)^(_. + OPEm) ,Pair}]];
+ Select2[Select2[y, OPEm], {(-1)^(_. + OPEm), Pair}] *
+  Apart[Select1[Select2[y, OPEm], {(-1)^(_. + OPEm), Pair}]];
 
 topower2[y_] := y /. Power2 -> Power /. (a_ /; !FreeQ[a,OPEDelta])^
-                (p_ /;Head[p] =!= Integer) :> Power2[a, p];
+                (p_ /; Head[p] =!= Integer) :> Power2[a, p];
 
 opback[y_] := If[Head[y] === Plus, opback/@y,
                  If[FreeQ[y, OPESum], y,
@@ -200,8 +198,8 @@ pr["cancel scalar products"];
  If[chish === True, 
     pr["CHISHOLM"];
     t6 = Collect2[t6,DiracGamma,Eps, Factoring->False];
-     doc[y__] := doc[y] = Chisholm[Dot[y]];
-    t6 = Contract[t6 /. Dot -> doc];
+     doc[y__] := doc[y] = Chisholm[DOT[y]];
+    t6 = Contract[t6 /. DOT -> doc];
     t6 = Contract[t6,EpsContract->False, Rename -> True];
     t6 = ScalarProductCancel[t6,k];
    ];
@@ -212,12 +210,13 @@ pr["collect w.r.t. integration momentum"];
                  ];
 t7 = PowerSimplify[DiracTrick[FeynAmpDenominatorSimplify[t7,k]]];
 t7 = Collect2[t7, k, Factoring->False];
-pr["entering OneLoopSimplify"];
 
 (*
+pr["entering OneLoopSimplify"];
 t7 = OneLoopSimplify[t7,k, Dimension -> 4, Collecting -> False];
 pr["exiting OneLoopSimplify"];
 *)
+
 nt7 = 0;
 If[Head[t7] =!= Plus, 
    nt7 = ChangeDimension[
@@ -277,19 +276,19 @@ If[!StringQ[saveit],
        t8 = 0; lt = Length[t7]; ht7 = Hold@@{t7};
        For[i = 1, i <= lt, i++, pr@@{"i ======== ", i," out of ",lt};
            t8 = t8 + (
-Select1[ht7[[1,i]],k] Collect2[
-                  PowerSimplify[
-                     OPEIntegrate2[Select2[ht7[[1, i]], k], k,
+      Select1[pr[". "];ht7[[1,i]],k] Collect2[pr[".. "];
+                  PowerSimplify[pr["... "];
+                     OPEIntegrate2[pr[".... "];Select2[pr["..... "];ht7[[1, i]], k], k,
                                    Integratedx -> True,
                                    OPEDelta    -> False,
                                    Collecting  -> False
-                                  ]/.finsub 
+                                  ]/.(pr["...... "];finsub)
                                ] , LorentzIndex 
                                              ]
                      )
           ];
       ];
-       t8 = ChangeDimension[t8,4] /. finsub;
+      t8 = ChangeDimension[t8,4] /. finsub;
       t8 = t8 /. z_^(em_/;Head[em]=!=Integer) /(a_ (a_ - z_)) :>
                  (z^(em-1) (1/(a-z)-1/a));
       t8 = t8 /. (a_ b_^(em_/;Head[em]=!=Integer)/(a_ - b_)) :>
@@ -309,8 +308,7 @@ t8 = t8 /. finsub;
              pr["CHECK if the spurious sums cancel"];
              fsut8 = Factor[sut8];
              If[fsut8===0,
-                pr["YEAHHH! indeed it cancels; even without an explicit
-                    human mind"];
+                pr["YEAHHH! indeed it cancels; even without an explicit human mind"];
                 t8 = t8-sut8,
                 t8 = t8-sut8 + opback[Collect2[fsut8,opvar]];
                ]
