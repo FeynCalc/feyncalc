@@ -26,17 +26,28 @@ Begin["`Private`"];
 MakeContext[Apart2,Cases2,Dimension, DotSimplify,Expanding,
 ExpandScalarProduct,
 FeynCalcExternal,Pair,Momentum,OPEDelta,
-FreeQ2,FAD,SPD,SOD,FeynCalcInternal,PropagatorDenominator,
+FC2RHI,FreeQ2,FAD,SPD,SOD,FeynCalcInternal,PropagatorDenominator,
 FeynAmpDenominator, FeynAmpDenominatorCombine,
 FeynAmpDenominatorSimplify,  Select1, Select2, TLI, TLI2FC, TFi];
 
 Options[ToTFi] = {Dimension -> D, Method -> Automatic};
 
+(*
 ToTFi[z_] := ToTFi[z, Global`q1, Global`q2, Global`p];
 ToTFi[z_,opts__Rule] := ToTFi[z, Global`q1, Global`q2, Global`p, opts];
+*)
 
 ToTFi[z_Plus,qqp___, pe_/;Head[pe]=!=Rule, opts___Rule] := 
     ToTFi[#, qqp, pe, opts]& /@ z;
+
+(* 1-loop *)
+ToTFi[a_,q_,p_/;Head[p]=!=Rule,opts___Rule] := 
+  (ToExpression["TFIRecurse"][ ToTFi[ 
+FeynAmpDenominatorCombine[
+	FeynCalcInternal[ Expand[ FAD[{qq, mM}] FeynAmpDenominatorSimplify[a,q] ] ]], 
+                      q, qq, p, opts]/.TFi->ToExpression["TFI"]
+                        ] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
+  ) /; MemberQ[$ContextPath, "HighEnergyPhysics`Tarcer`"];
 
 ToTFi[z_Times, q1_,q2_,p_,opts___Rule] :=
  Select1[z, {q1, q2}] saveToTFi[Select2[z, {q1, q2}], q1, q2, p, opts];
@@ -44,12 +55,16 @@ ToTFi[z_Times, q1_,q2_,p_,opts___Rule] :=
 ToTFi[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
   saveToTFi[h, m];
 
+(*
+*)
+
 saveToTFi[z_Times, q1_, q2_, p_, opts___Rule] := 
  (saveToTFi[Select2[z,{q1,q2}], q1,q2, p, opts] Select1[z,{q1,q2}] )/; 
    Select1[z,{q1,q2}] =!= 1;
 
 saveToTFi[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] := 
 saveToTFi[z, q1,q2,p,opts] = 
+Catch[
 Module[
 {dim, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
    dim = Dimension /. {opts} /. Options[ToTFi];
@@ -67,7 +82,7 @@ Module[
           If[!FreeQ[t0, FeynAmpDenominator[__]^_], 
              t0=FeynAmpDenominatorCombine[t0], t0]
          ];
-   If[!FreeQ[t0, TLI], t0 = FeynAmpDenominatorSimplify[TLI2FC[t0]]];
+   If[!FreeQ[t0, TLI], t0 = FeynAmpDenominatorSimplify[TLI2FC[t0],FC2RHI->False]];
 
   pairs = Cases2[t0, Pair];
      If[!FreeQ[pairs, Plus],
@@ -79,13 +94,16 @@ Module[
    If[Head[t0]===Plus, 
       result = ToTFi[t0,q1,q2,p,opts],
    If[Head[t0]=!=Times, t0 = t0 dummyterm; dummytag=True, dummytag=False];
-   prtoci[a_, b_]:=prtoci[a, b] = Block[{na = a /. Momentum[em_, ___]:> em },
+
+   prtoci[a_, b_]:= prtoci[a, b] = 
+      Module[{na = a /. Momentum[em_, ___]:> em,r },
         r=Which[na ===  q1,   c1[b], na === -q1,   c1[b],
                 na ===  q2,   c2[b], na === -q2,   c2[b],
                 na ===  q1-p, c3[b], na === -q1+p, c3[b],
                 na ===  q2-p, c4[b], na === -q2+p, c4[b],
                 na ===  q1-q2,c5[b], na === -q1+q2,c5[b]
                ]; If[r === Null, $Failed, r]];
+
    t1 = t0 /. PropagatorDenominator -> prtoci /.
         {FeynAmpDenominator[a__] :> Apply[Times, {a}] ,
          Pair[Momentum[OPEDelta,___], Momentum[q1, ___]] :> dq1,
@@ -101,6 +119,8 @@ Module[
    If[FreeQ[t1, c3], t1 = t1 c3[FakeMass]];
    If[FreeQ[t1, c4], t1 = t1 c4[FakeMass]];
    If[FreeQ[t1, c5], t1 = t1 c5[FakeMass]];
+
+If[!FreeQ[t1,$Failed], Throw[z]];
 
 t2 = 
 Select[t1,FreeQ[#,c1|c2|c3|c4|c5| dq1|dq2| pq1|pq2|q1q1|q1q2|q2q2]&]*
@@ -137,7 +157,7 @@ If[dummytag, t3 = t3 /. dummyterm->1];
 result = If[FreeQ2[t3,{q1,q2}],t3, z]
 ]];
 result
-];
+]];
 
 
 End[]; EndPackage[];

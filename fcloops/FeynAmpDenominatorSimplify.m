@@ -73,7 +73,7 @@ MakeContext[
             SPD 
            ];
 
-Options[FeynAmpDenominatorSimplify] = {FC2RHI -> True, 
+Options[FeynAmpDenominatorSimplify] = {FC2RHI -> False, 
                                        IntegralTable -> {},
                                        IncludePair -> False
                                       };
