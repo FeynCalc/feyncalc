@@ -11,11 +11,11 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`PaVeReduce`",
+BeginPackage["HighEnergyPhysics`fcloops`PaVeReduce`",
              "HighEnergyPhysics`FeynCalc`"];
 
 
-PaVeReduce::usage=
+PaVeReduce::"usage"=
 "PaVeReduce[expr] reduces all Passarino-Veltman integrals
 (i.e. all PaVe's) in expr down to scalar A0, B0, C0 and D0.";
 
@@ -51,7 +51,7 @@ WriteOutPaVe
 small = MakeContext["SmallVariable"];
 
 StandardMatrixElement = 
- HighEnergyPhysics`FeynCalc`OneLoop`StandardMatrixElement;
+ HighEnergyPhysics`fcloops`OneLoop`StandardMatrixElement;
 
 Options[ PaVeReduce ] = { Dimension -> True,
                           IsolateNames->False,
@@ -462,7 +462,7 @@ t = t/.C0->backpc/.D0->backpd;
 If[ !FreeQ[t, HoldForm], t = FixedPoint[ReleaseHold,t] ];
 t = Collect[t, {A0[__],B0[__], B1[__], B00[__],
                 B11[__], C0[__], D0[__], PaVe[__], 
-                HoldPattern[Dot[__]]}, Factor2
+                HoldPattern[Dot[__]], HoldPattern[DOT[__]]}, Factor2
            ];
 If[ !FreeQ[t, $epsilon], 
      t = Expand[t/.Plus->pluep]/.$epsilon->0/.pluep->Plus

@@ -12,10 +12,10 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`OneLoopSimplify`",
+BeginPackage["HighEnergyPhysics`fcloops`OneLoopSimplify`",
              "HighEnergyPhysics`FeynCalc`"];
 
-OneLoopSimplify::usage = 
+OneLoopSimplify::"usage" = 
 "OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp.
 The second argument denotes the integration momentum.
 If the first argument has head FeynAmp then
@@ -185,8 +185,8 @@ If[spc =!= True, t5 = t4,
    t5 = ScalarProductCancel[t5, q, FeynAmpDenominatorSimplify->True];
    If[!FreeQ[t5, DiracGamma],
       dirsimp[z__] := dirsimp[z] = If[!FreeQ[{z}, DiracGamma], 
-                                      DiracSimplify[Dot[z]], Dot[z]];
-      t5 = t5 /. Dot -> dirsimp
+                                      DiracSimplify[DOT[z]], DOT[z]];
+      t5 = t5 /. DOT -> dirsimp
      ]
   ];
 
