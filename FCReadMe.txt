@@ -16,7 +16,9 @@ RELEASE NOTES FOR FEYNCALC 4.9.0beta.
 ------------------------------------------------------------------------------------
 INSTALLATION
 ------------------------------------------------------------------------------------
+Get the files from CVS for the latest update ...
 
+Eventually:
 Download the file HighEnergyPhysics-4.9.beta.zip
 
 Place the file preferrably in that directory which $UserAddOnsDirectory is
@@ -28,7 +30,6 @@ Choose 'Rebuild Help Index' from the 'Help' menu.
 
 Type <<HighEnergyPhysics`FeynCalc` and try out one of the examples.
 
-
 ------------------------------------------------------------------------------------
 MAIN NEW FEATURES
 ------------------------------------------------------------------------------------
@@ -36,9 +37,11 @@ MAIN NEW FEATURES
 ------------------------------------------------------------------------------------
 CHANGELOG version 4.2.1 -> 4.9.beta
 ------------------------------------------------------------------------------------
+- improved DiracOrder
+- added FeynCalcToLaTeX
 - fixed the cyclicity problem with Gamma[5]
 - simplified installation mechanism
-- fixed things for Mathematica 5.0
+- fixed things for Mathematica 5.0 and FeynArts and patching and all that 
 - ...
 
 
