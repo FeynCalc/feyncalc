@@ -950,5 +950,7 @@ Remove[HighEnergyPhysics`FeynArts`SetForm];
   ];
 ];
 
+DeclareNonCommutative@MakeContext["QuarkGluonVertex"];
+
 SetDirectory[savethisdir];
 Clear[savethisdir];
