@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`Collect3`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Collect3::usage= 
+Collect3::"usage"= 
 "Collect3[expr, {x, y, ...}] collects terms involving the same powers
 of monomials x^n1*y^n2 ... An option Factor -> True/False can be 
 given, which factors the coefficients. The option Head (default Plus)

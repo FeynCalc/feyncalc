@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`AntiSymmetrize`",
              "HighEnergyPhysics`FeynCalc`"];
 
-AntiSymmetrize::usage=
+AntiSymmetrize::"usage"=
 "AntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect
 to the variables a1, a2, ... ";
 

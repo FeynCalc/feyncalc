@@ -11,7 +11,7 @@
 BeginPackage["HighEnergyPhysics`general`Combinations`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Combinations::usage=
+Combinations::"usage"=
 "Combinations[l, n] returns a list of all possible sets containing n \
 elements from the list l. (this function is probably in the combinatorics \
 package, but we have enough in memory already)";

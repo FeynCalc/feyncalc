@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`Map2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Map2::usage= 
+Map2::"usage"= 
 "Map2[f, exp] is equivalent to Map if NTerms[exp] > 1,
 otherwise Map2[f, exp] gives f[exp].";
 

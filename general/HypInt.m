@@ -13,10 +13,10 @@
 BeginPackage["HighEnergyPhysics`general`HypInt`",
              "HighEnergyPhysics`FeynCalc`"];
 
-HypInt::usage=
-"HypInt[exp, t]  substitutes for all 
-Hypergeometric2F1[a,b,c,z] in exp 
-Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] 
+HypInt::"usage"=
+"HypInt[exp, t] substitutes for all
+Hypergeometric2F1[a,b,c,z] in exp
+Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1]
 t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a).";
 
 (* ------------------------------------------------------------------------ *)

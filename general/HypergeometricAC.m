@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`HypergeometricAC`",
              "HighEnergyPhysics`FeynCalc`"];
 
-HypergeometricAC::usage=
+HypergeometricAC::"usage"=
 "HypergeometricAC[n][exp] analytically continues 
 Hypergeometric2F1 functions in exp.
 The second argument n refers to the equation number (n) in chapter 2.10 of

@@ -16,7 +16,7 @@
 BeginPackage["HighEnergyPhysics`general`Isolate`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Isolate::usage=
+Isolate::"usage"=
 "Isolate[expr] substitutes abbreviations KK[i] for all 
 Plus[...] (sub-sums) in expr. The inserted KK[i] have head HoldForm. 
 Isolate[expr, varlist] substitutes 
@@ -25,6 +25,21 @@ of a member of the list varlist. Instead of KK any other head or
 a list of names 
 of the abbreviations may be specified
 with the option IsolateNames.";
+
+IsolatePrint::"usage" =
+"IsolatePrint is an option of Isolate.
+If it is set to OutputForm (or any other *Form) the definitions
+of the abbreviations are printed during the operation of Isolate.
+The setting IsolatePrint -> False suppresses printing.";
+
+IsolateSplit::"usage" =
+"IsolateSplit is an option for Isolate. Its setting determines the
+maximum number of characters of FortranForm[expr] which are
+abbreviated by Isolate. If the expression is larger than the
+indicated number, it is split into smaller pieces and onto
+each subsum Isolate is applied.
+With the default setting IsolateSplit -> Infinity no splitting
+is done.";
 
 (* ------------------------------------------------------------------------ *)
 

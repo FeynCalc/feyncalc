@@ -16,7 +16,7 @@
 BeginPackage["HighEnergyPhysics`general`Symmetrize`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Symmetrize::usage=
+Symmetrize::"usage"=
 "Symmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect 
 to the variables a1, a2, ... .";
 

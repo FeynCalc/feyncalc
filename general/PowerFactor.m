@@ -13,8 +13,8 @@
 BeginPackage["HighEnergyPhysics`general`PowerFactor`",
              "HighEnergyPhysics`FeynCalc`"];
 
-PowerFactor::usage=
-"PowerFactor[exp] replaces x^a y^a to (x y)^a.";
+PowerFactor::"usage"=
+"PowerFactor[exp] replaces x^a y^a with (x y)^a.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -13,22 +13,23 @@
 BeginPackage["HighEnergyPhysics`general`TimedIntegrate`",
              "HighEnergyPhysics`FeynCalc`"];
 
-TimedIntegrate::usage= "
+TimedIntegrate::"usage"= "
 TimedIntegrate[exp, vars] is like Integrate, but stops after the number of \
-seconds specified by the option Timing. Options of Integrate can be given\
+seconds specified by the option Timing. Options of Integrate can be given \
 and are passed on.";
+
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
+Epsilon = MakeContext["Epsilon"];
+Integratedx = MakeContext["Integratedx"];
+
 TimedIntegrate::"time" =
     "Time constraint `1` exceeded.";
 TimedIntegrate::"abort" =
     "Manual abort";
-
-Epsilon = MakeContext["Epsilon"];
-Integratedx = MakeContext["Integratedx"];
 
 Options[TimedIntegrate] = {Timing -> 10, Assumptions -> Epsilon > 0,
                            Integrate -> Integrate, Expand -> True};

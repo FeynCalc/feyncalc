@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`Apart3`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Apart3::usage=
+Apart3::"usage"=
 "Apart3[expr, x] is equivalent to
 Map2[Factor2, Collect2[Apart1[expr,x],x]].";
 

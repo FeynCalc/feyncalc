@@ -17,7 +17,7 @@
 BeginPackage["HighEnergyPhysics`general`Series3`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Series3::usage=
+Series3::"usage"=
 "Series3 performs a series expansion around 0.
 Series3 is equivalent to Series, except that it applies Normal
 on the result and that some Series bugs are fixed.

@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`Hill`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Hill::usage= "Hill[x,y] gives the Hill identity with arguments x and y.
+Hill::"usage"= "Hill[x,y] gives the Hill identity with arguments x and y.
 The returned object is 0.";
 
 (* ------------------------------------------------------------------------ *)

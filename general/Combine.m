@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`general`Combine`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Combine::usage=
+Combine::"usage"=
 "Combine[expr] puts terms in a sum over a common denominator, and
 cancels factors in the result. Combine is similar to Together,
 but accepts the option Expanding and works usually 

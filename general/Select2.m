@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`Select2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Select2::usage=
+Select2::"usage"=
 "Select2[expr, a, b, ...] is equivalent to
 Select[expr, !FreeQ2[#, {a,b, ...}]&], except the
 special cases: Select2[a, b] returns 1 and 

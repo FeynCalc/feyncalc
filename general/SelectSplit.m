@@ -11,10 +11,10 @@
 BeginPackage["HighEnergyPhysics`general`SelectSplit`",
              "HighEnergyPhysics`FeynCalc`"];
 
-SelectSplit::usage=
+SelectSplit::"usage"=
 "SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \
-which each element matches a patterns from p and appends \
-the subset of remaining unmatched elements.";
+which every element li satisfies a criterium pj[li] with pj from p and \
+appends the subset of remaining unmatched elements.";
 
 (* ------------------------------------------------------------------------ *)
 

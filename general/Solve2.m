@@ -15,9 +15,9 @@
 BeginPackage["HighEnergyPhysics`general`Solve2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Solve2::usage=
-"Solve2 is equivalent to Solve, except that it works only for 
-linear equations (and returns just a list) 
+Solve2::"usage"=
+"Solve2 is equivalent to Solve, except that it works only for
+linear equations (and returns just a list)
 and accepts the options Factoring and FinalSubstitutions.";
 
 (* ------------------------------------------------------------------------ *)

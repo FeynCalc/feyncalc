@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`general`Factor2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Factor2::usage = 
+Factor2::"usage" = 
 "Factor2[poly] factors a polynomial in a standard
 way. Factor2 works (sometimes) better than Factor on polynomials 
 involving rationals with sums in the denominator. 

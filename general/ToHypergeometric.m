@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`ToHypergeometric`",
              "HighEnergyPhysics`FeynCalc`"];
 
-ToHypergeometric::usage=
+ToHypergeometric::"usage"=
 "ToHypergeometric[t^b (1-t)^c (u + t z)^a, t]  returns
 u^a Gamma[b+1] Gamma[c+1]/Gamma[b+c+2] 
 Hypergeometric2F1[-a,b+1,b+c+2,-z/u]. Remember that

@@ -17,7 +17,7 @@
 BeginPackage["HighEnergyPhysics`general`Series2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Series2::usage=
+Series2::"usage"=
 "Series2 performs a series expansion around 0.
 Series2 is similar to Series, except that it applies Normal
 on the result and that some Series bugs are fixed.

@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`general`NumericQ1`",
              "HighEnergyPhysics`FeynCalc`"];
 
-NumericQ1::usage=
+NumericQ1::"usage"=
 "NumericQ1[x,{a,b,..}] is like NumericQ, but assumes that {a,b,..} are \
 numeric quantities.";
 

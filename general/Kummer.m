@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`Kummer`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Kummer::usage= "Kummer[i][exp] applies Kummer relation number i 
+Kummer::"usage"= "Kummer[i][exp] applies Kummer relation number i 
 (i =1, ... 24) to all Hypergeometric2F1 in exp.
 i = 94 corresponds to eq. 9.131.2,
 i = 95 to eq. 9.132.1 and

@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`SumP`",
              "HighEnergyPhysics`FeynCalc`"];
 
-SumP::usage=
+SumP::"usage"=
 "SumP[k, n/2] is 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,n}].
  (or SumP[k,m] = 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,2 m}].";
 

@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`SumT`",
              "HighEnergyPhysics`FeynCalc`"];
 
-SumT::usage=
+SumT::"usage"=
 "SumT[r, n] represents Sum[(-1)^i/i^r, {i,1,n}],
  SumT[r,s, n] is Sum[1/k^r (-1)^j/j^s, {k, 1, n}, {j, 1, k}], 
  SumT[n] is Sum[(-1)^j/j^2 SumS[1,j],{j,1,n}].

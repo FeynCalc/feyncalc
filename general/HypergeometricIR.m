@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`general`HypergeometricIR`",
              "HighEnergyPhysics`FeynCalc`"];
 
-HypergeometricIR::usage=
+HypergeometricIR::"usage"=
 "HypergeometricIR[exp, t]  substitutes for all 
 Hypergeometric2F1[a,b,c,z] in exp the integral representation 
 Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] 

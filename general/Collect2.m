@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`general`Collect2`",
              "HighEnergyPhysics`FeynCalc`"];
 
-Collect2::usage=
+Collect2::"usage"=
 "Collect2[expr, x] collects together terms which are not free of any 
 occurrence of x. 
 Collect2[expr, {x1, x2, ...}]  (or also Collect2[expr, x1, x2,  ...]) 
