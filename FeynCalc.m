@@ -47,7 +47,10 @@ HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.0.0beta1";
 (*FeynCalcCellPrint=CellPrint;*)
 System`Private`cellmargs = CellMargins->{{Inherited,Inherited},{1,0}};
 System`FeynCalcCellPrint[ce_Cell] :=
-CellPrint[Append[ce(*/."Text"->"SmallText"*), System`Private`cellmargs]];
+CellPrint[Append[ce(*/."Text"->"SmallText"*), System`Private`cellmargs]] /;
+Global`$FeynCalcStartupMessages =!= False;
+System`FeynCalcPrint[x__] := 
+  If[Global`$FeynCalcStartupMessages =!= False, Print[x]];
 
 If[MemberQ[$Packages,"HighEnergyPhysics`FeynCalc`"],
 
@@ -130,11 +133,21 @@ Block[{thisdir = Directory[]},
      ]
 ];
 
+HighEnergyPhysics`FeynCalc`Private`configfile= "FCConfig.m";
+
+SetDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
+If[
+FileNames[HighEnergyPhysics`FeynCalc`Private`configfile] =!= {},
+ Get@HighEnergyPhysics`FeynCalc`Private`configfile;
+  ];
+ResetDirectory[];
+
 If[$Notebooks ===True,
    FeynCalcCellPrint[Cell[TextData[{"Loading FeynCalc from " <> 
    HighEnergyPhysics`FeynCalc`$FeynCalcDirectory }],
                   "Text"]],
-Print["Loading FeynCalc from ", HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
+FeynCalcPrint["Loading FeynCalc from ", HighEnergyPhysics`FeynCalc`$FeynCalcDirectory
+     ] 
   ];
 
 If[!MemberQ[$Path,Evaluate[ParentDirectory[
@@ -156,15 +169,6 @@ If[FileNames["*",{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory}] == {},
    "FeynArts", "GraphInfo", "Models", "ShapeData",
    "documentation", "Documentation","core",
    "CVS", "cvs", ".AppleDouble"};
-
-HighEnergyPhysics`FeynCalc`Private`configfile= "FCConfig.m";
-
-SetDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
-If[
-FileNames[HighEnergyPhysics`FeynCalc`Private`configfile] =!= {},
- Get@HighEnergyPhysics`FeynCalc`Private`configfile;
-  ];
-ResetDirectory[];
 
 If[($VersionNumber < 3.0),
    Print["You need Mathematica 3.0 to run FeynCalc 3.0.
@@ -211,16 +215,14 @@ FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory
 If[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames=!={},
 
 tarcerloadedflag = True;
-If[Global`$FeynCalcStartupMessages=!=False,
 If[$Notebooks ===True,
    FeynCalcCellPrint[Cell[TextData[{"Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last}],
                   "Text"]],
-   Print["Loading TARCER ",
+   FeynCalcPrint["Loading TARCER ",
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames//Last]
   ];
 Get[Last[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames]];
-  ];
 Clear[HighEnergyPhysics`FeynCalc`Private`tarcerfilenames];,
 
 If[$Notebooks ===True,
@@ -890,14 +892,14 @@ If[Global`$LoadPhi===True,
    If[$Notebooks===True,
       FeynCalcCellPrint[Cell[TextData[{"Loading PHI "}],
                   "Text"]],
-      Print["Loading PHI "]
+      FeynCalcPrint["Loading PHI "]
    ];
    If[StringMatchQ[$OperatingSystem, "*MacOS*"],
    Get[$PathnameSeparator<>"Phi"<>$PathnameSeparator<>"Phi.m"],
    Get["Phi"<>$PathnameSeparator<>"Phi.m"]]
 ];
 
-If[Global`$LoadFeynArts===True,
+If[Global`$FeynCalcStartupMessages =!= False && Global`$LoadFeynArts===True,
    If[$Notebooks===True,
       FeynCalcCellPrint[Cell[TextData[{
      "Loading FeynArts, see www.feynarts.de for documentation"}],
@@ -920,7 +922,8 @@ If[$Notebooks===True,
    FeynCalcCellPrint[Cell[TextData[{
    "FeynArts " <> faversion <> " patched for use with Phi and FeynCalc loaded"}], "Text"]],
    Print["FeynArts " <> 
-   faversion <> " patched for use with Phi and FeynCalc loaded"]
+   faversion <> " patched for use with Phi and FeynCalc loaded"
+        ] /; Global`$FeynCalcStartupMessages =!= False
 ]];
 ];
 
