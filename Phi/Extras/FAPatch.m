@@ -74,7 +74,9 @@ Options[FAPatch] = {
       "CreateFeynAmp" -> "tmpcreatefeynamp", 
       "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose" ,
       "Format" -> "format1",
-      "GS" -> "Gstrong"
+      "GS" -> "Gstrong",
+      "Tuples" -> "FATuples",
+      "Clip" -> "FAClip"
        }, fa2fc,
       {
       "Global`DiracSpinor" -> fullFCContext["DiracSpinor"],
