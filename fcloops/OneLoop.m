@@ -114,7 +114,7 @@ MakeContext[
    DotSimplify,
    Eps, EpsChisholm, EpsContract, EpsEvaluate, Expanding, 
    ExpandScalarProduct, FAD,
-   FactorFull, Factoring, FactorTime, Factor2, 
+   FactorFull, Factoring, Factor2, 
    FeynAmp, FeynAmpList,
    FeynCalcInternal,
    FeynAmpDenominator, 

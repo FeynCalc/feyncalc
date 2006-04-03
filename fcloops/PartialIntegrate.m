@@ -26,8 +26,7 @@ Begin["`Private`"];
 (*Options[PartialIntegrate] = {Hold -> False};*)
 Options[PartialIntegrate] = {Integrate -> Integrate};
 
-MakeContext[Collect2, Factor2, DummyIndex
-                              (*should be called DummyVariable, but lets save names*)];
+MakeContext[Collect2, Factor2];
 
 PartialIntegrate[exp_Plus, aa_, z_, opts___Rule] := PartialIntegrate[#, aa, z, opts]&/@exp;
 

@@ -60,7 +60,7 @@ Explicit        = MakeContext["Explicit"];
 ExtraFactor    = MakeContext["ExtraFactor"];
 Factor1     =  MakeContext["Factor1"];
 Factor2     =  MakeContext["Factor2"];
-FactorTime     =  MakeContext["FactorTime"];
+(*FactorTime     =  MakeContext["FactorTime"];*)
 Factoring     =  MakeContext["Factoring"];
 FermionSpinSum    := FermionSpinSum =  MakeContext["FermionSpinSum"];
 FeynAmp         := FeynAmp = MakeContext["FeynAmp"];
