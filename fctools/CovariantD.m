@@ -39,14 +39,17 @@ CovariantD[OPEDelta, {m, n}] gives the expanded form of
 CovariantD[OPEDelta]^m up to order g^n of the fermionic field.
 ";
 
+DummyIndex::"usage" =
+"DummyIndex is an option of CovariantD specifying an index to use as \
+dummy summation index. If set to Automatic, unique indices are generated."
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
    
 
 MakeContext[
- CouplingConstant, DeclareNonCommutative, 
- DotSimplify, DummyIndex,
+ CouplingConstant, DeclareNonCommutative, DotSimplify,
  Explicit, FeynCalcInternal, GaugeField, Gstrong, LorentzIndex, 
  Momentum, NumericalFactor,OPEDelta, OPEi, OPEj, OPEk, 
  OPEl, OPESum, 

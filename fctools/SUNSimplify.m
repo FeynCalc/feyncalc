@@ -23,6 +23,12 @@ taken out of DiracTrace[...]; otherwise a color-trace is taken (by
 SUNTrace) before taking the SUN-objects in front of DiracTrace[...].
 Whether SUNF is replaced by traces is determined by the option Explicit.";
 
+SUNFJacobi::"usage"="SUNFJacobi is an option for SUNSimplify, indicating
+whether the Jacobi identity should be used.";
+
+SUNIndexRename::"usage"= "SUNIndexRename is an option of SUNSimplify. If set to
+False, no automatic renaming of dummy indices is done.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -58,9 +64,7 @@ SUND                     = MakeContext["SUND"];
 SUNDelta                 = MakeContext["SUNDelta"];
 SUNDeltaContract         = MakeContext["SUNDeltaContract"];
 SUNIndex                 = MakeContext["SUNIndex"];
-SUNIndexRename           = MakeContext["SUNIndexRename"];
 SUNF                     = MakeContext["SUNF"];
-SUNFJacobi               = MakeContext["SUNFJacobi"];
 SUNNToCACF               = MakeContext["SUNNToCACF"];
 sunt                     = MakeContext["SUNT"];
 suntrace                 = MakeContext["SUNTrace"];

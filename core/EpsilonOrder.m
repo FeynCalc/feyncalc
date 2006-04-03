@@ -9,7 +9,7 @@ BeginPackage["HighEnergyPhysics`FeynCalc`EpsilonOrder`",
              "HighEnergyPhysics`FeynCalc`"];
 
 EpsilonOrder::"usage" =
-"EpsilonOrder is an option of OPEIntDelta and RHI. The setting
+"EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting
 determines the order n (Epsilon^n) which should be kept.";
 
 (* ------------------------------------------------------------------------ *)

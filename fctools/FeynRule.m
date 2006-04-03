@@ -19,6 +19,10 @@ FeynRule::"usage"=
 "FeynRule[lag, {fields}] gives the Feynman rule corresponding
 to the field configuration fields of the lagrangian lag.";
 
+InitialFunction::"usage"= 
+"InitialFunction is an option of FeynRule the setting of which is applied to \
+the first argument of FeynRule before anything else";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -91,9 +95,6 @@ ExplicitSUNIndex     = MakeContext["ExplicitSUNIndex"];
 (* Functions that are applied to the expression first.
 Added 3/8-2000 by Frederik Orellana to allow interoperability with Phi:
 InitialFunction could e.g. be set to PhiToFC *)
-
-InitialFunction = MakeContext["InitialFunction"];
-
 
 (* ******************************************************************** *)
  lorunique[a_] := lorunique[a] = lorind[Unique["Global`li"]];

@@ -22,13 +22,14 @@ Integrate2[ DeltaFunction[x - x1 x2] f[x1] g[x2],
           ].
 Convolute[exp, {x1, x2}] assumes that exp is polynomial in x1 and x2.";
 
+Bracket::"usage"= "Bracket is an option for Convolute.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
    
 
-MakeContext[Bracket,
-            Collect2, ConvoluteTable, 
+MakeContext[Collect2, ConvoluteTable, 
             DeltaFunction, Epsilon, Expanding,
             FinalSubstitutions, CF,CA,Tf,Nf,
             Factoring, Factor2, FreeQ2, Integrate2,

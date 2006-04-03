@@ -30,6 +30,13 @@ RHI[any, {a,b,c,d,e}, {al,be,ga,de,ep}]; \n\n
 RHI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to 
 RHI[{a,b,c,d,e}, {al,be,ga,de,ep}].";
 
+FORM::"usage" =
+"FORM is a bolean option telling FeynCalc whether or not to use FORM for
+evaluation. If set to True a FORM file is generated and run from Mathematica
+and the result read back in. Currently, only RHI has this option and it is
+required to be on a UNIX system and have R. Hamberg's FORM-program installed
+correctly.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -41,7 +48,6 @@ EpsilonOrder = MakeContext["EpsilonOrder"];
 Factor1  = MakeContext["Factor1"];
 Factoring  = MakeContext["Factoring"];
 FAD        = MakeContext["FAD"];
-FORM        = MakeContext["FORM"];
 FreeQ2   = MakeContext["FreeQ2"];
 Collect2 = MakeContext["Collect2"];
 DeltaFunction = MakeContext["DeltaFunction"];

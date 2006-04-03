@@ -1,6 +1,6 @@
 (* :Title: FeynCalc *)
 
-(* :Version: 5.1.0beta1 *)
+(* :Version: 5.1.0 *)
 
 (* :Authors: Rolf Mertig  (rolf@mertig.com)
              Frederik Orellana (fjob@cabocomm.dk)
@@ -15,14 +15,15 @@
 
 (* :History:
 
-	Version 1.0 written 1991 by Rolf Mertig.
-	Version 3.0 includes typesetting features of Mathematica 3.0
+   Version 1.0 written 1991 by Rolf Mertig.
+   Version 3.0 includes typesetting features of Mathematica 3.0
    Version 3.0.1.1 includes two bug-fixes for OneLoop
    Version 4.0 : 2000, reorganized for open-source and extensibility
    Version 4.2.0 : 2002, small bug fixes, more reorganization,
                    inclusion of help system, PHI and FeynArts
                    by Frederik Orellana, fjob@cabocomm.dk 
    Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization,
+   Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
 *)
 
 
@@ -39,7 +40,7 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.1.0beta1";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.1.0";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
@@ -352,11 +353,8 @@ E.g. GA[nu] can be used instead of DiracGamma[nu]." ;
 $FCT::"usage"="If $FCT is set to True special typesetting rules for \
 built-in functions (like Dot) are changed.";
 
-$FortranContinuationCharacter::"usage"="$FortranContinuationCharacter \
-is the continuation character used in Write2.";
-
-$FortranFormatDoublePrecision::"usage"="If set to True
-FortranForm[2.] will give 2D0 and FortranForm[a/100] will give 1.D-2*a";
+(*$FortranFormatDoublePrecision::"usage"="If set to True
+FortranForm[2.] will give 2D0 and FortranForm[a/100] will give 1.D-2*a";*)
 
 $Gauge::"usage"=
 "$Gauge(= 1/xi) is a constant specifying the gauge fixing parameter of QED \
@@ -422,28 +420,16 @@ The default is 128. It should be increased if possible. \
 The higher $MemoryAvailable can be, the more intermediate \
 steps do not have to be repeated by FeynCalc.";
 
-$MIntegrate::"usage"=
-"$MIntegrate is a global list of integrations done by Mathematica \
-inside OPEIntDelta.";
-
 $NonComm::"usage"=
 "$NonComm contains a list of all non-commutative heads present.";
 
 $MU::"usage"=
 "$MU is the head of dummy indices which may be introduced by \
-Chisholm (and evtl. Contract and DiracReduce).";
+Chisholm, Contract, DiracSimplify, FermionSpinSum and various \
+QCD functions. By default it is unset, but can be set to anything.";
 
 $OPEWard::"usage"=
    "$OPEWard is experimental.";
-
-$PairBrackets::"usage" =
-"$PairBrackets determines whether brackets are drawn around \
-scalar products in the notebook interface.";
-
-$SpinorMinimal::"usage"=
-"$SpinorMinimal is a global switch for an additional simplification \
-attempt in DiracSimplify for more than one Spinor-line. \
-The default is False, since otherwise it costs too much time.";
 
 $VeryVerbose::"usage"=
 "$VeryVerbose is a global variable with default setting 0. \
@@ -544,16 +530,12 @@ $FCS = {"FAD", "FV", "FVD", "GA", "GA5", "GS",
 
 
 $FCT  = False;
-$FortranContinuationCharacter = "&";
 (*If[!ValueQ[$Kreimer],  $Kreimer = False];*)
 $Larin   = False;
 $LimitTo4 = True;
 $LorentzIndices = False;
 $MemoryAvailable = 256;
 $OPEWard = False;
-$PairBrackets = False;
-$MIntegrate = {};
-$SpinorMinimal = False;
 If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 
 $West = True;
@@ -633,10 +615,28 @@ SetDel[a_, b_] := (a := a = b);
 
   MakeContext[x___Symbol] := Map[MakeContext, {x}];
 
+  (*OLD*)
   MakeContext[x_String] := MakeContext[x] = (If[SubContext[x] =!= "FeynCalc`",
              MyNeeds["HighEnergyPhysics`"<> SubContext[x] <> x <>"`"]];
              ToExpression["HighEnergyPhysics`"<>SubContext[x] <>
                         x <> "`" <> x]);
+
+  (*NEW*) (*Don't see what this is good for. It gives loading problems
+  and the old stuff seems to work fine. F.Orellana, 30/3-2006*)
+  (*MakeContext[x_String] := MakeContext[x] =
+  Block[{},
+    If[!FreeQ[Rest/@multifunpack, x],
+      (* take care of SubContext of the multifunpack values.
+         F.Orellana,  28/3-2005 *)
+      Evaluate[ToString[Context[MakeContext[Evaluate[
+         multifunpack[[ Position[multifunpack, x] [[1,1]], 1]] ]]<>
+         "`" <> x]]],
+      If[SubContext[x] =!= "FeynCalc`",
+        MyNeeds["HighEnergyPhysics`"<> SubContext[x] <> x <>"`"]];
+        ToExpression["HighEnergyPhysics`"<>SubContext[x] <>
+           x <> "`" <> x]
+    ]
+  ];*)
 
 DPS[x__] := DPS[x] = DeclarePackage[x];
 
@@ -660,10 +660,10 @@ fcDeclarePackge[x_String] := fcDeclarePackge[x, x];
 
 multifunpack=
 {
-{"Contract","Contract2", "Contract3"},
+{"Contract", "Contract2", "Contract3", "Rename"},
 {"DiracSlash", "SL"},
-{"DiracSimplify", "ChisholmSpinor", "DiracCanonical", "InsideDiracTrace"},
-{"DotSimplify", "DotSimplifyRelations"},
+{"DiracSimplify", "ChisholmSpinor", "DiracCanonical", "InsideDiracTrace", "$SpinorMinimal", "DiracSimpCombine", "DiracSubstitute67"},
+{"DotSimplify", "DotSimplifyRelations", "DotPower"},
 {"FermionSpinSum", "SpinorCollect"},
 {"FeynAmpDenominator", "FD"},
 {"FeynAmpDenominatorSimplify", "FDS"},
@@ -688,12 +688,21 @@ multifunpack=
 {"SquareAmplitude", "EnergyMomentumConservation", "SpinSumExternalMomentum", "SelectedGraphs"},
 {"Twist2GluonOperator", "GO"},
 {"Twist2QuarkOperator", "QO"},
-{"Write2", "FUNCTION", "PostFortranFile", "PreFortranFile"},
+{"Write2", "FUNCTION", "PostFortranFile", "PreFortranFile", "$FortranContinuationCharacter"},
 {"DoPolarizationSums", "PolarizationUncontract", "EpsUncontract"},
 {"ILimit", "FunctionLimits"},
 {"FieldDerivative", "FDr"},
 {"CovariantFieldDerivative", "CDr"},
-{"CheckDB", "ForceSave", "NoSave"}
+{"CheckDB", "ForceSave", "NoSave"},
+{"OPEIntegrateDelta", "$MIntegrate"},
+{"Pair", "$PairBrackets"},
+{"Convolute", "Bracket"},
+{"CovariantD", "DummyIndex"},
+{"Factor2", "FactorFull"},
+{"RHI", "FORM"},
+{"FeynRule", "InitialFunction"},
+{"Tdec", "NumberOfMetricTensors"},
+{"SUNSimplify", "SUNFJacobi", "SUNIndexRename"}
 };
 
 
@@ -823,9 +832,9 @@ Table[ Map[ HighEnergyPhysics`FeynCalc`Private`setsubcontext[#,
             Hold[Set][Hold[MakeContext][a], Hold[MakeContext][b, a]]}
 ) ;
 
-
-{Hold[Set][Hold[SubContext][a], Hold[SubContext][b]],
-             Hold[Set][Hold[MakeContext][a], Hold[MakeContext][b]]}
+(*OLD: uncommented*)
+(*{Hold[Set][Hold[SubContext][a], Hold[SubContext][b]],
+             Hold[Set][Hold[MakeContext][a], Hold[MakeContext][b]]}*)
 
 ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
 

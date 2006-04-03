@@ -17,12 +17,17 @@ understood. If a and b have head Momentum, a scalar product is
 meant. If one of a and b has head LorentzIndex and the other
 Momentum, a Lorentz vector (p_mu) is understood.";
 
+$PairBrackets::"usage" =
+"$PairBrackets determines whether brackets are drawn around \
+scalar products in the notebook interface.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
 MakeContext[FreeQ2,LorentzIndex, Momentum, MomentumCombine, Polarization];
 
+$PairBrackets = False;
 
 contract            := contract = MakeContext["Contract"];
 expandscalarproduct := expandscalarproduct =

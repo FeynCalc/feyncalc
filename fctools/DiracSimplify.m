@@ -48,6 +48,21 @@ The Dirac equation is applied. \
 All DiracMatrix[5], DiracMatrix[6] and DiracMatrix[7] are moved to \
 the right. The order of the Dirac matrices is not changed.";
 
+$SpinorMinimal::"usage"=
+"$SpinorMinimal is a global switch for an additional simplification \
+attempt in DiracSimplify for more than one Spinor-line. \
+The default is False, since otherwise it costs too much time.";
+
+DiracSimpCombine::"usage"=
+"DiracSimpCombine is an option for DiracSimplify. If set to \
+True, sums of DiracGamma's will be merged as much as \
+possible in DiracGamma[ .. + .. + ]'s.";
+
+DiracSubstitute67::"usage"=
+"DiracSubstitute67 is an option for DiracSimplify. If set to \
+True the chirality-projectors DiracGamma[6] and DiracGamma[7] are \
+substituted by their definitions.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -58,8 +73,8 @@ print3 = If[$VeryVerbose>2, Print[##]]&;
 
 MakeContext[ Collect2, Contract, DiracOrder,
 DiracEquation, DiracGamma, DiracGammaCombine, DiracGammaExpand,
-DiracMatrix, DiracOrder, DiracSigmaExplicit, DiracSimpCombine, DiracSlash,
-DiracSubstitute67, DiracTrace];
+DiracMatrix, DiracOrder, DiracSigmaExplicit, DiracSlash,
+DiracTrace];
 
 dR  := dR   = MakeContext["DiracTrick"];
 
@@ -67,7 +82,7 @@ Eps := Eps  = MakeContext["Eps"];
 fcinte := fcinte = MakeContext["FeynCalcInternal"];
 
 MakeContext[ DotSimplify, EpsContract, Expanding, Expand2,
-Factor2, FactorTime, FreeQ2, Factoring,
+Factor2, FreeQ2, Factoring,
 LorentzIndex, MemSet, NonCommFreeQ ];
 
 sCO := sCO   = MakeContext["PairContract"];

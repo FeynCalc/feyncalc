@@ -40,6 +40,9 @@ val1 = expr1, val2 = expr2 in sequence followed by a newline, to the
 specified output file. Setting the option FormatType of Write2 to 
 FortranForm results in FORTRAN syntax output.";
 
+$FortranContinuationCharacter::"usage"="$FortranContinuationCharacter \
+is the continuation character used in Write2.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -71,6 +74,8 @@ Options[Write2]={
                 };
 
 SetAttributes[Write2, HoldRest];
+
+$FortranContinuationCharacter = "&";
 
 Write2[f_String, x___, l_] := 
  Write2[f, Hold[x, l], dummyrule->False ]/; FreeQ[Hold[l], Rule];

@@ -23,13 +23,18 @@ Factor2 uses Factor internally and is in general slower than Factor.
 There are four possible settings of the option Method (0,1,2,3).
 ";
 
+FactorFull::"usage"=
+"FactorFull is an option of Factor2 (default False).
+If set to False, products like
+(a-b) (a+b) will be replaced by (a^2-b^2).";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
    
 
 MakeContext[ Expand2, Combine,
-FactorFull, MemSet, NumericalFactor];
+MemSet, NumericalFactor];
 
 Off[General::spell1];
 Options[Factor2] = {FactorFull -> False, Method -> 3};

@@ -17,6 +17,9 @@ Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}]
 calculates the tensorial decomposition formulas.
 The more common ones are saved in TIDL.";
 
+NumberOfMetricTensors::"usage"=
+"NumberOfMetricTensors is an option of Tdec.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -41,8 +44,7 @@ KK,
 IsolateNames,
 *)
 LorentzIndex,  
-Momentum, 
-NumberOfMetricTensors,
+Momentum,
 Pair, 
 PairContract,
 SelectFree, SelectNotFree,Solve2,Solve3

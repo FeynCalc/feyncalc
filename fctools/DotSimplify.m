@@ -33,12 +33,17 @@ NOTICE: The performance of DotSimplify scales
 very badly with the complexity of DotSimplifyRelations
 and the number of terms of the expression.";
 
+DotPower::"usage" =
+"DotPower is an option for DotSimplify. It determines whether
+non-commutative powers are represented by successive multiplication
+or by Power.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
 MakeContext[ Commutator, CommutatorExplicit, DiracTrace,
-DotPower, AntiCommutator, Expanding, FeynCalcInternal, 
+AntiCommutator, Expanding, FeynCalcInternal, 
 FreeQ2, NonCommFreeQ, MemSet, SUNT,
 SUNTrace, DiracGamma, QuantumField, Momentum];
 

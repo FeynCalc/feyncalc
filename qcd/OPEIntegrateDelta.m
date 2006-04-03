@@ -29,6 +29,10 @@ Notice that
 the dimension specified by the option should also be the dimension
 used in expr. It is replaced in OPEIntegrateDelta by (4+Epsilon).";
 
+$MIntegrate::"usage"=
+"$MIntegrate is a global list of integrations done by Mathematica \
+inside OPEIntegrateDelta.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -51,6 +55,8 @@ Select2,
 Series2,
 Trick,
 Zeta2    ];
+
+$MIntegrate = {};
 
 Options[OPEIntegrateDelta] = {Dimension -> D, EpsilonOrder -> 1,
                         PolynomialDivision -> True, 

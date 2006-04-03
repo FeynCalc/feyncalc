@@ -32,6 +32,10 @@ Contract2::"usage"=
 Contract3::"usage"=
 "Contract3[expr] (still experimental).";
 
+Rename::"usage" =
+"Rename is an option for Contract. If set to True,
+dummy indices in Eps are renamed, using $MU[i].";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -60,7 +64,6 @@ Begin["`Private`"];
    Momentum                    = MakeContext["Momentum"];
    MomentumCombine             = MakeContext["MomentumCombine"];
    Pair                        = MakeContext["Pair"];
-   Rename                      = MakeContext["Rename"];
    sCO                         = MakeContext["PairContract"];
    sCOS                         = MakeContext["PairContract3"];
    ScalarProduct               = MakeContext["ScalarProduct"];
