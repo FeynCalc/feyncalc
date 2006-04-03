@@ -154,9 +154,10 @@ noint[x___] :=
 	({x} /. {SUNIndex -> Identity,
 	        HighEnergyPhysics`qcd`ExplicitSUNIndex`ExplicitSUNIndex -> Identity})]];
 	
-subst = {suI[sunt[SUNIndex[ii_]] ff_] :>
-           (sam[ii, uh[]]; (sunt[SUNIndex[ii]] (ff /. suI -> Identity)) /. 
-           SUNIndex[ii]-> uh[])/;
+subst = { suI[sunt[SUNIndex[ii_]] ff_] :>
+           ( (sam[ii, uh[]]; (sunt[SUNIndex[ii]] (ff /. suI -> Identity)) /. 
+           SUNIndex[ii]-> uh[])
+           )/;
            (!FreeQ[ff,SUNIndex[ii]]) && FreeQ[ii,dummy[_]],
 
         DOT[ A___,sunt[SUNIndex[ii_]], B___, 
@@ -164,13 +165,19 @@ subst = {suI[sunt[SUNIndex[ii_]] ff_] :>
            (sam[ii, uh[]];
             DOT[ A,sunt[SUNIndex[ii]],B,sunt[SUNIndex[ii]],Z ] /.
                SUNIndex[ii] -> uh[] 
-           ) /; FreeQ[ii, dummy[_]] , (* 
+           ) /; FreeQ[ii, dummy[_]] , 
+
+(* 
         suI[suntrace[DOT[ A___,sunt[SUNIndex[jj_]], B___]] ff_]   :>
            (sam[jj, uh[]]; (sTr[DOT[ A,sunt[SUNIndex[jj]],B ]] ff
                            ) /. SUNIndex[jj] -> uh[] /. sTr -> suntrace
-           )/; !freeq2[ff,{SUNIndex[jj]}] && FreeQ[jj,dummy[_]], *)
+           )/; !freeq2[ff,{SUNIndex[jj]}] && FreeQ[jj,dummy[_]], 
+*)
+
         suI[DOT[ A___,sunt[SUNIndex[jj_]], B___] ff_]   :>
-           (sam[jj, uh[]]; (DOT[ A,sunt[SUNIndex[jj]],B ] ff
+           (
+
+        sam[jj, uh[]]; (DOT[ A,sunt[SUNIndex[jj]],B ] ff
                            ) /. SUNIndex[jj] -> uh[] 
            )/; !FreeQ[ff,SUNIndex[jj]] && FreeQ[jj,dummy[_]],
         suI[SUNF[A___,SUNIndex[ij_],B___] *
@@ -225,12 +232,21 @@ subst = {suI[sunt[SUNIndex[ii_]] ff_] :>
         };
 (* CHANGE 28.6. 93 *)
 suff[x_] := x /; FreeQ[x, SUNIndex];
+
+(*
+CHANGE Rolf Mertig 15.2.2006;
+This is dangerous: 
+when subst is applied multiple times and matches several dummy indices then 
+things go wrong, see
+http://www.feyncalc.org/forum/0366.html
+
 suff[x_] := FixedPoint[(uh[] = uuh[]; 
                        (suii[#]//.subst)/.suI->Identity)&, x, 42];
-(*
+
+so, changing back to the original:
+*)
 suff[x_] := FixedPoint[(uh[] = uuh[]; 
                        (suii[#]/.subst)/.suI->Identity)&, x, 42];
-*)
 If[expan === True,
 If[$VeryVerbose>1,Print["expanding w.r.t. sunf done "]];
 new = Expand2[new, SUNIndex];
@@ -300,6 +316,25 @@ sunsi = {
                   sunt[a_SUNIndex], yy___] :>
          ((-1)/(2 SUNN) dotT[xx, sunt[b], yy]) /; noint[a],
 
+(* general algorithm
+    T_i T_a = I T_c f_iac + T_a T_i
+*)
+
+(*
+this does not really work ...
+         DOT[xx___, sunt[i_SUNIndex], 
+                    sunt[a_SUNIndex], 
+                    d:sunt[_SUNIndex].. ,
+                   sunt[i_SUNIndex], e___] :>
+         (
+If[$VeryVerbose >2, Print["using commutator in SUNSimplify"]];
+         dumi=Unique["Global`cc"];
+         I SUNF[i,a,SUNIndex[dumi]]*
+           DOT[xx, sunt[SUNIndex[dumi]], d, sunt[i], e] + 
+           DOT[xx, sunt[a], sunt[i], d, sunt[i], e]
+         ) /; noint[i],
+*)
+
          SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
             dotT[aa___, sunt[xx_SUNIndex], sunt[yy_SUNIndex], 
                         sunt[zz_SUNIndex], bb___] :>
@@ -356,9 +391,13 @@ If[CheckContext["DiracGamma"],
       temp = temp /. DOT[a___diracgamma, b___sunt] :>
                      (DOT[a] DOT[b])
   ];
+
+
+(* CHANGE Rolf Mertig 20060215 : better to do this here:*)
+temp = temp //. sunsi;
 If[sunindexrename === True, 
 If[$VeryVerbose > 0, Print["renaming in SUNSimplify"]];
-temp = Rename[temp /. sunsi , Expanding -> expanding];
+temp = Rename[temp, Expanding -> expanding];
 If[$VeryVerbose > 0, Print["renaming in SUNSimplify done"]];
   ];
 
