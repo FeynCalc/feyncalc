@@ -1,4 +1,4 @@
-Notebook[{Cell[CellGroupData[{Cell["FeynCalc 5.0beta1", "Title", 
+Notebook[{Cell[CellGroupData[{Cell["FeynCalc 5.1", "Title", 
       TextAlignment -> Center], 
      Cell["Tools for quantum field theory calculations", "Subtitle", 
       TextAlignment -> Center], Cell[TextData[
@@ -21,20 +21,23 @@ Notebook[{Cell[CellGroupData[{Cell["FeynCalc 5.0beta1", "Title",
              Set[newfn, StringReplace[fn, Rule[".nb", "NoCache.nb"]]], 
              If[UnsameQ[FileNames[newfn], List[]], DeleteFile[newfn]], 
              Put[ReplaceAll[NotebookGet[InputNotebook[]], 
-               RuleDelayed[Condition[Rule[FrontEndVersion, 
-                  Pattern[v, Blank[]]], Equal[Head[v], String]], 
-                Sequence[]]], "fcr.nb"], CopyFile["fcr.nb", newfn], 
+               List[RuleDelayed[Condition[Rule[FrontEndVersion, 
+                   Pattern[v, Blank[]]], Equal[Head[v], String]], 
+                 Sequence[]], RuleDelayed[Condition[Rule[CellLabel, 
+                   Pattern[v, Blank[]]], Equal[Head[v], String]], 
+                 Sequence[]]]], "fcr.nb"], CopyFile["fcr.nb", newfn], 
              DeleteFile["fcr.nb"]]]]], Rule[ButtonEvaluator, Automatic]]], 
       "NotebookDefault", Active -> True, CellTags -> "ClickSave"], 
      Cell[CellGroupData[{Cell["Introduction", "Section", 
          PageBreakAbove -> True, CellTags -> {"Short Overview", "intro"}], 
-        Cell[TextData[{"FeynCalc 4.2 is a ", 
-           StyleBox["Mathematica", Rule[FontSlant, "Italic"]], " 3.0 or 4.0 \
-package for algebraic calculations in high energy physics. It provides tools \
-for Lorentz structure manipulation, Dirac algebra manipulation, color factor \
-calculation, Feynman rule derivation, Feynman loop integral calculation (e.g. \
-Passarino-Veltman reduction) and noncommutative algebra calculation, as well \
-as various tabulations of Feynman parameter integrals, Mellin ", Cell[BoxData[
+        Cell[TextData[{"FeynCalc is a ", 
+           StyleBox["Mathematica", Rule[FontSlant, "Italic"]], " package for \
+algebraic calculations in high energy physics. It provides tools for Lorentz \
+structure manipulations, Dirac algebra manipulations, color factor \
+calculations, Feynman rule derivation, Feynman loop integral calculations \
+(e.g. Passarino-Veltman reduction) and noncommutative algebra calculations, \
+as well as various tabulations of Feynman parameter integrals, Mellin ", 
+           Cell[BoxData[
              \(TraditionalForm\`\(transforms\^
                   \*ButtonBox["\[Dagger]", 
                     RuleDelayed[ButtonData, "introfoot"], 
@@ -42,7 +45,7 @@ as various tabulations of Feynman parameter integrals, Mellin ", Cell[BoxData[
 lagrangians and Feynman rules. Also, translation facilities are provided to \
 change the FeynCalc syntax to and from FORM syntax and to generate FORTRAN \
 code."}], "Text", CellTags -> "intro"], 
-        Cell[TextData[{"Some important functions for input of objects like ", 
+        Cell[TextData[{"Some functions for input of objects like ", 
            Cell[BoxData[
              \(TraditionalForm\`\(p\^\[Mu], \[Gamma]\^\[Nu], 
                   g\^\(\[Mu]\ \[Nu]\),\ 
@@ -81,7 +84,7 @@ code."}], "Text", CellTags -> "intro"],
              Rule[ButtonStyle, "AddOnsLink"]], " (", 
            ButtonBox["SP", RuleDelayed[ButtonData, "SP"], 
              Rule[ButtonStyle, "AddOnsLink"]], "). "}], "Text"], 
-        Cell["Some important functions for manipulations are:", "Text", 
+        Cell["Some functions for manipulations are:", "Text", 
          CellTags -> "intro"], Cell[TextData[{
            ButtonBox["Contract", RuleDelayed[ButtonData, "Contract"], 
              Rule[ButtonStyle, "AddOnsLink"]], ", ", 
@@ -124,8 +127,7 @@ code."}], "Text", CellTags -> "intro"],
              RuleDelayed[ButtonData, "ScalarProductCancel"], 
              Rule[ButtonStyle, "AddOnsLink"]], "."}], "Text", 
          CellTags -> "intro"], 
-        Cell[
-         "Some important functions for Feyman loop integral manipulations:", 
+        Cell["Some functions for Feyman loop integral manipulations:", 
          "Text", CellTags -> "intro"], Cell[TextData[{
            ButtonBox["OneLoop", RuleDelayed[ButtonData, "OneLoop"], 
              Rule[ButtonStyle, "AddOnsLink"]], ", ", 
@@ -134,9 +136,9 @@ code."}], "Text", CellTags -> "intro"],
              Rule[ButtonStyle, "AddOnsLink"]], " and ", 
            ButtonBox["PaVeReduce", RuleDelayed[ButtonData, "PaVeReduce"], 
              Rule[ButtonStyle, "AddOnsLink"]], " ."}], "Text", 
-         CellTags -> "intro"], Cell[TextData[{"FeynCalc 4.2 is still \
-compatible with FeynArts 2.2 if the FeynArts function ToFA1Convention is used \
-on the generated amplitudes. While ", 
+         CellTags -> "intro"], Cell[TextData[{"FeynCalc (>4.2) is still \
+compatible with FeynArts (>2.2) if the FeynArts function ToFA1Convention is \
+used on the generated amplitudes. While ", 
            ButtonBox["OneLoop", RuleDelayed[ButtonData, "OneLoop"], 
              Rule[ButtonStyle, "AddOnsLink"]], " and ", 
            ButtonBox["OneLoopSum", RuleDelayed[ButtonData, "OneLoopSum"], 
@@ -146,27 +148,23 @@ aware of the package ",
            ButtonBox["FormCalc", RuleDelayed[ButtonData, 
               List[URL["http://www.feynarts.de/formcalc/"], None]], 
              Rule[ButtonStyle, "Hyperlink"]], " by Thomas Hahn, which is more \
-effective for the adventurous researcher calculating thousands of diagrams \
-involving four external gauge bosons. Notice however that FormCalc \
-(presently) does not reduce the Passarino-Veltman integrals to scalar \
-integrals. Also FormCalc is limited to the 't Hooft Feynman gauge. FeynCalc \
-provides algebraic redution of Passarino-Veltman integrals to scalar \
-integrals via the function ", 
+efficient for the adventurous researcher calculating thousands of diagrams, \
+e.g. involving four external gauge bosons. Notice however that FormCalc does \
+not reduce the Passarino-Veltman integrals to scalar integrals. Also, \
+FormCalc is limited to the 't Hooft Feynman gauge. FeynCalc provides \
+algebraic redution of Passarino-Veltman integrals to scalar integrals via the \
+function ", 
            ButtonBox["PaVeReduce", RuleDelayed[ButtonData, "PaVeReduce"], 
              Rule[ButtonStyle, "AddOnsLink"]], " ."}], "Text", 
-         CellTags -> "intro"], Cell[TextData[
-          {"On a Pentium II 300 MHz computer with 128 MB of RAM running ", 
-           StyleBox["Mathematica", Rule[FontSlant, "Italic"]], " 3.0 for \
-Linux, this noteboook needs less than 15 minutes to evaluate and less than 16 \
-MB of memory."}], "Text", CellTags -> "intro"], Cell["For more detailed \
-information concerning FeynCalc functions you can investigate all of the \
-source code in the file \"FeynCalc.m\" in the directory \"HighEnergyPhysics\" \
-and the further packages in the sub-directories \"fctools\", \"fctables\" and \
-others. A complete list of FeynCalc objects is stored in the variable \
-$FeynCalcStuff. Not all functions are equally well documented in this \
-notebook. Some are very special ones (e.g. for tools for 2-loop QCD diagrams \
-originating in twist-2 OPE), some are still experimental.", "Text", 
-         CellTags -> "intro"], Cell[TextData[{"The ", Cell[BoxData[
+         CellTags -> "intro"], Cell["For more detailed information on \
+FeynCalc functions, use the help system or consult the source code in the \
+file \"FeynCalc.m\" in the directory \"HighEnergyPhysics\" and the further \
+packages in the sub-directories \"fctools\", \"fctables\" and others. A \
+complete list of FeynCalc objects is stored in the variable $FeynCalcStuff. \
+Not all functions are equally well documented in this notebook. Some are very \
+special ones (e.g. for tools for 2-loop QCD diagrams originating in twist-2 \
+OPE), some are still experimental.", "Text", CellTags -> "intro"], 
+        Cell[TextData[{"The ", Cell[BoxData[
              \(TraditionalForm\`\(\[Gamma]\^5\)\)]], 
            "scheme used in OneLoop is the naive one, i.e., ", Cell[BoxData[
              \(TraditionalForm\`\(\({\[Gamma]\^5, \[Gamma]\^\[Mu])\) = 0\)\)]]\
@@ -180,9 +178,14 @@ originating in twist-2 OPE), some are still experimental.", "Text",
            ButtonBox["http://www.feyncalc.org/", 
              RuleDelayed[ButtonData, List[URL["http://www.feyncalc.org/"], 
                None]], Rule[ButtonStyle, "Hyperlink"]], "."}], "Text", 
-         CellTags -> "intro"], Cell[TextData[{"\[Dagger] Mellin transforms \
-(e.g. all integrals - except 57,58 and 59, and correcting a minor misprint in \
-14) of Appendix 7 from ", 
+         CellTags -> "intro"], Cell[TextData[
+          {"On a Pentium II 300 MHz computer with 128 MB of RAM running ", 
+           StyleBox["Mathematica", Rule[FontSlant, "Italic"]], " 3.0 for \
+Linux, this noteboook needs less than 15 minutes to evaluate, not exceeding \
+16 MB of memory usage."}], "Text", CellTags -> "intro"], 
+        Cell[TextData[{"\[Dagger] Mellin transforms (e.g. all integrals - \
+except 57,58 and 59, and correcting a minor misprint in 14) of Appendix 7 \
+from ", 
            ButtonBox["hep-ph/9810241", 
              RuleDelayed[ButtonData, List[URL["http://xxx.lanl.gov/abs/hep\
 -ph/9810241"], None]], Rule[ButtonStyle, "Hyperlink"]], " are tabulated in ", 
@@ -197,12 +200,11 @@ in the directory \"Applications\" in your ",
            " installation tree, you should be able to load FeynCalc from a ", 
            StyleBox["Mathematica", Rule[FontSlant, "Italic"]], 
            " session with no further ado."}], "Text", CellTags -> "start"], 
-        Cell["This loads FeynCalc:", "MathCaption", CellTags -> "start"], 
         Cell[BoxData[\(<< HighEnergyPhysics`FeynCalc`\)], "Input", 
-         CellLabel -> "In[53]:=", CellTags -> "start"], 
-        Cell[TextData[{"You can also put the last input line into your \
-\"init.m\" file. This will cause automatic loading of FeynCalc on every ", 
-           StyleBox["Mathematica", Rule[FontSlant, "Italic"]], " startup."}], 
+         CellTags -> "start"], Cell["This loads FeynCalc.", "MathCaption", 
+         CellTags -> "start"], Cell[TextData[{"You can also put this line \
+into your \"init.m\" file. This will cause automatic loading of FeynCalc on \
+every ", StyleBox["Mathematica", Rule[FontSlant, "Italic"]], " startup."}], 
          "Text", CellTags -> "start"], Cell[TextData[{"By loading FeynCalc \
 the setting of the default output format type is automatically set to \
 TraditionalForm. You might want to reverse this after quitting FeynCalc by \
@@ -215,56 +217,65 @@ clicking on the ", StyleBox["Cell", "TextNormal", Rule[FontWeight, "Bold"]],
           StyleBox[\(SetOptions[\($FrontEnd, 
                 \("CommonDefaultFormatTypes" \[Rule] 
                   \({"Output" \[Rule] StandardForm}\)\)\)]\), "Input"]], 
-         "Input", CellLabel -> "In[54]:=", CellTags -> "start"], 
-        Cell["This resets the default.", "Text"], Cell[BoxData[
+         "Input", CellTags -> "start"], 
+        Cell["This sets the default output form to StandardForm.", 
+         "MathCaption", CellTags -> "start"], 
+        Cell[CellGroupData[{Cell[BoxData[
+             StyleBox[\(B0[\(p, \(m1^2\), \(m2^2\)\)]\), "Input"]], "Input", 
+            CellTags -> "start"], Cell[BoxData[\(B0[\(p, m1\^2, m2\^2\)]\)], 
+            "Output", CellTags -> "start"]}, Closed]], 
+        Cell["Now FeynCalc functions, like e.g. B0, are not typeset.", 
+         "MathCaption", CellTags -> "start"], Cell[BoxData[
           StyleBox[\(SetOptions[\($FrontEnd, 
                 \("CommonDefaultFormatTypes" \[Rule] 
                   \({"Output" \[Rule] TraditionalForm}\)\)\)]\), "Input"]], 
-         "Input", CellLabel -> "In[55]:=", CellTags -> "start"], 
-        Cell[TextData[{"This defines typesetting rules for ", 
-           StyleBox["q1", Rule[FontFamily, "Courier"]], " and ", 
-           StyleBox["q2", Rule[FontFamily, "Courier"]], 
-           " for the output format type TraditionalForm:"}], "MathCaption", 
-         CellTags -> "start"], Cell[BoxData[
-          \(q1/:\(MakeBoxes[\(q1, TraditionalForm\)]\) := 
-             \(InterpretationBox[\(\(SubscriptBox[\(q, 1\)]\), q1\)]\)\)], 
-         "Input", CellLabel -> "In[56]:=", CellTags -> "start"], Cell[BoxData[
-          \(q2/:\(MakeBoxes[\(q2, TraditionalForm\)]\) := 
-             \(InterpretationBox[\(\(SubscriptBox[\(q, 2\)]\), q2\)]\)\)], 
-         "Input", CellLabel -> "In[57]:=", CellTags -> "start"], 
-        Cell[TextData[{"Evaluating ", 
-           StyleBox["q1", Rule[FontFamily, "Courier"]], " and ", 
-           StyleBox["q2", Rule[FontFamily, "Courier"]], 
-           " now returns formatted TraditionalForm output:"}], "MathCaption", 
-         CellTags -> "start"], Cell[CellGroupData[{Cell[BoxData[\({q1, q2}\)]
-             , "Input", CellLabel -> "In[58]:=", CellTags -> "start"], 
-           Cell[BoxData[
-             \(TraditionalForm\`\({\*InterpretationBox[\(q\_1\), q1], 
-                   \*InterpretationBox[\(q\_2\), q2]}\)\)], "Output", 
-            CellLabel -> "Out[58]="]}, Closed]], Cell["Enforcing StandardForm \
-gives 'raw' output usable for copying, pasting and re-evaluating:", 
+         "Input", CellTags -> "start"], 
+        Cell["This sets the default output form to TraditionalForm.", 
          "MathCaption", CellTags -> "start"], 
-        Cell[CellGroupData[{Cell[BoxData[\(%//StandardForm\)], "Input", 
-            CellLabel -> "In[59]:=", CellTags -> "start"], Cell[BoxData[
-             \({q1, q2}\)], "Output", CellLabel -> 
-             "Out[59]//StandardForm="]}, Closed]]}, Closed]], 
+        Cell[CellGroupData[{Cell[BoxData[
+             StyleBox[\(B0[\(p, \(m1^2\), \(m2^2\)\)]\), "Input"]], "Input", 
+            CellTags -> "start"], Cell[BoxData[
+             \(TraditionalForm\`\(B\_0(\(p, m1\^2, m2\^2\))\)\)], "Output", 
+            CellTags -> "start"]}, Closed]], 
+        Cell["Now FeynCalc functions, like e.g. B0, are again typeset.", 
+         "MathCaption", CellTags -> "start"], Cell[BoxData[{
+           \(m1/:\(MakeBoxes[\(m1, TraditionalForm\)]\) := 
+              \(InterpretationBox[\(\(SubscriptBox[\(m, 1\)]\), m1\)]\)\), 
+           \(m2/:\(MakeBoxes[\(m2, TraditionalForm\)]\) := 
+              \(InterpretationBox[\(\(SubscriptBox[\(m, 2\)]\), m2\)]\)\)}], 
+         "Input", CellTags -> "start"], 
+        Cell[TextData[{"This defines additional typesetting rules for m", 
+           StyleBox["1", Rule[FontFamily, "Courier"]], " and m", 
+           StyleBox["2", Rule[FontFamily, "Courier"]], 
+           " for the output format type TraditionalForm."}], "MathCaption", 
+         CellTags -> "start"], Cell[CellGroupData[{Cell[BoxData[
+             StyleBox[\(B0[\(p, \(m1^2\), \(m2^2\)\)]\), "Input"]], "Input", 
+            CellTags -> "start"], Cell[BoxData[
+             \(TraditionalForm\`\(B\_0(
+                  \(p, \*InterpretationBox[\(m\_1\), m1]\^2, 
+                    \*InterpretationBox[\(m\_2\), m2]\^2\))\)\)], "Output", 
+            CellTags -> "start"]}, Closed]], Cell[TextData[{"Evaluating m", 
+           StyleBox["1", Rule[FontFamily, "Courier"]], " and m", 
+           StyleBox["2", Rule[FontFamily, "Courier"]], 
+           " now returns formatted TraditionalForm output."}], "MathCaption", 
+         CellTags -> "start"], Cell[CellGroupData[{Cell[BoxData[
+             \(%//StandardForm\)], "Input", CellTags -> "start"], 
+           Cell[BoxData[\(B0[\(p, m1\^2, m2\^2\)]\)], "Output", 
+            CellTags -> "start"]}, Closed]], Cell["Enforcing StandardForm \
+gives 'raw' output, usable for copying, pasting and re-evaluating.", 
+         "MathCaption", CellTags -> "start"]}, Closed]], 
      Cell[CellGroupData[{Cell["Extra subpackages", "Section", 
          PageBreakAbove -> True, CellTags -> "About Extras"], 
-        Cell[TextData[{"In the directory  \"HighEnergyPhysics\" are various \
+        Cell[TextData[{"The directory  \"HighEnergyPhysics\" contains various \
 files and subdirectories belonging to third-party packages which are not \
-necessary to run \"standard\" FeynCalc calculations and which do not use the \
+necessary to run 'standard' FeynCalc calculations and which do not use the \
 autoloading conventions of FeynCalc. These packages are not initialized by \
 default when starting FeynCalc. Loading them can be switched on and off by \
-setting appropiate variables to ", 
-           StyleBox["False", Rule[FontFamily, "Courier"]], " or ", 
-           StyleBox["True", Rule[FontFamily, "Courier"]], "."}], "Text", 
-         CellTags -> "About Extras"], Cell["E.g. evaluating this before \
-loading FeynCalc causes FeynCalc to load the subpackage TARCER:", 
-         "MathCaption", CellTags -> "About Extras"], Cell[BoxData[
-          \(\($LoadTARCER = True\) ;\)], "Input", CellLabel -> "In[60]:=", 
-         CellTags -> "About Extras"], Cell["You can also put the last input \
-line into your \"FCConfig.m\" file.", "Text", CellTags -> "About Extras"], 
-        Cell[BoxData[
+setting appropiate variables to False or True before ", 
+           ButtonBox["loading FeynCalc", 
+             RuleDelayed[ButtonData, "Load FeynCalc"], 
+             Rule[ButtonStyle, "AddOnsLink"], Rule[ButtonNote, "start"]], 
+           ". "}], "Text", CellTags -> "About Extras"], Cell[BoxData[
           \(TraditionalForm\`\(\*StyleBox[FrameBox[StyleBox[GridBox[
                    {{StyleBox["$LoadTARCER", 
                       Rule[FontFamily, "Courier"]], 
@@ -294,7 +305,8 @@ line into your \"FCConfig.m\" file.", "Text", CellTags -> "About Extras"],
               ButtonBox["hep-ph/9801383", 
                 RuleDelayed[ButtonData, 
                  List[URL["http://xxx.lanl.gov/abs/hep-ph/9801383"], None]], 
-                Rule[ButtonStyle, "Hyperlink"]], " at Los Alamos"}], "Text", 
+                Rule[ButtonStyle, "Hyperlink"]], 
+              " on the Los Alamos preprint server"}], "Text", 
             CellDingbat -> "\[GrayCircle]", CellTags -> "tarcer"], 
            Cell[TextData[{"published in ", 
               StyleBox["Comp. Phys. Comm.", 
@@ -319,8 +331,7 @@ do so, FeynCalc automatically loads any tarcer*.mx file found the directory \
               StyleBox["Mathematica", Rule[FontSlant, "Italic"]], "'s \
 FileNames is loaded). To have FeynCalc load TARCER, evaluate"}], "Text", 
             CellTags -> "tarcer"], Cell[BoxData[\(\($LoadTARCER = True\) ;\)]
-             , "Input", CellLabel -> "In[61]:=", CellTags -> "tarcer"], 
-           Cell[TextData[{"before ", 
+             , "Input", CellTags -> "tarcer"], Cell[TextData[{"before ", 
               ButtonBox["loading FeynCalc", 
                 RuleDelayed[ButtonData, "Load FeynCalc"], 
                 Rule[ButtonStyle, "AddOnsLink"], Rule[ButtonNote, "start"]], 
@@ -346,48 +357,45 @@ generate a large number of Feynman rules from different lagrangians."}],
             "Text", CellTags -> "phi"], 
            Cell["To have FeynCalc load PHI, evaluate", "Text", 
             CellTags -> "phi"], Cell[BoxData[\(\($LoadPhi = True\) ;\)], 
-            "Input", CellLabel -> "In[62]:=", CellTags -> "phi"], 
-           Cell[TextData[{"before ", 
+            "Input", CellTags -> "phi"], Cell[TextData[{"before ", 
               ButtonBox["loading FeynCalc", 
                 RuleDelayed[ButtonData, "Load FeynCalc"], 
                 Rule[ButtonStyle, "AddOnsLink"], Rule[ButtonNote, "start"]], 
-              ". You can also put the last input line into your \
-\"FCConfig.m\" file."}], "Text", CellTags -> "phi"], 
-           Cell[TextData[{"More information is available at ", 
+              ". You can also put this line into your \"FCConfig.m\" file."}]\
+, "Text", CellTags -> "phi"], Cell[TextData[
+             {"More information is available at ", 
               ButtonBox["http://www.feyncalc.org/phi/", 
                 RuleDelayed[ButtonData, 
                  List[URL["http://www.feyncalc.org/phi/"], None]], 
                 Rule[ButtonStyle, "Hyperlink"], 
                 Rule[ButtonNote, "http://www.feyncalc.org/phi/"]], "."}], 
             "Text", CellTags -> "phi"]}, Closed]], 
-        Cell[CellGroupData[{Cell["FeynArts", "Subsection", 
-            CellTags -> {"fa", "extrafoor"}], 
+        Cell[CellGroupData[{Cell["FeynArts", "Subsection", CellTags -> "fa"], 
            Cell["Hagen Eck, Sepp K\[UDoubleDot]blbeck and Thomas Hahn", 
-            "InspectorLevel2", CellTags -> {"fa", "extrafoor"}], 
-           Cell[TextData[{
+            "InspectorLevel2", CellTags -> "fa"], Cell[TextData[{
               ButtonBox["hep-ph/0012260", 
                 RuleDelayed[ButtonData, 
                  List[URL["http://xxx.lanl.gov/abs/hep-ph/0012260"], None]], 
-                Rule[ButtonStyle, "Hyperlink"]], " at Los Alamos"}], "Text", 
-            CellDingbat -> "\[GrayCircle]", CellTags -> {"fa", "extrafoor"}], 
+                Rule[ButtonStyle, "Hyperlink"]], 
+              " on the Los Alamos preprint server"}], "Text", 
+            CellDingbat -> "\[GrayCircle]", CellTags -> "fa"], 
            Cell[TextData[{"old version published in ", 
               StyleBox["Comp. Phys. Comm. ", 
                 Rule[CellDingbat, "\[GrayCircle]"]], 
               StyleBox["60", Rule[CellDingbat, "\[GrayCircle]"], 
                 Rule[FontWeight, "Bold"]], 
               StyleBox[" (1990) 165", Rule[CellDingbat, "\[GrayCircle]"]]}], 
-            "Text", CellDingbat -> "\[GrayCircle]", CellTags -> 
-             {"fa", "extrafoor"}], Cell["FeynArts is a Mathematica package \
-written by Hagen Eck, Sepp K\[UDoubleDot]blbeck and Thomas Hahn for the \
-generation and visualization of Feynman diagrams and amplitudes. The current \
-version is being developed by Thomas Hahn independently of FeynCalc. As it \
-turns out, it can, however, be used with FeynCalc with only a few \
-modifications, which are done automatically when it is loaded by FeynCalc.", 
-            "Text", CellTags -> {"fa", "extrafoor"}], Cell["One use of \
-FeynCalc and FeynArts together is to use FeynCalc to process the output you \
-get from FeynArts. Another use is to use FeynCalc and PHI to generate the \
-many Feynman rules needed in effective theories like ChPT and feed them to \
-FeynArts.", "Text", CellTags -> {"fa", "extrafoor"}], 
+            "Text", CellDingbat -> "\[GrayCircle]", CellTags -> "fa"], 
+           Cell["FeynArts is a Mathematica package written by Hagen Eck, Sepp \
+K\[UDoubleDot]blbeck and Thomas Hahn for the generation and visualization of \
+Feynman diagrams and amplitudes. The current version is being developed by \
+Thomas Hahn independently of FeynCalc. As it turns out, it can, however, be \
+used with FeynCalc with only a few modifications, which are done \
+automatically when it is loaded by FeynCalc.", "Text", CellTags -> "fa"], 
+           Cell["One use of FeynCalc and FeynArts together is to use FeynCalc \
+to process the output you get from FeynArts. Another use is to use FeynCalc \
+and PHI to generate the many Feynman rules needed in effective theories like \
+ChPT and feed them to FeynArts.", "Text", CellTags -> "fa"], 
            Cell[TextData[{"To have FeynArts loaded by FeynCalc, you need \
 first of all to get FeynArts at ", 
               ButtonBox["http://www.feynarts.de/", 
@@ -395,17 +403,16 @@ first of all to get FeynArts at ",
                  List[URL["http://www.feynarts.de/"], None]], 
                 Rule[ButtonStyle, "Hyperlink"], 
                 Rule[ButtonNote, "Download FeynArts"]], " and put it in the \
-directory \"HighEnergyPhysics\". Then evaluate"}], "Text", 
-            CellTags -> {"fa", "extrafoor"}], Cell[BoxData[{
-              \(\($LoadPhi = True\) ;\), \(\($LoadFeynArts = True\) ;\)}], 
-            "Input", CellLabel -> "In[63]:=", CellTags -> 
-             {"fa", "extrafoor"}], Cell[TextData[{"before ", 
+directory \"HighEnergyPhysics\". Then evaluate"}], "Text", CellTags -> "fa"], 
+           Cell[BoxData[{\(\($LoadPhi = True\) ;\), 
+              \(\($LoadFeynArts = True\) ;\)}], "Input", CellTags -> "fa"], 
+           Cell[TextData[{"before ", 
               ButtonBox["loading FeynCalc", 
                 RuleDelayed[ButtonData, "Load FeynCalc"], 
                 Rule[ButtonStyle, "AddOnsLink"], Rule[ButtonNote, "start"]], 
-              ". You can also put the last input line into your \
-\"FCConfig.m\" file."}], "Text", CellTags -> {"fa", "extrafoor"}], 
-           Cell[TextData[{"More information about FeynArts is available at ", 
+              ". You can also put these lines into your \"FCConfig.m\" file."}\
+], "Text", CellTags -> "fa"], Cell[TextData[
+             {"More information about FeynArts is available at ", 
               ButtonBox["http://www.feynarts.de/", 
                 RuleDelayed[ButtonData, 
                  List[URL["http://www.feynarts.de/"], None]], 
@@ -417,56 +424,36 @@ about using FeynArts, FeynCalc and PHI is available at ",
                  List[URL["http://www.feyncalc.org/phi/"], None]], 
                 Rule[ButtonStyle, "Hyperlink"], 
                 Rule[ButtonNote, "http://www.feyncalc.org/phi/"]], "."}], 
-            "Text", CellTags -> {"fa", "extrafoor"}]}, Closed]]}, Closed]], 
+            "Text", CellTags -> "fa"]}, Closed]]}, Closed]], 
      Cell[CellGroupData[{Cell["Example Calculations", "Section", 
          PageBreakAbove -> True, CellTags -> {"Example Calculations", "ex"}], 
         Cell[TextData[
-          {"This section is under development ... Please send suggestions to \
+          {"This section is under development ... Please post suggestions on \
 ", 
-           ButtonBox["feyncalc@feyncalc.org", 
-             RuleDelayed[ButtonData, List[URL["mailto:feyncalc@feyncalc.or\
-g"], None]], Rule[ButtonStyle, "Hyperlink"], 
-             Rule[ButtonNote, "http://www.feyncalc.org/examples"]], 
-           " and/or upload at ", 
-           ButtonBox["www.feyncalc.org/examples", 
-             RuleDelayed[ButtonData, List[URL["http://www.feyncalc.org/exa\
-mples"], None]], Rule[ButtonStyle, "Hyperlink"], 
-             Rule[ButtonNote, "http://www.feyncalc.org/examples"]], "..."}], 
-         "Commentary", CellTags -> "ex"], 
-        Cell[TextData[{"The examples are from various areas of research or \
-education. More are welcome. See also ", 
-           ButtonBox["www.feyncalc.org/examples", 
-             RuleDelayed[ButtonData, List[URL["http://www.feyncalc.org/exa\
-mples"], None]], Rule[ButtonStyle, "Hyperlink"], 
-             Rule[ButtonNote, "http://www.feyncalc.org/examples"]], "."}], 
-         "Text", CellTags -> "ex"], Cell[CellGroupData[
+           ButtonBox["www.feyncalc.org/forum/", 
+             RuleDelayed[ButtonData, List[URL["http://www.feyncalc.org/for\
+um/"], None]], Rule[ButtonStyle, "Hyperlink"], 
+             Rule[ButtonNote, "http://www.feyncalc.org/forum/"]], "."}], 
+         "Commentary", CellTags -> "ex"], Cell[CellGroupData[
           {Cell[TextData[{"Tree level ", Cell[BoxData[
                 \(TraditionalForm\`\(\(\[Gamma]\ \[Gamma]\)\ \[Rule]\ 
                      \(\(e\^+\) \(e\^-\)\)\)\)]], " in the standard model"}], 
             "Subsection", CellTags -> "Tree level"], 
-           Cell[TextData[{"Tree level pair production ", Cell[BoxData[
-                \(TraditionalForm\`\(\(\[Gamma]\ \[Gamma]\)\ \[Rule]\ 
-                     \(\(e\^+\) \(e\^-\)\)\)\)]]}], "Text", 
-            CellTags -> "Tree level"], 
-           Cell["Define typesetting rules for p1, p2, k1, k2", "Text", 
+           Cell["Define typesetting rules for p1, p2, k1, k2:", "Text", 
             CellTags -> "Tree level"], Cell["p1/: MakeBoxes[p1, fmt_] := \
-InterpretationBox[SubscriptBox[p, 1], p1]", "Input", CellLabel -> "In[65]:=", 
-            CellTags -> "Tree level"], Cell["k1/: MakeBoxes[k1, fmt_] := \
-InterpretationBox[SubscriptBox[k, 1], k1]", "Input", CellLabel -> "In[66]:=", 
-            CellTags -> "Tree level"], Cell["p2/: MakeBoxes[p2, fmt_] := \
-InterpretationBox[SubscriptBox[p, 2], p2]", "Input", CellLabel -> "In[67]:=", 
-            CellTags -> "Tree level"], Cell["k2/: MakeBoxes[k2, fmt_] := \
-InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=", 
-            CellTags -> "Tree level"], 
-           Cell["Define slashes of external momenta to save future typing.", 
+InterpretationBox[SubscriptBox[p, 1], p1];\nk1/: MakeBoxes[k1, fmt_] := \
+InterpretationBox[SubscriptBox[k, 1], k1];\np2/: MakeBoxes[p2, fmt_] := \
+InterpretationBox[SubscriptBox[p, 2], p2];\nk2/: MakeBoxes[k2, fmt_] := \
+InterpretationBox[SubscriptBox[k, 2], k2];", "Input", CellTags -> 
+             "Tree level"], Cell[
+            "Define slashes of external momenta to save future typing:", 
             "Text", CellTags -> "Tree level"], Cell[CellGroupData[
              {Cell[BoxData[
                 \(\({p1sl, p2sl, k1sl, k2sl}\) = 
                    \(DiracSlash/@\({p1, p2, k1, k2}\)\)\)], "Input", 
-               CellLabel -> "In[69]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[FormBox[RowBox[{"{", RowBox[{RowBox[{FormBox[
-                        "\"\[Gamma]\"", "TraditionalForm"], "\[CenterDot]", 
-                       FormBox[
+               CellTags -> "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {"{", RowBox[{RowBox[{FormBox["\"\[Gamma]\"", 
+                        "TraditionalForm"], "\[CenterDot]", FormBox[
                         \(\(\*TagBox[StyleBox["\"p\"", 
                                Rule[FontSlant, "Italic"]], 
                               Function[StyleForm[Slot[1], 
@@ -493,7 +480,7 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                               Function[StyleForm[Slot[1], 
                                 Rule[FontSlant, "Italic"]]]]\)\_2\), 
                         "TraditionalForm"]}]}], "}"}], TraditionalForm]], 
-               "Output", CellLabel -> "Out[69]="]}, Closed]], 
+               "Output", CellTags -> "Tree level"]}, Closed]], 
            Cell[TextData[{"Kinematic definitions so that only ", Cell[BoxData[
                 \(TraditionalForm\`\(p\_1 . k\_1\)\)]], ", ", Cell[BoxData[
                 \(TraditionalForm\`\(p\_1 . k\_2\)\)]], 
@@ -511,37 +498,35 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                      \(k\_1 \[CenterDot] p\_1\)\)\)]], " ", Cell[BoxData[
                 \(TraditionalForm\`\(\(p\_1 \[CenterDot] p\_2\) =\ 
                      \(\(k\_2 \[CenterDot] p\_1\) - m\^2 + 
-                       \(k\_1 \[CenterDot] p\_1\)\)\)\)]]}], "Text", 
+                       \(k\_1 \[CenterDot] p\_1\)\)\)\)]], "."}], "Text", 
             CellTags -> "Tree level"], Cell[BoxData[
              \(\(\(ScalarProduct[\(p1, p1\)]\) = 
                   \(\(ScalarProduct[\(p2, p2\)]\) = m\^2\)\) ;\)], "Input", 
-            CellLabel -> "In[70]:=", CellTags -> "Tree level"], Cell[BoxData[
+            CellTags -> "Tree level"], Cell[BoxData[
              \(\(\(ScalarProduct[\(k1, k1\)]\) = 
                   \(\(ScalarProduct[\(k2, k2\)]\) = 0\)\) ;\)], "Input", 
-            CellLabel -> "In[71]:=", CellTags -> "Tree level"], Cell[BoxData[
+            CellTags -> "Tree level"], Cell[BoxData[
              \(\(\(ScalarProduct[\(k1, k2\)]\) = 
                   \(\(ScalarProduct[\(p1, p2\)]\) + m\^2\)\) ;\)], "Input", 
-            CellLabel -> "In[72]:=", CellTags -> "Tree level"], Cell[BoxData[
+            CellTags -> "Tree level"], Cell[BoxData[
              \(\(\(ScalarProduct[\(k1, p2\)]\) = 
                   \(ScalarProduct[\(k2, p1\)]\)\) ;\)], "Input", 
-            CellLabel -> "In[73]:=", CellTags -> "Tree level"], Cell[BoxData[
+            CellTags -> "Tree level"], Cell[BoxData[
              \(\(\(ScalarProduct[\(k2, p2\)]\) = 
                   \(ScalarProduct[\(k1, p1\)]\)\) ;\)], "Input", 
-            CellLabel -> "In[74]:=", CellTags -> "Tree level"], Cell[BoxData[
+            CellTags -> "Tree level"], Cell[BoxData[
              \(\(\(ScalarProduct[\(p1, p2\)]\) = 
                   \(\(ScalarProduct[\(k2, p1\)]\) - m\^2 + 
                     \(ScalarProduct[\(k1, p1\)]\)\)\) ;\)], "Input", 
-            CellLabel -> "In[75]:=", CellTags -> "Tree level"], 
-           Cell["Define the amplitudes.", "Text", CellTags -> "Tree level"], 
-           Cell[CellGroupData[{Cell[BoxData[
+            CellTags -> "Tree level"], Cell["Define the amplitudes:", "Text", 
+            CellTags -> "Tree level"], Cell[CellGroupData[{Cell[BoxData[
                 \(f1 = \(\(DiracMatrix[\[Mu]]\) . \((p1sl - k1sl + m)\) . 
-                     \(DiracMatrix[\[Nu]]\)\)\)], "Input", CellLabel -> 
-                "In[76]:=", CellTags -> "Tree level"], Cell[BoxData[
-                FormBox[RowBox[{SuperscriptBox["\[Gamma]", FormBox[FormBox[
-                      "\[Mu]", "TraditionalForm"], "TraditionalForm"]], ".", 
-                   RowBox[{"(", RowBox[{"m", "-", RowBox[{FormBox[
-                          "\"\[Gamma]\"", "TraditionalForm"], "\[CenterDot]", 
-                         FormBox[
+                     \(DiracMatrix[\[Nu]]\)\)\)], "Input", CellTags -> 
+                "Tree level"], Cell[BoxData[FormBox[RowBox[{SuperscriptBox[
+                    "\[Gamma]", FormBox[FormBox["\[Mu]", "TraditionalForm"], 
+                     "TraditionalForm"]], ".", RowBox[{"(", RowBox[{"m", "-", 
+                       RowBox[{FormBox["\"\[Gamma]\"", "TraditionalForm"], 
+                         "\[CenterDot]", FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -556,16 +541,15 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                           "TraditionalForm"]}]}], ")"}], ".", SuperscriptBox[
                     "\[Gamma]", FormBox[FormBox["\[Nu]", "TraditionalForm"], 
                      "TraditionalForm"]]}], TraditionalForm]], "Output", 
-               CellLabel -> "Out[76]="]}, Closed]], 
+               CellTags -> "Tree level"]}, Closed]], 
            Cell[CellGroupData[{Cell[BoxData[
                 \(f2 = \(\(DiracMatrix[\[Nu]]\) . \((p1sl - k2sl + m)\) . 
-                     \(DiracMatrix[\[Mu]]\)\)\)], "Input", CellLabel -> 
-                "In[77]:=", CellTags -> "Tree level"], Cell[BoxData[
-                FormBox[RowBox[{SuperscriptBox["\[Gamma]", FormBox[FormBox[
-                      "\[Nu]", "TraditionalForm"], "TraditionalForm"]], ".", 
-                   RowBox[{"(", RowBox[{"m", "-", RowBox[{FormBox[
-                          "\"\[Gamma]\"", "TraditionalForm"], "\[CenterDot]", 
-                         FormBox[
+                     \(DiracMatrix[\[Mu]]\)\)\)], "Input", CellTags -> 
+                "Tree level"], Cell[BoxData[FormBox[RowBox[{SuperscriptBox[
+                    "\[Gamma]", FormBox[FormBox["\[Nu]", "TraditionalForm"], 
+                     "TraditionalForm"]], ".", RowBox[{"(", RowBox[{"m", "-", 
+                       RowBox[{FormBox["\"\[Gamma]\"", "TraditionalForm"], 
+                         "\[CenterDot]", FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -580,16 +564,15 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                           "TraditionalForm"]}]}], ")"}], ".", SuperscriptBox[
                     "\[Gamma]", FormBox[FormBox["\[Mu]", "TraditionalForm"], 
                      "TraditionalForm"]]}], TraditionalForm]], "Output", 
-               CellLabel -> "Out[77]="]}, Closed]], 
+               CellTags -> "Tree level"]}, Closed]], 
            Cell[CellGroupData[{Cell[BoxData[
                 \(f3 = \(\(DiracMatrix[\[Nu]]\) . \((p1sl - k1sl + m)\) . 
-                     \(DiracMatrix[\[Mu]]\)\)\)], "Input", CellLabel -> 
-                "In[78]:=", CellTags -> "Tree level"], Cell[BoxData[
-                FormBox[RowBox[{SuperscriptBox["\[Gamma]", FormBox[FormBox[
-                      "\[Nu]", "TraditionalForm"], "TraditionalForm"]], ".", 
-                   RowBox[{"(", RowBox[{"m", "-", RowBox[{FormBox[
-                          "\"\[Gamma]\"", "TraditionalForm"], "\[CenterDot]", 
-                         FormBox[
+                     \(DiracMatrix[\[Mu]]\)\)\)], "Input", CellTags -> 
+                "Tree level"], Cell[BoxData[FormBox[RowBox[{SuperscriptBox[
+                    "\[Gamma]", FormBox[FormBox["\[Nu]", "TraditionalForm"], 
+                     "TraditionalForm"]], ".", RowBox[{"(", RowBox[{"m", "-", 
+                       RowBox[{FormBox["\"\[Gamma]\"", "TraditionalForm"], 
+                         "\[CenterDot]", FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -604,16 +587,15 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                           "TraditionalForm"]}]}], ")"}], ".", SuperscriptBox[
                     "\[Gamma]", FormBox[FormBox["\[Mu]", "TraditionalForm"], 
                      "TraditionalForm"]]}], TraditionalForm]], "Output", 
-               CellLabel -> "Out[78]="]}, Closed]], 
+               CellTags -> "Tree level"]}, Closed]], 
            Cell[CellGroupData[{Cell[BoxData[
                 \(f4 = \(\(DiracMatrix[\[Mu]]\) . \((p1sl - k2sl + m)\) . 
-                     \(DiracMatrix[\[Nu]]\)\)\)], "Input", CellLabel -> 
-                "In[79]:=", CellTags -> "Tree level"], Cell[BoxData[
-                FormBox[RowBox[{SuperscriptBox["\[Gamma]", FormBox[FormBox[
-                      "\[Mu]", "TraditionalForm"], "TraditionalForm"]], ".", 
-                   RowBox[{"(", RowBox[{"m", "-", RowBox[{FormBox[
-                          "\"\[Gamma]\"", "TraditionalForm"], "\[CenterDot]", 
-                         FormBox[
+                     \(DiracMatrix[\[Nu]]\)\)\)], "Input", CellTags -> 
+                "Tree level"], Cell[BoxData[FormBox[RowBox[{SuperscriptBox[
+                    "\[Gamma]", FormBox[FormBox["\[Mu]", "TraditionalForm"], 
+                     "TraditionalForm"]], ".", RowBox[{"(", RowBox[{"m", "-", 
+                       RowBox[{FormBox["\"\[Gamma]\"", "TraditionalForm"], 
+                         "\[CenterDot]", FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -628,14 +610,13 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                           "TraditionalForm"]}]}], ")"}], ".", SuperscriptBox[
                     "\[Gamma]", FormBox[FormBox["\[Nu]", "TraditionalForm"], 
                      "TraditionalForm"]]}], TraditionalForm]], "Output", 
-               CellLabel -> "Out[79]="]}, Closed]], 
-           Cell[" Calculation of the four traces.", "Text", 
-            CellTags -> "Tree level"], Cell[CellGroupData[
+               CellTags -> "Tree level"]}, Closed]], 
+           Cell[" Calculate the four traces:", "Text", CellTags -> 
+             "Tree level"], Cell[CellGroupData[
              {Cell["tr1 = Tr[(p1sl + m) . f1 . (p2sl - m) . f3]", "Input", 
-               CellLabel -> "In[80]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[FormBox[RowBox[{"4", " ", RowBox[{"(", RowBox[{
-                       \(\(-8\)\ m\^4\), "+", RowBox[{"8", " ", RowBox[
-                          {FormBox[
+               CellTags -> "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {"4", " ", RowBox[{"(", RowBox[{\(\(-8\)\ m\^4\), "+", 
+                       RowBox[{"8", " ", RowBox[{FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -667,13 +648,12 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                                 Function[StyleForm[Slot[1], 
                                   Rule[FontSlant, "Italic"]]]]\)\_1\), 
                           "TraditionalForm"]}]}]}], ")"}]}], 
-                 TraditionalForm]], "Output", CellLabel -> "Out[80]="]}, 
+                 TraditionalForm]], "Output", CellTags -> "Tree level"]}, 
              Closed]], Cell[CellGroupData[
              {Cell["tr2 = Tr[(p1sl + m) . f1 . (p2sl - m) . f4]", "Input", 
-               CellLabel -> "In[81]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[FormBox[RowBox[{"4", " ", RowBox[{"(", RowBox[{
-                       \(\(-8\)\ m\^4\), "+", RowBox[{"4", " ", RowBox[
-                          {FormBox[
+               CellTags -> "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {"4", " ", RowBox[{"(", RowBox[{\(\(-8\)\ m\^4\), "+", 
+                       RowBox[{"4", " ", RowBox[{FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -695,13 +675,12 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                                 Function[StyleForm[Slot[1], 
                                   Rule[FontSlant, "Italic"]]]]\)\_1\), 
                           "TraditionalForm"]}], " ", \(m\^2\)}]}], ")"}]}], 
-                 TraditionalForm]], "Output", CellLabel -> "Out[81]="]}, 
+                 TraditionalForm]], "Output", CellTags -> "Tree level"]}, 
              Closed]], Cell[CellGroupData[
              {Cell["tr3 = Tr[(p1sl + m) . f2 . (p2sl - m) . f3]", "Input", 
-               CellLabel -> "In[82]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[FormBox[RowBox[{"4", " ", RowBox[{"(", RowBox[{
-                       \(\(-8\)\ m\^4\), "+", RowBox[{"4", " ", RowBox[
-                          {FormBox[
+               CellTags -> "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {"4", " ", RowBox[{"(", RowBox[{\(\(-8\)\ m\^4\), "+", 
+                       RowBox[{"4", " ", RowBox[{FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -723,13 +702,12 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                                 Function[StyleForm[Slot[1], 
                                   Rule[FontSlant, "Italic"]]]]\)\_1\), 
                           "TraditionalForm"]}], " ", \(m\^2\)}]}], ")"}]}], 
-                 TraditionalForm]], "Output", CellLabel -> "Out[82]="]}, 
+                 TraditionalForm]], "Output", CellTags -> "Tree level"]}, 
              Closed]], Cell[CellGroupData[
              {Cell["tr4 = Tr[(p1sl + m) . f2 . (p2sl - m) . f4]", "Input", 
-               CellLabel -> "In[83]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[FormBox[RowBox[{"4", " ", RowBox[{"(", RowBox[{
-                       \(\(-8\)\ m\^4\), "+", RowBox[{"8", " ", RowBox[
-                          {FormBox[
+               CellTags -> "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {"4", " ", RowBox[{"(", RowBox[{\(\(-8\)\ m\^4\), "+", 
+                       RowBox[{"8", " ", RowBox[{FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -761,18 +739,18 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                                 Function[StyleForm[Slot[1], 
                                   Rule[FontSlant, "Italic"]]]]\)\_1\), 
                           "TraditionalForm"]}]}]}], ")"}]}], 
-                 TraditionalForm]], "Output", CellLabel -> "Out[83]="]}, 
+                 TraditionalForm]], "Output", CellTags -> "Tree level"]}, 
              Closed]], Cell[
-            "Divide by the denominators and add everything up.", "Text", 
+            "Divide by the denominators and add everything up:", "Text", 
             CellTags -> "Tree level"], Cell[CellGroupData[{Cell[BoxData[
                 \(matrixsq = \(tr1\/\(ScalarProduct[\(\(2\ p1\), k1\)]\)\^2 +
                       tr4\/\(ScalarProduct[\(\(2\ p1\), k2\)]\)\^2 + 
                      \(tr2 + tr3\)\/\(\(ScalarProduct[\(\(2\ p1\), k1\)]\)\ 
                         \(ScalarProduct[\(\(2\ p1\), k2\)]\)\)\)\)], "Input", 
-               CellLabel -> "In[84]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[FormBox[RowBox[{FractionBox[RowBox[{"2", " ", 
-                      RowBox[{"(", RowBox[{\(\(-8\)\ m\^4\), "+", RowBox[
-                          {"4", " ", RowBox[{FormBox[
+               CellTags -> "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {FractionBox[RowBox[{"2", " ", RowBox[{"(", RowBox[{
+                          \(\(-8\)\ m\^4\), "+", RowBox[{"4", " ", RowBox[
+                          {FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -903,13 +881,14 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                                Function[StyleForm[Slot[1], 
                                  Rule[FontSlant, "Italic"]]]]\)\_1\), 
                          "TraditionalForm"]}], "TraditionalForm"], "2"]]}], 
-                 TraditionalForm]], "Output", CellLabel -> "Out[84]="]}, 
-             Closed]], Cell["Collect with respect to powers of m.", "Text", 
+                 TraditionalForm]], "Output", CellTags -> "Tree level"]}, 
+             Closed]], Cell[TextData[{"Collect with respect to powers of ", 
+              StyleBox["m", Rule[FontSlant, "Italic"]], ":"}], "Text", 
             CellTags -> "Tree level"], Cell[CellGroupData[{Cell[BoxData[
-                \(r = \(Collect2[\(matrixsq, m\)]\)\)], "Input", CellLabel -> 
-                "In[85]:=", CellTags -> "Tree level"], Cell[BoxData[
-                FormBox[RowBox[{RowBox[{"-", FractionBox[RowBox[{"8", " ", 
-                        SuperscriptBox[RowBox[{"(", RowBox[{RowBox[{FormBox[
+                \(r = \(Collect2[\(matrixsq, m\)]\)\)], "Input", CellTags -> 
+                "Tree level"], Cell[BoxData[FormBox[RowBox[
+                  {RowBox[{"-", FractionBox[RowBox[{"8", " ", SuperscriptBox[
+                         RowBox[{"(", RowBox[{RowBox[{FormBox[
                           \(\(\*TagBox[StyleBox["\"k\"", 
                                  Rule[FontSlant, "Italic"]], 
                                 Function[StyleForm[Slot[1], 
@@ -1039,20 +1018,20 @@ InterpretationBox[SubscriptBox[k, 2], k2]", "Input", CellLabel -> "In[68]:=",
                                Function[StyleForm[Slot[1], 
                                  Rule[FontSlant, "Italic"]]]]\)\_1\), 
                          "TraditionalForm"]}]}]]}], TraditionalForm]], 
-               "Output", CellLabel -> "Out[85]="]}, Closed]], 
-           Cell["This is a possibility to check the symmetry in k1 and k2 \
-explicitly.", "Text", CellTags -> "Tree level"], Cell[CellGroupData[
+               "Output", CellTags -> "Tree level"]}, Closed]], 
+           Cell[TextData[{"The symmetry with respect to ", Cell[BoxData[
+                \(TraditionalForm\`k\_1\)]], " and ", Cell[BoxData[
+                \(TraditionalForm\`k\_2\)]], " can be checked explicitly:"}], 
+            "Text", CellTags -> "Tree level"], Cell[CellGroupData[
              {Cell[BoxData[
                 \((r\ -\ \((r\ /.\ \({\ \(k1 \[RuleDelayed] k2\),\ 
                           \(k2 \[RuleDelayed] k1\)}\))\))\)], "Input", 
-               CellLabel -> "In[86]:=", CellTags -> "Tree level"], 
-              Cell[BoxData[\(TraditionalForm\`0\)], "Output", CellLabel -> 
-                "Out[86]="]}, Closed]], Cell["Remove the definitions for the \
-scalar products and for the typesetting definitions.", "Text", 
-            CellTags -> "Tree level"], Cell[BoxData[
+               CellTags -> "Tree level"], Cell[BoxData[\(TraditionalForm\`0\)]
+                , "Output", CellTags -> "Tree level"]}, Closed]], 
+           Cell["Remove the definitions for the scalar products and for the \
+typesetting definitions:", "Text", CellTags -> "Tree level"], Cell[BoxData[
              \(ClearScalarProducts ;\ \(Clear[\(p1, p2, k1, k2, r\)]\) ;\)], 
-            "Input", CellLabel -> "In[87]:=", CellTags -> "Tree level"], 
-           Cell[TextData[{"See also: ", 
+            "Input", CellTags -> "Tree level"], Cell[TextData[{"See also: ", 
               ButtonBox["ClearScalarProducts", 
                 RuleDelayed[ButtonData, "ClearScalarProducts"], 
                 Rule[ButtonStyle, "AddOnsLink"]], ", ", 
@@ -1070,7 +1049,9 @@ scalar products and for the typesetting definitions.", "Text",
             CellTags -> "Tree level"]}, Closed]], 
         Cell[CellGroupData[{Cell["A moment integral", "Subsection", 
             CellTags -> "A moment integral"], 
-           Cell[TextData[{"Moments of ", Cell[BoxData[
+           Cell[TextData[
+             {"This section shows how to calculate the moments of ", 
+              Cell[BoxData[
                 \(TraditionalForm\`\(\*StyleBox[\(
                         \(\*StyleBox["A", Rule[FontSlant, "Plain"]]\)\&^\), 
                        Rule[FontSlant, "Plain"]]\)\_qq\%\(NS, PHYS\)\)]], 
@@ -1078,30 +1059,23 @@ scalar products and for the typesetting definitions.", "Text",
               ButtonBox["hep-ph/9801224", 
                 RuleDelayed[ButtonData, 
                  List[URL["http://xxx.lanl.gov/abs/hep-ph/9801224"], None]], 
-                Rule[ButtonStyle, "Hyperlink"]]}], "Text", 
-            CellTags -> "A moment integral"], Cell["This is an example of \
-integration and of translation from FORM syntax.", "Text", 
-            CellTags -> "A moment integral"], 
-           Cell[TextData[{"Due to current conservation the first moment of ", 
-              Cell[BoxData[
+                Rule[ButtonStyle, "Hyperlink"]], ". Notice that due to \
+current conservation the first moment of ", Cell[BoxData[
                 \(TraditionalForm\`\(\*StyleBox[\(
                         \(\*StyleBox["A", Rule[FontSlant, "Plain"]]\)\&^\), 
                        Rule[FontSlant, "Plain"]]\)\_qq\%\(NS, PHYS\)\)]], 
               "should vanish."}], "Text", CellTags -> "A moment integral"], 
-           Cell["Translate FORM output (jqq12.log) to FeynCalc", "Text", 
+           Cell["First e is defined to be \[CurlyEpsilon]:", "Text"], 
+           Cell[BoxData[\(\(e\ =\ Epsilon\) ;\)], "Input", 
             CellTags -> "A moment integral"], 
-           Cell[TextData[{"The FORM file ", "jqq12.log ", 
-              "was generated by one of the authors of ", 
+           Cell[TextData[{"Next, FORM output from the file \"jqq12.log\" is \
+translated to FeynCalc syntax. The FORM file \"jqq12.log\" was generated by \
+one of the authors of ", 
               ButtonBox["hep-ph/9801224", 
                 RuleDelayed[ButtonData, 
                  List[URL["http://xxx.lanl.gov/abs/hep-ph/9801224"], None]], 
                 Rule[ButtonStyle, "Hyperlink"]], ". "}], "Text", 
-            CellTags -> "A moment integral"], Cell[CellGroupData[
-             {Cell[BoxData[\(e\ =\ Epsilon\)], "Input", CellLabel -> 
-                "In[88]:=", CellTags -> "A moment integral"], Cell[BoxData[
-                \(TraditionalForm\`\(\*TagBox["\[CurlyEpsilon]", 
-                      TraditionalForm]\)\)], "Output", CellLabel -> 
-                "Out[88]="]}, Closed]], Cell["Special FORM convenctions like \
+            CellTags -> "A moment integral"], Cell["FORM convenctions like \
 ln(1-x) can be translated automatically by FORM2FeynCalc, but they have to be \
 listed once in the option Replace of FORM2FeynCalc :", "Text", 
             CellTags -> "A moment integral"], Cell[BoxData[
@@ -1124,14 +1098,13 @@ listed once in the option Replace of FORM2FeynCalc :", "Text",
                          \("delta" \[Rule] "DeltaFunction[1-x]"\), 
                          \("Ca" \[Rule] "CA"\), \("Cf" \[Rule] "CF"\)}\)\), 
                     \(Dot \[Rule] Times\), \(HoldForm \[Rule] False\)\)]\) ;\
-\)], "Input", CellLabel -> "In[89]:=", CellTags -> "A moment integral"], 
-           Cell["Copy the FORM output from jqq12.log into the next cell and \
-put FORM2CFeynCalc[\" \"]//ReleaseHold around it.", "Text", 
-            CellTags -> "A moment integral"], Cell["aqq=FORM2FeynCalc[\"\n\n  \
-        + [(-1)^m]*e^-1*O1*Ca*Cf * (\n          - 8\n          + 4*x*Z2\n     \
-     + 8*x\n          + 8*Z2*[1+x]^-1\n          - 4*Z2\n          - \
-4*ln(x)\n          - 4*ln(x)*x\n          - 8*ln(x)*ln(1 + x)\n          + \
-8*ln(x)*ln(1 + x)*x\n          + 16*ln(x)*ln(1 + x)*[1+x]^-1\n          + \
+\)], "Input", CellTags -> "A moment integral"], Cell["Copy the FORM output \
+from jqq12.log into the next cell and put FORM2CFeynCalc[\" \"]//ReleaseHold \
+around it.", "Text", CellTags -> "A moment integral"], Cell["aqq=FORM2FeynCal\
+c[\"\n\n          + [(-1)^m]*e^-1*O1*Ca*Cf * (\n          - 8\n          + \
+4*x*Z2\n          + 8*x\n          + 8*Z2*[1+x]^-1\n          - 4*Z2\n        \
+  - 4*ln(x)\n          - 4*ln(x)*x\n          - 8*ln(x)*ln(1 + x)\n          \
++ 8*ln(x)*ln(1 + x)*x\n          + 16*ln(x)*ln(1 + x)*[1+x]^-1\n          + \
 2*ln(x)*ln(x)\n          - 2*ln(x)*ln(x)*x\n          - \
 4*ln(x)*ln(x)*[1+x]^-1\n          - 8*Li2( - x)\n          + 8*Li2( - x)*x\n  \
         + 16*Li2( - x)*[1+x]^-1\n          )\n\n       + \
@@ -1364,83 +1337,68 @@ x)*x\n          - 32/3*ln(x)*ln(1 + x)*x^2\n          + 12*ln(x)*ln(x)*x\n    \
 x)*x\n          + 16/3*Li2( - x)*x^-1\n          - 16*Li2( - x)*x\n          \
 - 32/3*Li2( - x)*x^2\n          + 48*Li3(1 - x)*x\n          - 48*Li3(1 - \
 x)*x^2\n          - 48*S12(1 - x)*x\n          + 48*S12(1 - x)*x^2\n          \
-)\n          \n          \"]//ReleaseHold;", "Input", CellLabel -> 
-             "In[90]:=", CellTags -> "A moment integral"], 
-           Cell[CellGroupData[{Cell[BoxData[\(Short[aqq]\)], "Input", 
-               CellLabel -> "In[91]:=", CellTags -> "A moment integral"], 
+)\n          \n          \"]//ReleaseHold;", "Input", CellTags -> 
+             "A moment integral"], Cell[CellGroupData[{Cell[BoxData[
+                \(Short[aqq]\)], "Input", CellTags -> "A moment integral"], 
               Cell[BoxData[FormBox[TagBox[RowBox[{FractionBox[RowBox[
                       {"O1", " ", \((\(32\ \(\[Zeta](2)\)\) - 18)\), " ", 
                        RowBox[{"\[Delta]", "(", FormBox[\(1 - x\), 
                           "TraditionalForm"], ")"}], " ", \(C\_F\%2\)}], 
                      \(\*TagBox["\[CurlyEpsilon]", TraditionalForm]\^2\)], 
-                    "+", 
-                    \(\(\[LeftSkeleton] 1 \[RightSkeleton]\)\/
-                       \(\[LeftSkeleton] 1 \[RightSkeleton]\)\), "+", 
-                    \(\[LeftSkeleton] 27 \[RightSkeleton]\), "+", 
-                    \(\[LeftSkeleton] 1 \[RightSkeleton]\), "+", 
+                    "+", \(\[LeftSkeleton] 29 \[RightSkeleton]\), "+", 
                     \(\((\(-1\))\)\^m\ C\_A\ O1\ 
                        \((\(\(-x\)\ \(log\^3(x)\)\) - 
-                          \(2\ \(log\^3(x)\)\)\/\(x + 1\) + 
-                          \(\[LeftSkeleton] 96 \[RightSkeleton]\) + 
-                          \(4\ \(\[LeftSkeleton] 1 \[RightSkeleton]\)\)\/
-                           \(x + 1\) - \(6\ 
-                            \*TagBox[\(\[Zeta](
-                                \*TagBox["3", Zeta, Rule[Editable, True]])\)\
-, InterpretTemplate[Function[BoxForm`e$, 
-                                Zeta[BoxForm`e$]]]]\) - 41\/3)\)\ C\_F\)}], 
-                  Short], TraditionalForm]], "Output", CellLabel -> 
-                "Out[91]//Short="]}, Closed]], Cell["Comment: By default all \
-bracketed FORM expressions are translated to a Hold[] expression.", 
-            "Commentary", CellTags -> "A moment integral"], 
+                          \(2\ \(\[LeftSkeleton] 1 \[RightSkeleton]\)\)\/
+                           \(x + 1\) + \(\[LeftSkeleton] 101 \[RightSkeleton]
+                           \))\)\ C\_F\)}], Short], TraditionalForm]], 
+               "Output", CellTags -> "A moment integral"]}, Closed]], 
+           Cell["By default all bracketed FORM expressions are translated to \
+a Hold[] expression.", "Commentary", CellTags -> "A moment integral"], 
            Cell[CellGroupData[{Cell["FORM2FeynCalc[\"-[(-1)^m]\"]", "Input", 
-               CellLabel -> "In[92]:=", CellTags -> "A moment integral"], 
-              Cell[BoxData[
+               CellTags -> "A moment integral"], Cell[BoxData[
                 \(TraditionalForm\`\(-\(Hold[\(\((\(-1\))\)\^m\)]\)\)\)], 
-               "Output", CellLabel -> "Out[92]="]}, Closed]], 
+               "Output", CellTags -> "A moment integral"]}, Closed]], 
            Cell[CellGroupData[{Cell[BoxData[\(%//ReleaseHold\)], "Input", 
-               CellLabel -> "In[93]:=", CellTags -> "A moment integral"], 
-              Cell[BoxData[\(TraditionalForm\`\(-\((\(-1\))\)\^m\)\)], 
-               "Output", CellLabel -> "Out[93]="]}, Closed]], 
-           Cell["Calculate moments", "Text", CellTags -> 
-             "A moment integral"], Cell["The first moment should be zero, \
-which is verified by Integrate2 in a reasonable amount of time. The variable \
-O2 can be set to zero since it is the coefficient of unphysical matrix \
-elements.", "Text", CellTags -> "A moment integral"], 
+               CellTags -> "A moment integral"], Cell[BoxData[
+                \(TraditionalForm\`\(-\((\(-1\))\)\^m\)\)], "Output", 
+               CellTags -> "A moment integral"]}, Closed]], 
+           Cell["The first moment should be zero, which is verified by \
+Integrate2 in a reasonable amount of time. The variable O2 can be set to zero \
+since it is the coefficient of unphysical matrix elements.", "Text", 
+            CellTags -> "A moment integral"], 
            Cell[TextData[{"This calculates for m=1 the integral ", 
               Cell[BoxData[
                 \(TraditionalForm\`\(\[Integral]\_0\%\(1\ \)\ 
-                     \(\(\*StyleBox[\(\(\*
-                               StyleBox["A", Rule[FontSlant, "Plain"]]\)\&^\
-\), Rule[FontSlant, "Plain"]]\)\_qq\%\(NS, PHYS\)\ 
-                       \(\[DifferentialD] x\)\)\ \)\)]]}], "Text", 
+                     \(\(\*StyleBox[\(\(
+                              \*StyleBox["A", Rule[FontSlant, "Plain"]]\)\&^
+                \), Rule[FontSlant, "Plain"]]\)\_qq\%\(NS, PHYS\)\ 
+                       \(\[DifferentialD] x\)\)\ \)\)]], ":"}], "Text", 
             CellTags -> "A moment integral"], Cell[CellGroupData[
              {Cell[BoxData[
                 \(Timing[\(Integrate2[\(\(
                         \(aqq/.\(m \[Rule] 1\)\)/.\(O2 \[Rule] 0\)\), 
-                       \({x, 0, 1}\)\)]\)]\)], "Input", CellLabel -> 
-                "In[94]:=", CellTags -> "A moment integral"], Cell[BoxData[
-                \(TraditionalForm\`\({\(4.860000000000001`\ Second\), 0}\)\)]\
-, "Output", CellLabel -> "Out[94]="]}, Closed]], Cell["If you know that no \
-partial fraction decomposition has to be done then Integrate3 will be much \
-faster on an expanded or collected %50integral:", "Text", 
+                       \({x, 0, 1}\)\)]\)]\)], "Input", CellTags -> 
+                "A moment integral"], Cell[BoxData[
+                \(TraditionalForm\`\({\(3.0425379999999995`\ Second\), 0}\)\)]\
+, "Output", CellTags -> "A moment integral"]}, Closed]], Cell["If you know \
+that no partial fraction decomposition has to be done then Integrate3 will be \
+much faster on an expanded or collected integral:", "Text", 
             CellTags -> "A moment integral"], Cell[CellGroupData[
              {Cell[BoxData[
                 \(Timing[\(Expand[\(Integrate3[
                        \(\(Expand[\(\(aqq/.\(m \[Rule] 1\)\)/.
                              \(O2 \[Rule] 0\)\)]\), \({x, 0, 1}\)\)]\)]\)]\)]\
-, "Input", CellLabel -> "In[95]:=", CellTags -> "A moment integral"], 
-              Cell[BoxData[
-                \(TraditionalForm\`\({\(0.9699999999999985`\ Second\), 0}\)\)]\
-, "Output", CellLabel -> "Out[95]="]}, Closed]], 
-           Cell["Define an auxiliary typesetting function.", "Text", 
+, "Input", CellTags -> "A moment integral"], Cell[BoxData[
+                \(TraditionalForm\`\({\(0.8498709999999996`\ Second\), 0}\)\)]\
+, "Output", CellTags -> "A moment integral"]}, Closed]], 
+           Cell["Define an auxiliary typesetting function:", "Text", 
             CellTags -> "A moment integral"], Cell[BoxData[
              \(\(\(MakeBoxes[\(\(big[a_]\),\ f_\)]\)\ :=\ 
                   \(StyleBox[\(\(MakeBoxes[\(a,\ f\)]\),\ 
                       \(FontColor\ \[Rule]\ \(RGBColor[\(0,\ 0,\ 1\)]\)\),
                       \(\ \ \ \)\(FontSize\ \[Rule]\ 18\)\)]\)\) ;\)], 
-            "Input", CellLabel -> "In[96]:=", CellTags -> 
-             "A moment integral"], Cell[
-            "The second moment takes a little bit longer.", "Text", 
+            "Input", CellTags -> "A moment integral"], 
+           Cell["The second moment takes a little bit longer.", "Text", 
             CellTags -> "A moment integral"], Cell[CellGroupData[
              {Cell[BoxData[
                 \(\(Timing[\(Collect2[\(\(
@@ -1453,18 +1411,18 @@ faster on an expanded or collected %50integral:", "Text",
                       \(\(CF^2\) \[RuleDelayed] \(big[\(CF^2\)]\)\), 
                       \(\(a_\ CF\ Tf\)\ \[RuleDelayed] 
                         \(HoldForm[\ \(\(big[\(CF\ Tf\)]\)\ a\)]\)\)}\)\)], 
-               "Input", CellLabel -> "In[97]:=", CellTags -> 
-                "A moment integral"], Cell[BoxData[
-                \(TraditionalForm\`\({\(5.129999999999996`\ Second\), 
-                      \(\*TagBox[\(\((\*StyleBox[\(C\_F\ T\_f\), 
+               "Input", CellTags -> "A moment integral"], Cell[BoxData[
+                \(TraditionalForm\`\({\(4.427326999999999`\ Second\), 
+                      \(\*TagBox[\(\((\*
+                               StyleBox[\(C\_F\ T\_f\), 
                                 Rule[FontSize, 18.`], 
                                 Rule[FontColor, RGBColor[0.`, 0.`, 1.`]]])\)
                 \ \((\(16\ \(\[Zeta] \((2)\)\)\)\/9 + 
                                376\/\(27\ 
                                   \*TagBox["\[CurlyEpsilon]", 
                                     TraditionalForm]\) - 
-                               64\/\(9\ \*
-                                    TagBox["\[CurlyEpsilon]", 
+                               64\/\(9\ 
+                                  \*TagBox["\[CurlyEpsilon]", 
                                      TraditionalForm]\^2\) - 2086\/81)\)\), 
                           HoldForm] + \(\(
                            (\*StyleBox[\(C\_A\ C\_F\), Rule[FontSize, 18.`], 
@@ -1476,9 +1434,9 @@ faster on an expanded or collected %50integral:", "Text",
                                  2\) - \(
                               12\ \*TagBox[\(
                                   \[Zeta] 
-                                   \((\*TagBox["3", Zeta, 
-                                     Rule[Editable, True]])\)\), 
-                                 InterpretTemplate[Function[BoxForm`e$, 
+                                   \((\*
+                                     TagBox["3", Zeta, Rule[Editable, True]]\
+)\)\), InterpretTemplate[Function[BoxForm`e$, 
                                    Zeta[BoxForm`e$]]]]\) + 12133\/162)\)\) + 
                         \(\*StyleBox[\(C\_F\%2\), Rule[FontSize, 18.`], 
                             Rule[FontColor, RGBColor[0.`, 0.`, 1.`]]]\ 
@@ -1489,37 +1447,36 @@ faster on an expanded or collected %50integral:", "Text",
                                \) + \(8\ 
                                \*TagBox[\(
                                   \[Zeta] 
-                                   \((\*TagBox["3", Zeta, 
-                                     Rule[Editable, True]])\)\), 
-                                 InterpretTemplate[Function[BoxForm`e$, 
+                                   \((\*
+                                     TagBox["3", Zeta, Rule[Editable, True]]\
+)\)\), InterpretTemplate[Function[BoxForm`e$, 
                                    Zeta[BoxForm`e$]]]]\) - 3452\/81)\)\)\)}\)
-                \)], "Output", CellLabel -> "Out[97]="]}, Closed]], 
+                \)], "Output", CellTags -> "A moment integral"]}, Closed]], 
            Cell["Try to do the general Mellin transform (replace m by OPEm, \
-which has special properties).", "Text", CellTags -> "A moment integral"], 
+which has special properties):", "Text", CellTags -> "A moment integral"], 
            Cell[BoxData[
              \(\(gqq\ =\ \(Collect2[\(\(
                        \(\(x\^\(OPEm - 1\) \((aqq/.\(m \[Rule] OPEm\))\)\)/.
                           \(O2 \[Rule] 0\)\)/.\(O1 \[Rule] 1\)\), x\)]\)\) ;\
-\)], "Input", CellLabel -> "In[98]:=", CellTags -> "A moment integral"], 
-           Cell[CellGroupData[{Cell[BoxData[\(gqq//Length\)], "Input", 
-               CellLabel -> "In[99]:=", CellTags -> "A moment integral"], 
-              Cell[BoxData[\(TraditionalForm\`102\)], "Output", CellLabel -> 
-                "Out[99]="]}, Closed]], Cell["There are 102 integrals. \
-However, some of the Mellin transforms cannot be done at the moment.", 
-            "Text", CellTags -> "A moment integral"], Cell[BoxData[
+\)], "Input", CellTags -> "A moment integral"], Cell[CellGroupData[
+             {Cell[BoxData[\(gqq//Length\)], "Input", CellTags -> 
+                "A moment integral"], Cell[BoxData[\(TraditionalForm\`102\)], 
+               "Output", CellTags -> "A moment integral"]}, Closed]], 
+           Cell["There are 102 integrals. However, some of the Mellin \
+transforms cannot be done at the moment.", "Text", CellTags -> 
+             "A moment integral"], Cell[BoxData[
              \(\(ww = \(Integrate3[\(gqq, \({x, 0, 1}\)\)]\)\) ;\)], "Input", 
-            CellLabel -> "In[100]:=", CellTags -> "A moment integral"], 
-           Cell["If an integral cannot be performed the head Hold[Integrate3] \
-is substituted for Integrate3. Thus, in order to find the list of integrals \
-not done you can do:", "Text", CellTags -> "A moment integral"], 
-           Cell[CellGroupData[{Cell[BoxData[
-                \(Cases2[\(ww, \(Hold[Integrate3]\)\)]\)], "Input", 
-               CellLabel -> "In[101]:=", CellTags -> "A moment integral"], 
-              Cell[BoxData[FormBox[RowBox[{"{", RowBox[{RowBox[{
-                       \(Hold[Integrate3]\), "[", RowBox[{RowBox[{
-                          \(x\^\(m - 1\)\), " ", RowBox[{SubscriptBox["S", 
-                          RowBox[{FormBox["1", "TraditionalForm"], FormBox[
-                          "2", "TraditionalForm"]}]], "(", FormBox[\(x\^2\), 
+            CellTags -> "A moment integral"], Cell["If an integral cannot be \
+performed the head Hold[Integrate3] is substituted for Integrate3. Thus, in \
+order to find the list of integrals not done you can do:", "Text", 
+            CellTags -> "A moment integral"], Cell[CellGroupData[
+             {Cell[BoxData[\(Cases2[\(ww, \(Hold[Integrate3]\)\)]\)], 
+               "Input", CellTags -> "A moment integral"], Cell[BoxData[
+                FormBox[RowBox[{"{", RowBox[{RowBox[{\(Hold[Integrate3]\), 
+                       "[", RowBox[{RowBox[{\(x\^\(m - 1\)\), " ", RowBox[
+                          {SubscriptBox["S", RowBox[{FormBox["1", 
+                          "TraditionalForm"], FormBox["2", 
+                          "TraditionalForm"]}]], "(", FormBox[\(x\^2\), 
                           "TraditionalForm"], ")"}]}], ",", \({x, 0, 1}\)}], 
                        "]"}], ",", RowBox[{\(Hold[Integrate3]\), "[", 
                        RowBox[{RowBox[{\(x\^m\), " ", RowBox[{SubscriptBox[
@@ -1557,8 +1514,9 @@ not done you can do:", "Text", CellTags -> "A moment integral"],
                                    Rule[Editable, False], 
                                    Rule[Selectable, False]]\)\_2(1 - x)\)\)\/
                            \(x + 1\), \({x, 0, 1}\)\)]\)}], "}"}], 
-                 TraditionalForm]], "Output", CellLabel -> "Out[101]="]}, 
-             Closed]], Cell[TextData[
+                 TraditionalForm]], "Output", CellTags -> 
+                "A moment integral"]}, Closed]], 
+           Cell[TextData[
              {"Change the appearance and retain only those integrals with ", 
               Cell[BoxData[\(TraditionalForm\`\(x\^\(m - 1\) :\)\)]]}], 
             "Text", CellTags -> "A moment integral"], 
@@ -1566,12 +1524,12 @@ not done you can do:", "Text", CellTags -> "A moment integral"],
                 \(\(Select2[\(%, x\^\(OPEm - 1\)\)]\)/.\ 
                    \(\(\(Hold[Integrate3]\)[z__]\) \[RuleDelayed]\ 
                      \(HoldForm[\(Integrate[z]\)]\)\)\)], "Input", 
-               CellLabel -> "In[102]:=", CellTags -> "A moment integral"], 
-              Cell[BoxData[FormBox[RowBox[{"{", RowBox[{TagBox[RowBox[{
-                        \(\[Integral]\_0\%1\), RowBox[{RowBox[{
-                          \(x\^\(m - 1\)\), " ", RowBox[{SubscriptBox["S", 
-                          RowBox[{FormBox["1", "TraditionalForm"], FormBox[
-                          "2", "TraditionalForm"]}]], "(", FormBox[\(x\^2\), 
+               CellTags -> "A moment integral"], Cell[BoxData[FormBox[
+                 RowBox[{"{", RowBox[{TagBox[RowBox[{\(\[Integral]\_0\%1\), 
+                        RowBox[{RowBox[{\(x\^\(m - 1\)\), " ", RowBox[
+                          {SubscriptBox["S", RowBox[{FormBox["1", 
+                          "TraditionalForm"], FormBox["2", 
+                          "TraditionalForm"]}]], "(", FormBox[\(x\^2\), 
                           "TraditionalForm"], ")"}]}], \(\[DifferentialD] x\)}
                           ]}], HoldForm], ",", TagBox[RowBox[{
                         \(\[Integral]\_0\%1\), RowBox[{FractionBox[RowBox[{
@@ -1598,16 +1556,15 @@ not done you can do:", "Text", CellTags -> "A moment integral"],
                                     Rule[Editable, False], 
                                     Rule[Selectable, False]]\)\_2(1 - x)\)\)
                      \/\(x + 1\) \(\[DifferentialD] x\)\)\), HoldForm]}], 
-                   "}"}], TraditionalForm]], "Output", CellLabel -> 
-                "Out[102]="]}, Closed]], Cell["If you do know the answers for \
-these integrals please share the knowledge.", "Text", CellTags -> 
-             "A moment integral"], Cell[BoxData[
+                   "}"}], TraditionalForm]], "Output", CellTags -> 
+                "A moment integral"]}, Closed]], Cell["If you know the \
+answers for these integrals please share the knowledge.", "Text", 
+            CellTags -> "A moment integral"], Cell[BoxData[
              \(Clear[\(e, ww, gqq, big, aqq\)]\)], "Input", 
-            CellLabel -> "In[103]:=", CellTags -> "A moment integral"], 
-           Cell[BoxData[
+            CellTags -> "A moment integral"], Cell[BoxData[
              \(\(SetOptions[\(FORM2FeynCalc, \(Replace \[Rule] \({}\)\)\)]
-                 \) ;\)], "Input", CellLabel -> "In[104]:=", 
-            CellTags -> "A moment integral"], Cell[TextData[{"See also: ", 
+                 \) ;\)], "Input", CellTags -> "A moment integral"], 
+           Cell[TextData[{"See also: ", 
               ButtonBox["CA", RuleDelayed[ButtonData, "CA"], 
                 Rule[ButtonStyle, "AddOnsLink"]], ", ", 
               ButtonBox["CF", RuleDelayed[ButtonData, "CF"], 
@@ -1637,11 +1594,11 @@ these integrals please share the knowledge.", "Text", CellTags ->
               ButtonBox["Zeta2", RuleDelayed[ButtonData, "Zeta2"], 
                 Rule[ButtonStyle, "AddOnsLink"]], "."}], "Text", 
             CellTags -> "A moment integral"]}, Closed]]}, Closed]]}, Open]]}, 
- ScreenRectangle -> {{0., 1024.}, {0., 768.}}, 
+ ScreenRectangle -> {{0., 1024.}, {0., 723.}}, 
  ScreenStyleEnvironment -> "AllBrackets", ShowPageBreaks -> False, 
  WindowToolbars -> "EditBar", EvaluationCompletionAction -> {}, 
  CellGrouping -> Manual, WindowSize -> {728., 619.}, 
- WindowMargins -> {{95., Automatic}, {Automatic, 52.}}, 
+ WindowMargins -> {{81., Automatic}, {Automatic, 22.}}, 
  PrintingStartingPageNumber -> 1, PrintingPageRange -> 
   {Automatic, Automatic}, PageHeaders -> 
   {{Inherited, Cell[TextData[ValueBox["FileName"]], "Header"], Inherited}, 
@@ -1661,4 +1618,5 @@ these integrals please share the knowledge.", "Text", CellTags ->
     {AutomaticCellTagging -> FromContent, PageNumbers -> False, 
      SaveOptions -> True, SelectCellStyles -> {"Section", "Subsection"}, 
      TOCCellStyles -> {"Contents", "Index"}}}, CellLabelAutoDelete -> True, 
- ShowCellTags -> True, StyleDefinitions -> "HelpBrowser.nb"]
+ ShowCellTags -> True, Magnification -> 1., 
+ StyleDefinitions -> "HelpBrowser.nb"]

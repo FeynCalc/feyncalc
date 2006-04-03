@@ -9,29 +9,32 @@ This software is covered by the GNU Lesser General Public License.
 
 
 ************************************************************************************
-RELEASE NOTES FOR FEYNCALC 4.9.0beta.
+RELEASE NOTES FOR FEYNCALC 5.1.
 ************************************************************************************
 
 
 ------------------------------------------------------------------------------------
 INSTALLATION
 ------------------------------------------------------------------------------------
-Get the files from CVS for the latest update ...
 
-Eventually:
-Download the file HighEnergyPhysics-4.9.beta.zip
+Download the file HighEnergyPhysics-5.1.x.tar.gz
 
-Place the file preferrably in that directory which $UserAddOnsDirectory is
-set to (evaluate $UserAddOnsDirectory in Mathematica).
+Unpack the file (preferrably) in the directory to which $UserAddOnsDirectory is
+set (evaluate $UserAddOnsDirectory in Mathematica).
 
 Start Mathematica.
 
 Choose 'Rebuild Help Index' from the 'Help' menu.
 
-Type <<HighEnergyPhysics`FeynCalc` and try out one of the examples.
+Type <<HighEnergyPhysics`FeynCalc`, open the help browser and try out
+some of the examples.
 
 ------------------------------------------------------------------------------------
-MAIN NEW FEATURES
+CHANGELOGS
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+CHANGELOG version 4.9.beta -> 5.1
 ------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------
