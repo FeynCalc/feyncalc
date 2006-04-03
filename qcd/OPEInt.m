@@ -53,7 +53,7 @@ LorentzIndex,
 Momentum, 
 NumericalFactor,
 OPEDelta, Pair,
-OPEIntDelta,
+OPEIntegrateDelta,
 OPEk,
 OPEm,
 OPESum,
@@ -79,7 +79,7 @@ Options[OPEInt] = {Dimension -> D,
                    Factorout -> 1/2,
                    FinalSubstitutions -> {D -> (4+Epsilon),
                                           Log[ScaleMu^2 _]:>0},
-                   OPEIntDelta -> False};
+                   OPEIntegrateDelta -> False};
 
 OPEInt[exp_, kk_, pp_, x_, opt___Rule] := Block[
 {facout,nex, nex0, epsc, epscc,factorout, divout,
@@ -376,8 +376,8 @@ If[Head[nex] === Plus,
    nex = nex I Sn (*flowerpower[-p2/ScaleMu^2, 
                          Expand[(n/2 -2)]]*)
   ];
-If[(OPEIntDelta /. {opt} /. Options[OPEInt]) === True,
-   nex = OPEIntDelta[nex, x, OPEm]
+If[(OPEIntegrateDelta /. {opt} /. Options[OPEInt]) === True,
+   nex = OPEIntegrateDelta[nex, x, OPEm]
   ];
 nex = Collect2[nex,{RHO,DeltaFunction}];
 
@@ -484,7 +484,7 @@ nex = nfa . nex + noflow;
 *)
 nex = factorout (nfa/divout) nex + (factorout/divout) noflow;
 nex = nex /. Momentum -> momentum4;
-If[(OPEIntDelta /. {opt} /. Options[OPEInt]) =!= True,
+If[(OPEIntegrateDelta /. {opt} /. Options[OPEInt]) =!= True,
    nex = Factor2[nex],
    nex = nfacfix[nex];
   ];
