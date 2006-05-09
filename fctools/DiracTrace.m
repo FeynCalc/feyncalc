@@ -280,7 +280,7 @@ diractraceev2[x_,opt_:{}]:=
 
  diractraceev2[nnx_,in_:{}]:= Block[{diractrjj,diractrlnx,diractrres,
                                     diractrny=0,mand,diractrfact,nx ,
-                                    diractrcoll,traceofone,schoutenopt},
+                                    diractrcoll,traceofone,schoutenopt,diractrnyjj},
    opt = Join[ Flatten[{in}], Options[DiracTrace] ];
    mand=Mandelstam/.opt;
    diractrfact=Factoring/.opt;
@@ -297,8 +297,9 @@ If[$VeryVerbose > 1, Print["diractrjj = ", diractrjj,
   ];
        diractrny = diractrny +
         If[FreeQ[nx,DiracGamma],
-           diractrny = nx[[diractrjj]],
-             diractrny = Expand2[
+(*change 2006-0407 RM *)
+           diractrnyjj = nx[[diractrjj]],
+           diractrnyjj = Expand2[
        DiracSimplify[ nx[[diractrjj]],
                                     InsideDiracTrace->True,
                                      Factoring->False,
@@ -306,9 +307,9 @@ If[$VeryVerbose > 1, Print["diractrjj = ", diractrjj,
                                      DiracCanonical->False
                     ],           Pair
                                  ];
-              If[!FreeQ[diractrny, DiracGamma],
+              If[!FreeQ[diractrnyjj, DiracGamma],
                                 (*DotSimplify added 16/10-2002, F.Orellana*)
-                 diractrny = Expand2[DotSimplify[diractrny,Expanding -> False] /.
+                 diractrnyjj = Expand2[DotSimplify[diractrnyjj,Expanding -> False] /.
                                       DOT->spursav /.
                                       DiracGamma[5]->0/.
                                        DiracGamma[6]->(1/2)/.
@@ -316,6 +317,8 @@ If[$VeryVerbose > 1, Print["diractrjj = ", diractrjj,
                                       Pair
                                     ];
                 ];
+          (* the summand to be added ...*)
+         diractrnyjj
          ]
             ]
    ,
