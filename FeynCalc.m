@@ -910,11 +910,12 @@ savethisdir=Directory[];
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
 (*Default*)
-If[ValueQ![HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]=!=True,
+If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]=!=True,
    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic];
 
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
-  search = FileNames["FeynArts.m", FileNames["FeynArts",$Path,2], 3]/.{s_String,___} :> DirectoryName[s];
+  search = FileNames["FeynArts.m",StringDrop[#,-9]&/@FileNames["FeynArts",$Path,3],3] /.
+     {s_String,___} :> DirectoryName[s];
 
   If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
 ];
