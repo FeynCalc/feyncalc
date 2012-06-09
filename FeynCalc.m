@@ -6,10 +6,10 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
 *)
 ];
 
-(* :Version: 8.1.0 *)
+(* :Version: 8.1.0.1 *)
 
 (* :Authors: Rolf Mertig  (rolfm@gluonvision.com)
-             Frederik Orellana (fjob@cabocomm.dk)
+             Frederik Orellana (frederik@orellana.dk)
 *)
 
 (* :Summary: Tools and Tables *)
@@ -27,7 +27,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
    Version 4.0 : 2000, reorganized for open-source and extensibility
    Version 4.2.0 : 2002, small bug fixes, more reorganization,
                    inclusion of help system, PHI and FeynArts
-                   by Frederik Orellana, fjob@cabocomm.dk 
+                   by Frederik Orellana, frederik@orellana.dk 
    Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization,
    Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
    Version 6.0.0: 2007, bug fixes, updates for mma 6.0 and new FeynArts
@@ -39,6 +39,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
    Version 8.0.2: 2011,  fixed more problems, working on documentation
    Version 8.0.3: 2011,  added ClearAttributes[FeynAmpDenominator,Orderless], added Momentum in DiracSimplify
    Version 8.1.0: 2012,  fixed DiracTrick, improved SUNSimplify, DiracEquation, fixed Hyperlinks in FeynCalc8.nb, fixed Tarcer .mx loading
+   Version 8.1.0.1: 2012, updated PHI to work with FeynArts-3.7, which can now be kept in a subdir
 *)
 
 
