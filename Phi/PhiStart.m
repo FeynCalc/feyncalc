@@ -259,6 +259,12 @@ have a meson-field dependence.";
     NM[UMatrix[UIdentity, ___],
        (PartialD | RightPartialD | LeftPartialD)[__]] :> 0}
   ]];
+  
+  (* Not sure why this is necessary, but e.g. the calculation of the electron self energy in
+     QEDRadiativeCorrections.nb fails without. *)
+  SetOptions[FourVector, FeynCalcInternal -> False];
+  SetOptions[MetricTensor, FeynCalcInternal -> False];
+  SetOptions[DiracSlash, FeynCalcInternal -> False];
 
   (* A static hack. Not very pretty. Just to have ExpandPartialD work for
      a few PHI examples (will have to be reevaluated when changing

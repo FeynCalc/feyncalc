@@ -210,11 +210,13 @@ patchPrint[ "Altering P$Generic in Setup.m.\n
    >Please check that this is actually done. If not, do it manually."];
 strm = OpenAppend[$FeynArtsDirectory <> $PathnameSeparator <> "Setup.m"];
 WriteString[strm,
-"\nP$Generic = Union[Flatten[P$Generic | $ParticleHeads]];\n
-P$NonCommuting =  Union[Flatten[P$NonCommuting | $FermionHeads]];\n
+"\nP$Generic = Union[Flatten[P$Generic | HighEnergyPhysics`Phi`Objects`$ParticleHeads]];\n
+P$NonCommuting =  Union[Flatten[P$NonCommuting | HighEnergyPhysics`Phi`Objects`$FermionHeads]];\n
+(*
 SetOptions[FourVector, FeynCalcInternal -> False];\n
 SetOptions[MetricTensor, FeynCalcInternal -> False];\n
 SetOptions[DiracSlash, FeynCalcInternal -> False];\n
+*)
 (*Important. OneLoop is broken if FeynAmpDenominator is orderless*)
 ClearAttributes[FeynAmpDenominator, Orderless];\n"]; 
 Close[strm];

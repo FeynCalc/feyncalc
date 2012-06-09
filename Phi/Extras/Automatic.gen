@@ -43,7 +43,7 @@ KinematicIndices[$ScalarHeads] := {};
 KinematicIndices[$FermionHeads] := {};
 KinematicIndices[$VectorHeads] := {Lorentz};
 
-Appearance[Index[Lorentz,i_]] := 
+TheLabel[Index[Lorentz,i_]] := 
 $CouplingLorentzIndicesString<>ToString[i];
 
 (* ****************************************************************** *)
@@ -159,10 +159,14 @@ Do[
 gloadfile[filenr] = XName[listrepl[
 $VerticesSpecifications1[[repp]],filenr]]<>".Gen";
 
-VerbosePrint[1,repp," ",filenr,
-" Loading generic coupling from ",gloadfile[filenr]];
+fpath = ToFileName[{$FeynCalcDirectory, "Phi", "CouplingVectors"}, gloadfile[filenr]];
 
-genericcouplingvector[repp,filenr] = Get[gloadfile[filenr]],
+VerbosePrint[1,repp," ",filenr,
+" Loading generic coupling from ",fpath];
+
+genericcouplingvector[repp,filenr] = Get[fpath];
+
+VerbosePrint[2, genericcouplingvector[repp,filenr]],
 
 {filenr,Length[PerturbationOrder/.
 $VerticesSpecifications1[[repp]]]}];
@@ -237,6 +241,11 @@ M$FermionFlipRule[ 1->2, 2->1, ___ ] =
   NonCommutative[ DiracGamma[li_],ChiralityProjector[-1]] :>
   - NonCommutative[ DiracGamma[li], ChiralityProjector[ 1] ]
 };
+
+(* This was cleared in a release of FeynArts-3.7. Without it, Dirac traces are not taken *)
+$FermionLines = True;
+(* This should speed up a bit *)
+$SparseCouplings = True;
 
 (* ****************************************************************** *)
 

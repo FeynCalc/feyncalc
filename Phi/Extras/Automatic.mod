@@ -110,7 +110,7 @@ Do[
 
   Evaluate[isorange[$CouplingIsoIndicesSpecifications[[reps,1]],indexnr]];
             
-  Appearance[ 
+  TheLabel[ 
      isovarii[$CouplingIsoIndicesSpecifications[[reps,1]],indexnr,i5_]
             ] = ""
      (*Uncomment the following and comment '' to have
@@ -128,9 +128,9 @@ Do[
 (* The appearance for particles in $FAParticlesInUse is set.
    FALabel gives the appearance, but is defined only for some particles *)
 
-Appearance[iii_]  := ToString[iii];
+TheLabel[iii_]  := ToString[iii];
 
-(Appearance[#]=FALabel[Particle[#[0]][[1]],0])&/@$FAParticlesInUse;
+(TheLabel[#]=FALabel[Particle[#[0]][[1]],0])&/@$FAParticlesInUse;
 
 (* ************************************************************************* *)
 
@@ -254,10 +254,12 @@ Do[
 cloadfile[filenr] = XName[listrepl[
 $VerticesSpecifications1[[repp]],filenr]]<>".Mod";
 
-VerbosePrint[1,repp," ",filenr,
-" Loading classes coupling from ",cloadfile[filenr]];
+fpath = ToFileName[{$FeynCalcDirectory, "Phi", "CouplingVectors"}, cloadfile[filenr]];
 
-classescouplingvector[repp,filenr] = (Get[cloadfile[filenr]]),
+VerbosePrint[1,repp," ",filenr,
+" Loading classes coupling from ",fpath];
+
+classescouplingvector[repp,filenr] = (Get[fpath]),
 
 {filenr,Length[PerturbationOrder/.
 $VerticesSpecifications1[[repp]]]}];
