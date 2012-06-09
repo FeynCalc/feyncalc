@@ -30,6 +30,7 @@ MakeContext[Cases2, Dimension,
             DiracGamma, DotSimplify, Eps, Expanding, 
             FeynCalcInternal, FourVector, FreeQ2, 
             LeviCivita, LorentzIndex, Momentum, OPEDelta, Pair,
+            PropagatorDenominator,
             ScalarProduct,Select1
            ];
 
@@ -81,8 +82,9 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
      ];
       If[par=!={} && Length[par]>0 && Head[par]===List,
          nex = nex /. Pair[aa__/;!FreeQ2[{aa}, par]
-                          ]^n_Integer(*?Positive*) :> (*Uncontract denominators also.
+                          ]^n_Integer?Positive :> (*Uncontract denominators also.
                                                         Change by F.Orellana. 3/11-2002*)
+                                                      (*Reverted, RM 06/22-2011 *)
                Apply[times, Table[Pair[aa], {j,Abs[n]}]]^Sign[n];
          If[MemberQ[par, q],
             nex = nex //. Pair[Momentum[q,d___], Momentum[q,___]] :>
@@ -102,7 +104,7 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                       Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *    
                       Pair[Momentum[pe,If[dim===Automatic,seq[d],dim]],lidr[li]])/;MemberQ[par,pe]
                      } /. times -> Times;
-        ];
+
    If[!FreeQ[nex, DiracGamma],
       nex = nex /. DiracGamma -> dirg;
       nex = nex //. dirg[Momentum[q,d___],b___] :>
@@ -110,8 +112,31 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                      Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *
                      dirg[lidr[li],If[dim===Automatic,seq[d],dim]]
                     ) /. dirg -> DiracGamma;
+(*
+Global`NEX=nex;
+*)
       nex = DotSimplify[nex,Expanding -> False];
      ];
+
+Global`NEX=nex;
+         If[!FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[q,___],___]],
+            nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[q,d___],b___] :> 
+                            (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
+                             tf[a, li, b] Pair[Momentum[q,If[dim===Automatic,seq[d],dim]],lidr[li]]
+                            )
+                          }
+	 ];
+(*
+(*RM: added on 20110621 on behalf of http://www.feyncalc.org/forum/0639.html *)
+         If[!FreeQ[nex, (tf_/;!MemberQ[{DiracGamma,Pair,PropagatorDenominator},tf])[___,Momentum[q,___],___]],
+            nex = nex //. { (tf_/;!MemberQ[{DiracGamma,Pair,PropagatorDenominator},tf])[a___,Momentum[q,d___],b___] :> 
+                            (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
+                             tf[a, li, b] Pair[Momentum[q,If[dim===Automatic,seq[d],dim]],lidr[li]]
+                            )
+                          }
+	 ];
+*)
+        ];
         nex/.dummy->1/.seq:>Sequence]];
 
 End[]; EndPackage[];

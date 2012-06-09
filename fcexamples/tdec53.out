@@ -1,0 +1,8846 @@
+Mathematica 7.0 for Linux x86 (64-bit)
+Copyright 1988-2009 Wolfram Research, Inc.
+
+In[1]:= Loading FeynCalc from /home/rolf/fccvs/fc7/HighEnergyPhysics
+FeynCalc 7.0.0 Type ?FeynCalc for help or visit http://www.feyncalc.org/
+$PrePrint is set to FeynCalcForm. Use FI and FC to change the display format.
+
+In[2]:= 
+In[2]:= symms
+76
+collecting in solvesymms 0
+collecting in solvesymms 0terms
+time for collect in solvesymms = 0.
+contracting
+il = 1
+il = 2
+il = 3
+il = 4
+il = 5
+il = 6
+il = 7
+il = 8
+il = 9
+il = 10
+il = 11
+il = 12
+il = 13
+il = 14
+il = 15
+il = 16
+il = 17
+il = 18
+il = 19
+il = 20
+il = 21
+il = 22
+il = 23
+il = 24
+il = 25
+il = 26
+il = 27
+il = 28
+il = 29
+il = 30
+il = 31
+il = 32
+il = 33
+il = 34
+il = 35
+il = 36
+il = 37
+il = 38
+il = 39
+il = 40
+il = 41
+il = 42
+il = 43
+il = 44
+il = 45
+il = 46
+il = 47
+il = 48
+il = 49
+il = 50
+il = 51
+il = 52
+il = 53
+il = 54
+il = 55
+il = 56
+il = 57
+il = 58
+il = 59
+il = 60
+il = 61
+il = 62
+il = 63
+il = 64
+il = 65
+il = 66
+il = 67
+il = 68
+il = 69
+il = 70
+il = 71
+il = 72
+il = 73
+il = 74
+il = 75
+il = 76
+Length of eqli = 76
+solving 76
+Solve3 | 
+ 
+LaunchKernels::launch: Launching 8 kernels...
+PAREVAL = {{2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }, {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4, cC5, cC6, cC7, cC8, cC9, cC10, cC11, 
+ 
+        cC12, cC13, cC14, cC15, cC16, cC17, cC18, cC19, cC20, cC21, cC22, 
+ 
+        cC23, cC24, cC25, cC26, cC27, cC28, cC29, cC30, cC31, cC32, cC33, 
+ 
+        cC34, cC35, cC36, cC37, cC38, cC39, cC40, cC41, cC42, cC43, cC44, 
+ 
+        cC45, cC46, cC47, cC48, cC49, cC50, cC51, cC52, cC53, cC54, cC55, 
+ 
+        cC56, cC57, cC58, cC59, cC60, cC61, cC62, cC63, cC64, cC65, cC66, 
+ 
+        cC67, cC68, cC69, cC70, cC71, cC72, cC73, cC74, cC75, cC76}, Factor])\
+ 
+     & }}
+solve3 i = 1    time used : 0 minutes
+solving for cC1
+Solve2 | 
+ length 4.
+#1UPDATING 34254
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+leafcount neq = 98525
+solve3 i = 2    time used : 0 minutes
+solving for cC2
+length 6.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 97565
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 173587
+solve3 i = 3    time used : 0 minutes
+solving for cC3
+length 6.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 172382
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+leafcount neq = 231218
+solve3 i = 4    time used : 0 minutes
+solving for cC4
+length 5.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+UPDATING 230352
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+leafcount neq = 468279
+solve3 i = 5    time used : 0 minutes
+solving for cC5
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+UPDATING 466762
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 863805
+solve3 i = 6    time used : 0 minutes
+solving for cC6
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+UPDATING 861872
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 519821
+solve3 i = 7    time used : -1 minutes
+solving for cC7
+length 5.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+UPDATING 518202
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+leafcount neq = 934454
+solve3 i = 8    time used : -1 minutes
+solving for cC8
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+UPDATING 931750
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 1850121
+solve3 i = 9    time used : -1 minutes
+solving for cC9
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+UPDATING 1846487
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 696179
+solve3 i = 10    time used : -1 minutes
+solving for cC10
+length 5.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 693328
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 740041
+solve3 i = 11    time used : -1 minutes
+solving for cC11
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 735559
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+leafcount neq = 832692
+solve3 i = 12    time used : -2 minutes
+solving for cC12
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+UPDATING 826993
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+leafcount neq = 193181
+solve3 i = 13    time used : -2 minutes
+solving for cC13
+length 5.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 191680
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 425413
+solve3 i = 14    time used : -2 minutes
+solving for cC14
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 421915
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+leafcount neq = 2132553
+solve3 i = 15    time used : -2 minutes
+solving for cC15
+length 8.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 2126750
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+leafcount neq = 3011212
+solve3 i = 16    time used : -3 minutes
+solving for cC16
+length 8.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 3005093
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 605407
+solve3 i = 17    time used : -4 minutes
+solving for cC17
+length 8.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 601497
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 2317947
+solve3 i = 18    time used : -4 minutes
+solving for cC18
+length 6.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 2315984
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+leafcount neq = 2916023
+solve3 i = 19    time used : -5 minutes
+solving for cC19
+length 2.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+UPDATING 2914853
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 4246900
+solve3 i = 20    time used : -5 minutes
+solving for cC20
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+UPDATING 4244874
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+leafcount neq = 2780822
+solve3 i = 21    time used : -6 minutes
+solving for cC21
+length 9.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 2774064
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+leafcount neq = 6289868
+solve3 i = 22    time used : -8 minutes
+solving for cC22
+length 2.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+UPDATING 6288697
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+leafcount neq = 5728366
+solve3 i = 23    time used : -9 minutes
+solving for cC23
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 5724632
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+leafcount neq = 4306661
+solve3 i = 24    time used : -12 minutes
+solving for cC24
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 4305243
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+leafcount neq = 3647668
+solve3 i = 25    time used : -13 minutes
+solving for cC25
+length 9.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 3642134
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+leafcount neq = 1040779
+solve3 i = 26    time used : -14 minutes
+solving for cC26
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 1038785
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+leafcount neq = 1174207
+solve3 i = 27    time used : -15 minutes
+solving for cC27
+length 5.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 1172760
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+leafcount neq = 788501
+solve3 i = 28    time used : -15 minutes
+solving for cC28
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 780266
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+leafcount neq = 530291
+solve3 i = 29    time used : -16 minutes
+solving for cC29
+length 7.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 527847
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+leafcount neq = 1519705
+solve3 i = 30    time used : -16 minutes
+solving for cC30
+length 6.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 1517742
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+leafcount neq = 1963461
+solve3 i = 31    time used : -17 minutes
+solving for cC31
+length 2.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 1962291
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+leafcount neq = 3099808
+solve3 i = 32    time used : -20 minutes
+solving for cC32
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 3097782
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 1853720
+solve3 i = 33    time used : -21 minutes
+solving for cC33
+length 6.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 1851757
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+leafcount neq = 1712488
+solve3 i = 34    time used : -22 minutes
+solving for cC34
+length 6.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 1709737
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+leafcount neq = 1468277
+solve3 i = 35    time used : -23 minutes
+solving for cC35
+length 8.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+UPDATING 1457351
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 10022860
+solve3 i = 36    time used : -30 minutes
+solving for cC36
+length 9.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+UPDATING 10017571
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+leafcount neq = 1775480
+solve3 i = 37    time used : -52 minutes
+solving for cC37
+length 2.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+UPDATING 1774309
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+leafcount neq = 3240611
+solve3 i = 38    time used : -70 minutes
+solving for cC38
+length 9.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[5, local]:
+ Collect with Factor 
+
+From KernelObject[1, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[3, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[2, local]:
+ Collect with Factor 
+
+From KernelObject[4, local]:
+ Collect with Factor 
+
+From KernelObject[8, local]:
+ Collect with Factor 
+

@@ -262,7 +262,6 @@ ccli = ccli /. scqli;
 neqli = Collect2[neqli, ccli];
 *)
 
-If[Length[neqli] > 50, Share[]];
 solu = Solve3[neqli, ccli, Factoring -> factor];
 If[$VeryVerbose > 0, Print["solve3 done ",MemoryInUse[]];
    Print["SOLVE3 Bytecount", byby= ByteCount[solu]];

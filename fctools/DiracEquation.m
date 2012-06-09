@@ -78,7 +78,8 @@ DiracEquation[x_,I]:=(*DiracEquation[x]=*)
          ] :> If[!FreeQ2[{a}, {DiracGamma[5], DiracGamma[6],
                              DiracGamma[7]}],
                  diractrick[DOT[z,Spinor[n Momentum[p]+k,m,op],
-                                a, Diracgamma[x[y],di],
+(* fixed bug indicated by Peter Stoffer *)
+                                a, DiracGamma[x[y],di],
                                 DiracGamma[Momentum[p,dim],dim],b
                                ]
                            ] /. DOT -> doot,

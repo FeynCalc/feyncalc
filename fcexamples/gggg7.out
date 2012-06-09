@@ -1,0 +1,104 @@
+Mathematica 7.0 for Linux x86 (64-bit)
+Copyright 1988-2009 Wolfram Research, Inc.
+
+In[1]:= 
+In[2]:= 
+In[2]:= 
+In[3]:= 
+In[3]:= 
+In[4]:= 
+In[4]:= 
+In[5]:= 
+In[5]:= 
+In[6]:= 
+In[6]:= 
+In[7]:= 
+In[8]:= Loading FeynCalc from /home/rolfm/HighEnergyPhysics
+FeynCalc 8.0.0 Type ?FeynCalc for help or visit http://www.feyncalc.org/
+$PrePrint is set to FeynCalcForm. Use FI and FC to change the display format.
+Loading FeynArts, see www.feynarts.de for documentation
+
+Syntax::newl: The newline character after "Off[Graph::optrs]"
+     is understood as a multiplication operator. (line 3 of "FeynArts`")
+
+Graph::shdw: Symbol Graph appears in multiple contexts 
+    {HighEnergyPhysics`FeynArts`, Global`}; definitions in context 
+    HighEnergyPhysics`FeynArts` may shadow or be shadowed by other
+     definitions.
+FeynArts 3.4 patched for use with FeynCalc
+
+In[9]:= 
+In[10]:= 
+In[10]:= 
+In[11]:= 
+In[12]:= 
+In[13]:= 
+In[13]:= 
+In[14]:= 
+In[15]:= 
+In[15]:= 
+In[16]:= 
+In[17]:= 4 amplitudes created.  Time spent so far = 5.7 seconds 
+
+In[18]:= 
+In[18]:= 
+In[19]:= 
+In[20]:= 
+In[20]:= 
+In[21]:= 
+In[22]:= 
+In[22]:= 
+In[23]:= 
+In[24]:= 
+In[24]:= 
+In[25]:= 
+Out[25]= {1., Null}
+
+In[26]:= 
+In[26]:= 
+In[27]:= 1 2 3 4 5 6 
+Out[27]= {0.99, Null}
+
+In[28]:= 
+In[28]:= 
+In[29]:= 
+In[30]:= 
+In[30]:= 
+In[31]:= 
+In[32]:= 
+In[32]:= 
+In[33]:= 
+In[34]:= 
+In[34]:= 
+In[35]:= 
+Out[35]= {4.16, Null}
+
+In[36]:= 
+In[36]:= 
+In[37]:= 
+In[38]:= 
+Out[38]= {ep(*)[k1] -> nu3, ep[k1] -> mu3, ep(*)[k2] -> nu4, ep[k2] -> mu4, 
+ 
+  ep(*)[p1] -> nu1, ep[p1] -> mu1, ep(*)[p2] -> nu2, ep[p2] -> mu2}
+
+In[39]:= 
+In[39]:= 
+In[40]:= 
+In[41]:= 
+In[41]:= 
+In[42]:= 
+In[43]:= 
+In[43]:= 
+In[44]:= Result = -(Gstrong^4*(2 - n)^2*SUNN^2*(1 - SUNN^2)*(s^2 + s*t + t^2)^3)/
+ 
+  (64*s^2*t^2*(s + t)^2)
+
+In[45]:= 
+In[45]:= 
+In[46]:= 
+In[47]:= 
+In[47]:= check with Field, p. 276, (7.2.34)  OK
+
+In[48]:= seconds of wall-clock time needed = 13.611757
+
+In[49]:= 

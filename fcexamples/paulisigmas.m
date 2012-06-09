@@ -1,3 +1,4 @@
+$LoadTARCER=$LoadPhi=False;
 <<HighEnergyPhysics`FeynCalc` ;
 DeclareNonCommutative[s];
 FI;

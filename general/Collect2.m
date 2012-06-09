@@ -5,7 +5,7 @@
 (* :Author: Rolf Mertig *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: last changed 19th July 2000*)
+(* :History: last changed: 10th Jan. 2010;  19th July 2000*)
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary: Extension of the Mathematica Collect *)
@@ -41,7 +41,7 @@ Isolate, IsolateNames, ComplexConjugate];
 Options[Collect2] = {Denominator -> False,
                      Dot -> False,
                      Expanding -> True,
-                     Factoring -> Factor2, IsolateNames -> False } ;
+                     Factoring -> Factor, IsolateNames -> False } ;
 
 (* for the CCollect stuff *)
 If[!ValueQ[$FeynC], $FeynC = True];

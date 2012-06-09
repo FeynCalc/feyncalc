@@ -24,6 +24,8 @@ separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).
 The option Factoring determines the final function to be applied. If 
 it is set to False no simplification is done.
 It might be set to, e.g., Factor or Factor2 to get simpler results.
+With the default setting Factoring -> Automatic factorization is performed on 
+not too long (LeafCount[ ] < 5000 ) expressions.
 ";
 
 (* ------------------------------------------------------------------------ *)
@@ -47,7 +49,7 @@ Spinor, (*SUNSimplify, SUNT,*) TR, TraceOfOne, TrickMandelstam];
 scev[a__] := scev[a] = ExpandScalarProduct[a];
 
 Options[DiracTrace] = {EpsContract         -> False,
-                       Factoring           -> False,
+                       Factoring           -> Automatic,
                        FeynCalcExternal   -> False,
                        Mandelstam          -> {},
                        PairCollect         -> True,
@@ -106,12 +108,14 @@ DiracTrace[x_, op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrac
 (*Global`OO= Sequence@@Join[{op}, globalstartops];*)
                       SetOptions[DiracTrace, Sequence@@Join[{op}, globalstartops]];
 (*Global`GG=Options[DiracTrace];*)
-                      diTres = 
+                      diTres =
+(
                       fcex[op][
                          ( diractraceevsimple[
                     fcit[x] ,Flatten[{op}]   ] /. diractraceevsimple -> diractraceev /.
-                         diractraceev -> diractraceev2
-                         )              ];
+                         diractraceev -> diractraceev2 
+                         )              ]
+);
                       SetOptions[DiracTrace, Sequence@@globalstartops];
                                      diTres] /; 
     (DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)) === True;
@@ -139,33 +143,41 @@ diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x *
  (TraceOfOne /. {opt} /. Options[DiracTrace] );
 (*diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x;*)
 
+
 diractraceevsimple[DOT[x___], {opt___}]:=
 (If[FreeQ[#,LorentzIndex],#, #/.Pair->sCO/.sCO->Pair]&[
-     If[(*Length[DOT[x]] > Length[Union[Variables /@ Apply[List,DOT[x]]]],*)
+(*If[
+*)
+(*Length[DOT[x]] > Length[Union[Variables /@ Apply[List,DOT[x]]]],*)
    (*More restrictive condition. I'm not sure about this... But the old stuff commented out above
       is wrong on e.g. TR[DiracGamma[Momentum[p]].DiracGamma[Momentum[p]].DiracGamma[Momentum[r]]]
       see, Kapusta's bug report http://www.feyncalc.org/forum/0079.html. F.Orellana, 10/2002*)
+(*
         Union[Length /@ Split[Sort[ Variables /@ Apply[List,DOT[x]] ]]] === {2},
         If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[DOT[x]]]];
+
         Factor[diractraceevsimpleplus[Expand[DiracTrick[DOT[x]]], {opt}]],
-        If[$VeryVerbose >2, Print["using spursav on ", StandardForm[DOT[x]]]];
+
+        If[$VeryVerbose >2, Print["Using spursav on ", StandardForm[DOT[x]]]];
+*)
 (* small BUG found here 2005-02-05 by RM*) 
 (*
        (TraceOfOne /. {opt} /.Options[DiracTrace] /. Options[DiracTrace] )*
 *)
+(*
        (TraceOfOne /. {opt} /.Options[DiracTrace] )*
         (spursav @@ DOT[x])
-      ] ]
-)  /; (MatchQ[Apply[doo, DOT[x]], doo[
-       DiracGamma[(LorentzIndex | Momentum)[_,_],_]..]] ||
-         MatchQ[Apply[doo, DOT[x]], doo[
-         DiracGamma[(LorentzIndex | Momentum)[_]]..]] ||
-       MatchQ[Apply[doo, DOT[x]], doo[
-       DiracGamma[(LorentzIndex | Momentum)[_,_],_]..,
-       DiracGamma[5 | 6 | 7]]] ||
-         MatchQ[Apply[doo, DOT[x]], doo[
-         DiracGamma[(LorentzIndex | Momentum)[_]]..,
-         DiracGamma[5 | 6 | 7]]]
+*)
+        diractraceev@@DOT[x]
+	(*]*) ]
+)  /; (MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_,_],_]..] 
+             ] ||
+       MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_]]..]
+             ] ||
+       MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_,_],_].., DiracGamma[5 | 6 | 7]]
+             ] ||
+       MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_]].., DiracGamma[5 | 6 | 7]]
+             ]
       );
 
 dirli[LorentzIndex[xx_, ___],___] := xx;
@@ -178,7 +190,7 @@ diractraceev[DiracGamma[LorentzIndex[a1_,dii_],dii_],
              DiracGamma[LorentzIndex[a2_,dii_],dii_],
              DiracGamma[LorentzIndex[a3_,dii_],dii_],
              a4:DiracGamma[LorentzIndex[_,dii_],dii_]..
-            ]:=4 dcs[dii]@@Join[{a1,a2,a3}, {a4}/.DiracGamma->dirli,
+            ]:=(TraceOfOne /. Options[DiracTrace]) dcs[dii]@@Join[{a1,a2,a3}, {a4}/.DiracGamma->dirli,
                               {a1,a2,a3}, {a4}/.DiracGamma->dirli
                              ];
 
@@ -278,12 +290,17 @@ diractraceev2[x_,opt_:{}]:=
  (*                             Main48                                   *)
  (* #################################################################### *)
 
+diractraceev2[a_DiracGamma,b__DiracGamma]:=diractraceev2[ DOT @@ {a,b} ];
+
  diractraceev2[nnx_,in_:{}]:= Block[{diractrjj,diractrlnx,diractrres,
                                     diractrny=0,mand,diractrfact,nx ,
                                     diractrcoll,traceofone,schoutenopt,diractrnyjj},
    opt = Join[ Flatten[{in}], Options[DiracTrace] ];
    mand=Mandelstam/.opt;
    diractrfact=Factoring/.opt;
+If[diractrfact === Automatic,
+   diractrfact = Function[x, If[LeafCount[x] <  5000 , Factor[ x ],x]];
+  ];
    diractrcoll=PairCollect/.opt;
    schoutenopt = Schouten /. opt;
    traceofone = TraceOfOne /.  opt;
@@ -356,6 +373,7 @@ If[!FreeQ[diractrny, DiracGamma],
                     ]
   ];
 
+Global`D1=diractrny;
 If[$VeryVerbose > 1, Print["CH2"]; Print[TimeUsed[]]];
    If[!FreeQ[diractrny, LorentzIndex],
       If[!FreeQ[diractrny, Eps],
@@ -370,6 +388,7 @@ If[$VeryVerbose > 1, Print["CH2"]; Print[TimeUsed[]]];
       diractrny = diractrny /. Pair -> sCO /. sCO -> scev
      ];
 If[$VeryVerbose > 1, Print["CH3"]; Print[TimeUsed[]]];
+Global`D2=diractrny;
 
    If[!FreeQ[diractrny, Eps],
 (*
@@ -389,6 +408,8 @@ If[$VeryVerbose > 1, Print["CH3"]; Print[TimeUsed[]]];
           diractrres = diractrfact[traceofone diractrny]
          ]
      ];
+ 
+
    If[ Length[ mand ] >0,
        diractrres = TrickMandelstam @@ Prepend[ {mand}, diractrres ]
      ];
@@ -429,10 +450,16 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 (*
    spursav[x___DiracGamma]:=MemSet[ spursav[x], spur[x] ];
 *)
-(* RM 09/12/2003 *)
-   spursav[x__ /; !FreeQ[{x},Plus]]:= DOT@@{x};
 
+(* RM 09/12/2003 *)
+(* RM 08/18/2011 : this is causing trouble for DiracGamma[..., d-4] etc. 
+   spursav[x__ /; !FreeQ[{x},Plus]]:= DOT@@{x};
+*)
+
+(*XXX
    spursav[x__DiracGamma] := MemSet[spursav[x], spur[x]];
+*)
+   spursav[x__DiracGamma] := spur[x];
    (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
    spursav[x : ((DiracGamma[__] | HoldPattern[
    Plus[__HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma]]) ..)] :=
@@ -447,7 +474,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
    spur[x_[y__],DiracGamma[5]]:=0;
    spur[a_[b__],x_[y__],DiracGamma[5]]:=0;
    spur[a_[b__],c_[d__],x_[y__],DiracGamma[5]]:=0;
-   spur[a_[b__],c_[d__],x_[y__], _[__], odd__, DiracGamma[5]]:=0 /;
+   spur[a_[b__],c_[d__],x_[y__], _[__], odd__, DiracGamma[5]]:=(Global`SPUR=True;0) /;
                                          OddQ[Length[{odd}]];
    spur[a__] := (spur @@ Reverse[Transpose[{a}]]) /;
                 (!FreeQ[{a}, DiracGammaT]) && FreeQ[{a},DiracGamma];

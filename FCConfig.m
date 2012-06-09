@@ -1,7 +1,10 @@
 (* global Mathematica changes *) 
 
+(*
 SetOptions[Integrate, GenerateConditions -> False];
+*)
 
+Off[General::dirdep];
 Off[Needs::nocont]; 
 Off[Get::noopen]; 
 Off[General::spell]; 
@@ -45,12 +48,16 @@ here in FCConfig.m
 *)
 
 
-(* Optional modules. By default all are loaded.
+(* Optional modules. 
+   Defined defaults here.
    Set to False to load somewhat faster. *)
 
-(* Global`$LoadTARCER = False; *)
-(* Global`$LoadPhi = False;   *)
-(* Global`$LoadFeynArts = False; *)
+If[!ValueQ[Global`$LoadTARCER], 
+   Global`$LoadTARCER = False]; 
+If[!ValueQ[Global`$LoadPhi], 
+   Global`$LoadPhi = False];   
+If[!ValueQ[Global`$LoadFeynArts], 
+   Global`$LoadFeynArts = True]; 
 
 (* You can put the directory for your FeynArts installation here
    if set to Automatic, then FeynArts on the path is loaded.
@@ -62,3 +69,4 @@ here in FCConfig.m
    The default is False *)
 
 (* Global`$FeynCalcStartupMessages = True; *)
+ Global`$FeynCalcStartupMessages = True; 

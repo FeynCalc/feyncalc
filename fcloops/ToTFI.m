@@ -46,7 +46,7 @@ ToTFI[z_Plus,qqp___, pe_/;Head[pe]=!=Rule, opts___Rule] :=
 ToTFI[a_,q_,p_/;Head[p]=!=Rule,opts___Rule] := 
   (ToExpression["TFIRecurse"][ 
  FeynCalcExternal[
-     ToTFI[ 
+     ToTFI[(* Global`TTT=*)
 FeynAmpDenominatorCombine[
 	FeynCalcInternal[ Expand[ FAD[{qq, mM}]  *
 FixedPoint[Expand[ScalarProductCancel[#, q, FeynAmpDenominatorSimplify -> True], q]&, a, 10]
@@ -73,7 +73,7 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] :=
 saveToTFI[z, q1,q2,p,opts] = 
 Catch[
 Module[
-{dim, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
+{dim, et0, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
    dim = Dimension /. {opts} /. Options[ToTFI];
    met = Method /. {opts} /. Options[ToTFI];
    pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
@@ -90,6 +90,10 @@ Module[
              t0=FeynAmpDenominatorCombine[t0], t0]
          ];
    If[!FreeQ[t0, TLI], t0 = FeynAmpDenominatorSimplify[TLI2FC[t0],FC2RHI->False]];
+
+(* added RM 20110819 *)
+  If[!FreeQ[et0 = FeynCalcExternal[t0], FAD[-p + q1 - q2]], Throw[ saveToTFI[et0 /. q2 -> (-q2+q1)]]];
+  If[!FreeQ[et0 = FeynCalcExternal[t0], FAD[ p - q1 + q2]], Throw[ saveToTFI[et0 /. q2 -> (-q2+q1)]]];
 
   pairs = Cases2[t0, Pair];
      If[!FreeQ[pairs, Plus],

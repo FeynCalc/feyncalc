@@ -35,13 +35,15 @@ Options[ExpandScalarProduct] = {fci -> True};
 (*FRH = FixedPoint[ReleaseHold, #]&;*)
 
 ExpandScalarProduct[x_, op___?OptionQ] := Block[{nx=x, pali},
-If[FreeQ[nx,pair], nx,
+  (* RM: put the next line in front 20110408 *)
    If[(fci /. {op} /. Options[ExpandScalarProduct]), nx = fci[nx]];
+If[FreeQ[nx,pair], nx,
 (* this algorithm is much quicher on bigger expressions, maybe there should be a 
    switch for smaller ones to not use this?
    Changed Nov 2003, RM
  *)
-   pali = Select[Cases2[x, pair], !FreeQ[#, lorentzindex|momentum]&];
+   pali = Select[Cases2[nx, pair], !FreeQ[#, lorentzindex|momentum]&];
+(* Print["pali = ", pali//InputForm]; *)
    If[pali =!= {}, nx = nx /. Dispatch[Thread[pali -> oldExpandScalarProduct[pali]]]];
 nx
 ] ];

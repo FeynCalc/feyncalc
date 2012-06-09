@@ -1,0 +1,5922 @@
+Mathematica 7.0 for Linux x86 (64-bit)
+Copyright 1988-2009 Wolfram Research, Inc.
+
+In[1]:= Loading FeynCalc from /home/rolf/fccvs/fc7/HighEnergyPhysics
+Loading TARCER /home/rolf/fccvs/fc7/HighEnergyPhysics/Tarcer/tarcer25.mx
+FeynCalc 7.0.0 Type ?FeynCalc for help or visit http://www.feyncalc.org/
+$PrePrint is set to FeynCalcForm. Use FI and FC to change the display format.
+
+In[2]:= 
+In[2]:= 
+In[2]:= 
+In[3]:= 
+In[3]:= 
+In[3]:= symms
+43
+collecting in solvesymms 0
+collecting in solvesymms 0terms
+time for collect in solvesymms = 0.
+contracting
+il = 1
+il = 2
+il = 3
+il = 4
+il = 5
+il = 6
+il = 7
+il = 8
+il = 9
+il = 10
+il = 11
+il = 12
+il = 13
+il = 14
+il = 15
+il = 16
+il = 17
+il = 18
+il = 19
+il = 20
+il = 21
+il = 22
+il = 23
+il = 24
+il = 25
+il = 26
+il = 27
+il = 28
+il = 29
+il = 30
+il = 31
+il = 32
+il = 33
+il = 34
+il = 35
+il = 36
+il = 37
+il = 38
+il = 39
+il = 40
+il = 41
+il = 42
+il = 43
+Length of eqli = 43
+solving 43
+
+Syntax::newl: The newline character after 
+    "   rr = rr + Expand[ReleaseHold[hccitiii]]                     "
+       ];
+     (*
+                     rr = rr + hccitiii
+     *)
+                    ];
+                    ]; 
+     rr = (rr+lin)//.plh->Plus;
+     If[$VeryVerbose > 2, Print["exiting col with ",rr//InputForm]];
+     *)
+
+     is understood as a multiplication operator.
+     (line 142 of "HighEnergyPhysics`general`Solve3`")
+Solve3 | 
+ solve3 i = 1
+solving for cC1
+Solve2 | 
+ length 3.
+#1expanding. inhomogeneous part; LeafCount = 7; factored. length 42.
+collecting 42 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#27#28#29#30#31#32#33#34#35#36#37#38#39#40#41#42solution = cC1 -> 
+ 
+  -(cC2/X1) - cC3/X1 - (cC10*X2)/X1^2 - (cC11*X2)/X1^2 - (cC5*X2)/X1^2 - 
+ 
+   (cC6*X2)/X1^2 - (cC14*X2)/X1 - (cC4*X2)/X1 - (cC28*X2^2)/X1^2 - 
+ 
+   (cC12*X3)/X1^2 - (cC13*X3)/X1^2 - (cC17*X3)/X1^2 - (cC18*X3)/X1^2 - 
+ 
+   (cC22*X3)/X1^2 - (cC23*X3)/X1^2 - (cC8*X3)/X1^2 - (cC9*X3)/X1^2 - 
+ 
+   (cC15*X3)/X1 - (cC16*X3)/X1 - (cC26*X3)/X1 - (cC7*X3)/X1 - 
+ 
+   (cC29*X2*X3)/X1^2 - (cC30*X2*X3)/X1^2 - (cC32*X2*X3)/X1^2 - 
+ 
+   (cC36*X2*X3)/X1^2 - (cC33*X3^2)/X1^2 - (cC34*X3^2)/X1^2 - 
+ 
+   (cC37*X3^2)/X1^2 - (cC38*X3^2)/X1^2 - (cC20*X5)/X1^2 - (cC21*X5)/X1^2 - 
+ 
+   (cC24*X5)/X1^2 - (cC25*X5)/X1^2 - (cC19*X5)/X1 - (cC27*X5)/X1 - 
+ 
+   (cC31*X2*X5)/X1^2 - (cC40*X2*X5)/X1^2 - (cC35*X3*X5)/X1^2 - 
+ 
+   (cC39*X3*X5)/X1^2 - (cC41*X3*X5)/X1^2 - (cC42*X3*X5)/X1^2 - 
+ 
+   (cC43*X5^2)/X1^2 + X7^2/X1^2
+UPDATING
+updating 1 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 37 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 38 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 39 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 40 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 41 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+updating 42 out of 42
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 26791
+solve3 i = 2
+solving for cC2
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 13; factored. length 33.
+collecting 33 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#27#28#29#30#31#32#33solution = cC2 -> 
+ 
+  -((cC3*(1 - X1))/(1 - X1^2)) - (cC11*X2)/X1 - (cC5*X2)/X1 - 
+ 
+   (cC10*X2)/(X1*(1 + X1)) - (cC6*X2)/(X1*(1 + X1)) - 
+ 
+   (cC28*X2^2)/(X1*(1 + X1)) - (cC13*X3)/X1 - (cC17*X3)/X1 - (cC23*X3)/X1 - 
+ 
+   (cC8*X3)/X1 - (cC12*X3)/(X1*(1 + X1)) - (cC18*X3)/(X1*(1 + X1)) - 
+ 
+   (cC22*X3)/(X1*(1 + X1)) - (cC9*X3)/(X1*(1 + X1)) - 
+ 
+   (cC29*X2*X3)/(X1*(1 + X1)) - (cC30*X2*X3)/(X1*(1 + X1)) - 
+ 
+   (cC32*X2*X3)/(X1*(1 + X1)) - (cC36*X2*X3)/(X1*(1 + X1)) - 
+ 
+   (cC34*X3^2)/(X1*(1 + X1)) - (cC37*X3^2)/(X1*(1 + X1)) - (cC20*X5)/X1 - 
+ 
+   (cC25*X5)/X1 - (cC21*X5)/(X1*(1 + X1)) - (cC24*X5)/(X1*(1 + X1)) - 
+ 
+   (cC35*X3*X5)/(X1*(1 + X1)) - (cC39*X3*X5)/(X1*(1 + X1)) - 
+ 
+   (cC41*X3*X5)/(X1*(1 + X1)) - (cC42*X3*X5)/(X1*(1 + X1)) - 
+ 
+   (cC43*X5^2)/(X1*(1 + X1)) + (cC31*(X1*X3^2 - X2*X5))/(X1*(1 - X1^2)) + 
+ 
+   (cC40*(X1*X3^2 - X2*X5))/(X1*(1 - X1^2)) - 
+ 
+   (cC33*(X3^2 - X1*X2*X5))/(X1*(1 - X1^2)) - 
+ 
+   (cC38*(X3^2 - X1*X2*X5))/(X1*(1 - X1^2)) + X7^2/(X1*(1 + X1))
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 41
+updating 3 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 41
+updating 6 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 41
+updating 13 out of 41
+updating 14 out of 41
+updating 15 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 41
+updating 18 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 41
+updating 25 out of 41
+updating 26 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 37 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 38 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 39 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 40 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+updating 41 out of 41
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 31287
+solve3 i = 3
+solving for cC3
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 13; factored. length 24.
+collecting 24 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24solution = cC3 -> 
+ 
+  -((cC10*X2)/X1) - (cC6*X2)/X1 - (cC28*X2^2)/(X1*(2 + X1)) - (cC12*X3)/X1 - 
+ 
+   (cC18*X3)/X1 - (cC22*X3)/X1 - (cC9*X3)/X1 - (cC29*X2*X3)/(X1*(2 + X1)) - 
+ 
+   (cC30*X2*X3)/(X1*(2 + X1)) - (cC32*X2*X3)/(X1*(2 + X1)) - 
+ 
+   (cC36*X2*X3)/(X1*(2 + X1)) - (cC21*X5)/X1 - (cC24*X5)/X1 - 
+ 
+   (cC35*X3*X5)/(X1*(2 + X1)) - (cC39*X3*X5)/(X1*(2 + X1)) - 
+ 
+   (cC41*X3*X5)/(X1*(2 + X1)) - (cC42*X3*X5)/(X1*(2 + X1)) - 
+ 
+   (cC43*X5^2)/(X1*(2 + X1)) + (cC31*(X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1)*X1*(2 + X1)) + (cC33*(X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1)*X1*(2 + X1)) + (cC38*(X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1)*X1*(2 + X1)) + (cC40*(X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1)*X1*(2 + X1)) - (cC34*(2*X3^2 - X2*X5 - X1*X2*X5))/
+ 
+    ((1 - X1)*X1*(2 + X1)) - (cC37*(2*X3^2 - X2*X5 - X1*X2*X5))/
+ 
+    ((1 - X1)*X1*(2 + X1)) + X7^2/(X1*(2 + X1))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 40
+updating 2 out of 40
+updating 3 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 40
+updating 5 out of 40
+updating 6 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 40
+updating 9 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 40
+updating 11 out of 40
+updating 12 out of 40
+updating 13 out of 40
+updating 14 out of 40
+updating 15 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 40
+updating 17 out of 40
+updating 18 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 40
+updating 21 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 40
+updating 23 out of 40
+updating 24 out of 40
+updating 25 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 37 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 38 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 39 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+updating 40 out of 40
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 29425
+solve3 i = 4
+solving for cC4
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 25; factored. length 35.
+collecting 35 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#27#28#29#30#31#32#33#34#35solution = cC4 -> 
+ 
+  -(cC10/X1) - cC11/X1 - cC5/X1 - cC6/X1 - (cC28*X2)/X1 - (cC29*X3)/X1 - 
+ 
+   (cC30*X3)/X1 - (cC32*X3)/X1 - (cC36*X3)/X1 - (cC16*X3)/X2 - (cC7*X3)/X2 - 
+ 
+   (cC12*X3)/(X1*X2) - (cC13*X3)/(X1*X2) - (cC17*X3)/(X1*X2) - 
+ 
+   (cC18*X3)/(X1*X2) - (cC22*X3)/(X1*X2) - (cC23*X3)/(X1*X2) - 
+ 
+   (cC8*X3)/(X1*X2) - (cC9*X3)/(X1*X2) - (cC33*X3^2)/(X1*X2) - 
+ 
+   (cC34*X3^2)/(X1*X2) - (cC37*X3^2)/(X1*X2) - (cC38*X3^2)/(X1*X2) - 
+ 
+   (cC31*X5)/X1 - (cC35*X3*X5)/(X1*X2) - (cC39*X3*X5)/(X1*X2) + 
+ 
+   (cC19*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC20*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) + 
+ 
+   (cC21*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) + 
+ 
+   (cC24*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) + 
+ 
+   (cC25*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) + 
+ 
+   (cC40*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2) + 
+ 
+   (cC41*X3*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) + 
+ 
+   (cC42*X3*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) + 
+ 
+   (cC43*X5*(X1*X3^2 - X2*X5))/((1 - X1)*X1*X2^2) - 
+ 
+   (X7*(X1*X4^2 - X2*X7))/((1 - X1)*X1*X2^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 39
+updating 11 out of 39
+updating 12 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 39
+updating 23 out of 39
+updating 24 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 37 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 38 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+updating 39 out of 39
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 43437
+solve3 i = 5
+solving for cC5
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 28; factored. length 35.
+collecting 35 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#27#28#29#30#31#32#33#34#35solution = cC5 -> 
+ 
+  -(cC10/(1 + X1)) - cC6/(1 + X1) - cC11/(1 - X1^2) + (cC14*X1)/(1 - X1^2) - 
+ 
+   (cC28*X2)/(1 + X1) - (cC29*X3)/(1 + X1) - (cC30*X3)/(1 + X1) - 
+ 
+   (cC32*X3)/(1 + X1) - (cC36*X3)/(1 + X1) - (cC17*X3)/X2 - (cC8*X3)/X2 - 
+ 
+   (cC12*X3)/((1 + X1)*X2) - (cC18*X3)/((1 + X1)*X2) - 
+ 
+   (cC22*X3)/((1 + X1)*X2) - (cC9*X3)/((1 + X1)*X2) - 
+ 
+   (cC13*X3)/((1 - X1^2)*X2) - (cC23*X3)/((1 - X1^2)*X2) + 
+ 
+   (cC15*X1*X3)/((1 - X1^2)*X2) + (cC26*X1*X3)/((1 - X1^2)*X2) - 
+ 
+   (cC34*X3^2)/((1 + X1)*X2) - (cC37*X3^2)/((1 + X1)*X2) - 
+ 
+   (cC35*X3*X5)/((1 + X1)*X2) + (cC20*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC25*(X1*X3^2 - X2*X5))/((1 - X1)^2*(1 + X1)*X2^2) - 
+ 
+   (cC27*X1*(X1*X3^2 - X2*X5))/((1 - X1)^2*(1 + X1)*X2^2) + 
+ 
+   (cC21*(X1*X3^2 - X2*X5))/((1 - X1^2)*X2^2) + 
+ 
+   (cC24*(X1*X3^2 - X2*X5))/((1 - X1^2)*X2^2) + 
+ 
+   (cC31*(X1*X3^2 - X2*X5))/((1 - X1^2)*X2) + 
+ 
+   (cC42*X3*(X1*X3^2 - X2*X5))/((1 - X1^2)*X2^2) + 
+ 
+   (cC43*X5*(X1*X3^2 - X2*X5))/((1 - X1^2)*X2^2) + 
+ 
+   (cC40*(2*X1*X3^2 - X1^2*X3^2 - X2*X5))/((1 - X1)^2*(1 + X1)*X2) - 
+ 
+   (cC39*X3*(X1^2*X3^2 + X2*X5 - 2*X1*X2*X5))/((1 - X1)^2*(1 + X1)*X2^2) - 
+ 
+   (cC33*(X3^2 - X1*X2*X5))/((1 - X1^2)*X2) - 
+ 
+   (cC38*(X3^2 - X1*X3^2 + X1^2*X3^2 - X1*X2*X5))/((1 - X1)^2*(1 + X1)*X2) + 
+ 
+   (cC41*X3*(X1*X3^2 - X2*X5 + X1*X2*X5 - X1^2*X2*X5))/
+ 
+    ((1 - X1)^2*(1 + X1)*X2^2) - (X7*(X1*X4^2 - X2*X7))/((1 - X1^2)*X2^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 38
+updating 3 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 38
+updating 12 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 38
+updating 15 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 37 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+updating 38 out of 38
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 48068
+solve3 i = 6
+solving for cC6
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 28; factored. length 31.
+collecting 31 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#27#28#29#30#31solution = cC6 -> 
+ 
+  (-2*cC10)/((1 - X1)*(2 + X1)) + (cC11*X1)/((1 - X1)*(2 + X1)) + 
+ 
+   (cC14*X1)/((1 - X1)*(2 + X1)) - (cC28*X2)/(2 + X1) - (cC29*X3)/(2 + X1) - 
+ 
+   (cC30*X3)/(2 + X1) - (cC32*X3)/(2 + X1) - (cC36*X3)/(2 + X1) - 
+ 
+   (cC18*X3)/X2 - (cC9*X3)/X2 - (2*cC12*X3)/((1 - X1)*(2 + X1)*X2) - 
+ 
+   (2*cC22*X3)/((1 - X1)*(2 + X1)*X2) + (cC13*X1*X3)/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC15*X1*X3)/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC23*X1*X3)/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC26*X1*X3)/((1 - X1)*(2 + X1)*X2) - (cC35*X3*X5)/((2 + X1)*X2) + 
+ 
+   (cC21*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (2*cC24*(X1*X3^2 - X2*X5))/((1 - X1)^2*(2 + X1)*X2^2) - 
+ 
+   (cC25*X1*(X1*X3^2 - X2*X5))/((1 - X1)^2*(2 + X1)*X2^2) - 
+ 
+   (cC27*X1*(X1*X3^2 - X2*X5))/((1 - X1)^2*(2 + X1)*X2^2) + 
+ 
+   (cC31*(X1*X3^2 - X2*X5))/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC33*(X1*X3^2 - X2*X5))/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC43*X5*(X1*X3^2 - X2*X5))/((1 - X1)*(2 + X1)*X2^2) + 
+ 
+   (cC38*(2*X1*X3^2 - X1^2*X3^2 - X2*X5))/((1 - X1)^2*(2 + X1)*X2) + 
+ 
+   (cC40*(2*X1*X3^2 - X1^2*X3^2 - X2*X5))/((1 - X1)^2*(2 + X1)*X2) - 
+ 
+   (cC39*X3*(X1^2*X3^2 + X2*X5 - 2*X1*X2*X5))/((1 - X1)^2*(2 + X1)*X2^2) - 
+ 
+   (cC41*X3*(X1^2*X3^2 + X2*X5 - 2*X1*X2*X5))/((1 - X1)^2*(2 + X1)*X2^2) - 
+ 
+   (cC34*(2*X3^2 - X2*X5 - X1*X2*X5))/((1 - X1)*(2 + X1)*X2) - 
+ 
+   (cC37*(2*X3^2 - X1*X3^2 + X1^2*X3^2 - X2*X5 - X1*X2*X5))/
+ 
+    ((1 - X1)^2*(2 + X1)*X2) + (cC42*X3*(2*X1*X3^2 - X2*X5 - X1^2*X2*X5))/
+ 
+    ((1 - X1)^2*(2 + X1)*X2^2) - 
+ 
+   (X7*(X1*X4^2 - X2*X7))/((1 - X1)*(2 + X1)*X2^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 37
+updating 2 out of 37
+updating 3 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 37
+updating 11 out of 37
+updating 12 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 37
+updating 14 out of 37
+updating 15 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+updating 37 out of 37
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 35641
+solve3 i = 7
+solving for cC7
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 30; factored. length 17.
+collecting 17 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17solution = cC7 -> 
+ 
+  -(cC22/X1) - cC23/X1 - cC8/X1 - cC9/X1 - (cC32*X2)/X1 - (cC33*X3)/X1 - 
+ 
+   (cC34*X3)/X1 - (cC40*X3)/X1 - (cC19*X3)/X2 - (cC20*X3)/(X1*X2) - 
+ 
+   (cC21*X3)/(X1*X2) - (cC24*X3)/(X1*X2) - (cC25*X3)/(X1*X2) - 
+ 
+   (cC41*X3^2)/(X1*X2) - (cC42*X3^2)/(X1*X2) - (cC35*X5)/X1 - 
+ 
+   (cC43*X3*X5)/(X1*X2) + (X4*(X3*X4 - X2*X6)*X7)/(X1*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 36
+updating 4 out of 36
+updating 5 out of 36
+updating 6 out of 36
+updating 7 out of 36
+updating 8 out of 36
+updating 9 out of 36
+updating 10 out of 36
+updating 11 out of 36
+updating 12 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 36
+updating 20 out of 36
+updating 21 out of 36
+updating 22 out of 36
+updating 23 out of 36
+updating 24 out of 36
+updating 25 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 36
+updating 30 out of 36
+updating 31 out of 36
+updating 32 out of 36
+updating 33 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+updating 36 out of 36
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 39621
+solve3 i = 8
+solving for cC8
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 33; factored. length 22.
+collecting 22 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22solution = cC8 -> 
+ 
+  -(cC9/(1 + X1)) - cC22/(1 - X1^2) - cC23/(1 - X1^2) + 
+ 
+   (cC12*X1)/(1 - X1^2) + (cC26*X1)/(1 - X1^2) - (cC32*X2)/(1 - X1^2) + 
+ 
+   (cC30*X1*X2)/(1 - X1^2) - (cC34*X3)/(1 + X1) - (cC33*X3)/(1 - X1^2) - 
+ 
+   (cC40*X3)/(1 - X1^2) + (cC31*X1*X3)/(1 - X1^2) + (cC38*X1*X3)/(1 - X1^2) - 
+ 
+   (cC20*X3)/X2 - (cC21*X3)/((1 + X1)*X2) - (cC24*X3)/((1 + X1)*X2) - 
+ 
+   (cC25*X3)/((1 - X1^2)*X2) + (cC27*X1*X3)/((1 - X1^2)*X2) - 
+ 
+   (cC42*X3^2)/((1 + X1)*X2) - (cC41*X3^2)/((1 - X1^2)*X2) + 
+ 
+   (cC39*X1*X3^2)/((1 - X1^2)*X2) - (cC35*X5)/(1 + X1) - 
+ 
+   (cC43*X3*X5)/((1 + X1)*X2) + 
+ 
+   (X4*(X3*X4 - X2*X6)*X7)/((1 + X1)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 35
+updating 3 out of 35
+updating 4 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 35
+updating 6 out of 35
+updating 7 out of 35
+updating 8 out of 35
+updating 9 out of 35
+updating 10 out of 35
+updating 11 out of 35
+updating 12 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 35
+updating 21 out of 35
+updating 22 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 35
+updating 29 out of 35
+updating 30 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+updating 35 out of 35
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 45107
+solve3 i = 9
+solving for cC9
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 33; factored. length 24.
+collecting 24 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24solution = cC9 -> 
+ 
+  -(cC12/((1 - X1)*(2 + X1))) - cC22/((1 - X1)*(2 + X1)) - 
+ 
+   cC23/((1 - X1)*(2 + X1)) - cC26/((1 - X1)*(2 + X1)) + 
+ 
+   (cC13*(1 + X1))/((1 - X1)*(2 + X1)) + 
+ 
+   (cC15*(1 + X1))/((1 - X1)*(2 + X1)) - (cC30*X2)/((1 - X1)*(2 + X1)) - 
+ 
+   (cC32*X2)/((1 - X1)*(2 + X1)) + (cC29*(1 + X1)*X2)/((1 - X1)*(2 + X1)) - 
+ 
+   (2*cC34*X3)/((1 - X1)*(2 + X1)) - (cC38*X3)/((1 - X1)*(2 + X1)) - 
+ 
+   (cC40*X3)/((1 - X1)*(2 + X1)) + (cC31*X1*X3)/((1 - X1)*(2 + X1)) + 
+ 
+   (cC33*X1*X3)/((1 - X1)*(2 + X1)) + 
+ 
+   (cC37*(1 + X1)*X3)/((1 - X1)*(2 + X1)) - (cC21*X3)/X2 - 
+ 
+   (2*cC24*X3)/((1 - X1)*(2 + X1)*X2) + (cC25*X1*X3)/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC27*X1*X3)/((1 - X1)*(2 + X1)*X2) - 
+ 
+   (2*cC42*X3^2)/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC39*X1*X3^2)/((1 - X1)*(2 + X1)*X2) + 
+ 
+   (cC41*X1*X3^2)/((1 - X1)*(2 + X1)*X2) - (cC35*X5)/(2 + X1) - 
+ 
+   (cC43*X3*X5)/((2 + X1)*X2) + 
+ 
+   (X4*(X3*X4 - X2*X6)*X7)/((2 + X1)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 34
+updating 2 out of 34
+updating 3 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 34
+updating 6 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 34
+updating 8 out of 34
+updating 9 out of 34
+updating 10 out of 34
+updating 11 out of 34
+updating 12 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 34
+updating 20 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 34
+updating 28 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+updating 34 out of 34
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 36409
+solve3 i = 10
+solving for cC10
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 25; factored. length 27.
+collecting 27 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#27solution = cC10 -> 
+ 
+  (cC11*X1)/(4 - X1 - X1^2) + (cC14*X1)/(4 - X1 - X1^2) - 
+ 
+   (cC28*(1 - X1)*X2)/(4 - X1 - X1^2) - (cC29*(1 - X1)*X3)/(4 - X1 - X1^2) - 
+ 
+   (cC30*(1 - X1)*X3)/(4 - X1 - X1^2) - (cC32*(1 - X1)*X3)/(4 - X1 - X1^2) - 
+ 
+   (cC36*(1 - X1)*X3)/(4 - X1 - X1^2) - (cC12*X3)/X2 - (cC22*X3)/X2 + 
+ 
+   (cC13*X1*X3)/((4 - X1 - X1^2)*X2) + (cC15*X1*X3)/((4 - X1 - X1^2)*X2) + 
+ 
+   (cC23*X1*X3)/((4 - X1 - X1^2)*X2) + (cC26*X1*X3)/((4 - X1 - X1^2)*X2) + 
+ 
+   (cC35*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((4 - X1 - X1^2)*X2^2) + 
+ 
+   (cC24*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) - 
+ 
+   (cC25*X1*(X1*X3^2 - X2*X5))/((1 - X1)*(4 - X1 - X1^2)*X2^2) - 
+ 
+   (cC27*X1*(X1*X3^2 - X2*X5))/((1 - X1)*(4 - X1 - X1^2)*X2^2) + 
+ 
+   (cC31*(X1*X3^2 - X2*X5))/((4 - X1 - X1^2)*X2) + 
+ 
+   (cC33*(X1*X3^2 - X2*X5))/((4 - X1 - X1^2)*X2) + 
+ 
+   (cC34*(X1*X3^2 - X2*X5))/((4 - X1 - X1^2)*X2) + 
+ 
+   (cC43*X5*(X1*X3^2 - X2*X5))/((4 - X1 - X1^2)*X2^2) + 
+ 
+   (cC38*(2*X1*X3^2 - X1^2*X3^2 - X2*X5))/((1 - X1)*(4 - X1 - X1^2)*X2) + 
+ 
+   (cC40*(2*X1*X3^2 - X1^2*X3^2 - X2*X5))/((1 - X1)*(4 - X1 - X1^2)*X2) + 
+ 
+   (cC42*X3*(2*X3^2 + X1*X3^2 - X1^2*X3^2 - 3*X2*X5 + X1*X2*X5))/
+ 
+    ((1 - X1)*(4 - X1 - X1^2)*X2^2) - 
+ 
+   (cC37*(4*X3^2 - 2*X1*X3^2 - 3*X2*X5 + X1^2*X2*X5))/
+ 
+    ((1 - X1)*(4 - X1 - X1^2)*X2) - 
+ 
+   (cC39*X3*(2*X3^2 - X1*X3^2 - X2*X5 - X1*X2*X5 + X1^2*X2*X5))/
+ 
+    ((1 - X1)*(4 - X1 - X1^2)*X2^2) - 
+ 
+   (cC41*X3*(2*X3^2 - X1*X3^2 - X2*X5 - X1*X2*X5 + X1^2*X2*X5))/
+ 
+    ((1 - X1)*(4 - X1 - X1^2)*X2^2) - 
+ 
+   (X7*(X1*X4^2 - X2*X7))/((4 - X1 - X1^2)*X2^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 33
+updating 7 out of 33
+updating 8 out of 33
+updating 9 out of 33
+updating 10 out of 33
+updating 11 out of 33
+updating 12 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+updating 33 out of 33
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 56110
+solve3 i = 11
+solving for cC11
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 27; factored. length 23.
+collecting 23 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23solution = cC11 -> 
+ 
+  (cC14*X1)/(4 - 2*X1 - X1^2) - (cC28*(1 - X1)*X2)/(4 - 2*X1 - X1^2) - 
+ 
+   (cC29*(1 - X1)*X3)/(4 - 2*X1 - X1^2) - 
+ 
+   (cC30*(1 - X1)*X3)/(4 - 2*X1 - X1^2) - 
+ 
+   (cC32*(1 - X1)*X3)/(4 - 2*X1 - X1^2) - 
+ 
+   (cC36*(1 - X1)*X3)/(4 - 2*X1 - X1^2) - (cC13*X3)/X2 - (cC23*X3)/X2 + 
+ 
+   (cC15*X1*X3)/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC26*X1*X3)/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC35*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((4 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC25*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) - 
+ 
+   (cC27*X1*(X1*X3^2 - X2*X5))/((1 - X1)*(4 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC31*(X1*X3^2 - X2*X5))/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC33*(X1*X3^2 - X2*X5))/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC34*(X1*X3^2 - X2*X5))/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC37*(X1*X3^2 - X2*X5))/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC43*X5*(X1*X3^2 - X2*X5))/((4 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC40*(2*X1*X3^2 - X1^2*X3^2 - X2*X5))/((1 - X1)*(4 - 2*X1 - X1^2)*X2) - 
+ 
+   (cC42*X3*(2*X3^2 - X2*X5 - X1*X2*X5))/((4 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC41*X3*(2*X3^2 - X1^2*X3^2 - 3*X2*X5 + 2*X1*X2*X5))/
+ 
+    ((1 - X1)*(4 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC39*X3*(2*X3^2 - X1*X3^2 - X2*X5 - X1*X2*X5 + X1^2*X2*X5))/
+ 
+    ((1 - X1)*(4 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC38*(4*X3^2 - 3*X1*X3^2 - 3*X2*X5 + X1*X2*X5 + X1^2*X2*X5))/
+ 
+    ((1 - X1)*(4 - 2*X1 - X1^2)*X2) - 
+ 
+   (X7*(X1*X4^2 - X2*X7))/((4 - 2*X1 - X1^2)*X2^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 32
+updating 2 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 32
+updating 6 out of 32
+updating 7 out of 32
+updating 8 out of 32
+updating 9 out of 32
+updating 10 out of 32
+updating 11 out of 32
+updating 12 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 32
+updating 14 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+updating 32 out of 32
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 46627
+solve3 i = 12
+solving for cC12
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 49; factored. length 24.
+collecting 24 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24solution = cC12 -> 
+ 
+  cC15/(1 + 3*X1 - X1^2 - X1^3) + cC22/(1 + 3*X1 - X1^2 - X1^3) + 
+ 
+   cC23/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC16*(1 - X1)*(2 + X1))/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC26*(3 - X1^2))/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC13*(1 - X1 - X1^2))/(1 + 3*X1 - X1^2 - X1^3) + 
+ 
+   (cC29*X2)/(1 + 3*X1 - X1^2 - X1^3) + (cC32*X2)/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC30*(3 - X1^2)*X2)/(1 + 3*X1 - X1^2 - X1^3) + 
+ 
+   (2*cC33*X3)/(1 + 3*X1 - X1^2 - X1^3) + 
+ 
+   (cC37*X3)/(1 + 3*X1 - X1^2 - X1^3) + (cC40*X3)/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC31*(2 - X1^2)*X3)/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC34*(2 - X1^2)*X3)/(1 + 3*X1 - X1^2 - X1^3) - 
+ 
+   (cC38*(3 - X1^2)*X3)/(1 + 3*X1 - X1^2 - X1^3) + 
+ 
+   (cC25*X1*(1 + X1)*X3)/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC19*(1 - X1)*(2 + X1)*X3)/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC27*(2 - X1^2)*X3)/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC24*X1*(3 - X1 - X1^2)*X3)/((1 + 3*X1 - X1^2 - X1^3)*X2) + 
+ 
+   (2*cC41*X3^2)/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC42*(2 - X1^2)*X3^2)/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC43*(1 - X1^2)*X3*X5)/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC35*(1 - X1)*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + 3*X1 - X1^2 - X1^3)*X2) - 
+ 
+   (cC39*(X1*X3^2 + 2*X2*X5 - X1*X2*X5 - X1^2*X2*X5))/
+ 
+    ((1 + 3*X1 - X1^2 - X1^3)*X2) + 
+ 
+   ((1 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((1 + 3*X1 - X1^2 - X1^3)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 31
+updating 3 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 31
+updating 6 out of 31
+updating 7 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 31
+updating 9 out of 31
+updating 10 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 31
+updating 17 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 31
+updating 25 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+updating 31 out of 31
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 76473
+solve3 i = 13
+solving for cC13
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 51; factored. length 23.
+collecting 23 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23solution = cC13 -> 
+ 
+  cC22/(2 + 2*X1 - 2*X1^2 - X1^3) + cC23/(2 + 2*X1 - 2*X1^2 - X1^3) - 
+ 
+   (cC16*(1 - X1)*(2 + X1))/(2 + 2*X1 - 2*X1^2 - X1^3) + 
+ 
+   (cC26*(1 - X1^2))/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC15*(1 + 2*X1 - X1^2 - X1^3))/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC32*X2)/(2 + 2*X1 - 2*X1^2 - X1^3) + 
+ 
+   (cC30*(1 - X1^2)*X2)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC29*(1 + 2*X1 - X1^2 - X1^3)*X2)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC40*X3)/(2 + 2*X1 - 2*X1^2 - X1^3) - 
+ 
+   (cC33*(1 - X1)*(1 + X1)^2*X3)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC38*(1 - X1^2)*X3)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC31*(2 - X1^2)*X3)/(2 + 2*X1 - 2*X1^2 - X1^3) + 
+ 
+   (cC34*(1 + X1 - X1^2)*X3)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC37*(1 + 2*X1 - X1^2 - X1^3)*X3)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC24*X3)/((2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC19*(1 - X1)*(2 + X1)*X3)/((2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC27*(2 - X1^2)*X3)/((2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC25*(1 - X1)*(1 + 3*X1 + X1^2)*X3)/((2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC41*(1 - X1)*(1 + X1)^2*X3^2)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC42*(1 + X1 - X1^2)*X3^2)/(X1*(2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC43*(1 - X1^2)*X3*X5)/((2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC35*(1 - X1)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((2 + 2*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC39*(X1*X3^2 + 2*X2*X5 - X1*X2*X5 - X1^2*X2*X5))/
+ 
+    ((2 + 2*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   ((1 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((2 + 2*X1 - 2*X1^2 - X1^3)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 30
+updating 2 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 30
+updating 5 out of 30
+updating 6 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 30
+updating 8 out of 30
+updating 9 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 30
+updating 16 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 30
+updating 24 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+updating 30 out of 30
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 73522
+solve3 i = 14
+solving for cC14
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 28; factored. length 19.
+collecting 19 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19solution = cC14 -> 
+ 
+  -((cC28*X2)/(4 + X1)) - (cC29*X3)/(4 + X1) - (cC30*X3)/(4 + X1) - 
+ 
+   (cC32*X3)/(4 + X1) - (cC36*X3)/(4 + X1) - (cC15*X3)/X2 - (cC26*X3)/X2 + 
+ 
+   (cC35*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((1 - X1)*(4 + X1)*X2^2) + 
+ 
+   (cC39*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((1 - X1)*(4 + X1)*X2^2) + 
+ 
+   (cC27*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC31*(X1*X3^2 - X2*X5))/((1 - X1)*(4 + X1)*X2) + 
+ 
+   (cC33*(X1*X3^2 - X2*X5))/((1 - X1)*(4 + X1)*X2) + 
+ 
+   (cC34*(X1*X3^2 - X2*X5))/((1 - X1)*(4 + X1)*X2) + 
+ 
+   (cC37*(X1*X3^2 - X2*X5))/((1 - X1)*(4 + X1)*X2) + 
+ 
+   (cC38*(X1*X3^2 - X2*X5))/((1 - X1)*(4 + X1)*X2) + 
+ 
+   (cC43*X5*(X1*X3^2 - X2*X5))/((1 - X1)*(4 + X1)*X2^2) - 
+ 
+   (cC40*(4*X3^2 - 3*X2*X5 - X1*X2*X5))/((1 - X1)*(4 + X1)*X2) - 
+ 
+   (cC41*X3*(2*X3^2 - X2*X5 - X1*X2*X5))/((1 - X1)*(4 + X1)*X2^2) - 
+ 
+   (cC42*X3*(2*X3^2 - X2*X5 - X1*X2*X5))/((1 - X1)*(4 + X1)*X2^2) - 
+ 
+   (X7*(X1*X4^2 - X2*X7))/((1 - X1)*(4 + X1)*X2^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 29
+updating 3 out of 29
+updating 4 out of 29
+updating 5 out of 29
+updating 6 out of 29
+updating 7 out of 29
+updating 8 out of 29
+updating 9 out of 29
+updating 10 out of 29
+updating 11 out of 29
+updating 12 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+updating 29 out of 29
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 60331
+solve3 i = 15
+solving for cC15
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 46; factored. length 24.
+collecting 24 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24solution = cC15 -> 
+ 
+  (cC22*X1*(2 + X1))/(2 + 3*X1 - 2*X1^2 - X1^3) - 
+ 
+   (cC23*X1^2)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC26*(2 + X1 - 2*X1^2))/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC16*X1*(2 - X1^2))/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC17*X1*(2 + 2*X1 - 2*X1^2 - X1^3))/
+ 
+    ((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC32*X1^2*X2)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC30*(2 + X1 - 2*X1^2)*X2)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC29*(2 + X1)*(1 + X1 - X1^2)*X2)/((1 + X1)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC34*(2 + 3*X1)*X3)/((1 + X1)*(2 + 3*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC40*X1^2*X3)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC38*(2 + X1 - 2*X1^2)*X3)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC31*X1^2*(2 - X1^2)*X3)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC37*(2 + X1)*(1 + X1 - X1^2)*X3)/((1 + X1)*(2 + 3*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC33*(2 + X1 - 3*X1^2 + X1^4)*X3)/
+ 
+    ((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC24*X1*(2 + X1)*X3)/((2 + 3*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC25*X1^2*X3)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC19*X1*(2 - X1^2)*X3)/((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC20*X1*(2 + 2*X1 - 2*X1^2 - X1^3)*X3)/
+ 
+    ((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC27*X1*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X3)/
+ 
+    ((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC42*(2 + 3*X1)*X3^2)/((1 + X1)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC43*X1^2*X3*X5)/((2 + 3*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC39*X1*(2 - X1^2)*(X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC35*X1^2*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC41*(2*X3^2 + 3*X1*X3^2 - X1^2*X3^2 - 2*X1^3*X3^2 - 2*X1*X2*X5 - 
+ 
+        2*X1^2*X2*X5 + 2*X1^3*X2*X5 + X1^4*X2*X5))/
+ 
+    ((1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (X1^2*X4*(X3*X4 - X2*X6)*X7)/((2 + 3*X1 - 2*X1^2 - X1^3)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 28
+updating 4 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 28
+updating 7 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 28
+updating 14 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 28
+updating 22 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+updating 28 out of 28
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 71813
+solve3 i = 16
+solving for cC16
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 57; factored. length 26.
+collecting 26 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26solution = cC16 -> 
+ 
+  (cC23*(2 + X1 - 2*X1^2))/((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC22*(2 - X1)*(1 - X1^2))/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC26*(2 - X1^2))/(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4) + 
+ 
+   (cC18*(1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3))/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC17*(2 + X1 - 4*X1^2 - 3*X1^3 + 2*X1^4 + X1^5))/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC29*(1 - X1)*X1*X2)/(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4) + 
+ 
+   (cC32*(2 + X1 - 2*X1^2)*X2)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC30*(2 - X1^2)*X2)/(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4) + 
+ 
+   (cC36*(1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X2)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC31*(2 + X1 - 2*X1^2)*X3)/(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4) + 
+ 
+   (cC37*(1 - X1)*(2 + X1)*(1 + X1 - X1^3)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC40*(2 + 2*X1 - 2*X1^2 - X1^3)*X3)/(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4) - 
+ 
+   (cC34*(1 - X1)*(2 + X1 - X1^2 - X1^3)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC33*(2 - X1 + X1^3 - X1^4)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC38*(2 - 3*X1 + 4*X1^3 - X1^4 - X1^5)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)) - (cC19*X3)/X2 + 
+ 
+   (cC25*(2 + X1 - 2*X1^2)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC24*(2 - X1)*(1 - X1^2)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC27*(2 - X1^2)*X3)/((2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC21*(1 - X1^2)*(2 + 3*X1 - 2*X1^2 - X1^3)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC20*(2 + X1 - 4*X1^2 - 3*X1^3 + 2*X1^4 + X1^5)*X3)/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC42*(1 - X1)*X1*(2 + X1)*X3^2)/
+ 
+    ((2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC43*X1*(1 - X1^2)*X3*X5)/((2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC35*(1 - X1)*(2 + X1 - 2*X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC41*(2*X3^2 + 2*X1*X3^2 - X1^2*X3^2 - X1^3*X3^2 - X1*X2*X5))/
+ 
+    ((2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC39*(4*X1*X3^2 + X1^2*X3^2 - 3*X1^3*X3^2 + 2*X2*X5 - 5*X1*X2*X5 - 
+ 
+        3*X1^2*X2*X5 + 6*X1^3*X2*X5 - X1^5*X2*X5))/
+ 
+    ((2 - X1^2)*(2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (X1*(1 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((2 - 2*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 27
+updating 13 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+updating 27 out of 27
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 82070
+solve3 i = 17
+solving for cC17
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 49; factored. length 24.
+collecting 24 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22#23#24solution = cC17 -> 
+ 
+  -((cC23*(1 - X1))/((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3))) + 
+ 
+   (cC26*X1*(2 - X1^2))/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC22*(3 + 3*X1 - 2*X1^2 - X1^3))/((1 + X1)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC18*(3 - 3*X1 - 4*X1^2 + 2*X1^3 + X1^4))/
+ 
+    ((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC29*(2 - X1^2)*X2)/((1 + X1)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC32*(1 - X1)*X2)/((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC30*X1*(2 - X1^2)*X2)/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC36*(3 - 3*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2)/
+ 
+    ((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC31*(1 - X1)*(2 - X1^2)*X3)/
+ 
+    ((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC40*(2 - X1^2)*(2 - 2*X1 - X1^2)*X3)/
+ 
+    ((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC34*(1 - 2*X1 - X1^2 + X1^3)*X3)/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) + 
+ 
+   (cC33*(1 - 2*X1 - 2*X1^2 + X1^3 + X1^4)*X3)/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC37*(1 + 2*X1 - 4*X1^2 - 3*X1^3 + 2*X1^4 + X1^5)*X3)/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - 
+ 
+   (cC38*(3 - 2*X1 - 7*X1^2 - X1^3 + 3*X1^4 + X1^5)*X3)/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)) - (cC20*X3)/X2 - 
+ 
+   (cC25*(1 - X1)*X3)/((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC27*X1*(2 - X1^2)*X3)/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC24*(3 + 3*X1 - 2*X1^2 - X1^3)*X3)/
+ 
+    ((1 + X1)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC21*(3 - 3*X1 - 4*X1^2 + 2*X1^3 + X1^4)*X3)/
+ 
+    ((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC42*(2 + X1)*(2 - X1^2)*X3^2)/((1 + X1)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC43*(2 - X1^2)*X3*X5)/((1 + 4*X1 - 2*X1^2 - X1^3)*X2) + 
+ 
+   (cC35*(1 - X1)^2*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC39*(1 - X1 - 3*X1^2 + X1^3 + X1^4)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2) - 
+ 
+   (cC41*(2 - X1^2)*(X1*X3^2 + X1^2*X3^2 + X2*X5 - 3*X1^2*X2*X5 - 
+ 
+        X1^3*X2*X5))/((1 + X1)*(1 - X1 - X1^2)*(1 + 4*X1 - 2*X1^2 - X1^3)*X2)\
+ 
+    + ((2 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((1 + 4*X1 - 2*X1^2 - X1^3)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 26
+updating 3 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 26
+updating 12 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+updating 26 out of 26
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 74690
+solve3 i = 18
+solving for cC18
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 59; factored. length 22.
+collecting 22 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20#21#22solution = cC18 -> 
+ 
+  (cC23*(1 - X1)*X1*(3 + X1))/(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4) - 
+ 
+   (cC22*(2 - X1)*(1 - X1 - X1^2))/
+ 
+    ((1 - X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC26*X1*(1 - 4*X1 + X1^2 + X1^3))/
+ 
+    ((1 - X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC32*(1 - 3*X1)*X2)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC29*(3 - 2*X1)*(1 - X1 - X1^2)*X2)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC30*(1 + X1 - X1^3)*X2)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC36*(3 + X1)*(1 - 2*X1 - X1^2 + X1^3)*X2)/
+ 
+    ((2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC31*(1 - 3*X1)*(2 - X1^2)*X3)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC34*(2 - 2*X1 - X1^3)*X3)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC33*(2 - 2*X1 - X1^2 + 2*X1^3)*X3)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) + 
+ 
+   (cC37*X1*(3 - X1 - 5*X1^2 + X1^3 + X1^4)*X3)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC38*(4 - 7*X1 + 6*X1^3 - X1^4 - X1^5)*X3)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - 
+ 
+   (cC40*(4 - 11*X1 + 7*X1^3 - X1^4 - X1^5)*X3)/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)) - (cC21*X3)/X2 + 
+ 
+   (cC25*(1 - X1)*X1*(3 + X1)*X3)/((2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC24*(2 - X1)*(1 - X1 - X1^2)*X3)/
+ 
+    ((1 - X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC27*X1*(1 - 4*X1 + X1^2 + X1^3)*X3)/
+ 
+    ((1 - X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC43*(1 - X1)*(1 - X1 - X1^2)*X3*X5)/
+ 
+    ((2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC35*(1 - 3*X1)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC39*(1 - 3*X1 + 4*X1^2 - X1^4)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) - 
+ 
+   (cC42*(1 - X1 - X1^2)*(6*X3^2 - X1*X3^2 - 2*X1^2*X3^2 - X2*X5 - 
+ 
+        4*X1*X2*X5 + 2*X1^2*X2*X5 + X1^3*X2*X5))/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   (cC41*(2*X3^2 + 5*X1*X3^2 - 6*X1^2*X3^2 - 4*X1^3*X3^2 + 2*X1^4*X3^2 + 
+ 
+        X1^5*X3^2 - 3*X2*X5 + X1*X2*X5 + 5*X1^2*X2*X5 - X1^3*X2*X5 - 
+ 
+        X1^4*X2*X5))/
+ 
+    ((1 - X1)*(2 + X1)*(2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2) + 
+ 
+   ((1 - X1)*(1 - X1 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((2 - 2*X1 - 5*X1^2 + 2*X1^3 + X1^4)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 25
+updating 2 out of 25
+updating 3 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 25
+updating 11 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+updating 25 out of 25
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 71961
+solve3 i = 19
+solving for cC19
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 89; factored. length 8.
+collecting 8 terms.
+#1#2#3#4#5#6#7#8solution = cC19 -> 
+ 
+  -(cC20/X1) - cC21/X1 - cC24/X1 - cC25/X1 - (cC40*X2)/X1 - (cC41*X3)/X1 - 
+ 
+   (cC42*X3)/X1 - (cC43*X5)/X1 + 
+ 
+   (X7*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*X1*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 24
+updating 4 out of 24
+updating 5 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 24
+updating 8 out of 24
+updating 9 out of 24
+updating 10 out of 24
+updating 11 out of 24
+updating 12 out of 24
+updating 13 out of 24
+updating 14 out of 24
+updating 15 out of 24
+updating 16 out of 24
+updating 17 out of 24
+updating 18 out of 24
+updating 19 out of 24
+updating 20 out of 24
+updating 21 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+updating 24 out of 24
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 73384
+solve3 i = 20
+solving for cC20
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 92; factored. length 10.
+collecting 10 terms.
+#1#2#3#4#5#6#7#8#9#10solution = cC20 -> 
+ 
+  -(cC21/(1 + X1)) - cC24/(1 + X1) - cC25/(1 - X1^2) + (cC27*X1)/(1 - X1^2) - 
+ 
+   (cC40*X2)/(1 - X1^2) + (cC38*X1*X2)/(1 - X1^2) - (cC42*X3)/(1 + X1) - 
+ 
+   (cC41*X3)/(1 - X1^2) + (cC39*X1*X3)/(1 - X1^2) - (cC43*X5)/(1 + X1) + 
+ 
+   (X7*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*(1 + X1)*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 23
+updating 3 out of 23
+updating 4 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 23
+updating 7 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 23
+updating 9 out of 23
+updating 10 out of 23
+updating 11 out of 23
+updating 12 out of 23
+updating 13 out of 23
+updating 14 out of 23
+updating 15 out of 23
+updating 16 out of 23
+updating 17 out of 23
+updating 18 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+updating 23 out of 23
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 74429
+solve3 i = 21
+solving for cC21
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 92; factored. length 10.
+collecting 10 terms.
+#1#2#3#4#5#6#7#8#9#10solution = cC21 -> 
+ 
+  (-2*cC24)/((1 - X1)*(2 + X1)) + (cC25*X1)/((1 - X1)*(2 + X1)) + 
+ 
+   (cC27*X1)/((1 - X1)*(2 + X1)) - (cC38*X2)/((1 - X1)*(2 + X1)) - 
+ 
+   (cC40*X2)/((1 - X1)*(2 + X1)) + (cC37*(1 + X1)*X2)/((1 - X1)*(2 + X1)) - 
+ 
+   (2*cC42*X3)/((1 - X1)*(2 + X1)) + (cC39*X1*X3)/((1 - X1)*(2 + X1)) + 
+ 
+   (cC41*X1*X3)/((1 - X1)*(2 + X1)) - (cC43*X5)/(2 + X1) + 
+ 
+   (X7*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((4 - X1^2)*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 22
+updating 2 out of 22
+updating 3 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 22
+updating 6 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 22
+updating 8 out of 22
+updating 9 out of 22
+updating 10 out of 22
+updating 11 out of 22
+updating 12 out of 22
+updating 13 out of 22
+updating 14 out of 22
+updating 15 out of 22
+updating 16 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+updating 22 out of 22
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 73677
+solve3 i = 22
+solving for cC22
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 51; factored. length 20.
+collecting 20 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18#19#20solution = cC22 -> 
+ 
+  -((cC26*X1*(1 + 2*X1))/((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3))) + 
+ 
+   (cC23*X1*(3 + X1)*(1 - X1^2))/
+ 
+    ((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) + 
+ 
+   (cC36*(1 - X1^2)*X2)/(X1*(4 + 3*X1 - 3*X1^2 - X1^3)) + 
+ 
+   (cC29*(1 + X1 - X1^2)*X2)/(X1*(4 + 3*X1 - 3*X1^2 - X1^3)) - 
+ 
+   (cC30*(1 - X1^2 + X1^3)*X2)/
+ 
+    (X1*(1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) - 
+ 
+   (cC32*(1 + X1)*(1 - X1 - 4*X1^2 + 2*X1^3 + X1^4)*X2)/
+ 
+    (X1*(1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) + 
+ 
+   (cC37*(2 + X1 - 2*X1^2)*X3)/(X1*(4 + 3*X1 - 3*X1^2 - X1^3)) - 
+ 
+   (cC31*(2 - X1)*X1*(1 + X1)*X3)/
+ 
+    ((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) - 
+ 
+   (cC38*(1 + X1 - X1^3)*X3)/((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) - 
+ 
+   (cC34*(2 + 2*X1 - 2*X1^2 - X1^3)*X3)/(X1*(4 + 3*X1 - 3*X1^2 - X1^3)) + 
+ 
+   (cC33*X1*(2 + 2*X1 - 2*X1^2 - X1^3)*X3)/
+ 
+    ((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) - 
+ 
+   (cC40*(1 + X1)*(1 - 4*X1 + X1^2 + X1^3)*X3)/
+ 
+    ((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)) - (cC24*X3)/X2 - 
+ 
+   (cC27*X1*(1 + 2*X1)*X3)/((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)*X2) + 
+ 
+   (cC25*X1*(3 + X1)*(1 - X1^2)*X3)/
+ 
+    ((1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)*X2) - 
+ 
+   (cC43*(1 - X1^2)*X3*X5)/((4 + 3*X1 - 3*X1^2 - X1^3)*X2) - 
+ 
+   (cC35*(1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    (X1*(4 + 3*X1 - 3*X1^2 - X1^3)*X2) + 
+ 
+   (cC39*(1 - 2*X1 - 2*X1^2 + 2*X1^3)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    (X1*(1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)*X2) - 
+ 
+   (cC42*(2*X3^2 + 3*X1*X3^2 - X1^2*X3^2 - X1^3*X3^2 - X2*X5 - X1*X2*X5))/
+ 
+    (X1*(4 + 3*X1 - 3*X1^2 - X1^3)*X2) + 
+ 
+   (cC41*(2*X3^2 + X1*X3^2 - 3*X1^2*X3^2 - X1^3*X3^2 + X1^4*X3^2 - X2*X5 - 
+ 
+        2*X1*X2*X5 + 3*X1^2*X2*X5 + 4*X1^3*X2*X5 - 2*X1^4*X2*X5 - X1^5*X2*X5))
+ 
+     /(X1*(1 - X1 - X1^2)*(4 + 3*X1 - 3*X1^2 - X1^3)*X2) + 
+ 
+   ((1 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((4 + 3*X1 - 3*X1^2 - X1^3)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 21
+updating 7 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+updating 21 out of 21
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 62184
+solve3 i = 23
+solving for cC23
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 47; factored. length 18.
+collecting 18 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16#17#18solution = cC23 -> 
+ 
+  (cC26*X1*(3 + X1))/(4 - 4*X1^2 - X1^3) + 
+ 
+   (cC36*(1 - X1 - X1^2)*X2)/(X1*(4 - 4*X1^2 - X1^3)) - 
+ 
+   (2*cC29*(1 - X1 - X1^2)*X2)/(X1*(2 + X1)*(4 - 4*X1^2 - X1^3)) + 
+ 
+   (cC30*(2 + 2*X1 + X1^2)*X2)/(X1*(2 + X1)*(4 - 4*X1^2 - X1^3)) - 
+ 
+   (cC32*(2 + 5*X1 - X1^2 - 4*X1^3 - X1^4)*X2)/
+ 
+    (X1*(2 + X1)*(4 - 4*X1^2 - X1^3)) + 
+ 
+   (cC31*(4 + 3*X1)*X3)/((2 + X1)*(4 - 4*X1^2 - X1^3)) - 
+ 
+   (cC40*(3 + X1)*(2 - X1^2)*X3)/((2 + X1)*(4 - 4*X1^2 - X1^3)) + 
+ 
+   (cC37*(1 - X1 - X1^2)*X3)/((2 + X1)*(4 - 4*X1^2 - X1^3)) - 
+ 
+   (cC34*(3 + X1)*(1 - X1 - X1^2)*X3)/((2 + X1)*(4 - 4*X1^2 - X1^3)) + 
+ 
+   (cC38*(4 + X1 - 2*X1^2 - X1^3)*X3)/(X1*(2 + X1)*(4 - 4*X1^2 - X1^3)) - 
+ 
+   (cC33*(4 + 3*X1 - 3*X1^2 - 4*X1^3 - X1^4)*X3)/
+ 
+    (X1*(2 + X1)*(4 - 4*X1^2 - X1^3)) - (cC25*X3)/X2 + 
+ 
+   (cC27*X1*(3 + X1)*X3)/((4 - 4*X1^2 - X1^3)*X2) - 
+ 
+   (cC43*(1 - X1 - X1^2)*X3*X5)/((4 - 4*X1^2 - X1^3)*X2) + 
+ 
+   (cC39*(2 - X1)*(1 + X1)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    (X1*(2 + X1)*(4 - 4*X1^2 - X1^3)*X2) - 
+ 
+   (cC35*(1 - X1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    (X1*(4 - 4*X1^2 - X1^3)*X2) - 
+ 
+   (cC41*(2 + 2*X1 - 2*X1^2 - X1^3)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    (X1*(2 + X1)*(4 - 4*X1^2 - X1^3)*X2) + 
+ 
+   (cC42*(1 - X1 - X1^2)*(4*X3^2 + 2*X1*X3^2 - 2*X2*X5 - 4*X1*X2*X5 - 
+ 
+        X1^2*X2*X5))/(X1*(2 + X1)*(4 - 4*X1^2 - X1^3)*X2) + 
+ 
+   ((1 - X1 - X1^2)*X4*(X3*X4 - X2*X6)*X7)/
+ 
+    ((4 - 4*X1^2 - X1^3)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 20
+updating 2 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 20
+updating 6 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+updating 20 out of 20
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 52047
+solve3 i = 24
+solving for cC24
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 99; factored. length 11.
+collecting 11 terms.
+#1#2#3#4#5#6#7#8#9#10#11solution = cC24 -> 
+ 
+  (cC25*X1)/(4 - X1 - X1^2) + (cC27*X1)/(4 - X1 - X1^2) - 
+ 
+   (cC38*X2)/(4 - X1 - X1^2) - (cC40*X2)/(4 - X1 - X1^2) + 
+ 
+   (2*cC37*X2)/(X1*(4 - X1 - X1^2)) - 
+ 
+   (cC34*(1 - X1)*(2 + X1)*X2)/(X1*(4 - X1 - X1^2)) + 
+ 
+   (cC39*(2 - X1)*X3)/(X1*(4 - X1 - X1^2)) + 
+ 
+   (cC41*(2 - X1)*X3)/(X1*(4 - X1 - X1^2)) - 
+ 
+   (cC42*(2 - X1)*(1 + X1)*X3)/(X1*(4 - X1 - X1^2)) - 
+ 
+   (cC35*(1 - X1)*(2 + X1)*X3)/(X1*(4 - X1 - X1^2)) - 
+ 
+   (cC43*(1 - X1)*X5)/(4 - X1 - X1^2) + 
+ 
+   ((1 - X1)*X7*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*(4 - X1 - X1^2)*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 19
+updating 3 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 19
+updating 5 out of 19
+updating 6 out of 19
+updating 7 out of 19
+updating 8 out of 19
+updating 9 out of 19
+updating 10 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 19
+updating 13 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+updating 19 out of 19
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 59069
+solve3 i = 25
+solving for cC25
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 101; factored. length 11.
+collecting 11 terms.
+#1#2#3#4#5#6#7#8#9#10#11solution = cC25 -> 
+ 
+  (cC27*X1)/(4 - 2*X1 - X1^2) - (cC40*X2)/(4 - 2*X1 - X1^2) - 
+ 
+   (cC34*(1 - X1)*X2)/((2 - X1)*(4 - 2*X1 - X1^2)) - 
+ 
+   (cC37*(1 - X1)*X2)/((2 - X1)*(4 - 2*X1 - X1^2)) + 
+ 
+   (cC38*(4 - 3*X1)*X2)/((2 - X1)*X1*(4 - 2*X1 - X1^2)) - 
+ 
+   (cC33*(1 - X1)*(4 - X1 - X1^2)*X2)/((2 - X1)*X1*(4 - 2*X1 - X1^2)) + 
+ 
+   (2*cC42*(1 - X1)*X3)/(X1*(4 - 2*X1 - X1^2)) + 
+ 
+   (cC39*(2 - X1)*X3)/(X1*(4 - 2*X1 - X1^2)) - 
+ 
+   (cC35*(1 - X1)*(2 + X1)*X3)/(X1*(4 - 2*X1 - X1^2)) - 
+ 
+   (cC41*(2 - X1^2)*X3)/(X1*(4 - 2*X1 - X1^2)) - 
+ 
+   (cC43*(1 - X1)*X5)/(4 - 2*X1 - X1^2) + 
+ 
+   ((1 - X1)*X7*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*(4 - 2*X1 - X1^2)*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 18
+updating 2 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 18
+updating 4 out of 18
+updating 5 out of 18
+updating 6 out of 18
+updating 7 out of 18
+updating 8 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 18
+updating 12 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+updating 18 out of 18
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 57856
+solve3 i = 26
+solving for cC26
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 33; factored. length 16.
+collecting 16 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15#16solution = cC26 -> 
+ 
+  (cC32*X2)/(X1*(4 + X1)) + (cC36*X2)/(X1*(4 + X1)) - 
+ 
+   (2*cC29*X2)/(X1*(2 + X1)*(4 + X1)) - 
+ 
+   (cC30*(2 + 4*X1 + X1^2)*X2)/(X1*(2 + X1)*(4 + X1)) + 
+ 
+   (2*cC40*X3)/(X1*(4 + X1)) + (cC33*X3)/((2 + X1)*(4 + X1)) + 
+ 
+   (cC37*X3)/((2 + X1)*(4 + X1)) - (cC31*(2 + X1)*X3)/(X1*(4 + X1)) - 
+ 
+   (cC34*(3 + X1)*X3)/((2 + X1)*(4 + X1)) - 
+ 
+   (cC38*(3 + X1)*X3)/((2 + X1)*(4 + X1)) - (cC27*X3)/X2 - 
+ 
+   (cC43*X3*X5)/((4 + X1)*X2) - 
+ 
+   (cC35*(2*X3^2 + X1*X3^2 - X2*X5))/(X1*(4 + X1)*X2) - 
+ 
+   (cC39*(2*X3^2 + X1*X3^2 - X2*X5))/(X1*(4 + X1)*X2) + 
+ 
+   (2*cC41*(2*X3^2 + X1*X3^2 - X2*X5))/(X1*(2 + X1)*(4 + X1)*X2) + 
+ 
+   (cC42*(4*X3^2 + 2*X1*X3^2 - 2*X2*X5 - 4*X1*X2*X5 - X1^2*X2*X5))/
+ 
+    (X1*(2 + X1)*(4 + X1)*X2) + 
+ 
+   (X4*(X3*X4 - X2*X6)*X7)/((4 + X1)*X2*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 17
+updating 3 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+updating 17 out of 17
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 32330
+solve3 i = 27
+solving for cC27
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 92; factored. length 11.
+collecting 11 terms.
+#1#2#3#4#5#6#7#8#9#10#11solution = cC27 -> 
+ 
+  -((cC33*X2)/((2 - X1)*(4 + X1))) - (cC34*X2)/((2 - X1)*(4 + X1)) - 
+ 
+   (cC37*X2)/((2 - X1)*(4 + X1)) - (cC38*X2)/((2 - X1)*(4 + X1)) + 
+ 
+   (4*cC40*X2)/((2 - X1)*X1*(4 + X1)) - 
+ 
+   (cC31*(4 - 2*X1 - X1^2)*X2)/((2 - X1)*X1*(4 + X1)) + 
+ 
+   (2*cC41*X3)/(X1*(4 + X1)) + (2*cC42*X3)/(X1*(4 + X1)) - 
+ 
+   (cC35*(2 + X1)*X3)/(X1*(4 + X1)) - (cC39*(2 + X1)*X3)/(X1*(4 + X1)) - 
+ 
+   (cC43*X5)/(4 + X1) + (X7*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 
+ 
+        2*X2*X3*X4*X6 + 2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - 
+ 
+        X2*X3^2*X7 + X2^2*X5*X7))/((2 - X1)*(4 + X1)*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 16
+updating 2 out of 16
+updating 3 out of 16
+updating 4 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 16
+updating 6 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 16
+updating 10 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+updating 16 out of 16
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 15709
+solve3 i = 28
+solving for cC28
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 127; factored. length 15.
+collecting 15 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14#15solution = cC28 -> 
+ 
+  -((cC29*X3)/X2) - (cC30*X3)/X2 - (cC32*X3)/X2 - (cC36*X3)/X2 + 
+ 
+   (cC35*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((1 - X1)*X2^3) + 
+ 
+   (cC39*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((1 - X1)*X2^3) + 
+ 
+   (cC41*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((1 - X1)*X2^3) + 
+ 
+   (cC42*X3*(2*X3^2 + X1*X3^2 - 3*X2*X5))/((1 - X1)*X2^3) + 
+ 
+   (cC31*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC33*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC34*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC37*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC38*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC40*(X1*X3^2 - X2*X5))/((1 - X1)*X2^2) + 
+ 
+   (cC43*(8*X3^4 + 6*X1*X3^4 + X1^2*X3^4 - 12*X2*X3^2*X5 - 6*X1*X2*X3^2*X5 + 
+ 
+        3*X2^2*X5^2))/((1 - X1^2)*X2^4) - 
+ 
+   (8*X4^4 + 6*X1*X4^4 + X1^2*X4^4 - 12*X2*X4^2*X7 - 6*X1*X2*X4^2*X7 + 
+ 
+      3*X2^2*X7^2)/((1 - X1^2)*X2^4)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+updating 15 out of 15
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 15017
+solve3 i = 29
+solving for cC29
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 64; factored. length 14.
+collecting 14 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13#14solution = cC29 -> 
+ 
+  (2*cC30)/(6 - 2*X1 - X1^2) + (2*cC32)/(6 - 2*X1 - X1^2) + 
+ 
+   (2*cC36)/(6 - 2*X1 - X1^2) + (4*cC34*X3)/((6 - 2*X1 - X1^2)*X2) + 
+ 
+   (4*cC38*X3)/((6 - 2*X1 - X1^2)*X2) + (4*cC40*X3)/((6 - 2*X1 - X1^2)*X2) - 
+ 
+   (cC31*(4 - 2*X1 - X1^2)*X3)/((6 - 2*X1 - X1^2)*X2) - 
+ 
+   (cC33*(4 - 2*X1 - X1^2)*X3)/((6 - 2*X1 - X1^2)*X2) - 
+ 
+   (cC37*(4 - 2*X1 - X1^2)*X3)/((6 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC43*X1*(2 + X1)*X3*(4*X3^2 + X1*X3^2 - 3*X2*X5))/
+ 
+    ((1 + X1)*(6 - 2*X1 - X1^2)*X2^3) + 
+ 
+   (6*cC42*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*(6 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC35*(2 - 2*X1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(6 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC39*(2 - 2*X1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(6 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC41*(2 - 2*X1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(6 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (X1*(2 + X1)*X4*(X3*X4 - X2*X6)*(4*X4^2 + X1*X4^2 - 3*X2*X7))/
+ 
+    ((1 + X1)*(6 - 2*X1 - X1^2)*X2^3*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+updating 14 out of 14
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 25785
+solve3 i = 30
+solving for cC30
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 64; factored. length 13.
+collecting 13 terms.
+#1#2#3#4#5#6#7#8#9#10#11#12#13solution = cC30 -> 
+ 
+  (2*cC32)/(4 - 2*X1 - X1^2) + (2*cC36)/(4 - 2*X1 - X1^2) - (cC31*X3)/X2 + 
+ 
+   (2*cC33*X3)/((4 - 2*X1 - X1^2)*X2) + (2*cC37*X3)/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (4*cC40*X3)/((4 - 2*X1 - X1^2)*X2) - 
+ 
+   (cC34*(2 - 2*X1 - X1^2)*X3)/((4 - 2*X1 - X1^2)*X2) - 
+ 
+   (cC38*(2 - 2*X1 - X1^2)*X3)/((4 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC43*X1*(2 + X1)*X3*(4*X3^2 + X1*X3^2 - 3*X2*X5))/
+ 
+    ((1 + X1)*(4 - 2*X1 - X1^2)*X2^3) + 
+ 
+   (4*cC41*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*(4 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC42*X1*(2 + X1)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(4 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC35*(2 - 2*X1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(4 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (cC39*(2 - 2*X1 - X1^2)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(4 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (X1*(2 + X1)*X4*(X3*X4 - X2*X6)*(4*X4^2 + X1*X4^2 - 3*X2*X7))/
+ 
+    ((1 + X1)*(4 - 2*X1 - X1^2)*X2^3*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+updating 13 out of 13
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 20400
+solve3 i = 31
+solving for cC31
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 112; factored. length 10.
+collecting 10 terms.
+#1#2#3#4#5#6#7#8#9#10solution = cC31 -> 
+ 
+  (4*cC40)/(4 - 10*X1 + X1^2 + X1^3) - (cC33*X1)/(4 - 10*X1 + X1^2 + X1^3) - 
+ 
+   (cC34*X1)/(4 - 10*X1 + X1^2 + X1^3) - 
+ 
+   (cC37*X1)/(4 - 10*X1 + X1^2 + X1^3) - 
+ 
+   (cC38*X1)/(4 - 10*X1 + X1^2 + X1^3) + 
+ 
+   (2*cC41*(2 - X1)*X3)/((4 - 10*X1 + X1^2 + X1^3)*X2) + 
+ 
+   (2*cC42*(2 - X1)*X3)/((4 - 10*X1 + X1^2 + X1^3)*X2) - 
+ 
+   (cC35*(2 - X1)*(2 - 3*X1 - X1^2)*X3)/((4 - 10*X1 + X1^2 + X1^3)*X2) - 
+ 
+   (cC39*(2 - X1)*(2 - 3*X1 - X1^2)*X3)/((4 - 10*X1 + X1^2 + X1^3)*X2) + 
+ 
+   (cC43*(2 - X1)*X1*(4*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((4 - 10*X1 + X1^2 + X1^3)*X2^2) - 
+ 
+   (X1*(4*X4^2 + X1*X4^2 - X2*X7)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((4 - 10*X1 + X1^2 + X1^3)*X2^2*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 12
+updating 2 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 12
+updating 6 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+updating 12 out of 12
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 26255
+solve3 i = 32
+solving for cC32
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 64; factored. length 11.
+collecting 11 terms.
+#1#2#3#4#5#6#7#8#9#10#11solution = cC32 -> 
+ 
+  (2*cC36)/(2 - 2*X1 - X1^2) - (cC33*X3)/X2 - (cC34*X3)/X2 + 
+ 
+   (2*cC37*X3)/((2 - 2*X1 - X1^2)*X2) + (2*cC38*X3)/((2 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC40*X1*(2 + X1)*X3)/((2 - 2*X1 - X1^2)*X2) + 
+ 
+   (cC43*X1*(2 + X1)*X3*(4*X3^2 + X1*X3^2 - 3*X2*X5))/
+ 
+    ((1 + X1)*(2 - 2*X1 - X1^2)*X2^3) - 
+ 
+   (cC35*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*X2^2) + 
+ 
+   (2*cC39*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*(2 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC41*X1*(2 + X1)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(2 - 2*X1 - X1^2)*X2^2) + 
+ 
+   (cC42*X1*(2 + X1)*(2*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((1 + X1)*(2 - 2*X1 - X1^2)*X2^2) - 
+ 
+   (X1*(2 + X1)*X4*(X3*X4 - X2*X6)*(4*X4^2 + X1*X4^2 - 3*X2*X7))/
+ 
+    ((1 + X1)*(2 - 2*X1 - X1^2)*X2^3*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+updating 11 out of 11
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 17978
+solve3 i = 33
+solving for cC33
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 112; factored. length 9.
+collecting 9 terms.
+#1#2#3#4#5#6#7#8#9solution = cC33 -> 
+ 
+  -((cC34*X1)/(4 - 9*X1 + X1^2 + X1^3)) - 
+ 
+   (cC37*X1)/(4 - 9*X1 + X1^2 + X1^3) - 
+ 
+   (cC40*(1 - X1)*(2 - X1)*X1)/((1 - 3*X1 + X1^2)*(4 - 9*X1 + X1^2 + X1^3)) + 
+ 
+   (cC38*(4 - 11*X1 + 4*X1^2))/((1 - 3*X1 + X1^2)*(4 - 9*X1 + X1^2 + X1^3)) + 
+ 
+   (2*cC42*(2 - X1)*X3)/((4 - 9*X1 + X1^2 + X1^3)*X2) - 
+ 
+   (cC35*(2 - X1)*(2 - 3*X1 - X1^2)*X3)/((4 - 9*X1 + X1^2 + X1^3)*X2) + 
+ 
+   (cC39*(2 - X1)*(2 - 5*X1 + X1^2)*X3)/
+ 
+    ((1 - 3*X1 + X1^2)*(4 - 9*X1 + X1^2 + X1^3)*X2) - 
+ 
+   (cC41*(2 - X1)*(2 - 8*X1 + 9*X1^2 - X1^4)*X3)/
+ 
+    ((1 - 3*X1 + X1^2)*(4 - 9*X1 + X1^2 + X1^3)*X2) + 
+ 
+   (cC43*(2 - X1)*X1*(4*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((4 - 9*X1 + X1^2 + X1^3)*X2^2) - 
+ 
+   (X1*(4*X4^2 + X1*X4^2 - X2*X7)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((4 - 9*X1 + X1^2 + X1^3)*X2^2*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 10
+updating 4 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+updating 10 out of 10
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 16857
+solve3 i = 34
+solving for cC34
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 115; factored. length 8.
+collecting 8 terms.
+#1#2#3#4#5#6#7#8solution = cC34 -> 
+ 
+  (2*cC37*(1 - 2*X1))/((2 - 3*X1 - X1^2)*(1 - 3*X1 + X1^2)) - 
+ 
+   (cC38*(1 - X1)*X1)/((2 - 3*X1 - X1^2)*(1 - 3*X1 + X1^2)) - 
+ 
+   (cC40*(1 - X1)*X1)/((2 - 3*X1 - X1^2)*(1 - 3*X1 + X1^2)) - (cC35*X3)/X2 + 
+ 
+   (cC39*(2 - 5*X1 + X1^2)*X3)/((2 - 3*X1 - X1^2)*(1 - 3*X1 + X1^2)*X2) + 
+ 
+   (cC41*(2 - 5*X1 + X1^2)*X3)/((2 - 3*X1 - X1^2)*(1 - 3*X1 + X1^2)*X2) - 
+ 
+   (cC42*(2 - 7*X1 + 8*X1^2 - X1^4)*X3)/
+ 
+    ((2 - 3*X1 - X1^2)*(1 - 3*X1 + X1^2)*X2) + 
+ 
+   (cC43*X1*(4*X3^2 + X1*X3^2 - X2*X5))/((2 - 3*X1 - X1^2)*X2^2) - 
+ 
+   (X1*(4*X4^2 + X1*X4^2 - X2*X7)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*(2 - 3*X1 - X1^2)*X2^2*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 9
+updating 3 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 8 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+updating 9 out of 9
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 11326
+solve3 i = 35
+solving for cC35
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 99; factored. length 4.
+#1solution = cC35 -> 
+ 
+  -((cC43*X3)/X2) + (X4*(X3*X4 - X2*X6)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - 3*X2*X4^2*X5 + 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 - X2^2*X6^2 - X1*X2^2*X6^2 - 3*X2*X3^2*X7 + 
+ 
+        3*X2^2*X5*X7))/((2 - X1)*X2*(X3^2 - X2*X5)^3)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 8
+updating 2 out of 8
+updating 3 out of 8
+updating 4 out of 8
+updating 5 out of 8
+updating 6 out of 8
+updating 7 out of 8
+updating 8 out of 8
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 11047
+solve3 i = 36
+solving for cC36
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 48; factored. length 7.
+collecting 7 terms.
+#1#2#3#4#5#6#7solution = cC36 -> 
+ 
+  -((cC37*X3)/X2) - (cC38*X3)/X2 - (cC40*X3)/X2 - 
+ 
+   (cC43*X3*(4*X3^2 + X1*X3^2 - 3*X2*X5))/((1 + X1)*X2^3) - 
+ 
+   (cC39*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*X2^2) - 
+ 
+   (cC41*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*X2^2) - 
+ 
+   (cC42*(2*X3^2 + X1*X3^2 - X2*X5))/((1 + X1)*X2^2) + 
+ 
+   (X4*(X3*X4 - X2*X6)*(4*X4^2 + X1*X4^2 - 3*X2*X7))/
+ 
+    ((1 + X1)*X2^3*(X3^2 - X2*X5))
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+updating 7 out of 7
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 5105
+solve3 i = 37
+solving for cC37
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 123; factored. length 6.
+collecting 6 terms.
+#1#2#3#4#5#6solution = cC37 -> 
+ 
+  (cC38*(1 - X1))/(5 - 10*X1 + X1^3) + (cC40*(1 - X1))/(5 - 10*X1 + X1^3) + 
+ 
+   (2*cC42*(1 - X1)*X3)/((5 - 10*X1 + X1^3)*X2) - 
+ 
+   (cC39*(4 - 9*X1 + X1^3)*X3)/((5 - 10*X1 + X1^3)*X2) - 
+ 
+   (cC41*(4 - 9*X1 + X1^3)*X3)/((5 - 10*X1 + X1^3)*X2) - 
+ 
+   (cC43*(1 - 3*X1 + X1^2)*(4*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((5 - 10*X1 + X1^3)*X2^2) + 
+ 
+   ((1 - 3*X1 + X1^2)*(4*X4^2 + X1*X4^2 - X2*X7)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*(5 - 10*X1 + X1^3)*X2^2*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 6
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 6
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 6
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 6
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 6
+ Collect with Factor 
+ Collect with Factor done ...
+updating 6 out of 6
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 5204
+solve3 i = 38
+solving for cC38
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 123; factored. length 5.
+collecting 5 terms.
+#1#2#3#4#5solution = cC38 -> 
+ 
+  (cC40*(1 - X1))/(4 - 9*X1 + X1^3) - (cC39*X3)/X2 + 
+ 
+   (cC41*(1 - X1)*X3)/((4 - 9*X1 + X1^3)*X2) - 
+ 
+   (cC42*(3 + X1)*(1 - 3*X1 + X1^2)*X3)/((4 - 9*X1 + X1^3)*X2) - 
+ 
+   (cC43*(1 - 3*X1 + X1^2)*(4*X3^2 + X1*X3^2 - X2*X5))/
+ 
+    ((4 - 9*X1 + X1^3)*X2^2) + ((1 - 3*X1 + X1^2)*(4*X4^2 + X1*X4^2 - X2*X7)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - X2*X3^2*X7 + X2^2*X5*X7)
+ 
+      )/((2 - X1)*(4 - 9*X1 + X1^3)*X2^2*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 5
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 5
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 5
+ Collect with Factor 
+ Collect with Factor done ...
+updating 4 out of 5
+ Collect with Factor 
+ Collect with Factor done ...
+updating 5 out of 5
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 3428
+solve3 i = 39
+solving for cC39
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 99; factored. length 4.
+#1solution = cC39 -> 
+ 
+  -((cC43*X3)/X2) + (X4*(X3*X4 - X2*X6)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - 3*X2*X4^2*X5 + 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 - X2^2*X6^2 - X1*X2^2*X6^2 - 3*X2*X3^2*X7 + 
+ 
+        3*X2^2*X5*X7))/((2 - X1)*X2*(X3^2 - X2*X5)^3)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 4
+updating 2 out of 4
+updating 3 out of 4
+updating 4 out of 4
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 3173
+solve3 i = 40
+solving for cC40
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 109; factored. length 3.
+collecting 3 terms.
+#1#2#3solution = cC40 -> 
+ 
+  -((cC41*X3)/X2) - (cC42*X3)/X2 - 
+ 
+   (cC43*(4*X3^2 + X1*X3^2 - X2*X5))/((3 + X1)*X2^2) + 
+ 
+   ((4*X4^2 + X1*X4^2 - X2*X7)*(2*X3^2*X4^2 - X1*X3^2*X4^2 - X2*X4^2*X5 - 
+ 
+        2*X2*X3*X4*X6 + 2*X1*X2*X3*X4*X6 + X2^2*X6^2 - X1*X2^2*X6^2 - 
+ 
+        X2*X3^2*X7 + X2^2*X5*X7))/((2 - X1)*(3 + X1)*X2^2*(X3^2 - X2*X5)^2)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 3
+ Collect with Factor 
+ Collect with Factor done ...
+updating 2 out of 3
+ Collect with Factor 
+ Collect with Factor done ...
+updating 3 out of 3
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 792
+solve3 i = 41
+solving for cC41
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 99; factored. length 4.
+#1solution = cC41 -> 
+ 
+  -((cC43*X3)/X2) + (X4*(X3*X4 - X2*X6)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - 3*X2*X4^2*X5 + 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 - X2^2*X6^2 - X1*X2^2*X6^2 - 3*X2*X3^2*X7 + 
+ 
+        3*X2^2*X5*X7))/((2 - X1)*X2*(X3^2 - X2*X5)^3)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 2
+updating 2 out of 2
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 653
+solve3 i = 42
+solving for cC42
+length 2.
+#1expanding. inhomogeneous part; LeafCount = 99; factored. length 4.
+#1solution = cC42 -> 
+ 
+  -((cC43*X3)/X2) + (X4*(X3*X4 - X2*X6)*
+ 
+      (2*X3^2*X4^2 - X1*X3^2*X4^2 - 3*X2*X4^2*X5 + 2*X2*X3*X4*X6 + 
+ 
+        2*X1*X2*X3*X4*X6 - X2^2*X6^2 - X1*X2^2*X6^2 - 3*X2*X3^2*X7 + 
+ 
+        3*X2^2*X5*X7))/((2 - X1)*X2*(X3^2 - X2*X5)^3)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+UPDATING
+updating 1 out of 1
+ Collect with Factor 
+ Collect with Factor done ...
+leafcount neq = 450
+solve3 i = 43
+solving for cC43
+length 2.
+#1solution = cC43 -> 
+ 
+  (-2*X1*X3^4*X4^4 + X1^2*X3^4*X4^4 + 6*X1*X2*X3^2*X4^4*X5 + 
+ 
+     3*X2^2*X4^4*X5^2 - 4*X1*X2*X3^3*X4^3*X6 - 4*X1^2*X2*X3^3*X4^3*X6 - 
+ 
+     12*X2^2*X3*X4^3*X5*X6 - 12*X1*X2^2*X3*X4^3*X5*X6 + 
+ 
+     12*X2^2*X3^2*X4^2*X6^2 + 18*X1*X2^2*X3^2*X4^2*X6^2 + 
+ 
+     6*X1^2*X2^2*X3^2*X4^2*X6^2 + 6*X2^3*X4^2*X5*X6^2 + 
+ 
+     6*X1*X2^3*X4^2*X5*X6^2 - 12*X2^3*X3*X4*X6^3 - 16*X1*X2^3*X3*X4*X6^3 - 
+ 
+     4*X1^2*X2^3*X3*X4*X6^3 + 3*X2^4*X6^4 + 4*X1*X2^4*X6^4 + X1^2*X2^4*X6^4 + 
+ 
+     6*X1*X2*X3^4*X4^2*X7 + 6*X2^2*X3^2*X4^2*X5*X7 - 
+ 
+     6*X1*X2^2*X3^2*X4^2*X5*X7 - 6*X2^3*X4^2*X5^2*X7 - 
+ 
+     12*X2^2*X3^3*X4*X6*X7 - 12*X1*X2^2*X3^3*X4*X6*X7 + 
+ 
+     12*X2^3*X3*X4*X5*X6*X7 + 12*X1*X2^3*X3*X4*X5*X6*X7 + 
+ 
+     6*X2^3*X3^2*X6^2*X7 + 6*X1*X2^3*X3^2*X6^2*X7 - 6*X2^4*X5*X6^2*X7 - 
+ 
+     6*X1*X2^4*X5*X6^2*X7 + 3*X2^2*X3^4*X7^2 - 6*X2^3*X3^2*X5*X7^2 + 
+ 
+     3*X2^4*X5^2*X7^2)/((-2 + X1)*X1*(-X3^2 + X2*X5)^4)
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+ Collect with Factor 
+ Collect with Factor done ...
+solve3 done 331191784
+SOLVE3 Bytecount258280
+after solu substitution 331. MB ; time used 1.288 min
+{76.590124, Null}
+
+In[4]:= 

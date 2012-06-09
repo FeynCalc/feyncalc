@@ -27,23 +27,23 @@ Begin["`Private`"];
    
 MakeContext[ Collect2, Combine,Expanding, Factor2,
              FinalSubstitutions,
-             Factoring, Isolate, IsolateNames, IsolateSplit,
+             Factoring, FreeQ2, Isolate, IsolateNames, IsolateSplit,
              Select1,Solve2
            ];
 
-Options[Solve3] = {Factoring -> False, FinalSubstitutions -> {}};
+Options[Solve3] = {Factoring -> False, FinalSubstitutions -> {}, ParallelMap -> False};
 
 Solve3[a_/;Head[a]=!=List, b__] := Solve3[{a}, b];
 
-Solve3[eqq_List, cli_List, ops___Rule] := Block[
-{factor , finsub,newel, lneq, neqh,isol,plh,
- neq, newneq, col, coll, new, res = {}},
+Solve3[eqq_List, clii_List, ops___Rule] := Block[
+{cli = clii, factor , finsub,newel, lneq, neqh,isol,
+ neq, newneq, col,  new, res = {}, parmap, pmap, starttime = AbsoluteTime[]},
+
 factor = Factoring /. {ops} /. Options[Solve3];
 finsub = FinalSubstitutions/. {ops} /. Options[Solve3];
+parmap = ParallelMap /. {ops} /. Options[Solve3];
 (* High - school algorithm *)
-(*
-col[x_] := Collect2[x, cli, Factoring -> factor];
-*)
+
 
 isol[xy__] := If[Length[{xy}] < 10,
                 isol[xy] = Isolate[Plus[xy],cli,IsolateNames->LL,
@@ -52,98 +52,31 @@ isol[xy__] := If[Length[{xy}] < 10,
                                    IsolateSplit->Infinity]
                ];
 
+With[{cli = cli},
+col = ( If[$VeryVerbose > 1, Print[" Collect with Factor "]];
+   Collect[#, cli, Factor] ) &];
 
-(* for cancelling *)
-plh[a_,b_] := a+b;
-plh[a_,b_,c_] := a+b+c;
-plh[a_,b_,c_,d_] := a+b+c+d;
-col[x_] := (*col[x] =*) Block[{ccit,rr, lin, null1, null2, iii, lccit,fah},
-If[LeafCount[x]<100000 && $VersionNumber >2.2, 
-If[$VeryVerbose > 1, Print[" Collect with Factor2 "]];
-   ccit = Collect[x, cli, Factor2];
-If[$VeryVerbose > 1, Print[" Collect with Factor2 done ..."]];
-   ccit
-   ,
-   ccit = Collect2[x, cli, Factoring -> False];
-If[$VeryVerbose > 2, Print["collect done"]];
-                  lin = Select1[ccit + null1 + null2,cli
-                               ] /. null1 -> 0 /. null2 -> 0;
-                  ccit = ccit - lin;
-If[factor === False,
-   lin = Expand[lin],
-If[$VeryVerbose > 2, Print["factoring lin ",LeafCount[lin]]];
-(*If[$Version === 2.2, lin>>"lin.s", Global`LIN=lin];*)
-If[Head[lin] === Plus,
-(*
-                  lin = Map[Factor, lin];
-*)
-                  lin = Map[Factor2[#,Method->4]&, lin];
-
-If[$VeryVerbose > 2, Print["factoring lin1 done"]];
+If[TrueQ[parmap], 
+	pmap = ParallelMap;
+ 	DistributeDefinitions[ cli, col, FreeQ2, $VeryVerbose,
+HighEnergyPhysics`FeynCalc`FreeQ2`FreeQ2 ] , pmap = Map
   ];
+
+
 (*
-                  lin = Factor[lin];
-*)
-                  lin = Factor2[lin,Method->4];
-If[$VeryVerbose > 2, Print["factoring lin2 nearly done"]];
-                  lin = Factor2[Cancel[lin /. Plus->plh]];
-If[$VeryVerbose > 2, Print["factoring lin2 done"]];
-(*
-                  lin = Map[Factor, lin//Expand//Combine];
-If[$VeryVerbose > 2, Print["factoring lin done"]];
-*)
+If[$VeryVerbose > 0,
+Print["PAREVAL = ", ParallelEvaluate[{$VeryVerbose, col}]];
 ];
-fah[yy_] := If[FreeQ[yy,HoldForm], yy,
-               Factor2[FixedPoint[ReleaseHold,yy] ,Method->4]
-(*
-               Factor[FixedPoint[ReleaseHold,yy]]
 *)
-              ];
-                  If[Head[ccit] =!= Plus,
-(*
-                     rr = Factor2[ccit],
-*)
-                     rr = Factor[ccit],
-              rr = 0;
-             lccit = Length[ccit];
-             hccit = Hold@@{ccit};
-            For[iii = 1, iii <= lccit, iii++,
-If[$VeryVerbose > 1, Print["iii out of ",lccit," = ",iii]];
-(*
-                hccitiii = Factor2[(hccit[[1,iii]]/.Plus->isol),Method->4];
-*)
-(*
-                hccitiii = Factor[(hccit[[1,iii]]/.Plus->isol)];
-*)
-                hccitiii = Factor2[hccit[[1,iii]], Method -> 4];
-If[$VeryVerbose > 2,Print["first hccitiii Factor2 done"]];
-                hccitiii = Cancel[hccitiii /. Plus->plh];
-If[$VeryVerbose > 2,Print["hccitiii Cancel done"]];
-(*
-                hccitii = Factor2[hccitiii, Method -> 4];
-If[$VeryVerbose > 2,Print["second hccitiii Factor2 done"]];
-*)
-If[factor =!= False,
-   rr = rr + fah[Factor2[ReleaseHold[hccitiii],Method->4]],
-   rr = rr + Expand[ReleaseHold[hccitiii]]
-  ];
-(*
-                rr = rr + hccitiii
-*)
-               ];
-               ]; 
-rr = (rr+lin)//.plh->Plus;
-If[$VeryVerbose > 2, Print["exiting col with ",rr//InputForm]];
-rr]];
 
 specsimp[{}, b_Rule] := {b};
-specsimp[a_List, b_Rule] :=
-  Map[(#[[1]] -> (coll[#[[2]] /. b]))&, a] /. coll -> col;
+specsimp[a_List, b_Rule] := pmap[(#[[1]] -> (col[#[[2]] /. b]))&, a];
 
 neq = eqq /. Equal[a_, b_] :> (a-b);
 For[i = 1, i <= Length[eqq], i++, 
 If[!FreeQ[neq, cli[[i]]],
-    If[ $VeryVerbose > 0, Print["solve3 i = ",i] ];
+    If[ $VeryVerbose > 0, Print["solve3 i = ",i,"    time used : ", 
+				Round[(starttime-AbsoluteTime[])/60], " minutes" ] ];
     While[FreeQ[neq1 = (*col[*)neq[[1]] /. res(*]*), cli[[i]]],
 If[ $VeryVerbose > 1, Print["rotating ", i]];
           neq = RotateLeft[neq = Prepend[Rest[neq],neq1]]
@@ -158,7 +91,11 @@ new >>"new.s";
 (*
     new = new[[1]] -> Collect2[new[[2]], cli, Factoring -> col];
 *)
+(*
+CHANGE 20100110
     new = new[[1]] -> Collect2[new[[2]], cli, Factoring -> Factor2];
+*)
+    new = new[[1]] -> Collect[new[[2]], cli, Factor];
     If[!FreeQ2[new[[2]], cli],
        new = new[[1]] -> Map[Cancel, new[[2]]];
       ];
@@ -169,37 +106,38 @@ If[i>1,
    res = {new}
   ];
   If[i<Length[eqq],
-     If[ $VeryVerbose > 1, Print["UPDATING"] ];
-If[N[MemoryInUse[]/10^6,2] > 40,
-     Share[];
-     If[ $VeryVerbose > 0, Print["MemoryInUse after Share = ", 
-                                 N[MemoryInUse[]/10^6,2], " MB"] 
-       ];
-  ];
+     If[ $VeryVerbose > 0, Print["UPDATING ", LeafCount @ neq] ];
      newneq = {};
+(*
      neqh = Hold@@{neq};
      lneq = Length[neq];
+*)
+If[AbsoluteTime[] > Global`$quit , Quit[]];
+
+With[{col=col, neqres = neq /. res},
+neq = pmap[ col, neqres ];
+];
+
+(*
      For[iij = 1, iij <= lneq, iij++,
          If[ $VeryVerbose > 1, 
              Print["updating " , iij , " out of ",Length[neq]] 
            ];
-         newel = neqh[[1, iij]]/.res;
+         newel = neqh[[1, iij]] /. res;
          If[newel === neqh[[1, iij]],
             AppendTo[newneq, newel],
-(*
-            AppendTo[newneq, Expand[newel]]
-*)
             AppendTo[newneq, col[newel]]
            ];
          Clear[newel];
         ];
      neq = newneq;
-If[$VeryVerbose>1,Print["leafcount neq = ", LeafCount[neq]]];
+*)
+If[$VeryVerbose > 0, Print["leafcount neq = ", LeafCount[neq]]];
      ];
   ];
    ];
 res = res /. finsub;
-If[factor =!= False, res = Map[(#[[1]] -> factor[#[[2]]])&, res]];
+If[factor =!= False, res = pmap[(#[[1]] -> factor[#[[2]]])&, res]];
 res
 ];
 

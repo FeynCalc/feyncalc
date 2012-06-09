@@ -8,7 +8,9 @@
 
 starttime = AbsoluteTime[];
 
+$LoadFeynArts=True; 
 $LoadPhi=False; 
+$LoadTARCER=False; 
 <<HighEnergyPhysics`FeynCalc`; 
 Comment=WriteString["stdout",##]&;
 

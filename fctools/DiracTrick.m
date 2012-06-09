@@ -18,8 +18,7 @@ MyBeginPackage["HighEnergyPhysics`fctools`DiracTrick`",
 
 DiracTrick::"usage"=
 "DiracTrick[exp] contracts gamma matrices with each other and
-performs several simplifications (no expansion!!,
-use DiracSimplify for this).";
+performs several simplifications (no expansion, use DiracSimplify for this).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -49,13 +48,16 @@ coneins[x_]  := x /. Pair -> sCO /. sCO -> Pair;
 
 (*By definition:*)
 DiracTrick[]=1;
-(* for time-saving reasons: here NO fci *)
-DiracTrick[y___,z_/;Head[z]=!=Rule] :=
 
+(* for time-saving reasons: here NO fci *)
+(* RM20120113: added FreeQ, and changed y___ to y__ ..., this fixed 
+http://www.feyncalc.org/forum/0677.html
+*)
+DiracTrick[y__ /; FreeQ[{y}, Rule],z_/;Head[z]=!=Rule] :=
      drS[y, z]/.drS -> ds //.dr->drCOs /.
                        drCO -> ds/.  dr->ds/.dr->DOT(*]*);
 
-DiracTrick[x_,r___Rule] :=
+DiracTrick[x_,r___?OptionQ] :=(
   If[(expanding /. {r} /. Options[DiracTrick]) === True,
      Expand[ fci[x] (*/. Dot -> DOT*) /. (*Pair -> sCO /.*)
                   DOT -> drS /.drS -> ds //. dr -> drCOs/.
@@ -65,9 +67,13 @@ DiracTrick[x_,r___Rule] :=
                   DOT -> drS /.drS -> ds //. dr -> drCOs/.
                   drCO -> ds /.  dr -> ds /. dr -> DOT (*/.
                   sCO -> Pair*)
-    ];
+    ]
+);
 
+(*
+	RM20120113: commented out, not clear why this should be needed
 SetAttributes[DiracTrick, Flat];
+*)
 ds[x__] := memset[ds[x], dr[x]] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
             (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) =!= True;
                                 (*Condition added 19/1-2003 by F.Orellana to not have

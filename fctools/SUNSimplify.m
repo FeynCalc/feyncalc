@@ -286,7 +286,9 @@ Options[SUNSimplify] = {
 SUNSimplify[x_, opts___Rule] := FixedPoint[sunsimp[#, opts]&, x, 6] /.
                                 dtr -> DiracTrace;
 
-sunsimp[x_, opts___Rule] := MemSet[sunsimp[x, opts],
+(* RM20120113: uncomment MemSet, so different Option settings done with SetOptions do have an effect *)
+
+sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
            Block[{af, temp = fcis[x], sft, sunf, suntraceoption,surule,
                   diractr,doot,expan,sunsi, jac, expanding, 
                                        factoring,ntemp,dotT,
@@ -375,6 +377,9 @@ If[$VeryVerbose >2, Print["using commutator in SUNSimplify"]];
          I DOT[sunt[yy] , sunt[xx]] - I DOT[sunt[xx] , sunt[yy]] /; noint[zz]
          }  /. dotT[] -> 1 //. {dotT[a___,1,b___] :> dotT[a,b]} /. 
                dotT[] -> 1 /. dotT -> DOT;
+
+Global`SUNSI=sunsi;
+
 If[sft === True, 
    sunfL[a__] := SUNF[a, Explicit -> True];
    sundL[a__] := SUND[a, Explicit -> True]
@@ -516,9 +521,14 @@ If[factoring === True, temp = factor2[temp, factorfull -> False]];
  ](*thatsthemainIf*);
 
 If[ af === True, 
-    If[LeafCount[temp] < 442, temp = factor2[temp, factorfull -> False]];
+    If[LeafCount[temp] < 1442(* RM20120113: exteneded the limit *), 
+       temp = factor2[temp /. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)}, factorfull -> False]];
     temp = temp /. (1-SUNN^2) -> (-CF 2 CA) /. 
-            SUNN -> CA /. (-1 + CA^2)->(2 CA CF) /.
+            SUNN -> CA /. (-1 + CA^2)->(2 CA CF);
+    temp = temp /. 
+(* RM20120113 added this in response to http://www.feyncalc.org/forum/0682.html, which is not a real bug, but well *)
+       ( ((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF));
+   temp = temp /. 
             (1-CA^2) -> (-2 CA CF) /.
             (1/CA) -> (CA - 2 CF) /. 
             ((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /. 
@@ -530,7 +540,7 @@ If[tfac =!= 1, temp = temp tfac];
 temp = temp /. SUNDeltaContract -> SUNDelta;
 If[!FreeQ[temp, CA], temp = temp /. (CA (CA-2 CF)) -> 1];
 temp = DotSimplify[temp, Expanding -> False];
-temp]];
+temp](*] *);
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

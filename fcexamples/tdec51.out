@@ -1,0 +1,115 @@
+Mathematica 7.0 for Linux x86 (64-bit)
+Copyright 1988-2009 Wolfram Research, Inc.
+
+In[1]:= Loading FeynCalc from /home/rolf/fccvs/fc7/HighEnergyPhysics
+FeynCalc 7.0.0 Type ?FeynCalc for help or visit http://www.feyncalc.org/
+$PrePrint is set to FeynCalcForm. Use FI and FC to change the display format.
+
+In[2]:= 
+In[2]:= symms
+4
+collecting in solvesymms 0
+collecting in solvesymms 0terms
+time for collect in solvesymms = 0.
+contracting
+il = 1
+il = 2
+il = 3
+il = 4
+Length of eqli = 4
+solving 4
+Solve3 | 
+ 
+LaunchKernels::launch: Launching 8 kernels...
+PAREVAL = {{2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }, 
+ 
+  {2, (If[$VeryVerbose > 1, Print[ Collect with Factor ]]; 
+ 
+      Collect[#1, {cC1, cC2, cC3, cC4}, Factor]) & }}
+solve3 i = 1    time used : 0 minutes
+solving for cC1
+Solve2 | 
+ length 3.
+#1UPDATING 55
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+leafcount neq = 169
+solve3 i = 2    time used : 0 minutes
+solving for cC2
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+UPDATING 113
+From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+leafcount neq = 255
+solve3 i = 3    time used : 0 minutes
+solving for cC3
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+UPDATING 128
+From KernelObject[8, local]:
+ Collect with Factor 
+
+leafcount neq = 304
+solve3 i = 4    time used : 0 minutes
+solving for cC4
+length 4.
+#1From KernelObject[8, local]:
+ Collect with Factor 
+
+From KernelObject[7, local]:
+ Collect with Factor 
+
+From KernelObject[6, local]:
+ Collect with Factor 
+
+solve3 done 21194192
+SOLVE3 Bytecount18960
+after solu substitution 21.2 MB ; time used 0.87 s
+{9.372170, Null}
+
+In[3]:= 

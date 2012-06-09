@@ -1,8 +1,14 @@
 (* :Title: FeynCalc *)
+If[$VersionNumber>5.3, 
+Remove[PartialD];
+(*Off[PartialD::shdw];
+Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
+*)
+];
 
-(* :Version: 5.1.0 *)
+(* :Version: 8.1.0 *)
 
-(* :Authors: Rolf Mertig  (rolf@mertig.com)
+(* :Authors: Rolf Mertig  (rolfm@gluonvision.com)
              Frederik Orellana (fjob@cabocomm.dk)
 *)
 
@@ -11,7 +17,7 @@
 (* :Terms of use: GPL, see
                   http://www.feyncalc.org/licence.txt *)
 
-(* :Mathematica Version 4.0 or higher, compatible with Mahematica 5.0 *)
+(* :Mathematica Version 6.0, 7.0 and 8.0 *)
 
 (* :History:
 
@@ -24,6 +30,15 @@
                    by Frederik Orellana, fjob@cabocomm.dk 
    Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization,
    Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
+   Version 6.0.0: 2007, bug fixes, updates for mma 6.0 and new FeynArts
+   Version 7.0.0: 2009/2010, bug fixes, updates for mma 7.0 and new FeynArts
+   Version 8.0.0: 2010,  minimal updates for Mathematica 8.0, added a patched o FeynArts 3.4
+   Version 8.0.0: 2011,  fixed some bugs reported by ibedir
+   Version 8.0.0beta3: 2011,  fixed a bug in OneLoop, changed Uncontract, TID
+   Version 8.0.1: 2011,  fixed a problem in DiracTrace
+   Version 8.0.2: 2011,  fixed more problems, working on documentation
+   Version 8.0.3: 2011,  added ClearAttributes[FeynAmpDenominator,Orderless], added Momentum in DiracSimplify
+   Version 8.1.0: 2012,  fixed DiracTrick, improved SUNSimplify, DiracEquation, fixed Hyperlinks in FeynCalc8.nb, fixed Tarcer .mx loading
 *)
 
 
@@ -32,6 +47,7 @@
 (* Init stuff *)
 (* ************************************************************************ *)
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
+(* this is fine *)
 
 System`MyBeginPackage[a_,b___] :=
 ((*What is this? F.Orellana.23/2-2003*)(*NoPrint["MB ", a];*)
@@ -40,7 +56,7 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "5.1.0";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "8.1.0";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
@@ -86,7 +102,9 @@ Block[{fcallpaths,fcallsymbols,rl,fcv,fcd},
   fcallsymbols = (Join[StringJoin[#, "*"] & /@ #, StringJoin[#, "*`*"] & /@ #,
             StringJoin[#, "*`*`*"] & /@ #]) &[fcallpaths];
 
+Off[ClearAll::wrsym];
   ClearAll /@ fcallsymbols;
+On[ClearAll::wrsym];
 
   Unprotect[$Packages];
   $Packages = Complement[$Packages, fcallpaths];
@@ -185,7 +203,7 @@ If[($VersionNumber < 3.0),
    Quit[]; Exit[];
   ];
 
-If[$VersionNumber>3.4,
+If[3.4 < $VersionNumber < 7, (* RM change 1/4/2009*)
    (*And, well, System`MonomialList is gone;
     we construct a replacement for use in Collect3.
     F.Orellana, 17/9-2002*)
@@ -211,7 +229,8 @@ If[StringQ[ Global`$LoadTARCER ],
    HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
    {Global`$LoadTARCER},
 HighEnergyPhysics`FeynCalc`Private`tarcerfilenames =
-FileNames["tarcer*.mx",ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
+FileNames["tarcer"<> StringReplace[$System,{"-"->"","Microsoft"->"","("->"",")"->""," "->""}] <>"*.mx",
+    ToFileName[{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory,
 "Tarcer"}],IgnoreCase->True]
 ];
 
@@ -416,7 +435,7 @@ of LorentzIndex is displayed as an index.";
 $MemoryAvailable::"usage"=
 "$MemoryAvailable is  a global variable which is set to an integer \
 n, where n is the available amount of main memory in MB. \
-The default is 128. It should be increased if possible. \
+The default is 1024. It should be increased if possible. \
 The higher $MemoryAvailable can be, the more intermediate \
 steps do not have to be repeated by FeynCalc.";
 
@@ -534,11 +553,20 @@ $FCT  = False;
 $Larin   = False;
 $LimitTo4 = True;
 $LorentzIndices = False;
-$MemoryAvailable = 256;
+(* RM20120113: changed this *)
+$MemoryAvailable = 1024;
 $OPEWard = False;
 If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 
+(* RM20110818 
+setting $West=False is broken. 
+See
+http://www.feyncalc.org/forum/0656.html
+Need to fix it.*)
+If[!ValueQ[$West],
 $West = True;
+Protect[$West]
+];
 
 DOT = Dot;
 
@@ -846,19 +874,21 @@ ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
 
 If[Global`$FeynCalcStartupMessages =!= False ,
 If[$Notebooks===True,
+	With[{fcrefnb = FileNameJoin[ {$FeynCalcDirectory, "Documentation", "English", "FeynCalcRef8.nb"}]},
    FeynCalcCellPrint[Cell[TextData[{StyleBox[ "FeynCalc" , FontWeight-> "Bold"], " ",
     $FeynCalcVersion,
-     " For help, type ?FeynCalc, use the built-in ",
-     ButtonBox["help system",
-       ButtonFunction -> (FrontEndExecute[FrontEnd`HelpBrowserLookup["AddOns", #]] &),
+     " For help, type ?FeynCalc, open ",
+     ButtonBox["FeynCalcRef8.nb", 
+       ButtonFunction :> NotebookOpen[fcrefnb],
        ButtonData:>{ "Short Overview", "intro"},
        ButtonStyle->"AddOnsLink",
-       ButtonNote->"Open the help browser"],
+       ButtonNote->"Open FeynCalcRef8.nb"],
      " or visit ",
      ButtonBox["www.feyncalc.org", ButtonData:>{
       URL[ "http://www.feyncalc.org/"], None},
      ButtonStyle->"Hyperlink", ButtonNote->"http://www.feyncalc.org/"]}
     ],"Text"]]
+	]
 ,
   WriteString["stdout", "FeynCalc " <> $FeynCalcVersion ,
               " Type ?FeynCalc for help or visit http://www.feyncalc.org/", "\n"];
@@ -874,7 +904,8 @@ If[$Notebooks===True && (!StringMatchQ[$Version, "*1996*"]),
 If[!StringMatchQ[$Version, "*1996*"] &&
    (!StringMatchQ[feversion,"*3.0.0*"]) &&
    ($Notebooks === True),
-SetOptions[$FrontEnd, "CommonDefaultFormatTypes"->{"Output" -> TraditionalForm}]
+(* RM: change 2010-01-10 *)
+SetOptions[$FrontEndSession, "CommonDefaultFormatTypes"->{"Output" -> TraditionalForm}]
 ,
 Null
 
@@ -910,14 +941,19 @@ savethisdir=Directory[];
 SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
 (*Default*)
+(* CHANGE2007RM *)
+If[Global`$LoadFeynArts =!= False,
 If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]=!=True,
    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic];
 
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
+Off[General::cdir];
   search = FileNames["FeynArts.m",StringDrop[#,-9]&/@FileNames["FeynArts",$Path,3],3] /.
      {s_String,___} :> DirectoryName[s];
+On[General::cdir];
 
   If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
+];
 ];
 
 (*Set defaults here, not in the config file*)
@@ -990,6 +1026,8 @@ If[$Notebooks===True,
      ],
 (* This only removes FeynArts formatting rules which interfer with FeynCalc formatting rules *)
 Remove[HighEnergyPhysics`FeynArts`SetForm];
+(* RM20110830: added ClearAttributes[FeynAmpDenominator, Orderless];  *)
+ClearAttributes[FeynAmpDenominator, Orderless]; 
   ];
 ];
 
@@ -1013,6 +1051,10 @@ Tr/:Options[Tr]:=Options[HighEnergyPhysics`fctools`TR`TR];
 
    Protect@@{ToExpression["Tr"]};
   ];
+
+(* Added by Rolf Mertig 20101209*)
+If[$VersionNumer>=7., Unprotect[Graph]; Remove[Graph]];
+
 
 SetDirectory[savethisdir];
 Clear[savethisdir];

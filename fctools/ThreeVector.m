@@ -24,7 +24,8 @@ Begin["`Private`"];
    
 
 ThreeVector /: MakeBoxes[ThreeVector[p_], TraditionalForm] :=
- MakeBoxes[Global`OverVector[p], TraditionalForm];
+(* RM: changed Global`OverVector to OverVector 20100119 *)
+ MakeBoxes[OverVector[p], TraditionalForm];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

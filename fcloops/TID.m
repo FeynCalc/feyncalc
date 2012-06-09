@@ -121,13 +121,15 @@ If[FeynAmpDenominatorCombine /. {opt} /. Options[TID],
 
 If[t0 === 0, t0,
 originallistoflorentzindices = Cases[t0, LorentzIndex];
-(*
+
+
 t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred,
                 (*Added 17/9-2000, F.Orellana*) Dimension -> n] /. 
      PropagatorDenominator -> procanonical[q];
-*)
 
+(* RM20110622: Uncommented the above again and commented the below.
 t1 = t0 /.  PropagatorDenominator -> procanonical[q];
+*)
 
 If[Head[t1] =!= Plus,
    irrelevant = 0,

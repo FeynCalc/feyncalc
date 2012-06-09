@@ -39,18 +39,20 @@ TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule,
      ,
      f = ef
     ];
+  With[{tf = f},
   Which[
         at === "S",
-        SetAttributes@@{f, Orderless};
+        SetAttributes@@{tf, Orderless};
         ,
         at === "A",
-        Evaluate[f[a__LorentzIndex]] := 
+        Evaluate[tf[a__LorentzIndex]] := 
                          Condition[
-                          Signature[{a}] Apply[f, Sort[{a}]],
+                          Signature[{a}] Apply[tf, Sort[{a}]],
                            {a} =!= Sort[{a}]
                                   ]
        ];
-  f@@(Map[LorentzIndex[#, dim]&, {munu,last}])
+  tf@@(Map[LorentzIndex[#, dim]&, {munu,last}])
+     ]
                                    ];
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

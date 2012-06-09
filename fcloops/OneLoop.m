@@ -745,14 +745,6 @@ print1["oneamp = ",oneamp];
                                       ]) //smalld)
           ];
 print2["Length of neuamp = ", Length[neuamp]];
-If[MemoryInUse[]> $MemoryAvailable 10^6,
-timsh = Timing[
-Share[]
-             ][[1]];
-print2["time needed for Share = ",timsh];
-
-print1[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
-  ];
 
 If[ FreeQ[neuamp, DOT],  oneamp = neuamp,
    oneamp = Collect2[neuamp, DOT, Factoring->False];
@@ -777,15 +769,6 @@ oneamp2 = oneamp; print3["oneamp2 = ",oneamp2];
                                       ]) //smalld)
           ];
       ];
-If[MemoryInUse[]>10^7,
-timsh = Timing[
-Share[]
-             ][[1]];
-print2["time needed for Share = ",timsh];
-
-print2[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
-  ];
-
 
    oneamp = neuamp;
        
@@ -970,19 +953,30 @@ $FactorTime=  timecoll;
    print3["oneamp = ", oneamp];
    
 (* ONEAMPCHANGE : tensorintegraldecomposition *)
+(* relax this here. RM 20110622 *)
+(*
    If[!FreeQ2[oneamp, {Pair[x_,y_Plus] , DiracGamma[x_Plus,___]}],
+*)
  print1["cheCK"];
-      oneamp = DiracSimplify[oneamp]//ExpandScalarProduct
+      oneamp = DiracSimplify[oneamp]//ExpandScalarProduct;
+(*
      ];
+*)
 
 (* bug (found by Christian Bauer, 07/97) 
    fixed here for objects like eps[al,nu,si,p-q]  (can occur
    after canonicalization of denominators; need then to expand the eps;
    this is done with EpsEvaluate)
 *)
-   If[!FreeQ[oneamp, Eps], oneamp = Collect2[EpsEvaluate[oneamp],q]];
+   If[!FreeQ[oneamp, Eps], oneamp = Collect2[EpsEvaluate[oneamp],q],
+(* add this here for safety, since otherwise tensint might now work correctly. RM 20110622*)
+      oneamp = Collect2[oneamp,q]
+    ];
 
-(*Global`ONET[4]=oneamp;*)
+(*XXX*)
+(*
+Global`ONET[4]=oneamp;
+*)
 
 sirlinsave = HighEnergyPhysics`fctools`DiracSimplify`Private`$sirlin;
 HighEnergyPhysics`fctools`DiracSimplify`Private`$sirlin = False;
@@ -1279,14 +1273,6 @@ arglist//Union ]
 print2[" "];
 print2[" * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *"];
 print2[" "];
-If[MemoryInUse[]>10^7,
-timsh = Timing[
-Share[]
-             ][[1]];
-print1["time needed for Share = ",timsh];
-         
-print1[N[ MaxMemoryUsed[]/10^6,2 ], "MB used"];
-  ];
   ] (* endIf IsolateNames *);
 
 (* ----------------------------------------------------------------- *)
@@ -1846,10 +1832,6 @@ print1["acdc = ",acdc];
         ];
        print1[" # ",jj," out of ",lnw,"  ", newpa[[2]] ];
                 (* Collect wrt. all the scalar integrals *)
-If[MemoryInUse[] > 10 10^6, 
-   print1["share "]; tis = Timing[Share[]][[1]];
-   print1["time needed for share = ",tis];
-  ];
 
 print1["Shallow  ", Shallow[newpa[[1]]]];
 np = newpa[[1]];
@@ -2320,7 +2302,6 @@ print2["pv = ",pv//FeynCalcForm];
 print2["uvcheck ",pv//FeynCalcForm];
            ];
         ];
-(*XXX*)
       If[ $LimitTo4 === True,
           addre = gra+( Expand[
                          ExpandScalarProduct[ pv to4dim[ exp/.di->4 ] ]

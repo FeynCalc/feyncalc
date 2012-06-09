@@ -210,6 +210,10 @@ If[Head[t6] =!= Plus, t6 = t6 + null1+null2];
 nt6 = 0;
 lnt6 = Length[t6];
 
+(*
+Global`T6=t6;
+*)
+
 Do[If[$VeryVerbose > 0, 
    Print["TIDPART ",ij," out of ",lnt6," le = ",Length[nt6]]];
    nt6 = nt6 + TID[t6[[ij]], q, ScalarProductCancel -> spc,

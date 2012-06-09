@@ -22,6 +22,8 @@
 running Mathematica 5.0
 *)
 
+$LoadFeynArts=True;
+$LoadTARCER=True;
 <<HighEnergyPhysics`FeynCalc` 
 
 starttime = AbsoluteTime[];
@@ -31,6 +33,7 @@ inserts = InsertFields[CreateTopologies[1, 1 -> 1,
       ExcludeTopologies -> Tadpoles], {V[5]} -> {V[5]}, 
      InsertionLevel -> {Classes}, 
     GenericModel -> "FCQCDLorentz", Model -> "FCQCD"];
+QuarkMass = 0;
 
 (* we omit the usual factor 1/(2 Pi)^D and use p for the external momentum *)
 (* the convention in the FCQCDLorentz.gen model file is that p1 is the incoming
@@ -44,11 +47,11 @@ amps = CreateFeynAmp[inserts, Truncated -> True, PreFactor -> 1] /. {p1 :> p,
 t1 = SUNSimplify[Explicit[Plus@@amps, Gauge -> 1-xi,Dimension->D]];
 (* after the SU(N) algebra now the Lorentz and Dirac algebra: *)
 t2 = Contract[t1/.DiracTrace -> TR];
-(* TID does the tensor integral decomposition and ToTFi together with TarcerRecurse 
+(* TID does the tensor integral decomposition and ToTFI together with TarcerRecurse 
    reduces all integrals to a B0 type integral (TBI in Tarcer's notation)
 *)
 t3 = (Collect2[
-      ToTFi[Collect2[TID[t2,q],q], q, p]//TarcerRecurse, {CA,Tf}])/.a_Plus:>Collect2[a,xi]/;FreeQ[a, CA];
+      ToTFI[Collect2[TID[t2,q],q], q, p]//TarcerRecurse, {CA,Tf}])/.a_Plus:>Collect2[a,xi]/;FreeQ[a, CA];
 
 WriteString["stdout", "The result is ",t3//InputForm];
 

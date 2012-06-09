@@ -1,5 +1,7 @@
       timingstart = AbsoluteTime[];
+$LoadTARCER=$LoadPhi=False;
 <<HighEnergyPhysics`FeynCalc`;
+(*$VeryVerbose = 2;*)
 (* See also: http://forums.wolfram.com/mathgroup/archive/2003/Oct/msg00516.html *)
 eqs={M0 == (1 - f1 - f2 - f3 - f4 - f5 - f6 - f7 - f8 - f9 -
         f10 - f11 - f12 - f13 - f14 - f15 - f16)*m0,
@@ -21,7 +23,7 @@ eqs={M0 == (1 - f1 - f2 - f3 - f4 - f5 - f6 - f7 - f8 - f9 -
      M15 == f12*m3 + f13*m2 + f14*m1 + f15*m0,
      M16 == f13*m3 + f14*m2 + f15*m1 + f16*m0} /. a_ ==b_ :> (a-b);
 tim = Timing[ sol=Solve3[ eqs,
-{f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16}]; ];
+{f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16}, ParallelMap -> True ]; ];
 Print["time used for the calculation = ",tim];
 timcheck = Timing[ Together/@(eqs /. sol)];
 Print["time used for checking the result = ",timcheck];

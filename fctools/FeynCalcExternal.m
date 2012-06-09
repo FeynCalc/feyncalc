@@ -150,8 +150,11 @@ doc[b:diracmatrix[_]..] := Apply[diracmatrix, {b}/. diracmatrix->Identity];
 doc[b:diracslash[_]..]  := Apply[diracslash,  {b}/. diracslash->Identity];
 *)
 
-metricmul[a_ b_] := metrictensor[a,b];
-scalarmul[a_ b_] := scalarproduct[a,b];
+metricmul[a_ b_,dim__] := metrictensor[a,b,dim];
+metricmul[a_, b_,dim___] := metrictensor[a,b,dim];
+
+scalarmul[a_ b_,dim__] := scalarproduct[a,b,dim];
+scalarmul[a_, b_,dim___] := scalarproduct[a,b,dim];
 
 (*dimension d_ stuff below added by F.Orellana 19/9-2000
   to allow other dimension symbols than D*)

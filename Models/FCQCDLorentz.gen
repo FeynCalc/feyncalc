@@ -10,10 +10,12 @@ KinematicIndices[ V ] = {Lorentz, Gluon};
 KinematicIndices[ U ] = {Gluon}
 PropagatorType[ V ] = Cycles;
 
-Appearance[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
+TheLabel[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
 
+(*
 FourVector/: -FourVector[ mom_, mu_ ] := FourVector[Expand[-mom], mu];
 FourVector[ 0, _ ] = 0
+*)
 
 M$GenericPropagators = {
 

@@ -1,70 +1,89 @@
-(************** Content-type: application/mathematica **************
-                     CreatedBy='Mathematica 5.0'
+(* Content-type: application/mathematica *)
 
-                    Mathematica-Compatible Notebook
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
 
-This notebook can be used with any Mathematica-compatible
-application, such as Mathematica, MathReader or Publicon. The data
-for the notebook starts with the line containing stars above.
+(* CreatedBy='Mathematica 7.0' *)
 
-To get the notebook into a Mathematica-compatible application, do
-one of the following:
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     84355,       2851]
+NotebookOptionsPosition[     78841,       2664]
+NotebookOutlinePosition[     80114,       2705]
+CellTagsIndexPosition[     79902,       2697]
+WindowFrame->Normal*)
 
-* Save the data starting with the line of stars above into a file
-  with a name ending in .nb, then open the file inside the
-  application;
-
-* Copy the data starting with the line of stars above to the
-  clipboard, then use the Paste menu command inside the application.
-
-Data for notebooks contains only printable 7-bit ASCII and can be
-sent directly in email or through ftp in text mode.  Newlines can be
-CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
-
-NOTE: If you modify the data for this notebook not in a Mathematica-
-compatible application, you must delete the line below containing
-the word CacheID, otherwise Mathematica-compatible applications may
-try to use invalid cache data.
-
-For more information on notebooks and Mathematica-compatible 
-applications, contact Wolfram Research:
-  web: http://www.wolfram.com
-  email: info@wolfram.com
-  phone: +1-217-398-0700 (U.S.)
-
-Notebook reader applications are available free of charge from 
-Wolfram Research.
-*******************************************************************)
-
-(*CacheID: 232*)
-
-
-(*NotebookFileLineBreakTest
-NotebookFileLineBreakTest*)
-(*NotebookOptionsPosition[     88366,       2313]*)
-(*NotebookOutlinePosition[     89960,       2361]*)
-(*  CellTagsIndexPosition[     89742,       2352]*)
-(*WindowFrame->Normal*)
-
-
-
+(* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
 Cell[TextData[{
-  "Doing a difficult with ",
-  StyleBox["Mathematica",
-    FontSlant->"Italic"],
-  " and FeynCalc tools"
+ "Doing a difficult with ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " and FeynCalc tools"
 }], "Section"],
 
 Cell[BoxData[
-    \(<< HighEnergyPhysics`FeynCalc`\)], "Input"],
+ RowBox[{"<<", "HighEnergyPhysics`FeynCalc`"}]], "Input"],
+
+Cell["Loading FeynCalc from /home/rolfm/HighEnergyPhysics", "Text",
+ CellMargins->{{Inherited, Inherited}, {1, 0}},
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellChangeTimes->{3.501051682708992*^9}],
+
+Cell[TextData[{
+ StyleBox["FeynCalc",
+  FontWeight->"Bold"],
+ " ",
+ "8.0.0.beta1",
+ " For help, type ?FeynCalc, use the built-in ",
+ ButtonBox["help system",
+  BaseStyle->"AddOnsLink",
+  ButtonFunction:>(FrontEndExecute[
+    FrontEnd`HelpBrowserLookup["AddOns", #]]& ),
+  ButtonData:>{"Short Overview", "intro"},
+  ButtonNote->"Open the help browser"],
+ " or visit ",
+ ButtonBox["www.feyncalc.org",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://www.feyncalc.org/"], None},
+  ButtonNote->"http://www.feyncalc.org/"]
+}], "Text",
+ CellMargins->{{Inherited, Inherited}, {1, 0}},
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellChangeTimes->{3.5010516834985323`*^9}],
+
+Cell[TextData[{
+ "Loading FeynArts, see ",
+ ButtonBox["www.feynarts.de",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://www.feynarts.de/"], None},
+  ButtonNote->"http://www.feynarts.de/"],
+ " for documentation"
+}], "Text",
+ CellMargins->{{Inherited, Inherited}, {1, 0}},
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellChangeTimes->{3.501051685471167*^9}],
+
+Cell["FeynArts 3.4 patched for use with FeynCalc", "Text",
+ CellMargins->{{Inherited, Inherited}, {1, 0}},
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellChangeTimes->{3.501051685570508*^9}],
 
 Cell["\<\
-Performing multidimensional Feynman paramater integrals is \
-sometimes a nontrivial task. This is augmented by the absence of algorithms \
-for certain integrals with end point singularities.
+Performing multidimensional Feynman paramater integrals is sometimes a \
+nontrivial task. This is augmented by the absence of algorithms for certain \
+integrals with end point singularities.
 The following integral shows up in research related to massless 4-partice \
 phase space and was solved together with Prof. T. Gehrmann from the \
 University of Z\[UDoubleDot]rich.
@@ -75,592 +94,638 @@ What one is after is the expansion up to order Epsilon.\
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(integral = 
-      HoldForm[\[Integral]\_0\%1\(\[Integral]\_0\%1\(\[Integral]\_0\%1\(\( \
-z\^\(\(-1\) - Epsilon\)\ \((1 - z)\)\^\(\(-2\)\ Epsilon\)\ u\^\(\(-Epsilon\) \
-- 1\)\ t\^\(\(-1\) - Epsilon\)\ \((1 - t)\)\^\(\(-1\) - Epsilon\)\)\/\(1 + \
-\(u\ z\ t\)\/\(1 - t\)\)\) \[DifferentialD]z \[DifferentialD]u \
-\[DifferentialD]t\)\)]\)], "Input"],
+ RowBox[{"integral", "=", 
+  RowBox[{"HoldForm", "[", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", "1"], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", "1"], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["z", 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "Epsilon"}]], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "-", "z"}], ")"}], 
+          RowBox[{
+           RowBox[{"-", "2"}], " ", "Epsilon"}]], " ", 
+         SuperscriptBox["u", 
+          RowBox[{
+           RowBox[{"-", "Epsilon"}], "-", "1"}]], " ", 
+         SuperscriptBox["t", 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "Epsilon"}]], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "-", "t"}], ")"}], 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "Epsilon"}]]}], 
+        RowBox[{"1", "+", 
+         FractionBox[
+          RowBox[{"u", " ", "z", " ", "t"}], 
+          RowBox[{"1", "-", "t"}]]}]], 
+       RowBox[{"\[DifferentialD]", "z"}], 
+       RowBox[{"\[DifferentialD]", "u"}], 
+       RowBox[{"\[DifferentialD]", "t"}]}]}]}]}], "]"}]}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      TagBox[
-        RowBox[{\(\[Integral]\_0\%1\), 
-          RowBox[{\(\[Integral]\_0\%1\), 
-            RowBox[{\(\[Integral]\_0\%1\), 
-              RowBox[{
-                FractionBox[
-                  RowBox[{
-                    SuperscriptBox["z", 
-                      RowBox[{
-                        RowBox[{"-", 
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm]}], "-", "1"}]], " ", 
-                    SuperscriptBox[\((1 - z)\), 
-                      RowBox[{\(-2\), " ", 
-                        TagBox["\[CurlyEpsilon]",
-                          TraditionalForm]}]], " ", 
-                    SuperscriptBox["u", 
-                      RowBox[{
-                        RowBox[{"-", 
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm]}], "-", "1"}]], " ", 
-                    SuperscriptBox["t", 
-                      RowBox[{
-                        RowBox[{"-", 
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm]}], "-", "1"}]], " ", 
-                    SuperscriptBox[\((1 - t)\), 
-                      RowBox[{
-                        RowBox[{"-", 
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm]}], "-", 
-                        "1"}]]}], \(\(t\ u\ z\)\/\(1 - t\) + 
-                    1\)], \(\[DifferentialD]z\), \(\[DifferentialD]u\), \(\
-\[DifferentialD]t\)}]}]}]}],
-        HoldForm], TraditionalForm]], "Output"]
+ FormBox[
+  TagBox[
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", "1"], 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", "1"], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["z", 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", 
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm]}]], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "-", "z"}], ")"}], 
+          RowBox[{
+           RowBox[{"-", "2"}], " ", 
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm]}]], " ", 
+         SuperscriptBox["u", 
+          RowBox[{
+           RowBox[{"-", 
+            TagBox["\[CurlyEpsilon]",
+             TraditionalForm]}], "-", "1"}]], " ", 
+         SuperscriptBox["t", 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", 
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm]}]], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "-", "t"}], ")"}], 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", 
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm]}]]}], 
+        RowBox[{"1", "+", 
+         FractionBox[
+          RowBox[{"u", " ", "z", " ", "t"}], 
+          RowBox[{"1", "-", "t"}]]}]], 
+       RowBox[{"\[DifferentialD]", "z"}], 
+       RowBox[{"\[DifferentialD]", "u"}], 
+       RowBox[{"\[DifferentialD]", "t"}]}]}]}]}],
+   HoldForm], TraditionalForm]], "Output",
+ CellChangeTimes->{3.4729012563772497`*^9, 3.501051687534317*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(integrand = integral[\([1, 1]\)]\)], "Input"],
+ RowBox[{"integrand", "=", 
+  RowBox[{"integral", "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "1"}], "]"}], "]"}]}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      FractionBox[
-        RowBox[{
-          SuperscriptBox[\((1 - t)\), 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", "1"}]], " ", 
-          SuperscriptBox["t", 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", "1"}]], " ", 
-          SuperscriptBox["u", 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", "1"}]], " ", 
-          SuperscriptBox[\((1 - z)\), 
-            RowBox[{\(-2\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}]], " ", 
-          SuperscriptBox["z", 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", 
-              "1"}]]}], \(\(t\ u\ z\)\/\(1 - t\) + 1\)], 
-      TraditionalForm]], "Output"]
+ FormBox[
+  FractionBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "t"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]], " ", 
+    SuperscriptBox["t", 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]], " ", 
+    SuperscriptBox["u", 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "2"}], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["z", 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]]}], 
+   RowBox[{
+    FractionBox[
+     RowBox[{"t", " ", "u", " ", "z"}], 
+     RowBox[{"1", "-", "t"}]], "+", "1"}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901259565872*^9, 3.5010516879258633`*^9}]
 }, Open  ]],
 
 Cell[TextData[{
-  "We set various assumptions which will help ",
-  StyleBox["Mathematica's ",
-    FontSlant->"Italic"],
-  "Integrate",
-  StyleBox[" ",
-    FontSlant->"Italic"],
-  "function",
-  StyleBox[".",
-    FontSlant->"Italic"]
+ "We set various assumptions which will help ",
+ StyleBox["Mathematica's ",
+  FontSlant->"Italic"],
+ "Integrate",
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ "function",
+ StyleBox[".",
+  FontSlant->"Italic"]
 }], "Text"],
 
 Cell[BoxData[
-    \(\(SetOptions[Integrate, 
-        Assumptions \[Rule] {Re[Epsilon] < 0 && \ 
-              0 \[LessEqual] u \[LessEqual] 1 && \ 
-              0 \[LessEqual] z \[LessEqual] 1 && Im[u] \[Equal] 0 && \ 
-              Re[1/\((u\ z - 1)\)] + 1 < 0}];\)\)], "Input"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(tint = \[Integral]\_0\%1 integrand \[DifferentialD]t\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      FractionBox[
-        RowBox[{
-          SuperscriptBox["4", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]], " ", \(\@\[Pi]\), " ", 
-          SuperscriptBox[\((1 - z)\), 
-            RowBox[{\(-2\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}]], " ", 
-          SuperscriptBox[\((u\ z)\), 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", "1"}]], " ", 
-          RowBox[{"\[CapitalGamma]", "(", 
-            RowBox[{"-", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], ")"}], " ", 
-          TagBox[
-            TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["2",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["1",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox["1",
-                            Hypergeometric2F1,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            Hypergeometric2F1,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      Hypergeometric2F1,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        TagBox[
-                          RowBox[{"1", "-", 
-                            RowBox[{"2", " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}]}],
-                          Hypergeometric2F1,
-                          Editable->True],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      Hypergeometric2F1,
-                      Editable->False], ";", 
-                    TagBox[\(1 - u\ z\),
-                      Hypergeometric2F1,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            Hypergeometric2F1]}], 
-        RowBox[{"\[CapitalGamma]", "(", 
-          RowBox[{\(1\/2\), "-", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}], ")"}]], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(tint2 = PowerSimplify[tint]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      FractionBox[
-        RowBox[{
-          SuperscriptBox["4", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]], " ", \(\@\[Pi]\), " ", 
-          SuperscriptBox["u", 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", "1"}]], " ", 
-          SuperscriptBox[\((1 - z)\), 
-            RowBox[{\(-2\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}]], " ", 
-          SuperscriptBox["z", 
-            RowBox[{
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], "-", "1"}]], " ", 
-          RowBox[{"\[CapitalGamma]", "(", 
-            RowBox[{"-", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], ")"}], " ", 
-          TagBox[
-            TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["2",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["1",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox["1",
-                            Hypergeometric2F1,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            Hypergeometric2F1,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      Hypergeometric2F1,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        TagBox[
-                          RowBox[{"1", "-", 
-                            RowBox[{"2", " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}]}],
-                          Hypergeometric2F1,
-                          Editable->True],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      Hypergeometric2F1,
-                      Editable->False], ";", 
-                    TagBox[\(1 - u\ z\),
-                      Hypergeometric2F1,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            Hypergeometric2F1]}], 
-        RowBox[{"\[CapitalGamma]", "(", 
-          RowBox[{\(1\/2\), "-", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}], ")"}]], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(\(?PowerSimplify\)\)], "Input"],
-
-Cell[BoxData[
-    \("PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and (y-x)^n to \
-(-1)^n (x-y)^n; thus assuming that the exponent is an integer (even if it is \
-symbolic). Furthermore (-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> \
-(-1)^m and (-1)^(n_Integer?EvenQ m) -> 1 and (-1)^(n_Integer?OddQ m) -> \
-(-1)^m and (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m."\)], "Print",
-  CellTags->"Info3277485402-1628141"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(uint = Expand[\[Integral]\_0\%1 tint2 \[DifferentialD]u]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"Integrate", ",", 
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{"{", 
       RowBox[{
-        FractionBox[
-          RowBox[{"\[Pi]", " ", 
-            SuperscriptBox[\((1 - z)\), 
-              RowBox[{\(-2\), " ", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}]], " ", 
-            RowBox[{
-              SubscriptBox[
-                InterpretationBox["\[CapitalBeta]",
-                  Beta,
-                  Editable->False,
-                  Selectable->False], "z"], "(", 
-              RowBox[{
-                RowBox[{\(-2\), " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ",", 
-                RowBox[{
-                  RowBox[{"2", " ", 
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm]}], "+", "1"}]}], ")"}], " ", 
-            RowBox[{"csc", "(", 
-              RowBox[{
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm], " ", "\[Pi]"}], ")"}]}], "z"], "-", 
-        FractionBox[
-          RowBox[{
-            SuperscriptBox["2", 
-              RowBox[{
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "+", "1"}]], " ", \(\@\[Pi]\), " ", 
-            SuperscriptBox[\((1 - z)\), 
-              RowBox[{\(-2\), " ", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}]], " ", 
-            SuperscriptBox["z", 
-              RowBox[{
-                RowBox[{"-", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "-", "1"}]], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}], " ", 
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["3",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["2",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox["1",
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm], "+", "1"}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["z",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ]}], 
-          RowBox[{
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{\(1\/2\), "-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell["\<\
-Replace the incomplete  Beta-function in terms of a hypergeometric \
-function:\
-\>", "Text"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(nint = 
-      uint /. \[InvisibleSpace]Beta[z, p_, 
-            q_] \[RuleDelayed] \(z\^p\ Hypergeometric2F1[p, 1 - q, p + 1, \
-z]\)\/p\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{
-        RowBox[{"-", 
-          FractionBox[
-            RowBox[{"\[Pi]", " ", 
-              SuperscriptBox[\((1 - z)\), 
-                RowBox[{\(-2\), " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]], " ", 
-              RowBox[{"csc", "(", 
-                RowBox[{
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
-              TagBox[
-                TagBox[
-                  RowBox[{
-                    RowBox[{
-                      SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                        FormBox["2",
-                          "TraditionalForm"]], 
-                      SubscriptBox["F", 
-                        FormBox["1",
-                          "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                    RowBox[{"(", 
-                      RowBox[{
-                        TagBox[
-                          TagBox[
-                            RowBox[{
-                              TagBox[
-                                RowBox[{\(-2\), " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}],
-                                Hypergeometric2F1,
-                                Editable->True], ",", 
-                              TagBox[
-                                RowBox[{\(-2\), " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}],
-                                Hypergeometric2F1,
-                                Editable->True]}],
-                            InterpretTemplate[ {
-                              SlotSequence[ 1]}&]],
-                          Hypergeometric2F1,
-                          Editable->False], ";", 
-                        TagBox[
-                          TagBox[
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"2", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              Hypergeometric2F1,
-                              Editable->True],
-                            InterpretTemplate[ {
-                              SlotSequence[ 1]}&]],
-                          Hypergeometric2F1,
-                          Editable->False], ";", 
-                        TagBox["z",
-                          Hypergeometric2F1,
-                          Editable->True]}], ")"}]}],
-                  InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                  Editable->False],
-                Hypergeometric2F1], " ", 
-              SuperscriptBox["z", 
-                RowBox[{
-                  RowBox[{\(-2\), " ", 
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm]}], "-", "1"}]]}], 
-            RowBox[{"2", " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}]]}], "-", 
-        FractionBox[
-          RowBox[{
-            SuperscriptBox["2", 
-              RowBox[{
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "+", "1"}]], " ", \(\@\[Pi]\), " ", 
-            SuperscriptBox[\((1 - z)\), 
-              RowBox[{\(-2\), " ", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}]], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}], " ", 
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["3",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["2",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox["1",
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm], "+", "1"}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["z",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ], " ", 
-            SuperscriptBox["z", 
-              RowBox[{
-                RowBox[{"-", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "-", "1"}]]}], 
-          RowBox[{
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{\(1\/2\), "-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(\(\(\ \)\(Hypergeometric2F1[p, 1 - q, p + 1, z] // 
-      FunctionExpand\)\)\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{"p", " ", \(z\^\(-p\)\), " ", 
+       RowBox[{
+        RowBox[{"Re", "[", "Epsilon", "]"}], "<", "0"}], "&&", " ", 
+       RowBox[{"0", "\[LessEqual]", "u", "\[LessEqual]", "1"}], "&&", " ", 
+       RowBox[{"0", "\[LessEqual]", "z", "\[LessEqual]", "1"}], "&&", 
+       RowBox[{
+        RowBox[{"Im", "[", "u", "]"}], "\[Equal]", "0"}], "&&", " ", 
+       RowBox[{
         RowBox[{
-          SubscriptBox[
-            InterpretationBox["\[CapitalBeta]",
-              Beta,
-              Editable->False,
-              Selectable->False], "z"], "(", \(p, q\), ")"}]}], 
-      TraditionalForm]], "Output"]
+         RowBox[{"Re", "[", 
+          RowBox[{"1", "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"u", " ", "z"}], "-", "1"}], ")"}]}], "]"}], "+", "1"}], 
+        "<", "0"}]}], "}"}]}]}], "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tint", "=", 
+  RowBox[{
+   SubsuperscriptBox["\[Integral]", "0", "1"], 
+   RowBox[{"integrand", 
+    RowBox[{"\[DifferentialD]", "t"}]}]}]}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[Pi]", " ", 
+    SuperscriptBox["16", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]], " ", 
+    TemplateBox[{RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+     "Gamma"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "2"}], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"u", " ", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]}], "+", 
+      RowBox[{
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"u", " ", "z"}], "-", "1"}], ")"}], " ", 
+       TemplateBox[{"1",RowBox[{"1", "-", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}],RowBox[{"2", "-", 
+           RowBox[{"2", " ", 
+             TagBox["\[CurlyEpsilon]", TraditionalForm]}]}],
+         RowBox[{"1", "-", 
+           RowBox[{"u", " ", "z"}]}]},
+        "Hypergeometric2F1"]}], "+", "1"}], ")"}]}], 
+   RowBox[{
+    TemplateBox[{RowBox[{
+        FractionBox["1", "2"], "-", 
+        TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{
+        FractionBox["3", "2"], "-", 
+        TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+     "Gamma"]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901279188428*^9, 3.501051705364524*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tint2", "=", 
+  RowBox[{"PowerSimplify", "[", "tint", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[Pi]", " ", 
+    SuperscriptBox["16", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]], " ", 
+    TemplateBox[{RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+     "Gamma"], " ", 
+    SuperscriptBox["u", 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "2"}], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["z", 
+     RowBox[{
+      RowBox[{"-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], "-", "1"}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]}], "+", 
+      RowBox[{
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"u", " ", "z"}], "-", "1"}], ")"}], " ", 
+       TemplateBox[{"1",RowBox[{"1", "-", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}],RowBox[{"2", "-", 
+           RowBox[{"2", " ", 
+             TagBox["\[CurlyEpsilon]", TraditionalForm]}]}],
+         RowBox[{"1", "-", 
+           RowBox[{"u", " ", "z"}]}]},
+        "Hypergeometric2F1"]}], "+", "1"}], ")"}]}], 
+   RowBox[{
+    TemplateBox[{RowBox[{
+        FractionBox["1", "2"], "-", 
+        TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{
+        FractionBox["3", "2"], "-", 
+        TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+     "Gamma"]}]], TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901290744051*^9, 3.501051705819482*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "PowerSimplify"}]], "Input"],
+
+Cell[BoxData[
+ StyleBox["\<\"PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a \
+and\\n(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is\\nan \
+integer (even if it is symbolic). Furthermore\\n(-1)^(a+n) and I^(a+n) are \
+expanded and (I)^(2 m) -> (-1)^m and\\n(-1)^(n_Integer?EvenQ m) -> 1 \
+and\\n(-1)^(n_Integer?OddQ m) -> (-1)^m and\\n(-1)^(-n) -> (-1)^n and Exp[I m \
+Pi] -> (-1)^m.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.501051706188442*^9},
+ CellTags->"Info3501055305-2742430"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"uint", "=", 
+  RowBox[{"PowerSimplify", "@", 
+   RowBox[{"Collect2", "[", 
+    RowBox[{
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{"tint2", 
+       RowBox[{"\[DifferentialD]", "u"}]}]}], " ", ",", " ", "z"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.47290137110581*^9, 3.472901407159111*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"\[Pi]", " ", 
+      SuperscriptBox["16", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]], " ", 
+      TemplateBox[{RowBox[{"2", "-", 
+          RowBox[{"2", " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          RowBox[{"-", "2"}], " ", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", "z"}], ")"}], 
+       RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]], " ", 
+      SuperscriptBox["z", 
+       RowBox[{"-", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]], " ", 
+      TagBox[
+       TagBox[
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[InvisiblePrefixScriptBase]", "3"], 
+          SubscriptBox["F", "2"]}], "\[InvisibleApplication]", 
+         RowBox[{"(", 
+          RowBox[{
+           TagBox[
+            TagBox[
+             RowBox[{
+              TagBox["1",
+               HypergeometricPFQ,
+               Editable->True,
+               Selectable->True], ",", 
+              TagBox[
+               RowBox[{"1", "-", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}],
+               HypergeometricPFQ,
+               Editable->True,
+               Selectable->True], ",", 
+              TagBox[
+               RowBox[{"1", "-", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}],
+               HypergeometricPFQ,
+               Editable->True,
+               Selectable->True]}],
+             InterpretTemplate[{
+               SlotSequence[1]}& ]],
+            HypergeometricPFQ,
+            Editable->False,
+            Selectable->False], ";", 
+           TagBox[
+            TagBox[
+             RowBox[{
+              TagBox[
+               RowBox[{"2", "-", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}],
+               HypergeometricPFQ,
+               Editable->True,
+               Selectable->True], ",", 
+              TagBox[
+               RowBox[{
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm], "+", "1"}],
+               HypergeometricPFQ,
+               Editable->True,
+               Selectable->True]}],
+             InterpretTemplate[{
+               SlotSequence[1]}& ]],
+            HypergeometricPFQ,
+            Editable->False,
+            Selectable->False], ";", 
+           TagBox["z",
+            HypergeometricPFQ,
+            Editable->True,
+            Selectable->True]}], ")"}]}],
+        InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+        Editable->False,
+        Selectable->False],
+       HypergeometricPFQ]}], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], ")"}], " ", 
+      TemplateBox[{RowBox[{"1", "-", 
+          RowBox[{"2", " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          FractionBox["1", "2"], "-", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          FractionBox["3", "2"], "-", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"]}]]}], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[Pi]", "2"], " ", 
+     SuperscriptBox["16", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]], " ", 
+     RowBox[{"csc", "(", 
+      RowBox[{"\[Pi]", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], ")"}], " ", 
+     TemplateBox[{RowBox[{"2", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         RowBox[{"-", "2"}], " ", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "-", "z"}], ")"}], 
+      RowBox[{
+       RowBox[{"-", "2"}], " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["z", 
+      RowBox[{
+       RowBox[{"-", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "-", "1"}]], " ", 
+     TemplateBox[{"1",RowBox[{"-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}],RowBox[{
+         TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}],"z"},
+      "Hypergeometric2F1"]}], 
+    RowBox[{
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     TemplateBox[{RowBox[{"1", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["1", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{"1", "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["3", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     TemplateBox[{TagBox["\[CurlyEpsilon]", TraditionalForm]},
+      "Gamma"]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[Pi]", "2"], " ", 
+     SuperscriptBox["16", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]], " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     RowBox[{"csc", "(", 
+      RowBox[{"\[Pi]", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], ")"}], " ", 
+     TemplateBox[{RowBox[{"1", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         RowBox[{"-", "2"}], " ", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "-", "z"}], ")"}], 
+      RowBox[{
+       RowBox[{"-", "2"}], " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["z", 
+      RowBox[{
+       RowBox[{"-", "2"}], " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]], " ", 
+     TemplateBox[{RowBox[{"1", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}],RowBox[{"1", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}],RowBox[{"2", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}],"z"},
+      "Hypergeometric2F1"]}], 
+    RowBox[{
+     TemplateBox[{RowBox[{
+         FractionBox["1", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      TemplateBox[{RowBox[{"1", "-", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], "2"], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["3", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"]}]], "+", 
+   FractionBox[
+    RowBox[{"\[Pi]", " ", 
+     SuperscriptBox["16", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "-", "1"}], ")"}], " ", 
+     TemplateBox[{RowBox[{
+         RowBox[{"-", "2"}], " ", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "-", "z"}], ")"}], 
+      RowBox[{
+       RowBox[{"-", "2"}], " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["z", 
+      RowBox[{
+       RowBox[{"-", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "-", "1"}]]}], 
+    RowBox[{
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["1", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["3", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"]}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[Pi]", "2"], " ", 
+     SuperscriptBox["16", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]], " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     RowBox[{"csc", "(", 
+      RowBox[{"\[Pi]", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], ")"}], " ", 
+     TemplateBox[{RowBox[{"2", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      TemplateBox[{RowBox[{
+          RowBox[{"-", "2"}], " ", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], "2"], " ", 
+     SuperscriptBox["z", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"2", " ", 
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm]}]}], "-", "1"}]]}], 
+    RowBox[{
+     TemplateBox[{RowBox[{"1", "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["1", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      TemplateBox[{RowBox[{"1", "-", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], "2"], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["3", "2"], "-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"]}]]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.47290133017855*^9, {3.472901387426004*^9, 3.472901415333036*^9}, 
+   3.5010517371577177`*^9}]
 }, Open  ]],
 
 Cell["Perform the z - integration:", "Text"],
@@ -668,1895 +733,2128 @@ Cell["Perform the z - integration:", "Text"],
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(rint = \[Integral]\_0\%1 nint \[DifferentialD]z\)], "Input"],
+ RowBox[{"rint", "=", 
+  RowBox[{"Collect2", "[", 
+   RowBox[{
+    RowBox[{"FunctionExpand", "@", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{"uint", 
+       RowBox[{"\[DifferentialD]", "z"}]}]}]}], " ", ",", " ", 
+    "HypergeometricPFQ"}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.472901462939465*^9, {3.4729015170057487`*^9, 3.472901518302103*^9}, {
+   3.472901625298542*^9, 3.4729016484911137`*^9}, {3.472901681866604*^9, 
+   3.472901693902978*^9}}],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{
-        FractionBox[
-          RowBox[{"\[Pi]", " ", 
-            RowBox[{"csc", "(", 
-              RowBox[{
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
-            SuperscriptBox[
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{\(-2\), " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ")"}], "2"], " ", 
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["3",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["2",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"4", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"2", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["1",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ]}], 
-          RowBox[{"\[CapitalGamma]", "(", 
-            RowBox[{"1", "-", 
-              RowBox[{"4", " ", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}]}], ")"}]], "-", 
-        FractionBox[
-          RowBox[{
-            SuperscriptBox["2", 
-              RowBox[{
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "+", "1"}]], " ", \(\@\[Pi]\), " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"1", "-", 
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]}], ")"}], " ", 
-            SuperscriptBox[
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{"-", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ")"}], "2"], " ", 
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["4",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["3",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox["1",
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"3", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm], "+", "1"}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["1",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ]}], 
-          RowBox[{
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"1", "-", 
-                RowBox[{"3", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]}], ")"}], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{\(1\/2\), "-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(hy = Cases2[rint, HypergeometricPFQ]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     TemplateBox[{RowBox[{"-", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     SuperscriptBox[
+      TemplateBox[{RowBox[{"1", "-", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], "2"], " ", 
+     TagBox[
+      TagBox[
+       RowBox[{
         RowBox[{
+         SubscriptBox["\[InvisiblePrefixScriptBase]", "4"], 
+         SubscriptBox["F", "3"]}], "\[InvisibleApplication]", 
+        RowBox[{"(", 
+         RowBox[{
           TagBox[
-            TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["3",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["2",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"4", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"2", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox["1",
-                      HypergeometricPFQ,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            HypergeometricPFQ], ",", 
-          TagBox[
-            TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["4",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["3",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox["1",
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"3", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm], "+", "1"}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox["1",
-                      HypergeometricPFQ,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            HypergeometricPFQ]}], "}"}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(hn = HypergeometricSE[hy, \[Nu]]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
-        RowBox[{
-          FractionBox[
-            RowBox[{"2", " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm], " ", 
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{"1", "-", 
-                  RowBox[{"4", " ", 
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm]}]}], ")"}], " ", 
-              SuperscriptBox[
-                RowBox[{"\[CapitalGamma]", "(", 
-                  RowBox[{"\[Nu]", "-", 
-                    RowBox[{"2", " ", 
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm]}]}], ")"}], "2"]}], 
+           TagBox[
             RowBox[{
-              RowBox[{"(", 
-                RowBox[{
-                  RowBox[{"2", " ", 
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm]}], "-", "\[Nu]"}], ")"}], " ", 
-              SuperscriptBox[
-                RowBox[{"\[CapitalGamma]", "(", 
-                  RowBox[{\(-2\), " ", 
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm]}], ")"}], "2"], 
-              " ", \(\[CapitalGamma](\[Nu] + 1)\), " ", 
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{
-                  RowBox[{\(-4\), " ", 
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm]}], "+", "\[Nu]", "+", "1"}], ")"}]}]], 
-          ",", 
-          RowBox[{"-", 
-            FractionBox[
-              RowBox[{
+             TagBox["1",
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False,
+           Selectable->False], ";", 
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"2", "-", 
+               RowBox[{"3", " ", 
                 TagBox["\[CurlyEpsilon]",
-                  TraditionalForm], " ", "\[Pi]", " ", 
-                RowBox[{"csc", "(", 
-                  RowBox[{
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
-                RowBox[{"\[CapitalGamma]", "(", 
-                  RowBox[{"1", "-", 
-                    RowBox[{"3", " ", 
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm]}]}], ")"}], " ", 
-                SuperscriptBox[
-                  RowBox[{"\[CapitalGamma]", "(", 
-                    RowBox[{"\[Nu]", "-", 
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm]}], ")"}], "2"]}], 
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"2", "-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
               RowBox[{
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm], "-", "\[Nu]"}], ")"}], " ", 
-                SuperscriptBox[
-                  RowBox[{"\[CapitalGamma]", "(", 
-                    RowBox[{"-", 
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm]}], ")"}], "3"], " ", 
-                RowBox[{"\[CapitalGamma]", "(", 
-                  RowBox[{
-                    RowBox[{\(-3\), " ", 
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm]}], "+", "\[Nu]", "+", "1"}], ")"}], 
-                " ", 
-                RowBox[{"\[CapitalGamma]", "(", 
-                  RowBox[{
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm], "+", "\[Nu]", "+", "1"}], 
-                  ")"}]}]]}]}], "}"}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(\(?HypergeometricSE\)\)], "Input"],
-
-Cell[BoxData[
-    \("HypergeometricSE[exp, nu] expresses Hypergeometric functions by their \
-series expansion in terms of a sum (the Sum is omitted and nu, running from 0 \
-to Infinity is the summation index)."\)], "Print",
-  CellTags->"Info3277485417-1053833"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(\(FunctionExpand[\[Sum]\+\(\[Nu] = 0\)\%\[Infinity] #] &\) /@ 
-      hn\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm], "+", "1"}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False,
+           Selectable->False], ";", 
+          TagBox["1",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True]}], ")"}]}],
+       InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+       Editable->False,
+       Selectable->False],
+      HypergeometricPFQ]}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm], "-", "1"}], ")"}], " ", 
+     TemplateBox[{RowBox[{"2", "-", 
+         RowBox[{"3", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"]}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[Pi]", 
+      RowBox[{"3", "/", "2"}]], " ", 
+     SuperscriptBox["2", 
+      RowBox[{"4", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]], " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     RowBox[{"csc", "(", 
+      RowBox[{"\[Pi]", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], ")"}], " ", 
+     TemplateBox[{RowBox[{
+         RowBox[{"-", "2"}], " ", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     TagBox[
+      TagBox[
+       RowBox[{
         RowBox[{
+         SubscriptBox["\[InvisiblePrefixScriptBase]", "3"], 
+         SubscriptBox["F", "2"]}], "\[InvisibleApplication]", 
+        RowBox[{"(", 
+         RowBox[{
           TagBox[
-            TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["3",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["2",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"4", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"2", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox["1",
-                      HypergeometricPFQ,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            HypergeometricPFQ], ",", 
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"2", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"2", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"2", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False,
+           Selectable->False], ";", 
           TagBox[
-            TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["4",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["3",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox["1",
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"3", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm], "+", "1"}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox["1",
-                      HypergeometricPFQ,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            HypergeometricPFQ]}], "}"}], TraditionalForm]], "Output"]
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"2", "-", 
+               RowBox[{"4", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True], ",", 
+             TagBox[
+              RowBox[{"2", "-", 
+               RowBox[{"2", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True,
+              Selectable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False,
+           Selectable->False], ";", 
+          TagBox["1",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True]}], ")"}]}],
+       InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+       Editable->False,
+       Selectable->False],
+      HypergeometricPFQ]}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "-", "1"}], ")"}], " ", 
+     TemplateBox[{RowBox[{
+         FractionBox["3", "2"], "-", 
+         RowBox[{"2", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      TemplateBox[{RowBox[{"-", 
+          TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+       "Gamma"], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"], " ", 
+        TemplateBox[{RowBox[{
+            RowBox[{"-", "3"}], " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+         "Gamma"], " ", 
+        TemplateBox[{RowBox[{"-", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+         "Gamma"], " ", 
+        TemplateBox[{TagBox["\[CurlyEpsilon]", TraditionalForm]},
+         "Gamma"]}], "+", 
+       RowBox[{"\[Pi]", " ", 
+        RowBox[{"csc", "(", 
+         RowBox[{"\[Pi]", " ", 
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm]}], ")"}], " ", 
+        TemplateBox[{RowBox[{"1", "-", 
+            RowBox[{"3", " ", 
+              TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+         "Gamma"]}]}], ")"}]}], 
+    RowBox[{"4", " ", 
+     SuperscriptBox[
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "2"], " ", 
+     TemplateBox[{RowBox[{"1", "-", 
+         RowBox[{"3", " ", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+      "Gamma"], " ", 
+     TemplateBox[{RowBox[{
+         RowBox[{"-", "3"}], " ", 
+         TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+      "Gamma"], " ", 
+     TemplateBox[{TagBox["\[CurlyEpsilon]", TraditionalForm]},
+      "Gamma"]}]]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.47290144104503*^9, 3.472901488075706*^9, 
+  3.4729015257429667`*^9, 3.472901634811721*^9, 3.4729016679408293`*^9, 
+  3.472901706204863*^9, 3.501051749524122*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(FunctionExpand[hn /. \[Nu] \[Rule] 0]\)], "Input"],
+ RowBox[{"hy", "=", 
+  RowBox[{"Cases2", "[", 
+   RowBox[{"rint", ",", "HypergeometricPFQ"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.472901537407631*^9, 3.472901538088868*^9}, 
+   3.47290163468815*^9, {3.472901689226424*^9, 3.472901690153994*^9}}],
 
 Cell[BoxData[
-    \(TraditionalForm\`{1, 1}\)], "Output"]
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    TagBox[
+     TagBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[InvisiblePrefixScriptBase]", "3"], 
+        SubscriptBox["F", "2"]}], "\[InvisibleApplication]", 
+       RowBox[{"(", 
+        RowBox[{
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"2", "-", 
+              RowBox[{"4", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"2", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox["1",
+          HypergeometricPFQ,
+          Editable->True,
+          Selectable->True]}], ")"}]}],
+      InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+      Editable->False,
+      Selectable->False],
+     HypergeometricPFQ], ",", 
+    TagBox[
+     TagBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[InvisiblePrefixScriptBase]", "4"], 
+        SubscriptBox["F", "3"]}], "\[InvisibleApplication]", 
+       RowBox[{"(", 
+        RowBox[{
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox["1",
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"2", "-", 
+              RowBox[{"3", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"2", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm], "+", "1"}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox["1",
+          HypergeometricPFQ,
+          Editable->True,
+          Selectable->True]}], ")"}]}],
+      InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+      Editable->False,
+      Selectable->False],
+     HypergeometricPFQ]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.4729015326003847`*^9, 3.4729015390410137`*^9}, 
+   3.47290170646313*^9, 3.501051749626875*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hn", "=", 
+  RowBox[{"HypergeometricSE", "[", 
+   RowBox[{"hy", ",", "\[Nu]"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      TemplateBox[{RowBox[{"2", "-", 
+          RowBox[{"4", " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"2", "-", 
+          RowBox[{"2", " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+       "Gamma"], " ", 
+      SuperscriptBox[
+       TemplateBox[{RowBox[{
+           RowBox[{
+             RowBox[{"-", "2"}], " ", 
+             TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "\[Nu]", "+", 
+           "1"}]},
+        "Gamma"], "3"]}], 
+     RowBox[{
+      SuperscriptBox[
+       TemplateBox[{RowBox[{"1", "-", 
+           RowBox[{"2", " ", 
+             TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+        "Gamma"], "3"], " ", 
+      TemplateBox[{RowBox[{"\[Nu]", "+", "1"}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          RowBox[{
+            RowBox[{"-", "4"}], " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "\[Nu]", "+", 
+          "2"}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          RowBox[{
+            RowBox[{"-", "2"}], " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "\[Nu]", "+", 
+          "2"}]},
+       "Gamma"]}]], ",", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm], "-", "1"}], ")"}], " ", 
+      TemplateBox[{RowBox[{"2", "-", 
+          RowBox[{"3", " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}]}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}]},
+       "Gamma"], " ", 
+      SuperscriptBox[
+       TemplateBox[{RowBox[{
+           RowBox[{"-", 
+             TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "\[Nu]", "+", 
+           "1"}]},
+        "Gamma"], "2"]}], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm], "-", "\[Nu]", "-", "1"}], ")"}], " ", 
+      SuperscriptBox[
+       TemplateBox[{RowBox[{"1", "-", 
+           TagBox["\[CurlyEpsilon]", TraditionalForm]}]},
+        "Gamma"], "2"], " ", 
+      TemplateBox[{RowBox[{
+          RowBox[{
+            RowBox[{"-", "3"}], " ", 
+            TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "\[Nu]", "+", 
+          "2"}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "\[Nu]", "+", 
+          "1"}]},
+       "Gamma"]}]]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901567151018*^9, 3.472901720031994*^9, 
+  3.501051750104823*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "HypergeometricSE"}]], "Input"],
+
+Cell[BoxData[
+ StyleBox["\<\"HypergeometricSE[exp, nu] expresses Hypergeometric functions \
+by\\ntheir series expansion in terms of a sum (the Sum is omitted and\\nnu, \
+running from 0 to Infinity is the summation index).\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.501051750361581*^9},
+ CellTags->"Info3501055350-2742430"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FunctionExpand", "[", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[Nu]", "=", "0"}], "\[Infinity]"], "#"}], "]"}], "&"}], "/@", 
+  "hn"}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    TagBox[
+     TagBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[InvisiblePrefixScriptBase]", "3"], 
+        SubscriptBox["F", "2"]}], "\[InvisibleApplication]", 
+       RowBox[{"(", 
+        RowBox[{
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"2", "-", 
+              RowBox[{"4", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"2", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox["1",
+          HypergeometricPFQ,
+          Editable->True,
+          Selectable->True]}], ")"}]}],
+      InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+      Editable->False,
+      Selectable->False],
+     HypergeometricPFQ], ",", 
+    TagBox[
+     TagBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[InvisiblePrefixScriptBase]", "4"], 
+        SubscriptBox["F", "3"]}], "\[InvisibleApplication]", 
+       RowBox[{"(", 
+        RowBox[{
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox["1",
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"2", "-", 
+              RowBox[{"3", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{"2", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True], ",", 
+            TagBox[
+             RowBox[{
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm], "+", "1"}],
+             HypergeometricPFQ,
+             Editable->True,
+             Selectable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False,
+          Selectable->False], ";", 
+         TagBox["1",
+          HypergeometricPFQ,
+          Editable->True,
+          Selectable->True]}], ")"}]}],
+      InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+      Editable->False,
+      Selectable->False],
+     HypergeometricPFQ]}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901735719531*^9, 3.5010517691588697`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionExpand", "[", 
+  RowBox[{"hn", "/.", 
+   RowBox[{"\[Nu]", "\[Rule]", "0"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1"}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901745961268*^9, 3.5010517694774942`*^9}]
 }, Open  ]],
 
 Cell[TextData[{
-  "Do a series expansion up to order ",
-  Cell[BoxData[
-      FormBox[
-        SuperscriptBox[
-          TagBox["\[CurlyEpsilon]",
-            TraditionalForm], "4"], TraditionalForm]]],
-  "."
+ "Do a series expansion up to order ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm], "4"], TraditionalForm]]],
+ "."
 }], "Text"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(hnexp\  = \ Series2[hn, Epsilon, 4]\)], "Input"],
+ RowBox[{"hnexp", " ", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Apart", "[", 
+     RowBox[{
+      RowBox[{"FunctionExpand", "[", "#", "]"}], ",", "\[Nu]"}], "]"}], "&"}],
+    "/@", 
+   RowBox[{"Series2", "[", 
+    RowBox[{"hn", ",", "Epsilon", ",", "2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.472901771006505*^9, 3.47290180158803*^9}, 
+   3.4729018850967712`*^9, {3.4729019526335897`*^9, 3.47290197896279*^9}}],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"], " ", 
+        RowBox[{"\[Zeta]", "(", "2", ")"}]}], "-", 
+       RowBox[{"4", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"], " ", 
+        TemplateBox[{"1",RowBox[{"\[Nu]", "+", "1"}]},
+         "PolyGamma2"]}], "+", 
+       RowBox[{"8", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"]}], "-", 
+       RowBox[{"6", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "+", "1"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Nu]", "+", "1"}], ")"}], "2"]], "+", 
+     FractionBox[
+      RowBox[{"28", " ", 
+       SuperscriptBox[
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm], "2"]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Nu]", "+", "1"}], ")"}], "4"]], "-", 
+     FractionBox[
+      RowBox[{"6", " ", 
+       RowBox[{"(", 
         RowBox[{
-          RowBox[{
-            RowBox[{"-", 
-              FractionBox[
-                RowBox[{"48", " ", 
-                  SuperscriptBox[
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm], "4"]}], \(\[Nu]\^4\)]}], "-", 
-            FractionBox[
-              RowBox[{"8", " ", 
-                SuperscriptBox[
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm], "3"]}], \(\[Nu]\^3\)]}], ",", 
-          RowBox[{
-            RowBox[{"-", 
-              FractionBox[
-                RowBox[{"3", " ", 
-                  SuperscriptBox[
-                    TagBox["\[CurlyEpsilon]",
-                      TraditionalForm], "4"]}], \(\[Nu]\^4\)]}], "-", 
-            FractionBox[
-              SuperscriptBox[
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm], "3"], \(\[Nu]\^3\)]}]}], "}"}], 
-      TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(\(?Series2\)\)], "Input"],
-
-Cell[BoxData[
-    \("Series2 performs a series expansion around 0. Series2 is similar to \
-Series, except that it applies Normal on the result and that some Series bugs \
-are fixed. Series2[f, e, n] is equivalent to  Series2[f, {e, 0, n}] is \
-equivalent to Series[f, {e, 0, n}]."\)], "Print",
-  CellTags->"Info3277485426-5534220"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(hypexp = 
-      1 + \((\(Sum[#, {\[Nu], 1, \[Infinity]}] &\) /@ hnexp)\)\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
+         RowBox[{"6", " ", 
+          SuperscriptBox[
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm], "2"]}], "-", 
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm]}], ")"}]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Nu]", "+", "1"}], ")"}], "3"]]}], ",", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"], " ", 
+        RowBox[{"\[Zeta]", "(", "2", ")"}]}], "-", 
+       RowBox[{"4", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"], " ", 
+        TemplateBox[{"1",RowBox[{"\[Nu]", "+", "1"}]},
+         "PolyGamma2"]}], "+", 
+       RowBox[{"3", " ", 
+        SuperscriptBox[
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm], "2"]}], "-", 
+       RowBox[{"4", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "+", "1"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Nu]", "+", "1"}], ")"}], "2"]], "+", 
+     FractionBox[
+      RowBox[{"13", " ", 
+       SuperscriptBox[
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm], "2"]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Nu]", "+", "1"}], ")"}], "4"]], "-", 
+     FractionBox[
+      RowBox[{"4", " ", 
+       RowBox[{"(", 
         RowBox[{
-          RowBox[{"1", "-", 
-            RowBox[{\(8\/15\), " ", 
-              RowBox[{"(", 
-                RowBox[{
-                  RowBox[{\(\[Pi]\^4\), " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "4"]}], "+", 
-                  RowBox[{"15", " ", 
-                    TagBox[
-                      RowBox[{"\[Zeta]", "(", 
-                        TagBox["3",
-                          Zeta,
-                          Editable->True], ")"}],
-                      InterpretTemplate[ 
-                        Function[ BoxForm`e$, 
-                          Zeta[ BoxForm`e$]]]], " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "3"]}]}], ")"}]}]}], ",", 
-          RowBox[{
-            RowBox[{\(1\/30\), " ", 
-              RowBox[{"(", 
-                RowBox[{
-                  RowBox[{\(-\[Pi]\^4\), " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "4"]}], "-", 
-                  RowBox[{"30", " ", 
-                    TagBox[
-                      RowBox[{"\[Zeta]", "(", 
-                        TagBox["3",
-                          Zeta,
-                          Editable->True], ")"}],
-                      InterpretTemplate[ 
-                        Function[ BoxForm`e$, 
-                          Zeta[ BoxForm`e$]]]], " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}]}], 
-        "}"}], TraditionalForm]], "Output"]
+         RowBox[{"4", " ", 
+          SuperscriptBox[
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm], "2"]}], "-", 
+         TagBox["\[CurlyEpsilon]",
+          TraditionalForm]}], ")"}]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Nu]", "+", "1"}], ")"}], "3"]]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.4729017567747993`*^9, 3.472901818963334*^9}, 
+   3.472901886939904*^9, {3.472901956171627*^9, 3.472901980284807*^9}, 
+   3.501051770897649*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(\((hy - hypexp)\) /. Epsilon \[Rule] 0.01\)], "Input"],
+ RowBox[{"?", "Series2"}]], "Input"],
 
 Cell[BoxData[
-    \(TraditionalForm\`{\(-2.5024271775047247`*^-8\), \
-\(-1.1627923049411867`*^-9\)}\)], "Output"]
+ StyleBox["\<\"Series2 performs a series expansion around 0.\\nSeries2 is \
+similar to Series, except that it applies Normal\\non the result and that \
+some Series bugs are fixed.\\nSeries2[f, e, n] is equivalent to \\nSeries2[f, \
+{e, 0, n}] is equivalent to Series[f, {e, 0, n}].\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.501051771864942*^9},
+ CellTags->"Info3501055371-2742430"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(\((hy - hypexp)\) /. Epsilon \[Rule] 0.001\)], "Input"],
+ RowBox[{"hypexp", "=", 
+  RowBox[{"1", "+", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Sum", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Nu]", ",", "1", ",", "\[Infinity]"}], "}"}]}], "]"}], 
+      "&"}], "/@", "hnexp"}], ")"}]}]}]], "Input"],
 
 Cell[BoxData[
-    \(TraditionalForm\`{\(-2.4058671518051877`*^-13\), \
-\(-1.1197113505744332`*^-14\)}\)], "Output"]
+ FormBox["$Aborted", TraditionalForm]], "Output",
+ CellChangeTimes->{3.472901878629587*^9, 3.472901948935339*^9, 
+  3.501051878595078*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(hy\)], "Input"],
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"hy", "-", "hypexp"}], ")"}], "/.", 
+  RowBox[{"Epsilon", "\[Rule]", "0.01"}]}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"-", "2.5024271775047247`*^-8"}], ",", 
+    RowBox[{"-", "1.1627923049411867`*^-9"}]}], "}"}], 
+  TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"hy", "-", "hypexp"}], ")"}], "/.", 
+  RowBox[{"Epsilon", "\[Rule]", "0.001"}]}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"-", "2.4058671518051877`*^-13"}], ",", 
+    RowBox[{"-", "1.1197113505744332`*^-14"}]}], "}"}], 
+  TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["hy"], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    TagBox[
+     TagBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[InvisiblePrefixScriptBase]", 
+         FormBox["3",
+          TraditionalForm]], 
+        SubscriptBox["F", 
+         FormBox["2",
+          TraditionalForm]]}], "\[InvisibleApplication]", 
+       RowBox[{"(", 
         RowBox[{
+         TagBox[
           TagBox[
+           RowBox[{
             TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["3",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["2",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{\(-2\), " ", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"4", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"2", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox["1",
-                      HypergeometricPFQ,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            HypergeometricPFQ], ",", 
+             RowBox[{
+              RowBox[{"-", "2"}], " ", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{
+              RowBox[{"-", "2"}], " ", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{
+              RowBox[{"-", "2"}], " ", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False], ";", 
+         TagBox[
           TagBox[
+           RowBox[{
             TagBox[
-              RowBox[{
-                RowBox[{
-                  SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                    FormBox["4",
-                      "TraditionalForm"]], 
-                  SubscriptBox["F", 
-                    FormBox["3",
-                      "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                RowBox[{"(", 
-                  RowBox[{
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox["1",
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox[
-                      TagBox[
-                        RowBox[{
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              RowBox[{"3", " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{"1", "-", 
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm]}],
-                            HypergeometricPFQ,
-                            Editable->True], ",", 
-                          TagBox[
-                            RowBox[{
-                              TagBox["\[CurlyEpsilon]",
-                                TraditionalForm], "+", "1"}],
-                            HypergeometricPFQ,
-                            Editable->True]}],
-                        InterpretTemplate[ {
-                          SlotSequence[ 1]}&]],
-                      HypergeometricPFQ,
-                      Editable->False], ";", 
-                    TagBox["1",
-                      HypergeometricPFQ,
-                      Editable->True]}], ")"}]}],
-              InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-              Editable->False],
-            HypergeometricPFQ]}], "}"}], TraditionalForm]], "Output"]
+             RowBox[{"1", "-", 
+              RowBox[{"4", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False], ";", 
+         TagBox["1",
+          HypergeometricPFQ,
+          Editable->True]}], ")"}]}],
+      InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+      Editable->False],
+     HypergeometricPFQ], ",", 
+    TagBox[
+     TagBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[InvisiblePrefixScriptBase]", 
+         FormBox["4",
+          TraditionalForm]], 
+        SubscriptBox["F", 
+         FormBox["3",
+          TraditionalForm]]}], "\[InvisibleApplication]", 
+       RowBox[{"(", 
+        RowBox[{
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox["1",
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{"-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{"-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{"-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False], ";", 
+         TagBox[
+          TagBox[
+           RowBox[{
+            TagBox[
+             RowBox[{"1", "-", 
+              RowBox[{"3", " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{"1", "-", 
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm]}],
+             HypergeometricPFQ,
+             Editable->True], ",", 
+            TagBox[
+             RowBox[{
+              TagBox["\[CurlyEpsilon]",
+               TraditionalForm], "+", "1"}],
+             HypergeometricPFQ,
+             Editable->True]}],
+           InterpretTemplate[{
+             SlotSequence[1]}& ]],
+          HypergeometricPFQ,
+          Editable->False], ";", 
+         TagBox["1",
+          HypergeometricPFQ,
+          Editable->True]}], ")"}]}],
+      InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+      Editable->False],
+     HypergeometricPFQ]}], "}"}], TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["hypexp"], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"1", "-", 
+     RowBox[{
+      FractionBox["8", "15"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[Pi]", "4"], " ", 
+         SuperscriptBox[
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm], "4"]}], "+", 
+        RowBox[{"15", " ", 
+         TagBox[
+          RowBox[{"\[Zeta]", "(", 
+           TagBox["3",
+            Zeta,
+            Editable->True], ")"}],
+          InterpretTemplate[
+           Function[BoxForm`e$, 
+            Zeta[BoxForm`e$]]]], " ", 
+         SuperscriptBox[
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm], "3"]}]}], ")"}]}]}], ",", 
+    RowBox[{
+     RowBox[{
+      FractionBox["1", "30"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SuperscriptBox["\[Pi]", "4"]}], " ", 
+         SuperscriptBox[
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm], "4"]}], "-", 
+        RowBox[{"30", " ", 
+         TagBox[
+          RowBox[{"\[Zeta]", "(", 
+           TagBox["3",
+            Zeta,
+            Editable->True], ")"}],
+          InterpretTemplate[
+           Function[BoxForm`e$, 
+            Zeta[BoxForm`e$]]]], " ", 
+         SuperscriptBox[
+          TagBox["\[CurlyEpsilon]",
+           TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}]}], "}"}], 
+  TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(hypexp\)], "Input"],
+ RowBox[{"\[InvisibleSpace]", 
+  RowBox[{"Thread", "[", 
+   RowBox[{"hy", "\[Rule]", "hypexp"}], "]"}]}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     TagBox[
+      TagBox[
+       RowBox[{
         RowBox[{
-          RowBox[{"1", "-", 
-            RowBox[{\(8\/15\), " ", 
-              RowBox[{"(", 
-                RowBox[{
-                  RowBox[{\(\[Pi]\^4\), " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "4"]}], "+", 
-                  RowBox[{"15", " ", 
-                    TagBox[
-                      RowBox[{"\[Zeta]", "(", 
-                        TagBox["3",
-                          Zeta,
-                          Editable->True], ")"}],
-                      InterpretTemplate[ 
-                        Function[ BoxForm`e$, 
-                          Zeta[ BoxForm`e$]]]], " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "3"]}]}], ")"}]}]}], ",", 
-          RowBox[{
-            RowBox[{\(1\/30\), " ", 
-              RowBox[{"(", 
-                RowBox[{
-                  RowBox[{\(-\[Pi]\^4\), " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "4"]}], "-", 
-                  RowBox[{"30", " ", 
-                    TagBox[
-                      RowBox[{"\[Zeta]", "(", 
-                        TagBox["3",
-                          Zeta,
-                          Editable->True], ")"}],
-                      InterpretTemplate[ 
-                        Function[ BoxForm`e$, 
-                          Zeta[ BoxForm`e$]]]], " ", 
-                    SuperscriptBox[
-                      TagBox["\[CurlyEpsilon]",
-                        TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}]}], 
-        "}"}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(\(\(\[InvisibleSpace]\)\(Thread[hy \[Rule] hypexp]\)\)\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{"{", 
-        RowBox[{
-          RowBox[{
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["3",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["2",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"4", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"2", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["1",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ], "\[Rule]", 
-            RowBox[{"1", "-", 
-              RowBox[{\(8\/15\), " ", 
-                RowBox[{"(", 
-                  RowBox[{
-                    RowBox[{\(\[Pi]\^4\), " ", 
-                      SuperscriptBox[
-                        TagBox["\[CurlyEpsilon]",
-                          TraditionalForm], "4"]}], "+", 
-                    RowBox[{"15", " ", 
-                      TagBox[
-                        RowBox[{"\[Zeta]", "(", 
-                          TagBox["3",
-                            Zeta,
-                            Editable->True], ")"}],
-                        InterpretTemplate[ 
-                          Function[ BoxForm`e$, 
-                            Zeta[ BoxForm`e$]]]], " ", 
-                      SuperscriptBox[
-                        TagBox["\[CurlyEpsilon]",
-                          TraditionalForm], "3"]}]}], ")"}]}]}]}], ",", 
-          RowBox[{
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["4",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["3",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox["1",
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"3", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm], "+", "1"}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["1",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ], "\[Rule]", 
+         SubscriptBox["\[InvisiblePrefixScriptBase]", 
+          FormBox["3",
+           TraditionalForm]], 
+         SubscriptBox["F", 
+          FormBox["2",
+           TraditionalForm]]}], "\[InvisibleApplication]", 
+        RowBox[{"(", 
+         RowBox[{
+          TagBox[
+           TagBox[
             RowBox[{
-              RowBox[{\(1\/30\), " ", 
-                RowBox[{"(", 
-                  RowBox[{
-                    RowBox[{\(-\[Pi]\^4\), " ", 
-                      SuperscriptBox[
-                        TagBox["\[CurlyEpsilon]",
-                          TraditionalForm], "4"]}], "-", 
-                    RowBox[{"30", " ", 
-                      TagBox[
-                        RowBox[{"\[Zeta]", "(", 
-                          TagBox["3",
-                            Zeta,
-                            Editable->True], ")"}],
-                        InterpretTemplate[ 
-                          Function[ BoxForm`e$, 
-                            Zeta[ BoxForm`e$]]]], " ", 
-                      SuperscriptBox[
-                        TagBox["\[CurlyEpsilon]",
-                          TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}]}]}],
-         "}"}], TraditionalForm]], "Output"]
+             TagBox[
+              RowBox[{
+               RowBox[{"-", "2"}], " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{
+               RowBox[{"-", "2"}], " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{
+               RowBox[{"-", "2"}], " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"4", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"2", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox["1",
+           HypergeometricPFQ,
+           Editable->True]}], ")"}]}],
+       InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+       Editable->False],
+      HypergeometricPFQ], "\[Rule]", 
+     RowBox[{"1", "-", 
+      RowBox[{
+       FractionBox["8", "15"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["\[Pi]", "4"], " ", 
+          SuperscriptBox[
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm], "4"]}], "+", 
+         RowBox[{"15", " ", 
+          TagBox[
+           RowBox[{"\[Zeta]", "(", 
+            TagBox["3",
+             Zeta,
+             Editable->True], ")"}],
+           InterpretTemplate[
+            Function[BoxForm`e$, 
+             Zeta[BoxForm`e$]]]], " ", 
+          SuperscriptBox[
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm], "3"]}]}], ")"}]}]}]}], ",", 
+    RowBox[{
+     TagBox[
+      TagBox[
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[InvisiblePrefixScriptBase]", 
+          FormBox["4",
+           TraditionalForm]], 
+         SubscriptBox["F", 
+          FormBox["3",
+           TraditionalForm]]}], "\[InvisibleApplication]", 
+        RowBox[{"(", 
+         RowBox[{
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox["1",
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"3", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm], "+", "1"}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox["1",
+           HypergeometricPFQ,
+           Editable->True]}], ")"}]}],
+       InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+       Editable->False],
+      HypergeometricPFQ], "\[Rule]", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "30"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           SuperscriptBox["\[Pi]", "4"]}], " ", 
+          SuperscriptBox[
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm], "4"]}], "-", 
+         RowBox[{"30", " ", 
+          TagBox[
+           RowBox[{"\[Zeta]", "(", 
+            TagBox["3",
+             Zeta,
+             Editable->True], ")"}],
+           InterpretTemplate[
+            Function[BoxForm`e$, 
+             Zeta[BoxForm`e$]]]], " ", 
+          SuperscriptBox[
+           TagBox["\[CurlyEpsilon]",
+            TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}]}]}], "}"}], 
+  TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["rint"], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[Pi]", " ", 
+     RowBox[{"csc", "(", 
+      RowBox[{
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"\[CapitalGamma]", "(", 
+       RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], ")"}], "2"], " ", 
+     TagBox[
+      TagBox[
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[InvisiblePrefixScriptBase]", 
+          FormBox["3",
+           TraditionalForm]], 
+         SubscriptBox["F", 
+          FormBox["2",
+           TraditionalForm]]}], "\[InvisibleApplication]", 
+        RowBox[{"(", 
+         RowBox[{
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{
+               RowBox[{"-", "2"}], " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{
+               RowBox[{"-", "2"}], " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{
+               RowBox[{"-", "2"}], " ", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"4", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"2", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox["1",
+           HypergeometricPFQ,
+           Editable->True]}], ")"}]}],
+       InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+       Editable->False],
+      HypergeometricPFQ]}], 
+    RowBox[{"\[CapitalGamma]", "(", 
+     RowBox[{"1", "-", 
+      RowBox[{"4", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]}], ")"}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["2", 
+      RowBox[{
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "+", "1"}]], " ", 
+     SqrtBox["\[Pi]"], " ", 
+     RowBox[{"\[CapitalGamma]", "(", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"\[CapitalGamma]", "(", 
+       RowBox[{"-", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], ")"}], "2"], " ", 
+     TagBox[
+      TagBox[
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[InvisiblePrefixScriptBase]", 
+          FormBox["4",
+           TraditionalForm]], 
+         SubscriptBox["F", 
+          FormBox["3",
+           TraditionalForm]]}], "\[InvisibleApplication]", 
+        RowBox[{"(", 
+         RowBox[{
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox["1",
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox[
+           TagBox[
+            RowBox[{
+             TagBox[
+              RowBox[{"1", "-", 
+               RowBox[{"3", " ", 
+                TagBox["\[CurlyEpsilon]",
+                 TraditionalForm]}]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{"1", "-", 
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm]}],
+              HypergeometricPFQ,
+              Editable->True], ",", 
+             TagBox[
+              RowBox[{
+               TagBox["\[CurlyEpsilon]",
+                TraditionalForm], "+", "1"}],
+              HypergeometricPFQ,
+              Editable->True]}],
+            InterpretTemplate[{
+              SlotSequence[1]}& ]],
+           HypergeometricPFQ,
+           Editable->False], ";", 
+          TagBox["1",
+           HypergeometricPFQ,
+           Editable->True]}], ")"}]}],
+       InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+       Editable->False],
+      HypergeometricPFQ]}], 
+    RowBox[{
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     RowBox[{"\[CapitalGamma]", "(", 
+      RowBox[{"1", "-", 
+       RowBox[{"3", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]}], ")"}], " ", 
+     RowBox[{"\[CapitalGamma]", "(", 
+      RowBox[{
+       FractionBox["1", "2"], "-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(rint\)], "Input"],
+ RowBox[{"rint", "/.", "\[InvisibleSpace]", 
+  RowBox[{"Thread", "[", 
+   RowBox[{"hy", "\[Rule]", "hypexp"}], "]"}]}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[Pi]", " ", 
+     RowBox[{"csc", "(", 
       RowBox[{
-        FractionBox[
-          RowBox[{"\[Pi]", " ", 
-            RowBox[{"csc", "(", 
-              RowBox[{
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
-            SuperscriptBox[
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{\(-2\), " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ")"}], "2"], " ", 
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["3",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["2",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{\(-2\), " ", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"4", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"2", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["1",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ]}], 
-          RowBox[{"\[CapitalGamma]", "(", 
-            RowBox[{"1", "-", 
-              RowBox[{"4", " ", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}]}], ")"}]], "-", 
-        FractionBox[
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"\[CapitalGamma]", "(", 
+       RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], ")"}], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{
+        FractionBox["8", "15"], " ", 
+        RowBox[{"(", 
+         RowBox[{
           RowBox[{
-            SuperscriptBox["2", 
-              RowBox[{
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "+", "1"}]], " ", \(\@\[Pi]\), " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"1", "-", 
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]}], ")"}], " ", 
-            SuperscriptBox[
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{"-", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ")"}], "2"], " ", 
-            TagBox[
-              TagBox[
-                RowBox[{
-                  RowBox[{
-                    SubscriptBox["\[InvisiblePrefixScriptBase]", 
-                      FormBox["4",
-                        "TraditionalForm"]], 
-                    SubscriptBox["F", 
-                      FormBox["3",
-                        "TraditionalForm"]]}], "\[InvisibleApplication]", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox["1",
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox[
-                        TagBox[
-                          RowBox[{
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                RowBox[{"3", " ", 
-                                  TagBox["\[CurlyEpsilon]",
-                                    TraditionalForm]}]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{"1", "-", 
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm]}],
-                              HypergeometricPFQ,
-                              Editable->True], ",", 
-                            TagBox[
-                              RowBox[{
-                                TagBox["\[CurlyEpsilon]",
-                                  TraditionalForm], "+", "1"}],
-                              HypergeometricPFQ,
-                              Editable->True]}],
-                          InterpretTemplate[ {
-                            SlotSequence[ 1]}&]],
-                        HypergeometricPFQ,
-                        Editable->False], ";", 
-                      TagBox["1",
-                        HypergeometricPFQ,
-                        Editable->True]}], ")"}]}],
-                InterpretTemplate[ HypergeometricPFQ[ #, #2, #3]&],
-                Editable->False],
-              HypergeometricPFQ]}], 
+           SuperscriptBox["\[Pi]", "4"], " ", 
+           SuperscriptBox[
+            TagBox["\[CurlyEpsilon]",
+             TraditionalForm], "4"]}], "+", 
+          RowBox[{"15", " ", 
+           TagBox[
+            RowBox[{"\[Zeta]", "(", 
+             TagBox["3",
+              Zeta,
+              Editable->True], ")"}],
+            InterpretTemplate[
+             Function[BoxForm`e$, 
+              Zeta[BoxForm`e$]]]], " ", 
+           SuperscriptBox[
+            TagBox["\[CurlyEpsilon]",
+             TraditionalForm], "3"]}]}], ")"}]}]}], ")"}]}], 
+    RowBox[{"\[CapitalGamma]", "(", 
+     RowBox[{"1", "-", 
+      RowBox[{"4", " ", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}]}], ")"}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["2", 
+      RowBox[{
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], "+", "1"}]], " ", 
+     SqrtBox["\[Pi]"], " ", 
+     RowBox[{"\[CapitalGamma]", "(", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"\[CapitalGamma]", "(", 
+       RowBox[{"-", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}], ")"}], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        FractionBox["1", "30"], " ", 
+        RowBox[{"(", 
+         RowBox[{
           RowBox[{
+           RowBox[{"-", 
+            SuperscriptBox["\[Pi]", "4"]}], " ", 
+           SuperscriptBox[
             TagBox["\[CurlyEpsilon]",
-              TraditionalForm], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"1", "-", 
-                RowBox[{"3", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]}], ")"}], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{\(1\/2\), "-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(rint /. \[InvisibleSpace]Thread[hy \[Rule] hypexp]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{
-        FractionBox[
-          RowBox[{"\[Pi]", " ", 
-            RowBox[{"csc", "(", 
-              RowBox[{
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm], " ", "\[Pi]"}], ")"}], " ", 
-            SuperscriptBox[
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{\(-2\), " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ")"}], "2"], " ", 
-            RowBox[{"(", 
-              RowBox[{"1", "-", 
-                RowBox[{\(8\/15\), " ", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      RowBox[{\(\[Pi]\^4\), " ", 
-                        SuperscriptBox[
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm], "4"]}], "+", 
-                      RowBox[{"15", " ", 
-                        TagBox[
-                          RowBox[{"\[Zeta]", "(", 
-                            TagBox["3",
-                              Zeta,
-                              Editable->True], ")"}],
-                          InterpretTemplate[ 
-                            Function[ BoxForm`e$, 
-                              Zeta[ BoxForm`e$]]]], " ", 
-                        SuperscriptBox[
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm], "3"]}]}], ")"}]}]}], ")"}]}], 
-          RowBox[{"\[CapitalGamma]", "(", 
-            RowBox[{"1", "-", 
-              RowBox[{"4", " ", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}]}], ")"}]], "-", 
-        FractionBox[
-          RowBox[{
-            SuperscriptBox["2", 
-              RowBox[{
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], "+", "1"}]], " ", \(\@\[Pi]\), " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"1", "-", 
-                RowBox[{"2", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]}], ")"}], " ", 
-            SuperscriptBox[
-              RowBox[{"\[CapitalGamma]", "(", 
-                RowBox[{"-", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}], ")"}], "2"], " ", 
-            RowBox[{"(", 
-              RowBox[{
-                RowBox[{\(1\/30\), " ", 
-                  RowBox[{"(", 
-                    RowBox[{
-                      RowBox[{\(-\[Pi]\^4\), " ", 
-                        SuperscriptBox[
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm], "4"]}], "-", 
-                      RowBox[{"30", " ", 
-                        TagBox[
-                          RowBox[{"\[Zeta]", "(", 
-                            TagBox["3",
-                              Zeta,
-                              Editable->True], ")"}],
-                          InterpretTemplate[ 
-                            Function[ BoxForm`e$, 
-                              Zeta[ BoxForm`e$]]]], " ", 
-                        SuperscriptBox[
-                          TagBox["\[CurlyEpsilon]",
-                            TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}], 
-              ")"}]}], 
-          RowBox[{
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{"1", "-", 
-                RowBox[{"3", " ", 
-                  TagBox["\[CurlyEpsilon]",
-                    TraditionalForm]}]}], ")"}], " ", 
-            RowBox[{"\[CapitalGamma]", "(", 
-              RowBox[{\(1\/2\), "-", 
-                TagBox["\[CurlyEpsilon]",
-                  TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(Series2[%, Epsilon, 1]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
-      RowBox[{
-        RowBox[{"-", 
-          FractionBox[
-            RowBox[{\(\[Pi]\^4\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], "160"]}], "+", 
-        RowBox[{"12", " ", 
-          TagBox[
+             TraditionalForm], "4"]}], "-", 
+          RowBox[{"30", " ", 
+           TagBox[
             RowBox[{"\[Zeta]", "(", 
-              TagBox["3",
-                Zeta,
-                Editable->True], ")"}],
-            InterpretTemplate[ 
-              Function[ BoxForm`e$, 
-                Zeta[ BoxForm`e$]]]]}], "+", 
-        FractionBox[\(21\ \(\[Zeta](2)\)\), 
-          RowBox[{"4", " ", 
+             TagBox["3",
+              Zeta,
+              Editable->True], ")"}],
+            InterpretTemplate[
+             Function[BoxForm`e$, 
+              Zeta[BoxForm`e$]]]], " ", 
+           SuperscriptBox[
             TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}]], "-", 
-        FractionBox["7", 
-          RowBox[{"4", " ", 
-            SuperscriptBox[
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
-    \(Expand[%]\)], "Input"],
-
-Cell[BoxData[
-    FormBox[
+             TraditionalForm], "3"]}]}], ")"}]}], "+", "1"}], ")"}]}], 
+    RowBox[{
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], " ", 
+     RowBox[{"\[CapitalGamma]", "(", 
+      RowBox[{"1", "-", 
+       RowBox[{"3", " ", 
+        TagBox["\[CurlyEpsilon]",
+         TraditionalForm]}]}], ")"}], " ", 
+     RowBox[{"\[CapitalGamma]", "(", 
       RowBox[{
-        RowBox[{"-", 
-          FractionBox[
-            RowBox[{\(\[Pi]\^4\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], "160"]}], "+", 
-        RowBox[{"12", " ", 
-          TagBox[
-            RowBox[{"\[Zeta]", "(", 
-              TagBox["3",
-                Zeta,
-                Editable->True], ")"}],
-            InterpretTemplate[ 
-              Function[ BoxForm`e$, 
-                Zeta[ BoxForm`e$]]]]}], "+", 
-        FractionBox[\(21\ \(\[Zeta](2)\)\), 
-          RowBox[{"4", " ", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}]], "-", 
-        FractionBox["7", 
-          RowBox[{"4", " ", 
-            SuperscriptBox[
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
+       FractionBox["1", "2"], "-", 
+       TagBox["\[CurlyEpsilon]",
+        TraditionalForm]}], ")"}]}]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(SimplifyPolyLog[%]\)], "Input"],
+ RowBox[{"Series2", "[", 
+  RowBox[{"%", ",", "Epsilon", ",", "1"}], "]"}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{
-        RowBox[{"-", 
-          FractionBox[
-            RowBox[{\(\[Pi]\^4\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], "160"]}], "+", 
-        RowBox[{"12", " ", 
-          TagBox[
-            RowBox[{"\[Zeta]", "(", 
-              TagBox["3",
-                Zeta,
-                Editable->True], ")"}],
-            InterpretTemplate[ 
-              Function[ BoxForm`e$, 
-                Zeta[ BoxForm`e$]]]]}], "+", 
-        FractionBox[\(63\ \(\[Zeta](2)\)\), 
-          RowBox[{"2", " ", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}]], "-", 
-        FractionBox["7", 
-          RowBox[{"4", " ", 
-            SuperscriptBox[
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Pi]", "4"], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}], "160"]}], "+", 
+   RowBox[{"12", " ", 
+    TagBox[
+     RowBox[{"\[Zeta]", "(", 
+      TagBox["3",
+       Zeta,
+       Editable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]]]}], "+", 
+   FractionBox[
+    RowBox[{"21", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], 
+    RowBox[{"4", " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]}]], "-", 
+   FractionBox["7", 
+    RowBox[{"4", " ", 
+     SuperscriptBox[
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(\(?SimplifyPolyLog\)\)], "Input"],
+ RowBox[{"Expand", "[", "%", "]"}]], "Input"],
 
 Cell[BoxData[
-    \("SimplifyPolyLog[y] performs several simplifications assuming  that the \
-variables  occuring in the Log and PolyLog functions are between 0 and 1. The \
-simplifications will in general not  be valid if the arguments are complex or \
-outside the range between 0 and 1."\)], "Print",
-  CellTags->"Info3277485428-7347271"]
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Pi]", "4"], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}], "160"]}], "+", 
+   RowBox[{"12", " ", 
+    TagBox[
+     RowBox[{"\[Zeta]", "(", 
+      TagBox["3",
+       Zeta,
+       Editable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]]]}], "+", 
+   FractionBox[
+    RowBox[{"21", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], 
+    RowBox[{"4", " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]}]], "-", 
+   FractionBox["7", 
+    RowBox[{"4", " ", 
+     SuperscriptBox[
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(total = 
-      Expand[SimplifyPolyLog[
-          Series2[rint /. \[InvisibleSpace]Thread[hy \[Rule] hypexp], 
-            Epsilon, 1]]]\)], "Input"],
+ RowBox[{"SimplifyPolyLog", "[", "%", "]"}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{
-        RowBox[{"-", 
-          FractionBox[
-            RowBox[{\(\[Pi]\^4\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], "160"]}], "+", 
-        RowBox[{"12", " ", 
-          TagBox[
-            RowBox[{"\[Zeta]", "(", 
-              TagBox["3",
-                Zeta,
-                Editable->True], ")"}],
-            InterpretTemplate[ 
-              Function[ BoxForm`e$, 
-                Zeta[ BoxForm`e$]]]]}], "+", 
-        FractionBox[\(63\ \(\[Zeta](2)\)\), 
-          RowBox[{"2", " ", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}]], "-", 
-        FractionBox["7", 
-          RowBox[{"4", " ", 
-            SuperscriptBox[
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Pi]", "4"], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}], "160"]}], "+", 
+   RowBox[{"12", " ", 
+    TagBox[
+     RowBox[{"\[Zeta]", "(", 
+      TagBox["3",
+       Zeta,
+       Editable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]]]}], "+", 
+   FractionBox[
+    RowBox[{"63", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], 
+    RowBox[{"2", " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]}]], "-", 
+   FractionBox["7", 
+    RowBox[{"4", " ", 
+     SuperscriptBox[
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(epsdat = 
-      Table[{x, rint /. Epsilon\  \[Rule] \ x}, {x, 1/1000, 1/100, 1/1000}] // 
-        N\)], "Input"],
+ RowBox[{"?", "SimplifyPolyLog"}]], "Input"],
 
-Cell[BoxData[
-    FormBox[
-      RowBox[{"(", "\[NoBreak]", GridBox[{
-            {"0.001`", \(-1.749991349672133`*^9\)},
-            {"0.002`", \(-2.1874566762484592`*^8\)},
-            {"0.003`", \(-6.481192175787556`*^7\)},
-            {"0.004`", \(-2.7341576602742467`*^7\)},
-            {"0.005`", \(-1.3998258399084933`*^7\)},
-            {"0.006`", \(-8.100398115672059`*^6\)},
-            {"0.007`", \(-5.100792698303607`*^6\)},
-            {"0.008`", \(-3.4168748460705876`*^6\)},
-            {"0.009`", \(-2.399574737676905`*^6\)},
-            {"0.01`", \(-1.7491219971002743`*^6\)}
-            },
-          ColumnAlignments->{Decimal}], "\[NoBreak]", ")"}], 
-      TraditionalForm]], "Output"]
+Cell[BoxData["\<\"SimplifyPolyLog[y] performs several simplifications \
+assuming  that the variables  occuring in the Log and PolyLog functions are \
+between 0 and 1. The simplifications will in general not  be valid if the \
+arguments are complex or outside the range between 0 and 1.\"\>"], "Print",
+ CellTags->"Info3277485428-7347271"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(Fit[epsdat, {x, 1, 1/x, 1/x^2, 1/x^3, 1/x^4}, x]\)], "Input"],
+ RowBox[{"total", "=", 
+  RowBox[{"Expand", "[", 
+   RowBox[{"SimplifyPolyLog", "[", 
+    RowBox[{"Series2", "[", 
+     RowBox[{
+      RowBox[{"rint", "/.", "\[InvisibleSpace]", 
+       RowBox[{"Thread", "[", 
+        RowBox[{"hy", "\[Rule]", "hypexp"}], "]"}]}], ",", "Epsilon", ",", 
+      "1"}], "]"}], "]"}], "]"}]}]], "Input"],
 
 Cell[BoxData[
-    \(TraditionalForm\`\(-2.344086992142816`\)\ x + \(\(14.443443394100994`\)\
-\(\[InvisibleSpace]\)\) + 8.635806938762258`\/x + 
-      2.5110892342126944`*^-7\/x\^2 - 1.7500000003062979`\/x\^3 + 
-      1.350181130143507`*^-13\/x\^4\)], "Output"]
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Pi]", "4"], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}], "160"]}], "+", 
+   RowBox[{"12", " ", 
+    TagBox[
+     RowBox[{"\[Zeta]", "(", 
+      TagBox["3",
+       Zeta,
+       Editable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]]]}], "+", 
+   FractionBox[
+    RowBox[{"63", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], 
+    RowBox[{"2", " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]}]], "-", 
+   FractionBox["7", 
+    RowBox[{"4", " ", 
+     SuperscriptBox[
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(\(-7\)/4. \)], "Input"],
+ RowBox[{"epsdat", "=", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"rint", "/.", 
+        RowBox[{"Epsilon", " ", "\[Rule]", " ", "x"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"1", "/", "1000"}], ",", 
+       RowBox[{"1", "/", "100"}], ",", 
+       RowBox[{"1", "/", "1000"}]}], "}"}]}], "]"}], "//", "N"}]}]], "Input"],
 
 Cell[BoxData[
-    \(TraditionalForm\`\(-1.75`\)\)], "Output"]
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0.001`", 
+      RowBox[{"-", "1.749991349672133`*^9"}]},
+     {"0.002`", 
+      RowBox[{"-", "2.1874566762484592`*^8"}]},
+     {"0.003`", 
+      RowBox[{"-", "6.481192175787556`*^7"}]},
+     {"0.004`", 
+      RowBox[{"-", "2.7341576602742467`*^7"}]},
+     {"0.005`", 
+      RowBox[{"-", "1.3998258399084933`*^7"}]},
+     {"0.006`", 
+      RowBox[{"-", "8.100398115672059`*^6"}]},
+     {"0.007`", 
+      RowBox[{"-", "5.100792698303607`*^6"}]},
+     {"0.008`", 
+      RowBox[{"-", "3.4168748460705876`*^6"}]},
+     {"0.009`", 
+      RowBox[{"-", "2.399574737676905`*^6"}]},
+     {"0.01`", 
+      RowBox[{"-", "1.7491219971002743`*^6"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Decimal}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+       "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(21\ Zeta[2]/4. \)], "Input"],
+ RowBox[{"Fit", "[", 
+  RowBox[{"epsdat", ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "1", ",", 
+     RowBox[{"1", "/", "x"}], ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"x", "^", "2"}]}], ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"x", "^", "3"}]}], ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"x", "^", "4"}]}]}], "}"}], ",", "x"}], "]"}]], "Input"],
 
 Cell[BoxData[
-    \(TraditionalForm\`8.635903850953188`\)], "Output"]
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "2.344086992142816`"}], " ", "x"}], "+", 
+   "14.443443394100994`", "\[InvisibleSpace]", "+", 
+   FractionBox["8.635806938762258`", "x"], "+", 
+   FractionBox["2.5110892342126944`*^-7", 
+    SuperscriptBox["x", "2"]], "-", 
+   FractionBox["1.7500000003062979`", 
+    SuperscriptBox["x", "3"]], "+", 
+   FractionBox["1.350181130143507`*^-13", 
+    SuperscriptBox["x", "4"]]}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(total\)], "Input"],
+ RowBox[{
+  RowBox[{"-", "7"}], "/", "4."}]], "Input"],
 
 Cell[BoxData[
-    FormBox[
-      RowBox[{
-        RowBox[{"-", 
-          FractionBox[
-            RowBox[{\(\[Pi]\^4\), " ", 
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm]}], "160"]}], "+", 
-        RowBox[{"12", " ", 
-          TagBox[
-            RowBox[{"\[Zeta]", "(", 
-              TagBox["3",
-                Zeta,
-                Editable->True], ")"}],
-            InterpretTemplate[ 
-              Function[ BoxForm`e$, 
-                Zeta[ BoxForm`e$]]]]}], "+", 
-        FractionBox[\(63\ \(\[Zeta](2)\)\), 
-          RowBox[{"2", " ", 
-            TagBox["\[CurlyEpsilon]",
-              TraditionalForm]}]], "-", 
-        FractionBox["7", 
-          RowBox[{"4", " ", 
-            SuperscriptBox[
-              TagBox["\[CurlyEpsilon]",
-                TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
+ FormBox[
+  RowBox[{"-", "1.75`"}], TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
-    \(TimeUsed[]\)], "Input"],
+ RowBox[{"21", " ", 
+  RowBox[{
+   RowBox[{"Zeta", "[", "2", "]"}], "/", "4."}]}]], "Input"],
 
 Cell[BoxData[
-    \(TraditionalForm\`35.77`\)], "Output"]
+ FormBox["8.635903850953188`", TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["total"], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Pi]", "4"], " ", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm]}], "160"]}], "+", 
+   RowBox[{"12", " ", 
+    TagBox[
+     RowBox[{"\[Zeta]", "(", 
+      TagBox["3",
+       Zeta,
+       Editable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]]]}], "+", 
+   FractionBox[
+    RowBox[{"63", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], 
+    RowBox[{"2", " ", 
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm]}]], "-", 
+   FractionBox["7", 
+    RowBox[{"4", " ", 
+     SuperscriptBox[
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "3"]}]]}], TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TimeUsed", "[", "]"}]], "Input"],
+
+Cell[BoxData[
+ FormBox["35.77`", TraditionalForm]], "Output"]
 }, Open  ]]
 }, Open  ]]
 },
-FrontEndVersion->"5.0 for X",
-ScreenRectangle->{{0, 1400}, {0, 1050}},
-WindowSize->{1272, 938},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1313, 831},
+WindowMargins->{{146, Automatic}, {Automatic, 0}},
 PrintingPageRange->{Automatic, Automatic},
-PrintingOptions->{"PaperSize"->{597.562, 842.375},
+PrintingOptions->{"Magnification"->1,
 "PaperOrientation"->"Portrait",
-"PostScriptOutputFile":>FrontEnd`FileName[{$RootDirectory, "home", "rolfm"}, \
-"denksport3.ps", CharacterEncoding -> "iso8859-1"],
-"Magnification"->1},
+"PaperSize"->{597.562, 842.375},
+"PostScriptOutputFile":>FrontEnd`FileName[{$RootDirectory, "home", "rolfm"}, 
+  "denksport3.ps", CharacterEncoding -> "iso8859-1"]},
 ShowSelection->True,
-Magnification->1.5
+Magnification->1.5,
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
 ]
+(* End of Notebook Content *)
 
-(*******************************************************************
-Cached data follows.  If you edit this Notebook file directly, not
-using Mathematica, you must remove the line containing CacheID at
-the top of  the file.  The cache data will then be recreated when
-you save this file from within Mathematica.
-*******************************************************************)
-
+(* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
-  "Info3277485402-1628141"->{
-    Cell[12217, 345, 430, 6, 123, "Print",
-      CellTags->"Info3277485402-1628141"]},
-  "Info3277485417-1053833"->{
-    Cell[42640, 1094, 261, 4, 78, "Print",
-      CellTags->"Info3277485417-1053833"]},
-  "Info3277485426-5534220"->{
-    Cell[50599, 1308, 331, 5, 100, "Print",
-      CellTags->"Info3277485426-5534220"]},
-  "Info3277485428-7347271"->{
-    Cell[84306, 2171, 340, 5, 100, "Print",
-      CellTags->"Info3277485428-7347271"]}
-  }
+ "Info3501055305-2742430"->{
+  Cell[11780, 403, 517, 8, 226, "Print",
+   CellTags->"Info3501055305-2742430"]},
+ "Info3501055350-2742430"->{
+  Cell[39064, 1262, 340, 6, 116, "Print",
+   CellTags->"Info3501055350-2742430"]},
+ "Info3501055371-2742430"->{
+  Cell[48548, 1584, 414, 7, 170, "Print",
+   CellTags->"Info3501055371-2742430"]},
+ "Info3277485428-7347271"->{
+  Cell[73715, 2470, 338, 4, 88, "Print",
+   CellTags->"Info3277485428-7347271"]}
+ }
 *)
-
 (*CellTagsIndex
 CellTagsIndex->{
-  {"Info3277485402-1628141", 89277, 2336},
-  {"Info3277485417-1053833", 89394, 2339},
-  {"Info3277485426-5534220", 89511, 2342},
-  {"Info3277485428-7347271", 89629, 2345}
-  }
+ {"Info3501055305-2742430", 79462, 2682},
+ {"Info3501055350-2742430", 79573, 2685},
+ {"Info3501055371-2742430", 79685, 2688},
+ {"Info3277485428-7347271", 79797, 2691}
+ }
 *)
-
 (*NotebookFileOutline
 Notebook[{
-
 Cell[CellGroupData[{
-Cell[1776, 53, 135, 5, 114, "Section"],
-Cell[1914, 60, 63, 1, 39, "Input"],
-Cell[1980, 63, 515, 9, 171, "Text"],
-
+Cell[567, 22, 130, 5, 106, "Section"],
+Cell[700, 29, 71, 1, 43, "Input"],
+Cell[774, 32, 205, 4, 22, "Text"],
+Cell[982, 38, 678, 22, 24, "Text"],
+Cell[1663, 62, 371, 12, 22, "Text"],
+Cell[2037, 76, 196, 4, 22, "Text"],
+Cell[2236, 82, 515, 9, 176, "Text"],
 Cell[CellGroupData[{
-Cell[2520, 76, 365, 6, 91, "Input"],
-Cell[2888, 84, 1567, 36, 78, "Output"]
+Cell[2776, 95, 1247, 37, 88, "Input"],
+Cell[4026, 134, 1589, 49, 94, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[4492, 125, 65, 1, 39, "Input"],
-Cell[4560, 128, 1022, 29, 78, "Output"]
+Cell[5652, 188, 141, 4, 43, "Input"],
+Cell[5796, 194, 1055, 37, 94, "Output"]
 }, Open  ]],
-Cell[5597, 160, 243, 10, 46, "Text"],
-Cell[5843, 172, 280, 5, 62, "Input"],
-
+Cell[6866, 234, 231, 10, 42, "Text"],
+Cell[7100, 246, 747, 20, 71, "Input"],
 Cell[CellGroupData[{
-Cell[6148, 181, 85, 1, 63, "Input"],
-Cell[6236, 184, 2809, 70, 80, "Output"]
+Cell[7872, 270, 175, 5, 67, "Input"],
+Cell[8050, 277, 1706, 53, 96, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[9082, 259, 60, 1, 39, "Input"],
-Cell[9145, 262, 2981, 75, 80, "Output"]
+Cell[9793, 335, 96, 2, 43, "Input"],
+Cell[9892, 339, 1792, 56, 96, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[12163, 342, 51, 1, 39, "Input"],
-Cell[12217, 345, 430, 6, 123, "Print",
-  CellTags->"Info3277485402-1628141"]
+Cell[11721, 400, 56, 1, 43, "Input"],
+Cell[11780, 403, 517, 8, 226, "Print",
+ CellTags->"Info3501055305-2742430"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[12684, 356, 89, 1, 63, "Input"],
-Cell[12776, 359, 4647, 112, 77, "Output"]
+Cell[12334, 416, 359, 10, 67, "Input"],
+Cell[12696, 428, 9755, 299, 366, "Output"]
 }, Open  ]],
-Cell[17438, 474, 102, 3, 45, "Text"],
-
+Cell[22466, 730, 44, 0, 42, "Text"],
 Cell[CellGroupData[{
-Cell[17565, 481, 168, 4, 67, "Input"],
-Cell[17736, 487, 6756, 157, 131, "Output"]
+Cell[22535, 734, 505, 13, 67, "Input"],
+Cell[23043, 749, 7960, 247, 250, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[24529, 649, 109, 2, 39, "Input"],
-Cell[24641, 653, 311, 9, 59, "Output"]
+Cell[31040, 1001, 263, 5, 43, "Input"],
+Cell[31306, 1008, 4805, 156, 43, "Output"]
 }, Open  ]],
-Cell[24967, 665, 44, 0, 45, "Text"],
-
 Cell[CellGroupData[{
-Cell[25036, 669, 80, 1, 63, "Input"],
-Cell[25119, 672, 8018, 183, 153, "Output"]
+Cell[36148, 1169, 122, 3, 43, "Input"],
+Cell[36273, 1174, 2692, 80, 85, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[33174, 860, 69, 1, 39, "Input"],
-Cell[33246, 863, 5987, 139, 59, "Output"]
+Cell[39002, 1259, 59, 1, 43, "Input"],
+Cell[39064, 1262, 340, 6, 116, "Print",
+ CellTags->"Info3501055350-2742430"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[39270, 1007, 65, 1, 39, "Input"],
-Cell[39338, 1010, 3208, 76, 85, "Output"]
+Cell[39441, 1273, 216, 7, 77, "Input"],
+Cell[39660, 1282, 4754, 155, 43, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[42583, 1091, 54, 1, 39, "Input"],
-Cell[42640, 1094, 261, 4, 78, "Print",
-  CellTags->"Info3277485417-1053833"]
+Cell[44451, 1442, 126, 3, 43, "Input"],
+Cell[44580, 1447, 169, 4, 43, "Output"]
 }, Open  ]],
-
+Cell[44764, 1454, 195, 8, 44, "Text"],
 Cell[CellGroupData[{
-Cell[42938, 1103, 104, 2, 72, "Input"],
-Cell[43045, 1107, 5987, 139, 59, "Output"]
+Cell[44984, 1466, 431, 11, 43, "Input"],
+Cell[45418, 1479, 3040, 97, 162, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[49069, 1251, 70, 1, 39, "Input"],
-Cell[49142, 1254, 57, 1, 59, "Output"]
+Cell[48495, 1581, 50, 1, 43, "Input"],
+Cell[48548, 1584, 414, 7, 170, "Print",
+ CellTags->"Info3501055371-2742430"]
 }, Open  ]],
-Cell[49214, 1258, 220, 8, 45, "Text"],
-
 Cell[CellGroupData[{
-Cell[49459, 1270, 68, 1, 39, "Input"],
-Cell[49530, 1273, 984, 27, 82, "Output"]
+Cell[48999, 1596, 304, 10, 43, "Input"],
+Cell[49306, 1608, 152, 3, 43, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[50551, 1305, 45, 1, 39, "Input"],
-Cell[50599, 1308, 331, 5, 100, "Print",
-  CellTags->"Info3277485426-5534220"]
+Cell[49495, 1616, 141, 4, 43, "Input"],
+Cell[49639, 1622, 190, 6, 50, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[50967, 1318, 105, 2, 39, "Input"],
-Cell[51075, 1322, 1769, 44, 78, "Output"]
+Cell[49866, 1633, 142, 4, 43, "Input"],
+Cell[50011, 1639, 192, 6, 50, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[52881, 1371, 74, 1, 39, "Input"],
-Cell[52958, 1374, 113, 2, 64, "Output"]
+Cell[50240, 1650, 28, 0, 43, "Input"],
+Cell[50271, 1652, 4242, 142, 43, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[53108, 1381, 75, 1, 39, "Input"],
-Cell[53186, 1384, 115, 2, 64, "Output"]
+Cell[54550, 1799, 32, 0, 43, "Input"],
+Cell[54585, 1801, 1412, 49, 75, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[53338, 1391, 35, 1, 39, "Input"],
-Cell[53376, 1394, 5987, 139, 59, "Output"]
+Cell[56034, 1855, 129, 3, 43, "Input"],
+Cell[56166, 1860, 5797, 190, 138, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[59400, 1538, 39, 1, 39, "Input"],
-Cell[59442, 1541, 1769, 44, 78, "Output"]
+Cell[62000, 2055, 30, 0, 43, "Input"],
+Cell[62033, 2057, 5822, 189, 174, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[61248, 1590, 87, 1, 39, "Input"],
-Cell[61338, 1593, 8067, 182, 125, "Output"]
+Cell[67892, 2251, 143, 3, 43, "Input"],
+Cell[68038, 2256, 2992, 97, 106, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[69442, 1780, 37, 1, 39, "Input"],
-Cell[69482, 1783, 8018, 183, 153, "Output"]
+Cell[71067, 2358, 99, 2, 43, "Input"],
+Cell[71169, 2362, 747, 28, 81, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[77537, 1971, 83, 1, 39, "Input"],
-Cell[77623, 1974, 3760, 90, 165, "Output"]
+Cell[71953, 2395, 59, 1, 43, "Input"],
+Cell[72015, 2398, 747, 28, 81, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[81420, 2069, 55, 1, 39, "Input"],
-Cell[81478, 2072, 854, 25, 82, "Output"]
+Cell[72799, 2431, 68, 1, 43, "Input"],
+Cell[72870, 2434, 747, 28, 81, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[82369, 2102, 42, 1, 39, "Input"],
-Cell[82414, 2105, 854, 25, 82, "Output"]
+Cell[73654, 2467, 58, 1, 43, "Input"],
+Cell[73715, 2470, 338, 4, 88, "Print",
+ CellTags->"Info3277485428-7347271"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[83305, 2135, 51, 1, 39, "Input"],
-Cell[83359, 2138, 854, 25, 82, "Output"]
+Cell[74090, 2479, 345, 9, 43, "Input"],
+Cell[74438, 2490, 747, 28, 81, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[84250, 2168, 53, 1, 39, "Input"],
-Cell[84306, 2171, 340, 5, 100, "Print",
-  CellTags->"Info3277485428-7347271"]
+Cell[75222, 2523, 437, 13, 43, "Input"],
+Cell[75662, 2538, 895, 26, 317, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[84683, 2181, 168, 4, 61, "Input"],
-Cell[84854, 2187, 854, 25, 82, "Output"]
+Cell[76594, 2569, 368, 11, 43, "Input"],
+Cell[76965, 2582, 468, 12, 81, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[85745, 2217, 132, 3, 39, "Input"],
-Cell[85880, 2222, 704, 15, 331, "Output"]
+Cell[77470, 2599, 68, 2, 43, "Input"],
+Cell[77541, 2603, 78, 2, 43, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[86621, 2242, 81, 1, 39, "Input"],
-Cell[86705, 2245, 260, 4, 82, "Output"]
+Cell[77656, 2610, 106, 3, 43, "Input"],
+Cell[77765, 2615, 73, 1, 43, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[87002, 2254, 43, 1, 39, "Input"],
-Cell[87048, 2257, 61, 1, 59, "Output"]
+Cell[77875, 2621, 31, 0, 43, "Input"],
+Cell[77909, 2623, 747, 28, 81, "Output"]
 }, Open  ]],
-
 Cell[CellGroupData[{
-Cell[87146, 2263, 48, 1, 39, "Input"],
-Cell[87197, 2266, 69, 1, 59, "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[87303, 2272, 38, 1, 39, "Input"],
-Cell[87344, 2275, 854, 25, 82, "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-Cell[88235, 2305, 43, 1, 39, "Input"],
-Cell[88281, 2308, 57, 1, 59, "Output"]
+Cell[78693, 2656, 56, 1, 43, "Input"],
+Cell[78752, 2659, 61, 1, 43, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
 
-
-
-(*******************************************************************
-End of Mathematica Notebook file.
-*******************************************************************)
-
+(* End of internal cache information *)

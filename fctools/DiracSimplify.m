@@ -83,7 +83,11 @@ fcinte := fcinte = MakeContext["FeynCalcInternal"];
 
 MakeContext[ DotSimplify, EpsContract, Expanding, Expand2,
 Factor2, FreeQ2, Factoring,
-LorentzIndex, MemSet, NonCommFreeQ ];
+LorentzIndex, MemSet, 
+(*RM20110830: This Momentum next line was missing,i.e., all functions below
+having an explicit Momentum in them were *not* applied (like sirlin2, etc. ) *)
+Momentum, 
+NonCommFreeQ ];
 
 sCO := sCO   = MakeContext["PairContract"];
 scev := scev = MakeContext["ExpandScalarProduct"];
@@ -118,7 +122,12 @@ dit[x_,ops___Rule]:=DiracTrace[diracSimplify@@Join[{x},{ops},
                                        ]
                    ];
 (* DiracSimplifydef*)
+(* Change RM 20070509 *)
+(*
 DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[DOT[x,y], z];
+*)
+DiracSimplify[x_,y__, z___?OptionQ]:=DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] && 
+                                                                   FreeQ[{x,y}, RuleDelayed];
 
 diracSimplify[z_, ru___Rule]:=
     (Contract[z]/.DiracTrace->dit)/;!FreeQ[z,DiracTrace];
@@ -356,7 +365,7 @@ print3["diracdt = ", diracdt ];
 If[$VeryVerbose>2, Print["dir5"]];
    If[ diracsifac === True,
        diracndt = Factor2[ diracndt ] ];
-If[$VeryVerbose>2, Print["dir6"]];
+If[$VeryVerbose>2, Print["dir6 ", diracndt]];
 print3["exiting diracSimplify"];
   diracndt/.HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> DOT
 ]]];  (* end of diracSimplify *)
@@ -408,7 +417,7 @@ print3["exiting diracSimplify"];
       (OddQ[Length[{a}]]&&(n==5 || n==6 || n==7));
 
     trI[ a:DiracGamma[_[__],___].. ,DiracGamma[n_] ] := 0 /;
-         (OddQ[Length[{a}]]&&(n==5 || n==6 || n==7)) &&
+         (Od/Q[Length[{a}]]&&(n==5 || n==6 || n==7)) &&
          ($BreitMaison === False);
 
    trI[ d:DiracGamma[__].. ] := 0/;(OddQ[Length[{d}]] && fr567[ d ]);
@@ -667,6 +676,28 @@ sirlin3a[Contract[
 
 
  sirlin2[m_. DOT[Spinor[pa__] , DiracGamma[Momentum[pj_]] ,
+                            DiracGamma[Momentum[pi_]] ,
+                            DiracGamma[LorentzIndex[mu_]],(vg5___),
+             Spinor[pb__]] *
+             DOT[Spinor[Momentum[pi_],0,qf___] ,
+                    DiracGamma[LorentzIndex[mu_]] , (vg5___),
+             Spinor[Momentum[pj_],0,qf___]]
+        ] := (-sirlin2[ m DOT[Spinor[pa] , DiracSlash[pi,pj] ,
+                                       DiracMatrix[mu] , vg5 ,
+                          Spinor[pb]] *
+                          DOT[Spinor[Momentum[pi],0,qf] ,
+                                       DiracMatrix[mu] , vg5 ,
+                          Spinor[Momentum[pj],0,qf]]
+                      ] +
+                2 m scev[Momentum[pi],Momentum[pj]] *
+                DOT[Spinor[pa] , DiracMatrix[mu] , vg5 ,
+                Spinor[pb]] *
+                          DOT[Spinor[Momentum[pi],0,qf] ,
+                                       DiracMatrix[mu] , vg5 ,
+                          Spinor[Momentum[pj],0,qf]]
+             )/; ({vg5}==={}) || ({vg5}==={DiracGamma[5]});
+
+ sirlin22[m_. DOT[Spinor[pa__] , DiracGamma[Momentum[pj_]] ,
                             DiracGamma[Momentum[pi_]] ,
                             DiracGamma[LorentzIndex[mu_]],(vg5___),
              Spinor[pb__]] *

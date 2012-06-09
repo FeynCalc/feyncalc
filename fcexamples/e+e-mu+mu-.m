@@ -1,3 +1,4 @@
+$LoadTARCER = $LoadPhi = False;
 <<HighEnergyPhysics`FeynCalc`
 
 (* this example is the FeynCalc version of the example on page 56 from the Form Tutorial (2000) by Andre Heck *)
@@ -23,7 +24,9 @@ r = Contract[M2];
 Bracket e,s  
 statement of the FORM example
 *) 
-Print["the result is: ", res = Collect[r, {e, s}, Factor2]];
+(* use FI to get a newline-less InputForm printout: *)
+
+Print["the result is: ", InputForm[res = Collect[r, {e, s}, Factor2]]];
 
 Print["calculation time used  = ", AbsoluteTime[]-starttime]
 
