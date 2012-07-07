@@ -40,6 +40,8 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
    Version 8.0.3: 2011,  added ClearAttributes[FeynAmpDenominator,Orderless], added Momentum in DiracSimplify
    Version 8.1.0: 2012,  fixed DiracTrick, improved SUNSimplify, DiracEquation, fixed Hyperlinks in FeynCalc8.nb, fixed Tarcer .mx loading
    Version 8.1.0.1: 2012, updated PHI to work with FeynArts-3.7, which can now be kept in a subdir
+   Version 8.2.0: 2012, added FeynArts 3.7 - unpatched. On first load it will be patched automatically.
+   
 *)
 
 
@@ -57,7 +59,7 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "8.1.0";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "8.2.0";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
