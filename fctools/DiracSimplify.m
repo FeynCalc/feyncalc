@@ -110,12 +110,6 @@ fcinter[x_] := If[ (fcinte(*r*)(*Typo? F.Orellana. 22/2-2003*) /. Options[DiracS
 dotLin[x_] := If[FreeQ[x, DOT], x, DotSimplify[x, Expanding -> False]];
 diracEq[x_]:= If[FreeQ[x, Spinor], x, DiracEquation[x]];
 
-Options[diracSimplify] =
-        {diracInfo->False, DiracCanonical->False,
-         InsideDiracTrace->False, DiracSubstitute67->False,
-         Factoring -> False, DiracSimpCombine->False
-        };
-
 dit[x_,ops___Rule]:=DiracTrace[diracSimplify@@Join[{x},{ops},
                     Flatten[Prepend[{Options[DiracSimplify]},
                                      InsideDiracTrace -> True]]
@@ -223,12 +217,11 @@ diracSimplify[x_,in___] := x /; NonCommFreeQ[x];
 diracSimplify[x_,in___Rule]:= If[FreeQ[x, DiracGamma], x,
 MemSet[diracSimplify[x,in], Block[
        {diracopt,diracdt,diracndt=0,diraccanopt,diracpdt,diracgasu,
-        diracldt,diracjj=0,info,diractrlabel,diracga67,diracsifac,
+        diracldt,diracjj=0,diractrlabel,diracga67,diracsifac,
         diracpag,colle
        },
         (* There are several options *)
-        diracopt     = Join[ Flatten[{in}],Options[diracSimplify] ];
-        info         = diracInfo/.diracopt;
+        diracopt     = Join[FilterRules[Options[DiracSimplify], Except[{in}]], {in}];
         diraccanopt  = DiracCanonical/.diracopt;
         diractrlabel = InsideDiracTrace/.diracopt;
         diracga67    = DiracSubstitute67/.diracopt;
@@ -340,7 +333,7 @@ If[$VeryVerbose>2,
                  diracpdt = fEx[ diracpdt ]
                ];
              diracndt = diracndt + Expand2[ diracpdt, DOT ];
-             If[ info===True || $VeryVerbose > 2,
+             If[ $VeryVerbose > 2,
                  Print["# ",diracjj," / ",diracldt," = ",
                         Length[diracndt] ]
                ]
