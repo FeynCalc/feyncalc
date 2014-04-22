@@ -10,6 +10,8 @@ KinematicIndices[ V ] = {Lorentz, Gluon};
 KinematicIndices[ U ] = {Gluon}
 PropagatorType[ V ] = Cycles;
 
+$FermionLines = True
+
 TheLabel[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
 
 (*

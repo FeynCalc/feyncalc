@@ -47,7 +47,11 @@ Collect3[expr_, vars_List, opts___?OptionQ] := Block[{fac, hva, mli},
 *)
      hva = (Hold[HoldPattern][#[___]]& /@ ( Hold/@vars ) ) /. Hold[a_] :> a;
      hva = Alternatives @@ hva;
-     mli = MonomialList[expr, Union@Cases[expr,hva,-1], CoefficientDomain -> RationalFunctions ]; If[fac =!= False, mli = Map[fac, mli]];
+     If[$VersionNumber>=6,
+       mli = MonomialList[expr, vars],
+       mli = MonomialList[expr, Union@Cases[expr,hva,-1], CoefficientDomain -> RationalFunctions ];
+     ];
+     If[fac =!= False, mli = Map[fac, mli]];
      Apply[Head/.{opts}/.Options[Collect3], mli]
 ];
 
