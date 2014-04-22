@@ -61,8 +61,8 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
 
                              tt = DiracTrace[tt,
                                  (*Added 27/8-2002, F.Orellana*)
-                                  Sequence@@Join[{DiracTraceEvaluate -> False},
-                                                 {rul}, Options[TR]]];
+                                  Sequence@@Join[FilterRules[Join[FilterRules[Options[TR], Except[{rul}]], {rul}],
+                                  Except[{DiracTraceEvaluate -> False}]], {DiracTraceEvaluate -> False}]];
                              tt = SUNSimplify[tt,
                                               SUNNToCACF -> sunntocacf,
                                               SUNTrace -> True,
@@ -77,8 +77,8 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
 
                              If[FreeQ[tt, SUNIndex|ExplicitSUNIndex],
                                 tt = DiracTrace[tt,
-                                     (**)Sequence@@Flatten[Join[{DiracTraceEvaluate -> False},
-                                                        {rul},Options[TR]]]] // 
+                                     Sequence@@Join[FilterRules[Join[FilterRules[Options[TR], Except[{rul}]], {rul}],
+                                  Except[{DiracTraceEvaluate -> False}]], {DiracTraceEvaluate -> False}]] //
                                     (*Added 27/8-2002, F.Orellana*)
                                      If[(SUNTrace /. {rul} /. Options[TR])=== True,
                                      SUNSimplify[#, SUNTrace -> True,
@@ -96,8 +96,8 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
                                      SUNNToCACF -> sunntocacf,
                                      SUNTrace -> (SUNTrace /. {rul} /. Options[TR]),
                                      Explicit -> (Explicit /. {rul} /. Options[TR])
-                                     (* Sequence@@Join[{rul},Options[TR]] *)]&,
-                                     (**)Sequence@@Flatten[Join[{rul},Options[TR]]]]
+                                     (* Sequence@@Join[Options[TR],{rul}] *)]&,
+                                     Sequence@@Join[FilterRules[Options[TR], Except[{rul}]], {rul}]]
                                ]
                             ];
 
@@ -116,7 +116,7 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
                                          dit -> DiracTrace;
                             ];
                           diractr[y__] := (DiracTrace @@
-                            Join[{y}, {rul}, Options[TR]]);
+                            Join[{y}, Join[FilterRules[Options[TR], Except[{rul}]], {rul}]]);
 
                           tt = tt /. DiracTrace -> diractr;
                           If[FeynCalcExternal /. {rul} /. Options[TR],

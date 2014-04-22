@@ -106,7 +106,7 @@ DiracTrace[x_,op___?OptionQ] := fcex[op][
 DiracTrace[x_, op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrace] },
 
 (*Global`OO= Sequence@@Join[{op}, globalstartops];*)
-                      SetOptions[DiracTrace, Sequence@@Join[{op}, globalstartops]];
+        SetOptions[DiracTrace,FilterRules[{op},Options[DiracTrace]]];
 (*Global`GG=Options[DiracTrace];*)
                       diTres =
 (
