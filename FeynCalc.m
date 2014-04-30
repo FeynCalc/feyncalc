@@ -1,5 +1,5 @@
 (* :Title: FeynCalc *)
-If[$VersionNumber>5.3, 
+If[$VersionNumber>5.3,
 Remove[PartialD];
 (*Off[PartialD::shdw];
 Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
@@ -27,7 +27,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
    Version 4.0 : 2000, reorganized for open-source and extensibility
    Version 4.2.0 : 2002, small bug fixes, more reorganization,
                    inclusion of help system, PHI and FeynArts
-                   by Frederik Orellana, frederik@orellana.dk 
+                   by Frederik Orellana, frederik@orellana.dk
    Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization,
    Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
    Version 6.0.0: 2007, bug fixes, updates for mma 6.0 and new FeynArts
@@ -41,7 +41,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
    Version 8.1.0: 2012,  fixed DiracTrick, improved SUNSimplify, DiracEquation, fixed Hyperlinks in FeynCalc8.nb, fixed Tarcer .mx loading
    Version 8.1.0.1: 2012, updated PHI to work with FeynArts-3.7, which can now be kept in a subdir
    Version 8.2.0: 2012, added FeynArts 3.7 - unpatched. On first load it will be patched automatically.
-   
+
 *)
 
 
@@ -74,7 +74,7 @@ System`Private`cellmargs = CellMargins->{{Inherited,Inherited},{1,0}};
 System`FeynCalcCellPrint[ce_Cell] :=
 CellPrint[Append[ce(*/."Text"->"SmallText"*), System`Private`cellmargs]] /;
 Global`$FeynCalcStartupMessages =!= False;
-System`FeynCalcPrint[x__] := 
+System`FeynCalcPrint[x__] :=
   If[Global`$FeynCalcStartupMessages =!= False, Print[x]];
 
 If[MemberQ[$Packages,"HighEnergyPhysics`FeynCalc`"],
@@ -134,12 +134,12 @@ On[ClearAll::wrsym];
 (* Find out where HighEnergyPhysics is installed *)
 (* ------------------------------------------------------------------------ *)
 
-(* Change, Sept. 9th 2003, RM : 
+(* Change, Sept. 9th 2003, RM :
 Use (like JLink) the System`Private`FindFile function which returns
 the directory where this (FeynCalc.m) file is located on the file system.
 
 FeynCalc can be loaded now from everywhere.
-E.g.: 
+E.g.:
 <</tmp/HighEnergyPhysics/FeynCalc.m
 
 
@@ -170,11 +170,11 @@ FileNames[HighEnergyPhysics`FeynCalc`Private`configfile] =!= {},
 ResetDirectory[];
 
 If[$Notebooks ===True,
-   FeynCalcCellPrint[Cell[TextData[{"Loading FeynCalc from " <> 
+   FeynCalcCellPrint[Cell[TextData[{"Loading FeynCalc from " <>
    HighEnergyPhysics`FeynCalc`$FeynCalcDirectory }],
                   "Text"]],
 FeynCalcPrint["Loading FeynCalc from ", HighEnergyPhysics`FeynCalc`$FeynCalcDirectory
-     ] 
+     ]
   ];
 
 If[!MemberQ[$Path,Evaluate[ParentDirectory[
@@ -191,8 +191,8 @@ If[FileNames["*",{HighEnergyPhysics`FeynCalc`$FeynCalcDirectory}] == {},
 
 (* ------------------------------------------------------------------------ *)
 
-(* Maybe this is not a good idea. It is probably better to positively 
-declare explicitly those directories which are Package declared 
+(* Maybe this is not a good idea. It is probably better to positively
+declare explicitly those directories which are Package declared
 *)
   HighEnergyPhysics`FeynCalc`$ExcludeAutomaticDeclarePackageDirectories=
   {"Tarcer", "tarcer", "Phi",
@@ -336,7 +336,7 @@ MakeContext[a, b] construct the context path of b defined \
 in context of a.";
 
 MakeFeynCalcPrivateContext::"usage"=
-"MakeFeynCalcPrivateContext[val] constructs 
+"MakeFeynCalcPrivateContext[val] constructs
 HighEnergyPhysics`FeynCalc`Private`val.";
 
 
@@ -388,7 +388,7 @@ MakeBoxes[$Gauge,TraditionalForm]:=
 MakeBoxes[StyleForm["\[Lambda]",FontSlant->"Italic"]];
 
 $IndexPrefix::"usage"=
-"$IndexPrefix is a list of prefixes for default Lorentz and color indices 
+"$IndexPrefix is a list of prefixes for default Lorentz and color indices
 used by GluonPropagator and similar functions.";
 
 $BreitMaison::"usage"=
@@ -422,7 +422,7 @@ involving gamma5) the same effect as the \
 Breitenlohner-Maison-'t Hooft-Veltman scheme.";
 
 $LeviCivitaSign::"usage"=
-"$LeviCivitaSign is by default set to -1 which corresponds to the convention 
+"$LeviCivitaSign is by default set to -1 which corresponds to the convention
 Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d].
 Setting $LeviCivitaSign=I  will switch to the FORM-convention.";
 
@@ -476,7 +476,7 @@ The elements of the list should be of the form \"name\" -> \"abbreviation\".";
 $Abbreviations = {", "->"","^"->"","{"->"", "/" -> "",
                   "Subscript"->"su","SmallVariable"->"sma",
                   "}"->"", "["->"", "]"->"", "*" -> "", " " -> "" ,
-		  "\n" -> "", "\r" -> ""};
+      "\n" -> "", "\r" -> ""};
 
 (* Added 23/2-2003. F.Orellana. *)
 $Multiplications::"usage" =
@@ -561,8 +561,8 @@ $MemoryAvailable = 1024;
 $OPEWard = False;
 If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 
-(* RM20110818 
-setting $West=False is broken. 
+(* RM20110818
+setting $West=False is broken.
 See
 http://www.feyncalc.org/forum/0656.html
 Need to fix it.*)
@@ -877,11 +877,11 @@ ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
 
 If[Global`$FeynCalcStartupMessages =!= False ,
 If[$Notebooks===True,
-	With[{fcrefnb = FileNameJoin[ {$FeynCalcDirectory, "Documentation", "English", "FeynCalcRef8.nb"}]},
+  With[{fcrefnb = FileNameJoin[ {$FeynCalcDirectory, "Documentation", "English", "FeynCalcRef8.nb"}]},
    FeynCalcCellPrint[Cell[TextData[{StyleBox[ "FeynCalc" , FontWeight-> "Bold"], " ",
     $FeynCalcVersion,
      " For help, type ?FeynCalc, open ",
-     ButtonBox["FeynCalcRef8.nb", 
+     ButtonBox["FeynCalcRef8.nb",
        ButtonFunction :> NotebookOpen[fcrefnb],
        ButtonData:>{ "Short Overview", "intro"},
        ButtonStyle->"AddOnsLink",
@@ -891,7 +891,7 @@ If[$Notebooks===True,
       URL[ "http://www.feyncalc.org/"], None},
      ButtonStyle->"Hyperlink", ButtonNote->"http://www.feyncalc.org/"]}
     ],"Text"]]
-	]
+  ]
 ,
   WriteString["stdout", "FeynCalc " <> $FeynCalcVersion ,
               " Type ?FeynCalc for help or visit http://www.feyncalc.org/", "\n"];
@@ -945,18 +945,30 @@ SetDirectory[HighEnergyPhysics`FeynCalc`Private`feyncalchepdir];
 
 (*Default*)
 (* CHANGE2007RM *)
+(* CHANGE2014VS *)
 If[Global`$LoadFeynArts =!= False,
 If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]=!=True,
    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = Automatic];
 
 If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
 Off[General::cdir];
-  search = FileNames["FeynArts.m",StringDrop[#,-9]&/@FileNames["FeynArts",$Path,3],3] /.
-     {s_String,___} :> DirectoryName[s];
+  If[(search = FileNames["FeynArts.m", {$FeynCalcDirectory, $FeynCalcDirectory <> $PathnameSeparator <> "*"}])=!={},
+If[Length[search]>1,CellPrint[Cell[TextData[{
+    "Found multiple FeynArts directories in ", $FeynCalcDirectory, ":\n",
+      TableForm[DirectoryName/@search],"\n\n","Please use HighEnergyPhysics`FeynCalc`$FeynArtsDirectory \n"," to specify the directory FeynArts should be loaded from and reload FeynCalc"}
+   ],"Text"]]; Global`$LoadFeynArts = False;]
+, Global`$LoadFeynArts = False; CellPrint[Cell[TextData[{
+    "FeynArts not found. Please install FeynArts, e.g., in\n",
+          If[$VersionNumber >= 4.2, $UserAddOnsDirectory,
+             ToFileName[{$TopDirectory,"AddOns","Applications"}]],
+    "\n", "and reload FeynCalc",
+    "\n","FeynArts can be downloaded from ",
+    ButtonBox["www.feynarts.de", ButtonData:>{
+     URL[ "http://www.feynarts.de/"], None},
+    ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]}
+   ],"Text"]]];
 On[General::cdir];
-
-  If[StringQ[search], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = search]
-];
+  If[StringQ[search[[1]]], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = DirectoryName[search[[1]]]]];
 ];
 
 (*Set defaults here, not in the config file*)
@@ -978,8 +990,8 @@ If[ Global`$LoadFeynArts===True,
    If[$Notebooks===True,
       FeynCalcCellPrint[Cell[TextData[{
      "Loading FeynArts, see ", ButtonBox["www.feynarts.de", ButtonData:>{
-	   URL[ "http://www.feynarts.de/"], None},
-	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]," for documentation"}],
+     URL[ "http://www.feynarts.de/"], None},
+    ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]," for documentation"}],
                   "Text"]],
       FeynCalcPrint["Loading FeynArts, see www.feynarts.de for documentation"]
    ];
@@ -989,6 +1001,7 @@ If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
    loadfa = Get["FeynArts`"];
    If[loadfa=!=$Failed,
    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir],
+   $Path = Drop[$Path,Flatten[Position[$Path,s_String /; StringMatchQ[s, "*FeynArts*"]]]];
    $Path = Union[$Path, {ToString[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]}];
    loadfa =  Get["FeynArts`"];
 ]];
@@ -1000,7 +1013,7 @@ faversion = FindList[ToFileName[{HighEnergyPhysics`FeynCalc`$FeynArtsDirectory},
 If[$Notebooks===True,
    FeynCalcCellPrint[Cell[TextData[{
    "FeynArts " <> faversion <> " patched for use with FeynCalc"}], "Text"]],
-   FeynCalcPrint["FeynArts " <> 
+   FeynCalcPrint["FeynArts " <>
    faversion <> " patched for use with FeynCalc"
         ] /; Global`$FeynCalcStartupMessages =!= False
 ]];
@@ -1008,29 +1021,29 @@ If[$Notebooks===True,
 
    If[loadfa === $Failed,
      If[$Notebooks===True,
-	CellPrint[Cell[TextData[{
-	  "FeynArts not found. Please install FeynArts, e.g., in\n",
+  CellPrint[Cell[TextData[{
+    "FeynArts not found. Please install FeynArts, e.g., in\n",
           If[$VersionNumber >= 4.2, $UserAddOnsDirectory,
              ToFileName[{$TopDirectory,"AddOns","Applications"}]],
-	  "\n", "and reload FeynCalc",
-	  "\n","FeynArts can be downloaded from ",
-	  ButtonBox["www.feynarts.de", ButtonData:>{
-	   URL[ "http://www.feynarts.de/"], None},
-	  ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]}
-	 ],"Text"]],
+    "\n", "and reload FeynCalc",
+    "\n","FeynArts can be downloaded from ",
+    ButtonBox["www.feynarts.de", ButtonData:>{
+     URL[ "http://www.feynarts.de/"], None},
+    ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]}
+   ],"Text"]],
        WriteString["stdout",
           "FeynArts not found. Please install FeynArts, e.g., in\n ",
           If[$VersionNumber >= 4.2, $UserAddOnsDirectory,
              ToFileName[{$TopDirectory,"AddOns","Applications"}]
             ],
           "FeynArts not found. Please put the files in ",
-	  HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
-	  ". FeynArts can be downloaded from www.feynarts.de\n"];
+    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory,
+    ". FeynArts can be downloaded from www.feynarts.de\n"];
      ],
 (* This only removes FeynArts formatting rules which interfer with FeynCalc formatting rules *)
 Remove[HighEnergyPhysics`FeynArts`SetForm];
 (* RM20110830: added ClearAttributes[FeynAmpDenominator, Orderless];  *)
-ClearAttributes[FeynAmpDenominator, Orderless]; 
+ClearAttributes[FeynAmpDenominator, Orderless];
   ];
 ];
 
@@ -1042,7 +1055,7 @@ $LeviCivitaSign=-1;
 *)
 If[$VersionNumber>3.4,
    Unprotect@@{ToExpression["Tr"]};
-   Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /; 
+   Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /;
        !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD | Pair];
    Tr::usage="FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
    generalized trace, combining terms with f instead of Plus. Tr[list, f, n]
