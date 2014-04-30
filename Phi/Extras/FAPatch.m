@@ -62,7 +62,10 @@ Options[FAPatch] = {
       "Models" <> $PathnameSeparator <> "MSSM.mod",
       "Models" <> $PathnameSeparator <> "QED.gen",
       "Models" <> $PathnameSeparator <> "Lorentzbgf.gen",
-      "Models" <> $PathnameSeparator <> "Lorentz.gen"},
+      "Models" <> $PathnameSeparator <> "Lorentz.gen",
+      "Models" <> $PathnameSeparator <> "Dirac.gen",
+      "Models" <> $PathnameSeparator <> "DiracU.gen"
+},
 
   (*The list of replacements*)
   (*Some regular expression utilities would be VERY nice...*)
@@ -94,7 +97,9 @@ Options[FAPatch] = {
         "HighEnergyPhysics`FeynCalc`FeynAmpList`FeynAmpList",
       "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpDenominator" ->
         "HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator",
-      "tmpcreatefeynamp" -> "CreateFeynAmp"
+      "tmpcreatefeynamp" -> "CreateFeynAmp",
+      "FourVector/: -FourVector[ mom_, mu___ ] := FourVector[Expand[-mom], mu]" -> " ",
+      "FourVector[ 0, ___ ] = 0" -> " "
       }
            ]
 };
