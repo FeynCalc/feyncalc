@@ -15,10 +15,9 @@ Collect3::"usage"=
 "Collect3[expr, head] collects all monoomials of the form head[..]*head[..]*..
  in expr. \n
 Collect3[expr, {x, y, ...}] collects terms involving the same powers
-of monomials x[...]^n1*y[...]^n2 ... An option Factoring -> True/False/Factor2 can be 
-given, which factors the coefficients. The option Head (default Plus)
-determines the applied function to the list of monomials 
-mulitplied by their coefficients.";
+of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, True or Factor2;
+the latter two of these cause the coefficients to be factored. The option Head (default Plus)
+specified the function applied to the list of monomials multiplied by their coefficients.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -47,10 +46,7 @@ Collect3[expr_, vars_List, opts___?OptionQ] := Block[{fac, hva, mli},
 *)
      hva = (Hold[HoldPattern][#[___]]& /@ ( Hold/@vars ) ) /. Hold[a_] :> a;
      hva = Alternatives @@ hva;
-     If[$VersionNumber>=6,
-       mli = MonomialList[expr, vars],
-       mli = MonomialList[expr, Union@Cases[expr,hva,-1], CoefficientDomain -> RationalFunctions ];
-     ];
+     mli = MonomialList[expr, Union@Cases[expr,hva,-1]];
      If[fac =!= False, mli = Map[fac, mli]];
      Apply[Head/.{opts}/.Options[Collect3], mli]
 ];
