@@ -1923,7 +1923,7 @@ WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
   so that was the reason: With a product, each factor is written out sequentially
   and NM can do it's thing in between.
   So let's try another hack: replacing Plus temporarily.*)
-(*And now "#¤% we have problems with e.g
+(*And now "#ï¿½% we have problems with e.g
   NM[NM[a, UMatrix[aa]] + NM[b, UMatrix[bb]], UMatrix[cc]].
   Fixed by declaring plus a UMatrix.*)
 WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := Block[
@@ -2207,7 +2207,6 @@ Adjoint[IsoSymmetricCross[b_, c_]] /; $StandardSUNBasis :=
     IsoSymmetricCross[Conjugate[Adjoint[c]], Adjoint[b]];
 
 
-
 (* Operators and matrices are interchanged when adjoined: *)
 
 (*Adjoint[NM[b__, c_]] := NM[Adjoint[c], Adjoint[NM[b]]];*)
@@ -2226,7 +2225,7 @@ Conjugate[b__ + c_] := Conjugate[Plus[b]] + Conjugate[c];
 
 Conjugate[b__*c_] := Conjugate[Times[b]]*Conjugate[c];
 
-Conjugate[Power[a_, b_]] := Power[Conjugate[a], b];
+Conjugate[Power[a_, b_]]/;Element[b, Reals]===True := Power[Conjugate[a], b];
 
 Conjugate[IsoDot[b_, c_]] := IsoDot[Conjugate[b], Conjugate[c]];
 
