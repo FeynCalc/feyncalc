@@ -121,7 +121,7 @@ ComplexConjugate[x_ /; (Head[x] =!= HoldForm), opts___?OptionQ] :=
                               SUNTrace;
 
 compcon2[x_/;!FreeQ[x, HoldForm], opts___?OptionQ] := compcon[FRH[x], opts];
-compcon[x_^n_?NumberQ, opts___?OptionQ] := compcon[x,opts]^n;
+compcon[x_^n_?(Element[#,Reals]===True)&, opts___?OptionQ] := compcon[x,opts]^n;
 compcon[x_Plus, opts___?OptionQ]  := compcon[#,opts]& /@ x;
 compcon[x_Times, opts___?OptionQ] := compcon[#,opts]& /@ x;
 
