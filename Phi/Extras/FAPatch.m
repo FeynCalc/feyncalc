@@ -39,7 +39,7 @@ fullFCContext[s_String] := Block[{$ContextPath},
          ToString[HighEnergyPhysics`FeynCalc`MakeContext[s]]];
 
 fa2fc = (# -> (fullFCContext[#]))&/@ {
-"Loop", "PolarizationVector", "FeynAmp", "PropagatorDenominator", "GaugeXi", "NonCommutative"};
+"Loop", "PolarizationVector", "FeynAmp", "PropagatorDenominator", "GaugeXi", "NonCommutative", "LeviCivita"};
 
 (* Defaults *)
 
