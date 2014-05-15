@@ -206,17 +206,19 @@ If[($VersionNumber < 3.0),
    Quit[]; Exit[];
   ];
 
-If[3.4 < $VersionNumber < 7, (* RM change 1/4/2009*)
+If[3.4 < $VersionNumber < 6, (* RM change 1/4/2009*)
    (*And, well, System`MonomialList is gone;
     we construct a replacement for use in Collect3.
     F.Orellana, 17/9-2002*)
     System`MonomialList =
     Internal`FromDistributedTermsList[
-      Internal`DistributedTermsList[#1, Sequence@@Drop[{##}, 1]],
-    List]&,
-Scan[ {Remove @@ Names["Global`"<>#], ToExpression["System`"<>#]}&,
+      Internal`DistributedTermsList[#1, Sequence@@Drop[{##, CoefficientDomain-> RationalFunctions}, 1]],
+    List]&];
+
+If[$VersionNumber >= 7, (* RM change 1/4/2009*)
+	Scan[ {Remove @@ Names["Global`"<>#], ToExpression["System`"<>#]}&,
   { "CommonDefaultFormatTypes" }];
-  ];
+];
 
 savethisdir=Directory[];
  HighEnergyPhysics`FeynCalc`Private`feyncalchepdir =
@@ -968,7 +970,7 @@ If[Length[search]>1,CellPrint[Cell[TextData[{
     ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de/"]}
    ],"Text"]]];
 On[General::cdir];
-  If[StringQ[search[[1]]], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = DirectoryName[search[[1]]]]];
+  If[Length[search]>0&&StringQ[search[[1]]], HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = DirectoryName[search[[1]]]]];
 ];
 
 (*Set defaults here, not in the config file*)
