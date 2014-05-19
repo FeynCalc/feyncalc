@@ -6,7 +6,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
 *)
 ];
 
-(* :Version: 8.1.0.1 *)
+(* :Version: 9.0.0.0 *)
 
 (* :Authors: Rolf Mertig  (rolfm@gluonvision.com)
              Frederik Orellana (frederik@orellana.dk)
@@ -17,7 +17,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
 (* :Terms of use: GPL, see
                   http://www.feyncalc.org/licence.txt *)
 
-(* :Mathematica Version 6.0, 7.0 and 8.0 *)
+(* :Mathematica Version 6 - 9 *)
 
 (* :History:
 
@@ -41,6 +41,7 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
    Version 8.1.0: 2012,  fixed DiracTrick, improved SUNSimplify, DiracEquation, fixed Hyperlinks in FeynCalc8.nb, fixed Tarcer .mx loading
    Version 8.1.0.1: 2012, updated PHI to work with FeynArts-3.7, which can now be kept in a subdir
    Version 8.2.0: 2012, added FeynArts 3.7 - unpatched. On first load it will be patched automatically.
+   Version 9.0.0: 2014, added FeynArts 3.9 - unpatched. On first load it will be patched automatically. Fixed reported bugs.
 
 *)
 
@@ -59,7 +60,7 @@ System`MyBeginPackage[a_,b___] :=
 System`MyEndPackage[] :=
 ((*NoPrint["EE ", Context[]]; *)EndPackage[]);
 
-HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "8.2.0";
+HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "9.0.0";
 
 (* ------------------------------------------------------------------------ *)
 (* Clear all definitions.
@@ -879,15 +880,15 @@ ReleaseHold[HighEnergyPhysics`FeynCalc`Private`tab];
 
 If[Global`$FeynCalcStartupMessages =!= False ,
 If[$Notebooks===True,
-  With[{fcrefnb = FileNameJoin[ {$FeynCalcDirectory, "Documentation", "English", "FeynCalcRef8.nb"}]},
+  With[{fcrefnb = FileNameJoin[ {$FeynCalcDirectory, "Documentation", "English", "FeynCalcRef.nb"}]},
    FeynCalcCellPrint[Cell[TextData[{StyleBox[ "FeynCalc" , FontWeight-> "Bold"], " ",
     $FeynCalcVersion,
-     " For help, type ?FeynCalc, open ",
-     ButtonBox["FeynCalcRef8.nb",
-       ButtonFunction :> NotebookOpen[fcrefnb],
+     ". For help, type ?FeynCalc, use the ",
+     ButtonBox["help browser",
+       (*ButtonFunction :> NotebookOpen[fcrefnb],*)
        ButtonData:>{ "Short Overview", "intro"},
        ButtonStyle->"AddOnsLink",
-       ButtonNote->"Open FeynCalcRef8.nb"],
+       ButtonNote->"FeynCalc"],
      " or visit ",
      ButtonBox["www.feyncalc.org", ButtonData:>{
       URL[ "http://www.feyncalc.org/"], None},
