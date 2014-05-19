@@ -57,7 +57,7 @@ If[!ValueQ[Global`$LoadTARCER],
 If[!ValueQ[Global`$LoadPhi], 
    Global`$LoadPhi = False];   
 If[!ValueQ[Global`$LoadFeynArts], 
-   Global`$LoadFeynArts = True]; 
+   Global`$LoadFeynArts = False]; 
 
 (* You can put the directory for your FeynArts installation here
    if set to Automatic, then FeynArts on the path is loaded.
