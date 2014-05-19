@@ -18,7 +18,7 @@ BrowserCategory["High Energy Physics",
         Item["About Extras", "FeynCalcManual.nb",
           IndexTag->"About Extras"],
         Item["TARCER", "FeynCalcManual.nb", IndexTag->"tarcer"],
-        Item["Phi", "FeynCalcManual.nb", IndexTag->"phi"],
+        Item["PHI", "FeynCalcManual.nb", IndexTag->"phi"],
         Item["FeynArts", "FeynCalcManual.nb", IndexTag->"fa"]}
     ],
 
