@@ -223,6 +223,10 @@ Module[ {ziplocal, fcfilesize},
         $LoadTARCER = False
     ];
 
+	(* Clear the help index *)
+	helpIndexFiles = FileNames[FileNameJoin[{$UserBaseDirectory,
+		"FrontEnd", "*", "*",   "SystemFiles", "FrontEnd", "TextResources",   "HelpBrowserSetup.pbf"}]];
+	DeleteFile /@ helpIndexFiles;
 
     (* check if FeynCalc is installed. If not, install it *)
     Which [ 
