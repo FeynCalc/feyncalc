@@ -75,6 +75,7 @@ Options[FAPatch] = {
       "InferFormat" -> "tmpInfer",
       "SetLoop" -> "tmpsetloop", 
       "CreateFeynAmp" -> "tmpcreatefeynamp", 
+      "Loops"->"tmploops",
       "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose" ,
       "Format" -> "format1",
       "GS" -> "Gstrong",
@@ -89,6 +90,7 @@ Options[FAPatch] = {
       "format1[Global`a, Global`c]" -> "Format[Global`a, Global`c]",
       "tmpInfer" -> "InferFormat",
       "tmpsetloop" -> "SetLoop", 
+      "tmploops"->"Loops",
 
       "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr", 
       "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"", 
