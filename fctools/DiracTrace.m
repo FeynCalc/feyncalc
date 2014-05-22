@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: DiracTrace *)
@@ -39,7 +41,7 @@ DiracSigmaExplicit, DiracSimplify, DiracTrick, DiracTraceEvaluate];
 MakeContext[ DotSimplify, Eps, EpsEvaluate, Factor2, EpsContract,
 Expanding, Expand2, Factoring, FeynCalcInternal, FeynCalcExternal,
 FreeQ2, InsideDiracTrace, LeviCivitaSign, LorentzIndex, Mandelstam,
-MemSet, Momentum, Pair, PairContract, PairCollect, PartitHead ];
+MemSet, Momentum, Pair, PairContract, PairCollect, PartitHead, SUNT ];
 
 sCO := sCO = MakeContext["PairContract"];
 
@@ -118,7 +120,7 @@ DiracTrace[x_, op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrac
 );
                       SetOptions[DiracTrace, Sequence@@globalstartops];
                                      diTres] /; 
-    (DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)) === True;
+    ((DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)) === True && FreeQ[x,SUNT]);
 
 
  (*  special cases *)
