@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: SUNSimplify *)
@@ -389,14 +391,14 @@ If[sft === True,
    sundL[a__] := SUND[a];
    sunfL[a__] := SUNF[a]
   ];
-
+(*
 If[CheckContext["DiracGamma"],
    If[!FreeQ[temp, diracgamma], 
       temp = DotSimplify[temp,Expanding->False]];
       temp = temp /. DOT[a___diracgamma, b___sunt] :>
                      (DOT[a] DOT[b])
   ];
-
+*)
 
 (* CHANGE Rolf Mertig 20060215 : better to do this here:*)
 temp = temp //. sunsi;
@@ -422,10 +424,10 @@ If[CheckContext["DiracTrace"],
                    FreeQ[dd, sunt[___]],
 
                  (*Added Times to avoid Select2[a+b,SUNIndex] --> 0*)
-                 diractr[doot[xx__sunt] (*(dd_.)*)Optional[dd_Times] , dops___Rule] :>
+                 diractr[doot[xx__sunt] dd_. , dops___Rule] :>
                  suntrace[DOT[xx] Select2[dd, SUNIndex]]*
                    DiracTrace[Select1[dd, SUNIndex], dops],
-                 diractr[doot[xx__sunt, y__] Optional[dd_Times], dops___Rule] :>
+                 diractr[doot[xx__sunt, y__] dd_., dops___Rule] :>
                  suntrace[DOT[xx] Select2[dd, SUNIndex]] *
                    DiracTrace[doot[y] Select1[dd, SUNIndex], dops ] /;
                   FreeQ[{y}, SUNIndex],
@@ -434,16 +436,16 @@ If[CheckContext["DiracTrace"],
                  diractr[sunt[_]  dd_., ___Rule] :> 0 /; 
                   freeq2[dd,{SUNIndex,sunt}]
                 },
-       surule = {diractr[doot[xx__sunt] Optional[dd_Times] , dops___Rule] :>
+       surule = {diractr[doot[xx__sunt] dd_. , dops___Rule] :>
                   DOT[xx] Select2[dd, SUNIndex] *
                     DiracTrace[Select1[dd, SUNIndex], dops],
-                 diractr[doot[xx__sunt, y__] Optional[dd_Times] , dops___Rule] :>
+                 diractr[doot[xx__sunt, y__] dd_. , dops___Rule] :>
                   DOT[xx] Select2[dd, SUNIndex] *
                     DiracTrace[doot[y] Select1[dd, SUNIndex], dops] /;
                    FreeQ[{y}, SUNIndex]
                 }
         ];
-       temp = Trick[temp] /. DiracTrace -> diractr /. 
+       temp = temp /. DiracTrace -> diractr /. 
                                   DOT -> doot /. surule /.
                                   doot -> DOT /. diractr -> DiracTrace/.
                                   SUNDelta -> SUNDeltaContract /.
