@@ -1,0 +1,17 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: SUNTrace.test *)
+
+(* :Author: Vladyslav Shtaboveno *)
+
+(* :Summary:  Framework independent unit tests for the SUNTrace function      *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstSUNTraceColorTraces = {
+	{"SUNTrace-ColorTraces-ID1","SUNTrace[1]","SUNN"},
+	{"SUNTrace-ColorTraces-ID2","SUNTrace[SUNT[a]]","0"},
+	{"SUNTrace-ColorTraces-ID3","SUNTrace[SUNT[a].SUNT[b]]","1/2 SUNDelta[SUNIndex[a], SUNIndex[b]]"},		
+	{"SUNTrace-ColorTraces-ID4","SUNTrace[SUNT[b].SUNT[a]]","1/2 SUNDelta[SUNIndex[a], SUNIndex[b]]"}
+};
+

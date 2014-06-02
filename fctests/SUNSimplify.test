@@ -1,0 +1,17 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: SUNSimplify.test *)
+
+(* :Author: Vladyslav Shtaboveno *)
+
+(* :Summary:  Framework independent unit tests for the SUNSimplify function      *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstSUNSimplifyColorSimplifications = {
+	{"SUNSimplify-ColorSimplifications-ID1","SUNSimplify[1]","1"},
+	{"SUNSimplify-ColorSimplifications-ID2","SUNSimplify[SUNT[a].SUNT[b].SUNT[a]]","-(1/2) (CA - 2 CF) SUNT[SUNIndex[b]]"},
+	{"SUNSimplify-ColorSimplifications-ID3","SUNSimplify[SUNF[a, c, d].SUNF[b, c, d]]","CA SUNDelta[SUNIndex[a], SUNIndex[b]]"},		
+	{"SUNSimplify-ColorSimplifications-ID4","SUNSimplify[SUNF[a, b, c].SUNT[b].SUNT[c]]","1/2 I CA SUNT[SUNIndex[a]]"}
+};
+

@@ -1,0 +1,973 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: DiracTrace.test *)
+
+(* :Author: Vladyslav Shtaboveno *)
+
+(* :Summary:  Framework independent unit tests for the DiracTrace function      *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted = {{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID1",
+  "DiracTrace[GA[i], DiracTraceEvaluate->True]",
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID2",
+  "DiracTrace[GA[i] . GA[i], DiracTraceEvaluate->True]",
+  "16"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID3",
+  "DiracTrace[GA[i] . GA[i] . GA[j] . GA[j], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID4",
+  "DiracTrace[GA[i] . GA[j] . GA[i] . GA[j], \
+DiracTraceEvaluate->True]",
+  "-32"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID5",
+  "DiracTrace[GA[i] . GA[j] . GA[j] . GA[i], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID6",
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[i] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID7",
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[i] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID8",
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[j] . GA[i] . GA[k], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID9",
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[j] . GA[k] . GA[i], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID10",
+   "DiracTrace[GA[i] . GA[j] . GA[k] . GA[k] . GA[i] . GA[j], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID11",
+   "DiracTrace[GA[i] . GA[j] . GA[k] . GA[k] . GA[j] . GA[i], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID12",
+  "DiracTrace[GA[j] . GA[i] . GA[k] . GA[i] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID13",
+  "DiracTrace[GA[j] . GA[i] . GA[k] . GA[i] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID14",
+   "DiracTrace[GA[j] . GA[i] . GA[k] . GA[j] . GA[i] . GA[k], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID15",
+  "DiracTrace[GA[j] . GA[i] . GA[k] . GA[j] . GA[k] . GA[i], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID16",
+  "DiracTrace[GA[j] . GA[i] . GA[k] . GA[k] . GA[i] . GA[j], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID17",
+  "DiracTrace[GA[j] . GA[i] . GA[k] . GA[k] . GA[j] . GA[i], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID18",
+   "DiracTrace[GA[k] . GA[j] . GA[i] . GA[i] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID19",
+  "DiracTrace[GA[k] . GA[j] . GA[i] . GA[i] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID20",
+   "DiracTrace[GA[k] . GA[j] . GA[i] . GA[j] . GA[i] . GA[k], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID21",
+   "DiracTrace[GA[k] . GA[j] . GA[i] . GA[j] . GA[k] . GA[i], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID22",
+  "DiracTrace[GA[k] . GA[j] . GA[i] . GA[k] . GA[i] . GA[j], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID23",
+  "DiracTrace[GA[k] . GA[j] . GA[i] . GA[k] . GA[j] . GA[i], \
+DiracTraceEvaluate->True]",
+  "64"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID24",
+  "DiracTrace[GA[i] . GA[i] . GA[j] . GA[j] . GA[k] . GA[k], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID25",
+  "DiracTrace[GA[i] . GA[i] . GA[j] . GA[k] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID26",
+   "DiracTrace[GA[i] . GA[i] . GA[j] . GA[k] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID27",
+  "DiracTrace[GA[j] . GA[j] . GA[i] . GA[i] . GA[k] . GA[k], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID28",
+  "DiracTrace[GA[j] . GA[k] . GA[i] . GA[i] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID29",
+   "DiracTrace[GA[j] . GA[k] . GA[i] . GA[i] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID30",
+  "DiracTrace[GA[j] . GA[j] . GA[k] . GA[k] . GA[i] . GA[i], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID31",
+  "DiracTrace[GA[j] . GA[k] . GA[j] . GA[k] . GA[i] . GA[i], \
+DiracTraceEvaluate->True]",
+  "-128"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID32",
+   "DiracTrace[GA[j] . GA[k] . GA[k] . GA[j] . GA[i] . GA[i], \
+DiracTraceEvaluate->True]",
+  "256"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID33",
+  "DiracTrace[GA[i] . GA[i] . GA[j] . GA[j] . GA[k] . GA[k] . GA[l] . \
+GA[l], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID34",
+  "DiracTrace[GA[i] . GA[i] . GA[j] . GA[j] . GA[k] . GA[l] . GA[k] . \
+GA[l], DiracTraceEvaluate->True]",
+  "-512"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID35",
+   "DiracTrace[GA[i] . GA[i] . GA[j] . GA[k] . GA[l] . GA[l] . GA[k] \
+. GA[j], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID36",
+  "DiracTrace[GA[j] . GA[j] . GA[i] . GA[i] . GA[k] . GA[k] . GA[l] . \
+GA[l], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID37",
+  "DiracTrace[GA[j] . GA[j] . GA[i] . GA[i] . GA[k] . GA[l] . GA[k] . \
+GA[l], DiracTraceEvaluate->True]",
+  "-512"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID38",
+   "DiracTrace[GA[j] . GA[k] . GA[i] . GA[i] . GA[l] . GA[l] . GA[k] \
+. GA[j], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID39",
+  "DiracTrace[GA[j] . GA[j] . GA[k] . GA[k] . GA[i] . GA[i] . GA[l] . \
+GA[l], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID40",
+  "DiracTrace[GA[j] . GA[j] . GA[k] . GA[l] . GA[i] . GA[i] . GA[k] . \
+GA[l], DiracTraceEvaluate->True]",
+  "-512"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID41",
+   "DiracTrace[GA[j] . GA[k] . GA[l] . GA[l] . GA[i] . GA[i] . GA[k] \
+. GA[j], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID42",
+  "DiracTrace[GA[j] . GA[j] . GA[k] . GA[k] . GA[l] . GA[l] . GA[i] . \
+GA[i], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID43",
+  "DiracTrace[GA[j] . GA[j] . GA[k] . GA[l] . GA[k] . GA[l] . GA[i] . \
+GA[i], DiracTraceEvaluate->True]",
+  "-512"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID44",
+   "DiracTrace[GA[j] . GA[k] . GA[l] . GA[l] . GA[k] . GA[j] . GA[i] \
+. GA[i], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID45",
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[l] . GA[k] . GA[j] . \
+GA[i], DiracTraceEvaluate->True]",
+  "1024"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesContracted-ID46",
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[i] . GA[j] . GA[k] . \  
+GA[l], DiracTraceEvaluate->True]", "-512"}};
+
+
+
+
+
+fcstDiracTracesIn4dimsNoGamma5AllIndicesFree =
+{{"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID1", 
+  "DiracTrace[GA[i] . GA[j], DiracTraceEvaluate->True]", 
+  "4*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID2", 
+  "DiracTrace[GA[i] . GA[j] . GA[k], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID3", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "4*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID4", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID5", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n], \
+DiracTraceEvaluate->True]", 
+  "4*(Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], LorentzIndex[l]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], LorentzIndex[l]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID6", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n] . GA[o], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5AllIndicesFree-ID7", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n] . GA[o] . \
+GA[p], DiracTraceEvaluate->True]", 
+  "4*(Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[p]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[p]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[m], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], \
+LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[o]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[o]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[m], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], \
+LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[m], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], \
+LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]])"}};
+
+
+
+
+fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree =
+{{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID1", 
+  "DiracTrace[GA[i] . GA[j] . GA[i], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID2", 
+  "DiracTrace[GA[j] . GA[i] . GA[j], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID3", 
+  "DiracTrace[GA[j] . GA[j] . GA[i], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID4", 
+  "DiracTrace[GA[i] . GA[j] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID5", 
+  "DiracTrace[GA[i] . GA[k] . GA[j] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID6", 
+  "DiracTrace[GA[j] . GA[j] . GA[i] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID7", 
+  "DiracTrace[GA[j] . GA[i] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID8", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "-8*Pair[LorentzIndex[i], LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID9", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID10", 
+  "DiracTrace[GA[i] . GA[j] . GA[l] . GA[l] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID11", 
+  "DiracTrace[GA[i] . GA[l] . GA[l] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID12", 
+  "DiracTrace[GA[l] . GA[l] . GA[i] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID13", 
+  "DiracTrace[GA[l] . GA[i] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID14", 
+  "DiracTrace[GA[l] . GA[i] . GA[j] . GA[l] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID15", 
+  "DiracTrace[GA[l] . GA[i] . GA[l] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID16", 
+  "DiracTrace[GA[i] . GA[l] . GA[j] . GA[l] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID17", 
+  "DiracTrace[GA[i] . GA[l] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID18", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID19", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[m] . GA[m] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID20", 
+  "DiracTrace[GA[i] . GA[j] . GA[m] . GA[m] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID21", 
+  "DiracTrace[GA[i] . GA[m] . GA[m] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID22", 
+  "DiracTrace[GA[m] . GA[m] . GA[i] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID23", 
+  "DiracTrace[GA[m] . GA[i] . GA[j] . GA[k] . GA[l] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID24", 
+  "DiracTrace[GA[m] . GA[i] . GA[j] . GA[k] . GA[m] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "-8*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID25", 
+  "DiracTrace[GA[m] . GA[i] . GA[j] . GA[m] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID26", 
+  "DiracTrace[GA[m] . GA[i] . GA[m] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "-8*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID27", 
+  "DiracTrace[GA[i] . GA[m] . GA[j] . GA[m] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "-8*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID28", 
+  "DiracTrace[GA[i] . GA[m] . GA[j] . GA[k] . GA[m] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID29", 
+  "DiracTrace[GA[i] . GA[m] . GA[j] . GA[k] . GA[l] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "-8*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID30", 
+  "DiracTrace[GA[i] . GA[j] . GA[m] . GA[k] . GA[l] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID31", 
+  "DiracTrace[GA[i] . GA[j] . GA[m] . GA[k] . GA[m] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "-8*(Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]] - Pair[LorentzIndex[i], \
+LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]])"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID32", 
+  "DiracTrace[GA[i] . GA[j] . GA[j] . GA[k] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID33", 
+  "DiracTrace[GA[j] . GA[i] . GA[j] . GA[k] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID34", 
+  "DiracTrace[GA[j] . GA[j] . GA[i] . GA[k] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID35", 
+  "DiracTrace[GA[j] . GA[j] . GA[k] . GA[i] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID36", 
+  "DiracTrace[GA[j] . GA[k] . GA[i] . GA[k] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID37", 
+  "DiracTrace[GA[j] . GA[k] . GA[j] . GA[j] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID38", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[k] . GA[l] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "64*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID39", 
+  "DiracTrace[GA[j] . GA[k] . GA[k] . GA[i] . GA[l] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "64*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID40", 
+  "DiracTrace[GA[k] . GA[i] . GA[k] . GA[l] . GA[j] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID41", 
+  "DiracTrace[GA[k] . GA[j] . GA[l] . GA[k] . GA[i] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "16*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID42", 
+  "DiracTrace[GA[k] . GA[k] . GA[i] . GA[j] . GA[l] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "64*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID43", 
+  "DiracTrace[GA[l] . GA[k] . GA[i] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "64*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsNoGamma5SomeIndicesFree-ID44", 
+  "DiracTrace[GA[l] . GA[k] . GA[j] . GA[i] . GA[l] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "-32*Pair[LorentzIndex[i], LorentzIndex[j]]"}};
+
+
+fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted = 
+{{"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID1", 
+  "DiracTrace[GA[5], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID2", 
+  "DiracTrace[GA[i] . GA[5] . GA[i], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID3", 
+  "DiracTrace[GA[i] . GA[i] . GA[5], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID4", 
+  "DiracTrace[GA[i] . GA[j] . GA[j] . GA[i] . GA[5], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID5", 
+  "DiracTrace[GA[i] . GA[j] . GA[5] . GA[j] . GA[i], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID6", 
+  "DiracTrace[GA[i] . GA[5] . GA[j] . GA[j] . GA[i], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID7", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[5] . GA[j] . GA[k] . GA[i], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID8", 
+  "DiracTrace[GA[i] . GA[j] . GA[5] . GA[k] . GA[j] . GA[k] . GA[i], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID9", 
+  "DiracTrace[GA[i] . GA[i] . GA[k] . GA[j] . GA[k] . GA[i] . GA[5], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-ID10", 
+  "DiracTrace[GA[i] . GA[j] . GA[5] . GA[j] . GA[5] . GA[i], \
+DiracTraceEvaluate->True]", 
+  "-64"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesContracted-\
+ID11", "DiracTrace[GA[i] . GA[5] . GA[j] . GA[j] . GA[5] . GA[i], \
+DiracTraceEvaluate->True]", "64"}}
+
+
+
+fcstDiracTracesIn4dimsWithGamma5AllIndicesFree  = {{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID1", 
+  "DiracTrace[GA[i] . GA[5], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID2", 
+  "DiracTrace[GA[i] . GA[j] . GA[5], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID3", 
+  "DiracTrace[GA[i] . GA[5] . GA[j], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID4", 
+  "DiracTrace[GA[5] . GA[i] . GA[j] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "(-4*I)*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], \
+LorentzIndex[l]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID5", 
+  "DiracTrace[GA[i] . GA[j] . GA[5] . GA[k] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "(-4*I)*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], \
+LorentzIndex[l]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID6", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[5], \
+DiracTraceEvaluate->True]", 
+  "(-4*I)*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], \
+LorentzIndex[l]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID7", 
+  "DiracTrace[GA[i] . GA[j] . GA[5] . GA[k] . GA[l] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID8", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n] . GA[5], \
+DiracTraceEvaluate->True]", 
+  "4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[i], LorentzIndex[j]] - 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*
+  Pair[LorentzIndex[i], LorentzIndex[k]] + 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[j], LorentzIndex[k]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] - 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*
+  Pair[LorentzIndex[l], LorentzIndex[n]] + 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID9", 
+  "DiracTrace[GA[i] . GA[5] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n], \
+DiracTraceEvaluate->True]", 
+  "-4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[i], LorentzIndex[j]] + 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*
+  Pair[LorentzIndex[i], LorentzIndex[k]] - 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[j], LorentzIndex[k]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] + 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*
+  Pair[LorentzIndex[l], LorentzIndex[n]] - 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID10", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n] . GA[o] . \
+GA[5], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID11", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[5] . GA[m] . GA[n] . \
+GA[o] . GA[p], DiracTraceEvaluate->True]", 
+  "4*Eps[LorentzIndex[m], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], LorentzIndex[k]] - 
+ 4*Eps[LorentzIndex[l], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], LorentzIndex[k]] - 
+ 4*Eps[LorentzIndex[m], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + 
+ 4*Eps[LorentzIndex[l], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[m], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], LorentzIndex[l]] - 
+ 4*Eps[LorentzIndex[l], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[k], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[l], LorentzIndex[m]] - 
+ 4*Eps[LorentzIndex[j], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[n], LorentzIndex[o]] - 
+ 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] - 
+ 4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[n], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[o], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[o], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[o], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5AllIndicesFree-ID12", 
+  "DiracTrace[GA[5] . GA[i] . GA[j] . GA[k] . GA[l] . GA[m] . GA[n] . \
+GA[o] . GA[p], DiracTraceEvaluate->True]", 
+  "4*Eps[LorentzIndex[m], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], LorentzIndex[k]] - 
+ 4*Eps[LorentzIndex[l], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], LorentzIndex[k]] - 
+ 4*Eps[LorentzIndex[m], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[l]] + 
+ 4*Eps[LorentzIndex[l], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[m], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], LorentzIndex[l]] - 
+ 4*Eps[LorentzIndex[l], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[k], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[l], LorentzIndex[m]] - 
+ 4*Eps[LorentzIndex[j], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[n], LorentzIndex[o], LorentzIndex[p]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[m]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[n]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[n]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[p]]*Pair[LorentzIndex[m], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[n]]*Pair[LorentzIndex[m], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[o]]*Pair[LorentzIndex[m], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[n], LorentzIndex[o]] - 
+ 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[p]]*Pair[LorentzIndex[l], LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[o]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[p]]*Pair[LorentzIndex[n], LorentzIndex[o]] - 
+ 4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[n], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[n], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[o]]*Pair[LorentzIndex[l], LorentzIndex[m]]*Pair[LorentzIndex[n], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[o]]*Pair[LorentzIndex[n], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[k], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[o], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[j], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[o], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[l], LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[j], LorentzIndex[k]]*Pair[LorentzIndex[o], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]]*Pair[LorentzIndex[o], LorentzIndex[p]] - 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]] + 
+ 4*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]]*Pair[LorentzIndex[o], LorentzIndex[p]]"}};
+
+
+
+fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree = 
+{{"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID1", 
+  "DiracTrace[GA[i] . GA[j] . GA[5] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID2", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[5] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID3", 
+  "DiracTrace[GA[i] . GA[j] . GA[l] . GA[5] . GA[l] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID4", 
+  "DiracTrace[GA[i] . GA[j] . GA[k] . GA[l] . GA[l] . GA[5], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID5", 
+  "DiracTrace[GA[i] . GA[m] . GA[5] . GA[k] . GA[m] . GA[j] . GA[l], DiracTraceEvaluate->True]", 
+  "(-8*I)*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID6", 
+  "DiracTrace[GA[j] . GA[k] . GA[k] . GA[5] . GA[i] . GA[l] . GA[l], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID7", 
+  "DiracTrace[GA[l] . GA[k] . GA[j] . GA[5] . GA[i] . GA[l] . GA[k], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID8", 
+  "DiracTrace[GA[5] . GA[5], DiracTraceEvaluate->True]", 
+  "4"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID9", 
+  "DiracTrace[GA[5] . GA[i] . GA[5], DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID10", 
+  "DiracTrace[GA[5] . GA[i] . GA[j] . GA[5], \
+DiracTraceEvaluate->True]", 
+  "4*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID11", 
+  "DiracTrace[GA[5] . GA[i] . GA[5] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "-4*Pair[LorentzIndex[i], LorentzIndex[j]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID12", 
+  "DiracTrace[GA[5] . GA[i] . GA[j] . GA[5] . GA[k] . GA[l] . GA[m], \
+DiracTraceEvaluate->True]", 
+  "0"}, {"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID13", 
+  "DiracTrace[GA[i] . GA[5] . GA[j] . GA[k] . GA[l] . GA[m] . GA[5] . \
+GA[n], DiracTraceEvaluate->True]", 
+  "4*(Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], LorentzIndex[l]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], LorentzIndex[l]] - \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[k], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[k], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[k], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[n]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[l]]*Pair[LorentzIndex[j], \
+LorentzIndex[k]]*Pair[LorentzIndex[m], LorentzIndex[n]] - \
+Pair[LorentzIndex[i], LorentzIndex[k]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]] + \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[k], \
+LorentzIndex[l]]*Pair[LorentzIndex[m], LorentzIndex[n]])"}, \
+{"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID14", 
+  "DiracTrace[GA[5] . GA[i] . GA[j] . GA[k] . GA[5] . GA[j], \
+DiracTraceEvaluate->True]", 
+  "8*Pair[LorentzIndex[i], LorentzIndex[k]]"}, \
+{"fcstDiracTracesIn4dimsWithGamma5SomeIndicesFree-ID15", 
+  "DiracTrace[GA[j] . GA[k] . GA[5] . GA[k] . GA[5] . GA[i] . GA[l] . \
+GA[m], DiracTraceEvaluate->True]", 
+  "16*(Pair[LorentzIndex[i], LorentzIndex[m]]*Pair[LorentzIndex[j], \
+LorentzIndex[l]] - Pair[LorentzIndex[i], \
+LorentzIndex[l]]*Pair[LorentzIndex[j], LorentzIndex[m]] - \
+Pair[LorentzIndex[i], LorentzIndex[j]]*Pair[LorentzIndex[l], \
+LorentzIndex[m]])"}};

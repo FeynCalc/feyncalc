@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* :Title: FeynCalc *)
 If[$VersionNumber>5.3,
 Remove[PartialD];
@@ -749,7 +751,7 @@ SetDirectory[feyncalcdir];
 hepdirs = Select[FileNames[], FileType[#]===Directory&];
 *)
 (* I think the only clean way is to list the directories explicitly here ..., or? *)
-hepdirs = { "fcdevel", "fcloops", "fctables", "fctools", "general",  "qcd" };
+hepdirs = { "fcdevel", "fcloops", "fctables", "fctools", "general",  "qcd", "fctests" };
 
 (* fix for Mac OS *)
 If[StringMatchQ[$OperatingSystem, "MacOS"],

@@ -1,0 +1,17 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: Contract.test *)
+
+(* :Author: Vladyslav Shtaboveno *)
+
+(* :Summary:  Framework independent unit tests for the Contract function      *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstContractContractionsIn4dims = {
+	{"Contract-ID1","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, l]]","-24"},
+	{"Contract-ID2","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, m]]","-6 Pair[LorentzIndex[l], LorentzIndex[m]]"},
+	{"Contract-ID3","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, m, n]]",
+		"2 Pair[LorentzIndex[k], LorentzIndex[n]] Pair[LorentzIndex[l], 
+		LorentzIndex[m]] - 2 Pair[LorentzIndex[k], LorentzIndex[m]] Pair[LorentzIndex[l],LorentzIndex[n]]"}		
+};
