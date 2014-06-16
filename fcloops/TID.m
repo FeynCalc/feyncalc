@@ -335,7 +335,7 @@ If[FreeQ[res, DiracGamma],
 If[$VeryVerbose > 0, Print["special disi in TID  "]];
    disi[z_] := (*disi[z] = *)If[FreeQ[FixedPoint[ReleaseHold,z], q],
                   Collect2[DiracSimplify[Collect2[
-                    ChangeDimension[z,4],DiracGamma,Factoring->False]],
+                    ChangeDimension[z,n],DiracGamma,Factoring->False]],
                        DiracGamma, Factoring->Factor],
                   z
                  ];
