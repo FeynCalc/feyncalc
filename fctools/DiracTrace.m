@@ -707,7 +707,7 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
    spur[x__,DiracGamma[7]]:=1/2 spur[x] - 1/2 spur[x,DiracGamma[5]];
 
 
-   spur[x__]:=( DiracTrace@@ ( gamma67backj[ {x} ] )
+   spur[x__]:=( DiracTrace@@ ( gamma67back[ {x} ] )
               ) /; !FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}];
 
    gc[x_]:=x/.DiracGamma->gach;
