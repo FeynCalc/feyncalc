@@ -193,6 +193,7 @@ diracback[5] := ga[5];
 diracback[6] := ga[6];
 diracback[7] := ga[7];
 suntback[sunindex[a_]] := sunt[a];
+suntback[a__Symbol] := sunt[a];
 propagatordback[a_,b_] := propagatordenominator[a/.momentum->iDent, b];
 propd[a_, 0] := a /. momentum->iDent;
 propd[a_, b_/;b=!=0] := {a/.momentum->iDent, b};
