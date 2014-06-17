@@ -102,20 +102,18 @@ dr[a_spinor, b___, c_spinor, d_spinor, e___, f_spinor, g___]:=
 dr[b___,DiracGamma[5],DiracGamma[5],c___]:= ds[ b,c ];
 dr[b___,DiracGamma[5],DiracGamma[6],c___]:= ds[b,DiracGamma[6],c];
 dr[b___,DiracGamma[5],DiracGamma[7],c___]:=-ds[b,DiracGamma[7],c];
-
-dr[b___,DiracGamma[6],DiracGamma[x_[c__],di___],d___ ]:=
-ds[ b,DiracGamma[x[c],di], DiracGamma[7],d ];
-
 dr[b___,DiracGamma[6], DiracGamma[5], c___]:=ds[b,DiracGamma[6],c];
+dr[b___,DiracGamma[7],DiracGamma[5],c___] := -ds[b, DiracGamma[7], c];
+
 dr[b___,DiracGamma[6], DiracGamma[7], c___] := 0;
 dr[b___,DiracGamma[7], DiracGamma[6], c___] := 0;
-
-dr[b___,DiracGamma[7],DiracGamma[x_[c__],di___],d___ ] :=
-   ds[ b,DiracGamma[x[c],di],DiracGamma[6],d ];
-
-dr[b___,DiracGamma[7],DiracGamma[5],c___] := -ds[b, DiracGamma[7], c];
 dr[b___,DiracGamma[6],DiracGamma[6],c___] :=  ds[b, DiracGamma[6], c];
 dr[b___,DiracGamma[7],DiracGamma[7],c___] :=  ds[b, DiracGamma[7], c];
+
+dr[b___,DiracGamma[6],DiracGamma[x_[c__],di___],d___ ]:=
+	ds[ b,DiracGamma[x[c],di], DiracGamma[7],d ];
+dr[b___,DiracGamma[7],DiracGamma[x_[c__],di___],d___ ] :=
+   ds[ b,DiracGamma[x[c],di],DiracGamma[6],d ];
 
 
 dr[b___,DiracGamma[5],c:DiracGamma[_[_]].. ,d___] :=
