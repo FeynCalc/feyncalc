@@ -121,6 +121,22 @@ dr[b___,DiracGamma[7],DiracGamma[7],c___] :=  ds[b, DiracGamma[7], c];
 dr[b___,DiracGamma[5],c:DiracGamma[_[_]].. ,d___] :=
    (-1)^Length[{c}] ds[ b,c,DiracGamma[5],d];
 
+
+dr[b___,DiracGamma[5],c:DiracGamma[_[__],_].. ,d___] :=
+   ( (-1)^Length[{c}] ds[ b,c,DiracGamma[5],d ] ) /;
+      ($BreitMaison =!= True && $Larin =!= True);
+
+(*In the BM scheme, the anticommutator is not zero*)
+dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol -4] ,f___] :=
+   (ds[ b,DiracGamma[x[y],d-4],DiracGamma[5],f ] ) /;
+      ($BreitMaison === True && $Larin =!= True);
+
+dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol] ,f___] :=
+   ( 2 ds[b,DiracGamma[x[y],d-4],DiracGamma[5],f] -
+     ds[b,DiracGamma[x[y],d],DiracGamma[5],f] ) /;
+      ($BreitMaison === True && $Larin =!= True);
+
+
 (* o.k., some 4 years after the proposal of M.B., here it is: *)
 drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_),
     xy:DiracGamma[_[__],___].. , DiracGamma[6], c___] :=
@@ -180,18 +196,7 @@ drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_),
 drS[b, DiracGamma[v[w],di], xy, DiracGamma[7], c] /; NumberQ[n] &&
        OddQ[Length[{xy}]] && noncommQ[mass];
 
-dr[b___,DiracGamma[5],c:DiracGamma[_[__],_].. ,d___] :=
-   ( (-1)^Length[{c}] ds[ b,c,DiracGamma[5],d ] ) /;
-      ($BreitMaison =!= True && $Larin =!= True);
 
-dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol -4] ,f___] :=
-   (ds[ b,DiracGamma[x[y],d-4],DiracGamma[5],f ] ) /;
-      ($BreitMaison === True);
-
-dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol] ,f___] :=
-   ( 2 ds[b,DiracGamma[x[y],d-4],DiracGamma[5],f] -
-     ds[b,DiracGamma[x[y],d],DiracGamma[5],f] ) /;
-      ($BreitMaison === True);
 
 (* gamma[mu] gamma[mu] ---> 4, etc. *)
 dr[b___,DiracGamma[LorentzIndex[c_]],
@@ -208,6 +213,8 @@ dr[b___,DiracGamma[LorentzIndex[c_]],
 
 dr[b___,DiracGamma[LorentzIndex[c_]],
         DiracGamma[LorentzIndex[c_,di_ ],di_ ],d___] := 4 ds[ b,d ];
+
+
 
 fdim[]=4;    (* fdimdef *)
 fdim[dimi_]:=dimi;
