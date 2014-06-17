@@ -15,5 +15,6 @@ RunTestSuite[ StringJoin[$FeynCalcDirectory, "/fctests"] ,
 				"/fctests/DiracSimplify.mt",
 				"/fctests/Contract.mt",
 				"/fctests/SUNTrace.mt",
-				"/fctests/SUNSimplify.mt"
+				"/fctests/SUNSimplify.mt",
+				"/fctests/DotExpand.mt"
 				}]
