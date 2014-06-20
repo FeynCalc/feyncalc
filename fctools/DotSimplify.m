@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: DotSimplify *)
@@ -47,6 +49,7 @@ AntiCommutator, Expanding, FeynCalcInternal,
 FreeQ2, NonCommFreeQ, MemSet, SUNT,
 SUNTrace, DiracGamma, QuantumField, Momentum];
 
+(*Error messages for calling DotSimplify with less or more than 1 argument*)
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
 soso /; Message[DotSimplify::argrx, DotSimplify, Length[{a}]+1, 1];
 
@@ -63,11 +66,15 @@ Options[DotSimplify] = {Expanding -> True, DotSimplifyRelations -> {},
                         FeynCalcInternal -> True
                        };
 
+
 DotSimplify[xxx_, opts___Rule] := Block[
  {pid, ex, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
   sdoot,simpf, actorules, ctorules, acomall, comall, simrel, dootpow,
   dotpower,tic, dodot
  },
+
+
+(*Evaluate the options*)
 
 simrel = DotSimplifyRelations /. {opts} /. Options[DotSimplify];
 dotpower = DotPower /.  {opts} /. Options[DotSimplify];
@@ -128,12 +135,13 @@ If[simrel =!= {},
 
 sru[aa_ :> bb_] := (DOT[xxX___, Sequence @@ If[Head[aa] === DOT, List @@ aa, {aa}],
          yyY___] :> (sdoot[xxX, bb, yyY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
+	(*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
 
 sru[aa_ -> bb_] := sru[aa :> bb];
-
  simrel = Map[sru, simrel];
   ];
 
+(*If the expression contains commutators or anticommutators, write them out explicitly, i.e. [a,b] -> ab-ba etc.*)
 If[CheckContext["Commutator"] || CheckContext["AntiCommutator"],
    If[(!FreeQ[xx, Commutator]) || (!FreeQ[xx, AntiCommutator]),
       x = CommutatorExplicit[xx],
@@ -142,18 +150,26 @@ If[CheckContext["Commutator"] || CheckContext["AntiCommutator"],
   ];
 
 (* CHANGE 07/26/94 *)
+
+(*If the expression contains SU(N) matrices, put Dot on hold*)
 If[!FreeQ[x, SUNT],
    SetAttributes[TimesDot, HoldAll];
    TimesDot[a__] := If[FreeQ[{a}, SUNT], Times[a], DOT[a]];
    x = x /. Times -> TimesDot
   ];
 
+(*If the expression contains powers of non-commutative objects, write them out explicitly, i.e. a.(b^4).c -> a.b.b.b.b.c *)
 (*  maybe this is somewhat slow;  use FORM then ... *)
 If[!FreeQ[x, (a_/;NonCommQ[a])^n_Integer?Positive],
 	x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
   ];
 
 (* check special case *)
+
+(*  If there are no supplied relations from DotSimplifyRelations, 
+	check if the expression consists only of user defined noncommutative objects.
+	If this is so, and there no commutators or anticommuators inside, expand the
+	expression and return it *)
 If[simrel === {},
    vars = Union[Variables[Cases[xx, _, Infinity] ]];
    If[Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
@@ -278,6 +294,7 @@ If[simrel === {},
                                ] //. simrel
   ];
 
+(* Expand sums, if needed *)
 
 If[ex === True,
 
@@ -305,6 +322,7 @@ dlin1[{ok___},b_, c___] := If[NonCommFreeQ[b] === True && FreeQ[b, dlin1],
                                 ]
                              ];
 
+(* Evaluate all the commutators and anticommutators*)
 If[FreeQ[Attributes @@ {DOT}, Flat],
    x = FixedPoint[(# /. DOT -> dlin0/. dlin0 -> dlin //. dlin[a__] :>
                   dlin1[{}, a] //.
@@ -326,6 +344,7 @@ x = FixedPoint[simpf, x, 123];
 
 x];
 
+(*Pull out all SU(N) Traces out of the expression*)
 If[CheckContext["SUNTrace"],
    If[!FreeQ[x, SUNTrace],
       x = x  /. {DOT[a___,b_SUNTrace,c___] :> (b  DOT[a,c]) ,
@@ -350,6 +369,7 @@ If[!FreeQ[x, SUNT],
   ];
 
 (*CHANGE 03/98 *)
+(* if the expression contains a QuantumField, factor it out*)
 If[!FreeQ[x, QuantumField],
    x = x /. DOT->dodot //.
             {dodot[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :>
@@ -367,6 +387,8 @@ If[!FreeQ[x, SUNT],
   ];
 *)
 
+(* If the same non-commutative object is multiplied with itself multiple times, write this as a power,i.e.
+	f.f.f.g.h.k -> f^3.g.h.k *)
 dootpow[a__] := If[FreeQ2[{a}, {DiracGamma,SUNT}],
                    Apply[DOT, (#[[1]]^Length[#])& /@ Split[{a}]],
                    DOT[a]
@@ -377,6 +399,9 @@ If[dotpower === True,
   ];
 x
 ];
+
+
+
 
 If[MemberQ[$ContextPath,"HighEnergyPhysics`Tarcer`"],
    MakeBoxes[HighEnergyPhysics`Tarcer`SEpsilon[d_]^(n_), fmt_] :=
