@@ -562,7 +562,7 @@ $Larin   = False;
 $LimitTo4 = True;
 $LorentzIndices = False;
 (* RM20120113: changed this *)
-$MemoryAvailable = 1024;
+$MemoryAvailable = 4096;
 $OPEWard = False;
 If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 
