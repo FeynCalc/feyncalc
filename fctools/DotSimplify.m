@@ -59,7 +59,8 @@ soso /; Message[DotSimplify::argrx, DotSimplify, 0, 1];
 (*Why? Commented out 26/9-2002. F.Orellana*)
 (*DotSimplifyRelation = DotSimplifyRelations;*)
 
-Options[DotSimplify] = {Expanding -> True, DotSimplifyRelations -> {},
+Options[DotSimplify] = {Expanding -> True, 
+						DotSimplifyRelations -> {},
                         DotPower -> False, (*True*)(*CHANGE 26/9-2002. 
                         To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
                                                   F.Orellana*)
@@ -133,12 +134,12 @@ If[simrel =!= {},
   Condition - the substitution of Hold[bb] -> bb does not work. Therefore, just
   avoid bb's with patterns in them*)
 
-sru[aa_ :> bb_] := (DOT[xxX___, Sequence @@ If[Head[aa] === DOT, List @@ aa, {aa}],
-         yyY___] :> (sdoot[xxX, bb, yyY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
 	(*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
 
-sru[aa_ -> bb_] := sru[aa :> bb];
- simrel = Map[sru, simrel];
+	sru[aa_ :> bb_] := (DOT[xxX___, Sequence @@ If[Head[aa] === DOT, List @@ aa, {aa}],yyY___] 
+					:> (sdoot[xxX, bb, yyY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
+	sru[aa_ -> bb_] := sru[aa :> bb];
+	simrel = Map[sru, simrel];
   ];
 
 (*If the expression contains commutators or anticommutators, write them out explicitly, i.e. [a,b] -> ab-ba etc.*)
@@ -173,9 +174,7 @@ If[!FreeQ[x, (a_/;NonCommQ[a])^n_Integer?Positive],
 If[simrel === {},
    vars = Union[Variables[Cases[xx, _, Infinity] ]];
    If[Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
-      If[FreeQ2[{DownValues[Commutator], DownValues[AntiCommutator]},
-                vars
-               ],
+      If[FreeQ2[{DownValues[Commutator], DownValues[AntiCommutator]},vars],
 (* that means : just expansion, no acomms, comms *)
          x = Distribute[x /. DOT -> doot] //.
                   doot[a___, n_?NumberQ b_, c___] :> (n doot[a, b, c]);
@@ -183,7 +182,6 @@ If[simrel === {},
         ]
      ]
   ];
-
 
 pid[u_,_] := u;
 
@@ -295,12 +293,8 @@ If[simrel === {},
   ];
 
 (* Expand sums, if needed *)
-
 If[ex === True,
-
-dlin0[a___] := (Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :>
-                                       (n dlin[h, c, b])
-               );
+	dlin0[a___] := (Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
   ];
 
 dlin[] = 1;
@@ -308,6 +302,8 @@ dlin1[{ok___}, b_/;DataType[b, NonCommutative], c___] :=
    dlin1[{ok, b}, c];
 dlin1[{ok___},(n_?NumberQ) b_/;DataType[b, NonCommutative], c___] :=
  n dlin1[{ok, b}, c];
+
+
 dlin1[{ok___},b_, c___] := If[NonCommFreeQ[b] === True && FreeQ[b, dlin1],
                               b dlin1[{ok}, c],
                               If[Head[b] === Times,
@@ -356,14 +352,12 @@ If[CheckContext["SUNTrace"],
   ];
 
 If[!FreeQ[x, SUNT],
-   x  = x //. {DOT[a__,b__SUNT, c___]:>
-               DOT[b, a, c] /; FreeQ[{a}, SUNT],
+   x  = x //. {DOT[a__,b__SUNT, c___]:> DOT[b, a, c] /; FreeQ[{a}, SUNT],
 (*
                DOT[a, c, b],
 *)
 (* implies that SUNT's in a DiracTrace are also to be summed over, need to document this ... *)
-              DiracTrace[f_. DOT[b__SUNT,c__] ] :>
-               f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
+              DiracTrace[f_. DOT[b__SUNT,c__] ] :> f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
               DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b] 
              }
   ];
@@ -371,10 +365,7 @@ If[!FreeQ[x, SUNT],
 (*CHANGE 03/98 *)
 (* if the expression contains a QuantumField, factor it out*)
 If[!FreeQ[x, QuantumField],
-   x = x /. DOT->dodot //.
-            {dodot[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :>
-              dodot[a,c,b,d]
-             } /. dodot->DOT;
+   x = x /. DOT->dodot //. {dodot[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :> dodot[a,c,b,d]} /. dodot->DOT;
    x = x /. DOT[a__SUNT, b__QuantumField] :> (DOT[a]*DOT[b])
   ];
 
