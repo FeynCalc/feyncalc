@@ -149,10 +149,8 @@ If[!FreeQ[x, SUNT],
   ];
 
 (*  maybe this is somewhat slow;  use FORM then ... *)
-If[!FreeQ[x, (a_/;!FreeQ2[a, $NonComm])^n_Integer?Positive],
-   x = x /. {(a_/;!FreeQ2[a, $NonComm])^n_Integer?Positive :>
-             DOT @@ Table[a, {n}]
-            };
+If[!FreeQ[x, (a_/;NonCommQ[a])^n_Integer?Positive],
+	x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
   ];
 
 (* check special case *)
