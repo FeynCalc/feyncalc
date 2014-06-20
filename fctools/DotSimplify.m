@@ -71,6 +71,7 @@ DotSimplify[xxx_, opts___Rule] := Block[
 
 simrel = DotSimplifyRelations /. {opts} /. Options[DotSimplify];
 dotpower = DotPower /.  {opts} /. Options[DotSimplify];
+ex = Expanding /. {opts} /. Options[DotSimplify];
 
 (*Commented out 18/1-2001 by F.Orellana. Not sure it's a good
 idea to mess with the supplied relations. E.g.
@@ -147,7 +148,6 @@ If[!FreeQ[x, SUNT],
    x = x /. Times -> TimesDot
   ];
 
-ex = Expanding /. {opts} /. Options[DotSimplify];
 (*  maybe this is somewhat slow;  use FORM then ... *)
 If[!FreeQ[x, (a_/;!FreeQ2[a, $NonComm])^n_Integer?Positive],
    x = x /. {(a_/;!FreeQ2[a, $NonComm])^n_Integer?Positive :>
