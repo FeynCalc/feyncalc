@@ -594,7 +594,7 @@ ident3[a_,_]:=a;
         ]:= Block[{counter},
                    counter = 1;
 
-             While[!FreeQ2[{m,ga1,ga2,ga3,a4},
+	While[!FreeQ2[{m,ga1,ga2,ga3,ga4},
                            {$MU[counter], dum$y[counter]} ],
                    counter = counter + 1
                   ];
