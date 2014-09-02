@@ -22,6 +22,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+FCPrint,
 CA,CF,
 Cases2,
 ChangeDimension,
@@ -80,8 +81,6 @@ Write2];
 Options[CalculateCounterTerm] = {Chisholm -> False, 
                                  FinalSubstitutions -> {D -> 4}};
 
-SetAttributes[pr, HoldAll];
-pr[y__] := Print[y] /; $VeryVerbose > 0;
 
 mapart[y_Plus]  := mapart /@ y;
 mapart[y_Times] := Select1[y, OPEm] *
@@ -148,15 +147,15 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] := Block[
                   SUNIndex,Factoring->False];
    finsub = 
 (FinalSubstitutions/. {opt} /. Options[CalculateCounterTerm]);
-pr["color algebra"];
+FCPrint[1,"color algebra"];
     t2 = SUNSimplify[t1, Explicit -> False, SUNTrace -> False];
     If[Length[Cases2[t2,SUNT]] === 1,
        ta = Cases2[t2,SUNT][[1]];
        t2 = Trick[t2 /. ta -> sunt]
       ];
-pr["contraction"];
+FCPrint[1,"contraction"];
     t3 = Contract[FeynAmpDenominatorSimplify[t2,k]]//EpsEvaluate;
-pr["insertion of operators"];
+FCPrint[1,"insertion of operators"];
     t4 = t3 /. {Twist2GluonOperator[ww__] :>
                 Twist2GluonOperator[ww, Explicit -> True, Dimension->4],
                 Twist2QuarkOperator[ww__] :>
@@ -176,27 +175,27 @@ pr["insertion of operators"];
     t4 = t4 /.OPESum[a_,b__List]:> ( OPESum[b] a );
 
     If[!FreeQ[t4, DiracGamma],
-       pr["contraction and DiracSimplify "];
+       FCPrint[1,"contraction and DiracSimplify "];
        t5 = Contract[t4]//DiracSimplify//ExpandScalarProduct;
        dord[y__] := dord[y] = DiracOrder[DOT[y]];
        t5 = DotSimplify[t5 /. DOT -> dord]//Contract,
-       pr["contraction "];
+       FCPrint[1,"contraction "];
        t5 = Contract[t4]//ExpandScalarProduct
       ];
     t5 = PowerSimplify[t5];
-pr["cancel scalar products"];
+FCPrint[1,"cancel scalar products"];
     t6 = ScalarProductCancel[t5//EpsEvaluate, k,
                              FeynAmpDenominatorSimplify -> True
                             ] /. Power2->Power /.
          Power[a_, b_/;Head[b]=!=Integer] :> Power2[a, b];
     t6 = Collect2[ChangeDimension[t6,4], k];
     pow2 = Select2[Select2[Cases2[t6, Power2],k], Power2[_Plus,_]];
-    If[pow2 =!= {}, pr["fixpower2"]; 
+    If[pow2 =!= {}, FCPrint[1,"fixpower2"]; 
        t6 = fixpower2[t6, k, pow2]/.fixpower2[aa_,__]:>aa
       ];
     t6 = FeynAmpDenominatorSimplify[t6,k];
  If[chish === True, 
-    pr["CHISHOLM"];
+    FCPrint[1,"CHISHOLM"];
     t6 = Collect2[t6,DiracGamma,Eps, Factoring->False];
      doc[y__] := doc[y] = Chisholm[DOT[y]];
     t6 = Contract[t6 /. DOT -> doc];
@@ -204,7 +203,7 @@ pr["cancel scalar products"];
     t6 = ScalarProductCancel[t6,k];
    ];
    
-pr["collect w.r.t. integration momentum"];
+FCPrint[1,"collect w.r.t. integration momentum"];
     t7 = Collect2[ChangeDimension[t6/.Power2->Power,4], 
                   k, Factoring -> True
                  ];
@@ -212,9 +211,9 @@ t7 = PowerSimplify[DiracTrick[FeynAmpDenominatorSimplify[t7,k]]];
 t7 = Collect2[t7, k, Factoring->False];
 
 (*
-pr["entering OneLoopSimplify"];
+FCPrint[1,"entering OneLoopSimplify"];
 t7 = OneLoopSimplify[t7,k, Dimension -> 4, Collecting -> False];
-pr["exiting OneLoopSimplify"];
+FCPrint[1,"exiting OneLoopSimplify"];
 *)
 
 nt7 = 0;
@@ -226,9 +225,8 @@ If[Head[t7] =!= Plus,
             ], 4        ],
    lnt7 =  Length[t7];
    For[ijn = 1, ijn <= lnt7, ijn++,
-       If[$VeryVerbose > 1, Print["ijn = ",ijn,"  out of", lnt7,
-        " ", InputForm[Select2[t7[[ijn]], k]]]
-         ];
+       FCPrint[2,"ijn = ",ijn,"  out of", lnt7,
+        " ", InputForm[Select2[t7[[ijn]], k]]];         
        nt7 = nt7 + (( ( Select1[dummy t7[[ijn]],k]
                                    ) /.dummy -> 1 
                     ) *
@@ -250,7 +248,7 @@ t7 = Collect2[ nt7//DiracSimplify, k, Factoring -> True];
    kmunu = Select2[Select2[Cases2[t7,Pair],k],LorentzIndex];
  If[Length[kmunu] >0,
     t7 = t7+null1 + null2;
-    pr["oneloopsimplify   ",kmunu];
+    FCPrint[1,"oneloopsimplify   ",kmunu];
     t7 = Collect2[Select1[t7,kmunu] +
                   ChangeDimension[
                    OneLoopSimplify[Select2[t7, kmunu], k], 4], k
@@ -259,7 +257,7 @@ t7 = Collect2[ nt7//DiracSimplify, k, Factoring -> True];
 *)
 
 
-pr["doing the integrals "];
+FCPrint[1,"doing the integrals "];
 t7 = ChangeDimension[t7, D];
 
 If[StringQ[saveit],
@@ -276,13 +274,13 @@ If[!StringQ[saveit],
        t8 = 0; lt = Length[t7]; ht7 = Hold@@{t7};
        For[i = 1, i <= lt, i++, pr@@{"i ======== ", i," out of ",lt};
            t8 = t8 + (
-      Select1[pr[". "];ht7[[1,i]],k] Collect2[pr[".. "];
-                  PowerSimplify[pr["... "];
-                     OPEIntegrate2[pr[".... "];Select2[pr["..... "];ht7[[1, i]], k], k,
+      Select1[FCPrint[1,". "];ht7[[1,i]],k] Collect2[FCPrint[1,".. "];
+                  PowerSimplify[FCPrint[1,"... "];
+                     OPEIntegrate2[FCPrint[1,".... "];Select2[FCPrint[1,"..... "];ht7[[1, i]], k], k,
                                    Integratedx -> True,
                                    OPEDelta    -> False,
                                    Collecting  -> False
-                                  ]/.(pr["...... "];finsub)
+                                  ]/.(FCPrint[1,"...... "];finsub)
                                ] , LorentzIndex 
                                              ]
                      )
@@ -298,17 +296,17 @@ If[!StringQ[saveit],
        t8 = PowerSimplify[Expand2[t8,OPEm]]/.Power2->Power;
 t8 = t8 /. finsub;
        If[!FreeQ[t8, OPESum],
-          pr["sum it back"];
+          FCPrint[1,"sum it back"];
           opvar = Map[First, Cases2[t8, OPESum]/.
                     OPESum->Identity]//Union;
-          pr[" there are ",opvar];
+          FCPrint[1," there are ",opvar];
           t8 = Collect2[t8, opvar, Factoring -> False];
           If[Head[t8]===Plus,
              sut8 = Select2[t8,opvar];
-             pr["CHECK if the spurious sums cancel"];
+             FCPrint[1,"CHECK if the spurious sums cancel"];
              fsut8 = Factor[sut8];
              If[fsut8===0,
-                pr["YEAHHH! indeed it cancels; even without an explicit human mind"];
+                FCPrint[1,"YEAHHH! indeed it cancels; even without an explicit human mind"];
                 t8 = t8-sut8,
                 t8 = t8-sut8 + opback[Collect2[fsut8,opvar]];
                ]
@@ -335,10 +333,10 @@ t8 = t8 /. finsub;
          ];
     If[LeafCount[t8]<220,
        If[$VersionNumber>2.2,
-          pr["FullSimplify at the end "];
+          FCPrint[1,"FullSimplify at the end "];
           t9  = FullSimplify[Factor2[Expand2[t8,OPEm]//PowerSimplify
                             ]]//Factor2,
-          pr["Factor2 at the end "];
+          FCPrint[1,"Factor2 at the end "];
           t9  = Factor2[Expand2[t8,OPEm]//PowerSimplify]
          ];
     
@@ -352,7 +350,7 @@ If[t9 =!= 0,
   ];
        ,
        fa1 = fa2 = 1;
-          pr["Collect2 at the end "];
+          FCPrint[1,"Collect2 at the end "];
        t9 = Collect2[t8, LorentzIndex, Expanding -> False]
       ];
    

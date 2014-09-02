@@ -35,6 +35,7 @@ Begin["`Private`"];
 Contract3 = MakeContext["Contract", "Contract3"];
 
 MakeContext[
+FCPrint,
 Cases2,
 ChangeDimension,
 Collect2,
@@ -82,11 +83,6 @@ Trick];
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];
 TR         := TR  = MakeContext["TR"];
 
-write[x_String, y_] :=
- (WriteString["stdout","\n\n", x, "\n\n"];
-  Print[FeynCalcForm[y]]
- ) /; $VeryVerbose > 0;
-
 Options[OneLoopSimplify] = {Collecting -> False,
                             Dimension -> D,
                             DimensionalReduction -> False,
@@ -125,7 +121,7 @@ substis = FinalSubstitutions /. {opt} /. Options[OneLoopSimplify];
 spc = ScalarProductCancel /. {opt} /. Options[OneLoopSimplify];
 integraltable = IntegralTable /. {opt} /. Options[OneLoopSimplify];
 
-If[$VeryVerbose>1,Print["Using dimension ",dim]];
+FCPrint[2,"Using dimension ",dim];
 
 If[dimred =!= True,
    t1  = Trick[ChangeDimension[FeynCalcInternal[amp], dim]],
@@ -134,12 +130,12 @@ If[dimred =!= True,
 If[dimred =!= True, substis = ChangeDimension[substis, dim]];
 t1 = FeynAmpDenominatorCombine[t1//Explicit];
 
-If[$VeryVerbose>1,Print["FeynAmpDenominatorCombine done. t1 = ",t1]];
+FCPrint[2,"FeynAmpDenominatorCombine done. t1 = ",t1];
 
 t1 = FeynAmpDenominatorSimplify[Collect2[t1,q,Factoring->False], q,
                                 IntegralTable -> integraltable];
 
-If[$VeryVerbose>1,Print["FeynAmpDenominatorCombine done. t1 = ",t1]];
+FCPrint[2,"FeynAmpDenominatorCombine done. t1 = ",t1];
 
 If[!FreeQ[t1, SUNIndex],
    t2 = SUNSimplify[t1,  SUNNToCACF   -> sunntocacf, 
@@ -153,26 +149,26 @@ If[!FreeQ[t2, DiracGamma],
    t2 = DiracTrick[t2];
    t2 =  t2 /. DiracTrace -> TR
   ];
-If[$VeryVerbose > 0, Print["contracting ", t2]];
+FCPrint[1,"contracting ", t2];
 If[FreeQ2[t2, {DiracGamma, Eps}], 
    t3 = Contract3[t2],
    t3 = Contract[t2]
   ];
 If[(!FreeQ[t3, DiracGamma]) && (dirsimplify === True),
-   If[$VeryVerbose > 0, Print["Applying DiracSimplify on ", t3]];
+   FCPrint[1,"Applying DiracSimplify on ", t3];
    t3 = DiracSimplify[Collect2[t3, DiracGamma, Factoring -> False]];
    t3 =  t3 /. DiracTrace -> TR
   ];
 
 If[(!FreeQ[t3, DiracGamma]) &&  (dirsimplify === True), 
-   If[$VeryVerbose > 0, Print["DiracOrdering ", t3]];
+   FCPrint[1,"DiracOrdering ", t3];
    t3 = Collect2[t3, DiracGamma, Factoring->False];
    If[Head[t3] =!= Plus,
       t3 = DiracSimplify[DiracOrder[t3]]
      ,
       t3 = Sum[DiracSimplify[t3[[iji]]//DiracOrder],{iji,Length[t3]}]
      ];
-  If[$VeryVerbose > 0, Print["DiracOrdering done"]];
+  FCPrint[1,"DiracOrdering done"];
   ];
 
 If[(Collecting /. {opt} /. Options[OneLoopSimplify]) === True,
@@ -192,7 +188,8 @@ If[spc =!= True, t5 = t4,
 
 t5 = Collect2[t5, q, Factoring->Factor];
 
-write["after cancelling scalar products ", t5];
+FCPrint[1,"\n\n after cancelling scalar products \n\n", Print[FeynCalcForm[t5]], UseWriteString->True];
+
 
 If[(!FreeQ[t5, OPEDelta]) && (ope1loop === True),
    t5 = Collect2[ OPE1Loop[q, t5, SUNNToCACF -> sunntocacf,
@@ -204,7 +201,7 @@ If[(!FreeQ[t5, OPEDelta]) && (ope1loop === True),
 (* XXX *)
 t6 = t5;
 
-If[$VeryVerbose > 1, Print["doing TID on",t6]];
+FCPrint[2,"doing TID on",t6];
 If[Head[t6] =!= Plus, t6 = t6 + null1+null2];
 
 nt6 = 0;
@@ -214,8 +211,7 @@ lnt6 = Length[t6];
 Global`T6=t6;
 *)
 
-Do[If[$VeryVerbose > 0, 
-   Print["TIDPART ",ij," out of ",lnt6," le = ",Length[nt6]]];
+Do[FCPrint[1,"TIDPART ",ij," out of ",lnt6," le = ",Length[nt6]];
    nt6 = nt6 + TID[t6[[ij]], q, ScalarProductCancel -> spc,
                    DimensionalReduction -> dimred,
                    FeynAmpDenominatorSimplify -> True,
@@ -230,17 +226,17 @@ Do[If[$VeryVerbose > 0,
   ];
 
 t6 = nt6 /. {null1 :> 0, null2 :>0};
-If[$VeryVerbose > 0, Print["first TID done "]];
-If[$VeryVerbose > 1, Print["expression is now ",t6]];
+FCPrint[1,"first TID done "];
+FCPrint[2,"expression is now ",t6];
 t6 = Collect2[t6, q, Factoring->False, Expanding->False];
-If[$VeryVerbose > 0, Print["collect2 after first TID done ",Length[t6]]];
-If[$VeryVerbose > 1, Print["expression is now ",t6]];
+FCPrint[1,"collect2 after first TID done ",Length[t6]];
+FCPrint[2,"expression is now ",t6];
 
 If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
    ,
    lt6 = Length[t6];
-   t6  = Sum[If[$VeryVerbose > 0, Print["TID 2 #" , j," out of " , lt6]]; 
-             If[$VeryVerbose > 0, Print["dimension ",dim, " on: ", StandardForm[Select2[t6[[j]],q]]]]; 
+   t6  = Sum[FCPrint[1,"TID 2 #" , j," out of " , lt6]; 
+             FCPrint[1,"dimension ",dim, " on: ", StandardForm[Select2[t6[[j]],q]]]; 
              tmpres=Select1[t6[[j]], q]  * 
                TID[Select2[t6[[j]],q],  q,
                    ScalarProductCancel -> spc,
@@ -252,19 +248,18 @@ If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
 		   Dimension -> dim,
 		   ChangeDimension -> dim
                   ];
-	      If[$VeryVerbose > 0, Print["got: ", tmpres,q]];
+	      FCPrint[1,"got: ", tmpres,q];
 	      tmpres,
 	{j, lt6}];
-   If[$VeryVerbose > 1, Print["expression is now ",t6]];
+   FCPrint[2,"expression is now ",t6];
    t6 = Collect2[t6, q, Factoring -> Factor];
   ];
 
-If[$VeryVerbose > 1, Print["expression is now ",t6]];
+FCPrint[2,"expression is now ",t6];
 
 If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
    ,
-   t6 = FixedPoint[(If[$VeryVerbose > 1,
-                       Print["Applying TID on",#]];
+   t6 = FixedPoint[(FCPrint[2,"Applying TID on",#];
                     TID[#,q, ScalarProductCancel -> spc,
                          DimensionalReduction -> dimred,
                          FeynAmpDenominatorSimplify -> True,
@@ -275,22 +270,22 @@ If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
                ];
   ];
 
-If[$VeryVerbose > 0, Print["TID  returned: ",t6]];
+FCPrint[1,"TID  returned: ",t6];
 
 If[!FreeQ[t6,FeynAmpDenominator],
    t6 = Select2[Expand2[t6+null1+null2,FeynAmpDenominator
                        ], FeynAmpDenominator]
   ];
 
-If[$VeryVerbose > 0, Print["doing TID  done ", t6]];
+FCPrint[1,"doing TID  done ", t6];
 
 t6 = t6 /. substis /. {null1 :> 0, null2 :> 0};
 t6 = FixedPoint[ReleaseHold,t6];
 
 If[!FreeQ[t6,DiracGamma],
-If[$VeryVerbose > 0, Print["collecing after FRH in TID",t6]];
+FCPrint[1,"collecing after FRH in TID",t6];
 t6 = Collect2[t6, DiracGamma, Factoring -> False];
-If[$VeryVerbose > 0, Print["collecing after FRH in TID done",t6]];
+FCPrint[1,"collecing after FRH in TID done",t6];
 If[Head[t6] === Plus,
    t6 = Map[ExpandScalarProduct[DiracOrder[DiracSimplify[#]]]&, 
          t6];

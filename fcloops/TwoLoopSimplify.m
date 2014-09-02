@@ -26,6 +26,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+FCPrint,
 Cases2,
 ChangeDimension, Collect2, 
 Contract, Dimension, 
@@ -128,7 +129,7 @@ If[!FreeQ[t1, DiracTrace],
 
 
 (*S COLOR FACTOR *)
-   If[$VeryVerbose > 0, Print["calculating the color factor"]];
+   FCPrint[1,"calculating the color factor"];
 t2 = SUNSimplify[t1, SUNFToTraces -> False]//SUNSimplify;
  
 (*S Eps*)
@@ -149,14 +150,14 @@ If[!FreeQ[t3, GluonVertex],
    If[CheckContext["Twist2GluonOperator"], 
       AppendTo[colg, Twist2GluonOperator]
      ];
-   If[$VeryVerbose > 0, Print["collecting GluonVertex"]];
+   FCPrint[1,"collecting GluonVertex"];
    t3 = Collect2[t3, colg, Factoring -> False];
    t3 = t3 /. GluonVertex[w__] :> GluonVertex[w, Explicit->True];
-   If[$VeryVerbose > 0, Print["contracting 2"]];
+   FCPrint[1,"contracting 2"];
    t3 = Contract[t3];
-   If[$VeryVerbose > 0, Print["contracting 2 done"]];
+   FCPrint[1,"contracting 2 done"];
   ];
-   If[$VeryVerbose > 0, Print["cancel scalar products"]];
+   FCPrint[1,"cancel scalar products"];
 
 (*S SCALARPRODUCTCANCEL *)
 t4 = ScalarProductCancel[ExpandScalarProduct[t3]];
@@ -164,7 +165,7 @@ t5 = ScalarProductCancel[t4, q1, q2,
                          Collecting -> True,
                          FeynAmpDenominatorSimplify -> True
                         ];
-If[$VeryVerbose > 0, Print["collecting "]];
+FCPrint[1,"collecting "];
 t6 = Collect2[t5, {q1, q2, FCIntegral, RHI}];
 
 (*S TWIST2GLUONOPERATOR *)
@@ -172,7 +173,7 @@ If[CheckContext["Twist2GluonOperator"],
 If[!FreeQ[t6, Twist2GluonOperator],
 If[$DoWard =!= True,
    t6 = Expand2[t6 ,Twist2GluonOperator],
-   If[$VeryVerbose > 0,  Print["Ward identities"]];
+   FCPrint[1,"Ward identities"];
    $OPEWard = True; t6 = Expand2[t6, Twist2GluonOperator]; 
    $OPEWard = False;
   ];
@@ -292,7 +293,7 @@ If[Head[table] === Symbol,
    pe = Select1[Cases2[decomposelist, Momentum]/.Momentum[a_,___] :> a,
                 {q1,q2,OPEDelta}
                ];
-If[$VeryVerbose > 0, Print["pe = ",pe]];
+FCPrint[1,"pe = ",pe];
 Dialog["dec"];
    op2 = OPE2AI[table, decomposelist, q1, q2, pe];
    fcq[ y_Times ] := Select1[y, {q1, q2}] FCIntegral[Select2[y, {q1, q2}]];

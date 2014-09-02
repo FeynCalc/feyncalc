@@ -39,6 +39,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+FCPrint,
 ChangeDimension,
 Collect2,
 DeltaFunction,
@@ -102,7 +103,7 @@ If[(PolynomialDivision /. {ops} /. Options[OPEIntegrateDelta])=!=True,
 
  If[Head[tt] === Times,
     ttx = Select2[tt, (w_. + v_. x)^(aa_/;Head[aa] =!= Integer)];
-If[$VeryVerbose > 0, Print["ttx = ",ttx]];
+FCPrint[1,"ttx = ",ttx];
     tt = tt / ttx,
     ttx = 1
    ];
@@ -121,7 +122,7 @@ If[$VeryVerbose > 0, Print["ttx = ",ttx]];
  tt = Collect2[nonreg, x];
  ];
 
-If[$VeryVerbose > 1, Print["reg = ",reg]];
+FCPrint[2,"reg = ",reg];
 (*
 Dialog[reg];
 *)
@@ -150,7 +151,7 @@ If[Limit[(1-x)^(Epsilon/2), x -> 1, Direction -> 1] =!= 0,
                  ];
 fypart  = fypart ;
 
-If[$VeryVerbose > 0, Print["fypart = ",fypart]; ];
+FCPrint[1,"fypart = ",fypart];
  lpa = Length[fypart];
  new = 0;
 
@@ -159,20 +160,20 @@ If[$VeryVerbose > 0, Print["fypart = ",fypart]; ];
 *)
 (*
      If[Head[ppi] =!= null,
-       If[$VeryVerbose > 0, Print["integrating # ",i-2, " out of ",lpa-2]];
+       FCPrint[1,"integrating # ",i-2, " out of ",lpa-2];
 *)
 ppi = Factor2[fypart dummy];
        kernel = Select2[ppi, x];
        kfa  = (ppi/kernel) /. dummy -> 1;
        fy = PowerExpand[Simplify[(kernel (*(1-x)^(1-Epsilon/2)*))]];
-If[$VeryVerbose > 0, Print["fy = ",fy//InputForm]];
+FCPrint[1,"fy = ",fy//InputForm];
        f1 = fy /. x -> 1 /. 0^(1-Epsilon/2)->0;
-If[$VeryVerbose > 0, Print["f1 = ",f1//InputForm]];
+FCPrint[1,"f1 = ",f1//InputForm];
        If[f1 === ComplexInfinity, Print["fy = ", fy]; Dialog[];];
        rkern = Expand[(1-x)^(Epsilon/2) (fy-f1)/(1-x)];
 (* adapt for the silly Mma - Integrate function *)
        rkern = rkern /. (1-x)^e1_ x^e2_ :> ( (x(1-x))^e1 x^(e2-e1) );
-       If[$VeryVerbose > 0, Print["integrate ",rkern]];
+       FCPrint[1,"integrate ",rkern];
        mint = Integrate2[rkern, {x, 0, 1}];
        mint = Simplify[mint /. {Sqrt[Pi] 2^a_ :> 
                                 (Gamma[1/2-a/2] Gamma[1-a/2]/Gamma[1-a])
@@ -183,7 +184,7 @@ If[$VeryVerbose > 0, Print["f1 = ",f1//InputForm]];
        If[!MemberQ[$MIntegrate, intsave], 
           AppendTo[$MIntegrate, intsave]
          ];
-       If[$VeryVerbose > 0, Print["Taylor expansion"]];
+       FCPrint[1,"Taylor expansion"];
        mint = Series2[kfa mint, {Epsilon, 0, eporder}]/.finsub;
        If[FreeQ[rkern, Pi^2], mint = mint /. Pi^2 -> (6 Zeta2)];
        If[!FreeQ[mint, PolyGamma], mint = SimplifyPolyGamma[mint]];

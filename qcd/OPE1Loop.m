@@ -30,6 +30,7 @@ DiracTrace := DiracTrace = MakeContext["DiracTrace"];
 Tr2 := Tr2 = MakeContext["Tr2"];
 
 MakeContext[
+FCPrint,
 Cases2,
 ChangeDimension,
 Collecting,
@@ -123,7 +124,7 @@ PairFix[
      opts],{ka1,ka2}]];
 
 PairFix[exp_, {ka__}] := Block[{tt},
-If[$VeryVerbose >2, Print["entering PairFix"]];
+FCPrint[3,"entering PairFix"];
  pf = Table[Pair[Momentum[{ka}[[j]], di___], Momentum[{ka}[[j]], di___]
                 ]^n_Integer?Negative, {j, Length[{ka}]}
            ];
@@ -134,7 +135,7 @@ If[$VeryVerbose >2, Print["entering PairFix"]];
                  Momentum[{ka}[[j]],di], 0]]^(-n)),
               {j, Length[{ka}]}
               ];
-If[$VeryVerbose >2, Print["exiting PairFix"]];
+FCPrint[3,"exiting PairFix"];
     FeynAmpDenominatorCombine[exp /. pf]
   ]                          ];
             
@@ -171,13 +172,13 @@ If[FreeQ[integ,k](* || (!FreeQ[integ, (_. +_. Pair[Momentum[k,___], _]
    (Length[Select2[Cases2[integ, PropagatorDenominator],k]]>2)
 (*then*)
   , 
-If[$VeryVerbose > 0, Print["nononononon"]];
+FCPrint[1,"nononononon"];
 fds1 = Identity;
 amp = FeynAmpDenominatorCombine[integ]
 (* else *)
 ,
 
-If[$VeryVerbose > 0, Print["yeSSSSSSSS"]];
+FCPrint[1,"yeSSSSSSSS"];
 
 dim = Dimension /. {opts} /. Options[OPE1Loop];
 collecting = Collecting /. {opts} /. Options[OPE1Loop];
@@ -227,42 +228,42 @@ If[!FreeQ[amp,OPE], amp = Coefficient[ Expand2[amp, OPE], OPE]];
 
 amp1 = amp;
 contrac[yy_] := Contract[yy, EpsContract->False];
-If[$VeryVerbose> 0, Print["sunsimplifying"]];
+FCPrint[1,"sunsimplifying"];
 amp = SUNSimplify[amp, SUNFToTraces -> sunftotraces, 
                   SUNNToCACF -> sunntocacf];
-If[$VeryVerbose> 0, Print["contracting"]];
+FCPrint[1,"contracting"];
 If[FreeQ[amp, Eps] && !FreeQ[amp, LorentzIndex],
    amp = Contract3[amp] /. Contract3 -> contrac;
   ];
 
-If[$VeryVerbose> 0, Print["contracting 2"]];
+FCPrint[1,"contracting 2"];
    amp = Contract[amp/.GluonVertex[aa__] :> 
           GluonVertex[aa, Explicit->True], EpsContract -> False];
 If[CheckContext["Twist2GluonOperator"],
    glopex[a__] := Twist2GluonOperator[a, Explicit -> True, 
                                    Dimension -> dim];
-   If[$VeryVerbose> 0, Print["inserting gluon operator"]];
+   FCPrint[1,"inserting gluon operator"];
    amp = amp  /. Twist2GluonOperator -> glopex;
-   If[$VeryVerbose> 0, Print["contracting again "]];
+   FCPrint[1,"contracting again "];
    amp = Contract[amp, EpsContract -> False];
   ];
 If[CheckContext["Twist2QuarkOperator"],
    quex[a__] := Twist2QuarkOperator[a, Explicit -> True, 
                                    Dimension -> dim];
-   If[$VeryVerbose> 0, Print["inserting quark operator"]];
+   FCPrint[1,"inserting quark operator"];
    amp = amp  /. Twist2QuarkOperator -> quex;
-   If[$VeryVerbose> 0, Print["contracting again "]];
+   FCPrint[1,"contracting again "];
    amp = Contract[amp, EpsContract -> False];
   ];
 
-If[$VeryVerbose> 0, Print["expanding scalar products"]];
+FCPrint[1,"expanding scalar products"];
 amp = amp //. Pair -> ExpandScalarProduct;
 
 If[!FreeQ[amp, OPESum],
-   If[$VeryVerbose> 0, Print["OPESumSimplify 1"]];
+   FCPrint[1,"OPESumSimplify 1"];
    amp = OPESumSimplify[amp]
   ];
-If[$VeryVerbose> 0, Print["OPESumSimplify 1 done"]];
+FCPrint[1,"OPESumSimplify 1 done"];
 
 amp = Expand2[amp//EpsEvaluate, k];
 
@@ -308,7 +309,7 @@ amp = fds1[amp]//PowerSimplify;
 
 ];
 
-If[$VeryVerbose > 1, Print["collecting w.r.t. k"]];
+FCPrint[2, "collecting w.r.t. k"];
 amp = Collect2[amp, k, Factoring -> False];
 
 qup1[x_] := If[Head[x] =!= Times, qp1[x],
@@ -333,7 +334,7 @@ subfactor = 1
 amp = FeynAmpDenominatorSplit[integ, k];
 If[(Head[amp] === Times) || (Head[amp] === FeynAmpDenominator), 
    subfactor = Select1[amp, k];
-If[$VeryVerbose > 1, Print["subfactor = ",subfactor//InputForm]];
+FCPrint[2,"subfactor = ",subfactor//InputForm];
    ampp = amp;
    amp = amp / subfactor;
    amp = MomentumExpand[amp];
@@ -367,7 +368,7 @@ If[Head[amp] =!= Plus,
 ,
    lamp = Length[amp];
    For[j = 1, j <= lamp, j++, 
-       If[$VeryVerbose > 0, Print["QPC2 ",j, " out of ",lamp]];
+       FCPrint[1,"QPC2 ",j, " out of ",lamp];
        nn = nn + fds1[tdec[amp[[j]],k]];
       ]
   ];

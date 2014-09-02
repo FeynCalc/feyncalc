@@ -33,7 +33,7 @@ If set to False, products like
 Begin["`Private`"];
    
 
-MakeContext[ Expand2, Combine,
+MakeContext[ FCPrint, Expand2, Combine,
 MemSet, NumericalFactor];
 
 Off[General::spell1];
@@ -46,13 +46,12 @@ If[Head[y] === Times, Map[fc5, y],
 *)
           Block[{te},
               If[Head[y] === Power, fc5[y[[1]]]^y[[2]],
-If[$VeryVerbose >3, 
-   Print["factoring ", Length[te], " terms in Factor2 " ]];
+   FCPrint[3,"factoring ", Length[te], " terms in Factor2 " ];
    te = Factor[Expand[y]];
 (*
    te = Factor[y];
 *)
-If[$VeryVerbose >3, Print["factoring in Factor2  done " ]];
+FCPrint[3,"factoring in Factor2  done " ];
   te     ]](*]*)];
 
 Factor2[x_Integer,___] := x;

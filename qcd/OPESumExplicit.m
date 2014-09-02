@@ -22,7 +22,7 @@ OPESumExplicit::"usage"= "OPESumExplicit[exp] calculates OPESum's.";
 Begin["`Private`"];
    
 
-MakeContext[OPEi, OPEj, OPESum];
+MakeContext[FCPrint, OPEi, OPEj, OPESum];
 
 sum2 = MakeContext["SymbolicSum2"];
 sum3 = MakeContext["SymbolicSum3"];
@@ -37,7 +37,7 @@ OPESumExplicit[ex_] := If[FreeQ[ex,OPESum], ex,
 
 If[$VersionNumber <=2.2, 
    If[FreeQ[$ContextPath,"Algebra`SymbolicSum`"],
-      If[$VeryVerbose > 0, Print["loading Algebra`SymbolicSum`"]];
+      FCPrint[1,"loading Algebra`SymbolicSum`"];
          Get["Algebra`SymbolicSum`"];
         ];
   ];

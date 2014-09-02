@@ -32,7 +32,7 @@ i.e., evtl. you may have to use FeynCalcInternal on result.";
 Begin["`Private`"];
 
 
-MakeContext[ Chisholm, Collect2, Contract];
+MakeContext[FCPrint, Chisholm, Collect2, Contract];
 
 MakeContext[ DiracBasis, DiracGamma, DiracMatrix, DiracOrder,
 DiracSigma, DiracSigmaExplicit, DiracSimplify, DiracSubstitute67,
@@ -57,10 +57,10 @@ factoring = Factoring /. {ops} /. Options[DiracReduce];
 (* do first usual DiracSimplify *)
 temp = DiracSimplify[temp, DiracSubstitute67 -> True,
                            DiracSigmaExplicit -> False];
-  If[$VeryVerbose > 1, Print["DiracSimplify done"]];
+  FCPrint[2,"DiracSimplify done"];
 (* Chisholm identity recursively *)
-temp = Chisholm[temp]//DiracOrder;
-  If[$VeryVerbose > 1, Print["Chisholm done"]];
+temp = Chisholm[temp]//DiracOrder;  
+  FCPrint[2,"Chisholm done"];
 temp = Expand[temp, DiracGamma];
 
 (* introduce DiracSigma *)
@@ -85,8 +85,8 @@ temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
                ( -I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]] +
                  Pair[b[yy], a[xx]] );
 temp = Contract[DiracSimplify[temp, DiracSigmaExplicit -> False]];
-temp = Collect2[temp, DiracGamma, Factoring -> factoring];
-  If[$VeryVerbose > 1, Print["collecting done"]];
+temp = Collect2[temp, DiracGamma, Factoring -> factoring];  
+  FCPrint[2,"collecting done"];
 
 (* get the S - part *)
 spart = Select[temp + n1 + n2, FreeQ[#, DiracGamma]&] /. {n1 :> 0, n2 :> 0};

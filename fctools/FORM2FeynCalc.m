@@ -34,6 +34,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+FCPrint,
 ChangeDimension,
 Dimension,
 Eps,
@@ -151,7 +152,7 @@ If[(Vectors /. {ru}) =!= Automatic,
                ];
           vecs = StringReplace[vecs, {"V* "->"{", ";"->"};"},
                                IgnoreCase -> True];
-If[$VeryVerbose > 0, Print["vecs = ",vecs];];
+FCPrint[1,"vecs = ",vecs];
           Throw[vecs]
          ]
       ]           ];

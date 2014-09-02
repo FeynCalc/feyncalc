@@ -22,7 +22,8 @@ with propagators. ScalarProductCancel[exp] cancels simple cases.";
 Begin["`Private`"];
    
 
-MakeContext[Cases2,
+MakeContext[FCPrint,
+			Cases2,
             ChangeDimension,
             Collect2,
             Collecting,
@@ -161,7 +162,7 @@ t4 = Catch[
           If[FreeQ[t1, Pair], Throw[t1 /. noPair -> Pair]];
           t1 = IFPDOn[t1, qq, ql];
 
-If[$VeryVerbose > 1, Print["IFPDOn done in ScalarProductCancel"]];
+FCPrint[2,"IFPDOn done in ScalarProductCancel"];
        If[LeafCount[t1]<200 && 
            FreeQ[t1, a_^(pp_ /;Head[pp]=!=Integer)],
           t2 = Expand[t1],
@@ -175,27 +176,25 @@ If[Head[t2] === Plus, Select1[t2,IFPD];
    t2 = Select2[t2, IFPD] ];
 
 
-If[$VeryVerbose > 1, Print["cancelling done in ScalarProductCancel"]];
+ FCPrint[2,"cancelling done in ScalarProductCancel"];
        t3 = IFPDOff[t2, qq, ql];
        If[FreeQ[t3, Pair], Throw[t3 /. noPair -> Pair]];
-       t3  = t3 /. noPair -> Pair;
- If[$VeryVerbose > 1, Print["IFPDOff done in ScalarProductCancel"]];
+       t3  = t3 /. noPair -> Pair; 
+ FCPrint[2,"IFPDOff done in ScalarProductCancel"];
 (* Dialog[Length[t3]]; *)
 
 pex[a_,b_] := pex[a,b] = ExpandScalarProduct[a,b];
    t4 = Expand2[t3 /. Pair -> pex, {qq,ql}];
-If[$VeryVerbose > 1, 
-   Print["ExpandScalarProduct done in ScalarProductCancel"]
-  ];
+FCPrint[2,"ExpandScalarProduct done in ScalarProductCancel"];  
    t4 = IFPDOff[IFPDOn[t4,qq,ql],qq,ql] /. noPair->Pair ;
-If[$VeryVerbose > 1, Print["IFPD again, done"] ];
+FCPrint[2,"IFPD again, done"];
 t4
  ];
        
        If[facs===True, 
-If[$VeryVerbose > 2, Print["combining in SPC"]];
+FCPrint[3,"combining in SPC"];
           t4 = FeynAmpDenominatorCombine[t4];
-If[$VeryVerbose > 2, Print["combining in SPC done "]];
+FCPrint[3,"combining in SPC done "];
 (* this is dangerous ........  COMMENTED out 04/95
    can be done by FDS 
           tadfeyn[qu_][a___,PropagatorDenominator[Momentum[qu_,___],0]..,
@@ -207,18 +206,12 @@ If[$VeryVerbose > 2, Print["combining in SPC done "]];
           t4 = t4/. FeynAmpDenominator -> tadfeyn[qq,ql] /.
                tadfeyn[qq,ql] -> FeynAmpDenominator;
 *)
-          If[$VeryVerbose > 1, 
-              Print["FeynAmpDenominatorCombine done in ScalarProductCancel"]
-            ]
+		  FCPrint[2,"FeynAmpDenominatorCombine done in ScalarProductCancel"];
          ];
        If[fads===True, 
-          If[$VeryVerbose > 1, 
-             Print["FeynAmpDenominatorSimplify starting on: ",StandardForm[t4]]
-            ];
+       	  FCPrint[2,"FeynAmpDenominatorSimplify starting on: ",StandardForm[t4]];          
           t4 = FeynAmpDenominatorSimplify[t4,qq,ql];
-          If[$VeryVerbose > 1, 
-             Print["FeynAmpDenominatorSimplify done in ScalarProductCancel: ",t4]
-            ]
+          FCPrint[2,"FeynAmpDenominatorSimplify done in ScalarProductCancel: ",t4];
          ];
  t4
   ]

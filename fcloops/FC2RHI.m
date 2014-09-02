@@ -30,6 +30,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+FCPrint,
 Cases2,
 ChangeDimension,
 Dimension,
@@ -180,7 +181,7 @@ dof[yy_] := dof[yy] = FC2RHI[FeynAmpDenominatorSimplify[
                k1, k2,FC2RHI->False], k1,k2, Do -> False
                             ];
 (* this is heuristic ... *)
-If[$VeryVerbose > 0, Print["heuristics "]];
+FCPrint[1,"heuristics "];
    nx = Catch[ 
               If[FreeQ[nx, PropagatorDenominator[Momentum[a__] +
                                           Momentum[b__], 0]

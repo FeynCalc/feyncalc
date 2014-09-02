@@ -25,7 +25,7 @@ Solve for systems involving rational polynomials.";
 
 Begin["`Private`"];
    
-MakeContext[ Collect2, Combine,Expanding, Factor2,
+MakeContext[ FCPrint, Collect2, Combine,Expanding, Factor2,
              FinalSubstitutions,
              Factoring, FreeQ2, Isolate, IsolateNames, IsolateSplit,
              Select1,Solve2
@@ -53,7 +53,7 @@ isol[xy__] := If[Length[{xy}] < 10,
                ];
 
 With[{cli = cli},
-col = ( If[$VeryVerbose > 1, Print[" Collect with Factor "]];
+col = ( FCPrint[2," Collect with Factor "];
    Collect[#, cli, Factor] ) &];
 
 If[TrueQ[parmap], 
@@ -75,13 +75,13 @@ specsimp[a_List, b_Rule] := pmap[(#[[1]] -> (col[#[[2]] /. b]))&, a];
 neq = eqq /. Equal[a_, b_] :> (a-b);
 For[i = 1, i <= Length[eqq], i++, 
 If[!FreeQ[neq, cli[[i]]],
-    If[ $VeryVerbose > 0, Print["solve3 i = ",i,"    time used : ", 
-				Round[(starttime-AbsoluteTime[])/60], " minutes" ] ];
+    FCPrint[1,"solve3 i = ",i,"    time used : ", 
+				Round[(starttime-AbsoluteTime[])/60], " minutes" ];
     While[FreeQ[neq1 = (*col[*)neq[[1]] /. res(*]*), cli[[i]]],
-If[ $VeryVerbose > 1, Print["rotating ", i]];
+FCPrint[2,"rotating ", i];
           neq = RotateLeft[neq = Prepend[Rest[neq],neq1]]
          ];
-If[ $VeryVerbose > 1, Print["solving for ",cli[[i]]]];
+FCPrint[2,"solving for ",cli[[i]]];
 (*{neq1,cli[[i]]}>>"neq1.s";*)
     new = Solve2[neq1, cli[[i]], Factoring -> False][[1]];
 (*
@@ -99,14 +99,14 @@ CHANGE 20100110
     If[!FreeQ2[new[[2]], cli],
        new = new[[1]] -> Map[Cancel, new[[2]]];
       ];
-If[$VeryVerbose > 2, Print["solution = ",new//InputForm]];
+FCPrint[3,"solution = ",new//InputForm];
     neq = Rest[neq];
 If[i>1,
    res = Append[specsimp[res, new], new],
    res = {new}
   ];
   If[i<Length[eqq],
-     If[ $VeryVerbose > 0, Print["UPDATING ", LeafCount @ neq] ];
+     FCPrint[1,"UPDATING ", LeafCount @ neq];
      newneq = {};
 (*
      neqh = Hold@@{neq};
@@ -132,7 +132,7 @@ neq = pmap[ col, neqres ];
         ];
      neq = newneq;
 *)
-If[$VeryVerbose > 0, Print["leafcount neq = ", LeafCount[neq]]];
+FCPrint[1,"leafcount neq = ", LeafCount[neq]];
      ];
   ];
    ];

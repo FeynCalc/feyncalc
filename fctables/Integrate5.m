@@ -23,7 +23,7 @@ Integrate5::"usage"=
 Begin["`Private`"];
    
 
-MakeContext[Collect2, DeltaFunction, Factor2, Factoring, FreeQ2,
+MakeContext[FCPrint, Collect2, DeltaFunction, Factor2, Factoring, FreeQ2,
             Integrate3,
             PlusDistribution, Select1, Select2, Solve2, Zeta2];
 
@@ -62,7 +62,7 @@ Dialog[a];
 Dialog[a];
 *)
      tt = Collect2[a, PlusDistribution, Factoring -> True];
-If[$VeryVerbose > 1, Print["integrating ",tt//InputForm]];
+FCPrint[2,"integrating ",tt//InputForm];
      nop = Select1[n1 + n2 + tt, PlusDistribution]/.{n1:>0, n2:>0};
      pd = tt - nop;
      pd = Collect2[

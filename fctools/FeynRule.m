@@ -26,6 +26,8 @@ the first argument of FeynRule before anything else";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+
+MakeContext[FCPrint]
    
 FeynCalcForm = MakeContext["FeynCalcForm"];
 
@@ -159,7 +161,8 @@ uniquelist = Join[Table[newlorlist[[ij]] ->
                         {jj, Length[newsunlist]}
                        ]
                  ];
-If[$VeryVerbose > 0, Print["uniquelist = ", uniquelist]];
+FCPrint[1,"uniquelist = ", uniquelist];
+
 
 nla = nla /. uniquelist;
 
@@ -441,7 +444,7 @@ leib[y_] := y /. OPESum -> oplei /. oplei -> OPESum;
            Pattern @@ {Unique[dm], ___}][___])&, #[[0, 1]]& /@ fili];
 
 If[!FreeQ[nlag, Sum], nlag = nlag /. Sum -> OPESum];
-If[$VeryVerbose > 0, Print["non-commutative expansion"]];
+FCPrint[1,"non-commutative expansion"];
 If[!FreeQ[nlag, OPESum], nlag = opsum[nlag]];
 
 If[!FreeQ[nlag, OPEDelta],
@@ -480,10 +483,10 @@ If[!FreeQ[nlag, sund],
   ];
 
 
-If[$VeryVerbose > 0, Print["Leibniz rule"]];
+FCPrint[1,"Leibniz rule"];
 nlag = ExpandPartialD[nlag](* /. DOT -> dotsunt /. dotsunt -> DOT*);
 
-If[$VeryVerbose > 0, Print["Leibniz rule done "]];
+FCPrint[1,"Leibniz rule done "];
 
 (* check for Leibniz - sums *) (* trick17 *)
 If[!FreeQ[nlag, Binomial], nlag  = leib[nlag]//opsum ];
@@ -525,16 +528,15 @@ While[(Length[tfields] > 0) && (Head[vert] === Plus),
  If[vert === 0, result = 0,
  vert = vert /. NonCommutativeMultiply -> Times;
 vert = Expand[ sunsimplify[dirdot[vert],Explicit->False] ];
-If[$VeryVerbose > 0, Print["functional differentiation "]];
+FCPrint[1,"functional differentiation "];
 
 groupindices = Map[First,Cases2[{vert,fili},{SUNIndex,ExplicitSUNIndex,LorentzIndex}]];
 UnDeclareNonCommutative[groupindices];
 
 If[Head[vert] === Plus,
    result = 0;
-   For[iij = 1, iij <= Length[vert], iij++,
-       If[$VeryVerbose > 1, Print["iij of FunctionalD = ",iij,
-          " out of ", Length[vert]]];
+   For[iij = 1, iij <= Length[vert], iij++,       
+          FCPrint[2,"iij of FunctionalD = ",iij," out of ", Length[vert]];
        result = result +
        DotSimplify[FunctionalD[vert[[iij]], fili],
                    Expanding -> False
@@ -547,7 +549,7 @@ result = DotSimplify[FunctionalD[vert, fili],Expanding -> False
          (w_ /; (Head[w] =!= Integer)) :> Power2[a, w];
   ];
 
-If[$VeryVerbose > 0, Print["functional differentiation done"]];
+FCPrint[1,"functional differentiation done"];
 
 qli[a__,el__LorentzIndex, ___][_] := {el};
 lfili  = Flatten[fili /. QuantumField  -> qli];
@@ -555,31 +557,31 @@ lfili  = Flatten[fili /. QuantumField  -> qli];
 result = Expand2[result/.sund->sundc/.sundc->sund];
 
 
-If[$VeryVerbose > 0, Print["there are now ",Length[result]," terms"]];
+FCPrint[1,"there are now ",Length[result]," terms"];
 result = result /. Pair -> PairContract /. Pair -> PairContract /.
           PairContract -> Pair;
-If[$VeryVerbose > 0, Print["simple Contraction done"]];
-If[!FreeQ[result, Eps], result = EpsEvaluate[result];
-   If[$VeryVerbose > 0, Print["EpsEvaluate done"]];
+FCPrint[1,"simple Contraction done"];
+If[!FreeQ[result, Eps], result = EpsEvaluate[result];   
+   FCPrint[1,"EpsEvaluate done"];
   ];
 If[!FreeQ[result, DOT],
-   result = dirdot[result];
-   If[$VeryVerbose > 0, Print["dirdot done"]];
+   result = dirdot[result];   
+   FCPrint[1,"dirdot done"];
   ];
 
- If[$VeryVerbose > 0, Print["cases "]];
+ FCPrint[1,"cases "];
 alllor = Union[Cases[result, LorentzIndex[__], Infinity]];
- If[$VeryVerbose > 0, Print["cases done"]];
+FCPrint[1,"cases done"];
 If[alllor =!= Sort[lfili],
-If[(Contract /. Options[FeynRule]) === True,
-   If[$VeryVerbose > 0, Print["Contracting again"]];
+If[(Contract /. Options[FeynRule]) === True,   
+   FCPrint[1,"Contracting again"];
    result = result// Contract;
-   If[$VeryVerbose > 0, Print["Contracting again done"]];
+   FCPrint[1,"Contracting again done"];   
   ]
-  ];
-   If[$VeryVerbose > 0, Print["PowerSimplify"]];
-result = PowerSimplify[result /. subs];
-   If[$VeryVerbose > 0, Print["PowerSimplify done"]];
+  ];   
+   FCPrint[1,"PowerSimplify again"];
+result = PowerSimplify[result /. subs];   
+   FCPrint[1,"PowerSimplify done"];
 (*
 result = Contract[dirdot[PowerSimplify[result]] /. dDelta -> Pair /.subs];
 *)
@@ -587,11 +589,11 @@ If[!FreeQ[result, Eps], result = EpsEvaluate[result]];
 If[!FreeQ[result, DOT],
    result = DotSimplify[result, Expanding -> False]
   ];
-If[$VeryVerbose > 0, Print["there are ", Length[result], " terms "]];
+FCPrint[1,"there are ", Length[result], " terms "];
 If[!FreeQ[result, sund],
    result = result /. sund -> sundc /. sundc -> sund;
   ];
-If[$VeryVerbose > 0, Print["several simplications done"]];
+FCPrint[1,"several simplications done"];
 plist =  fii /. QuantumField -> getpes /. mom -> Identity;
 (*
  If[ Length[fili] === 2, 
@@ -617,13 +619,13 @@ If[!FreeQ[result, SUNIndex],
    If[!FreeQ[result, SUNT], result = sunsimplify[result,Explicit->False]]
   ];
 result = PowerSimplify[result]//Expand;
-If[$VeryVerbose > 0, Print["expansion done; length = ",Length[result] ]]; 
+FCPrint[1,"expansion done; length = ",Length[result]];
 If[!FreeQ[result, sumBinomial],
    $binindices = Reverse[ Sort[$binindices] ];
    opexbin[a_, b_] := Factor2[PowerSimplify[SymbolicSum[a,b]
                              ]             ] /; !FreeQ[a,Binomial];
    For[ib = 1, ib <= Length[$binindices], ib++,
-If[$VeryVerbose > 0, Print["ib = ",ib, " out of ", Length[$binindices]]];
+FCPrint[1,"ib = ",ib, " out of ", Length[$binindices]];
        indd = $binindices[[ib]];
 
        If[!FreeQ[result, sumBinomial],
@@ -640,7 +642,7 @@ If[$VeryVerbose > 0, Print["ib = ",ib, " out of ", Length[$binindices]]];
 
           result = opsumb[result] /. opsumupv -> OPESum;
 If[Length[result] < 500,
-If[$VeryVerbose > 0, Print["before OPESumSimplify"]];
+FCPrint[1,"before OPESumSimplify"];
           result = OPESumSimplify[result];
   ];
           result = result /. OPESum -> opexbin /. opexbin -> OPESum;
@@ -649,7 +651,7 @@ If[$VeryVerbose > 0, Print["before OPESumSimplify"]];
      If[!FreeQ[result, opes], 
         result = Collect2[result, opes, Factoring->False]];
   ];
-If[$VeryVerbose > 0, Print["sumBinomial  ",FreeQ[result,sumBinomial]]];
+FCPrint[1,"sumBinomial  ",FreeQ[result,sumBinomial]];
 result = result /. (a_ /; (a =!= (-1)))^
          (w_ /; (Head[w] =!= Integer)) :> Power2[a, w];
 
@@ -666,7 +668,7 @@ If[!FreeQ[result, Power2],
    If[Head[result] =!= Plus, result = opesback[result, fii],
 nres = 0;
 For[ij=1, ij<=Length[result], ij++, 
-If[$VeryVerbose > 0, Print["ij = ", ij]];
+FCPrint[1,"ij = ", ij];
     nee = opesback[result[[ij]], fii];
     nres = nres  + nee;
    ];
@@ -674,7 +676,7 @@ result = nres;
      ]
   ];
 
-If[$VeryVerbose > 0, Print["opesback done; "]];
+FCPrint[1,"opesback done; "];
 
 (* in case the incoming momenta are a sum *)
 If[!FreeQ[fii, Plus],
@@ -689,7 +691,7 @@ result = Expand[result] /. {(-1)^a_      :> PowerSimplify[(-1)^a],
 
 If[(!FreeQ2[result, {SUNT, OPESum, DiracGamma}]) &&
    Length[Cases2[result, OPESum]] <= 1,
-If[$VeryVerbose>1, Print["YESSSSSSSSSSSSSS"]];
+FCPrint[2,"YESSSSSSSSSSSSSS"];
 If[zeromomentum === True,
    result = Collect2[ExpandScalarProduct[result /. 
             plist[[1]] :> (-(Plus @@ Rest[plist]))],
@@ -703,7 +705,7 @@ If[!FreeQ[result, SUNIndex|ExplicitSUNIndex],
                      Expanding -> False 
                     ];
   ];
-If[$VeryVerbose > 0, Print["collect2ing done; "]];
+FCPrint[1,"collect2ing done; "];
 
 If[LeafCount[result]<1000,
    result = OPESumSimplify[result];
@@ -717,7 +719,7 @@ If[(Length[plist]<4) && FreeQ[result, OPEDelta],
 If[FreeQ[result, OPEDelta], 
    result = result /. Plus :> pluc;
   ];
-If[$VeryVerbose > 0, Print["feinarbeit "]];
+FCPrint[1,"feinarbeit "];
 
 If[((Factor1 /. {ru} /. Options[FeynRule]) === True),
 If[(Head[result] === Plus) && 
@@ -770,7 +772,7 @@ If[!FreeQ[resu, OPESum] && Head[resu] === Plus && legs < 5,
             Collect2[ores, OPESum, Factoring -> Factor2, 
                                      Expanding -> True];
    If[(!FreeQ[resu, Eps]) && schouten == True,
-If[$VeryVerbose > 0 , Print["using Schouten identity "]];
+	FCPrint[1,"using Schouten identity "];
       schau[y__] := MemSet[schau[y],
                    If[FreeQ2[{y},{(aa_ /; !FreeQ[aa, Pair])^
                                    (vv_ /; Head[vv] =!= Integer),      
@@ -804,7 +806,7 @@ If[legs<5,
                        }  
               ];
   ];
-If[$VeryVerbose > 0, Print["Factoring done; "]];
+FCPrint[1,"Factoring done; "];
 
 If[!FreeQ[resu, $SU], uniqli = {};
    getsu[xx_] := (AppendTo[uniqli, xx]; gsu[xx]);
@@ -818,7 +820,7 @@ resu = fce[resu] /. Power2 -> Power /. I^(2 a_) :> (-1)^a;
 
 
 resu =  resu /. Power2 -> Power;
-If[$VeryVerbose > 0, Print["last global factoring "]];
+FCPrint[1,"last global factoring "];
 resu = PowerSimplify[resu /. foop -> Identity];
 
 If[Head[resu] === Times && !FreeQ[resu, OPEDelta],

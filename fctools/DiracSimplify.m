@@ -74,11 +74,7 @@ choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";
 
 Begin["`Private`"];
 
-print1 = If[$VeryVerbose>0, Print[##]]&;
-print2 = If[$VeryVerbose>1, Print[##]]&;
-print3 = If[$VeryVerbose>2, Print[##]]&;
-
-MakeContext[ Collect2, Contract, DiracOrder,
+MakeContext[ FCPrint, Collect2, Contract, DiracOrder,
 DiracEquation, DiracGamma, DiracGammaCombine, DiracGammaExpand,
 DiracMatrix, DiracOrder, DiracSigmaExplicit, DiracSlash,
 DiracTrace];
@@ -159,7 +155,7 @@ DiracSimplify[a_, opts___Rule] :=
                                                   ],
         diracEq[dotLin[a // fcinter] (*/. DOT -> dS*)]
        ],
-		print2["doing oldDiracSimplify on ", StandardForm[a]];       
+		FCPrint[2,"doing oldDiracSimplify on ", StandardForm[a]];       
        oldDiracSimplify[
               If[(DiracSigmaExplicit /. {opts} /.
                  Options[DiracSimplify]) === True,
@@ -179,7 +175,7 @@ oldDiracSimplify[x_,y___Rule] := diracSimplify[x,y] /; FreeQ[x, Spinor];
 
 (*this is oldDiracSimplify for expressions that contain spinors*)
 oldDiracSimplify[x_,yy___Rule] := Block[{dre},
-print2["entering oldDiracSimplify", x];
+FCPrint[2,"entering oldDiracSimplify", x];
 factoring = Factoring /. {yy} /. Options[DiracSimplify];
 If[factoring === True, factoring = Factor2];
 (*NEW0796*)
@@ -196,9 +192,9 @@ DOT->dooo,dooo[__]]/.dooo->DOT;
                          dre = FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142];
                        ];
    If[!FreeQ[dre, LorentzIndex],
-print2["contracting in oldDiracSimpify"];
+FCPrint[2,"contracting in oldDiracSimpify"];
       dre = Contract[dre];
-print2["contracting in oldDiracSimpify done"];
+FCPrint[2,"contracting in oldDiracSimpify done"];
      ];
    If[Length[DownValues[SpinorsandPairs]
             ] > 1,
@@ -247,7 +243,7 @@ MemSet[diracSimplify[x,in], Block[
         diracsifac   = Factoring/.diracopt;
 
         diracdt = dotLin[ x//DiracGammaExpand ];
-print2["dir1"];
+FCPrint[2,"dir1"];
         If[ diracgasu === True,
             diracdt = contractli[DiracGammaCombine[diracdt/.Pair->sCO]
                                 ] (*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
@@ -286,7 +282,7 @@ Dialog[Global`D3 = diracdt];
 (*
 Dialog[Global`D4 = diracdt];
 *)
-print2["dir2done"];
+FCPrint[2,"dir2done"];
            If[ FreeQ[ diracdt, DOT ],
                diracdt = diracdt/.DiracGamma[_[__],___]->0;
                diracpag=PartitHead[diracdt,DiracGamma];
@@ -299,27 +295,27 @@ print2["dir2done"];
           ];
 
 (* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
-print2["dir2a"];
+FCPrint[2,"dir2a"];
 (*
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
 *)
         diracdt = Expand[ scev[diracdt//fEx], DOT | Pair];
 
-print2["dir3"];
+FCPrint[2,"dir3"];
         If[FreeQ[diracdt,DOT],
            diracndt=Expand[(diracdt/.sCO->scev)//DiracGammaExpand];
            If[diracga67 === True, diracndt = Expand[diracndt//gamma67back]]
            ,
-print2["dir3 expanding "];
+FCPrint[2,"dir3 expanding "];
 (*
            diracdt = Expand[ diracdt ];
 *)
            diracdt = Expand[ diracdt, DOT ];
-print2["dir3 expanding done ", Length[diracdt]];
+FCPrint[2,"dir3 expanding done ", Length[diracdt]];
          If[ Head[diracdt] === Plus, diracldt=Length[diracdt],
              If[ diracdt===0, diracldt = 0, diracldt = 1 ]
            ];
-print2["in diracSimplify: working with ",diracldt," terms"];
+FCPrint[2,"in diracSimplify: working with ",diracldt," terms"];
       While[diracjj<diracldt,diracjj++;
             If[diracldt==1,
                diracpdt = diracdt, diracpdt = diracdt[[diracjj]]
@@ -333,7 +329,7 @@ change 2005-02-05
                diracpdt = diracpdt//.DOT -> dS
               ];
 (* maybe insert some TimeConstrained here later *)
-print2["in diracSimplify: contraction done, expand now."];
+FCPrint[2,"in diracSimplify: contraction done, expand now."];
        diracpdt = scev[ diracpdt ]//Expand;
 
             If[diractrlabel===True,
@@ -348,7 +344,7 @@ print2["in diracSimplify: contraction done, expand now."];
                  diracpdt = fEx[ diracpdt ]
                ];
              diracndt = diracndt + Expand2[ diracpdt, DOT ];
-             print2["# ",diracjj," / ",diracldt," = ", Length[diracndt]];
+             FCPrint[2,"# ",diracjj," / ",diracldt," = ", Length[diracndt]];
            ];
   If[ diracga67===True,
       If[!FreeQ[diacndt, DiracGamma[6]|DiracGamma[7]],
@@ -359,19 +355,19 @@ print2["in diracSimplify: contraction done, expand now."];
    diracndt = diracndt/.dr->DOT/.sCO->scev;
    diracndt = Expand[dotLin[diracndt]];
    If[ (diraccanopt===True ),
-   print3["diracordering in diracSimplify"];
+   FCPrint[3,"diracordering in diracSimplify"];
         diracndt = DiracOrder[ diracndt ] ;
         diracndt = Expand[dotLin[diracndt]]
      ];
           ] (* If FreeQ[diracdt,dr] *);
-print2["dir4 ",diracdt];
-print3["diracdt = ", diracdt ];
+FCPrint[2,"dir4 ",diracdt];
+FCPrint[3,"diracdt = ", diracdt ];
     diracndt = dotLin[diracndt];
-print2["dir5"];
+FCPrint[2,"dir5"];
    If[ diracsifac === True,
        diracndt = Factor2[ diracndt ] ];
-print2["dir6 ", diracndt];
-print3["exiting diracSimplify"];
+FCPrint[2,"dir6 ", diracndt];
+FCPrint[3,"exiting diracSimplify"];
   diracndt/.HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> DOT
 ]]];  (* end of diracSimplify *)
 
@@ -531,7 +527,7 @@ nz ]/; !Head[x]===Plus;
                                           ] ] ]/; FreeQ[{x,y},Spinor];
     spcev[x___,Spinor[a__],b___,Spinor[c__],y___] :=
       Block[ {spcevdi,spcevre,spcevj},
-	print2["entering spcev with ", InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]];
+	FCPrint[2,"entering spcev with ", InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]];
         spcevdi = diracSimplify[DOT[Spinor[a],b,Spinor[c]],
                                      InsideDiracTrace->False,
                                      DiracCanonical->False,
@@ -553,7 +549,7 @@ nz ]/; !Head[x]===Plus;
             spcevre = (spcevre/.DOT->dS)
           ];
          spcevre = spcevre//DotSimplify;
-		print2["exiting spcev with ",InputForm[spcevre]];
+		FCPrint[2,"exiting spcev with ",InputForm[spcevre]];
         spcevre] /; FreeQ[{b}, Spinor];
 
 (* Reference of Sirlin-relations: Nuclear Physics B192 (1981) 93-99;
@@ -570,12 +566,12 @@ nz ]/; !Head[x]===Plus;
   sirlin00[x_]:= x/;$SpinorMinimal === False;
   sirlin00[x_]:=MemSet[sirlin00[x],
                      Block[{te, tg5, ntg5},
-print3["sirlin001"];
+FCPrint[3,"sirlin001"];
 (*
                        te = sirlin0[x]//ExpandAll;
 *)
                        te = sirlin0[x]//Expand;
-print3["sirlin002"];
+FCPrint[3,"sirlin002"];
                        If[FreeQ2[te,{DiracGamma[6],DiracGamma[7]}]&&
                           Head[te]===Plus && !FreeQ[te,DiracGamma[5]],
                           tg5 = Select[te, !FreeQ[#,DiracGamma[5]]& ];
@@ -584,7 +580,7 @@ print3["sirlin002"];
                           test = Expand[tg5 + ChisholmSpinor[ntg5], Spinor];
                           If[nterms[test] < Length[te], te=test]
                          ];
-print3["exiting sirlin00"];
+FCPrint[3,"exiting sirlin00"];
                   te]] /; $SpinorMinimal ===  True;
 
 (* ident3def *)
@@ -1081,7 +1077,7 @@ Block[{schnittmenge, compmenge, result,order, orderl,orderr},
                        compmenge   = comp[gam1][gam2];
                         leftind    = comp[gam1][schnittmenge];
                         rightind   = comp[gam2][schnittmenge];
-print3["entering sirlin1"];
+FCPrint[3,"entering sirlin1"];
 (* We need at least two dummy indices for the sirlin relations *)
                  If[ Length[schnittmenge] > 1,
 
@@ -1121,7 +1117,7 @@ print3["entering sirlin1"];
                          DOT[Spinor[p3],gam2,Spinor[p4]]
                                      ]
              ];
-print3["exiting sirlin1"];
+FCPrint[3,"exiting sirlin1"];
            result]] /; !FreeQ[{gam1}, LorentzIndex];
 
 
@@ -1129,7 +1125,7 @@ print3["exiting sirlin1"];
  dsimp[x_]:=sirlin0[spcev0[x]];
  ChisholmSpinor[x_, choice_:0]:=MemSet[ChisholmSpinor[x,choice],
                              Block[{new=x, indi},
-print3["entering ChisholmSpinor "];
+FCPrint[3,"entering ChisholmSpinor "];
   new = DotSimplify[new];
   If[choice===1, new = new/.{ DOT[Spinor[a__],b__ ,Spinor[c__]] *
                               DOT[Spinor[d__],e__ ,Spinor[f__]]:>

@@ -22,7 +22,7 @@ Only the residue is calculated.";
 Begin["`Private`"];
    
 
-MakeContext[Uncontract,
+MakeContext[FCPrint, Uncontract,
             Cases2, ChangeDimension, Collect2, Collecting, 
             Contract, Dimension, DiracTrick,
             DotSimplify, Eps, Epsilon, EpsEvaluate,Expand2,
@@ -51,19 +51,19 @@ integrate[yy_Plus, zz__]:= (*Factor2*)
 Global`$INTC= {};
 intsav[a_,{z_,zi_,zf_},ass___Rule] := intsav[a,{z,zi,zf},ass] = 
   Block[{na,re},
-If[$VeryVerbose > 1, Print["intsav simplify"]];
+FCPrint[2,"intsav simplify"];
         na = a//PowerSimplify//Factor2//Simplify;
-If[$VeryVerbose > 1, Print["intsav simplify done"]];
+FCPrint[2,"intsav simplify done"];
         na = na/.Plus:>(Isolate[Collect2[Plus[##],z, Factoring->True(*,
                        IsolateNames->LL*)
                                ],z,IsolateNames->LL]&
                       );
-If[$VeryVerbose > 2, Print["intsav collect2 done"]];
-If[$VeryVerbose > 3, Print[na//InputForm]];
+FCPrint[3,"intsav collect2 done"];
+FCPrint[4,na//InputForm];
         re = Integrate2[na,{z,zi,zf},ass
                        ] /. (Hold@@{Integrate3}) -> Integrate;
         re = PowerSimplify[re];
-If[$VeryVerbose > 2, Print["int done"]];
+FCPrint[3,"int done"];
         If[Head[re] === If, 
            AppendTo[Global`$INTC, re[[1]]];
            re = re[[2]]
@@ -82,18 +82,16 @@ idx[y_, opt___] := Block[{nr, ci, intvars},
     nr = PowerSimplify[ EpsEvaluate[ExpandScalarProduct[
                         ChangeDimension[y, 4]/.D->(4+Epsilon)]]
                       ];
-If[$VeryVerbose >1, Print["series2"]];
+FCPrint[2,"series2"];
     nr = Series2[nr , Epsilon, -1 
                 ] // PowerSimplify//ExpandScalarProduct;
-If[$VeryVerbose >1, Print["series2 done"]];
+FCPrint[2,"series2 done"];
     ci =  Reverse[Cases2[nr, Integratedx]];
     intvars = Map[First, ci];
-If[$VeryVerbose >1, Print["intvars ", intvars]];
+FCPrint[2,"intvars ", intvars];
     nr = Collect2[nr, intvars, Factoring -> (*False*) True];
-    While[Length[ci] > 0, 
-          If[$VeryVerbose >0, 
-             Print["doing ",ci[[1]]//Last," integration"]
-            ];
+    While[Length[ci] > 0,           
+             FCPrint[1,"doing ",ci[[1]]//Last," integration"];            
           nr = Isolate[Collect2[nr, intvars[[1]], 
                         Factoring->False],intvars[[1]], 
                        IsolateNames -> LL];
@@ -192,8 +190,7 @@ Global`EXPCHIN3 = exp;
      ];
                 
   Global`EXPCH = exp;
-   If[$VeryVerbose > 1, Print["entering OPEIntegrate2 with ", 
-   exp//FeynCalcForm]];
+   FCPrint[2,"entering OPEIntegrate2 with ", exp//FeynCalcForm];
    tt = Select1[exp, k] kli[k, Select2[exp,k]];
    nt = tt /. opeinttable;
     If[tt =!= nt
@@ -333,9 +330,9 @@ ilist[ih_, Momentum[k_,n_], od_Integer] :=
       del= Pair[l,de]//ExpandScalarProduct//Factor2;
        m = getopem[h];
 Global`HH=h;
-If[$VeryVerbose > 1, 
-Print["h = ",h]; Print["l2 = " ,l2]; Print["m2 = " ,m2];
-  ];
+FCPrint[2,"h = ",h]; 
+FCPrint[2,"l2 = " ,l2]; 
+FCPrint[2,"m2 = " ,m2];
       Which[
             match1[h, Momentum[k,n]],
            ( 

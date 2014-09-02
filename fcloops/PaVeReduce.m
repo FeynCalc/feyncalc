@@ -25,6 +25,7 @@ Begin["`Private`"];
    
 
 MakeContext[
+FCPrint,
 A0, B0, B00, B1, B11, 
 C0, 
 Collect2,
@@ -325,12 +326,12 @@ pavitp[xXX_PaVe, dir_,opts___] := Block[{nx, file, temp, set,xxx,a,abbs,abbstr,d
     
    nx = StringJoin[dir, nx, ".s"];
    (**)
-    print2P["nx  =", nx];
+    FCPrint[2,"nx  =", nx];
     If[Streams[nx] === {},
                       (*Mac fix, 18/9-2000, F.Orellana*)
                       file = FileType[nx];
                       If[file === File,
-                         print2P["file  =", file];
+                         FCPrint[2,"file  =", file];
                          temp =( Get @@ {nx} ) // PaVeOrder;
  (* If something went wrong in writing the file *)
                          If[ Head[temp]=!=Plus, file = {} ]];
@@ -338,7 +339,7 @@ pavitp[xXX_PaVe, dir_,opts___] := Block[{nx, file, temp, set,xxx,a,abbs,abbstr,d
                          temp = FixedPoint[ReleaseHold,
                                  PaVeReduce[xXX, WriteOutPaVe->False,opts
                                            ]]//PaVeOrder;
-			 print2P["writing result to ",nx];
+			 FCPrint[2,"writing result to ",nx];
                          OpenWrite @@ {nx, FormatType -> InputForm };
                          WriteString @@ {nx, "( "};
                          Write @@ {nx, temp};
@@ -375,7 +376,7 @@ pavereduce[ w_ (*Plus*),ops___ ]:=
             re = pavereduce[mpa, ops];
             If[Head[nw] === Plus, nn = Length[nw], nn = 1];
             For[ij=1,ij<=nn,ij++,
-                print2P["breaking down # ",ij," / ",nn];
+                FCPrint[2,"breaking down # ",ij," / ",nn];
                 If[ nn===1, pre = PartitHead[nw,StandardMatrixElement],
                             pre = PartitHead[nw[[ij]],StandardMatrixElement]
                   ];
@@ -385,7 +386,7 @@ pavereduce[ w_ (*Plus*),ops___ ]:=
 
 pavereduce[pvli_List,op___]:=Block[{i,set,le=Length[pvli],npvli},
                                    npvli = {};
-                            Do[ print2P[" Working with # ",i," out of ",le];
+                            Do[ FCPrint[2," Working with # ",i," out of ",le];
                                 npvli=Append[ npvli,
                                        pavereduce[pvli[[i]],op] ],
                                 {i,le}
@@ -407,7 +408,6 @@ pavereduce[pvli_List,op___]:=Block[{i,set,le=Length[pvli],npvli},
 (* ***************************************************************** *)
 
 
-print2P[x__] := If[$VeryVerbose > 1, Print[x]];
 collect3[x__]  := Collect2[x, Factoring -> True];
 
 pavereduce[brex_,optis___]:=Block[{sq,t,tt,ma,rest,lin,
@@ -454,7 +454,7 @@ backpc[a_,b_,c_,d_,e_,f_]:=PaVeOrder[C0[a,b,c,d,e,f],
 backpd[a_] := D0[a];
 backpd[a_,b_,c_,d_,e_,f_,m1_,m2_,m3_,m4_]:=
  PaVeOrder[ D0[a,b,c,d,e,f,m1,m2,m3,m4], PaVeOrderList -> paveorderli];
-print2P["starting pavebr ing"];
+FCPrint[2,"starting pavebr ing"];
 pluep[yy__]:=Plus[yy]/;!FreeQ2[{yy}, {$epsilon,A0,B0,B1,B00,B11}];
 
 tim = Timing[
@@ -479,14 +479,14 @@ result = t;
 
 
 (* get the "linear" part *)
-print2P["check4 ", MemoryInUse[]," MB used"];
+FCPrint[2,"check4 ", MemoryInUse[]," MB used"];
  cofun[0]=0;
  cofun[a_ b_]:=a cofun[b]/;!FreeQ2[a, {A0,B0,B1,B00,B11,C0,D0,PaVe} ];
  cofun2[0]=0;
  cofun2[y_]:=y/;FreeQ[y,Plus];
  cofun2[yy_]:= trick[yy];
   
-print2P["check7"];
+FCPrint[2,"check7"];
  
 If[ isok=!=False && Head[result]=!=PaVe,
     result = cofun/@( result + nuLL );

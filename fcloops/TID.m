@@ -24,7 +24,8 @@ Lorentz indices away from the integration momentum q.";
 Begin["`Private`"];
    
 
-MakeContext[Uncontract,
+MakeContext[FCPrint,
+			Uncontract,
             Cases2,
             ChangeDimension, Collect2, 
             Contract,
@@ -305,17 +306,17 @@ If[diditlabel === True,
    t5 = t5 /. qQQ -> Identity /. fdp[__] :> 1;
        
    If[!FreeQ[t5, LorentzIndex] && contractlabel===True,
-If[$VeryVerbose > 0, "simple contracting  in TID "];
+FCPrint[1, "simple contracting  in TID "];
       t5 = Expand2[t5, LorentzIndex] /. Pair -> PairContract /.
            PairContract -> Pair;
      ];
    If[!FreeQ[t5, Eps], t5 = EpsEvaluate[t5]];
    If[!FreeQ[t5, LorentzIndex] && contractlabel===True,
-If[$VeryVerbose > 0, "contracting  in TID "];
+FCPrint[1, "contracting  in TID "];
       t5 = Contract[t5, EpsContract -> False, Rename -> True]
      ];
    If[!FreeQ[t5, DiracGamma],
-If[$VeryVerbose > 0, "DiracSimplify (dotsav) in TID "];
+FCPrint[1, "DiracSimplify (dotsav) in TID "];
       dotsav[z__] := dotsav[z] = DiracSimplify[DOT[z]];
       t5 = t5 /. DOT -> dotsav
      ];
@@ -324,15 +325,15 @@ If[$VeryVerbose > 0, "DiracSimplify (dotsav) in TID "];
   ];
 
 res = t5 /. fdp[___] :> 1;
-If[$VeryVerbose > 0, Print["DIDITLABEL = ",diditlabel]];
+FCPrint[1,"DIDITLABEL = ",diditlabel];
 If[diditlabel === True,
 
-If[$VeryVerbose > 0, Print["collecting (1)  in TID  "]];
+FCPrint[1,"collecting (1)  in TID  "];
 
 If[FreeQ[res, DiracGamma],
    res = Collect2[res, q, Factoring -> Factor, Expanding -> False]
    ,
-If[$VeryVerbose > 0, Print["special disi in TID  "]];
+FCPrint[1,"special disi in TID  "];
    disi[z_] := (*disi[z] = *)If[FreeQ[FixedPoint[ReleaseHold,z], q],
                   Collect2[DiracSimplify[Collect2[
                     ChangeDimension[z,n],DiracGamma,Factoring->False]],
@@ -353,32 +354,31 @@ If[!FreeQ[res, DOT], res = DiracTrick[res]];
 
 If[fds, res = FeynAmpDenominatorSimplify[res, q]];
 
-If[(ScalarProductCancel /. {opt} /. Options[TID]) === True,
-   If[$VeryVerbose > 0, Print["ScalarProductCancel in TID "]];
+If[(ScalarProductCancel /. {opt} /. Options[TID]) === True,   
+   FCPrint[1,"ScalarProductCancel in TID "];
    res = ScalarProductCancel[res, q, 
                              FeynAmpDenominatorSimplify -> fds,
                              FeynAmpDenominatorCombine -> False,
                              Collecting -> False
                             ];
-   If[$VeryVerbose > 0, Print["collecting (2)  in TID "]];
+   FCPrint[1,"collecting (2)  in TID "];
 (* res = Collect2[res, q, Factoring -> True]; *)
    res = Collect2[res, q, Factoring -> False];
-   If[$VeryVerbose > 0, Print["collecting (2)  in TID done"]];
+   FCPrint[1,"collecting (2)  in TID done"];
   ];
 (*CHANGE Feb. 97 *)
 If[!FreeQ[res, Pair[Momentum[q, n], Momentum[q, n]]]
    , (*repeat *)
    If[(ScalarProductCancel /. {opt} /. Options[TID]) === True,
-      If[$VeryVerbose > 0, 
-         Print["again (!) ScalarProductCancel in TID "]
-        ];
+       FCPrint[1,"again (!) ScalarProductCancel in TID "];
+        
       res = ScalarProductCancel[res, q, 
                                 FeynAmpDenominatorSimplify -> fds,
                                 FeynAmpDenominatorCombine -> False,
                                 Collecting -> False,(*Added 17/9-2000, F.Orellana*)
 				ChangeDimension -> chd
-                               ];
-      If[$VeryVerbose > 0, Print["collecting (3)  in TID "]];
+                               ];      
+      FCPrint[1,"collecting (3)  in TID "];
       (* res = Collect2[res, q, Factoring -> True]; *)
       If[!FreeQ[res, DiracGamma],
          res = Collect2[res, q, Factoring -> disi],
@@ -389,9 +389,7 @@ If[!FreeQ[res, Pair[Momentum[q, n], Momentum[q, n]]]
 
 If[(Head[res] === Plus) && (!FreeQ[res, Pair[Momentum[q, n], _]])
    , (*repeat *)
-      If[$VeryVerbose > 0, 
-         Print["again (XX) ScalarProductCancel in TID "]
-        ];
+   	  FCPrint[1,"again (XX) ScalarProductCancel in TID "];      
    res = SelectFree[res, Pair[Momentum[q,n],_]] +  
 (* CHANGE 12/97 *)
           ScalarProductCancel[SelectNotFree[res,Pair[Momentum[q,n],_]],q,

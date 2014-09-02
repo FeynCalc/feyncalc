@@ -34,6 +34,7 @@ Begin["`Private`"];
 FDS = FeynAmpDenominatorSimplify;
 
 MakeContext[
+			FCPrint,
             Calc,
             Cases2,
             ChangeDimension,
@@ -592,20 +593,20 @@ anyf_[a___,Momentum[q1,___], b___]*
 FeynAmpDenominator[ c___, PropagatorDenominator[Momentum[q1,___], _]..,d___
                            ]
           ] :>  
- (If[$VeryVerbose === 3, Print["Amu 1"]];0
+ (FCPrint[3,"Amu 1"];0
         ) /; FreeQ[{a,anyf,b,c,d},q1] ,
 FCIntegral[
 anyf_[a___,Momentum[q2,___], b___]*
 FeynAmpDenominator[ c___, PropagatorDenominator[Momentum[q2,___], _]..,d___
                            ]
-          ] :>  (If[$VeryVerbose === 3, Print["Amu 2"]];0
+          ] :>  (FCPrint[3,"Amu 2"];0
         ) /; FreeQ[{a,anyf,b,c,d},q2] ,
 FCIntegral[ 
 any_. (*((any1_. + any2_. Pair[Momentum[q1 | q2,___],Momentum[OPEDelta,___]]
          )^(vv_/; Head[vv] =!= Integer)
         ) 
       *) FeynAmpDenominator[aa__ ]
-         ] :>  (If[$VeryVerbose === 3, Print["Amu 3"]];0) /; 
+         ] :>  (FCPrint[3,"Amu 3"];0) /; 
   (
    FreeQ[{aa}, PropagatorDenominator[_,em_/;em=!=0]] && 
   (
@@ -626,7 +627,7 @@ FCIntegral[
 any_. FeynAmpDenominator[
           PropagatorDenominator[Momentum[q1,___],0].., aa__ 
                         ]
-          ] :>  ( If[$VeryVerbose === 3, Print["Amu 4"]];0
+          ] :>  ( FCPrint[3,"Amu 4"];0
                 ) /; FreeQ[{aa},q1],
 (*NEW*)
 FCIntegral[any_. FeynAmpDenominator[aa__ ] ] :>
@@ -1196,7 +1197,7 @@ translat[x_, q1_, q2_] := MemSet[translat[x,q1,q2],
 Block[{nuLlL1, nuLlL2},
  Map[ trach[#, q1, q2]&,  
 (
-If[$VeryVerbose > 1, Print["in translat"]];
+FCPrint[1,"in translat"];
       Expand2[x, FeynAmpDenominator] + 
 (*
       Collect2[x, FeynAmpDenominator, Factoring -> False] + 

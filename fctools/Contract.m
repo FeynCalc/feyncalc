@@ -39,7 +39,9 @@ dummy indices in Eps are renamed, using $MU[i].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+   MakeContext[FCPrint];
+
    Cases2                      = MakeContext["Cases2"];
    Collect2                    = MakeContext["Collect2"];
    Collect3                    = MakeContext["Collect3"];
@@ -71,12 +73,6 @@ Begin["`Private`"];
     Upper  := Upper = MakeContext["Upper"];
    Twist2GluonOperator         := Twist2GluonOperator =
                                  MakeContext["Twist2GluonOperator"];
-   
- (* print1def, print2def, print3def: print functions *)
-    SetAttributes[{print1, print2, print3}, HoldAll];
-    print1[x__]:=Print[x]/;$VeryVerbose>0;
-    print2[x__]:=Print[x]/;$VeryVerbose>1;
-    print3[x__]:=Print[x]/;$VeryVerbose>2;
    
    fci[x_] := If[(fcint /. Options[Contract]) === True, fcint[x], x ];
    
@@ -116,7 +112,7 @@ Begin["`Private`"];
                  If[Length[lipa] < 2, nec = Contract[lipa (*epli*), Contract3->False],
                     nec = lipa[[1]] (*epli*);
                     For[ic = 2, ic <= Length[lipa], ic++,
-                        print2["ic = ", ic, " out of ",Length[lipa]];
+                        FCPrint[2,"ic = ", ic, " out of ",Length[lipa]];
                         If[LeafCount[nec] < LeafCount[lipa[[ic]]] ||
                            If[CheckContext["Twist2GluonOperator"],
                               !FreeQ[lipa[[ic]], 
@@ -127,20 +123,20 @@ Begin["`Private`"];
                            nec = Contract[lipa[[ic]], nec, Contract3->False],
                            nec = Contract[nec, lipa[[ic]], Contract3->False]
                           ];
-                        print2["expand scalar products"];
+                        FCPrint[2,"expand scalar products"];
 			nec = ExpandScalarProduct[nec];
 (*
                         nec = nec /. Pair -> expair;
 *)
-                        print2["expand scalar productsdone"];
+                        FCPrint[2,"expand scalar productsdone"];
 (*
          nec = Collect2[nec, LorentzIndex, Factoring -> True];
 *)
          If[!FreeQ[nec, LorentzIndex],
-                        print2["expanding LorentzIndex now"];
+                        FCPrint[2,"expanding LorentzIndex now"];
 tim = TimeUsed[];
          nec = Expand[nec, LorentzIndex];
-                        print2["expanding LorentzIndex DONE ",
+                        FCPrint[2,"expanding LorentzIndex DONE ",
                                TimeUsed[] - tim];
             ];
                        ]; 
@@ -180,12 +176,12 @@ tim = TimeUsed[];
              ];
           ];
        ];
-   print2["lct = ",lct];
+   FCPrint[2,"lct = ",lct];
    If[!FreeQ[rc, LorentzIndex],
       rc = Contract[rc, Expanding -> False];
      ];
    If[!FreeQ[rc, LorentzIndex],
-      print1["contracting agagin at the end of Contract2 "];
+      FCPrint[1,"contracting agagin at the end of Contract2 "];
       rc = Contract[rc]
      ];
          rc];
@@ -211,10 +207,10 @@ tim = TimeUsed[];
              ];
           ];
        ];
-   print2["lct = ",lct];
+   FCPrint[2,"lct = ",lct];
    
    If[!FreeQ[rc, LorentzIndex], 
-      print1["contracting agagin at the end of Contract2 "];
+      FCPrint[1,"contracting agagin at the end of Contract2 "];
       rc = Contract[rc] 
      ];
          rc];
@@ -238,8 +234,8 @@ tim = TimeUsed[];
 *)
  
  Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops___Rule] := 
-    Block[{lc, new = 0, i},            print2["longcontract1"]; 
-          lc = Contract[b, c, ops];    print2["longcontract1done"]; 
+    Block[{lc, new = 0, i},            FCPrint[2,"longcontract1"]; 
+          lc = Contract[b, c, ops];    FCPrint[2,"longcontract1done"]; 
           new = Contract[lc, a, ops];
       new];
    
@@ -286,23 +282,17 @@ tim = TimeUsed[];
 
    contractLColl[lon_, shor_Plus] := Block[{neew = {}, long = lon,
                                             short = shor, tet},
-     If[$VeryVerbose > 0, 
-         WriteString["stdout","Long contraction ", Length[long], " * ",
-                      Length[short], " \n "]
-        ];
+   FCPrint[1,"Long contraction ", Length[long], " * ", Length[short], " \n ",UseWriteString->True];
    For[ij = 1, ij <= Length[short], ij++,
-      If[$VeryVerbose > 2,
-         WriteString["stdout"," | ", ij, "  XXX | "]
-        ];
-   If[$VeryVerbose > 1, Print["before contract21 "]];
+   	  FCPrint[3,"stdout"," | ", ij, "  XXX | ",UseWriteString->True];      ;
+   	  FCPrint[1, "before contract21 "];   
           tet = contract21[long, short[[ij]] ];
-   If[$VeryVerbose > 1, Print["after contract21 "]];
-   
+   FCPrint[1, "after contract21 "];
+      
       If[!FreeQ[tet, LorentzIndex], 
          tet = tet /. Pair->pairsave /. pair2 -> Pair];
       If[!FreeQ[tet, LorentzIndex], 
-         If[$VeryVerbose > 1, 
-            WriteString["stdout","expanding in contractLColl "]];
+      	FCPrint[1,"expanding in contractLColl ",UseWriteString->True];
          tet = Expand[Expand[tet] /. Pair->pairsave /. pair2 -> Pair];
 (*
        tet = Expand2[tet, LorentzIndex] /. Pair->pairsave /. pair2 -> Pair;
@@ -313,9 +303,9 @@ tim = TimeUsed[];
             AppendTo[neew, tet]
            ];
       ];
-   print2["applying plus to neew "];
+   FCPrint[2,"applying plus to neew "];
                         neew = Apply[Plus, neew];
-   print2["exiting contractLColl"];
+   FCPrint[2,"exiting contractLColl"];
    neew];
    
 (* local easy contraction rules *) (* paird *)
@@ -359,18 +349,18 @@ tim = TimeUsed[];
       If[FreeQ[xx, LorentzIndex[mu,___]],
          nxx = Expand2[xx Pair[LorentzIndex[mu, di], alpha], Pair],
          (* else *)
-  If[$VeryVerbose > 1,Print["contra3c1111check"]];
+  FCPrint[1,"contra3c1111check"];
          nxx = xx;
 (*
          If[Head[xx]===Plus, nxx = Apply[List, xx], nxx = {xx}];
 *)
-  If[$VeryVerbose > 1,Print["contra3c2222check"]];
-  print2["contra3c : Length of xx now ", Length[nxx]];
+  FCPrint[1,"contra3c2222check"];  
+  FCPrint[2,"contra3c : Length of xx now ", Length[nxx]];
          nxx = nxx /. LorentzIndex[mu, ___] -> alpha;
-  print2["contra3c3333check"];
+  FCPrint[2,"contra3c3333check"];
 (*
          nxx = Apply[Plus, nxx];
-  print2["contra3c4check"];
+  FCPrint[2,"contra3c4check"];
 *)
         ];
            nxx];
@@ -409,7 +399,7 @@ tim = TimeUsed[];
           If[Length[xx] =!= 2, Contract[xx yy],
              If[(Head[xx[[1]]] === Plus) && (Head[xx[[2]]] === Plus),
   iCcount = 1;
-  print2["contracting a product of a ",Length[xx[[1]]], " term sum  by a",
+  FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
          Length[xx[[2]]], " term sum"];
 (* that's the common situation !! *)
                 Apply[ Plus, Flatten[Table[ (xx[[1, ii]] xx[[2, jj]] yy
@@ -519,12 +509,12 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
      If[contract3 && contractexpandopt,
      If[MemberQ[{Plus, Times}, Head[contractres]] (*&& !FreeQ[contractres, Plus]*),
         contractres = Contract3[contractres];
-If[$VeryVerbose > 0, Print["Contract3 done"]];
+FCPrint[1,"Contract3 done"];
        ]];
      contractres = contractres /. Pair -> sCOS /. sCOS -> sCO/.
                    sCO -> sceins /. sceins -> Pair;
      rename      = Rename /. contractopt;
-If[$VeryVerbose > 0, Print["extra done"]];
+FCPrint[1,"extra done"];
 (* optimization *)
      If[Head[contractres === Plus] && Length[contractres > 47],
        If[!FreeQ[contractres, Eps],
@@ -536,7 +526,7 @@ If[$VeryVerbose > 0, Print["extra done"]];
           contractres = contractres //. es
          ]
        ];
-If[$VeryVerbose > 0, Print["check1"]];
+FCPrint[1,"check1"];
      If[ contractexpandopt === True && contract3 === False && !FreeQ[contractres, LorentzIndex],
 (* NEW October 2003, this speeds things up in general*)
          contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
@@ -657,7 +647,7 @@ If[$VeryVerbose > 0, Print["check1"]];
            ];
         ];
   If[Length[suli] > 0,
-     If[$VeryVerbose>1, Print["suli == ",suli]];
+     FCPrint[1,"suli == ",suli];
      xy = xy /. suli
     ];
                     xy = doubleindex0[x];
@@ -667,8 +657,8 @@ If[$VeryVerbose > 0, Print["check1"]];
                           doubleindex0[x]
                          ];
 *)
-                       If[xy === 0 && $VeryVerbose > 0, 
-  Print["doubleindexTROUBLE???????????? "];
+                       If[xy === 0, 
+  							FCPrint[1,"doubleindexTROUBLE???????????? "];
                            Print["entering with", x];
                          ];
 (*

@@ -27,6 +27,7 @@ the dimension in which the Levi-Civita tensors are contracted.";
 Begin["`Private`"];
 
 MakeContext[
+FCPrint,
 CA,
 CF,
 ChangeDimension,
@@ -386,7 +387,7 @@ nex = Expand[nex, x] /. (1-x)^e1_ x^e2_ :> ( (x(1-x))^e1 x^(e2-e1) );
 p2  = p2 /. Momentum[pp,_] :> Momentum[pp];
 
 noflow = Select2[nex + null[1] + null[2], DeltaFunction];
-If[$VeryVerbose > 0, Print["noflow = ", noflow]];
+FCPrint[1,"noflow = ", noflow];
 
 nex = ( Factor2[(nex-noflow) /( (x (1-x))^(Epsilon/2) )] *
         flowerpower[ (x (1-x)), Epsilon/2]
@@ -415,7 +416,7 @@ If[NumberQ[epsorder],
    nex = Expand[nex,flowerpower];
    noflow = nex /. flowerpower[__] :> 0;
    nex = Factor2[Factor1[nex - noflow] dummyfa];
-If[$VeryVerbose > 0, Print["factoring done "]];
+FCPrint[1,"factoring done "];
    noflow = Factor2[noflow];
    If[Head[noflow] === Times,
       noflow = Select1[noflow, Epsilon] Collect2[Select2[noflow, 

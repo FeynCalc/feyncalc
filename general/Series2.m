@@ -28,7 +28,7 @@ Series2[f, {e, 0, n}] is equivalent to Series[f, {e, 0, n}].";
 
 Begin["`Private`"];
    
-MakeContext[Cases2, Collect2, Collecting, Epsilon,Factor2,
+MakeContext[FCPrint, Cases2, Collect2, Collecting, Epsilon,Factor2,
             Factoring, FinalSubstitutions, 
             GammaEpsilon, GammaExpand, Nielsen,
             OPEm, FreeQ2, Select1, Select2, 
@@ -64,7 +64,7 @@ gammas[y_] := If[FreeQ[y, Gamma], y,
 If[ll === {},
    n = nn
    ,
-   If[$VeryVerbose >0, Print["ll in Series2  = ", ll]];
+   FCPrint[1,"ll in Series2  = ", ll];
       n = nn + 1;
       If[n === 0, n = 1];
   ];

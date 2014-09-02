@@ -29,6 +29,7 @@ DiracTrace := DiracTrace = MakeContext["DiracTrace"];
 Tr2 := Tr2 = MakeContext["Tr2"];
 
 MakeContext[
+FCPrint,
 Uncontract,
 ChangeDimension,
 Cases2,
@@ -262,7 +263,7 @@ If[!FreeQ[temp, Pair[Momentum[k1,n], Momentum[k2,n]]],
   ];
 
 If[k12shift =!= {},
-   If[$VeryVerbose > 1, Print["shifting ",k12shift[[1]]]];
+   FCPrint[2,"shifting ",k12shift[[1]]];
    temp = Collect2[ScalarProductCancel[EpsEvaluate[ExpandScalarProduct[
           (temp /. k12shift)/.DiracTrace->Tr2]//diracsimp],k1,k2
                            ],{k1,k2}
@@ -275,21 +276,21 @@ If[k12shift =!= {},
   ];
 
 If[Head[temp] === Plus, 
-If[$VeryVerbose>0, Print["Map ope2tid"]];
+FCPrint[1,"Map ope2tid"];
    temp = Map[ope2tid[#, k1,k2,p]&, temp] /. ope2tid -> ope2TID;
 (* shift back *)
-If[$VeryVerbose > 1, Print["shifting back"]];
+FCPrint[2,"shifting back"];
    temp = ExpandScalarProduct[(temp /. k12shift)//diracsimp2];
 If[contractlabel === True,
-   If[$VeryVerbose > 1, Print["contract "]];
+   FCPrint[2,"contract "];
    temp = Expand2[temp, LorentzIndex] /. Pair->PairContract3 /. 
              PairContract3->Pair;
   ];
    temp = EpsEvaluate[temp]//diracsimp2;
-If[$VeryVerbose > 1, Print["collect in OPE2TID"]];
+FCPrint[2,"collect in OPE2TID"];
    temp = Collect2[temp, {k1,k2}, Factoring -> False];
 (*
-If[$VeryVerbose > 1, Print["ScalarProductCancel again"]];
+FCPrint[2,"ScalarProductCancel again"];
    temp = ScalarProductCancel[temp,k1,k2,Collecting->False]
 *)
    ,
@@ -368,7 +369,7 @@ If[ FreeQ[temp, Eps[__]^2] &&
          ),
     alL = Unique[Global`lI];
     beT = Unique[Global`lI];
-If[$VeryVerbose > 0, Print["AMPuTATe EPs"]];
+FCPrint[1,"AMPuTATe EPs"];
     temp = temp /. Eps[a___, Momentum[k1, en___], 
                              Momentum[k2, en___], b___] :>
            (Pair[LorentzIndex[alL,n], Momentum[k1,n]] *
@@ -458,9 +459,9 @@ If[Head[temp] === Times && !FreeQ2[temp, {k1,k2,OPEDelta}],
 (* there may be no Eps in delfactor *)
    delfactor    = Select2[Select2[temp2, Pair], OPEDelta];
 
-If[$VeryVerbose > 2,
-   Print["delfactor = ",delfactor // FeynCalcForm]
-  ];
+
+   FCPrint[3,"delfactor = ",delfactor // FeynCalcForm];
+  
 
 (* this function is ESSENTIAL !!! *)
 checkd[yy_] := !FreeQ[delfactor, yy];
@@ -522,7 +523,7 @@ qQQ[
  Eps[r___, Momentum[k1,___], Momentum[k2,___], s___]*
  T2_[w___, Momentum[qk_, ___], z___]] :> 
 epscontract[
-If[$VeryVerbose > 0, Print["USING K1K2KIRULE"]];
+FCPrint[1,"USING K1K2KIRULE"];
 rho = Unique["lI"];
 ( -((Pair[Momentum[k1, D], Momentum[qk, D]]*
        Pair[Momentum[k2, D], Momentum[p, D]]*
@@ -1240,7 +1241,7 @@ t21=Pair[Momentum[qi,D],Momentum[qi,D]],
 t22=Pair[Momentum[qi,D],Momentum[qj,D]],
 t23=Pair[Momentum[qj,D],Momentum[qj,D]]
 },
-If[$VeryVerbose > 0, Print["use G1G1G2G2 rule "]];
+FCPrint[1,"use G1G1G2G2 rule "];
 (-(t1*t12*t14*t16^2*t17^2*t18)+t1*t12*t14*t15*t16*t17^2*t19+
 t1*t12*t14*t15*t16^2*t17*t20-t1*t12*t14*t15^2*t16*t17*t22)/
 ((2-D)*t15^4)+(t1*t10*(-3*t16^2*t17^2*t18^2+D*t16^2*t17^2*t18^2+
@@ -1900,7 +1901,7 @@ qQQ[
 Eps[r___, Momentum[qi_,___], Momentum[qj_,___], s___]^2  
    ] :>
 (
-If[$VeryVerbose > 0, Print["USING K12SQUAREDRULE"]];
+FCPrint[1,"USING K12SQUAREDRULE"];
  epscontract[
 ( (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]^2*
      (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
@@ -2156,7 +2157,7 @@ Eps[LorentzIndex[AL_,___], Momentum[p, ___],
     Momentum[qi_, ___], Momentum[qj_, ___]
    ]  ]:> 
 (
-If[$VeryVerbose > 0, Print["USING QiQjQiQjRULE"]];
+FCPrint[1,"USING QiQjQiQjRULE"];
 epscontract[
 (* o.k., forgot to do with general n in Eps ... *)
 ChangeDimension[
@@ -2307,7 +2308,7 @@ ChangeDimension[
 decrules = Join[decrules, Drop[Drop[decrules,-1],1
                               ] /. {k2 :> k1, k1 :> k2}];
 
-If[$VeryVerbose > 0, Print["OPE2TID checkkkk"]];
+FCPrint[1,"OPE2TID checkkkk"];
 
 If[speciallabel =!= True,
    temp4 = Expand2[epscontract[temp4 /. decrules]//diracsimp2, 
@@ -2316,7 +2317,7 @@ If[speciallabel =!= True,
    temp4 = Expand2[temp4 /. decrulesspecial, LorentzIndex];
   ];
 
-If[$VeryVerbose > 0, Print["decrules done"]];
+FCPrint[1,"decrules done"];
 
 If[contractlabel === True,
    temp4 = temp4/. Pair -> PairContract3 /. PairContract3 -> Pair;
@@ -2324,7 +2325,7 @@ If[contractlabel === True,
 temp = nok1k2factor temp4 tempf delfactor; 
 
 If[k12shift =!= {},
-If[$VeryVerbose > 1, Print["shifting back"]];
+FCPrint[2,"shifting back"];
    temp = EpsEvaluate[ExpandScalarProduct[temp /. k12shift]];
   ];
 If[!FreeQ[temp,fake[OPEm]], temp = temp /. fake[OPEm]->1];
@@ -2338,10 +2339,8 @@ For[ijji = 1, ijji < 6, ijji++,
 temp = Expand2[temp, LorentzIndex];
    If[Head[temp] === Plus,
       ntemp = 0;
-      For[int = 1, int <=Length[temp], int++,
-          If[$VeryVerbose > 1, 
-             Print["int = ",int, "  out of",Length[temp]]
-            ];
+      For[int = 1, int <=Length[temp], int++,           
+             FCPrint[2,"int = ",int, "  out of",Length[temp]];          
           ntemp = ntemp + Contract[temp[[int]], Expanding -> True,
                                    EpsContract -> False, 
                                    Rename -> True]
@@ -2357,37 +2356,34 @@ If[CheckContext["DiracTrace"],
 (*
       temp = Contract[temp, EpsContract->False];
 *)
- If[$VeryVerbose > 0, Print["DiracTrick"]];
+ FCPrint[1,"DiracTrick"];
       temp = DiracTrick[temp];
- If[$VeryVerbose > 0, Print["collecting DiracTrace"]];
+ FCPrint[1,"collecting DiracTrace"];
       temp = Collect2[temp, DiracTrace, 
                             Factoring -> False
                      ]/. DiracTrace -> Tr2
      ];
 If[contractlabel === True,
 temp = Expand2[temp, LorentzIndex];
- If[$VeryVerbose > 0, Print["PairContract"]];
+ FCPrint[1,"PairContract"];
 
 temp = temp /. Pair -> PairContract3 /. 
        PairContract3 -> PairContract  /.  
        PairContract -> Pair;
- If[$VeryVerbose > 0, Print["PairContract done"]];
+ FCPrint[1,"PairContract done"];
 If[!FreeQ[temp, LorentzIndex],
 For[ijji = 1, ijji < 6, ijji++,
     If[(EvenQ[#] && (Length[#]>0))&[Position[temp,$MU[ijji]]],
        temp  = temp /. $MU[ijji] -> muu[ijji];
       ]
    ];
-If[$VeryVerbose > 0,
-    Print["contracting agaaaaaaaaaain in OPE2TID"];
-   ];
+  FCPrint[1,"contracting agaaaaaaaaaain in OPE2TID"];
+   
 temp = Expand2[temp,LorentzIndex];
    If[Head[temp] === Plus,
       ntemp = 0;
-      For[int = 1, int <=Length[temp], int++,
-          If[$VeryVerbose > 1, 
-             Print["int = ",int, "  out of",Length[temp]]
-            ];
+      For[int = 1, int <=Length[temp], int++,          
+             FCPrint[2,"int = ",int, "  out of",Length[temp]];          
           ntemp = ntemp + Contract[temp[[int]], Expanding -> True,
                                    EpsContract -> False, 
                                    Rename -> True]
@@ -2402,15 +2398,14 @@ temp = Expand2[temp,LorentzIndex];
 
 
 If[FreeQ[temp, qQQ],
-If[$VeryVerbose > 1, Print["ScalarProductCancel in OPE2TID"]];
+FCPrint[2,"ScalarProductCancel in OPE2TID"];
    temp = ScalarProductCancel[temp /. Power2 -> Power/.
                               Power[a_, b_ /; Head[b] =!= Integer] :>
                               Power2[a, b], k1, k2
                              ];
-If[$VeryVerbose > 1, Print["ScalarProductCancel in OPE2TID done"]];
+FCPrint[2,"ScalarProductCancel in OPE2TID done"];
 temp = FeynAmpDenominatorSimplify[Collect2[temp, k1,k2], k1, k2];
-If[$VeryVerbose > 1, Print["collect after ScalarProductCancel 
-in OPE2TID done"]];
+FCPrint[2,"collect after ScalarProductCancel in OPE2TID done"];
 
 (* ZZZ*)
 If[!FreeQ2[kape = Select1[Cases2[temp,Pair], OPEDelta], {k1,k2}],
@@ -2651,7 +2646,7 @@ If[!FreeQ[temp4, LorentzIndex]  && contractlabel === True,
    temp4 = Expand2[temp4, LorentzIndex] ;
   ];
 temp = nok1k2factor temp4 delfactor;
-If[$VeryVerbose > 0, Print["decrulespv done"]];
+FCPrint[1, "decrulespv done"];
 
 (*
 temp = temp /. Pair -> PairContract3 /. PairContract -> Pair;

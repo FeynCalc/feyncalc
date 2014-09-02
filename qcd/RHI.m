@@ -41,7 +41,7 @@ correctly.";
 
 Begin["`Private`"];
    
-
+MakeContext[FCPrint];
 TLI = MakeContext["TLI"];
 Epsilon  = MakeContext["Epsilon"];
 EpsilonOrder = MakeContext["EpsilonOrder"];
@@ -473,11 +473,11 @@ ind = {indi};
         
 	(*Mac fix, 18/9-2000, F.Orellana*)
 	checkifthere = FileNames[{file}, {$FeynCalcDirectory <>$PathnameSeparator<>save}];
-  If[$VeryVerbose > 0, Print["checkifthere = ", checkifthere]];
+  FCPrint[1,"checkifthere = ", checkifthere];
      If[checkifthere =!= {}, 
-        If[$VeryVerbose > 0, Print["Loading"]];
+        FCPrint[1,"Loading"];
         re = Get @@ checkifthere;
-        If[$VeryVerbose >0, Print[" re = ",re]];
+        FCPrint[1, " re = ",re];
         If[re === Null, checkifthere = {}];
        ];
      If[checkifthere === {}, 
@@ -490,7 +490,7 @@ ind = {indi};
            (*filesave     = $FeynCalcDirectory <> "/" <> save <> "/" <> file;*)
            (*We should try to be cross-platform. F.Orellana, 8/9-2002.*)
            filesave     = ToFileName[{$FeynCalcDirectory, save}, file];
-If[$VeryVerbose > 0, Print["writing file ",filesave]];
+FCPrint[1,"writing file ",filesave];
            OpenWrite @@ {filesave, FormatType -> InputForm };
            WriteString @@ {filesave, 
                            ToString[frh["RHI"@@Flatten[ind]]
@@ -603,11 +603,11 @@ For[i = 1, i <= Length[formprog], i++,
    ];
 Close[fil];
 (* run FORM *)
-If[$VeryVerbose >0,Print["running FORM"]];
+FCPrint[1,"running FORM"];
 Run[ HomeDirectory[]<>"/"<> (Directory /. Options[RHI]
                               ) <>"runformdoit"
    ];
-If[$VeryVerbose >0,Print["FORM done"]];
+FCPrint[1,"FORM done"];
 (* read the FORM - result back in *)
 ww = ReadList[HomeDirectory[]<>"/rh/ope/diagrams/doit.out", String];
 myflag = False;

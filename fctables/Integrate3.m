@@ -30,7 +30,7 @@ set to a list of integrals. The format should be
 Begin["`Private`"];
    
   
- MakeContext[Apart3,DataType, DeltaFunction, 
+ MakeContext[FCPrint, Apart3,DataType, DeltaFunction, 
              (*DeltaFunctionDoublePrime, *)
              DeltaFunctionPrime, Factor2,
              Epsilon, Integrate2, Nielsen, 
@@ -120,7 +120,7 @@ iT[DeltaFunctionDoublePrime[1-x_] f_., {x_, 0, 1}] :> (D[f, x, x]/.x->1),
 iT[en_Integer,{x_,0,1}] :> en,
 
 iT[PolyLog[2,1-x_] / (1-x_)^2,{x_,0,1}] :>
-    (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];
+    (FCPrint[3,"DISTRIBUTION sense "];
  -Zeta2 + 2),
 
 (*I1I*)
@@ -132,30 +132,30 @@ iT[PolyLog[2,1-x_] / (1-x_)^2,{x_,0,1}] :>
 
 (*I2I*)
 (*X*)iT[1/(1-x_),{x_,0,1}] :>
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];0),
+       (FCPrint[3,"DISTRIBUTION sense "];0),
 (*I3I*)
 (*X*)iT[1/x_,{x_,0,1}] :> 
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];0),
+       (FCPrint[3,"DISTRIBUTION sense "];0),
 
 (*I4I*)
 (*X*)iT[Log[x_]/x_,{x_,0,1}] :> 
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];0),
+       (FCPrint[3,"DISTRIBUTION sense "];0),
 
 (*I4I*)
 (*X*)iT[Log[x_]/(1-x_)^2,{x_,0,1}] :> 
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];-1),
+       (FCPrint[3,"DISTRIBUTION sense "];-1),
 
 (*I4bI*)
 (*X*)iT[Log[x_]^2/x_,{x_,0,1}] :> 
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];0),
+       (FCPrint[3,"DISTRIBUTION sense "];0),
 
 (*I5I*)
 (*X*)iT[Log[1-x_]/(1-x_),{x_,0,1}] :> 
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];0),
+       (FCPrint[3,"DISTRIBUTION sense "];0),
 
 (*I6I*)
 (*X*)iT[Log[1-x_]^2/(1-x_),{x_,0,1}] :> 
-       (If[$VeryVerbose>2,Print["DISTRIBUTION sense "]];0),
+       (FCPrint[3,"DISTRIBUTION sense "];0),
 (*I7I*)
 (*X*)iT[(Log[1 - (x_)]*(x_))/(1 - (x_)), {x_, 0, 1}] :> 1, 
 (*I8I*)

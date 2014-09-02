@@ -58,7 +58,6 @@ Options[CheckDB] = {Directory :> ToFileName[{$FeynCalcDirectory}, "fcdb"],
 
 (* ------------------------------------------------------------------------ *)
 
-VerbosePrint[n_Integer,s__]:=If[$VeryVerbose>=n,Print[s]];
 
 eliminateDoubles[s_String] :=
     Block[{str},
@@ -113,7 +112,7 @@ CheckDB[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
 
         ];
 
-      VerbosePrint[1, "Using file name " <> file];
+      FCPrint[1, "Using file name " <> file];
 
       fs=(ForceSave/.Flatten[{opts}]/.Options[CheckDB]);
       ns=(NoSave/.Flatten[{opts}]/.Options[CheckDB]);
@@ -122,23 +121,23 @@ CheckDB[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
       If[(FileType[file] === None || fs === True) && ch === False,
       
         If[FileType[file] === None,
-          VerbosePrint[1, "File does not exist, evaluating"],
-          If[fs,VerbosePrint[1, "File exists, force evaluating"]]
+          FCPrint[1, "File does not exist, evaluating"],
+          If[fs,FCPrint[1, "File exists, force evaluating"]]
         ];
         finex = Evaluate[ReleaseHold[ex]];
         If[ns,
-          VerbosePrint[1, "NoSave set to True, will evaluate but not save"],
-          VerbosePrint[1, "Saving"];
+          FCPrint[1, "NoSave set to True, will evaluate but not save"],
+          FCPrint[1, "Saving"];
           Put[finex, file]
         ],
         
         If[FileType[file] === None && fs =!= True,
-          VerbosePrint[1, "File does not exist, cannot load"];
+          FCPrint[1, "File does not exist, cannot load"];
           finex = ex,
-          VerbosePrint[1, "File exists, loading"];
+          FCPrint[1, "File exists, loading"];
           finex = Get[file];
           If[ch,
-            VerbosePrint[1, "File exists, comparing"];
+            FCPrint[1, "File exists, comparing"];
             finex = (Expand[Evaluate[ReleaseHold[ex]] - finex] === 0)
           ]
         ];

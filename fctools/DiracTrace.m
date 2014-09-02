@@ -34,7 +34,7 @@ not too long (LeafCount[ ] < 5000 ) expressions.
 
 Begin["`Private`"];
 
-MakeContext[ Contract, Collect2, DiracCanonical, DiracGamma,
+MakeContext[ FCPrint, Contract, Collect2, DiracCanonical, DiracGamma,
 DiracGammaCombine, DiracGammaExpand, DiracGammaT, DiracOrder,
 DiracSigmaExplicit, DiracSimplify, DiracTrick, DiracTraceEvaluate];
 
@@ -156,11 +156,11 @@ diractraceevsimple[DOT[x___], {opt___}]:=
       see, Kapusta's bug report http://www.feyncalc.org/forum/0079.html. F.Orellana, 10/2002*)
 (*
         Union[Length /@ Split[Sort[ Variables /@ Apply[List,DOT[x]] ]]] === {2},
-        If[$VeryVerbose >2, Print["using diractraceevsimpleplus on ", StandardForm[DOT[x]]]];
+        FCPrint[3,"using diractraceevsimpleplus on ", StandardForm[DOT[x]]];
 
         Factor[diractraceevsimpleplus[Expand[DiracTrick[DOT[x]]], {opt}]],
 
-        If[$VeryVerbose >2, Print["Using spursav on ", StandardForm[DOT[x]]]];
+        FCPrint[3,"Using spursav on ", StandardForm[DOT[x]]];
 *)
 (* small BUG found here 2005-02-05 by RM*) 
 (*
@@ -311,9 +311,7 @@ If[diractrfact === Automatic,
    If[ Head[nx]===Plus && Length[nx] > 142,
        diractrlnx = Length[nx]; diractrjj = 0;
        While[ diractrjj<diractrlnx,diractrjj++;
-If[$VeryVerbose > 1, Print["diractrjj = ", diractrjj,
-     " out of ",diractrlnx]
-  ];
+FCPrint[2,"diractrjj = ", diractrjj," out of ",diractrlnx];
        diractrny = diractrny +
         If[FreeQ[nx,DiracGamma],
 (*change 2006-0407 RM *)
@@ -376,7 +374,8 @@ If[!FreeQ[diractrny, DiracGamma],
   ];
 
 Global`D1=diractrny;
-If[$VeryVerbose > 1, Print["CH2"]; Print[TimeUsed[]]];
+FCPrint[2,"CH2"]; 
+FCPrint[2,TimeUsed[]];
    If[!FreeQ[diractrny, LorentzIndex],
       If[!FreeQ[diractrny, Eps],
          es = {Pair[LorentzIndex[a_,D], b_] *
@@ -389,7 +388,8 @@ If[$VeryVerbose > 1, Print["CH2"]; Print[TimeUsed[]]];
         ];
       diractrny = diractrny /. Pair -> sCO /. sCO -> scev
      ];
-If[$VeryVerbose > 1, Print["CH3"]; Print[TimeUsed[]]];
+FCPrint[2,"CH3"]; 
+FCPrint[2,TimeUsed[]];
 Global`D2=diractrny;
 
    If[!FreeQ[diractrny, Eps],

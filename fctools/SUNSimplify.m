@@ -43,6 +43,9 @@ Begin["`Private`"];
 (* *********************************************************************** *)
 
 (*ComplexIndex = MakeContext["ComplexIndex"];*)
+
+MakeContext[FCPrint];
+
 diractrick := diractrick = MakeContext["DiracTrick"];
 Trick := Trick = MakeContext["Trick"];
 CA                       = MakeContext["CA"];
@@ -250,9 +253,9 @@ so, changing back to the original:
 suff[x_] := FixedPoint[(uh[] = uuh[]; 
                        (suii[#]/.subst)/.suI->Identity)&, x, 42];
 If[expan === True,
-If[$VeryVerbose>1,Print["expanding w.r.t. sunf done "]];
+FCPrint[2,"expanding w.r.t. sunf done "];
 new = Expand2[new, SUNIndex];
-If[$VeryVerbose>1,Print["expanding w.r.t. sunf done "]];
+FCPrint[2,"expanding w.r.t. sunf done "];
   ];
 If[Head[new] === Plus,
    new = Select1[new, SUNIndex] + suff[Select2[new, SUNIndex]],
@@ -331,7 +334,7 @@ this does not really work ...
                     d:sunt[_SUNIndex].. ,
                    sunt[i_SUNIndex], e___] :>
          (
-If[$VeryVerbose >2, Print["using commutator in SUNSimplify"]];
+FCPrint[3,"using commutator in SUNSimplify"];
          dumi=Unique["Global`cc"];
          I SUNF[i,a,SUNIndex[dumi]]*
            DOT[xx, sunt[SUNIndex[dumi]], d, sunt[i], e] + 
@@ -402,10 +405,10 @@ If[CheckContext["DiracGamma"],
 
 (* CHANGE Rolf Mertig 20060215 : better to do this here:*)
 temp = temp //. sunsi;
-If[sunindexrename === True, 
-If[$VeryVerbose > 0, Print["renaming in SUNSimplify"]];
+If[sunindexrename === True,
+FCPrint[1,"renaming in SUNSimplify"];
 temp = Rename[temp, Expanding -> expanding];
-If[$VeryVerbose > 0, Print["renaming in SUNSimplify done"]];
+FCPrint[1,"renaming in SUNSimplify done"];
   ];
 
 If[CheckContext["DiracTrace"],

@@ -27,7 +27,7 @@ The q1, q2, ... are the integration momenta.";
 
 Begin["`Private`"];
 
-MakeContext[Cases2,
+MakeContext[FCPrint, Cases2,
 ExpandScalarProduct,
 FAD,
 FeynAmpDenominator,
@@ -92,9 +92,9 @@ If[!FreeQ[t3, IFPD[a_,b_/;b=!=0]],
   ];
 
 (* calculate  a canonical q.p  as a side effect*)
-If[$VeryVerbose >2, Print["before ifp ", t3]];
+FCPrint[3,"before ifp ", t3];
 t3 = ifp[t3, qq];
-If[$VeryVerbose >2, Print["after ifp ", t3]];
+FCPrint[3,"after ifp ", t3];
 
 
 sub = Table[(Pair @@ t3[[ij,1]]) -> t3[[ij,2]],{ij,Length[t3]}];
@@ -104,7 +104,7 @@ int /. MyHold -> Identity ]];
 ifp[{ww__},{qq__}] := ifp[{ww},{qq}] =
 Block[{ct,tt,mt,nt,sq,sqr,
 ctm,ctp,ntm,ntp,mtm,mtp,checkp,checkm},
-If[$VeryVerbose > 2, Print["entering ifp with ",{ww}]];
+FCPrint[3,"entering ifp with ",{ww}];
 
 (* get all qi^2 *)
 sq = Select[{ww}, MatchQ[#, IFPD[a_ /; FreeQ[a, Plus],_]]&];
@@ -211,7 +211,7 @@ sq = Map[Apply[({#1, #2} == #3 +  (#3[[2]]^2))&,#]&, sq];
 sqr = Table[(Pair@@sq[[i,1]]) -> sq[[i,2]],{i,Length[sq]}];
 ct = Join[ctm/.sqr, ctp/.sqr];
 ct = Join[sq, Union[ Map[MapAt[Sort,#,1]&, ct]] ];
-If[$VeryVerbose > 2, Print["Exiting ifp with ",ct ]];
+FCPrint[3,"Exiting ifp with ",ct ];
 ct];
 
 (* Test :

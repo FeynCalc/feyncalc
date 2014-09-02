@@ -31,7 +31,7 @@ TrickIntegrate::"novar" =
 Begin["`Private`"];
    
 
-MakeContext[Apart3, Collect2, Factor2, Epsilon, Map2, Select1, Select2];
+MakeContext[FCPrint, Apart3, Collect2, Factor2, Epsilon, Map2, Select1, Select2];
 
 Options[TrickIntegrate] = {Hold -> True};
 
@@ -87,7 +87,7 @@ limit[x_, a_ -> b_]:=
 Block[{limes},
 If[AtomQ[a],
   limes = a -> b;,
-  If[$VeryVerbose > 1, Print["Finding limit for ", a -> b]];
+  FCPrint[1,"Finding limit for ", a -> b];
   limes = Solve[a==b];
   If[Length[limes]>0,
     limes = limes[[1]];,

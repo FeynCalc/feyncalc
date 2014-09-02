@@ -27,7 +27,7 @@ sums in the denominator.";
 Begin["`Private`"];
    
 
- MakeContext[Expanding];
+ MakeContext[FCPrint, Expanding];
 
 Options[Combine] = {Expanding -> False };
 
@@ -45,8 +45,7 @@ Which[expanding === All,
          If[LeafCount[num]<1000, 
             combinet2 = Expand[num]/Denominator[combinet2],
             le = Length[num];
-            combinet2 = Sum[If[$VeryVerbose > 1, 
-                            Print["expanding ", i," out of ",le]];
+            combinet2 = Sum[FCPrint[2,"expanding ", i," out of ",le];
                             Expand[num[[i]]],{i,Length[num]}]/
                             Denominator[combinet2]
            ]

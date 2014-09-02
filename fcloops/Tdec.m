@@ -25,6 +25,7 @@ NumberOfMetricTensors::"usage"=
 Begin["`Private`"];
    
 MakeContext[
+FCPrint,
 Cases2,
 Collect2,
 Contract, 
@@ -219,9 +220,8 @@ proj[{j_ /; j > 0, r_}, jh___] :=
 newcc[ii__] := cc[ii] /. LorentzIndex[w_,_] :> w;
 tt = tt /. cc -> newcc;
 symms = getsymmetries[tt];
-If[$VeryVerbose > 0,
-    Print["symms"]; Print[Length[ccli]];
-  ];
+    FCPrint[1,"symms"]; Print[Length[ccli]];
+  
 
 If[symms =!=  False,
    sy = solvesymms[tt[[2]] - (tt[[2]]/.symms)];
@@ -239,16 +239,16 @@ If[Length[pli] === 0 && Length[kli]===1,
   ];
 
 
-If[$VeryVerbose > 0, Print["contracting"]];
+FCPrint[1,"contracting"];
 eqli = Table[EpsEvaluate[ExpandScalarProduct[
-If[$VeryVerbose > 1, Print["il = ",il]];
+FCPrint[1,"il = ",il];
                  (tt proli[[il]]) /. Pair->PairContract /. 
                                      PairContract -> Pair
                                             ]]
              , {il, Length[proli]}
             ];
-If[$VeryVerbose > 0, Print["Length of eqli = ",Length[eqli]]];
-If[$VeryVerbose > 0, Print["solving ", Length[ccli]]];
+FCPrint[1,"Length of eqli = ",Length[eqli]];
+FCPrint[1,"solving ", Length[ccli]];
 xy[ii_] := ToExpression["X" <> ToString[ii]];
 ce[ii_] := ToExpression["cC" <> ToString[ii]];
 veqli = Union[Join @@ Map[Variables, Flatten[eqli /. Equal -> List]]];
@@ -263,9 +263,9 @@ neqli = Collect2[neqli, ccli];
 *)
 
 solu = Solve3[neqli, ccli, Factoring -> factor];
-If[$VeryVerbose > 0, Print["solve3 done ",MemoryInUse[]];
-   Print["SOLVE3 Bytecount", byby= ByteCount[solu]];
-  ];
+	FCPrint[1,"solve3 done ",MemoryInUse[]];
+   FCPrint[1,"SOLVE3 Bytecount", byby= ByteCount[solu]];
+  
 
 If[listlabel =!= True,
    solu = solu /. FeynCalcExternal[ChangeDimension[Map[Reverse, seqli],4]];
@@ -279,10 +279,10 @@ If[fce, nttt = FeynCalcExternal[ChangeDimension[nttt,4]]];
 tt = tt[[2]] /. solu;
 *)
 tt = nttt /. Dispatch[solu];
-If[$VeryVerbose > 0, Print["after solu substitution ", 
+FCPrint[1,"after solu substitution ", 
          N[MemoryInUse[]/10^6,3], " MB ; time used ", 
-           TimeUsed[]//FeynCalcForm]
-  ];
+           TimeUsed[]//FeynCalcForm];
+  
 If[exp =!= 1, tt = Contract[exp tt, EpsContract -> False]];
 (*
 qli = Map[First,li];
@@ -321,27 +321,27 @@ solvesymms[xx_] := Block[{s1,s2,s3,res,var,du,nx=xx,ff,vv},
 If[Head[nx] === List,
    nx = Sum[Expand[nx[[iji]] du[iji],LorentzIndex],{iji,Length[nx]}]
   ];
-If[$VeryVerbose > 0, Print["collecting in solvesymms ", Length[nx]]];
+FCPrint[1,"collecting in solvesymms ", Length[nx]];
 nx = Map[(SelectFree[#, {du, LorentzIndex}] ff[
             SelectNotFree[#, {du, LorentzIndex}] ]
          )&, nx];
 vv = Cases2[nx, ff];
-If[$VeryVerbose > 0, Print["collecting in solvesymms ",
-      Length[vv], "terms" ]
-  ];
+FCPrint[1,"collecting in solvesymms ",
+      Length[vv], "terms" ];
+  
 
 titi = TimeUsed[];
 
-s2 = Table[If[$VeryVerbose>0, If[IntegerQ[ij/1000],Print[ij]]];
+s2 = Table[If[IntegerQ[ij/1000],FCPrint[1,ij]];
            D[nx,vv[[ij]]], {ij,Length[vv]}
           ];
 
 (*
 s1 = Collect[nx, vv, Factor2] /. ff -> Identity;
 *)
-If[$VeryVerbose > 0, Print["time for collect in solvesymms = ",
-    TimeUsed[] - titi]
-  ];
+FCPrint[1,"time for collect in solvesymms = ",
+    TimeUsed[] - titi];
+  
 (*
 If[Head[s1] =!= Plus, 
    s2 = SelectFree[s1, {du, Pair}],
