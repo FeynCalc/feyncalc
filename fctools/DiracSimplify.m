@@ -63,6 +63,13 @@ DiracSubstitute67::"usage"=
 True the chirality-projectors DiracGamma[6] and DiracGamma[7] are \
 substituted by their definitions.";
 
+SirlinRelations::"usage"=
+"SirlinRelations is an option for DiracSimplify. If set to\
+True the spinor chains that contain Dirac matrices are simplified \
+using relations derived by Sirlin in Nuclear Physics B192 (1981) 93-99 \
+Contrary to the original paper, the sign of the Levi-Civita tensor is \
+choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -101,6 +108,7 @@ Options[DiracSimplify] = {
  DiracSubstitute67 -> False,
  Expanding -> True,
  Factoring -> False,
+ SirlinRelations -> True,
  fcinte -> False,
  InsideDiracTrace -> False};
 
@@ -177,15 +185,15 @@ If[factoring === True, factoring = Factor2];
 (*NEW0796*)
 dre = Collect[DotSimplify[dR[DiracGammaCombine[x]]]/.
 DOT->dooo,dooo[__]]/.dooo->DOT;
-                     dre =  FixedPoint[ SpinorChainEvaluate, dre, 142];
+                     dre =  FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142];
                      If[ !FreeQ[dre, Eps],
                          dre = Contract[dre, EpsContract -> True];
-                         dre = FixedPoint[ SpinorChainEvaluate, dre, 142]
+                         dre = FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142]
                          ,
                          If[!FreeQ[dre, LorentzIndex],
                             dre = Contract[dre, Expanding -> False]
                            ];
-                         dre = FixedPoint[ SpinorChainEvaluate, dre, 142];
+                         dre = FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142];
                        ];
    If[!FreeQ[dre, LorentzIndex],
 print2["contracting in oldDiracSimpify"];
@@ -226,7 +234,7 @@ diracSimplify[x_,in___] := x /; NonCommFreeQ[x];
 diracSimplify[x_,in___Rule]:= If[FreeQ[x, DiracGamma], x,
 MemSet[diracSimplify[x,in], Block[
        {diracopt,diracdt,diracndt=0,diraccanopt,diracpdt,diracgasu,
-        diracldt,diracjj=0,diractrlabel,diracga67,diracsifac,
+        diracldt,diracjj=0,diractrlabel,diracga67,diracsirlin,diracsifac,
         diracpag,colle
        },
         (* There are several options *)
@@ -234,6 +242,7 @@ MemSet[diracSimplify[x,in], Block[
         diraccanopt  = DiracCanonical/.diracopt;
         diractrlabel = InsideDiracTrace/.diracopt;
         diracga67    = DiracSubstitute67/.diracopt;
+		diracsirlin  = SirlinRelations/.diracopt;
         diracgasu    = DiracSimpCombine/.diracopt;
         diracsifac   = Factoring/.diracopt;
 
@@ -450,17 +459,18 @@ spinlin[a_] :=( (a/.DOT->ddot)//.{
               ddot[x,b,c] ddot[d,e,f,g] }
               )/.ddot[]->1/.ddot->DOT;
 SetAttributes[ SpinorChainEvaluate, Listable ];
-SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
+SpinorChainEvaluate[y_,opts___Rule]:=y /; FreeQ[y,Spinor];
 
  (* #################################################################### *)
  (*                             Main44                                   *)
  (* #################################################################### *)
 
- SpinorChainEvaluate[z_Plus]:= Block[{nz},
+ SpinorChainEvaluate[z_Plus,opts___Rule]:= Block[{nz,useSirlin},
+   useSirlin=SirlinRelations/.{opts}/.Options[DiracSimplify];
    nz = DotSimplify[z];
    If[Length[nz]>20, nz= Collect2[ nz, Spinor,Factoring -> False] ];
    If[Head[nz]=!=Plus, nz = SpinorChainEvaluate[nz],
-      If[$sirlin =!= True, nz = Map[ spcev0, nz ],
+      If[!useSirlin, nz = Map[ spcev0, nz ],
          If[ FreeQ[nz, DOT[Spinor[p1__] ,
                             (a__ /; FreeQ[{a}, DiracGamma[_,_]]
                             ) , Spinor[p2__]] *
@@ -470,8 +480,10 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
 (* added ,Spinor, Nov. 2003 , RM*)
        nz = sirlin00[ Expand[Map[ spcev0,z//sirlin0 ], Spinor] ]
            ] ] ];                  nz];
- SpinorChainEvaluate[x_]:=
-  If[$sirlin =!= True, Expand[spcev0[x], Spinor],
+ SpinorChainEvaluate[x_,opts___Rule]:= Block[{nz,useSirlin},
+  useSirlin=SirlinRelations/.{opts}/.Options[DiracSimplify];
+  print3["Entering sirlin," useSirlin];
+  If[!useSirlin, nz=Expand[spcev0[x], Spinor],
   If[ FreeQ[x//DotSimplify,
                        DOT[Spinor[p1__] ,
                             (a__ /; FreeQ[{a}, DiracGamma[_,_]]
@@ -480,10 +492,10 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
                             ) , Spinor[p4__]]
            ],
 (* added ,Spinor, Nov. 2003 , RM*)
-     Expand[spcev0[x], Spinor],
-     sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ], Spinor] ]
-    ]]/; !Head[x]===Plus;
-
+     nz=Expand[spcev0[x], Spinor],
+     nz=sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ], Spinor] ];
+    ]];	
+nz ]/; !Head[x]===Plus;
 (* #################################################################### *)
 (*                             Main45                                   *)
 (* #################################################################### *)
@@ -555,7 +567,7 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
 
   $SpinorMinimal = False;
 
-  sirlin00[x_]:= x/;($SpinorMinimal === False) || ($sirlin===False);
+  sirlin00[x_]:= x/;$SpinorMinimal === False;
   sirlin00[x_]:=MemSet[sirlin00[x],
                      Block[{te, tg5, ntg5},
 print3["sirlin001"];
@@ -623,10 +635,6 @@ ident3[a_,_]:=a;
               ) /; FreeQ2[{ga1,ga2,ga3,ga4}, DiracGamma[_,_]];
 
 
-(* this is far from optimal, but for the moment sufficient *)
- $sirlin = True;
-
-
  (* #################################################################### *)
  (*                             Main443                                  *)
  (* #################################################################### *)
@@ -634,14 +642,12 @@ ident3[a_,_]:=a;
 (* The Sirlin - identities are only valid in 4 dimensions and are
 only needed, if Dirac matrices are around
 *)
- sirlin0[x_]:=If[$sirlin=!=True, x,
-                 If[ FreeQ2[x, {LorentzIndex, Momentum}],  x,
+ sirlin0[x_]:=If[ FreeQ2[x, {LorentzIndex, Momentum}],  x,
                      If[ FreeQ[x, Spinor], x,
                          If[ !FreeQ[x, DiracGamma[_,_]],
                              sirlin3[x]/.sirlin3->Identity,
                              sirlin0doit[(x//sirlin2)/.sirlin2->Identity]
-                   ]   ]   ]
-                ];
+                   ]   ]   ];
 
 $sirlintime = 242;
 SetAttributes[timeconstrained, HoldAll];
