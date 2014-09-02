@@ -491,7 +491,7 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
 (*
    contracT[x_,opt___Rule] := x /; FreeQ2[ x,{LorentzIndex,Eps,Momentum} ];
 *)
-   contracT[x_,opt___Rule] := Module[{ contractres=x,epscontractopt,
+   contracT[x_,opt___Rule] := Module[{ contractres=x,contractepsopt,
            contractexpandopt, rename, es,
            lip,contractopt = Join[{opt},Options[Contract]]//Flatten,
              contract3, schout },
