@@ -113,8 +113,8 @@ FieldStrengthTensor[LorentzIndex[\[Mu]],
 QuantumField[Particle[Photon],LorentzIndex[\[Nu]]]]]+
 
 (Z2[0]-1)*
-DOT[
-(DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
+(DOT[
+DiracBar[QuantumField[Particle[Lepton],SUNIndex[i]]],
 DiracMatrix[LorentzIndex[\[Mu]]],
 (I*QuantumField[PartialD[LorentzIndex[\[Mu]]],Particle[Lepton],SUNIndex[i]]+
 CouplingConstant[QED[1]]*
