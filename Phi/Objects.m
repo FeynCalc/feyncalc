@@ -1923,7 +1923,7 @@ WriteOutUMatrices2[aa_, (optss___Rule | optss___List)] :=
   so that was the reason: With a product, each factor is written out sequentially
   and NM can do it's thing in between.
   So let's try another hack: replacing Plus temporarily.*)
-(*And now "#�% we have problems with e.g
+(*And now "#% we have problems with e.g
   NM[NM[a, UMatrix[aa]] + NM[b, UMatrix[bb]], UMatrix[cc]].
   Fixed by declaring plus a UMatrix.*)
 WriteOutUMatrices[aa_, (optss___Rule | optss___List)] := Block[
