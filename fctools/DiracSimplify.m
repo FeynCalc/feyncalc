@@ -151,7 +151,7 @@ DiracSimplify[a_, opts___Rule] :=
                                                   ],
         diracEq[dotLin[a // fcinter] (*/. DOT -> dS*)]
        ],
-       If[$VeryVerbose>2, Print["doing oldDiracSimplify on ", StandardForm[a]]];
+		print2["doing oldDiracSimplify on ", StandardForm[a]];       
        oldDiracSimplify[
               If[(DiracSigmaExplicit /. {opts} /.
                  Options[DiracSimplify]) === True,
@@ -171,7 +171,7 @@ oldDiracSimplify[x_,y___Rule] := diracSimplify[x,y] /; FreeQ[x, Spinor];
 
 (*this is oldDiracSimplify for expressions that contain spinors*)
 oldDiracSimplify[x_,yy___Rule] := Block[{dre},
-If[$VeryVerbose>2, Print["entering oldDiracSimplify", x]];
+print2["entering oldDiracSimplify", x];
 factoring = Factoring /. {yy} /. Options[DiracSimplify];
 If[factoring === True, factoring = Factor2];
 (*NEW0796*)
@@ -238,8 +238,7 @@ MemSet[diracSimplify[x,in], Block[
         diracsifac   = Factoring/.diracopt;
 
         diracdt = dotLin[ x//DiracGammaExpand ];
-
-If[$VeryVerbose > 2,Print["dir1"]];
+print2["dir1"];
         If[ diracgasu === True,
             diracdt = contractli[DiracGammaCombine[diracdt/.Pair->sCO]
                                 ] (*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
@@ -278,7 +277,7 @@ Dialog[Global`D3 = diracdt];
 (*
 Dialog[Global`D4 = diracdt];
 *)
-If[$VeryVerbose>2,Print["dir2done"]];
+print2["dir2done"];
            If[ FreeQ[ diracdt, DOT ],
                diracdt = diracdt/.DiracGamma[_[__],___]->0;
                diracpag=PartitHead[diracdt,DiracGamma];
@@ -291,28 +290,27 @@ If[$VeryVerbose>2,Print["dir2done"]];
           ];
 
 (* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
-If[$VeryVerbose > 2,Print["dir2a"]];
+print2["dir2a"];
 (*
         diracdt = Expand2[ scev[diracdt//fEx], {Pair, DOT}];
 *)
         diracdt = Expand[ scev[diracdt//fEx], DOT | Pair];
 
-If[$VeryVerbose>2,Print["dir3"]];
+print2["dir3"];
         If[FreeQ[diracdt,DOT],
            diracndt=Expand[(diracdt/.sCO->scev)//DiracGammaExpand];
            If[diracga67 === True, diracndt = Expand[diracndt//gamma67back]]
            ,
-If[$VeryVerbose>2,Print["dir3 expanding "]];
+print2["dir3 expanding "];
 (*
            diracdt = Expand[ diracdt ];
 *)
            diracdt = Expand[ diracdt, DOT ];
-If[$VeryVerbose>2,Print["dir3 expanding done ", Length[diracdt]]];
+print2["dir3 expanding done ", Length[diracdt]];
          If[ Head[diracdt] === Plus, diracldt=Length[diracdt],
              If[ diracdt===0, diracldt = 0, diracldt = 1 ]
            ];
-If[$VeryVerbose>2,
-   Print["in diracSimplify: working with ",diracldt," terms"]];
+print2["in diracSimplify: working with ",diracldt," terms"];
       While[diracjj<diracldt,diracjj++;
             If[diracldt==1,
                diracpdt = diracdt, diracpdt = diracdt[[diracjj]]
@@ -326,8 +324,7 @@ change 2005-02-05
                diracpdt = diracpdt//.DOT -> dS
               ];
 (* maybe insert some TimeConstrained here later *)
-If[$VeryVerbose>2,
-   Print["in diracSimplify: contraction done, expand now."]];
+print2["in diracSimplify: contraction done, expand now."];
        diracpdt = scev[ diracpdt ]//Expand;
 
             If[diractrlabel===True,
@@ -342,10 +339,7 @@ If[$VeryVerbose>2,
                  diracpdt = fEx[ diracpdt ]
                ];
              diracndt = diracndt + Expand2[ diracpdt, DOT ];
-             If[ $VeryVerbose > 2,
-                 Print["# ",diracjj," / ",diracldt," = ",
-                        Length[diracndt] ]
-               ]
+             print2["# ",diracjj," / ",diracldt," = ", Length[diracndt]];
            ];
   If[ diracga67===True,
       If[!FreeQ[diacndt, DiracGamma[6]|DiracGamma[7]],
@@ -361,13 +355,13 @@ If[$VeryVerbose>2,
         diracndt = Expand[dotLin[diracndt]]
      ];
           ] (* If FreeQ[diracdt,dr] *);
-If[$VeryVerbose>2, Print["dir4 ",diracdt]];
+print2["dir4 ",diracdt];
 print3["diracdt = ", diracdt ];
     diracndt = dotLin[diracndt];
-If[$VeryVerbose>2, Print["dir5"]];
+print2["dir5"];
    If[ diracsifac === True,
        diracndt = Factor2[ diracndt ] ];
-If[$VeryVerbose>2, Print["dir6 ", diracndt]];
+print2["dir6 ", diracndt];
 print3["exiting diracSimplify"];
   diracndt/.HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> DOT
 ]]];  (* end of diracSimplify *)
@@ -525,8 +519,7 @@ SpinorChainEvaluate[y_]:=y /; FreeQ[y,Spinor];
                                           ] ] ]/; FreeQ[{x,y},Spinor];
     spcev[x___,Spinor[a__],b___,Spinor[c__],y___] :=
       Block[ {spcevdi,spcevre,spcevj},
-If[$VeryVerbose > 2, Print["entering spcev with ",
-InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]]];
+	print2["entering spcev with ", InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]];
         spcevdi = diracSimplify[DOT[Spinor[a],b,Spinor[c]],
                                      InsideDiracTrace->False,
                                      DiracCanonical->False,
@@ -548,7 +541,7 @@ InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]]];
             spcevre = (spcevre/.DOT->dS)
           ];
          spcevre = spcevre//DotSimplify;
-If[$VeryVerbose > 2, Print["exiting spcev with ",InputForm[spcevre]]];
+		print2["exiting spcev with ",InputForm[spcevre]];
         spcevre] /; FreeQ[{b}, Spinor];
 
 (* Reference of Sirlin-relations: Nuclear Physics B192 (1981) 93-99;
