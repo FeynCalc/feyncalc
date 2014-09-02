@@ -107,7 +107,9 @@ Options[DiracSimplify] = {
 fcinter[x_] := If[ (fcinte(*r*)(*Typo? F.Orellana. 22/2-2003*) /. Options[DiracSimplify]) === True,
                    x, fcinte[x] ];
 
+(*if the expression contains non-commutative objects, apply DotSimplify*)
 dotLin[x_] := If[FreeQ[x, DOT], x, DotSimplify[x, Expanding -> False]];
+(*if the expression contains spinors, apply the Dirac equation*)
 diracEq[x_]:= If[FreeQ[x, Spinor], x, DiracEquation[x]];
 
 dit[x_,ops___Rule]:=DiracTrace[diracSimplify@@Join[{x},{ops},
@@ -136,6 +138,10 @@ DiracSimplify[a_, opt___Rule] := (a /.
          FreeQ2[a, {DiracGamma,DiracSlash,DiracMatrix,
                     GA[__],GS[__],GAD[__],GSD[__]}];
 
+(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify. 
+   If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.
+	In both cases, the value of DiracSigmaExplicit specifies, whether the explicit form of
+	DiracSigma is inserted or not  *)
 DiracSimplify[a_, opts___Rule] :=
   If[ (Expanding /. {opts} /. Options[DiracSimplify]) === False,
      If[(DiracSigmaExplicit /. {opts} /.
@@ -160,8 +166,10 @@ DiracSimplify[a_, opts___Rule] :=
     ];
 (* ****************************************************************** *)
 
+(*this is oldDiracSimplify for spinor free expressions*)
 oldDiracSimplify[x_,y___Rule] := diracSimplify[x,y] /; FreeQ[x, Spinor];
 
+(*this is oldDiracSimplify for expressions that contain spinors*)
 oldDiracSimplify[x_,yy___Rule] := Block[{dre},
 If[$VeryVerbose>2, Print["entering oldDiracSimplify", x]];
 factoring = Factoring /. {yy} /. Options[DiracSimplify];
@@ -211,6 +219,7 @@ contractli[x_] := MemSet[contractli[x], Contract[ x, Expanding -> True,
 (*diracSimplifydef *)
 (*XXX1 *)
 
+(*if the expression doesn't contain any non-commutative objects, return it unevaluated*)
 diracSimplify[x_,in___] := x /; NonCommFreeQ[x];
 
 (*CHANGE 1298 *)
