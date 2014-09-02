@@ -775,7 +775,7 @@ sirlin3a[Contract[
               DiracGamma[ LorentzIndex[nu_] ], (ga4___) ,
             Spinor[p4__]]
        ] := Block[{ii=1, ind, la, grho, gtau, gam5},
-                    While[!FreeQ[{ga1,ro,ga2,ga3,tau,ga4}, $MU[ii]],
+                    While[!FreeQ[{ga1,rho,ga2,ga3,tau,ga4}, $MU[ii]],
                           ii++];
              la = DiracGamma[LorentzIndex[$MU[ii]]];
              grho = DiracGamma[lv[rho]]; gtau = DiracGamma[lvt[tau]];
