@@ -356,8 +356,8 @@ If[!FreeQ[x, SUNT],
 (*
                DOT[a, c, b],
 *)
-(* implies that SUNT's in a DiracTrace are also to be summed over, need to document this ... *)
-              DiracTrace[f_. DOT[b__SUNT,c__] ] :> f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
+(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
+              DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
               DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b] 
              }
   ];
