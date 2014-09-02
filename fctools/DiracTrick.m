@@ -15,8 +15,8 @@
 (* NonCommQ replaced with NonCommFreeQ everywhere due to change (fix) of
    definitions of these functions. F.Orellana, 13/9-2002 *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DiracTrick`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DiracTrick`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 DiracTrick::"usage"=
 "DiracTrick[exp] contracts gamma matrices with each other and
@@ -465,7 +465,7 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
  SetAttributes[dr,Flat];   (* quite important!!! *)
 (* ************************************************************** *)
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DiracTrick | \n "]];
 Null

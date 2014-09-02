@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`FieldStrength`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FieldStrength`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FieldStrength::"usage" =
 "FieldStrength[mu,nu,a] is the field strength tensor
@@ -154,7 +154,7 @@ DeclareNonCommutative[FieldStrength];
          ];
    ];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "FieldStrength | \n "]];
 Null

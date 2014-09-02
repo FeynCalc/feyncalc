@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`general`FRH`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`FRH`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FRH::"usage" =
 "FRH[exp_] := FixedPoint[ReleaseHold, exp], i.e., FRH removes all
@@ -25,7 +25,7 @@ Begin["`Private`"];
 
 FRH[x_] := FixedPoint[ReleaseHold, x];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "FRH | \n "]];
 Null

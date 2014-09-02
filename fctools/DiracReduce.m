@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DiracReduce`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DiracReduce`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 DiracReduce::"usage"=
 "DiracReduce[exp] reduces all four-dimensional Dirac matrices in exp \
@@ -108,7 +108,7 @@ res = FCE[res];
 res = res /. finsub /. finsub;
 res];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DiracReduce | \n "]];
 Null

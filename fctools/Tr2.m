@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`Tr2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Tr2`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 Tr2::"usage"=
 "If exp contains DiracTrace's, Tr2[exp] simplifies exp and does the
@@ -112,7 +112,7 @@ tt = tt /. DiracTrace -> trup /.trup -> DiracTrace /. DiracTrace -> trap;
 tt = tt /. DiracTrace -> trdifficult;
 tt];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "Tr2 | \n "]];
 Null

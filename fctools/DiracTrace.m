@@ -14,8 +14,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DiracTrace`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DiracTrace`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 DiracTrace::"usage" =
 "DiracTrace[expr] is the head of Dirac traces. \
@@ -851,7 +851,7 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
             ] :=
    RowBox[{"tr","(",TBox[a], ")"}]
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DiracTrace | \n "]];
 Null

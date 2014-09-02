@@ -15,8 +15,8 @@
 (* NonCommQ replaced with NonCommFreeQ everywhere due to change (fix) of
    definitions of these functions. F.Orellana, 13/9-2002 *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DiracSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DiracSimplify`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 ChisholmSpinor::"usage"=
 "ChisholmSpinor[x] uses the Chisholm identity on a DiraGamma between spinors. \
@@ -1158,7 +1158,7 @@ FCPrint[3,"entering ChisholmSpinor "];
                         Spinor[pe2, m2, ql]]
                       )] }/.nospinor->Spinor], EpsContract->True] ] ]];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DiracSimplify | \n "]];
 Null

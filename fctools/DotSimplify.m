@@ -14,8 +14,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DotSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DotSimplify`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 
 DotSimplify::"usage" =
@@ -401,7 +401,7 @@ If[MemberQ[$ContextPath,"HighEnergyPhysics`Tarcer`"],
       FontWeight -> "Bold"], SEpsilon[d], Editable -> False}
   ];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DotSimplify | \n "]];
 Null

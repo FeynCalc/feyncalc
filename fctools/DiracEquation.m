@@ -10,8 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DiracEquation`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DiracEquation`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 DiracEquation::"usage"=
 "DiracEquation[exp] applies the Dirac equation without \
@@ -140,7 +140,7 @@ DiracEquation[x_,I]:=(*DiracEquation[x]=*)
                 )/. PairContract -> Pair)
              ) /; last[n Momentum[p]+k]===Momentum[p]
             };
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DiracEquation | \n "]];
 Null

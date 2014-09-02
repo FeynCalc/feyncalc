@@ -10,8 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`general`XYT`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`XYT`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 XYT::"usage"= "XYT[exp, x,y] transforms  (x y)^m away ...";
 
@@ -28,7 +28,7 @@ XYT[exp_, x_, y_] := Block[{z, t, u},
     Factor2[PowerSimplify[(1-z) (t /. x :> (1-z) u + z)]/.{u:>y,z:>x}]
                           ];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "XYT | \n "]];
 Null

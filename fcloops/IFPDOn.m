@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fcloops`IFPDOn`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcloops`IFPDOn`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 IFPDOn::"usage" =
 "IFPDOn[exp, q1, q2, ...] changes from
@@ -236,7 +236,7 @@ ifp[{IFPD[Momentum[q1,D],m1],
 *)
 
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "IFPDOn | \n "]];
 Null

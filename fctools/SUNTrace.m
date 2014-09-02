@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`SUNTrace`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`SUNTrace`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 SUNTrace::"usage"=
 "SUNTrace[expr] calculates the color-trace.";
@@ -197,7 +197,7 @@ SUNTrace[x_?externQ] := SUNTrace[fcis[x]];
     MakeBoxes[SUNTrace[a_,___Rule], TraditionalForm] :=
      Tbox["tr","(",a,")"];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "SUNTrace | \n "]];
 Null

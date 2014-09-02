@@ -55,13 +55,6 @@ Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 (* this is fine *)
 
-System`MyBeginPackage[a_,b___] :=
-((*What is this? F.Orellana.23/2-2003*)(*NoPrint["MB ", a];*)
- Hold[BeginPackage][a,b]//ReleaseHold);
-
-System`MyEndPackage[] :=
-((*NoPrint["EE ", Context[]]; *)EndPackage[]);
-
 HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "9.0.0";
 
 (* ------------------------------------------------------------------------ *)
@@ -288,7 +281,7 @@ Clear[savethisdir];
 (* ************************************************************************ *)
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 
-MyBeginPackage["HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`"];
 
 CheckContext::"usage"=
 "CheckContext[string] yields True if the packaged associated with \
@@ -836,7 +829,7 @@ c[w_Integer] := c[w] = Block[{pre},
 
 
 End[];
-MyEndPackage[];
+EndPackage[];
 
 
 Map[HighEnergyPhysics`FeynCalc`Private`fcDeclarePackge,

@@ -10,8 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DiracSimplify2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DiracSimplify2`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 DiracSimplify2::"usage"=
 "DiracSimplify2[exp] simplifies the Dirac structure but leaves \
@@ -55,7 +55,7 @@ Table[tt[[ij]] ->
      ])
   ] ]];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DiracSimplify2 | \n "]];
 Null

@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fcloops`IFPDOff`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcloops`IFPDOff`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 IFPDOff::"usage" =
 "IFPDOff[exp_,q1_, q2_, ...] changes from
@@ -104,7 +104,7 @@ int
 
 Off[Unset::norep];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "IFPDOff | \n "]];
 Null

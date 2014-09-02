@@ -12,7 +12,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`FeynCalc`LorentzIndex`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 LorentzIndex::"usage"= "LorentzIndex is the head of Lorentz indices.
 The internal representation of a four-dimensional mu is
@@ -48,7 +48,7 @@ LorentzIndex /:
                       ]
                    ];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "LorentzIndex | \n "]];
 Null

@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`general`NTerms`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`NTerms`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 NTerms::"usage"=
 "NTerms[x] is equivalent to Length if x is a sum; otherwise
@@ -31,7 +31,7 @@ Begin["`Private`"];
                          ];
              ntermslex];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "NTerms | \n "]];
 Null

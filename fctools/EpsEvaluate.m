@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`EpsEvaluate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`EpsEvaluate`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 EpsEvaluate::"usage" =
 "EpsEvaluate[expr] applies total antisymmetry and
@@ -54,7 +54,7 @@ Epsevantilin[a:(_Integer|(LorentzIndex|ExplicitLorentzIndex)[_Integer]),
 (**)
 Epsevantilin[a__] := Signature[{a}] Eps@@Sort[{a}];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "EpsEvaluate | \n "]];
 Null

@@ -10,8 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`qcd`GTI`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`GTI`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 GTI::"usage"= "GTI is like RHI, but with no functional properties.";
 
@@ -23,7 +23,7 @@ MakeContext[Momentum];
 
 Options[GTI] = {Momentum -> Global`p};
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "GTI | \n "]];
 Null

@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`DotExpand`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DotExpand`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 
 DotExpand::"usage" =
@@ -32,7 +32,7 @@ DotExpand[expr_] :=
   DOT[a___, b_*c__, d___] :> DOT[a, b, c, d] /; NonCommQ[b]} /.
   DOT[] :> Sequence[];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "DotExpand | \n "]];
 Null

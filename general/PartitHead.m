@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`general`PartitHead`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`PartitHead`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 PartitHead::"usage"=
 "PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of
@@ -29,7 +29,7 @@ PartitHead[x_, y_]     := {x, 0} /; FreeQ[x, y];
 PartitHead[x_Plus, y_] := {#, x - #}& @ Select[x, FreeQ[#, y[___]]&];
 PartitHead[x_Times,y_] := {x/#, #}& @ Select[x,If[Head[#]===y,True]&];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "PartitHead | \n "]];
 Null

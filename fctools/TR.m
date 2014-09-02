@@ -10,8 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-MyBeginPackage["HighEnergyPhysics`fctools`TR`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`TR`",
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 TR::"usage"=
 "TR[exp] calculates the Dirac trace of exp.
@@ -124,7 +124,7 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
                             ];
                            tt];
 
-End[]; MyEndPackage[];
+End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "TR | \n "]];
 Null
