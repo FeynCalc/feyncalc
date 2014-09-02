@@ -143,7 +143,7 @@ Which[myfile === File,
 If[(Vectors /. {ru}) =!= Automatic,
    vectors = Vectors /. {ru},
    vectors = Catch[
-   For[j = 1, j <= Length[ff], j++
+   For[j = 1, j <= Length[ff], j++,
        If[StringMatchQ[ff[[j]], "V*;*",IgnoreCase -> True],
           vecs = StringReplace[ff[[j]],"  "->" "];
           While[StringMatchQ[vecs,"*  *"],
