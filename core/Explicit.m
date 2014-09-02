@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Explicit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Explicit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Explicit::"usage" = 
 "Explicit is an option for FieldStrength, GluonVertex,

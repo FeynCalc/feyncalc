@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracGammaCombine`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracGammaCombine`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracGammaCombine::"usage"=
 "DiracGammaCombine[exp] is (nearly) the inverse operation to \

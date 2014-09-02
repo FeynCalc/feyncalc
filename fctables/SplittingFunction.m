@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`SplittingFunction`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`SplittingFunction`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SplittingFunction::"usage"=
 "SplittingFunction[\"Pqq\", x], SplittingFunction[\"Pqg\", x], 

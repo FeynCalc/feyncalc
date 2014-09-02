@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DataType`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DataType`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DataType::"usage"=
 "DataType[exp, type] = True   defines the object exp to have datatype type. \

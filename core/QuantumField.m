@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`QuantumField`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`QuantumField`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QuantumField::"usage"=
 "QuantumField[par1, par2, ..., ftype, {lorind}, {sunind}]

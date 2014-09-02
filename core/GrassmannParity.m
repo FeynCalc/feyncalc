@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GrassmannParity`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GrassmannParity`",{"HighEnergyPhysics`FeynCalc`"}];
 
 
 GrassmannParity::"usage" =  "GrassmannParity is a data type.

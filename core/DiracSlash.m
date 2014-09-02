@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracSlash`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracSlash`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracSlash::"usage" =
 "DiracSlash[p] is the contraction FourVector[p, mu]*DiracSlash[mu]. \

@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`CounterTerm`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`CounterTerm`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CounterTerm::"usage"= "CounterTerm[name] is a data base of counter terms.
 CounterTerm is also an option for several Feynman rule

@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Twist4GluonOperator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Twist4GluonOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Twist4GluonOperator::"usage"= 
 "Twist4GluonOperator[{oa, ob, oc, od},

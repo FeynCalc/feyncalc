@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FeynRule`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FeynRule`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynRule::"usage"=
 "FeynRule[lag, {fields}] gives the Feynman rule corresponding

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ScalarProductExpand`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ScalarProductExpand`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ScalarProductExpand::"usage" =
 "ScalarProductExpand[expr]  expands scalar products of sums of

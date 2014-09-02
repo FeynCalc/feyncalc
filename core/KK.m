@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`KK`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`KK`",{"HighEnergyPhysics`FeynCalc`"}];
 
 KK::"usage" =
 "KK[i] is the default setting of IsolateNames,

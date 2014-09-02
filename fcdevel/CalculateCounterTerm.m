@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fcdevel`CalculateCounterTerm`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcdevel`CalculateCounterTerm`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CalculateCounterTerm::"usage"= "CalculateCounterTerm[exp, k] \
 calculates the residue of exp.";

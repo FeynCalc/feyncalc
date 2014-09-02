@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`IFPD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`IFPD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 IFPD::"usage" =
 "IFPD[p, m] denotes (p^2 - m^2)."

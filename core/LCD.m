@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`LCD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`LCD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 LCD::"usage"=
 "LCD[m,n,r,s] evaluates to LeviCivita[m,n,r,s,Dimension->D]

@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FORM2FeynCalc`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FORM2FeynCalc`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FORM2FeynCalc::"usage"=
 "FORM2FeynCalc[file] translates the FORM expression in file

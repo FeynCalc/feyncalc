@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Trick`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Trick`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Trick::"usage" =
 "Trick[exp] uses Contract, DotSimplify and SUNDeltaContract.";

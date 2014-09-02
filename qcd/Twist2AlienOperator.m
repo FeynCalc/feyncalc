@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Twist2AlienOperator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Twist2AlienOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Twist2AlienOperator::"usage" = 
 "Twist2AlienOperator[p, 0] : (7); 

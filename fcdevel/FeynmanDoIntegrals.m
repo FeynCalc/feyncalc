@@ -9,8 +9,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fcdevel`FeynmanDoIntegrals`",
-   "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcdevel`FeynmanDoIntegrals`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynmanDoIntegrals::"usage" = "***EXPERIMENTAL***\n
 FeynmanDoIntegrals[exp, moms, vars] \

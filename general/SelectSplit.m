@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`SelectSplit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`SelectSplit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SelectSplit::"usage"=
 "SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \

@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`TwoLoopSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 TwoLoopSimplify::"usage"= 
 "TwoLoopSimplify[amplitude,{qu1,qu2}] simplifies the 2-loop amplitude

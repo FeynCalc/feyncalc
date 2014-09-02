@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`OneLoop`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 CancelQP::"usage"=
 "CancelQP is an option for OneLoop. If set to True, cancelation of

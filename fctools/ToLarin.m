@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ToLarin`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ToLarin`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ToLarin::"usage"=
 "ToLarin[exp] translates gamma[mu].gamma[5] into 

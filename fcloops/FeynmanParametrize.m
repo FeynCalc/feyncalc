@@ -10,7 +10,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`FeynmanParametrize`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FeynmanParametrize::"usage"=
 "FeynmanParametrize[exp,k] introduces feynman parameters for

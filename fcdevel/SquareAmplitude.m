@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fcdevel`SquareAmplitude`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcdevel`SquareAmplitude`",{"HighEnergyPhysics`FeynCalc`"}];
 
 EnergyMomentumConservation::"usage"=
 "EnergyMomentumConservation is an option of SquareAmplitude (experimental).";

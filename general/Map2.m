@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Map2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Map2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Map2::"usage"= 
 "Map2[f, exp] is equivalent to Map if NTerms[exp] > 1,

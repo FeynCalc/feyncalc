@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Gauge`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Gauge`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Gauge::"usage" =
 "Gauge is an option for GluonProgagator. If set to 1 the

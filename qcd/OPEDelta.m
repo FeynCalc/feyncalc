@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`OPEDelta`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 OPEDelta::"usage"= "OPEDelta is the Delta.";
 

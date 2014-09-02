@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Select2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Select2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Select2::"usage"=
 "Select2[expr, a, b, ...] is equivalent to

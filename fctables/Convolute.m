@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`Convolute`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`Convolute`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Convolute::"usage"=
 "Convolute[f[x], g[x], x] convolutes f[x] and g[x], i.e.,

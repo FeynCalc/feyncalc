@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Smu`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Smu`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Smu::"usage"= "Smu  is ...";
 

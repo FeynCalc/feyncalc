@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`RHI`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`RHI`",{"HighEnergyPhysics`FeynCalc`"}];
 
 RHI::"usage"= "RHI[{v,w,x,y,z},{a,b,c,d,e,f,g}, {al,be,ga,de,ep}]. (sn -> 1,
 mark1 -> 1, mark2 -> 1, mark3 -> 1, eph -> Epsilon/2 ).

@@ -12,7 +12,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`OPEIntegrate`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 OPEIntegrate::"usage"=
 "OPEIntegrate[expr, q, x] calculates a one-loop OPE-type integral. 

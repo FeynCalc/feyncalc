@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SpinPolarizationSum`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SpinPolarizationSum`",{"HighEnergyPhysics`FeynCalc`"}];
 
 (* ------------------------------------------------------------------------ *)
 

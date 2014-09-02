@@ -1,7 +1,6 @@
 (* :Tite: Coefficient2 *)
                                                                                                                                            
-BeginPackage["HighEnergyPhysics`general`Coefficient2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Coefficient2`",{"HighEnergyPhysics`FeynCalc`"}];
                                                                                                                                            
 Coefficient2::usage=
 "Coefficient2

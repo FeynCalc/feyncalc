@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MemoryAvailable`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MemoryAvailable`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MemoryAvailable::"usage" =
 "MemoryAvailable is an option of MemSet.

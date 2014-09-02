@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`BackgroundGluonVertex`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 BackgroundGluonVertex::"usage" = 
 "BackgroundGluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or 

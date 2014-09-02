@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUNIndex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUNIndex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUNIndex::"usage"=
 "SUNIndex[a] is an SU(N) index. If the argument is an integer

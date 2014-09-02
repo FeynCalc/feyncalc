@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Factor2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Factor2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Factor2::"usage" = 
 "Factor2[poly] factors a polynomial in a standard

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GA`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GA`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GA::"usage"=
 "GA[mu] can be used as input for gamma_mu and is

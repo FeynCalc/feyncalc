@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`OPE`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`OPE`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPE::"usage"= "OPE is a convenience variable to separate OPE insertions. 
 OPE is also an option of several input functions like GluonPropagator.";

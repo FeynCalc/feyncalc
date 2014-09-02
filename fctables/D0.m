@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`D0`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`D0`",{"HighEnergyPhysics`FeynCalc`"}];
 
 D0::"usage"=
 "D0[ p10, p12, p23, p30, p20, p13,  m1^2, m2^2, m3^2, m4^2 ] is the

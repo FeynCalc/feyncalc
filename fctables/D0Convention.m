@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`D0Convention`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`D0Convention`",{"HighEnergyPhysics`FeynCalc`"}];
 
 D0Convention::"usage" = 
 "D0Convention is an option for Write2. If set to 1, the convention for

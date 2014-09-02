@@ -14,8 +14,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FeynCalcExternal`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FeynCalcExternal`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FCE::"usage"=
 "FCE is just an abbreviation of FeynCalcExternal.";

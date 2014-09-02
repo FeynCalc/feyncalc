@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`CommutatorExplicit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`CommutatorExplicit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CommutatorExplicit::"usage"=
 "CommutatorExplicit[exp] substitutes any Commutator and AntiCommutator \

@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`WriteOutPaVe`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`WriteOutPaVe`",{"HighEnergyPhysics`FeynCalc`"}];
 
 WriteOutPaVe::"usage"=
 "WriteOutPaVe is an option for PaVeReduce and OneLoopSum. \

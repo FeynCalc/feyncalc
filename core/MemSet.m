@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MemSet`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MemSet`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MemSet::"usage" =
 "MemSet[f[x_], body] is like f[x_] := f[x] = body,

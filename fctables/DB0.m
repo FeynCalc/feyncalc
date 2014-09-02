@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`DB0`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`DB0`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DB0::"usage"=
 "DB0[p2,m1^2,m2^2] is the derivative of the two-point function

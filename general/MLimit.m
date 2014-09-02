@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`MLimit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`MLimit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MLimit::"usage"=
 "MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";

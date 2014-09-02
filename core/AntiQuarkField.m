@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`AntiQuarkField`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`AntiQuarkField`",{"HighEnergyPhysics`FeynCalc`"}];
 
 AntiQuarkField::"usage" =
 "AntiQuarkField is the name of a fermionic field.";

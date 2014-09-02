@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`Contract`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Contract`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Contract::"usage"=
 "Contract[expr] contracts pairs of Lorentz indices of metric tensors,

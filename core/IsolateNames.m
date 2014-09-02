@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`IsolateNames`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`IsolateNames`",{"HighEnergyPhysics`FeynCalc`"}];
 
 IsolateNames::"usage" =
 "IsolateNames is an option for Isolate and Collect2.

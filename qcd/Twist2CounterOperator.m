@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Twist2CounterOperator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Twist2CounterOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Twist2CounterOperator::"usage" = 
 "Twist2CounterOperator[p,mu,nu,a,b,5];

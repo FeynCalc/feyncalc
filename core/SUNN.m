@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUNN`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUNN`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUNN::"usage" =
 "SUNN denotes the number of colors.

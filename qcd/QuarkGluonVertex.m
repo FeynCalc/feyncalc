@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`QuarkGluonVertex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`QuarkGluonVertex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QGV::"usage" =
 "QGV is equivalent to QuarkGluonVertex.";

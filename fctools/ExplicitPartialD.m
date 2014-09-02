@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ExplicitPartialD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ExplicitPartialD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ExplicitPartialD::"usage"=
 "ExplicitPartialD[exp] inserts in exp the definition for 

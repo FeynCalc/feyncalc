@@ -14,8 +14,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FunctionalD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FunctionalD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FunctionalD::"usage"=
 "FunctionalD[expr, 

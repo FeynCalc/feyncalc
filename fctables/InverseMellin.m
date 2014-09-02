@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`InverseMellin`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`InverseMellin`",{"HighEnergyPhysics`FeynCalc`"}];
 
 InverseMellin::"usage"= 
 "InverseMellin[exp, y] performs the inverse Mellin transform of

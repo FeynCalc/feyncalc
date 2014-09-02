@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`GhostPropagator`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 GHP::"usage" =
 "GHP is equivalent to GhostPropagator.";

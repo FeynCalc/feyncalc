@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Lower`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Lower`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Lower::"usage"= "Lower may be used inside LorentzIndex to indicate a
 covariant LorentzIndex.";

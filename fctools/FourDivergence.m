@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FourDivergence`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FourDivergence`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FourDivergence::"usage" = 
 "FourDivergence[exp, FourVector[p, mu]] 

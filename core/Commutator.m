@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Commutator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Commutator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Commutator::"usage"=
 "Commutator[x, y] = c  defines the commutator between the non-commuting \

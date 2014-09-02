@@ -1,7 +1,6 @@
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SPD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SPD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SPD::"usage"= "SPD[p, q] is the D-dimensional scalar product of p with q.
 SPD[p, q] is transformed into Pair[Momentum[p, D],Momentum[q, D]]

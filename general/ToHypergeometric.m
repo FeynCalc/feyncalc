@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`ToHypergeometric`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`ToHypergeometric`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ToHypergeometric::"usage"=
 "ToHypergeometric[t^b (1-t)^c (u + t z)^a, t]  returns

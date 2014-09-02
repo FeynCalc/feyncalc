@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`SubLoop`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`SubLoop`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SubLoop::"usage" = 
 "SubLoop is an option for OPE1Loop. If set to True,

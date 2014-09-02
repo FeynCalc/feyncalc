@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`NegativeInteger`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`NegativeInteger`",{"HighEnergyPhysics`FeynCalc`"}];
 
 NegativeInteger::"usage" =  "NegativeInteger is a data type.
 E.g. DataType[n, NegativeInteger] can be set to True.";

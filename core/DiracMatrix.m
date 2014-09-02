@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracMatrix`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracMatrix`",{"HighEnergyPhysics`FeynCalc`"}];
 
 
 DiracMatrix::"usage" =

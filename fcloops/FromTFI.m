@@ -10,7 +10,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`FromTFI`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FromTFI::"usage" = "FromTFI[expr, q1, q2, p] translates TFI (and TVI and TJI) 
 Tarcer-notation to FeynCalc notation (D dimensions only). 

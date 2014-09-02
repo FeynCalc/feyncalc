@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracGammaExpand`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracGammaExpand`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracGammaExpand::"usage"=
 "DiracGammaExpand[exp] expands all DiracGamma[Momentum[a+b+..]] in \

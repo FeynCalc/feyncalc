@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`StringChomp`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`StringChomp`",{"HighEnergyPhysics`FeynCalc`"}];
 
 StringChomp::usage="StringChomp[string] chops initial and final white space of string.";
 

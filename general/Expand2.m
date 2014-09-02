@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Expand2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Expand2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Expand2::"usage"=
 "Expand2[exp, x] expands all sums containing x.

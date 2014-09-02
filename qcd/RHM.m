@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`RHM`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`RHM`",{"HighEnergyPhysics`FeynCalc`"}];
 
 RHM::"usage"= "RHM[] is like RHI[], gives Gamma functions.";
 

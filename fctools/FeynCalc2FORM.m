@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FeynCalc2FORM`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FeynCalc2FORM`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynCalc2FORM::"usage"=
 "FeynCalc2FORM[expr] displays expr in FORM syntax.

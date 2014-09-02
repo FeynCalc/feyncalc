@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`AntiCommutator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`AntiCommutator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 AntiCommutator::"usage"=
 "AntiCommutator[x, y] = c  defines the anti-commutator of the \

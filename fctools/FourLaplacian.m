@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FourLaplacian`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FourLaplacian`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FourLaplacian::"usage"= "FourLaplacian[exp, p, q] is d/dp_mu d/dq_mu exp.";
 

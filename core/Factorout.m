@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Factorout`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Factorout`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Factorout::"usage" = "Factorout is an option for OPEInt and OPEIntegrate.";
 

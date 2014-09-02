@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Solve3`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Solve3`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Solve3::"usage"=
 "Solve3 is equivalent to Solve, except that it works only for

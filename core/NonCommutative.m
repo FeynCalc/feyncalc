@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`NonCommutative`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`NonCommutative`",{"HighEnergyPhysics`FeynCalc`"}];
 
 NonCommutative::"usage"=
 "NonCommutative is a data type which may be used, e.g.,  as:

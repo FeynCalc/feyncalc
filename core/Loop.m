@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Loop`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Loop`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Loop::"usage"= "Loop is an option indicating the number of (virtual) loops.";
 

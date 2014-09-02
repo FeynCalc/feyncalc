@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`CounterT`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`CounterT`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CounterT::"usage"= "CounterT is a factor used by GluonPropagator and \
 QuarkPropagator when CounterTerm is set to All.";

@@ -4,8 +4,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ScalarProduct`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ScalarProduct`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ScalarProduct::"usage" =
 "ScalarProduct[p, q] is the input for scalar product.

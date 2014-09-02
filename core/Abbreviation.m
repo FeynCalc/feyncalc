@@ -4,7 +4,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`FeynCalc`Abbreviation`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 Abbreviation::"usage"=
 "Abbreviation[name] gives a shortname for name (in HoldForm). \

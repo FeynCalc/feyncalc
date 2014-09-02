@@ -13,8 +13,7 @@ Roelof Hambergs notation  (eq. (3C.19) in his thesis) into
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`RHI2FC`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`RHI2FC`",{"HighEnergyPhysics`FeynCalc`"}];
 
 RHI2FC::"usage"= 
 "RHI2FC[exp] transforms all 

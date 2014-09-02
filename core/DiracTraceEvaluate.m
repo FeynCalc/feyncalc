@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracTraceEvaluate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracTraceEvaluate`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracTraceEvaluate::"usage" =
 "DiracTraceEvaluate is an option for DiracTrace and TR.

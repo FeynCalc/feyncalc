@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`LeviCivita`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`LeviCivita`",{"HighEnergyPhysics`FeynCalc`"}];
 
 LeviCivita::"usage" =
 "LeviCivita[mu, nu, ro, si] is an input  function for the

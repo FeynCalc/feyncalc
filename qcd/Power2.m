@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Power2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Power2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Power2::"usage"=
 "Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the

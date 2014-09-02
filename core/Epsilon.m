@@ -7,8 +7,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Epsilon`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Epsilon`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Epsilon::"usage" = 
 "Epsilon is (D-4), where D is the number of space-time dimensions. Epsilon \

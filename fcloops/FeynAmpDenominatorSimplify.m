@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`FeynAmpDenominatorSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FeynAmpDenominatorSimplify::"usage" = 
 "FeynAmpDenominatorSimplify[exp] simplifies each 

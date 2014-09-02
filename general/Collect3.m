@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Collect3`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Collect3`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Collect3::"usage"= 
 "Collect3[expr, head] collects all monoomials of the form head[..]*head[..]*..

@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`FeynCalcToLaTeX`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`FeynCalcToLaTeX`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynCalcToLaTeX::usage="FeynCalcToLaTeX[expr] generates LaTeX with line-breaking 
 for expr.

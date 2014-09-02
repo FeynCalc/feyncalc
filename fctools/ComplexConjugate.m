@@ -18,8 +18,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ComplexConjugate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ComplexConjugate`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ComplexConjugate::"usage"=
 "ComplexConjugate[expr] complex conjugates expr.

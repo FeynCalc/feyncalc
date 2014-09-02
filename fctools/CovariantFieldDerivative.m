@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`CovariantFieldDerivative`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`CovariantFieldDerivative`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CovariantFieldDerivative::"usage" =
     "CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is a covariant \

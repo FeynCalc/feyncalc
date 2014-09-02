@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`CovariantD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`CovariantD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CovariantD::"usage"=
 "CovariantD[mu] is a generic covariant derivative with

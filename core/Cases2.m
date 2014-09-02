@@ -1,7 +1,6 @@
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Cases2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Cases2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Cases2::"usage"=
 "Cases2[expr, f] is equivalent to \

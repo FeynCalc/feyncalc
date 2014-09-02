@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ChiralityProjector`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ChiralityProjector`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ChiralityProjector::"usage" =
 "ChiralityProjector[+1] denotes DiracGamma[6] (=1/2(1 + DiracMatrix[5])).

@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FreeIndex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FreeIndex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FreeIndex::"usage"=
 "FreeIndex is a datatype which is recognized by Contract.

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ExtraFactor`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ExtraFactor`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ExtraFactor::"usage"=
 "ExtraFactor is an option for SquareAmplitude and FermionSpinSum.

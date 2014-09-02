@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MT`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MT`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MT::"usage"=
 "MT[mu, nu] is the metric tensor in 4 dimensions.";

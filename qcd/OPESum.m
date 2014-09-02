@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`OPESum`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`OPESum`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPESum::"usage"= "OPESum[exp, {i, 0, m}] denotes a symbolic sum.
 The syntax is the same as for Sum.";

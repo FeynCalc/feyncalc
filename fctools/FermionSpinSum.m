@@ -11,8 +11,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FermionSpinSum`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FermionSpinSum`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FermionSpinSum::"usage"=
 "FermionSpinSum[x] constructs Traces out of squared ampliudes in x.";

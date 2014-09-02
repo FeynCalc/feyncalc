@@ -14,7 +14,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`OPE1Loop`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 OPE1Loop::"usage"=
 "OPE1Loop[q1, amp].  OPE1Loop[{q1,q2}, amp] does sub-loop 

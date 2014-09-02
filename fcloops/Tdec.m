@@ -9,7 +9,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`Tdec`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 Tdec::"usage" = "Tdec[{q,mu}, {p}];
 Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or

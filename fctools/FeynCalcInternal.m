@@ -13,8 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FeynCalcInternal`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FeynCalcInternal`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FCI::"usage"=
 "FCI is just an abbreviation of FeynCalcInternal.";

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ExplicitLorentzIndex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ExplicitLorentzIndex::"usage"=
 "ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is

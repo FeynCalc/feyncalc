@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Intersection1`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Intersection1`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Intersection1::usage=
 "Intersection1[l1, l2], where l1 and l2 are lists returns a list of \

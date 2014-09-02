@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MomentumCombine`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MomentumCombine`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MomentumCombine::"usage" =
 "MomentumCombine[expr] combines momenta and Pairs with the same 

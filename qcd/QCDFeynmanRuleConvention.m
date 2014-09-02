@@ -13,8 +13,7 @@ factors of I etc. *)
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`QCDFeynmanRuleConvention`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`QCDFeynmanRuleConvention`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QCDFeynmanRuleConvention::"usage" =
 "QCDFeynmanRuleConvention[GluonPropagator], 

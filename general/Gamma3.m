@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Gamma3`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Gamma3`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Gamma3::"usage"= "Gamma3[al,be,ga,ep] is a special product of
 Gamma functions expanded up to order Epsilon^n when positive

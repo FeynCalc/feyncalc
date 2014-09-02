@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FV`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FV`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FV::"usage"= "FV[p,mu] is a fourvector and is transformed into
 Pair[Momentum[p], LorentzIndex[mu]]

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUNFToTraces`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUNFToTraces`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUNFToTraces::"usage"=
 "SUNFToTraces is superseded by Explicit.";

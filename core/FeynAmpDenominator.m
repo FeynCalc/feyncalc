@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FeynAmpDenominator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FeynAmpDenominator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynAmpDenominator::"usage" =
 "FeynAmpDenominator[ PropagatorDenominator[ ... ],

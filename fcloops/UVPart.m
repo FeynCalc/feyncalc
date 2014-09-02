@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`UVPart`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 UVPart::"usage"= 
 "UVPart[exp, q] discards ultraviolet finite integrals

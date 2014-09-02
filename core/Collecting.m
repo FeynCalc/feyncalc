@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Collecting`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Collecting`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Collecting::"usage" =
 "Collecting is an option of Contract2, ScalarProductCancel, SquareAmplitude, \

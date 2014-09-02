@@ -9,8 +9,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fcdevel`FeynmanParametrize1`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcdevel`FeynmanParametrize1`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynmanParametrize1::"usage"=
 "***EXPERIMENTAL***\n

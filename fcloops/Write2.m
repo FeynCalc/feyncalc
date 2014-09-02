@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`Write2`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FortranFormatDoublePrecision::"usage"=
 "FortranFormatDoublePrecision is an option for Write2.";

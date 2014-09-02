@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`SetMandelstam`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`SetMandelstam`",{"HighEnergyPhysics`FeynCalc`"}];
 SetMandelstam::"usage"=
 "SetMandelstam[s, t, u, p1, p2, p3, p4, m1, m2, m3, m4] defines the
 Mandelstam variables  s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 and sets

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GSD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GSD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GSD::"usage"=
 "GSD[p] is transformed into DiracSlash[p,Dimension->D] by FeynCalcInternal.";

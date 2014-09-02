@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`CalcColorFactor`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`CalcColorFactor`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CalcColorFactor::"usage" =
 "CalcColorFactor[expr] calculates the color factor of expr. 

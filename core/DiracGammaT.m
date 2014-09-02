@@ -6,8 +6,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracGammaT`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracGammaT`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracGammaT::"usage" =
 "DiracGammaT[x] denotes the transpose of DiracGamma. \

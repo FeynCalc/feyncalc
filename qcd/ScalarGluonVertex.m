@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`ScalarGluonVertex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`ScalarGluonVertex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ScalarGluonVertex::"usage" = 
 "ScalarGluonVertex[{p}, {q}, {mu,a}] or

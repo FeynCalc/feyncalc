@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MTD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MTD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MTD::"usage"=
 "MTD[mu, nu] is the metric tensor in D dimensions.";

@@ -13,8 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Isolate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Isolate`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Isolate::"usage"=
 "Isolate[expr] substitutes abbreviations KK[i] for all 

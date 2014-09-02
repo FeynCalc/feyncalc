@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Collect2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Collect2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Collect2::"usage"=
 "Collect2[expr, x] collects together terms which are not free of any 

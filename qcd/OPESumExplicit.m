@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`OPESumExplicit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`OPESumExplicit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPESumExplicit::"usage"= "OPESumExplicit[exp] calculates OPESum's.";
 

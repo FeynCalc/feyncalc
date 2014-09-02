@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`Amputate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Amputate`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Amputate::"usage"= "Amputate[exp,q1,q2, ...] amputates Eps
 and DiracGamma. Amputate[exp,q1,q2, Pair->{p}] amputates

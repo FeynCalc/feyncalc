@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Twist2GluonOperator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Twist2GluonOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GO::"usage" =
 "GO is equivalent to Twist2GluonOperator.";

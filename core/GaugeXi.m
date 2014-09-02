@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GaugeXi`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GaugeXi`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GaugeXi::"usage"= "GaugeXi is a head for gauge parameters.";
 

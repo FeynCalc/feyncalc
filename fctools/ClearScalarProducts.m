@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ClearScalarProducts`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ClearScalarProducts`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ClearScalarProducts::"usage" = 
 "ClearScalarProducts removes all user-performed 

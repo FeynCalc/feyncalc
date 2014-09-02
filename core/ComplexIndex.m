@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ComplexIndex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ComplexIndex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ComplexIndex::"usage"=
 "ComplexIndex is the head of a complex conjugate index.";

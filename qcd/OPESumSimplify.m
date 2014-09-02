@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`OPESumSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`OPESumSimplify`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPESumSimplify::"usage"= "OPESumSimplify[exp] 
 simplifies OPESum's in exp.";

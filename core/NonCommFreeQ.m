@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`NonCommFreeQ`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`NonCommFreeQ`",{"HighEnergyPhysics`FeynCalc`"}];
 
 NonCommFreeQ::"usage" =
 "NonCommFreeQ[exp] yields True if exp contains no non-commutative objects \

@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ChargeConjugationMatrixInv`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ChargeConjugationMatrixInv`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ChargeConjugationMatrixInv::"usage"=
 "ChargeConjugationMatrixInv is the inverse of 

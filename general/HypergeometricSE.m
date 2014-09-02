@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`HypergeometricSE`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`HypergeometricSE`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypergeometricSE::"usage"=
 "HypergeometricSE[exp, nu] expresses Hypergeometric functions by

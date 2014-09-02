@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GS`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GS`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GS::"usage"=
 "GS[p] is transformed into DiracSlash[p] by FeynCalcInternal.

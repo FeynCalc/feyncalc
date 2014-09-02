@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SmallDelta`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SmallDelta`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SmallDelta::"usage" = "SmallDelta denotes some small positive number.";
 

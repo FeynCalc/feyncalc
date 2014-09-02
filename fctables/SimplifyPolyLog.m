@@ -14,8 +14,7 @@ http://www.feyncalc.org/forum/0003.html
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`SimplifyPolyLog`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`SimplifyPolyLog`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SimplifyPolyLog::"usage" =
 "SimplifyPolyLog[y] performs several simplifications assuming 

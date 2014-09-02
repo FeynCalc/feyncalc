@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`SimplifyGTI`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`SimplifyGTI`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SimplifyGTI::"usage"= "SimplifyGTI simplifies GTI's.";
 

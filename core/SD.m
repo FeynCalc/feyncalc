@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SD::"usage"=
 "SD[i, j] is the (FeynCalc-external) Kronecker-delta for SU(N) with color

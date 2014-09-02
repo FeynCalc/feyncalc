@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`TraceOfOne`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`TraceOfOne`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TraceOfOne::"usage" =
 "TraceOfOne is an option for Tr and DiracTrace.

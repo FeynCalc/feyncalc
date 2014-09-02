@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`Chisholm`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Chisholm`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Chisholm::"usage"=
 "Chisholm[x] substitutes products of three Dirac matrices or

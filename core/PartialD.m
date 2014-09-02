@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PartialD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PartialD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PartialD::"usage"=
 "PartialD[mu] denotes partial_mu. PartialD[x, mu] denotes d/d x^mu.

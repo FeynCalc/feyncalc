@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ZeroMomentumInsertion`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ZeroMomentumInsertion`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ZeroMomentumInsertion::"usage"= 
 "ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and

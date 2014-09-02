@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`SumT`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`SumT`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SumT::"usage"=
 "SumT[r, n] represents Sum[(-1)^i/i^r, {i,1,n}],

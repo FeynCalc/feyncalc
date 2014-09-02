@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracSpinor`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracSpinor`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracSpinor::"usage" =
 "DiracSpinor[p, m, ind] is a Dirac spinor for a fermion with momentum p \

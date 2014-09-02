@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`IntegralTable`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`IntegralTable`",{"HighEnergyPhysics`FeynCalc`"}];
 
 IntegralTable::"usage"=
 "IntegralTable is an option of OneLoopSimplify, TwoLoopSimplify and

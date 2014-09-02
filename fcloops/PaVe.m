@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`PaVe`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 PaVe::"usage"=
 "PaVe[ i,j,... {p10,p12,...},{m1^2, mw^2, ...} ] denotes the invariant

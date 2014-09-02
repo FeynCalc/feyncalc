@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FCPrint`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FCPrint`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FCPrint::"usage" =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose

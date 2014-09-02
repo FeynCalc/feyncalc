@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`EpsChisholm`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`EpsChisholm`",{"HighEnergyPhysics`FeynCalc`"}];
 
 EpsChisholm::"usage"=
 "EpsChisholm[expr] substitutes for a gamma matrix contracted with

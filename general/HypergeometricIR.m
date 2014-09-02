@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`HypergeometricIR`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`HypergeometricIR`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypergeometricIR::"usage"=
 "HypergeometricIR[exp, t]  substitutes for all 

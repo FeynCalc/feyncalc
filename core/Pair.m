@@ -6,8 +6,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Pair`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Pair`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Pair::"usage"=
 "Pair[a , b] is a special pairing used in the internal

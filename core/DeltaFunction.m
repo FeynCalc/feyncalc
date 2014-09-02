@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DeltaFunction`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DeltaFunction`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DeltaFunction::"usage"= "DeltaFunction is the Dirac delta-function.";
 

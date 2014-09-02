@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUNDeltaContract`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUNDeltaContract`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUNDeltaContract::"usage"=
 "SUNDeltaContract[expr] substitues for all

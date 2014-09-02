@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`PropagatorDenominatorExplicit`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 PropagatorDenominatorExplicit::"usage" = 
 "PropagatorDenominatorExplicit[exp] changes each occurence of 

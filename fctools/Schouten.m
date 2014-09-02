@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`Schouten`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Schouten`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Schouten::"usage" = 
 "Schouten[expr] applies the Schouten identity for four-vectors on at most

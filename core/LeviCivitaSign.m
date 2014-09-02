@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`LeviCivitaSign`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`LeviCivitaSign`",{"HighEnergyPhysics`FeynCalc`"}];
 
 LeviCivitaSign::"usage" =
 "LeviCivitaSign is an option for DiracTrace and EpsChisholm. It determines

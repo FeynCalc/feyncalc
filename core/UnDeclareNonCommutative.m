@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`UnDeclareNonCommutative`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`UnDeclareNonCommutative`",{"HighEnergyPhysics`FeynCalc`"}];
 
 UnDeclareNonCommutative::"usage" =
 "UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`IntermediateSubstitutions`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`IntermediateSubstitutions`",{"HighEnergyPhysics`FeynCalc`"}];
 
 IntermediateSubstitutions::"usage" =
 "IntermediateSubstitutions is an option for OneLoop and

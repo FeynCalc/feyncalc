@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`LeftRightPartialD2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`LeftRightPartialD2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 LeftRightPartialD2::"usage"=
 "LeftRightPartialD2[mu] denotes partial_mu, acting to the left and

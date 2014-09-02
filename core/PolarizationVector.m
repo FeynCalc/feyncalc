@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PolarizationVector`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PolarizationVector`",{"HighEnergyPhysics`FeynCalc`"}];
 
 
 PolarizationVector::"usage" =

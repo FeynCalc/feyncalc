@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`TLI`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`TLI`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TLI::"usage"= 
 "TLI[{v,w,x,y,z},{a,b,c,d,e}, {al,be,ga,de,ep}]. 

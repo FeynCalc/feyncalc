@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`PartialFourVector`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`PartialFourVector`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PartialFourVector::"usage" = 
 "PartialFourVector[exp, FourVector[p, mu]] 

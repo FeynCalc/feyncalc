@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`QuarkPropagator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`QuarkPropagator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QP::"usage" =
 "QP is an alias for QuarkPropagator.

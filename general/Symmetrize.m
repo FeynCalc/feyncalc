@@ -13,8 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Symmetrize`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Symmetrize`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Symmetrize::"usage"=
 "Symmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect 

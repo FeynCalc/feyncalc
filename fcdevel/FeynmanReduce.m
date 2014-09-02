@@ -9,8 +9,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fcdevel`FeynmanReduce`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcdevel`FeynmanReduce`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynmanReduce::"usage"=
 "***EXPERIMENTAL***\n

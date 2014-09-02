@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Twist2QuarkOperator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Twist2QuarkOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QO::"usage" =
 "QO is equivalent to Twist2QuarkOperator.";

@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`OPEo`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`OPEo`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPEo::"usage"= "OPEo is n.";
 

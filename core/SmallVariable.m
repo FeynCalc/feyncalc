@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SmallVariable`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SmallVariable`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SmallVariable::"usage" =
 "SmallVariable[me] is a small (negligible) variable.

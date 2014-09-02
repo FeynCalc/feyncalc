@@ -6,8 +6,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PauliSigma`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PauliSigma`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PauliSigma::"usage" =
 "PauliSigma denotes the vector of the 3 Pauli matrices.

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Nf`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Nf`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Nf::"usage" =
 "Nf denotes the number of flavors."

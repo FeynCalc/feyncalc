@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`OPEIntegrate2`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 OPEIntegrate2::"usage"= 
 "OPEIntegrate2[exp, k] does special loop (tensorial) integrations. 

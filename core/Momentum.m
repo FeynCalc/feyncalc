@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Momentum`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Momentum`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Momentum::"usage"=
 "Momentum is the head of a four momentum (p).

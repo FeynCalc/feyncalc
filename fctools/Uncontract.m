@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`Uncontract`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Uncontract`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Uncontract::"usage"= "Uncontract[exp,q1,q2, ...] uncontracts Eps
 and DiracGamma. Uncontract[exp,q1,q2, Pair->{p}] uncontracts 

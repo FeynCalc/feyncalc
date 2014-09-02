@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`QuarkField`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`QuarkField`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QuarkField::"usage" =
 "QuarkField is the name of a fermionic field.";

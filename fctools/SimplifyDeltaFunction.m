@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`SimplifyDeltaFunction`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`SimplifyDeltaFunction`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SimplifyDeltaFunction::"usage"= 
 "SimplifyDeltaFunction[exp, x] simplifies f[x]*DeltaFunction[1-x] to 

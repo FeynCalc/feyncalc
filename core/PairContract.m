@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PairContract`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PairContract`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PairContract::"usage" =
 "PairContract is like Pair, but with (local) contraction properties.";

@@ -15,7 +15,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`FC2TLI`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FC2TLI::"usage"= 
 "FC2TLI[exp, k1, k2] transforms all 2-loop OPE-integrals

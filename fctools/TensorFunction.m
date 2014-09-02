@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`TensorFunction`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`TensorFunction`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TensorFunction::"usage"= 
 "TensorFunction[t, mu, nu, ...] transform into

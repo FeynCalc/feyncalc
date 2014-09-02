@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Integratedx`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Integratedx`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Integratedx::"usage"=
 "Integratedx[x, low, up] is a variable representing the integration

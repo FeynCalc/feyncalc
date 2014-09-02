@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Factoring`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Factoring`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Factoring::"usage" = "Factoring is an option for Collect2, Contract,
 Tr and more functions. If set to True, the result will be

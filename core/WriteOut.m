@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`WriteOut`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`WriteOut`",{"HighEnergyPhysics`FeynCalc`"}];
 
 WriteOut::"usage" = 
 "WriteOut is an option for OneLoop and SquareAmplitude. 

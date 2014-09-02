@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SP`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SP`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SP::"usage"= "SP[p,q] is the four-dimensional scalar product of p with q.
 SP[p, q] is transformed into ScalarProduct[p,q] by FeynCalcInternal.

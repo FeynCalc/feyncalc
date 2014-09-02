@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SpinorUBar`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SpinorUBar`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SpinorUBar::"usage" = "SpinorUBar[p, m] denotes a ubar-spinor.";
 

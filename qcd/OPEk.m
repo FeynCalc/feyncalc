@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`OPEk`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`OPEk`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPEk::"usage"= "OPEk is an dummy index in OPESum.";
 

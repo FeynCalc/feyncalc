@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PaVeOrderList`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PaVeOrderList`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PaVeOrderList::"usage"=
 "PaVeOrderList is an option for PaVeOrder and PaVeReduce,

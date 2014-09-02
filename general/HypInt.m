@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`HypInt`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`HypInt`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypInt::"usage"=
 "HypInt[exp, t] substitutes for all

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`InitialSubstitutions`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`InitialSubstitutions`",{"HighEnergyPhysics`FeynCalc`"}];
 
 InitialSubstitutions::"usage" =
 "InitialSubstitutions is an option for OneLoop and OneLoopSum

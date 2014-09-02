@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Eps`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Eps`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Eps::"usage" =
 "Eps[a, b, c, d] represents the totally antisymmetric epsilon

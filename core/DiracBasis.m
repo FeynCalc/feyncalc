@@ -6,8 +6,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracBasis`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracBasis`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracBasis::"usage" =
 "DiracBasis[any] is a head which is wrapped around Dirac structures \

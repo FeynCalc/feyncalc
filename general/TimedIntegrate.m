@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`TimedIntegrate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`TimedIntegrate`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TimedIntegrate::"usage"= "
 TimedIntegrate[exp, vars] is like Integrate, but stops after the number of \

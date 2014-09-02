@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`CouplingConstant`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`CouplingConstant`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CouplingConstant::"usage" =
 "CouplingConstant is an option for several Feynman rule functions and \

@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FourVector`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FourVector`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FourVector::"usage" =
 "FourVector[p, mu] is the four Dimensional vector p with Lorentz index m.

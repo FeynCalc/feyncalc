@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FeynAmp`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FeynAmp`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynAmp::"usage"=
 "FeynAmp[q, amp] denotes a Feynman amplitude.

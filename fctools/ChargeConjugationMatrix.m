@@ -13,8 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ChargeConjugationMatrix`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ChargeConjugationMatrix`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ChargeConjugationMatrix::"usage" = 
 "ChargeConjugationMatrix denotes the charge conjugation matrix C.";

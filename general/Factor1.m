@@ -15,8 +15,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Factor1`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Factor1`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Factor1::"usage"=
 "Factor1[poly] factorizes common terms  in the summands of poly.

@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`C0`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`C0`",{"HighEnergyPhysics`FeynCalc`"}];
 C0::"usage"=
 "C0[p10, p12, p20, m1^2, m2^2, m3^2] is the scalar
 Passarino-Veltman C0-function.  The convention for the arguments

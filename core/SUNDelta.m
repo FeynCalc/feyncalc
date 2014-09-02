@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUNDelta`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUNDelta`",{"HighEnergyPhysics`FeynCalc`"}];
 
 
 SUNDelta::"usage"=

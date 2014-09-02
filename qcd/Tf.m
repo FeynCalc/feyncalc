@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Tf`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Tf`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Tf::"usage" = 
 "Tf is a group constant (sometimes called TR, as in eq. (2.5.133) in T. Muta,

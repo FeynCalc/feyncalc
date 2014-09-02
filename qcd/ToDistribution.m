@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`ToDistribution`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`ToDistribution`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ToDistribution::"usage"= 
 "ToDistribution[exp,x] replaces (1-x)^(a Epsilon - 1) in exp by 

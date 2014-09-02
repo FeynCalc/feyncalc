@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Expanding`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Expanding`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Expanding::"usage" =
 "Expanding is an option for DotSimplify, Calc, Contract, DiracSimplify, SUNSimplify, etc.

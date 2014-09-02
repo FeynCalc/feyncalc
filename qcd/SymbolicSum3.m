@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`SymbolicSum3`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`SymbolicSum3`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SymbolicSum3::"usage"= "SymbolicSymbolicSum3 is similar to SymbolicSum
 (Algebra`SymbolicSum`SymbolicSum was a function to do symbolic summation.

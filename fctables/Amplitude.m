@@ -9,8 +9,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`Amplitude`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`Amplitude`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Amplitude::"usage"= "Amplitude is a database of Feynman amplitudes.
 Amplitude[\"name\"] returns the amplitude corresponding to the string \"name\".

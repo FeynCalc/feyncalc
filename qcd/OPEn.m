@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`OPEn`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`OPEn`",{"HighEnergyPhysics`FeynCalc`"}];
 
 OPEn::"usage"= "OPEn is n.";
 

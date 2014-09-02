@@ -1,8 +1,7 @@
 (* ------------------------------------------------------------------------ *)
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FeynAmpList`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FeynAmpList`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynAmpList::"usage"=
 "FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of

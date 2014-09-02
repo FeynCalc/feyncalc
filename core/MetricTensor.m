@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MetricTensor`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MetricTensor`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MetricTensor::"usage"=
 "MetricTensor[mu, nu] is the metric tensor in 4 dimensions.

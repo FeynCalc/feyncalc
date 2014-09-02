@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`LC`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`LC`",{"HighEnergyPhysics`FeynCalc`"}];
 
 LC::"usage"=
 "LC[m,n,r,s] evaluates to LeviCivita[m,n,r,s] applying

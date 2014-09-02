@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`Calc`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`Calc`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Calc::"usage" = 
 "Calc[exp] performs several simplifications.

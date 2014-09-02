@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`TLIFP`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`TLIFP`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TLIFP::"usage"= "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
 

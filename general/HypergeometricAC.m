@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`HypergeometricAC`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`HypergeometricAC`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypergeometricAC::"usage"=
 "HypergeometricAC[n][exp] analytically continues 

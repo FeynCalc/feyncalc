@@ -4,8 +4,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Polarization`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Polarization`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Polarization::"usage"=
 "Polarization[k] = Polarization[k, I] represents a

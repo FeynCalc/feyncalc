@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracSigma`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracSigma`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracSigma::"usage" =
 "DiracSigma[a, b] stands for I/2*(a . b - b . a) in 4 dimensions. \

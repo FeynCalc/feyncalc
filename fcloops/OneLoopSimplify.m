@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`OneLoopSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 OneLoopSimplify::"usage" = 
 "OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp.

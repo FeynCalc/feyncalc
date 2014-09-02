@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Gamma2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Gamma2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Gamma2::"usage"= "Gamma2[x,y] is a special product of
 Gamma functions expanded up to order Epsilon^3 when positive

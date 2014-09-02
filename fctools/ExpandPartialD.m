@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ExpandPartialD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ExpandPartialD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ExpandPartialD::"usage"=
 "ExpandPartialD[exp] expands DOT products of QuantumField's in exp

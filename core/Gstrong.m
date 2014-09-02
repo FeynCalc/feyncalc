@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Gstrong`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Gstrong`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Gstrong::"usage" =
 "Gstrong denotes the strong coupling constant.";

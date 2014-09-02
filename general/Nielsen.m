@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Nielsen`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Nielsen`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Nielsen::"usage"= "Nielsen[i,j, x] denotes Nielsen's polylogarithm.";
 

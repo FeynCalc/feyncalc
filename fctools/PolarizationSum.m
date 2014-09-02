@@ -13,8 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`PolarizationSum`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`PolarizationSum`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PolarizationSum::"usage"=
 "PolarizationSum[ mu,nu, ... ] defines

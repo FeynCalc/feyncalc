@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`SMP`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`SMP`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SMP::"usage"= "SMP[par] substitutes a symbol for the 
 Standard Model parameter par. 

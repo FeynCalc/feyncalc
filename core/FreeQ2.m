@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FreeQ2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FreeQ2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FreeQ2::"usage" =
 "FreeQ2[expr, {form1, form2, ...}] yields True if expr does not

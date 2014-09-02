@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ScaleMu`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ScaleMu`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ScaleMu::"usage"= "ScaleMu is the mass scale used for dimensional \
 regularization of loop integrals";

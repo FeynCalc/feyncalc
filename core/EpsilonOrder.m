@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`EpsilonOrder`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`EpsilonOrder`",{"HighEnergyPhysics`FeynCalc`"}];
 
 EpsilonOrder::"usage" =
 "EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting

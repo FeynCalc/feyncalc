@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Combine`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Combine`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Combine::"usage"=
 "Combine[expr] puts terms in a sum over a common denominator, and

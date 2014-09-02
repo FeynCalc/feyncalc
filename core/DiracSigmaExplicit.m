@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracSigmaExplicit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracSigmaExplicit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracSigmaExplicit::"usage" =
 "DiracSigmaExplicit[exp] inserts in exp the definition of \

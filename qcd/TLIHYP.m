@@ -9,8 +9,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`TLIHYP`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`TLIHYP`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TLIHYP::"usage"= "TLIHYP[exp] expresses TLI's in exp. in terms
 of hypergeometric functions, where possible.";

@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Dimension`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Dimension`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Dimension::"usage" =
 "Dimension is an option for DiracMatrix, DiracSlash, FourVector, \

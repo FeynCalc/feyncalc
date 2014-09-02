@@ -15,8 +15,7 @@ Roelofs notation  (eq. (3C.19)) into
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`TLI2FC`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`TLI2FC`",{"HighEnergyPhysics`FeynCalc`"}];
 
 TLI2FC::"usage"= 
 "TLI2FC[exp] transforms all

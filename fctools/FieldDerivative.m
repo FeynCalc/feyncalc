@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`FieldDerivative`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`FieldDerivative`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FieldDerivative::"usage" =
     "FieldDerivative[f[x],x,li1,li2,...] is the derivative of f[x] with

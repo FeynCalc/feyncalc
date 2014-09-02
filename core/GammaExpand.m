@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GammaExpand`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GammaExpand`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GammaExpand::"usage"= "GammaExpand[exp] rewrites
 Gamma[n + m] (where n has Head Integer).";

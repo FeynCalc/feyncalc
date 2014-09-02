@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ChangeDimension`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ChangeDimension`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ChangeDimension::"usage"=
 "ChangeDimension[exp, dim] changes all LorentzIndex and Momenta in

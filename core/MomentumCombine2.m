@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MomentumCombine2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MomentumCombine2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MomentumCombine2::"usage" =
 "MomentumCombine2[expr]  is the inverse operation to

@@ -4,8 +4,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracOrder`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracOrder`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracOrder::"usage"=
 "DiracOrder[expr] orders the Dirac matrices in expr alphabetically. \

@@ -14,8 +14,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`SUNSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`SUNSimplify`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUNSimplify::"usage" =
 "SUNSimplify simplifies products of sunt (and complex conjugated)

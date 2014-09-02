@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`EpsContract`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`EpsContract`",{"HighEnergyPhysics`FeynCalc`"}];
 
 EpsContract::"usage"=
 "EpsContract is an option of Contract specifying whether Levi-Civita

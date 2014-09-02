@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`RHP`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`RHP`",{"HighEnergyPhysics`FeynCalc`"}];
 
 RHP::"usage"= "RHP[i, mu, nu, p] with i from 1 to 4 gives the projectors for
 RHO[i]. RHP[mu, nu, p] gives Sum[RHP[i,mu, nu, p] RHO[i], {i, 4}] collected

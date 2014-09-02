@@ -24,7 +24,7 @@
 ClearAll[HighEnergyPhysics`FeynCalc`QuantumField`QuantumField];
 
 BeginPackage["HighEnergyPhysics`FeynCalc`QuantumField`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 Begin["`Private`"];
 

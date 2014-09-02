@@ -7,8 +7,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PlusDistribution`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PlusDistribution`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PlusDistribution::"usage"=
 "PlusDistribution[1/(1-x)] denotes the distribution (1/(1-x))_+.

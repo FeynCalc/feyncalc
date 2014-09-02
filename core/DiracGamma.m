@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DiracGamma`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DiracGamma`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DiracGamma::"usage" =
 "DiracGamma[x, dim] is the way all Dirac \

@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ThreeVector`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ThreeVector`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ThreeVector::"usage" = 
 "ThreeVector[p] is the three dimensional vector p.";

@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`SumS`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`SumS`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SumS::"usage"=
 "SumS[r, n] denotes Sum[Sign[r]^i/i^Abs[r], {i, 1, n}], 

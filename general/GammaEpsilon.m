@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`GammaEpsilon`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`GammaEpsilon`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GammaEpsilon::"usage"= "GammaEpsilon[exp] gives a series 
 expansion of Gamma[exp] in Epsilon up to order 6 (where

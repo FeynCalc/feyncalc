@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`ExplicitSUNIndex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ExplicitSUNIndex::"usage"=
 "ExplicitSUNIndex[ind] is a specific SU(N) index, i.e., 

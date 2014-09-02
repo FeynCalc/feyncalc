@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Complement1`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Complement1`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Complement1::usage=
 "Complement1[l1, l2], where l1 and l2 are lists returns a list of \

@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`Integrate4`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`Integrate4`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Integrate4::"usage"=
 "Integrate4 is like Integrate5, but interruptable if $VeryVerbose >2.";

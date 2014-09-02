@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`GluonSelfEnergy`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 GluonSelfEnergy::"usage" = 
 "GluonSelfEnergy[{mu, a}, {nu,b}] yields the 1-loop Gluon selfenergy."

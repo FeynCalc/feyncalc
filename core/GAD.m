@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GAD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GAD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GAD::"usage"=
 "GAD[mu] can be used as input for a D-dimensional gamma_mu and is

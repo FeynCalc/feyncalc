@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`CheckDB`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`CheckDB`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CheckDB::"usage" = 
 "CheckDB[exp, fil] saves (with Put) or retrieves (with Get) exp to/from a file fil.

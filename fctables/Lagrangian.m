@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`Lagrangian`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`Lagrangian`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Lagrangian::"usage"= "Lagrangian[\"oqu\"] gives the unpolarized OPE quark
 operator.\n

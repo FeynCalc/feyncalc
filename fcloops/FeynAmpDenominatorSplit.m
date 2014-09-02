@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`FeynAmpDenominatorSplit`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 FeynAmpDenominatorSplit::"usage" = 
 "FeynAmpDenominatorSplit[expr] splits all FeynAmpDenominator[a,b, ...]

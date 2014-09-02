@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Anti5`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Anti5`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Anti5::"usage" =
 "Anti5[exp] anticommutes all gamma5 one time to the right. \

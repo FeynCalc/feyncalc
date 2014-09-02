@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Mandelstam`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Mandelstam`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Mandelstam::"usage" =
 "Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr

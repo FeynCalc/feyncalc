@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`B11`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`B11`",{"HighEnergyPhysics`FeynCalc`"}];
 
 B11::"usage"=
 "B11[pp,m1^2,m2^2] is the Passarino-Veltman B11-function, i.e.

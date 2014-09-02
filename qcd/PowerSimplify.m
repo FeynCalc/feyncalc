@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`PowerSimplify`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`PowerSimplify`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PowerSimplify::"usage"=
 "PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PositiveNumber`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PositiveNumber`",{"HighEnergyPhysics`FeynCalc`"}];
 
 
 PositiveNumber::"usage" =  "PositiveNumber is a data type.

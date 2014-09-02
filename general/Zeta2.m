@@ -4,8 +4,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Zeta2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Zeta2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Zeta2::"usage"=
 "Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in 

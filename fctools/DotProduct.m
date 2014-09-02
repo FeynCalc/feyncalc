@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`DotProduct`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`DotProduct`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DotProduct::"usage"=
 "DotProduct[x, y] denotes the three-dimensional dot-product.

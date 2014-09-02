@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`OPE2TID`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 OPE2TID::"usage"= "OPE2TID[exp, k1, k2, p] does a tensor integral decomposition of exp. 
 The setting of the option

@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`EpsDiscard`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`EpsDiscard`",{"HighEnergyPhysics`FeynCalc`"}];
 
 
 EpsDiscard::"usage"=

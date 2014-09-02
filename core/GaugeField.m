@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GaugeField`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GaugeField`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GaugeField::"usage" =
 "GaugeField is a name of a gauge field.";

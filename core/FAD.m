@@ -1,7 +1,6 @@
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FAD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FAD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FAD::"usage"= "FAD[q, q-p, ...] denotes 1/(q^2 (q-p)^2 ...).
 FAD[{q1,m}, {q1-p,m}, q2, ...] is

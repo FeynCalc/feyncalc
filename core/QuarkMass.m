@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`QuarkMass`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`QuarkMass`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QuarkMass::"usage"= "QuarkMass is an option of Amplitude.";
 

@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`Integrate2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`Integrate2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Integrate2::"usage"=
 "Integrate2 is like Integrate, but, schematically,

@@ -2,8 +2,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUNF`",
-               "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUNF`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUNF::"usage"=
 "SUNF[a, b, c] are the structure constants of SU(N).

@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FeynCalcForm`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FeynCalcForm`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FCF::uasge=
 "FCF is a short form for FeynCalcForm.";

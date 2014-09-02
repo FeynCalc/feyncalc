@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`ILimit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`ILimit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ILimit::"usage" = "ILimit[exp, a -> b] checks functions specified by the option \
 FunctionLimits and takes the limit a->b of these functions only if it is finite.  \

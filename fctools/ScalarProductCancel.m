@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`ScalarProductCancel`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`ScalarProductCancel`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ScalarProductCancel::"usage"= 
 "ScalarProductCancel[exp, q1, q2, ...] cancels scalar products \

@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`TrickIntegrate`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 TrickIntegrate::"usage"= "
 TrickIntegrate[(1-t)^(a Epsilon -1) g[t], t] does an integration

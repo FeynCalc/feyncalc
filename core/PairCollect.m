@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PairCollect`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PairCollect`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PairCollect::"usage" =
 "PairCollect is an option for DiracTrace specifying if

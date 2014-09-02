@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`GA5`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`GA5`",{"HighEnergyPhysics`FeynCalc`"}];
 
 GA5::"usage"=
 "GA5 is equivalent to DiracGamma[5] and denotes gamma5.";

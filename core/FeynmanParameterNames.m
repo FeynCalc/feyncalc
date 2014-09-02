@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FeynmanParameterNames`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FeynmanParameterNames`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FeynmanParameterNames::"usage"=
 "FeynmanParameterNames is an option for FeynmanParametrize and \

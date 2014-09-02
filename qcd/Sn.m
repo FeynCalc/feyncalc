@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Sn`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Sn`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Sn::"usage"= "Sn is Pi^(n/2)/(2 Pi)^n."
 

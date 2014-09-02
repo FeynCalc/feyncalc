@@ -14,8 +14,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Series2`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Series2`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Series2::"usage"=
 "Series2 performs a series expansion around 0.

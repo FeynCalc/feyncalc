@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Upper`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Upper`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Upper::"usage"= "Upper may be used inside LorentzIndex to indicate an
 contravariant LorentzIndex.";

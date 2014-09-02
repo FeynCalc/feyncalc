@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SmallEpsilon`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SmallEpsilon`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SmallEpsilon::"usage" = "SmallEpsilon denotes some small
 positive number.";

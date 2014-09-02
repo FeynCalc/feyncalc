@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fcdevel`DoPolarizationSums`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fcdevel`DoPolarizationSums`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DoPolarizationSums::"usage"= "***EXPERIMENTAL***\n
 DoPolarizationSums[exp] sums over 4 vector polarizations

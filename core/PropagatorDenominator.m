@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`PropagatorDenominator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`PropagatorDenominator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 PropagatorDenominator::"usage" =
 "PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a

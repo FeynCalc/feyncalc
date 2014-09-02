@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`SMVertex`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`SMVertex`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SMVertex::"usage" = 
 "SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives

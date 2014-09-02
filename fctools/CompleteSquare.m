@@ -9,8 +9,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctools`CompleteSquare`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctools`CompleteSquare`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CompleteSquare::"usage"=
 "Completes the square of a second order polynomial in the momentum x. \

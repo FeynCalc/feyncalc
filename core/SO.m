@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SO`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SO`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SO::"usage"=
 "SO[q] is the four-dimensional scalar product of OPEDelta with q.

@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`Apart1`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`Apart1`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Apart1::"usage"=
 "Apart1[expr, x] is equivalent to Apart[expr, x],

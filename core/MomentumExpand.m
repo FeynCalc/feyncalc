@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`MomentumExpand`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`MomentumExpand`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MomentumExpand::"usage" =
 "MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into

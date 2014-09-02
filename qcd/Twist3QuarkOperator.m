@@ -12,8 +12,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`qcd`Twist3QuarkOperator`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`qcd`Twist3QuarkOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Twist3QuarkOperator::"usage" = 
 "Twist3QuarkOperator[p] or

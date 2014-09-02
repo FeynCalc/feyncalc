@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`HypExplicit`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`HypExplicit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypExplicit::"usage"=
 "HypExplicit[exp, nu] expresses Hypergeometric functions in exp 

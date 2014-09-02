@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DeltaFunctionDoublePrime`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DeltaFunctionDoublePrime`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DeltaFunctionDoublePrime::"usage"=
 "DeltaFunctionDoublePrime denotes the second derivative of the \

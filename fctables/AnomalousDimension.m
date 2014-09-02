@@ -8,8 +8,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`fctables`AnomalousDimension`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`fctables`AnomalousDimension`",{"HighEnergyPhysics`FeynCalc`"}];
 
 AnomalousDimension::"usage"= 
 "AnomalousDimension[\"gnsqg0\"] yields the 

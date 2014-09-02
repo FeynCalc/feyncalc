@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SUND`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SUND`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SUND::"usage"=
 "SUND[a, b, c] is the symmetric SU(N) d_{a,b,c}.";

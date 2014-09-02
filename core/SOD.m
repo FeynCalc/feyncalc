@@ -3,8 +3,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`SOD`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`SOD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SOD::"usage"= "SOD[q] stands for the D-dimensional scalar product of
 OPEDelta with q. SOD[q] is transformed into Pair[Momentum[OPEDelta,D],

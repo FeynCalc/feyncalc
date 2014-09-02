@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`FCNIntegrate`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`FCNIntegrate`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FCNIntegrate::"usage"=
 "FCNIntegrate is an option of certain Feynman integral related functions \

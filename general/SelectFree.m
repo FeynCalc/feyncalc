@@ -10,8 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`general`SelectFree`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`general`SelectFree`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SelectFree::"usage"=
 "SelectFree[expr, a, b, ...] is equivalent to

@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`TIDL`",
-             "HighEnergyPhysics`FeynCalc`"];
+             {"HighEnergyPhysics`FeynCalc`"}];
 
 TIDL::"usage" = "TIDL[{q,mu}, {p}];
 TIDL[{{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] or

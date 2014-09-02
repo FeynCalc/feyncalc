@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`DeltaFunctionPrime`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`DeltaFunctionPrime`",{"HighEnergyPhysics`FeynCalc`"}];
 
 DeltaFunctionPrime::"usage"=
 "DeltaFunctionPrime denotes the derivative of the Dirac delta-function.";

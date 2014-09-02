@@ -5,8 +5,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-BeginPackage["HighEnergyPhysics`FeynCalc`Spinor`",
-             "HighEnergyPhysics`FeynCalc`"];
+BeginPackage["HighEnergyPhysics`FeynCalc`Spinor`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Spinor::"usage" = "Spinor[p, m] represents a Dirac spinor.
 Which of the spinors u, v,u_bar or v_bar
