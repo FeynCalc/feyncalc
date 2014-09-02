@@ -329,8 +329,8 @@ FourPoint[q_,
           fcpa[fcli[l2_, d___], fcmom[qq2_, d___]]*
           fcpa[fcli[l3_, d___], fcmom[qq3_, d___]]*
           fcpa[fcli[l4_, d___], fcmom[qq4_, d___]],
-        opts___] /; (! FreeQ[qq1, q] && ! FreeQ[qq2, q] && !
-              FreeQ[qq3, q] && ! FreeQ[qq4, q]) && (Head[qq1] == Plus ||
+        opts___] /; (!FreeQ[qq1, q] && ! FreeQ[qq2, q] && 
+        !FreeQ[qq3, q] && ! FreeQ[qq4, q]) && (Head[qq1] == Plus ||
             Head[qq2] == Plus || Head[qq3] == Plus || Head[qq4] == Plus) :=
     FourPoint[q,
       Expand[fcfad[fcprd[fcmom[q1, d], m1], fcprd[fcmom[q2, d], m2],
@@ -466,17 +466,15 @@ gammasort[xx__, opts___Rule | opts___List] :=
     tl[xx] //. sortrules[opts] /. tl -> fcdot /. red[x_] -> x;
 GammaSort[fcdot[exp_, ex__],
       opts___] := (exp1 =
-        If[(Gamma5AntiCommute /. Flatten[{opts}] /. Options[GammaSort]) && !
-              FreeQ[tl[exp, ex], fcdiga[fcli[5, ___], ___]],
+        If[(Gamma5AntiCommute /. Flatten[{opts}] /. Options[GammaSort]) && 
+        	!FreeQ[tl[exp, ex], fcdiga[fcli[5, ___], ___]],
           pos = Position[
-              tl[exp, ex], _?(!
-                      FreeQ[#, fcdiga[fcli[5, ___], __]] &), {1}]; (-1)^pos*
+              tl[exp, ex], _?(!FreeQ[#, fcdiga[fcli[5, ___], __]] &), {1}]; (-1)^pos*
             Delete[fcdot @@ Join[{tl[exp, ex][[pos]]}, {exp}], pos + 1],
           tl[exp, ex]];
       exp2 = exp1 /. {tl[aa___, a_, b__, c_,
-                  cc___] /; (!
-                      FreeQ[a, fcdiga[fcli[5, ___], __] | gsort] && !
-                      FreeQ[c, fcdiga[fcli[5, ___], __] | gsort] &&
+                  cc___] /; (!FreeQ[a, fcdiga[fcli[5, ___], __] | gsort] && 
+                  !FreeQ[c, fcdiga[fcli[5, ___], __] | gsort] &&
                     FreeQ[{b}, fcdiga[fcli[5, ___], __] | gsort]) ->
               tl[aa, a, gsort[b], c, cc],
             tl[aa___, c_,

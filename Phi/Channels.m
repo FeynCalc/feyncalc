@@ -1089,8 +1089,7 @@ tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, part
                 Max[Cases[{fac, facc}, fcli[DerivativeExternDummy][_],
                         Infinity, Heads -> True] /.
                       fcli[DerivativeExternDummy][na_] -> na] + 1])/;
-		      (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fac, facc}, DerivativeExternDummy] &&
+		      (! FreeQ[{fac, facc}, a] && !FreeQ[{fac, facc}, DerivativeExternDummy] &&
               FreeQ[{fac, facc}, 
 		(NM | NM1 | NM2)[___?(FreeQ[{##},lorentzmult]&)]]),
 	      (nm1 : NM | NM1 | NM2)[fac___,
@@ -1102,8 +1101,7 @@ tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, part
                 Max[Cases[{fac, facc}, fcli[DerivativeExternDummy][_],
                         Infinity, Heads -> True] /.
                       fcli[DerivativeExternDummy][na_] -> na] + 1])/;
-		      (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fac, facc}, DerivativeExternDummy] &&
+		      (! FreeQ[{fac, facc}, a] && !FreeQ[{fac, facc}, DerivativeExternDummy] &&
               FreeQ[{fac, facc}, 
 		(NM | NM1 | NM2)[___?(FreeQ[{##},lorentzmult]&)]])};
 (*Lorentz indices*)
@@ -1173,8 +1171,8 @@ tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, part
             a -> fcsuni[IsoInternDummy][
                 Max[Cases[{fi, la}, fcsuni[IsoInternDummy][_], Infinity,
                         Heads -> True] /.
-                      fcsuni[IsoInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fi, la}, IsoInternDummy]), (nm1 :
+                      fcsuni[IsoInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && 
+                      !FreeQ[{fi, la}, IsoInternDummy]), (nm1 :
                 NM | NM1 | NM2)[fac___,
             gg_[fi___, a_HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex, la___],
              facc___] :> (nm1[fac, gg[fi, a, la],
@@ -1182,8 +1180,8 @@ tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, part
             a -> fcsuni[IsoInternDummy][
                 Max[Cases[{fi, la}, fcsuni[IsoInternDummy][_], Infinity,
                         Heads -> True] /.
-                      fcsuni[IsoInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fi, la}, IsoInternDummy])};
+                      fcsuni[IsoInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && 
+                      !FreeQ[{fi, la}, IsoInternDummy])};
     
 (*Lorentz indices*)
   dummyruleslorint1 = {(nm1 : NM | NM1 | NM2)[fac___,
@@ -1209,8 +1207,7 @@ tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, part
                 Max[Cases[{fi, la}, fcli[LorentzInternDummy][_], Infinity,
                         Heads -> True] /.
                       fcli[LorentzInternDummy][na_] -> na] + 1])/;
-		      (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fi, la}, LorentzInternDummy]), (nm1 :
+		      (! FreeQ[{fac, facc}, a] && !FreeQ[{fi, la}, LorentzInternDummy]), (nm1 :
                 NM | NM1 | NM2)[fac___,
             gg_[fi___, a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
                la___],
@@ -1219,8 +1216,8 @@ tracerule3 = {fcsundel[fcsuni[suninx[_]], _]->1, fcpa[fcli[linx[_]], _]->1, part
             a -> fcli[LorentzInternDummy][
                 Max[Cases[{fi, la}, fcli[LorentzInternDummy][_], Infinity,
                         Heads -> True] /.
-                      fcli[LorentzInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && !
-                FreeQ[{fi, la}, LorentzInternDummy])};
+                      fcli[LorentzInternDummy][na_] -> na] + 1])/; (! FreeQ[{fac, facc}, a] && 
+                      !FreeQ[{fi, la}, LorentzInternDummy])};
 
 
 
@@ -1393,8 +1390,8 @@ and NM products are present"]w] /.
 	    VerbosePrint[2, "Using FCleanup->True"];
             VerbosePrint[2,
               "Renaming product functions and protecting constants"];
-            w2 /. {fcsuni[a_] :> protectisoconstant[a]/; (UScalarQ[a] || !
-                                  FreeQ[$ConstantIsoIndices, a]),
+            w2 /. {fcsuni[a_] :> protectisoconstant[a]/; (UScalarQ[a] || 
+            	!FreeQ[$ConstantIsoIndices, a]),
                         fcli[a_] :> protectliconstant[a] /; UScalarQ[a]} /.
                     dummyrulesf3 /. dummyrulesf2 /.
                 dummyrulesf1 /. {NM -> NM1,
@@ -1505,16 +1502,14 @@ FieldProjection[
       IsoVector[
         fcqf[ders___, Particle[p : Alternatives @@ $Particles, pp___],
           la___], oo___],
-      opts___] := (Select[$IsoSpinProjectionRules, (!
-                  FreeQ[#, (Channel /. Flatten[{opts}] /.
+      opts___] := (Select[$IsoSpinProjectionRules, (!FreeQ[#, (Channel /. Flatten[{opts}] /.
                           Options[FieldProjection]) -> _] &)])[[1, 2]] /.
       Iso[par_, {i_}] -> fcqf[ders, Particle[par, pp], fcsuni[i], la];
 FieldProjection[
       IsoVector[
           fcqf[ders___, Particle[p : Alternatives @@ $Particles, pp___],
             la___], oo___][x_],
-      opts___] := (Select[$IsoSpinProjectionRules, (!
-                  FreeQ[#, (Channel /. Flatten[{opts}] /.
+      opts___] := (Select[$IsoSpinProjectionRules, (!FreeQ[#, (Channel /. Flatten[{opts}] /.
                           Options[FieldProjection]) -> _] &)])[[1, 2]] /.
       Iso[par_, {i_}] -> fcqf[ders, Particle[par, pp], fcsuni[i], la][x];
 

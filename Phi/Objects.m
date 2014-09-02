@@ -1119,8 +1119,8 @@ IsoSymmetricCross[IsoVector[Projection[i:(Projection[uindxx[_Integer]]|Projectio
 (* Products of all vectors is zero in SU(2) : *)
 
 IsoSymmetricCross[a_,
-        b_] /; (FreeQ[jj[a, b, Options[IsoVector]], fcsunn -> 3]) && (!
-            FreeQ[{a, b}, IsoVector | Iso]) && FreeQ[{a, b}, allpatterns] :=
+        b_] /; (FreeQ[jj[a, b, Options[IsoVector]], fcsunn -> 3]) && 
+        (!FreeQ[{a, b}, IsoVector | Iso]) && FreeQ[{a, b}, allpatterns] :=
     0;
 
 
