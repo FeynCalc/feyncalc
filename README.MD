@@ -1,4 +1,3 @@
-------------------------------------------------------------------------------------
 FeynCalc is a Mathematica package for algebraic calculations in
 elementary particle physics.
 
@@ -22,17 +21,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-------------------------------------------------------------------------------------
 
-
-
-
-************************************************************************************
-RELEASE NOTES FOR FEYNCALC 5.1.
-************************************************************************************
-
-
-------------------------------------------------------------------------------------
 INSTALLATION
 ------------------------------------------------------------------------------------
 
@@ -48,7 +37,6 @@ Choose 'Rebuild Help Index' from the 'Help' menu.
 Type <<HighEnergyPhysics`FeynCalc`, open the help browser and try out
 some of the examples.
 
-------------------------------------------------------------------------------------
 CHANGELOGS
 ------------------------------------------------------------------------------------
 
@@ -79,7 +67,7 @@ Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
 Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization
                    by Frederik Orellana
                    inclusion of help system, PHI and FeynArts
-------------------------------------------------------------------------------------
+
 CHANGELOG version 4.2.1 -> 4.9.beta
 ------------------------------------------------------------------------------------
 - improved DiracOrder
@@ -89,7 +77,7 @@ CHANGELOG version 4.2.1 -> 4.9.beta
 - fixed things for Mathematica 5.0 and FeynArts and patching and all that 
 - ...
 
-------------------------------------------------------------------------------------
+
 CHANGELOG version 4.1.1 -> 4.2.0
 ------------------------------------------------------------------------------------
 
@@ -304,7 +292,6 @@ PHI:
       Bugfix: Typo (QuantumField` instead of QuantumField).
 
 
-------------------------------------------------------------------------------------
 CHANGELOG version 4.1.0.2 -> 4.1.1
 ------------------------------------------------------------------------------------
 
