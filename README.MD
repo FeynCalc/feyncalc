@@ -52,10 +52,33 @@ some of the examples.
 CHANGELOGS
 ------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------
-CHANGELOG version 4.9.beta -> 5.1
-------------------------------------------------------------------------------------
+Version 8.2.0: 2012, added FeynArts 3.7 - unpatched. On first load it will be patched automatically.
 
+Version 8.1.0.1: 2012, updated PHI to work with FeynArts-3.7, which can now be kept in a subdir
+
+Version 8.1.0: 2012,  fixed DiracTrick, improved SUNSimplify, DiracEquation, fixed Hyperlinks in FeynCalc8.nb, fixed Tarcer .mx loading
+
+Version 8.0.3: 2011,  added ClearAttributes[FeynAmpDenominator,Orderless], added Momentum in DiracSimplify
+
+Version 8.0.2: 2011,  fixed more problems, working on documentation
+
+Version 8.0.1: 2011,  fixed a problem in DiracTrace
+
+Version 8.0.0beta3: 2011,  fixed a bug in OneLoop, changed Uncontract, TID
+
+Version 8.0.0: 2011,  fixed some bugs reported by ibedir
+
+Version 8.0.0: 2010,  minimal updates for Mathematica 8.0, added a patched o FeynArts 3.4
+
+Version 7.0.0: 2009/2010, bug fixes, updates for mma 7.0 and new FeynArts
+
+Version 6.0.0: 2007, bug fixes, updates for mma 6.0 and new FeynArts
+
+Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
+
+Version 5.0.0b: 2003, bug fixes, adjustments for M5.0 more reorganization
+                   by Frederik Orellana
+                   inclusion of help system, PHI and FeynArts
 ------------------------------------------------------------------------------------
 CHANGELOG version 4.2.1 -> 4.9.beta
 ------------------------------------------------------------------------------------
@@ -65,8 +88,6 @@ CHANGELOG version 4.2.1 -> 4.9.beta
 - simplified installation mechanism
 - fixed things for Mathematica 5.0 and FeynArts and patching and all that 
 - ...
-
-
 
 ------------------------------------------------------------------------------------
 CHANGELOG version 4.1.1 -> 4.2.0
@@ -368,3 +389,14 @@ Added check for integers in SU(N) related functions.
 Small change in TARCER.nb to avoid name conflict with FeynCalc and FeynArts.
 
 Various very small spelling fixes etc.
+
+------------------------------------------------------------------------------------
+
+Version 4.0 : 2000, reorganized for open-source and extensibility
+
+Version 3.0.1.1 includes two bug-fixes for OneLoop
+
+Version 3.0 includes typesetting features of Mathematica 3.0
+
+Version 1.0 written 1991 by Rolf Mertig
+
