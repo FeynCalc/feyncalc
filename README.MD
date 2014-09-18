@@ -41,6 +41,9 @@ CHANGELOGS
 ------------------------------------------------------------------------------------
 
 Version 8.2.0: 2012, added FeynArts 3.7 - unpatched. On first load it will be patched automatically.
+                    When running the first time set $LoadPhi=True before executing
+                    Needs["HighEnergyPhysics`FeynCalc`"], then it will be patched automatically.
+                    Updated PHI to work with FeynArts-3.7, which can now be kept in a subdir.
 
 Version 8.1.0.1: 2012, updated PHI to work with FeynArts-3.7, which can now be kept in a subdir
 
@@ -61,6 +64,12 @@ Version 8.0.0: 2010,  minimal updates for Mathematica 8.0, added a patched o Fey
 Version 7.0.0: 2009/2010, bug fixes, updates for mma 7.0 and new FeynArts
 
 Version 6.0.0: 2007, bug fixes, updates for mma 6.0 and new FeynArts
+               For Mathematica 6 only.
+               Rolf patched FeynCalc to be compatible with Mathematica 6 (not Phi, not FeynArts)
+               and zipped it together, including fully evaluated documentation notebooks in
+               HighEnergyPhysics/Documentation/English/.
+               Notice that this version does not load Phi nor FeynArts by default.
+               Notice also that the changes are not entered into CVS yet, due to lack of time.
 
 Version 5.1.0: 2006, bug fixes, updates for mma 5.2 and new FeynArts
 
