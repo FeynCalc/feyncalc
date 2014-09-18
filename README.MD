@@ -50,6 +50,15 @@ the public FeynCalc repository
 
 * Please note that the development version may contain bugs and incomplete or untested features.
 
+# Bugs
+
+To report bugs please use our [issue tracker](https://github.com/FeynCalc/feyncalc/issues) on GitHub.
+
+# Mailing list
+
+For questions and discussions concerning FeynCalc you can use our [mailing list](http://www.feyncalc.org/forum/).
+
+
 # Changelog
 
 ### Version 8.2.0 (2012)
