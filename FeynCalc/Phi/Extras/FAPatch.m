@@ -5,7 +5,7 @@
 (* Author:  Frederik Orellana, fjob@cabocomm.dk
 
    Date:  1/9-2001
-   
+
    Context: HighEnergyPhysics`Phi`FAPatch`
 
    Package version:  1.2
@@ -19,12 +19,12 @@ BeginPackage["HighEnergyPhysics`Phi`FAPatch`", {"HighEnergyPhysics`FeynCalc`"}];
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 
-FAPatch::"usage" = 
+FAPatch::"usage" =
     "If an unpatched copy of FeynArts is present in $FeynArtsDirectory, \
 evaluating FAPatch causes the files making up FeynArts to be modified in \
 order for FeynArts to be compatible with FeynCalc.";
 
-FilePatch::"usage" = 
+FilePatch::"usage" =
     "FilePatch[f, rp] replaces the patterns given by rp in the file f.  \
 rp should be a list of the form {string -> string, ..}.";
 
@@ -38,19 +38,24 @@ Begin["`Private`"];
 fullFCContext[s_String] := Block[{$ContextPath},
          ToString[HighEnergyPhysics`FeynCalc`MakeContext[s]]];
 
-fa2fc = (# -> (fullFCContext[#]))&/@ {
-"Loop", "PolarizationVector", "FeynAmp", "PropagatorDenominator", "GaugeXi", "NonCommutative", "LeviCivita"};
+fa2fc = Join[(# -> (fullFCContext[#]))&/@ {
+"Loop", "GaugeXi", "NonCommutative", "LeviCivita"},
+{"PolarizationVector"-> "HighEnergyPhysics`FeynCalc`CoreObjects`PolarizationVector",
+"FeynAmp"-> "HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmp",
+"PropagatorDenominator" -> "HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator",
+"GaugeXi" -> "HighEnergyPhysics`FeynCalc`CoreObjects`GaugeXi" }
+];
 
 (* Defaults *)
 
 (*The list of files to be modified*)
 Options[FAPatch] = {
-  File -> {"FeynArts.m", "Setup.m", 
-      "FeynArts" <> $PathnameSeparator <> "Analytic.m", 
-      "FeynArts" <> $PathnameSeparator <> "Graphics.m", 
-      "FeynArts" <> $PathnameSeparator <> "Initialize.m", 
-      "FeynArts" <> $PathnameSeparator <> "Insert.m", 
-      "FeynArts" <> $PathnameSeparator <> "Topology.m", 
+  File -> {"FeynArts.m", "Setup.m",
+      "FeynArts" <> $PathnameSeparator <> "Analytic.m",
+      "FeynArts" <> $PathnameSeparator <> "Graphics.m",
+      "FeynArts" <> $PathnameSeparator <> "Initialize.m",
+      "FeynArts" <> $PathnameSeparator <> "Insert.m",
+      "FeynArts" <> $PathnameSeparator <> "Topology.m",
       "FeynArts" <> $PathnameSeparator <> "Utilities.m",
 
       "Models" <> $PathnameSeparator <> "SMQCD.mod",
@@ -73,8 +78,8 @@ Options[FAPatch] = {
   Replace -> Join[
        {
       "InferFormat" -> "tmpInfer",
-      "SetLoop" -> "tmpsetloop", 
-      "CreateFeynAmp" -> "tmpcreatefeynamp", 
+      "SetLoop" -> "tmpsetloop",
+      "CreateFeynAmp" -> "tmpcreatefeynamp",
       "Loops"->"tmploops",
       "$Verbose = 2" -> "$Verbose := HighEnergyPhysics`FeynCalc`$VeryVerbose" ,
       "Format" -> "format1",
@@ -83,17 +88,17 @@ Options[FAPatch] = {
       "Clip" -> "FAClip"
        }, fa2fc,
       {
-      "Global`DiracSpinor" -> fullFCContext["DiracSpinor"],
-      "FeynArts`DiracSpinor" -> fullFCContext["DiracSpinor"],
+      "Global`DiracSpinor" -> "HighEnergyPhysics`FeynCalc`CoreObjects`DiracSpinor",
+      "FeynArts`DiracSpinor" -> "HighEnergyPhysics`FeynCalc`CoreObjects`DiracSpinor",
       "Global`DiracTrace" -> fullFCContext["DiracTrace"],
 
       "format1[Global`a, Global`c]" -> "Format[Global`a, Global`c]",
       "tmpInfer" -> "InferFormat",
-      "tmpsetloop" -> "SetLoop", 
+      "tmpsetloop" -> "SetLoop",
       "tmploops"->"Loops",
 
-      "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr", 
-      "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"", 
+      "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr",
+      "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"",
       "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD",
       "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpList" ->
         "HighEnergyPhysics`FeynCalc`FeynAmpList`FeynAmpList",
@@ -108,15 +113,15 @@ Options[FAPatch] = {
 
 (*Error message*)
 $ok = True;
-checkok := 
-If[$ok =!= True, 
+checkok :=
+If[$ok =!= True,
   If[Global`$FeynCalcStartupMessages =!= False ,
     If[$Notebooks===True,
        CellPrint[Cell[TextData[{
-	 "WARNING! Your FeynArts installation is not complete or the version you have cannot be used with this version of FeynCalc.\nFeynArts can be downloaded at ", ButtonBox["www.feynarts.de", ButtonData:>{
-	 URL[ "http://www.feynarts.de"], None},
-	 ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de"]}
-	],"Text"]],
+   "WARNING! Your FeynArts installation is not complete or the version you have cannot be used with this version of FeynCalc.\nFeynArts can be downloaded at ", ButtonBox["www.feynarts.de", ButtonData:>{
+   URL[ "http://www.feynarts.de"], None},
+   ButtonStyle->"Hyperlink", ButtonNote->"http://www.feynarts.de"]}
+  ],"Text"]],
       WriteString["stdout", "Your FeynArts installation is not complete or the version you have cannot be used with this version of FeynCalc.\nFeynArts can be downloaded at http://www.feynarts.de/.\n"];
     ];
   ];
@@ -126,32 +131,32 @@ Return[False]];
 (* ------------------------------------------------------------------------------ *)
 (*Generic patching function*)
 
-patchPrint[x__]:=WriteString["stdout", StringJoin@@{x,"\n"}];	
+patchPrint[x__]:=WriteString["stdout", StringJoin@@{x,"\n"}];
 
-FilePatch[filename_, replacements_List] := 
+FilePatch[filename_, replacements_List] :=
 (
 (*Read and patch the file*)
 fname = ToFileName[{$FeynArtsDirectory}, filename];
-patchPrint[fname]; str = ""; linelist = {}; foundrev = False; 
+patchPrint[fname]; str = ""; linelist = {}; foundrev = False;
       strm = OpenRead[fname];
 While[ToString[str] != "EndOfFile", str = Read[strm, String]; str1 = str;
         Do[
           If[StringMatchQ[ToString[str1], "*" <> replacements[[i, 1]] <> "*"],
-             foundrev = True; repl = str1; 
+             foundrev = True; repl = str1;
             str1 = StringReplace[
                      StringReplace[
-                       str1, {replacements[[i, 1]] -> 
+                       str1, {replacements[[i, 1]] ->
                        (* :> Not valid in mma 3.0, changed 11/10-2002 after
                          bug report by Jeff Forshaw *)
-                       replacements[[i, 2]]}, 
+                       replacements[[i, 2]]},
                     MetaCharacters -> Automatic], "$1" -> repl]],
-		  {i, 1, Length[replacements]}]; 
-        If[ToString[str] != "EndOfFile", 
-          If[str =!= str1, patchPrint["Old: ", str, ", \nNew: ", str1]]; 
+      {i, 1, Length[replacements]}];
+        If[ToString[str] != "EndOfFile",
+          If[str =!= str1, patchPrint["Old: ", str, ", \nNew: ", str1]];
           linelist = Append[linelist, str1]]]; Close[strm];
 (*Write the file*)
 strm = OpenWrite[fname, PageWidth -> Infinity];
-Do[WriteString[strm, linelist[[i]], "\n"], {i, 1, Length[linelist]}]; 
+Do[WriteString[strm, linelist[[i]], "\n"], {i, 1, Length[linelist]}];
       Close[strm];
 );
 
@@ -169,43 +174,43 @@ If[!checkok, Return[]];
 
 (*Check version number; must be >= 3*)
 
-$ok = False; str = ""; linelist = {}; strm = 
+$ok = False; str = ""; linelist = {}; strm =
   OpenRead[ToFileName[{$FeynArtsDirectory}, "FeynArts.m"]];
-While[ToString[str] != "EndOfFile", str = Read[strm, String]; 
-  If[StringMatchQ[ToString[str], "*FeynArts*Version*"], 
-    Do[If[SyntaxQ[StringTake[str, -i]], 
-        If[NumberQ[num1 = ToExpression[StringTake[str, -i]]], 
-          num = num1]], {i, 1, 7}]; 
+While[ToString[str] != "EndOfFile", str = Read[strm, String];
+  If[StringMatchQ[ToString[str], "*FeynArts*Version*"],
+    Do[If[SyntaxQ[StringTake[str, -i]],
+        If[NumberQ[num1 = ToExpression[StringTake[str, -i]]],
+          num = num1]], {i, 1, 7}];
     If[num >= 3, $ok = True]]]; Close[strm];
 If[!checkok, Return[]];
 
 (*Check that patch has not already been applied*)
 
-str = ""; If[FileNames["FeynArts.m", $FeynArtsDirectory] =!= {}, 
+str = ""; If[FileNames["FeynArts.m", $FeynArtsDirectory] =!= {},
   strm = OpenRead[$FeynArtsDirectory <> $PathnameSeparator <> "FeynArts.m"];
-While[ToString[str] != "EndOfFile", str = Read[strm, String]; 
-    If[StringMatchQ[ToString[str], 
-        "*Frederik Orellana*", 
-        IgnoreCase -> True], 
+While[ToString[str] != "EndOfFile", str = Read[strm, String];
+    If[StringMatchQ[ToString[str],
+        "*Frederik Orellana*",
+        IgnoreCase -> True],
 (* this is not really necessary to see, right?
-      Print["This copy of FeynArts has already been patched!"]; 
+      Print["This copy of FeynArts has already been patched!"];
 *)
-Close[strm]; Return[]]]; 
+Close[strm]; Return[]]];
   Close[strm], patchPrint["Cannot find FeynArts.m!"]; Close[strm]; Return[]];
 
 
 (*Launch confirm dialog*)
 
-If[$ok === True, 
+If[$ok === True,
     If[StringMatchQ[
         test=ToString[
           Input["An installation of FeynArts has been found in " <>
     StringReplace[ToString[$FeynArtsDirectory], {"\\" -> "\\\\", "\n" -> ""}] <>
     ". This program will now patch FeynArts to allow interoperation with FeynCalc. Continue (yes/no/abort)?"]],
-        "yes", IgnoreCase -> True], patchPrint["OK, starting.."], 
-      patchPrint["OK, no files have been modified."]; 
-      If[StringMatchQ[test,"abort", IgnoreCase -> True],Abort[],Return[]]], 
-    patchPrint["Your FeynArts installation is not complete or the version you have 
+        "yes", IgnoreCase -> True], patchPrint["OK, starting.."],
+      patchPrint["OK, no files have been modified."];
+      If[StringMatchQ[test,"abort", IgnoreCase -> True],Abort[],Return[]]],
+    patchPrint["Your FeynArts installation is not complete or the version you have
 cannot be handled by this program"]; Return[]];
 
 
@@ -225,7 +230,7 @@ SetOptions[MetricTensor, FeynCalcInternal -> False];\n
 SetOptions[DiracSlash, FeynCalcInternal -> False];\n
 *)
 (*Important. OneLoop is broken if FeynAmpDenominator is orderless*)
-ClearAttributes[FeynAmpDenominator, Orderless];\n"]; 
+ClearAttributes[FeynAmpDenominator, Orderless];\n"];
 Close[strm];
 
 
@@ -233,24 +238,24 @@ Close[strm];
 (* Add fermion heads + small fixes in Analytic.m*)
 
 FilePatch["FeynArts" <> $PathnameSeparator <> "Analytic.m",
-{"F|U" -> "F | U", "F| U" -> "F | U", "F |U" -> "F | U", 
-"F | U" -> "F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads", "F]" -> 
-"F|HighEnergyPhysics`Phi`Objects`$FermionHeads]", 
-"Global`DiracSpinor[*mom_*,*mass_*,*___*]*:=*FeynArts`Spinor[*mom*,*mass*]*;" -> 
-"", 
-"SequenceForm[StringTake[ToString[type], 3]" -> 
+{"F|U" -> "F | U", "F| U" -> "F | U", "F |U" -> "F | U",
+"F | U" -> "F | U | HighEnergyPhysics`Phi`Objects`$FermionHeads", "F]" ->
+"F|HighEnergyPhysics`Phi`Objects`$FermionHeads]",
+"Global`DiracSpinor[*mom_*,*mass_*,*___*]*:=*FeynArts`Spinor[*mom*,*mass*]*;" ->
+"",
+"SequenceForm[StringTake[ToString[type], 3]" ->
  "SequenceForm[StringTake[ToString[type],Min[3,StringLength[ToString[type]]]]",
 "Cases[p, PropagatorDenominator[__]]" (*:>*) ->
 "Cases[p, HoldPattern[PropagatorDenominator[__]]]" }];
- 
- 
+
+
 (* ------------------------------------------------------------------------------ *)
 (* Allow one-vertices in Insert.m*)
 
 FilePatch["FeynArts" <> $PathnameSeparator <> "Insert.m",
-{"DeleteCases[Take[#, 2], Vertex[1, ___][_]]&/@ top," -> 
+{"DeleteCases[Take[#, 2], Vertex[1, ___][_]]&/@ top," ->
 "(DeleteCases[Take[#,2],Vertex[1][_]]&/@(top/.p:Propagator[Internal][___,Vertex[1,___][_],___]:>(p/.Vertex[1]->Vertex[vertexone])))/.vertexone -> 1,",
-"MapIndexed[ Append[#1, Field@@ #2]&, top" -> 
+"MapIndexed[ Append[#1, Field@@ #2]&, top" ->
 "MapIndexed[Append[#1,Field@@#2]&,Sort[Sort[Take[#,2]]&/@ top/. {Incoming->AAA,Outgoing->AAB}]/. {AAA->Incoming,AAB->Outgoing}"}];
 
 
@@ -267,13 +272,13 @@ FilePatch["FeynArts" <> $PathnameSeparator <> "Utilities.m",
 
 FilePatch["FeynArts" <> $PathnameSeparator <> "Graphics.m",
 {"ShortHand[ type_ ] := StringTake[ ToString[type], 3 ]" ->
-"ShortHand[ type_ ] := StringTake[ ToString[type], Min[3,StringLength[ToString[type]]]]", 
-"MmaChar[ _[c_] ] := FontForm[c, {\"Symbol\", fscale fsize}];" -> 
-"(*MmaChar[_[c_]]:=FontForm[c,{\"Symbol\",fscale fsize}];*)", 
-"StyleForm[DisplayForm[label], FontFamily -> LabelFont," -> 
+"ShortHand[ type_ ] := StringTake[ ToString[type], Min[3,StringLength[ToString[type]]]]",
+"MmaChar[ _[c_] ] := FontForm[c, {\"Symbol\", fscale fsize}];" ->
+"(*MmaChar[_[c_]]:=FontForm[c,{\"Symbol\",fscale fsize}];*)",
+"StyleForm[DisplayForm[label], FontFamily -> LabelFont," ->
  "StyleForm[If[res=True;label//.a_String:>(res=res&&SyntaxQ[a]);res, TraditionalForm[ToExpression[label]/.Null->\"\"],DisplayForm[label]], FontFamily->LabelFont,",
 "LabelFont = \"Helvetica\"" -> "LabelFont=\"Times\"",
-"End[]" -> 
+"End[]" ->
 "(*Below are the codes for arrows used by Mathematica*)
 TeXToPS[\"\\\\leftrightarrow\"]:=SymbolChar[\"\\[LeftRightArrow]\"];
 TeXToPS[\"\\\\leftarrow\"]:=SymbolChar[\"\\[LeftArrow]\"];
@@ -289,15 +294,15 @@ End[]",
 (* Make it known that the FA code has been patched, change context and
    change to formatting in TraditionalForm only *)
 
-FilePatch["FeynArts.m", {"Print[*\"last revis*\"]" -> 
+FilePatch["FeynArts.m", {"Print[*\"last revis*\"]" ->
 "$1;\nPrint[\"patched for use with FeynCalc by Frederik Orellana and Rolf Mertig\"];\n\n
 (*To avoid error messages on reload*)\n
 If[NumberQ[HighEnergyPhysics`FeynArts`$FeynArts],\n
 ClearAll[HighEnergyPhysics`FeynArts`Greek,HighEnergyPhysics`FeynArts`UCGreek],\n
-Remove[HighEnergyPhysics`FeynArts`$FeynArts]];", 
-"BeginPackage[\"FeynArts`\"]" -> 
+Remove[HighEnergyPhysics`FeynArts`$FeynArts]];",
+"BeginPackage[\"FeynArts`\"]" ->
 "BeginPackage[\"HighEnergyPhysics`FeynArts`\"];\n\nSetAttributes[SetForm, HoldAll];\nSetForm[Global`a_, Global`b_, Global`c_:TraditionalForm] := (Format[Global`a, Global`c] := Global`b;);\nformat1 /: SetDelayed[format1[Global`a_], Global`b_] := SetForm[Global`a, Global`b];\nformat1 /: Set[format1[Global`a_], Global`b_] := SetForm[Global`a, Global`b];\n\n",
-"LoadPackage*:=" -> 
+"LoadPackage*:=" ->
 "If[ValueQ[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory], $FeynArtsDir=HighEnergyPhysics`FeynCalc`$FeynArtsDirectory<>$PathnameSeparator,\n
 Remove[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]];\n\n$1",
 "F | S | V | U | SV" -> "F | S | V | U | SV | HighEnergyPhysics`Phi`Objects`$ParticleHeads"}];
