@@ -32,7 +32,7 @@ B1 = MakeContext["B1"];
 BReduce = MakeContext["BReduce"];
 Factor2 = MakeContext["Factor2"];
 FreeQ2 = MakeContext["FreeQ2"];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
 PaVeReduce := PaVeReduce = MakeContext["PaVeReduce"];
 

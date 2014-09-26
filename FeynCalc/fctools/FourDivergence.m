@@ -12,48 +12,47 @@
 
 BeginPackage["HighEnergyPhysics`fctools`FourDivergence`",{"HighEnergyPhysics`FeynCalc`"}];
 
-FourDivergence::"usage" = 
-"FourDivergence[exp, FourVector[p, mu]] 
+FourDivergence::"usage" =
+"FourDivergence[exp, FourVector[p, mu]]
 calculates the partial derivative of exp w.r.t. p(mu).
-FourDivergence[exp, FourVector[p, mu], FourVector[p,nu], ...] 
+FourDivergence[exp, FourVector[p, mu], FourVector[p,nu], ...]
 gives the multiple derivative.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
- 
+
+
 Contract     = MakeContext["Contract"];
-DiracGamma   = MakeContext["DiracGamma"];
-Eps          = MakeContext["Eps"];
-MomentumCombine = MakeContext["MomentumCombine"];
-PropagatorDenominator = MakeContext["PropagatorDenominator"];
-FeynAmpDenominator    = MakeContext["FeynAmpDenominator"];
+DiracGamma   = MakeContext["CoreObjects","DiracGamma"];
+Eps          = MakeContext["CoreObjects","Eps"];
+EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
+ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
+FC2TLI := FC2TLI = MakeContext["FC2TLI"];
+FeynAmpDenominator    = MakeContext["CoreObjects","FeynAmpDenominator"];
 FeynAmpDenominatorCombine= MakeContext["FeynAmpDenominatorCombine"];
 FeynAmpDenominatorSplit    = MakeContext["FeynAmpDenominatorSplit"];
-fci          = MakeContext["FeynCalcInternal"];
-Pair         = MakeContext["Pair"];
-Momentum     = MakeContext["Momentum"];
-LorentzIndex = MakeContext["LorentzIndex"];
-ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
-EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
-ScalarProductCancel := ScalarProductCancel = 
-MakeContext["ScalarProductCancel"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum     = MakeContext["CoreObjects","Momentum"];
+MomentumCombine = MakeContext["MomentumCombine"];
+Pair         = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+ScalarProductCancel := ScalarProductCancel = MakeContext["ScalarProductCancel"];
 TLI    = MakeContext["TLI"];
 TLI2FC = MakeContext["TLI2FC"];
-FC2TLI := FC2TLI = MakeContext["FC2TLI"];
+fci          = MakeContext["FeynCalcInternal"];
 
-FourDivergence[x_,a_,b__] := 
+FourDivergence[x_,a_,b__] :=
  FourDivergence[FourDivergence[x, a], b];
-  
+
 FourDivergence[x_, fv_] := Block[
 {nx = x,ve=fci[fv],p,mu,gpa,cont, tliflag = False},
 If[!FreeQ[nx, TLI], nx = TLI2FC[nx]; tliflag = True];
 nx = fci[nx];
 ve = MomentumCombine[ve];
-p  = Select[ve, Head[#] === Momentum&][[1]]; 
+p  = Select[ve, Head[#] === Momentum&][[1]];
 If[!FreeQ[p,Plus], nx = MomentumCombine[nx]];
-mu = Select[ve, Head[#] === LorentzIndex&][[1]]; 
+mu = Select[ve, Head[#] === LorentzIndex&][[1]];
 
 If[!FreeQ[nx, FeynAmpDenominator],
    nx = FeynAmpDenominatorSplit[nx]
@@ -80,7 +79,7 @@ nx = nx /. (deriv[1][FeynAmpDenominator][_]) :> 1 /.
             deriv[0,0,0,1][Eps][c__,p] :>
           Eps[c,mu]} /. deriv -> Derivative;
 
-If[CheckContext["Eps"], nx = EpsEvaluate[nx]];
+If[CheckContext["CoreObjects"], nx = EpsEvaluate[nx]];
 
 If[!FreeQ[nx, FeynAmpDenominator],
    nx = FeynAmpDenominatorCombine[nx]

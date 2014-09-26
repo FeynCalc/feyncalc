@@ -26,8 +26,8 @@ Begin["`Private`"];
 
 
 ClearScalarProducts := (
-DownValues[HighEnergyPhysics`FeynCalc`Pair`Pair] = 
-HighEnergyPhysics`FeynCalc`Pair`Private`initialDownValues;
+DownValues[HighEnergyPhysics`FeynCalc`CoreObjects`Pair] = 
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`initialDownValues;
 DownValues[HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct] = 
 HighEnergyPhysics`FeynCalc`ScalarProduct`Private`initialDownValues;
 UpValues[ScalarProduct] = 

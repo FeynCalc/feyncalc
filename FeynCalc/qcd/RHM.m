@@ -19,10 +19,13 @@ RHM::"usage"= "RHM[] is like RHI[], gives Gamma functions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[Epsilon, Epsilon2,
-Gamma1, Gamma3, Momentum, Power2, Series2, SP, SO,Zeta2];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+SO = MakeContext["CoreObjects","SO"];
+SP = MakeContext["CoreObjects","SP"];
+
+MakeContext[ Epsilon2, Gamma1, Gamma3, Power2, Series2, Zeta2];
 
 Options[RHM] = {Momentum -> Global`p};
 
@@ -36,9 +39,9 @@ RHM[{a_,b_,c_,d_ /;d>0, e_},
       Gamma[2 + e - ep + Epsilon/2]*
       Gamma[4 + a - al + b - be + e - ep + Epsilon]*
       Gamma[2 + c + Epsilon/2 - ga]*Gamma[-4 + al + be + ep - Epsilon + ga]*
-      HypergeometricPFQ[{-d, 2 + b - be + Epsilon/2, 
-        4 + a - al + b - be + e - ep + Epsilon}, 
-       {4 + b - be + e - ep + Epsilon, 
+      HypergeometricPFQ[{-d, 2 + b - be + Epsilon/2,
+        4 + a - al + b - be + e - ep + Epsilon},
+       {4 + b - be + e - ep + Epsilon,
         6 + a - al + b - be + c + e - ep + (3*Epsilon)/2 - ga}, 1]*
       Power2[SO[p], a + b + c + d]*Power2[-SP[p, p], Epsilon2]*
       Power2[SP[p, p], 4 - al - be - ep - ga])/
@@ -64,7 +67,7 @@ RHM[{a_, b_, c_, 0, e_},
 
 (* 3C.22*)
 RHM[{a_Integer, b_Integer, c_Integer, d_Integer, e_Integer?Positive},
-     {al_Integer?Positive, be_Integer?Positive, ga_Integer?Positive, 
+     {al_Integer?Positive, be_Integer?Positive, ga_Integer?Positive,
       de_Integer?Positive, 0
      }, opt___Rule
     ] := Block[{p},
@@ -81,7 +84,7 @@ Sum[-(((-1)^ie*Binomial[e, ie]*Gamma[-2 + be + de - Epsilon/2]*
               ];
 
 RHM[{a_Integer, b_Integer, c_Integer, d_Integer, 0},
-     {al_Integer?Positive, be_Integer?Positive, ga_Integer?Positive, 
+     {al_Integer?Positive, be_Integer?Positive, ga_Integer?Positive,
       de_Integer?Positive, 0
      }, opt___Rule
     ] := Block[{p},

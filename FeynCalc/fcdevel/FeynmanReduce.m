@@ -28,11 +28,11 @@ one by one.";
 
 Begin["`Private`"];
 
-Integratedx = MakeContext["Integratedx"];
-DeltaFunction = MakeContext["DeltaFunction"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
 NumericQ1 = MakeContext["NumericQ1"];
-Pair = MakeContext["Pair"];
+Pair = MakeContext["CoreObjects","Pair"];
 
 
 Options[FeynmanReduce] = {Dimension->D,Flatten->True,Expand->True};

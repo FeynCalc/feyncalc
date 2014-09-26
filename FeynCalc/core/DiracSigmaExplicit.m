@@ -16,8 +16,11 @@ DiracSimplify.";
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracMatrix = MakeContext["CoreObjects","DiracMatrix"];
+DiracSigma = MakeContext["CoreObjects","DiracSigma"];
+DiracSlash = MakeContext["CoreObjects","DiracSlash"];
 fci := fci  = MakeContext["FeynCalcInternal"];
-MakeContext[ DiracGamma, DiracMatrix, DiracSigma, DiracSlash];
 
 dirsigex[a_DiracGamma, b_DiracGamma] := dirsigex[a,b] =
 I/2 (DOT[a, b] - DOT[b, a]);

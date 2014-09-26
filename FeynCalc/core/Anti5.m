@@ -16,7 +16,8 @@ Anti5[exp, -n] anticommutes all gamma5 n times to the left.";
 
 Begin["`Private`"];
 
-MakeContext[DiracGamma, FeynCalcInternal, MemSet];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+MakeContext[FeynCalcInternal, MemSet];
 
 Anti5[a_/;FreeQ[a, DiracGamma[5]],_] := a;
 Anti5[x_, Infinity] := FixedPoint[Anti5, x, $RecursionLimit];

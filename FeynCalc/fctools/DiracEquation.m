@@ -21,14 +21,17 @@ expanding exp. If that is needed, use DiracSimplify.";
 
 Begin["`Private`"];
 
-
-MakeContext[ DiracGamma, ExpandScalarProduct, 
-FreeQ2, LorentzIndex, Momentum, Spinor, Pair, PairContract];
-
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+Spinor = MakeContext["CoreObjects","Spinor"];
 diractrick := diractrick = MakeContext["DiracTrick"];
 dotsimplify:=dotsimplify = MakeContext["DotSimplify"];
 expanding:=expanding     = MakeContext["CoreOptions","Expanding"];
 fci := fci               = MakeContext["FeynCalcInternal"];
+
+MakeContext[ ExpandScalarProduct, FreeQ2, PairContract];
 
 scev[a__] := scev[a] = ExpandScalarProduct[a];
 

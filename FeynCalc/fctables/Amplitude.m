@@ -22,44 +22,44 @@ Polarization -> 1 the polarized ones..";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CF = MakeContext["CoreObjects","CF"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracSlash = MakeContext["CoreObjects","DiracSlash"];
 Expanding = MakeContext["CoreOptions","Expanding"];
+GA = MakeContext["CoreObjects","GA"];
 Gauge = MakeContext["CoreOptions","Gauge"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+Nf = MakeContext["CoreObjects","Nf"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+PolarizationVector = MakeContext["CoreObjects","PolarizationVector"];
 QuarkMass = MakeContext["CoreOptions","QuarkMass"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+Spinor = MakeContext["CoreObjects","Spinor"];
+Tf = MakeContext["CoreObjects","Tf"];
 ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 
 MakeContext[
 ChangeDimension,
-CF,
-DiracGamma,
 DiracTrace,
-DiracSlash,
 DotSimplify,
 Factor2,
 FeynAmpDenominatorCombine,
 FeynAmpDenominatorSimplify,
-GA,
 GhostPropagator,
 GluonGhostVertex,
 GluonPropagator,
-GluonVertex, 
+GluonVertex,
 LeviCivita,
-Nf,
 OPEDelta,
-Polarization,
-PolarizationVector,
 QuarkGluonVertex,
 QuarkPropagator,
-Spinor,
-SUNDelta,
 SUNDeltaContract,
 SUNSimplify,
 SUNTrace,
-Tf,
 Twist2GluonOperator,
-Twist2QuarkOperator,
-];
+Twist2QuarkOperator ];
 
 Options[Amplitude] = {Dimension->D,
 Gauge -> 1, QuarkMass -> 0, Polarization -> 1 };
@@ -67,24 +67,24 @@ Gauge -> 1, QuarkMass -> 0, Polarization -> 1 };
 abbs = {
            alpha :> Global`\[Alpha], beta :> Global`\[Beta],
            al    :> Global`\[Alpha], be   :> Global`\[Beta],
-           delta :> Global`\[Delta], 
+           delta :> Global`\[Delta],
            kappa :> Global`\[Kappa],
            ka    :> Global`\[Kappa],
-           gamma :> Global`\[Gamma], 
+           gamma :> Global`\[Gamma],
            mu :> Global`\[Mu], nu :> Global`\[Nu],
            rho:> Global`\[Rho], sigma:> Global`\[Sigma],
            lambda:> Global`\[Lambda], tau:> Global`\[Tau],
            xi :> Global`\[Xi],
            a :> Global`a, b :> Global`b, c :> Global`c,
            d :> Global`d, e :> Global`e, f :> Global`f,
-           i :> Global`i, j :> Global`j, h :> Global`h, 
-           r :> Global`r, 
+           i :> Global`i, j :> Global`j, h :> Global`h,
+           r :> Global`r,
            s :> Global`s, v :> Global`v, w :> Global`w
        };
 
-If[$Notebooks === True, 
-   nice = Join[abbs, 
-          {p  :> Global`p, 
+If[$Notebooks === True,
+   nice = Join[abbs,
+          {p  :> Global`p,
            q  :> Global`q,
            k  :> Global`k,
            q1 :> Global`q1,
@@ -134,7 +134,7 @@ If[$Notebooks === True,
           }   ]
    ,
    nice = Join[abbs,
-          {p  :> Global`p, 
+          {p  :> Global`p,
            q  :> Global`q,
            k  :> Global`k,
            q1 :> Global`q1,
@@ -171,7 +171,7 @@ pro = -I/4 LeviCivita[mu, nu][OPEDelta, p];
 (*NN*)   qpm[a_] := (*qpm[a] =*) QuarkPropagator[{a,mass[[1]]}];
 (*NN*)   qpmi[a_]:= (*qpmi[a]=*) QuarkPropagator[{a,mass[[2]]}]
 (*NN*)  ];
-   
+
 ghp = GhostPropagator;
 
 (*To allow adding stuff to amplist later. F.Orellana, 25/9-2002*)
@@ -180,7 +180,7 @@ If[ampswitch=!=True,
 amplist = {
 (* the five graphs for the onshell calculation *)
 "onop1" :>
-PolarizationVector[p1,mu] PolarizationVector[p2,nu] * 
+PolarizationVector[p1,mu] PolarizationVector[p2,nu] *
 go[{k-p1,p2-k}, {al,ci1}, {be,ci2}, nonz] *
       gp[k-p1, {al,ci1}, {de,c6}] gp[k-p2, {be,ci2},{ka,ci3}] *
       gp[k, {si,c5},{ro,ci4}] *
@@ -210,13 +210,13 @@ DiracTrace[DOT[
           ]]
 ),
 "onop4" :>
-CF * 
+CF *
   DOT[Spinor[p2] , (I GA[al]) , qp[k-p2] ,
     qo[{k-p1,p2-k}, nonz] ,
       qp[k-p1] , (I GA[be]) , Spinor[-p1]] gp[k,al,be]
 ,
 "onop5" :>
-CF * 
+CF *
   DOT[Spinor[p2] , (I GA[al]) , qp[k-p2] ,
     qo[{k-p1,p2-k}, nonz] ,
       qp[k-p1] , (I GA[be]) , Spinor[-p1]] gp[k,al,be]
@@ -234,24 +234,24 @@ CF *
            ]
 ,
 (*psqq*)
-"q2se2" :>  -1 * 
-DiracTrace[2 Tf * 
+"q2se2" :>  -1 *
+DiracTrace[2 Tf *
 DOT[qpmi[-q1,7,8] , qgv[9] ,
 qpmi[-(q1-q2),10,5] ,  qgv[3] (*, qpm[-q1,4,6] , qo[-q1,6,7] *)
           ]]  *
  gp[q2,1,3] * gp[q2,9,11] *
  DOT[qgv[11] , qpm[p-q2,2,12] , qgv[1]]
 ,
-"nsqq1" :> 
+"nsqq1" :>
   1* (
-   DOT[qgv[4] , qpm[p-q2] , qgv[3] , qpm[p-q1] , 
+   DOT[qgv[4] , qpm[p-q2] , qgv[3] , qpm[p-q1] ,
    qo[p-q1] , qpm[p-q1] , qgv[2] , qpm[p-q2] , qgv[1]] *
    gp[q1-q2,2,3] gp[q2,1,4]
   )
 ,
 (* the 2-loop quark selfenergy graph similar to nsqq1 *)
 "q2se1" :> 1 * (
- DOT[qgv[4] , qpm[p-q2] , qgv[3] , qpm[p-q1] , 
+ DOT[qgv[4] , qpm[p-q2] , qgv[3] , qpm[p-q1] ,
  (*qo[p-q1] , qpm[p-q1] , *)qgv[2] , qpm[p-q2] , qgv[1]] *
  gp[q1-q2,2,3] gp[q2,1,4]
            )
@@ -280,7 +280,7 @@ qpmi[-(q1-q2),10,5] ,  qgv[3] (*, qpm[-q1,4,6] , qo[-q1,6,7] *)
 (*NEW*)
 ,
 "nsqq6" :> 1/2 * (
- DOT[qgv[4],qpm[p-q1],qo[p-q1],qpm[p-q1],qgv[1]] * 
+ DOT[qgv[4],qpm[p-q1],qo[p-q1],qpm[p-q1],qgv[1]] *
  gp[q1,1,2] gp[q1,3,4] gv[q1,2, -q2,8, q2-q1,6] *
  gv[-q1,3, q2,5, q1-q2, 7] gp[q2,8,5] gp[q1-q2,6,7]
                  )
@@ -301,7 +301,7 @@ qpmi[-(q1-q2),10,5] ,  qgv[3] (*, qpm[-q1,4,6] , qo[-q1,6,7] *)
 "nsqq9" :> 1 * (
  DOT[qgv[4],qpm[p-q1],qo[p,0,q1-p,0, -q1,1]] *
  gp[q1,1,2] gp[q1,3,4] gp[q2,6,8] gp[q2-q1,5,7] *
- gv[q1,2, q2-q1,5, -q2,6] gv[q2,8, -q1,3, q1-q2,7] 
+ gv[q1,2, q2-q1,5, -q2,6] gv[q2,8, -q1,3, q1-q2,7]
                )
 ,
 (* similar to graph 9 *)
@@ -703,7 +703,7 @@ nochnich
 ,
 "qg10" :>
 If[pol === 1,
-(-1)* DiracTrace[2 Tf  * pro * 
+(-1)* DiracTrace[2 Tf  * pro *
             DOT[qp[-q1,7,9] ,
             qgv[10] ,
             gp[q1-q2,5,10] ,
@@ -768,7 +768,7 @@ nochnich
 ,
 "qg13" :> 0
 ,
-"qg14" :> 
+"qg14" :>
 If[pol === 1,
 (* amp16  *)
 DiracTrace[FeynAmpDenominatorSimplify[FeynAmpDenominatorCombine[
@@ -875,12 +875,12 @@ nochnich
  DOT[qgv[4],qpm[p-q1],qgv[3],qpm[q2-q1],
  qo[q2-q1],qpm[q2-q1],qgv[2],qpm[q2],
  qgv[1]] gp[q2-p,1,3] gp[q1,2,4]
-                ) 
+                )
 (*gives just the same as above*)
-(*+ 
+(*+
 1 * (
  DOT[qgv[4] , qpm[q1] , qgv[2] , qpm[q1-q2] ,
- qo[q1-q2] , qpm[q1-q2] , qgv[3] , qpm[p-q2] , 
+ qo[q1-q2] , qpm[q1-q2] , qgv[3] , qpm[p-q2] ,
  qgv[1]] * gp[p-q1,4,3] gp[q2,2,1])
                    *)
 ,
@@ -918,22 +918,22 @@ nochnich
  DOT[qgv[4],qpm[p-q1],qgv[3],qpm[q2-q1],
  qo[q2,0,q1-q2,0,-q1,2] , qpm[q2],qgv[1]] *
  gp[q2-p,1,3] gp[q1,2,4]
-                ) 
+                )
 (*
 +
              1 (
- DOT[qgv[4],qpm[q1],qo[q1-q2,0,-q1,0,q2,1] , 
+ DOT[qgv[4],qpm[q1],qo[q1-q2,0,-q1,0,q2,1] ,
  qpm[q1-q2] , qgv[3] , qpm[p-q2] , qgv[2]]
  gp[q2,1,2] gp[q1-p,3,4]
                 )
 *)
 ,
-"nsqq18" :> 
+"nsqq18" :>
  1* (
  DOT[qgv[4],qpm[p-q2],qo[p-q1,_,_,q2-p,_,_,q1,2,-q2,3],
  qpm[p-q1],qgv[1]] *
- gp[q1,1,2] gp[q2,3,4] 
- ) 
+ gp[q1,1,2] gp[q2,3,4]
+ )
 ,
 "nsqq19" :> 1 * (
  DOT[qgv[6],qpm[p-q1],qo[p,_,_, q1-p,_,_, q2-q1,2, -q2,1]] *
@@ -948,7 +948,7 @@ nochnich
                 )
 (*
 ,
-"qg10" :> 
+"qg10" :>
 1 * go[q2-q1, 6, 7] *
           gp[q1-q2, 4, 6] *
           gp[q1-q2, 7, 8] *
@@ -975,7 +975,7 @@ nochnich
            gv[q1,8, -q2,9, q2-q1,10] *
            gv[q2,5, q1-q2,6, -q1,7] *
            DOT[qgv[11] , qp[p-q2,2,12] , qgv[1]]
-         ) 
+         )
 ,
 "gq2" :> (-2 *
            go[q2, 3,4] *
@@ -1100,7 +1100,7 @@ nochnich
          gv[ p-q2,6, q2,7, -p,nu,b ] *
          gv[ -q2,8, q2-q1,9, q1,10]
 ,
-"gg2" :> 2 * 
+"gg2" :> 2 *
          go[q2, 3, 4] *
           gp[q2, 1, 3] *
           gp[q2-p, 2, 11] *
@@ -1124,7 +1124,7 @@ nochnich
           gv[-p,nu,b, q1,6, p-q1,7]
 ,
 "gg4" :> (
-1/2 * 
+1/2 *
          go[q2-q1, 6, 7] *
           gp[q2, 1, 3] *
           gp[q2-p, 2, 9] *
@@ -1139,7 +1139,7 @@ nochnich
         )
 ,
 "gg5" :> (
-1/3 * 
+1/3 *
           go[p,mu,a, -q1,1, q2-p,2, q1-q2,3] *
            gp[q1, 1, 4] *
            gp[q2-p, 2, 5] *
@@ -1148,7 +1148,7 @@ nochnich
         )
 ,
 "gg6" :> (
-1/2 * 
+1/2 *
           go[q1, 4, 5] *
            gp[q1, 1, 4] *
            gp[q1, 5, 6] *
@@ -1159,7 +1159,7 @@ nochnich
         )
 ,
 "gg7" :> (
-1/2 * 
+1/2 *
           go[p,mu,a, q2-p,1, -q2,2] *
            gp[q2-p, 1, 4] *
            gp[q2, 2, 3] *
@@ -1170,7 +1170,7 @@ nochnich
         )
 ,
 "gg8" :> (
-1 * 
+1 *
           go[q2, 3, 4] *
            gp[q2, 1, 3] *
            gp[q2, 4, 5] *
@@ -1183,7 +1183,7 @@ nochnich
         )
 ,
 "gg9" :> (
-1/4 * 
+1/4 *
           go[q2,3, p-q2,4, -q1,5, q1-p,6] *
            gp[q2, 3, 1] *
            gp[q2-p, 2, 4] *
@@ -1194,7 +1194,7 @@ nochnich
         )
 ,
 "gg10" :> (
-1 * 
+1 *
            go[p,mu,a, -q1,2, q1-q2,3, q2-p,4] *
             gp[q1, 2, 9] *
             gp[q1-q2, 3, 6] *
@@ -1205,7 +1205,7 @@ nochnich
         )
 ,
 "gg11" :> (
-2 * 
+2 *
            go[q2, 4, 5] *
             gp[q2, 4, 1] *
             gp[q2, 5, 6] *
@@ -1218,7 +1218,7 @@ nochnich
         )
 ,
 "gg12" :> (
-1 * 
+1 *
            go[q2,3, q1-q2,4, -q1,5] *
             gp[q2,1,3] *
             gp[q1,5,6] *
@@ -1229,7 +1229,7 @@ nochnich
         )
 ,
 "gg13" :> (
-1 * 
+1 *
            go[q2,3,4] *
             gp[q2,1,3] *
             gp[q2,4,5] *
@@ -1242,7 +1242,7 @@ nochnich
         )
 ,
 "gg14" :> (
-1 * 
+1 *
            go[p,mu,a, q2-p,1, -q2,2] *
             gp[q2, 2,3] *
             gp[q2-p,1,8] *
@@ -1253,7 +1253,7 @@ nochnich
         )
 ,
 "gg15" :> (
-1 * 
+1 *
            go[q2,3,4] *
             gp[q2,3,1] *
             gp[q2,4,5] *
@@ -1266,7 +1266,7 @@ nochnich
         )
 ,
 "gg16" :> (
-1 * 
+1 *
            go[p,mu,a, q1-p,1 ,-q1,2] *
             gp[q1,2,3] *
             gp[q1,7,9] *
@@ -1279,7 +1279,7 @@ nochnich
         )
 ,
 "gg17" :> (
-1 * 
+1 *
            go[q2, 3,4] *
             gp[q1,7,8] *
             gp[q2,1,3] *
@@ -1294,7 +1294,7 @@ nochnich
         )
 ,
 "gg18" :> (
-1 * 
+1 *
            go[q2,3, -q1,5, q1-q2,4] *
             gp[q2,1,3] *
             gp[q2,8,9] *
@@ -1307,7 +1307,7 @@ nochnich
         )
 ,
 "gg19" :> (
-1 * 
+1 *
            go[q1,6,7] *
             gp[q1,4,6] *
             gp[q1,7,8] *
@@ -1322,7 +1322,7 @@ nochnich
         )
 ,
 "gg20" :> (
-1/2 * 
+1/2 *
            go[q2,3,4] *
             gp[q2,1,3] *
             gp[q2,4,5] *
@@ -1333,11 +1333,11 @@ nochnich
            gv[p,mu,a, -q2,1, q2-p,2] *
            gv[q1-p,10, p-q2,11, q2-q1,12] *
            gv[q2-p,7, q1-q2,8, p-q1,9] *
-           gv[-p,nu,b, q2,5, p-q2,6] 
+           gv[-p,nu,b, q2,5, p-q2,6]
         )
 ,
 "gg21" :> (
--2* 
+-2*
          go[p,mu,a, -q1,1, q1-p,2] *
           gp[q1-p, 2, 3] gp[q1,   1, 10] *
           ghp[q1-q2, 4, 9] ghp[q2-p, 5, 6] *
@@ -1348,7 +1348,7 @@ nochnich
         )
 ,
 "gg22" :> (
--2 * 
+-2 *
          go[q2, 3, 4] *
           gp[q2, 1, 3] *
           gp[q2-p, 2, 11] *
@@ -1363,7 +1363,7 @@ nochnich
         )
 ,
 "gg23" :> (
--2 * 
+-2 *
          go[q2, 3, 4] *
           gp[q2, 1, 3] *
           gp[q2-p, 2, 11] *
@@ -1378,7 +1378,7 @@ nochnich
         )
 ,
 "gg24" :> (
--1 *  
+-1 *
          go[q2-q1, 6, 7] *
           ghp[q2, 1, 3] *
           ghp[q2-p, 2, 9] *
@@ -1393,7 +1393,7 @@ nochnich
         )
 ,
 "gg25" :> (
--2 * 
+-2 *
            go[q1,6,7] *
             gp[q1,4,6] *
             gp[q1,7,8] *
@@ -1408,7 +1408,7 @@ nochnich
         )
 ,
 "gg26" :> (
--1 * 
+-1 *
            go[q1,6,7] *
             gp[q1,4,6] *
             gp[q1,7,8] *
@@ -1423,7 +1423,7 @@ nochnich
         )
 ,
 "gg27" :> (
--2 * 
+-2 *
            go[p,mu,a, q1-p,1 ,-q1,2] *
             gp[q1,2,3] *
             gp[q1,7,9] *
@@ -1436,7 +1436,7 @@ nochnich
         )
 ,
 "gg28" :> (
--2 * 
+-2 *
            go[q2, 3,4] *
             ghp[q1,7,8] *
             gp[q2,1,3] *
@@ -1451,7 +1451,7 @@ nochnich
         )
 ,
 "gg29" :> (
--1 * 
+-1 *
            go[q2,3,4] *
             gp[q2,1,3] *
             gp[q2,4,5] *

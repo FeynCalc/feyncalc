@@ -15,7 +15,11 @@ exp into (DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + ...).";
 
 Begin["`Private`"];
 
-MakeContext[ DiracGamma, MomentumExpand, Momentum];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+
+Momentum = MakeContext["CoreObjects","Momentum"];
+
+MakeContext[ MomentumExpand];
 
 (* Catch DiracGamma[Momentum[a] + Momentum [b] +...].
    F.Orellana. 26/2-2003 *)

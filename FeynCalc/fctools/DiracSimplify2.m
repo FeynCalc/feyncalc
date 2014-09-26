@@ -22,9 +22,16 @@ DiracGamma[6] and DiracGamma[7] are inserted by their definitions.";
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 
-MakeContext[Cases2,DiracGammaExpand,DiracSimplify,
-            DotSimplify,Contract,DiracGamma, FeynCalcInternal];
+MakeContext[
+    Cases2,
+    Contract,
+    DiracGammaExpand,
+    DiracSimplify,
+    DotSimplify,
+    FeynCalcInternal
+    ];
 
 DiracSimplify2[exp_] := Block[{nn,tt},
 If[FreeQ[exp,DOT], exp,

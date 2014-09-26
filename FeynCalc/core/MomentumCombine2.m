@@ -17,7 +17,11 @@ FourVectors.";
 
 Begin["`Private`"];
 
-MakeContext[ FreeQ2, LorentzIndex, Momentum, MomentumExpand, Pair];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+
+MakeContext[ FreeQ2, MomentumExpand ];
 
 MomentumCombine2[expr_] := expr /. Plus-> plm;
 

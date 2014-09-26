@@ -15,14 +15,14 @@ to orderlist.";
 
 Begin["`Private`"];
 
-memset:= memset             = MakeContext["MemSet"];
-diracgamma := diracgamma    = MakeContext["DiracGamma"];
+des  := des                 = MakeContext["DiracTrick"];
+diracgamma := diracgamma    = MakeContext["CoreObjects","DiracGamma"];
 dotsimplify:= dotsimplify   = MakeContext["DotSimplify"];
 expanding := expanding      = MakeContext["CoreOptions","Expanding"];
 fci := fci                  = MakeContext["FeynCalcInternal"];
-pair := pair                = MakeContext["Pair"];
+memset:= memset             = MakeContext["MemSet"];
+pair := pair                = MakeContext["CoreObjects","Pair"];
 sCO  := sCO                 = MakeContext["PairContract"];
-des  := des                 = MakeContext["DiracTrick"];
 
 
 dotLin[z_] := dotsimplify[z(*/.Dot -> DOT*), expanding -> False];

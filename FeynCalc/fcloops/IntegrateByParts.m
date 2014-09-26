@@ -24,9 +24,7 @@ Begin["`Private`"];
 
 Options[IntegrateByParts] = {Hold -> False};
 
-MakeContext[
-Collect2,
-Factor2 ];
+MakeContext[ Collect2, Factor2 ];
 
 IntegrateByParts[exp_Plus, aa_, z_] := IntegrateByParts[#, aa, z]&/@exp;
 

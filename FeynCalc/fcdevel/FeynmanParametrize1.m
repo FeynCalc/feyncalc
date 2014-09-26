@@ -30,21 +30,20 @@ Begin["`Private`"];
 
 
 
-FeynAmpDenominatorCombine = MakeContext["FeynAmpDenominatorCombine"];
-FeynAmpDenominator = MakeContext["FeynAmpDenominator"];
-FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
-FeynCalcInternal = MakeContext["FeynCalcInternal"];
-Integratedx = MakeContext["Integratedx"];
-Momentum = MakeContext["Momentum"];
-Pair = MakeContext["Pair"];
-PropagatorDenominator = MakeContext["PropagatorDenominator"];
-Dimension = MakeContext["CoreOptions","Dimension"];
-LorentzIndex = MakeContext["LorentzIndex"];
-Uncontract = MakeContext["Uncontract"];
-Contract = MakeContext["Contract"];
-ScalarProductExpand = MakeContext["ScalarProductExpand"];
-LorentzIndex = MakeContext["LorentzIndex"];
 CompleteSquare = MakeContext["CompleteSquare"];
+Contract = MakeContext["Contract"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+FeynAmpDenominatorCombine = MakeContext["FeynAmpDenominatorCombine"];
+FeynCalcInternal = MakeContext["FeynCalcInternal"];
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+ScalarProductExpand = MakeContext["ScalarProductExpand"];
+Uncontract = MakeContext["Uncontract"];
 
 Options[FeynmanParametrize1] =
  {FeynmanParameterNames -> {Global`a, Global`b, Global`c, Global`d, Global`e},
@@ -96,8 +95,8 @@ res1 = (*(-I)^n*) rest1[[1]] * (* (1/k2coeff) *) (* k2coeff * *)
        (Exp[rest1[[2]]] *
         Product[ Exp[ (* k2coeff * *) (Pair[f[[i,1]],f[[i,1]]]-f[[i,2]]^2) *
                       pars[[i]] ], {i,n} ])];
-      
-      
+
+
 If[CompleteSquare/.Flatten[{opts}]/.Options[FeynmanParametrize1],
 
   res = res1 /. Exp[ee_] :>
@@ -173,7 +172,7 @@ efpar,rr,t,cc,ef,co,y,lis,sil,liss,re,wrap,b,qfac,noqfac,ints,res1,dd*)},
           ]];
    If[$VeryVerbose>=2,Print["Finished simplifying expression. ",
                 Length[Cases[{res1},
-                HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator,
+                HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator,
                 Infinity,Heads->True]], " FeynAmpDenominator(s) present"]];
 
 
@@ -220,20 +219,20 @@ If[ (Integrate/.{opt}/.Options[FeynmanParametrize1])=!=True ||
 
             dum | dum * ( tt : ( _?(FreeQ[#, y]&))) |
             dum * HoldPattern[
-              Times[t : (HighEnergyPhysics`FeynCalc`Pair`Pair[
-              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___],
-              _HighEnergyPhysics`FeynCalc`Momentum`Momentum] ..),
+              Times[t : (HighEnergyPhysics`FeynCalc`CoreObjects`Pair[
+              HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[_, ___],
+              _HighEnergyPhysics`FeynCalc`CoreObjects`Momentum] ..),
               re__?(FreeQ[#, y]&)]] |
-            dum *  (tt : HighEnergyPhysics`FeynCalc`Pair`Pair[
-              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___],
-              _HighEnergyPhysics`FeynCalc`Momentum`Momentum]) |
+            dum *  (tt : HighEnergyPhysics`FeynCalc`CoreObjects`Pair[
+              HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[_, ___],
+              _HighEnergyPhysics`FeynCalc`CoreObjects`Momentum]) |
             dum * HoldPattern[
-              Times[t : (HighEnergyPhysics`FeynCalc`Pair`Pair[
-              HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_, ___],
-              _HighEnergyPhysics`FeynCalc`Momentum`Momentum] ..)]] :>
+              Times[t : (HighEnergyPhysics`FeynCalc`CoreObjects`Pair[
+              HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[_, ___],
+              _HighEnergyPhysics`FeynCalc`CoreObjects`Momentum] ..)]] :>
             dum*Contract[
-              lis1=Cases[{t,tt},HighEnergyPhysics`FeynCalc`Pair`Pair[
-                             HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[_,___], y]];
+              lis1=Cases[{t,tt},HighEnergyPhysics`FeynCalc`CoreObjects`Pair[
+                             HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[_,___], y]];
               sil=Complement[{t,tt},lis1];
               lis=(#[[1]])&/@lis1;
               cc=Length[lis];

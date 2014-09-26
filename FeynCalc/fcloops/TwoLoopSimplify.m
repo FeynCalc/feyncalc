@@ -25,11 +25,20 @@ the integration momenta in amplitude must be named q1 and q2.";
 Begin["`Private`"];
    
 Dimension = MakeContext["CoreOptions","Dimension"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 IntegralTable = MakeContext["CoreOptions","IntegralTable"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+SOD = MakeContext["CoreObjects","SOD"];
+SPD = MakeContext["CoreObjects","SPD"];
 SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
+Tf = MakeContext["CoreObjects","Tf"];
 
 MakeContext[
 FCPrint,
@@ -39,43 +48,34 @@ Contract,
 DiracOrder,
 DiracSimplify,
 DiracTrace,
-Eps,
 EpsEvaluate,
 Expand2,
 ExpandScalarProduct,
 Explicit,
 FC2RHI,
 FCIntegral,
-FeynAmpDenominator,
 FeynAmpDenominatorCombine, FeynAmpDenominatorSimplify, 
 FeynCalcInternal,
 FeynCalcExternal, 
 GluonVertex,
 Isolate,
 IsolateSplit,
-LorentzIndex,
-Momentum,
 MomentumCombine,
 OPEDelta,
 OPE2AI,
 OPESumExplicit,
-Pair,
 PairContract,
 PairContract3,
 PowerSimplify,
 Power2,
-PropagatorDenominator,
 Rename,
 RHI,
 ScalarProduct, 
 ScalarProductCancel, 
 Select1,
 Select2,
-SPD,
-SOD,
 SUNSimplify, SUNTrace,
 ToLarin,
-Tf,
 Tr2, 
 Trick
 ];

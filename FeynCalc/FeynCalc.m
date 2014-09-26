@@ -4,7 +4,7 @@
 If[$VersionNumber>5.3,
 Remove[PartialD];
 (*Off[PartialD::shdw];
-Off[HighEnergyPhysics`FeynCalc`PartialD`PartialD::shdw];
+Off[HighEnergyPhysics`FeynCalc`CoreObjects`PartialD::shdw];
 *)
 ];
 
@@ -690,11 +690,9 @@ fcDeclarePackge[x_String] := fcDeclarePackge[x, x];
 multifunpack=
 {
 {"Contract", "Contract2", "Contract3", "Rename"},
-{"DiracSlash", "SL"},
 {"DiracSimplify", "ChisholmSpinor", "DiracCanonical", "InsideDiracTrace", "$SpinorMinimal", "DiracSimpCombine", "DiracSubstitute67"},
 {"DotSimplify", "DotSimplifyRelations", "DotPower"},
 {"FermionSpinSum", "SpinorCollect"},
-{"FeynAmpDenominator", "FD"},
 {"FeynAmpDenominatorSimplify", "FDS"},
 {"FeynCalcForm", "FCF"},
 {"FeynCalcInternal", "FCI"},
@@ -711,7 +709,7 @@ multifunpack=
 {"OneLoop", "CancelQP", "CombineGraphs", "DenominatorOrder", "FinalFunction", "ExtraVariables",
 "OneLoopSum", "Prefactor", "SelectGraphs", "ReduceGamma", "ReduceToScalars", "SmallVariables",
 "StandardMatrixElement", "SetStandardMatrixElements"},
-{"PropagatorDenominator", "PD"},
+(*{"PropagatorDenominator", "PD"},*)
 {"QuarkGluonVertex", "QGV"},
 {"QuarkPropagator", "QP"},
 {"SquareAmplitude", "EnergyMomentumConservation", "SpinSumExternalMomentum", "SelectedGraphs"},
@@ -724,7 +722,7 @@ multifunpack=
 {"CovariantFieldDerivative", "CDr"},
 {"CheckDB", "ForceSave", "NoSave"},
 {"OPEIntegrateDelta", "$MIntegrate"},
-{"Pair", "$PairBrackets"},
+(*{"Pair", "$PairBrackets"},*)
 {"Convolute", "Bracket"},
 {"CovariantD", "DummyIndex"},
 {"Factor2", "FactorFull"},
@@ -831,7 +829,6 @@ c[w_Integer] := c[w] = Block[{pre},
 End[];
 EndPackage[];
 
-
 Map[HighEnergyPhysics`FeynCalc`Private`fcDeclarePackge,
     HighEnergyPhysics`FeynCalc`Private`declarepackagelist];
 
@@ -842,8 +839,6 @@ Get["DeclareNonCommutative.m"];
 corefiles = FileNames["*.m"];
 Get/@corefiles;
 ResetDirectory[];
-
-
 
 (* take care of SubContext of the multifunpack values *)
 (* (avoid Global` symbols, F.Orellana, 14/9-2002) *)

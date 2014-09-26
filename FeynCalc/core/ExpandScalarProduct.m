@@ -18,14 +18,14 @@ expr.";
 
 Begin["`Private`"];
 
-fci  := fci                  = MakeContext["FeynCalcInternal"];
-lorentzindex := lorentzindex = MakeContext["LorentzIndex"];
-memset := memset             = MakeContext["MemSet"];
-momentum := momentum         = MakeContext["Momentum"];
-momentumexpand := momentumexpand = MakeContext["MomentumExpand"];
-sCO := sCO                   = MakeContext["PairContract"];
-pair := pair                 = MakeContext["Pair"];
 Cases2                       = MakeContext["Cases2"];
+fci  := fci                  = MakeContext["FeynCalcInternal"];
+lorentzindex := lorentzindex = MakeContext["CoreObjects","LorentzIndex"];
+memset := memset             = MakeContext["MemSet"];
+momentum := momentum         = MakeContext["CoreObjects","Momentum"];
+momentumexpand := momentumexpand = MakeContext["MomentumExpand"];
+pair := pair                 = MakeContext["CoreObjects","Pair"];
+sCO := sCO                   = MakeContext["PairContract"];
 
 Options[ExpandScalarProduct] = {fci -> True};
 
@@ -37,7 +37,7 @@ ExpandScalarProduct[x_, op___?OptionQ] := Block[{nx=x, pali},
   (* RM: put the next line in front 20110408 *)
    If[(fci /. {op} /. Options[ExpandScalarProduct]), nx = fci[nx]];
 If[FreeQ[nx,pair], nx,
-(* this algorithm is much quicher on bigger expressions, maybe there should be a 
+(* this algorithm is much quicher on bigger expressions, maybe there should be a
    switch for smaller ones to not use this?
    Changed Nov 2003, RM
  *)

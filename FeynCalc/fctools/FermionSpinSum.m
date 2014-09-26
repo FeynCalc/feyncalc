@@ -23,12 +23,12 @@ SpinorCollect::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Collect2      = MakeContext["Collect2"];
 Contract      = MakeContext["Contract"];  
-DiracGamma    = MakeContext["DiracGamma"];
+DiracGamma    = MakeContext["CoreObjects","DiracGamma"];
 DiracTrace    = MakeContext["DiracTrace"];  
-Eps           = MakeContext["Eps"];  
+Eps           = MakeContext["CoreObjects","Eps"];  
 Expanding     = MakeContext["CoreOptions","Expanding"];
 ExtraFactor   = MakeContext["CoreOptions","ExtraFactor"];
 Factor2       = MakeContext["Factor2"];
@@ -36,9 +36,9 @@ FreeQ2        = MakeContext["FreeQ2"];
 Isolate       = MakeContext["Isolate"];
 IsolateNames  = MakeContext["CoreOptions","IsolateNames"];
 IsolateSplit  = MakeContext["IsolateSplit"];
-LorentzIndex  = MakeContext["LorentzIndex"];  
-Momentum      = MakeContext["Momentum"];  
-Spinor        = MakeContext["Spinor"];  
+LorentzIndex  = MakeContext["CoreObjects","LorentzIndex"];  
+Momentum      = MakeContext["CoreObjects","Momentum"];  
+Spinor        = MakeContext["CoreObjects","Spinor"];  
 SpinPolarizationSum =
                 MakeContext["CoreOptions","SpinPolarizationSum"];
 SUNSimplify   = MakeContext["SUNSimplify"];  

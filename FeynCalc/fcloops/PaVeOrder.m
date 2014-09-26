@@ -29,7 +29,7 @@ Begin["`Private`"];
 PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
 
 MakeContext[ A0,B0,B1,B00,B11,C0,D0];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
 
 

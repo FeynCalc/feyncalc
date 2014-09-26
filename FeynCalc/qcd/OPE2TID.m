@@ -15,7 +15,7 @@
 BeginPackage["HighEnergyPhysics`qcd`OPE2TID`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-OPE2TID::"usage"= "OPE2TID[exp, k1, k2, p] does a tensor integral decomposition of exp. 
+OPE2TID::"usage"= "OPE2TID[exp, k1, k2, p] does a tensor integral decomposition of exp.
 The setting of the option
 EpsContract determines the dimension in which the Levi-Civita tensors
 are contracted.";
@@ -23,60 +23,60 @@ are contracted.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-DiracTrace := DiracTrace = MakeContext["DiracTrace"];
-Tr2 := Tr2 = MakeContext["Tr2"];
 
 Collecting = MakeContext["CoreOptions","Collecting"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracSimplify := DiracSimplify = MakeContext["DiracSimplify"];
+DiracTrace := DiracTrace = MakeContext["DiracTrace"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 IncludePair = MakeContext["CoreOptions","IncludePair"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+Tr2 := Tr2 = MakeContext["Tr2"];
 
 MakeContext[
-FCPrint,
-Uncontract,
-ChangeDimension,
 Cases2,
+ChangeDimension,
 Collect2,
 Contract,
-DiracGamma,
 DiracTrick,
 DotSimplify,
-Eps,
 EpsEvaluate,
 Expand2,
 ExpandScalarProduct,
-Factor2,
 FC2RHI,
-FeynCalcForm,
-FeynAmpDenominator,
+FCPrint,
+Factor2,
 FeynAmpDenominatorSimplify,
 FeynAmpDenominatorSplit,
+FeynCalcForm,
 FreeQ2,
-LorentzIndex,
-Momentum,
-OPEi, 
-OPEj,
-OPEDelta,
 OPE1Loop,
-ScalarProductCancel,
-Pair,
+OPEDelta,
+OPEi,
+OPEj,
 PairContract,
 PairContract3,
 Power2,
 PowerSimplify,
-PropagatorDenominator,
-Rename,
 RHI,
+Rename,
+ScalarProductCancel,
 Select1,
-Select2            ];
-DiracSimplify := DiracSimplify = MakeContext["DiracSimplify"];
+Select2,
+Uncontract
+];
 
 diracsimp[a_] := If[!FreeQ[a, DiracGamma], DiracSimplify[a],a];
-diracsimp2[a_] := If[!FreeQ[a, DiracGamma], 
+diracsimp2[a_] := If[!FreeQ[a, DiracGamma],
                      DiracSimplify[a//Contract],a];
 
 Options[OPE2TID] = {Uncontract -> False, Contract -> True,
@@ -93,7 +93,7 @@ If[!FreeQ2[temp, {k1,k2}],
    temp = ScalarProductCancel[OPE1Loop[{k1,k2}, temp], k1,k2,
                               FeynAmpDenominatorSimplify -> True];
 If[!FreeQ2[temp, {k1,k2}],
-   If[(Head[temp] === Plus) && (!FreeQ[temp, 
+   If[(Head[temp] === Plus) && (!FreeQ[temp,
                 PropagatorDenominator[_, em_ /; em =!=0]
                                      ])
      , temp = Map[ScalarProductCancel, temp],
@@ -110,15 +110,15 @@ If[!FreeQ2[temp, {k1,k2}],
 *)
 If[FreeQ2[temp,{k1,k2}] && !FreeQ[temp,LorentzIndex] && !FreeQ[temp, RHI],
    temp = Collect2[temp, LorentzIndex];
-   If[Head[temp] === Plus, 
+   If[Head[temp] === Plus,
       temp = Map[(Select1[#, RHI] Collect2[Select2[#, RHI], RHI])&, temp]
      ]
   ];
 temp]];
 
-ope2TID[exp_, k1_, k2_, p_, opt___Rule] := 
+ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 (* maybe *)
-ope2TID[exp, k1, k2, p, opt] = 
+ope2TID[exp, k1, k2, p, opt] =
 Block[
 {ope2tid,dUMMY = Unique[Global`lI], temp, ntemp, nok1k2factor,
  temp0, n, alL, beT,checkd,muu,k12shift = {},dumi,diramp,
@@ -133,7 +133,7 @@ If[FreeQ[exp,k1] || FreeQ[exp, k2],  temp  = exp,
 n = Dimension /. {opt} /. Options[OPE2TID];
 contractlabel = Contract /. {opt} /. Options[OPE2TID];
 temp = Expand2[ChangeDimension[exp, n], {k1, k2}];
-dirrramp[ww_, ka1_, ka2_]:= 
+dirrramp[ww_, ka1_, ka2_]:=
  If[Head[ww]=!=Times, DiracTrace[ww],
     If[Select2[Select1[ww,{DOT, DiracGamma}], {ka1,ka2}] *
        Select1[Select1[ww,{DOT, DiracGamma}], {ka1,ka2}] *
@@ -142,12 +142,12 @@ dirrramp[ww_, ka1_, ka2_]:=
        Select2[Select1[ww,{DOT, DiracGamma}], {ka1,ka2}] *
        DiracTrace[Select2[ww,{DOT, DiracGamma}] *
                   Select1[Select1[ww,{DOT,DiracGamma}], {ka1,ka2}]
-                 ] 
+                 ]
        ,
        DiracTrace[ww]
       ]
    ];
-                            
+
 If[(Uncontract/.{opt} /.Options[OPE2TID]) === True,
    temp = Uncontract[temp,k1,k2];
    temp = temp /. DiracTrace[ab_] :> dirrramp[ab,k1,k2];
@@ -156,12 +156,12 @@ If[(Uncontract/.{opt} /.Options[OPE2TID]) === All,
    temp = Uncontract[temp,k1,k2, Pair->{p} ];
    temp = temp /. DiracTrace[ab_] :> dirrramp[ab,k1,k2];
   ];
-phead[y_] := If[Head[y] === Integer, 
-                If[y<0, True, False], 
+phead[y_] := If[Head[y] === Integer,
+                If[y<0, True, False],
                 If[FreeQ2[y, {OPEi, OPEj}], True, False]
                ];
 
-If[Head[temp] === Plus, 
+If[Head[temp] === Plus,
    temp = Map[ope2tid[#, k1,k2,p]&, temp] /. ope2tid -> ope2TID,
 
 If[!FreeQ[temp, Power[_,(hh_ /; Head[hh] =!= Integer)]],
@@ -170,7 +170,7 @@ If[!FreeQ[temp, Power[_,(hh_ /; Head[hh] =!= Integer)]],
   ];
 
 (* careful here; recursion possible ... *)
-If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] && 
+If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
    !FreeQ[temp, Pair[Momentum[OPEDelta,___], Momentum[k1,___]]]
    ,
    If[!FreeQ[Select1[temp, {FeynAmpDenominator,
@@ -182,8 +182,8 @@ If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
                      (Pair[Momentum[OPEDelta,di1], Momentum[k1,di2]]^
                       fake[OPEm])
      ]
-  ];  
-If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] && 
+  ];
+If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
    !FreeQ[temp, Pair[Momentum[OPEDelta,___], Momentum[k2,___]]]
    ,
    If[!FreeQ[Select1[temp, {FeynAmpDenominator,
@@ -194,7 +194,7 @@ If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
                      (Pair[Momentum[OPEDelta,di1], Momentum[k2,di2]]^
                       fake[OPEm])
      ]
-  ];  
+  ];
 
 
 (*
@@ -215,7 +215,7 @@ If[(!FreeQ2[temp, {Power2[
                          Power2[_,(hhh_/;Head[hhh]=!=Integer)]}],
           k2]
   ) && (* do only if really necessary (otherwise: recursion danger) *)
-  FreeQ[temp, 
+  FreeQ[temp,
        Power2[(_. Pair[Momentum[OPEDelta,___], Momentum[k1,___]] +
                _. Pair[Momentum[OPEDelta,___], Momentum[k2,___]] + _.
               ),(hh_ /; phead[hh])
@@ -276,7 +276,7 @@ If[k12shift =!= {},
      ]
   ];
 
-If[Head[temp] === Plus, 
+If[Head[temp] === Plus,
 FCPrint[1,"Map ope2tid"];
    temp = Map[ope2tid[#, k1,k2,p]&, temp] /. ope2tid -> ope2TID;
 (* shift back *)
@@ -284,7 +284,7 @@ FCPrint[2,"shifting back"];
    temp = ExpandScalarProduct[(temp /. k12shift)//diracsimp2];
 If[contractlabel === True,
    FCPrint[2,"contract "];
-   temp = Expand2[temp, LorentzIndex] /. Pair->PairContract3 /. 
+   temp = Expand2[temp, LorentzIndex] /. Pair->PairContract3 /.
              PairContract3->Pair;
   ];
    temp = EpsEvaluate[temp]//diracsimp2;
@@ -310,20 +310,20 @@ If[CheckContext["DiracTrace"],
                          Pair[Momentum[k1, n], LorentzIndex[alpha,n]]
               ) /; FreeQ2[{aa,{b}, {c}}, {k1, k2}],
                       DiracTrace[aa_. DOT[b___,
-              DiracGamma[Momentum[k1, ___], ___], 
+              DiracGamma[Momentum[k1, ___], ___],
               DiracGamma[Momentum[k2, ___], ___], c___]
                                 ] :>
               (DiracTrace[aa DOT[b, DiracGamma[LorentzIndex[alpha, n], n],
                                     DiracGamma[LorentzIndex[beta, n], n
-                                              ],c] 
+                                              ],c]
                                 ] *
                              Pair[Momentum[k1, n], LorentzIndex[alpha,n]] *
                            Pair[Momentum[k2, n], LorentzIndex[beta,n]]
               ) /; FreeQ2[{aa,{b}, {c}}, {k1, k2}]
                      } /. {
-              (DiracTrace[a_] Pair[Momentum[k1, ___], 
+              (DiracTrace[a_] Pair[Momentum[k1, ___],
                                    LorentzIndex[alpha, ___]] *
-                              Pair[Momentum[k2, ___], 
+                              Pair[Momentum[k2, ___],
                                    LorentzIndex[beta, ___]]*
                               Eps[aaa___,Momentum[k1,___], bbb___]
               ) :> (DiracTrace[a] *
@@ -332,9 +332,9 @@ If[CheckContext["DiracTrace"],
                         Eps[aaa,LorentzIndex[rhoo, n], bbb] *
                         Pair[Momentum[k1, n], LorentzIndex[rhoo, n]]
                    ),
-              (DiracTrace[a_] Pair[Momentum[k1, ___], 
+              (DiracTrace[a_] Pair[Momentum[k1, ___],
                                    LorentzIndex[alpha, ___]] *
-                              Pair[Momentum[k2, ___], 
+                              Pair[Momentum[k2, ___],
                                    LorentzIndex[beta, ___]]*
                               Eps[aaa___,Momentum[k2,___], bbb___]
               ) :> (DiracTrace[a] *
@@ -345,10 +345,10 @@ If[CheckContext["DiracTrace"],
                    )}
      ]
   ];
-If[CheckContext["DiracGamma"],
+If[CheckContext["CoreObjects"],
    If[!FreeQ[temp, DiracGamma],
       diramp[ka_,en_] := Block[{uni},
-                                uni = LorentzIndex[Unique[dumi],en]; 
+                                uni = LorentzIndex[Unique[dumi],en];
                                       DiracGamma[uni, en] Pair[uni,
                                       Momentum[ka, en]]
                               ];
@@ -357,13 +357,13 @@ If[CheckContext["DiracGamma"],
                      };
       temp = DotSimplify[temp, Expanding -> False];
      ]
-  ];  
+  ];
 
 (*  "amputate" a special Eps... *)
 
-If[ FreeQ[temp, Eps[__]^2] && 
+If[ FreeQ[temp, Eps[__]^2] &&
    (!FreeQ[temp, Eps[a___, Momentum[k1, en___], Momentum[k2, en___], b___]]
-   ) && (FreeQ[temp, 
+   ) && (FreeQ[temp,
                 Eps[a___, Momentum[k1, en___], Momentum[k2, en___], b___] *
                 Eps[c__]
                ]
@@ -371,7 +371,7 @@ If[ FreeQ[temp, Eps[__]^2] &&
     alL = Unique[Global`lI];
     beT = Unique[Global`lI];
 FCPrint[1,"AMPuTATe EPs"];
-    temp = temp /. Eps[a___, Momentum[k1, en___], 
+    temp = temp /. Eps[a___, Momentum[k1, en___],
                              Momentum[k2, en___], b___] :>
            (Pair[LorentzIndex[alL,n], Momentum[k1,n]] *
             Pair[LorentzIndex[beT,n], Momentum[k2,n]] *
@@ -401,29 +401,29 @@ rhoo = Unique[dumi];
                  )
 
   ];
- 
+
 temp0 = temp;
 
-(* do Levi-Civita -contractions in four or D dimensions 
-   right away in case no integration momenta are 
+(* do Levi-Civita -contractions in four or D dimensions
+   right away in case no integration momenta are
    around anymore in the Eps.
 *)
 eepcsa[yy__]  := Contract[Eps[yy]^2, EpsContract->True];
 epsc[xy__] := If[(EpsContract /. {opt} ) === False ||
-                !FreeQ2[{xy}, {k1,k2}], 
+                !FreeQ2[{xy}, {k1,k2}],
                Eps[xy],
-                ChangeDimension[eeeps[xy], EpsContract /. {opt} /. 
+                ChangeDimension[eeeps[xy], EpsContract /. {opt} /.
                 Options[OPE2TID]] /. {eeeps[w__]^2 :> eepcsa[w]} /.
-                eeeps -> Eps   
+                eeeps -> Eps
                 ];
 (*
 epscontract[y_] := y;
 *)
 sccon[yy_] := yy /. Pair -> PairContract /. PairContract->Pair;
 
-epscontract[y_] := If[(EpsContract/.{opt})===False, 
-                      EpsEvaluate[sccon[y]], 
-                      If[Head[y] === Plus, 
+epscontract[y_] := If[(EpsContract/.{opt})===False,
+                      EpsEvaluate[sccon[y]],
+                      If[Head[y] === Plus,
                          Map[epscos, y//sccon], epscos[y//sccon]
                         ]
                      ];
@@ -462,7 +462,7 @@ If[Head[temp] === Times && !FreeQ2[temp, {k1,k2,OPEDelta}],
 
 
    FCPrint[3,"delfactor = ",delfactor // FeynCalcForm];
-  
+
 
 (* this function is ESSENTIAL !!! *)
 checkd[yy_] := !FreeQ[delfactor, yy];
@@ -472,7 +472,7 @@ checkd[yy_,zz__] := (!FreeQ[delfactor, yy]) && checkd[zz];
    tempf        = Select2[temp3, FeynAmpDenominator];
    temp4        = qQQ[Select1[temp3, FeynAmpDenominator]];
 
-checkk = Factor2[temp0] -  
+checkk = Factor2[temp0] -
          Factor2[nok1k2factor (temp4/.qQQ->Identity) tempf delfactor];
 
 
@@ -484,34 +484,34 @@ If[ checkk =!= 0, temp = exp,
 
 If[(!FreeQ2[delfactor, {k1, k2}])
  (* QUark, && (Head[delfactor] =!= Pair)*),
- 
+
 If[speciallabel =!= True, decrulesspecial = {},
 decrulesspecial = {
 (* special stuff *)
-qQQ[Pair[Momentum[k1,n],Momentum[k2,n]] * 
+qQQ[Pair[Momentum[k1,n],Momentum[k2,n]] *
     Pair[Momentum[k1, n], LorentzIndex[mu_,n]]
    ] :>
    (
   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
       Pair[Momentum[OPEDelta, n], Momentum[k1, n]])/
-    Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+    Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
    (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
       (Pair[Momentum[OPEDelta, n], Momentum[k1, n]]*
-         Pair[Momentum[p, n], Momentum[p, n]] - 
+         Pair[Momentum[p, n], Momentum[p, n]] -
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
          Pair[Momentum[p, n], Momentum[k1, n]]))/
     Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2
    ) /; checkd[k1],
-qQQ[Pair[Momentum[k1,n],Momentum[k2,n]] * 
+qQQ[Pair[Momentum[k1,n],Momentum[k2,n]] *
     Pair[Momentum[k2, n], LorentzIndex[mu_,n]]
    ] :>
    (
   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
       Pair[Momentum[OPEDelta, n], Momentum[k2, n]])/
-    Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+    Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
    (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
       (Pair[Momentum[OPEDelta, n], Momentum[k2, n]]*
-         Pair[Momentum[p, n], Momentum[p, n]] - 
+         Pair[Momentum[p, n], Momentum[p, n]] -
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
          Pair[Momentum[p, n], Momentum[k2, n]]))/
     Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2
@@ -522,7 +522,7 @@ decrules = {
 (* k1 k2 ki *)
 qQQ[
  Eps[r___, Momentum[k1,___], Momentum[k2,___], s___]*
- T2_[w___, Momentum[qk_, ___], z___]] :> 
+ T2_[w___, Momentum[qk_, ___], z___]] :>
 epscontract[
 FCPrint[1,"USING K1K2KIRULE"];
 rho = Unique["lI"];
@@ -530,86 +530,86 @@ rho = Unique["lI"];
        Pair[Momentum[k2, D], Momentum[p, D]]*
        (Eps[r, LorentzIndex[rho, D], Momentum[OPEDelta, D], s]*
           Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-          T2[w, LorentzIndex[rho, D], z] + 
+          T2[w, LorentzIndex[rho, D], z] +
          Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
           T2[w, Momentum[OPEDelta, D], z]))/
-     ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2)) + 
+     ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2)) +
   (Pair[Momentum[k1, D], Momentum[p, D]]*
      Pair[Momentum[k2, D], Momentum[qk, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[OPEDelta, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-        T2[w, LorentzIndex[rho, D], z] + 
+        T2[w, LorentzIndex[rho, D], z] +
        Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         T2[w, Momentum[OPEDelta, D], z]))/
-   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2) - 
+   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2) -
   (Pair[Momentum[k1, D], Momentum[p, D]]*
      Pair[Momentum[k2, D], Momentum[OPEDelta, D]]*
      Pair[Momentum[p, D], Momentum[qk, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[OPEDelta, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-        T2[w, LorentzIndex[rho, D], z] - 
+        T2[w, LorentzIndex[rho, D], z] -
        Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
-        T2[w, Momentum[OPEDelta, D], z] + 
+        T2[w, Momentum[OPEDelta, D], z] +
        D*Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         T2[w, Momentum[OPEDelta, D], z]))/
-   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^3) + 
+   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^3) +
   (Pair[Momentum[k1, D], Momentum[OPEDelta, D]]*
      Pair[Momentum[k2, D], Momentum[p, D]]*
      Pair[Momentum[p, D], Momentum[qk, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[OPEDelta, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-        T2[w, LorentzIndex[rho, D], z] - 
+        T2[w, LorentzIndex[rho, D], z] -
        Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
-        T2[w, Momentum[OPEDelta, D], z] + 
+        T2[w, Momentum[OPEDelta, D], z] +
        D*Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         T2[w, Momentum[OPEDelta, D], z]))/
-   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^3) - 
+   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^3) -
   (Pair[Momentum[k1, D], Momentum[qk, D]]*
      Pair[Momentum[k2, D], Momentum[OPEDelta, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[p, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-        T2[w, LorentzIndex[rho, D], z] - 
+        T2[w, LorentzIndex[rho, D], z] -
        Eps[r, LorentzIndex[rho, D], Momentum[OPEDelta, D], s]*
         Pair[Momentum[p, D], Momentum[p, D]]*
-            T2[w, LorentzIndex[rho, D], z] - 
+            T2[w, LorentzIndex[rho, D], z] -
          Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         T2[w, Momentum[p, D], z]))/
-   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2) + 
+   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2) +
   (Pair[Momentum[k1, D], Momentum[OPEDelta, D]]*
      Pair[Momentum[k2, D], Momentum[qk, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[p, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-        T2[w, LorentzIndex[rho, D], z] - 
+        T2[w, LorentzIndex[rho, D], z] -
        Eps[r, LorentzIndex[rho, D], Momentum[OPEDelta, D], s]*
         Pair[Momentum[p, D], Momentum[p, D]]*
-          T2[w, LorentzIndex[rho, D], z] - 
+          T2[w, LorentzIndex[rho, D], z] -
       Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         T2[w, Momentum[p, D], z]))/
-   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2) + 
+   ((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2) +
   (Pair[Momentum[k1, D], Momentum[p, D]]*
      Pair[Momentum[k2, D], Momentum[OPEDelta, D]]*
      Pair[Momentum[OPEDelta, D], Momentum[qk, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[p, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2*
-        T2[w, LorentzIndex[rho, D], z] - 
+        T2[w, LorentzIndex[rho, D], z] -
        Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         Pair[Momentum[p, D], Momentum[p, D]]*
-        T2[w, Momentum[OPEDelta, D], z] + 
+        T2[w, Momentum[OPEDelta, D], z] +
        D*Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         Pair[Momentum[p, D], Momentum[p, D]]*
-        T2[w, Momentum[OPEDelta, D], z] + 
+        T2[w, Momentum[OPEDelta, D], z] +
        Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*
-        T2[w, Momentum[p, D], z] - 
+        T2[w, Momentum[p, D], z] -
        D*Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]*T2[w, Momentum[p, D], z]
-       ))/((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^4) - 
+       ))/((2 - D)*Pair[Momentum[OPEDelta, D], Momentum[p, D]]^4) -
   (Pair[Momentum[k1, D], Momentum[OPEDelta, D]]*
      Pair[Momentum[k2, D], Momentum[p, D]]*
      Pair[Momentum[OPEDelta, D], Momentum[qk, D]]*
      (Eps[r, LorentzIndex[rho, D], Momentum[p, D], s]*
         Pair[Momentum[OPEDelta, D], Momentum[p, D]]^2*
-        T2[w, LorentzIndex[rho, D], z] - 
+        T2[w, LorentzIndex[rho, D], z] -
        Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
         Pair[Momentum[p, D], Momentum[p, D]]*T2[w, Momentum[OPEDelta, D], z
                  ] + D*Eps[r, Momentum[OPEDelta, D], Momentum[p, D], s]*
@@ -627,76 +627,76 @@ rho = Unique["lI"];
 *)
 ,
 (* k2 *)
-qQQ[ T_[r___, Momentum[k2, ___], s___] ] :> 
+qQQ[ T_[r___, Momentum[k2, ___], s___] ] :>
   epscontract[
   (Pair[Momentum[k2, n], Momentum[p, n]]*T[r, Momentum[OPEDelta, n], s])/
-    Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+    Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
    (Pair[Momentum[k2, n], Momentum[OPEDelta, n]]*
       Pair[Momentum[p, n], Momentum[p, n]]*T[r, Momentum[OPEDelta, n], s])/
-    Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 + 
+    Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 +
    (Pair[Momentum[k2, n], Momentum[OPEDelta, n]]*T[r, Momentum[p, n], s])/
     Pair[Momentum[OPEDelta, n], Momentum[p, n]]
-            ] /; 
+            ] /;
 FreeQ2[{r, s}, {k1, k2}] && (checkd[k1] || checkd[k2]) && mem[T],
 (* k2 k2 *)
 (* this is old,  but o.k., checked  24.4.94 *)
   qQQ[T1_[r___, Momentum[k2, ___], s___]^2
-      ] :>  
+      ] :>
       epscontract[
  ( -((Pair[Momentum[k2, n], Momentum[k2, n]]*
         T1[r, LorentzIndex[dUMMY, n], s]*T1[r, LorentzIndex[dUMMY, n], s])/
       (2 - n)) + (2*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]*
       Pair[Momentum[k2, n], Momentum[p, n]]*
       T1[r, LorentzIndex[dUMMY, n], s]*T1[r, LorentzIndex[dUMMY, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) - 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) -
    (Pair[Momentum[k2, n], Momentum[OPEDelta, n]]^2*
       Pair[Momentum[p, n], Momentum[p, n]]*T1[r, LorentzIndex[dUMMY, n], s]*
       T1[r, LorentzIndex[dUMMY, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
    (Pair[Momentum[k2, n], Momentum[p, n]]^2*T1[r, Momentum[OPEDelta, n], s]*
       T1[r, Momentum[OPEDelta, n], s])/
-    Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+    Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
    (2*(1 - n)*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]*
       Pair[Momentum[k2, n], Momentum[p, n]]*
       Pair[Momentum[p, n], Momentum[p, n]]*T1[r, Momentum[OPEDelta, n], s]*
       T1[r, Momentum[OPEDelta, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
    (Pair[Momentum[k2, n], Momentum[k2, n]]*
       Pair[Momentum[p, n], Momentum[p, n]]*T1[r, Momentum[OPEDelta, n], s]*
       T1[r, Momentum[OPEDelta, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
    ((1 - n)*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]^2*
       Pair[Momentum[p, n], Momentum[p, n]]^2*
       T1[r, Momentum[OPEDelta, n], s]*T1[r, Momentum[OPEDelta, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
    (n*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]*
       Pair[Momentum[k2, n], Momentum[p, n]]*T1[r, Momentum[p, n], s]*
       T1[r, Momentum[OPEDelta, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
    (Pair[Momentum[k2, n], Momentum[k2, n]]*T1[r, Momentum[p, n], s]*
       T1[r, Momentum[OPEDelta, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) - 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) -
    ((1 - n)*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]^2*
       Pair[Momentum[p, n], Momentum[p, n]]*T1[r, Momentum[p, n], s]*
       T1[r, Momentum[OPEDelta, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
    (n*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]*
       Pair[Momentum[k2, n], Momentum[p, n]]*T1[r, Momentum[OPEDelta, n], s]*
       T1[r, Momentum[p, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
    (Pair[Momentum[k2, n], Momentum[k2, n]]*T1[r, Momentum[OPEDelta, n], s]*
       T1[r, Momentum[p, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) - 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) -
    ((1 - n)*Pair[Momentum[k2, n], Momentum[OPEDelta, n]]^2*
       Pair[Momentum[p, n], Momentum[p, n]]*T1[r, Momentum[OPEDelta, n], s]*
       T1[r, Momentum[p, n], s])/
-    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
+    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
    (Pair[Momentum[k2, n], Momentum[OPEDelta, n]]^2*T1[r, Momentum[p, n], s]*
      T1[r, Momentum[p, n], s])/Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2
        )]  /; FreeQ2[{r, s}, {k1, k2}] && (T1 === Eps) && checkd[k2],
 
 (* ki kj *)
-qQQ[ Eps[r___, Momentum[ki_,___], Momentum[kj_,___], s___] ] :> 
+qQQ[ Eps[r___, Momentum[ki_,___], Momentum[kj_,___], s___] ] :>
 epscontract[
   (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]*
      Pair[Momentum[ki, n], Momentum[p, n]]*
@@ -713,75 +713,75 @@ epscontract[
 (* qi qj *)
 qQQ[T1_[r___, Momentum[qi_, ___], s___]*
     T2_[t___, Momentum[qj_, ___], u___]
-   ] :> 
+   ] :>
  epscontract[
 ( (Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*T1[r, Momentum[OPEDelta, n], s]*
      T2[t, Momentum[OPEDelta, n], u])/
-   Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+   Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
   (Pair[Momentum[qi, n], Momentum[qj, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        T1[r, LorentzIndex[nu, n], s]*T2[t, LorentzIndex[nu, n], u] + 
+        T1[r, LorentzIndex[nu, n], s]*T2[t, LorentzIndex[nu, n], u] +
        Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] - 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] - 
+        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
   (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        T1[r, LorentzIndex[nu, n], s]*T2[t, LorentzIndex[nu, n], u] - 
+        T1[r, LorentzIndex[nu, n], s]*T2[t, LorentzIndex[nu, n], u] -
        Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] + 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] +
        n*Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] + 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] - 
+        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] - 
+        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
   (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        T1[r, LorentzIndex[nu, n], s]*T2[t, LorentzIndex[nu, n], u] - 
+        T1[r, LorentzIndex[nu, n], s]*T2[t, LorentzIndex[nu, n], u] -
        Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] + 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] +
        n*Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] - 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] + 
+        T1[r, Momentum[p, n], s]*T2[t, Momentum[OPEDelta, n], u] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u] - 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
   (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[p, n], Momentum[p, n]]*T1[r, LorentzIndex[nu, n], s]*
-        T2[t, LorentzIndex[nu, n], u] - 
+        T2[t, LorentzIndex[nu, n], u] -
        Pair[Momentum[p, n], Momentum[p, n]]^2*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] + 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] +
        n*Pair[Momentum[p, n], Momentum[p, n]]^2*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] + 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[OPEDelta, n], u] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*T1[r, Momentum[p, n], s]*
-        T2[t, Momentum[OPEDelta, n], u] - 
+        T2[t, Momentum[OPEDelta, n], u] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*T1[r, Momentum[p, n], s]*
-        T2[t, Momentum[OPEDelta, n], u] + 
+        T2[t, Momentum[OPEDelta, n], u] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u] - 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u] - 
+        T1[r, Momentum[OPEDelta, n], s]*T2[t, Momentum[p, n], u] -
        2*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        T1[r, Momentum[p, n], s]*T2[t, Momentum[p, n], u] + 
+        T1[r, Momentum[p, n], s]*T2[t, Momentum[p, n], u] +
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         T1[r, Momentum[p, n], s]*T2[t, Momentum[p, n], u]))/
    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4)
@@ -804,410 +804,410 @@ qQQ[Pair[Momentum[qi_, ___], LorentzIndex[mu_, ___]]*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qk, n]]
-)/ Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3 - 
+)/ Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3 -
   (Pair[LorentzIndex[mu, n], LorentzIndex[nu, n]]*
      Pair[LorentzIndex[rho, n], Momentum[p, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] + 
+        Pair[Momentum[p, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[qi, n], Momentum[qj, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
   (Pair[LorentzIndex[mu, n], LorentzIndex[nu, n]]*
      Pair[LorentzIndex[rho, n], Momentum[OPEDelta, n]]*
      (-(Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-          Pair[Momentum[p, n], Momentum[p, n]]) + 
+          Pair[Momentum[p, n], Momentum[p, n]]) +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qk, n]])*
      (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] + 
+        Pair[Momentum[p, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[qi, n], Momentum[qj, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
   (Pair[LorentzIndex[mu, n], LorentzIndex[rho, n]]*
      Pair[LorentzIndex[nu, n], Momentum[p, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[qi, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
   (Pair[LorentzIndex[mu, n], LorentzIndex[rho, n]]*
      Pair[LorentzIndex[nu, n], Momentum[OPEDelta, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]])*
      (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[qi, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) +
   (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[nu, n], Momentum[p, n]]*
      Pair[LorentzIndex[rho, n], Momentum[p, n]]*
      (n*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] + 
+        Pair[Momentum[qi, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[qi, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
      Pair[LorentzIndex[nu, n], LorentzIndex[rho, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
   (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[nu, n], LorentzIndex[rho, n]]*
      (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]])*
      (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) +
   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
      Pair[LorentzIndex[nu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[rho, n], Momentum[p, n]]*
      (n*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] + 
+        Pair[Momentum[qi, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) +
   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
      Pair[LorentzIndex[nu, n], Momentum[p, n]]*
      Pair[LorentzIndex[rho, n], Momentum[OPEDelta, n]]*
      (n*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] + 
+        Pair[Momentum[qi, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) +
   (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
      Pair[LorentzIndex[nu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[rho, n], Momentum[OPEDelta, n]]*
      (-((1 + n)*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
           Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
           Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-          Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+          Pair[Momentum[p, n], Momentum[p, n]]^2) +
        2*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] + 
+        Pair[Momentum[p, n], Momentum[qi, n]] +
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] + 
+        Pair[Momentum[p, n], Momentum[qj, n]] +
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] + 
+        Pair[Momentum[qi, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qk, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] - 
+        Pair[Momentum[qi, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] + 
+        Pair[Momentum[qi, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] - 
+        Pair[Momentum[qi, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^5) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^5) +
   (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[nu, n], Momentum[p, n]]*
      Pair[LorentzIndex[rho, n], Momentum[OPEDelta, n]]*
      (-((1 + n)*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
           Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
           Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-          Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+          Pair[Momentum[p, n], Momentum[p, n]]^2) +
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] + 
+        Pair[Momentum[p, n], Momentum[qi, n]] +
        2*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] + 
+        Pair[Momentum[p, n], Momentum[qj, n]] +
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] + 
+        Pair[Momentum[qi, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qk, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] - 
+        Pair[Momentum[qi, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] - 
+        Pair[Momentum[qi, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qj, n], Momentum[qk, n]] + 
+        Pair[Momentum[qj, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qi, n]]*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^5) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^5) +
   (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[nu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[rho, n], Momentum[p, n]]*
      (-((1 + n)*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
           Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
           Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-          Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+          Pair[Momentum[p, n], Momentum[p, n]]^2) +
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qi, n]] + 
+        Pair[Momentum[p, n], Momentum[qi, n]] +
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] + 
+        Pair[Momentum[p, n], Momentum[qj, n]] +
        2*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] - 
+        Pair[Momentum[p, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] - 
+        Pair[Momentum[qi, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] + 
+        Pair[Momentum[qi, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] - 
+        Pair[Momentum[qi, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
-        Pair[Momentum[qj, n], Momentum[qk, n]] + 
+        Pair[Momentum[qj, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qi, n]]*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^5) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^5) +
   (Pair[LorentzIndex[mu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[nu, n], Momentum[OPEDelta, n]]*
      Pair[LorentzIndex[rho, n], Momentum[OPEDelta, n]]*
      ((1 + n)*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]]^3 - 
+        Pair[Momentum[p, n], Momentum[p, n]]^3 -
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]^2*
-        Pair[Momentum[p, n], Momentum[qi, n]] - 
+        Pair[Momentum[p, n], Momentum[qi, n]] -
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]^2*
-        Pair[Momentum[p, n], Momentum[qj, n]] + 
+        Pair[Momentum[p, n], Momentum[qj, n]] +
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qj, n]] - 
+        Pair[Momentum[p, n], Momentum[qj, n]] -
        (1 + n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]^2*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        n*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        (2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[p, n], Momentum[qk, n]] + 
+        Pair[Momentum[p, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qk, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]^2*
-        Pair[Momentum[qi, n], Momentum[qj, n]] - 
+        Pair[Momentum[qi, n], Momentum[qj, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qk, n]]*
-        Pair[Momentum[qi, n], Momentum[qj, n]] + 
+        Pair[Momentum[qi, n], Momentum[qj, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]^2*
-        Pair[Momentum[qi, n], Momentum[qk, n]] - 
+        Pair[Momentum[qi, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
-        Pair[Momentum[qi, n], Momentum[qk, n]] + 
+        Pair[Momentum[qi, n], Momentum[qk, n]] +
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
         Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
         Pair[Momentum[p, n], Momentum[p, n]]^2*
-        Pair[Momentum[qj, n], Momentum[qk, n]] - 
+        Pair[Momentum[qj, n], Momentum[qk, n]] -
        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3*
         Pair[Momentum[p, n], Momentum[p, n]]*
         Pair[Momentum[p, n], Momentum[qi, n]]*
         Pair[Momentum[qj, n], Momentum[qk, n]]))/
    ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^6)
-            ) /; (Sort[Union[{qi,qj,qk,k1,k2}]] === 
+            ) /; (Sort[Union[{qi,qj,qk,k1,k2}]] ===
                   Sort[{k1,k2}]) && (checkd[k1]|| checkd[k2]),
 
 (* qi qj qi qj*)
@@ -1899,410 +1899,410 @@ t12*t13*t15^2*t16^2*t23*t5*t9)/((2-D)*t15^5)
 (* (k1 k2)^2 *)
 
 qQQ[
-Eps[r___, Momentum[qi_,___], Momentum[qj_,___], s___]^2  
+Eps[r___, Momentum[qi_,___], Momentum[qj_,___], s___]^2
    ] :>
 (
 FCPrint[1,"USING K12SQUAREDRULE"];
  epscontract[
 ( (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]^2*
-     (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       3*n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 + 
-       n^2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       3*n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 +
+       n^2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[m[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        2*n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 +
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qi, n]]^2)/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
   (2*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-     (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       3*n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 + 
-       n^2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       3*n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 +
+       n^2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        2*n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 +
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) + 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) +
   (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]^2*
-     (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       3*n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 + 
-       n^2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       3*n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 +
+       n^2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        2*n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 +
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qj, n]]^2)/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
   (Pair[Momentum[OPEDelta, n], Momentum[qj, n]]^2*
      (3*Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        2*n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[p, n], Momentum[p, n]]^2 -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]]^2)*
      Pair[Momentum[qi, n], Momentum[qi, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
   (2*Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qi, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
   (Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
      Pair[Momentum[p, n], Momentum[qj, n]]^2*
      Pair[Momentum[qi, n], Momentum[qi, n]])/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
   (2*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      (3*Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        2*n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[p, n], Momentum[p, n]]^2 -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]]^2)*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) + 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) +
   (2*Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
-     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
   (2*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
   (2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
-  ((2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
+  ((2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 +
        4*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[qi, n], Momentum[qj, n]]^2)/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) -
   (Pair[Momentum[OPEDelta, n], Momentum[qi, n]]^2*
      (3*Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        2*n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]*
-        Pair[Momentum[p, n], Momentum[p, n]] - 
+        Pair[Momentum[p, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[p, n], Momentum[p, n]]^2 -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]]^2)*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^4) -
   (2*Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
-     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
-       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 - 
+     (Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
+       n*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] + 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] +
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
-        Pair[Momentum[p, n], Momentum[p, n]] + 
+        Pair[Momentum[p, n], Momentum[p, n]] +
        n*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
   (Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
      Pair[Momentum[p, n], Momentum[qi, n]]^2*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
-   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) - 
-  ((2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 + 
+   ((2 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) -
+  ((2*Eps[r, Momentum[OPEDelta, n], Momentum[p, n], s]^2 +
        4*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]*
         Eps[r, LorentzIndex[mU[1], n], Momentum[p, n], s]*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]] - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]] -
        Eps[r, LorentzIndex[mU[1], n], LorentzIndex[mU[2], n], s]^2*
-        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 - 
+        Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2 -
        2*Eps[r, LorentzIndex[mU[1], n], Momentum[OPEDelta, n], s]^2*
         Pair[Momentum[p, n], Momentum[p, n]])*
      Pair[Momentum[qi, n], Momentum[qi, n]]*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
    ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2)
        ) ]
-) /; (Sort[{qi, qj}] === {k1, k2}) && 
+) /; (Sort[{qi, qj}] === {k1, k2}) &&
               (checkd[k1] || checkd[k2]) && FreeQ[{r,s},{k1,k2}],
 
 (* k1 k2 k1 k2 *)
    qQQ[
-Eps[LorentzIndex[AL_,___], Momentum[OPEDelta, ___], 
+Eps[LorentzIndex[AL_,___], Momentum[OPEDelta, ___],
     Momentum[qi_, ___], Momentum[qj_, ___]
    ]*
-Eps[LorentzIndex[AL_,___], Momentum[p, ___], 
+Eps[LorentzIndex[AL_,___], Momentum[p, ___],
     Momentum[qi_, ___], Momentum[qj_, ___]
-   ]  ]:> 
+   ]  ]:>
 (
 FCPrint[1,"USING QiQjQiQjRULE"];
 epscontract[
 (* o.k., forgot to do with general n in Eps ... *)
 ChangeDimension[
-( ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 - 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+( ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 -
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]^2*
      Pair[Momentum[p, n], Momentum[qi, n]]^2)/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
-  (2*(Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
-         Momentum[OPEDelta], Momentum[p]]^2 - 
-       n*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
-          Momentum[OPEDelta], Momentum[p]]^2 - 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
+  (2*(Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
+         Momentum[OPEDelta], Momentum[p]]^2 -
+       n*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
+          Momentum[OPEDelta], Momentum[p]]^2 -
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 - 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 -
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]^2*
      Pair[Momentum[p, n], Momentum[qj, n]]^2)/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 - 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 -
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]^2*
      Pair[Momentum[p, n], Momentum[p, n]]*
      Pair[Momentum[qi, n], Momentum[qi, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 + 
-       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 +
+       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qi, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
-  (2*(Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
-         Momentum[OPEDelta], Momentum[p]]^2 - 
-       n*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
-          Momentum[OPEDelta], Momentum[p]]^2 - 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
+  (2*(Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
+         Momentum[OPEDelta], Momentum[p]]^2 -
+       n*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
+          Momentum[OPEDelta], Momentum[p]]^2 -
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[p, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) + 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 + 
-       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) +
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 +
+       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 + 
-       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 +
+       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) - 
-  ((2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
-          Momentum[OPEDelta], Momentum[p]]^2 + 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) -
+  ((2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
+          Momentum[OPEDelta], Momentum[p]]^2 +
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[qi, n], Momentum[qj, n]]^2)/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) - 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 - 
-       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]) -
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 - n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 -
+       Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]^2*
      Pair[Momentum[p, n], Momentum[p, n]]*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) - 
-  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]], 
-          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 + 
-       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^3) -
+  ((Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+         Momentum[p]]^2 + n*Eps[LorentzIndex[mU[1]],
+          LorentzIndex[mU[2]], Momentum[OPEDelta], Momentum[p]]^2 +
+       2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[OPEDelta, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
-   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) + 
-  ((2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta], 
-          Momentum[p]]^2 + Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+   ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]]^2) +
+  ((2*Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], Momentum[OPEDelta],
+          Momentum[p]]^2 + Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[OPEDelta]]*
-        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]], 
+        Eps[LorentzIndex[mU[1]], LorentzIndex[mU[2]],
          LorentzIndex[mU[3]], Momentum[p]]*
         Pair[Momentum[OPEDelta, n], Momentum[p, n]])*
      Pair[Momentum[qi, n], Momentum[qi, n]]*
      Pair[Momentum[qj, n], Momentum[qj, n]])/
    ((2 - n)*(3 - n)*Pair[Momentum[OPEDelta, n], Momentum[p, n]])
-       ), n] ]) /; (Sort[{qi, qj}] === {k1, k2}) && 
+       ), n] ]) /; (Sort[{qi, qj}] === {k1, k2}) &&
                   (checkd[qi] || checkd[qj])
  };
 
@@ -2312,7 +2312,7 @@ decrules = Join[decrules, Drop[Drop[decrules,-1],1
 FCPrint[1,"OPE2TID checkkkk"];
 
 If[speciallabel =!= True,
-   temp4 = Expand2[epscontract[temp4 /. decrules]//diracsimp2, 
+   temp4 = Expand2[epscontract[temp4 /. decrules]//diracsimp2,
                 LorentzIndex];
    ,
    temp4 = Expand2[temp4 /. decrulesspecial, LorentzIndex];
@@ -2323,7 +2323,7 @@ FCPrint[1,"decrules done"];
 If[contractlabel === True,
    temp4 = temp4/. Pair -> PairContract3 /. PairContract3 -> Pair;
   ];
-temp = nok1k2factor temp4 tempf delfactor; 
+temp = nok1k2factor temp4 tempf delfactor;
 
 If[k12shift =!= {},
 FCPrint[2,"shifting back"];
@@ -2340,10 +2340,10 @@ For[ijji = 1, ijji < 6, ijji++,
 temp = Expand2[temp, LorentzIndex];
    If[Head[temp] === Plus,
       ntemp = 0;
-      For[int = 1, int <=Length[temp], int++,           
-             FCPrint[2,"int = ",int, "  out of",Length[temp]];          
+      For[int = 1, int <=Length[temp], int++,
+             FCPrint[2,"int = ",int, "  out of",Length[temp]];
           ntemp = ntemp + Contract[temp[[int]], Expanding -> True,
-                                   EpsContract -> False, 
+                                   EpsContract -> False,
                                    Rename -> True]
          ];
       temp = ntemp,
@@ -2353,14 +2353,14 @@ temp = Expand2[temp, LorentzIndex];
   ];
 
 If[CheckContext["DiracTrace"],
-   If[!FreeQ[temp, DiracTrace], 
+   If[!FreeQ[temp, DiracTrace],
 (*
       temp = Contract[temp, EpsContract->False];
 *)
  FCPrint[1,"DiracTrick"];
       temp = DiracTrick[temp];
  FCPrint[1,"collecting DiracTrace"];
-      temp = Collect2[temp, DiracTrace, 
+      temp = Collect2[temp, DiracTrace,
                             Factoring -> False
                      ]/. DiracTrace -> Tr2
      ];
@@ -2368,8 +2368,8 @@ If[contractlabel === True,
 temp = Expand2[temp, LorentzIndex];
  FCPrint[1,"PairContract"];
 
-temp = temp /. Pair -> PairContract3 /. 
-       PairContract3 -> PairContract  /.  
+temp = temp /. Pair -> PairContract3 /.
+       PairContract3 -> PairContract  /.
        PairContract -> Pair;
  FCPrint[1,"PairContract done"];
 If[!FreeQ[temp, LorentzIndex],
@@ -2379,14 +2379,14 @@ For[ijji = 1, ijji < 6, ijji++,
       ]
    ];
   FCPrint[1,"contracting agaaaaaaaaaain in OPE2TID"];
-   
+
 temp = Expand2[temp,LorentzIndex];
    If[Head[temp] === Plus,
       ntemp = 0;
-      For[int = 1, int <=Length[temp], int++,          
-             FCPrint[2,"int = ",int, "  out of",Length[temp]];          
+      For[int = 1, int <=Length[temp], int++,
+             FCPrint[2,"int = ",int, "  out of",Length[temp]];
           ntemp = ntemp + Contract[temp[[int]], Expanding -> True,
-                                   EpsContract -> False, 
+                                   EpsContract -> False,
                                    Rename -> True]
          ];
       temp = ntemp,
@@ -2414,8 +2414,8 @@ If[!FreeQ2[kape = Select1[Cases2[temp,Pair], OPEDelta], {k1,k2}],
       temp = ScalarProductCancel[OPE1Loop[{k1,k2},temp],k1,k2,
                                  Collecting->False]
       ,
-      temp = Select1[temp,kape] + 
-             ScalarProductCancel[ OPE1Loop[{k1,k2}, 
+      temp = Select1[temp,kape] +
+             ScalarProductCancel[ OPE1Loop[{k1,k2},
                                   Select2[temp, kape]], k1, k2,
                                   Collecting->False
                                 ]
@@ -2429,7 +2429,7 @@ If[!FreeQ2[kape = Select1[Cases2[temp,Pair], OPEDelta], {k1,k2}],
   ]
 ,
 (* !FreeQ2  delfactor *)
-(* and now, if there is no delta-factor , let's do a 
+(* and now, if there is no delta-factor , let's do a
    decomposition a la Pass. -Velt. : *)
 
 (* for clarity put tempf into qQQ *)
@@ -2449,25 +2449,25 @@ If[(!FreeQ[{aa}, p])
 *),
         True, False]
 ];
-                
+
 (*YYY*)
 decrulespv = {
 (* k1 *)
  qQQ[T1_[aa___, Momentum[k1, ___], bb___] *
-     FeynAmpDenominator[ped__] 
+     FeynAmpDenominator[ped__]
     ]:>
      epscontract[ FeynAmpDenominator[ped] *
-                  T1[aa, Momentum[p, n], bb] * 
+                  T1[aa, Momentum[p, n], bb] *
                   Pair[Momentum[k1,n], Momentum[p, n]]/
                   Pair[Momentum[p,n] , Momentum[p, n]]
                 ] /; fcheck[k1, ped] && mem[T1] &&
 (* hier war der Hund begraben .... *)
                      FreeQ2[{aa,bb}, {k1,k2}],
  qQQ[T1_[aa___, Momentum[k2, ___], bb___] *
-     FeynAmpDenominator[ped__] 
+     FeynAmpDenominator[ped__]
     ]:>
      epscontract[ FeynAmpDenominator[ped] *
-                  T1[aa, Momentum[p, n], bb] * 
+                  T1[aa, Momentum[p, n], bb] *
                   Pair[Momentum[k2,n], Momentum[p, n]]/
                   Pair[Momentum[p,n] , Momentum[p, n]]
                 ] /; fcheck[k2, ped] && mem[T1]&&
@@ -2478,13 +2478,13 @@ decrulespv = {
      )^2 * FeynAmpDenominator[ped__]
     ] :> (
 FeynAmpDenominator[ped] *
-  epscontract[ 
-  ((Pair[Momentum[p, n], Momentum[qi, n]]^2 - 
+  epscontract[
+  ((Pair[Momentum[p, n], Momentum[qi, n]]^2 -
         Pair[Momentum[p, n], Momentum[p, n]]*
          Pair[Momentum[qi, n], Momentum[qi, n]])*
       T1[a, LorentzIndex[nu, n], b]^2)/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) - 
-   ((n*Pair[Momentum[p, n], Momentum[qi, n]]^2 - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) -
+   ((n*Pair[Momentum[p, n], Momentum[qi, n]]^2 -
         Pair[Momentum[p, n], Momentum[p, n]]*
          Pair[Momentum[qi, n], Momentum[qi, n]])*
       T1[a, Momentum[p, n], b]^2)/
@@ -2502,13 +2502,13 @@ FeynAmpDenominator[ped] * (
   (Pair[Momentum[p, n], Momentum[qi, n]]*
       Pair[Momentum[p, n], Momentum[qj, n]]*T1[a, LorentzIndex[nu, n], b]*
       T2[c, LorentzIndex[nu, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) -
    (Pair[Momentum[qi, n], Momentum[qj, n]]*T1[a, LorentzIndex[nu, n], b]*
-      T2[c, LorentzIndex[nu, n], d])/(1 - n) - 
+      T2[c, LorentzIndex[nu, n], d])/(1 - n) -
    (n*Pair[Momentum[p, n], Momentum[qi, n]]*
       Pair[Momentum[p, n], Momentum[qj, n]]*T1[a, Momentum[p, n], b]*
       T2[c, Momentum[p, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) +
    (Pair[Momentum[qi, n], Momentum[qj, n]]*T1[a, Momentum[p, n], b]*
       T2[c, Momentum[p, n], d])/((1 - n)*
               Pair[Momentum[p, n], Momentum[p, n]])
@@ -2516,23 +2516,23 @@ FeynAmpDenominator[ped] * (
                  FreeQ2[{a,b,c,d}, {k1,k2}],
 
  qQQ[Eps[a___, Momentum[qi_ /; MemberQ[{k1,k2},qi], ___],
-               Momentum[qj_ /; MemberQ[{k1,k2},qj], ___], 
+               Momentum[qj_ /; MemberQ[{k1,k2},qj], ___],
          b___]*
      Eps[c___, Momentum[qk_ /; MemberQ[{k1,k2},qk], ___], d___]*
      FeynAmpDenominator[ped__]
     ] :> (FeynAmpDenominator[ped] *
-    epscontract[ 
+    epscontract[
   -((Eps[c, LorentzIndex[nu, n], d]*
         Eps[a, LorentzIndex[nu, n], Momentum[p, n], b]*
         Pair[Momentum[p, n], Momentum[qj, n]]*
         Pair[Momentum[qi, n], Momentum[qk, n]])/
-      ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]])) + 
+      ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]])) +
    (Eps[c, LorentzIndex[nu, n], d]*
       Eps[a, LorentzIndex[nu, n], Momentum[p, n], b]*
       Pair[Momentum[p, n], Momentum[qi, n]]*
       Pair[Momentum[qj, n], Momentum[qk, n]])/
     ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]])
-               ]) /; (fcheck[qi, ped] && fcheck[qj, ped])&& 
+               ]) /; (fcheck[qi, ped] && fcheck[qj, ped])&&
                      FreeQ2[{a,b,c,d}, {k1,k2}],
 
  qQQ[T1_[a___, Momentum[qi_ /; MemberQ[{k1,k2},qi], ___], b___]*
@@ -2547,53 +2547,53 @@ epscontract[
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qk, n]]*T1[a, Momentum[p, n], b]*
      T2[c, LorentzIndex[rho, n], d]*T3[e, LorentzIndex[rho, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) - 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) -
   (Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[qj, n], Momentum[qk, n]]*T1[a, Momentum[p, n], b]*
      T2[c, LorentzIndex[rho, n], d]*T3[e, LorentzIndex[rho, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) + 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) +
   (Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qk, n]]*T1[a, LorentzIndex[rho, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, LorentzIndex[rho, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) - 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) -
   (Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qk, n]]*T1[a, LorentzIndex[rho, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, LorentzIndex[rho, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) + 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) +
   (Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qk, n]]*T1[a, LorentzIndex[nu, n], b]*
      T2[c, LorentzIndex[nu, n], d]*T3[e, Momentum[p, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) - 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) -
   (Pair[Momentum[p, n], Momentum[qk, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]]*T1[a, LorentzIndex[nu, n], b]*
      T2[c, LorentzIndex[nu, n], d]*T3[e, Momentum[p, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) - 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) -
   (2*Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qk, n]]*T1[a, Momentum[p, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, Momentum[p, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) - 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) -
   (n*Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[p, n], Momentum[qk, n]]*T1[a, Momentum[p, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, Momentum[p, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) + 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) +
   (Pair[Momentum[p, n], Momentum[qk, n]]*
      Pair[Momentum[qi, n], Momentum[qj, n]]*T1[a, Momentum[p, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, Momentum[p, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) +
   (Pair[Momentum[p, n], Momentum[qj, n]]*
      Pair[Momentum[qi, n], Momentum[qk, n]]*T1[a, Momentum[p, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, Momentum[p, n], f])/
-   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+   ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) +
   (Pair[Momentum[p, n], Momentum[qi, n]]*
      Pair[Momentum[qj, n], Momentum[qk, n]]*T1[a, Momentum[p, n], b]*
      T2[c, Momentum[p, n], d]*T3[e, Momentum[p, n], f])/
    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2)
        )
-           ])) /; (fcheck[qi, ped] && fcheck[qj, ped]&&fcheck[qk, ped])&& 
+           ])) /; (fcheck[qi, ped] && fcheck[qj, ped]&&fcheck[qk, ped])&&
                   mem[T1,T2,T3] && FreeQ2[{a,b,c,d,e,f},{k1,k2}]
  ,
  qQQ[T1_[a___, Momentum[qi_ /; MemberQ[{k1,k2},qi], ___], b___]^2*
@@ -2603,36 +2603,36 @@ epscontract[
 (
 rho = Unique["lI"];
 nu = Unique["lI"];
-FeynAmpDenominator[ped] * 
+FeynAmpDenominator[ped] *
 epscontract[
   (2*Pair[Momentum[p, n], Momentum[qi, n]]^2*
       Pair[Momentum[p, n], Momentum[qj, n]]*T1[a, LorentzIndex[rho, n], b]*
       T1[a, Momentum[p, n], b]*T2[c, LorentzIndex[rho, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) -
    (2*Pair[Momentum[p, n], Momentum[qi, n]]*
       Pair[Momentum[qi, n], Momentum[qj, n]]*T1[a, LorentzIndex[rho, n], b]*
       T1[a, Momentum[p, n], b]*T2[c, LorentzIndex[rho, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) + 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) +
    (Pair[Momentum[p, n], Momentum[qi, n]]^2*
       Pair[Momentum[p, n], Momentum[qj, n]]*T1[a, LorentzIndex[nu, n], b]^2*
       T2[c, Momentum[p, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) -
    (Pair[Momentum[p, n], Momentum[qj, n]]*
       Pair[Momentum[qi, n], Momentum[qi, n]]*
       T1[a, LorentzIndex[nu, n], b]^2*T2[c, Momentum[p, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) -
    (2*Pair[Momentum[p, n], Momentum[qi, n]]^2*
       Pair[Momentum[p, n], Momentum[qj, n]]*T1[a, Momentum[p, n], b]^2*
       T2[c, Momentum[p, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) -
    (n*Pair[Momentum[p, n], Momentum[qi, n]]^2*
       Pair[Momentum[p, n], Momentum[qj, n]]*T1[a, Momentum[p, n], b]^2*
       T2[c, Momentum[p, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) + 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^3) +
    (Pair[Momentum[p, n], Momentum[qj, n]]*
       Pair[Momentum[qi, n], Momentum[qi, n]]*T1[a, Momentum[p, n], b]^2*
       T2[c, Momentum[p, n], d])/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) + 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2) +
    (2*Pair[Momentum[p, n], Momentum[qi, n]]*
       Pair[Momentum[qi, n], Momentum[qj, n]]*T1[a, Momentum[p, n], b]^2*
       T2[c, Momentum[p, n], d])/
@@ -2652,7 +2652,7 @@ FCPrint[1, "decrulespv done"];
 (*
 temp = temp /. Pair -> PairContract3 /. PairContract -> Pair;
 *)
-If[!FreeQ[temp, LorentzIndex] &&  contractlabel === True, 
+If[!FreeQ[temp, LorentzIndex] &&  contractlabel === True,
    temp = Contract[temp, EpsContract -> False, Rename -> True];
   ];
 If[!FreeQ[temp,DiracGamma], temp = DiracTrick[temp] ];

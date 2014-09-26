@@ -22,9 +22,11 @@ polynomials in m.";
 
 Begin["`Private`"];
    
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Pair = MakeContext["CoreObjects","Pair"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 
-MakeContext[Collect2, DeltaFunction,
-            Factor2, OPEm, Pair, PlusDistribution, 
+MakeContext[Collect2, Factor2, OPEm, 
             Select1, Select2, SumS, SumT, Zeta2];
 
 

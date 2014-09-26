@@ -23,7 +23,7 @@ A0::"usage" =
 Begin["`Private`"];
 
 MakeContext[A0ToB0, B0, BReduce];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
  Options[A0] = {A0ToB0 -> False};
  

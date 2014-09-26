@@ -17,13 +17,25 @@ TLIFP::"usage"= "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 
-MakeContext[ChangeDimension,Collect2, DeltaFunction,
-            Epsilon, GammaExpand, Momentum,
-            OPEDelta, OPEi,
-            OPEm, PositiveInteger, ScalarProduct, Smu, TLI, TLI2];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+
+MakeContext[
+    ChangeDimension,
+    Collect2,
+    GammaExpand,
+    OPEDelta,
+    OPEi,
+    OPEm,
+    PositiveInteger,
+    ScalarProduct,
+    Smu,
+    TLI,
+    TLI2
+    ];
 
 (* 15. Feb 1996; *)
 
@@ -34,7 +46,7 @@ MakeContext[ChangeDimension,Collect2, DeltaFunction,
 (* Map[Integrate[#, {t, 0, 1}, {u, 0, 1}], ...] is understood *)
 
 
-Options[TLIFP] = { FeynmanParameterNames -> 
+Options[TLIFP] = { FeynmanParameterNames ->
                        {Global`x, Global`t, Global`u, Global`s,
                         Global`y},
                    GammaExpand -> True,
@@ -47,7 +59,7 @@ TLIFP[exp_, opt___Rule] := Block[
   {x,t,u,s,y } = FeynmanParameterNames /. {opt} /.  Options[TLIFP];
 p = Momentum /. {opt} /. Options[TLIFP];
 gaex = GammaExpand /. {opt} /. Options[TLIFP];
-If[gaex === True, 
+If[gaex === True,
    simp[zz_] := Collect2[GammaExpand[zz],Hypergeometric2F1];
    ,
    simp[zz_] := zz
@@ -56,7 +68,7 @@ SetAttributes[comment, HoldAll];
 comment[yy_] := If[Print/.{opt}/.Options[TLIFP], Print[yy]];
 MCH[w_ /; Head[w]=!=Integer]     := True;  (*the m of the spin *)
 integ[yy_ /; Head[yy] === Integer] := True;  (* check for integer*)
-integ[yy_] := True /; DataType[yy, PositiveInteger] === True;  
+integ[yy_] := True /; DataType[yy, PositiveInteger] === True;
 (* check for integer*)
 pinteg[yy_Integer?Positive] := True;  (* check for positive integer*)
 pinteg[yy_ /; DataType[yy, PositiveInteger] === True] := True;
@@ -66,7 +78,7 @@ so[r] = ScalarProduct[OPEDelta, p];
 
 (* ************************   TLIFP, RFP1 ************************ *)
 tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 
+           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol},
              0, a4_?pinteg, a5_?pinteg}
           ]
      ] := (
@@ -78,7 +90,7 @@ comment["Using RFP1"];
   Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
   (E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a2]*Gamma[a4]*Gamma[a5])) .
 (
-  x^(a4 + g2 + g5)* 
+  x^(a4 + g2 + g5)*
   (1 - x)^(7 - a1 - a2 - 2*a4 - 2*a5 + 2*Epsilon + g3 +g4 + g5)
 ) .
 (
@@ -98,7 +110,7 @@ comment["Using RFP1"];
 (* ************************   tlifp, RFP2       ************************ *)
 (* use the following param. for: 2 - a2 - a4 + Epsilon/2 < 0 *)
 tlifp[tLI[{m_, g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-      {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 
+      {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol},
        0, a4_?pinteg, a5_?pinteg}]
      ] := (
 comment["Using RFP2"];
@@ -130,7 +142,7 @@ comment["Using RFP2"];
 (* use the following param. for: 4 - a1 - 2 a5 + Epsilon + g5 > 0 *)
 
 tlifp[tLI[{g1_?integ, m_, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0, 
+          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0,
               a4_?pinteg, a5_?pinteg}
          ]
      ] := (
@@ -155,9 +167,9 @@ comment["Using RFP3"];
 (* use the following param. for: 2 - a2 - a4 + Epsilon/2 < 0 *)
 
 tlifp[tLI[{g1_?integ, m_, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0, 
+          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0,
             a4_?pinteg, a5_?pinteg}
-         ] 
+         ]
      ] := (
 comment["Using RFP4"];
 (
@@ -178,7 +190,7 @@ comment["Using RFP4"];
 (* ************************   tlifp, RFP5     ************************ *)
 
 tlifp[ tLI[{m_ /;MCH[m], g2_?integ, g3_?integ, g4_?integ, 0},
-           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 
+           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol},
              a3_?pinteg, a4_?integ, 0} (* a3 and a4 can be 0 *)
           ]
      ] := (
@@ -222,8 +234,8 @@ comment["Using RFP5b"];
 
 (* ************************   tlifp, RFP6     ************************ *)
 tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, -1},
-           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 
-	     a3_?pinteg, a4_?pinteg, 0}
+           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol},
+       a3_?pinteg, a4_?pinteg, 0}
           ]
      ] := (
 comment["Using RFP6"];
@@ -234,14 +246,14 @@ comment["Using RFP6"];
     (E^(Epsilon EulerGamma) Gamma[a1] Gamma[a2] Gamma[a3] Gamma[a4])) .
   (x^a3 (1 - x)^(3 - a1 - 2 a3 + Epsilon + g3)).
 (*
-via Hamberg (3C.31) the expression 
+via Hamberg (3C.31) the expression
   (u^(-1 + a4 + g2) (1 - u)^(3 - a2 - 2 a4 + Epsilon + g4) (x - u)^(-1))
 is analytically continued and the imaginary part dropped
 *)
   (
    - Pi Cot[Pi Epsilon] x^(-1 + a4 + g2) *
       (1 - x)^(3 - a2 - 2 a4 + Epsilon + g4) +
-   (-1)^(a4 + g2) u^(-3 + a2 + a4 - Epsilon - g2 - g4) * 
+   (-1)^(a4 + g2) u^(-3 + a2 + a4 - Epsilon - g2 - g4) *
       (1 - u)^(-1 + a4 + g2) * (1 - (1 - x) u)^(-1)
   )
 ) /. {Dot :> Times, EulerGamma :> 0}
@@ -286,7 +298,7 @@ comment["Using RFP7"];
 
 
 tlifp[tLI[{m_, g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?integ, M_Symbol}, a2_?integ, 0, 
+          {{a1_?integ, M_Symbol}, a2_?integ, 0,
            {a4_?integ, M_Symbol}, {a5_?integ, M_Symbol}}
          ]
      ] := (
@@ -317,7 +329,7 @@ comment["Using RFP8"];
 (* ************************   tlifp, RFP8b     ************************ *)
 
 tlifp[tLI[{m_, g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?pinteg, M_Symbol}, 0, 0, 
+          {{a1_?pinteg, M_Symbol}, 0, 0,
            {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}}
          ]
      ] := (
@@ -331,7 +343,7 @@ comment["Using RFP8b"];
 ) .
 (
   x^(2 - a1 + Epsilon/2)*(1 - x)^(-1 + a1 + g3 + g4 + g5)
-) . 
+) .
 (
   u^(-3 + a1 + a5 - Epsilon/2 + g4)*(1 - u)^(-3 + a1 + a4 - Epsilon/2 + g5)*
   (1 - u*(1 - x))^(4 - a1 - a4 - a5 + Epsilon + g2)*
@@ -344,7 +356,7 @@ comment["Using RFP8b"];
 (* Caution:  Handle the x -> 1 behaviour with care ******************* *)
 
 tlifp[tLI[{g1_?integ, g2_?integ, g3_?integ, g4_?integ, m_},
-           {{a1_?pinteg, M_Symbol}, 0, a3_?pinteg, 
+           {{a1_?pinteg, M_Symbol}, 0, a3_?pinteg,
             {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}
            }
          ]
@@ -363,7 +375,7 @@ comment["Using RFP8c"];
 ) .
 (
   u^(-3 + a3 + a4 + a5 - Epsilon/2 + g1)*
-  (1 - u)^(-3 + a1 + a3 + a5 - Epsilon/2 + g4)* 
+  (1 - u)^(-3 + a1 + a3 + a5 - Epsilon/2 + g4)*
   (u + x - u*x)^g2*
   (1 - u + u*x)^(4 - a1 - 2*a3 - a4 - a5 + Epsilon + g3)
 ).
@@ -380,7 +392,7 @@ comment["Using RFP8c"];
 (* ************************   tlifp, RFP9     ************************ *)
 
 tlifp[tLI[{m_, g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {0, a2_?pinteg, a3_?pinteg, 
+          {0, a2_?pinteg, a3_?pinteg,
           {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}}
          ]
      ] := (
@@ -411,7 +423,7 @@ comment["Using RFP9"];
 (* ************************   tlifp, RFP12     ************************ *)
 
 tlifp[tLI[{m_, g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?pinteg, M_Symbol}, a2_?pinteg, a3_?pinteg, 
+          {{a1_?pinteg, M_Symbol}, a2_?pinteg, a3_?pinteg,
            {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}}
          ]
      ] := (
@@ -440,10 +452,10 @@ comment["Using RFP12"];
   (1 - s)^(-1 + a4)*(1 - u*x - s*y)^(-1 + a2)*
   (1 - t*u*x - s*y)^(-1 - Epsilon/2)*
   (t*u*x + s*y)^(4 - a1 - a2 - a3 - a4 - a5 + Epsilon)
-) 
+)
   + (-1)^g5*
 (
-  x^(-2 + a2 + a3 + a4 + a5 - Epsilon/2)*   
+  x^(-2 + a2 + a3 + a4 + a5 - Epsilon/2)*
   y^(1 + a2 - a3 + Epsilon/2 + g3 + g4 + g5)
 ) .
 (
@@ -454,7 +466,7 @@ comment["Using RFP12"];
   t^(-3 + a1 + a3 + a5 - Epsilon/2)*(1 - t)^(-1 + a2)*(1 - t*u)^(-1 + a4)
 ) .
 (
-  s^(-3 + a2 + a4 + a5 - Epsilon/2)*(1 - s)^(-1 + a3)* 
+  s^(-3 + a2 + a4 + a5 - Epsilon/2)*(1 - s)^(-1 + a3)*
   (1 - s*x - u*y)^(-1 + a1)*(1 - s*x - t*u*y)^(-1 - Epsilon/2)*
   (s*x + t*u*y)^(4 - a1 - a2 - a3 - a4 - a5 + Epsilon)
 )
@@ -465,7 +477,7 @@ comment["Using RFP12"];
 (* ************************   tlifp, RFP13     ************************ *)
 
 tlifp[tLI[{g1_?integ, g2_?integ, g3_?integ, g4_?integ, m_},
-          {{a1_?pinteg, M_Symbol}, a2_?pinteg, a3_?pinteg, 
+          {{a1_?pinteg, M_Symbol}, a2_?pinteg, a3_?pinteg,
            {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}}
          ]
      ] := (
@@ -586,7 +598,7 @@ comment["Using RFP15"];
 
 
 (* ************************   tlifp, RFP17     ************************ *)
-tlifp[tLI[{g1_. + OPEm - OPEi, 0, g3_?integ, 
+tlifp[tLI[{g1_. + OPEm - OPEi, 0, g3_?integ,
            g4_?integ, g5_. + OPEi},
           {{a1_?pinteg, M_Symbol}, a2_?pinteg, a3_?pinteg,
            {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}}
@@ -625,18 +637,18 @@ comment["Using RFP17"];
   (1 - s*(1 - y) - t*(1 - x)*y)^(-1 - Epsilon/2)*
   (s*(1 - y) + t*(1 - x)*y)^(4 - a1 - a2 - a3 - a4 - a5 + Epsilon)
 )
-  + 
+  +
 (
   x^(-1 + OPEm)
 ) .
 (
   (-1)^g5*
-(* 
+(*
 managable contribution from
-TLI[{1 + g1 + OPEm, -1, g3, g4, g5}, {{a1, M}, a2, a3, {a4, M}, {a5, M}}] 
+TLI[{1 + g1 + OPEm, -1, g3, g4, g5}, {{a1, M}, a2, a3, {a4, M}, {a5, M}}]
 *)
 (
-  x^(-1 + a2 + a3 + a4 + a5 - Epsilon/2 + g1)*   
+  x^(-1 + a2 + a3 + a4 + a5 - Epsilon/2 + g1)*
   (1 - x)^(1 + a2 - a3 + Epsilon/2 + g3 + g4 + g5)
 ) .
 (
@@ -647,14 +659,14 @@ TLI[{1 + g1 + OPEm, -1, g3, g4, g5}, {{a1, M}, a2, a3, {a4, M}, {a5, M}}]
   t^(-3 + a1 + a3 + a5 - Epsilon/2)*(1 - t)^(-1 + a2)*(1 - t*u)^(-1 + a4)
 ) .
 (
-  s^(-3 + a2 + a4 + a5 - Epsilon/2)*(1 - s)^(-1 + a3)* 
+  s^(-3 + a2 + a4 + a5 - Epsilon/2)*(1 - s)^(-1 + a3)*
   (1 - s*x - u*(1 - x))^(-1 + a1)*(1 - s*x - t*u*(1 - x))^(-1 - Epsilon/2)*
   (s*x + t*u*(1 - x))^(4 - a1 - a2 - a3 - a4 - a5 + Epsilon)
 )
   + (-1)^OPEm*
-(* 
-managable contribution from  
-TLI[{2 + g1, -1, g3, g4, OPEm + g5 - 1}, {{a1, M}, a2, a3, {a4, M}, {a5, M}}] 
+(*
+managable contribution from
+TLI[{2 + g1, -1, g3, g4, OPEm + g5 - 1}, {{a1, M}, a2, a3, {a4, M}, {a5, M}}]
 *)
 (
   x^g5*(1 - x)^(1 + a2 + a3 + a5 + g1 + g4)
@@ -714,7 +726,7 @@ comment["Using RFP18"];
 (* ************************   tlifp, RFP18  ************************ *)
 (* ************************   tlifp, RFP19  ************************ *)
 tlifp[tLI[{g1_ /; MCH[g1], g2_?integ, g3_?integ, g4_?integ, g5_ /;MCH[g5]},
-           {0, a2_?pinteg, a3_?pinteg, 
+           {0, a2_?pinteg, a3_?pinteg,
             {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}
            }
          ]
@@ -742,7 +754,7 @@ comment["Using RFP19"];
 (* ************************   tlifp, RFP21     ************************ *)
 
 tlifp[tLI[{m_ /; MCH[m], g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol}, 
+          {{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol},
             a3_?integ, a4_?integ, a5_?integ}
          ]
      ] := (
@@ -761,7 +773,7 @@ comment["Using RFP21"];
   (1 - u + t*u*(1 - x))^(-1 + a3)*(1 - u + s*t*u*(1 - x))^(-1 - Epsilon/2)*
   (1 - t*(1 - u) - u + s*t*u*(1 - x))^(4 - a1 - a2 - a3 - a4 - a5 + Epsilon)*
   (1 - x)^(1 - a3 + Epsilon/2 + g3)*x^(a3 + a4 + g2 + g5)*
-  (1 - u*x)^(4 - a2 - a3 - 2*a4 - a5 + Epsilon + g4) + 
+  (1 - u*x)^(4 - a2 - a3 - 2*a4 - a5 + Epsilon + g4) +
  (-1)^g5*(1 - s)^(-1 + a3)*s^(-3 + a2 + a4 + a5 - Epsilon/2)*
   (1 - t)^(-3 + a1 + a3 + a5 - Epsilon/2)*t^(-1 + a2)*
   (1 - u)^(-1 + a1 + a3 + g5)*u^(1 - a4 + Epsilon/2 + g4)*(1 - u*(1 - x))^g2*
@@ -777,7 +789,7 @@ comment["Using RFP21"];
 (* ************************   tlifp, RFP22     ************************ *)
 
 tlifp[tLI[{m_ /; MCH[m], g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {0, {a2_?integ, M_Symbol}, 
+          {0, {a2_?integ, M_Symbol},
             a3_?integ, a4_?integ, a5_?integ}
          ]
      ] := (
@@ -805,7 +817,7 @@ comment["Using RFP22"];
 (* ************************   tlifp, RFP23     ************************ *)
 
 tlifp[tLI[{m_ /; MCH[m], g2_?integ, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol}, 
+          {{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol},
             a3_?integ, a4_?integ, 0}
          ]
      ] := (
@@ -873,7 +885,7 @@ tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
 
 (* PR2 *)
 (* 1 <--> 3, 2 <--> 4 ALLGEMEIN *)
-tlifp[tLI[{g1_, g2_, g3_, g4_, g5_}, 
+tlifp[tLI[{g1_, g2_, g3_, g4_, g5_},
           {a1_?integ, {a2_?pinteg, M_Symbol}, {a3_?pinteg, M_Symbol},
            a4_?integ, {a5_?pinteg, M_Symbol}
           }
@@ -887,7 +899,7 @@ tlifp[tLI[{g1_, g2_, g3_, g4_, g5_},
 
 (* PR3 *)
 (* 1 <--> 4, 2 <--> 3 ALLGEMEIN *)
-tlifp[tLI[{g1_, g2_, g3_, m_ /; MCH[m], g5_}, 
+tlifp[tLI[{g1_, g2_, g3_, m_ /; MCH[m], g5_},
           {{a1_?pinteg, M_Symbol}, a2_?pinteg, a3_?pinteg,
            {a4_?pinteg, M_Symbol},
            {a5_?pinteg, M_Symbol}
@@ -911,9 +923,9 @@ tlifp[tLI[{m_ /; MCH[m], g2_, g3_, g4_, g5_},
 
 (* PR5 *)
 tlifp[tLI[{m_ /; MCH[m], g2_, g3_, g4_, g5_},
-          {{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol}, 
+          {{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol},
             a3_?integ, 0, a5_?integ}
-         ] 
+         ]
      ] := (comment["using PR5"];
           (-1)^g5 tlifp[ tLI[{g2, m, g4, g3, g5},
                              {{a2, M}, {a1, M}, 0, a3, a5}
@@ -924,11 +936,11 @@ tlifp[tLI[{m_ /; MCH[m], g2_, g3_, g4_, g5_},
 (* PR6 *)
 tlifp[ tLI[{0, g2_?integ, g3_?integ, g4_?integ, m_ /; MCH[m]},
            {0, a2_?pinteg, a3_?pinteg,
-            {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol} 
+            {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}
            }
           ]
      ] := (comment["using PR6"];
-          (-1)^g3 tlifp[tLI[{m, g4, 0, g2, g3}, 
+          (-1)^g3 tlifp[tLI[{m, g4, 0, g2, g3},
                             {{a5, M}, {a4, M}, 0, a2, a3}
                            ]
                        ]
@@ -936,10 +948,10 @@ tlifp[ tLI[{0, g2_?integ, g3_?integ, g4_?integ, m_ /; MCH[m]},
 
 (* PR7 *)
 tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
-           {{a1_?integ, M_Symbol}, 
+           {{a1_?integ, M_Symbol},
              a2_?integ, a3_?integ,
              {a4_?integ, M_Symbol}, 0
-           } 
+           }
           ]
      ] := (comment["using PR7"];
            tlifp[tLI[{m, g4, g3, g2, 0}, {{a1,M}, {a4,M}, a3, a2, 0}]]
@@ -947,10 +959,10 @@ tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
 
 (* PR8 *)
 tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
-           {{a1_?integ, M_Symbol}, 
+           {{a1_?integ, M_Symbol},
              a2_?integ, a3_?integ,
              {a4_?integ, M_Symbol}, 0
-           } 
+           }
           ]
      ] := (comment["using PR8"];
            tlifp[tLI[{m, g4, g3, g2, 0}, {{a1,M}, {a4,M}, a3, a2, 0}]]
@@ -958,7 +970,7 @@ tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
 
 (* PR9 *)
 tlifp[ tLI[{g1_, g2_, g3_, g4_, g5_},
-           {a1_?pinteg, a2_?pinteg, 
+           {a1_?pinteg, a2_?pinteg,
             {a3_?pinteg, M_Symbol}, {a4_?pinteg, M_Symbol}, 0
            }]
      ] := (comment["using PR9"];
@@ -980,7 +992,7 @@ tlifp[tLI[{g1_, g2_, 0, g4_, g5_},
           {{a1_?pinteg, M_Symbol}, 0, 0, a4_?pinteg, a5_?pinteg}
          ]
      ] := (comment["using PR11"];
-           (-1)^g5 tlifp[tLI[{g2, g5, g4, 0, g1}, 
+           (-1)^g5 tlifp[tLI[{g2, g5, g4, 0, g1},
                              {0, a5, a4, 0, {a1, M}}]
                         ]
           );
@@ -995,8 +1007,8 @@ tlifp[tLI[{g1_, g2_, 0_, g4_, g5_},
 
 (* PR13 *)
 tlifp[tLI[{g1_, m_ /; MCH[m], g3_, g4_, 0},
-           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 
-             a3_?integ, a4_?pinteg, 0 
+           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol},
+             a3_?integ, a4_?pinteg, 0
            }
          ]
      ] :=  (comment["using PR13"];
@@ -1005,12 +1017,12 @@ tlifp[tLI[{g1_, m_ /; MCH[m], g3_, g4_, 0},
 
 (* PR14 *)
 tlifp[tLI[{g1_,  m_ /; MCH[m], g3_, g4_, g5_},
-           {a1_?pinteg, 0, {a3_?pinteg, M_Symbol}, 
+           {a1_?pinteg, 0, {a3_?pinteg, M_Symbol},
              a4_?integ,    {a5_?pinteg, M_Symbol}
            }
          ]
      ] := (comment["using PR14"];
-   (-1)^g5 tlifp[ tLI[{m, g1, g4, g3, g5}, 
+   (-1)^g5 tlifp[ tLI[{m, g1, g4, g3, g5},
                       {0, a1, a4, {a3, M}, {a5, M}}
                      ]
                 ]
@@ -1018,7 +1030,7 @@ tlifp[tLI[{g1_,  m_ /; MCH[m], g3_, g4_, g5_},
 
 (* PR15 *)
 tlifp[tLI[{g1_,  g2_, g3_, g4_, m_ /; MCH[m]},
-           {{a1_?pinteg, M_Symbol}, a2_?pinteg, 0, 
+           {{a1_?pinteg, M_Symbol}, a2_?pinteg, 0,
             {a4_?pinteg, M_Symbol}, {a5_?pinteg, M_Symbol}
            }
          ]
@@ -1030,7 +1042,7 @@ tlifp[tLI[{g1_,  g2_, g3_, g4_, m_ /; MCH[m]},
            );
 
 (* PR16 *) (* correction  04/15 *)
-tlifp[tLI[{g1_?NonNegative, m_, 0, g4_?integ, g5_?integ}, 
+tlifp[tLI[{g1_?NonNegative, m_, 0, g4_?integ, g5_?integ},
            {0, {a2_?pinteg, M_Symbol}, 0, a4_?integ,
             {a5_?pinteg, M_Symbol}
            }
@@ -1046,7 +1058,7 @@ tlifp[tLI[{g1_?NonNegative, m_, 0, g4_?integ, g5_?integ},
           );
 
 (* PR17 *)
-tlifp[tLI[{0, m_, 1, g4_?integ, g5_?integ}, 
+tlifp[tLI[{0, m_, 1, g4_?integ, g5_?integ},
            {0, {a2_?pinteg, M_Symbol}, 0, a4_?integ,
             {a5_?pinteg, M_Symbol}
            }
@@ -1092,7 +1104,7 @@ tlihyp[tLI[{m_, 1, g3_?integ, g4_?integ, g5_?integ},
             ];
 
 tlihyp[tLI[{m_ , 0, g3_?integ, g4_?integ, g5_?integ},
-          {{a1_?integ, M_Symbol}, 0, a3_?integ, 
+          {{a1_?integ, M_Symbol}, 0, a3_?integ,
            {a4_?integ, M_Symbol}, {a5_?integ, M_Symbol}}
          ]
      ] := (
@@ -1114,7 +1126,7 @@ comment["Using RHYP5"];
        g4 + g5]*Gamma[a4]*Gamma[a5])*
  HypergeometricPFQ[{-4 + a1 + a3 + a4 + a5 - Epsilon, -1 + a1 - Epsilon/2,
   -2 + a1 + a3 + a5 - Epsilon/2 + g4, -2 + a1 + a3 + a4 - Epsilon/2 + g5},
- {-1 + a1 + a3 - Epsilon/2, 
+ {-1 + a1 + a3 - Epsilon/2,
   (-4 + 2*a1 + 2*a3 + a4 + a5 - Epsilon + g4 + g5)/2,
   (-3 + 2*a1 + 2*a3 + a4 + a5 - Epsilon + g4 + g5)/2}, -y^2/(4 x (x + y))] +
      (x^a3*y^(3 - a1 - 2*a3 + Epsilon + g3 + g4 + g5)*
@@ -1124,7 +1136,7 @@ comment["Using RHYP5"];
   (Gamma[a3]*Gamma[-4 + a1 + a3 + a4 + a5 - Epsilon]*
    Gamma[a4 + a5 + g4 + g5])*
    HypergeometricPFQ[{1 - a3, -2 + a4 + a5 - Epsilon/2, a5 + g4, a4 + g5},
-   {3 - a1 - a3 + Epsilon/2, (a4 + a5 + g4 + g5)/2, 
+   {3 - a1 - a3 + Epsilon/2, (a4 + a5 + g4 + g5)/2,
       (1 + a4 + a5 + g4 + g5)/2},
                    - y^2/(4 x (x+y))]
 )
@@ -1136,7 +1148,7 @@ comment["Using RHYP5"];
 (*
 (* ************************   TLIHYP, RHYP1 ************************ *)
 tlihyp[ tLI[{m_, 0, g3_?integ, g4_?integ, g5_?integ},
-           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 
+           {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol},
              0, a4_?pinteg, a5_?pinteg}
           ]
      ] := (
@@ -1155,23 +1167,23 @@ comment["Using RHYP1"];
   (x^(-2 + a2 + a4 + a5 - Epsilon/2)*Gamma[a2]*
       Gamma[2 - a2 - a4 + Epsilon/2]*Gamma[2 - a4 + Epsilon/2 + g4]*
       Gamma[2 - a2 - a5 + Epsilon/2 + g5]*
-      HypergeometricPFQ[{a2, 3 - a1 - a5 + Epsilon/2, 
-        2 - a4 + Epsilon/2 + g4}, 
+      HypergeometricPFQ[{a2, 3 - a1 - a5 + Epsilon/2,
+        2 - a4 + Epsilon/2 + g4},
        {-1 + a2 + a4 - Epsilon/2, -1 + a2 + a5 - Epsilon/2 - g5}, x])/
-(Gamma[2 - a4 + Epsilon/2]*Gamma[4 - a2 - a4 - a5 + Epsilon + g4 + g5]) + 
+(Gamma[2 - a4 + Epsilon/2]*Gamma[4 - a2 - a4 - a5 + Epsilon + g4 + g5]) +
   (x^(a5)*Gamma[-2 + a2 + a4 - Epsilon/2]*
       Gamma[-2 + a1 + a5 - Epsilon/2]*Gamma[4 - a2 - 2*a4 + Epsilon + g4]*
-      Gamma[a4 - a5 + g5]*HypergeometricPFQ[{2 - a4 + Epsilon/2, 
-        5 - a1 - a2 - a4 - a5 + Epsilon, 4 - a2 - 2*a4 + Epsilon + g4}, 
+      Gamma[a4 - a5 + g5]*HypergeometricPFQ[{2 - a4 + Epsilon/2,
+        5 - a1 - a2 - a4 - a5 + Epsilon, 4 - a2 - 2*a4 + Epsilon + g4},
        {3 - a2 - a4 + Epsilon/2, 1 - a4 + a5 - g5}, x])/
     (Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]*
-      Gamma[4 - a2 - a4 - a5 + Epsilon + g4 + g5]) + 
+      Gamma[4 - a2 - a4 - a5 + Epsilon + g4 + g5]) +
    (x^(a4 + g5)*Gamma[-2 + a1 + a5 - Epsilon/2]*
       Gamma[-a4 + a5 - g5]*Gamma[-2 + a2 + a5 - Epsilon/2 - g5]*
       Gamma[2 - a5 + Epsilon/2 + g5]*
-      HypergeometricPFQ[{2 - a5 + Epsilon/2 + g5, 
-        5 - a1 - a2 - 2*a5 + Epsilon + g5, 
-        4 - a2 - a4 - a5 + Epsilon + g4 + g5}, 
+      HypergeometricPFQ[{2 - a5 + Epsilon/2 + g5,
+        5 - a1 - a2 - 2*a5 + Epsilon + g5,
+        4 - a2 - a4 - a5 + Epsilon + g4 + g5},
        {1 + a4 - a5 + g5, 3 - a2 - a5 + Epsilon/2 + g5}, x])/
     (Gamma[2 - a4 + Epsilon/2]*Gamma[-4 + a1 + a2 + 2*a5 - Epsilon - g5])
 )
@@ -1182,16 +1194,16 @@ comment["Using RHYP1"];
 
 (* ************************   tlihyp, RHYP3     ************************ *)
 tlihyp[tLI[{g1_?integ, m_, 1, g4_?integ, g5_?integ},
-          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0, 
+          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0,
               a4_?pinteg, a5_?pinteg}
          ]
       ] := so[r] tlihyp[tLI[{g1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
-                       ] - 
+                       ] -
                tlihyp[tLI[{g1+1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
                        ];
 
 tlihyp[tLI[{g1_?integ, m_ , 0, g4_?integ, g5_?integ},
-          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0, 
+          {{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0,
               a4_?pinteg, a5_?pinteg}
          ]
      ] := (
@@ -1210,25 +1222,25 @@ comment["Using RHYP3"];
      (y^(3 - a2 - 2*a4 + Epsilon + g4)*Gamma[-2 + a2 + a4 - Epsilon/2]*
         Gamma[-2 + a1 + a5 - Epsilon/2]*Gamma[a5 + g1]*
         Gamma[4 - a1 - 2*a5 + Epsilon + g5]*
-        HypergeometricPFQ[{1 - a2, -2 + a1 + a5 - Epsilon/2, a5 + g1}, 
+        HypergeometricPFQ[{1 - a2, -2 + a1 + a5 - Epsilon/2, a5 + g1},
          {3 - a2 - a4 + Epsilon/2, -3 + a1 + 2*a5 - Epsilon - g5}, y])/
       (Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]*
-        Gamma[4 - a1 - a5 + Epsilon + g1 + g5]) + 
+        Gamma[4 - a1 - a5 + Epsilon + g1 + g5]) +
      (y^(1 - a4 + Epsilon/2 + g4)*Gamma[a2]*Gamma[2 - a2 - a4 + Epsilon/2]*
         Gamma[-2 + a2 + a4 + a5 - Epsilon/2 + g1]*
         Gamma[6 - a1 - a2 - a4 - 2*a5 + (3*Epsilon)/2 + g5]*
-        HypergeometricPFQ[{-4 + a1 + a2 + a4 + a5 - Epsilon, 
-          -1 + a4 - Epsilon/2, -2 + a2 + a4 + a5 - Epsilon/2 + g1}, 
-         {-1 + a2 + a4 - Epsilon/2, 
+        HypergeometricPFQ[{-4 + a1 + a2 + a4 + a5 - Epsilon,
+          -1 + a4 - Epsilon/2, -2 + a2 + a4 + a5 - Epsilon/2 + g1},
+         {-1 + a2 + a4 - Epsilon/2,
           -5 + a1 + a2 + a4 + 2*a5 - (3*Epsilon)/2 - g5}, y])/
-      (Gamma[2 - a4 + Epsilon/2]*Gamma[4 - a1 - a5 + Epsilon + g1 + g5]) + 
+      (Gamma[2 - a4 + Epsilon/2]*Gamma[4 - a1 - a5 + Epsilon + g1 + g5]) +
      (y^(7 - a1 - a2 - 2*a4 - 2*a5 + 2*Epsilon + g4 + g5)*Gamma[a2]*
         Gamma[-6 + a1 + a2 + a4 + 2*a5 - (3*Epsilon)/2 - g5]*
         Gamma[-4 + a1 + 2*a5 - Epsilon - g5]*Gamma[2 - a5 + Epsilon/2 + g5]*
-        HypergeometricPFQ[{2 - a5 + Epsilon/2 + g5, 
-          5 - a1 - a2 - 2*a5 + Epsilon + g5, 
-          4 - a1 - a5 + Epsilon + g1 + g5}, 
-         {5 - a1 - 2*a5 + Epsilon + g5, 
+        HypergeometricPFQ[{2 - a5 + Epsilon/2 + g5,
+          5 - a1 - a2 - 2*a5 + Epsilon + g5,
+          4 - a1 - a5 + Epsilon + g1 + g5},
+         {5 - a1 - 2*a5 + Epsilon + g5,
           7 - a1 - a2 - a4 - 2*a5 + (3*Epsilon)/2 + g5}, y])/
       (Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]*
         Gamma[-4 + a1 + a2 + 2*a5 - Epsilon - g5])
@@ -1251,22 +1263,22 @@ comment["Using RHYP6"];
   Gamma[2+Epsilon/2-a5+g5]/
   (E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a4]*Gamma[a5])
 ) .
-(			
+(
      x^(4-a1-a2-a5+g1+g5)*
    (1 - x)^(1+Epsilon/2-a4+g4)
-) . 
+) .
 (
   (x^(-2 + a1 + a5 + Epsilon/2)*Gamma[-2 + a2 + a4 - Epsilon/2]*
      Gamma[-2 + a1 + a5 - Epsilon/2]*Gamma[a5 + g1]*
-     HypergeometricPFQ[{1 - a2, -2 + a1 + a5 - Epsilon/2, a5 + g1}, 
+     HypergeometricPFQ[{1 - a2, -2 + a1 + a5 - Epsilon/2, a5 + g1},
       {3 - a2 - a4 + Epsilon/2, 2 + Epsilon/2 + g1 + g5}, x])/
    (E^(I*(-2 + a1 + a5 + Epsilon/2)*Pi)*Gamma[a2]*
-     Gamma[2 + Epsilon/2 + g1 + g5]) + 
+     Gamma[2 + Epsilon/2 + g1 + g5]) +
   (x^(-4 + a1 + a2 + a4 + a5)*Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]*
      Gamma[2 - a2 - a4 + Epsilon/2]*
      Gamma[-2 + a2 + a4 + a5 - Epsilon/2 + g1]*
-     HypergeometricPFQ[{-4 + a1 + a2 + a4 + a5 - Epsilon, 
-       -1 + a4 - Epsilon/2, -2 + a2 + a4 + a5 - Epsilon/2 + g1}, 
+     HypergeometricPFQ[{-4 + a1 + a2 + a4 + a5 - Epsilon,
+       -1 + a4 - Epsilon/2, -2 + a2 + a4 + a5 - Epsilon/2 + g1},
       {-1 + a2 + a4 - Epsilon/2, a2 + a4 + g1 + g5}, x])/
    (E^(I*(-4 + a1 + a2 + a4 + a5)*Pi)*Gamma[2 - a4 + Epsilon/2]*
      Gamma[a2 + a4 + g1 + g5])
@@ -1289,7 +1301,7 @@ comment["Using RHYP7"];
   (Gamma[a1-2-Epsilon/2]*Gamma[a2+a4-2-Epsilon/2])/
   (E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a2]*Gamma[a4])
 ) .
-(			
+(
    x^(2+Epsilon/2-a2)*
    (1 - x)^(1+Epsilon/2-a4+g4)
 ) .
@@ -1314,10 +1326,10 @@ comment["Using RHYP8"];
   (Gamma[a1-2-Epsilon/2]*Gamma[a2+a4-2-Epsilon/2])/
   (E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a2]*Gamma[a4])
 ) .
-(			
+(
    x^a4*
    (1 - x)^(4+Epsilon-a2-2*a4+g4-1)
-) 
+)
 )/.{Dot :> Times, EulerGamma :> 0}
           )/.rule2F1;
 (* ************************   tlihyp, RHYP8ende  ************************ *)
@@ -1357,10 +1369,10 @@ comment["Using RHYP9"];
   (E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a4]*Gamma[a5]*
    Gamma[a3+a4+a5-2-Epsilon/2]*Gamma[4+Epsilon-a4-a5+g4+g5])
 ) .
-(			
+(
    x^(a3+a4+a5-2-Epsilon/2)*
    (1 - x)^(8+2*Epsilon-a1-2*a3-2*a4-2*a5+g3+g4+g5-1)
-) 
+)
 )/.{Dot :> Times, EulerGamma :> 0}
           )/.rule2F1;
 (* ************************   tlihyp, RHYP9ende  ************************ *)

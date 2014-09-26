@@ -12,17 +12,21 @@
 
 BeginPackage["HighEnergyPhysics`qcd`Simplify2`",{"HighEnergyPhysics`FeynCalc`"}];
 
-Simplify2::"usage"= "Simplify2 is a special ordering function."; 
+Simplify2::"usage"= "Simplify2 is a special ordering function.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-Factoring = MakeContext["CoreOptions","Factoring"];
 
-MakeContext[CA, CF, Collect2, DeltaFunction,
-            Epsilon, Tf, PlusDistribution,
-            Select1, Select2];
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
+Tf = MakeContext["CoreObjects","Tf"];
+
+MakeContext[Collect2, Select1, Select2];
 
 Simplify2[y_] := Block[{t1,t2,t3,null1, null2, cct, col,min},
 col =  Collect2[##, Factoring->False];
@@ -34,8 +38,8 @@ t1 = col[Expand[y], Epsilon];
 
 
 
-ll = ((Select1[#, llt] col[Select2[#, llt], llt]) /. 
-       (1/(x_ -1) :> min (1/(1-x))) /. min :> (-1) 
+ll = ((Select1[#, llt] col[Select2[#, llt], llt]) /.
+       (1/(x_ -1) :> min (1/(1-x))) /. min :> (-1)
      )&;
 
 dd = (Select1[#, cct] col[Select2[#, cct], DeltaFunction])&;

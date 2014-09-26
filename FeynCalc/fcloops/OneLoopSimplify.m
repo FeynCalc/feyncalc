@@ -32,16 +32,22 @@ correct.";
 Begin["`Private`"];
    
 
-Contract3 = MakeContext["Contract", "Contract3"];
 Collecting = MakeContext["CoreOptions","Collecting"];
+Contract3 = MakeContext["Contract", "Contract3"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+FeynAmp = MakeContext["CoreObjects","FeynAmp"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 IntegralTable = MakeContext["CoreOptions","IntegralTable"];
-SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+Pair = MakeContext["CoreObjects","Pair"];
 SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+
 
 MakeContext[
 FCPrint,
@@ -49,7 +55,6 @@ Cases2,
 ChangeDimension,
 Collect2,
 Contract,
-DiracGamma,
 DiracOrder,
 DiracSimplify,
 DiracTrick,
@@ -57,8 +62,6 @@ DotSimplify,
 Expand2,
 ExpandScalarProduct,
 Explicit,
-FeynAmp,
-FeynAmpDenominator,
 FeynAmpDenominatorSimplify,
 FeynCalcForm,
 FeynCalcInternal,
@@ -68,13 +71,11 @@ FreeQ2,
 Isolate,
 MemSet,
 OPE1Loop,
-Pair,
 Power2,
 PowerSimplify,
 ScalarProductCancel,
 Select1,
 Select2,
-SUNIndex,
 SUNSimplify,
 SUNTrace,
 TID,

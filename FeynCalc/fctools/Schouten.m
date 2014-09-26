@@ -30,17 +30,17 @@ function Schouten will be applied .";
 
 Begin["`Private`"];
    
+Pair = MakeContext["CoreObjects","Pair"];
 
 collect2                 = MakeContext["Collect2"];
-eps                      = MakeContext["Eps"];
+eps                      = MakeContext["CoreObjects","Eps"];
 epsevaluate              = MakeContext["EpsEvaluate"];
 expandscalarproduct      = MakeContext["ExpandScalarProduct"];
 factoring                = MakeContext["CoreOptions","Factoring"];
 fci                      = MakeContext["FeynCalcInternal"];
 freeq2                   = MakeContext["FreeQ2"];
-lorentzindex             = MakeContext["LorentzIndex"];
+lorentzindex             = MakeContext["CoreObjects","LorentzIndex"];
 memset                   = MakeContext["MemSet"];
-pair                     = MakeContext["Pair"];
 partithead               = MakeContext["PartitHead"];
 
 Schouten[y_, 0] := y;

@@ -122,6 +122,12 @@ IsolateNames::"usage" =
 Its default setting is KK. Instead of a symbol the
 setting may also be a list with the names of the abbrevations.";
 
+KK::"usage" =
+"KK[i] is the default setting of IsolateNames,
+which is the head of abbreviations used by Isolate.
+A KK[i] returned by Isolate is given in HoldForm and can be
+recovered by ReleaseHold[KK[i]].";
+
 LeviCivitaSign::"usage" =
 "LeviCivitaSign is an option for DiracTrace and EpsChisholm. It determines
 the sign in the result of a Dirac trace of four gamma matrices and gamma5.";

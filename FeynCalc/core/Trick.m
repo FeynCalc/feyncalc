@@ -14,20 +14,26 @@ Trick::"usage" =
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+PauliSigma = MakeContext["CoreObjects","PauliSigma"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+SUNF = MakeContext["CoreObjects","SUNF"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 
 MakeContext[
 DotSimplify,
-FeynAmpDenominator, FeynAmpDenominatorCombine,
-FeynCalcInternal, LorentzIndex, SUNDelta, SUNF,
-SUNIndex, SUNDeltaContract, SUNSimplify, SUNT,
+FeynAmpDenominatorCombine,
+FeynCalcInternal,
+SUNDeltaContract, SUNSimplify,
 CovariantD,
 CrossProduct,
-DiracGamma,
 DotProduct,
 Explicit,
-PauliSigma,
 Contract];
 
 Trick[x_] := Block[{tt, paulisigsimp, sigident,doot,cov,palr},
@@ -58,7 +64,7 @@ Trick[x_] := Block[{tt, paulisigsimp, sigident,doot,cov,palr},
                      SUNDelta->SUNDeltaContract /. SUNDeltaContract->SUNDelta
                ];
 
-             If[CheckContext["PauliSigma"],
+             If[CheckContext["CoreObjects"],
                 paulisigsimp[y_] := FixedPoint[sigident, y, 1442];
                 sigident[z_] := DotSimplify[(z /. DOT -> doot //.
                 {doot[w1___, DotProduct[PauliSigma, a_],
@@ -71,7 +77,7 @@ Trick[x_] := Block[{tt, paulisigsimp, sigident,doot,cov,palr},
                 } /. doot -> DOT), Expanding -> False];
                 tt = paulisigsimp[tt]
                ];
-              If[CheckContext["FeynAmpDenominator"],
+              If[CheckContext["CoreObjects"],
                  tt = FeynAmpDenominatorCombine[tt];
                 ];
                 tt];

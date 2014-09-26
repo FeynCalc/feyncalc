@@ -22,14 +22,14 @@ be recovered by RHO[i, mu, nu, p].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
+FourVector = MakeContext["CoreObjects","FourVector"];
+MetricTensor = MakeContext["CoreObjects","MetricTensor"];
 
 MakeContext[
 ChangeDimension,
 FeynCalcInternal,
-FourVector,
-MetricTensor,
 OPEDelta,
 ScalarProduct
 ];
@@ -44,7 +44,7 @@ dm = FourVector[OPEDelta, mu]; dn = FourVector[OPEDelta, nu];
 dp = ScalarProduct[OPEDelta, p];
 p2 = ScalarProduct[p];
 
-re = 
+re =
 Which[i === 1,
         gmn - (pm dn + dm pn)/dp + dm dn p2/dp^2,
       i === 2,

@@ -21,7 +21,7 @@ EulerGamma is neglected).";
 Begin["`Private`"];
    
 
-Epsilon = MakeContext["Epsilon"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 
 BLA := Unique[C];
 

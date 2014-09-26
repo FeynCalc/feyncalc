@@ -24,7 +24,7 @@ Begin["`Private`"];
 
 Options[ILimit] = {FunctionLimits -> {Log -> Log}};
 
-SmallVariable = MakeContext["SmallVariable"];
+SmallVariable = MakeContext["CoreObjects","SmallVariable"];
 
 ILimit[exp_, lim_Rule, opts___Rule] := 
     Block[{(*limruls, m, ff, fff, out,res*)},

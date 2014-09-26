@@ -48,22 +48,22 @@ fcdim := fcdim = MakeContext["CoreOptions","Dimension"];
 fcb0 := fcb0 = MakeContext["B0"];
 fcc0 := fcc0 = MakeContext["C0"];
 fcd0 := fcd0 = MakeContext["D0"];
-fcmom := fcmom = MakeContext["Momentum"];
-fcpa := fcpa = MakeContext["Pair"];
-fcpol := fcpol = MakeContext["Polarization"];
-fcfad := fcfad = MakeContext["FeynAmpDenominator"];
-fcpd := fcpd = MakeContext["PropagatorDenominator"];
-fcli := fcli = MakeContext["LorentzIndex"];
+fcmom := fcmom = MakeContext["CoreObjects","Momentum"];
+fcpa := fcpa = MakeContext["CoreObjects","Pair"];
+fcpol := fcpol = MakeContext["CoreObjects","Polarization"];
+fcfad := fcfad = MakeContext["CoreObjects","FeynAmpDenominator"];
+fcpd := fcpd = MakeContext["CoreObjects","PropagatorDenominator"];
+fcli := fcli = MakeContext["CoreObjects","LorentzIndex"];
 fcmomexp := fcmomexp = MakeContext["MomentumExpand"];
 fcmomcomb := fcmomcomb = MakeContext["MomentumCombine"];
 fccontr := fccontr = MakeContext["Contract"];
-fcintx := fcintx = MakeContext["Integratedx"];
+fcintx := fcintx = MakeContext["CoreObjects","Integratedx"];
 fcfpana := fcfpana = MakeContext["CoreOptions","FeynmanParameterNames"];
 fcint := fcint = MakeContext["CoreOptions","FCIntegrate"];
-fcsunn := fcsunn = MakeContext["SUNN"];
+fcsunn := fcsunn = MakeContext["CoreObjects","SUNN"];
 fccoupl := fccoupl = MakeContext["CoreOptions","CouplingConstant"];
-fcscmu := fcscmu = MakeContext["ScaleMu"];
-fcsmeps := fcsmeps = MakeContext["SmallEpsilon"];
+fcscmu := fcscmu = MakeContext["CoreObjects","ScaleMu"];
+fcsmeps := fcsmeps = MakeContext["CoreObjects","SmallEpsilon"];
 fca0 := fca0 = MakeContext["A0"];
 fca0tob0 := fca0tob0 = MakeContext["A0ToB0"];
 
@@ -111,7 +111,7 @@ Options[Renormalize] = {fcsunn -> 2, InfinityFactor -> LeutwylerLambda[],
         RenormalizationCoefficients[lag][[n]]};
 Options[FeynmanParameterize] = {fcdim -> D,
       fcint ->
-      (DOT[HighEnergyPhysics`FeynCalc`Integratedx`Integratedx@@#2, #1] &),
+      (DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Integratedx@@#2, #1] &),
       fcfpana -> Automatic
       (*Compatibility with FeynmanParametrize:*)
       (*{Global`x,Global`y,Global`z, Global`\[Alpha]1,
@@ -1111,9 +1111,9 @@ privatefeynmanparamter once for each momentum integral to be so converted. *)
       fcdim /. Flatten[{opts}] /. Options[FeynmanParameterize];
       momentabacklist = {};
       res = input1 /.
-        {a_*ex_HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator :>
+        {a_*ex_HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator :>
                 FeynmanParameter1[a*ex, rest, opts],
-       ex_HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator :>
+       ex_HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator :>
                 FeynmanParameter1[ex, rest, opts]} /.
        IntegrateHeld -> (fcint /. {opts} /.
                   Options[FeynmanParameterize]) /.
@@ -1138,15 +1138,15 @@ privatefeyparamter[ex_,kay_, opts___] /; !FreeQ[ex,tmpfad]:=
    privatefeyparamter[ex/.wrap->Identity/.tmpfad->fcfad, kay, opts];
 
 privatefeyparamter[
-      ex_HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator,
+      ex_HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator,
       kay_, opts___] := privatefeyparamter[dummy*ex, kay, opts] /. dummy -> 1;
 
 privatefeyparamter[
-    num___*ex_HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator, kay_,
+    num___*ex_HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator, kay_,
     opts___] := (ddiimm =
       fcdim /. Flatten[{opts}] /. Options[FeynmanParameterize];
  Block[{g, dimension = ddiimm,(* Fix because we now use
-    HighEnergyPhysics`FeynCalc`FeynAmpDenominator`FeynAmpDenominator
+    HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator
     in FeynArts too and FeynArts sets FeynAmpDenominator[]=1. 11/2-2001.*) dum,
     denom = fcfad[dum], nokay, count, coefofksquared,
         enn, finaldenominator,

@@ -21,25 +21,25 @@ slashes by the Chisholm identity.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Contract      = MakeContext["Contract"];
-DiracGamma  = MakeContext["DiracGamma"];
+DiracGamma  = MakeContext["CoreObjects","DiracGamma"];
 DiracOrder  = MakeContext["DiracOrder"];
 DiracSimplify = MakeContext["DiracSimplify"];
-Eps         = MakeContext["Eps"];
+Eps         = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 FCI         = MakeContext["FeynCalcInternal"];
-LorentzIndex= MakeContext["LorentzIndex"];
+LorentzIndex= MakeContext["CoreObjects","LorentzIndex"];
 MemSet      = MakeContext["MemSet"];
-Pair        = MakeContext["Pair"];
+Pair        = MakeContext["CoreObjects","Pair"];
 Rename      = MakeContext["Rename"];
 
-Chisholm[x_] := 
+Chisholm[x_] :=
   Contract[DiracSimplify[FCI[x] //. chish1 //. chish2, Rename->True]];
 
-chish1 = (f_. DOT[a_DiracGamma, b_DiracGamma, c_DiracGamma, 
-              d_DiracGamma, e_DiracGamma, f_DiracGamma, 
+chish1 = (f_. DOT[a_DiracGamma, b_DiracGamma, c_DiracGamma,
+              d_DiracGamma, e_DiracGamma, f_DiracGamma,
               g___]
          ) :> Chisholm[Contract[DiracSimplify[
               DOT[Chisholm[f DOT[a,b,c]] ,Chisholm[d,e,f,g]]],Rename->False]];

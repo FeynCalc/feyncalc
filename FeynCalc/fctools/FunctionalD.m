@@ -17,19 +17,19 @@
 BeginPackage["HighEnergyPhysics`fctools`FunctionalD`",{"HighEnergyPhysics`FeynCalc`"}];
 
 FunctionalD::"usage"=
-"FunctionalD[expr, 
+"FunctionalD[expr,
 {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] calculates
 the functional derivative of expr with respect to the field list (with
 incoming momenta p, etc.) and does the fourier transform.
 
 FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ...
-SUNIndex[a]], ...}] calculates the functional derivative and does 
+SUNIndex[a]], ...}] calculates the functional derivative and does
 partial integration but omits the x-space delta functions.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 FeynCalcForm = MakeContext["FeynCalcForm"];
 
@@ -40,37 +40,37 @@ Explicit      = MakeContext["Explicit"];
 ExplicitPartialD = MakeContext["ExplicitPartialD"];
 fci          = MakeContext["FeynCalcInternal"];
 FieldStrength = MakeContext["FieldStrength"];
-Eps           = MakeContext["Eps"];
-lorind       = MakeContext["LorentzIndex"];
-mom          = MakeContext["Momentum"];
+Eps           = MakeContext["CoreObjects","Eps"];
+lorind       = MakeContext["CoreObjects","LorentzIndex"];
+mom          = MakeContext["CoreObjects","Momentum"];
 OPEDelta     = MakeContext["OPEDelta"];
-Pair         = MakeContext["Pair"];
+Pair         = MakeContext["CoreObjects","Pair"];
 PairContract = MakeContext["PairContract"];
 PairContract3 = MakeContext["PairContract3"];
-PartialD = MakeContext["PartialD"];
-LeftPartialD = MakeContext["LeftPartialD"];
-LeftRightPartialD2 = MakeContext["LeftRightPartialD2"];
-RightPartialD = MakeContext["RightPartialD"];
-QuantumField = MakeContext["QuantumField"];
+PartialD = MakeContext["CoreObjects","PartialD"];
+LeftPartialD = MakeContext["CoreObjects","LeftPartialD"];
+LeftRightPartialD2 = MakeContext["CoreObjects","LeftRightPartialD2"];
+RightPartialD = MakeContext["CoreObjects","RightPartialD"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
 Select1      = MakeContext["Select1"];
 Select2      = MakeContext["Select2"];
-sund        := sund = MakeContext["SUNDelta"];
+sund        := sund = MakeContext["CoreObjects","SUNDelta"];
 sundc       := sundc = MakeContext["SUNDeltaContract"];
-SUNIndex     = MakeContext["SUNIndex"];
-ExplicitSUNIndex     = MakeContext["ExplicitSUNIndex"];
+SUNIndex     = MakeContext["CoreObjects","SUNIndex"];
+ExplicitSUNIndex     = MakeContext["CoreObjects","ExplicitSUNIndex"];
 SUNSimplify = MakeContext["SUNSimplify"];
 
 (* ********************************************************************** *)
 (* products of metric tensors  and SU(N) deltas *)
  g[{}, {}] = d[{}, {}] = 1;
- g[{x__} ,{y__}] := g[{x}, {y}] = 
+ g[{x__} ,{y__}] := g[{x}, {y}] =
   (PairContract3[{x}[[1]], {y}[[1]]] g[Rest[{x}], Rest[{y}]]);
  d[{x__} ,{y__}] := d[{x}, {y}] =
   (sundc[{x}[[1]], {y}[[1]]] d[Rest[{x}], Rest[{y}]]);
 field = QuantumField;
 (* ********************************************************************** *)
 
-ddl[PartialD[mom[OPEDelta]^m_]][p_] := 
+ddl[PartialD[mom[OPEDelta]^m_]][p_] :=
  (-1)^m I^m Pair[mom[p], mom[OPEDelta]]^m;
 
 ddl[][_] :=1;
@@ -80,13 +80,13 @@ ddl[pa:PartialD[mom[OPEDelta]]..][p_] :=  (-1)^Length[{pa}] I^Length[{pa}] *
    Pair[mom[p], mom[OPEDelta]]^Length[{pa}];
 
 ddl[PartialD[lorind[m_]]][p_] := (-I) dDelta[mom[p], lorind[m]];
-ddl[a___,PartialD[lorind[m_]], x___][p_] := 
+ddl[a___,PartialD[lorind[m_]], x___][p_] :=
  (-I) dDelta[mom[p], lorind[m]] ddl[a, x][p];
 
 ddl[PartialD[mom[m_]]][p_] := (-I) dDelta[mom[p], mom[m]];
-ddl[a___,PartialD[mom[m_]], x___][p_] := 
+ddl[a___,PartialD[mom[m_]], x___][p_] :=
  (-I) dDelta[mom[p], mom[m]] ddl[a, x][p];
-ddl[a___,PartialD[mom[OPEDelta]^m_], x___][p_] := 
+ddl[a___,PartialD[mom[OPEDelta]^m_], x___][p_] :=
  (-1)^m I^m Pair[mom[p], mom[OPEDelta]]^m  ddl[a, x][p];
 
 dot2[___,0,___] := 0;
@@ -98,11 +98,11 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
 (* product rule, recursive *)
 
 
- FunctionalD[y_, {fi__, a_ }, op___] := 
+ FunctionalD[y_, {fi__, a_ }, op___] :=
     FunctionalD[FunctionalD[y, {a}, op], {fi}, op];
 
 (*Added ExplicitSUNIndex. F.Orellana, 16/9-2002*)
- FunctionalD[y_/;!FreeQ[y,field[__][___]], 
+ FunctionalD[y_/;!FreeQ[y,field[__][___]],
             {field[nam_, lor___lorind, sun___SUNIndex|sun___ExplicitSUNIndex][pp___]}]:=
   Block[{xX},
    D[If[!FreeQ[y, FieldStrength], Explicit[y],y] /.
@@ -111,11 +111,11 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
      If[{py} === {}, 1, ddl[py][pp]] * g[{lor}, {li}] d[{sun}, {col}],
      field[py___PartialD, nam, li___mom, col___SUNIndex|col___ExplicitSUNIndex][]'[xX] :>
      If[{py} === {}, 1, ddl[py][pp]] * g[{lor}, {li}] d[{sun}, {col}]
-    } /. 
+    } /.
       {field[aa___, nam, bb___][pee___][xX] :> field[aa, nam, bb][pee],
        sund  :> sundc, Pair :> PairContract3
       } /. DOT -> dot2 /. dot2 -> DOT /. dDelta -> PairContract3/.
-           {sundc :> sund,  PairContract3 :> Pair} 
+           {sundc :> sund,  PairContract3 :> Pair}
        ];
 
 
@@ -156,7 +156,7 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
   If[Head[op] =!= List, op = {op}];
   pard = (ExplicitPartialD[DOT[##] /. partiald2 -> First[op]])&;
   If[Length[op] > 1, lastrep = Flatten[Rest[op]]];
-  r = 
+  r =
 (
    D[If[!FreeQ[y, FieldStrength], Explicit[y],y] /.
     field[a___, nam, b___] -> field[a,nam,b][][xX], xX]
@@ -164,21 +164,21 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
     {field[py___PartialD, nam, li___lorind, col___SUNIndex|col___ExplicitSUNIndex][]'[xX] :>
      If[{py} === {}, 1, (ddelta[py] /. PartialD ->
                 partiald2)] * g[{lor}, {li}] d[{sun}, {col}]
-    } /. 
+    } /.
       {field[aa___, nam, bb___][][xX] :> field[aa, nam, bb] ,
        sund  :> sundc, PairContract3 :> PairContract
-      } /. Times -> DOT /. DOT -> dot2 /. dot2 -> DOT /. 
-           {sundc :> sund, Pair :> PairContract} /. 
+      } /. Times -> DOT /. DOT -> dot2 /. dot2 -> DOT /.
+           {sundc :> sund, Pair :> PairContract} /.
            PairContract -> Pair ;
-     r = Expand[DotSimplify[r]] //. 
-             { sundc :> sund, Pair :> PairContract } /. 
+     r = Expand[DotSimplify[r]] //.
+             { sundc :> sund, Pair :> PairContract } /.
               PairContract ->Pair;
 (* operate from the left *)
-  If[!FreeQ[r, ddelta], 
+  If[!FreeQ[r, ddelta],
      If[Head[r] =!= Plus,
         r = ExpandPartialD[((Select2[r, ddelta] /. ddelta -> pard) .
                              Select1[r, ddelta])/.Times->DOT
-                          ] 
+                          ]
         ,
         r = Sum[ExpandPartialD[((Select2[r[[i]], ddelta] /.
                                   ddelta -> pard) .
@@ -189,10 +189,10 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
        ]
     ];
 
-  r = Expand[r, Pair] /. Pair->PairContract /. 
+  r = Expand[r, Pair] /. Pair->PairContract /.
       {PairContract:>Pair, PairContract3 :> Pair};
   If[(!FreeQ2[r, {LeftPartialD, RightPartialD}]) && !FreeQ[r, Eps],
-     If[Head[r] === Plus, 
+     If[Head[r] === Plus,
         r = Map[ExpandPartialD, r],
         r = ExpandPartialD[r]
        ]

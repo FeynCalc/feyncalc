@@ -33,7 +33,7 @@ B0 = MakeContext["B0"];
 BReduce = MakeContext["BReduce"];
 Factor2 = MakeContext["Factor2"];
 FreeQ2 = MakeContext["FreeQ2"];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 (*MakeContext[DB1];*)
 
  nos[x_] := If[(x =!= 0) && FreeQ[x, small], True, False];

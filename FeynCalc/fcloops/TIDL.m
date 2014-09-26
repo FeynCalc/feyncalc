@@ -24,11 +24,14 @@ TIDL[exp, {{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] .";
 Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
+FV = MakeContext["CoreObjects","FV"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+MT = MakeContext["CoreObjects","MT"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SP = MakeContext["CoreObjects","SP"];
 
-MakeContext[
-ChangeDimension,
-ExpandScalarProduct, LorentzIndex,  Momentum, Pair,
-               SP,MT,FV ];
+MakeContext[ ChangeDimension, ExpandScalarProduct];
 
 Options[TIDL] = {Dimension -> D};
 

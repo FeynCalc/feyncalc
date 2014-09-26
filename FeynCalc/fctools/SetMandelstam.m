@@ -26,20 +26,20 @@ The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";
 
 Begin["`Private`"];
    
-ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
-FeynCalcExternal = MakeContext["FeynCalcExternal"];
-SP = MakeContext["SP"];
-SPD = MakeContext["SPD"];
 Cases2 = MakeContext["Cases2"];
 ChangeDimension = MakeContext["ChangeDimension"];
-FreeQ2 = MakeContext["FreeQ2"];
 Dimension = MakeContext["CoreOptions","Dimension"];
-fci = MakeContext["FeynCalcInternal"];
-Momentum = MakeContext["Momentum"];
+ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
+FeynCalcExternal = MakeContext["FeynCalcExternal"];
+FreeQ2 = MakeContext["FreeQ2"];
+Momentum = MakeContext["CoreObjects","Momentum"];
 NumericalFactor = MakeContext["NumericalFactor"];
-Pair            = MakeContext["Pair"];
+Pair            = MakeContext["CoreObjects","Pair"];
+SP = MakeContext["CoreObjects","SP"];
+SPD = MakeContext["CoreObjects","SPD"];
 ScalarProduct = MakeContext["ScalarProduct"];
-small = MakeContext["SmallVariable"];
+fci = MakeContext["FeynCalcInternal"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
 Options[SetMandelstam] = {Dimension -> {4, D, ___}};
 

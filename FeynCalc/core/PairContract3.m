@@ -15,7 +15,11 @@ among PairContract3's.";
 
 Begin["`Private`"];
 
-MakeContext[ ExpandScalarProduct, FreeQ2, LorentzIndex, Momentum, Pair];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"]
+
+MakeContext[ ExpandScalarProduct, FreeQ2];
 SetAttributes[PairContract3,Orderless];
 
 PairContract3[LorentzIndex[z_,di___],

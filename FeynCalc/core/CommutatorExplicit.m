@@ -13,10 +13,7 @@ in exp by their definitions.";
 
 Begin["`Private`"];
 
-MakeContext[
-AntiCommutator,
-Commutator
-];
+MakeContext[ AntiCommutator, Commutator];
 
 CommutatorExplicit[exp_] := exp /.
    {Commutator :> ((DOT[#1, #2] - DOT[#2, #1])&),

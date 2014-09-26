@@ -33,23 +33,24 @@ Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+Eps = MakeContext["CoreObjects","Eps"];
+FV = MakeContext["CoreObjects","FV"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
 
 MakeContext[
 FCPrint,
 ChangeDimension,
-Eps,
 FeynCalcExternal,
-FV,
-LorentzIndex,
-Momentum,
 Nielsen,
-Pair,
 ScalarProduct,
-Select2,
-SUNDelta];
+Select2
+];
 
 (* can be changed *)
-$ReplaceAlwaysFirst = 
+$ReplaceAlwaysFirst =
      {"  "->" ","i_" -> "I","d_" -> "MT","( "->"(",
       "(  "->"("," )"->")","  )"->")",
      " -"->"-","- "->"-"," +"->"+","+ "->"+"," + "->"+"};
@@ -58,12 +59,12 @@ $ReplaceAlwaysLast  = {"_" -> "$", " [" -> " Hold[",
                        "-["->"-Hold[","+["->"+Hold[",
                        "*["->"*Hold["};
 
-Options[FORM2FeynCalc] = 
-{Dimension -> 4, FinalSubstitutions -> {}, 
+Options[FORM2FeynCalc] =
+{Dimension -> 4, FinalSubstitutions -> {},
  Dot -> Dot,
  HoldForm -> True,
- LorentzIndex -> {Global`mu, Global`nu, Global`al, Global`be}, 
- Set -> False, 
+ LorentzIndex -> {Global`mu, Global`nu, Global`al, Global`be},
+ Set -> False,
  Replace -> {   (*     "d_" -> "SUNDelta",*)
 (*
                            "d_(a1,a2)" -> "SUNDelta[a1,a2]",
@@ -93,17 +94,17 @@ Options[FORM2FeynCalc] =
  Vectors -> Automatic
 };
 
-toexp[x_String] := Block[{temp}, 
+toexp[x_String] := Block[{temp},
                           Begin["Global`"];
-                          temp = ToExpression[x, TraditionalForm]; 
-                          End[]; 
+                          temp = ToExpression[x, TraditionalForm];
+                          End[];
                           temp];
 
 SetAttributes[FORM2FeynCalc, HoldAll];
 
 
 FORM2FeynCalc[fi_,ru___Rule] := FORM2FeynCalc[fi, False, ru];
- 
+
 
 FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
               ru___Rule] := Block[
@@ -116,8 +117,8 @@ FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
   holdform = HoldForm /. {ru}/. Options[FORM2FeynCalc];
   dotrule = Dot -> (Dot /. {ru}/. Options[FORM2FeynCalc]);
   set = Set /. {ru} /. Options[FORM2FeynCalc];
-  stringrules = Join[$ReplaceAlwaysFirst, 
-                Replace /. {ru} /. Options[FORM2FeynCalc]] /. 
+  stringrules = Join[$ReplaceAlwaysFirst,
+                Replace /. {ru} /. Options[FORM2FeynCalc]] /.
                 Rule[a_, b_] :> Rule[ToString[a], ToString[b]];
   indices = Map[ToExpression, Map[ToString, LorentzIndex /. {ru} /.
                                   Options[FORM2FeynCalc]
@@ -183,7 +184,7 @@ holdplus[z__] := ((holdplus2@@{z}) /. holdplus->Plus /.
 parsit[y_String] :=(toexp[ StringReplace[
 FixedPoint[StringReplace[#,stringrules]&,y,100] ,
                            $ReplaceAlwaysLast]
-                         ] /. Dot -> dott /. Times -> myDot /. 
+                         ] /. Dot -> dott /. Times -> myDot /.
                            myDot -> Dot /. Plus->
                             holdplus
                    ) /. dotrule;
@@ -199,7 +200,7 @@ Protect[Times, Plus];
 
 (*???????
 (* fix a problem ... *)
-nof = Select2[Cases[rr, w_Symbol[_], Infinity], 
+nof = Select2[Cases[rr, w_Symbol[_], Infinity],
               {Dot,Times,Plus,holdplus}];
 
 nfv = Thread[nof -> (Map[(#/.(a_[b_]) :> (a . b))&, nof])];
@@ -214,7 +215,7 @@ rr = rr /. rv;
 rr = rr /. myDot -> Dot /. dotrule;
 
 If[holdform === True,
-   rr = rr /. holdplus[ww__] :> HoldForm[pluh[ww]]  /. 
+   rr = rr /. holdplus[ww__] :> HoldForm[pluh[ww]]  /.
         pluh -> Plus
    ,
    rr = rr /. holdplus->Plus
@@ -251,18 +252,18 @@ For[i = 1, i <= Length[s], i++,
                  new = new <> (StringReplace[s[[i]], ";" -> ","]) ,
                  new = new <> s[[i]]
                ] ,
-             If[StringMatchQ[s[[i]], "*=*"], 
+             If[StringMatchQ[s[[i]], "*=*"],
                 new = new <> s[[i]];
                 flag = True
                ];
-      ] ]; 
+      ] ];
 flag = True;
-While[flag && (StringLength[new]>0), 
-      If[StringTake[new,-1] =!= "," , 
+While[flag && (StringLength[new]>0),
+      If[StringTake[new,-1] =!= "," ,
          new = StringDrop[new,-1] ,
          flag = False;
-         new = StringDrop[new,-1]<>"}" ] 
-     ]; 
+         new = StringDrop[new,-1]<>"}" ]
+     ];
          new = StringReplace[new,";"->","];
 (*
 *)

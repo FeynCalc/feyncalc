@@ -8,9 +8,9 @@
 (* :History: File created on 6 October '97 at 14:31 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Changes certain objects ("Symbols") from the FeynCalc 
+(* :Summary: Changes certain objects ("Symbols") from the FeynCalc
              internal representation to the :"input" form
-*) 
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,63 +28,62 @@ by the option FinalSubstitutions. ";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 FCE = FeynCalcExternal;
 
 
 FinalSubstitutions= FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 Cases2  = MakeContext["Cases2"];
-chiralityprojector := chiralityprojector = 
-                                     MakeContext["ChiralityProjector"];
-diracsigma      := diracsigma      = MakeContext["DiracSigma"];
-diracgamma      := diracgamma      = MakeContext["DiracGamma"];
-diracmatrix     := diracmatrix     = MakeContext["DiracMatrix"];
-diracslash      := diracslash      = MakeContext["DiracSlash"];
+chiralityprojector := chiralityprojector = MakeContext["CoreObjects","ChiralityProjector"];
+diracsigma      := diracsigma      = MakeContext["CoreObjects","DiracSigma"];
+diracgamma      := diracgamma      = MakeContext["CoreObjects","DiracGamma"];
+diracmatrix     := diracmatrix     = MakeContext["CoreObjects","DiracMatrix"];
+diracslash      := diracslash      = MakeContext["CoreObjects","DiracSlash"];
 diractrace      := diractrace      = MakeContext["DiracTrace"];
 dimension       := dimension       = MakeContext["CoreOptions","Dimension"];
-Eps             := Eps             = MakeContext["Eps"];
+Eps             := Eps             = MakeContext["CoreObjects","Eps"];
 factor2         := factor2         = MakeContext["Factor2"];
-FAD             := FAD             = MakeContext["FAD"];
-FV              := FV              = MakeContext["FV"];
-FVD             := FVD             = MakeContext["FVD"];
-fourvector      := fourvector      = MakeContext["FourVector"];
+FAD             := FAD             = MakeContext["CoreObjects","FAD"];
+FV              := FV              = MakeContext["CoreObjects","FV"];
+FVD             := FVD             = MakeContext["CoreObjects","FVD"];
+fourvector      := fourvector      = MakeContext["CoreObjects","FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
-ga              := ga              = MakeContext["GA"];
-gad             := gad             = MakeContext["GAD"];
-gs              := gs              = MakeContext["GS"];
-gsd             := gsd             = MakeContext["GSD"];
-LC              := LC              = MakeContext["LC"];
-LCD             := LCD             = MakeContext["LCD"];
-lorentzindex    := lorentzindex    = MakeContext["LorentzIndex"];
-metrictensor    := metrictensor    = MakeContext["MetricTensor"];
+ga              := ga              = MakeContext["CoreObjects","GA"];
+gad             := gad             = MakeContext["CoreObjexts","GAD"];
+gs              := gs              = MakeContext["CoreObjects","GS"];
+gsd             := gsd             = MakeContext["CoreObjects","GSD"];
+LC              := LC              = MakeContext["CoreObjects","LC"];
+LCD             := LCD             = MakeContext["CoreObjects","LCD"];
+lorentzindex    := lorentzindex    = MakeContext["CoreObjects","LorentzIndex"];
+metrictensor    := metrictensor    = MakeContext["CoreObjects","MetricTensor"];
 levicivita      := levicivita      = MakeContext["LeviCivita"];
-mt              := mt              = MakeContext["MT"];
-mtd             := mtd             = MakeContext["MTD"];
-momentum        := momentum        = MakeContext["Momentum"];
+mt              := mt              = MakeContext["CoreObjects","MT"];
+mtd             := mtd             = MakeContext["CoreObjects","MTD"];
+momentum        := momentum        = MakeContext["CoreObjects","Momentum"];
 momentumexpand  := momentumexpand  = MakeContext["MomentumExpand"];
 MomentumCombine := MomentumCombine = MakeContext["MomentumCombine"];
 mult            := mult            = MakeContext["Mult"];
 numericalfactor := numericalfactor = MakeContext["NumericalFactor"];
 OPEDelta        =  MakeContext["OPEDelta"];
-pair            := pair            = MakeContext["Pair"];
+pair            := pair            = MakeContext["CoreObjects","Pair"];
 Power2 := Power2 = MakeContext["Power2"];
-propagatordenominator := 
-            propagatordenominator  = MakeContext["PropagatorDenominator"];
-feynampdenominator := 
-            feynampdenominator= MakeContext["FeynAmpDenominator"];
+propagatordenominator :=
+            propagatordenominator  = MakeContext["CoreObjects","PropagatorDenominator"];
+feynampdenominator :=
+            feynampdenominator= MakeContext["CoreObjects","FeynAmpDenominator"];
 scalarproduct   := scalarproduct   = MakeContext["ScalarProduct"];
-sd            := sd            = MakeContext["SD"];
-sund            := sund            = MakeContext["SUND"];
+sd            := sd            = MakeContext["CoreObjects","SD"];
+sund            := sund            = MakeContext["CoreObjects","SUND"];
 sundeltacontract:= sundeltacontract= MakeContext["SUNDeltaContract"];
-sunindex        := sunindex        = MakeContext["SUNIndex"];
-sunn            := sunn            = MakeContext["SUNN"];
-sunt            := sunt            = MakeContext["SUNT"];
-SUNF            := SUNF            = MakeContext["SUNF"];
-SP              := SP              = MakeContext["SP"];
-SPD             := SPD             = MakeContext["SPD"];
-SO             := SO             = MakeContext["SO"];
-SOD             := SOD             = MakeContext["SOD"];
+sunindex        := sunindex        = MakeContext["CoreObjects","SUNIndex"];
+sunn            := sunn            = MakeContext["CoreObjects","SUNN"];
+sunt            := sunt            = MakeContext["CoreObjects","SUNT"];
+SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
+SP              := SP              = MakeContext["CoreObjects","SP"];
+SPD             := SPD             = MakeContext["CoreObjects","SPD"];
+SO             := SO             = MakeContext["CoreObjects","SO"];
+SOD             := SOD             = MakeContext["CoreObjects","SOD"];
 
 SetAttributes[su, HoldAll];
 SetAttributes[FeynCalcExternal, HoldFirst];
@@ -102,35 +101,34 @@ uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
 ru =  Join[
  su["Power2",Power],
- su["Eps", eps],
- su["SUNF", SUNFback],
+ {HighEnergyPhysics`FeynCalc`CoreObjects`Eps :> eps},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNF :> SUNFback},
  su["ScalarProduct", scalarmul],
- su["MetricTensor", metricmul],
- su["DiracGamma", diracback],
- su["SUNDelta", sundeltanoi],
- su["SUND", sundback],
+ {HighEnergyPhysics`FeynCalc`CoreObjects`MetricTensor :> metricmul},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma :> diracback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta :> sundeltanoi},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUND :> sundback},
  su["SUNDeltaContract", sundeltanoi],
- su["SUNT", suntback],
- su["Pair", pairback],
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> suntback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`Pair :> pairback},
 (* su["PolarizationTensor",poltensorback],*)
- su["DiracSigma", dirsig],
- su["FeynAmpDenominator", feynampback],
- su["PropagatorDenominator", propagatordback]
+ {HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma :> dirsig},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator :> feynampback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator :> propagatordback}
            ] /. lorentzindex -> iDent /. sunindex -> iDent ;
 ru = Join[ru, Flatten[{uru}]];
 
-vv = Cases2[x, (su/@{"Power2", "Eps", "SUND", "SUNF", "ScalarProduct", 
-                   "MetricTensor", "DiracGamma", "SUNDelta", "SUNT",
-                   "Pair", (*"PolarizationTensor", *)"DiracSigma",
-                  "FeynAmpDenominator", "PropagatorDenominator"
-                   }) /. sequence -> Sequence
+vv = Cases2[x, Join[{},
+    {DiracGamma, DiracSigma, Eps, MetricTensor, FeynAmpDenominator, SUND,
+        SUNF, SUNT, SUNDelta, Pair, Power2, ScalarProduct, Power2, PropagatorDenominator
+         }] /. sequence -> Sequence
            ];
 
 rv = Map[(# ->  ((#//MomentumCombine)/.ru ))&, vv]//Dispatch;
- 
+
 x /. rv
 (*
-If[ru =!={}, (MomentumCombine[x]/.su["DiracSigma", dirsig]/.
+If[ru =!={}, (MomentumCombine[x]/. HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma :> dirsig /.
               su["Pair",pairback]/.ru
              )/.DOT->doc /. doc -> DOT, x
   ]

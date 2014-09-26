@@ -29,9 +29,9 @@ Begin["`Private`"];
 
 CovariantD := CovariantD = MakeContext["CovariantD"];
 DeclareNonCommutative = MakeContext["DeclareNonCommutative"];
-DiracGamma   = MakeContext["DiracGamma"];
+DiracGamma   = MakeContext["CoreObjects","DiracGamma"];
 DotSimplify  = MakeContext["DotSimplify"];
-Eps     := Eps = MakeContext["Eps"];
+Eps     := Eps = MakeContext["CoreObjects","Eps"];
 EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
 Explicit := Explicit = MakeContext["Explicit"];
 FCI          = MakeContext["FeynCalcInternal"];
@@ -39,24 +39,24 @@ FieldStrength := FieldStrength = MakeContext["FieldStrength"];
 (* this is needed : *)
 FieldDerivative = MakeContext["FieldDerivative"];
 FreeQ2       = MakeContext["FreeQ2"];
-LorentzIndex = MakeContext["LorentzIndex"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 MemSet       = MakeContext["MemSet"];
-Momentum     = MakeContext["Momentum"];
+Momentum     = MakeContext["CoreObjects","Momentum"];
 NonCommFreeQ     = MakeContext["NonCommFreeQ"];
 OPEDelta     = MakeContext["OPEDelta"];
 OPEk         = MakeContext["OPEk"];
 OPESum       = MakeContext["OPESum"];
-PartialD      = MakeContext["PartialD"];
+PartialD      = MakeContext["CoreObjects","PartialD"];
 ExplicitPartialD= MakeContext["ExplicitPartialD"];
-LeftPartialD  = MakeContext["LeftPartialD"];
-LeftRightPartialD  = MakeContext["LeftRightPartialD"];
-RightPartialD = MakeContext["RightPartialD"];
-QuantumField = MakeContext["QuantumField"];
-SUND         = MakeContext["SUND"];
-SUNDelta     = MakeContext["SUNDelta"];
+LeftPartialD  = MakeContext["CoreObjects","LeftPartialD"];
+LeftRightPartialD  = MakeContext["CoreObjects","LeftRightPartialD"];
+RightPartialD = MakeContext["CoreObjects","RightPartialD"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
+SUND         = MakeContext["CoreObjects","SUND"];
+SUNDelta     = MakeContext["CoreObjects","SUNDelta"];
 SUNDeltaContract= MakeContext["SUNDeltaContract"];
-SUNIndex     = MakeContext["SUNIndex"];
-SUNT         = MakeContext["SUNT"];
+SUNIndex     = MakeContext["CoreObjects","SUNIndex"];
+SUNT         = MakeContext["CoreObjects","SUNT"];
 (*
 SUNSimplify  := SUNSimplify = MakeContext["SUNSimplify"];
 *)

@@ -8,40 +8,37 @@
 (* :History: File created on 22 June '97 at 22:59 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: GluonSelfEnergy *) 
+(* :Summary: GluonSelfEnergy *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`GluonSelfEnergy`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-GluonSelfEnergy::"usage" = 
+GluonSelfEnergy::"usage" =
 "GluonSelfEnergy[{mu, a}, {nu,b}] yields the 1-loop Gluon selfenergy."
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
+CA = MakeContext["CoreObjects","CA"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 Gauge = MakeContext["CoreOptions","Gauge"];
-
-MakeContext[
-CA,
-Epsilon,
-Gstrong,
-LorentzIndex,
-Momentum,
-Pair,
-ScaleMu,
-SUNDelta,
-SUNIndex,
-Tf
-   ];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+ScaleMu = MakeContext["CoreObjects","ScaleMu"];
+Tf = MakeContext["CoreObjects","Tf"];
 
 Options[GluonSelfEnergy] = {Dimension -> D, CouplingConstant -> Gstrong,
-                            FinalSubstitutions ->  
+                            FinalSubstitutions ->
                             {Log[ScaleMu^2 _] :> 0,
                              EulerGamma :> Log[4 Pi]
                             },
@@ -60,13 +57,13 @@ fin  = FinalSubstitutions /. {opt} /. Options[GluonSelfEnergy];
 zdeta = 2/Epsilon + EulerGamma - Log[4 Pi];
 (* gluon + ghost - loop *)
 (
- I coup^2 CA/2 SUNDelta[SUNIndex[a], SUNIndex[b]] * 
+ I coup^2 CA/2 SUNDelta[SUNIndex[a], SUNIndex[b]] *
   (
    Pair[Momentum[pe, dim], LorentzIndex[mu, dim]]  *
-   Pair[Momentum[pe, dim], LorentzIndex[nu, dim]] - 
+   Pair[Momentum[pe, dim], LorentzIndex[nu, dim]] -
     Pair[LorentzIndex[mu, dim], LorentzIndex[nu, dim]] *
      Pair[Momentum[pe, dim], Momentum[pe, dim]]
-  ) ( zdeta (10/3 + (1-alpha)) - 62/9 - 
+  ) ( zdeta (10/3 + (1-alpha)) - 62/9 -
       10/3 Log[ScaleMu^2/pe2] +
       (1-alpha) ( 2 - Log[ScaleMu^2/pe2]) - 1/2 (1-alpha)^2
     ) +

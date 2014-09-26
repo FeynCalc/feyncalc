@@ -8,7 +8,7 @@
 (* :History: fixed bug in axial gauge on Sept. 15th 2003 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: GluonPropagator *) 
+(* :Summary: GluonPropagator *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -18,16 +18,16 @@ BeginPackage["HighEnergyPhysics`qcd`GluonPropagator`",
 GP::"usage" =
 "GP is equivalent to GluonPropagator.";
 
-GluonPropagator::"usage" = 
+GluonPropagator::"usage" =
 "GluonPropagator[p, {mu, a}, {nu, b}] or
  GluonPropagator[p,  mu, a ,  nu, b ] or
-yields the gluon propagator. 
+yields the gluon propagator.
 GluonPropagator[p, {mu}, {nu}] or
 GluonPropagator[p, mu, nu] omits the SUNDelta.
 Using {p,M} instead of p as the first argument gives the Gluon a mass.
-The gauge and the dimension 
-is determined by the option Gauge and Dimension. 
-The following settings of Gauge are possible: 
+The gauge and the dimension
+is determined by the option Gauge and Dimension.
+The following settings of Gauge are possible:
  1 :  the Feynman gauge;
  alpha : the general covariant gauge;
  {Momentum[n],alpha} : axial gauge.
@@ -37,40 +37,41 @@ The following settings of Gauge are possible:
 
 Begin["`Private`"];
 
+CA = MakeContext["CoreObjects","CA"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 Gauge = MakeContext["CoreOptions","Gauge"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+OPE = MakeContext["CoreObjects","OPE"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+Tf = MakeContext["CoreObjects","Tf"];
 
 MakeContext[
 Abbreviation,
-CA,
 CounterT,
 CounterTerm,
-Epsilon,
 Explicit,
-Gstrong,
-LorentzIndex,
-Momentum,
 MomentumExpand,
-OPE,
-Pair,
-PairContract,
-FeynAmpDenominator,
 NumericalFactor,
-PropagatorDenominator,
-Sn,
-SUNDelta,
+PairContract,
 SUNDeltaContract,
-SUNIndex,
-Tf   ];
+Sn
+ ];
 
-Twist2GluonOperator := Twist2GluonOperator = 
+Twist2GluonOperator := Twist2GluonOperator =
 MakeContext["Twist2GluonOperator"];
 
 Options[GluonPropagator] = {
 CounterTerm -> False,
 CouplingConstant -> Gstrong,
-Dimension -> D, 
+Dimension -> D,
 Explicit -> False,
 Gauge -> 1, OPE -> False };
 
@@ -81,19 +82,19 @@ Abbreviation[GluonPropagator] = HoldForm[GP];
 
 GluonPropagator[x___, i_Integer, y___] := GluonPropagator[x, l[i], c[i], y]/;2<Length[{x,i,y}];
 
-GluonPropagator[a_, b_,c_, d_,e_, opt___Rule] := 
+GluonPropagator[a_, b_,c_, d_,e_, opt___Rule] :=
 GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];
 
-GluonPropagator[q_, {li_},{mu_},opt___Rule] := GluonPropagator[-q, {li}, {mu}, opt] /; 
+GluonPropagator[q_, {li_},{mu_},opt___Rule] := GluonPropagator[-q, {li}, {mu}, opt] /;
    NumericalFactor[q] === -1;
 
 GluonPropagator[pi_, mu_, nu_, opt___Rule] := GluonPropagator[pi, {mu}, {nu}]/;
                !MemberQ[{Rule, List}, Head[mu]] &&
                !MemberQ[{Rule, List}, Head[nu]];
 
-GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt___Rule] := 
+GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt___Rule] :=
 Block[
-{gauge, gluemass, dim, p, mu, nu, a, b, glp,n,ope, opepart, mud, nud, ad, 
+{gauge, gluemass, dim, p, mu, nu, a, b, glp,n,ope, opepart, mud, nud, ad,
  bd, sundelta, p2, cou, gst, gmunu, pmu, pnu},
  gauge  = Gauge /. {opt} /. Options[GluonPropagator];
  dim    = Dimension /. {opt} /. Options[GluonPropagator];
@@ -113,14 +114,14 @@ Block[
          sundelta = 1
         ];
 
- If[cou =!= False, 
-    p2 = Pair[p,p]; gmunu = Pair[mu, nu]; 
+ If[cou =!= False,
+    p2 = Pair[p,p]; gmunu = Pair[mu, nu];
     pmu = Pair[p, mu]; pnu = Pair[p, nu];
     Which[
           cou === 1,
 (* put - sign by  hand ; wg. BPHZ *)
                     glp =-I Sn gst^2 CA/Epsilon ( -19/6 p2 gmunu +
-                                              11/3 pmu pnu 
+                                              11/3 pmu pnu
                                            ) sundelta
                    ,
           cou === 2,
@@ -133,12 +134,12 @@ Block[
                                                  4/3 pmu pnu
                                               ) sundelta
                    ,
-          cou === 4, 
+          cou === 4,
                    glp =-I Sn  gst^2 CA/Epsilon (-20/6 p2 gmunu +
                                              10/3 pmu pnu
-                                            ) sundelta 
+                                            ) sundelta
                    ,
-          cou === 5, 
+          cou === 5,
                    glp = I Sn gst^2 CA/Epsilon (-20/6 p2 gmunu +
                                             10/3 pmu pnu
                                           ) sundelta +
@@ -155,11 +156,11 @@ Block[
                                              4/3 pmu pnu
                                            ) sundelta
                                  ) +
-                  GluonPropagator[pi, {mui,  ai}, {nui, bi}, 
+                  GluonPropagator[pi, {mui,  ai}, {nui, bi},
                                   CounterTerm -> False, opt]
         ],
- 
- If[ope =!= False, 
+
+ If[ope =!= False,
      mud= Unique[Global`mli];
      nud= Unique[Global`nli];
       ad= Unique[Global`asi];
@@ -175,10 +176,10 @@ Block[
 If[Head[gauge] === List,
    n = gauge[[1]];
    If[FreeQ[n, Momentum], n = Momentum[n, dim]];
-   glp = 
+   glp =
 I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
               sundelta * (- Pair[mu, nu] +
-                                  (Pair[n, mu] Pair[p,nu] + 
+                                  (Pair[n, mu] Pair[p,nu] +
                                    Pair[p, mu] Pair[n,nu]
                                   ) / Pair[n, p] -
                                   (Pair[n, n] Pair[p,mu] Pair[p,nu]-
@@ -188,9 +189,9 @@ I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
                                   ) /Pair[n,p]^2
                           )
        ,
-  
+
    glp  = I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
-              sundelta * (- Pair[mu, nu] + 
+              sundelta * (- Pair[mu, nu] +
                                  (1-gauge) Pair[p, mu] Pair[p, nu] *
              MomentumExpand[
               FeynAmpDenominator[PropagatorDenominator[p, gluemass]]]

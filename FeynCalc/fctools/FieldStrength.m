@@ -34,22 +34,23 @@ IndexPosition::"usage"=
 Begin["`Private`"];
 
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+GaugeField = MakeContext["CoreObjects","GaugeField"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+PartialD = MakeContext["CoreObjects","PartialD"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
+RightPartialD = MakeContext["CoreObjects","RightPartialD"];
+SUNF = MakeContext["CoreObjects","SUNF"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 
 MakeContext[
 DeclareNonCommutative,
 Explicit,
 FreeQ2,
-GaugeField,
-Gstrong,
 IndexPosition,
-LorentzIndex,
-Momentum,
-OPEDelta,
-PartialD,
-RightPartialD,
-QuantumField,
-SUNF,
-SUNIndex];
+OPEDelta
+];
 
 DeclareNonCommutative[FieldStrength];
 

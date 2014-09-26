@@ -21,13 +21,17 @@ functions.";
 Begin["`Private`"];
 
 
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
-
 Dimension = MakeContext["CoreOptions","Dimension"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+Gauge = MakeContext["CoreOptions","Gauge"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+Nf = MakeContext["CoreObjects","Nf"];
+Tf = MakeContext["CoreObjects","Tf"];
 
-MakeContext[CA,CF, Epsilon,Tf,Nf, Gauge, Gstrong];
-
-Options[CounterTerm] = 
+Options[CounterTerm] =
   {CouplingConstant -> Gstrong, Dimension -> (4+Epsilon),
        Gauge -> 1, QuarkMass -> Global`M};
 
@@ -36,7 +40,7 @@ CounterTerm[x_Symbol,opts___Rule] := CounterTerm[ToString[x], opts];
 CounterTerm[x_, opts___Rule] := Block[{ct,alphas,adp, xi},
 (* hep-ph/9803493 *)
 
-{d, xi, gstrong, m} = {Dimension, Gauge, Gstrong, QuarkMass} /. 
+{d, xi, gstrong, m} = {Dimension, Gauge, Gstrong, QuarkMass} /.
                       {opts} /. Options[CounterTerm] ;
 
 tareps = (4-d)/2;

@@ -31,36 +31,36 @@ Begin["`Private`"];
 
 (* FeynCalc functions *)
 
-fcpa := fcpa = MakeContext["Pair"];
-fcmom := fcmom = MakeContext["Momentum"];
-fcsundel := fcsundel = MakeContext["SUNDelta"];
+fcpa := fcpa = MakeContext["CoreObjects","Pair"];
+fcmom := fcmom = MakeContext["CoreObjects","Momentum"];
+fcsundel := fcsundel = MakeContext["CoreObjects","SUNDelta"];
 fcexpscp := fcexpscp = MakeContext["ExpandScalarProduct"];
-fcfad := fcfad = MakeContext["FeynAmpDenominator"];
-fcli := fcli = MakeContext["LorentzIndex"];
+fcfad := fcfad = MakeContext["CoreObjects","FeynAmpDenominator"];
+fcli := fcli = MakeContext["CoreObjects","LorentzIndex"];
 fcdot := fcdot = DOT;
-fcdiga := fcdiga = MakeContext["DiracGamma"];
+fcdiga := fcdiga = MakeContext["CoreObjects","DiracGamma"];
 fcdtr := fcdtr = MakeContext["DiracTrace"];
-fceps := fceps = MakeContext["Eps"];
+fceps := fceps = MakeContext["CoreObjects","Eps"];
 fcsp := fcsp = MakeContext["ScalarProduct"];
-fcprd := fcprd = MakeContext["PropagatorDenominator"];
+fcprd := fcprd = MakeContext["CoreObjects","PropagatorDenominator"];
 fcmomex := fcmomex = MakeContext["MomentumExpand"];
 fcmomcomb := fcmomcomb = MakeContext["MomentumCombine"];
 fcpave := fcpave = MakeContext["PaVe"];
 fconeloop := fconeloop = MakeContext["OneLoop"];
 fcexpt := fcexpt = MakeContext["Explicit"];
-fcqf := fcqf = MakeContext["QuantumField"];
-fcpd := fcpd = MakeContext["PartialD"];
-fcsunn := fcsunn = MakeContext["SUNN"];
-fcpol := fcpol = MakeContext["Polarization"];
+fcqf := fcqf = MakeContext["CoreObjects","QuantumField"];
+fcpd := fcpd = MakeContext["CoreObjects","PartialD"];
+fcsunn := fcsunn = MakeContext["CoreObjects","SUNN"];
+fcpol := fcpol = MakeContext["CoreObjects","Polarization"];
 (*fccombs := fccombs = MakeContext["CombinationLists"];*)
 fccombs := fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
 FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
 CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFieldDerivative"];
-ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
-SUNIndex := SUNIndex = MakeContext["SUNIndex"];
-ScaleMu := ScaleMu = MakeContext["ScaleMu"];
+ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["CoreObjects","ExplicitSUNIndex"];
+SUNIndex := SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+ScaleMu := ScaleMu = MakeContext["CoreObjects","ScaleMu"];
 CouplingConstant := CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
-ExplicitLorentzIndex := ExplicitLorentzIndex = MakeContext["ExplicitLorentzIndex"];
+ExplicitLorentzIndex := ExplicitLorentzIndex = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 DiracSimplify := DiracSimplify = MakeContext["DiracSimplify"];
 
 (* Tracer functions *)
@@ -258,8 +258,8 @@ indicesdotrule1[optss___] := ((fcpa | fcsp)[a_,
 indicesdotrule2[optss___] := (fcdiga[
           a : fcmom[_, ___] | ___*fcmom[_, ___] |
               HoldPattern[Plus[((___*
-           HighEnergyPhysics`FeynCalc`Momentum`Momentum[_,___]) |
-           HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, ___]) ..]], dim___] :>
+           HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_,___]) |
+           HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, ___]) ..]], dim___] :>
            indsuppdot[a, fcdiga1[lorentzdummy, dim], lin[optss]]);
 
 
@@ -271,8 +271,8 @@ indsuppdot[a_, b_, i_] /; (! FreeQ[a, fcmom] && ! FreeQ[b, fcmom]) :=
 indsuppdot[
       a : fcmom[_, ___] | ___*fcmom[_, ___] |
           HoldPattern[
-            Plus[((___*HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, ___]) |
-            HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, ___])..]],
+            Plus[((___*HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, ___]) |
+            HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, ___])..]],
             fcdiga1[lorentzdummy, dim___], i_] :=
     a*fcdiga[loritemp[i, dim], dim] /.
       fcmom[c_, dimm___] -> fcpa[fcmom[c, dimm], loritemp[i, dimm]];
@@ -341,8 +341,8 @@ FourPoint[q_,
                 fcpa[fcli[l4, d], fcmom[qq4, d]]]], opts];
 
 FourPoint[q_, aa : HoldPattern[Times[___, (_[
-  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
-  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]), a_]], opts___] /;
+  HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, d___], _] ..]), a_]], opts___] /;
    !FreeQ[{a},q] && Head[a]===Times && !FreeQ[Head/@List@@a, Plus] :=
     FourPoint[q, Times[aa]//ExpandAll, opts];
 
@@ -407,25 +407,25 @@ FourPoint[q_,
 (* Tensor integrals of rank lower than four are simply handed to OneLoop: *)
 
 FourPoint[q_, aa : HoldPattern[Times[___, (_[
-  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
-  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]), a___,
-  b:((HighEnergyPhysics`FeynCalc`Pair`Pair[
-     _[_, d___], HighEnergyPhysics`FeynCalc`Momentum`Momentum[q_,
-                      d___]]|HighEnergyPhysics`FeynCalc`Pair`Pair[
-     HighEnergyPhysics`FeynCalc`Momentum`Momentum[q_,
+  HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, d___], _] ..]), a___,
+  b:((HighEnergyPhysics`FeynCalc`CoreObjects`Pair[
+     _[_, d___], HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[q_,
+                      d___]]|HighEnergyPhysics`FeynCalc`CoreObjects`Pair[
+     HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[q_,
                       d___], _[_, d___]]) ..), ___]], opts___] :=
     fconeloop[q, Times[aa], opts] /;
    Length[{b}] < 4 && FreeQ[{a},q];
 
 FourPoint[q_, aa : HoldPattern[Times[___, (_[
-  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
-  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]), a___]], opts___] /;
+  HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, d___], _] ..]), a___]], opts___] /;
    FreeQ[{a},q] :=
     fconeloop[q, Times[aa], opts];
 
 FourPoint[q_, aa : HoldPattern[_[
-  HighEnergyPhysics`FeynCalc`PropagatorDenominator`PropagatorDenominator[
-  HighEnergyPhysics`FeynCalc`Momentum`Momentum[_, d___], _] ..]], opts___] :=
+  HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator[
+  HighEnergyPhysics`FeynCalc`CoreObjects`Momentum[_, d___], _] ..]], opts___] :=
     fconeloop[q, Times[aa], opts];
 
 
@@ -1081,10 +1081,10 @@ surfaceRules[n_]:={
          surdum + idd[-nm[fdr[nm[f,r],x,fcli[li1]],dd]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&&
 				(sr0 || Length[{f,r}]>0&&((m1=Max[Depth/@
-              Union[Cases[{f,r},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1)),
 
    surdum + nm[uo___,NM[f___,FieldDerivative[dd_,x_,fcli[li1_]],r___],
@@ -1093,17 +1093,17 @@ surfaceRules[n_]:={
                     nm[NM[f,dd,fdr[NM[r],x,fcli[li1]]]]]-
           nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,dd,r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
     surdum + nm[uo___,
           utr[NM[f___,FieldDerivative[dd_,x_,
-					HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[li1_]],
+					HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[li1_]],
               r___]],ou___]:>
       surdum + idd[-nm[uo,ou,utr[
                 NM[fdr[NM[f],x,fcli[li1]],dd,r]+
@@ -1111,11 +1111,11 @@ surfaceRules[n_]:={
       nm[fdr[nm[uo,ou],x,fcli[li1]],
                 utr[NM[f,dd,r]]]]/;
        ( (FreeQ[dd, ufis, Heads->True] =!=True))&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
@@ -1126,17 +1126,17 @@ surfaceRules[n_]:={
                     NM[f,Adjoint[dd],fdr[NM[r],x,fcli[li1]]]]-
           nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,Adjoint[dd],r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
 		surdum +
         nm[uo___,utr[NM[f___,Adjoint[FieldDerivative[dd_,x_,
-							HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[li1_]]],
+							HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[li1_]]],
               r___]],ou___]:>
        surdum + idd[-nm[uo,ou,
 			    utr[NM[fdr[NM[f],x,fcli[li1]],Adjoint[dd],r]
@@ -1144,11 +1144,11 @@ surfaceRules[n_]:={
         nm[fdr[nm[uo,ou],x,fcli[li1]],
           utr[NM[f,Adjoint[dd],r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<=
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n-1 || m1==-Infinity&&m2==-Infinity&&n<=1)};
 
@@ -1161,10 +1161,10 @@ surfaceRules1[n_]:={
          surdum + idd[-nm[fdr[nm[f,r],x,fcli[li1]],dd/.fcpd[__]->Sequence[]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&&
 				(sr0 || Length[{f,r}]>0&&((m1=Max[Depth/@
-              Union[Cases[{f,r},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1)),
 
    surdum + nm[uo___,NM[f___,dd:(fcqf[fcpd[li1_,___], 
@@ -1177,11 +1177,11 @@ surfaceRules1[n_]:={
                     nm[NM[f,dd,fdr[NM[r],x,fcli[li1]]]]]-
           nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,dd/.fcpd[__]->Sequence[],r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
@@ -1198,11 +1198,11 @@ surfaceRules1[n_]:={
       nm[fdr[nm[uo,ou],x,fcli[li1]],
                 utr[NM[f,dd/.fcpd[__]->Sequence[],r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
@@ -1217,11 +1217,11 @@ surfaceRules1[n_]:={
                     NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],fdr[NM[r],x,fcli[li1]]]]-
           nm[fdr[nm[uo,ou],x,fcli[li1]],NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
@@ -1238,11 +1238,11 @@ surfaceRules1[n_]:={
         nm[fdr[nm[uo,ou],x,fcli[li1]],
           utr[NM[f,Adjoint[dd/.fcpd[__]->Sequence[]],r]]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&& (sr0 || (m1=Max[Depth/@
-              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+              Union[Cases[{f,r,ou},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 	      _FieldDerivative,Infinity,
                   Heads->True]]])<=
           (m2=Max[Depth/@
-                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`PartialD`PartialD|
+                Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n-1 || m1==-Infinity&&m2==-Infinity&&n<=1)};
 

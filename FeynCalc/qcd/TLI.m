@@ -14,8 +14,8 @@
 
 BeginPackage["HighEnergyPhysics`qcd`TLI`",{"HighEnergyPhysics`FeynCalc`"}];
 
-TLI::"usage"= 
-"TLI[{v,w,x,y,z},{a,b,c,d,e}, {al,be,ga,de,ep}]. 
+TLI::"usage"=
+"TLI[{v,w,x,y,z},{a,b,c,d,e}, {al,be,ga,de,ep}].
 The exponents of the numerator scalar product are (dl = OPEDelta):
 v: k1.k1, w: k2.k2,  x: p.k1, y: p.k2, z: k1.k2.
 a: dl.k1, b: dl.k2,  c: dl.(p-k1), d: dl.(p-k2), e: dl.(k1-k2)\n\n
@@ -32,26 +32,26 @@ TLI[{a,b,c,d,e}, {al,be,ga,de,ep}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-Epsilon       = MakeContext["Epsilon"];
+
+Collect2      = MakeContext["Collect2"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon       = MakeContext["CoreObjects","Epsilon"];
 EpsilonOrder  = MakeContext["CoreOptions","EpsilonOrder"];
 Factor1       = MakeContext["Factor1"];
 Factoring     = MakeContext["CoreOptions","Factoring"];
 FeynCalcInternal = MakeContext["FeynCalcInternal"];
 FreeQ2        = MakeContext["FreeQ2"];
-Collect2      = MakeContext["Collect2"];
-DeltaFunction = MakeContext["DeltaFunction"];
-Momentum      = MakeContext["Momentum"];
+Momentum      = MakeContext["CoreObjects","Momentum"];
 OPEDelta      = MakeContext["OPEDelta"];
 OPEm          = MakeContext["OPEm"];
 PowerSimplify = MakeContext["PowerSimplify"];
+SOD            = MakeContext["CoreObjects","SOD"];
 ScalarProduct = MakeContext["ScalarProduct"];
 Select1       = MakeContext["Select1"];
 Select2       = MakeContext["Select2"];
-SOD            = MakeContext["SOD"];
 
-Options[TLI] =  {EpsilonOrder -> 0, Momentum -> Global`p}; 
+Options[TLI] =  {EpsilonOrder -> 0, Momentum -> Global`p};
 
 
 
@@ -62,26 +62,26 @@ TLI[a__, pr_ /; !FreeQ[pr, {_,0}], opt___Rule] := TLI[a, pr /. {b_,0} :> b];
     TLI[{0, 1, 0, 0, m_/;Head[m]=!=Integer}, {xyz__}, opt___Rule] :=
     -TLI[{0,0,0,0,m+1}, {xyz}, opt] + TLI[{1,0,0,0,m}, {xyz}, opt];
 
-    TLI[{1, 0, 0, 0, m_/;Head[m]=!=Integer}, 
+    TLI[{1, 0, 0, 0, m_/;Head[m]=!=Integer},
         {a_, b_, b_, a_, c_}, oot___Rule] :=
     1/2 TLI[{0, 0, 0, 0, m}, {a, b, b, a, c}] sod[oot] +
     1/2 TLI[{0, 0, 0, 0, m+1}, {a, b, b, a, c}];
 
-TLI[{m_, 1, 0, 0, 0}, {{2, M_}, 0, 0, {1, M_}, {1, M_}}, opt___Rule] := 
-(sod[opt]*TLI[{0, m, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 0}])/2 - 
-TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 0}]/2 + 
-   (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 0, {1, M}, {1, M}}])/2 - 
-   (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, 0}])/2 + 
-TLI[{1 + m, 0, 0, 0, 0}, {{2, M}, 0, 0, {1, M}, {1, M}}]/2 + 
+TLI[{m_, 1, 0, 0, 0}, {{2, M_}, 0, 0, {1, M_}, {1, M_}}, opt___Rule] :=
+(sod[opt]*TLI[{0, m, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 0}])/2 -
+TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 0}]/2 +
+   (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 0, {1, M}, {1, M}}])/2 -
+   (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, 0}])/2 +
+TLI[{1 + m, 0, 0, 0, 0}, {{2, M}, 0, 0, {1, M}, {1, M}}]/2 +
    TLI[{1 + m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, 0}]/2;
 
 (*
 TLI[{m_, 1, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, {1, M_}}, opt___Rule] :=
- -(sod[opt]*TLI[{0, m, 0, 0, 0}, {{1, M}, {2, M}, 0, 2, 0}])/2 + 
-   TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 2, 0}]/2  + 
-  (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, {1, M}}])/2 + 
-   (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 2, {1, M}, 0}])/2 + 
-   TLI[{1 + m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, {1, M}}]/2 - 
+ -(sod[opt]*TLI[{0, m, 0, 0, 0}, {{1, M}, {2, M}, 0, 2, 0}])/2 +
+   TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 2, 0}]/2  +
+  (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, {1, M}}])/2 +
+   (sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, 0, 2, {1, M}, 0}])/2 +
+   TLI[{1 + m, 0, 0, 0, 0}, {{2, M}, 0, 1, {1, M}, {1, M}}]/2 -
    TLI[{1 + m, 0, 0, 0, 0}, {{2, M}, 0, 2, {1, M}, 0}]/2;
 *)
 
@@ -109,7 +109,7 @@ TLI[{0,0,a_, b_, e_}, {0, 0, x_, y_, z_}, opt___Rule] := 0 /;
 
 (* special cases ; all checked by TARCER *)
 
-TLI[{0, 0, 0, 1, 0}, {m_, 0, 0, 0, 0}, {{2, M_}, {1, M_}, 1, 0, 1}, 
+TLI[{0, 0, 0, 1, 0}, {m_, 0, 0, 0, 0}, {{2, M_}, {1, M_}, 1, 0, 1},
 opt___Rule] := -TLI[{m, 0, 0, 0, 0}, {1, 0, 1, 0, {1, M}}]/(4*M^2) +
    TLI[{m, 0, 0, 0, 0}, {1, 1, 1, 0, {1, M}}]/4 +
    TLI[{m, 0, 0, 0, 0}, {{1, M}, 0, 1, 0, {1, M}}]/(4*M^2) -
@@ -137,8 +137,8 @@ opt___Rule] := -TLI[{m, 0, 0, 0, 0}, {1, 0, 1, 0, {1, M}}]/(4*M^2) +
     TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 0}]/(2*M^2) +
     TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 1}];
 
-  TLI[{m_, 1, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 0}, opt___Rule] := 
-   -(sod[opt]*TLI[{0, m, 0, 0, 0}, {{1, M}, {2, M}, 0, 0, 0}])/(2*M^2) + 
+  TLI[{m_, 1, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 0}, opt___Rule] :=
+   -(sod[opt]*TLI[{0, m, 0, 0, 0}, {{1, M}, {2, M}, 0, 0, 0}])/(2*M^2) +
     sod[opt]*TLI[{m, 0, 0, 0, 0}, {{2, M}, {1, M}, 0, 1, 0}];
 
 
@@ -161,11 +161,11 @@ TLI[{0,2,0,0,0}, {a__},{b_,0,c__}, opt___Rule] := TLI[{a},{b,-2,c},opt];
 
 (*DANGER? commented out August 2nd 1997
 TLI[{m_ /; Head[m]=!=Integer, g2_Integer?Positive, g3_, g4_, 0},
-     {{a1_, M_Symbol}, {a2_, M_Symbol}, a3_, 0, 0}, r___ 
+     {{a1_, M_Symbol}, {a2_, M_Symbol}, a3_, 0, 0}, r___
    ] := 0;
 *)
 
-TLI[{m_ /; Head[m]=!=Integer, g2_Integer, g3_Integer, 
+TLI[{m_ /; Head[m]=!=Integer, g2_Integer, g3_Integer,
      g4_Integer, g5_Integer
     }, {{a1_, M_Symbol}, a2_, a3_, 0, {a5_, M_Symbol}}
    ] := TLI[{m, g5, g3, g4, g2}, {{a1, M}, {a5, M}, a3, 0, a2}];
@@ -182,13 +182,13 @@ TLI[{0,b_,0,d_,0}, {-1,be_Integer?Positive,0,de_,{1,MI_}}] :=
 
 (*RM; Dec.21 *)
 (* move the m from the 5th position to the second: *)
-TLI[{a_,b_Integer,c_,0,e_/;Head[e]=!=Integer}, 
+TLI[{a_,b_Integer,c_,0,e_/;Head[e]=!=Integer},
     {al_,be_,ga_,0,ep_}, rul___Rule] :=
 TLI[{a,e,c,0,b}, {al,ep,ga,0,be}, rul];
 
 (*Rainer; Aug.26/97*)
 TLI[{g5_Integer, m_ /; Head[m]=!=Integer, 0, g4_Integer, g1_Integer},
-    {a5_, a2_, 0, a4_, {a1_, M_Symbol}} ] := 
+    {a5_, a2_, 0, a4_, {a1_, M_Symbol}} ] :=
 (-1)^(g1+g5) * TLI[{g1, m, 0, g4, g5}, {{a1, M}, a2, 0, a4, a5}];
 
 (* NEW relation for graph11 *)
@@ -202,11 +202,11 @@ TLI[{a1_Integer, a2_Integer, a3_Integer, m_, 0},
 
 (* k1 <--> k2 *)
 TLI[{a_Integer,b_ /; Head[b]=!=Integer,c_,d_,e_},
-    {al_,be_,ga_/;ga=!=0,0,ep_}, 
+    {al_,be_,ga_/;ga=!=0,0,ep_},
     opt___] := (-1)^e TLI[{b,a,d,c,e},{be,al,0,ga,ep},opt];
 
 (* k1 <--> k2 *)
-TLI[{a_ /; Head[a]=!=Integer,b_Integer, c_,d_,e_},{al_,be_,ga_,0,ep_}, 
+TLI[{a_ /; Head[a]=!=Integer,b_Integer, c_,d_,e_},{al_,be_,ga_,0,ep_},
     opt___] := (-1)^e TLI[{b,a,d,c,e},{be,al,0,ga,ep},opt];
 
 TLI[{0,0,0,0,0},{x__},{y__}, opt___Rule] := TLI[{x}, {y}, opt];
@@ -225,7 +225,7 @@ TLI[{a1_, a2_Integer?Positive, a3_, a4_, m_/;Head[m]=!=Integer},
 (* this generates Delta.p *)
 sod[rul___Rule] := FeynCalcInternal[SOD[Momentum /. {rul} /.
                       Options[TLI]]];
-   ma[i_]:= StyleBox[i//ToString, 
+   ma[i_]:= StyleBox[i//ToString,
                             FontColor -> RGBColor[0,0,1]
                            ];
 
@@ -233,7 +233,7 @@ sod[rul___Rule] := FeynCalcInternal[SOD[Momentum /. {rul} /.
                                    FontWeight -> "Bold",
                                    FontColor -> RGBColor[1,0,0]
                                   ];
-   TLI /: 
+   TLI /:
    MakeBoxes[TLI[{a__}, {al__}], TraditionalForm] :=
      SubsuperscriptBox[
  StyleBox["T", FontFamily -> "Times",

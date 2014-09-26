@@ -24,10 +24,15 @@ Lagrangian[\"QCD\"] gives the gluon self interaction part of the QCD lagrangian.
 
 Begin["`Private`"];
    
+AntiQuarkField = MakeContext["CoreObjects","AntiQuarkField"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+GluonField = MakeContext["CoreObjects","GluonField"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
+QuarkField = MakeContext["CoreObjects","QuarkField"];
 
-MakeContext[AntiQuarkField, CovariantD, DiracGamma,
-            FieldStrength, GluonField, LeviCivita,Momentum,
-            OPEDelta, OPEm, Polarization, QuarkField, QuantumField];
+MakeContext[CovariantD, FieldStrength, LeviCivita, OPEDelta, OPEm];
 
 Lagrangian[x_] /;Depth[x]===1:= Block[{na,lali,a,b,c,d,al,be,ga},
 If[ValueQ[Global`a], a = Unique["a"], a = Global`a];

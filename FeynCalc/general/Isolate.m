@@ -45,8 +45,9 @@ is done.";
 Begin["`Private`"];
    
 IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+KK = MakeContext["CoreOptions","KK"];
 
-MakeContext[ Cases2, FreeQ2, IsolateSplit, IsolatePrint, KK, NumericalFactor];
+MakeContext[ Cases2, FreeQ2, IsolateSplit, IsolatePrint, NumericalFactor];
 
 (* :TitleIsolate *)
 

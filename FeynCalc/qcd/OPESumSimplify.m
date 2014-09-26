@@ -14,13 +14,12 @@
 
 BeginPackage["HighEnergyPhysics`qcd`OPESumSimplify`",{"HighEnergyPhysics`FeynCalc`"}];
 
-OPESumSimplify::"usage"= "OPESumSimplify[exp] 
+OPESumSimplify::"usage"= "OPESumSimplify[exp]
 simplifies OPESum's in exp.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
 Factor2 = MakeContext["Factor2"];
 FeynCalcInternal = MakeContext["FeynCalcInternal"];
@@ -40,7 +39,7 @@ powexp[x_] := x /. (-y_)^po_ -> ((-1)^po y^po) /.
 OPESumSimplify[exp_] := Block[
  {nx, proex, sumex, suma, csum, psum, lsum,
   lsum1,lsum4,lsum4s,lsum6, power7, nonu},
-     
+
      psum[a_, b__] := csum[Factor2[powexp[a] /. Power2 -> Power], b];
 lsum4s[aa_,cc__] := -OPESum[-aa,cc] /; NumericalFactor[aa] === (-1);
 
@@ -51,17 +50,17 @@ lsum4[b_, moreind__List, {i_, c_, d_}] :=
 powsu7[a_] := a;
 powsu7[b_, mor___List, {i_, c_, d_}] :=
 powsu7[b /. Power2[(-1),any_] :> Expand[(-1)^any] /.
-           { (-1)^i pow_[a_,i] :> 
+           { (-1)^i pow_[a_,i] :>
              pow[-a,i] /; pow === Power || pow===Power2,
              (-1)^i pow_[a_,(i + n_Integer?OddQ)] :>
-             -power7[(-a),(i + n)] /; pow === Power || pow===Power2, 
+             -power7[(-a),(i + n)] /; pow === Power || pow===Power2,
              (-1)^i pow_[a_,(i + n_Integer?EvenQ)] :>
              power7[(-a),(i + n)] /; pow === Power || pow===Power2
            },
        mor];
 
 lsum5[a_^v_ b_^w_,{i_,0,m_}]:=
-  (a^v b^w/(a^i b^(m-i)) OPESum[a^i b^(m-i),{i,0,m}] 
+  (a^v b^w/(a^i b^(m-i)) OPESum[a^i b^(m-i),{i,0,m}]
   ) /; !FreeQ[a, OPEDelta] && !FreeQ[b, OPEDelta] &&
        (Variables[v] === {i}) && (Variables[w] === Variables[{i,m}]);
 
@@ -82,17 +81,17 @@ lsum7[a_,more___List, {i_, 0, j_}] := Block[{te},
        OPESum[a, more, {i, 0, j}]
       ]                        ];
 
-     lsum2[a_, b__] := lsum3[ 
+     lsum2[a_, b__] := lsum3[
          powexp[a] /. {(z_^(pe_/;Head[pe]=!=Integer)) :>
                                 Power2[z, pe]
                       },   b];
 
-     csum /: x_^n_. csum[ x_^j_ fa_., b__] := csum[ fa x^(j+n), b 
+     csum /: x_^n_. csum[ x_^j_ fa_., b__] := csum[ fa x^(j+n), b
                                                   ] /; n =!= OPEm;
      csum /: x_^(n_ /;Head[n]=!=Integer)*
        csum[a_, b__] := csum[PowerSimplify[a x^n], b] /; n=!=OPEm;
 
-     csum /: x_^n_. csum[ Power2[x_,j_] fa_., b__] := 
+     csum /: x_^n_. csum[ Power2[x_,j_] fa_., b__] :=
                       csum[ fa Power2[x,(j+n)], b ];
 lsum8[a_,b__] := If[IntegerQ[NumericalFactor[a]],
                     NumericalFactor[a] OPESum[a/NumericalFactor[a],b],
@@ -101,7 +100,7 @@ lsum8[a_,b__] := If[IntegerQ[NumericalFactor[a]],
 (* get all summation indices *)
 nonu[a_List] := Select[Variables[Drop[a,-1]], Head[#] =!= Integer&];
 nonu[a_List, b__List] := Select[
-Variables[Map[Drop[#,-1]&,{a,b}]], 
+Variables[Map[Drop[#,-1]&,{a,b}]],
                         Head[#] =!= Integer&
                        ];
 power5[-1, aa_ + bb_] := power5[-1, aa] power5[-1, bb];
@@ -109,7 +108,7 @@ power5[-1, nn_Integer] := (-1)^nn;
 minone[y_] := y /. {(-1)^(a_Plus) :> power5[-1,a],
                     Power2[(-1),a_Plus] :> power5[-1,a]
                    };
-   lsum[x_Times, j__List] := (Select[minone[x], 
+   lsum[x_Times, j__List] := (Select[minone[x],
                                    FreeQ2[#, nonu[j]]&] OPESum[
                              Select[minone[x],!FreeQ2[#, nonu[j]]&], j]
                             ) /. power5 -> Power;
@@ -117,18 +116,18 @@ minone[y_] := y /. {(-1)^(a_Plus) :> power5[-1,a],
     proex /: f_ proex[c_/;Head[c]=!=List, b__List] := proex[f c, b];
     sumex[a_,b__] := suma[Expand[a /. {(z_^(pe_/;Head[pe]=!=Integer)) :>
                                 Power2[z, pe]}], b];
-    suma[c_, d__] := If[Head[c] === Plus, Map[sumb[#, d]&, c], sumb[c, d]]; 
-    nx = Expand[powexp[FeynCalcInternal[exp]/. 
+    suma[c_, d__] := If[Head[c] === Plus, Map[sumb[#, d]&, c], sumb[c, d]];
+    nx = Expand[powexp[FeynCalcInternal[exp]/.
                 OPESum -> proex /. proex -> sumex], sumb
                ] /. sumb -> psum;
-       nx = ((*PowerExpand[*)nx (*]*))/. OPESum -> sumex/. 
+       nx = ((*PowerExpand[*)nx (*]*))/. OPESum -> sumex/.
               csum -> lsum /. lsum -> lsum2 /. lsum2 -> lsum3;
        nx = nx /.OPESum->lsum4 /. lsum4 -> lsum4s /. lsum4s -> OPESum;
        nx = nx /. lsum3 -> lsum4 /. lsum4 -> OPESum /.
                    psum -> OPESum /. csum -> OPESum /. sumex -> OPESum /.
                power7 -> Power;
-       nx = PowerSimplify[nx] /. OPESum -> lsum5 /. lsum5->OPESum /. 
-            OPESum -> lsum6 /.  lsum6 -> OPESum /. OPESum -> lsum7 /. 
+       nx = PowerSimplify[nx] /. OPESum -> lsum5 /. lsum5->OPESum /.
+            OPESum -> lsum6 /.  lsum6 -> OPESum /. OPESum -> lsum7 /.
             lsum7 -> OPESum /. OPESum -> lsum8;
                         nx];
 End[]; EndPackage[];

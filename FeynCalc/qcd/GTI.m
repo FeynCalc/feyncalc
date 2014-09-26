@@ -19,7 +19,7 @@ GTI::"usage"= "GTI is like RHI, but with no functional properties.";
 
 Begin["`Private`"];
 
-MakeContext[Momentum];
+Momentum = MakeContext["CoreObjects","Momentum"];
 
 Options[GTI] = {Momentum -> Global`p};
 

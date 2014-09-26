@@ -24,6 +24,7 @@ l is the momentum to be differentiated.";
 Begin["`Private`"];
    
 Dimension = MakeContext["CoreOptions","Dimension"];
+FourVector = MakeContext["CoreObjects","FourVector"];
 
 MakeContext[
 Apart2,
@@ -32,7 +33,6 @@ ExpandScalarProduct,
 FC2TLI,
 FeynCalcInternal,
 FeynAmpDenominatorSimplify,
-FourVector,
 FourDivergence,
 ScalarProductCancel
            ];

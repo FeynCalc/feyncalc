@@ -23,8 +23,9 @@ the option EpsilonOrder).";
 Begin["`Private`"];
    
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[Epsilon, Select1, Select2, Zeta2];
+MakeContext[Select1, Select2, Zeta2];
 
 Options[Gamma3] = {EpsilonOrder -> 3};
 

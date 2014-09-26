@@ -29,6 +29,10 @@ EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+KK = MakeContext["CoreOptions","KK"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
    
 MakeContext[
 FCPrint,
@@ -42,13 +46,9 @@ Factor2,
 FeynCalcForm,
 FeynCalcExternal,
 FreeQ2,
-KK,
 (*
 IsolateNames,
 *)
-LorentzIndex,  
-Momentum,
-Pair, 
 PairContract,
 SelectFree, SelectNotFree,Solve2,Solve3
            ];

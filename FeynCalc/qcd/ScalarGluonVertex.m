@@ -8,13 +8,13 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: ScalarGluonVertex *) 
+(* :Summary: ScalarGluonVertex *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`ScalarGluonVertex`",{"HighEnergyPhysics`FeynCalc`"}];
 
-ScalarGluonVertex::"usage" = 
+ScalarGluonVertex::"usage" =
 "ScalarGluonVertex[{p}, {q}, {mu,a}] or
 ScalarGluonVertex[ p,  q,  mu, a ] yields the
 scalar-scalar-gluon vertex (p and q are incoming momenta).\n\n
@@ -32,26 +32,32 @@ Begin["`Private`"];
 
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 
-MakeContext[
-Gstrong, LorentzIndex, Momentum, MomentumCombine,
-Pair, PropagatorDenominator, SUNDelta, SUNT, SUNIndex];
+MakeContext[MomentumCombine];
 
-Options[ScalarGluonVertex] = {Dimension -> D, 
+Options[ScalarGluonVertex] = {Dimension -> D,
                               CouplingConstant -> Gstrong
                              };
 {l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
 
-ScalarGluonVertex[x___, i_Integer, y___] := 
+ScalarGluonVertex[x___, i_Integer, y___] :=
 ScalarGluonVertex[x, l[i], c[i], y];
 
 (* 3 - vertex *)
 ScalarGluonVertex[x1_,x2_,x3_,x4_, y___Rule] :=
 ScalarGluonVertex[{x1}, {x2}, {x3,x4}, y] /;
-FreeQ[Union[Map[Head, {x1,x2,x3,x4}]], Integer] && 
+FreeQ[Union[Map[Head, {x1,x2,x3,x4}]], Integer] &&
 Head[x4] =!= List;
 
-ScalarGluonVertex[{pi_}, {qi_}, {mui_, ai_}, opt___Rule] := 
+ScalarGluonVertex[{pi_}, {qi_}, {mui_, ai_}, opt___Rule] :=
 Block[
  {alpha, dim, p, q, mu, a, b, c, gl3v},
   coup  = CouplingConstant /.  {opt} /. Options[ScalarGluonVertex];
@@ -66,7 +72,7 @@ Block[
 
 
 (* 4 - vertex *)
-ScalarGluonVertex[{mui_, ai_}, {nui_, bi_}, opt___Rule] := 
+ScalarGluonVertex[{mui_, ai_}, {nui_, bi_}, opt___Rule] :=
 Block[{alpha, dim, mu, nu, a, b, gl3v},
   coup  = CouplingConstant /.  {opt} /. Options[ScalarGluonVertex];
   dim   = Dimension /. {opt} /. Options[ScalarGluonVertex];
@@ -75,7 +81,7 @@ Block[{alpha, dim, mu, nu, a, b, gl3v},
  gl4v   = I coup^2 * (DOT[SUNT[a] , SUNT[b] + SUNT[b] , SUNT[a]]) *
           Pair[mu, nu];
  gl4v];
- 
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "ScalarGluonVertex | \n "]];

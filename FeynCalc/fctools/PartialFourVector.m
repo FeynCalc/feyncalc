@@ -24,17 +24,17 @@ Begin["`Private`"];
    
  
 Contract     = MakeContext["Contract"];
-DiracGamma   = MakeContext["DiracGamma"];
-Eps          = MakeContext["Eps"];
+DiracGamma   = MakeContext["CoreObjects","DiracGamma"];
+Eps          = MakeContext["CoreObjects","Eps"];
 MomentumCombine = MakeContext["MomentumCombine"];
-PropagatorDenominator = MakeContext["PropagatorDenominator"];
-FeynAmpDenominator    = MakeContext["FeynAmpDenominator"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+FeynAmpDenominator    = MakeContext["CoreObjects","FeynAmpDenominator"];
 FeynAmpDenominatorCombine= MakeContext["FeynAmpDenominatorCombine"];
 FeynAmpDenominatorSplit    = MakeContext["FeynAmpDenominatorSplit"];
 fci          = MakeContext["FeynCalcInternal"];
-Pair         = MakeContext["Pair"];
-Momentum     = MakeContext["Momentum"];
-LorentzIndex = MakeContext["LorentzIndex"];
+Pair         = MakeContext["CoreObjects","Pair"];
+Momentum     = MakeContext["CoreObjects","Momentum"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
 EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
 ScalarProductCancel := ScalarProductCancel = 
@@ -80,7 +80,7 @@ nx = nx /. (deriv[1][FeynAmpDenominator][_]) :> 1 /.
             deriv[0,0,0,1][Eps][c__,p] :>
           Eps[c,mu]} /. deriv -> Derivative;
 
-If[CheckContext["Eps"], nx = EpsEvaluate[nx]];
+If[CheckContext["CoreObjects"], nx = EpsEvaluate[nx]];
 
 If[!FreeQ[nx, FeynAmpDenominator],
    nx = FeynAmpDenominatorCombine[nx]

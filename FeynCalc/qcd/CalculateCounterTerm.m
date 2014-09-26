@@ -20,65 +20,69 @@ calculates the residue of exp.";
 
 Begin["`Private`"];
 
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
 Collecting = MakeContext["CoreOptions","Collecting"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracMatrix = MakeContext["CoreObjects","DiracMatrix"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 
 MakeContext[
-FCPrint,
-CA,CF,
 Cases2,
 ChangeDimension,
 Chisholm,
 Collect2,
 Contract,
-DiracGamma,
-DiracMatrix,
 DiracOrder,
 DiracSimplify,
 DiracTrick,
 DotSimplify,
-Eps,
-Epsilon, 
 EpsEvaluate,
 Expand2,
 ExpandScalarProduct,
 Explicit,
+FCPrint,
 Factor2,
 FeynAmpDenominatorSimplify,
 FeynCalcInternal,
 GluonVertex,
-Integratedx,
 Isolate,
 LeviCivita,
-LorentzIndex,
-Momentum,
 NumericalFactor,
-OneLoopSimplify,
 OPEDelta,
 OPEIntegrate2,
-OPEm,
 OPESum,
 OPESumExplicit,
-Power2, 
+OPEm,
+OneLoopSimplify,
+Power2,
 PowerSimplify,
-Pair,
 Rename,
+SUNSimplify,
+SUNTrace,
 ScalarProductCancel,
 Select1,
 Select2,
-SUNIndex,
-SUNSimplify,
-SUNT,
-SUNTrace,
 TID,
 Trick,
 Twist2GluonOperator,
 Twist2QuarkOperator,
-Write2];
+Write2
+];
 
-Options[CalculateCounterTerm] = {Chisholm -> False, 
+
+
+Options[CalculateCounterTerm] = {Chisholm -> False,
                                  FinalSubstitutions -> {D -> 4}};
 
 
@@ -97,10 +101,10 @@ opback[y_] := If[Head[y] === Plus, opback/@y,
                       ]
                    ]
                 ];
-opsel[z_ OPESum[{opi_, a_, b_}]] := 
+opsel[z_ OPESum[{opi_, a_, b_}]] :=
   Select1[z,opi] opsav[OPESum[Select2[z,opi],{opi,a,b}]];
 
-opsav[OPESum[a_,{ii_,0,em_}]]:=opsav[OPESum[a,{ii,0,em}]]= 
+opsav[OPESum[a_,{ii_,0,em_}]]:=opsav[OPESum[a,{ii,0,em}]]=
 Block[{tt,sums,null1,sumsavs},
 (* l = b-a *)
 sums[1/(aa_ - i_),{i_, 0, bb_}] :=
@@ -124,9 +128,9 @@ fixpower2[y_Times, k_,
           {Power2[m_. Pair[Momentum[OPEDelta,___], Momentum[k_,___]] +
            n_. Pair[Momentum[OPEDelta,___], Momentum[p_,___]], _]
           }
-         ] := If[FreeQ[y, Power2[_. Pair[Momentum[OPEDelta,___],  
+         ] := If[FreeQ[y, Power2[_. Pair[Momentum[OPEDelta,___],
                                           Momentum[k,___]] +
-                                 _. Pair[Momentum[OPEDelta,___],  
+                                 _. Pair[Momentum[OPEDelta,___],
                                           Momentum[p,___]], _
                                 ]
                       ],y,
@@ -143,9 +147,9 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] := Block[
     {t0=exp, chish, ta, sunt,pow2,opvar,finsub,
      lt, t1,t2,t3,t4,t5,t6,t7,ht7,t8,t9,t10,t11,t12,t13,nt7,lnt7},
     chish = Chisholm /. {opt} /. Options[CalculateCounterTerm];
-    t1 = Collect2[ChangeDimension[t0, 4] // Trick, 
+    t1 = Collect2[ChangeDimension[t0, 4] // Trick,
                   SUNIndex,Factoring->False];
-   finsub = 
+   finsub =
 (FinalSubstitutions/. {opt} /. Options[CalculateCounterTerm]);
 FCPrint[1,"color algebra"];
     t2 = SUNSimplify[t1, Explicit -> False, SUNTrace -> False];
@@ -190,11 +194,11 @@ FCPrint[1,"cancel scalar products"];
          Power[a_, b_/;Head[b]=!=Integer] :> Power2[a, b];
     t6 = Collect2[ChangeDimension[t6,4], k];
     pow2 = Select2[Select2[Cases2[t6, Power2],k], Power2[_Plus,_]];
-    If[pow2 =!= {}, FCPrint[1,"fixpower2"]; 
+    If[pow2 =!= {}, FCPrint[1,"fixpower2"];
        t6 = fixpower2[t6, k, pow2]/.fixpower2[aa_,__]:>aa
       ];
     t6 = FeynAmpDenominatorSimplify[t6,k];
- If[chish === True, 
+ If[chish === True,
     FCPrint[1,"CHISHOLM"];
     t6 = Collect2[t6,DiracGamma,Eps, Factoring->False];
      doc[y__] := doc[y] = Chisholm[DOT[y]];
@@ -202,9 +206,9 @@ FCPrint[1,"cancel scalar products"];
     t6 = Contract[t6,EpsContract->False, Rename -> True];
     t6 = ScalarProductCancel[t6,k];
    ];
-   
+
 FCPrint[1,"collect w.r.t. integration momentum"];
-    t7 = Collect2[ChangeDimension[t6/.Power2->Power,4], 
+    t7 = Collect2[ChangeDimension[t6/.Power2->Power,4],
                   k, Factoring -> True
                  ];
 t7 = PowerSimplify[DiracTrick[FeynAmpDenominatorSimplify[t7,k]]];
@@ -217,18 +221,18 @@ FCPrint[1,"exiting OneLoopSimplify"];
 *)
 
 nt7 = 0;
-If[Head[t7] =!= Plus, 
+If[Head[t7] =!= Plus,
    nt7 = ChangeDimension[
          TID[t7, k, Collecting -> False, Isolate -> True,
-                    ScalarProductCancel -> True, 
+                    ScalarProductCancel -> True,
                     FeynAmpDenominatorSimplify -> True
             ], 4        ],
    lnt7 =  Length[t7];
    For[ijn = 1, ijn <= lnt7, ijn++,
        FCPrint[2,"ijn = ",ijn,"  out of", lnt7,
-        " ", InputForm[Select2[t7[[ijn]], k]]];         
+        " ", InputForm[Select2[t7[[ijn]], k]]];
        nt7 = nt7 + (( ( Select1[dummy t7[[ijn]],k]
-                                   ) /.dummy -> 1 
+                                   ) /.dummy -> 1
                     ) *
              ChangeDimension[
             FixedPoint[ReleaseHold,
@@ -265,8 +269,8 @@ If[StringQ[saveit],
    t12 = FixedPoint[ReleaseHold, t7];
   ];
 If[!StringQ[saveit],
-    If[Head[t7] =!= Plus, 
-       t8 = OPEIntegrate2[t7,k,Integratedx -> True, 
+    If[Head[t7] =!= Plus,
+       t8 = OPEIntegrate2[t7,k,Integratedx -> True,
                                OPEDelta    -> False,
                                Collecting  -> False
                          ],
@@ -281,7 +285,7 @@ If[!StringQ[saveit],
                                    OPEDelta    -> False,
                                    Collecting  -> False
                                   ]/.(FCPrint[1,"...... "];finsub)
-                               ] , LorentzIndex 
+                               ] , LorentzIndex
                                              ]
                      )
           ];
@@ -291,7 +295,7 @@ If[!StringQ[saveit],
                  (z^(em-1) (1/(a-z)-1/a));
       t8 = t8 /. (a_ b_^(em_/;Head[em]=!=Integer)/(a_ - b_)) :>
                  (b^em +  b^(em+1)/(a-b));
- 
+
        If[!FreeQ[t8, Eps], t8 = EpsEvaluate[t8]];
        t8 = PowerSimplify[Expand2[t8,OPEm]]/.Power2->Power;
 t8 = t8 /. finsub;
@@ -313,16 +317,16 @@ t8 = t8 /. finsub;
             ];
          ];
  t8 = t8 /. PolyGamma[0, em_ +1] :> (1/em + PolyGamma[0, em]);
-       If[FreeQ[t8, DOT], t8 = t8, 
-          If[(!FreeQ[t8, Eps]) && (!FreeQ[t8, DiracGamma]), 
+       If[FreeQ[t8, DOT], t8 = t8,
+          If[(!FreeQ[t8, Eps]) && (!FreeQ[t8, DiracGamma]),
              t8 = Contract[Collect2[t8,{Eps,DiracGamma},Factoring->False
                                    ], Rename -> True
                           ] /. {(DiracGamma[LorentzIndex[mu3_]] .
                                  DiracGamma[LorentzIndex[mu1_]] .
                                  DiracGamma[LorentzIndex[mu2_]] *
-                                 Eps[LorentzIndex[mu1_], 
-                                     LorentzIndex[mu2_], 
-                                     LorentzIndex[mu3_], 
+                                 Eps[LorentzIndex[mu1_],
+                                     LorentzIndex[mu2_],
+                                     LorentzIndex[mu3_],
                                      Momentum[OPEDelta]]
                                 ) :> FeynCalcInternal[
                                      DiracMatrix[mu1,mu2,mu3]*
@@ -339,7 +343,7 @@ t8 = t8 /. finsub;
           FCPrint[1,"Factor2 at the end "];
           t9  = Factor2[Expand2[t8,OPEm]//PowerSimplify]
          ];
-    
+
 If[t9 =!= 0,
        fa1 = Select2[t9, {(-1)^_, CA, CF}];
        t9  = t9/fa1;
@@ -353,10 +357,10 @@ If[t9 =!= 0,
           FCPrint[1,"Collect2 at the end "];
        t9 = Collect2[t8, LorentzIndex, Expanding -> False]
       ];
-   
+
        If[Head[t9] === Times,
           t10 = Select1[t9,{Pair,Eps,OPEm}] *
-                Collect2[Select2[t9,{Pair,Eps,OPEm}], {Eps,Pair}, 
+                Collect2[Select2[t9,{Pair,Eps,OPEm}], {Eps,Pair},
                          Factoring -> Factor2]
           ,
 (*
@@ -368,7 +372,7 @@ If[t9 =!= 0,
          t11 = NumericalFactor[t10] mapart[t10/NumericalFactor[t10]];
          t12 = t11 fa1 fa2 /. sunt -> ta;
          , t12 = t9];
-       
+
 (*StringQ*)
 ];
 t12];

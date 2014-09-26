@@ -6,7 +6,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: QuarkPropagator *) 
+(* :Summary: QuarkPropagator *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -17,7 +17,7 @@ QP::"usage" =
 QP[p] is the massless quark propagator.
 QP[{p,m}] gives the  quark propagator with mass m.";
 
-QuarkPropagator::"usage" = 
+QuarkPropagator::"usage" =
 "QuarkPropagator[p] is the massless quark propagator.
 QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 
@@ -25,34 +25,40 @@ QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 
 Begin["`Private`"];
 
+CF = MakeContext["CoreObjects","CF"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
 Loop = MakeContext["CoreOptions","Loop"];
-
-MakeContext[Abbreviation,
-            CF,
-            CounterT,
-            CounterTerm,
-            DeclareNonCommutative,
-            DiracGamma,Epsilon,
-            Explicit,
-            FeynAmpDenominator,
-            Gstrong,
-            Momentum, MomentumExpand, OPE, Pair,
-            Polarization,
-            PropagatorDenominator,
-            ScaleMu,
-            Sn
-           ];
-
-Twist2QuarkOperator := Twist2QuarkOperator = 
 MakeContext["Twist2QuarkOperator"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+OPE = MakeContext["CoreObjects","OPE"];
+Pair = MakeContext["CoreObjects","Pair"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+ScaleMu = MakeContext["CoreObjects","ScaleMu"];
+Twist2QuarkOperator := Twist2QuarkOperator =
+
+MakeContext[
+    Abbreviation,
+    CounterT,
+    CounterTerm,
+    DeclareNonCommutative,
+    Explicit,
+    MomentumExpand,
+    Sn
+    ];
+
+
 
 DeclareNonCommutative[QuarkPropagator];
 
 Options[QuarkPropagator] = {CounterTerm -> False,
                             CouplingConstant -> Gstrong,
-                            Dimension -> D,            
+                            Dimension -> D,
                             Explicit -> False,
                             Loop -> 0,
                             OPE -> False,
@@ -61,13 +67,13 @@ Options[QuarkPropagator] = {CounterTerm -> False,
 QP = QuarkPropagator;
 Abbreviation[QuarkPropagator]=HoldForm[QP];
 
-QuarkPropagator[a_, __, b_/;Head[b]=!=Rule, opt___Rule] := 
+QuarkPropagator[a_, __, b_/;Head[b]=!=Rule, opt___Rule] :=
 QuarkPropagator[a, opt];
 
-QuarkPropagator[pi_/;(Head[pi]=!=List) && FreeQ[pi, BlankSequence], opt___Rule] := 
+QuarkPropagator[pi_/;(Head[pi]=!=List) && FreeQ[pi, BlankSequence], opt___Rule] :=
   QuarkPropagator[{pi,0}, opt];
 
-QuarkPropagator[{pi_, m_}, opt___Rule] := 
+QuarkPropagator[{pi_, m_}, opt___Rule] :=
 Block[{dim, re, ope, pol, cou, loo},
  dim    = Dimension /. {opt} /. Options[QuarkPropagator];
  ope    = OPE       /. {opt} /. Options[QuarkPropagator];
@@ -84,7 +90,7 @@ Block[{dim, re, ope, pol, cou, loo},
   If[ope =!= True,
      re = 0,
      re = OPE DOT[ QuarkPropagator[{pi, m}, OPE -> False, opt],
-                   Twist2QuarkOperator[pi,Polarization -> pol], 
+                   Twist2QuarkOperator[pi,Polarization -> pol],
                    QuarkPropagator[{pi, m}, OPE -> False, opt]
                  ]
     ];
@@ -98,9 +104,9 @@ Block[{dim, re, ope, pol, cou, loo},
                      DiracGamma[Momentum[pi,dim]]
           ]
     ];
-   
+
  If[cou === False,
-  re = re + 
+  re = re +
    I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[
      MomentumExpand[
         PropagatorDenominator[Momentum[pi,dim], m]]       ]
@@ -123,7 +129,7 @@ QuarkPropagator[{pi_, m_}, opt___Rule] :=  Block[{dim},
      MomentumExpand[
     PropagatorDenominator[Momentum[pi,dim], m]]]];
 *)
- 
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "QuarkPropagator | \n "]];

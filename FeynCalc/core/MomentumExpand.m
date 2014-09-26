@@ -15,7 +15,7 @@ Momentum[a] + Momentum[b] + ... .";
 
 Begin["`Private`"];
 
-MakeContext[Momentum];
+Momentum = MakeContext["CoreObjects","Momentum"];
 
 (*MomentumExpanddef*)
 

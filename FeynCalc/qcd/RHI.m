@@ -23,10 +23,10 @@ v: k1.k1, w: k2.k2,  x: p.k1, y: p.k2, z: k1.k2. \n\n
 a: dl.k1, b: dl.k2,  c: dl.(p-k1), d: dl.(p-k2), e: dl.(k1-k2),
 f: dl.(p+k1-k2), g: dl.(p-k1-k2) \n\n
 
-RHI[any___,{a,b,c,d,e,0,0}, {al,be,ga,de,ep}] simplifies to 
+RHI[any___,{a,b,c,d,e,0,0}, {al,be,ga,de,ep}] simplifies to
 RHI[any, {a,b,c,d,e}, {al,be,ga,de,ep}]; \n\n
 
-RHI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to 
+RHI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to
 RHI[{a,b,c,d,e}, {al,be,ga,de,ep}].";
 
 FORM::"usage" =
@@ -39,115 +39,116 @@ correctly.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-MakeContext[FCPrint];
-TLI = MakeContext["TLI"];
-Epsilon  = MakeContext["Epsilon"];
+
+(*nosaveDir = MakeContext["nosaveDir"];*)
+Collect2 = MakeContext["Collect2"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon  = MakeContext["CoreObjects","Epsilon"];
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
+FAD        = MakeContext["CoreObjects","FAD"];
 Factor1  = MakeContext["Factor1"];
 Factoring  = MakeContext["CoreOptions","Factoring"];
-FAD        = MakeContext["FAD"];
 FreeQ2   = MakeContext["FreeQ2"];
-Collect2 = MakeContext["Collect2"];
-DeltaFunction = MakeContext["DeltaFunction"];
-Momentum = MakeContext["Momentum"];
+Momentum = MakeContext["CoreObjects","Momentum"];
 OPEDelta = MakeContext["OPEDelta"];
 OPEm     = MakeContext["OPEm"];
-Pair     = MakeContext["Pair"];
+Pair     = MakeContext["CoreObjects","Pair"];
 PowerSimplify = MakeContext["PowerSimplify"];
-SPD      = MakeContext["SPD"];
-SOD      = MakeContext["SOD"];
-(*nosaveDir = MakeContext["nosaveDir"];*)
+SOD      = MakeContext["CoreObjects","SOD"];
+SPD      = MakeContext["CoreObjects","SPD"];
 ScalarProduct = MakeContext["ScalarProduct"];
 Select1  = MakeContext["Select1"];
 Select2  = MakeContext["Select2"];
+TLI = MakeContext["TLI"];
+
+MakeContext[FCPrint];
 
 Options[RHI] =  {Directory -> "rh/ope/diagrams/",
                  (*nosaveDir -> False["rhisave"],*)
                  EpsilonOrder -> 0,
                  FORM -> False,
-                 Momentum -> Global`p}; 
+                 Momentum -> Global`p};
 
 
 
-RHI[{v_,w_,x_,y_,z_},{a_,b_,c_,d_,e_}, 
+RHI[{v_,w_,x_,y_,z_},{a_,b_,c_,d_,e_},
     {al_,be_,ga_,de_,ep_}, {k1_, k2_},o___Rule ] := Block[
     {p = Momentum /. {o} /. Options[RHI]},
  ( (k1.k1)^v (k2.k2)^w (p.k1)^x (p.k2)^y (k1.k2)^z *
    SOD[k1]^a SOD[k2]^b SOD[p-k1]^c SOD[p-k2]^d SOD[k1-k2]^e /
-   (SPD[k1,k1]^al SPD[k2,k2]^be SPD[k1-p,k1-p]^ga SPD[k2-p,k2-p]^de * 
+   (SPD[k1,k1]^al SPD[k2,k2]^be SPD[k1-p,k1-p]^ga SPD[k2-p,k2-p]^de *
     SPD[k1-k2,k1-k2]^ep)) /. Dot->SPD];
 
 
 
 (* new *)
-RHI[{0,0,x_,j_,0}, {0, b_Integer?Positive, c_Integer?Positive, d_, 
-                           e_Integer?Positive}, opt___] := 
- RHI[{j,x,0,0,0},{d,c,b,0,e}, opt] /; 
+RHI[{0,0,x_,j_,0}, {0, b_Integer?Positive, c_Integer?Positive, d_,
+                           e_Integer?Positive}, opt___] :=
+ RHI[{j,x,0,0,0},{d,c,b,0,e}, opt] /;
     (j=!=0) && ((d === 0) || (d === -1)) ;
 
 
-RHI[{a_, b_, c_, d_, e_}, {1, 1, 2, -1, 1}, opt___] := 
+RHI[{a_, b_, c_, d_, e_}, {1, 1, 2, -1, 1}, opt___] :=
 Block[{p, sop, spp},
   p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
    spp = Pair[Momentum[p,D], Momentum[p,D]];
-    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {0, 1, 2, 0, 1}] - 
-     sop*RHI[{-1 + a, b, c, d, e}, {0, 1, 2, 0, 1}] - 
-     RHI[{-1 + a, 1 + b, c, d, e}, {0, 1, 2, 0, 1}] + 
-     RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 1, 0, 1}] - 
-     spp*RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 2, 0, 1}] + 
+    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {0, 1, 2, 0, 1}] -
+     sop*RHI[{-1 + a, b, c, d, e}, {0, 1, 2, 0, 1}] -
+     RHI[{-1 + a, 1 + b, c, d, e}, {0, 1, 2, 0, 1}] +
+     RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 1, 0, 1}] -
+     spp*RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 2, 0, 1}] +
      spp*RHI[{a, b, c, d, e}, {1, 1, 2, 0, 1}]
      ];
 
-   RHI[{a_, b_, c_, d_, e_}, {1, 2, 1, -1, 1}, opt___] := 
+   RHI[{a_, b_, c_, d_, e_}, {1, 2, 1, -1, 1}, opt___] :=
 Block[{p, sop, spp},
   p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
    spp = Pair[Momentum[p,D], Momentum[p,D]];
-    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {0, 2, 1, 0, 1}] - 
-     sop*RHI[{-1 + a, b, c, d, e}, {0, 2, 1, 0, 1}] - 
-     sop*RHI[{-1 + a, b, c, d, e}, {1, 1, 1, 0, 1}] - 
-     RHI[{-1 + a, 1 + b, c, d, e}, {0, 2, 1, 0, 1}] - 
-     spp*RHI[{-1 + a, 1 + b, c, d, e}, {1, 2, 1, 0, 1}] + 
-     RHI[{a, b, c, d, e}, {1, 1, 1, 0, 1}] + 
+    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {0, 2, 1, 0, 1}] -
+     sop*RHI[{-1 + a, b, c, d, e}, {0, 2, 1, 0, 1}] -
+     sop*RHI[{-1 + a, b, c, d, e}, {1, 1, 1, 0, 1}] -
+     RHI[{-1 + a, 1 + b, c, d, e}, {0, 2, 1, 0, 1}] -
+     spp*RHI[{-1 + a, 1 + b, c, d, e}, {1, 2, 1, 0, 1}] +
+     RHI[{a, b, c, d, e}, {1, 1, 1, 0, 1}] +
      spp*RHI[{a, b, c, d, e}, {1, 2, 1, 0, 1}]
      ];
 
-   RHI[{a_, b_, c_, d_, e_}, {2, 1, 1, -1, 1}, opt___] := 
+   RHI[{a_, b_, c_, d_, e_}, {2, 1, 1, -1, 1}, opt___] :=
 Block[{p, sop, spp},
   p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
    spp = Pair[Momentum[p,D], Momentum[p,D]];
-    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {1, 1, 1, 0, 1}] - 
-     sop*RHI[{-1 + a, b, c, d, e}, {1, 1, 1, 0, 1}] - 
-     RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 1, 0, 1}] - 
-     spp*RHI[{-1 + a, 1 + b, c, d, e}, {2, 1, 1, 0, 1}] + 
+    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {1, 1, 1, 0, 1}] -
+     sop*RHI[{-1 + a, b, c, d, e}, {1, 1, 1, 0, 1}] -
+     RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 1, 0, 1}] -
+     spp*RHI[{-1 + a, 1 + b, c, d, e}, {2, 1, 1, 0, 1}] +
      spp*RHI[{a, b, c, d, e}, {2, 1, 1, 0, 1}]
      ];
 
-   RHI[{a_, b_, c_, d_, e_}, {2, 1, 2, -1, 1}, opt___] := 
+   RHI[{a_, b_, c_, d_, e_}, {2, 1, 2, -1, 1}, opt___] :=
 Block[{p, sop, spp},
   p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
    spp = Pair[Momentum[p,D], Momentum[p,D]];
-    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {1, 1, 2, 0, 1}] - 
-     sop*RHI[{-1 + a, b, c, d, e}, {1, 1, 2, 0, 1}] - 
-     RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 2, 0, 1}] + 
-     RHI[{-1 + a, 1 + b, c, d, e}, {2, 1, 1, 0, 1}] - 
-     spp*RHI[{-1 + a, 1 + b, c, d, e}, {2, 1, 2, 0, 1}] + 
+    2*sop*RHI[{-2 + a, 1 + b, c, d, e}, {1, 1, 2, 0, 1}] -
+     sop*RHI[{-1 + a, b, c, d, e}, {1, 1, 2, 0, 1}] -
+     RHI[{-1 + a, 1 + b, c, d, e}, {1, 1, 2, 0, 1}] +
+     RHI[{-1 + a, 1 + b, c, d, e}, {2, 1, 1, 0, 1}] -
+     spp*RHI[{-1 + a, 1 + b, c, d, e}, {2, 1, 2, 0, 1}] +
      spp*RHI[{a, b, c, d, e}, {2, 1, 2, 0, 1}]
      ];
 
-RHI[{a_, b_, c_, d_, e_}, {1, 2, -1, 1, 1}, opt___Rule] := 
+RHI[{a_, b_, c_, d_, e_}, {1, 2, -1, 1, 1}, opt___Rule] :=
 Block[{p,sop,spp},
   p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
    spp = Pair[Momentum[p,D], Momentum[p,D]];
-   -((-1)^e*RHI[{-1 + b, 1 + a, d, c, e}, {1, 1, 1, 0, 1},opt]) + 
-    2*(-1)^e*RHI[{-2 + b, 1 + a, d, c, e}, {1, 1, 1, 0, 1},opt]*sop - 
-    (-1)^e*RHI[{-1 + b, a, d, c, e}, {1, 1, 1, 0, 1},opt]*sop - 
-    (-1)^e*RHI[{-1 + b, 1 + a, d, c, e}, {2, 1, 1, 0, 1},opt]*spp + 
+   -((-1)^e*RHI[{-1 + b, 1 + a, d, c, e}, {1, 1, 1, 0, 1},opt]) +
+    2*(-1)^e*RHI[{-2 + b, 1 + a, d, c, e}, {1, 1, 1, 0, 1},opt]*sop -
+    (-1)^e*RHI[{-1 + b, a, d, c, e}, {1, 1, 1, 0, 1},opt]*sop -
+    (-1)^e*RHI[{-1 + b, 1 + a, d, c, e}, {2, 1, 1, 0, 1},opt]*spp +
     (-1)^e*RHI[{b, a, d, c, e}, {2, 1, 1, 0, 1},opt]*spp
      ];
 
@@ -185,29 +186,29 @@ RHI[{0, 0, 0, 2, 0}, {a_, b_, c_, d_, e_},
    ] := Block[{sop,p},
    p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
-(RHI[{0, 0, 2, 1, 0}, {-2 + a, 2 + b, c, d, e}, {al, be, ga, 0, ep}] - 
-    2*RHI[{0, 0, 1, 1, 0}, {-3 + a, 2 + b, c, d, e}, 
-      {-1 + al, be, ga, 0, ep}]*sop + 
-    (2*RHI[{0, 0, 1, 1, 0}, {-3 + a, 2 + b, c, d, e}, 
-        {-1 + al, be, ga, 0, ep}]*sop)/(2 - D) + 
-    (2*RHI[{0, 0, 1, 1, 0}, {-1 + a, b, c, d, e}, 
-        {al, -1 + be, ga, 0, ep}]*sop)/(2 - D) + 
+(RHI[{0, 0, 2, 1, 0}, {-2 + a, 2 + b, c, d, e}, {al, be, ga, 0, ep}] -
+    2*RHI[{0, 0, 1, 1, 0}, {-3 + a, 2 + b, c, d, e},
+      {-1 + al, be, ga, 0, ep}]*sop +
+    (2*RHI[{0, 0, 1, 1, 0}, {-3 + a, 2 + b, c, d, e},
+        {-1 + al, be, ga, 0, ep}]*sop)/(2 - D) +
+    (2*RHI[{0, 0, 1, 1, 0}, {-1 + a, b, c, d, e},
+        {al, -1 + be, ga, 0, ep}]*sop)/(2 - D) +
     2*RHI[{0, 0, 1, 1, 1}, {-2 + a, 1 + b, c, d, e}, {al, be, ga, 0, ep}]*
-     sop - (4*RHI[{0, 0, 1, 1, 1}, {-2 + a, 1 + b, c, d, e}, 
-        {al, be, ga, 0, ep}]*sop)/(2 - D) + 
-    RHI[{0, 0, 0, 1, 0}, {-4 + a, 2 + b, c, d, e}, 
-      {-2 + al, be, ga, 0, ep}]*sop^2 - 
-    (RHI[{0, 0, 0, 1, 0}, {-4 + a, 2 + b, c, d, e}, 
-        {-2 + al, be, ga, 0, ep}]*sop^2)/(2 - D) - 
-    (RHI[{0, 0, 0, 1, 0}, {-2 + a, b, c, d, e}, 
-        {-1 + al, -1 + be, ga, 0, ep}]*sop^2)/(2 - D) - 
-    2*RHI[{0, 0, 0, 1, 1}, {-3 + a, 1 + b, c, d, e}, 
-      {-1 + al, be, ga, 0, ep}]*sop^2 + 
-    (2*RHI[{0, 0, 0, 1, 1}, {-3 + a, 1 + b, c, d, e}, 
-        {-1 + al, be, ga, 0, ep}]*sop^2)/(2 - D) + 
+     sop - (4*RHI[{0, 0, 1, 1, 1}, {-2 + a, 1 + b, c, d, e},
+        {al, be, ga, 0, ep}]*sop)/(2 - D) +
+    RHI[{0, 0, 0, 1, 0}, {-4 + a, 2 + b, c, d, e},
+      {-2 + al, be, ga, 0, ep}]*sop^2 -
+    (RHI[{0, 0, 0, 1, 0}, {-4 + a, 2 + b, c, d, e},
+        {-2 + al, be, ga, 0, ep}]*sop^2)/(2 - D) -
+    (RHI[{0, 0, 0, 1, 0}, {-2 + a, b, c, d, e},
+        {-1 + al, -1 + be, ga, 0, ep}]*sop^2)/(2 - D) -
+    2*RHI[{0, 0, 0, 1, 1}, {-3 + a, 1 + b, c, d, e},
+      {-1 + al, be, ga, 0, ep}]*sop^2 +
+    (2*RHI[{0, 0, 0, 1, 1}, {-3 + a, 1 + b, c, d, e},
+        {-1 + al, be, ga, 0, ep}]*sop^2)/(2 - D) +
     RHI[{0, 0, 0, 1, 2}, {-2 + a, b, c, d, e}, {al, be, ga, 0, ep}]*
-     sop^2 - (RHI[{0, 0, 0, 1, 0}, {-2 + a, 2 + b, c, d, e}, 
-        {-1 + al, be, ga, 0, ep}]*SPD[p, p])/(2 - D) - 
+     sop^2 - (RHI[{0, 0, 0, 1, 0}, {-2 + a, 2 + b, c, d, e},
+        {-1 + al, be, ga, 0, ep}]*SPD[p, p])/(2 - D) -
     (RHI[{0, 0, 0, 1, 0}, {a, b, c, d, e}, {al, -1 + be, ga, 0, ep}]*
        SPD[p, p])/(2 - D) + (2*
        RHI[{0, 0, 0, 1, 1}, {-1 + a, 1 + b, c, d, e}, {al, be, ga, 0, ep}]*
@@ -220,29 +221,29 @@ RHI[{0, 0, 2, 0, 0}, {a_, b_, c_, d_, e_},
    ] := Block[{sop,p},
    p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
-(RHI[{0, 0, 0, 2, 0}, {2 + a, -2 + b, c, d, e}, {al, be, 0, de, ep}] + 
-    (2*RHI[{0, 0, 0, 1, 0}, {a, -1 + b, c, d, e}, 
-        {-1 + al, be, 0, de, ep}]*SOD[p])/(2 - D) - 
-    2*RHI[{0, 0, 0, 1, 0}, {2 + a, -3 + b, c, d, e}, 
-      {al, -1 + be, 0, de, ep}]*SOD[p] + 
-    (2*RHI[{0, 0, 0, 1, 0}, {2 + a, -3 + b, c, d, e}, 
-        {al, -1 + be, 0, de, ep}]*SOD[p])/(2 - D) + 
+(RHI[{0, 0, 0, 2, 0}, {2 + a, -2 + b, c, d, e}, {al, be, 0, de, ep}] +
+    (2*RHI[{0, 0, 0, 1, 0}, {a, -1 + b, c, d, e},
+        {-1 + al, be, 0, de, ep}]*SOD[p])/(2 - D) -
+    2*RHI[{0, 0, 0, 1, 0}, {2 + a, -3 + b, c, d, e},
+      {al, -1 + be, 0, de, ep}]*SOD[p] +
+    (2*RHI[{0, 0, 0, 1, 0}, {2 + a, -3 + b, c, d, e},
+        {al, -1 + be, 0, de, ep}]*SOD[p])/(2 - D) +
     2*RHI[{0, 0, 0, 1, 1}, {1 + a, -2 + b, c, d, e}, {al, be, 0, de, ep}]*
-     SOD[p] - (4*RHI[{0, 0, 0, 1, 1}, {1 + a, -2 + b, c, d, e}, 
-        {al, be, 0, de, ep}]*SOD[p])/(2 - D) + 
+     SOD[p] - (4*RHI[{0, 0, 0, 1, 1}, {1 + a, -2 + b, c, d, e},
+        {al, be, 0, de, ep}]*SOD[p])/(2 - D) +
     (-1)^e*RHI[{-4 + b, 2 + a, d, c, e}, {-2 + be, al, de, 0, ep}]*
-     SOD[p]^2 - ((-1)^e*RHI[{-4 + b, 2 + a, d, c, e}, 
-        {-2 + be, al, de, 0, ep}]*SOD[p]^2)/(2 - D) - 
+     SOD[p]^2 - ((-1)^e*RHI[{-4 + b, 2 + a, d, c, e},
+        {-2 + be, al, de, 0, ep}]*SOD[p]^2)/(2 - D) -
     ((-1)^e*RHI[{-2 + b, a, d, c, e}, {-1 + be, -1 + al, de, 0, ep}]*
-       SOD[p]^2)/(2 - D) - 2*RHI[{0, 0, 0, 0, 1}, 
-      {1 + a, -3 + b, c, d, e}, {al, -1 + be, 0, de, ep}]*SOD[p]^2 + 
-    (2*RHI[{0, 0, 0, 0, 1}, {1 + a, -3 + b, c, d, e}, 
-        {al, -1 + be, 0, de, ep}]*SOD[p]^2)/(2 - D) + 
+       SOD[p]^2)/(2 - D) - 2*RHI[{0, 0, 0, 0, 1},
+      {1 + a, -3 + b, c, d, e}, {al, -1 + be, 0, de, ep}]*SOD[p]^2 +
+    (2*RHI[{0, 0, 0, 0, 1}, {1 + a, -3 + b, c, d, e},
+        {al, -1 + be, 0, de, ep}]*SOD[p]^2)/(2 - D) +
     RHI[{0, 0, 0, 0, 2}, {a, -2 + b, c, d, e}, {al, be, 0, de, ep}]*
-     SOD[p]^2 - ((-1)^e*RHI[{-2 + b, 2 + a, d, c, e}, 
-        {-1 + be, al, de, 0, ep}]*SPD[p, p])/(2 - D) - 
+     SOD[p]^2 - ((-1)^e*RHI[{-2 + b, 2 + a, d, c, e},
+        {-1 + be, al, de, 0, ep}]*SPD[p, p])/(2 - D) -
     ((-1)^e*RHI[{b, a, d, c, e}, {be, -1 + al, de, 0, ep}]*SPD[p, p])/
-     (2 - D) + (2*RHI[{0, 0, 0, 0, 1}, {1 + a, -1 + b, c, d, e}, 
+     (2 - D) + (2*RHI[{0, 0, 0, 0, 1}, {1 + a, -1 + b, c, d, e},
         {al, be, 0, de, ep}]*SPD[p, p])/(2 - D)
   )//Expand] /; ((a =!= 0) || (c =!= 0) || (e =!= 0));
 
@@ -254,9 +255,9 @@ RHI[{0, 0, 0, 0, 1}, {a_, b_, c_, d_, e_}, {1, 1, 2, 1, 0}, opt___Rule] :=
    p = Momentum /. {opt} /. Options[RHI];
    sop = Pair[Momentum[OPEDelta,D], Momentum[p,D]];
    spp = Pair[Momentum[p,D], Momentum[p,D]];
-   -RHI[{a, 1 + b, c, d, e}, {1, 1, 1, 1, 0}, opt]/(2*sop) - 
-    (RHI[{1 + a, 1 + b, c, d, e}, {1, 1, 2, 1, 0}, opt]*spp)/sop^2 + 
-    (RHI[{a, 1 + b, c, d, e}, {1, 1, 2, 1, 0}, opt]*spp)/(2*sop) + 
+   -RHI[{a, 1 + b, c, d, e}, {1, 1, 1, 1, 0}, opt]/(2*sop) -
+    (RHI[{1 + a, 1 + b, c, d, e}, {1, 1, 2, 1, 0}, opt]*spp)/sop^2 +
+    (RHI[{a, 1 + b, c, d, e}, {1, 1, 2, 1, 0}, opt]*spp)/(2*sop) +
     (RHI[{1 + a, b, c, d, e}, {1, 1, 2, 1, 0}, opt]*spp)/(2*sop)
       ];
 *)
@@ -273,7 +274,7 @@ RHI[{a_,b_,c_,d_,e_},{al_/;al<=0,be_/;be>=0,ga_,de_, ep_},opt___Rule] :=
 (-1)^e RHI[{b,a,d,c,e},{be,al,de,ga,ep},opt];
 *)
 
-RHI[{v_,w_,x_,y_,z_}, 
+RHI[{v_,w_,x_,y_,z_},
     {a_,b_,c_,d_,e_},{al_/;al<=0,be_,ga_,de_Integer?Positive,
                       ep_Integer?Positive},opt___Rule] :=
 (-1)^e RHI[{w,v,y,x,z},{b,a,d,c,e},{be,al,de,ga,ep},opt];
@@ -335,7 +336,7 @@ RHI[{1,0,0,0,0},{a_,b_,c_,d_,e_},{0,be_,ga_/;ga>0,de_,ep_},o___Rule] :=
   2 PowerSimplify[(-1)^e] RHI[{0,0,1,0,0},{c,d,a,b,e},{ga,de,0,be,ep}]+
    (Pair[Momentum[#,D], Momentum[#,D]]&[Momentum/.{o}/.Options[RHI]]) *
     RHI[{c,d,a,b,e},{ga,de,0,be,ep}] ];
- 
+
 (*
 RHI[{1,0,0,0,0}, {a__},{0,b__}, opt___Rule] := RHI[{a},{-1,b},opt];
 RHI[{2,0,0,0,0}, {a__},{0,b__}, opt___Rule] := RHI[{a},{-2,b},opt];
@@ -369,7 +370,7 @@ RHI[{a_,n_Integer?Positive,c_,d_,-1},{bla__}, opt___Rule] :=
 -RHI[{a,n-1,c,d,0},{bla},opt] + RHI[{a+1,n-1,c,d,-1},{bla},opt];
 
 (*
-can give recursion with above 
+can give recursion with above
 RHI[{n_Integer?Positive,b_,c_,d_,-1},{bla__}, opt___Rule] :=
  RHI[{n-1,b,c,d,0},{bla},opt] + RHI[{n-1,b+1,c,d,-1},{bla},opt];
 *)
@@ -390,12 +391,12 @@ RHI[{a_,b_Integer,c_,0,e_ /; Head[e]=!=Integer},
 
 RHI[{0,0,0,0,0},{x__},{y__}, opt___Rule] := RHI[{x}, {y}, opt];
 RHI[{x1_,x2_,x3_,x4_,x5_, 0, 0}, {y__}] :=  RHI[{x1,x2,x3,x4,x5},{y}];
-RHI[any_List, {x1_,x2_,x3_,x4_,x5_, 0, 0}, {y__}] := 
+RHI[any_List, {x1_,x2_,x3_,x4_,x5_, 0, 0}, {y__}] :=
  RHI[any, {x1,x2,x3,x4,x5}, {y}];
 
 RHI[x1_,x2_,x3_,x4_,x5_, x6_,x7_,x8_, x9_,x10_, x10b_, x10c_,
     x11_,x12_,x13_,x14_,x15_, opt___Rule]:=
-RHI[{x1,x2,x3,x4,x5}, {x6, x7, x8, x9, x10, x10b, x10c}, 
+RHI[{x1,x2,x3,x4,x5}, {x6, x7, x8, x9, x10, x10b, x10c},
     {x11,x12,x13,x14,x15}, opt];
 RHI[x1_,x2_,x3_,x4_,x5_, x6_,x7_,x8_, x9_,x10_, x11_,x12_,x13_,x14_,x15_,
     opt___Rule]:=
@@ -427,7 +428,7 @@ RHI[___,{__},{0,0,_,_,_}] = 0;
 RHI[snum___List, {a_,b_,c_,d_,e_,f_,g_},{al_,be_,ga_,de_,ep_}, opt___Rule] :=
 loadrhi[snum,{a,b,c,d,e,f,g},{al,be,ga,de,ep}, nosaveDir /. {opt} /.
         Options[RHI], opt
-       ] /;(loadrhi[snum,{a,b,c,d,e,f,g},{al,be,ga,de,ep}, 
+       ] /;(loadrhi[snum,{a,b,c,d,e,f,g},{al,be,ga,de,ep},
                     nosaveDir /. {opt} /.  Options[RHI], opt
                    ] =!= False
            ) && StringQ[nosaveDir /. {opt} /.Options[RHI]];
@@ -435,7 +436,7 @@ loadrhi[snum,{a,b,c,d,e,f,g},{al,be,ga,de,ep}, nosaveDir /. {opt} /.
 RHI[snum___List, {a_,b_,c_,d_,e_},{al_,be_,ga_,de_,ep_}, opt___Rule] :=
 loadrhi[snum,{a,b,c,d,e},{al,be,ga,de,ep}, nosaveDir /. {opt} /.
         Options[RHI], opt
-       ] /;(loadrhi[snum,{a,b,c,d,e},{al,be,ga,de,ep}, 
+       ] /;(loadrhi[snum,{a,b,c,d,e},{al,be,ga,de,ep},
                     nosaveDir /. {opt} /.  Options[RHI], opt
                    ] =!= False
            ) && StringQ[nosaveDir /. {opt} /. Options[RHI]];
@@ -452,15 +453,15 @@ st[x__]  := StringReplace[StringJoin @@ Map[ToString, {x}],
 stD[x__] := StringReplace["D" <> (StringJoin @@ Map[ToString, {x}]),
                           {"-1" -> "-"}];
 (* shortdef *)
-short[x_] := StringReplace[ToString[x /.  
+short[x_] := StringReplace[ToString[x /.
                   { Times :> est, Plus :> est,
-                    Pair  :> est, Power :> est 
+                    Pair  :> est, Power :> est
                   } /.  {est :> st}], {"[" -> "", "]" -> "", ", " -> ""}
                           ];
 (*XXX*)
 frh = FixedPoint[ReleaseHold, #]&;
 loadrhi[indi___List, save_String, opt___Rule] :=
-loadrhi[indi,save,opt] = 
+loadrhi[indi,save,opt] =
  Block[{ind,file, filesave, checkifthere, re = False},
 (*
         ind = Flatten[{indi}];
@@ -469,19 +470,19 @@ ind = {indi};
         file         = short[frh["RHI"@@Flatten[ind]
                                 ]
                             ] <> ".i";
-        
-	(*Mac fix, 18/9-2000, F.Orellana*)
-	checkifthere = FileNames[{file}, {$FeynCalcDirectory <>$PathnameSeparator<>save}];
+
+  (*Mac fix, 18/9-2000, F.Orellana*)
+  checkifthere = FileNames[{file}, {$FeynCalcDirectory <>$PathnameSeparator<>save}];
   FCPrint[1,"checkifthere = ", checkifthere];
-     If[checkifthere =!= {}, 
+     If[checkifthere =!= {},
         FCPrint[1,"Loading"];
         re = Get @@ checkifthere;
         FCPrint[1, " re = ",re];
         If[re === Null, checkifthere = {}];
        ];
-     If[checkifthere === {}, 
+     If[checkifthere === {},
         If[(FORM /. {opt} /. Options[RHI]) === True,
-           re = RHI@@Join[ind, {FORM -> True, 
+           re = RHI@@Join[ind, {FORM -> True,
                     (* to avoid an infinite loop *)
                     nosaveDir -> False}
                    ];
@@ -491,7 +492,7 @@ ind = {indi};
            filesave     = ToFileName[{$FeynCalcDirectory, save}, file];
 FCPrint[1,"writing file ",filesave];
            OpenWrite @@ {filesave, FormatType -> InputForm };
-           WriteString @@ {filesave, 
+           WriteString @@ {filesave,
                            ToString[frh["RHI"@@Flatten[ind]]
                                    ] <> " = \n ( "};
            Write       @@ {filesave, re};
@@ -511,7 +512,7 @@ epcut[x_, op___Rule] := If[(EpsilonOrder /. {op} /. Options[RHI]
 
 RHI[snum___List,{a_,b_,c_,d_,e_},{al_,be_,ga_,de_,ep_}, opt___Rule] :=
 (
-RHI[snum,{a,b,c,d,e}, {al,be,ga,de,ep}(*, opt*)] = 
+RHI[snum,{a,b,c,d,e}, {al,be,ga,de,ep}(*, opt*)] =
 epcut[
 fromform[
 "l M = " <> StringReplace[
@@ -521,8 +522,8 @@ pw[Global`d1, a] pw[Global`d2, b] pw[Global`d3, c] *
 pw[Global`d4, d] pw[Global`d5, e] /
 (Global`N1^al Global`N2^be Global`N3^ga Global`N4^de Global`N5^ep)
         ]         ],
-             {"["  -> "(", 
-              "]"  -> ")", 
+             {"["  -> "(",
+              "]"  -> ")",
               "\"" ->"",
               "d_(1-x)" -> "DeltaFunction[1-x]"}
                          ] <> ";",
@@ -530,10 +531,10 @@ pw[Global`d4, d] pw[Global`d5, e] /
         ], opt]
 ) /; ((FORM /. {opt} /. Options[RHI]) === True);
 
-RHI[snum___List,{a_,b_,c_,d_,e_,f_,g_},{al_,be_,ga_,de_,ep_}, 
+RHI[snum___List,{a_,b_,c_,d_,e_,f_,g_},{al_,be_,ga_,de_,ep_},
     opt___Rule] :=
 (
-RHI[snum,{a,b,c,d,e,f,g}, {al,be,ga,de,ep}(*, opt*)] = 
+RHI[snum,{a,b,c,d,e,f,g}, {al,be,ga,de,ep}(*, opt*)] =
 fromform[
 "l M = " <> StringReplace[
 ToString[InputForm[
@@ -543,8 +544,8 @@ pw[Global`d4, d] pw[Global`d5, e] pw[Global`d6, f] *
 pw[Global`d7, g] /
 (Global`N1^al Global`N2^be Global`N3^ga Global`N4^de Global`N5^ep)
         ]         ],
-             {"["  -> "(", 
-              "]"  -> ")", 
+             {"["  -> "(",
+              "]"  -> ")",
               "\"" ->"",
               "d_(1-x)" -> "DeltaFunction[1-x]"}
                          ] <> ";",
@@ -630,12 +631,12 @@ If[StringMatchQ[ww[[j]], "   M = 0;*"], Throw[0]];
    new = Join[{"("}, new, {")"}];
 OpenWrite[HomeDirectory[]<>"/rh/ope/diagrams/doit.m"];
    For[ij = 1, ij <= Length[new], ij++,
-       WriteString[HomeDirectory[]<>"/rh/ope/diagrams/doit.m", 
+       WriteString[HomeDirectory[]<>"/rh/ope/diagrams/doit.m",
                    new[[ij]], "\n"];
       ];
 Close[HomeDirectory[]<>"/rh/ope/diagrams/doit.m"];
 new = Get[HomeDirectory[]<>"/rh/ope/diagrams/doit.m"];
-new = new /. {Global`eph :> ((Epsilon)/2), 
+new = new /. {Global`eph :> ((Epsilon)/2),
                       Global`mark1 :> 1,
                       Global`mark2 :> 1,
                       Global`mark3 :> 1,
@@ -653,7 +654,7 @@ new = new + null1 + null2;
 new1 = Select1[new, Global`MINUSONE] /. {null1:>0, null2:>0};
 newm = Select2[new, Global`MINUSONE];
 
-clo[yy__] := If[!FreeQ2[{yy}, {Epsilon, 
+clo[yy__] := If[!FreeQ2[{yy}, {Epsilon,
                                DeltaFunction}], Plus[yy],
                Collect2[Plus[yy], {PolyLog,Log},Factoring->False]
               ];
@@ -678,7 +679,7 @@ new];
 new = new /. (-1)^a_ :> PowerSimplify[(-1)^a];
                            new];
 
-str[y_]:=StringReplace[y, {"["        -> "(", 
+str[y_]:=StringReplace[y, {"["        -> "(",
                                   "]" -> ")",
                            "d_(1-x)"  -> "DeltaFunction[1-x]",
                            "(-)^m"    -> "(MINUSONE)^m",
@@ -689,7 +690,7 @@ str[y_]:=StringReplace[y, {"["        -> "(",
                            "li2(1-x)" -> "PolyLog[2,1-x]",
                            "li3(1-x)" -> "PolyLog[3,1-x]",
                            "li3(-x)"  -> "PolyLog[3,-x]",
-                           "li3(-(1-x)/(1+x))"  -> 
+                           "li3(-(1-x)/(1+x))"  ->
                                   "PolyLog[3,-(1-x)/(1+x)]",
                            "li3((1-x)/(1+x))" ->
                                   "PolyLog[3,(1-x)/(1+x)]",
@@ -704,7 +705,7 @@ str[y_]:=StringReplace[y, {"["        -> "(",
 
 
 
-pw[x_,y_] := If[Head[y] === Integer, 
+pw[x_,y_] := If[Head[y] === Integer,
                 frh[x]^y,
 (
 Global`dm[Global`d1] = Global`dm[Global`k1];
@@ -720,7 +721,7 @@ Global`dm[Global`d7] = Global`dm[Global`p - Global`k1 - Global`k2];
 
 
 RHI /:
-MakeBoxes[RHI[w_,v_], TraditionalForm] := 
+MakeBoxes[RHI[w_,v_], TraditionalForm] :=
  ToBoxes[TLI[w,v],TraditionalForm];
 
 End[]; EndPackage[];

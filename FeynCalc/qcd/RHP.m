@@ -21,16 +21,13 @@ with respect to mu and nu.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-Dimension = MakeContext["CoreOptions","Dimension"];
 
-MakeContext[
-Collect2,
-LorentzIndex,
-Momentum,
-OPEDelta,
-Pair,
-RHO];
+Dimension = MakeContext["CoreOptions","Dimension"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+
+MakeContext[ Collect2, OPEDelta, RHO];
 
 
 Options[RHP] = {Dimension -> D};

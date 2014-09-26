@@ -37,18 +37,17 @@ may be given and are passed on to these.";
 
 Begin["`Private`"];
 
-Integratedx = MakeContext["Integratedx"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 Dimension = MakeContext["CoreOptions","Dimension"];
-NumericQ1 = MakeContext["NumericQ1"];
-Epsilon = MakeContext["Epsilon"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+EpsilonOrder= MakeContext["CoreOptions","EpsilonOrder"];
 FCIntegrate = MakeContext["CoreOptions","FCIntegrate"];
 FCNIntegrate = MakeContext["CoreOptions","FCNIntegrate"];
-TimedIntegrate = MakeContext["TimedIntegrate"];
-DeltaFunction = MakeContext["DeltaFunction"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
 Isolate = MakeContext["Isolate"];
+NumericQ1 = MakeContext["NumericQ1"];
 SelectSplit = MakeContext["SelectSplit"];
-EpsilonOrder= MakeContext["CoreOptions","EpsilonOrder"];
-
+TimedIntegrate = MakeContext["TimedIntegrate"];
 
 
 Options[FeynmanDoIntegrals] = {NIntegrate -> False, Dimension -> D,
@@ -143,7 +142,7 @@ Block[{tc,tcc,tmpcol,a,ress},
         Print["Found ",Length[ress]," terms with ",
           Count[ress,DeltaFunction[_],Infinity]," DeltaFunctions"]];
     Plus@@(FeynmanDoIntegrals1[DOT[ints0, #], moms0, vars0, opts]& /@ ress),
-    
+
     (*No delta functions*)
     If[Head[exp]===Plus,
       FeynmanDoIntegrals1[DOT[ints0, #], moms0, vars0, opts]& /@ exp,
@@ -203,7 +202,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
 
        If[AtomQ[#]=!=True, Message[FeynmanDoIntegrals::"noatom",#];Abort[]]&/@vars;
        varp = Alternatives @@ vars;
-          
+
        (*Eliminate variables using possible overall DeltaFunctions*)
        transfac = 1;
        expred =
@@ -246,7 +245,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
           # ])&,
 
        exp];
-       
+
        If[transfac===0,Message[FeynmanDoIntegrals::"transf"];Abort[]];
 
        vars = Complement[vars, varsdrop];
@@ -325,7 +324,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
                 beta^(-1 + eps/2) + (1 - beta)^(-1 + eps/2))},{}] /.
 
              eps -> Epsilon /. dumf -> 1)&  /@ serie1),
-             
+
          serie2=serie1];
 
 
@@ -448,7 +447,7 @@ FeynmanDoIntegrals1[exp0_, moms0_List:dum, vars0_List:dum, opts___Rule] :=
                  {int->Identity,nint->Identity,out->Identity,no->Identity}]];
             seri = Append[seri, DOT[ Sequence@@((Integratedx@@##)& /@ Join[varlimsout,varlims]),
                   Times @@ tmp/.{int->Identity,nint->Identity,out->Identity,no->Identity} ]],
-                 
+
            True,
 
            Message[FeynmanDoIntegrals::"integrate"];Abort[]

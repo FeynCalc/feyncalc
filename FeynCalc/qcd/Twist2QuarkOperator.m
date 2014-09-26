@@ -8,7 +8,7 @@
 (* :History: File created on 11 March '98 at 23:38 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Twist2QuarkOperator *) 
+(* :Summary: Twist2QuarkOperator *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -17,22 +17,22 @@ BeginPackage["HighEnergyPhysics`qcd`Twist2QuarkOperator`",{"HighEnergyPhysics`Fe
 QO::"usage" =
 "QO is equivalent to Twist2QuarkOperator.";
 
-Twist2QuarkOperator::"usage" = 
-"Twist2QuarkOperator[p] or Twist2QuarkOperator[p,_,_] yields 
+Twist2QuarkOperator::"usage" =
+"Twist2QuarkOperator[p] or Twist2QuarkOperator[p,_,_] yields
 the quark-antiquark operator (p is momentum in the direction
 of the incoming quark).
-Twist2QuarkOperator[{p,q}] 
-yields the  2-quark operator for non-zero momentum insertion 
+Twist2QuarkOperator[{p,q}]
+yields the  2-quark operator for non-zero momentum insertion
 (p is momentum in the direction
 of the incoming quark).
 Twist2QuarkOperator[{p1,___}, {p2,___}, {p3, mu, a}] or
-Twist2QuarkOperator[p1,_,_,  p2,_,_,  p3,mu,a] is the  
+Twist2QuarkOperator[p1,_,_,  p2,_,_,  p3,mu,a] is the
 quark-antiquark-gluon operator,
 where p1 is the incoming quark, p2 the incoming antiquark and
-p3 denotes the incoming gluon momentum. 
+p3 denotes the incoming gluon momentum.
 Twist2QuarkOperator[{p1}, {p2}, {p3, mu, a}, {p4, nu, b}] or
 Twist2QuarkOperator[{p1,___}, {p2,___}, {p3, mu, a}, {p4, nu, b}] or
-Twist2QuarkOperator[p1,_,_,  p2,_,_,  p3,mu,a, p4, nu, b] 
+Twist2QuarkOperator[p1,_,_,  p2,_,_,  p3,mu,a, p4, nu, b]
 gives the Quark-Quark-Gluon-Gluon-operator.
 The setting of the option Polarization (unpolarized: 0;
 polarized: 1) determines whether the unpolarized or polarized
@@ -42,39 +42,40 @@ operator is returned.";
 
 Begin["`Private`"];
 
-Dimension = MakeContext["CoreOptions","Dimension"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+FV = MakeContext["CoreObjects","FV"];
+GA = MakeContext["CoreObjects","GA"];
+GS = MakeContext["CoreObjects","GS"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+OPE = MakeContext["CoreObjects","OPE"];
+Pair = MakeContext["CoreObjects","Pair"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+SO = MakeContext["CoreObjects","SO"];
+SP = MakeContext["CoreObjects","SP"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 
 MakeContext[
 ChangeDimension,
 DeclareNonCommutative,
-DiracGamma,
 Explicit,
-FV,
-GA,
-GS,
-Gstrong,
-LorentzIndex,
-Momentum,
 OPEDelta,
-OPE,
-OPEi,
-OPEj,
-OPEm,
 OPESum,
 OPESumExplicit,
-Pair,
-Polarization,
-SO,
-SP,
-SUNIndex,
-SUNT];
+OPEi,
+OPEj,
+OPEm
+];
 
 DeclareNonCommutative[Twist2QuarkOperator];
 
 Options[Twist2QuarkOperator] = { CouplingConstant -> Gstrong,
-                                 Dimension        -> D, 
+                                 Dimension        -> D,
                                  Explicit         -> True,
                                  Polarization     -> 1 ,
                                  ZeroMomentumInsertion -> True
@@ -82,7 +83,7 @@ Options[Twist2QuarkOperator] = { CouplingConstant -> Gstrong,
 
 QO = Twist2QuarkOperator;
 
-zerom[oo___Rule] := ZeroMomentumInsertion /. {oo} /.  
+zerom[oo___Rule] := ZeroMomentumInsertion /. {oo} /.
                     Options[Twist2QuarkOperator];
 
 (* p is the incoming quark *)
@@ -92,19 +93,19 @@ Twist2QuarkOperator[{p_, q_}, opt___Rule] := Block[{dim,pol},
  ChangeDimension[
  If[pol === 0,
     (2*DiracGamma[Momentum[OPEDelta]]*
-    (Pair[Momentum[OPEDelta], Momentum[p]] - 
+    (Pair[Momentum[OPEDelta], Momentum[p]] -
        Pair[Momentum[OPEDelta], Momentum[q]])^(-1 + OPEm))/2^OPEm
     ,
     (2*DOT[GA[5] , GS[OPEDelta]]*(SO[p] - SO[q])^(-1 + OPEm))/2^OPEm
    ],        dim]                                 ] /; !zerom[opt];
- 
 
-Twist2QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer, 
-                                      w_/;Head[w] =!= Integer, 
+
+Twist2QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer,
+                                      w_/;Head[w] =!= Integer,
    opt___Rule] := Twist2QuarkOperator[a1, opt];
 
-Twist2QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer, 
-                                      w_/;Head[w] =!= Integer, 
+Twist2QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer,
+                                      w_/;Head[w] =!= Integer,
 a_,b_,
    opt___Rule] := Twist2QuarkOperator[a1, opt];
 
@@ -115,27 +116,27 @@ Twist2QuarkOperator[pi_, opt___Rule] := Block[{dim, p, re, pol, del},
  pol    = Polarization /. {opt} /. Options[Twist2QuarkOperator];
       p = Momentum[pi, dim];
     del = Momentum[OPEDelta, dim];
- If[pol === 0, 
+ If[pol === 0,
     re =  DiracGamma[del,dim] Pair[del,p]^(OPEm-1),
-    re =  -DOT[DiracGamma[del,dim], 
+    re =  -DOT[DiracGamma[del,dim],
                        DiracGamma[5]] Pair[del,p]^(OPEm-1)
    ];
                                      re] /; zerom[opt];
 
 {l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
 
-Twist2QuarkOperator[p_, i_Integer, j_Integer] := 
+Twist2QuarkOperator[p_, i_Integer, j_Integer] :=
  Twist2QuarkOperator[p];
-Twist2QuarkOperator[x___, i_Integer, y___] := 
+Twist2QuarkOperator[x___, i_Integer, y___] :=
  Twist2QuarkOperator[x, l[i], c[i], y];
 
 (* Quark - Quark - Gluon *)
 
-Twist2QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule},  
+Twist2QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule},
               opt___Rule] :=
  Twist2QuarkOperator[{p1}, {p2}, {p3, mu, a}, opt];
 
-Twist2QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule,  
+Twist2QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule,
               opt___Rule] :=
  Twist2QuarkOperator[{p1}, {p2}, {p3, mu, a}, opt];
 
@@ -148,7 +149,7 @@ Block[{dim, coup},
   If[pol === 0,
      (4*coup*FV[OPEDelta, mu]*GS[OPEDelta]*
      OPESum[(SO[p1] - SO[p2] - SO[p3])^(-2 - OPEi + OPEm)*
-            (SO[p1] - SO[p2] + SO[p3])^OPEi, 
+            (SO[p1] - SO[p2] + SO[p3])^OPEi,
             {OPEi, 0, -2 + OPEm}]*SUNT[a])/2^OPEm
       ,
      (4*coup*DOT[SUNT[a] , GA[5] , GS[OPEDelta]]*FV[OPEDelta, mu]*
@@ -157,7 +158,7 @@ Block[{dim, coup},
     ]      , dim]
      ] /; !zerom[opt];
 
-Twist2QuarkOperator[{p2_}, {p1_}, {p3_, mu_, a_}, opt___Rule] := 
+Twist2QuarkOperator[{p2_}, {p1_}, {p3_, mu_, a_}, opt___Rule] :=
 Block[{dim, pe1, pe2, pol, del, muu, coup, exp},
   coup  = CouplingConstant /. {opt} /. Options[Twist2QuarkOperator];
   dim   = Dimension /. {opt} /. Options[Twist2QuarkOperator];
@@ -182,7 +183,7 @@ Block[{dim, pe1, pe2, pol, del, muu, coup, exp},
                       ] Pair[del,muu] *
             (
              ((-1)^OPEm*Pair[del, pe1]^(-1 + OPEm))/
-             (Pair[del, pe1] + Pair[del, pe2]) + 
+             (Pair[del, pe1] + Pair[del, pe2]) +
              Pair[del, pe2]^(-1 + OPEm)/(Pair[del, pe1] + Pair[del, pe2])
             )
 
@@ -202,7 +203,7 @@ Block[{dim, pe1, pe2, pol, del, muu, coup, exp},
                      ] Pair[del,muu] *
             (
             ((-1)^OPEm*Pair[del, pe1]^(-1 + OPEm))/
-            (Pair[del, pe1] + Pair[del, pe2]) + 
+            (Pair[del, pe1] + Pair[del, pe2]) +
             Pair[del, pe2]^(-1 + OPEm)/(Pair[del, pe1] + Pair[del, pe2])
             )
       ]
@@ -210,18 +211,18 @@ Block[{dim, pe1, pe2, pol, del, muu, coup, exp},
    re] /; zerom[opt];
 
 (* Quark - Quark - Gluon - Gluon *)
-Twist2QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule},  
-              {p4_,nu_,b_ /; Head[b] =!= Rule}, 
+Twist2QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule},
+              {p4_,nu_,b_ /; Head[b] =!= Rule},
               opt___Rule] :=
  Twist2QuarkOperator[{p1}, {p2}, {p3, mu, a}, {p4, nu, b}, opt];
 
-Twist2QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule,  
-              p4_,nu_,b_, 
+Twist2QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule,
+              p4_,nu_,b_,
               opt___Rule] :=
  Twist2QuarkOperator[{p1}, {p2}, {p3, mu, a}, {p4, nu, b}, opt];
 
 Twist2QuarkOperator[{p1_}, {p2_}, {p3_, mu_, c_},{p4_, nu_, d_},
-               opt___Rule] := 
+               opt___Rule] :=
 Block[{dim, pe1, pe2, pe3, pe4, pol, del, muu, coup,exp},
   coup  = CouplingConstant /. {opt} /. Options[Twist2QuarkOperator];
   dim   = Dimension /. {opt} /. Options[Twist2QuarkOperator];
@@ -249,7 +250,7 @@ Block[{dim, pe1, pe2, pe3, pe4, pol, del, muu, coup,exp},
           (-3 - OPEi + OPEm)*(Pair[del, pe2])^OPEj*
          (Pair[del, pe2] +
             Pair[del, pe3])^(OPEi - OPEj),
-           {OPEi, 0, -3 + OPEm}, {OPEj, 0, OPEi} 
+           {OPEi, 0, -3 + OPEm}, {OPEj, 0, OPEi}
 ]
 )
       ]*
@@ -265,15 +266,15 @@ Block[{dim, pe1, pe2, pe3, pe4, pol, del, muu, coup,exp},
     (DOT[SUNT[SUNIndex[d]], SUNT[SUNIndex[c]]]*
        OPESum[(-1)^OPEj*Pair[del, pe1]^OPEi*
          Pair[del, pe2]^(-3 - OPEj + OPEm)*
-         (Pair[del, pe1] + 
-            Pair[del, pe4])^(-OPEi + OPEj), 
+         (Pair[del, pe1] +
+            Pair[del, pe4])^(-OPEi + OPEj),
         {OPEj, 0, -3 + OPEm}, {OPEi, 0, OPEj}] -
       (-1)^OPEm *
       DOT[SUNT[SUNIndex[c]] , SUNT[SUNIndex[d]]]*
        OPESum[(-1)^OPEj*Pair[del, pe1]^
           (-3 - OPEj + OPEm)*Pair[del, pe2]^OPEi*
-         (Pair[del, pe2] + 
-            Pair[del, pe4])^(-OPEi + OPEj), 
+         (Pair[del, pe2] +
+            Pair[del, pe4])^(-OPEi + OPEj),
           {OPEj, 0, -3 + OPEm}, {OPEi, 0, OPEj}
              ])
     ]*

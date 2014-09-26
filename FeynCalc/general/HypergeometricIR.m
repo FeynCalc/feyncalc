@@ -27,7 +27,7 @@ option Integratedx -> False.";
 Begin["`Private`"];
    
 
-Integratedx = MakeContext["Integratedx"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
 Factor2     = MakeContext["Factor2"];
 
 Options[HypergeometricIR] = {Integratedx -> False};

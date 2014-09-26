@@ -21,7 +21,7 @@ and the PlusDistribution[1/(1-x)].
 OPEIntegrateDelta::"usage"=
 "OPEIntegrateDelta[expr, x, m] introduces
 the delta(1-x) (DeltaFunction[1-x]).
-The Mathematica Integrate function is called and each integration 
+The Mathematica Integrate function is called and each integration
 (from 0 to 1) is
 recorded for reference (and bug-checking) in the global list
 $MIntegrate. \n
@@ -36,32 +36,33 @@ inside OPEIntegrateDelta.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
+ScaleMu = MakeContext["CoreObjects","ScaleMu"];
 
 MakeContext[
-FCPrint,
 ChangeDimension,
 Collect2,
 DeltaFunction,
-Epsilon,
+FCPrint,
 Factor2,
 Integrate2,
-ScaleMu,
-PlusDistribution,
 Select1,
 Select2,
 Series2,
 Trick,
-Zeta2    ];
+Zeta2
+];
 
 $MIntegrate = {};
 
 Options[OPEIntegrateDelta] = {Dimension -> D, EpsilonOrder -> 1,
-                        PolynomialDivision -> True, 
-                        FinalSubstitutions -> 
+                        PolynomialDivision -> True,
+                        FinalSubstitutions ->
                           {Log[ScaleMu^2 _] :> 0}};
 
 OPEIntegrateDelta[expr_, x_, m_, ops___Rule] := Block[
@@ -175,13 +176,13 @@ FCPrint[1,"f1 = ",f1//InputForm];
        rkern = rkern /. (1-x)^e1_ x^e2_ :> ( (x(1-x))^e1 x^(e2-e1) );
        FCPrint[1,"integrate ",rkern];
        mint = Integrate2[rkern, {x, 0, 1}];
-       mint = Simplify[mint /. {Sqrt[Pi] 2^a_ :> 
+       mint = Simplify[mint /. {Sqrt[Pi] 2^a_ :>
                                 (Gamma[1/2-a/2] Gamma[1-a/2]/Gamma[1-a])
                                }
                       ];
        mint = SimplifyPolyGamma[mint];
        intsave = rkern -> mint;
-       If[!MemberQ[$MIntegrate, intsave], 
+       If[!MemberQ[$MIntegrate, intsave],
           AppendTo[$MIntegrate, intsave]
          ];
        FCPrint[1,"Taylor expansion"];
@@ -198,7 +199,7 @@ FCPrint[1,"f1 = ",f1//InputForm];
 res = ChangeDimension[x^(m-1) DeltaFunction[1-x] new + xmpart  + reg,
                       dim];
 res];
- 
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "OPEIntegrateDelta | \n "]];

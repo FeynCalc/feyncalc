@@ -21,14 +21,20 @@ OPEDelta.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-Dimension = MakeContext["CoreOptions","Dimension"];
-Expanding = MakeContext["CoreOptions","Expanding"];
 
-MakeContext[Cases2, DiracSlash,
-            DiracGamma, DotSimplify, Eps,
-            FeynCalcInternal, FourVector, FreeQ2, 
-            LeviCivita, LorentzIndex, Momentum, OPEDelta, Pair,
+Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracSlash = MakeContext["CoreObjects","DiracSlash"];
+Eps = MakeContext["CoreObjects","Eps"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+FourVector = MakeContext["CoreObjects","FourVector"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+
+MakeContext[Cases2, DotSimplify,
+            FeynCalcInternal, FreeQ2,
+            LeviCivita, OPEDelta,
             ScalarProduct,Select1
            ];
 
@@ -38,7 +44,7 @@ Amputate[x_Plus, q__] := Map[Amputate[#,q]&, x];
 Amputate[x_List, q__] := Map[Amputate[#,q]&, x];
 
 (* change September 2003 by Rolf Mertig,
-otherwise 
+otherwise
 Amputate[Pair[Momentum[k1, D], Momentum[q2, D]], q1, q2, Pair -> k1]
 would not work
 *)
@@ -52,18 +58,18 @@ Amputate[ex_, qi_ /; Head[qi]=!=Rule, opt___Rule
    dim = Dimension /. {opt} /. Options[Amputate];
    If[Head[qi]===Momentum, q = First[qi], q = qi];
    par = Flatten[{Pair /. {opt} /. Options[Amputate]}];
-   If[(Unique /. {opt} /. Options[Amputate]) === True, 
+   If[(Unique /. {opt} /. Options[Amputate]) === True,
       a$AL = Unique[$AL], a$AL = $AL
      ];
-   If[par===All, 
+   If[par===All,
       par = Select1[Map[First, Select1[Cases2[exp, Momentum], OPEDelta]],q]
      ];
 
-If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) || 
+If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
    (Head[dummy exp] =!= Times),
    exp,
    nex = exp;
-   If[FreeQ[nex, a$AL], inc = 0, 
+   If[FreeQ[nex, a$AL], inc = 0,
       inc = (Max @@ Map[First, Cases2[nex, a$AL]]);
      ];
    If[!FreeQ[nex,Eps],
@@ -81,17 +87,17 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                Apply[times, Table[Pair[aa], {j,n}]];
          If[MemberQ[par, q],
             nex = nex //. Pair[Momentum[q,dim], Momentum[q,dim]] :>
-                          (li1 = LorentzIndex[a$AL[inc=inc+1], dim]; 
-                           li2 = LorentzIndex[a$AL[inc=inc+1], dim]; 
+                          (li1 = LorentzIndex[a$AL[inc=inc+1], dim];
+                           li2 = LorentzIndex[a$AL[inc=inc+1], dim];
                            Pair[Momentum[q, dim], li1] *
                            Pair[Momentum[q, dim], li2] *Pair[li1, li2]
                           );
             par = Select1[par, q];
            ];
-         
+
          nex = nex //.{Pair[Momentum[q,___], Momentum[pe_,___]
                           ] :> (li=LorentzIndex[a$AL[inc=inc+1],dim];
-                      Pair[Momentum[q,dim], li] *    
+                      Pair[Momentum[q,dim], li] *
                       Pair[Momentum[pe,dim],li])/;MemberQ[par,pe]
                      } /. times -> Times;
         ];

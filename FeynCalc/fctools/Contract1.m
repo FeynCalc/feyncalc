@@ -20,12 +20,12 @@ Contract1::"usage"=
 Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Lower = MakeContext["CoreObjects","Lower"];
+Pair = MakeContext["CoreObjects","Pair"];
 
 MakeContext[
 Expand2,
-LorentzIndex, 
-Lower,
-Pair, 
 SelectFree, 
 SelectNotFree,
 Upper

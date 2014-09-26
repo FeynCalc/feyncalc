@@ -26,22 +26,21 @@ performs several simplifications (no expansion, use DiracSimplify for this).";
 
 Begin["`Private`"];
 
-MakeContext[ ChargeConjugationMatrix];
-
-MakeContext[ DiracGamma, DiracGammaT];
-
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracGammaT = MakeContext["CoreObjects","DiracGammaT"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+LorentzIndex = MakeContext["CoreObjects","SUNT"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
 expanding := expanding = MakeContext["CoreOptions","Expanding"];
-fci  := fci =            MakeContext["FeynCalcInternal"];
-
-MakeContext[ FreeQ2, Pair, SUNT];
-sCO := sCO          = MakeContext["PairContract"];
-
-MakeContext[LorentzIndex];
-memset := memset = MakeContext["MemSet"];
-
-MakeContext[Momentum];
-noncommQ := noncommQ = MakeContext["NonCommFreeQ"];
 exscalpro := exscalpro = MakeContext["ExpandScalarProduct"];
+fci  := fci =            MakeContext["FeynCalcInternal"];
+memset := memset = MakeContext["MemSet"];
+noncommQ := noncommQ = MakeContext["NonCommFreeQ"];
+sCO := sCO          = MakeContext["PairContract"];
+spinor := spinor = MakeContext["CoreOptions","Spinor"];
+
+MakeContext[ FreeQ2, ChargeConjugationMatrix ];
 
 Options[DiracTrick] = {expanding -> False};
 
@@ -52,7 +51,7 @@ coneins[x_]  := x /. Pair -> sCO /. sCO -> Pair;
 DiracTrick[]=1;
 
 (* for time-saving reasons: here NO fci *)
-(* RM20120113: added FreeQ, and changed y___ to y__ ..., this fixed 
+(* RM20120113: added FreeQ, and changed y___ to y__ ..., this fixed
 http://www.feyncalc.org/forum/0677.html
 *)
 DiracTrick[y__ /; FreeQ[{y}, Rule],z_/;Head[z]=!=Rule] :=
@@ -60,11 +59,11 @@ DiracTrick[y__ /; FreeQ[{y}, Rule],z_/;Head[z]=!=Rule] :=
                        drCO -> ds/.  dr->ds/.dr->DOT(*]*);
 
 (*
-	Main algorithm:
-	1) Simplify expressions involving projectors and slashes (DOT ->  drS)
-	2) Check the scheme and then simplify the expressions involving g^5 (drS /. drS ->  ds)
-	3) Simplify expressions involving contractions of gamma matrices with momenta or other gammas (ds //. dr -> drCOs)
-	4) Again check the sceme and simplify the expressions involving g^5 (twice) (drCO -> ds /.  dr -> ds /.  dr -> DOT)
+  Main algorithm:
+  1) Simplify expressions involving projectors and slashes (DOT ->  drS)
+  2) Check the scheme and then simplify the expressions involving g^5 (drS /. drS ->  ds)
+  3) Simplify expressions involving contractions of gamma matrices with momenta or other gammas (ds //. dr -> drCOs)
+  4) Again check the sceme and simplify the expressions involving g^5 (twice) (drCO -> ds /.  dr -> ds /.  dr -> DOT)
 *)
 
 DiracTrick[x_,r___?OptionQ] :=(
@@ -81,7 +80,7 @@ DiracTrick[x_,r___?OptionQ] :=(
 );
 
 (*
-	RM20120113: commented out, not clear why this should be needed
+  RM20120113: commented out, not clear why this should be needed
 SetAttributes[DiracTrick, Flat];
 *)
 
@@ -130,7 +129,7 @@ dr[b___,DiracGamma[7],DiracGamma[7],c___] :=  ds[b, DiracGamma[7], c];
 
 (*What happends if we have a projector in front of a g^mu? *)
 dr[b___,DiracGamma[6],DiracGamma[x_[c__],di___],d___ ]:=
-	ds[ b,DiracGamma[x[c],di], DiracGamma[7],d ];
+  ds[ b,DiracGamma[x[c],di], DiracGamma[7],d ];
 dr[b___,DiracGamma[7],DiracGamma[x_[c__],di___],d___ ] :=
    ds[ b,DiracGamma[x[c],di],DiracGamma[6],d ];
 

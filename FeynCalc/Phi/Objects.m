@@ -53,34 +53,34 @@ Begin["`Private`"];
 
 (* FeynCalc functions *)
 
-fcpd := fcpd = MakeContext["PartialD"];
-fcli := fcli = MakeContext["LorentzIndex"];
-fcsuni := fcsuni = MakeContext["SUNIndex"];
-fcqf := fcqf = MakeContext["QuantumField"];
-fcsunn := fcsunn = MakeContext["SUNN"];
-fcsunt := fcsunt = MakeContext["SUNT"];
-fcsund := fcsund = MakeContext["SUND"];
-fcsunf := fcsunf = MakeContext["SUNF"];
-fcsundel := fcsundel = MakeContext["SUNDelta"];
+fcpd := fcpd = MakeContext["CoreObjects","PartialD"];
+fcli := fcli = MakeContext["CoreObjects","LorentzIndex"];
+fcsuni := fcsuni = MakeContext["CoreObjects","SUNIndex"];
+fcqf := fcqf = MakeContext["CoreObjects","QuantumField"];
+fcsunn := fcsunn = MakeContext["CoreObjects","SUNN"];
+fcsunt := fcsunt = MakeContext["CoreObjects","SUNT"];
+fcsund := fcsund = MakeContext["CoreObjects","SUND"];
+fcsunf := fcsunf = MakeContext["CoreObjects","SUNF"];
+fcsundel := fcsundel = MakeContext["CoreObjects","SUNDelta"];
 fctr := fctr = MakeContext["SUNTrace"];
 fcdot := fcdot = DOT;
 fcexpt := fcexpt = MakeContext["Explicit"];
 fcdots := fcdots = MakeContext["DotSimplify"];
-fcexsuni := fcexsuni = MakeContext["ExplicitSUNIndex"];
-fcpa := fcpa = MakeContext["Pair"];
+fcexsuni := fcexsuni = MakeContext["CoreObjects","ExplicitSUNIndex"];
+fcpa := fcpa = MakeContext["CoreObjects","Pair"];
 fccc := fccc = MakeContext["ComplexConjugate"];
 fclag := fclag = MakeContext["Lagrangian"];
 fccoupl := fccoupl = MakeContext["CoreOptions","CouplingConstant"];
-fcexli := fcexli = MakeContext["ExplicitLorentzIndex"];
+fcexli := fcexli = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 fcdt := fcdt = MakeContext["DataType"];
 fcms := fcms = MakeContext["MemSet"];
 FieldDerivative := FieldDerivative = MakeContext["FieldDerivative"];
 CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFieldDerivative"];
 DotExpand := DotExpand = MakeContext["DotExpand"];
-FourVector := FourVector = MakeContext["FourVector"];
+FourVector := FourVector = MakeContext["CoreObjects","FourVector"];
 FDr := FDr = MakeContext["FDr"];
 CDr := CDr = MakeContext["CDr"];
-fcdg := fcdg = MakeContext["DiracGamma"];
+fcdg := fcdg = MakeContext["CoreObjects","DiracGamma"];
 
 
 
@@ -646,7 +646,7 @@ $UScalars /: HoldPattern[Set[$UScalars, m_]] :=
 
 DeclareUScalar[QuarkCondensate, ParticleMass, DecayConstant, fccoupl,
       SU3D, SU3F, SU3Delta, Projection, fcsuni, fcsunf, fcsund, fcsundel, fcpa,
-	   fcsunn];
+     fcsunn];
 
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -725,7 +725,7 @@ NMExpand[expr_] :=
     expr //. {fcdot[a___, b_ + c_, d___] :> Distribute[fcdot[a, b + c, d]],
   fcdot[a___, b_*c_, d___] :> b*fcdot[a, c, d] /; UScalarQ[b],
   fcdot[a___, b_, d___] :> b*fcdot[a, d] /; UScalarQ[b]};*)
-    
+
 NMFactor[ex_] :=
     ex /. {HoldPattern[Plus[r : (((___*NM[___, a_]) | NM[___, a_]) ..)]] :>
             NM[Replace[#, b_NM -> dr[b, -1], {0, 1}] & /@ Plus[r], a] /;
@@ -1119,7 +1119,7 @@ IsoSymmetricCross[IsoVector[Projection[i:(Projection[uindxx[_Integer]]|Projectio
 (* Products of all vectors is zero in SU(2) : *)
 
 IsoSymmetricCross[a_,
-        b_] /; (FreeQ[jj[a, b, Options[IsoVector]], fcsunn -> 3]) && 
+        b_] /; (FreeQ[jj[a, b, Options[IsoVector]], fcsunn -> 3]) &&
         (!FreeQ[{a, b}, IsoVector | Iso]) && FreeQ[{a, b}, allpatterns] :=
     0;
 
@@ -1161,16 +1161,16 @@ UDotExpand[expr_] :=Block[{$UNonComm},
 
   $UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
         HighEnergyPhysics`FeynCalc`DiracBasis`DiracBasis,
-        HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma,
-        HighEnergyPhysics`FeynCalc`DiracGammaT`DiracGammaT,
-        HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix,
-        HighEnergyPhysics`FeynCalc`DiracSlash`DiracSlash,
-        HighEnergyPhysics`FeynCalc`DiracSigma`DiracSigma,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracGammaT,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracMatrix,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracSlash,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma,
         FST}];
     expr //. {UDot[a___, b_ + c_, d___] -> Distribute[UDot[a, b + c, d]],
               UDot[a___,b_*c_,d___]/;UScalarQ[b] :> b*UDot[a,c,d],
               UDot[a___,b_,d___]/;UScalarQ[b] :> b*UDot[a,d],
-              UDot[a___,b_,c___]/;FreeQ[b, (Alternatives @@ $UNonComm)] && 
+              UDot[a___,b_,c___]/;FreeQ[b, (Alternatives @@ $UNonComm)] &&
                            MatrixQ[c] =!= True:> b*UDot[a,c] }];
 
 
@@ -1468,7 +1468,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
                 Union[OptionsSelect[UMatrix, optst],
                   OptionsSelect[IsoVector, optst],
                   OptionsSelect[UGenerator, optst]]]}, {}]*);
-                  
+
 UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (((! DiagonalToU) && QuarkToMesonMasses) /.
@@ -1479,7 +1479,7 @@ UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
             2)  && (fcexpt /. Flatten[{opts}] /.
                 Options[UQuarkMass]) := ParticleMass[Pion, st, sc, qs]^2/(2*
             QuarkCondensate[st, sc, qs])*UIdentityMatrix[opts1];
-            
+
 UMatrix[UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ],
         opts1___] /; (DiagonalToU /. Flatten[{opts}] /.
@@ -1534,7 +1534,7 @@ UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
                       x], ##]) & @@
           Union[OptionsSelect[UChi, opts, opts1],
             OptionsSelect[UMatrix, opts, opts1]]);
-            
+
 UMatrix[UChi[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ]][x_]  /; (fcexpt /. Flatten[{opts}] /.
                 Options[UChi]) :=
@@ -1679,11 +1679,11 @@ setLeftRightComponents;
 
 FieldStrengthTensorFull[{der_}, b___] :=
     FieldStrengthTensorFull[
-      HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[der], b];
+      HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[der], b];
 
 FieldStrengthTensor[{der_}, b___] :=
     FieldStrengthTensor[
-      HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[der], b];
+      HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex[der], b];
 
 
 
@@ -1691,16 +1691,16 @@ FieldStrengthTensor[{der_}, b___] :=
 
 (* Linearity: *)
 
-FieldStrengthTensor[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+FieldStrengthTensor[der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
       a_ + b_, r___] := FieldStrengthTensor[der, a, r] +
       FieldStrengthTensor[der, b, r];
-FieldStrengthTensor[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+FieldStrengthTensor[der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         a_*b_, r___] /; UScalarQ[a] &&FreeQ[a,allpatterns]:= a*FieldStrengthTensor[der, b, r];
 
-FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
       a_ + b_, r___] := FieldStrengthTensorFull[der, a, r] +
       FieldStrengthTensorFull[der, b, r];
-FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         a_*b_, r___] /; UScalarQ[a] &&FreeQ[a,allpatterns]:= a*FieldStrengthTensorFull[der, b, r];
 
 
@@ -1709,33 +1709,33 @@ FieldStrengthTensorFull[der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex
 
 (*With a QuantumField as input*)
 FieldStrengthTensor[
-      der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-      fcqf[ders1___HighEnergyPhysics`FeynCalc`PartialD`PartialD,
+      der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
+      fcqf[ders1___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD,
           p_Particle,
-          lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-          lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+          lli_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
+          lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
           iis___?fcsuniQ][x_], opts___Rule] /;
-	  (fcexpt/.{opts}/.Options[FieldStrengthTensor]) :=
+    (fcexpt/.{opts}/.Options[FieldStrengthTensor]) :=
     fcqf[fcpd[der], ders1, p, lli, lis, iis][x] -
       fcqf[fcpd[lli], ders1, p, der, lis, iis][x];
-      
+
 (*With general input*)
 FieldStrengthTensor[
-      der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, obj_, x_?AtomQ, opts___Rule] /;
-	  (fcexpt/.{opts}/.Options[FieldStrengthTensor])  :=
+      der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex, obj_, x_?AtomQ, opts___Rule] /;
+    (fcexpt/.{opts}/.Options[FieldStrengthTensor])  :=
    FieldDerivative[obj, x,
         der] - (obj /. {(fff_[
                     ff_[a___ /; FreeQ[{a}, fcli|fcexli],
-                      b_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                      b_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                       c___], rest___][x] ->
                 FieldDerivative[fff[ff[a, der, c], rest][x], x,
                   b]), (ff_[a___ /; FreeQ[{a}, fcli|fcexli],
-                    b_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                    b_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                     c___][x] -> FieldDerivative[ff[a, der, c][x], x, b])});
-                    
+
 (*A field might have been set to zero*)
 FieldStrengthTensor[
-  _HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,0,opts___Rule] :=0
+  _HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,0,opts___Rule] :=0
 
 
 
@@ -1743,49 +1743,49 @@ FieldStrengthTensor[
 
 (*With an non - matrix iso - vector of QuantumFields as input*)
   FieldStrengthTensorFull[
-        der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         IsoVector[body__][x_], coup_:1, opts___Rule]  /;
-	  (fcexpt/.{opts}/.Options[FieldStrengthTensorFull]) :=
+    (fcexpt/.{opts}/.Options[FieldStrengthTensorFull]) :=
     FieldStrengthTensor[der, IsoVector[body][x], x, opts] +
       coup*IsoCross[
           IsoVector[body][x] /.
             fcqf[first___, p_Particle,
-                a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                a_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                 rest___] :> fcqf[first, p, der, rest], IsoVector[body][x]];
-                
+
 (*With a matrix of quantum fields as input*)
   FieldStrengthTensorFull[
-        der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, obj_, x_,
+        der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex, obj_, x_,
         coup_:I, opts___Rule] /; (!FreeQ[obj,fcqf,Infinity,Heads->True] &&
-	            (fcexpt/.{opts}/.Options[FieldStrengthTensorFull])) :=
+              (fcexpt/.{opts}/.Options[FieldStrengthTensorFull])) :=
     FieldStrengthTensor[der, obj, x, opts] +
       coup*(NM[obj /.
                 fcqf[first___, p_Particle,
-                    a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                    a_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                     rest___] :> fcqf[first, p, der, rest], obj] -
             NM[obj, obj /.
                 fcqf[first___, p_Particle,
-                    a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                    a_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                     rest___] :> fcqf[first, p, der, rest]]);
-                    
+
 (*With general input*)
 (*The object must then have only one Lorentz index...*)
   FieldStrengthTensorFull[
-        der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, obj_, x_,
+        der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex, obj_, x_,
         coup_?(!MatchQ[#,_Rule]&), opts___Rule] /; (FreeQ[obj,fcqf,Infinity,Heads->True] &&
-	            (fcexpt/.{opts}/.Options[FieldStrengthTensorFull])) :=
+              (fcexpt/.{opts}/.Options[FieldStrengthTensorFull])) :=
     FieldStrengthTensor[der, obj, x, opts] +
       coup*(NM[obj /.
-                a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex :>
-		der, obj] -
+                a_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex :>
+    der, obj] -
             NM[obj, obj /.
-	    a_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex :>
-	    der]);
+      a_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex :>
+      der]);
 
 FieldStrengthTensorFull[
-        der_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, obj_, x_,
+        der_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex, obj_, x_,
         opts___Rule] /; (FreeQ[obj,fcqf,Infinity,Heads->True] &&
-	            (fcexpt/.{opts}/.Options[FieldStrengthTensorFull])) :=
+              (fcexpt/.{opts}/.Options[FieldStrengthTensorFull])) :=
 FieldStrengthTensorFull[der,obj,x,I,opts];
 
 
@@ -1815,7 +1815,7 @@ writeoutivrule1[
                 x], {isosp, ((fcsunn^2 - 1) /. Flatten[{opts1}] /.
                       OptionsSelect[IsoVector, opts] /.
                     Options[IsoVector])}]));
-                    
+
 writeoutivrule2[opts1___] :=
     IsoVector[a_[b__, opts0___Rule], opts___Rule] :>
       Iso @@ Table[(a[b, ##] & @@ OptionsSelect[a, opts0, opts1, opts])[
@@ -1845,7 +1845,7 @@ IsoCross[Iso[aa__],
       Iso @@ Table[
           Sum[suf[ii, jj, kk]*NM[Conjugate[{aa}[[ii]]], {bb}[[jj]]], {ii, 1,
               Length[{aa}]}, {jj, 1, Length[{aa}]}], {kk, 1, Length[{aa}]}]);
-              
+
 IsoSymmetricCross[Iso[aa__],
       Iso[bb__]] := (ng = (fcsunn /.
             Join[Flatten[
@@ -1855,7 +1855,7 @@ IsoSymmetricCross[Iso[aa__],
       Iso @@ Table[
           Sum[suf[ii, jj, kk]*NM[Conjugate[{aa}[[ii]]], {bb}[[jj]]], {ii, 1,
               Length[{aa}]}, {jj, 1, Length[{aa}]}], {kk, 1, Length[{aa}]}]);
-              
+
 
 (* Writing out UMatrices: *)
 
@@ -1947,17 +1947,17 @@ UGenerator[(fcsuni | fcexsuni)[i_Integer], opts___][uindxx[j_Integer],
       uindxx[k_Integer]] := $SUNBasis[
         gaugedimcheck[UGenerator,
           opts], ((gaugedimcheck[UGenerator, opts] - 1)/2)][[i, j, k]];
-          
+
 UGenerator[(fcsuni | fcexsuni)[i_Integer]][uindxx[j_Integer],
       uindxx[k_Integer]] := $SUNBasis[
         gaugedimcheck[UGenerator,
           opts], ((gaugedimcheck[UGenerator, opts] - 1)/2)][[i, j, k]];
-          
+
 UGenerator[i_Integer, opts___][uindxx[j_Integer],
       uindxx[k_Integer]] := $SUNBasis[
         gaugedimcheck[UGenerator,
           opts], ((gaugedimcheck[UGenerator, opts] - 1)/2)][[i, j, k]];
-          
+
 UGenerator[i_Integer][uindxx[j_Integer],
       uindxx[k_Integer]] := $SUNBasis[
         gaugedimcheck[UGenerator,
@@ -1974,7 +1974,7 @@ UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
           gaugedimcheck[UQuarkCharge, opts] ==
             2) := ({{2/3*fccoupl[QED[1], st, sc, qs],
             0}, {0, -1/3*fccoupl[QED[1], st, sc, qs]}})[[i, j]];
-            
+
 UQuarkCharge[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ][
         uindxx[ii_Integer],
@@ -1998,7 +1998,7 @@ UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
               ParticleMass[DownQuark, st, sc, qs]}} /.
           If[(QuarkToMesonMasses /. Flatten[{opts}] /.
                 Options[UQuarkMass]), $QuarkToPionMassesRules, {}])[[i, j]];
-                
+
 UQuarkMass[st___RenormalizationState, sc___RenormalizationScheme,
           qs___ExpansionState, opts___?OptionQ][
         uindxx[ii_Integer],
@@ -2046,7 +2046,7 @@ Transpose[DropFactor[a___]] ^:= DropFactor[a];
     If[(DropOrder /. Flatten[{opts}] /. Options[UFieldMatrix]) =!= Infinity,
       DropFactor[p, ar, br, qs], 1];
 
-UFieldMatrix[(f_HighEnergyPhysics`FeynCalc`QuantumField`QuantumField)[x_],
+UFieldMatrix[(f_HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField)[x_],
   opts___?OptionQ] := UFieldMatrix[1, f[x],opts];
 
 UFieldMatrix[
@@ -2057,7 +2057,7 @@ UFieldMatrix[ii_,
       fcqf[ders___fcpd,
         Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
           qs___ExpansionState],
-        lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         iis___?fcsuniQ],
       opts___?OptionQ] := (
   decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrix]);
@@ -2084,7 +2084,7 @@ UFieldMatrix[ii_,
       fcqf[ders___fcpd,
           Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
             qs___ExpansionState],
-          lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+          lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
           iis___?fcsuniQ][x_],
       opts___?OptionQ] := (
        decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrix]);
@@ -2111,7 +2111,7 @@ UFieldMatrixSeries[
       fcqf[ders___fcpd,
         Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
           qs___ExpansionState],
-        lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+        lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         iis___?fcsuniQ],
       opts___?OptionQ] := (
     decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrixSeries]);
@@ -2130,7 +2130,7 @@ UFieldMatrixSeries[
       fcqf[ders___fcpd,
           Particle[p_, ar___RenormalizationState, br___RenormalizationScheme,
             qs___ExpansionState],
-          lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+          lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
           iis___?fcsuniQ][x_],
       opts___?OptionQ] := (
   decon = (Constant /. Flatten[{opts}] /. Options[UFieldMatrixSeries]);
@@ -2199,10 +2199,10 @@ Adjoint[Power[a_, b_]] := Power[Adjoint[a], b];
 
 Adjoint[IsoDot[b_, c_]] :=
     IsoDot[Conjugate[Adjoint[c]], Conjugate[Adjoint[b]]];
-    
+
 Adjoint[IsoCross[b_, c_]] /; $StandardSUNBasis := -IsoCross[
         Conjugate[Adjoint[c]], Conjugate[Adjoint[b]]];
-        
+
 Adjoint[IsoSymmetricCross[b_, c_]] /; $StandardSUNBasis :=
     IsoSymmetricCross[Conjugate[Adjoint[c]], Adjoint[b]];
 
@@ -2233,7 +2233,7 @@ Conjugate[IsoCross[b_, c_]] := IsoCross[Conjugate[b], Conjugate[c]];
 
 Conjugate[IsoSymmetricCross[b_, c_]] :=
     IsoSymmetricCross[Conjugate[b], Conjugate[c]];
-    
+
 Conjugate[NM[b__, c_]] := NM[Conjugate[b], Conjugate[c]];
 
 
@@ -2376,7 +2376,7 @@ UTrace1[NM[aa__], opts___Rule] /; (nbtu[NM[aa]] && btui[NM[aa]] &&
            UTrace1[ccc_] :>
            UTrace[ccc /. UMatrix[UIdentity, rest___] :> uident[rest]]] /.
     UMatrix[UIdentity, ___] -> 1 //. uident[rest___] :> UMatrix[UIdentity, rest];
-    
+
 UTrace1[NM[aa__], opts___Rule] /; nbtu[NM[aa]] && btui[NM[aa]] && (gaugedimcheck[UMatrix,
               opts, aa] == 3) := 3*NM[aa] /. UMatrix[UIdentity, ___] -> 1;
 
@@ -2391,15 +2391,15 @@ HoldPattern[UTrace1[NM[aa__],
           nbtui[{aa} (*For the case when $UMatrices contain UMatrix*) /.
                  UMatrix -> tmpUMatrix] &&
           ((Or@@(MatrixQ/@{aa}))=!=True)) := 0;
-          
+
 UTrace1[IsoDot[aa__],
         opts___Rule] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[IsoDot[aa] /. Power -> NMPower,
                 UGenerator, Infinity, Heads -> True] == 1) &&
           FreeQ[IsoDot[aa], UMatrix[a___ /; FreeQ[{a}, UGenerator]],
-            Infinity] && nbtui[{aa} /. UMatrix -> tmpUMatrix] 
+            Infinity] && nbtui[{aa} /. UMatrix -> tmpUMatrix]
             ) := 0;
-            
+
 UTrace1[IsoCross[aa__],
         opts___Rule] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[IsoCross[aa] /. Power -> NMPower,
@@ -2407,7 +2407,7 @@ UTrace1[IsoCross[aa__],
           FreeQ[IsoCross[aa], UMatrix[a___ /; FreeQ[{a}, UGenerator]],
             Infinity] && nbtui[{aa}UMatrix -> tmpUMatrix]
           ) := 0;
-          
+
 UTrace1[IsoSymmetricCross[aa__],
         opts___Rule] /; ((TraceSimplify /. Flatten[{opts}] /.
               Options[UTrace]) && (Count[
@@ -2435,7 +2435,7 @@ UTraceToFCTrace[a_,
             3 && (fcsunn /. Flatten[{opts}] /. Options[UTraceToFCTrace]) ==
              3) := (trtemp = (a /. {UTrace1 -> utemp,
                 UTrace -> utemp}) /. {fcqf[b___fcpd, field_,
-                lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                 ii__?fcsuniQ] ->
               fieldtemp[pdrs[b], qf[field], pdrs[lis]][ii]};
       trtemp1 = trtemp /. utemp[aa_, b___] -> utemp[aa, fcexpt -> True];
@@ -2447,7 +2447,7 @@ UTraceToFCTrace[a_,
             3 && (fcsunn /. Flatten[{opts}] /. Options[UTraceToFCTrace]) ==
              3) := (trtemp = (a /. {UTrace1 -> utemp,
                 UTrace -> utemp}) /. {fcqf[b___fcpd, field_,
-                lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+                lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
                 ii__?fcsuniQ] ->
               fieldtemp[pdrs[b], qf[field], pdrs[lis]][ii]};
       trtemp1 = trtemp /. utemp[aa_, b___] -> utemp[aa, fcexpt -> True];
@@ -2842,7 +2842,7 @@ dzeropairlist =
       If[HighEnergyPhysics`Phi`$Phi, $SUNRules =
           Join[$SUNDeltaRules,
             If[$StandardSUNBasis, $SUNDFRules, {}], $SU3FReduceList,
-	    $SU3DReduceList]];
+      $SU3DReduceList]];
 
       VerbosePrint[3, "New reduction tables read:\n", $SUNRules];
 
@@ -2899,14 +2899,14 @@ IsoVector[a_Symbol, opts___][x_][i__?fcsuniQ] := a[x][i];
 (* IsoVectors - fixing special cases: *)
 
 fcqf[
-ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
-        lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ders___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD, a__,
+        lors___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         iis___?fcsuniQ][isosp_?fcsuniQ] :=
     fcqf[ders, a, lors, isosp, iis];
 
 fcqf[
-ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__,
-        lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+ders___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD, a__,
+        lors___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         iis___?fcsuniQ][ui_UIndex] :=
     fcqf[ders, a, lors, iis, ui];
 
@@ -3141,7 +3141,7 @@ UIndicesSupply1[(UDot(*fcdot*)(* | Dot*))[aa1_, aa2___,
                   tempdot[a, b /. UVector[p2_] -> p2[index], c,
                     d /. UVector[p3_] -> p3[index], e])} //. {(*m.v*)
               tempdot[a___, c__, d_,
-                  e___] /; (FreeQ[{c}, UVector] && ! FreeQ[{d}, UVector] && 
+                  e___] /; (FreeQ[{c}, UVector] && ! FreeQ[{d}, UVector] &&
                             !FreeQ[{c}, UMatrix]) :>
               tempdot[a, c,
                 d /. UVector[p1_] ->
@@ -3157,7 +3157,7 @@ UIndicesSupply1[(UDot(*fcdot*)(* | Dot*))[aa1_, aa2___,
                           Cases[{c}, _uix, Infinity, Heads -> True]][[1]]],
                 e]} /. nnmm -> NM /. tempdot -> UDot(*fcdot*);
 
-                
+
 UIndicesSupply1[UTrace1[aa_], opts___] :=
     UIndicesSupply1[
             aa /.(*tracing single matrices*){UTrace[
@@ -3173,8 +3173,8 @@ UIndicesSupply1[UTrace1[aa_], opts___] :=
               nmtemp[a, b, c, d /. uinds[[-1]] -> uinds[[1]], e])} /.
       nmtemp -> NM;
 
-fcqf[ders___HighEnergyPhysics`FeynCalc`PartialD`PartialD, a__, uis_uix,
-        lors___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+fcqf[ders___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD, a__, uis_uix,
+        lors___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
         iis___?fcsuniQ][ui_uix] :=
     fcqf[ders, a, ui, uis, lors, isosp, iis];
 
@@ -3374,10 +3374,10 @@ DiscardTerms1[l_, opts___Rule] :=
       VerbosePrint[3, "Putting on overall factor ", tempfacts^2];
       VerbosePrint[2,
         "Putting on dummy factors"];
-      ddt1 = 
+      ddt1 =
           tempfacts^2*l /.
     fcqf[arg__][x_] -> argrec[fcqf[arg], x] /.
-	  {fcqf[ders___fcpd, Particle[p_, ar___RenormalizationState,
+    {fcqf[ders___fcpd, Particle[p_, ar___RenormalizationState,
            br___RenormalizationScheme, qs___ExpansionState], rest___] :>
            tempfac[p, ar, br, qs]* fcqf[ders, Particle[p, ar, br, qs], rest],
            fcqf[ders___fcpd, DiracBar[ Particle[p_, ar___RenormalizationState,
@@ -3427,16 +3427,16 @@ DiscardTerms2[l_, opts___Rule] :=
         VerbosePrint[3, "Setting ", (tempfac @@ rf)^lpat[ro + 2], ":=0"];
         tempfac /: (tempfac @@ rf)^lpat[ro + 2] := 0, {rep, Length[retord]}];
       VerbosePrint[2, "Putting on dummy factors"];
-      ddt0 = 
+      ddt0 =
           tempfacts^2*l /. fcqf[arg__][x_] -> argrec[fcqf[arg], x] /.
-	  {fcqf[ders___fcpd, Particle[p_, ar___RenormalizationState,
+    {fcqf[ders___fcpd, Particle[p_, ar___RenormalizationState,
            br___RenormalizationScheme, qs___ExpansionState],rest___] :>
            tempfac[p, ar, br, qs]*fcqf[ders, Particle[p, ar, br, qs], rest],
            fcqf[ders___fcpd, DiracBar[ Particle[p_, ar___RenormalizationState,
            br___RenormalizationScheme, qs___ExpansionState]],rest___] :>
            tempfac[p, ar, br, qs]*fcqf[ders, DiracBar[Particle[p, ar, br, qs]],rest]} /.
            argrec[tempfac[ttf__]*fcqf[arg__], x_] -> tempfac[ttf]*fcqf[arg][x] //.
-	   untugrules /.
+     untugrules /.
             If[Length[retord] === 1 && rf[[1]] === _,
               tempfac[tt___] /; FreeQ[{tt}, nodrop] -> tempfac[ppf[]], {}];
       VerbosePrint[2, "Expanding NM products"];
@@ -3618,19 +3618,19 @@ UFPlus[mu_,nu_,ar___RenormalizationState,br___RenormalizationScheme,
 cr___ExpansionState,(opts___Rule|opts___List)][x_] :>
 
 NM[SMM[x,ar,br,cr,opts],
-  FieldStrengthTensorFull[{mu}, 
+  FieldStrengthTensorFull[{mu},
    UGeneratorMatrixIsoDot[
     fcqf[Particle[
          LeftComponent[0,Sequence@@OptionsSelect[LeftComponent,opts]],ar,br,cr],
-	    {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
+      {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
       Adjoint[SMM[x,ar,br,cr,opts]]]+
 
 NM[Adjoint[SMM[x,ar,br,cr,opts]],
-  FieldStrengthTensorFull[{mu}, 
+  FieldStrengthTensorFull[{mu},
    UGeneratorMatrixIsoDot[
     fcqf[Particle[
          RightComponent[0,Sequence@@OptionsSelect[RightComponent,opts]],ar,br,cr],
-	    {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
+      {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
   SMM[x,ar,br,cr,opts]]];
 
 $Substitutions = Append[$Substitutions, UFPlus[mu_,nu_] :>
@@ -3644,19 +3644,19 @@ UFMinus[mu_,nu_,ar___RenormalizationState,br___RenormalizationScheme,
 cr___ExpansionState,(opts___Rule|opts___List)][x_] :>
 
 NM[SMM[x,ar,br,cr,opts],
-  FieldStrengthTensorFull[{mu}, 
+  FieldStrengthTensorFull[{mu},
    UGeneratorMatrixIsoDot[
     fcqf[Particle[
          LeftComponent[0,Sequence@@OptionsSelect[LeftComponent,opts]],ar,br,cr],
-	    {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
+      {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
       Adjoint[SMM[x,ar,br,cr,opts]]]-
 
 NM[Adjoint[SMM[x,ar,br,cr,opts]],
-  FieldStrengthTensorFull[{mu}, 
+  FieldStrengthTensorFull[{mu},
    UGeneratorMatrixIsoDot[
     fcqf[Particle[
          RightComponent[0,Sequence@@OptionsSelect[RightComponent,opts]],ar,br,cr],
-	    {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
+      {nu}][x]], x, -I,Sequence@@OptionsSelect[FieldStrengthTensorFull,opts]],
   SMM[x,ar,br,cr,opts]]];
 
 $Substitutions = Append[$Substitutions, UFMinus[mu_,nu_] :>
@@ -3679,7 +3679,7 @@ Substitute := ((# /. $Substitutions)&);
 MM[x_?(! NumberQ[#] &), h___, opts___Rule] /; (fcexpt/.Flatten[{opts}]/.Options[MM]) :=
     UFieldMatrix[fcqf[(Particle[Pion, h])][x], ##] & @@
       Union[OptionsSelect[UFieldMatrix, opts], OptionsSelect[UMatrix, opts]];
-      
+
 MM[ii_?NumberQ, x_, h___, opts___Rule] /; (fcexpt/.Flatten[{opts}]/.Options[MM]) :=
     UFieldMatrix[ii, fcqf[(Particle[Pion, h])][x], ##] & @@
       Union[OptionsSelect[UFieldMatrix, opts], OptionsSelect[UMatrix, opts]];
@@ -3696,8 +3696,8 @@ FST[p_, {mu_}, {nu_}, x_, a___RenormalizationState, b___RenormalizationScheme,
 
 (* Simpler form: *)
 
-FST[p_, mu_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-      nu_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex, x_,
+FST[p_, mu_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
+      nu_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex, x_,
       a___RenormalizationState, b___RenormalizationScheme,
       c___ExpansionState, opts___?OptionQ] :=
     FieldStrengthTensor[mu,
@@ -3711,7 +3711,7 @@ UGeneratorMatrixIsoDotFull[fcqf[Particle[p, a, b, c], nu][x], opts], x, opts] +
 (*Why this??*)
 fccoupl[a_, b_, rest__][i_] :=
     fccoupl[a, b, RenormalizationState[i], rest];
-    
+
 fccoupl[a_, b_][i_] :=
     fccoupl[a, b, RenormalizationState[i]];
 
@@ -3724,10 +3724,10 @@ fccoupl[a_, b_][i_] :=
 
 fdr[(tim : NM | Times | fcdot | UDot)[a__, b_], {\[Nu]_}] :=
     tim[a, fdr[b, {\[Nu]}]] + tim[fdr[tim[a], {\[Nu]}], b];
-    
+
 fdr[((ad : (Adjoint | Conjugate | Transpose))[a_]), {\[Mu]__}] :=
     ad[fdr[a, {\[Mu]}]];
-    
+
 fdr[fdr[a_, {\[Mu]__}], {\[Nu]__}] := fdr[a, Reverse[{\[Mu], \[Nu]}]];
 
 fdr[a_Plus, lori : {__}] :=
@@ -3749,7 +3749,7 @@ combtab[dummys : List[__], order_Integer] := (List @@ #) & /@
                     order -
                       Sum[dummys[[repp]], {repp, 1,
                           Length[dummys] - rep}]}, {rep, Length[dummys]}]]]]];
-                          
+
 combtab[{}, n_Integer] := {{n}};
 
 USplit[exp_NM, x_, ar___RenormalizationState, br___RenormalizationScheme,
@@ -3765,11 +3765,11 @@ USplit[exp_NM, x_, ar___RenormalizationState, br___RenormalizationScheme,
       Plus @@ Table[
           ReplacePart[
             exp, (USplit[#[[1]], x,
-	    (*RenormalizationState etc. are no longer in front after Selecting, fixed. 28/9-2000*)
+      (*RenormalizationState etc. are no longer in front after Selecting, fixed. 28/9-2000*)
             Sequence @@ Join[
-	    {ar, br, cr},
-	    Select[{opts}, (MatchQ[#, ExpansionOrder -> _] =!= True) &]],
-	    ExpansionOrder -> {#[[2]]}]) & /@ Transpose[{mms, ct[[i]]}],
+      {ar, br, cr},
+      Select[{opts}, (MatchQ[#, ExpansionOrder -> _] =!= True) &]],
+      ExpansionOrder -> {#[[2]]}]) & /@ Transpose[{mms, ct[[i]]}],
             pos, ({#}) & /@ Range[Length[pos]]], {i, Length[ct]}](*]*));
 
 USplit[fdr[SMM | MM, {_}], ___, ExpansionOrder -> {0}, ___] := 0;
@@ -3805,21 +3805,21 @@ USplit1[exp_, x_, ar___RenormalizationState, br___RenormalizationScheme,
                  x,
                 Sequence @@ Join[
                   {ar, br, cr},Select[{opts}, (MatchQ[#, ExpansionOrder -> _] =!= True) &]],
-		  ExpansionOrder -> (DropOrder /. Flatten[{opts}] /. Options[UNMSplit])]);
+      ExpansionOrder -> (DropOrder /. Flatten[{opts}] /. Options[UNMSplit])]);
       VerbosePrint[3, "Expanding NM products in ",res]; NMExpand[res](*]*));
 
 UNMSplit[exp_, x_, ar___RenormalizationState, br___RenormalizationScheme,
       cr___ExpansionState,
       opts___Rule] :=(*Block[{res, errs},*)(res =
          FixedPoint[USplit1[#, x, ar, br, cr, opts] &,
-				 (*Added $PreSubstitutions and $PostSubstitutions for configurability
-				 through configuration files.*)
-				 exp//.$PreSubstitutions[x,ar,br,cr,opts]//.
-				 $Substitutions//.$PostSubstitutions[x,ar,br,cr,opts]];
+         (*Added $PreSubstitutions and $PostSubstitutions for configurability
+         through configuration files.*)
+         exp//.$PreSubstitutions[x,ar,br,cr,opts]//.
+         $Substitutions//.$PostSubstitutions[x,ar,br,cr,opts]];
       res /.
          fdr -> FieldDerivative /.
          {USplit[mm : (SMM | MM), n__] :> ArgumentsSupply[mm, n],
-	 USplit[mm :FieldDerivative[
+   USplit[mm :FieldDerivative[
          SMM | MM, {__(*_ replaced with __, 18/4 - 2000*)}],
                   n__] :> ArgumentsSupply[mm, n]} /.
          Times -> NM /.
@@ -3859,7 +3859,7 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
               UQuarkChargeMatrix, UIdentityMatrix, QCM,
              (* UNucleonChargeMatrix added by P. Buettiker on 21-Oct-03: *)
               UNucleonChargeMatrix,
-		    a,b,pa,mu,nu,p,i,som,pp,lli,bbb,aa,lisxx},
+        a,b,pa,mu,nu,p,i,som,pp,lli,bbb,aa,lisxx},
 
    NM := NM5;
    CovariantNabla := CNb2;
@@ -3867,10 +3867,10 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
    CovariantNucleonFieldDerivative := CNDr2;
    FST[p_[i_], mu_, nu_] := FST2[p[i], mu, nu, x, ar, br, cr, ##] & @@ o5;
    FST[p_, mu_, nu_] := FST2[p[0], mu, nu, x, ar, br, cr, ##] & @@ o5;
-   FieldStrengthTensorFull[fcqf[pp_],lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+   FieldStrengthTensorFull[fcqf[pp_],lli_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
      opt___Rule] :=
       fstf[fcqf[pp][x], lli, opt];
-   FieldStrengthTensor[fcqf[pp_],lli_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+   FieldStrengthTensor[fcqf[pp_],lli_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
      opt___Rule] :=
       fst[fcqf[pp][x], lli, opt];
    UTrace1 := utr2;
@@ -3922,7 +3922,7 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
 
    {CNb2[aa_, {lis__}] -> CNb3[aa, x, {lis}, ##] & @@ OptionsSelect[CovariantNabla, opts],
    CDr2[aa_, {lis__}] -> CDr3[aa, x, {lis}, ##] & @@ OptionsSelect[CovariantFieldDerivative, opts],
-(* Change of P. Buettiker 23-Oct-2003 
+(* Change of P. Buettiker 23-Oct-2003
    Sometimes it is useful to have the possibility of also supplying
    RenormalizationState[i] etc. to Covariant(Nucleon)FieldDerivative,
    see Configuration/paulBChPT2.conf.
@@ -3967,8 +3967,8 @@ ArgumentsSupply1[expr_, x_, ar___RenormalizationState,
 
 (***************************************************************)
 (* The next few lines were added by P. Buettiker, 21-Oct-2003  *)
-(* Also the "/." above was a ";" earlier                       *)       
-(***************************************************************)   
+(* Also the "/." above was a ";" earlier                       *)
+(***************************************************************)
     {UMatrix[UQuarkCharge[st___RenormalizationState,sc___RenormalizationScheme,
                           qs___ExpansionState]]:>
       UMatrix[UQuarkCharge[st,sc,qs,Sequence @@ o4],o5],
@@ -3990,8 +3990,8 @@ ArgumentsSupply[expr_, x_, ar___RenormalizationState,
         ExpansionState}, Head[x]], Message[ArgumentsSupply::noarg]; Return[];];
    If[!FreeQ[expr, x, Infinity, Heads -> True], Message[ArgumentsSupply::argxpr, x]];
    argres = ArgumentsSupply1[expr//.$PreSubstitutions[x,ar,br,cr,opts]//.
-				$Substitutions//.$PostSubstitutions[x,ar,br,cr,opts],
-				x, ar, br, cr, opts];
+        $Substitutions//.$PostSubstitutions[x,ar,br,cr,opts],
+        x, ar, br, cr, opts];
    $UMatrices = Complement[$UMatrices, {CDr3, CNDr3, CNb3, CDr2, CNDr2, CNb2}];
    argres);
 
@@ -4029,11 +4029,11 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
 
   $UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
         HighEnergyPhysics`FeynCalc`DiracBasis`DiracBasis,
-        HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma,
-        HighEnergyPhysics`FeynCalc`DiracGammaT`DiracGammaT,
-        HighEnergyPhysics`FeynCalc`DiracMatrix`DiracMatrix,
-        HighEnergyPhysics`FeynCalc`DiracSlash`DiracSlash,
-        HighEnergyPhysics`FeynCalc`DiracSigma`DiracSigma,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracGammaT,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracMatrix,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracSlash,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma,
         FST}];
 
   noncommpatt = Alternatives @@ $UNonComm;
@@ -4103,18 +4103,18 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
      NM[a__, b__] /;
      ((FreeQ[{b}, noncommpatt] || FreeQ[{a}, noncommpatt]) &&
      (checksub[ Join[
-        Cases[{b},_HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+        Cases[{b},_HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField,
            Infinity, Heads -> True],
-        Cases[{a}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+        Cases[{a}, _HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField,
         Infinity, Heads -> True]] ])) :>
      NM[b]*NM[a],
 
      NM[b__,a__] /;
      ((FreeQ[{b}, noncommpatt] || FreeQ[{a}, noncommpatt]) &&
      (checksub[ Join[
-        Cases[{b},_HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+        Cases[{b},_HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField,
            Infinity, Heads -> True],
-        Cases[{a}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+        Cases[{a}, _HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField,
         Infinity, Heads -> True]] ])) :>
      NM[b]*NM[a],
 
@@ -4128,11 +4128,11 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
      ((FreeQ[b, noncommpatt] || FreeQ[{a,c}, noncommpatt]) &&
      (checksub[
      Join[
-       Cases[{a},_HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+       Cases[{a},_HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField,
          Infinity,Heads -> True],
-         Cases[{c}, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField,
+         Cases[{c}, _HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField,
          Infinity, Heads -> True]],
-       Cases[{b},_HighEnergyPhysics`FeynCalc`QuantumField`QuantumField, Infinity,
+       Cases[{b},_HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField, Infinity,
          Heads -> True]])) :>
      b*NM[a, bb, c],
 
@@ -4156,14 +4156,14 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
       IsoSymmetricCross[__]))] /;
       (FreeQ[Head[b], IsoVector] && (FreeQ[b, noncommpatt] ||
       FreeQ[a,noncommpatt]) && (
-      checksub[Cases[a, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField, Infinity,
+      checksub[Cases[a, _HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField, Infinity,
                       Heads -> True],
-                   Cases[b, _HighEnergyPhysics`FeynCalc`QuantumField`QuantumField, Infinity,
-		      Heads -> True]])) ->
+                   Cases[b, _HighEnergyPhysics`FeynCalc`CoreObjects`QuantumField, Infinity,
+          Heads -> True]])) ->
       b*cr[a, bb]
 
   };
-  
+
   $CommutatorRules3 = {UDot[a___, Times[b_, bb_], c___] /;
          FreeQ[b, UMatrix, Heads->True] && FreeQ[b, UVector, Heads->True] && FreeQ[b, noncommpatt]:>
                        b*UDot[a, bb, c]};

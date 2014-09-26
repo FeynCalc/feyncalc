@@ -23,14 +23,18 @@ in FeynCalcInternal-representation).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[DiracGamma, FeynCalcInternal, LorentzIndex, Momentum,
-            Spinor, Pair];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+Spinor = MakeContext["CoreObjects","Spinor"];
+
+MakeContext[FeynCalcInternal];
 
 ChangeDimension[x_, diim_] := Block[
 {xx = FeynCalcInternal[x], dirGG, dirGAMM, pAiR, ld , md,spi4},
-If[ diim === 4, 
+If[ diim === 4,
     xx = xx /. {LorentzIndex[a_,___] :> LorentzIndex[a] ,
                 Momentum[b_,___]     :> Momentum[b],
                 DiracGamma[c_,___]   :> DiracGamma[c]

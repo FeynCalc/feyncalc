@@ -16,7 +16,7 @@ Begin["`Private`"];
 
 ComplexIndex[ComplexIndex[x_]] := x;
 
-   ComplexIndex /:
+ComplexIndex /:
    MakeBoxes[ComplexIndex[x_] ,TraditionalForm] :=
    SuperscriptBox[Tbox[x], "*"];
 

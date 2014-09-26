@@ -25,7 +25,7 @@ Begin["`Private`"];
 BReduce = MakeContext["BReduce"];
 B1 = MakeContext["B1"];
 DB0 = MakeContext["DB0"];
-SmallVariable = MakeContext["SmallVariable"];
+SmallVariable = MakeContext["CoreObjects","SmallVariable"];
 
  Derivative[1, 0, 0][be1_][pp_,m02_,m12_]:= DB1[pp,m02,m12] /; be1 === B1;
 

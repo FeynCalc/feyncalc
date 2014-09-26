@@ -20,13 +20,13 @@ TrickMandelstam::"usage"=
 simplifies all sums in expr so that one of the
 Mandelstam variables s, t or u is eliminated by the
 relation s + t + u = m1^2 + m2^2 + m3^2 + m4^2.
-The trick is that the resulting sum has the most short number of 
+The trick is that the resulting sum has the most short number of
 terms.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Collect2 = MakeContext["Collect2"];
 Factor2  = MakeContext["Factor2"];
@@ -63,7 +63,7 @@ trickmandelstam[y_, args_List]:= Block[{nulLl},
   trickmandelstam[nulLl+y,args]/.nulLl->0] /; (Head[y]=!=Times) &&
      (Head[y]=!=Power) && (Head[y]=!=Plus);
 
-   drickstu[exp_,{},___] := exp;   
+   drickstu[exp_,{},___] := exp;
    drickstu[exp_,{s_,t_,u_,ma_},___] := exp /; !FreeQ[{s,t,u},Plus];
 
    short1[x_Plus,es_,te_,uu_,ma_]:=(Sort[{x, Expand[ x/.te->(ma-es-uu) ],
@@ -72,7 +72,7 @@ trickmandelstam[y_, args_List]:= Block[{nulLl},
    short1[a_ b_,c__]:=short1[a,c] short1[b,c];
    short1[a_^n_,c__]:=short1[a,c]^n;
 
-   short1[x_,__]:=x/;(Head[x]=!=Plus) && (Head[x]=!=Times) && 
+   short1[x_,__]:=x/;(Head[x]=!=Plus) && (Head[x]=!=Times) &&
                      (Head[x]=!=Power);
  trickmandelstam[x_Plus,man_List]:=Block[
    {tricktemp,merk,nx=x,plusch, plusch0},
@@ -81,7 +81,7 @@ trickmandelstam[y_, args_List]:= Block[{nulLl},
 (* This is for arguments of D0, etc. ... *)
    plusch[z__]:=drickstu[Plus[z],man]/;
       (Length[{z}]===(Length[Plus@@man]-1))&& FreeQ[{z},Plus];
-   plusch[z__]:=(factor3 /@ Collect2[ Plus[z], Take[man, 3] ] ) /; 
+   plusch[z__]:=(factor3 /@ Collect2[ Plus[z], Take[man, 3] ] ) /;
                  Length[{z}]=!=(Length[Plus@@man]-1);
    tricktemp = merk[ nx ];
    (tricktemp/.Plus->plusch0/.plusch0->plusch /.
@@ -91,7 +91,7 @@ trickmandelstam[y_, args_List]:= Block[{nulLl},
      Block[{result,tristemp,eM,otherv,nuLL,trickman},
 (* Check if an overall factorization is possible *)
       tristemp = factor3[ x/.s->(m-t-u) ];
-  If[Head[tristemp]=!=Plus, 
+  If[Head[tristemp]=!=Plus,
      result = TrickMandelstam[tristemp,{s,t,u,m}],
          otherv = Complement[ Variables[tristemp], Variables[s+t+u+m] ];
 (* The simplifications cannot occur outside certain coefficients *)

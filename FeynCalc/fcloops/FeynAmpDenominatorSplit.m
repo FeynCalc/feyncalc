@@ -27,10 +27,11 @@ the second without q1.";
 
 Begin["`Private`"];
    
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[ Momentum, FeynAmpDenominator, 
-             FeynCalcInternal, PropagatorDenominator,
-             Select1, Select2 ];
+MakeContext[ FeynCalcInternal, Select1, Select2 ];
 
 (*
 feynsplit[_][] := 1;

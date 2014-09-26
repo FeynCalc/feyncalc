@@ -24,15 +24,17 @@ The q1, q2, ... are the integration momenta.";
 
 Begin["`Private`"];
 
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+
+IFPD = MakeContext["CoreObjects","IFPD"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+
 MakeContext[Cases2,
 ExpandScalarProduct,
-FeynAmpDenominator,
 FeynAmpDenominatorSimplify,
-IFPD,
-Momentum,
 MomentumExpand,
-Pair,
-PropagatorDenominator,
 Select1,
 Select2];
 

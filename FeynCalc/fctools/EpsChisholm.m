@@ -19,11 +19,14 @@ a Levi Civita tensor (Eps) the Chisholm identity.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
 
-MakeContext[DiracGamma, DiracSimplify, Eps, 
-            ExpandScalarProduct, Expand2, LorentzIndex, Spinor];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+Eps = MakeContext["CoreObjects","Eps"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Spinor = MakeContext["CoreObjects","Spinor"];
+
+MakeContext[DiracSimplify, ExpandScalarProduct, Expand2 ];
 
    (*EpsChisholmdef*)
  EpsChisholm[x_] := x /; FreeQ[x, Eps] || FreeQ[x, DiracGamma];
@@ -97,7 +100,7 @@ scev = ExpandScalarProduct;
             };
 
 
- 
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "EpsChisholm | \n "]];

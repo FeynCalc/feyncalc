@@ -19,9 +19,10 @@ Apart2::"usage"=
 
 Begin["`Private`"];
    
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[Factor2, FeynAmpDenominator, FeynCalcInternal, 
-PropagatorDenominator];
+MakeContext[Factor2, FeynCalcInternal];
 
 Apart2[y_] :=(FeynCalcInternal[y] //. 
                 FeynAmpDenominator -> feynampdenpartfrac

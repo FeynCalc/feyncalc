@@ -24,11 +24,15 @@ Begin["`Private`"];
 (*complexindex := complexindex = MakeContext["ComplexIndex"];*)
 fci := fci =  MakeContext["FeynCalcInternal"];
 
-MakeContext[ DotSimplify, Explicit, FreeQ2, SUNF, SUND,
-SUNDelta, SUNIndex, SUNT];
+SUNT = MakeContext["CoreObjects","SUNT"];
+SUNF = MakeContext["CoreObjects","SUNF"];
+SUND = MakeContext["CoreObjects","SUNF"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+sunn := sunn = MakeContext["CoreObjects","SUNN"];
+SUNN := SUNN = MakeContext["CoreObjects","SUNN"];
 
-sunn := sunn = MakeContext["SUNN"];
-SUNN := SUNN = MakeContext["SUNN"];
+MakeContext[ DotSimplify, Explicit, FreeQ2 ];
 
 Options[SUNTrace] = {Explicit -> False};
 
@@ -156,10 +160,10 @@ SUNTrace/:  SUNTrace[DOT[(A___), SUNT[x_SUNIndex], B___],___Rule] *
             SUNTrace[DOT[(a___), SUNT[x_SUNIndex], b___],___Rule] :=
              FixedPoint[cvit,  (gmcyc[DOT[A,SUNT[x],B]] *
                   gmcyc[DOT[a,SUNT[x],b]])/.
- 		 SUNTrace->gellm1/.
- 		 DOT->gm2lambdaT/.gellm1->gellm2/.
+      SUNTrace->gellm1/.
+      DOT->gm2lambdaT/.gellm1->gellm2/.
                                SUNF->f2tr
- 	        ]/.lambdaT->SUNT/.gellm2->SUNTrace (*/. Dot -> DOT*)(*Shouldn't be necessary. 
+           ]/.lambdaT->SUNT/.gellm2->SUNTrace (*/. Dot -> DOT*)(*Shouldn't be necessary.
                                                                  F.Orellana. 23/2-2003*);
 
 SUNTrace /: HoldPattern[SUNTrace[x_,o___Rule]^2] :=
@@ -174,7 +178,7 @@ SUNTrace[ expr_, ___Rule ]:= (fixgell[expr (*/. DOT -> Dot*) (*/.SUNT[1]->1*) ]/
                     ((Head[expr] =!= Times) ||
                      (Select[expr, !FreeQ[#, SUNT]&] ===1 )
                     ) &&
- 	            (expr=!=(fixgell[expr(*/. DOT -> Dot*)] /.
+               (expr=!=(fixgell[expr(*/. DOT -> Dot*)] /.
                              gellm2->Identity(*/.Dot -> DOT*)))&&
                             FreeQ[expr, Pattern] &&
                              (fcis[expr]===expr);

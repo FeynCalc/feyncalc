@@ -25,7 +25,7 @@ FORMProlog::"usage" =
 "FORMProlog is an option for FeynCalc2FORM. It may be set
 to a string which is put after the type declarations of the FORM-file.";
 
-TraceDimension::"usage" = 
+TraceDimension::"usage" =
 "TraceDimension is an option for FeynCalc2FORM.
 If set to 4: trace, if set to n: tracen.";
 
@@ -33,22 +33,23 @@ If set to 4: trace, if set to n: tracen.";
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsDiscard = MakeContext["CoreOptions","EpsDiscard"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
 
 MakeContext[
 Cases2,
-DiracGamma,
 DiracGammaExpand,
 DiracTrace,
-Eps,
 ExpandScalarProduct,
 FeynCalcInternal,
-LorentzIndex,
-Momentum,
 MomentumExpand,
-Pair,
 SelectFree,
-SelectNotFree];
+SelectNotFree
+];
 
 (* for taking traces *)
 Options[FeynCalc2FORM] = {EpsDiscard -> False,
@@ -290,7 +291,7 @@ If[x=!= False,
             ]
          ];
 (*Global`NEWX = newx;*)
-       If[x===False && file === "tFc2F", 
+       If[x===False && file === "tFc2F",
 (*Print[newx[[jjj]]]*)
          WriteString["stdout", newx[[jjj]],"\n"]
          ]

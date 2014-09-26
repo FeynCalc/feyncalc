@@ -10,23 +10,28 @@
 
 BeginPackage["HighEnergyPhysics`fctables`AnomalousDimension`",{"HighEnergyPhysics`FeynCalc`"}];
 
-AnomalousDimension::"usage"= 
-"AnomalousDimension[\"gnsqg0\"] yields the 
-non-singlet one-loop contribution to the anomalous dimension 
+AnomalousDimension::"usage"=
+"AnomalousDimension[\"gnsqg0\"] yields the
+non-singlet one-loop contribution to the anomalous dimension
 gamma_{S,qg}^{(0),m} in the MS-bar scheme. etc. ...";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[CA, CF, OPEm, Polarization, SumP, SumS, SumT, Nf, Tf, Zeta2];
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
+Nf = MakeContext["CoreObjects","Nf"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+Tf = MakeContext["CoreObjects","Tf"];
+
+MakeContext[OPEm, SumP, SumS, SumT, Zeta2];
 
 Options[AnomalousDimension] = {Polarization -> 1, Simplify->FullSimplify};
 
 AnomalousDimension[es_, opt___Rule] := AnomalousDimension[es, OPEm, opt];
 
-AnomalousDimension[es_, m_Symbol, opt___Rule] := 
+AnomalousDimension[es_, m_Symbol, opt___Rule] :=
 Block[{pol, s, s1, s2, s1t, s2t, s12,s21,s12t,d3,s3t,
        S1,S2,S12,S12t,S21,S3,S3t,S1t,S2t,ST,sim,simfun,n=m},
 simfun = Simplify /. {opt} /. Options[AnomalousDimension];
@@ -41,10 +46,10 @@ If[simfun === FullSimplify,
    sim[9n^5+30n^4+16n^3-31n^2-32n-4]=
     (2 + n)*(-2 + n*(-15 + n*(-8 + 3*n*(4 + 3*n))));
    sim[67n^4+134n^3+67n^2+144n+72 ] = 72 + n*(144 + 67*n*(1 + n)^2);
-   sim[48n^6+144n^5+469n^4+698n^3+7n^2+258n+144] = 144 + 
+   sim[48n^6+144n^5+469n^4+698n^3+7n^2+258n+144] = 144 +
        n*(258 + n*(7 + n*(698 + n*(469 + 48*n*(3 + n)))));
    sim[3n^4+6n^3+16n^2+13n-3] =  -3 + n*(1 + n)*(13 + 3*n*(1 + n));
-   sim[n^6+3n^5+5n^4+n^3-8n^2+2n+4] = 
+   sim[n^6+3n^5+5n^4+n^3-8n^2+2n+4] =
        4 + n*(2 + n*(-8 + n*(1 + n*(5 + n*(3 + n)))));
    sim[zz_] := FullSimplify[z]
   ];
@@ -91,7 +96,7 @@ Which[s=== "gnsqq0", CF (8 s1+4/m+4/(m+1)-6)
                         )
                      ,
          s=== "gsqg1", CA Tf 16 (-s1^2/m+2s1^2/(m+1)-2s1/m^2 +
-                       4 s1/(m+1)^2 - s2/m + 2 s2/(m+1) - 2 s2t/m + 
+                       4 s1/(m+1)^2 - s2/m + 2 s2/(m+1) - 2 s2t/m +
                        4 s2t/(m+1)-4/m+3/(m+1)-3/m^2+
                        8/(m+1)^2+2/m^3+12/(m+1)^3
                                 ) +
@@ -124,7 +129,7 @@ Which[s=== "gnsqq0", CF (8 s1+4/m+4/(m+1)-6)
          s=== "GSGQ1", CA CF 8 ((n+2)/n/(n+1)(-S2+SP2-S1^2)+
                        sim[11n^2+22n+12]/3/n^2/(n+1) S1-
                        sim[76n^5+271n^4+254n^3+41n^2+72n+36
-                          ]/9/n^3/(n+1)^3 
+                          ]/9/n^3/(n+1)^3
                                ) +
                        CF^2 4 (2(n+2)/n/(n+1)(S2+S1^2)-
                        2sim[3n^2+7n+2]/n/(n+1)^2 S1 +
@@ -144,7 +149,7 @@ Which[s=== "gnsqq0", CF (8 s1+4/m+4/(m+1)-6)
                                 ) +
                        CF Tf 8 (-10/(m+1)+2/(m+1)^2+4/(m+1)^3+1+
                                 10/m-10/m^2+4/m^3
-                               ) 
+                               )
                      ,
          s=== "GSGG1", CA^2 4 (-SP3-4S1 SP2+8ST+8/n/(n+1) SP2+
                        2 sim[67n^4+134n^3+67n^2+144n+72
@@ -160,7 +165,7 @@ Which[s=== "gnsqq0", CF (8 s1+4/m+4/(m+1)-6)
 ],
     "NOTYET"
 ]];
-                      
+
 End[]; EndPackage[];
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

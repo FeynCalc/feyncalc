@@ -27,11 +27,11 @@ be valid if the arguments are complex or outside the range between 0 and 1.";
 Begin["`Private`"];
 
 
-Factor2 = MakeContext["Factor2"];
 Expand2 = MakeContext["Expand2"];
+Factor2 = MakeContext["Factor2"];
 FreeQ2  = MakeContext["FreeQ2"];
-Zeta2   = MakeContext["Zeta2"];
 Nielsen = MakeContext ["Nielsen"];
+Zeta2   = MakeContext["Zeta2"];
 
 SimplifyPolyLog[y_] := Block[{logf, li2f, loli},
 loli = {Log :> logf, PolyLog :> li2f};

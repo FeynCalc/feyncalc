@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fctools`Uncontract`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Uncontract::"usage"= "Uncontract[exp,q1,q2, ...] uncontracts Eps
-and DiracGamma. Uncontract[exp,q1,q2, Pair->{p}] uncontracts 
+and DiracGamma. Uncontract[exp,q1,q2, Pair->{p}] uncontracts
 also p.q1 and p.q2; Pair -> All uncontracts all except
 OPEDelta. Dimension -> Automatic leaves dimensions unchanged.";
 
@@ -24,18 +24,28 @@ Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
 DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracSlash = MakeContext["CoreObjects","DiracSlash"];
+Eps = MakeContext["CoreObjects","Eps"];
 Expanding = MakeContext["CoreOptions","Expanding"];
+FourVector = MakeContext["CoreObjects","FourVector"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[Cases2,
-            DiracSlash,
-            DiracGamma, DotSimplify, Eps,
-            FeynCalcInternal, FourVector, FreeQ2, 
-            LeviCivita, LorentzIndex, Momentum, OPEDelta, Pair,
-            PropagatorDenominator,
-            ScalarProduct,Select1
-           ];
+MakeContext[
+    Cases2,
+    DotSimplify,
+    FeynCalcInternal,
+    FreeQ2,
+    LeviCivita,
+    OPEDelta,
+    ScalarProduct,
+    Select1
+    ];
 
-Options[Uncontract] = {Dimension -> Automatic (*D*) (*Change 6/10-2002. F.Orellana*), 
+Options[Uncontract] = {Dimension -> Automatic (*D*) (*Change 6/10-2002. F.Orellana*),
                        DimensionalReduction -> False,
                        Pair -> {}, Unique   -> True};
 
@@ -56,19 +66,19 @@ Uncontract[ex_, q_ /; Head[q]=!=Rule, opt___Rule
                  ];
    exp = FeynCalcInternal[ex];
    par = Pair /.      {opt} /. Options[Uncontract];
-   If[(Unique /. {opt} /. Options[Uncontract]) === True, 
+   If[(Unique /. {opt} /. Options[Uncontract]) === True,
       a$AL = Unique[$AL], a$AL = $AL
      ];
-   If[par===All, 
+   If[par===All,
       par = Map[First, Select1[Cases2[exp, Momentum], OPEDelta]]
      ];
 
-If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) || 
+If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
    (Head[dummy exp] =!= Times),
    exp,
    nex = exp;
    dim = Dimension /. {opt} /. Options[Uncontract];
-   If[FreeQ[nex, a$AL], inc = 0, 
+   If[FreeQ[nex, a$AL], inc = 0,
       inc = (Max @@ Map[First, Cases2[nex, a$AL]]);
      ];
    If[!FreeQ[nex,Eps],
@@ -89,8 +99,8 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                Apply[times, Table[Pair[aa], {j,Abs[n]}]]^Sign[n];
          If[MemberQ[par, q],
             nex = nex //. Pair[Momentum[q,d___], Momentum[q,___]] :>
-                          (li1 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]]; 
-                           li2 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]]; 
+                          (li1 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]];
+                           li2 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]];
                            Pair[Momentum[q, If[dim===Automatic,seq[d],dim]], li1] *
 (* das ist vielleicht ein Bloedsinn mit dieser dimensionalen Reduktion:
   HIER darf man li1 und li2 nicht 4-dimensional setzen
@@ -99,10 +109,10 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                           );
             par = Select1[par, q];
            ];
-         
+
          nex = nex //.{Pair[Momentum[q,d___], Momentum[pe_,___]
                           ] :> (li=LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
-                      Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *    
+                      Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *
                       Pair[Momentum[pe,If[dim===Automatic,seq[d],dim]],lidr[li]])/;MemberQ[par,pe]
                      } /. times -> Times;
 
@@ -121,21 +131,21 @@ Global`NEX=nex;
 
 Global`NEX=nex;
          If[!FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[q,___],___]],
-            nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[q,d___],b___] :> 
+            nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[q,d___],b___] :>
                             (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
                              tf[a, li, b] Pair[Momentum[q,If[dim===Automatic,seq[d],dim]],lidr[li]]
                             )
                           }
-	 ];
+   ];
 (*
 (*RM: added on 20110621 on behalf of http://www.feyncalc.org/forum/0639.html *)
          If[!FreeQ[nex, (tf_/;!MemberQ[{DiracGamma,Pair,PropagatorDenominator},tf])[___,Momentum[q,___],___]],
-            nex = nex //. { (tf_/;!MemberQ[{DiracGamma,Pair,PropagatorDenominator},tf])[a___,Momentum[q,d___],b___] :> 
+            nex = nex //. { (tf_/;!MemberQ[{DiracGamma,Pair,PropagatorDenominator},tf])[a___,Momentum[q,d___],b___] :>
                             (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
                              tf[a, li, b] Pair[Momentum[q,If[dim===Automatic,seq[d],dim]],lidr[li]]
                             )
                           }
-	 ];
+   ];
 *)
         ];
         nex/.dummy->1/.seq:>Sequence]];

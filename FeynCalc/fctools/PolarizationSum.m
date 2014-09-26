@@ -33,12 +33,12 @@ ChangeDimension          = MakeContext["ChangeDimension"];
 Collect2                 = MakeContext["Collect2"];
 Dimension                = MakeContext["CoreOptions","Dimension"];
 Factor2                  = MakeContext["Factor2"];
-FourVector               = MakeContext["FourVector"];
+FourVector               = MakeContext["CoreObjects","FourVector"];
 fci                      = MakeContext["FeynCalcInternal"];
-MetricTensor             = MakeContext["MetricTensor"];
-Momentum                 = MakeContext["Momentum"];
+MetricTensor             = MakeContext["CoreObjects","MetricTensor"];
+Momentum                 = MakeContext["CoreObjects","Momentum"];
 ScalarProduct            = MakeContext["ScalarProduct"];
-Pair                     = MakeContext["Pair"];
+Pair                     = MakeContext["CoreObjects","Pair"];
 scev                     = MakeContext["ExpandScalarProduct"];
 
 Options[PolarizationSum] = {Dimension -> 4};

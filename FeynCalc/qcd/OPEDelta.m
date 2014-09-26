@@ -20,11 +20,11 @@ OPEDelta::"usage"= "OPEDelta is the Delta.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-LorentzIndex  = MakeContext["LorentzIndex"];
-Momentum      = MakeContext["Momentum"];
-Pair          = MakeContext["Pair"];
+
+LorentzIndex  = MakeContext["CoreObjects","LorentzIndex"];
+Momentum      = MakeContext["CoreObjects","Momentum"];
+Pair          = MakeContext["CoreObjects","Pair"];
 ScalarProduct = MakeContext["ScalarProduct"];
 
 ScalarProduct[OPEDelta, OPEDelta, ___Rule] = 0;

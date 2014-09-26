@@ -8,7 +8,7 @@
 (* :History: File created on 22 June '97 at 22:58 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:  change 2-loop OPE-integrals into Roelofs 
+(* :Summary:  change 2-loop OPE-integrals into Roelofs
               notation  (eq. (3C.19))
 *)
 
@@ -17,9 +17,9 @@
 BeginPackage["HighEnergyPhysics`fcloops`FC2RHI`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-FC2RHI::"usage"= 
+FC2RHI::"usage"=
 "FC2RHI[exp, k1, k2] transforms all 2-loop OPE-integrals
-in FeynAmpDenominator form to the RHI-integrals. 
+in FeynAmpDenominator form to the RHI-integrals.
 FC2RHI[exp] is equivalent to FC2RHI[exp,q1,q2].
 The option IncludePair governs the inclusion  of scalar products
 p.k1, p.k2 and k1.k2 (setting True).";
@@ -27,19 +27,22 @@ p.k1, p.k2 and k1.k2 (setting True).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
+Eps = MakeContext["CoreObjects","Eps"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 IncludePair = MakeContext["CoreOptions","IncludePair"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
 MakeContext[
 FCPrint,
 Cases2,
 ChangeDimension,
-Eps,
 Expand2,
 ExpandScalarProduct,
 Factor2,
-FeynAmpDenominator,
 FeynAmpDenominatorCombine,
 FeynAmpDenominatorSimplify,
 FeynCalcForm,
@@ -47,20 +50,17 @@ FreeQ2,
 IFPDOn,
 IFPDOff,
 MemSet,
-Momentum,
 OPEDelta,
 OPEi,
 OPEj,
 OPEm,
-Pair,
 Power2,
 PowerSimplify,
-PropagatorDenominator,
 RHI,
 Select1,
 Select2    ];
 
-Options[FC2RHI] = {Dimension -> D, IncludePair -> True, 
+Options[FC2RHI] = {Dimension -> D, IncludePair -> True,
                    Do -> True};
 
 FC2RHI[exp_, opt___Rule] := FC2RHI[exp, Global`q1, Global`q2, opt];
@@ -70,11 +70,11 @@ FC2RHI[y_, k1_, k2_, ___Rule] := y /; FreeQ2[y, {k1,k2}];
 FC2RHI[y_ /; ((Head[y] =!= Plus) && (Head[y]=!=Times)
              ) || FreeQ[y, FeynAmpDenominator] ,__
       ] := y;
-FC2RHI[x_Plus, b__] := Map[FC2RHI[#, b]&, x] /; 
+FC2RHI[x_Plus, b__] := Map[FC2RHI[#, b]&, x] /;
                        !FreeQ[x,FeynAmpDenominator];
- 
-FC2RHI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] := 
-If[!FreeQ[xy, FeynAmpDenominator] && 
+
+FC2RHI[xy_ /; Head[xy]=!=Plus, k1_, k2_, opts___Rule] :=
+If[!FreeQ[xy, FeynAmpDenominator] &&
    FreeQ[xy, PropagatorDenominator[_, ma_ /; ma=!=0]]
 ,
 MemSet[FC2RHI[xy, k1,k2,opts],
@@ -90,7 +90,7 @@ doheuristics = Do /. {opts} /. Options[FC2RHI];
 x = Expand2[Expand2[xy, k1], k2]//PowerSimplify;
 result = x;
 If[x =!= 0,
-If[Head[x] === Plus, 
+If[Head[x] === Plus,
    result = Map[FC2RHI[#, k1, k2, opts]&, x],
 
 If[!FreeQ2[x, {Pair[Momentum[k1,___], Momentum[k1,___]],
@@ -107,7 +107,7 @@ If[FreeQ[Select1[x, Eps],LorentzIndex],
   ];
 
 (* include k1^2 and k2^2 *)
-qch = Select1[Select1[x, {OPEDelta, FeynAmpDenominator}], 
+qch = Select1[Select1[x, {OPEDelta, FeynAmpDenominator}],
               {Pair[Momentum[k1,___], Momentum[k1,___]],
                Pair[Momentum[k2,___], Momentum[k2,___]]
             }];
@@ -120,24 +120,24 @@ If[((inc === False) && (!FreeQ2[qch, {k1, k2}])  ) ||
    ) ||
    (!FreeQ[Select2[Select2[x, Pair], {k1,k2}], LorentzIndex])
   ,
-result = x, 
-fad = (List@@Select2[x, FeynAmpDenominator]) /. 
-      PropagatorDenominator[w_, 0] -> w /. Momentum[a_, _] -> a; 
-p = Select1[Union[Flatten[Map[Variables,fad]]], {k1,k2} /. 
+result = x,
+fad = (List@@Select2[x, FeynAmpDenominator]) /.
+      PropagatorDenominator[w_, 0] -> w /. Momentum[a_, _] -> a;
+p = Select1[Union[Flatten[Map[Variables,fad]]], {k1,k2} /.
            Momentum[a_,_] -> a ];
 If[p =!= {}, p = p[[1]], p = dummyp];
-dp    = Pair[Momentum[OPEDelta, dim], Momentum[p, dim]]; 
-dk1   = Pair[Momentum[OPEDelta, dim], Momentum[k1, dim]]; 
+dp    = Pair[Momentum[OPEDelta, dim], Momentum[p, dim]];
+dk1   = Pair[Momentum[OPEDelta, dim], Momentum[k1, dim]];
 dk2   = Pair[Momentum[OPEDelta, dim], Momentum[k2, dim]]; dpk1  = dp  - dk1;
 dpk2  = dp  - dk2;
 dk1k2 = dk1 - dk2;
 
 xx = x;
 
-If[!FreeQ[xx, Power2], 
+If[!FreeQ[xx, Power2],
    power2sub = Cases2[xx, Power2];
-   power2sub = Table[power2sub[[ij]] -> 
-                     (power2sub[[ij]]/.Power2->Power), 
+   power2sub = Table[power2sub[[ij]] ->
+                     (power2sub[[ij]]/.Power2->Power),
                      {ij,Length[power2sub]}
                     ];
    xx = xx /. power2sub;
@@ -157,14 +157,14 @@ xx = xx /. { (-dp + dk1)^w_ :> ( (-1)^w (dp - dk1)^w ),
 
 nx = Select2[xx, {k1,k2}];
 fa = xx / nx;
-fa = fa /. {(-1)^w_ :> Expand[(-1)^w]} /. 
+fa = fa /. {(-1)^w_ :> Expand[(-1)^w]} /.
            {(-1)^(2 OPEm) :> 1, (-1)^(2 OPEi) :> 1,(-1)^(2 OPEj) :> 1};
 
 (*
 nx = FeynAmpDenominatorSimplify[nx, k1, k2] /. pru;
 *)
 If[(!FreeQ[nx, (a_ /; Head[a]===Plus && Length[a]===3)^m_ ]
-   ) || (!FreeQ[nx, PropagatorDenominator[Momentum[a__] + 
+   ) || (!FreeQ[nx, PropagatorDenominator[Momentum[a__] +
                                           Momentum[b__], 0]
                ]
         )
@@ -177,15 +177,15 @@ If[(!FreeQ[nx, (a_ /; Head[a]===Plus && Length[a]===3)^m_ ]
              ),
 If[doheuristics === True,
 dof[yy_] := dof[yy] = FC2RHI[FeynAmpDenominatorSimplify[
-                 yy, 
+                 yy,
                k1, k2,FC2RHI->False], k1,k2, Do -> False
                             ];
 (* this is heuristic ... *)
 FCPrint[1,"heuristics "];
-   nx = Catch[ 
+   nx = Catch[
               If[FreeQ[nx, PropagatorDenominator[Momentum[a__] +
                                           Momentum[b__], 0]
-                      ] && 
+                      ] &&
                  FreeQ[nx, PropagatorDenominator[-Momentum[a__] -
                                            Momentum[b__], 0]
                       ]
@@ -270,7 +270,7 @@ If[FreeQ[nx, FeynAmpDenominator],
 
 nx = nx /. FeynAmpDenominator -> fd;
 
-nx = nx /. 
+nx = nx /.
   {Pair[Momentum[k1,dim], Momentum[k1,dim]]    :> nk12,
    Pair[Momentum[k2,dim], Momentum[k2,dim]]    :> nk22,
    Pair[Momentum[k1,dim], Momentum[k2,dim]]    :> k1k2,
@@ -288,7 +288,7 @@ nx = nx /.
   };
 
 nx = nx /. fd[y__] :> (1/Apply[Times, {y}]);
-   
+
 check = nx;
 
 (* this is (3C.19) + scalar products in the numerator *)

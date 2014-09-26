@@ -20,19 +20,14 @@ UVPart::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[
-Cases2,
-DiracGamma,
-FeynAmpDenominator,
-Momentum,
-OPEDelta,
-Pair,
-PropagatorDenominator,
-Select1,
-Select2
-];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];   
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+
+MakeContext[ Cases2, OPEDelta, Select1, Select2 ];
 
 UVPart[0,_]:=0;
 UVPart[exp_Plus, q_] := Map[UVPart[#, q]&, exp];

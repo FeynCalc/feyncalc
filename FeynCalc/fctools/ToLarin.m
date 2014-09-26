@@ -15,18 +15,21 @@
 BeginPackage["HighEnergyPhysics`fctools`ToLarin`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ToLarin::"usage"=
-"ToLarin[exp] translates gamma[mu].gamma[5] into 
+"ToLarin[exp] translates gamma[mu].gamma[5] into
 -I/6 Eps[mu,nu,la,si] gamma[nu,la,si].";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+Eps = MakeContext["CoreObjects","Eps"];
 LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
 
-MakeContext[LorentzIndex, FeynCalcInternal, TR, Eps, DiracGamma];
+MakeContext[ FeynCalcInternal, TR];
 Options[ToLarin] = {Dimension -> D};
 
 ToLarin[x_, ru___Rule] := Block[{tt,fi1,fi2,fi3,drsi,temp2, doot, dim},

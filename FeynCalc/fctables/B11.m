@@ -31,7 +31,7 @@ BReduce = MakeContext["BReduce"];
 Factor2 = MakeContext["Factor2"];
 FreeQ2  = MakeContext["FreeQ2"];
 PaVe = MakeContext["PaVe"];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
 
  Options[B11]={BReduce->True};

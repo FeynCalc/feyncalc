@@ -26,10 +26,10 @@ by Times.";
 Begin["`Private`"];
    
 
-Momentum              = MakeContext["Momentum"];
-Pair                  = MakeContext["Pair"];
-PropagatorDenominator = MakeContext["PropagatorDenominator"];
-FeynAmpDenominator    = MakeContext["FeynAmpDenominator"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+FeynAmpDenominator    = MakeContext["CoreObjects","FeynAmpDenominator"];
 ExpandScalarProduct   = MakeContext["ExpandScalarProduct"];
 
 PropagatorDenominatorExplicit[x_] := 

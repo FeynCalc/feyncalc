@@ -25,7 +25,7 @@ Begin["`Private`"];
    
 
 B0 = MakeContext["B0"];
-SmallVariable = MakeContext["SmallVariable"];
+SmallVariable = MakeContext["CoreObjects","SmallVariable"];
 
  Derivative[1, 0, 0][B0][pp_,m02_,m12_]=DB0[pp,m02,m12];
  (* also DB0 is symmetric in its mass arguments *)

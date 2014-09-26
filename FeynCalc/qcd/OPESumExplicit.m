@@ -19,29 +19,28 @@ OPESumExplicit::"usage"= "OPESumExplicit[exp] calculates OPESum's.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[FCPrint, OPEi, OPEj, OPESum];
-
-sum2 = MakeContext["SymbolicSum2"];
-sum3 = MakeContext["SymbolicSum3"];
 Expand2 = MakeContext["Expand2"];
 ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
 Factor2 = MakeContext["Factor2"];
 Power2 = MakeContext["Power2"];
 PowerSimplify = MakeContext["PowerSimplify"];
+sum2 = MakeContext["SymbolicSum2"];
+sum3 = MakeContext["SymbolicSum3"];
+
+MakeContext[FCPrint, OPEi, OPEj, OPESum];
 
 OPESumExplicit[ex_] := If[FreeQ[ex,OPESum], ex,
  Block[{symbolicsum, te},
 
-If[$VersionNumber <=2.2, 
+If[$VersionNumber <=2.2,
    If[FreeQ[$ContextPath,"Algebra`SymbolicSum`"],
       FCPrint[1,"loading Algebra`SymbolicSum`"];
          Get["Algebra`SymbolicSum`"];
         ];
   ];
 
- te = ex/. OPESum->sum3 /. sum3 -> OPESum /. 
+ te = ex/. OPESum->sum3 /. sum3 -> OPESum /.
       OPESum -> sum2 /. symbolicsum -> sum3 /. sum3 -> summ;
  If[(!FreeQ[te, summ]) && !FreeQ[te, OPEi] && !FreeQ[te,OPEj],
     te = te /.(* {OPEi:>OPEj, OPEj :> OPEi} /.*)

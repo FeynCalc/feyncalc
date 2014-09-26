@@ -21,9 +21,11 @@ ConvoluteTable::"usage"=
 
 Begin["`Private`"];
    
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 
-MakeContext[DeltaFunction, Epsilon, MemSet, Nielsen,
-            PlusDistribution, Zeta2];
+MakeContext[MemSet, Nielsen, Zeta2];
 
 ConvoluteTable[f_, g_, opt___Rule] := 
  ConvoluteTable[f, g, Global`x, opt];

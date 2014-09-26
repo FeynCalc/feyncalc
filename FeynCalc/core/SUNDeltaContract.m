@@ -20,9 +20,10 @@ head SUNIndex around its arguments.";
 
 Begin["`Private`"];
 
-sundelta := sundelta = MakeContext["SUNDelta"];
-MakeContext[SUNIndex, ExplicitSUNIndex];
-sunn     := sunn     = MakeContext["SUNN"];
+ExplicitSUNIndex = MakeContext["CoreObjects","ExplicitSUNIndex"];
+sundelta := sundelta = MakeContext["CoreObjects","SUNDelta"];
+sunn     := sunn     = MakeContext["CoreObjects","SUNN"];
+SUNIndex     = MakeContext["CoreObjects","SUNIndex"];
 
 SetAttributes[SUNDeltaContract, Orderless];
 
@@ -30,7 +31,7 @@ SetAttributes[SUNDeltaContract, Orderless];
 noint[x___] :=
     Not[Or @@
         Join[IntegerQ /@ {x}, IntegerQ /@
-	({x} /. {SUNIndex -> Identity, ExplicitSUNIndex -> Identity})]];
+  ({x} /. {SUNIndex -> Identity, ExplicitSUNIndex -> Identity})]];
 
 SUNDeltaContract[expr_] := expr //. sundelta ->
   SUNDeltaContract /. SUNDeltaContract -> sundelta;

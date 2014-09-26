@@ -19,33 +19,33 @@ to the finite part.";
 
 Begin["`Private`"];
    
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+DeltaFunctionPrime = MakeContext["CoreObjects","DeltaFunctionPrime"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+Tf = MakeContext["CoreObjects","Tf"];
 
 MakeContext[
 Apart3,
-CA,
-CF,
 ChangeDimension,
 Collect2,
-DeltaFunction,
-DeltaFunctionPrime,
-Epsilon,
 Factor2,
 FeynCalcInternal,
-Gstrong,
-Momentum,
 OPEDelta,
 OPEi,
 OPEj,
 OPEm,
-Pair,
 Select1,
 Select2,
 Series2,
 SimplifyDeltaFunction,
 Smu,
-Tf,
 TLI,
 Zeta2
 ];
@@ -1513,6 +1513,7 @@ If[Head[res] =!= Plus, pref = 1,
   ];
 *)
   res];
+
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

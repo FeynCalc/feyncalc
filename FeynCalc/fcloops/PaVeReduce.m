@@ -49,7 +49,7 @@ SelectNotFree,
 TrickMandelstam,
 WriteOutPaVe
 ];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
 StandardMatrixElement = 
  HighEnergyPhysics`fcloops`OneLoop`StandardMatrixElement;

@@ -31,14 +31,30 @@ i.e., evtl. you may have to use FeynCalcInternal on result.";
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracMatrix = MakeContext["CoreObjects","DiracMatrix"];
+DiracSigma = MakeContext["CoreObjects","DiracSigma"];
+Eps = MakeContext["CoreObjects","Eps"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Pair = MakeContext["CoreObjects","Pair"];
 
-MakeContext[FCPrint, Chisholm, Collect2, Contract];
-
-MakeContext[ DiracBasis, DiracGamma, DiracMatrix, DiracOrder,
-DiracSigma, DiracSigmaExplicit, DiracSimplify, DiracSubstitute67,
-Eps, Factor2, FCE, FCI, LorentzIndex, Pair, Rename];
+MakeContext[
+    Chisholm,
+    Collect2,
+    Contract,
+    DiracBasis,
+    DiracOrder,
+    DiracSigmaExplicit,
+    DiracSimplify,
+    DiracSubstitute67,
+    FCE,
+    FCI,
+    FCPrint,
+    Factor2,
+    Rename
+    ];
 
 Options[DiracReduce] = {Factoring -> False,
                         FinalSubstitutions -> {DiracBasis -> Identity}
@@ -60,7 +76,7 @@ temp = DiracSimplify[temp, DiracSubstitute67 -> True,
                            DiracSigmaExplicit -> False];
   FCPrint[2,"DiracSimplify done"];
 (* Chisholm identity recursively *)
-temp = Chisholm[temp]//DiracOrder;  
+temp = Chisholm[temp]//DiracOrder;
   FCPrint[2,"Chisholm done"];
 temp = Expand[temp, DiracGamma];
 
@@ -86,7 +102,7 @@ temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
                ( -I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]] +
                  Pair[b[yy], a[xx]] );
 temp = Contract[DiracSimplify[temp, DiracSigmaExplicit -> False]];
-temp = Collect2[temp, DiracGamma, Factoring -> factoring];  
+temp = Collect2[temp, DiracGamma, Factoring -> factoring];
   FCPrint[2,"collecting done"];
 
 (* get the S - part *)

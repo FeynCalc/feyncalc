@@ -30,14 +30,17 @@ set to a list of integrals. The format should be
 
 Begin["`Private`"];
 
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 
-MakeContext[Collect2, DeltaFunction, Epsilon,Expand2,
+MakeContext[Collect2, Expand2,
             Factor2, FreeQ2,
             Integrate3,Integrate4,MemSet,Nielsen,PowerSimplify,
             SimplifyPolyLog,
-            PlusDistribution, Select1, Select2, Solve2, Trick, Zeta2];
+            Select1, Select2, Solve2, Trick, Zeta2];
 
 (*
 Options[Integrate2] = Options[Integrate];

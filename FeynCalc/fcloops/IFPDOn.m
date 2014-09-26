@@ -27,21 +27,23 @@ The q1, q2, ... are the integration momenta.";
 
 Begin["`Private`"];
 
+FAD = MakeContext["CoreObjects","FAD"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+IFPD = MakeContext["CoreObjects","IFPD"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+SP = MakeContext["CoreObjects","SP"];
+SPD = MakeContext["CoreObjects","SPD"];
+
 MakeContext[FCPrint, Cases2,
 ExpandScalarProduct,
-FAD,
-FeynAmpDenominator,
 FeynAmpDenominatorSplit,
 FeynCalcInternal,
 FreeQ2,
-IFPD,
-Momentum,
 MomentumExpand,
-Pair,
-PropagatorDenominator,
 Select1,
-Select2,
-SP,SPD
+Select2
 ];
 
 IFPDOn[exp_,qu__] :=

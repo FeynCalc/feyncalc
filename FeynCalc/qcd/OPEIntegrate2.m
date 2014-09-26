@@ -13,8 +13,8 @@
 BeginPackage["HighEnergyPhysics`qcd`OPEIntegrate2`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-OPEIntegrate2::"usage"= 
-"OPEIntegrate2[exp, k] does special loop (tensorial) integrations. 
+OPEIntegrate2::"usage"=
+"OPEIntegrate2[exp, k] does special loop (tensorial) integrations.
 Only the residue is calculated.";
 
 (* ------------------------------------------------------------------------ *)
@@ -23,30 +23,61 @@ Begin["`Private`"];
 
 Collecting = MakeContext["CoreOptions","Collecting"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Eps = MakeContext["CoreObjects","Eps"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 Expanding = MakeContext["CoreOptions","Expanding"];
+FAD = MakeContext["CoreObjects","FAD"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
 IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SO = MakeContext["CoreObjects","SO"];
+SOD = MakeContext["CoreObjects","SOD"];
+SP = MakeContext["CoreObjects","SP"];
+SPD = MakeContext["CoreObjects","SPD"];
 
-MakeContext[FCPrint, Uncontract,
-            Cases2, ChangeDimension, Collect2,
-            Contract, DiracTrick,
-            DotSimplify, Eps, Epsilon, EpsEvaluate,Expand2,
-            ExpandScalarProduct,
-            FeynAmpDenominatorSimplify, Factor2,
-            FeynCalcExternal, FeynCalcForm,
-            FeynCalcInternal, FeynmanParametrize,
-            FRH, Integrate2, Integrate3,
-            Integratedx, Isolate, IsolateSplit,
-            LorentzIndex, Momentum, OPEm, OPEl,OPEDelta,OPESum,
-            Pair, FourDivergence, Power2, PowerSimplify,
-            Select1, Select2, Series2, Sn,          
-            SO,SOD,FAD,SPD,SP
-           ];
+MakeContext[
+    Cases2,
+    ChangeDimension,
+    Collect2,
+    Contract,
+    DiracTrick,
+    DotSimplify,
+    EpsEvaluate,
+    Expand2,
+    ExpandScalarProduct,
+    FCPrint,
+    FRH,
+    Factor2,
+    FeynAmpDenominatorSimplify,
+    FeynCalcExternal,
+    FeynCalcForm,
+    FeynCalcInternal,
+    FeynmanParametrize,
+    FourDivergence,
+    Integrate2,
+    Integrate3,
+    Isolate,
+    IsolateSplit,
+    OPEDelta,
+    OPESum,
+    OPEl,
+    OPEm,
+    Power2,
+    PowerSimplify,
+    Select1,
+    Select2,
+    Series2,
+    Sn
+    Uncontract,
+];
 
-Options[OPEIntegrate2] = { Collecting  -> False, 
-                           FeynmanParameterNames -> 
+Options[OPEIntegrate2] = { Collecting  -> False,
+                           FeynmanParameterNames ->
                            {Global`x, Global`y, Global`z},
                            FinalSubstitutions -> {},
                            Integratedx -> True,
@@ -56,7 +87,7 @@ Options[OPEIntegrate2] = { Collecting  -> False,
 integrate[yy_Plus, zz__]:= (*Factor2*)
 (*Expand[*)Map[integrate[#, zz]&, yy](*]*);
 Global`$INTC= {};
-intsav[a_,{z_,zi_,zf_},ass___Rule] := intsav[a,{z,zi,zf},ass] = 
+intsav[a_,{z_,zi_,zf_},ass___Rule] := intsav[a,{z,zi,zf},ass] =
   Block[{na,re},
 FCPrint[2,"intsav simplify"];
         na = a//PowerSimplify//Factor2//Simplify;
@@ -71,11 +102,11 @@ FCPrint[4,na//InputForm];
                        ] /. (Hold@@{Integrate3}) -> Integrate;
         re = PowerSimplify[re];
 FCPrint[3,"int done"];
-        If[Head[re] === If, 
+        If[Head[re] === If,
            AppendTo[Global`$INTC, re[[1]]];
            re = re[[2]]
           ];
-        FixedPoint[ReleaseHold, re](*//Factor2*) 
+        FixedPoint[ReleaseHold, re](*//Factor2*)
        ];
 
 integrate[yy_Times, {xx_,0,1}, ass___Rule] :=
@@ -83,24 +114,24 @@ integrate[yy_Times, {xx_,0,1}, ass___Rule] :=
 
 idx[y_, opt___] := Block[{nr, ci, intvars},
  If[(Integratedx/.{opt}/.Options[OPEIntegrate2]) =!= True,
-    nr = (ChangeDimension[y,4] /. D -> 4+Epsilon) /. 
-         {Power[a_,b_]:> Power[a,Expand[b]], 
+    nr = (ChangeDimension[y,4] /. D -> 4+Epsilon) /.
+         {Power[a_,b_]:> Power[a,Expand[b]],
           Gamma[a_] :> Gamma[Expand[a]]} ,
     nr = PowerSimplify[ EpsEvaluate[ExpandScalarProduct[
                         ChangeDimension[y, 4]/.D->(4+Epsilon)]]
                       ];
 FCPrint[2,"series2"];
-    nr = Series2[nr , Epsilon, -1 
+    nr = Series2[nr , Epsilon, -1
                 ] // PowerSimplify//ExpandScalarProduct;
 FCPrint[2,"series2 done"];
     ci =  Reverse[Cases2[nr, Integratedx]];
     intvars = Map[First, ci];
 FCPrint[2,"intvars ", intvars];
     nr = Collect2[nr, intvars, Factoring -> (*False*) True];
-    While[Length[ci] > 0,           
-             FCPrint[1,"doing ",ci[[1]]//Last," integration"];            
-          nr = Isolate[Collect2[nr, intvars[[1]], 
-                        Factoring->False],intvars[[1]], 
+    While[Length[ci] > 0,
+             FCPrint[1,"doing ",ci[[1]]//Last," integration"];
+          nr = Isolate[Collect2[nr, intvars[[1]],
+                        Factoring->False],intvars[[1]],
                        IsolateNames -> LL];
           nr = nr /. (aa_ /; !FreeQ[aa,intvars[[1]]])^po_  :>
                      FRH[aa^po];
@@ -111,10 +142,10 @@ FCPrint[2,"intvars ", intvars];
           ci = Rest[ci];
           intvars = Rest[intvars];
          ]
-  ]; 
+  ];
                  nr];
 
-eventualfp[y_,k_,opt___Rule]:= 
+eventualfp[y_,k_,opt___Rule]:=
    If[FreeQ[y,Integratedx],
       FeynmanParametrize[Uncontract[y,k,Pair-> All],k,
                          FeynmanParameterNames->(
@@ -130,14 +161,14 @@ isol[ka_][y_]:=Isolate[y,Append[Select1[Variables[Flatten[
                          Cases2[y,Power2]/. Power2->List]],Pair],
                           ka], IsolateNames->ll, IsolateSplit->5555I];
 gpowsub[xx_,k_] := xx /. {
-                     (((nok_ /; FreeQ[nok,k]) - 
+                     (((nok_ /; FreeQ[nok,k]) -
                        Pair[de_, Momentum[k,D]])^a_Integer?Negative
                      ) :>
                      (sumgeom[ {OPEl,0,Infinity} ]*
                        Pair[de, Momentum[k,D]]^(-a OPEl)/
                         nok^(-a (OPEl+1))
                      )^(-a),
-                     ((Pair[de_, Momentum[k,D]] + 
+                     ((Pair[de_, Momentum[k,D]] +
                        (nok_/;FreeQ[nok,k]))^ a_Integer?Negative
                      ) :>
                      (-sumgeom[ {OPEl,0,Infinity} ] *
@@ -150,7 +181,7 @@ opsu[c_Times,{ka_,0,Infinity}]:=Select1[c,ka] *
 OPESum[Select2[c,ka],{ka,0,Infinity}];
 
 gpowsumit[exp_] := If[FreeQ[exp, OPEl], exp,
- Block[{g1,g2,g3,g4,n1,n2,gr}, g1 = Expand2[exp,OPEl]/.Power2->Power; 
+ Block[{g1,g2,g3,g4,n1,n2,gr}, g1 = Expand2[exp,OPEl]/.Power2->Power;
         g2 = Select1[g1+n1+n2, OPEl] /. {n1 :> 0, n2 :> 0};
         g3 = Collect2[Select2[Map[#/sumgeom[{OPEl,0,Infinity}]&,
                                   g1+n1+n2
@@ -174,7 +205,7 @@ fado[a___,z_,k,b___] := fado[k,a,z,b] /; z=!=k;
 kkfix[z_ (pe_ - SO[k])^em_] := FeynCalcExternal[
      PowerSimplify[ ExpandScalarProduct[FeynCalcInternal[
         z (pe-SO[k])^em]/. k-> -k+(pe/.SO->Identity)
-                             ]]   ] /. FAD -> fadk /. 
+                             ]]   ] /. FAD -> fadk /.
        fadk -> fado /. fado -> FAD;
 If[Head[exp] === Times,
    exp = FeynCalcExternal[exp] /.SO->SOD/.SP->SPD ;
@@ -195,13 +226,13 @@ Global`EXPCHIN3 = exp;
       exp = exp /. (SOD[k]-bla_)^pow_ :> (
                    PowerSimplify[(-1)^pow]*(bla-SOD[k])^pow)
      ];
-                
+
   Global`EXPCH = exp;
    FCPrint[2,"entering OPEIntegrate2 with ", exp//FeynCalcForm];
    tt = Select1[exp, k] kli[k, Select2[exp,k]];
    nt = tt /. opeinttable;
     If[tt =!= nt
-       , 
+       ,
        FeynCalcInternal[nt]
        ,
        exp  = FeynCalcInternal[exp];
@@ -223,7 +254,7 @@ Global`EXPCHIN3 = exp;
   ] ] ], OPEIntegrate2[dummy exp,k,opt]/.dummy->1
   ]                                         ];
 
-oi2[ex_,k_,opt___Rule] := 
+oi2[ex_,k_,opt___Rule] :=
     If[(Collecting/.{opt}/.Options[OPEIntegrate2])===True,
        oi[Collect2[ex,k,Factoring->False],k,opt],
        oi[ex,k,opt]
@@ -232,7 +263,7 @@ oi2[ex_,k_,opt___Rule] :=
 oi[a_Plus,k_,opt___Rule] := Map[oi[#,k,opt]&, a];
 oi[a_,k_,___] := a /; FreeQ2[a,{k,Pattern}] || (Head[a] =!= Times);
 
-oi[exp_Times, k_, opt___Rule] := 
+oi[exp_Times, k_, opt___Rule] :=
    Select1[exp,k] *
    ilist[ChangeDimension[Select2[exp, k], D],
          Momentum[k,D],
@@ -242,21 +273,21 @@ oi[exp_Times, k_, opt___Rule] :=
         ];
 
 denmatch[Power[den_,mm_], ka_ /; Length[ka]===2] := True /;
-  FreeQ[FourDivergence[Expand[ExpandScalarProduct[den]] - Pair[ka,ka], 
+  FreeQ[FourDivergence[Expand[ExpandScalarProduct[den]] - Pair[ka,ka],
                           Pair[ka,LorentzIndex[any,ka[[2]]]]
                          ], ka[[1]]
        ];
 
 getalpha[h_] := If[MatchQ[Select1[h,{Power2,LorentzIndex}], _^_],
-                   -Select1[h,{Power2,LorentzIndex}][[2]], False 
+                   -Select1[h,{Power2,LorentzIndex}][[2]], False
                   ];
-getl[h_,ka_Momentum] := 
+getl[h_,ka_Momentum] :=
      Block[{tg,ll},
            If[!MatchQ[Select1[h,{Power2,LorentzIndex}], _^_],
               False,
               (*else*)
               (* get the linear part *)
-              tg = Select1[h, {Power2, LorentzIndex}][[1]] - 
+              tg = Select1[h, {Power2, LorentzIndex}][[1]] -
                    Pair[ka,ka];
               tg = Select2[ExpandScalarProduct[tg]//Expand,ka[[1]]];
               (* calculate l *)
@@ -267,42 +298,42 @@ getl[h_,ka_Momentum] :=
              ]];
 
 
-getm2[h_,ka_Momentum] := 
+getm2[h_,ka_Momentum] :=
              If[!MatchQ[Select1[h,{Power2,LorentzIndex}], _^_],
                 False,
                 Select1[Expand[ExpandScalarProduct[
                         Select1[h,{Power2,LorentzIndex}][[1]]]], ka]
                ];
-getopem[h_] := (If[Head[#]===Pair, 1, 
-                   If[Head[#]===Power || Head[#]===Power2, 
+getopem[h_] := (If[Head[#]===Pair, 1,
+                   If[Head[#]===Power || Head[#]===Power2,
                       #[[2]],False
                      ]
                   ]&
                )@Select2[h, Power2];
- 
+
 getmu[h_] := Cases2[h, LorentzIndex];
 
 (* I^(m)_alpha *)
-match1[h_, km_] :=   
+match1[h_, km_] :=
        MatchQ[h//Numerator, Power2[
                             Pair[Momentum[OPEDelta,___],km ], _]
                            ] &&
                    denmatch[Select1[h, Power2]//Denominator,km
-                           ] && 
+                           ] &&
                      MatchQ[Select2[h, Power2],
                             Power2[Pair[Momentum[OPEDelta,___],km ],_]
                            ];
 (* I^(m)_alpha,mu *)
-match2[h_, km_] :=   
-       MatchQ[h//Numerator, 
+match2[h_, km_] :=
+       MatchQ[h//Numerator,
               Power2[Pair[Momentum[OPEDelta,___], km],_]*
                Pair[km, LorentzIndex[_,___]]
              ]&& denmatch[Select1[h,Power2]//Denominator, km] &&
        MatchQ[Select2[h,Power2],Power2[Pair[Momentum[OPEDelta,___],km],_]];
 
 (* I^(m)_alpha,mu,nu *)
-match3[h_, km_] :=   
-       MatchQ[h//Numerator, 
+match3[h_, km_] :=
+       MatchQ[h//Numerator,
                Power2[Pair[Momentum[OPEDelta,___], km], _]*
                Pair[km, LorentzIndex[aa_,___]]*
                Pair[km, LorentzIndex[bb_,___]]
@@ -311,8 +342,8 @@ match3[h_, km_] :=
               Power2[Pair[Momentum[OPEDelta,___],km ],_]];
 
 (* I^(m)_alpha,mu,nu,la *)
-match4[h_, km_] :=   
-       MatchQ[h//Numerator, 
+match4[h_, km_] :=
+       MatchQ[h//Numerator,
                Power2[Pair[Momentum[OPEDelta,___],km ],_]*
                Pair[km, LorentzIndex[aa_,___]]*
                Pair[km, LorentzIndex[bb_,___]]*
@@ -322,7 +353,7 @@ match4[h_, km_] :=
               Power2[Pair[Momentum[OPEDelta,___],km ],_]];
 
 (* I^(m)_alpha *)
-ilist[ih_, Momentum[k_,n_], od_Integer] := 
+ilist[ih_, Momentum[k_,n_], od_Integer] :=
   Block[{al,m2,l,de,m,mu,h,fake},
        h = ih /. (a_ /; !FreeQ[a,k])^(w_ /;Head[w]=!=Integer) :>
                  Power2[a, w];
@@ -337,19 +368,19 @@ ilist[ih_, Momentum[k_,n_], od_Integer] :=
       del= Pair[l,de]//ExpandScalarProduct//Factor2;
        m = getopem[h];
 Global`HH=h;
-FCPrint[2,"h = ",h]; 
-FCPrint[2,"l2 = " ,l2]; 
+FCPrint[2,"h = ",h];
+FCPrint[2,"l2 = " ,l2];
 FCPrint[2,"m2 = " ,m2];
       Which[
             match1[h, Momentum[k,n]],
-           ( 
+           (
             (-1)^(n/2) I Sn Gamma[al-n/2]/Gamma[al] del^m *
             (m2-l2)^(n/2-al)
            ),
             match2[h, Momentum[k,n]],
               mu = getmu[ih][[1]];
             (-1)^(n/2) I Sn /Gamma[al] del^m *
-            (Gamma[al-n/2] (m2-l2)^(n/2-al) * Pair[l, mu] od + 
+            (Gamma[al-n/2] (m2-l2)^(n/2-al) * Pair[l, mu] od +
              m/2 Gamma[al-1-n/2] (m2-l2)^(n/2-al+1) *
              Pair[de,mu]/del
             ),
@@ -357,7 +388,7 @@ FCPrint[2,"m2 = " ,m2];
               mu = getmu[ih][[1]];  nu = getmu[ih][[2]];
            (
             (-1)^(n/2) I Sn /Gamma[al] del^m *
-            (Gamma[al-n/2] (m2-l2)^(n/2-al) * 
+            (Gamma[al-n/2] (m2-l2)^(n/2-al) *
                            od Pair[l, mu] * Pair[l, nu] +
              1/2 Gamma[al-1-n/2] (m2-l2)^(n/2-al+1) *
              od (Pair[mu,nu] + m/del (
@@ -409,19 +440,19 @@ kli[k_,FAD[k_,k_,(k_)-(p1_),(k_)-(p3_)] (_. + _. SOD[k_])^(OPEm+_.)]:>0
 ,
 kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(OPEm+en_.) SPD[k_,k_]]:>
 (-2*I*Sn*SO[p3]^(1 + en + OPEm)*
-      (2*SO[p1]*SO[p3]*SP[p1, p1] + (en + OPEm)*SO[p1]*SO[p3]*SP[p1, p1] - 
-        (en + OPEm)*SO[p3]^2*SP[p1, p1] - 6*SO[p1]*SO[p3]*SP[p1, p3] - 
-        2*(en + OPEm)*SO[p1]*SO[p3]*SP[p1, p3] + 2*SO[p3]^2*SP[p1, p3] + 
-        2*(en + OPEm)*SO[p3]^2*SP[p1, p3] + 2*SO[p1]^2*SP[p3, p3] + 
-        (en + OPEm)*SO[p1]^2*SP[p3, p3] - 
+      (2*SO[p1]*SO[p3]*SP[p1, p1] + (en + OPEm)*SO[p1]*SO[p3]*SP[p1, p1] -
+        (en + OPEm)*SO[p3]^2*SP[p1, p1] - 6*SO[p1]*SO[p3]*SP[p1, p3] -
+        2*(en + OPEm)*SO[p1]*SO[p3]*SP[p1, p3] + 2*SO[p3]^2*SP[p1, p3] +
+        2*(en + OPEm)*SO[p3]^2*SP[p1, p3] + 2*SO[p1]^2*SP[p3, p3] +
+        (en + OPEm)*SO[p1]^2*SP[p3, p3] -
         (en + OPEm)*SO[p1]*SO[p3]*SP[p3, p3]))/
-    (Epsilon*(1 + en + OPEm)*(2 + en + OPEm)*(-SO[p1] + SO[p3])^3) + 
+    (Epsilon*(1 + en + OPEm)*(2 + en + OPEm)*(-SO[p1] + SO[p3])^3) +
    (2*I*Sn*SO[p1]^(1 + en + OPEm)*
-      (-((en + OPEm)*SO[p1]*SO[p3]*SP[p1, p1]) + 2*SO[p3]^2*SP[p1, p1] + 
-        (en + OPEm)*SO[p3]^2*SP[p1, p1] + 2*SO[p1]^2*SP[p1, p3] + 
-        2*(en + OPEm)*SO[p1]^2*SP[p1, p3] - 6*SO[p1]*SO[p3]*SP[p1, p3] - 
-        2*(en + OPEm)*SO[p1]*SO[p3]*SP[p1, p3] - 
-        (en + OPEm)*SO[p1]^2*SP[p3, p3] + 2*SO[p1]*SO[p3]*SP[p3, p3] + 
+      (-((en + OPEm)*SO[p1]*SO[p3]*SP[p1, p1]) + 2*SO[p3]^2*SP[p1, p1] +
+        (en + OPEm)*SO[p3]^2*SP[p1, p1] + 2*SO[p1]^2*SP[p1, p3] +
+        2*(en + OPEm)*SO[p1]^2*SP[p1, p3] - 6*SO[p1]*SO[p3]*SP[p1, p3] -
+        2*(en + OPEm)*SO[p1]*SO[p3]*SP[p1, p3] -
+        (en + OPEm)*SO[p1]^2*SP[p3, p3] + 2*SO[p1]*SO[p3]*SP[p3, p3] +
         (en + OPEm)*SO[p1]*SO[p3]*SP[p3, p3]))/
     (Epsilon*(1 + en + OPEm)*(2 + en + OPEm)*(-SO[p1] + SO[p3])^3)
 ,
@@ -595,7 +626,7 @@ kli[k_,FAD[k_, k_ - p2_ + p1_]*(SOD[k_] - SOD[p1_])^(OPEm+en_.)]:>
 
 
 kli[k_,FAD[k_, -p2_ + k_] (SOD[p1_]-SOD[k_])^(OPEm+en_.)]:>
-(-2*I*Sn*(SO[p1]^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2]) - 
+(-2*I*Sn*(SO[p1]^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2]) -
 (SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2])))/Epsilon
 ,
 
@@ -606,30 +637,30 @@ kli[k_,FAD[k_, p2_ + k_] (SOD[p1_]-SOD[k_])^(OPEm+en_.)]:>
 ,
 
 
-kli[k_, FAD[k_, -p2_ + (k_)]* (SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :> 
-     (-2*I*Sn*(SO[p1]^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2]) - 
+kli[k_, FAD[k_, -p2_ + (k_)]* (SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :>
+     (-2*I*Sn*(SO[p1]^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2]) -
           (SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2])))/
       Epsilon
-, 
+,
 kli[k_, FAD[k_, -p1_ + (k_), -p2_ + (k_)]*
        (SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :> 0
-, 
+,
 kli[k_, FAD[k_, -p1_ + (k_), -p1_ + (k_), -p2_ + (k_)]*
        (SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :> 0
-, 
+,
 kli[k_, FAD[k_, k_, -p1_ + p2_ + (k_)]*SOD[k_]^(OPEm + (en_.))] :> 0
-, 
+,
 kli[k_, FAD[k_, k_, -p1_ + p2_ + (k_)]*SOD[k_]^(OPEm + (en_.))*
-       SPD[p1_, k_]] :> 
+       SPD[p1_, k_]] :>
      (-I*Sn*SO[p1]*(SO[p1] - SO[p2])^(-1 + en + OPEm))/
       (Epsilon*(1 + en + OPEm))
-, 
-kli[k_, FAD[k_, k_, -p1_ + (k_)]*SOD[k_]^(OPEm + (en_.))*SPD[p2_, k_]] :> 
+,
+kli[k_, FAD[k_, k_, -p1_ + (k_)]*SOD[k_]^(OPEm + (en_.))*SPD[p2_, k_]] :>
      (I*(en + OPEm)*(-(en + OPEm)^(-1) + (1 + en + OPEm)^(-1))*Sn*
         SO[p1]^(-1 + en + OPEm)*SO[p2])/Epsilon
-, 
+,
 kli[k_, FAD[k_, k_, -p1_ + p2_ + (k_)]*SOD[k_]^(OPEm + (en_.))*
-       SPD[p2_, k_]] :> 
+       SPD[p2_, k_]] :>
      (-I*Sn*(SO[p1] - SO[p2])^(-1 + en + OPEm)*SO[p2])/
       (Epsilon*(1 + en + OPEm))
 ,
@@ -639,7 +670,7 @@ kli[k_, FAD[-p2_ + k_, -p1_ + k_]*(SOD[p2_] - SOD[k_])^(en_. + OPEm)] :>
 ,
 kli[k_, FAD[k_, -p1_ + (k_)]*(SOD[p2_] - SOD[k_])^(en_. + OPEm)*SOD[k_]
    ] :>
-(-2*I*Sn*(SO[p2]^(2 + en + OPEm) - 
+(-2*I*Sn*(SO[p2]^(2 + en + OPEm) -
 (-SO[p1] + SO[p2])^(1 + en + OPEm)*((1 + en + OPEm)*SO[p1] + SO[p2])))/
    (Epsilon*(1 + en + OPEm)*(2 + en + OPEm)*SO[p1])
 ,
@@ -650,8 +681,8 @@ kli[k_, FAD[k_, -p2_ + (k_)]*(SOD[p2_] - SOD[k_])^(en_. + OPEm)*SOD[k_]
 kli[k_, FAD[(k_) - (p2_), (k_) - (p1_)]*SOD[k_]*
    (-SOD[k_] + SOD[p2_])^(en + OPEm)] :>
 (2*I*(-1)^(1 + en + OPEm)*Sn*
-     ((SO[p1] - SO[p2])^(1 + en + OPEm)/(1 + en + OPEm) - 
-       (SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*(2 + en + OPEm)) + 
+     ((SO[p1] - SO[p2])^(1 + en + OPEm)/(1 + en + OPEm) -
+       (SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*(2 + en + OPEm)) +
        ((SO[p1] - SO[p2])^(en + OPEm)*SO[p2])/(1 + en + OPEm)))/Epsilon
 };
 

@@ -8,7 +8,7 @@
 (* :History: File created on 10 July '98 at 15:57 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary:  Series2 is like Series, but including Normal and 
+(* :Summary:  Series2 is like Series, but including Normal and
               bug-fixes
 *)
 
@@ -20,30 +20,44 @@ Series2::"usage"=
 "Series2 performs a series expansion around 0.
 Series2 is similar to Series, except that it applies Normal
 on the result and that some Series bugs are fixed.
-Series2[f, e, n] is equivalent to 
+Series2[f, e, n] is equivalent to
 Series2[f, {e, 0, n}] is equivalent to Series[f, {e, 0, n}].";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
+Apart3          := Apart3 = MakeContext["Apart3"];
 Collecting = MakeContext["CoreOptions","Collecting"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
-
-MakeContext[FCPrint, Cases2, Collect2, Epsilon,Factor2,
-            GammaEpsilon, GammaExpand, Nielsen,
-            OPEm, FreeQ2, Select1, Select2, 
-            SumS, SumT, Zeta2];
-
 SimplifyPolyLog := SimplifyPolyLog = MakeContext["SimplifyPolyLog"];
-Apart3          := Apart3 = MakeContext["Apart3"];
+
+MakeContext[
+    Cases2,
+    Collect2,
+    FCPrint,
+    Factor2,
+    FreeQ2,
+    GammaEpsilon,
+    GammaExpand,
+    Nielsen,
+    OPEm,
+    Select1,
+    Select2,
+    SumS,
+    SumT,
+    Zeta2
+];
+
+
 
 (*
 EulerGamma -> 0,
 *)
 Options[Series2] = {Collecting -> False,
-                      Factoring -> True, FinalSubstitutions -> 
+                      Factoring -> True, FinalSubstitutions ->
                      {EulerGamma -> 0}, Print -> False,
                       SimplifyPolyLog -> True
                    };
@@ -78,16 +92,16 @@ hypex = {Hypergeometric2F1[p1_,p2_,p3_,z_] :>
 hyphyp[z_,xx_] := If[FreeQ2[z, {HypergeometricPFQ,
                                 Hypergeometric2F1,
                             HypergeometricPFQRegularized}
-                           ], 
-                 z, 
+                           ],
+                 z,
           If[xx === Epsilon, z/.hypex/.hypexpansion/.hypfix, z/.hypfix]
                     ];
 
 hypfix = HypergeometricPFQ[nu_List, de_List, z_] :>
           (hyp[Length[nu],Length[de]] @@ Join[nu,de,{z}]);
 
-hyback = 
-{hyp[la_, ld_][c__] :> 
+hyback =
+{hyp[la_, ld_][c__] :>
  HypergeometricPFQ[Take[{c}, la], Take[{c}, {la+1,la+ld}], Last[{c}]],
  Derivative[de__][hyp[la_, ld_]][c__] :>
  Derivative[Take[{de}, la], Take[{de},{la+1, la+ld}], Last[{de}]
@@ -97,17 +111,17 @@ hyback =
 
 polysub = {
 PolyGamma[0, (OPEm+h_Integer?OddQ)/2] :>
- PolyGamma[0,OPEm/2+h/2-1/2] - 
+ PolyGamma[0,OPEm/2+h/2-1/2] -
   2 (-1)^OPEm (-1)^(h+1) Log[2] -
    2 (-1)^OPEm (-1)^(h+1) SumT[1, OPEm + h - 2],
 
 PolyGamma[0, OPEm/2+aa_.] :> (
  PolyGamma[0,OPEm/2+aa-1/2] - 2 (-1)^OPEm (-1)^(2aa+1) Log[2] -
   2 (-1)^OPEm (-1)^(2aa+1) SumT[1, OPEm + 2aa - 2]
-                            ) /; Head[aa] === Rational 
+                            ) /; Head[aa] === Rational
           };
 polysimp = If[FreeQ[#, PolyGamma],#,
-              #/.polysub /. PolyGamma[0, aa_] :> 
+              #/.polysub /. PolyGamma[0, aa_] :>
                                   PolyGamma[0, Expand[aa]]
              ]&;
 
@@ -116,12 +130,12 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series2];
     re = gammas[hyphyp[a,x]];
     re  = Series[re , {x, 0, n}];
 (*
-    re  = Series[Collect2[gammas[hyphyp[a,x]] , x, 
+    re  = Series[Collect2[gammas[hyphyp[a,x]] , x,
                           Factoring -> False
                          ], {x, 0, n}
                 ];
 *)
-    If[!FreeQ[a,Gamma] || !FreeQ[a, PolyGamma], 
+    If[!FreeQ[a,Gamma] || !FreeQ[a, PolyGamma],
        re = re + O[x]^(n+1);
        If[ll =!= {},
           If[nn>-1, re = re + O[x]^n, re = re + O[x]^(n+1)]
@@ -130,12 +144,12 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series2];
     re = (re // Normal) /. hyback;
     If[Head[re]===Plus && n<0, re = Select2[re, x]];
     res = Collect2[polysimp[re] /. finsub, x, Factoring -> False];
-    If[nn === -1, 
+    If[nn === -1,
        res = Collect2[res - Coefficient[res, x, 0], x,Factoring->False];
       ];
 (*
     rec = (Series[a, {x, 0, n+1}]//Normal)/.x^(n+1) :> 0;
-    If[re === rec, 
+    If[re === rec,
        res = Collect[Expand[re /. finsub], x],
        Print["goin higher in Series "];
        If[n < 13, res = Series[a, {x,0,n+1}, ops]];
@@ -143,8 +157,8 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series2];
  If[!FreeQ[res,Gamma], res = SimplifyGamma[res]];
 *)
 
- If[!FreeQ[res,PolyGamma], 
-    If[$VersionNumber < 3.0, 
+ If[!FreeQ[res,PolyGamma],
+    If[$VersionNumber < 3.0,
        res = SimplifyPolyGamma[res],
        res = FunctionExpand[res]
       ]
@@ -152,17 +166,17 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series2];
 
 res =  res/.finsub;
 
-If[SimplifyPolyLog /. {ops} /. Options[Series2], 
+If[SimplifyPolyLog /. {ops} /. Options[Series2],
    res = SimplifyPolyLog[res]//Expand];
 
 If[Collecting /. {ops} /. Options[Series2],
-   res = 
+   res =
    If[Factoring /. {ops} /. Options[Series2],
       If[$VersionNumber > 2.2, Collect[res,x,Factor2],
          Collect2[res,x,Factoring -> True]
         ],
       res = Collect[res,x]
-     ] /.finsub 
+     ] /.finsub
   ];
 res = res /. finsub
  ];
@@ -180,22 +194,22 @@ cE = CompoundExpression;
 (*XXX*)
 hypexpansion={
 
-Hypergeometric2F1[1 - Epsilon/2, 2 + Epsilon/2, 2 - Epsilon/2, u_] :> 
+Hypergeometric2F1[1 - Epsilon/2, 2 + Epsilon/2, 2 - Epsilon/2, u_] :>
 cE[com["SH112"], F21CHECK Epsilon^4 +
-(1 - u)^(-1) + Epsilon*(-(1 - u)^(-1) - 
+(1 - u)^(-1) + Epsilon*(-(1 - u)^(-1) -
     Log[1 - u]/(2*(1 - u)) - Log[1 - u]/u) + Epsilon^2*
-   (1/(2*(1 - u)) + Zeta2/(2*u) + Log[1 - u]/(2*(1 - u)) + 
+   (1/(2*(1 - u)) + Zeta2/(2*u) + Log[1 - u]/(2*(1 - u)) +
     Log[1 - u]/u + Log[1 - u]^2/ (8*(1 - u)) + Log[1 - u]^2/
      (4*u) - (Log[1 - u]*Log[u])/ (2*u) - PolyLog[2, 1 - u]/
-     (2*u)) + Epsilon^3* (-1/(4*(1 - u)) - 
+     (2*u)) + Epsilon^3* (-1/(4*(1 - u)) -
     Zeta2/(2*u) - Log[1 - u]/ (4*(1 - u)) - Log[1 - u]/
      (2*u) - Log[1 - u]^2/ (8*(1 - u)) - Log[1 - u]^2/
      (4*u) - Log[1 - u]^3/ (48*(1 - u)) - Log[1 - u]^3/
      (24*u) + (Log[1 - u]*Log[u])/ (2*u) + (Log[1 - u]^2*
-      Log[u])/(8*u) + PolyLog[2, 1 - u]/(2*u) + 
-    (Log[1 - u]*PolyLog[2, 1 - u])/(4*u) - 
-    PolyLog[3, 1 - u]/(4*u) + PolyLog[3, u]/(4*u) + 
-    Zeta[3]/(4*u)) 
+      Log[u])/(8*u) + PolyLog[2, 1 - u]/(2*u) +
+    (Log[1 - u]*PolyLog[2, 1 - u])/(4*u) -
+    PolyLog[3, 1 - u]/(4*u) + PolyLog[3, u]/(4*u) +
+    Zeta[3]/(4*u))
 ]
 ,
 
@@ -224,118 +238,118 @@ cE[com["SH111"], F21CHECK Epsilon^4 +
         1 - z] - PolyLog[3, z] + Zeta[3])/ (8*(1 - z)) +
     (Zeta2*Log[z] - (Log[1 - z]*Log[z]^2)/ 2 - Log[z]*PolyLog[2,
         1 - z] - PolyLog[3, z] + Zeta[3])/(8*z))
-  ] 
+  ]
 ,
-Hypergeometric2F1[1, -2*Epsilon, 
-   2 - Epsilon, z_] :> 
+Hypergeometric2F1[1, -2*Epsilon,
+   2 - Epsilon, z_] :>
 cE[com["SH110"], F21CHECK Epsilon^4 +
-  1 + Epsilon*(-2 + 2*Log[1 - z] - 
-      (2*Log[1 - z])/z) + 
-   Epsilon^2*(2 - 2*Zeta2 + (2*Zeta2)/z - 
-      4*Log[1 - z] + (4*Log[1 - z])/z + 
-      Log[1 - z]^2 - Log[1 - z]^2/z + 
-      2*Log[1 - z]*Log[z] - 
-      (2*Log[1 - z]*Log[z])/z + 
-      2*PolyLog[2, 1 - z] - 
-      (2*PolyLog[2, 1 - z])/z) + 
-   Epsilon^3*(-2 + 4*Zeta2 - (4*Zeta2)/z + 
-      4*Log[1 - z] - (4*Log[1 - z])/z - 
-      2*Zeta2*Log[1 - z] + 
-      (2*Zeta2*Log[1 - z])/z - 
-      2*Log[1 - z]^2 + (2*Log[1 - z]^2)/z + 
-      Log[1 - z]^3/3 - Log[1 - z]^3/(3*z) - 
-      2*Zeta2*Log[z] + (2*Zeta2*Log[z])/z - 
-      4*Log[1 - z]*Log[z] + 
-      (4*Log[1 - z]*Log[z])/z + 
-      Log[1 - z]^2*Log[z] - 
-      (Log[1 - z]^2*Log[z])/z + 
-      Log[1 - z]*Log[z]^2 - 
-      (Log[1 - z]*Log[z]^2)/z - 
-      4*PolyLog[2, 1 - z] + 
-      (4*PolyLog[2, 1 - z])/z + 
-      2*Log[z]*PolyLog[2, 1 - z] - 
-      (2*Log[z]*PolyLog[2, 1 - z])/z + 
-      2*PolyLog[3, 1 - z] - 
-      (2*PolyLog[3, 1 - z])/z - 4*Zeta[3] + 
-      (4*Zeta[3])/z + 
-      2*(Zeta2*Log[z] - 
-         (Log[1 - z]*Log[z]^2)/2 - 
-         Log[z]*PolyLog[2, 1 - z] - 
-         PolyLog[3, z] + Zeta[3]) - 
-      (2*(Zeta2*Log[z] - 
-           (Log[1 - z]*Log[z]^2)/2 - 
-           Log[z]*PolyLog[2, 1 - z] - 
+  1 + Epsilon*(-2 + 2*Log[1 - z] -
+      (2*Log[1 - z])/z) +
+   Epsilon^2*(2 - 2*Zeta2 + (2*Zeta2)/z -
+      4*Log[1 - z] + (4*Log[1 - z])/z +
+      Log[1 - z]^2 - Log[1 - z]^2/z +
+      2*Log[1 - z]*Log[z] -
+      (2*Log[1 - z]*Log[z])/z +
+      2*PolyLog[2, 1 - z] -
+      (2*PolyLog[2, 1 - z])/z) +
+   Epsilon^3*(-2 + 4*Zeta2 - (4*Zeta2)/z +
+      4*Log[1 - z] - (4*Log[1 - z])/z -
+      2*Zeta2*Log[1 - z] +
+      (2*Zeta2*Log[1 - z])/z -
+      2*Log[1 - z]^2 + (2*Log[1 - z]^2)/z +
+      Log[1 - z]^3/3 - Log[1 - z]^3/(3*z) -
+      2*Zeta2*Log[z] + (2*Zeta2*Log[z])/z -
+      4*Log[1 - z]*Log[z] +
+      (4*Log[1 - z]*Log[z])/z +
+      Log[1 - z]^2*Log[z] -
+      (Log[1 - z]^2*Log[z])/z +
+      Log[1 - z]*Log[z]^2 -
+      (Log[1 - z]*Log[z]^2)/z -
+      4*PolyLog[2, 1 - z] +
+      (4*PolyLog[2, 1 - z])/z +
+      2*Log[z]*PolyLog[2, 1 - z] -
+      (2*Log[z]*PolyLog[2, 1 - z])/z +
+      2*PolyLog[3, 1 - z] -
+      (2*PolyLog[3, 1 - z])/z - 4*Zeta[3] +
+      (4*Zeta[3])/z +
+      2*(Zeta2*Log[z] -
+         (Log[1 - z]*Log[z]^2)/2 -
+         Log[z]*PolyLog[2, 1 - z] -
+         PolyLog[3, z] + Zeta[3]) -
+      (2*(Zeta2*Log[z] -
+           (Log[1 - z]*Log[z]^2)/2 -
+           Log[z]*PolyLog[2, 1 - z] -
            PolyLog[3, z] + Zeta[3]))/z)
 ]
 ,
-Hypergeometric2F1[Epsilon/2, Epsilon/2, 
-   1 + (3*Epsilon)/2, z_] :> 
+Hypergeometric2F1[Epsilon/2, Epsilon/2,
+   1 + (3*Epsilon)/2, z_] :>
 cE[com["SH109"], F21CHECK Epsilon^4 +
-  1 + (Epsilon^2*Zeta2)/4 - 
-   (3*Epsilon^3*Zeta2*Log[z])/8 - 
-   (Epsilon^2*Log[1 - z]*Log[z])/4 - 
-   (Epsilon^3*Log[1 - z]^2*Log[z])/16 + 
-   (3*Epsilon^3*Log[1 - z]*Log[z]^2)/16 - 
-   (Epsilon^2*PolyLog[2, 1 - z])/4 - 
+  1 + (Epsilon^2*Zeta2)/4 -
+   (3*Epsilon^3*Zeta2*Log[z])/8 -
+   (Epsilon^2*Log[1 - z]*Log[z])/4 -
+   (Epsilon^3*Log[1 - z]^2*Log[z])/16 +
+   (3*Epsilon^3*Log[1 - z]*Log[z]^2)/16 -
+   (Epsilon^2*PolyLog[2, 1 - z])/4 -
    (Epsilon^3*Log[1 - z]*
-      PolyLog[2, 1 - z])/8 + 
+      PolyLog[2, 1 - z])/8 +
    (3*Epsilon^3*Log[z]*
-      PolyLog[2, 1 - z])/8 + 
-   (Epsilon^3*PolyLog[3, 1 - z])/8 - 
-   (Epsilon^3*Zeta[3])/2 + 
-   (3*Epsilon^3*(Zeta2*Log[z] - 
-        (Log[1 - z]*Log[z]^2)/2 - 
-        Log[z]*PolyLog[2, 1 - z] - 
+      PolyLog[2, 1 - z])/8 +
+   (Epsilon^3*PolyLog[3, 1 - z])/8 -
+   (Epsilon^3*Zeta[3])/2 +
+   (3*Epsilon^3*(Zeta2*Log[z] -
+        (Log[1 - z]*Log[z]^2)/2 -
+        Log[z]*PolyLog[2, 1 - z] -
         PolyLog[3, z] + Zeta[3]))/8
 ]
 ,
-Hypergeometric2F1[1 + Epsilon/2, 
-   Epsilon/2, 1 + (3*Epsilon)/2, z_] :> 
+Hypergeometric2F1[1 + Epsilon/2,
+   Epsilon/2, 1 + (3*Epsilon)/2, z_] :>
 cE[com["SH108"], F21CHECK Epsilon^4 +
-  1 - (Epsilon^2*Zeta2)/2 - 
-   (Epsilon*Log[1 - z])/2 - 
-   (Epsilon^3*Zeta2*Log[1 - z])/2 - 
-   (Epsilon^2*Log[1 - z]^2)/8 - 
-   (Epsilon^3*Log[1 - z]^3)/48 + 
-   (3*Epsilon^3*Zeta2*Log[z])/4 + 
-   (Epsilon^2*Log[1 - z]*Log[z])/2 + 
-   (Epsilon^3*Log[1 - z]^2*Log[z])/8 - 
-   (3*Epsilon^3*Log[1 - z]*Log[z]^2)/8 + 
-   (Epsilon^2*PolyLog[2, 1 - z])/2 - 
+  1 - (Epsilon^2*Zeta2)/2 -
+   (Epsilon*Log[1 - z])/2 -
+   (Epsilon^3*Zeta2*Log[1 - z])/2 -
+   (Epsilon^2*Log[1 - z]^2)/8 -
+   (Epsilon^3*Log[1 - z]^3)/48 +
+   (3*Epsilon^3*Zeta2*Log[z])/4 +
+   (Epsilon^2*Log[1 - z]*Log[z])/2 +
+   (Epsilon^3*Log[1 - z]^2*Log[z])/8 -
+   (3*Epsilon^3*Log[1 - z]*Log[z]^2)/8 +
+   (Epsilon^2*PolyLog[2, 1 - z])/2 -
    (Epsilon^3*Log[1 - z]*
-      PolyLog[2, 1 - z])/4 - 
+      PolyLog[2, 1 - z])/4 -
    (3*Epsilon^3*Log[z]*
-      PolyLog[2, 1 - z])/4 + 
-   (3*Epsilon^3*PolyLog[3, 1 - z])/4 - 
-   (3*Epsilon^3*(Zeta2*Log[z] - 
-        (Log[1 - z]*Log[z]^2)/2 - 
-        Log[z]*PolyLog[2, 1 - z] - 
+      PolyLog[2, 1 - z])/4 +
+   (3*Epsilon^3*PolyLog[3, 1 - z])/4 -
+   (3*Epsilon^3*(Zeta2*Log[z] -
+        (Log[1 - z]*Log[z]^2)/2 -
+        Log[z]*PolyLog[2, 1 - z] -
         PolyLog[3, z] + Zeta[3]))/4
 ]
 ,
-Hypergeometric2F1[1 + Epsilon/2, 
-   1 + Epsilon, 1 + (3*Epsilon)/2, z_] :> 
+Hypergeometric2F1[1 + Epsilon/2,
+   1 + Epsilon, 1 + (3*Epsilon)/2, z_] :>
 cE[com["SH107"], F21CHECK Epsilon^3 +
-  (1 - z)^(-1) + 
-   (Epsilon^2*Zeta2)/(2*(1 - z)) - 
+  (1 - z)^(-1) +
+   (Epsilon^2*Zeta2)/(2*(1 - z)) -
    (Epsilon^2*Log[1 - z]*Log[z])/
-    (2*(1 - z)) - 
+    (2*(1 - z)) -
    (Epsilon^2*PolyLog[2, 1 - z])/
     (2*(1 - z))
 ]
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 2, x_] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 2, x_] :>
 cE[com["SH106"], F21CHECK Epsilon^4 +
-  ((2 - 3*Epsilon)*Epsilon^2*Log[1 - x])/4 - 
-   ((2 - 3*Epsilon)*Epsilon^2*Log[1 - x])/(4*x) + 
-   (3*Epsilon^3*Log[1 - x]^2)/8 - 
-   (3*Epsilon^3*Log[1 - x]^2)/(8*x) - 
-   (Epsilon^2*Log[1 - x]*Log[x])/2 - 
-   (3*Epsilon^3*Log[1 - x]^2*Log[x])/8 - 
-   (Epsilon^2*PolyLog[2, 1 - x])/2 - 
-   (3*Epsilon^3*Log[1 - x]*PolyLog[2, 1 - x])/4 + 
-   (3*Epsilon^3*PolyLog[3, 1 - x])/4 + 
-   (4 - 2*Epsilon^2 + 3*Epsilon^3 + 2*Epsilon^2*Zeta2 - 
+  ((2 - 3*Epsilon)*Epsilon^2*Log[1 - x])/4 -
+   ((2 - 3*Epsilon)*Epsilon^2*Log[1 - x])/(4*x) +
+   (3*Epsilon^3*Log[1 - x]^2)/8 -
+   (3*Epsilon^3*Log[1 - x]^2)/(8*x) -
+   (Epsilon^2*Log[1 - x]*Log[x])/2 -
+   (3*Epsilon^3*Log[1 - x]^2*Log[x])/8 -
+   (Epsilon^2*PolyLog[2, 1 - x])/2 -
+   (3*Epsilon^3*Log[1 - x]*PolyLog[2, 1 - x])/4 +
+   (3*Epsilon^3*PolyLog[3, 1 - x])/4 +
+   (4 - 2*Epsilon^2 + 3*Epsilon^3 + 2*Epsilon^2*Zeta2 -
       3*Epsilon^3*Zeta[3])/4
 ]
 ,
@@ -346,7 +360,7 @@ Hypergeometric2F1[1, Epsilon, 1 + 2*Epsilon, x_] :>
      Epsilon^3*(-(Pi^2*Log[1 - x])/6 - Zeta2*Log[1 - x] - Log[1 - x]^3/6 +
         Log[1 - x]^2*Log[x] + 2*PolyLog[3, 1 - x] + 4*PolyLog[3, x] -
         2*Zeta[3])]
-, 
+,
 Hypergeometric2F1[1, Epsilon, 2 + 2*Epsilon, x_] :>
    cE[com["SH104"], 1 + Epsilon^4*F21CHECK +
      Epsilon*(1 - Log[1 - x] + Log[1 - x]/x) +
@@ -379,7 +393,7 @@ Hypergeometric2F1[-Epsilon, -Epsilon/2, 1 + Epsilon/2, t_] :>
 Hypergeometric2F1[1 - Epsilon/2, -Epsilon, 1, x_] :>
    cE[com["SH101"],Epsilon^3 F21CHECK +
    (2 + Epsilon^2*Zeta2)/2 + Epsilon*Log[1 - x] +
-    (Epsilon^2*(3*Log[1 - x]^2 - 2*Log[1 - x]*Log[x] - 
+    (Epsilon^2*(3*Log[1 - x]^2 - 2*Log[1 - x]*Log[x] -
     2*PolyLog[2, 1 - x]))/ 4
      ]
 ,
@@ -398,7 +412,7 @@ Hypergeometric2F1[-Epsilon, -Epsilon/2, 1, x_] :>
 Hypergeometric2F1[-Epsilon, -Epsilon/2, (-3*Epsilon)/2, x_] :>
    cE[com["SH98"],Epsilon^4 F21CHECK +
 1 + (Epsilon*Log[1 - x])/3 + (Epsilon^3*
-     (Zeta2*Log[1 - x] + Log[1 - x]* PolyLog[2, 1 - x] - 
+     (Zeta2*Log[1 - x] + Log[1 - x]* PolyLog[2, 1 - x] -
        2*PolyLog[3, 1 - x] + 2*Zeta[3]))/6
      ]
 ,
@@ -417,21 +431,21 @@ Hypergeometric2F1[1 + Epsilon, 1 + Epsilon/2, 2 + (3*Epsilon)/2, x_] :>
     (3*Epsilon*(2*Zeta2 + 3*Epsilon*Zeta2 - 3*Epsilon*Zeta[3]))/(4*x)
      ]
 ,
-Hypergeometric2F1[1 - Epsilon/2, Epsilon/2, 2 - Epsilon/2, x_] :> 
-   cE[com["SH95"],Epsilon^3 F21CHECK + 
-   (2 + Epsilon + Epsilon^2)/2 - (Epsilon^2*Zeta2)/(4*x) - 
-    (Epsilon*(2 + Epsilon)*Log[1 - x])/4 + 
-(Epsilon*(2 + Epsilon)*Log[1 - x])/(4*x) + (Epsilon^2*Log[1 - x]^2)/8 - 
-    (Epsilon^2*Log[1 - x]^2)/(8*x) + (Epsilon^2*Log[1 - x]*Log[x])/(4*x) + 
+Hypergeometric2F1[1 - Epsilon/2, Epsilon/2, 2 - Epsilon/2, x_] :>
+   cE[com["SH95"],Epsilon^3 F21CHECK +
+   (2 + Epsilon + Epsilon^2)/2 - (Epsilon^2*Zeta2)/(4*x) -
+    (Epsilon*(2 + Epsilon)*Log[1 - x])/4 +
+(Epsilon*(2 + Epsilon)*Log[1 - x])/(4*x) + (Epsilon^2*Log[1 - x]^2)/8 -
+    (Epsilon^2*Log[1 - x]^2)/(8*x) + (Epsilon^2*Log[1 - x]*Log[x])/(4*x) +
     (Epsilon^2*PolyLog[2, 1 - x])/(4*x)
      ]
-, 
-  Hypergeometric2F1[1 - Epsilon/2, Epsilon/2, 2 - Epsilon/2, x_] :> 
-   cE[com["SH94"],Epsilon^3 F21CHECK + 
-   (2 + Epsilon + Epsilon^2)/2 - (Epsilon^2*Zeta2)/(4*x) - 
-    (Epsilon*(2 + Epsilon)*Log[1 - x])/4 + 
-(Epsilon*(2 + Epsilon)*Log[1 - x])/(4*x) + (Epsilon^2*Log[1 - x]^2)/8 - 
-    (Epsilon^2*Log[1 - x]^2)/(8*x) + (Epsilon^2*Log[1 - x]*Log[x])/(4*x) + 
+,
+  Hypergeometric2F1[1 - Epsilon/2, Epsilon/2, 2 - Epsilon/2, x_] :>
+   cE[com["SH94"],Epsilon^3 F21CHECK +
+   (2 + Epsilon + Epsilon^2)/2 - (Epsilon^2*Zeta2)/(4*x) -
+    (Epsilon*(2 + Epsilon)*Log[1 - x])/4 +
+(Epsilon*(2 + Epsilon)*Log[1 - x])/(4*x) + (Epsilon^2*Log[1 - x]^2)/8 -
+    (Epsilon^2*Log[1 - x]^2)/(8*x) + (Epsilon^2*Log[1 - x]*Log[x])/(4*x) +
     (Epsilon^2*PolyLog[2, 1 - x])/(4*x)
      ]
 ,
@@ -441,31 +455,31 @@ Hypergeometric2F1[1 - Epsilon/2, -Epsilon, 3/2 - Epsilon/2,
    1 - 2*Epsilon + Epsilon*Log[x] - (2*Epsilon*Log[x])/(1 - x)
      ]
 ,
-Hypergeometric2F1[2 - Epsilon/2, 1 + Epsilon/2, 3 - Epsilon/2, x_] :> 
-   cE[com["SH92"], Epsilon^3*F21CHECK - 2/x - (2*Log[1 - x])/x^2 + 
-     Epsilon*(-3/(2*x) + Zeta2/x^2 - Log[1 - x]/(2*x^2) + Log[1 - x]/x + 
-        Log[1 - x]^2/(2*x^2) - (Log[1 - x]*Log[x])/x^2 - 
-        PolyLog[2, 1 - x]/x^2) + 
-     Epsilon^2*(-3/(2*x) + Zeta2/(4*x^2) - (3*Log[1 - x])/(4*x^2) + 
-(3*Log[1 - x])/(4*x) + Log[1 - x]^2/(8*x^2) - Log[1 - x]^2/(4*x) - 
-        Log[1 - x]^3/(12*x^2) - (Log[1 - x]*Log[x])/(4*x^2) + 
-        (Log[1 - x]^2*Log[x])/(4*x^2) - PolyLog[2, 1 - x]/(4*x^2) + 
-(Log[1 - x]*PolyLog[2, 1 - x])/(2*x^2) - PolyLog[3, 1 - x]/(2*x^2) + 
+Hypergeometric2F1[2 - Epsilon/2, 1 + Epsilon/2, 3 - Epsilon/2, x_] :>
+   cE[com["SH92"], Epsilon^3*F21CHECK - 2/x - (2*Log[1 - x])/x^2 +
+     Epsilon*(-3/(2*x) + Zeta2/x^2 - Log[1 - x]/(2*x^2) + Log[1 - x]/x +
+        Log[1 - x]^2/(2*x^2) - (Log[1 - x]*Log[x])/x^2 -
+        PolyLog[2, 1 - x]/x^2) +
+     Epsilon^2*(-3/(2*x) + Zeta2/(4*x^2) - (3*Log[1 - x])/(4*x^2) +
+(3*Log[1 - x])/(4*x) + Log[1 - x]^2/(8*x^2) - Log[1 - x]^2/(4*x) -
+        Log[1 - x]^3/(12*x^2) - (Log[1 - x]*Log[x])/(4*x^2) +
+        (Log[1 - x]^2*Log[x])/(4*x^2) - PolyLog[2, 1 - x]/(4*x^2) +
+(Log[1 - x]*PolyLog[2, 1 - x])/(2*x^2) - PolyLog[3, 1 - x]/(2*x^2) +
         PolyLog[3, x]/(2*x^2) + Zeta[3]/(2*x^2))]
 ,
-Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 5/2 - Epsilon/2, 
-   -(1 - (x_))^2/(4*(x_))] :> 
+Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 5/2 - Epsilon/2,
+   -(1 - (x_))^2/(4*(x_))] :>
   cE[com["SH91"], Epsilon^2 F21CHECK +
-     (3 - 4*Epsilon)/3 + Epsilon^3*F21CHECK - 
-    (4*Epsilon)/(1 - x)^2 + (4*Epsilon)/(1 - x) + (Epsilon*Log[x])/2 - 
-    (4*Epsilon*Log[x])/(1 - x)^3 + (6*Epsilon*Log[x])/(1 - x)^2 - 
+     (3 - 4*Epsilon)/3 + Epsilon^3*F21CHECK -
+    (4*Epsilon)/(1 - x)^2 + (4*Epsilon)/(1 - x) + (Epsilon*Log[x])/2 -
+    (4*Epsilon*Log[x])/(1 - x)^3 + (6*Epsilon*Log[x])/(1 - x)^2 -
     (3*Epsilon*Log[x])/(1 - x)]
 ,
-Hypergeometric2F1[2 - Epsilon, 1 - Epsilon/2, 7/2 - Epsilon/2, 
-    -(1 - x_)^2/(4*x_)] :> 
-  cE[com["SH90"], Epsilon F21CHECK + 
-   120/(1 - x)^4 - 240/(1 - x)^3 + 130/(1 - x)^2 - 10/(1 - x) + 
-    (120*Log[x])/(1 - x)^5 - (300*Log[x])/(1 - x)^4 + 
+Hypergeometric2F1[2 - Epsilon, 1 - Epsilon/2, 7/2 - Epsilon/2,
+    -(1 - x_)^2/(4*x_)] :>
+  cE[com["SH90"], Epsilon F21CHECK +
+   120/(1 - x)^4 - 240/(1 - x)^3 + 130/(1 - x)^2 - 10/(1 - x) +
+    (120*Log[x])/(1 - x)^5 - (300*Log[x])/(1 - x)^4 +
     (240*Log[x])/(1 - x)^3 - (60*Log[x])/(1 - x)^2
     ]
 ,
@@ -474,171 +488,171 @@ Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 7/2 - Epsilon/2,
   cE[com["SH89"], Epsilon F21CHECK +
    -80/(1 - x)^4 + 160/(1 - x)^3 - 320/(3*(1 - x)^2) + 80/(3*(1 - x)) -
     (80*Log[x])/(1 - x)^5 + (200*Log[x])/(1 - x)^4 - (180*Log[x])/(1 - x)^3 +
-    (70*Log[x])/(1 - x)^2 - (10*Log[x])/(1 - x) 
+    (70*Log[x])/(1 - x)^2 - (10*Log[x])/(1 - x)
     ]
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 5/2 - Epsilon/2, 
-    -(1 - x_)^2/(4*x_)] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 5/2 - Epsilon/2,
+    -(1 - x_)^2/(4*x_)] :>
   cE[com["SH88"], Epsilon^3 F21CHECK +
-   1 + Epsilon^2*(-26/9 - 8/(3*(1 - x)^2) + 8/(3*(1 - x)) + (4*Log[x])/3 - 
-       (8*Log[x])/(3*(1 - x)^3) + (4*Log[x])/(1 - x)^2 - (4*Log[x])/(1 - x) - 
+   1 + Epsilon^2*(-26/9 - 8/(3*(1 - x)^2) + 8/(3*(1 - x)) + (4*Log[x])/3 -
+       (8*Log[x])/(3*(1 - x)^3) + (4*Log[x])/(1 - x)^2 - (4*Log[x])/(1 - x) -
        Log[x]^2/4)
     ]
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2, 
-    -(1 - x_)^2/(4*x_)] :> 
-  cE[com["SH87"], Epsilon^3 F21CHECK + 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2,
+    -(1 - x_)^2/(4*x_)] :>
+  cE[com["SH87"], Epsilon^3 F21CHECK +
    1 + Epsilon^2*(-2 + Log[x] - (2*Log[x])/(1 - x) - Log[x]^2/4)]
 ,
-Hypergeometric2F1[1, 2 - Epsilon, 1 - Epsilon/2, x_] :> 
-   cE[com["SH86"], Epsilon^3*F21CHECK + Epsilon/(2*(1 - x)) + 
-     (4 + 2*Epsilon + 2*Epsilon^2 - Epsilon^2*Zeta2)/(4*(1 - x)^2) + 
-     (Epsilon*(2 + Epsilon)*Log[1 - x])/(4*(1 - x)^2) + 
-     (Epsilon^2*Log[1 - x]^2)/(8*(1 - x)^2) + 
-     (Epsilon^2*Log[1 - x]*Log[x])/(4*(1 - x)^2) + 
+Hypergeometric2F1[1, 2 - Epsilon, 1 - Epsilon/2, x_] :>
+   cE[com["SH86"], Epsilon^3*F21CHECK + Epsilon/(2*(1 - x)) +
+     (4 + 2*Epsilon + 2*Epsilon^2 - Epsilon^2*Zeta2)/(4*(1 - x)^2) +
+     (Epsilon*(2 + Epsilon)*Log[1 - x])/(4*(1 - x)^2) +
+     (Epsilon^2*Log[1 - x]^2)/(8*(1 - x)^2) +
+     (Epsilon^2*Log[1 - x]*Log[x])/(4*(1 - x)^2) +
      (Epsilon^2*PolyLog[2, 1 - x])/(4*(1 - x)^2)]
 ,
 
-Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 2 - (3*Epsilon)/2, x_] :> 
-cE[com["SH85"], Epsilon^3*F21CHECK + (3*Epsilon^2*Zeta2)/(4*x) + 
-     (4 - 2*Epsilon - 2*Epsilon^2 - Epsilon^2*Zeta2)/4 + 
-     ((2 - Epsilon)*Epsilon*Log[1 - x])/4 - 
-     ((2 - Epsilon)*Epsilon*Log[1 - x])/(4*x) + 
-     (Epsilon^2*Log[1 - x]*Log[x])/4 - 
-     (3*Epsilon^2*Log[1 - x]*Log[x])/(4*x) + 
+Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 2 - (3*Epsilon)/2, x_] :>
+cE[com["SH85"], Epsilon^3*F21CHECK + (3*Epsilon^2*Zeta2)/(4*x) +
+     (4 - 2*Epsilon - 2*Epsilon^2 - Epsilon^2*Zeta2)/4 +
+     ((2 - Epsilon)*Epsilon*Log[1 - x])/4 -
+     ((2 - Epsilon)*Epsilon*Log[1 - x])/(4*x) +
+     (Epsilon^2*Log[1 - x]*Log[x])/4 -
+     (3*Epsilon^2*Log[1 - x]*Log[x])/(4*x) +
 (Epsilon^2*PolyLog[2, 1 - x])/4 - (3*Epsilon^2*PolyLog[2, 1 - x])/(4*x)
   ]
 ,
-Hypergeometric2F1[2 - Epsilon, 1 - Epsilon/2, 3 - (3*Epsilon)/2, x_] :> 
-cE[com["SH84"], Epsilon^3*F21CHECK - 
-     (8 - 2*Epsilon - 3*Epsilon^2 - 2*Epsilon^2*Zeta2)/(4*x) - 
-     ((4 - Epsilon)*Epsilon*Log[1 - x])/(4*x) - 
-     ((4 - 7*Epsilon + 2*Epsilon^2*Zeta2)*Log[1 - x])/(2*x^2) - 
-     (3*(4 - 7*Epsilon)*Epsilon*Log[1 - x]*Log[x])/(4*x^2) - 
-     (Epsilon^2*Log[1 - x]*Log[x])/(2*x) - 
-     (3*(4 - 7*Epsilon)*Epsilon*PolyLog[2, 1 - x])/(4*x^2) - 
-     (Epsilon^2*PolyLog[2, 1 - x])/(2*x) - 
-     (Epsilon^2*Log[1 - x]*PolyLog[2, 1 - x])/x^2 + 
-     (2*Epsilon^2*PolyLog[3, 1 - x])/x^2 + 
-     (9*Epsilon^2*PolyLog[3, x])/(2*x^2) + 
+Hypergeometric2F1[2 - Epsilon, 1 - Epsilon/2, 3 - (3*Epsilon)/2, x_] :>
+cE[com["SH84"], Epsilon^3*F21CHECK -
+     (8 - 2*Epsilon - 3*Epsilon^2 - 2*Epsilon^2*Zeta2)/(4*x) -
+     ((4 - Epsilon)*Epsilon*Log[1 - x])/(4*x) -
+     ((4 - 7*Epsilon + 2*Epsilon^2*Zeta2)*Log[1 - x])/(2*x^2) -
+     (3*(4 - 7*Epsilon)*Epsilon*Log[1 - x]*Log[x])/(4*x^2) -
+     (Epsilon^2*Log[1 - x]*Log[x])/(2*x) -
+     (3*(4 - 7*Epsilon)*Epsilon*PolyLog[2, 1 - x])/(4*x^2) -
+     (Epsilon^2*PolyLog[2, 1 - x])/(2*x) -
+     (Epsilon^2*Log[1 - x]*PolyLog[2, 1 - x])/x^2 +
+     (2*Epsilon^2*PolyLog[3, 1 - x])/x^2 +
+     (9*Epsilon^2*PolyLog[3, x])/(2*x^2) +
      (Epsilon*(12*Zeta2 - 21*Epsilon*Zeta2 - 8*Epsilon*Zeta[3]))/(4*x^2) ]
-, 
-Hypergeometric2F1[-1 + Epsilon, Epsilon/2, (3*Epsilon)/2, x_] :> 
-cE[com["SH83"], 
+,
+Hypergeometric2F1[-1 + Epsilon, Epsilon/2, (3*Epsilon)/2, x_] :>
+cE[com["SH83"],
 Epsilon^4*F21CHECK +
 1 - x/3 + Epsilon*
-   (-Log[1 - x]/3 + (x*Log[1 - x])/3) + 
-  Epsilon^2*((x*Zeta2)/3 - 
-     (x*Log[1 - x]*Log[x])/3 - 
-     (x*PolyLog[2, 1 - x])/3) + 
-  Epsilon^3*(-(Zeta2*Log[1 - x])/6 + 
-     (x*Zeta2*Log[1 - x])/6 - 
-     (Log[1 - x]*PolyLog[2, 1 - x])/6 + 
-     (x*Log[1 - x]*PolyLog[2, 1 - x])/6 + 
-     PolyLog[3, 1 - x]/3 - 
-     (x*PolyLog[3, 1 - x])/3 - 
-     (x*PolyLog[3, x])/2 - Zeta[3]/3 + 
+   (-Log[1 - x]/3 + (x*Log[1 - x])/3) +
+  Epsilon^2*((x*Zeta2)/3 -
+     (x*Log[1 - x]*Log[x])/3 -
+     (x*PolyLog[2, 1 - x])/3) +
+  Epsilon^3*(-(Zeta2*Log[1 - x])/6 +
+     (x*Zeta2*Log[1 - x])/6 -
+     (Log[1 - x]*PolyLog[2, 1 - x])/6 +
+     (x*Log[1 - x]*PolyLog[2, 1 - x])/6 +
+     PolyLog[3, 1 - x]/3 -
+     (x*PolyLog[3, 1 - x])/3 -
+     (x*PolyLog[3, x])/2 - Zeta[3]/3 +
      (x*Zeta[3])/3)
 ]
 ,
-Hypergeometric2F1[1 - Epsilon, 1 + Epsilon, 1 + Epsilon/2, x_] :> 
-cE[com["SH82"], (4 - 3*Epsilon^2*Zeta2)/(4*(1 - x)) + 
-     (Epsilon*Log[1 - x])/(2*(1 - x)) + 
-     (Epsilon^2*Log[1 - x]^2)/(8*(1 - x)) + 
-     (3*Epsilon^2*Log[1 - x]*Log[x])/(4*(1 - x)) + 
+Hypergeometric2F1[1 - Epsilon, 1 + Epsilon, 1 + Epsilon/2, x_] :>
+cE[com["SH82"], (4 - 3*Epsilon^2*Zeta2)/(4*(1 - x)) +
+     (Epsilon*Log[1 - x])/(2*(1 - x)) +
+     (Epsilon^2*Log[1 - x]^2)/(8*(1 - x)) +
+     (3*Epsilon^2*Log[1 - x]*Log[x])/(4*(1 - x)) +
      (3*Epsilon^2*PolyLog[2, 1 - x])/(4*(1 - x)) +
    Epsilon^3 F21CHECK]
 ,
 (com["SH81"];
-Hypergeometric2F1[1 - Epsilon/2, -Epsilon, (-3*Epsilon)/2, x_] :> 
-   (1 - Epsilon^2*Zeta2)/3 + (2 + Epsilon^2*Zeta2)/(3*(1 - x)) + 
-    (Epsilon*Log[1 - x])/3 + (Epsilon^2*Log[1 - x]*Log[x])/3 - 
-    (Epsilon^2*Log[1 - x]*Log[x])/(3*(1 - x)) + 
-    (Epsilon^2*PolyLog[2, 1 - x])/3 - 
+Hypergeometric2F1[1 - Epsilon/2, -Epsilon, (-3*Epsilon)/2, x_] :>
+   (1 - Epsilon^2*Zeta2)/3 + (2 + Epsilon^2*Zeta2)/(3*(1 - x)) +
+    (Epsilon*Log[1 - x])/3 + (Epsilon^2*Log[1 - x]*Log[x])/3 -
+    (Epsilon^2*Log[1 - x]*Log[x])/(3*(1 - x)) +
+    (Epsilon^2*PolyLog[2, 1 - x])/3 -
     (Epsilon^2*PolyLog[2, 1 - x])/(3*(1 - x)) +
 Epsilon^3 F21CHECK
 )
-, 
-  Hypergeometric2F1[1 + Epsilon/2, 2 + Epsilon, 2 + (3*Epsilon)/2, x_] :> 
+,
+  Hypergeometric2F1[1 + Epsilon/2, 2 + Epsilon, 2 + (3*Epsilon)/2, x_] :>
 (com["SH80"];
 (3*Epsilon^2*Zeta2)/(4*x) + (2 + Epsilon - Epsilon^2 + Epsilon^2*Zeta2)/
-     (2*(1 - x)) + (Epsilon*(2 + Epsilon)*Log[1 - x])/(4*x) - 
-    (Epsilon^2*Log[1 - x]*Log[x])/(2*(1 - x)) - 
-    (3*Epsilon^2*Log[1 - x]*Log[x])/(4*x) - 
-    (Epsilon^2*PolyLog[2, 1 - x])/(2*(1 - x)) - 
+     (2*(1 - x)) + (Epsilon*(2 + Epsilon)*Log[1 - x])/(4*x) -
+    (Epsilon^2*Log[1 - x]*Log[x])/(2*(1 - x)) -
+    (3*Epsilon^2*Log[1 - x]*Log[x])/(4*x) -
+    (Epsilon^2*PolyLog[2, 1 - x])/(2*(1 - x)) -
     (3*Epsilon^2*PolyLog[2, 1 - x])/(4*x) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 + Epsilon, 1 + Epsilon/2, 1 + (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[1 + Epsilon, 1 + Epsilon/2, 1 + (3*Epsilon)/2, x_] :>
 (com["SH79"];
-   (1 - x)^(-1) + (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] - 
+   (1 - x)^(-1) + (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] -
       PolyLog[2, 1 - x]))/ (2*(1 - x)) + Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1, 1 + Epsilon, 2 + Epsilon, x_] :> 
+Hypergeometric2F1[1, 1 + Epsilon, 2 + Epsilon, x_] :>
 (com["SH78"];
-  -(Log[1 - x]/x) - (Epsilon*Log[1 - x])/x - (Epsilon*PolyLog[2, x])/x - 
+  -(Log[1 - x]/x) - (Epsilon*Log[1 - x])/x - (Epsilon*PolyLog[2, x])/x -
    (Epsilon^2*PolyLog[2, x])/x + (Epsilon^2*PolyLog[3, x])/x +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1, Epsilon, 1 + Epsilon, x_] :> 
+Hypergeometric2F1[1, Epsilon, 1 + Epsilon, x_] :>
 (com["SH77"];
-  1 - Epsilon*Log[1 - x] - Epsilon^2*PolyLog[2, x] + 
+  1 - Epsilon*Log[1 - x] - Epsilon^2*PolyLog[2, x] +
 Epsilon^3*PolyLog[3, x] +
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon, 1, 1 - Epsilon/2, x_] :> 
+Hypergeometric2F1[-Epsilon, 1, 1 - Epsilon/2, x_] :>
 (com["SH76"];
-1 + Epsilon*Log[1 - x] + Epsilon^2* (Log[1 - x]^2/2 + 
+1 + Epsilon*Log[1 - x] + Epsilon^2* (Log[1 - x]^2/2 +
      (-Log[1 - x]^2/2 - PolyLog[2, x])/2) + Epsilon^3*
-   (Log[1 - x]^3/6 + (-(Zeta2*Log[1 - x])/ 2 - 
+   (Log[1 - x]^3/6 + (-(Zeta2*Log[1 - x])/ 2 -
         Log[1 - x]^3/4 + (Log[1 - x]^2* Log[x])/4 + PolyLog[3, 1 - x]/
          2 - PolyLog[3, x]/2 - Zeta[3]/2)/2) + Epsilon^4*
-   (Log[1 - x]^4/24 + (PolyLog[4, -(x/(1 - x))]/4 + (Pi^4/15 + 
-          3*Zeta2* Log[1 - x]^2 + I*Pi* Log[1 - x]^3 - Log[1 - x]^4 + 
-          Log[1 - x]^3* Log[x] - 6* PolyLog[4, (1 - x)^(-1)] - 
-          6*Log[1 - x]* Zeta[3])/6 + (-Pi^4/45 - Zeta2* Log[1 - x]^2 - 
-          I/3*Pi* Log[1 - x]^3 + Log[1 - x]^4/4 - (Log[1 - x]^3* Log[x])/3 + 
+   (Log[1 - x]^4/24 + (PolyLog[4, -(x/(1 - x))]/4 + (Pi^4/15 +
+          3*Zeta2* Log[1 - x]^2 + I*Pi* Log[1 - x]^3 - Log[1 - x]^4 +
+          Log[1 - x]^3* Log[x] - 6* PolyLog[4, (1 - x)^(-1)] -
+          6*Log[1 - x]* Zeta[3])/6 + (-Pi^4/45 - Zeta2* Log[1 - x]^2 -
+          I/3*Pi* Log[1 - x]^3 + Log[1 - x]^4/4 - (Log[1 - x]^3* Log[x])/3 +
           2* PolyLog[4, (1 - x)^(-1)] - 2*PolyLog[4, x] - 2*
           PolyLog[4, -(x/(1 - x))] + 2*Log[1 - x]* Zeta[3])/4)/2) +
 Epsilon^5 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon, 
-                  1 - Epsilon/2, 2 - (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[1 - Epsilon,
+                  1 - Epsilon/2, 2 - (3*Epsilon)/2, x_] :>
 (com["SH75"];
    -(Log[1 - x]/x) + (3*Epsilon*
-(Zeta2 + Log[1 - x] - Log[1 - x]*Log[x] - PolyLog[2, 1 - x]))/(2*x) - 
-    (Epsilon^2*(9*Zeta2 + 2*Zeta2*Log[1 - x] - 9*Log[1 - x]*Log[x] - 
-         9*PolyLog[2, 1 - x] + 2*Log[1 - x]*PolyLog[2, 1 - x] - 
+(Zeta2 + Log[1 - x] - Log[1 - x]*Log[x] - PolyLog[2, 1 - x]))/(2*x) -
+    (Epsilon^2*(9*Zeta2 + 2*Zeta2*Log[1 - x] - 9*Log[1 - x]*Log[x] -
+         9*PolyLog[2, 1 - x] + 2*Log[1 - x]*PolyLog[2, 1 - x] -
          4*PolyLog[3, 1 - x] - 9*PolyLog[3, x] + 4*Zeta[3]))/(4*x)+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 + 2*Epsilon, 1 + Epsilon, 2 + 2*Epsilon, x_] :> 
+Hypergeometric2F1[1 + 2*Epsilon, 1 + Epsilon, 2 + 2*Epsilon, x_] :>
 (com["SH74"];
--(Log[1 - x]/x) - (Epsilon*(4*Zeta2 + 4*Log[1 - x] - Log[1 - x]^2 - 
-         4*Log[1 - x]*Log[x] - 4*PolyLog[2, 1 - x]))/(2*x) - 
-    (Epsilon^2*(24*Zeta2 - 6*Log[1 - x]^2 + Log[1 - x]^3 - 
-         24*Log[1 - x]*Log[x] + 6*Log[1 - x]^2*Log[x] - 
-         24*PolyLog[2, 1 - x] + 12*Log[1 - x]*PolyLog[2, 1 - x] - 
+-(Log[1 - x]/x) - (Epsilon*(4*Zeta2 + 4*Log[1 - x] - Log[1 - x]^2 -
+         4*Log[1 - x]*Log[x] - 4*PolyLog[2, 1 - x]))/(2*x) -
+    (Epsilon^2*(24*Zeta2 - 6*Log[1 - x]^2 + Log[1 - x]^3 -
+         24*Log[1 - x]*Log[x] + 6*Log[1 - x]^2*Log[x] -
+         24*PolyLog[2, 1 - x] + 12*Log[1 - x]*PolyLog[2, 1 - x] -
 12*PolyLog[3, 1 - x] - 24*PolyLog[3, x] + 12*Zeta[3]))/(6*x) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 1 - (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 1 - (3*Epsilon)/2, x_] :>
 (com["SH73"];
-   1 + (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] - 
+   1 + (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] -
       PolyLog[2, 1 - x]))/2  +  (3*Epsilon^3*PolyLog[3, x])/4 +
  Epsilon^4 F21CHECK
 )
-, 
-  Hypergeometric2F1[Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :> 
+,
+  Hypergeometric2F1[Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :>
 (com["SH72"];
-  1 + (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] - 
+  1 + (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] -
        PolyLog[2, 1 - x]))/2 - (3*Epsilon^3*PolyLog[3, x])/4 +
  Epsilon^4 F21CHECK
 )
@@ -656,7 +670,7 @@ Hypergeometric2F1[1 + Epsilon, 1 + Epsilon, 2 + 2*Epsilon, x_] :>
 (Zeta2 + Log[1 - x] - Log[1 - x]*Log[x] - PolyLog[2, 1 - x]))/x -
     (Epsilon^2*(4*Zeta2 + Zeta2*Log[1 - x] - 4*Log[1 - x]*Log[x] -
          4*PolyLog[2, 1 - x] + Log[1 - x]*PolyLog[2, 1 - x] -
-         2*PolyLog[3, 1 - x] - 4*PolyLog[3, x] + 2*Zeta[3]))/x + 
+         2*PolyLog[3, 1 - x] - 4*PolyLog[3, x] + 2*Zeta[3]))/x +
 Epsilon^3 F21CHECK
 )
 ,
@@ -680,7 +694,7 @@ Epsilon^3 F21CHECK
 Hypergeometric2F1[2 - Epsilon/2, -Epsilon, 3, x_] :>
 (com["SH67"];
    1 - (Epsilon*(2*x + x^2 + 2*Log[1 - x] - 2*x^2*Log[1 - x]))/(2*x^2) +
-(Epsilon^2*(4*x + 3*x^2 + 2*x^2*Zeta2 + 4*Log[1 - x] - 2*x*Log[1 - x] - 
+(Epsilon^2*(4*x + 3*x^2 + 2*x^2*Zeta2 + 4*Log[1 - x] - 2*x*Log[1 - x] -
          2*x^2*Log[1 - x] - 3*Log[1 - x]^2 + 3*x^2*Log[1 - x]^2 -
          2*x^2*Log[1 - x]*Log[x] - 2*x^2*PolyLog[2, 1 - x]))/(4*x^2)+
 Epsilon^3 F21CHECK
@@ -690,7 +704,7 @@ Hypergeometric2F1[-1 + Epsilon, 1 + (3*Epsilon)/2, 2 + 2*Epsilon, x_] :>
 (com["SH66"];
    (2 - x)/2 + (Epsilon*(1 - x)*(x + Log[1 - x] - x*Log[1 - x]))/(2*x) -
     (Epsilon^2*(10*x - 4*x^2 - 8*Zeta2 + 4*x*Zeta2 - 2*x^2*Zeta2 +
-2*Log[1 - x] + 2*x*Log[1 - x] - 4*x^2*Log[1 - x] + Log[1 - x]^2 - 
+2*Log[1 - x] + 2*x*Log[1 - x] - 4*x^2*Log[1 - x] + Log[1 - x]^2 -
          2*x*Log[1 - x]^2 + x^2*Log[1 - x]^2 + 8*Log[1 - x]*Log[x] -
          4*x*Log[1 - x]*Log[x] + 2*x^2*Log[1 - x]*Log[x] +
          8*PolyLog[2, 1 - x] - 4*x*PolyLog[2, 1 - x] +
@@ -698,24 +712,24 @@ Hypergeometric2F1[-1 + Epsilon, 1 + (3*Epsilon)/2, 2 + 2*Epsilon, x_] :>
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 2, x_] :> 
+Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 2, x_] :>
 (com["SH65"];
-   -(Log[1 - x]/x) - (3*Epsilon*Log[1 - x]^2)/(4*x) - 
-    (Epsilon^2*(4*Zeta2*Log[1 - x] + 3*Log[1 - x]^3 + 
+   -(Log[1 - x]/x) - (3*Epsilon*Log[1 - x]^2)/(4*x) -
+    (Epsilon^2*(4*Zeta2*Log[1 - x] + 3*Log[1 - x]^3 +
 4*Log[1 - x]*PolyLog[2, 1 - x] - 8*PolyLog[3, 1 - x] + 8*Zeta[3]))/
-     (8*x) + 
+     (8*x) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 5/2 - Epsilon/2, 
-   -(1 - x_Symbol)^2/(4*x_Symbol)] :> 
+Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 5/2 - Epsilon/2,
+   -(1 - x_Symbol)^2/(4*x_Symbol)] :>
 (com["SH64"];
-  (-6*x*(2 - 2*x + Log[x] + x*Log[x]))/(1 - x)^3 + 
-(Epsilon*x*(56 - 56*x - 12*Zeta2 - 12*x*Zeta2 + 40*Log[x] + 40*x*Log[x] + 
-        9*Log[x]^2 + 9*x*Log[x]^2 - 24*Log[x]*Log[1 + x] - 
-        24*x*Log[x]*Log[1 + x] + 12*PolyLog[2, 1 - x] + 
+  (-6*x*(2 - 2*x + Log[x] + x*Log[x]))/(1 - x)^3 +
+(Epsilon*x*(56 - 56*x - 12*Zeta2 - 12*x*Zeta2 + 40*Log[x] + 40*x*Log[x] +
+        9*Log[x]^2 + 9*x*Log[x]^2 - 24*Log[x]*Log[1 + x] -
+        24*x*Log[x]*Log[1 + x] + 12*PolyLog[2, 1 - x] +
 12*x*PolyLog[2, 1 - x] - 24*PolyLog[2, -x] - 24*x*PolyLog[2, -x]))/
-    (2*(1 - x)^3) + 
+    (2*(1 - x)^3) +
 Epsilon^2 F21CHECK
 )
 ,
@@ -723,14 +737,14 @@ Epsilon^2 F21CHECK
 Hypergeometric2F1[2 - Epsilon, 1 - Epsilon/2, 5/2 - Epsilon/2,
    -(1 - x_Symbol)^2/(4*x_Symbol)] :>
 (com["SH63"];
-6/(1 - x)^2 - 6/(1 - x) + (6*Log[x])/(1 - x)^3 - (9*Log[x])/(1 - x)^2 + 
+6/(1 - x)^2 - 6/(1 - x) + (6*Log[x])/(1 - x)^3 - (9*Log[x])/(1 - x)^2 +
    (3*Log[x])/(2*(1 - x)) + (3*Log[x])/(2*(1 + x)) +
    Epsilon*(-((x*(2 - 2*Pi^2*x - 2*x^2 + 3*Log[x] + 10*x*Log[x] +
              3*x^2*Log[x] + 9*x*Log[x]^2 - 24*x*Log[x]*Log[1 + x]))/
          ((1 - x)^3*(1 + x))) -
       (12*x^2*PolyLog[2, 1 - x])/((1 - x)^3*(1 + x)) +
       (24*x^2*PolyLog[2, -x])/((1 - x)^3*(1 + x))) +
-Epsilon^2*((x*(3 + x)*(1 + 3*x)*PolyLog[2, 1 - x])/((1 - x)^3*(1 + x)) - 
+Epsilon^2*((x*(3 + x)*(1 + 3*x)*PolyLog[2, 1 - x])/((1 - x)^3*(1 + x)) -
       (2*x*(3 + x)*(1 + 3*x)*PolyLog[2, -x])/((1 - x)^3*(1 + x)) -
       (36*x^2*PolyLog[3, 1 - x])/((1 - x)^3*(1 + x)) -
       (36*x^2*PolyLog[3, -x])/((1 - x)^3*(1 + x)) -
@@ -825,105 +839,105 @@ Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 5/2 - Epsilon/2,
       (12*Log[x]*Log[1 + x])/(1 - x) + (12*PolyLog[2, 1 - x])/(1 - x)^3 -
       (18*PolyLog[2, 1 - x])/(1 - x)^2 + (6*PolyLog[2, 1 - x])/(1 - x) -
       (24*PolyLog[2, -x])/(1 - x)^3 + (36*PolyLog[2, -x])/(1 - x)^2 -
-      (12*PolyLog[2, -x])/(1 - x)) + 
+      (12*PolyLog[2, -x])/(1 - x)) +
 Epsilon^2 F21CHECK
 )
 ,
 
 (* nonanalytic at x = 1 ... *)
-Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 1 - (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 1 - (3*Epsilon)/2, x_] :>
 (com["SH59"];
-   (1 - x)^(-1) + Epsilon^2*(Pi^2/(12*(1 - x)) - 
+   (1 - x)^(-1) + Epsilon^2*(Pi^2/(12*(1 - x)) -
 (Log[1 - x]*Log[x])/(2*(1 - x)) - PolyLog[2, 1 - x]/(2*(1 - x))) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 3/2 - Epsilon/2, 
-   -(1 - x_)^2/(4*x_)] :> 
+Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 3/2 - Epsilon/2,
+   -(1 - x_)^2/(4*x_)] :>
 (com["SH58"];
-  1 - (Epsilon*(2 - 2*x + Log[x] + x*Log[x]))/(2*(1 - x)) + 
-(Epsilon^2*(Pi^2 - Pi^2*x - 18*Zeta2 - 6*x*Zeta2 - 12*Log[1 - x]^2 - 
-        12*x*Log[1 - x]^2 + 12*Log[x] + 12*x*Log[x] + 3*Log[x]^2 + 
-        15*x*Log[x]^2 - 12*Log[1 - x]*Log[1 + x] - 
-        12*x*Log[1 - x]*Log[1 + x] - 24*Log[x]*Log[1 + x] - 
-        24*x*Log[x]*Log[1 + x] + 12*Log[1 - x]*Log[1 - x^2] + 
-        12*x*Log[1 - x]*Log[1 - x^2] + 12*PolyLog[2, 1 - x] + 
+  1 - (Epsilon*(2 - 2*x + Log[x] + x*Log[x]))/(2*(1 - x)) +
+(Epsilon^2*(Pi^2 - Pi^2*x - 18*Zeta2 - 6*x*Zeta2 - 12*Log[1 - x]^2 -
+        12*x*Log[1 - x]^2 + 12*Log[x] + 12*x*Log[x] + 3*Log[x]^2 +
+        15*x*Log[x]^2 - 12*Log[1 - x]*Log[1 + x] -
+        12*x*Log[1 - x]*Log[1 + x] - 24*Log[x]*Log[1 + x] -
+        24*x*Log[x]*Log[1 + x] + 12*Log[1 - x]*Log[1 - x^2] +
+        12*x*Log[1 - x]*Log[1 - x^2] + 12*PolyLog[2, 1 - x] +
 12*x*PolyLog[2, 1 - x] - 24*PolyLog[2, -x] - 24*x*PolyLog[2, -x]))/
     (24*(1 - x)) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, (-3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, (-3*Epsilon)/2, x_] :>
 (com["SH57"];
   1 + (Epsilon*Log[1 - x])/3 + (Epsilon^3*
-      (Zeta2*Log[1 - x] + Log[1 - x]*PolyLog[2, 1 - x] - 
+      (Zeta2*Log[1 - x] + Log[1 - x]*PolyLog[2, 1 - x] -
         2*PolyLog[3, 1 - x] + 2*Zeta[3]))/6 +
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[1 + Epsilon/2, 1 + Epsilon, 2 + (3*Epsilon)/2, 
-               x_] :> 
+Hypergeometric2F1[1 + Epsilon/2, 1 + Epsilon, 2 + (3*Epsilon)/2,
+               x_] :>
 (com["SH56"];
--(Log[1 - x]/x) + Epsilon*((-3*Zeta2)/(2*x) - (3*Log[1 - x])/(2*x) + 
-      (3*Log[1 - x]*Log[x])/(2*x) + (3*PolyLog[2, 1 - x])/(2*x)) + 
-   Epsilon^2*((-9*Zeta2)/(4*x) - (Zeta2*Log[1 - x])/(2*x) + 
-      (9*Log[1 - x]*Log[x])/(4*x) + (9*PolyLog[2, 1 - x])/(4*x) - 
-      (Log[1 - x]*PolyLog[2, 1 - x])/(2*x) + PolyLog[3, 1 - x]/x + 
-      (9*PolyLog[3, x])/(4*x) - Zeta[3]/x) + 
+-(Log[1 - x]/x) + Epsilon*((-3*Zeta2)/(2*x) - (3*Log[1 - x])/(2*x) +
+      (3*Log[1 - x]*Log[x])/(2*x) + (3*PolyLog[2, 1 - x])/(2*x)) +
+   Epsilon^2*((-9*Zeta2)/(4*x) - (Zeta2*Log[1 - x])/(2*x) +
+      (9*Log[1 - x]*Log[x])/(4*x) + (9*PolyLog[2, 1 - x])/(4*x) -
+      (Log[1 - x]*PolyLog[2, 1 - x])/(2*x) + PolyLog[3, 1 - x]/x +
+      (9*PolyLog[3, x])/(4*x) - Zeta[3]/x) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2, 
-    -(1 - x_)^2/(4*x_)] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2,
+    -(1 - x_)^2/(4*x_)] :>
 (com["SH55"];
-   1 + Epsilon^2*(-2 + Log[x] - 
- (2*Log[x])/(1 - x) - Log[x]^2/4) + 
+   1 + Epsilon^2*(-2 + Log[x] -
+ (2*Log[x])/(1 - x) - Log[x]^2/4) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2, 
-    -(1 - x_)^2/(4*x_)] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2,
+    -(1 - x_)^2/(4*x_)] :>
 (com["SH54"];
 1 + Epsilon^2*(-2 + Log[x] - (2*Log[x])/(1 - x) - Log[x]^2/4)+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-1 - Epsilon/2, 1, 1 + Epsilon/2, x_] :> 
+Hypergeometric2F1[-1 - Epsilon/2, 1, 1 + Epsilon/2, x_] :>
 (com["SH53"];
-   1 - x + Epsilon*(x/2 + Log[1 - x]/2 - (x*Log[1 - x])/2) + 
-    Epsilon^2*(-x/2 + Zeta2/4 - (x*Zeta2)/4 - Log[1 - x]/4 + 
-       (x*Log[1 - x])/4 + Log[1 - x]^2/4 - (x*Log[1 - x]^2)/4 - 
-       (Log[1 - x]*Log[x])/4 + (x*Log[1 - x]*Log[x])/4 - 
-       PolyLog[2, 1 - x]/4 + (x*PolyLog[2, 1 - x])/4) + 
-    Epsilon^3*(x/2 - Zeta2/8 + (x*Zeta2)/8 + Log[1 - x]/4 - 
-(x*Log[1 - x])/4 + (Zeta2*Log[1 - x])/4 - (x*Zeta2*Log[1 - x])/4 - 
-       Log[1 - x]^2/8 + (x*Log[1 - x]^2)/8 + Log[1 - x]^3/12 - 
-       (x*Log[1 - x]^3)/12 + (Log[1 - x]*Log[x])/8 - 
-       (x*Log[1 - x]*Log[x])/8 - (Log[1 - x]^2*Log[x])/8 + 
-       (x*Log[1 - x]^2*Log[x])/8 + PolyLog[2, 1 - x]/8 - 
-       (x*PolyLog[2, 1 - x])/8 - PolyLog[3, 1 - x]/4 + 
-(x*PolyLog[3, 1 - x])/4 - PolyLog[3, x]/8 + (x*PolyLog[3, x])/8 + 
+   1 - x + Epsilon*(x/2 + Log[1 - x]/2 - (x*Log[1 - x])/2) +
+    Epsilon^2*(-x/2 + Zeta2/4 - (x*Zeta2)/4 - Log[1 - x]/4 +
+       (x*Log[1 - x])/4 + Log[1 - x]^2/4 - (x*Log[1 - x]^2)/4 -
+       (Log[1 - x]*Log[x])/4 + (x*Log[1 - x]*Log[x])/4 -
+       PolyLog[2, 1 - x]/4 + (x*PolyLog[2, 1 - x])/4) +
+    Epsilon^3*(x/2 - Zeta2/8 + (x*Zeta2)/8 + Log[1 - x]/4 -
+(x*Log[1 - x])/4 + (Zeta2*Log[1 - x])/4 - (x*Zeta2*Log[1 - x])/4 -
+       Log[1 - x]^2/8 + (x*Log[1 - x]^2)/8 + Log[1 - x]^3/12 -
+       (x*Log[1 - x]^3)/12 + (Log[1 - x]*Log[x])/8 -
+       (x*Log[1 - x]*Log[x])/8 - (Log[1 - x]^2*Log[x])/8 +
+       (x*Log[1 - x]^2*Log[x])/8 + PolyLog[2, 1 - x]/8 -
+       (x*PolyLog[2, 1 - x])/8 - PolyLog[3, 1 - x]/4 +
+(x*PolyLog[3, 1 - x])/4 - PolyLog[3, x]/8 + (x*PolyLog[3, x])/8 +
        Zeta[3]/4 - (x*Zeta[3])/4)+
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[1 + Epsilon/2, 1 + Epsilon, 2 + Epsilon/2, x_] :> 
+Hypergeometric2F1[1 + Epsilon/2, 1 + Epsilon, 2 + Epsilon/2, x_] :>
 (com["SH52"];
-   -(Log[1 - x]/x) + Epsilon*(-Zeta2/(2*x) - Log[1 - x]/(2*x) + 
-       Log[1 - x]^2/(2*x) + (Log[1 - x]*Log[x])/(2*x) + 
-       PolyLog[2, 1 - x]/(2*x)) + 
-Epsilon^2*(-Zeta2/(4*x) + Log[1 - x]^2/(4*x) - Log[1 - x]^3/(6*x) + 
-       (Log[1 - x]*Log[x])/(4*x) - (Log[1 - x]^2*Log[x])/(4*x) + 
-PolyLog[2, 1 - x]/(4*x) - (Log[1 - x]*PolyLog[2, 1 - x])/(2*x) + 
+   -(Log[1 - x]/x) + Epsilon*(-Zeta2/(2*x) - Log[1 - x]/(2*x) +
+       Log[1 - x]^2/(2*x) + (Log[1 - x]*Log[x])/(2*x) +
+       PolyLog[2, 1 - x]/(2*x)) +
+Epsilon^2*(-Zeta2/(4*x) + Log[1 - x]^2/(4*x) - Log[1 - x]^3/(6*x) +
+       (Log[1 - x]*Log[x])/(4*x) - (Log[1 - x]^2*Log[x])/(4*x) +
+PolyLog[2, 1 - x]/(4*x) - (Log[1 - x]*PolyLog[2, 1 - x])/(2*x) +
 PolyLog[3, 1 - x]/(2*x) + PolyLog[3, x]/(4*x) - Zeta[3]/(2*x)) +
 Epsilon^3 F21CHECK
 )
-, 
-  Hypergeometric2F1[Epsilon/2, 1 + Epsilon, 1 + Epsilon/2, x_] :> 
+,
+  Hypergeometric2F1[Epsilon/2, 1 + Epsilon, 1 + Epsilon/2, x_] :>
 (com["SH51"];
-   1 - (Epsilon*Log[1 - x])/2 + 
-    Epsilon^2*(Zeta2/4 + Log[1 - x]^2/4 - (Log[1 - x]*Log[x])/4 - 
-       PolyLog[2, 1 - x]/4) + 
+   1 - (Epsilon*Log[1 - x])/2 +
+    Epsilon^2*(Zeta2/4 + Log[1 - x]^2/4 - (Log[1 - x]*Log[x])/4 -
+       PolyLog[2, 1 - x]/4) +
 Epsilon^3 F21CHECK
 )
 ,
@@ -948,245 +962,245 @@ Hypergeometric2F1[1 - Epsilon/2, 2 + Epsilon/2, 4 - Epsilon/2, u_] :>
        (3*Log[1 - u]*PolyLog[2, 1 - u])/(2*u^2) +
        (3*PolyLog[3, 1 - u])/(2*u^3) - (3*PolyLog[3, 1 - u])/(2*u^2) -
        (3*PolyLog[3, u])/(2*u^3) + (3*PolyLog[3, u])/(2*u^2) -
-       (3*Zeta[3])/(2*u^3) + (3*Zeta[3])/(2*u^2)) + 
+       (3*Zeta[3])/(2*u^3) + (3*Zeta[3])/(2*u^2)) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[2 - Epsilon, -Epsilon/2, 2 - (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[2 - Epsilon, -Epsilon/2, 2 - (3*Epsilon)/2, x_] :>
 (com["SH49"];
-   1 + (Epsilon*Log[1 - x])/2 + 
-Epsilon^2*(-1/4 - Zeta2/4 - Log[1 - x]/(4*x) + (Log[1 - x]*Log[x])/4 + 
-       PolyLog[2, 1 - x]/4) + 
+   1 + (Epsilon*Log[1 - x])/2 +
+Epsilon^2*(-1/4 - Zeta2/4 - Log[1 - x]/(4*x) + (Log[1 - x]*Log[x])/4 +
+       PolyLog[2, 1 - x]/4) +
 Epsilon^3 F21CHECK
 )
 ,
 (* highly nontrivial ... *)
-Hypergeometric2F1[1 + Epsilon/2, -1 + Epsilon, (3*Epsilon)/2, y_] :> 
+Hypergeometric2F1[1 + Epsilon/2, -1 + Epsilon, (3*Epsilon)/2, y_] :>
 (com["SH48"];
-  (-2*y)/(3*Epsilon) + (3 + y + 2*y*Log[1 - y])/3 - 
-   (Epsilon*(-12*y*Zeta2 + 6*Log[1 - y] + 6*y*Log[1 - y] + 
-        12*y*Log[1 - y]*Log[y] + 12*y*PolyLog[2, 1 - y]))/18 + 
-(Epsilon^2*y*(-6*Zeta2 + 6*Zeta2*Log[1 - y] + 6*Log[1 - y]*Log[y] + 
-        6*PolyLog[2, 1 - y] + 6*Log[1 - y]*PolyLog[2, 1 - y] - 
+  (-2*y)/(3*Epsilon) + (3 + y + 2*y*Log[1 - y])/3 -
+   (Epsilon*(-12*y*Zeta2 + 6*Log[1 - y] + 6*y*Log[1 - y] +
+        12*y*Log[1 - y]*Log[y] + 12*y*PolyLog[2, 1 - y]))/18 +
+(Epsilon^2*y*(-6*Zeta2 + 6*Zeta2*Log[1 - y] + 6*Log[1 - y]*Log[y] +
+        6*PolyLog[2, 1 - y] + 6*Log[1 - y]*PolyLog[2, 1 - y] -
         12*PolyLog[3, 1 - y] - 18*PolyLog[3, y] + 12*Zeta[3]))/18 +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[3, 3 + Epsilon, 4 + 2*Epsilon, u_] :> 
+Hypergeometric2F1[3, 3 + Epsilon, 4 + 2*Epsilon, u_] :>
 (com["SH47"];
-3/(2*(1 - u)^2) - 3/(2*(1 - u)) - 3/u^2 - 3/(2*u) - (3*Log[1 - u])/u^3 + 
-    Epsilon*(7/(4*(1 - u)^2) - 31/(4*(1 - u)) - 19/(2*u^2) - 31/(4*u) - 
-       (6*Zeta2)/u^3 + (3*Log[1 - u])/(2*(1 - u)^2) - 
-       (3*Log[1 - u])/(2*(1 - u)) - (31*Log[1 - u])/(2*u^3) - 
-       (3*Log[1 - u])/u^2 - (3*Log[1 - u])/(2*u) - 
-       (3*Log[1 - u]^2)/(2*u^3) + (6*Log[1 - u]*Log[u])/u^3 + 
-       (6*PolyLog[2, 1 - u])/u^3) + 
-Epsilon^2*(-23/(8*(1 - u)^2) - 81/(8*(1 - u)) - 29/(4*u^2) - 81/(8*u) + 
-       (3*Zeta2)/(1 - u)^2 - (3*Zeta2)/(1 - u) - (31*Zeta2)/u^3 - 
-       (6*Zeta2)/u^2 - (3*Zeta2)/u + (7*Log[1 - u])/(4*(1 - u)^2) - 
-       (43*Log[1 - u])/(4*(1 - u)) - (105*Log[1 - u])/(4*u^3) - 
-       (25*Log[1 - u])/(2*u^2) - (43*Log[1 - u])/(4*u) - 
-       (6*Zeta2*Log[1 - u])/u^3 + (3*Log[1 - u]^2)/(4*(1 - u)^2) - 
-       (3*Log[1 - u]^2)/(4*(1 - u)) - (31*Log[1 - u]^2)/(4*u^3) - 
-       (3*Log[1 - u]^2)/(2*u^2) - (3*Log[1 - u]^2)/(4*u) - 
-       Log[1 - u]^3/(2*u^3) - (3*Log[1 - u]*Log[u])/(1 - u)^2 + 
-       (3*Log[1 - u]*Log[u])/(1 - u) + (31*Log[1 - u]*Log[u])/u^3 + 
-       (6*Log[1 - u]*Log[u])/u^2 + (3*Log[1 - u]*Log[u])/u + 
-       (3*Log[1 - u]^2*Log[u])/u^3 - (3*PolyLog[2, 1 - u])/(1 - u)^2 + 
-       (3*PolyLog[2, 1 - u])/(1 - u) + (31*PolyLog[2, 1 - u])/u^3 + 
-       (6*PolyLog[2, 1 - u])/u^2 + (3*PolyLog[2, 1 - u])/u + 
+3/(2*(1 - u)^2) - 3/(2*(1 - u)) - 3/u^2 - 3/(2*u) - (3*Log[1 - u])/u^3 +
+    Epsilon*(7/(4*(1 - u)^2) - 31/(4*(1 - u)) - 19/(2*u^2) - 31/(4*u) -
+       (6*Zeta2)/u^3 + (3*Log[1 - u])/(2*(1 - u)^2) -
+       (3*Log[1 - u])/(2*(1 - u)) - (31*Log[1 - u])/(2*u^3) -
+       (3*Log[1 - u])/u^2 - (3*Log[1 - u])/(2*u) -
+       (3*Log[1 - u]^2)/(2*u^3) + (6*Log[1 - u]*Log[u])/u^3 +
+       (6*PolyLog[2, 1 - u])/u^3) +
+Epsilon^2*(-23/(8*(1 - u)^2) - 81/(8*(1 - u)) - 29/(4*u^2) - 81/(8*u) +
+       (3*Zeta2)/(1 - u)^2 - (3*Zeta2)/(1 - u) - (31*Zeta2)/u^3 -
+       (6*Zeta2)/u^2 - (3*Zeta2)/u + (7*Log[1 - u])/(4*(1 - u)^2) -
+       (43*Log[1 - u])/(4*(1 - u)) - (105*Log[1 - u])/(4*u^3) -
+       (25*Log[1 - u])/(2*u^2) - (43*Log[1 - u])/(4*u) -
+       (6*Zeta2*Log[1 - u])/u^3 + (3*Log[1 - u]^2)/(4*(1 - u)^2) -
+       (3*Log[1 - u]^2)/(4*(1 - u)) - (31*Log[1 - u]^2)/(4*u^3) -
+       (3*Log[1 - u]^2)/(2*u^2) - (3*Log[1 - u]^2)/(4*u) -
+       Log[1 - u]^3/(2*u^3) - (3*Log[1 - u]*Log[u])/(1 - u)^2 +
+       (3*Log[1 - u]*Log[u])/(1 - u) + (31*Log[1 - u]*Log[u])/u^3 +
+       (6*Log[1 - u]*Log[u])/u^2 + (3*Log[1 - u]*Log[u])/u +
+       (3*Log[1 - u]^2*Log[u])/u^3 - (3*PolyLog[2, 1 - u])/(1 - u)^2 +
+       (3*PolyLog[2, 1 - u])/(1 - u) + (31*PolyLog[2, 1 - u])/u^3 +
+       (6*PolyLog[2, 1 - u])/u^2 + (3*PolyLog[2, 1 - u])/u +
 (6*PolyLog[3, 1 - u])/u^3 + (12*PolyLog[3, u])/u^3 - (6*Zeta[3])/u^3)+
 Epsilon^3 F21CHECK
 )
-, 
-  Hypergeometric2F1[1 + Epsilon/2, -Epsilon/2, 3 - Epsilon/2, u_] :> 
+,
+  Hypergeometric2F1[1 + Epsilon/2, -Epsilon/2, 3 - Epsilon/2, u_] :>
 (com["SH46"];
-   1 + Epsilon*(-3/4 + 1/(2*u) + Log[1 - u]/2 + Log[1 - u]/(2*u^2) - 
+   1 + Epsilon*(-3/4 + 1/(2*u) + Log[1 - u]/2 + Log[1 - u]/(2*u^2) -
        Log[1 - u]/u) + Epsilon^2*
-     (1/8 + 1/(8*u) - Zeta2/2 - Zeta2/(4*u^2) + Zeta2/(2*u) - 
-       (3*Log[1 - u])/8 - Log[1 - u]/(8*u^2) + Log[1 - u]/(2*u) - 
-       Log[1 - u]^2/8 - Log[1 - u]^2/(8*u^2) + Log[1 - u]^2/(4*u) + 
-       (Log[1 - u]*Log[u])/2 + (Log[1 - u]*Log[u])/(4*u^2) - 
-       (Log[1 - u]*Log[u])/(2*u) + PolyLog[2, 1 - u]/2 + 
+     (1/8 + 1/(8*u) - Zeta2/2 - Zeta2/(4*u^2) + Zeta2/(2*u) -
+       (3*Log[1 - u])/8 - Log[1 - u]/(8*u^2) + Log[1 - u]/(2*u) -
+       Log[1 - u]^2/8 - Log[1 - u]^2/(8*u^2) + Log[1 - u]^2/(4*u) +
+       (Log[1 - u]*Log[u])/2 + (Log[1 - u]*Log[u])/(4*u^2) -
+       (Log[1 - u]*Log[u])/(2*u) + PolyLog[2, 1 - u]/2 +
        PolyLog[2, 1 - u]/(4*u^2) - PolyLog[2, 1 - u]/(2*u))+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[2 - Epsilon, -Epsilon/2, 1 - (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[2 - Epsilon, -Epsilon/2, 1 - (3*Epsilon)/2, x_] :>
 (com["SH45"];
-   1 - (Epsilon*(x - Log[1 - x] + x*Log[1 - x]))/(2*(1 - x)) + 
-    (Epsilon^2*(-6*x - 3*Zeta2 + 3*x*Zeta2 + 3*Log[1 - x] - 
-3*x*Log[1 - x] + 3*Log[1 - x]*Log[x] - 3*x*Log[1 - x]*Log[x] + 
+   1 - (Epsilon*(x - Log[1 - x] + x*Log[1 - x]))/(2*(1 - x)) +
+    (Epsilon^2*(-6*x - 3*Zeta2 + 3*x*Zeta2 + 3*Log[1 - x] -
+3*x*Log[1 - x] + 3*Log[1 - x]*Log[x] - 3*x*Log[1 - x]*Log[x] +
          3*PolyLog[2, 1 - x] - 3*x*PolyLog[2, 1 - x]))/(12*(1 - x))+
 Epsilon^3 F21CHECK
 )
-, 
-  Hypergeometric2F1[2 + Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :> 
+,
+  Hypergeometric2F1[2 + Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :>
 (com["SH44"];
-   1 + (Epsilon*(x - Log[1 - x] + x*Log[1 - x]))/(1 - x) + 
-    (Epsilon^2*(-6*x - 12*Zeta2 + 12*x*Zeta2 + 12*Log[1 - x] - 
-12*x*Log[1 - x] + 12*Log[1 - x]*Log[x] - 12*x*Log[1 - x]*Log[x] + 
+   1 + (Epsilon*(x - Log[1 - x] + x*Log[1 - x]))/(1 - x) +
+    (Epsilon^2*(-6*x - 12*Zeta2 + 12*x*Zeta2 + 12*Log[1 - x] -
+12*x*Log[1 - x] + 12*Log[1 - x]*Log[x] - 12*x*Log[1 - x]*Log[x] +
 12*PolyLog[2, 1 - x] - 12*x*PolyLog[2, 1 - x]))/(12*(1 - x))+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 + Epsilon/2, Epsilon, 2 + (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[1 + Epsilon/2, Epsilon, 2 + (3*Epsilon)/2, x_] :>
 (com["SH43"];
-   1 + (Epsilon*(x + Log[1 - x] - x*Log[1 - x]))/x - 
-    (Epsilon^2*(6*x - 18*Zeta2 + 12*x*Zeta2 - 12*Log[1 - x] + 
-12*x*Log[1 - x] + 18*Log[1 - x]*Log[x] - 12*x*Log[1 - x]*Log[x] + 
+   1 + (Epsilon*(x + Log[1 - x] - x*Log[1 - x]))/x -
+    (Epsilon^2*(6*x - 18*Zeta2 + 12*x*Zeta2 - 12*Log[1 - x] +
+12*x*Log[1 - x] + 18*Log[1 - x]*Log[x] - 12*x*Log[1 - x]*Log[x] +
          18*PolyLog[2, 1 - x] - 12*x*PolyLog[2, 1 - x]))/(12*x)+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon, -1 - Epsilon/2, (-3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[-Epsilon, -1 - Epsilon/2, (-3*Epsilon)/2, x_] :>
 (com["SH42"];
-  (3 - 2*x)/3 + (Epsilon*(1 - x)*Log[1 - x])/3 + 
-(Epsilon^2*x*PolyLog[2, x])/6 + 
+  (3 - 2*x)/3 + (Epsilon*(1 - x)*Log[1 - x])/3 +
+(Epsilon^2*x*PolyLog[2, x])/6 +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 1 - (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 1 - (3*Epsilon)/2, x_] :>
 (com["SH41"];
-   1 + (Epsilon*Log[1 - x])/2 + 
+   1 + (Epsilon*Log[1 - x])/2 +
 (Epsilon^2*( - 3*Zeta2 + 3*Log[1 - x]*Log[x] + 3*PolyLog[2, 1 - x])
 )/12 +
 Epsilon^3 F21CHECK
 )
-, 
-Hypergeometric2F1[1 + Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :> 
+,
+Hypergeometric2F1[1 + Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :>
 (com["SH40"];
    1 - Epsilon*Log[1 - x] + (Epsilon^2*
 (- 12*Zeta2 + 12*Log[1 - x]*Log[x] + 12*PolyLog[2, 1 - x]))/12+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[2 + Epsilon/2, 2 + Epsilon, 3 + (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[2 + Epsilon/2, 2 + Epsilon, 3 + (3*Epsilon)/2, x_] :>
 (com["SH39"];
-   (2*(x + Log[1 - x] - x*Log[1 - x]))/((1 - x)*x^2) + 
-    (3*Epsilon*(x + 2*Zeta2 - 2*x*Zeta2 + 3*Log[1 - x] - 3*x*Log[1 - x] - 
-         2*Log[1 - x]*Log[x] + 2*x*Log[1 - x]*Log[x] - 
-         2*PolyLog[2, 1 - x] + 2*x*PolyLog[2, 1 - x]))/(2*(1 - x)*x^2) - 
-    (Epsilon^2*(12*x - 2*Pi^2*x - 81*Zeta2 + 81*x*Zeta2 - 15*Log[1 - x] - 
-         2*Pi^2*Log[1 - x] + 15*x*Log[1 - x] + 2*Pi^2*x*Log[1 - x] + 
-         81*Log[1 - x]*Log[x] - 69*x*Log[1 - x]*Log[x] + 
-         81*PolyLog[2, 1 - x] - 69*x*PolyLog[2, 1 - x] - 
-         12*Log[1 - x]*PolyLog[2, 1 - x] + 
-         12*x*Log[1 - x]*PolyLog[2, 1 - x] + 24*PolyLog[3, 1 - x] - 
-         24*x*PolyLog[3, 1 - x] + 54*PolyLog[3, x] - 54*x*PolyLog[3, x] - 
+   (2*(x + Log[1 - x] - x*Log[1 - x]))/((1 - x)*x^2) +
+    (3*Epsilon*(x + 2*Zeta2 - 2*x*Zeta2 + 3*Log[1 - x] - 3*x*Log[1 - x] -
+         2*Log[1 - x]*Log[x] + 2*x*Log[1 - x]*Log[x] -
+         2*PolyLog[2, 1 - x] + 2*x*PolyLog[2, 1 - x]))/(2*(1 - x)*x^2) -
+    (Epsilon^2*(12*x - 2*Pi^2*x - 81*Zeta2 + 81*x*Zeta2 - 15*Log[1 - x] -
+         2*Pi^2*Log[1 - x] + 15*x*Log[1 - x] + 2*Pi^2*x*Log[1 - x] +
+         81*Log[1 - x]*Log[x] - 69*x*Log[1 - x]*Log[x] +
+         81*PolyLog[2, 1 - x] - 69*x*PolyLog[2, 1 - x] -
+         12*Log[1 - x]*PolyLog[2, 1 - x] +
+         12*x*Log[1 - x]*PolyLog[2, 1 - x] + 24*PolyLog[3, 1 - x] -
+         24*x*PolyLog[3, 1 - x] + 54*PolyLog[3, x] - 54*x*PolyLog[3, x] -
          24*Zeta[3] + 24*x*Zeta[3]))/(12*(1 - x)*x^2)+
 Epsilon^3 F21CHECK
 )
-, 
-  Hypergeometric2F1[-Epsilon, -Epsilon/2, -1 - (3*Epsilon)/2, x_] :> 
+,
+  Hypergeometric2F1[-Epsilon, -Epsilon/2, -1 - (3*Epsilon)/2, x_] :>
 (com["SH38"];
-   1 + Epsilon^2*(1/2 - 1/(2*(1 - x))) + 
+   1 + Epsilon^2*(1/2 - 1/(2*(1 - x))) +
     Epsilon*(-1/3 + 1/(3*(1 - x)) + Log[1 - x]/3) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-2 - Epsilon/2, 1, 1 + Epsilon/2, x_] :> 
+Hypergeometric2F1[-2 - Epsilon/2, 1, 1 + Epsilon/2, x_] :>
 (com["SH37"];
-  1 - 2*x + x^2 + Epsilon*(x - (3*x^2)/4 + Log[1 - x]/2 - 
-   x*Log[1 - x] + 
+  1 - 2*x + x^2 + Epsilon*(x - (3*x^2)/4 + Log[1 - x]/2 -
+   x*Log[1 - x] +
       (x^2*Log[1 - x])/2) + Epsilon^2*
-  ((-7*x)/8 + (3*x^2)/4 + Zeta2/4 - (x*Zeta2)/2 + (x^2*Zeta2)/4 - 
-    (3*Log[1 - x])/8 + (3*x*Log[1 - x])/4 - (3*x^2*Log[1 - x])/8 + 
-      Log[1 - x]^2/4 - (x*Log[1 - x]^2)/2 + (x^2*Log[1 - x]^2)/4 - 
-      (Log[1 - x]*Log[x])/4 + (x*Log[1 - x]*Log[x])/2 - 
-      (x^2*Log[1 - x]*Log[x])/4 - PolyLog[2, 1 - x]/4 + 
+  ((-7*x)/8 + (3*x^2)/4 + Zeta2/4 - (x*Zeta2)/2 + (x^2*Zeta2)/4 -
+    (3*Log[1 - x])/8 + (3*x*Log[1 - x])/4 - (3*x^2*Log[1 - x])/8 +
+      Log[1 - x]^2/4 - (x*Log[1 - x]^2)/2 + (x^2*Log[1 - x]^2)/4 -
+      (Log[1 - x]*Log[x])/4 + (x*Log[1 - x]*Log[x])/2 -
+      (x^2*Log[1 - x]*Log[x])/4 - PolyLog[2, 1 - x]/4 +
       (x*PolyLog[2, 1 - x])/2 - (x^2*PolyLog[2, 1 - x])/4) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-1 - Epsilon/2, 1, 2 + Epsilon/2, x_] :> 
+Hypergeometric2F1[-1 - Epsilon/2, 1, 2 + Epsilon/2, x_] :>
 (com["SH36"];
-  (2 - x)/2 - (Epsilon*(1 - x)*(x + Log[1 - x] - x*Log[1 - x]))/(4*x) + 
-(Epsilon^2*(1 - x)*(2*x - Zeta2 + x*Zeta2 + Log[1 - x] - x*Log[1 - x] - 
-        Log[1 - x]^2 + x*Log[1 - x]^2 + Log[1 - x]*Log[x] - 
+  (2 - x)/2 - (Epsilon*(1 - x)*(x + Log[1 - x] - x*Log[1 - x]))/(4*x) +
+(Epsilon^2*(1 - x)*(2*x - Zeta2 + x*Zeta2 + Log[1 - x] - x*Log[1 - x] -
+        Log[1 - x]^2 + x*Log[1 - x]^2 + Log[1 - x]*Log[x] -
 x*Log[1 - x]*Log[x] + PolyLog[2, 1 - x] - x*PolyLog[2, 1 - x]))/(8*x)+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1, -Epsilon/2, 2 + Epsilon/2, x_] :> 
+Hypergeometric2F1[1, -Epsilon/2, 2 + Epsilon/2, x_] :>
 (com["SH35"];
-  1 - (Epsilon*(x + Log[1 - x] - x*Log[1 - x]))/(2*x) + 
-   (Epsilon^2*(2*x - Zeta2 + x*Zeta2 + Log[1 - x] - x*Log[1 - x] - 
-        Log[1 - x]^2 + x*Log[1 - x]^2 + Log[1 - x]*Log[x] - 
+  1 - (Epsilon*(x + Log[1 - x] - x*Log[1 - x]))/(2*x) +
+   (Epsilon^2*(2*x - Zeta2 + x*Zeta2 + Log[1 - x] - x*Log[1 - x] -
+        Log[1 - x]^2 + x*Log[1 - x]^2 + Log[1 - x]*Log[x] -
 x*Log[1 - x]*Log[x] + PolyLog[2, 1 - x] - x*PolyLog[2, 1 - x]))/(4*x)+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1, 3 + Epsilon, 3 + 2*Epsilon, u_] :> 
+Hypergeometric2F1[1, 3 + Epsilon, 3 + 2*Epsilon, u_] :>
 (com["SH34"];
-  (1 - u)^(-1) + Epsilon*(3/(2*(1 - u)) + u^(-1) + Log[1 - u]/(1 - u) + 
-      Log[1 - u]/u^2 + Log[1 - u]/u) + 
-Epsilon^2*(-3/(4*(1 - u)) - 1/(2*u) + (2*Zeta2)/(1 - u) + (2*Zeta2)/u^2 + 
-      (2*Zeta2)/u + (3*Log[1 - u])/(2*(1 - u)) + (3*Log[1 - u])/(2*u^2) + 
-      (3*Log[1 - u])/(2*u) + Log[1 - u]^2/(2*(1 - u)) + 
-      Log[1 - u]^2/(2*u^2) + Log[1 - u]^2/(2*u) - 
-      (2*Log[1 - u]*Log[u])/(1 - u) - (2*Log[1 - u]*Log[u])/u^2 - 
-      (2*Log[1 - u]*Log[u])/u - (2*PolyLog[2, 1 - u])/(1 - u) - 
+  (1 - u)^(-1) + Epsilon*(3/(2*(1 - u)) + u^(-1) + Log[1 - u]/(1 - u) +
+      Log[1 - u]/u^2 + Log[1 - u]/u) +
+Epsilon^2*(-3/(4*(1 - u)) - 1/(2*u) + (2*Zeta2)/(1 - u) + (2*Zeta2)/u^2 +
+      (2*Zeta2)/u + (3*Log[1 - u])/(2*(1 - u)) + (3*Log[1 - u])/(2*u^2) +
+      (3*Log[1 - u])/(2*u) + Log[1 - u]^2/(2*(1 - u)) +
+      Log[1 - u]^2/(2*u^2) + Log[1 - u]^2/(2*u) -
+      (2*Log[1 - u]*Log[u])/(1 - u) - (2*Log[1 - u]*Log[u])/u^2 -
+      (2*Log[1 - u]*Log[u])/u - (2*PolyLog[2, 1 - u])/(1 - u) -
       (2*PolyLog[2, 1 - u])/u^2 - (2*PolyLog[2, 1 - u])/u) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1, 1 + Epsilon, 2 + 2*Epsilon, x_] :> 
+Hypergeometric2F1[1, 1 + Epsilon, 2 + 2*Epsilon, x_] :>
 (com["SH33"];
-  -(Log[1 - x]/x) - (Epsilon*(4*Zeta2 + 4*Log[1 - x] + Log[1 - x]^2 - 
-        4*Log[1 - x]*Log[x] - 4*PolyLog[2, 1 - x]))/(2*x) - 
-   (Epsilon^2*(24*Zeta2 + 12*Zeta2*Log[1 - x] + 6*Log[1 - x]^2 + 
-        Log[1 - x]^3 - 24*Log[1 - x]*Log[x] - 6*Log[1 - x]^2*Log[x] - 
-        24*PolyLog[2, 1 - x] - 12*PolyLog[3, 1 - x] - 24*PolyLog[3, x] + 
-        12*Zeta[3]))/(6*x) + 
+  -(Log[1 - x]/x) - (Epsilon*(4*Zeta2 + 4*Log[1 - x] + Log[1 - x]^2 -
+        4*Log[1 - x]*Log[x] - 4*PolyLog[2, 1 - x]))/(2*x) -
+   (Epsilon^2*(24*Zeta2 + 12*Zeta2*Log[1 - x] + 6*Log[1 - x]^2 +
+        Log[1 - x]^3 - 24*Log[1 - x]*Log[x] - 6*Log[1 - x]^2*Log[x] -
+        24*PolyLog[2, 1 - x] - 12*PolyLog[3, 1 - x] - 24*PolyLog[3, x] +
+        12*Zeta[3]))/(6*x) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[2, Epsilon, 2 + 2*Epsilon, u_] :> 
+Hypergeometric2F1[2, Epsilon, 2 + 2*Epsilon, u_] :>
 (com["SH32"];
   1 - Epsilon*Log[1 - u] - (Epsilon^2*
-      (4*u + 4*u*Zeta2 + 4*Log[1 - u] + u*Log[1 - u]^2 - 
+      (4*u + 4*u*Zeta2 + 4*Log[1 - u] + u*Log[1 - u]^2 -
         4*u*Log[1 - u]*Log[u] - 4*u*PolyLog[2, 1 - u]))/(2*u)+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[Epsilon, 1 + 2*Epsilon, 2 + 2*Epsilon, u_] :> 
+Hypergeometric2F1[Epsilon, 1 + 2*Epsilon, 2 + 2*Epsilon, u_] :>
 (com["SH31"];
-  1 + (Epsilon*(u + Log[1 - u] - u*Log[1 - u]))/u - 
-   (Epsilon^2*(2*u - 4*Zeta2 - 2*Log[1 - u] + 2*u*Log[1 - u] + 
-        Log[1 - u]^2 - u*Log[1 - u]^2 + 4*Log[1 - u]*Log[u] + 
-        4*PolyLog[2, 1 - u]))/(2*u) + 
-   (Epsilon^3*(6*u + 12*Zeta2 - 6*Log[1 - u] + 6*u*Log[1 - u] - 
-3*Log[1 - u]^2 + 3*u*Log[1 - u]^2 + Log[1 - u]^3 - u*Log[1 - u]^3 - 
-        12*Log[1 - u]*Log[u] + 6*Log[1 - u]^2*Log[u] - 
-        12*PolyLog[2, 1 - u] + 12*Log[1 - u]*PolyLog[2, 1 - u] - 
+  1 + (Epsilon*(u + Log[1 - u] - u*Log[1 - u]))/u -
+   (Epsilon^2*(2*u - 4*Zeta2 - 2*Log[1 - u] + 2*u*Log[1 - u] +
+        Log[1 - u]^2 - u*Log[1 - u]^2 + 4*Log[1 - u]*Log[u] +
+        4*PolyLog[2, 1 - u]))/(2*u) +
+   (Epsilon^3*(6*u + 12*Zeta2 - 6*Log[1 - u] + 6*u*Log[1 - u] -
+3*Log[1 - u]^2 + 3*u*Log[1 - u]^2 + Log[1 - u]^3 - u*Log[1 - u]^3 -
+        12*Log[1 - u]*Log[u] + 6*Log[1 - u]^2*Log[u] -
+        12*PolyLog[2, 1 - u] + 12*Log[1 - u]*PolyLog[2, 1 - u] -
 12*PolyLog[3, 1 - u] - 24*PolyLog[3, u] + 12*Zeta[3]))/(6*u)+
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[Epsilon, 2*Epsilon, 1 + 2*Epsilon, u_] :> 
+Hypergeometric2F1[Epsilon, 2*Epsilon, 1 + 2*Epsilon, u_] :>
 (com["SH30"];
-  1 + 2*Epsilon^2*(Zeta2 - Log[1 - u]*Log[u] - PolyLog[2, 1 - u]) + 
-   Epsilon^3*(Log[1 - u]^2*Log[u] + 2*Log[1 - u]*PolyLog[2, 1 - u] - 
+  1 + 2*Epsilon^2*(Zeta2 - Log[1 - u]*Log[u] - PolyLog[2, 1 - u]) +
+   Epsilon^3*(Log[1 - u]^2*Log[u] + 2*Log[1 - u]*PolyLog[2, 1 - u] -
       2*PolyLog[3, 1 - u] - 4*PolyLog[3, u] + 2*Zeta[3]) +
 Epsilon ^4 F21CHECK
 )
 ,
-Hypergeometric2F1[1, 1 + Epsilon, 1 + 2*Epsilon, u_] :> 
+Hypergeometric2F1[1, 1 + Epsilon, 1 + 2*Epsilon, u_] :>
 (com["SH29"];
-  (1 - u)^(-1) + (Epsilon*Log[1 - u])/(1 - u) + 
-   (Epsilon^2*(Pi^2 + 6*Zeta2 + 3*Log[1 - u]^2 - 12*Log[1 - u]*Log[u] - 
+  (1 - u)^(-1) + (Epsilon*Log[1 - u])/(1 - u) +
+   (Epsilon^2*(Pi^2 + 6*Zeta2 + 3*Log[1 - u]^2 - 12*Log[1 - u]*Log[u] -
         12*PolyLog[2, 1 - u]))/(6*(1 - u)) +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon/2, Epsilon, 1 + Epsilon/2, x_] :> 
+Hypergeometric2F1[-Epsilon/2, Epsilon, 1 + Epsilon/2, x_] :>
 (com["SH28"];
 1 - (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] - PolyLog[2, 1 - x]))/2+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :> 
+Hypergeometric2F1[-Epsilon/2, Epsilon, 1 + (3*Epsilon)/2, x_] :>
 (com["SH27"];
 1 - (Epsilon^2*(Zeta2 - Log[1 - x]*Log[x] - PolyLog[2, 1 - x]))/2+
 Epsilon^3 F21CHECK
@@ -1195,13 +1209,13 @@ Epsilon^3 F21CHECK
 Hypergeometric2F1[Epsilon/2, 1, 1 + Epsilon, z_] :>
 (com["SH26"];
   1 - (Epsilon*Log[1 - z])/2 - (Epsilon^2*
-(4*Zeta2 + Log[1 - z]^2 - 4*Log[1 - z]*Log[z]-4*PolyLog[2, 1 - z]))/8 -   
+(4*Zeta2 + Log[1 - z]^2 - 4*Log[1 - z]*Log[z]-4*PolyLog[2, 1 - z]))/8 -
 (Epsilon^3*(12*Zeta2*Log[1 - z] + Log[1 - z]^3 - 6*Log[1 - z]^2*Log[z] -
         12*PolyLog[3, 1 - z] - 24*PolyLog[3, z] + 12*Zeta[3]))/48+
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon/2, 1 + Epsilon/2, 2 - Epsilon/2, z_] :> 
+Hypergeometric2F1[1 - Epsilon/2, 1 + Epsilon/2, 2 - Epsilon/2, z_] :>
 (com["SH25"];
   -(Log[1 - z]/z) + (Epsilon*(2*Zeta2 + 2*Log[1 - z] + Log[1 - z]^2 -
         2*Log[1 - z]*Log[z] - 2*PolyLog[2, 1 - z]))/(4*z) -
@@ -1215,7 +1229,7 @@ Epsilon^3 F21CHECK
 Hypergeometric2F1[-Epsilon/2, Epsilon/2, 1 - Epsilon/2, z_] :>
 (com["SH24"];
   1 - (Epsilon^2*(3*Zeta2 - 3*Log[1 - z]*Log[z] - 3*PolyLog[2, 1 - z])
-      )/12 + 
+      )/12 +
 Epsilon^3 F21CHECK
 )
 ,
@@ -1233,7 +1247,7 @@ Hypergeometric2F1[1 + Epsilon/2, 1 - Epsilon/2, 2 - Epsilon/2, z_] :>
 Hypergeometric2F1[Epsilon/2, Epsilon, 1 + Epsilon, x_] :>
 (com["SH22"];
   1 + (Epsilon^2*Zeta2)/2 - (Epsilon^2*Log[1 - x]*Log[x])/2 -
-   (Epsilon^2*PolyLog[2, 1 - x])/2 + 
+   (Epsilon^2*PolyLog[2, 1 - x])/2 +
 Epsilon^3 F21CHECK
 )
 ,
@@ -1263,37 +1277,37 @@ Epsilon^2(-(6*Zeta2 - 6*Zeta2*Log[1 - x] - 3*Log[1 - x]^2 + Log[1 - x]^3 -
 )
 ,
 
- Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 1 - Epsilon/2, z_] :> 
+ Hypergeometric2F1[1 - Epsilon, -Epsilon/2, 1 - Epsilon/2, z_] :>
 (com["SH18"];
-   1 + (Epsilon*Log[1 - z])/2 + 
-    Epsilon^2*(Zeta2/4 + Log[1 - z]^2/4 - (Log[1 - z]*Log[z])/4 - 
+   1 + (Epsilon*Log[1 - z])/2 +
+    Epsilon^2*(Zeta2/4 + Log[1 - z]^2/4 - (Log[1 - z]*Log[z])/4 -
        PolyLog[2, 1 - z]/4) + Epsilon^3*
-     (Log[1 - z]^3/12 - (Log[1 - z]^2*Log[z])/8 - 
-       (Log[1 - z]*PolyLog[2, 1 - z])/4 + PolyLog[3, 1 - z]/4 + 
+     (Log[1 - z]^3/12 - (Log[1 - z]^2*Log[z])/8 -
+       (Log[1 - z]*PolyLog[2, 1 - z])/4 + PolyLog[3, 1 - z]/4 +
        PolyLog[3, z]/8 - Zeta[3]/4) +
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 2 - Epsilon/2, z_] :> 
+Hypergeometric2F1[1 - Epsilon, 1 - Epsilon/2, 2 - Epsilon/2, z_] :>
 (com["SH17"];
-   -(Log[1 - z]/z) + Epsilon*(Zeta2/(2*z) + Log[1 - z]/(2*z) - 
-       Log[1 - z]^2/(2*z) - (Log[1 - z]*Log[z])/(2*z) - 
-       PolyLog[2, 1 - z]/(2*z)) + 
-    Epsilon^2*(-Zeta2/(4*z) + Log[1 - z]^2/(4*z) - Log[1 - z]^3/(6*z) + 
-       (Log[1 - z]*Log[z])/(4*z) - (Log[1 - z]^2*Log[z])/(4*z) + 
-       PolyLog[2, 1 - z]/(4*z) - (Log[1 - z]*PolyLog[2, 1 - z])/(2*z) + 
-       PolyLog[3, 1 - z]/(2*z) + PolyLog[3, z]/(4*z) - Zeta[3]/(2*z)) + 
-    Epsilon^3*(Log[1 - z]^3/(12*z) + (Log[1 - z]^2*Log[z])/(8*z) + 
-       (Log[1 - z]*PolyLog[2, 1 - z])/(4*z) - PolyLog[3, 1 - z]/(4*z) - 
+   -(Log[1 - z]/z) + Epsilon*(Zeta2/(2*z) + Log[1 - z]/(2*z) -
+       Log[1 - z]^2/(2*z) - (Log[1 - z]*Log[z])/(2*z) -
+       PolyLog[2, 1 - z]/(2*z)) +
+    Epsilon^2*(-Zeta2/(4*z) + Log[1 - z]^2/(4*z) - Log[1 - z]^3/(6*z) +
+       (Log[1 - z]*Log[z])/(4*z) - (Log[1 - z]^2*Log[z])/(4*z) +
+       PolyLog[2, 1 - z]/(4*z) - (Log[1 - z]*PolyLog[2, 1 - z])/(2*z) +
+       PolyLog[3, 1 - z]/(2*z) + PolyLog[3, z]/(4*z) - Zeta[3]/(2*z)) +
+    Epsilon^3*(Log[1 - z]^3/(12*z) + (Log[1 - z]^2*Log[z])/(8*z) +
+       (Log[1 - z]*PolyLog[2, 1 - z])/(4*z) - PolyLog[3, 1 - z]/(4*z) -
        PolyLog[3, z]/(8*z) + Zeta[3]/(4*z)) +
 Epsilon^4 F21CHECK
 )
 
 ,
-Hypergeometric2F1[-Epsilon, -Epsilon/2, 1 - Epsilon/2, z_] :> 
+Hypergeometric2F1[-Epsilon, -Epsilon/2, 1 - Epsilon/2, z_] :>
 (com["SH16"];
-  1 + (Epsilon^2*(Pi^2 - 6*Log[1 - z]*Log[z] - 6*PolyLog[2, 1 - z]))/12 - 
-   (Epsilon^3*(Log[1 - z]^2*Log[z] + 2*Log[1 - z]*PolyLog[2, 1 - z] - 
+  1 + (Epsilon^2*(Pi^2 - 6*Log[1 - z]*Log[z] - 6*PolyLog[2, 1 - z]))/12 -
+   (Epsilon^3*(Log[1 - z]^2*Log[z] + 2*Log[1 - z]*PolyLog[2, 1 - z] -
         2*PolyLog[3, 1 - z] - PolyLog[3, z] + 2*Zeta[3]))/4 +
 Epsilon ^4 F21CHECK
 )
@@ -1302,72 +1316,72 @@ Hypergeometric2F1[1 + Epsilon/2, -Epsilon/2, 1 - Epsilon/2, x_] :>
 (com["SH15"];
   1 + (Epsilon*Log[1 - x])/2 - (Epsilon^2*
 (4*Zeta2 + Log[1 - x]^2 - 4*Log[1 - x]*Log[x] - 4*PolyLog[2, 1 - x])
-                               )/8 + 
+                               )/8 +
 (Epsilon^3*(Log[1 - x]^3 - 6*Log[1 - x]^2*Log[x] -
         12*Log[1 - x]*PolyLog[2, 1 - x] + 12*PolyLog[3, 1 - x] -
-        12*PolyLog[3, x] - 12*Zeta[3]))/48 + 
+        12*PolyLog[3, x] - 12*Zeta[3]))/48 +
 Epsilon^4  F21CHECK
 )
 ,
-Hypergeometric2F1[1 + Epsilon/2, 1 - Epsilon/2, 3 - Epsilon/2, x_] :> 
+Hypergeometric2F1[1 + Epsilon/2, 1 - Epsilon/2, 3 - Epsilon/2, x_] :>
 (com["SH14"];
-  (2*(x + Log[1 - x] - x*Log[1 - x]))/x^2 + 
-   (Epsilon*(x - 2*Zeta2 + 2*x*Zeta2 - Log[1 - x] + x*Log[1 - x] - 
-        Log[1 - x]^2 + x*Log[1 - x]^2 + 2*Log[1 - x]*Log[x] - 
+  (2*(x + Log[1 - x] - x*Log[1 - x]))/x^2 +
+   (Epsilon*(x - 2*Zeta2 + 2*x*Zeta2 - Log[1 - x] + x*Log[1 - x] -
+        Log[1 - x]^2 + x*Log[1 - x]^2 + 2*Log[1 - x]*Log[x] -
 2*x*Log[1 - x]*Log[x] + 2*PolyLog[2, 1 - x] - 2*x*PolyLog[2, 1 - x])
-)/(2*x^2) + (Epsilon^2*(18*x + 6*Zeta2 - 18*x*Zeta2 + 12*Log[1 - x] - 
-        12*x*Log[1 - x] + 3*Log[1 - x]^2 - 3*x*Log[1 - x]^2 + 
-        2*Log[1 - x]^3 - 2*x*Log[1 - x]^3 - 6*Log[1 - x]*Log[x] + 
-        18*x*Log[1 - x]*Log[x] - 6*Log[1 - x]^2*Log[x] + 
-        6*x*Log[1 - x]^2*Log[x] - 6*PolyLog[2, 1 - x] + 
-        18*x*PolyLog[2, 1 - x] - 12*Log[1 - x]*PolyLog[2, 1 - x] + 
-        12*x*Log[1 - x]*PolyLog[2, 1 - x] + 12*PolyLog[3, 1 - x] - 
-        12*x*PolyLog[3, 1 - x] - 12*PolyLog[3, x] + 12*x*PolyLog[3, x] - 
+)/(2*x^2) + (Epsilon^2*(18*x + 6*Zeta2 - 18*x*Zeta2 + 12*Log[1 - x] -
+        12*x*Log[1 - x] + 3*Log[1 - x]^2 - 3*x*Log[1 - x]^2 +
+        2*Log[1 - x]^3 - 2*x*Log[1 - x]^3 - 6*Log[1 - x]*Log[x] +
+        18*x*Log[1 - x]*Log[x] - 6*Log[1 - x]^2*Log[x] +
+        6*x*Log[1 - x]^2*Log[x] - 6*PolyLog[2, 1 - x] +
+        18*x*PolyLog[2, 1 - x] - 12*Log[1 - x]*PolyLog[2, 1 - x] +
+        12*x*Log[1 - x]*PolyLog[2, 1 - x] + 12*PolyLog[3, 1 - x] -
+        12*x*PolyLog[3, 1 - x] - 12*PolyLog[3, x] + 12*x*PolyLog[3, x] -
         12*Zeta[3] + 12*x*Zeta[3]))/(24*x^2) +
 Epsilon^3  F21CHECK
 )
 ,
 Hypergeometric2F1[Epsilon/2 + 1, -(Epsilon/2), 2 - Epsilon/2, u_] :>
 (com["SH13"];
-(Epsilon^2*Zeta2)/(4*u) + (2 - Epsilon - Epsilon^2*Zeta2)/2 + 
-  ((2 - Epsilon)*Epsilon*Log[1 - u])/4 - 
-((2 - Epsilon)*Epsilon*Log[1 - u])/(4*u) - (Epsilon^2*Log[1 - u]^2)/8 + 
-  (Epsilon^2*Log[1 - u]^2)/(8*u) + (Epsilon^2*Log[1 - u]*Log[u])/2 - 
-(Epsilon^2*Log[1 - u]*Log[u])/(4*u) + (Epsilon^2*PolyLog[2, 1 - u])/2 - 
+(Epsilon^2*Zeta2)/(4*u) + (2 - Epsilon - Epsilon^2*Zeta2)/2 +
+  ((2 - Epsilon)*Epsilon*Log[1 - u])/4 -
+((2 - Epsilon)*Epsilon*Log[1 - u])/(4*u) - (Epsilon^2*Log[1 - u]^2)/8 +
+  (Epsilon^2*Log[1 - u]^2)/(8*u) + (Epsilon^2*Log[1 - u]*Log[u])/2 -
+(Epsilon^2*Log[1 - u]*Log[u])/(4*u) + (Epsilon^2*PolyLog[2, 1 - u])/2 -
   (Epsilon^2*PolyLog[2, 1 - u])/(4*u) +
 Epsilon^3  F21CHECK
 )
 ,
 
-Hypergeometric2F1[Epsilon/2, Epsilon, 1 + Epsilon, x_] :> 
+Hypergeometric2F1[Epsilon/2, Epsilon, 1 + Epsilon, x_] :>
 (com["SH12"];
-  1 + (Epsilon^2*Zeta2)/2 - (Epsilon^2*Log[1 - x]*Log[x])/2 - 
-   (Epsilon^2*PolyLog[2, 1 - x])/2 + 
+  1 + (Epsilon^2*Zeta2)/2 - (Epsilon^2*Log[1 - x]*Log[x])/2 -
+   (Epsilon^2*PolyLog[2, 1 - x])/2 +
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1 + Epsilon/2, Epsilon, 1 + Epsilon, x_] :> 
+Hypergeometric2F1[1 + Epsilon/2, Epsilon, 1 + Epsilon, x_] :>
 (com["SH11"];
   1 - Epsilon*Log[1-x] + (Epsilon^2*
 (2*EulerGamma*Log[1-x] + Log[1-x]^2 - 2*PolyLog[2, x]))/4+
 Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[2, 1 - Epsilon, 2 - Epsilon/2, x_] :> 
+Hypergeometric2F1[2, 1 - Epsilon, 2 - Epsilon/2, x_] :>
 (com["SH10"];
-  (1 - x)^(-1) + Epsilon*(-EulerGamma/2 - 1/(2*(1 - x)) + 
+  (1 - x)^(-1) + Epsilon*(-EulerGamma/2 - 1/(2*(1 - x)) +
  EulerGamma/(2*(1 - x)) + Log[1 - x]/(2*(1 - x)) - Log[1 - x]/(2*x))+
-Epsilon^2(-(6*Zeta2 - 6*Zeta2*Log[1 - x] - 3*Log[1 - x]^2 + Log[1 - x]^3 - 
-     6*Log[1 - x]*Log[x] + 3*Log[1 - x]^2*Log[x] - 6*PolyLog[2, 1 - x] + 
+Epsilon^2(-(6*Zeta2 - 6*Zeta2*Log[1 - x] - 3*Log[1 - x]^2 + Log[1 - x]^3 -
+     6*Log[1 - x]*Log[x] + 3*Log[1 - x]^2*Log[x] - 6*PolyLog[2, 1 - x] +
      6*PolyLog[3, 1 - x] - 6*PolyLog[3, x] - 6*Zeta[3])/(24*x)) +
  Epsilon^3 F21CHECK
 )
 ,
-Hypergeometric2F1[1, 1 - Epsilon, 2 - Epsilon/2, x_] :> 
+Hypergeometric2F1[1, 1 - Epsilon, 2 - Epsilon/2, x_] :>
 (com["SH9"];
-  -(Log[1 - x]/x) - (Epsilon*(2*EulerGamma*x - 2*Zeta2 - 2*Log[1 - x] + 
-        2*EulerGamma*Log[1 - x] + Log[1 - x]^2 + 2*Log[1 - x]*Log[x] + 
-        2*PolyLog[2, 1 - x]))/(4*x) + 
+  -(Log[1 - x]/x) - (Epsilon*(2*EulerGamma*x - 2*Zeta2 - 2*Log[1 - x] +
+        2*EulerGamma*Log[1 - x] + Log[1 - x]^2 + 2*Log[1 - x]*Log[x] +
+        2*PolyLog[2, 1 - x]))/(4*x) +
 Epsilon^2 F21CHECK + Epsilon^3 F21CHECK
 )
 ,
@@ -1396,10 +1410,10 @@ x*Log[1 - x]^3 + 3*Log[1 - x]^2*Log[x] - 3*x*Log[1 - x]^2*Log[x] -
 Epsilon^4 F21CHECK
 )
 ,
-Hypergeometric2F1[-Epsilon/2, 1 + Epsilon, 1, z_] :> 
+Hypergeometric2F1[-Epsilon/2, 1 + Epsilon, 1, z_] :>
 (com["SH6"];
   1 + (Epsilon*Log[1 - z])/2 - (Epsilon^2*
-      (2*Pi^2 + 6*EulerGamma*Log[1 - z] + 3*Log[1 - z]^2 - 
+      (2*Pi^2 + 6*EulerGamma*Log[1 - z] + 3*Log[1 - z]^2 -
         12*Log[1 - z]*Log[z] - 12*PolyLog[2, 1 - z]))/24 +
 Epsilon^3 F21CHECK
 )
@@ -1418,14 +1432,14 @@ Epsilon^3 F21CHECK
 ,
 Hypergeometric2F1[1,Epsilon/2-1,Epsilon,-1] :>
 (com["SH3"];
-Epsilon^(-1) + (1 - Log[2])/2 + 
+Epsilon^(-1) + (1 - Log[2])/2 +
 (Epsilon*(Pi^2 + 6*Log[2] - 3*Log[2]^2))/24 + F21CHECK1 Epsilon^2
 )
 ,
  Hypergeometric2F1[1, Epsilon, 1 + Epsilon/2, x_] :>
 (com["SH2"];
-1 - Epsilon*Log[1 - x] + 
-(Epsilon^2*(Log[1 - x]^2 - 2*PolyLog[2, x]))/4 + 
+1 - Epsilon*Log[1 - x] +
+(Epsilon^2*(Log[1 - x]^2 - 2*PolyLog[2, x]))/4 +
 Epsilon^3 F21CHECK
 )
 ,
@@ -1434,39 +1448,39 @@ Hypergeometric2F1[1, -1 + Epsilon, 1 + Epsilon/2, x_] :>
   1 - x + (Epsilon*(x + 2*(-1 + x)*Log[1 - x]))/2 +
    (Epsilon^2*(x + 2*(-1 + x)*Zeta2 +
         (1 - x)*Log[1 - x]*(2 + Log[1 - x] + 2*Log[x]) +
-        (2 - 2*x)*PolyLog[2, 1 - x]))/4 + 
+        (2 - 2*x)*PolyLog[2, 1 - x]))/4 +
 Epsilon^3 F21CHECK
 )
 ,
-HypergeometricPFQ[{1, opem_ - 1, Epsilon/2 + opem_}, 
-    {opem_, opem_ + Epsilon}, 1] :> 
- 1 + (2*(-1 + opem))/Epsilon + 
- (Epsilon*(-1 + opem)*PolyGamma[1, opem])/2 + 
+HypergeometricPFQ[{1, opem_ - 1, Epsilon/2 + opem_},
+    {opem_, opem_ + Epsilon}, 1] :>
+ 1 + (2*(-1 + opem))/Epsilon +
+ (Epsilon*(-1 + opem)*PolyGamma[1, opem])/2 +
   Epsilon^2 F32CHECK1
 ,
-HypergeometricPFQ[{1, opem_, Epsilon/2 + opem_}, 
-                  {1 + opem_, Epsilon + opem_}, 1] :> 
+HypergeometricPFQ[{1, opem_, Epsilon/2 + opem_},
+                  {1 + opem_, Epsilon + opem_}, 1] :>
    (2*opem)/Epsilon + (Epsilon*opem*
-       (6*EulerGamma^2 + Pi^2 + 
-         6*PolyGamma[0, opem]*(2*EulerGamma + PolyGamma[0, opem]) + 
+       (6*EulerGamma^2 + Pi^2 +
+         6*PolyGamma[0, opem]*(2*EulerGamma + PolyGamma[0, opem]) +
          18*PolyGamma[1, opem] - 12*SumS[1, 1, -1 + opem]))/24 +
     Epsilon^2 F32CHECK2
 ,
-Hypergeometric2F1[1, -Epsilon, 1 + Epsilon, z_] :> 
+Hypergeometric2F1[1, -Epsilon, 1 + Epsilon, z_] :>
 (com["SH2"];
- 1 + Epsilon^2*Zeta2 + Epsilon*Log[1 - z] + 
-  2*Epsilon^3*Zeta2*Log[1 - z] + Epsilon^2*Log[1 - z]^2 + 
-  (2*Epsilon^3*Log[1 - z]^3)/3 - Epsilon^3*Zeta2*Log[z] - 
-  Epsilon^2*Log[1 - z]*Log[z] - Epsilon^3*Log[1 - z]^2*Log[z] + 
-  (Epsilon^3*Log[1 - z]*Log[z]^2)/2 + 
-  Epsilon^3*Nielsen[1, 2, 1 - z] - Epsilon^2*PolyLog[2, 1 - z] + 
-  Epsilon^3*Log[z]*PolyLog[2, 1 - z] - 
+ 1 + Epsilon^2*Zeta2 + Epsilon*Log[1 - z] +
+  2*Epsilon^3*Zeta2*Log[1 - z] + Epsilon^2*Log[1 - z]^2 +
+  (2*Epsilon^3*Log[1 - z]^3)/3 - Epsilon^3*Zeta2*Log[z] -
+  Epsilon^2*Log[1 - z]*Log[z] - Epsilon^3*Log[1 - z]^2*Log[z] +
+  (Epsilon^3*Log[1 - z]*Log[z]^2)/2 +
+  Epsilon^3*Nielsen[1, 2, 1 - z] - Epsilon^2*PolyLog[2, 1 - z] +
+  Epsilon^3*Log[z]*PolyLog[2, 1 - z] -
   2*Epsilon^3*PolyLog[3, 1 - z] + Epsilon^3*Zeta[3]+
 Epsilon^4 F21CHECK
 )
              };
 (*
-0 == 
+0 ==
 -2*Pi^2 + 6*EulerGamma*x + 3*Pi^2*x + (Pi^2*x^2)/2 +
   Log[1 - x]*(-6 + 6*EulerGamma + Pi^2 +
      x*(12 - 12*EulerGamma - Pi^2 + 6*EulerGamma*x) +

@@ -15,7 +15,12 @@ DiracGammaExpand.";
 
 Begin["`Private`"];
 
-MakeContext[ DiracGamma, FeynCalcInternal, FreeQ2, GS, GSD, Momentum];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+GS = MakeContext["CoreObjects","GS"];
+GSD = MakeContext["CoreObjects","GSD"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+
+MakeContext[ FeynCalcInternal, FreeQ2];
 
 DiracGammaCombine[y_] := If[!FreeQ2[y,{GS, GSD}],
                             FeynCalcInternal[y]//dircg,

@@ -27,16 +27,22 @@ Bracket::"usage"= "Bracket is an option for Convolute.";
 
 Begin["`Private`"];
    
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+Nf = MakeContext["CoreObjects","Nf"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+Tf = MakeContext["CoreObjects","Tf"];
 
-MakeContext[Collect2, ConvoluteTable, 
-            DeltaFunction, Epsilon,
-            CF,CA,Tf,Nf,
+MakeContext[Collect2, ConvoluteTable,
             Factor2, FreeQ2, Integrate2,
-            Polarization, PlusDistribution, PowerSimplify,
-            SelectFree, SelectNotFree,Series2, 
+            PowerSimplify,
+            SelectFree, SelectNotFree,Series2,
             SplittingFunction, Zeta2];
 
 spe[y__] := spe[y] = 

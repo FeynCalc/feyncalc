@@ -28,14 +28,17 @@ set to a list of integrals. The format should be
 
 Begin["`Private`"];
    
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+DeltaFunctionPrime = MakeContext["CoreObjects","DeltaFunctionPrime"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
+SmallDelta = MakeContext["CoreObjects","SmallDelta"];
+SmallEpsilon = MakeContext["CoreObjects","SmallEpsilon"];
   
- MakeContext[FCPrint, Apart3,DataType, DeltaFunction, 
-             (*DeltaFunctionDoublePrime, *)
-             DeltaFunctionPrime, Factor2,
-             Epsilon, Integrate2, Nielsen, 
-             PlusDistribution, PositiveInteger, 
-             Select1, Select2, SimplifyPolyLog,SumS,
-             SmallDelta, SmallEpsilon, Zeta2];
+MakeContext[FCPrint, Apart3,DataType, Factor2,
+             Integrate2, Nielsen,
+             PositiveInteger,
+             Select1, Select2, SimplifyPolyLog,SumS, Zeta2];
  
  S = MakeContext["SumS"];
  ST = MakeContext["SumT"];

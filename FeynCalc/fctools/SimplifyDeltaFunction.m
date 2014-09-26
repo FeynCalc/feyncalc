@@ -26,12 +26,11 @@ SimplifyDeltaFunction[exp, Global`x]";
 
 Begin["`Private`"];
    
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+DeltaFunctionDoublePrime = MakeContext["CoreObjects","DeltaFunctionDoublePrime"];
+DeltaFunctionPrime = MakeContext["CoreObjects","DeltaFunctionPrime"];
 
-MakeContext[ 
- Collect2,
- DeltaFunction, DeltaFunctionPrime, DeltaFunctionDoublePrime,
- Select1, Select2, Zeta2
-           ];
+MakeContext[Collect2, Select1, Select2, Zeta2];
 
 SimplifyDeltaFunction[exp_] := SimplifyDeltaFunction[exp, Global`x];
 

@@ -23,10 +23,10 @@ Whether the trace is  evaluated depends on the option \
 DiracTraceEvaluate. See also TR. \
 The argument expr may be a product of Dirac matrices or slashes \
 separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).
-The option Factoring determines the final function to be applied. If 
+The option Factoring determines the final function to be applied. If
 it is set to False no simplification is done.
 It might be set to, e.g., Factor or Factor2 to get simpler results.
-With the default setting Factoring -> Automatic factorization is performed on 
+With the default setting Factoring -> Automatic factorization is performed on
 not too long (LeafCount[ ] < 5000 ) expressions.
 ";
 
@@ -34,28 +34,54 @@ not too long (LeafCount[ ] < 5000 ) expressions.
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracGammaT = MakeContext["CoreObjects","DiracGammaT"];
+DiracSigma = MakeContext["CoreObjects","DiracSigma"];
 DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
+LorentzIndex:= LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Mandelstam = MakeContext["CoreOptions","Mandelstam"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
 PairCollect = MakeContext["CoreOptions","PairCollect"];
+SUNT = MakeContext["CoreObjects","SUNT"];
+Spinor = MakeContext["CoreObjects","Spinor"];
 TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
-
-MakeContext[ FCPrint, Contract, Collect2, DiracCanonical, DiracGamma,
-DiracGammaCombine, DiracGammaExpand, DiracGammaT, DiracOrder,
-DiracSigmaExplicit, DiracSimplify, DiracTrick];
-
-MakeContext[ DotSimplify, Eps, EpsEvaluate, Factor2,
-Expand2, FeynCalcInternal, FeynCalcExternal,
-FreeQ2, InsideDiracTrace, LorentzIndex,
-MemSet, Momentum, Pair, PairContract, PartitHead, SUNT ];
-
 sCO := sCO = MakeContext["PairContract"];
 
-MakeContext[ ExpandScalarProduct, Schouten,
-Spinor, (*SUNSimplify, SUNT,*) TR, TrickMandelstam];
+MakeContext[
+    Collect2,
+    Contract,
+    DiracCanonical,
+    DiracGammaCombine,
+    DiracGammaExpand,
+    DiracOrder,
+    DiracSigmaExplicit,
+    DiracSimplify,
+    DiracTrick,
+    DotSimplify,
+    EpsEvaluate,
+    Expand2,
+    ExpandScalarProduct,
+    FCPrint,
+    Factor2,
+    FeynCalcExternal,
+    FeynCalcInternal,
+    FreeQ2,
+    InsideDiracTrace,
+    MemSet,
+    PairContract,
+    PartitHead,
+    Schouten,
+    TR,
+    TrickMandelstam
+    ];
+
+
 
 scev[a__] := scev[a] = ExpandScalarProduct[a];
 
@@ -88,7 +114,7 @@ DiracTrace[a___, x_,y_, z___]:=DiracTrace[a,x.y,z]/;
        FreeQ2[x,{Rule,BlankNullSequence}];
 
                                                (*DiracTracedef*)
-fcit[y_] := If[CheckContext["DiracSigma"],
+fcit[y_] := If[CheckContext["CoreObjects"],
                FeynCalcInternal[DiracSigmaExplicit[y]]//DiracGammaExpand,
                FeynCalcInternal[y]//DiracGammaExpand
               ];
@@ -124,11 +150,11 @@ DiracTrace[x_, op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrac
                       fcex[op][
                          ( diractraceevsimple[
                     fcit[x] ,Flatten[{op}]   ] /. diractraceevsimple -> diractraceev /.
-                         diractraceev -> diractraceev2 
+                         diractraceev -> diractraceev2
                          )              ]
 );
                       SetOptions[DiracTrace, Sequence@@globalstartops];
-                                     diTres] /; 
+                                     diTres] /;
     ((DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)) === True && FreeQ[x,SUNT]);
 
 
@@ -171,7 +197,7 @@ diractraceevsimple[DOT[x___], {opt___}]:=
 
         FCPrint[3,"Using spursav on ", StandardForm[DOT[x]]];
 *)
-(* small BUG found here 2005-02-05 by RM*) 
+(* small BUG found here 2005-02-05 by RM*)
 (*
        (TraceOfOne /. {opt} /.Options[DiracTrace] /. Options[DiracTrace] )*
 *)
@@ -180,8 +206,8 @@ diractraceevsimple[DOT[x___], {opt___}]:=
         (spursav @@ DOT[x])
 *)
         diractraceev@@DOT[x]
-	(*]*) ]
-)  /; (MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_,_],_]..] 
+  (*]*) ]
+)  /; (MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_,_],_]..]
              ] ||
        MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_]]..]
              ] ||
@@ -383,7 +409,7 @@ If[!FreeQ[diractrny, DiracGamma],
   ];
 
 Global`D1=diractrny;
-FCPrint[2,"CH2"]; 
+FCPrint[2,"CH2"];
 FCPrint[2,TimeUsed[]];
    If[!FreeQ[diractrny, LorentzIndex],
       If[!FreeQ[diractrny, Eps],
@@ -397,7 +423,7 @@ FCPrint[2,TimeUsed[]];
         ];
       diractrny = diractrny /. Pair -> sCO /. sCO -> scev
      ];
-FCPrint[2,"CH3"]; 
+FCPrint[2,"CH3"];
 FCPrint[2,TimeUsed[]];
 Global`D2=diractrny;
 
@@ -414,12 +440,12 @@ Global`D2=diractrny;
  (* this  2@#$^^$#%^@*#$ ... !!!!;
                            diractrres = Expand[ traceofone diractrny ]
  *)
-       If[diractrfact===False, 
+       If[diractrfact===False,
           diractrres = traceofone diractrny,
           diractrres = diractrfact[traceofone diractrny]
          ]
      ];
- 
+
 
    If[ Length[ mand ] >0,
        diractrres = TrickMandelstam @@ Prepend[ {mand}, diractrres ]
@@ -463,7 +489,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 *)
 
 (* RM 09/12/2003 *)
-(* RM 08/18/2011 : this is causing trouble for DiracGamma[..., d-4] etc. 
+(* RM 08/18/2011 : this is causing trouble for DiracGamma[..., d-4] etc.
    spursav[x__ /; !FreeQ[{x},Plus]]:= DOT@@{x};
 *)
 
@@ -473,7 +499,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
    spursav[x__DiracGamma] := spur[x];
    (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
    spursav[x : ((DiracGamma[__] | HoldPattern[
-   Plus[__HighEnergyPhysics`FeynCalc`DiracGamma`DiracGamma]]) ..)] :=
+   Plus[__HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma]]) ..)] :=
    MemSet[spursav[x], spur[x]];
 
 

@@ -32,8 +32,7 @@ If set to False, products like
 Begin["`Private`"];
    
 
-MakeContext[ FCPrint, Expand2, Combine,
-MemSet, NumericalFactor];
+MakeContext[ FCPrint, Expand2, Combine, MemSet, NumericalFactor];
 
 Off[General::spell1];
 Options[Factor2] = {FactorFull -> False, Method -> 3};

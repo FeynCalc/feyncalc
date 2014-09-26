@@ -23,7 +23,10 @@ DotExpand::"usage" =
 
 Begin["`Private`"];
 
-MakeContext[(*DOT, *)NonCommFreeQ, NonCommQ, Spinor];
+
+Spinor = MakeContext["CoreObjects","Spinor"];
+
+MakeContext[(*DOT, *)NonCommFreeQ, NonCommQ];
 
 DotExpand[expr_] :=
     expr //. {DOT[a___, b_ + c_, d___] :> Distribute[DOT[a, b + c, d]],

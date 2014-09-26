@@ -23,12 +23,14 @@ calculation. This improves the performance of FeynCalc .";
 Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
-
-MakeContext[ ChangeDimension, SP, SPD];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SP = MakeContext["CoreObjects","SP"];
+SPD = MakeContext["CoreObjects","SPD"];
 fci := fci = MakeContext["FeynCalcInternal"];
 nf  := nf = MakeContext["NumericalFactor"];
 
-MakeContext[ Momentum, Pair, Select1];
+MakeContext[ Select1, ChangeDimension];
 
 
 Options[ScalarProduct] = {Dimension->4, fci -> True};

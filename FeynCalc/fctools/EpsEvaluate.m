@@ -23,11 +23,16 @@ linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
 
 Begin["`Private`"];
 
+Eps = MakeContext["CoreObjects","Eps"];
 Expanding = MakeContext["CoreOptions","Expanding"];
+ExplicitLorentzIndex = MakeContext["CoreObjects","ExplicitLorentzIndex"];
+LC = MakeContext["CoreObjects","LC"];
+LCD = MakeContext["CoreObjects","LCD"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
 
-MakeContext[ Cases2, Eps,
-ExpandScalarProduct, FeynCalcInternal, LC, LCD, LorentzIndex, Momentum, Pair, PairContract,
-LorentzIndex, ExplicitLorentzIndex];
+MakeContext[ Cases2, ExpandScalarProduct, FeynCalcInternal, PairContract];
 
 EpsEvaluate[x_] := x /; FreeQ2[x,{LeviCivita, LC,LCD,Eps}];     (*EpsEvaluatedef*)
 EpsEvaluate[ix_] := Block[{x = ix, nx,cx, tx, rud},

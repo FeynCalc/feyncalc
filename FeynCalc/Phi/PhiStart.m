@@ -520,10 +520,10 @@ $Substitutions = Append[$Substitutions, UNablaHatDelta[mu_] :>
 (*-I*NM[SMM,
 UGeneratorMatrixIsoDot[QuantumField[Particle[
 LeftComponent[0]],{mu}]],
-UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
+UGeneratorMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`SUNIndex[6]],
 Adjoint[SMM]]+
 I*NM[SMM,
-UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
+UGeneratorMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`SUNIndex[6]],
 UGeneratorMatrixIsoDot[QuantumField[Particle[
 LeftComponent[0]],{mu}]],
 Adjoint[SMM]]*)
@@ -531,7 +531,7 @@ Adjoint[SMM]]*)
 (* Including a scalar 'source' with momentum *)
 NM[SMM,NM[
 FDr[QuantumField[Particle[Scalar[1]]],{mu}],
-UGeneratorMatrix[HighEnergyPhysics`FeynCalc`SUNIndex`SUNIndex[6]],
+UGeneratorMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`SUNIndex[6]],
 Adjoint[SMM]]]
 ];
 

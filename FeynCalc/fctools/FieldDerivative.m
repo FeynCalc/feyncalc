@@ -30,8 +30,9 @@ FDr::"usage"=
 
 Begin["`Private`"];
 
-
-MakeContext[LorentzIndex, QuantumField, PartialD];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+PartialD = MakeContext["CoreObjects","PartialD"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
 
 FDr=FieldDerivative;
 
@@ -40,14 +41,14 @@ FDr=FieldDerivative;
 
 FieldDerivative[aa_, x_, {loris__}] :=
     FieldDerivative[aa, x, ##] & @@ (LorentzIndex /@
-	  {loris});
+    {loris});
 
 
 
 (* If there is no x dependence, the derivative i zero: *)
 
 FieldDerivative[aa_,
-        x_, __HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] /;
+        x_, __HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] /;
       FreeQ[aa, x, Infinity] := 0;
 
 
@@ -57,7 +58,7 @@ FieldDerivative[aa_,
 (*distheads = Alternatives @@ $DistributiveFunctions;*)
 
 FieldDerivative[a_ (*: (distheads[__])*), x_,
-      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+      lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
   (Head[a]) @@ Join[
         FieldDerivative[#, x, lori]& /@ Select[List@@a, (!MatchQ[#, (_ -> _) | ({(_ -> _) ...})]&)],
         Select[List@@a, (MatchQ[#, (_ -> _) | ({(_ -> _) ...})]&)]] /;
@@ -67,14 +68,14 @@ FieldDerivative[a_ (*: (distheads[__])*), x_,
 (* Linearity: *)
 
 FieldDerivative[a_Plus, x_,
-      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+      lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
     Plus @@ (FieldDerivative[#, x, lori] & /@ (List @@ a));
 
 (*multheads = Alternatives @@ $Multiplications;*)
 
 FieldDerivative[a_Times, x_,
-        lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] /;
-	     (Plus @@ (If[FreeQ[#, x], 1, 0] & /@ (List @@ a))) != 0 :=
+        lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] /;
+       (Plus @@ (If[FreeQ[#, x], 1, 0] & /@ (List @@ a))) != 0 :=
    (Times @@ Select[List @@ a, FreeQ[#, x] &])*
    FieldDerivative[Times @@ Select[List @@ a, !FreeQ[#, x] &], x, lori];
 
@@ -83,7 +84,7 @@ FieldDerivative[a_Times, x_,
 (* The product rule: *)
 
 FieldDerivative[aa_ (*: (multheads[__])*), x_,
-      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+      lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
         (Head[aa])[
         FieldDerivative[(List @@ aa)[[1]], x, lori],
         Sequence @@ (Drop[List @@ aa, 1])] + (Head[aa])[(List @@ aa)[[1]],
@@ -95,7 +96,7 @@ FieldDerivative[aa_ (*: (multheads[__])*), x_,
 (* The power rule: *)
 
 FieldDerivative[aa_^n_, x_,
-      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+      lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
     n*aa^(n - 1)*FieldDerivative[aa, x, lori];
 
 
@@ -103,7 +104,7 @@ FieldDerivative[aa_^n_, x_,
 (* Definition of the derivative on QuantumFields: *)
 
 FieldDerivative[QuantumField[body___][x_], x_,
-      lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+      lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
     QuantumField[PartialD[lori], body][x];
 
 
@@ -111,7 +112,7 @@ FieldDerivative[QuantumField[body___][x_], x_,
 (* Special cases: Containers of QuantumFields*)
 
 FieldDerivative[((h_ (*: IsoVector | UVector | UMatrix*))[QuantumField[field__], opts___])[
-        x_], x_, lori_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+        x_], x_, lori_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
      h[FieldDerivative[QuantumField[field][x], x, lori] /. f_[x]->f, opts][x] /;
      MemberQ[$Containers, h];
 
@@ -120,8 +121,8 @@ FieldDerivative[((h_ (*: IsoVector | UVector | UMatrix*))[QuantumField[field__],
 
 FieldDerivative[
       aa_, x_,
-      loris__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
-      lori1_HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex] :=
+      loris__HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
+      lori1_HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex] :=
     (newfunc[1] = FieldDerivative[aa, x, lori1];
       Do[newfunc[rep + 1] =
           FieldDerivative[newfunc[rep], x, ##]& @@
@@ -131,7 +132,7 @@ FieldDerivative[
 (* Boxes *)
 
 FieldDerivative /:
-MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex],
+MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex],
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]],
@@ -139,7 +140,7 @@ MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]],
    MakeBoxes[TraditionalForm[a]], ")"}];
 
 FieldDerivative /:
-MakeBoxes[FieldDerivative[a_, lis__HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex],
+MakeBoxes[FieldDerivative[a_, lis__HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex],
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]],
@@ -147,7 +148,7 @@ MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]],
    MakeBoxes[TraditionalForm[a]], ")"}];
 
 FieldDerivative /:
-MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`PartialD`PartialD],
+MakeBoxes[FieldDerivative[a_, _, lis__HighEnergyPhysics`FeynCalc`CoreObjects`PartialD],
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]],
@@ -163,7 +164,7 @@ MakeBoxes[ StyleForm["\[PartialD]", FontSlant -> "Italic"]],
    MakeBoxes[TraditionalForm[a]], ")"}];
 
 FieldDerivative /:
-MakeBoxes[FieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD],
+MakeBoxes[FieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD],
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[StyleForm["\[PartialD]", FontSlant -> "Italic"]],

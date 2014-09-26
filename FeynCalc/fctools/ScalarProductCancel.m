@@ -23,21 +23,22 @@ Begin["`Private`"];
 
 Collecting = MakeContext["CoreOptions","Collecting"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+IFPD = MakeContext["CoreObjects","IFPD"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
 MakeContext[FCPrint,
 			Cases2,
             ChangeDimension,
             Collect2,
             ExpandScalarProduct, Expand2, 
-            FeynAmpDenominator,
             FeynAmpDenominatorCombine,
-            FeynAmpDenominatorSimplify, IFPD, IFPDOn, IFPDOff,
+            FeynAmpDenominatorSimplify, IFPDOn, IFPDOff,
             MemSet,
-            Momentum,
             MomentumExpand,
             OPEDelta,
-            Pair,
-            PropagatorDenominator,
             Select1, Select2];
 
 Options[ScalarProductCancel] = 

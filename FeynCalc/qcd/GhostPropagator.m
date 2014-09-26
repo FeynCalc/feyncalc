@@ -6,7 +6,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: GhostPropagator *) 
+(* :Summary: GhostPropagator *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -16,21 +16,20 @@ BeginPackage["HighEnergyPhysics`qcd`GhostPropagator`",
 GHP::"usage" =
 "GHP is equivalent to GhostPropagator.";
 
-GhostPropagator::"usage" = 
+GhostPropagator::"usage" =
 "GhostPropagator[p, a, b] gives the  ghost propagator.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[
-Explicit,
-Momentum,
-FeynAmpDenominator,
-PropagatorDenominator,
-SUNDelta,
-SUNIndex   ];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+
+MakeContext[ Explicit];
 
 GHP = GhostPropagator;
 
@@ -38,12 +37,12 @@ Options[GhostPropagator] = {Explicit -> False};
 
 {l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
 
-GhostPropagator[x___, i_Integer, y___] := 
+GhostPropagator[x___, i_Integer, y___] :=
 GhostPropagator[x, c[i], y];
 
-GhostPropagator[p_, opts___?OptionQ] := 
-   (I FeynAmpDenominator[PropagatorDenominator[p, 0]]) /; 
- 	(Explicit /. {opts} /. Options[GhostPropagator]) === True;
+GhostPropagator[p_, opts___?OptionQ] :=
+   (I FeynAmpDenominator[PropagatorDenominator[p, 0]]) /;
+   (Explicit /. {opts} /. Options[GhostPropagator]) === True;
 
 GhostPropagator[pi_, ai_, bi_, opts___?OptionQ] := Block[
 {p, a, b, glp},

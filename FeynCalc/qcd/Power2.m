@@ -23,8 +23,8 @@ Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b]
 
 Begin["`Private`"];
    
-
-MakeContext[Epsilon, Epsilon2, OPEm, PowerSimplify];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+MakeContext[Epsilon2, OPEm, PowerSimplify];
 
 (*
 Power2 /: Power2[a_, b_] Power2[a_, c_] := Power2[a,b+c];

@@ -74,30 +74,49 @@ choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracMatrix = MakeContext["CoreObjects","DiracMatrix"];
+DiracSlash = MakeContext["CoreObjects","DiracSlash"];
+Eps := Eps  = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
-
-MakeContext[ FCPrint, Collect2, Contract, DiracOrder,
-DiracEquation, DiracGamma, DiracGammaCombine, DiracGammaExpand,
-DiracMatrix, DiracOrder, DiracSigmaExplicit, DiracSlash,
-DiracTrace];
-
+GA = MakeContext["CoreObjects","GA"];
+GA = MakeContext["CoreObjects","GAD"];
+GS = MakeContext["CoreObjects","GS"];
+GSD = MakeContext["CoreObjects","GSD"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+SUNT = MakeContext["CoreObjects","SUNT"];
+Spinor = MakeContext["CoreObjects","Spinor"];
 dR  := dR   = MakeContext["DiracTrick"];
-
-Eps := Eps  = MakeContext["Eps"];
 fcinte := fcinte = MakeContext["FeynCalcInternal"];
-
-MakeContext[ DotSimplify, Expand2,
-Factor2, FreeQ2, LorentzIndex, MemSet,
-(*RM20110830: This Momentum next line was missing,i.e., all functions below
-having an explicit Momentum in them were *not* applied (like sirlin2, etc. ) *)
-Momentum, NonCommFreeQ ];
-
 sCO := sCO   = MakeContext["PairContract"];
 scev := scev = MakeContext["ExpandScalarProduct"];
 
-MakeContext[ Pair, PartitHead, Spinor, GA, GAD, GS, GSD, SUNT, TR];
+MakeContext[
+    Collect2,
+    Contract,
+    DiracEquation,
+    DiracGammaCombine,
+    DiracGammaExpand,
+    DiracOrder,
+    DiracOrder,
+    DiracSigmaExplicit,
+    DiracTrace,
+    DotSimplify,
+    Expand2,
+    FCPrint,
+    Factor2,
+    FreeQ2,
+    MemSet,
+    NonCommFreeQ,
+    PartitHead,
+    TR
+    ];
+
+
 
 Options[DiracSimplify] = {
  DiracCanonical -> False,
@@ -128,7 +147,7 @@ dit[x_,ops___Rule]:=DiracTrace[diracSimplify@@Join[{x},{ops},
 (*
 DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[DOT[x,y], z];
 *)
-DiracSimplify[x_,y__, z___?OptionQ]:=DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] && 
+DiracSimplify[x_,y__, z___?OptionQ]:=DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] &&
                                                                    FreeQ[{x,y}, RuleDelayed];
 
 diracSimplify[z_, ru___Rule]:=
@@ -144,10 +163,10 @@ DiracSimplify[a_, opt___Rule] := (a /.
          FreeQ2[a, {DiracGamma,DiracSlash,DiracMatrix,
                     GA[__],GS[__],GAD[__],GSD[__]}];
 
-(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify. 
+(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify.
    If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.
-	In both cases, the value of DiracSigmaExplicit specifies, whether the explicit form of
-	DiracSigma is inserted or not  *)
+  In both cases, the value of DiracSigmaExplicit specifies, whether the explicit form of
+  DiracSigma is inserted or not  *)
 DiracSimplify[a_, opts___Rule] :=
   If[ (Expanding /. {opts} /. Options[DiracSimplify]) === False,
      If[(DiracSigmaExplicit /. {opts} /.
@@ -157,7 +176,7 @@ DiracSimplify[a_, opts___Rule] :=
                                                   ],
         diracEq[dotLin[a // fcinter] (*/. DOT -> dS*)]
        ],
-		FCPrint[2,"doing oldDiracSimplify on ", StandardForm[a]];       
+    FCPrint[2,"doing oldDiracSimplify on ", StandardForm[a]];
        oldDiracSimplify[
               If[(DiracSigmaExplicit /. {opts} /.
                  Options[DiracSimplify]) === True,
@@ -240,7 +259,7 @@ MemSet[diracSimplify[x,in], Block[
         diraccanopt  = DiracCanonical/.diracopt;
         diractrlabel = InsideDiracTrace/.diracopt;
         diracga67    = DiracSubstitute67/.diracopt;
-		diracsirlin  = SirlinRelations/.diracopt;
+    diracsirlin  = SirlinRelations/.diracopt;
         diracgasu    = DiracSimpCombine/.diracopt;
         diracsifac   = Factoring/.diracopt;
 
@@ -262,12 +281,12 @@ Dialog[Global`D2 = diracdt];
 *)
 
 (* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
-(* 
+(*
            diracdt = diracdt/.DOT->trIC/.
 *)
 (*  only do cyclicity simplification if there is a simple structure of Dirac matrices *)
            If[FreeQ[diracdt/. DOT -> dooT, dooT[a__/; !FreeQ[{a}, dooT]]],
-               diracdt = diracdt/.DOT->trIC/.  
+               diracdt = diracdt/.DOT->trIC/.
 (* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
                {trI:>dS, HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> dS};
              ];
@@ -492,7 +511,7 @@ SpinorChainEvaluate[y_,opts___Rule]:=y /; FreeQ[y,Spinor];
 (* added ,Spinor, Nov. 2003 , RM*)
      nz=Expand[spcev0[x], Spinor],
      nz=sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ], Spinor] ];
-    ]];	
+    ]];
 nz ]/; !Head[x]===Plus;
 (* #################################################################### *)
 (*                             Main45                                   *)
@@ -529,7 +548,7 @@ nz ]/; !Head[x]===Plus;
                                           ] ] ]/; FreeQ[{x,y},Spinor];
     spcev[x___,Spinor[a__],b___,Spinor[c__],y___] :=
       Block[ {spcevdi,spcevre,spcevj},
-	FCPrint[2,"entering spcev with ", InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]];
+  FCPrint[2,"entering spcev with ", InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]];
         spcevdi = diracSimplify[DOT[Spinor[a],b,Spinor[c]],
                                      InsideDiracTrace->False,
                                      DiracCanonical->False,
@@ -551,7 +570,7 @@ nz ]/; !Head[x]===Plus;
             spcevre = (spcevre/.DOT->dS)
           ];
          spcevre = spcevre//DotSimplify;
-		FCPrint[2,"exiting spcev with ",InputForm[spcevre]];
+    FCPrint[2,"exiting spcev with ",InputForm[spcevre]];
         spcevre] /; FreeQ[{b}, Spinor];
 
 (* Reference of Sirlin-relations: Nuclear Physics B192 (1981) 93-99;
@@ -595,18 +614,18 @@ ident3[a_,_]:=a;
  (* canonize different dummy indices *)  (*sirlin3def*)
  sirlin3a[x_]:=((sirlin3[Expand[Contract[x](*,Spinor*)]/.
                          $MU->dum$y]/.dum$y->$MU)/.  sirlin3 -> Identity
-	       )//Contract;
+         )//Contract;
  sirlin3[a_Plus]:=sirlin3 /@ a;
  sirlin3[ m_. DOT[Spinor[p1__] , (ga1___) ,
-	     DiracGamma[ LorentzIndex[la_] ] , (ga2___) ,
-	     Spinor[p2__]] *
-	     DOT[Spinor[p3__], (ga3___) ,
-	     DiracGamma[ LorentzIndex[la_] ], (ga4___) ,
+       DiracGamma[ LorentzIndex[la_] ] , (ga2___) ,
+       Spinor[p2__]] *
+       DOT[Spinor[p3__], (ga3___) ,
+       DiracGamma[ LorentzIndex[la_] ], (ga4___) ,
              Spinor[p4__]]
         ]:= Block[{counter},
                    counter = 1;
 
-	While[!FreeQ2[{m,ga1,ga2,ga3,ga4},
+  While[!FreeQ2[{m,ga1,ga2,ga3,ga4},
                            {$MU[counter], dum$y[counter]} ],
                    counter = counter + 1
                   ];
@@ -656,11 +675,11 @@ If[$OperatingSystem === "Unix",
 
  sirlin0doit[a_Plus]:=timeconstrained[
 sirlin3a[Contract[
-		   (Expand[Map[sirlin1, a](*, DOT*)]/.
-		    sirlin1->sirlin2) /.
-		   sirlin2 -> sirlin1/.sirlin1->sirlin2/.
+       (Expand[Map[sirlin1, a](*, DOT*)]/.
+        sirlin1->sirlin2) /.
+       sirlin2 -> sirlin1/.sirlin1->sirlin2/.
                     sirlin2 -> Identity,EpsContract->True]
-			 ] // spcev0,
+       ] // spcev0,
                                      2 $sirlintime, a
                                     ];
  sirlin0doit[a_]:=timeconstrained[
@@ -740,28 +759,28 @@ sirlin3a[Contract[
 
 
  sirlin2[m_. DOT[Spinor[p1__], (ga1___) ,
-	     DiracGamma[ LorentzIndex[la_] ],
-	     DiracGamma[ LorentzIndex[nu_] ],
-	     DiracGamma[6] ,
-	     Spinor[p2__]] *
-	     DOT[Spinor[p3__], (ga2___) ,
-	     DiracGamma[ LorentzIndex[la_] ],
-	     DiracGamma[ LorentzIndex[nu_] ],
-	     DiracGamma[7] ,
-	     Spinor[p4__]] ] :=  (
+       DiracGamma[ LorentzIndex[la_] ],
+       DiracGamma[ LorentzIndex[nu_] ],
+       DiracGamma[6] ,
+       Spinor[p2__]] *
+       DOT[Spinor[p3__], (ga2___) ,
+       DiracGamma[ LorentzIndex[la_] ],
+       DiracGamma[ LorentzIndex[nu_] ],
+       DiracGamma[7] ,
+       Spinor[p4__]] ] :=  (
     m 4 DOT[Spinor[p1] , ga1 , DiracGamma[6] , Spinor[p2] *
         Spinor[p3] , ga2 , DiracGamma[7] , Spinor[p4]] );
 
  sirlin2[m_. DOT[Spinor[p1__], (ga1___) ,
-	     DiracGamma[ LorentzIndex[la_] ],
-	     DiracGamma[ LorentzIndex[nu_] ],
-	     DiracGamma[7] ,
-	     Spinor[p2__]] *
-	     DOT[Spinor[p3__], (ga2___) ,
-	     DiracGamma[ LorentzIndex[la_] ],
-	     DiracGamma[ LorentzIndex[nu_] ],
-	     DiracGamma[6] ,
-	     Spinor[p4__]] ] :=  (
+       DiracGamma[ LorentzIndex[la_] ],
+       DiracGamma[ LorentzIndex[nu_] ],
+       DiracGamma[7] ,
+       Spinor[p2__]] *
+       DOT[Spinor[p3__], (ga2___) ,
+       DiracGamma[ LorentzIndex[la_] ],
+       DiracGamma[ LorentzIndex[nu_] ],
+       DiracGamma[6] ,
+       Spinor[p4__]] ] :=  (
     m 4 DOT[Spinor[p1] , ga1 , DiracGamma[7] , Spinor[p2] *
         Spinor[p3] , ga2 , DiracGamma[6] , Spinor[p4]] );
  (* #################################################################### *)
@@ -1053,7 +1072,7 @@ dig[Momentum[a_,___]]:=a;
 dig[x_]:=x/;(Head[x]=!=LorentzIndex)&&(Head[x]=!=Momentum);
 dig[n_?NumberQ]:={};
 getV[x_List]:=Select[Flatten[{x}/.DOT->List]/.DiracGamma -> dige ,
-		     Head[#]===dige&]/.dige->dig;
+         Head[#]===dige&]/.dige->dig;
 
 (* Get a list of equal gamma matrices *)
 schnitt[x___][y___]:=Intersection[

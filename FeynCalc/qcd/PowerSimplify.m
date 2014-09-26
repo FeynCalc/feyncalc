@@ -27,8 +27,9 @@ an integer (even if it is symbolic). Furthermore
 
 Begin["`Private`"];
    
+ScaleMu = MakeContext["CoreObjects","ScaleMu"];
 
-MakeContext[Factor2, Power2, ScaleMu, OPEm];
+MakeContext[Factor2, Power2, OPEm];
 
 PowerSimplify[x_] := 
   Block[{nx, qcdsub = False, power3},

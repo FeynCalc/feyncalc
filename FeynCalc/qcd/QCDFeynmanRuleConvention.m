@@ -9,30 +9,31 @@
 factors of I etc. *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: QCDFeynmanRuleConvention *) 
+(* :Summary: QCDFeynmanRuleConvention *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`QCDFeynmanRuleConvention`",{"HighEnergyPhysics`FeynCalc`"}];
 
 QCDFeynmanRuleConvention::"usage" =
-"QCDFeynmanRuleConvention[GluonPropagator], 
-QCDFeynmanRuleConvention[GluonGhostVertex], etc. can be set to 
+"QCDFeynmanRuleConvention[GluonPropagator],
+QCDFeynmanRuleConvention[GluonGhostVertex], etc. can be set to
 different values. The default is the Itzykson-Zuber convention. ";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 MakeContext[
-GluonPropagator,
-GluonVertex,
+GhostPropagator,
 GluonGhostVertex,
-GhostPropagator];
+GluonPropagator,
+GluonVertex
+];
 
 QCDFeynmanRuleConvention[_] = 1;
- 
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "QCDFeynmanRuleConvention | \n "]];

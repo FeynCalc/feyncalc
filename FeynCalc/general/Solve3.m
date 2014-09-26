@@ -29,10 +29,17 @@ Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 
-MakeContext[ FCPrint, Collect2, Combine, Factor2,
-             FreeQ2, Isolate, IsolateSplit,
-             Select1,Solve2
-           ];
+MakeContext[
+    Collect2,
+    Combine,
+    FCPrint,
+    Factor2,
+    FreeQ2,
+    Isolate,
+    IsolateSplit,
+    Select1,
+    Solve2
+];
 
 Options[Solve3] = {Factoring -> False, FinalSubstitutions -> {}, ParallelMap -> False};
 
@@ -59,9 +66,9 @@ With[{cli = cli},
 col = ( FCPrint[2," Collect with Factor "];
    Collect[#, cli, Factor] ) &];
 
-If[TrueQ[parmap], 
-	pmap = ParallelMap;
- 	DistributeDefinitions[ cli, col, FreeQ2, $VeryVerbose,
+If[TrueQ[parmap],
+  pmap = ParallelMap;
+   DistributeDefinitions[ cli, col, FreeQ2, $VeryVerbose,
 HighEnergyPhysics`FeynCalc`FreeQ2`FreeQ2 ] , pmap = Map
   ];
 
@@ -76,10 +83,10 @@ specsimp[{}, b_Rule] := {b};
 specsimp[a_List, b_Rule] := pmap[(#[[1]] -> (col[#[[2]] /. b]))&, a];
 
 neq = eqq /. Equal[a_, b_] :> (a-b);
-For[i = 1, i <= Length[eqq], i++, 
+For[i = 1, i <= Length[eqq], i++,
 If[!FreeQ[neq, cli[[i]]],
-    FCPrint[1,"solve3 i = ",i,"    time used : ", 
-				Round[(starttime-AbsoluteTime[])/60], " minutes" ];
+    FCPrint[1,"solve3 i = ",i,"    time used : ",
+        Round[(starttime-AbsoluteTime[])/60], " minutes" ];
     While[FreeQ[neq1 = (*col[*)neq[[1]] /. res(*]*), cli[[i]]],
 FCPrint[2,"rotating ", i];
           neq = RotateLeft[neq = Prepend[Rest[neq],neq1]]
@@ -123,8 +130,8 @@ neq = pmap[ col, neqres ];
 
 (*
      For[iij = 1, iij <= lneq, iij++,
-         If[ $VeryVerbose > 1, 
-             Print["updating " , iij , " out of ",Length[neq]] 
+         If[ $VeryVerbose > 1,
+             Print["updating " , iij , " out of ",Length[neq]]
            ];
          newel = neqh[[1, iij]] /. res;
          If[newel === neqh[[1, iij]],

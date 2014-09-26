@@ -21,8 +21,9 @@ integer arguments are given.";
 Begin["`Private`"];
    
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[Epsilon, Select1, Select2, Zeta2];
+MakeContext[Select1, Select2, Zeta2];
 
 (*
 This is

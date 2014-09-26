@@ -9,7 +9,7 @@
 (* ------------------------------------------------------------------------ *)
 
 (* :Summary:  *)
-            
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -17,82 +17,82 @@ BeginPackage["HighEnergyPhysics`qcd`OPE1Loop`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
 OPE1Loop::"usage"=
-"OPE1Loop[q1, amp].  OPE1Loop[{q1,q2}, amp] does sub-loop 
+"OPE1Loop[q1, amp].  OPE1Loop[{q1,q2}, amp] does sub-loop
 decomposition.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Collecting = MakeContext["CoreOptions","Collecting"];
 Dimension = MakeContext["CoreOptions","Dimension"];
-MakeContext["Contract", "Contract3"];
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];
-Tr2 := Tr2 = MakeContext["Tr2"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 InitialSubstitutions = MakeContext["CoreOptions","InitialSubstitutions"];
-SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+MakeContext["Contract", "Contract3"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+OPE = MakeContext["CoreObjects","OPE"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+Tr2 := Tr2 = MakeContext["Tr2"];
 
 MakeContext[
-FCPrint,
 Cases2,
 ChangeDimension,
 Collect2,
 Contract,
-Eps,
 EpsEvaluate,
-ExpandScalarProduct,
 Expand2,
+ExpandScalarProduct,
+FCPrint,
 Factor1,
-FeynCalcInternal,
+FeynAmpDenominatorSimplify,
 FeynCalcExternal,
 FeynCalcForm,
-FeynAmpDenominator,
-FeynAmpDenominatorSimplify,
+FeynCalcInternal,
 FreeQ2,
 GluonVertex,
-LorentzIndex,
-Momentum,
 MomentumExpand,
 NumericalFactor,
-OPE,
-OPEi,
-OPEj,
 OPEDelta,
 OPESum,
 OPESumSimplify,
-Pair,
+OPEi,
+OPEj,
 Power2,
-PowerSimplify, 
+PowerSimplify,
+SUNSimplify,
 ScalarProductCancel,
 Select1,
 Select2,
 SubLoop,
-SUNSimplify,
 TID,
-PropagatorDenominator,
 Trick,
 Write2
 ];
-FeynAmpDenominatorCombine := FeynAmpDenominatorCombine = 
+FeynAmpDenominatorCombine := FeynAmpDenominatorCombine =
                MakeContext["FeynAmpDenominatorCombine"];
-FeynAmpDenominatorSplit := FeynAmpDenominatorSplit = 
+FeynAmpDenominatorSplit := FeynAmpDenominatorSplit =
                MakeContext["FeynAmpDenominatorSplit"];
 Explicit := Explicit = MakeContext["Explicit"];
-Twist2GluonOperator := Twist2GluonOperator = 
+Twist2GluonOperator := Twist2GluonOperator =
   MakeContext["Twist2GluonOperator"];
-Twist2QuarkOperator := Twist2QuarkOperator = 
+Twist2QuarkOperator := Twist2QuarkOperator =
   MakeContext["Twist2QuarkOperator"];
 
 (*
 Unprotect[Power]; 0^_ = 0; Protect[Power];
 *)
 
-Options[OPE1Loop] = 
+Options[OPE1Loop] =
 {Collecting -> True,        Dimension -> D, SubLoop -> False,
  FinalSubstitutions -> {},  InitialSubstitutions -> {},
  SUNFToTraces -> True,
@@ -101,21 +101,21 @@ Options[OPE1Loop] =
 
 OPE1Loop[qq_,amp_]:=OPE1Loop[False, qq,amp];
 
-OPE1Loop[any___, qq_Plus,a___Rule] := Map[ ope1[any,#,a]&, qq 
+OPE1Loop[any___, qq_Plus,a___Rule] := Map[ ope1[any,#,a]&, qq
                                     ] /. ope1 -> OPE1Loop;
 
-OPE1Loop[qq_,amp_,opt1_,opt___Rule] := 
+OPE1Loop[qq_,amp_,opt1_,opt___Rule] :=
   OPE1Loop[False, qq,amp,opt1,opt]/; !FreeQ[opt1,Rule] && qq=!=False;
 
 OPE1Loop[name_, {ka1_, ka2_}, amp_, opts___Rule] :=
-If[FreeQ2[amp, {ka1, ka2}] ||  
+If[FreeQ2[amp, {ka1, ka2}] ||
  ((Head[amp] =!= Times) && (Head[amp] =!= FeynAmpDenominator)),
    amp,
 PairFix[
  OPE1Loop[name, ka2,
            OPE1Loop[name, ka1, amp//. PropagatorDenominator[
                (any_.) -Momentum[ka1,di___], m_] :>
-                     PropagatorDenominator[-any + Momentum[ka1,di], m], 
+                     PropagatorDenominator[-any + Momentum[ka1,di], m],
                     SubLoop -> True, opts
                    ]//. PropagatorDenominator[
                (any_.) -Momentum[ka2,di___], m_] :>
@@ -138,9 +138,9 @@ FCPrint[3,"entering PairFix"];
 FCPrint[3,"exiting PairFix"];
     FeynAmpDenominatorCombine[exp /. pf]
   ]                          ];
-            
 
-OPE1Loop[grname_,k_ /; Head[k] =!= List, 
+
+OPE1Loop[grname_,k_ /; Head[k] =!= List,
          integ_ /; Head[integ] =!= Plus,opts___Rule
         ] := Block[
 {collecting, contrac,amp,dim,powexp,feyncan, feyncanon, subloop, fsc,
@@ -160,7 +160,7 @@ If[FreeQ[integ,k](* || (!FreeQ[integ, (_. +_. Pair[Momentum[k,___], _]
                                             ]
                                      }
                              ]
-                     ) || 
+                     ) ||
    FreeQ[Select1[Select1[integ, FeynAmpDenominator],
                  {((_.) + (_.) Pair[Momentum[_,___], _])^
                   (hw_/;Head[hw] =!=Integer),
@@ -171,7 +171,7 @@ If[FreeQ[integ,k](* || (!FreeQ[integ, (_. +_. Pair[Momentum[k,___], _]
      (* NEWWWWW *)
    (Length[Select2[Cases2[integ, PropagatorDenominator],k]]>2)
 (*then*)
-  , 
+  ,
 FCPrint[1,"nononononon"];
 fds1 = Identity;
 amp = FeynAmpDenominatorCombine[integ]
@@ -190,12 +190,12 @@ If[subloop === True,
                    fsc[Momentum[k,di]],
                    1/Pair[Momentum[k,di_], Momentum[k,di_]]^2 :>
                    fsc[Momentum[k,di], Momentum[k,di]]
-                  }; 
+                  };
    fsc[w_]   := 1/FeynAmpDenominator[PropagatorDenominator[w, 0]];
    fsc[w_, w_] := 1/FeynAmpDenominator[PropagatorDenominator[w, 0],
                                        PropagatorDenominator[w, 0]];
    tdec[w_, ka_] := Block[{tem},
-                     tem = 
+                     tem =
                    TID[w, ka,ScalarProductCancel -> False,
                        Collecting -> False, Contract->True
                       ];
@@ -229,7 +229,7 @@ If[!FreeQ[amp,OPE], amp = Coefficient[ Expand2[amp, OPE], OPE]];
 amp1 = amp;
 contrac[yy_] := Contract[yy, EpsContract->False];
 FCPrint[1,"sunsimplifying"];
-amp = SUNSimplify[amp, SUNFToTraces -> sunftotraces, 
+amp = SUNSimplify[amp, SUNFToTraces -> sunftotraces,
                   SUNNToCACF -> sunntocacf];
 FCPrint[1,"contracting"];
 If[FreeQ[amp, Eps] && !FreeQ[amp, LorentzIndex],
@@ -237,10 +237,10 @@ If[FreeQ[amp, Eps] && !FreeQ[amp, LorentzIndex],
   ];
 
 FCPrint[1,"contracting 2"];
-   amp = Contract[amp/.GluonVertex[aa__] :> 
+   amp = Contract[amp/.GluonVertex[aa__] :>
           GluonVertex[aa, Explicit->True], EpsContract -> False];
 If[CheckContext["Twist2GluonOperator"],
-   glopex[a__] := Twist2GluonOperator[a, Explicit -> True, 
+   glopex[a__] := Twist2GluonOperator[a, Explicit -> True,
                                    Dimension -> dim];
    FCPrint[1,"inserting gluon operator"];
    amp = amp  /. Twist2GluonOperator -> glopex;
@@ -248,7 +248,7 @@ If[CheckContext["Twist2GluonOperator"],
    amp = Contract[amp, EpsContract -> False];
   ];
 If[CheckContext["Twist2QuarkOperator"],
-   quex[a__] := Twist2QuarkOperator[a, Explicit -> True, 
+   quex[a__] := Twist2QuarkOperator[a, Explicit -> True,
                                    Dimension -> dim];
    FCPrint[1,"inserting quark operator"];
    amp = amp  /. Twist2QuarkOperator -> quex;
@@ -274,13 +274,13 @@ amp = powexp[amp];
 *)
 
 If[subloop === False && !FreeQ[amp, OPESum],
-opsumdoit[a_,b_] := opsumdoit[a,b] = 
-If[!MatchQ[Select2[a,k] /. Power2->Power, 
+opsumdoit[a_,b_] := opsumdoit[a,b] =
+If[!MatchQ[Select2[a,k] /. Power2->Power,
     (_. Pair[Momentum[OPEDelta,dim], Momentum[k,dim]])^
                              (w_/;Head[w]=!=Integer) *
-    (_. Pair[Momentum[OPEDelta,dim], Momentum[pe_,dim]] + 
+    (_. Pair[Momentum[OPEDelta,dim], Momentum[pe_,dim]] +
      _. Pair[Momentum[OPEDelta,dim], Momentum[k,dim]])^
-                             (v_/;Head[v]=!=Integer) 
+                             (v_/;Head[v]=!=Integer)
           ],
    OPESum[a,b],
  ( PowerSimplify[
@@ -301,7 +301,7 @@ amp = amp /. OPESum -> opsumdoit;
 (*Global`amp3 = amp;*)
 
 ops[null1] = ops[null2] = 0;
-ops[a_ OPESum[xa_,xb_]]  := 
+ops[a_ OPESum[xa_,xb_]]  :=
  a/(Select2[a dUM, k]) OPESum[xa Select2[a dUM,k],xb];
 
 amp = Map[ops, amp + null1 + null2] /. ops -> Identity;
@@ -332,7 +332,7 @@ subfactor = 1
 ,
 
 amp = FeynAmpDenominatorSplit[integ, k];
-If[(Head[amp] === Times) || (Head[amp] === FeynAmpDenominator), 
+If[(Head[amp] === Times) || (Head[amp] === FeynAmpDenominator),
    subfactor = Select1[amp, k];
 FCPrint[2,"subfactor = ",subfactor//InputForm];
    ampp = amp;
@@ -345,7 +345,7 @@ FCPrint[2,"subfactor = ",subfactor//InputForm];
    If[MatchQ[MomentumExpand[Select2[amp, FeynAmpDenominator]],
       FeynAmpDenominator[PropagatorDenominator[_Plus,_],___]]
       ,
-      fad = Select2[amp, FeynAmpDenominator];  
+      fad = Select2[amp, FeynAmpDenominator];
 (* k - p *)
       fap = fad[[1,1]];
       fap = fap  /. Momentum[aa_, ___] :> aa;
@@ -367,14 +367,14 @@ If[Head[amp] =!= Plus,
    nn = fds1[tdec[amp, k]];
 ,
    lamp = Length[amp];
-   For[j = 1, j <= lamp, j++, 
+   For[j = 1, j <= lamp, j++,
        FCPrint[1,"QPC2 ",j, " out of ",lamp];
        nn = nn + fds1[tdec[amp[[j]],k]];
       ]
   ];
 amp = EpsEvaluate[nn];
 amp4 = amp;
-If[collecting === False, 
+If[collecting === False,
    amp = Expand[amp],
    If[collecting === True,
       amp = Collect2[amp, {LorentzIndex, k}],
@@ -392,19 +392,19 @@ If[subloop === True,
  amp]];
 
 (* only valid for Subloop === False !!!! *)
-tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq, 
+tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                                      ePS,pAIR},
  SetAttributes@@{pAIR, Orderless};
                   te = Expand2[x, k]/.Power2->Power;
                   If[ Head[te] === Plus, te = Map[tdec[#,k]&, te] ];
-                  If[FreeQ[te, (a_ /; (Head[a]=!=Integer) && 
+                  If[FreeQ[te, (a_ /; (Head[a]=!=Integer) &&
                                      !FreeQ[a, k])^
                                (z_ /; Head[z]=!=Integer)
                           ],
                   If[te =!= 0,
                      te  = dufa te;
                      nok = Select[te, FreeQ[#, k]&] /. dufa -> 1;
-                     kkk = qqq[Select[te,!FreeQ[#, k]&]] ; 
+                     kkk = qqq[Select[te,!FreeQ[#, k]&]] ;
 (* fool the pattern matcher *)
                      kkk = kkk /.{(Pair[Momentum[k, dim], a_]^2 :>
                            (Pair[Momentum[k, dim], a] *
@@ -432,11 +432,11 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                       ) /; FreeQ[{b, c}, k],
 (* Bmunu k_mu k_nu (k, kp)*)
                qqq[(fun1_[b___, Momentum[k, ___], c___] /;
-                    ((fun1 === Pair) || (fun1 === Eps) || 
+                    ((fun1 === Pair) || (fun1 === Eps) ||
                      (fun1 === pAIR) || (fun1 === ePS))
                    ) *
                    (fun2_[bb___, Momentum[k, ___], cc___] /;
-                    ((fun2 === Pair) || (fun2 === Eps) || 
+                    ((fun2 === Pair) || (fun2 === Eps) ||
                      (fun2 === pAIR) || (fun2 === ePS))
                    ) *
       FeynAmpDenominator[
@@ -449,7 +449,7 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                - Pair[anyp, anyp]*
 (* gmunu *)
                   Contract[(fun1[b, muUUu, c] fun2[bb, muUUu, cc]
-                           ) /. {pAIR :> Pair, ePS :> Eps}, 
+                           ) /. {pAIR :> Pair, ePS :> Eps},
                           EpsContract->False
                           ] +
                   dim fun1[b, anyp, c] *
@@ -462,7 +462,7 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                  ) /; FreeQ[{b, c}, k],
 
 (* Bmu112 k_mu (k,k, kp)*)
-              qqq[(fun_[b___, Momentum[k, ___], c___] /; 
+              qqq[(fun_[b___, Momentum[k, ___], c___] /;
                                 ((fun===Pair) || (fun === Eps))
                   ) *
       FeynAmpDenominator[
@@ -471,16 +471,16 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
         PropagatorDenominator[Momentum[k, dim] + anyp_, 0]
                         ]
                  ]:> ((-1) / 2  fun[b, anyp, c] *
-                          ( 1/fsc[anyp] * 
+                          ( 1/fsc[anyp] *
                              FeynAmpDenominator[
                              PropagatorDenominator[Momentum[k, dim], 0],
-                             PropagatorDenominator[Momentum[k, dim]  + 
+                             PropagatorDenominator[Momentum[k, dim]  +
                                                    anyp, 0]
-                                              ] + 
+                                              ] +
                              FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim], 0],
-                                PropagatorDenominator[Momentum[k, dim]  + 
+                                PropagatorDenominator[Momentum[k, dim]  +
                                                       anyp, 0]
                                                ]
                     )) /; FreeQ[{b, c}, k],
@@ -507,11 +507,11 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
 
 (* Bmunu112 k_mu k_nu (k,k, kp)*)
               qqq[( fun1_[b___, Momentum[k, ___], c___] /;
-                   ((fun1===Pair)   || (fun1 === Eps) || 
+                   ((fun1===Pair)   || (fun1 === Eps) ||
                     (fun1 === pAIR) || (fun1 === ePS))
                   ) *
                   (fun2_[bb___, Momentum[k, ___], cc___] /;
-                   ((fun2===Pair)   || (fun2 === Eps) || 
+                   ((fun2===Pair)   || (fun2 === Eps) ||
                     (fun2 === pAIR) || (fun2 === ePS))
                   ) *
       FeynAmpDenominator[
@@ -521,24 +521,24 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                         ]
                  ]:> (*g_munu*) ( muUUu = LorentzIndex[Unique[$MU], dim];
                       Contract[(fun1[b, muUUu, c] *
-                                fun2[bb, muUUu, cc]) /. 
+                                fun2[bb, muUUu, cc]) /.
                                  {pAIR :> Pair, ePS :> Eps},
                                 EpsContract -> False] *
                       (1/(1-dim) (- 1/2 * FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim]  +
                                                       anyp, 0]
-                                                           ] + 
+                                                           ] +
         1/4 Pair[anyp, anyp] FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim]  +
                                                      anyp, 0]
-                                        ] 
+                                        ]
                                  )
-                      ) + 
+                      ) +
                      (*pmu pnu*)(Contract[(fun1[b, anyp,c] fun2[bb,anyp,cc]
-                                          ) /. {pAIR :> Pair, ePS :> Eps}, 
+                                          ) /. {pAIR :> Pair, ePS :> Eps},
                                           EpsContract -> False
                                           ] *
                                 (1 / (4 (1-dim)
@@ -548,13 +548,13 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim] +
                                                       anyp, 0]
-                                                  ] + 
+                                                  ] +
                                         4/fsc[anyp] *
                                          FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim] +
                                                       anyp, 0]
-                                                           ] - 
+                                                           ] -
                                         2 dim /fsc[anyp] *
                                          FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
@@ -566,11 +566,11 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                               ) /; FreeQ[{b,c,bb,cc}, k],
 (* Bmunu1122 k_mu k_nu (k,k, kp,kp)*)
               qqq[(fun1_[b___, Momentum[k, ___], c___] /;
-                   ((fun1===Pair) || (fun1 === Eps) || 
+                   ((fun1===Pair) || (fun1 === Eps) ||
                     (fun1 === pAIR) || (fun1 === ePS))
                   ) *
                   (fun2_[bb___, Momentum[k, ___], cc___] /;
-                   ((fun2===Pair) || (fun2 === Eps) || 
+                   ((fun2===Pair) || (fun2 === Eps) ||
                     (fun2 === pAIR) || (fun2 === ePS))
                   ) *
       FeynAmpDenominator[
@@ -579,19 +579,19 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
         PropagatorDenominator[Momentum[k, dim] + anyp_, 0],
         PropagatorDenominator[Momentum[k, dim] + anyp_, 0]
                         ]
-                 ]:> (*g_munu*) 
+                 ]:> (*g_munu*)
 ( muUUu = LorentzIndex[Unique[$MU], dim];
                       Contract[(fun1[b, muUUu, c] fun2[bb, muUUu, cc]
                                ) /. {pAIR :> Pair, ePS :> Eps},
                                EpsContract -> False] *
                       (-1/(4(1-dim))  *
-                                 ( 2/fsc[anyp] * 
+                                 ( 2/fsc[anyp] *
                                   FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim]  +
                                                       anyp, 0]
                                                      ] +
-                                  4* 
+                                  4*
                                   FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim]  +
@@ -613,16 +613,16 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                       (*pmu pnu*)
                       Contract[(fun1[b, anyp, c] *
                                 fun2[bb, anyp, cc]
-                               ) /. {pAIR :> Pair, ePS :> Eps}, 
+                               ) /. {pAIR :> Pair, ePS :> Eps},
                                EpsContract -> False] *
-                      ( 
+                      (
                             1/(4 (1-dim)) (
                           2 dim /fsc[anyp, anyp] *
                          FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim]  +
                                                       anyp, 0]
-                                           ] + 
+                                           ] +
                           4/fsc[anyp] FeynAmpDenominator[
                                 PropagatorDenominator[Momentum[k, dim], 0],
                                 PropagatorDenominator[Momentum[k, dim], 0],
@@ -637,11 +637,11 @@ tdec1loop[x_, k_] := (*tdec[x] = *)Block[{te, dufa, re = x, nok, kkk, qqq,
                                                       anyp, 0],
                                 PropagatorDenominator[Momentum[k, dim]  +
                                                       anyp, 0]
-                                             ]  
+                                             ]
                                             )
                       )
 )
- 
+
 
              } /. qqq -> Identity /. {pAIR :> Pair, ePS :> Eps} )]
                      ];

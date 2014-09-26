@@ -17,64 +17,67 @@ BeginPackage["HighEnergyPhysics`qcd`OPEInt`",
 
 
 OPEInt::"usage"=
-"OPEInt[expr, q, p, x] calculates 1-loop OPE-type self energies. 
-The dimension is changed to the one indicated by the option 
-Dimension. The setting of the option EpsContract determines 
+"OPEInt[expr, q, p, x] calculates 1-loop OPE-type self energies.
+The dimension is changed to the one indicated by the option
+Dimension. The setting of the option EpsContract determines
 the dimension in which the Levi-Civita tensors are contracted.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 Divideout = MakeContext["CoreOptions","Divideout"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 Factorout = MakeContext["CoreOptions","Factorout"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNN = MakeContext["CoreObjects","SUNN"];
+ScaleMu = MakeContext["CoreObjects","ScaleMu"];
+
 
 MakeContext[
-FCPrint,
-CA,
-CF,
 ChangeDimension,
 Collect2,
 Contract,
-DeltaFunction,
-Eps, 
-Epsilon, 
-EpsEvaluate, 
+EpsEvaluate,
+FCPrint,
 Factor1,
 Factor2,
 FeynCalcInternal,
-FeynAmpDenominator,
 FreeQ2,
-Gstrong,
-LorentzIndex,
-Momentum, 
 NumericalFactor,
-OPEDelta, Pair,
+OPEDelta,
 OPEIntegrateDelta,
+OPESum,
+OPESumExplicit,
+OPESumSimplify,
 OPEk,
 OPEm,
-OPESum,
-OPESumSimplify,
-OPESumExplicit,
-PowerSimplify,
 Power2,
-PropagatorDenominator, 
-ScaleMu,
+PowerSimplify,
 RHO,
 Select1,
 Select2,
 Series2,
 Sn,
-SUNIndex,
-SUNN,
-Zeta2       ];
+Zeta2
+];
 
-Options[OPEInt] = {Dimension -> D, 
+Options[OPEInt] = {Dimension -> D,
                    Divideout -> 1,
                    EpsContract -> 4,
                    EpsilonOrder -> 1,
@@ -93,8 +96,8 @@ OPEInt[exp_, kk_, pp_, x_, opt___Rule] := Block[
 facout = 1;
 
 n  = Dimension /. {opt} /. Options[OPEInt];
-k  = Momentum[kk, n]; 
-ka = Momentum[kk, ___]; 
+k  = Momentum[kk, n];
+ka = Momentum[kk, ___];
 p  = Momentum[pp, n];
 de = Momentum[OPEDelta, n];
 p2 = Pair[p, p];
@@ -135,10 +138,10 @@ nUuU = LorentzIndex[Unique[Global`li], n];
 
 nex = nex /. Eps[a___, Momentum[kk,dii___], b___]^2 :>
              (Eps[a, mUuU, b] * Pair[Momentum[kk, n], mUuU] *
-              Eps[a, nUuU, b] * Pair[Momentum[kk, n], nUuU] 
+              Eps[a, nUuU, b] * Pair[Momentum[kk, n], nUuU]
              );
 qqqk[yy_Times] := Select1[yy, kk] qqq[Select2[yy, kk]];
-nex = nex /. qqq -> qqqk /. qqqk -> qqq; 
+nex = nex /. qqq -> qqqk /. qqqk -> qqq;
 
 (* do the 1-part too *)
 nex = nex  + null[1] + null[2];
@@ -151,12 +154,12 @@ qse[null1] = qse[null2] = 0;
 qse[a_] := If[!FreeQ[a, sumk], a,
               If[Head[a] =!= Times, a,
                  qqq[Select2[a, kk]] (a/Select2[a, kk])
-                ] 
+                ]
              ];
 
 
 nex = Map[qse, nex + null1 + null2];
-   
+
 (*
 nex = nex /. sumk -> opgeom;
 *)
@@ -170,14 +173,14 @@ qqq[ Pair[de, k]^m_ fun1_[a___, ka, b___Momentum] *
    fun2_[aa___,ka,bb___Momentum] *
                 FeynAmpDenominator[
                  PropagatorDenominator[k, 0], PropagatorDenominator[k, 0],
-                 PropagatorDenominator[k - p, 0]              
-                                  ] 
+                 PropagatorDenominator[k - p, 0]
+                                  ]
    ]:>
-(muUU = LorentzIndex[Unique[$MU], n]; 
+(muUU = LorentzIndex[Unique[$MU], n];
 ( Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
 (*g_munu*)
   ( Contract[fun1[a, muUU, b] fun2[aa, muUU, bb]] (1/2) Gamma[2-n/2] x*
-    (1-x) + 
+    (1-x) +
 (*p_mu p_nu*)
 EpsEvaluate[fun1[a,p,b] fun2[aa,p,bb]]  Gamma[3-n/2] x^2/p2 +
 EpsEvaluate[(fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
@@ -191,10 +194,10 @@ EpsEvaluate[(fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
 qqq[ Pair[de, ka]^m_ fun1_[a___, ka, b___Momentum] *
    fun2_[aa___,k,bb___Momentum] *
                 FeynAmpDenominator[
-                 PropagatorDenominator[k, 0], 
+                 PropagatorDenominator[k, 0],
                  PropagatorDenominator[k, 0],
                  PropagatorDenominator[k - p, 0],
-                 PropagatorDenominator[k - p, 0] 
+                 PropagatorDenominator[k - p, 0]
                                   ]
    ] :>
 (muUU = LorentzIndex[Unique[$MU], n];
@@ -208,7 +211,7 @@ FourVector[OPEDelta, MU]* FourVector[OPEDelta, NU]*
 *)
      fun1[a, de, b] fun2[aa, de, bb] *
      Gamma[2 - n/2]*
-     Pair[de, p]^(-2 + m))/(16*(1 - x)^3) + 
+     Pair[de, p]^(-2 + m))/(16*(1 - x)^3) +
   ((4 - n)*(6 - n)*x^(-1 + m)*((1 - x)*x)^(n/2)*
    Gamma[2 - n/2]*
 (*
@@ -216,17 +219,17 @@ FourVector[p, MU]* FourVector[p, NU]*
 *)
      fun1[a, p, b] fun2[aa, p, bb] *
      Pair[de, p]^m)/
-   (4*(1 - x)^3*Pair[p, p]^2) + 
+   (4*(1 - x)^3*Pair[p, p]^2) +
   ((4 - n)*x^(-2 + m)*((1 - x)*x)^(n/2)*(2 - n - 6*x + 2*n*x)*
 (*
-(FourVector[OPEDelta, NU]*FourVector[p, MU] + 
+(FourVector[OPEDelta, NU]*FourVector[p, MU] +
  FourVector[OPEDelta, MU]*FourVector[p, NU])*
 *)
      (fun1[a,p,b] fun2[aa,de,bb] + fun1[a,de,b] fun2[aa,p,bb]
      )*
    Gamma[2 - n/2]*
      Pair[de, p]^(-1 + m))/
-   (8*(1 - x)^3*Pair[p, p]) + 
+   (8*(1 - x)^3*Pair[p, p]) +
   ((4 - n)*x^(-2 + m)*((1 - x)*x)^(n/2)*Gamma[2 - n/2]*
 (*
 MetricTensor[MU, NU]*
@@ -244,7 +247,7 @@ qqq[
  Pair[de, ka]^m_ fun_[a___, ka, b___Momentum] FeynAmpDenominator[
                  PropagatorDenominator[k, 0], PropagatorDenominator[k, 0],
                  PropagatorDenominator[k - p, 0],
-                 PropagatorDenominator[k - p, 0]              ] 
+                 PropagatorDenominator[k - p, 0]              ]
    ]:>
 ( 1/p2^2 Pair[de, p]^m  x^(m-1) Gamma[3 - n/2] (x (1-x))^(n/2-2) *
  ( (1 - (n-4)/2) x/(1-x) EpsEvaluate[fun[a, p, b]] +
@@ -256,7 +259,7 @@ qqq[
 qqq[
  Pair[de, ka]^m_ fun_[a___, ka, b___Momentum] FeynAmpDenominator[
                  PropagatorDenominator[k, 0], PropagatorDenominator[k, 0],
-                 PropagatorDenominator[k - p, 0]         ] 
+                 PropagatorDenominator[k - p, 0]         ]
    ] :>
         (Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
      ( Gamma[3 - n/2] x EpsEvaluate[fun[a, p, b]]/p2   +
@@ -267,7 +270,7 @@ qqq[
 qqq[
 Pair[de, ka]^m_ fun_[a___,ka, b___Momentum] FeynAmpDenominator[
                  PropagatorDenominator[k, 0],
-                 PropagatorDenominator[k - p, 0]         ] 
+                 PropagatorDenominator[k - p, 0]         ]
    ]:>
               (Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
      ( Gamma[2 - n/2] x^2  EpsEvaluate[fun[a, p, b]]   +
@@ -276,11 +279,11 @@ Pair[de, ka]^m_ fun_[a___,ka, b___Momentum] FeynAmpDenominator[
      )        ) /; ( (fun === Eps) || (fun === Pair)),
 qqq[
 Pair[de, ka]^m_ fun_[a___, ka, b___Momentum]  FeynAmpDenominator[
-                 PropagatorDenominator[k, 0], 
+                 PropagatorDenominator[k, 0],
                  PropagatorDenominator[k - p, 0],
                  PropagatorDenominator[k - p, 0]
-                                  ] 
-   ]:> ( 
+                                  ]
+   ]:> (
            Pair[de, p]^m  x^(m-1) (x^2/(1-x)) (x (1-x))^(n/2-2) *
           ( Gamma[3 - n/2] / p2 )  fun[a, p, b] +
 (* B *)
@@ -288,7 +291,7 @@ Pair[de, ka]^m_ fun_[a___, ka, b___Momentum]  FeynAmpDenominator[
           (x (1-x))^(n/2-2) ( Gamma[3 - n/2] ) fun[a, de, b] -
            Pair[de, p]^m  / Pair[de, p]/2 x^(m-1) x *
           (x (1-x))^(n/2-2) ( Gamma[2 - n/2] ) fun[a, de, b]
-                                       ) /;        
+                                       ) /;
                          ( (fun === Eps) || (fun === Pair))
           };
 irules2 = {
@@ -296,7 +299,7 @@ irules2 = {
 qqq[
 Pair[de, ka]^m_  FeynAmpDenominator[
                  PropagatorDenominator[k, 0], PropagatorDenominator[k, 0],
-                 PropagatorDenominator[k - p, 0]         ] 
+                 PropagatorDenominator[k - p, 0]         ]
    ]:>
           Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
      ( Gamma[3 - n/2] / p2 ),
@@ -304,17 +307,17 @@ Pair[de, ka]^m_  FeynAmpDenominator[
 qqq[
 Pair[de, ka]^m_  FeynAmpDenominator[
                  PropagatorDenominator[k, 0],
-                PropagatorDenominator[k - p, 0]         ] 
+                PropagatorDenominator[k - p, 0]         ]
    ] :>
           Pair[de, p]^m  x^(m-1) (x (1-x))^(n/2-2) *
      ( Gamma[2 - n/2] x ),
 (* newrule1 *)
 qqq[
 Pair[de, ka]^m_  FeynAmpDenominator[
-                 PropagatorDenominator[k, 0], 
-                 PropagatorDenominator[k - p, 0], 
-                 PropagatorDenominator[k - p, 0] 
-                                  ] 
+                 PropagatorDenominator[k, 0],
+                 PropagatorDenominator[k - p, 0],
+                 PropagatorDenominator[k - p, 0]
+                                  ]
    ]:> (
           Pair[de, p]^m  x^(m-1) (x/(1-x)) (x (1-x))^(n/2-2) *
           ( Gamma[3 - n/2] / p2 )      ),
@@ -325,13 +328,13 @@ Pair[de, ka]^m_  FeynAmpDenominator[
                  PropagatorDenominator[k, 0],
                  PropagatorDenominator[k - p, 0],
                  PropagatorDenominator[k - p, 0]
-                                  ] 
+                                  ]
    ]:> (1/p2^2 *
           Pair[de, p]^m Gamma[3-n/2] x^(m-1) (x (1-x))^(n/2-2)*
           1/(1-x)  (1 - (n-4)/2)       )
   };
 
-nex = 
+nex =
 nex//.irules0 //. irules1 //. irules2 /. dufa -> 1 /.qqq->Identity /.
                   {sumk :> OPESum, dUMMYM :> 0};
 epsc[Eps[ww__]^2] :=  epsc[Eps[ww]^2] =
@@ -347,7 +350,7 @@ If[!FreeQ2[nex, {Eps,LorentzIndex}],
 (*
 *)
 
-If[!FreeQ[nex, OPESum], 
+If[!FreeQ[nex, OPESum],
    nex = OPESumExplicit[nex//OPESumSimplify]//Factor2
   ];
 (*
@@ -359,8 +362,8 @@ nex = nex /.  Gamma[3-n/2] -> (Gamma[2-n/2] -
                               );
 nex = nex /. finsu /. Gamma -> gammaex /.
       ((n/2)/.finsu) :> Expand[(n/2)/.finsu];
-nex = Collect2[nex//Contract, x, Factoring -> False] /. 
-               Momentum[aa_, _] :> Momentum[aa]; 
+nex = Collect2[nex//Contract, x, Factoring -> False] /.
+               Momentum[aa_, _] :> Momentum[aa];
 
 nex = nex / factorout;
 
@@ -371,11 +374,11 @@ nex = nex /. Gamma[1 - Epsilon/2] :>
 
 n = n /. finsu;
 If[Head[nex] === Plus,
-   nex = Map[(# I Sn (*flowerpower[(-p2)/ScaleMu^2, 
+   nex = Map[(# I Sn (*flowerpower[(-p2)/ScaleMu^2,
                             Expand[(n/2 -2)]]*)
              )&, nex
             ],
-   nex = nex I Sn (*flowerpower[-p2/ScaleMu^2, 
+   nex = nex I Sn (*flowerpower[-p2/ScaleMu^2,
                          Expand[(n/2 -2)]]*)
   ];
 If[(OPEIntegrateDelta /. {opt} /. Options[OPEInt]) === True,
@@ -420,8 +423,8 @@ If[NumberQ[epsorder],
 FCPrint[1,"factoring done "];
    noflow = Factor2[noflow];
    If[Head[noflow] === Times,
-      noflow = Select1[noflow, Epsilon] Collect2[Select2[noflow, 
-                               Epsilon], Epsilon]          
+      noflow = Select1[noflow, Epsilon] Collect2[Select2[noflow,
+                               Epsilon], Epsilon]
      ];
 (*
 Dialog[nex];
@@ -445,13 +448,13 @@ Dialog[nex];
    ccol[w_] := If[Head[w] =!= Times,
                   apa[Collect2[w,
                            {DeltaFunction, ScaleMu},
-                           Factoring -> True 
+                           Factoring -> True
                               ]
                      ],
                   Select2[w, Epsilon] *
-                  apa[Collect2[Select1[w, Epsilon], 
-                           {DeltaFunction, ScaleMu}, 
-                           Factoring -> True 
+                  apa[Collect2[Select1[w, Epsilon],
+                           {DeltaFunction, ScaleMu},
+                           Factoring -> True
                               ]
                      ]
                  ];
@@ -467,14 +470,14 @@ Dialog[nex];
                     Select1[y//dE, x] apart[Select2[y//dE,x], x]
                    ]/.DeltaFunction[1-xXx] -> DeltaFunction[1-x]
                 ];
-                   
+
    rcol[y_] := delcol[
        Collect2[y , Epsilon, Factoring -> True]
                      ];
    If[!FreeQ[nex, RHO],
       If[Head[nex] === Plus,
          nex = Map[(Select2[#, RHO] rcol[Select1[#, RHO]])&, nex],
-         nex = Select2[nex, RHO] rcol[Select1[nex, RHO]] 
+         nex = Select2[nex, RHO] rcol[Select1[nex, RHO]]
         ],
       nex = rcol[nex]
      ];

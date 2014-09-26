@@ -33,7 +33,7 @@ Begin["`Private`"];
 ClearAttributes[PaVe, ReadProtectecd];
 
 MakeContext[A0, B0, C0, D0, B00, B1,B11, BReduce];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 
 (* Symmetry in the indices *)
  PaVe[i_,j__,  pl_List, ml_List ]  := PaVe @@Join[Sort[{i,j}],{pl,ml}]/;

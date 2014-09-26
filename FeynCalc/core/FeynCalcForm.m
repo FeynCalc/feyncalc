@@ -31,34 +31,33 @@ FCF = FeynCalcForm;
 bra = "(";
 ket = ")";
 
-ca           := ca = MakeContext["CA"];
-cf           := cf = MakeContext["CF"];
-chiralityprojector := chiralityprojector =
-                                MakeContext["ChiralityProjector"];
-DeltaFunction:=DeltaFunction = MakeContext["DeltaFunction"];
+ca           := ca = MakeContext["CoreObjects","CA"];
+cf           := cf = MakeContext["CoreObjects","CF"];
+chiralityprojector := chiralityprojector = MakeContext["CoreObjects","ChiralityProjector"];
+DeltaFunction:=DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 dimension    := dimension     = MakeContext["CoreOptions","Dimension"];
-diracgamma   := diracgamma    = MakeContext["DiracGamma"];
-diracmatrix  := diracmatrix   = MakeContext["DiracMatrix"];
-DiracSigma   := DiracSigma    = MakeContext["DiracSigma"];
-diracslash   := diracslash    = MakeContext["DiracSlash"];
+diracgamma   := diracgamma    = MakeContext["CoreObjects","DiracGamma"];
+diracmatrix  := diracmatrix   = MakeContext["CoreObjects","DiracMatrix"];
+DiracSigma   := DiracSigma    = MakeContext["CoreObjects","DiracSigma"];
+diracslash   := diracslash    = MakeContext["CoreObjects","DiracSlash"];
 diractrace   := diractrace    = MakeContext["DiracTrace"];
-DiracGammaT  := DiracGammaT   = MakeContext["DiracGammaT"];
-eps          := eps           = MakeContext["Eps"];
-Epsilon      := Epsilon       = MakeContext["Epsilon"];
+DiracGammaT  := DiracGammaT   = MakeContext["CoreObjects","DiracGammaT"];
+eps          := eps           = MakeContext["CoreObjects","Eps"];
+Epsilon      := Epsilon       = MakeContext["CoreObjects","Epsilon"];
 FinalSubstitutions :=FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 freeq2       := freeq2        = MakeContext["FreeQ2"];
-Gstrong      := Gstrong        = MakeContext["Gstrong"];
+Gstrong      := Gstrong        = MakeContext["CoreObjects","Gstrong"];
 propagatordenominator := propagatordenominator =
-                                MakeContext["PropagatorDenominator"];
+                                MakeContext["CoreObjects","PropagatorDenominator"];
 feynampdenominator := feynampdenominator =
-                                MakeContext["FeynAmpDenominator"];
-fourvector   := fourvector    = MakeContext["FourVector"];
+                                MakeContext["CoreObjects","FeynAmpDenominator"];
+fourvector   := fourvector    = MakeContext["CoreObjects","FourVector"];
 GluonOperator := GluonOperator= MakeContext["Twist2GluonOperator"];
-lorentzindex := lorentzindex  = MakeContext["LorentzIndex"];
+lorentzindex := lorentzindex  = MakeContext["CoreObjects","LorentzIndex"];
 levicivita   := levicivita    = MakeContext["LeviCivita"];
-Lower        := Lower         = MakeContext["Lower"];
-metrictensor := metrictensor  = MakeContext["MetricTensor"];
-momentum     := momentum      = MakeContext["Momentum"];
+Lower        := Lower         = MakeContext["CoreObjects","Lower"];
+metrictensor := metrictensor  = MakeContext["CoreObjects","MetricTensor"];
+momentum     := momentum      = MakeContext["CoreObjects","Momentum"];
 NumericalFactor:= NumericalFactor=MakeContext["NumericalFactor"];
 OPEDelta     := OPEDelta      = MakeContext["OPEDelta"];
 OPEi         := OPEi          = MakeContext["OPEi"];
@@ -66,28 +65,28 @@ OPEj         := OPEj          = MakeContext["OPEj"];
 OPEk         := OPEk          = MakeContext["OPEk"];
 OPEm         := OPEm          = MakeContext["OPEm"];
 OPESum       := OPESum        = MakeContext["OPESum"];
-pair         := pair          = MakeContext["Pair"];
-partial      := partial       = MakeContext["PartialD"];
-field        := field         = MakeContext["QuantumField"];
-polarization := polarization  = MakeContext["Polarization"];
+pair         := pair          = MakeContext["CoreObjects","Pair"];
+partial      := partial       = MakeContext["CoreObjects","PartialD"];
+field        := field         = MakeContext["CoreObjects","QuantumField"];
+polarization := polarization  = MakeContext["CoreObjects","Polarization"];
 polarizationvector := polarizationvector =
-                                MakeContext["PolarizationVector"];
+                                MakeContext["CoreObjects","PolarizationVector"];
 Power2       := Power2        = MakeContext["Power2"];
 PlusDistribution := PlusDistribution =
-                                MakeContext["PlusDistribution"];
+                                MakeContext["CoreObjects","PlusDistribution"];
 RHO          := RHO           = MakeContext["RHO"];
 RHI          := RHI           = MakeContext["RHI"];
 scalarproduct:= scalarproduct = MakeContext["ScalarProduct"];
 Sn           := Sn            = MakeContext["Sn"];
-spinor       := spinor        = MakeContext["Spinor"];
-sundelta     := sundelta      = MakeContext["SUNDelta"];
-sund         := sund          = MakeContext["SUND"];
-sunF         := sunF          = MakeContext["SUNF"];
-sunindex     := sunindex      = MakeContext["SUNIndex"];
-sunt         := sunt          = MakeContext["SUNT"];
+spinor       := spinor        = MakeContext["CoreObjects","Spinor"];
+sundelta     := sundelta      = MakeContext["CoreObjects","SUNDelta"];
+sund         := sund          = MakeContext["CoreObjects","SUND"];
+sunF         := sunF          = MakeContext["CoreObjects","SUNF"];
+sunindex     := sunindex      = MakeContext["CoreObjects","SUNIndex"];
+sunt         := sunt          = MakeContext["CoreObjects","SUNT"];
 suntrace     := suntrace      = MakeContext["SUNTrace"];
-tf           := tf            = MakeContext["Tf"];
-nf           := nf            = MakeContext["Nf"];
+tf           := tf            = MakeContext["CoreObjects","Tf"];
+nf           := nf            = MakeContext["CoreObjects","Nf"];
 Zeta2        := Zeta2         = MakeContext["Zeta2"];
 Upper        := Upper         = MakeContext["Upper"];
 
@@ -232,11 +231,11 @@ Global`XX=xxxx;
          sub["SUNN", "N"]/.
          If[CC["SUNTrace"],  suntrace :> "tr", {}]  /.
          If[CC["LeviCivita"],  levicivita[lv__] :> epsd[lv], {}] /.
-         If[CC["Eps"],  eps[vl__] :> epsd[vl], {}] /.
-         If[CC["MetricTensor"], metrictensor[v_, w_, ___Rule] :> "g"[v, w], {}
+         If[CC["CoreObjects"],  eps[vl__] :> epsd[vl], {}] /.
+         If[CC["CoreObjects"], metrictensor[v_, w_, ___Rule] :> "g"[v, w], {}
            ] /.
 (*
-         If[CC["FourVector"], fourvector[Subscripted[p_[s_]], mu_] :>
+         If[CC["CoreObjects"], fourvector[Subscripted[p_[s_]], mu_] :>
           (SequenceForm@@Flatten[ {sumst[p[s]],"[",mu,"]"}]), {}
            ] /.
 *)
@@ -250,7 +249,7 @@ Global`XX=xxxx;
            {}
           ] /.
 *)
-        If[CC["Polarization"],
+        If[CC["CoreObjects"],
            {pair[momentum[polarization[v_,-I,sun___]],
                   lorentzindex[w_] ] :> ("ep(*)"[v,w,sun] ),
             pair[ momentum[polarization[v_,-I,___]] ,
@@ -260,39 +259,39 @@ Global`XX=xxxx;
              ("ep"[v,w,sun] (*/.sunindex:>iDentity*))
            } , {}
           ] /.
-        If[CC["Pair"],
+        If[CC["CoreObjects"],
            {pair[ lorentzindex[v_],lorentzindex[w_] ] :> "g"[v, w],
             pair[ lorentzindex[v_,di_],lorentzindex[w_,di_] ] :>
                (Subscripted["g"[di//diF]][v, w])
            }, {}
           ] /.
-        If[CC["Pair"],
+        If[CC["CoreObjects"],
            pair[ momentum[v_,___],momentum[v_,___] ] :> v^2,
            {}
           ] /.
-       If[CC["Pair"],
+       If[CC["CoreObjects"],
           pair[ momentum[v_,___],momentum[w_,___] ] :>
                (SequenceForm@@Flatten[ {v//sumst ,{"."},w//sumst} ]),
            {}
          ] /.
-       If[CC["Pair"],
+       If[CC["CoreObjects"],
         pair[ momentum[v_,di_Symbol-4],momentum[w_,di_Symbol-4] ] :>
                  Subscripted[
                   (SequenceForm@@Flatten[{"(",v//sumst ,{"."},w//sumst,")"}]
                   )[di//diF]] ,
            {}
          ] /.
-       If[CC["Pair"],
+       If[CC["CoreObjects"],
         pair[ lorentzindex[w_,___],momentum[Subscripted[v_[s_]],___ ]]:>
              (SequenceForm@@Flatten[ {sumst[v[s]],"[",w,"]"} ]),
           {}
          ] /.
-       If[CC["Pair"],
+       If[CC["CoreObjects"],
         pair[ lorentzindex[w_, ___],momentum[v_, ___] ] :>
              (SequenceForm@@Flatten[ {sumst[v],"[",w,"]"} ]),
           {}
          ] /.
-        If[CC["Polarization"],
+        If[CC["CoreObjects"],
            {polarization[ka_,-I,___]:>"ep(*)"[ka],
              polarization[ka_,I,___]:>"ep"[ka]
            }, {}
@@ -301,21 +300,21 @@ Global`XX=xxxx;
             {MakeContext["ComplexIndex"][i__] :> compind[i]},
             {}
            ] /.*)
-         If[CC["ChiralityProjector"],
+         If[CC["CoreObjects"],
             chiralityprojector[+1] :> diracgamma[6],
             {}
            ] /.
-         If[CC["ChiralityProjector"],
+         If[CC["CoreObjects"],
             chiralityprojector[-1] :> diracgamma[7],
             {}
            ] /.
          If[CC["OPEDelta"], MakeContext["OPEDelta"] :> "De",
             {}
            ]/.
-         If[CC["DiracMatrix"],
+         If[CC["CoreObjects"],
             diracmatrix[6] :> diracgamma[6], {}
            ] /.
-         If[CC["DiracGamma"],
+         If[CC["CoreObjects"],
             {diracgamma[lorentzindex[v_]]        :>
              diracmatrix[v, dimension -> 4],
             diracgamma[lorentzindex[v_,di_],di_] :>
@@ -327,38 +326,38 @@ Global`XX=xxxx;
             },
             {}
            ]/.
-         If[CC["DiracGammaT"],
+         If[CC["CoreObjects"],
             DiracGammaT[aa_,___]:> "gat"[aa],
             {}
            ] /.
-         If[CC["DiracGamma"],
+         If[CC["CoreObjects"],
             {diracgamma[5] :> "ga[5]",
              diracgamma[6] :> "ga[6]",
              diracgamma[7] :> "ga[7]"
             }, {}
            ] /.
-         If[CC["DiracMatrix"],
+         If[CC["CoreObjects"],
             If[(dimension /. Options[diracmatrix]) =!= 4,
                diracmatrix[v_] :>
                  diracmadi[(dimension /. Options[diracmatrix])][v],
                {}
               ],{}
            ]/.
-         If[CC["DiracMatrix"],
+         If[CC["CoreObjects"],
             diracmatrix[dmv__, dimension -> 4] :> diracmatrix[dmv],
             {}
            ] /.
-         If[CC["DiracSlash"],
+         If[CC["CoreObjects"],
             diracslash[vsv__, dimension -> 4] :> diracslash[vsv],
             {}
            ] /.
-         If[CC["DiracSigma"],
+         If[CC["CoreObjects"],
             {
             DiracSigma[_[a_], _[b_]]:> "Sigma"[a,b],
             DiracSigma[_[a_, b_]]   :> "Sigma"[a,b]
             },{}
            ] /.
-         If[CC["DiracMatrix"],
+         If[CC["CoreObjects"],
             {
              diracmatrix[v__, dimension -> di_] :>
               Subscripted["ga"[v][di]],
@@ -366,7 +365,7 @@ Global`XX=xxxx;
               "ga"[v]
             },{}
            ] /.
-         If[CC["DiracGamma"],
+         If[CC["CoreObjects"],
             If[(dimension /. Options[diracslash]) =!= 4,
                diracslash[v__]:>
                 diracsldid[(dimension /. Options[diracslash])][v]/.
@@ -375,8 +374,8 @@ Global`XX=xxxx;
               ],
             {}
            ]/.
-         If[CC["DiracGamma"], diracslash[aa_] :> diracslm[aa], {} ] /.
-         If[CC["DiracGamma"],
+         If[CC["CoreObjects"], diracslash[aa_] :> diracslm[aa], {} ] /.
+         If[CC["CoreObjects"],
              {diracslash[v_, dimension -> di_] :>
                Subscripted[ToString["gs"][di//diF] ][v] ,
               diracslash[Subscripted[v_[s_]]] :> "gs"[v[s]] ,
@@ -384,7 +383,7 @@ Global`XX=xxxx;
              }
             , {}
            ] /.
-         If[CC["Spinor"],
+         If[CC["CoreObjects"],
             {
              fcdot[spinor[-p_, 0, ___], a__] :>
                DOT["v"[-p/.momentum->iDentity], a],
@@ -396,7 +395,7 @@ Global`XX=xxxx;
                DOT[a, "u"[p/.momentum->iDentity]]
             }, {}
            ]/.
-         If[CC["Spinor"],
+         If[CC["CoreObjects"],
             {
              fcdot[spinor[-p_, mas_, _], a__] :>
                DOT["v"[-p/.momentum->iDentity,mas], a],
@@ -408,7 +407,7 @@ Global`XX=xxxx;
                DOT[a, "u"[p/.momentum->iDentity,mas]]
             }, {}
            ]/.
-         If[CC["Spinor"],
+         If[CC["CoreObjects"],
             {
             spinor[-p_,0,___] :> "v"[p /. momentum -> iDentity],
             spinor[p_,0,___]  :> "u"[p /. momentum -> iDentity],
@@ -416,19 +415,19 @@ Global`XX=xxxx;
             spinor[p_,ma_,_]  :> "u"[p /. momentum -> iDentity,ma]
             }, {}
            ]/.
-         If[CC["SUNDelta"],
+         If[CC["CoreObjects"],
             sundelta[a_, b_] :> "d"[a, b],
             {}
            ] /.
-         If[CC["SUND"],
+         If[CC["CoreObjects"],
             sund[a_, b_, c_] :> "d"[a, b, c],
             {}
            ] /.
-         If[CC["SUNF"],
+         If[CC["CoreObjects"],
             sunF[a_, b_, c_] :>  "f"[a, b, c],
             {}
            ] /.
-         If[CC["SUNT"],
+         If[CC["CoreObjects"],
             {
             sunt[a_] :>  "T"[a],
             sunt[a_,b__] :> (fcdot2 @@ Map["T"[#]&,{a, b}])
@@ -439,7 +438,7 @@ Global`XX=xxxx;
          If[CC["OPEj"], OPEj :> "j", {} ] /.
          If[CC["OPEl"], OPEl :> "l", {} ] /.
          If[CC["OPEk"], OPEk :> "k", {} ] /.
-         If[CC["QuantumField"],
+         If[CC["CoreObjects"],
             {
              field[a_] :> a,
              field[a_, lori___momentum, suni___sunindex][p___] :>
@@ -465,44 +464,44 @@ Global`XX=xxxx;
              ("Q"[pa, a, lori, suni]/.partial -> "P")
             }, {}
             ]/.
-         If[CC["QuantumField"],
+         If[CC["CoreObjects"],
             { partial[a_] :> "P"[a]
             }, {}
            ]/.
         fcdot:>fcdot2/. (*fcdot2 -> DOT /.*)
          If[CC["DiracTrace"], diractrace[v__] :> ditr[v], {}] /.
          lorentzindex[vv__] :> didl[vv]  /.
-         If[CC["QuantumField"],
+         If[CC["CoreObjects"],
             field[v__] :> "Q"[v],
             {}
            ] /.
-         If[CC["PartialD"],
+         If[CC["CoreObjects"],
             partial[v_] :> "P"[v],
             {}
            ] /.
-         If[CC["PlusDistribution"],
+         If[CC["CoreObjects"],
             PlusDistribution[v_] :> plusdi[v],
             {}
            ] /.
-         If[CC["SUNIndex"],
+         If[CC["CoreObjects"],
             sunindex[i_] :> sunident[i],
             {}
            ]/.
          If[CC["OPESum"], OPESum :> "OPESum", {} ]/.
-         If[CC["DeltaFunction"],  DeltaFunction :> "delta", {}
+         If[CC["CoreObjects"],  DeltaFunction :> "delta", {}
            ] /.
          If[CC["Twist2GluonOperator"], GluonOperator:>"GO",{}
            ] /.
-         If[CC["SunIndex"], sunident :> sunindex, {} ] /.
-         If[CC["FeynAmpDenominator"],
+         If[CC["CoreObjects"], sunident :> sunindex, {} ] /.
+         If[CC["CoreObjects"],
             feynampdenominator[v__] :> feynden[v], {}
            ] /.
-         If[CC["PropagatorDenominator"],
+         If[CC["CoreObjects"],
             propagatordenominator[v__] :> fdprop[v], {}
            ] /.
-         If[CC["Lower"], Lower[v_,___] :> v, {}] /.
+         If[CC["CoreObjects"], Lower[v_,___] :> v, {}] /.
          If[CC["Upper"], Upper[v_,___] :> v, {}] /.
-         If[CC["Momentum"], momentum[v__] :> didm[v], {}]  /.
+         If[CC["CoreObjects"], momentum[v__] :> didm[v], {}]  /.
          lorentzindex[v__] :> didl[v]  /.
          {didm :> momentum, didl :> lorentzindex}
        );

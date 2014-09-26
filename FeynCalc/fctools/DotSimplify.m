@@ -44,12 +44,23 @@ or by Power.";
 
 Begin["`Private`"];
 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 Expanding = MakeContext["CoreOptions","Expanding"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 
-MakeContext[ Commutator, CommutatorExplicit, DiracTrace,
-AntiCommutator, FeynCalcInternal,
-FreeQ2, NonCommFreeQ, MemSet, SUNT,
-SUNTrace, DiracGamma, QuantumField, Momentum];
+MakeContext[
+    AntiCommutator,
+    Commutator,
+    CommutatorExplicit,
+    DiracTrace,
+    FeynCalcInternal,
+    FreeQ2,
+    MemSet,
+    NonCommFreeQ,
+    SUNTrace
+    ];
 
 (*Error messages for calling DotSimplify with less or more than 1 argument*)
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
@@ -61,9 +72,9 @@ soso /; Message[DotSimplify::argrx, DotSimplify, 0, 1];
 (*Why? Commented out 26/9-2002. F.Orellana*)
 (*DotSimplifyRelation = DotSimplifyRelations;*)
 
-Options[DotSimplify] = {Expanding -> True, 
-						DotSimplifyRelations -> {},
-                        DotPower -> False, (*True*)(*CHANGE 26/9-2002. 
+Options[DotSimplify] = {Expanding -> True,
+            DotSimplifyRelations -> {},
+                        DotPower -> False, (*True*)(*CHANGE 26/9-2002.
                         To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
                                                   F.Orellana*)
                         FeynCalcInternal -> True
@@ -136,12 +147,12 @@ If[simrel =!= {},
   Condition - the substitution of Hold[bb] -> bb does not work. Therefore, just
   avoid bb's with patterns in them*)
 
-	(*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
+  (*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
 
-	sru[aa_ :> bb_] := (DOT[xxX___, Sequence @@ If[Head[aa] === DOT, List @@ aa, {aa}],yyY___] 
-					:> (sdoot[xxX, bb, yyY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
-	sru[aa_ -> bb_] := sru[aa :> bb];
-	simrel = Map[sru, simrel];
+  sru[aa_ :> bb_] := (DOT[xxX___, Sequence @@ If[Head[aa] === DOT, List @@ aa, {aa}],yyY___]
+          :> (sdoot[xxX, bb, yyY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
+  sru[aa_ -> bb_] := sru[aa :> bb];
+  simrel = Map[sru, simrel];
   ];
 
 (*If the expression contains commutators or anticommutators, write them out explicitly, i.e. [a,b] -> ab-ba etc.*)
@@ -164,15 +175,15 @@ If[!FreeQ[x, SUNT],
 (*If the expression contains powers of non-commutative objects, write them out explicitly, i.e. a.(b^4).c -> a.b.b.b.b.c *)
 (*  maybe this is somewhat slow;  use FORM then ... *)
 If[!FreeQ[x, (a_/;NonCommQ[a])^n_Integer?Positive],
-	x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
+  x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
   ];
 
 (* check special case *)
 
-(*  If there are no supplied relations from DotSimplifyRelations, 
-	check if the expression consists only of user defined noncommutative objects.
-	If this is so, and there no commutators or anticommuators inside, expand the
-	expression and return it *)
+(*  If there are no supplied relations from DotSimplifyRelations,
+  check if the expression consists only of user defined noncommutative objects.
+  If this is so, and there no commutators or anticommuators inside, expand the
+  expression and return it *)
 If[simrel === {},
    vars = Union[Variables[Cases[xx, _, Infinity] ]];
    If[Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
@@ -296,7 +307,7 @@ If[simrel === {},
 
 (* Expand sums, if needed *)
 If[ex === True,
-	dlin0[a___] := (Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
+  dlin0[a___] := (Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
   ];
 
 dlin[] = 1;
@@ -360,7 +371,7 @@ If[!FreeQ[x, SUNT],
 *)
 (* SUNT's in a DiracTrace are pulled out but NOT summed over *)
               DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
-              DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b] 
+              DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b]
              }
   ];
 
@@ -381,7 +392,7 @@ If[!FreeQ[x, SUNT],
 *)
 
 (* If the same non-commutative object is multiplied with itself multiple times, write this as a power,i.e.
-	f.f.f.g.h.k -> f^3.g.h.k *)
+  f.f.f.g.h.k -> f^3.g.h.k *)
 dootpow[a__] := If[FreeQ2[{a}, {DiracGamma,SUNT}],
                    Apply[DOT, (#[[1]]^Length[#])& /@ Split[{a}]],
                    DOT[a]

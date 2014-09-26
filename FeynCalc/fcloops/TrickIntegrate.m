@@ -30,8 +30,9 @@ TrickIntegrate::"novar" =
 
 Begin["`Private`"];
    
+Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[FCPrint, Apart3, Collect2, Factor2, Epsilon, Map2, Select1, Select2];
+MakeContext[FCPrint, Apart3, Collect2, Factor2, Map2, Select1, Select2];
 
 Options[TrickIntegrate] = {Hold -> True};
 

@@ -60,7 +60,7 @@ dB0 :=  dB0              = MakeContext["DB0"];
 c0  :=  c0               = MakeContext["C0"];
 d0  :=  d0               = MakeContext["D0"];
 freeq2                   = MakeContext["FreeQ2"];
-small                    = MakeContext["SmallVariable"];
+small                    = MakeContext["CoreObjects","SmallVariable"];
 
 Options[Write2]={ 
                   D0Convention -> 0, 

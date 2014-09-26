@@ -15,10 +15,10 @@
 BeginPackage["HighEnergyPhysics`fctools`CalcColorFactor`",{"HighEnergyPhysics`FeynCalc`"}];
 
 CalcColorFactor::"usage" =
-"CalcColorFactor[expr] calculates the color factor of expr. 
+"CalcColorFactor[expr] calculates the color factor of expr.
 CalcColorFactor is useful for application on FeynArts produced amplitudes.
 CalcColorFactor is just a macro function for
-CalcColorFactor[x_] := If[FreeQ2[FeynCalcInternal[x], SUNIndex], 
+CalcColorFactor[x_] := If[FreeQ2[FeynCalcInternal[x], SUNIndex],
    x, SUNSimplify[SUNSimplify[
      (If[ !FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[
       SUNSimplify[x]], Explicit -> False], Explicit -> True]].";
@@ -27,18 +27,19 @@ CalcColorFactor[x_] := If[FreeQ2[FeynCalcInternal[x], SUNIndex],
 
 Begin["`Private`"];
 
-SetAttributes[CalcColorFactor, Listable]; 
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
 
 MakeContext[
-DiracGamma,
 DiracTrick,
 Explicit,
 FeynCalcInternal,
 FreeQ2,
-SUNIndex,
 SUNSimplify
 ]
+
+SetAttributes[CalcColorFactor, Listable];
 
 Options[CalcColorFactor] = {SUNNToCACF -> True};
 
@@ -47,7 +48,7 @@ SetAttributes[CalcColorFactor, Listable];
 CalcColorFactor[x_Plus, opts___?OptionQ] := CalcColorFactor[#, opts]& /@ x;
 
 CalcColorFactor[x_, opts___?OptionQ] := Module[{tmp = FeynCalcInternal[x]},
- If[FreeQ[tmp, SUNIndex], tmp, 
+ If[FreeQ[tmp, SUNIndex], tmp,
     If[Head[tmp]=!=Times, fac = 1, fac = Select[tmp, FreeQ[#, SUNIndex]&]];
     fac SUNSimplify[SUNSimplify[
     (If[ !FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[

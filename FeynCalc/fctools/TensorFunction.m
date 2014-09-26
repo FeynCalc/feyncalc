@@ -26,7 +26,7 @@ TensorFunction[{t, \"A\"}, mu, nu, ...].";
 Begin["`Private`"];
 
 Dimension    = MakeContext["CoreOptions","Dimension"];
-LorentzIndex = MakeContext["LorentzIndex"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 
 Options[TensorFunction] = {Dimension -> 4};
 

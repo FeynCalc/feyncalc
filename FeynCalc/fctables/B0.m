@@ -39,7 +39,7 @@ ClearAttributes[B0, ReadProtectecd];
 
 A0 = MakeContext["A0"];
 BReduce = MakeContext["BReduce"];
-small = MakeContext["SmallVariable"];
+small = MakeContext["CoreObjects","SmallVariable"];
 (*MakeContext[DB0];*)
 
 (* B0def*)

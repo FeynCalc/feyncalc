@@ -22,8 +22,8 @@ and are passed on.";
 
 Begin["`Private`"];
 
-Epsilon = MakeContext["Epsilon"];
-Integratedx = MakeContext["Integratedx"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+Integratedx = MakeContext["CoreObjects","Integratedx"];
 
 TimedIntegrate::"time" =
     "Time constraint `1` exceeded.";

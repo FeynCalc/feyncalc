@@ -28,16 +28,18 @@ CovariantFieldDerivative";
 
 Begin["`Private`"];
 
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+PartialD = MakeContext["CoreObjects","PartialD"];
+QuantumField = MakeContext["CoreObjects","QuantumField"];
 
-MakeContext[LorentzIndex, QuantumField, PartialD,
-            $DistributiveFunctions, $Multiplications];
+MakeContext[ $DistributiveFunctions, $Multiplications];
 
 CDr=CovariantFieldDerivative;
 
 Options[CovariantFieldDerivative] = {};
 
 CovariantFieldDerivative /:
-    MakeBoxes[CovariantFieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD,
+    MakeBoxes[CovariantFieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD,
 ___Rule], TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
@@ -62,7 +64,7 @@ MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
 
 CovariantFieldDerivative /:
 MakeBoxes[CovariantFieldDerivative[a_, _,
-lis___HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex,
+lis___HighEnergyPhysics`FeynCalc`CoreObjects`LorentzIndex,
 ___Rule],
 TraditionalForm] :=
 RowBox[{SubscriptBox[
@@ -71,7 +73,7 @@ MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
    MakeBoxes[TraditionalForm[a]], ")"}];
 
 CovariantFieldDerivative /:
-    MakeBoxes[CovariantFieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`PartialD`PartialD],
+    MakeBoxes[CovariantFieldDerivative[a_, lis___HighEnergyPhysics`FeynCalc`CoreObjects`PartialD],
 TraditionalForm] :=
 RowBox[{SubscriptBox[
 MakeBoxes[StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],

@@ -16,9 +16,9 @@ Lorentz indices and momenta.";
 Begin["`Private`"];
 
 MakeContext[ FeynCalcInternal];
-lor := lor = MakeContext["LorentzIndex"];
-momentum := momentum = MakeContext["Momentum"];
-pair   := pair = MakeContext["Pair"];
+lor := lor = MakeContext["CoreObjects","LorentzIndex"];
+momentum := momentum = MakeContext["CoreObjects","Momentum"];
+pair   := pair = MakeContext["CoreObjects","Pair"];
 
 (*momentumExpanddef*)
 

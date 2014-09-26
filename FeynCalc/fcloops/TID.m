@@ -26,23 +26,29 @@ Begin["`Private`"];
 Collecting = MakeContext["CoreOptions","Collecting"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
+FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
 MakeContext[FCPrint,
 			Uncontract,
             Cases2,
             ChangeDimension, Collect2, 
-            Contract,
-            Eps,
+            Contract,            
             Expand2,
             ExpandScalarProduct,
             DiracSimplify,
-            DiracTrick, DiracGamma,
+            DiracTrick,
             EpsEvaluate, 
-            FeynAmpDenominator,
             FeynAmpDenominatorCombine,
             FeynAmpDenominatorSimplify,
             FeynCalcExternal,
@@ -50,14 +56,11 @@ MakeContext[FCPrint,
             Isolate,
             (*IsolateHead,*)
             IsolateSplit,
-            LorentzIndex, 
             MemSet,
-            Momentum, MomentumCombine, 
+            MomentumCombine, 
             MomentumExpand,
             OPEDelta,
-            Pair, PairContract,
-            Polarization,
-            PropagatorDenominator, 
+            PairContract,             
             Rename,
             ScalarProductCancel,
             SelectFree, SelectNotFree,

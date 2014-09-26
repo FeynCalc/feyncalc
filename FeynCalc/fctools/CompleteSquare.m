@@ -20,11 +20,11 @@ CompleteSquare[a p^2+b p+c, p, q] -> {-b^2/(4 a)+c+a q^2, q->b/(2 a)+p}.";
 
 Begin["`Private`"];
 
-Momentum = MakeContext["Momentum"];
-Pair = MakeContext["Pair"];
 Contract = MakeContext["Contract"];
-ScalarProductExpand = MakeContext["ScalarProductExpand"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+ScalarProductExpand = MakeContext["ScalarProductExpand"];
 
 
 CompleteSquare[e_, x_ ,y_:Null] :=

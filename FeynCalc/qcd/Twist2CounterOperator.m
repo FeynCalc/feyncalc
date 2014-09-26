@@ -8,54 +8,86 @@
 (* :History: File created on 13 April '98 at 19:22 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Twist2CounterOperator *) 
+(* :Summary: Twist2CounterOperator *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`qcd`Twist2CounterOperator`",{"HighEnergyPhysics`FeynCalc`"}];
 
-Twist2CounterOperator::"usage" = 
+Twist2CounterOperator::"usage" =
 "Twist2CounterOperator[p,mu,nu,a,b,5];
-Twist2CounterOperator[p, 7] : (7); 
+Twist2CounterOperator[p, 7] : (7);
  Twist2CounterOperator[p1,p2,{p3,mu,a}, 1] (p1: incoming quark momentum,
 p3: incoming gluon (count1)).";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+Eps = MakeContext["CoreObjects","Eps"];
+Epsilon = MakeContext["CoreObjects","Epsilon"];
+FV = MakeContext["CoreObjects","FV"];
+FVD = MakeContext["CoreObjects","FVD"];
+GS = MakeContext["CoreObjects","GS"];
+Gstrong = MakeContext["CoreObjects","Gstrong"];
+LC = MakeContext["CoreObjects","LC"];
+LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+MT = MakeContext["CoreObjects","MT"];
+MTD = MakeContext["CoreObjects","MTD"];
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
+Polarization = MakeContext["CoreObjects","Polarization"];
+SD = MakeContext["CoreObjects","SD"];
+SO = MakeContext["CoreObjects","SO"];
+SOD = MakeContext["CoreObjects","SOD"];
+SP = MakeContext["CoreObjects","SP"];
+SUNDelta = MakeContext["CoreObjects","SUNDelta"];
+SUNF = MakeContext["CoreObjects","SUNF"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNT = MakeContext["CoreObjects","SUNT"];
+Tf = MakeContext["CoreObjects","Tf"];
 
 MakeContext[
-CA, CF, ChangeDimension, DeclareNonCommutative,
-GS,FVD, SOD, MTD, FV, MT, SO, SP, SD, Power2, LC,
-DiracGamma, Eps, Epsilon, Gstrong, LorentzIndex,
-Momentum, OPEDelta, OPEi, OPEl, OPEm, OPESum, OPESumExplicit, 
-Pair, Polarization, Sn, SumS, SUNDelta,SUNIndex,SUNF, SUNT, Tf];
+  ChangeDimension,
+  DeclareNonCommutative,
+  OPEDelta,
+  OPESum,
+  OPESumExplicit,
+  OPEi,
+  OPEl,
+  OPEm,
+  Power2,
+  Sn,
+  SumS
+];
 
 DeclareNonCommutative[Twist2CounterOperator];
 
  (* if Fermion fields are involved a sign has to be
     put in front of the counterterms in order to cancel
-    overlapping divergencies 
+    overlapping divergencies
   *)
 FUDGESIGN = (-1);
 
-Options[Twist2CounterOperator] = 
+Options[Twist2CounterOperator] =
 { CouplingConstant -> Gstrong,
   Dimension -> D, Polarization -> 0, OPESumExplicit -> False
 };
 
 (* C7 *)
-Twist2CounterOperator[pi_, 7, opt___Rule] := 
+Twist2CounterOperator[pi_, 7, opt___Rule] :=
 Block[{dim, p, re, pol, del},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
  pol    = Polarization /. {opt} /. Options[Twist2CounterOperator];
       p = Momentum[pi, dim];
     del = Momentum[OPEDelta, dim];
- Which[pol === 0, 
+ Which[pol === 0,
     re =  FUDGESIGN (1+(-1)^OPEm)/2 ( -2*CF*coup^2 *
       ( -2/(-1 + OPEm) + 2/OPEm - (1 + OPEm)^(-1) ) *
       Sn*DiracGamma[del, dim]*
@@ -78,9 +110,9 @@ li3 = LorentzIndex[Unique[$MU], dim];
     re =  FUDGESIGN (1-(-1)^OPEm)/2 *
       (2*I*CF*coup^2*Sn*Pair[del, p]^(-2 + OPEm)*
      (DOT[DiracGamma[li3] , DiracGamma[del] , DiracGamma[li2]]*
-        Eps[li2, li3, del, p] - 
+        Eps[li2, li3, del, p] -
        OPEm*DOT[DiracGamma[li3] , DiracGamma[del] , DiracGamma[li2]]*
-        Eps[li2, li3, del, p] - 
+        Eps[li2, li3, del, p] -
        DOT[DiracGamma[li3] , DiracGamma[li1] , DiracGamma[li2]]*
         Eps[del, li1, li2, li3]*Pair[del, p]))/(Epsilon*OPEm*(1 + OPEm))
 
@@ -88,7 +120,7 @@ li3 = LorentzIndex[Unique[$MU], dim];
                                      re];
 
 (* C1 *) (* COUNT1 *)
-Twist2CounterOperator[p1_, pe3_, {_, mu_, a_}, 1, opt___Rule] := 
+Twist2CounterOperator[p1_, pe3_, {_, mu_, a_}, 1, opt___Rule] :=
 Block[{dim, re, pol, del, oex, p3 = -pe3},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -98,16 +130,16 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 (* count1 *)
 Which[pol === 0,
 ChangeDimension[
-FUDGESIGN * 
+FUDGESIGN *
 ( ((1 + (-1)^OPEm)*(CA - 2*CF)*coup^3*
     (-2/(-1 + OPEm) + 2/OPEm - (1 + OPEm)^(-1))*Sn*
     DiracGamma[Momentum[OPEDelta]]*
     Pair[LorentzIndex[mu], Momentum[OPEDelta]]*
     (Pair[Momentum[OPEDelta], Momentum[p1]]^(-1 + OPEm)/
-       (Pair[Momentum[OPEDelta], Momentum[p1]] - 
-         Pair[Momentum[OPEDelta], Momentum[p3]]) - 
+       (Pair[Momentum[OPEDelta], Momentum[p1]] -
+         Pair[Momentum[OPEDelta], Momentum[p3]]) -
       Pair[Momentum[OPEDelta], Momentum[p3]]^(-1 + OPEm)/
-       (Pair[Momentum[OPEDelta], Momentum[p1]] - 
+       (Pair[Momentum[OPEDelta], Momentum[p1]] -
          Pair[Momentum[OPEDelta], Momentum[p3]]))*SUNT[SUNIndex[a]])/
   (2*Epsilon)
        ),dim]
@@ -119,7 +151,7 @@ ChangeDimension[
 FUDGESIGN*(
 ( (1 - (-1)^OPEm)*(CA - 2*CF)*coup^3*Sn)/Epsilon*
       OPESum[Pair[Momentum[OPEDelta], Momentum[p1]]^(OPEm-2-OPEi)*
-             Pair[Momentum[OPEDelta], Momentum[p3]]^OPEi, 
+             Pair[Momentum[OPEDelta], Momentum[p3]]^OPEi,
              {OPEi,0,OPEm-2}
             ] * (
   (-2/OPEm + (1 + OPEm)^(-1))*
@@ -131,7 +163,7 @@ FUDGESIGN*(
 
 (* C2 *)
 (* Count2 *)
-Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 2, opt___Rule] := 
+Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 2, opt___Rule] :=
 Block[{dim, re, pol, del, oex, dp1, dp3},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -141,12 +173,12 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 Which[pol === 0,
       dp1 = Pair[Momentum[OPEDelta, dim], Momentum[p1, dim]];
       dp3 = Pair[Momentum[OPEDelta, dim], Momentum[p3, dim]];
-      re =   FUDGESIGN coup^3 (1+(-1)^OPEm)/2* 
+      re =   FUDGESIGN coup^3 (1+(-1)^OPEm)/2*
        DOT[SUNT[SUNIndex[a]], DiracGamma[Momentum[OPEDelta, dim], dim]]*
     (Sn CA *
      Pair[LorentzIndex[mu, dim], Momentum[OPEDelta, dim]]*
      (((-1 + OPEm)^(-1) - OPEm^(-1))*
-        (-dp3)^(-2 + OPEm) + 
+        (-dp3)^(-2 + OPEm) +
        (-2/(-1 + OPEm) + 2/OPEm - (1 + OPEm)^(-1))*
         (If[oex === True,
             dp1^(-1+OPEm)/(dp1+dp3) - (-dp3)^(-1+OPEm)/(dp1+dp3),
@@ -155,57 +187,57 @@ Which[pol === 0,
         )))/Epsilon
         ,
       pol === 1,
-       re = FUDGESIGN * 
+       re = FUDGESIGN *
  ((1 - (-1)^OPEm)*CA*coup^3*(2 + OPEm)*
-     DOT[SUNT[SUNIndex[a]],DiracGamma[Momentum[OPEDelta, dim], dim], 
+     DOT[SUNT[SUNIndex[a]],DiracGamma[Momentum[OPEDelta, dim], dim],
           DiracGamma[5]
         ]*
      Pair[LorentzIndex[mu, dim], Momentum[OPEDelta, dim]]*
      (-(Pair[Momentum[OPEDelta, dim], Momentum[p1, dim]]*
-          (-Pair[Momentum[OPEDelta, dim], Momentum[p3, dim]])^OPEm) - 
+          (-Pair[Momentum[OPEDelta, dim], Momentum[p3, dim]])^OPEm) -
        Pair[Momentum[OPEDelta, dim], Momentum[p1, dim]]^OPEm*
       Pair[Momentum[OPEDelta, dim], Momentum[p3, dim]]))/
   (Epsilon*OPEm*(1 + OPEm)*Pair[Momentum[OPEDelta, dim], Momentum[p1, dim]]*
      Pair[Momentum[OPEDelta, dim], Momentum[p3, dim]]*
-     (Pair[Momentum[OPEDelta, dim], Momentum[p1, dim]] + 
+     (Pair[Momentum[OPEDelta, dim], Momentum[p1, dim]] +
        Pair[Momentum[OPEDelta, dim], Momentum[p3, dim]]))
      ];
   re];
 
-count1[p1_,pe3_,mu_,a_,coup_] := 
+count1[p1_,pe3_,mu_,a_,coup_] :=
 Block[
   {p3=-pe3, A,b,c,d,e,f,g,i,m,pa1,pa2,pa3},
-   A = Pair[LorentzIndex[mu], Momentum[OPEDelta]]; 
+   A = Pair[LorentzIndex[mu], Momentum[OPEDelta]];
    b = Pair[Momentum[OPEDelta], Momentum[p1]];
    c = Pair[Momentum[OPEDelta], Momentum[p3]];
-   d = Eps[LorentzIndex[mu], LorentzIndex[$MU[1]], LorentzIndex[$MU[2]], 
-     Momentum[OPEDelta]]; 
-   e = Eps[LorentzIndex[$MU[1]], LorentzIndex[$MU[2]], LorentzIndex[$MU[3]], 
-     Momentum[OPEDelta]]; 
-   f = Eps[LorentzIndex[$MU[1]], LorentzIndex[$MU[2]], Momentum[OPEDelta], 
-     Momentum[p1]];  
-   g = Eps[LorentzIndex[$MU[1]], LorentzIndex[$MU[2]], 
+   d = Eps[LorentzIndex[mu], LorentzIndex[$MU[1]], LorentzIndex[$MU[2]],
+     Momentum[OPEDelta]];
+   e = Eps[LorentzIndex[$MU[1]], LorentzIndex[$MU[2]], LorentzIndex[$MU[3]],
+     Momentum[OPEDelta]];
+   f = Eps[LorentzIndex[$MU[1]], LorentzIndex[$MU[2]], Momentum[OPEDelta],
+     Momentum[p1]];
+   g = Eps[LorentzIndex[$MU[1]], LorentzIndex[$MU[2]],
      Momentum[OPEDelta], Momentum[p3]];
    i = OPEi;
    m = OPEm;
 pa1 = OPESum[b^(m-2-i) c^i,{i,0,m-2}] *
-      (d DOT[DiracGamma[Momentum[OPEDelta]], DiracGamma[LorentzIndex[$MU[1]]],  
+      (d DOT[DiracGamma[Momentum[OPEDelta]], DiracGamma[LorentzIndex[$MU[1]]],
       DiracGamma[LorentzIndex[$MU[2]]]]) (OPEm^(-1) - (1 + OPEm)^(-1));
 pa2 = A OPESum[b^(m-2-i) c^i,{i,0,m-2}] *
       ( e* (OPEm^(-1) - (1 + OPEm)^(-1))*
-     DOT[DiracGamma[LorentzIndex[$MU[1]]] , DiracGamma[LorentzIndex[$MU[2]]] , 
+     DOT[DiracGamma[LorentzIndex[$MU[1]]] , DiracGamma[LorentzIndex[$MU[2]]] ,
       DiracGamma[LorentzIndex[$MU[3]]]]);
 pa3 = ( (OPEm^(-1) - (1 + OPEm)^(-1))*
-     DOT[DiracGamma[Momentum[OPEDelta]] , DiracGamma[LorentzIndex[$MU[1]]] , 
+     DOT[DiracGamma[Momentum[OPEDelta]] , DiracGamma[LorentzIndex[$MU[1]]] ,
       DiracGamma[LorentzIndex[$MU[2]]]])*
       (-A OPESum[( (m-2-i) f + (i+1) g) b^(m-3-i) c^i,{i,0,m-3}]);
--I*DOT[((1 - (-1)^OPEm)/2) , (CA - 2*CF)*coup^3*Sn ,(1/Epsilon), 
+-I*DOT[((1 - (-1)^OPEm)/2) , (CA - 2*CF)*coup^3*Sn ,(1/Epsilon),
 SUNT[SUNIndex[a]],
 (pa1 + pa2 + pa3)]];
 
 (* C3 *)
 (* Count3 *)
-Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 3, opt___Rule] := 
+Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 3, opt___Rule] :=
 Block[{dim, re, pol, del, oex},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -246,7 +278,7 @@ OPESum[(dp2)^i (-dp3)^(m-i-2),{i,0,m-2}]
 
 (* C13 *)
 (* Count13 *)
-Twist2CounterOperator[p_, mu_, nu_, a_, b_, 13, opt___Rule] := 
+Twist2CounterOperator[p_, mu_, nu_, a_, b_, 13, opt___Rule] :=
 Block[{dim, re, pol, del, oex},
  coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
   dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -255,12 +287,12 @@ Block[{dim, re, pol, del, oex},
         ChangeDimension[
   (-8*(1 + (-1)^OPEm)*coup^2*(2 - OPEm + OPEm^2)*Sn*Tf*FV[OPEDelta, nu]*
       FV[p, mu]*SD[a, b]*SO[p]^(-1 + OPEm))/
-    (Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)) - 
+    (Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)) -
    (8*(1 + (-1)^OPEm)*coup^2*(2 - OPEm + OPEm^2)*Sn*Tf*FV[OPEDelta, mu]*
       FV[p, nu]*SD[a, b]*SO[p]^(-1 + OPEm))/
-    (Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)) + 
+    (Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)) +
    (8*(1 + (-1)^OPEm)*coup^2*(2 + OPEm + OPEm^2)*Sn*Tf*MT[mu, nu]*
-      SD[a, b]*SO[p]^OPEm)/(Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)) + 
+      SD[a, b]*SO[p]^OPEm)/(Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)) +
    (8*(1 + (-1)^OPEm)*coup^2*(1 - OPEm)*(2 - OPEm)*Sn*Tf*FV[OPEDelta, mu]*
       FV[OPEDelta, nu]*SD[a, b]*SO[p]^(-2 + OPEm)*SP[p, p])/
     (Epsilon*OPEm*(1 + OPEm)*(2 + OPEm)),dim]
@@ -270,12 +302,12 @@ Block[{dim, re, pol, del, oex},
 (8*I*(1 - (-1)^OPEm)*coup^2*(OPEm^(-1) - 2/(1 + OPEm))*Sn*Tf*
     SD[a, b]*SO[p]^(-1 + OPEm)*LC[mu, nu][OPEDelta, p])/Epsilon
                    ,dim]
-      ] 
+      ]
      ];
 
 (* C4 *)
 (* Count4 *)
-Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 4, opt___Rule] := 
+Twist2CounterOperator[p1_, _, {p3_, mu_, a_}, 4, opt___Rule] :=
 Block[{dim, re, pol, del, oex},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -296,7 +328,7 @@ CA*DiracGamma[Momentum[OPEDelta]]*
    Pair[LorentzIndex[mu], Momentum[OPEDelta]]*SUNT[SUNIndex[a]]*
 (- ( (2/m-2/(m-1)-1/(m+1)) (
  OPESum[dp3^(i-1) dp1^(m-1-i), {i,0,m-1}] +
- OPESum[dp3^(i-1) (-dp2)^(m-1-i),{i,0,m-1}]) + 
+ OPESum[dp3^(i-1) (-dp2)^(m-1-i),{i,0,m-1}]) +
   (4/(m-1) - 4/m) dp3^(m-2)))];
 
 pc4[p1_, p3_, mu_, a_,cou_] :=Block[{dp1,dp3},
@@ -314,7 +346,7 @@ dp3 = Pair[Momentum[p3], Momentum[OPEDelta]];
 (* FUDGESIGN is highly weird here ... *)
 (* C5 *)
 (* Count5 *)
-Twist2CounterOperator[p_, mu_, nu_, a_, b_, 5, opt___Rule] := 
+Twist2CounterOperator[p_, mu_, nu_, a_, b_, 5, opt___Rule] :=
 Block[{pol,coup,dim},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -343,13 +375,13 @@ uc5[ p_, mu_, nu_, a_, b_, cou_] := Block[
 
 pc5[ p_, mu_, nu_, a_, b_, cou_] := (
  (-4*I*(1 - (-1)^OPEm)*CA*cou^2*(4/OPEm - 3/(1 + OPEm))*Sn*
-     Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[OPEDelta], 
+     Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[OPEDelta],
       Momentum[p]]*Pair[Momentum[OPEDelta], Momentum[p]]^(-1 + OPEm)*
      SUNDelta[SUNIndex[a], SUNIndex[b]])/Epsilon);
 
 (* C6 *)
 (* Count6 *)
-Twist2CounterOperator[p_, mu_, nu_, a_, b_, 6, opt___Rule] := 
+Twist2CounterOperator[p_, mu_, nu_, a_, b_, 6, opt___Rule] :=
 Block[{pol,coup,dim},
 coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
  dim    = Dimension /. {opt} /. Options[Twist2CounterOperator];
@@ -364,34 +396,34 @@ pc6[ p_, mu_, nu_, a_, b_, cou_] := (
   (2*I*(1 - (-1)^OPEm)*CA*Gstrong^2*Sn*
     Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[OPEDelta], Momentum[p]]*
     Pair[Momentum[OPEDelta], Momentum[p]]^(-1 + OPEm)*
-    ((1 + OPEm + 2*EulerGamma*OPEm - OPEm^2 + 2*EulerGamma*OPEm^2 + 
+    ((1 + OPEm + 2*EulerGamma*OPEm - OPEm^2 + 2*EulerGamma*OPEm^2 +
          OPEm*PolyGamma[0, OPEm] + OPEm^2*PolyGamma[0, OPEm])/
        (OPEm*(1 + OPEm)) + PolyGamma[0, 1 + OPEm])*
     SUNDelta[SUNIndex[a], SUNIndex[b]])/Epsilon);
 
 uc6[ p_, mu_, nu_, a_, b_, cou_] := Block[
-{m = OPEm, gmn = Pair[LorentzIndex[mu], LorentzIndex[nu]], 
-   dm = Pair[LorentzIndex[mu], Momentum[OPEDelta]], 
-   pm = Pair[LorentzIndex[mu], Momentum[p]], 
-   dn = Pair[LorentzIndex[nu], Momentum[OPEDelta]], 
-   pn = Pair[LorentzIndex[nu], Momentum[p]], 
-   dp = Pair[Momentum[OPEDelta], Momentum[p]], 
+{m = OPEm, gmn = Pair[LorentzIndex[mu], LorentzIndex[nu]],
+   dm = Pair[LorentzIndex[mu], Momentum[OPEDelta]],
+   pm = Pair[LorentzIndex[mu], Momentum[p]],
+   dn = Pair[LorentzIndex[nu], Momentum[OPEDelta]],
+   pn = Pair[LorentzIndex[nu], Momentum[p]],
+   dp = Pair[Momentum[OPEDelta], Momentum[p]],
    p2 = Pair[Momentum[p], Momentum[p]]},
  (-1*(1 + (-1)^OPEm)*CA*cou^2*Sn*
-     (dn*dp^(-1 + OPEm)*pm*(2 + 2*OPEm + 2*EulerGamma*OPEm - OPEm^2 + 
-          2*EulerGamma*OPEm^2 + 2*OPEm*PolyGamma[0, OPEm] + 
-          2*OPEm^2*PolyGamma[0, OPEm]) - 
+     (dn*dp^(-1 + OPEm)*pm*(2 + 2*OPEm + 2*EulerGamma*OPEm - OPEm^2 +
+          2*EulerGamma*OPEm^2 + 2*OPEm*PolyGamma[0, OPEm] +
+          2*OPEm^2*PolyGamma[0, OPEm]) -
        dp^OPEm*Pair[LorentzIndex[mu], LorentzIndex[nu]]*
-        (2 + 2*OPEm + 2*EulerGamma*OPEm - OPEm^2 + 2*EulerGamma*OPEm^2 + 
-          2*OPEm*PolyGamma[0, OPEm] + 2*OPEm^2*PolyGamma[0, OPEm]) - 
+        (2 + 2*OPEm + 2*EulerGamma*OPEm - OPEm^2 + 2*EulerGamma*OPEm^2 +
+          2*OPEm*PolyGamma[0, OPEm] + 2*OPEm^2*PolyGamma[0, OPEm]) -
        (dm*dn*dp^(-2 + OPEm)*p2*
-          (2 + 5*OPEm + 4*EulerGamma*OPEm - 2*OPEm^2 + 
-            6*EulerGamma*OPEm^2 - OPEm^3 + 2*EulerGamma*OPEm^3 + 
-            4*OPEm*PolyGamma[0, OPEm] + 6*OPEm^2*PolyGamma[0, OPEm] + 
-            2*OPEm^3*PolyGamma[0, OPEm]))/(2 + OPEm) + 
-       (dm*dp^(-1 + OPEm)*pn*(4 + 6*OPEm + 4*EulerGamma*OPEm - 2*OPEm^2 + 
-            6*EulerGamma*OPEm^2 - OPEm^3 + 2*EulerGamma*OPEm^3 + 
-            4*OPEm*PolyGamma[0, OPEm] + 6*OPEm^2*PolyGamma[0, OPEm] + 
+          (2 + 5*OPEm + 4*EulerGamma*OPEm - 2*OPEm^2 +
+            6*EulerGamma*OPEm^2 - OPEm^3 + 2*EulerGamma*OPEm^3 +
+            4*OPEm*PolyGamma[0, OPEm] + 6*OPEm^2*PolyGamma[0, OPEm] +
+            2*OPEm^3*PolyGamma[0, OPEm]))/(2 + OPEm) +
+       (dm*dp^(-1 + OPEm)*pn*(4 + 6*OPEm + 4*EulerGamma*OPEm - 2*OPEm^2 +
+            6*EulerGamma*OPEm^2 - OPEm^3 + 2*EulerGamma*OPEm^3 +
+            4*OPEm*PolyGamma[0, OPEm] + 6*OPEm^2*PolyGamma[0, OPEm] +
             2*OPEm^3*PolyGamma[0, OPEm]))/(2 + OPEm))*
      SUNDelta[SUNIndex[a], SUNIndex[b]])/(Epsilon*OPEm*(1 + OPEm))
 ];
@@ -1266,7 +1298,7 @@ SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]])/Epsilon
 
 (* C12 *)
 (* Count12 *)
-Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  p3_, mu3_, a3_, 
+Twist2CounterOperator[p1_, mu1_, a1_,  p2_, mu2_, a2_,  p3_, mu3_, a3_,
                       12, opt___Rule
                      ] :=
 Block[{dim, re, pol, del, oex, dp1, dp3},
@@ -1279,13 +1311,13 @@ Which[pol === 0,
               ( ((3*I)/4*(1 + (-1)^OPEm)*CA*(-1 + OPEm*(4 + OPEm))*Sn*
                 FVD[OPEDelta, mu1]*
       FVD[OPEDelta, mu3]*FVD[p1, mu2]*SOD[p1]^(-2 + OPEm)*SUNF[a1, a2, a3])/
-    (Epsilon*OPEm*(-1 + OPEm^2)) - 
+    (Epsilon*OPEm*(-1 + OPEm^2)) -
    ((3*I)/4*(1 + (-1)^OPEm)*CA*(-1 + OPEm*(4 + OPEm))*Sn*FVD[OPEDelta, mu1]*
       FVD[OPEDelta, mu2]*FVD[p1, mu3]*SOD[p1]^(-2 + OPEm)*SUNF[a1, a2, a3])/
-    (Epsilon*OPEm*(-1 + OPEm^2)) - 
+    (Epsilon*OPEm*(-1 + OPEm^2)) -
    ((3*I)/4*(1 + (-1)^OPEm)*CA*(3 + OPEm)*Sn*FVD[OPEDelta, mu3]*
       MTD[mu1, mu2]*SOD[p1]^(-1 + OPEm)*SUNF[a1, a2, a3])/
-    (Epsilon*(-1 + OPEm)*OPEm) + 
+    (Epsilon*(-1 + OPEm)*OPEm) +
    ((3*I)/4*(1 + (-1)^OPEm)*CA*(3 + OPEm)*Sn*FVD[OPEDelta, mu2]*
       MTD[mu1, mu3]*SOD[p1]^(-1 + OPEm)*SUNF[a1, a2, a3])/
     (Epsilon*(-1 + OPEm)*OPEm)
@@ -1321,7 +1353,7 @@ Block[{dim, re, pol, del, oex},
       ChangeDimension[uc31[mu, a, coup],dim]
      ];
 
-uc40[p_, coup_] := 
+uc40[p_, coup_] :=
  (+4*CF*coup^2*(OPEm^(-1) - (1 + OPEm)^(-1))*Sn*
      DiracGamma[Momentum[OPEDelta]]*
      Pair[Momentum[OPEDelta], Momentum[p]]^(-1 + OPEm))/Epsilon;
@@ -1339,7 +1371,7 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
         ChangeDimension[pc40[p1,coup],dim]
     ]];
 
-uc41[p_, coup_] := 
+uc41[p_, coup_] :=
  -(4*CF*coup^2*Sn*DiracGamma[Momentum[OPEDelta]]*
      Pair[Momentum[OPEDelta], Momentum[p]]^(-1 + OPEm)*(-1 + SumS[1, OPEm]))/
    Epsilon;
@@ -1380,9 +1412,9 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 (* NEW *)
 (* C43 *)
 (* Count43  p2 outgoing *)
-uc43[p1_, p2_, p3_, mu_, a_, coup_] := 
+uc43[p1_, p2_, p3_, mu_, a_, coup_] :=
 -(-2*(CA - 2*CF)*Gstrong^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
-     (SO[p1]^(1 + OPEm) - SO[p1]*(SO[p1] - SO[p2])^OPEm - 
+     (SO[p1]^(1 + OPEm) - SO[p1]*(SO[p1] - SO[p2])^OPEm -
        SO[p1]^OPEm*SO[p2])*SUNT[a])/
    (Epsilon*OPEm*(1 + OPEm)*SO[p1]*(SO[p1] - SO[p2])*SO[p2]);
 
@@ -1400,9 +1432,9 @@ coup    = CouplingConstant /. {opt} /. Options[Twist2CounterOperator];
 
 (* C44 *)
 (* Count44  p2 outgoing *)
-uc44[p1_, p2_, p3_, mu_, a_, coup_] := 
+uc44[p1_, p2_, p3_, mu_, a_, coup_] :=
 -( -2*(CA - 2*CF)*Gstrong^3*(1 - OPEm)*Sn*FV[OPEDelta, mu]*
-     GS[OPEDelta]*((-1)^OPEm*(SO[p1] - SO[p2])^OPEm*SO[p2] + 
+     GS[OPEDelta]*((-1)^OPEm*(SO[p1] - SO[p2])^OPEm*SO[p2] +
        SO[p1]*SO[p2]^OPEm - SO[p2]^(1 + OPEm))*SUNT[a])/
    (Epsilon*OPEm*(1 - OPEm^2)*SO[p1]*(SO[p1] - SO[p2])*SO[p2]);
 
@@ -1491,8 +1523,8 @@ p1, p3, incoming
 (* Count47  p2 outgoing *)
 uc47[p1_, _, p3_, mu_, a_, coup_] := -
  (2*(CA - 2*CF)*Gstrong^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
-  ((-1)^OPEm*SO[p1]^(1 + OPEm) - (-1)^OPEm*SO[p1]*(SO[p1] - SO[p3])^OPEm + 
-   (-1)^OPEm*(SO[p1] - SO[p3])^OPEm*SO[p3] + SO[p1]*SO[p3]^OPEm - 
+  ((-1)^OPEm*SO[p1]^(1 + OPEm) - (-1)^OPEm*SO[p1]*(SO[p1] - SO[p3])^OPEm +
+   (-1)^OPEm*(SO[p1] - SO[p3])^OPEm*SO[p3] + SO[p1]*SO[p3]^OPEm -
    (-1)^OPEm*SO[p1]*SO[p3]^OPEm - SO[p3]^(1 + OPEm))*SUNT[a])/
  (Epsilon*OPEm*(1 + OPEm)*SO[p1]*(SO[p1] - SO[p3])*SO[p3]);
 

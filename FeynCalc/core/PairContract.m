@@ -14,13 +14,16 @@ PairContract::"usage" =
 
 Begin["`Private`"];
 
-eps := eps                  = MakeContext["Eps"];
-factoring := factoring      = MakeContext["CoreOptions","Factoring"];
+LorentzIndex:= LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+eps := eps                  = MakeContext["CoreObjects","Eps"];
 factor2 := factor2          = MakeContext["Factor2"];
+factoring := factoring      = MakeContext["CoreOptions","Factoring"];
 freeq2 := freeq2            = MakeContext["FreeQ2"];
-LorentzIndex:= LorentzIndex = MakeContext["LorentzIndex"];
 memset := memeset           = MakeContext["MemSet"];
-MakeContext[ Momentum, MomentumExpand, Pair];
+MakeContext[MomentumExpand];
+
+Momentum = MakeContext["CoreObjects","Momentum"];
+Pair = MakeContext["CoreObjects","Pair"];
 
 (* this option is only to by set by SetOptions ... *)
 Options[PairContract] = {factoring -> False};

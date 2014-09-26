@@ -22,14 +22,13 @@ Integrate5::"usage"=
 Begin["`Private`"];
    
 Factoring = MakeContext["CoreOptions","Factoring"];
+DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
+PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 
-MakeContext[FCPrint, Collect2, DeltaFunction, Factor2, FreeQ2,
-            Integrate3,
-            PlusDistribution, Select1, Select2, Solve2, Zeta2];
+MakeContext[FCPrint, Collect2, Factor2, FreeQ2, Integrate3, Select1, Select2, Solve2, Zeta2];
 
 Integrate5[a_, b_List, c__List, opts___?OptionQ] := 
-   Integrate5[Integrate5[a,b, opts], c, opts] /; FreeQ[Select2[a, b[[1]]], 
-                                           DeltaFunction];
+   Integrate5[Integrate5[a,b, opts], c, opts] /; FreeQ[Select2[a, b[[1]]], DeltaFunction];
 
 (*
 logsimp = { a_. Log[1-x_] - a_. Log[x_] :> (a Log[(1-x)/x])};

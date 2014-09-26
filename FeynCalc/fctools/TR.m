@@ -24,18 +24,29 @@ DiracTrace, up to the default setting of DiracTraceEvaluate.";
 
 Begin["`Private`"];
 
-fci = MakeContext["FeynCalcInternal"];
+CA = MakeContext["CoreObjects","CA"];
+CF = MakeContext["CoreObjects","CF"];
 DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+ExplicitSUNIndex = MakeContext["CoreObjects","ExplicitSUNIndex"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
 Mandelstam = MakeContext["CoreOptions","Mandelstam"];
 PairCollect = MakeContext["CoreOptions","PairCollect"];
+SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
+fci = MakeContext["FeynCalcInternal"];
 
-MakeContext[ CA, CF, DiracTrace, Explicit,
-FeynCalcExternal,
-Schouten, Explicit, SUNIndex, ExplicitSUNIndex,
-SUNSimplify, SUNT, SUNTrace, Trick, SUNNToCACF];
+MakeContext[
+    DiracTrace,
+    Explicit,
+    FeynCalcExternal,
+    SUNSimplify,
+    SUNTrace,
+    Schouten,
+    Trick
+    ];
 
 Options[ TR ] = { DiracTraceEvaluate -> True,
                   Explicit           -> True,
@@ -53,7 +64,7 @@ Options[ TR ] = { DiracTraceEvaluate -> True,
                 };
 
 (* Change RM 2005-02-05 *)
-TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf}, 
+TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunntocacf},
                           diractrev = DiracTraceEvaluate /. {rul} /. Options[TR];
                           sunntocacf = SUNNToCACF/. {rul} /. Options[TR];
                           If[!FreeQ[x,CF|CA], sunntocacf = True];
@@ -74,7 +85,7 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
                                               SUNTrace -> True,
                                               Explicit -> False
                                              ]; (**)
-                             tt = tt /. 
+                             tt = tt /.
                              (DiracTraceEvaluate -> False) :>
                              (DiracTraceEvaluate -> diractrev) //
                                      SUNSimplify[#, SUNTrace -> False,
@@ -107,7 +118,7 @@ TR[x_, rul___?OptionQ] := Block[{tt, doot, diractr, dit, fcex, diractrev, sunnto
                                ]
                             ];
 
-                          
+
                           If[!FreeQ[tt, SUNIndex|ExplicitSUNIndex],
                              tt = tt /. (*Added 23/1-2003. F.Orellana.
                              If a spursav is left from DiracTrace it means

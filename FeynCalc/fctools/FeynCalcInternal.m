@@ -1,4 +1,4 @@
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+F(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: FeynCalcInternal *)
 
@@ -8,8 +8,8 @@
 (* :History: File created on 20 December '98 at 21:07 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Changes certain objects ("Symbols") into the FeynCalc 
-             internal representation *) 
+(* :Summary: Changes certain objects ("Symbols") into the FeynCalc
+             internal representation *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -26,73 +26,71 @@ by the option FinalSubstitutions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 FCI = FeynCalcInternal;
 
 
-chiralityprojector := chiralityprojector = 
-                                     MakeContext["ChiralityProjector"];
-diracgamma      := diracgamma      = MakeContext["DiracGamma"];
-diracmatrix     := diracmatrix     = MakeContext["DiracMatrix"];
-diracslash      := diracslash      = MakeContext["DiracSlash"];
+chiralityprojector := chiralityprojector =  MakeContext["CoreObjects","ChiralityProjector"];
+diracgamma      := diracgamma      = MakeContext["CoreObjects","DiracGamma"];
+diracmatrix     := diracmatrix     = MakeContext["CoreObjects","DiracMatrix"];
+diracslash      := diracslash      = MakeContext["CoreObjects","DiracSlash"];
 diractrace      := diractrace      = MakeContext["DiracTrace"];
 dimension       := dimension       = MakeContext["CoreOptions","Dimension"];
-FAD             := FAD             = MakeContext["FAD"];
+FAD             := FAD             = MakeContext["CoreObjects","FAD"];
 factor2         := factor2         = MakeContext["Factor2"];
-fourvector      := fourvector      = MakeContext["FourVector"];
+fourvector      := fourvector      = MakeContext["CoreObjects","FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
 LeviCivita      := LeviCivita      = MakeContext["LeviCivita"];
-lorentzindex    := lorentzindex    = MakeContext["LorentzIndex"];
-metrictensor    := metrictensor    = MakeContext["MetricTensor"];
-momentum        := momentum        = MakeContext["Momentum"];
+lorentzindex    := lorentzindex    = MakeContext["CoreObjects","LorentzIndex"];
+metrictensor    := metrictensor    = MakeContext["CoreObjects","MetricTensor"];
+momentum        := momentum        = MakeContext["CoreObjects","Momentum"];
 momentumexpand  := momentumexpand  = MakeContext["MomentumExpand"];
 mult            := mult            = MakeContext["Mult"];
 numericalfactor := numericalfactor = MakeContext["NumericalFactor"];
 OPEDelta                           = MakeContext["OPEDelta"];
-pair            := pair            = MakeContext["Pair"];
+pair            := pair            = MakeContext["CoreObjects","Pair"];
 (*Dropped PolarizationVectorExplicit. Not used anywhere. F.Orellana. 20/9-2002*)
-(*polarizationvectorexplicit:= 
+(*polarizationvectorexplicit:=
     polarizationvectorexplicit     = MakeContext[
                                              "PolarizationVectorExplicit"];*)
-feynampdenominator := feynampdenominator = MakeContext[
-    "FeynAmpDenominator"];
+feynampdenominator := feynampdenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 propagatordenominator := propagatordenominator =
-                                     MakeContext["PropagatorDenominator"];
+                                     MakeContext["CoreObjects","PropagatorDenominator"];
 scalarproduct   := scalarproduct   = MakeContext["ScalarProduct"];
 FinalSubstitutions = FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
-FVD := FVD = MakeContext["FVD"];
-FV := FV = MakeContext["FV"];
-SP             := SP             = MakeContext["SP"];
-SPD             := SPD             = MakeContext["SPD"];
-sd            := sd            = MakeContext["SD"];
-sdelta        := sdelta        = MakeContext["SUNDelta"];
-sund           := sund             = MakeContext["SUND"];
+FVD := FVD = MakeContext["CoreObjects","FVD"];
+FV := FV = MakeContext["CoreObjects","FV"];
+SP             := SP             = MakeContext["CoreObjects","SP"];
+SPD             := SPD             = MakeContext["CoreObjects","SPD"];
+sd            := sd            = MakeContext["CoreObjects","SD"];
+sdelta        := sdelta        = MakeContext["CoreObjects","SUNDelta"];
+sund           := sund             = MakeContext["CoreObjects","SUND"];
 sdeltacontract:= sdeltacontract= MakeContext["SUNDeltaContract"];
-sunindex        := sunindex        = MakeContext["SUNIndex"];
-sunn            := sunn            = MakeContext["SUNN"];
-sunt            := sunt            = MakeContext["SUNT"];
-SUNF            := SUNF            = MakeContext["SUNF"];
-Spinor          := Spinor          = MakeContext["Spinor"];
-SpinorU         := SpinorU         = MakeContext["SpinorU"];
-SpinorUBar      := SpinorUBar      = MakeContext["SpinorUBar"];
-SpinorV         := SpinorV         = MakeContext["SpinorV"];
-SpinorVBar      := SpinorVBar      = MakeContext["SpinorVBar"];
+sunindex        := sunindex        = MakeContext["CoreObjects","SUNIndex"];
+sunn            := sunn            = MakeContext["CoreObjects","SUNN"];
+sunt            := sunt            = MakeContext["CoreObjects","SUNT"];
+SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
+Spinor          := Spinor          = MakeContext["CoreObjects","Spinor"];
+SpinorU         := SpinorU         = MakeContext["CoreObjects","SpinorU"];
+SpinorUBar      := SpinorUBar      = MakeContext["CoreObjects","SpinorUBar"];
+SpinorV         := SpinorV         = MakeContext["CoreObjects","SpinorV"];
+SpinorVBar      := SpinorVBar      = MakeContext["CoreObjects","SpinorVBar"];
 
 SetAttributes[su, HoldAll];
 SetAttributes[FeynCalcInternal, HoldFirst];
 (*
 (* good idea , but does not work *)
-su[a_String, b_] := If[CheckContext[a], 
+su[a_String, b_] := If[CheckContext[a],
                        {MakeContext[a][ze___] :> b[ze]}, {}];
 *)
 su[a_String, b_] := If[CheckContext[a], {MakeContext[a] :> b}, {}];
 
-sdeltacont[a_, b_] := 
+sdeltacont[a_, b_] :=
    sdelta[sunindex[a], sunindex[b]];
 
 tosund[a_,b_,c_] := sund[sunindex[a], sunindex[b], sunindex[c]];
 
-sdeltacontr[a_, b_] := 
+sdeltacontr[a_, b_] :=
    sdeltacontract[sunindex[a], sunindex[b]];
 
 Options[FeynCalcInternal] = {FinalSubstitutions -> {}};
@@ -102,40 +100,41 @@ uru = FinalSubstitutions /. {opts} /. Options[FeynCalcInternal];
 uru = Flatten[{uru}];
 
 ru =  Join[
- su["SpinorU", tospinor],
- su["SpinorV", tospinorv],
- su["SpinorVBar", tospinorv],
- su["SpinorUBar", tospinor],
- su["SUNF", tosunf],
- su["MetricTensor",metricT] ,
- su["DiracMatrix", diracM] ,  su["DiracSlash", diracS] ,
- su["FourVector", fourV] ,
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SpinorU :> tospinor},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SpinorV :> tospinorv},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SpinorVBar :> tospinorv},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SpinorUBar :> tospinor},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNF :> tosunf},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`MetricTensor :> metricT},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`DiracMatrix  :> diracM},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`DiracSlash :> diracS},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`FourVector :> fourV},
  (*su["PolarizationVector", polarizationvectorexplicit] ,*)
- su["SD", sdeltacont],
- su["SUNDelta", sdeltacont],
- su["SUND", tosund],
- su["SUNDeltaContract", sdeltacontr],
- su["SUNT", sunTint],
- su["FAD", fadint],
- su["FVD", fvd],
- su["FV", fv],
- su["LC", lc],
- su["LCD", lcd],
- su["MT", mt],
- su["MTD", mtd],
- su["GA", ga],
- su["GAD", gad],
- su["GS", gs],
- su["GSD", gsd],
- su["SP", sp],
- su["SPD", spd],
- su["SO", so],
- su["SOD", sod],
- su["PropagatorDenominator", propagatorD],
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SD :> sdeltacont},  
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta :> sdeltacont}, 
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUND :> tosund},
+ su["SUNDeltaContract", sdeltacontr],  
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> sunTint}, 
+ {HighEnergyPhysics`FeynCalc`CoreObjects`FAD :> fadint},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`FVD :> fvd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`FV :> fv},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`LC :> lc},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`LCD :> lcd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`MT :> mt},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`MTD :> mtd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`GA :> ga},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`GAD :> gad},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`GS :> gs},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`GSD :> gsd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SP :> sp},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SPD :> spd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SO :> so},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SOD :> sod},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominaotr :> propagatorD},
  su["ScalarProduct", scalarP],
- su["MatrixTrace", diractrace], 
+ su["MatrixTrace", diractrace],
  (*If[CheckContext["DOT"], {*){Dot -> DOT}(*}, {}]*),
- If[CheckContext["ChiralityProjector"], 
+ If[CheckContext["CoreObjects"],
     If[$BreitMaison === True,
        {chiralityprojector[1] :> 1/2 + 1/2 diracgamma[5],
         chiralityprojector[-1]:> 1/2 - 1/2 diracgamma[5]
@@ -146,7 +145,6 @@ ru =  Join[
       ],{}
     ]
          ]      ;
-
 (* Dropped the last rules to avoid e.g.
  (1/2 + DiracGamma[5]/2 // ScalarProductExpand ---> DiracGamma[6],
   when $BreitMaison=True. 19/1-2003, F.Orellana*)
@@ -159,9 +157,9 @@ Print["ru= ",ru];
 *)
 
 If[ru =!={}, ReplaceRepeated[x, ru, MaxIterations -> 20] /.
-                      {mt :> MakeContext["MT"], 
-                       fv :> MakeContext["FV"], 
-                       sd :> MakeContext["SD"]} /. revru, x
+                      {mt :> MakeContext["CoreObjects","MT"],
+                       fv :> MakeContext["CoreObjects","FV"],
+                       sd :> MakeContext["CoreObjects","SD"]} /. revru, x
   ]
 ];
 
@@ -246,15 +244,15 @@ fourV[x_, y_,opt_:{} ] := pair[
 (* ---------------------------------------------------------------------- *)
 (* propagatorD *)
 (* ---------------------------------------------------------------------- *)
-propagatorD[x_] := propagatorD[x, 0] /; freeq2[x, 
+propagatorD[x_] := propagatorD[x, 0] /; freeq2[x,
                            {Pattern, pair, scalarproduct}];
 propagatorD[x_, y_] := (propagatorD[x, y] =
-  propagatordenominator[momentumexpand[ momentum[x,D] ],y] 
+  propagatordenominator[momentumexpand[ momentum[x,D] ],y]
                        ) /;freeq2[x,{momentum, Pattern,HoldForm}];
 
 propagatorD[x_, y_] := (propagatorD[x, y] =
-                        propagatordenominator[x//momentumexpand, y] 
-                       ) /; (FreeQ[{x,y}, Pattern] ) && 
+                        propagatordenominator[x//momentumexpand, y]
+                       ) /; (FreeQ[{x,y}, Pattern] ) &&
                             (momentumexpand[x] =!= x);
 propagatorD[x_, y_] := propagatordenominator[x, y] /;
                         (momentumexpand[x] === x);
@@ -270,7 +268,7 @@ sunTint[x__] := (If[!MemberQ[$NonComm, sunt],
 
 (*CHANGE Dec. 97 : inhibit wrapping SUNIndex around integer indices *)
 
-sunT[b_]  := sunT[sunindex[b]] /; FreeQ[b, sunindex] && FreeQ[b, Pattern] && 
+sunT[b_]  := sunT[sunindex[b]] /; FreeQ[b, sunindex] && FreeQ[b, Pattern] &&
                                   !IntegerQ[b];
 
 SetAttributes[setdel, HoldRest];
@@ -293,7 +291,7 @@ scalarP[a_^2 , opt___Rule] := scalarP[a, a, opt];
         momentum[y,dimension/.{opt}/.Options[scalarproduct]]
       ], pair[x, y]];
 
- scalarP[ x_, y_,opt___BlankNullSequence] := 
+ scalarP[ x_, y_,opt___BlankNullSequence] :=
                                If[(FreeQ[x, momentum]) ||
                                   (FreeQ[y, momentum]),
         pair[ momentum[x,opt], momentum[y,opt] ], pair[x, y]
@@ -317,7 +315,7 @@ propp[{x_, m_}]:=
 propagatordenominator[momentum[x,dimension /. dimension ->
                                  (dimension/.Options[FAD])], m
                      ] // momentumexpand;
-fadint2[b__List] := 
+fadint2[b__List] :=
  feynampdenominator @@ Map[propp, {b}/.Repeated->repeated];
 
 (* ---------------------------------------------------------------------- *)

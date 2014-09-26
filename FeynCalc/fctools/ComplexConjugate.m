@@ -35,7 +35,7 @@ Begin["`Private`"];
 
 ccm                 = MakeContext["ChargeConjugationMatrix"];
 ccmi                = MakeContext["ChargeConjugationMatrixInv"];
-DiracGamma          = MakeContext["DiracGamma"];
+DiracGamma          = MakeContext["CoreObjects","DiracGamma"];
 Expanding           = MakeContext["CoreOptions","Expanding"];
 DotSimplify         = MakeContext["DotSimplify"];
 fci                 = MakeContext["FeynCalcInternal"];
@@ -43,17 +43,17 @@ FreeQ2              = MakeContext["FreeQ2"];
 Isolate             = MakeContext["Isolate"];
 IsolateNames         = MakeContext["CoreOptions","IsolateNames"];
 IsolateSplit        = MakeContext["IsolateSplit"];
-LorentzIndex        = MakeContext["LorentzIndex"];
+LorentzIndex        = MakeContext["CoreObjects","LorentzIndex"];
 (*ComplexIndex        = MakeContext["ComplexIndex"];*)
-Spinor              = MakeContext["Spinor"];
-SUND                = MakeContext["SUND"];
-SUNDelta            = MakeContext["SUNDelta"];
+Spinor              = MakeContext["CoreObjects","Spinor"];
+SUND                = MakeContext["CoreObjects","SUND"];
+SUNDelta            = MakeContext["CoreObjects","SUNDelta"];
 SUNDeltaContract    = MakeContext["SUNDeltaContract"];
-SUNF                = MakeContext["SUNF"];
-SUNT                = MakeContext["SUNT"];
-SUNIndex            = MakeContext["SUNIndex"];
+SUNF                = MakeContext["CoreObjects","SUNF"];
+SUNT                = MakeContext["CoreObjects","SUNT"];
+SUNIndex            = MakeContext["CoreObjects","SUNIndex"];
 SUNTrace            = MakeContext["SUNTrace"];
-Polarization        = MakeContext["Polarization"];
+Polarization        = MakeContext["CoreObjects","Polarization"];
 
 FRH = FixedPoint[ReleaseHold, #]&;
 
