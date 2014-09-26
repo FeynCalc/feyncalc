@@ -28,25 +28,27 @@ Begin["`Private`"];
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];
 Tr2 := Tr2 = MakeContext["Tr2"];
 
+Collecting = MakeContext["CoreOptions","Collecting"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+IncludePair = MakeContext["CoreOptions","IncludePair"];
+
 MakeContext[
 FCPrint,
 Uncontract,
 ChangeDimension,
 Cases2,
 Collect2,
-Collecting,
 Contract,
-Dimension,
 DiracGamma,
 DiracTrick,
 DotSimplify,
 Eps,
-EpsContract,
 EpsEvaluate,
 Expand2,
-Expanding,
 ExpandScalarProduct,
-Factoring,
 Factor2,
 FC2RHI,
 FeynCalcForm,
@@ -54,7 +56,6 @@ FeynAmpDenominator,
 FeynAmpDenominatorSimplify,
 FeynAmpDenominatorSplit,
 FreeQ2,
-IncludePair,
 LorentzIndex,
 Momentum,
 OPEi, 

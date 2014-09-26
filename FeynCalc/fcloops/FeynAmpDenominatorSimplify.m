@@ -33,6 +33,13 @@ Begin["`Private`"];
    
 FDS = FeynAmpDenominatorSimplify;
 
+(*
+Factoring = MakeContext["CoreOptions","Factoring"];
+*)
+
+IncludePair = MakeContext["CoreOptions","IncludePair"];
+IntegralTable = MakeContext["CoreOptions","IntegralTable"];
+
 MakeContext[
 			FCPrint,
             Calc,
@@ -45,9 +52,6 @@ MakeContext[
             Expand2,
             Factor2,
             FAD,
-(*
-            Factoring,
-*)
             FC2RHI,
             FeynAmpDenominator, 
             FeynAmpDenominatorCombine, 
@@ -55,7 +59,6 @@ MakeContext[
             FeynCalcInternal,
             FeynCalcExternal,
             FreeQ2,
-            IncludePair,
             MemSet,
             Momentum,
             MomentumExpand,
@@ -63,7 +66,6 @@ MakeContext[
             NumericalFactor,
             OPEDelta,
             FCIntegral,
-            IntegralTable,
             OPESum,
             Pair,
             Power2,

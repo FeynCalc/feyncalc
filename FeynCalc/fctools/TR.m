@@ -25,11 +25,17 @@ DiracTrace, up to the default setting of DiracTraceEvaluate.";
 Begin["`Private`"];
 
 fci = MakeContext["FeynCalcInternal"];
+DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
+Mandelstam = MakeContext["CoreOptions","Mandelstam"];
+PairCollect = MakeContext["CoreOptions","PairCollect"];
+TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
 
-MakeContext[ CA, CF, DiracTrace, DiracTraceEvaluate, Explicit, 
-Factoring, FeynCalcExternal, LeviCivitaSign, Mandelstam,
-PairCollect, Schouten, Explicit, SUNIndex, ExplicitSUNIndex,
-SUNSimplify, SUNT, SUNTrace, TraceOfOne, Trick, SUNNToCACF];
+MakeContext[ CA, CF, DiracTrace, Explicit,
+FeynCalcExternal,
+Schouten, Explicit, SUNIndex, ExplicitSUNIndex,
+SUNSimplify, SUNT, SUNTrace, Trick, SUNNToCACF];
 
 Options[ TR ] = { DiracTraceEvaluate -> True,
                   Explicit           -> True,

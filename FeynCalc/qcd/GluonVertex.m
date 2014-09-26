@@ -37,13 +37,13 @@ is returned or whether it is left as an operator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+Gauge = MakeContext["CoreOptions","Gauge"];
 
 MakeContext[
-CouplingConstant,
-Dimension,
 Explicit,
-Gauge,
 Gstrong,
 LorentzIndex,
 Momentum,

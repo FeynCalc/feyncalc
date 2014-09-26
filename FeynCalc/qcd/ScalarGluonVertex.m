@@ -29,10 +29,11 @@ are determined by the options Dimension and CouplingConstant.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
-CouplingConstant, Dimension,
 Gstrong, LorentzIndex, Momentum, MomentumCombine,
 Pair, PropagatorDenominator, SUNDelta, SUNT, SUNIndex];
 

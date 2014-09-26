@@ -33,26 +33,30 @@ Begin["`Private`"];
    
 
 Contract3 = MakeContext["Contract", "Contract3"];
+Collecting = MakeContext["CoreOptions","Collecting"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+IntegralTable = MakeContext["CoreOptions","IntegralTable"];
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
 
 MakeContext[
 FCPrint,
 Cases2,
 ChangeDimension,
 Collect2,
-Collecting,
 Contract,
-Dimension,
-DimensionalReduction,
 DiracGamma,
 DiracOrder,
 DiracSimplify,
 DiracTrick,
 DotSimplify,
 Expand2,
-Expanding,
 ExpandScalarProduct,
 Explicit,
-Factoring,
 FeynAmp,
 FeynAmpDenominator,
 FeynAmpDenominatorSimplify,
@@ -60,9 +64,7 @@ FeynCalcForm,
 FeynCalcInternal,
 Factor2,
 FeynAmpDenominatorCombine,
-FinalSubstitutions,
 FreeQ2,
-IntegralTable,
 Isolate,
 MemSet,
 OPE1Loop,
@@ -73,8 +75,6 @@ ScalarProductCancel,
 Select1,
 Select2,
 SUNIndex,
-SUNFToTraces,
-SUNNToCACF,
 SUNSimplify,
 SUNTrace,
 TID,

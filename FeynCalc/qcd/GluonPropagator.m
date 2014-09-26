@@ -36,18 +36,18 @@ The following settings of Gauge are possible:
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+Gauge = MakeContext["CoreOptions","Gauge"];
 
 MakeContext[
 Abbreviation,
 CA,
 CounterT,
 CounterTerm,
-CouplingConstant,
-Dimension,
 Epsilon,
 Explicit,
-Gauge,
 Gstrong,
 LorentzIndex,
 Momentum,

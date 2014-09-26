@@ -18,7 +18,7 @@ MemSet[f[x_], body] may evaluate as f[x_] := body."
 
 Begin["`Private`"];
 
-MakeContext[MemoryAvailable];
+MemoryAvailable = MakeContext["CoreOptions","MemoryAvailable"];
 
 (* memset : a dynamical memory dependent "Set" function *)
 

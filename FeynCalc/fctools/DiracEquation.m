@@ -27,7 +27,7 @@ FreeQ2, LorentzIndex, Momentum, Spinor, Pair, PairContract];
 
 diractrick := diractrick = MakeContext["DiracTrick"];
 dotsimplify:=dotsimplify = MakeContext["DotSimplify"];
-expanding:=expanding     = MakeContext["Expanding"];
+expanding:=expanding     = MakeContext["CoreOptions","Expanding"];
 fci := fci               = MakeContext["FeynCalcInternal"];
 
 scev[a__] := scev[a] = ExpandScalarProduct[a];

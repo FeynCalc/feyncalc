@@ -30,57 +30,56 @@ SelectedGraphs::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
 ChangeDimension     =  MakeContext["ChangeDimension"];
 Chisholm     := Chisholm =   MakeContext["Chisholm"];
 Collect2     =  MakeContext["Collect2"];
-Collecting     =  MakeContext["Collecting"];
+Collecting     =  MakeContext["CoreOptions","Collecting"];
 Combine     =  MakeContext["Combine"];
 ComplexConjugate     =  MakeContext["ComplexConjugate"];
 ComplexIndex     =  MakeContext["ComplexIndex"];
 Contract     =  MakeContext["Contract"];
 Contract2     =  MakeContext["Contract", "Contract2"];
 Contract3     =  MakeContext["Contract", "Contract3"];
-Dimension     =  MakeContext["Dimension"];
+Dimension     =  MakeContext["CoreOptions","Dimension"];
 DiracGamma     =  MakeContext["DiracGamma"];
 DiracMatrix     =  MakeContext["DiracMatrix"];
 DiracOrder     =  MakeContext["DiracOrder"];
 DiracSimplify     =  MakeContext["DiracSimplify"];
 DiracTrace     =  MakeContext["DiracTrace"];
 Eps     =  MakeContext["Eps"];
-EpsDiscard     =  MakeContext["EpsDiscard"];
-EpsContract     =  MakeContext["EpsContract"];
+EpsDiscard     =  MakeContext["CoreOptions","EpsDiscard"];
+EpsContract     =  MakeContext["CoreOptions","EpsContract"];
 EpsChisholm   := EpsChisholm  =  MakeContext["EpsChisholm"];
 EpsEvaluate     =  MakeContext["EpsEvaluate"];
-Expanding     =  MakeContext["Expanding"];
+Expanding     =  MakeContext["CoreOptions","Expanding"];
 ExpandScalarProduct     =  MakeContext["ExpandScalarProduct"];
 Explicit        = MakeContext["Explicit"];
-ExtraFactor    = MakeContext["ExtraFactor"];
+ExtraFactor    = MakeContext["CoreOptions","ExtraFactor"];
 Factor1     =  MakeContext["Factor1"];
 Factor2     =  MakeContext["Factor2"];
 (*FactorTime     =  MakeContext["FactorTime"];*)
-Factoring     =  MakeContext["Factoring"];
+Factoring     =  MakeContext["CoreOptions","Factoring"];
 FermionSpinSum    := FermionSpinSum =  MakeContext["FermionSpinSum"];
 FeynAmp         := FeynAmp = MakeContext["FeynAmp"];
 FeynAmpDenominator     =  MakeContext["FeynAmpDenominator"];
 FeynAmpList      :=  FeynAmpList = MakeContext["FeynAmpList"];
 FeynCalcForm     =  MakeContext["FeynCalcForm"];
 fci              = MakeContext["FeynCalcInternal"];
-FinalSubstitutions     =  MakeContext["FinalSubstitutions"];
-InitialSubstitutions     =  MakeContext["InitialSubstitutions"];
-IntermediateSubstitutions     =  MakeContext["IntermediateSubstitutions"];
+FinalSubstitutions     =  MakeContext["CoreOptions","FinalSubstitutions"];
+InitialSubstitutions     =  MakeContext["CoreOptions","InitialSubstitutions"];
+IntermediateSubstitutions     =  MakeContext["CoreOptions","IntermediateSubstitutions"];
 Isolate             = MakeContext["Isolate"];
-IsolateNames        = MakeContext["IsolateNames"];
+IsolateNames        = MakeContext["CoreOptions","IsolateNames"];
 IsolateSplit        = MakeContext["IsolateSplit"];
 LorentzIndex        = MakeContext["LorentzIndex"];
-Mandelstam          = MakeContext["Mandelstam"];
+Mandelstam          = MakeContext["CoreOptions","Mandelstam"];
 MetricTensor        = MakeContext["MetricTensor"];
 Momentum            = MakeContext["Momentum"];
 memset              = MakeContext["MemSet"];
 NumericalFactor     = MakeContext["NumericalFactor"];
 Pair                = MakeContext["Pair"];
-PairCollect         = MakeContext["PairCollect"];
+PairCollect         = MakeContext["CoreOptions","PairCollect"];
 Polarization        = MakeContext["Polarization"];
 PolarizationSum     = MakeContext["PolarizationSum"];
 PropagatorDenominator= MakeContext["PropagatorDenominator"];
@@ -93,12 +92,12 @@ SUNSimplify         = MakeContext["SUNSimplify"];
 SUNT                = MakeContext["SUNT"];
 SUNTrace            = MakeContext["SUNTrace"];
 ScalarProduct       = MakeContext["ScalarProduct"];
-SpinPolarizationSum = MakeContext["SpinPolarizationSum"];
+SpinPolarizationSum = MakeContext["CoreOptions","SpinPolarizationSum"];
 Spinor              = MakeContext["Spinor"];
 TR                  =  MakeContext["TR"];
 TrickMandelstam     = MakeContext["TrickMandelstam"];
 Write2              = MakeContext["Write2"];
-WriteOut            = MakeContext["WriteOut"];
+WriteOut            = MakeContext["CoreOptions","WriteOut"];
 KK                  = MakeContext["KK"];
 
 (* ************************************************************* *)

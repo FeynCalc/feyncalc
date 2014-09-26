@@ -34,11 +34,11 @@ operator is returned.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
-CouplingConstant,
-Dimension,
 DiracGamma,
 Gstrong,
 LorentzIndex,

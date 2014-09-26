@@ -32,18 +32,17 @@ Begin["`Private`"];
 
 FeynAmpDenominatorCombine = MakeContext["FeynAmpDenominatorCombine"];
 FeynAmpDenominator = MakeContext["FeynAmpDenominator"];
-FeynmanParameterNames = MakeContext["FeynmanParameterNames"];
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 FeynCalcInternal = MakeContext["FeynCalcInternal"];
 Integratedx = MakeContext["Integratedx"];
 Momentum = MakeContext["Momentum"];
 Pair = MakeContext["Pair"];
 PropagatorDenominator = MakeContext["PropagatorDenominator"];
-Dimension = MakeContext["Dimension"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 LorentzIndex = MakeContext["LorentzIndex"];
 Uncontract = MakeContext["Uncontract"];
 Contract = MakeContext["Contract"];
 ScalarProductExpand = MakeContext["ScalarProductExpand"];
-Dimension = MakeContext["Dimension"];
 LorentzIndex = MakeContext["LorentzIndex"];
 CompleteSquare = MakeContext["CompleteSquare"];
 

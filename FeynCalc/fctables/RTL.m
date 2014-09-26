@@ -19,6 +19,8 @@ to the finite part.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+Factoring = MakeContext["CoreOptions","Factoring"];
 
 MakeContext[
 Apart3,
@@ -28,9 +30,7 @@ ChangeDimension,
 Collect2,
 DeltaFunction,
 DeltaFunctionPrime,
-Dimension,
 Epsilon,
-Factoring,
 Factor2,
 FeynCalcInternal,
 Gstrong,

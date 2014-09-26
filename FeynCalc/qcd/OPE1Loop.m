@@ -25,24 +25,28 @@ decomposition.";
 Begin["`Private`"];
    
 
+Collecting = MakeContext["CoreOptions","Collecting"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 MakeContext["Contract", "Contract3"];
 DiracTrace := DiracTrace = MakeContext["DiracTrace"];
 Tr2 := Tr2 = MakeContext["Tr2"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+InitialSubstitutions = MakeContext["CoreOptions","InitialSubstitutions"];
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
 
 MakeContext[
 FCPrint,
 Cases2,
 ChangeDimension,
-Collecting,
 Collect2,
 Contract,
-Dimension,
 Eps,
-EpsContract,
 EpsEvaluate,
 ExpandScalarProduct,
 Expand2,
-Factoring,
 Factor1,
 FeynCalcInternal,
 FeynCalcExternal,
@@ -51,8 +55,6 @@ FeynAmpDenominator,
 FeynAmpDenominatorSimplify,
 FreeQ2,
 GluonVertex,
-InitialSubstitutions,
-FinalSubstitutions,
 LorentzIndex,
 Momentum,
 MomentumExpand,
@@ -70,8 +72,6 @@ ScalarProductCancel,
 Select1,
 Select2,
 SubLoop,
-SUNFToTraces,
-SUNNToCACF,
 SUNSimplify,
 TID,
 PropagatorDenominator,

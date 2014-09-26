@@ -24,6 +24,14 @@ the dimension in which the Levi-Civita tensors are contracted.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+Divideout = MakeContext["CoreOptions","Divideout"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+Factorout = MakeContext["CoreOptions","Factorout"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 
 MakeContext[
 CA,
@@ -32,27 +40,19 @@ ChangeDimension,
 Collect2,
 Contract,
 DeltaFunction,
-Dimension, 
 DiracGamma,
-Divideout,
 Eps, 
-EpsContract, 
 Epsilon, 
-EpsilonOrder, 
 EpsEvaluate, 
 Expand2,
-Factoring,
-Factorout,
 Factor1,
 Factor2,
 FeynCalcInternal,
 FeynAmpDenominator,
-FinalSubstitutions,
 FreeQ2,
 Gstrong,
 Integratedx,
 Isolate,
-IsolateNames,
 LorentzIndex,
 Momentum, 
 NumericalFactor,

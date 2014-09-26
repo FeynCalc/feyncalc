@@ -39,12 +39,12 @@ with the default setting of GluonVertex.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+Gauge = MakeContext["CoreOptions","Gauge"];
 
 MakeContext[
-CouplingConstant,
-Dimension,
-Gauge,
 Gstrong,
 LorentzIndex,
 Momentum,

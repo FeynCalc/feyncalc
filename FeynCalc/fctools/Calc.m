@@ -28,15 +28,15 @@ Begin["`Private`"];
 (*
 Contract3 = MakeContext["Contract", "Contract3"];
 *)
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
 
 MakeContext[
 Contract,
 DiracSimplify,
 DotSimplify,
-EpsContract,
 EpsEvaluate,
 Expand2,
-Expanding,
 ExpandScalarProduct,
 Explicit,
 FeynCalcInternal,

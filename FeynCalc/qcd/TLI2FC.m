@@ -24,10 +24,10 @@ TLI-integrals in exp to the FAD form.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
-Dimension,
 Factor2,
 FeynCalcExternal,
 FeynCalcForm,

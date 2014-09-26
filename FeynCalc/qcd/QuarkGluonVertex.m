@@ -31,13 +31,13 @@ For explicit expressions use the function Explicit or modify the option Explicit
 
 Begin["`Private`"];
    
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
 CA,CF,
 CounterTerm,
-CouplingConstant,
 DeclareNonCommutative,
-Dimension,
 DiracGamma,
 Epsilon,
 Explicit, 

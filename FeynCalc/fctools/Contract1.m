@@ -18,10 +18,10 @@ Contract1::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
-Dimension,
 Expand2,
 LorentzIndex, 
 Lower,

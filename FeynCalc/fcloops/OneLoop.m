@@ -105,40 +105,56 @@ MakeBoxes[StandardMatrixElement[x_], TraditionalForm
 RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];
 
 
+Collecting = MakeContext["CoreOptions","Collecting"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+InitialSubstitutions = MakeContext["CoreOptions","InitialSubstitutions"];
+IntermediateSubstitutions = MakeContext["CoreOptions","IntermediateSubstitutions"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+Mandelstam = MakeContext["CoreOptions","Mandelstam"];
+PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
+WriteOut = MakeContext["CoreOptions","WriteOut"];
+WriteOutPaVe = MakeContext["CoreOptions","WriteOutPaVe"];
+SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
+
 MakeContext[
    FCPrint,
    A0, A0ToB0, Apart2, B0, B00, B1, B11, Cases2,
-   ChangeDimension, Chisholm, Collecting, Collect2, Combine, 
-   Contract, C0, 
-   Dimension, DiracGamma, DiracGammaCombine, 
-   DiracOrder, DiracSimplify, DiracTrace, DiracTraceEvaluate, D0, DB0,
+   ChangeDimension, Chisholm, Collect2, Combine,
+   Contract, C0,
+   DiracGamma, DiracGammaCombine,
+   DiracOrder, DiracSimplify, DiracTrace, D0, DB0,
    DotSimplify,
-   Eps, EpsChisholm, EpsContract, EpsEvaluate, Expanding, 
+   Eps, EpsChisholm, EpsEvaluate,
    ExpandScalarProduct, FAD,
-   FactorFull, Factoring, Factor2, 
+   FactorFull, Factor2,
    FeynAmp, FeynAmpList,
    FeynCalcInternal,
-   FeynAmpDenominator, 
-   FeynAmpDenominatorCombine, 
+   FeynAmpDenominator,
+   FeynAmpDenominatorCombine,
    FeynAmpDenominatorSimplify,
    FeynAmpDenominatorSplit,
-   FeynCalcForm, FinalSubstitutions, FreeQ2, 
-   InitialSubstitutions, IntermediateSubstitutions, Isolate, 
-   IsolateNames, IsolateSplit, KK,
-   LorentzIndex, Mandelstam, MemSet,
-   Momentum, MomentumExpand,   
+   FeynCalcForm,  FreeQ2,
+   Isolate,
+   IsolateSplit, KK,
+   LorentzIndex, MemSet,
+   Momentum, MomentumExpand,
    OneLoopSimplify,
-   Pair, PairContract, PartitHead, PaVe, PaVeOrder, PaVeOrderList,    
-   PaVeReduce, Polarization, 
-   PropagatorDenominator, 
-   PropagatorDenominatorExplicit, 
-   ScalarProduct,  
-   ScalarProductCancel,  
+   Pair, PairContract, PartitHead, PaVe, PaVeOrder
+   PaVeReduce, Polarization,
+   PropagatorDenominator,
+   PropagatorDenominatorExplicit,
+   ScalarProduct,
+   ScalarProductCancel,
    SelectFree, SelectNotFree,
-   SmallVariable, 
-   Spinor, SUNDelta, 
-   SUNF, SUNFToTraces, SUNIndex, SUNSimplify, SUNT, TR, Trick,
-   TrickMandelstam, WriteOut, WriteOutPaVe, Write2, Explicit
+   SmallVariable,
+   Spinor, SUNDelta,
+   SUNF, SUNIndex, SUNSimplify, SUNT, TR, Trick,
+   TrickMandelstam, Write2, Explicit
 ];
 SpinorChainEvaluate = 
 HighEnergyPhysics`DiracSimplify`Private`SpinorChainEvaluate;

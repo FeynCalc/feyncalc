@@ -26,9 +26,12 @@ Series2[f, {e, 0, n}] is equivalent to Series[f, {e, 0, n}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-MakeContext[FCPrint, Cases2, Collect2, Collecting, Epsilon,Factor2,
-            Factoring, FinalSubstitutions, 
+
+Collecting = MakeContext["CoreOptions","Collecting"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+
+MakeContext[FCPrint, Cases2, Collect2, Epsilon,Factor2,
             GammaEpsilon, GammaExpand, Nielsen,
             OPEm, FreeQ2, Select1, Select2, 
             SumS, SumT, Zeta2];

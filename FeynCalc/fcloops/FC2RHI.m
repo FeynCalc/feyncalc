@@ -28,12 +28,13 @@ p.k1, p.k2 and k1.k2 (setting True).";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+IncludePair = MakeContext["CoreOptions","IncludePair"];
 
 MakeContext[
 FCPrint,
 Cases2,
 ChangeDimension,
-Dimension,
 Eps,
 Expand2,
 ExpandScalarProduct,
@@ -45,7 +46,6 @@ FeynCalcForm,
 FreeQ2,
 IFPDOn,
 IFPDOff,
-IncludePair,
 MemSet,
 Momentum,
 OPEDelta,

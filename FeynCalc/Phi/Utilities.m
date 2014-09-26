@@ -59,7 +59,7 @@ CovariantFieldDerivative := CovariantFieldDerivative = MakeContext["CovariantFie
 ExplicitSUNIndex := ExplicitSUNIndex = MakeContext["ExplicitSUNIndex"];
 SUNIndex := SUNIndex = MakeContext["SUNIndex"];
 ScaleMu := ScaleMu = MakeContext["ScaleMu"];
-CouplingConstant := CouplingConstant = MakeContext["CouplingConstant"];
+CouplingConstant := CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 ExplicitLorentzIndex := ExplicitLorentzIndex = MakeContext["ExplicitLorentzIndex"];
 DiracSimplify := DiracSimplify = MakeContext["DiracSimplify"];
 

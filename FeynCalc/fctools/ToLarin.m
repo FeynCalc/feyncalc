@@ -22,11 +22,11 @@ ToLarin::"usage"=
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
+TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
 
-MakeContext[Dimension, LeviCivitaSign, LorentzIndex, 
-            FeynCalcInternal,
-            TraceOfOne, TR, Eps, DiracGamma
-           ];
+MakeContext[LorentzIndex, FeynCalcInternal, TR, Eps, DiracGamma];
 Options[ToLarin] = {Dimension -> D};
 
 ToLarin[x_, ru___Rule] := Block[{tt,fi1,fi2,fi3,drsi,temp2, doot, dim},

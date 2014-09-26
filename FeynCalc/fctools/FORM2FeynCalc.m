@@ -30,16 +30,16 @@ not contain a V(ectors) statement.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Dimension = MakeContext["CoreOptions","Dimension"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 MakeContext[
 FCPrint,
 ChangeDimension,
-Dimension,
 Eps,
 FeynCalcExternal,
 FV,
-FinalSubstitutions,
 LorentzIndex,
 Momentum,
 Nielsen,

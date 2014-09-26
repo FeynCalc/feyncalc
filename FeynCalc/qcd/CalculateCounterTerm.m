@@ -19,7 +19,11 @@ calculates the residue of exp.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Collecting = MakeContext["CoreOptions","Collecting"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 MakeContext[
 FCPrint,
@@ -27,7 +31,6 @@ CA,CF,
 Cases2,
 ChangeDimension,
 Chisholm,
-Collecting,
 Collect2,
 Contract,
 DiracGamma,
@@ -38,16 +41,13 @@ DiracTrick,
 DotSimplify,
 Eps,
 Epsilon, 
-EpsContract,
 EpsEvaluate,
 Expand2,
 ExpandScalarProduct,
 Explicit,
-Factoring,
 Factor2,
 FeynAmpDenominatorSimplify,
 FeynCalcInternal,
-FinalSubstitutions,
 GluonVertex,
 Integratedx,
 Isolate,

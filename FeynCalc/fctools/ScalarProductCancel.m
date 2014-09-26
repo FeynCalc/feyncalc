@@ -21,13 +21,14 @@ with propagators. ScalarProductCancel[exp] cancels simple cases.";
 Begin["`Private`"];
    
 
+Collecting = MakeContext["CoreOptions","Collecting"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+
 MakeContext[FCPrint,
 			Cases2,
             ChangeDimension,
             Collect2,
-            Collecting,
             ExpandScalarProduct, Expand2, 
-            Factoring,
             FeynAmpDenominator,
             FeynAmpDenominatorCombine,
             FeynAmpDenominatorSimplify, IFPD, IFPDOn, IFPDOff,

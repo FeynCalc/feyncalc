@@ -36,7 +36,7 @@ cf           := cf = MakeContext["CF"];
 chiralityprojector := chiralityprojector =
                                 MakeContext["ChiralityProjector"];
 DeltaFunction:=DeltaFunction = MakeContext["DeltaFunction"];
-dimension    := dimension     = MakeContext["Dimension"];
+dimension    := dimension     = MakeContext["CoreOptions","Dimension"];
 diracgamma   := diracgamma    = MakeContext["DiracGamma"];
 diracmatrix  := diracmatrix   = MakeContext["DiracMatrix"];
 DiracSigma   := DiracSigma    = MakeContext["DiracSigma"];
@@ -45,7 +45,7 @@ diractrace   := diractrace    = MakeContext["DiracTrace"];
 DiracGammaT  := DiracGammaT   = MakeContext["DiracGammaT"];
 eps          := eps           = MakeContext["Eps"];
 Epsilon      := Epsilon       = MakeContext["Epsilon"];
-FinalSubstitutions :=FinalSubstitutions = MakeContext["FinalSubstitutions"];
+FinalSubstitutions :=FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 freeq2       := freeq2        = MakeContext["FreeQ2"];
 Gstrong      := Gstrong        = MakeContext["Gstrong"];
 propagatordenominator := propagatordenominator =

@@ -19,10 +19,13 @@ functions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[CA,CouplingConstant,
- CF,Dimension, Epsilon,Tf,Nf, Gauge, Gstrong];
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+
+Dimension = MakeContext["CoreOptions","Dimension"];
+
+MakeContext[CA,CF, Epsilon,Tf,Nf, Gauge, Gstrong];
 
 Options[CounterTerm] = 
   {CouplingConstant -> Gstrong, Dimension -> (4+Epsilon),

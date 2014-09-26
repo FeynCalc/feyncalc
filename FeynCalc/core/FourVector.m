@@ -15,7 +15,9 @@ Begin["`Private`"];
 
 fci := fci = MakeContext["FeynCalcInternal"];
 
-MakeContext[ Dimension, LorentzIndex, Momentum, Pair];
+Dimension = MakeContext["CoreOptions","Dimension"];
+
+MakeContext[ LorentzIndex, Momentum, Pair];
 
 Options[FourVector]  = {Dimension -> 4, fci -> True};
 

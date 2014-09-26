@@ -30,9 +30,11 @@ set to a list of integrals. The format should be
 
 Begin["`Private`"];
 
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
 
-MakeContext[Collect2, DeltaFunction, Epsilon,Expand2,Expanding,
-            Factor2, Factoring, FreeQ2,
+MakeContext[Collect2, DeltaFunction, Epsilon,Expand2,
+            Factor2, FreeQ2,
             Integrate3,Integrate4,MemSet,Nielsen,PowerSimplify,
             SimplifyPolyLog,
             PlusDistribution, Select1, Select2, Solve2, Trick, Zeta2];

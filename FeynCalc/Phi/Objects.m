@@ -70,7 +70,7 @@ fcexsuni := fcexsuni = MakeContext["ExplicitSUNIndex"];
 fcpa := fcpa = MakeContext["Pair"];
 fccc := fccc = MakeContext["ComplexConjugate"];
 fclag := fclag = MakeContext["Lagrangian"];
-fccoupl := fccoupl = MakeContext["CouplingConstant"];
+fccoupl := fccoupl = MakeContext["CoreOptions","CouplingConstant"];
 fcexli := fcexli = MakeContext["ExplicitLorentzIndex"];
 fcdt := fcdt = MakeContext["DataType"];
 fcms := fcms = MakeContext["MemSet"];

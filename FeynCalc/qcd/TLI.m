@@ -35,9 +35,9 @@ Begin["`Private`"];
    
 
 Epsilon       = MakeContext["Epsilon"];
-EpsilonOrder  = MakeContext["EpsilonOrder"];
+EpsilonOrder  = MakeContext["CoreOptions","EpsilonOrder"];
 Factor1       = MakeContext["Factor1"];
-Factoring     = MakeContext["Factoring"];
+Factoring     = MakeContext["CoreOptions","Factoring"];
 FeynCalcInternal = MakeContext["FeynCalcInternal"];
 FreeQ2        = MakeContext["FreeQ2"];
 Collect2      = MakeContext["Collect2"];

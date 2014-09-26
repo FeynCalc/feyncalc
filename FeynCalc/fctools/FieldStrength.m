@@ -33,8 +33,9 @@ IndexPosition::"usage"=
 
 Begin["`Private`"];
 
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+
 MakeContext[
-CouplingConstant,
 DeclareNonCommutative,
 Explicit,
 FreeQ2,

@@ -20,12 +20,12 @@ SUNF's are replaced by SUNTrace objects.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
 ChangeDimension,
-CouplingConstant,
-Dimension,
 ExpandScalarProduct,
 FieldStrength,
 Gauge,

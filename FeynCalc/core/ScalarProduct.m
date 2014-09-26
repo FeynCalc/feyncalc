@@ -22,7 +22,9 @@ calculation. This improves the performance of FeynCalc .";
 
 Begin["`Private`"];
 
-MakeContext[ ChangeDimension, Dimension, SP, SPD];
+Dimension = MakeContext["CoreOptions","Dimension"];
+
+MakeContext[ ChangeDimension, SP, SPD];
 fci := fci = MakeContext["FeynCalcInternal"];
 nf  := nf = MakeContext["NumericalFactor"];
 

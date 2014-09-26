@@ -22,9 +22,11 @@ OPEDelta.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+Expanding = MakeContext["CoreOptions","Expanding"];
 
-MakeContext[Cases2, Dimension, DiracSlash,
-            DiracGamma, DotSimplify, Eps, Expanding, 
+MakeContext[Cases2, DiracSlash,
+            DiracGamma, DotSimplify, Eps,
             FeynCalcInternal, FourVector, FreeQ2, 
             LeviCivita, LorentzIndex, Momentum, OPEDelta, Pair,
             ScalarProduct,Select1

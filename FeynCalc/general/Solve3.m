@@ -23,10 +23,14 @@ Solve for systems involving rational polynomials.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-MakeContext[ FCPrint, Collect2, Combine,Expanding, Factor2,
-             FinalSubstitutions,
-             Factoring, FreeQ2, Isolate, IsolateNames, IsolateSplit,
+
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+
+MakeContext[ FCPrint, Collect2, Combine, Factor2,
+             FreeQ2, Isolate, IsolateSplit,
              Select1,Solve2
            ];
 

@@ -44,7 +44,7 @@ Begin["`Private`"];
 (* FeynCalc functions *)
 
 
-fcdim := fcdim = MakeContext["Dimension"];
+fcdim := fcdim = MakeContext["CoreOptions","Dimension"];
 fcb0 := fcb0 = MakeContext["B0"];
 fcc0 := fcc0 = MakeContext["C0"];
 fcd0 := fcd0 = MakeContext["D0"];
@@ -58,10 +58,10 @@ fcmomexp := fcmomexp = MakeContext["MomentumExpand"];
 fcmomcomb := fcmomcomb = MakeContext["MomentumCombine"];
 fccontr := fccontr = MakeContext["Contract"];
 fcintx := fcintx = MakeContext["Integratedx"];
-fcfpana := fcfpana = MakeContext["FeynmanParameterNames"];
-fcint := fcint = MakeContext["FCIntegrate"];
+fcfpana := fcfpana = MakeContext["CoreOptions","FeynmanParameterNames"];
+fcint := fcint = MakeContext["CoreOptions","FCIntegrate"];
 fcsunn := fcsunn = MakeContext["SUNN"];
-fccoupl := fccoupl = MakeContext["CouplingConstant"];
+fccoupl := fccoupl = MakeContext["CoreOptions","CouplingConstant"];
 fcscmu := fcscmu = MakeContext["ScaleMu"];
 fcsmeps := fcsmeps = MakeContext["SmallEpsilon"];
 fca0 := fca0 = MakeContext["A0"];

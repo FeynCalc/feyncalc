@@ -23,10 +23,12 @@ p3: incoming gluon (count1)).";
 
 Begin["`Private`"];
    
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
-CA,CF, CouplingConstant, DeclareNonCommutative,
-Dimension, DiracGamma, Eps, Epsilon, Gstrong, LorentzIndex,
+CA,CF, DeclareNonCommutative,
+DiracGamma, Eps, Epsilon, Gstrong, LorentzIndex,
 Momentum, OPEDelta, OPEm, Pair, Polarization, Sn, SUNIndex,
 SUNT       ];
 

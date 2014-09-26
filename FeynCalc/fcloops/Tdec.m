@@ -23,6 +23,12 @@ NumberOfMetricTensors::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+
+Dimension = MakeContext["CoreOptions","Dimension"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
    
 MakeContext[
 FCPrint,
@@ -30,12 +36,8 @@ Cases2,
 Collect2,
 Contract, 
 ChangeDimension,
-Dimension,
-EpsContract, 
 EpsEvaluate,
 ExpandScalarProduct,
-Expanding, 
-Factoring,
 Factor2,
 FeynCalcForm,
 FeynCalcExternal,

@@ -17,8 +17,10 @@ FourLaplacian::"usage"= "FourLaplacian[exp, p, q] is d/dp_mu d/dq_mu exp.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+
+Dimension = MakeContext["CoreOptions","Dimension"];
    
-MakeContext[Dimension, FeynCalcInternal, FourDivergence, 
+MakeContext[FeynCalcInternal, FourDivergence,
             LorentzIndex, Momentum, Pair];
 chd = MakeContext["ChangeDimension"];
 

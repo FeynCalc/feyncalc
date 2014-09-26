@@ -23,6 +23,10 @@ PaVeReduce::"usage"=
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
+Mandelstam = MakeContext["CoreOptions","Mandelstam"];
+PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
 
 MakeContext[
 FCPrint,
@@ -30,20 +34,16 @@ A0, B0, B00, B1, B11,
 C0, 
 Collect2,
 D0, 
-Dimension,
 Expand2,
 BReduce, 
 Factor2,
 FreeQ2,
 Isolate,
-IsolateNames,
-Mandelstam,
 MemSet,
 NTerms,
 PartitHead,
 PaVe,
 PaVeOrder,
-PaVeOrderList,
 SelectFree,
 SelectNotFree,
 TrickMandelstam,

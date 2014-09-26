@@ -40,17 +40,17 @@ DiracGamma   = MakeContext["DiracGamma"];
 diractrick  := diractrick = MakeContext["DiracTrick"];
 Eps          = MakeContext["Eps"];
 EpsEvaluate  = MakeContext["EpsEvaluate"];
-Expanding                = MakeContext["Expanding"];
+Expanding                = MakeContext["CoreOptions","Expanding"];
 Expand2 = MakeContext["Expand2"];
 ExpandScalarProduct      = MakeContext["ExpandScalarProduct"];
 Explicit    := Explicit  = MakeContext["Explicit"];
 Factor1     := Factor1   = MakeContext["Factor1"];
 Factor2     := Factor2   = MakeContext["Factor2"];
-Factoring   := Factoring = MakeContext["Factoring"];
+Factoring   := Factoring = MakeContext["CoreOptions","Factoring"];
 fci         := fci       = MakeContext["FeynCalcInternal"];
 fce          = MakeContext["FeynCalcExternal"];
 FieldStrength := FieldStrength = MakeContext["FieldStrength"];
-FinalSubstitutions = MakeContext["FinalSubstitutions"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 FreeQ2       = MakeContext["FreeQ2"];
 FunctionalD  = MakeContext["FunctionalD"];
 lorind       = MakeContext["LorentzIndex"];
@@ -89,7 +89,7 @@ sunsimplify  := sunsimplify  = MakeContext["SUNSimplify"];
 SymbolicSum2 := SymbolicSum2 = MakeContext["SymbolicSum2"];
 UnDeclareNonCommutative := UnDeclareNonCommutative = 
   MakeContext["UnDeclareNonCommutative"];
-ZeroMomentumInsertion = MakeContext["ZeroMomentumInsertion"];
+ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 ExplicitSUNIndex     = MakeContext["ExplicitSUNIndex"];
 
 

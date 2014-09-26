@@ -18,9 +18,10 @@ TLIFP::"usage"= "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
 
 Begin["`Private`"];
    
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 
 MakeContext[ChangeDimension,Collect2, DeltaFunction,
-            Epsilon, FeynmanParameterNames, GammaExpand, Momentum,
+            Epsilon, GammaExpand, Momentum,
             OPEDelta, OPEi,
             OPEm, PositiveInteger, ScalarProduct, Smu, TLI, TLI2];
 

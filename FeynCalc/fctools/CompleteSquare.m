@@ -24,7 +24,7 @@ Momentum = MakeContext["Momentum"];
 Pair = MakeContext["Pair"];
 Contract = MakeContext["Contract"];
 ScalarProductExpand = MakeContext["ScalarProductExpand"];
-Dimension = MakeContext["Dimension"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 
 CompleteSquare[e_, x_ ,y_:Null] :=

@@ -26,9 +26,12 @@ Series3[f, {e, 0, n}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
    
 MakeContext[Collect2, Epsilon,Factor2,
-             Factoring, FinalSubstitutions, Nielsen,
+            Nielsen,
             OPEm, FreeQ2, Select2, SumS, SumT, Zeta2];
 
 SimplifyPolyLog := SimplifyPolyLog = MakeContext["SimplifyPolyLog"];

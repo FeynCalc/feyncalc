@@ -32,12 +32,13 @@ are determined by the options Dimension and CouplingConstant.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+Gauge = MakeContext["CoreOptions","Gauge"];
    
 MakeContext[
-CouplingConstant,
-Dimension,
 Explicit,
-Gauge,
 Gstrong,
 LorentzIndex,
 Momentum,

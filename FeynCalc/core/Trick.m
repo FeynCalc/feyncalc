@@ -14,16 +14,18 @@ Trick::"usage" =
 
 Begin["`Private`"];
 
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+
 MakeContext[
-DotSimplify, EpsContract,
-Expanding, FeynAmpDenominator, FeynAmpDenominatorCombine,
+DotSimplify,
+FeynAmpDenominator, FeynAmpDenominatorCombine,
 FeynCalcInternal, LorentzIndex, SUNDelta, SUNF,
 SUNIndex, SUNDeltaContract, SUNSimplify, SUNT,
 CovariantD,
 CrossProduct,
 DiracGamma,
 DotProduct,
-Expanding,
 Explicit,
 PauliSigma,
 Contract];

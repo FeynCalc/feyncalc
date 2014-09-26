@@ -21,8 +21,9 @@ Integrate5::"usage"=
 
 Begin["`Private`"];
    
+Factoring = MakeContext["CoreOptions","Factoring"];
 
-MakeContext[FCPrint, Collect2, DeltaFunction, Factor2, Factoring, FreeQ2,
+MakeContext[FCPrint, Collect2, DeltaFunction, Factor2, FreeQ2,
             Integrate3,
             PlusDistribution, Select1, Select2, Solve2, Zeta2];
 

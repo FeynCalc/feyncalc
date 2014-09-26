@@ -44,8 +44,10 @@ or by Power.";
 
 Begin["`Private`"];
 
+Expanding = MakeContext["CoreOptions","Expanding"];
+
 MakeContext[ Commutator, CommutatorExplicit, DiracTrace,
-AntiCommutator, Expanding, FeynCalcInternal, 
+AntiCommutator, FeynCalcInternal,
 FreeQ2, NonCommFreeQ, MemSet, SUNT,
 SUNTrace, DiracGamma, QuantumField, Momentum];
 

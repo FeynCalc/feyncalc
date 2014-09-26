@@ -26,6 +26,11 @@ If exp does not contain DiracTrace's, Tr2[exp] takes the Dirac trace.";
 
 Begin["`Private`"];
 
+DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
+
 MakeContext[
 Collect2,
 Contract,
@@ -34,10 +39,7 @@ DiracGammaExpand,
 DiracOrder,
 DiracSimplify,
 DiracTrace,
-DiracTraceEvaluate,
-EpsContract,
 ExpandScalarProduct,
-Factoring,
 FeynCalcForm];
 
 FCI := FCI = MakeContext["FeynCalcInternal"];
@@ -47,7 +49,7 @@ FCI := FCI = MakeContext["FeynCalcInternal"];
 
 MakeContext[ FreeQ2, InsideDiracTrace,
 LorentzIndex, NonCommFreeQ, Select1, Select2, Explicit,
-SUNIndex, SUNSimplify, SUNNToCACF, SUNTrace, Tf, TR, Trick];
+SUNIndex, SUNSimplify, SUNTrace, Tf, TR, Trick];
 
 Options[ Tr2 ] = {Factoring -> False};
 

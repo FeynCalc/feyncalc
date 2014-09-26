@@ -23,11 +23,11 @@ l is the momentum to be differentiated.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
 Apart2,
 Collect2,
-Dimension,
 ExpandScalarProduct,
 FC2TLI,
 FeynCalcInternal,

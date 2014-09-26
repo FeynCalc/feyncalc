@@ -31,7 +31,7 @@ Begin["`Private`"];
 
 ChangeDimension          = MakeContext["ChangeDimension"];
 Collect2                 = MakeContext["Collect2"];
-Dimension                = MakeContext["Dimension"];
+Dimension                = MakeContext["CoreOptions","Dimension"];
 Factor2                  = MakeContext["Factor2"];
 FourVector               = MakeContext["FourVector"];
 fci                      = MakeContext["FeynCalcInternal"];

@@ -18,9 +18,9 @@ of hypergeometric functions, where possible.";
 
 Begin["`Private`"];
    
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 
-MakeContext[Epsilon, FeynmanParameterNames, OPEDelta, 
-            ScalarProduct, Smu, TLI, Momentum];
+MakeContext[Epsilon, OPEDelta, ScalarProduct, Smu, TLI, Momentum];
 
 (* Fri Feb 16 04:09:29 MET 1996 *)
 (* By R. Scharf *)

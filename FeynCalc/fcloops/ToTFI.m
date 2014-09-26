@@ -22,8 +22,11 @@ See TFI for details on the conventions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-MakeContext[Apart2,Cases2,Dimension, DotSimplify,Expanding,
+
+Dimension = MakeContext["CoreOptions","Dimension"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+
+MakeContext[Apart2,Cases2, DotSimplify,
 ExpandScalarProduct,
 FeynCalcExternal,Pair,Momentum,OPEDelta,
 FC2RHI,FreeQ2,FAD,SPD,SOD,FeynCalcInternal,PropagatorDenominator,

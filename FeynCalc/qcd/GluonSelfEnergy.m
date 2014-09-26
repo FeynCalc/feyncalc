@@ -21,15 +21,15 @@ GluonSelfEnergy::"usage" =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+Gauge = MakeContext["CoreOptions","Gauge"];
 
 MakeContext[
 CA,
-CouplingConstant,
-Dimension,
 Epsilon,
-FinalSubstitutions,
-Gauge,
 Gstrong,
 LorentzIndex,
 Momentum,

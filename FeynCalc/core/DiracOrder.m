@@ -18,7 +18,7 @@ Begin["`Private`"];
 memset:= memset             = MakeContext["MemSet"];
 diracgamma := diracgamma    = MakeContext["DiracGamma"];
 dotsimplify:= dotsimplify   = MakeContext["DotSimplify"];
-expanding := expanding      = MakeContext["Expanding"];
+expanding := expanding      = MakeContext["CoreOptions","Expanding"];
 fci := fci                  = MakeContext["FeynCalcInternal"];
 pair := pair                = MakeContext["Pair"];
 sCO  := sCO                 = MakeContext["PairContract"];

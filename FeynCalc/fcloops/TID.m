@@ -23,22 +23,25 @@ Lorentz indices away from the integration momentum q.";
 
 Begin["`Private`"];
    
+Collecting = MakeContext["CoreOptions","Collecting"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 
 MakeContext[FCPrint,
 			Uncontract,
             Cases2,
             ChangeDimension, Collect2, 
             Contract,
-            Collecting, Dimension, Eps,
-            DimensionalReduction,
+            Eps,
             Expand2,
-            Expanding,
             ExpandScalarProduct,
             DiracSimplify,
             DiracTrick, DiracGamma,
             EpsEvaluate, 
-            EpsContract,
-            Factoring,
             FeynAmpDenominator,
             FeynAmpDenominatorCombine,
             FeynAmpDenominatorSimplify,
@@ -46,7 +49,6 @@ MakeContext[FCPrint,
             FreeQ2,
             Isolate,
             (*IsolateHead,*)
-            IsolateNames,
             IsolateSplit,
             LorentzIndex, 
             MemSet,

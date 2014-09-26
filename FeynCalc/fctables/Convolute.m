@@ -27,11 +27,14 @@ Bracket::"usage"= "Bracket is an option for Convolute.";
 
 Begin["`Private`"];
    
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 MakeContext[Collect2, ConvoluteTable, 
-            DeltaFunction, Epsilon, Expanding,
-            FinalSubstitutions, CF,CA,Tf,Nf,
-            Factoring, Factor2, FreeQ2, Integrate2,
+            DeltaFunction, Epsilon,
+            CF,CA,Tf,Nf,
+            Factor2, FreeQ2, Integrate2,
             Polarization, PlusDistribution, PowerSimplify,
             SelectFree, SelectNotFree,Series2, 
             SplittingFunction, Zeta2];

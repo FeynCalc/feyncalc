@@ -15,7 +15,7 @@ PairContract::"usage" =
 Begin["`Private`"];
 
 eps := eps                  = MakeContext["Eps"];
-factoring := factoring      = MakeContext["Factoring"];
+factoring := factoring      = MakeContext["CoreOptions","Factoring"];
 factor2 := factor2          = MakeContext["Factor2"];
 freeq2 := freeq2            = MakeContext["FreeQ2"];
 LorentzIndex:= LorentzIndex = MakeContext["LorentzIndex"];

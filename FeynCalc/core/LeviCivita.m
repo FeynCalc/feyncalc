@@ -22,7 +22,9 @@ Eps[LorentzIndex[mu], LorentzIndex[nu], ..., Momentum[p], ...].";
 
 Begin["`Private`"];
 
-MakeContext[ Dimension, Eps, EpsEvaluate, FreeQ2, LorentzIndex, Momentum];
+Dimension = MakeContext["CoreOptions","Dimension"];
+
+MakeContext[ Eps, EpsEvaluate, FreeQ2, LorentzIndex, Momentum];
 
 LeviCivita[a__Integer] := Eps[a];
 

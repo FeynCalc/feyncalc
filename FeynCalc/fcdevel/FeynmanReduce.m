@@ -30,7 +30,7 @@ Begin["`Private`"];
 
 Integratedx = MakeContext["Integratedx"];
 DeltaFunction = MakeContext["DeltaFunction"];
-Dimension = MakeContext["Dimension"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 NumericQ1 = MakeContext["NumericQ1"];
 Pair = MakeContext["Pair"];
 

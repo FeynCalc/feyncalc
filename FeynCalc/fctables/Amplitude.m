@@ -23,21 +23,23 @@ Polarization -> 1 the polarized ones..";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Gauge = MakeContext["CoreOptions","Gauge"];
+QuarkMass = MakeContext["CoreOptions","QuarkMass"];
+ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 
 MakeContext[
 ChangeDimension,
 CF,
-Dimension,
 DiracGamma,
 DiracTrace,
 DiracSlash,
 DotSimplify,
-Expanding,
 Factor2,
 FeynAmpDenominatorCombine,
 FeynAmpDenominatorSimplify,
 GA,
-Gauge,
 GhostPropagator,
 GluonGhostVertex,
 GluonPropagator,
@@ -48,7 +50,6 @@ OPEDelta,
 Polarization,
 PolarizationVector,
 QuarkGluonVertex,
-QuarkMass,
 QuarkPropagator,
 Spinor,
 SUNDelta,
@@ -58,7 +59,6 @@ SUNTrace,
 Tf,
 Twist2GluonOperator,
 Twist2QuarkOperator,
-ZeroMomentumInsertion
 ];
 
 Options[Amplitude] = {Dimension->D,

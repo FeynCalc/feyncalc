@@ -22,11 +22,11 @@ and accepts the options Factoring and FinalSubstitutions.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
-MakeContext[ Collect2, Expanding , Factor1,Factor2,
-             Factoring, FinalSubstitutions,Isolate, 
-             IsolateNames 
-           ];
+
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+
+MakeContext[Collect2, Expanding , Factor1,Factor2, Isolate, IsolateNames];
 
 Options[Solve2] = {Factoring -> Factor2, FinalSubstitutions -> {}};
 

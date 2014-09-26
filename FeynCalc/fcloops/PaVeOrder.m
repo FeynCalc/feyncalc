@@ -25,14 +25,10 @@ The lists may contain only a subsequence of the D0-variables.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[
-A0,B0,B1,B00,B11,
-C0, 
-D0,
-PaVeOrderList
-]; 
+PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
+
+MakeContext[ A0,B0,B1,B00,B11,C0,D0];
 small = MakeContext["SmallVariable"];
 
 

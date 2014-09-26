@@ -36,12 +36,12 @@ Begin["`Private`"];
 ccm                 = MakeContext["ChargeConjugationMatrix"];
 ccmi                = MakeContext["ChargeConjugationMatrixInv"];
 DiracGamma          = MakeContext["DiracGamma"];
-Expanding           = MakeContext["Expanding"];
+Expanding           = MakeContext["CoreOptions","Expanding"];
 DotSimplify         = MakeContext["DotSimplify"];
 fci                 = MakeContext["FeynCalcInternal"];
 FreeQ2              = MakeContext["FreeQ2"];
 Isolate             = MakeContext["Isolate"];
-IsolateNames         = MakeContext["IsolateNames"];
+IsolateNames         = MakeContext["CoreOptions","IsolateNames"];
 IsolateSplit        = MakeContext["IsolateSplit"];
 LorentzIndex        = MakeContext["LorentzIndex"];
 (*ComplexIndex        = MakeContext["ComplexIndex"];*)

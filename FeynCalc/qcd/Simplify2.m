@@ -18,10 +18,11 @@ Simplify2::"usage"= "Simplify2 is a special ordering function.";
 
 Begin["`Private`"];
    
+Factoring = MakeContext["CoreOptions","Factoring"];
 
-MakeContext["CA","CF", "Collect2", "DeltaFunction",
-            "Epsilon", "Factoring", "Tf", "PlusDistribution",
-            "Select1", "Select2"];
+MakeContext[CA, CF, Collect2, DeltaFunction,
+            Epsilon, Tf, PlusDistribution,
+            Select1, Select2];
 
 Simplify2[y_] := Block[{t1,t2,t3,null1, null2, cct, col,min},
 col =  Collect2[##, Factoring->False];

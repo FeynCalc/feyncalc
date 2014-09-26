@@ -30,7 +30,7 @@ MakeContext[ ChargeConjugationMatrix];
 
 MakeContext[ DiracGamma, DiracGammaT];
 
-expanding := expanding = MakeContext["Expanding"];
+expanding := expanding = MakeContext["CoreOptions","Expanding"];
 fci  := fci =            MakeContext["FeynCalcInternal"];
 
 MakeContext[ FreeQ2, Pair, SUNT];

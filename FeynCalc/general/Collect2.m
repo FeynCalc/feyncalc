@@ -31,11 +31,12 @@ option Expanding can be set to False.";
 
 Begin["`Private`"]
 
-   
+Factoring = MakeContext["CoreOptions","Factoring"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 
 MakeContext[ Combine, Expanding ,
-Expand2, Factor2, Factoring, FeynCalcForm, FreeQ2,
-Isolate, IsolateNames, ComplexConjugate];
+Expand2, Factor2, FeynCalcForm, FreeQ2,
+Isolate, ComplexConjugate];
 
 Options[Collect2] = {Denominator -> False,
                      Dot -> False,

@@ -21,12 +21,14 @@ OPEDelta. Dimension -> Automatic leaves dimensions unchanged.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[Cases2, Dimension, 
-            DimensionalReduction,
+Dimension = MakeContext["CoreOptions","Dimension"];
+DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+
+MakeContext[Cases2,
             DiracSlash,
-            DiracGamma, DotSimplify, Eps, Expanding, 
+            DiracGamma, DotSimplify, Eps,
             FeynCalcInternal, FourVector, FreeQ2, 
             LeviCivita, LorentzIndex, Momentum, OPEDelta, Pair,
             PropagatorDenominator,

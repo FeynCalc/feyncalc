@@ -24,18 +24,20 @@ QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+Loop = MakeContext["CoreOptions","Loop"];
 
 MakeContext[Abbreviation,
             CF,
             CounterT,
             CounterTerm,
-            CouplingConstant,
             DeclareNonCommutative,
-            Dimension, DiracGamma,Epsilon,
+            DiracGamma,Epsilon,
             Explicit,
             FeynAmpDenominator,
-            Gstrong, Loop,
+            Gstrong,
             Momentum, MomentumExpand, OPE, Pair,
             Polarization,
             PropagatorDenominator,

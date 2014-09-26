@@ -27,13 +27,13 @@ SMVertex[\"HHH\", ___] give the three-higgs coupling.
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+Gauge = MakeContext["CoreOptions","Gauge"];
 
 MakeContext[
 ChangeDimension,
-Dimension,
 Explicit,
 FourVector,
-Gauge,
 LorentzIndex,
 MetricTensor,
 Momentum,

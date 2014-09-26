@@ -36,7 +36,7 @@ diracgamma      := diracgamma      = MakeContext["DiracGamma"];
 diracmatrix     := diracmatrix     = MakeContext["DiracMatrix"];
 diracslash      := diracslash      = MakeContext["DiracSlash"];
 diractrace      := diractrace      = MakeContext["DiracTrace"];
-dimension       := dimension       = MakeContext["Dimension"];
+dimension       := dimension       = MakeContext["CoreOptions","Dimension"];
 FAD             := FAD             = MakeContext["FAD"];
 factor2         := factor2         = MakeContext["Factor2"];
 fourvector      := fourvector      = MakeContext["FourVector"];
@@ -59,7 +59,7 @@ feynampdenominator := feynampdenominator = MakeContext[
 propagatordenominator := propagatordenominator =
                                      MakeContext["PropagatorDenominator"];
 scalarproduct   := scalarproduct   = MakeContext["ScalarProduct"];
-FinalSubstitutions = FinalSubstitutions = MakeContext["FinalSubstitutions"];
+FinalSubstitutions = FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 FVD := FVD = MakeContext["FVD"];
 FV := FV = MakeContext["FV"];
 SP             := SP             = MakeContext["SP"];

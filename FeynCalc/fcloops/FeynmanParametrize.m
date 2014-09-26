@@ -20,12 +20,12 @@ all one-loop integrals in exp (k = integration momentum).";
 
 Begin["`Private`"];
 
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 
 MakeContext[
 ExpandScalarProduct,
 FeynAmpDenominatorCombine,
 FeynAmpDenominator,
-FeynmanParameterNames,
 FeynCalcInternal,
 Integratedx,
 Momentum,

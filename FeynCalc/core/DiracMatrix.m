@@ -13,8 +13,9 @@ indices m1, m2, etc. DiracMatrix[5] is gamma5.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
-MakeContext[ DeclareNonCommutative, Dimension, DiracGamma, LorentzIndex,
+MakeContext[ DeclareNonCommutative, DiracGamma, LorentzIndex,
              ExplicitLorentzIndex];
 
 fci  := fci = MakeContext["FeynCalcInternal"];

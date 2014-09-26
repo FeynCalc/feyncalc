@@ -37,17 +37,17 @@ inside OPEIntegrateDelta.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 MakeContext[
 FCPrint,
 ChangeDimension,
 Collect2,
 DeltaFunction,
-Dimension,
 Epsilon,
-EpsilonOrder,
 Factor2,
-FinalSubstitutions,
 Integrate2,
 ScaleMu,
 PlusDistribution,

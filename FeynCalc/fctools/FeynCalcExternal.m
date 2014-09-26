@@ -32,7 +32,7 @@ Begin["`Private`"];
 FCE = FeynCalcExternal;
 
 
-FinalSubstitutions= FinalSubstitutions = MakeContext["FinalSubstitutions"];
+FinalSubstitutions= FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 Cases2  = MakeContext["Cases2"];
 chiralityprojector := chiralityprojector = 
@@ -42,7 +42,7 @@ diracgamma      := diracgamma      = MakeContext["DiracGamma"];
 diracmatrix     := diracmatrix     = MakeContext["DiracMatrix"];
 diracslash      := diracslash      = MakeContext["DiracSlash"];
 diractrace      := diractrace      = MakeContext["DiracTrace"];
-dimension       := dimension       = MakeContext["Dimension"];
+dimension       := dimension       = MakeContext["CoreOptions","Dimension"];
 Eps             := Eps             = MakeContext["Eps"];
 factor2         := factor2         = MakeContext["Factor2"];
 FAD             := FAD             = MakeContext["FAD"];

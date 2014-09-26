@@ -41,12 +41,13 @@ the color indices are omitted in the arguments of Twist2GluonOperator.";
 
 Begin["`Private`"];
    
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 
 MakeContext[
 ChangeDimension,
 Collect2,
-CouplingConstant,
-Dimension,
 Eps,
 EpsEvaluate,
 ExpandScalarProduct,
@@ -78,8 +79,7 @@ SD,
 SP,
 SUNDelta,
 SUNF,
-SUNIndex,
-ZeroMomentumInsertion
+SUNIndex
 ];
 
 Options[Twist2GluonOperator] = 

@@ -34,19 +34,28 @@ not too long (LeafCount[ ] < 5000 ) expressions.
 
 Begin["`Private`"];
 
+DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
+Mandelstam = MakeContext["CoreOptions","Mandelstam"];
+PairCollect = MakeContext["CoreOptions","PairCollect"];
+TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
+
 MakeContext[ FCPrint, Contract, Collect2, DiracCanonical, DiracGamma,
 DiracGammaCombine, DiracGammaExpand, DiracGammaT, DiracOrder,
-DiracSigmaExplicit, DiracSimplify, DiracTrick, DiracTraceEvaluate];
+DiracSigmaExplicit, DiracSimplify, DiracTrick];
 
-MakeContext[ DotSimplify, Eps, EpsEvaluate, Factor2, EpsContract,
-Expanding, Expand2, Factoring, FeynCalcInternal, FeynCalcExternal,
-FreeQ2, InsideDiracTrace, LeviCivitaSign, LorentzIndex, Mandelstam,
-MemSet, Momentum, Pair, PairContract, PairCollect, PartitHead, SUNT ];
+MakeContext[ DotSimplify, Eps, EpsEvaluate, Factor2,
+Expand2, FeynCalcInternal, FeynCalcExternal,
+FreeQ2, InsideDiracTrace, LorentzIndex,
+MemSet, Momentum, Pair, PairContract, PartitHead, SUNT ];
 
 sCO := sCO = MakeContext["PairContract"];
 
 MakeContext[ ExpandScalarProduct, Schouten,
-Spinor, (*SUNSimplify, SUNT,*) TR, TraceOfOne, TrickMandelstam];
+Spinor, (*SUNSimplify, SUNT,*) TR, TrickMandelstam];
 
 scev[a__] := scev[a] = ExpandScalarProduct[a];
 

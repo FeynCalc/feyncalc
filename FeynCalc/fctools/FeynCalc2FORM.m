@@ -33,6 +33,7 @@ If set to 4: trace, if set to n: tracen.";
 
 Begin["`Private`"];
 
+EpsDiscard = MakeContext["CoreOptions","EpsDiscard"];
 
 MakeContext[
 Cases2,
@@ -40,7 +41,6 @@ DiracGamma,
 DiracGammaExpand,
 DiracTrace,
 Eps,
-EpsDiscard,
 ExpandScalarProduct,
 FeynCalcInternal,
 LorentzIndex,

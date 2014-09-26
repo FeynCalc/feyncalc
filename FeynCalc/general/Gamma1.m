@@ -19,8 +19,9 @@ Gamma functions expanded up to order Epsilon^2.";
 
 Begin["`Private`"];
    
+EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
 
-MakeContext[Epsilon, EpsilonOrder, Zeta2];
+MakeContext[Epsilon, Zeta2];
 
 Options[Gamma1] = {EpsilonOrder -> 2};
 

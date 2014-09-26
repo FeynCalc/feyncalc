@@ -24,31 +24,33 @@ the integration momenta in amplitude must be named q1 and q2.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+IntegralTable = MakeContext["CoreOptions","IntegralTable"];
+SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
 
 MakeContext[
 FCPrint,
 Cases2,
 ChangeDimension, Collect2, 
-Contract, Dimension, 
+Contract,
 DiracOrder,
 DiracSimplify,
 DiracTrace,
 Eps,
-EpsContract,
 EpsEvaluate,
 Expand2,
-Expanding, 
 ExpandScalarProduct,
 Explicit,
 FC2RHI,
-Factoring,
 FCIntegral,
 FeynAmpDenominator,
 FeynAmpDenominatorCombine, FeynAmpDenominatorSimplify, 
 FeynCalcInternal,
 FeynCalcExternal, 
 GluonVertex,
-IntegralTable,
 Isolate,
 IsolateSplit,
 LorentzIndex,
@@ -71,7 +73,7 @@ Select1,
 Select2,
 SPD,
 SOD,
-SUNFToTraces, SUNSimplify, SUNTrace, 
+SUNSimplify, SUNTrace,
 ToLarin,
 Tf,
 Tr2, 

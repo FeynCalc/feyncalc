@@ -31,13 +31,14 @@ i.e., evtl. you may have to use FeynCalcInternal on result.";
 
 Begin["`Private`"];
 
+Factoring = MakeContext["CoreOptions","Factoring"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 MakeContext[FCPrint, Chisholm, Collect2, Contract];
 
 MakeContext[ DiracBasis, DiracGamma, DiracMatrix, DiracOrder,
 DiracSigma, DiracSigmaExplicit, DiracSimplify, DiracSubstitute67,
-Eps, Factor2, Factoring, FinalSubstitutions,
-FCE, FCI, LorentzIndex, Pair, Rename];
+Eps, Factor2, FCE, FCI, LorentzIndex, Pair, Rename];
 
 Options[DiracReduce] = {Factoring -> False,
                         FinalSubstitutions -> {DiracBasis -> Identity}

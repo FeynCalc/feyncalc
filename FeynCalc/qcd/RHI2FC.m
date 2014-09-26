@@ -22,10 +22,10 @@ RHI-integrals in FeynAmpDenominator form to the 2-loop OPE-integrals.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
-Dimension,
 Factor2,
 FeynCalcForm,
 FeynAmpDenominator,

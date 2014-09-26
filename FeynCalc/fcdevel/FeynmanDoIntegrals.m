@@ -38,16 +38,16 @@ may be given and are passed on to these.";
 Begin["`Private`"];
 
 Integratedx = MakeContext["Integratedx"];
-Dimension = MakeContext["Dimension"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 NumericQ1 = MakeContext["NumericQ1"];
 Epsilon = MakeContext["Epsilon"];
-FCIntegrate = MakeContext["FCIntegrate"];
-FCNIntegrate = MakeContext["FCNIntegrate"];
+FCIntegrate = MakeContext["CoreOptions","FCIntegrate"];
+FCNIntegrate = MakeContext["CoreOptions","FCNIntegrate"];
 TimedIntegrate = MakeContext["TimedIntegrate"];
 DeltaFunction = MakeContext["DeltaFunction"];
 Isolate = MakeContext["Isolate"];
 SelectSplit = MakeContext["SelectSplit"];
-EpsilonOrder= MakeContext["EpsilonOrder"];
+EpsilonOrder= MakeContext["CoreOptions","EpsilonOrder"];
 
 
 

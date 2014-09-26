@@ -41,13 +41,14 @@ operator is returned.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Dimension = MakeContext["CoreOptions","Dimension"];
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
+ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 
 MakeContext[
 ChangeDimension,
-CouplingConstant,
 DeclareNonCommutative,
-Dimension,
 DiracGamma,
 Explicit,
 FV,
@@ -68,8 +69,7 @@ Polarization,
 SO,
 SP,
 SUNIndex,
-SUNT,
-ZeroMomentumInsertion];
+SUNT];
 
 DeclareNonCommutative[Twist2QuarkOperator];
 

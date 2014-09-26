@@ -25,8 +25,9 @@ sums in the denominator.";
 
 Begin["`Private`"];
    
+Expanding = MakeContext["CoreOptions","Expanding"];
 
- MakeContext[FCPrint, Expanding];
+MakeContext[FCPrint];
 
 Options[Combine] = {Expanding -> False };
 

@@ -22,10 +22,10 @@ with respect to mu and nu.";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
 Collect2,
-Dimension,
 LorentzIndex,
 Momentum,
 OPEDelta,

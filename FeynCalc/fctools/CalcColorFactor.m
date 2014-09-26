@@ -28,6 +28,7 @@ CalcColorFactor[x_] := If[FreeQ2[FeynCalcInternal[x], SUNIndex],
 Begin["`Private`"];
 
 SetAttributes[CalcColorFactor, Listable]; 
+SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
 
 MakeContext[
 DiracGamma,
@@ -36,7 +37,6 @@ Explicit,
 FeynCalcInternal,
 FreeQ2,
 SUNIndex,
-SUNNToCACF,
 SUNSimplify
 ]
 

@@ -23,10 +23,10 @@ be recovered by RHO[i, mu, nu, p].";
 
 Begin["`Private`"];
    
+Dimension = MakeContext["CoreOptions","Dimension"];
 
 MakeContext[
 ChangeDimension,
-Dimension,
 FeynCalcInternal,
 FourVector,
 MetricTensor,

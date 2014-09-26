@@ -74,6 +74,10 @@ choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";
 
 Begin["`Private`"];
 
+EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+
 MakeContext[ FCPrint, Collect2, Contract, DiracOrder,
 DiracEquation, DiracGamma, DiracGammaCombine, DiracGammaExpand,
 DiracMatrix, DiracOrder, DiracSigmaExplicit, DiracSlash,
@@ -84,13 +88,11 @@ dR  := dR   = MakeContext["DiracTrick"];
 Eps := Eps  = MakeContext["Eps"];
 fcinte := fcinte = MakeContext["FeynCalcInternal"];
 
-MakeContext[ DotSimplify, EpsContract, Expanding, Expand2,
-Factor2, FreeQ2, Factoring,
-LorentzIndex, MemSet, 
+MakeContext[ DotSimplify, Expand2,
+Factor2, FreeQ2, LorentzIndex, MemSet,
 (*RM20110830: This Momentum next line was missing,i.e., all functions below
 having an explicit Momentum in them were *not* applied (like sirlin2, etc. ) *)
-Momentum, 
-NonCommFreeQ ];
+Momentum, NonCommFreeQ ];
 
 sCO := sCO   = MakeContext["PairContract"];
 scev := scev = MakeContext["ExpandScalarProduct"];

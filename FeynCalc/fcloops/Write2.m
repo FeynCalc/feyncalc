@@ -50,7 +50,7 @@ Begin["`Private`"];
 
 
 D0Convention             = MakeContext["D0Convention"];
-finalsubstitutions       = MakeContext["FinalSubstitutions"];
+finalsubstitutions       = MakeContext["CoreOptions","FinalSubstitutions"];
 a0  :=  a0               = MakeContext["A0"];
 b0  :=  b0               = MakeContext["B0"];
 b1  :=  b1               = MakeContext["B1"];

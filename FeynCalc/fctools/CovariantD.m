@@ -45,10 +45,11 @@ dummy summation index. If set to Automatic, unique indices are generated."
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 
 MakeContext[
- CouplingConstant, DeclareNonCommutative, DotSimplify,
+ DeclareNonCommutative, DotSimplify,
  Explicit, FeynCalcInternal, GaugeField, Gstrong, LorentzIndex, 
  Momentum, NumericalFactor,OPEDelta, OPEi, OPEj, OPEk, 
  OPEl, OPESum, 

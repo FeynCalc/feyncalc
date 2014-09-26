@@ -47,7 +47,7 @@ fcpa := fcpa = MakeContext["Pair"];
 fcscp := fcscp = MakeContext["ScalarProduct"];
 fcprd := fcprd = MakeContext["PropagatorDenominator"];
 fcmomexp := fcmomexp = MakeContext["MomentumExpand"];
-fcdim := fcdim = MakeContext["Dimension"];
+fcdim := fcdim = MakeContext["CoreOptions","Dimension"];
 fcli := fcli = MakeContext["LorentzIndex"];
 fcmt := fcmt = MakeContext["MetricTensor"];
 fcfad := fcfad = MakeContext["FeynAmpDenominator"];
@@ -60,7 +60,7 @@ fcchiralp := fcchiralp = MakeContext["ChiralityProjector"];
 fcspi := fcspi = MakeContext["Spinor"];
 fads := fads = MakeContext["DiracSpinor"];
 fcdtr := fcdtr = MakeContext["DiracTrace"];
-fcdtrev := fcdtrev = MakeContext["DiracTraceEvaluate"];
+fcdtrev := fcdtrev = MakeContext["CoreOptions","DiracTraceEvaluate"];
 fcmomc := fcmomc = MakeContext["MomentumCombine"];
 (*fccombs := fccombs = MakeContext["CombinationLists"];*)
 fccombs := fccombs = MakeFeynCalcPrivateContext["CombinationLists"];
@@ -112,7 +112,7 @@ fains := fains = HighEnergyPhysics`FeynArts`Insertions;
 fatop := fatop = HighEnergyPhysics`FeynArts`Topology;
 fagr := fagr = HighEnergyPhysics`FeynArts`Graph;
 (*faloop := faloop = HighEnergyPhysics`FeynArts`FALoop;*)
-faloop := faloop = MakeContext["Loop"];
+faloop := faloop = MakeContext["CoreOptions","Loop"];
 faprop := faprop = HighEnergyPhysics`FeynArts`Propagator;
 (*fadsl := fadsl = Global`FADiracSlash;*)
 fadsl := fadsl = MakeContext["DiracSlash"];

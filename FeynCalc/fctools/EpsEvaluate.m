@@ -23,7 +23,9 @@ linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
 
 Begin["`Private`"];
 
-MakeContext[ Cases2, Eps , Expanding,
+Expanding = MakeContext["CoreOptions","Expanding"];
+
+MakeContext[ Cases2, Eps,
 ExpandScalarProduct, FeynCalcInternal, LC, LCD, LorentzIndex, Momentum, Pair, PairContract,
 LorentzIndex, ExplicitLorentzIndex];
 

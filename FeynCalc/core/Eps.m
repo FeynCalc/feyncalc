@@ -20,7 +20,7 @@ As alternative input LeviCivita[mu,nu, ...][p,q,...] can be used.";
 Begin["`Private`"];
 
 MakeContext[ChangeDimension];
-dimension := dimension = MakeContext["Dimension"];
+dimension := dimension = MakeContext["CoreOptions","Dimension"];
 lor   := lor = MakeContext["LorentzIndex"];
 (*Added ExplicitLorentzIndex. 21/9-2002. F.Orellana*)
 exlor   := exlor = MakeContext["ExplicitLorentzIndex"];

@@ -12,7 +12,7 @@ PolarizationVector::"usage" =
 
 Begin["`Private`"];
 
-dimension := dimension   = MakeContext["Dimension"];
+dimension := dimension   = MakeContext["CoreOptions","Dimension"];
 fci := fci               = MakeContext["FeynCalcInternal"];
 fourvector := fourvector = MakeContext["FourVector"];
 polarization := polarization = MakeContext["Polarization"];

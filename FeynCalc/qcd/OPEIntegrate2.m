@@ -20,18 +20,25 @@ Only the residue is calculated.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+Collecting = MakeContext["CoreOptions","Collecting"];
+Dimension = MakeContext["CoreOptions","Dimension"];
+Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring = MakeContext["CoreOptions","Factoring"];
+FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
+FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
+IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 
 MakeContext[FCPrint, Uncontract,
-            Cases2, ChangeDimension, Collect2, Collecting, 
-            Contract, Dimension, DiracTrick,
+            Cases2, ChangeDimension, Collect2,
+            Contract, DiracTrick,
             DotSimplify, Eps, Epsilon, EpsEvaluate,Expand2,
-            Expanding, ExpandScalarProduct, 
+            ExpandScalarProduct,
             FeynAmpDenominatorSimplify, Factor2,
-            Factoring, FeynCalcExternal, FeynCalcForm,
-            FeynCalcInternal, FeynmanParametrize, FeynmanParameterNames,
-            FinalSubstitutions, FRH, Integrate2, Integrate3,
-            Integratedx, Isolate, IsolateNames, IsolateSplit,
+            FeynCalcExternal, FeynCalcForm,
+            FeynCalcInternal, FeynmanParametrize,
+            FRH, Integrate2, Integrate3,
+            Integratedx, Isolate, IsolateSplit,
             LorentzIndex, Momentum, OPEm, OPEl,OPEDelta,OPESum,
             Pair, FourDivergence, Power2, PowerSimplify,
             Select1, Select2, Series2, Sn,          

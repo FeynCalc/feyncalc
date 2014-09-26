@@ -14,8 +14,9 @@ option Dimension->d.";
 Begin["`Private`"];
 
 fci:= fci = MakeContext["FeynCalcInternal"];
+Dimension = MakeContext["CoreOptions","Dimension"];
 
-MakeContext[Dimension, LorentzIndex, Pair];
+MakeContext[LorentzIndex, Pair];
 
 Options[MetricTensor] = {Dimension -> 4, fci -> True};
 
