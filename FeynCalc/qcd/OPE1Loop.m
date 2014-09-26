@@ -35,7 +35,7 @@ FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 InitialSubstitutions = MakeContext["CoreOptions","InitialSubstitutions"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-MakeContext["Contract", "Contract3"];
+Contract3 = MakeContext["Contract", "Contract3"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 OPE = MakeContext["CoreObjects","OPE"];
 Pair = MakeContext["CoreObjects","Pair"];

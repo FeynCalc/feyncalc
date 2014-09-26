@@ -33,14 +33,13 @@ Epsilon = MakeContext["CoreObjects","Epsilon"];
 FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 Gstrong = MakeContext["CoreObjects","Gstrong"];
 Loop = MakeContext["CoreOptions","Loop"];
-MakeContext["Twist2QuarkOperator"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 OPE = MakeContext["CoreObjects","OPE"];
 Pair = MakeContext["CoreObjects","Pair"];
 Polarization = MakeContext["CoreObjects","Polarization"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 ScaleMu = MakeContext["CoreObjects","ScaleMu"];
-Twist2QuarkOperator := Twist2QuarkOperator =
+Twist2QuarkOperator := Twist2QuarkOperator = MakeContext["Twist2QuarkOperator"];
 
 MakeContext[
     Abbreviation,

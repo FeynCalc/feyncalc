@@ -44,7 +44,6 @@ Dimension = MakeContext["CoreOptions","Dimension"];
 Gauge = MakeContext["CoreOptions","Gauge"];
 Gstrong = MakeContext["CoreObjects","Gstrong"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-MakeContext["Twist2GluonOperator"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 OPE := OPE = MakeContext["CoreObjects","OPE"];
 Pair = MakeContext["CoreObjects","Pair"];
@@ -52,7 +51,7 @@ PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 SUNDelta = MakeContext["CoreObjects","SUNDelta"];
 SUNF = MakeContext["CoreObjects","SUNF"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
-Twist2GluonOperator := Twist2GluonOperator =
+Twist2GluonOperator := Twist2GluonOperator = MakeContext["Twist2GluonOperator"];
 
 MakeContext[ Explicit, MomentumCombine];
 

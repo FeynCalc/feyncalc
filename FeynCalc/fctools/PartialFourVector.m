@@ -12,17 +12,17 @@
 
 BeginPackage["HighEnergyPhysics`fctools`PartialFourVector`",{"HighEnergyPhysics`FeynCalc`"}];
 
-PartialFourVector::"usage" = 
-"PartialFourVector[exp, FourVector[p, mu]] 
+PartialFourVector::"usage" =
+"PartialFourVector[exp, FourVector[p, mu]]
 calculates the partial derivative of exp w.r.t. p(mu).
-PartialFourVector[exp, FourVector[p, mu], FourVector[p,nu], ...] 
+PartialFourVector[exp, FourVector[p, mu], FourVector[p,nu], ...]
 gives the multiple derivative.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
- 
+
+
 Contract     = MakeContext["Contract"];
 DiracGamma   = MakeContext["CoreObjects","DiracGamma"];
 Eps          = MakeContext["CoreObjects","Eps"];
@@ -37,23 +37,22 @@ Momentum     = MakeContext["CoreObjects","Momentum"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
 EpsEvaluate  := EpsEvaluate = MakeContext["EpsEvaluate"];
-ScalarProductCancel := ScalarProductCancel = 
-MakeContext["ScalarProductCancel"];
+ScalarProductCancel := ScalarProductCancel = MakeContext["ScalarProductCancel"];
 TLI    = MakeContext["TLI"];
 TLI2FC = MakeContext["TLI2FC"];
 FC2TLI := FC2TLI = MakeContext["FC2TLI"];
 
-PartialFourVector[x_,a_,b__] := 
+PartialFourVector[x_,a_,b__] :=
  PartialFourVector[PartialFourVector[x, a], b];
-  
+
 PartialFourVector[x_, fv_] := Block[
 {nx = x /. DiracGamma -> diga,ve=fci[fv],p,mu,gpa,cont, tliflag = False},
 If[!FreeQ[nx, TLI], nx = TLI2FC[nx]; tliflag = True];
 nx = fci[nx];
 ve = MomentumCombine[ve];
-p  = Select[ve, Head[#] === Momentum&][[1]]; 
+p  = Select[ve, Head[#] === Momentum&][[1]];
 If[!FreeQ[p,Plus], nx = MomentumCombine[nx]];
-mu = Select[ve, Head[#] === LorentzIndex&][[1]]; 
+mu = Select[ve, Head[#] === LorentzIndex&][[1]];
 
 If[!FreeQ[nx, FeynAmpDenominator],
    nx = FeynAmpDenominatorSplit[nx]
@@ -70,7 +69,7 @@ nx = nx /. (deriv[1][FeynAmpDenominator][_]) :> 1 /.
             ),
             deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
             deriv[0, 1][Pair][a_, p] :> Pair[a, mu] ,
- deriv[1][diga][p] :> DiracGamma[mu] , 
+ deriv[1][diga][p] :> DiracGamma[mu] ,
             deriv[1,0,0,0][Eps][p,c__] :>
           Eps[mu,c] ,
             deriv[0,1,0,0][Eps][a_,p,c__] :>

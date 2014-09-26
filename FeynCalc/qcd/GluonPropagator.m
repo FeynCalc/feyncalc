@@ -65,8 +65,7 @@ SUNDeltaContract,
 Sn
  ];
 
-Twist2GluonOperator := Twist2GluonOperator =
-MakeContext["Twist2GluonOperator"];
+Twist2GluonOperator := Twist2GluonOperator = MakeContext["Twist2GluonOperator"];
 
 Options[GluonPropagator] = {
 CounterTerm -> False,

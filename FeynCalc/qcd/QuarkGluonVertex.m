@@ -39,12 +39,11 @@ DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 Gstrong = MakeContext["CoreObjects","Gstrong"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-MakeContext["Twist2QuarkOperator"];
 OPE = MakeContext["CoreObjects","OPE"];
 Polarization = MakeContext["CoreObjects","Polarization"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 SUNT = MakeContext["CoreObjects","SUNT"];
-Twist2QuarkOperator := Twist2QuarkOperator =
+Twist2QuarkOperator := Twist2QuarkOperator = MakeContext["Twist2QuarkOperator"];
 
 MakeContext[ CounterTerm, DeclareNonCommutative, Explicit, Sn];
 

@@ -38,7 +38,7 @@ fci  := fci =            MakeContext["FeynCalcInternal"];
 memset := memset = MakeContext["MemSet"];
 noncommQ := noncommQ = MakeContext["NonCommFreeQ"];
 sCO := sCO          = MakeContext["PairContract"];
-spinor := spinor = MakeContext["CoreOptions","Spinor"];
+spinor := spinor = MakeContext["CoreObjects","Spinor"];
 
 MakeContext[ FreeQ2, ChargeConjugationMatrix ];
 
