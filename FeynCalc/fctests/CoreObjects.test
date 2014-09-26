@@ -1,0 +1,813 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: CoreObjects.test *)
+
+(* This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for the properties of the    *)
+(*            basic FeynCalc objects                                        *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+
+
+
+
+fcstCoreObjectsDownValues = {
+
+ {"fcstCoreObjectsDownValues-ID1", "DownValues[AntiQuarkField]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID2", "DownValues[CA]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID3", "DownValues[CF]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID4", "DownValues[ChiralityProjector]", "{HoldPattern[ChiralityProjector[-1]] :> DiracGamma[7], HoldPattern[ChiralityProjector[1]] :> DiracGamma[6]}"},
+
+ {"fcstCoreObjectsDownValues-ID5", "DownValues[DeltaFunction]", "{HoldPattern[DeltaFunction[0]] :> 1, \n\n \n  HoldPattern[DeltaFunction[_?(NumericQ[#1] === True && (Positive[#1] === True || Negative[#1] === True) & )]] :> 0}"},
+
+ {"fcstCoreObjectsDownValues-ID6", "DownValues[DeltaFunctionDoublePrime]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID7", "DownValues[DeltaFunctionPrime]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID8", "DownValues[DiracGamma]", "{HoldPattern[DiracGamma[]] :> 1,
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pe_,
+      HighEnergyPhysics`FeynCalc`CoreObjects`Private`di___]*
+     (HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_),
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii___]] :>
+  HighEnergyPhysics`FeynCalc`CoreObjects`Private`x*
+   DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pe,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pe_,
+      HighEnergyPhysics`FeynCalc`CoreObjects`Private`di___]*
+     (HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_),
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii___]] :>
+  HighEnergyPhysics`FeynCalc`CoreObjects`Private`x*
+   DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pe,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii],
+ HoldPattern[DiracGamma[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_)[
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di___], 4]] :>
+  DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x[
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di]],
+ HoldPattern[DiracGamma[5, __]] :> DiracGamma[5], HoldPattern[DiracGamma[6, __]] :>
+  DiracGamma[6], HoldPattern[DiracGamma[7, __]] :> DiracGamma[7],
+ HoldPattern[DiracGamma[_, 0]] :> 0,
+ HoldPattern[DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_Plus]] :>
+  DiracGamma /@ HighEnergyPhysics`FeynCalc`CoreObjects`Private`a,
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___]]] :>
+  DOT[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy]],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`z__]] :>
+  DOT[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+   DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`z]],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___]]] :>
+  DOT[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy]],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`z__]] :>
+  DOT[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+   DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`z]],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___]]] :>
+  DOT[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy]],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`z__]] :>
+  DOT[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+   DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`z]],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___]]] :>
+  DOT[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy]],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix___],
+    LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy___],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`z__]] :>
+  DOT[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`dix],
+   DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`diy],
+   DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`z]],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_],
+    -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)]] :> 0,
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_],
+    -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)]] :> 0,
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)]]] :> 0,
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)]]] :> 0,
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_],
+    -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)]] :>
+  DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+   HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_],
+    -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)]] :>
+  DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+   HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol]] :>
+  DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+   HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     -4 + (HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol)],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol]] :>
+  DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+   HighEnergyPhysics`FeynCalc`CoreObjects`Private`di - 4],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_],
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol]] :>
+  DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_]*
+     (HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_.),
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol]] :>
+  HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*
+    DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]] /;
+   NumberQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`n],
+ HoldPattern[DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol]]] :>
+  DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]],
+ HoldPattern[DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,
+     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_Symbol]]] :>
+  DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]]}"},
+
+ {"fcstCoreObjectsDownValues-ID9", "DownValues[DiracGammaT]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID10", "DownValues[DiracMatrix]", "{HoldPattern[DiracMatrix[(HighEnergyPhysics`fctools`FeynCalcInternal`Private`y_)*(HighEnergyPhysics`fctools`FeynCalcInternal`Private`n_)\\\n \n  ?\n      NumberQ, {}]] :>\\\n \n  \
+HighEnergyPhysics`fctools`FeynCalcInternal`Private`n*HighEnergyPhysics`fctools`FeynCalcInternal`Private`diracM[\n   \\\n \n  HighEnergyPhysics`fctools`FeynCalcInternal`Private`y], \n\\\n \n  \
+HoldPattern[DiracMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_Integer]] :> \n \\\n \n  DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a], \n\\\n \n  HoldPattern[DiracMatrix[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_) . \
+(HighEnergyPhysics`FeynCalc`CoreObjects`Private`b__), \n \\\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule]] :> \n  (DiracGamma[LorentzIndex[#1,\\\n \n  HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n        \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /.\\\n \n  Options[DiracMatrix]], \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /.\\\n \n  {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. \n      Options[DiracMatrix]] & ) /@\\\n \n  \
+DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n\n \n  HoldPattern[DiracMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule]] \
+:> \n\n \n   DiracGamma[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. \n\n \n       Options[DiracMatrix]], \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n       {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[DiracMatrix]] /; \n\n \n    Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a] =!= Integer}"},
+
+ {"fcstCoreObjectsDownValues-ID11", "DownValues[DiracSigma]", "{HoldPattern[DiracSigma[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_) . (HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_)]] :> \n\n \n   DiracSigma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n\n \n  HoldPattern[DiracSigma[___, 0, ___]] :> 0, \n\n \n  HoldPattern[DiracSigma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_]] :> \n\n \n   \
+-DiracSigma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, HighEnergyPhysics`FeynCalc`CoreObjects`Private`a] /; \n\n \n     !OrderedQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}], \n\n \n  \
+HoldPattern[DiracSigma[DiracMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_]]] :> \n\n \n   -DiracSigma[DiracMatrix[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]] /; \n\n \n     !OrderedQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}], \n\n \n  \
+HoldPattern[DiracSigma[DiracSlash[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_]]] :> \n\n \n   -DiracSigma[DiracSlash[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]] /; \n\n \n     !OrderedQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}], \n\n \n  \
+HoldPattern[DiracSigma[DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b__]*\n\n \n      (HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_), DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`d__]*\n\n \n      \
+(HighEnergyPhysics`FeynCalc`CoreObjects`Private`c_.)]] :> HighEnergyPhysics`FeynCalc`CoreObjects`Private`a*\n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`c*DiracSigma[DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n\n \n     \
+DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`d]], \n\n \n  HoldPattern[DiracSigma[DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b__]*\n\n \n      (HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_.), \
+DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`d__]*\n\n \n      (HighEnergyPhysics`FeynCalc`CoreObjects`Private`c_)]] :> HighEnergyPhysics`FeynCalc`CoreObjects`Private`a*\n\n \n    \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`c*DiracSigma[DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n\n \n     DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`d]]}"},
+
+ {"fcstCoreObjectsDownValues-ID12", "DownValues[DiracSlash]", "{HoldPattern[DiracSlash[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_) . (HighEnergyPhysics`FeynCalc`CoreObjects`Private`b__)*\n\n \n      (HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule)]] \
+:> \n\n \n   (DiracGamma[LorentzIndex[#1, HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n         {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[DiracSlash]], \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. \n\n \n       Options[DiracSlash]] & ) /@ DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n \
+HoldPattern[DiracSlash[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule]] :> \n\n \n   DiracGamma[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n        {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[DiracSlash]], \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. \n\n \n      Options[DiracSlash]] /; (FCI /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[DiracSlash]) === True, \n\n \n  \
+HoldPattern[DiracSlash[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a__, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule]] :> \n\n \n   DOT @@ (DiracGamma[Momentum[#1, HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n          \
+ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[DiracSlash]], \n\n \n        HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. \n\n \n         Options[DiracSlash]] & ) /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a} /; \n\n \n    (FCI /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[DiracSlash]) === True}"},
+
+ {"fcstCoreObjectsDownValues-ID13", "DownValues[DiracSpinor]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID14", "DownValues[Eps]", "{HoldPattern[Eps[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a__Symbol, HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru___Rule]] :>\\\n \n  \n  \
+Signature[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a}]*Eps @@ Sort[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a}] /; \n\n \n    Signature[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a}] =!= 1, \n\n \n  \
+HoldPattern[Eps[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`a__)?(MatchQ[#1, _Integer | ExplicitLorentzIndex[_Integer]] & ), \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru___Rule]] :> Signature[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a}], \
+\n\n \n  HoldPattern[Eps[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a___, (HighEnergyPhysics`FeynCalc`CoreObjects`Private`n1_.)*\n\n \n      (LorentzIndex | ExplicitLorentzIndex)[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu_, ___], \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`b___, (HighEnergyPhysics`FeynCalc`CoreObjects`Private`n2_.)*\n\n \n      (LorentzIndex | ExplicitLorentzIndex)[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu_, ___], \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`c___]] :> \n\n \n   0 /; NumberQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`n1*HighEnergyPhysics`FeynCalc`CoreObjects`Private`n2], \n\n \n  HoldPattern[Eps[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a___, \
+Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu_,\\\n \n  ___]*\n     (HighEnergyPhysics`FeynCalc`CoreObjects`Private`n1_.), HighEnergyPhysics`FeynCalc`CoreObjects`Private`b___, \n\n \n     Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu_, \
+___]*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n2_.), \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`c___]] :> \n\n \n   0 /; NumberQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`n1*HighEnergyPhysics`FeynCalc`CoreObjects`Private`n2], \n\n \n  \
+HoldPattern[Eps[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x__]] :> \n\n \n   0 /;  !FreeQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x}, LorentzIndex[_, _Symbol - 4]] || \n\n \n      !FreeQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x}, Momentum[_, \
+_Symbol - 4]], \n\n \n  HoldPattern[Eps[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a___, LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu_, \n\n \n      _Symbol], HighEnergyPhysics`FeynCalc`CoreObjects`Private`b___, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru___Rule]] :> \n\n \n   Eps @@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu], \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru} /; \n\n \n    (HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru} /. Options[Eps])\\\n \n  === \n    4, \
+HoldPattern[Eps[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a___,\\\n \n  Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu_, \n     _Symbol], HighEnergyPhysics`FeynCalc`CoreObjects`Private`b___,\\\n \n  \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru___Rule]] :> \n  Eps @@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`a,\\\n \n  Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`mu], \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`b,\\\n \n  \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru} /; \n   (HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /.\\\n \n  {HighEnergyPhysics`FeynCalc`CoreObjects`Private`ru} /. Options[Eps]) === \n    4}"},
+
+ {"fcstCoreObjectsDownValues-ID15", "DownValues[Epsilon]", "{}"},
+ {"fcstCoreObjectsDownValues-ID16", "DownValues[ExplicitLorentzIndex]", "{}"},
+ {"fcstCoreObjectsDownValues-ID17", "DownValues[ExplicitSUNIndex]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID18", "DownValues[FAD]", "{HoldPattern[FAD[-(HighEnergyPhysics`FeynCalc`CoreObjects`Private`p_)]] :> FAD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p]}"},
+ {"fcstCoreObjectsDownValues-ID19", "DownValues[FeynAmp]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID20", "DownValues[FeynAmpDenominator]",
+  "{HoldPattern[FeynAmpDenominator[HighEnergyPhysics`FeynCalc`CoreObjects`Private`ar__List]] :> \n\n \n   (FeynAmpDenominator[HighEnergyPhysics`FeynCalc`CoreObjects`Private`ar] = FCI[FAD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`ar]])}"},
+
+ {"fcstCoreObjectsDownValues-ID21", "DownValues[FeynAmpList]", "{}"},
+ {"fcstCoreObjectsDownValues-ID22", "DownValues[FourVector]", "{HoldPattern[FourVector[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_, \n\n \n    \
+ HighEnergyPhysics`FeynCalc`CoreObjects`Private`c___Rule]] :> \n\n \n   Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n        {HighEnergyPhysics`FeynCalc`CoreObjects`Private`c} /. \
+Options[FourVector]], \n\n \n     LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n        {HighEnergyPhysics`FeynCalc`CoreObjects`Private`c} /. Options[FourVector]]] /; \n\n \n    \
+FreeQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}, Momentum] && \n\n \n     FreeQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}, LorentzIndex] && \n\n \n    \
+ (FCI /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`c} /. Options[FourVector]) === True}"},
+ {"fcstCoreObjectsDownValues-ID23", "DownValues[FV]", "{HoldPattern[FV[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p_ /; \
+Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p] =!= \n\n \n       Momentum, Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_]]] :> SP[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n \
+HoldPattern[FV[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p_], \n\n \n     Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_]]] :> SP[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`b]}"}\
+,
+ {"fcstCoreObjectsDownValues-ID24", "DownValues[FVD]", "{}"},
+ {"fcstCoreObjectsDownValues-ID25", "DownValues[GA]", "{HoldPattern[GA[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_) . (HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__)]] :> \n\n \n   GA /@ \
+DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y], \n\n \n  HoldPattern[GA[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__]] :> \n\n \n   DOT @@ GA /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+ {"fcstCoreObjectsDownValues-ID26", "DownValues[GA5]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID27", "DownValues[GAD]", "{HoldPattern[GAD[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_) . (HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__)]] :> \n\n \n   GAD /@ DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y], \n\n \n  HoldPattern[GAD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__]] :> \n\n \n   DOT @@ GAD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+ {"fcstCoreObjectsDownValues-ID28", "DownValues[GaugeField]", "{}"},
+ {"fcstCoreObjectsDownValues-ID29", "DownValues[GS]", "{HoldPattern[GS[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_) . \
+(HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__)]] :> \n\n \n   GS /@ DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y], \n\n \n  HoldPattern[GS[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__]] :> \n\n \n   DOT @@ GS /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+
+ {"fcstCoreObjectsDownValues-ID30", "DownValues[GSD]", "{HoldPattern[GSD[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_) . (HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__)]] :> \n\n \n   GSD /@ DOT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y], \n\n \n  HoldPattern[GSD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__]] :> \n\n \n   DOT @@ GSD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+ {"fcstCoreObjectsDownValues-ID31", "DownValues[Gstrong]", "{}"},
+ {"fcstCoreObjectsDownValues-ID32", "DownValues[IFPD]", "{HoldPattern[IFPD[Momentum[OPEDelta, ___], 0]] :> 0}"},
+
+ {"fcstCoreObjectsDownValues-ID33", "DownValues[Integratedx]", "{}"},
+ {"fcstCoreObjectsDownValues-ID34", "DownValues[LC]", "{}"},
+ {"fcstCoreObjectsDownValues-ID35", "DownValues[LCD]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID36", "DownValues[LeftPartialD]", "{HoldPattern[LeftPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx__]] :> \n\n \n   LeftPartialD @@ LorentzIndex /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx} /; \n\n \n    \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`FreeQ2[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}, \n\n \n      {LorentzIndex, Momentum, HighEnergyPhysics`FeynCalc`CoreObjects`Private`OPEDelta, RowBox, Pattern, Blank}] && \n\n \n     \
+Union[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}] =!= {1}, HoldPattern[LeftPartialD[(1)..]] :> 1, \n\n \n  HoldPattern[LeftPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`c:OPEDelta..]] :> \n\n \n   LeftPartialD @@ Momentum /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`c}, \n\n \n  HoldPattern[LeftPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_LorentzIndex, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__LorentzIndex]] :> \n\n \n   DOT @@ LeftPartialD /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}, \n\n \n  HoldPattern[LeftPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Momentum, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__Momentum]] \
+:> \n\n \n   DOT @@ LeftPartialD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+
+ {"fcstCoreObjectsDownValues-ID37", "DownValues[LeftRightPartialD]", "{HoldPattern[LeftRightPartialD[HighEnergyPhysics`FeynCalc`\
+CoreObjects`Private`xx__]] :> \n\n \n   LeftRightPartialD @@ LorentzIndex /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx} /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`FreeQ2[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}, \n\n \n      \
+{LorentzIndex, Momentum, HighEnergyPhysics`FeynCalc`CoreObjects`Private`OPEDelta, RowBox, Pattern, Blank}] && \n\n \n     Union[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}] =!= {1}, HoldPattern[LeftRightPartialD[(1)..]] :> 1, \n\n \n  \
+HoldPattern[LeftRightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`c:OPEDelta..]] :> \n\n \n   LeftRightPartialD @@ Momentum /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`c}, \n\n \n  \
+HoldPattern[LeftRightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_LorentzIndex, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__LorentzIndex]] :> \n\n \n   DOT @@ LeftRightPartialD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}, \n\n \n  HoldPattern[LeftRightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Momentum, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__Momentum]] :> \n\n \n   DOT @@ LeftRightPartialD /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+
+ {"fcstCoreObjectsDownValues-ID38", "DownValues[LeftRightPartialD2]", "{HoldPattern[LeftRightPartialD2[HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx__]] :> \n\n \
+\n   LeftRightPartialD2 @@ LorentzIndex /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx} /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`FreeQ2[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}, \n\n \n      {LorentzIndex, Momentum, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`OPEDelta, RowBox, Pattern, Blank}] && \n\n \n     Union[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}] =!= {1}, HoldPattern[LeftRightPartialD2[(1)..]] :> 1, \n\n \n  \
+HoldPattern[LeftRightPartialD2[HighEnergyPhysics`FeynCalc`CoreObjects`Private`c:OPEDelta..]] :> \n\n \n   LeftRightPartialD2 @@ Momentum /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`c}, \n\n \n  \
+HoldPattern[LeftRightPartialD2[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_LorentzIndex, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__LorentzIndex]] :> \n\n \n   DOT @@ LeftRightPartialD2 /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}, \n\n \n  HoldPattern[LeftRightPartialD2[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Momentum, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__Momentum]] :> \n\n \n   DOT @@ LeftRightPartialD2 /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}, \n\n \n  HoldPattern[LeftRightPartialD2[Momentum[OPEDelta]^(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_Integer)?Positive]] :> \n\n \n   DOT @@ \
+LeftRightPartialD2 /@ Table[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`OPEDelta], \n\n \n      {HighEnergyPhysics`FeynCalc`CoreObjects`Private`n}]}"},
+
+ {"fcstCoreObjectsDownValues-ID39", "DownValues[LorentzIndex]", "{HoldPattern[LorentzIndex[Momentum[OPEDelta]^(HighEnergyPhysics`qcd`OPEDelta`Private`p_.)]] :> \n\n \n   \
+HighEnergyPhysics`qcd`OPEDelta`Private`Momentum[OPEDelta]^HighEnergyPhysics`qcd`OPEDelta`Private`p, \n\n \n  HoldPattern[LorentzIndex[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`in_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`d___], \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`d___]] :> \n\n \n   LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`in, HighEnergyPhysics`FeynCalc`CoreObjects`Private`d], \n\n \n  HoldPattern[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, \
+4]] :> \n\n \n   (LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, 4] = LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]),\\\n \n  \n HoldPattern[LorentzIndex[_, 0]] :> 0, \
+HoldPattern[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`in_Integer, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dim___]] :> ExplicitLorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`in, \n\n \n    \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`dim]}"},
+
+ {"fcstCoreObjectsDownValues-ID40", "DownValues[Lower]", "{}"},
+ {"fcstCoreObjectsDownValues-ID41", "DownValues[MetricTensor]", "{HoldPattern[MetricTensor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule]] :> \n\n \n   Pair[LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \
+\n       HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension -> (HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n          {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[MetricTensor])], \n\n \n     \
+LorentzIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n       HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension -> (HighEnergyPhysics`FeynCalc`CoreObjects`Private`Dimension /. \n\n \n    \
+      {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[MetricTensor])]] /; \n\n \n    (FCI /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. Options[MetricTensor]) === True}"},
+
+ {"fcstCoreObjectsDownValues-ID42", "DownValues[Momentum]", "{HoldPattern[Momentum[GaugeXi[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_]*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_), \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`dim___]] :> \
+GaugeXi[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y]*\n\n \n    Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`dim], \n\n \n  \
+HoldPattern[Momentum[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_)*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_)?NumberQ, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`di___]] :> HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*\n\n \n    \
+Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`di], \n\n \n  HoldPattern[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, 4]] :> \n\n \n   Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x], \
+\n\n \n  HoldPattern[Momentum[0, HighEnergyPhysics`FeynCalc`CoreObjects`Private`in___]] :> 0, HoldPattern[Momentum[_, 0]] :> 0, \n\n \n  HoldPattern[Momentum[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_,\\\n \n  \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`di___], \n    ___]] :> Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,\\\n \n  HighEnergyPhysics`FeynCalc`CoreObjects`Private`di]}"},
+
+ {"fcstCoreObjectsDownValues-ID43", "DownValues[MT]", "{HoldPattern[MT[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_], \n\n \n     Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_]]] :> SP[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \
+\n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`b], \n HoldPattern[MT[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, D], \n\n \n     Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_, D]]] :> \
+SPD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`b]}"},
+ {"fcstCoreObjectsDownValues-ID44", "DownValues[MTD]", "{}"},
+ {"fcstCoreObjectsDownValues-ID45", "DownValues[NegativeInteger]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID46", "DownValues[Nf]", "{}"},
+ {"fcstCoreObjectsDownValues-ID47", "DownValues[Pair]", "{HoldPattern[Pair[Momentum[OPEDelta, ___], Momentum[OPEDelta, ___]]] :> 0, HoldPattern[Pair[0, _]] :> 0, \n\n \n  \
+HoldPattern[Pair[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_Integer)*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_), \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_]] :> HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*\n\n \n    \
+Pair[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y], \n\n \n  HoldPattern[Pair[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_)*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Momentum), \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_]] :> HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*\n\n \n    Pair[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y], \n\n \n  \
+HoldPattern[Pair[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`lom_)[HighEnergyPhysics`FeynCalc`CoreObjects`Private`la_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`d_Symbol], (HighEnergyPhysics`FeynCalc`CoreObjects`Private`mol_)[\n\n \n      \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`pe_]]] :> \n\n \n   Pair[HighEnergyPhysics`FeynCalc`CoreObjects`Private`lom[HighEnergyPhysics`FeynCalc`CoreObjects`Private`la], \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`mol[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pe]] /; \n\n \n    MemberQ[{LorentzIndex, Momentum}, HighEnergyPhysics`FeynCalc`CoreObjects`Private`lom] && \n\n \n     MemberQ[{LorentzIndex, Momentum}, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`mol], \n\n \n  HoldPattern[Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, ___], \n\n \n     Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, ___], ___]]] :> 0, \n\n \n  \
+HoldPattern[Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, ___], \n\n \n     Momentum[Polarization[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_)*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_)?\n\n \n         NumberQ, ___], ___]]] :> 0, \
+HoldPattern[Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pi_, ___], \n\n \n     Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Plus, HighEnergyPhysics`FeynCalc`CoreObjects`Private`ki___],\\\n \n  \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii___]]] :> \n\n \n   HighEnergyPhysics`FeynCalc`CoreObjects`Private`Contract[HighEnergyPhysics`FeynCalc`CoreObjects`Private`ExpandScalarProduct[\n\n \n      Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x \
++ HighEnergyPhysics`FeynCalc`CoreObjects`Private`pi, \n\n \n        HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii], Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n         HighEnergyPhysics`FeynCalc`CoreObjects`Private`ki], \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii]]]] /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`pi + Last[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x] === 0, \n\n \n  \
+HoldPattern[Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pi_, ___], \n\n \n     Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Plus, HighEnergyPhysics`FeynCalc`CoreObjects`Private`ki___],\\\n \n  \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii___]]] :> \n\n \n   HighEnergyPhysics`FeynCalc`CoreObjects`Private`Contract[HighEnergyPhysics`FeynCalc`CoreObjects`Private`ExpandScalarProduct[\n\n \n      \
+Pair[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`pi - HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n        HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii], Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n      \
+   HighEnergyPhysics`FeynCalc`CoreObjects`Private`ki], HighEnergyPhysics`FeynCalc`CoreObjects`Private`dii]]]] /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`pi - Last[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x] === 0, \n\n \n  \
+HoldPattern[Pair[Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, __], ___], \n\n \n     Momentum[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, __], ___]]] :> -1}"},
+
+ {"fcstCoreObjectsDownValues-ID48", "DownValues[PartialD]", "{HoldPattern[PartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx__]] :> \n\n \n   PartialD @@ LorentzIndex /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx} /; \n\n \n    \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`FreeQ2[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}, \n\n \n      {LorentzIndex, Momentum, HighEnergyPhysics`FeynCalc`CoreObjects`Private`OPEDelta, RowBox, Pattern, Blank}] && \n\n \n     \
+Union[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}] =!= {1}, HoldPattern[PartialD[(1)..]] :> 1, \n\n \n  HoldPattern[PartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`c:OPEDelta..]] :> \n\n \n   PartialD @@ Momentum /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`c}, \n\n \n  HoldPattern[PartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_LorentzIndex, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__LorentzIndex]] :> \n\n \n   DOT @@ PartialD /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}, \n\n \n  HoldPattern[PartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Momentum, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__Momentum]] :> \
+\n\n \n   DOT @@ PartialD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+ {"fcstCoreObjectsDownValues-ID49", "DownValues[PauliSigma]",
+  "List[RuleDelayed[HoldPattern[PauliSigma[]],List[List[List[0,1],List[1,0]],List[List[0,Complex[0,-1]],List[Complex[0,1],0]],List[List[1,0],List[0,-1]]]],RuleDelayed[HoldPattern[PauliSigma[1]],List[List[0,1],List[1,0]]],RuleDelayed[HoldPattern[PauliSigma[2]],List[List[0,Complex[0,-1]],List[Complex[0,1],0]]],RuleDelayed[HoldPattern[PauliSigma[3]],List[List[1,0],List[0,-1]]]]"},
+
+ {"fcstCoreObjectsDownValues-ID50", "DownValues[Polarization]", "List[RuleDelayed[HoldPattern[Condition[Polarization[Pattern[HighEnergyPhysics`FeynCalc`CoreObjects`Private`k,Blank[]]],FreeQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`k,Alternatives[Blank,BlankSequence,BlankNullSequence]]]],Set[Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`k],Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`k,\[ImaginaryI]]]],RuleDelayed[HoldPattern[Polarization[Times[-1,Pattern[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,Blank[]]],Complex[0,1]]],Times[-1,Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,\[ImaginaryI]]]],RuleDelayed[HoldPattern[Polarization[Times[-1,Pattern[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,Blank[]]],Complex[0,-1]]],Times[-1,Polarization[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x,Times[-1,\[ImaginaryI]]]]]]"},
+
+ {"fcstCoreObjectsDownValues-ID51", "DownValues[PolarizationVector]", "{HoldPattern[PolarizationVector[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, {HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_, \n\n \n      \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`z_}]] :> PolarizationVector[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`y, HighEnergyPhysics`FeynCalc`CoreObjects`Private`z], \n\n \n  \
+HoldPattern[PolarizationVector[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x__]] :> \n\n \n   (PolarizationVector[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x] = HighEnergyPhysics`FeynCalc`CoreObjects`Private`polVec[\n\n \n      \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]) /; FreeQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x}, Pattern] && \n\n \n     (Length[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x}] === 2 || AtomQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x}[[\n\n \
+\n        1]]] || Head[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x}[[-1]] === SUNIndex])}"},
+ {"fcstCoreObjectsDownValues-ID52", "DownValues[PlusDistribution]", "{HoldPattern[PlusDistribution[Log[(1 - (HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_))*\n\n \n   \
+     (HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_)]/(1 - (HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_))]] :> \n\n \n   Log[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]/(1 - HighEnergyPhysics`FeynCalc`CoreObjects`Private`x) + \n\n \n    \
+PlusDistribution[Log[1 - HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]/(1 - HighEnergyPhysics`FeynCalc`CoreObjects`Private`x)]}"},
+ {"fcstCoreObjectsDownValues-ID53", "DownValues[PropagatorDenominator]", "{HoldPattern[PropagatorDenominator[HighEnergyPhysics`FeynCal\
+c`CoreObjects`Private`a_ /; \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`FreeQ2[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n       {BlankNullSequence, Pattern}]]] :> PropagatorDenominator[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \
+0]}"},
+ {"fcstCoreObjectsDownValues-ID54", "DownValues[False]", "{}"},
+ {"fcstCoreObjectsDownValues-ID55", "DownValues[QuantumField]", "{HoldPattern[QuantumField[HighEnergyPhysics`FeynCalc`CoreObjects`Private`f___, HighEnergyPhysics`FeynCalc`CoreObjects`Private`g_ /; \
+\n\n \n      Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`g] =!= List, {HighEnergyPhysics`FeynCalc`CoreObjects`Private`lilo___}]] :> \n\n \n   QuantumField @@ Join[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`f, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`g}, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`lori /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`lilo}], \n\n \n  HoldPattern[QuantumField[HighEnergyPhysics`FeynCalc`CoreObjects`Private`f___, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`g_ /; \n\n \n      Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`g] =!= List, {HighEnergyPhysics`FeynCalc`CoreObjects`Private`lilo___}, \n\n \n     {HighEnergyPhysics`FeynCalc`CoreObjects`Private`suli___}]] :> \n\n \
+\n   QuantumField @@ Join[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`f, HighEnergyPhysics`FeynCalc`CoreObjects`Private`g}, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`lori /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`lilo}, \n\n \n     \
+SUNIndex /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`suli}], \n\n \n  HoldPattern[QuantumField[HighEnergyPhysics`FeynCalc`CoreObjects`Private`f1_QuantumField]] :> \n\n \n   HighEnergyPhysics`FeynCalc`CoreObjects`Private`f1}"},
+
+ {"fcstCoreObjectsDownValues-ID56", "DownValues[QuarkField]", "{}"},
+ {"fcstCoreObjectsDownValues-ID57", "DownValues[RightPartialD]", "{HoldPattern[RightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx__]] :> \n\n \n   RightPartialD @@ LorentzIndex /@ \
+{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx} /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`FreeQ2[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}, \n\n \n      {LorentzIndex, Momentum, HighEnergyPhysics`FeynCalc`CoreObjects`Private`OPEDelta, \
+RowBox, Pattern, Blank}] && \n\n \n     Union[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`xx}] =!= {1}, HoldPattern[RightPartialD[(1)..]] :> 1, \n\n \n  HoldPattern[RightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`c:OPEDelta..]] :> \n\n \n   \
+RightPartialD @@ Momentum /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`c}, \n\n \n  HoldPattern[RightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_LorentzIndex, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__LorentzIndex]] :> \n\n \n   \
+DOT @@ RightPartialD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}, \n\n \n  HoldPattern[RightPartialD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_Momentum, \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y__Momentum]] :> \n\n \n   DOT @@ RightPartialD /@ {HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}}"},
+ {"fcstCoreObjectsDownValues-ID58", "DownValues[ScaleMu]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID59", "DownValues[OPE]", "{}"},
+ {"fcstCoreObjectsDownValues-ID60", "DownValues[SD]", "{}"},
+ {"fcstCoreObjectsDownValues-ID61", "DownValues[SmallDelta]", "{}"},
+ {"fcstCoreObjectsDownValues-ID62", "DownValues[SmallEpsilon]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID63", "DownValues[SmallVariable]", "{HoldPattern[SmallVariable[0]] :> 0, \n HoldPattern[SmallVariable[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_)^\n\n \n      (HighEnergyPhysics`FeynCalc`CoreObjects`Private`pow_)]] :> \
+SmallVariable[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x]^\n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`pow}"},
+ {"fcstCoreObjectsDownValues-ID64", "DownValues[SO]", "{}"},
+ {"fcstCoreObjectsDownValues-ID65", "DownValues[SOD]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID66", "DownValues[SP]", "{HoldPattern[SP[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_]] :> SP[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]}"},
+
+ {"fcstCoreObjectsDownValues-ID67", "DownValues[SPD]", "{HoldPattern[SPD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_]] :> SPD[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]}"},
+
+ {"fcstCoreObjectsDownValues-ID68", "DownValues[Spinor]", "{HoldPattern[HoldPattern[Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a__, {1}]]] :> \n\n \n   Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a], \n\n \n  \
+HoldPattern[Spinor[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_.)*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_) /; \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`frp[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x] && \n\n \n       \
+FreeQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, Momentum], HighEnergyPhysics`FeynCalc`CoreObjects`Private`y___ /; \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`frp[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y]]] :> \n\n \n   \
+(Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`y] = Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*\n\n \n       \
+Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x], HighEnergyPhysics`FeynCalc`CoreObjects`Private`y]) /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`frp[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`n, \n\n \n       \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}] && \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`n^2 === 1, \n\n \n  HoldPattern[Spinor[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_], \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`m_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`op___]] :> \n\n \n   Spinor[Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x], \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`m, \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`op], \n\n \n  HoldPattern[Spinor[-Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`di_], \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`m_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`op___]] :> \n\n \n   Spinor[-Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x], HighEnergyPhysics`FeynCalc`CoreObjects`Private`m, \n\n \n    \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`op], \n HoldPattern[Spinor[(HighEnergyPhysics`FeynCalc`CoreObjects`Private`kk_.) + \n\n \n      Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_Plus]*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`n_.), \n\n \n \
+    HighEnergyPhysics`FeynCalc`CoreObjects`Private`m_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`y___]] :> \n\n \n   (Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`kk + HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*\n\n \n       \
+Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a], HighEnergyPhysics`FeynCalc`CoreObjects`Private`m, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`y] = Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`MomentumExpand[\n\n \n      \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`kk + HighEnergyPhysics`FeynCalc`CoreObjects`Private`n*\n\n \n        Momentum[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]], HighEnergyPhysics`FeynCalc`CoreObjects`Private`m, \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y]), \n\n \n  HoldPattern[Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p_, (_.)*SmallVariable[_], \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`in___]] :> \
+Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p, 0, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`in] /; HighEnergyPhysics`FeynCalc`CoreObjects`Private`frp[\n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`p], \
+HoldPattern[Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p_]] :> \n\n \n   Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p, 0, 1] /; HighEnergyPhysics`FeynCalc`CoreObjects`Private`frp[\n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`p], \n\n \
+\n  HoldPattern[Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`m_ /; \n\n \n      FreeQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`m, Pattern]]] :> \n\n \n   \
+Spinor[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p, HighEnergyPhysics`FeynCalc`CoreObjects`Private`m, 1] /; \n\n \n    HighEnergyPhysics`FeynCalc`CoreObjects`Private`frp[HighEnergyPhysics`FeynCalc`CoreObjects`Private`p]}"},
+
+ {"fcstCoreObjectsDownValues-ID69", "DownValues[SpinorU]", "{}"},
+ {"fcstCoreObjectsDownValues-ID70", "DownValues[SpinorUBar]", "{}"},
+ {"fcstCoreObjectsDownValues-ID71", "DownValues[SpinorV]", "{}"},
+ {"fcstCoreObjectsDownValues-ID72", "DownValues[SpinorVBar]", "{}"},
+
+ {"fcstCoreObjectsDownValues-ID73", "DownValues[SUND]", "{HoldPattern[SUND[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_SUNIndex, HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_SUNIndex, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_, ___Rule]] :> \
+\n\n \n   0 /; HighEnergyPhysics`FeynCalc`CoreObjects`Private`noint[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a], \n\n \n  HoldPattern[SUND[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b_, \n\n \n     \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`c_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt___Rule]] :> \n\n \n   2*HighEnergyPhysics`FeynCalc`CoreObjects`Private`SUNTrace[SUNT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \n\n \n        \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, HighEnergyPhysics`FeynCalc`CoreObjects`Private`c]] + \n\n \n     2*HighEnergyPhysics`FeynCalc`CoreObjects`Private`SUNTrace[SUNT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, \n\n \n        \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`c]] /; \n\n \n    (HighEnergyPhysics`FeynCalc`CoreObjects`Private`Explicit /. {HighEnergyPhysics`FeynCalc`CoreObjects`Private`opt} /. \n\n \n      Options[SUND]) === \
+True}"},
+ {"fcstCoreObjectsDownValues-ID74", "DownValues[SUNDelta]", "{}"},
+ {"fcstCoreObjectsDownValues-ID75", "DownValues[SUNF]", "{HoldPattern[HoldPattern[SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a___, HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, \
+\n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`b___, HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`c___, ___Rule]]] :> \n\n \n   0 /; Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x] \
+=== SUNIndex && FreeQ[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n      Pattern] && Length[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n        \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`b, HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n        HighEnergyPhysics`FeynCalc`CoreObjects`Private`c}] == 3, \n\n \n  HoldPattern[HoldPattern[SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a___, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`x_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`y_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b___, ___Rule]]] :> \n\n \n   -SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b] /; \n\n \n    FreeQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n       HighEnergyPhysics`FeynCalc`CoreObjects`Private`y, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}, Pattern] && \n\n \n     Length[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`a, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \n\n \n        HighEnergyPhysics`FeynCalc`CoreObjects`Private`y, HighEnergyPhysics`FeynCalc`CoreObjects`Private`b}] === 3 && \n\n \n      !OrderedQ[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`x, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`y}] && \n\n \n     Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`x] === SUNIndex && Head[HighEnergyPhysics`FeynCalc`CoreObjects`Private`y] === \n\n \n      SUNIndex, \
+HoldPattern[SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`j_, \n\n \n     HighEnergyPhysics`FeynCalc`CoreObjects`Private`k_, Explicit -> False]] :> SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i, \n\n \n  \
+  HighEnergyPhysics`FeynCalc`CoreObjects`Private`j, HighEnergyPhysics`FeynCalc`CoreObjects`Private`k], \n\n \n  HoldPattern[HoldPattern[SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`j_, \n\n \n      \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`k_, (HighEnergyPhysics`FeynCalc`CoreObjects`Private`op___Rule) | \n\n \n       (HighEnergyPhysics`FeynCalc`CoreObjects`Private`op___List)]]] :> \n\n \n   \
+2*I*(HighEnergyPhysics`FeynCalc`CoreObjects`Private`SUNTrace[FCI[SUNT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i, \n\n \n         HighEnergyPhysics`FeynCalc`CoreObjects`Private`k, HighEnergyPhysics`FeynCalc`CoreObjects`Private`j]]] - \n\n \n      \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`SUNTrace[FCI[SUNT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i, \n\n \n         HighEnergyPhysics`FeynCalc`CoreObjects`Private`j, HighEnergyPhysics`FeynCalc`CoreObjects`Private`k]]]) /; \n\n \n    \
+(HighEnergyPhysics`FeynCalc`CoreObjects`Private`Explicit /. Flatten[Join[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`op}, \n\n \n        Options[SUNF]]]) === True, \n\n \n  HoldPattern[HoldPattern[SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i_, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`j_, \n\n \n      HighEnergyPhysics`FeynCalc`CoreObjects`Private`k_, HighEnergyPhysics`FeynCalc`CoreObjects`Private`l_, \n\n \n      (HighEnergyPhysics`FeynCalc`CoreObjects`Private`op___Rule) | \
+(HighEnergyPhysics`FeynCalc`CoreObjects`Private`op___List)]]] :> \n\n \n   With[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`sui = Unique[\"Global`s\"]}, \n\n \n     SUNF[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`j, \n\n \n       SUNIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`sui]]*SUNF[SUNIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`sui], \n\n \n       HighEnergyPhysics`FeynCalc`CoreObjects`Private`k, \
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`l]] /; \n\n \n    (HighEnergyPhysics`FeynCalc`CoreObjects`Private`Explicit /. Flatten[Join[{HighEnergyPhysics`FeynCalc`CoreObjects`Private`op}, \n\n \n        Options[SUNF]]]) === True}"},
+
+ {"fcstCoreObjectsDownValues-ID76", "DownValues[SUNIndex]", "{HoldPattern[SUNIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i_Integer]] :> \n\n \n   ExplicitSUNIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i]}"},
+
+ {"fcstCoreObjectsDownValues-ID77", "DownValues[SUNN]", "{}"},
+ {"fcstCoreObjectsDownValues-ID78", "DownValues[SUNT]", "{}"},
+ {"fcstCoreObjectsDownValues-ID79", "DownValues[Tf]", "{}"}};
+
+ (* ----------------------------------------------------------------------------------------------------------- *)
+ (* ----------------------------------------------------------------------------------------------------------- *)
+ (* ----------------------------------------------------------------------------------------------------------- *)
+
+ fcstCoreObjectsOwnValues =  {
+ {"fcstCoreObjectsOwnValues-ID1", "OwnValues[AntiQuarkField]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID2", "OwnValues[CA]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID3", "OwnValues[CF]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID4", "OwnValues[ChiralityProjector]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID5", "OwnValues[DeltaFunction]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID6", "OwnValues[DeltaFunctionDoublePrime]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID7", "OwnValues[DeltaFunctionPrime]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID8", "OwnValues[DiracGamma]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID9", "OwnValues[DiracGammaT]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID10", "OwnValues[DiracMatrix]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID11", "OwnValues[DiracSigma]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID12", "OwnValues[DiracSlash]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID13", "OwnValues[Spinor]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID14", "OwnValues[Eps]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID15", "OwnValues[Epsilon]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID16", "OwnValues[ExplicitLorentzIndex]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID17", "OwnValues[ExplicitSUNIndex]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID18", "OwnValues[FAD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID19", "OwnValues[FeynAmp]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID20", "OwnValues[FeynAmpDenominator]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID21", "OwnValues[FeynAmpList]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID22", "OwnValues[FourVector]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID23", "OwnValues[FV]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID24", "OwnValues[FVD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID25", "OwnValues[GA]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID26", "OwnValues[GA5]", "{HoldPattern[GA5] :> DiracGamma[5]}"},
+ {"fcstCoreObjectsOwnValues-ID27", "OwnValues[GAD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID28", "OwnValues[GaugeField]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID29", "OwnValues[GS]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID30", "OwnValues[GSD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID31", "OwnValues[Gstrong]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID32", "OwnValues[IFPD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID33", "OwnValues[Integratedx]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID34", "OwnValues[LC]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID35", "OwnValues[LCD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID36", "OwnValues[LeftPartialD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID37", "OwnValues[LeftRightPartialD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID38", "OwnValues[LeftRightPartialD2]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID39", "OwnValues[LorentzIndex]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID40", "OwnValues[Lower]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID41", "OwnValues[MetricTensor]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID42", "OwnValues[Momentum]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID43", "OwnValues[MT]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID44", "OwnValues[MTD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID45", "OwnValues[NegativeInteger]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID46", "OwnValues[Nf]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID47", "OwnValues[Pair]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID48", "OwnValues[PartialD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID49", "OwnValues[PauliSigma]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID50", "OwnValues[Polarization]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID51", "OwnValues[PolarizationVector]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID52", "OwnValues[PlusDistribution]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID53", "OwnValues[PropagatorDenominator]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID54", "OwnValues[False]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID55", "OwnValues[QuantumField]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID56", "OwnValues[QuarkField]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID57", "OwnValues[RightPartialD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID58", "OwnValues[ScaleMu]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID59", "OwnValues[OPE]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID60", "OwnValues[SD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID61", "OwnValues[SmallDelta]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID62", "OwnValues[SmallEpsilon]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID63", "OwnValues[SmallVariable]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID64", "OwnValues[SO]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID65", "OwnValues[SOD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID66", "OwnValues[SP]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID67", "OwnValues[SPD]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID68", "OwnValues[Spinor]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID69", "OwnValues[SpinorU]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID70", "OwnValues[SpinorUBar]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID71", "OwnValues[SpinorV]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID72", "OwnValues[SpinorVBar]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID73", "OwnValues[SUND]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID74", "OwnValues[SUNDelta]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID75", "OwnValues[SUNF]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID76", "OwnValues[SUNIndex]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID77", "OwnValues[SUNN]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID78", "OwnValues[SUNT]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID79", "OwnValues[Tf]", "{}"}};
+
+
+ (* ----------------------------------------------------------------------------------------------------------- *)
+ (* ----------------------------------------------------------------------------------------------------------- *)
+ (* ----------------------------------------------------------------------------------------------------------- *)
+
+fcstCoreObjectsUpValues = {
+ {"fcstCoreObjectsUpValues-ID1", "UpValues[AntiQuarkField]", "{}"},
+ {"fcstCoreObjectsUpValues-ID2", "UpValues[CA]", "{}"},
+ {"fcstCoreObjectsUpValues-ID3", "UpValues[CF]", "{}"},
+ {"fcstCoreObjectsUpValues-ID4", "UpValues[ChiralityProjector]", "{}"},
+ {"fcstCoreObjectsUpValues-ID5", "UpValues[DeltaFunction]", "{}"},
+ {"fcstCoreObjectsUpValues-ID6", "UpValues[DeltaFunctionDoublePrime]", "{}"},
+ {"fcstCoreObjectsUpValues-ID7", "UpValues[DeltaFunctionPrime]", "{}"},
+ {"fcstCoreObjectsUpValues-ID8", "UpValues[DiracGamma]", "{HoldPattern[Transpose[DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a__\
+]]] :> \n\n \n   DiracGammaT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]}"},
+ {"fcstCoreObjectsUpValues-ID9", "UpValues[DiracGammaT]", "{HoldPattern[Transpose[DiracGammaT[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a__]]] :> \n\n \n   \
+DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]}"},
+ {"fcstCoreObjectsUpValues-ID10", "UpValues[DiracMatrix]", "{}"},
+ {"fcstCoreObjectsUpValues-ID11", "UpValues[DiracSigma]", "{}"},
+ {"fcstCoreObjectsUpValues-ID12", "UpValues[DiracSlash]", "{}"},
+ {"fcstCoreObjectsUpValues-ID13", "UpValues[Spinor]", "{}"},
+ {"fcstCoreObjectsUpValues-ID14", "UpValues[Eps]", "{}"},
+ {"fcstCoreObjectsUpValues-ID15", "UpValues[Epsilon]", "{}"},
+ {"fcstCoreObjectsUpValues-ID16", "UpValues[ExplicitLorentzIndex]", "{}"},
+ {"fcstCoreObjectsUpValues-ID17", "UpValues[ExplicitSUNIndex]",
+  "{HoldPattern[SUNIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i_ExplicitSUNIndex]] :> \n\n \n   ExplicitSUNIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i]}"},
+ {"fcstCoreObjectsUpValues-ID18", "UpValues[FAD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID19", "UpValues[FeynAmp]", "{}"},
+ {"fcstCoreObjectsUpValues-ID20", "UpValues[FeynAmpDenominator]", "{}"},
+ {"fcstCoreObjectsUpValues-ID21", "UpValues[FeynAmpList]", "{}"},
+ {"fcstCoreObjectsUpValues-ID22", "UpValues[FourVector]", "{}"},
+ {"fcstCoreObjectsUpValues-ID23", "UpValues[FV]", "{}"},
+ {"fcstCoreObjectsUpValues-ID24", "UpValues[FVD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID25", "UpValues[GA]", "{}"},
+ {"fcstCoreObjectsUpValues-ID26", "UpValues[GA5]", "{}"},
+ {"fcstCoreObjectsUpValues-ID27", "UpValues[GAD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID28", "UpValues[GaugeField]", "{}"},
+ {"fcstCoreObjectsUpValues-ID29", "UpValues[GS]", "{}"},
+ {"fcstCoreObjectsUpValues-ID30", "UpValues[GSD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID31", "UpValues[Gstrong]", "{}"},
+ {"fcstCoreObjectsUpValues-ID32", "UpValues[IFPD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID33", "UpValues[Integratedx]", "{}"},
+ {"fcstCoreObjectsUpValues-ID34", "UpValues[LC]", "{}"},
+ {"fcstCoreObjectsUpValues-ID35", "UpValues[LCD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID36", "UpValues[LeftPartialD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID37", "UpValues[LeftRightPartialD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID38", "UpValues[LeftRightPartialD2]", "{}"},
+ {"fcstCoreObjectsUpValues-ID39", "UpValues[LorentzIndex]", "{}"},
+ {"fcstCoreObjectsUpValues-ID40", "UpValues[Lower]", "{}"},
+ {"fcstCoreObjectsUpValues-ID41", "UpValues[MetricTensor]", "{}"},
+ {"fcstCoreObjectsUpValues-ID42", "UpValues[Momentum]", "{}"},
+ {"fcstCoreObjectsUpValues-ID43", "UpValues[MT]", "{}"},
+ {"fcstCoreObjectsUpValues-ID44", "UpValues[MTD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID45", "UpValues[NegativeInteger]", "{}"},
+ {"fcstCoreObjectsUpValues-ID46", "UpValues[Nf]", "{}"},
+ {"fcstCoreObjectsUpValues-ID47", "UpValues[Pair]", "{}"},
+ {"fcstCoreObjectsUpValues-ID48", "UpValues[PartialD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID49", "UpValues[PauliSigma]", "{}"},
+ {"fcstCoreObjectsUpValues-ID50", "UpValues[Polarization]", "{}"},
+ {"fcstCoreObjectsUpValues-ID51", "UpValues[PolarizationVector]", "{}"},
+ {"fcstCoreObjectsUpValues-ID52", "UpValues[PlusDistribution]", "{}"},
+ {"fcstCoreObjectsUpValues-ID53", "UpValues[PropagatorDenominator]", "{}"},
+ {"fcstCoreObjectsUpValues-ID54", "UpValues[False]", "{}"},
+ {"fcstCoreObjectsUpValues-ID55", "UpValues[QuantumField]", "{}"},
+ {"fcstCoreObjectsUpValues-ID56", "UpValues[QuarkField]", "{}"},
+ {"fcstCoreObjectsUpValues-ID57", "UpValues[RightPartialD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID58", "UpValues[ScaleMu]", "{}"},
+ {"fcstCoreObjectsUpValues-ID59", "UpValues[OPE]", "{HoldPattern[OPE^_Integer?Positive] :> 0}"},
+ {"fcstCoreObjectsUpValues-ID60", "UpValues[SD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID61", "UpValues[SmallDelta]", "{}"},
+ {"fcstCoreObjectsUpValues-ID62", "UpValues[SmallEpsilon]", "{}"},
+ {"fcstCoreObjectsUpValues-ID63", "UpValues[SmallVariable]", "{}"},
+ {"fcstCoreObjectsUpValues-ID64", "UpValues[SO]", "{}"},
+ {"fcstCoreObjectsUpValues-ID65", "UpValues[SOD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID66", "UpValues[SP]", "{}"},
+ {"fcstCoreObjectsUpValues-ID67", "UpValues[SPD]", "{}"},
+ {"fcstCoreObjectsUpValues-ID68", "UpValues[Spinor]", "{}"},
+ {"fcstCoreObjectsUpValues-ID69", "UpValues[SpinorU]", "{}"},
+ {"fcstCoreObjectsUpValues-ID70", "UpValues[SpinorUBar]", "{}"},
+ {"fcstCoreObjectsUpValues-ID71", "UpValues[SpinorV]", "{}"},
+ {"fcstCoreObjectsUpValues-ID72", "UpValues[SpinorVBar]", "{}"},
+ {"fcstCoreObjectsUpValues-ID73", "UpValues[SUND]", "{}"},
+ {"fcstCoreObjectsUpValues-ID74", "UpValues[SUNDelta]", "{}"},
+ {"fcstCoreObjectsUpValues-ID75", "UpValues[SUNF]", "{}"},
+ {"fcstCoreObjectsUpValues-ID76", "UpValues[SUNIndex]", "{}"},
+ {"fcstCoreObjectsUpValues-ID77", "UpValues[SUNN]", "{}"},
+ {"fcstCoreObjectsUpValues-ID78", "UpValues[SUNT]", "{}"},
+ {"fcstCoreObjectsUpValues-ID79", "UpValues[Tf]", "{}"}}
+
+
+
+
+
+fcstCoreObjectsBehavior = {{"fcstCoreObjectsBehavior-ID1", "ChiralityProjector[1]", "DiracGamma[6]"}, {"fcstCoreObjectsBehavior-ID2", "ChiralityProjector[-1]", "DiracGamma[7]"},
+ {"fcstCoreObjectsBehavior-ID3", "DeltaFunction[0]", "1"}, {"fcstCoreObjectsBehavior-ID4", "DeltaFunction[x]", "DeltaFunction[x]"}, {"fcstCoreObjectsBehavior-ID5", "DeltaFunction[0.7]", "0"},
+ {"fcstCoreObjectsBehavior-ID6", "DeltaFunction[-0.3]", "0"}, {"fcstCoreObjectsBehavior-ID7", "Transpose[DiracGamma[x]]", "DiracGammaT[x]"}, {"fcstCoreObjectsBehavior-ID8", "DiracGamma[]", "1"},
+ {"fcstCoreObjectsBehavior-ID9", "DiracGamma[a*Momentum[p, D1], D2]", "a DiracGamma[Momentum[p, D1], D2]"}, {"fcstCoreObjectsBehavior-ID10", "DiracGamma[a LorentzIndex[mu, D1], D2]",
+  "a DiracGamma[LorentzIndex[mu, D1], D2]"}, {"fcstCoreObjectsBehavior-ID10.1","DiracGamma[func[p, D], 4]"," DiracGamma[func[p, D]]"}, {"fcstCoreObjectsBehavior-ID11", "DiracGamma[5, D]", "DiracGamma[5]"},
+ {"fcstCoreObjectsBehavior-ID12", "DiracGamma[6, D]", "DiracGamma[6]"}, {"fcstCoreObjectsBehavior-ID13", "DiracGamma[7, D]", "DiracGamma[7]"},
+ {"fcstCoreObjectsBehavior-ID14", "DiracGamma[x, 0]", "0"}, {"fcstCoreObjectsBehavior-ID15", "DiracGamma[a + b + c]", "DiracGamma[a] + DiracGamma[b] + DiracGamma[c]"},
+ {"fcstCoreObjectsBehavior-ID16", "DiracGamma[Momentum[p1, D1], Momentum[p2, D2]]", "DiracGamma[Momentum[p1, D1], D1].DiracGamma[Momentum[p2, D2], D2]"},
+ {"fcstCoreObjectsBehavior-ID17", "DiracGamma[Momentum[p1, D1], Momentum[p2, D2], LorentzIndex[mu]]",
+  "DiracGamma[Momentum[p1, D1], D1].DiracGamma[Momentum[p2, D2], D2].DiracGamma[LorentzIndex[mu]]"}, {"fcstCoreObjectsBehavior-ID18", "DiracGamma[LorentzIndex[p1, D1], LorentzIndex[p2, D2]]",
+  "DiracGamma[LorentzIndex[p1, D1], D1] . DiracGamma[LorentzIndex[p2, D2], D2]"}, {"fcstCoreObjectsBehavior-ID19", "DiracGamma[LorentzIndex[p1, D1], LorentzIndex[p2, D2], Momentum[p, 4]]",
+  "DiracGamma[LorentzIndex[p1, D1], D1].DiracGamma[LorentzIndex[p2, D2], D2].DiracGamma[Momentum[p]]"},
+   {"fcstCoreObjectsBehavior-ID20", "DiracGamma[LorentzIndex[p1, D1],Momentum[p2, D2]]", " DiracGamma[LorentzIndex[p1, D1], D1] . DiracGamma[Momentum[p2, D2], D2]"},
+ {"fcstCoreObjectsBehavior-ID21", "DiracGamma[LorentzIndex[p1, D1], Momentum[p2, D2], Momentum[p, 4]]",
+  "DiracGamma[LorentzIndex[p1, D1], D1] . DiracGamma[Momentum[p2, D2], D2] . DiracGamma[Momentum[p]]"}, {"fcstCoreObjectsBehavior-ID22", "DiracGamma[Momentum[p1, D1], LorentzIndex[p2, D2]]",
+  "DiracGamma[Momentum[p1, D1], D1] . DiracGamma[LorentzIndex[p2, D2], D2]"}, {"fcstCoreObjectsBehavior-ID23", "DiracGamma[Momentum[p1, D1], LorentzIndex[p2, D2], Momentum[p, 4]]",
+  "DiracGamma[Momentum[p1, D1], D1] . DiracGamma[LorentzIndex[p2, D2], D2] . DiracGamma[Momentum[p]]"}, {"fcstCoreObjectsBehavior-ID24", "DiracGamma[LorentzIndex[mu], D - 4]", "0"},
+ {"fcstCoreObjectsBehavior-ID25", "DiracGamma[Momentum[p], D - 4]", "0"}, {"fcstCoreObjectsBehavior-ID26", "DiracGamma[Momentum[p, D - 4]]", "0"},
+ {"fcstCoreObjectsBehavior-ID27", "DiracGamma[LorentzIndex[mu, D - 4]]", "0"}, {"fcstCoreObjectsBehavior-ID28", "DiracGamma[LorentzIndex[mu, D], D - 4]",
+  "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D]"}, {"fcstCoreObjectsBehavior-ID29", "DiracGamma[Momentum[p, D], D - 4]", " DiracGamma[Momentum[p, -4 + D], -4 + D]"},
+ {"fcstCoreObjectsBehavior-ID30", "DiracGamma[LorentzIndex[mu, D - 4], D]", "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D]"},
+ {"fcstCoreObjectsBehavior-ID31", "DiracGamma[Momentum[p, D - 4], D]", "DiracGamma[Momentum[p, -4 + D], -4 + D]"}, {"fcstCoreObjectsBehavior-ID32", "DiracGamma[LorentzIndex[mu, D]]",
+  "DiracGamma[LorentzIndex[mu]]"}, {"fcstCoreObjectsBehavior-ID33", "DiracGamma[2 Momentum[p], D]", "2*DiracGamma[Momentum[p], D]"},
+ {"fcstCoreObjectsBehavior-ID34", "DiracGamma[Momentum[p, D]]", " DiracGamma[Momentum[p]]"}, {"fcstCoreObjectsBehavior-ID35", "DiracGamma[LorentzIndex[mu, D]]", "DiracGamma[LorentzIndex[mu]]"},
+ {"fcstCoreObjectsBehavior-ID36", "Transpose[DiracGammaT[x]]", "DiracGamma[x]"}, {"fcstCoreObjectsBehavior-ID37", "DiracMatrix[0]", "DiracGamma[0]"},
+ {"fcstCoreObjectsBehavior-ID38", "DiracMatrix[1]", "DiracGamma[1]"}, {"fcstCoreObjectsBehavior-ID39", "DiracMatrix[2]", "DiracGamma[2]"},
+ {"fcstCoreObjectsBehavior-ID40", "DiracMatrix[3]", "DiracGamma[3]"}, {"fcstCoreObjectsBehavior-ID41", "DiracMatrix[4]", "DiracGamma[4]"},
+ {"fcstCoreObjectsBehavior-ID42", "DiracSigma[x.y]", "DiracSigma[x,y]"}, {"fcstCoreObjectsBehavior-ID43", "DiracSigma[a,b,c, 0,d,e,f]", " 0"},
+ {"fcstCoreObjectsBehavior-ID44", "DiracSigma[1, 3] ", "  DiracSigma[1, 3]"}, {"fcstCoreObjectsBehavior-ID45", "DiracSigma[2, 1] ", " - DiracSigma[1, 2]"},
+ {"fcstCoreObjectsBehavior-ID46", "DiracSigma[a, b] ", "  DiracSigma[a, b]"}, {"fcstCoreObjectsBehavior-ID47", "DiracSigma[b, a] ", " - DiracSigma[a, b]"},
+ {"fcstCoreObjectsBehavior-ID48", "DiracSigma[DiracMatrix[1, 3]]", " DiracSigma[DiracMatrix[1, 3]]"}, {"fcstCoreObjectsBehavior-ID49", "DiracSigma[DiracMatrix[2, 1]]",
+  " - DiracSigma[DiracMatrix[1, 2]]"}, {"fcstCoreObjectsBehavior-ID50", "DiracSigma[DiracMatrix[a, b]]", "  DiracSigma[DiracMatrix[a, b]]"},
+ {"fcstCoreObjectsBehavior-ID51", "DiracSigma[DiracMatrix[b, a]]", " - DiracSigma[DiracMatrix[a, b]]"}, {"fcstCoreObjectsBehavior-ID52", "DiracSigma[x DiracGamma[i],  DiracGamma[j]]",
+  "x  DiracSigma[DiracGamma[i], DiracGamma[j]]"}, {"fcstCoreObjectsBehavior-ID53", "DiracSigma[x DiracGamma[i], y z DiracGamma[j]]", "x y z DiracSigma[DiracGamma[i], DiracGamma[j]]"},
+ {"fcstCoreObjectsBehavior-ID54", "DiracSlash[p]", "DiracGamma[Momentum[p]]"}, {"fcstCoreObjectsBehavior-ID55", "DiracSlash[p, Dimension -> D]", "DiracGamma[Momentum[p, D], D]"},
+ {"fcstCoreObjectsBehavior-ID56", "DiracSlash[p , l, k]", "DiracGamma[Momentum[p]].DiracGamma[Momentum[l]].DiracGamma[Momentum[k]]"},
+ {"fcstCoreObjectsBehavior-ID57", "DiracSlash[p , l, k, Dimension -> D]", "DiracGamma[Momentum[p, D], D].DiracGamma[Momentum[l, D], D].DiracGamma[Momentum[k, D], D]"},
+ {"fcstCoreObjectsBehavior-ID58", "Eps[1, 2, 3]", "1"}, {"fcstCoreObjectsBehavior-ID59", "Eps[3, 2, 1]", "-1"}, {"fcstCoreObjectsBehavior-ID60", "Eps[a,b,c]", "Eps[a,b,c]"},
+ {"fcstCoreObjectsBehavior-ID61", "Eps[a,c,b]", "-Eps[a,b,c]"}, {"fcstCoreObjectsBehavior-ID62", "Eps[1, 1, 2]", "0"}, {"fcstCoreObjectsBehavior-ID63", "Eps[a, a, b]", "0"},
+ {"fcstCoreObjectsBehavior-ID64", "Eps[ExplicitLorentzIndex[1], ExplicitLorentzIndex[2], ExplicitLorentzIndex[3]]", "1"},
+ {"fcstCoreObjectsBehavior-ID65", "Eps[ExplicitLorentzIndex[2], ExplicitLorentzIndex[1], ExplicitLorentzIndex[3]]", "-1"},
+ {"fcstCoreObjectsBehavior-ID66", "Eps[ExplicitLorentzIndex[1], ExplicitLorentzIndex[1], ExplicitLorentzIndex[3]]", "0"},
+ {"fcstCoreObjectsBehavior-ID67", "Eps[a, LorentzIndex[mu], b, c, d, LorentzIndex[nu], e]", " Eps[a, LorentzIndex[mu], b, c, d, LorentzIndex[nu], e]"},
+ {"fcstCoreObjectsBehavior-ID68", "Eps[a, LorentzIndex[mu], b, c, d, LorentzIndex[mu], e]", " 0"},
+ {"fcstCoreObjectsBehavior-ID69", "Eps[a, 5 ExplicitLorentzIndex[mu], b, c, d, ExplicitLorentzIndex[nu],  e]", " Eps[a, 5 ExplicitLorentzIndex[mu], b, c, d, ExplicitLorentzIndex[nu], e]"},
+ {"fcstCoreObjectsBehavior-ID70", "Eps[a, ExplicitLorentzIndex[mu], b, c, d, ExplicitLorentzIndex[mu], e]", " 0"},
+ {"fcstCoreObjectsBehavior-ID71", "Eps[a, 2 LorentzIndex[mu], b, c, d, 4 LorentzIndex[mu], e]", " 0"},
+ {"fcstCoreObjectsBehavior-ID72", "Eps[a, 2 LorentzIndex[mu], b, c, d, f LorentzIndex[mu], e]", " Eps[a, 2 LorentzIndex[mu], b, c, d, f LorentzIndex[mu], e]"},
+ {"fcstCoreObjectsBehavior-ID73", "Eps[a,2 ExplicitLorentzIndex[mu], b, c, d, 4 ExplicitLorentzIndex[mu], e]", " 0"},
+ {"fcstCoreObjectsBehavior-ID74", "Eps[a,2 ExplicitLorentzIndex[mu], b, c, d, f ExplicitLorentzIndex[mu], e]", " Eps[a,2 ExplicitLorentzIndex[mu], b, c, d, f ExplicitLorentzIndex[mu], e]"},
+ {"fcstCoreObjectsBehavior-ID75", "Eps[a, Momentum[p], b, c, d, Momentum[q], e]", " Eps[a, Momentum[p], b, c, d, Momentum[q], e]"},
+ {"fcstCoreObjectsBehavior-ID76", "Eps[a, Momentum[p], b, c, d, Momentum[p], e]", " 0"}, {"fcstCoreObjectsBehavior-ID77", "Eps[a, 2 Momentum[p], b, c, d, 4 Momentum[p], e]", " 0"},
+ {"fcstCoreObjectsBehavior-ID78", "Eps[a, 2 Momentum[p], b, c, d, f Momentum[p], e]", " Eps[a, 2 Momentum[p], b, c, d, f Momentum[p], e]"},
+ {"fcstCoreObjectsBehavior-ID79", "Eps[a, LorentzIndex[mu, D - 4], b]", " 0"}, {"fcstCoreObjectsBehavior-ID80", "Eps[a, Momentum[p, D - 4], b]", " 0"},
+ {"fcstCoreObjectsBehavior-ID81", "Eps[a, LorentzIndex[mu, D], b]", " Eps[a, LorentzIndex[mu], b]"}, {"fcstCoreObjectsBehavior-ID82", "Eps[a, LorentzIndex[mu, D1], b, Dimension -> D2]",
+  " Eps[a, LorentzIndex[mu, D1], b, Dimension -> D2]"}, {"fcstCoreObjectsBehavior-ID83", "Eps[a, Momentum[mu, D], b]", " Eps[a, Momentum[mu], b]"},
+ {"fcstCoreObjectsBehavior-ID84", "Eps[a, Momentum[mu, D1], b, Dimension -> D2]", " Eps[a, Momentum[mu, D1], b, Dimension -> D2]"},
+ {"fcstCoreObjectsBehavior-ID85", "SUNIndex[ExplicitSUNIndex[a]]", " ExplicitSUNIndex[a]"}, {"fcstCoreObjectsBehavior-ID86", "SUNIndex[ExplicitSUNIndex[2]]", " ExplicitSUNIndex[2]"},
+ {"fcstCoreObjectsBehavior-ID87", "FAD[-a]", " FAD[a]"}, {"fcstCoreObjectsBehavior-ID88", "FeynAmpDenominator[{a, b}]", "FeynAmpDenominator[PropagatorDenominator[Momentum[a, D], b]]"},
+ {"fcstCoreObjectsBehavior-ID89", "FeynAmpDenominator[{a}]", " FeynAmpDenominator[PropagatorDenominator[Momentum[a, D], 0]]"},
+ {"fcstCoreObjectsBehavior-ID90", "FourVector[p, mu]", " Pair[LorentzIndex[mu], Momentum[p]]"}, {"fcstCoreObjectsBehavior-ID91", "FourVector[p, mu, Dimension -> D]",
+  " Pair[LorentzIndex[mu, D], Momentum[p, D]]"}, {"fcstCoreObjectsBehavior-ID92", "FourVector[Momentum[p], mu]", " FourVector[Momentum[p], mu]"},
+ {"fcstCoreObjectsBehavior-ID93", "FourVector[p, LorentzIndex[mu]]", " FourVector[p, LorentzIndex[mu]]"}, {"fcstCoreObjectsBehavior-ID94", "FourVector[p, mu, FCI -> False]",
+  " FourVector[p, mu, FeynCalcInternal -> False]"}, {"fcstCoreObjectsBehavior-ID95", "FV[p, l]", " FV[p, l]"}, {"fcstCoreObjectsBehavior-ID96", "FV[p, Momentum[l]]", " SP[l, p]"},
+ {"fcstCoreObjectsBehavior-ID97", "FV[Momentum[p], Momentum[l]]", " SP[l, p]"}, {"fcstCoreObjectsBehavior-ID98", "FV[Momentum[l], p]", " FV[Momentum[l], p]"},
+ {"fcstCoreObjectsBehavior-ID99", "GA[a.b.c]", " GA[a].GA[b].GA[c]"}, {"fcstCoreObjectsBehavior-ID100", "GA[a, b, c]", " GA[a].GA[b].GA[c]"},
+ {"fcstCoreObjectsBehavior-ID101", "GA5", " DiracGamma[5]"}, {"fcstCoreObjectsBehavior-ID102", "GAD[a.b.c]", " GAD[a].GAD[b].GAD[c]"},
+ {"fcstCoreObjectsBehavior-ID103", "GAD[a, b, c]", " GAD[a].GAD[b].GAD[c]"}, {"fcstCoreObjectsBehavior-ID104", "GS[a.b.c]", " GS[a].GS[b].GS[c]"},
+ {"fcstCoreObjectsBehavior-ID105", "GS[a, b, c]", " GS[a].GS[b].GS[c]"}, {"fcstCoreObjectsBehavior-ID106", "GSD[a.b.c]", " GSD[a].GSD[b].GSD[c]"},
+ {"fcstCoreObjectsBehavior-ID107", "GSD[a, b, c]", " GSD[a].GSD[b].GSD[c]"}, {"fcstCoreObjectsBehavior-ID108", "IFPD[Momentum[OPEDelta, a], 0]", " 0"},
+ {"fcstCoreObjectsBehavior-ID109", "LeftPartialD[(1)]", " 1"}, {"fcstCoreObjectsBehavior-ID110", "LeftPartialD[(1), (1), (1)]", "1"},
+ {"fcstCoreObjectsBehavior-ID111", "LeftPartialD[OPEDelta]", " LeftPartialD[Momentum[OPEDelta]]"},
+ {"fcstCoreObjectsBehavior-ID112", "LeftPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+  " LeftPartialD[LorentzIndex[mu]].LeftPartialD[LorentzIndex[nu]].LeftPartialD[LorentzIndex[rho]]"}, {"fcstCoreObjectsBehavior-ID113", "LeftPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]",
+  " LeftPartialD[Momentum[p1]].LeftPartialD[Momentum[p2]].LeftPartialD[Momentum[p3]]"}, {"fcstCoreObjectsBehavior-ID114", "LeftPartialD[nu, mu, LorentzIndex[rho]]",
+  " LeftPartialD[nu, mu, LorentzIndex[rho]]"}, {"fcstCoreObjectsBehavior-ID115", "LeftPartialD[nu, mu, rho]",
+  " LeftPartialD[LorentzIndex[nu]].LeftPartialD[LorentzIndex[mu]].LeftPartialD[LorentzIndex[rho]]"}, {"fcstCoreObjectsBehavior-ID116", "LeftRightPartialD[(1)]", " 1"},
+ {"fcstCoreObjectsBehavior-ID117", "LeftRightPartialD[(1), (1), (1)]", "1"}, {"fcstCoreObjectsBehavior-ID118", "LeftRightPartialD[OPEDelta]", " LeftRightPartialD[Momentum[OPEDelta]]"},
+ {"fcstCoreObjectsBehavior-ID119", "LeftRightPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+  " LeftRightPartialD[LorentzIndex[mu]].LeftRightPartialD[LorentzIndex[nu]].LeftRightPartialD[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID120", "LeftRightPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]",
+  " LeftRightPartialD[Momentum[p1]].LeftRightPartialD[Momentum[p2]].LeftRightPartialD[Momentum[p3]]"}, {"fcstCoreObjectsBehavior-ID121", "LeftRightPartialD[nu, mu, LorentzIndex[rho]]",
+  " LeftRightPartialD[nu, mu, LorentzIndex[rho]]"}, {"fcstCoreObjectsBehavior-ID122", "LeftRightPartialD[nu, mu, rho]",
+  " LeftRightPartialD[LorentzIndex[nu]].LeftRightPartialD[LorentzIndex[mu]].LeftRightPartialD[LorentzIndex[rho]]"}, {"fcstCoreObjectsBehavior-ID123", "LeftRightPartialD2[(1)]", " 1"},
+ {"fcstCoreObjectsBehavior-ID124", "LeftRightPartialD2[(1), (1), (1)]", "1"}, {"fcstCoreObjectsBehavior-ID125", "LeftRightPartialD2[OPEDelta]", " LeftRightPartialD2[Momentum[OPEDelta]]"},
+ {"fcstCoreObjectsBehavior-ID126", "LeftRightPartialD2[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+  " LeftRightPartialD2[LorentzIndex[mu]].LeftRightPartialD2[ LorentzIndex[nu]].LeftRightPartialD2[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID127", "LeftRightPartialD2[Momentum[p1], Momentum[p2], Momentum[p3]]",
+  " LeftRightPartialD2[Momentum[p1]].LeftRightPartialD2[Momentum[p2]].LeftRightPartialD2[ Momentum[p3]]"}, {"fcstCoreObjectsBehavior-ID128", "LeftRightPartialD2[nu, mu, LorentzIndex[rho]]",
+  " LeftRightPartialD2[nu, mu, LorentzIndex[rho]]"}, {"fcstCoreObjectsBehavior-ID129", "LeftRightPartialD2[nu, mu, rho]",
+  " LeftRightPartialD2[LorentzIndex[nu]].LeftRightPartialD2[LorentzIndex[mu]].LeftRightPartialD2[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID130", "LorentzIndex[LorentzIndex[mu, D], D]", " LorentzIndex[mu, D]"}, {"fcstCoreObjectsBehavior-ID131", "LorentzIndex[mu, 4]", " LorentzIndex[mu]"},
+ {"fcstCoreObjectsBehavior-ID132", "LorentzIndex[mu, 0]", " 0"}, {"fcstCoreObjectsBehavior-ID133", "LorentzIndex[3, 4]", " ExplicitLorentzIndex[3]"},
+ {"fcstCoreObjectsBehavior-ID134", "LorentzIndex[3, D]", " ExplicitLorentzIndex[3, D]"}, {"fcstCoreObjectsBehavior-ID135", "MetricTensor[a, b]", " Pair[LorentzIndex[a], LorentzIndex[b]]"},
+ {"fcstCoreObjectsBehavior-ID136", "MetricTensor[a, b, Dimension -> D]", " Pair[LorentzIndex[a, D], LorentzIndex[b, D]]"},
+ {"fcstCoreObjectsBehavior-ID137", "MetricTensor[a, b, Dimension -> D, FCI -> False]", " MetricTensor[a, b, Dimension -> D, FeynCalcInternal -> False]"},
+ {"fcstCoreObjectsBehavior-ID138", "Momentum[x GaugeXi[y], D]", " GaugeXi[y]*Momentum[x, D]"}, {"fcstCoreObjectsBehavior-ID139", "Momentum[5 x , D]", " 5*Momentum[x, D]"},
+ {"fcstCoreObjectsBehavior-ID140", "Momentum[ x , 4]", " Momentum[x]"}, {"fcstCoreObjectsBehavior-ID141", "Momentum[ 0 , a, b, c]", " 0"},
+ {"fcstCoreObjectsBehavior-ID142", "Momentum[ a, 0]", " 0"}, {"fcstCoreObjectsBehavior-ID143", "Momentum[Momentum[x, D], a, b, c]", "Momentum[x, D]"},
+ {"fcstCoreObjectsBehavior-ID144", "MT[Momentum[a], Momentum[b]]", " SP[a, b]"}, {"fcstCoreObjectsBehavior-ID145", "MT[Momentum[a, D], Momentum[b, D]]", " SPD[a, b]"},
+ {"fcstCoreObjectsBehavior-ID146", "MT[Momentum[a, D], Momentum[b]]", " MT[Momentum[a, D], Momentum[b]]"}, {"fcstCoreObjectsBehavior-ID147", "OPE^4", " 0"},
+ {"fcstCoreObjectsBehavior-ID148", "OPE^-4", " OPE^-4"}, {"fcstCoreObjectsBehavior-ID149", "Pair[0, a]", "0"}, {"fcstCoreObjectsBehavior-ID150", "Pair[9 a, b]", " 9*Pair[a, b]"},
+ {"fcstCoreObjectsBehavior-ID151", "Pair[LorentzIndex[mu, D], Momentum[p]]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+ {"fcstCoreObjectsBehavior-ID152", "Pair[Momentum[p, D], LorentzIndex[mu]]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+ {"fcstCoreObjectsBehavior-ID153", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2]]]", " 0"}, {"fcstCoreObjectsBehavior-ID154", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I]]]", " 0"},
+ {"fcstCoreObjectsBehavior-ID155", "Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I], D2]]", " Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I], D2]]"},
+ {"fcstCoreObjectsBehavior-ID156", "Pair[Momentum[p, D1], Momentum[Polarization[a + b - p, I], D2]]",
+  "Pair[Momentum[a, D2], Momentum[Polarization[a + b - p, I], D2]] + Pair[Momentum[b, D2], Momentum[Polarization[a + b - p, I], D2]]"},
+ {"fcstCoreObjectsBehavior-ID157", "Pair[Momentum[p, D1], Momentum[Polarization[a + b + p, I], D2]]",
+  " -Pair[Momentum[a, D2], Momentum[Polarization[a + b + p, I], D2]] - Pair[Momentum[b, D2], Momentum[Polarization[a + b + p, I], D2]]"},
+ {"fcstCoreObjectsBehavior-ID158", "Pair[Momentum[Polarization[p, I], D1],  Momentum[Polarization[p, -I], D2]]", " -1"}, {"fcstCoreObjectsBehavior-ID159", "PartialD[(1)]", "1"},
+ {"fcstCoreObjectsBehavior-ID160", "PartialD[(1), (1), (1)]", "1"}, {"fcstCoreObjectsBehavior-ID161", "PartialD[OPEDelta]", "PartialD[Momentum[OPEDelta]]"},
+ {"fcstCoreObjectsBehavior-ID162", "PartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]", "PartialD[LorentzIndex[mu]].PartialD[LorentzIndex[nu]].PartialD[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID163", "PartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", "PartialD[Momentum[p1]].PartialD[Momentum[p2]].PartialD[Momentum[p3]]"},
+ {"fcstCoreObjectsBehavior-ID164", "PartialD[nu, mu, LorentzIndex[rho]]", " PartialD[nu, mu, LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID165", "PartialD[nu, mu, rho]", "PartialD[LorentzIndex[nu]].PartialD[LorentzIndex[mu]].PartialD[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID166", "PauliSigma[1]", "{ {0, 1}, {1,0} }"}, {"fcstCoreObjectsBehavior-ID167", "PauliSigma[2]", "{ {0,-I}, {I,0} }"},
+ {"fcstCoreObjectsBehavior-ID168", "PauliSigma[3]", "{ {1, 0}, {0,-1} }"}, {"fcstCoreObjectsBehavior-ID169", "PauliSigma[]", "{PauliSigma[1], PauliSigma[2], PauliSigma[3]}"},
+ {"fcstCoreObjectsBehavior-ID170", "PlusDistribution[Log[z (1 - z)]/(1 - z)]", " Log[z]/(1 - z) + PlusDistribution[Log[1 - z]/(1 - z)]"},
+ {"fcstCoreObjectsBehavior-ID171", "Polarization[p]", "Polarization[p, I]"}, {"fcstCoreObjectsBehavior-ID172", "Polarization[-p, I]", " -Polarization[p, I]"},
+ {"fcstCoreObjectsBehavior-ID173", "Polarization[-p, -I]", "-Polarization[p, -I]"}, {"fcstCoreObjectsBehavior-ID174", "PolarizationVector[p, mu, c]",
+  "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c]]]]"}, {"fcstCoreObjectsBehavior-ID175", "PolarizationVector[p, {mu, c}]",
+  "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c]]]]"}, {"fcstCoreObjectsBehavior-ID176", "PropagatorDenominator[x]", "PropagatorDenominator[x, 0]"},
+ {"fcstCoreObjectsBehavior-ID177", "PD", "PropagatorDenominator"}, {"fcstCoreObjectsBehavior-ID178", "QuantumField[A, {mu, SUNIndex[a]}]", " QuantumField[A, LorentzIndex[mu], SUNIndex[a]]"},
+ {"fcstCoreObjectsBehavior-ID179", "QuantumField[QuantumField[A, {mu, SUNIndex[a]}]]", " QuantumField[A, LorentzIndex[mu], SUNIndex[a]]"},
+ {"fcstCoreObjectsBehavior-ID180", "RightPartialD[(1)]", " 1"}, {"fcstCoreObjectsBehavior-ID181", "RightPartialD[(1), (1), (1)]", "1"},
+ {"fcstCoreObjectsBehavior-ID182", "RightPartialD[OPEDelta]", " RightPartialD[Momentum[OPEDelta]]"},
+ {"fcstCoreObjectsBehavior-ID183", "RightPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+  " RightPartialD[LorentzIndex[mu]].RightPartialD[ LorentzIndex[nu]].RightPartialD[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID184", "RightPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", " RightPartialD[Momentum[p1]].RightPartialD[Momentum[p2]].RightPartialD[ Momentum[p3]]"},
+ {"fcstCoreObjectsBehavior-ID185", "RightPartialD[nu, mu, LorentzIndex[rho]]", "RightPartialD[nu, mu, LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID186", "RightPartialD[nu, mu, rho]", "RightPartialD[LorentzIndex[nu]].RightPartialD[LorentzIndex[mu]].RightPartialD[LorentzIndex[rho]]"},
+ {"fcstCoreObjectsBehavior-ID187", "SmallVariable[0]", "0"}, {"fcstCoreObjectsBehavior-ID188", "SmallVariable[a^b]", "SmallVariable[a]^b"}, {"fcstCoreObjectsBehavior-ID189", "SP[a]", "SP[a,a]"},
+ {"fcstCoreObjectsBehavior-ID190", "SPD[a]", "SPD[a,a]"}, {"fcstCoreObjectsBehavior-ID191", "Spinor[Momentum[p], m]", "Spinor[Momentum[p], m, 1]"},
+ {"fcstCoreObjectsBehavior-ID192", "Spinor[p, m]", "Spinor[Momentum[p], m, 1]"}, {"fcstCoreObjectsBehavior-ID193", "Spinor[Momentum[p, D], m]", " Spinor[Momentum[p], m, 1]"},
+ {"fcstCoreObjectsBehavior-ID194", "Spinor[Momentum[-p, D], m]", "Spinor[-Momentum[p], m, 1]"}, {"fcstCoreObjectsBehavior-ID195", "Spinor[a + b Momentum[p1 + p2], m]",
+  "Spinor[a + b (Momentum[p1] + Momentum[p2]), m, 1]"}, {"fcstCoreObjectsBehavior-ID196", "Spinor[a, b SmallVariable[c]]", "Spinor[Momentum[a], 0, 1]"},
+ {"fcstCoreObjectsBehavior-ID197", "Spinor[p]", "Spinor[Momentum[p], 0, 1]"}, {"fcstCoreObjectsBehavior-ID198", "SUND[SUNIndex[a], SUNIndex[a], b]", " 0"},
+ {"fcstCoreObjectsBehavior-ID199", "SUND[SUNIndex[1], SUNIndex[1], b]", "SUND[ExplicitSUNIndex[1], ExplicitSUNIndex[1], b]"}, {"fcstCoreObjectsBehavior-ID200", "SUND[a, b, c]", "SUND[a, b, c]"},
+ {"fcstCoreObjectsBehavior-ID201", "SUND[a, b, c, Explicit -> True]",
+  "2 SUNTrace[SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]] + 2 SUNTrace[SUNT[SUNIndex[b]].SUNT[SUNIndex[a]].SUNT[SUNIndex[c]]]"},
+ {"fcstCoreObjectsBehavior-ID202", "SUNF[SUNIndex[x], b, SUNIndex[x]]", "0"}, {"fcstCoreObjectsBehavior-ID203", "SUNF[a, SUNIndex[x], SUNIndex[x]]", "0"},
+ {"fcstCoreObjectsBehavior-ID204", "SUNF[SUNIndex[x], SUNIndex[x], c]", "0"}, {"fcstCoreObjectsBehavior-ID205", "SUNF[SUNIndex[x], b, SUNIndex[y]]", "SUNF[SUNIndex[x], b, SUNIndex[y]]"},
+ {"fcstCoreObjectsBehavior-ID206", "SUNF[a, SUNIndex[x], SUNIndex[y]]", " SUNF[a, SUNIndex[x], SUNIndex[y]]"}, {"fcstCoreObjectsBehavior-ID207", "SUNF[SUNIndex[x], SUNIndex[y], c]",
+  " SUNF[SUNIndex[x], SUNIndex[y], c]"}, {"fcstCoreObjectsBehavior-ID208", "SUNF[SUNIndex[y], b, SUNIndex[x]]", " SUNF[SUNIndex[y], b, SUNIndex[x]]"},
+ {"fcstCoreObjectsBehavior-ID209", "SUNF[a, SUNIndex[y], SUNIndex[x]]", " -SUNF[a, SUNIndex[x], SUNIndex[y]]"}, {"fcstCoreObjectsBehavior-ID210", "SUNF[SUNIndex[y], SUNIndex[x], c]",
+  " -SUNF[SUNIndex[x], SUNIndex[y], c]"}, {"fcstCoreObjectsBehavior-ID211", "SUNF[i, j, k]", "SUNF[i, j, k]"}, {"fcstCoreObjectsBehavior-ID212", "SUNF[i, j, k, Explicit -> True]",
+  "(2*I)*(-SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[j]] . SUNT[SUNIndex[k]]] + SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[k]] . SUNT[SUNIndex[j]]])"},
+ {"fcstCoreObjectsBehavior-ID213", "SUNF[i, j, k, l]", "SUNF[i, j, k, l]"}, {"fcstCoreObjectsBehavior-ID214", "(SUNF[i, j, k, l, Explicit -> True] /. {SUNIndex[a_] -> SUNIndex[s1]})",
+  " SUNF[i, j, SUNIndex[s1]] SUNF[SUNIndex[s1], k, l]"}, {"fcstCoreObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"}}
+
+
+
+
+
+
+
