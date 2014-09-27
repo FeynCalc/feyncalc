@@ -47,6 +47,8 @@ DiracSimplify = MakeContext["DiracSimplify"];
 DotSimplify   = MakeContext["DotSimplify"];
 TR            = MakeContext["TR"];
 
+MakeContext [FCPrint]
+
 FRH = FixedPoint[ReleaseHold, #]&;
 dotLin[x_] := DotSimplify[x, Expanding -> False];
 
@@ -106,7 +108,7 @@ pliui[xxx__] := pliui[xxx] = If[Length[{xxx}] < 5,
 $isoFlag = True;
 
 cOL[xy_] := Block[{temP = xy, nodot = 0, ntemP},
-print3["entering cOL"];
+FCPrint[3,"entering cOL"];
 temp0 = temP;
                    If[Head[temP] === Plus,
                       nodot = Select[temP, FreeQ[#, DOT]&];
@@ -125,7 +127,7 @@ If[$isoFlag,
 temp1 = temP;
                    temP = Collect2[temP, DiracGamma, Factoring -> False 
                                   ];
-print3["collected in cOL"];
+FCPrint[3,"collected in cOL"];
 (*
                    If[Head[temP] === Plus,
 (* this step by step factorization is ESSENTIAL!!!!! *)
@@ -147,7 +149,7 @@ If[$isoFlag,
   ]
                      ];
 *)
-print3["exiting cOL"];
+FCPrint[3,"exiting cOL"];
                    temP + nodot
                  ];
 
@@ -158,10 +160,10 @@ dirtracesep[xy_] := If[Head[xy] =!= Times, DiracTrace[xy//cOL],
                       ];
 
 sufu[xyx_] := Block[{tsuf,spif,mulEx,mulEx2,epSimp,doT, xx=xyx, memm},
- print2[is++, "out of", lis, " 
+ FCPrint[2,is++, "out of", lis, " 
          Mem = [",memm = N[MemoryInUse[]/10^6,3],"]"];
 If[(memm > $MemoryAvailable) &&IntegerQ[is/10], 
-   print2["sharing "];Share[]; print2[" done"]];
+   FCPrint[2,"sharing "];Share[]; print2[" done"]];
                        spif = Select[xx, !FreeQ[#, Spinor]&];
                        tsuf = xx / spif;
 (*
@@ -204,10 +206,10 @@ plsphold = Unique[System`C];
 plsp[xyx__] := If[FreeQ[{xyx}, Spinor], plsphold[xyx], Plus[xyx]];
 
 If[spinorCollect === True,
-print2["collectinsufu"];
+FCPrint[2,"collectinsufu"];
  nx = Collect2[nx /. Plus -> plsp, Spinor, Factoring -> False
               ] /. plsphold -> Plus;
-print2["collectinsufudone"];
+FCPrint[2,"collectinsufudone"];
   ];
 
 onx = nx;
