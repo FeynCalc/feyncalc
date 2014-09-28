@@ -74,6 +74,23 @@ cOL[xy_] :=
         temP + nodot
     ];
 
+dirtracesep[xy_] :=
+    If[ Head[xy] =!= Times,
+        DiracTrace[xy//cOL],
+        SUNSimplify[Select[xy, FreeQ2[#, {DiracGamma, LorentzIndex, Eps}]&]] *
+           DiracTrace[Select[xy,!FreeQ2[#,
+                                 {DiracGamma, LorentzIndex, Eps}]&]//cOL]
+    ];
+
+
+epSimp[expr_] :=
+    DiracSimplify[DiracOrder[expr] /. DOT -> doT /.
+    {doT[a__, DiracGamma[5]] :> 0 /; Length[{a}] < 4,
+    doT[DiracGamma[5]] :> 0,
+    doT[a__DiracGamma] :> 0 /; FreeQ2[{a}, {DiracGamma[5], DiracGamma[6],
+    DiracGamma[7]}] && OddQ[Length[{a}]]
+    } /. doT -> DOT, Expanding -> False    ];
+
 
 FermionSpinSum[expr_Plus, opts:OptionsPattern[]]:= Map[FermionSpinSum[#,opts]&,expr];
 FermionSpinSum[expr_List, opts:OptionsPattern[]]:= Map[FermionSpinSum[#,opts]&,expr];
@@ -83,7 +100,7 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 FermionSpinSum[expr_, opts:OptionsPattern[]] :=
     Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-        spir,spir2,dirtri, nx,nnx, is = 1, sufu, plsp,lis },
+        spir,spir2,dirtri,nx, nnx, is = 1, sufu, plsp,lis },
 
         nx = expr;
 
@@ -98,8 +115,8 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
             ],
             "fcFermionSpinSumInvalidOptions"];
 
-(* ----------------------------------------------------------------------------- *)
-(* fermion polarization sums *)
+		(* ----------------------------------------------------------------------------- *)
+		(* fermion polarization sums *)
             spir = { (* ubar u , vbar v *)
                      Spinor[s_. Momentum[pe1_], arg__ ]^2 :>
                     (DotSimplify[spinPolarizationSum[ (DiracGamma[Momentum[pe1]] + s First[{arg}]) ], Expanding -> False]),
@@ -117,16 +134,10 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                       DiracTrace[ DiracTrace[n DOT[a1,a2]] m DOT[b1,b2]] /;
                         Length[DOT[a1,a2]] <= Length[DOT[b1,b2]] &&
                         Head[n] =!= DOT && Head[m] =!= DOT;
-(* ----------------------------------------------------------------------------- *)
+		(* ----------------------------------------------------------------------------- *)
             uNi = Unique[System`C];
+            plsphold = Unique[System`C];
 
-            dirtracesep[xy_] :=
-                If[ Head[xy] =!= Times,
-                    DiracTrace[xy//cOL],
-                    SUNSimplify[Select[xy, FreeQ2[#, {DiracGamma, LorentzIndex, Eps}]&]] *
-                       DiracTrace[Select[xy,!FreeQ2[#,
-                                             {DiracGamma, LorentzIndex, Eps}]&]//cOL]
-                ];
             sufu[xyx_] :=
                 Block[ {tsuf,spif,mulEx,mulEx2,epSimp,doT, xx = xyx, memm},
                     FCPrint[2,is++, "out of", lis, " Mem = [",memm = N[MemoryInUse[]/10^6,3],"]"];
@@ -138,13 +149,6 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                     spif = Select[xx, !FreeQ[#, Spinor]&];
                     tsuf = xx / spif;
 
-                    epSimp[xxx_] :=
-                        DiracSimplify[DiracOrder[xxx] /. DOT -> doT /.
-                        {doT[a__, DiracGamma[5]] :> 0 /; Length[{a}] < 4,
-                        doT[DiracGamma[5]] :> 0,
-                        doT[a__DiracGamma] :> 0 /; FreeQ2[{a}, {DiracGamma[5], DiracGamma[6],
-                        DiracGamma[7]}] && OddQ[Length[{a}]]
-                        } /. doT -> DOT, Expanding -> False    ];
                     If[ $VersionNumber > 2.2,
                         HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
                             If[ !FreeQ[(extraFactor tsuf), LorentzIndex],
@@ -159,43 +163,42 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                                 dirtracesep[DiracSimplify[ mul extraFactor tsuf xy,Expanding -> False]//epSimp]
                             ]
                     ];
-                    mulEx2[ xy_ ] :=
-                        mul tsuf extraFactor xy;
+                    mulEx2[xy_] := mul tsuf extraFactor xy;
                     (mulEx[(((spif)//.spir//.spir2//.dirtri) /. DiracTrace->trsimp/.
                                   trsimp->DiracTrace /. $MU->uNi )
                           ] /.mulEx->mulEx2
                     )
                 ]; (* endofsufu *)
 
-
-            plsphold = Unique[System`C];
             plsp[xyx__] :=
                 If[ FreeQ[{xyx}, Spinor],
                     plsphold[xyx],
                     Plus[xyx]
                 ];
+
             If[ spinorCollect === True,
                 FCPrint[2,"collectinsufu"];
                 nx = Collect2[nx /. Plus -> plsp, Spinor, Factoring -> False
                              ] /. plsphold -> Plus;
                 FCPrint[2,"collectinsufudone"];
             ];
-            onx = nx;
+
             If[ !FreeQ[ nx, $MU],
                 nx = nx /. $MU->Unique[System`C]
             ];
+
             If[ Head[nx] === Plus,
                 lis = Length[nx];
                 nnx = 0;
                 For[iin = 1, iin <= lis , iin++,
                     nnx = nnx + sufu[nx[[iin]]];
-        ];
+		        ];
                 nx = nnx,
                 lis = 1;
                 nx = sufu[nx]
             ];
 
-          (* in case somthing went wrong .. *)
+        	(* in case somthing went wrong .. *)
             If[ nx =!= 0 && FreeQ[nx, DiracTrace],
                 Print["MIST"];(*Dialog[];*)
                 nx = expr extraFactor
