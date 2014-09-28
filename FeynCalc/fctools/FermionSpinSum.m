@@ -104,13 +104,13 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                         Head[n] =!= DOT && Head[m] =!= DOT;
 (* ----------------------------------------------------------------------------- *)
             uNi = Unique[System`C];
-            kK = Unique[System`C];
+            (*kK = Unique[System`C];
             pliui[xxx__] :=
                 pliui[xxx] = If[ Length[{xxx}] < 5,
                                  Isolate[Factor2[Plus[xxx]]],
                                  Isolate[Plus[xxx], IsolateNames -> kK,
                                  IsolateSplit -> 444I]
-                             ];
+                             ];*)
             (*$isoFlag = True;*)
             cOL[xy_] :=
                 Block[ {temP = xy, nodot = 0, ntemP},
