@@ -184,7 +184,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
 
         	(* in case somthing went wrong .. *)
             If[ nx =!= 0 && FreeQ[nx, DiracTrace],
-                Print["MIST"];(*Dialog[];*)
+                FCPrint[0,"Something went wrong while computing the fermions spin sum! Returning unevaluated expression:"];
                 nx = expr extraFactor
             ];
 
