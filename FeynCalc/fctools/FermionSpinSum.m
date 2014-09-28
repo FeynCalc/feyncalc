@@ -100,7 +100,7 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 FermionSpinSum[expr_, opts:OptionsPattern[]] :=
     Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-        spir,spir2,dirtri,nx, is = 1, sufu, lis },
+        spir,spir2,dirtri, nx, sufu },
 
         nx = expr;
 
@@ -139,13 +139,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
             plsphold = Unique[System`C];
 
             sufu[xyx_] :=
-                Block[ {tsuf,spif,mulEx,mulEx2,epSimp,doT, xx = xyx, memm},
-                    FCPrint[2,is++, "out of", lis, " Mem = [",memm = N[MemoryInUse[]/10^6,3],"]"];
-                    If[ (memm > $MemoryAvailable) &&IntegerQ[is/10],
-                        FCPrint[2,"sharing "];
-                        Share[];
-                        FCPrint[2, " done"]
-                    ];
+                Block[ {tsuf,spif,mulEx,mulEx2,epSimp,doT, xx = xyx},
                     spif = Select[xx, !FreeQ[#, Spinor]&];
                     tsuf = xx / spif;
 
@@ -188,9 +182,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
             ];
 
             If[ Head[nx] === Plus,
-                lis = Length[nx];
                 nx = Map[sufu, nx],
-                lis = 1;
                 nx = sufu[nx]
             ];
 
