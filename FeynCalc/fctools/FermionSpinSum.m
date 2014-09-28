@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: FermionSpinSum												*)
@@ -57,7 +59,7 @@ trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
 trsimp[DOT[expr__]] := DiracTrace[DOT[expr] ] /; Length[{expr}] < 4;
 
 Options[FermionSpinSum] = {SpinPolarizationSum -> Identity,
-                           SpinorCollect -> False,
+                           SpinorCollect -> True,
                            ExtraFactor -> 1};
 
 (*if the expression contains spinors, apply the Dirac equation*)
