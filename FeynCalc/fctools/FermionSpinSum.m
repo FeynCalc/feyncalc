@@ -49,8 +49,7 @@ TR            = MakeContext["TR"];
 
 MakeContext [FCPrint]
 
-FRH = FixedPoint[ReleaseHold, #]&;
-dotLin[expr_] := DotSimplify[expr, Expanding -> False];
+(*FRH = FixedPoint[ReleaseHold, #]&;*)
 trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
 trsimp[DOT[expr__]] := DiracTrace[DOT[expr] ] /; Length[{expr}] < 4;
 
@@ -88,16 +87,16 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
 (* fermion polarization sums *)
             spir = { (* ubar u , vbar v *)
                      Spinor[s_. Momentum[pe1_], arg__ ]^2 :>
-                    (dotLin[spinPolarizationSum[ (DiracGamma[Momentum[pe1]] + s First[{arg}]) ] ]),
+                    (DotSimplify[spinPolarizationSum[ (DiracGamma[Momentum[pe1]] + s First[{arg}]) ], Expanding -> False]),
                     (Spinor[s_. Momentum[pe1_], arg__] . dots___ ) *
                     (dots2___ . Spinor[s_. Momentum[pe1_], arg__ ] )  :>
-                     dots2 . dotLin[spinPolarizationSum[(DiracGamma[Momentum[pe1]] +
-                                          s First[{arg}])]] . dots
+                     dots2 . DotSimplify[spinPolarizationSum[(DiracGamma[Momentum[pe1]] +
+                                          s First[{arg}])],Expanding->False] . dots
                    };
             spir2 = Spinor[s_. Momentum[pe_], arg__] . dots___ .
                     Spinor[s_. Momentum[pe_], arg__] :> DiracTrace[(
-                    dotLin[spinPolarizationSum[(DiracGamma[Momentum[pe]] +
-                                 s First[{arg}])]] . dots)        ] /;
+                    DotSimplify[spinPolarizationSum[(DiracGamma[Momentum[pe]] +
+                                 s First[{arg}])], Expanding -> False] . dots)        ] /;
                     FreeQ[{dots}, Spinor];
             dirtri = DiracTrace[n_. DOT[a1_,a2__]] DiracTrace[m_. DOT[b1_,b2__]] :>
                       DiracTrace[ DiracTrace[n DOT[a1,a2]] m DOT[b1,b2]] /;
@@ -112,7 +111,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                                  Isolate[Plus[xxx], IsolateNames -> kK,
                                  IsolateSplit -> 444I]
                              ];
-            $isoFlag = True;
+            (*$isoFlag = True;*)
             cOL[xy_] :=
                 Block[ {temP = xy, nodot = 0, ntemP},
                     FCPrint[3,"entering cOL"];
