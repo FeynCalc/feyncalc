@@ -139,24 +139,17 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
             plsphold = Unique[System`C];
 
             sufu[xyx_] :=
-                Block[ {tsuf,spif,mulEx,mulEx2,epSimp,doT, xx = xyx},
+                Block[ {tsuf, spif, mulEx, mulEx2, epSimp, doT, xx = xyx},
                     spif = Select[xx, !FreeQ[#, Spinor]&];
                     tsuf = xx / spif;
 
-                    If[ $VersionNumber > 2.2,
-                        HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
+                    HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
                             If[ !FreeQ[(extraFactor tsuf), LorentzIndex],
                                 dirtracesep[DiracSimplify[
                                 Contract[mul xy tsuf, extraFactor], Expanding -> False]//epSimp],
                                 dirtracesep[DiracSimplify[ mul extraFactor tsuf xy,Expanding -> False]//epSimp]
-                            ],
-                        HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
-                            If[ !FreeQ[(extraFactor tsuf), LorentzIndex],
-                                dirtracesep[DiracSimplify[
-                                Contract[mul xy tsuf, extraFactor], Expanding -> False]//epSimp],
-                                dirtracesep[DiracSimplify[ mul extraFactor tsuf xy,Expanding -> False]//epSimp]
-                            ]
-                    ];
+                            ];
+
                     mulEx2[xy_] := mul tsuf extraFactor xy;
                     (mulEx[(((spif)//.spir//.spir2//.dirtri) /. DiracTrace->trsimp/.
                                   trsimp->DiracTrace /. $MU->uNi )
