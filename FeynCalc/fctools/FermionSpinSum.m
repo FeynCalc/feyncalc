@@ -67,28 +67,36 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 
 
-FermionSpinSum[expr_,ops___] :=
-    Block[ {spsf,spir,spir2,dirtri, nx,nnx, is = 1, sufu,exf,
-    plsp,lis, cOL, spinorCollect},
+FermionSpinSum[expr_, opts:OptionsPattern[]] :=
+    Block[ {spinPolarizationSum,spinorCollect,extraFactor,
+        spir,spir2,dirtri, nx,nnx, is = 1, sufu, plsp,lis, cOL },
+
         nx = expr;
 
-            spsf = SpinPolarizationSum /. {ops} /. Options[FermionSpinSum];
-            exf = ExtraFactor/. {ops} /. Options[FermionSpinSum];
-            spinorCollect = SpinorCollect/. {ops} /. Options[FermionSpinSum];
+	    (* Parse options and warn about unrecognized options *)
+        Catch[
+            Check[
+                {spinPolarizationSum, extraFactor, spinorCollect} =
+                    OptionValue[{SpinPolarizationSum,ExtraFactor,SpinorCollect}],
+                FCPrint[0,"The above error occured in ",HoldComplete[FermionSpinSum[expr,opts]]];
+                Throw["Invalid options: " <> ToString[FilterRules[Flatten[{opts},1], Except[Options[FermionSpinSum]]]],"fcFermionSpinSumInvalidOptions" ],
+                OptionValue::nodef
+            ],
+            "fcFermionSpinSumInvalidOptions"];
 
 (* ----------------------------------------------------------------------------- *)
 (* fermion polarization sums *)
             spir = { (* ubar u , vbar v *)
                      Spinor[s_. Momentum[pe1_], arg__ ]^2 :>
-                    (dotLin[spsf[ (DiracGamma[Momentum[pe1]] + s First[{arg}]) ] ]),
+                    (dotLin[spinPolarizationSum[ (DiracGamma[Momentum[pe1]] + s First[{arg}]) ] ]),
                     (Spinor[s_. Momentum[pe1_], arg__] . dots___ ) *
                     (dots2___ . Spinor[s_. Momentum[pe1_], arg__ ] )  :>
-                     dots2 . dotLin[spsf[(DiracGamma[Momentum[pe1]] +
+                     dots2 . dotLin[spinPolarizationSum[(DiracGamma[Momentum[pe1]] +
                                           s First[{arg}])]] . dots
                    };
             spir2 = Spinor[s_. Momentum[pe_], arg__] . dots___ .
                     Spinor[s_. Momentum[pe_], arg__] :> DiracTrace[(
-                    dotLin[spsf[(DiracGamma[Momentum[pe]] +
+                    dotLin[spinPolarizationSum[(DiracGamma[Momentum[pe]] +
                                  s First[{arg}])]] . dots)        ] /;
                     FreeQ[{dots}, Spinor];
             dirtri = DiracTrace[n_. DOT[a1_,a2__]] DiracTrace[m_. DOT[b1_,b2__]] :>
@@ -179,20 +187,20 @@ epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
                         } /. doT -> DOT, Expanding -> False    ];
                     If[ $VersionNumber > 2.2,
                         HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
-                            If[ !FreeQ[(exf tsuf), LorentzIndex],
+                            If[ !FreeQ[(extraFactor tsuf), LorentzIndex],
                                 dirtracesep[DiracSimplify[
-                                Contract[mul xy tsuf, exf], Expanding -> False]//epSimp],
-                                dirtracesep[DiracSimplify[ mul exf tsuf xy,Expanding -> False]//epSimp]
+                                Contract[mul xy tsuf, extraFactor], Expanding -> False]//epSimp],
+                                dirtracesep[DiracSimplify[ mul extraFactor tsuf xy,Expanding -> False]//epSimp]
                             ],
                         HoldPattern[mulEx[mul_. DiracTrace[xy_]]] :=
-                            If[ !FreeQ[(exf tsuf), LorentzIndex],
+                            If[ !FreeQ[(extraFactor tsuf), LorentzIndex],
                                 dirtracesep[DiracSimplify[
-                                Contract[mul xy tsuf, exf], Expanding -> False]//epSimp],
-                                dirtracesep[DiracSimplify[ mul exf tsuf xy,Expanding -> False]//epSimp]
+                                Contract[mul xy tsuf, extraFactor], Expanding -> False]//epSimp],
+                                dirtracesep[DiracSimplify[ mul extraFactor tsuf xy,Expanding -> False]//epSimp]
                             ]
                     ];
                     mulEx2[ xy_ ] :=
-                        mul tsuf exf xy;
+                        mul tsuf extraFactor xy;
                     (mulEx[(((spif)//.spir//.spir2//.dirtri) /. DiracTrace->trsimp/.
                                   trsimp->DiracTrace /. $MU->uNi )
                           ] /.mulEx->mulEx2
@@ -232,11 +240,11 @@ epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
           (* in case somthing went wrong .. *)
             If[ nx =!= 0 && FreeQ[nx, DiracTrace],
                 Print["MIST"];(*Dialog[];*)
-                nx = expr exf
+                nx = expr extraFactor
             ];
 (*
-If[!FreeQ2[exf, {LorentzIndex, Eps}],
-    nx = Contract[ nx exf ], nx = nx exf ];
+If[!FreeQ2[extraFactor, {LorentzIndex, Eps}],
+    nx = Contract[ nx extraFactor ], nx = nx extraFactor ];
 *)
         nx/.mul->1
     ]/; !FreeQ[expr,Spinor];
