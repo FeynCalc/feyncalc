@@ -50,20 +50,28 @@ TR            = MakeContext["TR"];
 MakeContext [FCPrint]
 
 FRH = FixedPoint[ReleaseHold, #]&;
-dotLin[x_] := DotSimplify[x, Expanding -> False];
+dotLin[expr_] := DotSimplify[expr, Expanding -> False];
 trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
-trsimp[DOT[d__]] := DiracTrace[DOT[d] ] /; Length[{d}] < 4;
+trsimp[DOT[expr__]] := DiracTrace[DOT[expr] ] /; Length[{expr}] < 4;
 
 Options[FermionSpinSum] = {SpinPolarizationSum -> Identity,
                            SpinorCollect -> False,
                            ExtraFactor -> 1};
 
+(*if the expression contains spinors, apply the Dirac equation*)
 
-FermionSpinSum[x_,ops___] :=
+
+FermionSpinSum[expr_Plus, opts:OptionsPattern[]]:= Map[FermionSpinSum[#,opts]&,expr];
+FermionSpinSum[expr_List, opts:OptionsPattern[]]:= Map[FermionSpinSum[#,opts]&,expr];
+FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; FreeQ[expr,Spinor];
+
+
+
+FermionSpinSum[expr_,ops___] :=
     Block[ {spsf,spir,spir2,dirtri, nx,nnx, is = 1, sufu,exf,
     plsp,lis, cOL, spinorCollect},
-        nx = x;
-        If[ !FreeQ[x, Spinor],
+        nx = expr;
+
             spsf = SpinPolarizationSum /. {ops} /. Options[FermionSpinSum];
             exf = ExtraFactor/. {ops} /. Options[FermionSpinSum];
             spinorCollect = SpinorCollect/. {ops} /. Options[FermionSpinSum];
@@ -224,15 +232,14 @@ epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
           (* in case somthing went wrong .. *)
             If[ nx =!= 0 && FreeQ[nx, DiracTrace],
                 Print["MIST"];(*Dialog[];*)
-                nx = x exf
+                nx = expr exf
             ];
-        ](* endIfFreeQ[x, Spinor]*);
 (*
 If[!FreeQ2[exf, {LorentzIndex, Eps}],
     nx = Contract[ nx exf ], nx = nx exf ];
 *)
         nx/.mul->1
-    ];
+    ]/; !FreeQ[expr,Spinor];
 
 End[];
 EndPackage[];
