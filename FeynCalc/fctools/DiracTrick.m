@@ -29,7 +29,7 @@ Begin["`Private`"];
 DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 DiracGammaT = MakeContext["CoreObjects","DiracGammaT"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-LorentzIndex = MakeContext["CoreObjects","SUNT"];
+SUNT = MakeContext["CoreObjects","SUNT"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 expanding := expanding = MakeContext["CoreOptions","Expanding"];
