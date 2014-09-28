@@ -1,15 +1,18 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-(* :Title: FermionSpinSum *)
 
-(* :Author: Rolf Mertig *)
+(* :Title: FermionSpinSum												*)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Do the trace-formation (i.e. fermionic spin-sums) *)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:58 *)
-(* ------------------------------------------------------------------------ *)
 
-(* :Summary: do the trace-formation (i.e. fermionic spin-sums) *)
-
-(* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctools`FermionSpinSum`",{"HighEnergyPhysics`FeynCalc`"}];
 
