@@ -100,7 +100,7 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 FermionSpinSum[expr_, opts:OptionsPattern[]] :=
     Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-        spir,spir2,dirtri,nx, nnx, is = 1, sufu, lis },
+        spir,spir2,dirtri,nx, is = 1, sufu, lis },
 
         nx = expr;
 
@@ -189,11 +189,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
 
             If[ Head[nx] === Plus,
                 lis = Length[nx];
-                nnx = 0;
-                For[iin = 1, iin <= lis , iin++,
-                    nnx = nnx + sufu[nx[[iin]]];
-		        ];
-                nx = nnx,
+                nx = Map[sufu, nx],
                 lis = 1;
                 nx = sufu[nx]
             ];
