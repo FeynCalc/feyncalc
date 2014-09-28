@@ -100,7 +100,7 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 FermionSpinSum[expr_, opts:OptionsPattern[]] :=
     Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-        spir,spir2,dirtri,nx, nnx, is = 1, sufu, plsp,lis },
+        spir,spir2,dirtri,nx, nnx, is = 1, sufu, lis },
 
         nx = expr;
 
@@ -170,17 +170,17 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                     )
                 ]; (* endofsufu *)
 
-            plsp[xyx__] :=
-                If[ FreeQ[{xyx}, Spinor],
-                    plsphold[xyx],
-                    Plus[xyx]
-                ];
+			(* Entry point of the function *)
 
             If[ spinorCollect === True,
-                FCPrint[2,"collectinsufu"];
-                nx = Collect2[nx /. Plus -> plsp, Spinor, Factoring -> False
+                FCPrint[2,"Collecting terms w.r.t spinors in   ", nx];
+                nx = Collect2[nx /. {Plus[xyx__] :>
+                    If[ FreeQ[{xyx}, Spinor],
+                    plsphold[xyx],
+                    Plus[xyx]
+                ]}, Spinor, Factoring -> False
                              ] /. plsphold -> Plus;
-                FCPrint[2,"collectinsufudone"];
+                FCPrint[2,"Collecting terms w.r.t spinors done:   ", nx];
             ];
 
             If[ !FreeQ[ nx, $MU],
