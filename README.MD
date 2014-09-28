@@ -69,7 +69,7 @@ your *HighEnergyPhysics* directory.
 
 * A dialog asking if you want to patch FeynArts will appear. Type *yes* and hit OK. Wait until the patching function finishes.
 
-* Restart Mathematica and try to load just FeynCalc and FeynArts. There should be warning messages of any kind.
+* Restart Mathematica and try to load just FeynCalc and FeynArts. There should be no warning messages of any kind.
 
     ```$LoadPhi = False; ```
 
@@ -78,6 +78,16 @@ your *HighEnergyPhysics* directory.
     ```$LoadFeynArts = True;```
 
     ```<< HighEnergyPhysics`FeynCalc`; ```
+
+* Note that you can still use the unpatched version of FeynArts that comes with FormCalc. When you issue
+
+    ``` << FeynArts` ```
+
+    Mathematica will load the original FeynArts version from your *$UserAddOnsDirectory* directory. The version
+    patched for FeynCalc resides inside the *HighEnergyPhysics* directory and is loaded only from FeynCalc. The only
+    limitation is that you should never load FeynArts+FormCalc and FeynArts+FeynCalc in the same session or run them
+    on the same Mathematica kernel.
+
 
 # Bugs
 
