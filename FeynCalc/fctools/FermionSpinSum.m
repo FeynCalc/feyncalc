@@ -59,6 +59,21 @@ Options[FermionSpinSum] = {SpinPolarizationSum -> Identity,
 
 (*if the expression contains spinors, apply the Dirac equation*)
 
+cOL[xy_] :=
+    Block[ {temP = xy, nodot = 0, ntemP},
+        FCPrint[3,"entering cOL"];
+        If[ Head[temP] === Plus,
+            nodot = Select[temP, FreeQ[#, DOT]&];
+            temP = temP - nodot;
+            nodot = nodot/. {a_ DiracGamma[5] :> 0 /;
+                     FreeQ[a, DiracGamma]};
+        ];
+        temP = Collect2[temP, DiracGamma, Factoring -> False];
+        FCPrint[3,"collected in cOL"];
+        FCPrint[3,"exiting cOL"];
+        temP + nodot
+    ];
+
 
 FermionSpinSum[expr_Plus, opts:OptionsPattern[]]:= Map[FermionSpinSum[#,opts]&,expr];
 FermionSpinSum[expr_List, opts:OptionsPattern[]]:= Map[FermionSpinSum[#,opts]&,expr];
@@ -68,7 +83,7 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 FermionSpinSum[expr_, opts:OptionsPattern[]] :=
     Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-        spir,spir2,dirtri, nx,nnx, is = 1, sufu, plsp,lis, cOL },
+        spir,spir2,dirtri, nx,nnx, is = 1, sufu, plsp,lis },
 
         nx = expr;
 
@@ -104,59 +119,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                         Head[n] =!= DOT && Head[m] =!= DOT;
 (* ----------------------------------------------------------------------------- *)
             uNi = Unique[System`C];
-            (*kK = Unique[System`C];
-            pliui[xxx__] :=
-                pliui[xxx] = If[ Length[{xxx}] < 5,
-                                 Isolate[Factor2[Plus[xxx]]],
-                                 Isolate[Plus[xxx], IsolateNames -> kK,
-                                 IsolateSplit -> 444I]
-                             ];*)
-            (*$isoFlag = True;*)
-            cOL[xy_] :=
-                Block[ {temP = xy, nodot = 0, ntemP},
-                    FCPrint[3,"entering cOL"];
-                    temp0 = temP;
-                    If[ Head[temP] === Plus,
-                        nodot = Select[temP, FreeQ[#, DOT]&];
-                        temP = temP - nodot;
-                        nodot = nodot/. {a_ DiracGamma[5] :> 0 /;
-                                 FreeQ[a, DiracGamma]};
-                    ];
- (*
- If[$isoFlag,
-                    If[Head[temP] === Plus,
-                       temP = Map[#/.Plus -> pliui&, temP],
-                       temP = temP /. Plus -> pliui;
-                      ];
-   ];
- *)
-                    temp1 = temP;
-                    temP = Collect2[temP, DiracGamma, Factoring -> False];
-                    FCPrint[3,"collected in cOL"];
-                    (*
-                                       If[Head[temP] === Plus,
-                    (* this step by step factorization is ESSENTIAL!!!!! *)
-                    (* because this bloody Mma is not able to it directly ...*)
-                                          ntemP = 0;  lntemP = Length[temP];
-                                          For[ijn = 1, ijn <= Length[temP], ijn++,
-                                              print3["ijn = ",ijn,"(", lntemP,")"];
-                    If[$isoFlag,
-                                              ntemP = ntemP + Factor2[FRH[Factor2[temP[[ijn]]]]]
-                               ,              ntemP = ntemP + Factor2[temP[[ijn]]]
-                      ];
 
-
-                                             ];
-                                          temP = ntemP ,
-                    If[$isoFlag,
-                                          temP = Factor2[Factor2[temP]//FRH],
-                                          temP = Factor2[temP]
-                      ]
-                                         ];
-                    *)
-                    FCPrint[3,"exiting cOL"];
-                    temP + nodot
-                ];
             dirtracesep[xy_] :=
                 If[ Head[xy] =!= Times,
                     DiracTrace[xy//cOL],
@@ -174,9 +137,7 @@ FermionSpinSum[expr_, opts:OptionsPattern[]] :=
                     ];
                     spif = Select[xx, !FreeQ[#, Spinor]&];
                     tsuf = xx / spif;
-(*
-epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
-*)
+
                     epSimp[xxx_] :=
                         DiracSimplify[DiracOrder[xxx] /. DOT -> doT /.
                         {doT[a__, DiracGamma[5]] :> 0 /; Length[{a}] < 4,
@@ -206,9 +167,7 @@ epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
                     )
                 ]; (* endofsufu *)
 
-            (*
-             nx = Expand[nx, Spinor];
-            *)
+
             plsphold = Unique[System`C];
             plsp[xyx__] :=
                 If[ FreeQ[{xyx}, Spinor],
@@ -241,10 +200,7 @@ epSimp[xxx_] := If[FreeQ[xxx, Eps], xxx, DiracSimplify[xxx]];
                 Print["MIST"];(*Dialog[];*)
                 nx = expr extraFactor
             ];
-(*
-If[!FreeQ2[extraFactor, {LorentzIndex, Eps}],
-    nx = Contract[ nx extraFactor ], nx = nx extraFactor ];
-*)
+
         nx/.mul->1
     ]/; !FreeQ[expr,Spinor];
 
