@@ -9,7 +9,9 @@ For a descrition of FeynCalc, please see http://www.feyncalc.org/.
 This software is covered by the GNU Lesser General Public License 3.
 
 Copyright (C) 1990-2014 Rolf Mertig
+
 Copyright (C) 1997-2014 Frederik Orellana
+
 Copyright (C) 2014      Vladyslav Shtabovenko
 
 This program is free software: you can redistribute it and/or modify
@@ -32,6 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * To obtain the latest **stable** version of FeynCalc go to the [release](https://github.com/FeynCalc/feyncalc/releases) section
 and download the most recent *Release_X_X_X_X.zip* file. Copy the
 *FeynCalc* directory from the zip file in the directory to which *$UserAddOnsDirectory* is set (evaluate *$UserAddOnsDirectory* in Mathematica).
+Finally, Rename *FeynCalc* to *HighEnergyPhysics*.
 
 * Start Mathematica.
 * Choose 'Rebuild Help Index' from the 'Help' menu.
@@ -49,6 +52,32 @@ the public FeynCalc repository
     `git clone https://github.com/FeynCalc/feyncalc.git`
 
 * Please note that the development version may contain bugs and incomplete or untested features.
+
+## FeynArts
+* To use FeynArts together with FeynCalc, download the [latest version](http://www.feynarts.de/) and put *FeynArts-X.X* into
+your *HighEnergyPhysics* directory.
+
+* Start Mathematica and type
+
+    ```$LoadPhi = True; ```
+
+    ```$LoadTARCER = False;```
+
+    ```$LoadFeynArts = True;```
+
+    ```<< HighEnergyPhysics`FeynCalc`; ```
+
+* A dialog asking if you want to patch FeynArts will appear. Type *yes* and hit OK. Wait until the patching function finishes.
+
+* Restart Mathematica and try to load just FeynCalc and FeynArts. There should be warning messages of any kind.
+
+    ```$LoadPhi = False; ```
+
+    ```$LoadTARCER = False;```
+
+    ```$LoadFeynArts = True;```
+
+    ```<< HighEnergyPhysics`FeynCalc`; ```
 
 # Bugs
 
