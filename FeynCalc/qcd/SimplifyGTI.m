@@ -59,7 +59,7 @@ sg[z_] := Expand[z /. gti->gtis];
 gtis[z__] := gtis[z] = Expand[gti[z]/.gtirules];
 *)
 sg[z_] := z /. gti->gtis;
-gtis[z__] := gtis[z] = gti[z]/.gtirules/.D->4+Epsilon;;
+gtis[z__] := gtis[z] = gti[z]/.gtirules/.D->4+Epsilon;
 (*
 gtis[z__] := gtis[z] = eExpand[gti[z]/.gtirules/.gtirules/.gtirules];
 *)

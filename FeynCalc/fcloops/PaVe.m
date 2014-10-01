@@ -8,7 +8,7 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: scalar integral *) 
+(* :Summary: scalar integral *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,7 +28,7 @@ for the scalar integrals.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 ClearAttributes[PaVe, ReadProtectecd];
 
@@ -48,7 +48,7 @@ small = MakeContext["CoreObjects","SmallVariable"];
 (* but a non-zero coefficient of g_munu *)
  PaVe[0,0,{},{m2_}] := (m2/4 A0[m2] + m2^2/8) /; $LimitTo4 === True;
  PaVe[0, {p_}, {m1_, m2_}] := B0[p, m1, m2];
- PaVe[0,0,{p_},{m1_,m2_}]  := B00[p,m1,m2] /; $LimitTo4 === True;;
+ PaVe[0,0,{p_},{m1_,m2_}]  := B00[p,m1,m2] /; $LimitTo4 === True;
  PaVe[1,1,{pp_},{mm1_,mm2_}]  := B11[pp,mm1,mm2] /; $LimitTo4 === True;
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
@@ -86,7 +86,7 @@ PaVe[2,2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}]:=
      Count[{x}, 3] > Count[{x}, 2];
 
 (* in order to canonize the C0's  (args:   p1^2, (p2-p1)^2, p2^2)  *)
- PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}] := 
+ PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}] :=
    cord[p10, p12, p20,m1,m2,m3];
  PaVe[0, {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}]:=
    D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4](*//PaVeOrder*);
@@ -103,7 +103,7 @@ PaVe[2,2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}]:=
        six =  {te}/. small->sma;
        If[FreeQ[six, sma],
           arg = argu,
-          smalist = Select[Variables[six/.Power->pw], 
+          smalist = Select[Variables[six/.Power->pw],
                            (!FreeQ[#, sma])&]/.pw->Power;
           If[!FreeQ[smalist, Power],
              arg = (argu/.small->Identity) /.
