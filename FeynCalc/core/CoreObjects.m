@@ -451,8 +451,6 @@ Conjugate[x_Pair] := (x /.
     {Polarization[k_, a_, in___] :> Polarization[k, Conjugate[a], in]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
-initialDownValues = DownValues[Pair];
-
 SetAttributes[DiracGamma, Constant];
 SetAttributes[ExplicitLorentzIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
@@ -1799,7 +1797,7 @@ SUNT /:
            ] := RowBox[ Map[SubscriptBox["T",
                ToBoxes[#, TraditionalForm]]&, {a, b}] ];
 
-
+initialDownValues = DownValues[Pair];
 
 End[];
 EndPackage[];
