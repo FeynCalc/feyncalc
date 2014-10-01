@@ -1,10 +1,15 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DotExpand.mt *)
+(* :Title: DotExpand.mt                                                     *)
 
-(* :Author: Vladyslav Shtaboveno *)
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
 
-(* :Summary:  Unit tests for the DotExpand function via MUnit      *)
+(* :Summary:  Unit tests for DotExpand                                      *)
 
 (* ------------------------------------------------------------------------ *)
 

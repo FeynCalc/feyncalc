@@ -1,557 +1,562 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DotExpand.test *)
+(* :Title: DotExpand.test                                                   *)
 
-(* :Author: Vladyslav Shtaboveno *)
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
 
-(* :Summary:  Framework independent unit tests for the DotExpand function      *)
+(* :Summary:  Framework independent unit tests for DotExpand                *)
 
 (* ------------------------------------------------------------------------ *)
 
-fcstDotExpandOnePlusOnlyNonComm = {{"fcstDotExpandOnePlusOnlyNonComm-ID1", 
-  "DotExpand[GA[i] . GA[j] . (GA[k] + GA[l]) . GA[m] . GA[n]]", 
+fcstDotExpandOnePlusOnlyNonComm = {{"fcstDotExpandOnePlusOnlyNonComm-ID1",
+  "DotExpand[GA[i] . GA[j] . (GA[k] + GA[l]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + GA[i] . GA[j] . GA[l] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID2", 
-  "DotExpand[(GA[i] + GA[j]) . GA[k] . GA[l] . GA[m] . GA[n]]", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID2",
+  "DotExpand[(GA[i] + GA[j]) . GA[k] . GA[l] . GA[m] . GA[n]]",
   "GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + GA[j] . GA[k] . GA[l] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID3", 
-  "DotExpand[GA[i] . GA[j] . GA[k] . GA[l] . (GA[m] + GA[n])]", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID3",
+  "DotExpand[GA[i] . GA[j] . GA[k] . GA[l] . (GA[m] + GA[n])]",
   "GA[i] . GA[j] . GA[k] . GA[l] . GA[m] + GA[i] . GA[j] . GA[k] . \
-GA[l] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID4", 
-  "DotExpand[(gE*GA[i] . GA[j]) . (GA[k] + GA[l]) . GA[m] . GA[n]]", 
+GA[l] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID4",
+  "DotExpand[(gE*GA[i] . GA[j]) . (GA[k] + GA[l]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gE*GA[i] . GA[j] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID5", 
-  "DotExpand[GA[i] . GA[j] . (GA[k] + GA[l]) . (gE*GA[m] . GA[n])]", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID5",
+  "DotExpand[GA[i] . GA[j] . (GA[k] + GA[l]) . (gE*GA[m] . GA[n])]",
   "gE*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gE*GA[i] . GA[j] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID6", 
-  "DotExpand[GA[i] . GA[j] . (gE*GA[k] + GA[l]) . GA[m] . GA[n]]", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID6",
+  "DotExpand[GA[i] . GA[j] . (gE*GA[k] + GA[l]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + GA[i] . GA[j] . GA[l] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID7", 
-  "DotExpand[GA[i] . GA[j] . (GA[k] + gE*GA[l]) . GA[m] . GA[n]]", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID7",
+  "DotExpand[GA[i] . GA[j] . (GA[k] + gE*GA[l]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gE*GA[i] . GA[j] . GA[l] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID8", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID8",
   "DotExpand[(gE*GA[i] . GA[j]) . (GA[k] + GA[l]) . (gS*GA[m] . \
-GA[n])]", 
+GA[n])]",
   "gE*gS*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gE*gS*GA[i] . GA[j] \
-. GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID9", 
-  "DotExpand[GA[i] . GA[j] . (gE*GA[k] + gS*GA[l]) . GA[m] . GA[n]]", 
+. GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID9",
+  "DotExpand[GA[i] . GA[j] . (gE*GA[k] + gS*GA[l]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gS*GA[i] . GA[j] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID10", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID10",
   "DotExpand[(MC*GA[i] . GA[j]) . (gE*GA[k] + gS*GA[l]) . GA[m] . \
 GA[n]]", "gE*MC*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gS*MC*GA[i] . \
 GA[j] . GA[l] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID11", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID11",
   "DotExpand[(MC*GA[i] . GA[j]) . (gE*GA[k] + gS*GA[l]) . (MU*GA[m] . \
-GA[n])]", 
+GA[n])]",
   "gE*MC*MU*GA[i] . GA[j] . GA[k] . GA[m] . GA[n] + gS*MC*MU*GA[i] . \
 GA[j] . GA[l] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID12", 
-  "DotExpand[(GA[i] + GA[j]) . (gE*GA[k] . GA[l] . GA[m] . GA[n])]", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID12",
+  "DotExpand[(GA[i] + GA[j]) . (gE*GA[k] . GA[l] . GA[m] . GA[n])]",
   "gE*GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + gE*GA[j] . GA[k] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID13", 
-  "DotExpand[(GA[i] + GA[j]) . GA[k] . GA[l] . (gE*GA[m] . GA[n])]", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID13",
+  "DotExpand[(GA[i] + GA[j]) . GA[k] . GA[l] . (gE*GA[m] . GA[n])]",
   "gE*GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + gE*GA[j] . GA[k] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID14", 
-  "DotExpand[(gE*GA[i] + GA[j]) . GA[k] . GA[l] . GA[m] . GA[n]]", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID14",
+  "DotExpand[(gE*GA[i] + GA[j]) . GA[k] . GA[l] . GA[m] . GA[n]]",
   "gE*GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + GA[j] . GA[k] . GA[l] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID15", 
-  "DotExpand[(GA[i] + gE*GA[j]) . GA[k] . GA[l] . GA[m] . GA[n]]", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID15",
+  "DotExpand[(GA[i] + gE*GA[j]) . GA[k] . GA[l] . GA[m] . GA[n]]",
   "GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + gE*GA[j] . GA[k] . GA[l] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID16", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID16",
   "DotExpand[(GA[i] + gE*GA[j]) . (gS*GA[k] . GA[l] . GA[m] . \
-GA[n])]", 
+GA[n])]",
   "gS*GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + gE*gS*GA[j] . GA[k] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID17", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID17",
   "DotExpand[(gE*GA[i] + GA[j]) . (gS*GA[k] . GA[l] . GA[m] . \
-GA[n])]", 
+GA[n])]",
   "gE*gS*GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + gS*GA[j] . GA[k] . \
-GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID18", 
+GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID18",
   "DotExpand[(MC*GA[i] + gE*GA[j]) . (gS*GA[k] . GA[l] . GA[m] . \
-GA[n])]", 
+GA[n])]",
   "gS*MC*GA[i] . GA[k] . GA[l] . GA[m] . GA[n] + gE*gS*GA[j] . GA[k] \
-. GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID19", 
-  "DotExpand[(gE*GA[k] . GA[l] . GA[m] . GA[n]) . (GA[i] + GA[j])]", 
+. GA[l] . GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID19",
+  "DotExpand[(gE*GA[k] . GA[l] . GA[m] . GA[n]) . (GA[i] + GA[j])]",
   "gE*GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + gE*GA[k] . GA[l] . \
-GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID20", 
+GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID20",
   "DotExpand[GA[k] . GA[l] . (gE*GA[m] . GA[n]) . (gE*GA[i] + \
-GA[j])]", 
+GA[j])]",
   "gE^2*GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + gE*GA[k] . GA[l] . \
-GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID21", 
-  "DotExpand[GA[k] . GA[l] . GA[m] . GA[n] . (gE*GA[i] + GA[j])]", 
+GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID21",
+  "DotExpand[GA[k] . GA[l] . GA[m] . GA[n] . (gE*GA[i] + GA[j])]",
   "gE*GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + GA[k] . GA[l] . GA[m] . \
-GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID22", 
-  "DotExpand[GA[k] . GA[l] . GA[m] . GA[n] . (GA[i] + gE*GA[j])]", 
+GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID22",
+  "DotExpand[GA[k] . GA[l] . GA[m] . GA[n] . (GA[i] + gE*GA[j])]",
   "GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + gE*GA[k] . GA[l] . GA[m] . \
-GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID23", 
+GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID23",
   "DotExpand[(gS*GA[k] . GA[l] . GA[m] . GA[n]) . (GA[i] + \
-gE*GA[j])]", 
+gE*GA[j])]",
   "gS*GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + gE*gS*GA[k] . GA[l] . \
-GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID24", 
+GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID24",
   "DotExpand[(gS*GA[k] . GA[l] . GA[m] . GA[n]) . (gE*GA[i] + \
-GA[j])]", 
+GA[j])]",
   "gE*gS*GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + gS*GA[k] . GA[l] . \
-GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID25", 
+GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID25",
   "DotExpand[(gS*GA[k] . GA[l] . GA[m] . GA[n]) . (MC*GA[i] + \
-gE*GA[j])]", 
+gE*GA[j])]",
   "gS*MC*GA[k] . GA[l] . GA[m] . GA[n] . GA[i] + gE*gS*GA[k] . GA[l] \
-. GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID26", 
+. GA[m] . GA[n] . GA[j]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID26",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n]]", 
+GA[l]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID27", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID27",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n]]", 
+GA[l]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID28", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID28",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] . SUNT[c, d] + \
-GA[k]) . GA[m] . GA[n]]", 
+GA[k]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID29", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID29",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] . SUNT[c, d] + \
-GA[k]) . GA[m] . GA[n]]", 
+GA[k]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID30", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID30",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + GA[k]*SUNT[c, d]) \
-. GA[m] . GA[n]]", 
+. GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID31", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID31",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] + GA[k]*SUNT[c, d]) \
-. GA[m] . GA[n]]", 
+. GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID32", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID32",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] + GA[l]*SUNT[c, d]) \
-. GA[m] . GA[n]]", 
+. GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID33", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID33",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] + GA[l]*SUNT[c, d]) \
-. GA[m] . GA[n]]", 
+. GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] + GA[i] . GA[j] \
 . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID34", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID34",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . GA[m] . GA[n]]", 
+. SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID35", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID35",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . GA[m] . GA[n]]", 
+. SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID36", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID36",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . GA[m] . GA[n]]", 
+. SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID37", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID37",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID38", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID38",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID39", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID39",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID40", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID40",
   "DotExpand[GA[i] . GA[j] . (GA[k] . SUNT[c, d] + GA[l]) . (GA[m] . \
-GA[n]*SUNT[a, b])]", 
+GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[l] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID41", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID41",
   "DotExpand[GA[i] . GA[j] . (GA[k] . SUNT[c, d] + GA[l]) . GA[m] . \
-GA[n] . SUNT[a, b]]", 
+GA[n] . SUNT[a, b]]",
   "GA[i] . GA[j] . GA[l] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID42", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID42",
   "DotExpand[GA[i] . GA[j] . (GA[l] . SUNT[c, d] + GA[k]) . (GA[m] . \
-GA[n]*SUNT[a, b])]", 
+GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[k] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[l] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID43", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID43",
   "DotExpand[GA[i] . GA[j] . (GA[l] . SUNT[c, d] + GA[k]) . GA[m] . \
-GA[n] . SUNT[a, b]]", 
+GA[n] . SUNT[a, b]]",
   "GA[i] . GA[j] . GA[k] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[l] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID44", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID44",
   "DotExpand[GA[i] . GA[j] . (GA[l] + GA[k]*SUNT[c, d]) . (GA[m] . \
-GA[n]*SUNT[a, b])]", 
+GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[l] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID45", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID45",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] + GA[k]*SUNT[c, d]) \
-. GA[m] . GA[n] . SUNT[a, b]]", 
+. GA[m] . GA[n] . SUNT[a, b]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[a, b]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID46", 
+SUNT[a, b]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID46",
   "DotExpand[GA[i] . GA[j] . (GA[k] + GA[l]*SUNT[c, d]) . (GA[m] . \
-GA[n]*SUNT[a, b])]", 
+GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[k] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[l] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID47", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID47",
   "DotExpand[GA[i] . GA[j] . (GA[k] + GA[l]*SUNT[c, d]) . GA[m] . \
-GA[n] . SUNT[a, b]]", 
+GA[n] . SUNT[a, b]]",
   "GA[i] . GA[j] . GA[k] . GA[m] . GA[n] . SUNT[a, b] + GA[i] . GA[j] \
 . GA[l] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID48", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID48",
   "DotExpand[GA[i] . GA[j] . (GA[k] . SUNT[c, d] + GA[l] . SUNT[e, \
-f]) . (GA[m] . GA[n]*SUNT[a, b])]", 
+f]) . (GA[m] . GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . GA[l] . SUNT[e, f] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID49", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID49",
   "DotExpand[GA[i] . GA[j] . (GA[k] . SUNT[c, d] + GA[l] . SUNT[e, \
-f]) . GA[m] . GA[n] . SUNT[a, b]]", 
+f]) . GA[m] . GA[n] . SUNT[a, b]]",
   "GA[i] . GA[j] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . GA[l] . SUNT[e, f] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID50", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID50",
   "DotExpand[GA[i] . GA[j] . (GA[k] . SUNT[c, d] + GA[l] . SUNT[e, \
-f]) . (GA[m] . GA[n]*SUNT[a, b])]", 
+f]) . (GA[m] . GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . GA[l] . SUNT[e, f] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID51", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID51",
   "DotExpand[GA[i] . GA[j] . (GA[k]*SUNT[c, d] + GA[l]*SUNT[e, f]) . \
-(GA[m] . GA[n]*SUNT[a, b])]", 
+(GA[m] . GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . GA[l] . SUNT[e, f] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID52", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID52",
   "DotExpand[GA[i] . GA[j] . (GA[k]*SUNT[c, d] + GA[l]*SUNT[e, f]) . \
-GA[m] . GA[n] . SUNT[a, b]]", 
+GA[m] . GA[n] . SUNT[a, b]]",
   "GA[i] . GA[j] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . GA[l] . SUNT[e, f] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID53", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID53",
   "DotExpand[GA[i] . GA[j] . (GA[k]*SUNT[c, d] + GA[l]*SUNT[e, f]) . \
-(GA[m] . GA[n]*SUNT[a, b])]", 
+(GA[m] . GA[n]*SUNT[a, b])]",
   "GA[i] . GA[j] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . SUNT[a, b] + \
 GA[i] . GA[j] . GA[l] . SUNT[e, f] . GA[m] . GA[n] . SUNT[a, b]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID54", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID54",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] + GA[l]) . GA[m] . \
-GA[n] . SUNT[c, d]]", 
+GA[n] . SUNT[c, d]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[c, d] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[c, d]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID55", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID55",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] + GA[l]) . (GA[m] . \
-GA[n]*SUNT[c, d])]", 
+GA[n]*SUNT[c, d])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[c, d] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[c, d]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID56", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID56",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] + GA[l]) . (GA[m] . \
-GA[n]*SUNT[c, d])]", 
+GA[n]*SUNT[c, d])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[c, d] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[c, d]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID57", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID57",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] + GA[l]) . GA[m] . \
-GA[n] . SUNT[c, d]]", 
+GA[n] . SUNT[c, d]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[c, d] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[c, d]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID58", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID58",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+GA[l]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID59", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID59",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[l]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID60", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID60",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[l]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID61", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID61",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[l]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID62", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID62",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] . SUNT[c, d] + \
-GA[k]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+GA[k]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID63", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID63",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] . SUNT[c, d] + \
-GA[k]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[k]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID64", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID64",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] . SUNT[c, d] + \
-GA[k]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[k]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID65", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID65",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] . SUNT[c, d] + \
-GA[k]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+GA[k]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID66", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID66",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + GA[k]*SUNT[c, d]) \
-. (GA[m] . GA[n]*SUNT[e, f])]", 
+. (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID67", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID67",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] + GA[k]*SUNT[c, d]) \
-. GA[m] . GA[n] . SUNT[e, f]]", 
+. GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID68", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID68",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + GA[k]*SUNT[c, d]) \
-. GA[m] . GA[n] . SUNT[e, f]]", 
+. GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID69", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID69",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[l] + GA[k]*SUNT[c, d]) \
-. (GA[m] . GA[n]*SUNT[e, f])]", 
+. (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID70", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID70",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] + GA[l]*SUNT[c, d]) \
-. (GA[m] . GA[n]*SUNT[e, f])]", 
+. (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID71", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID71",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] + GA[l]*SUNT[c, d]) \
-. GA[m] . GA[n] . SUNT[e, f]]", 
+. GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID72", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID72",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] + GA[l]*SUNT[c, d]) \
-. GA[m] . GA[n] . SUNT[e, f]]", 
+. GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID73", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID73",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] + GA[l]*SUNT[c, d]) \
-. (GA[m] . GA[n]*SUNT[e, f])]", 
+. (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . GA[m] . GA[n] . SUNT[e, f] + \
 GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[c, d] . GA[m] . GA[n] . \
-SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID74", 
+SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID74",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+. SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID75", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID75",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]", 
+. SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID76", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID76",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]", 
+. SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID77", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID77",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+. SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID78", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID78",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+GA[l]*SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID79", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID79",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID80", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID80",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n] . SUNT[e, f]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID81", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID81",
   "DotExpand[GA[i] . GA[j] . SUNT[a, b] . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]", 
+GA[l]*SUNT[e, f]) . (GA[m] . GA[n]*SUNT[e, f])]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] . \
 SUNT[e, f] + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID82", 
+. GA[n] . SUNT[e, f]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID82",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n]]", 
+GA[l]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID83", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID83",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . (gE*GA[m] . GA[n])]", 
+GA[l]) . (gE*GA[m] . GA[n])]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID84", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID84",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-GA[l]) . GA[m] . GA[n]]", 
+GA[l]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID85", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID85",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . (gE*SUNT[c, d]) + \
-GA[l]) . GA[m] . GA[n]]", 
+GA[l]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID86", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID86",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l]) . (gS*GA[m] . GA[n])]", 
+GA[l]) . (gS*GA[m] . GA[n])]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID87", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID87",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-gS*GA[l]) . GA[m] . GA[n]]", 
+gS*GA[l]) . GA[m] . GA[n]]",
   "gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID88", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID88",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-gS*GA[l]) . GA[m] . GA[n]]", 
+gS*GA[l]) . GA[m] . GA[n]]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID89", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID89",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-GA[l]) . (gS*GA[m] . GA[n])]", 
+GA[l]) . (gS*GA[m] . GA[n])]",
   "gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID90", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID90",
   "DotExpand[(gA*GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-gB*GA[l]) . (gS*GA[m] . GA[n])]", 
+gB*GA[l]) . (gS*GA[m] . GA[n])]",
   "gA*gB*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gA*gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID91", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID91",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + GA[k]*SUNT[c, \
-d]) . GA[m] . GA[n]]", 
+d]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID92", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID92",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + GA[k]*SUNT[c, d]) \
-. (gE*GA[m] . GA[n])]", 
+. (gE*GA[m] . GA[n])]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID93", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID93",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + gE*GA[k]*SUNT[c, \
-d]) . GA[m] . GA[n]]", 
+d]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID94", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID94",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[l] + GA[k]*SUNT[c, \
-d]) . GA[m] . GA[n]]", 
+d]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID95", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID95",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + GA[k]*SUNT[c, \
-d]) . (gS*GA[m] . GA[n])]", 
+d]) . (gS*GA[m] . GA[n])]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID96", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID96",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gS*GA[l] + \
-gE*GA[k]*SUNT[c, d]) . GA[m] . GA[n]]", 
+gE*GA[k]*SUNT[c, d]) . GA[m] . GA[n]]",
   "gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + gE*GA[i] . \
 GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID97", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID97",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (gS*GA[l] + \
-GA[k]*SUNT[c, d]) . GA[m] . GA[n]]", 
+GA[k]*SUNT[c, d]) . GA[m] . GA[n]]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID98", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID98",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[l] + gE*GA[k]*SUNT[c, \
-d]) . (gS*GA[m] . GA[n])]", 
+d]) . (gS*GA[m] . GA[n])]",
   "gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID99", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID99",
   "DotExpand[(gA*GA[i] . GA[j]*SUNT[a, b]) . (gB*GA[l] + \
-gE*GA[k]*SUNT[c, d]) . (gS*GA[m] . GA[n])]", 
+gE*GA[k]*SUNT[c, d]) . (gS*GA[m] . GA[n])]",
   "gA*gB*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . GA[m] . GA[n] + \
 gA*gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID100", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID100",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l] . SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l] . SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID101", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID101",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + GA[l] \
-. SUNT[e, f]) . (gE*GA[m] . GA[n])]", 
+. SUNT[e, f]) . (gE*GA[m] . GA[n])]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID102", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID102",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-GA[l] . SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l] . SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID103", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID103",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-gE*GA[l] . SUNT[e, f]) . GA[m] . GA[n]]", 
+gE*GA[l] . SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID104", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID104",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-GA[l] . SUNT[e, f]) . (gS*GA[m] . GA[n])]", 
+GA[l] . SUNT[e, f]) . (gS*GA[m] . GA[n])]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID105", 
+. GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID105",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-gS*GA[l] . SUNT[e, f]) . GA[m] . GA[n]]", 
+gS*GA[l] . SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID106", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID106",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k] . SUNT[c, d] + \
-gS*GA[l] . SUNT[e, f]) . GA[m] . GA[n]]", 
+gS*GA[l] . SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID107", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID107",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-GA[l] . SUNT[e, f]) . (gS*GA[m] . GA[n])]", 
+GA[l] . SUNT[e, f]) . (gS*GA[m] . GA[n])]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID108", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID108",
   "DotExpand[(gA*GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k] . SUNT[c, d] + \
-gB*GA[l] . SUNT[e, f]) . (gS*GA[m] . GA[n])]", 
+gB*GA[l] . SUNT[e, f]) . (gS*GA[m] . GA[n])]",
   "gA*gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gA*gB*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . \
-GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID109", 
+GA[m] . GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID109",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID110", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID110",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . (gE*GA[m] . GA[n])]", 
+GA[l]*SUNT[e, f]) . (gE*GA[m] . GA[n])]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID111", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID111",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID112", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID112",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-gE*GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+gE*GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] + \
 gE*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . GA[n]"}, \
-{"fcstDotExpandOnePlusOnlyNonComm-ID113", 
+{"fcstDotExpandOnePlusOnlyNonComm-ID113",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]", 
+GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] \
-. GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID114", 
+. GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID114",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k]*SUNT[c, d] + \
-gS*GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+gS*GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID115", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID115",
   "DotExpand[(gE*GA[i] . GA[j]*SUNT[a, b]) . (GA[k]*SUNT[c, d] + \
-gS*GA[l]*SUNT[e, f]) . GA[m] . GA[n]]", 
+gS*GA[l]*SUNT[e, f]) . GA[m] . GA[n]]",
   "gE*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . GA[n] \
 + gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID116", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID116",
   "DotExpand[(GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k]*SUNT[c, d] + \
-GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]", 
+GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]",
   "gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . GA[m] . \
-GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID117", 
+GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID117",
   "DotExpand[(gA*GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k]*SUNT[c, d] + \
-gB*GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]", 
+gB*GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]",
   "gA*gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gA*gB*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . \
 GA[m] . GA[n]"}};

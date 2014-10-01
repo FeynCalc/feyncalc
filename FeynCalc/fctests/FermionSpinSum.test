@@ -14,9 +14,9 @@
 (* ------------------------------------------------------------------------ *)
 
 fcstFermionSpinSum = {
-	{"FermionSpinSum-ID1","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]]","DiracTrace[(m1 + DiracGamma[Momentum[p1]]).GA[i].GA[
+  {"FermionSpinSum-ID1","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]]","DiracTrace[(m1 + DiracGamma[Momentum[p1]]).GA[i].GA[
    5].(m2 + DiracGamma[Momentum[p2]]).GA[5].GA[i]]"},
-	{"FermionSpinSum-ID2","FermionSpinSum[
+  {"FermionSpinSum-ID2","FermionSpinSum[
  Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[k1, m3].GA[j].GA[
     5].Spinor[k2, m4] Spinor[k2, m4].GA[5].GA[j].Spinor[k1,
     m3] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]]","DiracTrace[
@@ -28,9 +28,6 @@ fcstFermionSpinSum = {
     {"FermionSpinSum-ID4","FermionSpinSum[{a,b,c}]","{a,b,c}"},
     {"FermionSpinSum-ID5","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]+a+b]","DiracTrace[(m1 + DiracGamma[Momentum[p1]]).GA[i].GA[
    5].(m2 + DiracGamma[Momentum[p2]]).GA[5].GA[i]]+a+b"},
-	{"FermionSpinSum-ID5","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]+a+b,ExtraFactor->2]","2 DiracTrace[(m1 + DiracGamma[Momentum[p1]]).GA[i].GA[
+  {"FermionSpinSum-ID5","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]+a+b,ExtraFactor->2]","2 DiracTrace[(m1 + DiracGamma[Momentum[p1]]).GA[i].GA[
    5].(m2 + DiracGamma[Momentum[p2]]).GA[5].GA[i]]+2a+2b"}
-
-    }
-
 };

@@ -1,17 +1,27 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SUNSimplify.test *)
+(* :Title: SUNSimplify.test                                                 *)
 
-(* :Author: Vladyslav Shtaboveno *)
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
 
-(* :Summary:  Framework independent unit tests for the SUNSimplify function      *)
+(* :Summary:  Framework independent unit tests for SUNSimplify              *)
 
 (* ------------------------------------------------------------------------ *)
 
-fcstSUNSimplifyColorSimplifications = {
-	{"SUNSimplify-ColorSimplifications-ID1","SUNSimplify[1]","1"},
-	{"SUNSimplify-ColorSimplifications-ID2","SUNSimplify[SUNT[a].SUNT[b].SUNT[a]]","-(1/2) (CA - 2 CF) SUNT[SUNIndex[b]]"},
-	{"SUNSimplify-ColorSimplifications-ID3","SUNSimplify[SUNF[a, c, d].SUNF[b, c, d]]","CA SUNDelta[SUNIndex[a], SUNIndex[b]]"},		
-	{"SUNSimplify-ColorSimplifications-ID4","SUNSimplify[SUNF[a, b, c].SUNT[b].SUNT[c]]","1/2 I CA SUNT[SUNIndex[a]]"}
+fcstSUNSimplify = {
+  {"fcstSUNSimplify-ID1","SUNSimplify[1]","1"},
+  {"fcstSUNSimplify-ID2","SUNSimplify[SUNT[a].SUNT[b].SUNT[a]]","-(1/2) (CA - 2 CF) SUNT[SUNIndex[b]]"},
+  {"fcstSUNSimplify-ID3","SUNSimplify[SUNF[a, c, d].SUNF[b, c, d]]","CA SUNDelta[SUNIndex[a], SUNIndex[b]]"},
+  {"fcstSUNSimplify-ID4","SUNSimplify[SUNF[a, b, c].SUNT[b].SUNT[c]]","1/2 I CA SUNT[SUNIndex[a]]"},
+  {"fcstSUNSimplify-ID5","SUNSimplify[
+ SUNF[a, b, r] SUNF[r, c, s] + SUNF[b, c, r] SUNF[r, a, s] +
+  SUNF[c, a, r] SUNF[r, b, s], SUNFJacobi -> True]","0"},
+  {"fcstSUNSimplify-ID6","SUNT[a, b, a] // SUNSimplify","-((CA - 2*CF)*SUNT[SUNIndex[b]])/2"},
+  {"fcstSUNSimplify-ID7","SUNF[c, a, b] SUNT[b, c] // SUNSimplify","(I/2)*CA*SUNT[SUNIndex[a]]"}
 };
 

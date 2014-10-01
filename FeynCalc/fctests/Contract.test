@@ -1,17 +1,42 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Contract.test *)
+(* :Title: Contract.test                                                    *)
 
-(* :Author: Vladyslav Shtaboveno *)
+(* This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
 
-(* :Summary:  Framework independent unit tests for the Contract function      *)
+(* :Summary:  Framework independent unit tests for Contract                 *)
 
 (* ------------------------------------------------------------------------ *)
 
 fcstContractContractionsIn4dims = {
-	{"Contract-ID1","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, l]]","-24"},
-	{"Contract-ID2","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, m]]","-6 Pair[LorentzIndex[l], LorentzIndex[m]]"},
-	{"Contract-ID3","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, m, n]]",
-		"2 Pair[LorentzIndex[k], LorentzIndex[n]] Pair[LorentzIndex[l], 
-		LorentzIndex[m]] - 2 Pair[LorentzIndex[k], LorentzIndex[m]] Pair[LorentzIndex[l],LorentzIndex[n]]"}		
+  {"Contract-ID1","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, l]]","-24"},
+  {"Contract-ID2","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, m]]","-6 Pair[LorentzIndex[l], LorentzIndex[m]]"},
+  {"Contract-ID3","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, m, n]]",
+    "2 Pair[LorentzIndex[k], LorentzIndex[n]] Pair[LorentzIndex[l],
+    LorentzIndex[m]] - 2 Pair[LorentzIndex[k], LorentzIndex[m]] Pair[LorentzIndex[l],LorentzIndex[n]]"},
+
+  {"Contract-ID4", "Contract[MetricTensor[mu, mu] ]","4"},
+  {"Contract-ID5", "Contract[MetricTensor[mu, mu, Dimension -> D]]","D"},
+  {"Contract-ID6", "Contract[MetricTensor[a, b] FourVector[p, b]]","Pair[LorentzIndex[a], Momentum[p]]"},
+  {"Contract-ID7", "Contract[FourVector[q, a] FourVector[p - q, a]]", "Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
+  {"Contract-ID8", "Contract[FourVector[2 p, mu] FourVector[2 p, mu]]", "4*Pair[Momentum[p], Momentum[p]]", "Contract[MetricTensor[a, b] DiracMatrix[a]]", "DiracGamma[LorentzIndex[b]]"},
+  {"Contract-ID9", "Contract[FourVector[q, a] DiracMatrix[a]]", "DiracGamma[Momentum[q]]"},
+  {"Contract-ID10", "Contract[LeviCivita[a, nu, rho, sigma] LeviCivita[b, nu, rho, sigma]]", "-6*Pair[LorentzIndex[a], LorentzIndex[b]]"},
+  {"Contract-ID11", "Contract[MetricTensor[a, sigma]*FourVector[p, a] FourVector[p,sigma]*(FourVector[q, b] + FourVector[r, b])*(FourVector[p, b]
+     -FourVector[q, b]), Expanding -> False]", "(Pair[LorentzIndex[b], Momentum[p]] - Pair[LorentzIndex[b], Momentum[q]])*(Pair[LorentzIndex[b],
+     Momentum[q]] + Pair[LorentzIndex[b], Momentum[r]])*Pair[Momentum[p], Momentum[p]]"},
+  {"Contract-ID12", "Contract[FourVector[k, mu] PolarizationVector[k, mu]]", "0"},
+  {"Contract-ID13", "Contract[FourVector[q, a] FourVector[p - q, a]]", "Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
+  {"Contract-ID14", "ScalarProduct[q, q] = 0\nContract[FourVector[q, a]*FourVector[p - q, \
+a]]","Pair[Momentum[p], Momentum[q]]"},
+{"Contract-ID15", "ClearScalarProducts\nContract[FourVector[q, a]*FourVector[p - q, \
+a]]","Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
+{"Contract-ID16","Contract[DiracSimplify[
+  DiracReduce[DiracMatrix[mu, nu, rho, sigma]].DiracReduce[
+    DiracMatrix[mu, nu, rho, sigma]]]]","-128"}
+
 };
