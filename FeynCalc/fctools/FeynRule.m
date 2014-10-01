@@ -26,8 +26,6 @@ the first argument of FeynRule before anything else";
 
 Begin["`Private`"];
 
-MakeContext[FCPrint]
-   
 FeynCalcForm = MakeContext["FeynCalcForm"];
 
 Anti5 = MakeContext["Anti5"];

@@ -27,8 +27,6 @@ Begin["`Private`"];
    
 Expanding = MakeContext["CoreOptions","Expanding"];
 
-MakeContext[FCPrint];
-
 Options[Combine] = {Expanding -> False };
 
 Combine[x_, y___Rule] := Block[{combinet1, combinet2, expanding, num, le},

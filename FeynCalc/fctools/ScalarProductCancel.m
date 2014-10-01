@@ -29,8 +29,8 @@ Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[FCPrint,
-			Cases2,
+MakeContext[
+	    Cases2,
             ChangeDimension,
             Collect2,
             ExpandScalarProduct, Expand2, 

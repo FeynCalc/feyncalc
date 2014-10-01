@@ -52,8 +52,6 @@ DiracSimplify = MakeContext["DiracSimplify"];
 DotSimplify   = MakeContext["DotSimplify"];
 TR            = MakeContext["TR"];
 
-MakeContext [FCPrint]
-
 (*FRH = FixedPoint[ReleaseHold, #]&;*)
 trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
 trsimp[DOT[expr__]] := DiracTrace[DOT[expr] ] /; Length[{expr}] < 4;

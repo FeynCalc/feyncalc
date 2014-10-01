@@ -50,7 +50,6 @@ MakeContext[
     EpsEvaluate,
     Expand2,
     ExpandScalarProduct,
-    FCPrint,
     FRH,
     Factor2,
     FeynAmpDenominatorSimplify,

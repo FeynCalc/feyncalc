@@ -13,7 +13,7 @@ BeginPackage["HighEnergyPhysics`fcloops`Tdec`",
 
 Tdec::"usage" = "Tdec[{q,mu}, {p}];
 Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or
-Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] 
+Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}]
 calculates the tensorial decomposition formulas.
 The more common ones are saved in TIDL.";
 
@@ -33,12 +33,11 @@ KK = MakeContext["CoreOptions","KK"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
-   
+
 MakeContext[
-FCPrint,
 Cases2,
 Collect2,
-Contract, 
+Contract,
 ChangeDimension,
 EpsEvaluate,
 ExpandScalarProduct,
@@ -61,7 +60,7 @@ FeynCalcExternal -> True,
                  List -> True,
                  NumberOfMetricTensors -> Infinity};
 
-cc[a__] := 0 /; OddQ[Count[{a}, 0, Infinity]]; 
+cc[a__] := 0 /; OddQ[Count[{a}, 0, Infinity]];
 (* ccfix is NECESSARY, since otherwise multiloop decompositions
    are wrong
 *)
@@ -70,14 +69,14 @@ ccfix[exp_] := cfix[Expand[exp]];
 ccf[xx__,1] := ccf[xx];
 (* aa is always a sum of terms with coefficient 1 *)
 cfix[aa_Plus] := Map[cfix, aa];
-cfix[cc[a__] pairs_] := pairs * 
+cfix[cc[a__] pairs_] := pairs *
   Join[(cc[a]/.{0,__} -> nix[]) /. nix -> Sequence,
        (ccf @@ (Flatten[{pairs /. Pair-> pcfix} /. Times -> List]
               ) /. liS -> List
        ) /. ccf -> cc
       ];
 pcfix[___,Momentum[__],___] := 1;
-pcfix[LorentzIndex[a__], LorentzIndex[b__]] := 
+pcfix[LorentzIndex[a__], LorentzIndex[b__]] :=
  Sort[liS[0,0,LorentzIndex[a], LorentzIndex[b]]];
 
 
@@ -101,7 +100,7 @@ gfix[pe[0, mu_] pe[0, nu_] *
 
 ccjoin /: ccjoin[a__] ccjoin[b__] := ccjoin[a, b];
 
-ccj[xx_] := xx /. (cc[aa__]^_Integer) :> 
+ccj[xx_] := xx /. (cc[aa__]^_Integer) :>
             cc[aa] /. cc -> ccjoin /. ccjoin -> cc;
 
 HoldPattern[
@@ -118,24 +117,24 @@ FixedPoint[ccj,
 
 (*
 HoldPattern[gfix[pe[0,mu_] cc[ac___ /;FreeQ[{ac}, {0,_}],
-                          c:{0,_}.., 
+                          c:{0,_}..,
                           nc___ /;FreeQ[{nc}, {0,_}]
                          ] f_Times]
-       ] := 
+       ] :=
 FixedPoint[ccj,
- Sum[gfix[pe[0,mu] f[[i]] cc[ac,c,nc]] gfix[Drop[f,{i,i}] cc[ac,c,nc]], 
+ Sum[gfix[pe[0,mu] f[[i]] cc[ac,c,nc]] gfix[Drop[f,{i,i}] cc[ac,c,nc]],
      {i, Length[f]}
     ] /. cc -> ccjoin /. ccjoin -> cc, 100];
 
 HoldPattern[gfix[pe[0,mu_] cc[ac___ /;FreeQ[{ac}, {0,_}],
-                          c:{0,_}.., 
+                          c:{0,_}..,
                           nc___ /;FreeQ[{nc}, {0,_}],
                           d:{0,_}..
                          ] f_Times]
-       ] := 
+       ] :=
 FixedPoint[ccj,
  Sum[gfix[pe[0,mu] f[[i]] cc[ac,c,nc,d]] gfix[Drop[f,{i,i}
-                                             ] cc[ac,c,nc,d]], 
+                                             ] cc[ac,c,nc,d]],
      {i, Length[f]}
     ] /. cc -> ccjoin /. ccjoin -> cc, 100];
 *)
@@ -143,11 +142,11 @@ FixedPoint[ccj,
 (* li = {{q1,mu}, {q2,nu}, ...} pli = {p1,p2, ...} *)
 
 (* Tdecdef *)
-Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_, 
+Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_,
      opt___Rule] := Tdec[exp, {{a,b}}, Flatten[{pli}]];
 
 Tdec[exp_:1, li_List, pli_List, opt___Rule] := Block[
-{tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt, 
+{tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt,
  nullccli, kli, eqli, neqli,  nttt,listlabel, fce,
 veqli, seqli, scqli, solu, xy, ce},
 
@@ -158,16 +157,16 @@ factor = Factoring /. {opt} /. Options[Tdec];
 kli = Union[Map[First,li]];
 fv[x_,y_] := Pair[Momentum[x,dim], LorentzIndex[y, dim]];
 pe[j_ /; j>0, muu_] := Pair[Momentum[pli[[j]], dim], muu];
-tt = Product[fv@@li[[i]], 
+tt = Product[fv@@li[[i]],
              {i,Length[li]}
             ] ==
 FixedPoint[ccj,
 ccfix[
      (Sum @@ Join[
-           { gfixx[ Product[pe[j[ij], LorentzIndex[li[[ij,2]], dim]], 
+           { gfixx[ Product[pe[j[ij], LorentzIndex[li[[ij,2]], dim]],
                             {ij, Length[li]}
                            ] *
-             Apply[cc, Table[{j[iji], LorentzIndex[li[[iji,2]], dim]}, 
+             Apply[cc, Table[{j[iji], LorentzIndex[li[[iji,2]], dim]},
                              {iji, Length[li]}
                             ]
                   ]
@@ -175,7 +174,7 @@ ccfix[
             }, Array[{j[#],0,Length[pli]}&, Length[li]]
                  ]
      ) /. gfixx -> gfix
-     ],100];         
+     ],100];
 
 If[!FreeQ[tt, gfix], Print["MIST"];
    tt>>"ttdec.s"; Quit[];
@@ -192,7 +191,7 @@ If[Length[pli] === 0 && Length[kli] === 1,
   ];
 (* DOes not work somehow ..
 (* if exp is =!=1 then some cc's might vanish *)
-If[exp === 1, 
+If[exp === 1,
    nullccli = {}; nccli = ccli,
    ctt = Map[EpsEvaluate[ExpandScalarProduct[
              Contract[# exp, EpsContract -> False]]]&, tt
@@ -209,21 +208,21 @@ tt = tt /. Map[# -> 0&, nullccli];
 proj[] = 1;
 
 (*
-proj[{0, m_LorentzIndex}, aa___, {0, n_LorentzIndex}, bb___] := 
+proj[{0, m_LorentzIndex}, aa___, {0, n_LorentzIndex}, bb___] :=
  Pair[m, n] proj[aa, bb];
 *)
-proj[{0, 0, m_, n_}, bb___] := 
+proj[{0, 0, m_, n_}, bb___] :=
  (PairContract[LorentzIndex[m,dim], LorentzIndex[n,dim]] proj[bb]
  ) /; (Head[m] =!= LorentzIndex) && (Head[n] =!= LorentzIndex);
 
-proj[{j_ /; j > 0, r_}, jh___] := 
+proj[{j_ /; j > 0, r_}, jh___] :=
  (pe[j, LorentzIndex[r,dim]] proj[jh]) /; Head[r] =!= LorentzIndex;
 
 newcc[ii__] := cc[ii] /. LorentzIndex[w_,_] :> w;
 tt = tt /. cc -> newcc;
 symms = getsymmetries[tt];
     FCPrint[1,"symms"]; Print[Length[ccli]];
-  
+
 
 If[symms =!=  False,
    sy = solvesymms[tt[[2]] - (tt[[2]]/.symms)];
@@ -236,7 +235,7 @@ ccli = Union[ccli//.sy];
 tt = tt //. sy;
 proli = ccli /. cc -> proj;
 
-If[Length[pli] === 0 && Length[kli]===1, 
+If[Length[pli] === 0 && Length[kli]===1,
    proli = {First[proli]}
   ];
 
@@ -244,7 +243,7 @@ If[Length[pli] === 0 && Length[kli]===1,
 FCPrint[1,"contracting"];
 eqli = Table[EpsEvaluate[ExpandScalarProduct[
 FCPrint[1,"il = ",il];
-                 (tt proli[[il]]) /. Pair->PairContract /. 
+                 (tt proli[[il]]) /. Pair->PairContract /.
                                      PairContract -> Pair
                                             ]]
              , {il, Length[proli]}
@@ -267,7 +266,7 @@ neqli = Collect2[neqli, ccli];
 solu = Solve3[neqli, ccli, Factoring -> factor];
 	FCPrint[1,"solve3 done ",MemoryInUse[]];
    FCPrint[1,"SOLVE3 Bytecount", byby= ByteCount[solu]];
-  
+
 
 If[listlabel =!= True,
    solu = solu /. FeynCalcExternal[ChangeDimension[Map[Reverse, seqli],4]];
@@ -281,10 +280,10 @@ If[fce, nttt = FeynCalcExternal[ChangeDimension[nttt,4]]];
 tt = tt[[2]] /. solu;
 *)
 tt = nttt /. Dispatch[solu];
-FCPrint[1,"after solu substitution ", 
-         N[MemoryInUse[]/10^6,3], " MB ; time used ", 
+FCPrint[1,"after solu substitution ",
+         N[MemoryInUse[]/10^6,3], " MB ; time used ",
            TimeUsed[]//FeynCalcForm];
-  
+
 If[exp =!= 1, tt = Contract[exp tt, EpsContract -> False]];
 (*
 qli = Map[First,li];
@@ -305,7 +304,7 @@ If[listlabel === True,
 
 getsymmetries[aa_ /; Head[aa] =!= Times==_] := {};
 
-getsymmetries[aa_Times == _] := 
+getsymmetries[aa_Times == _] :=
  Block[{t1,t2,t3,t4},
        t1 = Cases2[aa, LorentzIndex];
        t2 = Union[Map[Sort,Map[Take[#,2]&,Permutations[t1]]]];
@@ -330,7 +329,7 @@ nx = Map[(SelectFree[#, {du, LorentzIndex}] ff[
 vv = Cases2[nx, ff];
 FCPrint[1,"collecting in solvesymms ",
       Length[vv], "terms" ];
-  
+
 
 titi = TimeUsed[];
 
@@ -343,9 +342,9 @@ s1 = Collect[nx, vv, Factor2] /. ff -> Identity;
 *)
 FCPrint[1,"time for collect in solvesymms = ",
     TimeUsed[] - titi];
-  
+
 (*
-If[Head[s1] =!= Plus, 
+If[Head[s1] =!= Plus,
    s2 = SelectFree[s1, {du, Pair}],
    s2 = Map[SelectFree[#, {du, Pair}]&, List@@s1]
   ];
@@ -355,7 +354,7 @@ res = {};
 While[(nx =!= 0)&& (ij < Length[s2]), ij ++;
       var = Variables[s2[[ij]]];
       If[var =!= {},
-      s3 = Solve[s2[[ij]]==0, var//First, 
+      s3 = Solve[s2[[ij]]==0, var//First,
                  VerifySolutions -> False]//First//First;
       If[!MemberQ[res,s3], AppendTo[res,s3];
          nx = nx /. s3
@@ -373,46 +372,46 @@ Tdec[{{q_,mu_}},{p_},opt___Rule] := Block[{n},
 Tdec[{{q_,mu_},{q_,nu_}},{p_},opt___Rule] := Block[{n},
   n = Dimension /. {opt} /. Options[Tdec];
  (Pair[LorentzIndex[mu, n], LorentzIndex[nu, n]]*
-      (Pair[Momentum[p, n], Momentum[q, n]]^2 - 
+      (Pair[Momentum[p, n], Momentum[q, n]]^2 -
         Pair[Momentum[p, n], Momentum[p, n]]*
          Pair[Momentum[q, n], Momentum[q, n]]))/
-    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) - 
+    ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]) -
    (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
       Pair[LorentzIndex[nu, n], Momentum[p, n]]*
-      (n*Pair[Momentum[p, n], Momentum[q, n]]^2 - 
+      (n*Pair[Momentum[p, n], Momentum[q, n]]^2 -
         Pair[Momentum[p, n], Momentum[p, n]]*
          Pair[Momentum[q, n], Momentum[q, n]]))/
     ((1 - n)*Pair[Momentum[p, n], Momentum[p, n]]^2)]
 
 
 (* 1 *)
-Tdec[{qi_,al_},{p_,k_},opt___Rule] := 
+Tdec[{qi_,al_},{p_,k_},opt___Rule] :=
   Tdec[{{qi,al}},{p,k},opt] /; Head[qi]=!=List;
 
 Tdec[{{qi_,al_}},{p_,k_},opt___Rule] := Block[{n},
  n = Dimension /. {opt} /. Options[Tdec];
   (Pair[LorentzIndex[al, n], Momentum[p, n]]*
        Pair[Momentum[k, n], Momentum[p, n]]*
-       Pair[Momentum[k, n], Momentum[qi, n]] - 
+       Pair[Momentum[k, n], Momentum[qi, n]] -
       Pair[LorentzIndex[al, n], Momentum[p, n]]*
        Pair[Momentum[k, n], Momentum[k, n]]*
-       Pair[Momentum[p, n], Momentum[qi, n]])/ 
-(Pair[Momentum[k, n], Momentum[p, n]]^2 - 
+       Pair[Momentum[p, n], Momentum[qi, n]])/
+(Pair[Momentum[k, n], Momentum[p, n]]^2 -
       Pair[Momentum[k, n], Momentum[k, n]]*
-       Pair[Momentum[p, n], Momentum[p, n]]) + 
+       Pair[Momentum[p, n], Momentum[p, n]]) +
    (-(Pair[LorentzIndex[al, n], Momentum[k, n]]*
          Pair[Momentum[k, n], Momentum[qi, n]]*
-         Pair[Momentum[p, n], Momentum[p, n]]) + 
+         Pair[Momentum[p, n], Momentum[p, n]]) +
       Pair[LorentzIndex[al, n], Momentum[k, n]]*
        Pair[Momentum[k, n], Momentum[p, n]]*
        Pair[Momentum[p, n], Momentum[qi, n]])/
-    (Pair[Momentum[k, n], Momentum[p, n]]^2 - 
+    (Pair[Momentum[k, n], Momentum[p, n]]^2 -
       Pair[Momentum[k, n], Momentum[k, n]]*
        Pair[Momentum[p, n], Momentum[p, n]])] /;
    Head[qi]=!=List;
  (* 2 *)
 
-Tdec[{{qi_,al_},{qj_,be_}},{p_,z_},opt___Rule] := 
+Tdec[{{qi_,al_},{qj_,be_}},{p_,z_},opt___Rule] :=
 Block[
 {dD,a,b,c,d,e,f,g,i,j,k,l,m,n},
 dD =  Dimension /. {opt} /. Options[Tdec];
@@ -440,7 +439,7 @@ dD*g^2*h*m + f*g*l*m - dD*f*g*l*m - g^3*n + f*g*k*n))/
 (g*h*i*k - dD*g*h*i*k - g^2*i*l + dD*g^2*i*l + g^2*h*m - 2*f*h*k*m +
 dD*f*h*k*m + f*g*l*m - dD*f*g*l*m - g^3*n + f*g*k*n))/
 ((-2 + dD)*(g^2 - f*k)^2) + (b*d*
-(-(h*i*k^2) + dD*h*i*k^2 + g*i*k*l - dD*g*i*k*l + g*h*k*m - 
+(-(h*i*k^2) + dD*h*i*k^2 + g*i*k*l - dD*g*i*k*l + g*h*k*m -
 dD*g*h*k*m -
 2*g^2*l*m + dD*g^2*l*m + f*k*l*m + g^2*k*n - f*k^2*n))/
 ((-2 + dD)*(g^2 - f*k)^2)
@@ -548,7 +547,7 @@ fv[de_][p_,m_] := fv[de][p,m] = Pair[LorentzIndex[m,de], Momentum[p,de]];
 
 (* fourth rank *)
 symtens[{},{m1_,m2_,m3_,m4_}, d_] :=
-( mt[d][m1,m2] mt[d][m3,m4] + mt[d][m1,m3] mt[d][m2,m4] + 
+( mt[d][m1,m2] mt[d][m3,m4] + mt[d][m1,m3] mt[d][m2,m4] +
   mt[d][m1,m4] mt[d][m2,m3]);
 
 symtens[{{p_,m1_},{p_,m2_}},{m3_,m4_}, d_] :=
@@ -561,19 +560,19 @@ fv[d][p,m1] fv[d][p,m2] fv[d][p,m3] fv[d][p,m4];
 (* sixth rank *)
 symtens[{},{m1_,m2_,m3_,m4_,m5_,m6_}, d_] :=
 ( mt[d][m1,m2]*mt[d][m3,m4]*mt[d][m5,m6] + mt[d][m1,m2]*mt[d][m3,m5]*
-  mt[d][m4,m6] + mt[d][m1,m2]*mt[d][m3,m6]*mt[d][m4,m5] + 
+  mt[d][m4,m6] + mt[d][m1,m2]*mt[d][m3,m6]*mt[d][m4,m5] +
   mt[d][m1,m3]*mt[d][m2,m4]*
-  mt[d][m5,m6] + mt[d][m1,m3]*mt[d][m2,m5]*mt[d][m4,m6] + 
+  mt[d][m5,m6] + mt[d][m1,m3]*mt[d][m2,m5]*mt[d][m4,m6] +
   mt[d][m1,m3]*mt[d][m2,m6]*
   mt[d][m4,m5] + mt[d][m1,m4]*mt[d][m2,m3]*mt[d][m5,m6] +
   mt[d][m1,m4]*mt[d][m2,m5]*
-  mt[d][m3,m6] + mt[d][m1,m4]*mt[d][m2,m6]*mt[d][m3,m5] + 
+  mt[d][m3,m6] + mt[d][m1,m4]*mt[d][m2,m6]*mt[d][m3,m5] +
   mt[d][m1,m5]*mt[d][m2,m3]*
-  mt[d][m4,m6] + mt[d][m1,m5]*mt[d][m2,m4]*mt[d][m3,m6] + 
+  mt[d][m4,m6] + mt[d][m1,m5]*mt[d][m2,m4]*mt[d][m3,m6] +
   mt[d][m1,m5]*mt[d][m2,m6]*
-  mt[d][m3,m4] + mt[d][m1,m6]*mt[d][m2,m3]*mt[d][m4,m5] + 
+  mt[d][m3,m4] + mt[d][m1,m6]*mt[d][m2,m3]*mt[d][m4,m5] +
   mt[d][m1,m6]*mt[d][m2,m4]*
-  mt[d][m3,m5] + mt[d][m1,m6]*mt[d][m2,m5]*mt[d][m3,m4] 
+  mt[d][m3,m5] + mt[d][m1,m6]*mt[d][m2,m5]*mt[d][m3,m4]
 );
 (* sixth rank *)
 symtens[{{p_,m1_},{p_,m2_}},{m3_,m4_,m5_,m6_}, d_] :=
@@ -583,54 +582,54 @@ Block[{mm = {m1, m2, m3, m4, m5, m6}},
      {i, 1, 5}, {j, i+1, 6}
     ]];
 
-symtens[{{p_,m1_},{p_,m2_}, {p_,m3_}, {p_,m4_}}, 
+symtens[{{p_,m1_},{p_,m2_}, {p_,m3_}, {p_,m4_}},
          {m5_,m6_}, d_
        ] := Block[{mm = {m1, m2, m3, m4, m5, m6}},
  Sum[mt[d][mm[[i]], mm[[j]]] *
      Map[fv[d][p,#]&, SelectFree[mm,{mm[[i]],mm[[j]]}]],
      {i, 1, 5}, {j, i+1, 6}
     ]            ];
-    
+
 (* eigth rank *)
 symtens[{},{m1_,m2_,m3_,m4_,m5_,m6_,m7_,m8_}, d_] :=
 (
 (
-  x1*x18*x21*x23 + x13*x2*x21*x23 + x1*x17*x22*x23 + x12*x2*x22*x23 + 
-   x1*x18*x20*x24 + x13*x2*x20*x24 + x1*x16*x22*x24 + x11*x2*x22*x24 + 
-   x1*x17*x20*x25 + x12*x2*x20*x25 + x1*x16*x21*x25 + x11*x2*x21*x25 + 
-   x1*x18*x19*x26 + x13*x19*x2*x26 + x1*x15*x22*x26 + x10*x2*x22*x26 + 
-   x1*x14*x25*x26 + x1*x17*x19*x27 + x12*x19*x2*x27 + x1*x15*x21*x27 + 
-   x10*x2*x21*x27 + x1*x14*x24*x27 + x1*x16*x19*x28 + x11*x19*x2*x28 + 
-   x1*x15*x20*x28 + x10*x2*x20*x28 + x1*x14*x23*x28 + x13*x17*x23*x3 + 
-   x12*x18*x23*x3 + x13*x16*x24*x3 + x11*x18*x24*x3 + x12*x16*x25*x3 + 
-   x11*x17*x25*x3 + x13*x15*x26*x3 + x10*x18*x26*x3 + x12*x15*x27*x3 + 
-   x10*x17*x27*x3 + x11*x15*x28*x3 + x10*x16*x28*x3 + x13*x17*x20*x4 + 
-   x12*x18*x20*x4 + x13*x16*x21*x4 + x11*x18*x21*x4 + x12*x16*x22*x4 + 
-   x11*x17*x22*x4 + x13*x14*x26*x4 + x12*x14*x27*x4 + x11*x14*x28*x4 + 
-   x13*x17*x19*x5 + x12*x18*x19*x5 + x13*x15*x21*x5 + x10*x18*x21*x5 + 
-   x12*x15*x22*x5 + x10*x17*x22*x5 + x13*x14*x24*x5 + x12*x14*x25*x5 + 
-   x10*x14*x28*x5 + x13*x16*x19*x6 + x11*x18*x19*x6 + x13*x15*x20*x6 + 
-   x10*x18*x20*x6 + x11*x15*x22*x6 + x10*x16*x22*x6 + x13*x14*x23*x6 + 
-   x11*x14*x25*x6 + x10*x14*x27*x6 + x12*x16*x19*x7 + x11*x17*x19*x7 + 
-   x12*x15*x20*x7 + x10*x17*x20*x7 + x11*x15*x21*x7 + x10*x16*x21*x7 + 
-   x12*x14*x23*x7 + x11*x14*x24*x7 + x10*x14*x26*x7 + x25*x26*x3*x8 + 
-   x24*x27*x3*x8 + x23*x28*x3*x8 + x22*x26*x4*x8 + x21*x27*x4*x8 + 
-   x20*x28*x4*x8 + x22*x24*x5*x8 + x21*x25*x5*x8 + x19*x28*x5*x8 + 
-   x22*x23*x6*x8 + x20*x25*x6*x8 + x19*x27*x6*x8 + x21*x23*x7*x8 + 
-   x20*x24*x7*x8 + x19*x26*x7*x8 + x2*x25*x26*x9 + x2*x24*x27*x9 + 
-   x2*x23*x28*x9 + x18*x26*x4*x9 + x17*x27*x4*x9 + x16*x28*x4*x9 + 
-   x18*x24*x5*x9 + x17*x25*x5*x9 + x15*x28*x5*x9 + x18*x23*x6*x9 + 
-   x16*x25*x6*x9 + x15*x27*x6*x9 + x17*x23*x7*x9 + x16*x24*x7*x9 + 
+  x1*x18*x21*x23 + x13*x2*x21*x23 + x1*x17*x22*x23 + x12*x2*x22*x23 +
+   x1*x18*x20*x24 + x13*x2*x20*x24 + x1*x16*x22*x24 + x11*x2*x22*x24 +
+   x1*x17*x20*x25 + x12*x2*x20*x25 + x1*x16*x21*x25 + x11*x2*x21*x25 +
+   x1*x18*x19*x26 + x13*x19*x2*x26 + x1*x15*x22*x26 + x10*x2*x22*x26 +
+   x1*x14*x25*x26 + x1*x17*x19*x27 + x12*x19*x2*x27 + x1*x15*x21*x27 +
+   x10*x2*x21*x27 + x1*x14*x24*x27 + x1*x16*x19*x28 + x11*x19*x2*x28 +
+   x1*x15*x20*x28 + x10*x2*x20*x28 + x1*x14*x23*x28 + x13*x17*x23*x3 +
+   x12*x18*x23*x3 + x13*x16*x24*x3 + x11*x18*x24*x3 + x12*x16*x25*x3 +
+   x11*x17*x25*x3 + x13*x15*x26*x3 + x10*x18*x26*x3 + x12*x15*x27*x3 +
+   x10*x17*x27*x3 + x11*x15*x28*x3 + x10*x16*x28*x3 + x13*x17*x20*x4 +
+   x12*x18*x20*x4 + x13*x16*x21*x4 + x11*x18*x21*x4 + x12*x16*x22*x4 +
+   x11*x17*x22*x4 + x13*x14*x26*x4 + x12*x14*x27*x4 + x11*x14*x28*x4 +
+   x13*x17*x19*x5 + x12*x18*x19*x5 + x13*x15*x21*x5 + x10*x18*x21*x5 +
+   x12*x15*x22*x5 + x10*x17*x22*x5 + x13*x14*x24*x5 + x12*x14*x25*x5 +
+   x10*x14*x28*x5 + x13*x16*x19*x6 + x11*x18*x19*x6 + x13*x15*x20*x6 +
+   x10*x18*x20*x6 + x11*x15*x22*x6 + x10*x16*x22*x6 + x13*x14*x23*x6 +
+   x11*x14*x25*x6 + x10*x14*x27*x6 + x12*x16*x19*x7 + x11*x17*x19*x7 +
+   x12*x15*x20*x7 + x10*x17*x20*x7 + x11*x15*x21*x7 + x10*x16*x21*x7 +
+   x12*x14*x23*x7 + x11*x14*x24*x7 + x10*x14*x26*x7 + x25*x26*x3*x8 +
+   x24*x27*x3*x8 + x23*x28*x3*x8 + x22*x26*x4*x8 + x21*x27*x4*x8 +
+   x20*x28*x4*x8 + x22*x24*x5*x8 + x21*x25*x5*x8 + x19*x28*x5*x8 +
+   x22*x23*x6*x8 + x20*x25*x6*x8 + x19*x27*x6*x8 + x21*x23*x7*x8 +
+   x20*x24*x7*x8 + x19*x26*x7*x8 + x2*x25*x26*x9 + x2*x24*x27*x9 +
+   x2*x23*x28*x9 + x18*x26*x4*x9 + x17*x27*x4*x9 + x16*x28*x4*x9 +
+   x18*x24*x5*x9 + x17*x25*x5*x9 + x15*x28*x5*x9 + x18*x23*x6*x9 +
+   x16*x25*x6*x9 + x15*x27*x6*x9 + x17*x23*x7*x9 + x16*x24*x7*x9 +
    x15*x26*x7*x9
-) /. {x1 -> mt[d][m1, m2], x2 -> mt[d][m1, m3], x3 -> mt[d][m1, m4], 
-   x4 -> mt[d][m1, m5], x5 -> mt[d][m1, m6], x6 -> mt[d][m1, m7], 
-   x7 -> mt[d][m1, m8], x8 -> mt[d][m2, m3], x9 -> mt[d][m2, m4], 
-   x10 -> mt[d][m2, m5], x11 -> mt[d][m2, m6], x12 -> mt[d][m2, m7], 
-   x13 -> mt[d][m2, m8], x14 -> mt[d][m3, m4], x15 -> mt[d][m3, m5], 
-   x16 -> mt[d][m3, m6], x17 -> mt[d][m3, m7], x18 -> mt[d][m3, m8], 
-   x19 -> mt[d][m4, m5], x20 -> mt[d][m4, m6], x21 -> mt[d][m4, m7], 
-   x22 -> mt[d][m4, m8], x23 -> mt[d][m5, m6], x24 -> mt[d][m5, m7], 
-   x25 -> mt[d][m5, m8], x26 -> mt[d][m6, m7], x27 -> mt[d][m6, m8], 
+) /. {x1 -> mt[d][m1, m2], x2 -> mt[d][m1, m3], x3 -> mt[d][m1, m4],
+   x4 -> mt[d][m1, m5], x5 -> mt[d][m1, m6], x6 -> mt[d][m1, m7],
+   x7 -> mt[d][m1, m8], x8 -> mt[d][m2, m3], x9 -> mt[d][m2, m4],
+   x10 -> mt[d][m2, m5], x11 -> mt[d][m2, m6], x12 -> mt[d][m2, m7],
+   x13 -> mt[d][m2, m8], x14 -> mt[d][m3, m4], x15 -> mt[d][m3, m5],
+   x16 -> mt[d][m3, m6], x17 -> mt[d][m3, m7], x18 -> mt[d][m3, m8],
+   x19 -> mt[d][m4, m5], x20 -> mt[d][m4, m6], x21 -> mt[d][m4, m7],
+   x22 -> mt[d][m4, m8], x23 -> mt[d][m5, m6], x24 -> mt[d][m5, m7],
+   x25 -> mt[d][m5, m8], x26 -> mt[d][m6, m7], x27 -> mt[d][m6, m8],
    x28 -> mt[d][m7, m8]}
 );
 

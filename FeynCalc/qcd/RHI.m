@@ -61,8 +61,6 @@ Select1  = MakeContext["Select1"];
 Select2  = MakeContext["Select2"];
 TLI = MakeContext["TLI"];
 
-MakeContext[FCPrint];
-
 Options[RHI] =  {Directory -> "rh/ope/diagrams/",
                  (*nosaveDir -> False["rhisave"],*)
                  EpsilonOrder -> 0,

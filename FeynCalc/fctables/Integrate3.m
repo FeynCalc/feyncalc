@@ -35,7 +35,7 @@ PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 SmallDelta = MakeContext["CoreObjects","SmallDelta"];
 SmallEpsilon = MakeContext["CoreObjects","SmallEpsilon"];
   
-MakeContext[FCPrint, Apart3,DataType, Factor2,
+MakeContext[ Apart3,DataType, Factor2,
              Integrate2, Nielsen,
              PositiveInteger,
              Select1, Select2, SimplifyPolyLog,SumS, Zeta2];

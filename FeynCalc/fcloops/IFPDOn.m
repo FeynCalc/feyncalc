@@ -36,7 +36,8 @@ PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 SP = MakeContext["CoreObjects","SP"];
 SPD = MakeContext["CoreObjects","SPD"];
 
-MakeContext[FCPrint, Cases2,
+MakeContext[
+Cases2,
 ExpandScalarProduct,
 FeynAmpDenominatorSplit,
 FeynCalcInternal,

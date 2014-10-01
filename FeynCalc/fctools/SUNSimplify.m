@@ -43,8 +43,6 @@ Begin["`Private`"];
 
 (*ComplexIndex = MakeContext["ComplexIndex"];*)
 
-MakeContext[FCPrint];
-
 diractrick := diractrick = MakeContext["DiracTrick"];
 Trick := Trick = MakeContext["Trick"];
 CA                       = MakeContext["CoreObjects","CA"];

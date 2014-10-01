@@ -37,7 +37,6 @@ Pair = MakeContext["CoreObjects","Pair"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
 MakeContext[
-FCPrint,
 Cases2,
 ChangeDimension,
 Expand2,

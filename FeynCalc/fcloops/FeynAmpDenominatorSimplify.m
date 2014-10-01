@@ -48,7 +48,6 @@ PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 SPD = MakeContext["CoreObjects","SPD"];
 
 MakeContext[
-      FCPrint,
             Calc,
             Cases2,
             ChangeDimension,

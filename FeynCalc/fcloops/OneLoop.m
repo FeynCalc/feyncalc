@@ -149,7 +149,6 @@ WriteOut = MakeContext["CoreOptions","WriteOut"];
 WriteOutPaVe = MakeContext["CoreOptions","WriteOutPaVe"];
 
 MakeContext[
-   FCPrint,
    Apart2, Cases2,
    ChangeDimension, Chisholm, Collect2, Combine,
    Contract,

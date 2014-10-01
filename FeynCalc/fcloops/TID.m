@@ -39,8 +39,8 @@ Pair = MakeContext["CoreObjects","Pair"];
 Polarization = MakeContext["CoreObjects","Polarization"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[FCPrint,
-			Uncontract,
+MakeContext[
+            Uncontract,
             Cases2,
             ChangeDimension, Collect2, 
             Contract,            

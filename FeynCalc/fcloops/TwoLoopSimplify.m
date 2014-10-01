@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fcloops`TwoLoopSimplify`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-TwoLoopSimplify::"usage"= 
+TwoLoopSimplify::"usage"=
 "TwoLoopSimplify[amplitude,{qu1,qu2}] simplifies the 2-loop amplitude
 (qu1 and qu2 denote the integration momenta).
 TwoLoopSimplify[amplitude] transforms to
@@ -23,7 +23,7 @@ the integration momenta in amplitude must be named q1 and q2.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
 Eps = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
@@ -41,9 +41,8 @@ SUNFToTraces = MakeContext["CoreOptions","SUNFToTraces"];
 Tf = MakeContext["CoreObjects","Tf"];
 
 MakeContext[
-FCPrint,
 Cases2,
-ChangeDimension, Collect2, 
+ChangeDimension, Collect2,
 Contract,
 DiracOrder,
 DiracSimplify,
@@ -54,9 +53,9 @@ ExpandScalarProduct,
 Explicit,
 FC2RHI,
 FCIntegral,
-FeynAmpDenominatorCombine, FeynAmpDenominatorSimplify, 
+FeynAmpDenominatorCombine, FeynAmpDenominatorSimplify,
 FeynCalcInternal,
-FeynCalcExternal, 
+FeynCalcExternal,
 GluonVertex,
 Isolate,
 IsolateSplit,
@@ -70,32 +69,32 @@ PowerSimplify,
 Power2,
 Rename,
 RHI,
-ScalarProduct, 
-ScalarProductCancel, 
+ScalarProduct,
+ScalarProductCancel,
 Select1,
 Select2,
 SUNSimplify, SUNTrace,
 ToLarin,
-Tr2, 
+Tr2,
 Trick
 ];
 
-Twist2GluonOperator := Twist2GluonOperator = 
+Twist2GluonOperator := Twist2GluonOperator =
  MakeContext["Twist2GluonOperator"];
 OPE2TID := OPE2TID = MakeContext["OPE2TID"];
 
-Options[TwoLoopSimplify] = 
+Options[TwoLoopSimplify] =
 {Dimension -> D, FeynCalcExternal -> True, IntegralTable -> {},
  ToLarin->True
 };
 
-TwoLoopSimplify[exp_, opt___Rule] := 
+TwoLoopSimplify[exp_, opt___Rule] :=
  TwoLoopSimplify[exp, {Global`q1, Global`q2}, opt];
 
 TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] := Block[
-{dirsuntrace, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, 
- t13, t14, 
- lt7, lt10, lt12, 
+{dirsuntrace, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12,
+ t13, t14,
+ lt7, lt10, lt12,
  dim, colg, two, twlist, twsublist, con, nan,tem,
  ht7, ht10, ht11, ht12, table, pe, op2, decomposelist
 },
@@ -114,7 +113,7 @@ dim = Dimension /. {opt} /. Options[TwoLoopSimplify];
 (*S TRICK *)
 t1 = ChangeDimension[exp, dim];
 
-If[Head[t1] =!= Times, 
+If[Head[t1] =!= Times,
    t1 = Trick[t1 /. Times -> DOT]
   ,
    t1 = Select1[t1,SUNIndex] Trick[Select2[t1, SUNIndex] /. Times -> DOT]
@@ -133,7 +132,7 @@ If[!FreeQ[t1, DiracTrace],
 (*S COLOR FACTOR *)
    FCPrint[1,"calculating the color factor"];
 t2 = SUNSimplify[t1, SUNFToTraces -> False]//SUNSimplify;
- 
+
 (*S Eps*)
 t3 =  MomentumCombine[t2//SUNSimplify//EpsEvaluate];
 
@@ -149,7 +148,7 @@ If[!FreeQ[t3, Eps], t3 = EpsEvaluate[t3]];
 (*S GLUONVERTEX *)
 If[!FreeQ[t3, GluonVertex],
    colg = {GluonVertex};
-   If[CheckContext["Twist2GluonOperator"], 
+   If[CheckContext["Twist2GluonOperator"],
       AppendTo[colg, Twist2GluonOperator]
      ];
    FCPrint[1,"collecting GluonVertex"];
@@ -163,7 +162,7 @@ If[!FreeQ[t3, GluonVertex],
 
 (*S SCALARPRODUCTCANCEL *)
 t4 = ScalarProductCancel[ExpandScalarProduct[t3]];
-t5 = ScalarProductCancel[t4, q1, q2, 
+t5 = ScalarProductCancel[t4, q1, q2,
                          Collecting -> True,
                          FeynAmpDenominatorSimplify -> True
                         ];
@@ -176,7 +175,7 @@ If[!FreeQ[t6, Twist2GluonOperator],
 If[$DoWard =!= True,
    t6 = Expand2[t6 ,Twist2GluonOperator],
    FCPrint[1,"Ward identities"];
-   $OPEWard = True; t6 = Expand2[t6, Twist2GluonOperator]; 
+   $OPEWard = True; t6 = Expand2[t6, Twist2GluonOperator];
    $OPEWard = False;
   ];
 two[y__] := Collect2[Twist2GluonOperator[y,Explicit->All
@@ -194,7 +193,7 @@ For[ii = 1, ii<=Length[twlist], ii++,WriteString["stdout",ii," "];
 t6 = t6 /.Dispatch[twsublist];
  ]];
 
-t7 = OPESumExplicit[t6] /. 
+t7 = OPESumExplicit[t6] /.
      Power[a_ /; !FreeQ[a,Pair],b_/;Head[b]=!=FCInteger] :>
        Power2[a, b];
 
@@ -204,7 +203,7 @@ con[y_] := Contract[y, EpsContract->False,Rename->True, Expanding->False];
 If[Head[t7]===Plus,
    nan  = 0; lt7 = Length[t7]; ht7 = Hold@@{t7};
    For[jj = 1, jj <= lt7, jj++, Print["exp ",jj," (",lt7,") "];
-       nan = nan + (DiracSimplify[con[Expand2[ht7[[1,jj]], 
+       nan = nan + (DiracSimplify[con[Expand2[ht7[[1,jj]],
                                       {LorentzIndex,q1,q2}
                                     ]] /. DiracTrace -> Tr2]);
       ]; t8 = nan; Clear[nan]; Clear[ht7];
@@ -299,10 +298,10 @@ FCPrint[1,"pe = ",pe];
 Dialog["dec"];
    op2 = OPE2AI[table, decomposelist, q1, q2, pe];
    fcq[ y_Times ] := Select1[y, {q1, q2}] FCIntegral[Select2[y, {q1, q2}]];
-   t15 = Collect2[Map[fcq, t15+null1 + null2] /. 
+   t15 = Collect2[Map[fcq, t15+null1 + null2] /.
      fcq -> Identity /. op2, {q1, q2}]
   ];
-   
+
 t16 = FixedPoint[ReleaseHold,t15];
 
 If[ (FeynCalcExternal /. {opt} /. Options[TwoLoopSimplify]) === True,

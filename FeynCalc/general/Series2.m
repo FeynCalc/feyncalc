@@ -37,7 +37,6 @@ SimplifyPolyLog := SimplifyPolyLog = MakeContext["SimplifyPolyLog"];
 MakeContext[
     Cases2,
     Collect2,
-    FCPrint,
     Factor2,
     FreeQ2,
     GammaEpsilon,

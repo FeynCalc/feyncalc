@@ -51,7 +51,6 @@ MakeContext[
     DiracSubstitute67,
     FCE,
     FCI,
-    FCPrint,
     Factor2,
     Rename
     ];

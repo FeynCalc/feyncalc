@@ -521,6 +521,18 @@ Note that then non-commutative products should to be entered \
 like DOT[ DiracMatrix[mu], m + DiracSlash[p], DiracMatrix[mu] ], \
 etc.";
 
+FCPrint::"usage" =
+"FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
+is larger than level.";
+
+UseWriteString::"usage" =
+"UseWriteString is an option for FCPrint. If set to True,
+the expression is printed via WriteString instead of Print.";
+
+WriteStringOutput::"usage" =
+"UseWriteStringOutput an option for FCPrint. It specifies, to which
+stream WriteString should output the expression";
+
 
 (* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX *)
 (* ************************************************************************ *)
@@ -574,6 +586,21 @@ DOT = Dot;
 $Multiplications = {Times, DOT};
 $DistributiveFunctions = {Conjugate, Transpose};
 $Containers = {};
+
+
+Options[FCPrint] = {
+    UseWriteString -> False,
+    WriteStringOutput ->"stdout"
+}
+
+FCPrint[level_, x__, OptionsPattern[]] :=
+    If[ $VeryVerbose >= level,
+        If[ OptionValue[UseWriteString],
+            WriteString[OptionValue[WriteStringOutput],x],
+            Print[x]
+        ]
+    ];
+SetAttributes[FCPrint, HoldAll];
 
 FI := (Format[LineBreak[_]]:= ""; $PrePrint=InputForm;);
 FC := (Format[LineBreak[_]]:= "\n";

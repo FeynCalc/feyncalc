@@ -39,8 +39,6 @@ dummy indices in Eps are renamed, using $MU[i].";
 
 Begin["`Private`"];
 
-   MakeContext[FCPrint];
-
    Cases2                      = MakeContext["Cases2"];
    Collect2                    = MakeContext["Collect2"];
    Collect3                    = MakeContext["Collect3"];

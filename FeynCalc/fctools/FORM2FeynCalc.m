@@ -41,7 +41,6 @@ Pair = MakeContext["CoreObjects","Pair"];
 SUNDelta = MakeContext["CoreObjects","SUNDelta"];
 
 MakeContext[
-FCPrint,
 ChangeDimension,
 FeynCalcExternal,
 Nielsen,

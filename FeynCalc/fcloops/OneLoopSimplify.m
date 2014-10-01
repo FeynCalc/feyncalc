@@ -8,14 +8,14 @@
 (* :History: File created on 19 January '99 at 1:11 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: OneLoopSimplify *) 
+(* :Summary: OneLoopSimplify *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`OneLoopSimplify`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-OneLoopSimplify::"usage" = 
+OneLoopSimplify::"usage" =
 "OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp.
 The second argument denotes the integration momentum.
 If the first argument has head FeynAmp then
@@ -23,14 +23,14 @@ OneLoopSimplify[FeynAmp[name, k, expr], k] tranforms to
 OneLoopSimplify[expr, k].";
 
 OneLoopSimplify::nivar =
-"The integration variable is not found in the integrand. 
-Please check that the name of the second argument is 
+"The integration variable is not found in the integrand.
+Please check that the name of the second argument is
 correct.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Collecting = MakeContext["CoreOptions","Collecting"];
 Contract3 = MakeContext["Contract", "Contract3"];
@@ -50,7 +50,6 @@ SUNNToCACF = MakeContext["CoreOptions","SUNNToCACF"];
 
 
 MakeContext[
-FCPrint,
 Cases2,
 ChangeDimension,
 Collect2,
@@ -98,13 +97,13 @@ Options[OneLoopSimplify] = {Collecting -> False,
 
 
 OneLoopSimplify[qu_ /; Head[qu]=== Symbol, amp_ /;Head[amp]=!=Symbol,
-                opt___Rule] := OneLoopSimplify[amp,qu,opt] /; 
+                opt___Rule] := OneLoopSimplify[amp,qu,opt] /;
                !FreeQ[amp,qu];
 
 OneLoopSimplify[FeynAmp[_, qu_Symbol, expr_], ___, opts___Rule] :=
  OneLoopSimplify[ expr, qu, opts];
 
-OneLoopSimplify[amp_, qu_, opt___Rule] := 
+OneLoopSimplify[amp_, qu_, opt___Rule] :=
  If[FreeQ[amp, qu], Message[OneLoopSimplify::nivar, qu]; amp,
 Block[
 {q, dim, sunntocacf, t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, spc,
@@ -139,7 +138,7 @@ t1 = FeynAmpDenominatorSimplify[Collect2[t1,q,Factoring->False], q,
 FCPrint[2,"FeynAmpDenominatorCombine done. t1 = ",t1];
 
 If[!FreeQ[t1, SUNIndex],
-   t2 = SUNSimplify[t1,  SUNNToCACF   -> sunntocacf, 
+   t2 = SUNSimplify[t1,  SUNNToCACF   -> sunntocacf,
                          SUNTrace     -> suntrace,
                          SUNFToTraces -> False],
    t2 = t1
@@ -151,7 +150,7 @@ If[!FreeQ[t2, DiracGamma],
    t2 =  t2 /. DiracTrace -> TR
   ];
 FCPrint[1,"contracting ", t2];
-If[FreeQ2[t2, {DiracGamma, Eps}], 
+If[FreeQ2[t2, {DiracGamma, Eps}],
    t3 = Contract3[t2],
    t3 = Contract[t2]
   ];
@@ -161,7 +160,7 @@ If[(!FreeQ[t3, DiracGamma]) && (dirsimplify === True),
    t3 =  t3 /. DiracTrace -> TR
   ];
 
-If[(!FreeQ[t3, DiracGamma]) &&  (dirsimplify === True), 
+If[(!FreeQ[t3, DiracGamma]) &&  (dirsimplify === True),
    FCPrint[1,"DiracOrdering ", t3];
    t3 = Collect2[t3, DiracGamma, Factoring->False];
    If[Head[t3] =!= Plus,
@@ -177,11 +176,11 @@ If[(Collecting /. {opt} /. Options[OneLoopSimplify]) === True,
    t4 = ExpandScalarProduct[t3]
   ];
 
-If[spc =!= True, t5 = t4, 
+If[spc =!= True, t5 = t4,
    t5 = ScalarProductCancel[t4, q, FeynAmpDenominatorSimplify->True];
    t5 = ScalarProductCancel[t5, q, FeynAmpDenominatorSimplify->True];
    If[!FreeQ[t5, DiracGamma],
-      dirsimp[z__] := dirsimp[z] = If[!FreeQ[{z}, DiracGamma], 
+      dirsimp[z__] := dirsimp[z] = If[!FreeQ[{z}, DiracGamma],
                                       DiracSimplify[DOT[z]], DOT[z]];
       t5 = t5 /. DOT -> dirsimp
      ]
@@ -194,7 +193,7 @@ FCPrint[1,"\n\n after cancelling scalar products \n\n", Print[FeynCalcForm[t5]],
 
 If[(!FreeQ[t5, OPEDelta]) && (ope1loop === True),
    t5 = Collect2[ OPE1Loop[q, t5, SUNNToCACF -> sunntocacf,
-                              SUNFToTraces -> False 
+                              SUNFToTraces -> False
                       ] /. dummyhead->Identity, q,
                   Factoring->Factor
              ]
@@ -236,9 +235,9 @@ FCPrint[2,"expression is now ",t6];
 If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
    ,
    lt6 = Length[t6];
-   t6  = Sum[FCPrint[1,"TID 2 #" , j," out of " , lt6]; 
-             FCPrint[1,"dimension ",dim, " on: ", StandardForm[Select2[t6[[j]],q]]]; 
-             tmpres=Select1[t6[[j]], q]  * 
+   t6  = Sum[FCPrint[1,"TID 2 #" , j," out of " , lt6];
+             FCPrint[1,"dimension ",dim, " on: ", StandardForm[Select2[t6[[j]],q]]];
+             tmpres=Select1[t6[[j]], q]  *
                TID[Select2[t6[[j]],q],  q,
                    ScalarProductCancel -> spc,
                    DimensionalReduction -> dimred,
@@ -288,7 +287,7 @@ FCPrint[1,"collecing after FRH in TID",t6];
 t6 = Collect2[t6, DiracGamma, Factoring -> False];
 FCPrint[1,"collecing after FRH in TID done",t6];
 If[Head[t6] === Plus,
-   t6 = Map[ExpandScalarProduct[DiracOrder[DiracSimplify[#]]]&, 
+   t6 = Map[ExpandScalarProduct[DiracOrder[DiracSimplify[#]]]&,
          t6];
    t6 = Collect2[t6, q];
    t6 = ScalarProductCancel[t6, q]
@@ -309,7 +308,7 @@ If[Head[t6] =!= Plus,
   t6 = Sum[Select1[t6[[i]],q] fdisav[fdisav[Select2[t6[[i]],q]]],
            {i,Length[t6]}];
   ];
-t7 = PowerSimplify[Collect2[t6, qu, Expanding->False, 
+t7 = PowerSimplify[Collect2[t6, qu, Expanding->False,
                     Factoring -> False]/.substis
                   ];
 pae[a_,b_] := MemSet[pae[a,b], ExpandScalarProduct[a,b]];

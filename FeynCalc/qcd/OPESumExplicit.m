@@ -28,7 +28,7 @@ PowerSimplify = MakeContext["PowerSimplify"];
 sum2 = MakeContext["SymbolicSum2"];
 sum3 = MakeContext["SymbolicSum3"];
 
-MakeContext[FCPrint, OPEi, OPEj, OPESum];
+MakeContext[OPEi, OPEj, OPESum];
 
 OPESumExplicit[ex_] := If[FreeQ[ex,OPESum], ex,
  Block[{symbolicsum, te},

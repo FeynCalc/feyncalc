@@ -32,7 +32,6 @@ IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 MakeContext[
     Collect2,
     Combine,
-    FCPrint,
     Factor2,
     FreeQ2,
     Isolate,

@@ -30,7 +30,7 @@ Begin["`Private`"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 FCI = MakeContext["FeynCalcInternal"];
-MakeContext[ FCPrint, DotSimplify];
+MakeContext[ DotSimplify];
 
 FCRenameDummyIndices[expr_List] :=
     Map[FCRenameDummyIndices[#] &, expr];

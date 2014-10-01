@@ -107,7 +107,6 @@ MakeContext[
     DiracTrace,
     DotSimplify,
     Expand2,
-    FCPrint,
     Factor2,
     FreeQ2,
     MemSet,

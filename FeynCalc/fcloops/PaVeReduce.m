@@ -37,7 +37,6 @@ Mandelstam = MakeContext["CoreOptions","Mandelstam"];
 PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
 
 MakeContext[
-FCPrint,
 Collect2,
 Expand2,
 Factor2,

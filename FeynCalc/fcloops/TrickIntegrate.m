@@ -32,7 +32,7 @@ Begin["`Private`"];
    
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[FCPrint, Apart3, Collect2, Factor2, Map2, Select1, Select2];
+MakeContext[Apart3, Collect2, Factor2, Map2, Select1, Select2];
 
 Options[TrickIntegrate] = {Hold -> True};
 

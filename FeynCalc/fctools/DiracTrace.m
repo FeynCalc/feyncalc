@@ -67,7 +67,6 @@ MakeContext[
     EpsEvaluate,
     Expand2,
     ExpandScalarProduct,
-    FCPrint,
     Factor2,
     FeynCalcExternal,
     FeynCalcInternal,
