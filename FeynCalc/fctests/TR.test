@@ -1,0 +1,151 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: TR.test                                                          *)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for TR                       *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstTR = {
+
+{"fcstTR-ID1","Tr[DiracMatrix[a, b]]","4*Pair[LorentzIndex[a], LorentzIndex[b]]"},
+{"fcstTR-ID2","Tr[DiracSlash[a, b, c, d]]","4*(Pair[Momentum[a], Momentum[d]]*Pair[Momentum[b], Momentum[c]] - Pair[Momentum[a], Momentum[c]]*
+   Pair[Momentum[b], Momentum[d]] + Pair[Momentum[a], Momentum[b]]*Pair[Momentum[c], Momentum[d]])"},
+{"fcstTR-ID3","Tr[DiracMatrix[a, b, c, d, 5]]","(-4*I)*Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], LorentzIndex[d]]"},
+{"fcstTR-ID4","Tr[MetricTensor[a, b]/4 DiracMatrix[mu].DiracMatrix[a] FourVector[p,
+    mu]] // Contract","Pair[LorentzIndex[b], Momentum[p]]"},
+{"fcstTR-ID5","Tr[(DiracSlash[p'] + m).DiracMatrix[
+     a].(DiracSlash[p] + DiracSlash[k] + m).DiracMatrix[
+     b].(DiracSlash[p] + m).DiracMatrix[
+     b].(DiracSlash[p] + DiracSlash[k] + m).DiracMatrix[a]/
+   16] // Expand","4*m^4 + 4*m^2*Pair[Momentum[k], Momentum[k]] + 4*m^2*Pair[Momentum[k], Momentum[p]] -
+ 4*m^2*Pair[Momentum[k], Momentum[Derivative[1][p]]] + 2*Pair[Momentum[k], Momentum[p]]*
+  Pair[Momentum[k], Momentum[Derivative[1][p]]] + 2*Pair[Momentum[k], Momentum[Derivative[1][p]]]*
+  Pair[Momentum[p], Momentum[p]] - 3*m^2*Pair[Momentum[p], Momentum[Derivative[1][p]]] -
+ Pair[Momentum[k], Momentum[k]]*Pair[Momentum[p], Momentum[Derivative[1][p]]] +
+ Pair[Momentum[p], Momentum[p]]*Pair[Momentum[p], Momentum[Derivative[1][p]]]"},
+{"fcstTR-ID6","Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
+   Dimension -> D].DiracGamma[Momentum[p1]].DiracGamma[
+   Momentum[p2]].DiracMatrix[nu, Dimension -> D].DiracMatrix[b,
+   Dimension -> D].DiracGamma[Momentum[p2]].DiracGamma[
+   Momentum[p3]].DiracMatrix[a, Dimension -> D].DiracGamma[
+   Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
+   Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[Momentum[p2]],
+ PairCollect -> True]","4*((-288 + 224*D - 56*D^2 + 4*D^3)*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]^2*
+   Pair[Momentum[p2], Momentum[p2]] + (256 - 128*D + 16*D^2)*Pair[Momentum[p1], Momentum[p2]]^2*
+   Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] + (112 - 104*D + 28*D^2 - 2*D^3)*
+   Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p2]]*
+   Pair[Momentum[p2], Momentum[p3]] + (-128 + 64*D - 8*D^2)*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1], Momentum[p2]]*
+   Pair[Momentum[p2], Momentum[p3]]^2 + (-128 + 64*D - 8*D^2)*Pair[Momentum[p1], Momentum[p2]]^3*
+   Pair[Momentum[p3], Momentum[p3]] + (168 - 104*D + 20*D^2 - D^3)*Pair[Momentum[p1], Momentum[p1]]*
+   Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
+{"fcstTR-ID7","Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
+    Dimension -> D].DiracGamma[Momentum[p1]].DiracGamma[
+    Momentum[p2]].DiracMatrix[nu, Dimension -> D].DiracMatrix[b,
+    Dimension -> D].DiracGamma[Momentum[p2]].DiracGamma[
+    Momentum[p3]].DiracMatrix[a, Dimension -> D].DiracGamma[
+    Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
+    Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[
+    Momentum[p2]] /. D -> 4, PairCollect -> True]","4*(-32*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p2]] +
+  16*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p2]]*
+   Pair[Momentum[p2], Momentum[p3]] + 8*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1], Momentum[p2]]*
+   Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
+{"fcstTR-ID8","Contract[DiracTrace[DiracMatrix[a, b, rho, sigma]] MetricTensor[a,
+    b]] /. DiracTrace -> Tr","16*Pair[LorentzIndex[rho], LorentzIndex[sigma]]"},
+
+{"fcstTR-ID9","SetMandelstam[s, t, u, k1, k2, -p1, -p2, 0, 0, m, m];\nTR[(PolarizationSum[a, rho, k1, p1 - p2] PolarizationSum[b, sigma, k2,
+      p1 - p2] FourVector[p1, a] FourVector[p2, b] DiracMatrix[sigma]). (DiracSlash[k1] - DiracSlash[p1] - m).DiracMatrix[rho].(DiracSlash[p1] + m).(DiracSlash[p2] - m),
+ 	Mandelstam -> {s, t, u, 2 m^2}]","(-2*m*s*(m^4 - t*u)*(8*m^4 - t^2 - 6*t*u - u^2))/(t - u)^3"},
+
+ {"fcstTR-ID10","Tr[DiracMatrix[sigma].(DiracSlash[k1] - DiracSlash[p1] - m).DiracMatrix[rho].(DiracSlash[p1] + m).(DiracSlash[p2] - m),
+ PairCollect -> True]","4*((-(m*t)/2 + (m*u)/2)*Pair[LorentzIndex[rho], LorentzIndex[sigma]] - m*Pair[LorentzIndex[rho], Momentum[p1]]*
+   Pair[LorentzIndex[sigma], Momentum[k1]] + m*Pair[LorentzIndex[rho], Momentum[p2]]*Pair[LorentzIndex[sigma], Momentum[k1]] -
+  m*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p1]] +
+  2*m*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p1]] +
+  m*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] -
+  2*m*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
+
+
+  {"fcST-TR-ID11","ClearScalarProducts\n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[1],
+    Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)]] // Expand","123469824 - 135962624*d + 63224832*d^2 - 16145920*d^3 + 2461760*d^4 - 227584*d^5 + 12320*d^6 - 352*d^7 + 4*d^8"},
+
+{"fcST-TR-ID12","Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[9],
+    Dimension -> (d - 4)].DiracMatrix[a[1],
+    Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[9],
+    Dimension -> (d - 4)]] // Expand","-1879576576 + 2220901376*d - 1127626752*d^2 + 321806848*d^3 - 56625408*d^4 + 6331584*d^5 - 446208*d^6 + 18912*d^7 - 432*d^8 +
+ 4*d^9"},
+
+{"fcST-TR-ID13","Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[9],
+    Dimension -> (d - 4)].DiracMatrix[a[10],
+    Dimension -> (d - 4)].DiracMatrix[a[1],
+    Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[9],
+    Dimension -> (d - 4)].DiracMatrix[a[10],
+    Dimension -> (d - 4)]] // Expand","-31023169536 + 38971179008*d - 21328977920*d^2 + 6679521280*d^3 - 1320732160*d^4 + 171464832*d^5 - 14710080*d^6 + 816960*d^7 -
+ 27840*d^8 + 520*d^9 - 4*d^10"},
+
+{"fcST-TR-ID14","Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[9],
+    Dimension -> (d - 4)].DiracMatrix[a[10],
+    Dimension -> (d - 4)].DiracMatrix[a[11],
+    Dimension -> (d - 4)].DiracMatrix[a[1],
+    Dimension -> (d - 4)].DiracMatrix[a[2],
+    Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
+   DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
+    Dimension -> (d - 4)].DiracMatrix[a[6],
+    Dimension -> (d - 4)].DiracMatrix[a[7],
+    Dimension -> (d - 4)].DiracMatrix[a[8],
+    Dimension -> (d - 4)].DiracMatrix[a[9],
+    Dimension -> (d - 4)].DiracMatrix[a[10],
+    Dimension -> (d - 4)].DiracMatrix[a[11],
+    Dimension -> (d - 4)]] // Expand","551768735744 - 731506905088*d + 427299186688*d^2 - 144858475520*d^3 + 31576821760*d^4 - 4629805312*d^5 + 463655808*d^6 -
+ 31521600*d^7 + 1415040*d^8 - 39600*d^9 + 616*d^10 - 4*d^11"}
+
+};

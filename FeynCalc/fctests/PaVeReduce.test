@@ -1,0 +1,20 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: PaVeReduce.test                                                  *)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PaVeReduce  				*)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstPaVeReduce = {
+
+{"fcstPaVeReduce-ID1","PaVeReduce[PaVe[2, {SmallVariable[me2], mw2, t}, {SmallVariable[me2], 0, mw2}]]","B0[mw2, 0, mw2]/(mw2 - t) - B0[t, mw2, SmallVariable[me2]]/(mw2 - t)"}
+
+ };

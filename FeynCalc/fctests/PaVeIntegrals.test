@@ -1,0 +1,23 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: PaVeIntegrals.test                                               *)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Passarino-Veltman
+		      integrals 													*)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstPaVeIntegrals = {
+  {"PaVeIntegrals-ID1","D[B0[s, mw2, mz2], s]","DB0[s, mw2, mz2]"},
+  {"PaVeIntegrals-ID2","A0[m, A0ToB0 -> True]","m + m*B0[0, m, m]"},
+  {"PaVeIntegrals-ID3","A0[m]","A0[m]"},
+  {"PaVeIntegrals-ID4","B1[pp, m12, m22]","-B0[pp, m12, m22]/2 + ((-m12 + m22)*(-B0[0, m12, m22] + B0[pp, m12, m22]))/(2*pp)"},
+  {"PaVeIntegrals-ID5","B1[pp, m12, m22, BReduce->False]","B1[pp, m12, m22, BReduce->False]"}
+};
