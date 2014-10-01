@@ -22,7 +22,15 @@ PaVeReduce::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
+A0 = MakeContext["PaVeIntegrals","A0"];
+B0 = MakeContext["PaVeIntegrals","B0"];
+B00 = MakeContext["PaVeIntegrals","B00"];
+B1 = MakeContext["PaVeIntegrals","B1"];
+B11 = MakeContext["PaVeIntegrals","B11"];
+BReduce = MakeContext["PaVeIntegrals", "BReduce"];
+C0 = MakeContext["PaVeIntegrals","C0"];
+D0 = MakeContext["PaVeIntegrals","D0"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 IsolateNames = MakeContext["CoreOptions","IsolateNames"];
 Mandelstam = MakeContext["CoreOptions","Mandelstam"];
@@ -30,12 +38,8 @@ PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
 
 MakeContext[
 FCPrint,
-A0, B0, B00, B1, B11, 
-C0, 
 Collect2,
-D0, 
 Expand2,
-BReduce, 
 Factor2,
 FreeQ2,
 Isolate,
@@ -51,7 +55,7 @@ WriteOutPaVe
 ];
 small = MakeContext["CoreObjects","SmallVariable"];
 
-StandardMatrixElement = 
+StandardMatrixElement =
  HighEnergyPhysics`fcloops`OneLoop`StandardMatrixElement;
 
 Options[ PaVeReduce ] = { Dimension -> True,
@@ -64,14 +68,14 @@ Options[ PaVeReduce ] = { Dimension -> True,
 (* ***************************************************************** *)
 (*                          pave20                                   *)
 (* ***************************************************************** *)
-(* These are the ultimate formulas for the reduction of coefficient 
-   functions. The reference is: Techniques for the calculation of 
+(* These are the ultimate formulas for the reduction of coefficient
+   functions. The reference is: Techniques for the calculation of
    electroweak radiative correctinos at the one-loop level and ...,
-   by A. Denner (slightly rewritten by R.M), 
-   to appear in Fortschritte der Physik, 1993 
-*) 
+   by A. Denner (slightly rewritten by R.M),
+   to appear in Fortschritte der Physik, 1993
+*)
 (* ***************************************************************** *)
-(* Notation :    pij = (pi - pj)^2;  where p0 = (0,0,0,0), i.e., 
+(* Notation :    pij = (pi - pj)^2;  where p0 = (0,0,0,0), i.e.,
                  p10 = p1^2, etc.  *)
 (* ***************************************************************** *)
 PaVeBr[i__, p_List, m_List] := tT[Length[m]][i][Join[p, m]];
@@ -116,10 +120,10 @@ demon[x_]:=MemSet[
                         Factor2[Numerator[nx]]/ Factor2[Denominator[nx]]
                       ]
                   ];
-(* Remember:  pij = (pi - pj)^2, i.e, p12 = 1/2 ( p10+p20-p12 ), 
+(* Remember:  pij = (pi - pj)^2, i.e, p12 = 1/2 ( p10+p20-p12 ),
 	      with  p0 = (0,0,0,0)
 *)
-kinmainv[2, {p10_, p12_, p20_, m02_,m12_,m22_}] := 
+kinmainv[2, {p10_, p12_, p20_, m02_,m12_,m22_}] :=
  1/demon[ p10 p20 -  (1/2 (p10+p20-p12) )^2 ] *
   demon[{ {p20, -1/2 (p10+p20-p12)}, {-1/2 (p10+p20-p12), p10} }];
 
@@ -146,9 +150,9 @@ Xinv[1][1,1][{pp_,_,_}] := 1/pp;
 Xinv[2][i_, j_][a_]:= Xinv[2][i,j][a] = kinmainv[2, a][[i,j]];
 Xinv[3][i_, j_][a_]:= Xinv[3][i,j][a] = kinmainv[3, a][[i,j]];
 
-(* we put the small - demon here *) 
-f[1][{pp_, m02_,m12_}] := demon[ pp - m12 + m02 ]; 
-f[1][{p10_,p12_,p20_, m02_,m12_,m22_}] := demon[ p10 - m12 + m02 ]; 
+(* we put the small - demon here *)
+f[1][{pp_, m02_,m12_}] := demon[ pp - m12 + m02 ];
+f[1][{p10_,p12_,p20_, m02_,m12_,m22_}] := demon[ p10 - m12 + m02 ];
 f[2][{p10_,p12_,p20_, m02_,m12_,m22_}] := demon[ p20 - m22 + m02 ];
 f[1][{p10_, p12_, p23_, p03_, p20_, p13_, m02_, m12_, m22_, m32_}] :=
  demon[ p10 - m12 + m02 ];
@@ -195,7 +199,7 @@ pluep2[x__]:=Plus[x]/;!FreeQ2[{x}, {tT,B0,B1,B00,B11,C0,D0,T}];
 tT[N_Integer][0,0, i___Integer][a_List] := Block[{P, M, k, epsi },
   P = 2 + Length[{i}]; M = getm[a];
        1/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])+
-       Expand[( 1/(2 + P - M) epsi/(2 + P - M)* 
+       Expand[( 1/(2 + P - M) epsi/(2 + P - M)*
                      (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])
               )/.Plus->pluep2 ]/.epsi->$epsilon/.pluep2->Plus
                                                 ] /; $LimitTo4 === True;
@@ -203,7 +207,7 @@ tT[N_Integer][0,0, i___Integer][a_List] := Block[{P, M, k, epsi },
 (* $dIM gets defined from the option of PaVeReduce *)
 tT[N_Integer][0,0, i___Integer][a_List] := Block[{P, M, k, epsi },
   P = 2 + Length[{i}]; M = getm[a];
-       1/($dIM + P -2 - M) (R[N, 0, 0][i][a] - 
+       1/($dIM + P -2 - M) (R[N, 0, 0][i][a] -
           Sum[ R[N, k][k, i][a], {k, M}])
                                                 ] /; $LimitTo4 =!= True;
 (* two special cases *)
@@ -216,22 +220,22 @@ T[n0__][j__][a_] := ( T[n0][Sequence @@ Sort[{j}]][a] ) /; !OrderedQ[{j}];
 (* special B-stuff*)
 tT[2][1][{p10_,m02_,m12_}]   := B1[p10,  m02, m12];
 (* XXX *)
-tT[2][1,1][{p10_,m02_,m12_}] := B11[p10, m02, m12] /; 
+tT[2][1,1][{p10_,m02_,m12_}] := B11[p10, m02, m12] /;
                   ($LimitTo4===True) || (p10 === 0);
-tT[2][0,0,1][{p10_,0,0}]   := 
+tT[2][0,0,1][{p10_,0,0}]   :=
   If[$LimitTo4 === True,
       p10/36 + (p10*B0[p10, 0, 0])/24, -(p10*B0[p10, 0, 0])/(8*(1 - $dIM))
     ];
-tT[2][1,1,1][{p10_,0,0}]   := 
+tT[2][1,1,1][{p10_,0,0}]   :=
   If[$LimitTo4 === True,
      -1/12 - B0[p10, 0, 0]/4, ((2 + $dIM)*B0[p10, 0, 0])/(8*(1 - $dIM))
     ];
 
 (* (4.18), *)
-tT[N_Integer][k_Integer,i___Integer][a_List] := 
-(*tT[N][k,i][a] =*) Block[ {P, M ,r, kp },     
+tT[N_Integer][k_Integer,i___Integer][a_List] :=
+(*tT[N][k,i][a] =*) Block[ {P, M ,r, kp },
   P = 1 + Length[{i}]; M = getm[a];
-   Sum[ Xinv[M][k, kp][a]  ( R[N,kp][i][a] - 
+   Sum[ Xinv[M][k, kp][a]  ( R[N,kp][i][a] -
        Sum[ delt[ kp,{i}[[r]] ] * (T[N]@@Join[{0,0}, Delete[{i},r]])[a],
              {r, P-1} ]     ), {kp, M} ]              ];
 
@@ -244,13 +248,13 @@ R[N_Integer, 0, 0][i___Integer][a_List] := Block[{q,P,M},
 R[N_Integer,0,0][i___Integer, mm:(_Integer)..][a_List] := Block[
      {q,M,P,j,k},
       q = Length[{i}]; M = getm[a]; P = Length[{mm}] + 2 + q;
-      demon[ a[[-N]] ] T[N][i, mm][a] + 
+      demon[ a[[-N]] ] T[N][i, mm][a] +
 (* here was the tough bug found by Ralph Schuster ... *)
       (-1)^(P - q) ( T[N - 1][i][c[0][a]] + Sum[
       Binomial[P - 2 - q, j] * Sum @@ Prepend[ Array[List[k[#], M - 1]&, j],
        (T[N-1]@@Join[{i}, Array[k,j]])[c[0][a]]
                                              ], {j,P - 2 - q}
-                                                  ] )          ] /; 
+                                                  ] )          ] /;
                                           ({mm}[[1]] === getm[a]);
 
 (* ***************************************************************** *)
@@ -261,7 +265,7 @@ R[N_Integer,0,0][i___Integer, mm:(_Integer)..][a_List] := Block[
 R[N_Integer, k_Integer][i___Integer][a_List] := Block[{q,P,M},
      q = Length[{i}]; P = 1 + q; M = getm[a];
      1/2( (T[N - 1] @@ til[i][k])[ c[k][a] ] theta[k, i] -
-     f[k][a] T[N][i][a]  -  T[N - 1][i][c[0][a]] 
+     f[k][a] T[N][i][a]  -  T[N - 1][i][c[0][a]]
         )                                             ] /;
        FreeQ[{i}, getm[a]];
 
@@ -270,12 +274,12 @@ R[N_Integer,k_Integer][i___Integer, mm:(_Integer)..][a_List]:=Block[
       q = Length[{i}]; P = Length[{mm}] + 1 + q; M = getm[a];
        1/2( (T[N-1] @@ til[i,mm][k])[c[k][a]] theta[k, i, mm] -
        f[k][a] T[N][i,mm][a] -(-1)^(P - 1 - q) (
-          T[N - 1][i][c[0][a]] + 
-          Sum[ 
-          Binomial[P - 1 - q, j]  Sum @@ Prepend[Array[List[kk[#], 
+          T[N - 1][i][c[0][a]] +
+          Sum[
+          Binomial[P - 1 - q, j]  Sum @@ Prepend[Array[List[kk[#],
                                                        M -1 ]&,j
                                                       ],
-                                 (T[N - 1]@@Join[{i}, 
+                                 (T[N - 1]@@Join[{i},
                                                  Array[kk, j]])[c[0][a]]
                                                 ], {j, P - 1 - q}
           ]))                                                        ] /;
@@ -289,7 +293,7 @@ theta[k_Integer, i___Integer] := 0 /;!FreeQ[{i}, k];
 tm[a_Integer, b_Integer]:= a /; a<=b;
 tm[a_Integer, b_Integer]:= (a-1) /; a > b;
 til[][_]={};
-til[x__][k_]:= Map[tm[#,k]&, {x}]; 
+til[x__][k_]:= Map[tm[#,k]&, {x}];
 
 (* ***************************************************************** *)
 (*                          pave27                                   *)
@@ -305,7 +309,7 @@ cancel[x_]:=Cancel[x/.Plus->pll]/.pll->Plus;
 PaVeReduce[x_, y___Rule]:= Block[{op, wriout, nnx = x},
         op = Join[{y}, Options[PaVeReduce]];
         wriout = WriteOutPaVe /. op;
-        If[!FreeQ[nnx, StandardMatrixElement], 
+        If[!FreeQ[nnx, StandardMatrixElement],
            nnx = Expand2[nnx, StandardMatrixElement];
           ];
         If[StringQ[wriout] && (Head[x] === PaVe),
@@ -318,12 +322,12 @@ pavitp[xXX_PaVe, dir_,opts___] := Block[{nx, file, temp, set,xxx,a,abbs,abbstr,d
    paV[xy__, p_List, m_List] := PaVe[xy,C,p,C,m];
    xxx = paV@@xXX;
    (*Changed 18/9-2000, F.Orellana*)
-   abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /. 
+   abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /.
           HoldPattern -> Identity;
    nx = StringReplace[ ToString[InputForm[xxx/.abbs], PageWidth -> 222],
                        $Abbreviations
                      ];
-    
+
    nx = StringJoin[dir, nx, ".s"];
    (**)
     FCPrint[2,"nx  =", nx];
@@ -348,7 +352,7 @@ pavitp[xXX_PaVe, dir_,opts___] := Block[{nx, file, temp, set,xxx,a,abbs,abbstr,d
                         ],
         temp = PaVeReduce[xXX, WriteOutPaVe->False,opts]//PaVeOrder;
       ];
-                           temp]; 
+                           temp];
 
 (*
 pavereduce[0,___]:=0;
@@ -359,10 +363,10 @@ pavereduce[ a_ b_,ops___ ]:=cancel[ a pavereduce[ b,ops] ]/;
                            FreeQ[a,PaVe]&&!FreeQ[a,StandardMatrixElement];
 *)
 
-pavereduce[a_Times, ops___] := 
+pavereduce[a_Times, ops___] :=
   cancel[ SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe] *
  pavereduce[a/SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe]
-        ]  ] /; 
+        ]  ] /;
     SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe] =!= 1;
 *)
 
@@ -392,12 +396,12 @@ pavereduce[pvli_List,op___]:=Block[{i,set,le=Length[pvli],npvli},
                                 {i,le}
                               ];
                             npvli];
- 
+
 (* ********************************************************************** *)
 
-(* This default setting of Dimension results --- together with 
-   $LimitTo4 = True --- into dimensional regularization 
-   (for the ultraviolett divergencies ) with 
+(* This default setting of Dimension results --- together with
+   $LimitTo4 = True --- into dimensional regularization
+   (for the ultraviolett divergencies ) with
    the limit Dimension -> 4 being taken.
    If the option Dimension is set to some explicit variable (d for instance),
    no limit is taken and d occurs in the result.
@@ -422,7 +426,7 @@ pavereduce[brex_,optis___]:=Block[{sq,t,tt,ma,rest,lin,
 (*, FinalSubstitutions*)}/.
      Join[ {optis},Options[PaVeReduce] ];
 
-(* a little bit fishy, since this yields a side effect, but it is only 
+(* a little bit fishy, since this yields a side effect, but it is only
    used once in tT *)
 (*
 If[(dimen =!= True) && ($LimitTo4 =!= True), $dIM = dimen];
@@ -435,9 +439,9 @@ isolateP[x__]:=Isolate[x, IsolateNames -> isok];
 tri[xx_  yy_]:= tri[xx] tri[yy];
 tri[any_ xx_]:= ( any tri[xx] )/;FreeQ[any,Plus] || Head[any]===PaVe;
 tri[any_ ]:=any /;FreeQ[any,Plus] || Head[any]===PaVe;
- 
+
 mand = mand/.small->Identity;
-If[ mand==={}, 
+If[ mand==={},
     If[($LimitTo4 === False ) && (Head[brex] === PaVe),
        tvarS = Variables[ Join @@ Take[brex, -2] ];
        trick[z_] := Collect2[z, tvarS],
@@ -445,9 +449,9 @@ If[ mand==={},
       ],
     trick[z_]:=trick[z]=TrickMandelstam[z,mand]//Factor2
   ];
- 
+
 msu = {};
-   
+
 pl2[x__]:=kkk[ Plus[x] ]/; FreeQ2[ {x},{A0,B0,B1,B00,B11,C0,D0,PaVe} ];
 backpc[a_,b_,c_,d_,e_,f_]:=PaVeOrder[C0[a,b,c,d,e,f],
                                      PaVeOrderList -> paveorderli];
@@ -461,18 +465,18 @@ tim = Timing[
 t =  breakdown[ (breakx/.msu) ];
             ];
 t = t/.C0->backpc/.D0->backpd;
-  
+
 If[ !FreeQ[t, HoldForm], t = FixedPoint[ReleaseHold,t] ];
 t = Collect[t, {A0[__],B0[__], B1[__], B00[__],
-                B11[__], C0[__], D0[__], PaVe[__], 
+                B11[__], C0[__], D0[__], PaVe[__],
                 HoldPattern[Dot[__]], HoldPattern[DOT[__]]}, Factor2
            ];
-If[ !FreeQ[t, $epsilon], 
+If[ !FreeQ[t, $epsilon],
      t = Expand[t/.Plus->pluep]/.$epsilon->0/.pluep->Plus
   ];
 
 result = t;
- 
+
 (* ***************************************************************** *)
 (*                          pave29                                   *)
 (* ***************************************************************** *)
@@ -485,9 +489,9 @@ FCPrint[2,"check4 ", MemoryInUse[]," MB used"];
  cofun2[0]=0;
  cofun2[y_]:=y/;FreeQ[y,Plus];
  cofun2[yy_]:= trick[yy];
-  
+
 FCPrint[2,"check7"];
- 
+
 If[ isok=!=False && Head[result]=!=PaVe,
     result = cofun/@( result + nuLL );
     isolatefirst[a_ b_]:=(a isolatefirst[b])/;
@@ -497,7 +501,7 @@ If[ isok=!=False && Head[result]=!=PaVe,
     isolatetri[a_]:=isolateP[ trick[a] ];
     result = (result/.nuLL->0)/.isolatefirst->isolatetri/.cofun->cofun2
   ];
-   
+
 If[ isok=!=False, result = isolateP[ result ], result = trick /@ result ];
 result]/;FreeQ[brex,StandardMatrixElement];
 (* **************************************************************** *)

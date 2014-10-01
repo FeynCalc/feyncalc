@@ -8,7 +8,7 @@
 (* :History: RM: changed Sept. 13, 2003*)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Write2 *) 
+(* :Summary: Write2 *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -24,7 +24,7 @@ function (of type string), if used in Write2.";
 
 PostFortranFile::"usage"=
 "PostFortranFile is an option for Write2 which may be set to a file
-name (or a list of file names) or a string, 
+name (or a list of file names) or a string,
 which will be put at the end of the generated
 Fortran file.";
 
@@ -34,42 +34,47 @@ name (or a list of file names) or a string,
 which will be put at the beginning of the generated
 Fortran file.";
 
-Write2::"usage" = 
+Write2::"usage" =
 "Write2[file, val1 = expr1, val2 = expr2, ...] writes the settings
 val1 = expr1, val2 = expr2 in sequence followed by a newline, to the
-specified output file. Setting the option FormatType of Write2 to 
+specified output file. Setting the option FormatType of Write2 to
 FortranForm results in FORTRAN syntax output.";
 
 $FortranContinuationCharacter::"usage"="$FortranContinuationCharacter \
 is the continuation character used in Write2.";
 
+D0Convention::"usage" =
+"D0Convention is an option for Write2. If set to 1, the convention for
+the arguments of D0 is changed when writing a Fortran file with Write2:
+The fifth and sixth argument of D0 are interchanged and the square root is
+taken of the last four arguments.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
- 
 
 
-D0Convention             = MakeContext["D0Convention"];
+
 finalsubstitutions       = MakeContext["CoreOptions","FinalSubstitutions"];
-a0  :=  a0               = MakeContext["A0"];
-b0  :=  b0               = MakeContext["B0"];
-b1  :=  b1               = MakeContext["B1"];
-b00 :=  b00              = MakeContext["B00"];
-b11 :=  b11              = MakeContext["B11"];
-dB0 :=  dB0              = MakeContext["DB0"];
-c0  :=  c0               = MakeContext["C0"];
-d0  :=  d0               = MakeContext["D0"];
+a0  :=  a0               = MakeContext["PaVeIntegrals","A0"];
+b0  :=  b0               = MakeContext["PaVeIntegrals","B0"];
+b1  :=  b1               = MakeContext["PaVeIntegrals","B1"];
+b00 :=  b00              = MakeContext["PaVeIntegrals","B00"];
+b11 :=  b11              = MakeContext["PaVeIntegrals","B11"];
+dB0 :=  dB0              = MakeContext["PaVeIntegrals","DB0"];
+c0  :=  c0               = MakeContext["PaVeIntegrals","C0"];
+d0  :=  d0               = MakeContext["PaVeIntegrals","D0"];
 freeq2                   = MakeContext["FreeQ2"];
 small                    = MakeContext["CoreObjects","SmallVariable"];
 
-Options[Write2]={ 
-                  D0Convention -> 0, 
+Options[Write2]={
+                  D0Convention -> 0,
                   finalsubstitutions -> {},
-                  FormatType -> InputForm, 
- 	          FortranFormatDoublePrecision -> True,                 
+                  FormatType -> InputForm,
+ 	          FortranFormatDoublePrecision -> True,
                   PageWidth    -> 62,
                   PostFortranFile -> "",
-                  PreFortranFile -> "", 
+                  PreFortranFile -> "",
                   StringReplace->{}
                 };
 
@@ -77,7 +82,7 @@ SetAttributes[Write2, HoldRest];
 
 $FortranContinuationCharacter = "&";
 
-Write2[f_String, x___, l_] := 
+Write2[f_String, x___, l_] :=
  Write2[f, Hold[x, l], dummyrule->False ]/; FreeQ[Hold[l], Rule];
 
 Write2[file_String, eeq__, opts___Rule] := Block[{j,vhf,vv,eq,k2str,
@@ -86,7 +91,7 @@ oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep},
 
 ops         = Join[{opts}, Options[Write2]];
 {finsubst, pagewidth } = {finalsubstitutions, PageWidth} /. ops;
-{prefortran, postfortran}  = Flatten /@ {{PreFortranFile}, 
+{prefortran, postfortran}  = Flatten /@ {{PreFortranFile},
                                          {PostFortranFile}} /. ops;
 strep = StringReplace/.ops/.Options[Write2];
 (* a modified Power function, for avoiding Fortran-Complications *)
@@ -110,10 +115,10 @@ mrel[x_] := MapAll[ReleaseHold, x];
 vhf[n_. y_HoldForm]:= Block[{kk, qq}, kk = y[[1, 0]];
   (Table[ HoldForm @@ {qq[ii]}, {ii, y[[1,1]]} ] /. qq -> kk)/.finsubst
                            ] /; NumberQ[n];
-vhf[y_] := Block[{te=y, var={}}, 
+vhf[y_] := Block[{te=y, var={}},
    While[!FreeQ[te, HoldForm], var = Union[ var, allvar[te] ];
          te = ReleaseHold[te]
-        ]; 
+        ];
     var = Union[ var, allvar[te] ];
    var/.finsubst];
 
@@ -136,7 +141,7 @@ Real /: Format[r_Real, FortranForm] :=
           ) /; (togglerule = !  togglerule
                ) && ((FortranFormatDoublePrecision/.{opts}/.Options[Write2])===True);
 
-               SetOptions[OpenWrite, FormatType->FortranForm, 
+               SetOptions[OpenWrite, FormatType->FortranForm,
                                      PageWidth-> pagewidth ];
 (*
                   WriteString[file,
@@ -152,13 +157,13 @@ Real /: Format[r_Real, FortranForm] :=
 *)
   ];
 tostring = If[Head[#] === String, #, ToString[#]]&;
-If[ !FreeQ[ eq, HoldForm ], 
+If[ !FreeQ[ eq, HoldForm ],
     vv = Union[Flatten[Table[vhf[eq[[jj,2]]], {jj, Length[eq]}]]
-              ], 
-    vv = {} 
+              ],
+    vv = {}
   ];
     For[ j=1, j<=Length[eq], j++,
-          eqj1 = eq[[j,1]]; 
+          eqj1 = eq[[j,1]];
           If[(FormatType/.ops/.Options[Write2]) === FortranForm,
              eqj2 = eq[[j,2]] /. Power->pww;
              If[Head[eqj1] === FUNCTION,
@@ -178,11 +183,11 @@ If[ !FreeQ[ eq, HoldForm ],
                     ];
                   flag = False;
                   For[iir = 1, iir <= Length[prerec], iir++,
-                      If[flag =!= True, 
-                         If[!StringMatchQ[StringJoin @@ 
+                      If[flag =!= True,
+                         If[!StringMatchQ[StringJoin @@
                                           Drop[prerec,iir-1], "*IMPLICIT*"],
 (*
-                            If[Length[eqj1]===2, 
+                            If[Length[eqj1]===2,
                                WriteString[file, eqj1[[2]]],
                                WriteString[file, "      REAL*8"]
                               ];
@@ -209,21 +214,21 @@ If[ !FreeQ[ eq, HoldForm ],
               eqj2 = eq[[j,2]]
             ];
 
-         Which[ 
+         Which[
                (FormatType/.ops/.Options[Write2]) === InputForm,
                      If[FreeQ[Streams[], file],
                         OpenWrite[file, FormatType -> InputForm]
                        ];
-                     mal[x_]:=(True/;Length[Characters[ToString[ 
+                     mal[x_]:=(True/;Length[Characters[ToString[
                                              InputForm[x]]]]<73
                               ) /; Length[x]<22;
                      If[ (!FreeQ[ eqj2, HoldForm ]) && j===1,
                          For[iv=1, iv<=Length[vv], iv++,
                              If[mal[vv[[iv]]//ReleaseHold]=!=True,
-                                WriteString[file, 
+                                WriteString[file,
                                    ToString[vv[[iv]]], " = ( "],
-                                WriteString[file, 
-                                   ToString[vv[[iv]]], " = ("] 
+                                WriteString[file,
+                                   ToString[vv[[iv]]], " = ("]
                                ];
                              Write[file, ReleaseHold[ vv[[iv]] ] ];
                              If[mal[vv[[iv]]//ReleaseHold]=!=True,
@@ -231,7 +236,7 @@ If[ !FreeQ[ eq, HoldForm ],
 (* NEW*)
                                 WriteString[file, "       );\n"]
                                ]
-                            ] 
+                            ]
                        ];(* Write[file];*)
                      If[mal[eqj2]=!=True,
                         WriteString[file, eqj1//InputForm, " = ( " ],
@@ -253,14 +258,14 @@ If[ !FreeQ[ eq, HoldForm ],
                          ];
 
                d0convention = D0Convention /. ops /. Options[Write2];
-               If[ d0convention === 0, 
+               If[ d0convention === 0,
                    ansg[x_] := x/. 0 -> Null/.  finsubst
                  ];
-If[ d0convention === 1, 
-    ansg[v_. x_]:= (v x)/; freeq2[(v x)/.finsubst, 
+If[ d0convention === 1,
+    ansg[v_. x_]:= (v x)/; freeq2[(v x)/.finsubst,
                                   {de0, ce0, be0, aa0, db0}];
     ansg[v_. x_] := Block[{args,t4,t5,t6,ll}, args = Apply[List, x];
-         t4 = Take[args,4]; t5 = args[[5]]; t6 = args[[6]]; 
+         t4 = Take[args,4]; t5 = args[[5]]; t6 = args[[6]];
          ll = PowerExpand[ Sqrt[Take[args,-4]] ] /. finsubst;
          (v (Apply[de0, Join[t4, {t6,t5}, ll]]) /. 0 -> Null) ] /;
          ( (Head[x/.finsubst]===(de0)) && (Head[v/.finsubst] =!= (de0)) );
@@ -274,7 +279,7 @@ If[ d0convention === 1,
                       Head[x/.finsubst]===(be0);
     ansg[v_. x_]:=Block[{args, mm}, args = List@@x;
          mm = PowerExpand[ Sqrt[Take[args,-2]] ] /. finsubst;
-         (v (db0@@Join[{args[[1]]}, mm])/. 0 -> Null)] /; 
+         (v (db0@@Join[{args[[1]]}, mm])/. 0 -> Null)] /;
          ( (Head[x/.finsubst]===(db0)) && (Head[v/.finsubst] =!= (db0)) );
     ansg[x_]:=Block[{mm}, mm = PowerExpand[ Sqrt[x] ] /. finsubst;
                     aa0[mm] ] /; Head[x/.finsubst]===(aa0);
@@ -283,10 +288,10 @@ If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
     For[iv=1, iv<=Length[vv], iv++,
 (*XXXX *)
         WriteString[file, "        ", (vv[[iv]])//FortranForm,"= "];
-        If[!freeq2[{ be0, be1, be00, be11, db0, ce0, de0 }, 
-                    Map[Head, Select[ Variables[ReleaseHold[ vv[[iv]] ] 
+        If[!freeq2[{ be0, be1, be00, be11, db0, ce0, de0 },
+                    Map[Head, Select[ Variables[ReleaseHold[ vv[[iv]] ]
                                              ]/.finsubst,
-                                   !freeq2[{be0, be1, be00, be11, 
+                                   !freeq2[{be0, be1, be00, be11,
                                             db0, ce0, de0
                                            }, Head[#] ]& ]
                        ]
@@ -299,7 +304,7 @@ If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
                             FormatType->FortranForm, PageWidth->pagewidth],
                                            Flatten[{"Null" -> "0D0", strep}]]
                           }];
-          Write[file], Write[file, ReleaseHold[vv[[iv]]]/.      
+          Write[file], Write[file, ReleaseHold[vv[[iv]]]/.
                            small->Identity/.Power->pww ];
            ];
        ]
@@ -346,24 +351,24 @@ If[(FormatType/.ops/.Options[Write2]) === FortranForm,
           If[StringLength[rf1] > 8,
              rf1 = StringReplace[StringTake[rf1, 8],"-" ->
                                  $FortranContinuationCharacter
-                                ] <> 
+                                ] <>
                    StringReplace[StringDrop[rf1, 8],strep]
             ];
           rf2 = StringReplace[rfile[[ir+1]], {"\\"->""}];
           If[StringLength[rf2] > 8,
              rf2 = StringReplace[StringTake[rf2, 8],"-" ->
                                  $FortranContinuationCharacter
-                                ] <> 
+                                ] <>
                    StringReplace[StringDrop[rf2, 8],strep]
             ];
 
           If[(StringLength[rf1] > 72) || (StringLength[rf2]) > 72,
-             Print["FORTRAN generation WARNING! 
+             Print["FORTRAN generation WARNING!
                     Line encountered with more than 72 characters. " <>
                     "Check line ",ir,
                     " and ",ir+1];
             ];
-(* well, ... 
+(* well, ...
           If[ (StringLength[rf1] > 1) && (StringLength[rf2] > 7),
               If[StringTake[rf2, {6, 8}] === "&  ",
                  rf3 = StringDrop[rf2, 8];

@@ -45,9 +45,9 @@ Begin["`Private`"];
 
 
 fcdim := fcdim = MakeContext["CoreOptions","Dimension"];
-fcb0 := fcb0 = MakeContext["B0"];
-fcc0 := fcc0 = MakeContext["C0"];
-fcd0 := fcd0 = MakeContext["D0"];
+fcb0 := fcb0 = MakeContext["PaVeIntegrals","B0"];
+fcc0 := fcc0 = MakeContext["PaVeIntegrals","C0"];
+fcd0 := fcd0 = MakeContext["PaVeIntegrals","D0"];
 fcmom := fcmom = MakeContext["CoreObjects","Momentum"];
 fcpa := fcpa = MakeContext["CoreObjects","Pair"];
 fcpol := fcpol = MakeContext["CoreObjects","Polarization"];
@@ -64,8 +64,8 @@ fcsunn := fcsunn = MakeContext["CoreObjects","SUNN"];
 fccoupl := fccoupl = MakeContext["CoreOptions","CouplingConstant"];
 fcscmu := fcscmu = MakeContext["CoreObjects","ScaleMu"];
 fcsmeps := fcsmeps = MakeContext["CoreObjects","SmallEpsilon"];
-fca0 := fca0 = MakeContext["A0"];
-fca0tob0 := fca0tob0 = MakeContext["A0ToB0"];
+fca0 := fca0 = MakeContext["PaVeIntegrals","A0"];
+fca0tob0 := fca0tob0 = MakeContext["PaVeIntegrals","A0ToB0"];
 
 
 (* Defaults *)
@@ -300,11 +300,11 @@ LeutwylerJBar[s_, m1s_, m2s_, opts___Rule] /;
 LeutwylerJBar[s_, m1s_, m2s_, opts___Rule] /;
     (s =!= 0 && ((LeutwylerJBarEvaluation /. Flatten[{opts}] /.
               Options[LeutwylerJBar]) === "general")) :=
-((-(m1s - m2s)^2 + (m1s + m2s)*s)*Log[-m1s] + ((m1s - m2s)^2 - (m1s + m2s)*s)*Log[-m2s] + 
+((-(m1s - m2s)^2 + (m1s + m2s)*s)*Log[-m1s] + ((m1s - m2s)^2 - (m1s + m2s)*s)*Log[-m2s] +
   (m1s - m2s)*(2*s + I*Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]*
-     (Log[1 - (I*(m1s - m2s - s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] - 
-      Log[1 + (I*(m1s - m2s - s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] - 
-      Log[1 - (I*(m1s - m2s + s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] + 
+     (Log[1 - (I*(m1s - m2s - s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] -
+      Log[1 + (I*(m1s - m2s - s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] -
+      Log[1 - (I*(m1s - m2s + s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]] +
       Log[1 + (I*(m1s - m2s + s))/Sqrt[-m1s^2 - (m2s - s)^2 + 2*m1s*(m2s + s)]])))/
  (32*(m1s - m2s)*Pi^2*s);
 
@@ -331,7 +331,7 @@ LeutwylerJ0[m1s_, m2s_, opts___Rule] /; (ExplicitLeutwylerJ0 /. Flatten[{opts}] 
 LeutwylerSigma[s_, m1s_, opts___] /; (ExplicitLeutwylerSigma /. Flatten[{opts}] /.
           Options[LeutwylerSigma]) := Sqrt[1 - 4*m1s/s];
 
-LeutwylerLambda[opts___Rule | opts___List] /; 
+LeutwylerLambda[opts___Rule | opts___List] /;
     (ExplicitLeutwylerLambda /. Flatten[{opts}] /.
           Options[LeutwylerLambda]) :=
     1/(16*Pi^2)*(MassScale /. Flatten[{opts}] /.
@@ -570,7 +570,7 @@ VeltmanC0[p10_, p20_, p12_, m10_, m20_, m30_,
 VeltmanC0[mmm10_, mmm30_, ss_, m10_, m20_, m30_,
         opts___] /; (C0Evaluation /. Flatten[{opts}] /. Options[VeltmanC0]) ===
          "infrared" := If[mmm10=!=m10 || mmm30=!=m30, Message[VeltmanC0::nodef],
-    Block[{s,y1,y2,eps,f1,f2,res,yy1,yy2},s = -ss; 
+    Block[{s,y1,y2,eps,f1,f2,res,yy1,yy2},s = -ss;
         yy1 = alpha[-s, (s + m30 - m10), m10, 2];
         yy2 = alpha[-s, (s + m30 - m10), m10, 1];
         eps = (fcsmeps /. Flatten[{opts}] /. Options[VeltmanC0]);
@@ -1487,11 +1487,11 @@ VeltmanExpand[amp_, opts___?OptionQ] := (
                                                Select[Options[VeltmanExpand], FreeQ[#,fcint]&]],
               fcc0[p10_, p12_, p20_, m10_, m20_, m30_] :>
                 VeltmanC0[p10, p12, p20, m10, m20, m30, ##]& @@
-                OptionsSelect[VeltmanC0, opts, Sequence @@ 
+                OptionsSelect[VeltmanC0, opts, Sequence @@
                                                Select[Options[VeltmanExpand], FreeQ[#,fcint]&]],
               fcd0[p10_, p12_, p23_, p30_, p20_, p13_, m10_, m20_, m30_, m40_] :>
                 VeltmanD0[p10, p12, p23, p30, p20, p13, m10, m20, m30, m40, ##]& @@
-                OptionsSelect[VeltmanD0, opts, Sequence @@ 
+                OptionsSelect[VeltmanD0, opts, Sequence @@
                                                Select[Options[VeltmanExpand], FreeQ[#,fcint]&]]} /.
               (B0Evaluation -> "jbar") :> (B0Evaluation -> "direct1") /.
               If[(OnMassShell /. Flatten[{opts}] /. Options[VeltmanExpand]),

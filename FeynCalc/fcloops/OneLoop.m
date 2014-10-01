@@ -105,7 +105,16 @@ MakeBoxes[StandardMatrixElement[x_], TraditionalForm
 RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];
 
 
+A0 = MakeContext["PaVeIntegrals","A0"];
+A0ToB0 = MakeContext["PaVeIntegrals","A0ToB0"];
+B0 = MakeContext["PaVeIntegrals","B0"];
+B00 = MakeContext["PaVeIntegrals","B00"];
+B1 = MakeContext["PaVeIntegrals","B1"];
+B11 = MakeContext["PaVeIntegrals","B11"];
+C0 = MakeContext["PaVeIntegrals","C0"];
 Collecting = MakeContext["CoreOptions","Collecting"];
+D0 = MakeContext["PaVeIntegrals","D0"];
+DB0 = MakeContext["PaVeIntegrals","DB0"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
@@ -141,11 +150,11 @@ WriteOutPaVe = MakeContext["CoreOptions","WriteOutPaVe"];
 
 MakeContext[
    FCPrint,
-   A0, A0ToB0, Apart2, B0, B00, B1, B11, Cases2,
+   Apart2, Cases2,
    ChangeDimension, Chisholm, Collect2, Combine,
-   Contract, C0,
+   Contract,
    DiracGammaCombine,
-   DiracOrder, DiracSimplify, DiracTrace, D0, DB0,
+   DiracOrder, DiracSimplify, DiracTrace,
    DotSimplify,
    EpsChisholm, EpsEvaluate,
    ExpandScalarProduct,

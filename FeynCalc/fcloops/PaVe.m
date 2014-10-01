@@ -32,7 +32,14 @@ Begin["`Private`"];
 
 ClearAttributes[PaVe, ReadProtectecd];
 
-MakeContext[A0, B0, C0, D0, B00, B1,B11, BReduce];
+A0 = MakeContext["PaVeIntegrals","A0"];
+B0 = MakeContext["PaVeIntegrals","B0"];
+B00 = MakeContext["PaVeIntegrals","B00"];
+B1 = MakeContext["PaVeIntegrals","B1"];
+B11 = MakeContext["PaVeIntegrals","B11"];
+BReduce = MakeContext["PaVeIntegrals", "BReduce"];
+C0 = MakeContext["PaVeIntegrals","C0"];
+D0 = MakeContext["PaVeIntegrals","D0"];
 small = MakeContext["CoreObjects","SmallVariable"];
 
 (* Symmetry in the indices *)

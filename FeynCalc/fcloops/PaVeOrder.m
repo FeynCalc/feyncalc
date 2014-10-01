@@ -1,5 +1,5 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
- 
+
 (* :Title: PaVeOrder *)
 
 (* :Author: Rolf Mertig *)
@@ -26,14 +26,17 @@ The lists may contain only a subsequence of the D0-variables.";
 
 Begin["`Private`"];
 
+A0 = MakeContext["PaVeIntegrals","A0"];
+B0 = MakeContext["PaVeIntegrals","B0"];
+B00 = MakeContext["PaVeIntegrals","B00"];
+B1 = MakeContext["PaVeIntegrals","B1"];
+B11 = MakeContext["PaVeIntegrals","B11"];
+C0 = MakeContext["PaVeIntegrals","C0"];
+D0 = MakeContext["PaVeIntegrals","D0"];
 PaVeOrderList = MakeContext["CoreOptions","PaVeOrderList"];
-
-MakeContext[ A0,B0,B1,B00,B11,C0,D0];
 small = MakeContext["CoreObjects","SmallVariable"];
 
-
-
- Options[PaVeOrder] = {PaVeOrderList -> {}};
+Options[PaVeOrder] = {PaVeOrderList -> {}};
 
 (* smallLL is intermediately introduced for small *)
 (* PaVeOrderdef *)
@@ -45,11 +48,11 @@ small = MakeContext["CoreObjects","SmallVariable"];
          small->smallLL/. 0->nulL;
    opli = opli /. 0 -> nulL /. small->smallLL;
    dordering0[ten__]:=(D0@@(oldper[ten][[1]]));
-   If[ Length[opli]>0, 
+   If[ Length[opli]>0,
        If[ Head[opli[[1]]]=!=List, opli = {opli}];
        If[expr=!=(D0@@opli[[1]]),
           new = new /. D0 -> dordering0;
-          For[j=1, j<=Length[opli], j++,  
+          For[j=1, j<=Length[opli], j++,
               dordering[j][ten10__]:= D0 @@ dord[ D0[ten10], opli[[j]]];
               cordering[j][six06__]:= C0 @@ cord[ C0[six06], opli[[j]]];
               new = new/.D0->dordering[j]/.C0 -> cordering[j]
@@ -73,7 +76,7 @@ cord[a_,b_,c_, m1_,m2_,m3_]:=
        six =  {te}/. smallLL->sma;
        If[FreeQ[six, sma],
           arg = argu,
-          smalist = Select[Variables[six/.Power->pw], 
+          smalist = Select[Variables[six/.Power->pw],
                            (!FreeQ[#, sma])&]/.pw->Power;
           If[!FreeQ[smalist, Power],
              arg = (argu/.smallLL->Identity) /.
@@ -99,37 +102,37 @@ cord[a_,b_,c_, m1_,m2_,m3_]:=
 
 
 (* Make use of the nice new StringReplace *)
-   
+
    tostring = ToString[InputForm[#], PageWidth -> 4711]&;
    tomatch[{li:{__}..}]:= tomatch /@ {li};
    tomatch[{li__}]:=StringReplace[tostring[{li}],{"{"->"*","}"->"*"}]/;
                                   Head[{li}[[1]]]=!=List;
    dord[D0[ten__],{}]:=dord[D0[ten]];
-   dord[D0[te__], argu_List ]:= Block[{int, puref, arg, smalist, ten, 
+   dord[D0[te__], argu_List ]:= Block[{int, puref, arg, smalist, ten,
                                        varg, sma, pw},
        ten =  {te}/. smallLL->sma;
-       If[FreeQ[ten, sma], 
+       If[FreeQ[ten, sma],
           arg = argu,
-          smalist = Select[Variables[ten/.Power->pw], 
+          smalist = Select[Variables[ten/.Power->pw],
                            (!FreeQ[#, sma])&]/.pw->Power;
-          If[!FreeQ[smalist, Power], 
-             arg = (argu/.smallLL->Identity) /. 
+          If[!FreeQ[smalist, Power],
+             arg = (argu/.smallLL->Identity) /.
                    Map[(#[[1,1]] -> (#[[1]]) )&, smalist ],
              arg = argu/.smallLL->sma
             ];
          ];
        varg = Variables[arg];
        For[iv=1,iv<=Length[varg],iv++,
-           If[(!FreeQ[ten, varg[[iv]]^2]) && FreeQ[arg,varg[[iv]]^2], 
+           If[(!FreeQ[ten, varg[[iv]]^2]) && FreeQ[arg,varg[[iv]]^2],
               arg = arg/.varg[[iv]]->(varg[[iv]]^2)];
           ];
        puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
                          ]]/.slot->Slot/.func->Function/.or->Or/.
                           stringmatchq->StringMatchQ;
-       int = Select[ tostring /@ (oldper@@ten), 
+       int = Select[ tostring /@ (oldper@@ten),
                      func[ stringmatchq[slot[1],tomatch[arg]]
                          ]/.slot->Slot/.func->Function/.
-                           stringmatchq->StringMatchQ 
+                           stringmatchq->StringMatchQ
                           ];
        If[Length[int] === 0, int = ten,int=ToExpression[int[[1]]]];
        int/.sma->smallLL] /; Length[{te}]===10 && Length[argu]>0;
@@ -137,10 +140,10 @@ cord[a_,b_,c_, m1_,m2_,m3_]:=
 (* If no ordering list is given, a standard representative is returned *)
  dord[D0[ten__]]:=(oldper[ten][[1]])/;Length[{ten}]===10;
 
-oldper[a_,b_,c_, m1_,m2_,m3_] := 
+oldper[a_,b_,c_, m1_,m2_,m3_] :=
 Sort[{ {a,b,c, m1,m2,m3}, {c,b,a, m1,m3,m2},
                   {a,c,b, m2,m1,m3}, {b,c,a, m2,m3,m1},
-                  {c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} } 
+                  {c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} }
     ];
 
 (* This list has been calculated with FeynCalc! *)
