@@ -1,0 +1,39 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: DiracSimplify.test                                               *)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracSimplify  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstDiracSimplify = {
+
+{"fcstDiracSimplify-ID1","DiracSimplify[DiracMatrix[mu, mu, Dimension -> D]]","D"},
+{"fcstDiracSimplify-ID2","DiracSimplify[DiracMatrix[mu, nu, rho, sigma, mu]]","-2*DiracGamma[LorentzIndex[sigma]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]]"},
+{"fcstDiracSimplify-ID3","DiracSimplify[1/2 DiracMatrix[mu, a, b, c, d, mu]]","DiracGamma[LorentzIndex[c]] . DiracGamma[LorentzIndex[b]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIndex[d]] +
+ DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIndex[b]] . DiracGamma[LorentzIndex[c]]"},
+{"fcstDiracSimplify-ID4","DiracSimplify[DiracSlash[p], DiracSlash[-q] + m, DiracSlash[p]]","m*Pair[Momentum[p], Momentum[p]] + DiracGamma[Momentum[q]]*Pair[Momentum[p], Momentum[p]] -
+ 2*DiracGamma[Momentum[p]]*Pair[Momentum[p], Momentum[q]]"},
+{"fcstDiracSimplify-ID5","DiracSimplify[DiracMatrix[5], DiracMatrix[mu]]","-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstDiracSimplify-ID6","DiracSimplify[DiracMatrix[6, nu, 7, mu]]","DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[mu]] . DiracGamma[6]"},
+{"fcstDiracSimplify-ID7","DiracSimplify[(DiracSlash[p] - m).SpinorU[p, m]]","0"},
+{"fcstDiracSimplify-ID8","DiracSimplify[(DiracSlash[p] + m).SpinorV[p, m]]","0"},
+{"fcstDiracSimplify-ID9","DiracSimplify[SpinorUBar[p, m].(DiracSlash[p] - m)]","0"},
+{"fcstDiracSimplify-ID10","DiracSimplify[SpinorVBar[p, m].DiracSlash[q].(DiracSlash[p] - m)]","2*Pair[Momentum[p], Momentum[q]]*Spinor[-Momentum[p], m, 1]"},
+{"fcstDiracSimplify-ID11","DiracSimplify[SpinorVBar[p, m1].DiracSlash[q, p].SpinorU[q, m2]]","m1*m2*Spinor[-Momentum[p], m1, 1] . Spinor[Momentum[q], m2, 1] + 2*Spinor[-Momentum[p], m1, 1] . Spinor[Momentum[q], m2, 1]*
+  Pair[Momentum[p], Momentum[q]]"},
+
+{"fcstDiracSimplify-ID11","$BreitMaison = True;\nDiracSimplify[DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]]","2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+
+{"fcstDiracSimplify-ID12","DiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, D], D]/2 + DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] -
+ DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]/2"}
+(*{"fcstDiracSimplify-ID13","$BreitMaison = False;",""},*)
+
+}
