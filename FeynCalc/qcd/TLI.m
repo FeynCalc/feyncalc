@@ -48,8 +48,8 @@ OPEm          = MakeContext["OPEm"];
 PowerSimplify = MakeContext["PowerSimplify"];
 SOD            = MakeContext["CoreObjects","SOD"];
 ScalarProduct = MakeContext["ScalarProduct"];
-Select1       = MakeContext["Select1"];
-Select2       = MakeContext["Select2"];
+SelectFree       = MakeContext["SelectFree"];
+SelectNotFree       = MakeContext["SelectNotFree"];
 
 Options[TLI] =  {EpsilonOrder -> 0, Momentum -> Global`p};
 

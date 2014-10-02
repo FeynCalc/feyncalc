@@ -69,8 +69,8 @@ PowerSimplify,
 RHI,
 Rename,
 ScalarProductCancel,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 Uncontract
 ];
 
@@ -110,7 +110,7 @@ If[!FreeQ2[temp, {k1,k2}],
 If[FreeQ2[temp,{k1,k2}] && !FreeQ[temp,LorentzIndex] && !FreeQ[temp, RHI],
    temp = Collect2[temp, LorentzIndex];
    If[Head[temp] === Plus,
-      temp = Map[(Select1[#, RHI] Collect2[Select2[#, RHI], RHI])&, temp]
+      temp = Map[(SelectFree[#, RHI] Collect2[SelectNotFree[#, RHI], RHI])&, temp]
      ]
   ];
 temp]];
@@ -134,13 +134,13 @@ contractlabel = Contract /. {opt} /. Options[OPE2TID];
 temp = Expand2[ChangeDimension[exp, n], {k1, k2}];
 dirrramp[ww_, ka1_, ka2_]:=
  If[Head[ww]=!=Times, DiracTrace[ww],
-    If[Select2[Select1[ww,{DOT, DiracGamma}], {ka1,ka2}] *
-       Select1[Select1[ww,{DOT, DiracGamma}], {ka1,ka2}] *
-               Select2[ww,{DOT, DiracGamma}] === ww
+    If[SelectNotFree[SelectFree[ww,{DOT, DiracGamma}], {ka1,ka2}] *
+       SelectFree[SelectFree[ww,{DOT, DiracGamma}], {ka1,ka2}] *
+               SelectNotFree[ww,{DOT, DiracGamma}] === ww
        ,
-       Select2[Select1[ww,{DOT, DiracGamma}], {ka1,ka2}] *
-       DiracTrace[Select2[ww,{DOT, DiracGamma}] *
-                  Select1[Select1[ww,{DOT,DiracGamma}], {ka1,ka2}]
+       SelectNotFree[SelectFree[ww,{DOT, DiracGamma}], {ka1,ka2}] *
+       DiracTrace[SelectNotFree[ww,{DOT, DiracGamma}] *
+                  SelectFree[SelectFree[ww,{DOT,DiracGamma}], {ka1,ka2}]
                  ]
        ,
        DiracTrace[ww]
@@ -172,7 +172,7 @@ If[!FreeQ[temp, Power[_,(hh_ /; Head[hh] =!= Integer)]],
 If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
    !FreeQ[temp, Pair[Momentum[OPEDelta,___], Momentum[k1,___]]]
    ,
-   If[!FreeQ[Select1[temp, {FeynAmpDenominator,
+   If[!FreeQ[SelectFree[temp, {FeynAmpDenominator,
                             Power2[_,(hhh_/;Head[hhh]=!=Integer)
                                   ]}], k2
             ],
@@ -185,7 +185,7 @@ If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
 If[ FreeQ[temp, Power2[_,(hh_/;phead[hh])]] &&
    !FreeQ[temp, Pair[Momentum[OPEDelta,___], Momentum[k2,___]]]
    ,
-   If[!FreeQ[Select1[temp, {FeynAmpDenominator,
+   If[!FreeQ[SelectFree[temp, {FeynAmpDenominator,
                             Power2[_,(hhh_/;Head[hhh]=!=Integer)]}], k1
             ],
       temp = temp /. Pair[Momentum[OPEDelta,di1___],
@@ -210,7 +210,7 @@ If[(!FreeQ2[temp, {Power2[
                   }
            ]
    ) &&
-  (!FreeQ[Select1[temp, {FeynAmpDenominator,
+  (!FreeQ[SelectFree[temp, {FeynAmpDenominator,
                          Power2[_,(hhh_/;Head[hhh]=!=Integer)]}],
           k2]
   ) && (* do only if really necessary (otherwise: recursion danger) *)
@@ -235,7 +235,7 @@ If[(!FreeQ2[temp, {Power2[
                   }
            ]
    ) &&
-  (!FreeQ[Select1[temp, {FeynAmpDenominator,
+  (!FreeQ[SelectFree[temp, {FeynAmpDenominator,
                          Power2[_,(hhh_/;Head[hhh]=!=Integer)]}],
           k1]
   ) && (* do only if really necessary (otherwise: recursion danger) *)
@@ -252,7 +252,7 @@ If[(!FreeQ2[temp, {Power2[
 
 (* undo for a special case *)
 If[!FreeQ[temp, Pair[Momentum[k1,n], Momentum[k2,n]]],
-   If[MatchQ[Select2[Select1[temp,FeynAmpDenominator],{k1,k2}],
+   If[MatchQ[SelectNotFree[SelectFree[temp,FeynAmpDenominator],{k1,k2}],
               Pair[Momentum[k1,n], Momentum[k2,n]] Pair[
               Momentum[k1|k2,n],LorentzIndex[__]] Power2[Pair[
               Momentum[k1,n],Momentum[OPEDelta,n]],
@@ -428,8 +428,8 @@ epscontract[y_] := If[(EpsContract/.{opt})===False,
                      ];
 
 epscos[a_] := If[Head[a] =!= Times, a,
-                 Select1[a, LorentzIndex] *
-                 epscont[Select2[a, LorentzIndex]]
+                 SelectFree[a, LorentzIndex] *
+                 epscont[SelectNotFree[a, LorentzIndex]]
                 ];
 epscont[1] = 1;
 epscont[y_] := (*epscont[y] =*) Block[{tt},
@@ -454,10 +454,10 @@ epscont[y_] := (*epscont[y] =*) Block[{tt},
 If[Head[temp] === Times && !FreeQ2[temp, {k1,k2,OPEDelta}],
 (* canonize *)
    temp = Factor2[temp];
-   nok1k2factor = Select1[temp, {k1, k2}];
+   nok1k2factor = SelectFree[temp, {k1, k2}];
    temp2        = Factor2[temp/nok1k2factor];
 (* there may be no Eps in delfactor *)
-   delfactor    = Select2[Select2[temp2, Pair], OPEDelta];
+   delfactor    = SelectNotFree[SelectNotFree[temp2, Pair], OPEDelta];
 
 
    FCPrint[3,"delfactor = ",delfactor // FeynCalcForm];
@@ -468,8 +468,8 @@ checkd[yy_] := !FreeQ[delfactor, yy];
 checkd[yy_,zz__] := (!FreeQ[delfactor, yy]) && checkd[zz];
 
    temp3        = Factor2[temp2/delfactor];
-   tempf        = Select2[temp3, FeynAmpDenominator];
-   temp4        = qQQ[Select1[temp3, FeynAmpDenominator]];
+   tempf        = SelectNotFree[temp3, FeynAmpDenominator];
+   temp4        = qQQ[SelectFree[temp3, FeynAmpDenominator]];
 
 checkk = Factor2[temp0] -
          Factor2[nok1k2factor (temp4/.qQQ->Identity) tempf delfactor];
@@ -2408,14 +2408,14 @@ temp = FeynAmpDenominatorSimplify[Collect2[temp, k1,k2], k1, k2];
 FCPrint[2,"collect after ScalarProductCancel in OPE2TID done"];
 
 (* ZZZ*)
-If[!FreeQ2[kape = Select1[Cases2[temp,Pair], OPEDelta], {k1,k2}],
+If[!FreeQ2[kape = SelectFree[Cases2[temp,Pair], OPEDelta], {k1,k2}],
    If[Head[temp] =!= Plus,
       temp = ScalarProductCancel[OPE1Loop[{k1,k2},temp],k1,k2,
                                  Collecting->False]
       ,
-      temp = Select1[temp,kape] +
+      temp = SelectFree[temp,kape] +
              ScalarProductCancel[ OPE1Loop[{k1,k2},
-                                  Select2[temp, kape]], k1, k2,
+                                  SelectNotFree[temp, kape]], k1, k2,
                                   Collecting->False
                                 ]
      ]
@@ -2440,11 +2440,11 @@ If[(Head[delfactor] === Pair) && (!FreeQ2[delfactor, {k1,k2}]),
   ];
 
 fcheck[ka_, aa__] := Block[{ww},
-     ww = Select2[FeynAmpDenominatorSplit[
+     ww = SelectNotFree[FeynAmpDenominatorSplit[
                         FeynAmpDenominator[aa], ka], ka];
 If[(!FreeQ[{aa}, p])
 (* not necessary; CHANGE 11/94
-   && (!FreeQ[ww, Select1[{k1,k2},ka][[1]]])
+   && (!FreeQ[ww, SelectFree[{k1,k2},ka][[1]]])
 *),
         True, False]
 ];

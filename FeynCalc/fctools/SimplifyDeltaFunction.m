@@ -30,7 +30,7 @@ DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 DeltaFunctionDoublePrime = MakeContext["CoreObjects","DeltaFunctionDoublePrime"];
 DeltaFunctionPrime = MakeContext["CoreObjects","DeltaFunctionPrime"];
 
-MakeContext[Collect2, Select1, Select2, Zeta2];
+MakeContext[Collect2, SelectFree, SelectNotFree, Zeta2];
 
 SimplifyDeltaFunction[exp_] := SimplifyDeltaFunction[exp, Global`x];
 
@@ -43,7 +43,7 @@ SimplifyDeltaFunction[exp_, x_] := Block[
  t1 = Limit[Expand[D[exp, DeltaFunction[1-x]]] /. Zeta2 -> Zeta[2], x -> 1];
 
  deD[a_Plus] := Map[deD, a];
- deD[a_/;Head[a]=!=Plus] := Select1[a, x] dP[Select2[a,x]];
+ deD[a_/;Head[a]=!=Plus] := SelectFree[a, x] dP[SelectNotFree[a,x]];
  t2 = deD[Collect2[D[exp, dfp], x]] /. delp /. dP[y_] :> dfp y;
  res = 
  (exp /. {DeltaFunction[1-x]      :> 0, 

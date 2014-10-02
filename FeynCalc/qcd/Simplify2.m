@@ -26,7 +26,7 @@ Factoring = MakeContext["CoreOptions","Factoring"];
 PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 Tf = MakeContext["CoreObjects","Tf"];
 
-MakeContext[Collect2, Select1, Select2];
+MakeContext[Collect2, SelectFree, SelectNotFree];
 
 Simplify2[y_] := Block[{t1,t2,t3,null1, null2, cct, col,min},
 col =  Collect2[##, Factoring->False];
@@ -38,13 +38,13 @@ t1 = col[Expand[y], Epsilon];
 
 
 
-ll = ((Select1[#, llt] col[Select2[#, llt], llt]) /.
+ll = ((SelectFree[#, llt] col[SelectNotFree[#, llt], llt]) /.
        (1/(x_ -1) :> min (1/(1-x))) /. min :> (-1)
      )&;
 
-dd = (Select1[#, cct] col[Select2[#, cct], DeltaFunction])&;
+dd = (SelectFree[#, cct] col[SelectNotFree[#, cct], DeltaFunction])&;
 
-cc = (Select1[#, Epsilon] col[Select2[#, Epsilon], cct])&;
+cc = (SelectFree[#, Epsilon] col[SelectNotFree[#, Epsilon], cct])&;
 
 
 (* maybe *)

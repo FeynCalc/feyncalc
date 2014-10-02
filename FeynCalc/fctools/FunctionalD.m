@@ -52,8 +52,8 @@ LeftPartialD = MakeContext["CoreObjects","LeftPartialD"];
 LeftRightPartialD2 = MakeContext["CoreObjects","LeftRightPartialD2"];
 RightPartialD = MakeContext["CoreObjects","RightPartialD"];
 QuantumField = MakeContext["CoreObjects","QuantumField"];
-Select1      = MakeContext["Select1"];
-Select2      = MakeContext["Select2"];
+SelectFree      = MakeContext["SelectFree"];
+SelectNotFree      = MakeContext["SelectNotFree"];
 sund        := sund = MakeContext["CoreObjects","SUNDelta"];
 sundc       := sundc = MakeContext["SUNDeltaContract"];
 SUNIndex     = MakeContext["CoreObjects","SUNIndex"];
@@ -176,13 +176,13 @@ FunctionalD[y_, fi_QuantumField, op___]:= FunctionalD[y,{fi}, op];
 (* operate from the left *)
   If[!FreeQ[r, ddelta],
      If[Head[r] =!= Plus,
-        r = ExpandPartialD[((Select2[r, ddelta] /. ddelta -> pard) .
-                             Select1[r, ddelta])/.Times->DOT
+        r = ExpandPartialD[((SelectNotFree[r, ddelta] /. ddelta -> pard) .
+                             SelectFree[r, ddelta])/.Times->DOT
                           ]
         ,
-        r = Sum[ExpandPartialD[((Select2[r[[i]], ddelta] /.
+        r = Sum[ExpandPartialD[((SelectNotFree[r[[i]], ddelta] /.
                                   ddelta -> pard) .
-                                Select1[r[[i]], ddelta]
+                                SelectFree[r[[i]], ddelta]
                                      ) /. Times -> DOT
                                     ],
                 {i, Length[r]}]

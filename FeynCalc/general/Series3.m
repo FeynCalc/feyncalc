@@ -39,7 +39,7 @@ MakeContext[
     FreeQ2,
     Nielsen,
     OPEm,
-    Select2,
+    SelectNotFree,
     SumS,
     SumT,
     Zeta2
@@ -108,7 +108,7 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series3];
        If[nn>-1, re = re + O[x]^(n-1)]
       ];
     re = (re // Normal) /. hyback;
-    If[Head[re]===Plus && n<0, re = Select2[re, x]];
+    If[Head[re]===Plus && n<0, re = SelectNotFree[re, x]];
     res = Collect2[polysimp[re] /. finsub,x,Factoring->False];
     If[nn === -1,
        res = Collect2[res - Coefficient[res, x, 0], x,Factoring->False];

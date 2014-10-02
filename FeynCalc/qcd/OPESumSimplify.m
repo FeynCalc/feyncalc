@@ -29,7 +29,7 @@ OPEDelta = MakeContext["OPEDelta"];
 OPESum  = MakeContext["OPESum"];
 Power2  =  MakeContext["Power2"];
 PowerSimplify = MakeContext["PowerSimplify"];
-Select2 = MakeContext["Select2"];
+SelectNotFree = MakeContext["SelectNotFree"];
 
 powexp[x_] := x /. (-y_)^po_ -> ((-1)^po y^po) /.
              {(-1)^(e1_. + 2 _ ) :> ((-1)^e1),
@@ -66,7 +66,7 @@ lsum5[a_^v_ b_^w_,{i_,0,m_}]:=
 
 (* special trick for sums *)
 lsum6[a_, in1___List, {j_, 0, m4_Plus}] := Block[{te},
-    te = Select2[a, b_^(m4-j+1)];
+    te = SelectNotFree[a, b_^(m4-j+1)];
     If[Head[te] === Power,
        te[[1]] OPESum[a /. te :> (te[[1]]^(te[[2]]-1)),
                          in1, {j,0,m4}],
@@ -75,7 +75,7 @@ lsum6[a_, in1___List, {j_, 0, m4_Plus}] := Block[{te},
 
 (* special trick for sums *)
 lsum7[a_,more___List, {i_, 0, j_}] := Block[{te},
-    te = Select2[a, b_^(i+1)];
+    te = SelectNotFree[a, b_^(i+1)];
     If[Head[te] === Power,
        te[[1]] OPESum[a /. te :> (te[[1]]^(te[[2]]-1)), more,{i,0,j}],
        OPESum[a, more, {i, 0, j}]

@@ -31,15 +31,15 @@ FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[ FeynCalcInternal, Select1, Select2 ];
+MakeContext[ FeynCalcInternal, SelectFree, SelectNotFree ];
 
 (*
 feynsplit[_][] := 1;
 *)
 feynsplit[k1_][a__PropagatorDenominator] :=
 (
-  (FeynAmpDenominator@@Select1[{a}, k1]) *
-  (FeynAmpDenominator@@Select2[{a}, k1])
+  (FeynAmpDenominator@@SelectFree[{a}, k1]) *
+  (FeynAmpDenominator@@SelectNotFree[{a}, k1])
 ) /.FeynAmpDenominator[]->1 ;
 
 fsp[a__] := Apply[Times, Map[FeynAmpDenominator, {a}]];

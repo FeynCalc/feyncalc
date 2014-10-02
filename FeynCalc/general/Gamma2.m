@@ -23,7 +23,7 @@ Begin["`Private`"];
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[Select1, Select2, Zeta2];
+MakeContext[SelectFree, SelectNotFree, Zeta2];
 
 (*
 This is
@@ -118,8 +118,8 @@ grules = Dispatch[{PolyGamma[0,1] -> -EulerGamma,
                  }];
 
 toholdform[a_Plus] := Map[toholdform, a];
-toholdform[b_Times]:= Select2[b,Epsilon] Apply[HoldForm,
-                      {Select1[b,Epsilon]}];
+toholdform[b_Times]:= SelectNotFree[b,Epsilon] Apply[HoldForm,
+                      {SelectFree[b,Epsilon]}];
 toholdform[c_ /; Head[c] =!= Plus && Head[c]=!=Times] := c;
 
 simp[z_] := toholdform[Collect[Expand[z/.grules], Epsilon]];

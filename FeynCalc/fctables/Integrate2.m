@@ -40,7 +40,7 @@ MakeContext[Collect2, Expand2,
             Factor2, FreeQ2,
             Integrate3,Integrate4,MemSet,Nielsen,PowerSimplify,
             SimplifyPolyLog,
-            Select1, Select2, Solve2, Trick, Zeta2];
+            SelectFree, SelectNotFree, Solve2, Trick, Zeta2];
 
 (*
 Options[Integrate2] = Options[Integrate];
@@ -48,7 +48,7 @@ Options[Integrate2] = Options[Integrate];
 Options[Integrate2] = {Table:>{}};
 
 Integrate2[a_, b_List, c__List,opt___Rule] :=
-   Integrate2[Integrate2[a,b], c,opt] /; FreeQ[Select2[a, b[[1]]],
+   Integrate2[Integrate2[a,b], c,opt] /; FreeQ[SelectNotFree[a, b[[1]]],
                                            DeltaFunction];
 
 polylogc[yai_][nm_,z_] :=
@@ -169,11 +169,11 @@ integrate3[a_Plus, b_, c___] :=  Map[Integrate2[#, b, c]&, a];
 
 
 integrate3[a_, b_, c___] := (If[Head[b] === List,
-                  Select1[a, b[[1]]] *
-                  Integrate3[Select2[a, b[[1]]], b, c
+                  SelectFree[a, b[[1]]] *
+                  Integrate3[SelectNotFree[a, b[[1]]], b, c
                             ] /. (Hold@@{Integrate3})-> Integrate4,
-                  Select1[a, b] *
-                  Integrate3[Select2[a, b], b
+                  SelectFree[a, b] *
+                  Integrate3[SelectNotFree[a, b], b
                             ] /. (Hold@@{Integrate3})-> Integrate4
                  ] // PowerSimplify
                ) /; ((Head[a] =!= Plus) && FreeQ[a, DeltaFunction]);

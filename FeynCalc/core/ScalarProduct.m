@@ -30,7 +30,7 @@ SPD = MakeContext["CoreObjects","SPD"];
 fci := fci = MakeContext["FeynCalcInternal"];
 nf  := nf = MakeContext["NumericalFactor"];
 
-MakeContext[ Select1, ChangeDimension];
+MakeContext[ SelectFree, ChangeDimension];
 
 
 Options[ScalarProduct] = {Dimension->4, fci -> True};
@@ -68,7 +68,7 @@ If[FreeQ[a, Pattern], ste = fci[ScalarProduct[a, b, c]];
 (* might be a setting before *)
    If[z =!= ste,
       downv = DownValues[ScalarProduct];
-      downv = Select1[downv,
+      downv = SelectFree[downv,
                      RuleDelayed@@{HoldPattern@@{scal[a,b,c]}, ste} /.
                      scal -> ScalarProduct];
       DownValues[ScalarProduct] = downv;

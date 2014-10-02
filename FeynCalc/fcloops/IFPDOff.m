@@ -35,8 +35,8 @@ MakeContext[Cases2,
 ExpandScalarProduct,
 FeynAmpDenominatorSimplify,
 MomentumExpand,
-Select1,
-Select2];
+SelectFree,
+SelectNotFree];
 
 SetAttributes[IFPDOff, HoldAll];
 SetAttributes[unset, HoldAll];
@@ -45,10 +45,10 @@ SetAttributes[unset, HoldAll];
 (* it is undone by IFPDOff *)
 
 unasign[quu__][pp_Plus, m_] :=
-  If[Head[Select2[pp,quu]] === Plus,
-     unasign[quu][First[Select2[pp,quu]], Rest[Select2[pp,quu]] +
-                Select1[pp,quu], m],
-     unasign[quu][Select2[pp,quu], Select1[pp,quu], m]
+  If[Head[SelectNotFree[pp,quu]] === Plus,
+     unasign[quu][First[SelectNotFree[pp,quu]], Rest[SelectNotFree[pp,quu]] +
+                SelectFree[pp,quu], m],
+     unasign[quu][SelectNotFree[pp,quu], SelectFree[pp,quu], m]
     ];
 
 unassign0[quu__][Momentum[q_, di___],m_] :=

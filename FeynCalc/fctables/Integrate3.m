@@ -38,7 +38,7 @@ PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
   
 MakeContext[ Apart3,DataType, Factor2,
              Integrate2, Nielsen,
-             Select1, Select2, SimplifyPolyLog, SumS, Zeta2];
+             SelectFree, SelectNotFree, SimplifyPolyLog, SumS, Zeta2];
  
  S = MakeContext["SumS"];
  ST = MakeContext["SumT"];
@@ -75,21 +75,21 @@ polys[z_ ,y_] := polys[z,y] =
    res3 = 
    If[Head[a] === Plus,
 (* this is quicker than linearity *)
-      (Map[((Select1[# dummy, x] iT[Select2[# dummy, x],{x,b}])/.dummy->1
+      (Map[((SelectFree[# dummy, x] iT[SelectNotFree[# dummy, x],{x,b}])/.dummy->1
           )&, a]  /. supertab /. zetsub
       ) /. Log[1/xxx_] :> (-Log[xxx]) /. iT -> (Hold@@{Integrate3})
 
 (*      Integrate3[#,{x,b}]& /@ a*)
       ,
       If[Head[a] === Times,
-         Select1[a,x] (iT[Select2[a,x],{x,b}]/.supertab/.zetsub), 
+         SelectFree[a,x] (iT[SelectNotFree[a,x],{x,b}]/.supertab/.zetsub), 
           iT[a, {x,b}] /.  supertab  /. zetsub
         ]/.Log[1/xxx_]:>(-Log[xxx])/. iT -> (Hold@@{Integrate3})
      ] /. {min1 -> (-1), Pi^2 -> (6 Zeta2), Pi^4 -> (36 Zeta2^2)};
    If[(!FreeQ[res3, Hold[Integrate3]]) && (!FreeQ[res3, PolyLog]),
       If[Head[res3]===Plus, 
-         res3 = Select1[res3, Integrate3] + 
-                Apart[Select2[res3, Integrate3], x]]
+         res3 = SelectFree[res3, Integrate3] + 
+                Apart[SelectNotFree[res3, Integrate3], x]]
      ];
 Global`EX = extratab;
 Global`RE = res3;

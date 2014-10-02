@@ -25,10 +25,10 @@ Factoring = MakeContext["CoreOptions","Factoring"];
 DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 
-MakeContext[Collect2, Factor2, FreeQ2, Integrate3, Select1, Select2, Solve2, Zeta2];
+MakeContext[Collect2, Factor2, FreeQ2, Integrate3, SelectFree, SelectNotFree, Solve2, Zeta2];
 
 Integrate5[a_, b_List, c__List, opts___?OptionQ] := 
-   Integrate5[Integrate5[a,b, opts], c, opts] /; FreeQ[Select2[a, b[[1]]], DeltaFunction];
+   Integrate5[Integrate5[a,b, opts], c, opts] /; FreeQ[SelectNotFree[a, b[[1]]], DeltaFunction];
 
 (*
 logsimp = { a_. Log[1-x_] - a_. Log[x_] :> (a Log[(1-x)/x])};
@@ -62,7 +62,7 @@ Dialog[a];
 *)
      tt = Collect2[a, PlusDistribution, Factoring -> True];
 FCPrint[2,"integrating ",tt//InputForm];
-     nop = Select1[n1 + n2 + tt, PlusDistribution]/.{n1:>0, n2:>0};
+     nop = SelectFree[n1 + n2 + tt, PlusDistribution]/.{n1:>0, n2:>0};
      pd = tt - nop;
      pd = Collect2[
      If[Head[pd] === Plus,
@@ -180,7 +180,7 @@ integrate1[f_  PlusDistribution[Log[y_] / (1-x1_)],
           ]:=
  Block[{tt, normal, null},
         tt = Map[Factor2, Apart[f Log[y]/(1-x1), x1]];
-        normal = Select1[tt + null, (1-x1)^(-1)] /. null -> 0;
+        normal = SelectFree[tt + null, (1-x1)^(-1)] /. null -> 0;
         sing   = tt - normal;
         integrate2[normal, {x1,x,1}] + 
         integrate1[sing, {x1,0,1}]
@@ -191,7 +191,7 @@ integrate1[f_  PlusDistribution[1 / (1-x1_)],
           ]:=
  Block[{tt, normal, null},
         tt = Map[Factor2, Apart[f 1/(1-x1), x1]];
-        normal = Select1[tt + null, (1-x1)^(-1)] /. null -> 0;
+        normal = SelectFree[tt + null, (1-x1)^(-1)] /. null -> 0;
         sing   = tt - normal;
         integrate2[normal, {x1,x,1}] + 
 (*
@@ -225,11 +225,11 @@ integrate3[a_Plus, b_, c___] :=  Map[Integrate5[#, b, c]&, a];
 integrate3[a_ /;(  (Head[a] =!= Plus) && FreeQ[a, DeltaFunction] ), 
            b_, c___
           ] := If[Head[b] === List,
-                  Select1[a, b[[1]]] *
-                  Integrate3[Select2[a, b[[1]]], b, c
+                  SelectFree[a, b[[1]]] *
+                  Integrate3[SelectNotFree[a, b[[1]]], b, c
                             ] /. Integrate3 -> Integrate,
-                  Select1[a, b] *
-                  Integrate3[Select2[a, b], b
+                  SelectFree[a, b] *
+                  Integrate3[SelectNotFree[a, b], b
                             ] /. Integrate3 -> Integrate
                  ];
 

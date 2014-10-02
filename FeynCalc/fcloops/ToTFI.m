@@ -40,7 +40,7 @@ FC2RHI,FreeQ2,FeynCalcInternal,
 FeynAmpDenominatorCombine,
 FeynAmpDenominatorSimplify,
 ScalarProductCancel,
-Select1, Select2, TLI, TLI2FC];
+SelectFree, SelectNotFree, TLI, TLI2FC];
 
 Options[ToTFI] = {Dimension -> D, Method -> Automatic};
 
@@ -67,7 +67,7 @@ FixedPoint[Expand[ScalarProductCancel[#, q, FeynAmpDenominatorSimplify -> True],
   ) /; MemberQ[$ContextPath, "HighEnergyPhysics`Tarcer`"];
 
 ToTFI[z_Times, q1_,q2_,p_,opts___Rule] :=
- FeynCalcExternal[Select1[z, {q1, q2}] saveToTFI[Select2[z, {q1, q2}], q1, q2, p, opts]];
+ FeynCalcExternal[SelectFree[z, {q1, q2}] saveToTFI[SelectNotFree[z, {q1, q2}], q1, q2, p, opts]];
 
 ToTFI[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
   saveToTFI[h, m];
@@ -76,8 +76,8 @@ ToTFI[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
 *)
 
 saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
- (saveToTFI[Select2[z,{q1,q2}], q1,q2, p, opts] Select1[z,{q1,q2}] )/;
-   Select1[z,{q1,q2}] =!= 1;
+ (saveToTFI[SelectNotFree[z,{q1,q2}], q1,q2, p, opts] SelectFree[z,{q1,q2}] )/;
+   SelectFree[z,{q1,q2}] =!= 1;
 
 saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] :=
 saveToTFI[z, q1,q2,p,opts] =

@@ -42,7 +42,7 @@ MakeContext[
     LeviCivita,
     OPEDelta,
     ScalarProduct,
-    Select1
+    SelectFree
     ];
 
 Options[Uncontract] = {Dimension -> Automatic (*D*) (*Change 6/10-2002. F.Orellana*),
@@ -70,7 +70,7 @@ Uncontract[ex_, q_ /; Head[q]=!=Rule, opt___Rule
       a$AL = Unique[$AL], a$AL = $AL
      ];
    If[par===All,
-      par = Map[First, Select1[Cases2[exp, Momentum], OPEDelta]]
+      par = Map[First, SelectFree[Cases2[exp, Momentum], OPEDelta]]
      ];
 
 If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
@@ -107,7 +107,7 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
 *)
                            Pair[Momentum[q, If[dim===Automatic,seq[d],dim]], li2] *Pair[li1, li2]
                           );
-            par = Select1[par, q];
+            par = SelectFree[par, q];
            ];
 
          nex = nex //.{Pair[Momentum[q,d___], Momentum[pe_,___]

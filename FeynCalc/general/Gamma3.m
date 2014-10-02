@@ -25,7 +25,7 @@ Begin["`Private`"];
 EpsilonOrder = MakeContext["CoreOptions","EpsilonOrder"];
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[Select1, Select2, Zeta2];
+MakeContext[SelectFree, SelectNotFree, Zeta2];
 
 Options[Gamma3] = {EpsilonOrder -> 3};
 
@@ -57,8 +57,8 @@ Which[(EpsilonOrder /. {opt} /. Options[Gamma3]) === 3,
 simp[z_] := (*toholdform[*)Collect[Expand[z/.grules], Epsilon](*]*);
 
 toholdform[a_Plus] := Map[toholdform, a];
-toholdform[b_Times]:= Select2[b,Epsilon] Apply[HoldForm,
-                      {Select1[b,Epsilon]}];
+toholdform[b_Times]:= SelectNotFree[b,Epsilon] Apply[HoldForm,
+                      {SelectFree[b,Epsilon]}];
 toholdform[c_ /; Head[c] =!= Plus && Head[c]=!=Times] := c;
 
 grules = {Pi^2 -> 6Zeta2};

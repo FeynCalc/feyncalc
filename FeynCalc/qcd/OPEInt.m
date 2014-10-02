@@ -69,8 +69,8 @@ OPEm,
 Power2,
 PowerSimplify,
 RHO,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 Series2,
 Sn,
 Zeta2
@@ -110,7 +110,7 @@ Dialog[epscdi];
 If[epscdi =!= 4, SetOptions[Eps, Dimension -> epscdi]];
 
 sumk0 /: (y_ /; !FreeQ[y, kk]) sumk0[aaa_, b_] := sumk0[aaa y, b];
-sumk1[a_Times, b_] := sumk[qqq[Select2[a, kk]],b] (a/Select2[a,kk]);
+sumk1[a_Times, b_] := sumk[qqq[SelectNotFree[a, kk]],b] (a/SelectNotFree[a,kk]);
 (*
 powsub[xx_] := xx /.{(Pair[de,k]^m_ (Pair[de,p] - Pair[de,k])^a_) :>
                      (sumk0[Pair[de,k]^(OPEk+m/(-a)) /
@@ -139,12 +139,12 @@ nex = nex /. Eps[a___, Momentum[kk,dii___], b___]^2 :>
              (Eps[a, mUuU, b] * Pair[Momentum[kk, n], mUuU] *
               Eps[a, nUuU, b] * Pair[Momentum[kk, n], nUuU]
              );
-qqqk[yy_Times] := Select1[yy, kk] qqq[Select2[yy, kk]];
+qqqk[yy_Times] := SelectFree[yy, kk] qqq[SelectNotFree[yy, kk]];
 nex = nex /. qqq -> qqqk /. qqqk -> qqq;
 
 (* do the 1-part too *)
 nex = nex  + null[1] + null[2];
-nex0 = Select2[nex, Pair[de,k]^(em_/;(Head[em]=!=Integer))];
+nex0 = SelectNotFree[nex, Pair[de,k]^(em_/;(Head[em]=!=Integer))];
 nex1 = (nex - nex0) /. {null[1] :> 0, null[2] :> 0};
 nex1 = Expand[nex1 Pair[de,k]^(dUMMYM), kk];
 nex = nex0 + nex1;
@@ -152,7 +152,7 @@ nex = nex0 + nex1;
 qse[null1] = qse[null2] = 0;
 qse[a_] := If[!FreeQ[a, sumk], a,
               If[Head[a] =!= Times, a,
-                 qqq[Select2[a, kk]] (a/Select2[a, kk])
+                 qqq[SelectNotFree[a, kk]] (a/SelectNotFree[a, kk])
                 ]
              ];
 
@@ -389,7 +389,7 @@ nex = Expand[nex, x] /. (1-x)^e1_ x^e2_ :> ( (x(1-x))^e1 x^(e2-e1) );
 
 p2  = p2 /. Momentum[pp,_] :> Momentum[pp];
 
-noflow = Select2[nex + null[1] + null[2], DeltaFunction];
+noflow = SelectNotFree[nex + null[1] + null[2], DeltaFunction];
 FCPrint[1,"noflow = ", noflow];
 
 nex = ( Factor2[(nex-noflow) /( (x (1-x))^(Epsilon/2) )] *
@@ -422,21 +422,21 @@ If[NumberQ[epsorder],
 FCPrint[1,"factoring done "];
    noflow = Factor2[noflow];
    If[Head[noflow] === Times,
-      noflow = Select1[noflow, Epsilon] Collect2[Select2[noflow,
+      noflow = SelectFree[noflow, Epsilon] Collect2[SelectNotFree[noflow,
                                Epsilon], Epsilon]
      ];
 (*
 Dialog[nex];
 *)
-   nfa = Select2[nex, {flowerpower, Gstrong, CA, CF, OPEm,
+   nfa = SelectNotFree[nex, {flowerpower, Gstrong, CA, CF, OPEm,
                        Pi, Sn, SUNN, SUNIndex}
                 ] /. flowerpower -> Power /. locepsilon -> Epsilon;
    nfa = nfa;
-   nfax = Select2[Select1[nfa,Epsilon], x];
+   nfax = SelectNotFree[SelectFree[nfa,Epsilon], x];
    nex  = (nfax nex /. dummyfa -> 1) / nfa / x^(OPEm-1);
    nex  = facout nex /. flowerpower -> Power /. locepsilon -> Epsilon;
    nfa  = Factor2[(nfa / nfax) x^(OPEm-1)];
-    opm = Select1[Select2[nfa, OPEm], x];
+    opm = SelectFree[SelectNotFree[nfa, OPEm], x];
    nfa = (opm/facout)  Factor2[(nfa/opm)];
    If[!FreeQ[nex, RHO],
        nex = Collect2[nex, RHO, Factoring -> True],
@@ -450,8 +450,8 @@ Dialog[nex];
                            Factoring -> True
                               ]
                      ],
-                  Select2[w, Epsilon] *
-                  apa[Collect2[Select1[w, Epsilon],
+                  SelectNotFree[w, Epsilon] *
+                  apa[Collect2[SelectFree[w, Epsilon],
                            {DeltaFunction, ScaleMu},
                            Factoring -> True
                               ]
@@ -466,7 +466,7 @@ Dialog[nex];
    apa[y_] := If[Head[y] === Plus,
                  Map[apa, y],
                  If[Head[y] =!= Times, y,
-                    Select1[y//dE, x] apart[Select2[y//dE,x], x]
+                    SelectFree[y//dE, x] apart[SelectNotFree[y//dE,x], x]
                    ]/.DeltaFunction[1-xXx] -> DeltaFunction[1-x]
                 ];
 
@@ -475,8 +475,8 @@ Dialog[nex];
                      ];
    If[!FreeQ[nex, RHO],
       If[Head[nex] === Plus,
-         nex = Map[(Select2[#, RHO] rcol[Select1[#, RHO]])&, nex],
-         nex = Select2[nex, RHO] rcol[Select1[nex, RHO]]
+         nex = Map[(SelectNotFree[#, RHO] rcol[SelectFree[#, RHO]])&, nex],
+         nex = SelectNotFree[nex, RHO] rcol[SelectFree[nex, RHO]]
         ],
       nex = rcol[nex]
      ];

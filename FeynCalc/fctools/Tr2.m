@@ -51,8 +51,8 @@ InsideDiracTrace,
 NonCommFreeQ,
 SUNSimplify,
 SUNTrace,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 TR,
 Trick
 ];
@@ -90,8 +90,8 @@ trup /: (f_/;FreeQ2[f, {DiracTrace,DOT}]) trup[x_,ops___Rule] :=
   DiracTrace[f x, ops];
 trap[y_,ops___Rule] := If[Head[y] =!= Times,
                DiracTrace[y,ops],
-               Select1[y, {DiracGamma, LorentzIndex}] *
-               DiracTrace[y/Select1[y, {DiracGamma, LorentzIndex}],ops]
+               SelectFree[y, {DiracGamma, LorentzIndex}] *
+               DiracTrace[y/SelectFree[y, {DiracGamma, LorentzIndex}],ops]
               ];
 
 trdifficult[y_, ops___Rule] :=

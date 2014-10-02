@@ -73,7 +73,7 @@ Timing[tmp9 = Factor2[tmp8] /. Reverse[enmomcon];]
 (* In order to do the sum over all polarization it is simplest to substitute the polarization Momentum[]'s 
    of the amplitude and the complex conjugated amplitude by LorentzIndex[]'s
 *) 
-polmomenta = Select2[Cases2[tmp9, Momentum], Polarization];
+polmomenta = SelectNotFree[Cases2[tmp9, Momentum], Polarization];
 sub = Thread[ polmomenta -> Map[LorentzIndex[#, n] &, {nu3, mu3, nu4, mu4, nu1, mu1, nu2, mu2}]]
 
 (* the product of the four polarization sums for gluons *)

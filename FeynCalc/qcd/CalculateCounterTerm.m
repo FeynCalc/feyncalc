@@ -70,8 +70,8 @@ Rename,
 SUNSimplify,
 SUNTrace,
 ScalarProductCancel,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 TID,
 Trick,
 Twist2GluonOperator,
@@ -86,9 +86,9 @@ Options[CalculateCounterTerm] = {Chisholm -> False,
 
 
 mapart[y_Plus]  := mapart /@ y;
-mapart[y_Times] := Select1[y, OPEm] *
- Select2[Select2[y, OPEm], {(-1)^(_. + OPEm), Pair}] *
-  Apart[Select1[Select2[y, OPEm], {(-1)^(_. + OPEm), Pair}]];
+mapart[y_Times] := SelectFree[y, OPEm] *
+ SelectNotFree[SelectNotFree[y, OPEm], {(-1)^(_. + OPEm), Pair}] *
+  Apart[SelectFree[SelectNotFree[y, OPEm], {(-1)^(_. + OPEm), Pair}]];
 
 topower2[y_] := y /. Power2 -> Power /. (a_ /; !FreeQ[a,OPEDelta])^
                 (p_ /; Head[p] =!= Integer) :> Power2[a, p];
@@ -101,7 +101,7 @@ opback[y_] := If[Head[y] === Plus, opback/@y,
                    ]
                 ];
 opsel[z_ OPESum[{opi_, a_, b_}]] :=
-  Select1[z,opi] opsav[OPESum[Select2[z,opi],{opi,a,b}]];
+  SelectFree[z,opi] opsav[OPESum[SelectNotFree[z,opi],{opi,a,b}]];
 
 opsav[OPESum[a_,{ii_,0,em_}]]:=opsav[OPESum[a,{ii,0,em}]]=
 Block[{tt,sums,null1,sumsavs},
@@ -111,7 +111,7 @@ sums[1/(aa_ - i_),{i_, 0, bb_}] :=
   ) /; Variables[aa] === Variables[bb];
 sumsavs[z__] := sumsavs[z] = Sum[z];
 tt = Apart[a, ii] + null1;
-tt = (Select1[#,ii] sums[Select2[#,ii], {ii,0,em}])& /@ tt;
+tt = (SelectFree[#,ii] sums[SelectNotFree[#,ii], {ii,0,em}])& /@ tt;
 If[$VersionNumber>2.2,
    FullSimplify[tt/.null1->0/.sums->sumsavs],
    Factor2[SimplifyPolyGamma[tt/.null1->0/.sums->sumsavs]]
@@ -133,10 +133,10 @@ fixpower2[y_Times, k_,
                                           Momentum[p,___]], _
                                 ]
                       ],y,
-             Expand[(Select1[y, k] *
+             Expand[(SelectFree[y, k] *
               EpsEvaluate[Contract[DiracSimplify[ExpandScalarProduct[
               FeynAmpDenominatorSimplify[
-              Select2[y, k] /. k -> (-(k/m) -(n/m) p),k]]]]
+              SelectNotFree[y, k] /. k -> (-(k/m) -(n/m) p),k]]]]
                          ])/.Power2[-1,OPEm]:> (-1)^OPEm]//PowerSimplify
                ];
 
@@ -192,7 +192,7 @@ FCPrint[1,"cancel scalar products"];
                             ] /. Power2->Power /.
          Power[a_, b_/;Head[b]=!=Integer] :> Power2[a, b];
     t6 = Collect2[ChangeDimension[t6,4], k];
-    pow2 = Select2[Select2[Cases2[t6, Power2],k], Power2[_Plus,_]];
+    pow2 = SelectNotFree[SelectNotFree[Cases2[t6, Power2],k], Power2[_Plus,_]];
     If[pow2 =!= {}, FCPrint[1,"fixpower2"];
        t6 = fixpower2[t6, k, pow2]/.fixpower2[aa_,__]:>aa
       ];
@@ -229,13 +229,13 @@ If[Head[t7] =!= Plus,
    lnt7 =  Length[t7];
    For[ijn = 1, ijn <= lnt7, ijn++,
        FCPrint[2,"ijn = ",ijn,"  out of", lnt7,
-        " ", InputForm[Select2[t7[[ijn]], k]]];
-       nt7 = nt7 + (( ( Select1[dummy t7[[ijn]],k]
+        " ", InputForm[SelectNotFree[t7[[ijn]], k]]];
+       nt7 = nt7 + (( ( SelectFree[dummy t7[[ijn]],k]
                                    ) /.dummy -> 1
                     ) *
              ChangeDimension[
             FixedPoint[ReleaseHold,
-             TID[Select2[dummy t7[[ijn]],k], k,
+             TID[SelectNotFree[dummy t7[[ijn]],k], k,
                                  Collecting -> False,
                                  Contract -> True,
                                  Isolate -> True,
@@ -248,13 +248,13 @@ If[Head[t7] =!= Plus,
 t7 = Collect2[ nt7//DiracSimplify, k, Factoring -> True];
 
 (*
-   kmunu = Select2[Select2[Cases2[t7,Pair],k],LorentzIndex];
+   kmunu = SelectNotFree[SelectNotFree[Cases2[t7,Pair],k],LorentzIndex];
  If[Length[kmunu] >0,
     t7 = t7+null1 + null2;
     FCPrint[1,"oneloopsimplify   ",kmunu];
-    t7 = Collect2[Select1[t7,kmunu] +
+    t7 = Collect2[SelectFree[t7,kmunu] +
                   ChangeDimension[
-                   OneLoopSimplify[Select2[t7, kmunu], k], 4], k
+                   OneLoopSimplify[SelectNotFree[t7, kmunu], k], 4], k
                  ]
    ];
 *)
@@ -277,9 +277,9 @@ If[!StringQ[saveit],
        t8 = 0; lt = Length[t7]; ht7 = Hold@@{t7};
        For[i = 1, i <= lt, i++, pr@@{"i ======== ", i," out of ",lt};
            t8 = t8 + (
-      Select1[FCPrint[1,". "];ht7[[1,i]],k] Collect2[FCPrint[1,".. "];
+      SelectFree[FCPrint[1,". "];ht7[[1,i]],k] Collect2[FCPrint[1,".. "];
                   PowerSimplify[FCPrint[1,"... "];
-                     OPEIntegrate2[FCPrint[1,".... "];Select2[FCPrint[1,"..... "];ht7[[1, i]], k], k,
+                     OPEIntegrate2[FCPrint[1,".... "];SelectNotFree[FCPrint[1,"..... "];ht7[[1, i]], k], k,
                                    Integratedx -> True,
                                    OPEDelta    -> False,
                                    Collecting  -> False
@@ -305,7 +305,7 @@ t8 = t8 /. finsub;
           FCPrint[1," there are ",opvar];
           t8 = Collect2[t8, opvar, Factoring -> False];
           If[Head[t8]===Plus,
-             sut8 = Select2[t8,opvar];
+             sut8 = SelectNotFree[t8,opvar];
              FCPrint[1,"CHECK if the spurious sums cancel"];
              fsut8 = Factor[sut8];
              If[fsut8===0,
@@ -344,11 +344,11 @@ t8 = t8 /. finsub;
          ];
 
 If[t9 =!= 0,
-       fa1 = Select2[t9, {(-1)^_, CA, CF}];
+       fa1 = SelectNotFree[t9, {(-1)^_, CA, CF}];
        t9  = t9/fa1;
        fa1 = fa1 / 2;
        t9  = 2 t9 ;
-       fa2 = Numerator[Select1[t9,Plus]]/Epsilon;
+       fa2 = Numerator[SelectFree[t9,Plus]]/Epsilon;
        t9  = t9/fa2;
   ];
        ,
@@ -358,8 +358,8 @@ If[t9 =!= 0,
       ];
 
        If[Head[t9] === Times,
-          t10 = Select1[t9,{Pair,Eps,OPEm}] *
-                Collect2[Select2[t9,{Pair,Eps,OPEm}], {Eps,Pair},
+          t10 = SelectFree[t9,{Pair,Eps,OPEm}] *
+                Collect2[SelectNotFree[t9,{Pair,Eps,OPEm}], {Eps,Pair},
                          Factoring -> Factor2]
           ,
 (*

@@ -43,8 +43,8 @@ FeynAmpDenominatorSplit,
 FeynCalcInternal,
 FreeQ2,
 MomentumExpand,
-Select1,
-Select2
+SelectFree,
+SelectNotFree
 ];
 
 IFPDOn[exp_,qu__] :=
@@ -77,7 +77,7 @@ feynsub = Table[t2[[i]] -> (1/t2[[i]]/.FeynAmpDenominator :>
                            ),
                 {i, Length[t2]}
          ]//Dispatch;
-t2 = Select2[t2, qq];
+t2 = SelectNotFree[t2, qq];
 t2 = t2 /. FeynAmpDenominator :>
            ((# /. PropagatorDenominator -> IFPD) &);
 
@@ -91,7 +91,7 @@ If[!FreeQ[t3, IFPD[a_,b_/;b=!=0]],
           IFPD[aa, condition[pa[b,Blank[]], unsameq[b,0]]];
    ifnu = ifnu /. condition -> Condition /. pa -> Pattern /.
           unsameq -> UnsameQ;
-   t3 = Select1[t3, ifnu]
+   t3 = SelectFree[t3, ifnu]
   ];
 
 (* calculate  a canonical q.p  as a side effect*)
@@ -111,7 +111,7 @@ FCPrint[3,"entering ifp with ",{ww}];
 
 (* get all qi^2 *)
 sq = Select[{ww}, MatchQ[#, IFPD[a_ /; FreeQ[a, Plus],_]]&];
-sq = Select2[sq, {qq}];
+sq = SelectNotFree[sq, {qq}];
 sq = Table[{sq[[i,1]],sq[[i,1]],sq[[i]]}, {i,sq//Length}];
 (* get all other (qi+pj)^2 -m^2 *)
 tt = Flatten[ Table[{ {ww}[[i]], {ww}[[j]] }, {i,1,Length[{ww}]-1},
@@ -125,19 +125,19 @@ ntm = sfix /@ Select[tt, FreeQ[(#[[1,1]])-(#[[2,1]]),Plus]&];
 ntp = sfix /@ Select[tt, FreeQ[(#[[1,1]])+(#[[2,1]]),Plus]&];
 mtm = {};
  Do[
-    If[Length[Select2[Cases2[ntm[[i]],Momentum], qq]] > 0 &&
+    If[Length[SelectNotFree[Cases2[ntm[[i]],Momentum], qq]] > 0 &&
        (ntm[[i,1,1]]-ntm[[i,2,1]]) =!= 0,
        mtm = Join[mtm,
                   {
                    Append[ Union[
                    {ntm[[i,1,1]]-ntm[[i,2,1]]},
-                    Select2[Cases2[ntm[[i]],Momentum], qq]
+                    SelectNotFree[Cases2[ntm[[i]],Momentum], qq]
                                 ],
                            ntm[[i]]
                          ],
                    Append[ Reverse[Union[
                    {ntm[[i,1,1]]-ntm[[i,2,1]]},
-                    Select2[Cases2[ntm[[i]],Momentum], qq]
+                    SelectNotFree[Cases2[ntm[[i]],Momentum], qq]
                                  ]],
                            ntm[[i]]
                          ]
@@ -149,19 +149,19 @@ mtm = {};
 
 mtp = {};
  Do[
-    If[Length[Select2[Cases2[ntp[[i]],Momentum], qq]] > 0 &&
+    If[Length[SelectNotFree[Cases2[ntp[[i]],Momentum], qq]] > 0 &&
        (ntp[[i,1,1]]+ntp[[i,2,1]]) =!= 0,
        mtp = Join[mtp,
                   {
                    Append[ Union[
                    {ntp[[i,1,1]] + ntp[[i,2,1]]},
-                    Select2[Cases2[ntp[[i]],Momentum], qq]
+                    SelectNotFree[Cases2[ntp[[i]],Momentum], qq]
                                 ],
                            ntp[[i]]
                          ],
                    Append[ Reverse[Union[
                    {ntp[[i,1,1]] + ntp[[i,2,1]]},
-                    Select2[Cases2[ntp[[i]],Momentum], qq]
+                    SelectNotFree[Cases2[ntp[[i]],Momentum], qq]
                                  ]],
                            ntp[[i]]
                          ]

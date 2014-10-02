@@ -1,6 +1,6 @@
 BrowserCategory["High Energy Physics",
     None, {
-    Item["Introduction", "FeynCalcManual.nb", 
+    Item["Introduction", "FeynCalcManual.nb",
           IndexTag -> "Short Overview", CopyTag -> "intro"],
 
     Item["Starting FeynCalc", "FeynCalcManual.nb",
@@ -513,8 +513,6 @@ BrowserCategory["High Energy Physics",
         Item["PartitHead", "FeynCalcRef.nb"],
         Item["PowerFactor", "FeynCalcRef.nb"],
         Item["SelectSplit", "FeynCalcRef.nb"],
-        Item["Select1", "FeynCalcRef.nb"],
-        Item["Select2", "FeynCalcRef.nb"],
         Item["SelectFree", "FeynCalcRef.nb"],
         Item["SelectNotFree", "FeynCalcRef.nb"],
         Item["Series2", "FeynCalcRef.nb"],
@@ -530,7 +528,7 @@ BrowserCategory["High Energy Physics",
         Item["XYT", "FeynCalcRef.nb"],
         Item["Zeta2", "FeynCalcRef.nb"],
         (* Options *)
-        Item["FactorFull", "FeynCalcRef.nb"]       
+        Item["FactorFull", "FeynCalcRef.nb"]
     }],
     BrowserCategory["Development",
       None, {

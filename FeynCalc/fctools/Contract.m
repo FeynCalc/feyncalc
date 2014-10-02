@@ -439,7 +439,7 @@ tim = TimeUsed[];
                              Map[First, Cases2[x,LorentzIndex]]
                             ]
                      ) === {True}, x,
-                  If[CheckContext["Upper"],
+                  If[CheckContext["CoreObjects"],
                      If[!FreeQ[x, Upper], Contract1[x],
                         contracT[
                                 If[!FreeQ[x, DOT],

@@ -28,7 +28,7 @@ Begin["`Private`"];
 FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[ Expand2, FeynCalcInternal, MomentumExpand, Select2 ];
+MakeContext[ Expand2, FeynCalcInternal, MomentumExpand, SelectNotFree ];
 
 feyncomb[] = 1;
 feyncomb /: feyncomb[a__] feyncomb[b__] := feyncomb[a, b];

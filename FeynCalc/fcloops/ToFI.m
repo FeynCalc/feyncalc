@@ -23,7 +23,7 @@ ToFI can be extended to more external particles and more loops if needed.";
 
 Begin["`Private`"];
    
-MakeContext[FCE, FeynmanIntegral, Select1, Select2, ToTFI];
+MakeContext[FCE, FeynmanIntegral, SelectFree, SelectNotFree, ToTFI];
 
 (* ToFI should be generalized *)
 
@@ -35,9 +35,9 @@ tofi[a_, {q__},__] := a /; FreeQ[a, Alternatives@@{q}];
 
 tofi[expr_Plus,m__] := tofi[#, m]& /@ expr;
 
-tofi[expr_Times, {q__}, {ps__}] := ( FCE[Select1[expr, {q}]] * 
-        FeynmanIntegral[FCE @ Select2[expr, {q}], {q}, {ps}] 
-    ) /; Select1[expr, {q}] =!= 1;
+tofi[expr_Times, {q__}, {ps__}] := ( FCE[SelectFree[expr, {q}]] * 
+        FeynmanIntegral[FCE @ SelectNotFree[expr, {q}], {q}, {ps}] 
+    ) /; SelectFree[expr, {q}] =!= 1;
 
 ToFI[e_,{q_},{p_}] := ToTFI[e, q, p];
 ToFI[e_,{q1_, q2_},{p_}] := ToTFI[e, q1, q2, p];

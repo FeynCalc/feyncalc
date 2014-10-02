@@ -56,8 +56,8 @@ OPEm,
 Power2,
 PowerSimplify,
 RHI,
-Select1,
-Select2    ];
+SelectFree,
+SelectNotFree    ];
 
 Options[FC2RHI] = {Dimension -> D, IncludePair -> True,
                    Do -> True};
@@ -101,12 +101,12 @@ If[!FreeQ2[x, {Pair[Momentum[k1,___], Momentum[k1,___]],
 If[x === 0, result = 0,
 
 (* for dimensional reduction *)
-If[FreeQ[Select1[x, Eps],LorentzIndex],
-   x = Select2[x,Eps] ChangeDimension[Select1[x,Eps],dim]
+If[FreeQ[SelectFree[x, Eps],LorentzIndex],
+   x = SelectNotFree[x,Eps] ChangeDimension[SelectFree[x,Eps],dim]
   ];
 
 (* include k1^2 and k2^2 *)
-qch = Select1[Select1[x, {OPEDelta, FeynAmpDenominator}],
+qch = SelectFree[SelectFree[x, {OPEDelta, FeynAmpDenominator}],
               {Pair[Momentum[k1,___], Momentum[k1,___]],
                Pair[Momentum[k2,___], Momentum[k2,___]]
             }];
@@ -117,12 +117,12 @@ If[((inc === False) && (!FreeQ2[qch, {k1, k2}])  ) ||
                  }
            ]
    ) ||
-   (!FreeQ[Select2[Select2[x, Pair], {k1,k2}], LorentzIndex])
+   (!FreeQ[SelectNotFree[SelectNotFree[x, Pair], {k1,k2}], LorentzIndex])
   ,
 result = x,
-fad = (List@@Select2[x, FeynAmpDenominator]) /.
+fad = (List@@SelectNotFree[x, FeynAmpDenominator]) /.
       PropagatorDenominator[w_, 0] -> w /. Momentum[a_, _] -> a;
-p = Select1[Union[Flatten[Map[Variables,fad]]], {k1,k2} /.
+p = SelectFree[Union[Flatten[Map[Variables,fad]]], {k1,k2} /.
            Momentum[a_,_] -> a ];
 If[p =!= {}, p = p[[1]], p = dummyp];
 dp    = Pair[Momentum[OPEDelta, dim], Momentum[p, dim]];
@@ -154,7 +154,7 @@ xx = xx /. { (-dp + dk1)^w_ :> ( (-1)^w (dp - dk1)^w ),
            };
 
 
-nx = Select2[xx, {k1,k2}];
+nx = SelectNotFree[xx, {k1,k2}];
 fa = xx / nx;
 fa = fa /. {(-1)^w_ :> Expand[(-1)^w]} /.
            {(-1)^(2 OPEm) :> 1, (-1)^(2 OPEi) :> 1,(-1)^(2 OPEj) :> 1};
@@ -299,7 +299,7 @@ iall = nk12^vV nk22^wW k1p^xX k2p^yY k1k2^zZ *
 int = nx iall;
 
 se[y_] := (If[#===1, 0, If[Head[#] === Power, #[[2]], y ] ]&
-          )[Select2[int, y^h_]];
+          )[SelectNotFree[int, y^h_]];
 rhi = Map[se,
           {nk12,nk22,k1p,k2p,k1k2,
            dk1, dk2, dpk1, dpk2, dk1k2, k12, k22, pk12, pk22, k1k22}

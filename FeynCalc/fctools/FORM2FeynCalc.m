@@ -45,7 +45,7 @@ ChangeDimension,
 FeynCalcExternal,
 Nielsen,
 ScalarProduct,
-Select2
+SelectNotFree
 ];
 
 (* can be changed *)
@@ -199,14 +199,14 @@ Protect[Times, Plus];
 
 (*???????
 (* fix a problem ... *)
-nof = Select2[Cases[rr, w_Symbol[_], Infinity],
+nof = SelectNotFree[Cases[rr, w_Symbol[_], Infinity],
               {Dot,Times,Plus,holdplus}];
 
 nfv = Thread[nof -> (Map[(#/.(a_[b_]) :> (a . b))&, nof])];
 rr = rr /. nfv;
 *)
 (* check for four-vectors *)
-vv = Select2[Cases[rr, _[_], Infinity], indices];
+vv = SelectNotFree[Cases[rr, _[_], Infinity], indices];
 If[Length[vv]===1, vv = Join[vv,vv]];
 rv = Thread[vv -> (vv /. ff_[in_] :> FV[ff,in])];
 rr = rr /. rv;

@@ -32,7 +32,7 @@ Begin["`Private`"];
    
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 
-MakeContext[Apart3, Collect2, Factor2, Map2, Select1, Select2];
+MakeContext[Apart3, Collect2, Factor2, Map2, SelectFree, SelectNotFree];
 
 Options[TrickIntegrate] = {Hold -> True};
 
@@ -46,7 +46,7 @@ TrickIntegrate[exp_Plus, v_,opt___] := (TrickIntegrate[#, v, opt]& /@ exp) //. h
 
 (* if there is nothing to substract, then : *)
 TrickIntegrate[w_/;Head[w]=!=Plus, v_, opt___] :=
- (hopt[v,opt][Select1[w, v](Hold[Integrate]@@ {Select2[w,v], {v,0,1}})]
+ (hopt[v,opt][SelectFree[w, v](Hold[Integrate]@@ {SelectNotFree[w,v], {v,0,1}})]
  ) //. holdLimit->limit /;
    (!MatchQ[w,(1-v)^(a_. Epsilon-1) ex_.] &&
     !MatchQ[w,    v^(a_. Epsilon-1) ex_.] 
@@ -99,9 +99,9 @@ Limit[x, limes, Analytic->True]
 
 TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_, opt___Rule
               ]:= Block[{tt, pre, rr, integ, integg, lim, re, res},
-tt  = Select2[exp, v]/.Hypergeometric2F1[a1_,a2_,a3_,z_]:>
+tt  = SelectNotFree[exp, v]/.Hypergeometric2F1[a1_,a2_,a3_,z_]:>
       Hypergeometric2F1[a1,a2,a3,Factor2[z]];
-pre = Select1[exp, v];
+pre = SelectFree[exp, v];
 
 lim = holdLimit[tt, v->0]//Factor2;
 (* if limit does not exist or reveals a singularity in 
@@ -118,8 +118,8 @@ If[(lim === Indeterminate) (*|| (!FreeQ[tt, Log[v]])*) ||
    rr =  1/a/Epsilon lim  + 
            integ[v^(a Epsilon-1) (tt-lim)];
 integg[0] = 0;
-integg[zz_] := Select1[zz, v] * 
-               (Hold[Integrate]@@ {Select2[zz, v], {v,0,1}});
+integg[zz_] := SelectFree[zz, v] * 
+               (Hold[Integrate]@@ {SelectNotFree[zz, v], {v,0,1}});
 re = pre (rr /. integ -> integg) /. (Hold[Integrate][1,{v,0,1}]) -> 1;
 Expand[ re = hopt[v,opt][re], v]
 ] /. Hold[Integrate][1,{_,0,1}] -> 1;

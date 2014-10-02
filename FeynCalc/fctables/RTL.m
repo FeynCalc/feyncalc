@@ -41,8 +41,8 @@ OPEDelta,
 OPEi,
 OPEj,
 OPEm,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 Series2,
 SimplifyDeltaFunction,
 Smu,
@@ -67,10 +67,10 @@ lsimp[0]=0;
 lsimp[a_Plus] := Map[lsimp, a];
 lsimp[t_Times] := Block[{mm},
                    If[FreeQ[t, OPEm], mm = 1, mm = OPEm];
-                 ((Select2[t, {Epsilon,p,Smu,CA,CF,Tf,Gstrong}] *
+                 ((SelectNotFree[t, {Epsilon,p,Smu,CA,CF,Tf,Gstrong}] *
               x^(mm-1))/.dum[Epsilon]->1)  *
          Collect2[SimplifyDeltaFunction[Expand[Apart3[
-              Select1[t, {Epsilon,p,Smu,CA,CF,Tf,Gstrong}]/x^(mm-1),x]
+              SelectFree[t, {Epsilon,p,Smu,CA,CF,Tf,Gstrong}]/x^(mm-1),x]
                       ]](* /. {DeltaFunction[1-x] f_ :> 
                                (f/.x->1) DeltaFunction[1-x]
                            } *) ,
@@ -1507,7 +1507,7 @@ res =
 
 (*
 If[Head[res] =!= Plus, pref = 1,
-   pref = Select2[dummy First[res]/. (-1)^OPEm:>bla ,
+   pref = SelectNotFree[dummy First[res]/. (-1)^OPEm:>bla ,
                   {M,p,Smu,CA,CF,Tf,Gstrong, OPEm}];
    res = pref . Map[(#/pref)&, res]
   ];

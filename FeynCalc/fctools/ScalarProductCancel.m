@@ -39,7 +39,7 @@ MakeContext[
             MemSet,
             MomentumExpand,
             OPEDelta,
-            Select1, Select2];
+            SelectFree, SelectNotFree];
 
 Options[ScalarProductCancel] = 
 {ChangeDimension -> D,
@@ -52,7 +52,7 @@ cd[z_,op___Rule] := Block[{nd, moms, momr},
  If[FreeQ[z, Momentum[_]], z,
     If[(nd=(ChangeDimension/.{op}/.Options[ScalarProductCancel]))=!=False,
        If[nd === True, nd = D];
-       moms = Select2[Cases2[z, Momentum], Momentum[_]];
+       moms = SelectNotFree[Cases2[z, Momentum], Momentum[_]];
        momr = Map[(# -> ChangeDimension[#,nd])&, moms];
        z /. momr
        ,
@@ -64,7 +64,7 @@ cd[z_,op___Rule] := Block[{nd, moms, momr},
 Expand3 = Expand2;
 
 ScalarProductCancel[iexp_,opt___Rule] := Block[{sim,exp= cd[iexp,opt]},
-sim = Cases2[ Select2[ Cases2[exp, PropagatorDenominator],
+sim = Cases2[ SelectNotFree[ Cases2[exp, PropagatorDenominator],
                         PropagatorDenominator[Momentum[__],_]
                      ], Momentum
             ];
@@ -83,7 +83,7 @@ ex = cd[iex,opt];
 prp = First /@ Select[Cases2[ex, PropagatorDenominator]//MomentumExpand,
              !FreeQ[#,PropagatorDenominator[w_Plus /; Length[w]>2,_]]&
             ];
-prp = Select2[Map[Select1[#, {qs,qlast}]&, prp] /. 
+prp = SelectNotFree[Map[SelectFree[#, {qs,qlast}]&, prp] /. 
               Momentum[a_,___] :> a, Plus
              ];
 If[prp === {}, exp = ex, 
@@ -95,13 +95,13 @@ If[prp === {}, exp = ex,
    exp = ExpandScalarProduct[ex /. prul];
  ];
 
- pqs = Select1[Select2[Cases2[exp,Pair], {qs, qlast}],OPEDelta];
+ pqs = SelectFree[SelectNotFree[Cases2[exp,Pair], {qs, qlast}],OPEDelta];
  re = 
   If[pqs === {},exp,
      If[Head[exp]=!=Plus, 
         nexp = 0; pexp = exp
         ,
-        nexp = Select1[exp, pqs];
+        nexp = SelectFree[exp, pqs];
         pexp = ScalarProductCancel[exp - nexp];
        ];
    nexp + 
@@ -124,15 +124,15 @@ checkpair[x_Plus,qu__] := Map[checkpair[#,qu]&,x];
 checkpair[y_ /; Head[y] =!= Plus,qu__] :=
  Block[{c1,dc, aliens, pas, sub},
  If[Head[y] =!= Times, y,
-    pas = Cases2[Select1[Select2[y,{qu}], OPEDelta], Pair];
+    pas = Cases2[SelectFree[SelectNotFree[y,{qu}], OPEDelta], Pair];
     If[pas === {}, y /. Pair -> noPair,
-    c1 = Select1[Variables[Cases2[pas ,Momentum
+    c1 = SelectFree[Variables[Cases2[pas ,Momentum
                                  ]/.Momentum[a_,___]:>a
                           ], {qu}
                 ];
-       dc = Select1[Variables[Cases2[Select2[y,FeynAmpDenominator],
+       dc = SelectFree[Variables[Cases2[SelectNotFree[y,FeynAmpDenominator],
                     Momentum ]/.Momentum[a_,___]:>a],{qu}];
-       aliens = Select2[pas, Select1[c1,dc]];
+       aliens = SelectNotFree[pas, SelectFree[c1,dc]];
        sub = Table[aliens[[ij]] -> (aliens[[ij]] /. Pair->noPair),
                    {ij,Length[aliens]} 
                   ];
@@ -173,8 +173,8 @@ FCPrint[2,"IFPDOn done in ScalarProductCancel"];
 (* in dim. reg. these are 0 *)
 
 If[FreeQ[t2, IFPD], t2 = 0];
-If[Head[t2] === Plus, Select1[t2,IFPD];
-   t2 = Select2[t2, IFPD] ];
+If[Head[t2] === Plus, SelectFree[t2,IFPD];
+   t2 = SelectNotFree[t2, IFPD] ];
 
 
  FCPrint[2,"cancelling done in ScalarProductCancel"];

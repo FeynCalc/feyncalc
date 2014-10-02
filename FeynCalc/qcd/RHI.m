@@ -57,8 +57,8 @@ PowerSimplify = MakeContext["PowerSimplify"];
 SOD      = MakeContext["CoreObjects","SOD"];
 SPD      = MakeContext["CoreObjects","SPD"];
 ScalarProduct = MakeContext["ScalarProduct"];
-Select1  = MakeContext["Select1"];
-Select2  = MakeContext["Select2"];
+SelectFree  = MakeContext["SelectFree"];
+SelectNotFree  = MakeContext["SelectNotFree"];
 TLI = MakeContext["TLI"];
 
 Options[RHI] =  {Directory -> "rh/ope/diagrams/",
@@ -421,7 +421,7 @@ RHI[___,{__},{0,0,_,_,_}] = 0;
  RHI[ll_List, {a_ /; a>0, b_ /; b>0, c_ /; c>0, d_ /; d>0, e_ /;e>0},
      opt___Rule
     ] := 0 /; (EpsilonOrder /. {opt} /. Options[RHI]) < 0 &&
-            (Apply[Plus, Select1[ll,OPEm]]>=0);
+            (Apply[Plus, SelectFree[ll,OPEm]]>=0);
 
 RHI[snum___List, {a_,b_,c_,d_,e_,f_,g_},{al_,be_,ga_,de_,ep_}, opt___Rule] :=
 loadrhi[snum,{a,b,c,d,e,f,g},{al,be,ga,de,ep}, nosaveDir /. {opt} /.
@@ -505,7 +505,7 @@ scn[{a_,b_,c_,d_,e_}]:= "k1.k1"^a "k2.k2"^b "k1.p"^c "k2.p"^d "k1.k2"^e;
 
 epcut[x_, op___Rule] := If[(EpsilonOrder /. {op} /. Options[RHI]
                            ) === -2,
-                           Select2[x, Epsilon^(-2)],
+                           SelectNotFree[x, Epsilon^(-2)],
                            x];
 
 RHI[snum___List,{a_,b_,c_,d_,e_},{al_,be_,ga_,de_,ep_}, opt___Rule] :=
@@ -642,15 +642,15 @@ new = new /. {Global`eph :> ((Epsilon)/2),
 
 new = Factor1[new];
 If[Head[new]=!=Times, fac = 1,
-   fac = Select2[new, {Global`d0, Global`sn}];
+   fac = SelectNotFree[new, {Global`d0, Global`sn}];
   ];
 new = new / fac;
 rhd0 = ScalarProduct[OPEDelta , Momentum /. Options[RHI]];
 fac = fac /. Global`d0 -> rhd0;
 new = Collect2[new, Global`MINUSONE, Factoring -> False];
 new = new + null1 + null2;
-new1 = Select1[new, Global`MINUSONE] /. {null1:>0, null2:>0};
-newm = Select2[new, Global`MINUSONE];
+new1 = SelectFree[new, Global`MINUSONE] /. {null1:>0, null2:>0};
+newm = SelectNotFree[new, Global`MINUSONE];
 
 clo[yy__] := If[!FreeQ2[{yy}, {Epsilon,
                                DeltaFunction}], Plus[yy],
@@ -663,7 +663,7 @@ coled[xx_] := Collect2[xx /. DeltaFunction[_]->0, Epsilon,
 
 new1 = coled[new1] /. Plus -> clo;
 If[newm =!= 0,
-   mmm  = Select2[newm, Global`MINUSONE];
+   mmm  = SelectNotFree[newm, Global`MINUSONE];
    newm = newm / mmm,
    newm = 0
   ];

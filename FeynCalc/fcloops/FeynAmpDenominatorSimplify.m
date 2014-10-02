@@ -71,8 +71,8 @@ MakeContext[
             OPESum,
             Power2,
             PowerSimplify,
-            Select1,
-            Select2
+            SelectFree,
+            SelectNotFree
            ];
 
 Options[FeynAmpDenominatorSimplify] = {FC2RHI -> False,
@@ -124,7 +124,7 @@ tran[a_, x_, y_, z__] := tran[a /. (Rule @@ ( {x, y} /.
 tran[a_, {x_, y_, w_, z_}] := MemSet[tran[a,{x,y,w,z}], Block[{tem, re},
      If[(Head[a] =!= Times) && (Head[a] =!= FeynAmpDenominator),
         re = a,
-        tem = prmomex[Select2[a, FeynAmpDenominator] /.
+        tem = prmomex[SelectNotFree[a, FeynAmpDenominator] /.
                  {RuleDelayed @@ ( {x, y} /. Momentum -> extractm),
                   RuleDelayed @@ ( {w, z} /. Momentum -> extractm)
                  }   ];
@@ -140,7 +140,7 @@ tran[a_, x_, y_] := MemSet[tran[a,x,y],Block[{tem, re},
      If[(Head[a] =!= Times) && (Head[a] =!= FeynAmpDenominator),
         re = a,
 (* do only translations if no three terms appear in PropagatorDe..*)
-        tem = prmomex[Select2[a, FeynAmpDenominator] /.
+        tem = prmomex[SelectNotFree[a, FeynAmpDenominator] /.
                  (Rule @@ ( {x, y} /. Momentum -> extractm))];
         If[checkfd[tem] === False, re = a,
            re  = ExpandScalarProduct[prmomex[a /.
@@ -439,7 +439,7 @@ PowerSimplify[
                      ]], q1]/.mmtr->qid;
 
 aMu[q_, exp_] := If[Head[exp] === Plus, exp,
-                    Select1[exp, q] aMu2[q, Select2[exp,q]]
+                    SelectFree[exp, q] aMu2[q, SelectNotFree[exp,q]]
                    ] /. aMu2 -> aMu3;
 
 aMu2[q_, anyf_[a___,Momentum[q_,___], b___]*
@@ -517,18 +517,18 @@ Block[ {prp, vv, class, p, lev},
       If[Length[Variables[a]] < Length[Variables[b]], True, False ];
       prp = {pr} /. PropagatorDenominator -> pro1;
   (* check  for reducible tadpoles *)
-      If[(Length[Union[Select1[prp, q1]]] === 1 (* only one prop.*) &&
-          FreeQ[Select2[prp, q1], q2] (* no overlap  *)
+      If[(Length[Union[SelectFree[prp, q1]]] === 1 (* only one prop.*) &&
+          FreeQ[SelectNotFree[prp, q1], q2] (* no overlap  *)
          ) ||
-         (Length[Union[Select1[prp, q2]]] === 1 (* only one prop.*) &&
-          FreeQ[Select2[prp, q2], q1] (* no overlap  *)
+         (Length[Union[SelectFree[prp, q2]]] === 1 (* only one prop.*) &&
+          FreeQ[SelectNotFree[prp, q2], q1] (* no overlap  *)
          ),
          0,
       vv = Variables[prp];
       If[Length[vv] < 3,
          0,
-        If[Select1[vv, {q1,q2}] =!= {},
-           p = Select1[vv, {q1, q2}][[1, 1]]
+        If[SelectFree[vv, {q1,q2}] =!= {},
+           p = SelectFree[vv, {q1, q2}][[1, 1]]
           ];
          class = Sort[Union[Map[Variables, MomentumExpand[
                  { prp /. {q1 :> q2, q2 :> q1},
@@ -565,7 +565,7 @@ ot = (*FeynCalcInternal[*)Flatten[IntegralTable /. {opt} /.
         Options[FeynAmpDenominatorSimplify]](*]*);
 
 pe[qu1_,qu2_, prop_] := Block[
-{pet=Select1[Cases2[prop//MomentumExpand,Momentum]/.
+{pet=SelectFree[Cases2[prop//MomentumExpand,Momentum]/.
  Momentum[a_,___]:>a, {qu1,qu2} ]},
 If[Length[pet]>0, First[pet], pet]];
 
@@ -615,7 +615,7 @@ any_. (*((any1_. + any2_. Pair[Momentum[q1 | q2,___],Momentum[OPEDelta,___]]
                         /. Momentum[a_, ___] :> a
                       )
    ) ||
-   (Sort[{q1,q2}] === (Select1[Cases2[({aa}/.{q1 :> -q1+pe[q1,q2,{aa}]}/.
+   (Sort[{q1,q2}] === (SelectFree[Cases2[({aa}/.{q1 :> -q1+pe[q1,q2,{aa}]}/.
                                              {q2 :> -q2+pe[q1,q2,{aa}]}
                                       )//MomentumExpand,Momentum],OPEDelta
                               ] /. Momentum[a_, ___] :> a
@@ -640,7 +640,7 @@ Calc[(any FeynAmpDenominator[aa] ) /. {q1 :> -q1+pe[q1,q2,{aa}]} /.
   (
    ((Sort[{q1,q2}]) ===
      (
-      (Select1[Cases2[({aa}/.{q1 :> (-q1+(pe[q1,q2,{aa}]))}/.
+      (SelectFree[Cases2[({aa}/.{q1 :> (-q1+(pe[q1,q2,{aa}]))}/.
                                              {q2 :> -q2+pe[q1,q2,{aa}]}
                                       )//MomentumExpand,Momentum],OPEDelta
                               ] /. Momentum[a_, ___] :> a
@@ -666,7 +666,7 @@ If[ot =!= {},
    pot = ot /. Power2->Power;
    topi[y_ /; FreeQ2[y,{q1,q2,Pattern}]] := y;
    topi[y_Plus] := Map[topi,y];
-   topi[y_Times] := Select1[y,{q1,q2}] topi2[Select2[y,{q1,q2}]];
+   topi[y_Times] := SelectFree[y,{q1,q2}] topi2[SelectNotFree[y,{q1,q2}]];
    exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
 (*Global`EXP=exp;*)
    exp = exp /. basic /. FCIntegral -> Identity;
@@ -704,22 +704,22 @@ If[Head[exp] =!= Plus,
                          Expand2[exp, q1], 7
                 ] /. pru
      ],
-   Select1[exp, {q1,q2}] +
+   SelectFree[exp, {q1,q2}] +
    If[(FC2RHI /. {opt} /. Options[FeynAmpDenominatorSimplify]) === True,
       FC2RHI[FixedPoint[fadalll[#, q1, q2]&,
-                        exp-Select1[exp,{q1,q2}], 7] /. pru, q1, q2,
+                        exp-SelectFree[exp,{q1,q2}], 7] /. pru, q1, q2,
                         IncludePair -> (
                           IncludePair /. {opt} /.
                           Options[FeynAmpDenominatorSimplify]
                                        )
             ],
       FixedPoint[fadalll[#, q1, q2]&,
-                       exp-Select1[exp,{q1,q2}], 7] /. pru
+                       exp-SelectFree[exp,{q1,q2}], 7] /. pru
      ]
   ]   ];
 
-fadallq1q2[y_Times, q1_,q2_] := Select1[y,{q1,q2}] *
-                                fadalll[Select2[y,{q1,q2}], q1,q2];
+fadallq1q2[y_Times, q1_,q2_] := SelectFree[y,{q1,q2}] *
+                                fadalll[SelectNotFree[y,{q1,q2}], q1,q2];
 
 fadalll[0,__] := 0;
 fadalll[exp_Plus, q1_, q2_ ] := Map[fadallq1q2[#, q1,q2]&,exp
@@ -758,8 +758,8 @@ Block[{nx, dufa, qqq, q1pw, q2pw},
 
      nx = nx dufa;
 If[Head[nx] =!= Times, nx = nx /. dufa -> 1,
-nx = (Select1[nx, {q1, q2}]/.dufa -> 1) *
-       ( qqq[Select2[nx, {q1, q2}]] /.
+nx = (SelectFree[nx, {q1, q2}]/.dufa -> 1) *
+       ( qqq[SelectNotFree[nx, {q1, q2}]] /.
 (* special stuff *)
   (* f42 *)
           {qqq[fa_. FeynAmpDenominator[aa___PropagatorDenominator,
@@ -1225,8 +1225,8 @@ feynord[a__PropagatorDenominator] := MemSet[feynord[a],
                       ];
 feynord[q_][a__] := MemSet[feynord[q][a],
                            FeynAmpDenominator @@ Join[
-                                 Sort[Select2[{a}, q], lenso],
-                                 Sort[Select1[{a}, q], lenso]]
+                                 Sort[SelectNotFree[{a}, q], lenso],
+                                 Sort[SelectFree[{a}, q], lenso]]
                           ];
 
 feynsimp[q_][a__PropagatorDenominator] :=

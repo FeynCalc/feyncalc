@@ -43,8 +43,8 @@ MakeContext[
     GammaExpand,
     Nielsen,
     OPEm,
-    Select1,
-    Select2,
+    SelectFree,
+    SelectNotFree,
     SumS,
     SumT,
     Zeta2
@@ -75,7 +75,7 @@ gammas[y_] := If[FreeQ[y, Gamma], y,
                  GammaExpand[y] /. Gamma -> GammaEpsilon
                 ];
 
-   ll = Select1[Cases2[a, {Gamma, PolyGamma}], Epsilon];
+   ll = SelectFree[Cases2[a, {Gamma, PolyGamma}], Epsilon];
 If[ll === {},
    n = nn
    ,
@@ -141,7 +141,7 @@ finsub  = FinalSubstitutions/. {ops} /. Options[Series2];
          ]
       ];
     re = (re // Normal) /. hyback;
-    If[Head[re]===Plus && n<0, re = Select2[re, x]];
+    If[Head[re]===Plus && n<0, re = SelectNotFree[re, x]];
     res = Collect2[polysimp[re] /. finsub, x, Factoring -> False];
     If[nn === -1,
        res = Collect2[res - Coefficient[res, x, 0], x,Factoring->False];

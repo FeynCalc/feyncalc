@@ -71,8 +71,8 @@ Rename,
 RHI,
 ScalarProduct,
 ScalarProductCancel,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 SUNSimplify, SUNTrace,
 ToLarin,
 Tr2,
@@ -116,7 +116,7 @@ t1 = ChangeDimension[exp, dim];
 If[Head[t1] =!= Times,
    t1 = Trick[t1 /. Times -> DOT]
   ,
-   t1 = Select1[t1,SUNIndex] Trick[Select2[t1, SUNIndex] /. Times -> DOT]
+   t1 = SelectFree[t1,SUNIndex] Trick[SelectNotFree[t1, SUNIndex] /. Times -> DOT]
   ];
 
 t1 = t1 /. DiracTrace -> dirsuntrace;
@@ -216,8 +216,8 @@ If[Head[t7]===Plus,
 t9 = t8 /. Pair->PairContract/.PairContract->Pair;
 t9 = ScalarProductCancel[t9, q1, q2, Collecting -> False];
 If[(!FreeQ[t9,DiracTrace]) && Head[t9]===Plus,
-   t9 = Select1[t9, DiracTrace] +
-        Tr2[Select2[t9,DiracTrace]/.DiracTrace->DiracOrder];
+   t9 = SelectFree[t9, DiracTrace] +
+        Tr2[SelectNotFree[t9,DiracTrace]/.DiracTrace->DiracOrder];
    t9 = t9/. DiracTrace[Eps[bb__] DOT[aa_,aa1__]] :> (
              Eps[bb] DiracTrace[DOT[aa,aa1]])
   ];
@@ -234,7 +234,7 @@ t10 = FeynAmpDenominatorCombine[t9
 
 fdsimp[0]=0;
 fdsimp[y_Plus] := Map[fdsimp, y];
-fdsimp[y_Times] := Select1[y,{q1,q2}] fdsav[Select2[y,{q1,q2}]];
+fdsimp[y_Times] := SelectFree[y,{q1,q2}] fdsav[SelectNotFree[y,{q1,q2}]];
 fdsav[yy_] := fdsav[yy] = FeynAmpDenominatorSimplify[yy,q1,q2,
 IntegralTable -> table, FC2RHI->False];
 
@@ -248,8 +248,8 @@ If[Head[t10] =!= Plus,
        t11 = t11 + PowerSimplify[fdsimp[ht10[[1,i]]]//DiracSimplify]
       ];
   ];
-If[Head[t11]===Plus, t11 = Select1[t11,RHI] +
-    Collect2[Select2[t11,RHI],RHI]
+If[Head[t11]===Plus, t11 = SelectFree[t11,RHI] +
+    Collect2[SelectNotFree[t11,RHI],RHI]
   ];
 
 If[Head[t11] =!= Plus,
@@ -291,13 +291,13 @@ If[Head[table] === Symbol,
 *)
    decomposelist = {};
    decomposelist = FixedPoint[ReleaseHold, decomposelist];
-   pe = Select1[Cases2[decomposelist, Momentum]/.Momentum[a_,___] :> a,
+   pe = SelectFree[Cases2[decomposelist, Momentum]/.Momentum[a_,___] :> a,
                 {q1,q2,OPEDelta}
                ];
 FCPrint[1,"pe = ",pe];
 Dialog["dec"];
    op2 = OPE2AI[table, decomposelist, q1, q2, pe];
-   fcq[ y_Times ] := Select1[y, {q1, q2}] FCIntegral[Select2[y, {q1, q2}]];
+   fcq[ y_Times ] := SelectFree[y, {q1, q2}] FCIntegral[SelectNotFree[y, {q1, q2}]];
    t15 = Collect2[Map[fcq, t15+null1 + null2] /.
      fcq -> Identity /. op2, {q1, q2}]
   ];

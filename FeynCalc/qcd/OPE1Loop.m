@@ -70,8 +70,8 @@ Power2,
 PowerSimplify,
 SUNSimplify,
 ScalarProductCancel,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 SubLoop,
 TID,
 Trick,
@@ -160,7 +160,7 @@ If[FreeQ[integ,k](* || (!FreeQ[integ, (_. +_. Pair[Momentum[k,___], _]
                                      }
                              ]
                      ) ||
-   FreeQ[Select1[Select1[integ, FeynAmpDenominator],
+   FreeQ[SelectFree[SelectFree[integ, FeynAmpDenominator],
                  {((_.) + (_.) Pair[Momentum[_,___], _])^
                   (hw_/;Head[hw] =!=Integer),
                   Power2[((_.) + (_.) Pair[Momentum[_,___], _]),
@@ -168,7 +168,7 @@ If[FreeQ[integ,k](* || (!FreeQ[integ, (_. +_. Pair[Momentum[k,___], _]
                         ]
                  }], k] ||
      (* NEWWWWW *)
-   (Length[Select2[Cases2[integ, PropagatorDenominator],k]]>2)
+   (Length[SelectNotFree[Cases2[integ, PropagatorDenominator],k]]>2)
 (*then*)
   ,
 FCPrint[1,"nononononon"];
@@ -274,7 +274,7 @@ amp = powexp[amp];
 
 If[subloop === False && !FreeQ[amp, OPESum],
 opsumdoit[a_,b_] := opsumdoit[a,b] =
-If[!MatchQ[Select2[a,k] /. Power2->Power,
+If[!MatchQ[SelectNotFree[a,k] /. Power2->Power,
     (_. Pair[Momentum[OPEDelta,dim], Momentum[k,dim]])^
                              (w_/;Head[w]=!=Integer) *
     (_. Pair[Momentum[OPEDelta,dim], Momentum[pe_,dim]] +
@@ -283,8 +283,8 @@ If[!MatchQ[Select2[a,k] /. Power2->Power,
           ],
    OPESum[a,b],
  ( PowerSimplify[
-             Apart[Select1[a, {OPEi, OPEj}] *
-     Sum[((a/Select1[a,{OPEi,OPEj}])/.Power2->Power) //.
+             Apart[SelectFree[a, {OPEi, OPEj}] *
+     Sum[((a/SelectFree[a,{OPEi,OPEj}])/.Power2->Power) //.
          {(-1)^(n_Integer?EvenQ m_. + aa_) :> (-1)^aa
          }, b
         ]
@@ -301,7 +301,7 @@ amp = amp /. OPESum -> opsumdoit;
 
 ops[null1] = ops[null2] = 0;
 ops[a_ OPESum[xa_,xb_]]  :=
- a/(Select2[a dUM, k]) OPESum[xa Select2[a dUM,k],xb];
+ a/(SelectNotFree[a dUM, k]) OPESum[xa SelectNotFree[a dUM,k],xb];
 
 amp = Map[ops, amp + null1 + null2] /. ops -> Identity;
 amp = fds1[amp]//PowerSimplify;
@@ -312,7 +312,7 @@ FCPrint[2, "collecting w.r.t. k"];
 amp = Collect2[amp, k, Factoring -> False];
 
 qup1[x_] := If[Head[x] =!= Times, qp1[x],
-               Select1[x, k] qp1[Select2[x, k]]
+               SelectFree[x, k] qp1[SelectNotFree[x, k]]
               ];
 qp1[x_] := fds1[ ScalarProductCancel[x,k]
                ];
@@ -332,7 +332,7 @@ subfactor = 1
 
 amp = FeynAmpDenominatorSplit[integ, k];
 If[(Head[amp] === Times) || (Head[amp] === FeynAmpDenominator),
-   subfactor = Select1[amp, k];
+   subfactor = SelectFree[amp, k];
 FCPrint[2,"subfactor = ",subfactor//InputForm];
    ampp = amp;
    amp = amp / subfactor;
@@ -341,14 +341,14 @@ FCPrint[2,"subfactor = ",subfactor//InputForm];
                   PropagatorDenominator[_. + _. Momentum[k,___],0]
                                   ] :> 0;
 (* do a translation eventually *)
-   If[MatchQ[MomentumExpand[Select2[amp, FeynAmpDenominator]],
+   If[MatchQ[MomentumExpand[SelectNotFree[amp, FeynAmpDenominator]],
       FeynAmpDenominator[PropagatorDenominator[_Plus,_],___]]
       ,
-      fad = Select2[amp, FeynAmpDenominator];
+      fad = SelectNotFree[amp, FeynAmpDenominator];
 (* k - p *)
       fap = fad[[1,1]];
       fap = fap  /. Momentum[aa_, ___] :> aa;
-      If[NumericalFactor[Select2[fap, k]] === -1, fap  = - fap];
+      If[NumericalFactor[SelectNotFree[fap, k]] === -1, fap  = - fap];
       trf = k -> (-k + (fap - k));
       amp = EpsEvaluate[ExpandScalarProduct[amp /. trf]];
       amp = Expand2[amp, k];

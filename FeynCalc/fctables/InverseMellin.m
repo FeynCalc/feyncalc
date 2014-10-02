@@ -27,7 +27,7 @@ Pair = MakeContext["CoreObjects","Pair"];
 PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 
 MakeContext[Collect2, Factor2, OPEm, 
-            Select1, Select2, SumS, SumT, Zeta2];
+            SelectFree, SelectNotFree, SumS, SumT, Zeta2];
 
 
 InverseMellin[exp_, yy_, opem_:OPEm] := 
@@ -36,8 +36,8 @@ sums[a__] := SumS[a,Reduce -> True];
 sumt[a__] := SumT[a,Reduce -> True];
 
 inlii[x_ /; Head[x] =!= Plus, y_] := 
-  Select1[x, opem] Select2[Select2[x,opem], _^(_. + _. opem)
-                          ] inli[Select1[Select2[x, opem],
+  SelectFree[x, opem] SelectNotFree[SelectNotFree[x,opem], _^(_. + _. opem)
+                          ] inli[SelectFree[SelectNotFree[x, opem],
                                          _^(_. + _. opem)
                                         ] , y
                                 ];

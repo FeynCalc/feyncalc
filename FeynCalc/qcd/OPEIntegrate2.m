@@ -68,8 +68,8 @@ MakeContext[
     OPEm,
     Power2,
     PowerSimplify,
-    Select1,
-    Select2,
+    SelectFree,
+    SelectNotFree,
     Series2,
     Sn
     Uncontract,
@@ -109,7 +109,7 @@ FCPrint[3,"int done"];
        ];
 
 integrate[yy_Times, {xx_,0,1}, ass___Rule] :=
-  Select1[yy,xx] intsav[Select2[yy,xx],{xx,0,1},ass];
+  SelectFree[yy,xx] intsav[SelectNotFree[yy,xx],{xx,0,1},ass];
 
 idx[y_, opt___] := Block[{nr, ci, intvars},
  If[(Integratedx/.{opt}/.Options[OPEIntegrate2]) =!= True,
@@ -156,7 +156,7 @@ eventualfp[y_,k_,opt___Rule]:=
 topower2[y_] := y /. Power2 -> Power /. (a_ /; !FreeQ[a,OPEDelta])^
                 (p_ /;Head[p] =!= Integer) :> Power2[a, p];
 
-isol[ka_][y_]:=Isolate[y,Append[Select1[Variables[Flatten[
+isol[ka_][y_]:=Isolate[y,Append[SelectFree[Variables[Flatten[
                          Cases2[y,Power2]/. Power2->List]],Pair],
                           ka], IsolateNames->ll, IsolateSplit->5555I];
 gpowsub[xx_,k_] := xx /. {
@@ -176,13 +176,13 @@ gpowsub[xx_,k_] := xx /. {
                      )   };
 
 opsu[a_Plus,b__]:=Map[opsu[#,b]&,a];
-opsu[c_Times,{ka_,0,Infinity}]:=Select1[c,ka] *
-OPESum[Select2[c,ka],{ka,0,Infinity}];
+opsu[c_Times,{ka_,0,Infinity}]:=SelectFree[c,ka] *
+OPESum[SelectNotFree[c,ka],{ka,0,Infinity}];
 
 gpowsumit[exp_] := If[FreeQ[exp, OPEl], exp,
  Block[{g1,g2,g3,g4,n1,n2,gr}, g1 = Expand2[exp,OPEl]/.Power2->Power;
-        g2 = Select1[g1+n1+n2, OPEl] /. {n1 :> 0, n2 :> 0};
-        g3 = Collect2[Select2[Map[#/sumgeom[{OPEl,0,Infinity}]&,
+        g2 = SelectFree[g1+n1+n2, OPEl] /. {n1 :> 0, n2 :> 0};
+        g3 = Collect2[SelectNotFree[Map[#/sumgeom[{OPEl,0,Infinity}]&,
                                   g1+n1+n2
                                  ] ,OPEl
                              ] /.{n1 :> 0, n2 :> 0}
@@ -208,7 +208,7 @@ kkfix[z_ (pe_ - SO[k])^em_] := FeynCalcExternal[
        fadk -> fado /. fado -> FAD;
 If[Head[exp] === Times,
    exp = FeynCalcExternal[exp] /.SO->SOD/.SP->SPD ;
-   tt = Select1[exp, k] kli[k, Select2[exp,k]];
+   tt = SelectFree[exp, k] kli[k, SelectNotFree[exp,k]];
    nt = tt /. opeinttable /. 0^_ :> 0;
 Global`EXPCHIN= exp;
  If[tt =!= nt, FeynCalcInternal[nt],
@@ -228,14 +228,14 @@ Global`EXPCHIN3 = exp;
 
   Global`EXPCH = exp;
    FCPrint[2,"entering OPEIntegrate2 with ", exp//FeynCalcForm];
-   tt = Select1[exp, k] kli[k, Select2[exp,k]];
+   tt = SelectFree[exp, k] kli[k, SelectNotFree[exp,k]];
    nt = tt /. opeinttable;
     If[tt =!= nt
        ,
        FeynCalcInternal[nt]
        ,
        exp  = FeynCalcInternal[exp];
-       If[Select2[Cases2[exp,Momentum],k] === {}, exp,
+       If[SelectNotFree[Cases2[exp,Momentum],k] === {}, exp,
         FixedPoint[ReleaseHold,
  PowerSimplify[
  (Global`CHeck3=
@@ -263,8 +263,8 @@ oi[a_Plus,k_,opt___Rule] := Map[oi[#,k,opt]&, a];
 oi[a_,k_,___] := a /; FreeQ2[a,{k,Pattern}] || (Head[a] =!= Times);
 
 oi[exp_Times, k_, opt___Rule] :=
-   Select1[exp,k] *
-   ilist[ChangeDimension[Select2[exp, k], D],
+   SelectFree[exp,k] *
+   ilist[ChangeDimension[SelectNotFree[exp, k], D],
          Momentum[k,D],
          If[(OPEDelta /. {opt} /. Options[OPEIntegrate2])===True,
             0,1
@@ -277,18 +277,18 @@ denmatch[Power[den_,mm_], ka_ /; Length[ka]===2] := True /;
                          ], ka[[1]]
        ];
 
-getalpha[h_] := If[MatchQ[Select1[h,{Power2,LorentzIndex}], _^_],
-                   -Select1[h,{Power2,LorentzIndex}][[2]], False
+getalpha[h_] := If[MatchQ[SelectFree[h,{Power2,LorentzIndex}], _^_],
+                   -SelectFree[h,{Power2,LorentzIndex}][[2]], False
                   ];
 getl[h_,ka_Momentum] :=
      Block[{tg,ll},
-           If[!MatchQ[Select1[h,{Power2,LorentzIndex}], _^_],
+           If[!MatchQ[SelectFree[h,{Power2,LorentzIndex}], _^_],
               False,
               (*else*)
               (* get the linear part *)
-              tg = Select1[h, {Power2, LorentzIndex}][[1]] -
+              tg = SelectFree[h, {Power2, LorentzIndex}][[1]] -
                    Pair[ka,ka];
-              tg = Select2[ExpandScalarProduct[tg]//Expand,ka[[1]]];
+              tg = SelectNotFree[ExpandScalarProduct[tg]//Expand,ka[[1]]];
               (* calculate l *)
               ll = D[tg/.Pair[ka, b_Momentum]:>(ka b), ka];
               (* check if it really is o.k. *)
@@ -298,17 +298,17 @@ getl[h_,ka_Momentum] :=
 
 
 getm2[h_,ka_Momentum] :=
-             If[!MatchQ[Select1[h,{Power2,LorentzIndex}], _^_],
+             If[!MatchQ[SelectFree[h,{Power2,LorentzIndex}], _^_],
                 False,
-                Select1[Expand[ExpandScalarProduct[
-                        Select1[h,{Power2,LorentzIndex}][[1]]]], ka]
+                SelectFree[Expand[ExpandScalarProduct[
+                        SelectFree[h,{Power2,LorentzIndex}][[1]]]], ka]
                ];
 getopem[h_] := (If[Head[#]===Pair, 1,
                    If[Head[#]===Power || Head[#]===Power2,
                       #[[2]],False
                      ]
                   ]&
-               )@Select2[h, Power2];
+               )@SelectNotFree[h, Power2];
 
 getmu[h_] := Cases2[h, LorentzIndex];
 
@@ -317,9 +317,9 @@ match1[h_, km_] :=
        MatchQ[h//Numerator, Power2[
                             Pair[Momentum[OPEDelta,___],km ], _]
                            ] &&
-                   denmatch[Select1[h, Power2]//Denominator,km
+                   denmatch[SelectFree[h, Power2]//Denominator,km
                            ] &&
-                     MatchQ[Select2[h, Power2],
+                     MatchQ[SelectNotFree[h, Power2],
                             Power2[Pair[Momentum[OPEDelta,___],km ],_]
                            ];
 (* I^(m)_alpha,mu *)
@@ -327,8 +327,8 @@ match2[h_, km_] :=
        MatchQ[h//Numerator,
               Power2[Pair[Momentum[OPEDelta,___], km],_]*
                Pair[km, LorentzIndex[_,___]]
-             ]&& denmatch[Select1[h,Power2]//Denominator, km] &&
-       MatchQ[Select2[h,Power2],Power2[Pair[Momentum[OPEDelta,___],km],_]];
+             ]&& denmatch[SelectFree[h,Power2]//Denominator, km] &&
+       MatchQ[SelectNotFree[h,Power2],Power2[Pair[Momentum[OPEDelta,___],km],_]];
 
 (* I^(m)_alpha,mu,nu *)
 match3[h_, km_] :=
@@ -336,8 +336,8 @@ match3[h_, km_] :=
                Power2[Pair[Momentum[OPEDelta,___], km], _]*
                Pair[km, LorentzIndex[aa_,___]]*
                Pair[km, LorentzIndex[bb_,___]]
-             ]&& denmatch[Select1[h,Power2]//Denominator,km] &&
-       MatchQ[Select2[h, Power2],
+             ]&& denmatch[SelectFree[h,Power2]//Denominator,km] &&
+       MatchQ[SelectNotFree[h, Power2],
               Power2[Pair[Momentum[OPEDelta,___],km ],_]];
 
 (* I^(m)_alpha,mu,nu,la *)
@@ -347,8 +347,8 @@ match4[h_, km_] :=
                Pair[km, LorentzIndex[aa_,___]]*
                Pair[km, LorentzIndex[bb_,___]]*
                Pair[km, LorentzIndex[cc_,___]]
-             ]&& denmatch[Select1[h,Power2]//Denominator,km] &&
-       MatchQ[Select2[h,Power2],
+             ]&& denmatch[SelectFree[h,Power2]//Denominator,km] &&
+       MatchQ[SelectNotFree[h,Power2],
               Power2[Pair[Momentum[OPEDelta,___],km ],_]];
 
 (* I^(m)_alpha *)

@@ -27,7 +27,7 @@ Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
-MakeContext[ Cases2, OPEDelta, Select1, Select2 ];
+MakeContext[ Cases2, OPEDelta, SelectFree, SelectNotFree ];
 
 UVPart[0,_]:=0;
 UVPart[exp_Plus, q_] := Map[UVPart[#, q]&, exp];
@@ -54,7 +54,7 @@ qcheck[w_] := If[!FreeQ[w, DiracGamma], False,
 (* check if all occurences of q are q.OPDElta's *)
 Block[{w1, w2, qQ},
 Catch[
-      w1 = Select2[Cases2[w, Pair], q];
+      w1 = SelectNotFree[Cases2[w, Pair], q];
       If[!MatchQ[w1, {Pair[Momentum[q,___],
                            Momentum[OPEDelta,___]]..}
                 ], 
@@ -87,7 +87,7 @@ neglect[ (a_ /; qcheck[a]) * (b_ /; qcheck[b]) *
        ] := 0;
 
  If[Head[exp] =!= Times, exp,
-    Select1[exp,q] (neglect[Select2[exp,q]]/.neglect->Identity)
+    SelectFree[exp,q] (neglect[SelectNotFree[exp,q]]/.neglect->Identity)
    ]
                         ];
 End[]; EndPackage[];

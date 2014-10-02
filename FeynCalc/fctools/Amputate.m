@@ -35,7 +35,7 @@ Pair = MakeContext["CoreObjects","Pair"];
 MakeContext[Cases2, DotSimplify,
             FeynCalcInternal, FreeQ2,
             LeviCivita, OPEDelta,
-            ScalarProduct,Select1
+            ScalarProduct,SelectFree
            ];
 
 Options[Amputate] = {Dimension -> D, Pair -> {}, Unique -> True};
@@ -62,7 +62,7 @@ Amputate[ex_, qi_ /; Head[qi]=!=Rule, opt___Rule
       a$AL = Unique[$AL], a$AL = $AL
      ];
    If[par===All,
-      par = Select1[Map[First, Select1[Cases2[exp, Momentum], OPEDelta]],q]
+      par = SelectFree[Map[First, SelectFree[Cases2[exp, Momentum], OPEDelta]],q]
      ];
 
 If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
@@ -92,7 +92,7 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                            Pair[Momentum[q, dim], li1] *
                            Pair[Momentum[q, dim], li2] *Pair[li1, li2]
                           );
-            par = Select1[par, q];
+            par = SelectFree[par, q];
            ];
 
          nex = nex //.{Pair[Momentum[q,___], Momentum[pe_,___]

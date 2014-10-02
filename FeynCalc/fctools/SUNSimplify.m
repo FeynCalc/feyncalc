@@ -59,8 +59,8 @@ factorfull               = MakeContext["FactorFull"];
 fci                      = MakeContext["FeynCalcInternal"];
 freeq2                   = MakeContext["FreeQ2"];
 MemSet                   = MakeContext["MemSet"];
-Select1                  = MakeContext["Select1"];
-Select2                  = MakeContext["Select2"];
+SelectFree                  = MakeContext["SelectFree"];
+SelectNotFree                  = MakeContext["SelectNotFree"];
 spinor                   = MakeContext["CoreObjects","Spinor"];
 SUND                     = MakeContext["CoreObjects","SUND"];
 SUNDelta                 = MakeContext["CoreObjects","SUNDelta"];
@@ -255,7 +255,7 @@ new = Expand2[new, SUNIndex];
 FCPrint[2,"expanding w.r.t. sunf done "];
   ];
 If[Head[new] === Plus,
-   new = Select1[new, SUNIndex] + suff[Select2[new, SUNIndex]],
+   new = SelectFree[new, SUNIndex] + suff[SelectNotFree[new, SUNIndex]],
    new = suff[new];
   ];
 new = backsubfun[new, sub];
@@ -414,20 +414,20 @@ If[CheckContext["DiracTrace"],
                     (proportional to the identity matrix)
                     were not SUNTrace'd *)
                  diractr[dd_Times , dops___Rule] :>
-                 suntrace[Select2[dd, SUNIndex]]*
-                   dtr[Select1[dd, SUNIndex], dops] /;
+                 suntrace[SelectNotFree[dd, SUNIndex]]*
+                   dtr[SelectFree[dd, SUNIndex], dops] /;
                    FreeQ[dd, sunt[___]],
                  diractr[dd_?((Head[#]=!=Times)&) , dops___Rule] :>
                  suntrace[dtr[dd]]/;
                    FreeQ[dd, sunt[___]],
 
-                 (*Added Times to avoid Select2[a+b,SUNIndex] --> 0*)
+                 (*Added Times to avoid SelectNotFree[a+b,SUNIndex] --> 0*)
                  diractr[doot[xx__sunt] dd_. , dops___Rule] :>
-                 suntrace[DOT[xx] Select2[dd, SUNIndex]]*
-                   DiracTrace[Select1[dd, SUNIndex], dops],
+                 suntrace[DOT[xx] SelectNotFree[dd, SUNIndex]]*
+                   DiracTrace[SelectFree[dd, SUNIndex], dops],
                  diractr[doot[xx__sunt, y__] dd_., dops___Rule] :>
-                 suntrace[DOT[xx] Select2[dd, SUNIndex]] *
-                   DiracTrace[doot[y] Select1[dd, SUNIndex], dops ] /;
+                 suntrace[DOT[xx] SelectNotFree[dd, SUNIndex]] *
+                   DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops ] /;
                   FreeQ[{y}, SUNIndex],
                  diractr[doot[sunt[_], dd_], ___Rule] :> 0 /;
                   freeq2[dd,{SUNIndex,sunt}],
@@ -435,11 +435,11 @@ If[CheckContext["DiracTrace"],
                   freeq2[dd,{SUNIndex,sunt}]
                 },
        surule = {diractr[doot[xx__sunt] dd_. , dops___Rule] :>
-                  DOT[xx] Select2[dd, SUNIndex] *
-                    DiracTrace[Select1[dd, SUNIndex], dops],
+                  DOT[xx] SelectNotFree[dd, SUNIndex] *
+                    DiracTrace[SelectFree[dd, SUNIndex], dops],
                  diractr[doot[xx__sunt, y__] dd_. , dops___Rule] :>
-                  DOT[xx] Select2[dd, SUNIndex] *
-                    DiracTrace[doot[y] Select1[dd, SUNIndex], dops] /;
+                  DOT[xx] SelectNotFree[dd, SUNIndex] *
+                    DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops] /;
                    FreeQ[{y}, SUNIndex]
                 }
         ];

@@ -58,8 +58,8 @@ OPEm,
 Power2,
 PowerSimplify,
 TLI,
-Select1,
-Select2    ];
+SelectFree,
+SelectNotFree    ];
 
 Options[FC2TLI] = {Dimension -> D, IncludePair -> True,
                    Do -> True};
@@ -103,12 +103,12 @@ If[ doheuristics &&
 If[x === 0, result = 0,
 
 (* for dimensional reduction *)
-If[FreeQ[Select1[x, Eps],LorentzIndex],
-   x = Select2[x,Eps] ChangeDimension[Select1[x,Eps],dim]
+If[FreeQ[SelectFree[x, Eps],LorentzIndex],
+   x = SelectNotFree[x,Eps] ChangeDimension[SelectFree[x,Eps],dim]
   ];
 
 (* include k1^2 and k2^2 *)
-qch = Select1[Select1[x, {OPEDelta, FeynAmpDenominator}],
+qch = SelectFree[SelectFree[x, {OPEDelta, FeynAmpDenominator}],
               {Pair[Momentum[k1,___], Momentum[k1,___]],
                Pair[Momentum[k2,___], Momentum[k2,___]]
             }];
@@ -119,13 +119,13 @@ If[((inc === False) && (!FreeQ2[qch, {k1, k2}])  ) ||
                  }
            ]
    ) (*||
-   (!FreeQ[Select2[Select2[x, Pair], {k1,k2}], LorentzIndex])
+   (!FreeQ[SelectNotFree[SelectNotFree[x, Pair], {k1,k2}], LorentzIndex])
 *)
   ,
 result = x,
-fad = (List@@Select2[x, FeynAmpDenominator]) /.
+fad = (List@@SelectNotFree[x, FeynAmpDenominator]) /.
       PropagatorDenominator[w_, _] :> w /. Momentum[a_, _] :> a;
-p = Select1[Union[Flatten[Map[Variables,fad]]], {k1,k2} /.
+p = SelectFree[Union[Flatten[Map[Variables,fad]]], {k1,k2} /.
            Momentum[a_,_] -> a ];
 If[p =!= {}, p = p[[1]], p = dummyp];
 dp    = Pair[Momentum[OPEDelta, dim], Momentum[p, dim]];
@@ -157,10 +157,10 @@ xx = xx /. { (-dp + dk1)^w_ :> ( (-1)^w (dp - dk1)^w ),
              (-dk1 + dk2)^w_ :> ( (-1)^w (dk1 - dk2)^w )
            };
 
-lr1 = Cases2[Select2[xx, k1], LorentzIndex];
+lr1 = Cases2[SelectNotFree[xx, k1], LorentzIndex];
 If[Length[lr1] > 0, lork1 = Map[First, lr1], lork1 = {}];
 
-lr2 = Cases2[Select2[xx,k2], LorentzIndex];
+lr2 = Cases2[SelectNotFree[xx,k2], LorentzIndex];
 If[Length[lr2] > 0, lork2 = Map[First, lr2], lork2 = {}];
 
 lorfa = If[Length[lork1] === 0, 1,
@@ -169,14 +169,14 @@ lorfa = If[Length[lork1] === 0, 1,
           If[Length[lork2] === 0, 1,
  Times@@(Pair[Momentum[k1,dim], LorentzIndex[#,dim]]& /@ lork1)
             ];
-If[Select2[Select2[xx,{k1,k2}],LorentzIndex] =!= lorfa,
+If[SelectNotFree[SelectNotFree[xx,{k1,k2}],LorentzIndex] =!= lorfa,
    lorcheck = False, lorcheck = True
   ];
 
 If[lorcheck === False,
    result = x,
 
-nx = Select2[xx, {k1,k2}];
+nx = SelectNotFree[xx, {k1,k2}];
 fa = xx / nx;
 
 fa = fa /. {(-1)^w_ :> Expand[(-1)^w]} /.
@@ -357,7 +357,7 @@ int = nx iall;
 se[y_] := (If[#===1, 0, If[Head[#] === Power,
               If[Length[#[[1]]]===1, {#[[2]],#[[1,1]]}, #[[2]]
                 ], y ] ]&
-          )[ Select2[int, y^h_] ];
+          )[ SelectNotFree[int, y^h_] ];
 
 rhi = Map[se,
           {nk12,nk22,k1p,k2p,k1k2,

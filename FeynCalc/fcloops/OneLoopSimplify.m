@@ -73,8 +73,8 @@ OPE1Loop,
 Power2,
 PowerSimplify,
 ScalarProductCancel,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 SUNSimplify,
 SUNTrace,
 TID,
@@ -236,9 +236,9 @@ If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
    ,
    lt6 = Length[t6];
    t6  = Sum[FCPrint[1,"TID 2 #" , j," out of " , lt6];
-             FCPrint[1,"dimension ",dim, " on: ", StandardForm[Select2[t6[[j]],q]]];
-             tmpres=Select1[t6[[j]], q]  *
-               TID[Select2[t6[[j]],q],  q,
+             FCPrint[1,"dimension ",dim, " on: ", StandardForm[SelectNotFree[t6[[j]],q]]];
+             tmpres=SelectFree[t6[[j]], q]  *
+               TID[SelectNotFree[t6[[j]],q],  q,
                    ScalarProductCancel -> spc,
                    DimensionalReduction -> dimred,
                    FeynAmpDenominatorSimplify -> True,
@@ -273,7 +273,7 @@ If[Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q])
 FCPrint[1,"TID  returned: ",t6];
 
 If[!FreeQ[t6,FeynAmpDenominator],
-   t6 = Select2[Expand2[t6+null1+null2,FeynAmpDenominator
+   t6 = SelectNotFree[Expand2[t6+null1+null2,FeynAmpDenominator
                        ], FeynAmpDenominator]
   ];
 
@@ -305,7 +305,7 @@ If[Head[t6] =!= Plus,
    ,
   fdisav[za_] := fdisav[za] = FeynAmpDenominatorSimplify[za,q,
                          IntegralTable -> integraltable];
-  t6 = Sum[Select1[t6[[i]],q] fdisav[fdisav[Select2[t6[[i]],q]]],
+  t6 = Sum[SelectFree[t6[[i]],q] fdisav[fdisav[SelectNotFree[t6[[i]],q]]],
            {i,Length[t6]}];
   ];
 t7 = PowerSimplify[Collect2[t6, qu, Expanding->False,

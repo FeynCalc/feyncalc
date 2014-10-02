@@ -36,7 +36,7 @@ MakeContext[
     FreeQ2,
     Isolate,
     IsolateSplit,
-    Select1,
+    SelectFree,
     Solve2
 ];
 

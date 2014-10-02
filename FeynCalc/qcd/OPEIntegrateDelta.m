@@ -50,8 +50,8 @@ Collect2,
 DeltaFunction,
 Factor2,
 Integrate2,
-Select1,
-Select2,
+SelectFree,
+SelectNotFree,
 Series2,
 Trick,
 Zeta2
@@ -79,8 +79,8 @@ OPEIntegrateDelta[expr_, x_, m_, ops___Rule] := Block[
  tt = tt /. ((1-x) x)^aa_ :> ((1-x)^aa x^aa);
 (* drop the 1 - part *)
  tt = Collect2[tt, x] + null[1] + null[2];
-(*$DROP = Select1[tt, x^(_. m + _.)]/.null[1]->0/.null[2]->0;*)
- tt = Select2[tt, x^(_. m + _.)];
+(*$DROP = SelectFree[tt, x^(_. m + _.)]/.null[1]->0/.null[2]->0;*)
+ tt = SelectNotFree[tt, x^(_. m + _.)];
  tt = Factor2[tt];
 
 If[(PolynomialDivision /. {ops} /. Options[OPEIntegrateDelta])=!=True,
@@ -102,21 +102,21 @@ If[(PolynomialDivision /. {ops} /. Options[OPEIntegrateDelta])=!=True,
 ,
 
  If[Head[tt] === Times,
-    ttx = Select2[tt, (w_. + v_. x)^(aa_/;Head[aa] =!= Integer)];
+    ttx = SelectNotFree[tt, (w_. + v_. x)^(aa_/;Head[aa] =!= Integer)];
 FCPrint[1,"ttx = ",ttx];
     tt = tt / ttx,
     ttx = 1
    ];
  If[Head[tt] === Times,
-    ttnox = Select1[tt, x];
-    ttp   = PolynomialDivision[Select2[tt, x], 1-x, x],
+    ttnox = SelectFree[tt, x];
+    ttp   = PolynomialDivision[SelectNotFree[tt, x], 1-x, x],
     ttnox = 1,
     ttp   = PolynomialDivison[tt, 1-x, x]
    ];
  reg    = ttnox ttx Factor2[ttp[[1]]] (1-x);
 (*
  reg = Collect2[reg,x];
- reg = Select2[reg + null[1] + null[2], x^(_. m + _.)];
+ reg = SelectNotFree[reg + null[1] + null[2], x^(_. m + _.)];
 *)
  nonreg = ttnox ttx ttp[[2]];
  tt = Collect2[nonreg, x];
@@ -130,7 +130,7 @@ Dialog[reg];
 (*
 (* drop the 1 - part *)
  xmpart = Collect2[tt, x] + null[1];
- xmpart = Select2[xmpart, x^(_. m + _.)];
+ xmpart = SelectNotFree[xmpart, x^(_. m + _.)];
 *)
  xmpart = Factor2[tt];
 
@@ -163,7 +163,7 @@ FCPrint[1,"fypart = ",fypart];
        FCPrint[1,"integrating # ",i-2, " out of ",lpa-2];
 *)
 ppi = Factor2[fypart dummy];
-       kernel = Select2[ppi, x];
+       kernel = SelectNotFree[ppi, x];
        kfa  = (ppi/kernel) /. dummy -> 1;
        fy = PowerExpand[Simplify[(kernel (*(1-x)^(1-Epsilon/2)*))]];
 FCPrint[1,"fy = ",fy//InputForm];
