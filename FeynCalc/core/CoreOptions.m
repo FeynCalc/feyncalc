@@ -1,10 +1,19 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: CoreOptions *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: CoreOptions														*)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Options shared by various FeynCalc objects and functions	    *)
 
 (* ------------------------------------------------------------------------ *)
-
 BeginPackage["HighEnergyPhysics`FeynCalc`CoreOptions`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Collecting::"usage" =
