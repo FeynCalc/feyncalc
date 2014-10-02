@@ -27,12 +27,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Current state
+
+* As of now, the most recent stable version of FeynCalc is [FeynCalc 8.2](https://github.com/FeynCalc/feyncalc/archive/Release-8_2_0_0.zip). We are actively
+    working on the next version of FeynCalc. You can follow the devloplment progress via the [repository history](https://github.com/FeynCalc/feyncalc/commits/master).
+
 # Installation
 
 ## Stable version
 
 * To obtain the latest **stable** version of FeynCalc go to the [release](https://github.com/FeynCalc/feyncalc/releases) section
-and download the most recent *Release_X_X_X_X.zip* file. Copy the
+and download the most recent *Release_X_X_X_X.zip* file (currently it is [Release_8_2_0_0.zip](https://github.com/FeynCalc/feyncalc/archive/Release-8_2_0_0.zip) ). Copy the
 *FeynCalc* directory from the zip file in the directory to which *$UserAddOnsDirectory* is set (evaluate *$UserAddOnsDirectory* in Mathematica).
 Finally, Rename *FeynCalc* to *HighEnergyPhysics*.
 
@@ -90,6 +95,10 @@ your *HighEnergyPhysics* directory.
     limitation is that you should never load FeynArts+FormCalc and FeynArts+FeynCalc in the same session or run them
     on the same Mathematica kernel.
 
+## Legacy
+
+* Old FeynCalc versions are avaialbe [here](http://www.feyncalc.org/download/). Please note that the old versions will most
+likely not work with the recent Mathematica version. **We do not offer any support for the old versions.**
 
 # Bugs
 
