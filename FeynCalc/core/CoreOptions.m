@@ -142,12 +142,6 @@ which stands for  s + t + u = m1^2 + m2^2 + m3^2 +  m4^2.
 If other than four-particle processes are calculated the
 setting should be: Mandelstam -> {}.";
 
-MemoryAvailable::"usage" =
-"MemoryAvailable is an option of MemSet.
-It can be set to an integer n,
-where n is the available amount of main memory in Mega Byte.
-The default setting is $MemoryAvailable.";
-
 PairCollect::"usage" =
 "PairCollect is an option for DiracTrace specifying if
 the result is collected with respect to Pair's.";
@@ -173,8 +167,8 @@ TraceOfOne::"usage" =
 "TraceOfOne is an option for Tr and DiracTrace.
 Its setting determines the value of the unit trace.";
 
-WriteOut::"usage" = 
-"WriteOut is an option for OneLoop and SquareAmplitude. 
+WriteOut::"usage" =
+"WriteOut is an option for OneLoop and SquareAmplitude.
 If set to True, the result of
 OneLoop will be written to a file called \"name.res\", where name
 is the first argument of OneLoop.";
@@ -184,7 +178,7 @@ WriteOutPaVe::"usage"=
 If set to a string, the results of all Passarino-Veltman PaVe's are stored in \
 files with names generated from this string and the arguments of PaVe.";
 
-ZeroMomentumInsertion::"usage"= 
+ZeroMomentumInsertion::"usage"=
 "ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and
 Twist2QuarkOperator.";
 
