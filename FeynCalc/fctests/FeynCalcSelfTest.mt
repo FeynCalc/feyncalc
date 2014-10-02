@@ -18,6 +18,7 @@ Needs["HighEnergyPhysics`FeynCalc`"];
 RunTestSuite[ StringJoin[$FeynCalcDirectory, "/fctests"] ,
         {
         "/fctests/CoreObjects.mt",
+        "/fctests/Cases2.mt",
         "/fctests/Conjugate.mt",
         "/fctests/Contract.mt",
         "/fctests/Chisholm.mt",
