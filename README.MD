@@ -51,6 +51,8 @@ the public FeynCalc repository
 
     `git clone https://github.com/FeynCalc/feyncalc.git`
 
+* If you don't know how to use git, just klick on the **Download ZIP** button in the right sidebar.
+
 * Please note that the development version may contain bugs and incomplete or untested features.
 
 ## FeynArts
