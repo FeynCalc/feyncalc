@@ -1,0 +1,123 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: Anti5.test                    	                                *)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Anti5	                *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstAnti5 = {
+
+{"fcstAnti5-ID1","Anti5[GA[5].GA[mu]]", "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5-ID2","Anti5[GA[5].GA[mu], 1]","-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5-ID3","Anti5[GA[5].GA[mu, nu, rho]]", "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5-ID4","Anti5[GA[5].GA[mu, nu, rho], 2]", "DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5-ID5","Anti5[GA[5].GA[mu, nu, rho], Infinity]", "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
+{"fcstAnti5-ID6","$BreitMaison=True;\nAnti5[GA[5].GA[mu, nu, rho], -2]", "DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5-ID7","Anti5[GA[5].GA[mu, nu, rho], -Infinity]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5-ID8","Anti5[GA[mu].GA[5], -1]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]]"},
+{"fcstAnti5-ID9","Anti5[GA[mu].GA[5], 1]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5-ID10","Anti5[GA[mu, nu, rho].GA[5], -1]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5-ID11","Anti5[GA[mu, nu, rho].GA[5], 1]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
+{"fcstAnti5-ID12","Anti5[GA[mu, nu, rho].GA[5], -Infinity]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5-ID13","$BreitMaison=False;\nAnti5[GA[mu, nu, rho].GA[5], Infinity]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
+{"fcstAnti5-ID14","Anti5[GA[5].GAD[mu]]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID15","Anti5[GA[5].GAD[mu], 1]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID16","Anti5[GA[5].GAD[mu, nu, rho]]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID17","Anti5[GA[5].GAD[mu, nu, rho], 2]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID18","Anti5[GA[5].GAD[mu, nu, rho], Infinity]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID19","Anti5[GA[5].GAD[mu, nu, rho], -2]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID20","Anti5[GA[5].GAD[mu, nu, rho], -Infinity]","  DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID21","Anti5[GAD[mu].GA[5], -1]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]"},
+{"fcstAnti5-ID22","Anti5[GAD[mu].GA[5], 1]", "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID23","Anti5[GAD[mu, nu, rho].GA[5], 1]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID24","Anti5[GAD[mu, nu, rho].GA[5], -1]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID25","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID26","Anti5[GAD[mu, nu, rho].GA[5], Infinity]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID27","$BreitMaison=True;\nAnti5[GA[5].GAD[mu]]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5-ID28","Anti5[GA[5].GAD[mu], 1]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5-ID29","Anti5[GA[5].GAD[mu, nu, rho]]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] +
+ 	2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID30","Anti5[GA[5].GAD[mu, nu, rho], 2]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D] -
+	 2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5].DiracGamma[LorentzIndex[rho, D], D] + 2*(-DiracGamma[LorentzIndex[mu, -4 + D],
+ 	-4 + D] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] .DiracGamma[LorentzIndex[rho, D], D] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D])"},
+{"fcstAnti5-ID31","Anti5[GA[5].GAD[mu, nu, rho], Infinity]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5] +
+ 	2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+   	DiracGamma[5] - 2*(-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[rho]] . DiracGamma[5] +
+   2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D],
+      -4 + D] . DiracGamma[5]) + 2*(DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu]] .
+    DiracGamma[LorentzIndex[rho]] . DiracGamma[5] - 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] +
+   2*(-DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+       DiracGamma[LorentzIndex[rho]] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+       DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]))"},
+{"fcstAnti5-ID32","Anti5[GA[5].GAD[mu, nu, rho], -2]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID33","Anti5[GA[5].GAD[mu, nu, rho], -Infinity]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5-ID34","Anti5[GAD[mu].GA[5], -1]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5-ID35","Anti5[GAD[mu].GA[5], 1]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID36","Anti5[GAD[mu, nu, rho].GA[5], 1]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+{"fcstAnti5-ID37","Anti5[GAD[mu, nu, rho].GA[5], -1]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]] +
+	 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5-ID38","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] +
+	 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] .
+   	DiracGamma[LorentzIndex[rho]] - 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+   	DiracGamma[5] . DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
+   	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5-ID39","Anti5[GAD[mu, nu, rho].GA[5], Infinity]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+
+{"fcstAnti5-ID40","Anti5[GAD[mu, nu, rho].GA[5] + GAD[mu, su, rho].GA[5], -Infinity]","-DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] -
+ DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[su]] . DiracGamma[LorentzIndex[rho]] +
+ 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] .
+   DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] .
+   DiracGamma[LorentzIndex[su]] . DiracGamma[LorentzIndex[rho]] -
+ 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
+   DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
+   DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] -
+ 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[su, -4 + D], -4 + D] . DiracGamma[5] .
+   DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[su, D], D] .
+   DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"}
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
