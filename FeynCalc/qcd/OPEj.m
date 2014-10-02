@@ -19,12 +19,12 @@ OPEj::"usage"= "OPEj is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[PositiveInteger, DataType];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
+MakeContext[ DataType];
 DataType[OPEj, PositiveInteger] = True;
 
-   OPEj /: 
+   OPEj /:
    MakeBoxes[OPEj ,TraditionalForm] := "j";
 
 End[]; EndPackage[];

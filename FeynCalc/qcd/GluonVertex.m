@@ -38,7 +38,7 @@ is returned or whether it is left as an operator.";
 
 Begin["`Private`"];
 
-Abbreviation = MakeContext["Abbreviation"];
+Abbreviation = MakeContext["CoreObjects","Abbreviation"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 Gauge = MakeContext["CoreOptions","Gauge"];

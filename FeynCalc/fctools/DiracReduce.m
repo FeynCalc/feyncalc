@@ -39,12 +39,12 @@ Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Pair = MakeContext["CoreObjects","Pair"];
+DiracBasis = MakeContext["CoreObjects","DiracBasis"];
 
 MakeContext[
     Chisholm,
     Collect2,
     Contract,
-    DiracBasis,
     DiracOrder,
     DiracSigmaExplicit,
     DiracSimplify,

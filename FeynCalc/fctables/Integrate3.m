@@ -34,11 +34,11 @@ Epsilon = MakeContext["CoreObjects","Epsilon"];
 PlusDistribution = MakeContext["CoreObjects","PlusDistribution"];
 SmallDelta = MakeContext["CoreObjects","SmallDelta"];
 SmallEpsilon = MakeContext["CoreObjects","SmallEpsilon"];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
   
 MakeContext[ Apart3,DataType, Factor2,
              Integrate2, Nielsen,
-             PositiveInteger,
-             Select1, Select2, SimplifyPolyLog,SumS, Zeta2];
+             Select1, Select2, SimplifyPolyLog, SumS, Zeta2];
  
  S = MakeContext["SumS"];
  ST = MakeContext["SumT"];

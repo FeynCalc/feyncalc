@@ -52,10 +52,10 @@ PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 SUNDelta = MakeContext["CoreObjects","SUNDelta"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 Tf = MakeContext["CoreObjects","Tf"];
+CounterT = MakeContext["CoreObjects","CounterT"];
+Abbreviation = MakeContext["CoreObjects","Abbreviation"];
 
 MakeContext[
-Abbreviation,
-CounterT,
 CounterTerm,
 Explicit,
 MomentumExpand,

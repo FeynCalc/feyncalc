@@ -56,7 +56,7 @@ Begin["`Private`"];
    fcint                       = MakeContext["FeynCalcInternal"];
    Factor2                     = MakeContext["Factor2"];
    Factoring                   = MakeContext["CoreOptions","Factoring"];
-   FreeIndex                   = MakeContext["FreeIndex"];
+   FreeIndex                   = MakeContext["CoreObjects","FreeIndex"];
    FreeQ2                      = MakeContext["FreeQ2"];
    LorentzIndex                = MakeContext["CoreObjects","LorentzIndex"];
    MemSet                      = MakeContext["MemSet"];
@@ -67,7 +67,7 @@ Begin["`Private`"];
    sCOS                         = MakeContext["PairContract3"];
    ScalarProduct               = MakeContext["ScalarProduct"];
    Schouten                    = MakeContext["Schouten"];
-   Upper  := Upper = MakeContext["Upper"];
+   Upper  := Upper = MakeContext["CoreObjects","Upper"];
    Twist2GluonOperator         := Twist2GluonOperator =
                                  MakeContext["Twist2GluonOperator"];
 

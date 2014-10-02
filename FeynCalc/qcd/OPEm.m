@@ -19,16 +19,16 @@ OPEm::"usage"= "OPEm is m of the operator product expansion.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[PositiveInteger, DataType, OPEi];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
+MakeContext[DataType, OPEi];
 DataType[OPEm, PositiveInteger] = True;
 
-OPEm /: 
-   MakeBoxes[OPEm ,TraditionalForm] := 
+OPEm /:
+   MakeBoxes[OPEm ,TraditionalForm] :=
 If[$Color =!= True,
    "m",
-    TagBox[StyleBox["m", 
+    TagBox[StyleBox["m",
        FontColor -> RGBColor[0,1,0.2]], Tag -> OPEm]
   ];
 

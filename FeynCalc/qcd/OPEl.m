@@ -19,11 +19,11 @@ OPEl::"usage"= "OPEl is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[PositiveInteger, DataType];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
+MakeContext[DataType];
 DataType[OPEl, PositiveInteger] = True;
-   OPEl /: 
+   OPEl /:
    MakeBoxes[OPEl ,TraditionalForm] := "l";
 
 

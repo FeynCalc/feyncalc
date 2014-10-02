@@ -20,9 +20,10 @@ OPEi::"usage"= "OPEi is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[PositiveInteger, DataType];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
+
+MakeContext[DataType];
 
 DataType[OPEi, PositiveInteger] = True;
 

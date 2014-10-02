@@ -40,10 +40,10 @@ Polarization = MakeContext["CoreObjects","Polarization"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 ScaleMu = MakeContext["CoreObjects","ScaleMu"];
 Twist2QuarkOperator := Twist2QuarkOperator = MakeContext["Twist2QuarkOperator"];
+CounterT = MakeContext["CoreObjects","CounterT"];
+Abbreviation = MakeContext["CoreObjects","Abbreviation"];
 
-MakeContext[
-    Abbreviation,
-    CounterT,
+MakeContext[    
     CounterTerm,
     DeclareNonCommutative,
     Explicit,

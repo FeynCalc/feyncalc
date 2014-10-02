@@ -1160,7 +1160,7 @@ UDotExpand[expr_] :=Block[{$UNonComm},
   (* These non-commuting objects will not be taken out of NM: *)
 
   $UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
-        HighEnergyPhysics`FeynCalc`DiracBasis`DiracBasis,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracBasis,
         HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma,
         HighEnergyPhysics`FeynCalc`CoreObjects`DiracGammaT,
         HighEnergyPhysics`FeynCalc`CoreObjects`DiracMatrix,
@@ -4028,7 +4028,7 @@ Block[{a,b,exp,scq,noncommpatt,$CommutatorRules1,$CommutatorRules2,$CommutatorRu
   (* These non-commuting objects will not be taken out of NM: *)
 
   $UNonComm = Union[$UMatrices, {UMatrix, UVector, DiracBar,
-        HighEnergyPhysics`FeynCalc`DiracBasis`DiracBasis,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracBasis,
         HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma,
         HighEnergyPhysics`FeynCalc`CoreObjects`DiracGammaT,
         HighEnergyPhysics`FeynCalc`CoreObjects`DiracMatrix,

@@ -19,12 +19,12 @@ OPEk::"usage"= "OPEk is an dummy index in OPESum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[PositiveInteger, DataType];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
+MakeContext[DataType];
 DataType[OPEk, PositiveInteger] = True;
 
-   OPEk /: 
+   OPEk /:
    MakeBoxes[OPEk ,TraditionalForm] := "k";
 
 

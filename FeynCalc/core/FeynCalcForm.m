@@ -88,7 +88,7 @@ suntrace     := suntrace      = MakeContext["SUNTrace"];
 tf           := tf            = MakeContext["CoreObjects","Tf"];
 nf           := nf            = MakeContext["CoreObjects","Nf"];
 Zeta2        := Zeta2         = MakeContext["Zeta2"];
-Upper        := Upper         = MakeContext["Upper"];
+Upper        := Upper         = MakeContext["CoreObjects","Upper"];
 
 Options[FeynCalcForm] = {FinalSubstitutions -> {}};
 

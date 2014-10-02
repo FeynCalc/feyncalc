@@ -19,9 +19,9 @@ OPEn::"usage"= "OPEn is n.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-MakeContext[PositiveInteger, DataType];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
+MakeContext[ DataType];
 DataType[OPEn, PositiveInteger] = True;
 
    OPEn /:

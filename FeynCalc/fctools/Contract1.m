@@ -23,13 +23,9 @@ Dimension = MakeContext["CoreOptions","Dimension"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Lower = MakeContext["CoreObjects","Lower"];
 Pair = MakeContext["CoreObjects","Pair"];
+Upper = MakeContext["CoreObjects","Upper"];
 
-MakeContext[
-Expand2,
-SelectFree, 
-SelectNotFree,
-Upper
-];
+MakeContext[ Expand2, SelectFree, SelectNotFree];
 
 
 

@@ -22,6 +22,7 @@ DeltaFunction = MakeContext["CoreObjects","DeltaFunction"];
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 FeynmanParameterNames = MakeContext["CoreOptions","FeynmanParameterNames"];
 Momentum = MakeContext["CoreObjects","Momentum"];
+PositiveInteger = MakeContext["CoreObjects","PositiveInteger"];
 
 MakeContext[
     ChangeDimension,
@@ -30,7 +31,6 @@ MakeContext[
     OPEDelta,
     OPEi,
     OPEm,
-    PositiveInteger,
     ScalarProduct,
     Smu,
     TLI,

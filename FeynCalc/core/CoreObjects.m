@@ -6,6 +6,10 @@
 BeginPackage["HighEnergyPhysics`FeynCalc`CoreObjects`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
+Abbreviation::"usage"=
+"Abbreviation[name] gives a shortname for name (in HoldForm). \
+E.g.: Abbreviation[QuarkPropagator] --> HoldForm[QP].";
+
 AntiQuarkField::"usage" =
 "AntiQuarkField is the name of a fermionic field.";
 
@@ -20,6 +24,13 @@ ChiralityProjector::"usage" =
 ChiralityProjector[-1] denotes DiracGamma[7] (=1/2(1 - DiracMatrix[5])).";
 (* :Summary: left and right handed projectors *)
 
+ComplexIndex::"usage"=
+"ComplexIndex is the head of a complex conjugate index.";
+(* :Summary: The head for complex conjugated indices *)
+
+CounterT::"usage"= "CounterT is a factor used by GluonPropagator and \
+QuarkPropagator when CounterTerm is set to All.";
+
 DeltaFunction::"usage"= "DeltaFunction is the Dirac delta-function.";
 (* :Summary:  Dirac-delta function  (just a name) *)
 
@@ -31,6 +42,13 @@ Dirac delta-function.";
 DeltaFunctionPrime::"usage"=
 "DeltaFunctionPrime denotes the derivative of the Dirac delta-function.";
 (* :Summary:  Dirac-delta function derivative (just a name) *)
+
+DiracBasis::"usage" =
+"DiracBasis[any] is a head which is wrapped around Dirac structures \
+(and the 1) as a result of the function DiracReduce. \
+Eventually you want to substitute DiracBasis by Identity (or \
+set: DiracBasis[1] = S; DiracBasis[DiracMatrix[mu]] = P; etc.).";
+(* :Summary: DiracBasis is just a auxiliary head for Dirac structures*)
 
 DiracGamma::"usage" =
 "DiracGamma[x, dim] is the way all Dirac \
@@ -123,6 +141,10 @@ FourVector::"usage" =
 A vector with space-time Dimension d is obtained by supplying the option
 Dimension->d."
 
+FreeIndex::"usage"=
+"FreeIndex is a datatype which is recognized by Contract.
+Possible use: DataType[mu, FreeIndex] = True.";
+
 FV::"usage"= "FV[p,mu] is a fourvector and is transformed into
 Pair[Momentum[p], LorentzIndex[mu]]
 by FeynCalcInternal.";
@@ -148,6 +170,11 @@ GaugeField::"usage" =
 GaugeXi::"usage"= "GaugeXi is a head for gauge parameters.";
 
 GluonField::"usage" = "GluonField is a name of a gauge field.";
+
+GrassmannParity::"usage" =  "GrassmannParity is a data type.
+E.g. DataType[F, GrassmannParity] = 1 declares F to be of
+bosonic type and DataType[F, GrassmannParity] = -1 of fermionic
+one.";
 
 GS::"usage"=
 "GS[p] is transformed into DiracSlash[p] by FeynCalcInternal.
@@ -248,6 +275,16 @@ PauliSigma[1], PauliSigma[2], PauliSigma[3] give the
 explicit Pauli matrices. PauliSigma[] yields
 {PauliSigma[1], PauliSigma[2], PauliSigma[3]}.";
 
+PlusDistribution::"usage"=
+"PlusDistribution[1/(1-x)] denotes the distribution (1/(1-x))_+.
+PlusDistribution[Log[1-x]/(1-x)] denotes the distribution
+(Log[1-x]/(1-x))_+.
+PlusDistribution[Log[x (1-x)]/(1-x)] simplifies to
+Log[x] /(1-x) + PlusDistribution[Log[1-x]/(1-x)].";
+(* :Summary:  a head for (1/(1-x))_+  and
+                         (Log[1-x]/(1-x))_+
+*)
+
 Polarization::"usage"=
 "Polarization[k] = Polarization[k, I] represents a
 polarization momentum with (incoming) momentum k.
@@ -267,15 +304,11 @@ The setting 0 denotes the unpolarized and 1 the polarized case.";
 
 PolarizationVector::"usage" = "PolarizationVector[p, mu] gives a polarization vector.";
 
-PlusDistribution::"usage"=
-"PlusDistribution[1/(1-x)] denotes the distribution (1/(1-x))_+.
-PlusDistribution[Log[1-x]/(1-x)] denotes the distribution
-(Log[1-x]/(1-x))_+.
-PlusDistribution[Log[x (1-x)]/(1-x)] simplifies to
-Log[x] /(1-x) + PlusDistribution[Log[1-x]/(1-x)].";
-(* :Summary:  a head for (1/(1-x))_+  and
-                         (Log[1-x]/(1-x))_+
-*)
+PositiveInteger::"usage" =  "PositiveInteger is a data type.
+E.g. DataType[OPEm, PositiveInteger] gives True.";
+
+PositiveNumber::"usage" =  "PositiveNumber is a data type.
+E.g. DataType[Epsilon, PositiveNumber] = True (by default). ";
 
 PropagatorDenominator::"usage" =
 "PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a
@@ -388,6 +421,9 @@ SUNTrace[SUNT[a].SUNT[b]] = Tf*SUNDelta[a, b].
 Tf is useful to keep around in order to
 identify contributions from internal quark loops.";
 
+Upper::"usage"= "Upper may be used inside LorentzIndex to indicate an
+contravariant LorentzIndex.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -401,7 +437,6 @@ MakeContext[
     MomentumCombine,
     MomentumExpand,
     OPEDelta,
-    PositiveNumber,
     SUNTrace
     ];
 
@@ -492,6 +527,12 @@ ChiralityProjector /:
 ChiralityProjector /:
    MakeBoxes[ChiralityProjector[-1], TraditionalForm] :=
     SubscriptBox["\[Omega]", "-"];
+
+ComplexIndex[ComplexIndex[x_]] := x;
+
+ComplexIndex /:
+   MakeBoxes[ComplexIndex[x_] ,TraditionalForm] :=
+   SuperscriptBox[Tbox[x], "*"];
 
 (*Added 18 April 2001, Frederik Orellana*)
 DeltaFunction[_?((NumericQ[#]===True&&(Positive[#]===True||Negative[#]===True))&)]:=0;
