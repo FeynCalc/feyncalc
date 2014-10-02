@@ -15,23 +15,15 @@ Begin["`Private`"];
 
 Options[Cases2] = {Heads -> False};
 
-Cases2[expr_, {f___}, opts___Rule] := Cases2 @@ Prepend[{f,opts}, expr];
-If[$VersionNumber >2.2,
-   Cases2[expr_, f_, opts___Rule] := Union[Cases[{expr}, HoldPattern[f[___]],
-                                           Infinity,opts]]
-   ,
-   Cases2[expr_, f_,opts___Rule] := Union[Cases[{expr}, HoldPattern[f[___]],
-                                          Infinity,opts]]
-  ];
-Cases2[expr_, f___, g_] := Union[Cases[{expr},
-                            Alternatives@@(#[___]&/@{f,g}),Infinity]
-                   ] /; Head[g] =!= Rule;
+Cases2[expr_, {f___}, opts:OptionsPattern[]] := Cases2 @@ Prepend[{f,opts}, expr];
 
-Cases2[expr_, f__, Heads->True] := Union[Cases[{expr},
-              Alternatives@@(#[___]&/@{f,g}),Infinity,Heads->True]];
+Cases2[expr_, f_, opts:OptionsPattern[]] := Union[Cases[{expr}, HoldPattern[f[___]],
+                                           Infinity,opts]];
 
-Cases2[expr_, f__, Heads->False] := Union[Cases[{expr},
-              Alternatives@@(#[___]&/@{f,g}),Infinity,Heads->False]];
+
+Cases2[expr_, f_, g__, opts:OptionsPattern[]] := Union[
+    Cases[{expr},
+              Alternatives@@(#[___]&/@{f,g}),Infinity, FilterRules[{opts}, Options[Cases]]]];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
