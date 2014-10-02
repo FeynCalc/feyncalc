@@ -52,7 +52,7 @@ fcstPaVeIntegrals = {
  (mm2^2*B0[0, mm1, mm2])/(4*(-1 + D)*pp) + (mm1*B0[pp, mm1, mm2])/(2*(-1 + D)) + (mm2*B0[pp, mm1, mm2])/(2*(-1 + D)) -
  (mm1^2*B0[pp, mm1, mm2])/(4*(-1 + D)*pp) + (mm1*mm2*B0[pp, mm1, mm2])/(2*(-1 + D)*pp) -
  (mm2^2*B0[pp, mm1, mm2])/(4*(-1 + D)*pp) - (pp*B0[pp, mm1, mm2])/(4*(-1 + D))"},
-{"fcstPaVeIntegrals-ID33","B00[pp, mm1, mm2, PaVeReduce -> False]"," B00[pp, mm1, mm2, PaVeReduce -> False]"},
+{"fcstPaVeIntegrals-ID33","B00[pp, mm1, mm2, BReduce -> False]","B00[pp, mm1, mm2, BReduce -> False]"},
 {"fcstPaVeIntegrals-ID34","B00[x, y, z, BReduce -> True]"," A0[z]/(2*(-1 + D)) + (y*B0[0, y, z])/(4*(-1 + D)) + (y^2*B0[0, y, z])/(4*(-1 + D)*x) - (z*B0[0, y, z])/(4*(-1 + D)) -
  (y*z*B0[0, y, z])/(2*(-1 + D)*x) + (z^2*B0[0, y, z])/(4*(-1 + D)*x) - (x*B0[x, y, z])/(4*(-1 + D)) +
  (y*B0[x, y, z])/(2*(-1 + D)) - (y^2*B0[x, y, z])/(4*(-1 + D)*x) + (z*B0[x, y, z])/(2*(-1 + D)) +
