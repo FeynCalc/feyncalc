@@ -751,6 +751,7 @@ Apply[DOT,
                 DiracSlash[x__], TraditionalForm
                ] := MakeBoxes@@{FCI[DiracSlash[x]], TraditionalForm};
 
+Eps[a__Symbol, ru___Rule] :=0 /; Signature[{a}]===0;
 
 Eps[a__Symbol, ru___Rule] := (Signature[{a}] (Eps @@ Sort[{a}])) /;
                              Signature[{a}] =!= 1;
