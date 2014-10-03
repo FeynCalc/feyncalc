@@ -1,7 +1,17 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: MomentumCombine *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: MomentumCombine													*)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  MomentumCombine												*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -9,39 +19,47 @@ BeginPackage["HighEnergyPhysics`FeynCalc`MomentumCombine`",{"HighEnergyPhysics`F
 
 MomentumCombine::"usage" =
 "MomentumCombine[expr] combines momenta and Pairs with the same
-Lorentz indices and momenta.";
+LorentzIndexentz indices and momenta.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
 
 MakeContext[ FeynCalcInternal];
-lor := lor = MakeContext["CoreObjects","LorentzIndex"];
-momentum := momentum = MakeContext["CoreObjects","Momentum"];
-pair   := pair = MakeContext["CoreObjects","Pair"];
+LorentzIndex :=
+    LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Momentum :=
+    Momentum = MakeContext["CoreObjects","Momentum"];
+Pair :=
+    Pair = MakeContext["CoreObjects","Pair"];
 
-(*momentumExpanddef*)
 
 Options[MomentumCombine] = {LeafCount -> 1};
 
-MomentumCombine[expr_, opts___?OptionQ] :=
-If[LeafCount[expr] < (LeafCount /. {opts} /. Options[MomentumCombine]),
-   expr,
-If[FreeQ[expr, momentum], FeynCalcInternal[expr], expr] //. {
- (n3_. momentum[x_,di___] + n4_. momentum[y_,di___]
- ):>
- (momentum[ Expand[n3 x + n4 y],di]/;(NumberQ[n3]&&NumberQ[n4])),
- (n3_. pair[a_lor, momentum[x_,di___]] + n4_. pair[a_lor, momentum[y_,di___]]
- ):>
- (pair[a, momentum[ Expand[n3 x + n4 y],di]
-      ]/;(NumberQ[n3] && NumberQ[n4])),
- (n3_. pair[a_momentum, momentum[x_,di___]] + n4_. pair[a_momentum, momentum[y_,di___]]
- ):>
- (pair[a, momentum[ Expand[n3 x + n4 y],di]
-      ]/;(NumberQ[n3] && NumberQ[n4]))
-                             }
-];
-End[]; EndPackage[];
+MomentumCombine[expr_, OptionsPattern[]] :=
+    If[ LeafCount[expr] < OptionValue[LeafCount],
+        expr,
+        If[ FreeQ[expr, Momentum],
+            FeynCalcInternal[expr],
+            expr
+        ] //. {
+
+        (n3_. Momentum[x_,di___] + n4_. Momentum[y_,di___]):>
+        (Momentum[ Expand[n3 x + n4 y],di]/;(NumberQ[n3] && NumberQ[n4])),
+
+        (n3_. Pair[a_LorentzIndex, Momentum[x_,di___]] + n4_. Pair[a_LorentzIndex, Momentum[y_,di___]]):>
+        (Pair[a, Momentum[ Expand[n3 x + n4 y],di]
+        ]/;(NumberQ[n3] && NumberQ[n4])),
+
+        (n3_. Pair[a_Momentum, Momentum[x_,di___]] + n4_. Pair[a_Momentum, Momentum[y_,di___]]):>
+        (Pair[a, Momentum[ Expand[n3 x + n4 y],di]
+        ]/;(NumberQ[n3] && NumberQ[n4]))
+        }
+    ];
+End[];
+EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-If[$VeryVerbose > 0,WriteString["stdout", "MomentumCombine | \n "]];
+If[ $VeryVerbose > 0,
+    WriteString["stdout", "MomentumCombine | \n "]
+];
 Null
