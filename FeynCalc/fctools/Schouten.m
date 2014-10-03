@@ -8,13 +8,13 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Option and Function *) 
+(* :Summary: Option and Function *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctools`Schouten`",{"HighEnergyPhysics`FeynCalc`"}];
 
-Schouten::"usage" = 
+Schouten::"usage" =
 "Schouten[expr] applies the Schouten identity for four-vectors on at most
 42 terms in a sum. If Schouten should operate on larger
 expression you can give a second argument, e.g.:
@@ -29,7 +29,7 @@ function Schouten will be applied .";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Pair = MakeContext["CoreObjects","Pair"];
 
 collect2                 = MakeContext["Collect2"];
@@ -46,7 +46,7 @@ partithead               = MakeContext["PartitHead"];
 Schouten[y_, 0] := y;
 Schouten[y_, oparg_:42] := FixedPoint[ schouten[#, oparg]&, fci[y], 14];
 
-liget[a_. eps[x1_[y1_], x2_[y2_], x3_[y3_], x4_[y4_]] * 
+liget[a_. eps[x1_[y1_], x2_[y2_], x3_[y3_], x4_[y4_]] *
       pair[x5_[y5_], x6_[y6_]]
      ] := {x1[y1],x2[y2],x3[y3],x4[y4],x5[y5],x6[y6]};
 
@@ -56,18 +56,18 @@ schouten[x_,opar_:42]:=memset[schouten[x, opar],
   Block[{i,nx,temp0,temp,lind,ltemp,ntemp,dummIlabel = False,DUMMI,
    schou,sor, all,result,epc, epsnterms,numberofli, optarg = opar,
     temp1, nxf = 1},
-   epc[a_, b_] := If[ Length[Position[partithead[a, eps][[2]], 
+   epc[a_, b_] := If[ Length[Position[partithead[a, eps][[2]],
                                       lorentzindex]
-                            ] < 
-                      Length[Position[partithead[b, eps][[2]], 
+                            ] <
+                      Length[Position[partithead[b, eps][[2]],
                                       lorentzindex]],
                             True, False, False
                     ];
    epsnterms[0] = 0;
-   epsnterms[a_] := 
+   epsnterms[a_] :=
          Block[{tem}, tem = collect2[a, eps, factoring ->False];
                       If[Head[tem]===Plus, Length[tem], 1]
-              ];  
+              ];
    nx = epsevaluate[expandscalarproduct[x]//Expand]//Expand;
 (* Split the sum into two parts *)
    result = nx;
@@ -81,17 +81,17 @@ schouten[x_,opar_:42]:=memset[schouten[x, opar],
           temp0 = partithead[all[[2]], pair];
          ];
        temp = temp0[[2]];
-       If[((Head[temp]===Plus) && Length[temp] > 1 && 
+       If[((Head[temp]===Plus) && Length[temp] > 1 &&
            If[IntegerQ[optarg], Length[temp] < optarg, False]
           ) || dummIlabel === True,
           ltemp = Length[temp];
-          If[dummIlabel =!= True,  
+          If[dummIlabel =!= True,
              temp1 = temp[[1]],
              temp1 = temp; ltemp = 7
             ];
           numberofli = Length[Position[temp1, lorentzindex]];
           i = 0;
-          temp = 
+          temp =
            If[dummIlabel === True,
               Catch[
               lind = liget[ temp ];
@@ -119,16 +119,16 @@ schouten[x_,opar_:42]:=memset[schouten[x, opar],
                      lind = liget[ temp[[i]] ];
                      If[Length[lind]===6,
 (* ----------------------------------------------------------------- *)
-(* create a list of 5 possible arrangements of terms of 
-   Schouten ident. 
+(* create a list of 5 possible arrangements of terms of
+   Schouten ident.
 *)
 (* ----------------------------------------------------------------- *)
-                        schou = lisch /@ Map[ 
+                        schou = lisch /@ Map[
                                 Append[#, Last[lind]]&,
                                 NestList[RotateLeft,Take[lind,5],4]
                                             ];
                         sor = Sort[ schou, epc ]//Reverse;
-                        Do[If[FreeQ[temp, sor[[1]]], 
+                        Do[If[FreeQ[temp, sor[[1]]],
                               sor = RotateLeft[sor]
                              ], {6}];
   print3["sor = ", sor];
@@ -137,7 +137,7 @@ schouten[x_,opar_:42]:=memset[schouten[x, opar],
                         ntemp = Expand[epsevaluate[temp/.sor[[1]]->
                                         (-Apply[Plus, Drop[sor,1]])
                                              ] ];
-                                 If[(epsnterms[ntemp] < ltemp) || 
+                                 If[(epsnterms[ntemp] < ltemp) ||
 (* or all LorentzIndices are inside all eps's *)
  (Union[Length[ Position[#, lorentzindex] ]& /@
         Select[ Variables[ntemp], Head[#]===eps& ]

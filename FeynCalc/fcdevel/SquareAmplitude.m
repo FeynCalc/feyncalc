@@ -110,7 +110,7 @@ print3[x__] := Print[x] /; $VeryVerbose > 2;
 
 FRH = FixedPoint[ReleaseHold,# ]&;
 
- duM=Unique[System`C]; 
+ duM=Unique[System`C];
 gamcount[x_] := Length[Position[x, DiracGamma]];
 
 specsir[a_] := Block[{tem, nosp},
@@ -121,7 +121,7 @@ specsir[a_] := Block[{tem, nosp},
                                         {duM[1], Momentum[_], duM[2]}
                                                   ]//DiracSimplify]
                         ];
-                      If[Length[Position[tem, Spinor]] > 2, 
+                      If[Length[Position[tem, Spinor]] > 2,
                          print2["entering specsir2 with ",tem//FeynCalcForm];
                          tem = specsir2[tem];
                          print2["exiting specsir2 with", tem//FeynCalcForm];
@@ -130,7 +130,7 @@ specsir[a_] := Block[{tem, nosp},
                     ];
 ChisholmSave[x_]    := memset[ChisholmSave[x], Chisholm[x]];
 EpsChisholmSave[x_] := memset[EpsChisholmSave[x], EpsChisholm[x]];
-specsir2[x_] := specsir2[x] = 
+specsir2[x_] := specsir2[x] =
   Block[{ste, ste1, ste2,ste1r,ste2r,duMy},
         ste = x /. $MU -> duMy;
    (* there are two possibilities ... *)
@@ -141,9 +141,9 @@ specsir2[x_] := specsir2[x] =
       DiracOrder[DiracSimplify[Contract[DOT[Spinor[pe1] , g1 , Spinor[pe2]] *
            EpsChisholmSave[ DOT[Spinor[pe3] , g2 , Spinor[pe4]] *
                                  ChisholmSave[DOT[Spinor[pe5] , g3 , Spinor[pe6]]]
-                          ] ] ], {$MU[1], Momentum[_], $MU[2]} ] 
+                          ] ] ], {$MU[1], Momentum[_], $MU[2]} ]
            ]] /. $MU -> duMy
-    )/; 
+    )/;
       (Length[{g1}] < 3) && (Length[{g2}] < 3) && (Length[{g3}] > 2)
            };
 
@@ -155,26 +155,26 @@ ste2r = {DOT[Spinor[pe1__] , g1__ , Spinor[pe2__]] *
            Contract[DOT[Spinor[pe3] , g2 , Spinor[pe4]] *
                     EpsChisholm[ DOT[Spinor[pe1] , g1 , Spinor[pe2]] *
                                  Chisholm[DOT[Spinor[pe5] , g3 , Spinor[pe6]]]
-                        ] ] ],{$MU[1], Momentum[_], $MU[2]} ] 
+                        ] ] ],{$MU[1], Momentum[_], $MU[2]} ]
             ]] /. $MU -> duMy
-   )/; 
+   )/;
       (Length[{g1}] < 3) && (Length[{g2}] < 3) && (Length[{g3}] > 2)
         };
 ste1 = ste/.ste1r;
 If[(!FreeQ[ste1, DOT[DiracMatrix[duMy[_]],DiracGamma[Momentum[_]],
                 DiracMatrix[duMy[_]]]
-         ]) && (ste1=!= ste), 
+         ]) && (ste1=!= ste),
    ste1 = ste1 /. ste2r /. ste1r
   ];
-If[(ste1 =!= 0) && 
+If[(ste1 =!= 0) &&
    (!FreeQ[ste1, DOT[DiracMatrix[duMy[_]],DiracGamma[Momentum[_]],
                         DiracMatrix[duMy[_]]]
-  ])  , 
+  ])  ,
   ste2 = ste /. ste2r;
 
 If[(!FreeQ[ste2, DOT[DiracMatrix[duMy[_]],DiracGamma[Momentum[_]],
                 DiracMatrix[duMy[_]]]
-         ]) && (ste2=!= ste), 
+         ]) && (ste2=!= ste),
     ste2 = ste2 /. ste1r /. ste2r
   ],
  ste2 = ste1
@@ -184,7 +184,7 @@ If[ste1 =!= 0,
   ste2 = DiracSimplify[DiracOrder[DiracSimplify[ste2]]]//Expand;
   If[!FreeQ[ste1, DOT[DiracMatrix[duMy[_]],DiracGamma[Momentum[_]],
                 DiracMatrix[duMy[_]]]],
-     ste1 = First[Sort[Select[{ste1, ste2}, FreeQ[#,RuleDelayed]&], 
+     ste1 = First[Sort[Select[{ste1, ste2}, FreeQ[#,RuleDelayed]&],
              (LeafCount[{##}[[1]]] < LeafCount[{##}[[2]]] )& ] ]
     ];
   ];
@@ -208,7 +208,7 @@ susm[xx_ /;( (Head[xx] =!= Plus) && (!FreeQ[xx, SUNIndex]))
     susa[Select[xx, !FreeQ[#1, SUNIndex] & ]] (*, SUNIndex*)];
 
 Options[SquareAmplitude] = {
-                  Dimension -> 4, 
+                  Dimension -> 4,
                EnergyMomentumConservation -> {},
                EpsDiscard -> False,
                ExtraFactor -> 1,
@@ -227,7 +227,7 @@ Options[SquareAmplitude] = {
                             };
 
 (* the FeynArts convention is to  put the Process -> {}  rule
-   as the last argument in FeynAmpList 
+   as the last argument in FeynAmpList
 *)
 SquareAmplitude[ FeynAmpList[he___,
                  process_Rule][amps__],
@@ -252,15 +252,15 @@ extrafact = fci[extrafact];
 {es, te} = {mand[[1]], mand[[2]]};
 If[Length[mand === 3], uu = mand[[3]]];
 
-amp = amp /. SUNDelta -> SUNDeltaContract /. 
+amp = amp /. SUNDelta -> SUNDeltaContract /.
            SUNDeltaContract -> SUNDelta;
 
 sel = SelectedGraphs /. {opts} /. Options[SquareAmplitude];
-If[sel === All, sli = amp, For[jj = 1, jj <= Length[amp], jj++, 
-          If[MemberQ[sel, jj], AppendTo[sli, amp[[jj]]]] ] 
+If[sel === All, sli = amp, For[jj = 1, jj <= Length[amp], jj++,
+          If[MemberQ[sel, jj], AppendTo[sli, amp[[jj]]]] ]
   ];
 
-plsI[xx__] := 
+plsI[xx__] :=
   Isolate[Plus[xx], {DiracGamma, Spinor, LorentzIndex, SUNIndex},
                      IsolateNames -> isolhead, IsolateSplit->555I];
 
@@ -269,11 +269,11 @@ plsI[xx__] :=
 If[Length[mand===3], uu = mand[[3]]];
 proc  = Last[process];
 proctype = Map[Length, proc];
-Which[ 
+Which[
        proctype === (2 -> 1),
        proc = proc[[1]] -> Join[proc[[2]], {{0,0,0}, {0,0,0}, {0,0,0}}],
        proctype === (1 -> 2),
-       proc = Join[proc[[1]], {{0,0,0}}] -> 
+       proc = Join[proc[[1]], {{0,0,0}}] ->
               Join[proc[[2]], {{0,0,0}, {0,0,0}, {0,0,0}}],
        proctype === (2 -> 2),
        proc = proc[[1]] -> Join[proc[[2]], {{0,0,0}, {0,0,0}}],
@@ -287,13 +287,13 @@ Which[
     k2m4 = {proc[[2, 2, 2]], proc[[2, 2, 3]]^2};
     k3m5 = {proc[[2, 3, 2]], proc[[2, 3, 3]]^2};
     k4m6 = {proc[[2, 4, 2]], proc[[2, 4, 3]]^2};
- fields = { proc[[1,1,1]], proc[[1,2,1]], 
+ fields = { proc[[1,1,1]], proc[[1,2,1]],
             proc[[2,1,1]], proc[[2,2,1]], proc[[2,3,1]], proc[[2,4,1]]
           };
 
 (*
 (* this has to be thought over again ... *)
-extrafact = extrafact ( NF^0 (*( (Length[Position[fields, tmp`F[I]]] + 
+extrafact = extrafact ( NF^0 (*( (Length[Position[fields, tmp`F[I]]] +
                              Length[Position[fields, tmp`F[-I]]])/2
                              )*)
                       );
@@ -301,7 +301,7 @@ extrafact = extrafact ( NF^0 (*( (Length[Position[fields, tmp`F[I]]] +
 extrafact = ExpandScalarProduct[extrafact]//Expand;
 
  {p1, p2, k1, k2, k3, k4} = #[[1]]& /@ {p1m1, p2m2, k1m3, k2m4, k3m5, k4m6};
- {m12, m22, m32, m42, m52, m62} = #[[2]]& /@ 
+ {m12, m22, m32, m42, m52, m62} = #[[2]]& /@
                                        {p1m1, p2m2, k1m3, k2m4, k3m5, k4m6};
 If[MemberQ[{1 -> 2, 2 -> 1, 2 -> 2}, proctype],
     enmomsubst = k1 -> p1+p2-k2-k3-k4;
@@ -323,7 +323,7 @@ scalP[a_, b_, c_] := If[dim =!= 4,
  Apply[ Set, {ScalarProduct[a,b, Dimension -> 4], c//Expand} ];
  Apply[ Set, {pair2[Momentum[a, dim], Momentum[b, dim]], c//Expand} ];
  Apply[ Set, {pair2[Momentum[a ], Momentum[b ]], c//Expand} ]
- , 
+ ,
   Apply[ Set, {ScalarProduct[a,b, Dimension -> 4], c//Expand} ];
   Apply[ Set, {pair2[Momentum[a], Momentum[b]], c//Expand}];
                        ];
@@ -392,7 +392,7 @@ If[(k3 =!= 0) && (k4 =!= 0),
 (* *********************************** *)
 
 (* sum the amplitudes *)
-amp = Sum[ propdenexp[Last[sli[[i]]], 
+amp = Sum[ propdenexp[Last[sli[[i]]],
                   {p1,p2,-k1,-k2,-k3,-k4}], {i,1, Length[sli]}
          ] /. inisubst;
 amp0 = amp;
@@ -406,7 +406,7 @@ print2["amp = ",amp];
 print1["extrafact = ",extrafact];
 
 If[!FreeQ[amp, DiracGamma],
-   amp = DiracSimplify[amp /. enmomsubst /. 
+   amp = DiracSimplify[amp /. enmomsubst /.
                        Pair -> pPpPpP, Expanding -> False
                       ] /. enmomback /. pPpPpP->Pair,
      amp = ExpandScalarProduct[Contract[amp/.enmomsubst]] /. enmomback
@@ -425,7 +425,7 @@ gluON[_SUNIndex]=gL;
 
 If[$VeryVerbose > 0, Print["Length of amp = " , Length[amp]]];
 (* a list of rules for substituting indices for the polarization momenta *)
-momtolor = 
+momtolor =
  {Momentum[Polarization[p1, _, glui___SUNIndex], ___] :>
             (LorentzIndex[mU[1, gluON[glui]],dim] sund[glui, sU[1]]),
   Momentum[Polarization[p2, _, glui___SUNIndex], ___] :>
@@ -448,8 +448,8 @@ dirdel[n_ b_LorentzIndex, d___] := dirdel[n b, d] = n DiracGamma[b, d];
 If[!FreeQ[amp, SUNIndex],
    (* collecting w.r.t. to SUNIndex *)
    print1["collecting w.r.t. SUNIndex"];
-   If[ $FeynContract === True, 
-       pair2PAIR[a_, b_] := 
+   If[ $FeynContract === True,
+       pair2PAIR[a_, b_] :=
             If[FreeQ[{a,b}, SUNIndex], tmp`PAIR[a,b], Pair[a, b]];
        print1["substing PAIR"];
        amp = amp /. Pair -> pair2PAIR;
@@ -526,7 +526,7 @@ If[Head[amp44] === Plus,
    amp = namp,
    amp = Contract[amp]//ExpandScalarProduct;
   ];
-       
+
 amp45 = amp;
 print2["Length of amp45 = ",Length[amp45]];
 
@@ -552,7 +552,7 @@ While[ (ll = Length[temp]) > 0,
      ];
 new];
 
-If[ 
+If[
       $FeynContract === True,
        print1["substing PAIR( 3 )"];
        amp = amp /. Pair -> pair2PAIR;
@@ -575,9 +575,9 @@ pli2 = ExpandScalarProduct[ScalarProduct[#, #]]& /@ pli;
 
 prod = extrafact;
 exm = {0,0,0,0,0,0};
-If[exmom =!= Automatic, 
+If[exmom =!= Automatic,
    If[ Head[exmom] === List, exm = exmom];
-   If[(Head[exmom] === Symbol) || (exmom === 0), 
+   If[(Head[exmom] === Symbol) || (exmom === 0),
       exm = {exmom, exmom,exmom,exmom,exmom,exmom}];
   ];
 (*
@@ -613,7 +613,7 @@ For[ij = 1, ij < 7, ij++,
                                    pli[[ij]], exm[[ij]], Dimension -> dim];
        ];
    (* check for massive Vectorbosons *)
-    If[MatchQ[fields[[ij]], 
+    If[MatchQ[fields[[ij]],
               tmp`V[iii_ /; iii=!=1]] && !FreeQ[amp, mU[ij]],
        prod = prod PolarizationSum[mU[ij], ComplexIndex[mU[ij]],
                          pli[[ij]], Dimension -> dim]
@@ -621,7 +621,7 @@ For[ij = 1, ij < 7, ij++,
    (* check for ghosts *)
     If[MatchQ[fields[[ij]], tmp`U[_]],
 Print["GHOSTCHECK"];
-       prod = I prod 
+       prod = I prod
       ];
   ];
    ];
@@ -661,7 +661,7 @@ print2["denominator = ",den1//FRH];
 print3["LeafCount = ",LeafCount[amp1]];
 
 colorfactor = susa[colorpart ComplexConjugate[colorpart]];
-If[colorfactor =!= 1, 
+If[colorfactor =!= 1,
   print1["the global colorfactor of the squared amplitudes is ",colorfactor];
   ];
 
@@ -674,7 +674,7 @@ nam = nam/numfaN;
 den1 = den1/numfaN;
 
 (*
-If[FreeQ2[nam, {SUNIndex, DiracGamma}], 
+If[FreeQ2[nam, {SUNIndex, DiracGamma}],
    nam = pluli[nam](*,
    nam = Map[#/.Plus->pluli&, nam]; *)
   ];
@@ -682,17 +682,17 @@ If[FreeQ2[nam, {SUNIndex, DiracGamma}],
 
 (*
 tmp`$ZWISCHEN = True;
-If[tmp`$ZWISCHEN === True, nam >> "nam.s"; 
-den1 >> "den1.s"; prod >>"prod.s" ]; 
+If[tmp`$ZWISCHEN === True, nam >> "nam.s";
+den1 >> "den1.s"; prod >>"prod.s" ];
 *)
 prod = Collect2[prod, LorentzIndex];
 
-amp = SquareAmplitude[nam, ExtraFactor -> (prod colorfactor), 
+amp = SquareAmplitude[nam, ExtraFactor -> (prod colorfactor),
                             IsolateNames -> isolhead,
                             Mandelstam -> {}, Factoring -> False,
                             IntermediateSubstitutions -> enmomsubst,
                             FinalSubstitutions -> enmomback,
-                            EnergyMomentumConservation -> 
+                            EnergyMomentumConservation ->
                             {-p1,-p2,k1,k2,k3,k4 }
                      ];
 (* ++++++++++++++++++++++++++++++++++ *)
@@ -705,7 +705,7 @@ If[$CheckCollect === True,
   ];
 
 amp = amp / den1  ComplexConjugate[1/den1];
-If[collecting === True, 
+If[collecting === True,
    amp = Collect2[ amp, isolhead ]
   ];
 If[(proctype === (2->1) ) || (proctype === (1->2) ),
@@ -713,7 +713,7 @@ If[(proctype === (2->1) ) || (proctype === (1->2) ),
 If[factoring =!= True,
    pluisol[xx__] := Isolate[Plus[xx],
                      IsolateNames -> isolhead, IsolateSplit->888];
-   amp = Isolate[amp /. Plus -> pluisol, IsolateNames -> isolhead, 
+   amp = Isolate[amp /. Plus -> pluisol, IsolateNames -> isolhead,
                  IsolateSplit -> 888],
 
    amp = amp /. finsubst;
@@ -729,25 +729,25 @@ amp];
 
 (* XFX *)
 SquareAmplitude[ exp_ /; FreeQ[exp, FeynAmp], ops___Rule ] := Block[
-{ts,sps,amp2,cts,plu3,neamp,intermed,amp, 
+{ts,sps,amp2,cts,plu3,neamp,intermed,amp,
  amps1, amps2,pamp,lis, saveminamp, file,finsubst2, isolhead2,
  nwres, mand2, extrafact2,factoring2,epsAway,myfile},
 
-ts = fci[exp] /. SUNDelta -> SUNDeltaContract /.  
+ts = fci[exp] /. SUNDelta -> SUNDeltaContract /.
                     SUNDeltaContract ->SUNDelta;
 enmo = EnergyMomentumConservation /. {ops} /. Options[SquareAmplitude];
-intermed = fci[IntermediateSubstitutions /. {ops} /. 
+intermed = fci[IntermediateSubstitutions /. {ops} /.
                 Options[SquareAmplitude]];
 isolhead2 = IsolateNames /. {ops} /. Options[SquareAmplitude];
 saveminamp = WriteOut    /. {ops} /. Options[SquareAmplitude];
 extrafact2 = fci[ExtraFactor /. {ops} /. Options[SquareAmplitude]];
 factoring2 = Factoring   /. {ops} /. Options[SquareAmplitude];
-finsubst2  = fci[FinalSubstitutions  /. {ops} /. 
+finsubst2  = fci[FinalSubstitutions  /. {ops} /.
                 Options[SquareAmplitude]];
 epsAway    = EpsDiscard /. {ops} /. Options[SquareAmplitude];
 
 (*Mac fix, 18/9-2000, F.Orellana. Ditto for FileType's below*)
-If[StringQ[saveminamp], 
+If[StringQ[saveminamp],
 myfile=FileType[saveminamp];
 Which[myfile === File,
    file = {saveminamp};,
@@ -755,11 +755,11 @@ Which[myfile === File,
    file = {};,
    True,
    Print["There was a problem:\n",saveminamp," is inaccessible"];Return[]
-  ], 
+  ],
 file = {}];
 (*If[StringQ[saveminamp], file = FileNames @@ {saveminamp}, file = {}];*)
 
-plu3[y__] := Isolate[Plus[y], 
+plu3[y__] := Isolate[Plus[y],
               {DiracGamma, LorentzIndex,Spinor,Eps,SUNIndex},
                   IsolateNames -> isolhead2,
                      IsolateSplit -> 444I];
@@ -772,7 +772,7 @@ nuLL1 = Unique[cCU]; nuLL2 = Unique[cCU];
 etl[y__] := Block[{ee},
               ee = PartitHead[Plus[y], Eps];
               (Collect2[ee[[2]]+nuLL1 + nuLL2, Eps,Factoring->False
-                       ] /. nuLL1 -> 0 /. nuLL2 -> 0(*/.Plus->plu2*)) + 
+                       ] /. nuLL1 -> 0 /. nuLL2 -> 0(*/.Plus->plu2*)) +
 (ee[[1]]/.Plus->plu3)
 (*
 (Factor2[ee[[1]], FactorTime->242]/.Plus->plu3)
@@ -788,8 +788,8 @@ If[file =!= {},
    ts = tmp`$TSAMP;
 lis = Length[ts];
 nuLlLL = Unique[System`C];
-(* 
- nuLlLL = Unique[cCUn]; 
+(*
+ nuLlLL = Unique[cCUn];
  *)
 (*
 print2["colling2insquareamplitudeagain"];
@@ -815,22 +815,22 @@ ots2 = ts;
 
 (* ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss *)
 spmin[xxxx_, enmomcon_List] := Block[{xx=xxxx,
-enms = (Map[Momentum, enmomcon]//ExpandScalarProduct), smmin,sol, sba, 
+enms = (Map[Momentum, enmomcon]//ExpandScalarProduct), smmin,sol, sba,
          check, res=0, simP},
 If[Length[enmomcon] === 0, res = xxxx,
-               sol[pe_,___] := Solve[(Plus@@enms)==0, 
+               sol[pe_,___] := Solve[(Plus@@enms)==0,
                         PowerExpand[Sqrt[pe^2]]][[1,1]];
                sba[pe_,___] := {Reverse[sol[pe]], Map[-#&,Reverse[sol[pe]]]};
               check[pe_, __, a_List]:= !FreeQ[a, Last[sol[pe][[2]]]/
                                         NumericalFactor[Last[sol[pe][[2]]]]];
-smmin[Spinor[pe1__], a___, Spinor[pe2__]] := 
- smmin[Spinor[pe1] . a . Spinor[pe2]] = 
+smmin[Spinor[pe1__], a___, Spinor[pe2__]] :=
+ smmin[Spinor[pe1] . a . Spinor[pe2]] =
  If[FreeQ[{a}, Momentum],
     Spinor[pe1] . a . Spinor[pe2],
-  If[ check[pe1, {a}], 
+  If[ check[pe1, {a}],
       DiracSimplify[(Spinor[pe1]/.sol[pe1]) . a . Spinor[pe2]] /. sba[pe1],
       If[check[pe2, {a}],
-         DiracSimplify[Spinor[pe1] . a . (Spinor[pe2]/.sol[pe2])]/.sba[pe2], 
+         DiracSimplify[Spinor[pe1] . a . (Spinor[pe2]/.sol[pe2])]/.sba[pe2],
          Spinor[pe1] . a . Spinor[pe2]
         ],
       Spinor[pe1] . a . Spinor[pe2]
@@ -925,7 +925,7 @@ If[(epsAway===True) && ((Length[Position[calc, DiracGamma[5]]] +
                          Length[Position[calc, DiracGamma[7]]]
                        )) === 1 ,
    calc = calc /. DOT -> dOOt;
-   calc = calc /. x:dOOt[DiracGamma[__]..] :> 
+   calc = calc /. x:dOOt[DiracGamma[__]..] :>
                    (DOT[x] /. DiracGamma[7] -> (1/2) /.
                               DiracGamma[6] -> (1/2) /.
                               DiracGamma[5] -> 0
@@ -954,7 +954,7 @@ If[Head[ts] === Plus,
   ];
 samp = samp /. pluIS2 -> Plus;
 (* WWW *)
-   
+
 If[Head[samp] === Times,
    sampfa = Select[samp, FreeQ[#, LorentzIndex]&];
    print2["sampfa = ",sampfa];
@@ -995,15 +995,15 @@ If[$VeryVerbose >0, Print["time needed for polarization sums = ",
 print1["    collecting now "];
 
 ];
-   
-print2["after expanding the length of the amplitude is ", 
+
+print2["after expanding the length of the amplitude is ",
        Length[neamp + neuladsg]-1];
 
 If[FreeQ[neamp, DiracTrace], amps2 = neamp,
 (*
-If[Head[neamp] === Times,  
+If[Head[neamp] === Times,
    pamp  = Select[neamp, !FreeQ2[#, {DiracGamma,Complex}]&];
-   amps2 = neamp / pamp,   
+   amps2 = neamp / pamp,
     pamp = neamp; amps2 = 1
   ];
 *)
@@ -1016,11 +1016,11 @@ lastsimp[yyy_] := Block[{rel, mul = 1, yy = yyy},
                    If[Head[yy] === Times,
                       mul = Select[yy, FreeQ2[#,{Eps, LorentzIndex}]&];
                       yy = yy/mul
-                     ];            
-                       rel =  Contract[yy/.intermed, 
+                     ];
+                       rel =  Contract[yy/.intermed,
                                    EpsContract -> True] ;
                        If[!FreeQ[rel,Pair],
-                          rel = rel /. Momentum  -> mom4; 
+                          rel = rel /. Momentum  -> mom4;
 tmp`REL=rel;
                           rel = ExpandScalarProduct[rel];
                          ];
@@ -1030,7 +1030,7 @@ print2["afterfactor3"];
                        If[epsAway===True, rel = rel /. Eps[__]->0];
                        If[rel ===0, print2["TRS00000000"],
                        rel = rel mul;
-                       If[FreeQ[rel, Eps], 
+                       If[FreeQ[rel, Eps],
                           rel = rel/.Plus->plu3,
                           rel = rel /. Plus-> etl
                          ];
@@ -1046,11 +1046,11 @@ If[!FreeQ[ neamp, DiracGamma],
    If[Head[neamp]=!=Plus,
       nwres = { SUNSimplify[neamp/.DiracTrace->TRS]},
       nwres = {};
-      For[ij = 1, ij <= Length[neamp], ij++, print2["ij = ",ij, 
-                  " out of ", Length[neamp](*, 
+      For[ij = 1, ij <= Length[neamp], ij++, print2["ij = ",ij,
+                  " out of ", Length[neamp](*,
                   "|| length of nwres = ",Length[nwres]*)];
           AppendTo[nwres, (ww=lastsimp[neamp[[ij]] /. DiracTrace -> TRS])];
-         ], 
+         ],
       nwres = {SUNSimplify[neamp/.DiracTrace->TRS]}
      ];
   ];
@@ -1060,7 +1060,7 @@ amps2 = (Plus@@nwres);
 
 (*tmp`AMPS2=amps2;*)
 
-If[factoring2 === True,  
+If[factoring2 === True,
    amps2 = Factor2[ExpandScalarProduct[
               (amps2//FRH) /. intermed] /. Momentum -> mom4],
    amps2 = Expand[ExpandScalarProduct[
@@ -1080,7 +1080,7 @@ propdenex[a_, m_] := propdenex[a, m] = 1/Factor2[
 
 HoldPattern[propdp[su_][a_, m_]] := propdenex[a,m] /; Length[su] <= 2;
 
-propdp[su_][a_, m_] := 
+propdp[su_][a_, m_] :=
  Block[{na = ExpandScalarProduct[
         If[FreeQ[a,Momentum],Momentum[a],a]], i, vn, tte = {na}},
         vn = Variables[na];
@@ -1096,7 +1096,7 @@ fdpsave[x__] := fdpsave2 @@ ({x}/.PropagatorDenominator->pdsave);
 propdenexp[x_ /;FreeQ[x,PropagatorDenominator],___]:=x;
 propdenexp[x_] := PropagatorDenominatorExplicit[x];
 propdenexp[x_, {}] := propdenexp[x];
-propdenexp[x_, {en__}] := x /. 
+propdenexp[x_, {en__}] := x /.
 FeynAmpDenominator -> fdpsave /.
 PropagatorDenominator -> propdp[Plus@@ExpandScalarProduct[Momentum/@{en}]
                                ] /. pdsave -> PropagatorDenominator/.

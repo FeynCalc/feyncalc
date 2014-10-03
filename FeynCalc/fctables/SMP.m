@@ -12,18 +12,18 @@
 
 BeginPackage["HighEnergyPhysics`fctables`SMP`",{"HighEnergyPhysics`FeynCalc`"}];
 
-SMP::"usage"= "SMP[par] substitutes a symbol for the 
-Standard Model parameter par. 
+SMP::"usage"= "SMP[par] substitutes a symbol for the
+Standard Model parameter par.
 SMP[] gives the list of substitutions.
-par should be a string; e.g., MP[\"SW\"] gives 
+par should be a string; e.g., MP[\"SW\"] gives
 sw (in the Global` context).";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
-SMP[] := SMP[] = 
+
+SMP[] := SMP[] =
 {"EL" :> Global`e,
  "CW" :> Global`cw,
  "ME" :> Global`me,

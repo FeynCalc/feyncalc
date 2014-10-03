@@ -18,7 +18,7 @@ FeynRule::"usage"=
 "FeynRule[lag, {fields}] gives the Feynman rule corresponding
 to the field configuration fields of the lagrangian lag.";
 
-InitialFunction::"usage"= 
+InitialFunction::"usage"=
 "InitialFunction is an option of FeynRule the setting of which is applied to \
 the first argument of FeynRule before anything else";
 
@@ -85,7 +85,7 @@ SUNT         = MakeContext["CoreObjects","SUNT"];
 sunftotraces := sunftotraces = MakeContext["Explicit"];
 sunsimplify  := sunsimplify  = MakeContext["SUNSimplify"];
 SymbolicSum2 := SymbolicSum2 = MakeContext["SymbolicSum2"];
-UnDeclareNonCommutative := UnDeclareNonCommutative = 
+UnDeclareNonCommutative := UnDeclareNonCommutative =
   MakeContext["UnDeclareNonCommutative"];
 ZeroMomentumInsertion = MakeContext["CoreOptions","ZeroMomentumInsertion"];
 ExplicitSUNIndex     = MakeContext["CoreObjects","ExplicitSUNIndex"];
@@ -102,9 +102,9 @@ InitialFunction could e.g. be set to PhiToFC *)
 (*Added ExplicitSUNIndex. F.Orellana, 16/9-2002*)
 
   pluc[xx__] := If[!FreeQ[{xx}, SUNIndex],
-    Map[(#/.Plus->((Factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&, 
+    Map[(#/.Plus->((Factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&,
         Factor1 /@ Collect2[Plus[xx], SUNIndex|ExplicitSUNIndex, Factoring -> False]],
-         Map[Factor1, 
+         Map[Factor1,
            Collect2[Plus[xx], {Pair[lorind[_], lorind[_]] },
                     Factoring->False] ]
                   ];
@@ -115,10 +115,10 @@ frex[nl_] := frex[nl] = Block[
   sdum = SUNIndex[ToExpression[StringJoin @@         (
                   ToString /@ {Unique[System`D], "k"})]
                  ];
-  flag = Select[Expand2[Select[nla, FreeQ[#, DOT]&], sunf] + null1 + null2, 
+  flag = Select[Expand2[Select[nla, FreeQ[#, DOT]&], sunf] + null1 + null2,
                 (Count[#, sunf[__]] === 2)&
                ] /. null1 ->1 /. null2 ->0;
-  If[flag =!= 0, If[Head[flag] === Times, 
+  If[flag =!= 0, If[Head[flag] === Times,
                     ff = Select[flag, !FreeQ[#, sunf]&],
                     If[Head[flag] === Plus,
                        ff = Select[flag[[1]], !FreeQ[#, sunf]&];
@@ -149,11 +149,11 @@ For[iij = 1, iij <= Length[sunindlist], iij++,
        AppendTo[newsunlist, sunindlist[[iij]]]
       ]
    ];
-uniquelist = Join[Table[newlorlist[[ij]] -> 
+uniquelist = Join[Table[newlorlist[[ij]] ->
                         (newlorlist[[ij]]/.lorind -> lorunique),
                         {ij, Length[newlorlist]}
                        ],
-                  Table[newsunlist[[jj]] -> 
+                  Table[newsunlist[[jj]] ->
                         (newsunlist[[jj]]/.SUNIndex -> sununique),
                         {jj, Length[newsunlist]}
                        ]
@@ -164,10 +164,10 @@ FCPrint[1,"uniquelist = ", uniquelist];
 nla = nla /. uniquelist;
 
   nla = DotSimplify[nla, Expanding -> True];
-  tem = Contract[Expand2[nla /. QuantumField -> 
+  tem = Contract[Expand2[nla /. QuantumField ->
         (QuantumField[##][]&) ]] + null1;
  fm/: (fm[aa___][bb___] * fm[xx___][yy___] )   := fm[aa][bb]**fm[xx][yy];
- fm/: fm[aa___][bb___]^n_Integer?Positive := 
+ fm/: fm[aa___][bb___]^n_Integer?Positive :=
   (fm[aa][bb]^(n-1))**fm[aa][bb];
  tem = tem /. QuantumField -> fm /. fm -> QuantumField;
 {tem, sdum}];
@@ -225,7 +225,7 @@ Block[{ttt,nn, nnli, pall = Plus@@pl, i},
 *)
              ha
             ];             ttt]];
-enm3[ha_Plus, pl_List] := 
+enm3[ha_Plus, pl_List] :=
 If[$NONZERO === True, ha,
 MemSet[enm3[ha,pl],
   Block[{ttt,nn, nnli, pall = Plus@@pl, i},
@@ -250,23 +250,23 @@ MemSet[enm3[ha,pl],
             ];             ttt]]
   ];
 
-            
-enmomcon[aa_, pli_List] := 
+
+enmomcon[aa_, pli_List] :=
 If[$NONZERO === True, aa,
 PowerSimplify[
  aa /. {Power2[h_Plus,w_] :> Power2[enm2[h,pli],w]} /.
        {Power2[-1,po_] :> (-1)^po} /.
-       {Power[h_Plus,w_ /; Head[w] =!= Integer] :> 
+       {Power[h_Plus,w_ /; Head[w] =!= Integer] :>
         Power[enm2[h,pli],w]}            ]
   ];
 
-enmomcon3[aa_, pli_List] := aa /. Power2[h_Plus,w_] :> 
+enmomcon3[aa_, pli_List] := aa /. Power2[h_Plus,w_] :>
     PowerSimplify[Power2[enm3[h,pli],w]];
 
-sumtrick1[ex_, {i_,0,j_}, {j_, 0, n_}] := 
+sumtrick1[ex_, {i_,0,j_}, {j_, 0, n_}] :=
  sumtrick1[ex, {j,0,n}, {i,0,j}];
 
-sumtrick1[ex_, {j_, 0, n_}, {i_, 0, j_}] := 
+sumtrick1[ex_, {j_, 0, n_}, {i_, 0, j_}] :=
 MemSet[sumtrick1[ex, {j,0,n}, {i,0,j}],
 OPESumSimplify[
 OPESum[
@@ -277,12 +277,12 @@ OPESum[
                              v_ /; (v === (n-j))] *
                         pow_[c_ /; !FreeQ[c, OPEDelta],
                              i]
-                       ) :> 
+                       ) :>
                        ((-1)^(n+em+j) pow[a+b, j-i] pow[a, i] pow[c, n-j]
                        ) /; ( ((pow === Power) || (pow === Power2)) &&
                               FreeQ[em, i]
                             )
-                      }                                  
+                      }
              ], {j,0,n}, {i, 0, j}] ]];
 
 sumtrick1[ex_, {i_, 0, n_}] := MemSet[sumtrick1[ex, {i,0,n}],
@@ -290,16 +290,16 @@ OPESumSimplify[ OPESum[
 PowerSimplify[
  PowerSimplify[ex] /. {(-1)^(i+em_.)*
                        (
-                        pow_[a_ /; !FreeQ[a, OPEDelta], 
-                          v_ /;(Variables[v]==={i})] * 
-                        pow_[b_ /; !FreeQ[b, OPEDelta], 
+                        pow_[a_ /; !FreeQ[a, OPEDelta],
+                          v_ /;(Variables[v]==={i})] *
+                        pow_[b_ /; !FreeQ[b, OPEDelta],
                           w_/;(Variables[w] === Variables[{i,n}])]
                        ) :> (((-1)^n (-1)^(i+em) pow[a, v + n - 2 i]*
-                                                 pow[b, w - n + 2 i] 
-                             ) /. (-1)^(xa_ + 2 xb_) :> ((-1)^xa /; 
+                                                 pow[b, w - n + 2 i]
+                             ) /. (-1)^(xa_ + 2 xb_) :> ((-1)^xa /;
                                    MemberQ[{OPEi,OPEj,OPEk,OPEl,OPEm},xb]
                                                       )
-                            ) /; (!OrderedQ[{a,b}]) && 
+                            ) /; (!OrderedQ[{a,b}]) &&
                                  ((pow === Power) || (pow === Power2)) &&
                                  FreeQ[em, i]
                       }                      ], {i,0,n}]]];
@@ -307,10 +307,10 @@ PowerSimplify[
 suback[a_,___] := a;
 (*
 sutr[_][x_,_,__] := x;
-sutr[pli_List][x_, {i_, 0, j_}] := 
+sutr[pli_List][x_, {i_, 0, j_}] :=
 *)
 
-sutr[pli_List][x_, {i_, 0, j_}, b__] := 
+sutr[pli_List][x_, {i_, 0, j_}, b__] :=
 MemSet[sutr[pli][x,{i,0,j}, b],
 Block[{xx=x, te},
  te =  If[FreeQ[x, (-1)^(_. i + em_.)], enmomcon[x, pli], x];
@@ -319,7 +319,7 @@ If[te =!= x,
 Print["sutred ", xx//FeynCalcForm , "  -->  ",te//FeynCalcForm];
  ];*) te]];
 
-sutr[pli_List][x_, {i_, 0, j_}] := 
+sutr[pli_List][x_, {i_, 0, j_}] :=
 MemSet[sutr[pli][x,{i,0,j}],
 Block[{xx=x, te},
  te =  If[FreeQ[x, (-1)^(_. i + em_.)], enmomcon3[x, pli], x ];
@@ -329,7 +329,7 @@ Print["sutred ", xx//FeynCalcForm , "  -->  ",te//FeynCalcForm];
  ];*) te]];
 
 
-opesback[y_Times, fi_List] := 
+opesback[y_Times, fi_List] :=
 SelectFree[y, {Power2, OPEi, OPEj, OPEk, OPEl, OPEm}] *
 opesbac3[SelectNotFree[y, {Power2, OPEi, OPEj, OPEk, OPEl, OPEm}], fi];
 
@@ -337,14 +337,14 @@ opesbac3[a__] := MemSet[opesbac3[a], opesbac2[a]];
 
 opesbac2[1,__] = 1;
 
-opesbac2[y_ opes[b__List], fi_List] :=  
+opesbac2[y_ opes[b__List], fi_List] :=
 ( sumtrick1[sutr[fi /. QuantumField -> getpes
                 ][enmomcon[y, fi /. QuantumField -> getpes], b]
                    , b
            ] /. OPESum -> sumtrick1 /. sumtrick1 -> suback
  ) /; FreeQ[y, opes];
 
-opesbac2[y_ opes[b__List] opes[c__List], fi_List] := 
+opesbac2[y_ opes[b__List] opes[c__List], fi_List] :=
 (
 enmomcon[
 sutr[fi /. QuantumField -> getpes
@@ -357,17 +357,17 @@ sutr[fi /. QuantumField -> getpes
         ] /. OPESum -> sumtrick1 /. sumtrick1 -> suback
  ) /; FreeQ[y, opes];
 
-opesbac2[y_ opes[a__List] opes[b__List] opes[c__List], fi_List] :=  
+opesbac2[y_ opes[a__List] opes[b__List] opes[c__List], fi_List] :=
  ( sumtrick1[enmomcon[y, fi /. QuantumField -> getpes], a, b, c
             ] /. OPESum -> sumtrick1 /. sumtrick1 -> suback
  ) /; FreeQ[y, opes];
 
-opesbac2[y_ /; FreeQ[y, opes], fi_List] := 
+opesbac2[y_ /; FreeQ[y, opes], fi_List] :=
            enmomcon5[enmomcon[y, fi/.QuantumField -> getpes],
                                  fi/.QuantumField -> getpes
                     ];
 (* only for Eps *)
-enmomcon5[xx_, pli_List] := If[ 
+enmomcon5[xx_, pli_List] := If[
    ((Plus@@pli) === 0) || (Head[Expand[Last[pli]]] === Plus) ||
    FreeQ[xx, Eps], PowerSimplify[xx],
      PowerSimplify[ExpandScalarProduct[xx /. Last[pli] :>
@@ -380,8 +380,8 @@ enmomcon5[xx_, pli_List] := If[
                        diractrick[yy]
                       ]
                    ];
-opsum[y_] := 
-  y //. {OPESum[w_ /; FreeQ[SelectFree[w, OPESum], Binomial], b__List] :> 
+opsum[y_] :=
+  y //. {OPESum[w_ /; FreeQ[SelectFree[w, OPESum], Binomial], b__List] :>
          (w opes[b]) /; (Head[w] === Times || Head[w] === OPESum ||
                          Head[w] === DOT),
          OPESum[b__List] :> opes[b]
@@ -390,7 +390,7 @@ opsum[y_] :=
 Options[FeynRule] = {Anti5 -> -Infinity,
                      Contract -> False,
                      Factor1 -> False,
-                     FinalSubstitutions -> {}, 
+                     FinalSubstitutions -> {},
                      PartialD -> RightPartialD,
                      Schouten -> False,
                      ZeroMomentumInsertion -> True,
@@ -402,8 +402,8 @@ FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
             d_ /; Head[d] =!= Rule && Head[d] =!= List, e___Rule
         ] := FeynRule[a, {b,c,d}, e];
 
- FeynRule[lag_, fii_List, ru___Rule] := 
-  If[Length[lag] === 0, Print["well well ", lag, " does not look like a lagrangian"], 
+ FeynRule[lag_, fii_List, ru___Rule] :=
+  If[Length[lag] === 0, Print["well well ", lag, " does not look like a lagrangian"],
                              Block[{(*InitialFunction stuff added by F.Orellana 3/8-2000*)
 			            initf = InitialFunction /. {ru} /. Options[FeynRule],
 			            nlag = fcis[initf[lag]], temp1, temp,
@@ -411,7 +411,7 @@ FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
                                     groupindices,
                                     result,fields,tfields,plist,
                                     vert,sdummy, getsu,gsu,subs,
-                                    qfi, qqq, oldnoncomm, onepm, onemm, 
+                                    qfi, qqq, oldnoncomm, onepm, onemm,
                                     plho,schouten,opsumb,opsumb2,
                                     $binindices, indd, oplei,anti5,
                                     leib,coup,cdp,cedepe,opexbin,
@@ -431,13 +431,13 @@ If[zeromomentum === False, $NONZERO = True, $NONZERO = False];
 
 (* remeber which indices are around *)
 $binindices = {};
-oplei[Binomial[up_, ind_] w_, {ind_, 0, up_}] := 
+oplei[Binomial[up_, ind_] w_, {ind_, 0, up_}] :=
 ( If[!MemberQ[$binindices, ind], AppendTo[$binindices, ind]];
   sumBinomial[up, ind] w);
 
 leib[y_] := y /. OPESum -> oplei /. oplei -> OPESum;
 
-  fields = Map[ ( QuantumField[___, #, 
+  fields = Map[ ( QuantumField[___, #,
            Pattern @@ {Unique[dm], ___}][___])&, #[[0, 1]]& /@ fili];
 
 If[!FreeQ[nlag, Sum], nlag = nlag /. Sum -> OPESum];
@@ -450,22 +450,22 @@ If[!FreeQ[nlag, OPEDelta],
   ];
 
  If[CheckContext["FieldStrength"],
-    nlag = nlag /. FieldStrength[a__] :> 
+    nlag = nlag /. FieldStrength[a__] :>
                    FieldStrength[a, Explicit->True];
    ];
 (* CHANGE 28.6.94 *)
-If[!CheckContext["CovariantD"], 
+If[!CheckContext["CovariantD"],
    nlag = DotSimplify[nlag]
    ,
  If[!FreeQ[nlag, CovariantD[w__/;FreeQ[{w}, Rule]
                            ]^hh_ /; Head[hh]=!=Integer]
     ,
-cdp /: cdp[aa__]^(h_ /; Head[h]=!=Integer) := 
+cdp /: cdp[aa__]^(h_ /; Head[h]=!=Integer) :=
    cedepe[aa, {h, Length[fii] - 2}];
 
 
-    nlag = nlag /. CovariantD -> cdp /. 
-          {cdp[aa__] :> CovariantD[aa, Explicit->True], 
+    nlag = nlag /. CovariantD -> cdp /.
+          {cdp[aa__] :> CovariantD[aa, Explicit->True],
            cedepe :> CovariantD
           };
     coup = CouplingConstant /. Options[CovariantD];
@@ -476,7 +476,7 @@ cdp /: cdp[aa__]^(h_ /; Head[h]=!=Integer) :=
  ];
 If[!FreeQ[nlag, sund],
    nlag = Expand2[nlag, SUNIndex|ExplicitSUNIndex]/.sund-> sundc/.
-   sundc->sund 
+   sundc->sund
   ];
 
 
@@ -532,7 +532,7 @@ UnDeclareNonCommutative[groupindices];
 
 If[Head[vert] === Plus,
    result = 0;
-   For[iij = 1, iij <= Length[vert], iij++,       
+   For[iij = 1, iij <= Length[vert], iij++,
           FCPrint[2,"iij of FunctionalD = ",iij," out of ", Length[vert]];
        result = result +
        DotSimplify[FunctionalD[vert[[iij]], fili],
@@ -558,11 +558,11 @@ FCPrint[1,"there are now ",Length[result]," terms"];
 result = result /. Pair -> PairContract /. Pair -> PairContract /.
           PairContract -> Pair;
 FCPrint[1,"simple Contraction done"];
-If[!FreeQ[result, Eps], result = EpsEvaluate[result];   
+If[!FreeQ[result, Eps], result = EpsEvaluate[result];
    FCPrint[1,"EpsEvaluate done"];
   ];
 If[!FreeQ[result, DOT],
-   result = dirdot[result];   
+   result = dirdot[result];
    FCPrint[1,"dirdot done"];
   ];
 
@@ -570,14 +570,14 @@ If[!FreeQ[result, DOT],
 alllor = Union[Cases[result, LorentzIndex[__], Infinity]];
 FCPrint[1,"cases done"];
 If[alllor =!= Sort[lfili],
-If[(Contract /. Options[FeynRule]) === True,   
+If[(Contract /. Options[FeynRule]) === True,
    FCPrint[1,"Contracting again"];
    result = result// Contract;
-   FCPrint[1,"Contracting again done"];   
+   FCPrint[1,"Contracting again done"];
   ]
-  ];   
+  ];
    FCPrint[1,"PowerSimplify again"];
-result = PowerSimplify[result /. subs];   
+result = PowerSimplify[result /. subs];
    FCPrint[1,"PowerSimplify done"];
 (*
 result = Contract[dirdot[PowerSimplify[result]] /. dDelta -> Pair /.subs];
@@ -593,7 +593,7 @@ If[!FreeQ[result, sund],
 FCPrint[1,"several simplications done"];
 plist =  fii /. QuantumField -> getpes /. mom -> Identity;
 (*
- If[ Length[fili] === 2, 
+ If[ Length[fili] === 2,
      result = dirdot[result];
      If[!FreeQ[result, DiracGamma] ]
    ]
@@ -632,9 +632,9 @@ FCPrint[1,"ib = ",ib, " out of ", Length[$binindices]];
                             SelectFree[xx, indd] *
                             opsumb2[SelectNotFree[xx,indd]]
                            ];
-          opsumb2[xx_. sumBinomial[up_, indd]] := 
+          opsumb2[xx_. sumBinomial[up_, indd]] :=
               SymbolicSum2[xx Binomial[up,indd], {indd,0,up}
-                          ] /. SymbolicSum2 -> SymbolicSum /. 
+                          ] /. SymbolicSum2 -> SymbolicSum /.
                SymbolicSum ->  OPESum;
 
           result = opsumb[result] /. opsumupv -> OPESum;
@@ -643,9 +643,9 @@ FCPrint[1,"before OPESumSimplify"];
           result = OPESumSimplify[result];
   ];
           result = result /. OPESum -> opexbin /. opexbin -> OPESum;
-        ]; 
+        ];
     ];
-     If[!FreeQ[result, opes], 
+     If[!FreeQ[result, opes],
         result = Collect2[result, opes, Factoring->False]];
   ];
 FCPrint[1,"sumBinomial  ",FreeQ[result,sumBinomial]];
@@ -664,7 +664,7 @@ result = PowerSimplify[result /. Power2 -> powsu /. powsu -> Power2];
 If[!FreeQ[result, Power2],
    If[Head[result] =!= Plus, result = opesback[result, fii],
 nres = 0;
-For[ij=1, ij<=Length[result], ij++, 
+For[ij=1, ij<=Length[result], ij++,
 FCPrint[1,"ij = ", ij];
     nee = opesback[result[[ij]], fii];
     nres = nres  + nee;
@@ -690,7 +690,7 @@ If[(!FreeQ2[result, {SUNT, OPESum, DiracGamma}]) &&
    Length[Cases2[result, OPESum]] <= 1,
 FCPrint[2,"YESSSSSSSSSSSSSS"];
 If[zeromomentum === True,
-   result = Collect2[ExpandScalarProduct[result /. 
+   result = Collect2[ExpandScalarProduct[result /.
             plist[[1]] :> (-(Plus @@ Rest[plist]))],
                      OPESum]//Factor1;
   ];
@@ -698,8 +698,8 @@ If[zeromomentum === True,
    ,
 
 If[!FreeQ[result, SUNIndex|ExplicitSUNIndex],
-   result = Collect2[result, SUNIndex|ExplicitSUNIndex, Factoring -> False, 
-                     Expanding -> False 
+   result = Collect2[result, SUNIndex|ExplicitSUNIndex, Factoring -> False,
+                     Expanding -> False
                     ];
   ];
 FCPrint[1,"collect2ing done; "];
@@ -713,14 +713,14 @@ If[(Length[plist]<4) && FreeQ[result, OPEDelta],
   ];
 
 
-If[FreeQ[result, OPEDelta], 
+If[FreeQ[result, OPEDelta],
    result = result /. Plus :> pluc;
   ];
 FCPrint[1,"feinarbeit "];
 
 If[((Factor1 /. {ru} /. Options[FeynRule]) === True),
-If[(Head[result] === Plus) && 
-   result  = Factor1[Map[#/.Plus->plho&, 
+If[(Head[result] === Plus) &&
+   result  = Factor1[Map[#/.Plus->plho&,
                          Map[feinarbeit[#, plist]&, result]
                         ]] /. plho -> Plus,
    result  = feinarbeit[result, plist]
@@ -746,7 +746,7 @@ feinarbeit[fey_ /; FreeQ[fey, SUNIndex|ExplicitSUNIndex], pli_List] := Block[
 If[FreeQ[fey, OPEDelta], resu = fey,
 
 resu = fey;
- 
+
 legs = Length[pli];
 
 If[FreeQ2[resu, {DiracGamma, Eps}],
@@ -756,23 +756,23 @@ If[FreeQ2[resu, {DiracGamma, Eps}],
    resu = resu /. {(-1)^OPEm :> (-2 onemm +1)}
   ];
 
-If[!FreeQ[resu, OPESum] && Head[resu] === Plus && legs < 5, 
+If[!FreeQ[resu, OPESum] && Head[resu] === Plus && legs < 5,
    nopres = SelectFree[resu, OPESum];
    ores   = resu - nopres;
    nopres = nopres /. Power2 -> Power;
    ple[a__] := Collect2[Plus[a] /. Power -> power3 /.
-      {power3[ab_ /; !FreeQ[ab, OPEDelta], OPEm-1] :> 
+      {power3[ab_ /; !FreeQ[ab, OPEDelta], OPEm-1] :>
        (ab power3[ab, OPEm -2]) }, power3] /. power3 -> Power;
 
    pleps[xy_] := xy /. Plus -> ple;
-   resu = pleps[nopres//Expand] + 
-            Collect2[ores, OPESum, Factoring -> Factor2, 
+   resu = pleps[nopres//Expand] +
+            Collect2[ores, OPESum, Factoring -> Factor2,
                                      Expanding -> True];
    If[(!FreeQ[resu, Eps]) && schouten == True,
 	FCPrint[1,"using Schouten identity "];
       schau[y__] := MemSet[schau[y],
                    If[FreeQ2[{y},{(aa_ /; !FreeQ[aa, Pair])^
-                                   (vv_ /; Head[vv] =!= Integer),      
+                                   (vv_ /; Head[vv] =!= Integer),
                                Power2[aaa_ /; !FreeQ[aaa, Pair],
                                       vvv_ /; Head[vvv] =!= Integer
                                      ]
@@ -800,14 +800,14 @@ If[legs<5,
                      },
  resu = Expand[resu /. {onepm :> ((1+(-1)^OPEm)/2),
                         onemm :> ((1-(-1)^OPEm)/2)
-                       }  
+                       }
               ];
   ];
 FCPrint[1,"Factoring done; "];
 
 If[!FreeQ[resu, $SU], uniqli = {};
    getsu[xx_] := (AppendTo[uniqli, xx]; gsu[xx]);
-   resu = resu /. $SU -> getsu; 
+   resu = resu /. $SU -> getsu;
    uniqli = Union[uniqli];
    resu = resu /.gsu[uniqli[[1]]] -> sdummy /. gsu -> Identity;
   ];
@@ -821,9 +821,9 @@ FCPrint[1,"last global factoring "];
 resu = PowerSimplify[resu /. foop -> Identity];
 
 If[Head[resu] === Times && !FreeQ[resu, OPEDelta],
-   resu = PowerSimplify[SelectFree[resu, OPEDelta] /. 
-{(-1)^m_ (1+(-1)^m_) :> (1+(-1)^m) /; MemberQ[{OPEi,OPEj,OPEm},m]} 
-                         ] (resu/SelectFree[resu, OPEDelta]) 
+   resu = PowerSimplify[SelectFree[resu, OPEDelta] /.
+{(-1)^m_ (1+(-1)^m_) :> (1+(-1)^m) /; MemberQ[{OPEi,OPEj,OPEm},m]}
+                         ] (resu/SelectFree[resu, OPEDelta])
    ];
 If[ legs < 3, resu = Factor2[resu] ];
 ];
@@ -838,16 +838,16 @@ resu];
 InvertScalar[exp_ /; FreeQ2[exp, {sundc, DiracGamma, lor}]
             ] := 1/exp;
 
-InvertFermion[n_. DiracGamma[mom[pe_]] + m_.] := 
+InvertFermion[n_. DiracGamma[mom[pe_]] + m_.] :=
     -I (n DiracSlash[pe] - m)/(n^2 ScalarProduct[pe, pe] - m^2);
 
 InvertBoson[exp_, k_, m_, n_] := Block[{geteq, la},
-geteq[x_ ] := ({#[[1]]==0, #[[2]]==0}& @ 
-                   Collect2[Contract[x], lor]) /. 
+geteq[x_ ] := ({#[[1]]==0, #[[2]]==0}& @
+                   Collect2[Contract[x], lor]) /.
                          Pair[___, lor[__], ___] -> 1;
 (A MetricTensor[m, n] + B FourVector[k, m] FourVector[k, n]) /.
-   Solve[geteq[exp (A MetricTensor[m, la] + 
-                    B FourVector[k, m] FourVector[k, la]) - 
+   Solve[geteq[exp (A MetricTensor[m, la] +
+                    B FourVector[k, m] FourVector[k, la]) -
                           MetricTensor[la, n]], {A, B}][[1]]
                                       ];
 *)

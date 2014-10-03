@@ -258,10 +258,10 @@ Remove[HighEnergyPhysics`FeynArts`$FeynArts]];
 
 If[$FAPatch && $LoadFeynArts,
 str = "" ;$patch=True;
-If[(fafiles=FileNames["FeynArts.m", {$FeynCalcDirectory, $FeynCalcDirectory <> $PathnameSeparator <> "*"}]) =!= {}, 
+If[(fafiles=FileNames["FeynArts.m", {$FeynCalcDirectory, $FeynCalcDirectory <> $PathnameSeparator <> "*"}]) =!= {},
   strm = OpenRead[fafiles[[1]]];
-  While[ToString[str] != "EndOfFile", str = Read[strm, String]; 
-    If[StringMatchQ[ToString[str], "*Frederik Orellana*", IgnoreCase -> True], 
+  While[ToString[str] != "EndOfFile", str = Read[strm, String];
+    If[StringMatchQ[ToString[str], "*Frederik Orellana*", IgnoreCase -> True],
       $patch=False]];
   Close[strm]];
 

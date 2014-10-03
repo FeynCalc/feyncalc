@@ -102,20 +102,20 @@ db[i_Integer]:=If[Global`$Debug, ToExpression["PRS"<>ToString[i]],1];
 
 $thismodelpropagators = {GhostPropagator, QuarkPropagator, GluonPropagator};
 
-getprops[z_] := 
-   Sort[Union[Replace[First /@ Cases[z, GhostPropagator[__] | 
-         QuarkPropagator[__] | GluonPropagator[__], -1], 
-          {a_, ___} :> a, 1]], Length[#1] < Length[#2] & ]; 
+getprops[z_] :=
+   Sort[Union[Replace[First /@ Cases[z, GhostPropagator[__] |
+         QuarkPropagator[__] | GluonPropagator[__], -1],
+          {a_, ___} :> a, 1]], Length[#1] < Length[#2] & ];
 
 (* 1-loop selfenergy *)
-shift[amps_, q_, p_] := 
- Switch[getprops[amps], 
+shift[amps_, q_, p_] :=
+ Switch[getprops[amps],
   {q, q + p},                               (# /. q -> q - p)&,
   {q, -q - p},                               (# /. q -> -q)&,
   _, Identity][amps];
 
-shift[amps_, q1_, q2_, p_] := 
- Switch[getprops[amps], 
+shift[amps_, q1_, q2_, p_] :=
+ Switch[getprops[amps],
 (* gluon self energy *)
   {q2, q1, - p - q1 - q2},                  (# /. q1 -> q1 - p /. q1 -> -q1)&,
   {q1, q1 + q2, -q2, -q1 - q2},             (# /. q2 -> -q2)&,
@@ -169,7 +169,7 @@ M$LastGenericRules = {
 FeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
      FeynAmp[grid, Integral[q],
              amp /. FourMomentum[Outgoing, 1] :> FourMomentum[Incoming, 1]
-            ] /; 
+            ] /;
              (Union[Flatten@{FourMomentum[Incoming,1], Cases[amp, FourMomentum[Incoming, _], -1]}
                    ] === {FourMomentum[Incoming, 1]}
              ) &&
@@ -178,7 +178,7 @@ FeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
 FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
 
 FeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
-     FeynAmp[grid, Integral[qq], 
+     FeynAmp[grid, Integral[qq],
 (*
              shift[#, qq,Sequence@@Union[Cases[amp, FourMomentum[Incoming,_],-1]] ]& @
 *)
@@ -187,11 +187,11 @@ FeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
 Global`AMP=
 *)
             (
-(* WARNING (Rolf Mertig, March 19th 2004: 
+(* WARNING (Rolf Mertig, March 19th 2004:
            This Nf-substitution is probably not quite right for 2-loops in certain cases ...
            Just take this as a working idea.
            I will look into this further
-*) 
+*)
              amp /. MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy] ] /.
                     G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
                     Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],

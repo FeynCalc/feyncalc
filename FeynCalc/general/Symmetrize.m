@@ -16,13 +16,13 @@
 BeginPackage["HighEnergyPhysics`general`Symmetrize`",{"HighEnergyPhysics`FeynCalc`"}];
 
 Symmetrize::"usage"=
-"Symmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect 
+"Symmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect
 to the variables a1, a2, ... .";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Symmetrize[x_,v_List] := Block[{su},
                       su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];

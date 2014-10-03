@@ -13,14 +13,14 @@
 BeginPackage["HighEnergyPhysics`general`SumS`",{"HighEnergyPhysics`FeynCalc`"}];
 
 SumS::"usage"=
-"SumS[r, n] denotes Sum[Sign[r]^i/i^Abs[r], {i, 1, n}], 
- SumS[r,s, n] is Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s], 
+"SumS[r, n] denotes Sum[Sign[r]^i/i^Abs[r], {i, 1, n}],
+ SumS[r,s, n] is Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s],
      {k, 1, n}, {j, 1, k}], etc.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Options[SumS] = {Reduce -> False};
 
@@ -57,32 +57,32 @@ SumS[1, 1, 1, n_,opt___Rule] :=
 SumS[n__Integer, em_Symbol -1, Reduce -> True] := SumS[n,em-1];
 
 SumS[r_Integer, n_Integer, opt___Rule] := Sum[Sign[r]^i/i^Abs[r],{i,1,n}];
-SumS[r_Integer, s__Integer, n_Integer, opt___Rule] := 
+SumS[r_Integer, s__Integer, n_Integer, opt___Rule] :=
  Sum[Sign[r]^k/k^Abs[r] SumS[s,k], {k, 1, n}];
 
-SumS[r_Integer, n_Symbol + a_. , opt___Rule] := 
+SumS[r_Integer, n_Symbol + a_. , opt___Rule] :=
  (SumS[r, n+a-1] + Sign[r]^(n+a)/(n+a)^Abs[r]) /; a >= 0 &&
   (Reduce /. {opt} /. Options[SumS]);
 
-SumS[r_Integer, n_Symbol + a_Integer, opt___Rule] := 
+SumS[r_Integer, n_Symbol + a_Integer, opt___Rule] :=
  (SumS[r, n+a+1] - Sign[r]^(n+a+1)/(n+a+1)^Abs[r] ) /; a < -1 &&
   (Reduce /. {opt} /. Options[SumS]);
 
 SumS[1, 2, n_Symbol + a_. , opt___Rule] :=
  (1/(n+a)^3 + 1/(n+a) SumS[2,n+a-1] + SumS[1,2,n+a-1]) /; a>=0 &&
   (Reduce /. {opt} /. Options[SumS]);
-   
+
 SumS[2, 1, n_Symbol + a_. , opt___Rule] :=
  (1/(n+a)^3 + 1/(n+a)^2  SumS[1,n+a-1] + SumS[2,1,n+a-1]) /; a>=0 &&
   (Reduce /. {opt} /. Options[SumS]);
 
-SumS[1,1, n_Symbol +a_., opt___Rule] := SumS[1,1, n+a-1] + 
+SumS[1,1, n_Symbol +a_., opt___Rule] := SumS[1,1, n+a-1] +
 1/(n+a) SumS[1, n+a]  /; a>=0 &&
     (Reduce /. {opt} /. Options[SumS]);
 
    MakeBoxes[
              SumS[i_Integer, m_]^n_Integer, TraditionalForm
-            ] := RowBox[{SubsuperscriptBox["S", i, n], "(", 
+            ] := RowBox[{SubsuperscriptBox["S", i, n], "(",
                          Tbox[m] , ")"}];
 
    SumS /:
@@ -92,7 +92,7 @@ SumS[1,1, n_Symbol +a_., opt___Rule] := SumS[1,1, n+a-1] +
    SumS /:
    MakeBoxes[ SumS[i_Integer,j__Integer, m_], TraditionalForm
             ] := RowBox[{
-          SubscriptBox["S", StringJoin@@Map[ToString,{i,j}]], 
+          SubscriptBox["S", StringJoin@@Map[ToString,{i,j}]],
                        "(", Tbox[m], ")"}];
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

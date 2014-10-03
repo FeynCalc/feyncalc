@@ -250,10 +250,10 @@ FeynmanZ::"usage" = "FeynmanZ[1], FeynmanZ[2], etc. are Feynman parameters.";
 Errors
 *)
 
-VeltmanC0::nodef = 
+VeltmanC0::nodef =
     "The two first particles are not on-mass-shell.";
 
-VeltmanC0::nodef1 = 
+VeltmanC0::nodef1 =
     "The two first particles must be on-mass-shell and have identical masses.";
 
 Begin["`Private`"];
@@ -302,15 +302,15 @@ LeutwylerLambda /: Format[LeutwylerLambda[___], TraditionalForm] :=
     StyleForm["\[Lambda]", FontSlant -> "Italic"];
 
 VeltmanB0 /: MakeBoxes[VeltmanB0, TraditionalForm] := SubscriptBox["B", "0"];
-VeltmanB0 /: MakeBoxes[VeltmanB0[x__, __Rule], TraditionalForm] := 
+VeltmanB0 /: MakeBoxes[VeltmanB0[x__, __Rule], TraditionalForm] :=
     MakeBoxes[TraditionalForm[VeltmanB0[x]]];
 
 VeltmanC0 /: MakeBoxes[VeltmanC0, TraditionalForm] := SubscriptBox["C", "0"];
-VeltmanC0 /: MakeBoxes[VeltmanC0[x__, __Rule], TraditionalForm] := 
+VeltmanC0 /: MakeBoxes[VeltmanC0[x__, __Rule], TraditionalForm] :=
     MakeBoxes[TraditionalForm[VeltmanC0[x]]];
 
 VeltmanD0 /: MakeBoxes[VeltmanD0, TraditionalForm] := SubscriptBox["D", "0"];
-VeltmanD0 /: MakeBoxes[VeltmanD0[x__, __Rule], TraditionalForm] := 
+VeltmanD0 /: MakeBoxes[VeltmanD0[x__, __Rule], TraditionalForm] :=
     MakeBoxes[TraditionalForm[VeltmanD0[x]]];
 
 End[];

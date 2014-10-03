@@ -26,21 +26,21 @@ Options[ILimit] = {FunctionLimits -> {Log -> Log}};
 
 SmallVariable = MakeContext["CoreObjects","SmallVariable"];
 
-ILimit[exp_, lim_Rule, opts___Rule] := 
+ILimit[exp_, lim_Rule, opts___Rule] :=
     Block[{(*limruls, m, ff, fff, out,res*)},
-    limruls = 
+    limruls =
         MapAt[(((If[FreeQ[ff[##], lim[[1]]] ||
                     !FreeQ[out = Limit[Limit[ff[##] /.
-                                              SmallVariable[_?((!MatchQ[#, lim[[1]]])&)] -> 0, 
-                                             SmallVariable[lim[[1]]] -> lim[[2]]], 
-                                       lim], 
-                           DirectedInfinity[___] | Indeterminate | _Limit], 
-                     fff[##], 
-                     out]&))&) /. 
+                                              SmallVariable[_?((!MatchQ[#, lim[[1]]])&)] -> 0,
+                                             SmallVariable[lim[[1]]] -> lim[[2]]],
+                                       lim],
+                           DirectedInfinity[___] | Indeterminate | _Limit],
+                     fff[##],
+                     out]&))&) /.
                  {ff -> #[[2]], fff -> #[[1]]}, #, 2]& /@
                (FunctionLimits /. {opts} /. Options[ILimit]);
     res = exp /. limruls;
-    Limit[Limit[res, SmallVariable[lim[[1]]] -> lim[[2]]], 
+    Limit[Limit[res, SmallVariable[lim[[1]]] -> lim[[2]]],
           lim]];
 
 End[]; EndPackage[];

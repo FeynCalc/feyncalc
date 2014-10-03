@@ -10,7 +10,7 @@
 
 BeginPackage["HighEnergyPhysics`general`Collect3`",{"HighEnergyPhysics`FeynCalc`"}];
 
-Collect3::"usage"= 
+Collect3::"usage"=
 "Collect3[expr, head] collects all monoomials of the form head[..]*head[..]*..
  in expr. \n
 Collect3[expr, {x, y, ...}] collects terms involving the same powers
@@ -23,7 +23,7 @@ specified the function applied to the list of monomials multiplied by their coef
 Begin["`Private`"];
 
 MakeContext[Factoring];
-   
+
 Options[Collect3] = {Factoring -> False, Head -> Plus};
 
 Collect3[a_,b_,c_Symbol, opts___?OptionQ]:= Collect3[a, b, Factoring -> c, opts];

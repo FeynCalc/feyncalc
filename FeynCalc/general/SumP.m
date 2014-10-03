@@ -19,23 +19,23 @@ SumP::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Explicit = MakeContext["Explicit"];
 SumS = MakeContext["SumS"];
 
-(* m = n/2 *) 
-SumP[k_Integer, m_ /; (Head[m] === Integer || 
-                       Head[m] === Rational) 
+(* m = n/2 *)
+SumP[k_Integer, m_ /; (Head[m] === Integer ||
+                       Head[m] === Rational)
     ] := 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,2 m}];
 
-SumP /: Explicit[SumP[k_Integer, m_]] := 
+SumP /: Explicit[SumP[k_Integer, m_]] :=
  1/2 (1+(-1)^(2 m)) SumS[k,m] + 1/2 (1-(-1)^(2 m)) SumS[k,Factor[m-1/2]];
 
    SumP /:
    MakeBoxes[ SumP[i_Integer, m_], TraditionalForm
-            ] := RowBox[{SubsuperscriptBox["S", i,"'"], 
-                  "\[NoBreak]", "(", "\[NoBreak]", 
+            ] := RowBox[{SubsuperscriptBox["S", i,"'"],
+                  "\[NoBreak]", "(", "\[NoBreak]",
                   ToBoxes[m,TraditionalForm], "\[NoBreak]",")"}];
 
 End[]; EndPackage[];

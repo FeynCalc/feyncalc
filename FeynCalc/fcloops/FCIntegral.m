@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fcloops`FCIntegral`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-FCIntegral::"usage"= 
+FCIntegral::"usage"=
 "FCIntegral is the head of integrals in a setting of the
 option IntegralTable of FeynAmpDenominatorSimplify.
 Currently only implemented for 2-loop integrals.";
@@ -21,7 +21,7 @@ Currently only implemented for 2-loop integrals.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 FCIntegral[1,___]=1;
 FCIntegral[0,___]=0;

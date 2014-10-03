@@ -19,7 +19,7 @@ to the variables a1, a2, ... ";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 AntiSymmetrize[x_,v_List] := Block[{su},
                       su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];

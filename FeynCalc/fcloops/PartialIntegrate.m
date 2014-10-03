@@ -22,7 +22,7 @@ factor that is to be differentiated.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 (*Options[PartialIntegrate] = {Hold -> False};*)
 Options[PartialIntegrate] = {Integrate -> Integrate};
 

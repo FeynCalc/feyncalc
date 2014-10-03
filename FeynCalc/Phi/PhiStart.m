@@ -178,16 +178,16 @@ CovariantD and FieldStrength.";
 
    $Multiplications = Union[$Multiplications,{Times, NM, IsoDot, IsoCross,
                             IsoSymmetricCross, UDot}];
-   
+
    $DistributiveFunctions = Union[$DistributiveFunctions,
    {Conjugate, ComplexConjugate, Transpose, Adjoint, UTrace, UTrace1, Iso}];
-   
+
    $Containers = {IsoVector, UVector, UMatrix};
 
    Options[CovariantFieldDerivative] = {Explicit->True, DiagonalToU->True,
       (*RemoveIntegerIndices->False,*)  SUNN->2, UDimension->Automatic};
 
-   CovariantFieldDerivative::"usage" = 
+   CovariantFieldDerivative::"usage" =
     "CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] is the covariant \
 derivative of f[x] with respect to space-time variables x and with Lorentz \
 indices li1, li2,... The default CovariantFieldDerivative is taken from \
@@ -200,31 +200,31 @@ CovariantFieldDerivative is recognized by ArgumentsSupply and partly by \
 UNMSplit, that is, for UNMSplit to work, the 'extra' part apart from the \
 derivative of CovariantFieldDerivative[f[x],x,{li1,li2,...},opts] should not \
 have a meson-field dependence.";
-   
+
    SetOptions[CheckDB, Directory ->
    ToFileName[{$FeynCalcDirectory,"Phi"}, "Storage"],
    ForceSave -> False, NoSave -> False, Check -> False];
 
-   SetOptions[ILimit, FunctionLimits -> {Log -> Log, 
+   SetOptions[ILimit, FunctionLimits -> {Log -> Log,
    LeutwylerJBar -> (LeutwylerJBar[
    Sequence @@ Select[Expand /@ {##}, ((! MatchQ[#, _Rule | _List]) &)],
    LeutwylerJBarEvaluation -> "subthreshold",
    ExplicitLeutwylerSigma -> True]&)}];
-   
+
    SetOptions[B0,
    BReduce->False,B0Unique->True,B0Real->False];
-   
+
    SetOptions[SetMandelstam,
    Dimension->{4,D,SpaceTimeDimensions}];
-   
+
    SetOptions[FeynRule,
    InitialFunction->PhiToFC];
-   
+
    (*SetOptions[OneLoop,
    WriteOutPaVe -> ToFileName[
    {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
    $PathnameSeparator];
-   
+
    SetOptions[PaVeReduce,
    WriteOutPaVe -> ToFileName[
    {HighEnergyPhysics`FeynCalc`$FeynCalcDirectory, "Phi"}, "Storage"] <>
@@ -237,29 +237,29 @@ have a meson-field dependence.";
    (*Have ExpandPartialD use FieldDerivative for NM products*)
     {NM[a___, (PartialD|RightPartialD)[x_,LorentzIndex[mu_]], b___] :>
     NM[a, FieldDerivative[NM[b], x, LorentzIndex[mu]]],
-    NM[a___, (PartialD|RightPartialD)[LorentzIndex[mu_]], b___] :> 
-    NM[a, FieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go = 
+    NM[a___, (PartialD|RightPartialD)[LorentzIndex[mu_]], b___] :>
+    NM[a, FieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go =
         False; {b} /. ((QuantumField[__][
                   y_?AtomQ] | _[___, QuantumField[__], ___][
                   y_?AtomQ]) :> (go = True; z = y)); go),
     NM[a___, LeftPartialD[x_,LorentzIndex[mu_]], b___] :>
     NM[FieldDerivative[NM[a], x, LorentzIndex[mu]], b],
-    NM[a___, LeftPartialD[LorentzIndex[mu_]], b___] :> 
-    NM[FieldDerivative[NM[a], z, LorentzIndex[mu]], b] /; (go = 
+    NM[a___, LeftPartialD[LorentzIndex[mu_]], b___] :>
+    NM[FieldDerivative[NM[a], z, LorentzIndex[mu]], b] /; (go =
         False; {a} /. ((QuantumField[__][
                   y_?AtomQ] | _[___, QuantumField[__], ___][
                   y_?AtomQ]) :> (go = True; z = y)); go),
     NM[a___, CovariantD[x_,LorentzIndex[mu_]], b___] :>
     NM[a, CovariantFieldDerivative[NM[b], x, LorentzIndex[mu]]],
-    NM[a___, CovariantD[LorentzIndex[mu_]], b___] :> 
-    NM[a, CovariantFieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go = 
+    NM[a___, CovariantD[LorentzIndex[mu_]], b___] :>
+    NM[a, CovariantFieldDerivative[NM[b], z, LorentzIndex[mu]]] /; (go =
         False; {b} /. ((QuantumField[__][
                   y_?AtomQ] | _[___, QuantumField[__], ___][
                   y_?AtomQ]) :> (go = True; z = y)); go),
     NM[UMatrix[UIdentity, ___],
        (PartialD | RightPartialD | LeftPartialD)[__]] :> 0}
   ]];
-  
+
   (* Not sure why this is necessary, but e.g. the calculation of the electron self energy in
      QEDRadiativeCorrections.nb fails without. *)
   SetOptions[FourVector, FeynCalcInternal -> False];
@@ -270,11 +270,11 @@ have a meson-field dependence.";
      a few PHI examples (will have to be reevaluated when changing
      $UMatrices if ExpandPartialD is to work for the new UMatrices) *)
    DeclareNonCommutative /@ $UMatrices;
-   
+
    (* Have WFRenormalize work with Dirac matrices *)
    DeclareNonCommutative[WFFactor1];
 
-   HighEnergyPhysics`Phi`Objects`FunctionalDerivative::"usage" = 
+   HighEnergyPhysics`Phi`Objects`FunctionalDerivative::"usage" =
        "FunctionalDerivative is FunctionalD adapted for use with Phi";
    HighEnergyPhysics`Phi`Objects`FunctionalDerivative[x_, o__] :=
        Block[{tr, r, nm, c, d, i, f}, i = 0; f := (++i);
@@ -282,22 +282,22 @@ have a meson-field dependence.";
              PhiToFC[x /. HoldPattern[NM[d__]] :> DOT[nm[f], d]] /.
                UTrace1 -> ((tr*#) &), o] //. {DOT[nm[_], c__] :> NM[c],
              tr*r__ :> UTrace[Times[r]]}];
-                       
+
    $Abbreviations=
    Union[$Abbreviations,
    {"Momentum" -> "", "Pair" -> "", "RenormalizationState" -> "",
    "ParticleMass" -> "m", "PseudoScalar" -> "PS", "Scalar" -> "S",
    "Vector" -> "V", "AxialVector" -> "AV", "Fermion" -> "F"}];
-      
+
    (* Commented out 5/3-2000.
       I think its redundant and definitions on SUNIndex slow down everything. *)
    (* Well - not quite so. Uncommented again 21/5-2001 *)
-   
+
    NM[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
    NM[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= NM[a, b[SUNIndex[i]], c];
    Times[a___, b : IsoVector[__][_], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
    Times[a___, b : IsoVector[__], c___][SUNIndex[i_]] ^:= Times[a, b[SUNIndex[i]], c];
-   
+
    NM[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
    NM[a___, b : IsoVector[__], c___][UIndex[i_]] ^:= NM[a, b[UIndex[i]], c];
    Times[a___, b : IsoVector[__][_], c___][UIndex[i_]] ^:= Times[a, b[UIndex[i]], c];
@@ -307,11 +307,11 @@ have a meson-field dependence.";
     Unfortunately it slows down things, so we might want to add an option
     to disable it...*)(*Moved here from Contract.m, 28/2-2003,
     because Rolf commented it out there...*)
-    Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :> 
-    inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@ 
+    Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c___] :>
+    inv[(1/Times @@ Select[{a, b, c}, MatchQ[#, _^-1] &])](Times @@
           Select[{a, b, c}, ! MatchQ[#, _^-1] &]), opts] /. inv -> ((1/#)&))/;
    !FreeQ[{x}, _Pair^-1];,
-   
+
    Remove[$FeynCalcDirectory]
 
 ];
@@ -323,16 +323,16 @@ Amplitude[];
 (*Get the PHI amps*)
 Block[{phiAmpList, dum, names, dir},
 dir = ToFileName[{$FeynCalcDirectory, "Phi", "CouplingVectors"}];
- names = 
-  StringReplace[StringReplace[#, dir -> ""], ".Gen" -> ""] & /@ 
-    FileNames["*.Gen", 
-      dir]; phiAmpList = (# :> 
-          FAToFC[{CheckDB[dum, # <> ".Gen", ForceSave -> False, 
-                    NoSave -> True].((#[[1]]) & /@ 
-                      CheckDB[dum, # <> ".Mod", ForceSave -> False, 
+ names =
+  StringReplace[StringReplace[#, dir -> ""], ".Gen" -> ""] & /@
+    FileNames["*.Gen",
+      dir]; phiAmpList = (# :>
+          FAToFC[{CheckDB[dum, # <> ".Gen", ForceSave -> False,
+                    NoSave -> True].((#[[1]]) & /@
+                      CheckDB[dum, # <> ".Mod", ForceSave -> False,
                         NoSave -> True])}][[1]]) & /@ names;
 (*Modify amplist*)
-HighEnergyPhysics`fctables`Amplitude`Private`amplist = 
+HighEnergyPhysics`fctables`Amplitude`Private`amplist =
     Union[HighEnergyPhysics`fctables`Amplitude`Private`amplist,
           phiAmpList]];
 
@@ -434,7 +434,7 @@ LoadLagrangian/@Global`$Lagrangians;
 
 (* Setting of $VerticesSpecifications using all stored vertices
    belonging to the chosen configuration *)
-$VerticesSpecifications = 
+$VerticesSpecifications =
   VerticesSpecifications[$Configuration, $FAParticlesInUse, $ParticleTypes];
 
 (* ************************************************************** *)
@@ -498,7 +498,7 @@ Scalar[0],ar___RenormalizationState,
 br___RenormalizationScheme,cr___ExpansionState,
 opts___Rule|opts___List]],opts1___][x_]:=
 IsoVector[QuantumField[Particle[Scalar[2],ar,br,cr]],opts1][x];
-                        
+
 QuantumField[Particle[
 Scalar[0],ar___RenormalizationState,
 br___RenormalizationScheme,cr___ExpansionState,

@@ -8,7 +8,7 @@
 (* :History: File created on ? *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: TIDL *) 
+(* :Summary: TIDL *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -37,7 +37,7 @@ Options[TIDL] = {Dimension -> D};
 
 TIDL[{a_/;Head[a]=!=List, b_/;Head[b]=!=List},c__] := TIDL[{{a,b}},c];
 
-TIDL[a_List, b_List, opt___Rule] := 
+TIDL[a_List, b_List, opt___Rule] :=
  Block[{en, rr},
        en = Dimension /. {opt} /. Options[TIDL];
         rr = tidl[a, b, en] /. tidlist;
@@ -62,7 +62,7 @@ tidl[{{q1_,mu_},{q2_,nu_}},{},n_] :>
 tidl[{{q_,mu_},{q_,nu_},{q_,rho_}},{},n_] :> 0
 ,
 tidl[{{q_,mu_},{q_,nu_},{q_,rho_},{q_,si_}},{},n_] :>
-((MT[mu, si]*MT[nu, rho] + MT[mu, rho]*MT[nu, si] + 
+((MT[mu, si]*MT[nu, rho] + MT[mu, rho]*MT[nu, si] +
        MT[mu, nu]*MT[rho, si])*SP[q, q]^2)/(n*(2 + n))
 ,
 tidl[{{q1_,mu_},{q2_,nu_},{q3_,rho_},{q4_,si_}},{},n_] :>
@@ -78,7 +78,7 @@ ChangeDimension[
    (X1*(2 + X1)*(1 - X1^2)), n ]
 ],
 (* Bmu *)
-tidl[{{q_,mu_}},{p_},n_] :> 
+tidl[{{q_,mu_}},{p_},n_] :>
 (
    (Pair[LorentzIndex[mu, n], Momentum[p, n]]*
      Pair[Momentum[p, n], Momentum[q, n]])/
@@ -104,12 +104,12 @@ tidl[{{q1_,mu_},{q2_,nu_}},{p_},n_] :>
 tidl[{{q_,mu_},{q_,nu_},{q_,rho_}},{p_},n_] :>
 ChangeDimension[
   -((FV[p, mu]*FV[p, nu]*FV[p, rho]*SP[p, q]*
-((2 + n)*SP[p, q]^2 - 3*SP[p, p]*SP[q, q]))/((1 - n)*SP[p, p]^3)) + 
+((2 + n)*SP[p, q]^2 - 3*SP[p, p]*SP[q, q]))/((1 - n)*SP[p, p]^3)) +
    (FV[p, rho]*MT[mu, nu]*SP[p, q]*(SP[p, q]^2 - SP[p, p]*SP[q, q]))/
     ((1 - n)*SP[p, p]^2) + (FV[p, nu]*MT[mu, rho]*SP[p, q]*
-      (SP[p, q]^2 - SP[p, p]*SP[q, q]))/((1 - n)*SP[p, p]^2) + 
+      (SP[p, q]^2 - SP[p, p]*SP[q, q]))/((1 - n)*SP[p, p]^2) +
    (FV[p, mu]*MT[nu, rho]*SP[p, q]*(SP[p, q]^2 - SP[p, p]*SP[q, q]))/
-    ((1 - n)*SP[p, p]^2),n]  /; 
+    ((1 - n)*SP[p, p]^2),n]  /;
 Pair[Momentum[p, n], Momentum[p, n]] =!= 0
 ,
 (* Bmunurhosigma *)
@@ -117,17 +117,17 @@ tidl[{{q_,mu_},{q_,nu_},{q_,rho_},{q_,si_}},{p_},n_] :>
 ChangeDimension[
 (SP[p, p]*(-SP[p, q]^2 + SP[p, p]*SP[q, q])*
      (FV[p, nu]*FV[p, si]*MT[mu, rho]*
-        ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q]) + 
+        ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q]) +
        FV[p, rho]*(FV[p, si]*MT[mu, nu] + FV[p, nu]*MT[mu, si])*
-        ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q]) + 
-       (MT[mu, si]*MT[nu, rho] + MT[mu, rho]*MT[nu, si] + 
-   MT[mu, nu]*MT[rho, si])*SP[p, p]*(-SP[p, q]^2 + SP[p, p]*SP[q, q])) + 
+        ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q]) +
+       (MT[mu, si]*MT[nu, rho] + MT[mu, rho]*MT[nu, si] +
+   MT[mu, nu]*MT[rho, si])*SP[p, p]*(-SP[p, q]^2 + SP[p, p]*SP[q, q])) +
 FV[p, mu]*(-((FV[p, si]*MT[nu, rho] + FV[p, rho]*MT[nu, si])*SP[p, p]*
           (SP[p, q]^2 - SP[p, p]*SP[q, q])*
-          ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q])) - 
+          ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q])) -
        FV[p, nu]*(MT[rho, si]*SP[p, p]*(SP[p, q]^2 - SP[p, p]*SP[q, q])*
-           ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q]) + 
-          FV[p, rho]*FV[p, si]*(-((2 + n)*(4 + n)*SP[p, q]^4) + 
+           ((2 + n)*SP[p, q]^2 - SP[p, p]*SP[q, q]) +
+          FV[p, rho]*FV[p, si]*(-((2 + n)*(4 + n)*SP[p, q]^4) +
            6*(2 + n)*SP[p, p]*SP[p, q]^2*SP[q, q] - 3*SP[p, p]^2*SP[q, q]^2)
           )))/((-1 + n^2)*SP[p, p]^4)
              ,n] /; Pair[Momentum[p, n], Momentum[p, n]] =!= 0
@@ -137,20 +137,20 @@ tidl[{{qi_,al_}},{p_,k_},n_] :>
 (
   (Pair[LorentzIndex[al, n], Momentum[p, n]]*
        Pair[Momentum[k, n], Momentum[p, n]]*
-       Pair[Momentum[k, n], Momentum[qi, n]] - 
+       Pair[Momentum[k, n], Momentum[qi, n]] -
       Pair[LorentzIndex[al, n], Momentum[p, n]]*
        Pair[Momentum[k, n], Momentum[k, n]]*
-       Pair[Momentum[p, n], Momentum[qi, n]])/ 
-(Pair[Momentum[k, n], Momentum[p, n]]^2 - 
+       Pair[Momentum[p, n], Momentum[qi, n]])/
+(Pair[Momentum[k, n], Momentum[p, n]]^2 -
       Pair[Momentum[k, n], Momentum[k, n]]*
-       Pair[Momentum[p, n], Momentum[p, n]]) + 
+       Pair[Momentum[p, n], Momentum[p, n]]) +
    (-(Pair[LorentzIndex[al, n], Momentum[k, n]]*
          Pair[Momentum[k, n], Momentum[qi, n]]*
-         Pair[Momentum[p, n], Momentum[p, n]]) + 
+         Pair[Momentum[p, n], Momentum[p, n]]) +
       Pair[LorentzIndex[al, n], Momentum[k, n]]*
        Pair[Momentum[k, n], Momentum[p, n]]*
        Pair[Momentum[p, n], Momentum[qi, n]])/
-    (Pair[Momentum[k, n], Momentum[p, n]]^2 - 
+    (Pair[Momentum[k, n], Momentum[p, n]]^2 -
       Pair[Momentum[k, n], Momentum[k, n]]*
        Pair[Momentum[p, n], Momentum[p, n]])
 ) /; Expand[ExpandScalarProduct[
@@ -187,7 +187,7 @@ dD*g^2*h*m + f*g*l*m - dD*f*g*l*m - g^3*n + f*g*k*n))/
 (g*h*i*k - dD*g*h*i*k - g^2*i*l + dD*g^2*i*l + g^2*h*m - 2*f*h*k*m +
 dD*f*h*k*m + f*g*l*m - dD*f*g*l*m - g^3*n + f*g*k*n))/
 ((-2 + dD)*(g^2 - f*k)^2) + (b*d*
-(-(h*i*k^2) + dD*h*i*k^2 + g*i*k*l - dD*g*i*k*l + g*h*k*m - 
+(-(h*i*k^2) + dD*h*i*k^2 + g*i*k*l - dD*g*i*k*l + g*h*k*m -
 dD*g*h*k*m -
 2*g^2*l*m + dD*g^2*l*m + f*k*l*m + g^2*k*n - f*k^2*n))/
 ((-2 + dD)*(g^2 - f*k)^2)
@@ -324,144 +324,144 @@ L[19] = Pair[LorentzIndex[rho, n], Momentum[p1, n]];
 L[20] = Pair[LorentzIndex[si, n], Momentum[p1, n]];
 L[21] = -2 + n;
 L[22] = id[L[3]]^2 - id[L[4]]*id[L[5]];
-L[23] = ( id[L[5]]*id[L[6]]^2 - 
-  2*id[L[3]]*id[L[6]]*id[L[7]] + 
-  id[L[4]]*id[L[7]]^2 + id[L[3]]^2*id[L[8]] - 
+L[23] = ( id[L[5]]*id[L[6]]^2 -
+  2*id[L[3]]*id[L[6]]*id[L[7]] +
+  id[L[4]]*id[L[7]]^2 + id[L[3]]^2*id[L[8]] -
   id[L[4]]*id[L[5]]*id[L[8]]
        );
-L[24] = ( n*id[L[3]]^2*id[L[6]]^2 + 
-  id[L[4]]*id[L[5]]*id[L[6]]^2 - 
-  2*id[L[3]]*id[L[4]]*id[L[6]]*id[L[7]] - 
-  2*n*id[L[3]]*id[L[4]]*id[L[6]]*id[L[7]] + 
-  id[L[4]]^2*id[L[7]]^2 + n*id[L[4]]^2*id[L[7]]^2 + 
-  id[L[3]]^2*id[L[4]]*id[L[8]] - 
+L[24] = ( n*id[L[3]]^2*id[L[6]]^2 +
+  id[L[4]]*id[L[5]]*id[L[6]]^2 -
+  2*id[L[3]]*id[L[4]]*id[L[6]]*id[L[7]] -
+  2*n*id[L[3]]*id[L[4]]*id[L[6]]*id[L[7]] +
+  id[L[4]]^2*id[L[7]]^2 + n*id[L[4]]^2*id[L[7]]^2 +
+  id[L[3]]^2*id[L[4]]*id[L[8]] -
   id[L[4]]^2*id[L[5]]*id[L[8]]
        );
-L[25] = ( -2*n*id[L[3]]^4*id[L[6]]^4 + 
-  n^2*id[L[3]]^4*id[L[6]]^4 + 
-  6*n*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]^4 + 
-  3*id[L[4]]^2*id[L[5]]^2*id[L[6]]^4 - 
-  4*n*id[L[3]]^3*id[L[4]]*id[L[6]]^3*id[L[7]] - 
-  4*n^2*id[L[3]]^3*id[L[4]]*id[L[6]]^3*id[L[7]] - 
+L[25] = ( -2*n*id[L[3]]^4*id[L[6]]^4 +
+  n^2*id[L[3]]^4*id[L[6]]^4 +
+  6*n*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]^4 +
+  3*id[L[4]]^2*id[L[5]]^2*id[L[6]]^4 -
+  4*n*id[L[3]]^3*id[L[4]]*id[L[6]]^3*id[L[7]] -
+  4*n^2*id[L[3]]^3*id[L[4]]*id[L[6]]^3*id[L[7]] -
   12*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[6]]^3*
    id[L[7]] - 12*n*id[L[3]]*id[L[4]]^2*id[L[5]]*
-   id[L[6]]^3*id[L[7]] + 
-  12*id[L[3]]^2*id[L[4]]^2*id[L[6]]^2*id[L[7]]^2 + 
-  18*n*id[L[3]]^2*id[L[4]]^2*id[L[6]]^2*id[L[7]]^2 + 
-  6*n^2*id[L[3]]^2*id[L[4]]^2*id[L[6]]^2*id[L[7]]^2 + 
-  6*id[L[4]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 + 
-  6*n*id[L[4]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 - 
-  12*id[L[3]]*id[L[4]]^3*id[L[6]]*id[L[7]]^3 - 
-  16*n*id[L[3]]*id[L[4]]^3*id[L[6]]*id[L[7]]^3 - 
-  4*n^2*id[L[3]]*id[L[4]]^3*id[L[6]]*id[L[7]]^3 + 
-  3*id[L[4]]^4*id[L[7]]^4 + 
-  4*n*id[L[4]]^4*id[L[7]]^4 + 
-  n^2*id[L[4]]^4*id[L[7]]^4 + 
-  6*n*id[L[3]]^4*id[L[4]]*id[L[6]]^2*id[L[8]] + 
+   id[L[6]]^3*id[L[7]] +
+  12*id[L[3]]^2*id[L[4]]^2*id[L[6]]^2*id[L[7]]^2 +
+  18*n*id[L[3]]^2*id[L[4]]^2*id[L[6]]^2*id[L[7]]^2 +
+  6*n^2*id[L[3]]^2*id[L[4]]^2*id[L[6]]^2*id[L[7]]^2 +
+  6*id[L[4]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 +
+  6*n*id[L[4]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 -
+  12*id[L[3]]*id[L[4]]^3*id[L[6]]*id[L[7]]^3 -
+  16*n*id[L[3]]*id[L[4]]^3*id[L[6]]*id[L[7]]^3 -
+  4*n^2*id[L[3]]*id[L[4]]^3*id[L[6]]*id[L[7]]^3 +
+  3*id[L[4]]^4*id[L[7]]^4 +
+  4*n*id[L[4]]^4*id[L[7]]^4 +
+  n^2*id[L[4]]^4*id[L[7]]^4 +
+  6*n*id[L[3]]^4*id[L[4]]*id[L[6]]^2*id[L[8]] +
   6*id[L[3]]^2*id[L[4]]^2*id[L[5]]*id[L[6]]^2*
    id[L[8]] - 6*n*id[L[3]]^2*id[L[4]]^2*id[L[5]]*
-   id[L[6]]^2*id[L[8]] - 
-  6*id[L[4]]^3*id[L[5]]^2*id[L[6]]^2*id[L[8]] - 
+   id[L[6]]^2*id[L[8]] -
+  6*id[L[4]]^3*id[L[5]]^2*id[L[6]]^2*id[L[8]] -
   12*id[L[3]]^3*id[L[4]]^2*id[L[6]]*id[L[7]]*
    id[L[8]] - 12*n*id[L[3]]^3*id[L[4]]^2*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   12*id[L[3]]*id[L[4]]^3*id[L[5]]*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   12*n*id[L[3]]*id[L[4]]^3*id[L[5]]*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
-  6*id[L[3]]^2*id[L[4]]^3*id[L[7]]^2*id[L[8]] + 
-  6*n*id[L[3]]^2*id[L[4]]^3*id[L[7]]^2*id[L[8]] - 
-  6*id[L[4]]^4*id[L[5]]*id[L[7]]^2*id[L[8]] - 
-  6*n*id[L[4]]^4*id[L[5]]*id[L[7]]^2*id[L[8]] + 
-  3*id[L[3]]^4*id[L[4]]^2*id[L[8]]^2 - 
-  6*id[L[3]]^2*id[L[4]]^3*id[L[5]]*id[L[8]]^2 + 
+   id[L[7]]*id[L[8]] +
+  6*id[L[3]]^2*id[L[4]]^3*id[L[7]]^2*id[L[8]] +
+  6*n*id[L[3]]^2*id[L[4]]^3*id[L[7]]^2*id[L[8]] -
+  6*id[L[4]]^4*id[L[5]]*id[L[7]]^2*id[L[8]] -
+  6*n*id[L[4]]^4*id[L[5]]*id[L[7]]^2*id[L[8]] +
+  3*id[L[3]]^4*id[L[4]]^2*id[L[8]]^2 -
+  6*id[L[3]]^2*id[L[4]]^3*id[L[5]]*id[L[8]]^2 +
   3*id[L[4]]^4*id[L[5]]^2*id[L[8]]^2
        );
-L[26] = ( -(id[L[3]]*id[L[5]]*id[L[6]]^2) - 
-  n*id[L[3]]*id[L[5]]*id[L[6]]^2 + 
-  2*id[L[3]]^2*id[L[6]]*id[L[7]] + 
-  n*id[L[3]]^2*id[L[6]]*id[L[7]] + 
-  n*id[L[4]]*id[L[5]]*id[L[6]]*id[L[7]] - 
-  id[L[3]]*id[L[4]]*id[L[7]]^2 - 
-  n*id[L[3]]*id[L[4]]*id[L[7]]^2 - 
-  id[L[3]]^3*id[L[8]] + 
+L[26] = ( -(id[L[3]]*id[L[5]]*id[L[6]]^2) -
+  n*id[L[3]]*id[L[5]]*id[L[6]]^2 +
+  2*id[L[3]]^2*id[L[6]]*id[L[7]] +
+  n*id[L[3]]^2*id[L[6]]*id[L[7]] +
+  n*id[L[4]]*id[L[5]]*id[L[6]]*id[L[7]] -
+  id[L[3]]*id[L[4]]*id[L[7]]^2 -
+  n*id[L[3]]*id[L[4]]*id[L[7]]^2 -
+  id[L[3]]^3*id[L[8]] +
   id[L[3]]*id[L[4]]*id[L[5]]*id[L[8]]
        );
-L[27] = ( -(n*id[L[3]]^3*id[L[5]]*id[L[6]]^4) - 
-  n^2*id[L[3]]^3*id[L[5]]*id[L[6]]^4 - 
-  3*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^4 - 
-  3*n*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^4 + 
-  4*n*id[L[3]]^4*id[L[6]]^3*id[L[7]] + 
-  n^2*id[L[3]]^4*id[L[6]]^3*id[L[7]] + 
+L[27] = ( -(n*id[L[3]]^3*id[L[5]]*id[L[6]]^4) -
+  n^2*id[L[3]]^3*id[L[5]]*id[L[6]]^4 -
+  3*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^4 -
+  3*n*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^4 +
+  4*n*id[L[3]]^4*id[L[6]]^3*id[L[7]] +
+  n^2*id[L[3]]^4*id[L[6]]^3*id[L[7]] +
   12*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]^3*
    id[L[7]] + 9*n*id[L[3]]^2*id[L[4]]*id[L[5]]*
-   id[L[6]]^3*id[L[7]] + 
+   id[L[6]]^3*id[L[7]] +
   3*n^2*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]^3*
    id[L[7]] + 3*n*id[L[4]]^2*id[L[5]]^2*id[L[6]]^3*
    id[L[7]] - 12*id[L[3]]^3*id[L[4]]*id[L[6]]^2*
    id[L[7]]^2 - 15*n*id[L[3]]^3*id[L[4]]*id[L[6]]^2*
    id[L[7]]^2 - 3*n^2*id[L[3]]^3*id[L[4]]*id[L[6]]^2*
    id[L[7]]^2 - 6*id[L[3]]*id[L[4]]^2*id[L[5]]*
-   id[L[6]]^2*id[L[7]]^2 - 
+   id[L[6]]^2*id[L[7]]^2 -
   9*n*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[6]]^2*
    id[L[7]]^2 - 3*n^2*id[L[3]]*id[L[4]]^2*id[L[5]]*
-   id[L[6]]^2*id[L[7]]^2 + 
-  12*id[L[3]]^2*id[L[4]]^2*id[L[6]]*id[L[7]]^3 + 
-  15*n*id[L[3]]^2*id[L[4]]^2*id[L[6]]*id[L[7]]^3 + 
-  3*n^2*id[L[3]]^2*id[L[4]]^2*id[L[6]]*id[L[7]]^3 + 
-  n*id[L[4]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 + 
-  n^2*id[L[4]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 - 
-  3*id[L[3]]*id[L[4]]^3*id[L[7]]^4 - 
-  4*n*id[L[3]]*id[L[4]]^3*id[L[7]]^4 - 
-  n^2*id[L[3]]*id[L[4]]^3*id[L[7]]^4 - 
-  3*n*id[L[3]]^5*id[L[6]]^2*id[L[8]] - 
+   id[L[6]]^2*id[L[7]]^2 +
+  12*id[L[3]]^2*id[L[4]]^2*id[L[6]]*id[L[7]]^3 +
+  15*n*id[L[3]]^2*id[L[4]]^2*id[L[6]]*id[L[7]]^3 +
+  3*n^2*id[L[3]]^2*id[L[4]]^2*id[L[6]]*id[L[7]]^3 +
+  n*id[L[4]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 +
+  n^2*id[L[4]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 -
+  3*id[L[3]]*id[L[4]]^3*id[L[7]]^4 -
+  4*n*id[L[3]]*id[L[4]]^3*id[L[7]]^4 -
+  n^2*id[L[3]]*id[L[4]]^3*id[L[7]]^4 -
+  3*n*id[L[3]]^5*id[L[6]]^2*id[L[8]] -
   6*id[L[3]]^3*id[L[4]]*id[L[5]]*id[L[6]]^2*
    id[L[8]] + 6*id[L[3]]*id[L[4]]^2*id[L[5]]^2*
-   id[L[6]]^2*id[L[8]] + 
+   id[L[6]]^2*id[L[8]] +
   3*n*id[L[3]]*id[L[4]]^2*id[L[5]]^2*id[L[6]]^2*
    id[L[8]] + 12*id[L[3]]^4*id[L[4]]*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   9*n*id[L[3]]^4*id[L[4]]*id[L[6]]*id[L[7]]*
    id[L[8]] - 12*id[L[3]]^2*id[L[4]]^2*id[L[5]]*
-   id[L[6]]*id[L[7]]*id[L[8]] - 
+   id[L[6]]*id[L[7]]*id[L[8]] -
   6*n*id[L[3]]^2*id[L[4]]^2*id[L[5]]*id[L[6]]*
-   id[L[7]]*id[L[8]] - 
+   id[L[7]]*id[L[8]] -
   3*n*id[L[4]]^3*id[L[5]]^2*id[L[6]]*id[L[7]]*
    id[L[8]] - 6*id[L[3]]^3*id[L[4]]^2*id[L[7]]^2*
    id[L[8]] - 6*n*id[L[3]]^3*id[L[4]]^2*id[L[7]]^2*
    id[L[8]] + 6*id[L[3]]*id[L[4]]^3*id[L[5]]*
-   id[L[7]]^2*id[L[8]] + 
+   id[L[7]]^2*id[L[8]] +
   6*n*id[L[3]]*id[L[4]]^3*id[L[5]]*id[L[7]]^2*
-   id[L[8]] - 3*id[L[3]]^5*id[L[4]]*id[L[8]]^2 + 
-  6*id[L[3]]^3*id[L[4]]^2*id[L[5]]*id[L[8]]^2 - 
+   id[L[8]] - 3*id[L[3]]^5*id[L[4]]*id[L[8]]^2 +
+  6*id[L[3]]^3*id[L[4]]^2*id[L[5]]*id[L[8]]^2 -
   3*id[L[3]]*id[L[4]]^3*id[L[5]]^2*id[L[8]]^2
        );
-L[28] = ( id[L[5]]^2*id[L[6]]^2 + n*id[L[5]]^2*id[L[6]]^2 - 
-  2*id[L[3]]*id[L[5]]*id[L[6]]*id[L[7]] - 
-  2*n*id[L[3]]*id[L[5]]*id[L[6]]*id[L[7]] + 
-  n*id[L[3]]^2*id[L[7]]^2 + 
-  id[L[4]]*id[L[5]]*id[L[7]]^2 + 
-  id[L[3]]^2*id[L[5]]*id[L[8]] - 
+L[28] = ( id[L[5]]^2*id[L[6]]^2 + n*id[L[5]]^2*id[L[6]]^2 -
+  2*id[L[3]]*id[L[5]]*id[L[6]]*id[L[7]] -
+  2*n*id[L[3]]*id[L[5]]*id[L[6]]*id[L[7]] +
+  n*id[L[3]]^2*id[L[7]]^2 +
+  id[L[4]]*id[L[5]]*id[L[7]]^2 +
+  id[L[3]]^2*id[L[5]]*id[L[8]] -
   id[L[4]]*id[L[5]]^2*id[L[8]]
        );
-L[29] = ( 2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 + 
-  3*n*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 + 
-  n^2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 + 
-  id[L[4]]*id[L[5]]^3*id[L[6]]^4 + 
-  n*id[L[4]]*id[L[5]]^3*id[L[6]]^4 - 
-  8*id[L[3]]^3*id[L[5]]*id[L[6]]^3*id[L[7]] - 
-  10*n*id[L[3]]^3*id[L[5]]*id[L[6]]^3*id[L[7]] - 
-  2*n^2*id[L[3]]^3*id[L[5]]*id[L[6]]^3*id[L[7]] - 
+L[29] = ( 2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 +
+  3*n*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 +
+  n^2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 +
+  id[L[4]]*id[L[5]]^3*id[L[6]]^4 +
+  n*id[L[4]]*id[L[5]]^3*id[L[6]]^4 -
+  8*id[L[3]]^3*id[L[5]]*id[L[6]]^3*id[L[7]] -
+  10*n*id[L[3]]^3*id[L[5]]*id[L[6]]^3*id[L[7]] -
+  2*n^2*id[L[3]]^3*id[L[5]]*id[L[6]]^3*id[L[7]] -
   4*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^3*
    id[L[7]] - 6*n*id[L[3]]*id[L[4]]*id[L[5]]^2*
-   id[L[6]]^3*id[L[7]] - 
+   id[L[6]]^3*id[L[7]] -
   2*n^2*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^3*
-   id[L[7]] + 8*id[L[3]]^4*id[L[6]]^2*id[L[7]]^2 + 
-  6*n*id[L[3]]^4*id[L[6]]^2*id[L[7]]^2 + 
-  n^2*id[L[3]]^4*id[L[6]]^2*id[L[7]]^2 + 
+   id[L[7]] + 8*id[L[3]]^4*id[L[6]]^2*id[L[7]]^2 +
+  6*n*id[L[3]]^4*id[L[6]]^2*id[L[7]]^2 +
+  n^2*id[L[3]]^4*id[L[6]]^2*id[L[7]]^2 +
   8*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]^2*
    id[L[7]]^2 + 18*n*id[L[3]]^2*id[L[4]]*id[L[5]]*
-   id[L[6]]^2*id[L[7]]^2 + 
+   id[L[6]]^2*id[L[7]]^2 +
   4*n^2*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]^2*
    id[L[7]]^2 + 2*id[L[4]]^2*id[L[5]]^2*id[L[6]]^2*
    id[L[7]]^2 + n^2*id[L[4]]^2*id[L[5]]^2*id[L[6]]^2*
@@ -469,213 +469,213 @@ L[29] = ( 2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^4 +
    id[L[7]]^3 - 10*n*id[L[3]]^3*id[L[4]]*id[L[6]]*
    id[L[7]]^3 - 2*n^2*id[L[3]]^3*id[L[4]]*id[L[6]]*
    id[L[7]]^3 - 4*id[L[3]]*id[L[4]]^2*id[L[5]]*
-   id[L[6]]*id[L[7]]^3 - 
+   id[L[6]]*id[L[7]]^3 -
   6*n*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[6]]*
    id[L[7]]^3 - 2*n^2*id[L[3]]*id[L[4]]^2*id[L[5]]*
-   id[L[6]]*id[L[7]]^3 + 
-  2*id[L[3]]^2*id[L[4]]^2*id[L[7]]^4 + 
-  3*n*id[L[3]]^2*id[L[4]]^2*id[L[7]]^4 + 
-  n^2*id[L[3]]^2*id[L[4]]^2*id[L[7]]^4 + 
-  id[L[4]]^3*id[L[5]]*id[L[7]]^4 + 
-  n*id[L[4]]^3*id[L[5]]*id[L[7]]^4 + 
-  4*id[L[3]]^4*id[L[5]]*id[L[6]]^2*id[L[8]] + 
-  5*n*id[L[3]]^4*id[L[5]]*id[L[6]]^2*id[L[8]] - 
+   id[L[6]]*id[L[7]]^3 +
+  2*id[L[3]]^2*id[L[4]]^2*id[L[7]]^4 +
+  3*n*id[L[3]]^2*id[L[4]]^2*id[L[7]]^4 +
+  n^2*id[L[3]]^2*id[L[4]]^2*id[L[7]]^4 +
+  id[L[4]]^3*id[L[5]]*id[L[7]]^4 +
+  n*id[L[4]]^3*id[L[5]]*id[L[7]]^4 +
+  4*id[L[3]]^4*id[L[5]]*id[L[6]]^2*id[L[8]] +
+  5*n*id[L[3]]^4*id[L[5]]*id[L[6]]^2*id[L[8]] -
   2*id[L[3]]^2*id[L[4]]*id[L[5]]^2*id[L[6]]^2*
    id[L[8]] - 4*n*id[L[3]]^2*id[L[4]]*id[L[5]]^2*
-   id[L[6]]^2*id[L[8]] - 
-  2*id[L[4]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] - 
-  n*id[L[4]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] - 
-  8*id[L[3]]^5*id[L[6]]*id[L[7]]*id[L[8]] - 
-  4*n*id[L[3]]^5*id[L[6]]*id[L[7]]*id[L[8]] + 
+   id[L[6]]^2*id[L[8]] -
+  2*id[L[4]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] -
+  n*id[L[4]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] -
+  8*id[L[3]]^5*id[L[6]]*id[L[7]]*id[L[8]] -
+  4*n*id[L[3]]^5*id[L[6]]*id[L[7]]*id[L[8]] +
   4*id[L[3]]^3*id[L[4]]*id[L[5]]*id[L[6]]*
-   id[L[7]]*id[L[8]] - 
+   id[L[7]]*id[L[8]] -
   4*n*id[L[3]]^3*id[L[4]]*id[L[5]]*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   4*id[L[3]]*id[L[4]]^2*id[L[5]]^2*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   8*n*id[L[3]]*id[L[4]]^2*id[L[5]]^2*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
-  4*id[L[3]]^4*id[L[4]]*id[L[7]]^2*id[L[8]] + 
-  5*n*id[L[3]]^4*id[L[4]]*id[L[7]]^2*id[L[8]] - 
+   id[L[7]]*id[L[8]] +
+  4*id[L[3]]^4*id[L[4]]*id[L[7]]^2*id[L[8]] +
+  5*n*id[L[3]]^4*id[L[4]]*id[L[7]]^2*id[L[8]] -
   2*id[L[3]]^2*id[L[4]]^2*id[L[5]]*id[L[7]]^2*
    id[L[8]] - 4*n*id[L[3]]^2*id[L[4]]^2*id[L[5]]*
-   id[L[7]]^2*id[L[8]] - 
-  2*id[L[4]]^3*id[L[5]]^2*id[L[7]]^2*id[L[8]] - 
-  n*id[L[4]]^3*id[L[5]]^2*id[L[7]]^2*id[L[8]] + 
-  2*id[L[3]]^6*id[L[8]]^2 - 
-  3*id[L[3]]^4*id[L[4]]*id[L[5]]*id[L[8]]^2 + 
+   id[L[7]]^2*id[L[8]] -
+  2*id[L[4]]^3*id[L[5]]^2*id[L[7]]^2*id[L[8]] -
+  n*id[L[4]]^3*id[L[5]]^2*id[L[7]]^2*id[L[8]] +
+  2*id[L[3]]^6*id[L[8]]^2 -
+  3*id[L[3]]^4*id[L[4]]*id[L[5]]*id[L[8]]^2 +
   id[L[4]]^3*id[L[5]]^3*id[L[8]]^2
        );
-L[30] = ( -3*id[L[3]]*id[L[5]]^3*id[L[6]]^4 - 
-  4*n*id[L[3]]*id[L[5]]^3*id[L[6]]^4 - 
-  n^2*id[L[3]]*id[L[5]]^3*id[L[6]]^4 + 
-  12*id[L[3]]^2*id[L[5]]^2*id[L[6]]^3*id[L[7]] + 
-  15*n*id[L[3]]^2*id[L[5]]^2*id[L[6]]^3*id[L[7]] + 
-  3*n^2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^3*id[L[7]] + 
-  n*id[L[4]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] + 
-  n^2*id[L[4]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] - 
-  12*id[L[3]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 - 
-  15*n*id[L[3]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 - 
-  3*n^2*id[L[3]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 - 
+L[30] = ( -3*id[L[3]]*id[L[5]]^3*id[L[6]]^4 -
+  4*n*id[L[3]]*id[L[5]]^3*id[L[6]]^4 -
+  n^2*id[L[3]]*id[L[5]]^3*id[L[6]]^4 +
+  12*id[L[3]]^2*id[L[5]]^2*id[L[6]]^3*id[L[7]] +
+  15*n*id[L[3]]^2*id[L[5]]^2*id[L[6]]^3*id[L[7]] +
+  3*n^2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^3*id[L[7]] +
+  n*id[L[4]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] +
+  n^2*id[L[4]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] -
+  12*id[L[3]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 -
+  15*n*id[L[3]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 -
+  3*n^2*id[L[3]]^3*id[L[5]]*id[L[6]]^2*id[L[7]]^2 -
   6*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^2*
    id[L[7]]^2 - 9*n*id[L[3]]*id[L[4]]*id[L[5]]^2*
-   id[L[6]]^2*id[L[7]]^2 - 
+   id[L[6]]^2*id[L[7]]^2 -
   3*n^2*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]^2*
-   id[L[7]]^2 + 4*n*id[L[3]]^4*id[L[6]]*id[L[7]]^3 + 
-  n^2*id[L[3]]^4*id[L[6]]*id[L[7]]^3 + 
+   id[L[7]]^2 + 4*n*id[L[3]]^4*id[L[6]]*id[L[7]]^3 +
+  n^2*id[L[3]]^4*id[L[6]]*id[L[7]]^3 +
   12*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]*
    id[L[7]]^3 + 9*n*id[L[3]]^2*id[L[4]]*id[L[5]]*
-   id[L[6]]*id[L[7]]^3 + 
+   id[L[6]]*id[L[7]]^3 +
   3*n^2*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[6]]*
    id[L[7]]^3 + 3*n*id[L[4]]^2*id[L[5]]^2*id[L[6]]*
-   id[L[7]]^3 - n*id[L[3]]^3*id[L[4]]*id[L[7]]^4 - 
-  n^2*id[L[3]]^3*id[L[4]]*id[L[7]]^4 - 
-  3*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[7]]^4 - 
-  3*n*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[7]]^4 - 
-  6*id[L[3]]^3*id[L[5]]^2*id[L[6]]^2*id[L[8]] - 
-  6*n*id[L[3]]^3*id[L[5]]^2*id[L[6]]^2*id[L[8]] + 
+   id[L[7]]^3 - n*id[L[3]]^3*id[L[4]]*id[L[7]]^4 -
+  n^2*id[L[3]]^3*id[L[4]]*id[L[7]]^4 -
+  3*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[7]]^4 -
+  3*n*id[L[3]]*id[L[4]]^2*id[L[5]]*id[L[7]]^4 -
+  6*id[L[3]]^3*id[L[5]]^2*id[L[6]]^2*id[L[8]] -
+  6*n*id[L[3]]^3*id[L[5]]^2*id[L[6]]^2*id[L[8]] +
   6*id[L[3]]*id[L[4]]*id[L[5]]^3*id[L[6]]^2*
    id[L[8]] + 6*n*id[L[3]]*id[L[4]]*id[L[5]]^3*
-   id[L[6]]^2*id[L[8]] + 
+   id[L[6]]^2*id[L[8]] +
   12*id[L[3]]^4*id[L[5]]*id[L[6]]*id[L[7]]*
    id[L[8]] + 9*n*id[L[3]]^4*id[L[5]]*id[L[6]]*
-   id[L[7]]*id[L[8]] - 
+   id[L[7]]*id[L[8]] -
   12*id[L[3]]^2*id[L[4]]*id[L[5]]^2*id[L[6]]*
-   id[L[7]]*id[L[8]] - 
+   id[L[7]]*id[L[8]] -
   6*n*id[L[3]]^2*id[L[4]]*id[L[5]]^2*id[L[6]]*
-   id[L[7]]*id[L[8]] - 
+   id[L[7]]*id[L[8]] -
   3*n*id[L[4]]^2*id[L[5]]^3*id[L[6]]*id[L[7]]*
-   id[L[8]] - 3*n*id[L[3]]^5*id[L[7]]^2*id[L[8]] - 
+   id[L[8]] - 3*n*id[L[3]]^5*id[L[7]]^2*id[L[8]] -
   6*id[L[3]]^3*id[L[4]]*id[L[5]]*id[L[7]]^2*
    id[L[8]] + 6*id[L[3]]*id[L[4]]^2*id[L[5]]^2*
-   id[L[7]]^2*id[L[8]] + 
+   id[L[7]]^2*id[L[8]] +
   3*n*id[L[3]]*id[L[4]]^2*id[L[5]]^2*id[L[7]]^2*
-   id[L[8]] - 3*id[L[3]]^5*id[L[5]]*id[L[8]]^2 + 
-  6*id[L[3]]^3*id[L[4]]*id[L[5]]^2*id[L[8]]^2 - 
+   id[L[8]] - 3*id[L[3]]^5*id[L[5]]*id[L[8]]^2 +
+  6*id[L[3]]^3*id[L[4]]*id[L[5]]^2*id[L[8]]^2 -
   3*id[L[3]]*id[L[4]]^2*id[L[5]]^3*id[L[8]]^2
        );
-L[31] = ( 3*id[L[5]]^4*id[L[6]]^4 + 4*n*id[L[5]]^4*id[L[6]]^4 + 
-  n^2*id[L[5]]^4*id[L[6]]^4 - 
-  12*id[L[3]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] - 
-  16*n*id[L[3]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] - 
-  4*n^2*id[L[3]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] + 
-  12*id[L[3]]^2*id[L[5]]^2*id[L[6]]^2*id[L[7]]^2 + 
-  18*n*id[L[3]]^2*id[L[5]]^2*id[L[6]]^2*id[L[7]]^2 + 
-  6*n^2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^2*id[L[7]]^2 + 
-  6*id[L[4]]*id[L[5]]^3*id[L[6]]^2*id[L[7]]^2 + 
-  6*n*id[L[4]]*id[L[5]]^3*id[L[6]]^2*id[L[7]]^2 - 
-  4*n*id[L[3]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 - 
-  4*n^2*id[L[3]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 - 
+L[31] = ( 3*id[L[5]]^4*id[L[6]]^4 + 4*n*id[L[5]]^4*id[L[6]]^4 +
+  n^2*id[L[5]]^4*id[L[6]]^4 -
+  12*id[L[3]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] -
+  16*n*id[L[3]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] -
+  4*n^2*id[L[3]]*id[L[5]]^3*id[L[6]]^3*id[L[7]] +
+  12*id[L[3]]^2*id[L[5]]^2*id[L[6]]^2*id[L[7]]^2 +
+  18*n*id[L[3]]^2*id[L[5]]^2*id[L[6]]^2*id[L[7]]^2 +
+  6*n^2*id[L[3]]^2*id[L[5]]^2*id[L[6]]^2*id[L[7]]^2 +
+  6*id[L[4]]*id[L[5]]^3*id[L[6]]^2*id[L[7]]^2 +
+  6*n*id[L[4]]*id[L[5]]^3*id[L[6]]^2*id[L[7]]^2 -
+  4*n*id[L[3]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 -
+  4*n^2*id[L[3]]^3*id[L[5]]*id[L[6]]*id[L[7]]^3 -
   12*id[L[3]]*id[L[4]]*id[L[5]]^2*id[L[6]]*
    id[L[7]]^3 - 12*n*id[L[3]]*id[L[4]]*id[L[5]]^2*
-   id[L[6]]*id[L[7]]^3 - 2*n*id[L[3]]^4*id[L[7]]^4 + 
-  n^2*id[L[3]]^4*id[L[7]]^4 + 
-  6*n*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[7]]^4 + 
-  3*id[L[4]]^2*id[L[5]]^2*id[L[7]]^4 + 
-  6*id[L[3]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] + 
-  6*n*id[L[3]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] - 
-  6*id[L[4]]*id[L[5]]^4*id[L[6]]^2*id[L[8]] - 
-  6*n*id[L[4]]*id[L[5]]^4*id[L[6]]^2*id[L[8]] - 
+   id[L[6]]*id[L[7]]^3 - 2*n*id[L[3]]^4*id[L[7]]^4 +
+  n^2*id[L[3]]^4*id[L[7]]^4 +
+  6*n*id[L[3]]^2*id[L[4]]*id[L[5]]*id[L[7]]^4 +
+  3*id[L[4]]^2*id[L[5]]^2*id[L[7]]^4 +
+  6*id[L[3]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] +
+  6*n*id[L[3]]^2*id[L[5]]^3*id[L[6]]^2*id[L[8]] -
+  6*id[L[4]]*id[L[5]]^4*id[L[6]]^2*id[L[8]] -
+  6*n*id[L[4]]*id[L[5]]^4*id[L[6]]^2*id[L[8]] -
   12*id[L[3]]^3*id[L[5]]^2*id[L[6]]*id[L[7]]*
    id[L[8]] - 12*n*id[L[3]]^3*id[L[5]]^2*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   12*id[L[3]]*id[L[4]]*id[L[5]]^3*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
   12*n*id[L[3]]*id[L[4]]*id[L[5]]^3*id[L[6]]*
-   id[L[7]]*id[L[8]] + 
-  6*n*id[L[3]]^4*id[L[5]]*id[L[7]]^2*id[L[8]] + 
+   id[L[7]]*id[L[8]] +
+  6*n*id[L[3]]^4*id[L[5]]*id[L[7]]^2*id[L[8]] +
   6*id[L[3]]^2*id[L[4]]*id[L[5]]^2*id[L[7]]^2*
    id[L[8]] - 6*n*id[L[3]]^2*id[L[4]]*id[L[5]]^2*
-   id[L[7]]^2*id[L[8]] - 
-  6*id[L[4]]^2*id[L[5]]^3*id[L[7]]^2*id[L[8]] + 
-  3*id[L[3]]^4*id[L[5]]^2*id[L[8]]^2 - 
-  6*id[L[3]]^2*id[L[4]]*id[L[5]]^3*id[L[8]]^2 + 
+   id[L[7]]^2*id[L[8]] -
+  6*id[L[4]]^2*id[L[5]]^3*id[L[7]]^2*id[L[8]] +
+  3*id[L[3]]^4*id[L[5]]^2*id[L[8]]^2 -
+  6*id[L[3]]^2*id[L[4]]*id[L[5]]^3*id[L[8]]^2 +
   3*id[L[4]]^2*id[L[5]]^4*id[L[8]]^2
        );
 L[32] = ( (id[L[1]]*id[L[2]]*id[L[23]]^2)/
-   (n*id[L[21]]*id[L[22]]^2) + 
+   (n*id[L[21]]*id[L[22]]^2) +
   (id[L[9]]*id[L[10]]*id[L[23]]^2)/
-   (n*id[L[21]]*id[L[22]]^2) + 
+   (n*id[L[21]]*id[L[22]]^2) +
   (id[L[11]]*id[L[12]]*id[L[23]]^2)/
-   (n*id[L[21]]*id[L[22]]^2) + 
+   (n*id[L[21]]*id[L[22]]^2) +
   (id[L[12]]*id[L[13]]*id[L[14]]*id[L[23]]*
-     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[10]]*id[L[13]]*id[L[15]]*id[L[23]]*
-     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[1]]*id[L[14]]*id[L[15]]*id[L[23]]*
-     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[2]]*id[L[13]]*id[L[16]]*id[L[23]]*
-     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[9]]*id[L[14]]*id[L[16]]*id[L[23]]*
-     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[11]]*id[L[15]]*id[L[16]]*id[L[23]]*
-     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[24]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[13]]*id[L[14]]*id[L[15]]*id[L[16]]*
-     id[L[25]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[25]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[12]]*id[L[13]]*id[L[17]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[1]]*id[L[15]]*id[L[17]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[9]]*id[L[16]]*id[L[17]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[12]]*id[L[14]]*id[L[18]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[10]]*id[L[15]]*id[L[18]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[2]]*id[L[16]]*id[L[18]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[10]]*id[L[13]]*id[L[19]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[1]]*id[L[14]]*id[L[19]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[11]]*id[L[16]]*id[L[19]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[2]]*id[L[13]]*id[L[20]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[9]]*id[L[14]]*id[L[20]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[11]]*id[L[15]]*id[L[20]]*id[L[23]]*
-     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[26]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[13]]*id[L[15]]*id[L[16]]*id[L[17]]*
-     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[14]]*id[L[15]]*id[L[16]]*id[L[18]]*
-     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[13]]*id[L[14]]*id[L[16]]*id[L[19]]*
-     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[13]]*id[L[14]]*id[L[15]]*id[L[20]]*
-     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[27]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[12]]*id[L[17]]*id[L[18]]*id[L[23]]*
-     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[1]]*id[L[17]]*id[L[19]]*id[L[23]]*
-     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[10]]*id[L[18]]*id[L[19]]*id[L[23]]*
-     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[9]]*id[L[17]]*id[L[20]]*id[L[23]]*
-     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[2]]*id[L[18]]*id[L[20]]*id[L[23]]*
-     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[11]]*id[L[19]]*id[L[20]]*id[L[23]]*
-     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) + 
+     id[L[28]])/(n*id[L[21]]*id[L[22]]^3) +
   (id[L[15]]*id[L[16]]*id[L[17]]*id[L[18]]*
-     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[13]]*id[L[16]]*id[L[17]]*id[L[19]]*
-     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[14]]*id[L[16]]*id[L[18]]*id[L[19]]*
-     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[13]]*id[L[15]]*id[L[17]]*id[L[20]]*
-     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[14]]*id[L[15]]*id[L[18]]*id[L[20]]*
-     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[13]]*id[L[14]]*id[L[19]]*id[L[20]]*
-     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[29]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[16]]*id[L[17]]*id[L[18]]*id[L[19]]*
-     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[15]]*id[L[17]]*id[L[18]]*id[L[20]]*
-     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[13]]*id[L[17]]*id[L[19]]*id[L[20]]*
-     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[14]]*id[L[18]]*id[L[19]]*id[L[20]]*
-     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) + 
+     id[L[30]])/(n*id[L[21]]*id[L[22]]^4) +
   (id[L[17]]*id[L[18]]*id[L[19]]*id[L[20]]*
      id[L[31]])/(n*id[L[21]]*id[L[22]]^4)
        )] /; Expand[ExpandScalarProduct[
@@ -685,11 +685,11 @@ L[32] = ( (id[L[1]]*id[L[2]]*id[L[23]]^2)/
            ] ] =!= 0
 ,
 (* Cmunurhosidelta *)
-tidl[{{q_, mu_}, {q_, nu_}, {q_, rho_}, {q_, si_}, {q_,de_}}, 
+tidl[{{q_, mu_}, {q_, nu_}, {q_, rho_}, {q_, si_}, {q_,de_}},
       {p1_, p2_},n_
     ] :> Block[{
-x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, 
-x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, 
+x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16,
+x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31,
 x32, x33, x34, x35, x36, x37, x38, x39, x40, x41, x42
 },
 x1=Pair[LorentzIndex[de,n],Momentum[p2,n]];
@@ -1050,10 +1050,10 @@ x15 = Expand[-(x11*x4) + x6^2];
 x16 = Expand[x6*x8 - x5*x9];
 x17 = Expand[-(x11*x5) + x6*x9];
 x18 = Expand[-(x11*x8) + x9^2];
-x19 = Expand[-(x10*(-(x11*x4) + x6^2)) + x12*(x5*x6 - x4*x9) + 
+x19 = Expand[-(x10*(-(x11*x4) + x6^2)) + x12*(x5*x6 - x4*x9) +
 x7*(-(x11*x5) + x6*x9)];
 x20 = Expand[x12*(x5^2 - x4*x8) - x10*(x5*x6 - x4*x9) + x7*(x6*x8 - x5*x9)];
-x21 = Expand[x12*(x6*x8 - x5*x9) - x10*(-(x11*x5) + x6*x9) + 
+x21 = Expand[x12*(x6*x8 - x5*x9) - x10*(-(x11*x5) + x6*x9) +
 x7*(-(x11*x8) + x9^2)];
 x22 = Factor[x11*x5^2 - x11*x4*x8 + x6^2*x8 - 2*x5*x6*x9 + x4*x9^2];
 -((x19*x2)/x22) + (x1*x21)/x22 + (x20*x3)/x22

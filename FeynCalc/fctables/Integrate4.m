@@ -18,7 +18,7 @@ Integrate4::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Integrate5 = MakeContext["Integrate5"];
 

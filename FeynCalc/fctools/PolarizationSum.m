@@ -27,7 +27,7 @@ PolarizationSum[mu, nu, k, 0] is equivalent to -g(mu nu)";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 ChangeDimension          = MakeContext["ChangeDimension"];
 Collect2                 = MakeContext["Collect2"];
@@ -44,9 +44,9 @@ scev                     = MakeContext["ExpandScalarProduct"];
 Options[PolarizationSum] = {Dimension -> 4};
 
 PolarizationSum[mu_,nu_, ops___Rule]:= fci[
-    -MetricTensor[mu, nu, Dimension -> 
-          (Dimension /. {ops} /. Options[PolarizationSum])]];  
-PolarizationSum[mu_,nu_,k_, ops___Rule]:= 
+    -MetricTensor[mu, nu, Dimension ->
+          (Dimension /. {ops} /. Options[PolarizationSum])]];
+PolarizationSum[mu_,nu_,k_, ops___Rule]:=
 ChangeDimension[
 fci[
    -MetricTensor[mu,nu] +

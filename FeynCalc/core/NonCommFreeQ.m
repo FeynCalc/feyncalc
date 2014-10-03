@@ -18,7 +18,6 @@ Begin["`Private`"];
 
 MakeContext[ DiracTrace, FreeQ2, SUNTrace, MemSet];
 
-
 (* Have traces treated as commutating objects. F.Orellana, 11/9-2002. *)
 excludeTraces = a : (DiracTrace |  SUNTrace)[__] :>
                 (a /. (Rule[#, ToString[#]] & /@

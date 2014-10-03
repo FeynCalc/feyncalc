@@ -6,7 +6,7 @@ Definitions for the package Palettes
 Usage
 *)
 
-LoadConfiguration::"usage" = 
+LoadConfiguration::"usage" =
     "LoadConfiguration[c] loads a configuration file c.conf. c must be a string like e.g. \
 \"QED\".";
 

@@ -5,7 +5,7 @@
 (* Author:  Frederik Orellana, fjob@cabocomm.dk
 
    Creation date:  1/8-2000
-   
+
    Rewritten: 22/9-2000
 
    Context: HighEnergyPhysics`Phi`Palettes` *)
@@ -13,7 +13,7 @@
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
 
 BeginPackage[
-    "HighEnergyPhysics`Phi`Palettes`", {"HighEnergyPhysics`Phi`", 
+    "HighEnergyPhysics`Phi`Palettes`", {"HighEnergyPhysics`Phi`",
     "HighEnergyPhysics`FeynCalc`", "HighEnergyPhysics`Phi`Objects`"}];
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)
@@ -45,30 +45,30 @@ Begin["`Private`"];
 
 LoadConfiguration["None"] := Null;
 LoadConfiguration[None] := Null;
-LoadConfiguration[conf_] := 
+LoadConfiguration[conf_] :=
     Block[{olddir},
-      olddir = Directory[]; 
-      VerbosePrint[3, "Storing current directory ", olddir]; 
-      SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
+      olddir = Directory[];
+      VerbosePrint[3, "Storing current directory ", olddir];
+      SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
       SetDirectory["HighEnergyPhysics"];
-      SetDirectory["Phi"]; 
+      SetDirectory["Phi"];
       SetDirectory["Configurations"];
       VerbosePrint[3, "Loading configuration ", conf];
       Global`$Configuration = conf;
       $PaletteConfiguration = conf;
       (* Set context for the name of the configuration *)
       Evaluate[ToExpression["HighEnergyPhysics`Phi`Objects`"<>conf]];
-      Get[conf <> ".conf"]; 
-      VerbosePrint[3, "Resetting to directory ", olddir]; 
+      Get[conf <> ".conf"];
+      VerbosePrint[3, "Resetting to directory ", olddir];
       SetDirectory[olddir];
     ];
 
 
 ReloadPhiFA[conf_] := (
-   $PaletteConfiguration = conf; 
+   $PaletteConfiguration = conf;
    Get["HighEnergyPhysics`Phi`Phi`"];
    Get["HighEnergyPhysics`FeynArts`"]);
-      
+
 RebuildConfigurationsPalette :=
 
 Block[{names, width, height, olddir, nb, bbc},
@@ -80,15 +80,15 @@ Block[{names, width, height, olddir, nb, bbc},
    (* The directory is set *)
 
    olddir = Directory[];
-   SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
-   SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"]; 
+   SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
+   SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"];
    SetDirectory["Configurations"];
 
    (* A list of the configuration files present: *)
 
 	 (*Change 14/5 - 1999, Mac filenames start with colon*)
-   names = If[StringMatchQ[#, ":*"] && StringMatchQ[$System, "MacOS*"], 
-             StringDrop[#, 1], #] & /@ (StringDrop[#, -5] & /@ 
+   names = If[StringMatchQ[#, ":*"] && StringMatchQ[$System, "MacOS*"],
+             StringDrop[#, 1], #] & /@ (StringDrop[#, -5] & /@
              FileNames["*.conf"]);
 
    (* The corresponding list of button expressions.   For each
@@ -107,71 +107,71 @@ Block[{names, width, height, olddir, nb, bbc},
       Notebook[
 
 	(* Headline *)
-	{Cell[BoxData[StyleBox["Load \n configuration:"]], NotebookDefault, 
-	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
-	 Background -> GrayLevel[0.9], CellFrame -> False, Evaluatable -> False, 
-	 CellHorizontalScrolling -> False, LineSpacing -> {1.0, 0}, 
-	 FormatType -> InputForm, ScriptMinSize -> 9, 
-	 ShowStringCharacters -> False, FontFamily -> "Times", 
+	{Cell[BoxData[StyleBox["Load \n configuration:"]], NotebookDefault,
+	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}},
+	 Background -> GrayLevel[0.9], CellFrame -> False, Evaluatable -> False,
+	 CellHorizontalScrolling -> False, LineSpacing -> {1.0, 0},
+	 FormatType -> InputForm, ScriptMinSize -> 9,
+	 ShowStringCharacters -> False, FontFamily -> "Times",
 	 FontWeight -> "Bold"],
 
        (* Configuration buttons *)
        Cell[BoxData[
            StyleBox[
-             GridBox[bbc, RowSpacings -> 0, ColumnSpacings -> 0, 
-               GridDefaultElement :> ButtonBox[ "\[Placeholder]"]], 
-             ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True, 
-        	 ButtonStyle -> "Evaluate"}]], NotebookDefault, 
-	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
-	 Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
-	 CellHorizontalScrolling -> True, PageBreakAbove -> True, 
-	 PageBreakWithin -> False, GroupPageBreakWithin -> False, 
-	 CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
-	 DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0}, 
-	 FormatType -> InputForm, ScriptMinSize -> 9, 
-	 ShowStringCharacters -> True, NumberMarks -> True, 
-	 CounterIncrements -> "Input", StyleMenuListing -> None, 
+             GridBox[bbc, RowSpacings -> 0, ColumnSpacings -> 0,
+               GridDefaultElement :> ButtonBox[ "\[Placeholder]"]],
+             ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True,
+        	 ButtonStyle -> "Evaluate"}]], NotebookDefault,
+	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}},
+	 Evaluatable -> True, CellGroupingRules -> "InputGrouping",
+	 CellHorizontalScrolling -> True, PageBreakAbove -> True,
+	 PageBreakWithin -> False, GroupPageBreakWithin -> False,
+	 CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}},
+	 DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0},
+	 FormatType -> InputForm, ScriptMinSize -> 9,
+	 ShowStringCharacters -> True, NumberMarks -> True,
+	 CounterIncrements -> "Input", StyleMenuListing -> None,
 	 FontFamily -> "Courier", FontWeight -> "Bold"],
 
-       (* Save and reload buttons*)  
+       (* Save and reload buttons*)
        Cell[BoxData[
            StyleBox[
-             GridBox[{{ButtonBox["Rebuild", ButtonFunction :> RebuildConfigurationsPalette, 
-                     ButtonEvaluator :> Automatic]}, {ButtonBox["Reload Phi", 
+             GridBox[{{ButtonBox["Rebuild", ButtonFunction :> RebuildConfigurationsPalette,
+                     ButtonEvaluator :> Automatic]}, {ButtonBox["Reload Phi",
                      ButtonFunction :> ReloadPhiFA[$PaletteConfiguration],
-		     ButtonEvaluator :> Automatic]}}, 
-               RowSpacings -> 0, ColumnSpacings -> 0], 
-             ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True, 
-        	 ButtonStyle -> "Evaluate"}]], NotebookDefault, 
-	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
-	 Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
-	 CellHorizontalScrolling -> True, PageBreakAbove -> True, 
-	 PageBreakWithin -> False, GroupPageBreakWithin -> False, 
-	 CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
-	 DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0}, 
-	 AutoItalicWords -> {}, FormatType -> InputForm, ScriptMinSize -> 9, 
-	 ShowStringCharacters -> True, NumberMarks -> True, 
-	 SingleLetterItalics -> False, CounterIncrements -> "Input", 
-	 StyleMenuListing -> None, FontFamily -> "Courier", 
+		     ButtonEvaluator :> Automatic]}},
+               RowSpacings -> 0, ColumnSpacings -> 0],
+             ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True,
+        	 ButtonStyle -> "Evaluate"}]], NotebookDefault,
+	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}},
+	 Evaluatable -> True, CellGroupingRules -> "InputGrouping",
+	 CellHorizontalScrolling -> True, PageBreakAbove -> True,
+	 PageBreakWithin -> False, GroupPageBreakWithin -> False,
+	 CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}},
+	 DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0},
+	 AutoItalicWords -> {}, FormatType -> InputForm, ScriptMinSize -> 9,
+	 ShowStringCharacters -> True, NumberMarks -> True,
+	 SingleLetterItalics -> False, CounterIncrements -> "Input",
+	 StyleMenuListing -> None, FontFamily -> "Courier",
 	 FontWeight -> "Bold"]},
 
 	 Background -> GrayLevel[0.9],
-           WindowTitle -> "Configurations", (*ScreenRectangle -> {{0, 1152}, {0, 850}},*) 
-           Editable -> False, WindowToolbars -> {}, PageWidth -> 342, 
-           WindowSize -> {width, heigth}, 
-           WindowMargins -> {{0, Automatic}, {Automatic, 0}}, 
-           WindowFrame -> "Palette", WindowElements -> {}, 
-           WindowFrameElements -> "CloseBox", WindowClickSelect -> False, 
-           ScrollingOptions -> {"PagewiseScrolling" -> True}, 
-           ShowCellBracket -> False, CellMargins -> {{0, 0}, {Inherited, 0}}, 
-           Active -> True, CellOpen -> True, ShowCellLabel -> False, 
-           ShowCellTags -> False, 
-           ImageMargins -> {{0, Inherited}, {Inherited, 0}}, 
+           WindowTitle -> "Configurations", (*ScreenRectangle -> {{0, 1152}, {0, 850}},*)
+           Editable -> False, WindowToolbars -> {}, PageWidth -> 342,
+           WindowSize -> {width, heigth},
+           WindowMargins -> {{0, Automatic}, {Automatic, 0}},
+           WindowFrame -> "Palette", WindowElements -> {},
+           WindowFrameElements -> "CloseBox", WindowClickSelect -> False,
+           ScrollingOptions -> {"PagewiseScrolling" -> True},
+           ShowCellBracket -> False, CellMargins -> {{0, 0}, {Inherited, 0}},
+           Active -> True, CellOpen -> True, ShowCellLabel -> False,
+           ShowCellTags -> False,
+           ImageMargins -> {{0, Inherited}, {Inherited, 0}},
            Magnification -> 1];
 
    (* The notebook is saved and opened *)
 
-	 ResetDirectory[]; 
+	 ResetDirectory[];
 	 SetDirectory["Palettes"];
 	 Put[nb, "PhiConfigurations.nb"];
 	 NotebookOpen[ToFileName[{HighEnergyPhysics`Phi`$HEPDir,"HighEnergyPhysics",
@@ -195,11 +195,11 @@ Block[{names, width, height, olddir, nb, bbc},
 
 LoadLagrangian[] := None;
 
-LoadLagrangian[fn_] /; Depth[fn] == 1 := 
-    Block[{olddir}, olddir = Directory[]; 
-      VerbosePrint[3, "Storing current directory ", olddir]; 
-      SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
-      SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"]; 
+LoadLagrangian[fn_] /; Depth[fn] == 1 :=
+    Block[{olddir}, olddir = Directory[];
+      VerbosePrint[3, "Storing current directory ", olddir];
+      SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
+      SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"];
       SetDirectory["Lagrangians"];
        (*Allow using strings. 6/4-2002*)
       (*Allow not using strings, keep context Global`. 13/5-2003*)
@@ -208,18 +208,18 @@ LoadLagrangian[fn_] /; Depth[fn] == 1 :=
         Global`$Lagrangians//FullForm];
       Global`$Lagrangians =
         Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#]] & /@ Global`$Lagrangians];*)
-      Get[ToString[fn] <> ".m"]; 
+      Get[ToString[fn] <> ".m"];
       VerbosePrint[2,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
-      VerbosePrint[3, "Resetting to directory ", olddir]; 
+      VerbosePrint[3, "Resetting to directory ", olddir];
       SetDirectory[olddir];
       FAUpdate;];
 
-LoadLagrangian[fn_] /; Depth[fn] == 2 := 
-    Block[{olddir}, olddir = Directory[]; 
-      VerbosePrint[3, "Storing current directory ", olddir]; 
-      SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
-      SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"]; 
-      SetDirectory["Lagrangians"]; 
+LoadLagrangian[fn_] /; Depth[fn] == 2 :=
+    Block[{olddir}, olddir = Directory[];
+      VerbosePrint[3, "Storing current directory ", olddir];
+      SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
+      SetDirectory["HighEnergyPhysics"]; SetDirectory["Phi"];
+      SetDirectory["Lagrangians"];
       (*Get[StringDrop[ToString[fn], -3] <> *) (*Change 17/9-2000*)
        (*Allow using strings. 6.4.2002*)
       (*VerbosePrint[3,
@@ -227,10 +227,10 @@ LoadLagrangian[fn_] /; Depth[fn] == 2 :=
         Global`$Lagrangians//FullForm];
       Global`$Lagrangians =
         Union[ToExpression["HighEnergyPhysics`Phi`Objects`"<>ToString[#[[0]]]][#[[1]]] & /@ Global`$Lagrangians];*)
-      Get[ToString[ToExpression[ToString[fn]][[0]]] <> 
-          ToString[ToExpression[ToString[fn]][[1]]] <> ".m"]; 
+      Get[ToString[ToExpression[ToString[fn]][[0]]] <>
+          ToString[ToExpression[ToString[fn]][[1]]] <> ".m"];
       VerbosePrint[2,"$Lagrangians is now ", Global`$Lagrangians//FullForm];
-      VerbosePrint[3, "Resetting to directory ", olddir]; 
+      VerbosePrint[3, "Resetting to directory ", olddir];
       SetDirectory[olddir];
       FAUpdate;];
 
@@ -249,17 +249,17 @@ Block[{names, width, height, olddir, nb, bbc},
    (* The directory is set *)
 
    olddir = Directory[];
-   SetDirectory[HighEnergyPhysics`Phi`$HEPDir]; 
+   SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
    SetDirectory["HighEnergyPhysics"];
-   SetDirectory["Phi"]; 
+   SetDirectory["Phi"];
    SetDirectory["Lagrangians"];
 
    (* A list of the configuration files present: *)
 
-   names = If[StringMatchQ[#, ":*"]&& StringMatchQ[$System, "MacOS*"], 
-            StringDrop[#, 1], #] & /@ (StringDrop[#, -2] & /@ 
+   names = If[StringMatchQ[#, ":*"]&& StringMatchQ[$System, "MacOS*"],
+            StringDrop[#, 1], #] & /@ (StringDrop[#, -2] & /@
             Select[Select[
-                FileNames["*.m"], ! StringMatchQ[#, "d.*"] &], ! 
+                FileNames["*.m"], ! StringMatchQ[#, "d.*"] &], !
                   StringMatchQ[#, "exp.*"] &]);
 
    (* The corresponding list of button expressions.   For each
@@ -278,70 +278,70 @@ Block[{names, width, height, olddir, nb, bbc},
       Notebook[
 
 	(* Headline *)
-	{Cell[BoxData[StyleBox["Load \n lagrangian:"]], NotebookDefault, 
-         CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
-         Background -> GrayLevel[0.9], CellFrame -> False, Evaluatable -> False, 
-         CellHorizontalScrolling -> False, LineSpacing -> {1.0, 0}, 
-         FormatType -> InputForm, ScriptMinSize -> 9, 
-         ShowStringCharacters -> False, FontFamily -> "Times", 
+	{Cell[BoxData[StyleBox["Load \n lagrangian:"]], NotebookDefault,
+         CellMargins -> {{Inherited, Inherited}, {5, Inherited}},
+         Background -> GrayLevel[0.9], CellFrame -> False, Evaluatable -> False,
+         CellHorizontalScrolling -> False, LineSpacing -> {1.0, 0},
+         FormatType -> InputForm, ScriptMinSize -> 9,
+         ShowStringCharacters -> False, FontFamily -> "Times",
          FontWeight -> "Bold"],
 
        (* Langrangian buttons *)
        Cell[BoxData[
         StyleBox[
-          GridBox[bbc, RowSpacings -> 0, ColumnSpacings -> 0, 
-            GridDefaultElement :> ButtonBox[ "\\[Placeholder]"]], 
-          ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True, 
-              ButtonStyle -> "Evaluate"}]], NotebookDefault, 
-      CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
-      Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
-      CellHorizontalScrolling -> True, PageBreakAbove -> True, 
-      PageBreakWithin -> False, GroupPageBreakWithin -> False, 
-      CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
-      DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0}, 
-      FormatType -> InputForm, ScriptMinSize -> 9, 
-      ShowStringCharacters -> True, NumberMarks -> True, 
-      CounterIncrements -> "Input", StyleMenuListing -> None, 
+          GridBox[bbc, RowSpacings -> 0, ColumnSpacings -> 0,
+            GridDefaultElement :> ButtonBox[ "\\[Placeholder]"]],
+          ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True,
+              ButtonStyle -> "Evaluate"}]], NotebookDefault,
+      CellMargins -> {{Inherited, Inherited}, {5, Inherited}},
+      Evaluatable -> True, CellGroupingRules -> "InputGrouping",
+      CellHorizontalScrolling -> True, PageBreakAbove -> True,
+      PageBreakWithin -> False, GroupPageBreakWithin -> False,
+      CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}},
+      DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0},
+      FormatType -> InputForm, ScriptMinSize -> 9,
+      ShowStringCharacters -> True, NumberMarks -> True,
+      CounterIncrements -> "Input", StyleMenuListing -> None,
       FontFamily -> "Courier", FontWeight -> "Bold"],
 
-       (* Save and reload buttons*)  
+       (* Save and reload buttons*)
        Cell[BoxData[
            StyleBox[
-             GridBox[{{ButtonBox["Rebuild", ButtonFunction :> RebuildLagrangiansPalette, 
-                     ButtonEvaluator :> Automatic]}}, 
-               RowSpacings -> 0, ColumnSpacings -> 0], 
-             ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True, 
-        	 ButtonStyle -> "Evaluate"}]], NotebookDefault, 
-	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}}, 
-	 Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
-	 CellHorizontalScrolling -> True, PageBreakAbove -> True, 
-	 PageBreakWithin -> False, GroupPageBreakWithin -> False, 
-	 CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
-	 DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0}, 
-	 AutoItalicWords -> {}, FormatType -> InputForm, ScriptMinSize -> 9, 
-	 ShowStringCharacters -> True, NumberMarks -> True, 
-	 SingleLetterItalics -> False, CounterIncrements -> "Input", 
-	 StyleMenuListing -> None, FontFamily -> "Courier", 
+             GridBox[{{ButtonBox["Rebuild", ButtonFunction :> RebuildLagrangiansPalette,
+                     ButtonEvaluator :> Automatic]}},
+               RowSpacings -> 0, ColumnSpacings -> 0],
+             ButtonBoxOptions -> {ButtonEvaluator -> Automatic, Active -> True,
+        	 ButtonStyle -> "Evaluate"}]], NotebookDefault,
+	 CellMargins -> {{Inherited, Inherited}, {5, Inherited}},
+	 Evaluatable -> True, CellGroupingRules -> "InputGrouping",
+	 CellHorizontalScrolling -> True, PageBreakAbove -> True,
+	 PageBreakWithin -> False, GroupPageBreakWithin -> False,
+	 CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}},
+	 DefaultFormatType -> DefaultInputFormatType, LineSpacing -> {1.25, 0},
+	 AutoItalicWords -> {}, FormatType -> InputForm, ScriptMinSize -> 9,
+	 ShowStringCharacters -> True, NumberMarks -> True,
+	 SingleLetterItalics -> False, CounterIncrements -> "Input",
+	 StyleMenuListing -> None, FontFamily -> "Courier",
 	 FontWeight -> "Bold"]},
 
-	 Background -> GrayLevel[0.9], 
-         WindowTitle -> "Load lagrangian", 
-         (*ScreenRectangle -> {{0, 1152}, {0, 850}},*) Editable -> False, 
-         WindowToolbars -> {}, PageWidth -> 342, 
-         WindowSize -> {width, heigth}, 
-         WindowMargins -> {{147, Automatic}, {Automatic, 0}}, 
-         WindowFrame -> "Palette", WindowElements -> {}, 
-         WindowFrameElements -> "CloseBox", WindowClickSelect -> False, 
-         ScrollingOptions -> {"PagewiseScrolling" -> True}, 
-         ShowCellBracket -> False, CellMargins -> {{0, 0}, {Inherited, 0}}, 
-         Active -> True, CellOpen -> True, ShowCellLabel -> False, 
-         ShowCellTags -> False, 
-         ImageMargins -> {{0, Inherited}, {Inherited, 0}}, 
+	 Background -> GrayLevel[0.9],
+         WindowTitle -> "Load lagrangian",
+         (*ScreenRectangle -> {{0, 1152}, {0, 850}},*) Editable -> False,
+         WindowToolbars -> {}, PageWidth -> 342,
+         WindowSize -> {width, heigth},
+         WindowMargins -> {{147, Automatic}, {Automatic, 0}},
+         WindowFrame -> "Palette", WindowElements -> {},
+         WindowFrameElements -> "CloseBox", WindowClickSelect -> False,
+         ScrollingOptions -> {"PagewiseScrolling" -> True},
+         ShowCellBracket -> False, CellMargins -> {{0, 0}, {Inherited, 0}},
+         Active -> True, CellOpen -> True, ShowCellLabel -> False,
+         ShowCellTags -> False,
+         ImageMargins -> {{0, Inherited}, {Inherited, 0}},
          Magnification -> 1];
 
    (* The notebook is saved and opened *)
 
-	 ResetDirectory[]; 
+	 ResetDirectory[];
 	 SetDirectory["Palettes"];
 	 Put[nb, "PhiLagrangians.nb"];
 	 NotebookOpen[ToFileName[{HighEnergyPhysics`Phi`$HEPDir,"HighEnergyPhysics",

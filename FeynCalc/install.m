@@ -13,7 +13,7 @@ $installdirectory = FileNameJoin[{$BaseDirectory,"Applications"}] ];
 
 
 If[ ("AllowInternetUse" /. SystemInformation["Network"]) === False,
-    Print["You have configured Mathematica not to access the internet. Too bad. 
+    Print["You have configured Mathematica not to access the internet. Too bad.
 	Please check the \"Allow Mathematica to use the Internet\" box in the
     Help \[FilledRightTriangle] Internet Connectivity dialog. Exiting now."];
     Quit[]
@@ -25,16 +25,16 @@ If[ !ValueQ[$installdirectory],
     $installdirectory = FileNameJoin[{$UserBaseDirectory,"Applications"}]
 ];
 
-(* Executing 
+(* Executing
 
 Import["http://www.feyncalc.org/download/FeynCalcInstall.m"]
-    will automatically download the latest version of Feyncalc and 
-    unzip fclatest.zip to  
+    will automatically download the latest version of Feyncalc and
+    unzip fclatest.zip to
     FileNameJoin[{$UserBaseDirectory, "Applications"}]
 
-*) BeginPackage["Unzip`",{"JLink`"}] (* Exported symbols added here with SymbolName::usage *) 
+*) BeginPackage["Unzip`",{"JLink`"}] (* Exported symbols added here with SymbolName::usage *)
 
-  
+
 CopyRemote::usage = "CopyRemote[url, localfilename] copies a file from
 an http location to localfilename.";
 
@@ -70,10 +70,10 @@ Unzip[zipfilein_String?FileExistsQ, dir_: Directory[], OptionsPattern[]] :=
                  fi = zipentry[getName[]];
                  If[ zipentry[isDirectory[]],
                      mkdirs[FileNameJoin[{dir, fi}]],
-                     stream = JavaNew["java.io.BufferedInputStream", 
+                     stream = JavaNew["java.io.BufferedInputStream",
                        zipfi[getInputStream[zipentry]]];
-                     outStream = 
-                      JavaNew["java.io.BufferedOutputStream", 
+                     outStream =
+                      JavaNew["java.io.BufferedOutputStream",
                        JavaNew["java.io.FileOutputStream", FileNameJoin[{dir, fi}]]];
                      While[(numRead = stream[read[buf]]) > 0, outStream[write[buf, 0, numRead]]];
                      stream[close[]];
@@ -154,9 +154,9 @@ localfile_:Automatic, opts___?OptionQ] :=
     ] );
 
 
-    
+
 URLFileByteSize[link_String] :=
-    URLFileByteSize[link] = 
+    URLFileByteSize[link] =
     Module[ {url, urlcon, len},
         url = JavaNew["java.net.URL", link];
         urlcon = url@openConnection[];
@@ -183,22 +183,22 @@ Module[ {ziplocal, fcfilesize},
     fcfilesize = Unzip`URLFileByteSize[$ZipFile];
     If[ (Head[$FrontEnd]===System`FrontEndObject)  && (Global`$FCProgressDisplay =!= False),
         PrintTemporary @  (* this way it does not get saved which is good *)
-        Dynamic@Row[{"Downloading ", Round[fcfilesize/1024^2]," MB from ", 
+        Dynamic@Row[{"Downloading ", Round[fcfilesize/1024^2]," MB from ",
         If[ StringQ[Setting@#],
             #,
             " "
-        ] &@$ZipFile, " ", 
+        ] &@$ZipFile, " ",
         ProgressIndicator[
          Quiet[If[ ! NumberQ[#],
                    0,
                    #
-               ] &@( Refresh[FileByteCount[ziplocal], 
+               ] &@( Refresh[FileByteCount[ziplocal],
                      UpdateInterval -> .01]/fcfilesize )]],
         " ", If[ ! NumberQ[Setting@#],
                  0,
                  #
              ] &@
-         Refresh[FileByteCount[ziplocal]/1024.^2, UpdateInterval -> .02], 
+         Refresh[FileByteCount[ziplocal]/1024.^2, UpdateInterval -> .02],
         " MByte"
         }],
         Print["Downloading ", Round[fcfilesize/1024^2]," MB from ", $ZipFile]
@@ -229,7 +229,7 @@ Module[ {ziplocal, fcfilesize},
 	DeleteFile /@ helpIndexFiles;
 
     (* check if FeynCalc is installed. If not, install it *)
-    Which [ 
+    Which [
            FindFile["FeynCalc`"] =!= $Failed, (* for FC 9 *)
            Needs["FeynCalc`"],
            FindFile["HighEnergyPhysics`FeynCalc`"] =!= $Failed,

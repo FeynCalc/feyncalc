@@ -21,14 +21,14 @@ t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Integratedx=MakeContext["CoreObjects","Integratedx"];
 
 HypInt[exp_, t_] := exp /. Hypergeometric2F1[a_,b_,c_,z_] :>
 FunctionExpand[Gamma[c]/(Gamma[b] Gamma[c-b])] Integratedx[t,0,1] *
 t^(b-1) (1-t)^(c-b-1) (1-t Factor[z])^(-a);
-                      
+
 End[]; EndPackage[];
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

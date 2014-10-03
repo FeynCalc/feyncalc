@@ -22,7 +22,7 @@ a sum).";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 FreeQ2 = MakeContext["FreeQ2"];
 
 
@@ -31,7 +31,7 @@ SelectFree[a_, b__] := If[(Head[a] === Plus) ||
                        (Head[a] === Times),
                        select1[a,b],
 (* need two dummy-vars in case "a" is an integer *)
-                       select1[a dum1 dum2, b] /. 
+                       select1[a dum1 dum2, b] /.
                        {dum1 :> 1, dum2 :> 1}
                       ];
 

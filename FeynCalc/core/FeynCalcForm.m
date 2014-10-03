@@ -97,7 +97,7 @@ cdf = Symbol["CommonDefaultFormatTypes"];
 
 Off[Rule::rhs];
 FeynCalcForm[x_,opts___] :=
-Block[{re}, Off[Rule::rhs];re = 
+Block[{re}, Off[Rule::rhs];re =
 If[$Notebooks === True,
    If[$PrePrint === FeynCalcForm,
       If[MemberQ[{TraditionalForm, StandardForm, InputForm},

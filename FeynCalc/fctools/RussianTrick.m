@@ -12,17 +12,17 @@
 
 BeginPackage["HighEnergyPhysics`fctools`RussianTrick`",{"HighEnergyPhysics`FeynCalc`"}];
 
-RussianTrick::"usage"= 
+RussianTrick::"usage"=
 "RussianTrick[exp, k, {q1,q2,p}] (=RussianTrick[exp,p,p,{q1,q2,p}])
 does the russian trick where p is the external momentum.
  RussianTrick[exp, k,l, {q1,q2,p}] (=RussianTrick[exp,k,l])
-does the russian trick where 
+does the russian trick where
 l is the momentum to be differentiated.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
 FourVector = MakeContext["CoreObjects","FourVector"];
 
@@ -47,7 +47,7 @@ RussianTrick[exp_,k_, opt___Rule] :=
 RussianTrick[exp_,k_, pe_/; Head[pe]=!=List, opt___Rule] :=
   RussianTrick[exp,k,pe,{Global`q1, Global`q2, Global`p},opt];
 
-RussianTrick[ex_, p_,k_, {q1_, q2_, pe_}, opt___Rule] := 
+RussianTrick[ex_, p_,k_, {q1_, q2_, pe_}, opt___Rule] :=
 Block[{fv, t1, t2, t3, dime, exp,mu},
 exp = FeynCalcInternal[ex];
 dim = Dimension /. {opt} /. Options[RussianTrick];

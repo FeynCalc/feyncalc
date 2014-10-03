@@ -28,7 +28,7 @@ Print["time used for the calculation = ",tim];
 timcheck = Timing[ Together/@(eqs /. sol)];
 Print["time used for checking the result = ",timcheck];
 Print["leaf count of sol = ",LeafCount[sol]];
-simptime = Timing[solsim=sol /. (a_->b_) :> 
+simptime = Timing[solsim=sol /. (a_->b_) :>
                   (WriteString["stdout","."];a -> Map[Simplify,b]);]
 Print["time used for simplification = ",simptime];
 Print["leaf count of solsim = ",LeafCount[solsim]];

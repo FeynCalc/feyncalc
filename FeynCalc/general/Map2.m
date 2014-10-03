@@ -12,20 +12,20 @@
 
 BeginPackage["HighEnergyPhysics`general`Map2`",{"HighEnergyPhysics`FeynCalc`"}];
 
-Map2::"usage"= 
+Map2::"usage"=
 "Map2[f, exp] is equivalent to Map if NTerms[exp] > 1,
 otherwise Map2[f, exp] gives f[exp].";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 NTerms = MakeContext["NTerms"];
 
 Map2[f_, exp_] := If[NTerms[exp] > 1,
                      Map[f,exp],
-                     f[exp] 
+                     f[exp]
                     ];
 
 End[]; EndPackage[];

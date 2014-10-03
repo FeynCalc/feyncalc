@@ -13,19 +13,19 @@
 BeginPackage["HighEnergyPhysics`general`HypergeometricIR`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypergeometricIR::"usage"=
-"HypergeometricIR[exp, t]  substitutes for all 
-Hypergeometric2F1[a,b,c,z] in exp the integral representation 
-Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] 
-t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a). 
+"HypergeometricIR[exp, t]  substitutes for all
+Hypergeometric2F1[a,b,c,z] in exp the integral representation
+Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1]
+t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a).
 Integratedx[t,0,1] serves as a reminder that integration over t
 from 0 to 1 is understood.
-The factor Integratedx[t,0,1] can be omitted by setting the 
+The factor Integratedx[t,0,1] can be omitted by setting the
 option Integratedx -> False.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Integratedx = MakeContext["CoreObjects","Integratedx"];
 Factor2     = MakeContext["Factor2"];
@@ -46,13 +46,13 @@ HypergeometricIR[exp_, t_, opt___Rule] := (
          ) /.
          Hypergeometric2F1[a_,b_,c_,z_] :>
 	FunctionExpand[Gamma[c]/(Gamma[b] Gamma[c-b])]*
-        If[Integratedx /. {opt} /. 
+        If[Integratedx /. {opt} /.
            Options[HypergeometricIR],
            Integratedx[t,0,1],
            1
           ] t^(b-1) (1-t)^(c-b-1) Factor2[1-t z]^(-a)
                                          );
-                      
+
 End[]; EndPackage[];
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

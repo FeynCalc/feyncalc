@@ -9,8 +9,8 @@
 (* ------------------------------------------------------------------------ *)
 
 (* :Comments: Works rather slow for sums with > 10^3 terms.
-              Factor1 should be superfluos once the bugs in Factor 
-              are fixed 
+              Factor1 should be superfluos once the bugs in Factor
+              are fixed
 *)
 
 (* ------------------------------------------------------------------------ *)
@@ -24,7 +24,7 @@ It uses basically PolynomialGCD.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 numericalfactor = MakeContext["NumericalFactor"];
 
@@ -38,8 +38,8 @@ mi[y_, z__] := (m1 mp1[y,z] )/; (If[ Head[#] === Complex, False,
     If[ Head[nx] =!= Plus, mt[nx /. Plus -> (Factor1[Plus[##]]&)],
         factor1t1 = Apply[ List, Map[# /. Plus -> factor1t3&, nx] ];
         factor1t2 = (PolynomialGCD @@ factor1t1) /. factor1t3 -> Plus;
-        mt[(factor1t2 Apply[Plus, 
-                         Map[((# /. factor1t3 -> Plus) / factor1t2)&, 
+        mt[(factor1t2 Apply[Plus,
+                         Map[((# /. factor1t3 -> Plus) / factor1t2)&,
          factor1t1]])]
       ]               ];
 

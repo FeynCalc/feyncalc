@@ -27,11 +27,11 @@ Factoring = MakeContext["CoreOptions","Factoring"];
 FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 
 MakeContext[
-    Collect2, 
-    Expanding , 
+    Collect2,
+    Expanding ,
     Factor1,
-    Factor2, 
-    Isolate, 
+    Factor2,
+    Isolate,
     IsolateNames
     ];
 
@@ -40,7 +40,7 @@ Options[Solve2] = {Factoring -> Factor2, FinalSubstitutions -> {}};
 Solve2[a_/;Head[a]=!=List, b__] := Solve2[{a}, b];
 Solve2[a_, b_/;Head[b]=!=List, c___] := Solve2[a, {b}, c];
 
-Solve2[ai_List, bii_, ops___Rule] := Block[{fixeq, temp, re, 
+Solve2[ai_List, bii_, ops___Rule] := Block[{fixeq, temp, re,
     factor , finsub, a, b, bi,dumsub, dum},
 bi = Flatten[{bii}];
 dumsub = Table[bi[[ij]] -> dum[ij],{ij,Length[bi]}];
@@ -63,7 +63,7 @@ re = FixedPoint[(# /. $soso -> soback /. soback -> $soso
 *)
 re = FixedPoint[ReleaseHold,re]/.Map[Reverse,dumsub];
 
-If[factor === False, 
+If[factor === False,
    re = re /. finsub,
    re = Map[(#[[1]] -> factor[(#[[2]])/.finsub])&, re];
   ];

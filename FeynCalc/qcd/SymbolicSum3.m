@@ -20,39 +20,39 @@ but extended to several double sums.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 MakeContext[FreeQ2,OPEi,OPEj,OPEm];
 
 
-SymbolicSum3[a_^OPEj b_^(OPEi - OPEj) / (c_^OPEi),       
+SymbolicSum3[a_^OPEj b_^(OPEi - OPEj) / (c_^OPEi),
     {OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
-   ] := c^(4-OPEm) a^(OPEm-2)/((a-b) (a-c)) + 
+   ] := c^(4-OPEm) a^(OPEm-2)/((a-b) (a-c)) +
         c^(4-OPEm) b^(OPEm-2)/((b-a) (b-c)) +
         c^2 / ((c-a) (c-b));
 
 (* R.Hamberg, (3A.18) *)
-SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),       
-    {OPEi, 0, opem4_}, {OPEj, 0, OPEi} 
+SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),
+    {OPEi, 0, opem4_}, {OPEj, 0, OPEi}
    ] :=b^(any)*(
         (a^(opem4+2)/((a-b) (a-c)) + b^(opem4+2)/((b-a) (b-c)) +
          c^(opem4+2)/((c-a) (c-b)) )
-               ) /; FreeQ2[{any,opem4},{OPEi,OPEj}]; 
+               ) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
 
-SymbolicSum3[a_^OPEj b_^(- OPEi + OPEj) c_^(opem4_ -OPEi),       
-    {OPEi, 0, opem4_}, {OPEj, 0, OPEi} 
+SymbolicSum3[a_^OPEj b_^(- OPEi + OPEj) c_^(opem4_ -OPEi),
+    {OPEi, 0, opem4_}, {OPEj, 0, OPEi}
    ] :=(
         (a^(opem4+2)/((a-(1/b)) (a-c)) + b^(-opem4-2)/(
          ((1/b)-a) ((1/b)-c)) +
          c^(opem4+2)/((c-a) (c-(1/b))) )
-               ) /; FreeQ2[{any,opem4},{OPEi,OPEj}]; 
+               ) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
 
-SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),       
-      {OPEi, 0, opem4_}, {OPEj, 0, OPEi} 
+SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),
+      {OPEi, 0, opem4_}, {OPEj, 0, OPEi}
    ] :=b^(any)*(
         (a^(opem4+2)/((a-b) (a-c)) + b^(opem4+2)/((b-a) (b-c)) +
          c^(opem4+2)/((c-a) (c-b)) )
-               ) /; FreeQ2[{any,opem4},{OPEi,OPEj}]; 
+               ) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
 
 SymbolicSum3[a_^OPEi b_^(any_. + OPEj - OPEi) c_^(opem4_ -OPEj),
     {OPEi, 0, OPEj}, {OPEj, 0, opem4_}

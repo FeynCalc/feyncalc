@@ -8,16 +8,16 @@
 (* :History: File created on 28 January '99 at 23:32 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: Factor2 *) 
+(* :Summary: Factor2 *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`general`Factor2`",{"HighEnergyPhysics`FeynCalc`"}];
 
-Factor2::"usage" = 
+Factor2::"usage" =
 "Factor2[poly] factors a polynomial in a standard
-way. Factor2 works (sometimes) better than Factor on polynomials 
-involving rationals with sums in the denominator. 
+way. Factor2 works (sometimes) better than Factor on polynomials
+involving rationals with sums in the denominator.
 Factor2 uses Factor internally and is in general slower than Factor.
 There are four possible settings of the option Method (0,1,2,3).
 ";
@@ -30,14 +30,14 @@ If set to False, products like
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 MakeContext[ Expand2, Combine, MemSet, NumericalFactor];
 
 Off[General::spell1];
 Options[Factor2] = {FactorFull -> False, Method -> 3};
 
-fc5[y_] := 
+fc5[y_] :=
 If[Head[y] === Times, Map[fc5, y],
 (*
   MemSet[fc5[y],
@@ -58,7 +58,7 @@ Factor2[ix_, r___Rule] := Block[{fc,mt,mi,m1,mp1,cm,ff,pr,pp,h,
                                 iI,x,tx,factor55,pl5,me,comb},
 If[FreeQ[ix,Complex], x = ix, x = ix /. Complex[0,in_] :> iI in];
 (*
-If[0 <= (Method /. {r} /. Options[Factor2]) < 4, 
+If[0 <= (Method /. {r} /. Options[Factor2]) < 4,
    expand = Expand2, expand = Identity
   ];
 *)
@@ -71,15 +71,15 @@ If[(FactorFull /. {r} /. Options[Factor2]) === True,
 mt = ((# /. Plus -> mi /. mi -> Plus) /. m1 -> (-1) /. mp1 -> (-Plus[##]&))&;
 mi[y_, z__] := (m1 mp1[y,z] )/; (If[ Head[#] === Complex, False,
                If[ # < 0, True, False] ]& @ NumericalFactor[y]);
-pr = { fa_. pc[a_, b_]^n_. pc[a_, c_]^n_. :> 
+pr = { fa_. pc[a_, b_]^n_. pc[a_, c_]^n_. :>
        (fa pc[a^2, -b^2]^n) /; (((b + c) === 0) && IntegerQ[n]),
        fa_. pc[a_, b_]^n_. pc[c_, b_]^n_. :>
-       (fa pc[b^2, -a^2]^n) /; (((a + c) === 0) && IntegerQ[n]) 
+       (fa pc[b^2, -a^2]^n) /; (((a + c) === 0) && IntegerQ[n])
      };
 pp = If[(FactorFull/. {r} /. Options[Factor2] ) =!= True,
-        ( ((Numerator[#] /. Plus -> pc) //. pr) /. 
+        ( ((Numerator[#] /. Plus -> pc) //. pr) /.
           pc -> Plus /. pc -> Plus)/
-          ( ((Denominator[#] /. Plus -> pc) //. pr) /. 
+          ( ((Denominator[#] /. Plus -> pc) //. pr) /.
             pc -> Plus /. pc -> Plus),
       #]&;
 If[0< (Method /. {r} /. Options[Factor2])<3, tx = vsu[x, 42000],
@@ -102,7 +102,7 @@ If[(Method /. {r} /. Options[Factor2]) > 2,
                               ] (* endBlock *);
 
 (* maybe this is not so good in the end; but it fixed a weird Factor-bug *)
-  vsu[y_, les_:50000] := Block[{vv, xX, vs, iv, yr, vb, 
+  vsu[y_, les_:50000] := Block[{vv, xX, vs, iv, yr, vb,
                                 ly = LeafCount[y]},
       If[ly > les, yr = y; vb = {},
          vv = Variables[y];

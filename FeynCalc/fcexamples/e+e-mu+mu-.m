@@ -20,10 +20,10 @@ M2 =  (* electron line *)
 (* this does the contraction *)
 r = Contract[M2];
 
-(* this is equivalent to the 
-Bracket e,s  
+(* this is equivalent to the
+Bracket e,s
 statement of the FORM example
-*) 
+*)
 (* use FI to get a newline-less InputForm printout: *)
 
 Print["the result is: ", InputForm[res = Collect[r, {e, s}, Factor2]]];

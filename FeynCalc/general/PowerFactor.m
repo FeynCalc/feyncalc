@@ -18,7 +18,6 @@ PowerFactor::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
 
 MakeContext[SelectFree, SelectNotFree];
 

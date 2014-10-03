@@ -26,12 +26,12 @@ an integer (even if it is symbolic). Furthermore
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 ScaleMu = MakeContext["CoreObjects","ScaleMu"];
 
 MakeContext[Factor2, Power2, OPEm];
 
-PowerSimplify[x_] := 
+PowerSimplify[x_] :=
   Block[{nx, qcdsub = False, power3},
 If[!FreeQ[x, ScaleMu],
    qcdsub = True;

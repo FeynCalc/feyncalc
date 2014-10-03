@@ -4,12 +4,12 @@
 (*                                                                    *)
 (* ****************************************************************** *)
 
-(* 
+(*
    Author:              Frederik Orellana 1997
 
    Summary:             Generic model for FeynArts
 
-   Mathematica Version: 3.0 
+   Mathematica Version: 3.0
 
    Requirements:        FeynArts > 2, PHI, FeynCalc > 3
 
@@ -43,7 +43,7 @@ KinematicIndices[$ScalarHeads] := {};
 KinematicIndices[$FermionHeads] := {};
 KinematicIndices[$VectorHeads] := {Lorentz};
 
-TheLabel[Index[Lorentz,i_]] := 
+TheLabel[Index[Lorentz,i_]] :=
 $CouplingLorentzIndicesString<>ToString[i];
 
 (* ****************************************************************** *)
@@ -52,8 +52,8 @@ $CouplingLorentzIndicesString<>ToString[i];
   The function GenProps[p]
   gives the propagator description for the particle type p.
   Standard definitions are used.
-  Notice that the setting of $PropagatorMassesStates determines the 
-  renormalization state of the mass used for the propagator of each 
+  Notice that the setting of $PropagatorMassesStates determines the
+  renormalization state of the mass used for the propagator of each
   particle
 *)
 
@@ -62,30 +62,30 @@ $CouplingLorentzIndicesString<>ToString[i];
 If[And@@((Head[GenProps[#]]===GenProps)&/@
 ({$ScalarHeads /. Alternatives -> Sequence})),
 GenProps[a:$ScalarHeads]:={
-AnalyticalPropagator[External][ s a[i,p] ] == 1, 
-AnalyticalPropagator[Internal][ s a[i,p] ] == 
+AnalyticalPropagator[External][ s a[i,p] ] == 1,
+AnalyticalPropagator[Internal][ s a[i,p] ] ==
 I*PropagatorDenominator[p,Mass[a[i]]]}];
 
 If[And@@((Head[GenProps[#]]===GenProps)&/@
 ({$VectorHeads /. Alternatives -> Sequence})),
 GenProps[a:$VectorHeads]:={
-AnalyticalPropagator[External][ s a[i, mom, {li2}] ] == 
-PolarizationVector[ a[i], mom, li2 ], 
-AnalyticalPropagator[Internal][ s a[i,mom,{li1}->{li2}] ] == 
+AnalyticalPropagator[External][ s a[i, mom, {li2}] ] ==
+PolarizationVector[ a[i], mom, li2 ],
+AnalyticalPropagator[Internal][ s a[i,mom,{li1}->{li2}] ] ==
 I*PropagatorDenominator[ mom , Mass[a[i]] ]*
 (-MetricTensor[li1, li2])}];
 
 If[And@@((Head[GenProps[#]]===GenProps)&/@
 ({$FermionHeads /. Alternatives -> Sequence})),
 GenProps[a:$FermionHeads]:={
-AnalyticalPropagator[External][ s a[i, mom] ] == 
-NonCommutative[ 
+AnalyticalPropagator[External][ s a[i, mom] ] ==
+NonCommutative[
 (*Tag, so WFRenormalize can do its thing*)
 (*DiracSpinor[
   -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ]*)
 HighEnergyPhysics`Phi`Couplings`Private`propSpinor[
-  -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ], 
-AnalyticalPropagator[Internal][ s a[i,mom] ] == 
+  -mom, Mass[ a[i] ], Sequence @@ Drop[{i},1] ] ],
+AnalyticalPropagator[Internal][ s a[i,mom] ] ==
 NonCommutative[(*DiracGamma[ -mom ] + Mass[a[i]]*)
 HighEnergyPhysics`Phi`Couplings`Private`propGamma[
   -mom, Mass[a[i]]] ]*
@@ -119,7 +119,7 @@ kineindex[a:$FermionHeads,i_]:=Sequence[];
 
 (*
    The coupling vectors are read from the files specified in
-   $VerticesSpecifications.  The left-hand side 
+   $VerticesSpecifications.  The left-hand side
    (genericfieldsmomenta) of the defintion and the field
    configuration (genericfields) are created with the fields
    from $VerticesSpecifications.  The symmetry sign is also
@@ -178,10 +178,10 @@ Join@@(Table[genericcouplingvector[repp,filenr],
 {filenr,Length[PerturbationOrder/.
 $VerticesSpecifications1[[repp]]]}]);
 
-genericfields[repp] = 
+genericfields[repp] =
   Table[ ToExpression["s"<>ToString[rep]]*
   $VerticesSpecifications1[[repp,1,2,rep,0]][
-   ToExpression["nr"<>ToString[rep]] ], 
+   ToExpression["nr"<>ToString[rep]] ],
   {rep,1,Length[$VerticesSpecifications1[[repp,1,2]]]} ];
 
 genericfieldsmomenta[repp] =
@@ -189,9 +189,9 @@ genericfieldsmomenta[repp] =
   $VerticesSpecifications1[[repp,1,2,rep,0]][
   ToExpression["nr"<>ToString[rep]],
   ToExpression[$CouplingMomentumVariablesString<>ToString[rep]],
-  kineindex[$VerticesSpecifications1[[repp,1,2,rep,0]],rep] ], 
+  kineindex[$VerticesSpecifications1[[repp,1,2,rep,0]],rep] ],
   {rep,1,Length[$VerticesSpecifications1[[repp,1,2]]]} ];,
-  
+
 {repp,Length[$VerticesSpecifications1]}];
 
 SetDirectory[olddir];);
@@ -199,8 +199,8 @@ SetDirectory[olddir];);
 csign[rr_]:=CouplingSign/.$VerticesSpecifications1[[rr]];
 
 (* ****************************************************************** *)
-    
-(* The loaded coupling vectors and the constructed left-hand sides are 
+
+(* The loaded coupling vectors and the constructed left-hand sides are
    used for constructing the coupling definitions *)
 
 M$GenericCouplings  =
@@ -252,16 +252,16 @@ $SparseCouplings = True;
 M$LastGenericRules = {
 (* Outgoing vector bosons: throw away signs of momenta *)
 PolarizationVector[
-p_, _. k:(FourMomentum[ Outgoing, i_Integer ]), li_ ] :> 
+p_, _. k:(FourMomentum[ Outgoing, i_Integer ]), li_ ] :>
 Conjugate[PolarizationVector][ p, k, li ] ,
 
 (* for the case of self-energies *)
 PolarizationVector[
-p_, k:(- FourMomentum[ Incoming, 1 ]), li_ ] :> 
+p_, k:(- FourMomentum[ Incoming, 1 ]), li_ ] :>
 Conjugate[PolarizationVector][ p, k, li ],
 
 (* relicts of the truncation of spinors: *)
-   
+
 Dot[ 1, line__, 1 ] :> Dot[ line ],
 Dot[ 1, 1 ] :> 1 };
 

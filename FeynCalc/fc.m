@@ -1,14 +1,14 @@
 (* ::Package:: *)
 
-(* 
+(*
 Addition September 15th, 2009: make this evaluatable from a FrontEnd, too
 
-Change, April 1th 2009, RM : 
+Change, April 1th 2009, RM :
 	Use (like JLink) the System`Private`FindFile function which returns
 the directory where this (FeynCalc.m) file is located on the file system.
 
 FeynCalc can be loaded now from everywhere.
-E.g.: 
+E.g.:
 <</tmp/HighEnergyPhysics/fc.m
 
 Set

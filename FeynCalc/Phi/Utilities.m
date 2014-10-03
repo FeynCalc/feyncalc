@@ -81,7 +81,7 @@ Options[MandelstamReduce] = {MomentaSumLeft -> All, OnMassShell -> True,
           ParticleMass[Pion, RenormalizationState[1]],
           ParticleMass[Pion, RenormalizationState[1]],
           ParticleMass[Pion, RenormalizationState[1]]}};
-DeclareUScalar[MandelstamS]; DeclareUScalar[MandelstamT]; 
+DeclareUScalar[MandelstamS]; DeclareUScalar[MandelstamT];
 DeclareUScalar[MandelstamU];
 Options[LorentzIndicesSupply] = {LorentzIndicesString -> "\[Nu]"};
 Options[GammaSort] = {Gamma5AntiCommute -> False,
@@ -329,7 +329,7 @@ FourPoint[q_,
           fcpa[fcli[l2_, d___], fcmom[qq2_, d___]]*
           fcpa[fcli[l3_, d___], fcmom[qq3_, d___]]*
           fcpa[fcli[l4_, d___], fcmom[qq4_, d___]],
-        opts___] /; (!FreeQ[qq1, q] && ! FreeQ[qq2, q] && 
+        opts___] /; (!FreeQ[qq1, q] && ! FreeQ[qq2, q] &&
         !FreeQ[qq3, q] && ! FreeQ[qq4, q]) && (Head[qq1] == Plus ||
             Head[qq2] == Plus || Head[qq3] == Plus || Head[qq4] == Plus) :=
     FourPoint[q,
@@ -466,14 +466,14 @@ gammasort[xx__, opts___Rule | opts___List] :=
     tl[xx] //. sortrules[opts] /. tl -> fcdot /. red[x_] -> x;
 GammaSort[fcdot[exp_, ex__],
       opts___] := (exp1 =
-        If[(Gamma5AntiCommute /. Flatten[{opts}] /. Options[GammaSort]) && 
+        If[(Gamma5AntiCommute /. Flatten[{opts}] /. Options[GammaSort]) &&
         	!FreeQ[tl[exp, ex], fcdiga[fcli[5, ___], ___]],
           pos = Position[
               tl[exp, ex], _?(!FreeQ[#, fcdiga[fcli[5, ___], __]] &), {1}]; (-1)^pos*
             Delete[fcdot @@ Join[{tl[exp, ex][[pos]]}, {exp}], pos + 1],
           tl[exp, ex]];
       exp2 = exp1 /. {tl[aa___, a_, b__, c_,
-                  cc___] /; (!FreeQ[a, fcdiga[fcli[5, ___], __] | gsort] && 
+                  cc___] /; (!FreeQ[a, fcdiga[fcli[5, ___], __] | gsort] &&
                   !FreeQ[c, fcdiga[fcli[5, ___], __] | gsort] &&
                     FreeQ[{b}, fcdiga[fcli[5, ___], __] | gsort]) ->
               tl[aa, a, gsort[b], c, cc],
@@ -586,7 +586,7 @@ DiscardOrders[am_, opts___] :=
 
 CharacteristicCoefficient[a_, opts___Rule][i_] /;
       HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[
-          CharacteristicCoefficient, opts, a] === i := 
+          CharacteristicCoefficient, opts, a] === i :=
 					(-1)^(HighEnergyPhysics`Phi`Objects`Private`gaugedimcheck[
                 CharacteristicCoefficient, opts, a]) (*Bug fixed 19/2-2002*);
 
@@ -635,7 +635,7 @@ CayleyHamilton[m__, opts___Rule] :=
 (*Support function for calhamSort*)
 (*Count number of adjacent Lorentz vectors*)
 licount = (Count[# /. UTrace1 -> tr /. Power -> NMPower /.
-           NM -> nm //. 
+           NM -> nm //.
            {nm[a___, l_?((!FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &),
               ll_?((!FreeQ[#, fcli[__]] && FreeQ[#, _nm]) &), b___] :>
            nm[a, pp[Unique[pp]], b] /;
@@ -1042,7 +1042,7 @@ UReduce[exp_, opts___Rule] := Block[{res,opsMM,opsSMM,end},
  SetOptions[MM, fcexpt -> False];
  SetOptions[SMM, fcexpt -> False];
  res=If[(SMMToMM /. {opts} /. Options[UReduce]) =!= True,
-(*Added inner UPair in order to force cancellation in SU(3) CayleyHamiltonRules*) 
+(*Added inner UPair in order to force cancellation in SU(3) CayleyHamiltonRules*)
 FixedPoint[CycleUTraces[UPair[
        UTraceTrick[UIdTrick[UPair[NMExpand[# /. uDagRul /. UDagRul  /. ddURules /. ddURules1]],opts] /.
 			                    SUNURules[(fcsunn /. {opts} /.
@@ -1153,10 +1153,10 @@ surfaceRules[n_]:={
                     Heads->True]]])+n-1 || m1==-Infinity&&m2==-Infinity&&n<=1)};
 
 surfaceRules1[n_]:={
-  surdum + nm[f___,dd:(fcqf[fcpd[li1_,___], 
+  surdum + nm[f___,dd:(fcqf[fcpd[li1_,___],
           ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
-          fcqf[fcpd[li1_,___], __]][x_] | 
-      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+          fcqf[fcpd[li1_,___], __]][x_] |
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_],
         IsoVector[UMatrix[UGenerator[___], ___], ___]]),r___] :>
          surdum + idd[-nm[fdr[nm[f,r],x,fcli[li1]],dd/.fcpd[__]->Sequence[]]]/;
         (FreeQ[dd, ufis, Heads->True] =!=True)&&
@@ -1167,10 +1167,10 @@ surfaceRules1[n_]:={
                 Union[Cases[{dd},_HighEnergyPhysics`FeynCalc`CoreObjects`PartialD|
 		_FieldDerivative,Infinity,Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1)),
 
-   surdum + nm[uo___,NM[f___,dd:(fcqf[fcpd[li1_,___], 
+   surdum + nm[uo___,NM[f___,dd:(fcqf[fcpd[li1_,___],
           ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
-          fcqf[fcpd[li1_,___], __]][x_] | 
-      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+          fcqf[fcpd[li1_,___], __]][x_] |
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_],
         IsoVector[UMatrix[UGenerator[___], ___], ___]]),r___],
         ou___] :> surdum + idd[nm[
           nm[uo,ou,-nm[NM[fdr[NM[f],x,fcli[li1]],dd/.fcpd[__]->Sequence[],r]]-
@@ -1186,10 +1186,10 @@ surfaceRules1[n_]:={
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
     surdum + nm[uo___,
-          utr[NM[f___,dd:(fcqf[fcpd[li1_,___], 
+          utr[NM[f___,dd:(fcqf[fcpd[li1_,___],
           ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
-          fcqf[fcpd[li1_,___], __]][x_] | 
-      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+          fcqf[fcpd[li1_,___], __]][x_] |
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_],
         IsoVector[UMatrix[UGenerator[___], ___], ___]]),
               r___]],ou___]:>
       surdum + idd[-nm[uo,ou,utr[
@@ -1206,10 +1206,10 @@ surfaceRules1[n_]:={
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
-    surdum + nm[uo___,NM[f___,Adjoint[dd:(fcqf[fcpd[li1_,___], 
+    surdum + nm[uo___,NM[f___,Adjoint[dd:(fcqf[fcpd[li1_,___],
           ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
-          fcqf[fcpd[li1_,___], __]][x_] | 
-      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+          fcqf[fcpd[li1_,___], __]][x_] |
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_],
         IsoVector[UMatrix[UGenerator[___], ___], ___]])],r___],
         ou___] :>
         surdum + idd[nm[
@@ -1225,11 +1225,11 @@ surfaceRules1[n_]:={
 		_FieldDerivative,Infinity,
                     Heads->True]]])+n || m1==-Infinity&&m2==-Infinity&&n<=1),
 
-		surdum + 
-        nm[uo___,utr[NM[f___,Adjoint[dd:(fcqf[fcpd[li1_,___], 
+		surdum +
+        nm[uo___,utr[NM[f___,Adjoint[dd:(fcqf[fcpd[li1_,___],
           ff_, ___][x_] | (IsoVector | UVector | UMatrix)[
-          fcqf[fcpd[li1_,___], __]][x_] | 
-      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_], 
+          fcqf[fcpd[li1_,___], __]][x_] |
+      IsoDot[IsoVector[fcqf[fcpd[li1_,___], __]][x_],
         IsoVector[UMatrix[UGenerator[___], ___], ___]])],
               r___]],ou___]:>
        surdum + idd[-nm[uo,ou,
@@ -1527,38 +1527,38 @@ UPerturb[exp_, opts___Rule] :=
 removeBlankSpace[x_String] := FixedPoint[StringReplace[#, "  " -> " "] &, x];
 
 (*First sketch of a LaTeX output functions; - should be abstracted*)
-PhiToLaTeX[x_] := 
+PhiToLaTeX[x_] :=
     StringReplace[
           ToString[
-            x /. _RenormalizationState -> Sequence[] /. 
-                      SUNIndex | ExplicitSUNIndex -> Identity /. 
-                    (SU2Delta|SU3Delta|fcsundel)[a_, b_] :> 
-                      "\\delta_{" <> ToString[a] <> ToString[b] <> "}" /. 
-                  fcpa[Momentum[p2], Momentum[p2]]^i_ :> 
+            x /. _RenormalizationState -> Sequence[] /.
+                      SUNIndex | ExplicitSUNIndex -> Identity /.
+                    (SU2Delta|SU3Delta|fcsundel)[a_, b_] :>
+                      "\\delta_{" <> ToString[a] <> ToString[b] <> "}" /.
+                  fcpa[Momentum[p2], Momentum[p2]]^i_ :>
                     "q^" <> ToString[2i] //.
 
               (*Phi`Renormalization` is not in $ContextPath *)
               {HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar[a__, __Rule] :>
                HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar[a],
-               QuarkCondensate[___] -> "B_0", Pi -> "\\pi", Log -> "\\log", 
+               QuarkCondensate[___] -> "B_0", Pi -> "\\pi", Log -> "\\log",
                 Pair[_LorentzIndex, ___] -> Sequence[],
                 _DecayConstant -> "f",
-                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 1] -> "c_2", 
-                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 2] -> "c_5", 
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 1] -> "c_2",
+                CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[2], 2] -> "c_5",
                 CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPT2[4], i_, ___] :> "L_{" <> ToString[i] <> "}",
                 CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPT3[4], i_, ___] :> "L_{" <> ToString[i] <> "}",
                 CouplingConstant[HighEnergyPhysics`Phi`Objects`ChPTW3[4], i_, ___] :> "n_{" <> ToString[i] <> "}",
-                MandelstamT -> "t", MandelstamS -> "s", MandelstamU -> "u", 
-                ParticleMass[Pion] -> "m_{\\rm \\pi}", 
-                ParticleMass[Kaon] -> "m_{\\rm K}", 
+                MandelstamT -> "t", MandelstamS -> "s", MandelstamU -> "u",
+                ParticleMass[Pion] -> "m_{\\rm \\pi}",
+                ParticleMass[Kaon] -> "m_{\\rm K}",
                 ParticleMass[EtaMeson] -> "m_{\\rm \\eta}",
-                ScaleMu -> "\\mu", 
+                ScaleMu -> "\\mu",
                 fcpa[Momentum[p2], Momentum[p2]] -> "q^2"},
 
             FormatType -> InputForm, PageWidth -> 120],
-          {"\"" -> "", 
-            "I" -> "i", 
-            "[" -> "(", "]" -> ")", "*" -> " ", 
+          {"\"" -> "",
+            "I" -> "i",
+            "[" -> "(", "]" -> ")", "*" -> " ",
             "\n" -> "", "LeutwylerJBar" -> "\\overline{J}"}
   ] // removeBlankSpace // StandardForm // InputForm;
 
@@ -1576,16 +1576,16 @@ $GellmannOkubo = {ParticleMass[EtaMeson, r___]^
 
 GellmannOkubo[exp_] := Block[{l, s, pm}, exp /.
   (l : (HighEnergyPhysics`Phi`Renormalization`LeutwylerJBar | Log))[s__] :>
-  (l[s] /. ParticleMass -> pm) /. $GellmannOkubo /. 
+  (l[s] /. ParticleMass -> pm) /. $GellmannOkubo /.
   pm -> ParticleMass];
 
-$GellmannOkuboInv = {ParticleMass[PseudoScalar[2], r___]^2 - 
+$GellmannOkuboInv = {ParticleMass[PseudoScalar[2], r___]^2 -
           4 ParticleMass[PseudoScalar[6], r___]^2 :> -3*
-          ParticleMass[PseudoScalar[11], 
-              r]^2, -ParticleMass[PseudoScalar[2], r___]^2 + 
-          4 ParticleMass[PseudoScalar[6], r___]^2 :> 
-        3*ParticleMass[PseudoScalar[11], r]^2, 
-      4/3 - ParticleMass[Pion]^2/(3 ParticleMass[Kaon]^2) :> 
+          ParticleMass[PseudoScalar[11],
+              r]^2, -ParticleMass[PseudoScalar[2], r___]^2 +
+          4 ParticleMass[PseudoScalar[6], r___]^2 :>
+        3*ParticleMass[PseudoScalar[11], r]^2,
+      4/3 - ParticleMass[Pion]^2/(3 ParticleMass[Kaon]^2) :>
         ParticleMass[EtaMeson]^2/(ParticleMass[Kaon]^2)};
 
 
@@ -1593,20 +1593,20 @@ $GellmannOkuboInv = {ParticleMass[PseudoScalar[2], r___]^2 -
 (*First implementation - should be improved...*)
 FixFermionAdjoints[ex_] :=
   ((ex /.
-  {fcqf[d___, DiracBar[Particle[Fermion[f_], r___]], rr___][x_] :> 
-   fcdot[Adjoint[fcqf[d, Particle[Fermion[f], r], rr][x]], 
-   fcdiga[ExplicitLorentzIndex[0]]], fcqf[d___, 
-     Adjoint[DiracBar[Particle[Fermion[f_], r___]]], rr___][x_] :> 
-   fcdot[fcdiga[ExplicitLorentzIndex[0]], 
+  {fcqf[d___, DiracBar[Particle[Fermion[f_], r___]], rr___][x_] :>
+   fcdot[Adjoint[fcqf[d, Particle[Fermion[f], r], rr][x]],
+   fcdiga[ExplicitLorentzIndex[0]]], fcqf[d___,
+     Adjoint[DiracBar[Particle[Fermion[f_], r___]]], rr___][x_] :>
+   fcdot[fcdiga[ExplicitLorentzIndex[0]],
      fcqf[d, Particle[Fermion[f], r], rr][x]]} //
-   DiracSimplify) /. 
-   fcdot[Adjoint[fcdiga[fcli[mu_]]], 
-     fcdiga[ExplicitLorentzIndex[0]]] :> 
-   fcdot[fcdiga[ExplicitLorentzIndex[0]], 
-     fcdiga[fcli[mu]]] // DiracSimplify) /. 
-   fcdot[Adjoint[fcqf[d___, Particle[Fermion[f_], r___], rr___][x_]], 
-     fcdiga[ExplicitLorentzIndex[0]]] :> 
-   fcqf[d, DiracBar[Particle[Fermion[f], r]], rr][x] // 
+   DiracSimplify) /.
+   fcdot[Adjoint[fcdiga[fcli[mu_]]],
+     fcdiga[ExplicitLorentzIndex[0]]] :>
+   fcdot[fcdiga[ExplicitLorentzIndex[0]],
+     fcdiga[fcli[mu]]] // DiracSimplify) /.
+   fcdot[Adjoint[fcqf[d___, Particle[Fermion[f_], r___], rr___][x_]],
+     fcdiga[ExplicitLorentzIndex[0]]] :>
+   fcqf[d, DiracBar[Particle[Fermion[f], r]], rr][x] //
    DiracSimplify;
 
 (*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*)

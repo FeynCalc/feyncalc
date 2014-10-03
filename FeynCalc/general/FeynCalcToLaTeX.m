@@ -10,7 +10,7 @@
 
 BeginPackage["HighEnergyPhysics`general`FeynCalcToLaTeX`",{"HighEnergyPhysics`FeynCalc`"}];
 
-FeynCalcToLaTeX::usage="FeynCalcToLaTeX[expr] generates LaTeX with line-breaking 
+FeynCalcToLaTeX::usage="FeynCalcToLaTeX[expr] generates LaTeX with line-breaking
 for expr.
 FeynCalcToLaTeX[expr, 500] generates LaTeX for expr with 500 being the Window width
  setting for the Mathematica frontend. Increasing its value will generate less
@@ -33,21 +33,21 @@ FeynCalcToLaTeX[expr_, width_:500] := If[!$Notebooks,
 
 (* this is of course heuristics; should change to java.util.regexp or so ... *)
 
-f2tex[expr_, width_:500] := Module[{r, n, w,y,z}, 
-  r = Cell[BoxData[FormBox[(MakeBoxes[#1, TraditionalForm] & )[expr], TraditionalForm]], 
+f2tex[expr_, width_:500] := Module[{r, n, w,y,z},
+  r = Cell[BoxData[FormBox[(MakeBoxes[#1, TraditionalForm] & )[expr], TraditionalForm]],
      "Output"];
-  n = NotebookPut[Notebook[{r}, WindowSize -> {width, Inherited}, 
+  n = NotebookPut[Notebook[{r}, WindowSize -> {width, Inherited},
      Visible -> False]];
-  o = StringJoin[$TemporaryPrefix, ToString[Random[Integer, 10^8]], 
+  o = StringJoin[$TemporaryPrefix, ToString[Random[Integer, 10^8]],
     "fc2latex.tex"];
   If[$VersionNumber<=5.1, TeXSave[o, n], Export[o, r, "TeX"]];
   t = Import[o, "Text"];
   w = If[(tt=StringPosition[t, "dispSFoutmath"])!={},
         StringDrop[StringChomp[
           StringReplace[
-            StringDrop[t, 
+            StringDrop[t,
               StringPosition[t, "dispSFoutmath"][[1,1]] + 13],
-        {"\\end{document}" -> "", 
+        {"\\end{document}" -> "",
          "\\MathBegin{MathArray}{l}"->"",
          "\\MathBegin{MathArray}[p]{l}"->"",
          "\\MathEnd{MathArray}"->"",
@@ -56,7 +56,7 @@ f2tex[expr_, width_:500] := Module[{r, n, w,y,z},
       StringChomp[
         StringReplace[
           t,
-        {"\\end{document}" -> "", 
+        {"\\end{document}" -> "",
          "\\MathBegin{MathArray}{l}"->"",
          "\\MathBegin{MathArray}[p]{l}"->"",
          "\\MathEnd{MathArray}"->"",
@@ -74,7 +74,7 @@ f2tex[expr_, width_:500] := Module[{r, n, w,y,z},
   z = StringReplace[z,"\n\\\\ (\n"-> "\n\\\\ \n( "];
   If[StringMatchQ[z,"*\\\\"], z = StringDrop[z,-2]];
   If[StringLength[z]>1,
-    If[StringTake[z,1]==="{" && StringTake[z,-1]==="}", 
+    If[StringTake[z,1]==="{" && StringTake[z,-1]==="}",
       z = StringDrop[StringDrop[z, 1], -1]
     ]
   ];

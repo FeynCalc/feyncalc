@@ -8,20 +8,20 @@
 (* :History: File created on 22 June '97 at 22:58 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: ChargeConjugationMatrix is an experimental 
-             implementation of C *) 
+(* :Summary: ChargeConjugationMatrix is an experimental
+             implementation of C *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctools`ChargeConjugationMatrix`",{"HighEnergyPhysics`FeynCalc`"}];
 
-ChargeConjugationMatrix::"usage" = 
+ChargeConjugationMatrix::"usage" =
 "ChargeConjugationMatrix denotes the charge conjugation matrix C.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 If[FreeQ[$NonComm, ChargeConjugationMatrix] && Head[$NonComm] === List,
    AppendTo[$NonComm, ChargeConjugationMatrix]];
 
@@ -31,7 +31,7 @@ ChargeConjugationMatrix /: (ChargeConjugationMatrix^n_Integer?EvenQ /; n>0) :=
 ChargeConjugationMatrix /: (ChargeConjugationMatrix^n_Integer?OddQ /; n>2) :=
  ChargeConjugationMatrix (I^(n-1));
 
-ChargeConjugationMatrix /: 
+ChargeConjugationMatrix /:
 MakeBoxes[ChargeConjugationMatrix, TraditionalForm] := "C";
 
 End[]; EndPackage[];

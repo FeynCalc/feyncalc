@@ -25,7 +25,7 @@ The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Cases2 = MakeContext["Cases2"];
 ChangeDimension = MakeContext["ChangeDimension"];
 Dimension = MakeContext["CoreOptions","Dimension"];
@@ -91,7 +91,7 @@ SetMandelstam[s_,t_,u_,p1_,p2_,p3_,p4_,m1_,m2_,m3_,m4_,opt___Rule]:=
 (* want also for 4 or D dimensions to set SP[p,p] = ... etc. *)
       setvars = Cases2[settemp, {Pair, SP, SPD}];
 Global`SE=setvars;
-      If[Complement[Head/@setvars,{Pair, SP, SPD}] === {}, 
+      If[Complement[Head/@setvars,{Pair, SP, SPD}] === {},
          sol = Solve[ settemp,setvars ]/.Rule->setit
         ];
       ];
@@ -117,7 +117,7 @@ SetMandelstam[x_, pl_List, ml_List, opt___?OptionQ]:=Block[
 
       settemp = Join[ Table[scalarproduct[pl[[i]], pl[[i]]] == ml[[i]]^2,
                             {i,1,n}],
-                      Table[scalarproduct[pl[[j]], pl[[j+1]]] == 
+                      Table[scalarproduct[pl[[j]], pl[[j+1]]] ==
                     sma[1/2 x[j,j+1] - 1/2 ml[[j]]^2 - 1/2 ml[[j+1]]^2],
                             {j,1,n-1}],
                      {scalarproduct[ pl[[1]],pl[[n]] ] ==
@@ -137,11 +137,11 @@ SetMandelstam[x_, pl_List, ml_List, opt___?OptionQ]:=Block[
        For[ l=k+1, l<= n, l++,
             npk = scalarproduct[ pl[[k]], pl[[l]] ]//ExpandScalarProduct;
             If[ (Head[npk] === Pair) || (Head[-npk]=== Pair),
-                AppendTo[pkl,{pl[[k]], pl[[l]]}] 
+                AppendTo[pkl,{pl[[k]], pl[[l]]}]
               ]
           ]
-     ];          
-            
+     ];
+
   psu = Plus@@pl;
   enm[a_]:=Expand[ - Apply[ Plus, Drop[pl,{a,a}] ]  ];
  (* p46 *)

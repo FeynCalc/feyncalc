@@ -15,9 +15,9 @@ BeginPackage["HighEnergyPhysics`fcloops`TrickIntegrate`",
 
 TrickIntegrate::"usage"= "
 TrickIntegrate[(1-t)^(a Epsilon -1) g[t], t] does an integration
-trick for the definite integral of ((1-t)^(a Epsilon -1) g[t]) 
+trick for the definite integral of ((1-t)^(a Epsilon -1) g[t])
 from 0 to 1.
-TrickIntegrate[(1-t)^(a Epsilon -1) g[t], t] gives 
+TrickIntegrate[(1-t)^(a Epsilon -1) g[t], t] gives
 g[1]/a/Epsilon + Hold[Integrate][(1-t)^(a Epsilon-1) (g[t]-g[1]),{t,0,1}].
 TrickIntegrate[t^(a Epsilon -1) f[t], t] gives
 f[0]/a/Epsilon + Hold[Integrate][t^(a Epsilon-1) (f[t]-f[0]),{t,0,1}],
@@ -29,7 +29,7 @@ TrickIntegrate::"novar" =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Epsilon = MakeContext["CoreObjects","Epsilon"];
 
 MakeContext[Apart3, Collect2, Factor2, Map2, SelectFree, SelectNotFree];
@@ -49,7 +49,7 @@ TrickIntegrate[w_/;Head[w]=!=Plus, v_, opt___] :=
  (hopt[v,opt][SelectFree[w, v](Hold[Integrate]@@ {SelectNotFree[w,v], {v,0,1}})]
  ) //. holdLimit->limit /;
    (!MatchQ[w,(1-v)^(a_. Epsilon-1) ex_.] &&
-    !MatchQ[w,    v^(a_. Epsilon-1) ex_.] 
+    !MatchQ[w,    v^(a_. Epsilon-1) ex_.]
    );
 
 (* this is just linearity *)
@@ -68,18 +68,18 @@ TrickIntegrate[ y^a_. (1-y)^b_ (1-x_ y_)^g_, y_, opt___Rule] :=
 *)
 
 (* important; partial fractioning !! *)
-TrickIntegrate[(1 - v_)^(a_. Epsilon-1) v_^(b_. Epsilon-1) exp_., 
+TrickIntegrate[(1 - v_)^(a_. Epsilon-1) v_^(b_. Epsilon-1) exp_.,
                v_, opt___Rule
               ]:= TrickIntegrate[Apart3[
    (1-v)^(a Epsilon-1) v^(b Epsilon-1) exp, v], v, opt
                                 ] //. holdLimit->limit;
 
-TrickIntegrate[(1-v_)^(a_. Epsilon-1) exp_., v_,opt___Rule] := 
+TrickIntegrate[(1-v_)^(a_. Epsilon-1) exp_., v_,opt___Rule] :=
  TrickIntegrate[v^(a Epsilon-1) * Factor2[exp/.v->1-v],v,opt] /.
   Hold[Integrate][xy_, gr_]:>Hold[Integrate][xy/.v->(1-v), gr] //. holdLimit->limit;
 
 (* old
-TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_,opt___Rule] := 
+TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_,opt___Rule] :=
  TrickIntegrate[(1-v)^(a Epsilon-1) * Factor2[exp/.v->1-v],v,opt];
 *)
 
@@ -104,7 +104,7 @@ tt  = SelectNotFree[exp, v]/.Hypergeometric2F1[a1_,a2_,a3_,z_]:>
 pre = SelectFree[exp, v];
 
 lim = holdLimit[tt, v->0]//Factor2;
-(* if limit does not exist or reveals a singularity in 
+(* if limit does not exist or reveals a singularity in
 v = 0 then: return the input *)
 res =
 If[(lim === Indeterminate) (*|| (!FreeQ[tt, Log[v]])*) ||
@@ -115,10 +115,10 @@ If[(lim === Indeterminate) (*|| (!FreeQ[tt, Log[v]])*) ||
    lim = lim /. {((z_Symbol) (1-r_Symbol))^eps_ :> z^eps (1-r)^eps,
                   ((z_Symbol) r_Symbol)^eps_ :> z^eps r^eps
                 };
-   rr =  1/a/Epsilon lim  + 
+   rr =  1/a/Epsilon lim  +
            integ[v^(a Epsilon-1) (tt-lim)];
 integg[0] = 0;
-integg[zz_] := SelectFree[zz, v] * 
+integg[zz_] := SelectFree[zz, v] *
                (Hold[Integrate]@@ {SelectNotFree[zz, v], {v,0,1}});
 re = pre (rr /. integ -> integg) /. (Hold[Integrate][1,{v,0,1}]) -> 1;
 Expand[ re = hopt[v,opt][re], v]

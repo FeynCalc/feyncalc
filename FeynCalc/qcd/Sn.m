@@ -19,7 +19,7 @@ Sn::"usage"= "Sn is Pi^(n/2)/(2 Pi)^n."
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
    Sn /:
    MakeBoxes[Sn  ,TraditionalForm] :=

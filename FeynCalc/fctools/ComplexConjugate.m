@@ -76,7 +76,7 @@ Isolate[
                     DiracGamma[7]:>DiracGamma[6]}/.*)
                      {ccm :> (-ccm),  ccmi -> (-ccmi)}
         )(*, IsolateNames->c$CC, IsolateSplit->Infinity
-       ]*) 
+       ]*)
 ) /; Length[Position[{yz}, Spinor]] < 3;
 
 c$CCfrh /: HoldForm[c$CCfrh[ii_]] := c$CC[ii];
@@ -84,7 +84,7 @@ c$CCfrh /: HoldForm[c$CCfrh[ii_]] := c$CC[ii];
 (*cLIndex[x_, dime___] := LorentzIndex[ComplexIndex[x], dime];
 cSIndex[x_]          := SUNIndex[ComplexIndex[x]];*)
 
-conpa[x__] := conpa[x] = Pair[x] 
+conpa[x__] := conpa[x] = Pair[x]
 
 (* ComplexConjugatedef *)
 (*sunfcomp[a___] := SUNF @@ ({a}/.ComplexIndex -> Identity);
@@ -128,7 +128,7 @@ compcon[x_Times, opts___?OptionQ] := compcon[#,opts]& /@ x;
 compcon[b_HoldForm, opts___?OptionQ] := b /;
              FreeQ2[FRH[b], {DOT,LorentzIndex,SUNIndex,Complex}];
 compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times), opts___?OptionQ] :=
-If[FreeQ[x, DOT | Complex | DiracGamma], x, 
+If[FreeQ[x, DOT | Complex | DiracGamma], x,
              Block[{nx=x,oone, suntrac, dotsim},
                   dotsim = DotSimplify /. {opts} /. Options[ComplexConjugate];
                   If[!FreeQ[nx, SUNF], nx = Expand[nx, SUNF]];

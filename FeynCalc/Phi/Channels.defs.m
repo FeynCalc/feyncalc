@@ -6,17 +6,17 @@ Definitions for the package Channels
 Usage
 *)
 
-MassArguments::"usage" = 
+MassArguments::"usage" =
     "MassArguments is an option for AmplitudeProjection relevant when \
 OnMassShell is set to True, specifying the optional extra arguments supplied \
 to ParticleMass.  Default value : {RenormalizationState[0]}.";
 
-FieldProjection::"usage" = 
+FieldProjection::"usage" =
     "FieldProjection[IsoVector[QuantumField[Particle[p]]],opts] returns the \
 field specified by  the option Channel as a linear combination of the \
 isospin components of QuantumField[Particle[p]].";
 
-AmplitudeProjection::"usage" = 
+AmplitudeProjection::"usage" =
     "AmplitudeProjection[amp,opts], where amp[i1,i2,...] is a function of the \
 isospin indices i1, i2, ... of the external particles, returns the amplitude \
 of the channel specified by the option Channel.  AmplitudeProjection uses the \
@@ -25,7 +25,7 @@ consideration, PHI must know their anti-particles.  That is, e.g. \
 ChargeConjugate[PionPlus] is PionMinus.";
 
 
-$IsoSpinProjectionRules::"usage" = 
+$IsoSpinProjectionRules::"usage" =
     "$IsoSpinProjectionRules is a set of rules used by FieldProjection and \
 AmplitudeProjection to project out in channels.  Changing the default setting \
 of this quantity should be done with care.  Notice that the setting of \
@@ -39,7 +39,7 @@ $SUNCompletenessRules::"usage" = "$SUNCompletenessRules is an environment \
 traces of products of generator matrices (UMatrix[UGenerator[SUNIndex[j]]]) \
 with other matrices.";
 
-Channel::"usage" = 
+Channel::"usage" =
     "Channel is an option of FieldProjection and AmplitudeProjection, \
 specifying which channel the field or amplitude should be projected out in.  \
 For FieldProjection, the possible settings are listed in $Particles.  For \
@@ -50,16 +50,16 @@ particles from $Particles like Pion etc. and i is the isospin, or simply \
 iso-eigenstates like PionPlus etc..  Default value : PionPlus for \
 FieldProjection and {{Pion,Pion}->{Pion,Pion},{2}} for AmplitudeProjection.";
 
-USum::"usage" = 
+USum::"usage" =
     "USum is a summation that works like Sum.  It may be faster that Sum for \
 multiple summations where each summation reduces the number of terms.  This \
 is typically the case in isospin indices summations.";
 
-USumHeld::"usage" = 
+USumHeld::"usage" =
     "USumHeld is a symbol substituted for USum when the option HoldSums of \
 SUNReduce is set to True.";
 
-SUNReduce::"usage" = 
+SUNReduce::"usage" =
     "SUNReduce[a] finds SU(n) objects, simplifies using SU(2) or SU(3) rules \
 and sums over pairs of indices not in $ConstantIsoIndices.  Indices are \
 summed over only if they have head SUNIndex.  NOTICE: With the option \
@@ -67,23 +67,23 @@ Explicit set to True, large expressions that can be expanded to \
 a sum, should be expanded before applying SUNReduce (this will reduce \
 computation time dramatically).";
 
-SUDFSymmetrize::"usage" = 
+SUDFSymmetrize::"usage" =
     "SUDFSymmetrize[exp] renames factors multiplying SUND[i,j,k], \
 SU3D[i,j,k], SUNF[i,j,k], SU2F[i,j,k] or SU3F[i,j,k] in an attempt to \
 reduce exp.";
 
-IsoFunction::"usage" = 
+IsoFunction::"usage" =
     "IsoFunction is a head recognized by SUNReduce, so that for e.g. \
 IsoFunction[f][SUNIndex[i]*SUNDelta[SUNIndex[i],SUNIndex[j]] ocurring in an \
 expression will imply a sum over SUNIndex[i].";
 
-HoldSums::"usage" = 
+HoldSums::"usage" =
     "HoldSums is an option for SUNReduce relevant \
 when the option Explicit is set to True.  When set to True, the \
 isospin summations are not performed and USum is substituted with USumHeld.  \
 Default value : True.";
 
-IndicesCleanup::"usage" = 
+IndicesCleanup::"usage" =
     "IndicesCleanup[expr] renames dummy indices in expr in a systematic way \
 in order to get cancellations and a simpler expression. The expression expr \
 should be in PHI notation, that is, involving the products NM and/or Times, \
@@ -96,64 +96,64 @@ be necessary to apply IndicesCleanup repeatedly.\n
 NOTICE : IndicesCleanup does not work for D-dimensional Lorentz indices like \
 LorentzIndex[li, D].";
 
-CNM::"usage" = 
+CNM::"usage" =
     "CNM[a,b] renames contracted Lorentz and SU(N) indices.";
 
-ExtendedCleanup::"usage" = 
+ExtendedCleanup::"usage" =
     "ExtendedCleanup is an option for IndicesCleanup.  When set to True, \
 contractions within a mixing of Times and NM will also be renamed, so that in \
 a mixed product there will be no multiple pairs of the same index.  When set \
 to False,  there will be multiple pairs of the same index in mixed products.  \
 This will give wrong results with e.g. FeynRule.  Default value : True.";
 
-FCleanup::"usage" = 
+FCleanup::"usage" =
     "FCleanup is an option for IndicesCleanup.  When set to True, special \
 attention is given to renaming the indices of SU2F, SU3F and SUNF in order to \
 get cancellations.  Default value : False.";
 
-IsoDummy::"usage" = 
+IsoDummy::"usage" =
     "IsoDummy is a head used by IndicesCleanup for temporary renaming of \
 indices.";
 
-NM1::"usage" = 
+NM1::"usage" =
     "NM1 is a head used by IndicesCleanup for temporary renaming of Times.";
 
-NM2::"usage" = 
+NM2::"usage" =
     "NM2 is a head used by IndicesCleanup for temporary renaming of DOT.";
-    
-IsoExternDummy::"usage" = 
+
+IsoExternDummy::"usage" =
     "IsoExternDummy is a head used by IndicesCleanup for temporary renaming \
 of indices.";
 
-IsoInternDummy::"usage" = 
+IsoInternDummy::"usage" =
     "IsoInternDummy is a head used by IndicesCleanup for temporary renaming \
 of indices.";
 
-LorentzDummy::"usage" = 
+LorentzDummy::"usage" =
     "LorentzDummy is a head used by IndicesCleanup for temporary renaming of \
 indices.";
 
-LorentzExternDummy::"usage" = 
+LorentzExternDummy::"usage" =
     "LorentzExternDummy is a head used by IndicesCleanup for temporary \
 renaming of indices.";
 
-LorentzInternDummy::"usage" = 
+LorentzInternDummy::"usage" =
     "LorentzInternDummy is a head used by IndicesCleanup for temporary \
 renaming of indices.";
 
-DerivativeExternDummy::"usage" = 
+DerivativeExternDummy::"usage" =
     "DerivativeExternDummy is a head used by IndicesCleanup for temporary \
 renaming of indices.";
 
-DerivativeInternDummy::"usage" = 
+DerivativeInternDummy::"usage" =
     "DerivativeInternDummy is a head used by IndicesCleanup for temporary \
 renaming of indices.";
 
-IsoDummys::"usage" = 
+IsoDummys::"usage" =
     "IsoDummys is an option for IndicesCleanup and CNM.  It should be a list of two \
 three strings.  Default value : {\"j\",\"k\",\"l\"}.";
 
-LorentzDummys::"usage" = 
+LorentzDummys::"usage" =
     "LorentzDummys is an option for IndicesCleanup and CNM.  It should be a list of \
 five strings.  Default value : {\"\[Xi]\",\"\[Rho]\",\"\[Sigma]\",\"\[Tau]\",\
 \"\[Omega]\"}.";
@@ -174,13 +174,13 @@ sv[bb__, rr_] := sumvar[{bb}[[rr]]];
 sumeq[{_}] := ".";
 sumeq[{ss_, __}] := "=.";
 USumHeld /:
-     MakeBoxes[USumHeld[a__, b : _List ..], 
+     MakeBoxes[USumHeld[a__, b : _List ..],
 	  TraditionalForm] :=
-   
+
     RowBox[Join[
-        Table[UnderoverscriptBox["\[CapitalSigma]", 
-            RowBox[{sv[b, rep], sumeq[{b}[[rep]]], 
-                sumstart[{b}[[rep]]]}], {b}[[rep]][[-1]]], {rep, 
+        Table[UnderoverscriptBox["\[CapitalSigma]",
+            RowBox[{sv[b, rep], sumeq[{b}[[rep]]],
+                sumstart[{b}[[rep]]]}], {b}[[rep]][[-1]]], {rep,
             Length[{b}]}], {MakeBoxes[TraditionalForm[a]]}]];
 
 End[];

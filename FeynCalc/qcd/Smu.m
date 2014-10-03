@@ -19,7 +19,7 @@ Smu::"usage"= "Smu  is ...";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Smu/: MakeBoxes[Smu,TraditionalForm]:= SubscriptBox["S", "\[Mu]"];
 

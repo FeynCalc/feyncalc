@@ -13,14 +13,14 @@
 BeginPackage["HighEnergyPhysics`general`HypExplicit`",{"HighEnergyPhysics`FeynCalc`"}];
 
 HypExplicit::"usage"=
-"HypExplicit[exp, nu] expresses Hypergeometric functions in exp 
+"HypExplicit[exp, nu] expresses Hypergeometric functions in exp
 by their definition in terms of a sum (the Sum is omitted and
 nu is the summation index).";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 p2g[a_, n_] := Gamma[a + n] / Gamma[a];
 

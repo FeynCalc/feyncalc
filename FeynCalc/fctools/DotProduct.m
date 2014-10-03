@@ -20,16 +20,16 @@ performs Sum[ x[[k]] a[[k]], {k, 0, 3}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 MakeContext[CrossProduct, ThreeVector];
 
-DotProduct[ThreeVector[b_], ThreeVector[a_]] := 
+DotProduct[ThreeVector[b_], ThreeVector[a_]] :=
  DotProduct[ThreeVector[a], ThreeVector[b]] /;
    !OrderedQ[{b,a}];
 
-DotProduct[x_List, {a1_ /; Head[a1] =!= List, 
-                    a2_ /; Head[a2] =!= List, 
+DotProduct[x_List, {a1_ /; Head[a1] =!= List,
+                    a2_ /; Head[a2] =!= List,
                     a3_ /; Head[a3] =!= List}
           ] := x[[1]] a1 + x[[2]] a2 + x[[3]] a3;
 
@@ -42,13 +42,13 @@ DotProduct[(n_DotProduct) a_, b_] := n DotProduct[a, b];
 DotProduct[b_, (n_DotProduct) a_] := n DotProduct[b, a];
 
 (* CrossProduct orders already its arguments *)
-DotProduct[c_ThreeVector, CrossProduct[a_, b_]] := 
+DotProduct[c_ThreeVector, CrossProduct[a_, b_]] :=
 DotProduct[a, CrossProduct[b, c]] /; OrderedQ[{a,b,c}];
 
-DotProduct[CrossProduct[a_, b_], c_ThreeVector] := 
+DotProduct[CrossProduct[a_, b_], c_ThreeVector] :=
 DotProduct[c, CrossProduct[a, b]];
 
-DotProduct[b_ThreeVector, CrossProduct[c_, a_]] := 
+DotProduct[b_ThreeVector, CrossProduct[c_, a_]] :=
 DotProduct[a, CrossProduct[b, c]] /; OrderedQ[{a,b,c}];
 
 DotProduct /: MakeBoxes[DotProduct[a_,b_], TraditionalForm] :=

@@ -13,7 +13,7 @@
 BeginPackage["HighEnergyPhysics`fcloops`UVPart`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-UVPart::"usage"= 
+UVPart::"usage"=
 "UVPart[exp, q] discards ultraviolet finite integrals
 (q = integration momentum).";
 
@@ -21,7 +21,7 @@ UVPart::"usage"=
 
 Begin["`Private`"];
 
-DiracGamma = MakeContext["CoreObjects","DiracGamma"];   
+DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
@@ -57,13 +57,13 @@ Catch[
       w1 = SelectNotFree[Cases2[w, Pair], q];
       If[!MatchQ[w1, {Pair[Momentum[q,___],
                            Momentum[OPEDelta,___]]..}
-                ], 
+                ],
          Throw[False],
          w2 = Table[w1[[i]] -> (w1[[i]]/.q->qQ),{i,Length[w1]}];
          If[FreeQ[w/.w2,q], Throw[True], Throw[False]]
         ]
      ]]          ];
-      
+
 neglect[ (_. + _. Pair[Momentum[q,___], Momentum[OPEDelta,___]])^_.
         FeynAmpDenominator[_PropagatorDenominator,
                            _PropagatorDenominator,
@@ -72,14 +72,14 @@ neglect[ (_. + _. Pair[Momentum[q,___], Momentum[OPEDelta,___]])^_.
        ] := 0;
 
 
-neglect[ (a_ /; qcheck[a]) * 
+neglect[ (a_ /; qcheck[a]) *
         FeynAmpDenominator[_PropagatorDenominator,
                            _PropagatorDenominator,
                           __PropagatorDenominator
                           ]
        ] := 0;
 
-neglect[ (a_ /; qcheck[a]) * (b_ /; qcheck[b]) * 
+neglect[ (a_ /; qcheck[a]) * (b_ /; qcheck[b]) *
         FeynAmpDenominator[_PropagatorDenominator,
                            _PropagatorDenominator,
                           __PropagatorDenominator

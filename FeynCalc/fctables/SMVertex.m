@@ -8,13 +8,13 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: SMVertex *) 
+(* :Summary: SMVertex *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fctables`SMVertex`",{"HighEnergyPhysics`FeynCalc`"}];
 
-SMVertex::"usage" = 
+SMVertex::"usage" =
 "SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives
 the photon-W-W vertex (p,mu correspond to the photon,
 q,nu to the (incoming) W+ and k,rho to the (incoming) W-.
@@ -26,7 +26,7 @@ SMVertex[\"HHH\", ___] give the three-higgs coupling.
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Dimension = MakeContext["CoreOptions","Dimension"];
 FourVector = MakeContext["CoreObjects","FourVector"];
 Gauge = MakeContext["CoreOptions","Gauge"];
@@ -41,7 +41,7 @@ Options[SMVertex] = {Dimension -> 4, Explicit -> True};
 
 l[w_Integer] := ToExpression["Global`li"<>ToString[w]];
 
-SMVertex[x___, i_Integer, y___] := 
+SMVertex[x___, i_Integer, y___] :=
 SMVertex[x, l[i], y];
 
 
@@ -55,7 +55,7 @@ SMVertex["AWW", mom1_, li1_, mom2_, li2_, mom3_, li3_,
               +MetricTensor[li2, li3] * FourVector[(mom3 -mom2 ),li1]
               +MetricTensor[li3, li1] * FourVector[(mom1 -mom3 ),li2]
         ), dim];
-                           re] /; 
+                           re] /;
  (Explicit /. {opt} /. Options[SMVertex]) === True;
 
 
@@ -67,7 +67,7 @@ SMVertex["HHH", ___] := Block[ {EL, MW, MH, SW},
 SMVertex["eeH", ___] := Block[ {EL, MW, MH, SW},
    {EL, MW, ME, SW} = SMP /@ {"EL", "MW", "ME", "SW"};
 -((I*EL*ME)/(2*MW*SW))];
- 
+
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 If[$VeryVerbose > 0,WriteString["stdout", "SMVertex | \n "]];

@@ -23,7 +23,7 @@ Lagrangian[\"QCD\"] gives the gluon self interaction part of the QCD lagrangian.
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 AntiQuarkField = MakeContext["CoreObjects","AntiQuarkField"];
 DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 GluonField = MakeContext["CoreObjects","GluonField"];
@@ -55,7 +55,7 @@ If[$Notebooks,
    rho= Global`Rho;
    ga = Global`Ga
   ];
-    
+
 na = ToString[x];
 lali = {
 "oqu" :> I^(OPEm)   DOT[QuantumField[AntiQuarkField],
@@ -81,7 +81,7 @@ lali = {
          FieldStrength[al, OPEDelta, b]
                       ]
 ,
-"ogd" :> DOT[LeviCivita[mu,nu,la,rho] , 
+"ogd" :> DOT[LeviCivita[mu,nu,la,rho] ,
          FieldStrength[mu,nu, a] ,
          FieldStrength[la,rho,a]
          ]

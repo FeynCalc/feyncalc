@@ -8,23 +8,23 @@
 (* :History: File created on 22 June '97 at 23:00 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: PropagatorDenominatorExplicit *) 
+(* :Summary: PropagatorDenominatorExplicit *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`PropagatorDenominatorExplicit`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-PropagatorDenominatorExplicit::"usage" = 
-"PropagatorDenominatorExplicit[exp] changes each occurence of 
-PropagatorDenominator[a,b] 
-in exp into 1/(ScalarProduct[a,a]-b^2) and replaces FeynAmpDenominator 
+PropagatorDenominatorExplicit::"usage" =
+"PropagatorDenominatorExplicit[exp] changes each occurence of
+PropagatorDenominator[a,b]
+in exp into 1/(ScalarProduct[a,a]-b^2) and replaces FeynAmpDenominator
 by Times.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
@@ -32,13 +32,13 @@ PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 FeynAmpDenominator    = MakeContext["CoreObjects","FeynAmpDenominator"];
 ExpandScalarProduct   = MakeContext["ExpandScalarProduct"];
 
-PropagatorDenominatorExplicit[x_] := 
+PropagatorDenominatorExplicit[x_] :=
   If[FreeQ[x, PropagatorDenominator], x,
      x /. {
-           PropagatorDenominator[a_  /; !FreeQ[a, Momentum] ,b_] :> 
+           PropagatorDenominator[a_  /; !FreeQ[a, Momentum] ,b_] :>
             (1/Expand[ExpandScalarProduct[Pair[a, a]] - b^2]),
-           PropagatorDenominator[a_  /; FreeQ[a, Momentum] ,b_] :> 
-            (1/Expand[ExpandScalarProduct[Pair[Momentum[a], Momentum[a]]] - 
+           PropagatorDenominator[a_  /; FreeQ[a, Momentum] ,b_] :>
+            (1/Expand[ExpandScalarProduct[Pair[Momentum[a], Momentum[a]]] -
                      b^2]),
            FeynAmpDenominator :> Times
           }

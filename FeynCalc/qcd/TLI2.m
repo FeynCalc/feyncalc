@@ -12,13 +12,13 @@
 
 BeginPackage["HighEnergyPhysics`qcd`TLI2`",{"HighEnergyPhysics`FeynCalc`"}];
 
-TLI2::"usage"= 
+TLI2::"usage"=
 "like TLI, but without any functional properties.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

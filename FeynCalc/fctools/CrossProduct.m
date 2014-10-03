@@ -18,7 +18,7 @@ CrossProduct::"usage"=
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 MakeContext[DotProduct, ThreeVector];
 
@@ -29,10 +29,10 @@ CrossProduct[b_, a_] := - CrossProduct[a, b] /; !OrderedQ[{b,a}];
 CrossProduct[a_Plus, b_] := Map[CrossProduct[#, b]&, a];
 CrossProduct[(n_/;NumberQ[n]) a_, b_] := n CrossProduct[a, b];
 
-CrossProduct[a_ThreeVector, CrossProduct[b_, c_]] := 
+CrossProduct[a_ThreeVector, CrossProduct[b_, c_]] :=
 DotProduct[a, c] b - DotProduct[a, b] c;
 
-CrossProduct[CrossProduct[b_, c_], a_ThreeVector] := 
+CrossProduct[CrossProduct[b_, c_], a_ThreeVector] :=
 -(DotProduct[a, c] b - DotProduct[a, b] c);
 
 CrossProduct /: MakeBoxes[CrossProduct[a_,b_], TraditionalForm] :=

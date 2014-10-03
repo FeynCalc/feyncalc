@@ -20,7 +20,7 @@ of the definite integral Integrate[exp,{t,0,1}].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 Options[IntegrateByParts] = {Hold -> False};
 

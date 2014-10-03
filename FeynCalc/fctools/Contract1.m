@@ -50,7 +50,7 @@ cot[{a_, b___}, {z___}] := cot[{b},{a, z}]  /; Head[a]=!=Pair;
 cot[{a_, b___}, {z___}] := a cot[{b},{z}]  /; FreeQ[a,Lower];
 *)
 
-cot[{Pair[LorentzIndex[Upper[l1_],di1___], 
+cot[{Pair[LorentzIndex[Upper[l1_],di1___],
           LorentzIndex[Upper[l2_],di2___]
          ], y___}, {z___}
     ] :=
@@ -98,13 +98,13 @@ fdim[] = 4;
 fdim[x_] := x;
 
 con[exp_] := (*con[exp] =*)  Block[{temp},
-If[FreeQ[exp, Upper], 
+If[FreeQ[exp, Upper],
    temp = exp,
    temp = exp /. Times -> ct /. cot -> ttimes;
    If[!FreeQ[exp, Plus],
-      temp = Expand2[exp, Upper] /. Dispatch[{TTimes :> ct, Times -> ct}], 
+      temp = Expand2[exp, Upper] /. Dispatch[{TTimes :> ct, Times -> ct}],
       temp = exp /. Dispatch[{TTimes :> ct, Times -> ct}]
-  ]]; 
+  ]];
 If[!FreeQ[temp,Lower],
    temp = temp /. Pair[LorentzIndex[Lower[ll_],di___],
                        LorentzIndex[Upper[ll_],di___]] :> fdim[di];

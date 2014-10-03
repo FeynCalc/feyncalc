@@ -21,10 +21,10 @@ StringChomp[s_] := FixedPoint[chomp, s];
 chomp[s_] :=
     (* chomp[s] =*)
     StringJoin @@ (Flatten[
-       Replace[Split[ Characters[s]], 
-           {{{(" " | "\t" | "\n" | "\r") ..}, b___, 
-             {(" " | "\n" | "\t" | "\r") ..}} :> {b}, 
-             {{(" " | "\n" | "\t" | "\r") ..}, r___} :> {r}, 
+       Replace[Split[ Characters[s]],
+           {{{(" " | "\t" | "\n" | "\r") ..}, b___,
+             {(" " | "\n" | "\t" | "\r") ..}} :> {b},
+             {{(" " | "\n" | "\t" | "\r") ..}, r___} :> {r},
              {a___, {(" " | "\n" | "\t" | "\r") ..}} :> {a}}]]);
 
 End[]; EndPackage[];

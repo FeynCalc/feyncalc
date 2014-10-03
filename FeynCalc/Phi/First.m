@@ -15,12 +15,12 @@ necessary to define these objects before Objects.m is read.
 (* Definitions used by the model PiN2 *)
 
 HighEnergyPhysics`Phi`Objects`CovariantNucleonFieldDerivative::"usage"=
-"CovariantNucleonFieldDerivative is the nucleon 
-covariant derivative of J. Gasser, M. E. Sainio and 
+"CovariantNucleonFieldDerivative is the nucleon
+covariant derivative of J. Gasser, M. E. Sainio and
 A. Svarc (1988), Nucl. Phys, B307, 779-853";
 
 HighEnergyPhysics`Phi`Objects`CNDr::"usage"=
-"CNDr is the shorthand notation for 
-CovariantNucleonFieldDerivative, which is the nucleon 
-covariant derivative of J. Gasser, M. E. Sainio and 
+"CNDr is the shorthand notation for
+CovariantNucleonFieldDerivative, which is the nucleon
+covariant derivative of J. Gasser, M. E. Sainio and
 A. Svarc (1988), Nucl. Phys, B307, 779-853";

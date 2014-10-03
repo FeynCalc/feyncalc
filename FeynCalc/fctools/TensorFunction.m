@@ -12,7 +12,7 @@
 
 BeginPackage["HighEnergyPhysics`fctools`TensorFunction`",{"HighEnergyPhysics`FeynCalc`"}];
 
-TensorFunction::"usage"= 
+TensorFunction::"usage"=
 "TensorFunction[t, mu, nu, ...] transform into
 t[LorentzIndex[mu], LorentzIndex[nu], ...], i.e., it can be used
 as an unspecified tensorial function t.
@@ -44,7 +44,7 @@ TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule,
         SetAttributes@@{tf, Orderless};
         ,
         at === "A",
-        Evaluate[tf[a__LorentzIndex]] := 
+        Evaluate[tf[a__LorentzIndex]] :=
                          Condition[
                           Signature[{a}] Apply[tf, Sort[{a}]],
                            {a} =!= Sort[{a}]

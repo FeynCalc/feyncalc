@@ -8,14 +8,14 @@
 (* :History: File created on 2 July '97 at 13:43 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: split one into two *) 
+(* :Summary: split one into two *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`FeynAmpDenominatorSplit`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-FeynAmpDenominatorSplit::"usage" = 
+FeynAmpDenominatorSplit::"usage" =
 "FeynAmpDenominatorSplit[expr] splits all FeynAmpDenominator[a,b, ...]
 into FeynAmpDenominator[a]*FeynAmpDenominator[b] ... .
 FeynAmpDenominatorSplit[expr, q1]
@@ -26,7 +26,7 @@ the second without q1.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 FeynAmpDenominator = MakeContext["CoreObjects","FeynAmpDenominator"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
@@ -44,13 +44,13 @@ feynsplit[k1_][a__PropagatorDenominator] :=
 
 fsp[a__] := Apply[Times, Map[FeynAmpDenominator, {a}]];
 
-FeynAmpDenominatorSplit[x_] := 
+FeynAmpDenominatorSplit[x_] :=
    FeynCalcInternal[x] /. FeynAmpDenominator -> fsp;
 
-FeynAmpDenominatorSplit[x_, q1_Momentum] := 
+FeynAmpDenominatorSplit[x_, q1_Momentum] :=
  FeynAmpDenominatorSplit[x, q1[[1]]];
 
-HoldPattern[FeynAmpDenominatorSplit[x_, q1_]] := 
+HoldPattern[FeynAmpDenominatorSplit[x_, q1_]] :=
  FeynCalcInternal[x] /. FeynAmpDenominator -> feynsplit[q1] /.
     feynsplit[q1]->FeynAmpDenominator;
 

@@ -13,14 +13,14 @@
 BeginPackage["HighEnergyPhysics`fctools`ChargeConjugationMatrixInv`",{"HighEnergyPhysics`FeynCalc`"}];
 
 ChargeConjugationMatrixInv::"usage"=
-"ChargeConjugationMatrixInv is the inverse of 
+"ChargeConjugationMatrixInv is the inverse of
 ChargeConjugationMatrix. It is substituted immediately by
 -ChargeConjugationMatrix.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 ChargeConjugationMatrix = MakeContext["ChargeConjugationMatrix"];
 

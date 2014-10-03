@@ -43,7 +43,7 @@ Twist2QuarkOperator := Twist2QuarkOperator = MakeContext["Twist2QuarkOperator"];
 CounterT = MakeContext["CoreObjects","CounterT"];
 Abbreviation = MakeContext["CoreObjects","Abbreviation"];
 
-MakeContext[    
+MakeContext[
     CounterTerm,
     DeclareNonCommutative,
     Explicit,

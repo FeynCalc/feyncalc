@@ -20,7 +20,7 @@ The syntax is the same as for Sum.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 
 (*change 03/98 *)
 OPESum[a_,{j_,0,i_},{i_,0,em_}] :=
@@ -33,12 +33,12 @@ OPESum[__, {_,0,m_Integer?Negative},___List] := 0;
 
 OPESum[a_, {i_, j_, n_Integer/; n>=0}, any___] := Sum[a,{i,j,n},any];
 
-   OPESum /: 
-   MakeBoxes[OPESum[a_,b_], TraditionalForm] := 
+   OPESum /:
+   MakeBoxes[OPESum[a_,b_], TraditionalForm] :=
       Tbox[HoldForm[Sum[a,b]]];
 
-   OPESum /: 
-   MakeBoxes[OPESum[a_,b_,c_], TraditionalForm] := 
+   OPESum /:
+   MakeBoxes[OPESum[a_,b_,c_], TraditionalForm] :=
       Tbox[HoldForm[Sum["",b]], Sum["",c], a];
 
 (*
@@ -52,7 +52,7 @@ stopsi[exp_] := exp /. {
     SumS[1,i] :> PolyGamma[0,i+1] + EulerGamma ,
      PolyGamma[1,i_] :> -SumS[2,i-1] + Zeta2};
 
-      
+
 Unprotect[Sum];
 
 Sum[SumS[1,m-i+1],{i,m-1}] :=
@@ -86,7 +86,7 @@ Sum[(-1)^n PolyGamma[1, 2+n]/(1+n), {n, 0, Infinity}]
 (Pi^2*Log[2])/4 - Zeta[3]
 
 mysum[u_^nu_*PolyGamma[1, nu_], {nu_, 1, Infinity}]  :=
--Pi^2/6 + (Log[1 - u]*Log[u])/(1 - u) + PolyLog[2, 1 - u]/(1 - u) + 
+-Pi^2/6 + (Log[1 - u]*Log[u])/(1 - u) + PolyLog[2, 1 - u]/(1 - u) +
    PolyLog[2, u]
 
 **************************************************

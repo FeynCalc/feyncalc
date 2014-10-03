@@ -15,14 +15,14 @@ BeginPackage["HighEnergyPhysics`general`SelectNotFree`",{"HighEnergyPhysics`Feyn
 SelectNotFree::"usage"=
 "SelectNotFree[expr, a, b, ...] is equivalent to
 Select[expr, !FreeQ2[#, {a,b, ...}]&], except the
-special cases: SelectNotFree[a, b] returns 1 and 
+special cases: SelectNotFree[a, b] returns 1 and
 SelectNotFree[a,a] returns a (where a is not a product or
 a sum).";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 FreeQ2 = MakeContext["FreeQ2"];
 
 SelectNotFree[0,_] := 0;
@@ -31,7 +31,7 @@ SelectNotFree[a_, b__] := If[(Head[a] === Plus) ||
                        (Head[a] === Times) ||
                        (Head[a] === List),
                        select2[a,b],
-                       select2[a duMmM1 duMmM2, b] /. 
+                       select2[a duMmM1 duMmM2, b] /.
                             {duMmM1 :> 1, duMmM2 :> 1}
                       ];
 
