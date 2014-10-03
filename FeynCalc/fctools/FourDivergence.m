@@ -49,9 +49,9 @@ FourDivergence[x_, fv_] := Block[
 {nx = x,ve=fci[fv],p,mu,gpa,cont, tliflag = False},
 If[!FreeQ[nx, TLI], nx = TLI2FC[nx]; tliflag = True];
 nx = fci[nx];
-ve = MomentumCombine[ve];
+ve = MomentumCombine[ve,LeafCount -> 1000];
 p  = Select[ve, Head[#] === Momentum&][[1]];
-If[!FreeQ[p,Plus], nx = MomentumCombine[nx]];
+If[!FreeQ[p,Plus], nx = MomentumCombine[nx,LeafCount -> 1000]];
 mu = Select[ve, Head[#] === LorentzIndex&][[1]];
 
 If[!FreeQ[nx, FeynAmpDenominator],

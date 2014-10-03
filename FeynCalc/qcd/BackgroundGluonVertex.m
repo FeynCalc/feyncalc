@@ -84,7 +84,7 @@ Block[
                               (Pair[q - r, mu] Pair[nu, la] +
                                Pair[r - p + 1/alpha q, nu] Pair[la, mu] +
                                Pair[p - q -1/alpha r, la] Pair[mu, nu]
-                              )              ];
+                              ), LeafCount -> 1000         ];
   gl3v];
 
 

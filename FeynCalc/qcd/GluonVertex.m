@@ -80,11 +80,11 @@ Block[
   dim   = Dimension /. {opt} /. Options[GluonVertex];
   ope   = OPE /. {opt} /. Options[GluonVertex];
   expl  = Explicit /. {opt} /. Options[GluonVertex];
-  lorfix[w_] := MomentumCombine[w] /. LorentzIndex -> lorf /.
+  lorfix[w_] := MomentumCombine[w,LeafCount -> 1000] /. LorentzIndex -> lorf /.
                   lorf -> LorentzIndex;
   lorf[y_lorf,di___] := y;
   lorf[y_Momentum,___] := y;
-  momfix[v_] := MomentumCombine[v]/.Momentum->momf/.momf->Momentum;
+  momfix[v_] := MomentumCombine[v,LeafCount -> 1000]/.Momentum->momf/.momf->Momentum;
   momf[y_momf,di___] := y;
 
       {a,b,c}    = Map[SUNIndex[#]&, {ai,bi,ci}];
@@ -110,11 +110,11 @@ Block[
  {coup, dim, p, q, k, mu, nu, lorf, momf, momfix, lorfix},
   dim   = Dimension /. {opt} /. Options[GluonVertex];
   coup  = CouplingConstant /.  {opt} /. Options[GluonVertex];
-  lorfix[w_] := MomentumCombine[w] /. LorentzIndex -> lorf /.
+  lorfix[w_] := MomentumCombine[w,LeafCount -> 1000] /. LorentzIndex -> lorf /.
                   lorf -> LorentzIndex;
   lorf[y_lorf,di___] := y;
   lorf[y_Momentum,___] := y;
-  momfix[v_] := MomentumCombine[v]/.Momentum->momf/.momf->Momentum;
+  momfix[v_] := MomentumCombine[v,LeafCount -> 1000]/.Momentum->momf/.momf->Momentum;
   momf[y_momf,di___] := y;
   {mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai}
                   ] // lorfix;
@@ -123,7 +123,7 @@ Block[
                               (Pair[q - k, mu] Pair[nu, la] +
                                Pair[k - p, nu] Pair[la, mu] +
                                Pair[p - q, la] Pair[mu, nu]
-                              )
+                              ),LeafCount -> 1000
                              ]
      ] /; (Explicit /. {opt} /. Options[GluonVertex])===True;
 
@@ -146,11 +146,11 @@ Block[{gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope,
   coup  = CouplingConstant /.  {opt} /. Options[GluonVertex];
   dim   = Dimension /. {opt} /. Options[GluonVertex];
   ope   = OPE /. {opt} /. Options[GluonVertex];
-  lorfix[w_] := MomentumCombine[w] /. LorentzIndex -> lorf /.
+  lorfix[w_] := MomentumCombine[w,LeafCount -> 1000] /. LorentzIndex -> lorf /.
                   lorf -> LorentzIndex;
   lorf[y_lorf,___] := y;
   lorf[y_Momentum,___] := y;
-  momfix[v_] := MomentumCombine[v]/.Momentum->momf/.momf->Momentum;
+  momfix[v_] := MomentumCombine[v,LeafCount -> 1000]/.Momentum->momf/.momf->Momentum;
   momf[y_momf,___] := y;
       {mu,nu,la,si} = Map[LorentzIndex[#, dim]&, {mui,nui,lai,sii}
                          ] // lorfix;

@@ -499,7 +499,7 @@ simplerules = {Pair[LorentzIndex[a_, di___], b_]*
      contract3           = Contract3/.contractopt;
 
      If[(MomentumCombine/.contractopt) === True,
-        contractres =  MomentumCombine[contractres]
+        contractres =  MomentumCombine[contractres,LeafCount -> 1000]
        ];
 
 (* NEW: September 16th 2003: adding Contract3 directly here ... *)

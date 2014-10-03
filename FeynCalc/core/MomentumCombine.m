@@ -8,7 +8,7 @@
 BeginPackage["HighEnergyPhysics`FeynCalc`MomentumCombine`",{"HighEnergyPhysics`FeynCalc`"}];
 
 MomentumCombine::"usage" =
-"MomentumCombine[expr] combines momenta and Pairs with the same 
+"MomentumCombine[expr] combines momenta and Pairs with the same
 Lorentz indices and momenta.";
 
 (* ------------------------------------------------------------------------ *)
@@ -22,7 +22,7 @@ pair   := pair = MakeContext["CoreObjects","Pair"];
 
 (*momentumExpanddef*)
 
-Options[MomentumCombine] = {LeafCount -> 1000};
+Options[MomentumCombine] = {LeafCount -> 1};
 
 MomentumCombine[expr_, opts___?OptionQ] :=
 If[LeafCount[expr] < (LeafCount /. {opts} /. Options[MomentumCombine]),
@@ -32,6 +32,10 @@ If[FreeQ[expr, momentum], FeynCalcInternal[expr], expr] //. {
  ):>
  (momentum[ Expand[n3 x + n4 y],di]/;(NumberQ[n3]&&NumberQ[n4])),
  (n3_. pair[a_lor, momentum[x_,di___]] + n4_. pair[a_lor, momentum[y_,di___]]
+ ):>
+ (pair[a, momentum[ Expand[n3 x + n4 y],di]
+      ]/;(NumberQ[n3] && NumberQ[n4])),
+ (n3_. pair[a_momentum, momentum[x_,di___]] + n4_. pair[a_momentum, momentum[y_,di___]]
  ):>
  (pair[a, momentum[ Expand[n3 x + n4 y],di]
       ]/;(NumberQ[n3] && NumberQ[n4]))

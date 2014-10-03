@@ -124,11 +124,11 @@ vv = Cases2[x, Join[{},
          }] /. sequence -> Sequence
            ];
 
-rv = Map[(# ->  ((#//MomentumCombine)/.ru ))&, vv]//Dispatch;
+rv = Map[(# ->  ((MomentumCombine[#,LeafCount -> 1000])/.ru ) )&, vv]//Dispatch;
 
 x /. rv
 (*
-If[ru =!={}, (MomentumCombine[x]/. HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma :> dirsig /.
+If[ru =!={}, (MomentumCombine[x,LeafCount -> 1000]/. HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma :> dirsig /.
               su["Pair",pairback]/.ru
              )/.DOT->doc /. doc -> DOT, x
   ]

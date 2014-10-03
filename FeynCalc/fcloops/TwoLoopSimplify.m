@@ -134,7 +134,7 @@ If[!FreeQ[t1, DiracTrace],
 t2 = SUNSimplify[t1, SUNFToTraces -> False]//SUNSimplify;
 
 (*S Eps*)
-t3 =  MomentumCombine[t2//SUNSimplify//EpsEvaluate];
+t3 =  MomentumCombine[t2//SUNSimplify//EpsEvaluate, LeafCount -> 1000];
 
 (*S ToLarin*)
 If[tolarin === True, t3 = ToLarin[t3]];

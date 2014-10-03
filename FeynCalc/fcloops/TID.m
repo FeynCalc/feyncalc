@@ -8,21 +8,21 @@
 (* :History: File created on 4 December '98 at 14:21 *)
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: TID *) 
+(* :Summary: TID *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcloops`TID`",
              {"HighEnergyPhysics`FeynCalc`"}];
 
-TID::"usage" = 
+TID::"usage" =
 "TID[amp, q] does a 1-loop tensor integral decomposition, transforming the
 Lorentz indices away from the integration momentum q.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
-   
+
 Collecting = MakeContext["CoreOptions","Collecting"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 DimensionalReduction = MakeContext["CoreOptions","DimensionalReduction"];
@@ -42,13 +42,13 @@ PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 MakeContext[
             Uncontract,
             Cases2,
-            ChangeDimension, Collect2, 
-            Contract,            
+            ChangeDimension, Collect2,
+            Contract,
             Expand2,
             ExpandScalarProduct,
             DiracSimplify,
             DiracTrick,
-            EpsEvaluate, 
+            EpsEvaluate,
             FeynAmpDenominatorCombine,
             FeynAmpDenominatorSimplify,
             FeynCalcExternal,
@@ -57,21 +57,21 @@ MakeContext[
             (*IsolateHead,*)
             IsolateSplit,
             MemSet,
-            MomentumCombine, 
+            MomentumCombine,
             MomentumExpand,
             OPEDelta,
-            PairContract,             
+            PairContract,
             Rename,
             ScalarProductCancel,
             SelectFree, SelectNotFree,
             TIDL
            ];
 
-procanonical[l_][y_,m_] := PropagatorDenominator[y /. 
+procanonical[l_][y_,m_] := PropagatorDenominator[y /.
                      (-Momentum[l,di___] + a_.) :>
                      (Momentum[l,di] - a), m];
 
-Options[TID] = {Collecting -> True, 
+Options[TID] = {Collecting -> True,
                 Contract -> False,
                 Dimension -> D,
                 ChangeDimension -> D,
@@ -85,9 +85,9 @@ Options[TID] = {Collecting -> True,
 (* maybe not ... *)
 TID[a_Plus,b__] := Map[TID[#,b]&, a];
 
-TID[am_ , q_, opt___Rule] := 
+TID[am_ , q_, opt___Rule] :=
 Block[
-{n, t0, t1, t2, t3, t4, t5, t6, null1, null2, qrule, mudum, 
+{n, t0, t1, t2, t3, t4, t5, t6, null1, null2, qrule, mudum,
  nudum, fdp, qQQ, qQQprepare, getfdp,res,nres,irrelevant=0,
  contractlabel, diditlabel, famp,chd,fds,tid, tidinternal,
  originallistoflorentzindices, dimred, disi
@@ -105,7 +105,7 @@ If[!FreeQ[t0, Polarization],
       t0 = 0
         ]
      ]
-         
+
   ];
 
 dimred = DimensionalReduction /. {opt} /. Options[TID];
@@ -130,7 +130,7 @@ originallistoflorentzindices = Cases[t0, LorentzIndex];
 
 
 t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred,
-                (*Added 17/9-2000, F.Orellana*) Dimension -> n] /. 
+                (*Added 17/9-2000, F.Orellana*) Dimension -> n] /.
      PropagatorDenominator -> procanonical[q];
 
 (* RM20110622: Uncommented the above again and commented the below.
@@ -157,7 +157,7 @@ fdp[a___,0,b___] := fdp[a,b];
 fdp[a___, b_, b_, c___] := fdp[a,b,c]; (* CCC *)
 
 getfdp[w__] := ( (fdp@@(First /@ (
-                 MomentumCombine[{w}] /. q->0
+                 MomentumCombine[{w},LeafCount -> 1000] /. q->0
                       ))) /. Momentum[a_,___] :> a
                ) /; FreeQ[{w},   PropagatorDenominator[
                           fa_ Momentum[q, ___] + _., _]
@@ -187,49 +187,49 @@ t3 = Map[(SelectFree[SelectFree[#, Pair[LorentzIndex[__],Momentum[q,___]]],
         ] /. {null1 :> 0, null2 :> 0, qQQprepare:>Identity};
 
 (* if there is something to substitute then ... *)
-If[FreeQ[t3, qQQ],  
+If[FreeQ[t3, qQQ],
   res = t3 ,
 
-qrule = 
+qrule =
  {
 (* Amu *)
-qQQ[ fdp[] * 
-    Pair[LorentzIndex[mu_, n], Momentum[q, n]] 
+qQQ[ fdp[] *
+    Pair[LorentzIndex[mu_, n], Momentum[q, n]]
    ]  :> 0
 ,
 (* Amunu *)
-qQQ[ fdp[] * 
+qQQ[ fdp[] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu},{q,nu}},{},Dimension->n]
 ,
 (* Amunurho *)
-qQQ[ fdp[] * 
+qQQ[ fdp[] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[rho_, n], Momentum[q, n]]
    ]  :> 0
 ,
 (* Bmu *)
-qQQ[ fdp[p_] * 
-    Pair[LorentzIndex[mu_, n], Momentum[q, n]] 
+qQQ[ fdp[p_] *
+    Pair[LorentzIndex[mu_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu}},{p},Dimension->n]
 ,
 (* Bmunu *)
-qQQ[ fdp[p_] * 
+qQQ[ fdp[p_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu},{q,nu}},{p},Dimension->n]
 ,
 (* Bmunurho *)
-qQQ[ fdp[p_] * 
+qQQ[ fdp[p_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[rho_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu},{q,nu},{q,rho}},{p},Dimension->n]
 ,
 (* Bmunurhosi *)
-qQQ[ fdp[p_] * 
+qQQ[ fdp[p_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
@@ -237,65 +237,65 @@ qQQ[ fdp[p_] *
    ]  :> TIDL[{{q,mu},{q,nu},{q,rho},{q,si}},{p},Dimension->n]
 ,
 (* Cmu *)
-qQQ[ fdp[p_,k_] * 
-    Pair[LorentzIndex[mu_, n], Momentum[q, n]] 
+qQQ[ fdp[p_,k_] *
+    Pair[LorentzIndex[mu_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu}},{p, k}, Dimension -> n]
 ,
 (* Cmunu *)
-qQQ[ fdp[p_,k_] * 
+qQQ[ fdp[p_,k_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]
    ]  :> TIDL[{ {q,mu}, {q,nu} },{p, k}, Dimension -> n]
 ,
 (* Cmunurho *)
-qQQ[ fdp[p_,k_] * 
+qQQ[ fdp[p_,k_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]  *
-    Pair[LorentzIndex[rho_, n], Momentum[q, n]] 
+    Pair[LorentzIndex[rho_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu}, {q,nu}, {q,rho}},{p, k}, Dimension -> n]
 ,
 (* Cmunurhosi *)
-qQQ[ fdp[p_,k_] * 
+qQQ[ fdp[p_,k_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
-    Pair[LorentzIndex[si_, n],  Momentum[q, n]] 
+    Pair[LorentzIndex[si_, n],  Momentum[q, n]]
    ]  :> TIDL[{{q,mu}, {q,nu}, {q,rho},{q,si}
               },{p, k}, Dimension -> n]
 ,
 (* Cmunurhoside *)
-qQQ[ fdp[p_,k_] * 
+qQQ[ fdp[p_,k_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
     Pair[LorentzIndex[si_, n],  Momentum[q, n]] *
-    Pair[LorentzIndex[de_, n],  Momentum[q, n]] 
+    Pair[LorentzIndex[de_, n],  Momentum[q, n]]
    ]  :> TIDL[{{q,mu}, {q,nu}, {q,rho},{q,si},{q,de}
               },{p, k}, Dimension -> n]
 ,
 (* Dmu *)
-qQQ[ fdp[p_,k_, l_] * 
-    Pair[LorentzIndex[mu_, n], Momentum[q, n]] 
+qQQ[ fdp[p_,k_, l_] *
+    Pair[LorentzIndex[mu_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu}},{p, k, l}, Dimension -> n]
 ,
 (* Dmunu *)
-qQQ[ fdp[p_,k_, l_] * 
+qQQ[ fdp[p_,k_, l_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu},{q,nu}},{p, k, l}, Dimension -> n]
 ,
 (* Dmunurho *)
-qQQ[ fdp[p_,k_, l_] * 
+qQQ[ fdp[p_,k_, l_] *
     Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
     Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
     Pair[LorentzIndex[rho_, n], Momentum[q, n]]
    ]  :> TIDL[{{q,mu}, {q,nu},{q,rho}},{p, k, l}, Dimension -> n]
 ,
 (* Dmunurhosi *)
-qQQ[ fdp[p_,k_, l_] * 
+qQQ[ fdp[p_,k_, l_] *
     Pair[LorentzIndex[mu_, n],  Momentum[q, n]]  *
     Pair[LorentzIndex[nu_, n],  Momentum[q, n]]  *
-    Pair[LorentzIndex[rho_, n], Momentum[q, n]] * 
+    Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
     Pair[LorentzIndex[si_, n],  Momentum[q, n]]
    ]  :> TIDL[{{q,mu}, {q,nu},{q,rho},{q,si}},
               {p, k, l}, Dimension -> n]
@@ -309,7 +309,7 @@ t5 = t5 /. Pair -> scsav /. scsav -> Pair;
 diditlabel = (t5 =!= t4);
 If[diditlabel === True,
    t5 = t5 /. qQQ -> Identity /. fdp[__] :> 1;
-       
+
    If[!FreeQ[t5, LorentzIndex] && contractlabel===True,
 FCPrint[1, "simple contracting  in TID "];
       t5 = Expand2[t5, LorentzIndex] /. Pair -> PairContract /.
@@ -350,18 +350,18 @@ FCPrint[1,"special disi in TID  "];
 (*
 res = Collect2[res, q, Factoring -> False, Expanding -> False];
 *)
-If[Isolate /. {opt} /. Options[TID], 
-   res = Isolate[res, {q, DOT}, 
-                         IsolateNames -> tidinternal, 
+If[Isolate /. {opt} /. Options[TID],
+   res = Isolate[res, {q, DOT},
+                         IsolateNames -> tidinternal,
                          IsolateSplit -> 4444I]
   ];
 If[!FreeQ[res, DOT], res = DiracTrick[res]];
 
 If[fds, res = FeynAmpDenominatorSimplify[res, q]];
 
-If[(ScalarProductCancel /. {opt} /. Options[TID]) === True,   
+If[(ScalarProductCancel /. {opt} /. Options[TID]) === True,
    FCPrint[1,"ScalarProductCancel in TID "];
-   res = ScalarProductCancel[res, q, 
+   res = ScalarProductCancel[res, q,
                              FeynAmpDenominatorSimplify -> fds,
                              FeynAmpDenominatorCombine -> False,
                              Collecting -> False
@@ -376,13 +376,13 @@ If[!FreeQ[res, Pair[Momentum[q, n], Momentum[q, n]]]
    , (*repeat *)
    If[(ScalarProductCancel /. {opt} /. Options[TID]) === True,
        FCPrint[1,"again (!) ScalarProductCancel in TID "];
-        
-      res = ScalarProductCancel[res, q, 
+
+      res = ScalarProductCancel[res, q,
                                 FeynAmpDenominatorSimplify -> fds,
                                 FeynAmpDenominatorCombine -> False,
                                 Collecting -> False,(*Added 17/9-2000, F.Orellana*)
 				ChangeDimension -> chd
-                               ];      
+                               ];
       FCPrint[1,"collecting (3)  in TID "];
       (* res = Collect2[res, q, Factoring -> True]; *)
       If[!FreeQ[res, DiracGamma],
@@ -394,8 +394,8 @@ If[!FreeQ[res, Pair[Momentum[q, n], Momentum[q, n]]]
 
 If[(Head[res] === Plus) && (!FreeQ[res, Pair[Momentum[q, n], _]])
    , (*repeat *)
-   	  FCPrint[1,"again (XX) ScalarProductCancel in TID "];      
-   res = SelectFree[res, Pair[Momentum[q,n],_]] +  
+   	  FCPrint[1,"again (XX) ScalarProductCancel in TID "];
+   res = SelectFree[res, Pair[Momentum[q,n],_]] +
 (* CHANGE 12/97 *)
           ScalarProductCancel[SelectNotFree[res,Pair[Momentum[q,n],_]],q,
                               FeynAmpDenominatorSimplify -> fds,
@@ -434,7 +434,7 @@ If[Head[res]===Plus && !FreeQ[res, FeynAmpDenominator],
   ];
 
 If[Cases2[res, LorentzIndex] =!= originallistoflorentzindices,
-   res = If[$VersionNumber>2.2, 
+   res = If[$VersionNumber>2.2,
             Expand[res,  LorentzIndex],
             Expand2[res, LorentzIndex]
            ] /. Pair -> PairContract /. PairContract -> Pair
@@ -472,17 +472,17 @@ fadd[k_][PropagatorDenominator[Momentum[k_,  D], 0],
 (*
 somehow this does not work, even though it should
 
-fspec[y_,k_] := 
+fspec[y_,k_] :=
   y //. {FeynAmpDenominator[PropagatorDenominator[Momentum[k,  D], 0],
-                            PropagatorDenominator[Momentum[k,  D] - 
+                            PropagatorDenominator[Momentum[k,  D] -
                                                   Momentum[p_, D], 0]
-                           ] :> 0 /; 
+                           ] :> 0 /;
                       (Pair[Momentum[p,D], Momentum[p,D]] === 0
          };
 
-fspec[y_,k_] := 
+fspec[y_,k_] :=
   y//. {FeynAmpDenominator[PropagatorDenominator[Momentum[k,  D], 0],
-                           PropagatorDenominator[Momentum[k,  D] + 
+                           PropagatorDenominator[Momentum[k,  D] +
                                                  Momentum[p_, D], 0]
                           ] :> 0 /;
         Pair[Momentum[p, D], Momentum[p, D]] === 0

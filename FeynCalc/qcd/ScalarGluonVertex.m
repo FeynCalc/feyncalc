@@ -67,7 +67,7 @@ Block[
       {mu} = Map[LorentzIndex[#, dim]&, {mui}];
       {a}    = Map[SUNIndex[#]&, {ai}];
 
-      gl3v = I coup SUNT[a] MomentumCombine[Pair[p - q, mu]];
+      gl3v = I coup SUNT[a] MomentumCombine[Pair[p - q, mu],LeafCount -> 1000];
   gl3v];
 
 
