@@ -25,7 +25,8 @@ objects x and y.";
 
 Begin["`Private`"];
 
-MakeContext[DataType, NonCommutative];
+NonCommutative = MakeContext["CoreObjects","NonCommutative"];
+MakeContext[DataType];
 
 Commutator /: Set[Commutator[a_, b_] , c_] :=
 Block[ {nd, com},

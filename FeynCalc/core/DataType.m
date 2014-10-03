@@ -26,7 +26,7 @@ MakeContext[NonCommFreeQ, NonCommQ, SelectFree];
 NonCommFreeQ := NonCommFreeQ = MakeContext["NonCommFreeQ"];
 NonCommQ := NonCommQ = MakeContext["NonCommQ"];
 SelectFree := SelectFree = MakeContext["SelectFree"];
-noncommutative := noncommutative = MakeContext["NonCommutative"];
+noncommutative := noncommutative = MakeContext["CoreObjects","NonCommutative"];
 
 DataType[_] := soso /; Message[DataType::argrx, DataType, 1, "2 or more"];
 DataType[] := soso /; Message[DataType::argrx, DataType, 0, "2 or more"];
@@ -43,7 +43,7 @@ DataType[a_, b__, type_] := Flatten[{DataType[a, type], DataType[b, type]}];
    updates $NonComm and NonCommFreeQ *)
 
 DataType /: HoldPattern[Set[DataType[exp_,
-            HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative],
+            HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative],
             True]] :=
  Block[{ndt, ndf, dt, ncq, nnn, nnt, set, downvalues},
               If[!MemberQ[$NonComm, exp], AppendTo[$NonComm, exp]];
@@ -74,7 +74,7 @@ DataType /: HoldPattern[Set[DataType[exp_,
 
 
 DataType /: HoldPattern[Set[DataType[exp_,
-            HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative],
+            HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative],
             False]] :=
  Block[{ndt, ndf, dt, ncq, nnn, nnt, set, downvalues},
               If[MemberQ[$NonComm, exp],

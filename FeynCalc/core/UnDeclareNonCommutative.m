@@ -25,7 +25,7 @@ Message[UnDeclareNonCommutative::argrx,
 
 UnDeclareNonCommutative[b__] :=
  (Map[Set[HighEnergyPhysics`FeynCalc`DataType`DataType[#,
-          HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative],
+          HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative],
           False]&, Flatten[{b}]
      ]; Null);
 

@@ -38,9 +38,9 @@ Begin["`Private`"];
 fullFCContext[s_String] := Block[{$ContextPath},
          ToString[HighEnergyPhysics`FeynCalc`MakeContext[s]]];
 
-fa2fc = Join[(# -> (fullFCContext[#]))&/@ {
-"Loop", "GaugeXi", "NonCommutative", "LeviCivita"},
-{"PolarizationVector"-> "HighEnergyPhysics`FeynCalc`CoreObjects`PolarizationVector",
+fa2fc = Join[(# -> (fullFCContext[#]))&/@ { "Loop", "LeviCivita"},
+{"NonCommutative" -> "HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative",
+ "PolarizationVector"-> "HighEnergyPhysics`FeynCalc`CoreObjects`PolarizationVector",
 "FeynAmp"-> "HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmp",
 "PropagatorDenominator" -> "HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator",
 "GaugeXi" -> "HighEnergyPhysics`FeynCalc`CoreObjects`GaugeXi" }

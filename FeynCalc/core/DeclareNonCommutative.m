@@ -21,7 +21,7 @@ Message[DeclareNonCommutative::argrx, DeclareNonCommutative, 0, "1 or more"];
 
 DeclareNonCommutative[b__] :=
  (Map[Set[HighEnergyPhysics`FeynCalc`DataType`DataType[#,
-          HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative],
+          HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative],
           True]&, {b}
      ]; Null);
 

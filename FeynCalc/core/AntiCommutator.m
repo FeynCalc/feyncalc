@@ -27,7 +27,8 @@ are recognized by DotSimplify.";
 
 Begin["`Private`"];
 
-MakeContext[DataType, NonCommutative];
+NonCommutative = MakeContext["CoreObjects","NonCommutative"];
+MakeContext[DataType];
 
 AntiCommutator /: Set[AntiCommutator[a_, b_] , c_] :=
 Block[ {nd, acom},

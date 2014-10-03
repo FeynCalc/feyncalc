@@ -102,7 +102,7 @@ faal := faal = HighEnergyPhysics`FeynArts`AmplitudeLevel;
 fapolv := fapolv = MakeContext["CoreObjects","PolarizationVector"];
 faext := faext = HighEnergyPhysics`FeynArts`External;
 (*fanoncom := fanoncom = HighEnergyPhysics`FeynArts`FANonCommutative;*)
-fanoncom = fanoncom = MakeContext["NonCommutative"];
+fanoncom = fanoncom = MakeContext["CoreObjects","NonCommutative"];
 (*fadm := fadm = Global`FADiracMatrix;*)
 (*fachiralp := fachiralp = Global`FAChiralityProjector;*)
 (*fads := fads = Global`FADiracSpinor;*)

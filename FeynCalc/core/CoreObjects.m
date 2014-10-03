@@ -265,6 +265,10 @@ E.g. DataType[n, NegativeInteger] can be set to True.";
 
 Nf::"usage" = "Nf denotes the number of flavors."
 
+NonCommutative::"usage"=
+"NonCommutative is a data type which may be used, e.g.,  as:
+DataType[x, NonCommutative] = True.";
+
 Pair::"usage"=
 "Pair[a , b] is a special pairing used in the internal
 representation: a and b may have heads LorentzIndex or Momentum.
