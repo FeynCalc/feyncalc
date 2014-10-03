@@ -1022,7 +1022,7 @@ If[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory === Automatic,
    If[loadfa=!=$Failed,
    HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = HighEnergyPhysics`FeynArts`$FeynArtsDir],
    $Path = Drop[$Path,Flatten[Position[$Path,s_String /; StringMatchQ[s, "*FeynArts*"]]]];
-   $Path = Union[$Path, {ToString[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]}];
+   $Path = Join[{ToString[HighEnergyPhysics`FeynCalc`$FeynArtsDirectory]},$Path];
    loadfa =  Get["FeynArts`"];
 ]];
 If[loadfa =!=$Failed,
