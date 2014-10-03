@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FeynRule.mt                                                      *)
+(* :Title: DiracReduce.mt                                                   *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for FeynRule               						*)
+(* :Summary:  Unit tests for DiracReduce            						*)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/FeynRule.test"]];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/DiracReduce.test"]];
 Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
-    Join[fcstFeynRule]];
+    Join[fcstDiracReduce]];

@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Conjugate.mt                                                     *)
+(* :Title: DiracSimplify.mt                                                 *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for Conjugate                                      *)
+(* :Summary:  Unit tests for DiracSimplify            						*)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/Conjugate.test"]];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/DiracSimplify.test"]];
 Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
-    Join[fcstConjugate]];
+    Join[fcstDiracSimplify]];

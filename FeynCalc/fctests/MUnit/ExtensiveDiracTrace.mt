@@ -17,10 +17,10 @@ Needs["HighEnergyPhysics`FeynCalc`"];
 
 
 testsStandard = FileNames[
-  "*.test", $FeynCalcDirectory <> "/fctests/DiracTrace/Standard"]
+  "*.test", $FeynCalcDirectory <> "/fctests/testfiles/DiracTrace/Standard"]
 
 testsSlashes = FileNames[
-  "*.test", $FeynCalcDirectory <> "/fctests/DiracTrace/Slashes"]
+  "*.test", $FeynCalcDirectory <> "/fctests/testfiles/DiracTrace/Slashes"]
 
 SetOptions[DiracTrace,DiracTraceEvaluate->True];
 

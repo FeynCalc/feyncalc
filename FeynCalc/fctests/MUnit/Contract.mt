@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DiracSimplify.mt                                                 *)
+(* :Title: Contract.mt                                                      *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,10 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for DiracSimplify            						*)
+(* :Summary:  Unit tests for Contract                                       *)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/DiracSimplify.test"]];
-Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
-    Join[fcstDiracSimplify]];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/Contract.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstContractContractionsIn4dims];

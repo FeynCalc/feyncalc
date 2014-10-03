@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SUNSimplify.mt                                                   *)
+(* :Title: Lagrangian.mt                                                    *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,12 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for SUNTrace                                       *)
+(* :Summary:  Unit tests for Lagrangian              						*)
 
 (* ------------------------------------------------------------------------ *)
 
-
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/SUNSimplify.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstSUNSimplifyColorSimplifications];
-
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/Lagrangian.test"]];
+Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
+    Join[fcstLagrangian]];

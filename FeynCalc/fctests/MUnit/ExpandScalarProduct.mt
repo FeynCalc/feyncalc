@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SUNTrace.test                                                    *)
+(* :Title: ExpandScalarProduct.mt                                           *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,10 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for SUNTrace                                       *)
+(* :Summary:  Unit tests for ExpandScalarProduct                            *)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/SUNTrace.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstSUNTraceColorTraces];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/ExpandScalarProduct.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+  fcstExpandScalarProduct];

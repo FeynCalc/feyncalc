@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: ExpandScalarProduct.mt                                           *)
+(* :Title: OneLoop.mt		                                                *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for ExpandScalarProduct                            *)
+(* :Summary:  Unit tests for OneLoop					                    *)
 
 (* ------------------------------------------------------------------------ *)
 
+
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/ExpandScalarProduct.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-  fcstExpandScalarProduct];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/OneLoop.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstOneLoop];

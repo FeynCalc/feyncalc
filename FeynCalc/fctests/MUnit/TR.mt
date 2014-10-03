@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Chisholm.mt                                                      *)
+(* :Title: TR.test                              		                    *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,10 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for Chisholm                                       *)
+(* :Summary:  Unit tests for TR                                             *)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/Chisholm.test"]];
-Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
-    Join[fcstChisholm]];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/TR.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstTR];

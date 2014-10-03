@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: PaVeIntegrals.mt                                                 *)
+(* :Title: DotSimplify.mt                                                   *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for Passarino-Veltman integrals                    *)
+(* :Summary:  Unit tests for DotSimplify              						*)
 
 (* ------------------------------------------------------------------------ *)
 
-
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/PaVeIntegrals.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstPaVeIntegrals];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/DotSimplify.test"]];
+Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
+    Join[fcstDotSimplify]];

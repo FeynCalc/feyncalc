@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: PaVe.mt                                                 *)
+(* :Title: PaVeReduce.mt                                	                *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for PaVe						                    *)
+(* :Summary:  Unit tests for PaVeReduce					                    *)
 
 (* ------------------------------------------------------------------------ *)
 
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/PaVe.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstPaVe];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/PaVeReduce.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstPaVeReduce];

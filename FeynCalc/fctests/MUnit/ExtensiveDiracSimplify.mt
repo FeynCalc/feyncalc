@@ -17,10 +17,10 @@ Needs["HighEnergyPhysics`FeynCalc`"];
 
 
 testsStandard = FileNames[
-  "*.test", $FeynCalcDirectory <> "/fctests/DiracSimplify/Standard"]
+  "*.test", $FeynCalcDirectory <> "/fctests/testfiles/DiracSimplify/Standard"]
 
 testsSlashes = FileNames[
-  "*.test", $FeynCalcDirectory <> "/fctests/DiracSimplify/Slashes"]
+  "*.test", $FeynCalcDirectory <> "/fctests/testfiles/DiracSimplify/Slashes"]
 
 
 TestStandard = False

@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DiracReduce.mt                                                   *)
+(* :Title: DotExpand.mt                                                     *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,11 +9,11 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for DiracReduce            						*)
+(* :Summary:  Unit tests for DotExpand                                      *)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/DiracReduce.test"]];
-Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
-    Join[fcstDiracReduce]];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/DotExpand.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+  fcstDotExpandOnePlusOnlyNonComm];

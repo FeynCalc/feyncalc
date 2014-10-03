@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Contract.mt                                                      *)
+(* :Title: DiracOrder.mt                                                    *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,10 +9,12 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for Contract                                       *)
+(* :Summary:  Unit tests for DiracOrder              						*)
 
 (* ------------------------------------------------------------------------ *)
 
+
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/Contract.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstContractContractionsIn4dims];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/DiracOrder.test"]];
+Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
+    Join[fcstDiracOrder]];

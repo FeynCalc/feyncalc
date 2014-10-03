@@ -15,6 +15,6 @@
 
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/Cases2.test"]];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/Cases2.test"]];
 Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
     Join[fcstCases2]];
