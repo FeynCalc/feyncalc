@@ -31,13 +31,16 @@ RunTestSuite[ StringJoin[$FeynCalcDirectory, "/fctests"] ,
         "/fctests/MUnit/ExpandScalarProduct.mt",
         "/fctests/MUnit/FermionSpinSum.mt",
         "/fctests/MUnit/FeynRule.mt",
+        "/fctests/MUnit/FourDivergence.mt",
         "/fctests/MUnit/FunctionalD.mt",
         "/fctests/MUnit/Lagrangian.mt",
+        "/fctests/MUnit/MomentumCombine.mt",
         "/fctests/MUnit/OneLoop.mt",
         "/fctests/MUnit/PaVe.mt",
         "/fctests/MUnit/PaVeIntegrals.mt",
         "/fctests/MUnit/PaVeReduce.mt",
         "/fctests/MUnit/SUNSimplify.mt",
         "/fctests/MUnit/SUNTrace.mt",
-        "/fctests/MUnit/TR.mt"
+        "/fctests/MUnit/TR.mt",
+        "/fctests/MUnit/Uncontract.mt"
         }]
