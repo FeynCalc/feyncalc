@@ -37,9 +37,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## Stable version
 
 * To obtain the latest **stable** version of FeynCalc go to the [release](https://github.com/FeynCalc/feyncalc/releases) section
-and download the most recent *Release_X_X_X_X.zip* file (currently it is [Release_8_2_0_0.zip](https://github.com/FeynCalc/feyncalc/archive/Release-8_2_0_0.zip) ). Copy the
-*FeynCalc* directory from the zip file in the directory to which *$UserAddOnsDirectory* is set (evaluate *$UserAddOnsDirectory* in Mathematica).
-Finally, Rename *FeynCalc* to *HighEnergyPhysics*.
+and download the most recent *Release_X_X_X_X.zip* file (currently it is [Release_8_2_0_0.zip](https://github.com/FeynCalc/feyncalc/archive/Release-8_2_0_0.zip) ).
+
+* Copy the *feyncalc-Release-X_X_X_X* directory from the zip file in the directory to which *$UserAddOnsDirectory* is set (evaluate *$UserAddOnsDirectory* in Mathematica). Finally, rename *feyncalc-Release-X_X_X_X* to *HighEnergyPhysics*.
 
 * Start Mathematica.
 * Choose 'Rebuild Help Index' from the 'Help' menu.
@@ -57,6 +57,9 @@ the public FeynCalc repository
     `git clone https://github.com/FeynCalc/feyncalc.git`
 
 * If you don't know how to use git, just klick on the **Download ZIP** button in the right sidebar.
+
+* Copy the *FeynCalc* directory from the zip file in the directory to which *$UserAddOnsDirectory* is set (evaluate *$UserAddOnsDirectory* in Mathematica).
+Finally, Rename *FeynCalc* to *HighEnergyPhysics*.
 
 * Please note that the development version may contain bugs and incomplete or untested features.
 
