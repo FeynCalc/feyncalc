@@ -38,8 +38,9 @@ Begin["`Private`"];
 fullFCContext[s_String] := Block[{$ContextPath},
          ToString[HighEnergyPhysics`FeynCalc`MakeContext[s]]];
 
-fa2fc = Join[(# -> (fullFCContext[#]))&/@ { "Loop", "LeviCivita"},
-{"NonCommutative" -> "HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative",
+fa2fc = Join[(# -> (fullFCContext[#]))&/@ { "LeviCivita"},
+{"Loop" -> "HighEnergyPhysics`FeynCalc`CoreOptions`Loop",
+    "NonCommutative" -> "HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative",
  "PolarizationVector"-> "HighEnergyPhysics`FeynCalc`CoreObjects`PolarizationVector",
 "FeynAmp"-> "HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmp",
 "PropagatorDenominator" -> "HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator",
@@ -98,7 +99,7 @@ Options[FAPatch] = {
       "tmploops"->"Loops",
 
       "HighEnergyPhysics`FeynCalc`Loop`LoopNr" -> "LoopNr",
-      "\"HighEnergyPhysics`FeynCalc`Loop`Loop\"" -> "\"Loop\"",
+      "\"HighEnergyPhysics`FeynCalc`CoreOptions`Loop\"" -> "\"Loop\"",
       "HighEnergyPhysics`FeynCalc`Loop`LoopPD" -> "LoopPD",
       "HighEnergyPhysics`FeynCalc`FeynAmp`FeynAmpList" ->
         "HighEnergyPhysics`FeynCalc`FeynAmpList`FeynAmpList",

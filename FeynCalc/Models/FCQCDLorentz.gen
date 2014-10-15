@@ -24,10 +24,10 @@ M$GenericPropagators = {
         (* quark propagator: *)
 
   AnalyticalPropagator[External][ s F[i, mom] ] ==
- HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ DiracSpinor[-mom, Mass[F[i]]] ],
+ HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative[ DiracSpinor[-mom, Mass[F[i]]] ],
 
   AnalyticalPropagator[Internal][ s F[i, mom] ] ==
-     HighEnergyPhysics`FeynCalc`NonCommutative`NonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
+     HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
 
         (* gluon propagator *)
 
