@@ -40,6 +40,13 @@ DotPower::"usage" =
 non-commutative powers are represented by successive multiplication
 or by Power.";
 
+CommonTrace::"usage" =
+"CommonTrace is an option for DotSimplify. It determines whether
+SUNT's in a DiracTrace are also to be summed over, i.e.
+DiracTrace[SUNT[a,b]GA[c,d]] will be converted to
+SUNTrace[SUNT[a,b]] DiracTrace[GA[c,d]]. Such expressions often
+occure in amplitudes produced by FeynArts.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -77,6 +84,7 @@ Options[DotSimplify] = {Expanding -> True,
                         DotPower -> False, (*True*)(*CHANGE 26/9-2002.
                         To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
                                                   F.Orellana*)
+                        CommonTrace -> False,
                         FeynCalcInternal -> True
                        };
 
@@ -84,7 +92,7 @@ Options[DotSimplify] = {Expanding -> True,
 DotSimplify[xxx_, opts___Rule] := Block[
  {pid, ex, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
   sdoot,simpf, actorules, ctorules, acomall, comall, simrel, dootpow,
-  dotpower,tic, dodot
+  dotpower,tic, dodot, commonTrace
  },
 
 
@@ -93,6 +101,7 @@ DotSimplify[xxx_, opts___Rule] := Block[
 simrel = DotSimplifyRelations /. {opts} /. Options[DotSimplify];
 dotpower = DotPower /.  {opts} /. Options[DotSimplify];
 ex = Expanding /. {opts} /. Options[DotSimplify];
+commonTrace = CommonTrace /. {opts} /. Options[DotSimplify];
 
 (*Commented out 18/1-2001 by F.Orellana. Not sure it's a good
 idea to mess with the supplied relations. E.g.
@@ -369,10 +378,12 @@ If[!FreeQ[x, SUNT],
 (*
                DOT[a, c, b],
 *)
-(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
-              DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT],
-              DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b]
-             }
+        (* SUNT's in a DiracTrace are pulled out but NOT summed over *)
+          DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT] && !commonTrace,
+        (* SUNT's in a DiracTrace are also to be summed over *)
+        DiracTrace[f_. DOT[b__SUNT,c__] ] :> f SUNTrace[DOT[b]] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT] && commonTrace,
+              DOT[a__, DiracTrace[b__]] :> DOT[a] DiracTrace[b]}
+
   ];
 
 (*CHANGE 03/98 *)
