@@ -66,7 +66,7 @@ If[!ValueQ[Global`$LoadFeynArts],
 (* HighEnergyPhysics`FeynCalc`$FeynArtsDirectory = "/opt/feynarts" *)
 
 (* Put this flag to True to have startup messages are printed.
-   The default is False *)
+   The default is True *)
 
-(* Global`$FeynCalcStartupMessages = True; *)
- Global`$FeynCalcStartupMessages = True;
+If[!ValueQ[Global`$FeynCalcStartupMessages],
+   Global`$FeynCalcStartupMessages = True];

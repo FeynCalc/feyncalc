@@ -63,7 +63,7 @@ HighEnergyPhysics`FeynCalc`$FeynCalcVersion = "9.0.0";
 (* ------------------------------------------------------------------------ *)
 
 (*Set defaults here, not in the config file*)
-If[!ValueQ[Global`$FeynCalcStartupMessages], Global`$FeynCalcStartupMessages = False];
+If[!ValueQ[Global`$FeynCalcStartupMessages], Global`$FeynCalcStartupMessages = True];
 
 (*FeynCalcCellPrint=CellPrint;*)
 System`Private`cellmargs = CellMargins->{{Inherited,Inherited},{1,0}};
