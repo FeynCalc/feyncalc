@@ -130,7 +130,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`SPD :> spd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SO :> so},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SOD :> sod},
- {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominaotr :> propagatorD},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator :> propagatorD},
  su["ScalarProduct", scalarP],
  su["MatrixTrace", diractrace],
  (*If[CheckContext["DOT"], {*){Dot -> DOT}(*}, {}]*),
