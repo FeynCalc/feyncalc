@@ -179,7 +179,7 @@ metricT[x_, x_,op_:{}]:=(dimension/.op/.Options[metrictensor]);
 (* diracM *)
 (* ---------------------------------------------------------------------- *)
 diracM[n_?NumberQ y_]:=n diracM[y];
-diracmatrix[n_?NumberQ y_,{}]:=n diracM[y];
+diracM[n_?NumberQ y_,{}]:=n diracM[y];
 diracM[n_?NumberQ y_,opt_]:=n diracM[y,opt];
 diracM[x_,y_]:=DOT[diracM[x],diracM[y]]/;(FreeQ[y,Rule]&&y=!={});
 diracM[x_,y__,{}]:= diracM[DOT[x,y]];

@@ -688,13 +688,11 @@ DiracMatrix[a_Integer] := DiracGamma[a];
    in ExplicitLorentzIndex, prohibiting DiracSimplify from working
    (could of course easily be fixed). *)
 
-DiracMatrix[DOT[a_,b__], opt___Rule] := Map[DiracGamma[LorentzIndex[#,
- Dimension /. {opt} /. Options[DiracMatrix]],
- Dimension /. {opt} /. Options[DiracMatrix]]&, DOT[a,b]];
+DiracMatrix[DOT[a_,b__], OptionsPattern[]] := Map[DiracGamma[LorentzIndex[#,OptionValue[Dimension]],
+ OptionValue[Dimension]]&, DOT[a,b]];
 
-DiracMatrix[a_, opt___Rule] := (DiracGamma[LorentzIndex[a,
-  Dimension /. {opt} /. Options[DiracMatrix]],
- Dimension /. {opt} /. Options[DiracMatrix]]
+DiracMatrix[a_, OptionsPattern[]] := (DiracGamma[LorentzIndex[a,
+  OptionValue[Dimension]], OptionValue[Dimension]]
                                ) /; Head[a] =!= Integer;
 
    DiracMatrix /:
