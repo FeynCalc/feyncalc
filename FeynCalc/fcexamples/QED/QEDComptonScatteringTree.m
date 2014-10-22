@@ -57,8 +57,8 @@ ampCompton =
    FourMomentum[Outgoing, 1] -> p2, FourMomentum[Outgoing, 2] -> k2,
    FourMomentum[Incoming, 1] -> p1, FourMomentum[Incoming, 2] -> k1,
    DiracSpinor -> Spinor,Index[Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],
-	Conjugate[PolarizationVector][_, x_,y_]:>Conjugate[PolarizationVector[x,y]],
-PolarizationVector[_, x_,y_]:>Conjugate[PolarizationVector[x,y]]}
+	Conjugate[PolarizationVector][_, x_,y_]:>Conjugate[PolarizationVector[x,y,Transversality->True]],
+PolarizationVector[_, x_,y_]:>PolarizationVector[x,y,Transversality->True]}
 
 
 (* ::Section:: *)
