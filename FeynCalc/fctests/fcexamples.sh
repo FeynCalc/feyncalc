@@ -18,4 +18,5 @@ math -nopromt -script ../fcexamples/QED/QEDThreePhotonDiagramsOneLoop.m
 
 #QCD Examples
 math -nopromt -script ../fcexamples/QCD/QCDQuarkSelfEnergyOneLoop.m
+math -nopromt -script ../fcexamples/QCD/QCDGluonSelfEnergyOneLoop.m
 math -nopromt -script ../fcexamples/QCD/QCDGhostSelfEnergyTwoLoops.m
