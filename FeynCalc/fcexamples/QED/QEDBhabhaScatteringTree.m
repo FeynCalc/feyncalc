@@ -16,8 +16,11 @@
 
 (* ------------------------------------------------------------------------ *)
 
+
+
 (* ::Section:: *)
 (*Load FeynCalc, FeynArts and PHI*)
+
 
 If[ $FrontEnd === Null,
     $FeynCalcStartupMessages = False;
@@ -49,8 +52,8 @@ Paint[diagsBhabha, ColumnsXRows -> {2, 1}, Numbering -> None];
 ampBhabha =
  Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
    Apply[List,
-    CreateFeynAmp[diagsBhabha,
-     Truncated -> False]]] //. {(a1__ DiracGamma[6] a2__ +
+    FCPrepareFAAmp[CreateFeynAmp[diagsBhabha,
+     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
       a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
    FermionChain -> DOT,
    FourMomentum[Outgoing, 1] -> k1, FourMomentum[Outgoing, 2] -> k2,

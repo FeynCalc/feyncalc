@@ -49,8 +49,8 @@ Paint[diagsMoeller, ColumnsXRows -> {2, 1}, Numbering -> None];
 ampMoeller =
  Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
    Apply[List,
-    CreateFeynAmp[diagsMoeller,
-     Truncated -> False]]] //. {(a1__ DiracGamma[6] a2__ +
+    FCPrepareFAAmp[CreateFeynAmp[diagsMoeller,
+     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
       a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
    FermionChain -> DOT,
    FourMomentum[Outgoing, 1] -> k1, FourMomentum[Outgoing, 2] -> k2,

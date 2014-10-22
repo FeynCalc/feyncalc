@@ -50,8 +50,8 @@ Paint[diagsCompton, ColumnsXRows -> {2, 1}, Numbering -> None];
 ampCompton =
  Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
    Apply[List,
-    CreateFeynAmp[diagsCompton,
-     Truncated -> False]]] //. {(a1__ DiracGamma[6] a2__ +
+    FCPrepareFAAmp[CreateFeynAmp[diagsCompton,
+     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
       a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
    FermionChain -> DOT,
    FourMomentum[Outgoing, 1] -> p2, FourMomentum[Outgoing, 2] -> k2,

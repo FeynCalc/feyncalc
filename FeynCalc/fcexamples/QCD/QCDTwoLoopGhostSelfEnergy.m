@@ -66,9 +66,9 @@ FeynAmpDenominator[PropagatorDenominator[p,0]]=1/pp;
 (*Now we obtain the corresponding amplitudes. Notice that we need to put the AmplitudeLevel setting to Classes here. The prefactor 1/(2Pi)^(2D) for the loop integrals is understood.*)
 
 
-amps=CreateFeynAmp[inserts, Truncated -> True,PreFactor->-I,
-         AmplitudeLevel -> {Classes}] /. p1 :> p /. {li1 :> \[Mu],
-        li2 :> \[Nu]} /. FeynAmpList[__] :> List /.
+amps=FCPrepareFAAmp[CreateFeynAmp[inserts, Truncated -> True,PreFactor->-I,
+         AmplitudeLevel -> {Classes}]] /. p1 :> p /. {li1 :> \[Mu],
+        li2 :> \[Nu]} /. FAFeynAmpList[__] :> List /.
      FeynAmp[_, _, x_] :> x;
 
 

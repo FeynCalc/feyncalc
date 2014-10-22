@@ -50,8 +50,8 @@ Paint[diagsMuonProd, ColumnsXRows -> {1, 1}, Numbering -> None];
 ampMuonProd =
  Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
    Apply[List,
-    CreateFeynAmp[diagsMuonProd,
-     Truncated -> False]]] //. {(a1__ DiracGamma[6] a2__ +
+    FCPrepareFAAmp[CreateFeynAmp[diagsMuonProd,
+     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
       a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
    FermionChain -> DOT,
    FourMomentum[Outgoing, 1] -> k1, FourMomentum[Outgoing, 2] -> k2,
