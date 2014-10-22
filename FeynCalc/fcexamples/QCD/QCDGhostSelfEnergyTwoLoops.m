@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: QCDTwoLoopGhostSelfEnergy                                        *)
+(* :Title: QCDGhostSelfEnergyTwoLoops                                       *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -11,7 +11,7 @@
    Copyright (C) 2014 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computation of the 2-loop ghost self-energy in QCD            *)
+(* :Summary:  Computation of the ghost self-energy in QCD at 2-loops        *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -26,7 +26,7 @@
 
 If[ $FrontEnd === Null,
     $FeynCalcStartupMessages = False;
-    Print["Computation of the 2-loop ghost self-energy in QCD"];
+    Print["Computation of the ghost self-energy in QCD at 2-loops"];
 ];
 $LoadPhi = False;
 $LoadFeynArts = $LoadTARCER  = True;
