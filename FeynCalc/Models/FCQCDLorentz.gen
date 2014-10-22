@@ -14,25 +14,24 @@ $FermionLines = True
 
 TheLabel[ Index[Lorentz, i_Integer] ] := Greek[i + 11]
 
-(*
-FourVector/: -FourVector[ mom_, mu_ ] := FourVector[Expand[-mom], mu];
-FourVector[ 0, _ ] = 0
-*)
+FAFourVector/: -FAFourVector[ mom_, mu_ ] := FAFourVector[Expand[-mom], mu];
+FAFourVector[ 0, _ ] = 0
+
 
 M$GenericPropagators = {
 
         (* quark propagator: *)
 
   AnalyticalPropagator[External][ s F[i, mom] ] ==
- HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative[ DiracSpinor[-mom, Mass[F[i]]] ],
+ FANonCommutative[ FADiracSpinor[-mom, Mass[F[i]]] ],
 
   AnalyticalPropagator[Internal][ s F[i, mom] ] ==
-     HighEnergyPhysics`FeynCalc`CoreObjects`NonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
+     FANonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
 
         (* gluon propagator *)
 
   AnalyticalPropagator[External][ s V[i, mom, {li2, b}] ] ==
-    PolarizationVector[mom, {li2, b}],
+    FAPolarizationVector[mom, {li2, b}],
 
   AnalyticalPropagator[Internal][ s V[i, mom, {li1, a} -> {li2, b}] ] ==
     SUNDelta[a,b] GluonPropagator[mom, li1, li2] ,
@@ -69,7 +68,7 @@ M$GenericCouplings = {
   AnalyticalCoupling[ s1 F[i, mom1], s2 F[j, mom2],
       s3 V[k, mom3, {li3, a}] ] ==
     G[-1][s1 F[i], s2 F[j], s3 V[k]] .
-      { NonCommutative[SUNT[a],QuarkGluonVertex[li3]]
+      { FANonCommutative[SUNT[a],QuarkGluonVertex[li3]]
       },
 
         (* U-U-V: *)
@@ -85,9 +84,9 @@ M$GenericCouplings = {
            external Propagators defined in this file. *)
 
 M$TruncationRules = {
-  PolarizationVector[__] -> 1,
+  FAPolarizationVector[__] -> 1,
   Pair[LorentzIndex[__], Momentum[Polarization[pe_, __]]] :> 1,
-  DiracSpinor[__] -> 1,
+  FADiracSpinor[__] -> 1,
   Spinor[__] -> 1,
   MajoranaSpinor[__] -> 1
 }
@@ -95,7 +94,7 @@ M$TruncationRules = {
 (* LastGenericRules: the very last rules that are applied to an
    amplitude before it is returned by CreateFeynAmp. *)
 
-HighEnergyPhysics`FeynArts`SumOver[HighEnergyPhysics`FeynArts`Index[Gluon,_],8,___] := 1;
+SumOver[Index[Gluon,_],8,___] := 1;
 
 Global`$Debug = True;
 db[i_Integer]:=If[Global`$Debug, ToExpression["PRS"<>ToString[i]],1];
@@ -161,13 +160,13 @@ shift[amps_, q1_, q2_, p_] :=
 
 shift[x_, __] := x;
 
-NonCommutative[a___, 1, b___] := NonCommutative[a, b];
+FANonCommutative[a___, 1, b___] := FANonCommutative[a, b];
 
 M$LastGenericRules = {
 
 (* energy momentum conservation for n-loop self energies *)
-FeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
-     FeynAmp[grid, Integral[q],
+FAFeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
+     FAFeynAmp[grid, Integral[q],
              amp /. FourMomentum[Outgoing, 1] :> FourMomentum[Incoming, 1]
             ] /;
              (Union[Flatten@{FourMomentum[Incoming,1], Cases[amp, FourMomentum[Incoming, _], -1]}
@@ -177,8 +176,8 @@ FeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
 
 FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
 
-FeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
-     FeynAmp[grid, Integral[qq],
+FAFeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
+     FAFeynAmp[grid, Integral[qq],
 (*
              shift[#, qq,Sequence@@Union[Cases[amp, FourMomentum[Incoming,_],-1]] ]& @
 *)
@@ -192,7 +191,7 @@ Global`AMP=
            Just take this as a working idea.
            I will look into this further
 *)
-             amp /. MatrixTrace[xy__] :> DiracTrace[2 Tf Nf Dot[xy] ] /.
+             amp /. MatrixTrace[xy__] :> FADiracTrace[2 Tf Nf Dot[xy] ] /.
                     G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
                     Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
                     FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
@@ -213,12 +212,12 @@ Global`AMP=
                     SUNDelta[a_, b_] SUNDelta[c_, a_]:> SUNDelta[b,c],
                     SUNDelta[a_, b_] SUNDelta[b_, c_]:> SUNDelta[a,c],
                     SUNDelta[a_, b_] SUNDelta[c_, b_]:> SUNDelta[a,c],
-                    DiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.a->b]/;!FreeQ[y,a],
-                    DiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.b->a]/;!FreeQ[y,b]
-                   }/.NonCommutative -> Dot //. (a___ . 1 . b___) :> (a . b) /.
+                    FADiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.a->b]/;!FreeQ[y,a],
+                    FADiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.b->a]/;!FreeQ[y,b]
+                   }/.FANonCommutative -> Dot //. (a___ . 1 . b___) :> (a . b) /.
                    (* outgoing vector bosons: throw away signs of momenta *)
-                   PolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
-                   Conjugate[PolarizationVector][p, k, li]
+                   FAPolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
+                   Conjugate[FAPolarizationVector][p, k, li]
              )
 )
             ]
