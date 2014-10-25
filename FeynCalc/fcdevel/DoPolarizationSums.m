@@ -1,18 +1,21 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DoPolarizationSums *)
+(* :Title: DoPolarizationSums												*)
 
-(* :Author: Frederik Orellana *)
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 25 October 2002 at 18:21 *)
-(* ------------------------------------------------------------------------ *)
+(* :Summary:  Compute polarization sums of vector bosons *)
 
 (* ------------------------------------------------------------------------ *)
 
 BeginPackage["HighEnergyPhysics`fcdevel`DoPolarizationSums`",{"HighEnergyPhysics`FeynCalc`"}];
 
-DoPolarizationSums::"usage"= "***EXPERIMENTAL***\n
+DoPolarizationSums::"usage"="EXPERIMENTAL \n
 DoPolarizationSums[exp] sums over 4 vector polarizations
 for expressions with a factor of the form\n\n
 Pair[LorentzIndex[rho1_], Momentum[Polarization[p_, -I]]]
@@ -45,46 +48,41 @@ Polarization = MakeContext["CoreObjects","Polarization"];
 
 MakeContext[ Uncontract, ScalarProductExpand, MomentumExpand, EpsEvaluate ];
 
-EpsUncontract[exp_, opts___?OptionQ] :=
-    Block[{a},
-      exp /. (a : Eps[___, Momentum[__], ___]) :>
+EpsUncontract[expr_, opts:OptionsPattern[]] :=
+    Block[{},
+      expr /. (a : Eps[___, Momentum[__], ___]) :>
           Uncontract[a,
             Sequence @@ ((#[[1]]) & /@ Cases[a, Momentum[__], 1]),
-            Sequence@@OptionsSelect[Uncontract, opts]]];
+            FilterRules[{opts}, Options[Uncontract]]]];
 
 
-PolarizationUncontract[exp_, opts___?OptionQ] :=
-    Block[{a},
-      exp /. {(a : (Pair[___, Momentum[Polarization[__], ___], ___] |
+PolarizationUncontract[expr_, opts:OptionsPattern[]] :=
+    Block[{},
+      expr /. {(a : (Pair[___, Momentum[Polarization[__], ___], ___] |
                     DiracGamma[Momentum[Polarization[__], ___], ___])) :>
             Uncontract[a,
               Sequence @@ ((#[[1]]) & /@ Cases[a, Momentum[__], 1]),
-              Pair -> All,
-              Sequence@@Select[OptionsSelect[Uncontract, opts],FreeQ[#, Pair->_]&]]}];
+              Join[FilterRules[FilterRules[{opts}, Options[Uncontract]],Except[Pair]],{Pairs->All}]]}];
 
 
-DoPolarizationSum[exp_] :=
-    exp //. Pair[LorentzIndex[rho1_, d___],
-            Momentum[Polarization[p_, -I], d___]] Pair[
+DoPolarizationSum[expr_] :=
+Which[Count[expr, Polarization, Infinity, Heads -> True] === 0, 4 expr,
+      Count[expr, Polarization, Infinity, Heads -> True] // EvenQ,
+      expr //. Pair[LorentzIndex[rho1_, d___],
+            Momentum[Polarization[p_, -I, OptionsPattern[]], d___]] Pair[
             LorentzIndex[rho2_, d___],
-            Momentum[Polarization[p_, I], d___]] :> -Pair[
-            LorentzIndex[rho1, d], LorentzIndex[rho2, d]];
+            Momentum[Polarization[p_, I, OptionsPattern[]], d___]] :> -Pair[
+            LorentzIndex[rho1, d], LorentzIndex[rho2, d]], True,
+      Message[DoPolarizationSums::"noresolv", StandardForm[expr]]; expr];
 
-
-DoPolarizationSum1[exp_] :=
-Which[Count[exp, Polarization, Infinity, Heads -> True] === 0, 4 exp,
-      Count[exp, Polarization, Infinity, Heads -> True] // EvenQ,
-      DoPolarizationSum[exp], True,
-      Message[DoPolarizationSums::"noresolv", StandardForm[exp]]; exp];
-
-DoPolarizationSums[exp_, opts___?OptionQ] :=
+DoPolarizationSums[expr_, opts:OptionsPattern[]] :=
     Block[{exp1, exp2},
       exp1 = (# // EpsEvaluate //
-              EpsUncontract[#, Sequence@@OptionsSelect[Uncontract, opts]]& //
-              PolarizationUncontract[#, Sequence@@OptionsSelect[PolarizationUncontract, opts]]&)& /@
-          Expand[ScalarProductExpand[MomentumExpand[exp]]];
+              EpsUncontract[#, FilterRules[{opts}, Options[Uncontract]]]& //
+              PolarizationUncontract[#, FilterRules[{opts}, Options[PolarizationUncontract]]]&)& /@
+          Expand[ScalarProductExpand[MomentumExpand[expr]]];
       If[Head[exp1] === Plus, exp2 = List @@ exp1, exp2 = {exp1}];
-      Plus @@ (DoPolarizationSum1 /@ exp2)];
+      Plus @@ (DoPolarizationSum /@ exp2)];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
