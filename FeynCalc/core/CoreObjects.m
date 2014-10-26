@@ -437,6 +437,11 @@ SUNTrace[SUNT[a].SUNT[b]] = Tf*SUNDelta[a, b].
 Tf is useful to keep around in order to
 identify contributions from internal quark loops.";
 
+Transversality::"usage"=
+"Transversality is an option for Polarization and PolarizationVector.
+Setting it to True will make all scalar products of a
+polarization vector with its momentum to be zero.";
+
 Upper::"usage"= "Upper may be used inside LorentzIndex to indicate an
 contravariant LorentzIndex.";
 
@@ -526,6 +531,9 @@ Options[FourVector]  = {Dimension -> 4, FCI -> True};
 Options[MetricTensor] = {Dimension -> 4, FCI -> True};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False(*, FCI -> True*)};
+Options[Polarization] = {Transversality -> False};
+
+
 
 CA /: MakeBoxes[CA, TraditionalForm] := SubscriptBox["C", "A"];
 CF /: MakeBoxes[CF, TraditionalForm] := SubscriptBox["C", "F"];
@@ -1247,16 +1255,16 @@ Pair[ lom_[la_,d_Symbol], mol_[pe_]] := Pair[ lom[la], mol[pe] ] /;
   MemberQ[{LorentzIndex, Momentum}, lom] &&
      MemberQ[{LorentzIndex, Momentum}, mol] ;
 
-Pair[Momentum[x_,___],Momentum[Polarization[x_, ___],___]] := 0;
-Pair[Momentum[x_,___],Momentum[Polarization[n_?NumberQ x_, ___],___]
-    ] := 0;
-Pair[Momentum[pi_,___],Momentum[Polarization[x_Plus, ki___], dii___]
+Pair[Momentum[x_, ___],Momentum[Polarization[x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] := 0/; OptionValue[Polarization,Transversality];
+Pair[Momentum[x_,___],Momentum[Polarization[_?NumberQ x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]
+    ] := 0/; OptionValue[Polarization,Transversality];
+Pair[Momentum[pi_,___],Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]..., opts:OptionsPattern[Polarization]], dii___]
     ]:= Contract[ExpandScalarProduct[Pair[
-             Momentum[x+pi, dii], Momentum[Polarization[x, ki], dii]]]
+             Momentum[x+pi, dii], Momentum[Polarization[x, ki ,opts], dii]]]
                 ] /; ( pi + Last[x] ) === 0;
-Pair[Momentum[pi_,___],Momentum[Polarization[x_Plus, ki___], dii___]
+Pair[Momentum[pi_,___],Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]..., opts:OptionsPattern[Polarization]], dii___]
     ]:= Contract[ExpandScalarProduct[Pair[
-             Momentum[pi-x,dii], Momentum[Polarization[x, ki],dii]]]
+             Momentum[pi-x,dii], Momentum[Polarization[x, ki, opts],dii]]]
                 ] /; ( pi - Last[x] ) === 0;
 (* by convention ... *)
 Pair[Momentum[Polarization[x_,__],___],
@@ -1465,11 +1473,11 @@ PlusDistribution /:
                 ];
 
 (* by convention *)
-Polarization[k_] /;FreeQ[k,Blank|BlankSequence|BlankNullSequence] :=
-  Polarization[k] = Polarization[k, I];
+Polarization[k_, opts:OptionsPattern[]] /; FreeQ[k,Blank|BlankSequence|BlankNullSequence] :=
+  Polarization[k,Flatten[Join[FilterRules[Options[Polarization],Except[{opts}]],{opts}]]] = Polarization[k, I, opts];
 
-Polarization[-x_, I] := -Polarization[x,I];
-Polarization[-x_,-I] := -Polarization[x,-I];
+Polarization[-x_, I, opts:OptionsPattern[]] := -Polarization[x,I, opts];
+Polarization[-x_,-I, opts:OptionsPattern[]] := -Polarization[x,-I, opts];
 
 Polarization /:
 (* suppress color indices in the typesetting for the moment *)
@@ -1482,8 +1490,8 @@ Polarization /:
         Tbox[Superscript["\[CurlyEpsilon]", "*"], "(", a, ")"];
 
 PolarizationVector[x_,{y_,z_}]:= PolarizationVector[x, y, z];
-PolarizationVector[x__]:=
-(PolarizationVector[x]=polVec[x] )/; FreeQ[{x}, Pattern] &&
+PolarizationVector[x:Except[_?OptionQ].., opts:OptionsPattern[Polarization]]:=
+(PolarizationVector[x, Flatten[Join[FilterRules[Options[Polarization],Except[{opts}]],{opts}]]]=polVec[x,opts])/; FreeQ[{x}, Pattern] &&
 (*Hack to keep unevaluated when given "FeynArts arguments". F.Orellana, 29/3-2003*)
   (Length[{x}]===2 ||
   (*FA uses particle name (which is alway not AtomQ) as first argument*)
@@ -1491,19 +1499,23 @@ PolarizationVector[x__]:=
   Head[{x}[[-1]]===SUNIndex]);
 
 fourv[x__] := FCI[FourVector[x]];
-polVec[k_Polarization,mu_]:=
-     fourv[k, mu, Dimension -> 4 ];
-polVec[k_Polarization,mu_,glu_]:=
-     fourv[Polarization[
-          k, I, SUNIndex[glu/.SUNIndex->Identity]],
-                mu, Dimension->4 ];
-polVec[k_,mu_]:=
-     fourv[Polarization[k, I], mu, Dimension->4 ];
 
-polVec[k_,mu_,glu_]:=
+
+polVec[Polarization[k__], mu_, opts:OptionsPattern[]]:=
+     fourv[Polarization[k, opts], mu, Dimension -> 4 ];
+
+
+polVec[Polarization[k__],mu_, glu_, opts:OptionsPattern[]]:=
+     fourv[Polarization[
+          k, I, SUNIndex[glu/.SUNIndex->Identity],opts],
+                mu, Dimension->4 ];
+polVec[k_,mu_ , opts:OptionsPattern[]]:=
+     fourv[Polarization[k, I, opts], mu, Dimension->4 ];
+
+polVec[k_,mu_,glu_, opts:OptionsPattern[]]:=
      If[FreeQ[glu, Blank],
         fourv[Polarization[k, I,
-                   SUNIndex[glu/.SUNIndex->Identity]],
+                   SUNIndex[glu/.SUNIndex->Identity],opts],
                    mu, Dimension->4 ],
         fourv[Polarization[k, I, glu], mu, Dimension -> 4]
        ];
