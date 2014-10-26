@@ -15,10 +15,7 @@
 fcstContractContractionsIn4dims = {
   {"Contract-ID1","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, l]]","-24"},
   {"Contract-ID2","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, m]]","-6 Pair[LorentzIndex[l], LorentzIndex[m]]"},
-  {"Contract-ID3","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, m, n]]",
-    "2 Pair[LorentzIndex[k], LorentzIndex[n]] Pair[LorentzIndex[l],
-    LorentzIndex[m]] - 2 Pair[LorentzIndex[k], LorentzIndex[m]] Pair[LorentzIndex[l],LorentzIndex[n]]"},
-
+  {"Contract-ID3","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, m, n]]", "2 Pair[LorentzIndex[k], LorentzIndex[n]] Pair[LorentzIndex[l], LorentzIndex[m]] - 2 Pair[LorentzIndex[k], LorentzIndex[m]] Pair[LorentzIndex[l],LorentzIndex[n]]"},
   {"Contract-ID4", "Contract[MetricTensor[mu, mu] ]","4"},
   {"Contract-ID5", "Contract[MetricTensor[mu, mu, Dimension -> D]]","D"},
   {"Contract-ID6", "Contract[MetricTensor[a, b] FourVector[p, b]]","Pair[LorentzIndex[a], Momentum[p]]"},
@@ -29,14 +26,15 @@ fcstContractContractionsIn4dims = {
   {"Contract-ID11", "Contract[MetricTensor[a, sigma]*FourVector[p, a] FourVector[p,sigma]*(FourVector[q, b] + FourVector[r, b])*(FourVector[p, b]
      -FourVector[q, b]), Expanding -> False]", "(Pair[LorentzIndex[b], Momentum[p]] - Pair[LorentzIndex[b], Momentum[q]])*(Pair[LorentzIndex[b],
      Momentum[q]] + Pair[LorentzIndex[b], Momentum[r]])*Pair[Momentum[p], Momentum[p]]"},
-  {"Contract-ID12", "Contract[FourVector[k, mu] PolarizationVector[k, mu]]", "0"},
-  {"Contract-ID13", "Contract[FourVector[q, a] FourVector[p - q, a]]", "Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
-  {"Contract-ID14", "ScalarProduct[q, q] = 0\nContract[FourVector[q, a]*FourVector[p - q, \
-a]]","Pair[Momentum[p], Momentum[q]]"},
-{"Contract-ID15", "ClearScalarProducts\nContract[FourVector[q, a]*FourVector[p - q, \
-a]]","Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
-{"Contract-ID16","Contract[DiracSimplify[
-  DiracReduce[DiracMatrix[mu, nu, rho, sigma]].DiracReduce[
-    DiracMatrix[mu, nu, rho, sigma]]]]","-128"}
-
-};
+  {"Contract-ID12", "Contract[FourVector[k, mu] PolarizationVector[k, mu]]", "Contract[FourVector[k, mu] PolarizationVector[k, mu]]"},
+  {"Contract-ID13", "Contract[FourVector[k, mu] PolarizationVector[k, mu,Transversality->True]]", "0"},
+  {"Contract-ID14", "Contract[FourVector[k, mu] PolarizationVector[k, mu,Transversality->False]]", "Pair[Momentum[k], Momentum[Polarization[k, I, Transversality -> False]]]"},
+  {"Contract-ID15", "SetOptions[Polarization, Transversality->True];\nContract[FourVector[k, mu] PolarizationVector[k, mu, Transversality->False]]", "Pair[Momentum[k], Momentum[Polarization[k, I,Transversality->False]]]"},
+  {"Contract-ID16", "SetOptions[Polarization, Transversality->False];\nContract[FourVector[k, mu] PolarizationVector[k, mu, Transversality->True]]", "0"},
+  {"Contract-ID17", "SetOptions[Polarization, Transversality->True];\nContract[FourVector[k, mu] PolarizationVector[k, mu]]", "0"},
+  {"Contract-ID18", "SetOptions[Polarization, Transversality->False];\nContract[FourVector[k, mu] PolarizationVector[k, mu]]", "Pair[Momentum[k], Momentum[Polarization[k, I]]]"},
+  {"Contract-ID19", "Contract[FourVector[k, mu] PolarizationVector[k, mu,Transversality->False]]", "Pair[Momentum[k], Momentum[Polarization[k, I, Transversality -> False]]]"},
+  {"Contract-ID20", "Contract[FourVector[q, a] FourVector[p - q, a]]", "Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
+  {"Contract-ID21", "ScalarProduct[q, q] = 0\nContract[FourVector[q, a]*FourVector[p - q, a]]","Pair[Momentum[p], Momentum[q]]"},
+  {"Contract-ID22", "ClearScalarProducts\nContract[FourVector[q, a]*FourVector[p - q, a]]","Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
+  {"Contract-ID23","Contract[DiracSimplify[DiracReduce[DiracMatrix[mu, nu, rho, sigma]].DiracReduce[DiracMatrix[mu, nu, rho, sigma]]]]","-128"}};
