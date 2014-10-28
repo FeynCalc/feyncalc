@@ -33,7 +33,6 @@ fcstDiracSimplify = {
 {"fcstDiracSimplify-ID11","$BreitMaison = True;\nDiracSimplify[DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]]","2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
 
 {"fcstDiracSimplify-ID12","DiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, D], D]/2 + DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] -
- DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]/2"}
-(*{"fcstDiracSimplify-ID13","$BreitMaison = False;",""},*)
-
+ DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]/2"},
+{"fcstDiracSimplify-ID13","$BreitMaison = False;\nDiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[7]"}
 }
