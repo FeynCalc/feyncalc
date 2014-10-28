@@ -44,7 +44,7 @@ MakeContext[ FreeQ2, ChargeConjugationMatrix ];
 
 Options[DiracTrick] = {Expanding -> False};
 
-scev[a_, b_] := scev[a, b] = ExpandScalarProduct[Pair[a,b]];
+scev[a_, b_] := MemSet[scev[a, b],ExpandScalarProduct[Pair[a,b]]];
 coneins[x_]  := x /. Pair -> PairContract /. PairContract -> Pair;
 
 (*By definition:*)
