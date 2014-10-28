@@ -122,8 +122,8 @@ dr[b___,DiracGamma[6], DiracGamma[5], c___]:=ds[b,DiracGamma[6],c];
 dr[b___,DiracGamma[7],DiracGamma[5],c___] := -ds[b, DiracGamma[7], c];
 
 (*These are the usual projector properties. They also hold in all schemes*)
-dr[b___,DiracGamma[6], DiracGamma[7], c___] := 0;
-dr[b___,DiracGamma[7], DiracGamma[6], c___] := 0;
+dr[___,DiracGamma[6], DiracGamma[7], ___] := 0;
+dr[___,DiracGamma[7], DiracGamma[6], ___] := 0;
 dr[b___,DiracGamma[6],DiracGamma[6],c___] :=  ds[b, DiracGamma[6], c];
 dr[b___,DiracGamma[7],DiracGamma[7],c___] :=  ds[b, DiracGamma[7], c];
 
@@ -178,11 +178,11 @@ drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_ ),
 (n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
   EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
+drS[b___,DiracGamma[6],DiracGamma[_[__],___] + (n_. mass_ ),
     DiracGamma[6], c___] :=
 (n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass];
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_ ),
+drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_ ),
     DiracGamma[7], c___] :=
 (n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass];
 
@@ -230,8 +230,8 @@ dr[b___,DiracGamma[LorentzIndex[c_,di_],di_],
         DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],d___]:=(di-4) ds[ b,d ];
 
 (*g^mu g_mu, where the first matrix is in 4 and the second in D-4 dimensions*)
-dr[b___,DiracGamma[LorentzIndex[c_]],
-        DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],d___] := 0;
+dr[___,DiracGamma[LorentzIndex[c_]],
+        DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],___] := 0;
 
 (*g^mu g_mu, where the first matrix is in 4 and the second in D dimensions*)
 dr[b___,DiracGamma[LorentzIndex[c_]],
@@ -327,7 +327,7 @@ dr[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[_]].. ,
 in D3 dimensions. The momentum vectors are all in 4 dimensions*)
 dr[ b___,DiracGamma[Momentum[c__],dim___],
          DiracGamma[Momentum[x__],dii___],
-         DiracGamma[Momentum[c__],di___],d___ ] := (
+         DiracGamma[Momentum[c__],___],d___ ] := (
 2 scev[Momentum[c],Momentum[x]] ds[b,DiracGamma[Momentum[c],dim],d]
 - scev[Momentum[c],Momentum[c]] ds[b,DiracGamma[Momentum[x],dii],d]
                                                   );
@@ -338,7 +338,7 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
 (* #################################################################### *)
 
 (* If we have a mixed expression with gamma and SU(N) matrices, factor the SU(N) matrices out *)
-   dr[ a___,b_,c:SUNT[i_].. ,d___] :=
+   dr[ a___,b_,c:SUNT[_].. ,d___] :=
      dr[ a, c, b, d ] /; FreeQ2[b, {SUNT}];
 
    HoldPattern[dr[ a___,b_ dr[c:(SUNT[_])..], d___]]:=
