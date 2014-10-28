@@ -32,20 +32,20 @@ LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 SUNT = MakeContext["CoreObjects","SUNT"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
-expanding := expanding = MakeContext["CoreOptions","Expanding"];
-exscalpro := exscalpro = MakeContext["ExpandScalarProduct"];
-fci  := fci =            MakeContext["FeynCalcInternal"];
-memset := memset = MakeContext["MemSet"];
-noncommQ := noncommQ = MakeContext["NonCommFreeQ"];
-sCO := sCO          = MakeContext["PairContract"];
-spinor := spinor = MakeContext["CoreObjects","Spinor"];
+Expanding := Expanding = MakeContext["CoreOptions","Expanding"];
+ExpandScalarProduct := ExpandScalarProduct = MakeContext["ExpandScalarProduct"];
+FeynCalcInternal  := FeynCalcInternal =  MakeContext["FeynCalcInternal"];
+MemSet := MemSet = MakeContext["MemSet"];
+NonCommFreeQ := NonCommFreeQ = MakeContext["NonCommFreeQ"];
+PairContract := PairContract          = MakeContext["PairContract"];
+Spinor := Spinor = MakeContext["CoreObjects","Spinor"];
 
 MakeContext[ FreeQ2, ChargeConjugationMatrix ];
 
-Options[DiracTrick] = {expanding -> False};
+Options[DiracTrick] = {Expanding -> False};
 
-scev[a_, b_] := scev[a, b] = exscalpro[Pair[a,b]];
-coneins[x_]  := x /. Pair -> sCO /. sCO -> Pair;
+scev[a_, b_] := scev[a, b] = ExpandScalarProduct[Pair[a,b]];
+coneins[x_]  := x /. Pair -> PairContract /. PairContract -> Pair;
 
 (*By definition:*)
 DiracTrick[]=1;
@@ -67,15 +67,15 @@ DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
 *)
 
 DiracTrick[x_,r___?OptionQ] :=(
-  If[(expanding /. {r} /. Options[DiracTrick]) === True,
-     Expand[ fci[x] (*/. Dot -> DOT*) /. (*Pair -> sCO /.*)
+  If[(Expanding /. {r} /. Options[DiracTrick]) === True,
+     Expand[ FeynCalcInternal[x] (*/. Dot -> DOT*) /. (*Pair -> PairContract /.*)
                   DOT -> drS /.drS -> ds //. dr -> drCOs/.
                   drCO -> ds /.  dr -> ds /.  dr -> DOT
            ],
-             fci[x] (*/. Dot -> DOT*) /. (*Pair -> sCO /.*)
+             FeynCalcInternal[x] (*/. Dot -> DOT*) /. (*Pair -> PairContract /.*)
                   DOT -> drS /.drS -> ds //. dr -> drCOs/.
                   drCO -> ds /.  dr -> ds /. dr -> DOT (*/.
-                  sCO -> Pair*)
+                  PairContract -> Pair*)
     ]
 );
 
@@ -87,13 +87,13 @@ SetAttributes[DiracTrick, Flat];
 
 
 (*If we are not using the BM scheme, we keep the projectors as they are*)
-ds[x__] := memset[ds[x], dr[x]] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
+ds[x__] := MemSet[ds[x], dr[x]] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
             (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) =!= True;
                                 (*Condition added 19/1-2003 by F.Orellana to not have
                                   definition below cause infinite recursion.*)
 
 (*If we are using the BM scheme, all g^5 in the projectors should be spelled out!*)
-ds[x__] := memset[ds[x], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
+ds[x__] := MemSet[ds[x], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
                   DiracGamma[7]->(1/2 - DiracGamma[5]/2)] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
             (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) === True;
 
@@ -101,10 +101,10 @@ ds[x__] := memset[ds[x], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
 
 ds[] = dr[]=1;
 dr[a___,y_SUNT w_,b___] := dr[a, y, w, b](* /; Head[y] === SUNT*);
-dr[a___,y_ w_,b___] := coneins[y ds[a,w,b]]/;(noncommQ[y]&&FreeQ[y,dr]);
-dr[a___,y_ ,b___]   := coneins[y ds[a,b] ] /;(noncommQ[y]&&FreeQ[y,dr]);
+dr[a___,y_ w_,b___] := coneins[y ds[a,w,b]]/;(NonCommFreeQ[y]&&FreeQ[y,dr]);
+dr[a___,y_ ,b___]   := coneins[y ds[a,b] ] /;(NonCommFreeQ[y]&&FreeQ[y,dr]);
 
-dr[a_spinor, b___, c_spinor, d_spinor, e___, f_spinor, g___]:=
+dr[a_Spinor, b___, c_Spinor, d_Spinor, e___, f_Spinor, g___]:=
  dr[a, b, c] dr[d, e, f, g];
 
 (*Causes infinite recursion!! See above. 19/1-2003 F.Orellana*)
@@ -161,60 +161,60 @@ dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol] ,f___] :=
 drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_),
     xy:DiracGamma[_[__],___].. , DiracGamma[6], c___] :=
 (n mass drS[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
-   OddQ[Length[{xy}]] && noncommQ[mass];
+   OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[6],DiracGamma[_[__],___] + (n_. mass_ ),
    xy:DiracGamma[_[__],___].. , DiracGamma[7], c___] :=
 (n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-  OddQ[Length[{xy}]] && noncommQ[mass];
+  OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[6],DiracGamma[_[__],___] + (n_. mass_ ),
    xy:DiracGamma[_[__],___].. , DiracGamma[6], c___] :=
 (n mass drS[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
-  EvenQ[Length[{xy}]] && noncommQ[mass];
+  EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_ ),
    xy:DiracGamma[_[__],___].. , DiracGamma[7], c___] :=
 (n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-  EvenQ[Length[{xy}]] && noncommQ[mass];
+  EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
     DiracGamma[6], c___] :=
-(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && noncommQ[mass];
+(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_ ),
     DiracGamma[7], c___] :=
-(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && noncommQ[mass];
+(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
     DiracGamma[7], c___] :=
 drS[b, DiracGamma[v[w],di], DiracGamma[7], c] /; NumberQ[n] &&
-  noncommQ[mass];
+  NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_),
     DiracGamma[6], c___] :=
 drS[b, DiracGamma[v[w],di], DiracGamma[6], c] /; NumberQ[n] &&
-  noncommQ[mass];
+  NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
     xy:DiracGamma[_[_]].. ,DiracGamma[7], c___] :=
 drS[b, DiracGamma[v[w],di], xy, DiracGamma[7], c] /; NumberQ[n] &&
-       EvenQ[Length[{xy}]] && noncommQ[mass];
+       EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_ ),
     xy:DiracGamma[_[__],___].. ,DiracGamma[6], c___] :=
 drS[b, DiracGamma[v[w],di], xy, DiracGamma[6], c] /; NumberQ[n] &&
-       EvenQ[Length[{xy}]] && noncommQ[mass];
+       EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
     xy:DiracGamma[_[__],___].. ,DiracGamma[6], c___] :=
 drS[b, DiracGamma[v[w],di], xy, DiracGamma[6], c] /; NumberQ[n] &&
-       OddQ[Length[{xy}]] && noncommQ[mass];
+       OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_),
     xy:DiracGamma[_[__],___].. ,DiracGamma[7], c___] :=
 drS[b, DiracGamma[v[w],di], xy, DiracGamma[7], c] /; NumberQ[n] &&
-       OddQ[Length[{xy}]] && noncommQ[mass];
+       OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
 
 (*g^mu g_mu in 4 dimensions*)
@@ -254,9 +254,9 @@ dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
 dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
         DiracGamma[x1_[y1__],d1___], DiracGamma[x2_[y2__],d2___],
         DiracGamma[LorentzIndex[c_,dI___],dI___],d___
-  ] := ((4 sCO[x1[y1],x2[y2]] ds[b,d] +
+  ] := ((4 PairContract[x1[y1],x2[y2]] ds[b,d] +
          (fdim[dI]-4) ds[b,DiracGamma[x1[y1],d1], DiracGamma[x2[y2],d2], d]
-        ) /. sCO -> Pair
+        ) /. PairContract -> Pair
        ) /; dcheck[dI, d1, d2];
 
 (*g^mu g^nu g^rho g^sigma g_mu for arbitrary dimensions*)
@@ -380,7 +380,7 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
 (*                             Main34                                 *)
 (* #################################################################### *)
 
-   drCOs[x___] := memset[ drCOs[x], drCO[x] ];    (*drCOsdef*)
+   drCOs[x___] := MemSet[ drCOs[x], drCO[x] ];    (*drCOsdef*)
 (* Dirac contraction rules *) (*drCOdef*)
 
 (*g^mu g^i1 .... g^in g_mu, where all matrices are in D-4 dimensions*)
