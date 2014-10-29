@@ -158,63 +158,71 @@ dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol] ,f___] :=
 
 
 (* o.k., some 4 years after the proposal of M.B., here it is: *)
-drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_),
-    xy:DiracGamma[_[__],___].. , DiracGamma[6], c___] :=
-(n mass drS[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
-   OddQ[Length[{xy}]] && NonCommFreeQ[mass];
 
-drS[b___,DiracGamma[6],DiracGamma[_[__],___] + (n_. mass_ ),
-   xy:DiracGamma[_[__],___].. , DiracGamma[7], c___] :=
+(* The following relations are true only in the naive g^5 schemes or
+if all the involved gamma matrices are four dimensional. They are not
+valid for the non-naive schemes. Actually, they are even not applicable
+there, since in non-naive schemes all the projects must be written out
+explicitly in terms of g^5.
+ *)
+
+drS[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_),
+    xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
+(n mass drS[b, xy, DiracGamma[6], c])/; NumberQ[n] &&
+   OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
+
+drS[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
+   xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
 (n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-  OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+  OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[_[__],___] + (n_. mass_ ),
-   xy:DiracGamma[_[__],___].. , DiracGamma[6], c___] :=
+drS[b___,DiracGamma[6],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
+   xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
 (n mass drS[b, xy, DiracGamma[6], c]) /; NumberQ[n] &&
-  EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+  EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_ ),
-   xy:DiracGamma[_[__],___].. , DiracGamma[7], c___] :=
+drS[b___,DiracGamma[7],DiracGamma[_[__], dim1_ : 4] + (n_. mass_ ),
+   xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
 (n mass drS[b, xy, DiracGamma[7], c]) /; NumberQ[n] &&
-  EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+  EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[_[__],___] + (n_. mass_ ),
+drS[b___,DiracGamma[6],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
     DiracGamma[6], c___] :=
-(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass];
+(n mass drS[b, DiracGamma[6], c] )/; NumberQ[n] && NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
 
-drS[b___,DiracGamma[7],DiracGamma[_[__],___] + (n_. mass_ ),
+drS[b___,DiracGamma[7],DiracGamma[_[__], dim_ : 4] + (n_. mass_ ),
     DiracGamma[7], c___] :=
-(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass];
+(n mass drS[b, DiracGamma[7], c] )/; NumberQ[n] && NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
+drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_ ),
     DiracGamma[7], c___] :=
-drS[b, DiracGamma[v[w],di], DiracGamma[7], c] /; NumberQ[n] &&
-  NonCommFreeQ[mass];
+drS[b, DiracGamma[v[w], dim], DiracGamma[7], c] /; NumberQ[n] &&
+  NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_),
+drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim_ : 4] + (n_. mass_),
     DiracGamma[6], c___] :=
-drS[b, DiracGamma[v[w],di], DiracGamma[6], c] /; NumberQ[n] &&
-  NonCommFreeQ[mass];
+drS[b, DiracGamma[v[w], dim], DiracGamma[6], c] /; NumberQ[n] &&
+  NonCommFreeQ[mass] && ($BreitMaison=!=True || dim===4);
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
-    xy:DiracGamma[_[_]].. ,DiracGamma[7], c___] :=
-drS[b, DiracGamma[v[w],di], xy, DiracGamma[7], c] /; NumberQ[n] &&
-       EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
+    xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
+drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
+       EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_ ),
-    xy:DiracGamma[_[__],___].. ,DiracGamma[6], c___] :=
-drS[b, DiracGamma[v[w],di], xy, DiracGamma[6], c] /; NumberQ[n] &&
-       EvenQ[Length[{xy}]] && NonCommFreeQ[mass];
+drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
+    xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
+drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
+       EvenQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[6],DiracGamma[v_[w__],di___] + (n_. mass_ ),
-    xy:DiracGamma[_[__],___].. ,DiracGamma[6], c___] :=
-drS[b, DiracGamma[v[w],di], xy, DiracGamma[6], c] /; NumberQ[n] &&
-       OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+drS[b___,DiracGamma[6],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_ ),
+    xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[6], c___] :=
+drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[6], c] /; NumberQ[n] &&
+       OddQ[Length[{xy}]] && NonCommFreeQ[mass]  && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
-drS[b___,DiracGamma[7],DiracGamma[v_[w__],di___] + (n_. mass_),
-    xy:DiracGamma[_[__],___].. ,DiracGamma[7], c___] :=
-drS[b, DiracGamma[v[w],di], xy, DiracGamma[7], c] /; NumberQ[n] &&
-       OddQ[Length[{xy}]] && NonCommFreeQ[mass];
+drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
+    xy:DiracGamma[_[__], dim2_ : 4].. , DiracGamma[7], c___] :=
+drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
+       OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
 
 (*g^mu g_mu in 4 dimensions*)
