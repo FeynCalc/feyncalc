@@ -127,11 +127,13 @@ dr[___,DiracGamma[7], DiracGamma[6], ___] := 0;
 dr[b___,DiracGamma[6],DiracGamma[6],c___] :=  ds[b, DiracGamma[6], c];
 dr[b___,DiracGamma[7],DiracGamma[7],c___] :=  ds[b, DiracGamma[7], c];
 
-(*What happends if we have a projector in front of a g^mu? *)
-dr[b___,DiracGamma[6],DiracGamma[x_[c__],di___],d___ ]:=
-  ds[ b,DiracGamma[x[c],di], DiracGamma[7],d ];
-dr[b___,DiracGamma[7],DiracGamma[x_[c__],di___],d___ ] :=
-   ds[ b,DiracGamma[x[c],di],DiracGamma[6],d ];
+(*If we have a projector behind a gamma matrix, we should anticommute them.
+  This holds only in four dimensions or in a naive gamma5 scheme *)
+dr[b___,DiracGamma[6],DiracGamma[x_[c__],dim_ : 4],d___ ]:=
+  ds[b, DiracGamma[x[c], dim], DiracGamma[7],d ]/; ($BreitMaison=!=True || dim === 4);
+
+dr[b___,DiracGamma[7],DiracGamma[x_[c__],dim_ : 4],d___ ] :=
+  ds[b, DiracGamma[x[c], dim], DiracGamma[6],d ]/; ($BreitMaison=!=True || dim === 4);
 
 
 (*In 4 dimensions g^5 always anticommutes with all the other gamma matrices*)
