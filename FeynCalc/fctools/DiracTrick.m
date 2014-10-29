@@ -87,13 +87,13 @@ SetAttributes[DiracTrick, Flat];
 
 
 (*If we are not using the BM scheme, we keep the projectors as they are*)
-ds[x__] := MemSet[ds[x], dr[x]] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
+ds[x__] := MemSet[ds[x,$BreitMaison, $Larin], dr[x]] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
             (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) =!= True;
                                 (*Condition added 19/1-2003 by F.Orellana to not have
                                   definition below cause infinite recursion.*)
 
 (*If we are using the BM scheme, all g^5 in the projectors should be spelled out!*)
-ds[x__] := MemSet[ds[x], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
+ds[x__] := MemSet[ds[x,$BreitMaison, $Larin], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
                   DiracGamma[7]->(1/2 - DiracGamma[5]/2)] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
             (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) === True;
 
@@ -380,7 +380,7 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
 (*                             Main34                                 *)
 (* #################################################################### *)
 
-   drCOs[x___] := MemSet[ drCOs[x], drCO[x] ];    (*drCOsdef*)
+   drCOs[x___] := MemSet[ drCOs[x,$BreitMaison, $Larin], drCO[x] ];    (*drCOsdef*)
 (* Dirac contraction rules *) (*drCOdef*)
 
 (*g^mu g^i1 .... g^in g_mu, where all matrices are in D-4 dimensions*)
