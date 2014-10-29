@@ -241,8 +241,8 @@ dr[b___,DiracGamma[LorentzIndex[c_]],
 
 fdim[]=4;    (* fdimdef *)
 fdim[dimi_]:=dimi;
-dcheck[dii_, diii__] := dimcheck[dii, diii] =
-If[Head[dii]===Symbol, True, If[Union[{dii, diii}]==={dii}, True, False]];
+
+dcheck[dii_, diii__] := MemSet[dcheck[dii,diii], If[Head[dii]===Symbol, True, If[Union[{dii, diii}]==={dii}, True, False]]];
 
 (*g^mu g^nu g_mu for arbitrary dimensions*)
 dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
