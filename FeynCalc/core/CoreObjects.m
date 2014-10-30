@@ -1239,7 +1239,10 @@ MT[Momentum[a_,D], Momentum[b_,D]] := SPD[a,b];
 
 
 MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
-   SuperscriptBox["g", Tbox[x,y]];
+   SuperscriptBox["g", Tbox[x,y]];/ $BreitMaison === False;
+
+MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
+   SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[x,y]]/; $BreitMaison === True;
 
 MTD /:
    MakeBoxes[ MTD[x_,y_], TraditionalForm ] :=
@@ -1308,16 +1311,51 @@ Pair[Momentum[pi_,___],Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]..., op
 Pair[Momentum[Polarization[x_,__],___],
      Momentum[Polarization[x_,__],___] ] := -1;
 
+(* TraditionalForm representation of the metric tensor *)
+(* ------------------------------------------------------------------------ *)
 
 Pair /:
    MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a_,d1___],
-(LorentzIndex|ExplicitLorentzIndex)[b_,d2___] ],
+(LorentzIndex|ExplicitLorentzIndex)[a_],
+(LorentzIndex|ExplicitLorentzIndex)[b_] ],
              TraditionalForm
             ] := If[$LorentzIndices===True,
-                    SuperscriptBox["g", Tbox[LorentzIndex[a,d1], LorentzIndex[b,d2]] ],
+                    SuperscriptBox["g", Tbox[LorentzIndex[a], LorentzIndex[b]] ],
+                    SuperscriptBox["g", Tbox[a,b] ]
+                   ]/; $BreitMaison === False;
+
+
+Pair /:
+   MakeBoxes[Pair[
+(LorentzIndex|ExplicitLorentzIndex)[a_],
+(LorentzIndex|ExplicitLorentzIndex)[b_] ],
+             TraditionalForm
+            ] := If[$LorentzIndices===True,
+                    SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[LorentzIndex[a], LorentzIndex[b]] ],
+                    SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[a,b] ]
+                   ]/; $BreitMaison === True;
+
+Pair /:
+   MakeBoxes[Pair[
+(LorentzIndex|ExplicitLorentzIndex)[a_,d_Symbol -4],
+(LorentzIndex|ExplicitLorentzIndex)[b_,d_Symbol -4]],
+             TraditionalForm
+            ] := If[$LorentzIndices===True,
+                    SuperscriptBox[RowBox[{OverscriptBox["g","^"]}], Tbox[LorentzIndex[a, d-4], LorentzIndex[b, d-4]] ],
+                    SuperscriptBox[RowBox[{OverscriptBox["g","^"]}], Tbox[a,b] ]
+                   ];
+
+Pair /:
+   MakeBoxes[Pair[
+(LorentzIndex|ExplicitLorentzIndex)[a_,d_Symbol],
+(LorentzIndex|ExplicitLorentzIndex)[b_,d_Symbol] ],
+             TraditionalForm
+            ] := If[$LorentzIndices===True,
+                    SuperscriptBox["g", Tbox[LorentzIndex[a,d], LorentzIndex[b,d]] ],
                     SuperscriptBox["g", Tbox[a,b] ]
                    ];
+
+
 
 MakeBoxes[Pair[a_,b_]^n_Integer?Positive, TraditionalForm] :=
  RowBox[{SuperscriptBox[Tbox[Pair[a,b]],n]}];
