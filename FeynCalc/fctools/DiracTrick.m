@@ -225,7 +225,7 @@ drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
        OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
 
-(*g^mu g_mu in 4 dimensions*)
+(*g^mu g_mu in 4 and D or D-4 dimensions*)
 dr[b___,DiracGamma[LorentzIndex[c_]],
         DiracGamma[LorentzIndex[c_]],d___] := 4 ds[ b,d ];
 
@@ -233,15 +233,16 @@ dr[b___,DiracGamma[LorentzIndex[c_]],
 dr[b___,DiracGamma[LorentzIndex[c_,di_],di_],
         DiracGamma[LorentzIndex[c_,di_],di_],d___] := di ds[ b,d ];
 
-(*g^mu g_mu, where the first matrix is in D and the second in D-4 dimensions*)
+(*g^mu g_mu in D and D-4 dimensions*)
 dr[b___,DiracGamma[LorentzIndex[c_,di_],di_],
         DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],d___]:=(di-4) ds[ b,d ];
 
-(*g^mu g_mu, where the first matrix is in 4 and the second in D-4 dimensions*)
+(*g^mu g_mu in 4 and D-4 dimensions*)
 dr[___,DiracGamma[LorentzIndex[c_]],
         DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],___] := 0;
 
-(*g^mu g_mu, where the first matrix is in 4 and the second in D dimensions*)
+(*g^mu g_mu in 4 and D or D-4 dimensions*)
+(*needs correction*)
 dr[b___,DiracGamma[LorentzIndex[c_]],
         DiracGamma[LorentzIndex[c_,di_ ],di_ ],d___] := 4 ds[ b,d ];
 
@@ -391,7 +392,8 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
    drCOs[x___] := MemSet[ drCOs[x,$BreitMaison, $Larin], drCO[x] ];    (*drCOsdef*)
 (* Dirac contraction rules *) (*drCOdef*)
 
-(*g^mu g^i1 .... g^in g_mu, where all matrices are in D-4 dimensions*)
+(*g^mu g^i1 .... g^in g_mu, where all matrices are in D-4 dimensions
+  This is evaluated in the same manner as for D dimensions          *)
    drCO[ b___,DiracGamma[LorentzIndex[c_,di_Symbol-4],di_Symbol-4],
          d:DiracGamma[_[_,di_Symbol-4], di_Symbol-4].. ,
          DiracGamma[LorentzIndex[c_,di_Symbol-4],di_Symbol-4],f___
@@ -399,7 +401,10 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
                          d, DiracGamma[LorentzIndex[c,di-4], di-4],
                          f } /. di -> (di + 4)
                      )) /. di -> (di-4);
-(*g^mu ... g^nu g_mu, where g^mu and g_mu are in D-4 dimensions and g^nu is in D dimensions*)
+
+(*g^mu ... g^nu g_mu = -2 g^mu ... g_mu g^nu + 2 g^nu ...
+ where on the LHS g^mu and g_mu are in D-4 dimensions and
+ g^nu is in D dimensions*)
    drCO[ b___,DiracGamma[lv_[c_,di_Symbol-4],di_Symbol-4], w___,
               DiracGamma[ww_[y__],dim___],
               DiracGamma[lv_[c_,di_Symbol-4],di_Symbol-4], z___] :=
@@ -409,14 +414,18 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
              DiracGamma[ww[y],dim],z
         ] + 2 drCO[b, DiracGamma[ww[y],di-4], w,z] )/.drCO->ds;
 
-(*g^mu g^i1 ... g^in g^nu g_mu, where all the matrices (no g^5 here!) are in D dimensions and n is odd*)
+(*g^mu g^i1 ... g^in g^nu g_mu = 2 g^in .... g^i1 g^nu + 2 g^nu g^in .... g^i1,
+where all the matrices (no g^5 here!) are in 4 dimensions and n is od*)
    drCO[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[__]].. ,
          DiracGamma[x_[y__]],DiracGamma[LorentzIndex[c_]],f___ ] :=
        ( 2 ds @@ Join[ {b},Reverse[{d}],{DiracGamma[x[y]],f} ] +
          2 ds[ b,DiracGamma[x[y]],d,f ]
         ) /; OddQ[Length[{d}]];
 
-(*g^mu g^i1 ... g^in g_mu, where g^mu is in D1 dimensions, g_mu in D3 dimensions and g^ii (no g^5 here!) are in thearbitrary dimensions*)
+(*Slash(p) g^i1 ... g^in Slash(p), where the first slash is in D or 4 dimensions,
+  while the second slash and g^ii are in D, D-4 or 4 dimensions.
+  The formula is given in Eq 2.10 of R.
+  Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
    drCO[ b___,DiracGamma[c_, di___],d:DiracGamma[_[__],___].. ,
          DiracGamma[c_,dim___],f___
        ] :=
@@ -429,12 +438,10 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
               ]/;((Length[{d}]>0)&&FreeQ[c,LorentzIndex]&&
                  (!NumberQ[c]) && !MatchQ[{di}, {_Symbol -4}]);
 
-
-(* #################################################################### *)
-(*                             Main35                                 *)
-(* #################################################################### *)
-
-(*g^mu g^i1 ... g^in g_mu, where g^mu and g_mu are in D1 dimensions, while g^ii (no g^5 here!) are in D2 dimensions*)
+(*g^mu g^i1 ... g^in g_mu, where g^mu and g_mu are in D dimensions,
+  while g^ii (no g^5 here!) are in D, D-4 or 4 dimensions. This applies only for n>5
+  The formula is given in Eq 2.9 of R.
+  Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
    drCO[ b___,DiracGamma[LorentzIndex[c_,di_Symbol],di_Symbol],
          d:DiracGamma[_[_,dim___],dim___].. ,
          DiracGamma[LorentzIndex[c_,di_Symbol],di_Symbol],f___
@@ -452,7 +459,8 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
                             ]/.Pair->scev
          ] /;(Length[{d}]>5);
 
-(*g^mu g^nu ...  g_mu where g^mu is in D1 dimensions, g_mu is in D3 dimensions and g^nu is in D2 dimensions*)
+(* g^mu g^nu ...  g_mu  = - g^nu g^mu ... g_mu + 2 eta^mu~nu ... g_mu.
+   This applies only if g^mu and g_mu are in different dimensions. *)
    drCO[ b___,DiracGamma[lv_[c_,dim___],dim___],
               DiracGamma[vl_[x__],dii___],d___,
               DiracGamma[lv_[c_,di___],di___],f___
