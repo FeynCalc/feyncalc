@@ -33,8 +33,8 @@ noint[x___] :=
         Join[IntegerQ /@ {x}, IntegerQ /@
   ({x} /. {SUNIndex -> Identity, ExplicitSUNIndex -> Identity})]];
 
-SUNDeltaContract[expr_] := expr //. sundelta ->
-  SUNDeltaContract /. SUNDeltaContract -> sundelta;
+SUNDeltaContract[expr_] := (expr //. sundelta ->
+  SUNDeltaContract /. SUNDeltaContract -> sundelta)/; !FreeQ[expr,sundelta];
 
 SUNDeltaContract[x_ /; FreeQ[x, SUNIndex] && !IntegerQ[x] &&
                  FreeQ[x, ExplicitSUNIndex],
