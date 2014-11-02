@@ -50,12 +50,13 @@ FVD             := FVD             = MakeContext["CoreObjects","FVD"];
 fourvector      := fourvector      = MakeContext["CoreObjects","FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
 ga              := ga              = MakeContext["CoreObjects","GA"];
-gad             := gad             = MakeContext["CoreObjexts","GAD"];
+gad             := gad             = MakeContext["CoreObjects","GAD"];
 gs              := gs              = MakeContext["CoreObjects","GS"];
 gsd             := gsd             = MakeContext["CoreObjects","GSD"];
 LC              := LC              = MakeContext["CoreObjects","LC"];
 LCD             := LCD             = MakeContext["CoreObjects","LCD"];
 lorentzindex    := lorentzindex    = MakeContext["CoreObjects","LorentzIndex"];
+ExplicitLorentzIndex    := ExplicitLorentzIndex    = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 metrictensor    := metrictensor    = MakeContext["CoreObjects","MetricTensor"];
 levicivita      := levicivita      = MakeContext["LeviCivita"];
 mt              := mt              = MakeContext["CoreObjects","MT"];
@@ -77,6 +78,7 @@ sd            := sd            = MakeContext["CoreObjects","SD"];
 sund            := sund            = MakeContext["CoreObjects","SUND"];
 sundeltacontract:= sundeltacontract= MakeContext["SUNDeltaContract"];
 sunindex        := sunindex        = MakeContext["CoreObjects","SUNIndex"];
+ExplicitSUNIndex    := ExplicitSUNIndex    = MakeContext["CoreObjects","ExplicitSUNIndex"];
 sunn            := sunn            = MakeContext["CoreObjects","SUNN"];
 sunt            := sunt            = MakeContext["CoreObjects","SUNT"];
 SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
@@ -145,7 +147,7 @@ If[ru =!={}, (MomentumCombine[x,LeafCount -> 1000]/. HighEnergyPhysics`FeynCalc`
 
 dirsig[a__] := diracsigma[DOT[a]];
 
-sundback[sunindex[a_], sunindex[b_], sunindex[c_]] := sund[a,b,c];
+sundback[(sunindex|ExplicitSUNIndex)[a_] | a_, (sunindex|ExplicitSUNIndex)[b_] | b_, (sunindex|ExplicitSUNIndex)[c_] | c_] := sund[a,b,c];
 
 SUNFback[sunindex[a_], sunindex[b_], sunindex[c_]] := SUNF[a, b, c];
 SUNFback[a_, b_, c_] := SUNF[a, b, c] /; FreeQ[{a,b,c},sunindex];
@@ -197,7 +199,9 @@ diracback[momentum[a_, n_Symbol], n_Symbol] := gsd[a];
 diracback[5] := ga[5];
 diracback[6] := ga[6];
 diracback[7] := ga[7];
-suntback[sunindex[a_]] := sunt[a];
+diracback[ExplicitLorentzIndex[x_?NumberQ]] := ga[x];
+diracback[x_?NumberQ] := ga[x];
+suntback[(sunindex|ExplicitSUNIndex)[a_]] := sunt[a];
 suntback[a__Symbol] := sunt[a];
 propagatordback[a_,b_] := propagatordenominator[a/.momentum->iDent, b];
 propd[a_, 0] := a /. momentum->iDent;

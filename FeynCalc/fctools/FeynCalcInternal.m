@@ -41,6 +41,7 @@ factor2         := factor2         = MakeContext["Factor2"];
 fourvector      := fourvector      = MakeContext["CoreObjects","FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
 LeviCivita      := LeviCivita      = MakeContext["LeviCivita"];
+ExplicitLorentzIndex    := ExplicitLorentzIndex    = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 lorentzindex    := lorentzindex    = MakeContext["CoreObjects","LorentzIndex"];
 metrictensor    := metrictensor    = MakeContext["CoreObjects","MetricTensor"];
 momentum        := momentum        = MakeContext["CoreObjects","Momentum"];
@@ -67,6 +68,7 @@ sdelta        := sdelta        = MakeContext["CoreObjects","SUNDelta"];
 sund           := sund             = MakeContext["CoreObjects","SUND"];
 sdeltacontract:= sdeltacontract= MakeContext["SUNDeltaContract"];
 sunindex        := sunindex        = MakeContext["CoreObjects","SUNIndex"];
+ExplicitSUNIndex        := ExplicitSUNIndex        = MakeContext["CoreObjects","ExplicitSUNIndex"];
 sunn            := sunn            = MakeContext["CoreObjects","SUNN"];
 sunt            := sunt            = MakeContext["CoreObjects","SUNT"];
 SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
@@ -188,7 +190,7 @@ diracM[x_,y__,z_]:= diracM[DOT[x,y,z]]/; FreeQ[z,Rule];
 diracM[x_ y_Plus,opt_:{}]:= diracM[Expand[x y],opt];
 diracM[x_Plus,opt_:{}]:= diracM[#,opt]& /@ x;
 diracM[DOT[x_,y__],opt_:{}] :=  diracM[#,opt]& /@ DOT[x,y];
-diracM[n_Integer,___]:=diracgamma[n];
+diracM[n_Integer]:=diracgamma[ExplicitLorentzIndex[n]]/; (n=!=5 && n=!=6 && n=!=7);
 diracM[5,opt_:{}]:=diracgamma[5];
 diracM[6,opt_:{}]:=diracgamma[6];
 diracM[7,opt_:{}]:=diracgamma[7];
@@ -268,8 +270,10 @@ sunTint[x__] := (If[!MemberQ[$NonComm, sunt],
 
 (*CHANGE Dec. 97 : inhibit wrapping SUNIndex around integer indices *)
 
-sunT[b_]  := sunT[sunindex[b]] /; FreeQ[b, sunindex] && FreeQ[b, Pattern] &&
+sunT[b_]  := sunT[sunindex[b]] /; freeq2[b, {sunindex,ExplicitSUNIndex}] && FreeQ[b, Pattern] &&
                                   !IntegerQ[b];
+
+sunT[b_?NumberQ]  := sunT[ExplicitSUNIndex[b]];
 
 SetAttributes[setdel, HoldRest];
 setdel[x_, y_] := SetDelayed[x, y];
@@ -341,8 +345,10 @@ ga[7] = diracgamma[7];
 gad[5] = diracgamma[5];
 gad[6] = diracgamma[6];
 gad[7] = diracgamma[7];
-ga[a_]  :=  diracgamma[lorentzindex[a]];
-gad[a_] :=  diracgamma[lorentzindex[a,D],D];
+ga[a_]  :=  diracgamma[lorentzindex[a]]/; !IntegerQ[a];
+gad[a_] :=  diracgamma[lorentzindex[a,D],D]/; !IntegerQ[a];
+ga[a_Integer]  :=  diracgamma[ExplicitLorentzIndex[a]]/; (a=!=5 && a=!=6 && a=!=7);
+gad[a_Integer]  :=  diracgamma[ExplicitLorentzIndex[a,D],D]/; (a=!=5 && a=!=6 && a=!=7);
 
 lc[y__]  := LeviCivita[y,dimension->4];
 HoldPattern[lc[y___][z___]]  := LeviCivita[y,dimension->4][z,dimension->4];

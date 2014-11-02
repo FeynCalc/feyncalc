@@ -588,6 +588,9 @@ x DiracGamma[Momentum[pe, di], dii];
 DiracGamma[x_ LorentzIndex[pe_, di___], dii___] :=
 x DiracGamma[LorentzIndex[pe, di], dii];
 DiracGamma[x_[y_, di___], 4] := DiracGamma[x[y,di]];
+
+DiracGamma[x_Integer] := DiracGamma[ExplicitLorentzIndex[x]]/; (x=!=5 && x=!=6 && x=!=7);
+
 DiracGamma[5, __] := DiracGamma[5];
 DiracGamma[6, __] := DiracGamma[6];
 DiracGamma[7, __] := DiracGamma[7];
@@ -685,7 +688,8 @@ DiracGammaT /: MakeBoxes[DiracGammaT[a_,___], TraditionalForm] :=
                SuperscriptBox[Tbox["(","\[Gamma]", "\[CenterDot]",
                                    a, ")"], "T"] /; Head[a] === Momentum;
 
-DiracMatrix[a_Integer] := DiracGamma[a];
+DiracMatrix[a_Integer, OptionsPattern[]] := DiracGamma[a]/; (a===5 && a===6 && a===7);
+DiracMatrix[a_Integer, OptionsPattern[]] := DiracGamma[ExplicitLorentzIndex[a,OptionValue[Dimension]],OptionValue[Dimension]]/; (a=!=5 && a=!=6 && a=!=7);
 
 (* 12/1-2002. Comment by F.Orellana:
    Don't know why Rolf provided this alternative input method (below).
@@ -701,7 +705,7 @@ DiracMatrix[DOT[a_,b__], OptionsPattern[]] := Map[DiracGamma[LorentzIndex[#,Opti
 
 DiracMatrix[a_, OptionsPattern[]] := (DiracGamma[LorentzIndex[a,
   OptionValue[Dimension]], OptionValue[Dimension]]
-                               ) /; Head[a] =!= Integer;
+                               ) /; !NumberQ[a];
 
    DiracMatrix /:
    MakeBoxes[DiracMatrix[x_], TraditionalForm
@@ -792,6 +796,8 @@ MakeBoxes[Epsilon^(-1),TraditionalForm] :=
 Epsilon /:
    MakeBoxes[Epsilon, TraditionalForm] :=
     TagBox["\[CurlyEpsilon]", TraditionalForm]
+
+ExplicitLorentzIndex[x_, 4] := ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
 
 ExplicitLorentzIndex /:
    MakeBoxes[ ExplicitLorentzIndex[p_, ___], TraditionalForm
