@@ -162,17 +162,12 @@ ampTotal=(ampGluonGhostEval+Nf*ampQuarkLoopEval)//TarcerRecurse
 
 
 prefactor=(I*(Pi)^(2-D/2) (2Pi)^(D-4));
-ampsSing=(ampTotal/.{TBI[x___]:>(-2)/(D-4)*prefactor,TAI[x___]:>-2 MQ^2/(D-4)*prefactor})//
+ampsSing=(ampTotal/.{TBI[x___]:>(-2)/(D-4)*prefactor,TAI[x___]:>-2 MQ^2/(D-4)*prefactor})//FCI//
 ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
 
 
 (* ::Text:: *)
 (*Finally, since self-energy function is usually defined as  I*Pi = Amplitude, to obtain Sigma we need to multiply our result by -I . This gives*)
-
-
-(Pair[LorentzIndex[Lor1], Momentum[p]]*
-    Pair[LorentzIndex[Lor2], Momentum[p]] - Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]]*
-    Pair[Momentum[p], Momentum[p]])*SUNDelta[SUNIndex[Index[Gluon, 1]], SUNIndex[Index[Gluon, 2]]]
 
 
 gluonSelfEnergy=-I*ampsSing

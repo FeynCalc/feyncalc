@@ -131,8 +131,8 @@ Timing[inttable =
 
 
 Timing[result =
-   (Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@ (res1 /.
-      inttable));]
+   FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@ (res1 /.
+      inttable))];]
 
 
 (* ::Text:: *)

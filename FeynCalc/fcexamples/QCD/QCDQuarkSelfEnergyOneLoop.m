@@ -65,7 +65,7 @@ amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 SumOver[__]:>1, SUNT[a_,_,_]:>SUNT[a],MU->M,GaugeXi[g]->GaugeXi}
 
 
-ampsEval=ChangeDimension[amps[[1]],D]//Contract//SUNSimplify//DiracSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse
+ampsEval=ChangeDimension[amps[[1]],D]//Contract//SUNSimplify//DiracSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse//FCI
 
 
 (* ::Text:: *)
