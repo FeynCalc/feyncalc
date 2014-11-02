@@ -85,11 +85,8 @@ SPD             := SPD             = MakeContext["CoreObjects","SPD"];
 SO             := SO             = MakeContext["CoreObjects","SO"];
 SOD             := SOD             = MakeContext["CoreObjects","SOD"];
 
-SetAttributes[su, HoldAll];
 SetAttributes[FeynCalcExternal, HoldFirst];
-su[a_String, b_] := If[CheckContext[a], {MakeContext[a] :> b}, {}];
 iDent[a_,___] := a;
-su[a_String] := If[CheckContext[a], ToExpression[a], sequence[]];
 
  Options[FeynCalcExternal] = {FinalSubstitutions -> {}};
 
@@ -100,32 +97,43 @@ sundeltanoi[y__] := sd@@({y} /. sunindex -> Identity);
 uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
 ru =  Join[
- su["Power2",Power],
- {HighEnergyPhysics`FeynCalc`CoreObjects`Eps :> eps},
- {HighEnergyPhysics`FeynCalc`CoreObjects`SUNF :> SUNFback},
- su["ScalarProduct", scalarmul],
- {HighEnergyPhysics`FeynCalc`CoreObjects`MetricTensor :> metricmul},
  {HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma :> diracback},
- {HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta :> sundeltanoi},
- {HighEnergyPhysics`FeynCalc`CoreObjects`SUND :> sundback},
- su["SUNDeltaContract", sundeltanoi],
- {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> suntback},
- {HighEnergyPhysics`FeynCalc`CoreObjects`Pair :> pairback},
-(* su["PolarizationTensor",poltensorback],*)
  {HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma :> dirsig},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`Eps :> eps},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator :> feynampback},
- {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator :> propagatordback}
+ {HighEnergyPhysics`FeynCalc`CoreObjects`MetricTensor :> metricmul},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`Pair :> pairback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator :> propagatordback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUND :> sundback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta :> sundeltanoi},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNF :> SUNFback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> suntback},
+ {HighEnergyPhysics`FeynCalc`SUNDeltaContract`SUNDeltaContract :> sundeltanoi},
+ {HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct :> scalarmul},
+ {HighEnergyPhysics`qcd`Power2`Power2 :> Power}
            ] /. lorentzindex -> iDent /. sunindex -> iDent ;
 ru = Join[ru, Flatten[{uru}]];
 
 vv = Cases2[x, Join[{},
-    {DiracGamma, DiracSigma, Eps, MetricTensor, FeynAmpDenominator, SUND,
-        SUNF, SUNT, SUNDelta, Pair, Power2, ScalarProduct, Power2, PropagatorDenominator
+    {
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma,
+        HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma,
+        HighEnergyPhysics`FeynCalc`CoreObjects`Eps,
+        HighEnergyPhysics`FeynCalc`CoreObjects`FeynAmpDenominator,
+        HighEnergyPhysics`FeynCalc`CoreObjects`MetricTensor,
+        HighEnergyPhysics`FeynCalc`CoreObjects`Pair,
+        HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator,
+        HighEnergyPhysics`FeynCalc`CoreObjects`SUND,
+        HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta,
+        HighEnergyPhysics`FeynCalc`CoreObjects`SUNF,
+        HighEnergyPhysics`FeynCalc`CoreObjects`SUNT,
+        HighEnergyPhysics`FeynCalc`SUNDeltaContract`SUNDeltaContract,
+        HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct,
+        HighEnergyPhysics`qcd`Power2`Power2
          }] /. sequence -> Sequence
            ];
 
 rv = Map[(# ->  ((MomentumCombine[#,LeafCount -> 1000])/.ru ) )&, vv]//Dispatch;
-
 x /. rv
 (*
 If[ru =!={}, (MomentumCombine[x,LeafCount -> 1000]/. HighEnergyPhysics`FeynCalc`CoreObjects`DiracSigma :> dirsig /.
