@@ -63,6 +63,7 @@ Options[FAPatch] = {
       "DiracMatrix" -> "FADiracMatrix",
       "DiracTrace" -> "FADiracTrace",
       "MetricTensor" -> "FAMetricTensor",
+      "ScalarProduct" -> "FAScalarProduct",
       "ChiralityProjector" -> "FAChiralityProjector",
       "GS" -> "FAGS",
       "InferFormat" -> "tmpInfer",
