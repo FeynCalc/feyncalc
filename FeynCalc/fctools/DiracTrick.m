@@ -54,7 +54,7 @@ DiracTrick[]=1;
 (* RM20120113: added FreeQ, and changed y___ to y__ ..., this fixed
 http://www.feyncalc.org/forum/0677.html
 *)
-DiracTrick[y__ /; FreeQ[{y}, Rule],z_/;Head[z]=!=Rule] :=
+DiracTrick[y__ /; FreeQ[{y}, Rule, 1],z_/;Head[z]=!=Rule] :=
      drS[y, z]/.drS -> ds //.dr->drCOs /.
                        drCO -> ds/.  dr->ds/.dr->DOT(*]*);
 
