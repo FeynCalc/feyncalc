@@ -1257,9 +1257,41 @@ Pair[0,_] := 0;
 Pair[n_Integer x_,y_] := n Pair[x, y];
 Pair[n_ x_Momentum, y_] := n Pair[x, y];
 
-Pair[ lom_[la_,d_Symbol], mol_[pe_]] := Pair[ lom[la], mol[pe] ] /;
-  MemberQ[{LorentzIndex, Momentum}, lom] &&
-     MemberQ[{LorentzIndex, Momentum}, mol] ;
+(* Treatment of four vectors, scalar products and metric tensors,
+   where the different parts are in different dimensions is performed
+   according to the algebra of the BMHV scheme. *)
+(* ------------------------------------------------------------------------ *)
+
+   (* A momentum vector with 4 components and the Lorentz index in
+      D dimensions or vice versa is equivalent to a 4-dimensional
+      momentum vector. The same goes for a metric tensor where
+      one index is in D and the other is in 4 dimensions and for a
+      scalar product where one momentum lives in D and the other
+      in 4 dimensions. *)
+
+Pair[(a : LorentzIndex | Momentum)[x_, _Symbol],
+    (b : LorentzIndex | Momentum)[y_]] := Pair[a[x], b[y]];
+
+   (* A momentum vector with 4 components and the Lorentz index in
+      D-4 dimensions or vice versa is zero. The same goes
+      for a metric tensor where one index is in 4 and the other
+      in D-4 dimensions and for a scalar product where one momentum
+      lives in 4 and the other in D-4 dimensions. *)
+
+Pair[(LorentzIndex | Momentum)[_, _Symbol-4],
+    (LorentzIndex | Momentum)[_]] := 0;
+
+    (* A momentum vector with D components and the Lorentz index in
+      D-4 dimensions or vice versa is equivalent to a D-4-dimensional
+      momentum vector. The same goes for a metric tensor where one
+      index is in D and the other in D-4 dimensions and for a scalar
+      product where one momentum lives in D and the other in D-4
+      dimensions. *)
+
+Pair[(a : LorentzIndex | Momentum)[x_, dim_Symbol],
+    (b : LorentzIndex | Momentum)[y_, dim_Symbol-4]] := Pair[a[x, dim-4], b[y, dim-4]];
+
+
 
 Pair[Momentum[x_, ___],Momentum[Polarization[x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]] := 0/; OptionValue[Polarization,Transversality];
 Pair[Momentum[x_,___],Momentum[Polarization[_?NumberQ x_, y:Except[_?OptionQ]..., OptionsPattern[Polarization]],___]
