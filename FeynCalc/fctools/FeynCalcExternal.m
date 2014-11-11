@@ -61,6 +61,7 @@ metrictensor    := metrictensor    = MakeContext["CoreObjects","MetricTensor"];
 levicivita      := levicivita      = MakeContext["LeviCivita"];
 mt              := mt              = MakeContext["CoreObjects","MT"];
 mtd             := mtd             = MakeContext["CoreObjects","MTD"];
+mte             := mte             = MakeContext["CoreObjects","MTE"];
 momentum        := momentum        = MakeContext["CoreObjects","Momentum"];
 momentumexpand  := momentumexpand  = MakeContext["MomentumExpand"];
 MomentumCombine := MomentumCombine = MakeContext["MomentumCombine"];
@@ -169,7 +170,8 @@ scalarmul[a_, b_,dim___] := scalarproduct[a,b,dim];
 
 pairback[lorentzindex[a_], lorentzindex[b_]] := mt[a,b];
 pairback[lorentzindex[a_,D], lorentzindex[b_,D]] := mtd[a,b];
-pairback[lorentzindex[a_,d_], lorentzindex[b_,d_]] /;d=!=D := metrictensor[a,b,dimension->d];
+pairback[lorentzindex[a_,D-4], lorentzindex[b_,D-4]] := mte[a,b];
+pairback[lorentzindex[a_,d_], lorentzindex[b_,d_]] /;(d=!=D && d=!= D-4) := metrictensor[a,b,dimension->d];
 (*
  metrictensor[a, b];
 *)

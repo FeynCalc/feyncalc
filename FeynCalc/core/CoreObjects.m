@@ -260,6 +260,8 @@ MT::"usage"= "MT[mu, nu] is the metric tensor in 4 dimensions.";
 
 MTD::"usage"= "MTD[mu, nu] is the metric tensor in D dimensions.";
 
+MTE::"usage"= "MTE[mu, nu] is the metric tensor in D-4 dimensions.";
+
 NegativeInteger::"usage" =  "NegativeInteger is a data type.
 E.g. DataType[n, NegativeInteger] can be set to True.";
 
@@ -1235,6 +1237,9 @@ MT[Momentum[a_,D-4], Momentum[b_,D-4]] := SPE[a,b];
 
 MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
    SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[x,y]];
+
+MTE /: MakeBoxes[ MTE[x_,y__], TraditionalForm ] :=
+   SuperscriptBox[RowBox[{OverscriptBox["g", "^"]}], Tbox[x,y]];
 
 MTD /:
    MakeBoxes[ MTD[x_,y_], TraditionalForm ] :=

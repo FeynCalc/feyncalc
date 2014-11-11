@@ -125,6 +125,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`LCD :> lcd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`MT :> mt},
  {HighEnergyPhysics`FeynCalc`CoreObjects`MTD :> mtd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`MTE :> mte},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GA :> ga},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GAD :> gad},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GS :> gs},
@@ -338,6 +339,7 @@ fvd[a_,b_] := pair[momentum[a, D], lorentzindex[b,D]];
 fv[a_,b_] := pair[momentum[a], lorentzindex[b]];
 mt[a_,b_] := pair[lorentzindex[a], lorentzindex[b]];
 mtd[a_,b_] := pair[lorentzindex[a, D], lorentzindex[b, D]];
+mte[a_,b_] := pair[lorentzindex[a, D-4], lorentzindex[b, D-4]];
 
 gs[a_]  :=  diracgamma[momentum[a]];
 gsd[a_] :=  diracgamma[momentum[a,D],D];
