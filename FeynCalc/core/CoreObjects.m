@@ -203,6 +203,9 @@ GS[p,q, ...] is equivalent to GS[p].GS[q]. ...";
 GSD::"usage"=
 "GSD[p] is transformed into DiracSlash[p,Dimension->D] by FeynCalcInternal.";
 
+GSE::"usage"=
+"GSE[p] is transformed into DiracSlash[p,Dimension->D-4] by FeynCalcInternal.";
+
 Gstrong::"usage" =
 "Gstrong denotes the strong coupling constant.";
 
@@ -492,6 +495,7 @@ DeclareNonCommutative[GAD];
 DeclareNonCommutative[GAE];
 DeclareNonCommutative[GS];
 DeclareNonCommutative[GSD];
+DeclareNonCommutative[GSE];
 DeclareNonCommutative[LeftPartialD];
 DeclareNonCommutative[LeftRightPartialD];
 DeclareNonCommutative[LeftRightPartialD2];
@@ -1068,11 +1072,22 @@ GS/:
 GSD[DOT[x_,y__]] := Map[GSD, DOT[x,y]];
 GSD[x_, y__] := DOT @@ Map[GSD, {x, y}];
 
+GSE[DOT[x_,y__]] := Map[GSE, DOT[x,y]];
+GSE[x_, y__] := DOT @@ Map[GSE, {x, y}];
+
 GSD/:
   MakeBoxes[ GSD[a_/;FreeQ[a,Plus]],
              TraditionalForm ] := Tbox["\[Gamma]", "\[CenterDot]", a];
 GSD/:
   MakeBoxes[ GSD[a_/;!FreeQ[a,Plus]],
+             TraditionalForm ] :=
+  Tbox["\[Gamma]", "\[CenterDot]", "(",a,")"];
+
+GSE/:
+  MakeBoxes[ GSE[a_/;FreeQ[a,Plus]],
+             TraditionalForm ] := Tbox["\[Gamma]", "\[CenterDot]", a];
+GSE/:
+  MakeBoxes[ GSE[a_/;!FreeQ[a,Plus]],
              TraditionalForm ] :=
   Tbox["\[Gamma]", "\[CenterDot]", "(",a,")"];
 
@@ -1085,25 +1100,11 @@ GSD/:
              TraditionalForm
            ] := Tbox@@Map[gsg, {a,b}]
 
-GSD[DOT[x_,y__]] := Map[GSD, DOT[x,y]];
-GSD[x_, y__] := DOT @@ Map[GSD, {x, y}];
-
-GSD/:
-  MakeBoxes[ GSD[a_/;FreeQ[a,Plus]],
-             TraditionalForm ] := Tbox["\[Gamma]", "\[CenterDot]", a];
-GSD/:
-  MakeBoxes[ GSD[a_/;!FreeQ[a,Plus]],
-             TraditionalForm ] :=
-  Tbox["\[Gamma]", "\[CenterDot]", "(",a,")"];
-
-gsg[a_]:=If[FreeQ[y, Plus], Tbox["\[Gamma]", a],
-                            Tbox["\[Gamma]", "(",a,")"]
-           ];
-
-GSD/:
-  MakeBoxes[ GSD[a_, b__],
+GSE/:
+  MakeBoxes[ GSE[a_, b__],
              TraditionalForm
            ] := Tbox@@Map[gsg, {a,b}]
+
 
  Gstrong /:
    MakeBoxes[Gstrong, TraditionalForm] :=

@@ -555,7 +555,7 @@ $Color       = False;
 $Covariant = False;
 
 $FCS = {"FAD", "FV", "FVD", "FVE", "GA","GAD", "GAE" , "GA5", "GS",
-          "GSD", "LC", "LCD", "MT","MTD","MTE", "SD", "SOD",
+          "GSD", "GSE", "LC", "LCD", "MT","MTD","MTE", "SD", "SOD",
           "SP", "SPC", "SPD", "SPE", "SPL", "FCI", "FCE", "FI",
           "FC", "GGV", "GP", "QGV", "QO", "FDr", "CDr"
          };
@@ -1076,12 +1076,12 @@ $LeviCivitaSign=-1;
 If[$VersionNumber>3.4,
    Unprotect@@{ToExpression["Tr"]};
    Tr[x__]:=HighEnergyPhysics`fctools`TR`TR[x] /;
-       !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | Pair];
+       !FreeQ[{x}, DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GAE | GS | GSD | GSE | Pair];
    Tr::usage="FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
    generalized trace, combining terms with f instead of Plus. Tr[list, f, n]
    goes down to level n in list. \n \n
 Tr[ expression ] calculates the DiracTrace, i.e.,  TR[ expression ],
-if any of DiracGamma, DiracSlash, GA, GAD, GAE, GS or GSD are present in expression.";
+if any of DiracGamma, DiracSlash, GA, GAD, GAE, GS, GSD or GAE are present in expression.";
 
 Tr/:Options[Tr]:=Options[HighEnergyPhysics`fctools`TR`TR];
 

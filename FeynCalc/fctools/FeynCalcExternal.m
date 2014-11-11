@@ -55,6 +55,7 @@ gad             := gad             = MakeContext["CoreObjects","GAD"];
 gae             := gae             = MakeContext["CoreObjects","GAE"];
 gs              := gs              = MakeContext["CoreObjects","GS"];
 gsd             := gsd             = MakeContext["CoreObjects","GSD"];
+gse             := gse             = MakeContext["CoreObjects","GSE"];
 LC              := LC              = MakeContext["CoreObjects","LC"];
 LCD             := LCD             = MakeContext["CoreObjects","LCD"];
 lorentzindex    := lorentzindex    = MakeContext["CoreObjects","LorentzIndex"];
@@ -204,6 +205,7 @@ diracback[lm_[a_,n_/;(n=!=D && n=!=D-4)],en___] :=
                 (*Corrected 19/9-2000. F.Orellana*)(*DiracGamma*)diracgamma[lm[a,n],en];
 diracback[momentum[a_]] := gs[a];
 diracback[momentum[a_, n_Symbol], n_Symbol] := gsd[a];
+diracback[momentum[a_, n_Symbol-4], n_Symbol-4] := gse[a];
 diracback[5] := ga[5];
 diracback[6] := ga[6];
 diracback[7] := ga[7];

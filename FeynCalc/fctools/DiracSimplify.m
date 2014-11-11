@@ -83,8 +83,10 @@ Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
 GA = MakeContext["CoreObjects","GA"];
 GAD = MakeContext["CoreObjects","GAD"];
+GAE = MakeContext["CoreObjects","GAE"];
 GS = MakeContext["CoreObjects","GS"];
 GSD = MakeContext["CoreObjects","GSD"];
+GSE = MakeContext["CoreObjects","GSE"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
@@ -160,7 +162,7 @@ DiracSimplify[a_, opt___Rule] := (a /.
           NOT Bjorken&Drell convention*)
         DOT[xx___,y_Spinor,y_Spinor,z___] :> 2 y[[2]] rdot[xx,z] /. rdot[]:>Sequence[] /. rdot -> DOT(**))/;
          FreeQ2[a, {DiracGamma,DiracSlash,DiracMatrix,
-                    GA[__],GS[__],GAD[__],GSD[__]}];
+                    GA[__],GS[__],GAD[__],GAE[__],GSD[__],GSE[__]}];
 
 (* If Expanding is set to False, just use the Dirac equation and apply DotSimplify.
    If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.
