@@ -977,17 +977,17 @@ FourVector /:
 FV[p_ /; Head[p]=!=Momentum, Momentum[b_]]:= SP[p,b];
 FV[Momentum[p_], Momentum[b_]]:= SP[p,b];
 
-FV /: MakeBoxes[FV[a_Subscripted, b_], TraditionalForm] :=
-             SubsuperscriptBox[Tbox[a[[1,0]]], Tbox@@a[[1]], Tbox[b]];
-
 FV /: MakeBoxes[FV[a_Subscript, b_], TraditionalForm] :=
-             SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]];
+             SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]]/; $BreitMaison===False;
 
 FV /: MakeBoxes[FV[a_, b_], TraditionalForm] :=
-            SuperscriptBox[Tbox[a], Tbox[b]];
+            SuperscriptBox[Tbox[a], Tbox[b]]/; $BreitMaison===False;
 
-FVD /: MakeBoxes[FVD[a_Subscripted, b_], TraditionalForm] :=
-             SubsuperscriptBox[Tbox[a[[1,0]]], Tbox@@a[[1]], Tbox[b]];
+FV /: MakeBoxes[FV[a_Subscript, b_], TraditionalForm] :=
+             SubsuperscriptBox[RowBox[{OverscriptBox[Tbox[a[[1]]], "_"]}], Tbox@@Rest[a], Tbox[b]]/; $BreitMaison===True;
+
+FV /: MakeBoxes[FV[a_, b_], TraditionalForm] :=
+            SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "_"]}], Tbox[b]]/; $BreitMaison===True;
 
 FVD /: MakeBoxes[FVD[a_Subscript, b_], TraditionalForm] :=
              SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]];
@@ -1450,57 +1450,209 @@ Pair /:
                         }
                        ];
 
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
-              Momentum[
-                   b_Subscripted, ___]
-                 ], TraditionalForm
-            ] := SubsuperscriptBox[Tbox[b[[1,0]]],
-                                   Tbox@@b[[1]],
-                                    Tbox[LorentzIndex[a]]];
+(* TraditionalForm representation of the momentum vectors *)
+(* ------------------------------------------------------------------------ *)
+
+(* Subscripted momenta*)
 
 Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
+      ExplicitLorentzIndex)[a_],
               Momentum[
-                   b_Subscript, ___]
+                   b_Subscript]
                  ], TraditionalForm
-            ] := SubsuperscriptBox[Tbox[b[[1]]], Tbox@@Rest[b],
-                                    Tbox[LorentzIndex[a]]];
+            ] := SubsuperscriptBox[Tbox[b[[1]]],
+                                   Tbox[b[[2]]],
+                                    Tbox[LorentzIndex[a]]]/; $BreitMaison===False;
 
 Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
-              Momentum[b_,di___]
+      ExplicitLorentzIndex)[a_],
+              Momentum[
+                   b_Subscript]
+                 ], TraditionalForm
+            ] := SubsuperscriptBox[
+            RowBox[{OverscriptBox[Tbox[b[[1]]], "_"]}],
+                   Tbox[b[[2]]],
+                   Tbox[LorentzIndex[a]]]/; $BreitMaison===True;
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_,dim_Symbol-4],
+              Momentum[
+                   b_Subscript, dim_Symbol-4]
+                 ], TraditionalForm
+            ] := SubsuperscriptBox[
+            RowBox[{OverscriptBox[Tbox[b[[1]]], "^"]}],
+                   Tbox[b[[2]]],
+                   Tbox[LorentzIndex[a]]];
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_, dim_Symbol],
+              Momentum[
+                   b_Subscript, dim_Symbol]
+                 ], TraditionalForm
+            ] := SubsuperscriptBox[
+                  Tbox[b[[1]]],
+                   Tbox[b[[2]]],
+                   Tbox[LorentzIndex[a]]];
+
+(* Normal momenta*)
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_],
+              Momentum[b:Except[_Subscript | _Superscript]]
                  ],
              TraditionalForm
             ] := SuperscriptBox[
-                    Tbox[Momentum[b,di] ], Tbox[LorentzIndex[a]]
+                    Tbox[Momentum[b] ], Tbox[LorentzIndex[a]]
+                   ]/;Head[b]=!=Plus && $BreitMaison===False;
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_],
+              Momentum[b:Except[_Subscript | _Superscript]]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                  RowBox[{OverscriptBox[Tbox[Momentum[b]], "_"]}],
+                  Tbox[LorentzIndex[a]]
+                   ]/;Head[b]=!=Plus && $BreitMaison===True;
+
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_,dim_Symbol-4],
+              Momentum[b:Except[_Subscript | _Superscript],dim_Symbol-4]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                  RowBox[{OverscriptBox[Tbox[Momentum[b,dim-4]], "^"]}],
+                    Tbox[LorentzIndex[a]]
                    ]/;Head[b]=!=Plus;
 
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
-              Momentum[b_Plus,di___]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                    Tbox[ "(",Momentum[b,di], ")"], Tbox[LorentzIndex[a]] ];
 
 Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
-              Momentum[b_, di___] +c_
+      ExplicitLorentzIndex)[a_,dim_Symbol],
+              Momentum[b:Except[_Subscript | _Superscript],dim_Symbol]
                  ],
              TraditionalForm
             ] := SuperscriptBox[
-                    Tbox[ "(",Momentum[b+c,di], ")"], Tbox[LorentzIndex[a]] ];
+                    Tbox[Momentum[b,dim] ], Tbox[LorentzIndex[a]]
+                   ]/;Head[b]=!=Plus;
+
+(* Sums of momenta*)
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_],
+              Momentum[b_Plus]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    Tbox["(",Momentum[b], ")"],
+                    Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}] && $BreitMaison===False;
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_],
+              Momentum[b_Plus]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+					RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[b]]],
+                  	{ToBoxes[")"]}]],
+                    Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}] && $BreitMaison===True;
+
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_,dim_Symbol-4],
+              Momentum[b_Plus,dim_Symbol-4]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                  RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  OverscriptBox[TBox[#], "^"]} &, List @@ MomentumExpand[Momentum[b,dim-4]]],
+                  {ToBoxes[")"]}]],
+                  Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}];
+
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_,dim_Symbol],
+              Momentum[b_Plus,dim_Symbol]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    Tbox[ "(",Momentum[b,dim], ")"],
+                    Tbox[LorentzIndex[a]] ];/ FreeQ2[{b},{Subscript,Superscript}];
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_],
+              Momentum[b:Except[_Subscript | _Superscript]] +c:Except[_Subscript | _Superscript]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    Tbox[ "(",Momentum[b+c], ")"], Tbox[LorentzIndex[a]] ]/; $BreitMaison===False;
+
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_],
+              Momentum[b:Except[_Subscript | _Superscript]] +c:Except[_Subscript | _Superscript]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[b+c]]],
+                  	{ToBoxes[")"]}]],
+                    Tbox[LorentzIndex[a]] ]/; $BreitMaison===True;
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_,dim_Symbol-4],
+              Momentum[b:Except[_Subscript | _Superscript],dim_Symbol-4] +c:Except[_Subscript | _Superscript]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+
+            	  	RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[TBox[#], "^"]} &, List @@ MomentumExpand[Momentum[b+c,dim-4]]],
+                  	{ToBoxes[")"]}]],
+                    Tbox[LorentzIndex[a]] ];
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[a_,dim_Symbol],
+              Momentum[b:Except[_Subscript | _Superscript], dim_Symbol] +c:Except[_Subscript | _Superscript]
+                 ],
+             TraditionalForm
+            ] := SuperscriptBox[
+                    Tbox[ "(",Momentum[b+c,dim], ")"], Tbox[LorentzIndex[a]] ];
+
+(* ------------------------------------------------------------------------ *)
 
 MakeBoxes[Pair[Momentum[a_,___],
                Momentum[a_,___]
