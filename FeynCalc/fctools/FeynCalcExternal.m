@@ -52,6 +52,7 @@ fourvector      := fourvector      = MakeContext["CoreObjects","FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
 ga              := ga              = MakeContext["CoreObjects","GA"];
 gad             := gad             = MakeContext["CoreObjects","GAD"];
+gae             := gae             = MakeContext["CoreObjects","GAE"];
 gs              := gs              = MakeContext["CoreObjects","GS"];
 gsd             := gsd             = MakeContext["CoreObjects","GSD"];
 LC              := LC              = MakeContext["CoreObjects","LC"];
@@ -198,7 +199,8 @@ pairback[momentum[a_], momentum[b_]] := scalarproduct[a, b];
 *)
 diracback[lorentzindex[a_]] := ga[a];
 diracback[lorentzindex[a_,D],D] := gad[a];
-diracback[lm_[a_,n_/;n=!=D],en___] :=
+diracback[lorentzindex[a_,D-4],D-4] := gae[a];
+diracback[lm_[a_,n_/;(n=!=D && n=!=D-4)],en___] :=
                 (*Corrected 19/9-2000. F.Orellana*)(*DiracGamma*)diracgamma[lm[a,n],en];
 diracback[momentum[a_]] := gs[a];
 diracback[momentum[a_, n_Symbol], n_Symbol] := gsd[a];

@@ -15,6 +15,8 @@ Copyright (C) 2014 Vladyslav Shtabovenko
 
 fcstFeynCalcExternal = {
 	{"fcstFeynCalcExternal-ID1", "FCE[DiracGamma[LorentzIndex[mu]]]", "GA[mu]"},
+	{"fcstFeynCalcExternal-ID1.1", "FCE[DiracGamma[LorentzIndex[mu,D],D]]", "GAD[mu]"},
+	{"fcstFeynCalcExternal-ID1.2", "FCE[DiracGamma[LorentzIndex[mu,D-4],D-4]]", "GAE[mu]"},
 	{"fcstFeynCalcExternal-ID2", "FCE[DiracGamma[LM[mu, V], D]]", "DiracGamma[LM[mu, V], D]"},
 	{"fcstFeynCalcExternal-ID3", "FCE[DiracGamma[Momentum[p]]]", "GS[p]"},
 	{"fcstFeynCalcExternal-ID4", "FCE[DiracGamma[Momentum[p, D], D]]", "GSD[p]"},
@@ -90,6 +92,8 @@ fcstFeynCalcExternal = {
 
 fcstFeynCalcExternalDouble = {
 	{"fcstFeynCalcExternalDouble-ID1", "FCE[FCE[DiracGamma[LorentzIndex[mu]]]]", "GA[mu]"},
+	{"fcstFeynCalcExternalDouble-ID1.1", "FCE[FCE[DiracGamma[LorentzIndex[mu,D],D]]]", "GAD[mu]"},
+	{"fcstFeynCalcExternalDouble-ID1.2", "FCE[FCE[DiracGamma[LorentzIndex[mu,D-4],D-4]]]", "GAE[mu]"},
 	{"fcstFeynCalcExternalDouble-ID2", "FCE[FCE[DiracGamma[LM[mu, V], D]]]", "DiracGamma[LM[mu, V], D]"},
 	{"fcstFeynCalcExternalDouble-ID3", "FCE[FCE[DiracGamma[Momentum[p]]]]", "GS[p]"},
 	{"fcstFeynCalcExternalDouble-ID4", "FCE[FCE[DiracGamma[Momentum[p, D], D]]]", "GSD[p]"},
@@ -166,6 +170,8 @@ fcstFeynCalcExternalDouble = {
 
 fcstFeynCalcExternalTriple = {
 	{"fcstFeynCalcExternalTriple-ID1", "FCE[FCI[FCE[DiracGamma[LorentzIndex[mu]]]]]", "GA[mu]"},
+	{"fcstFeynCalcExternalTriple-ID1.1", "FCE[FCI[FCE[DiracGamma[LorentzIndex[mu,D],D]]]]", "GAD[mu]"},
+	{"fcstFeynCalcExternalTriple-ID1.2", "FCE[FCI[FCE[DiracGamma[LorentzIndex[mu,D-4],D-4]]]]", "GAE[mu]"},
 	{"fcstFeynCalcExternalTriple-ID2", "FCE[FCI[FCE[DiracGamma[LM[mu, V], D]]]]", "DiracGamma[LM[mu, V], D]"},
 	{"fcstFeynCalcExternalTriple-ID3", "FCE[FCI[FCE[DiracGamma[Momentum[p]]]]]", "GS[p]"},
 	{"fcstFeynCalcExternalTriple-ID4", "FCE[FCI[FCE[DiracGamma[Momentum[p, D], D]]]]", "GSD[p]"},

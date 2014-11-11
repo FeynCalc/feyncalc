@@ -180,6 +180,10 @@ GAD::"usage"=
 "GAD[mu] can be used as input for a D-dimensional gamma_mu and is
 transformed into DiracMatrix[mu, Dimension->D] by FeynCalcInternal.";
 
+GAE::"usage"=
+"GAE[mu] can be used as input for a D-4-dimensional gamma_mu and is
+transformed into DiracMatrix[mu, Dimension->D-4] by FeynCalcInternal.";
+
 GaugeField::"usage" =
 "GaugeField is a name of a gauge field.";
 
@@ -485,6 +489,7 @@ DeclareNonCommutative[DiracSpinor];
 DeclareNonCommutative[GA];
 DeclareNonCommutative[GA5];
 DeclareNonCommutative[GAD];
+DeclareNonCommutative[GAE];
 DeclareNonCommutative[GS];
 DeclareNonCommutative[GSD];
 DeclareNonCommutative[LeftPartialD];
@@ -1015,11 +1020,21 @@ GA5 = DiracGamma[5];
 GAD[DOT[x_,y__]] := Map[GAD, DOT[x,y]];
 GAD[x_, y__] := DOT @@ Map[GAD,{x,y}];
 
+GAE[DOT[x_,y__]] := Map[GAE, DOT[x,y]];
+GAE[x_, y__] := DOT @@ Map[GAE,{x,y}];
+
 GAD /:
   MakeBoxes[ GAD[x_], TraditionalForm ] := If[$Covariant,
              SubscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]],
              SuperscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]]
                                              ];
+GAE /:
+  MakeBoxes[ GAE[x_], TraditionalForm ] := If[$Covariant,
+             SubscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]],
+             SuperscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]]
+                                             ];
+
+
 GaugeField /: MakeBoxes[GaugeField, TraditionalForm] := "A";
 
 GaugeXi /:

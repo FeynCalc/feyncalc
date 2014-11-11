@@ -130,6 +130,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`MTE :> mte},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GA :> ga},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GAD :> gad},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`GAE :> gae},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GS :> gs},
  {HighEnergyPhysics`FeynCalc`CoreObjects`GSD :> gsd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SP :> sp},
@@ -355,8 +356,10 @@ gad[6] = diracgamma[6];
 gad[7] = diracgamma[7];
 ga[a_]  :=  diracgamma[lorentzindex[a]]/; !IntegerQ[a];
 gad[a_] :=  diracgamma[lorentzindex[a,D],D]/; !IntegerQ[a];
+gae[a_] :=  diracgamma[lorentzindex[a,D-4],D-4]/; !IntegerQ[a];
 ga[a_Integer]  :=  diracgamma[ExplicitLorentzIndex[a]]/; (a=!=5 && a=!=6 && a=!=7);
 gad[a_Integer]  :=  diracgamma[ExplicitLorentzIndex[a,D],D]/; (a=!=5 && a=!=6 && a=!=7);
+gae[a_Integer]  :=  diracgamma[ExplicitLorentzIndex[a,D-4],D-4]/; (a=!=5 && a=!=6 && a=!=7);
 
 lc[y__]  := LeviCivita[y,dimension->4];
 HoldPattern[lc[y___][z___]]  := LeviCivita[y,dimension->4][z,dimension->4];
