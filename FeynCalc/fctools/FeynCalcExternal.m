@@ -84,6 +84,7 @@ sunt            := sunt            = MakeContext["CoreObjects","SUNT"];
 SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
 SP              := SP              = MakeContext["CoreObjects","SP"];
 SPD             := SPD             = MakeContext["CoreObjects","SPD"];
+SPE             := SPE             = MakeContext["CoreObjects","SPE"];
 SO             := SO             = MakeContext["CoreObjects","SO"];
 SOD             := SOD             = MakeContext["CoreObjects","SOD"];
 
@@ -186,6 +187,7 @@ pairback[momentum[b_, D], momentum[OPEDelta, D]] := SOD[b];
 pairback[momentum[b_, d_], momentum[OPEDelta, d_]] /;d=!=D := pair[momentum[OPEDelta,d], momentum[b,d]];
 pairback[momentum[a_], momentum[b_]] := SP[a, b];
 pairback[momentum[a_, D], momentum[b_, D]] := SPD[a, b];
+pairback[momentum[a_, D-4], momentum[b_, D-4]] := SPE[a, b];
 pairback[momentum[a_, d_], momentum[b_, d_]] /;d=!=D := scalarproduct[a, b, dimension -> d];
 (*
 pairback[momentum[a_], momentum[b_]] := scalarproduct[a, b];

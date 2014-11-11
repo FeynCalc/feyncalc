@@ -63,6 +63,7 @@ FVD := FVD = MakeContext["CoreObjects","FVD"];
 FV := FV = MakeContext["CoreObjects","FV"];
 SP             := SP             = MakeContext["CoreObjects","SP"];
 SPD             := SPD             = MakeContext["CoreObjects","SPD"];
+SPE             := SPE             = MakeContext["CoreObjects","SPE"];
 sd            := sd            = MakeContext["CoreObjects","SD"];
 sdelta        := sdelta        = MakeContext["CoreObjects","SUNDelta"];
 sund           := sund             = MakeContext["CoreObjects","SUND"];
@@ -130,6 +131,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`GSD :> gsd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SP :> sp},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SPD :> spd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SPE :> spe},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SO :> so},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SOD :> sod},
  {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator :> propagatorD},
@@ -328,6 +330,7 @@ fadint2[b__List] :=
 
 sp[a_,b_] := pair[momentum[a], momentum[b]];
 spd[a_,b_] := pair[momentum[a, D], momentum[b,D]];
+spe[a_,b_] := pair[momentum[a, D-4], momentum[b,D-4]];
 so[a_] := pair[momentum[a], momentum[OPEDelta]];
 sod[a_] := pair[momentum[a,D], momentum[OPEDelta,D]];
 

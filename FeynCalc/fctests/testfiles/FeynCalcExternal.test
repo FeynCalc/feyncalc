@@ -56,7 +56,7 @@ fcstFeynCalcExternal = {
 	"Pair[Momentum[OPEDelta, -4 + D], Momentum[p, -4 + D]]"},
 	{"fcstFeynCalcExternal-ID39", "FCE[Pair[Momentum[k], Momentum[p]]]", "SP[k, p]"},
 	{"fcstFeynCalcExternal-ID40", "FCE[Pair[Momentum[k, D], Momentum[p, D]]]", "SPD[k, p]"},
-	{"fcstFeynCalcExternal-ID41", "FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]", "Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]"},
+	{"fcstFeynCalcExternal-ID41", "FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]", "SPE[k,p]"},
 	{"fcstFeynCalcExternal-ID42", "FCE[PropagatorDenominator[Momentum[q], m]]", "PropagatorDenominator[q, m]"},
 	{"fcstFeynCalcExternal-ID43", "FCE[SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]]", "SUND[a, b, c]"},
 	{"fcstFeynCalcExternal-ID44", "FCE[SUNDelta[a, b]]", "SD[a, b]"},
@@ -67,8 +67,7 @@ fcstFeynCalcExternal = {
 	{"fcstFeynCalcExternal-ID49", "FCE[SUNT[a]]", "SUNT[a]"},
 	{"fcstFeynCalcExternal-ID50", "FCE[SUNDeltaContract[SUNIndex[a], SUNIndex[b]]]", "SD[a, b]"},
 	{"fcstFeynCalcExternal-ID51", "FCE[SUNDeltaContract[SUNIndex[a], SUNIndex[b]]]", "SD[a, b]"},
-	{"fcstFeynCalcExternal-ID52", "FCE[Pair[Momentum[a, D], Momentum[b, D]]]", "SPD[a, b]"},
-	{"fcstFeynCalcExternal-ID53", "FCE[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]]", "Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]"},
+	{"fcstFeynCalcExternal-ID53", "FCE[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]]", "SPE[a, b]"},
 	{"fcstFeynCalcExternal-ID54", "FCE[Power2[x, y]]", "x^y"}
 };
 
@@ -116,7 +115,7 @@ fcstFeynCalcExternalDouble = {
 	"Pair[Momentum[OPEDelta, -4 + D], Momentum[p, -4 + D]]"},
 	{"fcstFeynCalcExternalDouble-ID39", "FCE[FCE[Pair[Momentum[k], Momentum[p]]]]", "SP[k, p]"},
 	{"fcstFeynCalcExternalDouble-ID40", "FCE[FCE[Pair[Momentum[k, D], Momentum[p, D]]]]", "SPD[k, p]"},
-	{"fcstFeynCalcExternalDouble-ID41", "FCE[FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]]", "Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]"},
+	{"fcstFeynCalcExternalDouble-ID41", "FCE[FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]]", "SPE[k,p]"},
 	{"fcstFeynCalcExternalDouble-ID42", "FCE[FCE[PropagatorDenominator[Momentum[q], m]]]", "PropagatorDenominator[q, m]"},
 	{"fcstFeynCalcExternalDouble-ID43", "FCE[FCE[SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]]]", "SUND[a, b, c]"},
 	{"fcstFeynCalcExternalDouble-ID44", "FCE[FCE[SUNDelta[a, b]]]", "SD[a, b]"},
@@ -127,8 +126,7 @@ fcstFeynCalcExternalDouble = {
 	{"fcstFeynCalcExternalDouble-ID49", "FCE[FCE[SUNT[a]]]", "SUNT[a]"},
 	{"fcstFeynCalcExternalDouble-ID50", "FCE[FCE[SUNDeltaContract[SUNIndex[a], SUNIndex[b]]]]", "SD[a, b]"},
 	{"fcstFeynCalcExternalDouble-ID51", "FCE[FCE[SUNDeltaContract[SUNIndex[a], SUNIndex[b]]]]", "SD[a, b]"},
-	{"fcstFeynCalcExternalDouble-ID52", "FCE[FCE[Pair[Momentum[a, D], Momentum[b, D]]]]", "SPD[a, b]"},
-	{"fcstFeynCalcExternalDouble-ID53", "FCE[FCE[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]]]", "Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]"},
+	{"fcstFeynCalcExternalDouble-ID53", "FCE[FCE[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]]]", "SPE[a,b]"},
 	{"fcstFeynCalcExternalDouble-ID54", "FCE[FCE[Power2[x, y]]]", "x^y"}
 };
 
@@ -176,7 +174,7 @@ fcstFeynCalcExternalTriple = {
 	"Pair[Momentum[OPEDelta, -4 + D], Momentum[p, -4 + D]]"},
 	{"fcstFeynCalcExternalTriple-ID39", "FCE[FCI[FCE[Pair[Momentum[k], Momentum[p]]]]]", "SP[k, p]"},
 	{"fcstFeynCalcExternalTriple-ID40", "FCE[FCI[FCE[Pair[Momentum[k, D], Momentum[p, D]]]]]", "SPD[k, p]"},
-	{"fcstFeynCalcExternalTriple-ID41", "FCE[FCI[FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]]]", "Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]"},
+	{"fcstFeynCalcExternalTriple-ID41", "FCE[FCI[FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]]]", "SPE[k,p]"},
 	{"fcstFeynCalcExternalTriple-ID42", "FCE[FCI[FCE[PropagatorDenominator[Momentum[q], m]]]]", "PropagatorDenominator[q, m]"},
 	{"fcstFeynCalcExternalTriple-ID43", "FCE[FCI[FCE[SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]]]]", "SUND[a, b, c]"},
 	{"fcstFeynCalcExternalTriple-ID44", "FCE[FCI[FCE[SUNDelta[a, b]]]]", "SD[a, b]"},
@@ -187,7 +185,6 @@ fcstFeynCalcExternalTriple = {
 	{"fcstFeynCalcExternalTriple-ID49", "FCE[FCI[FCE[SUNT[a]]]]", "SUNT[a]"},
 	{"fcstFeynCalcExternalTriple-ID50", "FCE[FCI[FCE[SUNDeltaContract[SUNIndex[a], SUNIndex[b]]]]]", "SD[a, b]"},
 	{"fcstFeynCalcExternalTriple-ID51", "FCE[FCI[FCE[SUNDeltaContract[SUNIndex[a], SUNIndex[b]]]]]", "SD[a, b]"},
-	{"fcstFeynCalcExternalTriple-ID52", "FCE[FCI[FCE[Pair[Momentum[a, D], Momentum[b, D]]]]]", "SPD[a, b]"},
-	{"fcstFeynCalcExternalTriple-ID53", "FCE[FCI[FCE[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]]]]", "Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]"},
+	{"fcstFeynCalcExternalTriple-ID53", "FCE[FCI[FCE[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]]]]", "SPE[a,b]"},
 	{"fcstFeynCalcExternalTriple-ID54", "FCE[FCI[FCE[Power2[x, y]]]]", "x^y"}
 };

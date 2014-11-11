@@ -556,7 +556,7 @@ $Covariant = False;
 
 $FCS = {"FAD", "FV", "FVD", "GA", "GA5", "GS",
           "GSD", "LC", "LCD", "MT","MTD", "SD", "SOD",
-          "SP", "SPC", "SPD", "SPL", "FCI", "FCE", "FI",
+          "SP", "SPC", "SPD", "SPE", "SPL", "FCI", "FCE", "FI",
           "FC", "GGV", "GP", "QGV", "QO", "FDr", "CDr"
          };
 

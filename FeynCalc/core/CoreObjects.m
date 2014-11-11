@@ -392,6 +392,10 @@ SPD::"usage"= "SPD[p, q] is the D-dimensional scalar product of p with q.
 SPD[p, q] is transformed into Pair[Momentum[p, D],Momentum[q, D]]
 by FeynCalcInternal.";
 
+SPE::"usage"= "SPE[p, q] is the D-4-dimensional scalar product of p with q.
+SPE[p, q] is transformed into Pair[Momentum[p, D-4],Momentum[q, D-4]]
+by FeynCalcInternal.";
+
 Spinor::"usage" = "Spinor[p, m] represents a Dirac spinor.
 Which of the spinors u, v,u_bar or v_bar
 is understood, depends on the sign of the momentum (p)
@@ -515,6 +519,7 @@ SetAttributes[Momentum, Constant];
 SetAttributes[Pair, Orderless];
 SetAttributes[SD, Orderless];
 SetAttributes[SP, Orderless];
+SetAttributes[SPE, Orderless];
 SetAttributes[SPD, Orderless];
 SetAttributes[SUNDelta, Orderless];
 SetAttributes[SUNIndex, {Constant, Flat, OneIdentity}];
@@ -1225,6 +1230,7 @@ Momentum /:
 
 MT[Momentum[a_], Momentum[b_]] := SP[a,b];
 MT[Momentum[a_,D], Momentum[b_,D]] := SPD[a,b];
+MT[Momentum[a_,D-4], Momentum[b_,D-4]] := SPE[a,b];
 
 
 MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
@@ -1854,6 +1860,8 @@ SP/: MakeBoxes[SP[a_, b_], TraditionalForm] :=
             TraditionalForm];
 
 SPD[a_] := SPD[a,a];
+
+SPE[a_] := SPE[a,a];
 
 MakeBoxes[SPD[a_,a_], TraditionalForm] := SuperscriptBox[
    RowBox[{"(",TBox[a],")"}], 2] /; !FreeQ[a, Plus];

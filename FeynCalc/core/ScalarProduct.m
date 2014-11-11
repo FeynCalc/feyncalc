@@ -27,6 +27,7 @@ Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 SP = MakeContext["CoreObjects","SP"];
 SPD = MakeContext["CoreObjects","SPD"];
+SPE = MakeContext["CoreObjects","SPE"];
 fci := fci = MakeContext["FeynCalcInternal"];
 nf  := nf = MakeContext["NumericalFactor"];
 
@@ -57,6 +58,7 @@ If[FreeQ[a, Pattern], ste = fci[ScalarProduct[a, b, c]];
          Set@@{ste/nf[ste], z / nf[ste]};
 (* addition Sept. 2003, RM*)
          SPD[a,b] = z;
+         SPE[a,b] = z;
          SP[a,b] = z;
         ];
  If[(nf[a] === 1) && (nf[b] === 1), rst = z,
