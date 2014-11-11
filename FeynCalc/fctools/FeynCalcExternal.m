@@ -47,6 +47,7 @@ factor2         := factor2         = MakeContext["Factor2"];
 FAD             := FAD             = MakeContext["CoreObjects","FAD"];
 FV              := FV              = MakeContext["CoreObjects","FV"];
 FVD             := FVD             = MakeContext["CoreObjects","FVD"];
+FVE             := FVE             = MakeContext["CoreObjects","FVE"];
 fourvector      := fourvector      = MakeContext["CoreObjects","FourVector"];
 freeq2          := freeq2          = MakeContext["FreeQ2"];
 ga              := ga              = MakeContext["CoreObjects","GA"];
@@ -177,6 +178,7 @@ pairback[lorentzindex[a_,d_], lorentzindex[b_,d_]] /;(d=!=D && d=!= D-4) := metr
 *)
 pairback[lorentzindex[a_], momentum[b_]] := FV[b,a];
 pairback[lorentzindex[a_,D], momentum[b_,D]] := FVD[b,a];
+pairback[lorentzindex[a_, D-4], momentum[b_, D-4]] := FVE[b,a];
 pairback[lorentzindex[a_,d_], momentum[b_,d_]] /;d=!=D := fourvector[b,a,dimension->d];
 (*
 pairback[lorentzindex[a_], momentum[b_]] := fourvector[b, a];

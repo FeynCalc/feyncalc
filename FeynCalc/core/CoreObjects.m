@@ -161,8 +161,12 @@ FV::"usage"= "FV[p,mu] is a fourvector and is transformed into
 Pair[Momentum[p], LorentzIndex[mu]]
 by FeynCalcInternal.";
 
-FVD::"usage"= "FVD[p,mu] is a fourvector and is
+FVD::"usage"= "FVD[p,mu] is a D-dimensional vector and is
 transformed into Pair[Momentum[p,D], LorentzIndex[mu,D]]
+by FeynCalcInternal.";
+
+FVE::"usage"= "FVE[p,mu] is a D-4-dimensional vector and is
+transformed into Pair[Momentum[p,D-4], LorentzIndex[mu,D-4]]
 by FeynCalcInternal.";
 
 GA::"usage"=
@@ -984,6 +988,12 @@ FV /: MakeBoxes[FV[a_Subscript, b_], TraditionalForm] :=
 
 FV /: MakeBoxes[FV[a_, b_], TraditionalForm] :=
             SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "_"]}], Tbox[b]];
+
+FVE /: MakeBoxes[FVE[a_Subscript, b_], TraditionalForm] :=
+             SubsuperscriptBox[RowBox[{OverscriptBox[Tbox[a[[1]]], "^"]}], Tbox@@Rest[a], Tbox[b]];
+
+FVE /: MakeBoxes[FVE[a_, b_], TraditionalForm] :=
+            SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "^"]}], Tbox[b]];
 
 FVD /: MakeBoxes[FVD[a_Subscript, b_], TraditionalForm] :=
              SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]];

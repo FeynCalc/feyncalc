@@ -60,6 +60,7 @@ propagatordenominator := propagatordenominator =
 scalarproduct   := scalarproduct   = MakeContext["ScalarProduct"];
 FinalSubstitutions = FinalSubstitutions = MakeContext["CoreOptions","FinalSubstitutions"];
 FVD := FVD = MakeContext["CoreObjects","FVD"];
+FVE := FVE = MakeContext["CoreObjects","FVE"];
 FV := FV = MakeContext["CoreObjects","FV"];
 SP             := SP             = MakeContext["CoreObjects","SP"];
 SPD             := SPD             = MakeContext["CoreObjects","SPD"];
@@ -120,6 +121,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> sunTint},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FAD :> fadint},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVD :> fvd},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`FVE :> fve},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FV :> fv},
  {HighEnergyPhysics`FeynCalc`CoreObjects`LC :> lc},
  {HighEnergyPhysics`FeynCalc`CoreObjects`LCD :> lcd},
@@ -336,6 +338,7 @@ so[a_] := pair[momentum[a], momentum[OPEDelta]];
 sod[a_] := pair[momentum[a,D], momentum[OPEDelta,D]];
 
 fvd[a_,b_] := pair[momentum[a, D], lorentzindex[b,D]];
+fve[a_,b_] := pair[momentum[a, D-4], lorentzindex[b,D-4]];
 fv[a_,b_] := pair[momentum[a], lorentzindex[b]];
 mt[a_,b_] := pair[lorentzindex[a], lorentzindex[b]];
 mtd[a_,b_] := pair[lorentzindex[a, D], lorentzindex[b, D]];
