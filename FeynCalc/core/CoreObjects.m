@@ -658,12 +658,7 @@ DiracGamma /:
 DiracGamma /:
   MakeBoxes[ DiracGamma[lo_[in_], ___Rule], TraditionalForm ] :=
    (SuperscriptBox[RowBox[{OverscriptBox["\[Gamma]", "_"]}], Tbox[in]]
-   ) /; $BreitMaison === True && (lo === LorentzIndex || lo === ExplicitLorentzIndex);
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[lo_[in_], ___Rule], TraditionalForm ] :=
-   (SuperscriptBox["\[Gamma]", Tbox[lo[in]]]
-   ) /; $BreitMaison === False && (lo === LorentzIndex || lo === ExplicitLorentzIndex);
+   ) /; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
 
 DiracGamma /:
   MakeBoxes[ DiracGamma[lo_[in_,d_Symbol], _Symbol,
@@ -978,16 +973,10 @@ FV[p_ /; Head[p]=!=Momentum, Momentum[b_]]:= SP[p,b];
 FV[Momentum[p_], Momentum[b_]]:= SP[p,b];
 
 FV /: MakeBoxes[FV[a_Subscript, b_], TraditionalForm] :=
-             SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]]/; $BreitMaison===False;
+             SubsuperscriptBox[RowBox[{OverscriptBox[Tbox[a[[1]]], "_"]}], Tbox@@Rest[a], Tbox[b]];
 
 FV /: MakeBoxes[FV[a_, b_], TraditionalForm] :=
-            SuperscriptBox[Tbox[a], Tbox[b]]/; $BreitMaison===False;
-
-FV /: MakeBoxes[FV[a_Subscript, b_], TraditionalForm] :=
-             SubsuperscriptBox[RowBox[{OverscriptBox[Tbox[a[[1]]], "_"]}], Tbox@@Rest[a], Tbox[b]]/; $BreitMaison===True;
-
-FV /: MakeBoxes[FV[a_, b_], TraditionalForm] :=
-            SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "_"]}], Tbox[b]]/; $BreitMaison===True;
+            SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "_"]}], Tbox[b]];
 
 FVD /: MakeBoxes[FVD[a_Subscript, b_], TraditionalForm] :=
              SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]];
@@ -1239,10 +1228,7 @@ MT[Momentum[a_,D], Momentum[b_,D]] := SPD[a,b];
 
 
 MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
-   SuperscriptBox["g", Tbox[x,y]];/ $BreitMaison === False;
-
-MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
-   SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[x,y]]/; $BreitMaison === True;
+   SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[x,y]];
 
 MTD /:
    MakeBoxes[ MTD[x_,y_], TraditionalForm ] :=
@@ -1320,20 +1306,9 @@ Pair /:
 (LorentzIndex|ExplicitLorentzIndex)[b_] ],
              TraditionalForm
             ] := If[$LorentzIndices===True,
-                    SuperscriptBox["g", Tbox[LorentzIndex[a], LorentzIndex[b]] ],
-                    SuperscriptBox["g", Tbox[a,b] ]
-                   ]/; $BreitMaison === False;
-
-
-Pair /:
-   MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a_],
-(LorentzIndex|ExplicitLorentzIndex)[b_] ],
-             TraditionalForm
-            ] := If[$LorentzIndices===True,
                     SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[LorentzIndex[a], LorentzIndex[b]] ],
                     SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[a,b] ]
-                   ]/; $BreitMaison === True;
+                   ];
 
 Pair /:
    MakeBoxes[Pair[
@@ -1462,21 +1437,10 @@ Pair /:
               Momentum[
                    b_Subscript]
                  ], TraditionalForm
-            ] := SubsuperscriptBox[Tbox[b[[1]]],
-                                   Tbox[b[[2]]],
-                                    Tbox[LorentzIndex[a]]]/; $BreitMaison===False;
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[
-                   b_Subscript]
-                 ], TraditionalForm
             ] := SubsuperscriptBox[
             RowBox[{OverscriptBox[Tbox[b[[1]]], "_"]}],
                    Tbox[b[[2]]],
-                   Tbox[LorentzIndex[a]]]/; $BreitMaison===True;
+                   Tbox[LorentzIndex[a]]];
 
 Pair /:
    MakeBoxes[Pair[
@@ -1512,20 +1476,9 @@ Pair /:
                  ],
              TraditionalForm
             ] := SuperscriptBox[
-                    Tbox[Momentum[b] ], Tbox[LorentzIndex[a]]
-                   ]/;Head[b]=!=Plus && $BreitMaison===False;
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[b:Except[_Subscript | _Superscript]]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
                   RowBox[{OverscriptBox[Tbox[Momentum[b]], "_"]}],
                   Tbox[LorentzIndex[a]]
-                   ]/;Head[b]=!=Plus && $BreitMaison===True;
+                   ]/;Head[b]=!=Plus;
 
 
 Pair /:
@@ -1562,21 +1515,10 @@ Pair /:
                  ],
              TraditionalForm
             ] := SuperscriptBox[
-                    Tbox["(",Momentum[b], ")"],
-                    Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}] && $BreitMaison===False;
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[b_Plus]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
 					RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
                   	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[b]]],
                   	{ToBoxes[")"]}]],
-                    Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}] && $BreitMaison===True;
+                    Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}];
 
 
 Pair /:
@@ -1612,21 +1554,10 @@ Pair /:
                  ],
              TraditionalForm
             ] := SuperscriptBox[
-                    Tbox[ "(",Momentum[b+c], ")"], Tbox[LorentzIndex[a]] ]/; $BreitMaison===False;
-
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[b:Except[_Subscript | _Superscript]] +c:Except[_Subscript | _Superscript]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
                     RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
                   	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[b+c]]],
                   	{ToBoxes[")"]}]],
-                    Tbox[LorentzIndex[a]] ]/; $BreitMaison===True;
+                    Tbox[LorentzIndex[a]] ];
 
 Pair /:
    MakeBoxes[Pair[
