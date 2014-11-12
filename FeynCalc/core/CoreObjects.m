@@ -619,119 +619,97 @@ DiracGamma[_, 0] := 0;
 (*DiracGamma[0] = 0;
 DiracGamma[0, _] := 0;*)
 DiracGamma[a_Plus] := Map[DiracGamma, a];
-DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___]] := DOT[
-DiracGamma[Momentum[x,dix], dix], DiracGamma[Momentum[y,diy], diy]];
-DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___], z__] := DOT[
-DiracGamma[Momentum[x,dix], dix], DiracGamma[Momentum[y,diy], diy],
+
+DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___]] :=
+	DOT[DiracGamma[Momentum[x,dix], dix],
+	    DiracGamma[Momentum[y,diy], diy]];
+
+DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___], z__] :=
+	DOT[DiracGamma[Momentum[x,dix], dix],
+	    DiracGamma[Momentum[y,diy], diy],
+		DiracGamma[z]];
+
+DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___]] :=
+	DOT[DiracGamma[LorentzIndex[x,dix], dix],
+	    DiracGamma[LorentzIndex[y,diy], diy]];
+
+DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___], z__] :=
+	DOT[DiracGamma[LorentzIndex[x,dix], dix],
+		DiracGamma[LorentzIndex[y,diy], diy],
+		DiracGamma[z]];
+
+DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___]] :=
+	DOT[DiracGamma[LorentzIndex[x,dix], dix],
+	    DiracGamma[Momentum[y,diy], diy]];
+
+DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___], z__] :=
+	DOT[DiracGamma[LorentzIndex[x,dix], dix],
+	    DiracGamma[Momentum[y,diy], diy],
+		DiracGamma[z]];
+
+DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___]] :=
+	DOT[DiracGamma[Momentum[x,dix], dix],
+	    DiracGamma[LorentzIndex[y,diy], diy]];
+
+DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___], z__] :=
+	DOT[DiracGamma[Momentum[x,dix], dix],
+	    DiracGamma[LorentzIndex[y,diy], diy],
+
 DiracGamma[z]];
-DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___]] := DOT[
-DiracGamma[LorentzIndex[x,dix], dix],
-DiracGamma[LorentzIndex[y,diy], diy]];
-DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___], z__] := DOT[
-DiracGamma[LorentzIndex[x,dix], dix],
-DiracGamma[LorentzIndex[y,diy], diy], DiracGamma[z]];
-DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___]] := DOT[
-DiracGamma[LorentzIndex[x,dix], dix], DiracGamma[Momentum[y,diy], diy]];
-DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___], z__] := DOT[
-DiracGamma[LorentzIndex[x,dix], dix], DiracGamma[Momentum[y,diy], diy],
-DiracGamma[z]];
-DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___]] := DOT[
-DiracGamma[Momentum[x,dix], dix], DiracGamma[LorentzIndex[y,diy], diy]];
-DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___], z__] := DOT[
-DiracGamma[Momentum[x,dix], dix], DiracGamma[LorentzIndex[y,diy], diy],
-DiracGamma[z]];
+
 DiracGamma[LorentzIndex[_], _Symbol-4 ] := 0; (* 4, D-4 *)
 DiracGamma[Momentum[_], _Symbol-4 ] := 0; (* 4, D-4 *)
 DiracGamma[Momentum[_, _Symbol -4]] := 0; (* D-4, 4 *)
 DiracGamma[LorentzIndex[_, _Symbol -4]] := 0; (* D-4, 4 *)
 DiracGamma[LorentzIndex[x_, di_], di_Symbol-4] :=
-DiracGamma[LorentzIndex[x, di-4], di-4];
+	DiracGamma[LorentzIndex[x, di-4], di-4];
 DiracGamma[Momentum[x_, di_], di_Symbol-4]:=
-DiracGamma[Momentum[x, di-4], di-4];
-(* D-4, D *)
+	DiracGamma[Momentum[x, di-4], di-4]; (* D-4, D *)
 DiracGamma[LorentzIndex[x_, di_Symbol-4], di_Symbol] :=
-DiracGamma[LorentzIndex[x,di-4], di-4];
+	DiracGamma[LorentzIndex[x,di-4], di-4];
 DiracGamma[Momentum[x_, di_Symbol-4], di_Symbol] :=
-DiracGamma[Momentum[x,di-4], di-4];
+	DiracGamma[Momentum[x,di-4], di-4];
 DiracGamma[ LorentzIndex[x_], _Symbol]:= DiracGamma[LorentzIndex[x]];
 DiracGamma[ n_. Momentum[x_], _Symbol] :=
-(n DiracGamma[Momentum[x]]) /; NumberQ[n];
+	(n DiracGamma[Momentum[x]]) /; NumberQ[n];
 DiracGamma[Momentum[x_, _Symbol]] := DiracGamma[Momentum[x]];
 (* D, 4 *)
 DiracGamma[LorentzIndex[x_, _Symbol]] :=
-DiracGamma[LorentzIndex[x]]; (* D, 4 *)
+	DiracGamma[LorentzIndex[x]]; (* D, 4 *)
 
 
 
 (* TraditionalForm representation of the Dirac slashes in the FCI notation *)
 (* ------------------------------------------------------------------------ *)
 
-(* Normal momenta *)
+dgammaRep[dim_]:= Which[
+    dim===4,
+    	OverscriptBox["\[Gamma]", "_"],
+    MatchQ[dim,_Symbol],
+    	"\[Gamma]",
+    MatchQ[dim,_Symbol-4],
+    	OverscriptBox["\[Gamma]", "^"],
+    True,
+    	SubscriptBox["\[Gamma]", ToBoxes[dim]]
+];
 
 DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x:Except[_Subscript | _Superscript | _Plus]], ___Rule], TraditionalForm ] :=
-	RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[x]], "_"]}];
+  MakeBoxes[ DiracGamma[ Momentum[x_,dim1_:4],dim2_:4, ___Rule], TraditionalForm ] :=
+  	If[ Head[x]===Plus,
+		RowBox[{dgammaRep[dim2], "\[CenterDot]","(", Tbox[Momentum[x,dim1]],")"}],
+		RowBox[{dgammaRep[dim2], "\[CenterDot]", Tbox[Momentum[x,dim1]]}]
+  	];
 
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x:Except[_Subscript | _Superscript | _Plus], dim_Symbol-4], dim_Symbol-4, ___Rule], TraditionalForm ] :=
-	RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[x, dim-4]], "^"]}];
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x:Except[_Subscript | _Superscript | _Plus], dim_Symbol], dim_Symbol, ___Rule], TraditionalForm ] :=
-	Tbox["\[Gamma]", "\[CenterDot]", Momentum[x, dim]];
-
-(* Subscripted momenta*)
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x_Subscript], ___Rule], TraditionalForm ] :=
-	RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", SubscriptBox[OverscriptBox[Tbox[Momentum[x[[1]]]], "_"], ToBoxes[x[[2]]]]}];
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x_Subscript, dim_Symbol-4], dim_Symbol-4, ___Rule], TraditionalForm ] :=
-	RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", SubscriptBox[OverscriptBox[Tbox[Momentum[x[[1]],dim-4]], "^"], ToBoxes[x[[2]]]]}];
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x_Subscript, dim_Symbol], dim_Symbol, ___Rule], TraditionalForm ] :=
-	RowBox[{"\[Gamma]", "\[CenterDot]", SubscriptBox[Tbox[Momentum[x[[1]],dim]], ToBoxes[x[[2]]]]}];
-
-(* Sums of momenta*)
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x_Plus], ___Rule], TraditionalForm ] :=
-	RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[Tbox[#], "_"]} &, List @@ MomentumExpand[Momentum[x]]],
-                  	{ToBoxes[")"]}]]}];
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x_Plus, dim_Symbol-4], dim_Symbol-4, ___Rule], TraditionalForm ] :=
-	RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[Tbox[#], "^"]} &, List @@ MomentumExpand[Momentum[x,dim-4]]],
-                  	{ToBoxes[")"]}]]}];
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[ Momentum[x_Plus, dim_Symbol], dim_Symbol, ___Rule], TraditionalForm ] :=
-	RowBox[{"\[Gamma]", "\[CenterDot]", Tbox["(",Momentum[x,dim], ")"]}];
 
 (* TraditionalForm representation of the Dirac matrices in the FCI notation *)
 (* ------------------------------------------------------------------------ *)
 
 DiracGamma /:
-  MakeBoxes[ DiracGamma[lo_[in_], ___Rule], TraditionalForm ] :=
-   (SuperscriptBox[RowBox[{OverscriptBox["\[Gamma]", "_"]}], Tbox[in]]
-   ) /; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[lo_[in_,d_Symbol], _Symbol,
-           ___Rule], TraditionalForm ] :=
-   (SuperscriptBox["\[Gamma]", Tbox[lo[in,d]]]
-   ) /; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[lo_[in_, d_Symbol-4], d_Symbol-4,
-             ___Rule], TraditionalForm
-           ] :=
-      SuperscriptBox[RowBox[{OverscriptBox["\[Gamma]","^"]}], Tbox[in]
-                    ] /; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
+  MakeBoxes[ DiracGamma[lo_[in_, dim1_:4], dim2_:4, ___Rule], TraditionalForm ] :=
+  If [$Covariant===False,
+   SuperscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in,dim1]]],
+   SubscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in,dim1]]]
+  ]/; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
 
 (* TraditionalForm representation of the transposed Dirac matrices *)
 (* ------------------------------------------------------------------------ *)
@@ -1035,23 +1013,19 @@ FourVector /:
 FV[p_ /; Head[p]=!=Momentum, Momentum[b_]]:= SP[p,b];
 FV[Momentum[p_], Momentum[b_]]:= SP[p,b];
 
-FV /: MakeBoxes[FV[a_Subscript, b_], TraditionalForm] :=
-             SubsuperscriptBox[RowBox[{OverscriptBox[Tbox[a[[1]]], "_"]}], Tbox@@Rest[a], Tbox[b]];
+(* TraditionalForm representation of the vectors in the FCE notation *)
+(* ------------------------------------------------------------------------ *)
 
 FV /: MakeBoxes[FV[a_, b_], TraditionalForm] :=
-            SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "_"]}], Tbox[b]];
-
-FVE /: MakeBoxes[FVE[a_Subscript, b_], TraditionalForm] :=
-             SubsuperscriptBox[RowBox[{OverscriptBox[Tbox[a[[1]]], "^"]}], Tbox@@Rest[a], Tbox[b]];
-
-FVE /: MakeBoxes[FVE[a_, b_], TraditionalForm] :=
-            SuperscriptBox[RowBox[{OverscriptBox[Tbox[a], "^"]}], Tbox[b]];
-
-FVD /: MakeBoxes[FVD[a_Subscript, b_], TraditionalForm] :=
-             SubsuperscriptBox[Tbox[a[[1]]], Tbox@@Rest[a], Tbox[b]];
+	ToBoxes[FCI[FV[a,b]], TraditionalForm];
 
 FVD /: MakeBoxes[FVD[a_, b_], TraditionalForm] :=
-            SuperscriptBox[Tbox[a], Tbox[b]];
+	ToBoxes[FCI[FVD[a,b]], TraditionalForm];
+
+FVE /: MakeBoxes[FVE[a_, b_], TraditionalForm] :=
+	ToBoxes[FCI[FVE[a,b]], TraditionalForm];
+
+(* ------------------------------------------------------------------------ *)
 
 GA5 = DiracGamma[5];
 
@@ -1068,20 +1042,13 @@ GAE[x_, y__] := DOT @@ Map[GAE,{x,y}];
 (* ------------------------------------------------------------------------ *)
 
 GA /:
-  MakeBoxes[ GA[x_], TraditionalForm ] := If[$Covariant,
-                   SubscriptBox[OverscriptBox["\[Gamma]","_"],MakeBoxes[x,TraditionalForm]],
-                   SuperscriptBox[OverscriptBox["\[Gamma]","_"],MakeBoxes[x,TraditionalForm]]
-                                            ];
+  MakeBoxes[ GA[x_], TraditionalForm ] := ToBoxes[FCI[GA[x]], TraditionalForm];
+
 GAD /:
-  MakeBoxes[ GAD[x_], TraditionalForm ] := If[$Covariant,
-             SubscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]],
-             SuperscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]]
-                                             ];
+  MakeBoxes[ GAD[x_], TraditionalForm ] := ToBoxes[FCI[GAD[x]], TraditionalForm];
+
 GAE /:
-  MakeBoxes[ GAE[x_], TraditionalForm ] := If[$Covariant,
-             SubscriptBox[OverscriptBox["\[Gamma]","^"],MakeBoxes[x,TraditionalForm]],
-             SuperscriptBox[OverscriptBox["\[Gamma]","^"],MakeBoxes[x,TraditionalForm]]
-                                             ];
+  MakeBoxes[ GAE[x_], TraditionalForm ] := ToBoxes[FCI[GAE[x]], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1109,40 +1076,23 @@ GSE[x_, y__] := DOT @@ Map[GSE, {x, y}];
 (* TraditionalForm representation of the Dirac slashes in the FCE notation *)
 (* ------------------------------------------------------------------------ *)
 
+diracSlashRep[a_, dim_]:= If[ Head[a]===Plus,
+             RowBox[{dgammaRep[dim], "\[CenterDot]","(", Tbox[Momentum[a, dim]],")"}],
+			 RowBox[{dgammaRep[dim], "\[CenterDot]", Tbox[Momentum[a, dim]]}]
+			]
+
 GS/:
-  MakeBoxes[GS[a:Except[_Plus]],
-             TraditionalForm ] :=
-             RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[a]], "_"]}];
-GS/:
-  MakeBoxes[GS[a_Plus],
-             TraditionalForm ] :=
-             RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[a]]],
-                  	{ToBoxes[")"]}]]}];
+  MakeBoxes[GS[a_], TraditionalForm ] := diracSlashRep[a,4];
 
 GSD/:
-  MakeBoxes[GSD[a:Except[_Plus]],
-			TraditionalForm ] :=
-			Tbox["\[Gamma]", "\[CenterDot]", Momentum[a,D] ];
-
-GSD/:
-  MakeBoxes[GSD[a_Plus], TraditionalForm ] :=
-			RowBox[{"\[Gamma]", "\[CenterDot]", Tbox["(",Momentum[a,dim], ")"]}];
+  MakeBoxes[GSD[a_], TraditionalForm ] := diracSlashRep[a,D];
 
 GSE/:
-  MakeBoxes[GSE[a:Except[_Plus]],
-             TraditionalForm ] :=
-             RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[a, D-4]], "^"]}];
-
-GSE/:
-  MakeBoxes[GSE[a_Plus], TraditionalForm ] :=
-			RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[Tbox[#], "^"]} &, List @@ MomentumExpand[Momentum[a,dim-4]]],
-                  	{ToBoxes[")"]}]]}]
+  MakeBoxes[GSE[a_], TraditionalForm ] := diracSlashRep[a,D-4];
 
 (* ------------------------------------------------------------------------ *)
 
- Gstrong /:
+Gstrong /:
    MakeBoxes[Gstrong, TraditionalForm] :=
     SubscriptBox["g","s"]
 
@@ -1247,18 +1197,12 @@ LorentzIndex[_, 0]               := 0;
 LorentzIndex[in_Integer,dim___]  := ExplicitLorentzIndex[in,dim];
 
 LorentzIndex /:
-   MakeBoxes[ LorentzIndex[p_, in___], TraditionalForm
-            ] := If[$LorentzIndices =!= True,
+   MakeBoxes[ LorentzIndex[p_, dim_ : 4], TraditionalForm
+            ] := If[ $LorentzIndices =!= True,
                     ToBoxes[p,TraditionalForm],
-                    If[{in} === {},
-                       MakeBoxes[p, TraditionalForm],
-                       SubscriptBox[ToBoxes[p, TraditionalForm],
-                                    ToBoxes[in, TraditionalForm]
-                                   ]
-                      ]
+                    SubscriptBox[ToBoxes[p, TraditionalForm],
+                                    ToBoxes[dim, TraditionalForm]]
                    ];
-
-
 
 MetricTensor[a_, b_, opt___Rule] :=
   Pair[LorentzIndex[a, Dimension /. Dimension -> (Dimension /. {opt} /.
@@ -1271,14 +1215,6 @@ MetricTensor[a_, b_, opt___Rule] :=
                    ]
       ] /; ( FCI /. {opt} /. Options[MetricTensor] ) === True;
 
-MetricTensor /:
-   MakeBoxes[ MetricTensor[x_, y_, opts___], TraditionalForm] :=
-   If[$LorentzIndices===True,
-      ReleaseHold[
-      Hold[MakeBoxes][FCI[MetricTensor[x, y, opts]], TraditionalForm]],
-      SuperscriptBox["g", Tbox[x,y]]
-     ];
-
 Momentum[x_ GaugeXi[y_], dim___] := GaugeXi[y] Momentum[x,dim];
 Momentum[x_ n_?NumberQ, di___] := n Momentum[x, di];
 Momentum[x_, 4]                := Momentum[x];
@@ -1287,10 +1223,71 @@ Momentum[_, 0]                 := 0;
 (* hm ... *)
 Momentum[Momentum[x_, di___], ___] := Momentum[x, di];
 
-Momentum /:
-   MakeBoxes[ Momentum[p_, ___], TraditionalForm
-            ] := MakeBoxes[p, TraditionalForm];
+(* TraditionalForm representation of the Momenta *)
+(* ------------------------------------------------------------------------ *)
 
+(*Normal momenta *)
+
+Momentum /:
+   MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus]], TraditionalForm
+            ] := RowBox[{OverscriptBox[ToBoxes[p],"_"]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], _Symbol-4], TraditionalForm
+            ] := RowBox[{OverscriptBox[ToBoxes[p],"^"]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], _Symbol], TraditionalForm
+            ] := RowBox[{ToBoxes[p]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], dim:Except[_Symbol | _Symbol - 4]], TraditionalForm
+            ] := RowBox[{SubscriptBox[ToBoxes[p],ToBoxes[dim]]}];
+
+(*Subscripted momenta *)
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Subscript], TraditionalForm
+            ] := RowBox[{SubscriptBox[OverscriptBox[ToBoxes[p[[1]]],"_"],ToBoxes[p[[2]]]]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Subscript,_Symbol-4], TraditionalForm
+            ] := RowBox[{SubscriptBox[OverscriptBox[ToBoxes[p[[1]]],"^"],ToBoxes[p[[2]]]]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Subscript,_Symbol], TraditionalForm
+            ] := RowBox[{SubscriptBox[ToBoxes[p[[1]]],ToBoxes[p[[2]]]]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Subscript, dim:Except[_Symbol | _Symbol - 4]], TraditionalForm
+            ] := RowBox[{SubscriptBox[ SubscriptBox[ToBoxes[p[[1]]],ToBoxes[dim]  ],ToBoxes[p[[2]]]]}];
+
+(*Superscripted momenta *)
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Superscript], TraditionalForm
+            ] := RowBox[{SuperscriptBox[OverscriptBox[ToBoxes[p[[1]]],"_"],ToBoxes[p[[2]]]]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Superscript,_Symbol-4], TraditionalForm
+            ] := RowBox[{SuperscriptBox[OverscriptBox[ToBoxes[p[[1]]],"^"],ToBoxes[p[[2]]]]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Superscript,_Symbol], TraditionalForm
+            ] := RowBox[{SuperscriptBox[ToBoxes[p[[1]]],ToBoxes[p[[2]]]]}];
+
+Momentum /:
+   MakeBoxes[ Momentum[Superscript, dim:Except[_Symbol | _Symbol - 4]], TraditionalForm
+            ] := RowBox[{SuperscriptBox[ SubscriptBox[ToBoxes[p[[1]]],ToBoxes[dim]  ],ToBoxes[p[[2]]]]}];
+
+
+(*Sums of momenta *)
+
+Momentum /:
+   MakeBoxes[ Momentum[p_Plus,dim___], TraditionalForm
+            ] := Tbox[MomentumExpand[Momentum[p,dim]]];
+
+(* ------------------------------------------------------------------------ *)
 
 MT[Momentum[a_], Momentum[b_]] := SP[a,b];
 MT[Momentum[a_,D], Momentum[b_,D]] := SPD[a,b];
@@ -1298,17 +1295,15 @@ MT[Momentum[a_,D-4], Momentum[b_,D-4]] := SPE[a,b];
 
 
 MT /: MakeBoxes[ MT[x_,y__], TraditionalForm ] :=
-   SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[x,y]];
+   ToBoxes[FCI[MT[x,y]], TraditionalForm];
 
 MTE /: MakeBoxes[ MTE[x_,y__], TraditionalForm ] :=
-   SuperscriptBox[RowBox[{OverscriptBox["g", "^"]}], Tbox[x,y]];
+   ToBoxes[FCI[MTE[x,y]], TraditionalForm];
 
-MTD /:
-   MakeBoxes[ MTD[x_,y_], TraditionalForm ] :=
-SuperscriptBox["g", Tbox[x,y]];
+MTD /: MakeBoxes[ MTD[x_,y__], TraditionalForm ] :=
+   ToBoxes[FCI[MTD[x,y]], TraditionalForm];
 
 Nf /: MakeBoxes[Nf, TraditionalForm] := SubscriptBox["N", "f"];
-
 
 OPE /: OPE^_Integer?Positive := 0;
 
@@ -1373,102 +1368,96 @@ Pair[Momentum[Polarization[x_,__],___],
 (* TraditionalForm representation of the metric tensor *)
 (* ------------------------------------------------------------------------ *)
 
-Pair /:
-   MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a_],
-(LorentzIndex|ExplicitLorentzIndex)[b_] ],
-             TraditionalForm
-            ] := If[$LorentzIndices===True,
-                    SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[LorentzIndex[a], LorentzIndex[b]] ],
-                    SuperscriptBox[RowBox[{OverscriptBox["g", "_"]}], Tbox[a,b] ]
-                   ];
+
+metricRep[dim_]:= Which[
+    dim==={4,4},
+    	OverscriptBox["g", "_"],
+    MatchQ[dim,{_Symbol,_Symbol}],
+    	"g",
+    MatchQ[dim,{_Symbol-4, _Symbol-4}],
+    	OverscriptBox["g", "^"],
+    True,
+    	SubscriptBox["g", ToBoxes[dim]]
+];
 
 Pair /:
    MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a_,d_Symbol -4],
-(LorentzIndex|ExplicitLorentzIndex)[b_,d_Symbol -4]],
+(LorentzIndex|ExplicitLorentzIndex)[a_, dim1_:4],
+(LorentzIndex|ExplicitLorentzIndex)[b_, dim2_:4] ],
              TraditionalForm
-            ] := If[$LorentzIndices===True,
-                    SuperscriptBox[RowBox[{OverscriptBox["g","^"]}], Tbox[LorentzIndex[a, d-4], LorentzIndex[b, d-4]] ],
-                    SuperscriptBox[RowBox[{OverscriptBox["g","^"]}], Tbox[a,b] ]
+            ] := If[$Covariant===False,
+                    SuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]] ],
+                    SubscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]] ]
                    ];
 
-Pair /:
-   MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a_,d_Symbol],
-(LorentzIndex|ExplicitLorentzIndex)[b_,d_Symbol] ],
-             TraditionalForm
-            ] := If[$LorentzIndices===True,
-                    SuperscriptBox["g", Tbox[LorentzIndex[a,d], LorentzIndex[b,d]] ],
-                    SuperscriptBox["g", Tbox[a,b] ]
-                   ];
+(* TraditionalForm representation of the scalar product *)
+(* ------------------------------------------------------------------------ *)
 
 
-
-MakeBoxes[Pair[a_,b_]^n_Integer?Positive, TraditionalForm] :=
- RowBox[{SuperscriptBox[Tbox[Pair[a,b]],n]}];
+MakeBoxes[Pair[Momentum[a_, dim1_ : 4],Momentum[b_, dim2_ : 4]]^n_Integer?Positive, TraditionalForm] :=
+If[$PairBrackets === True,
+ RowBox[{SuperscriptBox[Tbox[Pair[Momentum[a,dim1],Momentum[b,dim2]]],n]}],
+ RowBox[{SuperscriptBox[Tbox["(",Pair[Momentum[a,dim1],Momentum[b,dim2]],")"],n]}]
+] /; a=!=b;
 
 Pair /:
-   MakeBoxes[Pair[ Momentum[a__], Momentum[a__]
-                 ], TraditionalForm
-            ] := SuperscriptBox[Tbox[Momentum[a]],2] /; FreeQ[{a},Plus];
+	MakeBoxes[Pair[ Momentum[a_, dim_ : 4], Momentum[a_, dim_ : 4] ], TraditionalForm
+            ] := If [Head[a]===Plus,
+            		RowBox[{SuperscriptBox[Tbox["(",Momentum[a,dim],")"],2]}],
+            		SuperscriptBox[Tbox[Momentum[a,dim]],2]
+            ];
 
-MakeBoxes[Pair[ Momentum[a__], Momentum[a__] ]^2, TraditionalForm
-            ] := SuperscriptBox[Tbox[Momentum[a]],4] /; FreeQ[{a},Plus];
-
-MakeBoxes[Pair[ Momentum[a__], Momentum[a__] ]^3, TraditionalForm
-            ] := SuperscriptBox[Tbox[Momentum[a]],6];
-
-(* Changed because of infinite recursion on
-   Pair[a Momentum[k] + b Momentum[p], a Momentum[k] + b Momentum[p]]
-   Frederik Orellana, 17/3-2001 *)
-(*Pair/:
-       MakeBoxes[Pair[a_Plus,b_],TraditionalForm] :=
-        ToBoxes[Pair[MomentumCombine[a],MomentumCombine[b]],
-                TraditionalForm] /; !FreeQ[a, Momentum] &&
-                                    !FreeQ[b, Momentum];*)
-
-Pair /: MakeBoxes[Pair[a_Plus, b_], TraditionalForm] :=
-    RowBox[{"(", ToBoxes[TraditionalForm[a]], ")",".","(",
-          ToBoxes[TraditionalForm[b]], ")"}] /; !FreeQ[a, Momentum] &&
-          !FreeQ[b, Momentum];
-
-Pair /:
-        MakeBoxes[Pair[ Momentum[a_Plus, ___], Momentum[a_Plus, ___]],
-                  TraditionalForm
-                 ] := SuperscriptBox[Tbox["(", a,")"],2];
-
-MakeBoxes[Pair[
-          Momentum[a_, ___],
-          Momentum[a_, ___]
-              ]^m_Integer,
-          TraditionalForm
-         ] := SuperscriptBox[Tbox["(", a,")"], #]&@@{2m};
+	MakeBoxes[Power[Pair[ Momentum[a_, dim_ : 4], Momentum[a_, dim_ : 4] ],n_Integer?Positive], TraditionalForm
+            ] := If [Head[a]===Plus,
+            		RowBox[{SuperscriptBox[Tbox["(",Momentum[a,dim],")"],2 n]}],
+            		SuperscriptBox[Tbox[Momentum[a,dim]],2 n]
+            ];
 
 Pair /:
         MakeBoxes[Pair[
-          Momentum[a_,di___],
-          Momentum[b_,dii___]],
+          Momentum[a_, dim1_ : 4],
+          Momentum[b_, dim2_ : 4]],
                   TraditionalForm
                  ] := Which[
-                       FreeQ2[{a,b},{Times,Plus}],
-                       If[$PairBrackets === True,
-                          Tbox["(", Momentum[a,di], "\[CenterDot]",
-                                    Momentum[b,dii], ")"
+                       Head[a]=!=Plus && Head[b]=!=Plus,
+                       If[$PairBrackets === True && a=!=b,
+                          Tbox["(", Momentum[a,dim1], "\[CenterDot]",
+                                    Momentum[b,dim2], ")"
                               ],
-                          Tbox[Momentum[a,di], "\[CenterDot]",
-                               Momentum[b,dii]]
+                          Tbox[Momentum[a,dim1], "\[CenterDot]",
+                               Momentum[b,dim2]]
                          ],
-                       FreeQ2[{a},{Times,Plus}],
-                       Tbox[Momentum[a,di],"\[CenterDot]",
-                            "(",Momentum[b,dii],")"],
-                       FreeQ2[{b},{Times,Plus}],
-                       Tbox["(",Momentum[a,di],")","\[CenterDot]",
-                            Momentum[b,dii]],
-                       !FreeQ2[{a,b},{Times,Plus}],
-                       Tbox["(",Momentum[a,di],")","\[CenterDot]",
-                            "(",Momentum[b,dii],")"]
+
+
+                       Head[a]=!=Plus && Head[b]===Plus,
+                       If[$PairBrackets === True && a=!=b,
+                       Tbox["(",Momentum[a,dim],"\[CenterDot]",
+                            "(",Momentum[b,dim1],")",")"],
+                       Tbox[Momentum[a,dim],"\[CenterDot]",
+                            "(",Momentum[b,dim1],")"]
+                       ],
+
+
+                       Head[a]===Plus && Head[b]=!=Plus,
+                       If[$PairBrackets === True && a=!=b,
+                       Tbox["(","(",Momentum[a,dim2],")","\[CenterDot]",
+                            Momentum[b,dim],")"],
+                       Tbox["(",Momentum[a,dim2],")","\[CenterDot]",
+                            Momentum[b,dim]]
+                       ],
+
+                       Head[a]===Plus && Head[b]===Plus,
+
+                       If[$PairBrackets === True && a=!=b,
+                       Tbox["(","(",Momentum[a,dim1],")","\[CenterDot]",
+                            "(",Momentum[b,dim2],")",")"],
+                       Tbox["(",Momentum[a,dim1],")","\[CenterDot]",
+                            "(",Momentum[b,dim2],")"]
+                       ]
                            ];
+
+(* TraditionalForm representation of the polarization vector 				*)
+(* ------------------------------------------------------------------------ *)
 
 Pair /:
    MakeBoxes[Pair[
@@ -1501,167 +1490,25 @@ Pair /:
 (* TraditionalForm representation of the momentum vectors *)
 (* ------------------------------------------------------------------------ *)
 
-(* Subscripted momenta*)
-
 Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[
-                   b_Subscript]
-                 ], TraditionalForm
-            ] := SubsuperscriptBox[
-            RowBox[{OverscriptBox[Tbox[b[[1]]], "_"]}],
-                   Tbox[b[[2]]],
-                   Tbox[LorentzIndex[a]]];
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol-4],
-              Momentum[
-                   b_Subscript, dim_Symbol-4]
-                 ], TraditionalForm
-            ] := SubsuperscriptBox[
-            RowBox[{OverscriptBox[Tbox[b[[1]]], "^"]}],
-                   Tbox[b[[2]]],
-                   Tbox[LorentzIndex[a]]];
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_, dim_Symbol],
-              Momentum[
-                   b_Subscript, dim_Symbol]
-                 ], TraditionalForm
-            ] := SubsuperscriptBox[
-                  Tbox[b[[1]]],
-                   Tbox[b[[2]]],
-                   Tbox[LorentzIndex[a]]];
-
-(* Normal momenta*)
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[b:Except[_Subscript | _Superscript]]
-                 ],
+      ExplicitLorentzIndex)[a_,dim1_ : 4],
+              Momentum[b_,dim2_ : 4]+c_:0],
              TraditionalForm
-            ] := SuperscriptBox[
-                  RowBox[{OverscriptBox[Tbox[Momentum[b]], "_"]}],
-                  Tbox[LorentzIndex[a]]
-                   ]/;Head[b]=!=Plus;
+            ] := If[ Head[b]===Plus || c=!=0,
+    If[$Covariant===False,
+		SuperscriptBox[ RowBox[{"(",Tbox[Momentum[b+c,dim1]],")"}], Tbox[LorentzIndex[a,dim2]]],
+		SubscriptBox[ RowBox[{"(",Tbox[Momentum[b+c,dim1]],")"}], Tbox[LorentzIndex[a,dim2]]]
+    ],
+    If[$Covariant===False,
+		SuperscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[a,dim2]]],
+		SubscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[a,dim2]]]
+    ]
+];
 
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol-4],
-              Momentum[b:Except[_Subscript | _Superscript],dim_Symbol-4]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                  RowBox[{OverscriptBox[Tbox[Momentum[b,dim-4]], "^"]}],
-                    Tbox[LorentzIndex[a]]
-                   ]/;Head[b]=!=Plus;
-
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol],
-              Momentum[b:Except[_Subscript | _Superscript],dim_Symbol]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                    Tbox[Momentum[b,dim] ], Tbox[LorentzIndex[a]]
-                   ]/;Head[b]=!=Plus;
-
-(* Sums of momenta*)
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[b_Plus]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-					RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[b]]],
-                  	{ToBoxes[")"]}]],
-                    Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}];
-
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol-4],
-              Momentum[b_Plus,dim_Symbol-4]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                  RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  OverscriptBox[TBox[#], "^"]} &, List @@ MomentumExpand[Momentum[b,dim-4]]],
-                  {ToBoxes[")"]}]],
-                  Tbox[LorentzIndex[a]] ]/; FreeQ2[{b},{Subscript,Superscript}];
-
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol],
-              Momentum[b_Plus,dim_Symbol]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                    Tbox[ "(",Momentum[b,dim], ")"],
-                    Tbox[LorentzIndex[a]] ];/ FreeQ2[{b},{Subscript,Superscript}];
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_],
-              Momentum[b:Except[_Subscript | _Superscript]] +c:Except[_Subscript | _Superscript]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                    RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[b+c]]],
-                  	{ToBoxes[")"]}]],
-                    Tbox[LorentzIndex[a]] ];
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol-4],
-              Momentum[b:Except[_Subscript | _Superscript],dim_Symbol-4] +c:Except[_Subscript | _Superscript]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-
-            	  	RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
-                  	OverscriptBox[TBox[#], "^"]} &, List @@ MomentumExpand[Momentum[b+c,dim-4]]],
-                  	{ToBoxes[")"]}]],
-                    Tbox[LorentzIndex[a]] ];
-
-Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim_Symbol],
-              Momentum[b:Except[_Subscript | _Superscript], dim_Symbol] +c:Except[_Subscript | _Superscript]
-                 ],
-             TraditionalForm
-            ] := SuperscriptBox[
-                    Tbox[ "(",Momentum[b+c,dim], ")"], Tbox[LorentzIndex[a]] ];
 
 (* ------------------------------------------------------------------------ *)
-
-MakeBoxes[Pair[Momentum[a_,___],
-               Momentum[a_,___]
-              ]^n_Integer, TraditionalForm] := SuperscriptBox[TBox[a], #]&@@{2 n};
-
 
 PartialD[xx__] := PartialD @@ (LorentzIndex /@ {xx}) /;
                  FreeQ2[{xx}, {LorentzIndex, Momentum, OPEDelta, RowBox,
@@ -1918,35 +1765,40 @@ SOD /:
       ];
 
 SP[a_] := SP[a,a];
+SPD[a_] := SPD[a,a];
+SPE[a_] := SPE[a,a];
 
-MakeBoxes[SP[a_,a_], TraditionalForm] := SuperscriptBox[
-   RowBox[{"(",TBox[a],")"}], 2] /; !FreeQ[a, Plus];
+
+(*  TraditionalForm representation of the scalar products
+	in the FCE notation														*)
+(* ------------------------------------------------------------------------ *)
 
 SP/: MakeBoxes[SP[a_, b_], TraditionalForm] :=
     ToBoxes[ MakeContext["FeynCalcInternal"][SP[a,b]],
             TraditionalForm];
 
-SPD[a_] := SPD[a,a];
-
-SPE[a_] := SPE[a,a];
-
-MakeBoxes[SPD[a_,a_], TraditionalForm] := SuperscriptBox[
-   RowBox[{"(",TBox[a],")"}], 2] /; !FreeQ[a, Plus];
-
 SPD/: MakeBoxes[SPD[a_, b_], TraditionalForm] :=
-    ToBoxes[
-           MakeContext["FeynCalcInternal"][SPD[a,b]],
-            TraditionalForm] ;
+    ToBoxes[ MakeContext["FeynCalcInternal"][SPD[a,b]],
+            TraditionalForm];
 
-MakeBoxes[SPD[a_,a_]^n_Plus, TraditionalForm] := SuperscriptBox[
-   RowBox[{"(",SuperscriptBox[TBox[a], 2],")"}], TBox[n]];
+SPE/: MakeBoxes[SPE[a_, b_], TraditionalForm] :=
+    ToBoxes[ MakeContext["FeynCalcInternal"][SPE[a,b]],
+            TraditionalForm];
 
-MakeBoxes[SPD[a_,a_]^n_Times, TraditionalForm] := SuperscriptBox[
-   RowBox[{"(",SuperscriptBox[TBox[a], 2],")"}], TBox[n]];
 
-MakeBoxes[SPD[a_,a_]^n_Integer, TraditionalForm] := (SuperscriptBox[TBox[a], #]&@@{2 n}
- ) /; FreeQ[a, Plus];
+MakeBoxes[SP[a_,b_]^n_Integer?Positive, TraditionalForm] :=
+    ToBoxes[ MakeContext["FeynCalcInternal"][SP[a,b]^n],
+            TraditionalForm];
 
+MakeBoxes[SPD[a_,b_]^n_Integer?Positive, TraditionalForm] :=
+    ToBoxes[ MakeContext["FeynCalcInternal"][SPD[a,b]^n],
+            TraditionalForm];
+
+MakeBoxes[SPE[a_,b_]^n_Integer?Positive, TraditionalForm] :=
+    ToBoxes[ MakeContext["FeynCalcInternal"][SPE[a,b]^n],
+            TraditionalForm];
+
+(* ------------------------------------------------------------------------ *)
 
 HoldPattern[Spinor[a__,{1}]] := Spinor[a];
 
