@@ -662,14 +662,58 @@ DiracGamma[LorentzIndex[x_, _Symbol]] :=
 DiracGamma[LorentzIndex[x]]; (* D, 4 *)
 
 
+
+(* TraditionalForm representation of the Dirac slashes in the FCI notation *)
+(* ------------------------------------------------------------------------ *)
+
+(* Normal momenta *)
+
 DiracGamma /:
-  MakeBoxes[ DiracGamma[a_, di___],
-             TraditionalForm ] :=
-  MakeBoxes[
-  Pair[
-  Momentum["\[Gamma]",di],a],
-  TraditionalForm
-           ] /; !FreeQ[a, Momentum];
+  MakeBoxes[ DiracGamma[ Momentum[x:Except[_Subscript | _Superscript | _Plus]], ___Rule], TraditionalForm ] :=
+	RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[x]], "_"]}];
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x:Except[_Subscript | _Superscript | _Plus], dim_Symbol-4], dim_Symbol-4, ___Rule], TraditionalForm ] :=
+	RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[x, dim-4]], "^"]}];
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x:Except[_Subscript | _Superscript | _Plus], dim_Symbol], dim_Symbol, ___Rule], TraditionalForm ] :=
+	Tbox["\[Gamma]", "\[CenterDot]", Momentum[x, dim]];
+
+(* Subscripted momenta*)
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x_Subscript], ___Rule], TraditionalForm ] :=
+	RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", SubscriptBox[OverscriptBox[Tbox[Momentum[x[[1]]]], "_"], ToBoxes[x[[2]]]]}];
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x_Subscript, dim_Symbol-4], dim_Symbol-4, ___Rule], TraditionalForm ] :=
+	RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", SubscriptBox[OverscriptBox[Tbox[Momentum[x[[1]],dim-4]], "^"], ToBoxes[x[[2]]]]}];
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x_Subscript, dim_Symbol], dim_Symbol, ___Rule], TraditionalForm ] :=
+	RowBox[{"\[Gamma]", "\[CenterDot]", SubscriptBox[Tbox[Momentum[x[[1]],dim]], ToBoxes[x[[2]]]]}];
+
+(* Sums of momenta*)
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x_Plus], ___Rule], TraditionalForm ] :=
+	RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[Tbox[#], "_"]} &, List @@ MomentumExpand[Momentum[x]]],
+                  	{ToBoxes[")"]}]]}];
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x_Plus, dim_Symbol-4], dim_Symbol-4, ___Rule], TraditionalForm ] :=
+	RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[Tbox[#], "^"]} &, List @@ MomentumExpand[Momentum[x,dim-4]]],
+                  	{ToBoxes[")"]}]]}];
+
+DiracGamma /:
+  MakeBoxes[ DiracGamma[ Momentum[x_Plus, dim_Symbol], dim_Symbol, ___Rule], TraditionalForm ] :=
+	RowBox[{"\[Gamma]", "\[CenterDot]", Tbox["(",Momentum[x,dim], ")"]}];
+
+(* TraditionalForm representation of the Dirac matrices in the FCI notation *)
+(* ------------------------------------------------------------------------ *)
 
 DiracGamma /:
   MakeBoxes[ DiracGamma[lo_[in_], ___Rule], TraditionalForm ] :=
@@ -688,6 +732,9 @@ DiracGamma /:
            ] :=
       SuperscriptBox[RowBox[{OverscriptBox["\[Gamma]","^"]}], Tbox[in]
                     ] /; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
+
+(* TraditionalForm representation of the transposed Dirac matrices *)
+(* ------------------------------------------------------------------------ *)
 
 DiracGammaT /: Transpose[DiracGammaT[a__]] := DiracGamma[a];
 
@@ -1006,16 +1053,10 @@ FVD /: MakeBoxes[FVD[a_Subscript, b_], TraditionalForm] :=
 FVD /: MakeBoxes[FVD[a_, b_], TraditionalForm] :=
             SuperscriptBox[Tbox[a], Tbox[b]];
 
+GA5 = DiracGamma[5];
+
 GA[DOT[x_,y__]] := Map[GA,DOT[x,y]];
 GA[x_, y__] := DOT @@ Map[GA,{x,y}];
-
-GA /:
-  MakeBoxes[ GA[x_], TraditionalForm ] := If[$Covariant,
-                   SubscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]],
-                   SuperscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]]
-                                            ];
-
-GA5 = DiracGamma[5];
 
 GAD[DOT[x_,y__]] := Map[GAD, DOT[x,y]];
 GAD[x_, y__] := DOT @@ Map[GAD,{x,y}];
@@ -1023,6 +1064,14 @@ GAD[x_, y__] := DOT @@ Map[GAD,{x,y}];
 GAE[DOT[x_,y__]] := Map[GAE, DOT[x,y]];
 GAE[x_, y__] := DOT @@ Map[GAE,{x,y}];
 
+(* TraditionalForm representation of the Dirac matrices in the FCE notation *)
+(* ------------------------------------------------------------------------ *)
+
+GA /:
+  MakeBoxes[ GA[x_], TraditionalForm ] := If[$Covariant,
+                   SubscriptBox[OverscriptBox["\[Gamma]","_"],MakeBoxes[x,TraditionalForm]],
+                   SuperscriptBox[OverscriptBox["\[Gamma]","_"],MakeBoxes[x,TraditionalForm]]
+                                            ];
 GAD /:
   MakeBoxes[ GAD[x_], TraditionalForm ] := If[$Covariant,
              SubscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]],
@@ -1030,10 +1079,11 @@ GAD /:
                                              ];
 GAE /:
   MakeBoxes[ GAE[x_], TraditionalForm ] := If[$Covariant,
-             SubscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]],
-             SuperscriptBox["\[Gamma]",MakeBoxes[x,TraditionalForm]]
+             SubscriptBox[OverscriptBox["\[Gamma]","^"],MakeBoxes[x,TraditionalForm]],
+             SuperscriptBox[OverscriptBox["\[Gamma]","^"],MakeBoxes[x,TraditionalForm]]
                                              ];
 
+(* ------------------------------------------------------------------------ *)
 
 GaugeField /: MakeBoxes[GaugeField, TraditionalForm] := "A";
 
@@ -1049,58 +1099,48 @@ GluonField /: MakeBoxes[GluonField, TraditionalForm] := "A";
 
 
 GS[DOT[x_,y__]] := Map[GS,DOT[x,y]];
-
 GS[x_, y__] := DOT @@ Map[GS,{x,y}];
-
-GS/:
-  MakeBoxes[ GS[a_/;FreeQ[a,Plus]],
-             TraditionalForm ] := Tbox["\[Gamma]", "\[CenterDot]", a];
-GS/:
-  MakeBoxes[ GS[a_/;!FreeQ[a,Plus]],
-             TraditionalForm ] :=
-  Tbox["\[Gamma]", "\[CenterDot]", "(",a,")"];
-
-GS/:
-  MakeBoxes[ GS[a_, b__],
-             TraditionalForm
-           ] := Tbox@@Map[gsg, {a,b}]
-
 GSD[DOT[x_,y__]] := Map[GSD, DOT[x,y]];
 GSD[x_, y__] := DOT @@ Map[GSD, {x, y}];
-
 GSE[DOT[x_,y__]] := Map[GSE, DOT[x,y]];
 GSE[x_, y__] := DOT @@ Map[GSE, {x, y}];
 
-GSD/:
-  MakeBoxes[ GSD[a_/;FreeQ[a,Plus]],
-             TraditionalForm ] := Tbox["\[Gamma]", "\[CenterDot]", a];
-GSD/:
-  MakeBoxes[ GSD[a_/;!FreeQ[a,Plus]],
+
+(* TraditionalForm representation of the Dirac slashes in the FCE notation *)
+(* ------------------------------------------------------------------------ *)
+
+GS/:
+  MakeBoxes[GS[a:Except[_Plus]],
              TraditionalForm ] :=
-  Tbox["\[Gamma]", "\[CenterDot]", "(",a,")"];
-
-GSE/:
-  MakeBoxes[ GSE[a_/;FreeQ[a,Plus]],
-             TraditionalForm ] := Tbox["\[Gamma]", "\[CenterDot]", a];
-GSE/:
-  MakeBoxes[ GSE[a_/;!FreeQ[a,Plus]],
+             RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[a]], "_"]}];
+GS/:
+  MakeBoxes[GS[a_Plus],
              TraditionalForm ] :=
-  Tbox["\[Gamma]", "\[CenterDot]", "(",a,")"];
-
-gsg[a_]:=If[FreeQ[y, Plus], Tbox["\[Gamma]", a],
-                            Tbox["\[Gamma]", "(",a,")"]
-           ];
+             RowBox[{OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[TBox[#], "_"]} &, List @@ MomentumExpand[Momentum[a]]],
+                  	{ToBoxes[")"]}]]}];
 
 GSD/:
-  MakeBoxes[ GSD[a_, b__],
-             TraditionalForm
-           ] := Tbox@@Map[gsg, {a,b}]
+  MakeBoxes[GSD[a:Except[_Plus]],
+			TraditionalForm ] :=
+			Tbox["\[Gamma]", "\[CenterDot]", Momentum[a,D] ];
+
+GSD/:
+  MakeBoxes[GSD[a_Plus], TraditionalForm ] :=
+			RowBox[{"\[Gamma]", "\[CenterDot]", Tbox["(",Momentum[a,dim], ")"]}];
 
 GSE/:
-  MakeBoxes[ GSE[a_, b__],
-             TraditionalForm
-           ] := Tbox@@Map[gsg, {a,b}]
+  MakeBoxes[GSE[a:Except[_Plus]],
+             TraditionalForm ] :=
+             RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", OverscriptBox[Tbox[Momentum[a, D-4]], "^"]}];
 
+GSE/:
+  MakeBoxes[GSE[a_Plus], TraditionalForm ] :=
+			RowBox[{OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", RowBox[Join[{ToBoxes["("]}, Rest@Flatten@Map[{ToBoxes["+"],
+                  	OverscriptBox[Tbox[#], "^"]} &, List @@ MomentumExpand[Momentum[a,dim-4]]],
+                  	{ToBoxes[")"]}]]}]
+
+(* ------------------------------------------------------------------------ *)
 
  Gstrong /:
    MakeBoxes[Gstrong, TraditionalForm] :=
