@@ -609,7 +609,7 @@ DiracGamma[x_ LorentzIndex[pe_, di___], dii___] :=
 x DiracGamma[LorentzIndex[pe, di], dii];
 DiracGamma[x_[y_, di___], 4] := DiracGamma[x[y,di]];
 
-DiracGamma[x_Integer] := DiracGamma[ExplicitLorentzIndex[x]]/; (x=!=5 && x=!=6 && x=!=7);
+DiracGamma[x_Integer, y___] := DiracGamma[ExplicitLorentzIndex[x],y]/; (x=!=5 && x=!=6 && x=!=7);
 
 DiracGamma[5, __] := DiracGamma[5];
 DiracGamma[6, __] := DiracGamma[6];
@@ -670,10 +670,6 @@ DiracGamma /:
   Momentum["\[Gamma]",di],a],
   TraditionalForm
            ] /; !FreeQ[a, Momentum];
-
-DiracGamma /:
-  MakeBoxes[ DiracGamma[n_Integer, ___], TraditionalForm ] :=
-   SuperscriptBox["\[Gamma]", n];
 
 DiracGamma /:
   MakeBoxes[ DiracGamma[lo_[in_], ___Rule], TraditionalForm ] :=
