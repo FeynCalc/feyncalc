@@ -226,28 +226,55 @@ drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
 drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
        OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
+(* Contractions of neighbouring Dirac matrices in D, 4 and D-4 dimensions 	*)
+(* ------------------------------------------------------------------------ *)
 
-(*g^mu g_mu in 4 and D or D-4 dimensions*)
+(* D and D *)
+dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
+        DiracGamma[LorentzIndex[c_, dim_Symbol ], dim_Symbol], d___] :=
+    dim ds[ b,d ];
+
+(* 4 and 4 *)
+dr[b___,DiracGamma[LorentzIndex[c_]], DiracGamma[LorentzIndex[c_]], d___] :=
+    4 ds[ b,d ];
+
+(* D-4 and D-4 *)
+dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
+        DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
+    (dim-4) ds[ b,d ];
+
+(* D and 4 *)
+dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
+        DiracGamma[LorentzIndex[c_]], d___] :=
+    4 ds[ b,d ];
+
+
+(* 4 and D *)
 dr[b___,DiracGamma[LorentzIndex[c_]],
-        DiracGamma[LorentzIndex[c_]],d___] := 4 ds[ b,d ];
+        DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol], d___] :=
+    4 ds[ b,d ];
 
-(*g^mu g_mu in D dimensions*)
-dr[b___,DiracGamma[LorentzIndex[c_,di_],di_],
-        DiracGamma[LorentzIndex[c_,di_],di_],d___] := di ds[ b,d ];
+(* D-4 and D *)
+dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
+        DiracGamma[LorentzIndex[c_, dim_], dim_], d___] :=
+	(dim-4) ds[ b,d ];
 
-(*g^mu g_mu in D and D-4 dimensions*)
-dr[b___,DiracGamma[LorentzIndex[c_,di_],di_],
-        DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],d___]:=(di-4) ds[ b,d ];
+(* D and D-4 *)
+dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
+        DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
+	(dim-4) ds[ b,d ];
 
-(*g^mu g_mu in 4 and D-4 dimensions*)
+(* D-4 and 4 *)
+dr[___,DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
+        DiracGamma[LorentzIndex[c_]], ___] :=
+	0;
+
+(* 4 and D-4 *)
 dr[___,DiracGamma[LorentzIndex[c_]],
-        DiracGamma[LorentzIndex[c_,di_ -4],di_ -4],___] := 0;
+        DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], ___] :=
+	0;
 
-(*g^mu g_mu in 4 and D or D-4 dimensions*)
-(*needs correction*)
-dr[b___,DiracGamma[LorentzIndex[c_]],
-        DiracGamma[LorentzIndex[c_,di_ ],di_ ],d___] := 4 ds[ b,d ];
-
+(* ------------------------------------------------------------------------ *)
 
 
 fdim[]=4;    (* fdimdef *)
