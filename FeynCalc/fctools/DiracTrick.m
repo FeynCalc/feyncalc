@@ -282,11 +282,56 @@ fdim[dimi_]:=dimi;
 
 dcheck[dii_, diii__] := MemSet[dcheck[dii,diii], If[Head[dii]===Symbol, True, If[Union[{dii, diii}]==={dii}, True, False]]];
 
-(*g^mu g^nu g_mu for arbitrary dimensions*)
+(* Simplification for g^mu ... g_mu where the first and the last
+   matrix are in different dimensions 										*)
+(* ------------------------------------------------------------------------ *)
+
+(* D and 4  -> 4 *)
+dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
+		  DiracGamma[LorentzIndex[c_]], f___ ]:=
+	dr[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+
+(* 4 and D -> 4 *)
+dr[ b___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
+		  DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], f___ ]:=
+	dr[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+
+(* D and D-4 -> D-4 *)
+dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], f___ ]:=
+	dr[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
+	d,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], f];
+
+(* D-4 and D -> D-4 *)
+dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
+    	  DiracGamma[LorentzIndex[c_, dimD_Symbol],dimD_Symbol],f___ ]:=
+	dr[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
+	d, DiracGamma[LorentzIndex[c, dimD-4], dimD-4],f];
+
+(* 4 and D-4 -> 0 *)
+dr[ ___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_]], ___ ]:=
+	0;
+
+(* D-4 and 4 -> 0 *)
+dr[ ___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ]:=
+	0;
+
+(* Evaluation of g^mu g^nu g_mu for Dirac matrices in different
+   dimensions																*)
+(* ------------------------------------------------------------------------ *)
+
 dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
         DiracGamma[x_[y__],di1___],
         DiracGamma[LorentzIndex[c_,dI___],dI___],d___
   ] := ( (2-fdim[dI]) ds[b,DiracGamma[x[y],di1],d] ) /; dcheck[dI, di1];
+
+
+
+
+
+
 
 (*g^mu g^nu g^rho g_mu for arbitrary dimensions*)
 dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
