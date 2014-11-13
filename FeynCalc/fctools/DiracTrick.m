@@ -39,7 +39,7 @@ MemSet := MemSet = MakeContext["MemSet"];
 NonCommFreeQ := NonCommFreeQ = MakeContext["NonCommFreeQ"];
 PairContract := PairContract          = MakeContext["PairContract"];
 Spinor := Spinor = MakeContext["CoreObjects","Spinor"];
-
+ExplicitLorentzIndex:= ExplicitLorentzIndex = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 MakeContext[ FreeQ2, ChargeConjugationMatrix ];
 
 Options[DiracTrick] = {Expanding -> False};
@@ -289,23 +289,23 @@ dcheck[dii_, diii__] := MemSet[dcheck[dii,diii], If[Head[dii]===Symbol, True, If
 (* D and 4  -> 4 *)
 dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
 		  DiracGamma[LorentzIndex[c_]], f___ ]:=
-	dr[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+	ds[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
 
 (* 4 and D -> 4 *)
 dr[ b___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
 		  DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], f___ ]:=
-	dr[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+	ds[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
 
 (* D and D-4 -> D-4 *)
 dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
           DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], f___ ]:=
-	dr[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
+	ds[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
 	d,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], f];
 
 (* D-4 and D -> D-4 *)
 dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
     	  DiracGamma[LorentzIndex[c_, dimD_Symbol],dimD_Symbol],f___ ]:=
-	dr[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
+	ds[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
 	d, DiracGamma[LorentzIndex[c, dimD-4], dimD-4],f];
 
 (* 4 and D-4 -> 0 *)
@@ -341,13 +341,23 @@ dr[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
    dimensions																*)
 (* ------------------------------------------------------------------------ *)
 
-dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
-        DiracGamma[x_[y__],di1___],
-        DiracGamma[LorentzIndex[c_,dI___],dI___],d___
-  ] := ( (2-fdim[dI]) ds[b,DiracGamma[x[y],di1],d] ) /; dcheck[dI, di1];
 
+(* D, D, D or 4, 4, 4 or D-4, D-4, D-4
+   or D, D-4, D or D, 4, D *)
+dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
+          DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim2_ : 4] ,dim2_ : 4],
+          DiracGamma[LorentzIndex[c_, dim1_], dim1_ : 4], d___] :=
+          		(2 - dim1) ds[b,DiracGamma[x[y, dim2], dim2], d]/;
+          						(dim1===dim2 || dim2 === dim1-4 || dim2 ===4) &&
+          						MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
+          						MatchQ[dim2, _Symbol | _Symbol-4 | 4 ];
 
-
+(* D-4, D, D-4 or 4, D, 4 *)
+dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
+          DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim2_Symbol], dim2_Symbol],
+          DiracGamma[LorentzIndex[c_, dim1_ : 4],  dim1_ : 4], d___] :=
+          		- dim1 ds[b,DiracGamma[x[y,dim2],dim2],d] +
+          		2 ds[b,DiracGamma[x[y,dim1],dim1],d]/; (dim1 === dim2-4 || dim1 ===4);
 
 
 
