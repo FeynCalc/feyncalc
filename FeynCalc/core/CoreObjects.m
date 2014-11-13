@@ -711,6 +711,13 @@ DiracGamma /:
    SubscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in,dim1]]]
   ]/; (lo === LorentzIndex || lo === ExplicitLorentzIndex);
 
+DiracGamma /:
+  MakeBoxes[ DiracGamma[(a : (5 | 6 | 7))], TraditionalForm ] :=
+  If [$Covariant===False,
+   SuperscriptBox[RowBox[{dgammaRep[4]}], Tbox[a]],
+   SubscriptBox[RowBox[{dgammaRep[4]}], Tbox[a]]
+  ];
+
 (* TraditionalForm representation of the transposed Dirac matrices *)
 (* ------------------------------------------------------------------------ *)
 
