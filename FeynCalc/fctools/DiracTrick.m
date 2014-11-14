@@ -429,21 +429,62 @@ dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
 						DiracGamma[x2[y2, dim2], dim2], d]/;
           				(dim1 === dim2-4 || dim1 ===4);
 
-(*g^mu g^nu g^rho g^sigma g^tau g_mu for arbitrary dimensions*)
-dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
-        DiracGamma[x1_[y1__],d1___], DiracGamma[x2_[y2__],d2___],
-        DiracGamma[x3_[y3__],d3___], DiracGamma[x4_[y4__],d4___],
-        DiracGamma[LorentzIndex[c_,dI___],dI___],d___
-   ] := ( 2 ds[b,DiracGamma[x3[y3],d3], DiracGamma[x2[y2],d2],
-                   DiracGamma[x1[y1],d1], DiracGamma[x4[y4],d4],
-                 d] +
-            2 ds[b,DiracGamma[x4[y4],d4], DiracGamma[x1[y1],d1],
-                   DiracGamma[x2[y2],d2], DiracGamma[x3[y3],d3],
-                 d] +
-       (fdim[dI]-4) ds[b,DiracGamma[x1[y1],d1], DiracGamma[x2[y2],d2],
-                         DiracGamma[x3[y3],d3], DiracGamma[x4[y4],d4],
-                     d]
-         ) /; dcheck[dI, d1,d2,d3,d4];
+(* Evaluation of g^mu g^nu g^rho g^sigma g^tau g_mu for Dirac matrices
+   in different dimensions													*)
+(* ------------------------------------------------------------------------ *)
+
+(* D, D, D, D, D, D or 4, 4, 4, 4, 4, 4 or D-4, D-4, D-4, D-4, D-4, D-4
+	or D, D-4, D-4, D-4, D-4, D or D, 4, 4, 4, 4, D *)
+dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
+          DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_, dim2_ : 4] , dim2_ : 4],
+          DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim2_ : 4] , dim2_ : 4],
+          DiracGamma[(x3: LorentzIndex | ExplicitLorentzIndex | Momentum)[y3_, dim2_ : 4] , dim2_ : 4],
+          DiracGamma[(x4: LorentzIndex | ExplicitLorentzIndex | Momentum)[y4_, dim2_ : 4] , dim2_ : 4],
+          DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4], d___] :=
+          		 (dim1 - 4) ds[b, DiracGamma[x1[y1, dim2], dim2],
+          		    		      DiracGamma[x2[y2, dim2], dim2],
+          		    		      DiracGamma[x3[y3, dim2], dim2],
+          		    		      DiracGamma[x4[y4, dim2], dim2], d] +
+          		    		    2 ds[b, DiracGamma[x3[y3, dim2], dim2],
+          		    		        	DiracGamma[x2[y2, dim2], dim2],
+          		    		        	DiracGamma[x1[y1, dim2], dim2],
+          		    		        	DiracGamma[x4[y4, dim2], dim2], d] +
+								2 ds[b, DiracGamma[x4[y4, dim2], dim2],
+          		    		        	DiracGamma[x1[y1, dim2], dim2],
+          		    		        	DiracGamma[x2[y2, dim2], dim2],
+          		    		        	DiracGamma[x3[y3, dim2], dim2], d]/;
+          								(dim1===dim2 || dim2 === dim1-4 || dim2 ===4) &&
+          								MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
+          								MatchQ[dim2, _Symbol | _Symbol-4 | 4 ];
+
+(* D-4, D, D, D, D, D-4 or 4, D, D, D, D, 4 *)
+dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
+          DiracGamma[(x1: LorentzIndex | ExplicitLorentzIndex | Momentum)[y1_, dim2_Symbol], dim2_Symbol],
+          DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim2_Symbol], dim2_Symbol],
+          DiracGamma[(x3: LorentzIndex | ExplicitLorentzIndex | Momentum)[y3_, dim2_Symbol], dim2_Symbol],
+          DiracGamma[(x4: LorentzIndex | ExplicitLorentzIndex | Momentum)[y4_, dim2_Symbol], dim2_Symbol],
+          DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4], d___] :=
+          		dim1  ds[b, DiracGamma[x1[y1, dim2], dim2],
+							DiracGamma[x2[y2, dim2], dim2],
+							DiracGamma[x3[y3, dim2], dim2],
+							DiracGamma[x4[y4, dim2], dim2], d] -
+          		2 ds[b, DiracGamma[x1[y1, dim1], dim1],
+						DiracGamma[x2[y2, dim2], dim2],
+						DiracGamma[x3[y3, dim2], dim2],
+						DiracGamma[x4[y4, dim2], dim2], d] +
+				2 ds[b, DiracGamma[x2[y2, dim1], dim1],
+						DiracGamma[x1[y1, dim2], dim2],
+						DiracGamma[x3[y3, dim2], dim2],
+						DiracGamma[x4[y4, dim2], dim2], d] -
+				2 ds[b, DiracGamma[x3[y3, dim1], dim1],
+						DiracGamma[x1[y1, dim2], dim2],
+						DiracGamma[x2[y2, dim2], dim2],
+						DiracGamma[x4[y4, dim2], dim2], d] +
+				2 ds[b, DiracGamma[x4[y4, dim1], dim1],
+						DiracGamma[x1[y1, dim2], dim2],
+						DiracGamma[x2[y2, dim2], dim2],
+						DiracGamma[x3[y3, dim2], dim2], d]/;
+          				(dim1 === dim2-4 || dim1 ===4);
 
 (*g^mu g^nu g^rho g^sigma g^tau g^kappa g_mu for arbitrary dimensions*)
 dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
