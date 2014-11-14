@@ -318,6 +318,25 @@ dr[ ___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
           DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ]:=
 	0;
 
+
+(* Simplifications for g^mu g^nu_1 ... g^nu_n g_mu where g^mu is in 4 and
+ 	g^nu_i are in D-4 dimensions or vice versa.								*)
+(* ------------------------------------------------------------------------ *)
+
+(* 4, (... D-4 ... ), 4 *)
+dr[b___ , DiracGamma[LorentzIndex[c_]],
+          ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_Symbol-4] , dim_Symbol-4]..,
+          DiracGamma[LorentzIndex[c_]], d___] :=
+          		4 (-1)^Length[{ch}] ds[b,ch, d];
+
+(* D-4, (... 4 ... ), D-4 *)
+dr[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
+          ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+          DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
+          		(dim - 4) (-1)^Length[{ch}] ds[b,ch, d];
+
+
+
 (* Evaluation of g^mu g^nu g_mu for Dirac matrices in different
    dimensions																*)
 (* ------------------------------------------------------------------------ *)
