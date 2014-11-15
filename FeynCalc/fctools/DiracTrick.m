@@ -274,14 +274,6 @@ dr[___,DiracGamma[LorentzIndex[c_]],
         DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], ___] :=
 	0;
 
-(* ------------------------------------------------------------------------ *)
-
-
-fdim[]=4;    (* fdimdef *)
-fdim[dimi_]:=dimi;
-
-dcheck[dii_, diii__] := MemSet[dcheck[dii,diii], If[Head[dii]===Symbol, True, If[Union[{dii, diii}]==={dii}, True, False]]];
-
 (* Simplification for g^mu ... g_mu where the first and the last
    matrix are in different dimensions 										*)
 (* ------------------------------------------------------------------------ *)
@@ -487,6 +479,11 @@ dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
           				(dim1 === dim2-4 || dim1 ===4);
 
 (*g^mu g^nu g^rho g^sigma g^tau g^kappa g_mu for arbitrary dimensions*)
+fdim[]=4;    (* fdimdef *)
+fdim[dimi_]:=dimi;
+dcheck[dii_, diii__] := MemSet[dcheck[dii,diii],
+    If[Head[dii]===Symbol, True, If[Union[{dii, diii}]==={dii}, True, False]]];
+
 dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
         DiracGamma[x1_[y1__],d1___], DiracGamma[x2_[y2__],d2___],
         DiracGamma[x3_[y3__],d3___], DiracGamma[x4_[y4__],d4___],
@@ -509,16 +506,18 @@ dr[b___,DiracGamma[LorentzIndex[c_,dI___],dI___],
                         DiracGamma[x5[y5],d5],
                     d] ) /; dcheck[dI, d1,d2,d3,d4,d5];
 
+
+(* g^mu g^nu_1 ... g^nu_2i+1 g_mu  -> -2 g^nu_2i+1 ... g^nu_1, where
+   all matrices are in 4 dimensions										*)
+dr[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[_]].. ,
+         DiracGamma[LorentzIndex[c_]],f___ ] :=
+    -2 ds @@ Join[ {b},Reverse[{d}],{f} ] /; OddQ[Length[{d}]];
+
 (* Slash(p)*Slash(p), where p in the first slash is in D1 and in the second one in D2 dimensions.
    The dimensions of the gammas (no g^5 here!) doesn't matter  *)
 dr[b___,DiracGamma[Momentum[c_,dim1___],___],
         DiracGamma[Momentum[c_,dim2___],___],d___ ] :=
         scev[Momentum[c,dim1],Momentum[c,dim2]] ds[b,d];
-
-(* Slash(p)*[odd # of gammas (no g^5 here!)]*Slash(p), everything is in 4 dimensions  *)
-dr[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[_]].. ,
-         DiracGamma[LorentzIndex[c_]],f___ ] :=
-    -2 ds @@ Join[ {b},Reverse[{d}],{f} ] /; OddQ[Length[{d}]];
 
 (*Slash(p) Slash(k) Slash(p), where gamma (no g^5 here!) in the first slash is in D1 dimensions, in the second one D2 dimensions and in the third one
 in D3 dimensions. The momentum vectors are all in 4 dimensions*)
@@ -527,8 +526,7 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
          DiracGamma[Momentum[c__],___],d___ ] := (
 2 scev[Momentum[c],Momentum[x]] ds[b,DiracGamma[Momentum[c],dim],d]
 - scev[Momentum[c],Momentum[c]] ds[b,DiracGamma[Momentum[x],dii],d]
-                                                  );
-
+                                              );
 
 (* #################################################################### *)
 (*                             Main33                                 *)
@@ -602,6 +600,20 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
              DiracGamma[ww[y],dim],z
         ] + 2 drCO[b, DiracGamma[ww[y],di-4], w,z] )/.drCO->ds;
 
+(* g^mu g^nu ...  g_mu  = - g^nu g^mu ... g_mu + 2 eta^mu~nu ... g_mu.
+   This applies only if g^mu and g_mu are in different dimensions. *)
+   drCO[ b___,DiracGamma[lv_[c_,dim___],dim___],
+              DiracGamma[vl_[x__],dii___],d___,
+              DiracGamma[lv_[c_,di___],di___],f___
+       ]:=(-ds[b, DiracGamma[vl[x],dii],
+                  DiracTrick[DiracGamma[lv[c,dim],dim],d,
+                     DiracGamma[lv[c,di],di]], f
+                ] + 2 coneins[Pair[vl[x], lv[c,dim]] *
+                              ds[ b,d,DiracGamma[lv[c,di],di],f ]
+                             ]
+           ) /; {dim} =!= {di};
+
+
 (*g^mu g^i1 ... g^in g^nu g_mu = 2 g^in .... g^i1 g^nu + 2 g^nu g^in .... g^i1,
 where all the matrices (no g^5 here!) are in 4 dimensions and n is od*)
    drCO[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[__]].. ,
@@ -646,21 +658,6 @@ where all the matrices (no g^5 here!) are in 4 dimensions and n is od*)
                        {idrCO,1,lddrCO-1},{jdrCO,idrCO+1,lddrCO}
                             ]/.Pair->scev
          ] /;(Length[{d}]>5);
-
-(* g^mu g^nu ...  g_mu  = - g^nu g^mu ... g_mu + 2 eta^mu~nu ... g_mu.
-   This applies only if g^mu and g_mu are in different dimensions. *)
-   drCO[ b___,DiracGamma[lv_[c_,dim___],dim___],
-              DiracGamma[vl_[x__],dii___],d___,
-              DiracGamma[lv_[c_,di___],di___],f___
-       ]:=(-ds[b, DiracGamma[vl[x],dii],
-                  DiracTrick[DiracGamma[lv[c,dim],dim],d,
-                     DiracGamma[lv[c,di],di]], f
-                ] + 2 coneins[Pair[vl[x], lv[c,dim]] *
-                              ds[ b,d,DiracGamma[lv[c,di],di],f ]
-                             ]
-           ) /; {dim} =!= {di};
-
-
 
 (* ************************************************************** *)
  SetAttributes[drS,Flat];
