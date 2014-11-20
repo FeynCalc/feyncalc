@@ -1442,19 +1442,19 @@ Pair /:
 
                        Head[a]=!=Plus && Head[b]===Plus,
                        If[$PairBrackets === True && a=!=b,
-                       Tbox["(",Momentum[a,dim],"\[CenterDot]",
-                            "(",Momentum[b,dim1],")",")"],
-                       Tbox[Momentum[a,dim],"\[CenterDot]",
-                            "(",Momentum[b,dim1],")"]
+                       Tbox["(",Momentum[a,dim1],"\[CenterDot]",
+                            "(",Momentum[b,dim2],")",")"],
+                       Tbox[Momentum[a,dim1],"\[CenterDot]",
+                            "(",Momentum[b,dim2],")"]
                        ],
 
 
                        Head[a]===Plus && Head[b]=!=Plus,
                        If[$PairBrackets === True && a=!=b,
-                       Tbox["(","(",Momentum[a,dim2],")","\[CenterDot]",
-                            Momentum[b,dim],")"],
-                       Tbox["(",Momentum[a,dim2],")","\[CenterDot]",
-                            Momentum[b,dim]]
+                       Tbox["(","(",Momentum[a,dim1],")","\[CenterDot]",
+                            Momentum[b,dim2],")"],
+                       Tbox["(",Momentum[a,dim1],")","\[CenterDot]",
+                            Momentum[b,dim2]]
                        ],
 
                        Head[a]===Plus && Head[b]===Plus,
