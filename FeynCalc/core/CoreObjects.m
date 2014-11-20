@@ -1233,6 +1233,10 @@ Momentum[Momentum[x_, di___], ___] := Momentum[x, di];
 (* TraditionalForm representation of the Momenta *)
 (* ------------------------------------------------------------------------ *)
 
+Momentum /:
+   MakeBoxes[ Momentum[p_Polarization], TraditionalForm
+            ] :=  MakeBoxes[p, TraditionalForm];
+
 (*Normal momenta *)
 
 Momentum /:
@@ -1472,7 +1476,7 @@ Pair /:
       ExplicitLorentzIndex)[a__],
       Momentum[
       Polarization[
-                              b_,Complex[0,1]],___]
+                              b_,Complex[0,1], OptionsPattern[]],___]
                  ], TraditionalForm
             ] := RowBox[{
         SubscriptBox["\[CurlyEpsilon]",
@@ -1485,7 +1489,7 @@ Pair /:
       ExplicitLorentzIndex)[a__],
       Momentum[
       Polarization[
-                              b_,Complex[0,-1]],___]
+                              b_,Complex[0,-1], OptionsPattern[]],___]
                  ], TraditionalForm
             ] := RowBox[{
         SubsuperscriptBox["\[CurlyEpsilon]",
