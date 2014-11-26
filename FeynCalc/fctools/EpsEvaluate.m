@@ -32,7 +32,7 @@ LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 
-MakeContext[ Cases2, ExpandScalarProduct, FeynCalcInternal, PairContract];
+MakeContext[ Cases2, ExpandScalarProduct, FeynCalcInternal, PairContract, MomentumExpand];
 
 EpsEvaluate[x_] := x /; FreeQ2[x,{LeviCivita, LC,LCD,Eps}];     (*EpsEvaluatedef*)
 EpsEvaluate[ix_] := Block[{x = ix, nx,cx, tx, rud},
@@ -45,7 +45,7 @@ EpsEvaluate[ix_] := Block[{x = ix, nx,cx, tx, rud},
 
 
 Epsev[A__] := ( Expand /@ (Distribute[DOT[A]]//
-                    ExpandScalarProduct) )/.
+                    ExpandScalarProduct // MomentumExpand) )/.
               DOT->Epsevlin/.Epsevlin->Epsevantilin;
 Epsevlin[a___,b_ c_Momentum,d___] := b Epsevlin[a,c,d];
 Epsevlin[a___,b_ c_LorentzIndex,d___] := b Epsevlin[a,c,d];
