@@ -559,11 +559,26 @@ dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
                         DiracGamma[x4[y4, dim2], dim2], d]/;
                         (dim1 === dim2-4 || dim1 ===4);
 
-(* g^mu g^nu_1 ... g^nu_2i+1 g_mu  -> -2 g^nu_2i+1 ... g^nu_1, where
-   all matrices are in 4 dimensions										*)
-dr[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[_]].. ,
-         DiracGamma[LorentzIndex[c_]],f___ ] :=
-    -2 ds @@ Join[ {b},Reverse[{d}],{f} ] /; OddQ[Length[{d}]];
+(* Evaluation of a string of 4 dimensional Dirac matrices
+   g^mu g^nu_1 ... g^nu_i g_mu  -> -2 g^nu_i ... g^nu_1,
+   where i is odd *)
+dr[ b___,  DiracGamma[LorentzIndex[c_]],
+        ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+        DiracGamma[LorentzIndex[c_]], f___ ] :=
+    -2 ds @@ Join[ {b},Reverse[{ch}],{f} ] /; OddQ[Length[{ch}]];
+
+
+(* Evaluation of a string of 4 dimensional Dirac matrices
+   g^mu g^nu_1 ... g^nu_i g_mu  ->
+   2 g^nu_i-1 ... g^nu_1 g^nu_i + 2 g^nu_i g^nu_1 ... g^nu_i-1,
+   where i is even *)
+dr[ b___,  DiracGamma[LorentzIndex[c_]],
+        ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+        end : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]],
+        DiracGamma[LorentzIndex[c_]], f___ ] :=
+        ( 2 ds @@ Join[ {b},Reverse[{ch}],{end} ] +
+         2 ds[ b,end,ch,f ]
+        )/; OddQ[Length[{ch}]];
 
 (* Slash(p)*Slash(p), where p in the first slash is in D1 and in the second one in D2 dimensions.
    The dimensions of the gammas (no g^5 here!) doesn't matter  *)
@@ -666,8 +681,9 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
            ) /; {dim} =!= {di};
 
 
+(*This relation can probably be removed here, since we moved it to dr *)
 (*g^mu g^i1 ... g^in g^nu g_mu = 2 g^in .... g^i1 g^nu + 2 g^nu g^in .... g^i1,
-where all the matrices (no g^5 here!) are in 4 dimensions and n is od*)
+where all the matrices are in 4 dimensions and n is odd*)
    drCO[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[__]].. ,
          DiracGamma[x_[y__]],DiracGamma[LorentzIndex[c_]],f___ ] :=
        ( 2 ds @@ Join[ {b},Reverse[{d}],{DiracGamma[x[y]],f} ] +
