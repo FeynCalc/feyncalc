@@ -647,13 +647,13 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
 
 (*g^mu g^i1 .... g^in g_mu, where all matrices are in D-4 dimensions
   This is evaluated in the same manner as for D dimensions          *)
-   drCO[ b___,DiracGamma[LorentzIndex[c_,di_Symbol-4],di_Symbol-4],
-         d:DiracGamma[_[_,di_Symbol-4], di_Symbol-4].. ,
-         DiracGamma[LorentzIndex[c_,di_Symbol-4],di_Symbol-4],f___
-       ]:= (drCO @@  ( { b, DiracGamma[LorentzIndex[c,di-4], di-4],
-                         d, DiracGamma[LorentzIndex[c,di-4], di-4],
-                         f } /. di -> (di + 4)
-                     )) /. di -> (di-4);
+   drCO[ b___,DiracGamma[LorentzIndex[c_,dim_Symbol-4],dim_Symbol-4],
+         d:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_Symbol-4] , dim_Symbol-4]..,
+         DiracGamma[LorentzIndex[c_,dim_Symbol-4],dim_Symbol-4],f___
+       ]:= (drCO @@  ( { b, DiracGamma[LorentzIndex[c,dim-4], dim-4],
+                         d, DiracGamma[LorentzIndex[c,dim-4], dim-4],
+                         f } /. dim -> (dim + 4)
+                     )) /. dim -> (dim-4);
 
 (*g^mu ... g^nu g_mu = -2 g^mu ... g_mu g^nu + 2 g^nu ...
  where on the LHS g^mu and g_mu are in D-4 dimensions and
