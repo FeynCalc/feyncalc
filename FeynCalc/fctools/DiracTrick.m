@@ -677,6 +677,26 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
                          f } /. dim -> (dim + 4)
                      )) /. dim -> (dim-4);
 
+(* g^mu g^nu_1 ... g^nu_n g_mu, where g^mu is in 4 or D-4
+   and g^nu_i are in D dimensions is simplfied by repeatedly
+   applying anticommuation relations. Applies for n>5,
+   since for n<=5 we have explicit expressions in the code *)
+
+   drCO[b___, DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
+            ch1 : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_Symbol] , dim_Symbol]..,
+            ch2 : DiracGamma[(h : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol] , dim_Symbol],
+            DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
+                (-drCO[b, DiracGamma[LorentzIndex[c, dim-4],dim-4], ch1, DiracGamma[LorentzIndex[c, dim-4], dim-4], ch2, d]
+                + 2 drCO[b, DiracGamma[h[x,dim-4],dim-4], ch1, d] )/.drCO->ds;
+
+   drCO[b___, DiracGamma[LorentzIndex[c_]],
+            ch1 : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_Symbol] , dim_Symbol]..,
+            ch2 : DiracGamma[(h : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol] , dim_Symbol],
+            DiracGamma[LorentzIndex[c_]], d___] :=
+                (-drCO[b, DiracGamma[LorentzIndex[c]], ch1, DiracGamma[LorentzIndex[c]], ch2, d]
+                + 2 drCO[b, DiracGamma[h[x]], ch1, d] )/.drCO->ds;
+
+
 (*g^mu ... g^nu g_mu = -2 g^mu ... g_mu g^nu + 2 g^nu ...
  where on the LHS g^mu and g_mu are in D-4 dimensions and
  g^nu is in D dimensions*)
