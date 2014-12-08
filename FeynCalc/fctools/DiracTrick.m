@@ -602,11 +602,10 @@ dr[ b___,  DiracGamma[LorentzIndex[c_]],
          2 ds[ b,end,ch,f ]
         )/; OddQ[Length[{ch}]];
 
-(* Slash(p)*Slash(p), where p in the first slash is in D1 and in the second one in D2 dimensions.
-   The dimensions of the gammas (no g^5 here!) doesn't matter  *)
-dr[b___,DiracGamma[Momentum[c_,dim1___],___],
-        DiracGamma[Momentum[c_,dim2___],___],d___ ] :=
-        scev[Momentum[c,dim1],Momentum[c,dim2]] ds[b,d];
+(* Slash(p).Slash(p), where both objects have the same dimension *)
+dr[b___,DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],
+        DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],d___ ] :=
+        scev[Momentum[c,dim],Momentum[c,dim]] ds[b,d];
 
 (*Slash(p) Slash(k) Slash(p), where gamma (no g^5 here!) in the first slash is in D1 dimensions, in the second one D2 dimensions and in the third one
 in D3 dimensions. The momentum vectors are all in 4 dimensions*)
