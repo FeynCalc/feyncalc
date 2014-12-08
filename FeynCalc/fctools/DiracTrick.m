@@ -727,6 +727,26 @@ dr[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],
                 (-drCO[b, DiracGamma[LorentzIndex[c]], ch1, DiracGamma[LorentzIndex[c]], ch2, d]
                 + 2 drCO[b, DiracGamma[h[x]], ch1, d] )/.drCO->ds;
 
+(* Slash(p) g^nu_1 ... g^nu_n Slash(p), where the slashes
+   are in 4 or D-4 and g^nu_i are in D dimensions is simplfied
+   by repeatedly applying anticommuation relations.             *)
+
+   drCO[b___, DiracGamma[Momentum[c_, dim_Symbol-4], dim_Symbol-4],
+            ch1 : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_Symbol] , dim_Symbol]..,
+            ch2 : DiracGamma[(h : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol] , dim_Symbol],
+            DiracGamma[Momentum[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
+                (-drCO[b, DiracGamma[Momentum[c, dim-4],dim-4], ch1, DiracGamma[Momentum[c, dim-4], dim-4], ch2, d]
+                + 2 drCO[b,Pair[Momentum[c,dim-4],h[x,dim-4]], DiracGamma[Momentum[c, dim-4],dim-4], ch1, d] )/.drCO->ds;
+
+   drCO[b___, DiracGamma[Momentum[c_]],
+            ch1 : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_Symbol] , dim_Symbol]..,
+            ch2 : DiracGamma[(h : LorentzIndex | ExplicitLorentzIndex | Momentum)[x_, dim_Symbol] , dim_Symbol],
+            DiracGamma[Momentum[c_]], d___] :=
+                (-drCO[b, DiracGamma[Momentum[c]], ch1, DiracGamma[Momentum[c]], ch2, d]
+                + 2 drCO[b,Pair[Momentum[c],h[x]], DiracGamma[Momentum[c]], ch1, d] )/.drCO->ds;
+
+
+
 (* g^mu ... g^nu g^rho g_mu, where g^mu is in D, 4, or D-4
    and g^nu and g^rho are in different dimensions is simplfied
    by repeatedly applying anticommuation relations.            *)
