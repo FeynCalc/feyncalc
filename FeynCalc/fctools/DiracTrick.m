@@ -748,6 +748,27 @@ dr[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],
                                     {___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
 
 
+(* Slash(p) ... g^nu g^rho Slash(p), where the slashes are in D, 4, or D-4
+   and g^nu and g^rho are in different dimensions is simplfied
+   by repeatedly applying anticommuation relations.            *)
+
+    drCO[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],
+          w___,
+          DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim3_ : 4] ,dim3_ : 4],
+          DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4], d___] :=
+                ((
+                  -ds[b,  DiracGamma[Momentum[c, dim1], dim1], w,
+                            DiracGamma[Momentum[c, dim1], dim1],
+                            DiracGamma[x2[y2,dim3],dim3], d]
+                        + 2 ds[b, DiracGamma[Momentum[c, dim1], dim1], w,
+                                    Pair [Momentum[c, dim1], x2[y2,dim3]], d]))/;
+                                (dim1===dim3 || dim3 === dim1-4 || dim1 === dim3-4 || dim3 === 4 || dim1 === 4) &&
+                                MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
+                                MatchQ[dim3, _Symbol | _Symbol-4 | 4 ] &&
+                                !MatchQ[{w, DiracGamma[x2[y2,dim3],dim3]},{DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim3] , dim3]..} |
+                                    {___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
+
+
 
 
 (* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where all
