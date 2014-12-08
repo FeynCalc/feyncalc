@@ -686,41 +686,25 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
                 (-drCO[b, DiracGamma[LorentzIndex[c]], ch1, DiracGamma[LorentzIndex[c]], ch2, d]
                 + 2 drCO[b, DiracGamma[h[x]], ch1, d] )/.drCO->ds;
 
+(* g^mu ... g^nu g^rho g_mu, where g^mu is in D, 4, or D-4
+   and g^nu and g^rho are in different dimensions is simplfied
+   by repeatedly applying anticommuation relations.            *)
 
-(*g^mu ... g^nu g_mu = -2 g^mu ... g_mu g^nu + 2 g^nu ...
- where on the LHS g^mu and g_mu are in D-4 dimensions and
- g^nu is in D dimensions*)
-   drCO[ b___,DiracGamma[lv_[c_,di_Symbol-4],di_Symbol-4], w___,
-              DiracGamma[ww_[y__],dim___],
-              DiracGamma[lv_[c_,di_Symbol-4],di_Symbol-4], z___] :=
-   (Print["rdCOCheck"];
-         -drCO[ b, DiracGamma[lv[c,di-4],di-4],w,
-             DiracGamma[lv[c,di-4],di-4],
-             DiracGamma[ww[y],dim],z
-        ] + 2 drCO[b, DiracGamma[ww[y],di-4], w,z] )/.drCO->ds;
-
-(* g^mu g^nu ...  g_mu  = - g^nu g^mu ... g_mu + 2 eta^mu~nu ... g_mu.
-   This applies only if g^mu and g_mu are in different dimensions. *)
-   drCO[ b___,DiracGamma[lv_[c_,dim___],dim___],
-              DiracGamma[vl_[x__],dii___],d___,
-              DiracGamma[lv_[c_,di___],di___],f___
-       ]:=(-ds[b, DiracGamma[vl[x],dii],
-                  DiracTrick[DiracGamma[lv[c,dim],dim],d,
-                     DiracGamma[lv[c,di],di]], f
-                ] + 2 coneins[Pair[vl[x], lv[c,dim]] *
-                              ds[ b,d,DiracGamma[lv[c,di],di],f ]
-                             ]
-           ) /; {dim} =!= {di};
-
-
-(*This relation can probably be removed here, since we moved it to dr *)
-(*g^mu g^i1 ... g^in g^nu g_mu = 2 g^in .... g^i1 g^nu + 2 g^nu g^in .... g^i1,
-where all the matrices are in 4 dimensions and n is odd*)
-   drCO[ b___,DiracGamma[LorentzIndex[c_]],d:DiracGamma[_[__]].. ,
-         DiracGamma[x_[y__]],DiracGamma[LorentzIndex[c_]],f___ ] :=
-       ( 2 ds @@ Join[ {b},Reverse[{d}],{DiracGamma[x[y]],f} ] +
-         2 ds[ b,DiracGamma[x[y]],d,f ]
-        ) /; OddQ[Length[{d}]];
+    drCO[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
+          w___,
+          DiracGamma[(x2: LorentzIndex | ExplicitLorentzIndex | Momentum)[y2_, dim3_ : 4] ,dim3_ : 4],
+          DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4], d___] :=
+                ((
+                  -ds[b,  DiracGamma[LorentzIndex[c, dim1], dim1], w,
+                            DiracGamma[LorentzIndex[c, dim1], dim1],
+                            DiracGamma[x2[y2,dim3],dim3], d]
+                        + 2 ds[b, DiracGamma[LorentzIndex[c, dim1], dim1], w,
+                                    Pair [LorentzIndex[c, dim1], x2[y2,dim3]],d]))/;
+                                (dim1===dim3 || dim3 === dim1-4 || dim1 === dim3-4 || dim3 === 4 || dim1 === 4) &&
+                                MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
+                                MatchQ[dim3, _Symbol | _Symbol-4 | 4 ] &&
+                                !MatchQ[{w, DiracGamma[x2[y2,dim3],dim3]},{DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim3] , dim3]..} |
+                                    {___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
 
 (*Slash(p) g^i1 ... g^in Slash(p), where the first slash is in D or 4 dimensions,
   while the second slash and g^ii are in D, D-4 or 4 dimensions.
