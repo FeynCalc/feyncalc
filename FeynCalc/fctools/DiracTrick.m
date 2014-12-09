@@ -615,6 +615,15 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
 2 scev[Momentum[c],Momentum[x]] ds[b,DiracGamma[Momentum[c],dim],d]
 - scev[Momentum[c],Momentum[c]] ds[b,DiracGamma[Momentum[x],dii],d]
                                               );
+(* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes
+   are in D and g^nu_i are in 4 dimensions.                                 *)
+(* ------------------------------------------------------------------------ *)
+
+dr[b___ , DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol],
+          ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
+          DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol], d___] :=
+          ds[b,DiracGamma[Momentum[c]], ch, DiracGamma[Momentum[c]], d] +
+          (-1)^Length[{ch}] scev[Momentum[c, dim-4],Momentum[c, dim-4]] ds[b,ch, d];
 
 (* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes are
    in D and g^nu_i are in D-4 dimensions.                                   *)
