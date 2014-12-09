@@ -40,9 +40,9 @@ If[!FreeQ[x, ScaleMu],
    nx = x
   ];
   nx = nx /. {(a_/;Head[a]===Plus || Head[a] === Times)^(w_) :>
-       (PowerExpand[Factor2[one*a]^w] /. one -> 1),
+       (PowerExpand[Factor2[one*a]^w, Assumptions->True] /. one -> 1),
         Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)] :>
-       (PowerExpand[Factor2[one*a]^w] /. (ab_Plus)^v_ :> Power2[ab, v] /.
+       (PowerExpand[Factor2[one*a]^w, Assumptions->True] /. (ab_Plus)^v_ :> Power2[ab, v] /.
         one -> 1)/.(-1)^vv_ :> Power2[-1,vv]
       } /. {(-1)^(a_Plus) :> Expand[(-1)^a]
            } /. {(n_Integer?Negative)^m_ :> (-1)^m (-n)^m
