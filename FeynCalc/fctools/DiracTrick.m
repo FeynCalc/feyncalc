@@ -705,21 +705,23 @@ dr[ b___,DiracGamma[Momentum[c__],dim___],
                                 !MatchQ[{w, DiracGamma[x2[y2,dim3],dim3]},{DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim3] , dim3]..} |
                                     {___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
 
-(*Slash(p) g^i1 ... g^in Slash(p), where the first slash is in D or 4 dimensions,
-  while the second slash and g^ii are in D, D-4 or 4 dimensions.
-  The formula is given in Eq 2.10 of R.
-  Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
-   drCO[ b___,DiracGamma[c_, di___],d:DiracGamma[_[__],___].. ,
-         DiracGamma[c_,dim___],f___
+
+
+
+(* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where all
+   matrices are in D, 4 or D-4 dimensions. The
+   formula is given in Eq 2.10 of R. Mertig, M. Boehm,
+   A. Denner. Comp. Phys. Commun., 64 (1991)                *)
+   drCO[b___, DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],
+              ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_ : 4], dim_ : 4]..,
+              DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],f___
        ] :=
-        Block[ {drCOij, drCOld = Length[{d}]},
-     (-1)^drCOld scev[c,c] ds[b,d,f]
-     + 2 Sum[(-1)^(drCOij+1) coneins[ Pair[c,{d}[[drCOij,1]] ]
-            * ds@@Join[{b},Drop[{d},{drCOij,drCOij}],{DiracGamma[c,dim],f}]
-                                    ],{drCOij,1,drCOld}
-            ]
-              ]/;((Length[{d}]>0)&&FreeQ[c,LorentzIndex]&&
-                 (!NumberQ[c]) && !MatchQ[{di}, {_Symbol -4}]);
+        Block[ {iVar, len = Length[{ch}]},
+     (-1)^len scev[Momentum[c, dim],Momentum[c, dim]] ds[b,ch,f]
+     + 2 Sum[(-1)^(iVar+1) coneins[ Pair[Momentum[c, dim],{ch}[[iVar,1]] ]
+            * ds@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[Momentum[c, dim],dim],f}]
+                                    ],{iVar, 1,len}]]/;
+                    (Length[{ch}]>0) && MatchQ[dim, _Symbol | _Symbol-4 | 4 ];
 
 (* Simplification for g^mu g^nu_1 ... g^nu_n g_mu where all
    matrices are  in D or D-4 dimensions. Applies for n>5, since
