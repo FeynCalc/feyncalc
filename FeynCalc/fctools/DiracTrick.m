@@ -607,26 +607,18 @@ dr[b___,DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],
         DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],d___ ] :=
         scev[Momentum[c,dim],Momentum[c,dim]] ds[b,d];
 
-(*Slash(p) Slash(k) Slash(p), where gamma (no g^5 here!) in the first slash is in D1 dimensions, in the second one D2 dimensions and in the third one
-in D3 dimensions. The momentum vectors are all in 4 dimensions*)
-dr[ b___,DiracGamma[Momentum[c__],dim___],
-         DiracGamma[Momentum[x__],dii___],
-         DiracGamma[Momentum[c__],___],d___ ] := (
-2 scev[Momentum[c],Momentum[x]] ds[b,DiracGamma[Momentum[c],dim],d]
-- scev[Momentum[c],Momentum[c]] ds[b,DiracGamma[Momentum[x],dii],d]
-                                              );
 (* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes
-   are in D and g^nu_i are in 4 dimensions.                                 *)
+   are in D and g^nu_i are in 4 dimensions. This applies for n>1.           *)
 (* ------------------------------------------------------------------------ *)
 
 dr[b___ , DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol],
           ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
           DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol], d___] :=
           ds[b,DiracGamma[Momentum[c]], ch, DiracGamma[Momentum[c]], d] +
-          (-1)^Length[{ch}] scev[Momentum[c, dim-4],Momentum[c, dim-4]] ds[b,ch, d];
+          (-1)^Length[{ch}] scev[Momentum[c, dim-4],Momentum[c, dim-4]] ds[b,ch, d]/; Length[{ch}]>1;
 
 (* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes are
-   in D and g^nu_i are in D-4 dimensions.                                   *)
+   in D and g^nu_i are in D-4 dimensions. This applies for n>1.             *)
 (* ------------------------------------------------------------------------ *)
 
 dr[b___ , DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol],
@@ -634,7 +626,21 @@ dr[b___ , DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol],
             dim_Symbol-4],dim_Symbol-4]..,
           DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol], d___] :=
           ds[b,DiracGamma[Momentum[c,dim-4],dim-4], ch, DiracGamma[Momentum[c,dim-4],dim-4], d] +
-          (-1)^Length[{ch}] scev[Momentum[c],Momentum[c]]  ds[b,ch, d];
+          (-1)^Length[{ch}] scev[Momentum[c],Momentum[c]]  ds[b,ch, d]/; Length[{ch}]>1;
+
+
+(* Evaluation of Slash(p) g^nu Slash(p) for Dirac matrices in different
+   dimensions                                                               *)
+(* ------------------------------------------------------------------------ *)
+
+dr[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],
+          DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim2_ : 4] ,dim2_ : 4],
+          DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4], d___] :=
+                - scev[Momentum[c,dim1],Momentum[c,dim1]] ds[b,DiracGamma[x[y, dim2], dim2], d] +
+                2 ds[b, Pair[Momentum[c,dim1],x[y,dim2]], DiracGamma[Momentum[c, dim1], dim1], d]/;
+                                (dim1===dim2 || dim2 === dim1-4 || dim2 ===4 || dim1 === dim2-4 || dim1 ===4) &&
+                                MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
+                                MatchQ[dim2, _Symbol | _Symbol-4 | 4 ];
 
 (* #################################################################### *)
 (*                             Main33                                 *)
