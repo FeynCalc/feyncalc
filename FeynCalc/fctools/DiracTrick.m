@@ -2,18 +2,19 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DiracTrick *)
+(* :Title: DiracTrick                                                       *)
 
-(* :Author: Rolf Mertig *)
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2014 Rolf Mertig
+   Copyright (C) 1997-2014 Frederik Orellana
+   Copyright (C) 2014 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Contraction and simplification rules for Dirac matrices                                        *)
 
 (* ------------------------------------------------------------------------ *)
 
-(* :Summary: contraction and simplification rules for gamma matrices *)
-
-(* ------------------------------------------------------------------------ *)
-
-(* NonCommQ replaced with NonCommFreeQ everywhere due to change (fix) of
-   definitions of these functions. F.Orellana, 13/9-2002 *)
 
 BeginPackage["HighEnergyPhysics`fctools`DiracTrick`",
              {"HighEnergyPhysics`FeynCalc`"}];
