@@ -111,8 +111,8 @@ Block[{alpha, dim, mu, nu, la, rho, a, b, c, d, e, gl3v},
          e = SUNIndex[ToExpression["Global`e"]],
          e = SUNIndex[Unique["Global`u"]]
         ];
-      gl4v = - I coup^2
-             ( SUNF[a,b,e] SUNF[c,d,e] *
+      gl4v = - I coup^2 *
+               (SUNF[a,b,e] SUNF[c,d,e] *
                (Pair[mu,la] Pair[nu,rho] - Pair[mu,rho] Pair[nu,la] +
                 1/alpha Pair[mu,nu] Pair[la,rho]) +
                SUNF[a,c,e] SUNF[b,d,e] *
