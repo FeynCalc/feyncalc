@@ -130,7 +130,7 @@ schouten[x_,opar_:42]:=memset[schouten[x, opar],
                         Do[If[FreeQ[temp, sor[[1]]],
                               sor = RotateLeft[sor]
                              ], {6}];
-  print3["sor = ", sor];
+  FCPrint[2,"sor = ", sor];
 
                         If[!FreeQ[temp, sor[[1]]],
                         ntemp = Expand[epsevaluate[temp/.sor[[1]]->
