@@ -23,6 +23,7 @@ Begin["`Private`"];
 
 CA = MakeContext["CoreObjects","CA"];
 CF = MakeContext["CoreObjects","CF"];
+AlphaStrong = MakeContext["CoreObjects","AlphaStrong"];
 CouplingConstant = MakeContext["CoreOptions","CouplingConstant"];
 Dimension = MakeContext["CoreOptions","Dimension"];
 Epsilon = MakeContext["CoreObjects","Epsilon"];
@@ -37,7 +38,7 @@ Options[CounterTerm] =
 
 CounterTerm[x_Symbol,opts___Rule] := CounterTerm[ToString[x], opts];
 
-CounterTerm[x_, opts___Rule] := Block[{ct,alphas,adp, xi},
+CounterTerm[x_, opts___Rule] := Block[{ct,alphas,adp, xi, d, gstrong, m, tareps, alphaS},
 (* hep-ph/9803493 *)
 
 {d, xi, gstrong, m} = {Dimension, Gauge, Gstrong, QuarkMass} /.
@@ -55,14 +56,14 @@ ct["Z2"] = 1 + adp (- xi CF ) (1)/( tareps ) + adp^2  (
     ( -(  (25)/(8) +  xi +  (  xi^2)/(8) )  CA + Tf Nf +
     (3)/(4) CF) (1)/( tareps )  ) CF;
 
-ct["Z3"] = 1 +  ( alpha_s)/(8 Pi) (((13)/(3)- xi  ) CA -
+ct["Z3"] = 1 +  (AlphaStrong)/(8 Pi) (((13)/(3)- xi  ) CA -
       (8)/(3)Tf Nf)  (1)/( tareps ) ;
 
 ct["Zg"] = 1 -  adp  (  (11)/(3) CA- (4)/(3) Tf Nf ) (1)/( tareps ) ;
 
 ct["Zm"] = 1 -  adp   (3 CF  )  (1)/( tareps ) +
-      (  adp  )^2 CF ( ( (11)/(2) CA - 2Tf Nf+ (9)/(2) CF)
-      (1)/( tareps ^2) - ( (97)/(12) CA- (5)/(3) Tf Nf+ (3)/(4) CF)
+      (  adp  )^2 CF ( ( (11)/(2) CA - 2Tf Nf+ (9)/(2) CF)*
+      (1)/( tareps ^2) - ( (97)/(12) CA- (5)/(3) Tf Nf+ (3)/(4) CF)*
         (1)/( tareps )  ) ;
 
 ct["deltam"] := Expand[ct["Zm"] m, m] - m;
