@@ -43,7 +43,6 @@ Begin["`Private`"];
 
 (*ComplexIndex = MakeContext["ComplexIndex"];*)
 
-diractrick := diractrick = MakeContext["DiracTrick"];
 Trick := Trick = MakeContext["Trick"];
 CA                       = MakeContext["CoreObjects","CA"];
 CF                       = MakeContext["CoreObjects","CF"];
