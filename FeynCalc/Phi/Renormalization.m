@@ -990,7 +990,7 @@ VeltmanD0[pf10_, pf20_, pf30_, pp10_, pp20_, pp30_, m10_, m20_, m30_, m40_,
         y4 = (d + e*alp + k*alp)/((c + 2*alp*b)*(1 - alp)),
         y5 = (d + e*alp + k*alp)/((-c + 2*alp*b)*alp),
         y6 = (d + e*alp + k*alp + c*alp + 2*a)/(c + 2*alp*b)}, (y[1] = y1;
-        y[2] = y2 : y[3] = y3; y[4] = y4; y[5] = y5; y[6] = y6;
+        y[2] = y2 ; y[3] = y3; y[4] = y4; y[5] = y5; y[6] = y6;
         rr[i_, j_, k_, np10_, np20_, np30_, np12_, np13_,
             np23_, {nm10_, nm20_, nm30_,
               nm40_}] := -theta[
