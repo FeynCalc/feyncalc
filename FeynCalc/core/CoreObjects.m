@@ -1288,7 +1288,7 @@ Momentum /:
             ] := RowBox[{SuperscriptBox[ToBoxes[p[[1]]],ToBoxes[p[[2]]]]}];
 
 Momentum /:
-   MakeBoxes[ Momentum[Superscript, dim:Except[_Symbol | _Symbol - 4]], TraditionalForm
+   MakeBoxes[ Momentum[p_Superscript, dim:Except[_Symbol | _Symbol - 4]], TraditionalForm
             ] := RowBox[{SuperscriptBox[ SubscriptBox[ToBoxes[p[[1]]],ToBoxes[dim]  ],ToBoxes[p[[2]]]]}];
 
 
