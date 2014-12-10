@@ -177,9 +177,9 @@ double[{a___, x_, x_, b___}] := {a,x,x,b};
 
 dea[yy__]     := double[Map[denfa,{yy}]] /. double -> Identity;
 
-denfa[_[Subscripted[x_[s_]],0]] := SequenceForm["(",x[s]^2,")"];
+denfa[_[Subscript[x_, s_],0]] := SequenceForm["(",x[s]^2,")"];
 
-denfa[_[momentum[Subscripted[x_[s_]],___],0]] :=
+denfa[_[momentum[Subscript[x_, s_],___],0]] :=
       SequenceForm["(",x[s]^2,")"];
 
 denfa[_[x_]] := SequenceForm["(",x^2,")"];
@@ -208,7 +208,7 @@ CC[x_,y__] := CheckContext[x] && CC[y];
   epsd[a___, (b_/;(Head[b] ===lorentzindex) ||
                   (Head[b] === momentum)
                  )[c_,di_], d___] :=
-      Subscripted["eps"[di//diF]][a,b[c,di],d];
+      Subscript["eps", di // diF][a,b[c,di],d];
   epsd[a__] := "eps"[a];
 
 (* display only one dimension (for readability) *)
@@ -235,7 +235,7 @@ Global`XX=xxxx;
          If[CC["CoreObjects"], metrictensor[v_, w_, ___Rule] :> "g"[v, w], {}
            ] /.
 (*
-         If[CC["CoreObjects"], fourvector[Subscripted[p_[s_]], mu_] :>
+         If[CC["CoreObjects"], fourvector[Subscript[p_,s_], mu_] :>
           (SequenceForm@@Flatten[ {sumst[p[s]],"[",mu,"]"}]), {}
            ] /.
 *)
@@ -262,7 +262,7 @@ Global`XX=xxxx;
         If[CC["CoreObjects"],
            {pair[ lorentzindex[v_],lorentzindex[w_] ] :> "g"[v, w],
             pair[ lorentzindex[v_,di_],lorentzindex[w_,di_] ] :>
-               (Subscripted["g"[di//diF]][v, w])
+               (Subscript["g", di // diF][v, w])
            }, {}
           ] /.
         If[CC["CoreObjects"],
@@ -276,13 +276,13 @@ Global`XX=xxxx;
          ] /.
        If[CC["CoreObjects"],
         pair[ momentum[v_,di_Symbol-4],momentum[w_,di_Symbol-4] ] :>
-                 Subscripted[
+                 Subscript[
                   (SequenceForm@@Flatten[{"(",v//sumst ,{"."},w//sumst,")"}]
-                  )[di//diF]] ,
+                  ), di//diF] ,
            {}
          ] /.
        If[CC["CoreObjects"],
-        pair[ lorentzindex[w_,___],momentum[Subscripted[v_[s_]],___ ]]:>
+        pair[ lorentzindex[w_,___],momentum[Subscript[v_,s_],___ ]]:>
              (SequenceForm@@Flatten[ {sumst[v[s]],"[",w,"]"} ]),
           {}
          ] /.
@@ -360,7 +360,7 @@ Global`XX=xxxx;
          If[CC["CoreObjects"],
             {
              diracmatrix[v__, dimension -> di_] :>
-              Subscripted["ga"[v][di]],
+              Subscript["ga"[v],di],
              diracmatrix[v__]  :>
               "ga"[v]
             },{}
@@ -377,8 +377,8 @@ Global`XX=xxxx;
          If[CC["CoreObjects"], diracslash[aa_] :> diracslm[aa], {} ] /.
          If[CC["CoreObjects"],
              {diracslash[v_, dimension -> di_] :>
-               Subscripted[ToString["gs"][di//diF] ][v] ,
-              diracslash[Subscripted[v_[s_]]] :> "gs"[v[s]] ,
+               Subscript[ToString["gs"], di//diF ][v] ,
+              diracslash[Subscript[v_,s_]] :> "gs"[v[s]] ,
              diracslash[v_]:> ToString["gs"[v]]
              }
             , {}
@@ -507,7 +507,7 @@ Global`XX=xxxx;
        );
          xxxx];
 
-plusdi[a_] := Subscripted[SequenceForm["(",a,")"][" + "]];
+plusdi[a_] := Subscript[SequenceForm["(", a, ")"], " + "];
 
 
 End[]; EndPackage[];
