@@ -99,7 +99,7 @@ Block[{names, width, height, olddir, nb, bbc},
    ButtonEvaluator :> Automatic] & /@ names);
 
    width = Ceiling[95/11*Max[Join[StringLength /@ names, {9}]]];
-   heigth = Ceiling[140/7*Length[names] + 100];
+   height = Ceiling[140/7*Length[names] + 100];
 
    (* A notebook is created: *)
 
@@ -158,7 +158,7 @@ Block[{names, width, height, olddir, nb, bbc},
 	 Background -> GrayLevel[0.9],
            WindowTitle -> "Configurations", (*ScreenRectangle -> {{0, 1152}, {0, 850}},*)
            Editable -> False, WindowToolbars -> {}, PageWidth -> 342,
-           WindowSize -> {width, heigth},
+           WindowSize -> {width, height},
            WindowMargins -> {{0, Automatic}, {Automatic, 0}},
            WindowFrame -> "Palette", WindowElements -> {},
            WindowFrameElements -> "CloseBox", WindowClickSelect -> False,
@@ -259,8 +259,8 @@ Block[{names, width, height, olddir, nb, bbc},
    names = If[StringMatchQ[#, ":*"]&& StringMatchQ[$System, "MacOS*"],
             StringDrop[#, 1], #] & /@ (StringDrop[#, -2] & /@
             Select[Select[
-                FileNames["*.m"], ! StringMatchQ[#, "d.*"] &], !
-                  StringMatchQ[#, "exp.*"] &]);
+                FileNames["*.m"], ! StringMatchQ[#, "d.*"] &],
+                !StringMatchQ[#, "exp.*"] &]);
 
    (* The corresponding list of button expressions.   For each
    configuration, a name is generated and assigned a definition: *)
@@ -270,7 +270,7 @@ Block[{names, width, height, olddir, nb, bbc},
    ButtonEvaluator :> Automatic] & /@ names);
 
    width = Ceiling[95/11*Max[Join[StringLength /@ names, {9}]]];
-   heigth = Ceiling[140/7*Length[names] + 70];
+   height = Ceiling[140/7*Length[names] + 70];
 
    (* A notebook is created: *)
 
@@ -328,7 +328,7 @@ Block[{names, width, height, olddir, nb, bbc},
          WindowTitle -> "Load lagrangian",
          (*ScreenRectangle -> {{0, 1152}, {0, 850}},*) Editable -> False,
          WindowToolbars -> {}, PageWidth -> 342,
-         WindowSize -> {width, heigth},
+         WindowSize -> {width, height},
          WindowMargins -> {{147, Automatic}, {Automatic, 0}},
          WindowFrame -> "Palette", WindowElements -> {},
          WindowFrameElements -> "CloseBox", WindowClickSelect -> False,
