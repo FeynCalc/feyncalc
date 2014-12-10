@@ -719,7 +719,7 @@ If[FreeQ[result, OPEDelta],
 FCPrint[1,"feinarbeit "];
 
 If[((Factor1 /. {ru} /. Options[FeynRule]) === True),
-If[(Head[result] === Plus) &&
+If[(Head[result] === Plus),
    result  = Factor1[Map[#/.Plus->plho&,
                          Map[feinarbeit[#, plist]&, result]
                         ]] /. plho -> Plus,
