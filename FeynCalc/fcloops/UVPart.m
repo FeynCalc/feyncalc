@@ -64,7 +64,7 @@ Catch[
         ]
      ]]          ];
 
-neglect[ (_. + _. Pair[Momentum[q,___], Momentum[OPEDelta,___]])^_.
+neglect[ (_. + _. Pair[Momentum[q,___], Momentum[OPEDelta,___]])^_. *
         FeynAmpDenominator[_PropagatorDenominator,
                            _PropagatorDenominator,
                           __PropagatorDenominator
