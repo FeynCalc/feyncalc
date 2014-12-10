@@ -22,6 +22,10 @@ Abbreviation::"usage"=
 "Abbreviation[name] gives a shortname for name (in HoldForm). \
 E.g.: Abbreviation[QuarkPropagator] --> HoldForm[QP].";
 
+AlphaStrong::"usage"= "AlphaStrong is a head of the QCD coupling constant.";
+
+AlphaFS::"usage"= "AlphaFS is a head of the fine-structure constant.";
+
 AntiQuarkField::"usage" =
 "AntiQuarkField is the name of a fermionic field.";
 
@@ -554,6 +558,9 @@ Options[SUNF] = {Explicit -> False(*, FCI -> True*)};
 Options[Polarization] = {Transversality -> False};
 
 
+AlphaStrong /: MakeBoxes[AlphaStrong, TraditionalForm] := SubscriptBox["\[Alpha]", "s"];
+
+AlphaFS /: MakeBoxes[AlphaFS, TraditionalForm] := "\[Alpha]";
 
 CA /: MakeBoxes[CA, TraditionalForm] := SubscriptBox["C", "A"];
 CF /: MakeBoxes[CF, TraditionalForm] := SubscriptBox["C", "F"];
