@@ -159,8 +159,8 @@ Block[{gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope,
          e = SUNIndex[ToExpression["Global`e"]],
          e = SUNIndex[Unique["Global`u"]]
         ];
-      gl4v = - I coup^2
-             ( SUNF[a,b,e] SUNF[c,d,e] *
+      gl4v = - I coup^2 *
+               ( SUNF[a,b,e] SUNF[c,d,e] *
                (Pair[mu,la] Pair[nu,si] - Pair[mu,si] Pair[nu,la]) +
                SUNF[a,c,e] SUNF[b,d,e] *
                (Pair[mu,nu] Pair[la,si] - Pair[mu,si] Pair[nu,la]) +
