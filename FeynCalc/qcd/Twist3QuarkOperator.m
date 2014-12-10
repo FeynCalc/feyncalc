@@ -50,10 +50,10 @@ SUNT = MakeContext["CoreObjects","SUNT"];
 
 MakeContext[
 OPEDelta,
-OPESum
+OPESum,
 OPEi,
 OPEj,
-OPEm,
+OPEm
 ];
 
 Options[Twist3QuarkOperator] = { CouplingConstant -> Gstrong,
