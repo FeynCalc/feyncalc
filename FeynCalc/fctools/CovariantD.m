@@ -290,7 +290,7 @@ g^o Expand[Trick[
    SubsuperscriptBox["D", Tbox[mud], Tbox[a, b]]/; Head[mud] =!= List;
 
    CovariantD /:
-   MakeBoxes[CovariantD[x_, HighEnergyPhysics`FeynCalc`LorentzIndex`LorentzIndex[mu__]],
+   MakeBoxes[CovariantD[x_, LorentzIndex[mu__]],
              TraditionalForm] :=
     RowBox[{"\[PartialD]", "/", "D",
             SuperscriptBox[ToBoxes[x,TraditionalForm], ToBoxes[LorentzIndex[mu],TraditionalForm]]
