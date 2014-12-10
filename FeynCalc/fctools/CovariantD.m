@@ -77,7 +77,7 @@ Options[CovariantD] = { CouplingConstant -> Gstrong,
                       };
 
 isunt[a_] := FeynCalcInternal[I SUNT[a]];
-subsit[un_][in_] := If[$Notebooks,Subscripted[un[in]], un[in]];
+subsit[un_][in_] := If[$Notebooks, Subscript[un,in], un[in]];
 
 Unique2[x_]:= If[$Notebooks === True, subsit[Unique[x]], Unique[x]];
 
@@ -125,7 +125,7 @@ partial = PartialD /. {ru} /. Options[CovariantD];
  du = DummyIndex /. {ru}  /. Options[CovariantD];
  If[du === Automatic,
     If[$Notebooks && !ValueQ[Global`c],
-       cC = Subscripted[Global`c[$dummycount++]],
+       cC = Subscript[Global`c,$dummycount++],
        cC = Unique["c"]
       ],
     cC = du
@@ -150,7 +150,7 @@ CovariantD[al_, a_, b_, ru___Rule ] := Block[{aA, cC, du, partial},
                    du = DummyIndex /. {ru}  /. Options[CovariantD];
                    If[du === Automatic,
                       If[$Notebooks && !ValueQ[Global`c],
-                         cC = Subscripted[Global`c[$dummycount++]],
+                         cC = Subscript[Global`c, $dummycount++],
                          cC = Unique["c"]
                         ],
                       cC = du
