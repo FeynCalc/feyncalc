@@ -4,21 +4,21 @@
 (*                                                                 *)
 (* *************************************************************** *)
 
-(* 
+(*
    Author:              F.Orellana
 
    Year:                2001
 
-   Mathematica Version: 4.0 
+   Mathematica Version: 4.0
 
-   Requirements:        FeynCalc > 3, PHI 
+   Requirements:        FeynCalc > 3, PHI
 
    Summary:             Lagrangian for PHI
 
-   Description:         The leading order ChPT lagrangian with 
+   Description:         The leading order ChPT lagrangian with
                         electromagnetic couplings.
-    
-                        Taken from U. Meissner, G. Müller, 
+
+                        Taken from U. Meissner, G. Mueller,
                         S. Steininger, hep-ph/9704377
 *)
 
@@ -26,7 +26,7 @@
 Begin["HighEnergyPhysics`Phi`Objects`"];
 
 ChPTEM22::"usage"=
-"ChPT22 is the name of the file containing the definitions for 
+"ChPT22 is the name of the file containing the definitions for
 Lagrangian[ChPT2EM[2]], which is the leading order pionic
 SU(2) ChPT lagrangian with couplings to virtual photons.
 To evaluate use ArgumentsSupply.";
@@ -43,7 +43,7 @@ pt/:MakeBoxes[pt[a_],TraditionalForm]:=MakeBoxes[TraditionalForm[a]];
 pt/:MakeBoxes[pt[],TraditionalForm]:="";
 pt/:MakeBoxes[pt[RenormalizationState[1]],TraditionalForm]:="r";
 pt/:MakeBoxes[pt[RenormalizationState[0]],TraditionalForm]:="";
-    
+
 CouplingConstant/:
   MakeBoxes[
     CouplingConstant[ChPTEM2[2],st___RenormalizationState,
@@ -77,7 +77,7 @@ FDr[QuantumField[Particle[Photon],LorentzIndex[\[Nu]]],{\[Nu]}]+
 CouplingConstant[ChPTEM2[2]]*
 UTrace[NM[UMatrix[UChiralSpurionRight],MM,
 UMatrix[UChiralSpurionLeft],Adjoint[MM]]];
-    
+
 (* --------------------------------------------------------------- *)
 
 FieldsSet[ChPTEM2[2]]:=

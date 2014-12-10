@@ -17,8 +17,8 @@
 
    Description:         The next to leading order ChPT lagrangian
                         with electromagnetic couplings.
-    
-                        Taken from U. Meissner, G. Müller, 
+
+                        Taken from U. Meissner, G. Mueller,
                         S. Steininger, hep-ph/9704377
 *)
 
@@ -173,7 +173,7 @@ DecayConstant[Pion]^2*
 UTrace[NM[(NM[UMatrix[UChiralSpurion], CDr[UMatrix[UChiralSpurion],{\[Mu]}]]-
            NM[CDr[UMatrix[UChiralSpurion],{\[Mu]}], UMatrix[UChiralSpurion]]),
            Adjoint[MM], CDr[MM,{\[Mu]}]] -
-        
+
        NM[(NM[UMatrix[UChiralSpurion], CDr[UMatrix[UChiralSpurion],{\[Mu]}]]-
            NM[CDr[UMatrix[UChiralSpurion],{\[Mu]}], UMatrix[UChiralSpurion]]),
            CDr[MM,{\[Mu]}], Adjoint[MM]] ]+
