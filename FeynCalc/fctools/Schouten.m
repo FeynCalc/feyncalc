@@ -30,8 +30,6 @@ function Schouten will be applied .";
 
 Begin["`Private`"];
 
-Pair = MakeContext["CoreObjects","Pair"];
-
 collect2                 = MakeContext["Collect2"];
 eps                      = MakeContext["CoreObjects","Eps"];
 epsevaluate              = MakeContext["EpsEvaluate"];
@@ -41,6 +39,7 @@ fci                      = MakeContext["FeynCalcInternal"];
 freeq2                   = MakeContext["FreeQ2"];
 lorentzindex             = MakeContext["CoreObjects","LorentzIndex"];
 memset                   = MakeContext["MemSet"];
+pair                     = MakeContext["CoreObjects","Pair"];
 partithead               = MakeContext["PartitHead"];
 
 Schouten[y_, 0] := y;
