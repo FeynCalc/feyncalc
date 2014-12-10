@@ -372,14 +372,14 @@ UTrace[ NM[ CQRight[\[Mu]], MM, CQLeft[\[Mu]], Adjoint[MM] ] ] +
 
 K14[0]*
 UTrace[ NM[ CQRight[\[Mu]], CQRight[\[Mu]] ] +
-        NM[ CQLeft[\[Mu]], CQLeft[\[Mu]] ] ]
+        NM[ CQLeft[\[Mu]], CQLeft[\[Mu]] ] ] +
 
 (*Tentative correction of Urech*)
 K19[0]*
 UTrace[ NM[ Adjoint[CDr[MM,{\[Mu]}]],
         QQ, MM, CQLeft[\[Mu]] ] +
         NM[CDr[MM,{\[Mu]}],
-        QQ, Adjoint[MM], CQRight[\[Mu]] ] ] 
+        QQ, Adjoint[MM], CQRight[\[Mu]] ] ]
 
 ) +
 
@@ -395,7 +395,7 @@ NM[ UTrace[ NM[QQ, MM, QQ,Adjoint[MM]] ],
     UTrace[ NM[QQ, QQ] ] ] +
 
 K17[0]*
-NMPower[UTrace[ NM[QQ, QQ] ], 2] 
+NMPower[UTrace[ NM[QQ, QQ] ], 2]
 
 ) +
 
