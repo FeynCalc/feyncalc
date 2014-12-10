@@ -1240,8 +1240,12 @@ Momentum /:
 (*Normal momenta *)
 
 Momentum /:
+   MakeBoxes[ Momentum[ OPEDelta_ ], TraditionalForm
+            ] := Tbox[OPEDelta];
+
+Momentum /:
    MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus]], TraditionalForm
-            ] := RowBox[{OverscriptBox[ToBoxes[p],"_"]}];
+            ] := RowBox[{OverscriptBox[ToBoxes[p],"_"]}]/; p=!=OPEDelta;
 
 Momentum /:
    MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], _Symbol-4], TraditionalForm
