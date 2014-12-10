@@ -71,8 +71,8 @@ MakeContext[
     SelectFree,
     SelectNotFree,
     Series2,
-    Sn
-    Uncontract,
+    Sn,
+    Uncontract
 ];
 
 Options[OPEIntegrate2] = { Collecting  -> False,
