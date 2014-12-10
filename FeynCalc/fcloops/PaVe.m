@@ -47,7 +47,7 @@ small = MakeContext["CoreObjects","SmallVariable"];
                                       !OrderedQ[{i,j}];
 (* Special cases of PaVe: *)
  PaVe[0, {}, {x_}]      := A0[x];
- PaVe[0, {p2}, {x_,y_}] := B0[p2,x,y];
+ PaVe[0, {p2_}, {x_,y_}] := B0[p2,x,y];
  PaVe[1,{pp_},{mm1_,mm2_}]  := B1[pp, mm1, mm2];
 
 (* there is no tensorial 1-point function *)
