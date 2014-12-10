@@ -100,14 +100,12 @@ CheckDB[ex_, fi_, opts : ((_Rule | {___Rule}) ...)] :=
         file = eliminateDoubles[dir <> $PathnameSeparator <> fi],
 
         (*Directory specified not ok, try Directory[]*)
+        FileType[eliminateDoubles[Directory[] <> $PathnameSeparator <> dir]] === Directory,
+        file = eliminateDoubles[  Directory[] <> $PathnameSeparator <> dir <> $PathnameSeparator <> fi],
 
-        FileType[eliminateDoubles[Directory[] <> $PathnameSeparator <> dir]] ===
-           Directory,
-        file = eliminateDoubles[
-              Directory[] <> $PathnameSeparator <> dir <> $PathnameSeparator <>
-                 fi,
-
-        True, (Message[CheckDB::baddir, dir]; Return[ex])];
+        True,
+        (Message[CheckDB::baddir, dir];
+        Return[ex]);
 
         ];
 
