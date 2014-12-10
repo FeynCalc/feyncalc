@@ -93,7 +93,7 @@ TLI[{a_,b_,0,d_,0}, {n1_Integer, nm2_,0,nm4_,0}, ___Rule] := 0;
 TLI[{a_,b_,c_,0,0}, {nm1_, 0, nm3_, n4_Integer,0}, ___Rule] := 0;
 
 TLI[{a_ /; !MatchQ[a, _Integer?Negative],
-     b_  /; !MatchQ[a, _Integer?Negative],0,0,0},
+     b_  /; !MatchQ[b, _Integer?Negative],0,0,0},
     {{n1_,m1_},{n2_,m2_}, 0,0,0}, ___Rule] := 0 /; (a + b) > 0;
 
 (* this assumes that m is generic; thus: don't use this for
