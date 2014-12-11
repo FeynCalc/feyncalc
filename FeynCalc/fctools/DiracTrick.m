@@ -317,12 +317,12 @@ dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGam
     d, DiracGamma[LorentzIndex[c, dimD-4], dimD-4],f];
 
 (* 4 and D-4 -> 0 *)
-dr[ ___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
+dr[ ___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], DiracGamma[__].. ,
           DiracGamma[LorentzIndex[c_]], ___ ] :=
     0;
 
 (* D-4 and 4 -> 0 *)
-dr[ ___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
+dr[ ___, DiracGamma[LorentzIndex[c_]], DiracGamma[__].. ,
           DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ] :=
     0;
 
