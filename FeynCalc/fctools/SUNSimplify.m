@@ -79,7 +79,7 @@ gm2lambdaT[x__]:= (gmlin@@( {x}/.sunt->lambdaT ) )/.gmlin->Dot;
 (********************* linearity  ********************************* *)
 (* noncomQdef : checking non-commutativity *)
 noncomQ[z_]:= TrueQ[noncQ[z]];
-noncQ[x_ ?NumberQ]:=True;
+noncQ[_?NumberQ]:=True;
 noncQ[x_suntrace]:=True;
 noncQ[x_] := If[freeq2[FixedPoint[ReleaseHold, x], $NonComm],
                       True, False];
