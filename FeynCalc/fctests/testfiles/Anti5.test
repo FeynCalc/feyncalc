@@ -13,82 +13,213 @@
 
 (* ------------------------------------------------------------------------ *)
 
-fcstAnti5 = {
+fcstAnti5ToTheRight = {
 
-{"fcstAnti5-ID1","Anti5[GA[5].GA[mu]]", "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
-{"fcstAnti5-ID2","Anti5[GA[5].GA[mu], 1]","-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
-{"fcstAnti5-ID3","Anti5[GA[5].GA[mu, nu, rho]]", "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
-{"fcstAnti5-ID4","Anti5[GA[5].GA[mu, nu, rho], 2]", "DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
-{"fcstAnti5-ID5","Anti5[GA[5].GA[mu, nu, rho], Infinity]", "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
-{"fcstAnti5-ID6","$BreitMaison=True;\nAnti5[GA[5].GA[mu, nu, rho], -2]", "DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
-{"fcstAnti5-ID7","Anti5[GA[5].GA[mu, nu, rho], -Infinity]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
-{"fcstAnti5-ID8","Anti5[GA[mu].GA[5], -1]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]]"},
-{"fcstAnti5-ID9","Anti5[GA[mu].GA[5], 1]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
-{"fcstAnti5-ID10","Anti5[GA[mu, nu, rho].GA[5], -1]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
-{"fcstAnti5-ID11","Anti5[GA[mu, nu, rho].GA[5], 1]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
-{"fcstAnti5-ID12","Anti5[GA[mu, nu, rho].GA[5], -Infinity]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
-{"fcstAnti5-ID13","$BreitMaison=False;\nAnti5[GA[mu, nu, rho].GA[5], Infinity]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
-{"fcstAnti5-ID14","Anti5[GA[5].GAD[mu]]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID15","Anti5[GA[5].GAD[mu], 1]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID16","Anti5[GA[5].GAD[mu, nu, rho]]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID17","Anti5[GA[5].GAD[mu, nu, rho], 2]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID18","Anti5[GA[5].GAD[mu, nu, rho], Infinity]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID19","Anti5[GA[5].GAD[mu, nu, rho], -2]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID20","Anti5[GA[5].GAD[mu, nu, rho], -Infinity]","  DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID21","Anti5[GAD[mu].GA[5], -1]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]"},
-{"fcstAnti5-ID22","Anti5[GAD[mu].GA[5], 1]", "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID23","Anti5[GAD[mu, nu, rho].GA[5], 1]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID24","Anti5[GAD[mu, nu, rho].GA[5], -1]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID25","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID26","Anti5[GAD[mu, nu, rho].GA[5], Infinity]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID27","$BreitMaison=True;\nAnti5[GA[5].GAD[mu]]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5]"},
-{"fcstAnti5-ID28","Anti5[GA[5].GAD[mu], 1]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5]"},
-{"fcstAnti5-ID29","Anti5[GA[5].GAD[mu, nu, rho]]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] +
- 	2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID30","Anti5[GA[5].GAD[mu, nu, rho], 2]"," DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D] -
-	 2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5].DiracGamma[LorentzIndex[rho, D], D] + 2*(-DiracGamma[LorentzIndex[mu, -4 + D],
- 	-4 + D] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] .DiracGamma[LorentzIndex[rho, D], D] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-     DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D])"},
-{"fcstAnti5-ID31","Anti5[GA[5].GAD[mu, nu, rho], Infinity]"," -DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5] +
- 	2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
-   	DiracGamma[5] - 2*(-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-     DiracGamma[LorentzIndex[rho]] . DiracGamma[5] +
-   2*DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D],
-      -4 + D] . DiracGamma[5]) + 2*(DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu]] .
-    DiracGamma[LorentzIndex[rho]] . DiracGamma[5] - 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-     DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] +
-   2*(-DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-       DiracGamma[LorentzIndex[rho]] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-       DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]))"},
-{"fcstAnti5-ID32","Anti5[GA[5].GAD[mu, nu, rho], -2]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID33","Anti5[GA[5].GAD[mu, nu, rho], -Infinity]"," DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
-{"fcstAnti5-ID34","Anti5[GAD[mu].GA[5], -1]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5]"},
-{"fcstAnti5-ID35","Anti5[GAD[mu].GA[5], 1]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID36","Anti5[GAD[mu, nu, rho].GA[5], 1]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
-{"fcstAnti5-ID37","Anti5[GAD[mu, nu, rho].GA[5], -1]"," -DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]] +
-	 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
-{"fcstAnti5-ID38","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]"," -DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] +
-	 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] .
-   	DiracGamma[LorentzIndex[rho]] - 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-   	DiracGamma[5] . DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-   	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
-{"fcstAnti5-ID39","Anti5[GAD[mu, nu, rho].GA[5], Infinity]"," DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
-
-{"fcstAnti5-ID40","Anti5[GAD[mu, nu, rho].GA[5] + GAD[mu, su, rho].GA[5], -Infinity]","-DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] -
- DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[su]] . DiracGamma[LorentzIndex[rho]] +
- 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] .
-   DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] .
-   DiracGamma[LorentzIndex[su]] . DiracGamma[LorentzIndex[rho]] -
- 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
-   DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-   DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] -
- 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[su, -4 + D], -4 + D] . DiracGamma[5] .
-   DiracGamma[LorentzIndex[rho]] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[su, D], D] .
-   DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"}
-
+{"fcstAnti5ToTheRight-ID1","$BreitMaison=False;\nAnti5[GA[5].GA[mu]]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID2","Anti5[GA[5].GA[mu], 1]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID3","Anti5[GA[5].GA[mu, nu, rho]]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheRight-ID4","Anti5[GA[5].GA[mu, nu, rho], 2]",
+    "DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheRight-ID5","Anti5[GA[5].GA[mu, nu, rho], Infinity]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID6","Anti5[GA[5].GAD[mu]]",
+    "-DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID7","Anti5[GA[5].GAD[mu], 1]",
+    "-DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID8","Anti5[GA[5].GAD[mu, nu, rho]]",
+    "-DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheRight-ID9","Anti5[GA[5].GAD[mu, nu, rho], 2]",
+    "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheRight-ID10","Anti5[GA[5].GAD[mu, nu, rho], Infinity]",
+    "-DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID11","Anti5[GA[5].GAE[i]]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[i, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID12","Anti5[GA[5].GAE[i], 1]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[i, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID13","Anti5[GA[5].GAE[mu].GAE[nu].GAE[rho]]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID14","Anti5[GA[5].GAE[mu].GAE[nu].GAE[rho],2]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID15","Anti5[GA[5].GAE[mu].GAE[nu].GAE[rho], Infinity]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID16","$BreitMaison=True;\nAnti5[GA[5].GA[mu]]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID17","Anti5[GA[5].GA[mu], 1]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID18","Anti5[GA[5].GA[mu, nu, rho]]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheRight-ID19","Anti5[GA[5].GA[mu, nu, rho], 2]",
+    "DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheRight-ID20","Anti5[GA[5].GA[mu, nu, rho], Infinity]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID21","Anti5[GA[5].GAD[mu]]",
+    "2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID22","Anti5[GA[5].GAD[mu], 1]",
+    "2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID23","Anti5[GA[5].GAD[mu, nu, rho]]",
+    "2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, D], D] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] "},
+{"fcstAnti5ToTheRight-ID24","Anti5[GA[5].GAD[mu, nu, rho], 2]",
+    "2*(2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[rho, D], D] - DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]) -
+    2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[rho, D], D] + DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheRight-ID25","Anti5[GA[5].GAD[mu, nu, rho], Infinity]",
+    "2*(2*(2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]) -
+    2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] + DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]) -
+    2*(2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]) +
+    2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID26","Anti5[GA[5].GAE[i]]",
+    "DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID27","Anti5[GA[5].GAE[i], 1]",
+    "DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheRight-ID28","Anti5[GA[5].GAE[mu].GAE[nu].GAE[rho]]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID29","Anti5[GA[5].GAE[mu].GAE[nu].GAE[rho],2]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheRight-ID30","Anti5[GA[5].GAE[mu].GAE[nu].GAE[rho], Infinity]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"}
 };
 
 
+fcstAnti5ToTheLeft = {
+{"fcstAnti5ToTheLeft-ID1","$BreitMaison=False;\nAnti5[GA[mu].GA[5]]",
+    "DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID2","Anti5[GA[mu].GA[5], -1]",
+    "-DiracGamma[5] . DiracGamma[LorentzIndex[mu]]"},
+{"fcstAnti5ToTheLeft-ID3","Anti5[GA[mu, nu, rho].GA[5],-1]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] .
+    DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheLeft-ID4","Anti5[GA[mu, nu, rho].GA[5], -2]",
+    "DiracGamma[LorentzIndex[mu]] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheLeft-ID5","Anti5[GA[mu, nu, rho].GA[5], -Infinity]",
+    "-DiracGamma[5] . DiracGamma[LorentzIndex[mu]] .
+    DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheLeft-ID6","Anti5[GAD[mu].GA[5]]",
+    "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID7","Anti5[GAD[mu].GA[5], -1]",
+    "-DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]"},
+{"fcstAnti5ToTheLeft-ID8","Anti5[GAD[mu, nu, rho].GA[5], -1]",
+    "-DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheLeft-ID9","Anti5[GAD[mu, nu, rho].GA[5], -2]",
+    "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheLeft-ID10","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]",
+    "-DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheLeft-ID11","Anti5[GAE[i].GA[5]]",
+    "DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID12","Anti5[GAE[i].GA[5], -1]",
+    "DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID13","Anti5[GAE[mu].GAE[nu].GAE[rho].GA[5], -1]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID14","Anti5[GAE[mu].GAE[nu].GAE[rho].GA[5], -2]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID15","Anti5[GAE[mu].GAE[nu].GAE[rho].GA[5], -Infinity]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID16","$BreitMaison=True;\nAnti5[GA[mu].GA[5]]",
+    "DiracGamma[LorentzIndex[mu]] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID17","Anti5[GA[mu].GA[5], -1]",
+    "-DiracGamma[5] . DiracGamma[LorentzIndex[mu]]"},
+{"fcstAnti5ToTheLeft-ID18","Anti5[GA[mu, nu, rho].GA[5], -1]",
+    "-DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] .
+    DiracGamma[5] . DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheLeft-ID19","Anti5[GA[mu, nu, rho].GA[5], -2]",
+    "DiracGamma[LorentzIndex[mu]] . DiracGamma[5] . DiracGamma[LorentzIndex[nu]] .
+    DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheLeft-ID20","Anti5[GA[mu, nu, rho].GA[5], -Infinity]",
+    "-DiracGamma[5] . DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]] .
+    DiracGamma[LorentzIndex[rho]]"},
+{"fcstAnti5ToTheLeft-ID21","Anti5[GAD[mu].GA[5]]",
+    "DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID22","Anti5[GAD[mu].GA[5], -1]",
+    "2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] -
+    DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D]"},
+{"fcstAnti5ToTheLeft-ID23","Anti5[GAD[mu, nu, rho].GA[5], -1]",
+    "2*DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheLeft-ID24","Anti5[GAD[mu, nu, rho].GA[5], -2]",
+    "-2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, D], D] +
+    2*(2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]) +
+    DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheLeft-ID25","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]",
+    "2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D] -
+    2*(2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, D], D] - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D]) +
+    2*(-2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] +
+    2*(2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]) +
+    DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]) - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
+    DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+{"fcstAnti5ToTheLeft-ID26","Anti5[GAE[i].GA[5]]",
+    "DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
+{"fcstAnti5ToTheLeft-ID27","Anti5[GAE[i].GA[5], -1]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[i, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheLeft-ID28","Anti5[GAE[mu].GAE[nu].GAE[rho].GA[5], -1]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheLeft-ID29","Anti5[GAE[mu].GAE[nu].GAE[rho].GA[5], -2]",
+    "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[5] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
+{"fcstAnti5ToTheLeft-ID30","Anti5[GAE[mu].GAE[nu].GAE[rho].GA[5], -Infinity]",
+    "DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"}
+};
+
+fcstAnti5EvenGamma5 = {
+{"fcstAnti5EvenGamma5-ID1","$BreitMaison=False;\nAnti5[GA[5].GA[5]]","1"},
+{"fcstAnti5EvenGamma5-ID2","Anti5[GA[5].GA[5].GA[5]]","DiracGamma[5]"},
+{"fcstAnti5EvenGamma5-ID3","Anti5[GA[5].GA[5].GA[5].GA[5]]","1"},
+{"fcstAnti5EvenGamma5-ID4","Anti5[GA[5].GA[i].GA[5].GA[j].GA[5].GA[k].GA[5],Infinity]",
+    "DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]] . DiracGamma[LorentzIndex[k]]"}
+};
 
 
 
