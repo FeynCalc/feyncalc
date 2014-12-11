@@ -198,9 +198,9 @@ diracM[x_ y_Plus,opt_:{}]:= diracM[Expand[x y],opt];
 diracM[x_Plus,opt_:{}]:= diracM[#,opt]& /@ x;
 diracM[DOT[x_,y__],opt_:{}] :=  diracM[#,opt]& /@ DOT[x,y];
 diracM[n_Integer]:=DiracGamma[ExplicitLorentzIndex[n]]/; (n=!=5 && n=!=6 && n=!=7);
-diracM[5,opt_:{}]:=DiracGamma[5];
-diracM[6,opt_:{}]:=DiracGamma[6];
-diracM[7,opt_:{}]:=DiracGamma[7];
+diracM[5, OptionsPattern[]]:=DiracGamma[5];
+diracM[6, OptionsPattern[]]:=DiracGamma[6];
+diracM[7, OptionsPattern[]]:=DiracGamma[7];
 diracM["+"]:=DiracGamma[6];
 diracM["-"]:=DiracGamma[7];
 diracM[x_,op_:{}] := DiracGamma[LorentzIndex[ x,
