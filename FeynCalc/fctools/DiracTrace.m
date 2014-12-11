@@ -41,24 +41,21 @@ Evaluation aborted!";
 
 Begin["`Private`"];
 
-DiracGamma = MakeContext["CoreObjects","DiracGamma"];
-DiracGammaT = MakeContext["CoreObjects","DiracGammaT"];
-DiracSigma = MakeContext["CoreObjects","DiracSigma"];
-DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
-Eps = MakeContext["CoreObjects","Eps"];
-EpsContract = MakeContext["CoreOptions","EpsContract"];
-Expanding = MakeContext["CoreOptions","Expanding"];
-Factoring = MakeContext["CoreOptions","Factoring"];
-LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
+DiracGamma:= DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+DiracGammaT:= DiracGammaT = MakeContext["CoreObjects","DiracGammaT"];
+DiracTraceEvaluate:= DiracTraceEvaluate = MakeContext["CoreOptions","DiracTraceEvaluate"];
+Eps:= Eps = MakeContext["CoreObjects","Eps"];
+EpsContract:= EpsContract = MakeContext["CoreOptions","EpsContract"];
+Expanding:= Expanding = MakeContext["CoreOptions","Expanding"];
+Factoring:= Factoring = MakeContext["CoreOptions","Factoring"];
+LeviCivitaSign:= LeviCivitaSign = MakeContext["CoreOptions","LeviCivitaSign"];
 LorentzIndex:= LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-Mandelstam = MakeContext["CoreOptions","Mandelstam"];
-Momentum = MakeContext["CoreObjects","Momentum"];
-Pair = MakeContext["CoreObjects","Pair"];
-PairCollect = MakeContext["CoreOptions","PairCollect"];
-SUNT = MakeContext["CoreObjects","SUNT"];
-Spinor = MakeContext["CoreObjects","Spinor"];
-TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
-sCO := sCO = MakeContext["PairContract"];
+Mandelstam:= Mandelstam = MakeContext["CoreOptions","Mandelstam"];
+Momentum:= Momentum = MakeContext["CoreObjects","Momentum"];
+Pair:= Pair = MakeContext["CoreObjects","Pair"];
+PairCollect:= PairCollect = MakeContext["CoreOptions","PairCollect"];
+SUNT:= SUNT = MakeContext["CoreObjects","SUNT"];
+TraceOfOne:= TraceOfOne = MakeContext["CoreOptions","TraceOfOne"];
 
 MakeContext[
     Collect2,
@@ -66,10 +63,8 @@ MakeContext[
     DiracCanonical,
     DiracGammaCombine,
     DiracGammaExpand,
-    DiracOrder,
     DiracSigmaExplicit,
     DiracSimplify,
-    DiracTrick,
     DotSimplify,
     EpsEvaluate,
     Expand2,
@@ -105,15 +100,23 @@ Options[DiracTrace] = {EpsContract         -> False,
                       };
 
 
-dotLin[x_] := DotSimplify[x, Expanding -> False];
  (* gamma67backdef: reinsertion of gamma6 and gamm7 *)
    gamma67back[x_] := x/.DiracGamma[6]->( 1/2 + DiracGamma[5]/2 )/.
                          DiracGamma[7]->( 1/2 - DiracGamma[5]/2 );
 
 DiracTrace[x:Except[_HoldAll], opts:OptionsPattern[]]:= (Message[DiracTrace::noncom, InputForm[x]];  DiracTrace[HoldAll[x]])/;
- !FreeQ2[FCI[x], {DiracGamma[a__]*DiracGamma[b__],
-                DOT[a___,DiracGamma[b__],c___]*DOT[d___,DiracGamma[e__],f___],
-                DOT[a___,DiracGamma[b__],c___]*DiracGamma[d__]
+ !FreeQ2[FCI[x], {
+               (*Times instead of DOT between two Dirac or SU(N) matrices*)
+               (DiracGamma | DiracGammaT)[a__]*(DiracGamma | DiracGammaT)[b__],
+               SUNT[a__]*SUNT[b__],
+               (*Two DOT objects multiplied with each other via Times, unless those are closed spinor chains*)
+                DOT[a:Except[_Spinor]...,(DiracGamma | DiracGammaT )[b__],c:Except[_Spinor]...]*
+                   DOT[d:Except[_Spinor]...,(DiracGamma | DiracGammaT)[e__],f:Except[_Spinor]...],
+                (*Open spinor chains*)
+                DOT[a_Spinor,b:Except[_Spinor]...],
+                (*DOT object multiplied by a Dirac or SU(N) matrix via Times*)
+                DOT[a:Except[_Spinor]...,(DiracGamma | DiracGammaT)[b__],c:Except[_Spinor]...]*
+                (DiracGamma | DiracGammaT)[d__]
                     }] && OptionValue[FilterRules[{opts}, Options[DiracTrace]],DiracTraceEvaluate];
 
 
@@ -195,7 +198,7 @@ diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x *
 
 
 diractraceevsimple[DOT[x___], {opt___}]:=
-(If[FreeQ[#,LorentzIndex],#, #/.Pair->sCO/.sCO->Pair]&[
+(If[FreeQ[#,LorentzIndex],#, #/.Pair->PairContract/.PairContract->Pair]&[
 (*If[
 *)
 (*Length[DOT[x]] > Length[Union[Variables /@ Apply[List,DOT[x]]]],*)
@@ -313,7 +316,7 @@ diractraceev2[x_,opt_:{}]:=
                       {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
  (* coneinsdef    *)
-   coneins[ x_ ]  := MemSet[coneins[x], x/.Pair->sCO/.sCO->Pair ];
+   coneins[ x_ ]  := MemSet[coneins[x], x/.Pair->PairContract/.PairContract->Pair ];
 
  (* If no DOT's  but DiracGamma's are present *)
 (*XXX *)
@@ -327,11 +330,11 @@ diractraceev2[x_,opt_:{}]:=
         diractrresu = diractrpa[[1]] four spursav[ diractrpa[[2]] ]
     ];
   If[!FreeQ[diractrresu, LorentzIndex],
-     diractrresu = diractrresu /. Pair -> sCO /. sCO -> scev
+     diractrresu = diractrresu /. Pair -> PairContract /. PairContract -> scev
     ];
   diractrresu = Expand[diractrresu];
   If[!FreeQ[diractrresu, LorentzIndex],
-     diractrresu = diractrresu /. Pair -> sCO /. sCO -> scev
+     diractrresu = diractrresu /. Pair -> PairContract /. PairContract -> scev
     ];
                   diractrresu] /;( FreeQ[y,DOT] && !FreeQ[y,DiracGamma]);
 
@@ -434,7 +437,7 @@ FCPrint[2,TimeUsed[]];
               };
          diractrny = diractrny //. es
         ];
-      diractrny = diractrny /. Pair -> sCO /. sCO -> scev
+      diractrny = diractrny /. Pair -> PairContract /. PairContract -> scev
      ];
 FCPrint[2,"CH3"];
 FCPrint[2,TimeUsed[]];
@@ -511,8 +514,7 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 *)
    spursav[x__DiracGamma] := spur[x];
    (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
-   spursav[x : ((DiracGamma[__] | HoldPattern[
-   Plus[__HighEnergyPhysics`FeynCalc`CoreObjects`DiracGamma]]) ..)] :=
+   spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
    MemSet[spursav[x], spur[x]];
 
 
@@ -772,7 +774,7 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
         OddQ[le] && fr567[spx],
          0 ,
         le===2,
-         scev[spx[[1]],spx[[2]]]/.Pair->sCO/.sCO->Pair,
+         scev[spx[[1]],spx[[2]]]/.Pair->PairContract/.PairContract->Pair,
         le===4,
          (scx[1,2] scx[3,4]-scx[1,3] scx[2,4]+scx[1,4] scx[2,3]
          )//Expand,
@@ -889,15 +891,9 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
    cyclic[x__]:=RotateLeft[{x},Position[{x},First[Sort[{x}]]][[1,1]]];
    cyclic[]:={};
 
-   DiracTrace /:
-   MakeBoxes[DiracTrace[a__, opts___?OptionQ], TraditionalForm
-            ] :=
-   RowBox[{"tr","(",TBox[a], ")"}]
-
-   DiracTrace /:
-   MakeBoxes[DiracTrace[a__], TraditionalForm
-            ] :=
-   RowBox[{"tr","(",TBox[a], ")"}]
+    DiracTrace /:
+    MakeBoxes[DiracTrace[expr__, OptionsPattern[]], TraditionalForm] :=
+        RowBox[{"tr","(",TBox[expr], ")"}]
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
