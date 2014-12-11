@@ -48,7 +48,7 @@ RussianTrick[exp_,k_, pe_/; Head[pe]=!=List, opt___Rule] :=
   RussianTrick[exp,k,pe,{Global`q1, Global`q2, Global`p},opt];
 
 RussianTrick[ex_, p_,k_, {q1_, q2_, pe_}, opt___Rule] :=
-Block[{fv, t1, t2, t3, dime, exp,mu},
+Block[{fv, t1, t2, t3, dime, exp,mu, dim},
 exp = FeynCalcInternal[ex];
 dim = Dimension /. {opt} /. Options[RussianTrick];
 fv  = ExpandScalarProduct[FourVector[##, Dimension -> dim]]&;
