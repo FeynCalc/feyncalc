@@ -36,7 +36,7 @@ integ[y_ /; Head[y] === Integer] := True;  (* check for integer*)
 pinteg[y_Integer?Positive] := True;  (* check for positive integer*)
 pinteg[y_ /; DataType[y, PositiveInteger] === True] := True;
 
-comment[st_String] := If[$BLABLA = True, Print[st]];
+comment[st_String] := If[$BLABLA === True, Print[st]];
 
 Options[TLIHYP] = {FeynmanParameterNames -> Global`x,
                    Momentum -> Global`p
