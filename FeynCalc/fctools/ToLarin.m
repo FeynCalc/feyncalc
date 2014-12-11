@@ -38,7 +38,7 @@ dim = Dimension /. {ru} /. Options[ToLarin];
 drsi = LeviCivitaSign /. Options[TR];
 (*drsi is usually -1 *)
 tt = FeynCalcInternal[x] /. DOT -> doot;
-temp2 = tt //. doot[a___, DiracGamma[mUU_,di___], DiracGamma[5],
+temp2 = tt //. doot[a___, DiracGamma[mUU_, _Symbol], DiracGamma[5],
                    b___] :>
   ({fi1, fi2, fi3} = LorentzIndex[#,dim]& /@ Unique[{"du","du","du"}];
    ( drsi I/6 Eps[mUU, fi1, fi2, fi3] *
