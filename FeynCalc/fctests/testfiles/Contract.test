@@ -125,3 +125,27 @@ fcstContractBMHV = {
 {"fcstContractBMHV-ID54","Contract[GAE[mu] FVE[p, mu]]","DiracGamma[Momentum[p, -4 + D], -4 + D]"}
 
 };
+
+fcstContractContractionsUpperLower = {
+
+{"fcstContractContractionsNR-ID1","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]],
+ Pair[Momentum[q], LorentzIndex[Upper[mu]]]]","Pair[LorentzIndex[Upper[mu]], Momentum[p]]*Pair[LorentzIndex[Upper[mu]], Momentum[q]]"},
+
+{"fcstContractContractionsNR-ID2","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]],
+ Pair[Momentum[p], LorentzIndex[Upper[mu]]]]","Pair[LorentzIndex[Upper[mu]], Momentum[p]]^2"},
+
+{"fcstContractContractionsNR-ID3","Contract[Pair[Momentum[p], LorentzIndex[Lower[mu]]],
+ Pair[Momentum[q], LorentzIndex[Lower[mu]]]]","Pair[LorentzIndex[Lower[mu]], Momentum[p]]*Pair[LorentzIndex[Lower[mu]], Momentum[q]]"},
+
+{"fcstContractContractionsNR-ID4","Contract[Pair[Momentum[p], LorentzIndex[Lower[mu]]],
+ Pair[Momentum[p], LorentzIndex[Lower[mu]]]]","Pair[LorentzIndex[Lower[mu]], Momentum[p]]^2"},
+
+ {"fcstContractContractionsNR-ID5","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]],
+ Pair[Momentum[q], LorentzIndex[Lower[mu]]]]","Pair[Momentum[p], Momentum[q]]"},
+
+ {"fcstContractContractionsNR-ID6","Contract[Pair[Momentum[p], LorentzIndex[Upper[mu]]],
+ Pair[Momentum[p], LorentzIndex[Lower[mu]]]]","Pair[Momentum[p], Momentum[p]]"}
+
+}
+
+

@@ -16,4 +16,6 @@
 Needs["HighEnergyPhysics`FeynCalc`"];
 Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/Contract.test"]];
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-    Join[fcstContractContractionsIn4dims,fcstContractBMHV]];
+    Join[fcstContractContractionsIn4dims,
+         fcstContractBMHV,
+         fcstContractContractionsUpperLower]];
