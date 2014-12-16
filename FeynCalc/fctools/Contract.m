@@ -68,6 +68,7 @@ Begin["`Private`"];
    ScalarProduct               = MakeContext["ScalarProduct"];
    Schouten                    = MakeContext["Schouten"];
    Upper  := Upper = MakeContext["CoreObjects","Upper"];
+   Lower  := Lower = MakeContext["CoreObjects","Lower"];
    Twist2GluonOperator         := Twist2GluonOperator =
                                  MakeContext["Twist2GluonOperator"];
 
@@ -440,7 +441,7 @@ tim = TimeUsed[];
                             ]
                      ) === {True}, x,
                   If[CheckContext["CoreObjects"],
-                     If[!FreeQ[x, Upper], Contract1[x],
+                     If[!FreeQ2[x, {Upper,Lower}], Contract1[x],
                         contracT[
                                 If[!FreeQ[x, DOT],
                                 DotSimplify[x, Expanding -> False], x
