@@ -850,8 +850,12 @@ Epsilon /:
 ExplicitLorentzIndex[x_, 4] := ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
 
 ExplicitLorentzIndex /:
-   MakeBoxes[ ExplicitLorentzIndex[p_, ___], TraditionalForm
-            ] := p;
+   MakeBoxes[ ExplicitLorentzIndex[p_, dim_ : 4], TraditionalForm
+            ] := If[ $LorentzIndices =!= True,
+                    ToBoxes[p,TraditionalForm],
+                    SubscriptBox[ToBoxes[p, TraditionalForm],
+                                    ToBoxes[dim, TraditionalForm]]
+                   ];
 
 ExplicitSUNIndex/:
 SUNIndex[i_ExplicitSUNIndex]:= ExplicitSUNIndex[i];
