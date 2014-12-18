@@ -30,6 +30,13 @@ With the default setting Factoring -> Automatic factorization is performed on
 not too long (LeafCount[ ] < 5000 ) expressions.
 ";
 
+DiracTrace::noncom =
+"Wrong syntax! The Dirac trace of `1` contains Dirac matrices multiplied via \
+Times (commutative multiplication) instead of DOT (non-commutative multiplication). \
+Evaluation aborted!";
+
+
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -103,12 +110,16 @@ dotLin[x_] := DotSimplify[x, Expanding -> False];
    gamma67back[x_] := x/.DiracGamma[6]->( 1/2 + DiracGamma[5]/2 )/.
                          DiracGamma[7]->( 1/2 - DiracGamma[5]/2 );
 
+DiracTrace[x:Except[_HoldAll], opts:OptionsPattern[]]:= (Message[DiracTrace::noncom, InputForm[x]];  DiracTrace[HoldAll[x]])/;
+ !FreeQ2[FCI[x], {DiracGamma[a__]*DiracGamma[b__],DOT[a__,DiracGamma[b__]]*DOT[DiracGamma[c__],d__]}] && OptionValue[FilterRules[{opts}, Options[DiracTrace]],DiracTraceEvaluate];
+
+
 DiracTrace[0,___]:=0;
 
-DiracTrace[a_ /; (FreeQ[a, DiracGamma] && !FreeQ[a, DiracGammaT]),
+DiracTrace[a:Except[_HoldAll] /; (FreeQ[a, DiracGamma] && !FreeQ[a, DiracGammaT]),
              b___?OptionQ] :=
     DiracTrace[(a//Transpose)//Reverse, b];
-DiracTrace[a___, x_,y_, z___]:=DiracTrace[a,x.y,z]/;
+DiracTrace[a:Except[_HoldAll]..., x_,y_, z___]:=DiracTrace[a,x.y,z]/;
        FreeQ2[y,{Rule,BlankNullSequence}]&&
        FreeQ2[x,{Rule,BlankNullSequence}];
 
@@ -139,7 +150,7 @@ DiracTrace[x_,op___?OptionQ] := fcex[op][
    temporarily
 *)
 
-DiracTrace[x_, op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrace] },
+DiracTrace[x:Except[_HoldAll], op___?OptionQ] := Block[{diTres, globalstartops=Options[DiracTrace] },
 
 (*Global`OO= Sequence@@Join[{op}, globalstartops];*)
         SetOptions[DiracTrace,FilterRules[{op},Options[DiracTrace]]];
