@@ -111,7 +111,10 @@ dotLin[x_] := DotSimplify[x, Expanding -> False];
                          DiracGamma[7]->( 1/2 - DiracGamma[5]/2 );
 
 DiracTrace[x:Except[_HoldAll], opts:OptionsPattern[]]:= (Message[DiracTrace::noncom, InputForm[x]];  DiracTrace[HoldAll[x]])/;
- !FreeQ2[FCI[x], {DiracGamma[a__]*DiracGamma[b__],DOT[a__,DiracGamma[b__]]*DOT[DiracGamma[c__],d__]}] && OptionValue[FilterRules[{opts}, Options[DiracTrace]],DiracTraceEvaluate];
+ !FreeQ2[FCI[x], {DiracGamma[a__]*DiracGamma[b__],
+                DOT[a___,DiracGamma[b__],c___]*DOT[d___,DiracGamma[e__],f___],
+                DOT[a___,DiracGamma[b__],c___]*DiracGamma[d__]
+                    }] && OptionValue[FilterRules[{opts}, Options[DiracTrace]],DiracTraceEvaluate];
 
 
 DiracTrace[0,___]:=0;
