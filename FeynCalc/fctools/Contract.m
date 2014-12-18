@@ -239,7 +239,7 @@ tim = TimeUsed[];
  Contract[x_, y_ /; Head[y]=!=Rule, c___?OptionQ] :=
           (Contract[fci[x], c] y) /; FreeQ2[fci[y], {LorentzIndex,Eps}];
 
- Contract[x_, y_Times] := Block[{a=fci[x], b=fci[y], bb},
+ Contract[x_, y_Times, OptionsPattern[]] := Block[{a=fci[x], b=fci[y], bb},
    If[MatchQ[b, Apply[HoldPattern, {Times__Pair}]], contract21[ a, b ],
 
      If[MatchQ[b, HoldPattern[Times__Pair]], contract21[ a, b ],
