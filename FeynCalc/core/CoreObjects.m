@@ -1502,30 +1502,45 @@ Pair /:
 Pair /:
    MakeBoxes[Pair[
       (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
-      Momentum[
-      Polarization[
-                              b_,Complex[0,1], OptionsPattern[]],___]
-                 ], TraditionalForm
-            ] := RowBox[{
-        SubscriptBox["\[CurlyEpsilon]",
-                     Tbox[LorentzIndex[a]]],
-                     "(",Tbox[b],")"}];
+      ExplicitLorentzIndex)[a:Except[_Upper | _Lower], dim_ : 4],
+      Momentum[Polarization[b_, Complex[0,1], OptionsPattern[]], dim_: 4]], TraditionalForm] :=
+      If[$Covariant===False,
+        RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[a]]], "(",Tbox[b],")"}],
+        RowBox[{ SubscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[a]]], "(",Tbox[b],")"}]
+        ];
 
 Pair /:
    MakeBoxes[Pair[
       (LorentzIndex|
-      ExplicitLorentzIndex)[a__],
-      Momentum[
-      Polarization[
-                              b_,Complex[0,-1], OptionsPattern[]],___]
-                 ], TraditionalForm
-            ] := RowBox[{
-        SubsuperscriptBox["\[CurlyEpsilon]",
-                          Tbox[LorentzIndex[a]], "*"
-                          ], "(", Tbox[b], ")"
-                        }
-                       ];
+      ExplicitLorentzIndex)[a:Except[_Upper | _Lower], dim_ : 4],
+      Momentum[Polarization[b_, Complex[0,-1], OptionsPattern[]], dim_: 4]], TraditionalForm] :=
+      If[$Covariant===False,
+        RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox["*",LorentzIndex[a]]], "(",Tbox[b],")"}],
+        RowBox[{ SubsuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[a]],"*"], "(",Tbox[b],")"}]
+        ];
+
+Pair /:
+   MakeBoxes[Pair[
+      (LorentzIndex|
+      ExplicitLorentzIndex)[(x: Upper | Lower)[a_], dim_ : 4],
+      Momentum[Polarization[b_, Complex[0,1], OptionsPattern[]], dim_: 4]], TraditionalForm] :=
+      If[x===Upper,
+        RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[x[a]]]], "(",Tbox[b],")"}],
+        RowBox[{ SubscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[x[a]]]], "(",Tbox[b],")"}]
+        ];
+
+Pair /:
+   MakeBoxes[Pair[
+      (LorentzIndex|
+      ExplicitLorentzIndex)[(x: Upper | Lower)[a_], dim_ : 4],
+      Momentum[Polarization[b_, Complex[0,-1], OptionsPattern[]], dim_: 4]], TraditionalForm] :=
+      If[x===Upper,
+        RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox["*",LorentzIndex[x[a]]]], "(",Tbox[b],")"}],
+        RowBox[{ SubsuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[x[a]]],"*"], "(",Tbox[b],")"}]
+        ];
+
+
+
 
 (* TraditionalForm representation of momentum vectors                       *)
 (* ------------------------------------------------------------------------ *)
@@ -1534,7 +1549,7 @@ Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
       ExplicitLorentzIndex)[a:Except[_Upper | _Lower],dim1_ : 4],
-              Momentum[b_,dim2_ : 4]+c_:0],
+              Momentum[b:Except[_Polarization], dim2_ : 4]+c_:0],
              TraditionalForm
             ] := If[ Head[b]===Plus || c=!=0,
     If[$Covariant===False,
@@ -1551,7 +1566,7 @@ Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
       ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim1_ : 4],
-              Momentum[b_,dim2_ : 4]+c_:0],
+              Momentum[b:Except[_Polarization] ,dim2_ : 4]+c_:0],
              TraditionalForm
             ] := If[ Head[b]===Plus || c=!=0,
     If[x===Upper,
