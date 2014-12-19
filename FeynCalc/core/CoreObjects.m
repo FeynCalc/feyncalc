@@ -1215,7 +1215,7 @@ LorentzIndex[_, 0]               := 0;
 LorentzIndex[in_Integer,dim___]  := ExplicitLorentzIndex[in,dim];
 
 LorentzIndex /:
-   MakeBoxes[ LorentzIndex[p_, dim_ : 4], TraditionalForm
+   MakeBoxes[ LorentzIndex[p:Except[_Upper | _Lower], dim_ : 4], TraditionalForm
             ] := If[ $LorentzIndices =!= True,
                     ToBoxes[p,TraditionalForm],
                     SubscriptBox[ToBoxes[p, TraditionalForm],
@@ -1398,9 +1398,9 @@ Pair[Momentum[Polarization[x_,__],___],
 metricRep[dim_]:= Which[
     dim==={4,4},
     	OverscriptBox["g", "_"],
-    MatchQ[dim,{_Symbol,_Symbol}],
+    MatchQ[dim,{_Symbol,_Symbol}] && dim[[1]]===dim[[2]],
     	"g",
-    MatchQ[dim,{_Symbol-4, _Symbol-4}],
+    MatchQ[dim,{_Symbol-4, _Symbol-4}] && dim[[1]]===dim[[2]],
     	OverscriptBox["g", "^"],
     True,
     	SubscriptBox["g", ToBoxes[dim]]
@@ -1408,15 +1408,29 @@ metricRep[dim_]:= Which[
 
 Pair /:
    MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a_, dim1_:4],
-(LorentzIndex|ExplicitLorentzIndex)[b_, dim2_:4] ],
+(LorentzIndex|ExplicitLorentzIndex)[a:Except[_Upper | _Lower], dim1_:4],
+(LorentzIndex|ExplicitLorentzIndex)[b:Except[_Upper | _Lower], dim2_:4] ],
              TraditionalForm
             ] := If[$Covariant===False,
                     SuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]] ],
                     SubscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]] ]
                    ];
 
-(* TraditionalForm representation of the scalar product *)
+Pair /:
+   MakeBoxes[Pair[
+(LorentzIndex|ExplicitLorentzIndex)[(a : Upper | Lower)[x_], dim1_:4],
+(LorentzIndex|ExplicitLorentzIndex)[(b : Upper | Lower)[y_], dim2_:4] ],
+             TraditionalForm
+            ] := Which[a===Upper && b===Upper,
+                       SuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a[x],dim1], LorentzIndex[b[y],dim2]] ],
+                       a===Lower && b===Lower,
+                       SubscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a[x],dim1], LorentzIndex[b[y],dim2]] ],
+                       a===Lower && b===Upper,
+                       SubsuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
+                           Tbox[LorentzIndex[a[x],dim1]], Tbox[LorentzIndex[b[y],dim2]]  ]
+            ];
+
+(* TraditionalForm representation of scalar products *)
 (* ------------------------------------------------------------------------ *)
 
 
@@ -1482,7 +1496,7 @@ Pair /:
                        ]
                            ];
 
-(* TraditionalForm representation of the polarization vector 				*)
+(* TraditionalForm representation of polarization vectors    				*)
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
@@ -1513,13 +1527,13 @@ Pair /:
                         }
                        ];
 
-(* TraditionalForm representation of the momentum vectors *)
+(* TraditionalForm representation of momentum vectors                       *)
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
-      ExplicitLorentzIndex)[a_,dim1_ : 4],
+      ExplicitLorentzIndex)[a:Except[_Upper | _Lower],dim1_ : 4],
               Momentum[b_,dim2_ : 4]+c_:0],
              TraditionalForm
             ] := If[ Head[b]===Plus || c=!=0,
@@ -1530,6 +1544,23 @@ Pair /:
     If[$Covariant===False,
 		SuperscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[a,dim2]]],
 		SubscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[a,dim2]]]
+    ]
+];
+
+Pair /:
+   MakeBoxes[Pair[
+              (LorentzIndex|
+      ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim1_ : 4],
+              Momentum[b_,dim2_ : 4]+c_:0],
+             TraditionalForm
+            ] := If[ Head[b]===Plus || c=!=0,
+    If[x===Upper,
+        SuperscriptBox[ RowBox[{"(",Tbox[Momentum[b+c,dim1]],")"}], Tbox[LorentzIndex[x[a],dim2]]],
+        SubscriptBox[ RowBox[{"(",Tbox[Momentum[b+c,dim1]],")"}], Tbox[LorentzIndex[x[a],dim2]]]
+    ],
+    If[x===Upper,
+        SuperscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[x[a],dim2]]],
+        SubscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[x[a],dim2]]]
     ]
 ];
 
