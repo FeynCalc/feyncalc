@@ -36,6 +36,20 @@ Times (commutative multiplication) instead of DOT (non-commutative multiplicatio
 Evaluation aborted!";
 
 
+DiracTrace::ndranomaly =
+"You are using naive dimensional regularization (NDR), such that in D dimensions \
+gamma^5 anticommutes with all other Dirac matrices. In this scheme \
+(without additional prescriptions) it is not possible to compute traces with an \
+odd number of gamma^5 unambiguously. The trace of `1` is illegal in NDR. \
+Evaluation aborted!";
+
+DiracTrace::ilsch =
+"The settings $BreitMaison=`1`, $Larin=`2` and $West=`3` do not describe a valid scheme for treating gamma^5 \
+in D dimensions. Evaluation aborted!.";
+
+DiracTrace::fail =
+"DiracTrace failed to compute the trace of `1`. Evaluation aborted!.";
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -78,6 +92,8 @@ MakeContext[
     PairContract,
     PartitHead,
     Schouten,
+    SelectFree,
+    SelectNotFree,
     TR,
     TrickMandelstam
     ];
@@ -98,6 +114,11 @@ Options[DiracTrace] = {EpsContract         -> False,
                        (*Added 27/8-2002, F.Orellana*)
                        TraceOfOne          -> 4
                       };
+
+
+DiracTrace /:
+	MakeBoxes[DiracTrace[expr__, OptionsPattern[]], TraditionalForm]:=
+		RowBox[{"tr","(",TBox[expr], ")"}]
 
 
  (* gamma67backdef: reinsertion of gamma6 and gamm7 *)
@@ -170,68 +191,30 @@ DiracTrace[x:Except[_HoldAll], op___?OptionQ] := Block[{diTres, globalstartops=O
                          )              ]
 );
                       SetOptions[DiracTrace, Sequence@@globalstartops];
+                      If[!FreeQ[diTres,DiracGamma], Print["Problem!!!"];];
                                      diTres] /;
     ((DiracTraceEvaluate/.{op} /. (Join[{op},Options[DiracTrace]]//Flatten)) === True && FreeQ[x,SUNT]);
 
-
- (*  special cases *)
-(*XXXX*)
-diractraceevsimple[xx_,{opt___}] :=
- ( ( TraceOfOne /. {opt}  /. Options[DiracTrace] ) * xx
- )/;  FreeQ[xx, DiracGamma];
+diractraceevsimple[x_,{opt___}] :=
+    (x (TraceOfOne /. {opt} /. Options[DiracTrace]))/; FreeQ[x, DiracGamma];
 
 diractraceevsimple[y_ DOT[x_,z__],{opt___}] :=
- y diractraceevsimple[DOT[x,z],{opt}] /; FreeQ[y, DiracGamma];
+    (y diractraceevsimple[DOT[x,z],{opt}])/; FreeQ[y, DiracGamma];
 
+diractraceevsimple[x_Plus , {opt___}] :=
+    Map[diractraceevsimple[#,{opt}]&, x];
 
-diractraceevsimple[x_Plus , {opt___}]:=Map[diractraceevsimple[#,{opt}]&, x];
-
-(* in order to inhibit loops below *)
-diractraceevsimpleplus[x_Plus,{opt___}] :=
- Map[diractraceevsimple[#,{opt}]&, x];
-
-(*Fix by Rolf in response to Broniowski's observation that
-  TR[DiracSlash[p,p]] gives p^2 instead of 4p^2. F.Orellana.*)
-diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x *
- (TraceOfOne /. {opt} /. Options[DiracTrace] );
-(*diractraceevsimpleplus[x_/;Head[x]=!=Plus,{opt___}] := x;*)
-
-
-diractraceevsimple[DOT[x___], {opt___}]:=
-(If[FreeQ[#,LorentzIndex],#, #/.Pair->PairContract/.PairContract->Pair]&[
-(*If[
-*)
-(*Length[DOT[x]] > Length[Union[Variables /@ Apply[List,DOT[x]]]],*)
-   (*More restrictive condition. I'm not sure about this... But the old stuff commented out above
-      is wrong on e.g. TR[DiracGamma[Momentum[p]].DiracGamma[Momentum[p]].DiracGamma[Momentum[r]]]
-      see, Kapusta's bug report http://www.feyncalc.org/forum/0079.html. F.Orellana, 10/2002*)
-(*
-        Union[Length /@ Split[Sort[ Variables /@ Apply[List,DOT[x]] ]]] === {2},
-        FCPrint[3,"using diractraceevsimpleplus on ", StandardForm[DOT[x]]];
-
-        Factor[diractraceevsimpleplus[Expand[DiracTrick[DOT[x]]], {opt}]],
-
-        FCPrint[3,"Using spursav on ", StandardForm[DOT[x]]];
-*)
-(* small BUG found here 2005-02-05 by RM*)
-(*
-       (TraceOfOne /. {opt} /.Options[DiracTrace] /. Options[DiracTrace] )*
-*)
-(*
-       (TraceOfOne /. {opt} /.Options[DiracTrace] )*
-        (spursav @@ DOT[x])
-*)
-        diractraceev@@DOT[x]
-  (*]*) ]
-)  /; (MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_,_],_]..]
-             ] ||
-       MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_]]..]
-             ] ||
-       MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_,_],_].., DiracGamma[5 | 6 | 7]]
-             ] ||
-       MatchQ[Apply[doo, DOT[x]], doo[ DiracGamma[(LorentzIndex | Momentum)[_]].., DiracGamma[5 | 6 | 7]]
-             ]
-      );
+diractraceevsimple[DOT[x___], {___}] :=
+    (If[ FreeQ[#,LorentzIndex],
+         #,
+         #/.Pair->PairContract/.PairContract->Pair
+     ]&[diractraceev@@DOT[x]]
+    )/;	(MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..}] ||
+		 MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..}] ||
+		 MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..,
+			DiracGamma[5 | 6 | 7]} ] ||
+		MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..,
+			DiracGamma[5 | 6 | 7]}]);
 
 dirli[LorentzIndex[xx_, ___],___] := xx;
 
@@ -285,258 +268,186 @@ conall[ x_,opt_:{}] := Contract[ x,
        (EpsContract /. opt /. Options[DiracTrace]),
         Factoring->False ];
 
+fr567[x__] :=
+    FreeQ2[FixedPoint[ReleaseHold,{x}], {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
-                                                  (*diractraceevdef*)
-diractraceev[x_, opt___] := Block[{trfa = 1, enx = x},
- If[Head[x] === Times,
-    (*Get rid of this SU(N) stuff. Separate SU(N) and Dirac functionality.
-    F.Orellana, 23/1-2003*)
-    trfa = Select[x, FreeQ2[#, {DiracGamma, LorentzIndex, (*SUNIndex,*) Eps}]&];
-    enx = x / trfa;
-   ];
-  (*If[!FreeQ[x, SUNT],
-     enx = SUNSimplify[DiracTrace[enx,opt]] /.DiracTrace -> diractraceev2;
-    ];*)
-(*CHANGE MAy 94 *)
-(*
-          diractraceev2[enx, opt] trfa;
-*)
-          diractraceev2[conall[enx], opt] trfa];
+coneins[ x_ ] :=
+    MemSet[coneins[x], x/.Pair->PairContract/.PairContract->Pair ];
 
-diractraceev2[x_,opt_:{}]:=
-(* small BUG found here 2005-02-05 by RM*)
-(*
-    ( TraceOfOne /. opt /. Options[DiracTrace] ) * x /;
-*)
-    ( TraceOfOne /. opt /. Options[DiracTrace] ) * x /;
-        FreeQ[x,DiracGamma];
-
- (* fr567def, special FreeQ - checking function *)
-   fr567[x__]:=FreeQ2[FixedPoint[ReleaseHold,{x}],
-                      {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-
- (* coneinsdef    *)
-   coneins[ x_ ]  := MemSet[coneins[x], x/.Pair->PairContract/.PairContract->Pair ];
-
- (* If no DOT's  but DiracGamma's are present *)
-(*XXX *)
- diractraceev3[y_,opt_:{}]:=Block[
-                              {diractrpa,diractrtemp,diractrresu,four},
-  four = TraceOfOne/.opt /. Options[DiracTrace];
-  diractrtemp = Expand[ conall[ y, opt ]//gamma67back];
-  If[ Head[diractrtemp]===Plus,
-      diractrresu = Map[ Apply[TR,Prepend[opt,#]]&,diractrtemp],
-        diractrpa = PartitHead[ diractrtemp,DiracGamma ];
-        diractrresu = diractrpa[[1]] four spursav[ diractrpa[[2]] ]
+diractraceev[x_, opt___] :=
+    Block[ {trfa = 1, enx = x},
+        If[ Head[x] === Times,
+            trfa = Select[x, FreeQ2[#, {DiracGamma, LorentzIndex, Eps}]&];
+            enx = x / trfa;
+        ];
+        diractraceev2[conall[enx], opt] trfa
     ];
-  If[!FreeQ[diractrresu, LorentzIndex],
-     diractrresu = diractrresu /. Pair -> PairContract /. PairContract -> scev
-    ];
-  diractrresu = Expand[diractrresu];
-  If[!FreeQ[diractrresu, LorentzIndex],
-     diractrresu = diractrresu /. Pair -> PairContract /. PairContract -> scev
-    ];
-                  diractrresu] /;( FreeQ[y,DOT] && !FreeQ[y,DiracGamma]);
 
-
- (* #################################################################### *)
- (*                             Main48                                   *)
- (* #################################################################### *)
+diractraceev2[x_,opt_:{}] :=
+    (TraceOfOne /. opt /. Options[DiracTrace] ) * x /; FreeQ[x,DiracGamma];
 
 diractraceev2[a_DiracGamma,b__DiracGamma]:=diractraceev2[ DOT @@ {a,b} ];
 
- diractraceev2[nnx_,in_:{}]:= Block[{diractrjj,diractrlnx,diractrres,
-                                    diractrny=0,mand,diractrfact,nx ,
-                                    diractrcoll,traceofone,schoutenopt,diractrnyjj},
-   opt = Join[ Flatten[{in}], Options[DiracTrace] ];
-   mand=Mandelstam/.opt;
-   diractrfact=Factoring/.opt;
-If[diractrfact === Automatic,
-   diractrfact = Function[x, If[LeafCount[x] <  5000 , Factor[ x ],x]];
-  ];
-   diractrcoll=PairCollect/.opt;
-   schoutenopt = Schouten /. opt;
-   traceofone = TraceOfOne /.  opt;
-   nx = Collect2[coneins[nnx], DOT, Factoring -> False];
-   nx = DiracGammaCombine[nx];
-   If[ Head[nx]===Plus && Length[nx] > 142,
-       diractrlnx = Length[nx]; diractrjj = 0;
-       While[ diractrjj<diractrlnx,diractrjj++;
-FCPrint[2,"diractrjj = ", diractrjj," out of ",diractrlnx];
-       diractrny = diractrny +
-        If[FreeQ[nx,DiracGamma],
-(*change 2006-0407 RM *)
-           diractrnyjj = nx[[diractrjj]],
-           diractrnyjj = Expand2[
-       DiracSimplify[ nx[[diractrjj]],
-                                    InsideDiracTrace->True,
-                                     Factoring->False,
-                                     FeynCalcInternal -> True,
-                                     DiracCanonical->False
-                    ],           Pair
-                                 ];
-              If[!FreeQ[diractrnyjj, DiracGamma],
-                                (*DotSimplify added 16/10-2002, F.Orellana*)
-                 diractrnyjj = Expand2[DotSimplify[diractrnyjj,Expanding -> False] /.
-                                      DOT->spursav /.
-                                      DiracGamma[5]->0/.
-                                       DiracGamma[6]->(1/2)/.
-                                        DiracGamma[7]->(1/2),
-                                      Pair
-                                    ];
-                ];
-          (* the summand to be added ...*)
-         diractrnyjj
-         ]
-            ]
-   ,
-
-        If[FreeQ[nx,DiracGamma],
-           diractrny = nx,
-             diractrny = Expand2[
-       DiracSimplify[ nx,
-                                    InsideDiracTrace->True,
-                                     Factoring->False,
-                                     FeynCalcInternal -> True,
-                                     DiracCanonical->False
-                    ],           Pair
-                                 ];
-              If[!FreeQ[diractrny, DiracGamma],
-                  (*DotSimplify added 16/10-2002, F.Orellana*)
-                 diractrny = Expand2[DotSimplify[diractrny, Expanding -> True] /.
-                                     DOT->spursav /.
-                                      DiracGamma[5]->0/.
-                                       DiracGamma[6]->(1/2)/.
-                                        DiracGamma[7]->(1/2),
-                                      Pair
-                                    ];
-                ];
-         ]
-       ];
-
-If[!FreeQ[diractrny, DiracGamma],
-   diractrny =
-          DiracSimplify[ diractrny,
-                                    InsideDiracTrace->True,
-                                     Factoring->False,
-                                     FeynCalcInternal -> True,
-                                     DiracCanonical->False
-                    ]
-  ];
-
-Global`D1=diractrny;
-FCPrint[2,"CH2"];
-FCPrint[2,TimeUsed[]];
-   If[!FreeQ[diractrny, LorentzIndex],
-      If[!FreeQ[diractrny, Eps],
-         es = {Pair[LorentzIndex[a_,D], b_] *
-               Eps[c___,LorentzIndex[a_],d___] :>
-         Eps[c,b,d],
-         Pair[LorentzIndex[a_,D], b_]  Eps[c___,LorentzIndex[a_,D],d___] :>
-         Eps[c,b,d]
-              };
-         diractrny = diractrny //. es
+diractraceev2[nnx_,in_:{}] :=
+    Block[ {    diractrjj, diractrlnx, diractrres, diractrny = 0, mand, diractrfact, nx,
+            diractrcoll, traceofone, schoutenopt, diractrnyjj, opt},
+        opt = Join[ Flatten[{in}], Options[DiracTrace] ];
+        mand = Mandelstam/.opt;
+        diractrfact = Factoring/.opt;
+        If[ diractrfact === Automatic,
+            diractrfact = Function[x, If[ LeafCount[x] <  5000,
+                                          Factor[ x ],
+                                          x
+                                      ]];
         ];
-      diractrny = diractrny /. Pair -> PairContract /. PairContract -> scev
-     ];
-FCPrint[2,"CH3"];
-FCPrint[2,TimeUsed[]];
-Global`D2=diractrny;
+        diractrcoll = PairCollect/.opt;
+        schoutenopt = Schouten /. opt;
+        traceofone = TraceOfOne /.  opt;
+        nx = Collect2[coneins[nnx], DOT, Factoring -> False];
+        nx = DiracGammaCombine[nx];
+        If[ Head[nx]===Plus && Length[nx] > 142,
+            (*Long sums of traces*)
+            diractrlnx = Length[nx];
+            diractrjj = 0;
+            While[ diractrjj < diractrlnx, diractrjj++;
+                                           FCPrint[2,"diractrjj = ", diractrjj," out of ",diractrlnx];
+                                           diractrny = diractrny +
+                                           If[ FreeQ[nx,DiracGamma],
+                                               diractrnyjj = nx[[diractrjj]],
+                                               diractrnyjj = Expand2[ DiracSimplify[ nx[[diractrjj]],
+                                                            InsideDiracTrace->True, Factoring->False,
+                                                             FeynCalcInternal -> True, DiracCanonical->False], Pair];
+                                               If[ !FreeQ[diractrnyjj, DiracGamma],
+                                                         (*DotSimplify added 16/10-2002, F.Orellana*)
+                                                   diractrnyjj = Expand2[DotSimplify[diractrnyjj,Expanding -> False] /.
+                                                   DOT->spursav, Pair];
+                                               ];
+                                               (* the summand to be added ...*)
+                                               diractrnyjj
+                                           ]
+            ],
+            If[ FreeQ[nx,DiracGamma],
+                (*Expression is free of Dirac matrices*)
+                diractrny = nx,
+                (* Standard case: First simplify as much as possible through DiracSimplify *)
+                diractrny = Expand2[ DiracSimplify[ nx, InsideDiracTrace->True,
+                                     Factoring->False, FeynCalcInternal -> True,
+                                     DiracCanonical->False ], Pair];
+                If[ !FreeQ[diractrny, DiracGamma],
+                    (* If the output of DiracSimplify still contains Dirac matrices, apply DotSimplify and try
+                    to evaluate the traces of Dirac matric chains via spursav *)
+                    diractrny = Expand2[DotSimplify[diractrny,
+                                Expanding -> True] /. DOT->spursav, Pair];
+                ];
+            ]
+        ];
+        (* Apply DiracSimplify one more time *)
+        If[ !FreeQ[diractrny, DiracGamma],
 
-   If[!FreeQ[diractrny, Eps],
-(*
-      diractrny = Collect2[diractrny, Eps, Factoring -> False];
-*)
-      diractrny = EpsEvaluate[diractrny]//Expand;
-      diractrny = Contract[ diractrny,
-         EpsContract -> (EpsContract /. in /. Options[DiracTrace])
-          , Schouten->schoutenopt, Expanding -> False ];
-     ];
-   If[ diractrfact===True, diractrres = Factor2[traceofone diractrny],
- (* this  2@#$^^$#%^@*#$ ... !!!!;
-                           diractrres = Expand[ traceofone diractrny ]
- *)
-       If[diractrfact===False,
-          diractrres = traceofone diractrny,
-          diractrres = diractrfact[traceofone diractrny]
-         ]
-     ];
+            diractrny = DiracSimplify[ diractrny, InsideDiracTrace->True,
+                            Factoring->False, FeynCalcInternal -> True, DiracCanonical->False]
+        ];
+        If[ !FreeQ[diractrny, DiracGamma], Print["Problem!", SelectNotFree[diractrny,DiracGamma]];
+        ];
+        FCPrint[2,"CH2 ", TimeUsed[]];
+		(* If the output of the second DiracSimplify contains Lorentz indices, try
+			to contract them *)
+        If[ !FreeQ[diractrny, LorentzIndex],
+            (* Special contractions for expressions that contain Levi-Civita tensors*)
+            If[ !FreeQ[diractrny, Eps],
+                diractrny = diractrny //. {Pair[LorentzIndex[a_,D], b_] Eps[c___,LorentzIndex[a_],d___] :>
+                        Eps[c,b,d], Pair[LorentzIndex[a_,D], b_]  Eps[c___,LorentzIndex[a_,D],d___] :>
+                        Eps[c,b,d]}
+            ];
+            diractrny = diractrny /. Pair -> PairContract /. PairContract -> scev
+        ];
+        FCPrint[2,"CH3", TimeUsed[]];
+        (* Special expansion for expressions that contain Levi-Civita tensors*)
+        If[ !FreeQ[diractrny, Eps],
+            diractrny = EpsEvaluate[diractrny]//Expand;
+            diractrny = Contract[ diractrny, EpsContract -> (EpsContract /. in /. Options[DiracTrace]),
+                              Schouten->schoutenopt, Expanding -> False ];
+        ];
+        (* Factor the result, if requested *)
+        If[ diractrfact===True,
+            diractrres = Factor2[traceofone diractrny],
+            If[ diractrfact===False,
+                diractrres = traceofone diractrny,
+                diractrres = diractrfact[traceofone diractrny]
+            ]
+        ];
+        (* If the result should contain 2 -> 2 Mandelstam variable *)
+        If[ Length[mand] > 0,
+            diractrres = TrickMandelstam @@ Prepend[{mand}, diractrres]
+        ];
+        diractrpc[x__] :=
+            Plus[x]/;FreeQ[{x},Pair];
+		(* If the result should be collected w.r.t Pairs *)
+        If[ diractrcoll===True,
+            diractrpc[x__] :=
+                Collect2[ Plus[x],Pair ,Factoring -> False];
+            diractrres = diractrres/. Plus -> diractrpc
+        ];
+        diractrres
+    ]/; !FreeQ2[nnx,{DOT,DiracGamma}];
+
+spursav[0 ..] :=
+    0;
+
+spursavg[x___, LorentzIndex[a_, dim_ : 4], LorentzIndex[a_, dim_ : 4], y___] :=
+    (dim spursavg[x, y]) /. spursavg -> spug;
+
+(* calculation of traces (recursively) --  up to a factor of 4 *)
+spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma,
+            DiracGamma[5]] :=
+    Block[ {dirsign},
+            (* this was not right: the option does actually get inherited from TR into the options of DiracTrace;
+            and now (2005-02-05), this gets passed locally to Options[DiracTrace]  *)
+        dirsign = LeviCivitaSign /. Options[DiracTrace];
+        dirsign I Apply[ Eps, {x,y,r,z}/. DiracGamma[vl_[mp_,di___],
+            di___]->vl[mp,di]]//EpsEvaluate
+    ];
+
+(* there is the problem with different Gamma5-schemes ... *)
+spursav[x__DiracGamma] :=
+    spur[x];
+   (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
+spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
+    MemSet[spursav[x], spur[x]];
 
 
-   If[ Length[ mand ] >0,
-       diractrres = TrickMandelstam @@ Prepend[ {mand}, diractrres ]
-     ];
 
-   diractrpc[x__]:=Plus[x]/;FreeQ[{x},Pair];
-   If[ diractrcoll===True,
-   diractrpc[x__]:=Collect2[ Plus[x],Pair ,Factoring -> False];
-       diractrres = diractrres/.Plus->diractrpc ];
-                      diractrres]/;!FreeQ2[nnx,{DOT,DiracGamma}];
- (* endof diractraceev1 *)
- (* ************************************************************** *)
-
- (* #################################################################### *)
- (*                             Main49                                   *)
- (* #################################################################### *)
-spursav[0 ..] := 0;
-fdim[] = 4;
-fdim[a_] = a;
-spursavg[x___, LorentzIndex[a_, de___], LorentzIndex[a_, de___], y___] :=
-  (fdim[de] spursavg[x, y]) /. spursavg -> spug;
 diracga[DiracGamma[h_Integer]] := DiracGamma[h];
 diracga[LorentzIndex[mu_, dii_]] := diracga[LorentzIndex[mu,dii],dii];
 diracga[Momentum[p_, dii_]] := diracga[Momentum[p, dii],dii];
-spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
 
- (* calculation of traces (recursively) --  up to a factor of 4 *)
-   spursav[x_DiracGamma,y_DiracGamma,r_DiracGamma,z_DiracGamma,
-           DiracGamma[5]]:=Block[{dirsign},
-(* this was not right: the option does actually get inherited from TR into the options of DiracTrace;
-   and now (2005-02-05), this gets passed locally to Options[DiracTrace]  *)
+spug[x___] :=
+    spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
+
+spur[] = 1;
+spur[DiracGamma[5]] = 0;
+
+spur[x___,DiracGamma[5],y__] := DiracSimplify[DOT[x,DiracGamma[5],y],InsideDiracTrace->True]/;(!FreeQ[{x},DiracGamma] || !FreeQ[{y},DiracGamma]);
+
+spur[x___,DiracGamma[5],y___] := 0/; FreeQ[{x},DiracGamma] && FreeQ[{y},DiracGamma];
+
+spur[x_[y__],DiracGamma[5]] :=
+    0;
+spur[a_[b__],x_[y__],DiracGamma[5]] :=
+    0;
+spur[a_[b__],c_[d__],x_[y__],DiracGamma[5]] :=
+    0;
+spur[a_[b__],c_[d__],x_[y__], _[__], odd__, DiracGamma[5]] :=
+    0/; OddQ[Length[{odd}]];
+spur[a__] :=
+    (spur @@ Reverse[Transpose[{a}]]) /; (!FreeQ[{a}, DiracGammaT]) && FreeQ[{a},DiracGamma];
+
+(* This is a definition of   Trace( 1.2.3.4. gamma[5] ) *)
+spur[x_,y_,r_,z_,DiracGamma[5]] :=
+    Block[ {dirsign},
         dirsign = LeviCivitaSign /. Options[DiracTrace];
-        dirsign I Apply[ Eps, {x,y,r,z}/.
-                              DiracGamma[vl_[mp_,di___],di___]->vl[mp,di]
-                 ]//EpsEvaluate];
-
-(* there is the problem with different Gamma5-schemes ...
-*)
-(*
-   spursav[x___DiracGamma]:=MemSet[ spursav[x], spur[x] ];
-*)
-
-(* RM 09/12/2003 *)
-(* RM 08/18/2011 : this is causing trouble for DiracGamma[..., d-4] etc.
-   spursav[x__ /; !FreeQ[{x},Plus]]:= DOT@@{x};
-*)
-
-(*XXX
-   spursav[x__DiracGamma] := MemSet[spursav[x], spur[x]];
-*)
-   spursav[x__DiracGamma] := spur[x];
-   (*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
-   spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
-   MemSet[spursav[x], spur[x]];
-
-
-(*
-   spursav = spur;
-*)
-   spur[]=1;
-   spur[DiracGamma[5]]=0;
-   spur[x_[y__],DiracGamma[5]]:=0;
-   spur[a_[b__],x_[y__],DiracGamma[5]]:=0;
-   spur[a_[b__],c_[d__],x_[y__],DiracGamma[5]]:=0;
-   spur[a_[b__],c_[d__],x_[y__], _[__], odd__, DiracGamma[5]]:=(Global`SPUR=True;0) /;
-                                         OddQ[Length[{odd}]];
-   spur[a__] := (spur @@ Reverse[Transpose[{a}]]) /;
-                (!FreeQ[{a}, DiracGammaT]) && FreeQ[{a},DiracGamma];
-
- (* This is a definition of   Trace( 1.2.3.4. gamma[5] ) *)
-   spur[x_,y_,r_,z_,DiracGamma[5]]:=Block[{dirsign},
-        dirsign = LeviCivitaSign /. Options[DiracTrace];
-        dirsign I Apply[Eps, {x,y,r,z}/.DiracGamma[vl_[mp_,dii___],___
-                                                   ]->vl[mp,dii]
-                       ]//EpsEvaluate];
+        dirsign I Apply[Eps, {x,y,r,z}/.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii]]//EpsEvaluate
+    ];
 
      (* Dropped by F.Orellana, 14/1-2002.
         Dropped Kreimer scheme. According to Rolf it's wrong *)
@@ -587,197 +498,156 @@ spug[x___] := spursav@@(Map[diracga, {x}] /. diracga -> DiracGamma);
                                                ] ] ]
          ] /; $West =!= True; *)     (*spurdef*)
 
- (* this trace is calculated via expressing  DiracMatrix[w1,w2,w3]
-   by the Chisholm - identity;
-   thus it is only valid in four dimensions and in the naive
-   gamma5 prescription
- *)
-spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]
-    ]:= Block[{trsign,z1,z2,z3,z4,z5,z6,z7,z8},
-{z1,z2,z3,z4,z5,z6,z7,z8} =
-{w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
-trsign = LeviCivitaSign /. Options[DiracTrace];
- (* trsign is usually  =  -1 *)
- (* factor 4 is put later *)
-trsign*I*(Eps[w5, w6, w7, w8]*Pair[w1, w4]*Pair[w2, w3] -
-     Eps[w4, w6, w7, w8]*Pair[w1, w5]*Pair[w2, w3] -
-     Eps[w5, w6, w7, w8]*Pair[w1, w3]*Pair[w2, w4] +
-     Eps[w4, w6, w7, w8]*Pair[w1, w3]*Pair[w2, w5] +
-     Eps[w5, w6, w7, w8]*Pair[w1, w2]*Pair[w3, w4] -
-     Eps[w4, w6, w7, w8]*Pair[w1, w2]*Pair[w3, w5] +
-     Eps[w3, w6, w7, w8]*Pair[w1, w2]*Pair[w4, w5] -
-     Eps[w2, w6, w7, w8]*Pair[w1, w3]*Pair[w4, w5] +
-     Eps[w1, w6, w7, w8]*Pair[w2, w3]*Pair[w4, w5] +
-     Eps[w1, w2, w3, w8]*Pair[w4, w7]*Pair[w5, w6] -
-     Eps[w1, w2, w3, w7]*Pair[w4, w8]*Pair[w5, w6] -
-     Eps[w1, w2, w3, w8]*Pair[w4, w6]*Pair[w5, w7] +
-     Eps[w1, w2, w3, w6]*Pair[w4, w8]*Pair[w5, w7] +
-     Eps[w1, w2, w3, w7]*Pair[w4, w6]*Pair[w5, w8] -
-     Eps[w1, w2, w3, w6]*Pair[w4, w7]*Pair[w5, w8] +
-     Eps[w3, w4, w5, w8]*Pair[w1, w2]*Pair[w6, w7] -
-     Eps[w2, w4, w5, w8]*Pair[w1, w3]*Pair[w6, w7] +
-     Eps[w1, w4, w5, w8]*Pair[w2, w3]*Pair[w6, w7] +
-     Eps[w1, w2, w3, w8]*Pair[w4, w5]*Pair[w6, w7] -
-     Eps[w1, w2, w3, w5]*Pair[w4, w8]*Pair[w6, w7] +
-     Eps[w1, w2, w3, w4]*Pair[w5, w8]*Pair[w6, w7] -
-     Eps[w3, w4, w5, w7]*Pair[w1, w2]*Pair[w6, w8] +
-     Eps[w2, w4, w5, w7]*Pair[w1, w3]*Pair[w6, w8] -
-     Eps[w1, w4, w5, w7]*Pair[w2, w3]*Pair[w6, w8] -
-     Eps[w1, w2, w3, w7]*Pair[w4, w5]*Pair[w6, w8] +
-     Eps[w1, w2, w3, w5]*Pair[w4, w7]*Pair[w6, w8] -
-     Eps[w1, w2, w3, w4]*Pair[w5, w7]*Pair[w6, w8] +
-     Eps[w3, w4, w5, w6]*Pair[w1, w2]*Pair[w7, w8] -
-     Eps[w2, w4, w5, w6]*Pair[w1, w3]*Pair[w7, w8] +
-     Eps[w1, w4, w5, w6]*Pair[w2, w3]*Pair[w7, w8] +
-     Eps[w1, w2, w3, w6]*Pair[w4, w5]*Pair[w7, w8] -
-     Eps[w1, w2, w3, w5]*Pair[w4, w6]*Pair[w7, w8] +
-     Eps[w1, w2, w3, w4]*Pair[w5, w6]*Pair[w7, w8])
-              ] /; ($Larin =!= True) && ($West =!= True);
-
- (* this trace has been calculated according to Larin,
+(* this trace has been calculated according to Larin,
    i.e. expression DiracMatrix[w8].DiracGamma[5] by
-   (-I/6) LeviCivita[w8,mu,nu,la] DiracMatrix[mu,nu,la]
- *)
+   (-I/6) LeviCivita[w8,mu,nu,la] DiracMatrix[mu,nu,la] *)
+spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
+    Block[ {trsign,z1,z2,z3,z4,z5,z6,z7,z8},
+        {z1,z2,z3,z4,z5,z6,z7,z8} =
+        {w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
+        (*TODO: vl -> (vl :LorentzIndex | Momentum) *)
+        trsign = LeviCivitaSign /. Options[DiracTrace];
+         (* trsign is usually  =  -1 *)
+         (* factor 4 is put later *)
+        trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
+            Eps[z4, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z3] +
+            Eps[z4, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z3] -
+            Eps[z4, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z3] -
+            Eps[z5, z6, z7, z8]*Pair[z1, z3]*Pair[z2, z4] +
+            Eps[z3, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z4] -
+            Eps[z3, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z4] +
+            Eps[z3, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z4] +
+            Eps[z4, z6, z7, z8]*Pair[z1, z3]*Pair[z2, z5] -
+            Eps[z3, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z5] +
+            Eps[z3, z4, z7, z8]*Pair[z1, z6]*Pair[z2, z5] -
+            Eps[z3, z4, z6, z8]*Pair[z1, z7]*Pair[z2, z5] -
+            Eps[z4, z5, z7, z8]*Pair[z1, z3]*Pair[z2, z6] +
+            Eps[z3, z5, z7, z8]*Pair[z1, z4]*Pair[z2, z6] -
+            Eps[z3, z4, z7, z8]*Pair[z1, z5]*Pair[z2, z6] +
+            Eps[z3, z4, z5, z8]*Pair[z1, z7]*Pair[z2, z6] +
+            Eps[z4, z5, z6, z8]*Pair[z1, z3]*Pair[z2, z7] -
+            Eps[z3, z5, z6, z8]*Pair[z1, z4]*Pair[z2, z7] +
+            Eps[z3, z4, z6, z8]*Pair[z1, z5]*Pair[z2, z7] -
+            Eps[z3, z4, z5, z8]*Pair[z1, z6]*Pair[z2, z7] +
+            Eps[z5, z6, z7, z8]*Pair[z1, z2]*Pair[z3, z4] -
+            Eps[z2, z6, z7, z8]*Pair[z1, z5]*Pair[z3, z4] +
+            Eps[z2, z5, z7, z8]*Pair[z1, z6]*Pair[z3, z4] -
+            Eps[z2, z5, z6, z8]*Pair[z1, z7]*Pair[z3, z4] +
+            Eps[z1, z6, z7, z8]*Pair[z2, z5]*Pair[z3, z4] -
+            Eps[z1, z5, z7, z8]*Pair[z2, z6]*Pair[z3, z4] +
+            Eps[z1, z5, z6, z8]*Pair[z2, z7]*Pair[z3, z4] -
+            Eps[z4, z6, z7, z8]*Pair[z1, z2]*Pair[z3, z5] +
+            Eps[z2, z6, z7, z8]*Pair[z1, z4]*Pair[z3, z5] -
+            Eps[z2, z4, z7, z8]*Pair[z1, z6]*Pair[z3, z5] +
+            Eps[z2, z4, z6, z8]*Pair[z1, z7]*Pair[z3, z5] -
+            Eps[z1, z6, z7, z8]*Pair[z2, z4]*Pair[z3, z5] +
+            Eps[z1, z4, z7, z8]*Pair[z2, z6]*Pair[z3, z5] -
+            Eps[z1, z4, z6, z8]*Pair[z2, z7]*Pair[z3, z5] +
+            Eps[z4, z5, z7, z8]*Pair[z1, z2]*Pair[z3, z6] -
+            Eps[z2, z5, z7, z8]*Pair[z1, z4]*Pair[z3, z6] +
+            Eps[z2, z4, z7, z8]*Pair[z1, z5]*Pair[z3, z6] -
+            Eps[z2, z4, z5, z8]*Pair[z1, z7]*Pair[z3, z6] +
+            Eps[z1, z5, z7, z8]*Pair[z2, z4]*Pair[z3, z6] -
+            Eps[z1, z4, z7, z8]*Pair[z2, z5]*Pair[z3, z6] +
+            Eps[z1, z4, z5, z8]*Pair[z2, z7]*Pair[z3, z6] -
+            Eps[z4, z5, z6, z8]*Pair[z1, z2]*Pair[z3, z7] +
+            Eps[z2, z5, z6, z8]*Pair[z1, z4]*Pair[z3, z7] -
+            Eps[z2, z4, z6, z8]*Pair[z1, z5]*Pair[z3, z7] +
+            Eps[z2, z4, z5, z8]*Pair[z1, z6]*Pair[z3, z7] -
+            Eps[z1, z5, z6, z8]*Pair[z2, z4]*Pair[z3, z7] +
+            Eps[z1, z4, z6, z8]*Pair[z2, z5]*Pair[z3, z7] -
+            Eps[z1, z4, z5, z8]*Pair[z2, z6]*Pair[z3, z7] +
+            Eps[z3, z6, z7, z8]*Pair[z1, z2]*Pair[z4, z5] -
+            Eps[z2, z6, z7, z8]*Pair[z1, z3]*Pair[z4, z5] +
+            Eps[z2, z3, z7, z8]*Pair[z1, z6]*Pair[z4, z5] -
+            Eps[z2, z3, z6, z8]*Pair[z1, z7]*Pair[z4, z5] +
+            Eps[z1, z6, z7, z8]*Pair[z2, z3]*Pair[z4, z5] -
+            Eps[z1, z3, z7, z8]*Pair[z2, z6]*Pair[z4, z5] +
+            Eps[z1, z3, z6, z8]*Pair[z2, z7]*Pair[z4, z5] +
+            Eps[z1, z2, z7, z8]*Pair[z3, z6]*Pair[z4, z5] -
+            Eps[z1, z2, z6, z8]*Pair[z3, z7]*Pair[z4, z5] -
+            Eps[z3, z5, z7, z8]*Pair[z1, z2]*Pair[z4, z6] +
+            Eps[z2, z5, z7, z8]*Pair[z1, z3]*Pair[z4, z6] -
+            Eps[z2, z3, z7, z8]*Pair[z1, z5]*Pair[z4, z6] +
+            Eps[z2, z3, z5, z8]*Pair[z1, z7]*Pair[z4, z6] -
+            Eps[z1, z5, z7, z8]*Pair[z2, z3]*Pair[z4, z6] +
+            Eps[z1, z3, z7, z8]*Pair[z2, z5]*Pair[z4, z6] -
+            Eps[z1, z3, z5, z8]*Pair[z2, z7]*Pair[z4, z6] -
+            Eps[z1, z2, z7, z8]*Pair[z3, z5]*Pair[z4, z6] +
+            Eps[z1, z2, z5, z8]*Pair[z3, z7]*Pair[z4, z6] +
+            Eps[z3, z5, z6, z8]*Pair[z1, z2]*Pair[z4, z7] -
+            Eps[z2, z5, z6, z8]*Pair[z1, z3]*Pair[z4, z7] +
+            Eps[z2, z3, z6, z8]*Pair[z1, z5]*Pair[z4, z7] -
+            Eps[z2, z3, z5, z8]*Pair[z1, z6]*Pair[z4, z7] +
+            Eps[z1, z5, z6, z8]*Pair[z2, z3]*Pair[z4, z7] -
+            Eps[z1, z3, z6, z8]*Pair[z2, z5]*Pair[z4, z7] +
+            Eps[z1, z3, z5, z8]*Pair[z2, z6]*Pair[z4, z7] +
+            Eps[z1, z2, z6, z8]*Pair[z3, z5]*Pair[z4, z7] -
+            Eps[z1, z2, z5, z8]*Pair[z3, z6]*Pair[z4, z7] +
+            Eps[z3, z4, z7, z8]*Pair[z1, z2]*Pair[z5, z6] -
+            Eps[z2, z4, z7, z8]*Pair[z1, z3]*Pair[z5, z6] +
+            Eps[z2, z3, z7, z8]*Pair[z1, z4]*Pair[z5, z6] -
+            Eps[z2, z3, z4, z8]*Pair[z1, z7]*Pair[z5, z6] +
+            Eps[z1, z4, z7, z8]*Pair[z2, z3]*Pair[z5, z6] -
+            Eps[z1, z3, z7, z8]*Pair[z2, z4]*Pair[z5, z6] +
+            Eps[z1, z3, z4, z8]*Pair[z2, z7]*Pair[z5, z6] +
+            Eps[z1, z2, z7, z8]*Pair[z3, z4]*Pair[z5, z6] -
+            Eps[z1, z2, z4, z8]*Pair[z3, z7]*Pair[z5, z6] +
+            Eps[z1, z2, z3, z8]*Pair[z4, z7]*Pair[z5, z6] -
+            Eps[z3, z4, z6, z8]*Pair[z1, z2]*Pair[z5, z7] +
+            Eps[z2, z4, z6, z8]*Pair[z1, z3]*Pair[z5, z7] -
+            Eps[z2, z3, z6, z8]*Pair[z1, z4]*Pair[z5, z7] +
+            Eps[z2, z3, z4, z8]*Pair[z1, z6]*Pair[z5, z7] -
+            Eps[z1, z4, z6, z8]*Pair[z2, z3]*Pair[z5, z7] +
+            Eps[z1, z3, z6, z8]*Pair[z2, z4]*Pair[z5, z7] -
+            Eps[z1, z3, z4, z8]*Pair[z2, z6]*Pair[z5, z7] -
+            Eps[z1, z2, z6, z8]*Pair[z3, z4]*Pair[z5, z7] +
+            Eps[z1, z2, z4, z8]*Pair[z3, z6]*Pair[z5, z7] -
+            Eps[z1, z2, z3, z8]*Pair[z4, z6]*Pair[z5, z7] +
+            Eps[z3, z4, z5, z8]*Pair[z1, z2]*Pair[z6, z7] -
+            Eps[z2, z4, z5, z8]*Pair[z1, z3]*Pair[z6, z7] +
+            Eps[z2, z3, z5, z8]*Pair[z1, z4]*Pair[z6, z7] -
+            Eps[z2, z3, z4, z8]*Pair[z1, z5]*Pair[z6, z7] +
+            Eps[z1, z4, z5, z8]*Pair[z2, z3]*Pair[z6, z7] -
+            Eps[z1, z3, z5, z8]*Pair[z2, z4]*Pair[z6, z7] +
+            Eps[z1, z3, z4, z8]*Pair[z2, z5]*Pair[z6, z7] +
+            Eps[z1, z2, z5, z8]*Pair[z3, z4]*Pair[z6, z7] -
+            Eps[z1, z2, z4, z8]*Pair[z3, z5]*Pair[z6, z7] +
+            Eps[z1, z2, z3, z8]*Pair[z4, z5]*Pair[z6, z7])
+    ] /; $Larin && !$BreitMaison;
 
-spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]
-    ]:= Block[{trsign,z1,z2,z3,z4,z5,z6,z7,z8},
-{z1,z2,z3,z4,z5,z6,z7,z8} =
-{w1,w2,w3,w4,w5,w6,w7,w8} /.DiracGamma[vl_[mp_,dii___],___]->vl[mp,dii];
-trsign = LeviCivitaSign /. Options[DiracTrace];
- (* trsign is usually  =  -1 *)
- (* factor 4 is put later *)
-trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
-    Eps[z4, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z3] +
-    Eps[z4, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z3] -
-    Eps[z4, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z3] -
-    Eps[z5, z6, z7, z8]*Pair[z1, z3]*Pair[z2, z4] +
-    Eps[z3, z6, z7, z8]*Pair[z1, z5]*Pair[z2, z4] -
-    Eps[z3, z5, z7, z8]*Pair[z1, z6]*Pair[z2, z4] +
-    Eps[z3, z5, z6, z8]*Pair[z1, z7]*Pair[z2, z4] +
-    Eps[z4, z6, z7, z8]*Pair[z1, z3]*Pair[z2, z5] -
-    Eps[z3, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z5] +
-    Eps[z3, z4, z7, z8]*Pair[z1, z6]*Pair[z2, z5] -
-    Eps[z3, z4, z6, z8]*Pair[z1, z7]*Pair[z2, z5] -
-    Eps[z4, z5, z7, z8]*Pair[z1, z3]*Pair[z2, z6] +
-    Eps[z3, z5, z7, z8]*Pair[z1, z4]*Pair[z2, z6] -
-    Eps[z3, z4, z7, z8]*Pair[z1, z5]*Pair[z2, z6] +
-    Eps[z3, z4, z5, z8]*Pair[z1, z7]*Pair[z2, z6] +
-    Eps[z4, z5, z6, z8]*Pair[z1, z3]*Pair[z2, z7] -
-    Eps[z3, z5, z6, z8]*Pair[z1, z4]*Pair[z2, z7] +
-    Eps[z3, z4, z6, z8]*Pair[z1, z5]*Pair[z2, z7] -
-    Eps[z3, z4, z5, z8]*Pair[z1, z6]*Pair[z2, z7] +
-    Eps[z5, z6, z7, z8]*Pair[z1, z2]*Pair[z3, z4] -
-    Eps[z2, z6, z7, z8]*Pair[z1, z5]*Pair[z3, z4] +
-    Eps[z2, z5, z7, z8]*Pair[z1, z6]*Pair[z3, z4] -
-    Eps[z2, z5, z6, z8]*Pair[z1, z7]*Pair[z3, z4] +
-    Eps[z1, z6, z7, z8]*Pair[z2, z5]*Pair[z3, z4] -
-    Eps[z1, z5, z7, z8]*Pair[z2, z6]*Pair[z3, z4] +
-    Eps[z1, z5, z6, z8]*Pair[z2, z7]*Pair[z3, z4] -
-    Eps[z4, z6, z7, z8]*Pair[z1, z2]*Pair[z3, z5] +
-    Eps[z2, z6, z7, z8]*Pair[z1, z4]*Pair[z3, z5] -
-    Eps[z2, z4, z7, z8]*Pair[z1, z6]*Pair[z3, z5] +
-    Eps[z2, z4, z6, z8]*Pair[z1, z7]*Pair[z3, z5] -
-    Eps[z1, z6, z7, z8]*Pair[z2, z4]*Pair[z3, z5] +
-    Eps[z1, z4, z7, z8]*Pair[z2, z6]*Pair[z3, z5] -
-    Eps[z1, z4, z6, z8]*Pair[z2, z7]*Pair[z3, z5] +
-    Eps[z4, z5, z7, z8]*Pair[z1, z2]*Pair[z3, z6] -
-    Eps[z2, z5, z7, z8]*Pair[z1, z4]*Pair[z3, z6] +
-    Eps[z2, z4, z7, z8]*Pair[z1, z5]*Pair[z3, z6] -
-    Eps[z2, z4, z5, z8]*Pair[z1, z7]*Pair[z3, z6] +
-    Eps[z1, z5, z7, z8]*Pair[z2, z4]*Pair[z3, z6] -
-    Eps[z1, z4, z7, z8]*Pair[z2, z5]*Pair[z3, z6] +
-    Eps[z1, z4, z5, z8]*Pair[z2, z7]*Pair[z3, z6] -
-    Eps[z4, z5, z6, z8]*Pair[z1, z2]*Pair[z3, z7] +
-    Eps[z2, z5, z6, z8]*Pair[z1, z4]*Pair[z3, z7] -
-    Eps[z2, z4, z6, z8]*Pair[z1, z5]*Pair[z3, z7] +
-    Eps[z2, z4, z5, z8]*Pair[z1, z6]*Pair[z3, z7] -
-    Eps[z1, z5, z6, z8]*Pair[z2, z4]*Pair[z3, z7] +
-    Eps[z1, z4, z6, z8]*Pair[z2, z5]*Pair[z3, z7] -
-    Eps[z1, z4, z5, z8]*Pair[z2, z6]*Pair[z3, z7] +
-    Eps[z3, z6, z7, z8]*Pair[z1, z2]*Pair[z4, z5] -
-    Eps[z2, z6, z7, z8]*Pair[z1, z3]*Pair[z4, z5] +
-    Eps[z2, z3, z7, z8]*Pair[z1, z6]*Pair[z4, z5] -
-    Eps[z2, z3, z6, z8]*Pair[z1, z7]*Pair[z4, z5] +
-    Eps[z1, z6, z7, z8]*Pair[z2, z3]*Pair[z4, z5] -
-    Eps[z1, z3, z7, z8]*Pair[z2, z6]*Pair[z4, z5] +
-    Eps[z1, z3, z6, z8]*Pair[z2, z7]*Pair[z4, z5] +
-    Eps[z1, z2, z7, z8]*Pair[z3, z6]*Pair[z4, z5] -
-    Eps[z1, z2, z6, z8]*Pair[z3, z7]*Pair[z4, z5] -
-    Eps[z3, z5, z7, z8]*Pair[z1, z2]*Pair[z4, z6] +
-    Eps[z2, z5, z7, z8]*Pair[z1, z3]*Pair[z4, z6] -
-    Eps[z2, z3, z7, z8]*Pair[z1, z5]*Pair[z4, z6] +
-    Eps[z2, z3, z5, z8]*Pair[z1, z7]*Pair[z4, z6] -
-    Eps[z1, z5, z7, z8]*Pair[z2, z3]*Pair[z4, z6] +
-    Eps[z1, z3, z7, z8]*Pair[z2, z5]*Pair[z4, z6] -
-    Eps[z1, z3, z5, z8]*Pair[z2, z7]*Pair[z4, z6] -
-    Eps[z1, z2, z7, z8]*Pair[z3, z5]*Pair[z4, z6] +
-    Eps[z1, z2, z5, z8]*Pair[z3, z7]*Pair[z4, z6] +
-    Eps[z3, z5, z6, z8]*Pair[z1, z2]*Pair[z4, z7] -
-    Eps[z2, z5, z6, z8]*Pair[z1, z3]*Pair[z4, z7] +
-    Eps[z2, z3, z6, z8]*Pair[z1, z5]*Pair[z4, z7] -
-    Eps[z2, z3, z5, z8]*Pair[z1, z6]*Pair[z4, z7] +
-    Eps[z1, z5, z6, z8]*Pair[z2, z3]*Pair[z4, z7] -
-    Eps[z1, z3, z6, z8]*Pair[z2, z5]*Pair[z4, z7] +
-    Eps[z1, z3, z5, z8]*Pair[z2, z6]*Pair[z4, z7] +
-    Eps[z1, z2, z6, z8]*Pair[z3, z5]*Pair[z4, z7] -
-    Eps[z1, z2, z5, z8]*Pair[z3, z6]*Pair[z4, z7] +
-    Eps[z3, z4, z7, z8]*Pair[z1, z2]*Pair[z5, z6] -
-    Eps[z2, z4, z7, z8]*Pair[z1, z3]*Pair[z5, z6] +
-    Eps[z2, z3, z7, z8]*Pair[z1, z4]*Pair[z5, z6] -
-    Eps[z2, z3, z4, z8]*Pair[z1, z7]*Pair[z5, z6] +
-    Eps[z1, z4, z7, z8]*Pair[z2, z3]*Pair[z5, z6] -
-    Eps[z1, z3, z7, z8]*Pair[z2, z4]*Pair[z5, z6] +
-    Eps[z1, z3, z4, z8]*Pair[z2, z7]*Pair[z5, z6] +
-    Eps[z1, z2, z7, z8]*Pair[z3, z4]*Pair[z5, z6] -
-    Eps[z1, z2, z4, z8]*Pair[z3, z7]*Pair[z5, z6] +
-    Eps[z1, z2, z3, z8]*Pair[z4, z7]*Pair[z5, z6] -
-    Eps[z3, z4, z6, z8]*Pair[z1, z2]*Pair[z5, z7] +
-    Eps[z2, z4, z6, z8]*Pair[z1, z3]*Pair[z5, z7] -
-    Eps[z2, z3, z6, z8]*Pair[z1, z4]*Pair[z5, z7] +
-    Eps[z2, z3, z4, z8]*Pair[z1, z6]*Pair[z5, z7] -
-    Eps[z1, z4, z6, z8]*Pair[z2, z3]*Pair[z5, z7] +
-    Eps[z1, z3, z6, z8]*Pair[z2, z4]*Pair[z5, z7] -
-    Eps[z1, z3, z4, z8]*Pair[z2, z6]*Pair[z5, z7] -
-    Eps[z1, z2, z6, z8]*Pair[z3, z4]*Pair[z5, z7] +
-    Eps[z1, z2, z4, z8]*Pair[z3, z6]*Pair[z5, z7] -
-    Eps[z1, z2, z3, z8]*Pair[z4, z6]*Pair[z5, z7] +
-    Eps[z3, z4, z5, z8]*Pair[z1, z2]*Pair[z6, z7] -
-    Eps[z2, z4, z5, z8]*Pair[z1, z3]*Pair[z6, z7] +
-    Eps[z2, z3, z5, z8]*Pair[z1, z4]*Pair[z6, z7] -
-    Eps[z2, z3, z4, z8]*Pair[z1, z5]*Pair[z6, z7] +
-    Eps[z1, z4, z5, z8]*Pair[z2, z3]*Pair[z6, z7] -
-    Eps[z1, z3, z5, z8]*Pair[z2, z4]*Pair[z6, z7] +
-    Eps[z1, z3, z4, z8]*Pair[z2, z5]*Pair[z6, z7] +
-    Eps[z1, z2, z5, z8]*Pair[z3, z4]*Pair[z6, z7] -
-    Eps[z1, z2, z4, z8]*Pair[z3, z5]*Pair[z6, z7] +
-    Eps[z1, z2, z3, z8]*Pair[z4, z5]*Pair[z6, z7])
-] /; $Larin === True;
-
-   spur[x__,DiracGamma[6]]:=1/2 spur[x] + 1/2 spur[x,DiracGamma[5]];
-   spur[x__,DiracGamma[7]]:=1/2 spur[x] - 1/2 spur[x,DiracGamma[5]];
-
-
-   spur[x__]:=( DiracTrace@@ ( gamma67back[ {x} ] )
-              ) /; !FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}];
+   spur[x__,DiracGamma[6]] :=
+       1/2 spur[x] + 1/2 spur[x,DiracGamma[5]];
+   spur[x__,DiracGamma[7]] :=
+       1/2 spur[x] - 1/2 spur[x,DiracGamma[5]];
+   spur[x__] :=
+       (DiracTrace@@(gamma67back[ {x} ]))/; !FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}];
 
    gc[x_]:=x/.DiracGamma->gach;
    gach[ex_,___]:=ex /; Length[ex]>0;                     (*gachdef*)
    gach[n_Integer]=DiracGamma[n];
 
-   spur[y__] :=Block[ {spx,le=Length[{y}],tempres,i,spurjj,tempr,
+
+	(* This function handles general  Dirac traces *)
+   spur[y__]:= Block[ {spx,le=Length[{y}],tempres,i,spurjj,tempr,
                        temp2 = 0,fi,spt, resp,scx,dirsign},
                 spx = ( {y}//DiracGammaExpand )/.DiracGamma->gach;
                 scx[a_,b_]:=scev[spx[[a]],spx[[b]]];
-
+                temp2 = Hold[spur][spx];
+                FCPrint[1, "Entering spur with ", FullForm[spx]];
                 resp =
    Which[
+        (*Trace of an odd number of Dirac matrices without gamma^5 *)
         OddQ[le] && fr567[spx],
-         0 ,
+		0,
+		(* Trace of g^i1 g^i2 *)
         le===2,
          scev[spx[[1]],spx[[2]]]/.Pair->PairContract/.PairContract->Pair,
+        (* Trace of g^i1 g^i2 g^i3 g^i4 *)
         le===4,
          (scx[1,2] scx[3,4]-scx[1,3] scx[2,4]+scx[1,4] scx[2,3]
          )//Expand,
+        (* Trace of g^i1 g^i2 g^i3 g^i4 g^i5 g^i6 *)
         le===6,
          (
           scx[1,6] scx[2,5] scx[3,4] - scx[1,5] scx[2,6] scx[3,4] -
@@ -789,111 +659,79 @@ trsign*I*(Eps[z5, z6, z7, z8]*Pair[z1, z4]*Pair[z2, z3] -
           scx[1,4] scx[2,3] scx[5,6] - scx[1,3] scx[2,4] scx[5,6] +
           scx[1,2] scx[3,4] scx[5,6]
                 )//Expand ,
-
-       FreeQ[spx,DiracGamma[5]],
+		(* For traces with a higher even number of Dirac matrices without gamma^5
+		use the trace reduction equation from Veltman's Gammatrica (p.255) *)
+       	FreeQ[spx,DiracGamma[5]],
+       	temp2 = 0;
         For[i=2, i<le+1, i++,
             temp2 += ((-1)^i) * (*coneins[*)
                      scev[spx[[1]],spx[[i]]] spt@@Rest[Drop[spx,{i,i}]]
                                     (* ] *)
            ];
        Expand[ temp2/.spt->spursavg/.spursavg->spug] ,
-      True,
-       If[($BreitMaison === True) && ($West =!= True),
-        dirsign = LeviCivitaSign /. Options[DiracTrace];
-    fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
-    DiracTrace @@
-           ( {spx}/.DiracGamma[5]->
-             (dirsign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
-                    DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]
-                   ) (Eps@@fi)
-             )
-           )
-      ,
-       (*If[$Kreimer === True, NochNichtFertig,*)
-          If[$Larin === True,
-             {fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
-              drsi = LeviCivitaSign /. Options[DiracTrace];
-              drsi = drsi/(TraceOfOne/.Options[DiracTrace]);
-             (*drsi is usually -1/4 *)
-             temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
-                     TR[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
-                         DOT @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}]];
-         ]  (*]*);
-
-    If[($Larin === False) (*&& ($Kreimer === False)*) && ($West === True) &&
-       FreeQ[Drop[spx,-1], DiracGamma[5]] &&
-       Length[spx] > 6,
-(*Print["CHECKWEst"];*)
-       temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
-         scev[spx[[i]], spx[[j]]] spt@@Delete[spx,{{j},{i}}],
-                                            {i,2,Length[spx]-1},
-                                            {j,1,i-1}
-                                           ]
-                     ];
-
-      ];
-
-    temp2 = temp2/.spt->spursavg/.spursavg->spug;
-    temp2
-     (*if $BreitMaison===True*)
-      ]
+       (* Here we handle traces with of type g^i1 .... g^in g^5 with n>=6*)
+       FreeQ[Drop[spx,-1], DiracGamma[5]] && Length[spx] > 6,
+            FCPrint[2,"Computing the chiral trace ", spx];
+			Which[
+            (* NDR *)
+            !$Larin && !$BreitMaison,
+            If [MatchQ[SelectFree[spx,{(LorentzIndex | Momentum)[_],DiracGamma[5]}], {} ],
+                (* If the trace is purely four dimensional, NDR is ok here. *)
+                If[$West,
+                    (* Apply West's formula (c.f. Eq 3.10 of T. H. West,
+                       Comp. Phys. Commun., 77 (1993) ) *)
+                    FCPrint[3,"The chiral trace", spx, "is computed using West's formula in NDR" ];
+                    temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) scev[spx[[i]], spx[[j]]]*
+                    spt@@Delete[spx,{{j},{i}}], {i,2,Length[spx]-1},{j,1,i-1}]],
+                    (*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm,
+                    A. Denner. Comp. Phys. Commun., 64 (1991)) *)
+                    FCPrint[3,"The chiral trace", spx, "is computed using standard recursion formula in NDR" ];
+                    fi = LorentzIndex[Unique[]];
+                    temp2 = scev[spx[[le-3]],spx[[le-2]]] spt@@Append[Drop[Drop[spx,{le-3,le-2}], -1 ],
+                    DiracGamma[5]]- scev[spx[[le-3]],spx[[le-1]]] spt@@Append[Drop[Drop[spx,{le-3,le-3}], -2],
+                    DiracGamma[5]]+ scev[spx[[le-2]],spx[[le-1]]] spt@@Append[Drop[spx,-3], DiracGamma[5]] +
+                    ( I Eps[spx[[le-3]],spx[[le-2]],spx[[le-1]],fi] *spt @@ Append[Drop[spx,-4],fi]);
+                ];
+			temp2/.spt->spursavg/.spursavg->spug,
+            (* Otherwise abort the computation, since NDR cannot handle anomalous traces without an
+            additional prescription*)
+            Message[DiracTrace::ndranomaly, InputForm[DOT[y]]]; Abort[];
+            ],
+            (* Larin *)
+            $Larin && !$BreitMaison && !$West,
+                FCPrint[3,"The chiral trace", spx, "is computed in Larin's scheme" ];
+                {fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
+                drsi = LeviCivitaSign /. Options[DiracTrace];
+                drsi = drsi/(TraceOfOne/.Options[DiracTrace]);
+                (*drsi is usually -1/4 *)
+                temp2 = spx /. {a___, lomo_[mUU_,di___], DiracGamma[5]} :>
+                TR[ drsi I/6 Eps[lomo[mUU,di], fi1, fi2, fi3] *
+                DOT @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}], EpsContract->True];
+                temp2/.spt->spursavg/.spursavg->spug,
+            (* BMHV, standard (slow!) trace formula *)
+            !$Larin && $BreitMaison && !$West,
+                FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula" ];
+                dirsign = LeviCivitaSign /. Options[DiracTrace];
+                fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
+                DiracTrace @@ ({y}/.DiracGamma[5]->
+                (dirsign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
+                DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))),
+            (* BMHV West's trace formula *)
+            !$Larin && $BreitMaison && !West,
+                FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula" ];
+                temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
+                scev[spx[[i]], spx[[j]]] spt@@Delete[spx,{{j},{i}}],
+                    {i,2,Length[spx]-1},{j,1,i-1}]];
+                temp2/.spt->spursavg/.spursavg->spug,
+            (* Any other combination of $Larin, $BreitMaison and $West doesn't describe
+               a valid scheme *)
+            True,
+            Message[DiracTrace::ilsch, $BreitMaison,$Larin,$West]
+       ],
+       True,
+       Message[DiracTrace::fail, FullForm[spx]]
     ];
             resp];
-
- (* #################################################################### *)
- (*                             Main50                                   *)
- (* #################################################################### *)
-
- (* ************************************************************** *)
- (* Properties and special cases of traces (up to a factor 4) *)
-   tris[x___] := tris[x] = trI[x];                  (*trisdef*)
-   trI[a_+b_] := tris[a] + tris[b];                  (*trIdef*)
-   trI[] = 1;
-   trI[ DiracGamma[5] ] = 0;
-   trI[ DiracGamma[6] ] = 1/2;
-   trI[ DiracGamma[7] ] = 1/2;
-
-
-   trI[ a:DiracGamma[_[__]].. ,DiracGamma[n_] ] := 0 /;
-      (OddQ[Length[{a}]]&&(n==5 || n==6 || n==7));
-
-       trI[ a:DiracGamma[_[__],___].. ,DiracGamma[n_] ] := 0 /;
-          ($BreitMaison === False) &&
-          (OddQ[Length[{a}]]&&(n==5 || n==6 || n==7))
-
-   trI[ d:DiracGamma[__].. ] := 0/;(OddQ[Length[{d}]] && fr567[ d ]);
-
-   trI[ d:DiracGamma[_[__],___].. ,DiracGamma[5] ] := 0/;Length[{d}]<4;
-
-   trI[x_] :=  x /; FreeQ[ {x},DiracGamma ];
-
-   trI[ DiracGamma[a_[b__],___],DiracGamma[c_[d__],___],
-        DiracGamma[6] ] := 1/2 scev[ a[b],c[d] ];
-
-   trI[ DiracGamma[a_[b__],___],DiracGamma[c_[d__],___],
-        DiracGamma[7] ] := 1/2 scev[ a[b],c[d] ];
-
-   trI[ x__ ] := spursav[ x ]/;( Length[{x}]<11 && fr567[x]);
-
- (* #################################################################### *)
- (*                             Main51                                   *)
- (* #################################################################### *)
-
-                       (*trICdef*)
- (* cyclic property *) (* Changed by F.Orellana, 14/1-2002.
-                         Dropped Kreimer scheme. According to
-                         Rolf it's wrong *)
-   trIC[y___]:=tris @@ cyclic[y];
-   (*trIC[y___]:=If[$Kreimer =!= True,
-                  tris @@ cyclic[y],
-                  tris[y]
-                 ];*)
-   cyclic[x__]:=RotateLeft[{x},Position[{x},First[Sort[{x}]]][[1,1]]];
-   cyclic[]:={};
-
-    DiracTrace /:
-    MakeBoxes[DiracTrace[expr__, OptionsPattern[]], TraditionalForm] :=
-        RowBox[{"tr","(",TBox[expr], ")"}]
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

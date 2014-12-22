@@ -571,14 +571,8 @@ $MemoryAvailable = 4096;
 $OPEWard = False;
 If[!ValueQ[$VeryVerbose],  $VeryVerbose   = 0];
 
-(* RM20110818
-setting $West=False is broken.
-See
-http://www.feyncalc.org/forum/0656.html
-Need to fix it.*)
 If[!ValueQ[$West],
 $West = True;
-Protect[$West]
 ];
 
 DOT = Dot;
