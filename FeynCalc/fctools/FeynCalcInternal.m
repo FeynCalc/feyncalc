@@ -163,10 +163,10 @@ Print["fci time = ",ti//MakeContext["FeynCalcForm"]];
 Print["ru= ",ru];
 *)
 
-If[ru =!={}, ReplaceRepeated[x, ru, MaxIterations -> 20] /.
+If[ru =!={}, ReplaceRepeated[x, Dispatch[ru], MaxIterations -> 20] /.
                       {mt :> MakeContext["CoreObjects","MT"],
                        fv :> MakeContext["CoreObjects","FV"],
-                       SD :> MakeContext["CoreObjects","SD"]} /. revru, x
+                       SD :> MakeContext["CoreObjects","SD"]} /. Dispatch[revru], x
   ]
 ];
 
