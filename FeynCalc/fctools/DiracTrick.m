@@ -835,12 +835,12 @@ drCOBM[x___] :=
         ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,
         dim_],dim_]..,
         DiracGamma[LorentzIndex[c_,dim_],dim_],f___ ] :=
-       Block[ {iVar,jVar,len = Length[{ch}]},
-           (-1)^len ( dim - 2 len ) ds[b,ch,f] - 4 (-1)^len *
-            Sum[ (-1)^(jVar-iVar) * coneins[ Pair[{ch}[[iVar,1]],
-                {ch}[[jVar,1]] ]*ds@@Join[{b},Drop[Drop[{ch},{iVar,iVar}],
-                {jVar-1,jVar-1}],{f}]],{iVar,1,len-1},{jVar,iVar+1,len}
-            ]/.Pair->scev
+       Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
+           (((-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len *
+            Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
+                {ch}[[jVar,1]] ]*dsTemp@@Join[{b},
+                Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}
+            ])//coneins)/.dsTemp->ds/.Pair->scev
        ] /;(Length[{ch}]>5) && MatchQ[dim, _Symbol | _Symbol-4 ];
 
 (* ************************************************************** *)
