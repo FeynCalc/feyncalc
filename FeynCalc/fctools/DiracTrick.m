@@ -89,18 +89,20 @@ DiracTrick[x_,r___?OptionQ] :=
 SetAttributes[DiracTrick, Flat];
 *)
 
+ds[x___] :=
+    If[ $BreitMaison === True,
+        dsBM[x],
+        dsNV[x]
+    ];
+
 (*If we are not using the BM scheme, we keep the projectors as they are*)
-ds[x__] :=
-    MemSet[ds[x,$BreitMaison, $Larin], dr[x]] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
-     (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) =!= True;
-                                (*Condition added 19/1-2003 by F.Orellana to not have
-                                  definition below cause infinite recursion.*)
+dsNV[x___] :=
+    MemSet[dsNV[x], dr[x]]/;  $BreitMaison === False;
 
 (*If we are using the BM scheme, all g^5 in the projectors should be spelled out!*)
-ds[x__] :=
-    MemSet[ds[x,$BreitMaison, $Larin], dr[x]/.DiracGamma[6]->(1/2 + DiracGamma[5]/2)/.
-           DiracGamma[7]->(1/2 - DiracGamma[5]/2)] /; ((!FreeQ2[{x}, {DiracGamma[6], DiracGamma[7]}]) &&
-     (Head[DiracGamma[6]]===DiracGamma) && $BreitMaison === True) === True;
+dsBM[x___] :=
+    MemSet[dsBM[x], dr[x]/.{DiracGamma[6]->(1/2 + DiracGamma[5]/2), DiracGamma[7]->(1/2 - DiracGamma[5]/2) }]/;
+        Head[DiracGamma[6]]===DiracGamma && $BreitMaison === True;
 
 (* drdef *)
 ds[] = dr[] = 1;
@@ -718,8 +720,17 @@ dr[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],
 (*                             Main34                                 *)
 (* #################################################################### *)
 
-   drCOs[x___] :=
-       MemSet[ drCOs[x,$BreitMaison, $Larin], drCO[x] ];    (*drCOsdef*)
+drCOs[x___] :=
+    If[ $BreitMaison === True,
+        drCOBM[x],
+        drCONV[x]
+    ];
+
+drCONV[x___] :=
+    MemSet[drCONV[x], drCO[x]]/;  $BreitMaison === False;
+drCOBM[x___] :=
+    MemSet[drCOBM[x], drCO[x]]/; $BreitMaison === True;
+
 (* Dirac contraction rules *) (*drCOdef*)
 
 (* g^mu g^nu_1 ... g^nu_n g_mu, where g^mu is in 4 or D-4
