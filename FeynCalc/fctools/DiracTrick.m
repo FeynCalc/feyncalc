@@ -244,49 +244,48 @@ drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
     drS[b, DiracGamma[v[w], dim1], xy, DiracGamma[7], c] /; NumberQ[n] &&
            OddQ[Length[{xy}]] && NonCommFreeQ[mass] && ($BreitMaison=!=True || (dim1===4 && dim2===4));
 
+(* Simplification for g^mu ... g_mu where the first and the last
+   matrix are in different dimensions                                         *)
+(* ------------------------------------------------------------------------ *)
+
+(* D and 4  -> 4 *)
+drS[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_]], f___ ] :=
+    drS[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+
+(* 4 and D -> 4 *)
+drS[ b___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], f___ ] :=
+    drS[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
+
+(* D and D-4 -> D-4 *)
+drS[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], f___ ] :=
+    drS[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
+    d,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], f];
+
+(* D-4 and D -> D-4 *)
+drS[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_, dimD_Symbol],dimD_Symbol],f___ ] :=
+    drS[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
+    d, DiracGamma[LorentzIndex[c, dimD-4], dimD-4],f];
+
+(* 4 and D-4 -> 0 *)
+drS[ ___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_]], ___ ] :=
+    0;
+
+(* D-4 and 4 -> 0 *)
+drS[ ___, DiracGamma[LorentzIndex[c_]], DiracGamma[__].. ,
+          DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ] :=
+    0;
+
 (* Contractions of neighbouring Dirac matrices in D, 4 and D-4 dimensions     *)
 (* ------------------------------------------------------------------------ *)
 
 dr[b___,DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_:  4],
         DiracGamma[LorentzIndex[c_, dim2_ : 4], dim2_: 4], d___] :=
     (PairContract[LorentzIndex[c, dim1],LorentzIndex[c, dim2]]/. PairContract->Pair) ds[ b,d ];
-
-(* Simplification for g^mu ... g_mu where the first and the last
-   matrix are in different dimensions                                         *)
-(* ------------------------------------------------------------------------ *)
-
-(* D and 4  -> 4 *)
-dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
-          DiracGamma[LorentzIndex[c_]], f___ ] :=
-    ds[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
-
-(* 4 and D -> 4 *)
-dr[ b___, DiracGamma[LorentzIndex[c_]], d:DiracGamma[__].. ,
-          DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], f___ ] :=
-    ds[b, DiracGamma[LorentzIndex[c]], d, DiracGamma[LorentzIndex[c]], f];
-
-(* D and D-4 -> D-4 *)
-dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol], dimD_Symbol], d:DiracGamma[__].. ,
-          DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], f___ ] :=
-    ds[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
-    d,DiracGamma[LorentzIndex[c, dimD-4], dimD-4], f];
-
-(* D-4 and D -> D-4 *)
-dr[ b___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], d:DiracGamma[__].. ,
-          DiracGamma[LorentzIndex[c_, dimD_Symbol],dimD_Symbol],f___ ] :=
-    ds[b,DiracGamma[LorentzIndex[c, dimD-4], dimD-4],
-    d, DiracGamma[LorentzIndex[c, dimD-4], dimD-4],f];
-
-(* 4 and D-4 -> 0 *)
-dr[ ___, DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], DiracGamma[__].. ,
-          DiracGamma[LorentzIndex[c_]], ___ ] :=
-    0;
-
-(* D-4 and 4 -> 0 *)
-dr[ ___, DiracGamma[LorentzIndex[c_]], DiracGamma[__].. ,
-          DiracGamma[LorentzIndex[c_, dimD_Symbol-4], dimD_Symbol-4], ___ ] :=
-    0;
-
 
 (* Simplifications for g^mu g^nu_1 ... g^nu_n g_mu where g^mu is in 4 and
      g^nu_i are in D-4 dimensions or vice versa.                                *)
