@@ -493,7 +493,31 @@ fcstDiracTrick = {
 	DiracGamma[LorentzIndex[nu[1], D], D] .  DiracGamma[LorentzIndex[nu[2], D],
 	D] .  DiracGamma[LorentzIndex[nu[3], D], D] .
 	DiracGamma[LorentzIndex[nu[4], D], D]* Pair[LorentzIndex[nu[5],
-	D], LorentzIndex[nu[6], D]])"}
+	D], LorentzIndex[nu[6], D]])"},
+{"fcstDiracTrick-ID8","DiracTrick[GA[i1,i2,i1,i2]]","-8"} ,
+{"fcstDiracTrick-ID9","DiracTrick[GA[i1,i2,i3,i1,i2,i3]]","16"},
+{"fcstDiracTrick-ID10","DiracTrick[GA[i1,i2,i3,i4,i1,i2,i3,i4]]","-128"},
+{"fcstDiracTrick-ID11","DiracTrick[GA[i1,i2,i3,i4,i5,i1,i2,i3,i4,i5]]","64"},
+{"fcstDiracTrick-ID12","DiracTrick[GA[i1,i2,i3,i4,i5,i6,i1,i2,i3,i4,i5,i6]]","-2048"},
+{"fcstDiracTrick-ID13","DiracTrick[GA[i1,i2,i3,i4,i5,i6,i7,i1,i2,i3,i4,i5,i6,i7]]","256"},
+{"fcstDiracTrick-ID14","DiracTrick[GA[i1,i2,i3,i4,i5,i6,i7,i8,i1,i2,i3,i4,i5,i6,i7,i8]]","-32768"},
+{"fcstDiracTrick-ID15","DiracTrick[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9,i1,i2,i3,i4,i5,i6,i7,i8,i9]]","1024"},
+{"fcstDiracTrick-ID16","DiracTrick[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10]]","-524288"},
+{"fcstDiracTrick-ID17","DiracTrick[GAD[i1,i2,i1,i2]]","(2-D)D"},
+{"fcstDiracTrick-ID18","DiracTrick[GAD[i1,i2,i3,i1,i2,i3]]","(2-D) (D-4) D+4 D"},
+{"fcstDiracTrick-ID19","DiracTrick[GAD[i1,i2,i3,i4,i1,i2,i3,i4]]","-2 D^3-(D-4) ((2-D) (D-4) D+4 D)"},
+{"fcstDiracTrick-ID20","DiracTrick[GAD[i1,i2,i3,i4,i5,i1,i2,i3,i4,i5]]//Expand",
+	"D^5-20 D^4+100 D^3-160 D^2+80 D"},
+{"fcstDiracTrick-ID21","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i1,i2,i3,i4,i5,i6]]//Expand",
+	"-D^6+30 D^5-260 D^4+840 D^3-1120 D^2+512 D"},
+{"fcstDiracTrick-ID22","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i1,i2,i3,i4,i5,i6,i7]]//Expand",
+	"-D^7+42 D^6-560 D^5+3080 D^4-7840 D^3+9184 D^2-3904 D"},
+{"fcstDiracTrick-ID23","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i8,i1,i2,i3,i4,i5,i6,i7,i8]]//Expand",
+	"D^8-56 D^7+1064 D^6-8960 D^5+37520 D^4-81536 D^3+86784 D^2-34816 D"},
+{"fcstDiracTrick-ID24","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i8,i9,i1,i2,i3,i4,i5,i6,i7,i8,i9]]//Expand",
+	"D^9-72 D^8+1848 D^7-22176 D^6+139440 D^5-486528 D^4+940672 D^3-927744 D^2+354560 D"},
+{"fcstDiracTrick-ID25","DiracTrick[GAD[i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10]]//Expand",
+	"-D^10+90 D^9-3000 D^8+48720 D^7-431760 D^6+2220960 D^5-6776320 D^4+11957760 D^3-11079680 D^2+4063232 D"}
 };
 
 fcstDiracTrickBMHV = {

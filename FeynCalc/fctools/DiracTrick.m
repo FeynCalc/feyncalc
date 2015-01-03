@@ -493,7 +493,7 @@ dr[ b___,  DiracGamma[LorentzIndex[c_]],
         ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
         end : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]],
         DiracGamma[LorentzIndex[c_]], f___ ] :=
-    ( 2 ds @@ Join[ {b},Reverse[{ch}],{end} ] +
+    ( 2 ds @@ Join[ {b},Reverse[{ch}],{end}, {f}] +
      2 ds[ b,end,ch,f ]
     )/; OddQ[Length[{ch}]];
 
