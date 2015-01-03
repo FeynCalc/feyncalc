@@ -336,7 +336,7 @@ dr[b___ , DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
    or D, D-4, D or D, 4, D *)
 dr[b___ , DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4],
           DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim2_ : 4] ,dim2_ : 4],
-          DiracGamma[LorentzIndex[c_, dim1_], dim1_ : 4], d___] :=
+          DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_ : 4], d___] :=
     (2 - dim1) ds[b,DiracGamma[x[y, dim2], dim2], d]/;
                     (dim1===dim2 || dim2 === dim1-4 || dim2 ===4) &&
                     MatchQ[dim1, _Symbol | _Symbol-4 | 4 ] &&
