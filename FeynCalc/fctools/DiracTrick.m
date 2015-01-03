@@ -610,6 +610,40 @@ drCOBM[x___] :=
 
 (* Dirac contraction rules *) (*drCOdef*)
 
+(* Simplification for g^mu g^nu_1 ... g^nu_n g_mu where all
+   matrices are  in D or D-4 dimensions. Applies for n>5, since
+   for n<=5 we have explicit expressions in the code. The
+   formula is given in Eq 2.9 of R. Mertig, M. Boehm,
+   A. Denner. Comp. Phys. Commun., 64 (1991)                *)
+   drCO[ b___,DiracGamma[LorentzIndex[c_,dim_],dim_],
+        ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,
+        dim_],dim_]..,
+        DiracGamma[LorentzIndex[c_,dim_],dim_],f___ ] :=
+       Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
+           (((-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len *
+            Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
+                {ch}[[jVar,1]] ]*dsTemp@@Join[{b},
+                Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}
+            ])//coneins)/.dsTemp->ds/.Pair->scev
+       ] /;(Length[{ch}]>4) && MatchQ[dim, _Symbol | _Symbol-4 ];
+
+
+(* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where all
+   matrices are in D, 4 or D-4 dimensions. The
+   formula is given in Eq 2.10 of R. Mertig, M. Boehm,
+   A. Denner. Comp. Phys. Commun., 64 (1991)                *)
+   drCO[b___, DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],
+              ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_ : 4], dim_ : 4]..,
+              DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],f___
+       ] :=
+       Block[ {iVar, len = Length[{ch}]},
+           (-1)^len scev[Momentum[c, dim],Momentum[c, dim]] ds[b,ch,f]
+           + 2 Sum[(-1)^(iVar+1) coneins[ Pair[Momentum[c, dim],{ch}[[iVar,1]] ]
+                  * ds@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[Momentum[c, dim],dim],f}]
+                                          ],{iVar, 1,len}]
+       ]/;
+                   (Length[{ch}]>0) && MatchQ[dim, _Symbol | _Symbol-4 | 4 ];
+
 (* g^mu g^nu_1 ... g^nu_n g_mu, where g^mu is in 4 or D-4
    and g^nu_i are in D dimensions is simplfied by repeatedly
    applying anticommuation relations. Applies for n>5,
@@ -686,39 +720,6 @@ drCOBM[x___] :=
                         MatchQ[dim3, _Symbol | _Symbol-4 | 4 ] &&
                         !MatchQ[{w, DiracGamma[x2[y2,dim3],dim3]},{DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim3] , dim3]..} |
                             {___, DiracGamma[a__], ___, DiracGamma[a__], ___}];
-
-(* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where all
-   matrices are in D, 4 or D-4 dimensions. The
-   formula is given in Eq 2.10 of R. Mertig, M. Boehm,
-   A. Denner. Comp. Phys. Commun., 64 (1991)                *)
-   drCO[b___, DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],
-              ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_ : 4], dim_ : 4]..,
-              DiracGamma[Momentum[c_, dim_ : 4], dim_ : 4],f___
-       ] :=
-       Block[ {iVar, len = Length[{ch}]},
-           (-1)^len scev[Momentum[c, dim],Momentum[c, dim]] ds[b,ch,f]
-           + 2 Sum[(-1)^(iVar+1) coneins[ Pair[Momentum[c, dim],{ch}[[iVar,1]] ]
-                  * ds@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[Momentum[c, dim],dim],f}]
-                                          ],{iVar, 1,len}]
-       ]/;
-                   (Length[{ch}]>0) && MatchQ[dim, _Symbol | _Symbol-4 | 4 ];
-
-(* Simplification for g^mu g^nu_1 ... g^nu_n g_mu where all
-   matrices are  in D or D-4 dimensions. Applies for n>5, since
-   for n<=5 we have explicit expressions in the code. The
-   formula is given in Eq 2.9 of R. Mertig, M. Boehm,
-   A. Denner. Comp. Phys. Commun., 64 (1991)                *)
-   drCO[ b___,DiracGamma[LorentzIndex[c_,dim_],dim_],
-        ch:DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,
-        dim_],dim_]..,
-        DiracGamma[LorentzIndex[c_,dim_],dim_],f___ ] :=
-       Block[ {iVar,jVar,len = Length[{ch}],dsTemp},
-           (((-1)^len ( dim - 2 len ) dsTemp[b,ch,f] - 4 (-1)^len *
-            Sum[ (-1)^(jVar-iVar) *  Pair[{ch}[[iVar,1]],
-                {ch}[[jVar,1]] ]*dsTemp@@Join[{b},
-                Delete[{ch}, {{iVar},{jVar}}], {f}],{iVar,1,len-1},{jVar,iVar+1,len}
-            ])//coneins)/.dsTemp->ds/.Pair->scev
-       ] /;(Length[{ch}]>4) && MatchQ[dim, _Symbol | _Symbol-4 ];
 
 (* ************************************************************** *)
  SetAttributes[drS,Flat];
