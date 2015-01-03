@@ -247,50 +247,9 @@ drS[b___,DiracGamma[7],DiracGamma[v_[w__], dim1_ : 4] + (n_. mass_),
 (* Contractions of neighbouring Dirac matrices in D, 4 and D-4 dimensions     *)
 (* ------------------------------------------------------------------------ *)
 
-(* D and D *)
-dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
-        DiracGamma[LorentzIndex[c_, dim_Symbol ], dim_Symbol], d___] :=
-    dim ds[ b,d ];
-
-(* 4 and 4 *)
-dr[b___,DiracGamma[LorentzIndex[c_]], DiracGamma[LorentzIndex[c_]], d___] :=
-    4 ds[ b,d ];
-
-(* D-4 and D-4 *)
-dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
-        DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
-    (dim-4) ds[ b,d ];
-
-(* D and 4 *)
-dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
-        DiracGamma[LorentzIndex[c_]], d___] :=
-    4 ds[ b,d ];
-
-
-(* 4 and D *)
-dr[b___,DiracGamma[LorentzIndex[c_]],
-        DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol], d___] :=
-    4 ds[ b,d ];
-
-(* D-4 and D *)
-dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
-        DiracGamma[LorentzIndex[c_, dim_], dim_], d___] :=
-    (dim-4) ds[ b,d ];
-
-(* D and D-4 *)
-dr[b___,DiracGamma[LorentzIndex[c_, dim_Symbol], dim_Symbol],
-        DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
-    (dim-4) ds[ b,d ];
-
-(* D-4 and 4 *)
-dr[___,DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4],
-        DiracGamma[LorentzIndex[c_]], ___] :=
-    0;
-
-(* 4 and D-4 *)
-dr[___,DiracGamma[LorentzIndex[c_]],
-        DiracGamma[LorentzIndex[c_, dim_Symbol-4], dim_Symbol-4], ___] :=
-    0;
+dr[b___,DiracGamma[LorentzIndex[c_, dim1_ : 4], dim1_:  4],
+        DiracGamma[LorentzIndex[c_, dim2_ : 4], dim2_: 4], d___] :=
+    (PairContract[LorentzIndex[c, dim1],LorentzIndex[c, dim2]]/. PairContract->Pair) ds[ b,d ];
 
 (* Simplification for g^mu ... g_mu where the first and the last
    matrix are in different dimensions                                         *)
