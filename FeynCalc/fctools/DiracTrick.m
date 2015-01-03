@@ -48,7 +48,7 @@ Options[DiracTrick] = {Expanding -> False};
 scev[a_, b_] :=
     MemSet[scev[a, b],ExpandScalarProduct[Pair[a,b]]];
 coneins[x_] :=
-    x /. Pair -> PairContract /. PairContract -> Pair;
+	MemSet[coneins[x],x /. Pair -> PairContract /. PairContract -> Pair];
 
 (*By definition:*)
 DiracTrick[] = 1;
