@@ -529,53 +529,47 @@ fcstDiracTrickBMHV = {
 {"fcstDiracTrickBMHV-ID15","DiracTrick[GAE[mu].GAE[mu]]",
     "D-4"},
 {"fcstDiracTrickBMHV-ID16","DiracTrick[GA[mu].DiracGamma[LorentzIndex[mu, D - 2], D - 2]]",
-	"DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[mu, -2 + D], -2 + D]"},
+	"Pair[LorentzIndex[mu], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID17","DiracTrick[GA[mu].DiracGamma[LorentzIndex[mu, 2], 2]]",
-	"DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[mu, 2],  2]"},
+	"Pair[LorentzIndex[mu], LorentzIndex[mu, 2]]"},
 {"fcstDiracTrickBMHV-ID18","DiracTrick[GAD[mu].DiracGamma[LorentzIndex[mu, D - 2], D - 2]]",
-	"DiracGamma[LorentzIndex[mu, D], D] .DiracGamma[LorentzIndex[mu, -2 + D], -2 + D]"},
+	"Pair[LorentzIndex[mu, -2 + D], LorentzIndex[mu, D]]"},
 {"fcstDiracTrickBMHV-ID19","DiracTrick[GAD[mu].DiracGamma[LorentzIndex[mu, 2], 2]]",
-	"DiracGamma[LorentzIndex[mu, D], D] .DiracGamma[LorentzIndex[mu, 2], 2]"},
+	"Pair[LorentzIndex[mu, 2], LorentzIndex[mu, D]]"},
 {"fcstDiracTrickBMHV-ID20","DiracTrick[GAE[mu].DiracGamma[LorentzIndex[mu, D - 2], D - 2]]",
-	"DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[mu, -2 + D], -2 + D]"},
+	"Pair[LorentzIndex[mu, -4 + D], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID21","DiracTrick[GAE[mu].DiracGamma[LorentzIndex[mu, 2], 2]]",
-	"DiracGamma[LorentzIndex[mu, -4 + D], -4 + D].DiracGamma[LorentzIndex[mu, 2], 2]"},
+	"Pair[LorentzIndex[mu, 2], LorentzIndex[mu, -4 + D]]"},
 {"fcstDiracTrickBMHV-ID22","DiracTrick[DiracGamma[LorentzIndex[mu, D - 2], D - 2].GA[mu]]",
-	"DiracGamma[LorentzIndex[mu, -2 + D], -2 + D] . DiracGamma[LorentzIndex[mu]]"},
+	"Pair[LorentzIndex[mu], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID23","DiracTrick[DiracGamma[LorentzIndex[mu, 2], 2].GA[mu]]",
-	"DiracGamma[LorentzIndex[mu, 2], 2] . DiracGamma[LorentzIndex[mu]]"},
+	"Pair[LorentzIndex[mu], LorentzIndex[mu, 2]]"},
 {"fcstDiracTrickBMHV-ID24","DiracTrick[DiracGamma[LorentzIndex[mu, D - 2], D - 2].GAD[mu]]",
-	"DiracGamma[LorentzIndex[mu, -2 + D], -2 + D] . DiracGamma[LorentzIndex[mu, D], D]"},
+	"Pair[LorentzIndex[mu, -2 + D], LorentzIndex[mu, D]]"},
 {"fcstDiracTrickBMHV-ID25","DiracTrick[DiracGamma[LorentzIndex[mu, 2], 2].GAD[mu]]",
-	"DiracGamma[LorentzIndex[mu, 2], 2] . DiracGamma[LorentzIndex[mu, D], D]"},
+	"Pair[LorentzIndex[mu, 2], LorentzIndex[mu, D]]"},
 {"fcstDiracTrickBMHV-ID26","DiracTrick[DiracGamma[LorentzIndex[mu, D - 2], D - 2].GAE[mu]]",
-	"DiracGamma[LorentzIndex[mu, -2 + D], -2 + D] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D]"},
+	"Pair[LorentzIndex[mu, -4 + D], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID27","DiracTrick[DiracGamma[LorentzIndex[mu, 2], 2]. GAE[mu]]",
-	"DiracGamma[LorentzIndex[mu, 2], 2].DiracGamma[LorentzIndex[mu, -4 + D], -4 + D]"},
+	"Pair[LorentzIndex[mu, 2], LorentzIndex[mu, -4 + D]]"},
 {"fcstDiracTrickBMHV-ID28","DiracTrick[DiracGamma[LorentzIndex[mu, 3],
-	3].DiracGamma[LorentzIndex[mu, D - 2], D - 2]]","DiracGamma[LorentzIndex[mu,
-	3], 3] .DiracGamma[LorentzIndex[mu, -2 + D], -2 + D]"},
+	3].DiracGamma[LorentzIndex[mu, D - 2], D - 2]]",
+	"Pair[LorentzIndex[mu, 3], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID29","DiracTrick[DiracGamma[LorentzIndex[mu, 3],
-	3].DiracGamma[LorentzIndex[mu, 2], 2]]", "DiracGamma[LorentzIndex[mu, 3],
-	3].DiracGamma[LorentzIndex[mu, 2], 2]"},
+	3].DiracGamma[LorentzIndex[mu, 2], 2]]", "Pair[LorentzIndex[mu, 2], LorentzIndex[mu, 3]]"},
 {"fcstDiracTrickBMHV-ID30","DiracTrick[DiracGamma[LorentzIndex[mu, D - 3],
 	D - 3].DiracGamma[LorentzIndex[mu, D - 2], D - 2]]",
-	"DiracGamma[LorentzIndex[mu, -3 + D], -3 + D].DiracGamma[LorentzIndex[mu, -2 + D], -2 + D]"},
+	"Pair[LorentzIndex[mu, -3 + D], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID31","DiracTrick[DiracGamma[LorentzIndex[mu, D - 3], D - 3].DiracGamma[
-	LorentzIndex[mu, 2], 2]]","DiracGamma[LorentzIndex[mu, -3 + D], -3 + D] .
- 	DiracGamma[LorentzIndex[mu, 2], 2]"},
+	LorentzIndex[mu, 2], 2]]","Pair[LorentzIndex[mu, 2], LorentzIndex[mu, -3 + D]]"},
 {"fcstDiracTrickBMHV-ID32","DiracTrick[DiracGamma[LorentzIndex[mu, D - 2],
-	D - 2].DiracGamma[LorentzIndex[mu, 3], 3]]","DiracGamma[LorentzIndex[mu, -2 + D],
-	-2 + D].DiracGamma[LorentzIndex[mu, 3], 3]"},
+	D - 2].DiracGamma[LorentzIndex[mu, 3], 3]]","Pair[LorentzIndex[mu, 3], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID33","DiracTrick[DiracGamma[LorentzIndex[mu, 2],
-	2].DiracGamma[LorentzIndex[mu, 3], 3]]", "DiracGamma[LorentzIndex[mu, 2], 2] .
- 	DiracGamma[LorentzIndex[mu, 3], 3]"},
+	2].DiracGamma[LorentzIndex[mu, 3], 3]]", "Pair[LorentzIndex[mu, 2], LorentzIndex[mu, 3]]"},
 {"fcstDiracTrickBMHV-ID34","DiracTrick[DiracGamma[LorentzIndex[mu, D - 2],
-	D - 2].DiracGamma[LorentzIndex[mu, D - 3], D - 3]]", "DiracGamma[LorentzIndex[mu,
-	-2 + D], -2 + D].DiracGamma[LorentzIndex[mu, -3 + D], -3 + D]"},
+	D - 2].DiracGamma[LorentzIndex[mu, D - 3], D - 3]]", "Pair[LorentzIndex[mu, -3 + D], LorentzIndex[mu, -2 + D]]"},
 {"fcstDiracTrickBMHV-ID35","DiracTrick[DiracGamma[LorentzIndex[mu, 2], 2].DiracGamma[
-	LorentzIndex[mu, D - 3], D - 3]]","DiracGamma[LorentzIndex[mu, 2], 2].
-	DiracGamma[LorentzIndex[mu, -3 + D], -3 + D]"},
+	LorentzIndex[mu, D - 3], D - 3]]","Pair[LorentzIndex[mu, 2], LorentzIndex[mu, -3 + D]]"},
 {"fcstDiracTrickBMHV-ID36","DiracTrick[GA[mu].DiracGamma[LorentzIndex[mu, D - 2], D + 2]]",
 	"DiracGamma[LorentzIndex[mu]] .	DiracGamma[LorentzIndex[mu, -2 + D], 2 + D]"},
 {"fcstDiracTrickBMHV-ID37","DiracTrick[GA[mu].DiracGamma[LorentzIndex[mu, 2], 3]]",
@@ -934,37 +928,52 @@ fcstDiracTrickFourFreeIndices = {
 
 fcstDiracTrickFiveFreeIndices = {
 {"fcstDiracTrickFiveFreeIndices-ID1","DiracTrick[GAD[mu, nu, rho, si, tau, ka, mu]]",
-    "2*DiracGamma[LorentzIndex[ka, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] .
-    DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[tau, D], D] -
-    (-4 + D)*DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] .
-    DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[tau, D], D] .
-    DiracGamma[LorentzIndex[ka, D], D] - 2*DiracGamma[LorentzIndex[si, D], D] .
-    DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-    DiracGamma[LorentzIndex[tau, D], D] . DiracGamma[LorentzIndex[ka, D], D] -
-    2*DiracGamma[LorentzIndex[tau, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-    DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[ka, D], D]"},
+    "-((-10 + D)*DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[si, D], D] .
+    DiracGamma[LorentzIndex[tau, D], D] . DiracGamma[LorentzIndex[ka, D], D]) +
+ 4*(DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[tau, D], D]*
+    Pair[LorentzIndex[ka, D], LorentzIndex[nu, D]] - DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[si, D], D] .
+     DiracGamma[LorentzIndex[tau, D], D]*Pair[LorentzIndex[ka, D], LorentzIndex[rho, D]] +
+   DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[tau, D], D]*
+    Pair[LorentzIndex[ka, D], LorentzIndex[si, D]] - DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] .
+     DiracGamma[LorentzIndex[si, D], D]*Pair[LorentzIndex[ka, D], LorentzIndex[tau, D]] -
+   DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[tau, D], D] . DiracGamma[LorentzIndex[ka, D], D]*
+    Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]] + DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[tau, D], D] .
+     DiracGamma[LorentzIndex[ka, D], D]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]] -
+   DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[ka, D], D]*
+    Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]] - DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[tau, D], D] .
+     DiracGamma[LorentzIndex[ka, D], D]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]] +
+   DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[si, D], D] . DiracGamma[LorentzIndex[ka, D], D]*
+    Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]] - DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] .
+     DiracGamma[LorentzIndex[ka, D], D]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]])"},
 {"fcstDiracTrickFiveFreeIndices-ID2","DiracTrick[GAD[mu].GA[nu, rho, si, tau, ka].GAD[mu]]",
-    "2*DiracGamma[LorentzIndex[ka]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] .
-    DiracGamma[LorentzIndex[si]] . DiracGamma[LorentzIndex[tau]] -
-    (-4 + D)*DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[si]] .
-    DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[ka]] -
-    2*DiracGamma[LorentzIndex[si]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]] .
-    DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[ka]] -
-    2*DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] .
-    DiracGamma[LorentzIndex[si]] . DiracGamma[LorentzIndex[ka]]"},
+    "-2*DiracGamma[LorentzIndex[ka]] . DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[si]] . DiracGamma[LorentzIndex[rho]] .
+   DiracGamma[LorentzIndex[nu]] - (-4 + D)*DiracGamma[LorentzIndex[nu]] . DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[si]] .
+   DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[ka]]"},
 {"fcstDiracTrickFiveFreeIndices-ID3","DiracTrick[GAD[mu].GAE[nu, rho, si, tau, ka].GAD[mu]]",
-    "2*DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] -
-    (-4 + D)*DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] -
-    2*DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] -
-    2*DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]"},
+    "-4*DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] .
+   DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] -
+ (-14 + D)*DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+   DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] +
+ 4*(DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[nu, -4 + D]] - DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[rho, -4 + D]] +
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[si, -4 + D]] - DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[tau, -4 + D]] -
+   DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[nu, -4 + D], LorentzIndex[rho, -4 + D]] + DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[nu, -4 + D], LorentzIndex[si, -4 + D]] - DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[nu, -4 + D], LorentzIndex[tau, -4 + D]] -
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[rho, -4 + D], LorentzIndex[si, -4 + D]] +
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[rho, -4 + D], LorentzIndex[tau, -4 + D]] -
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[si, -4 + D], LorentzIndex[tau, -4 + D]])"},
 {"fcstDiracTrickFiveFreeIndices-ID4","DiracTrick[GA[mu, nu, rho, si, tau, ka, mu]]",
     "-2*DiracGamma[LorentzIndex[ka]] . DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[si]] .
     DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]]"},
@@ -986,18 +995,28 @@ fcstDiracTrickFiveFreeIndices = {
     DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] .
     DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]"},
 {"fcstDiracTrickFiveFreeIndices-ID7","DiracTrick[GAE[mu, nu, rho, si, tau, ka, mu]]",
-    "2*DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] -
-    (-8 + D)*DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] -
-    2*DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] -
-    2*DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] .
-    DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]"},
+    "-((-14 + D)*DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+    DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]) +
+ 4*(DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[nu, -4 + D]] - DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[rho, -4 + D]] +
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[si, -4 + D]] - DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D]*
+    Pair[LorentzIndex[ka, -4 + D], LorentzIndex[tau, -4 + D]] -
+   DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[nu, -4 + D], LorentzIndex[rho, -4 + D]] + DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[nu, -4 + D], LorentzIndex[si, -4 + D]] - DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] .
+     DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[nu, -4 + D], LorentzIndex[tau, -4 + D]] -
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[tau, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[rho, -4 + D], LorentzIndex[si, -4 + D]] +
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[si, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[rho, -4 + D], LorentzIndex[tau, -4 + D]] -
+   DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[LorentzIndex[ka, -4 + D], -4 + D]*
+    Pair[LorentzIndex[si, -4 + D], LorentzIndex[tau, -4 + D]])"},
 {"fcstDiracTrickFiveFreeIndices-ID8","DiracTrick[GAE[mu].GAD[nu, rho, si, tau, ka].GAE[mu]]",
     "2*DiracGamma[LorentzIndex[ka, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] .
     DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[LorentzIndex[si, D], D] .
