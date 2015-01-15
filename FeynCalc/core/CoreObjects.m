@@ -1255,7 +1255,7 @@ Momentum /:
 (*Normal momenta *)
 
 Momentum /:
-   MakeBoxes[ Momentum[ OPEDelta_ ], TraditionalForm
+   MakeBoxes[ Momentum[ HighEnergyPhysics`qcd`OPEDelta`OPEDelta ], TraditionalForm
             ] := Tbox[OPEDelta];
 
 Momentum /:
