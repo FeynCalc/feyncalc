@@ -221,7 +221,7 @@ proj[{j_ /; j > 0, r_}, jh___] :=
 newcc[ii__] := cc[ii] /. LorentzIndex[w_,_] :> w;
 tt = tt /. cc -> newcc;
 symms = getsymmetries[tt];
-    FCPrint[1,"symms"]; Print[Length[ccli]];
+    FCPrint[1,"symms"]; FCPrint[1,Length[ccli]];
 
 
 If[symms =!=  False,
