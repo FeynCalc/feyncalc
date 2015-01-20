@@ -1,0 +1,21 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: Tdec.test                    	                                *)
+
+(*
+   This software is covered by the GNU Lesser General Public License 3.
+   Copyright (C) 1990-2015 Rolf Mertig
+   Copyright (C) 1997-2015 Frederik Orellana
+   Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Tdec	                *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstTdec = {
+{"fcstTdec-ID1","(Tdec[{{l, mu}, {l, nu}}, {}]) // (Rest[#] /. First[#]) & // Total","(MT[mu, nu]*SP[l, l])/D"},
+{"fcstTdec-ID2","(Tdec[{{l, mu}, {l, nu}, {l, rho}, {l, si}}, {}]) // (Rest[#] /.
+     First[#]) & // Total",
+     "((MT[mu, si]*MT[nu, rho] + MT[mu, rho]*MT[nu, si] + MT[mu, nu]*MT[rho, si])*SP[l, l]^2)/(D*(2 + D))"}
+};
