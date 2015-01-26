@@ -99,7 +99,7 @@ Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 SUNT = MakeContext["CoreObjects","SUNT"];
 Spinor = MakeContext["CoreObjects","Spinor"];
-dR  := dR   = MakeContext["DiracTrick"];
+DiracTrick  := DiracTrick   = MakeContext["DiracTrick"];
 fcinte := fcinte = MakeContext["FeynCalcInternal"];
 sCO := sCO   = MakeContext["PairContract"];
 scev := scev = MakeContext["ExpandScalarProduct"];
@@ -175,7 +175,15 @@ DiracSimplify[x_,y__, z___?OptionQ]:=DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, 
 diracSimplify[z_, ru___Rule]:=
     (Contract[z]/.DiracTrace->dit)/;!FreeQ[z,DiracTrace];
 
-dS[x__] := MemSet[dS[x], dR[x]];
+dS[x___] :=
+    If[ $BreitMaison === True,
+        dSBM[x],
+        dSNV[x]
+    ];
+
+dSBM[x___] := MemSet[dSBM[x], DiracTrick[x]];
+dSNV[x___] := MemSet[dSNV[x], DiracTrick[x]];
+
 
 (* ****************************************************************** *)
 DiracSimplify[a_, opt___Rule] := (a /.
@@ -222,7 +230,7 @@ FCPrint[2,"entering oldDiracSimplify", x];
 factoring = Factoring /. {yy} /. Options[DiracSimplify];
 If[factoring === True, factoring = Factor2];
 (*NEW0796*)
-dre = Collect[DotSimplify[dR[DiracGammaCombine[x]]]/.
+dre = Collect[DotSimplify[DiracTrick[DiracGammaCombine[x]]]/.
 DOT->dooo,dooo[__]]/.dooo->DOT;
                      dre =  FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142];
                      If[ !FreeQ[dre, Eps],
@@ -270,8 +278,19 @@ contractli[x_] := MemSet[contractli[x], Contract[ x, Expanding -> True,
 diracSimplify[x_,in___] := x /; NonCommFreeQ[x];
 
 (*CHANGE 1298 *)
-diracSimplify[x_,in___Rule]:= If[FreeQ[x, DiracGamma], x,
-MemSet[diracSimplify[x,in], Block[
+
+
+diracSimplify[x_,in___Rule] :=
+    If[ $BreitMaison === True,
+        diracSimplifyBM[x,in],
+        diracSimplifyNV[x,in]
+    ];
+
+diracSimplifyBM[x_,in___Rule] := MemSet[diracSimplifyBM[x,in], diracSimplifyGEN[x,in]];
+diracSimplifyNV[x_,in___Rule] := MemSet[diracSimplifyNV[x,in], diracSimplifyGEN[x,in]];
+
+diracSimplifyGEN[x_,in___Rule]:= If[FreeQ[x, DiracGamma], x,
+ Block[
        {diracopt,diracdt,diracndt=0,diraccanopt,diracpdt,diracgasu,
         diracldt,diracjj=0,diractrlabel,diracga67,diracsirlin,diracsifac,
         diracpag,colle
@@ -412,7 +431,7 @@ FCPrint[2,"dir5"];
 FCPrint[2,"dir6 ", diracndt];
 FCPrint[3,"exiting diracSimplify"];
   diracndt/.HighEnergyPhysics`fctools`DiracTrace`Private`spursav:> DOT
-]]];  (* end of diracSimplify *)
+]];  (* end of diracSimplify *)
 
 (* #################################################################### *)
                                                         (*dr67def*)
