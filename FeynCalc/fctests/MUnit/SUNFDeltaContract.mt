@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SUNSimplify.mt                                                   *)
+(* :Title: SUNFDeltaContract.mt                                             *)
 
 (*
    This software is covered by the GNU Lesser General Public License 3.
@@ -9,12 +9,12 @@
    Copyright (C) 2014-2015 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for SUNSimplify                                    *)
+(* :Summary:  Unit tests for SUNFDeltaContract                              *)
 
 (* ------------------------------------------------------------------------ *)
 
 
 Needs["HighEnergyPhysics`FeynCalc`"];
-Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/SUNSimplify.test"]];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstSUNSimplify];
+Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/SUNFDeltaContract.test"]];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,fcstSUNFDeltaContract];
 

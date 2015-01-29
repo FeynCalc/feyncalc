@@ -51,6 +51,7 @@ SUNDelta            = MakeContext["CoreObjects","SUNDelta"];
 SUNDeltaContract    = MakeContext["SUNDeltaContract"];
 SUNF                = MakeContext["CoreObjects","SUNF"];
 SUNT                = MakeContext["CoreObjects","SUNT"];
+SUNTF               = MakeContext["CoreObjects","SUNTF"];
 SUNIndex            = MakeContext["CoreObjects","SUNIndex"];
 SUNTrace            = MakeContext["SUNTrace"];
 Polarization        = MakeContext["CoreObjects","Polarization"];
@@ -106,7 +107,7 @@ sundcomp[a___] := SUND @@ ({a}/.ComplexIndex -> Identity);
 Options[ComplexConjugate] = {DotSimplify -> True};
 
 ComplexConjugate[b_HoldForm,opts___?OptionQ] := b /; FreeQ2[fci[FRH[b]],
-                                {DOT,LorentzIndex,SUNIndex,Complex}];
+                                {DOT,LorentzIndex,SUNIndex,SUNTF,Complex}];
 
 ComplexConjugate[x_ /; (Head[x] =!= HoldForm), opts___?OptionQ] :=
                  compcon[fci[x]/.SUNTrace->suntrac, opts
@@ -126,16 +127,19 @@ compcon[x_Times, opts___?OptionQ] := compcon[#,opts]& /@ x;
 
 
 compcon[b_HoldForm, opts___?OptionQ] := b /;
-             FreeQ2[FRH[b], {DOT,LorentzIndex,SUNIndex,Complex}];
+             FreeQ2[FRH[b], {DOT,LorentzIndex,SUNIndex,SUNTF,Complex}];
 compcon[x_ /; (Head[x] =!= Plus) && (Head[x] =!= Times), opts___?OptionQ] :=
-If[FreeQ[x, DOT | Complex | DiracGamma], x,
+If[FreeQ[x, DOT | Complex | DiracGamma | SUNTF], x,
              Block[{nx=x,oone, suntrac, dotsim},
                   dotsim = DotSimplify /. {opts} /. Options[ComplexConjugate];
                   If[!FreeQ[nx, SUNF], nx = Expand[nx, SUNF]];
                   If[!FreeQ[nx,SUNT], If[dotsim, nx = dotlin[nx]]];
 (* this is wrong if nx had Head List ... (change 02/99)
                     nx = (DOT[oone, nx] /. DOT -> rev /. rev -> DOT);
+
+
 *)
+                    If[!FreeQ[nx, SUNTF], nx = nx /.{SUNTF[{a__},b_,c_]:> SUNTF[Reverse[{a}], c, b] }];
                     nx = nx /. DiracGamma[a__]:>
                     DOT[oone, DiracGamma[a]](*Added 28/2-2001 by F.Orellana - see above*)/;
                     FreeQ[{5,6,7},Evaluate[{a}[[1]]]]/.

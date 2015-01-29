@@ -65,12 +65,18 @@ SP             := SP             = MakeContext["CoreObjects","SP"];
 SPD             := SPD             = MakeContext["CoreObjects","SPD"];
 SPE             := SPE             = MakeContext["CoreObjects","SPE"];
 SD            := SD            = MakeContext["CoreObjects","SD"];
+SDF            := SDF            = MakeContext["CoreObjects","SDF"];
 SUNDelta        := SUNDelta        = MakeContext["CoreObjects","SUNDelta"];
+SUNFDelta        := SUNFDelta        = MakeContext["CoreObjects","SUNFDelta"];
 SUND           := SUND             = MakeContext["CoreObjects","SUND"];
 SUNDeltaContract:= SUNDeltaContract= MakeContext["SUNDeltaContract"];
+SUNFDeltaContract:= SUNFDeltaContract= MakeContext["SUNFDeltaContract"];
 SUNIndex        := SUNIndex        = MakeContext["CoreObjects","SUNIndex"];
+SUNFIndex        := SUNFIndex        = MakeContext["CoreObjects","SUNFIndex"];
 ExplicitSUNIndex        := ExplicitSUNIndex        = MakeContext["CoreObjects","ExplicitSUNIndex"];
+ExplicitSUNFIndex        := ExplicitSUNFIndex        = MakeContext["CoreObjects","ExplicitSUNFIndex"];
 SUNT            := SUNT            = MakeContext["CoreObjects","SUNT"];
+SUNTF            := SUNTF            = MakeContext["CoreObjects","SUNTF"];
 SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
 Spinor          := Spinor          = MakeContext["CoreObjects","Spinor"];
 SpinorU         := SpinorU         = MakeContext["CoreObjects","SpinorU"];
@@ -90,10 +96,17 @@ su[a_String, b_] := If[CheckContext[a], {MakeContext[a] :> b}, {}];
 sdeltacont[a_, b_] :=
    SUNDelta[SUNIndex[a], SUNIndex[b]];
 
+sfdeltacont[a_, b_] :=
+   SUNFDelta[SUNFIndex[a], SUNFIndex[b]];
+
+
 tosund[a_,b_,c_] := SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]];
 
 sdeltacontr[a_, b_] :=
    SUNDeltaContract[SUNIndex[a], SUNIndex[b]];
+
+sfdeltacontr[a_, b_] :=
+   SUNFDeltaContract[SUNFIndex[a], SUNFIndex[b]];
 
 Options[FeynCalcInternal] = {FinalSubstitutions -> {}};
 
@@ -111,12 +124,15 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`DiracMatrix  :> diracM},
  {HighEnergyPhysics`FeynCalc`CoreObjects`DiracSlash :> diracS},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FourVector :> fourV},
- (*su["PolarizationVector", polarizationvectorexplicit] ,*)
  {HighEnergyPhysics`FeynCalc`CoreObjects`SD :> sdeltacont},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SDF :> sfdeltacont},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta :> sdeltacont},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNFDelta :> sfdeltacont},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUND :> tosund},
  su["SUNDeltaContract", sdeltacontr],
+ su["SUNFDeltaContract", sfdeltacontr],
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> sunTint},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNTF :> sunTFint},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FAD :> fadint},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVD :> fvd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVE :> fve},
@@ -166,7 +182,8 @@ Print["ru= ",ru];
 If[ru =!={}, ReplaceRepeated[x, Dispatch[ru], MaxIterations -> 20] /.
                       {mt :> MakeContext["CoreObjects","MT"],
                        fv :> MakeContext["CoreObjects","FV"],
-                       SD :> MakeContext["CoreObjects","SD"]} /. Dispatch[revru], x
+                       SD :> MakeContext["CoreObjects","SD"],
+                       SDF :> MakeContext["CoreObjects","SDF"]} /. Dispatch[revru], x
   ]
 ];
 
@@ -287,6 +304,14 @@ setdel[HoldPattern[sunT[sunind[dottt[x__]]]] /. dottt -> DOT /. sunind ->
                     SUNIndex, DOT@@( sunT /@ {x} ) ];
 
 sunT[a_, y__] := Apply[DOT, sunT /@ {a, y}];
+
+(* ---------------------------------------------------------------------- *)
+(* sunTFint *)
+(* ---------------------------------------------------------------------- *)
+sunTFint[{a__},b_,c_] := SUNTF[Map[SUNIndex, ({a} /. SUNIndex -> Identity)],
+ SUNFIndex@(b /. SUNFIndex -> Identity),
+ SUNFIndex@(c /. SUNFIndex -> Identity)];
+
 (* ---------------------------------------------------------------------- *)
 (* scalarP *)
 (* ---------------------------------------------------------------------- *)

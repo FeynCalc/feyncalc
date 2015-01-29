@@ -65,10 +65,14 @@ PropagatorDenominator :=
             PropagatorDenominator  = MakeContext["CoreObjects","PropagatorDenominator"];
 ScalarProduct   := ScalarProduct   = MakeContext["ScalarProduct"];
 SD            := SD            = MakeContext["CoreObjects","SD"];
+SDF            := SDF            = MakeContext["CoreObjects","SDF"];
 SUND            := SUND            = MakeContext["CoreObjects","SUND"];
 SUNIndex        := SUNIndex        = MakeContext["CoreObjects","SUNIndex"];
+SUNFIndex        := SUNFIndex        = MakeContext["CoreObjects","SUNFIndex"];
 ExplicitSUNIndex    := ExplicitSUNIndex    = MakeContext["CoreObjects","ExplicitSUNIndex"];
+ExplicitSUNFIndex    := ExplicitSUNFIndex    = MakeContext["CoreObjects","ExplicitSUNFIndex"];
 SUNT            := SUNT            = MakeContext["CoreObjects","SUNT"];
+SUNTF            := SUNTF            = MakeContext["CoreObjects","SUNTF"];
 SUNF            := SUNF            = MakeContext["CoreObjects","SUNF"];
 SP              := SP              = MakeContext["CoreObjects","SP"];
 SPD             := SPD             = MakeContext["CoreObjects","SPD"];
@@ -84,6 +88,7 @@ iDent[a_,___] := a;
 FeynCalcExternal[x_,opts___Rule] :=
  Block[{ru, ti, r, vv, rv, uru},
 sundeltanoi[y__] := SD@@({y} /. SUNIndex -> Identity);
+sunfdeltanoi[y__] := SDF@@({y} /. SUNFIndex -> Identity);
 
 uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
@@ -97,12 +102,15 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator :> propagatordback},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUND :> sundback},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta :> sundeltanoi},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNFDelta :> sunfdeltanoi},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUNF :> SUNFback},
  {HighEnergyPhysics`FeynCalc`CoreObjects`SUNT :> suntback},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`SUNTF :> suntfback},
  {HighEnergyPhysics`FeynCalc`SUNDeltaContract`SUNDeltaContract :> sundeltanoi},
+ {HighEnergyPhysics`FeynCalc`SUNFDeltaContract`SUNFDeltaContract :> sunfdeltanoi},
  {HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct :> scalarmul},
  {HighEnergyPhysics`qcd`Power2`Power2 :> Power}
-           ] /. LorentzIndex -> iDent /. SUNIndex -> iDent ;
+           ] /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent ;
 ru = Join[ru, Flatten[{uru}]];
 
 vv = Cases2[x, Join[{},
@@ -116,9 +124,12 @@ vv = Cases2[x, Join[{},
         HighEnergyPhysics`FeynCalc`CoreObjects`PropagatorDenominator,
         HighEnergyPhysics`FeynCalc`CoreObjects`SUND,
         HighEnergyPhysics`FeynCalc`CoreObjects`SUNDelta,
+        HighEnergyPhysics`FeynCalc`CoreObjects`SUNFDelta,
         HighEnergyPhysics`FeynCalc`CoreObjects`SUNF,
         HighEnergyPhysics`FeynCalc`CoreObjects`SUNT,
+        HighEnergyPhysics`FeynCalc`CoreObjects`SUNTF,
         HighEnergyPhysics`FeynCalc`SUNDeltaContract`SUNDeltaContract,
+        HighEnergyPhysics`FeynCalc`SUNFDeltaContract`SUNFDeltaContract,
         HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct,
         HighEnergyPhysics`qcd`Power2`Power2
          }] /. sequence -> Sequence
@@ -197,6 +208,9 @@ diracback[ExplicitLorentzIndex[x_?NumberQ]] := GA[x];
 diracback[x_?NumberQ] := GA[x];
 suntback[(SUNIndex|ExplicitSUNIndex)[a_]] := SUNT[a];
 suntback[a__Symbol] := SUNT[a];
+suntfback[{a__},b_,c_] := SUNTF[{a} /. SUNIndex|ExplicitSUNIndex -> Identity,
+ b /. SUNFIndex|ExplicitSUNFIndex -> Identity,
+ c /. SUNFIndex|ExplicitSUNFIndex -> Identity];
 propagatordback[a_,b_] := PropagatorDenominator[a/.Momentum->iDent, b];
 propd[a_, 0] := a /. Momentum->iDent;
 propd[a_, b_/;b=!=0] := {a/.Momentum->iDent, b};

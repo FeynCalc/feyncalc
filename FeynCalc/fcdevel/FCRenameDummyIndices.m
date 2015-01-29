@@ -29,6 +29,7 @@ Begin["`Private`"];
 
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
+SUNFIndex = MakeContext["CoreObjects","SUNFIndex"];
 FCI = MakeContext["FeynCalcInternal"];
 MakeContext[ DotSimplify];
 
@@ -41,11 +42,11 @@ FCRenameDummyIndices[expr_] :=
 
         If [Head[exprFCI]===Plus,
         indexList =
-          Map[Tally, Map[Cases[#, LorentzIndex[ind_] | SUNIndex[ind_] :> ind,
+          Map[Tally, Map[Cases[#, (LorentzIndex | SUNIndex | SUNFIndex)[ind_] :> ind,
               Infinity]&,Apply[List, exprFCI]]]// Flatten[#, 1] & // Union;
               ,
         indexList =
-           Cases[exprFCI, LorentzIndex[ind_] | SUNIndex[ind_] :> ind,
+           Cases[exprFCI, (LorentzIndex | SUNIndex | SUNFIndex)[ind_] :> ind,
               Infinity] // Tally;
 
         ];

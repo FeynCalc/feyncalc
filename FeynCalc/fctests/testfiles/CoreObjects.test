@@ -98,7 +98,13 @@
  {"fcstCoreObjectsOwnValues-ID76", "OwnValues[SUNIndex]", "{}"},
  {"fcstCoreObjectsOwnValues-ID77", "OwnValues[SUNN]", "{}"},
  {"fcstCoreObjectsOwnValues-ID78", "OwnValues[SUNT]", "{}"},
- {"fcstCoreObjectsOwnValues-ID79", "OwnValues[Tf]", "{}"}};
+ {"fcstCoreObjectsOwnValues-ID79", "OwnValues[Tf]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID80", "OwnValues[SDF]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID81", "OwnValues[SUNFDelta]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID82", "OwnValues[SUNTF]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID83", "OwnValues[SUNFIndex]", "{}"},
+ {"fcstCoreObjectsOwnValues-ID84", "OwnValues[ExplicitSUNFIndex]", "{}"}
+ };
 
 
  (* ----------------------------------------------------------------------------------------------------------- *)
@@ -192,7 +198,15 @@ DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]}"},
  {"fcstCoreObjectsUpValues-ID76", "UpValues[SUNIndex]", "{}"},
  {"fcstCoreObjectsUpValues-ID77", "UpValues[SUNN]", "{}"},
  {"fcstCoreObjectsUpValues-ID78", "UpValues[SUNT]", "{}"},
- {"fcstCoreObjectsUpValues-ID79", "UpValues[Tf]", "{}"}}
+ {"fcstCoreObjectsUpValues-ID79", "UpValues[Tf]", "{}"},
+ {"fcstCoreObjectsUpValues-ID80", "UpValues[SDF]", "{}"},
+ {"fcstCoreObjectsUpValues-ID81", "UpValues[SUNFDelta]", "{}"},
+ {"fcstCoreObjectsUpValues-ID82", "UpValues[SUNTF]", "{}"},
+ {"fcstCoreObjectsUpValues-ID83", "UpValues[SUNFIndex]", "{}"},
+ {"fcstCoreObjectsUpValues-ID84", "UpValues[ExplicitSUNFIndex]",
+    "{HoldPattern[SUNFIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i_ExplicitSUNFIndex]] :>
+    ExplicitSUNFIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i]}"}
+ }
 
 
 
@@ -444,8 +458,13 @@ fcstCoreObjectsBehavior = {{"fcstCoreObjectsBehavior-ID1", "ChiralityProjector[1
  {"fcstCoreObjectsBehavior-ID209", "SUNF[a, SUNIndex[y], SUNIndex[x]]", " -SUNF[a, SUNIndex[x], SUNIndex[y]]"}, {"fcstCoreObjectsBehavior-ID210", "SUNF[SUNIndex[y], SUNIndex[x], c]",
   " -SUNF[SUNIndex[x], SUNIndex[y], c]"}, {"fcstCoreObjectsBehavior-ID211", "SUNF[i, j, k]", "SUNF[i, j, k]"}, {"fcstCoreObjectsBehavior-ID212", "SUNF[i, j, k, Explicit -> True]",
   "(2*I)*(-SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[j]] . SUNT[SUNIndex[k]]] + SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[k]] . SUNT[SUNIndex[j]]])"},
- {"fcstCoreObjectsBehavior-ID213", "SUNF[i, j, k, l]", "SUNF[i, j, k, l]"}, {"fcstCoreObjectsBehavior-ID214", "(SUNF[i, j, k, l, Explicit -> True] /. {SUNIndex[a_] -> SUNIndex[s1]})",
-  " SUNF[i, j, SUNIndex[s1]] SUNF[SUNIndex[s1], k, l]"}, {"fcstCoreObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"}}
+ {"fcstCoreObjectsBehavior-ID213", "SUNF[i, j, k, l]", "SUNF[i, j, k, l]"},
+ {"fcstCoreObjectsBehavior-ID214", "(SUNF[i, j, k, l, Explicit -> True] /. {SUNIndex[a_] -> SUNIndex[s1]})",
+  " SUNF[i, j, SUNIndex[s1]] SUNF[SUNIndex[s1], k, l]"},
+ {"fcstCoreObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"},
+ {"fcstCoreObjectsBehavior-ID216", "SUNFIndex[4]", "ExplicitSUNFIndex[4]"},
+ {"fcstCoreObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"}
+ }
 
 
 

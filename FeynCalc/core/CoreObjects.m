@@ -126,8 +126,13 @@ an integer.";
 (* :Summary: Lorentz indices of integers *)
 
 ExplicitSUNIndex::"usage"=
-"ExplicitSUNIndex[ind] is a specific SU(N) index, i.e.,
-ind is an integer.";
+"ExplicitSUNIndex[ind] is a specific SU(N) index in the adjoint
+representation, i.e., ind is an integer.";
+(* :Summary: Head for SUN-Indices *)
+
+ExplicitSUNFIndex::"usage"=
+"ExplicitSUNIndex[ind] is a specific SU(N) index in the fundamental
+representation, i.e., ind is an integer.";
 (* :Summary: Head for SUN-Indices *)
 
 FAD::"usage"= "FAD[q, q-p, ...] denotes 1/(q^2 (q-p)^2 ...).
@@ -378,8 +383,14 @@ OPE is also an option of several input functions like GluonPropagator.";
 
 SD::"usage"=
 "SD[i, j] is the (FeynCalc-external) Kronecker-delta for SU(N) with color
-indices i and j. SD[i,j] is transformed into
+indices i and j in the adjoint represnetation. SD[i,j] is transformed into
 SUNDelta[SUNIndex[i],SUNIndex[j]] by
+FeynCalcInternal.";
+
+SDF::"usage"=
+"SDF[i, j] is the (FeynCalc-external) Kronecker-delta for SU(N) with color
+indices i and j in the fundamental represnetation. SDF[i,j] is transformed into
+SUNFDelta[SUNFIndex[i],SUNFIndex[j]] by
 FeynCalcInternal.";
 
 SmallDelta::"usage" = "SmallDelta denotes some small positive number.";
@@ -431,15 +442,22 @@ SpinorVBar::"usage" = "SpinorVBar[p, m] denotes a vbar-spinor.";
 SUND::"usage"= "SUND[a, b, c] is the symmetric SU(N) d_{a,b,c}.";
 
 SUNDelta::"usage"= "SUNDelta[a, b] is the Kronecker-delta for SU(N) with color
-indices a and b.";
+indices a and b in the adjoint representation.";
+
+SUNFDelta::"usage"= "SUNFDelta[a, b] is the Kronecker-delta for SU(N) with color
+indices a and b in the fundamental representation.";
 
 SUNF::"usage"=
 "SUNF[a, b, c] are the structure constants of SU(N).
 SUNF[a, b, c, d] is a shorthand notation for SUNF[a,b,i] SUNF[i,c,d]."
 
 SUNIndex::"usage"=
-"SUNIndex[a] is an SU(N) index. If the argument is an integer
+"SUNIndex[a] is an SU(N) index in the adjoint representation. If the argument is an integer
 SUNIndex[a] turns into ExplicitSUNIndex[a].";
+
+SUNFIndex::"usage"=
+"SUNFIndex[a] is an SU(N) index in the fundamental representation. If the argument is an integer
+SUNIndex[a] turns into ExplicitSUNFIndex[a].";
 
 SUNN::"usage" =
 "SUNN denotes the number of colors.
@@ -447,8 +465,12 @@ Trick[SUNDelta[a, a]] yields (SUNN^2 -1).";
 (* :Summary: SUNN = the N of SU(N) *)
 
 SUNT::"usage"=
-"SUNT[a] is the SU(N) T_a generator in
-the fundamental representation."
+"SUNT[a] is the SU(N) T^a generator in
+the fundamental representation. The fundamental indices are implicit"
+
+SUNTF::"usage"=
+"SUNT[{a},i,j] is the SU(N) T^a_ij generator in
+the fundamental representation. The fundamental indices i and j are explicit"
 
 Tf::"usage" =
 "Tf is a group constant (sometimes called TR, as in eq. (2.5.133) in T. Muta,
@@ -533,15 +555,19 @@ Protect[Conjugate];
 SetAttributes[DiracGamma, Constant];
 SetAttributes[ExplicitLorentzIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
+SetAttributes[ExplicitSUNFIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[LorentzIndex, Constant];
 SetAttributes[Momentum, Constant];
 SetAttributes[Pair, Orderless];
 SetAttributes[SD, Orderless];
+SetAttributes[SDF, Orderless];
 SetAttributes[SP, Orderless];
 SetAttributes[SPE, Orderless];
 SetAttributes[SPD, Orderless];
 SetAttributes[SUNDelta, Orderless];
+SetAttributes[SUNFDelta, Orderless];
 SetAttributes[SUNIndex, {Constant, Flat, OneIdentity}];
+SetAttributes[SUNFIndex, {Constant, Flat, OneIdentity}];
 
 If[FreeQ[$NonComm, DiracSigma] && Head[$NonComm]===List,
    AppendTo[$NonComm, DiracSigma]];
@@ -864,8 +890,15 @@ ExplicitLorentzIndex /:
 ExplicitSUNIndex/:
 SUNIndex[i_ExplicitSUNIndex]:= ExplicitSUNIndex[i];
 
+ExplicitSUNFIndex/:
+SUNFIndex[i_ExplicitSUNFIndex]:= ExplicitSUNFIndex[i];
+
    ExplicitSUNIndex /:
    MakeBoxes[ ExplicitSUNIndex[p_], TraditionalForm
+            ] := p;
+
+ExplicitSUNFIndex /:
+   MakeBoxes[ ExplicitSUNFIndex[p_], TraditionalForm
             ] := p;
 
 ff[{y_,z_}] := SequenceForm["[",y^2, "-", z^2,"]"];
@@ -1810,6 +1843,10 @@ Tf /: MakeBoxes[Tf  ,TraditionalForm] := SubscriptBox["T","f"];
 
 SD /:
 MakeBoxes[SD[a_, b_], TraditionalForm] :=
+    SuperscriptBox["\[Delta]", Tbox[a,b]];
+
+SDF /:
+MakeBoxes[SDF[a_, b_], TraditionalForm] :=
     SubscriptBox["\[Delta]", Tbox[a,b]];
 
 SmallDelta /: MakeBoxes[SmallDelta, TraditionalForm] := "\[Delta]";
@@ -1961,6 +1998,9 @@ SUNDelta /:
    MakeBoxes[SUNDelta[a_, b_], TraditionalForm ] :=
    SuperscriptBox["\[Delta]", Tbox[a,b]]
 
+SUNFDelta /:
+   MakeBoxes[SUNFDelta[a_, b_], TraditionalForm ] :=
+   SubscriptBox["\[Delta]", Tbox[a,b]]
 
 HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] := 0 /;
          (Head[x] === SUNIndex) && FreeQ[x, Pattern] &&
@@ -2006,8 +2046,14 @@ Tbox[a__] :=
 
 SUNIndex[i_Integer]:= ExplicitSUNIndex[i];
 
+SUNFIndex[i_Integer]:= ExplicitSUNFIndex[i];
+
 SUNIndex /:
    MakeBoxes[ SUNIndex[p_], TraditionalForm
+            ] := ToBoxes[p, TraditionalForm];
+
+SUNFIndex /:
+   MakeBoxes[ SUNFIndex[p_], TraditionalForm
             ] := ToBoxes[p, TraditionalForm];
 
 
@@ -2025,6 +2071,17 @@ SUNT /:
             SUNT[a_,b__], TraditionalForm
            ] := RowBox[ Map[SuperscriptBox["T",
                ToBoxes[#, TraditionalForm]]&, {a, b}] ];
+
+SUNTF /: MakeBoxes[SUNTF[{a_}, b_, c_], TraditionalForm] :=
+  SubsuperscriptBox["T", TBox[b, c], ToBoxes[a, TraditionalForm]];
+
+SUNTF /: MakeBoxes[SUNTF[{a1_, a2__}, b_, c_], TraditionalForm] :=
+  SubscriptBox[
+   RowBox[Join[{"("},
+     Map[SuperscriptBox["T", ToBoxes[#, TraditionalForm]] &, {a1,
+       a2}], {")"}]], TBox[b, c]];
+
+SUNTF[a_,b_,c_]/;Head[a]=!=List:= SUNTF[{a},b,c];
 
 initialDownValues = DownValues[Pair];
 

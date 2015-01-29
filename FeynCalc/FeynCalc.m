@@ -555,7 +555,7 @@ $Color       = False;
 $Covariant = False;
 
 $FCS = {"FAD", "FV", "FVD", "FVE", "GA","GAD", "GAE" , "GA5", "GS",
-          "GSD", "GSE", "LC", "LCD", "MT","MTD","MTE", "SD", "SOD",
+          "GSD", "GSE", "LC", "LCD", "MT","MTD","MTE", "SD", "SDF", "SOD",
           "SP", "SPC", "SPD", "SPE", "SPL", "FCI", "FCE", "FI",
           "FC", "GGV", "GP", "QGV", "QO", "FDr", "CDr"
          };

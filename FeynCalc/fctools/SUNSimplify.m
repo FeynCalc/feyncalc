@@ -64,10 +64,14 @@ spinor                   = MakeContext["CoreObjects","Spinor"];
 SUND                     = MakeContext["CoreObjects","SUND"];
 SUNDelta                 = MakeContext["CoreObjects","SUNDelta"];
 SUNDeltaContract         = MakeContext["SUNDeltaContract"];
+SUNFDelta                 = MakeContext["CoreObjects","SUNFDelta"];
 SUNIndex                 = MakeContext["CoreObjects","SUNIndex"];
+SUNFIndex                 = MakeContext["CoreObjects","SUNFIndex"];
 SUNF                     = MakeContext["CoreObjects","SUNF"];
+SUNFSimplify             = MakeContext["SUNFSimplify"];
 SUNNToCACF               = MakeContext["CoreOptions","SUNNToCACF"];
 sunt                     = MakeContext["CoreObjects","SUNT"];
+SUNTF                     = MakeContext["CoreObjects","SUNTF"];
 suntrace                 = MakeContext["SUNTrace"];
 SUNN                     = MakeContext["CoreObjects","SUNN"];
 
@@ -302,9 +306,10 @@ sft = Explicit /. {opts} /. Options[SUNSimplify];
 jac = SUNFJacobi /. {opts} /. Options[SUNSimplify];
 suntraceoption = suntrace /. {opts} /. Options[SUNSimplify];
 If[Head[temp] === Times,
-   tfac = Select[temp,  freeq2[#, {SUNIndex, SUNN, CA, CF}]&];
-   temp = Select[temp, !freeq2[#, {SUNIndex, SUNN, CA, CF}]&];
+   tfac = Select[temp,  freeq2[#, {SUNIndex, SUNFIndex, SUNN, CA, CF}]&];
+   temp = Select[temp, !freeq2[#, {SUNIndex, SUNFIndex, SUNN, CA, CF}]&];
   ];
+If[!FreeQ[temp, SUNFIndex], temp=SUNFSimplify[temp, SUNNToCACF->af, Explicit->sft];];
 temp = temp /. SUNDelta -> SUNDeltaContract/.
        SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
 If[(!FreeQ[temp, SUNIndex]) || (!FreeQ[temp, SUNN]) ||
