@@ -1954,12 +1954,12 @@ SUND[a_,b_,c_, opt___Rule] :=
 
 SUND /:
 MakeBoxes[SUND[a_, b_,c_, ___Rule], TraditionalForm] :=
-    SubscriptBox["d", Tbox[a,b,c]]
+    SuperscriptBox["d", Tbox[a,b,c]]
 
 
 SUNDelta /:
    MakeBoxes[SUNDelta[a_, b_], TraditionalForm ] :=
-   SubscriptBox["\[Delta]", Tbox[a,b]]
+   SuperscriptBox["\[Delta]", Tbox[a,b]]
 
 
 HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] := 0 /;
@@ -2001,7 +2001,7 @@ Tbox[a__] :=
    SUNF /:
    MakeBoxes[
              SUNF[a_,b_,c__], TraditionalForm
-            ] := SubscriptBox@@{"f", Tbox[a,b,c]};
+            ] := SuperscriptBox@@{"f", Tbox[a,b,c]};
 
 
 SUNIndex[i_Integer]:= ExplicitSUNIndex[i];
@@ -2018,12 +2018,12 @@ SUNN /:
 
 SUNT /:
   MakeBoxes[ SUNT[a_], TraditionalForm] :=
-    SubscriptBox["T", ToBoxes[a, TraditionalForm]];
+    SuperscriptBox["T", ToBoxes[a, TraditionalForm]];
 
 SUNT /:
   MakeBoxes[
             SUNT[a_,b__], TraditionalForm
-           ] := RowBox[ Map[SubscriptBox["T",
+           ] := RowBox[ Map[SuperscriptBox["T",
                ToBoxes[#, TraditionalForm]]&, {a, b}] ];
 
 initialDownValues = DownValues[Pair];
