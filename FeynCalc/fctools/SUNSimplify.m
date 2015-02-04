@@ -153,7 +153,7 @@ noint[x___] :=
     Not[Or @@
         Join[IntegerQ /@ {x}, IntegerQ /@
   ({x} /. {SUNIndex -> Identity,
-          HighEnergyPhysics`qcd`CoreObjects`ExplicitSUNIndex -> Identity})]];
+          HighEnergyPhysics`FeynCalc`CoreObjects`ExplicitSUNIndex -> Identity})]];
 
 subst = { suI[sunt[SUNIndex[ii_]] ff_] :>
            ( (sam[ii, uh[]]; (sunt[SUNIndex[ii]] (ff /. suI -> Identity)) /.
