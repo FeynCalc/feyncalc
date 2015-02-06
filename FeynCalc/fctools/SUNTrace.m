@@ -26,7 +26,7 @@ fci := fci =  MakeContext["FeynCalcInternal"];
 
 SUNT = MakeContext["CoreObjects","SUNT"];
 SUNF = MakeContext["CoreObjects","SUNF"];
-SUND = MakeContext["CoreObjects","SUNF"];
+SUND = MakeContext["CoreObjects","SUND"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 SUNDelta = MakeContext["CoreObjects","SUNDelta"];
 sunn := sunn = MakeContext["CoreObjects","SUNN"];
