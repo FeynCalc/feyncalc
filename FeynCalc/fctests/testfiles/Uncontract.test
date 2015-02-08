@@ -13,25 +13,34 @@
 (* ------------------------------------------------------------------------ *)
 
 fcstUncontract = {
-{"fcstUncontract-ID1","(Uncontract[LeviCivita[mu, nu][p, q], p] //FCRenameDummyIndices) /. {$AL[_] -> rho}","Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], Momentum[q]]*Pair[LorentzIndex[rho], Momentum[p]]"},
-{"fcstUncontract-ID2","(Uncontract[DiracSlash[p], p, Pair -> All] //
-   FCRenameDummyIndices) /. {$AL[_] -> mu}","DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[mu], Momentum[p]]"},
-{"fcstUncontract-ID3","(Uncontract[DiracSlash[p], p] // FCRenameDummyIndices) /. {$AL[_] ->
-   mu}","DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[mu], Momentum[p]]"},
-{"fcstUncontract-ID4","(Uncontract[LeviCivita[mu, nu][p, q], p,
-   q]) /. {Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[a_],
-     LorentzIndex[b_]]*Pair[LorentzIndex[b_], Momentum[q]]*
-    Pair[LorentzIndex[a_], Momentum[p]] ->
-   Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
-     LorentzIndex[sigma]]*Pair[LorentzIndex[sigma], Momentum[q]]*
-    Pair[LorentzIndex[rho], Momentum[p]]}","Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[sigma]]*Pair[LorentzIndex[rho], Momentum[p]]*
- Pair[LorentzIndex[sigma], Momentum[q]]"},
-{"fcstUncontract-ID5","Uncontract[SP[p, w] , p]1","Pair[Momentum[p], Momentum[w]]"},
+{"fcstUncontract-ID1","(Uncontract[LeviCivita[mu, nu][p, q], p] //FCRenameDummyIndices) /. {$AL[_] -> rho}",
+	"Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], Momentum[q]]*Pair[LorentzIndex[rho], Momentum[p]]"},
+{"fcstUncontract-ID2","(Uncontract[DiracSlash[p], p, Pair -> All] // FCRenameDummyIndices) /. {$AL[_] -> mu}",
+   "DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstUncontract-ID3","(Uncontract[DiracSlash[p], p] // FCRenameDummyIndices) /. {$AL[_] -> mu}",
+	"DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstUncontract-ID4","(Uncontract[LeviCivita[mu, nu][p, q], p, q]) /. {Eps[LorentzIndex[mu],
+	LorentzIndex[nu], LorentzIndex[a_], LorentzIndex[b_]]*Pair[LorentzIndex[b_], Momentum[q]]*
+    Pair[LorentzIndex[a_], Momentum[p]] ->  Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
+	LorentzIndex[sigma]]*Pair[LorentzIndex[sigma], Momentum[q]]* Pair[LorentzIndex[rho], Momentum[p]]}",
+	"Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[sigma]]*Pair[LorentzIndex[rho], Momentum[p]]*
+ 	Pair[LorentzIndex[sigma], Momentum[q]]"},
+{"fcstUncontract-ID5","Uncontract[SP[p, w] , p]1",
+	"Pair[Momentum[p], Momentum[w]]"},
 {"fcstUncontract-ID6","(Uncontract[SP[p, w] , p, Pair -> All] //
-   FCRenameDummyIndices) /. {$AL[_] -> mu}","Pair[LorentzIndex[mu], Momentum[p]]*Pair[LorentzIndex[mu], Momentum[w]]"},
-{"fcstUncontract-ID7","Uncontract[SP[p, w]^2 , p, Pair -> All] /. {Pair[LorentzIndex[a_], Momentum[p]]*Pair[LorentzIndex[a_], Momentum[w]]*
-    Pair[LorentzIndex[b_], Momentum[p]]* Pair[LorentzIndex[b_], Momentum[w]] -> Pair[LorentzIndex[mu], Momentum[p]]*
-    Pair[LorentzIndex[mu], Momentum[w]]* Pair[LorentzIndex[nu], Momentum[p]]* Pair[LorentzIndex[nu], Momentum[w]]}","Pair[LorentzIndex[mu], Momentum[p]]*Pair[LorentzIndex[mu], Momentum[w]]*Pair[LorentzIndex[nu], Momentum[p]]*
- Pair[LorentzIndex[nu], Momentum[w]]"}
-
+   	FCRenameDummyIndices) /. {$AL[_] -> mu}",
+   	"Pair[LorentzIndex[mu], Momentum[p]]*Pair[LorentzIndex[mu], Momentum[w]]"},
+{"fcstUncontract-ID7","Uncontract[SP[p, w]^2 , p, Pair -> All] /. {Pair[LorentzIndex[a_],
+	Momentum[p]]*Pair[LorentzIndex[a_], Momentum[w]]* Pair[LorentzIndex[b_], Momentum[p]]*
+	Pair[LorentzIndex[b_], Momentum[w]] -> Pair[LorentzIndex[mu], Momentum[p]]* Pair[LorentzIndex[mu],
+	Momentum[w]]* Pair[LorentzIndex[nu], Momentum[p]]* Pair[LorentzIndex[nu], Momentum[w]]}",
+	"Pair[LorentzIndex[mu], Momentum[p]]*Pair[LorentzIndex[mu], Momentum[w]]*Pair[LorentzIndex[nu], Momentum[p]]*
+ 	Pair[LorentzIndex[nu], Momentum[w]]"},
+{"fcstUncontract-ID8","MatchQ[Pair[Momentum[p], Momentum[Polarization[p, I]]] //
+	Uncontract[#, p, Pair -> {p}] &, Pair[LorentzIndex[a_], LorentzIndex[b_]]*
+	Pair[LorentzIndex[a_], Momentum[p]]*Pair[LorentzIndex[b_], Momentum[Polarization[p, I]]]]","True"},
+{"fcstUncontract-ID9","MatchQ[-Eps[LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si],
+	Momentum[Polarization[p, I]]] // Uncontract[#,p] &,
+	-(Eps[LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si], LorentzIndex[a_]]*
+	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]])]","True"}
 };
