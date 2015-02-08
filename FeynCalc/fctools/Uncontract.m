@@ -93,6 +93,21 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                     )
                     } /. eeps -> Eps /. TIMES -> Times;
      ];
+
+   If[!FreeQ[nex, DiracGamma],
+      nex = nex /. DiracGamma -> dirg;
+      nex = nex //. dirg[Momentum[(c: q | Polarization[q,__]),d___],b___] :>
+                    (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
+                     Pair[Momentum[c,If[dim===Automatic,seq[d],dim]], li] *
+                     dirg[lidr[li],If[dim===Automatic,seq[d],dim]]
+                    ) /. dirg -> DiracGamma;
+(*
+Global`NEX=nex;
+*)
+      nex = DotSimplify[nex,Expanding -> False];
+     ];
+
+
       If[par=!={} && Length[par]>0 && Head[par]===List,
          nex = nex /. Pair[aa__/;!FreeQ2[{aa}, par]
                           ]^n_Integer?Positive :> (*Uncontract denominators also.
@@ -118,18 +133,7 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                       Pair[Momentum[pe,If[dim===Automatic,seq[d],dim]],lidr[li]])/;MemberQ[par,pe]
                      } /. times -> Times;
 
-   If[!FreeQ[nex, DiracGamma],
-      nex = nex /. DiracGamma -> dirg;
-      nex = nex //. dirg[Momentum[(c: q | Polarization[q,__]),d___],b___] :>
-                    (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
-                     Pair[Momentum[c,If[dim===Automatic,seq[d],dim]], li] *
-                     dirg[lidr[li],If[dim===Automatic,seq[d],dim]]
-                    ) /. dirg -> DiracGamma;
-(*
-Global`NEX=nex;
-*)
-      nex = DotSimplify[nex,Expanding -> False];
-     ];
+
 
 Global`NEX=nex;
          If[!FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[(q | Polarization[q,__]),___],___]],
