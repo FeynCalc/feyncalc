@@ -53,21 +53,21 @@ Options[Uncontract] = {Dimension -> Automatic (*D*) (*Change 6/10-2002. F.Orella
 Uncontract[x_Plus, q__] := Map[Uncontract[#,q]&, x];
 Uncontract[x_List, q__] := Map[Uncontract[#,q]&, x];
 
-Uncontract[x_, q1__, q2_ /; Head[q2] =!= Rule, opt___Rule
+Uncontract[x_, q1__, q2:Except[_?OptionQ], opt:OptionsPattern[]
         ] := Uncontract[Uncontract[x,q2,opt(*bug fix. F.Orellana.21/9-2002*)],q1, opt];
 
-Uncontract[ex_, q_ /; Head[q]=!=Rule, opt___Rule
-        ] := Block[{exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,
+Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]
+        ] := Block[{exp,eeps,nex,li,li1,li2,dim,par,dre,dummy,inc,
                     a$AL,dr, lidr},
-   dre = DimensionalReduction/.{opt} /. Options[Uncontract];
+   dre = OptionValue[DimensionalReduction];
+   par = OptionValue[Pair];
    lidr[z_] := If[dre === True, z/.{LorentzIndex[aa_,_]:>LorentzIndex[aa]/.
                                     Momentum[bb_,_]  :> Momentum[bb]
                                    },
                   z
                  ];
    exp = FeynCalcInternal[ex];
-   par = Pair /.      {opt} /. Options[Uncontract];
-   If[(Unique /. {opt} /. Options[Uncontract]) === True,
+   If[OptionValue[Unique] === True,
       a$AL = Unique[$AL], a$AL = $AL
      ];
    If[par===All,
@@ -78,7 +78,7 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
    (Head[dummy exp] =!= Times),
    exp,
    nex = exp;
-   dim = Dimension /. {opt} /. Options[Uncontract];
+   dim = OptionValue[Dimension];
    If[FreeQ[nex, a$AL], inc = 0,
       inc = (Max @@ Map[First, Cases2[nex, a$AL]]);
      ];
