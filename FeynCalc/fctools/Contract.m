@@ -23,7 +23,12 @@ Contract[exp1, exp2] contracts (exp1*exp2), where exp1 and exp2 may be
 larger products of sums of  metric tensors and 4-vectors.
 Contract[exp1, exp2] should be used for polarization sums, where
 exp2 should be the product (or expanded sum) of the polarization
-sums for the vector bosons.";
+sums for the vector bosons. \n \n
+Contract is also an option for DoPolarizationSums. When set to True,
+Contract is applied to the amplitude immediately after replacing
+polarization vectors by the corresponding sum. This usually improves
+performance.";
+
 
 Contract2::"usage"=
 "Contract2[expr] (still experimental).";

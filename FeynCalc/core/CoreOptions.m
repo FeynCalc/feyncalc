@@ -73,9 +73,9 @@ factored, using Factor2. If set to any function f, this function
 will be used.";
 
 ExtraFactor::"usage"=
-"ExtraFactor is an option for SquareAmplitude and FermionSpinSum.
-The setting ExtraFactor -> fa  multiplies the whole amplitude with the
-factor fa before squaring.";
+"ExtraFactor is an option for SquareAmplitude, FermionSpinSum and
+DoPolarizationSums. The setting ExtraFactor -> fa
+multiplies the whole amplitude with the factor fa before squaring.";
 
 Factorout::"usage" = "Factorout is an option for OPEInt and OPEIntegrate.";
 
