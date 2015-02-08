@@ -331,9 +331,9 @@ as DiracSlash[Polarization[k]].
 The internal representation for a polarization vector e1
 corresponding to a boson with four momentum k is:
 Momentum[ Polarization[ k, I ] ].
-With this notation transversality of polarization vectors is
-provided, i.e.  Pair[ Momentum[k],
-Momentum[ Polarization[k, I] ] ] yields 0.
+Transversality of polarization vectors is
+can be controlled via the option 'Transversality', i.e.  Pair[ Momentum[k],
+Momentum[ Polarization[k, I,Transversality->True] ] ] yields 0.
 Polarization[k,-I] denotes the complex conjugate polarization
 originating from application of the ComplexConjugate function.\n
 Polarization is also an option.
