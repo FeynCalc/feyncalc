@@ -32,6 +32,7 @@ FourVector = MakeContext["CoreObjects","FourVector"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
+Polarization = MakeContext["CoreObjects","Polarization"];
 PropagatorDenominator = MakeContext["CoreObjects","PropagatorDenominator"];
 
 MakeContext[
@@ -84,12 +85,13 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
    If[!FreeQ[nex,Eps],
       nex = nex /. Eps -> eeps;
       nex = nex /. eeps[aaa__]^2 :> TIMES[eeps[aaa],eeps[aaa]];
-      nex = nex //. {eeps[a___,Momentum[q,d___],b___] :>
+      nex = nex //. {eeps[a___,Momentum[(c: q | Polarization[q,__]),d___],b___] :>
                     (*Changed dim to If[...]. F.Orellana. 6/10-2002*)
                     (li=LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim](*dim*)];
-                     Pair[Momentum[q,If[dim===Automatic,seq[d],dim](*dim*)], li] *
+                     Pair[Momentum[c,If[dim===Automatic,seq[d],dim](*dim*)], li] *
                      eeps[a,lidr[li],b]
-                    )} /. eeps -> Eps /. TIMES -> Times;
+                    )
+                    } /. eeps -> Eps /. TIMES -> Times;
      ];
       If[par=!={} && Length[par]>0 && Head[par]===List,
          nex = nex /. Pair[aa__/;!FreeQ2[{aa}, par]
@@ -98,29 +100,29 @@ If[(par === {} && FreeQ2[exp, {Eps, DiracGamma}]) ||
                                                       (*Reverted, RM 06/22-2011 *)
                Apply[times, Table[Pair[aa], {j,Abs[n]}]]^Sign[n];
          If[MemberQ[par, q],
-            nex = nex //. Pair[Momentum[q,d___], Momentum[q,___]] :>
+            nex = nex //. Pair[Momentum[(c1: q | Polarization[q,__]),d___], Momentum[(c2: q | Polarization[q,__]),___]] :>
                           (li1 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]];
                            li2 = LorentzIndex[a$AL[inc=inc+1], If[dim===Automatic,seq[d],dim]];
-                           Pair[Momentum[q, If[dim===Automatic,seq[d],dim]], li1] *
+                           Pair[Momentum[c1, If[dim===Automatic,seq[d],dim]], li1] *
 (* das ist vielleicht ein Bloedsinn mit dieser dimensionalen Reduktion:
   HIER darf man li1 und li2 nicht 4-dimensional setzen
 *)
-                           Pair[Momentum[q, If[dim===Automatic,seq[d],dim]], li2] *Pair[li1, li2]
+                           Pair[Momentum[c2, If[dim===Automatic,seq[d],dim]], li2] *Pair[li1, li2]
                           );
             par = SelectFree[par, q];
            ];
 
-         nex = nex //.{Pair[Momentum[q,d___], Momentum[pe_,___]
+         nex = nex //.{Pair[Momentum[(c: q | Polarization[q,__]),d___], Momentum[pe_,___]
                           ] :> (li=LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
-                      Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *
+                      Pair[Momentum[c,If[dim===Automatic,seq[d],dim]], li] *
                       Pair[Momentum[pe,If[dim===Automatic,seq[d],dim]],lidr[li]])/;MemberQ[par,pe]
                      } /. times -> Times;
 
    If[!FreeQ[nex, DiracGamma],
       nex = nex /. DiracGamma -> dirg;
-      nex = nex //. dirg[Momentum[q,d___],b___] :>
+      nex = nex //. dirg[Momentum[(c: q | Polarization[q,__]),d___],b___] :>
                     (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
-                     Pair[Momentum[q,If[dim===Automatic,seq[d],dim]], li] *
+                     Pair[Momentum[c,If[dim===Automatic,seq[d],dim]], li] *
                      dirg[lidr[li],If[dim===Automatic,seq[d],dim]]
                     ) /. dirg -> DiracGamma;
 (*
@@ -130,10 +132,10 @@ Global`NEX=nex;
      ];
 
 Global`NEX=nex;
-         If[!FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[q,___],___]],
-            nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[q,d___],b___] :>
+         If[!FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[(q | Polarization[q,__]),___],___]],
+            nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[(c: q | Polarization[q,__]),d___],b___] :>
                             (li = LorentzIndex[a$AL[inc=inc+1],If[dim===Automatic,seq[d],dim]];
-                             tf[a, li, b] Pair[Momentum[q,If[dim===Automatic,seq[d],dim]],lidr[li]]
+                             tf[a, li, b] Pair[Momentum[c,If[dim===Automatic,seq[d],dim]],lidr[li]]
                             )
                           }
    ];
