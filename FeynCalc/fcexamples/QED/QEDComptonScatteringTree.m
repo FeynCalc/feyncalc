@@ -68,7 +68,7 @@ PolarizationVector[_, x_,y_]:>PolarizationVector[x,y,Transversality->True]}
 SetMandelstam[s, t, u, p1, k1, -p2, -k2, ME, 0, ME, 0];
 sqAmpCompton =
  (Total[ampCompton] Total[(ComplexConjugate[ampCompton]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//Expand//
-DoPolarizationSums//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2, SpinorCollect -> True]&//
+DoPolarizationSums[#,k1,0,ExtraFactor -> 1/2]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2, SpinorCollect -> True]&//
 ReplaceAll[#, DiracTrace[x___] :> DiracTrace[x, DiracTraceEvaluate -> True]] & // Contract//
 Simplify//TrickMandelstam[#,{s,t,u,2ME^2}]&//Simplify
 

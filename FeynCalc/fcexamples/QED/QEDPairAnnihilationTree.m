@@ -69,7 +69,7 @@ PolarizationVector[_, x_,y_]:>PolarizationVector[x,y,Transversality->True]}
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, 0, 0];
 sqAmpPairAnnihilation =
  (Total[ampPairAnnihilation] Total[(ComplexConjugate[ampPairAnnihilation]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//Expand//
-DoPolarizationSums//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2, SpinorCollect -> True]&//
+DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2, SpinorCollect -> True]&//
 ReplaceAll[#, DiracTrace[x___] :> DiracTrace[x, DiracTraceEvaluate -> True]] & // Contract//
 Simplify//TrickMandelstam[#,{s,t,u,2ME^2}]&//Simplify
 
