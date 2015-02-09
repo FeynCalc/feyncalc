@@ -1976,23 +1976,15 @@ SpinorVBar /:
    MakeBoxes[SpinorVBar[p_,0,___], TraditionalForm] :=
    Tbox[OverBar["v"],"(",p,")"];
 
-(* Added check for integers - noint. F.Orellana, 24/9-2000 *)
-noint[x___] :=
-    Not[Or @@
-        Join[IntegerQ /@ {x}, IntegerQ /@
-  ({x} /. {SUNIndex -> Identity, ExplicitSUNIndex -> Identity})]];
+SUND[a_SUNIndex,a_SUNIndex, b:Except[_?OptionQ], OptionsPattern[]] :=
+    0;
 
-(*Added _SUNIndex to allow SUND in FeynArts couplings. F.Orellana. 4/7-2003*)
-
-SUND[a_SUNIndex,a_SUNIndex, _, ___Rule] := 0 /; noint[a];
-SUND[a_,b_,c_, opt___Rule] :=
- 2 SUNTrace[SUNT[a,b,c]] + 2 SUNTrace[SUNT[b,a,c]] /;
-  (Explicit /. {opt} /. Options[SUND]) === True;
+SUND[a_,b_,c:Except[_?OptionQ], OptionsPattern[]] :=
+    2 SUNTrace[SUNT[a,b,c]] + 2 SUNTrace[SUNT[b,a,c]] /; OptionValue[Explicit];
 
 SUND /:
 MakeBoxes[SUND[a_, b_,c_, ___Rule], TraditionalForm] :=
     SuperscriptBox["d", Tbox[a,b,c]]
-
 
 SUNDelta /:
    MakeBoxes[SUNDelta[a_, b_], TraditionalForm ] :=
