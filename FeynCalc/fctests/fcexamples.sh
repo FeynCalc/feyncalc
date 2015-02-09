@@ -17,6 +17,15 @@ math -nopromt -script ../fcexamples/QED/QEDOnePhotonTadpoleOneLoop.m
 math -nopromt -script ../fcexamples/QED/QEDThreePhotonDiagramsOneLoop.m
 
 #QCD Examples
+math -nopromt -script ../fcexamples/QCD/QCDQiQjToQiQjTree.m
+math -nopromt -script ../fcexamples/QCD/QCDQiQBarjToQiQBarjTree.m
+math -nopromt -script ../fcexamples/QCD/QCDQiQiToQiQiTree.m
+math -nopromt -script ../fcexamples/QCD/QCDQiQBariToQjQBarjTree.m
+math -nopromt -script ../fcexamples/QCD/QCDQiQBariToQiQBariTree.m
+math -nopromt -script ../fcexamples/QCD/QCDQiQBariToGGTree.m
+math -nopromt -script ../fcexamples/QCD/QCDGGToQiQBariTree.m
+math -nopromt -script ../fcexamples/QCD/QCDGQiToGQi.m
+math -nopromt -script ../fcexamples/QCD/QCDGGToGGTree.m
 math -nopromt -script ../fcexamples/QCD/QCDQuarkSelfEnergyOneLoop.m
 math -nopromt -script ../fcexamples/QCD/QCDGluonSelfEnergyOneLoop.m
 math -nopromt -script ../fcexamples/QCD/QCDGhostSelfEnergyTwoLoops.m
