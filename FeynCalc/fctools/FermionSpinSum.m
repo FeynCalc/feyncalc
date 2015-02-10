@@ -29,28 +29,28 @@ SpinorCollect::"usage" =
 
 Begin["`Private`"];
 
-Collect2      = MakeContext["Collect2"];
-Contract      = MakeContext["Contract"];
-DiracGamma    = MakeContext["CoreObjects","DiracGamma"];
-DiracTrace    = MakeContext["DiracTrace"];
-Eps           = MakeContext["CoreObjects","Eps"];
-Expanding     = MakeContext["CoreOptions","Expanding"];
-ExtraFactor   = MakeContext["CoreOptions","ExtraFactor"];
-Factor2       = MakeContext["Factor2"];
-FreeQ2        = MakeContext["FreeQ2"];
-Isolate       = MakeContext["Isolate"];
-IsolateNames  = MakeContext["CoreOptions","IsolateNames"];
-IsolateSplit  = MakeContext["IsolateSplit"];
-LorentzIndex  = MakeContext["CoreObjects","LorentzIndex"];
-Momentum      = MakeContext["CoreObjects","Momentum"];
-Spinor        = MakeContext["CoreObjects","Spinor"];
-SpinPolarizationSum =
-                MakeContext["CoreOptions","SpinPolarizationSum"];
-SUNSimplify   = MakeContext["SUNSimplify"];
-DiracOrder    = MakeContext["DiracOrder"];
-DiracSimplify = MakeContext["DiracSimplify"];
-DotSimplify   = MakeContext["DotSimplify"];
-TR            = MakeContext["TR"];
+Collect2            = MakeContext["Collect2"];
+Contract            = MakeContext["Contract"];
+DiracGamma          = MakeContext["CoreObjects","DiracGamma"];
+DiracOrder          = MakeContext["DiracOrder"];
+DiracSimplify       = MakeContext["DiracSimplify"];
+DiracTrace          = MakeContext["DiracTrace"];
+DotSimplify         = MakeContext["DotSimplify"];
+Eps                 = MakeContext["CoreObjects","Eps"];
+Expanding           = MakeContext["CoreOptions","Expanding"];
+ExtraFactor         = MakeContext["CoreOptions","ExtraFactor"];
+FCI                 =  MakeContext["FeynCalcInternal"];
+Factor2             = MakeContext["Factor2"];
+FreeQ2              = MakeContext["FreeQ2"];
+Isolate             = MakeContext["Isolate"];
+IsolateNames        = MakeContext["CoreOptions","IsolateNames"];
+IsolateSplit        = MakeContext["IsolateSplit"];
+LorentzIndex        = MakeContext["CoreObjects","LorentzIndex"];
+Momentum            = MakeContext["CoreObjects","Momentum"];
+SUNSimplify         = MakeContext["SUNSimplify"];
+SpinPolarizationSum = MakeContext["CoreOptions","SpinPolarizationSum"];
+Spinor              = MakeContext["CoreObjects","Spinor"];
+TR                  = MakeContext["TR"];
 
 (*FRH = FixedPoint[ReleaseHold, #]&;*)
 trsimp[a_. DiracGamma[_,___]] := 0 /; FreeQ[a, DiracGamma];
@@ -103,9 +103,7 @@ FermionSpinSum[expr_, OptionsPattern[]]:= (OptionValue[ExtraFactor] expr )/; Fre
 
 FermionSpinSum[expr_, opts:OptionsPattern[]] :=
     Block[ {spinPolarizationSum,spinorCollect,extraFactor,
-        spir,spir2,dirtri, nx, sufu },
-
-        nx = expr;
+        spir,spir2,dirtri, nx = FCI[expr], sufu },
 
 	    (* Parse options and warn about unrecognized options *)
         Catch[
