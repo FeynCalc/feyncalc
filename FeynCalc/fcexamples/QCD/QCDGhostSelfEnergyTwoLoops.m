@@ -38,10 +38,8 @@ $FAVerbose=0;
 (*Generate Feynman diagrams*)
 
 
-Paint[inserts =
-   InsertFields[
-    Rest@CreateTopologies[2, 1 -> 1,
-      ExcludeTopologies -> {Tadpoles}], {U[5]} -> {U[5]},
+Paint[inserts = InsertFields[Rest@CreateTopologies[2, 1 -> 1,
+    ExcludeTopologies -> {Tadpoles}], {U[5]} -> {U[5]},
     InsertionLevel -> Classes, GenericModel -> "FCQCDLorentz",
     Model -> "FCQCD"], ColumnsXRows -> {4, 2}, SheetHeader -> False,
   PaintLevel -> {Generic}, Numbering -> None];

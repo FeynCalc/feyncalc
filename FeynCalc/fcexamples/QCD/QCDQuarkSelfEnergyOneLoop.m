@@ -38,31 +38,20 @@ $FAVerbose=0;
 (*Generate Feynman diagrams*)
 
 
-Paint[diags =
-   InsertFields[
-    CreateTopologies[1, 1 -> 1,
-      ExcludeTopologies -> {Tadpoles}], {F[3,{1}]} -> {F[3,{1}]},
+Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1,
+    ExcludeTopologies -> {Tadpoles}], {F[3,{1}]} -> {F[3,{1}]},
     InsertionLevel -> {Classes}, GenericModel -> "Lorentz",
     Model -> "SMQCD",ExcludeParticles->{S[1],S[2],S[3],V[1],V[2],V[3]}], ColumnsXRows -> {1, 1},
-SheetHeader -> False,   Numbering -> None];
+    SheetHeader -> False,   Numbering -> None];
 
 
 (* ::Text:: *)
 (*Notice that we choose the prefactor to be 1/(2^D)*(Pi)^(D/2). This is because the 1/Pi^(D/2) piece of the general prefactor 1/(2Pi)^D goes into the definition of the loop integrals using Tarcer's notation. Furthermore, we do not fix the gauge but let the gauge parameter GaugeXi take arbitrary values.*)
 
 
-amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diags,
-     Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT, FourMomentum[Internal, 1] -> q,
-   FourMomentum[Outgoing, 1] -> p,
-   Index[Lorentz, x_] :>
-    LorentzIndex[ToExpression["Lor" <> ToString[x]]],
-   Index[Gluon, x_] :>
-    SUNIndex[ToExpression["Glu" <> ToString[x]]],
-SumOver[__]:>1, SUNT[a_,_,_]:>SUNT[a],MU->M,GaugeXi[g]->GaugeXi}
+amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &, Apply[List,
+    FCPrepareFAAmp[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},
+    PreFactor->1/((2^D)*(Pi)^(D/2))],UndoChiralSplittings->True]]]/.{SumOver[__]:>1,MU->M,GaugeXi[g]->GaugeXi}/.{OutMom1->p,LoopMom1->q}
 
 
 ampsEval=ChangeDimension[amps[[1]],D]//Contract//SUNSimplify//DiracSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse//FCI
@@ -86,10 +75,11 @@ quarSelfEnergy=I*ampsSing//Collect[#,M,Simplify]&
 
 
 (* ::Text:: *)
-(*We can compare this result to Eq. 2.5.138 in Foundations of QCD by T. Muto. Notice that the result in the book must be multiplied by (-1) due to the way how self-energy is defined there (c.f. Eq. 2.4.4 and Eq. 2.4.6). Furthermore, in the book the quark self-energy is multiplied by a unit matrix in the fundamental representation of SU(N). Our result contains it only implicitly, since SUNSimplify[SUNT[a,a]] gives just CF and the unit matrix is always understood.*)
+(*We can compare this result to Eq. 2.5.138 in Foundations of QCD by T. Muto. Notice that the result in the book must be multiplied by (-1) due to the way how self-energy is defined there (c.f. Eq. 2.4.4 and Eq. 2.4.6).*)
 
 
-quarSelfEnergyMuta=-(-Gstrong^2/(4Pi)^2 CF*(3+GaugeXi)(1/Epsilon)*M+GS[p]*Gstrong^2/(4Pi)^2*CF*GaugeXi*(1/Epsilon));
+quarSelfEnergyMuta=-(-Gstrong^2/(4Pi)^2 CF*(3+GaugeXi)(1/Epsilon)*M+GS[p]*Gstrong^2/(4Pi)^2*
+    CF*GaugeXi*(1/Epsilon))SDF[Col1,Col2]//FCI;
 Print["Check with Muta, Eq 2.5.138: ",
       If[Simplify[quarSelfEnergy-FCI[quarSelfEnergyMuta]]===0, "Correct.", "Mistake!"]];
 
@@ -102,6 +92,6 @@ ampsSingMassless=(ampsEval/.{M->0,TBI[x___]:>(-2)/(D-4)*prefactor,GaugeXi->1})//
 ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
 
 
-ampsSingMasslessPeskin=I*Gstrong^2/(4Pi)^2*GS[p]*CF*(1/Epsilon);
+ampsSingMasslessPeskin=I*Gstrong^2/(4Pi)^2*GS[p]*CF*(1/Epsilon)SDF[Col1,Col2]//FCI;
 Print["Check with Peskin and Schroeder, Eq 16.76: ",
       If[Simplify[ampsSingMassless-FCI[ampsSingMasslessPeskin]]===0, "Correct.", "Mistake!"]];

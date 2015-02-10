@@ -38,9 +38,8 @@ $FAVerbose = 0;
 
 
 topQiQBariToGG = CreateTopologies[0, 2 -> 2];
-diagsQiQBariToGG =
-  InsertFields[topQiQBariToGG, {F[3, {1}], -F[3, {1}]} -> {V[5],V[5]}, InsertionLevel -> {Classes},
-   Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
+diagsQiQBariToGG = InsertFields[topQiQBariToGG, {F[3, {1}], -F[3, {1}]} -> {V[5],V[5]},
+    InsertionLevel -> {Classes}, Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
 Paint[diagsQiQBariToGG, ColumnsXRows -> {3, 1}, Numbering -> None];
 
 
@@ -50,20 +49,10 @@ Paint[diagsQiQBariToGG, ColumnsXRows -> {3, 1}, Numbering -> None];
 
 ampQiQBariToGG =
  Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diagsQiQBariToGG,
-     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT,
-   FourMomentum[Outgoing, 1] -> k1, FourMomentum[Outgoing, 2] -> k2,
-   FourMomentum[Incoming, 1] -> p1, FourMomentum[Incoming, 2] -> p2,
-   DiracSpinor -> Spinor,Index[Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]]
-,Index[Gluon,x_]:>SUNIndex[ToExpression["Glu"<>ToString[x]]],
-Index[Colour,x_]:>SUNFIndex[ToExpression["Col"<>ToString[x]]],
-SumOver[__]:>1,MetricTensor->MT,PolarizationVector[_, x_, y_] :>
-PolarizationVector[x, y, Transversality->True], Conjugate[PolarizationVector][_, x_, y_] :>
-Conjugate[PolarizationVector[x, y, Transversality->True]]
-}/.{SUNT->SUNTF}
+    Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsQiQBariToGG,
+    Truncated -> False],UndoChiralSplittings->True]]]/.{SumOver[__]:>1,
+    Polarization[x_,y_]:>Polarization[x, y, Transversality->True]}/.{InMom1->p1,
+    InMom2->p2,OutMom1->k1,OutMom2->k2};
 
 
 (* ::Section:: *)
@@ -71,10 +60,11 @@ Conjugate[PolarizationVector[x, y, Transversality->True]]
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, MU, MU, 0, 0];
-sqAmpQiQBariToGG =(1/3^2)*
- (Total[ampQiQBariToGG] Total[(ComplexConjugate[ampQiQBariToGG]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
-SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2, SpinorCollect -> True]&//Contract//ReplaceAll[#,{DiracTrace->Tr,
-SUNN->3}]&//DoPolarizationSums[#,k1,k2]&//DoPolarizationSums[#,k2,k1]&//Simplify
+sqAmpQiQBariToGG =(1/3^2)(Total[ampQiQBariToGG]*
+    Total[(ComplexConjugate[ampQiQBariToGG]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//
+    SUNSimplify[#,Explicit->True,SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
+    Contract//ReplaceAll[#,{DiracTrace->Tr,SUNN->3}]&//DoPolarizationSums[#,k1,k2]&//
+    DoPolarizationSums[#,k2,k1]&//Simplify
 
 
 masslesssqAmpQiQBariToGG = TrickMandelstam[(sqAmpQiQBariToGG /. {MU -> 0})//Simplify,{s,t,u,0}]

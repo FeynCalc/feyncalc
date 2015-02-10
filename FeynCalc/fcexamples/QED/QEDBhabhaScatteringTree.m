@@ -38,10 +38,9 @@ $FAVerbose = 0;
 
 
 topBhabha = CreateTopologies[0, 2 -> 2];
-diagsBhabha =
-  InsertFields[topBhabha, {F[2, {1}], -F[2, {1}]} -> {F[
-      2, {1}], -F[2, {1}]}, InsertionLevel -> {Classes},
-   Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
+diagsBhabha = InsertFields[topBhabha, {F[2, {1}], -F[2, {1}]} ->
+    {F[ 2, {1}], -F[2, {1}]}, InsertionLevel -> {Classes},
+    Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
 Paint[diagsBhabha, ColumnsXRows -> {2, 1}, Numbering -> None];
 
 
@@ -49,16 +48,10 @@ Paint[diagsBhabha, ColumnsXRows -> {2, 1}, Numbering -> None];
 (*Obtain corresponding amplitudes*)
 
 
-ampBhabha =
- Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diagsBhabha,
-     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT,
-   FourMomentum[Outgoing, 1] -> k1, FourMomentum[Outgoing, 2] -> k2,
-   FourMomentum[Incoming, 1] -> p1, FourMomentum[Incoming, 2] -> p2,
-   DiracSpinor -> Spinor,Index[Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]]}
+ampBhabha = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
+    Apply[List,FCPrepareFAAmp[CreateFeynAmp[diagsBhabha,
+    Truncated -> False],UndoChiralSplittings->True]]]/.{
+    InMom1->p1,InMom2->p2,OutMom1->k1,OutMom2->k2}
 
 
 (* ::Section:: *)
@@ -67,9 +60,8 @@ ampBhabha =
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, ME, ME];
 sqAmpBhabha =
- (Total[ampBhabha] Total[(ComplexConjugate[ampBhabha]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//Contract//
-    FermionSpinSum[#, ExtraFactor -> 1/2^2, SpinorCollect -> True] & //
-    ReplaceAll[#, DiracTrace[x___] :> DiracTrace[x, DiracTraceEvaluate -> True]]&//Contract//Simplify
+    (Total[ampBhabha] Total[(ComplexConjugate[ampBhabha]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//
+    Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2] & //ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 
 
 masslessSqAmpBhabha = (sqAmpBhabha /. {ME -> 0})//Simplify

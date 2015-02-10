@@ -38,12 +38,10 @@ $FAVerbose=0;
 (*Generate Feynman diagrams*)
 
 
-Paint[diags =
-   InsertFields[
-    CreateTopologies[1, 1 -> 1 ,ExcludeTopologies->{Tadpoles}], {V[5]} -> {V[5]},
-    InsertionLevel -> {Classes}, GenericModel -> "Lorentz",Model->"SMQCD",
-ExcludeParticles->{S[1],S[2],S[3],V[2],V[3],U[1],U[2],U[3],F[4],U[4]}], ColumnsXRows -> {4, 1},
-SheetHeader -> False,   Numbering -> None];
+Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1 ,ExcludeTopologies->{Tadpoles}],
+    {V[5]} -> {V[5]}, InsertionLevel -> {Classes}, GenericModel -> "Lorentz",Model->"SMQCD",
+    ExcludeParticles->{S[1],S[2],S[3],V[2],V[3],U[1],U[2],U[3],F[4],U[4]}], ColumnsXRows -> {4, 1},
+    SheetHeader -> False,   Numbering -> None];
 
 
 (* ::Text:: *)
@@ -51,17 +49,9 @@ SheetHeader -> False,   Numbering -> None];
 
 
 amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diags,
-     Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT, FourMomentum[Internal, 1] -> q,MatrixTrace[x___]:>SUNTr[DiracTrace[x]],
-   FourMomentum[Outgoing, 1] -> p,
-	FourMomentum[Incoming, 1] -> p,
-   Index[Lorentz, x_] :>
-    LorentzIndex[ToExpression["Lor" <> ToString[x]]],MQU[Index[Generation, 3]]->MQ,GaugeXi[_]->GaugeXi,
-SUNF[a_,b_,c_,d_]:> ((SUNF[a,b, #] SUNF[#,c,d]) &[Unique[]]),SumOver[_,_,_]:>1,
-SumOver[_,_]:>1,SUNT[a_,b_,c_]:>SUNT[a]}
+    Apply[List, FCPrepareFAAmp[CreateFeynAmp[diags, Truncated -> True,
+    GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],UndoChiralSplittings->True]]]/.{SumOver[__]:>1,
+    MQU[Index[Generation, 3]]->MQ,GaugeXi[_]->GaugeXi}/.{InMom1->p,OutMom1->p,LoopMom1->q}
 
 
 (* ::Subsection:: *)
@@ -90,8 +80,9 @@ Print["Check with Muta, Eq. A.9: ",
 (*The quark loop*)
 
 
-ampQuarkLoopEval = amps[[2]]//ChangeDimension[#,D]&//ReplaceAll[#,DiracTrace->Tr]&//SUNSimplify[#,Explicit->True]&//
-ReplaceAll[#,SUNTr->SUNTrace]&//TID[#,q]&//Simplify//ToTFI[#,q,p]&//Simplify
+ampQuarkLoopEval = amps[[2]]//ChangeDimension[#,D]&//ReplaceAll[#,DiracTrace->Tr]&//
+    SUNSimplify[#,Explicit->True]&//ReplaceAll[#,SUNTr->SUNTrace]&//TID[#,q]&//
+    Simplify//ToTFI[#,q,p]&//Simplify
 
 
 (* ::Text:: *)
@@ -106,7 +97,7 @@ Contract[FVD[p,Lor1]FVD[p,Lor2]ampQuarkLoopEval]
 
 
 ampGhostLoopEval = amps[[3]]//ChangeDimension[#,D]&//SUNSimplify[#,Explicit->True]&//
-ExpandScalarProduct//TID[#,q]&//Simplify//ToTFI[#,q,p]&//Simplify
+    ExpandScalarProduct//TID[#,q]&//Simplify//ToTFI[#,q,p]&//Simplify
 
 
 (* ::Text:: *)
@@ -121,11 +112,11 @@ Contract[FVD[p,Lor1]FVD[p,Lor2]ampGhostLoopEval]//Simplify
 
 
 ampGluonLoop = amps[[4]]//ChangeDimension[#,D]&//SUNSimplify[#,Explicit->True]&//
-Contract//ScalarProductCancel//TID[#,q]&//ToTFI[#,q,p]&//Simplify
+    Contract//ScalarProductCancel//TID[#,q]&//ToTFI[#,q,p]&//Simplify
 
 
 ampGluonLoopEval=((ampGluonLoop/.{GaugeXi->-OneMinusGaugeXi+1})//Expand//
-Collect[#,OneMinusGaugeXi,Simplify]&)/.{OneMinusGaugeXi->(1-GaugeXi)}
+    Collect[#,OneMinusGaugeXi,Simplify]&)/.{OneMinusGaugeXi->(1-GaugeXi)}
 
 
 (* ::Text:: *)
@@ -163,7 +154,7 @@ ampTotal=(ampGluonGhostEval+Nf*ampQuarkLoopEval)//TarcerRecurse
 
 prefactor=(I*(Pi)^(2-D/2) (2Pi)^(D-4));
 ampsSing=(ampTotal/.{TBI[x___]:>(-2)/(D-4)*prefactor,TAI[x___]:>-2 MQ^2/(D-4)*prefactor})//FCI//
-ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
+    ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
 
 
 (* ::Text:: *)
@@ -180,7 +171,7 @@ gluonSelfEnergy=-I*ampsSing
 gaugePrefactor=(Pair[LorentzIndex[Lor1], Momentum[p]]*Pair[LorentzIndex[Lor2], Momentum[p]] - Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]]*
     Pair[Momentum[p], Momentum[p]]);
 gluonSelfEnergyMuta=(Gstrong^2/(4Pi)^2)*(4/3*(1/2)*Nf-(1/2)CA(13/3-GaugeXi))*1/Epsilon*
-gaugePrefactor*SUNDelta[SUNIndex[Index[Gluon, 1]], SUNIndex[Index[Gluon, 2]]];
+gaugePrefactor*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
 Print["Check with Muta, Eq 2.5.131 and Eq. 2.5.132: ",
       If[Simplify[gluonSelfEnergy-gluonSelfEnergyMuta]===0, "Correct.", "Mistake!"]];
 
@@ -192,6 +183,6 @@ Print["Check with Muta, Eq 2.5.131 and Eq. 2.5.132: ",
 ampsSingGluonQuarkFeynmanGauge=Simplify[ampsSing/.{GaugeXi->1,Nf->0}]
 
 
-ampsSingFeynmanGaugePeskin=I*(-gaugePrefactor)*(-Gstrong^2/(4Pi)^2*(-5/3)*CA*(1/Epsilon))*SUNDelta[SUNIndex[Index[Gluon, 1]], SUNIndex[Index[Gluon, 2]]];
+ampsSingFeynmanGaugePeskin=I*(-gaugePrefactor)*(-Gstrong^2/(4Pi)^2*(-5/3)*CA*(1/Epsilon))*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
 Print["Check with Peskin and Schroeder, Eq 16.71: ",
       If[Simplify[ampsSingGluonQuarkFeynmanGauge-ampsSingFeynmanGaugePeskin]===0, "Correct.", "Mistake!"]];

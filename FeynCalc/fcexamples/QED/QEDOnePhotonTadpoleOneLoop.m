@@ -38,12 +38,11 @@ $FAVerbose=0;
 (*Generate Feynman diagrams*)
 
 
-Paint[diags =
-   InsertFields[
-    CreateTopologies[1, 1 -> 0 ], {V[1]} -> {},
-    InsertionLevel -> {Particles}, GenericModel -> "Lorentz",ExcludeParticles->{S[1],S[2],S[3],V[2],V[3],F[3],F[4],
-U[1],U[2],U[3],U[4],F[2,{2}],F[2,{3}]}], ColumnsXRows -> {1, 1},
-SheetHeader -> False,   Numbering -> None];
+Paint[diags = InsertFields[CreateTopologies[1, 1 -> 0 ], {V[1]} -> {},
+    InsertionLevel -> {Particles}, GenericModel -> "Lorentz",
+    ExcludeParticles->{S[1],S[2],S[3],V[2],V[3],F[3],F[4],
+    U[1],U[2],U[3],U[4],F[2,{2}],F[2,{3}]}], ColumnsXRows -> {1, 1},
+    SheetHeader -> False,   Numbering -> None];
 
 
 (* ::Text:: *)
@@ -51,14 +50,8 @@ SheetHeader -> False,   Numbering -> None];
 
 
 amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diags,
-     Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT, FourMomentum[Internal, 1] -> q, MatrixTrace:>DiracTrace,
-   FourMomentum[Outgoing, 1] -> p,
-   Index[Lorentz, x_] :>
-    LorentzIndex[ToExpression["Lor" <> ToString[x]]]}
+    Apply[List, FCPrepareFAAmp[CreateFeynAmp[diags, Truncated -> True,
+    GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))]]]]/.{LoopMom1->q}
 
 
 (* ::Text:: *)

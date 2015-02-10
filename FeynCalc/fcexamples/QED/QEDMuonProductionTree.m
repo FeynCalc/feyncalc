@@ -16,6 +16,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
+
+
 (* ::Section:: *)
 (*Load FeynCalc, FeynArts and PHI*)
 
@@ -37,9 +39,9 @@ $FAVerbose = 0;
 
 topMuonProd = CreateTopologies[0, 2 -> 2];
 diagsMuonProd =
-  InsertFields[topMuonProd, {F[2, {1}], -F[2, {1}]} -> {F[
-      2, {2}], -F[2, {2}]}, InsertionLevel -> {Classes},
-   Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
+    InsertFields[topMuonProd, {F[2, {1}], -F[2, {1}]} -> {F[2,
+    {2}], -F[2, {2}]}, InsertionLevel -> {Classes}, Model -> "SM",
+    ExcludeParticles -> {S[1], S[2], V[2]}];
 Paint[diagsMuonProd, ColumnsXRows -> {1, 1}, Numbering -> None];
 
 
@@ -47,17 +49,10 @@ Paint[diagsMuonProd, ColumnsXRows -> {1, 1}, Numbering -> None];
 (*Obtain corresponding amplitudes*)
 
 
-ampMuonProd =
- Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diagsMuonProd,
-     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT,
-   FourMomentum[Outgoing, 1] -> k1, FourMomentum[Outgoing, 2] -> k2,
-   FourMomentum[Incoming, 1] -> p1, FourMomentum[Incoming, 2] -> p2,
-   DiracSpinor -> Spinor,Index[Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],MM->MMu}
-
+ampMuonProd = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
+    Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsMuonProd,
+    Truncated -> False],UndoChiralSplittings->True]]]/.{FAMass["Muon"]->MMu,
+    InMom1->p1, InMom2->p2,OutMom1->k1,OutMom2->k2}
 
 
 (* ::Section:: *)
@@ -65,19 +60,19 @@ ampMuonProd =
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, MMu, MMu];
-sqAmpMuonProd =
- (Total[ampMuonProd] Total[(ComplexConjugate[ampMuonProd]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//Contract//
-    FermionSpinSum[#, ExtraFactor -> 1/2^2, SpinorCollect -> True]&//
-ReplaceAll[#, DiracTrace[x___] :> DiracTrace[x, DiracTraceEvaluate -> True]] &//Contract//Simplify
+sqAmpMuonProd = (Total[ampMuonProd] Total[(ComplexConjugate[ampMuonProd]//FCRenameDummyIndices)])//
+    PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
+    ReplaceAll[#, DiracTrace :> Tr] &//Contract//Simplify
 
 
 masslessElectronsSqAmpMuonProd = (sqAmpMuonProd /. {ME -> 0})//Simplify
 
 
-masslessElectronsMuonsSqAmpMuonProdPeskin=(8EL^4 (ScalarProduct[p1,k1]ScalarProduct[p2,k2]+ScalarProduct[p1,k2]ScalarProduct[p2,k1]+MMu^2 ScalarProduct[p1,p2]))/(ScalarProduct[p1+p2])^2//
-ReplaceAll[#,ME->0]&//ExpandScalarProduct//Simplify;
+masslessElectronsMuonsSqAmpMuonProdPeskin = (8EL^4 (SP[p1,k1]SP[p2,k2]+SP[p1,k2]SP[p2,k1]+MMu^2 SP[p1,p2]))/(SP[p1+p2])^2//
+    ReplaceAll[#,ME->0]&//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.10: ",
-      If[(masslessElectronsMuonsSqAmpMuonProdPeskin-masslessElectronsSqAmpMuonProd)===0, "Correct.", "Mistake!"]];
+    If[(masslessElectronsMuonsSqAmpMuonProdPeskin-masslessElectronsSqAmpMuonProd)===0,
+    "Correct.", "Mistake!"]];
 
 
 masslessElectronsMuonsSqAmpMuonProd = (masslessElectronsSqAmpMuonProd /. {MMu -> 0})//Simplify
@@ -93,15 +88,15 @@ Print["Check with Peskin and Schroeder, Eq 5.70: ",
 
 
 ampMuonProdElRPosLMuRAntiMuL=ampMuonProd/.{Spinor[-Momentum[k2],MMu,1]->GA[6].Spinor[-Momentum[k2],MMu,1],
-Spinor[Momentum[p1],ME,1]->GA[6].Spinor[Momentum[p1],ME,1]}
+    Spinor[Momentum[p1],ME,1]->GA[6].Spinor[Momentum[p1],ME,1]}
 
 
-sqAmpMuonProdElRPosLMuRAntiMuL=((((Total[ampMuonProdElRPosLMuRAntiMuL] Total[ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//FCRenameDummyIndices]))//PropagatorDenominatorExplicit//Contract//
-    FermionSpinSum[#, SpinorCollect -> True]&//
-ReplaceAll[#, DiracTrace[x___] :> DiracTrace[x, DiracTraceEvaluate -> True]] &//Contract)/.{ME->0,MMu->0})//Simplify
+sqAmpMuonProdElRPosLMuRAntiMuL = ((((Total[ampMuonProdElRPosLMuRAntiMuL] Total[ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//
+    FCRenameDummyIndices]))//PropagatorDenominatorExplicit//Contract//FermionSpinSum[#,
+    SpinorCollect -> True]&//ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{ME->0,MMu->0})//Simplify
 
 
-sqAmpMuonProdElRPosLMuRAntiMuLPeskin=(16EL^4 (ScalarProduct[p1,k2]ScalarProduct[p2,k1]))/(ScalarProduct[p1+p2])^2//
-ReplaceAll[#,{ME->0,MMu->0}]&//ExpandScalarProduct//Simplify;
+sqAmpMuonProdElRPosLMuRAntiMuLPeskin=(16EL^4 (SP[p1,k2]SP[p2,k1]))/(SP[p1+p2])^2//
+    ReplaceAll[#,{ME->0,MMu->0}]&//FCI//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.21: ",
       If[(sqAmpMuonProdElRPosLMuRAntiMuLPeskin-sqAmpMuonProdElRPosLMuRAntiMuL)===0, "Correct.", "Mistake!"]];

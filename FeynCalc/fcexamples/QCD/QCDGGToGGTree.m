@@ -38,9 +38,9 @@ $FAVerbose = 0;
 
 
 topGGToGG = CreateTopologies[0, 2 -> 2];
-diagsGGToGG =
-  InsertFields[topGGToGG,  {V[5],V[5]}-> {V[5],V[5]}, InsertionLevel -> {Classes},
-   Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
+diagsGGToGG = InsertFields[topGGToGG,  {V[5],V[5]}-> {V[5],V[5]},
+    InsertionLevel -> {Classes},
+    Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
 Paint[diagsGGToGG, ColumnsXRows -> {2, 2}, Numbering -> None];
 
 
@@ -48,32 +48,20 @@ Paint[diagsGGToGG, ColumnsXRows -> {2, 2}, Numbering -> None];
 (*Obtain corresponding amplitudes*)
 
 
-ampGGToGG =
- (Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-   Apply[List,
-    FCPrepareFAAmp[CreateFeynAmp[diagsGGToGG,
-     Truncated -> False]]]] //. {(a1__ DiracGamma[6] a2__ +
-      a1__ DiracGamma[7] a2__) :> a1 a2, NonCommutative[x___] -> x,
-   FermionChain -> DOT,
-   FourMomentum[Outgoing, 1] -> k3, FourMomentum[Outgoing, 2] -> k4,
-   FourMomentum[Incoming, 1] -> k1, FourMomentum[Incoming, 2] -> k2,
-   DiracSpinor -> Spinor,Index[Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]]
-,Index[Gluon,x_]:>SUNIndex[ToExpression["Glu"<>ToString[x]]],
-Index[Colour,x_]:>SUNFIndex[ToExpression["Col"<>ToString[x]]],
-SumOver[__]:>1,MetricTensor->MT,PolarizationVector[_, x_, y_] :>
-PolarizationVector[x, y,Transversality->True], Conjugate[PolarizationVector][_, x_, y_] :>
-Conjugate[PolarizationVector[x, y,Transversality->True]]
-}/.{SUNT->SUNTF,SUNF[a_,b_,c_,d_]:>(ClearAll[uii];uii=Unique[$AL];SUNF[a,b,SUNFIndex[ii]]SUNF[SUNFIndex[ii],
-c,d])})//Contract//SUNFSimplify[#,Explicit->True,SUNNToCACF->False]&;
+ampGGToGG = (Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
+    Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsGGToGG,
+    Truncated -> False]]]]/.{SumOver[__]:>1,Polarization[x_,y_]:>Polarization[x, y,
+    Transversality->True]}/.{InMom1->k1,InMom2->k2,OutMom1->k3,OutMom2->k4})//Contract//
+    SUNFSimplify[#, Explicit->True,SUNNToCACF->False]&;
 
 
 (* The calculation becomes easier if energy momentum conservation is applied *)
 SetMandelstam[s, t, u, k1, k2, -k3, -k4, 0, 0, 0, 0];
 ampGGToGG1=ampGGToGG//PropagatorDenominatorExplicit//ReplaceAll[#,
-Momentum[k1]->Momentum[k3+k4-k2]]&//ExpandScalarProduct//ReplaceAll[#,Momentum[k2]->Momentum[k3+
-k4-k1]]&//ExpandScalarProduct//ReplaceAll[#,Momentum[k3]->Momentum[k1+k2-
-k4]]&//ExpandScalarProduct//ExpandScalarProduct//ReplaceAll[#,Momentum[k4]->Momentum[k1+k2-
-k3]]&//ExpandScalarProduct//Simplify;
+    Momentum[k1]->Momentum[k3+k4-k2]]&//ExpandScalarProduct//ReplaceAll[#,Momentum[k2]->Momentum[k3+
+    k4-k1]]&//ExpandScalarProduct//ReplaceAll[#,Momentum[k3]->Momentum[k1+k2-
+    k4]]&//ExpandScalarProduct//ExpandScalarProduct//ReplaceAll[#,Momentum[k4]->Momentum[k1+k2-
+    k3]]&//ExpandScalarProduct//Simplify;
 ampGGToGGCC1=ampGGToGG1//ComplexConjugate//FCRenameDummyIndices;
 
 
@@ -81,9 +69,8 @@ ampGGToGGCC1=ampGGToGG1//ComplexConjugate//FCRenameDummyIndices;
 (*Unpolarized process  g g -> g g *)
 
 
-polsums[x_,vec_,aux_,spinfac_]:=x//Collect2[#,
-Pair[_,Momentum[Polarization[vec,__]]]]&//Isolate[#,{Polarization[vec,__]}]&//DoPolarizationSums[#,vec,aux,
-ExtraFactor->spinfac]&//FixedPoint[ReleaseHold,#]&
+polsums[x_,vec_,aux_,spinfac_]:=x//Collect2[#,Pair[_,Momentum[Polarization[vec,__]]]]&//Isolate[#,
+    {Polarization[vec,__]}]&//DoPolarizationSums[#,vec,aux,ExtraFactor->spinfac]&//FixedPoint[ReleaseHold,#]&
 
 
 ClearAll[re];
