@@ -2013,23 +2013,6 @@ HoldPattern[SUNF[i_,j_,k_,l_, op___Rule|op___List]]:= (
                                      )/;
      (Explicit/.Flatten[Join[{op},Options[SUNF]]]) === True;
 
-   tbox[a__] := RowBox @ Map[(MakeBoxes @@ {#, TraditionalForm})&, {a}];
-
-totr[Subscript[y_,in__Integer]] := SubscriptBox[totr[y],RowBox[{in}]];
-
-totr[y_Symbol] := If[FormatValues[Evaluate[y]] === {},
-                     ToString[y],
-                     ToBoxes[y, TraditionalForm], y];
-totr[y_String] := y;
-totr[y_] := ToBoxes[y, TraditionalForm] /; Head[y]=!=Symbol;
-
-(* this is not needed here any more, commented out 25th September 2003
-Tbox[a__] :=
-(RowBox @ (Insert[
-  Map[totr, {a}], "\[NoBreak]",
-    Array[{#}&,Length[{a}]-1,2]]));
-*)
-
    SUNF /:
    MakeBoxes[
              SUNF[a_,b_,c__], TraditionalForm
