@@ -564,6 +564,7 @@ SetAttributes[SDF, Orderless];
 SetAttributes[SP, Orderless];
 SetAttributes[SPE, Orderless];
 SetAttributes[SPD, Orderless];
+SetAttributes[SUND, Orderless];
 SetAttributes[SUNDelta, Orderless];
 SetAttributes[SUNFDelta, Orderless];
 SetAttributes[SUNIndex, {Constant, Flat, OneIdentity}];
