@@ -488,6 +488,12 @@ polarization vector with its momentum to be zero.";
 Upper::"usage"= "Upper may be used inside LorentzIndex to indicate an
 contravariant LorentzIndex.";
 
+$FCMomentumSubHeads::"usage" ="$FCMomentumSubHeads is a pattern that
+contains Heads which may appear inside Momentum and need special treatment."
+
+$FCLorentzIndexSubHeads::"usage" ="$FCLorentzIndexSubHeads is a pattern that
+contains Heads which may appear inside LorentzIndex and need special treatment."
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -535,6 +541,8 @@ DeclareNonCommutative[SpinorUBar];
 DeclareNonCommutative[SpinorV];
 DeclareNonCommutative[SpinorVBar];
 DeclareNonCommutative[SUNT];
+
+$FCLorentzIndexSubHeads = _Upper | _Lower ;
 
 DataType[Epsilon, PositiveNumber] = True;
 $PairBrackets = False;
@@ -732,25 +740,25 @@ DiracGamma /:
   	If[ Head[x]===Plus,
 		RowBox[{dgammaRep[dim2], "\[CenterDot]","(", Tbox[Momentum[x,dim1]],")"}],
 		RowBox[{dgammaRep[dim2], "\[CenterDot]", Tbox[Momentum[x,dim1]]}]
-  	];
+  	]/; !MatchQ[x,$FCMomentumSubHeads];
 
 
 (* TraditionalForm representation of the Dirac matrices in the FCI notation *)
 (* ------------------------------------------------------------------------ *)
 
 DiracGamma /:
-  MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[in:Except[_Upper| _Lower], dim1_:4], dim2_:4, ___Rule], TraditionalForm ] :=
+  MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[in_, dim1_:4], dim2_:4, ___Rule], TraditionalForm ] :=
   If [$Covariant===False,
    SuperscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in,dim1]]],
    SubscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in,dim1]]]
-  ];
+  ]/;!MatchQ[in,$FCLorentzIndexSubHeads];
 
 DiracGamma /:
   MakeBoxes[ DiracGamma[(lo: LorentzIndex | ExplicitLorentzIndex)[(in: Upper| Lower)[x_], dim1_:4], dim2_:4, ___Rule], TraditionalForm ] :=
   If [in===Upper,
    SuperscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in[x],dim1]]],
    SubscriptBox[RowBox[{dgammaRep[dim2]}], Tbox[lo[in[x],dim1]]]
-  ];
+  ]/;!MatchQ[x,$FCLorentzIndexSubHeads];
 
 DiracGamma /:
   MakeBoxes[ DiracGamma[(a : (5 | 6 | 7))], TraditionalForm ] :=
@@ -1132,19 +1140,14 @@ GSE[x_, y__] := DOT @@ Map[GSE, {x, y}];
 (* TraditionalForm representation of the Dirac slashes in the FCE notation *)
 (* ------------------------------------------------------------------------ *)
 
-diracSlashRep[a_, dim_]:= If[ Head[a]===Plus,
-             RowBox[{dgammaRep[dim], "\[CenterDot]","(", Tbox[Momentum[a, dim]],")"}],
-			 RowBox[{dgammaRep[dim], "\[CenterDot]", Tbox[Momentum[a, dim]]}]
-			]
-
 GS/:
-  MakeBoxes[GS[a_], TraditionalForm ] := diracSlashRep[a,4];
+  MakeBoxes[GS[a_], TraditionalForm ] := ToBoxes[FCI[GS[a]], TraditionalForm];
 
 GSD/:
-  MakeBoxes[GSD[a_], TraditionalForm ] := diracSlashRep[a,D];
+  MakeBoxes[GSD[a_], TraditionalForm ] := ToBoxes[FCI[GSD[a]], TraditionalForm];
 
 GSE/:
-  MakeBoxes[GSE[a_], TraditionalForm ] := diracSlashRep[a,D-4];
+  MakeBoxes[GSE[a_], TraditionalForm ] := ToBoxes[FCI[GSE[a]], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1253,12 +1256,12 @@ LorentzIndex[_, 0]               := 0;
 LorentzIndex[in_Integer,dim___]  := ExplicitLorentzIndex[in,dim];
 
 LorentzIndex /:
-   MakeBoxes[ LorentzIndex[p:Except[_Upper | _Lower], dim_ : 4], TraditionalForm
+   MakeBoxes[ LorentzIndex[p_, dim_ : 4], TraditionalForm
             ] := If[ $LorentzIndices =!= True,
                     ToBoxes[p,TraditionalForm],
                     SubscriptBox[ToBoxes[p, TraditionalForm],
                                     ToBoxes[dim, TraditionalForm]]
-                   ];
+                   ]/; !MatchQ[p,$FCLorentzIndexSubHeads];
 
 MetricTensor[a_, b_, opt___Rule] :=
   Pair[LorentzIndex[a, Dimension /. Dimension -> (Dimension /. {opt} /.
@@ -1294,19 +1297,19 @@ Momentum /:
 
 Momentum /:
    MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus]], TraditionalForm
-            ] := RowBox[{OverscriptBox[ToBoxes[p],"_"]}]/; p=!=OPEDelta;
+            ] := RowBox[{OverscriptBox[ToBoxes[p],"_"]}]/; p=!=OPEDelta && !MatchQ[p,$FCMomentumSubHeads];
 
 Momentum /:
    MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], _Symbol-4], TraditionalForm
-            ] := RowBox[{OverscriptBox[ToBoxes[p],"^"]}];
+            ] := RowBox[{OverscriptBox[ToBoxes[p],"^"]}]/; !MatchQ[p,$FCMomentumSubHeads];
 
 Momentum /:
    MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], _Symbol], TraditionalForm
-            ] := RowBox[{ToBoxes[p]}];
+            ] := RowBox[{ToBoxes[p]}]/; !MatchQ[p,$FCMomentumSubHeads];
 
 Momentum /:
    MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus], dim:Except[_Symbol | _Symbol - 4]], TraditionalForm
-            ] := RowBox[{SubscriptBox[ToBoxes[p],ToBoxes[dim]]}];
+            ] := RowBox[{SubscriptBox[ToBoxes[p],ToBoxes[dim]]}]/; !MatchQ[p,$FCMomentumSubHeads];
 
 (*Subscripted momenta *)
 
@@ -1446,13 +1449,13 @@ metricRep[dim_]:= Which[
 
 Pair /:
    MakeBoxes[Pair[
-(LorentzIndex|ExplicitLorentzIndex)[a:Except[_Upper | _Lower], dim1_:4],
-(LorentzIndex|ExplicitLorentzIndex)[b:Except[_Upper | _Lower], dim2_:4] ],
+(LorentzIndex|ExplicitLorentzIndex)[a_, dim1_:4],
+(LorentzIndex|ExplicitLorentzIndex)[b_, dim2_:4] ],
              TraditionalForm
             ] := If[$Covariant===False,
                     SuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]] ],
                     SubscriptBox[RowBox[{metricRep[{dim1,dim2}]}], Tbox[LorentzIndex[a,dim1], LorentzIndex[b,dim2]] ]
-                   ];
+                   ]/; !MatchQ[a, $FCLorentzIndexSubHeads] && !MatchQ[b, $FCLorentzIndexSubHeads];
 
 Pair /:
    MakeBoxes[Pair[
@@ -1532,7 +1535,7 @@ Pair /:
                        Tbox["(",Momentum[a,dim1],")","\[CenterDot]",
                             "(",Momentum[b,dim2],")"]
                        ]
-                           ];
+                           ]/; !MatchQ[a,$FCMomentumSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
 
 (* TraditionalForm representation of polarization vectors    				*)
 (* ------------------------------------------------------------------------ *)
@@ -1540,22 +1543,22 @@ Pair /:
 Pair /:
    MakeBoxes[Pair[
       (LorentzIndex|
-      ExplicitLorentzIndex)[a:Except[_Upper | _Lower], dim_ : 4],
+      ExplicitLorentzIndex)[a_, dim_ : 4],
       Momentum[Polarization[b_, Complex[0,1], OptionsPattern[]], dim_: 4]], TraditionalForm] :=
       If[$Covariant===False,
         RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[a]]], "(",Tbox[b],")"}],
         RowBox[{ SubscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[a]]], "(",Tbox[b],")"}]
-        ];
+        ]/; !MatchQ[a,$FCLorentzIndexSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
 
 Pair /:
    MakeBoxes[Pair[
       (LorentzIndex|
-      ExplicitLorentzIndex)[a:Except[_Upper | _Lower], dim_ : 4],
+      ExplicitLorentzIndex)[a_, dim_ : 4],
       Momentum[Polarization[b_, Complex[0,-1], OptionsPattern[]], dim_: 4]], TraditionalForm] :=
       If[$Covariant===False,
         RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox["*",LorentzIndex[a]]], "(",Tbox[b],")"}],
         RowBox[{ SubsuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[a]],"*"], "(",Tbox[b],")"}]
-        ];
+        ]; /!MatchQ[a,$FCLorentzIndexSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
 
 Pair /:
    MakeBoxes[Pair[
@@ -1565,7 +1568,7 @@ Pair /:
       If[x===Upper,
         RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[x[a]]]], "(",Tbox[b],")"}],
         RowBox[{ SubscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[x[a]]]], "(",Tbox[b],")"}]
-        ];
+        ]; /!MatchQ[a,$FCLorentzIndexSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
 
 Pair /:
    MakeBoxes[Pair[
@@ -1575,7 +1578,7 @@ Pair /:
       If[x===Upper,
         RowBox[{ SuperscriptBox["\[CurlyEpsilon]", Tbox["*",LorentzIndex[x[a]]]], "(",Tbox[b],")"}],
         RowBox[{ SubsuperscriptBox["\[CurlyEpsilon]", Tbox[LorentzIndex[x[a]]],"*"], "(",Tbox[b],")"}]
-        ];
+        ]/; !MatchQ[a,$FCLorentzIndexSubHeads]  && !MatchQ[b,$FCMomentumSubHeads];
 
 
 
@@ -1584,12 +1587,9 @@ Pair /:
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
-   MakeBoxes[Pair[
-              (LorentzIndex|
-      ExplicitLorentzIndex)[a:Except[_Upper | _Lower],dim1_ : 4],
-              Momentum[b:Except[_Polarization], dim2_ : 4]+c_:0],
-             TraditionalForm
-            ] := If[ Head[b]===Plus || c=!=0,
+   MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[a_, dim1_ : 4],
+             Momentum[b_, dim2_ : 4]+c_:0], TraditionalForm] :=
+    If[ Head[b]===Plus || c=!=0,
     If[$Covariant===False,
 		SuperscriptBox[ RowBox[{"(",Tbox[Momentum[b+c,dim1]],")"}], Tbox[LorentzIndex[a,dim2]]],
 		SubscriptBox[ RowBox[{"(",Tbox[Momentum[b+c,dim1]],")"}], Tbox[LorentzIndex[a,dim2]]]
@@ -1598,13 +1598,13 @@ Pair /:
 		SuperscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[a,dim2]]],
 		SubscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[a,dim2]]]
     ]
-];
+]/; (!MatchQ[a,$FCLorentzIndexSubHeads]  && !MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]]);
 
 Pair /:
    MakeBoxes[Pair[
               (LorentzIndex|
       ExplicitLorentzIndex)[(x: Upper | Lower)[a_],dim1_ : 4],
-              Momentum[b:Except[_Polarization] ,dim2_ : 4]+c_:0],
+              Momentum[b_ ,dim2_ : 4]+c_:0],
              TraditionalForm
             ] := If[ Head[b]===Plus || c=!=0,
     If[x===Upper,
@@ -1615,7 +1615,7 @@ Pair /:
         SuperscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[x[a],dim2]]],
         SubscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[x[a],dim2]]]
     ]
-];
+]/; !MatchQ[a,$FCLorentzIndexSubHeads]  && !MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]];
 
 
 (* ------------------------------------------------------------------------ *)
@@ -1671,12 +1671,12 @@ Polarization[-x_,-I, opts:OptionsPattern[]] := -Polarization[x,-I, opts];
 Polarization /:
 (* suppress color indices in the typesetting for the moment *)
    MakeBoxes[Polarization[a_,Complex[0, 1],___], TraditionalForm] :=
-        Tbox["\[CurlyEpsilon]","(",a,")"];
+        Tbox["\[CurlyEpsilon]","(",a,")"]/; !MatchQ[a, $FCMomentumSubHeads];
 
 Polarization /:
 (* suppress color indices in the typesetting for the moment *)
    MakeBoxes[Polarization[a_, Complex[0, -1],___], TraditionalForm] :=
-        Tbox[Superscript["\[CurlyEpsilon]", "*"], "(", a, ")"];
+        Tbox[Superscript["\[CurlyEpsilon]", "*"], "(", a, ")"]/; !MatchQ[a, $FCMomentumSubHeads];
 
 PolarizationVector[x_,{y_,z_}]:= PolarizationVector[x, y, z];
 PolarizationVector[x:Except[_?OptionQ].., opts:OptionsPattern[Polarization]]:=
@@ -1887,30 +1887,14 @@ SPE[a_] := SPE[a,a];
 	in the FCE notation														*)
 (* ------------------------------------------------------------------------ *)
 
-SP/: MakeBoxes[SP[a_, b_], TraditionalForm] :=
-    ToBoxes[ MakeContext["FeynCalcInternal"][SP[a,b]],
-            TraditionalForm];
+SP /: MakeBoxes[SP[a_, b_], TraditionalForm] :=
+    ToBoxes[FCI[SP[a,b]], TraditionalForm];
 
-SPD/: MakeBoxes[SPD[a_, b_], TraditionalForm] :=
-    ToBoxes[ MakeContext["FeynCalcInternal"][SPD[a,b]],
-            TraditionalForm];
+SPD /: MakeBoxes[SPD[a_, b_], TraditionalForm] :=
+    ToBoxes[FCI[SPD[a,b]], TraditionalForm];
 
-SPE/: MakeBoxes[SPE[a_, b_], TraditionalForm] :=
-    ToBoxes[ MakeContext["FeynCalcInternal"][SPE[a,b]],
-            TraditionalForm];
-
-
-MakeBoxes[SP[a_,b_]^n_Integer?Positive, TraditionalForm] :=
-    ToBoxes[ MakeContext["FeynCalcInternal"][SP[a,b]^n],
-            TraditionalForm];
-
-MakeBoxes[SPD[a_,b_]^n_Integer?Positive, TraditionalForm] :=
-    ToBoxes[ MakeContext["FeynCalcInternal"][SPD[a,b]^n],
-            TraditionalForm];
-
-MakeBoxes[SPE[a_,b_]^n_Integer?Positive, TraditionalForm] :=
-    ToBoxes[ MakeContext["FeynCalcInternal"][SPE[a,b]^n],
-            TraditionalForm];
+SPE /: MakeBoxes[SPE[a_, b_], TraditionalForm] :=
+    ToBoxes[FCI[SPE[a,b]], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
 
