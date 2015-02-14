@@ -202,69 +202,55 @@ metricT[x_, x_,op_:{}]:=(Dimension/.op/.Options[MetricTensor]);
 (* ---------------------------------------------------------------------- *)
 (* diracM *)
 (* ---------------------------------------------------------------------- *)
-diracM[n_?NumberQ y_]:=n diracM[y];
-diracM[n_?NumberQ y_,{}]:=n diracM[y];
-diracM[n_?NumberQ y_,opt_]:=n diracM[y,opt];
-diracM[x_,y_]:=DOT[diracM[x],diracM[y]]/;(FreeQ[y,Rule]&&y=!={});
-diracM[x_,y__,{}]:= diracM[DOT[x,y]];
-diracM[x_,y__,z_]:= diracM[DOT[x,y],z]/;!FreeQ[z,Rule];
-diracM[x_,y__,z_]:= diracM[DOT[x,y,z]]/; FreeQ[z,Rule];
-diracM[x_ y_Plus,opt_:{}]:= diracM[Expand[x y],opt];
-diracM[x_Plus,opt_:{}]:= diracM[#,opt]& /@ x;
-diracM[DOT[x_,y__],opt_:{}] :=  diracM[#,opt]& /@ DOT[x,y];
-diracM[n_Integer]:=DiracGamma[ExplicitLorentzIndex[n]]/; (n=!=5 && n=!=6 && n=!=7);
-diracM[5, OptionsPattern[]]:=DiracGamma[5];
-diracM[6, OptionsPattern[]]:=DiracGamma[6];
-diracM[7, OptionsPattern[]]:=DiracGamma[7];
-diracM["+"]:=DiracGamma[6];
-diracM["-"]:=DiracGamma[7];
-diracM[x_,op_:{}] := DiracGamma[LorentzIndex[ x,
-            (Dimension/.op/.Options[DiracMatrix])  ] ,
-            (Dimension/.op/.Options[DiracMatrix])
-                               ]/;(Head[x]=!=DOT && !IntegerQ[x]);
+Options[diracM] = {Dimension -> 4, FCI -> True};
+diracM[n_?NumberQ y:Except[_?OptionQ], opts:OptionsPattern[]]:=n diracM[y,opts];
+diracM[x_,y:Except[_?OptionQ], opts:OptionsPattern[]]:=DOT[diracM[x,opts],diracM[y,opts]];
+diracM[x_,y:Except[_?OptionQ]..,opts:OptionsPattern[]]:= diracM[DOT[x,y],opts];
+diracM[x_ y_Plus,opts:OptionsPattern[]]:= diracM[Expand[x y],opts];
+diracM[x_Plus,opts:OptionsPattern[]]:= diracM[#,opts]& /@ x;
+diracM[DOT[x_,y__],opts:OptionsPattern[]] :=  diracM[#,opts]& /@ DOT[x,y];
+diracM[5, OptionsPattern[]]:=DiracGamma[5]/; OptionValue[Dimension]===4;
+diracM[6, OptionsPattern[]]:=DiracGamma[6]/; OptionValue[Dimension]===4;
+diracM[7, OptionsPattern[]]:=DiracGamma[7]/; OptionValue[Dimension]===4;
+diracM["+", OptionsPattern[]]:=DiracGamma[6]/; OptionValue[Dimension]===4;
+diracM["-", OptionsPattern[]]:=DiracGamma[7]/; OptionValue[Dimension]===4;
+diracM[x:Except[5|6|7], OptionsPattern[]] := DiracGamma[LorentzIndex[x, OptionValue[Dimension]],
+            OptionValue[Dimension]]/;(Head[x]=!=DOT && !StringQ[x]);
 (* ---------------------------------------------------------------------- *)
 (* diracS *)
 (* ---------------------------------------------------------------------- *)
+Options[diracS] = {Dimension -> 4, FCI -> True};
 ndot[]=1;
 ndot[a___,ndot[b__],c___] := ndot[a,b,c];
 ndot[a___,b_Integer,c___] := b ndot[a,c];
 ndot[a___,b_Integer x_,c___]:=b ndot[a,x,c];
-diracS[x_,y_]:=diracS[ndot[x,y]]/;(FreeQ[y,Rule]&&y=!={});
-diracS[x_,y__,{}]:=diracS[ndot[x,y]];
-diracS[x_,y__,z_]:=diracS[ndot[x,y],z]/;!FreeQ[z,Rule];
-diracS[x_,y__,z_]:=diracS[ndot[x,y,z]]/;FreeQ[z,Rule];
-diracS[x__]:= (diracS@@({x}/.DOT->ndot) )/;!FreeQ[{x},DOT];
-diracS[n_Integer x_ndot,opt_:{}]:=n diracS[x,opt];
-diracS[x_ndot,opt_:{}] := Expand[ (diracS[#,opt]& /@ x) ]/.ndot->DOT;
+diracS[x_,y:Except[_?OptionQ].., opts:OptionsPattern[]]:=diracS[ndot[x,y],opts];
+diracS[x:Except[_?OptionQ].., opts:OptionsPattern[]]:= (diracS@@({x,opts}/.DOT->ndot) )/;!FreeQ[{x},DOT];
+diracS[n_Integer x_ndot, opts:OptionsPattern[]]:=n diracS[x,opts];
+diracS[x_ndot,opts:OptionsPattern[]] := Expand[ (diracS[#,opts]& /@ x) ]/.ndot->DOT;
 (*   pull out a common numerical factor *)
-diracS[x_,op_:{}] := Block[{dtemp,dix,eins,numf,resd},
+diracS[x_, OptionsPattern[]] := Block[{dtemp,dix,eins,numf,resd},
          dix = Factor2[ eins Expand[x]];
          numf = NumericalFactor[dix];
          resd = numf DiracGamma[ Momentum[Cancel[(dix/.eins->1)/numf],
-           (Dimension/.op/.Options[DiracSlash])  ] ,
-           (Dimension/.op/.Options[DiracSlash])
-                               ]
+           OptionValue[Dimension]] ,
+           OptionValue[Dimension]]
                           ]/;((Head[x]=!=DOT)&&(Head[x]=!=ndot));
 (* ---------------------------------------------------------------------- *)
 (* fourV *)
 (* ---------------------------------------------------------------------- *)
-
-fourV[ x_Momentum,y___]:= fourV[x[[1]],y];
-fourV[ x_,y_LorentzIndex,op___]:= fourV[x,y[[1]],op];
+Options[fourV] = {Dimension -> 4, FCI -> True};
 (*   pull out a common numerical factor *)
-fourV[ x_,y_,opt_:{}]:=Block[{nx,numfa,one,result},
-       nx = Factor2[one x];
-       numfa = NumericalFactor[nx];
-       result = numfa Pair[ LorentzIndex[y, Dimension/.opt/.
-                                            Options[FourVector]],
-                              Momentum[Cancel[nx/numfa]/.one->1,
-                                       Dimension/.opt/.Options[FourVector]]
-                          ]; result] /; !FreeQ[x, Plus];
+fourV[x_,y_, OptionsPattern[]]:=Block[{nx,numfa,one},
+		nx = Factor2[one x];
+		numfa = NumericalFactor[nx];
+		(numfa Pair[LorentzIndex[y,OptionValue[Dimension]],
+		Momentum[Cancel[nx/numfa]/.one->1, OptionValue[Dimension]]])
+	] /; !FreeQ[x, Plus];
 
-fourV[x_, y_,opt_:{} ] := Pair[
-      LorentzIndex[y,Dimension/.opt/.Options[FourVector]],
-      Momentum[x,Dimension/.opt/.Options[FourVector]]
-                                     ] /; FreeQ[x, Plus];
+fourV[x_, y_, OptionsPattern[]] :=
+	Pair[LorentzIndex[y,OptionValue[Dimension]],
+	Momentum[x,OptionValue[Dimension]]]/; FreeQ[x, Plus];
 (* ---------------------------------------------------------------------- *)
 (* propagatorD *)
 (* ---------------------------------------------------------------------- *)
@@ -376,9 +362,6 @@ gse[a_] :=  DiracGamma[Momentum[a,D-4],D-4];
 ga[5] = DiracGamma[5];
 ga[6] = DiracGamma[6];
 ga[7] = DiracGamma[7];
-gad[5] = DiracGamma[5];
-gad[6] = DiracGamma[6];
-gad[7] = DiracGamma[7];
 ga[a_]  :=  DiracGamma[LorentzIndex[a]]/; !IntegerQ[a];
 gad[a_] :=  DiracGamma[LorentzIndex[a,D],D]/; !IntegerQ[a];
 gae[a_] :=  DiracGamma[LorentzIndex[a,D-4],D-4]/; !IntegerQ[a];
