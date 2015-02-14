@@ -127,33 +127,33 @@ fcstDiracTrickCoreProperties = {
 	DiracGamma[LorentzIndex[j, D], D].DiracGamma[LorentzIndex[k, D], D].DiracGamma[LorentzIndex[l, D], D].DiracGamma[5]"},
 {"fcstDiracTrickCoreProperties-ID32","$BreitMaison=False;\nDiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 6]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[LorentzIndex[si]].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID33","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID33","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID34","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID34","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID35","DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID35","DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, si].GA[6]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[LorentzIndex[si]].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID36","DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID36","DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, si].GA[7]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[LorentzIndex[si]].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID37","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID37","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID38","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID38","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[7]"},
 {"fcstDiracTrickCoreProperties-ID39","DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, si, 7]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[LorentzIndex[si]].DiracGamma[7]"},
 {"fcstDiracTrickCoreProperties-ID40","DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, 6]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID41","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID41","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID42","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID42","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[6]"},
 {"fcstDiracTrickCoreProperties-ID43","DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, 6]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[6]"},
 {"fcstDiracTrickCoreProperties-ID44","DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, 7]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID45","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID45","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID46","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID46","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"2*m*DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[7]"},
 {"fcstDiracTrickCoreProperties-ID47","DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, 7]]",
 	"2*m*DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[7]"},
@@ -167,17 +167,17 @@ fcstDiracTrickCoreProperties = {
 {"fcstDiracTrickCoreProperties-ID55","DiracTrick[GA[7].(GAD[mu] + 2 m).GA[6]]","DiracGamma[LorentzIndex[mu, D], D].DiracGamma[6]"},
 {"fcstDiracTrickCoreProperties-ID56","DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, 7]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID57","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID57","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu, D],D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID58","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID58","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[7]"},
 {"fcstDiracTrickCoreProperties-ID59","DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, 7]]",
 	"DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[7]"},
 {"fcstDiracTrickCoreProperties-ID60","DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, 6]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID61","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID61","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu, D],D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID62","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID62","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[6]"},
 {"fcstDiracTrickCoreProperties-ID63","DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, 6]]",
 	"DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].DiracGamma[6]"},
@@ -185,10 +185,10 @@ fcstDiracTrickCoreProperties = {
 {"fcstDiracTrickCoreProperties-ID64","DiracTrick[GA[6].(GA[mu] + 2 m).GA[nu, rho, si, 6]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu]].
 	DiracGamma[LorentzIndex[rho]].DiracGamma[LorentzIndex[si]].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID65","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID65","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].
  	DiracGamma[LorentzIndex[si, D], D].DiracGamma[6]"},
-{"fcstDiracTrickCoreProperties-ID66","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID66","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu, D], D].
  	DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[6]"},
 {"fcstDiracTrickCoreProperties-ID67","DiracTrick[GA[6].(GAD[mu] + 2 m).GA[nu, rho, si, 6]]",
@@ -197,10 +197,10 @@ fcstDiracTrickCoreProperties = {
 {"fcstDiracTrickCoreProperties-ID68","DiracTrick[GA[7].(GA[mu] + 2 m).GA[nu, rho, si, 7]]",
 	"DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu]].
  	DiracGamma[LorentzIndex[rho]].DiracGamma[LorentzIndex[si]].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID69","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID69","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
  "DiracGamma[LorentzIndex[mu, D], D].DiracGamma[LorentzIndex[nu, D],
   D].DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[7]"},
-{"fcstDiracTrickCoreProperties-ID70","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID70","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
  "DiracGamma[LorentzIndex[mu]].DiracGamma[LorentzIndex[nu, D], D].
  DiracGamma[LorentzIndex[rho, D], D].DiracGamma[LorentzIndex[si, D], D].DiracGamma[7]"},
 {"fcstDiracTrickCoreProperties-ID71","DiracTrick[GA[7].(GAD[mu] + 2 m).GA[nu, rho, si, 7]]",
@@ -210,11 +210,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
 	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
 	DiracGamma[LorentzIndex[si]].(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID73","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID73","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
 	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].
 	DiracGamma[LorentzIndex[si, D], D].(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID74","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID74","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D].
  	DiracGamma[LorentzIndex[si, D], D].(1/2 + DiracGamma[5]/2)"},
@@ -226,11 +226,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	DiracGamma[LorentzIndex[si]].(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID77","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID77","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],D].
  	DiracGamma[LorentzIndex[si, D], D].(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID78","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID78","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
     "(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],D].
  	DiracGamma[LorentzIndex[si, D], D].(1/2 - DiracGamma[5]/2)"},
@@ -242,11 +242,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID81","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID81","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID82","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID82","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 + DiracGamma[5]/2)1"},
@@ -258,11 +258,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID85","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID85","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID86","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID86","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 - DiracGamma[5]/2)1"},
@@ -298,11 +298,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID97","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID97","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID98","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, 7]]",
+{"fcstDiracTrickCoreProperties-ID98","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho].GA[7]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 - DiracGamma[5]/2)1"},
@@ -314,11 +314,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
 	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID101","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID101","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID102","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, 6]]",
+{"fcstDiracTrickCoreProperties-ID102","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho].GA[6]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].(1/2 + DiracGamma[5]/2)1"},
@@ -330,11 +330,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	DiracGamma[LorentzIndex[si]].(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID105","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID105","DiracTrick[GA[6].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].DiracGamma[LorentzIndex[si, D], D].(1/2 + DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID106","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si, 6]]",
+{"fcstDiracTrickCoreProperties-ID106","DiracTrick[GA[6].(GA[mu] + 2 m).GAD[nu, rho, si].GA[6]]",
 	"(1/2 + DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
   	D].DiracGamma[LorentzIndex[si, D], D].(1/2 + DiracGamma[5]/2)"},
@@ -346,11 +346,11 @@ fcstDiracTrickCoreProperties = {
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
  	DiracGamma[LorentzIndex[nu]].DiracGamma[LorentzIndex[rho]].
  	DiracGamma[LorentzIndex[si]].(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID109","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID109","DiracTrick[GA[7].(GAD[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu, D], D]).
 	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
 	D].DiracGamma[LorentzIndex[si, D], D].(1/2 - DiracGamma[5]/2)"},
-{"fcstDiracTrickCoreProperties-ID110","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si, 7]]",
+{"fcstDiracTrickCoreProperties-ID110","DiracTrick[GA[7].(GA[mu] + 2 m).GAD[nu, rho, si].GA[7]]",
 	"(1/2 - DiracGamma[5]/2).(2*m + DiracGamma[LorentzIndex[mu]]).
 	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D],
 	D].DiracGamma[LorentzIndex[si, D], D].(1/2 - DiracGamma[5]/2)"},

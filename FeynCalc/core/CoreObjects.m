@@ -494,6 +494,11 @@ contains Heads which may appear inside Momentum and need special treatment."
 $FCLorentzIndexSubHeads::"usage" ="$FCLorentzIndexSubHeads is a pattern that
 contains Heads which may appear inside LorentzIndex and need special treatment."
 
+DiracGamma::gamma5fail =
+"`1` is forbidden in FeynCalc. You should always use 4-dimensional Gamma^5 or chiral projectors. \
+This is fine for all dimensional regularization schemes supported by FeynCalc including NDR. \
+Evaluation aborted!";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -665,10 +670,17 @@ DiracGamma[x_ LorentzIndex[pe_, di___], dii___]:=
 DiracGamma[x_[y_, di___], 4]:=
 	DiracGamma[x[y,di]];
 
-DiracGamma[5, __] := DiracGamma[5];
-DiracGamma[6, __] := DiracGamma[6];
-DiracGamma[7, __] := DiracGamma[7];
-DiracGamma[_, 0] := 0;
+DiracGamma[x_Integer, y___]:=
+	DiracGamma[ExplicitLorentzIndex[x],y]/; (x=!=5 && x=!=6 && x=!=7);
+
+DiracGamma[(n:5|6|7), 4]:=
+	DiracGamma[n];
+
+DiracGamma[(n:5|6|7), dim_]:=
+	Message[DiracGamma::gamma5fail, ToString[DiracGamma[ToString[n],ToString[dim]]]];
+
+DiracGamma[_, 0]:=
+	0;
 (*Why?? F.Orellana, 21/11-2003*)
 (*DiracGamma[0] = 0;
 DiracGamma[0, _]:= 0;*)

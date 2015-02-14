@@ -207,6 +207,17 @@ DiracGamma[HighEnergyPhysics`FeynCalc`CoreObjects`Private`a]}"},
 		ExplicitSUNFIndex[HighEnergyPhysics`FeynCalc`CoreObjects`Private`i]}"}
 }
 
+fcstCoreObjectsMessages = {
+{"fcstCoreObjectsMessages-I1", "DiracGamma[5, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, D]]}"},
+{"fcstCoreObjectsBehavior-I2", "DiracGamma[6, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[6, D]]}"},
+{"fcstCoreObjectsBehavior-I3", "DiracGamma[7, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[7, D]]}"},
+{"fcstCoreObjectsMessages-I4", "GAD[5]", "Null", "{Message[DiracGamma::gamma5fail, GAD[5]]}"},
+{"fcstCoreObjectsBehavior-I5", "GAD[6]", "Null", "{Message[DiracGamma::gamma5fail, GAD[6]]}"},
+{"fcstCoreObjectsBehavior-I6", "GAD[7]", "Null", "{Message[DiracGamma::gamma5fail, GAD[7]]}"},
+{"fcstCoreObjectsMessages-I7", "DiracMatrix[5, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, Dimension -> D]]}"},
+{"fcstCoreObjectsBehavior-I8", "DiracMatrix[6, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[6, Dimension -> D]]}"},
+{"fcstCoreObjectsBehavior-I9", "DiracMatrix[7, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[7, Dimension -> D]]}"}
+}
 
 fcstCoreObjectsBehavior = {
 {"fcstCoreObjectsBehavior-ID1", "ChiralityProjector[1]", "DiracGamma[6]"},
