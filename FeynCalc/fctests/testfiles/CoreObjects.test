@@ -219,7 +219,10 @@ fcstCoreObjectsBehavior = {
 {"fcstCoreObjectsBehavior-ID8", "DiracGamma[]", "1"},
 {"fcstCoreObjectsBehavior-ID9", "DiracGamma[a*Momentum[p, D1], D2]", "a DiracGamma[Momentum[p, D1], D2]"},
 {"fcstCoreObjectsBehavior-ID10", "DiracGamma[a LorentzIndex[mu, D1], D2]","a DiracGamma[LorentzIndex[mu, D1], D2]"},
-	{"fcstCoreObjectsBehavior-ID10.1","DiracGamma[func[p, D], 4]"," DiracGamma[func[p, D]]"},
+	{"fcstCoreObjectsBehavior-ID10.1","DiracGamma[LorentzIndex[p, D], 4]"," DiracGamma[LorentzIndex[p, D]]"},
+	{"fcstCoreObjectsBehavior-ID10.2","DiracGamma[ExplicitLorentzIndex[p, D], 4]"," DiracGamma[ExplicitLorentzIndex[p, D]]"},
+	{"fcstCoreObjectsBehavior-ID10.3","DiracGamma[Momentum[p, D], 4]"," DiracGamma[Momentum[p, D]]"},
+	{"fcstCoreObjectsBehavior-ID10.4","DiracGamma[func[p, D], 4]"," DiracGamma[func[p, D],4]"},
 {"fcstCoreObjectsBehavior-ID14", "DiracGamma[x, 0]", "0"}, {"fcstCoreObjectsBehavior-ID15", "DiracGamma[a + b + c]", "DiracGamma[a] + DiracGamma[b] + DiracGamma[c]"},
 {"fcstCoreObjectsBehavior-ID16", "DiracGamma[Momentum[p1, D1], Momentum[p2, D2]]", "DiracGamma[Momentum[p1, D1], D1].DiracGamma[Momentum[p2, D2], D2]"},
 {"fcstCoreObjectsBehavior-ID17", "DiracGamma[Momentum[p1, D1], Momentum[p2, D2], LorentzIndex[mu]]",
@@ -384,7 +387,9 @@ fcstCoreObjectsBehavior = {
 {"fcstCoreObjectsBehavior-ID140", "Momentum[ x , 4]", " Momentum[x]"},
 {"fcstCoreObjectsBehavior-ID141", "Momentum[ 0 , a]", " 0"},
 {"fcstCoreObjectsBehavior-ID142", "Momentum[ a, 0]", " 0"},
-{"fcstCoreObjectsBehavior-ID143", "Momentum[Momentum[x, D], a, b, c]", "Momentum[x, D]"},
+{"fcstCoreObjectsBehavior-ID143", "Momentum[Momentum[x, D], D]", "Momentum[x, D]"},
+{"fcstCoreObjectsBehavior-ID143-1", "Momentum[Momentum[x]]", "Momentum[x]"},
+{"fcstCoreObjectsBehavior-ID143-2", "Momentum[Momentum[x,D],D-4]", "Momentum[x,{D,D-4}]"},
 {"fcstCoreObjectsBehavior-ID144", "MT[Momentum[a], Momentum[b]]", " SP[a, b]"},
 {"fcstCoreObjectsBehavior-ID145", "MT[Momentum[a, D], Momentum[b, D]]", " SPD[a, b]"},
 {"fcstCoreObjectsBehavior-ID145.1", "MT[Momentum[a, D-4], Momentum[b, D-4]]", " SPE[a, b]"},
@@ -526,4 +531,3291 @@ fcstCoreObjectsBehavior = {
 {"fcstCoreObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"}
 }
 
+fcstCoreObjectsTypesetting = {
+{"fcstCoreObjectsTypesetting-ID1", MakeBoxes[CA,TraditionalForm],
+		SubscriptBox["C", "A"]},
+{"fcstCoreObjectsTypesetting-ID2", MakeBoxes[CF,TraditionalForm],
+		SubscriptBox["C", "F"]},
+{"fcstCoreObjectsTypesetting-ID3",
+		MakeBoxes[AntiQuarkField,TraditionalForm],
+		OverscriptBox["\[Psi]", "_"]},
+{"fcstCoreObjectsTypesetting-ID4",
+		MakeBoxes[ChiralityProjector[1, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["6", TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID5",
+		MakeBoxes[ChiralityProjector[-1, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["7", TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID6",
+		MakeBoxes[ComplexIndex[x],TraditionalForm],
+		SuperscriptBox["x", "*"]},
+{"fcstCoreObjectsTypesetting-ID7",
+		MakeBoxes[DeltaFunction[x - y],TraditionalForm],
+		RowBox[List["\[Delta]", "(",
+			FormBox[RowBox[List["x", "-", "y"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID8",
+		MakeBoxes[DeltaFunctionPrime[x - y],TraditionalForm],
+		RowBox[List[SuperscriptBox["\[Delta]", "\[Prime]"], "(",
+			FormBox[RowBox[List["x", "-", "y"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID9",
+		MakeBoxes[DeltaFunctionDoublePrime[x - y],TraditionalForm],
+		RowBox[List[SuperscriptBox["\[Delta]", "\[DoublePrime]"], "(",
+			FormBox[RowBox[List["x", "-", "y"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID10",
+		MakeBoxes[DiracGamma[Momentum[p]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+			FormBox[OverscriptBox["p", "_"], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID11",
+		MakeBoxes[DiracGamma[Momentum[p, D], D],TraditionalForm],
+		RowBox[List["\[Gamma]", "\[CenterDot]",
+			FormBox["p", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID12",
+		MakeBoxes[DiracGamma[Momentum[p, -4 + D], -4 + \
+	D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+			FormBox[OverscriptBox["p", "^"], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID13",
+		MakeBoxes[DiracGamma[Momentum[p, D1], D2],TraditionalForm],
+		RowBox[List[SubscriptBox["\[Gamma]", "D2"], "\[CenterDot]",
+			FormBox["p", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID14",
+		MakeBoxes[DiracGamma[Momentum[p + q]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(",
+			FormBox[FormBox[
+				RowBox[List[OverscriptBox["p", "_"], "+",
+					OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID15",
+		MakeBoxes[DiracGamma[Momentum[p + q, D], D],TraditionalForm],
+		RowBox[List["\[Gamma]", "\[CenterDot]", "(",
+			FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID16",
+		MakeBoxes[DiracGamma[Momentum[p + q, -4 + D], -4 + \
+	D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", "(",
+			FormBox[FormBox[
+				RowBox[List[OverscriptBox["p", "^"], "+",
+					OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID17",
+		MakeBoxes[DiracGamma[Momentum[p + q, D1], D2],TraditionalForm],
+		RowBox[List[SubscriptBox["\[Gamma]", "D2"], "\[CenterDot]", "(",
+			FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID18",
+		MakeBoxes[DiracGamma[Momentum[Polarization[p, \
+	I]]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+			FormBox[RowBox[
+				List[OverscriptBox["\[CurlyEpsilon]", "_"], "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID19",
+		MakeBoxes[DiracGamma[Momentum[Polarization[p, I], D], \
+	D],TraditionalForm],
+		RowBox[List["\[Gamma]", "\[CenterDot]",
+			FormBox[RowBox[
+				List["\"\[CurlyEpsilon]\"", "(", FormBox["p", TraditionalForm],
+					")"]], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID20",
+		MakeBoxes[DiracGamma[Momentum[Polarization[p, I], -4 + D], -4 + \
+	D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+			FormBox[RowBox[
+				List[OverscriptBox["\[CurlyEpsilon]", "^"], "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID21",
+		MakeBoxes[DiracGamma[LorentzIndex[a]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["a", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID22",
+		MakeBoxes[DiracGamma[LorentzIndex[a, D], D],TraditionalForm],
+		SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["a", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID23",
+		MakeBoxes[DiracGamma[LorentzIndex[a, -4 + D], -4 + D],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["a", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID24",
+		ToBoxes[DiracGamma[LorentzIndex[Upper[a]]], TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]],TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID25",
+		MakeBoxes[DiracGamma[LorentzIndex[Upper[a], D], \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID26",
+		MakeBoxes[DiracGamma[LorentzIndex[Upper[a], -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID27",
+		MakeBoxes[DiracGamma[LorentzIndex[Lower[a]]],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID28",
+		MakeBoxes[DiracGamma[LorentzIndex[Lower[a], D], \
+	D],TraditionalForm],
+		SubscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID29",
+		MakeBoxes[DiracGamma[LorentzIndex[Lower[a], -4 + D], -4 + \
+	D],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID30",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[3]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID31",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, D], \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID32",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID33",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[Upper[3]]],\
+	TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox[FormBox["3", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID34",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[Upper[3], D], \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox[FormBox["3", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID35",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[Upper[3], -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox[FormBox["3", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID36",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[Lower[3]]],\
+	TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox[FormBox["3", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID37",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[Lower[3], D], \
+	D],TraditionalForm],
+		SubscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox[FormBox["3", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID38",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[Lower[3], -4 + D], -4 + \
+	D],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox[FormBox["3", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID39",
+		MakeBoxes[DiracGamma[5],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["5", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID40",
+		MakeBoxes[DiracGamma[6],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["6", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID41",
+		MakeBoxes[DiracGamma[7],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["7", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID42",
+		MakeBoxes[DiracGammaT[Momentum[p]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+					FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID43",
+		MakeBoxes[DiracGammaT[Momentum[p, D], D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List["\[Gamma]", "\[CenterDot]",
+					FormBox["p", TraditionalForm]]], TraditionalForm], ")"]],
+			"T"]},
+{"fcstCoreObjectsTypesetting-ID44",
+		MakeBoxes[DiracGammaT[Momentum[p, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+					FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID45",
+		MakeBoxes[DiracGammaT[Momentum[p, D1], D2],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List[SubscriptBox["\[Gamma]", "D2"], "\[CenterDot]",
+					FormBox["p", TraditionalForm]]], TraditionalForm], ")"]],
+			"T"]},
+{"fcstCoreObjectsTypesetting-ID46",
+		MakeBoxes[DiracGammaT[Momentum[p + q]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(",
+					FormBox[FormBox[
+						RowBox[List[OverscriptBox["p", "_"], "+",
+							OverscriptBox["q", "_"]]], TraditionalForm],
+						TraditionalForm], ")"]], TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID47",
+		MakeBoxes[DiracGammaT[Momentum[p + q, D], D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List["\[Gamma]", "\[CenterDot]", "(",
+					FormBox[FormBox[RowBox[List["p", "+", "q"]],
+						TraditionalForm], TraditionalForm], ")"]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID48",
+		MakeBoxes[DiracGammaT[Momentum[p + q, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", "(",
+					FormBox[FormBox[
 
+						RowBox[List[OverscriptBox["p", "^"], "+",
+							OverscriptBox["q", "^"]]], TraditionalForm],
+						TraditionalForm], ")"]], TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID49",
+		MakeBoxes[DiracGammaT[Momentum[p + q, D1], D2],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[RowBox[
+					List[SubscriptBox["\[Gamma]", "D2"], "\[CenterDot]", "(",
+					FormBox[FormBox[RowBox[List["p", "+", "q"]],
+						TraditionalForm], TraditionalForm], ")"]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID50",
+		MakeBoxes[DiracGammaT[LorentzIndex[a]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox[FormBox["a", TraditionalForm], TraditionalForm]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID51",
+		MakeBoxes[DiracGammaT[LorentzIndex[a, D], D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[
+				SuperscriptBox[RowBox[List["\[Gamma]"]],
+					FormBox[FormBox["a", TraditionalForm], TraditionalForm]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID52",
+		MakeBoxes[DiracGammaT[LorentzIndex[a, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+					FormBox[FormBox["a", TraditionalForm], TraditionalForm]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID53",
+		MakeBoxes[DiracGammaT[LorentzIndex[Upper[a]]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID54",
+		MakeBoxes[DiracGammaT[LorentzIndex[Upper[a], D], \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[
+				SuperscriptBox[RowBox[List["\[Gamma]"]],
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID55",
+		MakeBoxes[DiracGammaT[LorentzIndex[Upper[a], -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID56",
+		MakeBoxes[DiracGammaT[LorentzIndex[Lower[a]]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SubscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID57",
+		MakeBoxes[DiracGammaT[LorentzIndex[Lower[a], D], \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SubscriptBox[RowBox[List["\[Gamma]"]],
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID58",
+		MakeBoxes[DiracGammaT[LorentzIndex[Lower[a], -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SubscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID59",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[3]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox[FormBox["3", TraditionalForm], TraditionalForm]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID60",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[3, D], \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[RowBox[List["\[Gamma]"]],
+					FormBox[FormBox["3", TraditionalForm], TraditionalForm]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID61",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[3, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+					FormBox[FormBox["3", TraditionalForm], TraditionalForm]],
+				TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID62",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Upper[3]]],\
+	TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox[FormBox[FormBox["3", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID63",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Upper[3], D], \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[RowBox[List["\[Gamma]"]],
+					FormBox[FormBox[FormBox["3", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID64",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Upper[3], -4 + D], -4 \
+	+ D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+					FormBox[FormBox[FormBox["3", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID65",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Lower[3]]],\
+	TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SubscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox[FormBox[FormBox["3", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID66",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Lower[3], D], \
+	D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SubscriptBox[RowBox[List["\[Gamma]"]],
+					FormBox[FormBox[FormBox["3", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID67",
+		MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Lower[3], -4 + D], -4 \
+	+ D],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SubscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+					FormBox[FormBox[FormBox["3", TraditionalForm],
+						TraditionalForm], TraditionalForm]], TraditionalForm],
+				")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID68",
+		MakeBoxes[DiracGammaT[5],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox["5", TraditionalForm]], TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID69",
+		MakeBoxes[DiracGammaT[6],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox["6", TraditionalForm]], TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID70",
+		MakeBoxes[DiracGammaT[7],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[SuperscriptBox[
+					RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+					FormBox["7", TraditionalForm]], TraditionalForm], ")"]], "T"]},
+{"fcstCoreObjectsTypesetting-ID71",
+		MakeBoxes[DiracGamma[LorentzIndex[i]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID72",
+		MakeBoxes[DiracGamma[LorentzIndex[i, D], D],TraditionalForm],
+		SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID73",
+		MakeBoxes[DiracGamma[LorentzIndex[i, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID74",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[3]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID75",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, D], \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID76",
+		MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, -4 + D], -4 + \
+	D],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID77",
+		MakeBoxes[DiracGamma[5],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["5", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID78",
+		MakeBoxes[DiracGamma[6],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["6", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID79",
+		MakeBoxes[DiracGamma[7],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["7", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID80",
+		MakeBoxes[DiracMatrix[i, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID81",
+		MakeBoxes[DiracMatrix[i, FeynCalcInternal -> False, Dimension -> \
+	D],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID82",
+		MakeBoxes[DiracMatrix[i, FeynCalcInternal -> False, Dimension -> \
+	-4 + D],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID83",
+		MakeBoxes[DiracMatrix[3, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID84",
+		MakeBoxes[DiracMatrix[3, FeynCalcInternal -> False, Dimension -> \
+	D],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID85",
+		MakeBoxes[DiracMatrix[3, FeynCalcInternal -> False, Dimension -> \
+	-4 + D],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["3", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID86",
+		MakeBoxes[DiracMatrix[5, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["5", TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID87",
+		MakeBoxes[DiracMatrix[6, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["6", TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID88",
+		MakeBoxes[DiracMatrix[7, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["7", TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID89",
+		MakeBoxes[DiracGamma[Momentum[p]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+			FormBox[OverscriptBox["p", "_"], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID90",
+		MakeBoxes[DiracGamma[Momentum[p, D], D],TraditionalForm],
+		RowBox[List["\[Gamma]", "\[CenterDot]",
+			FormBox["p", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID91",
+		MakeBoxes[DiracGamma[Momentum[p, -4 + D], -4 + \
+	D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+			FormBox[OverscriptBox["p", "^"], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID92",
+		MakeBoxes[DiracGamma[Momentum[p + q]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(",
+			FormBox[FormBox[
+				RowBox[List[OverscriptBox["p", "_"], "+",
+					OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID93",
+		MakeBoxes[DiracGamma[Momentum[p + q, D], D],TraditionalForm],
+		RowBox[List["\[Gamma]", "\[CenterDot]", "(",
+			FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID94",
+		MakeBoxes[DiracGamma[Momentum[p + q, -4 + D], -4 + \
+	D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", "(",
+			FormBox[FormBox[
+				RowBox[List[OverscriptBox["p", "^"], "+",
+					OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID95",
+		MakeBoxes[DiracSlash[p, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+				FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID96",
+		MakeBoxes[DiracSlash[p, FeynCalcInternal -> False, Dimension -> \
+	D],TraditionalForm],
+		FormBox[RowBox[
+			List["\[Gamma]", "\[CenterDot]", FormBox["p", TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID97",
+		MakeBoxes[DiracSlash[p, FeynCalcInternal -> False, Dimension -> \
+	-4 + D],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+				FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID98",
+		MakeBoxes[DiracSlash[p + q, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID99",
+		MakeBoxes[DiracSlash[p + q, FeynCalcInternal -> False, Dimension -> \
+	D],TraditionalForm],
+		FormBox[RowBox[
+			List["\[Gamma]", "\[CenterDot]", "(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID100",
+		MakeBoxes[DiracSlash[p + q, FeynCalcInternal -> False, Dimension -> \
+	-4 + D],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", "(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID101",
+		MakeBoxes[DiracGamma[Momentum[Polarization[p, \
+	I]]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+			FormBox[RowBox[
+				List[OverscriptBox["\[CurlyEpsilon]", "_"], "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID102",
+		MakeBoxes[DiracGamma[Momentum[Polarization[p, I], D], \
+	D],TraditionalForm],
+		RowBox[List["\[Gamma]", "\[CenterDot]",
+			FormBox[RowBox[
+				List["\"\[CurlyEpsilon]\"", "(", FormBox["p", TraditionalForm],
+					")"]], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID103",
+		MakeBoxes[DiracGamma[Momentum[Polarization[p, I], -4 + D], -4 + \
+	D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+			FormBox[RowBox[
+				List[OverscriptBox["\[CurlyEpsilon]", "^"], "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID104",
+		MakeBoxes[DiracSlash[Polarization[p, I], FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+				FormBox[RowBox[
+					List[OverscriptBox["\[CurlyEpsilon]", "_"], "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID105",
+		MakeBoxes[DiracSlash[Polarization[p, I], FeynCalcInternal -> \
+	False, Dimension -> D],TraditionalForm],
+		FormBox[RowBox[
+			List["\[Gamma]", "\[CenterDot]",
+				FormBox[RowBox[
+					List["\"\[CurlyEpsilon]\"", "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID106",
+		MakeBoxes[DiracSlash[Polarization[p, I], FeynCalcInternal -> \
+	False, Dimension -> -4 + D],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+				FormBox[RowBox[
+					List[OverscriptBox["\[CurlyEpsilon]", "^"], "(",
+					FormBox["p", TraditionalForm], ")"]], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID107",
+		MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a]], \
+	DiracGamma[LorentzIndex[b]]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID108",
+		MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, D], D], \
+	DiracGamma[LorentzIndex[b, D], D]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID109",
+		MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, -4 + D], -4 + D], \
+	DiracGamma[LorentzIndex[b, -4 + D], -4 + D]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID110",
+		MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a]], \
+	DiracGamma[LorentzIndex[b]]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID111",
+		MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, D], D], \
+	DiracGamma[LorentzIndex[b, D], D]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID112",
+		MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, -4 + D], -4 + D], \
+	DiracGamma[LorentzIndex[b, -4 + D], -4 + D]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID113",
+		MakeBoxes[DiracSigma[DiracGamma[Momentum[a]], \
+	DiracGamma[Momentum[b]]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+				FormBox[OverscriptBox["b", "_"], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID114",
+		MakeBoxes[DiracSigma[DiracGamma[Momentum[a, D], D], \
+	DiracGamma[Momentum[b, D], D]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[FormBox["a", TraditionalForm],
+				FormBox["b", TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID115",
+		MakeBoxes[DiracSigma[DiracGamma[Momentum[a, -4 + D], -4 + D], \
+	DiracGamma[Momentum[b, -4 + D], -4 + D]],TraditionalForm],
+		SuperscriptBox["\[Sigma]",
+			RowBox[List[FormBox[OverscriptBox["a", "^"], TraditionalForm],
+				FormBox[OverscriptBox["b", "^"], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID116",
+		MakeBoxes[Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], \
+	LorentzIndex[d]],TraditionalForm],
+		SuperscriptBox["\[Epsilon]",
+			RowBox[List[
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["c", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["d", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID117",
+		MakeBoxes[Eps[Momentum[a], Momentum[b], Momentum[c], \
+	Momentum[d]],TraditionalForm],
+		SuperscriptBox["\[Epsilon]",
+			RowBox[List[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+				FormBox[OverscriptBox["b", "_"], TraditionalForm],
+				FormBox[OverscriptBox["c", "_"], TraditionalForm],
+				FormBox[OverscriptBox["d", "_"], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID118",
+		MakeBoxes[Eps[Momentum[Polarization[a, I]], Momentum[b], \
+	Momentum[c], Momentum[Polarization[d, I]]],TraditionalForm],
+		SuperscriptBox["\[Epsilon]",
+			RowBox[List[
+				FormBox[RowBox[
+					List[OverscriptBox["\[CurlyEpsilon]", "_"], "(",
+					FormBox["a", TraditionalForm], ")"]], TraditionalForm],
+				FormBox[OverscriptBox["b", "_"], TraditionalForm],
+				FormBox[OverscriptBox["c", "_"], TraditionalForm],
+				FormBox[RowBox[
+					List[OverscriptBox["\[CurlyEpsilon]", "_"], "(",
+					FormBox["d", TraditionalForm], ")"]], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID119",
+		MakeBoxes[Epsilon,TraditionalForm],
+		TagBox["\[CurlyEpsilon]", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID120",
+		MakeBoxes[ExplicitLorentzIndex[i],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID121",
+		MakeBoxes[ExplicitLorentzIndex[Upper[i]],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID122",
+		MakeBoxes[ExplicitLorentzIndex[Lower[i]],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID123",
+		MakeBoxes[ExplicitLorentzIndex[i, D],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID124",
+		MakeBoxes[ExplicitLorentzIndex[Upper[i], D],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID125",
+		MakeBoxes[ExplicitLorentzIndex[Lower[i], D],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID126",
+		MakeBoxes[ExplicitSUNIndex[i],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID127",
+		MakeBoxes[ExplicitSUNFIndex[i],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID128",
+		MakeBoxes[FAD[p],TraditionalForm],
+		FormBox[FractionBox["1",
+			InterpretationBox[
+				RowBox[List["\"[\"", "\[InvisibleSpace]",
+					SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"]\""]],
+				SequenceForm["[", Power[p, 2], "]"], Rule[Editable, False]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID129",
+		MakeBoxes[FAD[p, q],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[p, 2], "]"], Rule[Editable, False]],
+						")"]], " ",
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["q", "2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[q, 2], "]"], Rule[Editable, False]],
+						")"]]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID130",
+		MakeBoxes[FAD[p, -l + q],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[p, 2], "]"], Rule[Editable, False]],
+						")"]], " ",
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox[
+							RowBox[List["(", RowBox[List["q", "-", "l"]], ")"]],
+							"2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[Plus[Times[-1, l], q], 2], "]"],
+						Rule[Editable, False]], ")"]]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID131",
+		MakeBoxes[FAD[{p, m}],TraditionalForm],
+		FormBox[FractionBox["1",
+			InterpretationBox[
+				RowBox[List["\"[\"", "\[InvisibleSpace]",
+					SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"-\"",
+					"\[InvisibleSpace]", SuperscriptBox["m", "2"],
+					"\[InvisibleSpace]", "\"]\""]],
+				SequenceForm["[", Power[p, 2], "-", Power[m, 2], "]"],
+				Rule[Editable, False]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID132",
+		MakeBoxes[FAD[{p, m}, {q, m}],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"-\"",
+							"\[InvisibleSpace]", SuperscriptBox["m", "2"],
+							"\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[p, 2], "-", Power[m, 2], "]"],
+						Rule[Editable, False]], ")"]], " ",
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["q", "2"], "\[InvisibleSpace]", "\"-\"",
+							"\[InvisibleSpace]", SuperscriptBox["m", "2"],
+							"\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[q, 2], "-", Power[m, 2], "]"],
+						Rule[Editable, False]], ")"]]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID133",
+		MakeBoxes[FAD[{p, m}, {-l + q, m}],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"-\"",
+							"\[InvisibleSpace]", SuperscriptBox["m", "2"],
+							"\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[p, 2], "-", Power[m, 2], "]"],
+						Rule[Editable, False]], ")"]], " ",
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox[
+							RowBox[List["(", RowBox[List["q", "-", "l"]], ")"]],
+							"2"], "\[InvisibleSpace]", "\"-\"", "\[InvisibleSpace]",
+							SuperscriptBox["m", "2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[Plus[Times[-1, l], q], 2], "-",
+						Power[m, 2], "]"], Rule[Editable, False]], ")"]]]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID134",
+		MakeBoxes[FAD[{p, m}, q],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[
+				RowBox[
+					List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["q", "2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[q, 2], "]"], Rule[Editable, False]],
+						")"]], " ",
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"-\"",
+							"\[InvisibleSpace]", SuperscriptBox["m", "2"],
+							"\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[p, 2], "-", Power[m, 2], "]"],
+						Rule[Editable, False]], ")"]]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID135",
+		MakeBoxes[FAD[{p, m}, -l + q],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox[
+							RowBox[List["(", RowBox[List["q", "-", "l"]], ")"]],
+							"2"], "\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[Plus[Times[-1, l], q], 2], "]"],
+						Rule[Editable, False]], ")"]], " ",
+				RowBox[
+					List["(",
+					InterpretationBox[
+						RowBox[List["\"[\"", "\[InvisibleSpace]",
+							SuperscriptBox["p", "2"], "\[InvisibleSpace]", "\"-\"",
+							"\[InvisibleSpace]", SuperscriptBox["m", "2"],
+							"\[InvisibleSpace]", "\"]\""]],
+						SequenceForm["[", Power[p, 2], "-", Power[m, 2], "]"],
+						Rule[Editable, False]], ")"]]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID136",
+		MakeBoxes[FeynAmp[q, x],TraditionalForm],
+		RowBox[List[
+			RowBox[List["\[Integral]",
+				RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q"]]]],
+			"(", "x", ")"]]},
+{"fcstCoreObjectsTypesetting-ID137",
+		MakeBoxes[FeynAmp[a[b], q, x],TraditionalForm],
+		FormBox[RowBox[
+			List[RowBox[
+				List["\[Integral]",
+					RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q"]]]],
+				"(", "x", ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID138",
+		MakeBoxes[FeynAmp[q1, q2, x],TraditionalForm],
+		RowBox[List[
+			RowBox[List["\[Integral]",
+				RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q1"]]]],
+			RowBox[
+				List["\[Integral]",
+				RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q2"]]]],
+			"(", "x", ")"]]},
+{"fcstCoreObjectsTypesetting-ID139",
+		MakeBoxes[FeynAmp[a[b], q1, q2, x],TraditionalForm],
+		FormBox[RowBox[
+			List[RowBox[
+				List["\[Integral]",
+					RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q1"]]]],
+				RowBox[List["\[Integral]",
+					RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q2"]]]],
+				"(", "x", ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID140",
+		MakeBoxes[FeynAmp[q1, q2, q3, x],TraditionalForm],
+		RowBox[List[
+			RowBox[List["\[Integral]",
+				RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q1"]]]],
+			RowBox[List["\[Integral]",
+				RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q2"]]]],
+			RowBox[List["\[Integral]",
+				RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q3"]]]],
+			"(", "x", ")"]]},
+{"fcstCoreObjectsTypesetting-ID141",
+		MakeBoxes[FeynAmp[a[b], q1, q2, q3, x],TraditionalForm],
+		FormBox[
+			RowBox[List[
+				RowBox[List["\[Integral]",
+					RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q1"]]]],
+				RowBox[List["\[Integral]",
+					RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q2"]]]],
+				RowBox[List["\[Integral]",
+					RowBox[List[SuperscriptBox["\[DifferentialD]", "D"], "q3"]]]],
+				"(", "x", ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID142",
+		MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, \
+	0]],TraditionalForm], FractionBox["1", SuperscriptBox["p", "2"]]},
+{"fcstCoreObjectsTypesetting-ID143",
+		MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, \
+	m]],TraditionalForm],
+		FractionBox["1",
+			RowBox[List[SuperscriptBox["p", "2"], "-",
+				SuperscriptBox["m", "2"]]]]},
+{"fcstCoreObjectsTypesetting-ID144",
+		MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
+	PropagatorDenominator[-p + q, 0]],TraditionalForm],
+		FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					RowBox[List[SuperscriptBox["p", "2"], "-",
+						SuperscriptBox["m", "2"]]], ")"]], ".",
+				SuperscriptBox[
+				RowBox[List["(", RowBox[List["q", "-", "p"]], ")"]], "2"]]]]},
+{"fcstCoreObjectsTypesetting-ID145",
+		MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
+	PropagatorDenominator[-p + q, m]],TraditionalForm],
+		FractionBox["1",
+			RowBox[List[
+				RowBox[List["(",
+					RowBox[List[SuperscriptBox["p", "2"], "-",
+						SuperscriptBox["m", "2"]]], ")"]], ".",
+				RowBox[List["(",
+					RowBox[List[
+						SuperscriptBox[
+						RowBox[List["(", RowBox[List["q", "-", "p"]], ")"]], "2"],
+						"-", SuperscriptBox["m", "2"]]], ")"]]]]]},
+{"fcstCoreObjectsTypesetting-ID146",
+		MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["a", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID147",
+		MakeBoxes[Pair[LorentzIndex[mu, D], Momentum[a, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[FormBox["a", TraditionalForm]]],
+				FormBox[
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID148",
+		MakeBoxes[Pair[LorentzIndex[mu, -4 + D], Momentum[a, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["a", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID149",
+		MakeBoxes[Pair[LorentzIndex[mu], Momentum[a + \
+	b]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["a", "_"], "+",
+						OverscriptBox["b", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID150",
+		MakeBoxes[Pair[LorentzIndex[mu, D], Momentum[a + b, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["a", "+", "b"]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID151",
+		MakeBoxes[Pair[LorentzIndex[mu, -4 + D], Momentum[a + b, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["a", "^"], "+",
+						OverscriptBox["b", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID152",
+		MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["a", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID153",
+		MakeBoxes[FourVector[a, mu, FeynCalcInternal -> False, Dimension -> \
+	D],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[RowBox[List[FormBox["a", TraditionalForm]]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID154",
+		MakeBoxes[FourVector[a, mu, FeynCalcInternal -> False, Dimension -> \
+	-4 + D],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List[FormBox[OverscriptBox["a", "^"], TraditionalForm]]],
+				FormBox[
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID155",
+		MakeBoxes[FourVector[a + b, mu, FeynCalcInternal -> \
+	False],TraditionalForm],
+		FormBox[
+			FormBox[SuperscriptBox[
+				RowBox[List["(",
+					FormBox[FormBox[
+						RowBox[List[OverscriptBox["a", "_"], "+",
+							OverscriptBox["b", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID156",
+		MakeBoxes[FourVector[a + b, mu, FeynCalcInternal -> False, \
+	Dimension -> D],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List["(",
+					FormBox[FormBox[RowBox[List["a", "+", "b"]], TraditionalForm],
+						TraditionalForm], ")"]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID157",
+		MakeBoxes[FourVector[a + b, mu, FeynCalcInternal -> False, \
+	Dimension -> -4 + D],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List["(",
+					FormBox[FormBox[
+						RowBox[List[OverscriptBox["a", "^"], "+",
+							OverscriptBox["b", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID158",
+		MakeBoxes[FV[p, mu],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+				FormBox[
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID159",
+		MakeBoxes[FVD[p, mu],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID160",
+		MakeBoxes[FVE[p, mu],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+				FormBox[
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID161",
+		MakeBoxes[FV[p + q, mu],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List["(",
+					FormBox[FormBox[
+						RowBox[List[OverscriptBox["p", "_"], "+",
+							OverscriptBox["q", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID162",
+		MakeBoxes[FVD[p + q, mu],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[
+				RowBox[List["(",
+					FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+						TraditionalForm], ")"]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID163",
+		MakeBoxes[FVE[p + q, mu],TraditionalForm],
+		FormBox[
+			FormBox[SuperscriptBox[
+				RowBox[List["(",
+					FormBox[FormBox[
+						RowBox[List[OverscriptBox["p", "^"], "+",
+							OverscriptBox["q", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+				FormBox[FormBox[FormBox["mu", TraditionalForm],
+					TraditionalForm], TraditionalForm]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID164",
+		MakeBoxes[GA[i],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID165",
+		MakeBoxes[GAD[i],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID166",
+		MakeBoxes[GAE[i],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["i", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID167",
+		MakeBoxes[GA[2],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox[FormBox["2", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID168",
+		MakeBoxes[GAD[2],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List["\[Gamma]"]],
+			FormBox[FormBox["2", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID169",
+		MakeBoxes[GAE[2],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "^"]]],
+			FormBox[FormBox["2", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID170",
+		MakeBoxes[GA[5],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[OverscriptBox["\[Gamma]", "_"]]],
+			FormBox["5", TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID171",
+		MakeBoxes[GaugeField,TraditionalForm], "A"},
+{"fcstCoreObjectsTypesetting-ID172",
+		MakeBoxes[GaugeXi,TraditionalForm],
+		TagBox["\[Xi]", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID173",
+		MakeBoxes[GaugeXi[x],TraditionalForm],
+		SubscriptBox["\[Xi]", FormBox["x", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID174",
+		MakeBoxes[GluonField,TraditionalForm], "A"},
+{"fcstCoreObjectsTypesetting-ID175",
+		MakeBoxes[GS[p],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]",
+				FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID176",
+		MakeBoxes[GSD[p],TraditionalForm],
+		FormBox[RowBox[
+			List["\[Gamma]", "\[CenterDot]", FormBox["p", TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID177",
+		MakeBoxes[GSE[p],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]",
+				FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID178",
+		MakeBoxes[GS[p + q],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID179",
+		MakeBoxes[GSD[p + q],TraditionalForm],
+		FormBox[RowBox[
+			List["\[Gamma]", "\[CenterDot]", "(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID180",
+		MakeBoxes[GSE[p + q],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["\[Gamma]", "^"], "\[CenterDot]", "(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID181",
+		MakeBoxes[IFPD[x, y],TraditionalForm],
+		RowBox[List[FormBox["\"(\"", TraditionalForm],
+			FormBox[SuperscriptBox["x", "2"], TraditionalForm],
+			FormBox["\" - \"", TraditionalForm],
+			FormBox[SuperscriptBox["y", "2"], TraditionalForm],
+			FormBox["\")\"", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID182",
+		MakeBoxes[Integratedx[x, 0, 1],TraditionalForm],
+		RowBox[List[
+			SubsuperscriptBox["\[Integral]", FormBox["0", TraditionalForm],
+				FormBox["1", TraditionalForm]], "\[DifferentialD]",
+			TagBox[FormBox["x", TraditionalForm], TraditionalForm,
+				Rule[Editable, True]], "\[VeryThinSpace]"]]},
+{"fcstCoreObjectsTypesetting-ID183",
+		MakeBoxes[LC[a, b, c],TraditionalForm],
+		SuperscriptBox["\[Epsilon]", RowBox[List["a", "b", "c"]]]},
+{"fcstCoreObjectsTypesetting-ID184",
+		MakeBoxes[LC[a, b, c][d, e, f],TraditionalForm],
+		SuperscriptBox["\[Epsilon]",
+			RowBox[List["a", "b", "c", "d", "e", "f"]]]},
+{"fcstCoreObjectsTypesetting-ID185",
+		MakeBoxes[LCD[a, b, c],TraditionalForm],
+		SuperscriptBox["\[Epsilon]", RowBox[List["a", "b", "c"]]]},
+{"fcstCoreObjectsTypesetting-ID186",
+		MakeBoxes[LCD[a, b, c][d, e, f],TraditionalForm],
+		SuperscriptBox["\[Epsilon]",
+			RowBox[List["a", "b", "c", "d", "e", "f"]]]},
+{"fcstCoreObjectsTypesetting-ID187",
+		MakeBoxes[LeftPartialD[LorentzIndex[x]],TraditionalForm],
+		SubscriptBox[OverscriptBox["\[PartialD]", "\[LeftArrow]"],
+			FormBox[FormBox["x", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID188",
+		MakeBoxes[
+		LeftPartialD[Momentum[x]^2 ],TraditionalForm],
+		SubsuperscriptBox[
+			RowBox[List[OverscriptBox["\[PartialD]", "\[LeftArrow]"]]],
+			RowBox[List[" ",
+				FormBox[OverscriptBox["x", "_"], TraditionalForm]]],
+			FormBox["2", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID189",
+		MakeBoxes[LeftRightPartialD[LorentzIndex[x]],TraditionalForm],
+		SubscriptBox[OverscriptBox["\[PartialD]", "\[LeftRightArrow]"],
+			FormBox[FormBox["x", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID190",
+		MakeBoxes[LeftRightPartialD2[LorentzIndex[x]],TraditionalForm],
+		FormBox[SubscriptBox[
+			OverscriptBox["\[PartialD]", "\[LeftRightArrow]"],
+			FormBox[FormBox["x", TraditionalForm], TraditionalForm]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID191",
+		MakeBoxes[LorentzIndex[i],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID192",
+		MakeBoxes[LorentzIndex[i, D],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID193",
+		MakeBoxes[LorentzIndex[i, -4 + D],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID194",
+		MakeBoxes[LorentzIndex[Upper[i]],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID195",
+		MakeBoxes[LorentzIndex[Upper[i], D],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID196",
+		MakeBoxes[LorentzIndex[Upper[i], -4 + D],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID197",
+		MakeBoxes[LorentzIndex[Lower[i]],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID198",
+		MakeBoxes[LorentzIndex[Lower[i], D],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID199",
+		MakeBoxes[LorentzIndex[Lower[i], -4 + D],TraditionalForm],
+		FormBox[FormBox["i", TraditionalForm], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID200",
+		MakeBoxes[Momentum[Polarization[p, I]],TraditionalForm],
+		RowBox[List[OverscriptBox["\[CurlyEpsilon]", "_"], "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID201",
+		MakeBoxes[Momentum[Polarization[p, I], D],TraditionalForm],
+		RowBox[List["\"\[CurlyEpsilon]\"", "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID202",
+		MakeBoxes[Momentum[Polarization[p, I], -4 + D],TraditionalForm],
+		RowBox[List[OverscriptBox["\[CurlyEpsilon]", "^"], "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID203",
+		MakeBoxes[Momentum[OPEDelta],TraditionalForm],
+		FormBox["\[CapitalDelta]", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID204",
+		MakeBoxes[Momentum[p],TraditionalForm],
+		OverscriptBox["p", "_"]},
+{"fcstCoreObjectsTypesetting-ID205",
+		MakeBoxes[Momentum[p, D],TraditionalForm], "p"},
+{"fcstCoreObjectsTypesetting-ID206",
+		MakeBoxes[Momentum[p, -4 + D],TraditionalForm],
+		OverscriptBox["p", "^"]},
+{"fcstCoreObjectsTypesetting-ID207",
+		MakeBoxes[Momentum[p + q],TraditionalForm],
+		FormBox[
+			RowBox[List[OverscriptBox["p", "_"], "+",
+				OverscriptBox["q", "_"]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID208",
+		MakeBoxes[Momentum[p + q, D],TraditionalForm],
+		FormBox[RowBox[List["p", "+", "q"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID209",
+		MakeBoxes[Momentum[p + q, -4 + D],TraditionalForm],
+		FormBox[RowBox[
+			List[OverscriptBox["p", "^"], "+", OverscriptBox["q", "^"]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID210", MakeBoxes[Momentum[Subscript[p,1]]
+							,TraditionalForm],
+		SubscriptBox[FormBox[OverscriptBox["p", "_"], TraditionalForm],
+			"1"]},
+{"fcstCoreObjectsTypesetting-ID211", MakeBoxes[Momentum[Subscript[p,1] , D]
+							,TraditionalForm],
+		SubscriptBox[FormBox["p", TraditionalForm], "1"]},
+{"fcstCoreObjectsTypesetting-ID212",
+		MakeBoxes[Momentum[Subscript[p,1] , -4 + D]
+							,TraditionalForm],
+		SubscriptBox[FormBox[OverscriptBox["p", "^"], TraditionalForm],
+			"1"]},
+{"fcstCoreObjectsTypesetting-ID213", MakeBoxes[
+		Momentum[Superscript[p,1] ],TraditionalForm],
+		SuperscriptBox[FormBox[OverscriptBox["p", "_"], TraditionalForm],
+			"1"]},
+{"fcstCoreObjectsTypesetting-ID214", MakeBoxes[
+		Momentum[Superscript[p,1] , D],TraditionalForm],
+		SuperscriptBox[FormBox["p", TraditionalForm], "1"]},
+{"fcstCoreObjectsTypesetting-ID215", MakeBoxes[
+		Momentum[Superscript[p,1] , -4 + D],TraditionalForm],
+		SuperscriptBox[FormBox[OverscriptBox["p", "^"], TraditionalForm],
+			"1"]},
+{"fcstCoreObjectsTypesetting-ID216", MakeBoxes[Momentum[q + Subscript[p,1] ]
+									,TraditionalForm],
+		FormBox[RowBox[
+			List[SubscriptBox[
+				FormBox[OverscriptBox["p", "_"], TraditionalForm], "1"], "+",
+				OverscriptBox["q", "_"]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID217", MakeBoxes[Momentum[q + Subscript[p,1] , D]
+									,TraditionalForm],
+		FormBox[RowBox[
+			List[SubscriptBox[FormBox["p", TraditionalForm], "1"], "+",
+				"q"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID218",
+		MakeBoxes[Momentum[q + Subscript[p,1] , -4 + D]
+									,TraditionalForm],
+		FormBox[RowBox[
+			List[SubscriptBox[
+				FormBox[OverscriptBox["p", "^"], TraditionalForm], "1"], "+",
+				OverscriptBox["q", "^"]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID219", MakeBoxes[
+		Momentum[q + Superscript[p,1] ],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				FormBox[OverscriptBox["p", "_"], TraditionalForm], "1"], "+",
+				OverscriptBox["q", "_"]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID220", MakeBoxes[
+		Momentum[q + Superscript[p,1] , D],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[FormBox["p", TraditionalForm], "1"], "+",
+				"q"]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID221", MakeBoxes[
+		Momentum[q + Superscript[p,1] , -4 + D],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				FormBox[OverscriptBox["p", "^"], TraditionalForm], "1"], "+",
+				OverscriptBox["q", "^"]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID222",
+		MakeBoxes[MT[a, b],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+				RowBox[List[
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm],
+					FormBox[FormBox[FormBox["b", TraditionalForm],
+						TraditionalForm], TraditionalForm]]]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID223",
+		MakeBoxes[MTD[a, b],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[RowBox[List["g"]],
+				RowBox[List[
+					FormBox[FormBox[FormBox["a", TraditionalForm],
+						TraditionalForm], TraditionalForm],
+					FormBox[FormBox[FormBox["b", TraditionalForm],
+						TraditionalForm], TraditionalForm]]]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID224",
+		MakeBoxes[MTE[a, b],TraditionalForm],
+		FormBox[FormBox[
+			SuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+				RowBox[
+				List[FormBox[
+					FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+					FormBox[FormBox[FormBox["b", TraditionalForm],
+						TraditionalForm], TraditionalForm]]]], TraditionalForm],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID225",
+		MakeBoxes[Nf,TraditionalForm], SubscriptBox["N", "f"]},
+{"fcstCoreObjectsTypesetting-ID226",
+		MakeBoxes[OPE,TraditionalForm], "\[CapitalOmega]"},
+{"fcstCoreObjectsTypesetting-ID227",
+		MakeBoxes[Pair[LorentzIndex[a], \
+	LorentzIndex[b]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm],
+					TraditionalForm], TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm],
+					TraditionalForm], TraditionalForm]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID228",
+		MakeBoxes[Pair[LorentzIndex[Lower[b]], \
+	LorentzIndex[Upper[a]]],TraditionalForm],
+		SubsuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+			TraditionalForm],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID229",
+		MakeBoxes[Pair[LorentzIndex[Upper[a]], \
+	LorentzIndex[Upper[b]]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID230",
+		MakeBoxes[Pair[LorentzIndex[Lower[a]], \
+	LorentzIndex[Lower[b]]],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID231",
+		MakeBoxes[Pair[LorentzIndex[a, D], LorentzIndex[b, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List["g"]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm],
+					TraditionalForm], TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm],
+					TraditionalForm], TraditionalForm]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID232",
+		MakeBoxes[Pair[LorentzIndex[Upper[a], D], LorentzIndex[Upper[b], \
+	D]],TraditionalForm],
+		SuperscriptBox[RowBox[List["g"]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID233",
+		MakeBoxes[Pair[LorentzIndex[Lower[a], D], LorentzIndex[Lower[b], \
+	D]],TraditionalForm],
+		SubscriptBox[RowBox[List["g"]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID234",
+		MakeBoxes[Pair[LorentzIndex[Lower[b], D], LorentzIndex[Upper[a], \
+	D]],TraditionalForm],
+		SubsuperscriptBox[RowBox[List["g"]],
+			FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+			TraditionalForm],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID235",
+		MakeBoxes[Pair[LorentzIndex[a, -4 + D], LorentzIndex[b, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm],
+					TraditionalForm], TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm],
+					TraditionalForm], TraditionalForm]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID236",
+		MakeBoxes[Pair[LorentzIndex[Upper[a], -4 + D], \
+	LorentzIndex[Upper[b], -4 + D]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID237",
+		MakeBoxes[Pair[LorentzIndex[Lower[a], -4 + D], \
+	LorentzIndex[Lower[b], -4 + D]],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID238",
+		MakeBoxes[Pair[LorentzIndex[Lower[b], -4 + D], \
+	LorentzIndex[Upper[a], -4 + D]],TraditionalForm],
+		SubsuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			FormBox[FormBox[FormBox["b", TraditionalForm], TraditionalForm],
+			TraditionalForm],
+			FormBox[FormBox[FormBox["a", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID239",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], \
+	ExplicitLorentzIndex[2]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID240",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	ExplicitLorentzIndex[Upper[2]]],TraditionalForm],
+		SubsuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID241",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+	ExplicitLorentzIndex[Upper[2]]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID242",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	ExplicitLorentzIndex[Lower[2]]],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["g", "_"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID243",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+	ExplicitLorentzIndex[2, D]],TraditionalForm],
+		FormBox[
+			SuperscriptBox[RowBox[List["g"]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID244",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+	ExplicitLorentzIndex[Upper[2], D]],TraditionalForm],
+		SuperscriptBox[RowBox[List["g"]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID245",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+	ExplicitLorentzIndex[Lower[2], D]],TraditionalForm],
+		SubscriptBox[RowBox[List["g"]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID246",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+	ExplicitLorentzIndex[Upper[2], D]],TraditionalForm],
+		SubsuperscriptBox[RowBox[List["g"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID247",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+	ExplicitLorentzIndex[2, -4 + D]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID248",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+	ExplicitLorentzIndex[Upper[2], -4 + D]],TraditionalForm],
+		SuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID249",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	ExplicitLorentzIndex[Lower[2], -4 + D]],TraditionalForm],
+		SubscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			RowBox[List[
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID250",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	ExplicitLorentzIndex[Upper[2], -4 + D]],TraditionalForm],
+		SubsuperscriptBox[RowBox[List[OverscriptBox["g", "^"]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID251",
+		MakeBoxes[
+		Pair[Momentum[a], Momentum[b]]^3,TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				RowBox[List["(",
+					FormBox[RowBox[
+						List[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+						"\[CenterDot]",
+						FormBox[OverscriptBox["b", "_"], TraditionalForm]]],
+					TraditionalForm], ")"]], 3]]]},
+{"fcstCoreObjectsTypesetting-ID252",
+		MakeBoxes[
+		Pair[Momentum[a, D], Momentum[b, D]]^3,TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				RowBox[List["(",
+					FormBox[RowBox[
+						List[FormBox["a", TraditionalForm], "\[CenterDot]",
+						FormBox["b", TraditionalForm]]], TraditionalForm], ")"]],
+				3]]]},
+{"fcstCoreObjectsTypesetting-ID253",
+		MakeBoxes[
+		Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]^3,TraditionalForm],
+		RowBox[
+			List[SuperscriptBox[
+				RowBox[List["(",
+					FormBox[RowBox[
+						List[FormBox[OverscriptBox["a", "^"], TraditionalForm],
+						"\[CenterDot]",
+						FormBox[OverscriptBox["b", "^"], TraditionalForm]]],
+					TraditionalForm], ")"]], 3]]]},
+{"fcstCoreObjectsTypesetting-ID254",
+		MakeBoxes[
+		Pair[Momentum[a + c], Momentum[b + d]]^3,TraditionalForm],
+		RowBox[{SuperscriptBox[
+		   RowBox[{"(",
+		     FormBox[RowBox[{"(",
+		        FormBox[RowBox[{OverscriptBox["a", "_"], "+",
+		           OverscriptBox["c", "_"]}], TraditionalForm], ")",
+		        "\[CenterDot]", "(",
+		        FormBox[RowBox[{OverscriptBox["b", "_"], "+",
+		           OverscriptBox["d", "_"]}], TraditionalForm], ")"}],
+		      TraditionalForm], ")"}], 3]}]
+		},
+{"fcstCoreObjectsTypesetting-ID255",
+		MakeBoxes[
+		Pair[Momentum[a + c, D], Momentum[b + d, D]]^3,TraditionalForm],
+			RowBox[{SuperscriptBox[
+	   RowBox[{"(",
+	     FormBox[RowBox[{"(",
+	        FormBox[RowBox[{"a", "+", "c"}], TraditionalForm], ")",
+	        "\[CenterDot]", "(",
+	        FormBox[RowBox[{"b", "+", "d"}], TraditionalForm], ")"}],
+	      TraditionalForm], ")"}], 3]}]},
+{"fcstCoreObjectsTypesetting-ID256",
+		MakeBoxes[
+		Pair[Momentum[a + c, -4 + D], Momentum[b + d, -4 + \
+	D]]^3,TraditionalForm],
+		RowBox[{SuperscriptBox[
+   RowBox[{"(",
+     FormBox[RowBox[{"(",
+        FormBox[RowBox[{OverscriptBox["a", "^"], "+",
+           OverscriptBox["c", "^"]}], TraditionalForm], ")",
+        "\[CenterDot]", "(",
+        FormBox[RowBox[{OverscriptBox["b", "^"], "+",
+           OverscriptBox["d", "^"]}], TraditionalForm], ")"}],
+      TraditionalForm], ")"}], 3]}]},
+{"fcstCoreObjectsTypesetting-ID257",
+		MakeBoxes[Pair[Momentum[a], Momentum[a]],TraditionalForm],
+		SuperscriptBox[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+			2]},
+{"fcstCoreObjectsTypesetting-ID258",
+		MakeBoxes[Pair[Momentum[a, D], Momentum[a, D]],TraditionalForm],
+		SuperscriptBox[FormBox["a", TraditionalForm], 2]},
+{"fcstCoreObjectsTypesetting-ID259",
+		MakeBoxes[Pair[Momentum[a, -4 + D], Momentum[a, -4 + \
+	D]],TraditionalForm],
+		SuperscriptBox[FormBox[OverscriptBox["a", "^"], TraditionalForm],
+			2]},
+{"fcstCoreObjectsTypesetting-ID260",
+		MakeBoxes[
+		Pair[Momentum[a], Momentum[a]]^3,TraditionalForm],
+		SuperscriptBox[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+			6]},
+{"fcstCoreObjectsTypesetting-ID261",
+		MakeBoxes[
+		Pair[Momentum[a, D], Momentum[a, D]]^3,TraditionalForm],
+		SuperscriptBox[FormBox["a", TraditionalForm], 6]},
+{"fcstCoreObjectsTypesetting-ID262",
+		MakeBoxes[
+		Pair[Momentum[a, -4 + D], Momentum[a, -4 + D]]^3,TraditionalForm],
+		SuperscriptBox[FormBox[OverscriptBox["a", "^"], TraditionalForm],
+			6]},
+{"fcstCoreObjectsTypesetting-ID263",
+		MakeBoxes[Pair[Momentum[a], Momentum[b]],TraditionalForm],
+		RowBox[List[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+			"\[CenterDot]",
+			FormBox[OverscriptBox["b", "_"], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID264",
+		MakeBoxes[Pair[Momentum[a, D], Momentum[b, D]],TraditionalForm],
+		RowBox[List[FormBox["a", TraditionalForm], "\[CenterDot]",
+			FormBox["b", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID265",
+		MakeBoxes[Pair[Momentum[a, -4 + D], Momentum[b, -4 + \
+	D]],TraditionalForm],
+		RowBox[List[FormBox[OverscriptBox["a", "^"], TraditionalForm],
+			"\[CenterDot]",
+			FormBox[OverscriptBox["b", "^"], TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID266",
+		MakeBoxes[Pair[Momentum[a + c], Momentum[b + \
+	d]],TraditionalForm],
+		RowBox[{"(",
+  FormBox[RowBox[{OverscriptBox["a", "_"], "+",
+     OverscriptBox["c", "_"]}], TraditionalForm], ")", "\[CenterDot]",
+   "(", FormBox[
+   RowBox[{OverscriptBox["b", "_"], "+", OverscriptBox["d", "_"]}],
+   TraditionalForm], ")"}]},
+{"fcstCoreObjectsTypesetting-ID267",
+		MakeBoxes[Pair[Momentum[a + c, D], Momentum[b + d, \
+	D]],TraditionalForm],
+		RowBox[{"(", FormBox[RowBox[{"a", "+", "c"}], TraditionalForm], ")",
+  "\[CenterDot]", "(",
+  FormBox[RowBox[{"b", "+", "d"}], TraditionalForm], ")"}]},
+{"fcstCoreObjectsTypesetting-ID268",
+		MakeBoxes[Pair[Momentum[a + c, -4 + D], Momentum[b + d, -4 + \
+	D]],TraditionalForm],
+		RowBox[{"(",
+  FormBox[RowBox[{OverscriptBox["a", "^"], "+",
+     OverscriptBox["c", "^"]}], TraditionalForm], ")", "\[CenterDot]",
+   "(", FormBox[
+   RowBox[{OverscriptBox["b", "^"], "+", OverscriptBox["d", "^"]}],
+   TraditionalForm], ")"}]},
+{"fcstCoreObjectsTypesetting-ID269",
+		MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p, \
+	I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID270",
+		MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p, I], \
+	D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID271",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p, \
+	I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID272",
+		MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p, \
+	-I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID273",
+		MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p, -I], \
+	D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID274",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p, \
+	-I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID275",
+		MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p + q, \
+	I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID276",
+		MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p + q, \
+	I], D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID277",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p + \
+	q, I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID278",
+		MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p + q, \
+	-I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID279",
+		MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p + q, \
+	-I], D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID280",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p + \
+	q, -I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID281",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p, \
+	I]]],TraditionalForm],
+		RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID282",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], \
+	Momentum[Polarization[p, I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID283",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+	Momentum[Polarization[p, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID284",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p, \
+	-I]]],TraditionalForm],
+		RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID285",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], \
+	Momentum[Polarization[p, -I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID286",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+	Momentum[Polarization[p, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID287",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p + \
+	q, I]]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID288",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[Polarization[p \
+	+ q, I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID289",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+	Momentum[Polarization[p + q, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID290",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p + \
+	q, -I]]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID291",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[Polarization[p \
+	+ q, -I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID292",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+	Momentum[Polarization[p + q, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID293",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p, \
+	I]]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID294",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], \
+	Momentum[Polarization[p, I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID295",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+	Momentum[Polarization[p, I], -4 + D]],TraditionalForm],
+		RowBox[
+			List[SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID296",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p, \
+	-I]]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID297",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], \
+	Momentum[Polarization[p, -I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID298",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+	Momentum[Polarization[p, -I], -4 + D]],TraditionalForm],
+		RowBox[
+			List[SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID299",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p + \
+	q, I]]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID300",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[Polarization[p \
+	+ q, I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID301",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+	Momentum[Polarization[p + q, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID302",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p + \
+	q, -I]]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID303",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[Polarization[p \
+	+ q, -I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID304",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+	Momentum[Polarization[p + q, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID305",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p, \
+	I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID306",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+	Momentum[Polarization[p, I], D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID307",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+	Momentum[Polarization[p, I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID308",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p, \
+	-I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID309",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+	Momentum[Polarization[p, -I], D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID310",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+	Momentum[Polarization[p, -I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(", "p", ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID311",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p + \
+	q, I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[
+					FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID312",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+	Momentum[Polarization[p + q, I], D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID313",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+	Momentum[Polarization[p + q, I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID314",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p + \
+	q, -I]]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID315",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+	Momentum[Polarization[p + q, -I], D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID316",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+	Momentum[Polarization[p + q, -I], -4 + D]],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm],
+					TraditionalForm], TraditionalForm]], "(",
+				FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID317",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+	Momentum[Polarization[p, I]]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID318",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+	Momentum[Polarization[p, I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID319",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+	Momentum[Polarization[p, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID320",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+	Momentum[Polarization[p, -I]]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID321",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+	Momentum[Polarization[p, -I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID322",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+	Momentum[Polarization[p, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID323",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+	Momentum[Polarization[p + q, I]]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID324",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+	Momentum[Polarization[p + q, I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID325",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+	Momentum[Polarization[p + q, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID326",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+	Momentum[Polarization[p + q, -I]]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID327",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+	Momentum[Polarization[p + q, -I], D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID328",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+	Momentum[Polarization[p + q, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SuperscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID329",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	Momentum[Polarization[p, I]]],TraditionalForm],
+		RowBox[
+			List[SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID330",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+	Momentum[Polarization[p, I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID331",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	Momentum[Polarization[p, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID332",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	Momentum[Polarization[p, -I]]],TraditionalForm],
+		RowBox[
+			List[SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID333",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+	Momentum[Polarization[p, -I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID334",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	Momentum[Polarization[p, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID335",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	Momentum[Polarization[p + q, I]]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID336",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+	Momentum[Polarization[p + q, I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox["\"\[CurlyEpsilon]\"",
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID337",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	Momentum[Polarization[p + q, I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID338",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	Momentum[Polarization[p + q, -I]]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID339",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+	Momentum[Polarization[p + q, -I], D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[SuperscriptBox["\"\[CurlyEpsilon]\"", "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID340",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	Momentum[Polarization[p + q, -I], -4 + D]],TraditionalForm],
+		RowBox[List[
+			SubscriptBox[
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"], "*"],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+					TraditionalForm]], "(",
+			FormBox[RowBox[List["p", "+", "q"]], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID341",
+		MakeBoxes[Pair[LorentzIndex[i], Momentum[p]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID342",
+		MakeBoxes[Pair[LorentzIndex[i, D], Momentum[p, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+				FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID343",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[p, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID344",
+		MakeBoxes[Pair[LorentzIndex[i], Momentum[p + \
+	q]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID345",
+		MakeBoxes[Pair[LorentzIndex[i, D], Momentum[p + q, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID346",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[p + q, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID347",
+		MakeBoxes[Pair[LorentzIndex[i], q + \
+	Momentum[p]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID348",
+		MakeBoxes[Pair[LorentzIndex[i, D], q + Momentum[p, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID349",
+		MakeBoxes[Pair[LorentzIndex[i, -4 + D], q + Momentum[p, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID350",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], \
+	Momentum[p]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID351",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], Momentum[p, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+				FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID352",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], Momentum[p, -4 + \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID353",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[p + \
+	q]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID354",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], Momentum[p + q, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID355",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], Momentum[p + q, \
+	-4 + D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID356",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2], q + \
+	Momentum[p]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID357",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, D], q + Momentum[p, \
+	D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID358",
+		MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], q + Momentum[p, \
+	-4 + D]],TraditionalForm],
+		FormBox[SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+					TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+				TraditionalForm]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID359",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], \
+	Momentum[p]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID360",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[p, \
+	D]],TraditionalForm],
+		SuperscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID361",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], Momentum[p, -4 + \
+	D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID362",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[p + \
+	q]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID363",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[p + q, \
+	D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID364",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], Momentum[p + q, -4 \
+	+ D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID365",
+		MakeBoxes[Pair[LorentzIndex[Upper[i]], q + \
+	Momentum[p]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID366",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], D], q + Momentum[p, \
+	D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID367",
+		MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], q + Momentum[p, -4 \
+	+ D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID368",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+	Momentum[p]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID369",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], Momentum[p, \
+	D]],TraditionalForm],
+		SuperscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID370",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+	Momentum[p, -4 + D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID371",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], Momentum[p + \
+	q]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID372",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], Momentum[p + q, \
+	D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID373",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], Momentum[p \
+	+ q, -4 + D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID374",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], q + \
+	Momentum[p]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID375",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], q + Momentum[p, \
+	D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID376",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], q + \
+	Momentum[p, -4 + D]],TraditionalForm],
+		SuperscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID377",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], \
+	Momentum[p]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID378",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[p, \
+	D]],TraditionalForm],
+		SubscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID379",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], Momentum[p, -4 + \
+	D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID380",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[p + \
+	q]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID381",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[p + q, \
+	D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID382",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], Momentum[p + q, -4 \
+	+ D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID383",
+		MakeBoxes[Pair[LorentzIndex[Lower[i]], q + \
+	Momentum[p]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID384",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], D], q + Momentum[p, \
+	D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID385",
+		MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], q + Momentum[p, -4 \
+	+ D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["i", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID386",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+	Momentum[p]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID387",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], Momentum[p, \
+	D]],TraditionalForm],
+		SubscriptBox[RowBox[List[FormBox["p", TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID388",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+	Momentum[p, -4 + D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List[FormBox[OverscriptBox["p", "^"], TraditionalForm]]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID389",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], Momentum[p + \
+	q]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID390",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], Momentum[p + q, \
+	D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID391",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], Momentum[p \
+	+ q, -4 + D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "^"], "+",
+						OverscriptBox["q", "^"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID392",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], q + \
+	Momentum[p]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[List[OverscriptBox["p", "_"], "+",
+						OverscriptBox["q", "_"]]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID393",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], q + Momentum[p, \
+	D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[RowBox[List["p", "+", "q"]], TraditionalForm],
+				TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID394",
+		MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], q + \
+	Momentum[p, -4 + D]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				FormBox[FormBox[
+					RowBox[
+					List[OverscriptBox["p", "^"], "+", OverscriptBox["q", "^"]]],
+					TraditionalForm], TraditionalForm], ")"]],
+			FormBox[FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+			TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID395",
+		MakeBoxes[PartialD[LorentzIndex[x]],TraditionalForm],
+		SubscriptBox["\[PartialD]",
+			FormBox[FormBox["x", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID396",
+		MakeBoxes[PartialD[x, LorentzIndex[mu]],TraditionalForm],
+		RowBox[List["\[PartialD]", "/", "\[PartialD]",
+			SuperscriptBox[FormBox["x", TraditionalForm],
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID397",
+		MakeBoxes[PlusDistribution[x],TraditionalForm],
+		SubscriptBox[RowBox[List["(", "x", ")"]], "+"]},
+{"fcstCoreObjectsTypesetting-ID398",
+		MakeBoxes[PropagatorDenominator[a, 0],TraditionalForm],
+		FormBox[FractionBox["1", SuperscriptBox["a", "2"]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID399",
+		MakeBoxes[PropagatorDenominator[a, b],TraditionalForm],
+		FormBox[FractionBox["1",
+			RowBox[List[SuperscriptBox["a", "2"], "-",
+				SuperscriptBox["b", "2"]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID400",
+		MakeBoxes[c PropagatorDenominator[a, b],TraditionalForm],
+		FormBox[FractionBox["c",
+			RowBox[List[SuperscriptBox["a", "2"], "-",
+				SuperscriptBox["b", "2"]]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID401",
+		MakeBoxes[QuantumField[f],TraditionalForm], "f"},
+{"fcstCoreObjectsTypesetting-ID402",
+		MakeBoxes[QuantumField[f, LorentzIndex[mu]],TraditionalForm],
+		SubscriptBox["f", "mu"]},
+{"fcstCoreObjectsTypesetting-ID403",
+		MakeBoxes[QuantumField[f, LorentzIndex[mu, D]],TraditionalForm],
+		SubscriptBox["f", "mu"]},
+{"fcstCoreObjectsTypesetting-ID404",
+		MakeBoxes[QuantumField[f, LorentzIndex[mu], \
+	SUNIndex[a]],TraditionalForm],
+		SubsuperscriptBox["f",
+			FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+			FormBox[FormBox["a", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID405",
+		MakeBoxes[QuantumField[f, LorentzIndex[mu], Momentum[p], \
+	SUNIndex[a]],TraditionalForm],
+		SubsuperscriptBox["f",
+			RowBox[List[
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+			FormBox[FormBox["a", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID406",
+		MakeBoxes[QuantumField[f, LorentzIndex[mu], \
+	SUNIndex[a]][q],TraditionalForm],
+		RowBox[List[
+			SubsuperscriptBox["f",
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm]], "(",
+			"q", ")"]]},
+{"fcstCoreObjectsTypesetting-ID407",
+		MakeBoxes[QuantumField[f, LorentzIndex[mu], Momentum[p], \
+	SUNIndex[a]][q],TraditionalForm],
+		RowBox[
+			List[SubsuperscriptBox["f",
+				RowBox[List[
+					FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+					FormBox[OverscriptBox["p", "_"], TraditionalForm]]],
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm]], "(",
+			"q", ")"]]},
+{"fcstCoreObjectsTypesetting-ID408",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], f, \
+	LorentzIndex[mu], SUNIndex[a]][q],TraditionalForm],
+		RowBox[List[
+			RowBox[List["(",
+				RowBox[List[
+					SubscriptBox["\[PartialD]",
+						FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					SubsuperscriptBox["f",
+						FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+						FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]],
+				")"]], "\[InvisibleApplication]",
+			RowBox[List["(", "q", ")"]]]]},
+{"fcstCoreObjectsTypesetting-ID409",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], f, \
+	ExplicitLorentzIndex[2], SUNIndex[a]][q],TraditionalForm],
+		RowBox[List[
+			RowBox[List["(",
+				RowBox[List[
+					SubscriptBox["\[PartialD]",
+						FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					SubsuperscriptBox["f",
+						FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+						FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]],
+				")"]], "\[InvisibleApplication]",
+			RowBox[List["(", "q", ")"]]]]},
+{"fcstCoreObjectsTypesetting-ID410",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], f, \
+	LorentzIndex[mu]][q],TraditionalForm],
+		RowBox[List[
+			RowBox[List["(",
+				RowBox[List[
+					SubscriptBox["\[PartialD]",
+						FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					SubsuperscriptBox["f",
+						FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+						"\[Null]"]]], ")"]], "\[InvisibleApplication]",
+			RowBox[List["(", "q", ")"]]]]},
+{"fcstCoreObjectsTypesetting-ID411",
+		MakeBoxes[
+		QuantumField[PartialD[LorentzIndex[f]]^2 , f, LorentzIndex[mu], \
+	SUNIndex[a]][q],TraditionalForm],
+		RowBox[
+			List[RowBox[
+				List["(",
+				RowBox[List[
+					SubsuperscriptBox["\[PartialD]",
+						FormBox[FormBox["f", TraditionalForm], TraditionalForm],
+						FormBox["2", TraditionalForm]],
+					SubsuperscriptBox["f",
+						FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+						FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]],
+				")"]], "\[InvisibleApplication]",
+			RowBox[List["(", "q", ")"]]]]},
+{"fcstCoreObjectsTypesetting-ID412",
+		MakeBoxes[
+		QuantumField[PartialD[LorentzIndex[f]]^2 , f, \
+	ExplicitLorentzIndex[2], SUNIndex[a]][q],TraditionalForm],
+		RowBox[List[
+			RowBox[List["(",
+				RowBox[List[
+					SubsuperscriptBox["\[PartialD]",
+						FormBox[FormBox["f", TraditionalForm], TraditionalForm],
+						FormBox["2", TraditionalForm]],
+					SubsuperscriptBox["f",
+						FormBox[FormBox["2", TraditionalForm], TraditionalForm],
+						FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]],
+				")"]], "\[InvisibleApplication]",
+			RowBox[List["(", "q", ")"]]]]},
+{"fcstCoreObjectsTypesetting-ID413",
+		MakeBoxes[
+		QuantumField[PartialD[LorentzIndex[f]]^2 , f, \
+	LorentzIndex[mu]][q],TraditionalForm],
+		RowBox[List[
+			RowBox[List["(",
+				RowBox[List[
+					SubsuperscriptBox["\[PartialD]",
+						FormBox[FormBox["f", TraditionalForm], TraditionalForm],
+						FormBox["2", TraditionalForm]],
+					SubsuperscriptBox["f",
+						FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+						"\[Null]"]]], ")"]], "\[InvisibleApplication]",
+			RowBox[List["(", "q", ")"]]]]},
+{"fcstCoreObjectsTypesetting-ID414",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], f, Momentum[p], \
+	SUNIndex[a]],TraditionalForm],
+		RowBox[List[
+			FormBox[SubscriptBox["\[PartialD]",
+				FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+				TraditionalForm],
+			SubsuperscriptBox["f",
+				FormBox[OverscriptBox["p", "_"], TraditionalForm],
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID415",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], f, \
+	Momentum[p]],TraditionalForm],
+		RowBox[List[
+			FormBox[SubscriptBox["\[PartialD]",
+				FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+				TraditionalForm],
+			SubsuperscriptBox["f",
+				FormBox[OverscriptBox["p", "_"], TraditionalForm], "\[Null]"]]]},
+{"fcstCoreObjectsTypesetting-ID416",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], \
+	PartialD[LorentzIndex[g]], f, Momentum[p], \
+	SUNIndex[a]],TraditionalForm],
+		RowBox[List[
+			RowBox[List[
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					TraditionalForm],
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["g", TraditionalForm], TraditionalForm]],
+					TraditionalForm]]],
+			SubsuperscriptBox["f",
+				FormBox[OverscriptBox["p", "_"], TraditionalForm],
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID417",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], \
+	PartialD[LorentzIndex[g]], f, Momentum[p]],TraditionalForm],
+		RowBox[List[
+			RowBox[List[
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					TraditionalForm],
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["g", TraditionalForm], TraditionalForm]],
+					TraditionalForm]]],
+			SubsuperscriptBox["f",
+				FormBox[OverscriptBox["p", "_"], TraditionalForm], "\[Null]"]]]},
+{"fcstCoreObjectsTypesetting-ID418",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], \
+	PartialD[LorentzIndex[g]], f, LorentzIndex[mu], \
+	SUNIndex[a]],TraditionalForm],
+		RowBox[List[
+			RowBox[List[
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					TraditionalForm],
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["g", TraditionalForm], TraditionalForm]],
+					TraditionalForm]]],
+			SubsuperscriptBox["f",
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm]]]]},
+{"fcstCoreObjectsTypesetting-ID419",
+		MakeBoxes[QuantumField[PartialD[LorentzIndex[f]], \
+	PartialD[LorentzIndex[g]], f, LorentzIndex[mu]],TraditionalForm],
+		RowBox[List[
+			RowBox[List[
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["f", TraditionalForm], TraditionalForm]],
+					TraditionalForm],
+				FormBox[SubscriptBox["\[PartialD]",
+					FormBox[FormBox["g", TraditionalForm], TraditionalForm]],
+					TraditionalForm]]],
+			SubsuperscriptBox["f",
+				FormBox[FormBox["mu", TraditionalForm], TraditionalForm],
+				"\[Null]"]]]},
+{"fcstCoreObjectsTypesetting-ID420",
+		MakeBoxes[QuarkField,TraditionalForm], "\[Psi]"},
+{"fcstCoreObjectsTypesetting-ID421",
+		MakeBoxes[RightPartialD[LorentzIndex[x]],TraditionalForm],
+		SubscriptBox[
+			RowBox[List[OverscriptBox["\[PartialD]", "\[RightArrow]"]]],
+			FormBox[FormBox["x", TraditionalForm], TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID422",
+		MakeBoxes[
+		RightPartialD[Momentum[x]^2 ],TraditionalForm],
+		SubsuperscriptBox[
+			RowBox[List[OverscriptBox["\[PartialD]", "\[RightArrow]"]]],
+			RowBox[List[" ",
+				FormBox[OverscriptBox["x", "_"], TraditionalForm]]],
+			FormBox["2", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID423",
+		MakeBoxes[ScaleMu,TraditionalForm], "\[Mu]"},
+{"fcstCoreObjectsTypesetting-ID424",
+		MakeBoxes[Tf,TraditionalForm], SubscriptBox["T", "f"]},
+{"fcstCoreObjectsTypesetting-ID425",
+		MakeBoxes[SD[a, b],TraditionalForm],
+		SuperscriptBox["\[Delta]", RowBox[List["a", "b"]]]},
+{"fcstCoreObjectsTypesetting-ID426",
+		MakeBoxes[SDF[a, b],TraditionalForm],
+		SubscriptBox["\[Delta]", RowBox[List["a", "b"]]]},
+{"fcstCoreObjectsTypesetting-ID427",
+		MakeBoxes[SmallDelta,TraditionalForm], "\[Delta]"},
+{"fcstCoreObjectsTypesetting-ID428",
+		MakeBoxes[SmallEpsilon,TraditionalForm], "\[Epsilon]"},
+{"fcstCoreObjectsTypesetting-ID429",
+		MakeBoxes[SmallVariable[a],TraditionalForm], "a"},
+{"fcstCoreObjectsTypesetting-ID430",
+		MakeBoxes[SO[x],TraditionalForm],
+		RowBox[List[FormBox["\"\[CapitalDelta]\"", TraditionalForm],
+			FormBox["\"\[CenterDot]\"", TraditionalForm],
+			FormBox["x", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID431",
+		MakeBoxes[SOD[x],TraditionalForm],
+		RowBox[List[FormBox["\"\[CapitalDelta]\"", TraditionalForm],
+			FormBox["\"\[CenterDot]\"", TraditionalForm],
+			FormBox["x", TraditionalForm]]]},
+{"fcstCoreObjectsTypesetting-ID432",
+		MakeBoxes[SP[a, b],TraditionalForm],
+		FormBox[RowBox[
+			List[FormBox[OverscriptBox["a", "_"], TraditionalForm],
+				"\[CenterDot]",
+				FormBox[OverscriptBox["b", "_"], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID433",
+		MakeBoxes[SPD[a, b],TraditionalForm],
+		FormBox[RowBox[
+			List[FormBox["a", TraditionalForm], "\[CenterDot]",
+				FormBox["b", TraditionalForm]]], TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID434",
+		MakeBoxes[SPE[a, b],TraditionalForm],
+		FormBox[RowBox[
+			List[FormBox[OverscriptBox["a", "^"], TraditionalForm],
+				"\[CenterDot]",
+				FormBox[OverscriptBox["b", "^"], TraditionalForm]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID435",
+		MakeBoxes[Spinor[Momentum[p], 0, 1],TraditionalForm],
+		RowBox[List["\[CurlyPhi]", "(",
+			FormBox[OverscriptBox["p", "_"], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID436",
+		MakeBoxes[Spinor[Momentum[p], 0, 1],TraditionalForm],
+		RowBox[List["\[CurlyPhi]", "(",
+			FormBox[OverscriptBox["p", "_"], TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID437",
+		MakeBoxes[Spinor[Momentum[p], m, 1],TraditionalForm],
+		RowBox[List["\[CurlyPhi]", "(",
+			FormBox[OverscriptBox["p", "_"], TraditionalForm], ",", "m",
+			")"]]},
+{"fcstCoreObjectsTypesetting-ID438",
+		MakeBoxes[SpinorU[p],TraditionalForm],
+		RowBox[List["u", "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID439",
+		MakeBoxes[SpinorU[p, 0, 1],TraditionalForm],
+		RowBox[List["u", "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID440",
+		MakeBoxes[SpinorU[p, m, 1],TraditionalForm],
+		RowBox[List["u", "(", "p", ",", "m", ")"]]},
+{"fcstCoreObjectsTypesetting-ID441",
+		MakeBoxes[SpinorUBar[p],TraditionalForm],
+		RowBox[List[OverscriptBox["u", "_"], "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID442",
+		MakeBoxes[SpinorUBar[p, 0, 1],TraditionalForm],
+		RowBox[List[OverscriptBox["u", "_"], "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID443",
+		MakeBoxes[SpinorUBar[p, m, 1],TraditionalForm],
+		RowBox[List[OverscriptBox["u", "_"], "(",
+			FormBox["p", TraditionalForm], ",",
+			FormBox["m", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID444",
+		MakeBoxes[SpinorV[p],TraditionalForm],
+		RowBox[List["v", "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID445",
+		MakeBoxes[SpinorV[p, 0, 1],TraditionalForm],
+		RowBox[List["v", "(", "p", ")"]]},
+{"fcstCoreObjectsTypesetting-ID446",
+		MakeBoxes[SpinorV[p, m, 1],TraditionalForm],
+		RowBox[List["v", "(", "p", ",", "m", ")"]]},
+{"fcstCoreObjectsTypesetting-ID447",
+		MakeBoxes[SpinorVBar[p],TraditionalForm],
+		RowBox[List[OverscriptBox["v", "_"], "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID448",
+		MakeBoxes[SpinorVBar[p, 0, 1],TraditionalForm],
+		RowBox[List[OverscriptBox["v", "_"], "(",
+			FormBox["p", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID449",
+		MakeBoxes[SpinorVBar[p, m, 1],TraditionalForm],
+		RowBox[List[OverscriptBox["v", "_"], "(",
+			FormBox["p", TraditionalForm], ",",
+			FormBox["m", TraditionalForm], ")"]]},
+{"fcstCoreObjectsTypesetting-ID450",
+		MakeBoxes[SUND[a, b, c],TraditionalForm],
+		SuperscriptBox["d", RowBox[List["a", "b", "c"]]]},
+{"fcstCoreObjectsTypesetting-ID451",
+		MakeBoxes[SUNF[a, b, c],TraditionalForm],
+		SuperscriptBox["f", RowBox[List["a", "b", "c"]]]},
+{"fcstCoreObjectsTypesetting-ID452",
+		MakeBoxes[SUNIndex[i],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID453",
+		MakeBoxes[SUNFIndex[i],TraditionalForm],
+		FormBox["i", TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID454",
+		MakeBoxes[SUNT[a],TraditionalForm],
+		SuperscriptBox["T", FormBox["a", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID455",
+		MakeBoxes[SUNT[a, b],TraditionalForm],
+		FormBox[RowBox[
+			List[SuperscriptBox["T",
+				FormBox[FormBox["a", TraditionalForm], TraditionalForm]], ".",
+				SuperscriptBox["T",
+				FormBox[FormBox["b", TraditionalForm], TraditionalForm]]]],
+			TraditionalForm]},
+{"fcstCoreObjectsTypesetting-ID456",
+		MakeBoxes[SUNTF[{a}, i, j],TraditionalForm],
+		SubsuperscriptBox["T",
+			RowBox[List[FormBox["i", TraditionalForm],
+				FormBox["j", TraditionalForm]]], FormBox["a", TraditionalForm]]},
+{"fcstCoreObjectsTypesetting-ID457",
+		MakeBoxes[SUNTF[{a, b}, i, j],TraditionalForm],
+		SubscriptBox[
+			RowBox[List["(",
+				SuperscriptBox["T", FormBox["a", TraditionalForm]],
+				SuperscriptBox["T", FormBox["b", TraditionalForm]], ")"]],
+			RowBox[List[FormBox["i", TraditionalForm],
+				FormBox["j", TraditionalForm]]]]}
+	};

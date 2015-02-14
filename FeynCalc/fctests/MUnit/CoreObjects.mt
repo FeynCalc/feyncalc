@@ -16,3 +16,5 @@ Needs["HighEnergyPhysics`FeynCalc`"];
 Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/CoreObjects.test"]];
 Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
     Join[fcstCoreObjectsUpValues ,fcstCoreObjectsOwnValues, fcstCoreObjectsBehavior]];
+Map[Test[(#[[2]]),(#[[3]]),TestID->#[[1]]]&,
+    Join[fcstCoreObjectsTypesetting]];
