@@ -2834,9 +2834,9 @@ dzeropairlist =
                   b_ -> d_, e___} -> {a, b -> c + d, e}], {}];
 
       (* Change 13/5-2003. Keep heads on integers, instead SUNIndex -> ExplicitSUNIndex *)
-       $SU3FReduceList = $SU3FReduceList //. (f:(SU3F|SU3Delta))[a___, b_Integer, c___] ->
+       $SU3FReduceList = $SU3FReduceList //. (f:(SU3F|SU3Delta))[a___, b_Integer, c___] :>
                                              f[a, fcexsuni[b], c];
-       $SU3DReduceList = $SU3DReduceList //. (f:(SU3D|SU3Delta))[a___, b_Integer, c___] ->
+       $SU3DReduceList = $SU3DReduceList //. (f:(SU3D|SU3Delta))[a___, b_Integer, c___] :>
                                              f[a, fcexsuni[b], c];
 
       If[HighEnergyPhysics`Phi`$Phi, $SUNRules =
