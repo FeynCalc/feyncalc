@@ -1,7 +1,17 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: MomentumExpand *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: MomentumExpand                                                   *)
+
+(*
+		This software is covered by the GNU Lesser General Public License 3.
+		Copyright (C) 1990-2015 Rolf Mertig
+		Copyright (C) 1997-2015 Frederik Orellana
+		Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Expands momenta                                               *)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -15,19 +25,17 @@ Momentum[a] + Momentum[b] + ... .";
 
 Begin["`Private`"];
 
-Momentum = MakeContext["CoreObjects","Momentum"];
+Momentum    :=  Momentum = MakeContext["CoreObjects","Momentum"];
 
-(*MomentumExpanddef*)
+fourvecevlin[n_?NumberQ z_, dim_:4]  := n Momentum[z, dim];
 
-hold[]=Sequence[];
-fourvecevlin[n_?NumberQ z_, dime___]  := n Momentum[z, dime];
-  fourvecev[y_,di___] := ( fourvecev[y,di] =
-    Distribute[fourvecevlin[
-      Expand[y, Momentum], hold[di]]
-              ] /. {hold :> Identity, fourvecevlin :> Momentum}
-                         );
+fourvecev[y_,dim_:4] := fourvecev[y,dim] =
+	Block [{hold},
+		(Distribute[fourvecevlin[ Expand[y, Momentum],
+		hold[dim]]] /. hold->Identity)
+	];
 
-MomentumExpand[x_] := x /. Momentum -> fourvecev;
+MomentumExpand[expr_] := expr /. Momentum -> fourvecev /. fourvecevlin -> Momentum;
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
