@@ -563,7 +563,8 @@ Protect[Greater];
 
 Unprotect[Conjugate];
 Conjugate[x_Pair]:= (x /.
-		{Polarization[k_, a_, in___] :> Polarization[k, Conjugate[a], in]} ) /;!FreeQ[x, Polarization];
+	{Polarization[k_, a:Except[_OptionQ], opts:OptionsPattern[]] :>
+	Polarization[k, Conjugate[a], opts]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
 SetAttributes[DiracGamma, Constant];
@@ -661,17 +662,14 @@ DiracGamma /:
 
 DiracGamma[] = 1;
 
-DiracGamma[x_ Momentum[pe_, di___], dii___]:=
-	x DiracGamma[Momentum[pe, di], dii];
+DiracGamma[x_ (h: LorentzIndex|ExplicitLorentzIndex|Momentum)[p_, dim1_:4], dim2_:4]:=
+	x DiracGamma[h[p, dim1], dim2];
 
-DiracGamma[x_ LorentzIndex[pe_, di___], dii___]:=
-	x DiracGamma[LorentzIndex[pe, di], dii];
+DiracGamma[(x: LorentzIndex|ExplicitLorentzIndex|Momentum)[y_, dim_:4], 4]:=
+	DiracGamma[x[y,dim]];
 
-DiracGamma[x_[y_, di___], 4]:=
-	DiracGamma[x[y,di]];
-
-DiracGamma[x_Integer, y___]:=
-	DiracGamma[ExplicitLorentzIndex[x],y]/; (x=!=5 && x=!=6 && x=!=7);
+DiracGamma[x_Integer, dim_:4]:=
+	DiracGamma[ExplicitLorentzIndex[x],dim]/; (x=!=5 && x=!=6 && x=!=7);
 
 DiracGamma[(n:5|6|7), 4]:=
 	DiracGamma[n];
@@ -687,77 +685,32 @@ DiracGamma[0, _]:= 0;*)
 DiracGamma[a_Plus]:=
 	Map[DiracGamma, a];
 
-DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___]]:=
-	DOT[DiracGamma[Momentum[x,dix], dix],
-		DiracGamma[Momentum[y,diy], diy]];
+DiracGamma[(h1:LorentzIndex|Momentum)[x_,dim1_:4], (h2:LorentzIndex|Momentum)[y_,dim2_:4]]:=
+	DOT[DiracGamma[h1[x,dim1], dim1],
+		DiracGamma[h2[y,dim2], dim2]];
 
-DiracGamma[Momentum[x_,dix___], Momentum[y_,diy___], z__]:=
-	DOT[DiracGamma[Momentum[x,dix], dix],
-		DiracGamma[Momentum[y,diy], diy],
+DiracGamma[(h1:LorentzIndex|Momentum)[x_,dim1_:4], (h2:LorentzIndex|Momentum)[y_,dim2_:4], z__]:=
+	DOT[DiracGamma[h1[x,dim1], dim1],
+		DiracGamma[h2[y,dim2], dim2],
 		DiracGamma[z]];
 
-DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___]]:=
-	DOT[DiracGamma[LorentzIndex[x,dix], dix],
-		DiracGamma[LorentzIndex[y,diy], diy]];
-
-DiracGamma[LorentzIndex[x_,dix___], LorentzIndex[y_,diy___], z__]:=
-	DOT[DiracGamma[LorentzIndex[x,dix], dix],
-		DiracGamma[LorentzIndex[y,diy], diy],
-		DiracGamma[z]];
-
-DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___]]:=
-	DOT[DiracGamma[LorentzIndex[x,dix], dix],
-		DiracGamma[Momentum[y,diy], diy]];
-
-DiracGamma[LorentzIndex[x_,dix___], Momentum[y_,diy___], z__]:=
-	DOT[DiracGamma[LorentzIndex[x,dix], dix],
-		DiracGamma[Momentum[y,diy], diy],
-		DiracGamma[z]];
-
-DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___]]:=
-	DOT[DiracGamma[Momentum[x,dix], dix],
-		DiracGamma[LorentzIndex[y,diy], diy]];
-
-DiracGamma[Momentum[x_,dix___], LorentzIndex[y_,diy___], z__]:=
-	DOT[DiracGamma[Momentum[x,dix], dix],
-		DiracGamma[LorentzIndex[y,diy], diy], DiracGamma[z]];
-
-DiracGamma[LorentzIndex[_], _Symbol-4 ]:=
+DiracGamma[(LorentzIndex|Momentum)[_], _Symbol-4 ]:=
 	0; (* 4, D-4 *)
 
-DiracGamma[Momentum[_], _Symbol-4 ]:=
+DiracGamma[(LorentzIndex|Momentum)[_, _Symbol-4]]:=
 	0; (* 4, D-4 *)
 
-DiracGamma[Momentum[_, _Symbol -4]]:=
-	0; (* D-4, 4 *)
+DiracGamma[(h:LorentzIndex|Momentum)[x_, dim_Symbol], dim_Symbol-4]:=
+	DiracGamma[h[x, dim-4], dim-4]; (* D, D-4 *)
 
-DiracGamma[LorentzIndex[_, _Symbol -4]]:=
-	0; (* D-4, 4 *)
+DiracGamma[(h:LorentzIndex|Momentum)[x_, dim_Symbol-4], dim_Symbol]:=
+	DiracGamma[h[x, dim-4], dim-4]; (* D-4, D *)
 
-DiracGamma[LorentzIndex[x_, di_], di_Symbol-4]:=
-	DiracGamma[LorentzIndex[x, di-4], di-4];
+DiracGamma[(h:LorentzIndex|Momentum)[x_], _Symbol]:=
+	DiracGamma[h[x]]; (* 4, D *)
 
-DiracGamma[Momentum[x_, di_], di_Symbol-4]:=
-	DiracGamma[Momentum[x, di-4], di-4]; (* D-4, D *)
-
-DiracGamma[LorentzIndex[x_, di_Symbol-4], di_Symbol]:=
-	DiracGamma[LorentzIndex[x,di-4], di-4];
-
-DiracGamma[Momentum[x_, di_Symbol-4], di_Symbol]:=
-	DiracGamma[Momentum[x,di-4], di-4];
-
-DiracGamma[ LorentzIndex[x_], _Symbol]:=
-	DiracGamma[LorentzIndex[x]];
-
-DiracGamma[ n_. Momentum[x_], _Symbol]:=
-	(n DiracGamma[Momentum[x]]) /; NumberQ[n];
-
-DiracGamma[Momentum[x_, _Symbol]]:=
-	DiracGamma[Momentum[x]]; (* D, 4 *)
-
-DiracGamma[LorentzIndex[x_, _Symbol]]:=
-	DiracGamma[LorentzIndex[x]]; (* D, 4 *)
-
+DiracGamma[(h:LorentzIndex|Momentum)[x_,_Symbol]]:=
+	DiracGamma[h[x]]; (* D, 4 *)
 
 (*	Typesetting for	Dirac slashes.	*)
 (* ------------------------------------------------------------------------ *)
@@ -891,7 +844,9 @@ Eps[a___, (c: LorentzIndex | Momentum)[mu_,_Symbol], b___, opts:OptionsPattern[]
 
 Eps /:
 	MakeBoxes[Eps[x__, OptionsPattern[]] ,TraditionalForm]:=
-		SuperscriptBox["\[Epsilon]", Tbox[x]];
+		SuperscriptBox["\[Epsilon]", Tbox[x]]/;
+		FreeQ2[{x}, Join[(List @@ ($FCLorentzIndexSubHeads /. Blank -> Identity)),
+					(List @@ ($FCMomentumSubHeads /. Blank -> Identity))]];
 
 Epsilon /:
 	MakeBoxes[Epsilon, TraditionalForm]:=
@@ -1236,9 +1191,11 @@ Momentum[0, _:4]:=
 Momentum[_, 0]:=
 	0;
 
-Momentum[Momentum[x_, dim_:4], ___]:=
-	Momentum[x, dim];
-
+Momentum[Momentum[x_, dim1_:4], dim2_:4]:=
+	If[dim1===dim2,
+		Momentum[x, dim1],
+		Momentum[x, {dim1,dim2}]
+	];
 (*	Typesetting for momenta.	*)
 (* ------------------------------------------------------------------------ *)
 
@@ -1276,7 +1233,7 @@ Momentum /:
 
 Momentum /:
 	MakeBoxes[ Momentum[p_Plus,dim_: 4], TraditionalForm]:=
-			Tbox[MomentumExpand[Momentum[p,dim]]];
+			Tbox[MomentumExpand[Momentum[p,dim]]]/; FreeQ2[p,$FCMomentumSubHeads];
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1412,7 +1369,10 @@ Pair /:
 			Tbox[LorentzIndex[a[x],dim1], LorentzIndex[b[y],dim2]] ],
 		a===Lower && b===Upper,
 			SubsuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
-			Tbox[LorentzIndex[a[x],dim1]], Tbox[LorentzIndex[b[y],dim2]]  ]
+			Tbox[LorentzIndex[a[x],dim1]], Tbox[LorentzIndex[b[y],dim2]]  ],
+		a===Upper && b===Lower,
+			SubsuperscriptBox[RowBox[{metricRep[{dim1,dim2}]}],
+			Tbox[LorentzIndex[b[y],dim2]], Tbox[LorentzIndex[a[x],dim1]]  ]
 	];
 
 Pair /:
@@ -1449,29 +1409,32 @@ TraditionalForm]:=
 	];
 
 Pair /:
-	MakeBoxes[Pair[Momentum[a_, dim1_ : 4], Momentum[b_, dim2_ : 4]],TraditionalForm]:=
+	MakeBoxes[Pair[Momentum[a_, dim1_ : 4]+a1_:0, Momentum[b_, dim2_ : 4]+b1_:0],TraditionalForm]:=
+	Block[{	m1=MomentumExpand[Momentum[a,dim1]+a1],
+			m2=MomentumExpand[Momentum[b,dim2]+b1]},
 		Which[
-			Head[a]=!=Plus && Head[b]=!=Plus,
-				If[$PairBrackets === True && a=!=b,
-					Tbox["(", Momentum[a,dim1], "\[CenterDot]", Momentum[b,dim2], ")"],
-					Tbox[Momentum[a,dim1], "\[CenterDot]", Momentum[b,dim2]]
+			Head[m1]=!=Plus && Head[m2]=!=Plus,
+				If[$PairBrackets === True && (m1)=!=(m2),
+					Tbox["(", m1, "\[CenterDot]", m2, ")"],
+					Tbox[m1, "\[CenterDot]", m2]
 				],
-			Head[a]=!=Plus && Head[b]===Plus,
-				If[$PairBrackets === True && a=!=b,
-					Tbox["(",Momentum[a,dim1],"\[CenterDot]", "(",Momentum[b,dim2],")",")"],
-					Tbox[Momentum[a,dim1],"\[CenterDot]", "(",Momentum[b,dim2],")"]
+			Head[m1]=!=Plus && Head[m2]===Plus,
+				If[$PairBrackets === True && (m1)=!=(m2),
+					Tbox["(",m1,"\[CenterDot]", "(",m2,")",")"],
+					Tbox[m1,"\[CenterDot]", "(",m2,")"]
 				],
-			Head[a]===Plus && Head[b]=!=Plus,
-				If[$PairBrackets === True && a=!=b,
-					Tbox["(","(",Momentum[a,dim1],")","\[CenterDot]", Momentum[b,dim2],")"],
-					Tbox["(",Momentum[a,dim1],")","\[CenterDot]", Momentum[b,dim2]]
+			Head[m1]===Plus && Head[m2]=!=Plus,
+				If[$PairBrackets === True && (m1)=!=(m2),
+					Tbox["(","(",m1,")","\[CenterDot]", m2,")"],
+					Tbox["(",m1,")","\[CenterDot]", m2]
 				],
-			Head[a]===Plus && Head[b]===Plus,
-				If[$PairBrackets === True && a=!=b,
-					Tbox["(","(",Momentum[a,dim1],")","\[CenterDot]", "(",Momentum[b,dim2],")",")"],
-					Tbox["(",Momentum[a,dim1],")","\[CenterDot]", "(",Momentum[b,dim2],")"]
+			Head[m1]===Plus && Head[m2]===Plus,
+				If[$PairBrackets === True && (m1)=!=(m2),
+					Tbox["(","(",m1,")","\[CenterDot]", "(",m2,")",")"],
+					Tbox["(",m1,")","\[CenterDot]", "(",m2,")"]
 				]
-		]/; !MatchQ[a,$FCMomentumSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
+		]
+	]/; !MatchQ[a,$FCMomentumSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
 
 (*	Typesetting for polarization vectors.	*)
 (* ------------------------------------------------------------------------ *)
@@ -1514,7 +1477,7 @@ Pair /:
 			ToBoxes[Pair[l[Lower[a],dim],Momentum[Polarization[b, c, opts],dim]],TraditionalForm]
 			]/; !MatchQ[a,$FCLorentzIndexSubHeads] && !MatchQ[b,$FCMomentumSubHeads];
 
-(*	Typesetting form momentum vectors.	*)
+(*	Typesetting for momentum vectors.	*)
 (* ------------------------------------------------------------------------ *)
 
 Pair /:
@@ -1530,7 +1493,8 @@ Pair /:
 						SubscriptBox[ RowBox[{Tbox[Momentum[b+c,dim1]]}], Tbox[LorentzIndex[x[a],dim2]]]
 				]
 		]/; !MatchQ[a,$FCLorentzIndexSubHeads] &&
-		!MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]];
+		!MatchQ[b,Flatten[_Polarization | $FCMomentumSubHeads]] &&
+		FreeQ2[b, List @@ ($FCMomentumSubHeads /. Blank -> Identity)];
 
 Pair /:
 	MakeBoxes[Pair[(LorentzIndex| ExplicitLorentzIndex)[a_, dim1_ : 4],
