@@ -103,7 +103,7 @@ Block[{temp},
             Momentum[Polarization[p_, I, OptionsPattern[]], dim_:4]] :>
             PolarizationSum[rho1,rho2,k, Dimension->dim]);
              If [OptionValue[Contract],
-                temp = Contract[expr],
+                Contract[temp],
                 temp
             ],
         True,
