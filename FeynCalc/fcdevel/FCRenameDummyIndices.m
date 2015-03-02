@@ -28,6 +28,8 @@ you will get 64.";
 Begin["`Private`"];
 
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+Upper = MakeContext["CoreObjects","Upper"];
+Lower = MakeContext["CoreObjects","Lower"];
 SUNIndex = MakeContext["CoreObjects","SUNIndex"];
 SUNFIndex = MakeContext["CoreObjects","SUNFIndex"];
 FCI = MakeContext["FeynCalcInternal"];
@@ -42,11 +44,13 @@ FCRenameDummyIndices[expr_] :=
 
         If [Head[exprFCI]===Plus,
         indexList =
-          Map[Tally, Map[Cases[#, (LorentzIndex | SUNIndex | SUNFIndex)[ind_] :> ind,
+          Map[Tally, Map[Cases[#, (LorentzIndex | SUNIndex | SUNFIndex)[ind_]/;(Head[ind]=!=Upper &&
+              Head[ind]=!=Lower) :> ind,
               Infinity]&,Apply[List, exprFCI]]]// Flatten[#, 1] & // Union;
               ,
         indexList =
-           Cases[exprFCI, (LorentzIndex | SUNIndex | SUNFIndex)[ind_] :> ind,
+           Cases[exprFCI, (LorentzIndex | SUNIndex | SUNFIndex)[ind_]/;(Head[ind]=!=Upper &&
+              Head[ind]=!=Lower) :> ind,
               Infinity] // Tally;
 
         ];
