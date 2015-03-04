@@ -42,6 +42,7 @@ Polarization            := Polarization             = MakeContext["CoreObjects",
 PropagatorDenominator   := PropagatorDenominator    = MakeContext["CoreObjects","PropagatorDenominator"];
 SUNF                    := SUNF                     = MakeContext["CoreObjects","SUNF"];
 SUNFIndex               := SUNFIndex                = MakeContext["CoreObjects","SUNFIndex"];
+SUNFDelta               := SUNFDelta                = MakeContext["CoreObjects","SUNFDelta"];
 SUNIndex                := SUNIndex                 = MakeContext["CoreObjects","SUNIndex"];
 SUNTF                   := SUNTF                    = MakeContext["CoreObjects","SUNTF"];
 Spinor                  := Spinor                   = MakeContext["CoreObjects","Spinor"];
@@ -76,6 +77,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
                                                     SUNF[a,b,tempvar]SUNF[tempvar,c,d]),
                     Global`FASUNF[a_,b_,c_] :> SUNF[a,b,c],
                     Global`FASUNT :> SUNTF,
+                    HighEnergyPhysics`FeynArts`IndexDelta[a_SUNFIndex, b_SUNFIndex]:> SUNFDelta[a,b],
                     HighEnergyPhysics`FeynArts`FAFeynAmp :> FeynAmp,
                     HighEnergyPhysics`FeynArts`FAFeynAmpDenominator :> FeynAmpDenominator,
                     HighEnergyPhysics`FeynArts`FAGaugeXi :> GaugeXi,
