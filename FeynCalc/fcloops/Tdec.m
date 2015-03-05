@@ -26,31 +26,27 @@ Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
-Expanding = MakeContext["CoreOptions","Expanding"];
 Factoring = MakeContext["CoreOptions","Factoring"];
-IsolateNames = MakeContext["CoreOptions","IsolateNames"];
-KK = MakeContext["CoreOptions","KK"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
 Momentum = MakeContext["CoreObjects","Momentum"];
 Pair = MakeContext["CoreObjects","Pair"];
 
 MakeContext[
-Cases2,
-Collect2,
-Contract,
-ChangeDimension,
-EpsEvaluate,
-ExpandScalarProduct,
-Factor2,
-FeynCalcForm,
-FeynCalcExternal,
-FreeQ2,
-(*
-IsolateNames,
-*)
-PairContract,
-SelectFree, SelectNotFree,Solve2,Solve3
-           ];
+	Cases2,
+	Collect2,
+	Contract,
+	ChangeDimension,
+	EpsEvaluate,
+	ExpandScalarProduct,
+	Factor2,
+	FeynCalcForm,
+	FeynCalcExternal,
+	FreeQ2,
+	PairContract,
+	SelectFree,
+	SelectNotFree,
+	Solve3
+];
 
 Options[Tdec] = {Dimension -> D, Factoring -> Factor2,
 FeynCalcExternal -> True,
@@ -541,104 +537,6 @@ z*l^2*m*p*r*s-k*m*p^2*r*s-2*l^3*q*r*s+z*l^3*q*r*s+
 l^2*n*p^2*u+k*n*p^3*u+l^3*p*r*u-k*l*p^2*r*u-l^2*m*p^2*v+
 k*m*p^3*v+l^3*p*q*v-k*l*p^2*q*v))/((-2+z)*(l^2-k*p)^3)
 ] /; Head[qi]=!=List;
-
-mt[de_][a_,b_] := mt[de][a,b] = Pair[LorentzIndex[a,de], LorentzIndex[b,de]];
-fv[de_][p_,m_] := fv[de][p,m] = Pair[LorentzIndex[m,de], Momentum[p,de]];
-
-(* fourth rank *)
-symtens[{},{m1_,m2_,m3_,m4_}, d_] :=
-( mt[d][m1,m2] mt[d][m3,m4] + mt[d][m1,m3] mt[d][m2,m4] +
-  mt[d][m1,m4] mt[d][m2,m3]);
-
-symtens[{{p_,m1_},{p_,m2_}},{m3_,m4_}, d_] :=
-fv[d][p,m1] fv[d][p,m2] mt[d][m3,m4] +
-fv[d][p,m1] fv[d][p,m3] mt[d][m2,m4] + fv[d][p,m1] fv[d][p,m4] mt[d][m2,m3];
-
-symtens[{{p_,m1_},{p_,m2_},{p_,m3_},{p_,m4_}}, {}, d_] :=
-fv[d][p,m1] fv[d][p,m2] fv[d][p,m3] fv[d][p,m4];
-
-(* sixth rank *)
-symtens[{},{m1_,m2_,m3_,m4_,m5_,m6_}, d_] :=
-( mt[d][m1,m2]*mt[d][m3,m4]*mt[d][m5,m6] + mt[d][m1,m2]*mt[d][m3,m5]*
-  mt[d][m4,m6] + mt[d][m1,m2]*mt[d][m3,m6]*mt[d][m4,m5] +
-  mt[d][m1,m3]*mt[d][m2,m4]*
-  mt[d][m5,m6] + mt[d][m1,m3]*mt[d][m2,m5]*mt[d][m4,m6] +
-  mt[d][m1,m3]*mt[d][m2,m6]*
-  mt[d][m4,m5] + mt[d][m1,m4]*mt[d][m2,m3]*mt[d][m5,m6] +
-  mt[d][m1,m4]*mt[d][m2,m5]*
-  mt[d][m3,m6] + mt[d][m1,m4]*mt[d][m2,m6]*mt[d][m3,m5] +
-  mt[d][m1,m5]*mt[d][m2,m3]*
-  mt[d][m4,m6] + mt[d][m1,m5]*mt[d][m2,m4]*mt[d][m3,m6] +
-  mt[d][m1,m5]*mt[d][m2,m6]*
-  mt[d][m3,m4] + mt[d][m1,m6]*mt[d][m2,m3]*mt[d][m4,m5] +
-  mt[d][m1,m6]*mt[d][m2,m4]*
-  mt[d][m3,m5] + mt[d][m1,m6]*mt[d][m2,m5]*mt[d][m3,m4]
-);
-(* sixth rank *)
-symtens[{{p_,m1_},{p_,m2_}},{m3_,m4_,m5_,m6_}, d_] :=
-Block[{mm = {m1, m2, m3, m4, m5, m6}},
- Sum[fv[d][p,mm[[i]]] fv[d][p,mm[[j]]] *
-        symtens[{}, SelectFree[mm,{mm[[i]],mm[[j]]}],d],
-     {i, 1, 5}, {j, i+1, 6}
-    ]];
-
-symtens[{{p_,m1_},{p_,m2_}, {p_,m3_}, {p_,m4_}},
-         {m5_,m6_}, d_
-       ] := Block[{mm = {m1, m2, m3, m4, m5, m6}},
- Sum[mt[d][mm[[i]], mm[[j]]] *
-     Map[fv[d][p,#]&, SelectFree[mm,{mm[[i]],mm[[j]]}]],
-     {i, 1, 5}, {j, i+1, 6}
-    ]            ];
-
-(* eigth rank *)
-symtens[{},{m1_,m2_,m3_,m4_,m5_,m6_,m7_,m8_}, d_] :=
-(
-(
-  x1*x18*x21*x23 + x13*x2*x21*x23 + x1*x17*x22*x23 + x12*x2*x22*x23 +
-   x1*x18*x20*x24 + x13*x2*x20*x24 + x1*x16*x22*x24 + x11*x2*x22*x24 +
-   x1*x17*x20*x25 + x12*x2*x20*x25 + x1*x16*x21*x25 + x11*x2*x21*x25 +
-   x1*x18*x19*x26 + x13*x19*x2*x26 + x1*x15*x22*x26 + x10*x2*x22*x26 +
-   x1*x14*x25*x26 + x1*x17*x19*x27 + x12*x19*x2*x27 + x1*x15*x21*x27 +
-   x10*x2*x21*x27 + x1*x14*x24*x27 + x1*x16*x19*x28 + x11*x19*x2*x28 +
-   x1*x15*x20*x28 + x10*x2*x20*x28 + x1*x14*x23*x28 + x13*x17*x23*x3 +
-   x12*x18*x23*x3 + x13*x16*x24*x3 + x11*x18*x24*x3 + x12*x16*x25*x3 +
-   x11*x17*x25*x3 + x13*x15*x26*x3 + x10*x18*x26*x3 + x12*x15*x27*x3 +
-   x10*x17*x27*x3 + x11*x15*x28*x3 + x10*x16*x28*x3 + x13*x17*x20*x4 +
-   x12*x18*x20*x4 + x13*x16*x21*x4 + x11*x18*x21*x4 + x12*x16*x22*x4 +
-   x11*x17*x22*x4 + x13*x14*x26*x4 + x12*x14*x27*x4 + x11*x14*x28*x4 +
-   x13*x17*x19*x5 + x12*x18*x19*x5 + x13*x15*x21*x5 + x10*x18*x21*x5 +
-   x12*x15*x22*x5 + x10*x17*x22*x5 + x13*x14*x24*x5 + x12*x14*x25*x5 +
-   x10*x14*x28*x5 + x13*x16*x19*x6 + x11*x18*x19*x6 + x13*x15*x20*x6 +
-   x10*x18*x20*x6 + x11*x15*x22*x6 + x10*x16*x22*x6 + x13*x14*x23*x6 +
-   x11*x14*x25*x6 + x10*x14*x27*x6 + x12*x16*x19*x7 + x11*x17*x19*x7 +
-   x12*x15*x20*x7 + x10*x17*x20*x7 + x11*x15*x21*x7 + x10*x16*x21*x7 +
-   x12*x14*x23*x7 + x11*x14*x24*x7 + x10*x14*x26*x7 + x25*x26*x3*x8 +
-   x24*x27*x3*x8 + x23*x28*x3*x8 + x22*x26*x4*x8 + x21*x27*x4*x8 +
-   x20*x28*x4*x8 + x22*x24*x5*x8 + x21*x25*x5*x8 + x19*x28*x5*x8 +
-   x22*x23*x6*x8 + x20*x25*x6*x8 + x19*x27*x6*x8 + x21*x23*x7*x8 +
-   x20*x24*x7*x8 + x19*x26*x7*x8 + x2*x25*x26*x9 + x2*x24*x27*x9 +
-   x2*x23*x28*x9 + x18*x26*x4*x9 + x17*x27*x4*x9 + x16*x28*x4*x9 +
-   x18*x24*x5*x9 + x17*x25*x5*x9 + x15*x28*x5*x9 + x18*x23*x6*x9 +
-   x16*x25*x6*x9 + x15*x27*x6*x9 + x17*x23*x7*x9 + x16*x24*x7*x9 +
-   x15*x26*x7*x9
-) /. {x1 -> mt[d][m1, m2], x2 -> mt[d][m1, m3], x3 -> mt[d][m1, m4],
-   x4 -> mt[d][m1, m5], x5 -> mt[d][m1, m6], x6 -> mt[d][m1, m7],
-   x7 -> mt[d][m1, m8], x8 -> mt[d][m2, m3], x9 -> mt[d][m2, m4],
-   x10 -> mt[d][m2, m5], x11 -> mt[d][m2, m6], x12 -> mt[d][m2, m7],
-   x13 -> mt[d][m2, m8], x14 -> mt[d][m3, m4], x15 -> mt[d][m3, m5],
-   x16 -> mt[d][m3, m6], x17 -> mt[d][m3, m7], x18 -> mt[d][m3, m8],
-   x19 -> mt[d][m4, m5], x20 -> mt[d][m4, m6], x21 -> mt[d][m4, m7],
-   x22 -> mt[d][m4, m8], x23 -> mt[d][m5, m6], x24 -> mt[d][m5, m7],
-   x25 -> mt[d][m5, m8], x26 -> mt[d][m6, m7], x27 -> mt[d][m6, m8],
-   x28 -> mt[d][m7, m8]}
-);
-
-symtens[{{p_,m1_},{p_,m2_}},{m3_,m4_,m5_,m6_,m7_,m8_}, d_] :=
-Block[{mm = {m1, m2, m3, m4, m5, m6, m7, m8}},
- Sum[fv[d][p,mm[[i]]] fv[d][p,mm[[j]]] *
-        symtens[{}, SelectFree[mm,{mm[[i]],mm[[j]]}],d],
-     {i, 1, 7}, {j, i+1, 8}
-    ]];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
