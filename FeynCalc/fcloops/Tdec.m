@@ -35,7 +35,6 @@ MakeContext[
 	Cases2,
 	Collect2,
 	Contract,
-	ChangeDimension,
 	EpsEvaluate,
 	ExpandScalarProduct,
 	Factor2,
@@ -265,13 +264,13 @@ solu = Solve3[neqli, ccli, Factoring -> factor];
 
 
 If[listlabel =!= True,
-   solu = solu /. FeynCalcExternal[ChangeDimension[Map[Reverse, seqli],4]];
+   solu = solu /. FeynCalcExternal[Map[Reverse, seqli]];
   ];
 
 solu = solu /. Dispatch[Map[Reverse, scqli]];
 
 nttt = Collect[tt[[2]], Map[First, scqli]];
-If[fce, nttt = FeynCalcExternal[ChangeDimension[nttt,4]]];
+If[fce, nttt = FeynCalcExternal[nttt]];
 (*
 tt = tt[[2]] /. solu;
 *)
@@ -292,7 +291,7 @@ If[Length[li]<5,
   ];
 *)
 If[listlabel === True,
-  {FeynCalcExternal[ChangeDimension[Map[Reverse, seqli],4]], tt}
+  {FeynCalcExternal[Map[Reverse, seqli]], tt}
   ,
    tt
   ]
