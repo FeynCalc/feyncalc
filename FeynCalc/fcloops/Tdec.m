@@ -47,13 +47,14 @@ MakeContext[
 	Solve3
 ];
 
-Options[Tdec] = {Dimension -> D, Factoring -> Factor2,
-FeynCalcExternal -> True,
-(*
-                 IsolateNames -> KK,
-*)
-                 List -> True,
-                 NumberOfMetricTensors -> Infinity};
+Options[Tdec] =
+	{
+		Dimension -> D,
+		Factoring -> Factor2,
+		FeynCalcExternal -> True,
+		List -> True,
+		NumberOfMetricTensors -> Infinity
+	};
 
 cc[a__] := 0 /; OddQ[Count[{a}, 0, Infinity]];
 (* ccfix is NECESSARY, since otherwise multiloop decompositions
@@ -137,18 +138,20 @@ FixedPoint[ccj,
 (* li = {{q1,mu}, {q2,nu}, ...} pli = {p1,p2, ...} *)
 
 (* Tdecdef *)
+(*
 Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_,
-     opt___Rule] := Tdec[exp, {{a,b}}, Flatten[{pli}]];
-
-Tdec[exp_:1, li_List, pli_List, opt___Rule] := Block[
+     opt:OptionsPattern[]] := Tdec[exp, {{a,b}}, Flatten[{pli}],opt];
+*)
+Tdec[exp_:1, li_List, pli_List/;FreeQ[pli,OptionQ], OptionsPattern[]] := Block[
 {tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt,
  nullccli, kli, eqli, neqli,  nttt,listlabel, fce,
 veqli, seqli, scqli, solu, xy, ce, byby, symms, sy},
 
-dim = Dimension /. {opt} /. Options[Tdec];
-listlabel = List /. {opt} /. Options[Tdec];
-fce = FeynCalcExternal /. {opt} /. Options[Tdec];
-factor = Factoring /. {opt} /. Options[Tdec];
+dim 		= OptionValue[Dimension];
+listlabel 	= OptionValue[List];
+fce 		= OptionValue[FeynCalcExternal];
+factor 		= OptionValue[Factoring];
+
 kli = Union[Map[First,li]];
 fv[x_,y_] := Pair[Momentum[x,dim], LorentzIndex[y, dim]];
 pe[j_ /; j>0, muu_] := Pair[Momentum[pli[[j]], dim], muu];
