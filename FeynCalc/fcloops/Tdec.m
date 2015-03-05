@@ -144,7 +144,7 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_,
 Tdec[exp_:1, li_List, pli_List, opt___Rule] := Block[
 {tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt,
  nullccli, kli, eqli, neqli,  nttt,listlabel, fce,
-veqli, seqli, scqli, solu, xy, ce},
+veqli, seqli, scqli, solu, xy, ce, byby, symms, sy},
 
 dim = Dimension /. {opt} /. Options[Tdec];
 listlabel = List /. {opt} /. Options[Tdec];
@@ -314,7 +314,7 @@ getsymmetries[aa_Times == _] :=
           ];
        t4];
 
-solvesymms[xx_] := Block[{s1,s2,s3,res,var,du,nx=xx,ff,vv},
+solvesymms[xx_] := Block[{s1,s2,s3,res,var,du,nx=xx,ff,vv,titi},
 If[Head[nx] === List,
    nx = Sum[Expand[nx[[iji]] du[iji],LorentzIndex],{iji,Length[nx]}]
   ];
@@ -409,7 +409,7 @@ Tdec[{{qi_,al_}},{p_,k_},opt___Rule] := Block[{n},
 
 Tdec[{{qi_,al_},{qj_,be_}},{p_,z_},opt___Rule] :=
 Block[
-{dD,a,b,c,d,e,f,g,i,j,k,l,m,n},
+{dD,a,b,c,d,e,f,g,h,i,j,k,l,m,n},
 dD =  Dimension /. {opt} /. Options[Tdec];
 a = Pair[LorentzIndex[al, dD], LorentzIndex[be, dD]];
 b = Pair[LorentzIndex[al, dD], Momentum[z, dD]];
