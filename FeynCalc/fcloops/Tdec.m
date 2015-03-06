@@ -26,6 +26,12 @@ tensor decomposition formulas are computed using parallelization, which
 results in a speed up of roughly 30-40%. This feature requires using
 additional Mathematica kernels.";
 
+UseTIDL::"usage"=
+"UseTIDL is an option of Tdec. When set to True, Tdec will check
+if the integral you want to decompose is already stored in TIDL, the
+built-in Tensor Integral Decomposition Library. If  yes, then the result
+will be fetched immediately.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -46,11 +52,13 @@ MakeContext[
 	Factor2,
 	FeynCalcForm,
 	FeynCalcExternal,
+	FeynCalcInternal,
 	FreeQ2,
 	PairContract,
 	SelectFree,
 	SelectNotFree,
-	Solve3
+	Solve3,
+	TIDL
 ];
 
 Options[Tdec] =
@@ -60,7 +68,8 @@ Options[Tdec] =
 		FeynCalcExternal -> True,
 		List -> True,
 		NumberOfMetricTensors -> Infinity,
-		UseParallelization -> True
+		UseParallelization -> True,
+		UseTIDL -> True
 	};
 
 cc[a__] := 0 /; OddQ[Count[{a}, 0, Infinity]];
@@ -158,6 +167,9 @@ dim 		= OptionValue[Dimension];
 listlabel 	= OptionValue[List];
 fce 		= OptionValue[FeynCalcExternal];
 factor 		= OptionValue[Factoring];
+
+
+
 
 kli = Union[Map[First,li]];
 fv[x_,y_] := Pair[Momentum[x,dim], LorentzIndex[y, dim]];
@@ -268,26 +280,43 @@ ccli = ccli /. scqli;
 neqli = Collect2[neqli, ccli];
 *)
 
-solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
+(*Before computing the decomposition formula, check if the result
+is already available in the TIDL database *)
+If[OptionValue[UseTIDL] &&	TIDL[li,pli,Dimension->dim]=!=Apply[Times,
+    Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
+    FCPrint[1,"This decomposition formula is available in TIDL, skipping
+    calculation."];
+	tt=TIDL[li,pli,Dimension->dim];
+	If[listlabel === True,
+   		tt = FeynCalcInternal[FeynCalcExternal[tt] /. Dispatch[FeynCalcExternal[seqli]]];
+	];
+
+	,
+
+	FCPrint[1,"Unfortunately, this decomposition formula is not available in TIDL."];
+
+	solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
 	FCPrint[1,"solve3 done ",MemoryInUse[]];
-   FCPrint[1,"SOLVE3 Bytecount", byby= ByteCount[solu]];
+   	FCPrint[1,"SOLVE3 Bytecount", byby= ByteCount[solu]];
+	nttt = Collect[tt[[2]], Map[First, scqli]];
+
+	If[fce, nttt = FeynCalcExternal[nttt]];
+	If[listlabel =!= True,
+   	solu = solu /. (*FeynCalcExternal[*)Map[Reverse, seqli](*]*);
+	];
+	solu = solu /. Dispatch[Map[Reverse, scqli]];
+	tt = nttt /. Dispatch[solu];
+];
 
 
-If[listlabel =!= True,
-   solu = solu /. FeynCalcExternal[Map[Reverse, seqli]];
-  ];
-
-solu = solu /. Dispatch[Map[Reverse, scqli]];
-
-nttt = Collect[tt[[2]], Map[First, scqli]];
-If[fce, nttt = FeynCalcExternal[nttt]];
-(*
-tt = tt[[2]] /. solu;
-*)
-tt = nttt /. Dispatch[solu];
 FCPrint[1,"after solu substitution ",
          N[MemoryInUse[]/10^6,3], " MB ; time used ",
            TimeUsed[]//FeynCalcForm];
+
+If[fce,
+	tt = FeynCalcExternal[tt];
+	seqli = FeynCalcExternal[seqli];
+	];
 
 If[exp =!= 1, tt = Contract[exp tt, EpsContract -> False]];
 (*
@@ -301,8 +330,7 @@ If[Length[li]<5,
   ];
 *)
 If[listlabel === True,
-  {FeynCalcExternal[Map[Reverse, seqli]], tt}
-  ,
+  {Map[Reverse, seqli], tt},
    tt
   ]
 ];
