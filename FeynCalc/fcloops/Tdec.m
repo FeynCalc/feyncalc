@@ -20,6 +20,12 @@ The more common ones are saved in TIDL.";
 NumberOfMetricTensors::"usage"=
 "NumberOfMetricTensors is an option of Tdec.";
 
+UseParallelization::"usage"=
+"UseParallelization is an option of Tdec. When set to True,
+tensor decomposition formulas are computed using parallelization, which
+results in a speed up of roughly 30-40%. This feature requires using
+additional Mathematica kernels.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -53,7 +59,8 @@ Options[Tdec] =
 		Factoring -> Factor2,
 		FeynCalcExternal -> True,
 		List -> True,
-		NumberOfMetricTensors -> Infinity
+		NumberOfMetricTensors -> Infinity,
+		UseParallelization -> True
 	};
 
 cc[a__] := 0 /; OddQ[Count[{a}, 0, Infinity]];
@@ -261,7 +268,7 @@ ccli = ccli /. scqli;
 neqli = Collect2[neqli, ccli];
 *)
 
-solu = Solve3[neqli, ccli, Factoring -> factor];
+solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
 	FCPrint[1,"solve3 done ",MemoryInUse[]];
    FCPrint[1,"SOLVE3 Bytecount", byby= ByteCount[solu]];
 
