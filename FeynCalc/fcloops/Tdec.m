@@ -81,11 +81,14 @@ Options[Tdec] =
 
 
 
-getsymmetries[aa_ /; Head[aa] =!= Times==_] :=
-	{};
+getsymmetries[Equal[bb_ , aa_]] :=
+		(FCPrint[1,"No symmetries in ", aa]; {})/;Head[aa]=!=Plus || Head[bb]=!=Times;
 
-getsymmetries[aa_Times == _] :=
+getsymmetries[Equal[x_Times ,aa_Plus]] :=
 	Block[{t1,t2,t3,t4},
+	(* "For now use symmetries only for 1-loop integrals" *)
+	If[ Length[Cases[x, Momentum[a_, ___] :> a, Infinity] // Union]===1,
+		FCPrint[1, "working out the symmetries of ", aa];
 		t1 = Cases2[aa, LorentzIndex];
 		t2 = Union[Map[Sort,Map[Take[#,2]&,Permutations[t1]]]];
 		t3 = Map[{Apply[RuleDelayed,{#[[1]], #[[2]]}],
@@ -96,7 +99,9 @@ getsymmetries[aa_Times == _] :=
 				AppendTo[t4, t3[[i]]]
 			]
 		];
-		t4
+		t4,
+		{}
+	]
 	];
 
 solvesymms[xx_] :=
@@ -241,13 +246,15 @@ Tdec[exp_:1, li : {{_, _} ..}, pli_List/;FreeQ[pli,OptionQ], opt:OptionsPattern[
 	];
 
 	tt = tt /. cc -> newcc;
-	symms = getsymmetries[tt];
-	FCPrint[1,"symms"]; FCPrint[1,Length[ccli]];
+	symms = getsymmetries[(tt/.cc[___]:>1)];
+	FCPrint[1,"symms", FullForm[symms]];
+	FCPrint[1,Length[ccli]];
 
 	If[symms =!=  False,
 		sy = solvesymms[tt[[2]] - (tt[[2]]/.symms)],
 		sy = {}
 	];
+	FCPrint[1,"symmetries ", sy ];
 	ccli = ccli /. cc -> newcc;
 	ccli = Union[ccli//.sy];
 	tt = tt //. sy;
@@ -256,14 +263,14 @@ Tdec[exp_:1, li : {{_, _} ..}, pli_List/;FreeQ[pli,OptionQ], opt:OptionsPattern[
 	If[Length[pli] === 0 && Length[kli]===1,
 		proli = {First[proli]}
 	];
-
-	FCPrint[1,"contracting"];
+	FCPrint[1,"contracting with", proli];
 	eqli = Table[
 				EpsEvaluate[ExpandScalarProduct[FCPrint[1,"il = ",il];
 				(tt proli[[il]]) /. Pair->PairContract /. PairContract -> Pair]],
 				{il, Length[proli]}
 			];
 	FCPrint[1,"Length of eqli = ",Length[eqli]];
+	FCPrint[1,"eqli = ",TableForm[eqli]];
 	FCPrint[1,"solving ", Length[ccli]];
 
 	veqli = Union[Join @@ Map[Variables, Flatten[eqli /. Equal -> List]]];
