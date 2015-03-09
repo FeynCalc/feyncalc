@@ -43,7 +43,8 @@ If[ diim === 4,
     ld[a_,___]     := LorentzIndex[a, diim];
     md[a_,___]     := Momentum[a, diim];
     spi4[a_, b__]  := Spinor[a /. Momentum[bbb_, ___] -> Momentum[bbb], b];
-    dirGG[aa_,___] := dirGAMM[aa, diim];
+    dirGG[aa_,___] := dirGAMM[aa, diim]/; !MatchQ[aa,5|6|7];
+    dirGG[(aa: 5|6|7)] := dirGAMM[aa];
     xx = xx /. Pair -> pAiR /. DiracGamma -> dirGAMM;
     xx = xx /. {Momentum :> md, LorentzIndex -> ld} /.
                {md :> Momentum, ld :> LorentzIndex} ;
