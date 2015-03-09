@@ -32,6 +32,10 @@ DownValues[HighEnergyPhysics`FeynCalc`ScalarProduct`ScalarProduct] =
 HighEnergyPhysics`FeynCalc`ScalarProduct`Private`initialDownValues;
 UpValues[ScalarProduct] =
 HighEnergyPhysics`FeynCalc`ScalarProduct`Private`initialUpValues;
+DownValues[HighEnergyPhysics`FeynCalc`CoreObjects`SP] =
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`initialSPDownValues;
+DownValues[HighEnergyPhysics`FeynCalc`CoreObjects`SPD] =
+HighEnergyPhysics`FeynCalc`CoreObjects`Private`initialSPDDownValues;
 );
 
 

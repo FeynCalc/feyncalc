@@ -1938,6 +1938,8 @@ SUNTF[a_,b_,c_]:=
 	SUNTF[{a},b,c]/;Head[a]=!=List;
 
 initialDownValues = DownValues[Pair];
+initialSPDownValues = DownValues[SP];
+initialSPDDownValues = DownValues[SPD];
 
 End[];
 EndPackage[];
