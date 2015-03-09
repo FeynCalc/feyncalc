@@ -70,6 +70,12 @@ using relations derived by Sirlin in Nuclear Physics B192 (1981) 93-99 \
 Contrary to the original paper, the sign of the Levi-Civita tensor is \
 choosen as epsilon^{0123} = 1 which is the standard choice in FeynCalc.";
 
+DiracSimplify::noncom =
+"Wrong syntax! `1` contains Dirac or SU(N) matrices multiplied via \
+Times (commutative multiplication) instead of DOT (non-commutative multiplication). \
+Evaluation aborted!";
+
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Private`"];
@@ -77,6 +83,7 @@ Begin["`Private`"];
 DiracGamma = MakeContext["CoreObjects","DiracGamma"];
 DiracMatrix = MakeContext["CoreObjects","DiracMatrix"];
 DiracSlash = MakeContext["CoreObjects","DiracSlash"];
+DiracSigma = MakeContext["CoreObjects","DiracSigma"];
 Eps := Eps  = MakeContext["CoreObjects","Eps"];
 EpsContract = MakeContext["CoreOptions","EpsContract"];
 Expanding = MakeContext["CoreOptions","Expanding"];
@@ -148,6 +155,20 @@ dit[x_,ops___Rule]:=DiracTrace[diracSimplify@@Join[{x},{ops},
 (*
 DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[DOT[x,y], z];
 *)
+
+(*DiracSimplify[x:Except[_HoldAll].., OptionsPattern[]]:=AAA;*)
+
+
+DiracSimplify[x:Except[_HoldAll].., OptionsPattern[]]:= (Message[DiracSimplify::noncom, InputForm[x]];  HoldAll[DiracSimplify][HoldAll[x]])/;
+ !FreeQ2[DotExpand[Expand[DiracSigmaExplicit[fcinte[x]]]], {DiracGamma[a__]*DiracGamma[b__],
+                DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
+                DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DiracGamma[d__],
+                SUNT[a__]*SUNT[b__],
+                DOT[a:Except[_Spinor]...,SUNT[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,SUNT[e__],f:Except[_Spinor]...],
+                DOT[a___,SUNT[b__],c___]*SUNT[d__]
+                }];
+
+
 DiracSimplify[x_,y__, z___?OptionQ]:=DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] &&
                                                                    FreeQ[{x,y}, RuleDelayed];
 

@@ -17,3 +17,8 @@ Needs["HighEnergyPhysics`FeynCalc`"];
 Get[StringJoin[$FeynCalcDirectory, "/fctests/testfiles/DiracSimplify.test"]];
 Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],TestID->#[[1]]]&,
     Join[fcstDiracSimplify]];
+
+stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
+
+Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],(#[[4]]),TestID->#[[1]], MessagesEquivalenceFunction->stingCompare]&,
+    Join[fcstDiracSimplifyDotWarnings]];
