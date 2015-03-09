@@ -1,0 +1,37 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: FeynAmpDenominatorSimplify.test									*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+	FeynAmpDenominatorSimplify												*)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstFeynAmpDenominatorSimplify = {
+{"fcstFeynAmpDenominatorSimplify-ID1","FeynAmpDenominatorSimplify[f[k] FAD[k, k], k]","0"},
+{"fcstFeynAmpDenominatorSimplify-ID2","FeynAmpDenominatorSimplify[FAD[k - p1, k - p2], k]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0],
+	PropagatorDenominator[Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]"},
+{"fcstFeynAmpDenominatorSimplify-ID3","FeynAmpDenominatorSimplify[FAD[k - p1, k - p2] SPD[k, k], k]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0], PropagatorDenominator[
+	Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*Pair[Momentum[k, D], Momentum[k, D]] +
+	2*FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0], PropagatorDenominator[
+	Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*Pair[Momentum[k, D], Momentum[p2, D]] +
+	FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0], PropagatorDenominator[
+	Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*Pair[Momentum[p2, D], Momentum[p2, D]]"},
+{"fcstFeynAmpDenominatorSimplify-ID4","FeynAmpDenominatorSimplify[FAD[k - p1, k - p2] SPD[k, OPEDelta]^2, k]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0], PropagatorDenominator[
+	Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*Pair[Momentum[k, D], Momentum[OPEDelta, D]]^2 +
+	2*FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0], PropagatorDenominator[
+	Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*Pair[Momentum[k, D], Momentum[OPEDelta, D]]*
+	Pair[Momentum[OPEDelta, D], Momentum[p2, D]] + FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0],
+	PropagatorDenominator[Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*
+	Pair[Momentum[OPEDelta, D], Momentum[p2, D]]^2"}
+}
