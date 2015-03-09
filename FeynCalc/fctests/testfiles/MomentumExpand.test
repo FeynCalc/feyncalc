@@ -1,0 +1,79 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: MomentumExpand.test               	                            *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for MomentumExpand           *)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstMomentumExpand = {
+{"fcstMomentumExpand-ID1","Momentum[p] // MomentumExpand",
+	"Momentum[p]"},
+{"fcstMomentumExpand-ID2","Momentum[p, D] // MomentumExpand",
+	"Momentum[p,D]"},
+{"fcstMomentumExpand-ID3","Momentum[p, D - 4] // MomentumExpand",
+	"Momentum[p,D-4]"},
+{"fcstMomentumExpand-ID4","Momentum[p + 3 q] // MomentumExpand",
+	"Momentum[p]+3 Momentum[q]"},
+{"fcstMomentumExpand-ID5","Momentum[p + 3 q, D] // MomentumExpand",
+	"Momentum[p,D]+3 Momentum[q,D]"},
+{"fcstMomentumExpand-ID6","Momentum[p + 3 q, D - 4] // MomentumExpand",
+	"Momentum[p,D-4]+3 Momentum[q,D-4]"},
+{"fcstMomentumExpand-ID7","Momentum[p + Momentum[3 q]]//MomentumExpand",
+	"Momentum[p]+3 Momentum[q]"},
+{"fcstMomentumExpand-ID8","Momentum[p + Momentum[3 q,D],D]//MomentumExpand",
+	"Momentum[p,D]+3 Momentum[q,D]"},
+{"fcstMomentumExpand-ID9","Momentum[p + Momentum[3 q,D-4],D-4]//MomentumExpand",
+	"Momentum[p,D-4]+3 Momentum[q,D-4]"},
+{"fcstMomentumExpand-ID10","Momentum[p + Momentum[3 q], D]//MomentumExpand",
+	"Momentum[p, D] + 3*Momentum[q, {4, D}]"},
+{"fcstMomentumExpand-ID11","Momentum[p + Momentum[3 q], D - 4]//MomentumExpand",
+	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"},
+{"fcstMomentumExpand-ID12","Momentum[p + Momentum[3 q, D]]//MomentumExpand",
+	"Momentum[p] + 3*Momentum[q, {D, 4}]"},
+{"fcstMomentumExpand-ID13","Momentum[p + Momentum[3 q], D]//MomentumExpand",
+	"Momentum[p, D] + 3*Momentum[q, {4, D}]"},
+{"fcstMomentumExpand-ID14","Momentum[p + Momentum[3 q], D - 4]//MomentumExpand",
+	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
