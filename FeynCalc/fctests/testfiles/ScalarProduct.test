@@ -1,0 +1,41 @@
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: ScalarProduct.test       										*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ScalarProduct			*)
+
+(* ------------------------------------------------------------------------ *)
+
+fcstScalarProduct = {
+{"fcstScalarProduct-ID1","ScalarProduct[a, a]",
+	"Pair[Momentum[a], Momentum[a]]"},
+{"fcstScalarProduct-ID2","ScalarProduct[a, a, Dimension -> D]",
+	"Pair[Momentum[a, D], Momentum[a, D]]"},
+{"fcstScalarProduct-ID3","ScalarProduct[a, a, Dimension -> D - 4]",
+	"Pair[Momentum[a, -4 + D], Momentum[a, -4 + D]]"},
+{"fcstScalarProduct-ID4","ScalarProduct[a, b]",
+	"Pair[Momentum[a], Momentum[b]]"},
+{"fcstScalarProduct-ID5","ScalarProduct[a, b, Dimension -> D]",
+	"Pair[Momentum[a, D], Momentum[b, D]]"},
+{"fcstScalarProduct-ID6","ScalarProduct[a, b, Dimension -> D - 4]",
+	"Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]"},
+{"fcstScalarProduct-ID7","ScalarProduct[a, a, FCI -> False]",
+	"ScalarProduct[a, a, FCI -> False]"},
+{"fcstScalarProduct-ID8","ScalarProduct[a, a, Dimension -> D, FCI -> False]",
+	"ScalarProduct[a, a, Dimension -> D, FCI -> False]"},
+{"fcstScalarProduct-ID9","ScalarProduct[a, a, Dimension -> D - 4, FCI -> False]",
+	"ScalarProduct[a, a, Dimension -> D - 4, FCI -> False]"},
+{"fcstScalarProduct-ID10","ScalarProduct[a, b, FCI -> False]",
+	"ScalarProduct[a, b, FCI -> False]"},
+{"fcstScalarProduct-ID11","ScalarProduct[a, b, Dimension -> D, FCI -> False]",
+	"ScalarProduct[a, b, Dimension -> D, FCI -> False]"},
+{"fcstScalarProduct-ID12","ScalarProduct[a, b, Dimension -> D - 4, FCI -> False]",
+	"ScalarProduct[a, b, Dimension -> D - 4, FCI -> False]"}
+}
