@@ -464,14 +464,14 @@ tim = TimeUsed[];
    Contract[y_,z___Rule] := dosi[fci[y], z];
 
 (*epscondef*)
-  epscon/: epscon[a1_,a2_,a3_,a4_]^n_Integer?Positive :=  (   (
+  epscon/: epscon[a1_,a2_,a3_,a4_,OptionsPattern[Eps]]^n_Integer?Positive :=  (   (
            ( - ($LeviCivitaSign)^2 Det[{{sCO[a1,a1],sCO[a1,a2],sCO[a1,a3],sCO[a1,a4]},
                    {sCO[a2,a1],sCO[a2,a2],sCO[a2,a3],sCO[a2,a4]},
                     {sCO[a3,a1],sCO[a3,a2],sCO[a3,a3],sCO[a3,a4]},
                     {sCO[a4,a1],sCO[a4,a2],sCO[a4,a3],sCO[a4,a4]}}
                   ]//Expand
-           )/.sCO->Pair ) epscon[a1,a2,a3,a4]^(n-2) );
-  epscon/: epscon[a1_,a2_,a3_,a4_] epscon[b1_,b2_,b3_,b4_] :=
+           )/.sCO->Pair ) epscon[a1,a2,a3,a4,OptionsPattern[Eps]]^(n-2) );
+  epscon/: epscon[a1_,a2_,a3_,a4_,OptionsPattern[Eps]] epscon[b1_,b2_,b3_,b4_,OptionsPattern[Eps]] :=
            ( - ($LeviCivitaSign)^2 Det[{{sCO[a1,b1],sCO[a1,b2],sCO[a1,b3],sCO[a1,b4]},
                    {sCO[a2,b1],sCO[a2,b2],sCO[a2,b3],sCO[a2,b4]},
                    {sCO[a3,b1],sCO[a3,b2],sCO[a3,b3],sCO[a3,b4]},
@@ -622,20 +622,20 @@ FCPrint[1,"check1"];
 
 
   eps2rules = {Eps[LorentzIndex[a_,dia___], b_Momentum,
-                   c_Momentum, d_Momentum]^2 :>
-               Eps[LorentzIndex[$MU[1], dia], b, c, d]^2,
+                   c_Momentum, d_Momentum, opts:OptionsPattern[]]^2 :>
+               Eps[LorentzIndex[$MU[1], dia], b, c, d, opts]^2,
                Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
-                   c_Momentum, d_Momentum]^2 :>
+                   c_Momentum, d_Momentum, opts:OptionsPattern[]]^2 :>
                Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
-                   c, d]^2,
+                   c, d, opts]^2,
                Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
-                   LorentzIndex[c_,dia___], d_Momentum]^2 :>
+                   LorentzIndex[c_,dia___], d_Momentum, opts:OptionsPattern[]]^2 :>
                Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
-                   LorentzIndex[$MU[3], dia], d]^2,
+                   LorentzIndex[$MU[3], dia], d, opts]^2,
                Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
-                   LorentzIndex[c_,dia___], LorentzIndex[d_,dia___]]^2 :>
+                   LorentzIndex[c_,dia___], LorentzIndex[d_,dia___], opts:OptionsPattern[]]^2 :>
                Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
-                   LorentzIndex[$MU[3], dia], LorentzIndex[$MU[4], dia]
+                   LorentzIndex[$MU[3], dia], LorentzIndex[$MU[4], dia], opts
                   ]^2
               };
 
@@ -772,7 +772,7 @@ FCPrint[1,"check1"];
          ]:= Block[{dte,a,b,c,d},
           dte = (m/.mu1->$MU[1]/.mu2->$MU[2]/.mu3->$MU[3]/.mu4->$MU[4]) *
            Eps[LorentzIndex[$MU[1],di1],  LorentzIndex[$MU[2],di2],
-               LorentzIndex[$MU[3],di3], LorentzIndex[$MU[4],di4] ];
+               LorentzIndex[$MU[3],di3], LorentzIndex[$MU[4],di4]];
           a = $MU[1]; b = $MU[2]; c = $MU[3]; d = $MU[4];
 Which[
 ordq[m, {mu1, mu2, mu3, mu4}], ReplaceAll[dte,

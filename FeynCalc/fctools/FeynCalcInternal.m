@@ -36,6 +36,7 @@ DiracMatrix     := DiracMatrix     = MakeContext["CoreObjects","DiracMatrix"];
 DiracSlash      := DiracSlash      = MakeContext["CoreObjects","DiracSlash"];
 DiracTrace      := DiracTrace      = MakeContext["DiracTrace"];
 Dimension       := Dimension       = MakeContext["CoreOptions","Dimension"];
+Eps             := Eps             = MakeContext["CoreObjects","Eps"];
 FAD             := FAD             = MakeContext["CoreObjects","FAD"];
 Factor2         := Factor2         = MakeContext["Factor2"];
 FourVector      := FourVector      = MakeContext["CoreObjects","FourVector"];
@@ -137,6 +138,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVD :> fvd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVE :> fve},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FV :> fv},
+ {HighEnergyPhysics`FeynCalc`LeviCivita`LeviCivita :> levicivita},
  {HighEnergyPhysics`FeynCalc`CoreObjects`LC :> lc},
  {HighEnergyPhysics`FeynCalc`CoreObjects`LCD :> lcd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`MT :> mt},
@@ -179,7 +181,10 @@ Print["fci time = ",ti//MakeContext["FeynCalcForm"]];
 Print["ru= ",ru];
 *)
 
-If[ru =!={}, ReplaceRepeated[x, Dispatch[ru], MaxIterations -> 20] /.
+If[ru =!={}, ReplaceRepeated[x//.{	HighEnergyPhysics`FeynCalc`CoreObjects`LC[a___][b___] :> lcl[{a},{b}],
+    								HighEnergyPhysics`FeynCalc`CoreObjects`LCD[a___][b___] :> lcdl[{a},{b}],
+									HighEnergyPhysics`FeynCalc`LeviCivita`LeviCivita[a___][b___] :> levicivital[{a},{b}]
+    								}, Dispatch[ru], MaxIterations -> 20] /.
                       {mt :> MakeContext["CoreObjects","MT"],
                        fv :> MakeContext["CoreObjects","FV"],
                        SD :> MakeContext["CoreObjects","SD"],
@@ -369,14 +374,31 @@ ga[a_Integer]  :=  DiracGamma[ExplicitLorentzIndex[a]]/; (a=!=5 && a=!=6 && a=!=
 gad[a_Integer]  :=  DiracGamma[ExplicitLorentzIndex[a,D],D]/; (a=!=5 && a=!=6 && a=!=7);
 gae[a_Integer]  :=  DiracGamma[ExplicitLorentzIndex[a,D-4],D-4]/; (a=!=5 && a=!=6 && a=!=7);
 
-lc[y__]  := LeviCivita[y,Dimension->4];
-HoldPattern[lc[y___][z___]]  := LeviCivita[y,Dimension->4][z,Dimension->4];
-HoldPattern[lcd[y__]] := LeviCivita[y,Dimension->D];
-HoldPattern[lcd[y___][z___]]  := LeviCivita[y,Dimension->D][z,Dimension->D];
 
-tosunf[a_, b_, c_] := SUNF@@Map[SUNIndex,
-                                ({a,b,c} /. SUNIndex->Identity)
-                               ];
+lc[a__]  := (Eps@@Join[(LorentzIndex/@{a}),{Dimension->4}])/;
+	FreeQ[{a},Rule] && (Length[{a}] === 4);
+
+lcd[a__]  := (Eps@@Join[(LorentzIndex[#,D]&/@{a}),{Dimension->D}])/;
+	FreeQ[{a},Rule] && (Length[{a}] === 4);
+
+lcl[{x___},{y___}]:= (Eps@@Join[LorentzIndex/@{x},
+	Momentum/@{y},{Dimension->4}]/;	Length[Join[{x},{y}]]===4);
+
+lcdl[{x___},{y___}]:= (Eps@@Join[Map[LorentzIndex[#, D]& ,{x}],
+	Map[Momentum[#, D]& ,{y}],{Dimension->D}]/;	Length[Join[{x},{y}]]===4);
+
+levicivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]] :=
+	Eps@@Join[(LorentzIndex[#,OptionValue[LeviCivita,{opts},Dimension]]&/@{x}),
+	{Dimension->OptionValue[LeviCivita,{opts},Dimension]}]/; Length[{x}]===4;
+
+levicivital[{x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]},{y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]}] :=
+	Eps@@Join[Map[LorentzIndex[#, OptionValue[LeviCivita,{opts1},Dimension]]& ,{x}],
+	Map[Momentum[#, OptionValue[LeviCivita,{opts1},Dimension]]& ,{y}],
+	{Dimension->OptionValue[LeviCivita,{opts1},Dimension]}]/; Length[{x,y}]===4 &&
+	OptionValue[LeviCivita,{opts1},Dimension]===OptionValue[LeviCivita,{opts2},Dimension];
+
+tosunf[a_, b_, c_] :=
+	SUNF@@Map[SUNIndex, ({a,b,c} /. SUNIndex->Identity)];
 
 tospinor[a__] := Spinor[a];
 tospinorv[a_,0,b__] := Spinor[a,0,b];

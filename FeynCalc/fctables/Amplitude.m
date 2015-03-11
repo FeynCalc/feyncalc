@@ -51,7 +51,7 @@ GhostPropagator,
 GluonGhostVertex,
 GluonPropagator,
 GluonVertex,
-LeviCivita,
+LC,
 OPEDelta,
 QuarkGluonVertex,
 QuarkPropagator,
@@ -159,7 +159,7 @@ gauge = Gauge /. {opt} /. Options[Amplitude];
 qgv = QuarkGluonVertex;
 ggv = GluonGhostVertex;
 ghp = GhostPropagator;
-pro = -I/4 LeviCivita[mu, nu][OPEDelta, p];
+pro = -I/4 LC[mu, nu][OPEDelta, p];
  gp[y__] := gp[y] = GluonPropagator[y, Gauge -> gauge];
  qp = QuarkPropagator;
  qpm[a_,__]:= qpm[a];

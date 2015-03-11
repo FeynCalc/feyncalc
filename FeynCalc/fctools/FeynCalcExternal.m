@@ -37,6 +37,7 @@ Cases2          := Cases2          = MakeContext["Cases2"];
 DiracSigma      := DiracSigma      = MakeContext["CoreObjects","DiracSigma"];
 DiracGamma      := DiracGamma      = MakeContext["CoreObjects","DiracGamma"];
 Dimension       := Dimension       = MakeContext["CoreOptions","Dimension"];
+Eps             := Eps             = MakeContext["CoreObjects","Eps"];
 FAD             := FAD             = MakeContext["CoreObjects","FAD"];
 FV              := FV              = MakeContext["CoreObjects","FV"];
 FVD             := FVD             = MakeContext["CoreObjects","FVD"];
@@ -216,47 +217,69 @@ propd[a_, 0] := a /. Momentum->iDent;
 propd[a_, b_/;b=!=0] := {a/.Momentum->iDent, b};
 feynampback[a__] := FAD @@ ({a} /. PropagatorDenominator -> propd);
 
-eps[Momentum[a_],Momentum[b_],Momentum[c_],Momentum[d_]
-   ] := LC[][a,b,c,d];
-eps[LorentzIndex[a_],Momentum[b_],Momentum[c_],Momentum[d_]
-   ] := LC[a][b,c,d];
-eps[LorentzIndex[a_],LorentzIndex[b_],Momentum[c_],Momentum[d_]
-   ] := LC[a,b][c,d];
-eps[LorentzIndex[a_],LorentzIndex[b_],LorentzIndex[c_],Momentum[d_]
-   ] := LC[a,b,c][d];
-eps[LorentzIndex[a_],LorentzIndex[b_],
-    LorentzIndex[c_],LorentzIndex[d_]
-   ] := LC[a,b,c,d];
+eps[Momentum[a_],Momentum[b_],Momentum[c_],Momentum[d_],
+opt:OptionsPattern[Eps]]:=
+	LC[][a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
 
-eps[Momentum[a_,D],Momentum[b_,D],Momentum[c_,D],Momentum[d_,D]
-   ] := LCD[][a,b,c,d];
-eps[LorentzIndex[a_,D],Momentum[b_,D],
-    Momentum[c_,D],Momentum[d_,D]
-   ] := LCD[a][b,c,d];
-eps[LorentzIndex[a_],LorentzIndex[b_],
-    Momentum[c_,D],Momentum[d_,D]
-   ] := LCD[a,b][c,d];
-eps[LorentzIndex[a_,D], LorentzIndex[b_,D],
-    LorentzIndex[c_,D], Momentum[d_,D]
-   ] := LCD[a,b,c][d];
-eps[LorentzIndex[a_,D],LorentzIndex[b_,D],
-    LorentzIndex[c_,D],LorentzIndex[d_,D]
-   ] := LCD[a,b,c,d];
+eps[LorentzIndex[a_],Momentum[b_],Momentum[c_],Momentum[d_],
+opt:OptionsPattern[Eps]]:=
+	LC[a][b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
 
-eps[Momentum[a_,dd_],Momentum[b_,dd_],Momentum[c_,dd_],Momentum[d_,dd_]
-   ] /;dd=!=D := LeviCivita[Dimension->dd][a,b,c,d,Dimension->dd];
-eps[LorentzIndex[a_,dd_],Momentum[b_,dd_],
-    Momentum[c_,dd_],Momentum[d_,dd_]
-   ] /;dd=!=D := LeviCivita[a,Dimension->dd][b,c,d,Dimension->dd];
-eps[LorentzIndex[a_],LorentzIndex[b_],
-    Momentum[c_,dd_],Momentum[d_,dd_]
-   ] /;dd=!=D := LeviCivita[a,b,Dimension->dd][c,d,Dimension->dd];
-eps[LorentzIndex[a_,dd_], LorentzIndex[b_,dd_],
-    LorentzIndex[c_,dd_], Momentum[d_,dd_]
-   ] /;dd=!=D := LeviCivita[a,b,c,Dimension->dd][d,Dimension->dd];
-eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_],
-    LorentzIndex[c_,dd_],LorentzIndex[d_,dd_]
-   ] /;dd=!=D := LeviCivita[a,b,c,d,Dimension->dd];
+eps[LorentzIndex[a_],LorentzIndex[b_],Momentum[c_],Momentum[d_],
+opt:OptionsPattern[Eps]]:=
+	LC[a,b][c,d]/; OptionValue[Eps,{opt},Dimension]===4;
+
+eps[LorentzIndex[a_],LorentzIndex[b_],LorentzIndex[c_],Momentum[d_],
+opt:OptionsPattern[Eps]]:=
+	LC[a,b,c][d]/; OptionValue[Eps,{opt},Dimension]===4;
+
+eps[LorentzIndex[a_],LorentzIndex[b_],LorentzIndex[c_],LorentzIndex[d_],
+opt:OptionsPattern[Eps]]:=
+	LC[a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
+
+eps[Momentum[a_,D],Momentum[b_,D],Momentum[c_,D],Momentum[d_,D],
+opt:OptionsPattern[Eps]]:=
+	LCD[][a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+
+eps[LorentzIndex[a_,D],Momentum[b_,D], Momentum[c_,D],Momentum[d_,D],
+opt:OptionsPattern[Eps]]:=
+	LCD[a][b,c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+
+eps[LorentzIndex[a_,D],LorentzIndex[b_,D], Momentum[c_,D],Momentum[d_,D],
+opt:OptionsPattern[Eps]]:=
+	LCD[a,b][c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+
+eps[LorentzIndex[a_,D], LorentzIndex[b_,D], LorentzIndex[c_,D], Momentum[d_,D],
+opt:OptionsPattern[Eps]]:=
+	LCD[a,b,c][d]/; OptionValue[Eps,{opt},Dimension]===D;
+
+eps[LorentzIndex[a_,D],LorentzIndex[b_,D], LorentzIndex[c_,D],LorentzIndex[d_,D],
+opt:OptionsPattern[Eps]]:=
+	LCD[a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===D;
+
+eps[Momentum[a_,dd_],Momentum[b_,dd_],Momentum[c_,dd_],Momentum[d_,dd_],
+opt:OptionsPattern[Eps]]:=
+	LeviCivita[Dimension->dd][a,b,c,d,
+	Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+
+eps[LorentzIndex[a_,dd_],Momentum[b_,dd_], Momentum[c_,dd_],Momentum[d_,dd_],
+opt:OptionsPattern[Eps]]:=
+	LeviCivita[a,Dimension->dd][b,c,d,
+	Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+
+eps[LorentzIndex[a_, dd_],LorentzIndex[b_, dd_], Momentum[c_,dd_],Momentum[d_,dd_],
+opt:OptionsPattern[Eps]]:=
+	LeviCivita[a,b,Dimension->dd][c,
+	d,Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+
+eps[LorentzIndex[a_,dd_], LorentzIndex[b_,dd_], LorentzIndex[c_,dd_], Momentum[d_,dd_],
+opt:OptionsPattern[Eps]]:=
+	LeviCivita[a,b,c,Dimension->dd][d,
+	Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+
+eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_], LorentzIndex[c_,dd_],LorentzIndex[d_,dd_],
+opt:OptionsPattern[Eps]]:=
+	LeviCivita[a,b,c,d,Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

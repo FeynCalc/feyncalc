@@ -55,7 +55,7 @@ FeynAmpDenominatorSimplify,
 FeynCalcInternal,
 GluonVertex,
 Isolate,
-LeviCivita,
+LC,
 NumericalFactor,
 OneLoopSimplify,
 OPEDelta,
@@ -328,7 +328,7 @@ t8 = t8 /. finsub;
                                      Momentum[OPEDelta]]
                                 ) :> FeynCalcInternal[
                                      DiracMatrix[mu1,mu2,mu3]*
-                                     LeviCivita[mu1,mu2,mu3][OPEDelta]
+                                     LC[mu1,mu2,mu3][OPEDelta]
                                                      ]
                                }
             ]

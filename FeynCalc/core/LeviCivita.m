@@ -23,42 +23,38 @@ Eps[LorentzIndex[mu], LorentzIndex[nu], ..., Momentum[p], ...].";
 Begin["`Private`"];
 
 Dimension = MakeContext["CoreOptions","Dimension"];
-Eps = MakeContext["CoreObjects","Eps"];
-LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-Momentum = MakeContext["CoreObjects","Momentum"];
+FCI = MakeContext["FeynCalcInternal"];
 
-MakeContext[ EpsEvaluate, FreeQ2];
+MakeContext[FreeQ2];
 
-LeviCivita[a__Integer] := Eps[a];
+Options[LeviCivita] = {Dimension -> 4, FCI->True};
 
-Options[LeviCivita] = {Dimension -> 4};
+LeviCivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..,
+    opts:OptionsPattern[LeviCivita]]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y,opts},{Pattern,
+	Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]["<>ToString[{y,opts}]<>"]", Length[{x,y}], 4];
 
-frlivc[x_?NumberQ] :=True;
-frlivc[x_]         := True/;(Head[x]=!=Momentum) &&
-                        (Head[x]=!=LorentzIndex);
-frlivc[x_,y__] := True/;FreeQ2[FixedPoint[ReleaseHold,{x,y}]
-                               ,{Momentum, LorentzIndex}];
+LeviCivita[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] > 4) && (FreeQ2[{x,opts},{Pattern,
+Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
 
-HoldPattern[LeviCivita[a___, b_, c___, b_, k___, ops___Rule]] := 0;
-LeviCivita[ a__, ops___Rule ]:= ( Eps @@ ( LorentzIndex /@ {a} )
-                                ) /; frlivc[a] && FreeQ[{a}, Rule] &&
-                (Length[{a}] === 4) &&
-                ( (Dimension /. {ops} /. Options[LeviCivita]) === 4);
+LeviCivita[ a:Except[_?OptionQ].., opts:OptionsPattern[]]:=
+	FCI[LeviCivita[a,Join[{FCI->False},FilterRules[{opts},Except[FCI]]]]]/; Length[{a}] === 4 && OptionValue[FCI];
 
-LeviCivita[ a__, ops___Rule ]:= ( Eps@@(
-   LorentzIndex[#, Dimension/.{ops}/.Options[LeviCivita]]& /@{a}
-         )                     ) /;
-   frlivc[a] && FreeQ[{a},Rule] && (Length[{a}] === 4) &&
-   ( (Dimension /. {ops} /. Options[LeviCivita]) =!= 4);
+LeviCivita[x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]] :=
+	FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]]/;
+	Length[{x,y}] === 4 && OptionValue[LeviCivita,{opts1},FCI] && OptionValue[LeviCivita,{opts2},FCI];
 
-LeviCivita[x___, ops___Rule][y___, ru___Rule] :=
-  Eps @@ Join[Map[
-    LorentzIndex[#, Dimension /. {ops} /. Options[LeviCivita]]& ,{x}
-                 ],
-              Map[
-      Momentum[#, Dimension /. {ru} /. Options[LeviCivita]]& ,{y}
-                 ]
-             ];
+LeviCivita /:
+	MakeBoxes[LeviCivita[(a:Except[_?OptionQ]..)/;Length[{a}] === 4, opts:OptionsPattern[LeviCivita]/;!OptionValue[LeviCivita,{opts},FCI]], TraditionalForm]:=
+		ToBoxes[FCI[LeviCivita[a,Join[{FCI->False},FilterRules[{opts},Except[FCI]]]]],TraditionalForm]
+
+LeviCivita /:
+	MakeBoxes[LeviCivita[x:Except[_?OptionQ]...,
+	opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]...,
+	opts2:OptionsPattern[LeviCivita]], TraditionalForm]:=
+		ToBoxes[FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]],TraditionalForm]/;
+		Length[{x,y}] === 4 && !OptionValue[LeviCivita,{opts1,opts2},FCI];
 
 End[]; EndPackage[];
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)

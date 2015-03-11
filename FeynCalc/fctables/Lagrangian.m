@@ -32,7 +32,7 @@ Polarization = MakeContext["CoreObjects","Polarization"];
 QuantumField = MakeContext["CoreObjects","QuantumField"];
 QuarkField = MakeContext["CoreObjects","QuarkField"];
 
-MakeContext[CovariantD, FieldStrength, LeviCivita, OPEDelta, OPEm];
+MakeContext[CovariantD, FieldStrength, LC, OPEDelta, OPEm];
 
 Lagrangian[x_] /;Depth[x]===1:= Block[{na,lali,a,b,c,d,al,be,ga},
 If[ValueQ[Global`a], a = Unique["a"], a = Global`a];
@@ -75,13 +75,13 @@ lali = {
                          FieldStrength[al, OPEDelta,b]
                       ]
 ,
-"ogp" :> I^OPEm/2 DOT[LeviCivita[al, be, ga][OPEDelta] ,
+"ogp" :> I^OPEm/2 DOT[LC[al, be, ga][OPEDelta] ,
          FieldStrength[be, ga, a] ,
                (CovariantD[OPEDelta, a, b]^(OPEm-2)),
          FieldStrength[al, OPEDelta, b]
                       ]
 ,
-"ogd" :> DOT[LeviCivita[mu,nu,la,rho] ,
+"ogd" :> DOT[LC[mu,nu,la,rho] ,
          FieldStrength[mu,nu, a] ,
          FieldStrength[la,rho,a]
          ]

@@ -347,24 +347,24 @@ N27*UTrace[ NM[2*UFPlus[\[Mu],\[Nu]], UFPlus[\[Mu],\[Nu]]] -
 (* ............................................................... *)
 (* Radiative K decays (anomalous couplings) *)
 
-N28*I*LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*
+N28*I*LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*
 NM[UTrace[ NM[UDelta, USmall[\[Mu]]] ],
 UTrace[ NM[USmall[\[Nu]], USmall[\[Rho]], USmall[\[Sigma]]] ]]+
 
 N29*UTrace[NM[UDelta,
-NM[LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*
+NM[LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*
 (UFPlus[\[Rho], \[Sigma]]-UFMinus[\[Rho], \[Sigma]]),
 USmall[\[Mu]], USmall[\[Nu]]] -
 NM[USmall[\[Mu]], USmall[\[Nu]],
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*
 (UFPlus[\[Rho], \[Sigma]]-UFMinus[\[Rho], \[Sigma]])]] ]+
 
 N30*NM[UTrace[ NM[UDelta, USmall[\[Mu]]] ],
-UTrace[ NM[LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]],
+UTrace[ NM[LC[\[Mu], \[Nu], \[Rho], \[Sigma]],
 UFPlus[\[Rho], \[Sigma]], USmall[\[Nu]]] ]]+
 
 N31*NM[UTrace[ NM[UDelta, USmall[\[Mu]]] ],
-UTrace[ NM[LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]],
+UTrace[ NM[LC[\[Mu], \[Nu], \[Rho], \[Sigma]],
 UFMinus[\[Rho],\[Sigma]], USmall[\[Nu]]] ]]+
 
 (* ............................................................... *)
@@ -373,36 +373,36 @@ UFMinus[\[Rho],\[Sigma]], USmall[\[Nu]]] ]]+
 N32*I*UTrace[
 NM[UNablaHatDelta[\[Mu]],UDelta,
 NM[
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]],USmall[\[Nu]]]-
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]],USmall[\[Nu]]]-
 NM[
-USmall[\[Nu]],LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]]]] ]+
+USmall[\[Nu]],LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]]]] ]+
 
 N32*I*UTrace[
 NM[UNablaHatDelta[\[Mu]],UDelta,
 NM[
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]],USmall[\[Nu]]]-
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]],USmall[\[Nu]]]-
 NM[
-USmall[\[Nu]],LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho] ,\[Sigma]]]] ]+
+USmall[\[Nu]],LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho] ,\[Sigma]]]] ]+
 
 N34*UTrace[
 NM[UDelta,
 NM[
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]]+
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]],
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]]+
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]],
 USmall[\[Mu]], USmall[\[Nu]]]-
 NM[
 USmall[\[Mu]], USmall[\[Nu]],
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]]+
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]]]
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFPlus[\[Rho], \[Sigma]]+
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]]]
 ] ]+
 
 N35*I*UTrace[
 NM[UDelta,
 NM[
 UFPlus[\[Mu],\[Nu]],
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]]]-
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]]]-
 NM[
-LeviCivita[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]],
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]]*UFMinus[\[Rho], \[Sigma]],
 UFPlus[\[Mu], \[Nu]]]] ]+
 
 (* ............................................................... *)

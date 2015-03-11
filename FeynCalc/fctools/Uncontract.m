@@ -40,7 +40,6 @@ MakeContext[
     DotSimplify,
     FeynCalcInternal,
     FreeQ2,
-    LeviCivita,
     OPEDelta,
     ScalarProduct,
     SelectFree

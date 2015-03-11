@@ -34,7 +34,7 @@ Pair = MakeContext["CoreObjects","Pair"];
 
 MakeContext[Cases2, DotSimplify,
             FeynCalcInternal, FreeQ2,
-            LeviCivita, OPEDelta,
+            OPEDelta,
             ScalarProduct,SelectFree
            ];
 

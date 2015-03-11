@@ -563,7 +563,7 @@ Protect[Greater];
 
 Unprotect[Conjugate];
 Conjugate[x_Pair]:= (x /.
-	{Polarization[k_, a:Except[_OptionQ], opts:OptionsPattern[]] :>
+	{Polarization[k_, a:Except[_?OptionQ], opts:OptionsPattern[]] :>
 	Polarization[k, Conjugate[a], opts]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
@@ -824,29 +824,37 @@ DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
 		ToBoxes[FCI[DiracSlash[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
 
+Eps[x__, Dimension->4]:= Eps[x]/; OptionValue[Eps,Dimension]===4 && Length[{x}]===4;
+
+Eps[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] =!= 4) && (FreeQ2[{x,opts},{Pattern,
+Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[Eps::argrx, "Eps["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
+
 Eps[x__Symbol, opts:OptionsPattern[]]:=
-	Signature[{x}] Eps@@ Join[Sort[{x}],{opts}] /; !OrderedQ[{x}];
+	Signature[{x}] Eps@@ Join[Sort[{x}],{opts}] /; !OrderedQ[{x}] && Length[{x}]===4;
 
 Eps[x__Symbol, OptionsPattern[]]:=
-	0/; Signature[{x}]===0;
+	0/; Signature[{x}]===0 && Length[{x}]===4;
 
 Eps[a__?(MatchQ[#,(x_Integer|ExplicitLorentzIndex[x_Integer])/;NonNegative[x]]&), OptionsPattern[]]:=
-	Signature[{a}];
+	Signature[{a}] && Length[{a}]===4;
 
-Eps[___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], ___,
-	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], ___ ]:= 0 /; NumberQ[n1 n2];
+Eps[a___, n1_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], b___,
+	n2_. (LorentzIndex|ExplicitLorentzIndex|Momentum)[mu_,dim_:4], c___ ]:= 0 /; NumberQ[n1 n2] &&
+	Length[{a,n1,b,n2,c}]===4;
 
 Eps[x__]:=
-	0 /; ((!FreeQ[{x}, LorentzIndex[_,_Symbol -4]]) || (!FreeQ[{x}, Momentum[_,_Symbol -4]]));
+	0 /; ((!FreeQ[{x}, LorentzIndex[_,_Symbol -4]]) || (!FreeQ[{x}, Momentum[_,_Symbol -4]])) &&
+	Length[{x}]===4;
 
-Eps[a___, (c: LorentzIndex | Momentum)[mu_,_Symbol], b___, opts:OptionsPattern[]]:=
-	(Eps[a, c[mu], b, opts]) /; OptionValue[Dimension]===4;
+Eps[a___, (c: LorentzIndex | Momentum)[mu_,_Symbol], b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
+	(Eps[a, c[mu], b, opts]) /; OptionValue[Dimension]===4 && Length[{a, c[mu], b}]===4;
 
 Eps /:
 	MakeBoxes[Eps[x__, OptionsPattern[]] ,TraditionalForm]:=
 		SuperscriptBox["\[Epsilon]", Tbox[x]]/;
 		FreeQ2[{x}, Join[(List @@ ($FCLorentzIndexSubHeads /. Blank -> Identity)),
-					(List @@ ($FCMomentumSubHeads /. Blank -> Identity))]];
+					(List @@ ($FCMomentumSubHeads /. Blank -> Identity))]] && Length[{x}]===4;
 
 Epsilon /:
 	MakeBoxes[Epsilon, TraditionalForm]:=
@@ -1054,21 +1062,37 @@ Integratedx /:
 		TBox[up]], "\[DifferentialD]",
 		MakeBoxes[TraditionalForm[x]], "\[VeryThinSpace]" }];
 
+LC[x___][y___]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y},{Pattern,
+	Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LC::argrx, "LC["<>ToString[{x}]<>"]["<>ToString[{y}]<>"]", Length[{x,y}], 4];
+
+LCD[x___][y___]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y},{Pattern,
+	Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LCD::argrx, "LCD["<>ToString[{x}]<>"]["<>ToString[{y}]<>"]", Length[{x,y}], 4];
+
+LC[x___]/; (Length[{x}] > 4) && (FreeQ2[{x},{Pattern,
+Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LC::argrx, "LC["<>ToString[{x}]<>"]", Length[{x}], 4];
+
+LCD[x___]/; (Length[{x}] > 4) && (FreeQ2[{x},{Pattern,
+Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LCD::argrx, "LCD["<>ToString[{x}]<>"]", Length[{x}], 4];
+
 LC/:
 	MakeBoxes[LC[x___][y___] ,TraditionalForm]:=
-		SuperscriptBox["\[Epsilon]", Tbox[x,y]];
+		ToBoxes[FCI[LC[x][y]],TraditionalForm]/; Length[{x,y}]===4;
 
 LC/:
 	MakeBoxes[LC[x__] ,TraditionalForm]:=
-		SuperscriptBox["\[Epsilon]", Tbox[x]];
+		ToBoxes[FCI[LC[x]],TraditionalForm]/; Length[{x}]===4;
 
 LCD /:
 	MakeBoxes[LCD [x___][y___] ,TraditionalForm]:=
-		SuperscriptBox["\[Epsilon]", Tbox[x,y]];
+		ToBoxes[FCI[LCD[x][y]],TraditionalForm]/; Length[{x,y}]===4;
 
 LCD /:
 	MakeBoxes[LCD [x__] ,TraditionalForm]:=
-		SuperscriptBox["\[Epsilon]", Tbox[x]];
+		ToBoxes[FCI[LCD[x]],TraditionalForm]/; Length[{x}]===4;
 
 LeftPartialD[x__]:=
 	LeftPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
