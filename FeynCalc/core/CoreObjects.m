@@ -254,6 +254,17 @@ right. ExplicitPartialD[LeftRightPartialD2[mu]] gives
 (RightPartialD[mu] + LeftPartialD[mu]).";
 (* :Summary: partial derivative *)
 
+LeviCivita::"usage" =
+"LeviCivita[mu, nu, ro, si] is an input  function for the
+totally antisymmetric Levi-Civita tensor.
+It evaluates automatically
+to the internal representation Eps[ LorentzIndex[mu],  LorentzIndex[nu],
+LorentzIndex[ro], LorentzIndex[si] ]
+(or with a second argument in LorentzIndex for the Dimension,
+if the option Dimension of LeviCivita is changed).  \n
+LeviCivita[mu, nu ...][ p, ...] evaluates to
+Eps[LorentzIndex[mu], LorentzIndex[nu], ..., Momentum[p], ...].";
+
 LorentzIndex::"usage"= "LorentzIndex is the head of Lorentz indices.
 The internal representation of a four-dimensional mu is
 LorentzIndex[mu]. For other than four dimensions:
@@ -591,6 +602,7 @@ Options[DiracSlash] = {Dimension -> 4, FCI -> True};
 Options[Eps] = {Dimension -> 4};
 Options[FAD] = {Dimension -> D};
 Options[FourVector]  = {Dimension -> 4, FCI -> True};
+Options[LeviCivita] = {Dimension -> 4, FCI->True};
 Options[MetricTensor] = {Dimension -> 4, FCI -> True};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
@@ -1167,6 +1179,34 @@ LeftRightPartialD2[Momentum[OPEDelta]^n_Integer?Positive]:=
 LeftRightPartialD2 /:
 		MakeBoxes[LeftRightPartialD2[x_], TraditionalForm]:=
 			ToBoxes[LeftRightPartialD[x],TraditionalForm];
+
+LeviCivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..,
+    opts:OptionsPattern[LeviCivita]]/; (Length[{x,y}] =!= 4) && (FreeQ2[{x,y,opts},{Pattern,
+	Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]["<>ToString[{y,opts}]<>"]", Length[{x,y}], 4];
+
+LeviCivita[x:Except[_?OptionQ] ..., opts:OptionsPattern[]]/; (Length[{x}] > 4) && (FreeQ2[{x,opts},{Pattern,
+Blank,BlankSequence,BlankNullSequence}]) :=
+	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]", Length[{x}], 4];
+
+LeviCivita[ a:Except[_?OptionQ].., opts:OptionsPattern[]]:=
+	FCI[LeviCivita[a,Join[{FCI->False},FilterRules[{opts},Except[FCI]]]]]/; Length[{a}] === 4 && OptionValue[FCI];
+
+LeviCivita[x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]] :=
+	FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]]/;
+	Length[{x,y}] === 4 && OptionValue[LeviCivita,{opts1},FCI] && OptionValue[LeviCivita,{opts2},FCI];
+
+LeviCivita /:
+	MakeBoxes[LeviCivita[(a:Except[_?OptionQ]..)/; Length[{a}] === 4, opts:OptionsPattern[LeviCivita]/;!OptionValue[LeviCivita,{opts},FCI]],
+	TraditionalForm]:=
+		ToBoxes[FCI[LeviCivita[a,Join[{FCI->False},FilterRules[{opts},Except[FCI]]]]],TraditionalForm];
+
+LeviCivita /:
+	MakeBoxes[LeviCivita[x:Except[_?OptionQ]...,
+	opts1:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]...,
+	opts2:OptionsPattern[LeviCivita]], TraditionalForm]:=
+		ToBoxes[FCI[LeviCivita[x,Join[{FCI->False},FilterRules[{opts1},Except[FCI]]]][y,Join[{FCI->False},FilterRules[{opts2},Except[FCI]]]]],TraditionalForm]/;
+		Length[{x,y}] === 4 && !OptionValue[LeviCivita,{opts1,opts2},FCI];
 
 (* expanded because of CreateFCAmp's strange results  ... *)
 LorentzIndex[LorentzIndex[in_, dim_ :4], dim_ :4]:=

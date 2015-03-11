@@ -54,7 +54,7 @@ feynampdenominator := feynampdenominator =
 fourvector   := fourvector    = MakeContext["CoreObjects","FourVector"];
 GluonOperator := GluonOperator= MakeContext["Twist2GluonOperator"];
 lorentzindex := lorentzindex  = MakeContext["CoreObjects","LorentzIndex"];
-levicivita   := levicivita    = MakeContext["LeviCivita"];
+levicivita   := levicivita    = MakeContext["CoreObjects","LeviCivita"];
 Lower        := Lower         = MakeContext["CoreObjects","Lower"];
 metrictensor := metrictensor  = MakeContext["CoreObjects","MetricTensor"];
 momentum     := momentum      = MakeContext["CoreObjects","Momentum"];
@@ -230,7 +230,7 @@ Global`XX=xxxx;
          DOT:>fcdot /.
          sub["SUNN", "N"]/.
          If[CC["SUNTrace"],  suntrace :> "tr", {}]  /.
-         If[CC["LeviCivita"],  levicivita[lv__] :> epsd[lv], {}] /.
+         If[CC["CoreObjects"],  levicivita[lv__] :> epsd[lv], {}] /.
          If[CC["CoreObjects"],  eps[vl__] :> epsd[vl], {}] /.
          If[CC["CoreObjects"], metrictensor[v_, w_, ___Rule] :> "g"[v, w], {}
            ] /.

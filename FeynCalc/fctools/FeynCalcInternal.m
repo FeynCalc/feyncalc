@@ -41,7 +41,7 @@ FAD             := FAD             = MakeContext["CoreObjects","FAD"];
 Factor2         := Factor2         = MakeContext["Factor2"];
 FourVector      := FourVector      = MakeContext["CoreObjects","FourVector"];
 FreeQ2          := FreeQ2          = MakeContext["FreeQ2"];
-LeviCivita      := LeviCivita      = MakeContext["LeviCivita"];
+LeviCivita      := LeviCivita      = MakeContext["CoreObjects","LeviCivita"];
 ExplicitLorentzIndex    := ExplicitLorentzIndex    = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 LorentzIndex    := LorentzIndex    = MakeContext["CoreObjects","LorentzIndex"];
 MetricTensor    := MetricTensor    = MakeContext["CoreObjects","MetricTensor"];
@@ -138,7 +138,7 @@ ru =  Join[
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVD :> fvd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FVE :> fve},
  {HighEnergyPhysics`FeynCalc`CoreObjects`FV :> fv},
- {HighEnergyPhysics`FeynCalc`LeviCivita`LeviCivita :> levicivita},
+ {HighEnergyPhysics`FeynCalc`CoreObjects`LeviCivita :> levicivita},
  {HighEnergyPhysics`FeynCalc`CoreObjects`LC :> lc},
  {HighEnergyPhysics`FeynCalc`CoreObjects`LCD :> lcd},
  {HighEnergyPhysics`FeynCalc`CoreObjects`MT :> mt},
@@ -183,7 +183,7 @@ Print["ru= ",ru];
 
 If[ru =!={}, ReplaceRepeated[x//.{	HighEnergyPhysics`FeynCalc`CoreObjects`LC[a___][b___] :> lcl[{a},{b}],
     								HighEnergyPhysics`FeynCalc`CoreObjects`LCD[a___][b___] :> lcdl[{a},{b}],
-									HighEnergyPhysics`FeynCalc`LeviCivita`LeviCivita[a___][b___] :> levicivital[{a},{b}]
+									HighEnergyPhysics`FeynCalc`CoreObjects`LeviCivita[a___][b___] :> levicivital[{a},{b}]
     								}, Dispatch[ru], MaxIterations -> 20] /.
                       {mt :> MakeContext["CoreObjects","MT"],
                        fv :> MakeContext["CoreObjects","FV"],

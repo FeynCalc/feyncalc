@@ -26,6 +26,7 @@ Begin["`Private`"];
 Eps = MakeContext["CoreObjects","Eps"];
 Expanding = MakeContext["CoreOptions","Expanding"];
 ExplicitLorentzIndex = MakeContext["CoreObjects","ExplicitLorentzIndex"];
+LeviCivita = MakeContext["CoreObjects","LeviCivita"];
 LC = MakeContext["CoreObjects","LC"];
 LCD = MakeContext["CoreObjects","LCD"];
 LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];

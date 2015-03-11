@@ -54,7 +54,7 @@ LCD             := LCD             = MakeContext["CoreObjects","LCD"];
 LorentzIndex    := LorentzIndex    = MakeContext["CoreObjects","LorentzIndex"];
 ExplicitLorentzIndex    := ExplicitLorentzIndex    = MakeContext["CoreObjects","ExplicitLorentzIndex"];
 MetricTensor    := MetricTensor    = MakeContext["CoreObjects","MetricTensor"];
-LeviCivita      := LeviCivita      = MakeContext["LeviCivita"];
+LeviCivita      := LeviCivita      = MakeContext["CoreObjects","LeviCivita"];
 MT              := MT              = MakeContext["CoreObjects","MT"];
 MTD             := MTD             = MakeContext["CoreObjects","MTD"];
 MTE             := MTE             = MakeContext["CoreObjects","MTE"];
