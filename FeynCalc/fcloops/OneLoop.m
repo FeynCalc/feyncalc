@@ -104,6 +104,7 @@ MakeBoxes[StandardMatrixElement[x_], TraditionalForm
          ] :=
 RowBox[{"\[LeftDoubleBracketingBar]",TBox[x],"\[RightDoubleBracketingBar]"}];
 
+StandardMatrixElement[0]:=0;
 
 A0 = MakeContext["PaVeIntegrals","A0"];
 A0ToB0 = MakeContext["PaVeIntegrals","A0ToB0"];
