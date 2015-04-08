@@ -1,0 +1,28 @@
+(* :Title: Solve.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Solve2 and Solve3		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstSolve2 = {
+{"fcstSolve2-ID1","Solve2[{2 x == b - w/2, y - d == p}, {x, y}]",
+	"{x->1/4 (2 b-w),y->d+p}"},
+{"fcstSolve2-ID2","Solve2[x + y, x]",
+	"{x->-y}"},
+{"fcstSolve2-ID3","Solve2[x + y, x, FinalSubstitutions -> {y -> h}]",
+	"{x->-h}"},
+{"fcstSolve2-ID4","Solve2[{2 x == b - w/2, y - d == p}, {x, y}, Factoring -> Expand]",
+	"{x->b/2-w/4,y->d+p}"}
+};
+
+Tests`Shared`fcstSolve3 = {
+{"fcstSolve3-ID1","Solve3[{2 x == b - w/2, y - d == p}, {x, y}]",
+	"{x->1/4 (2 b-w),y->d+p}"}
+};

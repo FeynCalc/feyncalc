@@ -1,0 +1,57 @@
+
+
+(* :Title: SUNFSimplify.test                                                *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SUNFSimplify             *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`SUN`fcstSUNFSimplify = {
+	{"fcstSUNFSimplify-ID1","SUNFSimplify[1]","1"},
+	{"fcstSUNFSimplify-ID2","SUNFSimplify[SDF[a, a]]","CA"},
+	{"fcstSUNFSimplify-ID3","SUNFSimplify[SDF[a, a], SUNNToCACF -> False]","SUNN"},
+	{"fcstSUNFSimplify-ID4","SUNFSimplify[SDF[a, b]]","SUNFDelta[SUNFIndex[a], SUNFIndex[b]]"},
+	{"fcstSUNFSimplify-ID5","SUNFSimplify[SDF[a, b] SDF[c, d]]",
+		"SUNFDelta[SUNFIndex[a], SUNFIndex[b]]*SUNFDelta[SUNFIndex[c], SUNFIndex[d]]"},
+	{"fcstSUNFSimplify-ID6","SUNFSimplify[SDF[a, b] SDF[b, d]]",
+		"SUNFDelta[SUNFIndex[a], SUNFIndex[d]]"},
+	{"fcstSUNFSimplify-ID7","SUNFSimplify[SDF[a, b] SDF[b, 1]]",
+		"SUNFDelta[ExplicitSUNFIndex[1], SUNFIndex[a]]"},
+	{"fcstSUNFSimplify-ID8","SUNFSimplify[SDF[a, b] SUNTF[i, a, d]]",
+		"SUNTF[{SUNIndex[i]}, SUNFIndex[b], SUNFIndex[d]]"},
+	{"fcstSUNFSimplify-ID9","SUNFSimplify[SDF[a, b] SUNTF[i, a, 4]]",
+		"SUNTF[{SUNIndex[i]}, SUNFIndex[b], ExplicitSUNFIndex[4]]"},
+	{"fcstSUNFSimplify-ID10","SUNFSimplify[SDF[a, b] SUNTF[i, a, d] SUNTF[j, d, c]]",
+		"SUNTF[{SUNIndex[i], SUNIndex[j]}, SUNFIndex[b], SUNFIndex[c]]"},
+	{"fcstSUNFSimplify-ID11","SUNFSimplify[SDF[a, b] (SUNTF[i, a, d] SUNTF[j, d, b] + SUNTF[i, a, d] SUNTF[i, d, b])]",
+		"CA*CF + SUNDelta[SUNIndex[i], SUNIndex[j]]/2"},
+	{"fcstSUNFSimplify-ID12","SUNFSimplify[SDF[a, b] (SUNTF[i, a, d] SUNTF[j, d, b] +
+		SUNTF[i, a, d] SUNTF[i, d, b]), SUNNToCACF -> False]",
+		"(-1 + SUNN^2)/2 + SUNDelta[SUNIndex[i], SUNIndex[j]]/2"},
+	{"fcstSUNFSimplify-ID13","SUNFSimplify[SDF[a, b] (SUNTF[i, a, d] SUNTF[j, d, b] +
+		SD[i, j] SUNTF[i, a, d] SUNTF[i, d, b]), SUNNToCACF -> False]",
+		"SUNDelta[SUNIndex[i], SUNIndex[j]]/2 + ((-1 + SUNN^2)*SUNDelta[SUNIndex[i], SUNIndex[j]])/2"},
+	{"fcstSUNFSimplify-ID14","SUNFSimplify[SUNTF[i, a, d] SUNTF[j, d, c]]",
+		"SUNTF[{SUNIndex[i], SUNIndex[j]}, SUNFIndex[a], SUNFIndex[c]]"},
+	{"fcstSUNFSimplify-ID15","SUNFSimplify[SUNTF[i, a, d] SUNTF[j, c, d]]",
+		"SUNTF[{SUNIndex[i]}, SUNFIndex[a], SUNFIndex[d]]*SUNTF[{SUNIndex[j]}, SUNFIndex[c], SUNFIndex[d]]"},
+
+	{"fcstSUNFSimplify-ID16","SUNFSimplify[SUNTF[{a, a}, i, j]]",
+		"CF*SUNFDelta[SUNFIndex[i], SUNFIndex[j]]"},
+	{"fcstSUNFSimplify-ID17","SUNSimplify[SUNTF[{b, a, a, b}, i, j]]",
+		"CF^2*SUNFDelta[SUNFIndex[i], SUNFIndex[j]]"},
+
+	{"fcstSUNFSimplify-ID17","SUNFSimplify[SUNTF[{b, a, a, b, c}, i, j]]",
+		"SUNTF[{SUNIndex[b], SUNIndex[a], SUNIndex[a], SUNIndex[b],
+		SUNIndex[c]}, SUNFIndex[i], SUNFIndex[j]]"}
+};
+
+
+

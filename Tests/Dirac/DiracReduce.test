@@ -1,0 +1,44 @@
+
+
+(* :Title: DiracReduce.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracReduce  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracReduce = {
+
+{"fcstDiracReduce-ID1","DiracReduce[DiracMatrix[mu, nu]]",
+"(-I)*DiracSigma[GA[mu], GA[nu]] + MT[mu, nu]"},
+{"fcstDiracReduce-ID2","FCI[DiracReduce[DiracMatrix[mu, nu]]]",
+"FCI[(-I)*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[nu]]] + Pair[LorentzIndex[mu], LorentzIndex[nu]]]"},
+{"fcstDiracReduce-ID3","DiracReduce[DiracMatrix[mu, nu, rho]]","I*GA[$MU[1]] . GA[5]*LC[mu, nu, rho, $MU[1]] + GA[rho]*MT[mu, nu] - GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]"},
+{"fcstDiracReduce-ID4","FCI[DiracReduce[DiracMatrix[mu, nu, rho]]]","I*DiracGamma[LorentzIndex[$MU[1]]] . DiracGamma[5]*Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
+		LorentzIndex[$MU[1]]]  +
+DiracGamma[LorentzIndex[rho]]*Pair[LorentzIndex[mu], LorentzIndex[nu]] -
+DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[mu], LorentzIndex[rho]] +
+DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[nu], LorentzIndex[rho]]"},
+{"fcstDiracReduce-ID5","DiracReduce[DiracMatrix[mu, nu, rho, sigma]]","(-I)*GA[5]*LC[mu, nu, rho, sigma] - I*DiracSigma[GA[rho], GA[sigma]]*MT[mu, nu] +
+I*DiracSigma[GA[nu], GA[sigma]]*MT[mu, rho] - I*DiracSigma[GA[nu], GA[rho]]*MT[mu, sigma] -
+I*DiracSigma[GA[mu], GA[sigma]]*MT[nu, rho] + MT[mu, sigma]*MT[nu, rho] +
+I*DiracSigma[GA[mu], GA[rho]]*MT[nu, sigma] - MT[mu, rho]*MT[nu, sigma] -
+I*DiracSigma[GA[mu], GA[nu]]*MT[rho, sigma] + MT[mu, nu]*MT[rho, sigma]"},
+{"fcstDiracReduce-ID6","FCI[DiracReduce[DiracMatrix[mu, nu, rho, sigma]]]","(-I)*DiracGamma[5]*Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[sigma]]  - I*DiracSigma[DiracGamma[LorentzIndex[rho]], DiracGamma[LorentzIndex[sigma]]]*
+	Pair[LorentzIndex[mu], LorentzIndex[nu]] + I*DiracSigma[DiracGamma[LorentzIndex[nu]], DiracGamma[LorentzIndex[sigma]]]*
+	Pair[LorentzIndex[mu], LorentzIndex[rho]] - I*DiracSigma[DiracGamma[LorentzIndex[nu]], DiracGamma[LorentzIndex[rho]]]*
+	Pair[LorentzIndex[mu], LorentzIndex[sigma]] - I*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[sigma]]]*
+	Pair[LorentzIndex[nu], LorentzIndex[rho]] + Pair[LorentzIndex[mu], LorentzIndex[sigma]]*
+	Pair[LorentzIndex[nu], LorentzIndex[rho]] + I*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[rho]]]*
+	Pair[LorentzIndex[nu], LorentzIndex[sigma]] - Pair[LorentzIndex[mu], LorentzIndex[rho]]*
+	Pair[LorentzIndex[nu], LorentzIndex[sigma]] - I*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[nu]]]*
+	Pair[LorentzIndex[rho], LorentzIndex[sigma]] + Pair[LorentzIndex[mu], LorentzIndex[nu]]*
+	Pair[LorentzIndex[rho], LorentzIndex[sigma]]"}
+
+}

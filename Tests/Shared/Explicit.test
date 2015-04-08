@@ -1,0 +1,82 @@
+(* :Title: Explicit.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Explicit					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstExplicit = {
+{"fcstExplicit-ID1","Explicit[QuarkPropagator[{p, m}]]",
+	"I (m + DiracGamma[Momentum[p, D], D]) FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p, D], m]]"},
+{"fcstExplicit-ID2","Explicit[QuarkPropagator[{p, m}], Dimension -> 4]",
+	"I (m + DiracGamma[Momentum[p]]) FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p], m]]"},
+{"fcstExplicit-ID3","Explicit[QuarkPropagator[p]]",
+	"I DiracGamma[Momentum[p, D], D] FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p, D], 0]]"},
+{"fcstExplicit-ID4","Explicit[QuarkPropagator[p], Dimension -> 4]",
+	"I DiracGamma[Momentum[p]] FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p], 0]]"},
+{"fcstExplicit-ID5","Explicit[GluonPropagator[p, a, b, c, d]]",
+	"-I FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]] Pair[
+	LorentzIndex[a, D], LorentzIndex[c, D]] SUNDelta[SUNIndex[b],
+	SUNIndex[d]]"},
+{"fcstExplicit-ID6","Explicit[GluonPropagator[p, a, b, c, d], Dimension -> 4]",
+	"-I FeynAmpDenominator[PropagatorDenominator[Momentum[p], 0]] Pair[
+	LorentzIndex[a], LorentzIndex[c]] SUNDelta[SUNIndex[b], SUNIndex[d]]"},
+{"fcstExplicit-ID7","Explicit[GluonPropagator[p, a, b, c, d]]",
+	"-I FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]] Pair[
+	LorentzIndex[a, D], LorentzIndex[c, D]] SUNDelta[SUNIndex[b],
+	SUNIndex[d]]"},
+{"fcstExplicit-ID8","Explicit[GluonPropagator[p, a, b, c, d], Dimension -> 4]",
+	"-I FeynAmpDenominator[PropagatorDenominator[Momentum[p], 0]] Pair[
+	LorentzIndex[a], LorentzIndex[c]] SUNDelta[SUNIndex[b], SUNIndex[d]]"},
+{"fcstExplicit-ID9","Explicit[GhostPropagator[p, a, b]]",
+	"I FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p, D], 0]] SUNDelta[SUNIndex[a],
+	SUNIndex[b]]"},
+{"fcstExplicit-ID10","Explicit[GhostPropagator[p, a, b], Dimension -> 4]",
+	"I FeynAmpDenominator[PropagatorDenominator[Momentum[p], 0]] SUNDelta[
+	SUNIndex[a], SUNIndex[b]]"},
+{"fcstExplicit-ID11","Explicit[QuarkGluonVertex[a, b]]",
+	"I Gstrong SUNT[SUNIndex[b]].DiracGamma[LorentzIndex[a, D], D]"},
+{"fcstExplicit-ID12","Explicit[QuarkGluonVertex[a, b], Dimension -> 4]",
+	"I Gstrong SUNT[SUNIndex[b]].DiracGamma[LorentzIndex[a]]"},
+{"fcstExplicit-ID13","Explicit[GluonGhostVertex[p, mu]]",
+	"-Gstrong Pair[LorentzIndex[mu, D], Momentum[p, D]]"},
+{"fcstExplicit-ID14","Explicit[GluonGhostVertex[p, mu], Dimension -> 4]",
+	"-Gstrong Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstExplicit-ID15","Explicit[GluonVertex[{p, mu}, {q, nu}, {k, la}]]",
+	"Gstrong ((Pair[LorentzIndex[la, D], Momentum[p, D]] -
+	Pair[LorentzIndex[la, D], Momentum[q, D]]) Pair[
+	LorentzIndex[mu, D], LorentzIndex[nu, D]] +
+	Pair[LorentzIndex[la, D],
+	LorentzIndex[nu,
+	D]] (-Pair[LorentzIndex[mu, D], Momentum[k, D]] +
+	Pair[LorentzIndex[mu, D], Momentum[q, D]]) +
+Pair[LorentzIndex[la, D],
+	LorentzIndex[mu, D]] (Pair[LorentzIndex[nu, D], Momentum[k, D]] -
+	Pair[LorentzIndex[nu, D], Momentum[p, D]]))"},
+{"fcstExplicit-ID16","Explicit[GluonVertex[{p, mu}, {q, nu}, {k, la}], Dimension -> 4]",
+	"Gstrong ((Pair[LorentzIndex[la], Momentum[p]] -
+	Pair[LorentzIndex[la], Momentum[q]]) Pair[LorentzIndex[mu],
+	LorentzIndex[nu]] +
+	Pair[LorentzIndex[la],
+	LorentzIndex[nu]] (-Pair[LorentzIndex[mu], Momentum[k]] +
+	Pair[LorentzIndex[mu], Momentum[q]]) +
+	Pair[LorentzIndex[la],
+	LorentzIndex[mu]] (Pair[LorentzIndex[nu], Momentum[k]] -
+	Pair[LorentzIndex[nu], Momentum[p]]))"},
+{"fcstExplicit-ID17","Explicit[FieldStrength[mu, nu]]",
+	"QuantumField[FCPartialD[LorentzIndex[mu, D]], GaugeField,
+	LorentzIndex[nu, D]] -
+	QuantumField[FCPartialD[LorentzIndex[nu, D]], GaugeField,
+	LorentzIndex[mu, D]]"}
+};

@@ -147,7 +147,7 @@ Passarino-Veltman integrals to scalar integrals via the function ",
              RuleDelayed[ButtonData, "PaVeReduce"]], " ."}], "Text", 
          CellTags -> "intro"], Cell["For more detailed information on \
 FeynCalc functions, use the help system or consult the source code in the \
-file \"FeynCalc.m\" in the directory \"HighEnergyPhysics\" and the further \
+file \"FeynCalc.m\" in the directory \"FeynCalc\" and the further \
 packages in the sub-directories \"fctools\", \"fctables\" and others. A \
 complete list of FeynCalc objects is stored in the variable $FeynCalcStuff. \
 Not all functions are equally well documented in this notebook. Some are very \
@@ -185,16 +185,16 @@ ph/9810241"], None]]], " are tabulated in ",
          CellTags -> {"intro", "introfoot"}]}, Open]], 
      Cell[CellGroupData[{Cell["Starting FeynCalc", "Section", 
          CellTags -> {"Load FeynCalc", "start"}], 
-        Cell[TextData[{"If the directory \"HighEnergyPhysics\" has been put \
+        Cell[TextData[{"If the directory \"FeynCalc\" has been put \
 in the directory \"Applications\" in your ", 
            StyleBox["Mathematica", Rule[FontSlant, "Italic"]], 
            " installation tree, you should be able to load FeynCalc from a ", 
            StyleBox["Mathematica", Rule[FontSlant, "Italic"]], 
            " session with no further ado."}], "Text", CellTags -> "start"], 
-        Cell[CellGroupData[{Cell[BoxData[\(<< HighEnergyPhysics`FeynCalc`\)], 
+        Cell[CellGroupData[{Cell[BoxData[\(<< FeynCalc`\)], 
             "Input", CellTags -> "start"], 
            Cell["Loading FeynCalc from \
-/home/fjob/workspace/HighEnergyPhysics", "Text", CellMargins -> 
+/home/fjob/workspace/FeynCalc", "Text", CellMargins -> 
              {{Inherited, Inherited}, {1, 0}}, GeneratedCell -> True, 
             CellAutoOverwrite -> True, CellChangeTimes -> 
              {3.609493476669001*^9}, CellTags -> "start"], Cell[TextData[{
@@ -283,7 +283,7 @@ clicking on the ", StyleBox["Cell", "TextNormal", Rule[FontWeight, "Bold"]],
 copying, pasting and re-evaluating.", "MathCaption", CellTags -> "start"]}, 
        Open]], Cell[CellGroupData[{Cell["Extra subpackages", "Section", 
          PageBreakAbove -> True, CellTags -> "About Extras"], 
-        Cell[TextData[{"The directory  \"HighEnergyPhysics\" contains various \
+        Cell[TextData[{"The directory  \"FeynCalc\" contains various \
 files and subdirectories belonging to third-party packages which are not \
 necessary to run 'standard' FeynCalc calculations and which do not use the \
 autoloading conventions of FeynCalc. These packages are not initialized by \
@@ -429,7 +429,7 @@ first of all to get FeynArts at ",
                 RuleDelayed[ButtonData, 
                  List[URL["http://www.feynarts.de/"], None]], 
                 Rule[ButtonNote, "Download FeynArts"]], " and put it in the \
-directory \"HighEnergyPhysics\". Then evaluate"}], "Text", CellTags -> "fa"], 
+directory \"FeynCalc\". Then evaluate"}], "Text", CellTags -> "fa"], 
            Cell[
             BoxData[{\(\($LoadPhi = True\) ;\), "\n", 
                RowBox[List[RowBox[List["$LoadFeynArts", "=", "True"]], ";"]]}\

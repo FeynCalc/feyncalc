@@ -1,0 +1,32 @@
+
+
+(* :Title: DotSimplify.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DotSimplify  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstDotSimplify = {
+{"fcstDotSimplify-ID1","DotSimplify[DiracSlash[2 b, a, 2 (d - c), 6 q - 3 p]]","-12*DiracGamma[Momentum[b]] . DiracGamma[Momentum[a]] . DiracGamma[Momentum[-c + d]] . DiracGamma[Momentum[p - 2*q]]"},
+{"fcstDotSimplify-ID2","DotSimplify[GA[mu].(a GS[p] - b GS[q]).GS[q].GA[nu],
+Expanding -> True]","a*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] . DiracGamma[LorentzIndex[nu]] -
+b*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[q]] . DiracGamma[Momentum[q]] . DiracGamma[LorentzIndex[nu]]"},
+{"fcstDotSimplify-ID3","DotSimplify[GS[p].GS[p], DotPower -> True]","DiracGamma[Momentum[p]]^2"},
+
+{"fcstDotSimplify-ID4","DeclareNonCommutative[anc, bnc, cnc]\nCommutator[anc, cnc] = 1;\nDotSimplify[anc.anc, DotPower -> True]","anc^2"},
+{"fcstDotSimplify-ID5","DotSimplify[anc.(bnc - z cnc).anc]","anc . bnc . anc - z*(anc + cnc . anc . anc)"},
+{"fcstDotSimplify-ID6","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]],CommonTrace->True]","DiracTrace[
+	DiracGamma[LorentzIndex[c]].DiracGamma[LorentzIndex[d]]] SUNTrace[
+	SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[
+	SUNIndex[f]]]"},
+{"fcstDotSimplify-ID7","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]]]","DiracTrace[
+	DiracGamma[LorentzIndex[c]].DiracGamma[LorentzIndex[d]]] SUNT[
+	SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[SUNIndex[f]]"}
+}

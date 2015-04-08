@@ -1,0 +1,49 @@
+
+
+(* :Title: FermionSpinSum.test 						*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FermionSpinSum           *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFermionSpinSum = {
+{"fcstFermionSpinSum-ID1","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] *
+	Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]]",
+	"DiracTrace[-(m1 + DiracGamma[Momentum[p1]]) . DiracGamma[LorentzIndex[i]] .
+	DiracGamma[5] . (m2 + DiracGamma[Momentum[p2]]) .
+	DiracGamma[LorentzIndex[i]] . DiracGamma[5]]"},
+{"fcstFermionSpinSum-ID2","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].
+	Spinor[p2, m2] Spinor[k1, m3].GA[j].GA[5].Spinor[k2,
+	m4] Spinor[k2, m4].GA[5].GA[j].Spinor[k1, m3]*
+	Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]]",
+	"DiracTrace[-(DiracTrace[-(m1 + DiracGamma[Momentum[p1]]) .
+	DiracGamma[LorentzIndex[i]] . DiracGamma[5] .
+	(m2 + DiracGamma[Momentum[p2]]) . DiracGamma[LorentzIndex[i]] .
+	DiracGamma[5]]*(m3 + DiracGamma[Momentum[k1]]) .
+	DiracGamma[LorentzIndex[j]] . DiracGamma[5] .
+	(m4 + DiracGamma[Momentum[k2]]) .
+	DiracGamma[LorentzIndex[j]] . DiracGamma[5])]"},
+{"fcstFermionSpinSum-ID3","FermionSpinSum[a+b+c]","a+b+c"},
+{"fcstFermionSpinSum-ID4","FermionSpinSum[{a,b,c}]","{a,b,c}"},
+{"fcstFermionSpinSum-ID5","FermionSpinSum[Spinor[p1, m1].GA[i].
+	GA[5].Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].
+	Spinor[p1, m1]+a+b]","a + b + DiracTrace[-(m1 + DiracGamma[Momentum[p1]]) .
+	DiracGamma[LorentzIndex[i]] . DiracGamma[5] .
+	(m2 + DiracGamma[Momentum[p2]]) .
+	DiracGamma[LorentzIndex[i]] . DiracGamma[5]]"},
+{"fcstFermionSpinSum-ID6","FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].
+	Spinor[p2, m2] Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]+a+b,
+	ExtraFactor->2]","2*a + 2*b + DiracTrace[-2*(m1 + DiracGamma[Momentum[p1]]) .
+	DiracGamma[LorentzIndex[i]] . DiracGamma[5] . (m2 + DiracGamma[Momentum[p2]]) .
+	DiracGamma[LorentzIndex[i]] . DiracGamma[5]]"},
+{"fcstFermionSpinSum-ID7","FermionSpinSum[(SpinorUBar[p, mp].SpinorV[q, mq])*
+	ComplexConjugate[SpinorUBar[p, mp].SpinorV[q, mq]]]",
+	"DiracTrace[(mp + DiracGamma[Momentum[p]]) . (-mq + DiracGamma[Momentum[q]])]"}
+};

@@ -1,0 +1,23 @@
+
+
+(* :Title: DiracOrder.test                                                  *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracOrder               *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracOrder = {
+{"fcstDiracOrder-ID1","DiracOrder[DiracMatrix[b, a]]","-DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIndex[b]] + 2*Pair[LorentzIndex[a], LorentzIndex[b]]"},
+{"fcstDiracOrder-ID2","DiracOrder[-DiracGamma[LorentzIndex[a]].DiracGamma[LorentzIndex[b]] +
+	2*Pair[LorentzIndex[a], LorentzIndex[b]], {b, a}]","DiracGamma[LorentzIndex[b]] . DiracGamma[LorentzIndex[a]]"},
+{"fcstDiracOrder-ID3","DiracOrder[DiracMatrix[mu, mu].DiracSlash[p, p]]","4*Pair[Momentum[p], Momentum[p]]"},
+{"fcstDiracOrder-ID4","DiracOrder[DiracMatrix[a, mu, a, Dimension -> D]]","2*DiracGamma[LorentzIndex[mu, D], D] - D*DiracGamma[LorentzIndex[mu, D], D]"},
+{"fcstDiracOrder-ID5","DiracOrder[DiracSlash[-p, q, p]]","DiracGamma[Momentum[q]]*Pair[Momentum[p], Momentum[p]] - 2*DiracGamma[Momentum[p]]*Pair[Momentum[p], Momentum[q]]"}
+}

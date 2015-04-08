@@ -1,35 +1,35 @@
 -((-144*Pi^2 + CouplingConstant[QED[1], RenormalizationState[0]]^2*
-      (34 + 48*Pi^2*(8*CouplingConstant[ChPTPhotonsLeptons3[4], 10, 
-           RenormalizationState[0]] + 16*CouplingConstant[ChPTPhotonsLeptons3[
-            4], 11, RenormalizationState[0]] + 
-         8*CouplingConstant[ChPTPhotonsLeptons3[4], 30, RenormalizationState[
-            0]] - 4*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-           ParticleMass[Fermion[7], RenormalizationState[0]]^2] - 
-         4*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-           ParticleMass[Fermion[8], RenormalizationState[0]]^2] - 
-         LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-          ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2] - 
-         LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-          ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2] + 
-         20*LeutwylerLambda[]) + 
-       12*Log[ParticleMass[Fermion[7], RenormalizationState[0]]^2/
-          ScaleMu^2] + 12*Log[ParticleMass[Fermion[8], RenormalizationState[
-             0]]^2/ScaleMu^2] + 
-       3*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
-          ScaleMu^2] + 3*Log[ParticleMass[PseudoScalar[7], 
-            RenormalizationState[0]]^2/ScaleMu^2]))*
-    Pair[Momentum[p1], Momentum[p1]] + 
-   192*Pi^2*CouplingConstant[QED[1], RenormalizationState[0]]^2*
-    (-2*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-       ParticleMass[Fermion[7], RenormalizationState[0]]^2]*
-      ParticleMass[Fermion[7], RenormalizationState[0]]^2 - 
-     2*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-       ParticleMass[Fermion[8], RenormalizationState[0]]^2]*
-      ParticleMass[Fermion[8], RenormalizationState[0]]^2 + 
-     LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-       ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2]*
-      ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2 + 
-     LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-       ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2]*
-      ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2))/
- (144*Pi^2*Pair[Momentum[p1], Momentum[p1]])
+	(34 + 48*Pi^2*(8*CouplingConstant[ChPTPhotonsLeptons3[4], 10,
+		RenormalizationState[0]] + 16*CouplingConstant[ChPTPhotonsLeptons3[
+			4], 11, RenormalizationState[0]] +
+		8*CouplingConstant[ChPTPhotonsLeptons3[4], 30, RenormalizationState[
+			0]] - 4*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+		ParticleMass[Fermion[7], RenormalizationState[0]]^2] -
+		4*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+		ParticleMass[Fermion[8], RenormalizationState[0]]^2] -
+		LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+		ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2] -
+		LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+		ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2] +
+		20*LeutwylerLambda[]) +
+	12*Log[ParticleMass[Fermion[7], RenormalizationState[0]]^2/
+		ScaleMu^2] + 12*Log[ParticleMass[Fermion[8], RenormalizationState[
+			0]]^2/ScaleMu^2] +
+	3*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+		ScaleMu^2] + 3*Log[ParticleMass[PseudoScalar[7],
+			RenormalizationState[0]]^2/ScaleMu^2]))*
+	Pair[Momentum[p1], Momentum[p1]] +
+192*Pi^2*CouplingConstant[QED[1], RenormalizationState[0]]^2*
+	(-2*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+	ParticleMass[Fermion[7], RenormalizationState[0]]^2]*
+	ParticleMass[Fermion[7], RenormalizationState[0]]^2 -
+	2*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+	ParticleMass[Fermion[8], RenormalizationState[0]]^2]*
+	ParticleMass[Fermion[8], RenormalizationState[0]]^2 +
+	LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+	ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2]*
+	ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2 +
+	LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+	ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2]*
+	ParticleMass[PseudoScalar[7], RenormalizationState[0]]^2))/
+(144*Pi^2*Pair[Momentum[p1], Momentum[p1]])

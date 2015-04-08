@@ -1,0 +1,24 @@
+(* :Title: TensorFunction.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for TensorFunction					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstTensorFunction = {
+{"fcstTensorFunction-ID1","TensorFunction[t,\[Mu],\[Nu],\[Tau]]",
+	"t[LorentzIndex[\[Mu]],LorentzIndex[\[Nu]],LorentzIndex[\[Tau]]]"},
+{"fcstTensorFunction-ID2","Contract[FV[p,\[Mu]] t[LorentzIndex[\[Mu]],LorentzIndex[\[Nu]],LorentzIndex[\[Tau]]]]",
+	"t[Momentum[p],LorentzIndex[\[Nu]],LorentzIndex[\[Tau]]]"},
+{"fcstTensorFunction-ID3","TensorFunction[{f,\"S\"},\[Alpha],\[Beta]]","f[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"},
+{"fcstTensorFunction-ID4","TensorFunction[{f,\"S\"},\[Beta],\[Alpha]]","f[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"},
+{"fcstTensorFunction-ID5","Attributes[f]","{Orderless}"},
+{"fcstTensorFunction-ID6","TensorFunction[{g,\"A\"},\[Alpha],\[Beta]]","g[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"},
+{"fcstTensorFunction-ID7","TensorFunction[{g,\"A\"},\[Beta],\[Alpha]]","-g[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"}
+};

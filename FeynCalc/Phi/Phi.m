@@ -15,26 +15,26 @@
 (* Author:   Frederik Orellana (fjob@cabocomm.dk) *)
 
 (* Summary:  Phenomenology of hadronic interactions.
-             A collection of packages for calculating
-             transition amplitudes in low energy
-             hadron physics.
-             Keywords: ChPT, SU(2), SU(3), effective
-             lagrangians, coupling vectors,
-             renormalization, isospin, partial
-             waves, Mandelstam variables, dispersion
-             relations. *)
+						A collection of packages for calculating
+						transition amplitudes in low energy
+						hadron physics.
+						Keywords: ChPT, SU(2), SU(3), effective
+						lagrangians, coupling vectors,
+						renormalization, isospin, partial
+						waves, Mandelstam variables, dispersion
+						relations. *)
 
 (* History:  Version 1.3 March 2003
-             Version 1.2 May 2001
-             Version 1.1 February 1999 *)
+						Version 1.2 May 2001
+						Version 1.1 February 1999 *)
 
-(* Contexts: HighEnergyPhysics`Phi`,
-             HighEnergyPhysics`Phi`Objects`,
-             HighEnergyPhysics`Phi`Couplings`,
-             HighEnergyPhysics`Phi`Renormalization`,
-             HighEnergyPhysics`Phi`Channels`,
-             HighEnergyPhysics`Phi`Utilities`,
-             HighEnergyPhysics`Phi`Palettes`. *)
+(* Contexts: Phi`,
+						Phi`Objects`,
+						Phi`Couplings`,
+						Phi`Renormalization`,
+						Phi`Channels`,
+						Phi`Utilities`,
+						Phi`Palettes`. *)
 
 (* Package Version 1.3 *)
 
@@ -44,103 +44,78 @@
 
 (* FeynCalc should be loaded *)
 
-If[!ValueQ[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory],
-Phi::nofc = "Before loading Phi, you should load FeynCalc. \
+If[ !ValueQ[FeynCalc`$FeynCalcDirectory],
+	Phi::nofc = "Before loading Phi, you should load FeynCalc. \
 The kernel will exit now.";
-Message[Phi::nofc];
-Exit[0]]
+	Message[Phi::nofc];
+	Exit[0]
+]
 
 (* Get rid of old definitions *)
 
-  tmp`pconf=Null;
-  tmp`verb=Null;
-  tmp`phi=Null;
-  tmp`vv=Null;
+	tmp`pconf = Null;
+	tmp`phi = Null;
+	tmp`vv = Null;
 
-If[HighEnergyPhysics`Phi`$Phi,
-  tmp`pconf=HighEnergyPhysics`Phi`$PaletteConfiguration;
-  tmp`verb=HighEnergyPhysics`FeynCalc`$VeryVerbose;
-  tmp`phi=HighEnergyPhysics`Phi`$Phi;
-  ClearAll["HighEnergyPhysics`Phi`*`*`*"];
-  ClearAll["HighEnergyPhysics`Phi`*`*"];
-  ClearAll["HighEnergyPhysics`Phi`*"];
-  Unprotect[$Packages];
-  $Packages=Complement[$Packages,
-  {"HighEnergyPhysics`Phi`Objects`",
-  "HighEnergyPhysics`Phi`Palettes`", "HighEnergyPhysics`Phi`Renormalization`",
-  "HighEnergyPhysics`Phi`Channels`", "HighEnergyPhysics`Phi`Utilities`",
-  "HighEnergyPhysics`Phi`Couplings`", "HighEnergyPhysics`Phi`"}];
-  Protect[$Packages];
-  $ContextPath=Complement[$ContextPath,
-  {"HighEnergyPhysics`Phi`Objects`",
-  "HighEnergyPhysics`Phi`Palettes`", "HighEnergyPhysics`Phi`Renormalization`",
-  "HighEnergyPhysics`Phi`Channels`", "HighEnergyPhysics`Phi`Utilities`",
-  "HighEnergyPhysics`Phi`Couplings`", "HighEnergyPhysics`Phi`"}];
+If[ Phi`$Phi,
+	tmp`pconf = Phi`$PaletteConfiguration;
+	tmp`phi = Phi`$Phi;
+	ClearAll["Phi`*`*`*"];
+	ClearAll["Phi`*`*"];
+	ClearAll["Phi`*"];
+	Unprotect[$Packages];
+	$Packages = Complement[$Packages,
+	{"Phi`Objects`",
+	"Phi`Palettes`", "Phi`Renormalization`",
+	"Phi`Channels`", "Phi`Utilities`",
+	"Phi`Couplings`", "Phi`"}];
+	Protect[$Packages];
+	$ContextPath = Complement[$ContextPath,
+	{"Phi`Objects`",
+	"Phi`Palettes`", "Phi`Renormalization`",
+	"Phi`Channels`", "Phi`Utilities`",
+	"Phi`Couplings`", "Phi`"}];
 ];
 
 (* ************************************************************** *)
 
-BeginPackage["HighEnergyPhysics`Phi`"];
+BeginPackage["Phi`"];
 
 (* ************************************************************** *)
 
 (* Usage definitions *)
 
-$Phi::"usage" =
+$Phi::usage =
 "$Phi is a variable indicating whether or not Phi is loaded - it is set \
 to True when loading Phi.";
 
-Global`$Configuration::"usage" =
+Global`$Configuration::usage =
 "$Configuration is a string variable determining which configuration is loaded \
 at startup or restart.  It can be set before loading FeynCalc, in PhiStart.m or with the \
 configurations palette.  If the palette is used for restarting, the setting \
 in PhiStart.m is overruled.  Possible values include \"ChPT2\" and \"QED\".  Default \
 value : \"None\".";
 
-$PaletteConfiguration::"usage" =
+$PaletteConfiguration::usage =
 "$PaletteConfiguration is a string variable set when clicking on the \
 configuration palette and overruling the setting of $Configuration.  Default \
 value : \"None\".";
 
-$Verboseness::"usage" =
-"$Verboseness is a variable determining how much informative output is \
-printed during calculations.  It's range is 0 (no output) to 3\
-(maximal output).  Default value : 1.";
-
-VerbosePrint::"usage" =
-"VerbosePrint[n,s], where n is an integer and s is one or more strings or expressions, \
-prints s if $Verboseness>=n.";
-
-$HEPDir::"usage" =
+$HEPDir::usage =
 "$HEPDir is a string variable specifying the full path to the parent \
-directory of the directory HighEnergyPhysics (containing Phi). It should be set \
+directory of the directory FeynCalc (containing Phi). It should be set \
 in the startup file First.m.  Default value : Directory[].";
 
-PhiSymbols::"usage" =
+PhiSymbols::usage =
 "PhiSymbols[\"package\"] returns a list of symbols defined in the \
 context package.";
 
-$PhiPackages::"usage" =
-"$PhiPackages is a list of the contexts (given as strings) of the \
-sub-packages of Phi.  Default value : {\"HighEnergyPhysics`Phi`Objects`\", \
-\"HighEnergyPhysics`Phi`Couplings`\", \"HighEnergyPhysics`Phi`Channels`\", \
-\"HighEnergyPhysics`Phi`Renormalization`\", \
-\"HighEnergyPhysics`Phi`Palettes`\"}.";
-
-$FAPatch::"usage" = "$FAPatch switches on and off checking for \
-an unpatched FeynArts installation on PHI startup.  Default value : True.";
+$PhiVersion::usage=
+"contains the version of PHI."
 
 (* ************************************************************** *)
 
 Begin["`Private`"];
-
-(* ************************************************************** *)
-
-$Verboseness:=HighEnergyPhysics`FeynCalc`$VeryVerbose;
-
-VerbosePrint[n_Integer,s__]:=If[$Verboseness>=n,Print[s]];
-
-(* ************************************************************** *)
 
 End[];
 
@@ -152,91 +127,64 @@ EndPackage[];
 
 (* Loading of subpackages *)
 
-HighEnergyPhysics`Phi`$HEPDir=
-ParentDirectory[HighEnergyPhysics`FeynCalc`$FeynCalcDirectory];
+Phi`$HEPDir =
+ParentDirectory[FeynCalc`$FeynCalcDirectory];
 
-$Path=Union[$Path,{HighEnergyPhysics`Phi`$HEPDir}];
+(*
+$Path = Union[$Path,{Phi`$HEPDir}];
 
 (*Give first priority to First.m and PhiStart.m in homedir. Added 28/8-2001*)
-$Path=Join[FileNames[$HomeDirectory <> $PathnameSeparator <>
-    ".Mathematica" <> $PathnameSeparator <> "Applications"],
-    FileNames[$HomeDirectory <> $PathnameSeparator <>
-    ".Mathematica" <> $PathnameSeparator <> "*" <> $PathnameSeparator <>
-    "AddOns" <> $PathnameSeparator <> "Applications"],$Path];
+$Path = Join[FileNames[$HomeDirectory <> $PathnameSeparator <>
+		".Mathematica" <> $PathnameSeparator <> "Applications"],
+		FileNames[$HomeDirectory <> $PathnameSeparator <>
+		".Mathematica" <> $PathnameSeparator <> "*" <> $PathnameSeparator <>
+		"AddOns" <> $PathnameSeparator <> "Applications"],$Path];
+*)
 
-Get["HighEnergyPhysics`Phi`First`"];
+Get[FileNameJoin[{$FeynCalcDirectory,"Phi","First.m"}]]
 
-$PhiPackages = {"HighEnergyPhysics`Phi`Objects`",
-"HighEnergyPhysics`Phi`Couplings`",
-"HighEnergyPhysics`Phi`Channels`",
-"HighEnergyPhysics`Phi`Utilities`",
-"HighEnergyPhysics`Phi`Renormalization`",
-"HighEnergyPhysics`Phi`Palettes`"};
 
-tmp`olddir =
-Directory[]; SetDirectory[HighEnergyPhysics`Phi`$HEPDir];
-SetDirectory["HighEnergyPhysics"];SetDirectory["Phi"];
 
-VerbosePrint[2,"Scanning defs files for symbols to be declared"];
+listPhi = Map[ToFileName[{$FeynCalcDirectory,"Phi"}, (# <> ".m")] &,
+			{"Objects", "Couplings", "Channels", "Utilities", "Renormalization", "Palettes"}];
 
-If[StringMatchQ[$OperatingSystem,"*Windows*", IgnoreCase -> True]||
-StringMatchQ[$OperatingSystem,"*DOS*", IgnoreCase -> True],
-tmp`readopts=DOSTextFormat->True,tmp`readopts=DOSTextFormat->False];
+FeynCalc`Private`processDecls/@listPhi;
+Get/@listPhi;
 
-Do[
-
-  str = "";
-  strm =
-  OpenRead[StringTake[$PhiPackages[[i]],{23,-2}]<>".defs.m",tmp`readopts];
-  PhiSymbols[$PhiPackages[[i]]] = {};
-  While[str != "EndOfFile", str = Read[strm, String];
-    If[str =!= EndOfFile,
-      If[StringMatchQ[str, "*::*usage*"] &&
-      StringMatchQ[str, "(*::*"] == False,
-        pos = StringPosition[str, "::"][[1, 1]];
-        sym = StringTake[str, pos - 1];
-        PhiSymbols[$PhiPackages[[i]]] =
-        Append[PhiSymbols[$PhiPackages[[i]]], sym]] ]
-    ];
-
-  Close[strm];,
-
-{i, Length[$PhiPackages]}];
-
-(VerbosePrint[2,"Declaring symbols from ",#];
-DeclarePackage[#, PhiSymbols[#]])&/@ $PhiPackages;
-
-SetDirectory[tmp`olddir];
-Remove[str,strm,sym,pos];
 
 (* ************************************************************** *)
 
 (* Defaults *)
 
-If[ValueQ[Global`$Configuration] =!= True,
-  Global`$Configuration="None"
+If[ ValueQ[Global`$Configuration] =!= True,
+	Global`$Configuration = "None"
 ];
 
-If[tmp`pconf=!=Null,$PaletteConfiguration=tmp`pconf];
-If[tmp`verb=!=Null,HighEnergyPhysics`FeynCalc`$VeryVerbose=tmp`verb];
-If[tmp`phi=!=Null,$Phi=tmp`phi];
+If[ tmp`pconf=!=Null,
+	$PaletteConfiguration = tmp`pconf
+];
+If[ tmp`phi=!=Null,
+	$Phi = tmp`phi
+];
 
-$FAPatch=True;
-
+$PhiVersion = "1.3";
 (* ************************************************************** *)
 
 (* Loading of user definitions *)
 
-VerbosePrint[2,"Loading HighEnergyPhysics`Phi`PhiStart`"];
+FCPrint[2,"Loading Phi`PhiStart`"];
 
-Get["HighEnergyPhysics`Phi`PhiStart`"];
+Get[FileNameJoin[{$FeynCalcDirectory,"Phi","PhiStart.m"}]]
 
 (*Clean out doubles (strings and non-strings)  in $Lagrangians*)
 $Lagrangians = Union[(ToExpression[#[[0]]] @@ #) & /@ $Lagrangians];
 
-If[tmp`pconf=!=Null,$PaletteConfiguration=tmp`pconf];
-If[tmp`verb=!=Null,HighEnergyPhysics`FeynCalc`$VeryVerbose=tmp`verb];
-If[tmp`phi=!=Null,$Phi=tmp`phi];
+If[ tmp`pconf=!=Null,
+	$PaletteConfiguration = tmp`pconf
+];
+If[ tmp`phi=!=Null,
+	$Phi = tmp`phi
+];
 
 (* ************************************************************** *)
 
@@ -247,35 +195,20 @@ FAUpdate;
 (* ************************************************************** *)
 
 (* FeynArts definitions are cleared to avoid error messages *)
+(*
+If[ NumberQ[FeynArts`$FeynArts],
+	ClearAll[FeynArts`Greek, FeynArts`UCGreek],
+	Remove[FeynArts`$FeynArts]
+];*)
 
-If[NumberQ[HighEnergyPhysics`FeynArts`$FeynArts],
-ClearAll[HighEnergyPhysics`FeynArts`Greek, HighEnergyPhysics`FeynArts`UCGreek],
-Remove[HighEnergyPhysics`FeynArts`$FeynArts]];
-
-(* ************************************************************** *)
-
-(* Check if FeynArts is there and patch if wanted and needed *)
-
-If[$FAPatch && $LoadFeynArts,
-str = "" ;$patch=True;
-If[(fafiles=FileNames["FeynArts.m", {$FeynCalcDirectory, $FeynCalcDirectory <> $PathnameSeparator <> "*"}]) =!= {},
-  strm = OpenRead[fafiles[[1]]];
-  While[ToString[str] != "EndOfFile", str = Read[strm, String];
-    If[StringMatchQ[ToString[str], "*Frederik Orellana*", IgnoreCase -> True],
-      $patch=False]];
-  Close[strm]];
-
-If[$patch, <<"HighEnergyPhysics`Phi`Extras`FAPatch`";
-  HighEnergyPhysics`Phi`FAPatch`FAPatch[]]
-];
 
 (* ************************************************************** *)
 
 (* Phi system variables *)
 
-$Phi=True;
+$Phi = True;
 
-$PaletteConfiguration="None";
+$PaletteConfiguration = "None";
 
 (* ************************************************************** *)
 

@@ -241,7 +241,7 @@ M$ClassesDescription = (descr/@allfieldstot/.
 
 olddir=Directory[];
 SetDirectory[$HEPDir];
-SetDirectory["HighEnergyPhysics"];
+SetDirectory["FeynCalc"];
 SetDirectory["Phi"];
 SetDirectory["CouplingVectors"];
 

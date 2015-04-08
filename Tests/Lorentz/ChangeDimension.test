@@ -1,0 +1,30 @@
+(* :Title: ChangeDimension.test													*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ChangeDimension					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstChangeDimension = {
+{"ChangeDimension-ID1",
+	"ChangeDimension[{LorentzIndex[\[Mu]], Momentum[p]}, D]",
+	"{LorentzIndex[\[Mu], D], Momentum[p, D]}"},
+{"ChangeDimension-ID2",
+	"ChangeDimension[{LorentzIndex[\[Mu],D],Momentum[p,D]},4]",
+	"{LorentzIndex[\[Mu]], Momentum[p]}"},
+{"ChangeDimension-ID3",
+	"ChangeDimension[LeviCivita[\[Mu],\[Nu],\[Rho],\[Sigma],Dimension\
+	\[Rule]D],D]",
+	"Eps[LorentzIndex[\[Mu], D], LorentzIndex[\[Nu], D], LorentzIndex[\
+	\[Rho], D], LorentzIndex[\[Sigma], D], Dimension -> D]"},
+{"ChangeDimension-ID4",
+	"ChangeDimension[{GA[\[Mu],\[Nu]] MT[\[Mu],\[Nu]], \
+	GAD[\[Mu],\[Nu]] MTD[\[Mu],\[Nu]] f[D]},n]//Contract//DiracTrick",
+	"{n, n*f[D]}"}
+};

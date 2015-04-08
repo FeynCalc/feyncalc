@@ -1,0 +1,28 @@
+
+
+(* :Title: PaVe.test                                   		            *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PaVe			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstPaVe = {
+
+{"fcstPave-ID1","PaVe[0, {}, {m02}]","A0[m02]"},
+{"fcstPave-ID2","SetOptions[{B1, B00, B11}, BReduce -> False];\n PaVe[0, {pp}, {m02, m12}]","B0[pp, m02, m12]"},
+
+{"fcstPave-ID3","PaVe[1, {pp}, {m12, m22}]","B1[pp, m12, m22]"},
+{"fcstPave-ID4","PaVe[1, 1, {p10}, {m12, m22}]","B11[p10, m12, m22]"},
+{"fcstPave-ID5","PaVe[0, {p10, p12, p20}, {m12, m22, m32}]","C0[p10, p12, p20, m12, m22, m32]"},
+{"fcstPave-ID6","PaVe[0, {p10, p12, p23, p30, p20, p13}, {m12, m22, m32, m42}]","D0[p10, p12, p23, p30, p20, p13, m12, m22, m32, m42]"},
+{"fcstPave-ID7","PaVe[0, 0, {p}, {m1, m2}]","B00[p, m1, m2]"},
+{"fcstPave-ID8","SetOptions[{B1, B00, B11}, BReduce -> True];\nPaVe[0, 0, {p}, {m1, m2}]","(3*m1 + 3*m2 - p)/18 + (m1*B0[p, m1, m2])/3 +
+	(A0[m2] + (m1 - m2 + p)*(-B0[p, m1, m2]/2 + ((-m1 + m2)*(-B0[0, m1, m2] + B0[p, m1, m2]))/(2*p)))/6"}
+}

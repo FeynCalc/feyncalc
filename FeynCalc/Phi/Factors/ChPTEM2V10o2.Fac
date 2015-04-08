@@ -1,15 +1,15 @@
 -((-144*Pi^2 + CouplingConstant[QED[1], RenormalizationState[0]]^2*
-      (1 + 16*Pi^2*(20*(CouplingConstant[ChPT2[4], 10, RenormalizationState[
-             1]] + 2*CouplingConstant[ChPT2[4], 11, RenormalizationState[
-              1]] + CouplingConstant[ChPTEM2[4], 15, RenormalizationState[
-             1]]) - 3*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-           ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2, 
-           LeutwylerJBarEvaluation -> "none"]) + 
-       3*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
-          ScaleMu^2]))*Pair[Momentum[p1], Momentum[p1]] + 
-   192*Pi^2*CouplingConstant[QED[1], RenormalizationState[0]]^2*
-    LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]], 
-     ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2, 
-     LeutwylerJBarEvaluation -> "none"]*
-    ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2)/
- (144*Pi^2*Pair[Momentum[p1], Momentum[p1]])
+	(1 + 16*Pi^2*(20*(CouplingConstant[ChPT2[4], 10, RenormalizationState[
+			1]] + 2*CouplingConstant[ChPT2[4], 11, RenormalizationState[
+			1]] + CouplingConstant[ChPTEM2[4], 15, RenormalizationState[
+			1]]) - 3*LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+		ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2,
+		LeutwylerJBarEvaluation -> "none"]) +
+	3*Log[ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2/
+		ScaleMu^2]))*Pair[Momentum[p1], Momentum[p1]] +
+192*Pi^2*CouplingConstant[QED[1], RenormalizationState[0]]^2*
+	LeutwylerJBar[Pair[Momentum[p1], Momentum[p1]],
+	ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2,
+	LeutwylerJBarEvaluation -> "none"]*
+	ParticleMass[PseudoScalar[3], RenormalizationState[0]]^2)/
+(144*Pi^2*Pair[Momentum[p1], Momentum[p1]])

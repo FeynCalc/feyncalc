@@ -29,7 +29,7 @@ automatized for ChPT one-loop processes.
 
 GOALS:
 
-The aim is to ease the computation of amplitudes in ChPT and related effetive
+The aim is to ease the computation of amplitudes in ChPT and related effective
 models, thereby allowing checks of previous calculations and performing new
 calculations. Most standard one-loop amplitudes have been computed, so inevitably
 going to two-loops should be attempted.
@@ -43,10 +43,10 @@ PHI QUICKSTART:
 Make sure you have FeynCalc >= 4.1.1; if not, get it at
 http://www.feyncalc.org/.
 Get the FeynArts tarball from http://www.feynarts.de/ and unpack it in
-your "HighEnergyPhysics" directory. Set
+your "FeynCalc" directory. Set
 $LoadPhi=True; $LoadFeynArts=True;
 and load FeynCalc with
-<<"HighEnergyPhysics`FeynCalc`".
+<<"FeynCalc`".
 
 
 PHI INSTALLATION:
@@ -71,10 +71,10 @@ specified in the relevant model configuration file (in Phi/Configurations).
 FEYNARTS INSTALLATION:
 
 After downloading the FeynArts tarball (FeynArts3.tar.gz), unpack it in
-the FeynCalc installation directory "HighEnergyPhysics".
-You can check where it is by loading FeynCalc (<<"HighEnergyPhysics`FeynCalc`")
+the FeynCalc installation directory "FeynCalc".
+You can check where it is by loading FeynCalc (<<"FeynCalc`")
 and evaluating $FeynCalcDirectory. The unpacking must be so that the file
-"FeynArts.m" is in "HighEnergyPhysics".
+"FeynArts.m" is in "FeynCalc".
 
 In order to have FeynCalc and FeynArts loaded simultaneously and to be able
 to use the PHI fields directly with FeynArts, some changes need to be made to FeynArts.
@@ -82,7 +82,7 @@ These changes will be performed the first time you load PHI and FeynArts via Fey
 That is, the first time you load FeynCalc after having evaluated
 $LoadPhi=True; $LoadFeynArts=True;
 This can be done either directly before evaluating
-<<"HighEnergyPhysics`FeynCalc`"
+<<"FeynCalc`"
 or you can put the line in your "FCConfig.m" file.
 
 The automatic modification of the FeynArts files is done by the Mathematica
@@ -116,7 +116,7 @@ Loop, PolarizationVector, FeynAmp, FeynAmpDenominator, FeynAmpList,
 PropagatorDenominator, GaugeXi, NonCommutative, DiracSpinor, DiracTrace
 
 should be put explicitly in their corresponding FeynCalc context.
-That is, e.g. Loop should be replaced with HighenergyPhysics`FeynCalc`Loop`Loop
+That is, e.g. Loop should be replaced with FeynCalc`Loop`Loop
 
 In Setup.m, the following lines should be added:
 
@@ -202,7 +202,7 @@ This roughly means:
 2. It's is free.
 
 3. If you use this software or parts of it as part of another piece of
-   software, you must acknowledge it in your documentation.
+software, you must acknowledge it in your documentation.
 
 
 

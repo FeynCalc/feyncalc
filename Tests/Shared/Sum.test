@@ -1,0 +1,57 @@
+(* :Title: Sum.test															*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SumP, SumS and SumT		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstSumP = {
+{"fcstSumP-ID1","SumP[1,m-1]",
+	"SumP[1,-1+m]"},
+{"fcstSumP-ID2","SumP[2,-1+m]",
+	"SumP[2,-1+m]"},
+{"fcstSumP-ID3","SumP[1,m]",
+	"SumP[1,m]"},
+{"fcstSumP-ID4","SumP[1,4]",
+	"25/12"},
+{"fcstSumP-ID5","Explicit[SumP[1,n/2]]",
+	"1/2 (1+(-1)^(1+n)) SumS[1,1/2 (-1+n)]+1/2 (1+(-1)^n) SumS[1,n/2]"},
+{"fcstSumP-ID6","Explicit[SumP[1,n/2]]/.n->8",	"25/12"}
+};
+
+Tests`Shared`fcstSumS = {
+{"fcstSumS-ID1","SumS[1,m-1]", "SumS[1,-1+m]"},
+{"fcstSumS-ID2","SumS[2,-1+m]", "SumS[2,-1+m]"},
+{"fcstSumS-ID3","SumS[-1,m]","SumS[-1,m]"},
+{"fcstSumS-ID4","SumS[1,m,Reduce->True]","1/m+SumS[1,-1+m]"},
+{"fcstSumS-ID5","SumS[3,m+2,Reduce->True]","1/(2 + m)^3 + SumS[3, 1 + m]"},
+{"fcstSumS-ID6","SumS[1,4]","25/12"},
+{"fcstSumS-ID7","SumS[1,2,m-1]","SumS[1,2,-1+m]"},
+{"fcstSumS-ID8","SumS[1,1,1,11]","31276937512951/4260000729600"},
+{"fcstSumS-ID9","SumS[-1,4]","-(7/12)"}
+};
+
+Tests`Shared`fcstSumT = {
+{"fcstSumT-ID1","SumT[1,m-1]",
+	"SumT[1,-1+m]"},
+{"fcstSumT-ID2","SumT[2,-1+m]",
+	"SumT[2,-1+m]"},
+{"fcstSumT-ID3","SumT[1,m]",
+	"SumT[1,m]"},
+{"fcstSumT-ID4","SumT[1,m,Reduce->True]",
+	"(-1)^m/m+SumT[1,-1+m]"},
+{"fcstSumT-ID5","SumT[1,4]",
+	"-(7/12)"},
+{"fcstSumT-ID6","SumT[1,2,m-1]", "SumT[1,2,-1+m]"},
+{"fcstSumT-ID7","SumT[1,2,42]",
+	"-(38987958697055013360489864298703621429610152138683927/10512121660702378405316004964483761080879190528000000)"},
+{"fcstSumT-ID8","SumT[1,4]", "-(7/12)"},
+{"fcstSumT-ID9","Array[SumT,6]",
+	"{-1,-(5/8),-(179/216),-(1207/1728),-(170603/216000),-(155903/216000)}"}
+};

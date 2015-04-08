@@ -1,6 +1,6 @@
 {CouplingConstant[QED[1], RenormalizationState[0]]*FourVector[p2, \[Mu]3]*
-  MomentaScalarProduct[p1, p3], 
- CouplingConstant[QED[1], RenormalizationState[0]]*FourVector[p1, \[Mu]3]*
-  MomentaScalarProduct[p2, p3], 
- CouplingConstant[QED[1], RenormalizationState[0]]^3*FourVector[p1, \[Mu]3], 
- CouplingConstant[QED[1], RenormalizationState[0]]^3*FourVector[p2, \[Mu]3]}
+MomentaScalarProduct[p1, p3],
+CouplingConstant[QED[1], RenormalizationState[0]]*FourVector[p1, \[Mu]3]*
+MomentaScalarProduct[p2, p3],
+CouplingConstant[QED[1], RenormalizationState[0]]^3*FourVector[p1, \[Mu]3],
+CouplingConstant[QED[1], RenormalizationState[0]]^3*FourVector[p2, \[Mu]3]}

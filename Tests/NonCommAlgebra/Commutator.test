@@ -1,0 +1,19 @@
+(* :Title: Commutator.test													*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Commutator					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstCommutator = {
+{"Commutator-ID1", "CommutatorExplicit[Commutator[a,b]]",
+"a . b - b . a"},
+{"Commutator-ID2", "CommutatorExplicit[Commutator[a+b,a-2b]]",
+"-(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"}
+};

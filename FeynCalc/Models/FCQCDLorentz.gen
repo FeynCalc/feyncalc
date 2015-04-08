@@ -1,5 +1,5 @@
 (*
-        QCDLorentz.gen
+		QCDLorentz.gen
 QCD with one massive quark (with mass QuarkMass).
 *)
 
@@ -20,79 +20,79 @@ FAFourVector[ 0, _ ] = 0
 
 M$GenericPropagators = {
 
-        (* quark propagator: *)
+		(* quark propagator: *)
 
-  AnalyticalPropagator[External][ s F[i, mom] ] ==
- FANonCommutative[ FADiracSpinor[-mom, Mass[F[i]]] ],
+AnalyticalPropagator[External][ s F[i, mom] ] ==
+FANonCommutative[ FADiracSpinor[-mom, Mass[F[i]]] ],
 
-  AnalyticalPropagator[Internal][ s F[i, mom] ] ==
-     FANonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
+AnalyticalPropagator[Internal][ s F[i, mom] ] ==
+	 FANonCommutative[ QuarkPropagator[{mom, QuarkMass}]] ,
 
-        (* gluon propagator *)
+		(* gluon propagator *)
 
-  AnalyticalPropagator[External][ s V[i, mom, {li2, b}] ] ==
-    FAPolarizationVector[mom, {li2, b}],
+AnalyticalPropagator[External][ s V[i, mom, {li2, b}] ] ==
+	FAPolarizationVector[mom, {li2, b}],
 
-  AnalyticalPropagator[Internal][ s V[i, mom, {li1, a} -> {li2, b}] ] ==
-    SUNDelta[a,b] GluonPropagator[mom, li1, li2] ,
+AnalyticalPropagator[Internal][ s V[i, mom, {li1, a} -> {li2, b}] ] ==
+	SUNDelta[a,b] GluonPropagator[mom, li1, li2] ,
 
-        (* general Fadeev-Popov ghost propagator: *)
+		(* general Fadeev-Popov ghost propagator: *)
 
-  AnalyticalPropagator[External][ s U[i, mom, {a}] ] == 1,
+AnalyticalPropagator[External][ s U[i, mom, {a}] ] == 1,
 
-  AnalyticalPropagator[Internal][ s U[i, mom, {a} -> {b}] ] ==
-     SUNDelta[a,b] GhostPropagator[mom]
+AnalyticalPropagator[Internal][ s U[i, mom, {a} -> {b}] ] ==
+	 SUNDelta[a,b] GhostPropagator[mom]
 
 }
 
 M$GenericCouplings = {
 
-        (* V-V-V-V: *)
+		(* V-V-V-V: *)
 
-  AnalyticalCoupling[ s1 V[i, mom1, {li1, a}], s2 V[j, mom2, {li2, b}],
-      s3 V[k, mom3, {li3, c}], s4 V[l, mom4, {li4, d}] ] ==
-    G[1][s1 V[i], s2 V[j], s3 V[k], s4 V[l]] .
-      {GluonVertex[{mom1,li1,a},{mom2,li2,b},{mom3,li3,c},{mom4,li4,d}]
-      },
+AnalyticalCoupling[ s1 V[i, mom1, {li1, a}], s2 V[j, mom2, {li2, b}],
+	  s3 V[k, mom3, {li3, c}], s4 V[l, mom4, {li4, d}] ] ==
+	G[1][s1 V[i], s2 V[j], s3 V[k], s4 V[l]] .
+	  {GluonVertex[{mom1,li1,a},{mom2,li2,b},{mom3,li3,c},{mom4,li4,d}]
+	  },
 
-        (* V-V-V: *)
+		(* V-V-V: *)
 
-  AnalyticalCoupling[ s1 V[i, mom1, {li1, a}], s2 V[j, mom2, {li2, b}],
-      s3 V[k, mom3, {li3, c}] ] ==
-    G[1][s1 V[i], s2 V[j], s3 V[k]] .
-      { SUNF[a,b,c] GluonVertex[{mom1,li1},{mom2,li2},{mom3,li3}]
-      },
+AnalyticalCoupling[ s1 V[i, mom1, {li1, a}], s2 V[j, mom2, {li2, b}],
+	  s3 V[k, mom3, {li3, c}] ] ==
+	G[1][s1 V[i], s2 V[j], s3 V[k]] .
+	  { SUNF[a,b,c] GluonVertex[{mom1,li1},{mom2,li2},{mom3,li3}]
+	  },
 
-        (* F-F-V: *)
+		(* F-F-V: *)
 
-  AnalyticalCoupling[ s1 F[i, mom1], s2 F[j, mom2],
-      s3 V[k, mom3, {li3, a}] ] ==
-    G[-1][s1 F[i], s2 F[j], s3 V[k]] .
-      { FANonCommutative[SUNT[a],QuarkGluonVertex[li3]]
-      },
+AnalyticalCoupling[ s1 F[i, mom1], s2 F[j, mom2],
+	  s3 V[k, mom3, {li3, a}] ] ==
+	G[-1][s1 F[i], s2 F[j], s3 V[k]] .
+	  { FANonCommutative[SUNT[a],QuarkGluonVertex[li3]]
+	  },
 
-        (* U-U-V: *)
+		(* U-U-V: *)
 
-  AnalyticalCoupling[ s1 U[i, mom1,{a}], s2 U[j, mom2,{b}],
-      s3 V[k, mom3, {li3,c}] ] ==
-   G[1][s1 U[i], s2 U[j], s3 V[k]] .
-      { SUNF[a,b,c] GluonGhostVertex[mom1, li3]
-      }
+AnalyticalCoupling[ s1 U[i, mom1,{a}], s2 U[j, mom2,{b}],
+	  s3 V[k, mom3, {li3,c}] ] ==
+G[1][s1 U[i], s2 U[j], s3 V[k]] .
+	  { SUNF[a,b,c] GluonGhostVertex[mom1, li3]
+	  }
 }
 
-        (* TruncationRules: rule for omitting the wave functions of
-           external Propagators defined in this file. *)
+		(* TruncationRules: rule for omitting the wave functions of
+		   external Propagators defined in this file. *)
 
 M$TruncationRules = {
-  FAPolarizationVector[__] -> 1,
-  Pair[LorentzIndex[__], Momentum[Polarization[pe_, __]]] :> 1,
-  FADiracSpinor[__] -> 1,
-  Spinor[__] -> 1,
-  MajoranaSpinor[__] -> 1
+FAPolarizationVector[__] -> 1,
+Pair[LorentzIndex[__], Momentum[Polarization[pe_, __]]] :> 1,
+FADiracSpinor[__] -> 1,
+Spinor[__] -> 1,
+MajoranaSpinor[__] -> 1
 }
 
 (* LastGenericRules: the very last rules that are applied to an
-   amplitude before it is returned by CreateFeynAmp. *)
+amplitude before it is returned by CreateFeynAmp. *)
 
 SumOver[Index[Gluon,_],8,___] := 1;
 
@@ -102,61 +102,61 @@ db[i_Integer]:=If[Global`$Debug, ToExpression["PRS"<>ToString[i]],1];
 $thismodelpropagators = {GhostPropagator, QuarkPropagator, GluonPropagator};
 
 getprops[z_] :=
-   Sort[Union[Replace[First /@ Cases[z, GhostPropagator[__] |
-         QuarkPropagator[__] | GluonPropagator[__], -1],
-          {a_, ___} :> a, 1]], Length[#1] < Length[#2] & ];
+Sort[Union[Replace[First /@ Cases[z, GhostPropagator[__] |
+		 QuarkPropagator[__] | GluonPropagator[__], -1],
+		  {a_, ___} :> a, 1]], Length[#1] < Length[#2] & ];
 
 (* 1-loop selfenergy *)
 shift[amps_, q_, p_] :=
- Switch[getprops[amps],
-  {q, q + p},                               (# /. q -> q - p)&,
-  {q, -q - p},                               (# /. q -> -q)&,
-  _, Identity][amps];
+Switch[getprops[amps],
+{q, q + p},                               (# /. q -> q - p)&,
+{q, -q - p},                               (# /. q -> -q)&,
+_, Identity][amps];
 
 shift[amps_, q1_, q2_, p_] :=
- Switch[getprops[amps],
+Switch[getprops[amps],
 (* gluon self energy *)
-  {q2, q1, - p - q1 - q2},                  (# /. q1 -> q1 - p /. q1 -> -q1)&,
-  {q1, q1 + q2, -q2, -q1 - q2},             (# /. q2 -> -q2)&,
-  {-q2, -q1, p - q1, -p + q1 - q2},         (# /. q2 -> -q2 - p /. q1 -> -q1)&,
-  {q2, q1, -p - q2, p - q1},                (# /. q1 -> -q1 ) &,
-  {q2, q1, -q1 - q2, p + q1},               (# /. q2 -> -q2)&,
-  {q2, q1, -q1 - q2, -p + q1},              (# /. q1 -> -q1)&,
-  {q2, q1, q1 + q2, -q1 - q2},              (# /. q2 -> -q2)&,
-  {q1, -q2, -q1 - q2, p - q2, -p - q1},     (# /. q2 -> -q2)&,
-  {q1, q1 + q2, -q2, p - q2, p + q1},       (# /. q2 -> -q2)&,
-  {q2, q1, -p + q1, p - q1, -p + q1 - q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
-  {q2, q1, -p + q1, p - q1,  p - q1 + q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
-  {q2, q1, q1 + q2,  p - q2, -p - q1},      (# /. q2 -> -q2)&,
-  {q2, -q1 - q2, p - q2, -q1, -p - q1},     (# /. q2 -> -q2)&,
-  {q2, q1 - q2, -p - q1},                   (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, q1 - q2, -p - q1},               (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q1, q1 - q2, -p - q2, p + q1, -p - q1},  (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q1, -q1 + q2, -p - q2, p + q1, -p - q1}, (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, p + q2, q1 - q2, -p - q1},       (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, -q1 + q2, p + q2, -p - q1},      (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, -q1 + q2, p + q2, -q1, -p - q1},     (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, -p - q2, p + q1},                (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q1, q1 - q2, -p - q2, p + q1, -p - q1},  (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q1, -q1 + q2, -p - q2, p + q1, -p - q1}, (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q1, -q1 + q2, p + q2, p + q1},           (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, p + q2, q1 - q2, p + q1},        (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q1, -q1 + q2, p + q2, p + q1},           (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, -q1 + q2, p + q1},               (# /. q2 -> -q2 /. q1 -> -q1)&,
-  {q2, q1, p + q2, q1 - q2, p + q1},        (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, - p - q1 - q2},                  (# /. q1 -> q1 - p /. q1 -> -q1)&,
+{q1, q1 + q2, -q2, -q1 - q2},             (# /. q2 -> -q2)&,
+{-q2, -q1, p - q1, -p + q1 - q2},         (# /. q2 -> -q2 - p /. q1 -> -q1)&,
+{q2, q1, -p - q2, p - q1},                (# /. q1 -> -q1 ) &,
+{q2, q1, -q1 - q2, p + q1},               (# /. q2 -> -q2)&,
+{q2, q1, -q1 - q2, -p + q1},              (# /. q1 -> -q1)&,
+{q2, q1, q1 + q2, -q1 - q2},              (# /. q2 -> -q2)&,
+{q1, -q2, -q1 - q2, p - q2, -p - q1},     (# /. q2 -> -q2)&,
+{q1, q1 + q2, -q2, p - q2, p + q1},       (# /. q2 -> -q2)&,
+{q2, q1, -p + q1, p - q1, -p + q1 - q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
+{q2, q1, -p + q1, p - q1,  p - q1 + q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
+{q2, q1, q1 + q2,  p - q2, -p - q1},      (# /. q2 -> -q2)&,
+{q2, -q1 - q2, p - q2, -q1, -p - q1},     (# /. q2 -> -q2)&,
+{q2, q1 - q2, -p - q1},                   (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, q1 - q2, -p - q1},               (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q1, q1 - q2, -p - q2, p + q1, -p - q1},  (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q1, -q1 + q2, -p - q2, p + q1, -p - q1}, (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, p + q2, q1 - q2, -p - q1},       (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, -q1 + q2, p + q2, -p - q1},      (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, -q1 + q2, p + q2, -q1, -p - q1},     (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, -p - q2, p + q1},                (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q1, q1 - q2, -p - q2, p + q1, -p - q1},  (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q1, -q1 + q2, -p - q2, p + q1, -p - q1}, (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q1, -q1 + q2, p + q2, p + q1},           (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, p + q2, q1 - q2, p + q1},        (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q1, -q1 + q2, p + q2, p + q1},           (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, -q1 + q2, p + q1},               (# /. q2 -> -q2 /. q1 -> -q1)&,
+{q2, q1, p + q2, q1 - q2, p + q1},        (# /. q2 -> -q2 /. q1 -> -q1)&,
 (* ghost self energy *)
-  {q1, -q1 + q2, -q2, -p - q2, -p - q1},    (# /. q2 -> -q2 /. q1-> -q1)&,
-  {q2, q1, q1 - q2, -p -q2, -p - q1},       (# /. q2 -> -q2 /. q1-> -q1)&,
-  {q2, -p - q2, -q1, p - q1, -p},           (# /. q2 -> -q2 )&,
-  {q1, -q1 + q2, -p - q2, -p - q1},         (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+{q1, -q1 + q2, -q2, -p - q2, -p - q1},    (# /. q2 -> -q2 /. q1-> -q1)&,
+{q2, q1, q1 - q2, -p -q2, -p - q1},       (# /. q2 -> -q2 /. q1-> -q1)&,
+{q2, -p - q2, -q1, p - q1, -p},           (# /. q2 -> -q2 )&,
+{q1, -q1 + q2, -p - q2, -p - q1},         (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
 
-  {q2, q1, -p + q1, -p + q1 - q2},          (# /. q2 -> q2 - p )&,
-  {q1, q1 + q2, -q2, p - q2, -p - q1},      (# /. q2 -> -q2)&,
-  {q2, q1, q1 + q2, -p + q2, -p - q1},      (# /. q2 -> -q2)&,
-  {q2, -p + q1, -q1, p - q1, -p + q1 - q2}, (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
-  {q2, -p + q1, -q1, p - q1, p - q1 + q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
-  {q2, q1, q1 - p, -p + q1 - q2},           (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
-  _, Identity][amps];
+{q2, q1, -p + q1, -p + q1 - q2},          (# /. q2 -> q2 - p )&,
+{q1, q1 + q2, -q2, p - q2, -p - q1},      (# /. q2 -> -q2)&,
+{q2, q1, q1 + q2, -p + q2, -p - q1},      (# /. q2 -> -q2)&,
+{q2, -p + q1, -q1, p - q1, -p + q1 - q2}, (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+{q2, -p + q1, -q1, p - q1, p - q1 + q2},  (# /. q2 -> -q2 - p /. q1 -> -q1 )&,
+{q2, q1, q1 - p, -p + q1 - q2},           (# /. q2 -> q2 + q1 /. q1 -> -q1 )&,
+_, Identity][amps];
 
 shift[x_, __] := x;
 
@@ -166,61 +166,61 @@ M$LastGenericRules = {
 
 (* energy momentum conservation for n-loop self energies *)
 FAFeynAmp[grid_, Integral[q__FourMomentum], amp_ ]:>
-     FAFeynAmp[grid, Integral[q],
-             amp /. FourMomentum[Outgoing, 1] :> FourMomentum[Incoming, 1]
-            ] /;
-             (Union[Flatten@{FourMomentum[Incoming,1], Cases[amp, FourMomentum[Incoming, _], -1]}
-                   ] === {FourMomentum[Incoming, 1]}
-             ) &&
-             (Union[Cases[amp, FourMomentum[Outgoing, _], -1]] === {FourMomentum[Outgoing, 1]}),
+	 FAFeynAmp[grid, Integral[q],
+			 amp /. FourMomentum[Outgoing, 1] :> FourMomentum[Incoming, 1]
+			] /;
+			 (Union[Flatten@{FourMomentum[Incoming,1], Cases[amp, FourMomentum[Incoming, _], -1]}
+				   ] === {FourMomentum[Incoming, 1]}
+			 ) &&
+			 (Union[Cases[amp, FourMomentum[Outgoing, _], -1]] === {FourMomentum[Outgoing, 1]}),
 
 FourMomentum[Internal, i_Integer] :> ToExpression["q" <> ToString[i]],
 
 FAFeynAmp[grid_, Integral[qq___Symbol], amp_ ]:>
-     FAFeynAmp[grid, Integral[qq],
+	 FAFeynAmp[grid, Integral[qq],
 (*
-             shift[#, qq,Sequence@@Union[Cases[amp, FourMomentum[Incoming,_],-1]] ]& @
+			 shift[#, qq,Sequence@@Union[Cases[amp, FourMomentum[Incoming,_],-1]] ]& @
 *)
-             shift[#, qq, p1 ]& @
+			 shift[#, qq, p1 ]& @
 ((*
 Global`AMP=
 *)
-            (
+			(
 (* WARNING (Rolf Mertig, March 19th 2004:
-           This Nf-substitution is probably not quite right for 2-loops in certain cases ...
-           Just take this as a working idea.
-           I will look into this further
+		   This Nf-substitution is probably not quite right for 2-loops in certain cases ...
+		   Just take this as a working idea.
+		   I will look into this further
 *)
-             amp /. MatrixTrace[xy__] :> FADiracTrace[2 Tf Nf Dot[xy] ] /.
-                    G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
-                    Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
-                    FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
-                    FourMomentum[Outgoing, i_Integer] :> ToExpression["k" <> ToString[i]],
-                    Index[Lorentz, i_Integer]:>ToExpression["li" <> ToString[i]] ,
-                    (*y_ SUNDelta[a_, b_] :> (y/.a->b) /; !FreeQ[y,a],*)
-                    SUNDelta[a_, b_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
-                    SUNDelta[a_, b_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
-                    SUNDelta[a_, b_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
-                    SUNDelta[a_, b_] GluonVertex[c_, d_, e_, f_]:> (GluonVertex[c,d,e,f]/.a->b
-                    ) /; !FreeQ[GluonVertex[c,d,e,f], a],
-                    SUNDelta[a_, b_] GluonVertex[c_, d_, e_, f_]:> (GluonVertex[c,d,e,f]/.b->a
-                    ) /; !FreeQ[GluonVertex[c,d,e,f], b],
-                    SUNDelta[b_, a_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
-                    SUNDelta[b_, a_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
-                    SUNDelta[b_, a_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
-                    SUNDelta[a_, b_] SUNDelta[a_, c_]:> SUNDelta[b,c],
-                    SUNDelta[a_, b_] SUNDelta[c_, a_]:> SUNDelta[b,c],
-                    SUNDelta[a_, b_] SUNDelta[b_, c_]:> SUNDelta[a,c],
-                    SUNDelta[a_, b_] SUNDelta[c_, b_]:> SUNDelta[a,c],
-                    FADiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.a->b]/;!FreeQ[y,a],
-                    FADiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.b->a]/;!FreeQ[y,b]
-                   }/.FANonCommutative -> Dot //. (a___ . 1 . b___) :> (a . b) /.
-                   (* outgoing vector bosons: throw away signs of momenta *)
-                   FAPolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
-                   Conjugate[FAPolarizationVector][p, k, li]
-             )
+			 amp /. MatrixTrace[xy__] :> FADiracTrace[2 Tf Nf Dot[xy] ] /.
+					G[_][_][__][_] :> 1 /. NonCommutative -> Dot //. {
+					Index[Gluon, i_Integer]:>ToExpression["ci" <> ToString[i]],
+					FourMomentum[Incoming, i_Integer] :> ToExpression["p" <> ToString[i]],
+					FourMomentum[Outgoing, i_Integer] :> ToExpression["k" <> ToString[i]],
+					Index[Lorentz, i_Integer]:>ToExpression["li" <> ToString[i]] ,
+					(*y_ SUNDelta[a_, b_] :> (y/.a->b) /; !FreeQ[y,a],*)
+					SUNDelta[a_, b_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
+					SUNDelta[a_, b_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
+					SUNDelta[a_, b_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
+					SUNDelta[a_, b_] GluonVertex[c_, d_, e_, f_]:> (GluonVertex[c,d,e,f]/.a->b
+					) /; !FreeQ[GluonVertex[c,d,e,f], a],
+					SUNDelta[a_, b_] GluonVertex[c_, d_, e_, f_]:> (GluonVertex[c,d,e,f]/.b->a
+					) /; !FreeQ[GluonVertex[c,d,e,f], b],
+					SUNDelta[b_, a_] SUNF[a_, c_, d_]:> SUNF[b, c, d],
+					SUNDelta[b_, a_] SUNF[c_, a_, d_]:> SUNF[c, b, d],
+					SUNDelta[b_, a_] SUNF[d_, c_, a_]:> SUNF[d, c, b],
+					SUNDelta[a_, b_] SUNDelta[a_, c_]:> SUNDelta[b,c],
+					SUNDelta[a_, b_] SUNDelta[c_, a_]:> SUNDelta[b,c],
+					SUNDelta[a_, b_] SUNDelta[b_, c_]:> SUNDelta[a,c],
+					SUNDelta[a_, b_] SUNDelta[c_, b_]:> SUNDelta[a,c],
+					FADiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.a->b]/;!FreeQ[y,a],
+					FADiracTrace[y_] SUNDelta[a_, b_] :> DiracTrace[y/.b->a]/;!FreeQ[y,b]
+				   }/.FANonCommutative -> Dot //. (a___ . 1 . b___) :> (a . b) /.
+				   (* outgoing vector bosons: throw away signs of momenta *)
+				   FAPolarizationVector[p_, _. k:FourMomentum[Outgoing, _], li_] :>
+				   Conjugate[FAPolarizationVector][p, k, li]
+			 )
 )
-            ]
+			]
 }
 
 

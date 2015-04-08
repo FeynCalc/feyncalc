@@ -1,0 +1,545 @@
+(* Wolfram Language package *)
+
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: SharedTools														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Small helper tools extensively used in FeynCalc			    *)
+
+(* ------------------------------------------------------------------------ *)
+
+Cases2::usage=
+"Cases2[expr, f] is equivalent to \
+Cases[{expr}, HoldPattern[f[___]], Infinity]//Union. \
+Cases2[expr, f1, f2, ...] or \
+Cases2[expr, {f1, f2, ...}] is equivalent to \
+Cases[{expr}, f1[___] | f2[___] ..., Infinity]//Union.";
+
+Combine::usage=
+"Combine[expr] puts terms in a sum over a common denominator, and
+cancels factors in the result. Combine is similar to Together,
+but accepts the option Expanding and works usually
+better than Together on polynomials involving rationals with
+sums in the denominator.";
+
+Complement1::usage=
+"Complement1[l1, l2], where l1 and l2 are lists returns a list of \
+elements from l1 not in l2. Multiple occurences of an element in l1 are \
+kept and multiple occurences of an element in l2 are dropped multiply if \
+present in l1";
+
+Expand2::usage=
+"Expand2[exp, x] expands all sums containing x.
+Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
+
+FCAntiSymmetrize::usage=
+"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect
+to the variables a1, a2, ... ";
+
+FCSymmetrize::usage=
+"FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect
+to the variables a1, a2, ... .";
+
+FreeQ2::usage =
+"FreeQ2[expr, {form1, form2, ...}] yields True if expr does not
+contain any occurence of form1, form2, ... and False otherwise.
+FreeQ2[expr, form] is the same as FreeQ[expr, form].";
+
+FRH::usage =
+"FRH[exp_] := FixedPoint[ReleaseHold, exp], i.e., FRH removes all
+HoldForm and Hold in exp.";
+
+FunctionLimits::usage = "FunctionLimits is an option of ILimit, specifying which \
+functions should be checked for finiteness.";
+
+ILimit::usage = "ILimit[exp, a -> b] checks functions specified by the option \
+FunctionLimits and takes the limit a->b of these functions only if it is finite.  \
+For the rest of the expression exp, the limit is taken.";
+
+Intersection1::usage=
+"Intersection1[l1, l2], where l1 and l2 are lists returns a list of \
+elements both in l1 and l2. Multiple occurences of an element are \
+kept the minimum number of times it occures in l1 or l2";
+
+Map2::usage=
+"Map2[f, exp] is equivalent to Map if NTerms[exp] > 1,
+otherwise Map2[f, exp] gives f[exp].";
+
+MemSet::usage =
+"MemSet[f[x_], body] is like f[x_] := f[x] = body,
+but dependend on the value of the setting of MemoryAvailable ->
+memorycut (memorycut - MemoryInUse[]/10.^6)
+MemSet[f[x_], body] may evaluate as f[x_] := body."
+
+MemoryAvailable::usage =
+"MemoryAvailable is an option of MemSet.
+It can be set to an integer n,
+where n is the available amount of main memory in Mega Byte.
+The default setting is $MemoryAvailable.";
+
+MLimit::usage=
+"MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";
+
+NTerms::usage=
+"NTerms[x] is equivalent to Length if x is a sum; otherwise
+NTerms[x] returns 1, except NTerms[0] -> 0."
+
+NumericalFactor::usage =
+"NumericalFactor[expr] gives the overall numerical factor of expr.";
+
+NumericQ1::usage=
+"NumericQ1[x,{a,b,..}] is like NumericQ, but assumes that {a,b,..} are \
+numeric quantities.";
+
+PartitHead::usage=
+"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of
+expressions with head h, and h[ex2] having head h.";
+
+Power2::usage=
+"Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the
+Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b]
+(if no Epsilon is in b ...).";
+
+PowerFactor::usage=
+"PowerFactor[exp] replaces x^a y^a with (x y)^a.";
+
+PowerSimplify::usage=
+"PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and
+(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is
+an integer (even if it is symbolic). Furthermore
+(-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and
+(-1)^(n_Integer?EvenQ m) -> 1 and
+(-1)^(n_Integer?OddQ m) -> (-1)^m and
+(-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
+
+SelectFree::usage=
+"SelectFree[expr, a, b, ...] is equivalent to
+Select[expr, FreeQ2[#, {a,b, ...}]&], except the
+special cases: SelectFree[a, b] returns a and
+SelectFree[a,a] returns 1 (where a is not a product or
+a sum).";
+
+SelectNotFree::usage=
+"SelectNotFree[expr, a, b, ...] is equivalent to
+Select[expr, !FreeQ2[#, {a,b, ...}]&], except the
+special cases: SelectNotFree[a, b] returns 1 and
+SelectNotFree[a,a] returns a (where a is not a product or
+a sum).";
+
+SelectSplit::usage=
+"SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \
+which every element li satisfies a criterium pj[li] with pj from p and \
+appends the subset of remaining unmatched elements.";
+
+XYT::usage=
+"XYT[exp, x,y] transforms  (x y)^m away ..."
+
+Begin["`Package`"]
+End[]
+
+(* ------------------------------------------------------------------------ *)
+
+Begin["`SharedTools`Private`"]
+
+SetAttributes[MemSet, HoldFirst];
+
+Options[Cases2] = {
+	Heads -> False
+};
+Options[Combine] = {
+	Expanding -> False
+};
+Options[SelectSplit] = {
+	Heads -> None
+};
+Options[ILimit] = {
+	FunctionLimits -> {Log -> Log}
+};
+Options[MemSet] = {
+	MemoryAvailable -> $MemoryAvailable
+};
+Options[MLimit] = {
+	Limit -> Limit
+};
+
+Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
+	Cases2 @@ Prepend[{f,opts}, expr];
+
+Cases2[expr_, f_, opts:OptionsPattern[]] :=
+	Union[Cases[{expr}, HoldPattern[f[___]], Infinity,opts]];
+
+Cases2[expr_, f_, g__, opts:OptionsPattern[]] :=
+	Union[Cases[{expr}, Alternatives@@(#[___]&/@{f,g}),
+	Infinity, FilterRules[{opts}, Options[Cases]]]];
+
+
+Combine[x_, OptionsPattern[]] :=
+	Block[{combinet1, combinet2, expanding, num, le},
+		expanding = OptionValue[Expanding];
+		combinet2 = Together[ x /. Plus ->
+		(If[FreeQ[{##}, _^_?Negative] && FreeQ[{##}, Rational],
+				combinet1[##],
+				Plus[##]
+		]&)] /. combinet1 -> Plus;
+		Which[	expanding === All,
+				combinet2 = ExpandNumerator[combinet2 // ExpandDenominator] ,
+				expanding === True,
+				num = Numerator[combinet2];
+				If[Head[num] =!= Plus,
+					combinet2 = Expand[num]/Denominator[combinet2],
+					If[LeafCount[num]<1000,
+							combinet2 = Expand[num]/Denominator[combinet2],
+							le = Length[num];
+							combinet2 = Sum[FCPrint[2,"expanding ", i," out of ",le];
+							Expand[num[[i]]],{i,Length[num]}]/ Denominator[combinet2]
+					]
+				],
+				True,
+				combinet2
+		];
+		combinet2
+	];
+
+(*
+If one does not need MatchQ, but just SameQ, then
+Complement1[x_List, y__List] :=
+Replace[x, Dispatch[(# :> Sequence[]) & /@ Union[y]], 1]
+would be sufficient
+*)
+
+Complement1[a_List, b_List] :=
+	Block[{len, len1, i, alt, p, drp, ii, go}, p = 0; i = 0; drp = {};
+		len = Length[a]; len1 = Length[b]; alt = b;
+		While[i < len && p < len1, ++i;
+			If[ii = 0; go = True;
+				While[ii < Length[alt] && go,
+					++ii;
+					If[MatchQ[a[[i]],
+						alt[[ii]]],
+						alt = Drop[alt, {ii}];
+						go = False
+					]
+				];
+				Not[go],
+				p = p + 1;
+				drp = Append[drp, i]
+			]
+		];
+		Part[a, Complement[Range[len], drp]]
+	];
+
+Expand2[x_] :=
+	Block[{pow},
+		Expand[x/. y_ ^ n_ /;
+		Head[n]=!=Integer :> pow[y,n]]/.pow->Power
+	];
+
+Expand2[x_, a_ /; Head[a] =!= List] :=
+	Expand2[x, {a}];
+
+Expand2[x_, l_List] :=
+	If[FreeQ[x, Plus],
+		x,
+		Block[{pl, t, plus},
+			pl[y__] := If[FreeQ2[{Hold[y]}, l], plus[y], Plus[y]];
+			t = Expand[x /. Plus -> pl]//.plus->Plus /. pl -> Plus;
+			t
+		]
+	];
+
+FCAntiSymmetrize[x_,v_List] :=
+	Block[{su},
+		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
+		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
+	];
+
+FCSymmetrize[x_,v_List] :=
+	Block[{su},
+		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
+		1 / Factorial[Length[v]] Plus@@Map[su[x, v, #]&, Permutations[v]]
+	];
+
+FreeQ2[_,{}] :=
+	True;
+
+FreeQ2[x_, y_]	:=
+	FreeQ[x, y] /; Head[y] =!= List;
+
+FreeQ2[x_, {y_}] :=
+	FreeQ[x, y];
+
+FreeQ2[x_, {y_, z__}] :=
+	If[FreeQ[x, y],
+		FreeQ2[x, {z}],
+		False
+	];
+
+(* this is eventually slower ...
+FreeQ2[x_, {y_, z__}] := FreeQ[x, Alternatives@@{y,z}];*)
+
+FRH[x_] :=
+	FixedPoint[ReleaseHold, x];
+
+ILimit[exp_, lim_Rule, OptionsPattern[]] :=
+	Block[{limruls, m, ff, fff, out,res},
+		limruls = MapAt[(((If[FreeQ[ff[##], lim[[1]]] ||
+		!FreeQ[out = Limit[Limit[ff[##] /. SmallVariable[_?((!MatchQ[#, lim[[1]]])&)] -> 0,
+		SmallVariable[lim[[1]]] -> lim[[2]]], lim], DirectedInfinity[___] | Indeterminate | _Limit],
+		fff[##], out]&))&) /. {ff -> #[[2]], fff -> #[[1]]}, #, 2]& /@ (OptionValue[FunctionLimits]);
+		FCPrint[1, "limruls: ", limruls];
+		res = exp /. limruls;
+		FCPrint[1, "res: ", res];
+		Limit[Limit[res, SmallVariable[lim[[1]]] -> lim[[2]]], lim]
+	];
+
+(*
+
+Comment: Rolf Mertig, 17th March 2004
+
+Should the implementation of Intersection1 not be the same as
+MultiIntersection (from the "Further Examples" section of Intersection) ?
+
+The only difference is that MultiIntersection gives a sorted output.
+
+MultiIntersection[l1_List, l2_List] :=
+	Module[{nl, f}, f[x_] := {First[#], Length[#]} & /@ Split[Sort[x]];
+		nl = Sort[Join[Flatten[Map[f, {l1, l2}], 1]]];
+		nl = Split[nl, #[[1]] === #2[[1]] &];
+		Flatten[Cases[nl, {{x_, m_}, {x_, n_}} :> Table[x, {m}]], 1]]
+*)
+
+
+Intersection1[a_List, b_List] :=
+		Block[{len, len1, i, alt, p, drp, ii, go}, p = 0; i = 0; drp = {};
+			len = Length[a]; len1 = Length[b]; alt = b;
+			While[i < len && p < len1, ++i;
+				If[ii = 0; go = True;
+					While[ii < Length[alt] && go,
+						++ii;
+						If[MatchQ[a[[i]],
+								alt[[ii]]],
+								alt = Drop[alt, {ii}];
+								go = False
+						]
+					]; Not[go],
+					p = p + 1;
+					drp = Append[drp, i]
+				]
+			];
+			Part[a, drp]
+		];
+
+
+Map2[f_, exp_] :=
+	If[
+		NTerms[exp] > 1,
+		Map[f,exp],
+		f[exp]
+	];
+
+MemSet[x_,y_, OptionsPattern[]] :=
+	If[(OptionValue[MemoryAvailable] - MemoryInUse[]/1000000.) <1.,
+		y,
+		Set[x, y]
+	];
+
+MLimit[x_, l_List, OptionsPattern[]] :=
+	Fold[OptionValue[Limit][#1, Flatten[{##2}][[1]]]&, x, l];
+
+
+NTerms[x_Plus] :=
+	Length[x];
+
+NTerms[x_] :=
+	Block[{ntermslex = Expand[x]},
+		If[ Head[ntermslex]===Plus,
+			ntermslex = Length[ntermslex],
+			If[x===0,
+				ntermslex = 0,
+				ntermslex = 1
+			]
+		];
+	ntermslex
+	];
+
+
+NumericalFactor[a___ /; Length[{a}] =!=1] :=
+	soso /; Message[NumericalFactor::argrx, NumericalFactor, Length[{a}], 1];
+
+NumericalFactor[x_]:=
+	If[NumberQ[x],
+		x,
+		If[Head[x] === Times,
+			If[NumberQ[First[x]], First[x], 1],
+			1
+		]
+	];
+
+
+NumericQ1[x_, nums_List] :=
+	Block[{r, syms, res, ii=0, tag},
+		SetAttributes[tag, {NumericFunction,NHoldAll}];
+		Off[$MaxExtraPrecision::"meprec"];
+		syms = (++ii; tag[ii])& /@ nums;
+		Off[$MaxExtraPrecision::"meprec"];
+		res = NumericQ[x /. ((Rule @@ #) & /@ Transpose[{nums, syms}])];
+		On[$MaxExtraPrecision::"meprec"];
+		res
+	];
+
+PartitHead[x_, y_] :=
+	{1, x} /; Head[x] === y;
+
+PartitHead[x_Times, y_] :=
+	{x, 1} /; FreeQ[x, y];
+
+PartitHead[x_, y_] :=
+	{x, 0} /; FreeQ[x, y];
+
+PartitHead[x_Plus, y_] :=
+	{#, x - #}& @ Select[x, FreeQ[#, y[___]]&];
+
+PartitHead[x_Times,y_] :=
+	{x/#, #}& @ Select[x,If[Head[#]===y,True]&];
+
+Power2 /:
+	Power2[-1,OPEm]^2 :=
+		1;
+Power2[n_Integer?Positive, em_] :=
+	n^em;
+Power2[n_, em_Integer] :=
+	n^em;
+Power2[-1,OPEm-2] =
+	Power2[-1,OPEm];
+Power2[-a_,b_/;FreeQ2[b, {Epsilon,Epsilon2}]] :=
+	PowerSimplify[(-1)^b] Power2[a,b];
+
+Format[Power2[a_, b_ /; b]] :=
+	a^b;
+
+Power2 /:
+	MakeBoxes[Power2[a_, b_] , TraditionalForm] :=
+		ToBoxes[a^b, TraditionalForm];
+
+PowerFactor[exp_Plus] :=
+	PowerFactor /@ exp;
+
+PowerFactor[exp_] :=
+	If[Head[exp] =!= Times,
+		exp //. {x_^a_ y_^a_ :> (x y)^a},
+		SelectFree[exp, Power] (SelectNotFree[exp,
+		Power] //. {x_^a_ y_^a_ :> (x y)^a})
+	];
+
+PowerSimplify[x_] :=
+	Block[{nx, qcdsub = False, power3},
+		If[!FreeQ[x, ScaleMu],
+			qcdsub = True;
+			nx = x /. pow_[any_ /ScaleMu^2,exp_]:> power3[pow][any/ScaleMu^2,exp],
+			nx = x
+		];
+		nx = nx /. {
+			(a_/;Head[a]===Plus || Head[a] === Times)^(w_) :>
+				(PowerExpand[Factor2[one*a]^w, Assumptions->True] /. one -> 1),
+			Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)] :>
+				(PowerExpand[Factor2[one*a]^w, Assumptions->True] /. (ab_Plus)^v_ :> Power2[ab, v] /.
+				one -> 1)/.(-1)^vv_ :> Power2[-1,vv]} /.
+			{(-1)^(a_Plus) :> Expand[(-1)^a]} /.
+			{(n_Integer?Negative)^m_ :> (-1)^m (-n)^m}/.
+			{((-1)^OPEm (1+(-1)^OPEm)) :> (1+(-1)^OPEm),
+				((1-(-1)^OPEm)(1+(-1)^OPEm)) :> 0,
+				((1+(-1)^OPEm)(1+(-1)^OPEm)) :> (2(1+(-1)^OPEm)),
+				(-1)^OPEm (1-(-1)^OPEm) :> (-1+(-1)^OPEm),
+				bbb_^(c_/;!FreeQ[c,Plus]) :> bbb^Expand[c]}//.
+			{(-1)^(_Integer?EvenQ _) :> 1,
+			(-1)^(_Integer?OddQ m_) :> (-1)^m,
+			(-1)^(_Integer?EvenQ _. + i_) :> (-1)^i,
+			(-1)^(n_Integer?OddQ m_. + i_) :> (-1)^(m+i) /; n=!=(-1),
+			(-1)^(-n_) :> (-1)^n,
+			I^(2 m_+i_.) :> (I)^i (-1)^m,
+			(I/2)^(m_) I^m_ :> (-1)^m/2^m,
+			I^(a_Plus) :> Expand[I^a],
+			Exp[I Pi OPEi] :> (-1)^OPEi,
+			Exp[I Pi OPEj] :> (-1)^OPEj,
+			Exp[I Pi OPEm] :> (-1)^OPEm,
+			HoldPattern[E^(em_ + Complex[0,n_] Pi)]  :> (-1)^n Exp[em],
+			Power2[I, 2 m_ + i_.] :> I^i (-1)^m,
+			Power2[I,(a_Plus)] :> Expand[I^a],
+			Power2[(-1),(a_Plus)] :> Expand[(-1)^a]};
+			If[qcdsub === True,
+					nx = nx /. power3[poww_] :> poww
+			];
+		nx
+	];
+
+SelectFree[0,_] :=
+	0;
+
+SelectFree[a_, b__] :=
+	Block[{dum1,dum2, select},
+		select[x_, y_ /; Head[y] =!= List] :=
+			Select[x, FreeQ[#, y]&];
+		select[x_, y_List ] :=
+			Select[x, FreeQ2[#, y]&];
+		select[x_, y_, z__]  :=
+			Select[x, FreeQ2[#, Flatten[{y, z}]]&];
+		If[(Head[a] === Plus) || (Head[a] === Times),
+			select[a,b],
+			(* need two dummy-vars in case "a" is an integer *)
+			select[a dum1 dum2, b] /. {dum1 :> 1, dum2 :> 1}
+		]
+	];
+
+SelectNotFree[0,_] :=
+	0;
+
+SelectNotFree[a_, b__] :=
+	Block[{dum1,dum2, select},
+		select[x_, y_ /; Head[y] =!= List]  :=
+			Select[x, !FreeQ[#, y]&];
+		select[x_, y_List ]  :=
+			Select[x, !FreeQ2[#, y]&];
+		select[x_, y_, z__]  :=
+			Select[x, !FreeQ2[#, Flatten[{y, z}]]&];
+		If[(Head[a] === Plus) || (Head[a] === Times) ||	(Head[a] === List),
+			select[a,b],
+			select[a dum1 dum2, b] /.	{dum1 :> 1, dum2 :> 1}
+		]
+	];
+
+
+
+SelectSplit[ex_, p_List, opts___Rule] :=
+	Block[{ii, jj, aa, res, exp = List @@ ex, h = Head[ex],
+		hh = Heads /. Flatten[{opts}] /. Options[SelectSplit]},
+		ii = 0;
+		res = (++ii; Select[#, (aa = #;	And @@
+		((#[aa]=!=True)& /@ Drop[p, {ii}])) &])& /@ (Select[exp, #]& /@ p);
+		If[hh =!= None && hh =!= False && hh =!= {},
+			If[Length[hh] < Length[#] - 1,
+				hh = Join[hh, Table[hh[[-1]], {Length[#] - 1 - Length[hh]}]]
+			];
+		Append[Table[hh[[jj]][#[[jj]]], {jj, Length[#] - 1}],
+		If[Length[hh] === Length[#],
+			hh[[-1]][#[[-1]]], #[[-1]]
+		]], #
+		] &[(h @@ #) & /@ Append[res, Complement[exp, Join @@ res]]]
+	];
+
+(* integral transformation only valid if nonsingular in x, y = 0,1 *)
+XYT[exp_, x_, y_] :=
+	Block[{z, t, u},
+		t = 1/x Factor2[PowerSimplify[Factor2[exp] /. y -> (z/x)]];
+		Factor2[PowerSimplify[(1-z) (t /. x :> (1-z) u + z)]/.{u:>y,z:>x}]
+	];
+
+FCPrint[1, "SharedTools loaded."];
+End[]
+

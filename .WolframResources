@@ -1,0 +1,8 @@
+Resources[
+    Version[1],
+    ExecutionBuildCommand["<<FeynCalc`"],
+    Paclet[
+        PacletFolder["FeynCalc"],
+        FunctionPaclet[False]
+    ]
+]

@@ -1,0 +1,23 @@
+(* :Title: Trick.test													*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Trick					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstTrick = {
+{"Trick-ID1",
+	"Trick[{GA[\[Mu]] MT[\[Mu],\[Nu]], MTD[\[Nu],\[Nu]]}]",
+	"{DiracGamma[LorentzIndex[\[Nu]]], D}"},
+{"Trick-ID2", "Trick[FV[p+r,\[Mu]] MT[\[Mu],\[Nu]] FV[q-p,\[Nu]]]",
+	"-Pair[Momentum[p], Momentum[p]] + Pair[Momentum[p], Momentum[q]] \
+	- Pair[Momentum[p], Momentum[r]] + Pair[Momentum[q], Momentum[r]]"},
+{"Trick-ID3", "Trick[c.b.a . GA[d].GA[e]]",
+	"a*b*c*DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[e]]"}
+};

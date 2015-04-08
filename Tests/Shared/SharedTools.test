@@ -1,0 +1,227 @@
+(* :Title: SharedTools.test													*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SharedTools				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstSharedToolsCases2 = {
+{"fcstSharedToolsCases2-ID1","Cases2[f[a] + f[b]^2 + f[c, d], f]","{f[a], f[b], f[c, d]}"},
+{"fcstSharedToolsCases2-ID2","Cases2[Sin[x] Sin[y - z] + g[y], Sin, g]","{g[y], Sin[x], Sin[y - z]}"},
+{"fcstSharedToolsCases2-ID3","Cases2[Sin[x] Sin[y - z] + g[x] + g[a, b, c], {Sin, g}]","{g[x], g[a, b, c], Sin[x], Sin[y - z]}"},
+{"fcstSharedToolsCases2-ID4","Cases2[DiracSlash[p].DiracSlash[q] + ScalarProduct[p, p], Dot]","{DiracGamma[Momentum[p]].DiracGamma[Momentum[q]]}"}
+};
+
+Tests`Shared`fcstSharedToolsCombine = {
+{"fcstSharedToolsCombine-ID1","Combine[((a - b) (c - d))/e + g]","((a-b) (c-d)+e g)/e"},
+{"fcstSharedToolsCombine-ID2","Combine[((a - b) (c - d))/e + g, Expanding -> True]",
+	"(a c-a d-b c+b d+e g)/e"},
+{"fcstSharedToolsCombine-ID3","Combine[((a - b) (c - d))/e + ((h - j) (k - l))/g + m]",
+	"(g (a-b) (c-d)+e g m+e (h-j) (k-l))/(e g)"},
+{"fcstSharedToolsCombine-ID4",
+	"Combine[((a - b) (c - d))/e + ((h - j) (k - l))/g + m, Expanding -> True]",
+	"(a c g-a d g-b c g+b d g+e g m+e h k-e h l-e j k+e j l)/(e g)"}
+};
+
+Tests`Shared`fcstSharedToolsComplement1 = {
+{"fcstSharedToolsComplement1-ID1","Complement[{a, b, c, d, e, f, e}, {a, b, c, d}]","{e,f}"},
+{"fcstSharedToolsComplement1-ID2","Complement1[{a, b, c, d, e, f, e}, {a, b, c, d}]",
+	"{e,f,e}"},
+{"fcstSharedToolsComplement1-ID3","Complement1[{a, b, c, d, e, f, e}, {a, b, c, d, a}]",
+	"{e,f,e}"},
+{"fcstSharedToolsComplement1-ID4",
+	"Complement[{a, b, c, d}, {a, b, c, d, e, f, e}]",
+	"{}"}
+};
+
+Tests`Shared`fcstSharedToolsExpand2 = {
+{"fcstSharedToolsExpand2-ID1","Expand2[(x1 + x2 + x3) (2 x1 + 3 x2) + (y1 + y2 + y3) (2 y1 +
+	3 y2), {x1, x2}]","2 x1^2+5 x1 x2+2 x1 x3+3 x2^2+3 x2 x3+(2 y1+3 y2) (y1+y2+y3)"},
+{"fcstSharedToolsExpand2-ID2","Expand2[(x1 + x2 + x3) (2 x1 + 3 x2) + (y1 + y2 + y3) (2 y1 +
+	3 y2), {y1, y2}]",
+	"(2 x1+3 x2) (x1+x2+x3)+2 y1^2+5 y1 y2+2 y1 y3+3 y2^2+3 y2 y3"},
+{"fcstSharedToolsExpand2-ID3","Expand2[(x1 + x2 + x3) (2 x1 + 3 x2) + (y1 + y2 + y3) (2 y1 + 3 y2)]",
+	"2 x1^2+5 x1 x2+2 x1 x3+3 x2^2+3 x2 x3+2 y1^2+5 y1 y2+2 y1 y3+3 y2^2+3 y2 y3"}
+};
+
+Tests`Shared`fcstSharedToolsFCAntiSymmetrize = {
+{"fcstSharedToolsFCAntiSymmetrize-ID1","FCAntiSymmetrize[f[a, b], {a, b}]","1/2 (f[a, b] - f[b, a])"},
+{"fcstSharedToolsFCAntiSymmetrize-ID2","FCAntiSymmetrize[f[a, b, c], {a, b, c}]",
+	"1/6 (f[a, b, c] - f[a, c, b] - f[b, a, c] + f[b, c, a] + f[c, a, b] -
+	f[c, b, a])"},
+{"fcstSharedToolsFCAntiSymmetrize-ID3","FCAntiSymmetrize[f[a, b, c, d], {a, b, c, d}]",
+	"1/24 (f[a, b, c, d] - f[a, b, d, c] - f[a, c, b, d] + f[a, c, d, b] +
+	f[a, d, b, c] - f[a, d, c, b] - f[b, a, c, d] + f[b, a, d, c] +
+	f[b, c, a, d] - f[b, c, d, a] - f[b, d, a, c] + f[b, d, c, a] +
+	f[c, a, b, d] - f[c, a, d, b] - f[c, b, a, d] + f[c, b, d, a] +
+	f[c, d, a, b] - f[c, d, b, a] - f[d, a, b, c] + f[d, a, c, b] +
+	f[d, b, a, c] - f[d, b, c, a] - f[d, c, a, b] + f[d, c, b, a])"}
+};
+
+Tests`Shared`fcstSharedToolsFCSymmetrize = {
+{"fcstSharedToolsFCSymmetrize-ID1","FCSymmetrize[f[a, b], {a, b}]","1/2 (f[a, b] + f[b, a])"},
+{"fcstSharedToolsFCSymmetrize-ID2","FCSymmetrize[f[a, b, c], {a, b, c}]",
+	"1/6 (f[a, b, c] + f[a, c, b] + f[b, a, c] + f[b, c, a] + f[c, a, b] +
+	f[c, b, a])"},
+{"fcstSharedToolsFCSymmetrize-ID3","FCSymmetrize[f[a, b, c, d], {a, b, c, d}]",
+	"1/24 (f[a, b, c, d] + f[a, b, d, c] + f[a, c, b, d] + f[a, c, d, b] +
+	f[a, d, b, c] + f[a, d, c, b] + f[b, a, c, d] + f[b, a, d, c] +
+	f[b, c, a, d] + f[b, c, d, a] + f[b, d, a, c] + f[b, d, c, a] +
+	f[c, a, b, d] + f[c, a, d, b] + f[c, b, a, d] + f[c, b, d, a] +
+	f[c, d, a, b] + f[c, d, b, a] + f[d, a, b, c] + f[d, a, c, b] +
+	f[d, b, a, c] + f[d, b, c, a] + f[d, c, a, b] + f[d, c, b, a])"}
+};
+
+Tests`Shared`fcstSharedToolsFreeQ2 = {
+{"fcstSharedToolsFreeQ2-ID1","FreeQ2[x + f[x] + y, {a, x}]","False"},
+{"fcstSharedToolsFreeQ2-ID2","FreeQ2[x + f[x] + y, {a, b}]","True"},
+{"fcstSharedToolsFreeQ2-ID3","FreeQ2[x, y]","True"},
+{"fcstSharedToolsFreeQ2-ID4","FreeQ2[f[x], f]","False"}
+};
+
+Tests`Shared`fcstSharedToolsFRH = {
+{"fcstSharedToolsFRH-ID1","FRH[Hold[1 - 1 - Hold[2 - 2]]]","0"},
+{"fcstSharedToolsFRH-ID2","FRH[Isolate[Solve[x^3 - x - 1 == 0], x, IsolateNames -> H]][[1]]",
+	"{x -> 1/3 (27/2 - (3 Sqrt[69])/2)^(1/3) + (1/2 (9 + Sqrt[69]))^(1/3)/3^(2/3)}"}
+};
+
+Tests`Shared`fcstSharedToolsIntersection1 = {
+{"fcstSharedToolsIntersection1-ID1","Intersection1[{a, b, c}, {a, b, c}]","{a,b,c}"},
+{"fcstSharedToolsIntersection1-ID2","Intersection1[{a, b, c}, {d, e, f}]","{}"},
+{"fcstSharedToolsIntersection1-ID3","Intersection1[{a, b, c, e, e}, {d, e, f, a, b, a}]","{a,b,e}"}
+};
+
+Tests`Shared`fcstSharedToolsMap2 = {
+{"fcstSharedToolsMap2-ID1","Map2[f, a + b + c]","f[a] + f[b] + f[c]"},
+{"fcstSharedToolsMap2-ID2","Map2[f, a*b]","f[a b]"},
+{"fcstSharedToolsMap2-ID3","Map2[f, a*b + c]","f[a b] + f[c]"},
+{"fcstSharedToolsMap2-ID4","Map2[f, d (a + b + c)]","f[a + b + c] f[d]"}
+};
+
+Tests`Shared`fcstSharedToolsMLimit = {
+{"fcstSharedToolsMLimit-ID1","MLimit[y Log[y] + Sin[x - 1]/(x - 1), {x -> 1, y -> 0}]","1"},
+{"fcstSharedToolsMLimit-ID2","MLimit[x/Log[x], {x -> 2}]","2/Log[2]"}
+};
+
+Tests`Shared`fcstSharedToolsNTerms = {
+{"fcstSharedToolsNTerms-ID1","NTerms[a - b]","2"},
+{"fcstSharedToolsNTerms-ID2","NTerms[a b c]","1"},
+{"fcstSharedToolsNTerms-ID3","NTerms[9]","1"},
+{"fcstSharedToolsNTerms-ID4","NTerms[0]","0"},
+{"fcstSharedToolsNTerms-ID5","NTerms[a (b + c (d + e))]","3"}
+};
+
+Tests`Shared`fcstSharedToolsNumericalFactor = {
+{"fcstSharedToolsNumericalFactor-ID1","NumericalFactor[0]","0"},
+{"fcstSharedToolsNumericalFactor-ID2","NumericalFactor[1]","1"},
+{"fcstSharedToolsNumericalFactor-ID3","NumericalFactor[a + b]","1"},
+{"fcstSharedToolsNumericalFactor-ID4","NumericalFactor[(2 (a + b))/e]","2"}
+};
+
+Tests`Shared`fcstSharedToolsNumericQ1 = {
+{"fcstSharedToolsNumericQ1-ID1","NumericQ1[a + b, {a, b}]1","True"},
+{"fcstSharedToolsNumericQ1-ID2","NumericQ1[3 a + Log[b] + c^2, {a, b, c}]","True"},
+{"fcstSharedToolsNumericQ1-ID3","NumericQ1[3 a + Log[b] + c^2, {a, b}]","False"}
+};
+
+Tests`Shared`fcstSharedToolsPartitHead = {
+{"fcstSharedToolsPartitHead-ID1","PartitHead[f[x], f]",
+	"{1, f[x]}"},
+{"fcstSharedToolsPartitHead-ID2","PartitHead[f[x], g]",
+	"{f[x], 0}"},
+{"fcstSharedToolsPartitHead-ID3","PartitHead[a b f[x], f]",
+	"{a b,f[x]}"},
+{"fcstSharedToolsPartitHead-ID4","PartitHead[a b , f]",
+	"{a b,1}"},
+{"fcstSharedToolsPartitHead-ID5","PartitHead[Expand[(a[x] (b[x] + c[x]))/d[x]], b]",
+	"{(a[x] c[x])/d[x], (a[x] b[x])/d[x]}"}
+};
+
+Tests`Shared`fcstSharedToolsPower2 = {
+{"fcstSharedToolsPower2-ID1","Power2[x, y]",
+	"Power2[x, y]"},
+{"fcstSharedToolsPower2-ID2","Power2[1, OPEm]^2",
+	"1"},
+{"fcstSharedToolsPower2-ID3","Power2[a, -2]",
+	"1/a^2"},
+{"fcstSharedToolsPower2-ID4","Power2[2, a]",
+	"2^a"},
+{"fcstSharedToolsPower2-ID5","Power2[-2, a]",
+	"Power2[-2, a]"},
+{"fcstSharedToolsPower2-ID6","Power2[-a, b]",
+	"Power2[-a, b]"},
+{"fcstSharedToolsPower2-ID7","Power2[-a, b Epsilon]",
+	"Power2[-a, b Epsilon]"}
+};
+
+Tests`Shared`fcstSharedToolsPowerFactor = {
+{"fcstSharedToolsPowerFactor-ID1","PowerFactor[x^b y^b]",
+	"(x y)^b"},
+{"fcstSharedToolsPowerFactor-ID2","PowerFactor[x^b ( y^b + z^c)]",
+	"x^b (y^b+z^c)"}
+};
+
+Tests`Shared`fcstSharedToolsPowerSimplify = {
+{"fcstSharedToolsPowerSimplify-ID1","PowerSimplify[Sqrt[a]]",
+	"Sqrt[a]"},
+{"fcstSharedToolsPowerSimplify-ID2","PowerSimplify[Sqrt[-a]]",
+	"I*Sqrt[a]*E^(I*Pi*Floor[-Arg[a]/(2*Pi)])"},
+{"fcstSharedToolsPowerSimplify-ID3","PowerSimplify[Sqrt[-a]] // Simplify[#, Assumptions -> a < 0] &",
+	"Sqrt[-a]"},
+{"fcstSharedToolsPowerSimplify-ID4","PowerSimplify[Sqrt[1 - a]]",
+	"Sqrt[1 - a]*E^(I*Pi*Floor[1/2 - Arg[1 - a]/(2*Pi)])"},
+{"fcstSharedToolsPowerSimplify-ID5","PowerSimplify[Sqrt[1 - a]] // Simplify[#, Assumptions -> a < 0] &",
+	"Sqrt[1 - a]"},
+{"fcstSharedToolsPowerSimplify-ID6","PowerSimplify[Sqrt[1 + a]]",
+	"Sqrt[1 + a]*E^(I*Pi*Floor[1/2 - Arg[1 + a]/(2*Pi)])"},
+{"fcstSharedToolsPowerSimplify-ID7","PowerSimplify[Sqrt[1 + a]] // Simplify[#, Assumptions -> a > 0] &",
+	"Sqrt[1 + a]"},
+{"fcstSharedToolsPowerSimplify-ID8","PowerSimplify[(-1)^(2 OPEm)]",
+	"1"},
+{"fcstSharedToolsPowerSimplify-ID9","PowerSimplify[(-SO[q])^OPEm]",
+	"E^(I OPEm \[Pi] + 2 I OPEm \[Pi] Floor[-(Arg[SO[q]]/(2 \[Pi]))])*SO[q]^OPEm"}
+};
+
+Tests`Shared`fcstSharedToolsSelectFree = {
+{"fcstSharedToolsSelectFree-ID1","SelectFree[a + b + f[a] + d, a]",
+	"b+d"},
+{"fcstSharedToolsSelectFree-ID2","SelectFree[x y, x]",
+	"y"},
+{"fcstSharedToolsSelectFree-ID3","SelectFree[2 x y z f[x], {x, y}]",
+	"2 z"},
+{"fcstSharedToolsSelectFree-ID4","SelectFree[a, b]",
+	"a"},
+{"fcstSharedToolsSelectFree-ID5","SelectFree[a, a]",
+	"1"},
+{"fcstSharedToolsSelectFree-ID6","SelectFree[1, c]",
+	"1"},
+{"fcstSharedToolsSelectFree-ID7","SelectFree[f[x], x]",
+	"1"},
+{"fcstSharedToolsSelectFree-ID8","SelectFree[a (b + f[a] + d), d]",
+	"a"}
+};
+
+Tests`Shared`fcstSharedToolsSelectNotFree = {
+{"fcstSharedToolsSelectNotFree-ID1","SelectNotFree[a + b + f[a] + d, a]",
+	"a+f[a]"},
+{"fcstSharedToolsSelectNotFree-ID2","SelectNotFree[x y, x]",
+	"x"},
+{"fcstSharedToolsSelectNotFree-ID3","SelectNotFree[2 x y z f[x], {x, y}]",
+	"x y f[x]"},
+{"fcstSharedToolsSelectNotFree-ID4","SelectNotFree[a, b]",
+	"1"},
+{"fcstSharedToolsSelectNotFree-ID5","SelectNotFree[a, a]",
+	"a"},
+{"fcstSharedToolsSelectNotFree-ID6","SelectNotFree[1, c]",
+	"1"},
+{"fcstSharedToolsSelectNotFree-ID7","SelectNotFree[f[x], x]",
+	"f[x]"},
+{"fcstSharedToolsSelectNotFree-ID8","SelectNotFree[a (b + f[a] + d), d]",
+	"(b + f[a] + d)"}
+};

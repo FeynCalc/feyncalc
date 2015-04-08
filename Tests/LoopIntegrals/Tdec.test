@@ -1,0 +1,56 @@
+
+
+(* :Title: Tdec.test                    	                                *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Tdec	                *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstTdec = {
+{"fcstTdec-ID1","Tdec[{{l, i1}, {l, i2}}, {p1}]",
+	"{{X1 -> D, X2 -> SPD[l, l], X3 -> SPD[l, p1], X4 -> SPD[p1, p1]},
+	-(((X1 X3^2 - X2 X4) FVD[p1, i1] FVD[p1,i2])/((1 - X1) X4^2)) + ((X3^2 - X2 X4) MTD[i1,	i2])/((1 - X1) X4)}"},
+{"fcstTdec-ID2","Tdec[{{l, i1}, {l, i2}}, {p1},UseTIDL->False]",
+	"{{X1 -> D, X2 -> SPD[l, l], X3 -> SPD[l, p1], X4 -> SPD[p1, p1]},
+	-(((X1 X3^2 - X2 X4) FVD[p1, i1] FVD[p1,i2])/((1 - X1) X4^2)) + ((X3^2 - X2 X4) MTD[i1,	i2])/((1 - X1) X4)}"},
+{"fcstTdec-ID3","Tdec[{{l, i1}, {l, i2}}, {p1}, List -> False]","(MTD[i1, i2] (SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,
+	p1]) - (FVD[p1, i1] FVD[p1, i2] (D SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,p1]^2)"},
+{"fcstTdec-ID4","Tdec[{{l, i1}, {l, i2}}, {p1}, UseTIDL->False,List -> False]","(MTD[i1, i2] (SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,
+	p1]) - (FVD[p1, i1] FVD[p1, i2] (D SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,p1]^2)"},
+{"fcstTdec-ID5","Tdec[{{l, i1}, {l, i2}}, {p1}, List -> False, FeynCalcExternal -> False]","(Pair[LorentzIndex[i1, D],
+	LorentzIndex[i2, D]] (Pair[Momentum[l, D], Momentum[p1, D]]^2 - Pair[Momentum[l, D], Momentum[l, D]] Pair[Momentum[p1, D],
+	Momentum[p1, D]]))/((1 - D) Pair[Momentum[p1, D], Momentum[p1, D]]) - (Pair[LorentzIndex[i1, D], Momentum[p1,
+	D]] Pair[LorentzIndex[i2, D], Momentum[p1, D]] (D Pair[Momentum[l, D], Momentum[p1, D]]^2 - Pair[Momentum[l, D],
+	Momentum[l, D]] Pair[Momentum[p1, D],  Momentum[p1, D]]))/((1 - D) Pair[Momentum[p1, D], Momentum[p1, D]]^2)"},
+{"fcstTdec-ID6","Tdec[{{l, i1}, {l, i2}}, {p1}, UseTIDL->False, List -> False, FeynCalcExternal -> False]","(Pair[LorentzIndex[i1, D],
+	LorentzIndex[i2, D]] (Pair[Momentum[l, D], Momentum[p1, D]]^2 - Pair[Momentum[l, D], Momentum[l, D]] Pair[Momentum[p1, D],
+	Momentum[p1, D]]))/((1 - D) Pair[Momentum[p1, D], Momentum[p1, D]]) - (Pair[LorentzIndex[i1, D], Momentum[p1,
+	D]] Pair[LorentzIndex[i2, D], Momentum[p1, D]] (D Pair[Momentum[l, D], Momentum[p1, D]]^2 - Pair[Momentum[l, D],
+	Momentum[l, D]] Pair[Momentum[p1, D],  Momentum[p1, D]]))/((1 - D) Pair[Momentum[p1, D], Momentum[p1, D]]^2)"},
+{"fcstTdec-ID7","Tdec[{{l, i1}, {l, i2}}, {p1}, List -> False, Dimension -> 4]","-((MT[i1, i2] (SP[l, p1]^2 -
+	SP[l, l] SP[p1, p1]))/(3 SP[p1, p1])) + (FV[p1, i1] FV[p1, i2] (4 SP[l, p1]^2 - SP[l, l] SP[p1, p1]))/(3 SP[p1, p1]^2)"},
+{"fcstTdec-ID8","Tdec[{{l, i1}, {l, i2}}, {p1}, UseTIDL->False, List -> False, Dimension -> 4]","-((MT[i1, i2] (SP[l, p1]^2 -
+	SP[l, l] SP[p1, p1]))/(3 SP[p1, p1])) + (FV[p1, i1] FV[p1, i2] (4 SP[l, p1]^2 - SP[l, l] SP[p1, p1]))/(3 SP[p1, p1]^2)"},
+{"fcstTdec-ID9","Tdec[{{l, i1}, {l, i2}}, {p1}, List -> False, Dimension -> 4,
+FeynCalcExternal -> False]","-((Pair[LorentzIndex[i1], LorentzIndex[i2]] (Pair[Momentum[l], Momentum[p1]]^2 -
+	Pair[Momentum[l], Momentum[l]] Pair[Momentum[p1], Momentum[p1]]))/(3 Pair[Momentum[p1], Momentum[p1]])) + (1/(
+	3 Pair[Momentum[p1], Momentum[p1]]^2)) Pair[LorentzIndex[i1], Momentum[p1]] Pair[LorentzIndex[i2],
+	Momentum[p1]] (4 Pair[Momentum[l], Momentum[p1]]^2 - Pair[Momentum[l], Momentum[l]] Pair[Momentum[p1], Momentum[p1]])"},
+
+{"fcstTdec-ID10","Tdec[{{l, i1}, {l, i2}}, {p1}, UseTIDL->False, List -> False, Dimension -> 4,
+FeynCalcExternal -> False]","-((Pair[LorentzIndex[i1], LorentzIndex[i2]] (Pair[Momentum[l], Momentum[p1]]^2 -
+	Pair[Momentum[l], Momentum[l]] Pair[Momentum[p1], Momentum[p1]]))/(3 Pair[Momentum[p1], Momentum[p1]])) + (1/(
+	3 Pair[Momentum[p1], Momentum[p1]]^2)) Pair[LorentzIndex[i1], Momentum[p1]] Pair[LorentzIndex[i2],
+	Momentum[p1]] (4 Pair[Momentum[l], Momentum[p1]]^2 - Pair[Momentum[l], Momentum[l]] Pair[Momentum[p1], Momentum[p1]])"},
+{"fcstTdec-ID11","Tdec[{{l, i1}, {l, i2}, {l, i3}}, {}, UseTIDL -> False]","{0,0}"},
+{"fcstTdec-ID12","Tdec[{{l, i1}, {l, i2}, {l, i3}}, {}, UseTIDL -> False, List->False]","0"},
+{"fcstTdec-ID13","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False]","{0,0}"},
+{"fcstTdec-ID14","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False, List->False]","0"}
+};

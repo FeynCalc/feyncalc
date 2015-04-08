@@ -1,0 +1,21 @@
+(* :Title: CommutatorExplicit.test													*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for CommutatorExplicit					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstCommutatorExplicit = {
+{"CommutatorExplicit-ID1",
+	"CommutatorExplicit[Commutator[a-c,b-d]]",
+	"(a - c) . (b - d) - (b - d) . (a - c)"},
+{"CommutatorExplicit-ID2",
+	"CommutatorExplicit[AntiCommutator[a-c,b-d]]",
+	"(a - c) . (b - d) + (b - d) . (a - c)"}
+};

@@ -1,0 +1,37 @@
+
+
+(* :Title: EpsEvaluate.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for EpsEvaluate              *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstEpsEvaluate = {
+{"fcstEpsEvaluate-ID1","Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[p1],
+	Momentum[p2] + Momentum[p3]] // EpsEvaluate","Eps[LorentzIndex[mu],
+	LorentzIndex[nu], Momentum[p1], Momentum[p2]] + Eps[LorentzIndex[mu],
+	LorentzIndex[nu], Momentum[p1], Momentum[p3]]"},
+{"fcstEpsEvaluate-ID2","Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[p1],
+	Momentum[p2 + p3]] // EpsEvaluate","Eps[LorentzIndex[mu], LorentzIndex[nu],
+	Momentum[p1], Momentum[p2]] + Eps[LorentzIndex[mu], LorentzIndex[nu],
+	Momentum[p1], Momentum[p3]]"},
+{"fcstEpsEvaluate-ID3","Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[p1],
+	Momentum[p1] + Momentum[p2]] // EpsEvaluate","Eps[LorentzIndex[mu],
+	LorentzIndex[nu], Momentum[p1], Momentum[p2]]"},
+{"fcstEpsEvaluate-ID4","Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[p1],
+	Momentum[p1+p2]] // EpsEvaluate","Eps[LorentzIndex[mu],
+	LorentzIndex[nu], Momentum[p1], Momentum[p2]]"},
+{"fcstEpsEvaluate-ID5","Eps[LorentzIndex[mu], LorentzIndex[nu], x Momentum[p1],
+	Momentum[p2]] // EpsEvaluate",
+	"x*Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[p1], Momentum[p2]]"},
+{"fcstEpsEvaluate-ID6","Eps[LorentzIndex[mu], x LorentzIndex[nu], Momentum[p1],
+	Momentum[p2]] // EpsEvaluate","x*Eps[LorentzIndex[mu],
+	LorentzIndex[nu], Momentum[p1], Momentum[p2]]"}
+}

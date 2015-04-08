@@ -1,0 +1,61 @@
+
+
+(* :Title: PolarizationSum.test                    	                        *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PolarizationSum	        *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstPolarizationSum = {
+{"fcstPolarizationSum-ID1","PolarizationSum[rho, si]",
+	"-Pair[LorentzIndex[rho], LorentzIndex[si]]"},
+{"fcstPolarizationSum-ID2","PolarizationSum[rho, si, k]",
+	"-Pair[LorentzIndex[rho], LorentzIndex[si]] + (Pair[LorentzIndex[rho],
+	Momentum[k]] Pair[LorentzIndex[si], Momentum[k]])/Pair[Momentum[k], Momentum[k]]"},
+{"fcstPolarizationSum-ID3","ScalarProduct[k, k] = m^2;\n PolarizationSum[rho, si, k]",
+	"-Pair[LorentzIndex[rho], LorentzIndex[si]] + (Pair[LorentzIndex[rho],
+	Momentum[k]] Pair[LorentzIndex[si], Momentum[k]])/m^2"},
+{"fcstPolarizationSum-ID4","ClearScalarProducts;\n PolarizationSum[mu, nu, k1 + k2]",
+	"-Pair[LorentzIndex[mu], LorentzIndex[nu]] + (Pair[LorentzIndex[mu],
+	Momentum[k1 + k2]] Pair[LorentzIndex[nu], Momentum[k1 + k2]])/(Pair[Momentum[k1],
+	Momentum[k1]] + 2 Pair[Momentum[k1], Momentum[k2]] + Pair[Momentum[k2], Momentum[k2]])"},
+{"fcstPolarizationSum-ID5","PolarizationSum[mu, nu, k, n]","-Pair[LorentzIndex[mu], LorentzIndex[nu]] +
+	(Pair[LorentzIndex[mu], Momentum[n]] Pair[LorentzIndex[nu], Momentum[k]])/Pair[Momentum[k], Momentum[n]] +
+	(Pair[LorentzIndex[mu], Momentum[k]] Pair[LorentzIndex[nu], Momentum[n]])/Pair[Momentum[k], Momentum[n]] -
+	(Pair[LorentzIndex[mu], Momentum[k]] Pair[LorentzIndex[nu], Momentum[k]] Pair[Momentum[n], Momentum[n]])/
+	Pair[Momentum[k], Momentum[n]]^2"},
+{"fcstPolarizationSum-ID6","PolarizationSum[mu, nu, k, n1 + n2]",
+	"-Pair[LorentzIndex[mu], LorentzIndex[nu]] + (Pair[LorentzIndex[mu], Momentum[n1 + n2]]*Pair[LorentzIndex[nu],
+	Momentum[k]])/(Pair[Momentum[k], Momentum[n1]] + Pair[Momentum[k], Momentum[n2]]) +
+	(Pair[LorentzIndex[mu], Momentum[k]]*Pair[LorentzIndex[nu], Momentum[n1 + n2]])/
+	(Pair[Momentum[k], Momentum[n1]] + Pair[Momentum[k], Momentum[n2]]) - (Pair[LorentzIndex[mu],
+	Momentum[k]]*Pair[LorentzIndex[nu], Momentum[k]]*Pair[Momentum[n1], Momentum[n1]])/
+	(Pair[Momentum[k], Momentum[n1]] + Pair[Momentum[k], Momentum[n2]])^2 -
+	(2*Pair[LorentzIndex[mu], Momentum[k]]*Pair[LorentzIndex[nu], Momentum[k]]*Pair[Momentum[n1], Momentum[n2]])/
+	(Pair[Momentum[k], Momentum[n1]] + Pair[Momentum[k], Momentum[n2]])^2 - (Pair[LorentzIndex[mu],
+	Momentum[k]]*Pair[LorentzIndex[nu], Momentum[k]]*Pair[Momentum[n2], Momentum[n2]])/
+	(Pair[Momentum[k], Momentum[n1]] + Pair[Momentum[k], Momentum[n2]])^2"},
+{"fcstPolarizationSum-ID7","PolarizationSum[mu, nu, k1 + k2, n1 + n2]",
+	"-Pair[LorentzIndex[mu], LorentzIndex[nu]] +
+	(Pair[LorentzIndex[mu], Momentum[n1 + n2]]*Pair[LorentzIndex[nu], Momentum[k1 + k2]])/
+	(Pair[Momentum[k1], Momentum[n1]] + Pair[Momentum[k1], Momentum[n2]] +
+	Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2], Momentum[n2]]) +
+	(Pair[LorentzIndex[mu], Momentum[k1 + k2]]*Pair[LorentzIndex[nu], Momentum[n1 + n2]])/
+	(Pair[Momentum[k1], Momentum[n1]] + Pair[Momentum[k1], Momentum[n2]] + Pair[Momentum[k2], Momentum[n1]] +
+	Pair[Momentum[k2], Momentum[n2]]) - (Pair[LorentzIndex[mu], Momentum[k1 + k2]]*
+	Pair[LorentzIndex[nu], Momentum[k1 + k2]]* Pair[Momentum[n1], Momentum[n1]])/(Pair[Momentum[k1],
+	Momentum[n1]] + Pair[Momentum[k1], Momentum[n2]] + Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2],
+	Momentum[n2]])^2 - (2*Pair[LorentzIndex[mu], Momentum[k1 + k2]]*Pair[LorentzIndex[nu],
+	Momentum[k1 + k2]]*Pair[Momentum[n1], Momentum[n2]])/ (Pair[Momentum[k1], Momentum[n1]] +
+	Pair[Momentum[k1], Momentum[n2]] + Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2],
+	Momentum[n2]])^2 - (Pair[LorentzIndex[mu], Momentum[k1 + k2]]*Pair[LorentzIndex[nu], Momentum[k1 + k2]]*
+	Pair[Momentum[n2], Momentum[n2]])/(Pair[Momentum[k1], Momentum[n1]] + Pair[Momentum[k1], Momentum[n2]] +
+	Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2], Momentum[n2]])^2"}
+};

@@ -1,0 +1,362 @@
+
+
+(* :Title: DoPolarizationSums.test                    	                    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DoPolarizationSums       *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstDoPolarizationSums = {
+{"fcstDoPolarizationSums-ID1","Contract[SP[k1, k2] FV[p, mu] Pair[LorentzIndex[mu],
+	Momentum[Polarization[k1, I]]]] // DoPolarizationSums[#, p, 0,Contract->False] &",
+	"4*Pair[Momentum[k1], Momentum[k2]]*Pair[Momentum[p], Momentum[Polarization[k1, I]]]"},
+{"fcstDoPolarizationSums-ID2","MatchQ[Contract[SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, -I]]]] // DoPolarizationSums[#, p, 0, Contract->False] &,
+	-(Pair[LorentzIndex[a_], LorentzIndex[b_]]*
+	Pair[LorentzIndex[a_], Momentum[k1]]*
+	Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[Momentum[k1], Momentum[k2]])]","True"},
+{"fcstDoPolarizationSums-ID3","MatchQ[Contract[
+	SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] FV[
+	k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, I]]]] // DoPolarizationSums[#, p, 0, Contract->False] &,
+	Pair[LorentzIndex[a_], Momentum[k1]]*
+	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]]*
+	Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[LorentzIndex[b_], Momentum[Polarization[p, I]]]*
+	Pair[Momentum[k1], Momentum[k2]]]","True"},
+{"fcstDoPolarizationSums-ID4","MatchQ[Contract[
+	SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
+	LorentzIndex[nu], Momentum[Polarization[p, -I]]] +
+	DiracGamma[Momentum[Polarization[p, I]]]. DiracGamma[
+	Momentum[Polarization[p, -I]]])] // DoPolarizationSums[#, p,0,Contract->False] &,
+	-(DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[b_]]*
+	Pair[LorentzIndex[a_], LorentzIndex[b_]]*
+	Pair[Momentum[p], Momentum[p]]) -
+	Pair[LorentzIndex[c_], LorentzIndex[d_]]*
+	Pair[LorentzIndex[c_], Momentum[k2]]*
+	Pair[LorentzIndex[d_], Momentum[k1]]*
+	Pair[Momentum[k1], Momentum[k2]]*Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID5","Contract[SPD[k1, k2] FVD[p, mu] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[k1, I], D]]] //
+	DoPolarizationSums[#, p, 0,Contract->False] &","4*Pair[Momentum[k1, D],
+	Momentum[k2, D]]*Pair[Momentum[p, D], Momentum[Polarization[k1, I], D]]"},
+{"fcstDoPolarizationSums-ID6","MatchQ[Contract[
+	SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, -I], D]]] //
+	DoPolarizationSums[#, p, 0,Contract->False] &,
+	-(Pair[LorentzIndex[a_, D], LorentzIndex[b_, D]]*
+	Pair[LorentzIndex[a_, D], Momentum[k1, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[k2, D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]])]","True"},
+{"fcstDoPolarizationSums-ID7","MatchQ[Contract[
+	SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, I], D]]] //
+	DoPolarizationSums[#, p, 0,Contract->False] &,
+	Pair[LorentzIndex[a_, D], Momentum[k1, D]]*
+	Pair[LorentzIndex[a_, D], Momentum[Polarization[p, I], D]]*
+	Pair[LorentzIndex[b_, D], Momentum[k2, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[Polarization[p, I], D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]]]","True"},
+{"fcstDoPolarizationSums-ID8","MatchQ[Contract[
+	SPD[p, p] (SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, -I], D]] +
+	DiracGamma[Momentum[Polarization[p, I], D], D]. DiracGamma[
+	Momentum[Polarization[p, -I], D], D] )] // DoPolarizationSums[#, p,
+	0,Contract->False] &, -(DiracGamma[LorentzIndex[a_, D], D].
+	DiracGamma[LorentzIndex[b_, D], D]*
+	Pair[LorentzIndex[a_, D], LorentzIndex[b_, D]]*
+	Pair[Momentum[p, D], Momentum[p, D]]) -
+	Pair[LorentzIndex[c_, D], LorentzIndex[d_, D]]*
+	Pair[LorentzIndex[c_, D], Momentum[k2, D]]*
+	Pair[LorentzIndex[d_, D], Momentum[k1, D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]]*
+	Pair[Momentum[p, D], Momentum[p, D]]]","True"},
+{"fcstDoPolarizationSums-ID9","MatchQ[Contract[
+	SP[k1, k2] FV[p, mu] Pair[LorentzIndex[mu],
+	Momentum[Polarization[k1, I]]]] // DoPolarizationSums[#, p, n,Contract->False] &,
+	2*Pair[Momentum[k1], Momentum[k2]]*
+	Pair[Momentum[p], Momentum[Polarization[k1, I]]]]","True"},
+{"fcstDoPolarizationSums-ID10","MatchQ[Contract[
+	SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] *
+	FV[k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, -I]]]] // DoPolarizationSums[#, p, n,Contract->False] &,
+	Pair[LorentzIndex[a_], Momentum[k1]]* Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[Momentum[k1], Momentum[ k2]]*(-Pair[LorentzIndex[a_],
+	LorentzIndex[b_]] - (Pair[LorentzIndex[a_], Momentum[p]]*
+	Pair[LorentzIndex[b_], Momentum[p]]* Pair[Momentum[n], Momentum[n]])/
+	Pair[Momentum[n], Momentum[p]]^2 + (Pair[LorentzIndex[a_], Momentum[p]]*
+	Pair[LorentzIndex[b_], Momentum[n]])/ Pair[Momentum[n],
+	Momentum[p]] + (Pair[LorentzIndex[a_], Momentum[n]]*
+	Pair[LorentzIndex[b_], Momentum[p]])/
+	Pair[Momentum[n], Momentum[p]])]","True"},
+{"fcstDoPolarizationSums-ID11","MatchQ[Contract[
+	SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] FV[
+	k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, I]]]] // DoPolarizationSums[#, p, n,Contract->False] &,
+	Pair[LorentzIndex[a_], Momentum[k1]]*
+	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]]*
+	Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[LorentzIndex[b_], Momentum[Polarization[p, I]]]*
+	Pair[Momentum[k1], Momentum[k2]]]","True"},
+{"fcstDoPolarizationSums-ID12","MatchQ[Contract[
+	SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
+	LorentzIndex[nu], Momentum[Polarization[p, -I]]] +
+	DiracGamma[Momentum[Polarization[p, I]]]. DiracGamma[
+	Momentum[Polarization[p, -I]]])] // DoPolarizationSums[#, p, n,Contract->False] &,
+	DiracGamma[LorentzIndex[a_]]. DiracGamma[
+	LorentzIndex[c_]]*(-Pair[LorentzIndex[a_],LorentzIndex[c_]] -
+	(Pair[LorentzIndex[a_], Momentum[p]]*
+	Pair[LorentzIndex[c_], Momentum[p]]*
+	Pair[Momentum[n], Momentum[n]])/
+	Pair[Momentum[n],
+	Momentum[p]]^2 + (Pair[LorentzIndex[a_], Momentum[p]]*
+	Pair[LorentzIndex[c_], Momentum[n]])/
+	Pair[Momentum[n],
+	Momentum[p]] + (Pair[LorentzIndex[a_], Momentum[n]]*
+	Pair[LorentzIndex[c_], Momentum[p]])/
+	Pair[Momentum[n], Momentum[p]])*Pair[Momentum[p], Momentum[p]] +
+	Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[LorentzIndex[d_], Momentum[k1]]*
+	Pair[Momentum[k1], Momentum[k2]]*(-Pair[LorentzIndex[b_],
+	LorentzIndex[d_]] - (Pair[LorentzIndex[b_], Momentum[p]]*
+	Pair[LorentzIndex[d_], Momentum[p]]*
+	Pair[Momentum[n], Momentum[n]])/ Pair[Momentum[n],
+	Momentum[p]]^2 + (Pair[LorentzIndex[b_], Momentum[p]]*
+	Pair[LorentzIndex[d_], Momentum[n]])/Pair[Momentum[n],
+	Momentum[p]] + (Pair[LorentzIndex[b_], Momentum[n]]*
+	Pair[LorentzIndex[d_], Momentum[p]])/
+	Pair[Momentum[n], Momentum[p]])*Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID13","Contract[SPD[k1, k2] FVD[p, mu] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[k1, I], D]]] //
+	DoPolarizationSums[#, p, n,Contract->False] &","2*Pair[Momentum[k1, D],
+	Momentum[k2, D]]*Pair[Momentum[p, D], Momentum[Polarization[k1, I], D]]"},
+{"fcstDoPolarizationSums-ID14","MatchQ[Contract[
+	SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, -I], D]]] //
+	DoPolarizationSums[#, p, n,Contract->False] &,
+	Pair[LorentzIndex[a_, D], Momentum[k1, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[k2, D]]*
+	Pair[Momentum[k1, D],
+	Momentum[k2, D]]*(-Pair[LorentzIndex[a_, D],
+	LorentzIndex[b_, D]] - (Pair[LorentzIndex[a_, D], Momentum[p, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[p, D]]* Pair[Momentum[n, D],
+	Momentum[n, D]])/ Pair[Momentum[n, D],
+	Momentum[p, D]]^2 + (Pair[LorentzIndex[a_, D], Momentum[p, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[n, D]])/ Pair[Momentum[n, D],
+	Momentum[p, D]] + (Pair[LorentzIndex[a_, D], Momentum[n, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[p, D]])/
+	Pair[Momentum[n, D], Momentum[p, D]])]","True"},
+{"fcstDoPolarizationSums-ID14","MatchQ[Contract[
+	SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, I], D]]] //
+	DoPolarizationSums[#, p, n,Contract->False] &,
+	Pair[LorentzIndex[a_, D], Momentum[k1, D]]*
+	Pair[LorentzIndex[a_, D], Momentum[Polarization[p, I], D]]*
+	Pair[LorentzIndex[b_, D], Momentum[k2, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[Polarization[p, I], D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]]]","True"},
+{"fcstDoPolarizationSums-ID16","MatchQ[Contract[
+	SPD[p, p] (SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, -I], D]] +
+	DiracGamma[Momentum[Polarization[p, I], D], D]. DiracGamma[
+	Momentum[Polarization[p, -I], D], D])] // DoPolarizationSums[#, p, n,Contract->False] &,
+	DiracGamma[LorentzIndex[a_, D], D]. DiracGamma[LorentzIndex[b_, D],
+	D]*(-Pair[LorentzIndex[a_, D], LorentzIndex[b_, D]] -
+	(Pair[LorentzIndex[a_, D], Momentum[p, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[p, D]]*
+	Pair[Momentum[n, D], Momentum[n, D]])/
+	Pair[Momentum[n, D],
+	Momentum[p, D]]^2 + (Pair[LorentzIndex[a_, D],
+	Momentum[p, D]]*Pair[LorentzIndex[b_, D], Momentum[n, D]])/
+	Pair[Momentum[n, D],
+	Momentum[p, D]] + (Pair[LorentzIndex[a_, D], Momentum[n, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[p, D]])/
+	Pair[Momentum[n, D], Momentum[p, D]])*
+	Pair[Momentum[p, D], Momentum[p, D]] +
+	Pair[LorentzIndex[c_, D], Momentum[k2, D]]*
+	Pair[LorentzIndex[d_, D], Momentum[k1, D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]]*(-Pair[LorentzIndex[c_, D],
+	LorentzIndex[d_, D]] - (Pair[LorentzIndex[c_, D], Momentum[p, D]]*
+	Pair[LorentzIndex[d_, D], Momentum[p, D]]*
+	Pair[Momentum[n, D], Momentum[n, D]])/
+	Pair[Momentum[n, D], Momentum[p, D]]^2 + (Pair[LorentzIndex[c_, D],
+	Momentum[p, D]]*Pair[LorentzIndex[d_, D], Momentum[n, D]])/
+	Pair[Momentum[n, D],
+	Momentum[p, D]] + (Pair[LorentzIndex[c_, D], Momentum[n, D]]*
+	Pair[LorentzIndex[d_, D], Momentum[p, D]])/
+	Pair[Momentum[n, D], Momentum[p, D]])*
+	Pair[Momentum[p, D], Momentum[p, D]]]","True"},
+{"fcstDoPolarizationSums-ID17","Contract[SP[k1, k2] FV[p, mu] Pair[LorentzIndex[mu],
+	Momentum[Polarization[k1, I]]]] // DoPolarizationSums[#, p,Contract->False] &",
+	"3*Pair[Momentum[k1], Momentum[k2]]*Pair[Momentum[p], Momentum[Polarization[k1, I]]]"},
+{"fcstDoPolarizationSums-ID18","MatchQ[Contract[
+	SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] FV[
+	k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, -I]]]] // DoPolarizationSums[#, p,Contract->False] &,
+	Pair[LorentzIndex[a_], Momentum[k1]]* Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[Momentum[k1],	Momentum[k2]]*(-Pair[LorentzIndex[a_],
+	LorentzIndex[b_]] + (Pair[LorentzIndex[a_], Momentum[p]]*
+	Pair[LorentzIndex[b_], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]])]","True"},
+{"fcstDoPolarizationSums-ID19","MatchQ[Contract[
+	SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] FV[
+	k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, I]]]] // DoPolarizationSums[#, p,Contract->False] &,
+	Pair[LorentzIndex[a_], Momentum[k1]]*
+	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]]*
+	Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[LorentzIndex[b_], Momentum[Polarization[p, I]]]*
+	Pair[Momentum[k1], Momentum[k2]]]","True"},
+{"fcstDoPolarizationSums-ID20","MatchQ [Contract[
+	SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
+	LorentzIndex[nu], Momentum[Polarization[p, -I]]] +
+	DiracGamma[Momentum[Polarization[p, I]]]. DiracGamma[
+	Momentum[Polarization[p, -I]]] )] // DoPolarizationSums[#, p,Contract->False] &,
+	DiracGamma[LorentzIndex[a_]]. DiracGamma[ LorentzIndex[
+	b_]]*(-Pair[LorentzIndex[a_],
+	LorentzIndex[b_]] + (Pair[LorentzIndex[a_], Momentum[p]]*
+	Pair[LorentzIndex[b_], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]])*Pair[Momentum[p], Momentum[p]] +
+	Pair[LorentzIndex[c_], Momentum[k2]]*
+	Pair[LorentzIndex[d_], Momentum[k1]]*
+	Pair[Momentum[k1], Momentum[k2]]*(-Pair[LorentzIndex[c_],
+	LorentzIndex[d_]] + (Pair[LorentzIndex[c_], Momentum[p]]*
+	Pair[LorentzIndex[d_], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]])*Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID21","Contract[SPD[k1, k2] FVD[p, mu] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[k1, I], D]]] // DoPolarizationSums[#, p,Contract->False] &","3*Pair[Momentum[k1, D], Momentum[k2, D]]*Pair[Momentum[p, D], Momentum[Polarization[k1, I], D]]"},
+{"fcstDoPolarizationSums-ID22","MatchQ[Contract[
+	SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, -I], D]]] //
+	DoPolarizationSums[#, p,Contract->False] &,
+	Pair[LorentzIndex[a_, D], Momentum[k1, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[k2, D]]*
+	Pair[Momentum[k1, D],
+	Momentum[k2, D]]*(-Pair[LorentzIndex[a_, D],
+	LorentzIndex[b_, D]] + (Pair[LorentzIndex[a_, D], Momentum[p, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[p, D]])/
+	Pair[Momentum[p, D], Momentum[p, D]])]","True"},
+{"fcstDoPolarizationSums-ID23","MatchQ[Contract[
+	SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, I], D]]] //
+	DoPolarizationSums[#, p,Contract->False] &,
+	Pair[LorentzIndex[a_, D], Momentum[k1, D]]*
+	Pair[LorentzIndex[a_, D], Momentum[Polarization[p, I], D]]*
+	Pair[LorentzIndex[b_, D], Momentum[k2, D]]*
+	Pair[LorentzIndex[b_, D], Momentum[Polarization[p, I], D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]]]","True"},
+{"fcstDoPolarizationSums-ID24","MatchQ[Contract[
+	SPD[p, p] (SPD[k1, k2] Pair[LorentzIndex[mu, D],
+	Momentum[Polarization[p, I], D]] FVD[k1, mu] FVD[k2, nu] Pair[
+	LorentzIndex[nu, D], Momentum[Polarization[p, -I], D]] +
+	DiracGamma[Momentum[Polarization[p, I], D], D]. DiracGamma[
+	Momentum[Polarization[p, -I], D], D] )] // DoPolarizationSums[#, p,Contract->False] &,
+	DiracGamma[LorentzIndex[a_, D], D]. DiracGamma[LorentzIndex[b_, D],	D]*
+	(-Pair[LorentzIndex[a_, D], LorentzIndex[b_, D]] +
+	(Pair[LorentzIndex[a_, D], Momentum[p, D]]*Pair[LorentzIndex[b_, D], Momentum[p, D]])/
+	Pair[Momentum[p, D], Momentum[p, D]])* Pair[Momentum[p, D], Momentum[p, D]] +
+	Pair[LorentzIndex[c_, D], Momentum[k2, D]]*
+	Pair[LorentzIndex[d_, D], Momentum[k1, D]]*
+	Pair[Momentum[k1, D], Momentum[k2, D]]*(-Pair[LorentzIndex[c_, D],
+	LorentzIndex[d_, D]] + (Pair[LorentzIndex[c_, D], Momentum[p, D]]*
+	Pair[LorentzIndex[d_, D], Momentum[p, D]])/ Pair[Momentum[p, D], Momentum[p, D]])*
+	Pair[Momentum[p, D], Momentum[p, D]]]","True"},
+{"fcstDoPolarizationSums-ID25","Contract[SP[k1, k2] FV[p, mu] Pair[LorentzIndex[mu],
+	Momentum[Polarization[k1, I]]]] // DoPolarizationSums[#, p, 0, ExtraFactor->1/2,Contract->False] &",
+	"2*Pair[Momentum[k1], Momentum[k2]]*Pair[Momentum[p], Momentum[Polarization[k1, I]]]"},
+{"fcstDoPolarizationSums-ID26","MatchQ[Contract[SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]]
+	FV[ k1, mu] FV[k2, nu] Pair[LorentzIndex[nu], Momentum[Polarization[p, -I]]]] //
+	DoPolarizationSums[#, p, 0, ExtraFactor -> 1/2,Contract->False] &, -(1/2) (Pair[LorentzIndex[a_],
+	LorentzIndex[b_]]*Pair[LorentzIndex[a_], Momentum[k1]]* Pair[LorentzIndex[b_], Momentum[k2]]*
+	Pair[Momentum[k1], Momentum[k2]])]", "True"},
+{"fcstDoPolarizationSums-ID27","Contract[SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
+	LorentzIndex[nu], Momentum[Polarization[p, -I]]]] // DoPolarizationSums[#, p, 0] &",
+	"-Pair[Momentum[k1], Momentum[k2]]^2"},
+{"fcstDoPolarizationSums-ID28","MatchQ[Contract[
+	SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, -I]]] + DiracGamma[Momentum[Polarization[p,
+	I]]] .DiracGamma[Momentum[Polarization[p, -I]]])] // DoPolarizationSums[#, p,
+	0] &, -(DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]]*
+	Pair[Momentum[p], Momentum[p]]) - Pair[Momentum[k1], Momentum[k2]]^2*
+	Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID29","MatchQ[Contract[
+	SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
+	LorentzIndex[nu], Momentum[Polarization[p, -I]]] +
+	DiracGamma[Momentum[Polarization[p, I]]] .DiracGamma[
+	Momentum[Polarization[p, -I]]])] // DoPolarizationSums[#, p, 0] &,
+	-(DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]]*
+	Pair[Momentum[p], Momentum[p]]) - Pair[Momentum[k1],
+	Momentum[k2]]^2*Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID30","MatchQ[Contract[
+	SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I,Transversality->True]]] FV[k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, -I,Transversality->True]]] + DiracGamma[Momentum[Polarization[p,
+	I,Transversality->True]]] .DiracGamma[Momentum[Polarization[p, -I,
+	Transversality->True]]])] // DoPolarizationSums[#, p,
+	0] &, -(DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]]*
+	Pair[Momentum[p], Momentum[p]]) - Pair[Momentum[k1], Momentum[k2]]^2*
+	Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID31","MatchQ[SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
+	LorentzIndex[nu], Momentum[Polarization[p, -I]]] //
+	DoPolarizationSums[#, p] &, Pair[Momentum[k1],
+	Momentum[k2]] (-Pair[Momentum[k1], Momentum[k2]] + (
+	Pair[Momentum[k1], Momentum[p]] Pair[Momentum[k2], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]])]", "True"},
+{"fcstDoPolarizationSums-ID32","MatchQ[SP[p,p] (SP[k1, k2]
+	Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu]
+	Pair[LorentzIndex[nu], Momentum[Polarization[p, -I]]] +
+	DiracGamma[Momentum[Polarization[p, I]]].DiracGamma[Momentum[Polarization[p,
+	-I]]]) // DoPolarizationSums[#, p] &, DiracGamma[Momentum[p]].DiracGamma[Momentum[p]] -
+	DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]] Pair[ Momentum[p], Momentum[p]] +
+	Pair[Momentum[k1], Momentum[k2]] (-Pair[Momentum[k1], Momentum[k2]] + (
+	Pair[Momentum[k1], Momentum[p]] Pair[Momentum[k2], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]]) Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID33","MatchQ[SP[p,p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I, Transversality -> True]]] FV[k1,mu]
+	FV[k2, nu] Pair[LorentzIndex[nu],Momentum[Polarization[p, -I,
+	Transversality -> True]]] + DiracGamma[Momentum[Polarization[p,
+	I, Transversality -> True]]].DiracGamma[Momentum[Polarization[p,
+	-I, Transversality -> True]]]) // DoPolarizationSums[#, p] &,
+	DiracGamma[Momentum[p]].DiracGamma[Momentum[p]] -
+	DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]] Pair[
+	Momentum[p], Momentum[p]] + Pair[Momentum[k1],
+	Momentum[k2]] (-Pair[Momentum[k1], Momentum[k2]] + (
+	Pair[Momentum[k1], Momentum[p]] Pair[Momentum[k2], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]]) Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID34","MatchQ[SP[p, p] (SP[k1, k2] Pair[LorentzIndex[mu],
+	Momentum[Polarization[p, I, Transversality -> True]]] FV[k1, mu]
+	FV[k2, nu] Pair[LorentzIndex[nu], Momentum[Polarization[p, -I,
+	Transversality -> True]]] + DiracGamma[Momentum[
+	Polarization[p, I, Transversality -> True]]].DiracGamma[
+	Momentum[Polarization[p, -I, Transversality -> True]]]) //
+	DoPolarizationSums[#, p] &, DiracGamma[Momentum[p]].DiracGamma[Momentum[p]] -
+	DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]] Pair[
+	Momentum[p], Momentum[p]] +  Pair[Momentum[k1],
+	Momentum[k2]] (-Pair[Momentum[k1], Momentum[k2]] + (
+	Pair[Momentum[k1], Momentum[p]] Pair[Momentum[k2], Momentum[p]])/
+	Pair[Momentum[p], Momentum[p]]) Pair[Momentum[p], Momentum[p]]]","True"}
+};

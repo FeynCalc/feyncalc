@@ -1,0 +1,23 @@
+(* :Title: Isolate.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Isolate					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstIsolate = {
+{"fcstIsolate-ID1","MatchQ[Isolate[a + b], HoldForm[KK[_]]]", "True"},
+{"fcstIsolate-ID2","MatchQ[Isolate[(a + b) f + (c + d) f + e, f],
+	e + f HoldForm[KK[a_]] + f HoldForm[KK[b_]]]", "True"},
+{"fcstIsolate-ID3","MatchQ[Isolate[a[z] (b + c (y + z)) + d[z] (y + z), {a, d},
+IsolateNames -> F], a[z] HoldForm[F[i_]] + d[z] HoldForm[F[j_]]]",
+	"True"},
+{"fcstIsolate-ID4","MatchQ[Isolate[a - b - c - d - e, IsolateNames -> L,
+IsolateSplit -> 15], HoldForm[L[_]]]", "True"}
+};

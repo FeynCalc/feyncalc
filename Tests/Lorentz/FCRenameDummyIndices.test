@@ -1,0 +1,38 @@
+(* :Title: FCRenameDummyIndices.test													*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCRenameDummyIndices					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCRenameDummyIndices =
+{
+{"FCRenameDummyIndices-ID1",
+	"MatchQ[FieldStrength[a,b].FieldStrength[a,b]\
+	//Explicit//Expand//FCRenameDummyIndices,(QuantumField[FCPartialD[\
+	LorentzIndex[$AL[i_],D]],GaugeField,LorentzIndex[$AL[j_],D]]-\
+	QuantumField[FCPartialD[LorentzIndex[$AL[j_],D]],GaugeField,\
+	LorentzIndex[$AL[i_],D]]).(QuantumField[FCPartialD[LorentzIndex[$AL[$i_]\
+	,D]],GaugeField,LorentzIndex[$AL[j_],D]]-QuantumField[FCPartialD[\
+	LorentzIndex[$AL[j_],D]],GaugeField,LorentzIndex[$AL[i_],D]])]",
+	"True"},
+{"FCRenameDummyIndices-ID2",
+	"MatchQ[GA[mu].GA[nu].GA[mu]//FCRenameDummyIndices,DiracGamma[\
+	LorentzIndex[$AL[i_]]].DiracGamma[LorentzIndex[nu]].DiracGamma[\
+	LorentzIndex[$AL[i_\[IndentingNewLine]]]]]", "True"},
+{"FCRenameDummyIndices-ID3",
+	"MatchQ[SUNT[a].SUNT[b].SUNT[a]//FCRenameDummyIndices,SUNT[\
+	SUNIndex[$AL[i_]]].SUNT[SUNIndex[b]].SUNT[SUNIndex[$AL[i_]]]]",
+	"True"},
+{"FCRenameDummyIndices-ID4",
+	"MatchQ[SUNTF[a,i,j].SUNT[b].SUNT[a,j,k]//FCRenameDummyIndices,\
+	SUNTF[{SUNIndex[$AL[x_]]},SUNFIndex[i],SUNFIndex[$AL[y_]]].SUNT[\
+	SUNIndex[b]].SUNT[SUNIndex[$AL[$x_]]].SUNT[SUNIndex[$AL[y_]]].SUNT[\
+	SUNIndex[k]]]", "True"}
+}

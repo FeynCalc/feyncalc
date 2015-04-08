@@ -1,0 +1,18 @@
+(* :Title: Factor2.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Factor2					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstFactor2 = {
+{"fcstFactor2-ID1","Factor2[(a - x) (b - x)]", "(a-x) (b-x)"},
+{"fcstFactor2-ID2","Factor2[a^2 - b^2]", "a^2-b^2"},
+{"fcstFactor2-ID3","Factor2[a^2 - b^2, FactorFull -> True]", "(a-b) (a+b)"}
+};

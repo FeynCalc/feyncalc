@@ -1,0 +1,23 @@
+
+
+(* :Title: ComplexConjugate.test                                            *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ComplexConjugate         *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstComplexConjugate = {
+{"fcstComplexConjugate-ID1","ComplexConjugate[PolarizationVector[k, mu]]",
+	"Pair[LorentzIndex[mu], Momentum[Polarization[k, -I]]]"},
+{"fcstComplexConjugate-ID2","ComplexConjugate[SUNTF[a,b,c]]",
+	"SUNTF[{SUNIndex[a]}, SUNFIndex[c], SUNFIndex[b]]"},
+{"fcstComplexConjugate-ID3","ComplexConjugate[SUNTF[{a1,a2,a3},b,c]]",
+	"SUNTF[{SUNIndex[a3], SUNIndex[a2], SUNIndex[a1]}, SUNFIndex[c], SUNFIndex[b]]"}
+};

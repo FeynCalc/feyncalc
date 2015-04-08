@@ -1,0 +1,19 @@
+(* :Title: DataType.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DataType					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstDataType = {
+{"fcstDataType-ID1","ClearAll[f, g]; \n DataType[f, g, NonCommutative] = True; \n DotExpand[f.g - g.(2 a).f]",
+	"f.g - 2 a g.f"},
+{"fcstDataType-ID2","DataType[f, g, NonCommutative] = False; \n DotExpand[f.g - g.(2 a).f]",
+	"f g - 2 a f g"}
+};

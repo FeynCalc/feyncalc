@@ -1,0 +1,17 @@
+(* :Title: PartialFourVector.test														*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PartialFourVector					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstPartialFourVector = {
+{"fcstPartialFourVector-ID1","PartialFourVector[a E^FourVector[p,\[Nu]]^2,FourVector[p,\[Mu]]]",
+	"2 a E^Pair[Momentum[p],Momentum[p]] Pair[LorentzIndex[\[Mu]],Momentum[p]]"}
+};

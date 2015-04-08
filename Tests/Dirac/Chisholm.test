@@ -1,0 +1,38 @@
+
+
+(* :Title: Chisholm.test                                                    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Chisholm                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstChisholm = {
+{"fcstChisholm-ID1", "(Chisholm[DiracMatrix[mu, nu, rho]]// FCRenameDummyIndices) /. {$AL[x_] -> tau}",
+"I DiracGamma[LorentzIndex[tau]].DiracGamma[5] Eps[
+	LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
+	LorentzIndex[tau]] +
+	DiracGamma[LorentzIndex[rho]] Pair[LorentzIndex[mu],
+	LorentzIndex[nu]] -
+	DiracGamma[LorentzIndex[nu]] Pair[LorentzIndex[mu],
+	LorentzIndex[rho]] +
+	DiracGamma[LorentzIndex[mu]] Pair[LorentzIndex[nu],
+	LorentzIndex[rho]]"},
+
+{"fcstChisholm-ID2", "(Chisholm[GA[alpha, beta, mu, nu]] //FCRenameDummyIndices) /. {$AL[x_] -> rho}",
+"(-I)*DiracGamma[LorentzIndex[rho]] . DiracGamma[LorentzIndex[nu]] . DiracGamma[5]*
+	Eps[LorentzIndex[alpha], LorentzIndex[beta], LorentzIndex[mu], LorentzIndex[rho]] +
+DiracGamma[LorentzIndex[mu]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[alpha], LorentzIndex[beta]] -
+DiracGamma[LorentzIndex[beta]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[alpha], LorentzIndex[mu]] +
+DiracGamma[LorentzIndex[alpha]] . DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[beta], LorentzIndex[mu]]"}
+
+
+};

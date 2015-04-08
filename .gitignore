@@ -1,3 +1,7 @@
-FeynCalc/FeynArts-*/*
-HighEnergyPhysics
-FeynCalc/fcdb/*.db
+FeynCalc/FeynArts/*
+FeynCalc/Database/*.db
+FeynCalc/Examples/Temp
+FeynCalc/Database/*.start
+FeynCalc/Tarcer/*.mx
+FeynCalc/AddOns/*
+build/*

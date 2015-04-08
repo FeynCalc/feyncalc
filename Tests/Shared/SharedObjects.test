@@ -1,0 +1,3051 @@
+
+
+(* :Title: SharedObjects.test *)
+
+(* This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for the properties of the    *)
+(*            basic FeynCalc objects                                        *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstSharedObjectsOwnValues =  {
+{"fcstSharedObjectsOwnValues-ID1", "OwnValues[AntiQuarkField]", "{}"},
+{"fcstSharedObjectsOwnValues-ID2", "OwnValues[CA]", "{}"},
+{"fcstSharedObjectsOwnValues-ID3", "OwnValues[CF]", "{}"},
+{"fcstSharedObjectsOwnValues-ID4", "OwnValues[ChiralityProjector]", "{}"},
+{"fcstSharedObjectsOwnValues-ID5", "OwnValues[DeltaFunction]", "{}"},
+{"fcstSharedObjectsOwnValues-ID6", "OwnValues[DeltaFunctionDoublePrime]", "{}"},
+{"fcstSharedObjectsOwnValues-ID7", "OwnValues[DeltaFunctionPrime]", "{}"},
+{"fcstSharedObjectsOwnValues-ID8", "OwnValues[DiracGamma]", "{}"},
+{"fcstSharedObjectsOwnValues-ID9", "OwnValues[DiracGammaT]", "{}"},
+{"fcstSharedObjectsOwnValues-ID10", "OwnValues[DiracMatrix]", "{}"},
+{"fcstSharedObjectsOwnValues-ID11", "OwnValues[DiracSigma]", "{}"},
+{"fcstSharedObjectsOwnValues-ID12", "OwnValues[DiracSlash]", "{}"},
+{"fcstSharedObjectsOwnValues-ID13", "OwnValues[Spinor]", "{}"},
+{"fcstSharedObjectsOwnValues-ID14", "OwnValues[Eps]", "{}"},
+{"fcstSharedObjectsOwnValues-ID15", "OwnValues[Epsilon]", "{}"},
+{"fcstSharedObjectsOwnValues-ID16", "OwnValues[ExplicitLorentzIndex]", "{}"},
+{"fcstSharedObjectsOwnValues-ID17", "OwnValues[ExplicitSUNIndex]", "{}"},
+{"fcstSharedObjectsOwnValues-ID18", "OwnValues[FAD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID19", "OwnValues[FeynAmp]", "{}"},
+{"fcstSharedObjectsOwnValues-ID20", "OwnValues[FeynAmpDenominator]", "{}"},
+{"fcstSharedObjectsOwnValues-ID21", "OwnValues[FeynAmpList]", "{}"},
+{"fcstSharedObjectsOwnValues-ID22", "OwnValues[FourVector]", "{}"},
+{"fcstSharedObjectsOwnValues-ID23", "OwnValues[FV]", "{}"},
+{"fcstSharedObjectsOwnValues-ID24", "OwnValues[FVD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID24.1", "OwnValues[FVE]", "{}"},
+{"fcstSharedObjectsOwnValues-ID25", "OwnValues[GA]", "{}"},
+{"fcstSharedObjectsOwnValues-ID26", "OwnValues[GA5]", "{HoldPattern[GA5] :> DiracGamma[5]}"},
+{"fcstSharedObjectsOwnValues-ID27", "OwnValues[GAD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID27.1", "OwnValues[GAE]", "{}"},
+{"fcstSharedObjectsOwnValues-ID28", "OwnValues[GaugeField]", "{}"},
+{"fcstSharedObjectsOwnValues-ID29", "OwnValues[GS]", "{}"},
+{"fcstSharedObjectsOwnValues-ID30", "OwnValues[GSD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID30.1", "OwnValues[GSE]", "{}"},
+{"fcstSharedObjectsOwnValues-ID31", "OwnValues[Gstrong]", "{}"},
+{"fcstSharedObjectsOwnValues-ID32", "OwnValues[IFPD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID33", "OwnValues[Integratedx]", "{}"},
+{"fcstSharedObjectsOwnValues-ID34", "OwnValues[LC]", "{}"},
+{"fcstSharedObjectsOwnValues-ID35", "OwnValues[LCD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID36", "OwnValues[LeftPartialD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID37", "OwnValues[LeftRightPartialD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID38", "OwnValues[LeftRightPartialD2]", "{}"},
+{"fcstSharedObjectsOwnValues-ID38.1", "OwnValues[LeviCivita]", "{}"},
+{"fcstSharedObjectsOwnValues-ID39", "OwnValues[LorentzIndex]", "{}"},
+{"fcstSharedObjectsOwnValues-ID40", "OwnValues[Lower]", "{}"},
+{"fcstSharedObjectsOwnValues-ID41", "OwnValues[MetricTensor]", "{}"},
+{"fcstSharedObjectsOwnValues-ID42", "OwnValues[Momentum]", "{}"},
+{"fcstSharedObjectsOwnValues-ID43", "OwnValues[MT]", "{}"},
+{"fcstSharedObjectsOwnValues-ID44", "OwnValues[MTD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID44.1", "OwnValues[MTE]", "{}"},
+{"fcstSharedObjectsOwnValues-ID45", "OwnValues[NegativeInteger]", "{}"},
+{"fcstSharedObjectsOwnValues-ID46", "OwnValues[Nf]", "{}"},
+{"fcstSharedObjectsOwnValues-ID47", "OwnValues[Pair]", "{}"},
+{"fcstSharedObjectsOwnValues-ID48", "OwnValues[PartialD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID49", "OwnValues[PauliSigma]", "{}"},
+{"fcstSharedObjectsOwnValues-ID50", "OwnValues[Polarization]", "{}"},
+{"fcstSharedObjectsOwnValues-ID51", "OwnValues[PolarizationVector]", "{}"},
+{"fcstSharedObjectsOwnValues-ID52", "OwnValues[PlusDistribution]", "{}"},
+{"fcstSharedObjectsOwnValues-ID53", "OwnValues[PropagatorDenominator]", "{}"},
+{"fcstSharedObjectsOwnValues-ID54", "OwnValues[False]", "{}"},
+{"fcstSharedObjectsOwnValues-ID55", "OwnValues[QuantumField]", "{}"},
+{"fcstSharedObjectsOwnValues-ID56", "OwnValues[QuarkField]", "{}"},
+{"fcstSharedObjectsOwnValues-ID57", "OwnValues[RightPartialD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID58", "OwnValues[ScaleMu]", "{}"},
+{"fcstSharedObjectsOwnValues-ID59", "OwnValues[OPE]", "{}"},
+{"fcstSharedObjectsOwnValues-ID60", "OwnValues[SD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID61", "OwnValues[SmallDelta]", "{}"},
+{"fcstSharedObjectsOwnValues-ID62", "OwnValues[SmallEpsilon]", "{}"},
+{"fcstSharedObjectsOwnValues-ID63", "OwnValues[SmallVariable]", "{}"},
+{"fcstSharedObjectsOwnValues-ID64", "OwnValues[SO]", "{}"},
+{"fcstSharedObjectsOwnValues-ID65", "OwnValues[SOD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID66", "OwnValues[SP]", "{}"},
+{"fcstSharedObjectsOwnValues-ID67", "OwnValues[SPD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID67.1", "OwnValues[SPE]", "{}"},
+{"fcstSharedObjectsOwnValues-ID68", "OwnValues[Spinor]", "{}"},
+{"fcstSharedObjectsOwnValues-ID69", "OwnValues[SpinorU]", "{}"},
+{"fcstSharedObjectsOwnValues-ID70", "OwnValues[SpinorUBar]", "{}"},
+{"fcstSharedObjectsOwnValues-ID71", "OwnValues[SpinorV]", "{}"},
+{"fcstSharedObjectsOwnValues-ID72", "OwnValues[SpinorVBar]", "{}"},
+{"fcstSharedObjectsOwnValues-ID73", "OwnValues[SUND]", "{}"},
+{"fcstSharedObjectsOwnValues-ID74", "OwnValues[SUNDelta]", "{}"},
+{"fcstSharedObjectsOwnValues-ID75", "OwnValues[SUNF]", "{}"},
+{"fcstSharedObjectsOwnValues-ID76", "OwnValues[SUNIndex]", "{}"},
+{"fcstSharedObjectsOwnValues-ID77", "OwnValues[SUNN]", "{}"},
+{"fcstSharedObjectsOwnValues-ID78", "OwnValues[SUNT]", "{}"},
+{"fcstSharedObjectsOwnValues-ID79", "OwnValues[Tf]", "{}"},
+{"fcstSharedObjectsOwnValues-ID80", "OwnValues[SDF]", "{}"},
+{"fcstSharedObjectsOwnValues-ID81", "OwnValues[SUNFDelta]", "{}"},
+{"fcstSharedObjectsOwnValues-ID82", "OwnValues[SUNTF]", "{}"},
+{"fcstSharedObjectsOwnValues-ID83", "OwnValues[SUNFIndex]", "{}"},
+{"fcstSharedObjectsOwnValues-ID84", "OwnValues[ExplicitSUNFIndex]", "{}"}
+};
+
+
+(* ----------------------------------------------------------------------------------------------------------- *)
+(* ----------------------------------------------------------------------------------------------------------- *)
+(* ----------------------------------------------------------------------------------------------------------- *)
+
+Tests`Shared`fcstSharedObjectsUpValues = {
+{"fcstSharedObjectsUpValues-ID1", "UpValues[AntiQuarkField]", "{}"},
+{"fcstSharedObjectsUpValues-ID2", "UpValues[CA]", "{}"},
+{"fcstSharedObjectsUpValues-ID3", "UpValues[CF]", "{}"},
+{"fcstSharedObjectsUpValues-ID4", "UpValues[ChiralityProjector]", "{}"},
+{"fcstSharedObjectsUpValues-ID5", "UpValues[DeltaFunction]", "{}"},
+{"fcstSharedObjectsUpValues-ID6", "UpValues[DeltaFunctionDoublePrime]", "{}"},
+{"fcstSharedObjectsUpValues-ID7", "UpValues[DeltaFunctionPrime]", "{}"},
+{"fcstSharedObjectsUpValues-ID8", "UpValues[DiracGamma]", "{HoldPattern[Transpose[DiracGamma[FeynCalc`SharedObjects`Private`a__\
+]]] :> \n\n \n   DiracGammaT[FeynCalc`SharedObjects`Private`a]}"},
+{"fcstSharedObjectsUpValues-ID9", "UpValues[DiracGammaT]", "{HoldPattern[Transpose[DiracGammaT[FeynCalc`SharedObjects`Private`a__]]] :> \n\n \n   \
+DiracGamma[FeynCalc`SharedObjects`Private`a]}"},
+{"fcstSharedObjectsUpValues-ID10", "UpValues[DiracMatrix]", "{}"},
+{"fcstSharedObjectsUpValues-ID11", "UpValues[DiracSigma]", "{}"},
+{"fcstSharedObjectsUpValues-ID12", "UpValues[DiracSlash]", "{}"},
+{"fcstSharedObjectsUpValues-ID13", "UpValues[Spinor]", "{}"},
+{"fcstSharedObjectsUpValues-ID14", "UpValues[Eps]", "{}"},
+{"fcstSharedObjectsUpValues-ID15", "UpValues[Epsilon]", "{}"},
+{"fcstSharedObjectsUpValues-ID16", "UpValues[ExplicitLorentzIndex]", "{}"},
+{"fcstSharedObjectsUpValues-ID17", "UpValues[ExplicitSUNIndex]",
+	"{HoldPattern[SUNIndex[FeynCalc`SharedObjects`Private`i_ExplicitSUNIndex]] :> \n\n \n   ExplicitSUNIndex[FeynCalc`SharedObjects`Private`i]}"},
+{"fcstSharedObjectsUpValues-ID18", "UpValues[FAD]", "{}"},
+{"fcstSharedObjectsUpValues-ID19", "UpValues[FeynAmp]", "{}"},
+{"fcstSharedObjectsUpValues-ID20", "UpValues[FeynAmpDenominator]", "{}"},
+{"fcstSharedObjectsUpValues-ID21", "UpValues[FeynAmpList]", "{}"},
+{"fcstSharedObjectsUpValues-ID22", "UpValues[FourVector]", "{}"},
+{"fcstSharedObjectsUpValues-ID23", "UpValues[FV]", "{}"},
+{"fcstSharedObjectsUpValues-ID24", "UpValues[FVD]", "{}"},
+{"fcstSharedObjectsUpValues-ID24.1", "UpValues[FVE]", "{}"},
+{"fcstSharedObjectsUpValues-ID25", "UpValues[GA]", "{}"},
+{"fcstSharedObjectsUpValues-ID26", "UpValues[GA5]", "{}"},
+{"fcstSharedObjectsUpValues-ID27", "UpValues[GAD]", "{}"},
+{"fcstSharedObjectsUpValues-ID27.1", "UpValues[GAE]", "{}"},
+{"fcstSharedObjectsUpValues-ID28", "UpValues[GaugeField]", "{}"},
+{"fcstSharedObjectsUpValues-ID29", "UpValues[GS]", "{}"},
+{"fcstSharedObjectsUpValues-ID30", "UpValues[GSD]", "{}"},
+{"fcstSharedObjectsUpValues-ID30.1", "UpValues[GSE]", "{}"},
+{"fcstSharedObjectsUpValues-ID31", "UpValues[Gstrong]", "{}"},
+{"fcstSharedObjectsUpValues-ID32", "UpValues[IFPD]", "{}"},
+{"fcstSharedObjectsUpValues-ID33", "UpValues[Integratedx]", "{}"},
+{"fcstSharedObjectsUpValues-ID34", "UpValues[LC]", "{}"},
+{"fcstSharedObjectsUpValues-ID35", "UpValues[LCD]", "{}"},
+{"fcstSharedObjectsUpValues-ID36", "UpValues[LeftPartialD]", "{}"},
+{"fcstSharedObjectsUpValues-ID37", "UpValues[LeftRightPartialD]", "{}"},
+{"fcstSharedObjectsUpValues-ID38", "UpValues[LeftRightPartialD2]", "{}"},
+{"fcstSharedObjectsUpValues-ID38.1", "UpValues[LeviCivita]", "{}"},
+{"fcstSharedObjectsUpValues-ID39", "UpValues[LorentzIndex]", "{}"},
+{"fcstSharedObjectsUpValues-ID40", "UpValues[Lower]", "{}"},
+{"fcstSharedObjectsUpValues-ID41", "UpValues[MetricTensor]", "{}"},
+{"fcstSharedObjectsUpValues-ID42", "UpValues[Momentum]", "{}"},
+{"fcstSharedObjectsUpValues-ID43", "UpValues[MT]", "{}"},
+{"fcstSharedObjectsUpValues-ID44", "UpValues[MTD]", "{}"},
+{"fcstSharedObjectsUpValues-ID44.1", "UpValues[MTE]", "{}"},
+{"fcstSharedObjectsUpValues-ID45", "UpValues[NegativeInteger]", "{}"},
+{"fcstSharedObjectsUpValues-ID46", "UpValues[Nf]", "{}"},
+{"fcstSharedObjectsUpValues-ID47", "UpValues[Pair]", "{}"},
+{"fcstSharedObjectsUpValues-ID48", "UpValues[PartialD]", "{}"},
+{"fcstSharedObjectsUpValues-ID49", "UpValues[PauliSigma]", "{}"},
+{"fcstSharedObjectsUpValues-ID50", "UpValues[Polarization]", "{}"},
+{"fcstSharedObjectsUpValues-ID51", "UpValues[PolarizationVector]", "{}"},
+{"fcstSharedObjectsUpValues-ID52", "UpValues[PlusDistribution]", "{}"},
+{"fcstSharedObjectsUpValues-ID53", "UpValues[PropagatorDenominator]", "{}"},
+{"fcstSharedObjectsUpValues-ID54", "UpValues[False]", "{}"},
+{"fcstSharedObjectsUpValues-ID55", "UpValues[QuantumField]", "{}"},
+{"fcstSharedObjectsUpValues-ID56", "UpValues[QuarkField]", "{}"},
+{"fcstSharedObjectsUpValues-ID57", "UpValues[RightPartialD]", "{}"},
+{"fcstSharedObjectsUpValues-ID58", "UpValues[ScaleMu]", "{}"},
+{"fcstSharedObjectsUpValues-ID59", "UpValues[OPE]", "{HoldPattern[OPE^_Integer?Positive] :> 0}"},
+{"fcstSharedObjectsUpValues-ID60", "UpValues[SD]", "{}"},
+{"fcstSharedObjectsUpValues-ID61", "UpValues[SmallDelta]", "{}"},
+{"fcstSharedObjectsUpValues-ID62", "UpValues[SmallEpsilon]", "{}"},
+{"fcstSharedObjectsUpValues-ID63", "UpValues[SmallVariable]", "{}"},
+{"fcstSharedObjectsUpValues-ID64", "UpValues[SO]", "{}"},
+{"fcstSharedObjectsUpValues-ID65", "UpValues[SOD]", "{}"},
+{"fcstSharedObjectsUpValues-ID66", "UpValues[SP]", "{}"},
+{"fcstSharedObjectsUpValues-ID67", "UpValues[SPD]", "{}"},
+{"fcstSharedObjectsUpValues-ID67.1", "UpValues[SPE]", "{}"},
+{"fcstSharedObjectsUpValues-ID68", "UpValues[Spinor]", "{}"},
+{"fcstSharedObjectsUpValues-ID69", "UpValues[SpinorU]", "{}"},
+{"fcstSharedObjectsUpValues-ID70", "UpValues[SpinorUBar]", "{}"},
+{"fcstSharedObjectsUpValues-ID71", "UpValues[SpinorV]", "{}"},
+{"fcstSharedObjectsUpValues-ID72", "UpValues[SpinorVBar]", "{}"},
+{"fcstSharedObjectsUpValues-ID73", "UpValues[SUND]", "{}"},
+{"fcstSharedObjectsUpValues-ID74", "UpValues[SUNDelta]", "{}"},
+{"fcstSharedObjectsUpValues-ID75", "UpValues[SUNF]", "{}"},
+{"fcstSharedObjectsUpValues-ID76", "UpValues[SUNIndex]", "{}"},
+{"fcstSharedObjectsUpValues-ID77", "UpValues[SUNN]", "{}"},
+{"fcstSharedObjectsUpValues-ID78", "UpValues[SUNT]", "{}"},
+{"fcstSharedObjectsUpValues-ID79", "UpValues[Tf]", "{}"},
+{"fcstSharedObjectsUpValues-ID80", "UpValues[SDF]", "{}"},
+{"fcstSharedObjectsUpValues-ID81", "UpValues[SUNFDelta]", "{}"},
+{"fcstSharedObjectsUpValues-ID82", "UpValues[SUNTF]", "{}"},
+{"fcstSharedObjectsUpValues-ID83", "UpValues[SUNFIndex]", "{}"},
+{"fcstSharedObjectsUpValues-ID84", "UpValues[ExplicitSUNFIndex]",
+	"{HoldPattern[SUNFIndex[FeynCalc`SharedObjects`Private`i_ExplicitSUNFIndex]] :>
+	ExplicitSUNFIndex[FeynCalc`SharedObjects`Private`i]}"}
+}
+
+Tests`Shared`fcstSharedObjectsMessages = {
+{"fcstSharedObjectsMessages-I1", "DiracGamma[5, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, D]]}"},
+{"fcstSharedObjectsMessages-I2", "DiracGamma[6, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[6, D]]}"},
+{"fcstSharedObjectsMessages-I3", "DiracGamma[7, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[7, D]]}"},
+{"fcstSharedObjectsMessages-I4", "GAD[5]", "Null", "{Message[DiracGamma::gamma5fail, GAD[5]]}"},
+{"fcstSharedObjectsMessages-I5", "GAD[6]", "Null", "{Message[DiracGamma::gamma5fail, GAD[6]]}"},
+{"fcstSharedObjectsMessages-I6", "GAD[7]", "Null", "{Message[DiracGamma::gamma5fail, GAD[7]]}"},
+{"fcstSharedObjectsMessages-I7", "DiracMatrix[5, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, Dimension -> D]]}"},
+{"fcstSharedObjectsMessages-I8", "DiracMatrix[6, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[6, Dimension -> D]]}"},
+{"fcstSharedObjectsMessages-I9", "DiracMatrix[7, Dimension->D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[7, Dimension -> D]]}"},
+{"fcstSharedObjectsMessages-I10", "Eps[i1,i2]", "Null", "{Message[Eps::argrx, Eps[{i1, i2}], 2, 4]}"},
+{"fcstSharedObjectsMessages-I11", "Eps[i1,i2,i3]", "Null", "{Message[Eps::argrx, Eps[{i1, i2, i3}], 3, 4]}"},
+{"fcstSharedObjectsMessages-I12", "Eps[i1,i2,i3,i4,i5]", "Null", "{Message[Eps::argrx, Eps[{i1, i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I13", "Eps[1,2]", "Null", "{Message[Eps::argrx, Eps[{1, 2}], 2, 4]}"},
+{"fcstSharedObjectsMessages-I14", "Eps[1,2,3]", "Null", "{Message[Eps::argrx, Eps[{1, 2, 3}], 3, 4]}"},
+{"fcstSharedObjectsMessages-I15", "Eps[1,2,3,4,5]", "Null", "{Message[Eps::argrx, Eps[{1, 2, 3, 4, 5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I16", "LC[i1,i2,i3,i4,i5]", "Null", "{Message[LC::argrx, LC[{i1, i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I17", "LCD[i1,i2,i3,i4,i5]", "Null", "{Message[LCD::argrx, LCD[{i1, i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I18", "LC[i1][i2,i3,i4,i5]", "Null", "{Message[LC::argrx, LC[{i1}][{i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I19", "LCD[i1][i2,i3,i4,i5]", "Null", "{Message[LCD::argrx, LCD[{i1}][{i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I20", "LC[i1,i2][i3,i4,i5]", "Null", "{Message[LC::argrx, LC[{i1, i2}][{i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I21", "LCD[i1,i2][i3,i4,i5]", "Null", "{Message[LCD::argrx, LCD[{i1, i2}][{i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I22", "LeviCivita[i1,i2,i3,i4,i5]", "Null", "{Message[LeviCivita::argrx, LeviCivita[{i1, i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I23", "LeviCivita[i1][i2,i3,i4,i5]", "Null", "{Message[LeviCivita::argrx, LeviCivita[{i1}][{i2, i3, i4, i5}], 5, 4]}"},
+{"fcstSharedObjectsMessages-I24", "LeviCivita[i1,i2][i3,i4,i5]", "Null", "{Message[LeviCivita::argrx, LeviCivita[{i1, i2}][{i3, i4, i5}], 5, 4]}"}
+}
+
+Tests`Shared`fcstSharedObjectsBehavior = {
+{"fcstSharedObjectsBehavior-ID1", "ChiralityProjector[1]", "DiracGamma[6]"},
+{"fcstSharedObjectsBehavior-ID2", "ChiralityProjector[-1]", "DiracGamma[7]"},
+{"fcstSharedObjectsBehavior-ID3", "DeltaFunction[0]", "1"},
+{"fcstSharedObjectsBehavior-ID4", "DeltaFunction[x]", "DeltaFunction[x]"},
+{"fcstSharedObjectsBehavior-ID5", "DeltaFunction[0.7]", "0"},
+{"fcstSharedObjectsBehavior-ID6", "DeltaFunction[-0.3]", "0"},
+{"fcstSharedObjectsBehavior-ID7", "Transpose[DiracGamma[x]]", "DiracGammaT[x]"},
+{"fcstSharedObjectsBehavior-ID8", "DiracGamma[]", "1"},
+{"fcstSharedObjectsBehavior-ID9", "DiracGamma[a*Momentum[p, D1], D2]", "a DiracGamma[Momentum[p, D1], D2]"},
+{"fcstSharedObjectsBehavior-ID10", "DiracGamma[a LorentzIndex[mu, D1], D2]","a DiracGamma[LorentzIndex[mu, D1], D2]"},
+	{"fcstSharedObjectsBehavior-ID10.1","DiracGamma[LorentzIndex[p, D], 4]"," DiracGamma[LorentzIndex[p, D]]"},
+	{"fcstSharedObjectsBehavior-ID10.2","DiracGamma[ExplicitLorentzIndex[p, D], 4]"," DiracGamma[ExplicitLorentzIndex[p, D]]"},
+	{"fcstSharedObjectsBehavior-ID10.3","DiracGamma[Momentum[p, D], 4]"," DiracGamma[Momentum[p, D]]"},
+	{"fcstSharedObjectsBehavior-ID10.4","DiracGamma[func[p, D], 4]"," DiracGamma[func[p, D],4]"},
+{"fcstSharedObjectsBehavior-ID14", "DiracGamma[x, 0]", "0"}, {"fcstSharedObjectsBehavior-ID15", "DiracGamma[a + b + c]", "DiracGamma[a] + DiracGamma[b] + DiracGamma[c]"},
+{"fcstSharedObjectsBehavior-ID16", "DiracGamma[Momentum[p1, D1], Momentum[p2, D2]]", "DiracGamma[Momentum[p1, D1], D1].DiracGamma[Momentum[p2, D2], D2]"},
+{"fcstSharedObjectsBehavior-ID17", "DiracGamma[Momentum[p1, D1], Momentum[p2, D2], LorentzIndex[mu]]",
+	"DiracGamma[Momentum[p1, D1], D1].DiracGamma[Momentum[p2, D2], D2].DiracGamma[LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID18", "DiracGamma[LorentzIndex[p1, D1], LorentzIndex[p2, D2]]",
+	"DiracGamma[LorentzIndex[p1, D1], D1] . DiracGamma[LorentzIndex[p2, D2], D2]"},
+{"fcstSharedObjectsBehavior-ID19", "DiracGamma[LorentzIndex[p1, D1], LorentzIndex[p2, D2], Momentum[p, 4]]",
+	"DiracGamma[LorentzIndex[p1, D1], D1].DiracGamma[LorentzIndex[p2, D2], D2].DiracGamma[Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID20", "DiracGamma[LorentzIndex[p1, D1],Momentum[p2, D2]]", " DiracGamma[LorentzIndex[p1, D1], D1] . DiracGamma[Momentum[p2, D2], D2]"},
+{"fcstSharedObjectsBehavior-ID21", "DiracGamma[LorentzIndex[p1, D1], Momentum[p2, D2], Momentum[p, 4]]",
+	"DiracGamma[LorentzIndex[p1, D1], D1] . DiracGamma[Momentum[p2, D2], D2] . DiracGamma[Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID22", "DiracGamma[Momentum[p1, D1], LorentzIndex[p2, D2]]",
+	"DiracGamma[Momentum[p1, D1], D1] . DiracGamma[LorentzIndex[p2, D2], D2]"},
+{"fcstSharedObjectsBehavior-ID23", "DiracGamma[Momentum[p1, D1], LorentzIndex[p2, D2], Momentum[p, 4]]",
+	"DiracGamma[Momentum[p1, D1], D1] . DiracGamma[LorentzIndex[p2, D2], D2] . DiracGamma[Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID24", "DiracGamma[LorentzIndex[mu], D - 4]", "0"},
+{"fcstSharedObjectsBehavior-ID25", "DiracGamma[Momentum[p], D - 4]", "0"},
+{"fcstSharedObjectsBehavior-ID26", "DiracGamma[Momentum[p, D - 4]]", "0"},
+{"fcstSharedObjectsBehavior-ID27", "DiracGamma[LorentzIndex[mu, D - 4]]", "0"},
+{"fcstSharedObjectsBehavior-ID28", "DiracGamma[LorentzIndex[mu, D], D - 4]",
+	"DiracGamma[LorentzIndex[mu, -4 + D], -4 + D]"},
+{"fcstSharedObjectsBehavior-ID29", "DiracGamma[Momentum[p, D], D - 4]", " DiracGamma[Momentum[p, -4 + D], -4 + D]"},
+{"fcstSharedObjectsBehavior-ID30", "DiracGamma[LorentzIndex[mu, D - 4], D]", "DiracGamma[LorentzIndex[mu, -4 + D], -4 + D]"},
+{"fcstSharedObjectsBehavior-ID31", "DiracGamma[Momentum[p, D - 4], D]", "DiracGamma[Momentum[p, -4 + D], -4 + D]"},
+{"fcstSharedObjectsBehavior-ID32", "DiracGamma[LorentzIndex[mu, D]]",
+	"DiracGamma[LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID33", "DiracGamma[2 Momentum[p], D]", "2*DiracGamma[Momentum[p], D]"},
+{"fcstSharedObjectsBehavior-ID34", "DiracGamma[Momentum[p, D]]", " DiracGamma[Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID35", "DiracGamma[LorentzIndex[mu, D]]", "DiracGamma[LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID35.1", "DiracGamma[LorentzIndex[mu, D], DD]", "DiracGamma[LorentzIndex[mu, D], DD]"},
+{"fcstSharedObjectsBehavior-ID35.2", "DiracGamma[LorentzIndex[mu, D], 5]", "DiracGamma[LorentzIndex[mu, D], 5]"},
+{"fcstSharedObjectsBehavior-ID35.3", "DiracGamma[LorentzIndex[mu, D], D - 2]", "DiracGamma[LorentzIndex[mu, D], D - 2]"},
+{"fcstSharedObjectsBehavior-ID35.4", "DiracGamma[LorentzIndex[mu, 4], 5]", "DiracGamma[LorentzIndex[mu, 4], 5]"},
+{"fcstSharedObjectsBehavior-ID35.5", "DiracGamma[LorentzIndex[mu, 4], D - 2]", "DiracGamma[LorentzIndex[mu, 4], D - 2]"},
+{"fcstSharedObjectsBehavior-ID35.6", "DiracGamma[LorentzIndex[mu, D - 4], DD]", "DiracGamma[LorentzIndex[mu, D - 4], DD]"},
+{"fcstSharedObjectsBehavior-ID35.7", "DiracGamma[LorentzIndex[mu, D - 4], 5]", "DiracGamma[LorentzIndex[mu, D - 4], 5]"},
+{"fcstSharedObjectsBehavior-ID35.8", "DiracGamma[LorentzIndex[mu, D - 4], 2]", "DiracGamma[LorentzIndex[mu, D - 4], 2]"},
+{"fcstSharedObjectsBehavior-ID36", "Transpose[DiracGammaT[x]]", "DiracGamma[x]"},
+{"fcstSharedObjectsBehavior-ID37", "DiracMatrix[0]", "DiracGamma[0]"},
+{"fcstSharedObjectsBehavior-ID38", "DiracMatrix[1]", "DiracGamma[1]"},
+{"fcstSharedObjectsBehavior-ID39", "DiracMatrix[2]", "DiracGamma[2]"},
+{"fcstSharedObjectsBehavior-ID40", "DiracMatrix[3]", "DiracGamma[3]"},
+{"fcstSharedObjectsBehavior-ID41", "DiracMatrix[4]", "DiracGamma[4]"},
+{"fcstSharedObjectsBehavior-ID42", "DiracSigma[x.y]", "DiracSigma[x,y]"},
+{"fcstSharedObjectsBehavior-ID43", "DiracSigma[a,b,c, 0,d,e,f]", " 0"},
+{"fcstSharedObjectsBehavior-ID44", "DiracSigma[1, 3] ", "  DiracSigma[1, 3]"},
+{"fcstSharedObjectsBehavior-ID45", "DiracSigma[2, 1] ", " - DiracSigma[1, 2]"},
+{"fcstSharedObjectsBehavior-ID46", "DiracSigma[a, b] ", "  DiracSigma[a, b]"},
+{"fcstSharedObjectsBehavior-ID47", "DiracSigma[b, a] ", " - DiracSigma[a, b]"},
+{"fcstSharedObjectsBehavior-ID48", "DiracSigma[DiracMatrix[1, 3]]", " DiracSigma[DiracMatrix[1, 3]]"},
+{"fcstSharedObjectsBehavior-ID49", "DiracSigma[DiracMatrix[2, 1]]",
+	" - DiracSigma[DiracMatrix[1, 2]]"},
+{"fcstSharedObjectsBehavior-ID50", "DiracSigma[DiracMatrix[a, b]]", "  DiracSigma[DiracMatrix[a, b]]"},
+{"fcstSharedObjectsBehavior-ID51", "DiracSigma[DiracMatrix[b, a]]", " - DiracSigma[DiracMatrix[a, b]]"},
+{"fcstSharedObjectsBehavior-ID52", "DiracSigma[x DiracGamma[i],  DiracGamma[j]]",
+	"x  DiracSigma[DiracGamma[i], DiracGamma[j]]"},
+{"fcstSharedObjectsBehavior-ID53", "DiracSigma[x DiracGamma[i], y z DiracGamma[j]]", "x y z DiracSigma[DiracGamma[i], DiracGamma[j]]"},
+{"fcstSharedObjectsBehavior-ID54", "DiracSlash[p]", "DiracGamma[Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID55", "DiracSlash[p, Dimension -> D]", "DiracGamma[Momentum[p, D], D]"},
+{"fcstSharedObjectsBehavior-ID56", "DiracSlash[p , l, k]", "DiracGamma[Momentum[p]].DiracGamma[Momentum[l]].DiracGamma[Momentum[k]]"},
+{"fcstSharedObjectsBehavior-ID57", "DiracSlash[p , l, k, Dimension -> D]", "DiracGamma[Momentum[p, D], D].DiracGamma[Momentum[l, D], D].DiracGamma[Momentum[k, D], D]"},
+{"fcstSharedObjectsBehavior-ID58", "Eps[0, 1, 2, 3]", "1"},
+{"fcstSharedObjectsBehavior-ID59", "Eps[0, 1, 3,2]", "-1"},
+{"fcstSharedObjectsBehavior-ID63", "Eps[a, a, b, c]", "0"},
+{"fcstSharedObjectsBehavior-ID64", "Eps[ExplicitLorentzIndex[1], ExplicitLorentzIndex[2], ExplicitLorentzIndex[3], ExplicitLorentzIndex[0]]", "-1"},
+{"fcstSharedObjectsBehavior-ID65", "Eps[ExplicitLorentzIndex[0], ExplicitLorentzIndex[1], ExplicitLorentzIndex[3], ExplicitLorentzIndex[2]]", "-1"},
+{"fcstSharedObjectsBehavior-ID66", "Eps[ExplicitLorentzIndex[1], ExplicitLorentzIndex[1], ExplicitLorentzIndex[3], ExplicitLorentzIndex[2]]", "0"},
+{"fcstSharedObjectsBehavior-ID67", "Eps[a, LorentzIndex[mu], b,  LorentzIndex[nu]]", " Eps[a, LorentzIndex[mu], b,  LorentzIndex[nu]]"},
+{"fcstSharedObjectsBehavior-ID68", "Eps[a, LorentzIndex[mu], b, LorentzIndex[mu]]", " 0"},
+{"fcstSharedObjectsBehavior-ID69", "Eps[a, 5 ExplicitLorentzIndex[mu], b, ExplicitLorentzIndex[nu]]", " Eps[a, 5 ExplicitLorentzIndex[mu], b, ExplicitLorentzIndex[nu]]"},
+{"fcstSharedObjectsBehavior-ID70", "Eps[a, ExplicitLorentzIndex[mu], d, ExplicitLorentzIndex[mu]]", " 0"},
+{"fcstSharedObjectsBehavior-ID71", "Eps[a, 2 LorentzIndex[mu], b, 4 LorentzIndex[mu]]", " 0"},
+{"fcstSharedObjectsBehavior-ID72", "Eps[a, 2 LorentzIndex[mu], b,f LorentzIndex[mu]]", " Eps[a, 2 LorentzIndex[mu], b, f LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID73", "Eps[a,2 ExplicitLorentzIndex[mu], b, 4 ExplicitLorentzIndex[mu]]", " 0"},
+{"fcstSharedObjectsBehavior-ID74", "Eps[a,2 ExplicitLorentzIndex[mu], b, f ExplicitLorentzIndex[mu]]", " Eps[a,2 ExplicitLorentzIndex[mu],b, f ExplicitLorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID75", "Eps[a, Momentum[p], Momentum[q], e]", " Eps[a, Momentum[p], Momentum[q], e]"},
+{"fcstSharedObjectsBehavior-ID76", "Eps[a, Momentum[p], b, Momentum[p]]", " 0"},
+{"fcstSharedObjectsBehavior-ID77", "Eps[a, 2 Momentum[p], b, 4 Momentum[p]]", " 0"},
+{"fcstSharedObjectsBehavior-ID78", "Eps[a, 2 Momentum[p], b, f Momentum[p]]", " Eps[a, 2 Momentum[p], b, f Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID79", "Eps[a, LorentzIndex[mu, D - 4], b, c]", " 0"},
+{"fcstSharedObjectsBehavior-ID80", "Eps[a, Momentum[p, D - 4], b, c]", " 0"},
+{"fcstSharedObjectsBehavior-ID81", "Eps[a, LorentzIndex[mu, D], b ,c]", " Eps[a, LorentzIndex[mu], b, c]"},
+{"fcstSharedObjectsBehavior-ID82", "Eps[a, LorentzIndex[mu, D1], b, c, Dimension -> D2]",
+	" Eps[a, LorentzIndex[mu, D1], b, c, Dimension -> D2]"},
+{"fcstSharedObjectsBehavior-ID83", "Eps[a, Momentum[mu, D], b, c]", " Eps[a, Momentum[mu], b ,c]"},
+{"fcstSharedObjectsBehavior-ID84", "Eps[a, Momentum[mu, D1], b, c, Dimension -> D2]", " Eps[a, Momentum[mu, D1], b, c, Dimension -> D2]"},
+{"fcstSharedObjectsBehavior-ID85", "SUNIndex[ExplicitSUNIndex[a]]", " ExplicitSUNIndex[a]"},
+{"fcstSharedObjectsBehavior-ID86", "SUNIndex[ExplicitSUNIndex[2]]", " ExplicitSUNIndex[2]"},
+{"fcstSharedObjectsBehavior-ID87", "FAD[-a]", " FAD[a]"},
+{"fcstSharedObjectsBehavior-ID88", "FeynAmpDenominator[{a, b}]", "FeynAmpDenominator[PropagatorDenominator[Momentum[a, D], b]]"},
+{"fcstSharedObjectsBehavior-ID89", "FeynAmpDenominator[{a}]", " FeynAmpDenominator[PropagatorDenominator[Momentum[a, D], 0]]"},
+{"fcstSharedObjectsBehavior-ID90", "FourVector[p, mu]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID91", "FourVector[p, mu, Dimension -> D]",
+	" Pair[LorentzIndex[mu, D], Momentum[p, D]]"},
+{"fcstSharedObjectsBehavior-ID92", "FourVector[Momentum[p], mu]", " FourVector[Momentum[p], mu]"},
+{"fcstSharedObjectsBehavior-ID93", "FourVector[p, LorentzIndex[mu]]", " FourVector[p, LorentzIndex[mu]]"},
+{"fcstSharedObjectsBehavior-ID94", "FourVector[p, mu, FCI -> False]",
+	" FourVector[p, mu, FeynCalcInternal -> False]"},
+{"fcstSharedObjectsBehavior-ID95", "FV[p, l]", " FV[p, l]"},
+{"fcstSharedObjectsBehavior-ID96", "FV[p, Momentum[l]]", " SP[l, p]"},
+{"fcstSharedObjectsBehavior-ID97", "FV[Momentum[p], Momentum[l]]", " SP[l, p]"},
+{"fcstSharedObjectsBehavior-ID98", "FV[Momentum[l], p]", " FV[Momentum[l], p]"},
+{"fcstSharedObjectsBehavior-ID99", "GA[a.b.c]", " GA[a].GA[b].GA[c]"},
+{"fcstSharedObjectsBehavior-ID100", "GA[a, b, c]", " GA[a].GA[b].GA[c]"},
+{"fcstSharedObjectsBehavior-ID101", "GA5", " DiracGamma[5]"},
+{"fcstSharedObjectsBehavior-ID102", "GAD[a.b.c]", " GAD[a].GAD[b].GAD[c]"},
+{"fcstSharedObjectsBehavior-ID103", "GAD[a, b, c]", " GAD[a].GAD[b].GAD[c]"},
+{"fcstSharedObjectsBehavior-ID103.1", "GAE[a.b.c]", " GAE[a].GAE[b].GAE[c]"},
+{"fcstSharedObjectsBehavior-ID103.2", "GAE[a, b, c]", " GAE[a].GAE[b].GAE[c]"},
+{"fcstSharedObjectsBehavior-ID104", "GS[a.b.c]", " GS[a].GS[b].GS[c]"},
+{"fcstSharedObjectsBehavior-ID105", "GS[a, b, c]", " GS[a].GS[b].GS[c]"},
+{"fcstSharedObjectsBehavior-ID106", "GSD[a.b.c]", " GSD[a].GSD[b].GSD[c]"},
+{"fcstSharedObjectsBehavior-ID107", "GSD[a, b, c]", " GSD[a].GSD[b].GSD[c]"},
+{"fcstSharedObjectsBehavior-ID107.1", "GSE[a.b.c]", " GSE[a].GSE[b].GSE[c]"},
+{"fcstSharedObjectsBehavior-ID107.2", "GSE[a, b, c]", " GSE[a].GSE[b].GSE[c]"},
+{"fcstSharedObjectsBehavior-ID108", "IFPD[Momentum[OPEDelta, a], 0]", " 0"},
+{"fcstSharedObjectsBehavior-ID109", "LeftPartialD[(1)]", " 1"},
+{"fcstSharedObjectsBehavior-ID110", "LeftPartialD[(1), (1), (1)]", "1"},
+{"fcstSharedObjectsBehavior-ID111", "LeftPartialD[OPEDelta]", " LeftPartialD[Momentum[OPEDelta]]"},
+{"fcstSharedObjectsBehavior-ID112", "LeftPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+	" LeftPartialD[LorentzIndex[mu]].LeftPartialD[LorentzIndex[nu]].LeftPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID113", "LeftPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]",
+	" LeftPartialD[Momentum[p1]].LeftPartialD[Momentum[p2]].LeftPartialD[Momentum[p3]]"},
+{"fcstSharedObjectsBehavior-ID114", "LeftPartialD[nu, mu, LorentzIndex[rho]]",
+	" LeftPartialD[nu, mu, LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID115", "LeftPartialD[nu, mu, rho]",
+	" LeftPartialD[LorentzIndex[nu]].LeftPartialD[LorentzIndex[mu]].LeftPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID116", "LeftRightPartialD[(1)]", " 1"},
+{"fcstSharedObjectsBehavior-ID117", "LeftRightPartialD[(1), (1), (1)]", "1"},
+{"fcstSharedObjectsBehavior-ID118", "LeftRightPartialD[OPEDelta]", " LeftRightPartialD[Momentum[OPEDelta]]"},
+{"fcstSharedObjectsBehavior-ID119", "LeftRightPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+	" LeftRightPartialD[LorentzIndex[mu]].LeftRightPartialD[LorentzIndex[nu]].LeftRightPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID120", "LeftRightPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]",
+	" LeftRightPartialD[Momentum[p1]].LeftRightPartialD[Momentum[p2]].LeftRightPartialD[Momentum[p3]]"},
+{"fcstSharedObjectsBehavior-ID121", "LeftRightPartialD[nu, mu, LorentzIndex[rho]]",
+	" LeftRightPartialD[nu, mu, LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID122", "LeftRightPartialD[nu, mu, rho]",
+	" LeftRightPartialD[LorentzIndex[nu]].LeftRightPartialD[LorentzIndex[mu]].LeftRightPartialD[LorentzIndex[rho]]"}, {"fcstSharedObjectsBehavior-ID123", "LeftRightPartialD2[(1)]", " 1"},
+{"fcstSharedObjectsBehavior-ID124", "LeftRightPartialD2[(1), (1), (1)]", "1"},
+{"fcstSharedObjectsBehavior-ID125", "LeftRightPartialD2[OPEDelta]", " LeftRightPartialD2[Momentum[OPEDelta]]"},
+{"fcstSharedObjectsBehavior-ID126", "LeftRightPartialD2[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+	" LeftRightPartialD2[LorentzIndex[mu]].LeftRightPartialD2[ LorentzIndex[nu]].LeftRightPartialD2[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID127", "LeftRightPartialD2[Momentum[p1], Momentum[p2], Momentum[p3]]",
+	" LeftRightPartialD2[Momentum[p1]].LeftRightPartialD2[Momentum[p2]].LeftRightPartialD2[ Momentum[p3]]"}, {"fcstSharedObjectsBehavior-ID128", "LeftRightPartialD2[nu, mu, LorentzIndex[rho]]",
+	" LeftRightPartialD2[nu, mu, LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID129", "LeftRightPartialD2[nu, mu, rho]",
+	" LeftRightPartialD2[LorentzIndex[nu]].LeftRightPartialD2[LorentzIndex[mu]].LeftRightPartialD2[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID129.1", "LeviCivita[a, b, c, d]",
+	"Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], LorentzIndex[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.2", "LeviCivita[a, b, c, d, Dimension->4]",
+	"Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], LorentzIndex[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.3", "LeviCivita[a, b, c, d, Dimension->D]",
+	"Eps[LorentzIndex[a,D], LorentzIndex[b,D], LorentzIndex[c,D], LorentzIndex[d,D], Dimension -> D]"},
+{"fcstSharedObjectsBehavior-ID129.4", "LeviCivita[][a, b, c, d]",
+	"Eps[Momentum[a], Momentum[b], Momentum[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.5", "LeviCivita[][a, b, c, d, Dimension->4]",
+	"Eps[Momentum[a], Momentum[b], Momentum[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.6", "LeviCivita[Dimension->D][a, b, c, d, Dimension->D]",
+	"Eps[Momentum[a, D], Momentum[b, D], Momentum[c, D], Momentum[d, D], Dimension -> D]"},
+{"fcstSharedObjectsBehavior-ID129.7", "LeviCivita[a][ b, c, d]",
+	"Eps[LorentzIndex[a], Momentum[b], Momentum[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.8", "LeviCivita[a, Dimension->4][ b, c, d, Dimension->4]",
+	"Eps[LorentzIndex[a], Momentum[b], Momentum[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.9", "LeviCivita[a, Dimension->D][ b, c, d, Dimension->D]",
+	"Eps[LorentzIndex[a,D], Momentum[b,D], Momentum[c,D], Momentum[d,D], Dimension -> D]"},
+{"fcstSharedObjectsBehavior-ID129.10", "LeviCivita[a, b][ c, d]",
+	"Eps[LorentzIndex[a], LorentzIndex[b], Momentum[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.11", "LeviCivita[a, b, Dimension->4][ c, d, Dimension->4]",
+	"Eps[LorentzIndex[a], LorentzIndex[b], Momentum[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.12", "LeviCivita[a, b, Dimension->D][ c, d, Dimension->D]",
+	"Eps[LorentzIndex[a,D], LorentzIndex[b,D], Momentum[c,D], Momentum[d,D], Dimension -> D]"},
+{"fcstSharedObjectsBehavior-ID129.13", "LeviCivita[a, b, c][ d]",
+	"Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.14", "LeviCivita[a, b, c, Dimension->4][d, Dimension->4]",
+	"Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], Momentum[d], Dimension -> 4]"},
+{"fcstSharedObjectsBehavior-ID129.15", "LeviCivita[a, b, c, Dimension->D][d, Dimension->D]",
+	"Eps[LorentzIndex[a,D], LorentzIndex[b,D], LorentzIndex[c,D], Momentum[d,D], Dimension -> D]"},
+{"fcstSharedObjectsBehavior-ID130", "LorentzIndex[LorentzIndex[mu, D], D]", " LorentzIndex[mu, D]"},
+{"fcstSharedObjectsBehavior-ID131", "LorentzIndex[mu, 4]", " LorentzIndex[mu]"},
+{"fcstSharedObjectsBehavior-ID132", "LorentzIndex[mu, 0]", " 0"},
+{"fcstSharedObjectsBehavior-ID133", "LorentzIndex[3, 4]", " ExplicitLorentzIndex[3]"},
+{"fcstSharedObjectsBehavior-ID134", "LorentzIndex[3, D]", " ExplicitLorentzIndex[3, D]"},
+{"fcstSharedObjectsBehavior-ID135", "MetricTensor[a, b]", " Pair[LorentzIndex[a], LorentzIndex[b]]"},
+{"fcstSharedObjectsBehavior-ID136", "MetricTensor[a, b, Dimension -> D]", " Pair[LorentzIndex[a, D], LorentzIndex[b, D]]"},
+{"fcstSharedObjectsBehavior-ID137", "MetricTensor[a, b, Dimension -> D, FCI -> False]", " MetricTensor[a, b, Dimension -> D, FeynCalcInternal -> False]"},
+{"fcstSharedObjectsBehavior-ID138", "Momentum[x GaugeXi[y], D]", " GaugeXi[y]*Momentum[x, D]"},
+{"fcstSharedObjectsBehavior-ID139", "Momentum[5 x , D]", " 5*Momentum[x, D]"},
+{"fcstSharedObjectsBehavior-ID140", "Momentum[ x , 4]", " Momentum[x]"},
+{"fcstSharedObjectsBehavior-ID141", "Momentum[ 0 , a]", " 0"},
+{"fcstSharedObjectsBehavior-ID142", "Momentum[ a, 0]", " 0"},
+{"fcstSharedObjectsBehavior-ID143", "Momentum[Momentum[x, D], D]", "Momentum[x, D]"},
+{"fcstSharedObjectsBehavior-ID143-1", "Momentum[Momentum[x]]", "Momentum[x]"},
+{"fcstSharedObjectsBehavior-ID143-2", "Momentum[Momentum[x,D],D-4]", "Momentum[x,{D,D-4}]"},
+{"fcstSharedObjectsBehavior-ID144", "MT[Momentum[a], Momentum[b]]", " SP[a, b]"},
+{"fcstSharedObjectsBehavior-ID145", "MT[Momentum[a, D], Momentum[b, D]]", " SPD[a, b]"},
+{"fcstSharedObjectsBehavior-ID145.1", "MT[Momentum[a, D-4], Momentum[b, D-4]]", " SPE[a, b]"},
+{"fcstSharedObjectsBehavior-ID146", "MT[Momentum[a, D], Momentum[b]]", " MT[Momentum[a, D], Momentum[b]]"},
+{"fcstSharedObjectsBehavior-ID147", "OPE^4", " 0"},
+{"fcstSharedObjectsBehavior-ID148", "OPE^-4", " OPE^-4"},
+{"fcstSharedObjectsBehavior-ID149", "Pair[0, a]", "0"},
+{"fcstSharedObjectsBehavior-ID150", "Pair[9 a, b]", " 9*Pair[a, b]"},
+{"fcstSharedObjectsBehavior-ID150.1", "Pair[LorentzIndex[mu, D1], Momentum[p,D2]]", " Pair[LorentzIndex[mu,D1], Momentum[p,D2]]"},
+{"fcstSharedObjectsBehavior-ID150.2", "Pair[Momentum[p, D1], LorentzIndex[mu,D2]]", " Pair[Momentum[p, D1], LorentzIndex[mu,D2]]"},
+{"fcstSharedObjectsBehavior-ID150.3", "Pair[Momentum[p, D1], Momentum[q,D2]]", "Pair[Momentum[p,D1], Momentum[q,D2]]"},
+{"fcstSharedObjectsBehavior-ID150.4", "Pair[LorentzIndex[mu, D1], LorentzIndex[nu,D2]]", "Pair[LorentzIndex[mu,D1], LorentzIndex[nu,D2]]"},
+{"fcstSharedObjectsBehavior-ID151", "Pair[LorentzIndex[mu, D], Momentum[p]]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID151.1", "Pair[LorentzIndex[mu], Momentum[p,D]]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID152", "Pair[Momentum[p, D], LorentzIndex[mu]]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID152.1", "Pair[Momentum[p], LorentzIndex[mu,D]]", " Pair[LorentzIndex[mu], Momentum[p]]"},
+{"fcstSharedObjectsBehavior-ID152.2", "Pair[Momentum[p, D], Momentum[q]]", "Pair[Momentum[p], Momentum[q]]"},
+{"fcstSharedObjectsBehavior-ID152.3", "Pair[Momentum[p], Momentum[q,D]]", "Pair[Momentum[p], Momentum[q]]"},
+{"fcstSharedObjectsBehavior-ID152.4", "Pair[LorentzIndex[mu, D], LorentzIndex[nu]]", "Pair[LorentzIndex[mu], LorentzIndex[nu]]"},
+{"fcstSharedObjectsBehavior-ID152.5", "Pair[LorentzIndex[mu], LorentzIndex[nu,D]]", "Pair[LorentzIndex[mu], LorentzIndex[nu]]"},
+{"fcstSharedObjectsBehavior-ID152.6", "Pair[LorentzIndex[mu, D-4], Momentum[p]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.7", "Pair[LorentzIndex[mu], Momentum[p,D-4]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.8", "Pair[Momentum[p, D-4], LorentzIndex[mu]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.9", "Pair[Momentum[p], LorentzIndex[mu,D-4]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.10", "Pair[Momentum[p, D-4], Momentum[q]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.11", "Pair[Momentum[p], Momentum[q,D-4]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.12", "Pair[LorentzIndex[mu, D-4], LorentzIndex[nu]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.13", "Pair[LorentzIndex[mu], LorentzIndex[nu,D-4]]", "0"},
+{"fcstSharedObjectsBehavior-ID152.14", "Pair[LorentzIndex[mu, D], Momentum[p,D-4]]", " Pair[LorentzIndex[mu,D-4], Momentum[p,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.15", "Pair[LorentzIndex[mu,D-4], Momentum[p,D]]", " Pair[LorentzIndex[mu,D-4], Momentum[p,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.16", "Pair[Momentum[p, D], LorentzIndex[mu,D-4]]", " Pair[LorentzIndex[mu,D-4], Momentum[p,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.17", "Pair[Momentum[p,D-4], LorentzIndex[mu,D]]", " Pair[LorentzIndex[mu,D-4], Momentum[p,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.18", "Pair[Momentum[p, D], Momentum[q,D-4]]", "Pair[Momentum[p,D-4], Momentum[q,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.19", "Pair[Momentum[p,D-4], Momentum[q,D]]", "Pair[Momentum[p,D-4], Momentum[q,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.20", "Pair[LorentzIndex[mu, D], LorentzIndex[nu,D-4]]", "Pair[LorentzIndex[mu,D-4], LorentzIndex[nu,D-4]]"},
+{"fcstSharedObjectsBehavior-ID152.21", "Pair[LorentzIndex[mu,D-4], LorentzIndex[nu,D]]", "Pair[LorentzIndex[mu,D-4], LorentzIndex[nu,D-4]]"},
+{"fcstSharedObjectsBehavior-ID153", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2]]]", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2]]]"},
+{"fcstSharedObjectsBehavior-ID153.1", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2,Transversality->True]]]", "0"},
+{"fcstSharedObjectsBehavior-ID153.2", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2,Transversality->False]]]", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2,Transversality->False]]]"},
+{"fcstSharedObjectsBehavior-ID153.3", "SetOptions[Polarization,Transversality->True];\nPair[Momentum[p, D1], Momentum[Polarization[p, D2,Transversality->False]]]", "Pair[Momentum[p, D1], Momentum[Polarization[p, D2,Transversality->False]]]"},
+{"fcstSharedObjectsBehavior-ID153.4", "SetOptions[Polarization,Transversality->False];\nPair[Momentum[p, D1], Momentum[Polarization[p, D2,Transversality->True]]]", "0"},
+{"fcstSharedObjectsBehavior-ID153.5", "SetOptions[Polarization,Transversality->True];\nPair[Momentum[p, D1], Momentum[Polarization[p, D2]]]", "0"},
+{"fcstSharedObjectsBehavior-ID153.6", "SetOptions[Polarization,Transversality->False];\nPair[Momentum[p, D1], Momentum[Polarization[p, D2]]]", "Pair[Momentum[p], Momentum[Polarization[p, D2]]]"},
+{"fcstSharedObjectsBehavior-ID154", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I]]]", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I]]]"},
+{"fcstSharedObjectsBehavior-ID154.1", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I,Transversality->True]]]", "0"},
+{"fcstSharedObjectsBehavior-ID154.2", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I,Transversality->False]]]", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I,Transversality->False]]]"},
+{"fcstSharedObjectsBehavior-ID154.3", "SetOptions[Polarization,Transversality->True];\nPair[Momentum[p, D1], Momentum[Polarization[4 p, I,Transversality->False]]]", "Pair[Momentum[p, D1], Momentum[Polarization[4 p, I,Transversality->False]]]"},
+{"fcstSharedObjectsBehavior-ID154.4", "SetOptions[Polarization,Transversality->False];\nPair[Momentum[p, D1], Momentum[Polarization[4 p, I,Transversality->True]]]", "0"},
+{"fcstSharedObjectsBehavior-ID154.5", "SetOptions[Polarization,Transversality->True];\nPair[Momentum[p, D1], Momentum[Polarization[4 p, I]]]", "0"},
+{"fcstSharedObjectsBehavior-ID154.6", "SetOptions[Polarization,Transversality->False];\nPair[Momentum[p, D1], Momentum[Polarization[4 p, I]]]", "Pair[Momentum[p], Momentum[Polarization[4 p, I]]]"},
+{"fcstSharedObjectsBehavior-ID155", "Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I], D2]]", " Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I], D2]]"},
+{"fcstSharedObjectsBehavior-ID155.1", "Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I, Transversality->True], D2]]", " Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I, Transversality->True], D2]]"},
+{"fcstSharedObjectsBehavior-ID155.2", "Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I, Transversality->False], D2]]", " Pair[Momentum[p, D1], Momentum[Polarization[p1 + p2 + p3, I, Transversality->False], D2]]"},
+{"fcstSharedObjectsBehavior-ID156", "Pair[Momentum[p, D1], Momentum[Polarization[a + b - p, I], D2]]",
+	"Pair[Momentum[a, D2], Momentum[Polarization[a + b - p, I], D2]] + Pair[Momentum[b, D2], Momentum[Polarization[a + b - p, I], D2]]"},
+{"fcstSharedObjectsBehavior-ID156.1", "Pair[Momentum[p, D1], Momentum[Polarization[a + b - p, I, Transversality->True], D2]]",
+	"Pair[Momentum[a, D2], Momentum[Polarization[a + b - p, I, Transversality->True], D2]] + Pair[Momentum[b, D2], Momentum[Polarization[a + b - p, I, Transversality->True], D2]]"},
+{"fcstSharedObjectsBehavior-ID156.2", "Pair[Momentum[p, D1], Momentum[Polarization[a + b - p, I, Transversality->False], D2]]",
+	"Pair[Momentum[a, D2], Momentum[Polarization[a + b - p, I, Transversality->False], D2]] + Pair[Momentum[b, D2], Momentum[Polarization[a + b - p, I, Transversality->False], D2]]"},
+{"fcstSharedObjectsBehavior-ID157", "Pair[Momentum[p, D1], Momentum[Polarization[a + b + p, I], D2]]",
+	" -Pair[Momentum[a, D2], Momentum[Polarization[a + b + p, I], D2]] - Pair[Momentum[b, D2], Momentum[Polarization[a + b + p, I], D2]]"},
+{"fcstSharedObjectsBehavior-ID157.1", "Pair[Momentum[p, D1], Momentum[Polarization[a + b + p, I, Transversality->True], D2]]",
+	" -Pair[Momentum[a, D2], Momentum[Polarization[a + b + p, I, Transversality->True], D2]] - Pair[Momentum[b, D2], Momentum[Polarization[a + b + p, I, Transversality->True], D2]]"},
+{"fcstSharedObjectsBehavior-ID157.2", "Pair[Momentum[p, D1], Momentum[Polarization[a + b + p, I, Transversality->False], D2]]",
+	" -Pair[Momentum[a, D2], Momentum[Polarization[a + b + p, I, Transversality->False], D2]] - Pair[Momentum[b, D2], Momentum[Polarization[a + b + p, I, Transversality->False], D2]]"},
+{"fcstSharedObjectsBehavior-ID158", "Pair[Momentum[Polarization[p, I], D1],  Momentum[Polarization[p, -I], D2]]", " -1"}, {"fcstSharedObjectsBehavior-ID159", "FCPartialD[(1)]", "1"},
+{"fcstSharedObjectsBehavior-ID160", "FCPartialD[(1), (1), (1)]", "1"},
+{"fcstSharedObjectsBehavior-ID161", "FCPartialD[OPEDelta]", "FCPartialD[Momentum[OPEDelta]]"},
+{"fcstSharedObjectsBehavior-ID162", "FCPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]", "FCPartialD[LorentzIndex[mu]].FCPartialD[LorentzIndex[nu]].FCPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID163", "FCPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", "FCPartialD[Momentum[p1]].FCPartialD[Momentum[p2]].FCPartialD[Momentum[p3]]"},
+{"fcstSharedObjectsBehavior-ID164", "FCPartialD[nu, mu, LorentzIndex[rho]]", " FCPartialD[nu, mu, LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID165", "FCPartialD[nu, mu, rho]", "FCPartialD[LorentzIndex[nu]].FCPartialD[LorentzIndex[mu]].FCPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID166", "PauliSigma[1]", "{ {0, 1}, {1,0} }"},
+{"fcstSharedObjectsBehavior-ID167", "PauliSigma[2]", "{ {0,-I}, {I,0} }"},
+{"fcstSharedObjectsBehavior-ID168", "PauliSigma[3]", "{ {1, 0}, {0,-1} }"},
+{"fcstSharedObjectsBehavior-ID169", "PauliSigma[]", "{PauliSigma[1], PauliSigma[2], PauliSigma[3]}"},
+{"fcstSharedObjectsBehavior-ID170", "PlusDistribution[Log[z (1 - z)]/(1 - z)]", " Log[z]/(1 - z) + PlusDistribution[Log[1 - z]/(1 - z)]"},
+{"fcstSharedObjectsBehavior-ID171", "Polarization[p]", "Polarization[p, I]"},
+{"fcstSharedObjectsBehavior-ID171.1", "Polarization[p, Transversality->True]", "Polarization[p, I, Transversality->True]"},
+{"fcstSharedObjectsBehavior-ID171.2", "Polarization[p, Transversality->False]", "Polarization[p, I, Transversality->False]"},
+{"fcstSharedObjectsBehavior-ID172", "Polarization[-p, I]", " -Polarization[p, I]"},
+{"fcstSharedObjectsBehavior-ID172.1", "Polarization[-p, I,  Transversality->True]", " -Polarization[p, I, Transversality->True]"},
+{"fcstSharedObjectsBehavior-ID172.2", "Polarization[-p, I,  Transversality->False]", " -Polarization[p, I,  Transversality->False]"},
+{"fcstSharedObjectsBehavior-ID173", "Polarization[-p, -I]", "-Polarization[p, -I]"},
+{"fcstSharedObjectsBehavior-ID173.1", "Polarization[-p, -I,  Transversality->True]", "-Polarization[p, -I,  Transversality->True]"},
+{"fcstSharedObjectsBehavior-ID173.2", "Polarization[-p, -I,  Transversality->False]", "-Polarization[p, -I,  Transversality->False]"},
+{"fcstSharedObjectsBehavior-ID174", "PolarizationVector[p, mu, c]", "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c]]]]"},
+{"fcstSharedObjectsBehavior-ID174.1", "PolarizationVector[p, mu, c,  Transversality->True]", "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c], Transversality -> True]]]"},
+{"fcstSharedObjectsBehavior-ID174.2", "PolarizationVector[p, mu, c,  Transversality->False]", "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c], Transversality -> False]]]"},
+{"fcstSharedObjectsBehavior-ID175", "PolarizationVector[p, {mu, c}]","Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c]]]]"},
+{"fcstSharedObjectsBehavior-ID175.1", "PolarizationVector[p, {mu, c},  Transversality->True]","Pair[LorentzIndex[{mu, c}], Momentum[Polarization[p, I, Transversality -> True]]]"},
+{"fcstSharedObjectsBehavior-ID175.2", "PolarizationVector[p, {mu, c},  Transversality->False]","Pair[LorentzIndex[{mu, c}], Momentum[Polarization[p, I, Transversality -> False]]]"},
+{"fcstSharedObjectsBehavior-ID176", "PropagatorDenominator[x]", "PropagatorDenominator[x, 0]"},
+{"fcstSharedObjectsBehavior-ID177", "PD", "PropagatorDenominator"},
+{"fcstSharedObjectsBehavior-ID178", "QuantumField[A, {mu, SUNIndex[a]}]", " QuantumField[A, LorentzIndex[mu], SUNIndex[a]]"},
+{"fcstSharedObjectsBehavior-ID179", "QuantumField[QuantumField[A, {mu, SUNIndex[a]}]]", " QuantumField[A, LorentzIndex[mu], SUNIndex[a]]"},
+{"fcstSharedObjectsBehavior-ID180", "RightPartialD[(1)]", " 1"}, {"fcstSharedObjectsBehavior-ID181", "RightPartialD[(1), (1), (1)]", "1"},
+{"fcstSharedObjectsBehavior-ID182", "RightPartialD[OPEDelta]", " RightPartialD[Momentum[OPEDelta]]"},
+{"fcstSharedObjectsBehavior-ID183", "RightPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
+	" RightPartialD[LorentzIndex[mu]].RightPartialD[ LorentzIndex[nu]].RightPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID184", "RightPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", " RightPartialD[Momentum[p1]].RightPartialD[Momentum[p2]].RightPartialD[ Momentum[p3]]"},
+{"fcstSharedObjectsBehavior-ID185", "RightPartialD[nu, mu, LorentzIndex[rho]]", "RightPartialD[nu, mu, LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID186", "RightPartialD[nu, mu, rho]", "RightPartialD[LorentzIndex[nu]].RightPartialD[LorentzIndex[mu]].RightPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID187", "SmallVariable[0]", "0"},
+{"fcstSharedObjectsBehavior-ID188", "SmallVariable[a^b]", "SmallVariable[a]^b"},
+{"fcstSharedObjectsBehavior-ID189", "SP[a]", "SP[a,a]"},
+{"fcstSharedObjectsBehavior-ID189.1", "SPE[a]", "SPE[a,a]"},
+{"fcstSharedObjectsBehavior-ID190", "SPD[a]", "SPD[a,a]"},
+{"fcstSharedObjectsBehavior-ID191", "Spinor[Momentum[p], m]", "Spinor[Momentum[p], m, 1]"},
+{"fcstSharedObjectsBehavior-ID192", "Spinor[p, m]", "Spinor[Momentum[p], m, 1]"},
+{"fcstSharedObjectsBehavior-ID193", "Spinor[Momentum[p, D], m]", " Spinor[Momentum[p], m, 1]"},
+{"fcstSharedObjectsBehavior-ID194", "Spinor[Momentum[-p, D], m]", "Spinor[-Momentum[p], m, 1]"},
+{"fcstSharedObjectsBehavior-ID195", "Spinor[a + b Momentum[p1 + p2], m]",
+	"Spinor[a + b (Momentum[p1] + Momentum[p2]), m, 1]"},
+{"fcstSharedObjectsBehavior-ID196", "Spinor[a, b SmallVariable[c]]", "Spinor[Momentum[a], 0, 1]"},
+{"fcstSharedObjectsBehavior-ID197", "Spinor[p]", "Spinor[Momentum[p], 0, 1]"},
+{"fcstSharedObjectsBehavior-ID198", "SUND[SUNIndex[a], SUNIndex[a], b]", " 0"},
+{"fcstSharedObjectsBehavior-ID199", "SUND[SUNIndex[1], SUNIndex[1], b]", "SUND[ExplicitSUNIndex[1], ExplicitSUNIndex[1], b]"}, {"fcstSharedObjectsBehavior-ID200", "SUND[a, b, c]", "SUND[a, b, c]"},
+{"fcstSharedObjectsBehavior-ID201", "SUND[a, b, c, Explicit -> True]",
+	"2 SUNTrace[SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]] + 2 SUNTrace[SUNT[SUNIndex[b]].SUNT[SUNIndex[a]].SUNT[SUNIndex[c]]]"},
+{"fcstSharedObjectsBehavior-ID202", "SUNF[SUNIndex[x], b, SUNIndex[x]]", "0"},
+{"fcstSharedObjectsBehavior-ID203", "SUNF[a, SUNIndex[x], SUNIndex[x]]", "0"},
+{"fcstSharedObjectsBehavior-ID204", "SUNF[SUNIndex[x], SUNIndex[x], c]", "0"},
+{"fcstSharedObjectsBehavior-ID205", "SUNF[SUNIndex[x], b, SUNIndex[y]]", "SUNF[SUNIndex[x], b, SUNIndex[y]]"},
+{"fcstSharedObjectsBehavior-ID206", "SUNF[a, SUNIndex[x], SUNIndex[y]]", " SUNF[a, SUNIndex[x], SUNIndex[y]]"},
+{"fcstSharedObjectsBehavior-ID207", "SUNF[SUNIndex[x], SUNIndex[y], c]",
+	" SUNF[SUNIndex[x], SUNIndex[y], c]"},
+{"fcstSharedObjectsBehavior-ID208", "SUNF[SUNIndex[y], b, SUNIndex[x]]", " SUNF[SUNIndex[y], b, SUNIndex[x]]"},
+{"fcstSharedObjectsBehavior-ID209", "SUNF[a, SUNIndex[y], SUNIndex[x]]", " -SUNF[a, SUNIndex[x], SUNIndex[y]]"},
+{"fcstSharedObjectsBehavior-ID210", "SUNF[SUNIndex[y], SUNIndex[x], c]",
+	" -SUNF[SUNIndex[x], SUNIndex[y], c]"}, {"fcstSharedObjectsBehavior-ID211", "SUNF[i, j, k]", "SUNF[i, j, k]"},
+{"fcstSharedObjectsBehavior-ID212", "SUNF[i, j, k, Explicit -> True]",
+	"(2*I)*(-SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[j]] . SUNT[SUNIndex[k]]] + SUNTrace[SUNT[SUNIndex[i]] . SUNT[SUNIndex[k]] . SUNT[SUNIndex[j]]])"},
+{"fcstSharedObjectsBehavior-ID213", "SUNF[i, j, k, l]", "SUNF[i, j, k, l]"},
+{"fcstSharedObjectsBehavior-ID214", "(SUNF[i, j, k, l, Explicit -> True] /. {SUNIndex[a_] -> SUNIndex[s1]})",
+	" SUNF[i, j, SUNIndex[s1]] SUNF[SUNIndex[s1], k, l]"},
+{"fcstSharedObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"},
+{"fcstSharedObjectsBehavior-ID216", "SUNFIndex[4]", "ExplicitSUNFIndex[4]"},
+{"fcstSharedObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"}
+}
+
+Tests`Shared`fcstSharedObjectsTypesetting = ({
+{"fcstSharedObjectsTypesetting-ID1", "MakeBoxes[CA, TraditionalForm]",
+"\\(C\\_A\\)"},
+{"fcstSharedObjectsTypesetting-ID2", "MakeBoxes[CF, TraditionalForm]",
+"\\(C\\_F\\)"},
+{"fcstSharedObjectsTypesetting-ID3",
+"MakeBoxes[AntiQuarkField, TraditionalForm]", "\\(\[Psi]\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID4",
+"MakeBoxes[ChiralityProjector[1, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`6\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID5",
+"MakeBoxes[ChiralityProjector[-1, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`7\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID7",
+"MakeBoxes[DeltaFunction[x - y], TraditionalForm]",
+"\\(\[Delta](TraditionalForm\\`\\(x - y\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID8",
+"MakeBoxes[DeltaFunctionPrime[x - y], TraditionalForm]",
+"\\(\[Delta]\\^\[Prime](TraditionalForm\\`\\(x - y\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID9",
+"MakeBoxes[DeltaFunctionDoublePrime[x - y], TraditionalForm]",
+"\\(\[Delta]\\^\[DoublePrime](TraditionalForm\\`\\(x - y\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID10",
+"MakeBoxes[DiracGamma[Momentum[p]], TraditionalForm]",
+"\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID11",
+"MakeBoxes[DiracGamma[Momentum[p, D], D], TraditionalForm]",
+"\\(\[Gamma] \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID12",
+"MakeBoxes[DiracGamma[Momentum[p, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\\)"},
+{"fcstSharedObjectsTypesetting-ID13",
+"MakeBoxes[DiracGamma[Momentum[p, D1], D2], TraditionalForm]",
+"\\(\[Gamma]\\_\\(TraditionalForm\\`D2\\) \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID14",
+"MakeBoxes[DiracGamma[Momentum[p + q]], TraditionalForm]",
+"\\(\[Gamma]\\&_ \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID15",
+"MakeBoxes[DiracGamma[Momentum[p + q, D], D], TraditionalForm]",
+"\\(\[Gamma] \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID16",
+"MakeBoxes[DiracGamma[Momentum[p + q, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID17",
+"MakeBoxes[DiracGamma[Momentum[p + q, D1], D2], TraditionalForm]",
+"\\(\[Gamma]\\_\\(TraditionalForm\\`D2\\) \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID18",
+"MakeBoxes[DiracGamma[Momentum[Polarization[p, I]]], \
+TraditionalForm]",
+"\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(\[CurlyEpsilon]\\&_(\\(TraditionalForm\\`p\\))\
+\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID19",
+"MakeBoxes[DiracGamma[Momentum[Polarization[p, I], D], D], \
+TraditionalForm]",
+"\\(\[Gamma] \[CenterDot] TraditionalForm\\`\\(\\(TraditionalForm\
+\\`\"\\[CurlyEpsilon]\"\\)(\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID20",
+"MakeBoxes[DiracGamma[Momentum[Polarization[p, I], -4 + D], -4 + \
+D], TraditionalForm]",
+"\\(\\(\[Gamma]\\&^\\) \[CenterDot] TraditionalForm\
+\\`\\(\\(\[CurlyEpsilon]\\&^\\)(\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID21",
+"MakeBoxes[DiracGamma[LorentzIndex[a]], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID22",
+"MakeBoxes[DiracGamma[LorentzIndex[a, D], D], TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID23",
+"MakeBoxes[DiracGamma[LorentzIndex[a, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID24",
+"MakeBoxes[DiracGamma[LorentzIndex[Upper[a]]], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID25",
+"MakeBoxes[DiracGamma[LorentzIndex[Upper[a], D], D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID26",
+"MakeBoxes[DiracGamma[LorentzIndex[Upper[a], -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID27",
+"MakeBoxes[DiracGamma[LorentzIndex[Lower[a]]], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID28",
+"MakeBoxes[DiracGamma[LorentzIndex[Lower[a], D], D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID29",
+"MakeBoxes[DiracGamma[LorentzIndex[Lower[a], -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID30",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[3]], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID31",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, D], D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID32",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID33",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[Upper[3]]], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID34",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[Upper[3], D], D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID35",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[Upper[3], -4 + D], -4 + \
+D], TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID36",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[Lower[3]]], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID37",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[Lower[3], D], D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID38",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[Lower[3], -4 + D], -4 + \
+D], TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID39",
+"MakeBoxes[DiracGamma[5], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\\)\\^TraditionalForm\\`5\\)"},
+{"fcstSharedObjectsTypesetting-ID40",
+"MakeBoxes[DiracGamma[6], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\\)\\^TraditionalForm\\`6\\)"},
+{"fcstSharedObjectsTypesetting-ID41",
+"MakeBoxes[DiracGamma[7], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\\)\\^TraditionalForm\\`7\\)"},
+{"fcstSharedObjectsTypesetting-ID42",
+"MakeBoxes[DiracGammaT[Momentum[p]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID43",
+"MakeBoxes[DiracGammaT[Momentum[p, D], D], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID44",
+"MakeBoxes[DiracGammaT[Momentum[p, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID45",
+"MakeBoxes[DiracGammaT[Momentum[p, D1], D2], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\\_\\(TraditionalForm\\`D2\\) \
+\[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID46",
+"MakeBoxes[DiracGammaT[Momentum[p + q]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID47",
+"MakeBoxes[DiracGammaT[Momentum[p + q, D], D], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID48",
+"MakeBoxes[DiracGammaT[Momentum[p + q, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID49",
+"MakeBoxes[DiracGammaT[Momentum[p + q, D1], D2], TraditionalForm]",
+	"\\(\\((TraditionalForm\\`\\(\[Gamma]\\_\\(TraditionalForm\\`D2\\) \
+\[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID50",
+"MakeBoxes[DiracGammaT[LorentzIndex[a]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID51",
+"MakeBoxes[DiracGammaT[LorentzIndex[a, D], D], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID52",
+"MakeBoxes[DiracGammaT[LorentzIndex[a, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID53",
+"MakeBoxes[DiracGammaT[LorentzIndex[Upper[a]]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\))\
+\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID54",
+"MakeBoxes[DiracGammaT[LorentzIndex[Upper[a], D], D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\))\
+\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID55",
+"MakeBoxes[DiracGammaT[LorentzIndex[Upper[a], -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID56",
+"MakeBoxes[DiracGammaT[LorentzIndex[Lower[a]]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID57",
+"MakeBoxes[DiracGammaT[LorentzIndex[Lower[a], D], D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID58",
+"MakeBoxes[DiracGammaT[LorentzIndex[Lower[a], -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID59",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[3]], TraditionalForm]",
+	"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID60",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[3, D], D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID61",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[3, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID62",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Upper[3]]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\))\
+\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID63",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Upper[3], D], D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\))\
+\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID64",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Upper[3], -4 + D], -4 \
++ D], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID65",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Lower[3]]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID66",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Lower[3], D], D], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\[Gamma]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID67",
+"MakeBoxes[DiracGammaT[ExplicitLorentzIndex[Lower[3], -4 + D], -4 \
++ D], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`3\
+\\)\\)\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID68",
+"MakeBoxes[DiracGammaT[5], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`5\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID69",
+"MakeBoxes[DiracGammaT[6], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`6\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID70",
+"MakeBoxes[DiracGammaT[7], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`7\\))\\)\\^T\\)"},
+{"fcstSharedObjectsTypesetting-ID71",
+"MakeBoxes[DiracGamma[LorentzIndex[i]], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID72",
+"MakeBoxes[DiracGamma[LorentzIndex[i, D], D], TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID73",
+"MakeBoxes[DiracGamma[LorentzIndex[i, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID74",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[3]], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID75",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, D], D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID76",
+"MakeBoxes[DiracGamma[ExplicitLorentzIndex[3, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID77",
+"MakeBoxes[DiracGamma[5], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\\)\\^TraditionalForm\\`5\\)"},
+{"fcstSharedObjectsTypesetting-ID78",
+"MakeBoxes[DiracGamma[6], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\\)\\^TraditionalForm\\`6\\)"},
+{"fcstSharedObjectsTypesetting-ID79",
+"MakeBoxes[DiracGamma[7], TraditionalForm]",
+"\\(\\(\[Gamma]\\&_\\)\\^TraditionalForm\\`7\\)"},
+{"fcstSharedObjectsTypesetting-ID80",
+"MakeBoxes[DiracMatrix[i, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID81",
+"MakeBoxes[DiracMatrix[i, FeynCalcInternal -> False, Dimension -> \
+D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID82",
+"MakeBoxes[DiracMatrix[i, FeynCalcInternal -> False, Dimension -> \
+-4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID83",
+"MakeBoxes[DiracMatrix[3, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID84",
+"MakeBoxes[DiracMatrix[3, FeynCalcInternal -> False, Dimension -> \
+D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID85",
+"MakeBoxes[DiracMatrix[3, FeynCalcInternal -> False, Dimension -> \
+-4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`3\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID86",
+"MakeBoxes[DiracMatrix[5, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`5\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID87",
+"MakeBoxes[DiracMatrix[6, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`6\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID88",
+"MakeBoxes[DiracMatrix[7, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`7\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID89",
+"MakeBoxes[DiracGamma[Momentum[p]], TraditionalForm]",
+"\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID90",
+"MakeBoxes[DiracGamma[Momentum[p, D], D], TraditionalForm]",
+"\\(\[Gamma] \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID91",
+"MakeBoxes[DiracGamma[Momentum[p, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\\)"},
+{"fcstSharedObjectsTypesetting-ID92",
+"MakeBoxes[DiracGamma[Momentum[p + q]], TraditionalForm]",
+"\\(\[Gamma]\\&_ \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID93",
+"MakeBoxes[DiracGamma[Momentum[p + q, D], D], TraditionalForm]",
+"\\(\[Gamma] \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID94",
+"MakeBoxes[DiracGamma[Momentum[p + q, -4 + D], -4 + D], \
+TraditionalForm]",
+"\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID95",
+"MakeBoxes[DiracSlash[p, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID96",
+"MakeBoxes[DiracSlash[p, FeynCalcInternal -> False, Dimension -> \
+D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID97",
+"MakeBoxes[DiracSlash[p, FeynCalcInternal -> False, Dimension -> \
+-4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID98",
+"MakeBoxes[DiracSlash[p + q, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID99",
+"MakeBoxes[DiracSlash[p + q, FeynCalcInternal -> False, Dimension -> \
+D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID100",
+"MakeBoxes[DiracSlash[p + q, FeynCalcInternal -> False, Dimension -> \
+-4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID101",
+"MakeBoxes[DiracGamma[Momentum[Polarization[p, I]]], \
+TraditionalForm]",
+"\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(\[CurlyEpsilon]\\&_(\\(TraditionalForm\\`p\\))\
+\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID102",
+"MakeBoxes[DiracGamma[Momentum[Polarization[p, I], D], D], \
+TraditionalForm]",
+"\\(\[Gamma] \[CenterDot] TraditionalForm\\`\\(\\(TraditionalForm\
+\\`\"\\[CurlyEpsilon]\"\\)(\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID103",
+"MakeBoxes[DiracGamma[Momentum[Polarization[p, I], -4 + D], -4 + \
+D], TraditionalForm]",
+"\\(\\(\[Gamma]\\&^\\) \[CenterDot] TraditionalForm\
+\\`\\(\\(\[CurlyEpsilon]\\&^\\)(\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID104",
+"MakeBoxes[DiracSlash[Polarization[p, I], FeynCalcInternal -> \
+False], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] TraditionalForm\
+\\`\\(\[CurlyEpsilon]\\&_(\\(TraditionalForm\\`p\\))\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID105",
+"MakeBoxes[DiracSlash[Polarization[p, I], FeynCalcInternal -> \
+False, Dimension -> D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+TraditionalForm\\`\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID106",
+"MakeBoxes[DiracSlash[Polarization[p, I], FeynCalcInternal -> \
+False, Dimension -> -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+TraditionalForm\\`\\(\\(\[CurlyEpsilon]\\&^\\)(\\(TraditionalForm\\`p\\))\
+\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID107",
+"MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a]], \
+DiracGamma[LorentzIndex[b]]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID108",
+"MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, D], D], \
+DiracGamma[LorentzIndex[b, D], D]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID109",
+"MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, -4 + D], -4 + D], \
+DiracGamma[LorentzIndex[b, -4 + D], -4 + D]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID110",
+"MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a]], \
+DiracGamma[LorentzIndex[b]]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID111",
+"MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, D], D], \
+DiracGamma[LorentzIndex[b, D], D]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID112",
+"MakeBoxes[DiracSigma[DiracGamma[LorentzIndex[a, -4 + D], -4 + D], \
+DiracGamma[LorentzIndex[b, -4 + D], -4 + D]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID113",
+"MakeBoxes[DiracSigma[DiracGamma[Momentum[a]], \
+DiracGamma[Momentum[b]]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_ \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID114",
+"MakeBoxes[DiracSigma[DiracGamma[Momentum[a, D], D], \
+DiracGamma[Momentum[b, D], D]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID115",
+"MakeBoxes[DiracSigma[DiracGamma[Momentum[a, -4 + D], -4 + D], \
+DiracGamma[Momentum[b, -4 + D], -4 + D]], TraditionalForm]",
+"\\(\[Sigma]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&^ \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&^\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID116",
+"MakeBoxes[Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], \
+LorentzIndex[d]], TraditionalForm]",
+"\\(\[Epsilon]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID117",
+"MakeBoxes[Eps[Momentum[a], Momentum[b], Momentum[c], \
+Momentum[d]], TraditionalForm]",
+"\\(\[Epsilon]\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_\
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&_ \
+TraditionalForm\\`\\(TraditionalForm\\`c\\)\\&_ \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID118",
+"MakeBoxes[Eps[Momentum[Polarization[a, I]], Momentum[b], \
+Momentum[c], Momentum[Polarization[d, I]]], TraditionalForm]",
+"\\(\[Epsilon]\\^\\(TraditionalForm\\`\\(\[CurlyEpsilon]\\&_(\
+\\(TraditionalForm\\`a\\))\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&_ \
+TraditionalForm\\`\\(TraditionalForm\\`c\\)\\&_ TraditionalForm\
+\\`\\(\[CurlyEpsilon]\\&_(\\(TraditionalForm\\`d\\))\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID119", "MakeBoxes[Epsilon, TraditionalForm]",
+"TagBox[\"\[CurlyEpsilon]\", TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID120",
+"MakeBoxes[ExplicitLorentzIndex[i], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID121",
+"MakeBoxes[ExplicitLorentzIndex[Upper[i]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID122",
+"MakeBoxes[ExplicitLorentzIndex[Lower[i]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID123",
+"MakeBoxes[ExplicitLorentzIndex[i, D], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID124",
+"MakeBoxes[ExplicitLorentzIndex[Upper[i], D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID125",
+"MakeBoxes[ExplicitLorentzIndex[Lower[i], D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID126",
+"MakeBoxes[ExplicitSUNIndex[i], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID127",
+"MakeBoxes[ExplicitSUNFIndex[i], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID128", "MakeBoxes[FAD[p], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"]\"\\), \
+SequenceForm[\"[\", Power[p, 2], \"]\"], Rule[Editable, \
+False]]\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID129", "MakeBoxes[FAD[p, q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"]\"\\), \
+SequenceForm[\"[\", Power[p, 2], \"]\"], Rule[Editable, False]])\\)\\ \
+\\((\\*InterpretationBox[\\(\"[\" \[InvisibleSpace] q\\^2 \
+\[InvisibleSpace] \"]\"\\), SequenceForm[\"[\", Power[q, 2], \"]\"], \
+Rule[Editable, False]])\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID130",
+"MakeBoxes[FAD[p, -l + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"]\"\\), \
+SequenceForm[\"[\", Power[p, 2], \"]\"], Rule[Editable, False]])\\)\\ \
+\\((\\*InterpretationBox[\\(\"[\" \[InvisibleSpace] \\((q - l)\\)\\^2 \
+\[InvisibleSpace] \"]\"\\), SequenceForm[\"[\", Power[Plus[Times[-1, \
+l], q], 2], \"]\"], Rule[Editable, False]])\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID131", "MakeBoxes[FAD[{p, m}], TraditionalForm]",
+	"\\(TraditionalForm\\`\\(1\\/\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"-\" \[InvisibleSpace] \
+m\\^2 \[InvisibleSpace] \"]\"\\), SequenceForm[\"[\", Power[p, 2], \
+\"-\", Power[m, 2], \"]\"], Rule[Editable, False]]\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID132",
+"MakeBoxes[FAD[{p, m}, {q, m}], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"-\" \[InvisibleSpace] \
+m\\^2 \[InvisibleSpace] \"]\"\\), SequenceForm[\"[\", Power[p, 2], \
+\"-\", Power[m, 2], \"]\"], Rule[Editable, False]])\\)\\ \
+\\((\\*InterpretationBox[\\(\"[\" \[InvisibleSpace] q\\^2 \
+\[InvisibleSpace] \"-\" \[InvisibleSpace] m\\^2 \[InvisibleSpace] \"]\
+\"\\), SequenceForm[\"[\", Power[q, 2], \"-\", Power[m, 2], \"]\"], \
+Rule[Editable, False]])\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID133",
+"MakeBoxes[FAD[{p, m}, {-l + q, m}], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"-\" \[InvisibleSpace] \
+m\\^2 \[InvisibleSpace] \"]\"\\), SequenceForm[\"[\", Power[p, 2], \
+\"-\", Power[m, 2], \"]\"], Rule[Editable, False]])\\)\\ \
+\\((\\*InterpretationBox[\\(\"[\" \[InvisibleSpace] \\((q - l)\\)\\^2 \
+\[InvisibleSpace] \"-\" \[InvisibleSpace] m\\^2 \[InvisibleSpace] \"]\
+\"\\), SequenceForm[\"[\", Power[Plus[Times[-1, l], q], 2], \"-\", \
+Power[m, 2], \"]\"], Rule[Editable, False]])\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID134",
+"MakeBoxes[FAD[{p, m}, q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] q\\^2 \[InvisibleSpace] \"]\"\\), \
+SequenceForm[\"[\", Power[q, 2], \"]\"], Rule[Editable, False]])\\)\\ \
+\\((\\*InterpretationBox[\\(\"[\" \[InvisibleSpace] p\\^2 \
+\[InvisibleSpace] \"-\" \[InvisibleSpace] m\\^2 \[InvisibleSpace] \"]\
+\"\\), SequenceForm[\"[\", Power[p, 2], \"-\", Power[m, 2], \"]\"], \
+Rule[Editable, False]])\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID135",
+"MakeBoxes[FAD[{p, m}, -l + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] \\((q - l)\\)\\^2 \[InvisibleSpace] \"]\"\\), \
+SequenceForm[\"[\", Power[Plus[Times[-1, l], q], 2], \"]\"], \
+Rule[Editable, False]])\\)\\ \\((\\*InterpretationBox[\\(\"[\" \
+\[InvisibleSpace] p\\^2 \[InvisibleSpace] \"-\" \[InvisibleSpace] \
+m\\^2 \[InvisibleSpace] \"]\"\\), SequenceForm[\"[\", Power[p, 2], \
+\"-\", Power[m, 2], \"]\"], Rule[Editable, False]])\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID136",
+"MakeBoxes[FeynAmp[q, x], TraditionalForm]",
+"\\(\\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q\\)\\)(TraditionalForm\\`x)\\)"},
+{"fcstSharedObjectsTypesetting-ID137",
+"MakeBoxes[FeynAmp[a[b], q, x], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q\\)\\)(\\(TraditionalForm\\`x\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID138",
+"MakeBoxes[FeynAmp[q1, q2, x], TraditionalForm]",
+"\\(\\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q1\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q2\\)\\) (TraditionalForm\\`x)\\)"},
+{"fcstSharedObjectsTypesetting-ID139",
+"MakeBoxes[FeynAmp[a[b], q1, q2, x], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q1\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q2\\)\\) (TraditionalForm\\`x)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID140",
+"MakeBoxes[FeynAmp[q1, q2, q3, x], TraditionalForm]",
+"\\(\\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q1\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q2\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q3\\)\\) (TraditionalForm\\`x)\\)"},
+{"fcstSharedObjectsTypesetting-ID141",
+"MakeBoxes[FeynAmp[a[b], q1, q2, q3, x], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q1\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q2\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
+TraditionalForm\\`q3\\)\\) (TraditionalForm\\`x)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID142",
+"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, 0]], \
+TraditionalForm]", "\\(TraditionalForm\\`\\(1\\/p\\^2\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID143",
+"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(p\\^2 - m\\^2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID144",
+"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
+PropagatorDenominator[-p + q, 0]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((p\\^2 - m\\^2)\\) . \\((q - \
+p)\\)\\^2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID145",
+"MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
+PropagatorDenominator[-p + q, m]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(\\((p\\^2 - m\\^2)\\) . \\((\\((q \
+- p)\\)\\^2 - m\\^2)\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID146",
+"MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\&_\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`mu\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID147",
+"MakeBoxes[Pair[LorentzIndex[mu, D], Momentum[a, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID148",
+"MakeBoxes[Pair[LorentzIndex[mu, -4 + D], Momentum[a, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\&^\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`mu\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID149",
+"MakeBoxes[Pair[LorentzIndex[mu], Momentum[a + b]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`a\\)\\&_\
++ \\(TraditionalForm\\`b\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID150",
+"MakeBoxes[Pair[LorentzIndex[mu, D], Momentum[a + b, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a + \
+TraditionalForm\\`b\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID151",
+"MakeBoxes[Pair[LorentzIndex[mu, -4 + D], Momentum[a + b, -4 + \
+D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`a\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`b\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID152",
+"MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\&_\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`mu\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID153",
+"MakeBoxes[FourVector[a, mu, FeynCalcInternal -> False, Dimension -> \
+D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(T\
+raditionalForm\\`a\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(T\
+raditionalForm\\`mu\\)\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID154",
+"MakeBoxes[FourVector[a, mu, FeynCalcInternal -> False, Dimension -> \
+-4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(T\
+raditionalForm\\`a\\)\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID155",
+"MakeBoxes[FourVector[a + b, mu, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`a\\)\\&_\
++ \\(TraditionalForm\\`b\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID156",
+"MakeBoxes[FourVector[a + b, mu, FeynCalcInternal -> False, \
+Dimension -> D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a + \
+TraditionalForm\\`b\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID157",
+"MakeBoxes[FourVector[a + b, mu, FeynCalcInternal -> False, \
+Dimension -> -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`a\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`b\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID158", "MakeBoxes[FV[p, mu], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(T\
+raditionalForm\\`p\\)\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID159", "MakeBoxes[FVD[p, mu], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(T\
+raditionalForm\\`p\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(T\
+raditionalForm\\`mu\\)\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID160", "MakeBoxes[FVE[p, mu], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(T\
+raditionalForm\\`p\\)\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID161",
+"MakeBoxes[FV[p + q, mu], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID162",
+"MakeBoxes[FVD[p + q, mu], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID163",
+"MakeBoxes[FVE[p + q, mu], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID164", "MakeBoxes[GA[i], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID165", "MakeBoxes[GAD[i], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID166", "MakeBoxes[GAE[i], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID167", "MakeBoxes[GA[2], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID168", "MakeBoxes[GAD[2], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID169", "MakeBoxes[GAE[2], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[Gamma]\\&^\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID170", "MakeBoxes[GA[5], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&_\
+\\)\\^TraditionalForm\\`5\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID171", "MakeBoxes[GaugeField, TraditionalForm]",
+"\"A\""},
+{"fcstSharedObjectsTypesetting-ID172", "MakeBoxes[GaugeXi, TraditionalForm]",
+"TagBox[\"\[Xi]\", TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID173", "MakeBoxes[GaugeXi[x], TraditionalForm]",
+"\\(\[Xi]\\_\\(TraditionalForm\\`x\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID174", "MakeBoxes[GluonField, TraditionalForm]",
+"\"A\""},
+{"fcstSharedObjectsTypesetting-ID175", "MakeBoxes[GS[p], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID176", "MakeBoxes[GSD[p], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID177", "MakeBoxes[GSE[p], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID178", "MakeBoxes[GS[p + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma]\\&_ \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID179", "MakeBoxes[GSD[p + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Gamma] \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID180", "MakeBoxes[GSE[p + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\[Gamma]\\&^\\) \[CenterDot] \
+(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID181", "MakeBoxes[IFPD[x, y], TraditionalForm]",
+"\\(TraditionalForm\\`\"(\" TraditionalForm\\`\\(x\\^2\\) \
+TraditionalForm\\`\" - \" TraditionalForm\\`\\(y\\^2\\) \
+TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID182",
+"MakeBoxes[Integratedx[x, 0, 1], TraditionalForm]",
+"\\(\\(\[Integral]\
+\\_\\(TraditionalForm\\`0\\)\\%\\(TraditionalForm\\`1\\)\\) \
+\[DifferentialD] \\*TagBox[\\(TraditionalForm\\`x\\), \
+TraditionalForm, Rule[Editable, True]] \[VeryThinSpace]\\)"},
+{"fcstSharedObjectsTypesetting-ID183",
+"MakeBoxes[LC[a, b, c, d], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID184",
+"MakeBoxes[LC[a, b][d, e], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\&_ \
+TraditionalForm\\`\\(TraditionalForm\\`e\\)\\&_\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID185",
+"MakeBoxes[LCD[a, b, c, d], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID186",
+"MakeBoxes[LCD[a, b][d, e], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\) \
+TraditionalForm\\`\\(TraditionalForm\\`e\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID187",
+"MakeBoxes[LeftPartialD[LorentzIndex[x]], TraditionalForm]",
+"\\(\\(\[PartialD]\\&\[LeftArrow]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID188",
+"MakeBoxes[2 LeftPartialD[Momentum[x]], TraditionalForm]",
+"\\(2\\ \\(\[PartialD]\\&\[LeftArrow]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID189",
+"MakeBoxes[LeftRightPartialD[LorentzIndex[x]], TraditionalForm]",
+"\\(\\(\[PartialD]\\&\[LeftRightArrow]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID190",
+"MakeBoxes[LeftRightPartialD2[LorentzIndex[x]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[PartialD]\\&\[LeftRightArrow]\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID191",
+"MakeBoxes[LeviCivita[a, b, c, d, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID192",
+"MakeBoxes[LeviCivita[a, b, c, d, Dimension -> D, FeynCalcInternal \
+-> False], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID193",
+"MakeBoxes[LeviCivita[a, b, FeynCalcInternal -> False][c, d, \
+FeynCalcInternal -> False], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\)\\&_ \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\&_\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID194",
+"MakeBoxes[LeviCivita[a, b, Dimension -> D, FeynCalcInternal -> \
+False][c, d, Dimension -> D, FeynCalcInternal -> False], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\[Epsilon]\
+\\^\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\\(TraditionalForm\\`b\\) \
+TraditionalForm\\`\\(TraditionalForm\\`c\\) \
+TraditionalForm\\`\\(TraditionalForm\\`d\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID195",
+"MakeBoxes[LorentzIndex[i], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID196",
+"MakeBoxes[LorentzIndex[i, D], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID197",
+"MakeBoxes[LorentzIndex[i, -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID198",
+"MakeBoxes[LorentzIndex[Upper[i]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID199",
+"MakeBoxes[LorentzIndex[Upper[i], D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID200",
+"MakeBoxes[LorentzIndex[Upper[i], -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID201",
+"MakeBoxes[LorentzIndex[Lower[i]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID202",
+"MakeBoxes[LorentzIndex[Lower[i], D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID203",
+"MakeBoxes[LorentzIndex[Lower[i], -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID204",
+"MakeBoxes[Momentum[Polarization[p, I]], TraditionalForm]",
+"\\(\[CurlyEpsilon]\\&_(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID205",
+"MakeBoxes[Momentum[Polarization[p, I], D], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"(TraditionalForm\\`p)\
+\\)"},
+{"fcstSharedObjectsTypesetting-ID206",
+"MakeBoxes[Momentum[Polarization[p, I], -4 + D], TraditionalForm]",
+	"\\(\\(\[CurlyEpsilon]\\&^\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID207",
+"MakeBoxes[Momentum[OPEDelta], TraditionalForm]",
+"\\(TraditionalForm\\`\[CapitalDelta]\\)"},
+{"fcstSharedObjectsTypesetting-ID208", "MakeBoxes[Momentum[p], TraditionalForm]",
+	"\\(\\(TraditionalForm\\`p\\)\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID209",
+"MakeBoxes[Momentum[p, D], TraditionalForm]",
+"\\(TraditionalForm\\`p\\)"},
+{"fcstSharedObjectsTypesetting-ID210",
+"MakeBoxes[Momentum[p, -4 + D], TraditionalForm]",
+"\\(\\(TraditionalForm\\`p\\)\\&^\\)"},
+{"fcstSharedObjectsTypesetting-ID211",
+"MakeBoxes[Momentum[p + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID212",
+"MakeBoxes[Momentum[p + q, D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID213",
+"MakeBoxes[Momentum[p + q, -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID214", "MakeBoxes[Momentum[p], TraditionalForm]",
+	"\\(\\(TraditionalForm\\`p\\)\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID215",
+"MakeBoxes[Momentum[p, D], TraditionalForm]",
+"\\(TraditionalForm\\`p\\)"},
+{"fcstSharedObjectsTypesetting-ID216",
+"MakeBoxes[Momentum[p, -4 + D], TraditionalForm]",
+"\\(\\(TraditionalForm\\`p\\)\\&^\\)"},
+{"fcstSharedObjectsTypesetting-ID217", "MakeBoxes[Momentum[p], TraditionalForm]",
+	"\\(\\(TraditionalForm\\`p\\)\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID218",
+"MakeBoxes[Momentum[p, D], TraditionalForm]",
+"\\(TraditionalForm\\`p\\)"},
+{"fcstSharedObjectsTypesetting-ID219",
+"MakeBoxes[Momentum[p, -4 + D], TraditionalForm]",
+"\\(\\(TraditionalForm\\`p\\)\\&^\\)"},
+{"fcstSharedObjectsTypesetting-ID220",
+"MakeBoxes[Momentum[p + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID221",
+"MakeBoxes[Momentum[p + q, D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID222",
+"MakeBoxes[Momentum[p + q, -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID223",
+"MakeBoxes[Momentum[p + q], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID224",
+"MakeBoxes[Momentum[p + q, D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID225",
+"MakeBoxes[Momentum[p + q, -4 + D], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID226", "MakeBoxes[MT[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(g\\&_\
+\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID227", "MakeBoxes[MTD[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(g\\)\\^\\(Traditio\
+nalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID228", "MakeBoxes[MTE[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(g\\&^\
+\\)\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID229", "MakeBoxes[Nf, TraditionalForm]",
+"\\(N\\_f\\)"},
+{"fcstSharedObjectsTypesetting-ID230", "MakeBoxes[OPE, TraditionalForm]",
+"\"\[CapitalOmega]\""},
+{"fcstSharedObjectsTypesetting-ID231",
+"MakeBoxes[Pair[LorentzIndex[a], LorentzIndex[b]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(g\\&_\
+\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID232",
+"MakeBoxes[Pair[LorentzIndex[Lower[b]], LorentzIndex[Upper[a]]], \
+TraditionalForm]",
+"\\(\\(g\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\
+\\)\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalFo\
+rm\\`a\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID233",
+"MakeBoxes[Pair[LorentzIndex[Upper[a]], LorentzIndex[Upper[b]]], \
+TraditionalForm]",
+"\\(\\(g\\&_\
+\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID234",
+"MakeBoxes[Pair[LorentzIndex[Lower[a]], LorentzIndex[Lower[b]]], \
+TraditionalForm]",
+"\\(\\(g\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID235",
+"MakeBoxes[Pair[LorentzIndex[a, D], LorentzIndex[b, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(g\\)\\^\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`\\(TraditionalForm\\`a\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID236",
+"MakeBoxes[Pair[LorentzIndex[Upper[a], D], LorentzIndex[Upper[b], \
+D]], TraditionalForm]",
+"\\(\\(g\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`a\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID237",
+"MakeBoxes[Pair[LorentzIndex[Lower[a], D], LorentzIndex[Lower[b], \
+D]], TraditionalForm]",
+"\\(\\(g\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`a\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID238",
+"MakeBoxes[Pair[LorentzIndex[Lower[b], D], LorentzIndex[Upper[a], \
+D]], TraditionalForm]",
+"\\(\\(g\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`b\\)\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Tr\
+aditionalForm\\`a\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID239",
+"MakeBoxes[Pair[LorentzIndex[a, -4 + D], LorentzIndex[b, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(g\\&^\
+\\)\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID240",
+"MakeBoxes[Pair[LorentzIndex[Upper[a], -4 + D], \
+LorentzIndex[Upper[b], -4 + D]], TraditionalForm]",
+"\\(\\(\\(g\\&^\
+\\)\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID241",
+"MakeBoxes[Pair[LorentzIndex[Lower[a], -4 + D], \
+LorentzIndex[Lower[b], -4 + D]], TraditionalForm]",
+"\\(\\(\\(g\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID242",
+"MakeBoxes[Pair[LorentzIndex[Lower[b], -4 + D], \
+LorentzIndex[Upper[a], -4 + D]], TraditionalForm]",
+"\\(\\(\\(g\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`b\
+\\)\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalFo\
+rm\\`a\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID243",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], ExplicitLorentzIndex[2]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(g\\&_\
+\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID244",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+ExplicitLorentzIndex[Upper[2]]], TraditionalForm]",
+"\\(\\(g\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalFo\
+rm\\`2\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID245",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+ExplicitLorentzIndex[Upper[2]]], TraditionalForm]",
+"\\(\\(g\\&_\
+\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID246",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+ExplicitLorentzIndex[Lower[2]]], TraditionalForm]",
+"\\(\\(g\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID247",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+ExplicitLorentzIndex[2, D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(g\\)\\^\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`\\(TraditionalForm\\`2\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID248",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+ExplicitLorentzIndex[Upper[2], D]], TraditionalForm]",
+"\\(\\(g\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`2\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID249",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+ExplicitLorentzIndex[Lower[2], D]], TraditionalForm]",
+"\\(\\(g\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`2\\)\\) \
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID250",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+ExplicitLorentzIndex[Upper[2], D]], TraditionalForm]",
+"\\(\\(g\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Traditio\
+nalForm\\`2\\)\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`\\(Tr\
+aditionalForm\\`2\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID251",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+ExplicitLorentzIndex[2, -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(g\\&^\
+\\)\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID252",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+ExplicitLorentzIndex[Upper[2], -4 + D]], TraditionalForm]",
+"\\(\\(\\(g\\&^\
+\\)\\)\\^\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID253",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+ExplicitLorentzIndex[Lower[2], -4 + D]], TraditionalForm]",
+"\\(\\(\\(g\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\) TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID254",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+ExplicitLorentzIndex[Upper[2], -4 + D]], TraditionalForm]",
+"\\(\\(\\(g\\&^\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalFo\
+rm\\`2\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID255",
+"MakeBoxes[3 Pair[Momentum[a], Momentum[b]], TraditionalForm]",
+"\\(3\\ \\((TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_ \
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&_)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID256",
+"MakeBoxes[3 Pair[Momentum[a, D], Momentum[b, D]], \
+TraditionalForm]",
+"\\(3\\ \\((TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID257",
+"MakeBoxes[3 Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]], \
+TraditionalForm]",
+"\\(3\\ \\((TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&^ \
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&^)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID258",
+"MakeBoxes[3 Pair[Momentum[a + c], Momentum[b + d]], \
+TraditionalForm]",
+"\\(3\\ \\((TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(TraditionalForm\\`a\\)\\&_ + \
+\\(TraditionalForm\\`c\\)\\&_\\) TraditionalForm\\`\")\" \
+TraditionalForm\\`\"\\[CenterDot]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(TraditionalForm\\`b\\)\\&_ + \
+\\(TraditionalForm\\`d\\)\\&_\\) TraditionalForm\\`\")\")\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID259",
+"MakeBoxes[3 Pair[Momentum[a + c, D], Momentum[b + d, D]], \
+TraditionalForm]",
+"\\(3\\ \\((TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(TraditionalForm\\`a + TraditionalForm\\`c\\) \
+TraditionalForm\\`\")\" TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\"(\" TraditionalForm\\`\\(TraditionalForm\\`b + \
+TraditionalForm\\`d\\) TraditionalForm\\`\")\")\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID260",
+"MakeBoxes[3 Pair[Momentum[a + c, -4 + D], Momentum[b + d, -4 + \
+D]], TraditionalForm]",
+"\\(3\\ \\((TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(\\(TraditionalForm\\`a\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`c\\)\\&^\\)\\) TraditionalForm\\`\")\" \
+TraditionalForm\\`\"\\[CenterDot]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(\\(TraditionalForm\\`b\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`d\\)\\&^\\)\\) \
+TraditionalForm\\`\")\")\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID261",
+"MakeBoxes[Pair[Momentum[a], Momentum[a]], TraditionalForm]",
+"SuperscriptBox[\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_\\),\
+2]"},
+{"fcstSharedObjectsTypesetting-ID262",
+"MakeBoxes[Pair[Momentum[a, D], Momentum[a, D]], TraditionalForm]",
+	"SuperscriptBox[\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\),\
+2]"},
+{"fcstSharedObjectsTypesetting-ID263",
+"MakeBoxes[Pair[Momentum[a, -4 + D], Momentum[a, -4 + D]], \
+TraditionalForm]",
+"SuperscriptBox[\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&^\\),\
+2]"},
+{"fcstSharedObjectsTypesetting-ID264",
+"MakeBoxes[3 Pair[Momentum[a], Momentum[a]], TraditionalForm]",
+"RowBox[{\"3\", \" \", \
+SuperscriptBox[\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_\\), \
+2]}]"},
+{"fcstSharedObjectsTypesetting-ID265",
+"MakeBoxes[3 Pair[Momentum[a, D], Momentum[a, D]], \
+TraditionalForm]",
+"RowBox[{\"3\", \" \", \
+SuperscriptBox[\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\), \
+2]}]"},
+{"fcstSharedObjectsTypesetting-ID266",
+"MakeBoxes[3 Pair[Momentum[a, -4 + D], Momentum[a, -4 + D]], \
+TraditionalForm]",
+"RowBox[{\"3\", \" \", \
+SuperscriptBox[\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&^\\), \
+2]}]"},
+{"fcstSharedObjectsTypesetting-ID267",
+"MakeBoxes[Pair[Momentum[a], Momentum[b]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_ \
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&_\\)"},
+{"fcstSharedObjectsTypesetting-ID268",
+"MakeBoxes[Pair[Momentum[a, D], Momentum[b, D]], TraditionalForm]",
+	"\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) TraditionalForm\
+\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID269",
+"MakeBoxes[Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&^ \
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&^\\)"},
+{"fcstSharedObjectsTypesetting-ID270",
+"MakeBoxes[Pair[Momentum[a + c], Momentum[b + d]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(TraditionalForm\\`a\\)\\&_ + \
+\\(TraditionalForm\\`c\\)\\&_\\) TraditionalForm\\`\")\" \
+TraditionalForm\\`\"\\[CenterDot]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(TraditionalForm\\`b\\)\\&_ + \
+\\(TraditionalForm\\`d\\)\\&_\\) TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID271",
+"MakeBoxes[Pair[Momentum[a + c, D], Momentum[b + d, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(TraditionalForm\\`a + TraditionalForm\\`c\\) \
+TraditionalForm\\`\")\" TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\"(\" TraditionalForm\\`\\(TraditionalForm\\`b + \
+TraditionalForm\\`d\\) TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID272",
+"MakeBoxes[Pair[Momentum[a + c, -4 + D], Momentum[b + d, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(\\(TraditionalForm\\`a\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`c\\)\\&^\\)\\) TraditionalForm\\`\")\" \
+TraditionalForm\\`\"\\[CenterDot]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(\\(\\(TraditionalForm\\`b\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`d\\)\\&^\\)\\) TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID273",
+"MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p, I]]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID274",
+"MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p, I], \
+D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID275",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p, \
+I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID276",
+"MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p, -I]]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID277",
+"MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p, -I], \
+D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\
+\"\\^*\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID278",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p, \
+-I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID279",
+"MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p + q, \
+I]]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID280",
+"MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p + q, \
+I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID281",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p + \
+q, I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID282",
+"MakeBoxes[Pair[LorentzIndex[i], Momentum[Polarization[p + q, \
+-I]]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID283",
+"MakeBoxes[Pair[LorentzIndex[i, D], Momentum[Polarization[p + q, \
+-I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\
+\"\\^*\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID284",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[Polarization[p + \
+q, -I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID285",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p, \
+I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID286",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], \
+Momentum[Polarization[p, I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID287",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+Momentum[Polarization[p, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID288",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p, \
+-I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID289",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], \
+Momentum[Polarization[p, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID290",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+Momentum[Polarization[p, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID291",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p + \
+q, I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID292",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[Polarization[p \
++ q, I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID293",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+Momentum[Polarization[p + q, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID294",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[Polarization[p + \
+q, -I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID295",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[Polarization[p \
++ q, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID296",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], \
+Momentum[Polarization[p + q, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID297",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p, \
+I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID298",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], \
+Momentum[Polarization[p, I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID299",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+Momentum[Polarization[p, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID300",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p, \
+-I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID301",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], \
+Momentum[Polarization[p, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID302",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+Momentum[Polarization[p, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID303",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p + \
+q, I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID304",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[Polarization[p \
++ q, I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID305",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+Momentum[Polarization[p + q, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID306",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[Polarization[p + \
+q, -I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID307",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[Polarization[p \
++ q, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID308",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], \
+Momentum[Polarization[p + q, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID309",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p, \
+I]]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID310",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+Momentum[Polarization[p, I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID311",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+Momentum[Polarization[p, I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID312",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p, \
+-I]]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID313",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+Momentum[Polarization[p, -I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\
+\"\\^*\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID314",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+Momentum[Polarization[p, -I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`p\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID315",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p + \
+q, I]]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID316",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+Momentum[Polarization[p + q, I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID317",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+Momentum[Polarization[p + q, I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID318",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[Polarization[p + \
+q, -I]]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID319",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], \
+Momentum[Polarization[p + q, -I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\
+\"\\^*\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID320",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], \
+Momentum[Polarization[p + q, -I], -4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)(\
+\\(TraditionalForm\\`\\(p + q\\)\\))\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID321",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+Momentum[Polarization[p, I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID322",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+Momentum[Polarization[p, I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID323",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+Momentum[Polarization[p, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID324",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+Momentum[Polarization[p, -I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID325",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+Momentum[Polarization[p, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID326",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+Momentum[Polarization[p, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID327",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+Momentum[Polarization[p + q, I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID328",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+Momentum[Polarization[p + q, I], D]], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID329",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+Momentum[Polarization[p + q, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID330",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], \
+Momentum[Polarization[p + q, -I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID331",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], \
+Momentum[Polarization[p + q, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID332",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+Momentum[Polarization[p + q, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)(\
+TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID333",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+Momentum[Polarization[p, I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID334",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+Momentum[Polarization[p, I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID335",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+Momentum[Polarization[p, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID336",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+Momentum[Polarization[p, -I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID337",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+Momentum[Polarization[p, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID338",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+Momentum[Polarization[p, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID339",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+Momentum[Polarization[p + q, I]]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID340",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+Momentum[Polarization[p + q, I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID341",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+Momentum[Polarization[p + q, I], -4 + D]], TraditionalForm]",
+"\\(\\(\[CurlyEpsilon]\\&^\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID342",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], \
+Momentum[Polarization[p + q, -I]]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&_\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID343",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], \
+Momentum[Polarization[p + q, -I], D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\"\\[CurlyEpsilon]\"\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID344",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+Momentum[Polarization[p + q, -I], -4 + D]], TraditionalForm]",
+"\\(\\(\\(\[CurlyEpsilon]\\&^\\)\\^*\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)(TraditionalForm\\`\\(p + q\\))\\)"},
+{"fcstSharedObjectsTypesetting-ID345",
+"MakeBoxes[Pair[LorentzIndex[i], Momentum[p]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&_\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`i\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID346",
+"MakeBoxes[Pair[LorentzIndex[i, D], Momentum[p, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID347",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[p, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&^\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`i\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID348",
+"MakeBoxes[Pair[LorentzIndex[i], Momentum[p + q]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID349",
+"MakeBoxes[Pair[LorentzIndex[i, D], Momentum[p + q, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID350",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], Momentum[p + q, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID351",
+"MakeBoxes[Pair[LorentzIndex[i], q + Momentum[p]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID352",
+"MakeBoxes[Pair[LorentzIndex[i, D], q + Momentum[p, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID353",
+"MakeBoxes[Pair[LorentzIndex[i, -4 + D], q + Momentum[p, -4 + D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID354",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[p]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&_\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`2\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID355",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], Momentum[p, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID356",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], Momentum[p, -4 + \
+D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&^\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\
+\\`2\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID357",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], Momentum[p + q]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID358",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], Momentum[p + q, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID359",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], Momentum[p + q, \
+-4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID360",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2], q + Momentum[p]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalForm\\`p\\)\\&_\
++ \\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID361",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, D], q + Momentum[p, D]], \
+TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p + \
+TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID362",
+"MakeBoxes[Pair[ExplicitLorentzIndex[2, -4 + D], q + Momentum[p, \
+-4 + D]], TraditionalForm]",
+"\\(TraditionalForm\\`\\(\\((\
+TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(TraditionalForm\\`p\\)\\&^\
+\\) + \\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID363",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[p]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID364",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[p, D]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)\\^Traditional\
+Form\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID365",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], Momentum[p, -4 + \
+D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID366",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], Momentum[p + q]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID367",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], Momentum[p + q, D]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID368",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], Momentum[p + q, -4 \
++ D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID369",
+"MakeBoxes[Pair[LorentzIndex[Upper[i]], q + Momentum[p]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID370",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], D], q + Momentum[p, D]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID371",
+"MakeBoxes[Pair[LorentzIndex[Upper[i], -4 + D], q + Momentum[p, -4 \
++ D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID372",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], Momentum[p]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID373",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], Momentum[p, \
+D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)\\^Traditional\
+Form\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID374",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], \
+Momentum[p, -4 + D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID375",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], Momentum[p + q]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID376",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], Momentum[p + q, \
+D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID377",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], Momentum[p \
++ q, -4 + D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID378",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2]], q + Momentum[p]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID379",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], D], q + Momentum[p, \
+D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID380",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Upper[2], -4 + D], q + \
+Momentum[p, -4 + D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\^TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID381",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[p]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID382",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[p, D]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)\\_\\(Traditio\
+nalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID383",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], Momentum[p, -4 + \
+D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID384",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], Momentum[p + q]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID385",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], Momentum[p + q, D]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID386",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], Momentum[p + q, -4 \
++ D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID387",
+"MakeBoxes[Pair[LorentzIndex[Lower[i]], q + Momentum[p]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID388",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], D], q + Momentum[p, D]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID389",
+"MakeBoxes[Pair[LorentzIndex[Lower[i], -4 + D], q + Momentum[p, -4 \
++ D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`i\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID390",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], Momentum[p]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID391",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], Momentum[p, \
+D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\)\\_\\(Traditio\
+nalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID392",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], \
+Momentum[p, -4 + D]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&^\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID393",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], Momentum[p + q]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID394",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], Momentum[p + q, \
+D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID395",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], Momentum[p \
++ q, -4 + D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID396",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2]], q + Momentum[p]], \
+TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(TraditionalFor\
+m\\`p\\)\\&_ + \
+\\(TraditionalForm\\`q\\)\\&_\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID397",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], D], q + Momentum[p, \
+D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`p\
++ TraditionalForm\\`q\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID398",
+"MakeBoxes[Pair[ExplicitLorentzIndex[Lower[2], -4 + D], q + \
+Momentum[p, -4 + D]], TraditionalForm]",
+"\\(\\((TraditionalForm\\`\\(TraditionalForm\\`\\(\\(\\(Traditional\
+Form\\`p\\)\\&^\\) + \
+\\(\\(TraditionalForm\\`q\\)\\&^\\)\\)\\))\
+\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID399",
+"MakeBoxes[FCPartialD[LorentzIndex[x]], TraditionalForm]",
+"\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID400",
+"MakeBoxes[FCPartialD[x, LorentzIndex[mu]], TraditionalForm]",
+"\\(\[PartialD]/\[PartialD] \
+TraditionalForm\\`x\\^TraditionalForm\\`\\(TraditionalForm\\`mu\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID401",
+"MakeBoxes[PlusDistribution[x], TraditionalForm]",
+"\\(\\((x)\\)\\_+\\)"},
+{"fcstSharedObjectsTypesetting-ID402",
+"MakeBoxes[PropagatorDenominator[a, 0], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/a\\^2\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID403",
+"MakeBoxes[PropagatorDenominator[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(1\\/\\(a\\^2 - b\\^2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID404",
+"MakeBoxes[c PropagatorDenominator[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(c\\/\\(a\\^2 - b\\^2\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID405",
+"MakeBoxes[QuantumField[f], TraditionalForm]",
+"\\(TraditionalForm\\`f\\)"},
+{"fcstSharedObjectsTypesetting-ID406",
+"MakeBoxes[QuantumField[f, LorentzIndex[mu]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`mu\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID407",
+"MakeBoxes[QuantumField[f, LorentzIndex[mu, D]], TraditionalForm]",
+	"\\(\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`mu\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID408",
+"MakeBoxes[QuantumField[f, LorentzIndex[mu], SUNIndex[a]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(Traditional\
+Form\\`mu\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"\
+},
+{"fcstSharedObjectsTypesetting-ID409",
+"MakeBoxes[QuantumField[f, LorentzIndex[mu], Momentum[p], \
+SUNIndex[a]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(Traditional\
+Form\\`mu\\) \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\
+\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID410",
+"MakeBoxes[QuantumField[f, LorentzIndex[mu], SUNIndex[a]][q], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(Traditional\
+Form\\`mu\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)(\
+TraditionalForm\\`q)\\)"},
+{"fcstSharedObjectsTypesetting-ID411",
+"MakeBoxes[QuantumField[f, LorentzIndex[mu], Momentum[p], \
+SUNIndex[a]][q], TraditionalForm]",
+"\\(\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(Traditional\
+Form\\`mu\\) \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_\
+\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)(\
+TraditionalForm\\`q)\\)"},
+{"fcstSharedObjectsTypesetting-ID412",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
+LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
+"\\(\\((\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\) \
+\[InvisibleApplication] \\((q)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID413",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
+ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
+"\\(\\((\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\) \
+\[InvisibleApplication] \\((q)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID414",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
+LorentzIndex[mu]][q], TraditionalForm]",
+"\\(\\((\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\%\[Null])\\) \[InvisibleApplication] \\((q)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID415",
+"MakeBoxes[2 QuantumField[FCPartialD[LorentzIndex[f]], f, \
+LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
+"\\(2\\ \\(\\((\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\) \
+\[InvisibleApplication] \\((q)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID416",
+"MakeBoxes[2 QuantumField[FCPartialD[LorentzIndex[f]], f, \
+ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
+"\\(2\\ \\(\\((\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`2\
+\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\))\\) \
+\[InvisibleApplication] \\((q)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID417",
+"MakeBoxes[2 QuantumField[FCPartialD[LorentzIndex[f]], f, \
+LorentzIndex[mu]][q], TraditionalForm]",
+"\\(2\\ \\(\\((\\(\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\%\[Null])\\) \[InvisibleApplication] \\((q)\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID418",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
+Momentum[p], SUNIndex[a]], TraditionalForm]",
+"\\(TraditionalForm\\`\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&_\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID419",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
+Momentum[p]], TraditionalForm]",
+"\\(TraditionalForm\\`\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&_\\)\\%\[Null]\\)"},
+{"fcstSharedObjectsTypesetting-ID420",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
+FCPartialD[LorentzIndex[g]], f, Momentum[p], SUNIndex[a]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\) TraditionalForm\
+\\`\[PartialD]\\_\\(TraditionalForm\\`\\(TraditionalForm\\`g\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&_\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID421",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
+FCPartialD[LorentzIndex[g]], f, Momentum[p]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\) TraditionalForm\
+\\`\[PartialD]\\_\\(TraditionalForm\\`\\(TraditionalForm\\`g\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`p\
+\\)\\&_\\)\\%\[Null]\\)"},
+{"fcstSharedObjectsTypesetting-ID422",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
+FCPartialD[LorentzIndex[g]], f, LorentzIndex[mu], SUNIndex[a]], \
+TraditionalForm]",
+"\\(\\(TraditionalForm\\`\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\) TraditionalForm\
+\\`\[PartialD]\\_\\(TraditionalForm\\`\\(TraditionalForm\\`g\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\%\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID423",
+"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
+FCPartialD[LorentzIndex[g]], f, LorentzIndex[mu]], TraditionalForm]",
+"\\(\\(TraditionalForm\\`\[PartialD]\
+\\_\\(TraditionalForm\\`\\(TraditionalForm\\`f\\)\\) TraditionalForm\
+\\`\[PartialD]\\_\\(TraditionalForm\\`\\(TraditionalForm\\`g\\)\\)\\) \
+\\(TraditionalForm\\`f\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`m\
+u\\)\\)\\%\[Null]\\)"},
+{"fcstSharedObjectsTypesetting-ID424", "MakeBoxes[QuarkField, TraditionalForm]",
+"\"\[Psi]\""},
+{"fcstSharedObjectsTypesetting-ID425",
+"MakeBoxes[RightPartialD[LorentzIndex[x]], TraditionalForm]",
+"\\(\\(\\(\[PartialD]\\&\[RightArrow]\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID426",
+"MakeBoxes[2 RightPartialD[Momentum[x]], TraditionalForm]",
+"\\(2\\ \
+\\(\\(\[PartialD]\\&\[RightArrow]\
+\\)\\)\\_\\(TraditionalForm\\`\\(TraditionalForm\\`x\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID427", "MakeBoxes[ScaleMu, TraditionalForm]",
+"\"\[Mu]\""},
+{"fcstSharedObjectsTypesetting-ID428", "MakeBoxes[Tf, TraditionalForm]",
+"\\(T\\_f\\)"},
+{"fcstSharedObjectsTypesetting-ID429", "MakeBoxes[SD[a, b], TraditionalForm]",
+"\\(\[Delta]\\^\\(TraditionalForm\\`a TraditionalForm\\`b\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID430", "MakeBoxes[SDF[a, b], TraditionalForm]",
+"\\(\[Delta]\\_\\(TraditionalForm\\`a TraditionalForm\\`b\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID431", "MakeBoxes[SmallDelta, TraditionalForm]",
+"\"\[Delta]\""},
+{"fcstSharedObjectsTypesetting-ID432",
+"MakeBoxes[SmallEpsilon, TraditionalForm]", "\"\[Epsilon]\""},
+{"fcstSharedObjectsTypesetting-ID433",
+"MakeBoxes[SmallVariable[a], TraditionalForm]", "\"a\""},
+{"fcstSharedObjectsTypesetting-ID434", "MakeBoxes[SO[x], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CapitalDelta]\" TraditionalForm\\`\"\
+\\[CenterDot]\" TraditionalForm\\`x\\)"},
+{"fcstSharedObjectsTypesetting-ID435", "MakeBoxes[SOD[x], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CapitalDelta]\" TraditionalForm\\`\"\
+\\[CenterDot]\" TraditionalForm\\`x\\)"},
+{"fcstSharedObjectsTypesetting-ID436", "MakeBoxes[SP[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&_\
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&_\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID437", "MakeBoxes[SPD[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\) \
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID438", "MakeBoxes[SPE[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(TraditionalForm\\`\\(TraditionalForm\\`a\\)\\&^\
+TraditionalForm\\`\"\\[CenterDot]\" \
+TraditionalForm\\`\\(TraditionalForm\\`b\\)\\&^\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID439",
+"MakeBoxes[Spinor[Momentum[p], 0, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyPhi]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_ TraditionalForm\\`\")\
+\"\\)"},
+{"fcstSharedObjectsTypesetting-ID440",
+"MakeBoxes[Spinor[Momentum[p], 0, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyPhi]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_ TraditionalForm\\`\")\
+\"\\)"},
+{"fcstSharedObjectsTypesetting-ID441",
+"MakeBoxes[Spinor[Momentum[p], m, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"\\[CurlyPhi]\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`\\(TraditionalForm\\`p\\)\\&_ TraditionalForm\\`\",\
+\" TraditionalForm\\`m TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID442", "MakeBoxes[SpinorU[p], TraditionalForm]",
+"\\(TraditionalForm\\`\"u\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`p TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID443",
+"MakeBoxes[SpinorU[p, 0, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"u\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`p TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID444",
+"MakeBoxes[SpinorU[p, m, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"u\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`p TraditionalForm\\`\",\" TraditionalForm\\`m \
+TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID445",
+"MakeBoxes[SpinorUBar[p], TraditionalForm]",
+"\\(u\\&_(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID446",
+"MakeBoxes[SpinorUBar[p, 0, 1], TraditionalForm]",
+"\\(u\\&_(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID447",
+"MakeBoxes[SpinorUBar[p, m, 1], TraditionalForm]",
+"\\(u\\&_ (TraditionalForm\\`p, TraditionalForm\\`m)\\)"},
+{"fcstSharedObjectsTypesetting-ID448", "MakeBoxes[SpinorV[p], TraditionalForm]",
+"\\(TraditionalForm\\`\"v\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`p TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID449",
+"MakeBoxes[SpinorV[p, 0, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"v\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`p TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID450",
+"MakeBoxes[SpinorV[p, m, 1], TraditionalForm]",
+"\\(TraditionalForm\\`\"v\" TraditionalForm\\`\"(\" \
+TraditionalForm\\`p TraditionalForm\\`\",\" TraditionalForm\\`m \
+TraditionalForm\\`\")\"\\)"},
+{"fcstSharedObjectsTypesetting-ID451",
+"MakeBoxes[SpinorVBar[p], TraditionalForm]",
+"\\(v\\&_(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID452",
+"MakeBoxes[SpinorVBar[p, 0, 1], TraditionalForm]",
+"\\(v\\&_(TraditionalForm\\`p)\\)"},
+{"fcstSharedObjectsTypesetting-ID453",
+"MakeBoxes[SpinorVBar[p, m, 1], TraditionalForm]",
+"\\(v\\&_ (TraditionalForm\\`p, TraditionalForm\\`m)\\)"},
+{"fcstSharedObjectsTypesetting-ID454",
+"MakeBoxes[SUND[a, b, c], TraditionalForm]",
+"\\(d\\^\\(TraditionalForm\\`a TraditionalForm\\`b \
+TraditionalForm\\`c\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID455",
+"MakeBoxes[SUNF[a, b, c], TraditionalForm]",
+"\\(f\\^\\(TraditionalForm\\`a TraditionalForm\\`b \
+TraditionalForm\\`c\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID456", "MakeBoxes[SUNIndex[i], TraditionalForm]",
+	"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID457",
+"MakeBoxes[SUNFIndex[i], TraditionalForm]",
+"\\(TraditionalForm\\`i\\)"},
+{"fcstSharedObjectsTypesetting-ID458", "MakeBoxes[SUNT[a], TraditionalForm]",
+"\\(T\\^TraditionalForm\\`a\\)"},
+{"fcstSharedObjectsTypesetting-ID459", "MakeBoxes[SUNT[a, b], TraditionalForm]",
+"\\(TraditionalForm\\`\\(T\\^TraditionalForm\\`\\(TraditionalForm\\`a\
+\\) . T\\^TraditionalForm\\`\\(TraditionalForm\\`b\\)\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID460",
+"MakeBoxes[SUNTF[{a}, i, j], TraditionalForm]",
+"\\(T\\_\\(TraditionalForm\\`i \
+TraditionalForm\\`j\\)\\%\\(TraditionalForm\\`a\\)\\)"},
+{"fcstSharedObjectsTypesetting-ID461",
+"MakeBoxes[SUNTF[{a, b}, i, j], TraditionalForm]",
+"\\(\\((T\\^TraditionalForm\\`a \
+T\\^TraditionalForm\\`b)\\)\\_\\(TraditionalForm\\`i \
+TraditionalForm\\`j\\)\\)"}
+})
