@@ -19,12 +19,15 @@ Tests`Dirac`fcstDiracReduce = {
 "(-I)*DiracSigma[GA[mu], GA[nu]] + MT[mu, nu]"},
 {"fcstDiracReduce-ID2","FCI[DiracReduce[DiracMatrix[mu, nu]]]",
 "FCI[(-I)*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[nu]]] + Pair[LorentzIndex[mu], LorentzIndex[nu]]]"},
-{"fcstDiracReduce-ID3","DiracReduce[DiracMatrix[mu, nu, rho]]","I*GA[$MU[1]] . GA[5]*LC[mu, nu, rho, $MU[1]] + GA[rho]*MT[mu, nu] - GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]"},
-{"fcstDiracReduce-ID4","FCI[DiracReduce[DiracMatrix[mu, nu, rho]]]","I*DiracGamma[LorentzIndex[$MU[1]]] . DiracGamma[5]*Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
-		LorentzIndex[$MU[1]]]  +
-DiracGamma[LorentzIndex[rho]]*Pair[LorentzIndex[mu], LorentzIndex[nu]] -
-DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[mu], LorentzIndex[rho]] +
-DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[nu], LorentzIndex[rho]]"},
+{"fcstDiracReduce-ID3","MatchQ[DiracReduce[DiracMatrix[mu, nu, rho]],
+	I*GA[a_].GA[5]*LC[mu, nu, rho, a_] + GA[rho]*MT[mu, nu] -
+	GA[nu]*MT[mu, rho] + GA[mu]*MT[nu, rho]]","True"},
+{"fcstDiracReduce-ID4","MatchQ[FCI[DiracReduce[DiracMatrix[mu, nu, rho]]],
+	I*DiracGamma[LorentzIndex[a_]] . DiracGamma[5]*Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
+	LorentzIndex[a_]]  +
+	DiracGamma[LorentzIndex[rho]]*Pair[LorentzIndex[mu], LorentzIndex[nu]] -
+	DiracGamma[LorentzIndex[nu]]*Pair[LorentzIndex[mu], LorentzIndex[rho]] +
+	DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[nu], LorentzIndex[rho]]]","True"},
 {"fcstDiracReduce-ID5","DiracReduce[DiracMatrix[mu, nu, rho, sigma]]","(-I)*GA[5]*LC[mu, nu, rho, sigma] - I*DiracSigma[GA[rho], GA[sigma]]*MT[mu, nu] +
 I*DiracSigma[GA[nu], GA[sigma]]*MT[mu, rho] - I*DiracSigma[GA[nu], GA[rho]]*MT[mu, sigma] -
 I*DiracSigma[GA[mu], GA[sigma]]*MT[nu, rho] + MT[mu, sigma]*MT[nu, rho] +
@@ -39,6 +42,12 @@ I*DiracSigma[GA[mu], GA[nu]]*MT[rho, sigma] + MT[mu, nu]*MT[rho, sigma]"},
 	Pair[LorentzIndex[nu], LorentzIndex[sigma]] - Pair[LorentzIndex[mu], LorentzIndex[rho]]*
 	Pair[LorentzIndex[nu], LorentzIndex[sigma]] - I*DiracSigma[DiracGamma[LorentzIndex[mu]], DiracGamma[LorentzIndex[nu]]]*
 	Pair[LorentzIndex[rho], LorentzIndex[sigma]] + Pair[LorentzIndex[mu], LorentzIndex[nu]]*
-	Pair[LorentzIndex[rho], LorentzIndex[sigma]]"}
-
+	Pair[LorentzIndex[rho], LorentzIndex[sigma]]"},
+{"fcstDiracReduce-ID7",
+	"MatchQ[DiracReduce[(SpinorUBar[p, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[p, m]) *
+	(SpinorUBar[k, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[k, m])],
+	10*Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1]*
+	Spinor[Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1] +
+	6*Spinor[Momentum[k], m, 1].GA[a_].GA[5].Spinor[Momentum[k], m, 1]*
+	Spinor[Momentum[p], m, 1].GA[a_].GA[5].Spinor[Momentum[p], m, 1]]","True"}
 }

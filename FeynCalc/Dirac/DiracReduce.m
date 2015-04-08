@@ -69,7 +69,7 @@ DiracReduce[x_, ops___Rule] :=
 			LorentzIndex[un2]](I/2) (FCI[ DiracMatrix[un1, un2] - DiracMatrix[un2, un1]])  +
 			2 Pair[a[xx], b[yy]] DiracGamma[5])]);
 		(* for the renaming of dummy indices *)
-		temp = Contract[temp, Rename-> True];
+		temp = FCRenameDummyIndices[Contract[temp, Rename-> True]];
 		(* XXX *)
 		temp = temp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :>
 			( -I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]]+Pair[b[yy], a[xx]]);
