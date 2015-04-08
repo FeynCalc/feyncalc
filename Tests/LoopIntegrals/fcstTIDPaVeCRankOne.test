@@ -1,0 +1,149 @@
+Tests`LoopIntegrals`fcstTIDPaVeCRankOne = {{"fcstTIDPaVeCRankOne-ID1", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+p1,m1},{k+p2,m2}],k]//FCE", "FAD[{k, m0}, {k + \
+p1, m1}, {k + p2, m2}]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 \
+- SPD[p1, p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + FAD[{k, m0}, {k + p1, m1}, {k + p2, m2}]*SPD[k, \
+p1]*((FVD[p2, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - \
+(FVD[p1, mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID2", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+p1,m0},{k+p2,m2}],k]//FCE", "FAD[{k, m0}, {k + \
+p1, m0}, {k + p2, m2}]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 \
+- SPD[p1, p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + FAD[{k, m0}, {k + p1, m0}, {k + p2, m2}]*SPD[k, \
+p1]*((FVD[p2, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - \
+(FVD[p1, mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID3", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+p1,m0},{k+p2,m0}],k]//FCE", "FAD[{k, m0}, {k + \
+p1, m0}, {k + p2, m0}]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 \
+- SPD[p1, p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + FAD[{k, m0}, {k + p1, m0}, {k + p2, m0}]*SPD[k, \
+p1]*((FVD[p2, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - \
+(FVD[p1, mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID4", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+p1,m1},{k+p2,m2}],k]//FCE", "FAD[k, {k + p1, \
+m1}, {k + p2, m2}]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + FAD[k, {k + p1, m1}, {k + p2, m2}]*SPD[k, \
+p1]*((FVD[p2, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - \
+(FVD[p1, mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID5", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+p1,m1},{k+p2,m1}],k]//FCE", "FAD[k, {k + p1, \
+m1}, {k + p2, m1}]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - \
+SPD[p1, p1]*SPD[p2, p2])) + FAD[k, {k + p1, m1}, {k + p2, m1}]*SPD[k, \
+p1]*((FVD[p2, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - \
+(FVD[p1, mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID6", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+p1,0},{k+p2,m2}],k]//FCE", "FAD[k, k + p1, {k + \
+p2, m2}]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 - SPD[p1, \
+p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
+p1]*SPD[p2, p2])) + FAD[k, k + p1, {k + p2, m2}]*SPD[k, p1]*((FVD[p2, \
+mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - (FVD[p1, \
+mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID7", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+p1,0},{k+p2,0}],k]//FCE", "FAD[{k, m0}, k + p2, \
+k + p1]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 - SPD[p1, \
+p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
+p1]*SPD[p2, p2])) + FAD[{k, m0}, k + p2, k + p1]*SPD[k, p1]*((FVD[p2, \
+mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - (FVD[p1, \
+mu]*SPD[p2, p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID8", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+p1,0},{k+p2,0}],k]//FCE", "FAD[k, k + p2, k + \
+p1]*SPD[k, p2]*(-((FVD[p2, mu]*SPD[p1, p1])/(SPD[p1, p2]^2 - SPD[p1, \
+p1]*SPD[p2, p2])) + (FVD[p1, mu]*SPD[p1, p2])/(SPD[p1, p2]^2 - SPD[p1, \
+p1]*SPD[p2, p2])) + FAD[k, k + p2, k + p1]*SPD[k, p1]*((FVD[p2, mu]*SPD[p1, \
+p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]) - (FVD[p1, mu]*SPD[p2, \
+p2])/(SPD[p1, p2]^2 - SPD[p1, p1]*SPD[p2, p2]))"}, 
+ {"fcstTIDPaVeCRankOne-ID9", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k,m1},{k+p2,m2}],k]//FCE", "(FAD[{k, m0}, {k + \
+p2, m2}]*FVD[p2, mu]*SPD[k, p2])/((m0 - m1)*(m0 + m1)*SPD[p2, p2]) - (FAD[{k, \
+m1}, {k + p2, m2}]*FVD[p2, mu]*SPD[k, p2])/((m0 - m1)*(m0 + m1)*SPD[p2, p2])"}\
+, {"fcstTIDPaVeCRankOne-ID10", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k,m0},{k+p2,m2}],k]//FCE", 
+  "(FAD[{k, m0}, {k, m0}, {k + p2, m2}]*FVD[p2, mu]*SPD[k, p2])/SPD[p2, p2]"}\
+, {"fcstTIDPaVeCRankOne-ID11", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,m1},{k+p2,m2}],k]//FCE", "-((FAD[k, {k + p2, \
+m2}]*FVD[p2, mu]*SPD[k, p2])/(m1^2*SPD[p2, p2])) + (FAD[{k, m1}, {k + p2, \
+m2}]*FVD[p2, mu]*SPD[k, p2])/(m1^2*SPD[p2, p2])"}, 
+ {"fcstTIDPaVeCRankOne-ID12", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,m1},{k+p2,m1}],k]//FCE", "-((FAD[k, {k + p2, \
+m1}]*FVD[p2, mu]*SPD[k, p2])/(m1^2*SPD[p2, p2])) + (FAD[{k, m1}, {k + p2, \
+m1}]*FVD[p2, mu]*SPD[k, p2])/(m1^2*SPD[p2, p2])"}, 
+ {"fcstTIDPaVeCRankOne-ID13", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,0},{k+p2,m2}],k]//FCE", 
+  "(FAD[k, k, {k + p2, m2}]*FVD[p2, mu]*SPD[k, p2])/SPD[p2, p2]"}, 
+ {"fcstTIDPaVeCRankOne-ID14", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k,0},{k+p2,0}],k]//FCE", "-((FAD[k, k + \
+p2]*FVD[p2, mu]*SPD[k, p2])/(m0^2*SPD[p2, p2])) + (FAD[{k, m0}, k + \
+p2]*FVD[p2, mu]*SPD[k, p2])/(m0^2*SPD[p2, p2])"}, 
+ {"fcstTIDPaVeCRankOne-ID15", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,0},{k+p2,0}],k]//FCE", 
+  "(FAD[k, k, k + p2]*FVD[p2, mu]*SPD[k, p2])/SPD[p2, p2]"}, 
+ {"fcstTIDPaVeCRankOne-ID16", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+p1,m0},{k,m2}],k]//FCE", "(FAD[{k, m0}, {k + \
+p1, m0}]*FVD[p1, mu]*SPD[k, p1])/((m0 - m2)*(m0 + m2)*SPD[p1, p1]) - (FAD[{k \
++ p1, m0}, {k, m2}]*FVD[p1, mu]*SPD[k, p1])/((m0 - m2)*(m0 + m2)*SPD[p1, \
+p1])"}, {"fcstTIDPaVeCRankOne-ID17", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,0},{k,m2}],k]//FCE", "0"}, 
+ {"fcstTIDPaVeCRankOne-ID18", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k,m1},{k,m2}],k]//FCE", "0"}, 
+ {"fcstTIDPaVeCRankOne-ID19", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k,m0},{k,m2}],k]//FCE", "0"}, 
+ {"fcstTIDPaVeCRankOne-ID20", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,m1},{k,m2}],k]//FCE", "0"}, 
+ {"fcstTIDPaVeCRankOne-ID21", "TID[FVD[k,mu]FAD[{k,0},{k,0},{k,m2}],k]//FCE", 
+  "0"}, {"fcstTIDPaVeCRankOne-ID22", 
+  "TID[FVD[k,mu]FAD[{k,0},{k,0},{k,0}],k]//FCE", "0"}, 
+ {"fcstTIDPaVeCRankOne-ID23", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,m1},{k+p2,m2}],k]//FCE", "FAD[{k, m0}, {k + \
+q1, m1}, {k + p2, m2}]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) \
++ FVD[p2, mu]/SPD[p2, q1]) + (FAD[{k, m0}, {k + q1, m1}, {k + p2, \
+m2}]*FVD[q1, mu]*SPD[k, p2])/SPD[p2, q1]"}, {"fcstTIDPaVeCRankOne-ID24", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,m0},{k+p2,m2}],k]//FCE", "FAD[{k, m0}, {k + \
+q1, m0}, {k + p2, m2}]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) \
++ FVD[p2, mu]/SPD[p2, q1]) + (FAD[{k, m0}, {k + q1, m0}, {k + p2, \
+m2}]*FVD[q1, mu]*SPD[k, p2])/SPD[p2, q1]"}, {"fcstTIDPaVeCRankOne-ID25", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,m1},{k+p2,m2}],k]//FCE", "FAD[k, {k + q1, \
+m1}, {k + p2, m2}]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) + \
+FVD[p2, mu]/SPD[p2, q1]) + (FAD[k, {k + q1, m1}, {k + p2, m2}]*FVD[q1, \
+mu]*SPD[k, p2])/SPD[p2, q1]"}, {"fcstTIDPaVeCRankOne-ID26", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,m1},{k+p2,m1}],k]//FCE", "FAD[k, {k + q1, \
+m1}, {k + p2, m1}]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) + \
+FVD[p2, mu]/SPD[p2, q1]) + (FAD[k, {k + q1, m1}, {k + p2, m1}]*FVD[q1, \
+mu]*SPD[k, p2])/SPD[p2, q1]"}, {"fcstTIDPaVeCRankOne-ID27", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,0},{k+p2,m2}],k]//FCE", "FAD[k, k + q1, {k + \
+p2, m2}]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) + FVD[p2, \
+mu]/SPD[p2, q1]) + (FAD[k, k + q1, {k + p2, m2}]*FVD[q1, mu]*SPD[k, \
+p2])/SPD[p2, q1]"}, {"fcstTIDPaVeCRankOne-ID28", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,0},{k+p2,0}],k]//FCE", "FAD[{k, m0}, k + p2, \
+k + q1]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) + FVD[p2, \
+mu]/SPD[p2, q1]) + (FAD[{k, m0}, k + p2, k + q1]*FVD[q1, mu]*SPD[k, \
+p2])/SPD[p2, q1]"}, {"fcstTIDPaVeCRankOne-ID29", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,0},{k+p2,0}],k]//FCE", "FAD[k, k + p2, k + \
+q1]*SPD[k, q1]*(-((FVD[q1, mu]*SPD[p2, p2])/SPD[p2, q1]^2) + FVD[p2, \
+mu]/SPD[p2, q1]) + (FAD[k, k + p2, k + q1]*FVD[q1, mu]*SPD[k, p2])/SPD[p2, \
+q1]"}, {"fcstTIDPaVeCRankOne-ID30", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,m0},{k,m2}],k]//FCE", "-(B0[0, m0^2, \
+m0^2]*FVD[q1, mu])/(2*(m0^2 - m2^2)) - (B1[0, m0^2, m2^2]*FVD[q1, mu])/(m0^2 \
+- m2^2)"}, {"fcstTIDPaVeCRankOne-ID31", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,m1},{k+q2,m2}],k]//FCE", "FVD[q1, \
+mu]*PaVe[1, {0, 0, 0}, {m0^2, m1^2, m2^2}] + FVD[q2, mu]*PaVe[2, {0, 0, 0}, \
+{m0^2, m1^2, m2^2}]"}, {"fcstTIDPaVeCRankOne-ID32", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,m0},{k+q2,m2}],k]//FCE", "FVD[q2, \
+mu]*(-C0[0, 0, 0, m0^2, m0^2, m2^2] - 2*PaVe[1, {0, 0, 0}, {m0^2, m0^2, \
+m2^2}]) + FVD[q1, mu]*PaVe[1, {0, 0, 0}, {m0^2, m0^2, m2^2}]"}, 
+ {"fcstTIDPaVeCRankOne-ID33", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,m1},{k+q2,m2}],k]//FCE", "FVD[q1, mu]*PaVe[1, \
+{0, 0, 0}, {0, m1^2, m2^2}] + FVD[q2, mu]*PaVe[2, {0, 0, 0}, {0, m1^2, \
+m2^2}]"}, {"fcstTIDPaVeCRankOne-ID34", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,m1},{k+q2,m1}],k]//FCE", "FVD[q1, mu]*PaVe[1, \
+{0, 0, 0}, {0, m1^2, m1^2}] + FVD[q2, mu]*PaVe[1, {0, 0, 0}, {0, m1^2, \
+m1^2}]"}, {"fcstTIDPaVeCRankOne-ID35", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,0},{k+q2,m2}],k]//FCE", "FVD[q2, mu]*(-C0[0, \
+0, 0, 0, 0, m2^2] - 2*PaVe[1, {0, 0, 0}, {0, 0, m2^2}]) + FVD[q1, mu]*PaVe[1, \
+{0, 0, 0}, {0, 0, m2^2}]"}, {"fcstTIDPaVeCRankOne-ID36", 
+  "TID[FVD[k,mu]FAD[{k,m0},{k+q1,0},{k+q2,0}],k]//FCE", "FVD[q1, mu]*PaVe[1, \
+{0, 0, 0}, {m0^2, 0, 0}] + FVD[q2, mu]*PaVe[1, {0, 0, 0}, {m0^2, 0, 0}]"}, 
+ {"fcstTIDPaVeCRankOne-ID37", 
+  "TID[FVD[k,mu]FAD[{k,0},{k+q1,0},{k+q2,0}],k]//FCE", "FVD[q1, mu]*PaVe[1, \
+{0, 0, 0}, {0, 0, 0}] + FVD[q2, mu]*PaVe[1, {0, 0, 0}, {0, 0, 0}]"}}

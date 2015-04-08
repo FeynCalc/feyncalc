@@ -43,11 +43,21 @@ Options[TID] = {Collecting -> True,
 TID[a_Plus,b__] :=
 	Map[TID[#,b]&, a];
 
+
+
+
+TID[FeynCalc`OneLoopSimplify`Private`null1 , q_, opt___Rule]:=
+	FeynCalc`OneLoopSimplify`Private`null1;
+
+TID[FeynCalc`OneLoopSimplify`Private`null2 , q_, opt___Rule]:=
+	FeynCalc`OneLoopSimplify`Private`null2;
+
 TID[am_ , q_, opt___Rule] :=
 	Block[ {n, t0, t1, t2, t3, t4, t5, t6, null1, null2, qrule, mudum,
 	nudum, fdp, qQQ, qQQprepare, getfdp,res,nres,irrelevant = 0,
 	contractlabel, diditlabel, famp,chd,fds,tid, tidinternal,
-	originallistoflorentzindices, dimred, disi
+	originallistoflorentzindices, dimred, disi, massless=False,nPoint,vanishingMoms,
+	vanishingGramDet=False,masses,limitto4=$LimitTo4
 	},
 		t0 = am;
 		(* do some special hack ... *)
@@ -68,7 +78,8 @@ TID[am_ , q_, opt___Rule] :=
 		fds = FeynAmpDenominatorSimplify /. {opt} /. Options[TID];
 		chd = ChangeDimension /. {opt} /. Options[TID];
 		If[ dimred =!= True,
-			t5 = ChangeDimension[t5, chd]
+			t5 = ChangeDimension[t5, chd];
+			$LimitTo4=False
 		];
 		(*
 			t5 = t5 /. {LorentzIndex[aa_, en_Symbol] :> LorentzIndex[aa],
@@ -137,122 +148,105 @@ TID[am_ , q_, opt___Rule] :=
 								SelectNotFree[#, Pair[LorentzIndex[__],Momentum[q,___]]]]
 					)&, t2
 					] /. {null1 :> 0, null2 :> 0, qQQprepare:>Identity};
+
+			(* Check if the integral has any masses in the propagators *)
+			If[MatchQ[t3, _ FeynAmpDenominator[PropagatorDenominator[_, 0] ..]],
+				massless=True;
+			];
+
+			(* Build a list of masses in the propagators*)
+
+			masses= Replace[t3, _. FeynAmpDenominator[xx__] :> Map[(# /. PropagatorDenominator[_, bb_] :> bb^2) &, {xx}],{0}];
+			nPoint = Replace[t3, _. FeynAmpDenominator[props__]:>Length[{props}],{0}];
+			If[Length[masses]=!=nPoint,
+				FCPrint[0,"Error! The number of legs doesn't match the number of masses:", masses, nPoint];
+				Abort[]
+			];
 			FCPrint[1,"t3=",t3];
+			FCPrint[1,"masses: ", masses];
+			FCPrint[1,"t3 has no masses in propagators? ", massless];
+			tdeclist[{vecs__}, {moms___}] :=
+				{{vecs} /. {Pair[LorentzIndex[aa_, nn_], Momentum[bb_, nn_]] :> {bb, aa}}, {moms}};
+			vanishingMoms[{moms___}]:=
+				(FCPrint[3,Map[ExpandScalarProduct[ScalarProduct[#]]&, {moms}]];
+				MatchQ[Map[ExpandScalarProduct[ScalarProduct[#]]& ,{moms}], {0 ..} | {}]);
+			breturn[expr_,mom_,dim_]:=
+				expr/.{B0[ExpandScalarProduct[ScalarProduct[mom]],m1_,m2_]->
+					FeynAmpDenominator[PropagatorDenominator[Momentum[q,dim],PowerExpand[Sqrt[m1]]],PropagatorDenominator[Momentum[q,dim]+
+						MomentumExpand[Momentum[mom,dim]],PowerExpand[Sqrt[m2]]]],
+						A0[m_]:>FeynAmpDenominator[PropagatorDenominator[Momentum[q,dim],PowerExpand[Sqrt[m]]]]
+
+						};
+			pavePrepare[ex_,np_Integer?Positive,{moms__},{ms__}]:=
+				Which[np===1 || np===2,
+					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
+						ExpandScalarProduct /@ (ScalarProduct /@ {moms}), {ms}],
+					np===3,
+					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
+						ExpandScalarProduct /@ (ScalarProduct /@ {
+							{moms}[[1]],
+							{moms}[[1]]-{moms}[[2]],
+							{moms}[[2]]
+						}), {ms}],
+					np===4,
+					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
+						ExpandScalarProduct /@ (ScalarProduct /@ {
+							{moms}[[1]],
+							{moms}[[1]]-{moms}[[2]],
+							{moms}[[2]]-{moms}[[3]],
+							{moms}[[3]],
+							{moms}[[2]],
+							{moms}[[1]]-{moms}[[3]]
+						}), {ms}]
+				]/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && np<=4;
+
+			If[Replace[t3, _. qQQ[_. fdp[xx___],___]:>{xx},{0}]=!={},
+				FCPrint[1, "Checking Gram determinant..."];
+					If[ExpandScalarProduct[Det[(Replace[t3, _. qQQ[_. fdp[xx___],___]:>{xx},{0}])//Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
+						vanishingGramDet = True
+					]
+			];
+			FCPrint[1,"Vanishing Gram determinants? ", vanishingGramDet];
 			(* if there is something to substitute then ... *)
 			If[ FreeQ[t3, qQQ],
 				res = t3,
 				qrule =
 				{
-				(* Amu *)
-				qQQ[ fdp[] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]
-					]  :> 0
-				,
-				(* Amunu *)
-				qQQ[ fdp[] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu},{q,nu}},{},Dimension->n]
-				,
-				(* Amunurho *)
-				qQQ[ fdp[] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]]
-					]  :> 0
-				,
-				(* Bmu *)
-				qQQ[ fdp[p_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu}},{p},Dimension->n]
-				,
-				(* Bmunu *)
-				qQQ[ fdp[p_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu},{q,nu}},{p},Dimension->n]
-				,
-				(* Bmunurho *)
-				qQQ[ fdp[p_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu},{q,nu},{q,rho}},{p},Dimension->n]
-				,
-				(* Bmunurhosi *)
-				qQQ[ fdp[p_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[si_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu},{q,nu},{q,rho},{q,si}},{p},Dimension->n]
-				,
-				(* Cmu *)
-				qQQ[ fdp[p_,k_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu}},{p, k}, Dimension -> n]
-				,
-				(* Cmunu *)
-				qQQ[ fdp[p_,k_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]
-					]  :> TIDL[{ {q,mu}, {q,nu} },{p, k}, Dimension -> n]
-				,
-				(* Cmunurho *)
-				qQQ[ fdp[p_,k_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu}, {q,nu}, {q,rho}},{p, k}, Dimension -> n]
-				,
-				(* Cmunurhosi *)
-				qQQ[ fdp[p_,k_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[si_, n],  Momentum[q, n]]
-					]  :> TIDL[{{q,mu}, {q,nu}, {q,rho},{q,si}
-								},{p, k}, Dimension -> n]
-				,
-				(* Cmunurhoside *)
-				qQQ[ fdp[p_,k_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[si_, n],  Momentum[q, n]] *
-					Pair[LorentzIndex[de_, n],  Momentum[q, n]]
-					]  :> TIDL[{{q,mu}, {q,nu}, {q,rho},{q,si},{q,de}
-								},{p, k}, Dimension -> n]
-				,
-				(* Dmu *)
-				qQQ[ fdp[p_,k_, l_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu}},{p, k, l}, Dimension -> n]
-				,
-				(* Dmunu *)
-				qQQ[ fdp[p_,k_, l_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu},{q,nu}},{p, k, l}, Dimension -> n]
-				,
-				(* Dmunurho *)
-				qQQ[ fdp[p_,k_, l_] *
-					Pair[LorentzIndex[mu_, n], Momentum[q, n]]  *
-					Pair[LorentzIndex[nu_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]]
-					]  :> TIDL[{{q,mu}, {q,nu},{q,rho}},{p, k, l}, Dimension -> n]
-				,
-				(* Dmunurhosi *)
-				qQQ[ fdp[p_,k_, l_] *
-					Pair[LorentzIndex[mu_, n],  Momentum[q, n]]  *
-					Pair[LorentzIndex[nu_, n],  Momentum[q, n]]  *
-					Pair[LorentzIndex[rho_, n], Momentum[q, n]] *
-					Pair[LorentzIndex[si_, n],  Momentum[q, n]]
-					]  :> TIDL[{{q,mu}, {q,nu},{q,rho},{q,si}},
-								{p, k, l}, Dimension -> n]
+				(* general tensor integral, which has some scales, i.e. the Gram determinant doesn't vanish *)
+				qQQ[fdp[moms___] (vecs : Pair[LorentzIndex[_, nn_], Momentum[_, nn_]] ..)]/;
+				!vanishingGramDet :>
+					(FCPrint[3,"General case", massless,vanishingMoms[{moms}]]; Tdec[(Sequence @@ tdeclist[{vecs}, {moms}]), Dimension -> n, List -> False,
+					FeynCalcExternal->False]),
+				(*
+				(* general tensor integral, which is scaleless, i.e. all external momenta
+				and masses vanish *)
+				qQQ[fdp[moms___] (vecs : Pair[LorentzIndex[_, nn_], Momentum[_, nn_]] ..)]/;
+				(massless && vanishingMoms[{moms}]) :>
+					(FCPrint[3, t3, "is scaleless (no masses in propagators
+						and vanishing external momenta), hence it vanishes in DR."]; 0),
+				*)
+				(* one-point function of arbitrary rank with non-vanishing mass *)
+				(*
+				qQQ[fdp[] (vecs : Pair[LorentzIndex[_, nn_], Momentum[_, nn_]] ..)]*
+				FeynAmpDenominator[PropagatorDenominator[q,_]]/;
+				!massless :>
+					Tdec[(Sequence @@ tdeclist[{vecs}, {}]), Dimension -> n, List -> False,
+					FeynCalcExternal->False
+
+					],*)
+				(* General tensor reduction formulas up to 4-point functions for vanishing Gram determinants *)
+				qQQ[fdp[moms___] (vecs : Pair[LorentzIndex[_, nn_], Momentum[_, nn_]] ..)]*
+				FeynAmpDenominator[__]/;
+				vanishingGramDet :>
+					(FCPrint[3,"Trying to handle vanishing Gram determinants"];
+					Tdec[(Sequence @@ tdeclist[{vecs}, {moms}]), Dimension -> n, BasisOnly -> True,
+					FeynCalcExternal->False]/.FCGV["PaVe"][xx_]:>pavePrepare[FCGV["PaVe"][xx],nPoint,{moms},masses])
 				};
 				t5 = t3 /. qrule;
-				FCPrint[1,"t5=",t5];
+				If[t5===t3,
+					FCPrint[3,"Nothing matched"!]
+				];
+				FCPrint[1,"t5=",StandardForm[t5]];
 				scsav[a_Momentum,b_Momentum] :=
 					scsav[a,b] = ExpandScalarProduct[a,b]//Expand;
 				t5 = t5 /. Pair -> scsav /. scsav -> Pair;
@@ -393,6 +387,7 @@ TID[am_ , q_, opt___Rule] :=
 			If[ (Collecting /. {opt} /. Options[TID])===True,
 				res = Collect2[res, q, Factoring -> False]
 			];
+			$LimitTo4=limitto4;
 			irrelevant + res
 		]
 	];
