@@ -54,3 +54,101 @@ FeynCalcExternal -> False]","-((Pair[LorentzIndex[i1], LorentzIndex[i2]] (Pair[M
 {"fcstTdec-ID13","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False]","{0,0}"},
 {"fcstTdec-ID14","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False, List->False]","0"}
 };
+
+Tests`LoopIntegrals`fcstTdecNegativeMomenta = ({
+{"fcstTdecNegativeMomenta-ID1",
+"ExpandScalarProduct[(Tdec[{{q,mu}},{-p1}]/.{p1\[Rule]-p1})]===FCI[\
+Tdec[{{q,mu}},{p1}]]", "True"},
+{"fcstTdecNegativeMomenta-ID2",
+"ExpandScalarProduct[(Tdec[{{q,mu}},{-p1,p2}]/.{p1\[Rule]-p1})]\
+===FCI[Tdec[{{q,mu}},{p1,p2}]]", "True"},
+{"fcstTdecNegativeMomenta-ID3",
+"ExpandScalarProduct[(Tdec[{{q,mu}},{-p1,-p2}]/.{p1\[Rule]-p1,p2\
+\[Rule]-p2})]===FCI[Tdec[{{q,mu}},{p1,p2}]]", "True"},
+{"fcstTdecNegativeMomenta-ID4",
+"ExpandScalarProduct[(Tdec[{{q,mu}},{-p1,-p2,p3}]/.{p1\[Rule]-p1,\
+p2\[Rule]-p2})]===FCI[Tdec[{{q,mu}},{p1,p2,p3}]]", "True"},
+{"fcstTdecNegativeMomenta-ID5",
+"ExpandScalarProduct[(Tdec[{{q,mu}},{p1,-p2,p3}]/.{p2\[Rule]-p2})]\
+===FCI[Tdec[{{q,mu}},{p1,p2,p3}]]", "True"},
+{"fcstTdecNegativeMomenta-ID6",
+"ExpandScalarProduct[(Tdec[{{q,mu}},{-p1,-p2,-p3}]/.{p1\[Rule]-p1,\
+p2\[Rule]-p2,p3\[Rule]-p3})]===FCI[Tdec[{{q,mu}},{p1,p2,p3}]]",
+"True"},
+{"fcstTdecNegativeMomenta-ID7",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu}},{-p1}]/.{p1\[Rule]-p1})]\
+===FCI[Tdec[{{q,mu},{q,nu}},{p1}]]", "True"},
+{"fcstTdecNegativeMomenta-ID8",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu}},{-p1,p2}]/.{p1\[Rule]-\
+p1})]===FCI[Tdec[{{q,mu},{q,nu}},{p1,p2}]]", "True"},
+{"fcstTdecNegativeMomenta-ID9",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu}},{-p1,-p2}]/.{p1\[Rule]-\
+p1,p2\[Rule]-p2})]===FCI[Tdec[{{q,mu},{q,nu}},{p1,p2}]]", "True"},
+{"fcstTdecNegativeMomenta-ID10",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu}},{-p1,-p2,p3}]/.{p1\
+\[Rule]-p1,p2\[Rule]-p2})]===FCI[Tdec[{{q,mu},{q,nu}},{p1,p2,p3}]]",
+"True"},
+{"fcstTdecNegativeMomenta-ID11",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu}},{p1,-p2,p3}]/.{p2\[Rule]\
+-p2})]===FCI[Tdec[{{q,mu},{q,nu}},{p1,p2,p3}]]", "True"},
+{"fcstTdecNegativeMomenta-ID12",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu}},{-p1,-p2,-p3}]/.{p1\
+\[Rule]-p1,p2\[Rule]-p2,p3\[Rule]-p3})]===FCI[Tdec[{{q,mu},{q,nu}},{\
+p1,p2,p3}]]", "True"},
+{"fcstTdecNegativeMomenta-ID13",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu},{q,rho}},{-p1}]/.{p1\
+\[Rule]-p1})]===FCI[Tdec[{{q,mu},{q,nu},{q,rho}},{p1}]]", "True"},
+{"fcstTdecNegativeMomenta-ID14",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu},{q,rho}},{-p1,p2}]/.{p1\
+\[Rule]-p1})]===FCI[Tdec[{{q,mu},{q,nu},{q,rho}},{p1,p2}]]", "True"},
+{"fcstTdecNegativeMomenta-ID15",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu},{q,rho}},{-p1,-p2}]/.{p1\
+\[Rule]-p1,p2\[Rule]-p2})]===FCI[Tdec[{{q,mu},{q,nu},{q,rho}},{p1,p2}]\
+]", "True"},
+{"fcstTdecNegativeMomenta-ID16",
+"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu},{q,rho}},{-p1,-p2,p3}]/.{\
+p1\[Rule]-p1,p2\[Rule]-p2})]===FCI[Tdec[{{q,mu},{q,nu},{q,rho}},{p1,\
+p2,p3}]]", "True"}
+});
+
+
+Tests`LoopIntegrals`fcstTdecVanishingGD = ({
+{"fcstTdecVanishingGD-ID1",
+"ClearScalarProducts;ScalarProduct[p1,p1]=0;ScalarProduct[p2,p2]=0;\
+ScalarProduct[p1,p2]=0;Tdec[{{q,mu}},{p1}]", "{{}, FVD[q, mu]}"},
+{"fcstTdecVanishingGD-ID2", "Tdec[{{q,mu}},{p1},List\[Rule]False]",
+	"FVD[q, mu]"},
+{"fcstTdecVanishingGD-ID3", "Tdec[{{q,mu},{q,nu}},{p1}]",
+"{{}, FVD[q, mu]*FVD[q, nu]}"},
+{"fcstTdecVanishingGD-ID4",
+"Tdec[{{q,mu},{q,nu}},{p1},List\[Rule]False]",
+"FVD[q, mu]*FVD[q, nu]"},
+{"fcstTdecVanishingGD-ID5", "Tdec[{{q,mu}},{p1,p2}]",
+"{{}, FVD[q, mu]}"},
+{"fcstTdecVanishingGD-ID6",
+"Tdec[{{q,mu}},{p1,p2},List\[Rule]False]", "FVD[q, mu]"},
+{"fcstTdecVanishingGD-ID7", "Tdec[{{q,mu},{q,nu}},{p1,p2}]",
+"{{}, FVD[q, mu]*FVD[q, nu]}"},
+{"fcstTdecVanishingGD-ID8",
+"Tdec[{{q,mu},{q,nu}},{p1,p2},List\[Rule]False]",
+"FVD[q, mu]*FVD[q, nu]"},
+{"fcstTdecVanishingGD-ID9",
+"ClearScalarProducts; ScalarProduct[p3,p3]=m^2; \
+ScalarProduct[p4,p4]=m^2; ScalarProduct[p3,p4]=m^2; \
+Tdec[{{q,mu}},{p3,p4}]", "{{}, FVD[q, mu]}"},
+{"fcstTdecVanishingGD-ID10",
+"Tdec[{{q,mu}},{p3,p4},List\[Rule]False]", "FVD[q, mu]"},
+{"fcstTdecVanishingGD-ID11",
+"Tdec[{{q,mu}},{p,p},List\[Rule]False]", "FVD[q, mu]"}
+});
+
+
+
+
+
+
+
+
+
+
+

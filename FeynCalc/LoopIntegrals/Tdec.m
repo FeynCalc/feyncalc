@@ -39,6 +39,11 @@ will be fetched immediately.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+(*	Just write down the most general decomposition, without solving any linear
+	equations. This is meant to be called from TID	*)
+BasisOnly
+
 End[]
 
 Begin["`Tdec`Private`"]
@@ -51,7 +56,8 @@ Options[Tdec] =
 		List -> True,
 		NumberOfMetricTensors -> Infinity,
 		UseParallelization -> True,
-		UseTIDL -> True
+		UseTIDL -> True,
+		BasisOnly -> False
 	};
 
 
@@ -125,15 +131,41 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 	opt:OptionsPattern[]] :=
 	Tdec[exp, {{a,b}}, pli, opt];
 
-Tdec[exp_:1, li : {{_, _} ..}, pli_List/;FreeQ[pli,OptionQ], opt:OptionsPattern[]] :=
-	Block[ {tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt,
+Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], opt:OptionsPattern[]] :=
+	Block[ {tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt, pli,
 			nullccli, kli, eqli, neqli,  nttt,listlabel, fce,
 			veqli, seqli, scqli, solu, xy, ce, byby, symms, sy,
-			cfix,pcfix,liS,cc,ccfix,ccf,gfix,ccjoin,ccj,gfixx,newcc},
+			cfix,pcfix,liS,cc,ccfix,ccf,gfix,ccjoin,ccj,gfixx,newcc,extMom,basisonly},
 		dim         = OptionValue[Dimension];
 		listlabel     = OptionValue[List];
 		fce         = OptionValue[FeynCalcExternal];
 		factor         = OptionValue[Factoring];
+		basisonly         = OptionValue[BasisOnly];
+
+		(* Abort decomposition if there are vanishing Gram determinants, unless
+		we have a 1-point function or were requested just to provide the tensor basis *)
+		If[!basisonly && ppli=!={},
+			FCPrint[1, "Tdec: Checking Gram determinant..."];
+			If[ExpandScalarProduct[Det[ppli//Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
+				FCPrint[1,"Tensor decomposition with Tdec is not possible due to vanishing Gram determinants"];
+				tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
+				seqli={};
+				If[ fce,
+					tt = FeynCalcExternal[tt];
+				];
+				If[ exp =!= 1,
+					tt = Contract[exp tt, EpsContract -> False]
+				];
+				If[ listlabel === True,
+					Return[{Map[Reverse, seqli], tt}],
+					Return[tt]
+				],
+				FCPrint[1, "Tdec: Gram determinant is non-vanishing."];
+			];
+		];
+
+		(* Encode the given external momenta *)
+		pli = extMom/@ppli;
 		cc[a__] :=
 			0 /; OddQ[Count[{a}, 0, Infinity]];
 		(* ccfix is NECESSARY, since otherwise multiloop decompositions are wrong *)
@@ -230,66 +262,76 @@ Tdec[exp_:1, li : {{_, _} ..}, pli_List/;FreeQ[pli,OptionQ], opt:OptionsPattern[
 		If[ Length[pli] === 0 && Length[kli]===1,
 			proli = {First[proli]}
 		];
-		FCPrint[1,"contracting with", proli];
-		eqli = Table[
-					EpsEvaluate[ExpandScalarProduct[FCPrint[1,"il = ",il];
-													(tt proli[[il]]) /. Pair->PairContract /. PairContract -> Pair]],
-					{il, Length[proli]}
-				];
-		FCPrint[1,"Length of eqli = ",Length[eqli]];
-		FCPrint[1,"eqli = ",TableForm[eqli]];
-		FCPrint[1,"solving ", Length[ccli]];
-		veqli = Union[Join @@ Map[Variables, Flatten[eqli /. Equal -> List]]];
-		veqli = SelectFree[veqli, ccli];
-		seqli = Table[
-					veqli[[ij]] -> xy[ij],
-					{ij, Length[veqli]}
-				];
-		scqli = Table[
-					ccli[[ji]] -> ce[ji],
-					{ji, Length[ccli]}
-				];
-		neqli = eqli /. seqli /. scqli;
-		ccli = ccli /. scqli;
+		FCPrint[1,"tt ", tt];
+		If[basisonly,
+			Return[(tt/.Equal[_,xx_]:>xx/.extMom->Identity/.cc[xx__]:>
+				FCGV["PaVe"][Sort[Flatten[Map[(#/.{aa_,_}:>{aa}/.{0,0,_,_}:>{0,0})&,{xx}]]]])];
+		];
+			FCPrint[1,"contracting with ", proli];
+			eqli = Table[
+						EpsEvaluate[ExpandScalarProduct[FCPrint[1,"il = ",il];
+														(tt proli[[il]]) /. Pair->PairContract /. PairContract -> Pair]],
+						{il, Length[proli]}
+					];
+			FCPrint[1,"Length of eqli = ",Length[eqli]];
+			FCPrint[1,"eqli = ",TableForm[eqli]];
+			FCPrint[1,"solving ", Length[ccli]];
+			veqli = Union[Join @@ Map[Variables, Flatten[eqli /. Equal -> List]]];
+			veqli = SelectFree[veqli, ccli];
+			seqli = Table[
+						veqli[[ij]] -> xy[ij],
+						{ij, Length[veqli]}
+					];
+			scqli = Table[
+						ccli[[ji]] -> ce[ji],
+						{ji, Length[ccli]}
+					];
+			neqli = eqli /. seqli /. scqli;
+			ccli = ccli /. scqli;
 
 
-		(*Before computing the decomposition formula, check if the result
-		is already available in the TIDL database *)
-		If[ OptionValue[UseTIDL] &&    TIDL[li,pli,Dimension->dim]=!=Apply[Times,
-				Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
-			FCPrint[1,"This decomposition formula is available in TIDL, skipping
-		calculation."];
-			tt = TIDL[li,pli,Dimension->dim];
-			If[ listlabel === True,
-				tt = FeynCalcInternal[FeynCalcExternal[tt] /. Dispatch[FeynCalcExternal[seqli]]];
-			],
-			FCPrint[1,"Unfortunately, this decomposition formula is not available in TIDL."];
-			solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
-			FCPrint[1,"solve3 done ",MemoryInUse[]];
-			FCPrint[1,"SOLVE3 Bytecount", byby = ByteCount[solu]];
-			nttt = Collect[tt[[2]], Map[First, scqli]];
+			(*Before computing the decomposition formula, check if the result
+			is already available in the TIDL database *)
+			If[ OptionValue[UseTIDL] &&    TIDL[li,pli,Dimension->dim]=!=Apply[Times,
+					Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
+				FCPrint[1,"This decomposition formula is available in TIDL, skipping
+			calculation."];
+				tt = TIDL[li,pli,Dimension->dim];
+				FCPrint[1,"Result from TIDL: ", tt];
+				If[ listlabel === True,
+					tt = FeynCalcInternal[FeynCalcExternal[tt] /. Dispatch[FeynCalcExternal[seqli]]];
+				],
+				FCPrint[1,"Unfortunately, this decomposition formula is not available in TIDL."];
+				solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
+				FCPrint[1,"solve3 done ",MemoryInUse[]];
+				FCPrint[1,"SOLVE3 Bytecount", byby = ByteCount[solu]];
+				nttt = Collect[tt[[2]], Map[First, scqli]];
+				If[ fce,
+					nttt = FeynCalcExternal[nttt]
+				];
+				If[ listlabel =!= True,
+					solu = solu /. Map[Reverse, seqli];
+				];
+				solu = solu /. Dispatch[Map[Reverse, scqli]];
+				tt = nttt /. Dispatch[solu];
+			];
+			FCPrint[1,"after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ",
+				TimeUsed[]//FeynCalcForm];
+			FCPrint[2,"tt: ", tt];
+			FCPrint[2,"seqli: ", seqli];
+			tt = tt/.extMom->Identity;
+			seqli = seqli/.extMom->Identity;
 			If[ fce,
-				nttt = FeynCalcExternal[nttt]
+				tt = FeynCalcExternal[tt];
+				seqli = FeynCalcExternal[seqli];
 			];
-			If[ listlabel =!= True,
-				solu = solu /. Map[Reverse, seqli];
+			If[ exp =!= 1,
+				tt = Contract[exp tt, EpsContract -> False]
 			];
-			solu = solu /. Dispatch[Map[Reverse, scqli]];
-			tt = nttt /. Dispatch[solu];
-		];
-		FCPrint[1,"after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ",
-			TimeUsed[]//FeynCalcForm];
-		If[ fce,
-			tt = FeynCalcExternal[tt];
-			seqli = FeynCalcExternal[seqli];
-		];
-		If[ exp =!= 1,
-			tt = Contract[exp tt, EpsContract -> False]
-		];
-		If[ listlabel === True,
-			{Map[Reverse, seqli], tt},
-			tt
-		]
+			If[ listlabel === True,
+				{Map[Reverse, seqli], tt},
+				tt
+			]
 	];
 
 FCPrint[1,"Tdec.m loaded."];
