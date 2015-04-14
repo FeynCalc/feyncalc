@@ -64,7 +64,7 @@ delt = If[ #1 === #2,
 (* ***************************************************************** *)
 
 (* This is only valid for UV - Divergences !! *)
-$epsilon /: $epsilon^n_Integer?Positive := 0;
+$epsilon /: $epsilon^_Integer?Positive := 0;
 $epsilon /: $epsilon A0[mm_] := 2 mm;
 $epsilon /: $epsilon B0[_, _, _] := 2;
 $epsilon /: $epsilon B1[_, _, _] := -1;

@@ -39,23 +39,37 @@ PaVe[i_,j__,  pl_List, ml_List ] :=
 (* Special cases of PaVe: *)
 PaVe[0, {}, {x_}] :=
 	A0[x];
+
 PaVe[0, {p2_}, {x_,y_}] :=
 	B0[p2,x,y];
+
 PaVe[1,{pp_},{mm1_,mm2_}] :=
 	B1[pp, mm1, mm2];
 
 (* there is no tensorial 1-point function *)
 PaVe[_,{},{_}] :=
 	0;
+
+(* scaleless 2-point functions*)
+PaVe[__,{0},{0,0}] :=
+	0;
+
 (* but a non-zero coefficient of g_munu *)
 PaVe[0,0,{},{m2_}] :=
 	(m2/4 A0[m2] + m2^2/8) /; $LimitTo4 === True;
+(* but a non-zero coefficient of g_munu *)
+PaVe[0,0,{},{m2_}] :=
+	(m2/D A0[m2]) /; $LimitTo4 === False;
+
 PaVe[0, {p_}, {m1_, m2_}] :=
 	B0[p, m1, m2];
+
 PaVe[0,0,{p_},{m1_,m2_}] :=
-	B00[p,m1,m2] /; $LimitTo4 === True;
+	B00[p,m1,m2]/; $LimitTo4 === True;
+
 PaVe[1,1,{pp_},{mm1_,mm2_}] :=
-	B11[pp,mm1,mm2] /; $LimitTo4 === True;
+	B11[pp,mm1,mm2];
+
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
 (* ****************************************************************** *)

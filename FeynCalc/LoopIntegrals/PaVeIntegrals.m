@@ -121,7 +121,10 @@ A0 /:
 	MakeBoxes[A0[m_]  ,TraditionalForm] :=
 		ToBoxes[HoldForm[PaVe[0,{},{m}]],TraditionalForm];
 
-B0[pe_,me2_,me1_,opt___] :=
+B0[0,0,0, OptionsPattern[]]:=
+	0;
+
+B0[pe_,me2_,me1_, opt:OptionsPattern[]] :=
 	B0 @@ Prepend[ {me1,me2,opt}, Expand[pe]] /; !OrderedQ[{me2,me1}];
 
 B0[SmallVariable[pp_]^j_., SmallVariable[a_]^n_., SmallVariable[b_]^m_.] :=
@@ -208,42 +211,45 @@ B1[a_,b_,c_,ops___Rule] :=
 
 (* Special cases, if photon and fermionic SmallVariable masses are present *)
 bb1[SmallVariable[me_]^n_., SmallVariable[me_]^n_., SmallVariable[mla_]^_.] :=
-	( -1/2 B0[SmallVariable[me]^n, SmallVariable[me]^n, 0] - 1/2 )/; TrueQ[mla < me];
+	( -1/2 B0[SmallVariable[me]^n, SmallVariable[me]^n, 0] - 1/2 )/; TrueQ[mla < me] && $LimitTo4;
 
 bb1[SmallVariable[me_]^n_., SmallVariable[mla_]^n_., SmallVariable[me_]^_.] :=
-	(1/2 - 1/2 B0[SmallVariable[me]^n,0 ,SmallVariable[me]^n]) /; TrueQ[mla < me];
+	(1/2 - 1/2 B0[SmallVariable[me]^n,0 ,SmallVariable[me]^n]) /; TrueQ[mla < me] && $LimitTo4;
 
 (* other special cases of B1 *)
 
 (* B1( p,m,m ) = -1/2 B0( p,m,m )  *)
+(* D-independent *)
 bb1[pp_,mm_,mm_] :=
 	-1/2 B0[pp,mm,mm];
+
 bb1[mm_, mm_, 0] :=
-	-1/2 B0[mm, mm, 0] - 1/2;
+	-1/2 B0[mm, mm, 0] - 1/2/; $LimitTo4;
 bb1[mm_, 0, mm_] :=
-	1/2 - B0[mm,0,mm]/2;
+	1/2 - B0[mm,0,mm]/2/; $LimitTo4;
 bb1[0,0,mm_] :=
-	-1/2 B0[0,0,mm]+1/4;
+	-1/2 B0[0,0,mm]+1/4/; $LimitTo4;
+
 bb1[SmallVariable[_]^_.,0, mm:Except[_SmallVariable | 0]] :=
-	( -1/2 B0[0,0,mm] + 1/4 );
+	( -1/2 B0[0,0,mm] + 1/4 )/; $LimitTo4;
 bb1[0,SmallVariable[_]^_., mm:Except[_SmallVariable | 0]] :=
-	( -1/2 B0[0,0,mm] + 1/4 );
+	( -1/2 B0[0,0,mm] + 1/4 )/; $LimitTo4;
 bb1[0, mm:Except[_SmallVariable | 0], 0] :=
-	( -1/2 B0[0,0,mm] - 1/4 );
+	( -1/2 B0[0,0,mm] - 1/4 )/; $LimitTo4;
 
 bb1[SmallVariable[_]^n_.,SmallVariable[_]^n_., mm:Except[_SmallVariable | 0]] :=
-	( -1/2 B0[0,0,mm] + 1/4 );
+	( -1/2 B0[0,0,mm] + 1/4 )/; $LimitTo4;
 
 bb1[SmallVariable[_]^n_.,mm:Except[_SmallVariable | 0], SmallVariable[_]^n_.] :=
-	( -1/2 B0[0,0,mm] - 1/4 );
+	( -1/2 B0[0,0,mm] - 1/4 )/; $LimitTo4;
 
 bb1[SmallVariable[_]^_.,mm:Except[_SmallVariable | 0], 0] :=
-	( -1/2 B0[0,0,mm] - 1/4 );
+	( -1/2 B0[0,0,mm] - 1/4 )/; $LimitTo4;
 
 (* B1 in general *)
 bb1[pp:Except[_SmallVariable | 0], ma0_, ma1_] :=
 	(smad[ma1-ma0]/(2 pp) (B0[pp,ma0,ma1] -
-	B0[0,ma0,ma1]) - 1/2 B0[pp,ma0,ma1]);
+	B0[0,ma0,ma1]) - 1/2 B0[pp,ma0,ma1])/; $LimitTo4;
 
 B1 /:
 	MakeBoxes[B1[p10_,m02_,m12_]  ,TraditionalForm] :=
