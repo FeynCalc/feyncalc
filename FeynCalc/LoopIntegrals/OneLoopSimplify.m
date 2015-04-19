@@ -161,8 +161,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				,{ij, lnt6}
 				];
 			t6 = nt6 /. {null1 :> 0, null2 :>0};
-			FCPrint[1,"first TID done "];
-			FCPrint[2,"expression is now ",t6];
+			FCPrint[1,"OneLoopSimplify: First TID done, expression is now ", t6];
 			t6 = Collect2[t6, q, Factoring->False, Expanding->False];
 			FCPrint[1,"collect2 after first TID done ",Length[t6]];
 			FCPrint[2,"expression is now ",t6];
@@ -206,7 +205,6 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			];
 			FCPrint[1,"doing TID  done ", t6];
 			t6 = t6 /. substis /. {null1 :> 0, null2 :> 0};
-			t6 = FixedPoint[ReleaseHold,t6];
 			If[ !FreeQ[t6,DiracGamma],
 				FCPrint[1,"collecing after FRH in TID",t6];
 				t6 = Collect2[t6, DiracGamma, Factoring -> False];
