@@ -33,5 +33,9 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorSimplify = {
 	Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*Pair[Momentum[k, D], Momentum[OPEDelta, D]]*
 	Pair[Momentum[OPEDelta, D], Momentum[p2, D]] + FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], 0],
 	PropagatorDenominator[Momentum[k, D] - Momentum[p1, D] + Momentum[p2, D], 0]]*
-	Pair[Momentum[OPEDelta, D], Momentum[p2, D]]^2"}
+	Pair[Momentum[OPEDelta, D], Momentum[p2, D]]^2"},
+{"fcstFeynAmpDenominatorSimplify-ID5","FeynAmpDenominatorSimplify[FAD[{q - k - p, ME}, q] -
+	FAD[{q, ME}, q - p - k], q]","0"},
+{"fcstFeynAmpDenominatorSimplify-ID6","FeynAmpDenominatorSimplify[FAD[{q - k - p, ME}, q] -
+	FAD[q - p - k, {q, ME}], q]","0"}
 }

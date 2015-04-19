@@ -54,7 +54,7 @@ procan[a_, m_] :=
 			PropagatorDenominator[tt/.one->1, m]
 		]
 	];
-
+(*
 levv[PropagatorDenominator[a_, m1_], PropagatorDenominator[a_, m2_]] :=
 	If[ LeafCount[m1] <= LeafCount[m2],
 		True,
@@ -66,9 +66,9 @@ levv[PropagatorDenominator[a_, _], PropagatorDenominator[b_, _]] :=
 		True,
 		False
 	]/; a =!= b;
-
+*)
 feyncan[a__] :=
-	Apply[FeynAmpDenominator, Sort[Sort[{a}], levv]];
+	Apply[FeynAmpDenominator, Sort[Sort[{a}], lenso]];
 
 FeynAmpDenominatorSimplify[exp_, OptionsPattern[]] :=
 	exp /. PropagatorDenominator -> procan /. procan ->
@@ -410,12 +410,11 @@ aMu3[_,xx_] :=
 	xx;
 
 (* SPECIAL *)
-FeynAmpDenominatorSimplify[a_ /; FreeQ[a, PropagatorDenominator],
-							___ ] :=
+FeynAmpDenominatorSimplify[a_ /; FreeQ[a, PropagatorDenominator], ___] :=
 	a /; FreeQ[a, FAD];
 
 FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum] :=
-	FixedPoint[efdes[#, q1]&, exp, 6];
+	(FCPrint[1, "FeynAmpDenominatorSimplify: Entering with ", exp]; FixedPoint[efdes[#, q1]&, exp, 6]);
 
 (*
 FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum] :=
@@ -1199,9 +1198,45 @@ FeynAmpDenominatorSimplify[exp_, qmore__, q1_/;Head[q1] =!= Rule,
 	FeynAmpDenominatorSimplify[
 		exp /. FeynAmpDenominator -> feynsimp[q2], qmore, q1];
 
-lenso[PropagatorDenominator[x_, _],
-		PropagatorDenominator[y_, _]
+lenso[PropagatorDenominator[x_, m1_],
+		PropagatorDenominator[y_, m2_]
 	] :=
+	Which[
+		m1=!=0 && m2=!=0,
+			If[ NTerms[x] < NTerms[y],
+				True,
+				If[ NTerms[x] === NTerms[y],
+					If[ OrderedQ[{x,y}],
+						True,
+						False
+					],
+					False
+				],
+				False
+			],
+		m1===0 && m2=!=0,
+		True,
+		m1=!=0 && m2===0,
+		False,
+		m1===0 && m2===0,
+			If[ NTerms[x] < NTerms[y],
+					True,
+					If[ NTerms[x] === NTerms[y],
+						If[ OrderedQ[{x,y}],
+							True,
+							False
+						],
+						False
+					],
+					False
+				],
+		True,
+		FCPrint[0,"Problem in FDS!"];
+		Abort[]
+	]
+
+
+(*
 	If[ NTerms[x] < NTerms[y],
 		True,
 		If[ NTerms[x] === NTerms[y],
@@ -1212,7 +1247,7 @@ lenso[PropagatorDenominator[x_, _],
 			False
 		],
 		False
-	];
+	];*)
 
 feynord[a__PropagatorDenominator] :=
 	MemSet[feynord[a],
