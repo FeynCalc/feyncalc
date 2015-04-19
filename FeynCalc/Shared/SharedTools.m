@@ -169,6 +169,10 @@ Options[MLimit] = {
 	Limit -> Limit
 };
 
+Options[FRH] = {
+	IsolateNames->All
+};
+
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
 	Cases2 @@ Prepend[{f,opts}, expr];
 
@@ -284,8 +288,11 @@ FreeQ2[x_, {y_, z__}] :=
 (* this is eventually slower ...
 FreeQ2[x_, {y_, z__}] := FreeQ[x, Alternatives@@{y,z}];*)
 
-FRH[x_] :=
-	FixedPoint[ReleaseHold, x];
+FRH[x_, OptionsPattern[]] :=
+	FixedPoint[ReleaseHold, x]/; OptionValue[IsolateNames]===All;
+
+FRH[x_, OptionsPattern[]] :=
+	FixedPoint[ReplaceRepeated[x, HoldForm[y_[z___]] /; ! FreeQ2[HoldForm[y], Flatten[{OptionValue[IsolateNames]}]] :> y[z]] &, x]/; OptionValue[IsolateNames]=!=All;
 
 ILimit[exp_, lim_Rule, OptionsPattern[]] :=
 	Block[{limruls, m, ff, fff, out,res},
