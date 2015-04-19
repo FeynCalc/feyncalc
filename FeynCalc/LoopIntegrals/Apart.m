@@ -19,6 +19,10 @@ Apart3::usage =
 "Apart3[expr, x] is equivalent to
 Map2[Factor2, Collect2[Apart1[expr,x],x]].";
 
+ExcludeMasses::usage =
+"ExcludeMasses is an option of Apart2. It allows to specify masses for
+which partional fractioning should not be performed,e.g. ExcludeMasses->{m1,m2,3}"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -34,16 +38,32 @@ Apart1[expr_, x_] :=
 		]
 	];
 
-Apart2[y_] :=
+Options[Apart2]= {
+	Factoring->True,
+	ExcludeMasses->{}
+};
+
+Apart2[y_, OptionsPattern[]] :=
+	Block[{factoring,factFun,exclM},
+	factoring = OptionValue[Factoring];
+	exclM  = OptionValue[ExcludeMasses];
+
+	If[factoring,
+		factFun=Factor2,
+		factFun=Identity,
+		factFun=factoring
+	];
+	feynampdenpartfrac[a___, PropagatorDenominator[qpe1_, m1_], b___,
+	PropagatorDenominator[qpe1_, m2_], c___] :=
+		factFun[(1/(m1^2 - m2^2) *
+		(FeynAmpDenominator[a, PropagatorDenominator[qpe1, m1], b, c] -
+		FeynAmpDenominator[a, b, PropagatorDenominator[qpe1, m2], c]))] /;
+		(m1 =!= m2) && FreeQ2[{m1,m2},exclM];
+
+
 	(FeynCalcInternal[y] //. FeynAmpDenominator -> feynampdenpartfrac) /.
-	feynampdenpartfrac -> FeynAmpDenominator;
-
-feynampdenpartfrac[a___, PropagatorDenominator[qpe1_, m1_], b___,
-PropagatorDenominator[qpe1_, m2_], c___] :=
-	Factor2[(1/(m1^2 - m2^2) *
-	(FeynAmpDenominator[a, PropagatorDenominator[qpe1, m1], b, c] -
-	FeynAmpDenominator[a, b, PropagatorDenominator[qpe1, m2], c]))] /; m1 =!= m2;
-
+	feynampdenpartfrac -> FeynAmpDenominator
+];
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 

@@ -1,0 +1,44 @@
+
+
+(* :Title: Apart2.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Apart2			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstApart2 = {
+
+{"fcstApart2-ID1","Apart2[FAD[{q, m}, {q, M}, q - p]]",
+	"(1/(m^2 - M^2))(FeynAmpDenominator[
+	PropagatorDenominator[Momentum[q, D], m],
+	PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0]] -
+	FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], M],
+	PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0]])"},
+{"fcstApart2-ID2","Apart2[FAD[k, {k, m1}, {k, m2}], ExcludeMasses -> m2]",
+	"-(1/(m1^2))(FeynAmpDenominator[
+	PropagatorDenominator[Momentum[k, D], 0],
+	PropagatorDenominator[Momentum[k, D], m2]] -
+	FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], m1],
+	PropagatorDenominator[Momentum[k, D], m2]])"},
+{"fcstApart2-ID3","Apart2[FAD[k, {k, m1}, {k, m2}], ExcludeMasses -> m1]",
+	"-(1/(m2^2))(FeynAmpDenominator[
+	PropagatorDenominator[Momentum[k, D], 0],
+	PropagatorDenominator[Momentum[k, D], m1]] -
+	FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], m1],
+	PropagatorDenominator[Momentum[k, D], m2]])"},
+{"fcstApart2-ID4","Apart2[FAD[k, {k, m1 + m2}, {k, m3 + m4}]]// FCE",
+	"-((-((FAD[k] - FAD[{k, m3 + m4}])/(m3 + m4)^2) - (
+	FAD[{k, m1 + m2}] - FAD[{k, m3 + m4}])/((m1 + m2 - m3 - m4) *
+	(m1 + m2 + m3 + m4)))/(m1 +	m2)^2)"},
+{"fcstApart2-ID5","Apart2[FAD[k, {k, m1 + m2}, {k, m3 + m4}],Factoring->False]// FCE",
+	"-((-((FAD[k] - FAD[{k, m3 + m4}])/(m3 + m4)^2) - (
+	FAD[{k, m1 + m2}] - FAD[{k, m3 + m4}])/((m1 + m2)^2 - (m3 + m4)^2))/
+	(m1 + m2)^2)"}
+};
