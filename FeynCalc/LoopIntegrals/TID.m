@@ -40,8 +40,8 @@ Options[TID] = {Collecting -> True,
 
 TID[am_ , q_, opt:OptionsPattern[]] :=
 	(FCPrint[1,"TID: Splitting TID input"];
-	Map[TID[#,q,opt]&,Expand2[DiracGammaExpand@ScalarProductExpand@am,q]])/;
-	(Head[Expand2[DiracGammaExpand@ScalarProductExpand@am,q]]===Plus)
+	Map[TID[#,q,opt]&,Expand2[Apart2@DiracGammaExpand@ScalarProductExpand@am,q]])/;
+	(Head[Expand2[Apart2@DiracGammaExpand@ScalarProductExpand@am,q]]===Plus)
 
 TID[FeynCalc`OneLoopSimplify`Private`null1 , _, OptionsPattern[]]:=
 	FeynCalc`OneLoopSimplify`Private`null1;
@@ -395,7 +395,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			$LimitTo4=limitto4;
 			irrelevant + res
 		]
-	]/; (Head[Expand2[DiracGammaExpand@ScalarProductExpand@am,q]]=!=Plus)
+	]/; (Head[Expand2[Apart2@DiracGammaExpand@ScalarProductExpand@am,q]]=!=Plus)
 
 (* some speciality for on-shell stuff *)
 (* in dim. reg. *)

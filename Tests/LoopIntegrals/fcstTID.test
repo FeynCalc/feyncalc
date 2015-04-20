@@ -1,0 +1,4 @@
+Tests`LoopIntegrals`fcstTID =
+{
+{"fcstTID-ID1", "TID[FAD[p, {p, m}], p]//FCE", "-(FAD[p]/m^2) + FAD[{p, m}]/m^2"}
+};
