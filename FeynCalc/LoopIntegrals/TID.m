@@ -40,11 +40,13 @@ Options[TID] = {Collecting -> True,
 
 
 (* maybe not ... *)
-TID[a_Plus,b__] :=
-	Map[TID[#,b]&, a];
+(*TID[a_Plus,b__] :=
+	Map[TID[#,b]&, a];*)
 
-
-
+TID[am_ , q_, opt___Rule] :=
+	(FCPrint[1,"TID: Splitting TID input"];
+	Map[TID[#,q,opt]&,Expand2[DiracGammaExpand@ScalarProductExpand@am,q]])/;
+	(Head[Expand2[DiracGammaExpand@ScalarProductExpand@am,q]]===Plus)
 
 TID[FeynCalc`OneLoopSimplify`Private`null1 , q_, opt___Rule]:=
 	FeynCalc`OneLoopSimplify`Private`null1;
@@ -60,6 +62,7 @@ TID[am_ , q_, opt___Rule] :=
 	vanishingGramDet=False,masses,limitto4=$LimitTo4
 	},
 		t0 = am;
+		FCPrint[1,"TID: Entering TID with: ", t0];
 		(* do some special hack ... *)
 		If[ !FreeQ[t0, Polarization],
 			If[ Head[t0] === Times,
@@ -92,18 +95,20 @@ TID[am_ , q_, opt___Rule] :=
 		If[ t0 === 0,
 			t0,
 			originallistoflorentzindices = Cases[t0, LorentzIndex];
-			t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred,
+			t1 = Uncontract[DiracGammaExpand[t0], q, Pair -> All, DimensionalReduction -> dimred,
 							(*Added 17/9-2000, F.Orellana*) Dimension -> n] /.
 				PropagatorDenominator -> procanonical[q];
-
+			(*t1 = Expand2[t1,q];*)
+			FCPrint[1, "TID: after uncontract: ", t1];
 			(* RM20110622: Uncommented the above again and commented the below.
 			t1 = t0 /.  PropagatorDenominator -> procanonical[q];
 			*)
 			If[ Head[t1] =!= Plus,
 				irrelevant = 0,
-				irrelevant = SelectFree[t1, Pair[Momentum[q,n],LorentzIndex[__]]];
+				irrelevant = SelectFree[t1, Pair[Momentum[q,n],LorentzIndex[_,n]]];
 				t1 = t1 - irrelevant
 			];
+			FCPrint[1, "TID: after subtracting irrelevant stuff ", t1];
 			If[ (Collecting /. {opt} /. Options[TID])===True,
 				t2 = Collect2[t1, q, Factoring -> False],
 				t2 = t1
@@ -148,6 +153,11 @@ TID[am_ , q_, opt___Rule] :=
 								SelectNotFree[#, Pair[LorentzIndex[__],Momentum[q,___]]]]
 					)&, t2
 					] /. {null1 :> 0, null2 :> 0, qQQprepare:>Identity};
+
+			(* If the integral is a scalar one, there is nothing to do for TID*)
+			If[FreeQ[t3,qQQ],
+				Return[t3]
+			];
 
 			(* Check if the integral has any masses in the propagators *)
 			If[MatchQ[t3, _ FeynAmpDenominator[PropagatorDenominator[_, 0] ..]],
@@ -199,9 +209,9 @@ TID[am_ , q_, opt___Rule] :=
 							{moms}[[1]]-{moms}[[3]]
 						}), {ms}]
 				]/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && np<=4;
-
 			If[Replace[t3, _. qQQ[_. fdp[xx___],___]:>{xx},{0}]=!={},
 				FCPrint[1, "Checking Gram determinant..."];
+				FCPrint[2, "i.e. the determinant of", (Replace[t3, _. qQQ[_. fdp[xx___],___]:>{xx},{0}])//Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}]&];
 					If[ExpandScalarProduct[Det[(Replace[t3, _. qQQ[_. fdp[xx___],___]:>{xx},{0}])//Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
 						vanishingGramDet = True
 					]
@@ -390,7 +400,7 @@ TID[am_ , q_, opt___Rule] :=
 			$LimitTo4=limitto4;
 			irrelevant + res
 		]
-	];
+	]/; (Head[Expand2[DiracGammaExpand@ScalarProductExpand@am,q]]=!=Plus)
 
 (* some speciality for on-shell stuff *)
 (* in dim. reg. *)

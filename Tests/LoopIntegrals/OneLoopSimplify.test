@@ -19,5 +19,12 @@ Tests`LoopIntegrals`fcstOneLoopSimplify = {
 MatchQ[OneLoopSimplify[Isolate[(a + b + c + d) FVD[p, mu] FVD[p, nu] *
 FAD[p, {p, m}] + (e + f + g) FVD[p, mu] FVD[p, nu] FAD[{p, m}], p],p],
 (1/D) FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]] (m^2 HoldForm[_] +
-HoldForm[_]) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]]","True"}
+HoldForm[_]) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]]","True"},
+
+{"fcstOneLoopSimplify-ID2",
+"OneLoopSimplify[(m GSD[p + q].GSD[p] + SPD[p, p] GSD[p]) FAD[p, {p + q, m}], p] // FCE",
+"1/2 FAD[{p, m}] (m - 2 GSD[q])+1/2 m FAD[p, {p - q, m}] (m^2 - SPD[q, q])"},
+
+
+
 }
