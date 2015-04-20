@@ -38,28 +38,23 @@ Options[TID] = {Collecting -> True,
 				Isolate -> False,
 				ScalarProductCancel -> False};
 
-
-(* maybe not ... *)
-(*TID[a_Plus,b__] :=
-	Map[TID[#,b]&, a];*)
-
-TID[am_ , q_, opt___Rule] :=
+TID[am_ , q_, opt:OptionsPattern[]] :=
 	(FCPrint[1,"TID: Splitting TID input"];
 	Map[TID[#,q,opt]&,Expand2[DiracGammaExpand@ScalarProductExpand@am,q]])/;
 	(Head[Expand2[DiracGammaExpand@ScalarProductExpand@am,q]]===Plus)
 
-TID[FeynCalc`OneLoopSimplify`Private`null1 , q_, opt___Rule]:=
+TID[FeynCalc`OneLoopSimplify`Private`null1 , _, OptionsPattern[]]:=
 	FeynCalc`OneLoopSimplify`Private`null1;
 
-TID[FeynCalc`OneLoopSimplify`Private`null2 , q_, opt___Rule]:=
+TID[FeynCalc`OneLoopSimplify`Private`null2 , _, OptionsPattern[]]:=
 	FeynCalc`OneLoopSimplify`Private`null2;
 
-TID[am_ , q_, opt___Rule] :=
+TID[am_ , q_, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t2, t3, t4, t5, t6, null1, null2, qrule, mudum,
 	nudum, fdp, qQQ, qQQprepare, getfdp,res,nres,irrelevant = 0,
 	contractlabel, diditlabel, famp,chd,fds,tid, tidinternal,
 	originallistoflorentzindices, dimred, disi, massless=False,nPoint,vanishingMoms,
-	vanishingGramDet=False,masses,limitto4=$LimitTo4
+	vanishingGramDet=False,masses,limitto4=$LimitTo4,any
 	},
 		t0 = am;
 		FCPrint[1,"TID: Entering TID with: ", t0];
@@ -75,11 +70,11 @@ TID[am_ , q_, opt___Rule] :=
 				]
 			]
 		];
-		dimred = DimensionalReduction /. {opt} /. Options[TID];
-		n = Dimension /. {opt} /. Options[TID];
-		contractlabel = Contract /. {opt} /. Options[TID];
-		fds = FeynAmpDenominatorSimplify /. {opt} /. Options[TID];
-		chd = ChangeDimension /. {opt} /. Options[TID];
+		dimred			= OptionValue[DimensionalReduction];
+		n 				= OptionValue[Dimension];
+		contractlabel	= OptionValue[Contract];
+		fds 			= OptionValue[FeynAmpDenominatorSimplify];
+		chd 			= OptionValue[ChangeDimension];
 		If[ dimred =!= True,
 			t5 = ChangeDimension[t5, chd];
 			$LimitTo4=False
@@ -89,7 +84,7 @@ TID[am_ , q_, opt___Rule] :=
 						Momentum[b_, en_Symbol]      :> Momentum[b]
 						};
 		*)
-		If[ FeynAmpDenominatorCombine /. {opt} /. Options[TID],
+		If[ OptionValue[FeynAmpDenominatorCombine],
 			t0 = fspec[FeynAmpDenominatorCombine[t0], q];
 		];
 		If[ t0 === 0,
@@ -109,7 +104,7 @@ TID[am_ , q_, opt___Rule] :=
 				t1 = t1 - irrelevant
 			];
 			FCPrint[1, "TID: after subtracting irrelevant stuff ", t1];
-			If[ (Collecting /. {opt} /. Options[TID])===True,
+			If[ OptionValue[Collecting],
 				t2 = Collect2[t1, q, Factoring -> False],
 				t2 = t1
 			];
@@ -264,7 +259,7 @@ TID[am_ , q_, opt___Rule] :=
 				diditlabel = (t5 =!= t4);
 				If[ diditlabel === True,
 					t5 = t5 /. qQQ -> Identity /. fdp[__] :> 1;
-					If[ !FreeQ[t5, LorentzIndex] && contractlabel===True,
+					If[ !FreeQ[t5, LorentzIndex] && contractlabel,
 						FCPrint[1, "simple contracting  in TID "];
 						t5 = Expand2[t5, LorentzIndex] /. Pair -> PairContract /.
 							PairContract -> Pair;
@@ -272,7 +267,7 @@ TID[am_ , q_, opt___Rule] :=
 					If[ !FreeQ[t5, Eps],
 						t5 = EpsEvaluate[t5]
 					];
-					If[ !FreeQ[t5, LorentzIndex] && contractlabel===True,
+					If[ !FreeQ[t5, LorentzIndex] && contractlabel,
 						FCPrint[1, "contracting  in TID "];
 						t5 = Contract[t5, EpsContract -> False, Rename -> True]
 					];
@@ -303,7 +298,7 @@ TID[am_ , q_, opt___Rule] :=
 					(*
 					res = Collect2[res, q, Factoring -> False, Expanding -> False];
 					*)
-					If[ Isolate /. {opt} /. Options[TID],
+					If[ OptionValue[Isolate],
 						res = Isolate[res, {q, DOT},
 											IsolateNames -> tidinternal,
 											IsolateSplit -> 4444I]
@@ -314,7 +309,7 @@ TID[am_ , q_, opt___Rule] :=
 					If[ fds,
 						res = FeynAmpDenominatorSimplify[res, q]
 					];
-					If[ (ScalarProductCancel /. {opt} /. Options[TID]) === True,
+					If[ OptionValue[ScalarProductCancel],
 						FCPrint[1,"ScalarProductCancel in TID "];
 						res = ScalarProductCancel[res, q,
 												FeynAmpDenominatorSimplify -> fds,
@@ -328,7 +323,7 @@ TID[am_ , q_, opt___Rule] :=
 					];
 					(*CHANGE Feb. 97 *)
 					If[ !FreeQ[res, Pair[Momentum[q, n], Momentum[q, n]]], (*repeat *)
-						If[ (ScalarProductCancel /. {opt} /. Options[TID]) === True,
+						If[ OptionValue[ScalarProductCancel],
 							FCPrint[1,"again (!) ScalarProductCancel in TID "];
 							res = ScalarProductCancel[res, q,
 													FeynAmpDenominatorSimplify -> fds,
@@ -369,7 +364,7 @@ TID[am_ , q_, opt___Rule] :=
 					];
 				]
 			];
-			If[ FeynAmpDenominatorCombine /. {opt} /. Options[TID],
+			If[ OptionValue[FeynAmpDenominatorCombine],
 				If[ !FreeQ2[res, (FeynAmpDenominator[xxx__]^_.) *
 								(FeynAmpDenominator[xyx__]^_.)
 						],
@@ -391,10 +386,10 @@ TID[am_ , q_, opt___Rule] :=
 				res = Contract[res]
 				];
 			*)
-			If[ dimred === True,
+			If[ dimred,
 				res = res /. Momentum[aa_,n] :> Momentum[aa]
 			];
-			If[ (Collecting /. {opt} /. Options[TID])===True,
+			If[ OptionValue[Collecting],
 				res = Collect2[res, q, Factoring -> False]
 			];
 			$LimitTo4=limitto4;
@@ -405,7 +400,7 @@ TID[am_ , q_, opt___Rule] :=
 (* some speciality for on-shell stuff *)
 (* in dim. reg. *)
 
-fspec[y_,k_] :=
+fspec[y_,_] :=
 	y;
 (*
 fspec[y_,k_] := y /. FeynAmpDenominator :> fadd[k] /. fadd[k] :>
