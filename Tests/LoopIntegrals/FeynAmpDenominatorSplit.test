@@ -1,0 +1,23 @@
+
+
+(* :Title: FeynAmpDenominatorSplit.test					*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+	FeynAmpDenominatorSplit						*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFeynAmpDenominatorSplit = {
+{"fcstFeynAmpDenominatorSplit-ID1",
+	"FeynAmpDenominatorSplit[FCI[FAD[q1, q1 - p, q1 - q2, q2, q2 - p]]] // FCE",
+	"FAD[q1] FAD[-p + q1] FAD[q1 - q2] FAD[q2] FAD[-p + q2]"},
+{"fcstFeynAmpDenominatorSplit-ID2","FeynAmpDenominatorSplit[FCI[FAD[q1, q1 - p,
+	q1 - q2, q2, q2 - p]], q1]//FCE", "FAD[q2, -p + q2] FAD[q1, -p + q1, q1 - q2]"}
+}
