@@ -20,11 +20,16 @@ MatchQ[OneLoopSimplify[Isolate[(a + b + c + d) FVD[p, mu] FVD[p, nu] *
 FAD[p, {p, m}] + (e + f + g) FVD[p, mu] FVD[p, nu] FAD[{p, m}], p],p],
 (1/D) FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]] (m^2 HoldForm[_] +
 HoldForm[_]) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]]","True"},
-
 {"fcstOneLoopSimplify-ID2",
 "OneLoopSimplify[(m GSD[p + q].GSD[p] + SPD[p, p] GSD[p]) FAD[p, {p + q, m}], p] // FCE",
 "1/2 FAD[{p, m}] (m - 2 GSD[q])+1/2 m FAD[p, {p - q, m}] (m^2 - SPD[q, q])"},
-
-
-
+{"fcstOneLoopSimplify-ID3",
+"OneLoopSimplify[FAD[{p, m}] + X, p]//FCE",
+"X + FAD[{p, m}]"},
+{"fcstOneLoopSimplify-ID4",
+"OneLoopSimplify[FVD[p, mu] FAD[{p, m}] + X, p] // FCE",
+"X"},
+{"fcstOneLoopSimplify-ID5",
+"OneLoopSimplify[FVD[p, mu] FVD[p, nu] FAD[{p, m}] + X, p] // FCE",
+"X + (m^2 FAD[{p, m}] MTD[mu, nu])/D"}
 }

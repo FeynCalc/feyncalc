@@ -239,8 +239,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			];
 			FCPrint[1,"TID  returned: ",t6];
 			If[ !FreeQ[t6,FeynAmpDenominator],
-				t6 = SelectNotFree[Expand2[t6+null1+null2,FeynAmpDenominator
-									], FeynAmpDenominator]
+				t6 = Expand2[t6+null1+null2,FeynAmpDenominator]
 			];
 			FCPrint[1,"doing TID  done ", t6];
 			t6 = t6 /. substis /. {null1 :> 0, null2 :> 0};
