@@ -1886,15 +1886,15 @@ Spinor[n_. x_/; (frp[x]&&FreeQ[x, Momentum]), y___/;frp[y]] :=
 	(frp[{n, x, y}] && (n^2)===1);
 
 (* this is convention ... *)
-Spinor[Momentum[x_, _], m_, op___] :=
+(*Spinor[Momentum[x_, _], m_, op___] :=
 	Spinor[Momentum[x], m, op];
 
 Spinor[-Momentum[x_, _], m_, op___] :=
-	Spinor[-Momentum[x], m, op];
+	Spinor[-Momentum[x], m, op];*)
 
-Spinor[kk_.+ n_. Momentum[ a_Plus ], m_, y___] :=
-	Spinor[kk+ n Momentum[a], m, y] =
-	(Spinor[MomentumExpand[kk + n Momentum[a]] ,m,y] );
+Spinor[kk_.+ n_. Momentum[ a_Plus, dim_ : 4], m_, y___] :=
+	Spinor[kk+ n Momentum[a, dim], m, y] =
+	(Spinor[MomentumExpand[kk + n Momentum[a, dim]] ,m,y] );
 
 Spinor[p_ , _. SmallVariable[_], in___] :=
 	Spinor[p, 0, in] /; frp[p];

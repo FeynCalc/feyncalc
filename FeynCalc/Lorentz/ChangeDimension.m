@@ -36,8 +36,8 @@ ChangeDimension[x_, diim_] :=
 				LorentzIndex[a, diim];
 			md[a_,___] :=
 				Momentum[a, diim];
-			spi4[a_, b__] :=
-				Spinor[a /. Momentum[bbb_, ___] -> Momentum[bbb], b];
+			(*spi4[a_, b__] :=
+				Spinor[a /. Momentum[bbb_, ___] -> Momentum[bbb], b]*);
 			dirGG[aa_,___] :=
 				dirGAMM[aa, diim]/; !MatchQ[aa,5|6|7];
 			dirGG[(aa: 5|6|7)] :=
@@ -46,7 +46,7 @@ ChangeDimension[x_, diim_] :=
 			xx = xx /. {Momentum :> md, LorentzIndex -> ld} /.
 								{md :> Momentum, ld :> LorentzIndex} ;
 			xx = xx /. dirGAMM -> dirGG/.  dirGAMM -> DiracGamma /. pAiR -> Pair;
-			xx = xx /. Spinor -> spi4;
+			(*xx = xx /. Spinor -> spi4*);
 		];
 		xx
 	];
