@@ -1,0 +1,161 @@
+
+
+(* :Title: DiracEquation.test                                                  *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracEquation               *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracEquation = {
+{"fcstDiracEquation-ID1","DiracEquation[GS[p].SpinorU[p, m]]",
+	"m Spinor[Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID2","DiracEquation[GS[p].SpinorV[p, m]]",
+	"-m Spinor[-Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID3","DiracEquation[SpinorUBar[p, m].GS[p]]",
+	"m Spinor[Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID4","DiracEquation[SpinorVBar[p, m].GS[p]]",
+	"-m Spinor[-Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID5","DiracEquation[GSD[p].SpinorU[p, m]] // FCE",
+	"GSD[p].Spinor[Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID6","DiracEquation[GSD[p].SpinorV[p, m]] // FCE",
+	"GSD[p].Spinor[-Momentum[p], m, 1]"},
+{"fcstDiracEquation-ID7","DiracEquation[SpinorUBar[p, m].GSD[p]] // FCE",
+	"Spinor[Momentum[p], m, 1].GSD[p]"},
+{"fcstDiracEquation-ID8","DiracEquation[SpinorVBar[p, m].GSD[p]] // FCE",
+	"Spinor[-Momentum[p], m, 1].GSD[p]"},
+{"fcstDiracEquation-ID9","DiracEquation[GSD[p].SpinorU[p, m]]",
+	"DiracEquation[GSD[p].SpinorU[p, m]]"},
+{"fcstDiracEquation-ID10","DiracEquation[GSD[p].SpinorV[p, m]]",
+	"DiracEquation[GSD[p].SpinorV[p, m]]"},
+{"fcstDiracEquation-ID11","DiracEquation[SpinorUBar[p, m].GSD[p]]",
+	"DiracEquation[SpinorUBar[p, m].GSD[p]]"},
+{"fcstDiracEquation-ID12","DiracEquation[SpinorVBar[p, m].GSD[p]]",
+	"DiracEquation[SpinorVBar[p, m].GSD[p]]"},
+{"fcstDiracEquation-ID13","$BreitMaison=False \n DiracEquation[GSD[p].GSD[q].GA[i].SpinorU[Momentum[p, D], m]] // FCE",
+	"m GSD[q].GA[i].Spinor[Momentum[p, D], m, 1] -
+	2 GSD[q].Spinor[Momentum[p, D], m, 1] FV[p, i] +
+	2 GA[i].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID14","DiracEquation[GSD[p].GSD[q].GA[i].GAD[j].SpinorU[Momentum[p, D], m]] // FCE",
+	"-m GSD[q].GA[i].GAD[j].Spinor[Momentum[p, D], m, 1] -
+	2 GSD[q].GAD[j].Spinor[Momentum[p, D], m, 1] FV[p, i] +
+	2 GSD[q].GA[i].Spinor[Momentum[p, D], m, 1] FVD[p, j] +
+	2 GA[i].GAD[j].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID15","DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].SpinorU[Momentum[p, D], m]] // FCE",
+	"-m GSD[q].GA[i].GA[5].Spinor[Momentum[p, D], m, 1] -
+	2 GSD[q].GA[5].Spinor[Momentum[p, D], m, 1] FV[p, i] +
+	2 GA[i].GA[5].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID16","DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].GAD[j].SpinorU[Momentum[p, D], m]] // FCE",
+	"m GSD[q].GA[i].GA[5].GAD[j].Spinor[Momentum[p, D], m, 1] -
+	2 GSD[q].GA[5].GAD[j].Spinor[Momentum[p, D], m, 1] FV[p, i] -
+	2 GSD[q].GA[i].GA[5].Spinor[Momentum[p, D], m, 1] FVD[p, j] +
+	2 GA[i].GA[5].GAD[j].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID17","DiracEquation[
+	SpinorUBar[Momentum[p, D], m].GSD[q].GA[i].GSD[p]] // FCE",
+	"m Spinor[Momentum[p, D], m, 1].GSD[q].GA[i] +
+	2 Spinor[Momentum[p, D], m, 1].GSD[q] FV[p, i] -
+	2 Spinor[Momentum[p, D], m, 1].GA[i] SPD[p, q]"},
+{"fcstDiracEquation-ID18","DiracEquation[
+	SpinorUBar[Momentum[p, D], m].GSD[q].GA[i].GAD[j].GSD[p]] // FCE",
+	"-m Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GAD[j] -
+	2 Spinor[Momentum[p, D], m, 1].GSD[q].GAD[j] FV[p, i] +
+	2 Spinor[Momentum[p, D], m, 1].GSD[q].GA[i] FVD[p, j] +
+	2 Spinor[Momentum[p, D], m, 1].GA[i].GAD[j] SPD[p, q]"},
+{"fcstDiracEquation-ID19","DiracEquation[
+	SpinorUBar[Momentum[p, D], m].GSD[q].GA[i, 5].GSD[p]] // FCE",
+	"-Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GSD[p].GA[5]"},
+	{"fcstDiracEquation-ID20","DiracEquation[
+	SpinorUBar[Momentum[p, D], m].GSD[q].GA[i, 5].GAD[j].GSD[p]] // FCE",
+	"Spinor[Momentum[p, D], m, 1] . GSD[q] . GA[i] . GSD[p] . GA[5] . GAD[j] +
+	2*Spinor[Momentum[p, D], m, 1] . GSD[q] . GA[i] . GA[5]*FVD[p, j]"},
+{"fcstDiracEquation-ID21","DiracEquation[GSD[p].GSD[q].GA[i].SpinorV[Momentum[p, D], m]] // FCE",
+	"-m GSD[q].GA[i].Spinor[-Momentum[p, D], m, 1] -
+	2 GSD[q].Spinor[-Momentum[p, D], m, 1] FV[p, i] +
+	2 GA[i].Spinor[-Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID22","DiracEquation[
+	GSD[p].GSD[q].GA[i].GAD[j].SpinorV[Momentum[p, D], m]] // FCE",
+	"m GSD[q].GA[i].GAD[j].Spinor[-Momentum[p, D], m, 1] -
+	2 GSD[q].GAD[j].Spinor[-Momentum[p, D], m, 1] FV[p, i] +
+	2 GSD[q].GA[i].Spinor[-Momentum[p, D], m, 1] FVD[p, j] +
+	2 GA[i].GAD[j].Spinor[-Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID23","DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].SpinorV[Momentum[p, D], m]] // FCE",
+	"m*GSD[q] . GA[i] . GA[5] . Spinor[-Momentum[p, D], m, 1] -
+	2*GSD[q] . GA[5] . Spinor[-Momentum[p, D], m, 1]*FV[p, i] +
+	2*GA[i] . GA[5] . Spinor[-Momentum[p, D], m, 1]*SPD[p, q]"},
+{"fcstDiracEquation-ID24","DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].GAD[j].SpinorV[Momentum[p, D], m]] // FCE",
+	"-(m*GSD[q] . GA[i] . GA[5] . GAD[j] . Spinor[-Momentum[p, D], m, 1]) -
+	2*GSD[q] . GA[5] . GAD[j] . Spinor[-Momentum[p, D], m, 1]*FV[p, i] -
+	2*GSD[q] . GA[i] . GA[5] . Spinor[-Momentum[p, D], m, 1]*FVD[p, j] +
+	2*GA[i] . GA[5] . GAD[j] . Spinor[-Momentum[p, D], m, 1]*SPD[p, q]"},
+{"fcstDiracEquation-ID25","DiracEquation[
+	SpinorVBar[Momentum[p, D], m].GSD[q].GA[i].GSD[p]] // FCE",
+	"-m Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i] +
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q] FV[p, i] -
+	2 Spinor[-Momentum[p, D], m, 1].GA[i] SPD[p, q]"},
+{"fcstDiracEquation-ID26","DiracEquation[
+	SpinorVBar[Momentum[p, D], m].GSD[q].GA[i].GAD[j].GSD[p]] // FCE",
+	"m Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GAD[j] -
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GAD[j] FV[p, i] +
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i] FVD[p, j] +
+	2 Spinor[-Momentum[p, D], m, 1].GA[i].GAD[j] SPD[p, q]"},
+{"fcstDiracEquation-ID27","DiracEquation[
+	SpinorVBar[Momentum[p, D], m].GSD[q].GA[i, 5].GSD[p]] // FCE",
+	"-Spinor[-Momentum[p, D], m, 1] . GSD[q] . GA[i] . GSD[p] . GA[5]"},
+	{"fcstDiracEquation-ID28","DiracEquation[
+	SpinorVBar[Momentum[p, D], m].GSD[q].GA[i, 5].GAD[j].GSD[p]] // FCE",
+	"Spinor[-Momentum[p, D], m, 1] . GSD[q] . GA[i] . GSD[p] . GA[5] . GAD[j] +
+	2*Spinor[-Momentum[p, D], m, 1] . GSD[q] . GA[i] . GA[5]*FVD[p, j]"},
+{"fcstDiracEquation-ID29","$BreitMaison=True \n DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].SpinorU[Momentum[p, D], m]] // FCE",
+	"-m GSD[q].GA[i].GA[5].Spinor[Momentum[p, D], m, 1] +
+	2 GSD[q].GA[i].GA[5].GSE[p].Spinor[Momentum[p, D], m, 1] -
+	2 GSD[q].GA[5].Spinor[Momentum[p, D], m, 1] FV[p, i] +
+	2 GA[i].GA[5].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID30","DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].GAD[j].SpinorU[Momentum[p, D], m]] // FCE",
+	"m GSD[q].GA[i].GA[5].GAD[j].Spinor[Momentum[p, D], m, 1] +
+	2 GSD[q].GA[i].GA[5].GSE[p].GAD[j].Spinor[Momentum[p, D], m, 1] -
+	2 GSD[q].GA[5].GAD[j].Spinor[Momentum[p, D], m, 1] FV[p, i] -
+	2 GSD[q].GA[i].GA[5].Spinor[Momentum[p, D], m, 1] FVD[p, j] +
+	2 GA[i].GA[5].GAD[j].Spinor[Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID31","DiracEquation[
+	SpinorUBar[Momentum[p, D], m].GSD[q].GA[i, 5].GSD[p]] // FCE",
+	"-Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GSD[p].GA[5] +
+	2 Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GSE[p].GA[5]"},
+{"fcstDiracEquation-ID32","DiracEquation[
+	SpinorUBar[Momentum[p, D], m].GSD[q].GA[i, 5].GAD[j].GSD[p]] // FCE",
+	"Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GSD[p].GA[5].GAD[j] -
+	2 Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GSE[p].GA[5].GAD[j] +
+	2 Spinor[Momentum[p, D], m, 1].GSD[q].GA[i].GA[5] FVD[p, j]"},
+{"fcstDiracEquation-ID33","DiracEquation[GSD[p].GSD[q].GA[i, 5].SpinorV[Momentum[p, D], m]] //
+	FCE","m GSD[q].GA[i].GA[5].Spinor[-Momentum[p, D], m, 1] +
+	2 GSD[q].GA[i].GA[5].GSE[p].Spinor[-Momentum[p, D], m, 1] -
+	2 GSD[q].GA[5].Spinor[-Momentum[p, D], m, 1] FV[p, i] +
+	2 GA[i].GA[5].Spinor[-Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID34","DiracEquation[
+	GSD[p].GSD[q].GA[i, 5].GAD[j].SpinorV[Momentum[p, D], m]] // FCE",
+	"-m GSD[q].GA[i].GA[5].GAD[j].Spinor[-Momentum[p, D], m, 1] +
+	2 GSD[q].GA[i].GA[5].GSE[p].GAD[j].Spinor[-Momentum[p, D], m, 1] -
+	2 GSD[q].GA[5].GAD[j].Spinor[-Momentum[p, D], m, 1] FV[p, i] -
+	2 GSD[q].GA[i].GA[5].Spinor[-Momentum[p, D], m, 1] FVD[p, j] +
+	2 GA[i].GA[5].GAD[j].Spinor[-Momentum[p, D], m, 1] SPD[p, q]"},
+{"fcstDiracEquation-ID35","DiracEquation[
+	SpinorVBar[Momentum[p, D], m].GSD[q].GA[i, 5].GSD[p]] // FCE",
+	"-Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GSD[p].GA[5] +
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GSE[p].GA[5]"},
+	{"fcstDiracEquation-ID36","DiracEquation[
+	SpinorVBar[Momentum[p, D], m].GSD[q].GA[i, 5].GAD[j].GSD[p]] // FCE",
+	"Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GSD[p].GA[5].GAD[j] -
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GSE[p].GA[5].GAD[j] +
+	2 Spinor[-Momentum[p, D], m, 1].GSD[q].GA[i].GA[5] FVD[p, j]"}
+}
