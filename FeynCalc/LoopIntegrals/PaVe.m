@@ -144,20 +144,11 @@ cord[a_,b_,c_, m1_,m2_,m3_] :=
 		] /; Length[{te}]===6 && Length[argu]>0;
 
 
-	PaVe /:
-	MakeBoxes[PaVe[ij___,{a_,b_,c_,d_,e_,f_},{m1_,m2_,m3_}], TraditionalForm
-						] :=
-	RowBox[{SubscriptBox["C",TBox[ij]]}];
-	PaVe /:
-	MakeBoxes[PaVe[ij___,{__},{m1_,m2_,m3_,m4_}], TraditionalForm] :=
-	RowBox[{SubscriptBox["D",TBox[ij]]}];
-	PaVe /:
-	MakeBoxes[PaVe[ij___,{__},{m1_,m2_,m3_,m4_,m5_}], TraditionalForm] :=
-	RowBox[{SubscriptBox["E",TBox[ij]]}];
-	PaVe /:
-	MakeBoxes[PaVe[ij___,{__},{m1_,m2_,m3_,m4_,m5_,m6_}], TraditionalForm
-						] :=
-	RowBox[{SubscriptBox["F",TBox[ij]]}];
+PaVe /:
+	MakeBoxes[PaVe[ij___,{moms___},{masses__}], TraditionalForm]:=
+	ToBoxes[Subscript[FromCharacterCode[64+Length[{masses}]], StringJoin[ToString /@ {ij}]
+		][moms, masses],TraditionalForm
+	]/; Length[{masses}]>=1;
 
 FCPrint[1,"PaVe.m loaded."];
 End[]
