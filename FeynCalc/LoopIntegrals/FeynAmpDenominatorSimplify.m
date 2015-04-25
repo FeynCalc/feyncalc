@@ -257,7 +257,7 @@ mmtr[a_.FeynAmpDenominator[
 	q1_] :=
 	FeynAmpDenominatorSimplify[Expand2[EpsEvaluate[ExpandScalarProduct[
 	(a FeynAmpDenominator[ c, b, d ]) /. q1 -> (-q1+pe1),
-	FeynCalcInternal -> False]], q1]];
+	FeynCalcInternal -> False]], q1]]/; m1=!=0;
 
 
 
@@ -269,7 +269,7 @@ mmtr[a_.FeynAmpDenominator[
 	q1_] :=
 	FeynAmpDenominatorSimplify[Expand2[EpsEvaluate[ExpandScalarProduct[
 	(a FeynAmpDenominator[ c, b, d ]) /. q1 -> (-q1+pe1), FeynCalcInternal -> False]],
-	q1]];
+	q1]]/; m1=!=0;
 
 
 mmtr[a_.FeynAmpDenominator[
@@ -279,7 +279,7 @@ mmtr[a_.FeynAmpDenominator[
 		],
 	q1_] :=
 	FeynAmpDenominatorSimplify[Expand2[EpsEvaluate[ExpandScalarProduct[
-	(a FeynAmpDenominator[ c,b,d ]) /. q1 -> (q1-pe2), FeynCalcInternal -> False]], q1 ]];
+	(a FeynAmpDenominator[ c,b,d ]) /. q1 -> (q1-pe2), FeynCalcInternal -> False]], q1 ]]/; m1=!=0;
 
 ftr[a_. FeynAmpDenominator[
 			PropagatorDenominator[Momentum[q1_,di___], m1_],
