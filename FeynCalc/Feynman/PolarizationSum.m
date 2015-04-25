@@ -21,13 +21,28 @@
 
 
 PolarizationSum::usage =
-"PolarizationSum[ mu,nu, ... ] defines
-(as abbreviations) different polarization sums.
-PolarizationSum[mu, nu] = -g(mu nu);
-PolarizationSum[mu, nu, k] = -g(mu nu) + k(mu) k(nu)/k^2;
-PolarizationSum[mu, nu, k, n] = polarization sum for spin 1 fields;
-(n = external momentum).
+"PolarizationSum[ mu,nu, ... ] defines (as abbreviations) different polarization sums. \
+PolarizationSum[mu, nu] = -g(mu nu); \
+PolarizationSum[mu, nu, k] = -g(mu nu) + k(mu) k(nu)/k^2; \
+PolarizationSum[mu, nu, k, n] = polarization sum for spin 1 fields; \
+(n = external momentum). \
 PolarizationSum[mu, nu, k, 0] is equivalent to -g(mu nu)";
+
+PolarizationSum::notmassless=
+"Warning! You are inserting a polarization sum for massless vector bosons, \
+but the momentum of the external boson `1` is not on-shell. Please put it on-shell \
+via ScalarProduct[`1`,`1`]=0"
+
+PolarizationSum::notmassive=
+"Warning! You are inserting a polarization sum for massive vector bosons, \
+but the momentum of the external boson `1` corresponds to a massless particle. \
+Please define the proper mass via ScalarProduct[`1`,`1`]=mass^2. Otherwise, the result \
+is not well defined."
+
+PolarizationSum::auxerror=
+"Warning! You are inserting a polarization sum for massive vector bosons, using \
+the auxiliary vector `1`. However, the scalar product between the momentum of the \
+external boson `2` and `1` is zero, which shouldn't be the case."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -43,15 +58,22 @@ Options[PolarizationSum] = {Dimension -> 4};
 PolarizationSum[mu_,nu_, OptionsPattern[]] :=
 	-Pair[LorentzIndex[mu,OptionValue[Dimension]],LorentzIndex[nu,OptionValue[Dimension]]];
 
-(*    Same as above.    *)
+(*	Same as above. Putting the auxiliary vector n^mu to zero essentially
+	omits the gauge terms.  *)
 PolarizationSum[mu_,nu_, k_, 0, OptionsPattern[]] :=
-	-Pair[LorentzIndex[mu,OptionValue[Dimension]],LorentzIndex[nu,OptionValue[Dimension]]]/; k=!=0;
+	(If[ScalarProduct[k,k]=!=0,
+			Message[PolarizationSum::notmassless, k]
+	];
+	-Pair[LorentzIndex[mu,OptionValue[Dimension]],LorentzIndex[nu,OptionValue[Dimension]]])/; k=!=0;
 
 (*     Polarization sum for massive vector bosons, e.g. W's and Z's in the
 	Electroweak Theory. Note that the particle mass enters as k^2, where k
 	is the four-momentum of the boson.    *)
 PolarizationSum[mu_,nu_, k_, OptionsPattern[]] :=
 	Block[ {dim = OptionValue[Dimension]},
+		If[ScalarProduct[k,k]===0,
+			Message[PolarizationSum::notmassive, k]
+		];
 		-Pair[LorentzIndex[mu,dim],LorentzIndex[nu,dim]] +
 		(Pair[Momentum[k,dim],LorentzIndex[mu,dim]] *
 		Pair[Momentum[k,dim],LorentzIndex[nu,dim]])/
@@ -61,10 +83,16 @@ PolarizationSum[mu_,nu_, k_, OptionsPattern[]] :=
 (*    Polarization sum for massless vector bosons with gauge terms included,
 	e.g. for gluons in QCD. The auxiliary four-vector n^mu must satisfy
 	n^mu eps_mu = 0 and n^mu k_mu != 0. Note that FeynCalc doesn't enforce
-	this two conditions by itself, i.e. the user must ensure that they are
+	these two conditions by itself, i.e. the user must ensure that they are
 	satisfied.    *)
 PolarizationSum[mu_,nu_, k_, n_, OptionsPattern[]] :=
 	Block[ {dim = OptionValue[Dimension]},
+		If[ScalarProduct[k,k]=!=0,
+			Message[PolarizationSum::notmassless, k]
+		];
+		If[ScalarProduct[n,k]===0,
+			Message[PolarizationSum::auxerror,n, k]
+		];
 		(-Pair[LorentzIndex[mu,dim],LorentzIndex[nu,dim]] -
 		(Pair[Momentum[k,dim],LorentzIndex[mu,dim]] *
 		Pair[Momentum[k,dim],LorentzIndex[nu,dim]] *
