@@ -484,6 +484,24 @@ Transversality::usage =
 Setting it to True will make all scalar products of a
 polarization vector with its momentum to be zero.";
 
+$TypesettingDim4::usage =
+"The string value of $TypesettingDim4 determines which symbols will be displayed
+above 4-dimensional momenta, Dirac matrices, metric tensors and polarization vectors.
+This is concerns only typesetting in the TraditionalForm output and doesn't change
+the physical behavior of those objects."
+
+$TypesettingDimE::usage =
+"The string value of $TypesettingDimE determines which symbols will be displayed
+above D-4-dimensional momenta, Dirac matrices, metric tensors and polarization vectors.
+This is concerns only typesetting in the TraditionalForm output and doesn't change
+the physical behavior of those objects."
+
+$TypesettingDimD::usage =
+"The string value of $TypesettingDimD determines which symbols will be displayed
+above D-dimensional momenta, Dirac matrices, metric tensors and polarization vectors.
+This is concerns only typesetting in the TraditionalForm output and doesn't change
+the physical behavior of those objects."
+
 Upper::usage = "Upper may be used inside LorentzIndex to indicate an
 contravariant LorentzIndex.";
 
@@ -538,6 +556,10 @@ DeclareNonCommutative[SpinorVBar];
 DeclareNonCommutative[SUNT];
 
 $FCLorentzIndexSubHeads = _Upper | _Lower;
+
+$TypesettingDim4 = "_";
+$TypesettingDimE = "^";
+$TypesettingDimD = "";
 
 DataType[Epsilon, PositiveNumber] = True;
 $PairBrackets = False;
@@ -705,11 +727,14 @@ DiracGamma[(h:LorentzIndex|Momentum)[x_,_Symbol]] :=
 dgammaRep[dim1_,dim2_] :=
 	Which[
 	dim1===4 && dim1===dim2,
-	OverscriptBox["\[Gamma]", "_"],
+		OverscriptBox["\[Gamma]", $TypesettingDim4],
 	MatchQ[dim1,_Symbol] && dim1===dim2,
-	"\[Gamma]",
+		If[	$TypesettingDimD==="",
+			"\[Gamma]",
+			OverscriptBox["\[Gamma]", $TypesettingDimD]
+		],
 	MatchQ[dim1,_Symbol-4] && dim1===dim2,
-	OverscriptBox["\[Gamma]", "^"],
+		OverscriptBox["\[Gamma]", $TypesettingDimE],
 	True,
 	SubscriptBox["\[Gamma]", ToBoxes[dim1,TraditionalForm]]
 	];
@@ -1258,11 +1283,14 @@ Momentum[Momentum[x_, dim1_:4], dim2_:4] :=
 momentumRep[p_,dim_] :=
 	Which[
 		dim===4,
-			OverscriptBox[ToBoxes[p,TraditionalForm], "_"],
+			OverscriptBox[ToBoxes[p,TraditionalForm], $TypesettingDim4],
 		MatchQ[dim,_Symbol],
-			ToBoxes[p,TraditionalForm],
+			If[	$TypesettingDimD==="",
+				ToBoxes[p,TraditionalForm],
+				OverscriptBox[ToBoxes[p,TraditionalForm], $TypesettingDimD]
+			],
 		MatchQ[dim,_Symbol-4],
-			OverscriptBox[ToBoxes[p,TraditionalForm], "^"],
+			OverscriptBox[ToBoxes[p,TraditionalForm], $TypesettingDimE],
 		True,
 			SubscriptBox[ToBoxes[p,TraditionalForm], ToBoxes[dim,TraditionalForm]]
 	];
@@ -1402,11 +1430,14 @@ Pair[Momentum[Polarization[x_,__],___], Momentum[Polarization[x_,__],___] ] :=
 metricRep[dim_] :=
 	Which[
 		dim==={4,4},
-			OverscriptBox["g", "_"],
+			OverscriptBox["g", $TypesettingDim4],
 		MatchQ[dim,{_Symbol,_Symbol}] && dim[[1]]===dim[[2]],
-			"g",
+			If[	$TypesettingDimD==="",
+				"g",
+				OverscriptBox["g", $TypesettingDimD]
+			],
 		MatchQ[dim,{_Symbol-4, _Symbol-4}] && dim[[1]]===dim[[2]],
-				OverscriptBox["g", "^"],
+				OverscriptBox["g", $TypesettingDimE],
 		True,
 			SubscriptBox["g", ToBoxes[dim,TraditionalForm]]
 	];
@@ -1498,19 +1529,25 @@ Pair /:
 polarizationRep[pol_,dim_] :=
 	Which[
 		pol===Complex[0,1] && dim===4,
-			OverscriptBox["\[CurlyEpsilon]", "_"],
+			OverscriptBox["\[CurlyEpsilon]", $TypesettingDim4],
 		pol===Complex[0,1] && MatchQ[dim,_Symbol],
-			ToBoxes["\[CurlyEpsilon]",TraditionalForm],
+			If[	$TypesettingDimD==="",
+				ToBoxes["\[CurlyEpsilon]",TraditionalForm],
+				OverscriptBox["\[CurlyEpsilon]", $TypesettingDimD]
+			],
 		pol===Complex[0,1] && MatchQ[dim,_Symbol-4],
-			OverscriptBox["\[CurlyEpsilon]", "^"],
+			OverscriptBox["\[CurlyEpsilon]", $TypesettingDimE],
 		pol===Complex[0,-1] && dim===4,
-				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "_"],"*"],
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", $TypesettingDim4],"*"],
 		pol===Complex[0,-1] && MatchQ[dim,_Symbol],
-			SuperscriptBox[ToBoxes["\[CurlyEpsilon]",TraditionalForm],"*"],
+			If[	$TypesettingDimD==="",
+				SuperscriptBox[ToBoxes["\[CurlyEpsilon]",TraditionalForm],"*"],
+				SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", $TypesettingDimD],"*"]
+			],
 		pol===Complex[0,-1] && MatchQ[dim,_Symbol-4],
-			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", "^"],"*"],
+			SuperscriptBox[OverscriptBox["\[CurlyEpsilon]", $TypesettingDimE],"*"],
 		True,
-			SuperscriptBox["\[CurlyEpsilon]", ToBoxes[pol,dim,TraditionalForm]]
+			SuperscriptBox["\[CurlyEpsilon]", TBox[pol,dim]]
 	];
 
 Pair /:
