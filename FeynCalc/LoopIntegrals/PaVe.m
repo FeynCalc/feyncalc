@@ -21,6 +21,8 @@ conventions as for A0, B0, C0, D0.  Automatic simlifications are
 performed for the coefficient functions of two-point integrals and
 for the scalar integrals.";
 
+PaVe::nonexistent=
+"A Passarino-Veltman function `1` doesn't exist. Please check your input."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -46,9 +48,17 @@ PaVe[0, {p2_}, {x_,y_}] :=
 PaVe[1,{pp_},{mm1_,mm2_}] :=
 	B1[pp, mm1, mm2];
 
-(* there is no tensorial 1-point function *)
-PaVe[_,{},{_}] :=
-	0;
+(*The number of 0's, i.e. indices of the metric tensors must be even *)
+PaVe[0, x: 0..,{moms___},{masses___}]:=
+	(Message[PaVe::nonexistent, "PaVe[" <> (ToString[{0,x}]//StringReplace[#, {"{" | "}" -> ""}] &)
+		<> ", " <> ToString[{moms}] <> ", " <> ToString[{masses}] <>"]"];
+	Abort[];)/; EvenQ[Length[{x}]];
+
+(* there are no tensorial 1-point function *)
+PaVe[x: 1..,{},{m_}] :=
+	(Message[PaVe::nonexistent, "PaVe[" <> (ToString[{x}]//StringReplace[#, {"{" | "}" -> ""}] &)
+		<> ", {}, " <> ToString[{m}] <> "]"];
+	Abort[];)
 
 (* scaleless 2-point functions*)
 PaVe[__,{0},{0,0}] :=
