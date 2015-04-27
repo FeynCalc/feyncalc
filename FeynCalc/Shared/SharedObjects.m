@@ -819,8 +819,8 @@ DiracSigma[a_. DiracGamma[b__], c_  DiracGamma[d__]] :=
 	a c DiracSigma[DiracGamma[b], DiracGamma[d]];
 
 DiracSigma /:
-	MakeBoxes[DiracSigma[(DiracGamma | DiracMatrix | DiracSlash)[x_,___],
-	(DiracGamma | DiracMatrix | DiracSlash)[y_,___]], TraditionalForm]:=
+	MakeBoxes[DiracSigma[(DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD)[x_,___],
+	(DiracGamma | DiracMatrix | DiracSlash | GA | GAD | GS | GSD)[y_,___]], TraditionalForm]:=
 		SuperscriptBox["\[Sigma]", TBox[x,y]];
 
 DiracSlash[DOT[a_,b__], opts:OptionsPattern[]] :=
