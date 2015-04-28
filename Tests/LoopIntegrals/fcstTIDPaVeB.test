@@ -1,121 +1,123 @@
-Tests`LoopIntegrals`fcstTIDPaVeB = {{"fcstTIDPaVeB-ID1", "TID[FVD[k,mu]FAD[{k,m1},{k+p,m2}],k]//FCE", 
-  "(FAD[{k, m1}, {k + p, m2}]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"}, 
- {"fcstTIDPaVeB-ID2", "TID[FVD[k,mu]FAD[{k,m},{k+p,m}],k]//FCE", 
-  "(FAD[{k, m}, {k + p, m}]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"}, 
- {"fcstTIDPaVeB-ID3", "TID[FVD[k,mu]FAD[{k,0},{k+p,0}],k]//FCE", 
-  "(FAD[k, k + p]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"}, 
- {"fcstTIDPaVeB-ID4", "TID[FVD[k,mu]FAD[{k,0},{k+p,m}],k]//FCE", 
-  "(FAD[k, {k + p, m}]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"}, 
- {"fcstTIDPaVeB-ID5", "TID[FVD[k,mu]FAD[{k,m},{k+p,0}],k]//FCE", 
-  "(FAD[{k, m}, k + p]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"}, 
- {"fcstTIDPaVeB-ID6", "TID[FVD[k,mu]FAD[{k,m1},{k+q1,m2}],k]//FCE", 
-  "B1[0, m1^2, m2^2]*FVD[q1, mu]"}, {"fcstTIDPaVeB-ID7", 
-  "TID[FVD[k,mu]FAD[{k,m},{k+q1,m}],k]//FCE", 
-  "-(B0[0, m^2, m^2]*FVD[q1, mu])/2"}, {"fcstTIDPaVeB-ID8", 
-  "TID[FVD[k,mu]FAD[{k,m},{k+q1,0}],k]//FCE", "B1[0, m^2, 0]*FVD[q1, mu]"}, 
- {"fcstTIDPaVeB-ID9", "TID[FVD[k,mu]FAD[{k,0},{k+q1,m}],k]//FCE", 
-  "B1[0, 0, m^2]*FVD[q1, mu]"}, {"fcstTIDPaVeB-ID10", 
-  "TID[FVD[k,mu]FAD[{k,0},{k+q1,0}],k]//FCE", "0"}, 
- {"fcstTIDPaVeB-ID11", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m1},{k+p,m2}],k]//FCE", 
-  "FAD[{k, m1}, {k + p, m2}]*SPD[k, k]*(-(MTD[mu, nu]/(1 - D)) + (FVD[p, \
+Tests`LoopIntegrals`fcstTIDPaVeB = {{"fcstTIDPaVeB-ID1", "TID[FVD[k,mu]FAD[{k,m1},{k+p,m2}],k]//FCE",
+"(FAD[{k, m1}, {k + p, m2}]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"},
+{"fcstTIDPaVeB-ID2", "TID[FVD[k,mu]FAD[{k,m},{k+p,m}],k]//FCE",
+"(FAD[{k, m}, {k + p, m}]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"},
+{"fcstTIDPaVeB-ID3", "TID[FVD[k,mu]FAD[{k,0},{k+p,0}],k]//FCE",
+"(FAD[k, k + p]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"},
+{"fcstTIDPaVeB-ID4", "TID[FVD[k,mu]FAD[{k,0},{k+p,m}],k]//FCE",
+"(FAD[k, {k + p, m}]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"},
+{"fcstTIDPaVeB-ID5", "TID[FVD[k,mu]FAD[{k,m},{k+p,0}],k]//FCE",
+"(FAD[{k, m}, k + p]*FVD[p, mu]*SPD[k, p])/SPD[p, p]"},
+{"fcstTIDPaVeB-ID6", "TID[FVD[k,mu]FAD[{k,m1},{k+q1,m2}],k]//FCE",
+"I*Pi^2*B1[0, m1^2, m2^2]*FVD[q1, mu]"}, {"fcstTIDPaVeB-ID7",
+"TID[FVD[k,mu]FAD[{k,m},{k+q1,m}],k]//FCE",
+"(-I/2)*Pi^2*B0[0, m^2, m^2]*FVD[q1, mu]"}, {"fcstTIDPaVeB-ID8",
+"TID[FVD[k,mu]FAD[{k,m},{k+q1,0}],k]//FCE", "I*Pi^2*B1[0, m^2, 0]*FVD[q1, mu]"},
+{"fcstTIDPaVeB-ID9", "TID[FVD[k,mu]FAD[{k,0},{k+q1,m}],k]//FCE",
+"I*Pi^2*B1[0, 0, m^2]*FVD[q1, mu]"}, {"fcstTIDPaVeB-ID10",
+"TID[FVD[k,mu]FAD[{k,0},{k+q1,0}],k]//FCE", "0"},
+{"fcstTIDPaVeB-ID11", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m1},{k+p,m2}],k]//FCE",
+"FAD[{k, m1}, {k + p, m2}]*SPD[k, k]*(-(MTD[mu, nu]/(1 - D)) + (FVD[p, \
 mu]*FVD[p, nu])/((1 - D)*SPD[p, p])) + FAD[{k, m1}, {k + p, m2}]*SPD[k, \
 p]^2*(-((D*FVD[p, mu]*FVD[p, nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - \
-D)*SPD[p, p]))"}, {"fcstTIDPaVeB-ID12", 
-  "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+p,m}],k]//FCE", "FAD[{k, m}, {k + p, \
+D)*SPD[p, p]))"}, {"fcstTIDPaVeB-ID12",
+"TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+p,m}],k]//FCE", "FAD[{k, m}, {k + p, \
 m}]*SPD[k, k]*(-(MTD[mu, nu]/(1 - D)) + (FVD[p, mu]*FVD[p, nu])/((1 - \
 D)*SPD[p, p])) + FAD[{k, m}, {k + p, m}]*SPD[k, p]^2*(-((D*FVD[p, mu]*FVD[p, \
-nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID13", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+p,0}],k]//FCE", "F\
+nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID13", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+p,0}],k]//FCE", "F\
 AD[k, k + p]*SPD[k, k]*(-(MTD[mu, nu]/(1 - D)) + (FVD[p, mu]*FVD[p, nu])/((1 \
 - D)*SPD[p, p])) + FAD[k, k + p]*SPD[k, p]^2*(-((D*FVD[p, mu]*FVD[p, nu])/((1 \
-- D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID14", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+p,m}],k]//FCE", "F\
+- D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID14", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+p,m}],k]//FCE", "F\
 AD[k, {k + p, m}]*SPD[k, k]*(-(MTD[mu, nu]/(1 - D)) + (FVD[p, mu]*FVD[p, \
 nu])/((1 - D)*SPD[p, p])) + FAD[k, {k + p, m}]*SPD[k, p]^2*(-((D*FVD[p, \
-mu]*FVD[p, nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID15", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+p,0}],k]//FCE", "F\
+mu]*FVD[p, nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID15", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+p,0}],k]//FCE", "F\
 AD[{k, m}, k + p]*SPD[k, k]*(-(MTD[mu, nu]/(1 - D)) + (FVD[p, mu]*FVD[p, \
 nu])/((1 - D)*SPD[p, p])) + FAD[{k, m}, k + p]*SPD[k, p]^2*(-((D*FVD[p, \
-mu]*FVD[p, nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID16", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m1},{k+q1,m2}],k]//FCE", 
-  "B11[0, m1^2, m2^2]*FVD[q1, mu]*FVD[q1, nu] + MTD[mu, nu]*PaVe[0, 0, {0}, \
-{m1^2, m2^2}]"}, {"fcstTIDPaVeB-ID17", 
-  "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+q1,m}],k]//FCE", "B11[0, m^2, \
-m^2]*FVD[q1, mu]*FVD[q1, nu] + MTD[mu, nu]*PaVe[0, 0, {0}, {m^2, m^2}]"}, 
- {"fcstTIDPaVeB-ID18", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+q1,0}],k]//FCE", "\
-B11[0, m^2, 0]*FVD[q1, mu]*FVD[q1, nu] + MTD[mu, nu]*PaVe[0, 0, {0}, {m^2, \
-0}]"}, {"fcstTIDPaVeB-ID19", 
-  "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+q1,m}],k]//FCE", "B11[0, 0, \
-m^2]*FVD[q1, mu]*FVD[q1, nu] + MTD[mu, nu]*PaVe[0, 0, {0}, {0, m^2}]"}, 
- {"fcstTIDPaVeB-ID20", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+q1,0}],k]//FCE", 
-  "0"}, {"fcstTIDPaVeB-ID21", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m1},{k+p,m2}],k]//FCE", "FAD[{k, \
+mu]*FVD[p, nu])/((1 - D)*SPD[p, p]^2)) + MTD[mu, nu]/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID16", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m1},{k+q1,m2}],k]//FCE",
+"I*Pi^2*B11[0, m1^2, m2^2]*FVD[q1, mu]*FVD[q1, nu] + I*Pi^2*MTD[mu, nu]*
+PaVe[0, 0, {0}, {m1^2, m2^2}]"}, {"fcstTIDPaVeB-ID17",
+"TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+q1,m}],k]//FCE",
+"I*Pi^2*B11[0, m^2, m^2]*FVD[q1, mu]*FVD[q1, nu] + I*Pi^2*MTD[mu, nu]*
+PaVe[0, 0, {0}, {m^2, m^2}]"},
+{"fcstTIDPaVeB-ID18", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,m},{k+q1,0}],k]//FCE",
+"I*Pi^2*B11[0, m^2, 0]*FVD[q1, mu]*FVD[q1, nu] + I*Pi^2*MTD[mu, nu]*
+PaVe[0, 0, {0}, {m^2, 0}]"}, {"fcstTIDPaVeB-ID19",
+"TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+q1,m}],k]//FCE", "I*Pi^2*B11[0, 0, m^2]*
+FVD[q1, mu]*FVD[q1, nu] + I*Pi^2*MTD[mu, nu]*PaVe[0, 0, {0}, {0, m^2}]"},
+{"fcstTIDPaVeB-ID20", "TID[FVD[k,mu]FVD[k,nu]FAD[{k,0},{k+q1,0}],k]//FCE",
+"0"}, {"fcstTIDPaVeB-ID21",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m1},{k+p,m2}],k]//FCE", "FAD[{k, \
 m1}, {k + p, m2}]*SPD[k, p]^3*(-(((2 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, \
 rho])/((1 - D)*SPD[p, p]^3)) + (FVD[p, rho]*MTD[mu, nu])/((1 - D)*SPD[p, \
 p]^2) + (FVD[p, nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]^2) + (FVD[p, mu]*MTD[nu, \
 rho])/((1 - D)*SPD[p, p]^2)) + FAD[{k, m1}, {k + p, m2}]*SPD[k, k]*SPD[k, \
 p]*((3*FVD[p, mu]*FVD[p, nu]*FVD[p, rho])/((1 - D)*SPD[p, p]^2) - (FVD[p, \
 rho]*MTD[mu, nu])/((1 - D)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, rho])/((1 - \
-D)*SPD[p, p]) - (FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID22", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+p,m}],k]//FCE", "FAD[{k, m}, \
+D)*SPD[p, p]) - (FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID22",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+p,m}],k]//FCE", "FAD[{k, m}, \
 {k + p, m}]*SPD[k, p]^3*(-(((2 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, rho])/((1 - \
 D)*SPD[p, p]^3)) + (FVD[p, rho]*MTD[mu, nu])/((1 - D)*SPD[p, p]^2) + (FVD[p, \
 nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]^2) + (FVD[p, mu]*MTD[nu, rho])/((1 - \
 D)*SPD[p, p]^2)) + FAD[{k, m}, {k + p, m}]*SPD[k, k]*SPD[k, p]*((3*FVD[p, \
 mu]*FVD[p, nu]*FVD[p, rho])/((1 - D)*SPD[p, p]^2) - (FVD[p, rho]*MTD[mu, \
 nu])/((1 - D)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]) - \
-(FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID23", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+p,0}],k]//FCE", "FAD[k, k + \
+(FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID23",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+p,0}],k]//FCE", "FAD[k, k + \
 p]*SPD[k, p]^3*(-(((2 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, rho])/((1 - D)*SPD[p, \
 p]^3)) + (FVD[p, rho]*MTD[mu, nu])/((1 - D)*SPD[p, p]^2) + (FVD[p, \
 nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]^2) + (FVD[p, mu]*MTD[nu, rho])/((1 - \
 D)*SPD[p, p]^2)) + FAD[k, k + p]*SPD[k, k]*SPD[k, p]*((3*FVD[p, mu]*FVD[p, \
 nu]*FVD[p, rho])/((1 - D)*SPD[p, p]^2) - (FVD[p, rho]*MTD[mu, nu])/((1 - \
 D)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]) - (FVD[p, \
-mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"}, {"fcstTIDPaVeB-ID24", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+p,m}],k]//FCE", "FAD[k, {k + \
+mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"}, {"fcstTIDPaVeB-ID24",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+p,m}],k]//FCE", "FAD[k, {k + \
 p, m}]*SPD[k, p]^3*(-(((2 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, rho])/((1 - \
 D)*SPD[p, p]^3)) + (FVD[p, rho]*MTD[mu, nu])/((1 - D)*SPD[p, p]^2) + (FVD[p, \
 nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]^2) + (FVD[p, mu]*MTD[nu, rho])/((1 - \
 D)*SPD[p, p]^2)) + FAD[k, {k + p, m}]*SPD[k, k]*SPD[k, p]*((3*FVD[p, \
 mu]*FVD[p, nu]*FVD[p, rho])/((1 - D)*SPD[p, p]^2) - (FVD[p, rho]*MTD[mu, \
 nu])/((1 - D)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]) - \
-(FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID25", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+p,0}],k]//FCE", "FAD[{k, m}, \
+(FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID25",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+p,0}],k]//FCE", "FAD[{k, m}, \
 k + p]*SPD[k, p]^3*(-(((2 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, rho])/((1 - \
 D)*SPD[p, p]^3)) + (FVD[p, rho]*MTD[mu, nu])/((1 - D)*SPD[p, p]^2) + (FVD[p, \
 nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]^2) + (FVD[p, mu]*MTD[nu, rho])/((1 - \
 D)*SPD[p, p]^2)) + FAD[{k, m}, k + p]*SPD[k, k]*SPD[k, p]*((3*FVD[p, \
 mu]*FVD[p, nu]*FVD[p, rho])/((1 - D)*SPD[p, p]^2) - (FVD[p, rho]*MTD[mu, \
 nu])/((1 - D)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, rho])/((1 - D)*SPD[p, p]) - \
-(FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID26", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m1},{k+q1,m2}],k]//FCE", "FVD[q1, \
-rho]*MTD[mu, nu]*PaVe[0, 0, 1, {0}, {m1^2, m2^2}] + FVD[q1, nu]*MTD[mu, \
-rho]*PaVe[0, 0, 1, {0}, {m1^2, m2^2}] + FVD[q1, mu]*MTD[nu, rho]*PaVe[0, 0, \
-1, {0}, {m1^2, m2^2}] + FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*PaVe[1, 1, 1, \
-{0}, {m1^2, m2^2}]"}, {"fcstTIDPaVeB-ID27", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+q1,m}],k]//FCE", "FVD[q1, \
-rho]*MTD[mu, nu]*PaVe[0, 0, 1, {0}, {m^2, m^2}] + FVD[q1, nu]*MTD[mu, \
-rho]*PaVe[0, 0, 1, {0}, {m^2, m^2}] + FVD[q1, mu]*MTD[nu, rho]*PaVe[0, 0, 1, \
-{0}, {m^2, m^2}] + FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*PaVe[1, 1, 1, {0}, \
-{m^2, m^2}]"}, {"fcstTIDPaVeB-ID28", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+q1,0}],k]//FCE", "FVD[q1, \
-rho]*MTD[mu, nu]*PaVe[0, 0, 1, {0}, {m^2, 0}] + FVD[q1, nu]*MTD[mu, \
-rho]*PaVe[0, 0, 1, {0}, {m^2, 0}] + FVD[q1, mu]*MTD[nu, rho]*PaVe[0, 0, 1, \
-{0}, {m^2, 0}] + FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*PaVe[1, 1, 1, {0}, \
-{m^2, 0}]"}, {"fcstTIDPaVeB-ID29", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+q1,m}],k]//FCE", "FVD[q1, \
-rho]*MTD[mu, nu]*PaVe[0, 0, 1, {0}, {0, m^2}] + FVD[q1, nu]*MTD[mu, \
-rho]*PaVe[0, 0, 1, {0}, {0, m^2}] + FVD[q1, mu]*MTD[nu, rho]*PaVe[0, 0, 1, \
-{0}, {0, m^2}] + FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*PaVe[1, 1, 1, {0}, {0, \
-m^2}]"}, {"fcstTIDPaVeB-ID30", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+q1,0}],k]//FCE", "0"}, 
- {"fcstTIDPaVeB-ID31", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m1},{k+p,m2}],k]//FCE", "F\
+(FVD[p, mu]*MTD[nu, rho])/((1 - D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID26",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m1},{k+q1,m2}],k]//FCE", "I*Pi^2*FVD[q1, rho]*
+MTD[mu, nu]*PaVe[0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1, nu]*
+MTD[mu, rho]*PaVe[0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1, mu]*MTD[nu, rho]*
+PaVe[0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1, mu]*FVD[q1, nu]*
+FVD[q1, rho]*PaVe[1, 1, 1, {0}, {m1^2, m2^2}]"}, {"fcstTIDPaVeB-ID27",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+q1,m}],k]//FCE", "I*Pi^2*FVD[q1, rho]*
+MTD[mu, nu]*PaVe[0, 0, 1, {0}, {m^2, m^2}] + I*Pi^2*FVD[q1, nu]*
+MTD[mu, rho]*PaVe[0, 0, 1, {0}, {m^2, m^2}] + I*Pi^2*FVD[q1, mu]*
+MTD[nu, rho]*PaVe[0, 0, 1, {0}, {m^2, m^2}] + I*Pi^2*FVD[q1, mu]*
+FVD[q1, nu]*FVD[q1, rho]*PaVe[1, 1, 1, {0}, {m^2, m^2}]"}, {"fcstTIDPaVeB-ID28",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,m},{k+q1,0}],k]//FCE", "I*Pi^2*FVD[q1, rho]*
+MTD[mu, nu]*PaVe[0, 0, 1, {0}, {m^2, 0}] + I*Pi^2*FVD[q1, nu]*
+MTD[mu, rho]*PaVe[0, 0, 1, {0}, {m^2, 0}] + I*Pi^2*FVD[q1, mu]*
+MTD[nu, rho]*PaVe[0, 0, 1, {0}, {m^2, 0}] + I*Pi^2*FVD[q1, mu]*
+FVD[q1, nu]*FVD[q1, rho]*PaVe[1, 1, 1, {0}, {m^2, 0}]"}, {"fcstTIDPaVeB-ID29",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+q1,m}],k]//FCE",
+"I*Pi^2*FVD[q1, rho]*MTD[mu, nu]*PaVe[0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*FVD[q1, nu]*MTD[mu, rho]*PaVe[0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*FVD[q1, mu]*MTD[nu, rho]*PaVe[0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*
+PaVe[1, 1, 1, {0}, {0, m^2}]"}, {"fcstTIDPaVeB-ID30",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FAD[{k,0},{k+q1,0}],k]//FCE", "0"},
+{"fcstTIDPaVeB-ID31",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m1},{k+p,m2}],k]//FCE", "F\
 AD[{k, m1}, {k + p, m2}]*SPD[k, p]^4*(((2 + D)*(4 + D)*FVD[p, mu]*FVD[p, \
 nu]*FVD[p, rho]*FVD[p, si])/((-1 + D)*(1 + D)*SPD[p, p]^4) - ((2 + D)*FVD[p, \
 rho]*FVD[p, si]*MTD[mu, nu])/((-1 + D)*(1 + D)*SPD[p, p]^3) - ((2 + D)*FVD[p, \
@@ -152,8 +154,8 @@ nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + ((2 + D)*FVD[p, mu]*FVD[p, \
 nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]^2) - (2*MTD[mu, si]*MTD[nu, \
 rho])/((-1 + D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, rho]*MTD[nu, si])/((-1 + \
 D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, \
-p]))"}, {"fcstTIDPaVeB-ID32", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+p,m}],k]//FCE", "FAD\
+p]))"}, {"fcstTIDPaVeB-ID32",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+p,m}],k]//FCE", "FAD\
 [{k, m}, {k + p, m}]*SPD[k, p]^4*(((2 + D)*(4 + D)*FVD[p, mu]*FVD[p, \
 nu]*FVD[p, rho]*FVD[p, si])/((-1 + D)*(1 + D)*SPD[p, p]^4) - ((2 + D)*FVD[p, \
 rho]*FVD[p, si]*MTD[mu, nu])/((-1 + D)*(1 + D)*SPD[p, p]^3) - ((2 + D)*FVD[p, \
@@ -190,8 +192,8 @@ nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + ((2 + D)*FVD[p, mu]*FVD[p, \
 nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]^2) - (2*MTD[mu, si]*MTD[nu, \
 rho])/((-1 + D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, rho]*MTD[nu, si])/((-1 + \
 D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, \
-p]))"}, {"fcstTIDPaVeB-ID33", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+p,0}],k]//FCE", "FAD\
+p]))"}, {"fcstTIDPaVeB-ID33",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+p,0}],k]//FCE", "FAD\
 [k, k + p]*SPD[k, p]^4*(((2 + D)*(4 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, \
 rho]*FVD[p, si])/((-1 + D)*(1 + D)*SPD[p, p]^4) - ((2 + D)*FVD[p, rho]*FVD[p, \
 si]*MTD[mu, nu])/((-1 + D)*(1 + D)*SPD[p, p]^3) - ((2 + D)*FVD[p, nu]*FVD[p, \
@@ -227,8 +229,8 @@ nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + ((2 + D)*FVD[p, mu]*FVD[p, \
 nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]^2) - (2*MTD[mu, si]*MTD[nu, \
 rho])/((-1 + D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, rho]*MTD[nu, si])/((-1 + \
 D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, \
-p]))"}, {"fcstTIDPaVeB-ID34", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+p,m}],k]//FCE", "FAD\
+p]))"}, {"fcstTIDPaVeB-ID34",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+p,m}],k]//FCE", "FAD\
 [k, {k + p, m}]*SPD[k, p]^4*(((2 + D)*(4 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, \
 rho]*FVD[p, si])/((-1 + D)*(1 + D)*SPD[p, p]^4) - ((2 + D)*FVD[p, rho]*FVD[p, \
 si]*MTD[mu, nu])/((-1 + D)*(1 + D)*SPD[p, p]^3) - ((2 + D)*FVD[p, nu]*FVD[p, \
@@ -264,9 +266,9 @@ si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + (FVD[p, mu]*FVD[p, nu]*MTD[rho, \
 si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + ((2 + D)*FVD[p, mu]*FVD[p, nu]*MTD[rho, \
 si])/((-1 + D)*(1 + D)*SPD[p, p]^2) - (2*MTD[mu, si]*MTD[nu, rho])/((-1 + \
 D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, rho]*MTD[nu, si])/((-1 + D)*(1 + D)*SPD[p, \
-p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID35", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+p,0}],k]//FCE", "FAD\
+p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID35",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+p,0}],k]//FCE", "FAD\
 [{k, m}, k + p]*SPD[k, p]^4*(((2 + D)*(4 + D)*FVD[p, mu]*FVD[p, nu]*FVD[p, \
 rho]*FVD[p, si])/((-1 + D)*(1 + D)*SPD[p, p]^4) - ((2 + D)*FVD[p, rho]*FVD[p, \
 si]*MTD[mu, nu])/((-1 + D)*(1 + D)*SPD[p, p]^3) - ((2 + D)*FVD[p, nu]*FVD[p, \
@@ -302,56 +304,64 @@ si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + (FVD[p, mu]*FVD[p, nu]*MTD[rho, \
 si])/((-1 + D)*(1 + D)*SPD[p, p]^2) + ((2 + D)*FVD[p, mu]*FVD[p, nu]*MTD[rho, \
 si])/((-1 + D)*(1 + D)*SPD[p, p]^2) - (2*MTD[mu, si]*MTD[nu, rho])/((-1 + \
 D)*(1 + D)*SPD[p, p]) - (2*MTD[mu, rho]*MTD[nu, si])/((-1 + D)*(1 + D)*SPD[p, \
-p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID36", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m1},{k+q1,m2}],k]//FCE", "\
-MTD[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {m1^2, m2^2}] + MTD[mu, \
-rho]*MTD[nu, si]*PaVe[0, 0, 0, 0, {0}, {m1^2, m2^2}] + MTD[mu, nu]*MTD[rho, \
-si]*PaVe[0, 0, 0, 0, {0}, {m1^2, m2^2}] + FVD[q1, rho]*FVD[q1, si]*MTD[mu, \
-nu]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + FVD[q1, nu]*FVD[q1, si]*MTD[mu, \
-rho]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + FVD[q1, nu]*FVD[q1, rho]*MTD[mu, \
-si]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + FVD[q1, mu]*FVD[q1, si]*MTD[nu, \
-rho]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + FVD[q1, mu]*FVD[q1, rho]*MTD[nu, \
-si]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + FVD[q1, mu]*FVD[q1, nu]*MTD[rho, \
-si]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + FVD[q1, mu]*FVD[q1, nu]*FVD[q1, \
-rho]*FVD[q1, si]*PaVe[1, 1, 1, 1, {0}, {m1^2, m2^2}]"}, 
- {"fcstTIDPaVeB-ID37", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+q1,m}],k]//FCE", "MT\
-D[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}] + MTD[mu, \
-rho]*MTD[nu, si]*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}] + MTD[mu, nu]*MTD[rho, \
-si]*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}] + FVD[q1, rho]*FVD[q1, si]*MTD[mu, \
-nu]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + FVD[q1, nu]*FVD[q1, si]*MTD[mu, \
-rho]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + FVD[q1, nu]*FVD[q1, rho]*MTD[mu, \
-si]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + FVD[q1, mu]*FVD[q1, si]*MTD[nu, \
-rho]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + FVD[q1, mu]*FVD[q1, rho]*MTD[nu, \
-si]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + FVD[q1, mu]*FVD[q1, nu]*MTD[rho, \
-si]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + FVD[q1, mu]*FVD[q1, nu]*FVD[q1, \
-rho]*FVD[q1, si]*PaVe[1, 1, 1, 1, {0}, {m^2, m^2}]"}, 
- {"fcstTIDPaVeB-ID38", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+q1,0}],k]//FCE", "MT\
-D[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {m^2, 0}] + MTD[mu, rho]*MTD[nu, \
-si]*PaVe[0, 0, 0, 0, {0}, {m^2, 0}] + MTD[mu, nu]*MTD[rho, si]*PaVe[0, 0, 0, \
-0, {0}, {m^2, 0}] + FVD[q1, rho]*FVD[q1, si]*MTD[mu, nu]*PaVe[0, 0, 1, 1, \
-{0}, {m^2, 0}] + FVD[q1, nu]*FVD[q1, si]*MTD[mu, rho]*PaVe[0, 0, 1, 1, {0}, \
-{m^2, 0}] + FVD[q1, nu]*FVD[q1, rho]*MTD[mu, si]*PaVe[0, 0, 1, 1, {0}, {m^2, \
-0}] + FVD[q1, mu]*FVD[q1, si]*MTD[nu, rho]*PaVe[0, 0, 1, 1, {0}, {m^2, 0}] + \
-FVD[q1, mu]*FVD[q1, rho]*MTD[nu, si]*PaVe[0, 0, 1, 1, {0}, {m^2, 0}] + \
-FVD[q1, mu]*FVD[q1, nu]*MTD[rho, si]*PaVe[0, 0, 1, 1, {0}, {m^2, 0}] + \
-FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*FVD[q1, si]*PaVe[1, 1, 1, 1, {0}, {m^2, \
-0}]"}, {"fcstTIDPaVeB-ID39", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+q1,m}],k]//FCE", "MT\
-D[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {0, m^2}] + MTD[mu, rho]*MTD[nu, \
-si]*PaVe[0, 0, 0, 0, {0}, {0, m^2}] + MTD[mu, nu]*MTD[rho, si]*PaVe[0, 0, 0, \
-0, {0}, {0, m^2}] + FVD[q1, rho]*FVD[q1, si]*MTD[mu, nu]*PaVe[0, 0, 1, 1, \
-{0}, {0, m^2}] + FVD[q1, nu]*FVD[q1, si]*MTD[mu, rho]*PaVe[0, 0, 1, 1, {0}, \
-{0, m^2}] + FVD[q1, nu]*FVD[q1, rho]*MTD[mu, si]*PaVe[0, 0, 1, 1, {0}, {0, \
-m^2}] + FVD[q1, mu]*FVD[q1, si]*MTD[nu, rho]*PaVe[0, 0, 1, 1, {0}, {0, m^2}] \
-+ FVD[q1, mu]*FVD[q1, rho]*MTD[nu, si]*PaVe[0, 0, 1, 1, {0}, {0, m^2}] + \
-FVD[q1, mu]*FVD[q1, nu]*MTD[rho, si]*PaVe[0, 0, 1, 1, {0}, {0, m^2}] + \
-FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*FVD[q1, si]*PaVe[1, 1, 1, 1, {0}, {0, \
-m^2}]"}, {"fcstTIDPaVeB-ID40", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+q1,0}],k]//FCE", 
-  "0"}, {"fcstTIDPaVeB-ID41", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k\
+p]) - (2*MTD[mu, nu]*MTD[rho, si])/((-1 + D)*(1 + D)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID36",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m1},{k+q1,m2}],k]//FCE",
+"I*Pi^2*MTD[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {m1^2, m2^2}] +
+I*Pi^2*MTD[mu, rho]*MTD[nu, si]*PaVe[0, 0, 0, 0, {0}, {m1^2, m2^2}] +
+I*Pi^2*MTD[mu, nu]*MTD[rho, si]*PaVe[0, 0, 0, 0, {0}, {m1^2, m2^2}] +
+I*Pi^2*FVD[q1, rho]*FVD[q1, si]*MTD[mu, nu]*PaVe[0, 0, 1, 1, {0},
+{m1^2, m2^2}] + I*Pi^2*FVD[q1, nu]*FVD[q1, si]*MTD[mu, rho]*PaVe[0, 0, 1, 1,
+{0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1, nu]*FVD[q1, rho]*MTD[mu, si]*PaVe[0,
+0, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1, mu]*FVD[q1, si]*MTD[nu,
+rho]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1, mu]*FVD[q1,
+rho]*MTD[nu, si]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*FVD[q1,
+mu]*FVD[q1, nu]*MTD[rho, si]*PaVe[0, 0, 1, 1, {0}, {m1^2, m2^2}] +
+I*Pi^2*FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*FVD[q1, si]*PaVe[1, 1,
+1, 1, {0}, {m1^2, m2^2}]"},
+{"fcstTIDPaVeB-ID37",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+q1,m}],k]//FCE",
+"I*Pi^2*MTD[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}] +
+I*Pi^2*MTD[mu, rho]*MTD[nu, si]*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}] +
+I*Pi^2*MTD[mu, nu]*MTD[rho, si]*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}] +
+I*Pi^2*FVD[q1, rho]*FVD[q1, si]*MTD[mu, nu]*PaVe[0, 0, 1, 1, {0},
+{m^2, m^2}] + I*Pi^2*FVD[q1, nu]*FVD[q1, si]*MTD[mu, rho]*
+PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + I*Pi^2*FVD[q1, nu]*
+FVD[q1, rho]*MTD[mu, si]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*FVD[q1, mu]*FVD[q1, si]*MTD[nu, rho]*PaVe[0, 0, 1, 1,
+{0}, {m^2, m^2}] + I*Pi^2*FVD[q1, mu]*FVD[q1, rho]*MTD[nu, si]*
+PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + I*Pi^2*FVD[q1, mu]*FVD[q1, nu]*
+MTD[rho, si]*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}] + I*Pi^2*FVD[q1, mu]*
+FVD[q1, nu]*FVD[q1, rho]*FVD[q1, si]*PaVe[1, 1, 1, 1, {0}, {m^2, m^2}]"},
+{"fcstTIDPaVeB-ID38",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,m},{k+q1,0}],k]//FCE",
+"I*Pi^2*MTD[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {m^2, 0}] +
+I*Pi^2*MTD[mu, rho]*MTD[nu, si]*PaVe[0, 0, 0, 0, {0}, {m^2, 0}] +
+I*Pi^2*MTD[mu, nu]*MTD[rho, si]*PaVe[0, 0, 0, 0, {0}, {m^2, 0}] +
+I*Pi^2*FVD[q1, rho]*FVD[q1, si]*MTD[mu, nu]*PaVe[0, 0, 1, 1, {0},
+{m^2, 0}] + I*Pi^2*FVD[q1, nu]*FVD[q1, si]*MTD[mu, rho]*PaVe[0, 0,
+1, 1, {0}, {m^2, 0}] + I*Pi^2*FVD[q1, nu]*FVD[q1, rho]*MTD[mu, si]*
+PaVe[0, 0, 1, 1, {0}, {m^2, 0}] + I*Pi^2*FVD[q1, mu]*FVD[q1, si]*
+MTD[nu, rho]*PaVe[0, 0, 1, 1, {0}, {m^2, 0}] + I*Pi^2*FVD[q1, mu]*
+FVD[q1, rho]*MTD[nu, si]*PaVe[0, 0, 1, 1, {0}, {m^2, 0}] + I*Pi^2*
+FVD[q1, mu]*FVD[q1, nu]*MTD[rho, si]*PaVe[0, 0, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*FVD[q1, si]*PaVe[1, 1, 1,
+1, {0}, {m^2, 0}]"}, {"fcstTIDPaVeB-ID39",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+q1,m}],k]//FCE",
+"I*Pi^2*MTD[mu, si]*MTD[nu, rho]*PaVe[0, 0, 0, 0, {0}, {0, m^2}] +
+I*Pi^2*MTD[mu, rho]*MTD[nu, si]*PaVe[0, 0, 0, 0, {0}, {0, m^2}] +
+I*Pi^2*MTD[mu, nu]*MTD[rho, si]*PaVe[0, 0, 0, 0, {0}, {0, m^2}] +
+I*Pi^2*FVD[q1, rho]*FVD[q1, si]*MTD[mu, nu]*PaVe[0, 0, 1, 1, {0},
+{0, m^2}] + I*Pi^2*FVD[q1, nu]*FVD[q1, si]*MTD[mu, rho]*PaVe[0, 0,
+1, 1, {0}, {0, m^2}] + I*Pi^2*FVD[q1, nu]*FVD[q1, rho]*MTD[mu, si]*
+PaVe[0, 0, 1, 1, {0}, {0, m^2}] + I*Pi^2*FVD[q1, mu]*FVD[q1, si]*
+MTD[nu, rho]*PaVe[0, 0, 1, 1, {0}, {0, m^2}] + I*Pi^2*FVD[q1, mu]*
+FVD[q1, rho]*MTD[nu, si]*PaVe[0, 0, 1, 1, {0}, {0, m^2}] + I*Pi^2*
+FVD[q1, mu]*FVD[q1, nu]*MTD[rho, si]*PaVe[0, 0, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*FVD[q1, mu]*FVD[q1, nu]*FVD[q1, rho]*FVD[q1, si]*PaVe[1, 1,
+1, 1, {0}, {0, m^2}]"}, {"fcstTIDPaVeB-ID40",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FAD[{k,0},{k+q1,0}],k]//FCE",
+"0"}, {"fcstTIDPaVeB-ID41", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k\
 ,tau]FAD[{k,m1},{k+p,m2}],k]//FCE", "FAD[{k, m1}, {k + p, m2}]*SPD[k, \
 p]^5*((-24*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*FVD[p, si]*FVD[p, tau])/((1 - \
 D^2)*SPD[p, p]^5) - (10*D*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*FVD[p, si]*FVD[p, \
@@ -451,8 +461,8 @@ nu]*MTD[rho, tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, si]*MTD[rho, \
 tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, mu]*MTD[nu, si]*MTD[rho, tau])/((1 - \
 D^2)*SPD[p, p]) - (FVD[p, rho]*MTD[mu, nu]*MTD[si, tau])/((1 - D^2)*SPD[p, \
 p]) - (FVD[p, nu]*MTD[mu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, \
-mu]*MTD[nu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID42", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FA\
+mu]*MTD[nu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID42", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FA\
 D[{k,m},{k+p,m}],k]//FCE", "FAD[{k, m}, {k + p, m}]*SPD[k, p]^5*((-24*FVD[p, \
 mu]*FVD[p, nu]*FVD[p, rho]*FVD[p, si]*FVD[p, tau])/((1 - D^2)*SPD[p, p]^5) - \
 (10*D*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*FVD[p, si]*FVD[p, tau])/((1 - \
@@ -552,8 +562,8 @@ nu]*MTD[rho, tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, si]*MTD[rho, \
 tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, mu]*MTD[nu, si]*MTD[rho, tau])/((1 - \
 D^2)*SPD[p, p]) - (FVD[p, rho]*MTD[mu, nu]*MTD[si, tau])/((1 - D^2)*SPD[p, \
 p]) - (FVD[p, nu]*MTD[mu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, \
-mu]*MTD[nu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, p]))"}, 
- {"fcstTIDPaVeB-ID43", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FA\
+mu]*MTD[nu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, p]))"},
+{"fcstTIDPaVeB-ID43", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FA\
 D[{k,0},{k+p,0}],k]//FCE", "FAD[k, k + p]*SPD[k, p]^5*((-24*FVD[p, mu]*FVD[p, \
 nu]*FVD[p, rho]*FVD[p, si]*FVD[p, tau])/((1 - D^2)*SPD[p, p]^5) - \
 (10*D*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*FVD[p, si]*FVD[p, tau])/((1 - \
@@ -754,9 +764,9 @@ nu]*MTD[mu, si]*MTD[rho, tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, mu]*MTD[nu, \
 si]*MTD[rho, tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, rho]*MTD[mu, nu]*MTD[si, \
 tau])/((1 - D^2)*SPD[p, p]) - (FVD[p, nu]*MTD[mu, rho]*MTD[si, tau])/((1 - \
 D^2)*SPD[p, p]) - (FVD[p, mu]*MTD[nu, rho]*MTD[si, tau])/((1 - D^2)*SPD[p, \
-p]))"}, {"fcstTIDPaVeB-ID45", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,m},{k+p,0}],k]", 
-  "FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], m], \
+p]))"}, {"fcstTIDPaVeB-ID45",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,m},{k+p,0}],k]",
+"FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], m], \
 PropagatorDenominator[Momentum[k, D] + Momentum[p, D], 0]]*Pair[Momentum[k, \
 D], Momentum[p, D]]^5*((-24*Pair[LorentzIndex[mu, D], Momentum[p, \
 D]]*Pair[LorentzIndex[nu, D], Momentum[p, D]]*Pair[LorentzIndex[rho, D], \
@@ -1081,299 +1091,436 @@ D]]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], \
 Momentum[p, D]])/((1 - D^2)*Pair[Momentum[p, D], Momentum[p, D]]) - \
 (Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], \
 LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[p, D]])/((1 - \
-D^2)*Pair[Momentum[p, D], Momentum[p, D]]))"}, 
- {"fcstTIDPaVeB-ID46", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FA\
-D[{k,m1},{k+q1,m2}],k]", "Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, \
-D], LorentzIndex[si, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, 1, 1, 1, {0}, \
-{m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, \
-1, 1, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, \
-1, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, \
-1, 1, 1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m1^2, m2^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[1, 1, 1, 1, 1, {0}, \
-{m1^2, m2^2}]"}, {"fcstTIDPaVeB-ID47", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,m},{k+q1,m}],k]"\
-, "Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[si, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, \
-D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, \
-m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, \
-D], LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, 1, 1, 1, {0}, \
-{m^2, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, \
-1, 1, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, \
-1, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, \
-1, 1, 1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[1, 1, 1, 1, 1, {0}, \
-{m^2, m^2}]"}, {"fcstTIDPaVeB-ID48", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,m},{k+q1,0}],k]"\
-, "Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[si, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, \
-D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, \
-0}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, \
-D], LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, 1, 1, 1, {0}, \
-{m^2, 0}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m^2, \
-0}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m^2, \
-0}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m^2, \
-0}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, \
-{m^2, 0}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, \
-D], LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, \
-{m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, \
-1, {0}, {m^2, 0}] + Pair[LorentzIndex[mu, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[1, 1, 1, 1, 1, {0}, \
-{m^2, 0}]"}, {"fcstTIDPaVeB-ID49", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,0},{k+q1,m}],k]"\
-, "Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[si, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, \
-D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], \
-LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], \
-Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, \
-D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, \
-D], LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, \
-0, 0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + \
-Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, \
-0, 0, 1, {0}, {0, m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, \
-D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*Pair[LorentzIndex[tau, \
-D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] + \
-Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, 1, 1, 1, {0}, \
-{0, m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[tau, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[nu, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, \
-D], Momentum[q1, D]]*Pair[LorentzIndex[si, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {0, \
-m^2}] + Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D], \
-Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, \
-D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*Pair[LorentzIndex[tau, D], \
-Momentum[q1, D]]*PaVe[1, 1, 1, 1, 1, {0}, {0, m^2}]"}, 
- {"fcstTIDPaVeB-ID50", 
-  "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,0},{k+q1,0}],k]"\
+D^2)*Pair[Momentum[p, D], Momentum[p, D]]))"},
+{"fcstTIDPaVeB-ID46", "TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FA\
+D[{k,m1},{k+q1,m2}],k]", "I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[rho, D],
+LorentzIndex[si, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1,
+{0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D],
+LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D],
+LorentzIndex[si, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*PaVe[0, 0,
+0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+LorentzIndex[si, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0},
+{m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D],
+LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*Pair[LorentzIndex[nu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0, 0, 0, 1,
+{0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1,
+{0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D],
+Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D],
+LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0, 0,
+0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+LorentzIndex[si, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0},
+{m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D],
+Momentum[q1, D]]*PaVe[0, 0, 0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*
+Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D],
+LorentzIndex[si, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0,
+0, 0, 0, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D],
+Momentum[q1, D]]*Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*PaVe[0, 0,
+1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[rho, D],
+LorentzIndex[tau, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*PaVe[0,
+0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D],
+Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu,
+D], LorentzIndex[tau, D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D],
+Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*
+Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0},
+{m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*Pair[LorentzIndex[rho,
+D], Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu,
+D], LorentzIndex[si, D]]*Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[tau, D],
+Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*
+Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D],
+LorentzIndex[rho, D]]*Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0},
+{m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*Pair[LorentzIndex[si, D],
+Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[0,
+0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*Pair[LorentzIndex[mu, D],
+LorentzIndex[nu, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*Pair[LorentzIndex[tau, D],
+Momentum[q1, D]]*PaVe[0, 0, 1, 1, 1, {0}, {m1^2, m2^2}] + I*Pi^2*
+Pair[LorentzIndex[mu, D], Momentum[q1, D]]*Pair[LorentzIndex[nu, D],
+Momentum[q1, D]]*Pair[LorentzIndex[rho, D], Momentum[q1, D]]*Pair[LorentzIndex[si,
+D], Momentum[q1, D]]*Pair[LorentzIndex[tau, D], Momentum[q1, D]]*PaVe[1,
+1, 1, 1, 1, {0}, {m1^2, m2^2}]"}, {"fcstTIDPaVeB-ID47",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,m},{k+q1,m}],k]"\
+, "I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[1, 1, 1, 1, 1, {0}, {m^2, m^2}]"}, {"fcstTIDPaVeB-ID48",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,m},{k+q1,0}],k]",
+"I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {m^2, 0}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[1, 1, 1, 1, 1, {0}, {m^2, 0}]"}, {"fcstTIDPaVeB-ID49",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,0},{k+q1,m}],k]",
+"I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 0, 0, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], LorentzIndex[tau, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[tau, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[si, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[rho, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[0, 0, 1, 1, 1, {0}, {0, m^2}] +
+I*Pi^2*Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+Pair[LorentzIndex[rho, D], Momentum[q1, D]]*
+Pair[LorentzIndex[si, D], Momentum[q1, D]]*
+Pair[LorentzIndex[tau, D], Momentum[q1, D]]*
+PaVe[1, 1, 1, 1, 1, {0}, {0, m^2}]"},
+{"fcstTIDPaVeB-ID50",
+"TID[FVD[k,mu]FVD[k,nu]FVD[k,rho]FVD[k,si]FVD[k,tau]FAD[{k,0},{k+q1,0}],k]"\
 , "0"}}
