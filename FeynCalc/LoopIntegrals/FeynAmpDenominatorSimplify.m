@@ -46,6 +46,202 @@ Options[FeynAmpDenominatorSimplify] = {
 FeynAmpDenominatorSimplify[a_,q_,opt___Rule] :=
 	FeynAmpDenominatorSimplify[a,q];
 
+FeynAmpDenominatorSimplify[exp_, OptionsPattern[]] :=
+	exp /. PropagatorDenominator -> procan /. procan ->
+	PropagatorDenominator /. FeynAmpDenominator -> feyncan;
+
+FeynAmpDenominatorSimplify[exp_,Momentum[q1_, ___]] :=
+	FeynAmpDenominatorSimplify[exp, q1];
+
+FeynAmpDenominatorSimplify[exp_,Momentum[q1_, ___], Momentum[q2_,___]] :=
+	FeynAmpDenominatorSimplify[exp, q1, q2];
+
+FeynAmpDenominatorSimplify[exp_, qmore__, q1_/;Head[q1] =!= Rule,
+								q2_ /;Head[q2] =!= Rule
+							] :=
+	FeynAmpDenominatorSimplify[
+		exp /. FeynAmpDenominator -> feynsimp[q2], qmore, q1];
+
+
+FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt___Rule
+							] :=
+	Block[ {exp, ot, pot,topi, topi2, bas, basic},
+		If[ !FreeQ[exp, FeynAmpDenominator[bb__] FeynAmpDenominator[aa__]] ||
+			!FreeQ[exp, FeynAmpDenominator[bb__]^n_],
+			exp = FeynAmpDenominatorCombine[exp];
+		];
+		If[ !FreeQ2[ex,{FAD,SPD}],
+			exp = FeynCalcInternal[ex],
+			exp = ex
+		];
+		ot = (*FeynCalcInternal[*) Flatten[IntegralTable /. {opt} /.
+				Options[FeynAmpDenominatorSimplify]](*]*);
+		pe[qu1_,qu2_, prop_] :=
+			Block[ {pet = SelectFree[Cases2[prop//MomentumExpand,Momentum]/.
+			Momentum[a_,___]:>a, {qu1,qu2} ]},
+				If[ Length[pet]>0,
+					First[pet],
+					pet
+				]
+			];
+		basic = {
+		FCIntegral[
+		anyf_[a___, Momentum[q1,di_], b___]*
+		FeynAmpDenominator[c___,
+		pro:PropagatorDenominator[Momentum[q2,di_]-Momentum[q1,di_],em_].., d___
+							]
+				] :>
+		Calc[(anyf[a,Momentum[q1,di], b] FeynAmpDenominator[c,pro,d]) /.
+		q1-> -q1+q2] /; FreeQ[{a,anyf,b,c,d}, q1]
+		,
+		FCIntegral[
+		anyf_[a___, Momentum[q2,di_], b___]*
+		FeynAmpDenominator[c___,
+		pro:PropagatorDenominator[Momentum[q2,di_]-Momentum[q1,di_],em_].., d___
+							]
+					] :>
+			Calc[(anyf[a,Momentum[q2,di], b] FeynAmpDenominator[c,pro,d]) /.
+			q2-> -q2+q1] /; FreeQ[{a,anyf,b,c,d}, q2]
+		,
+		(*A_mu NNEWWW CORRECTED*)
+		FCIntegral[
+		anyf_[a___,Momentum[q1,___], b___]*
+		FeynAmpDenominator[ c___, PropagatorDenominator[Momentum[q1,___], _]..,d___
+									]
+					] :>
+		(FCPrint[3,"Amu 1"];
+		0
+				) /; FreeQ[{a,anyf,b,c,d},q1] ,
+		FCIntegral[
+		anyf_[a___,Momentum[q2,___], b___]*
+		FeynAmpDenominator[ c___, PropagatorDenominator[Momentum[q2,___], _]..,d___
+									]
+					] :>  (FCPrint[3,"Amu 2"];
+						0
+				) /; FreeQ[{a,anyf,b,c,d},q2] ,
+		FCIntegral[
+		any_. (*((any1_. + any2_. Pair[Momentum[q1 | q2,___],Momentum[OPEDelta,___]]
+				)^(vv_/; Head[vv] =!= Integer)
+				)
+				*) FeynAmpDenominator[aa__ ]
+				] :>  (FCPrint[3,"Amu 3"];
+					0) /;
+			(
+			FreeQ[{aa}, PropagatorDenominator[_,em_/;em=!=0]] &&
+			(
+			(Sort[{q1,q2}] === (Cases2[{aa}//MomentumExpand, Momentum]
+								/. Momentum[a_, ___] :> a
+								)
+			) ||
+			(Sort[{q1,q2}] === (SelectFree[Cases2[({aa}/.{q1 :> -q1+pe[q1,q2,{aa}]}/.
+													{q2 :> -q2+pe[q1,q2,{aa}]}
+												)//MomentumExpand,Momentum],OPEDelta
+										] /. Momentum[a_, ___] :> a
+								)
+			)
+			)
+		)
+		,
+		FCIntegral[
+		any_. FeynAmpDenominator[
+					PropagatorDenominator[Momentum[q1,___],0].., aa__
+								]
+					] :>  ( FCPrint[3,"Amu 4"];
+							0
+						) /; FreeQ[{aa},q1],
+		(*NEW*)
+		FCIntegral[any_. FeynAmpDenominator[aa__ ] ] :>
+		Calc[(any FeynAmpDenominator[aa] ) /. {q1 :> -q1+pe[q1,q2,{aa}]} /.
+												{q2 :> -q2+pe[q1,q2,{aa}]}
+			] /;
+			(
+			!FreeQ[{aa}, PropagatorDenominator[_,em_/;em=!=0]] &&
+			(
+			((Sort[{q1,q2}]) ===
+			(
+				(SelectFree[Cases2[({aa}/.{q1 :> (-q1+(pe[q1,q2,{aa}]))}/.
+													{q2 :> -q2+pe[q1,q2,{aa}]}
+												)//MomentumExpand,Momentum],OPEDelta
+										] /. Momentum[a_, ___] :> a
+								))
+			)
+			)
+		),
+
+		(*01 1999*)
+		FCIntegral[any_. FeynAmpDenominator[aa___,
+			PropagatorDenominator[Momentum[pe_,dim_] + Momentum[q1, dim_] +
+				Momentum[q2,dim_], em_],
+			b___ ] ] :> Calc[ (any FeynAmpDenominator[aa,
+			PropagatorDenominator[pe+Momentum[q1,dim]+Momentum[q2,dim],em],b]
+			) /. q1->q1-q2] /; FreeQ[{a,b}, PropagatorDenominator[
+			_. Momentum[q1,_] + _. Momentum[pe,_],_]]
+				};
+		ot = Join[ot, basic];
+		If[ ot =!= {},
+			pot = ot /. Power2->Power;
+			topi[y_ /; FreeQ2[y,{q1,q2,Pattern}]] :=
+				y;
+			topi[y_Plus] :=
+				Map[topi,y];
+			topi[y_Times] :=
+				SelectFree[y,{q1,q2}] topi2[SelectNotFree[y,{q1,q2}]];
+			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
+			exp = exp /. basic /. FCIntegral -> Identity;
+			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :>
+					FCIntegral[ChangeDimension[a,4]//FeynCalcExternal];
+			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :>
+					FeynCalcInternal[ChangeDimension[b, D]];
+		(*
+			exp = (topi[exp] /. topi -> topi2 )/. topi2[a_] :> FCIntegral[a];
+			exp = (exp /. ot /. ot /. pot /. pot )/. FCIntegral :> Identity;
+		*)
+		(*
+			If[!FreeQ2[exp,{q1,q2}],
+			exp = FeynAmpDenominatorCombine[FeynAmpDenominatorSplit[exp]];
+				ot = FeynAmpDenominatorCombine[FeynAmpDenominatorSplit[ot]];
+			pot = ot /. Power2 -> Power;
+			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
+			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :> b;
+			exp = (topi[exp] /. topi -> topi2 )/. topi2[a_] :> FCIntegral[a];
+			exp = (exp /. ot /. ot /. pot /. pot )/. FCIntegral :> Identity;
+			];
+		*)
+			];
+		If[ Head[exp] =!= Plus,
+			If[ (FC2RHI /. {opt} /. Options[FeynAmpDenominatorSimplify]) === True,
+				FC2RHI[FixedPoint[fadalll[#, q1, q2]&,
+								Expand2[exp, q1], 7
+								] /. pru,
+					q1, q2, IncludePair -> (IncludePair /. {opt} /.
+							Options[FeynAmpDenominatorSimplify])
+					],
+				FixedPoint[fadalll[#, q1, q2]&,
+								Expand2[exp, q1], 7
+						] /. pru
+			],
+			SelectFree[exp, {q1,q2}] +
+			If[ (FC2RHI /. {opt} /. Options[FeynAmpDenominatorSimplify]) === True,
+				FC2RHI[FixedPoint[fadalll[#, q1, q2]&,
+								exp-SelectFree[exp,{q1,q2}], 7] /. pru, q1, q2,
+								IncludePair -> (
+									IncludePair /. {opt} /.
+									Options[FeynAmpDenominatorSimplify]
+												)
+					],
+				FixedPoint[fadalll[#, q1, q2]&,
+								exp-SelectFree[exp,{q1,q2}], 7] /. pru
+			]
+		]
+	];
+
+(* SPECIAL *)
+FeynAmpDenominatorSimplify[a_ /; FreeQ[a, PropagatorDenominator], ___] :=
+	a /; FreeQ[a, FAD];
+
+FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum] :=
+	(FCPrint[1, "FeynAmpDenominatorSimplify: Entering with ", exp]; FixedPoint[efdes[#, q1]&, exp, 6]);
+
 procan[a_, m_] :=
 	Block[ {tt , one},
 		tt = Factor2[one MomentumExpand[a]];
@@ -69,10 +265,6 @@ levv[PropagatorDenominator[a_, _], PropagatorDenominator[b_, _]] :=
 *)
 feyncan[a__] :=
 	Apply[FeynAmpDenominator, Sort[Sort[{a}], lenso]];
-
-FeynAmpDenominatorSimplify[exp_, OptionsPattern[]] :=
-	exp /. PropagatorDenominator -> procan /. procan ->
-	PropagatorDenominator /. FeynAmpDenominator -> feyncan;
 
 checkfd[FeynAmpDenominator[b__PropagatorDenominator]] :=
 	If[ FreeQ[{b}, PropagatorDenominator[(z_Plus) /; Length[z]>2,_]],
@@ -131,12 +323,6 @@ tran[a_, x_, y_] :=
 			re
 		]
 	];
-
-FeynAmpDenominatorSimplify[exp_,Momentum[q1_, ___]] :=
-	FeynAmpDenominatorSimplify[exp, q1];
-
-FeynAmpDenominatorSimplify[exp_,Momentum[q1_, ___], Momentum[q2_,___]] :=
-	FeynAmpDenominatorSimplify[exp, q1, q2];
 
 qtr[xx_Plus,q1_] :=
 	Map[qtr[#,q1]&, xx];
@@ -409,13 +595,6 @@ aMu2[q_, anyf_[a___,Momentum[q_,___], b___]*
 aMu3[_,xx_] :=
 	xx;
 
-(* SPECIAL *)
-FeynAmpDenominatorSimplify[a_ /; FreeQ[a, PropagatorDenominator], ___] :=
-	a /; FreeQ[a, FAD];
-
-FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum] :=
-	(FCPrint[1, "FeynAmpDenominatorSimplify: Entering with ", exp]; FixedPoint[efdes[#, q1]&, exp, 6]);
-
 (*
 FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum] :=
 *)
@@ -520,178 +699,6 @@ nopcheck[q1_, q2_][pr__PropagatorDenominator] :=
 
 pru = (a_Plus)^(w_/;Head[w] =!= Integer) :>
 		(PowerExpand[Factor2[oneONE*a]^w] /. oneONE -> 1);
-
-FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt___Rule
-							] :=
-	Block[ {exp, ot, pot,topi, topi2, bas, basic},
-		If[ !FreeQ[exp, FeynAmpDenominator[bb__] FeynAmpDenominator[aa__]] ||
-			!FreeQ[exp, FeynAmpDenominator[bb__]^n_],
-			exp = FeynAmpDenominatorCombine[exp];
-		];
-		If[ !FreeQ2[ex,{FAD,SPD}],
-			exp = FeynCalcInternal[ex],
-			exp = ex
-		];
-		ot = (*FeynCalcInternal[*) Flatten[IntegralTable /. {opt} /.
-				Options[FeynAmpDenominatorSimplify]](*]*);
-		pe[qu1_,qu2_, prop_] :=
-			Block[ {pet = SelectFree[Cases2[prop//MomentumExpand,Momentum]/.
-			Momentum[a_,___]:>a, {qu1,qu2} ]},
-				If[ Length[pet]>0,
-					First[pet],
-					pet
-				]
-			];
-		basic = {
-		FCIntegral[
-		anyf_[a___, Momentum[q1,di_], b___]*
-		FeynAmpDenominator[c___,
-		pro:PropagatorDenominator[Momentum[q2,di_]-Momentum[q1,di_],em_].., d___
-							]
-				] :>
-		Calc[(anyf[a,Momentum[q1,di], b] FeynAmpDenominator[c,pro,d]) /.
-		q1-> -q1+q2] /; FreeQ[{a,anyf,b,c,d}, q1]
-		,
-		FCIntegral[
-		anyf_[a___, Momentum[q2,di_], b___]*
-		FeynAmpDenominator[c___,
-		pro:PropagatorDenominator[Momentum[q2,di_]-Momentum[q1,di_],em_].., d___
-							]
-					] :>
-			Calc[(anyf[a,Momentum[q2,di], b] FeynAmpDenominator[c,pro,d]) /.
-			q2-> -q2+q1] /; FreeQ[{a,anyf,b,c,d}, q2]
-		,
-		(*A_mu NNEWWW CORRECTED*)
-		FCIntegral[
-		anyf_[a___,Momentum[q1,___], b___]*
-		FeynAmpDenominator[ c___, PropagatorDenominator[Momentum[q1,___], _]..,d___
-									]
-					] :>
-		(FCPrint[3,"Amu 1"];
-		0
-				) /; FreeQ[{a,anyf,b,c,d},q1] ,
-		FCIntegral[
-		anyf_[a___,Momentum[q2,___], b___]*
-		FeynAmpDenominator[ c___, PropagatorDenominator[Momentum[q2,___], _]..,d___
-									]
-					] :>  (FCPrint[3,"Amu 2"];
-						0
-				) /; FreeQ[{a,anyf,b,c,d},q2] ,
-		FCIntegral[
-		any_. (*((any1_. + any2_. Pair[Momentum[q1 | q2,___],Momentum[OPEDelta,___]]
-				)^(vv_/; Head[vv] =!= Integer)
-				)
-				*) FeynAmpDenominator[aa__ ]
-				] :>  (FCPrint[3,"Amu 3"];
-					0) /;
-			(
-			FreeQ[{aa}, PropagatorDenominator[_,em_/;em=!=0]] &&
-			(
-			(Sort[{q1,q2}] === (Cases2[{aa}//MomentumExpand, Momentum]
-								/. Momentum[a_, ___] :> a
-								)
-			) ||
-			(Sort[{q1,q2}] === (SelectFree[Cases2[({aa}/.{q1 :> -q1+pe[q1,q2,{aa}]}/.
-													{q2 :> -q2+pe[q1,q2,{aa}]}
-												)//MomentumExpand,Momentum],OPEDelta
-										] /. Momentum[a_, ___] :> a
-								)
-			)
-			)
-		)
-		,
-		FCIntegral[
-		any_. FeynAmpDenominator[
-					PropagatorDenominator[Momentum[q1,___],0].., aa__
-								]
-					] :>  ( FCPrint[3,"Amu 4"];
-							0
-						) /; FreeQ[{aa},q1],
-		(*NEW*)
-		FCIntegral[any_. FeynAmpDenominator[aa__ ] ] :>
-		Calc[(any FeynAmpDenominator[aa] ) /. {q1 :> -q1+pe[q1,q2,{aa}]} /.
-												{q2 :> -q2+pe[q1,q2,{aa}]}
-			] /;
-			(
-			!FreeQ[{aa}, PropagatorDenominator[_,em_/;em=!=0]] &&
-			(
-			((Sort[{q1,q2}]) ===
-			(
-				(SelectFree[Cases2[({aa}/.{q1 :> (-q1+(pe[q1,q2,{aa}]))}/.
-													{q2 :> -q2+pe[q1,q2,{aa}]}
-												)//MomentumExpand,Momentum],OPEDelta
-										] /. Momentum[a_, ___] :> a
-								))
-			)
-			)
-		),
-
-		(*01 1999*)
-		FCIntegral[any_. FeynAmpDenominator[aa___,
-			PropagatorDenominator[Momentum[pe_,dim_] + Momentum[q1, dim_] +
-				Momentum[q2,dim_], em_],
-			b___ ] ] :> Calc[ (any FeynAmpDenominator[aa,
-			PropagatorDenominator[pe+Momentum[q1,dim]+Momentum[q2,dim],em],b]
-			) /. q1->q1-q2] /; FreeQ[{a,b}, PropagatorDenominator[
-			_. Momentum[q1,_] + _. Momentum[pe,_],_]]
-				};
-		ot = Join[ot, basic];
-		If[ ot =!= {},
-			pot = ot /. Power2->Power;
-			topi[y_ /; FreeQ2[y,{q1,q2,Pattern}]] :=
-				y;
-			topi[y_Plus] :=
-				Map[topi,y];
-			topi[y_Times] :=
-				SelectFree[y,{q1,q2}] topi2[SelectNotFree[y,{q1,q2}]];
-			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
-			exp = exp /. basic /. FCIntegral -> Identity;
-			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :>
-					FCIntegral[ChangeDimension[a,4]//FeynCalcExternal];
-			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :>
-					FeynCalcInternal[ChangeDimension[b, D]];
-		(*
-			exp = (topi[exp] /. topi -> topi2 )/. topi2[a_] :> FCIntegral[a];
-			exp = (exp /. ot /. ot /. pot /. pot )/. FCIntegral :> Identity;
-		*)
-		(*
-			If[!FreeQ2[exp,{q1,q2}],
-			exp = FeynAmpDenominatorCombine[FeynAmpDenominatorSplit[exp]];
-				ot = FeynAmpDenominatorCombine[FeynAmpDenominatorSplit[ot]];
-			pot = ot /. Power2 -> Power;
-			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
-			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :> b;
-			exp = (topi[exp] /. topi -> topi2 )/. topi2[a_] :> FCIntegral[a];
-			exp = (exp /. ot /. ot /. pot /. pot )/. FCIntegral :> Identity;
-			];
-		*)
-			];
-		If[ Head[exp] =!= Plus,
-			If[ (FC2RHI /. {opt} /. Options[FeynAmpDenominatorSimplify]) === True,
-				FC2RHI[FixedPoint[fadalll[#, q1, q2]&,
-								Expand2[exp, q1], 7
-								] /. pru,
-					q1, q2, IncludePair -> (IncludePair /. {opt} /.
-							Options[FeynAmpDenominatorSimplify])
-					],
-				FixedPoint[fadalll[#, q1, q2]&,
-								Expand2[exp, q1], 7
-						] /. pru
-			],
-			SelectFree[exp, {q1,q2}] +
-			If[ (FC2RHI /. {opt} /. Options[FeynAmpDenominatorSimplify]) === True,
-				FC2RHI[FixedPoint[fadalll[#, q1, q2]&,
-								exp-SelectFree[exp,{q1,q2}], 7] /. pru, q1, q2,
-								IncludePair -> (
-									IncludePair /. {opt} /.
-									Options[FeynAmpDenominatorSimplify]
-												)
-					],
-				FixedPoint[fadalll[#, q1, q2]&,
-								exp-SelectFree[exp,{q1,q2}], 7] /. pru
-			]
-		]
-	];
 
 fadallq1q2[y_Times, q1_,q2_] :=
 	SelectFree[y,{q1,q2}] *
@@ -1192,11 +1199,7 @@ translat[x_, q1_, q2_] :=
 			] /. {nuLlL1:>0, nuLlL2:>0}
 	]];
 
-FeynAmpDenominatorSimplify[exp_, qmore__, q1_/;Head[q1] =!= Rule,
-								q2_ /;Head[q2] =!= Rule
-							] :=
-	FeynAmpDenominatorSimplify[
-		exp /. FeynAmpDenominator -> feynsimp[q2], qmore, q1];
+
 
 lenso[PropagatorDenominator[x_, m1_],
 		PropagatorDenominator[y_, m2_]
