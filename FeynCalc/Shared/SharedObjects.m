@@ -938,8 +938,8 @@ FeynAmpDenominator[ar__List] :=
 	FeynAmpDenominator[ar] = FCI[FAD[ar]];
 
 MakeBoxes[f_. FeynAmpDenominator[a__], TraditionalForm ] :=
-	(ToBoxes[#,TraditionalForm]&)@@{f/ Apply[DOT, Map[( #[[1]]^2 -
-	#[[2]]^2)&, {a}]]}
+	((MakeBoxes[#,TraditionalForm]&)@@{f/ Apply[DOT, Map[( #[[1]]^2 -
+	#[[2]]^2)&, {a}]]});
 
 FourVector[a_,b_, OptionsPattern[]] :=
 	Pair[Momentum[a, OptionValue[Dimension]],

@@ -1284,21 +1284,19 @@ TraditionalForm\\`q2\\)\\) \\(\[Integral] \\(\\(\[DifferentialD]\\^D\\) \
 TraditionalForm\\`q3\\)\\) (TraditionalForm\\`x)\\)\\)"},
 {"fcstSharedObjectsTypesetting-ID142",
 "MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, 0]], \
-TraditionalForm]", "\\(TraditionalForm\\`\\(1\\/p\\^2\\)\\)"},
+TraditionalForm]", "\\(1\\/p\\^2\\)"},
 {"fcstSharedObjectsTypesetting-ID143",
 "MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m]], \
 TraditionalForm]",
-"\\(TraditionalForm\\`\\(1\\/\\(p\\^2 - m\\^2\\)\\)\\)"},
+"\\(1\\/\\(p\\^2-m\\^2\\)\\)"},
 {"fcstSharedObjectsTypesetting-ID144",
 "MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
 PropagatorDenominator[-p + q, 0]], TraditionalForm]",
-"\\(TraditionalForm\\`\\(1\\/\\(\\((p\\^2 - m\\^2)\\) . \\((q - \
-p)\\)\\^2\\)\\)\\)"},
+"\\(1\\/\\(\\((p\\^2-m\\^2)\\).\\((q-p)\\)\\^2\\)\\)"},
 {"fcstSharedObjectsTypesetting-ID145",
 "MakeBoxes[FeynAmpDenominator[PropagatorDenominator[p, m], \
 PropagatorDenominator[-p + q, m]], TraditionalForm]",
-"\\(TraditionalForm\\`\\(1\\/\\(\\((p\\^2 - m\\^2)\\) . \\((\\((q \
-- p)\\)\\^2 - m\\^2)\\)\\)\\)\\)"},
+"\\(1\\/\\(\\((p\\^2-m\\^2)\\).\\((\\((q-p)\\)\\^2-m\\^2)\\)\\)\\)"},
 {"fcstSharedObjectsTypesetting-ID146",
 "MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]], TraditionalForm]",
 "\\(TraditionalForm\\`\\(\\(TraditionalForm\\`\\(TraditionalForm\\`a\
