@@ -93,8 +93,10 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 				Abort[];
 			];
 			FCPrint[1,"OneLoopSimplify: Time spent on FeynAmpDenominatorSimplify: ", N[AbsoluteTime[] - time, 4]];
-			FCPrint[2,"FeynAmpDenominatorCombine done. t1 = ",t1];
-			t1 = Isolate[t1,{SUNIndex,SUNFIndex},IsolateNames->loopisolate];
+			FCPrint[2,"OneLoopSimplify: FeynAmpDenominatorCombine done. t1 = ",t1];
+			t1 = Isolate[t1,{SUNIndex,SUNFIndex},IsolateNames->loopisolate]/. DOT->holdDOT/. holdDOT[x__]/;
+				!FreeQ2[x,{SUNIndex,SUNFIndex}]:>DOT[FRH[x,IsolateNames->loopisolate]]/. holdDOT->DOT;
+			FCPrint[2,"OneLoopSimplify: Doing SUNSimplify on ",t1];
 			time = AbsoluteTime[];
 			If[ !FreeQ2[t1, {SUNIndex,SUNFIndex}],
 				t2 = SUNSimplify[t1,  SUNNToCACF   -> sunntocacf,
@@ -104,19 +106,23 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			];
 			t2 = FRH[t2,IsolateNames->loopisolate];
 			FCPrint[1,"OneLoopSimplify: Time spent on SUNSimplify: ", N[AbsoluteTime[] - time, 4]];
+			FCPrint[1,"OneLoopSimplify: After SUNSimplify: ", t2];
 			If[ !FreeQ[t2, DiracGamma],
 				t2 = DiracTrick[t2];
 				t2 =  t2 /. DiracTrace -> TR
 			];
-			FCPrint[1,"contracting ", t2];
+			FCPrint[1,"OneLoopSimplify: After DiracTrick and DiracTrace: ", t2];
 			If[ FreeQ2[t2, {DiracGamma, Eps}],
 				t3 = Contract3[t2],
 				t3 = Contract[t2]
 			];
-			t3 = Isolate[Collect2[DiracGammaExpand[t3],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate];
+			FCPrint[1,"OneLoopSimplify: After contractions: ", t3];
+			t3 = Isolate[Collect2[DiracGammaExpand[t3],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate]/.
+			DOT->holdDOT/. holdDOT[x__]/;
+				!FreeQ2[x,{DiracGamma}]:>DOT[FRH[x,IsolateNames->loopisolate]]/. holdDOT->DOT;
 			time = AbsoluteTime[];
 			If[ (!FreeQ[t3, DiracGamma]) && (dirsimplify === True),
-				FCPrint[1,"Applying DiracSimplify on ", t3];
+				FCPrint[1,"OneLoopSimplify: Applying DiracSimplify on ", t3];
 				t3 = DiracSimplify[Collect2[t3, DiracGamma, Factoring -> False]];
 				t3 =  t3 /. DiracTrace -> TR
 			];
@@ -253,7 +259,9 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 
 			If[ !FreeQ[t6,DiracGamma],
 				t6 = FRH[t6,IsolateNames->loopisolate];
-				t6 = Isolate[Collect2[DiracGammaExpand[t6],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate];
+				t6 = Isolate[Collect2[DiracGammaExpand[t6],DiracGamma[__]],{DiracGamma},IsolateNames->loopisolate]/.
+					DOT->holdDOT/. holdDOT[x__]/; !FreeQ2[x,{DiracGamma}]:>DOT[FRH[x,IsolateNames->loopisolate]]/.
+					holdDOT->DOT;
 				time = AbsoluteTime[];
 				FCPrint[1,"collecing after FRH in TID",t6];
 				t6 = Collect2[t6, DiracGamma, Factoring -> False];
