@@ -38,19 +38,19 @@ DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]/2"},
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {
-{"fcstDiracSimplifyDotWarnings-ID1","DiracSimplify[GA[a] GA[b]]",
-	"HoldAll[DiracSimplify][HoldAll[GA[a]*GA[b]]]","{Message[DiracSimplify::noncom, GA[a]*GA[b]]}"},
-{"fcstDiracSimplifyDotWarnings-ID2","DiracSimplify[GA[a, b] GA[c]]",
-	"HoldAll[DiracSimplify][HoldAll[GA[a] . GA[b]*GA[c]]]","{Message[DiracSimplify::noncom, GA[a] . GA[b]*GA[c]]}"},
-{"fcstDiracSimplifyDotWarnings-ID3","DiracSimplify[GA[a, b] GA[c, d]]",
-	"HoldAll[DiracSimplify][HoldAll[GA[a] . GA[b]*GA[c] . GA[d]]]","{Message[DiracSimplify::noncom, GA[a] . GA[b]*GA[c] . GA[d]]}"},
-{"fcstDiracSimplifyDotWarnings-ID4","DiracSimplify[SUNT[a] SUNT[b]]",
-	"HoldAll[DiracSimplify][HoldAll[SUNT[a]*SUNT[b]]]","{Message[DiracSimplify::noncom, SUNT[a]*SUNT[b]]}"},
-{"fcstDiracSimplifyDotWarnings-ID5","DiracSimplify[SUNT[a, b] SUNT[c]]",
-	"HoldAll[DiracSimplify][HoldAll[SUNT[c]*SUNT[a, b]]]","{Message[DiracSimplify::noncom, SUNT[c]*SUNT[a, b]]}"},
-{"fcstDiracSimplifyDotWarnings-ID6","DiracSimplify[SUNT[a, b] SUNT[c, d]]",
-	"HoldAll[DiracSimplify][HoldAll[SUNT[a, b]*SUNT[c, d]]]","{Message[DiracSimplify::noncom, SUNT[a, b]*SUNT[c, d]]}"},
-{"fcstDiracSimplifyDotWarnings-ID7","DiracSimplify[(GA[a] + M) GA[b]]",
-	"HoldAll[DiracSimplify][HoldAll[(M + GA[a])*GA[b]]]","{Message[DiracSimplify::noncom, (M + GA[a])*GA[b]]}"}
+{"fcstDiracSimplifyDotWarnings-ID1","CheckAbort[DiracSimplify[GA[a] GA[b]],True]",
+	"True","{Message[DiracSimplify::noncom, GA[a]*GA[b]]}"},
+{"fcstDiracSimplifyDotWarnings-ID2","CheckAbort[DiracSimplify[GA[a, b] GA[c]],True]",
+	"True","{Message[DiracSimplify::noncom, GA[a] . GA[b]*GA[c]]}"},
+{"fcstDiracSimplifyDotWarnings-ID3","CheckAbort[DiracSimplify[GA[a, b] GA[c, d]],True]",
+	"True","{Message[DiracSimplify::noncom, GA[a] . GA[b]*GA[c] . GA[d]]}"},
+{"fcstDiracSimplifyDotWarnings-ID4","CheckAbort[DiracSimplify[SUNT[a] SUNT[b]],True]",
+	"True","{Message[DiracSimplify::noncom, SUNT[a]*SUNT[b]]}"},
+{"fcstDiracSimplifyDotWarnings-ID5","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c]],True]",
+	"True","{Message[DiracSimplify::noncom, SUNT[c]*SUNT[a, b]]}"},
+{"fcstDiracSimplifyDotWarnings-ID6","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c, d]],True]",
+	"True","{Message[DiracSimplify::noncom, SUNT[a, b]*SUNT[c, d]]}"},
+{"fcstDiracSimplifyDotWarnings-ID7","CheckAbort[DiracSimplify[(GA[a] + M) GA[b]],True]",
+	"True","{Message[DiracSimplify::noncom, (M + GA[a])*GA[b]]}"}
 }
 

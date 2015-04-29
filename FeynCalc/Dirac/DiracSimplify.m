@@ -157,9 +157,11 @@ DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[DOT[x,y], z];
 (*DiracSimplify[x:Except[_HoldAll].., OptionsPattern[]]:=AAA;*)
 
 
-DiracSimplify[x:Except[_HoldAll].., OptionsPattern[]] :=
-	(Message[DiracSimplify::noncom, InputForm[x]];
-	HoldAll[DiracSimplify][HoldAll[x]])/;
+DiracSimplify[x__, OptionsPattern[]] :=
+	(Block[{$MessagePrePrint},
+		Message[DiracSimplify::noncom, ToString[x,FormatType->InputForm]]
+	];
+	Abort[]	)/;
 	!FreeQ2[DotExpand[Expand[DiracSigmaExplicit[FeynCalcInternal[x]]]], {DiracGamma[a__]*DiracGamma[b__],
 	DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
 	DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DiracGamma[d__],
