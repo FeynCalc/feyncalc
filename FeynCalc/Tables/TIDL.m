@@ -61,29 +61,47 @@ scpexp[x_,n_] :=
 
 (*To add new (long) formulas the following compression mechanism is quite effective:
 
-exp = Tdec[{{q, mu}}, {p, k}, UseTIDL -> False, List -> False]
-z1 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &,
-	exp // ChangeDimension[#, 4] & // FCE // ReplaceAll[#, D -> n] &];
+exp = Tdec[{{q, mu}, {q, nu}, {q, ru}}, {p1, p2, p3}, 
+   UseTIDL -> False, List -> False];
+exp2 = Collect2[exp, {q, FVD, MTD}];
+exp2 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &, 
+   exp2 // ChangeDimension[#, 4] & // FCE // 
+    ReplaceAll[#, D -> n] &];
+exp2 = Collect2[exp2, {q, HoldForm}] // FRH
+z1 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &, 
+   exp2 // ChangeDimension[#, 4] & // FCE // 
+    ReplaceAll[#, D -> n] &];
 li = Cases[List@z1, HoldForm[ISO[__]], Infinity] // Union;
 reru = MapIndexed[
-		Rule[#1, ToExpression[("s" <> ToString[Identity @@ #2])]] &, li] //
-		Flatten;
-z2 = Map[ReplaceAll[#, HoldForm[a_] :> Rule[HoldForm[a], a]] &,
-	li]; -z1 = z1 /. reru;
+    Rule[#1, ToExpression[("s" <> ToString[Identity @@ #2])]] &, li] //
+    Flatten;
+z2 = Map[ReplaceAll[#, HoldForm[a_] :> Rule[HoldForm[a], a]] &, li];
+z1 = z1 /. reru;
 z2 = z2 /. reru;
 reru2 = MapIndexed[
-		Rule[#1, ToExpression[("t" <> ToString[Identity @@ #2])]] &,
-		Cases[z2, SP[_, _], Infinity] // Union] // Flatten;
+    Rule[#1, ToExpression[("t" <> ToString[Identity @@ #2])]] &, 
+    Cases[z1, SP[_, _], Infinity] // Union] // Flatten;
 reru3 = MapIndexed[
-		Rule[#1, ToExpression[("v" <> ToString[Identity @@ #2])]] &,
-		Cases[z1, FV[_, _], Infinity] // Union] // Flatten;
+    Rule[#1, ToExpression[("v" <> ToString[Identity @@ #2])]] &, 
+    Cases[z1, FV[_, _], Infinity] // Union] // Flatten;
 reru4 = MapIndexed[
-		Rule[#1, ToExpression[("m" <> ToString[Identity @@ #2])]] &,
-		Cases[z1, MT[_, _], Infinity] // Union] // Flatten;
+    Rule[#1, ToExpression[("m" <> ToString[Identity @@ #2])]] &, 
+    Cases[z1, MT[_, _], Infinity] // Union] // Flatten;
+reru21 = MapIndexed[
+    Rule[#1, ToExpression[("t" <> ToString[Identity @@ #2])]] &, 
+    Cases[z2, SP[_, _], Infinity] // Union] // Flatten;
+reru31 = MapIndexed[
+    Rule[#1, ToExpression[("v" <> ToString[Identity @@ #2])]] &, 
+    Cases[z2, FV[_, _], Infinity] // Union] // Flatten;
+reru41 = MapIndexed[
+    Rule[#1, ToExpression[("m" <> ToString[Identity @@ #2])]] &, 
+    Cases[z2, MT[_, _], Infinity] // Union] // Flatten;
 reru2 = Join[reru2, reru3, reru4];
-Put[{z1 /. reru /. reru2, z2 /. reru2,
-	Map[Reverse, reru2]}, "formula.m"]
-bli = AppendTo[(Join[reru, reru2] /. {Rule[_, a_] :> a}), encli]
+reru21 = Join[reru21, reru31, reru41];
+Put[{Collect2[z1 /. reru /. reru2, l], z2 /. reru21 /. reru2, 
+   Map[Reverse, Join[reru21, reru2]]}, "formula.m"];
+bli = Flatten[{(Join[reru, reru2] /. {Rule[_, a_] :> a}), encli}]
+
 
 Then edit formula.m and remove all spaces. Use following skeleton for Block
 
