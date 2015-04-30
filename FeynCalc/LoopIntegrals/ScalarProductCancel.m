@@ -67,17 +67,26 @@ ScalarProductCancel[iexp_,opt___Rule] :=
 
 ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt___Rule] :=
 	MemSet[ScalarProductCancel[iex,qs,qlast,opt],
-		Block[ {prp, exp,pqs, pexp, nexp, prule,P1,re,ex},
+		Block[ {prp, exp,pqs, pexp, nexp, prule,P1,re,ex,prt},
 			ex = cd[FCI[iex],opt];
 			(* translate eventually *)
-			prp = First /@ Select[Cases2[ex, PropagatorDenominator]//MomentumExpand,
-				!FreeQ[#,PropagatorDenominator[w_Plus /; Length[w]>2,_]]&];
-			prp = SelectNotFree[Map[SelectFree[#, {qs,qlast}]&, prp] /. Momentum[a_,___] :> a, Plus];
+			prp = Select[Cases2[ex, PropagatorDenominator]//MomentumExpand,
+				!FreeQ[#,PropagatorDenominator[w_Plus /; Length[w]>1,_]]&];
 			FCPrint[2,"prp: ", prp];
+			prp = (*SelectNotFree[*)Map[SelectFree[#/. PropagatorDenominator[a_, _] :> a, {qs,qlast}]&, prp] /. Momentum[a_,___] :> a(*, Plus]*);
+			FCPrint[2,"prp: ", prp];
+			pqs = SelectFree[SelectNotFree[Cases2[ex,Pair], {qs, qlast}],OPEDelta]/. Pair[a_, b_] :> {a, b} /. Momentum[a_, _ : 4] :> a;
+			(*prp = Reverse[prp];*)
+			FCPrint[2,"pqs: ", pqs];
 			If[ prp === {},
 				exp = ex,
 				(*changemaybelater*)
-				prp  = First[prp];
+				prt = Select[prp, (Cases[pqs, {_, # | -#}] =!= {}) &];
+				FCPrint[2,"prt: ", prt];
+				If[prt==={},
+					prp  = First[prp],
+					prp = First[prt]
+				];
 				psol = First[Variables[prp]];
 				prul  = Solve[prp == P1, psol][[1,1]];
 				prulb = P1 -> prp;

@@ -1,0 +1,79 @@
+
+
+(*:Title:ScalarProductCancel.test	*)
+
+(*
+	ThissoftwareiscoveredbytheGNULesserGeneralPublicLicense3.
+	Copyright(C)1990-2015RolfMertig
+	Copyright(C)1997-2015FrederikOrellana
+	Copyright(C)2014-2015VladyslavShtabovenko
+*)
+
+(*:Summary:FrameworkindependentunittestsforScalarProductCancel		*)
+
+(*------------------------------------------------------------------------*)
+
+Tests`LoopIntegrals`fcstSPC={
+
+{"fcstSPC-ID1",
+	"SPC[SPD[q,p]FAD[{q,m},{q-p,0}],q,FDS->True]//FCE",
+	"-FAD[{q,m}]/2+FAD[q,{p+q,m}]*(m^2/2+SPD[p,p]/2)"},
+{"fcstSPC-ID2",
+	"SPC[SPD[q2,p]SPD[q1,p]FAD[{q1,m},{q2,m},q1-p,q2-p,
+	q2-q1],q1,q2,FDS->True]//FCE",
+	"-FAD[p+q1,-q1+q2,{q2,m}]/2+FAD[-q1+q2,{q1,m},
+	{q2,m}]/4+FAD[p+q1,-q1+q2,{q1,m},{q2,m}]*(-m^2/2-
+	SPD[p,p]/2)+FAD[q1,q2,-q1+q2,{p+q1,m}]*(m^2/2+
+	SPD[p,p]/2)+FAD[p+q1,p+q2,-q1+q2,{q1,m},
+	{q2,m}]*(m^4/4+(m^2*SPD[p,p])/2+SPD[p,p]^2/4)"},
+{"fcstSPC-ID3",
+	"SPC[SPD[l,-p1+p3+p2]FAD[{l,m1},{l-p1+p3+p2,m3},
+	l-p1+p2,l-k1],l]//FCE",
+	"-(1/2)FAD[-k1+l,l-p1+p2,{l-p1+p2+p3,m3}]+
+	1/2FAD[l-p1+p2,{l,m1},-k1+l]+
+	FAD[{l,m1},-k1+l,{l-p1+p2+p3,m3},
+		l-p1+p2](-(m1^2/2)+m3^2/2+
+	1/2(-SPD[p1,p1]+2SPD[p1,p2]+2SPD[p1,p3]-SPD[p2,p2]-
+	2SPD[p2,p3]-SPD[p3,p3]))"},
+{"fcstSPC-ID4",
+	"SPC[SPD[l,-p1+p3+p2]FAD[{l,m1},{l-p1+p3+p2,m3},
+	l-p1+p2,l-k1],l,FDS->True]//FCE",
+	"1/2FAD[l,-k1+l+p1-p2,{l+p1-p2,m1}]-
+	1/2FAD[l,-k1+l+p1-p2,{-k1+l+p1-p2-p3,m3}]+
+	FAD[l,-k1+l+p1-p2,{-k1+l,m1},{-k1+l+p1-p2-p3,
+	m3}](-(m1^2/2)+m3^2/2+
+	1/2(-SPD[p1,p1]+2SPD[p1,p2]+2SPD[p1,p3]-SPD[p2,p2]-
+	2SPD[p2,p3]-SPD[p3,p3]))"},
+{"fcstSPC-ID5",
+	"SPC[SPD[l,p1-p3-p2]FAD[{l,m1},{l-p1+p3+p2,m3},
+	l-p1+p2,l-k1],l]//FCE",
+	"1/2FAD[-k1+l,l-p1+p2,{l-p1+p2+p3,m3}]-
+	1/2FAD[l-p1+p2,{l,m1},-k1+l]+
+	FAD[{l,m1},-k1+l,{l-p1+p2+p3,m3},
+	l-p1+p2](m1^2/2-m3^2/2+
+	1/2(SPD[p1,p1]-2SPD[p1,p2]-2SPD[p1,p3]+SPD[p2,p2]+
+	2SPD[p2,p3]+SPD[p3,p3]))"},
+{"fcstSPC-ID6",
+	"SPC[SPD[l,p1-p3-p2]FAD[{l,m1},{l-p1+p3+p2,m3},
+	l-p1+p2,l-k1],l,FDS->True]//FCE",
+	"-(1/2)FAD[l,-k1+l+p1-p2,{l+p1-p2,m1}]+
+	1/2FAD[l,-k1+l+p1-p2,{-k1+l+p1-p2-p3,m3}]+
+	FAD[l,-k1+l+p1-p2,{-k1+l,m1},{-k1+l+p1-p2-p3,
+	m3}](m1^2/2-m3^2/2+
+	1/2(SPD[p1,p1]-2SPD[p1,p2]-2SPD[p1,p3]+SPD[p2,p2]+
+	2SPD[p2,p3]+SPD[p3,p3]))"},
+{"fcstSPC-ID7",
+	"SPC[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[k1,l],
+	l,FDS->True]//Simplify//FCE",
+	"1/2(FAD[l,{-k1-k2+l+p2,MC}]-
+	FAD[{l,MC},{-k2+l+p2,MC}]+
+	FAD[l,{-k1+l,MC},{-k1-k2+l+p2,MC}](MC^2-
+	SPD[k1,k1]))"},
+{"fcstSPC-ID8",
+	"SPC[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[l,k1+k2-p2],
+	l,FDS->True]//Simplify//FCE",
+	"1/2(FAD[l,{k1+l,MC}]-FAD[{l,MC},{-k2+l+p2,MC}]+
+	FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}](MC^2-SPD[k1,k1]-
+	2SPD[k1,k2]+2SPD[k1,p2]-SPD[k2,k2]+2SPD[k2,p2]-
+	SPD[p2,p2]))"}
+};
