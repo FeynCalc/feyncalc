@@ -34,7 +34,7 @@ Begin["`FCPrepareFAAmp`Private`"]
 Options[FCPrepareFAAmp] = {UndoChiralSplittings -> False};
 
 FCPrepareFAAmp[expr_, OptionsPattern[]] :=
-	Block[ {replist1,replist2,tempvar,temp},
+	Block[ {replist1,replist2,replist3,tempvar,temp},
 		replist1 = {FeynArts`Index[Global`Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],
 					FeynArts`Index[Global`Gluon, x_] :> SUNIndex[ToExpression["Glu" <> ToString[x]]],
 					FeynArts`Index[Global`Colour, x_] :> SUNFIndex[ToExpression["Col" <> ToString[x]]],
@@ -61,14 +61,14 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					Global`FASUNT :> SUNTF,
 					FeynArts`IndexDelta[a_SUNFIndex, b_SUNFIndex]:> SUNFDelta[a,b],
 					FeynArts`FAFeynAmp :> FeynAmp,
-					FeynArts`FAFeynAmpDenominator :> FeynAmpDenominator,
+					FeynArts`FAFeynAmpDenominator[x__] :> (FeynAmpDenominator[x]/.FeynArts`FAPropagatorDenominator :> PropagatorDenominator),
 					FeynArts`FAGaugeXi :> GaugeXi,
 					FeynArts`FANonCommutative :> DOT,
-					FeynArts`FAPropagatorDenominator :> PropagatorDenominator,
 					FeynArts`FermionChain :> DOT,
 					FeynArts`MatrixTrace :> DiracTrace
 					}];
-		temp = expr /. replist1 /. replist2;
+		replist3 = {FeynArts`FAPropagatorDenominator[x__] :> FeynAmpDenominator[PropagatorDenominator[x]]};
+		temp = expr /. replist1 /. replist2 /. replist3;
 		If[ OptionValue[UndoChiralSplittings],
 			temp = temp/.{(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :> a1 DiracGamma[x] a2}
 		];
