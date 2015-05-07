@@ -100,86 +100,173 @@ TID[am_ , q_, OptionsPattern[]] :=
 			];
 		];
 
-		If[ dimred =!= True,
-			t5 = ChangeDimension[t5, chd];
-			$LimitTo4=False
+		If[ t0 === 0,
+			Return[0]
 		];
+
+		If[ dimred =!= True,
+			FCMonitor[
+				t0 = ChangeDimension[t0, chd];
+				$LimitTo4=False;
+				Grid[{{"Applying ChangeDimension",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
+		];
+
 		(*
 			t5 = t5 /. {LorentzIndex[aa_, en_Symbol] :> LorentzIndex[aa],
 						Momentum[b_, en_Symbol]      :> Momentum[b]
 						};
 		*)
-		If[ OptionValue[FeynAmpDenominatorCombine],
-			t0 = fspec[FeynAmpDenominatorCombine[t0], q];
+
+		(*	The input expression can be potentially very large,
+			so it's better to take some measures here	*)
+		FCMonitor[
+				t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator},
+				IsolateNames->tempIsolate];
+				Grid[{{"Isolating loop integrals in the input expression",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 		];
-		If[ t0 === 0,
-			Return[0]
+
+		If[ OptionValue[FeynAmpDenominatorCombine],
+			FCMonitor[
+				t0 = fspec[FeynAmpDenominatorCombine[t0], q];
+				Grid[{{"Applying FeynAmpDenominatorCombine",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
 		];
 
 		If[ fds,
-			t0 = FeynAmpDenominatorSimplify[t0, q]//Apart2
+			FCMonitor[
+				t0 = FeynAmpDenominatorSimplify[t0, q]//Apart2;
+				Grid[{{"Simplifying denominators and doing partial fractioning",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
+
 		];
+
+		t0 = FRH[t0,IsolateNames->tempIsolate];
+
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
 			FCMonitor[t0 = DiracSimplify[t0],
 				Grid[{{"Simplifying the Dirac structure of the input expression",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
 		];
+
+
+		t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator},
+			IsolateNames->tempIsolate]//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},q]:>FRH[Pair[pp]]]&;
+		(* Before doing the reduction let us try  to cancel scalar products first, note
+		that we need to sort out terms slashes like GSD[q] since SPC will not work there *)
 		If[	OptionValue[SPC],
-			t0 = SPC[t0,q,FDS->True]
+			iList1 = (Map[(tmp1=SelectFree[#, {DiracGamma}];
+				SelectNotFree[#, {DiracGamma}]* (* Dirac stuff goes here *)
+				SelectFree[tmp1, {q}]* (* Dirac-free stuff goes here *)
+				loopIntegral[SelectNotFree[tmp1, {q}]])&,
+			Expand2[t0, LorentzIndex] + null1+null2] /. null1|null2 -> 0);
+			(* Create a list of unique loopIntegrate pieces from the previous list *)
+			If [(iList1/.loopIntegral->Identity)=!=t0,
+				Message[TID::failmsg, "Something went wrong during first SPC on "
+					<> ToString[t0,InputForm]];
+				Abort[]
+			];
+			iList1 = iList1 /. loopIntegral[1]:>1;
+
+			uList1 = iList1 //Union[Cases[{#}, _. loopIntegral[x_]/;
+				!FreeQ[(x/.FeynAmpDenominator[___]:>Unique),q] :> x, Infinity]] & //
+			DeleteDuplicates;
+
+			FCMonitor[
+				sList1=MapIndexed[(iter=Total[#2]; SPC[#1,q,FDS->True])&,uList1];
+				iter=Length[uniqueCanIndexList]+1,
+				Grid[{{"Cancelling scalar products in the original expression (", Length[uList1], "unique integrals)",
+				ProgressIndicator[iter, {1, Length[uList1]+1}]}}]
+			];
+			sList1 = Collect2[#,{q,FeynAmpDenominator}]&/@sList1;
+			sList1 = removeNonloop[#, q]&/@sList1;
+			rList1 = MapIndexed[(Rule[loopIntegral[#1], First[sList1[[#2]]]]) &,uList1];
+			t0 = iList1/.rList1/.loopIntegral->Identity;
 		];
+
+
 		(* Uncontract first *)
-		t1 = Uncontract[t0, q, Pair -> All, DimensionalReduction -> dimred,
-						Dimension -> n] /. PropagatorDenominator -> procanonical[q];
-		t1 = Collect2[t1,{q,FeynAmpDenominator}];
-		(* Check if user disables DiracSimplify but the given
-			Dirac Structure is not suitable for the reduction *)
-		If[	!FreeQ[t1/. {Pair[Momentum[q, dim_: 4], LorentzIndex[_, dim_: 4]] :> 1,
-			FeynAmpDenominator[___]:>1}, q],
-			Message[TID::failmsg, "Ucontracting loop momenta in " <> ToString[t1,InputForm] <>
-				"failed."];
-			Abort[]
-		];
+		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0], q, Pair -> All, DimensionalReduction -> dimred,
+						Dimension -> n] /. PropagatorDenominator -> procanonical[q];,
+				Grid[{{"Uncontracting loop momenta",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			];
+
+		FCMonitor[t1 = Collect2[t1,{q,FeynAmpDenominator}];
+				t1 = FRH[t1,IsolateNames->tempIsolate],
+				Grid[{{"Collecting w.r.t the loop momentum ",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			];
 
 
-		irrelevant = Select[t1+ null1+ null2, FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &]/. {null1|null2 -> 0};
-		tp = Select[t1+ null1+ null2, !FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &] /. {null1|null2 -> 0};
-		If[irrelevant + tp =!= t1 || !FreeQ[tp /. FeynAmpDenominator[__] :> Unique[], q] &,
-			Message[TID::failmsg, "Splitting the loop integral " <> ToString[t1,InputForm] <>
-				"into tensor and scalar pieces in TID failed."];
-			Abort[]
+
+		FCMonitor[
+			(* Check if user disables DiracSimplify but the given
+				Dirac Structure is not suitable for the reduction *)
+			If[	!FreeQ[t1/. {Pair[Momentum[q, dim_: 4], LorentzIndex[_, dim_: 4]] :> Unique[],
+				FeynAmpDenominator[___]:>Unique[]}, q],
+				Message[TID::failmsg, "Ucontracting loop momenta in " <> ToString[t1,InputForm] <>
+					"failed."];
+				Abort[]
+			];
+
+			irrelevant = Select[t1+ null1+ null2, FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &]/. {null1|null2 -> 0};
+			tp = Select[t1+ null1+ null2, !FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &] /. {null1|null2 -> 0};
+			If[irrelevant + tp =!= t1 || !FreeQ[tp /. FeynAmpDenominator[__] :> Unique[], q] &,
+				Message[TID::failmsg, "Splitting the loop integral " <> ToString[t1,InputForm] <>
+					"into tensor and scalar pieces in TID failed."];
+				Abort[]
+			];
+			If[	!FreeQ[FRH[irrelevant]/. FeynAmpDenominator[__] :> Unique[], q],
+					Message[TID::failmsg, "Problem with the scalar piece", irrelevant];
+					Abort[]
+			];
+
+			(* tp can still contain scaleless integrals like q^2, q.p etc.
+				We need to get rid of them here	*)
+			t1 = removeScaleless[tp,q],
+			Grid[{{"Splitting into tensor and scalar parts",
+			ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 		];
-		(* tp can still contain scaleless integrals like q^2, q.p etc.
-			We need to get rid of them here	*)
-		t1 = removeScaleless[tp,q];
+
 		FCPrint[2,"TID: Tensor parts of the original expression: ", t1, FCDoControl->tidVerbose];
 		FCPrint[2,"TID: Scalar and non-loop parts of the original expression: ", irrelevant, FCDoControl->tidVerbose];
 		If[t1===0,
 			(* if the tensor piece happends to be zero, then we are almost done	*)
 			res = 0,
 			(* otherwise we need to reduce it to scalar integrals	*)
-			t1 = Collect2[t1,{q,FeynAmpDenominator}];
-			(* wrap all loop-momentum dependent pieces in loopIntegral *)
-			wrapped=Map[SelectFree[#,{q}] loopIntegral[SelectNotFree[#,{q}]]&,t1+null1+null2]/.null1|null2->0;
-			If [ !FreeQ[wrapped/. loopIntegral[__] :> 1, q] & ,
-				Message[TID::failmsg, "TID failed to identify loop integrals in the input expression."];
-				Abort[]
+
+			FCMonitor[
+				t1 = Collect2[t1,{q,FeynAmpDenominator}];
+				(* wrap all loop-momentum dependent pieces in loopIntegral *)
+				wrapped=Map[SelectFree[#,{q}] loopIntegral[SelectNotFree[#,{q}]]&,t1+null1+null2]/.null1|null2->0;
+				If [ !FreeQ[wrapped/. loopIntegral[__] :> 1, q] & ,
+					Message[TID::failmsg, "TID failed to identify loop integrals in the input expression."];
+					Abort[]
+				];
+				(*	This is the list of all the tensor loop integrals in the expression.	*)
+				loopList=Union[Cases[{wrapped},_. loopIntegral[x_]:>x,Infinity]];
+				(*	Here we collect the tensor indices of each integral from the
+					previous list	*)
+				repIndexList=((MapIndexed[Rule[#1,LorentzIndex[ToExpression[("i"<>ToString[Identity@@#2])],n]]&,Cases[#,LorentzIndex[__],
+					Infinity]//Union]//Flatten)&/@loopList);
+
+				(*	This is the list of all the loop tensor integrals with canonicalized indices.	*)
+				canIndexList=(MapIndexed[(#1/.First[repIndexList[[#2]]])&,loopList]);
+
+				(*	Finally we obtain the (usually much smaller) list of all the unique tensor integrals. Only those
+					need to be reduced. *)
+				uniqueCanIndexList=canIndexList//DeleteDuplicates,
+				(* Get rid of scalar integrals inside our list of unique integrals *)
+				(*uniqueCanIndexList = Select[uniqueCanIndexList, ! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &];*)
+				Grid[{{"Identifying unique integrals in the tensor part",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
-			(*	This is the list of all the tensor loop integrals in the expression.	*)
-			loopList=Union[Cases[{wrapped},_. loopIntegral[x_]:>x,Infinity]];
-			(*	Here we collect the tensor indices of each integral from the
-				previous list	*)
-			repIndexList=(MapIndexed[Rule[#1,LorentzIndex[ToExpression[("i"<>ToString[Identity@@#2])],n]]&,Cases[#,LorentzIndex[__],
-				Infinity]//Union]//Flatten)&/@loopList;
-
-			(*	This is the list of all the loop tensor integrals with canonicalized indices.	*)
-			canIndexList=Total/@(MapIndexed[(#1/.repIndexList[[#2]])&,loopList]);
-
-			(*	Finally we obtain the (usually much smaller) list of all the unique tensor integrals. Only those
-				need to be reduced. *)
-			uniqueCanIndexList=canIndexList//DeleteDuplicates;
-			(* Get rid of scalar integrals inside our list of unique integrals *)
-			(*uniqueCanIndexList = Select[uniqueCanIndexList, ! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &];*)
 
 			(* Here we reduce the unique tensor integrals to scalar integrals *)
 			FCPrint[1,"TID: List of the unique integrals to be tensor reduced ", uniqueCanIndexList, FCDoControl->tidVerbose];
@@ -195,21 +282,29 @@ TID[am_ , q_, OptionsPattern[]] :=
 				Message[TID::failmsg, "Running tidSingleIntegral failed to achieve full tensor reduction of the unique integrals in", solsList];
 				Abort[]
 			];
-			(* This is the replacement list Integral->Solution *)
-			repSolList = MapIndexed[(Rule[loopIntegral[#1], solsList[[#2]]]) &, uniqueCanIndexList];
-			(* This is the replacement list Canonicalized Lorentz index -> Original Lorentz index *)
-			reversedRepIndexList = Map[(Reverse /@ #) &, repIndexList];
-			(* This is the list of the reduced original integrals *)
-			canIndexList = loopIntegral/@canIndexList;
-			reducedLoopList = Total/@MapIndexed[((#1 /. Flatten[(reversedRepIndexList[[#2]])])) &, (canIndexList /.repSolList)];
-			(* This is the final replacement list Original integral -> Reduced integral *)
-			finalRepList = MapIndexed[(Rule[loopIntegral[#1], reducedLoopList[[#2]]]) &, loopList];
-			(* And this is the final result *)
-			FCPrint[1,"TID: Final list of replacements: ", finalRepList, FCDoControl->tidVerbose];
-			FCPrint[1,"TID: To be applied on: ", t1, FCDoControl->tidVerbose];
-			res = Total[wrapped/.finalRepList/.tidPaVe->Identity];
 
-
+			FCMonitor[
+				(* This is the replacement list Integral->Solution *)
+				repSolList = MapIndexed[(Rule[loopIntegral[#1], First[solsList[[#2]]]]) &, uniqueCanIndexList];
+				(* This is the replacement list Canonicalized Lorentz index -> Original Lorentz index *)
+				reversedRepIndexList = Map[(Reverse /@ #) &, repIndexList];
+				(* This is the list of the reduced original integrals *)
+				canIndexList = loopIntegral/@canIndexList;
+				reducedLoopList = MapIndexed[((#1 /. First[(reversedRepIndexList[[#2]])])) &, (canIndexList /.repSolList)];
+				(* This is the final replacement list Original integral -> Reduced integral *)
+				finalRepList = MapIndexed[(Rule[loopIntegral[#1], First[reducedLoopList[[#2]]]]) &, loopList]//Dispatch,
+				Grid[{{"Preparing the list of final subsitutions",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			];
+			FCMonitor[
+				FCPrint[1,"TID: Final list of replacements: ", finalRepList, FCDoControl->tidVerbose];
+				FCPrint[1,"TID: To be applied on: ", t1, FCDoControl->tidVerbose];
+				(* And this is the final result *)
+				res = wrapped/.finalRepList/.tidPaVe->Identity,
+				Grid[{{"Substituting the reductions of the tensor part",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			];
+			FCMonitor[
 				(* Make sure that the reduction worked out correctly *)
 			If[	!FreeQ2[FRH[solsList]/. FeynAmpDenominator[__] :> Unique[], {q,tidSingleIntegral,tidReduce,tidConvert}],
 				Message[TID::failmsg, "Running 2 tidSingleIntegral failed to achieve full tensor reduction of the unique integrals in", solsList];
@@ -219,6 +314,9 @@ TID[am_ , q_, OptionsPattern[]] :=
 			If[	(!FreeQ[FRH[res]/. FeynAmpDenominator[__] :> Unique[], q]) || (!FreeQ[irrelevant/. FeynAmpDenominator[__] :> Unique[], q]),
 				Message[TID::failmsg, "tidSingleIntegral 3 failed to achieve full tensor reduction in", res+irrelevant];
 				Abort[]
+			],
+				Grid[{{"Checking the reduction",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
 
 			(* 	We hat to uncontract some Lorentz indices at the beginning, so we should better contract them
@@ -248,9 +346,29 @@ TID[am_ , q_, OptionsPattern[]] :=
 				Abort[]
 			]
 		];
-
 		(*	The final result is a sum of the reduced tensor part and the original scalar part *)
 		res = res+irrelevant;
+
+		If [OptionValue[ExpandScalarProduct],
+			FCMonitor[
+				res = ExpandScalarProduct[res],
+				Grid[{{"Expanding scalar products in the final result",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
+		];
+
+		If[ OptionValue[FeynAmpDenominatorCombine] &&
+			!FreeQ2[res, (FeynAmpDenominator[xxx__]^_.) *(FeynAmpDenominator[yyy__]^_.)],
+			res = FeynAmpDenominatorCombine[res]
+		];
+
+		If[ fds,
+			FCMonitor[
+				res = FeynAmpDenominatorSimplify[res, q],
+				Grid[{{"Applying FDS to the final result",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
+		];
 
 		(*	Since the large prefactors are isolated, collecting w.r.t to the scalar loop integrals
 			should not be too expensive. *)
@@ -262,35 +380,26 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 		];
 
-		If [OptionValue[ExpandScalarProduct],
-						res = ExpandScalarProduct[res]
-		];
-
-		If[ OptionValue[FeynAmpDenominatorCombine] &&
-			!FreeQ2[res, (FeynAmpDenominator[xxx__]^_.) *(FeynAmpDenominator[yyy__]^_.)],
-			res = FeynAmpDenominatorCombine[res]
-		];
-
-		If[ fds,
-				res = FeynAmpDenominatorSimplify[res, q]
-		];
-
 		(* The result with isolated prefactors is naturally more compact, but unless
 		the user wants it explicitly, we will return him the full result with everything
 		written out	*)
 		If[	!OptionValue[Isolate],
-			res = FRH[res, IsolateNames->tidIsolate]
+			res = FRH[res, IsolateNames->tidIsolate],
+			FCMonitor[
+				res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex}, IsolateNames->tidIsolate],
+				Grid[{{"Isolating non-loop prefactors in the final result",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
 		];
-
 		If[ dimred,
 			res = res /. Momentum[aa_,n] :> Momentum[aa]
 		];
 
 
 		$LimitTo4=limitto4;
-		Return[res];
+		res
 
-	](*/; (Head[Expand2[Apart2@DiracGammaExpand@ScalarProductExpand@am,q]]=!=Plus)*)
+	];
 
 tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 	Block[{ ex=int,res,rank,
@@ -340,6 +449,7 @@ tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 		(* Reduce all the integrals from uList2 into scalar integrals*)
 		nwr[exp_]:= (NestWhile[tidFullReduce[#,q,rank,n,dimred,pavebasis]&, exp,
 			! FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &, 1, rank+2]);
+
 		sList2 = nwr/@uList2;
 		sList2 = Collect2[#,{q,FeynAmpDenominator}]&/@sList2;
 
@@ -358,6 +468,7 @@ tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 		rList1 = MapIndexed[(Rule[loopIntegral[#1], First[(iList2 /. rList2)[[#2]]]]) &, uList1];
 
 		res = Isolate[iList1 /. rList1 /. loopIntegral[z_tidPaVe]:>z, {LorentzIndex,q,FeynAmpDenominator,tidPaVe}, IsolateNames->tidIsolate];
+
 		If[	(!FreeQ[res, loopIntegral]),
 			Message[TID::failmsg, "tidSingleIntegral failed to achieve full tensor reduction in " <> ToString[sList2,InputForm]];
 			Abort[]
