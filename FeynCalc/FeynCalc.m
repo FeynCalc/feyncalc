@@ -303,6 +303,13 @@ typeseting rules that make various objects like Lorentz vectors or \
 Dirac matrices look nicer. To change the format type go to \
 Edit->Preferences->Evaluation.";
 
+FCMonitor::usage =
+"FCMonitor is a simple function that activates Monitor if there
+is a notebook interface available and disables it otherwise.";
+
+FCMonitorStub::usage =
+"FCMonitorStub is a stub for Monitor when the notebook interface
+is not available";
 
 FCDoControl::usage =
 "FCDoControl is an option for FCPrint that specifies which variable
@@ -436,6 +443,12 @@ FCPrint[level_, x:Except[_?OptionQ].. , OptionsPattern[]] :=
 			]
 		]
 	];
+
+FCMonitor:=
+	If[$Notebooks, Monitor, FCMonitorStub];
+
+FCMonitorStub[x_,__]:=
+	x;
 
 processDecls[file_] :=
 	Module[ {strm, e, moreLines = True},
