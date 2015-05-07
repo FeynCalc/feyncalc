@@ -534,7 +534,7 @@ removeNonloop[expr_,q_]:=
 
 
 tidConvert[expr_, q_]:=
-	Block[{ex=expr,qQQprepare,getfdp,res},
+	Block[{ex=expr,qQQprepare,getfdp,res,temp},
 		FCPrint[2,"TID: tidConvert: Entering with ", expr];
 		getfdp[w__] :=
 			(ffdp@@(First/@(MomentumCombine[{w}] /. q->0)) /. Momentum[a_,_:4] :> a)/;
@@ -548,9 +548,9 @@ tidConvert[expr_, q_]:=
 			(FeynAmpDenominator[any] SelectNotFree[SelectNotFree[f,q],OPEDelta]*
 			qQQ[Append[getfdp[any],OPEDelta] f/SelectNotFree[SelectNotFree[f,q],OPEDelta]])/;
 			!FreeQ[SelectNotFree[f,q], OPEDelta] && (getfdp[any]=!=1); (* avoid tadpoles *)
-
-		res = qQQprepare[ex]/. ffdp[0,r__]:>ffdp[r];
-		If[!FreeQ[res,qQQprepare] || FreeQ[res,qQQ],
+		temp = qQQprepare[ex];
+		res = temp/. ffdp[0,r___]:>ffdp[r];
+		If[!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
