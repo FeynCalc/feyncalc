@@ -259,9 +259,9 @@ B11[pe_, mm1_, mm2_,  OptionsPattern[]] :=
 	b11[pe, mm1, mm2] /; OptionValue[BReduce] && ($LimitTo4 === True) && pcheck[pe,mm1,mm2] &&
 												(((pe =!= 0) && FreeQ[pe, SmallVariable]) || ( (!((pe =!= 0) && FreeQ[pe, SmallVariable])) && (mm1 === mm2)));
 
-
+(*
 B11[x:Except[_SmallVariable | 0], y:Except[_SmallVariable | 0], z:Except[_SmallVariable | 0], OptionsPattern[]] :=
-	PaVeReduce[PaVe[1,1,{x}, {y,z} ]] /; OptionValue[BReduce] && ($LimitTo4 === False) && pcheck[x,y,z];
+	(PaVeReduce[PaVe[1,1,{x}, {y,z} ]]) /; OptionValue[BReduce] && ($LimitTo4 === False) && pcheck[x,y,z];*)
 
 b11[ 0,mm1_,mm1_ ] :=
 	1/3 * B0[ 0,mm1,mm1 ];
