@@ -304,6 +304,11 @@ Dirac matrices look nicer. To change the format type go to \
 Edit->Preferences->Evaluation.";
 
 
+FCDoControl::usage =
+"FCDoControl is an option for FCPrint that specifies which variable
+is used to control the debugging output of FCPrint. The default value
+is $VeryVerbose.";
+
 Begin["`Private`"]
 
 TarcerDialogText = "TARCER*.mx file not found or damaged. Creating a new \
@@ -417,15 +422,18 @@ DOT = Dot;
 SetAttributes[FCPrint, HoldAll];
 
 Options[FCPrint] = {
+		FCDoControl -> $VeryVerbose,
 		UseWriteString -> False,
 		WriteStringOutput ->"stdout"
 }
 
-FCPrint[level_, x__, OptionsPattern[]] :=
-	If[ $VeryVerbose >= level,
-		If[ OptionValue[UseWriteString],
-			WriteString[OptionValue[WriteStringOutput],x],
-			Print[x]
+FCPrint[level_, x:Except[_?OptionQ].. , OptionsPattern[]] :=
+	Block[{flowcontrol=OptionValue[FCDoControl]},
+		If[ flowcontrol >= level,
+			If[ OptionValue[UseWriteString],
+				WriteString[OptionValue[WriteStringOutput],x],
+				Print[x]
+			]
 		]
 	];
 
