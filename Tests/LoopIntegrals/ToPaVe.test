@@ -1,0 +1,40 @@
+
+
+(* :Title: ToPaVe.test                                          	    	*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToPaVe			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`ToPaVe = {
+{"fcstToPaVe-ID1","ClearScalarProducts \n ToPaVe[x, q]","x"},
+{"fcstToPaVe-ID2","ToPaVe[0, q]","0"},
+{"fcstToPaVe-ID3","ToPaVe[FAD[{q, m1}], q]","I*Pi^2*A0[m1^2]"},
+{"fcstToPaVe-ID4","ToPaVe[FAD[{q, m1}, {q + p1, m2}], q]//FCE",
+	"I*Pi^2*B0[SPD[p1, p1], m1^2, m2^2]"},
+{"fcstToPaVe-ID5","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}], q] // FCE",
+	"I*Pi^2*C0[SPD[p1, p1], SPD[p2, p2], SPD[p1, p1] - 2*SPD[p1, p2] +
+	SPD[p2, p2], m2^2, m1^2, m3^2]"},
+{"fcstToPaVe-ID6","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}], q]//FCE",
+	"I*Pi^2*D0[SPD[p1, p1], SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] +
+	SPD[p3, p3], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3],
+	SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2], SPD[p3, p3], m2^2, m1^2,
+	m3^2, m4^2]"},
+{"fcstToPaVe-ID7","ToPaVe[SPD[q, p] FAD[{q + m1}, {q + p1, m2}], q] // FCE",
+	"FAD[m1 + q, {p1 + q, m2}]*SPD[p, q]"},
+{"fcstToPaVe-ID8","ToPaVe[FAD[{q, 0}], q, PaVeAutoReduce -> False]",
+	"I*Pi^2*PaVe[0, {}, {0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False]"},
+{"fcstToPaVe-ID9","ToPaVe[FVD[q, mu] FAD[{q + m1}, {q + p1, m2}], q] // FCE",
+	"FAD[m1 + q, {p1 + q, m2}]*FVD[q, mu]"},
+{"fcstToPaVe-ID10","ToPaVe[FAD[{q}, {q + p1, m2}], q, OtherLoopMomenta -> {p1}] // FCE","FAD[q, {p1 + q, m2}]"},
+{"fcstToPaVe-ID11","ToPaVe[a + b FAD[{q, m1}, {q + p1, m2}], q] // FCE","a + I*b*Pi^2*B0[SPD[p1, p1], m1^2, m2^2]"}
+
+
+};
