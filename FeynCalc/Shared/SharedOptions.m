@@ -79,6 +79,13 @@ multiplies the whole amplitude with the factor fa before squaring.";
 Factorout::usage =
 "Factorout is an option for OPEInt and OPEIntegrate.";
 
+FCVerbose::usage =
+"FCVerbose is an option for several functions that allows to specify
+a local value of $VeryVerbose inside those functions. When set to a positive
+integer, all the debugging information inside the function will be given according
+to the value of FCVerbose, while the debugging output of other functions will
+be still governed by the value of $VeryVerbose";
+
 FCIntegrate::usage=
 "FCIntegrate is an option of certain Feynman integral related functions. \
 It determines which integration function is used to evaluate analytic \
