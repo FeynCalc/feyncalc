@@ -140,7 +140,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			FCPrint[1,"OneLoopSimplify: After doing Dirac algebra: ", t3];
 
 			t3= Isolate[Collect2[ ExpandScalarProduct[t3], {FeynAmpDenominator, q, OPEDelta}],
-				{q, OPEDelta},IsolateNames->loopisolate];
+				{q, OPEDelta, FeynAmpDenominator},IsolateNames->loopisolate];
 			time = AbsoluteTime[];
 			If[ (Collecting /. {opt} /. Options[OneLoopSimplify]) === True,
 				t4 = Collect2[ExpandScalarProduct[t3], q, Factoring->Factor],
@@ -164,7 +164,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			(* Need to reisolate things here *)
 			t5 = FRH[t5,IsolateNames->loopisolate];
 			t5= Isolate[Collect2[ ExpandScalarProduct[t5], {FeynAmpDenominator, q, OPEDelta}],
-				{q, OPEDelta},IsolateNames->loopisolate];
+				{q, OPEDelta,FeynAmpDenominator},IsolateNames->loopisolate];
 
 			t5 = Collect2[t5, q, Factoring->Factor];
 			FCPrint[1,"t5=", t5];
@@ -187,19 +187,23 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 
 
 			FCPrint[2,"doing TID on",t6];
+			t6 = TID[t6,  q,
+								DimensionalReduction -> dimred,
+								FeynAmpDenominatorSimplify -> True,
+						(*Added 7/8-2000, F.Orellana*)
+						Dimension -> dim,
+						ChangeDimension -> dim];
+
+			(*
 			If[ Head[t6] =!= Plus,
 				t6 = t6 + null1+null2
 			];
 			nt6 = 0;
 			lnt6 = Length[t6];
 			Do[FCPrint[1,"TIDPART ",ij," out of ",lnt6," le = ",Length[nt6]];
-			nt6 = nt6 + TID[t6[[ij]], q, ScalarProductCancel -> spc,
+			nt6 = nt6 + TID[t6[[ij]], q,
 							DimensionalReduction -> dimred,
 							FeynAmpDenominatorSimplify -> True,
-							Isolate -> True,
-							Contract -> True,
-							Collecting -> True,
-				(*Added 7/8-2000, F.Orellana*)
 				Dimension -> dim,
 				ChangeDimension -> dim
 							];
@@ -216,11 +220,8 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 						FCPrint[1,"dimension ",dim, " on: ", StandardForm[SelectNotFree[t6[[j]],q]]];
 						tmpres = SelectFree[t6[[j]], q]  *
 							TID[SelectNotFree[t6[[j]],q],  q,
-								ScalarProductCancel -> spc,
 								DimensionalReduction -> dimred,
 								FeynAmpDenominatorSimplify -> True,
-								Contract -> True,
-								Collecting -> True,
 						(*Added 7/8-2000, F.Orellana*)
 						Dimension -> dim,
 						ChangeDimension -> dim
@@ -234,14 +235,15 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			FCPrint[2,"expression is now ",t6];
 			If[ Head[t6] === Plus && (!FreeQ[Cases2[t6, Pair], q]),
 				t6 = FixedPoint[(FCPrint[2,"Applying TID on",#];
-								TID[#,q, ScalarProductCancel -> spc,
+								TID[#,q,
 									DimensionalReduction -> dimred,
 									FeynAmpDenominatorSimplify -> True,
-									Contract -> True,
-									Collecting -> True,
-								(*Added 7/8-2000, F.Orellana*)
 								Dimension -> dim])&, t6, 3
 							];
+			];*)
+			If[!FreeQ[t6/.FeynAmpDenominator[___]:>1,q],
+				Message[OneLoopSimplify::numerators];
+				Abort[]
 			];
 			FCPrint[1,"TID  returned: ",t6];
 			If[ !FreeQ[t6,FeynAmpDenominator],
