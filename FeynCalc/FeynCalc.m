@@ -434,7 +434,7 @@ DOT = Dot;
 SetAttributes[FCPrint, HoldAll];
 
 Options[FCPrint] = {
-		FCDoControl -> $VeryVerbose,
+		FCDoControl :> $VeryVerbose,
 		UseWriteString -> False,
 		WriteStringOutput ->"stdout"
 }
