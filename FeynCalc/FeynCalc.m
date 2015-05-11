@@ -724,7 +724,14 @@ If[ $LoadTARCER,
 ];
 
 If[ Global`$LoadAddOns=!={},
+
+	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns];
+	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns];
+
+	FCDeclareHeader/@Flatten[Map[FileNames[{"*.m"},
+	ToFileName[{$FeynCalcDirectory,  "AddOns", #}],Infinity] &, Global`$LoadAddOns]];
+
 	Get/@Flatten[Map[FileNames[{"*.m"},
-	ToFileName[{$FeynCalcDirectory,  "AddOns", #}]] &, Global`$LoadAddOns]]
+	ToFileName[{$FeynCalcDirectory,  "AddOns", #}],Infinity] &, Global`$LoadAddOns]]
 ];
 
