@@ -19,6 +19,12 @@ PropagatorDenominator[a,b]
 in exp into 1/(ScalarProduct[a,a]-b^2) and replaces FeynAmpDenominator
 by Times.";
 
+PDEHead::usage =
+"PDEHead is an option of PropagatorDenominatorExplicit. It allows
+to wrap propagators into a specified head after applying
+PropagatorDenominatorExpliciti. The default value is Identity.";
+
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -26,16 +32,20 @@ End[]
 
 Begin["`PropagatorDenominatorExplicit`Private`"]
 
-PropagatorDenominatorExplicit[x_] :=
+Options[PropagatorDenominatorExplicit] = {
+	PDEHead->Identity
+}
+
+PropagatorDenominatorExplicit[x_, OptionsPattern[]] :=
 	If[ FreeQ[x, PropagatorDenominator],
 		x,
-		x /. {
+		x //. {
 				PropagatorDenominator[a_  /; !FreeQ[a, Momentum] ,b_] :>
 				(1/Expand[ExpandScalarProduct[Pair[a, a]] - b^2]),
 				PropagatorDenominator[a_  /; FreeQ[a, Momentum] ,b_] :>
 				(1/Expand[ExpandScalarProduct[Pair[Momentum[a], Momentum[a]]] -
 						b^2]),
-				FeynAmpDenominator :> Times
+				FeynAmpDenominator[c___] :> OptionValue[PDEHead][Times[c]]
 				}
 	];
 

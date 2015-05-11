@@ -1,0 +1,28 @@
+
+
+(* :Title: PropagatorDenominatorExplicit.test								*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  	Framework independent unit tests for
+				PropagatorDenominatorExplicit								*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
+
+{"fcstPropagatorDenominatorExplicit-ID1",
+	"PropagatorDenominatorExplicit[FAD[{q, m}, {q - p, 0}] // FCI] // FCE",
+	"1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))"},
+{"fcstPropagatorDenominatorExplicit-ID2","PropagatorDenominatorExplicit[FAD[{q, m}, {q - p, 0}] // FCI,
+	PDEHead -> dummy] // FCE","dummy[1/((-m^2 + SPD[q, q]) (SPD[p, p] - 2 SPD[p, q] + SPD[q, q]))]"},
+{"fcstPropagatorDenominatorExplicit-ID3","PropagatorDenominatorExplicit[
+	FAD[{q, m}, {q - p, 0}] // FCI // FeynAmpDenominatorSplit,
+	PDEHead -> dummy] // FCE","dummy[1/(-m^2 + SPD[q, q])] dummy[1/(
+	SPD[p, p] - 2 SPD[p, q] + SPD[q, q])]"}
+}
