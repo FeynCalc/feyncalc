@@ -316,6 +316,11 @@ FCDoControl::usage =
 is used to control the debugging output of FCPrint. The default value
 is $VeryVerbose.";
 
+FCDeclareHeader::usage =
+"FCDeclareHeader is an internal FeynCalc function to declare
+objects inside an .m file in the same manner as it is done in
+the JLink package. It may be used by FeynCalc addons."
+
 Begin["`Private`"]
 
 TarcerDialogText = "TARCER*.mx file not found or damaged. Creating a new \
@@ -450,7 +455,7 @@ FCMonitor:=
 FCMonitorStub[x_,__]:=
 	x;
 
-processDecls[file_] :=
+FCDeclareHeader[file_] :=
 	Module[ {strm, e, moreLines = True},
 		strm = OpenRead[file];
 		If[ Head[strm] =!= InputStream,
@@ -541,17 +546,17 @@ listMisc = FileNames[{"*.m"},ToFileName[{$FeynCalcDirectory,"Misc"}]];
 
 AppendTo[$ContextPath, "FeynCalc`Package`"];
 
-FeynCalc`Private`processDecls/@listShared;
-FeynCalc`Private`processDecls/@listNonCommAlgebra;
-FeynCalc`Private`processDecls/@listLorentz;
-FeynCalc`Private`processDecls/@listDirac;
-FeynCalc`Private`processDecls/@listSUN;
-FeynCalc`Private`processDecls/@listLoopIntegrals;
-FeynCalc`Private`processDecls/@listFeynman;
-FeynCalc`Private`processDecls/@listQCD;
-FeynCalc`Private`processDecls/@listTables;
-FeynCalc`Private`processDecls/@listExportImport;
-FeynCalc`Private`processDecls/@listMisc;
+FCDeclareHeader/@listShared;
+FCDeclareHeader/@listNonCommAlgebra;
+FCDeclareHeader/@listLorentz;
+FCDeclareHeader/@listDirac;
+FCDeclareHeader/@listSUN;
+FCDeclareHeader/@listLoopIntegrals;
+FCDeclareHeader/@listFeynman;
+FCDeclareHeader/@listQCD;
+FCDeclareHeader/@listTables;
+FCDeclareHeader/@listExportImport;
+FCDeclareHeader/@listMisc;
 
 Get/@boostrappingList;
 Get/@listShared;
