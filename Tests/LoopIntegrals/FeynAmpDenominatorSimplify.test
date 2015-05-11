@@ -43,5 +43,8 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorSimplify = {
 {"fcstFeynAmpDenominatorSimplify-ID8","FDS[FAD[{l - p, m}, {l + q, m}, l - t], l]//FCE",
 	"FAD[l, {l - p + t, m}, {l + q + t, m}]"},
 {"fcstFeynAmpDenominatorSimplify-ID9","FDS[FAD[{l - p, m}, {l + q, m}, l - t, l + a, l - b], l]//FCE",
-	"FAD[l, a + l + t, -b + l + t, {l - p + t, m}, {l + q + t, m}]"}
+	"FAD[l, a + l + t, -b + l + t, {l - p + t, m}, {l + q + t, m}]"},
+{"fcstFeynAmpDenominatorSimplify-ID10",
+	"FCE@FDS[#, q] & /@ {FAD[q], SPD[q, q] FAD[{q, m}], SPD[q, p] FAD[q, {q + p, m}]}",
+	"{0, FAD[{q, m}] SPD[q, q], -FAD[q, {-p + q, m}] SPD[p, q]}"}
 }

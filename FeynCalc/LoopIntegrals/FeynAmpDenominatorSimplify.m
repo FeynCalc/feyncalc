@@ -42,6 +42,8 @@ Options[FeynAmpDenominatorSimplify] = {
 	IncludePair -> False
 };
 
+SetAttributes[FeynAmpDenominatorSimplify, Listable];
+
 (* TODO FIXITLATER, but for the moment ... *)
 FeynAmpDenominatorSimplify[a_,q_,opt___Rule] :=
 	FeynAmpDenominatorSimplify[a,q];
