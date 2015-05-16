@@ -23,6 +23,8 @@ Tests`LoopIntegrals`fcstOneLoop = {
 	DiracTrace[(mf + DiracSlash[q - k]).DiracMatrix[
 		mu].(mf + DiracSlash[q]).DiracMatrix[mu]],
 	Factoring -> True] /. ScalarProduct[k, k] -> k2 /.
-	mf^2 -> mf2 // Simplify","(el^2*(-k2 + 6*mf2 - 6*A0[mf2] + 3*(k2 + 2*mf2)*B0[k2, mf2, mf2]))/(36*Pi^2)"}
+	mf^2 -> mf2 // Simplify","(el^2*(-k2 + 6*mf2 - 6*A0[mf2] + 3*(k2 + 2*mf2)*B0[k2, mf2, mf2]))/(36*Pi^2)"},
+
+{"fcstOneLoop-ID3","OneLoop[q, xxx + FAD[{q,m}]]","xxx + I \[Pi]^2 A0[m^2]"}
 
 }

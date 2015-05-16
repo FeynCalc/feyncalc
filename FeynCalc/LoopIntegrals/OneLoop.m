@@ -229,7 +229,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	newoneamp,ip,lenneu, lenneu2, neuamp,paone,paone2,oneselect,fsub,
 	intermedsubst,writeoutrecover = False, oldfile, ftemp,
 	writeoutpav, uvpart,to4dim, oneampresult, null1, null2,
-	oneloopVerbose
+	oneloopVerbose,nonLoopTerms,loopTerms
 	},
 		options = {opts};
 		(* for FA2.0 *)
@@ -763,7 +763,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					parf = PartitHead[oneamp[[ip]], FeynAmpDenominator]//smalld,
 					parf = PartitHead[oneamp, FeynAmpDenominator]//smalld
 				];
-				neuamp = neuamp + ((Expand[ parf[[2]] simpit[parf[[1]]]
+				neuamp = neuamp + ((Expand[ If[parf[[2]]=!=0,parf[[2]],1] simpit[parf[[1]]]
 											]) //smalld)
 				];
 			FCPrint[2, "Length of neuamp = ", Length[neuamp], FCDoControl->oneloopVerbose];
@@ -918,11 +918,24 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		*)
 			FCPrint[2, "collect w.r.t. ", q, FCDoControl->oneloopVerbose];
 			oneamp = Collect2[oneamp, q, Factoring -> False];
+			FCPrint[2, "oneamp ", oneamp, FCDoControl->oneloopVerbose];
 
 		(* ********************************************************************* *)
 		(*                          oneloop22                                    *)
 		(* ********************************************************************* *)
+
+
 			If[ (oneamp =!= 0),
+				(*This is a good point to isolate possible non-loop terms in the input expression *)
+				oneamp=Collect2[oneamp,q];
+				nonLoopTerms = Select[oneamp+ null1+ null2, FreeQ[#, q]&]/. {null1|null2 -> 0};
+				loopTerms = Select[oneamp+ null1+ null2, !FreeQ[#, q]&]/. {null1|null2 -> 0};
+				If[loopTerms+nonLoopTerms=!=oneamp,
+					FCPrint[0,"Splitting the expression " <> ToString[oneamp,InputForm] <>
+					"into loop and non-loop pieces in OneLoop failed."];
+					Abort[]
+				];
+				oneamp=loopTerms;
 
 		(* ONEAMPCHANGE : cancelling q p 's *)
 				If[ qpcancel === True,
@@ -1231,6 +1244,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			];
 			oneampresult = oneamp;
 			oneampresult = fsub[newprefactor, finsubst] oneampresult;
+			(* Here we add back the non-loop terms *)
+			oneampresult = nonLoopTerms + oneampresult;
 			FCPrint[3, "oneampresult = ", oneampresult, FCDoControl->oneloopVerbose];
 			If[ isolatehead=!=False,
 				oneampresult = isol[oneampresult]
