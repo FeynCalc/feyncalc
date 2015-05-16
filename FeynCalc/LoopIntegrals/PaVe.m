@@ -34,19 +34,24 @@ Begin["`PaVe`Private`"];
 
 ClearAttributes[PaVe, ReadProtectecd];
 
+Options[PaVe] = {
+	PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True
+};
+
 (* Symmetry in the indices *)
-PaVe[i_,j__,  pl_List, ml_List ] :=
-	PaVe @@Join[Sort[{i,j}],{pl,ml}]/;
-										!OrderedQ[{i,j}];
+PaVe[i_,j__,  pl_List, ml_List, opts:OptionsPattern[]] :=
+	PaVe @@Join[Sort[{i,j}],{pl,ml},opts]/;!OrderedQ[{i,j}];
+
 (* Special cases of PaVe: *)
-PaVe[0, {}, {x_}] :=
-	A0[x];
+PaVe[0, {}, {x_}, OptionsPattern[]] :=
+	A0[x]/; OptionValue[PaVeAutoReduce];
 
-PaVe[0, {p2_}, {x_,y_}] :=
-	B0[p2,x,y];
+PaVe[0, {p2_}, {x_,y_}, OptionsPattern[]] :=
+	B0[p2,x,y]/; OptionValue[PaVeAutoReduce];
 
-PaVe[1,{pp_},{mm1_,mm2_}] :=
-	B1[pp, mm1, mm2];
+PaVe[1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
+	B1[pp, mm1, mm2]/; OptionValue[PaVeAutoReduce];
 
 (*The number of 0's, i.e. indices of the metric tensors must be even *)
 PaVe[0, x: 0..,{moms___},{masses___}]:=
@@ -61,68 +66,76 @@ PaVe[x: 1..,{},{m_}] :=
 	Abort[];)
 
 (* scaleless 2-point functions*)
-PaVe[__,{0},{0,0}] :=
-	0;
+PaVe[__,{0},{0,0}, OptionsPattern[]] :=
+	0/; OptionValue[PaVeAutoReduce];
 
 (* but a non-zero coefficient of g_munu *)
-PaVe[0,0,{},{m2_}] :=
-	(m2/4 A0[m2] + m2^2/8) /; $LimitTo4 === True;
+PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
+	(m2/4 A0[m2] + m2^2/8) /; $LimitTo4 && OptionValue[PaVeAutoReduce];
+
 (* but a non-zero coefficient of g_munu *)
-PaVe[0,0,{},{m2_}] :=
-	(m2/D A0[m2]) /; $LimitTo4 === False;
+PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
+	(m2/D A0[m2]) /; $LimitTo4  && OptionValue[PaVeAutoReduce];
 
-PaVe[0, {p_}, {m1_, m2_}] :=
-	B0[p, m1, m2];
+PaVe[0, {p_}, {m1_, m2_}, OptionsPattern[]] :=
+	B0[p, m1, m2]/; OptionValue[PaVeAutoReduce];
 
-PaVe[0,0,{p_},{m1_,m2_}] :=
-	B00[p,m1,m2]/; $LimitTo4 === True;
+PaVe[0,0,{p_},{m1_,m2_}, OptionsPattern[]] :=
+	B00[p,m1,m2]/; $LimitTo4 && OptionValue[PaVeAutoReduce];
 
-PaVe[1,1,{pp_},{mm1_,mm2_}] :=
-	B11[pp,mm1,mm2];
+PaVe[1,1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
+	B11[pp,mm1,mm2]/; OptionValue[PaVeAutoReduce];
 
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
 (* ****************************************************************** *)
 (* C2 --> C1, C22 --> C11,  C002 --> C001, C222 --> C111,   *)
 (* if p10=p20  and  m2=m3    *)
-PaVe[2,{p10_,p12_,p10_},{m1_,m2_,m2_}] :=
-	PaVe[1,{p10,p12,p10},{m1,m2,m2}];
-PaVe[2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}] :=
-	PaVe[1,1,{p10,p12,p10},{m1,m2,m2}];
-PaVe[0,0,2,{p10_,p12_,p10_},{m1_,m2_,m2_}] :=
-	PaVe[0,0,1,{p10,p12,p10},{m1,m2,m2}];
-PaVe[1,2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}] :=
-	PaVe[1,1,2,{p10,p12,p10},{m1,m2,m2}];
-PaVe[2,2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}] :=
-	PaVe[1,1,1,{p10,p12,p10},{m1,m2,m2}];
+PaVe[2,{p10_,p12_,p10_},{m1_,m2_,m2_}, opts:OptionsPattern[]] :=
+	PaVe[1,{p10,p12,p10},{m1,m2,m2},opts]/; OptionValue[PaVeAutoOrder];
+
+PaVe[2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}, opts:OptionsPattern[]] :=
+	PaVe[1,1,{p10,p12,p10},{m1,m2,m2},opts]/; OptionValue[PaVeAutoOrder];
+
+PaVe[0,0,2,{p10_,p12_,p10_},{m1_,m2_,m2_}, opts:OptionsPattern[]] :=
+	PaVe[0,0,1,{p10,p12,p10},{m1,m2,m2},opts]/; OptionValue[PaVeAutoOrder];
+
+PaVe[1,2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}, opts:OptionsPattern[]] :=
+	PaVe[1,1,2,{p10,p12,p10},{m1,m2,m2},opts]/; OptionValue[PaVeAutoOrder];
+
+PaVe[2,2,2,{p10_,p12_,p10_},{m1_,m2_,m2_}, opts:OptionsPattern[]] :=
+	PaVe[1,1,1,{p10,p12,p10},{m1,m2,m2},opts]/; OptionValue[PaVeAutoOrder];
 (* a special case *)
-PaVe[ 2,{p10_, pp_,pp_},{m_,m_,m2_} ] :=
-	- 2 PaVe[1,{p10,pp,pp},{m,m,m2}] - PaVe[0,{p10,pp,pp},{m,m,m2}];
+PaVe[ 2,{p10_, pp_,pp_},{m_,m_,m2_}, opts:OptionsPattern[]] :=
+	(- 2 PaVe[1,{p10,pp,pp},{m,m,m2},opts] - PaVe[0,{p10,pp,pp},{m,m,m2},opts])/;
+	OptionValue[PaVeAutoReduce];
+
 (* *********************************************************************** *)
 (*  D's: The argument list is (in general) : p10, p12, p23, p30, p20, p13  *)
 (* *********************************************************************** *)
-pav[{a__},pl_List,ml_List] :=
-	PaVe[a,pl,ml];
+pav[{a__},pl_List,ml_List, opts:OptionsPattern[]] :=
+	PaVe[a,pl,ml, opts];
 (*  1 <---> 2;   p20=p10,  p23=p13 , m3 = m2  *)
-PaVe[x__,{p10_,p12_,p13_,p30_,p10_,p13_},{m1_,m2_,m2_,m4_}] :=
-	pav[{x} /. {1:>2, 2:>1}, {p10,p12,p13,p30,p10,p13},{m1,m2,m2,m4} ]/;
-	Count[{x}, 2] > Count[{x}, 1];
+PaVe[x__,{p10_,p12_,p13_,p30_,p10_,p13_},{m1_,m2_,m2_,m4_}, opts:OptionsPattern[]] :=
+	pav[{x} /. {1:>2, 2:>1}, {p10,p12,p13,p30,p10,p13},{m1,m2,m2,m4}, opts]/;
+	(Count[{x}, 2] > Count[{x}, 1]) && OptionValue[PaVeAutoOrder];
 
 (*  1 <---> 3;   p10=p30,  p12=p23 , m2 = m4  *)
-PaVe[x__,{p10_,p12_,p12_,p10_,p20_,p13_},{m1_,m2_,m3_,m2_}] :=
-	pav[{x} /. {1:>3, 3:>1}, {p10,p12,p12,p10,p20,p13},{m1,m2,m3,m2} ]/;
-	Count[{x}, 3] > Count[{x}, 1];
+PaVe[x__,{p10_,p12_,p12_,p10_,p20_,p13_},{m1_,m2_,m3_,m2_}, opts:OptionsPattern[]] :=
+	pav[{x} /. {1:>3, 3:>1}, {p10,p12,p12,p10,p20,p13},{m1,m2,m3,m2}, opts]/;
+	(Count[{x}, 3] > Count[{x}, 1]) && OptionValue[PaVeAutoOrder];
 
 (*  2 <---> 3;   p30=p20,  p13=p12 , m3 = m4  *)
-PaVe[x__,{p10_,p12_,p23_,p20_,p20_,p12_},{m1_,m2_,m3_,m3_}] :=
-	pav[{x} /. {2:>3, 3:>2}, {p10,p12,p23,p20,p20,p12},{m1,m2,m3,m3}]/;
-		Count[{x}, 3] > Count[{x}, 2];
+PaVe[x__,{p10_,p12_,p23_,p20_,p20_,p12_},{m1_,m2_,m3_,m3_}, opts:OptionsPattern[]] :=
+	pav[{x} /. {2:>3, 3:>2}, {p10,p12,p23,p20,p20,p12},{m1,m2,m3,m3},opts]/;
+		(Count[{x}, 3] > Count[{x}, 2]) && OptionValue[PaVeAutoOrder];
 
 (* in order to canonize the C0's  (args:   p1^2, (p2-p1)^2, p2^2)  *)
-PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}] :=
-	cord[p10, p12, p20,m1,m2,m3];
-PaVe[0, {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}] :=
-	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4](*//PaVeOrder*);
+PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}, OptionsPattern[]] :=
+	cord[p10, p12, p20,m1,m2,m3]/;OptionValue[PaVeAutoOrder];
+
+PaVe[0, {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}, OptionsPattern[]] :=
+	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]/;OptionValue[PaVeAutoOrder];
 
 
 cord[a_,b_,c_, m1_,m2_,m3_] :=
@@ -169,7 +182,7 @@ cord[a_,b_,c_, m1_,m2_,m3_] :=
 
 
 PaVe /:
-	MakeBoxes[PaVe[ij___,{moms___},{masses__}], TraditionalForm]:=
+	MakeBoxes[PaVe[ij___,{moms___},{masses__}, OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[Subscript[FromCharacterCode[64+Length[{masses}]], StringJoin[ToString /@ {ij}]
 		][moms, masses],TraditionalForm
 	]/; Length[{masses}]>=1;

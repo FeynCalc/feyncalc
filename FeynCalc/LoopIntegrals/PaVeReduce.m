@@ -43,7 +43,7 @@ Options[ PaVeReduce ] = {
 (* Notation :    pij = (pi - pj)^2;  where p0 = (0,0,0,0), i.e.,
 								p10 = p1^2, etc.  *)
 (* ***************************************************************** *)
-PaVeBr[i__, p_List, m_List] :=
+PaVeBr[i__, p_List, m_List, OptionsPattern[]] :=
 	tT[Length[m]][i][Join[p, m]];
 (*breakdowndef*)
 breakdown[x_] :=
@@ -356,8 +356,8 @@ PaVeReduce[x_, y___Rule] :=
 
 pavitp[xXX_PaVe, dir_,opts___] :=
 	Block[ {nx, file, temp, set,xxx,a,abbs,abbstr,dir1},
-		paV[xy__, p_List, m_List] :=
-			PaVe[xy,C,p,C,m];
+		paV[xy__, p_List, m_List, paveopts:OptionsPattern[]] :=
+			PaVe[xy,C,p,C,m,paveopts];
 		xxx = paV@@xXX;
 		(*Changed 18/9-2000, F.Orellana*)
 		abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /.

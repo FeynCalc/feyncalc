@@ -186,6 +186,8 @@ Options[OneLoop] = {
 					IsolateNames                -> False,
 					Mandelstam                 -> {},
 					OneLoopSimplify            -> False,
+					PaVeAutoOrder 				-> True,
+					PaVeAutoReduce				-> True,
 					Prefactor                  -> 1,
 					ReduceGamma                -> False,
 					ReduceToScalars            -> False,
@@ -259,6 +261,9 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		uvpart = False;
 		reducegamma67 = ReduceGamma/.oneopt;
 		writeout   = WriteOut/.oneopt;
+
+		paveautoorder = PaVeAutoOrder /. oneopt;
+		paveautoreduce = PaVeAutoReduce /. oneopt;
 		If[ writeout === True || writeout === " ",
 			writeout = "";
 			writeoutrecover = False
@@ -1273,19 +1278,19 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		If[ isolatehead===False,
 			PaVeAbbreviate[x_] :=
 				x/.PaVe->paVeabbrevi/.paVeabbrevi->PaVe;
-			paVeabbrevi[x__,{y__},{m1_,m2_,m3_}] :=
+			paVeabbrevi[x__,{y__},{m1_,m2_,m3_}, OptionsPattern[]] :=
 				ToExpression[ StringJoin@@Prepend[Map[ToString,{x}],"C"] ];
-			paVeabbrevi[x__,{y__},{m1_,m2_,m3_,m4_}] :=
+			paVeabbrevi[x__,{y__},{m1_,m2_,m3_,m4_}, OptionsPattern[]] :=
 				ToExpression[ StringJoin@@Prepend[Map[ToString,{x}],"D"] ];
 			pva[xxx_] :=
 				xxx//PaVeAbbreviate;
-			pvar[xx__,li1_{},li2_List] :=
+			pvar[xx__,li1_{},li2_List, OptionsPattern[]] :=
 				"As"[li2[[1]]]/;Length[li2]===1;
-			pvar[xx__,li1_List,li2_List] :=
+			pvar[xx__,li1_List,li2_List, OptionsPattern[]] :=
 				"Bs"@@Flatten[{li1,li2}]/;Length[li2]===2;
-			pvar[xx__,li1_List,li2_List] :=
+			pvar[xx__,li1_List,li2_List, OptionsPattern[]] :=
 				"Cs"@@Flatten[{li1,li2}]/;Length[li2]===3;
-			pvar[xx__,li1_List,li2_List] :=
+			pvar[xx__,li1_List,li2_List, OptionsPattern[]] :=
 				"Ds"@@Flatten[{li1,li2}]/;Length[li2]===4;
 			FCPrint[2, " ", FCDoControl->oneloopVerbose];
 			FCPrint[2, " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *", FCDoControl->oneloopVerbose];
@@ -1716,7 +1721,7 @@ OneLoopSum[ex_, ops___] :=
 				pavit[xXX_PaVe, dir_, prev_:False] :=
 					Block[ {nx, file, temp, set,xxxa,abbs},
 						paV[xy__, p_List, m_List] :=
-							PaVe[xy,C,p,C,m];
+							PaVe[xy,C,p,C,m, PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder];
 						xxx = paV@@xXX;
 						(*Changed 18/9-2000, F.Orellana*)
 						abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /.
@@ -2495,10 +2500,9 @@ pavremember[x__] :=
 					];
 			(* if the option DenominatorOrder is True, then order here again *)
 					If[ denomOrder === True,
-						pav0 = PaVeOrder[PaVe[0,tensps,tdecml]],
-						pav0 = PaVe[0,tensps,tdecml]
+						pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder]],
+						pav0 = PaVe[0,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder]
 					];
-					tdecr = add[ tdecr, pav0, tdecnew ]
 					tdecr = add[ tdecr, pav0, tdecnew ];
 					FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
 				];
@@ -2510,7 +2514,7 @@ pavremember[x__] :=
 						tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
 					];
 					For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
-						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml],
+						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder],
 										tdecnew[[tdectj]]
 						]            ];
 					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
@@ -2535,7 +2539,7 @@ pavremember[x__] :=
 											tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
 							]
 					];
-					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml], tdecnew ];
+					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder], tdecnew ];
 					tdecnew = Table[{Sort[{tdecti,tdectj}],
 							tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/.
 									LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]
@@ -2547,7 +2551,7 @@ pavremember[x__] :=
 					];
 					For[ tdectj = 1,tdectj<=Length[tdecnew],tdectj++,
 						tdecr = add[ tdecr,
-								PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml}],
+								PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder}],
 									tdecnew[[tdectj,2]]
 									];
 						If[ $LimitTo4 === True,
@@ -2580,7 +2584,7 @@ pavremember[x__] :=
 						tdecr = epst[ tdecr,tdecnew[[2]], tdi,-1/6 ]
 					];
 					For[ tdec0j = 1, tdec0j <= tdeclpl, tdec0j++,
-						tdecr = add[  tdecr, PaVe[0,0,tdec0j,tensps,tdecml],
+						tdecr = add[  tdecr, PaVe[0,0,tdec0j,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder],
 										tdecnew[[tdec0j]]  ]
 						];
 					For[ tdecti = 1, tdecti <= tdeclpl, tdecti++,

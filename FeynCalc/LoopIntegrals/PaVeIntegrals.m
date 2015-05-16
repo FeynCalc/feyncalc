@@ -118,8 +118,8 @@ A0[mm_, op___Rule] :=
 	FreeQ[mm, Blank] && FreeQ[mm,BlankNullSequence] );
 
 A0 /:
-	MakeBoxes[A0[m_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[0,{},{m}]],TraditionalForm];
+	MakeBoxes[A0[m_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[0,{},{m}, opts]],TraditionalForm];
 
 B0[0,0,0, OptionsPattern[]]:=
 	0;
@@ -172,8 +172,8 @@ B0[SmallVariable[_]^n_.,mm_,mm_,opt___] :=
 *)
 
 B0 /:
-	MakeBoxes[B0[p10_,m02_,m12_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[0,{p10},{m02,m12}]],TraditionalForm];
+	MakeBoxes[B0[p10_,m02_,m12_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[0,{p10},{m02,m12},opts]],TraditionalForm];
 
 B00[x__, OptionsPattern[]] :=
 	b00[x] /; ($LimitTo4 === True) && OptionValue[BReduce] && pcheck[x];
@@ -199,8 +199,8 @@ b00[pp_,mm1_,mm2_] :=
 	smad[ 1/6 ( mm1 + mm2 - pp/3 ) ] );
 
 B00 /:
-	MakeBoxes[B00[p10_,m02_,m12_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[0,0,{p10},{m02,m12}]],TraditionalForm];
+	MakeBoxes[B00[p10_,m02_,m12_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[0,0,{p10},{m02,m12},opts]],TraditionalForm];
 
 B1[a_,b_,c_,ops___Rule] :=
 	bb1[a, b, c] /;
@@ -252,8 +252,8 @@ bb1[pp:Except[_SmallVariable | 0], ma0_, ma1_] :=
 	B0[0,ma0,ma1]) - 1/2 B0[pp,ma0,ma1])/; $LimitTo4;
 
 B1 /:
-	MakeBoxes[B1[p10_,m02_,m12_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[1,{p10},{m02,m12}]],TraditionalForm];
+	MakeBoxes[B1[p10_,m02_,m12_ opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[1,{p10},{m02,m12},opts]],TraditionalForm];
 
 B11[pe_, mm1_, mm2_,  OptionsPattern[]] :=
 	b11[pe, mm1, mm2] /; OptionValue[BReduce] && ($LimitTo4 === True) && pcheck[pe,mm1,mm2] &&
@@ -281,16 +281,16 @@ b11[pp:Except[_SmallVariable | 0], m1_, m2_] :=
 		smad[ 1/2 (m1 + m2 - pp/3 )]) );
 
 B11 /:
-	MakeBoxes[B11[p10_,m02_,m12_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[1,1,{p10},{m02,m12}]],TraditionalForm];
+	MakeBoxes[B11[p10_,m02_,m12_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[1,1,{p10},{m02,m12},opts]],TraditionalForm];
 
 C0 /:
-	MakeBoxes[C0[p10_,p12_,p20_,m02_,m12_,m22_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[0,{p10,p12,p20},{m02,m12,m22}]],TraditionalForm];
+	MakeBoxes[C0[p10_,p12_,p20_,m02_,m12_,m22_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[0,{p10,p12,p20},{m02,m12,m22},opts]],TraditionalForm];
 
 D0 /:
-	MakeBoxes[D0[p10_,p12_,p23_,p30_,p20_,p13_,m02_,m12_,m22_,m32_]  ,TraditionalForm] :=
-		ToBoxes[HoldForm[PaVe[0,{p10,p12,p23,p30,p20,p13},{m02,m12,m22,m32}]],TraditionalForm];
+	MakeBoxes[D0[p10_,p12_,p23_,p30_,p20_,p13_,m02_,m12_,m22_,m32_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[0,{p10,p12,p23,p30,p20,p13},{m02,m12,m22,m32},opts]],TraditionalForm];
 
 Derivative[1, 0, 0][B0][pp_,m02_,m12_] = DB0[pp,m02,m12];
 (* also DB0 is symmetric in its mass arguments *)

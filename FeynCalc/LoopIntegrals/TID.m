@@ -64,6 +64,8 @@ Options[TID] = {
 	FCVerbose -> False,
 	FeynAmpDenominatorCombine -> True,
 	FDS -> True,
+	PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True,
 	SPC -> True,
 	Isolate -> False,
 	UsePaVeBasis -> False
@@ -91,6 +93,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 		contractlabel	= OptionValue[Contract];
 		fds 			= OptionValue[FeynAmpDenominatorSimplify];
 		chd 			= OptionValue[ChangeDimension];
+		paveao 			= OptionValue[PaVeAutoOrder];
+		pavear 			= OptionValue[PaVeAutoReduce];
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -736,7 +740,9 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 		Which[	(* A and B functions*)
 				np===1 || np===2,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-					ExpandScalarProduct /@ (ScalarProduct[#,Dimension->n]& /@ {moms}), {ms}],
+					ExpandScalarProduct /@ (ScalarProduct[#,Dimension->n]& /@ {moms}), {ms},
+					PaVeAutoOrder->paveao,
+					PaVeAutoReduce->pavear],
 				(* C functions*)
 				np===3,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
@@ -744,7 +750,9 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 							{moms}[[1]],
 							{moms}[[1]]-{moms}[[2]],
 							{moms}[[2]]
-						}), {ms}],
+						}), {ms},
+						PaVeAutoOrder->paveao,
+						PaVeAutoReduce->pavear],
 				(* 	D functions, external momenta are
 					p1, p1+p2, p1+p2+p3*)
 				np===4,
@@ -756,7 +764,9 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 							{moms}[[3]], (*p4^2 = (p1+p2+p3)^2*)
 							{moms}[[2]], (* (p1+p2)^2 *)
 							{moms}[[1]]-{moms}[[3]] (* (p2+p3)^2 *)
-						}), {ms}],
+						}), {ms},
+						PaVeAutoOrder->paveao,
+						PaVeAutoReduce->pavear],
 				(* 	E functions, external momenta are
 					p1, p1+p2, p1+p2+p3, p1+p2+p3+p4*)
 				np===5,
@@ -771,7 +781,9 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 							{moms}[[2]]-{moms}[[4]], (* (p3+p4)^2 *)
 							{moms}[[4]], (* (p4+p5)^2 *)
 							{moms}[[1]]-{moms}[[4]] (* (p1+p5)^2 *)
-						}), {ms}],
+						}), {ms},
+						PaVeAutoOrder->paveao,
+						PaVeAutoReduce->pavear],
 				(* TODO: Generalize the algo for general higher point functions *)
 				True,
 					Message[TID::failmsg, "n-point functions with n>5 are not implemented yet!"];

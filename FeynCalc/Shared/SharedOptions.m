@@ -163,6 +163,18 @@ PairCollect::usage =
 "PairCollect is an option for DiracTrace specifying if
 the result is collected with respect to Pair's.";
 
+PaVeAutoReduce::usage =
+"PaVEAutoConvert is an option of PaVe and other functions that work with PaVe functions.
+When set to True, for some special cases PaVe functions will be automatically reduced
+to simpler expressions. Otherwise, PaVe functions will not be further simplified
+unless explicitly evaluated by PaVeReduce.";
+
+PaVeAutoOrder::usage =
+"PaVeAutoOrder is an option of PaVe  and other functions that work with PaVe functions.
+When set to True, for some special cases (mostly for C and D scalar functions)
+the arguments of the PaVe functions will be automatically ordered by using
+the known symmetries between those arguments.";
+
 PaVeOrderList::usage=
 "PaVeOrderList is an option for PaVeOrder and PaVeReduce,
 specifying in which order the arguments of D0 are to be permuted.";
