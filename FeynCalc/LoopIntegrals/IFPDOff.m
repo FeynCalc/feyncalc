@@ -37,7 +37,7 @@ unasign[quu__][pp_Plus, m_] :=
 		unasign[quu][SelectNotFree[pp,quu], SelectFree[pp,quu], m]
 	];
 
-unassign0[quu__][Momentum[q_, di___],m_] :=
+unassign0[quu__][Momentum[q_, di___],_] :=
 	If[ !FreeQ[{quu},q],
 		If[ Head[Pair[Momentum[q,di],Momentum[q,di]]]=!=Pair,
 			uns[pair[Momentum[q,di], Momentum[q,di]]]/.
@@ -52,7 +52,7 @@ pair[-Momentum[a__],-Momentum[b__]] :=
 pair[ Momentum[a__],-Momentum[b__]] :=
 	pair[Momentum[a],Momentum[b]];
 
-unassign1[quu__][Momentum[q_, di___], pes_, m_] :=
+unassign1[quu__][Momentum[q_, di___], pes_, _] :=
 	If[ !FreeQ[{quu},q],
 		If[ (Head[Pair[Momentum[q,di],pes]]=!=Pair) &&
 				(Head[-Pair[Momentum[q,di],pes]]=!=Pair),
@@ -61,7 +61,7 @@ unassign1[quu__][Momentum[q_, di___], pes_, m_] :=
 		];
 	];
 
-unassign2[quu__][-Momentum[q_, di___], pes_, m_] :=
+unassign2[quu__][-Momentum[q_, di___], pes_, _] :=
 	If[ !FreeQ[{quu},q],
 		If[ Head[Pair[-Momentum[q,di],pes]]=!=Pair,
 			uns[pair@@Sort[{-Momentum[q,di], pes}]]/.
