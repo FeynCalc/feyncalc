@@ -29,6 +29,7 @@ SPC = ScalarProductCancel;
 Options[ScalarProductCancel] =
 {ChangeDimension -> D,
 Collecting -> True,
+FCVerbose -> False,
 FeynAmpDenominatorSimplify -> False,
 FeynAmpDenominatorCombine -> True};
 
@@ -49,15 +50,11 @@ cd[z_,op___Rule] :=
 		]
 	];
 
-
-Expand3 = Expand2;
-
 ScalarProductCancel[iexp_,opt___Rule] :=
 	Block[ {sim,exp = cd[FCI[iexp],opt]},
-		sim = Cases2[ SelectNotFree[ Cases2[exp, PropagatorDenominator],
-														PropagatorDenominator[Momentum[__],_]
-												], Momentum
-								];
+		sim =
+			Cases2[	SelectNotFree[Cases2[exp,PropagatorDenominator],
+					PropagatorDenominator[Momentum[__],_]], Momentum];
 		If[ sim === {},
 			exp,
 			sim = Sequence @@ Map[First, sim];
@@ -65,24 +62,30 @@ ScalarProductCancel[iexp_,opt___Rule] :=
 		]
 	];
 
-ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt___Rule] :=
+ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt:OptionsPattern[]] :=
 	MemSet[ScalarProductCancel[iex,qs,qlast,opt],
-		Block[ {prp, exp,pqs, pexp, nexp, prule,P1,re,ex,prt},
+		Block[ {prp, exp,pqs, pexp, nexp, prule,P1,re,ex,prt,texp},
+			If [OptionValue[FCVerbose]===False,
+				spcVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+					spcVerbose=OptionValue[FCVerbose]
+				];
+			];
 			ex = cd[FCI[iex],opt];
 			(* translate eventually *)
 			prp = Select[Cases2[ex, PropagatorDenominator]//MomentumExpand,
 				!FreeQ[#,PropagatorDenominator[w_Plus /; Length[w]>1,_]]&];
-			FCPrint[2,"prp: ", prp];
+			FCPrint[2, "prp: ", prp, FCDoControl->spcVerbose];
 			prp = (*SelectNotFree[*)Map[SelectFree[#/. PropagatorDenominator[a_, _] :> a, {qs,qlast}]&, prp] /. Momentum[a_,___] :> a(*, Plus]*);
-			FCPrint[2,"prp: ", prp];
+			FCPrint[2, "prp: ", prp, FCDoControl->spcVerbose];
 			pqs = SelectFree[SelectNotFree[Cases2[ex,Pair], {qs, qlast}],OPEDelta]/. Pair[a_, b_] :> {a, b} /. Momentum[a_, _ : 4] :> a;
 			(*prp = Reverse[prp];*)
-			FCPrint[2,"pqs: ", pqs];
+			FCPrint[2, "pqs: ", pqs, FCDoControl->spcVerbose];
 			If[ prp === {},
 				exp = ex,
 				(*changemaybelater*)
 				prt = Select[prp, (Cases[pqs, {_, # | -#}] =!= {}) &];
-				FCPrint[2,"prt: ", prt];
+				FCPrint[2, "prt: ", prt, FCDoControl->spcVerbose];
 				If[prt==={},
 					prp  = First[prp],
 					prp = First[prt]
@@ -93,7 +96,7 @@ ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt___Rule] :=
 				exp = ExpandScalarProduct[ex /. prul];
 			];
 			pqs = SelectFree[SelectNotFree[Cases2[exp,Pair], {qs, qlast}],OPEDelta];
-			FCPrint[2,"pqs: ", pqs];
+			FCPrint[2, "pqs: ", pqs, FCDoControl->spcVerbose];
 			re =
 				If[ pqs === {},
 					exp,
@@ -101,13 +104,16 @@ ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt___Rule] :=
 						nexp = 0;
 						pexp = exp,
 						nexp = SelectFree[exp, pqs];
-						pexp = ScalarProductCancel[exp - nexp]
+						FCPrint[3, "SPC: Will apply cancelling to  ", exp - nexp, FCDoControl->spcVerbose];
+						FCPrint[3, "SPC: Will not apply cancelling to  ", nexp, FCDoControl->spcVerbose];
+
 					];
-					nexp + Expand3[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 2],{qs,qlast}]
+					nexp + Expand2[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 2],{qs,qlast}]
 				];
 			If[ prp =!= {},
 				re = ExpandScalarProduct[re /. prulb]
 			];
+			FCPrint[1, "SPC: Leaving with  ", re, FCDoControl->spcVerbose];
 			re
 		]
 	];
@@ -118,6 +124,7 @@ holdf[spi[i_]] :=
 
 checkpair[x_Plus,qu__] :=
 	Map[checkpair[#,qu]&,x];
+
 checkpair[y_ /; Head[y] =!= Plus,qu__] :=
 	Block[ {c1,dc, aliens, pas, sub},
 		If[ Head[y] =!= Times,
@@ -130,6 +137,7 @@ checkpair[y_ /; Head[y] =!= Plus,qu__] :=
 					Momentum ]/.Momentum[a_,___]:>a],{qu}];
 				aliens = SelectNotFree[pas, SelectFree[c1,dc]];
 				sub = Table[aliens[[ij]] -> (aliens[[ij]] /. Pair->noPair),    {ij,Length[aliens]}];
+				FCPrint[3, "SPC: checkpair: sub = ", sub, FCDoControl->spcVerbose];
 				If[ sub === {},
 					y,
 					y/.sub
@@ -146,23 +154,28 @@ sp[exp,qq,q,opt] =
 		col  = Collecting /. {opt} /. Options[ScalarProductCancel];
 		fads = FeynAmpDenominatorSimplify /. {opt} /. Options[ScalarProductCancel];
 		facs = FeynAmpDenominatorCombine /. {opt} /. Options[ScalarProductCancel];
+		FCPrint[3, "SPC: sp: Entering with  ", t1, FCDoControl->spcVerbose];
 		If[ FreeQ[exp, FeynAmpDenominator] || FreeQ[exp, Pair],
 			exp,
 			t4 = Catch[
 				If[ col === True,
 					t1 = Collect2[t1,{qq,ql}, Factoring -> False];
 				];
+				FCPrint[3, "SPC: sp: t1 after collecting  ", t1, FCDoControl->spcVerbose];
 				t1 = checkpair[t1,qq,ql];
+				FCPrint[3, "SPC: sp: t1 after checkpair  ", t1, FCDoControl->spcVerbose];
 				If[ FreeQ[t1, Pair],
 					Throw[t1 /. noPair -> Pair]
 				];
 				t1 = IFPDOn[t1, qq, ql];
-				FCPrint[2,"IFPDOn done in ScalarProductCancel"];
+				FCPrint[3, "SPC: sp: t1 after IFPDOn  ", t1, FCDoControl->spcVerbose];
+				FCPrint[2, "IFPDOn done in ScalarProductCancel", FCDoControl->spcVerbose];
 				If[ LeafCount[t1]<200 &&
 					FreeQ[t1, a_^(pp_ /;Head[pp]=!=Integer)],
 					t2 = Expand[t1],
 					t2 = Expand2[t1, IFPD]
 				];
+				FCPrint[3, "SPC: sp: after expanding w.r.t IFPD  ", t2, FCDoControl->spcVerbose];
 				(* if q^2/q^2 occured then now there are terms without ifpd *)
 				(* in dim. reg. these are 0 *)
 				If[ FreeQ[t2, IFPD],
@@ -172,26 +185,30 @@ sp[exp,qq,q,opt] =
 					SelectFree[t2,IFPD];
 					t2 = SelectNotFree[t2, IFPD]
 				];
-				FCPrint[2,"cancelling done in ScalarProductCancel"];
+				FCPrint[3, "SPC: sp: after dropping terms free of IFPD  ", t2, FCDoControl->spcVerbose];
+				FCPrint[2, "cancelling done in ScalarProductCancel", FCDoControl->spcVerbose];
 				t3 = IFPDOff[t2, qq, ql];
 				If[ FreeQ[t3, Pair],
 					Throw[t3 /. noPair -> Pair]
 				];
 				t3  = t3 /. noPair -> Pair;
-				FCPrint[2,"IFPDOff done in ScalarProductCancel"];
+				FCPrint[3, "SPC: sp: after IFPDOff  ", t3, FCDoControl->spcVerbose];
+				FCPrint[2, "IFPDOff done in ScalarProductCancel", FCDoControl->spcVerbose];
 				(* Dialog[Length[t3]]; *)
 				pex[a_,b_] :=
 					pex[a,b] = ExpandScalarProduct[a,b];
 				t4 = Expand2[t3 /. Pair -> pex, {qq,ql}];
-				FCPrint[2,"ExpandScalarProduct done in ScalarProductCancel"];
+				FCPrint[2, "ExpandScalarProduct done in ScalarProductCancel", FCDoControl->spcVerbose];
+				FCPrint[3, "SPC: sp: after expanding scalar products  ", t4, FCDoControl->spcVerbose];
 				t4 = IFPDOff[IFPDOn[t4,qq,ql],qq,ql] /. noPair->Pair;
-				FCPrint[2,"IFPD again, done"];
+				FCPrint[3, "SPC: sp: after another IFPD", t4, FCDoControl->spcVerbose];
+				FCPrint[2, "IFPD again, done", FCDoControl->spcVerbose];
 				t4
 			];
 			If[ facs===True,
-				FCPrint[3,"combining in SPC"];
+				FCPrint[3, "combining in SPC", FCDoControl->spcVerbose];
 				t4 = FeynAmpDenominatorCombine[t4];
-				FCPrint[3,"combining in SPC done "];
+				FCPrint[3, "combining in SPC done ", FCDoControl->spcVerbose];
 				(* this is dangerous ........  COMMENTED out 04/95
 					can be done by FDS
 									tadfeyn[qu_][a___,PropagatorDenominator[Momentum[qu_,___],0]..,
@@ -203,16 +220,16 @@ sp[exp,qq,q,opt] =
 									t4 = t4/. FeynAmpDenominator -> tadfeyn[qq,ql] /.
 											tadfeyn[qq,ql] -> FeynAmpDenominator;
 				*)
-				FCPrint[2,"FeynAmpDenominatorCombine done in ScalarProductCancel"];
+				FCPrint[2, "FeynAmpDenominatorCombine done in ScalarProductCancel", FCDoControl->spcVerbose];
 			];
 			If[ fads===True,
-				FCPrint[2,"FeynAmpDenominatorSimplify starting on: ",StandardForm[t4]];
+				FCPrint[2, "FeynAmpDenominatorSimplify starting on: ", StandardForm[t4], FCDoControl->spcVerbose];
 				t4 = FeynAmpDenominatorSimplify[t4,qq,ql];
-				FCPrint[2,"FeynAmpDenominatorSimplify done in ScalarProductCancel: ",t4];
+				FCPrint[2, "FeynAmpDenominatorSimplify done in ScalarProductCancel: ", t4, FCDoControl->spcVerbose];
 			];
 			t4
 		]
 	];
 
-FCPrint[1,"ScalarProductCancel.m loaded."];
+FCPrint[1, "ScalarProductCancel.m loaded.", FCDoControl->spcVerbose];
 End[]
