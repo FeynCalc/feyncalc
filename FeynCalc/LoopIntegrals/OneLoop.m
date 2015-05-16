@@ -929,6 +929,11 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						!FreeQ[#,FeynAmpDenominator]&];
 					oneamp = qpcanc[qpcanc[oneamp, q],q];
 					FCPrint[1, "OneLoop: cancelling qp's done, oneamp= ",oneamp, FCDoControl->oneloopVerbose];
+					If[ !FreeQ[oneamp,Pair[Momentum[q,_:4],Momentum[q,_:4]]],
+						FCPrint[0,"Something went wrong in the cancelling of scalar products. Evaluation aborted!"];
+						Abort[]
+					];
+
 				];
 				(* order the denominators again *)
 				If[ denorder === True,
