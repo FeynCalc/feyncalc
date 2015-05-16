@@ -107,9 +107,15 @@ ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt:OptionsPatte
 						FCPrint[3, "SPC: Will apply cancelling to  ", exp - nexp, FCDoControl->spcVerbose];
 						FCPrint[3, "SPC: Will not apply cancelling to  ", nexp, FCDoControl->spcVerbose];
 
+						texp = exp - nexp;
+
+						texp = Isolate[Collect2[texp, {qs, qlast,FeynAmpDenominator}], {qs, qlast,FeynAmpDenominator}, IsolateNames->spcIsolate] /.
+						Pair[x__] /; !FreeQ2[{x}, {qs,qlast}] :> FRH[Pair[x], IsolateNames->spcIsolate];
+						pexp = (ScalarProductCancel/@(texp+null))/.null->0
 					];
 					nexp + Expand2[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 2],{qs,qlast}]
 				];
+			re = FRH[re,IsolateNames->spcIsolate];
 			If[ prp =!= {},
 				re = ExpandScalarProduct[re /. prulb]
 			];
