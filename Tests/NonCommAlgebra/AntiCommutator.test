@@ -16,5 +16,7 @@ Tests`NonCommAlgebra`fcstAntiCommutator = {
 	"a . b + b . a"},
 {"AntiCommutator-ID2",
 	"CommutatorExplicit[AntiCommutator[a+b,a-2b]]",
-	"(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"}
+	"(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"},
+{"AntiCommutator-ID3", "Do[AntiCommutator[a, b] = 1, {i, 1, 5}] \n DownValues[AntiCommutator]",
+"{HoldPattern[AntiCommutator[a, b]] :> 1}"}
 };

@@ -54,7 +54,7 @@ AntiCommutator /:
 	Set[AntiCommutator[a_, b_] , c_] :=
 	Block[ {nd, acom},
 		nd = (RuleDelayed @@ {HoldPattern @@ {acom[a, b]},c}) /. acom -> AntiCommutator;
-		If[FreeQ[DownValues[AntiCommutator], nd],
+		If[FreeQ2[DownValues[AntiCommutator], {nd,Verbatim[nd]}],
 				PrependTo[DownValues[AntiCommutator], nd]
 		];
 		c
@@ -68,7 +68,7 @@ Commutator /:
 	Set[Commutator[a_, b_] , c_] :=
 		Block[ {nd, com},
 			nd = (RuleDelayed @@ {HoldPattern @@ {com[a, b]}, c}) /. com -> Commutator;
-			If[ FreeQ[DownValues[Commutator], nd],
+			If[ FreeQ2[DownValues[Commutator], {nd,Verbatim[nd]}],
 				PrependTo[DownValues[Commutator], nd]
 			];
 			c
