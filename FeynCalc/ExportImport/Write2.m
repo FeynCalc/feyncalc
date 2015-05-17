@@ -104,16 +104,19 @@ Write2[file_String, eeq__, opts___Rule] :=
 			];
 		ide = {##}&;
 		eq = Flatten[{Hold[{eeq}]} /. Set -> Equal /. Hold -> ide];
+		FCPrint[1,"Write2: eq= ", eq];
 		mrel[x_] :=
 			MapAll[ReleaseHold, x];
 		(* vhf gives all "KK" which are really present *)
 		vhf[n_. y_HoldForm] :=
 			Block[ {kk, qq},
+				FCPrint[2,"Write2: vhf: Entering with ", n y];
 				kk = y[[1, 0]];
 				(Table[ HoldForm @@ {qq[ii]}, {ii, y[[1,1]]} ] /. qq -> kk)/.finsubst
 			] /; NumberQ[n];
 		vhf[y_] :=
 			Block[ {te = y, var = {}},
+				FCPrint[2,"Write2: vhf: Entering with ", y];
 				While[!FreeQ[te, HoldForm], var = Union[ var, allvar[te] ];
 											te = ReleaseHold[te]
 					];
@@ -122,7 +125,13 @@ Write2[file_String, eeq__, opts___Rule] :=
 			];
 		If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
 		(* N@ added by RM on Sept. 13th 2003, because of http://www.feyncalc.org/forum/0153.html*)
+			(*	When we apply N to the full expression, this also affects terms from Isolate, e.g.
+				HoldForm[KK[10]] will become HoldForm[KK[10.]], after which KK[10.] will not return
+				the original expressio anymore. The following prevents this from happending *)
+			eq = eq /. HoldForm[x_[y_]] :> With[{z = ToString[y]}, HoldForm[x[z]]];
 			eq = N[eq];
+			eq = eq /. HoldForm[x_[y_String]] :> With[{z = ToExpression[y]}, HoldForm[x[z]]];
+			FCPrint[2,"Write2: N[eq] = ", eq];
 			oldopenops = Options[OpenWrite];
 			togglerule  = False;
 			Unprotect[Real];
@@ -162,6 +171,8 @@ Write2[file_String, eeq__, opts___Rule] :=
 						],
 			vv = {}
 		];
+		FCPrint[2,"Write2: vv ", vv];
+
 		For[ j = 1, j<=Length[eq], j++,
 				eqj1 = eq[[j,1]];
 				If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
