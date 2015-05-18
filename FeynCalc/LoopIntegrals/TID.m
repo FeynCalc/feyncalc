@@ -522,7 +522,7 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 			require more than rank+1 iterations. However, it is not always possible to
 			cancel all the scalar products without doing additional reductions	*)
 		time=AbsoluteTime[];
-		sList = FixedPoint[(SPC[#1, q, FDS -> True] & /@ #) &, uList, rank+2];
+		sList = FixedPoint[(Apart2[SPC[#1, q, FDS -> True]] & /@ #) &, uList, rank+2];
 		FCPrint[2,"TID: tidFullReduce: List of unique integrals after cancelling scalar products ", sList,
 			FCDoControl->tidVerbose];
 
@@ -799,7 +799,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 			qQQ[ffdp[moms___] (vecs : Pair[LorentzIndex[_, nn_], Momentum[_, nn_]] ..)]*
 			FeynAmpDenominator[__]/;
 			vanishingGramDet :>
-				(FCPrint[1,"Trying to handle vanishing Gram determinants", FCDoControl->tidVerbose];
+				(FCPrint[1,"Trying to handle vanishing Gram determinants in", int, FCDoControl->tidVerbose];
 				Tdec[(Sequence @@ tdeclist[{vecs}, {moms}]), Dimension -> n, BasisOnly -> True,
 				FeynCalcExternal->False]/.FCGV["PaVe"][xx_]:>tidPaVe[pavePrepare[FCGV["PaVe"][xx],nPoint,{moms},masses]])
 		};
@@ -808,6 +808,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 		Message[TID::failmsg, "tidReduce failed to reduce the integral " <> ToString[int,InputForm]];
 		Abort[]
 	];
+	FCPrint[3,"TID: tidReduce: leaving with ", res, FCDoControl->tidVerbose];
 	res
 ]/; Head[int]=!=Plus && int=!=0 &&
 	MatchQ[int,(FeynAmpDenominator[y__] /; ! FreeQ[{y}, q])qQQ[(Pair[Momentum[q, _ : 4], LorentzIndex[_, _ : 4]] ..) _ffdp]];
