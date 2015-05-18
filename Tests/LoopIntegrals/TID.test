@@ -1,0 +1,34 @@
+Tests`LoopIntegrals`fcstTID =
+{
+{"fcstTID-ID1", "TID[0, l]","0"},
+{"fcstTID-ID2", "TID[a + b, l]","a+b"},
+{"fcstTID-ID3", "TID[SPD[p, l], l]","0"},
+{"fcstTID-ID4", "TID[FVD[l, mu], l]","0"},
+{"fcstTID-ID5", "TID[FVD[l, mu] FAD[l], l]","0"},
+{"fcstTID-ID6", "TID[FVD[l, mu] FVD[l, nu] FAD[{l, m}], l]//FCE",
+	"(m^2 FAD[{l, m}] MTD[mu, nu])/D"},
+{"fcstTID-ID7", "TID[FVD[l, mu] FVD[l, nu] FAD[{l, m}], l,
+	UsePaVeBasis -> True]//FCE",
+	"(I*m^2*Pi^2*A0[m^2]*MTD[mu, nu])/D"},
+{"fcstTID-ID8", "MatchQ[TID[SP[a + b, c + d] FVD[l, mu]
+	FVD[l, nu] FAD[l, {l + p + q}], l, Isolate -> True] //
+	FCE, -(FAD[l, l - p - q]*
+	HoldForm[_]*(D*FVD[p, mu]*FVD[p, nu] + D*FVD[p, nu]*FVD[q, mu] +
+	D*FVD[p, mu]*FVD[q, nu] + D*FVD[q, mu]*FVD[q, nu] -
+	MTD[mu, nu]*SPD[p, p] - 2*MTD[mu, nu]*SPD[p, q] -
+	MTD[mu, nu]*SPD[q, q]))/(4*HoldForm[x_])]","True"},
+{"fcstTID-ID9", "TID[GS[q, q] FVD[l, mu] FVD[l, nu] FAD[l, {l + p + q}], l] // FCE",
+	"-(FAD[l, l - p - q]*SPD[q, q]*(D*FVD[p, mu]*FVD[p, nu] +
+	D*FVD[p, nu]*FVD[q, mu] + D*FVD[p, mu]*FVD[q, nu] +
+	D*FVD[q, mu]*FVD[q, nu] - MTD[mu, nu]*SPD[p, p] -
+	2*MTD[mu, nu]*SPD[p, q] - MTD[mu, nu]*SPD[q, q]))/(4*(1 - D))"},
+{"fcstTID-ID10", "TID[GS[q, q] FVD[l, mu] FVD[l, nu] FAD[l, {l + p + q}], l,
+	DiracSimplify -> False] // FCE","-(GSD[q] . GSD[q]*
+	FAD[l, l - p - q]*(D*FVD[p, mu]*FVD[p, nu] +
+	D*FVD[p, nu]*FVD[q, mu] + D*FVD[p, mu]*FVD[q, nu] +
+	D*FVD[q, mu]*FVD[q, nu] - MTD[mu, nu]*SPD[p, p] -
+	2*MTD[mu, nu]*SPD[p, q] - MTD[mu, nu]*SPD[q, q]))/(4*(1 - D))"},
+{"fcstTID-ID11", "TID[SP[a + b, c + d] + FVD[l, mu] FVD[l, nu] FAD[{l, m}], l,
+	ExpandScalarProduct -> False] // FCE","(m^2*FAD[{l, m}]*
+	MTD[mu, nu])/D + SPD[a + b, c + d]"}
+};

@@ -1,0 +1,38 @@
+Tests`LoopIntegrals`fcitTIDUsePaVeBasisA =
+({
+{"fcitTIDUsePaVeBasisA-ID1",
+"TID[FVD[p,mu]FAD[{p,m}],p,UsePaVeBasis\[Rule]True,PaVeAutoReduce\
+\[Rule]False]//FCE", "0"},
+{"fcitTIDUsePaVeBasisA-ID2",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m}],p,UsePaVeBasis\[Rule]True,\
+PaVeAutoReduce\[Rule]False]//FCE",
+"I*Pi^2*MTD[mu, nu]*PaVe[0, 0, {}, {m^2}, PaVeAutoOrder -> True, \
+PaVeAutoReduce -> False]"},
+{"fcitTIDUsePaVeBasisA-ID3",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m}],p,UsePaVeBasis\[Rule]\
+True,PaVeAutoReduce\[Rule]False]//FCE", "0"},
+{"fcitTIDUsePaVeBasisA-ID4",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m}],p,\
+UsePaVeBasis\[Rule]True,PaVeAutoReduce\[Rule]False]//FCE",
+"I*Pi^2*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, rho]*MTD[nu, si] + \
+MTD[mu, nu]*MTD[rho, si])*PaVe[0, 0, 0, 0, {}, {m^2}, PaVeAutoOrder -> \
+True, PaVeAutoReduce -> False]"},
+{"fcitTIDUsePaVeBasisA-ID5",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FVD[p,tau]FAD[{p,m}],p,\
+UsePaVeBasis\[Rule]True,PaVeAutoReduce\[Rule]False]//FCE", "0"},
+{"fcitTIDUsePaVeBasisA-ID6",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FVD[p,tau]FVD[p,kappa]\
+FAD[{p,m}],p,UsePaVeBasis\[Rule]True,PaVeAutoReduce\[Rule]False]\
+//FCE", "I*Pi^2*(MTD[kappa, tau]*MTD[mu, si]*MTD[nu, rho] + \
+MTD[kappa, si]*MTD[mu, tau]*MTD[nu, rho] + MTD[kappa, tau]*MTD[mu, \
+rho]*MTD[nu, si] + MTD[kappa, rho]*MTD[mu, tau]*MTD[nu, si] + \
+MTD[kappa, si]*MTD[mu, rho]*MTD[nu, tau] + MTD[kappa, rho]*MTD[mu, \
+si]*MTD[nu, tau] + MTD[kappa, tau]*MTD[mu, nu]*MTD[rho, si] + \
+MTD[kappa, nu]*MTD[mu, tau]*MTD[rho, si] + MTD[kappa, mu]*MTD[nu, \
+tau]*MTD[rho, si] + MTD[kappa, si]*MTD[mu, nu]*MTD[rho, tau] + \
+MTD[kappa, nu]*MTD[mu, si]*MTD[rho, tau] + MTD[kappa, mu]*MTD[nu, \
+si]*MTD[rho, tau] + MTD[kappa, rho]*MTD[mu, nu]*MTD[si, tau] + \
+MTD[kappa, nu]*MTD[mu, rho]*MTD[si, tau] + MTD[kappa, mu]*MTD[nu, \
+rho]*MTD[si, tau])*PaVe[0, 0, 0, 0, 0, 0, {}, {m^2}, PaVeAutoOrder -> \
+True, PaVeAutoReduce -> False]"}
+});

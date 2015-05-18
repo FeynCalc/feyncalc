@@ -13,7 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`LoopIntegrals`FCLoopIsolate = {
+Tests`LoopIntegrals`fcstFCLoopIsolate = {
 
 {"fcstFCLoopIsolate-ID1","FCLoopIsolate[x, {q}]","x"},
 {"fcstFCLoopIsolate-ID2","FCLoopIsolate[x+y, {q}]","x+y"},

@@ -1,0 +1,771 @@
+Tests`LoopIntegrals`fcitTIDFullRedB =
+({
+{"fcitTIDFullRedB-ID1",
+"TID[FVD[p,mu]FAD[{p,m0},{p+k1,m1}],p]//FCE",
+"(FAD[{p, m0}]*FVD[k1, mu])/(2*SPD[k1, k1]) - (FAD[{p, \
+m1}]*FVD[k1, mu])/(2*SPD[k1, k1]) - (FAD[{p, m0}, {-k1 + p, \
+m1}]*FVD[k1, mu]*(m0^2 - m1^2 + SPD[k1, k1]))/(2*SPD[k1, k1])"},
+{"fcitTIDFullRedB-ID2", "TID[FVD[p,mu]FAD[{p,m0},{p,m1}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID3",
+"TID[FVD[p,mu]FAD[{p,m0},{p+k1z,m1}],p]//FCE",
+"I*Pi^2*B1[0, m0^2, m1^2]*FVD[k1z, mu]"},
+{"fcitTIDFullRedB-ID4", "TID[FVD[p,mu]FAD[{p,m},{p+k1,m}],p]//FCE",
+"-(FAD[{p, m}, {-k1 + p, m}]*FVD[k1, mu])/2"},
+{"fcitTIDFullRedB-ID5", "TID[FVD[p,mu]FAD[{p,m},{p,m}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID6", "TID[FVD[p,mu]FAD[{p,m},{p+k1z,m}],p]//FCE",
+	"(-I/2)*Pi^2*B0[0, m^2, m^2]*FVD[k1z, mu]"},
+{"fcitTIDFullRedB-ID7", "TID[FVD[p,mu]FAD[{p,0},{p+k1,m}],p]//FCE",
+"-(FAD[{p, m}]*FVD[k1, mu])/(2*SPD[k1, k1]) + (FAD[p, {-k1 + p, \
+m}]*FVD[k1, mu]*(m^2 - SPD[k1, k1]))/(2*SPD[k1, k1])"},
+{"fcitTIDFullRedB-ID8", "TID[FVD[p,mu]FAD[{p,0},{p,m}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID9", "TID[FVD[p,mu]FAD[{p,0},{p+k1z,m}],p]//FCE",
+	"I*Pi^2*(1/4 - B0[0, 0, m^2]/2)*FVD[k1z, mu]"},
+{"fcitTIDFullRedB-ID10", "TID[FVD[p,mu]FAD[{p,m},{p+k1,0}],p]//FCE",
+	"(FAD[{p, m}]*FVD[k1, mu])/(2*SPD[k1, k1]) - (FAD[p, {-k1 + p, \
+m}]*FVD[k1, mu]*(m^2 + SPD[k1, k1]))/(2*SPD[k1, k1])"},
+{"fcitTIDFullRedB-ID11", "TID[FVD[p,mu]FAD[{p,m},{p,0}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID12",
+"TID[FVD[p,mu]FAD[{p,m},{p+k1z,0}],p]//FCE",
+"(-I)*Pi^2*(1/4 - B0[0, 0, m^2]/2)*FVD[k1z, mu] - FAD[p, {-k1z + \
+p, m}]*FVD[k1z, mu]"},
+{"fcitTIDFullRedB-ID13", "TID[FVD[p,mu]FAD[{p,0},{p+k1,0}],p]//FCE",
+	"-(FAD[p, -k1 + p]*FVD[k1, mu])/2"},
+{"fcitTIDFullRedB-ID14", "TID[FVD[p,mu]FAD[{p,0},{p,0}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID15",
+"TID[FVD[p,mu]FAD[{p,0},{p+k1z,0}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID16",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m0},{p+k1,m1}],p]//FCE",
+"(FAD[{p, m0}]*(m0^2 - m1^2 + SPD[k1, k1])*(D*FVD[k1, mu]*FVD[k1, \
+nu] - MTD[mu, nu]*SPD[k1, k1]))/(4*(1 - D)*SPD[k1, k1]^2) - (FAD[{p, \
+m0}, {-k1 + p, m1}]*(-4*m0^2*FVD[k1, mu]*FVD[k1, nu]*SPD[k1, k1] + \
+4*m0^2*MTD[mu, nu]*SPD[k1, k1]^2 + D*FVD[k1, mu]*FVD[k1, nu]*(m0^2 - \
+m1^2 + SPD[k1, k1])^2 - MTD[mu, nu]*SPD[k1, k1]*(m0^2 - m1^2 + \
+SPD[k1, k1])^2))/(4*(1 - D)*SPD[k1, k1]^2) - (FAD[{p, \
+m1}]*(-4*FVD[k1, mu]*FVD[k1, nu]*SPD[k1, k1] + 4*MTD[mu, nu]*SPD[k1, \
+k1]^2 + D*FVD[k1, mu]*FVD[k1, nu]*(m0^2 - m1^2 + 3*SPD[k1, k1]) - \
+MTD[mu, nu]*SPD[k1, k1]*(m0^2 - m1^2 + 3*SPD[k1, k1])))/(4*(1 - \
+D)*SPD[k1, k1]^2)"},
+{"fcitTIDFullRedB-ID17",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m0},{p,m1}],p]//FCE",
+"(m0^2*FAD[{p, m0}]*MTD[mu, nu])/(D*(m0 - m1)*(m0 + m1)) - \
+(m1^2*FAD[{p, m1}]*MTD[mu, nu])/(D*(m0 - m1)*(m0 + m1))"},
+{"fcitTIDFullRedB-ID18",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m0},{p+k1z,m1}],p]//FCE",
+"I*Pi^2*B11[0, m0^2, m1^2]*FVD[k1z, mu]*FVD[k1z, nu] + \
+I*Pi^2*((m0^2 + m1^2)/6 + (m0^2*B0[0, m0^2, m1^2])/3 + (A0[m1^2] + \
+(m0^2 - m1^2)*B1[0, m0^2, m1^2])/6)*MTD[mu, nu]"},
+{"fcitTIDFullRedB-ID19",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p+k1,m}],p]//FCE",
+"-(FAD[{p, m}]*(-2*FVD[k1, mu]*FVD[k1, nu] + D*FVD[k1, mu]*FVD[k1, \
+nu] + MTD[mu, nu]*SPD[k1, k1]))/(2*(1 - D)*SPD[k1, k1]) - (FAD[{p, \
+m}, {-k1 + p, m}]*(-4*m^2*FVD[k1, mu]*FVD[k1, nu] + D*FVD[k1, \
+mu]*FVD[k1, nu]*SPD[k1, k1] + 4*m^2*MTD[mu, nu]*SPD[k1, k1] - MTD[mu, \
+nu]*SPD[k1, k1]^2))/(4*(1 - D)*SPD[k1, k1])"},
+{"fcitTIDFullRedB-ID20",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p,m}],p]//FCE",
+"(FAD[{p, m}]*MTD[mu, nu])/D + (m^2*FAD[{p, m}, {p, m}]*MTD[mu, \
+nu])/D"},
+{"fcitTIDFullRedB-ID21",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p+k1z,m}],p]//FCE",
+"(I/3)*Pi^2*B0[0, m^2, m^2]*FVD[k1z, mu]*FVD[k1z, nu] + \
+(I/2)*m^2*Pi^2*(1 + B0[0, m^2, m^2])*MTD[mu, nu]"},
+{"fcitTIDFullRedB-ID22",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,0},{p+k1,m}],p]//FCE",
+"-(FAD[p, {-k1 + p, m}]*(m^2 - SPD[k1, k1])^2*(D*FVD[k1, \
+mu]*FVD[k1, nu] - MTD[mu, nu]*SPD[k1, k1]))/(4*(1 - D)*SPD[k1, k1]^2) \
+- (FAD[{p, m}]*(-(D*FVD[k1, mu]*FVD[k1, nu]*(m^2 - 3*SPD[k1, k1])) - \
+4*FVD[k1, mu]*FVD[k1, nu]*SPD[k1, k1] + MTD[mu, nu]*(m^2 - 3*SPD[k1, \
+k1])*SPD[k1, k1] + 4*MTD[mu, nu]*SPD[k1, k1]^2))/(4*(1 - D)*SPD[k1, \
+k1]^2)"},
+{"fcitTIDFullRedB-ID23",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,0},{p,m}],p]//FCE",
+"(FAD[{p, m}]*MTD[mu, nu])/D"},
+{"fcitTIDFullRedB-ID24",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,0},{p+k1z,m}],p]//FCE",
+"I*Pi^2*B11[0, 0, m^2]*FVD[k1z, mu]*FVD[k1z, nu] + I*Pi^2*(m^2/6 + \
+(A0[m^2] - m^2*(1/4 - B0[0, 0, m^2]/2))/6)*MTD[mu, nu]"},
+{"fcitTIDFullRedB-ID25",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p+k1,0}],p]//FCE",
+"(FAD[p, {-k1 + p, m}]*(-(D*FVD[k1, mu]*FVD[k1, nu]*(m^2 - SPD[k1, \
+k1])^2) + 4*(1 - D)*FVD[k1, mu]*FVD[k1, nu]*(m^2 - SPD[k1, \
+k1])*SPD[k1, k1] + MTD[mu, nu]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1] + \
+4*(1 - D)*FVD[k1, mu]*FVD[k1, nu]*SPD[k1, k1]^2))/(4*(1 - D)*SPD[k1, \
+k1]^2) - (FAD[{p, m}]*(-(D*FVD[k1, mu]*FVD[k1, nu]*(m^2 - 3*SPD[k1, \
+k1])) - 4*FVD[k1, mu]*FVD[k1, nu]*SPD[k1, k1] + 4*(1 - D)*FVD[k1, \
+mu]*FVD[k1, nu]*SPD[k1, k1] + MTD[mu, nu]*(m^2 - 3*SPD[k1, \
+k1])*SPD[k1, k1] + 4*MTD[mu, nu]*SPD[k1, k1]^2))/(4*(1 - D)*SPD[k1, \
+k1]^2)"},
+{"fcitTIDFullRedB-ID26",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p,0}],p]//FCE",
+"(FAD[{p, m}]*MTD[mu, nu])/D"},
+{"fcitTIDFullRedB-ID27",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p+k1z,0}],p]//FCE",
+"I*Pi^2*B11[0, 0, m^2]*FVD[k1z, mu]*FVD[k1z, nu] + FAD[p, {-k1z + \
+p, m}]*FVD[k1z, mu]*FVD[k1z, nu] + I*Pi^2*(2*(1/4 - B0[0, 0, \
+m^2]/2)*FVD[k1z, mu]*FVD[k1z, nu] + (m^2/6 + (A0[m^2] - m^2*(1/4 - \
+B0[0, 0, m^2]/2))/6)*MTD[mu, nu])"},
+{"fcitTIDFullRedB-ID28",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,0},{p+k1,0}],p]//FCE",
+"-(FAD[p, -k1 + p]*(D*FVD[k1, mu]*FVD[k1, nu] - MTD[mu, \
+nu]*SPD[k1, k1]))/(4*(1 - D))"},
+{"fcitTIDFullRedB-ID29",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,0},{p,0}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID30",
+"TID[FVD[p,mu]FVD[p,nu]FAD[{p,0},{p+k1z,0}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID31",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m0},{p+k1,m1}],p]//FCE",
+"-(FAD[{p, m0}, {-k1 + p, m1}]*(m0^2 - m1^2 + SPD[k1, \
+k1])*(12*m0^2*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, k1] - \
+4*m0^2*FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1]^2 - 4*m0^2*FVD[k1, \
+nu]*MTD[mu, rho]*SPD[k1, k1]^2 - 4*m0^2*FVD[k1, mu]*MTD[nu, \
+rho]*SPD[k1, k1]^2 - (2 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*(m0^2 - m1^2 + SPD[k1, k1])^2 + FVD[k1, rho]*MTD[mu, nu]*SPD[k1, \
+k1]*(m0^2 - m1^2 + SPD[k1, k1])^2 + FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1]*(m0^2 - m1^2 + SPD[k1, k1])^2 + FVD[k1, mu]*MTD[nu, rho]*SPD[k1, \
+k1]*(m0^2 - m1^2 + SPD[k1, k1])^2))/(8*(1 - D)*SPD[k1, k1]^3) + \
+(FAD[{p, m0}]*(12*D*m0^2*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, \
+k1] - 4*D*m0^2*FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1]^2 - \
+4*D*m0^2*FVD[k1, nu]*MTD[mu, rho]*SPD[k1, k1]^2 - 4*D*m0^2*FVD[k1, \
+mu]*MTD[nu, rho]*SPD[k1, k1]^2 - (2 + D)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, \
+k1])^2) + FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1]*(4*m0^2*SPD[k1, k1] + \
+D*(m0^2 - m1^2 + SPD[k1, k1])^2) + FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, k1])^2) + FVD[k1, \
+mu]*MTD[nu, rho]*SPD[k1, k1]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + \
+SPD[k1, k1])^2)))/(8*(1 - D)*D*SPD[k1, k1]^3) + (FAD[{p, \
+m1}]*(-12*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, k1]*(m0^2 + \
+2*SPD[k1, k1]) + 4*D*FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1]^2*(m0^2 + \
+2*SPD[k1, k1]) + 4*D*FVD[k1, nu]*MTD[mu, rho]*SPD[k1, k1]^2*(m0^2 + \
+2*SPD[k1, k1]) + 4*D*FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1]^2*(m0^2 + \
+2*SPD[k1, k1]) + (2 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*(4*m1^2*SPD[k1, k1] + D*(m0^4 - 2*m0^2*m1^2 + m1^4 + \
+4*m0^2*SPD[k1, k1] - 4*m1^2*SPD[k1, k1] + 7*SPD[k1, k1]^2)) - FVD[k1, \
+rho]*MTD[mu, nu]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1] + D*(m0^4 - \
+2*m0^2*m1^2 + m1^4 + 4*m0^2*SPD[k1, k1] - 4*m1^2*SPD[k1, k1] + \
+7*SPD[k1, k1]^2)) - FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1]*(4*m1^2*SPD[k1, k1] + D*(m0^4 - 2*m0^2*m1^2 + m1^4 + \
+4*m0^2*SPD[k1, k1] - 4*m1^2*SPD[k1, k1] + 7*SPD[k1, k1]^2)) - FVD[k1, \
+mu]*MTD[nu, rho]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1] + D*(m0^4 - \
+2*m0^2*m1^2 + m1^4 + 4*m0^2*SPD[k1, k1] - 4*m1^2*SPD[k1, k1] + \
+7*SPD[k1, k1]^2))))/(8*(1 - D)*D*SPD[k1, k1]^3)"},
+{"fcitTIDFullRedB-ID32",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m0},{p,m1}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID33",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m0},{p+k1z,m1}],p]//FCE",
+"I*Pi^2*(FVD[k1z, rho]*MTD[mu, nu] + FVD[k1z, nu]*MTD[mu, rho] + \
+FVD[k1z, mu]*MTD[nu, rho])*PaVe[0, 0, 1, {0}, {m0^2, m1^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*FVD[k1z, \
+mu]*FVD[k1z, nu]*FVD[k1z, rho]*PaVe[1, 1, 1, {0}, {m0^2, m1^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID34",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m},{p+k1,m}],p]//FCE",
+"(FAD[{p, m}]*(-12*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho] + 3*(2 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho] + FVD[k1, rho]*MTD[mu, \
+nu]*SPD[k1, k1] + FVD[k1, nu]*MTD[mu, rho]*SPD[k1, k1] + FVD[k1, \
+mu]*MTD[nu, rho]*SPD[k1, k1]))/(4*(1 - D)*SPD[k1, k1]) + (FAD[{p, m}, \
+{-k1 + p, m}]*(-12*m^2*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho] + (2 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, k1] + 4*m^2*FVD[k1, \
+rho]*MTD[mu, nu]*SPD[k1, k1] + 4*m^2*FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1] + 4*m^2*FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1] - FVD[k1, \
+rho]*MTD[mu, nu]*SPD[k1, k1]^2 - FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1]^2 - FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1]^2))/(8*(1 - D)*SPD[k1, \
+k1])"},
+{"fcitTIDFullRedB-ID35",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m},{p,m}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID36",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m},{p+k1z,m}],p]//FCE",
+"I*Pi^2*(FVD[k1z, rho]*MTD[mu, nu] + FVD[k1z, nu]*MTD[mu, rho] + \
+FVD[k1z, mu]*MTD[nu, rho])*PaVe[0, 0, 1, {0}, {m^2, m^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*FVD[k1z, \
+mu]*FVD[k1z, nu]*FVD[k1z, rho]*PaVe[1, 1, 1, {0}, {m^2, m^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID37",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,0},{p+k1,m}],p]//FCE",
+"(FAD[p, {-k1 + p, m}]*(m^2 - SPD[k1, k1])^3*(-((2 + D)*FVD[k1, \
+mu]*FVD[k1, nu]*FVD[k1, rho]) + FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1] \
++ FVD[k1, nu]*MTD[mu, rho]*SPD[k1, k1] + FVD[k1, mu]*MTD[nu, \
+rho]*SPD[k1, k1]))/(8*(1 - D)*SPD[k1, k1]^3) + (FAD[{p, \
+m}]*(-24*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, k1]^2 + \
+8*D*FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1]^3 + 8*D*FVD[k1, nu]*MTD[mu, \
+rho]*SPD[k1, k1]^3 + 8*D*FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1]^3 + (2 \
++ D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*(4*m^2*SPD[k1, k1] + D*(m^4 \
+- 4*m^2*SPD[k1, k1] + 7*SPD[k1, k1]^2)) - FVD[k1, rho]*MTD[mu, \
+nu]*SPD[k1, k1]*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + \
+7*SPD[k1, k1]^2)) - FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1]*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) - FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1]*(4*m^2*SPD[k1, k1] + \
+D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, k1]^2))))/(8*(1 - D)*D*SPD[k1, \
+k1]^3)"},
+{"fcitTIDFullRedB-ID38",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,0},{p,m}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID39",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,0},{p+k1z,m}],p]//FCE",
+"I*Pi^2*(FVD[k1z, rho]*MTD[mu, nu] + FVD[k1z, nu]*MTD[mu, rho] + \
+FVD[k1z, mu]*MTD[nu, rho])*PaVe[0, 0, 1, {0}, {0, m^2}, PaVeAutoOrder \
+-> True, PaVeAutoReduce -> True] + I*Pi^2*FVD[k1z, mu]*FVD[k1z, \
+nu]*FVD[k1z, rho]*PaVe[1, 1, 1, {0}, {0, m^2}, PaVeAutoOrder -> True, \
+PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID40",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m},{p+k1,0}],p]//FCE",
+"-(FAD[p, {-k1 + p, m}]*(-((2 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*(m^2 - SPD[k1, k1])^3) - 6*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1] + FVD[k1, rho]*MTD[mu, \
+nu]*(m^2 - SPD[k1, k1])^3*SPD[k1, k1] + FVD[k1, nu]*MTD[mu, rho]*(m^2 \
+- SPD[k1, k1])^3*SPD[k1, k1] + FVD[k1, mu]*MTD[nu, rho]*(m^2 - \
+SPD[k1, k1])^3*SPD[k1, k1] + 12*(1 - D)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*(m^2 - SPD[k1, k1])*SPD[k1, k1]^2 + 2*FVD[k1, \
+rho]*MTD[mu, nu]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^2 + 2*FVD[k1, \
+nu]*MTD[mu, rho]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^2 + 2*FVD[k1, \
+mu]*MTD[nu, rho]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^2 + 8*(1 - \
+D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, k1]^3))/(8*(1 - \
+D)*SPD[k1, k1]^3) + (FAD[{p, m}]*(-6*D^2*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1] + 12*(1 - \
+D)*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*SPD[k1, k1]^2 + 2*D*FVD[k1, \
+rho]*MTD[mu, nu]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^2 + 2*D*FVD[k1, \
+nu]*MTD[mu, rho]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^2 + 2*D*FVD[k1, \
+mu]*MTD[nu, rho]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^2 - (2 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*(4*m^2*SPD[k1, k1] + D*(m^4 - \
+4*m^2*SPD[k1, k1] + 7*SPD[k1, k1]^2)) + FVD[k1, rho]*MTD[mu, \
+nu]*SPD[k1, k1]*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + \
+7*SPD[k1, k1]^2)) + FVD[k1, nu]*MTD[mu, rho]*SPD[k1, \
+k1]*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) + FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1]*(4*m^2*SPD[k1, k1] + \
+D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, k1]^2))))/(8*(1 - D)*D*SPD[k1, \
+k1]^3)"},
+{"fcitTIDFullRedB-ID41",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m},{p,0}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID42",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,m},{p+k1z,0}],p]//FCE",
+"(-3*I)*Pi^2*B11[0, 0, m^2]*FVD[k1z, mu]*FVD[k1z, nu]*FVD[k1z, \
+rho] - FAD[p, {-k1z + p, m}]*FVD[k1z, mu]*FVD[k1z, nu]*FVD[k1z, rho] \
+- I*Pi^2*(3*(1/4 - B0[0, 0, m^2]/2)*FVD[k1z, mu]*FVD[k1z, \
+nu]*FVD[k1z, rho] + (m^2/6 + (A0[m^2] - m^2*(1/4 - B0[0, 0, \
+m^2]/2))/6)*FVD[k1z, rho]*MTD[mu, nu] + (m^2/6 + (A0[m^2] - m^2*(1/4 \
+- B0[0, 0, m^2]/2))/6)*FVD[k1z, nu]*MTD[mu, rho] + (m^2/6 + (A0[m^2] \
+- m^2*(1/4 - B0[0, 0, m^2]/2))/6)*FVD[k1z, mu]*MTD[nu, rho]) - \
+I*Pi^2*(FVD[k1z, rho]*MTD[mu, nu] + FVD[k1z, nu]*MTD[mu, rho] + \
+FVD[k1z, mu]*MTD[nu, rho])*PaVe[0, 0, 1, {0}, {0, m^2}, PaVeAutoOrder \
+-> True, PaVeAutoReduce -> True] - I*Pi^2*FVD[k1z, mu]*FVD[k1z, \
+nu]*FVD[k1z, rho]*PaVe[1, 1, 1, {0}, {0, m^2}, PaVeAutoOrder -> True, \
+PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID43",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,0},{p+k1,0}],p]//FCE",
+"-(FAD[p, -k1 + p]*(-((2 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]) + FVD[k1, rho]*MTD[mu, nu]*SPD[k1, k1] + FVD[k1, nu]*MTD[mu, \
+rho]*SPD[k1, k1] + FVD[k1, mu]*MTD[nu, rho]*SPD[k1, k1]))/(8*(1 - \
+D))"},
+{"fcitTIDFullRedB-ID44",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,0},{p,0}],p]//FCE", "0"},
+{"fcitTIDFullRedB-ID45",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FAD[{p,0},{p+k1z,0}],p]//FCE",
+"0"},
+{"fcitTIDFullRedB-ID46",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m0},{p+k1,m1}],p]\
+//FCE", "(FAD[{p, m0}, {-k1 + p, m1}]*(48*m0^4*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, k1]^2 - 16*m0^4*FVD[k1, \
+rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]^3 - 16*m0^4*FVD[k1, \
+nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]^3 - 16*m0^4*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]^3 - 16*m0^4*FVD[k1, \
+mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1]^3 - 16*m0^4*FVD[k1, \
+mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^3 - 16*m0^4*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]^3 + 16*m0^4*MTD[mu, \
+si]*MTD[nu, rho]*SPD[k1, k1]^4 + 16*m0^4*MTD[mu, rho]*MTD[nu, \
+si]*SPD[k1, k1]^4 + 16*m0^4*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^4 - \
+24*(2 + D)*m0^2*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*SPD[k1, k1]*(m0^2 - m1^2 + SPD[k1, k1])^2 + 4*(3 + \
+D)*m0^2*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]^2*(m0^2 - \
+m1^2 + SPD[k1, k1])^2 + 4*(3 + D)*m0^2*FVD[k1, nu]*FVD[k1, \
+si]*MTD[mu, rho]*SPD[k1, k1]^2*(m0^2 - m1^2 + SPD[k1, k1])^2 + 4*(3 + \
+D)*m0^2*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]^2*(m0^2 - \
+m1^2 + SPD[k1, k1])^2 + 4*(3 + D)*m0^2*FVD[k1, mu]*FVD[k1, \
+si]*MTD[nu, rho]*SPD[k1, k1]^2*(m0^2 - m1^2 + SPD[k1, k1])^2 + 4*(3 + \
+D)*m0^2*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^2*(m0^2 - \
+m1^2 + SPD[k1, k1])^2 + 4*(3 + D)*m0^2*FVD[k1, mu]*FVD[k1, \
+nu]*MTD[rho, si]*SPD[k1, k1]^2*(m0^2 - m1^2 + SPD[k1, k1])^2 - \
+8*m0^2*MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^3*(m0^2 - m1^2 + SPD[k1, \
+k1])^2 - 8*m0^2*MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^3*(m0^2 - m1^2 + \
+SPD[k1, k1])^2 - 8*m0^2*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^3*(m0^2 \
+- m1^2 + SPD[k1, k1])^2 + (2 + D)*(4 + D)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si]*(m0^2 - m1^2 + SPD[k1, k1])^4 + (-2 - \
+D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]*(m0^2 - m1^2 + \
+SPD[k1, k1])^4 + (-2 - D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*SPD[k1, k1]*(m0^2 - m1^2 + SPD[k1, k1])^4 + (-2 - D)*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]*(m0^2 - m1^2 + SPD[k1, \
+k1])^4 - (2 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, \
+k1]*(m0^2 - m1^2 + SPD[k1, k1])^4 - (2 + D)*FVD[k1, mu]*FVD[k1, \
+rho]*MTD[nu, si]*SPD[k1, k1]*(m0^2 - m1^2 + SPD[k1, k1])^4 - (2 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]*(m0^2 - m1^2 + \
+SPD[k1, k1])^4 + MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^2*(m0^2 - m1^2 \
++ SPD[k1, k1])^4 + MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2*(m0^2 - \
+m1^2 + SPD[k1, k1])^4 + MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^2*(m0^2 \
+- m1^2 + SPD[k1, k1])^4))/(16*(-1 + D^2)*SPD[k1, k1]^4) + (FAD[{p, \
+m0}]*(m0^2 - m1^2 + SPD[k1, k1])*(24*D*(2 + D)*m0^2*FVD[k1, \
+mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, k1] - 4*D*(3 + \
+D)*m0^2*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]^2 - 4*D*(3 + \
+D)*m0^2*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]^2 - 4*D*(3 + \
+D)*m0^2*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]^2 - 4*D*(3 + \
+D)*m0^2*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1]^2 - 4*D*(3 + \
+D)*m0^2*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^2 - 4*D*(3 + \
+D)*m0^2*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]^2 + \
+8*D*m0^2*MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^3 + 8*D*m0^2*MTD[mu, \
+rho]*MTD[nu, si]*SPD[k1, k1]^3 + 8*D*m0^2*MTD[mu, nu]*MTD[rho, \
+si]*SPD[k1, k1]^3 - (2 + D)*(4 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*FVD[k1, si]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, \
+k1])^2) - (-2 - D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, \
+k1]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, k1])^2) - (-2 - \
+D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]*(4*m0^2*SPD[k1, \
+k1] + D*(m0^2 - m1^2 + SPD[k1, k1])^2) - (-2 - D)*FVD[k1, nu]*FVD[k1, \
+rho]*MTD[mu, si]*SPD[k1, k1]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + \
+SPD[k1, k1])^2) + (2 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, \
+k1])^2) + (2 + D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, \
+k1]*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, k1])^2) + (2 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]*(4*m0^2*SPD[k1, \
+k1] + D*(m0^2 - m1^2 + SPD[k1, k1])^2) - MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^2*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, \
+k1])^2) - MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2*(4*m0^2*SPD[k1, k1] \
++ D*(m0^2 - m1^2 + SPD[k1, k1])^2) - MTD[mu, nu]*MTD[rho, si]*SPD[k1, \
+k1]^2*(4*m0^2*SPD[k1, k1] + D*(m0^2 - m1^2 + SPD[k1, \
+k1])^2)))/(16*D*(-1 + D^2)*SPD[k1, k1]^4) + (FAD[{p, \
+m1}]*(48*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, \
+k1]^2*(m0^2 + m1^2 + SPD[k1, k1]) - 16*D*FVD[k1, rho]*FVD[k1, \
+si]*MTD[mu, nu]*SPD[k1, k1]^3*(m0^2 + m1^2 + SPD[k1, k1]) - \
+16*D*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]^3*(m0^2 + m1^2 \
++ SPD[k1, k1]) - 16*D*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, \
+k1]^3*(m0^2 + m1^2 + SPD[k1, k1]) - 16*D*FVD[k1, mu]*FVD[k1, \
+si]*MTD[nu, rho]*SPD[k1, k1]^3*(m0^2 + m1^2 + SPD[k1, k1]) - \
+16*D*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^3*(m0^2 + m1^2 \
++ SPD[k1, k1]) - 16*D*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, \
+k1]^3*(m0^2 + m1^2 + SPD[k1, k1]) + 16*D*MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^4*(m0^2 + m1^2 + SPD[k1, k1]) + 16*D*MTD[mu, \
+rho]*MTD[nu, si]*SPD[k1, k1]^4*(m0^2 + m1^2 + SPD[k1, k1]) + \
+16*D*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^4*(m0^2 + m1^2 + SPD[k1, \
+k1]) - 24*(2 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1] + D*(m0^4 - m0^2*m1^2 + \
+3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) + 4*(3 + D)*FVD[k1, \
+rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, k1] + \
+D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) + 4*(3 + \
+D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, \
+k1] + D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) + \
+4*(3 + D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, \
+k1]^2*(4*m1^2*SPD[k1, k1] + D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] \
++ 4*SPD[k1, k1]^2)) + 4*(3 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, k1] + D*(m0^4 - m0^2*m1^2 + \
+3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) + 4*(3 + D)*FVD[k1, \
+mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, k1] + \
+D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) + 4*(3 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, \
+k1] + D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) - \
+8*MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^3*(4*m1^2*SPD[k1, k1] + \
+D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) - \
+8*MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^3*(4*m1^2*SPD[k1, k1] + \
+D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) - \
+8*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^3*(4*m1^2*SPD[k1, k1] + \
+D*(m0^4 - m0^2*m1^2 + 3*m0^2*SPD[k1, k1] + 4*SPD[k1, k1]^2)) + (2 + \
+D)*(4 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*(4*m1^2*SPD[k1, k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + D*(m0^2 - \
+m1^2 + 3*SPD[k1, k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + 2*m0^2*SPD[k1, k1] \
+- 2*m1^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + (-2 - D)*FVD[k1, \
+rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1]*(m0^2 - \
+m1^2 + 7*SPD[k1, k1]) + D*(m0^2 - m1^2 + 3*SPD[k1, k1])*(m0^4 - \
+2*m0^2*m1^2 + m1^4 + 2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, k1] + \
+5*SPD[k1, k1]^2)) + (-2 - D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + \
+D*(m0^2 - m1^2 + 3*SPD[k1, k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + \
+2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + (-2 - \
+D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]*(4*m1^2*SPD[k1, \
+k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + D*(m0^2 - m1^2 + 3*SPD[k1, \
+k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + 2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, \
+k1] + 5*SPD[k1, k1]^2)) - (2 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + \
+D*(m0^2 - m1^2 + 3*SPD[k1, k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + \
+2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - (2 + \
+D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]*(4*m1^2*SPD[k1, \
+k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + D*(m0^2 - m1^2 + 3*SPD[k1, \
+k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + 2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, \
+k1] + 5*SPD[k1, k1]^2)) - (2 + D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, \
+si]*SPD[k1, k1]*(4*m1^2*SPD[k1, k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + \
+D*(m0^2 - m1^2 + 3*SPD[k1, k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + \
+2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + MTD[mu, \
+si]*MTD[nu, rho]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, k1]*(m0^2 - m1^2 + \
+7*SPD[k1, k1]) + D*(m0^2 - m1^2 + 3*SPD[k1, k1])*(m0^4 - 2*m0^2*m1^2 \
++ m1^4 + 2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) \
++ MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2*(4*m1^2*SPD[k1, k1]*(m0^2 - \
+m1^2 + 7*SPD[k1, k1]) + D*(m0^2 - m1^2 + 3*SPD[k1, k1])*(m0^4 - \
+2*m0^2*m1^2 + m1^4 + 2*m0^2*SPD[k1, k1] - 2*m1^2*SPD[k1, k1] + \
+5*SPD[k1, k1]^2)) + MTD[mu, nu]*MTD[rho, si]*SPD[k1, \
+k1]^2*(4*m1^2*SPD[k1, k1]*(m0^2 - m1^2 + 7*SPD[k1, k1]) + D*(m0^2 - \
+m1^2 + 3*SPD[k1, k1])*(m0^4 - 2*m0^2*m1^2 + m1^4 + 2*m0^2*SPD[k1, k1] \
+- 2*m1^2*SPD[k1, k1] + 5*SPD[k1, k1]^2))))/(16*D*(-1 + D^2)*SPD[k1, \
+k1]^4)"},
+{"fcitTIDFullRedB-ID47",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m0},{p,m1}],p]\
+//FCE", "(m0^4*FAD[{p, m0}]*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, \
+rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si]))/(D*(2 + D)*(m0 - \
+m1)*(m0 + m1)) - (m1^4*FAD[{p, m1}]*(MTD[mu, si]*MTD[nu, rho] + \
+MTD[mu, rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si]))/(D*(2 + D)*(m0 \
+- m1)*(m0 + m1))"},
+{"fcitTIDFullRedB-ID48",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m0},{p+k1z,m1}],p]\
+//FCE", "I*Pi^2*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, rho]*MTD[nu, si] \
++ MTD[mu, nu]*MTD[rho, si])*PaVe[0, 0, 0, 0, {0}, {m0^2, m1^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*(FVD[k1z, \
+rho]*FVD[k1z, si]*MTD[mu, nu] + FVD[k1z, nu]*FVD[k1z, si]*MTD[mu, \
+rho] + FVD[k1z, nu]*FVD[k1z, rho]*MTD[mu, si] + FVD[k1z, mu]*FVD[k1z, \
+si]*MTD[nu, rho] + FVD[k1z, mu]*FVD[k1z, rho]*MTD[nu, si] + FVD[k1z, \
+mu]*FVD[k1z, nu]*MTD[rho, si])*PaVe[0, 0, 1, 1, {0}, {m0^2, m1^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*FVD[k1z, \
+mu]*FVD[k1z, nu]*FVD[k1z, rho]*FVD[k1z, si]*PaVe[1, 1, 1, 1, {0}, \
+{m0^2, m1^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID49",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m},{p+k1,m}],p]\
+//FCE", "(FAD[{p, m}, {-k1 + p, m}]*(48*m^4*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si] - 24*(2 + D)*m^2*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, k1] - 16*m^4*FVD[k1, \
+rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1] - 16*m^4*FVD[k1, nu]*FVD[k1, \
+si]*MTD[mu, rho]*SPD[k1, k1] - 16*m^4*FVD[k1, nu]*FVD[k1, \
+rho]*MTD[mu, si]*SPD[k1, k1] - 16*m^4*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1] - 16*m^4*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*SPD[k1, k1] - 16*m^4*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, \
+k1] + (2 + D)*(4 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*SPD[k1, k1]^2 + 4*(3 + D)*m^2*FVD[k1, rho]*FVD[k1, si]*MTD[mu, \
+nu]*SPD[k1, k1]^2 + 4*(3 + D)*m^2*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*SPD[k1, k1]^2 + 4*(3 + D)*m^2*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, \
+si]*SPD[k1, k1]^2 + 4*(3 + D)*m^2*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1]^2 + 16*m^4*MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^2 + \
+4*(3 + D)*m^2*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^2 + \
+16*m^4*MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2 + 4*(3 + D)*m^2*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]^2 + 16*m^4*MTD[mu, \
+nu]*MTD[rho, si]*SPD[k1, k1]^2 + (-2 - D)*FVD[k1, rho]*FVD[k1, \
+si]*MTD[mu, nu]*SPD[k1, k1]^3 + (-2 - D)*FVD[k1, nu]*FVD[k1, \
+si]*MTD[mu, rho]*SPD[k1, k1]^3 + (-2 - D)*FVD[k1, nu]*FVD[k1, \
+rho]*MTD[mu, si]*SPD[k1, k1]^3 - (2 + D)*FVD[k1, mu]*FVD[k1, \
+si]*MTD[nu, rho]*SPD[k1, k1]^3 - 8*m^2*MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^3 - (2 + D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*SPD[k1, k1]^3 - 8*m^2*MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^3 - (2 \
++ D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]^3 - \
+8*m^2*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^3 + MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^4 + MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^4 + MTD[mu, \
+nu]*MTD[rho, si]*SPD[k1, k1]^4))/(16*(-1 + D^2)*SPD[k1, k1]^2) + \
+(FAD[{p, m}]*(24*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*(2*m^2 + SPD[k1, k1]) - 8*D*FVD[k1, rho]*FVD[k1, si]*MTD[mu, \
+nu]*SPD[k1, k1]*(2*m^2 + SPD[k1, k1]) - 8*D*FVD[k1, nu]*FVD[k1, \
+si]*MTD[mu, rho]*SPD[k1, k1]*(2*m^2 + SPD[k1, k1]) - 8*D*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]*(2*m^2 + SPD[k1, k1]) - \
+8*D*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1]*(2*m^2 + SPD[k1, \
+k1]) - 8*D*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]*(2*m^2 + \
+SPD[k1, k1]) - 8*D*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, \
+k1]*(2*m^2 + SPD[k1, k1]) + 8*D*MTD[mu, si]*MTD[nu, rho]*SPD[k1, \
+k1]^2*(2*m^2 + SPD[k1, k1]) + 8*D*MTD[mu, rho]*MTD[nu, si]*SPD[k1, \
+k1]^2*(2*m^2 + SPD[k1, k1]) + 8*D*MTD[mu, nu]*MTD[rho, si]*SPD[k1, \
+k1]^2*(2*m^2 + SPD[k1, k1]) + (2 + D)*(4 + D)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si]*(12*m^2 + 7*D*SPD[k1, k1]) + (-2 - \
+D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]*(12*m^2 + \
+7*D*SPD[k1, k1]) + (-2 - D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*SPD[k1, k1]*(12*m^2 + 7*D*SPD[k1, k1]) + (-2 - D)*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]*(12*m^2 + 7*D*SPD[k1, k1]) - \
+(2 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1]*(12*m^2 + \
+7*D*SPD[k1, k1]) - (2 + D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*SPD[k1, k1]*(12*m^2 + 7*D*SPD[k1, k1]) - (2 + D)*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]*(12*m^2 + 7*D*SPD[k1, k1]) + \
+MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^2*(12*m^2 + 7*D*SPD[k1, k1]) + \
+MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2*(12*m^2 + 7*D*SPD[k1, k1]) + \
+MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^2*(12*m^2 + 7*D*SPD[k1, k1]) - \
+24*(2 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*(2*m^2 + \
+D*(m^2 + 2*SPD[k1, k1])) + 4*(3 + D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, \
+nu]*SPD[k1, k1]*(2*m^2 + D*(m^2 + 2*SPD[k1, k1])) + 4*(3 + D)*FVD[k1, \
+nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]*(2*m^2 + D*(m^2 + 2*SPD[k1, \
+k1])) + 4*(3 + D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, \
+k1]*(2*m^2 + D*(m^2 + 2*SPD[k1, k1])) + 4*(3 + D)*FVD[k1, mu]*FVD[k1, \
+si]*MTD[nu, rho]*SPD[k1, k1]*(2*m^2 + D*(m^2 + 2*SPD[k1, k1])) + 4*(3 \
++ D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]*(2*m^2 + D*(m^2 \
++ 2*SPD[k1, k1])) + 4*(3 + D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, \
+si]*SPD[k1, k1]*(2*m^2 + D*(m^2 + 2*SPD[k1, k1])) - 8*MTD[mu, \
+si]*MTD[nu, rho]*SPD[k1, k1]^2*(2*m^2 + D*(m^2 + 2*SPD[k1, k1])) - \
+8*MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2*(2*m^2 + D*(m^2 + 2*SPD[k1, \
+k1])) - 8*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^2*(2*m^2 + D*(m^2 + \
+2*SPD[k1, k1]))))/(8*D*(-1 + D^2)*SPD[k1, k1]^2)"},
+{"fcitTIDFullRedB-ID50",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m},{p,m}],p]\
+//FCE", "(2*m^2*FAD[{p, m}]*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, \
+rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si]))/(D*(2 + D)) + \
+(m^4*FAD[{p, m}, {p, m}]*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, \
+rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si]))/(D*(2 + D))"},
+{"fcitTIDFullRedB-ID51",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m},{p+k1z,m}],p]\
+//FCE", "I*Pi^2*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, rho]*MTD[nu, si] \
++ MTD[mu, nu]*MTD[rho, si])*PaVe[0, 0, 0, 0, {0}, {m^2, m^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*(FVD[k1z, \
+rho]*FVD[k1z, si]*MTD[mu, nu] + FVD[k1z, nu]*FVD[k1z, si]*MTD[mu, \
+rho] + FVD[k1z, nu]*FVD[k1z, rho]*MTD[mu, si] + FVD[k1z, mu]*FVD[k1z, \
+si]*MTD[nu, rho] + FVD[k1z, mu]*FVD[k1z, rho]*MTD[nu, si] + FVD[k1z, \
+mu]*FVD[k1z, nu]*MTD[rho, si])*PaVe[0, 0, 1, 1, {0}, {m^2, m^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*FVD[k1z, \
+mu]*FVD[k1z, nu]*FVD[k1z, rho]*FVD[k1z, si]*PaVe[1, 1, 1, 1, {0}, \
+{m^2, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID52",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,0},{p+k1,m}],p]\
+//FCE", "(FAD[p, {-k1 + p, m}]*(m^2 - SPD[k1, k1])^4*((2 + D)*(4 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si] + (-2 - \
+D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1] + (-2 - \
+D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1] + (-2 - \
+D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1] - (2 + D)*FVD[k1, \
+mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1] - (2 + D)*FVD[k1, \
+mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1] - (2 + D)*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1] + MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^2 + MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2 + MTD[mu, \
+nu]*MTD[rho, si]*SPD[k1, k1]^2))/(16*(-1 + D^2)*SPD[k1, k1]^4) + \
+(FAD[{p, m}]*(48*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*SPD[k1, k1]^2*(m^2 + SPD[k1, k1]) - 16*D*FVD[k1, rho]*FVD[k1, \
+si]*MTD[mu, nu]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) - 16*D*FVD[k1, \
+nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) - \
+16*D*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]^3*(m^2 + \
+SPD[k1, k1]) - 16*D*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, \
+k1]^3*(m^2 + SPD[k1, k1]) - 16*D*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) - 16*D*FVD[k1, mu]*FVD[k1, \
+nu]*MTD[rho, si]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) + 16*D*MTD[mu, \
+si]*MTD[nu, rho]*SPD[k1, k1]^4*(m^2 + SPD[k1, k1]) + 16*D*MTD[mu, \
+rho]*MTD[nu, si]*SPD[k1, k1]^4*(m^2 + SPD[k1, k1]) + 16*D*MTD[mu, \
+nu]*MTD[rho, si]*SPD[k1, k1]^4*(m^2 + SPD[k1, k1]) - 96*(2 + \
+D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, \
+k1]^2*(m^2 + D*SPD[k1, k1]) + 16*(3 + D)*FVD[k1, rho]*FVD[k1, \
+si]*MTD[mu, nu]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) + 16*(3 + \
+D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]^3*(m^2 + \
+D*SPD[k1, k1]) + 16*(3 + D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, \
+si]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) + 16*(3 + D)*FVD[k1, \
+mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) + \
+16*(3 + D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^3*(m^2 + \
+D*SPD[k1, k1]) + 16*(3 + D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, \
+si]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) - 32*MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^4*(m^2 + D*SPD[k1, k1]) - 32*MTD[mu, rho]*MTD[nu, \
+si]*SPD[k1, k1]^4*(m^2 + D*SPD[k1, k1]) - 32*MTD[mu, nu]*MTD[rho, \
+si]*SPD[k1, k1]^4*(m^2 + D*SPD[k1, k1]) - (2 + D)*(4 + D)*FVD[k1, \
+mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*(4*m^2*(m^2 - 7*SPD[k1, \
+k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + \
+5*SPD[k1, k1]^2)) - (-2 - D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, \
+nu]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - \
+3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - (-2 - \
+D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]*(4*m^2*(m^2 - \
+7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - \
+2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - (-2 - D)*FVD[k1, nu]*FVD[k1, \
+rho]*MTD[mu, si]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] \
++ D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, \
+k1]^2)) + (2 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, \
+k1]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, \
+k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + (2 + D)*FVD[k1, \
+mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, \
+k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + \
+5*SPD[k1, k1]^2)) + (2 + D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, \
+si]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - \
+3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - MTD[mu, \
+si]*MTD[nu, rho]*SPD[k1, k1]^2*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, \
+k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, \
+k1]^2)) - MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2*(4*m^2*(m^2 - \
+7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - \
+2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - MTD[mu, nu]*MTD[rho, \
+si]*SPD[k1, k1]^2*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - \
+3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, \
+k1]^2))))/(16*D*(-1 + D^2)*SPD[k1, k1]^4)"},
+{"fcitTIDFullRedB-ID53",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,0},{p,m}],p]\
+//FCE", "(m^2*FAD[{p, m}]*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, \
+rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si]))/(D*(2 + D))"},
+{"fcitTIDFullRedB-ID54",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,0},{p+k1z,m}],p]\
+//FCE", "I*Pi^2*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, rho]*MTD[nu, si] \
++ MTD[mu, nu]*MTD[rho, si])*PaVe[0, 0, 0, 0, {0}, {0, m^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*(FVD[k1z, \
+rho]*FVD[k1z, si]*MTD[mu, nu] + FVD[k1z, nu]*FVD[k1z, si]*MTD[mu, \
+rho] + FVD[k1z, nu]*FVD[k1z, rho]*MTD[mu, si] + FVD[k1z, mu]*FVD[k1z, \
+si]*MTD[nu, rho] + FVD[k1z, mu]*FVD[k1z, rho]*MTD[nu, si] + FVD[k1z, \
+mu]*FVD[k1z, nu]*MTD[rho, si])*PaVe[0, 0, 1, 1, {0}, {0, m^2}, \
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] + I*Pi^2*FVD[k1z, \
+mu]*FVD[k1z, nu]*FVD[k1z, rho]*FVD[k1z, si]*PaVe[1, 1, 1, 1, {0}, {0, \
+m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+{"fcitTIDFullRedB-ID55",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m},{p+k1,0}],p]\
+//FCE", "(FAD[p, {-k1 + p, m}]*((1 - D)*(2 + D)*(4 + D)*FVD[k1, \
+mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*(m^2 - SPD[k1, k1])^4 - 8*(2 \
++ D)*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*(m^2 \
+- SPD[k1, k1])^3*SPD[k1, k1] + (-2 - D)*(1 - D)*FVD[k1, rho]*FVD[k1, \
+si]*MTD[mu, nu]*(m^2 - SPD[k1, k1])^4*SPD[k1, k1] + (-2 - D)*(1 - \
+D)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*(m^2 - SPD[k1, k1])^4*SPD[k1, \
+k1] + (-2 - D)*(1 - D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*(m^2 - \
+SPD[k1, k1])^4*SPD[k1, k1] - (1 - D)*(2 + D)*FVD[k1, mu]*FVD[k1, \
+si]*MTD[nu, rho]*(m^2 - SPD[k1, k1])^4*SPD[k1, k1] - (1 - D)*(2 + \
+D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*(m^2 - SPD[k1, k1])^4*SPD[k1, \
+k1] - (1 - D)*(2 + D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*(m^2 - \
+SPD[k1, k1])^4*SPD[k1, k1] - 24*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^2 + \
+4*(-1 + D^2)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*(m^2 - SPD[k1, \
+k1])^3*SPD[k1, k1]^2 + 4*(-1 + D^2)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*(m^2 - SPD[k1, k1])^3*SPD[k1, k1]^2 + 4*(-1 + D^2)*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*(m^2 - SPD[k1, k1])^3*SPD[k1, k1]^2 + \
+4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*(m^2 - SPD[k1, \
+k1])^3*SPD[k1, k1]^2 + 4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*(m^2 - SPD[k1, k1])^3*SPD[k1, k1]^2 + 4*(-1 + D^2)*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*(m^2 - SPD[k1, k1])^3*SPD[k1, k1]^2 + (1 \
+- D)*MTD[mu, si]*MTD[nu, rho]*(m^2 - SPD[k1, k1])^4*SPD[k1, k1]^2 + \
+(1 - D)*MTD[mu, rho]*MTD[nu, si]*(m^2 - SPD[k1, k1])^4*SPD[k1, k1]^2 \
++ (1 - D)*MTD[mu, nu]*MTD[rho, si]*(m^2 - SPD[k1, k1])^4*SPD[k1, \
+k1]^2 + 32*(1 - D)*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*FVD[k1, si]*(m^2 - SPD[k1, k1])*SPD[k1, k1]^3 + 4*(-1 + \
+D^2)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*(m^2 - SPD[k1, \
+k1])^2*SPD[k1, k1]^3 + 4*(-1 + D^2)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^3 + 4*(-1 + D^2)*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^3 + \
+4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*(m^2 - SPD[k1, \
+k1])^2*SPD[k1, k1]^3 + 4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^3 + 4*(-1 + D^2)*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*(m^2 - SPD[k1, k1])^2*SPD[k1, k1]^3 + \
+16*(1 - D)*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*SPD[k1, k1]^4))/(16*(1 - D)*(-1 + D^2)*SPD[k1, k1]^4) - (FAD[{p, \
+m}]*(-24*D^2*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^2 + 96*D*(-1 + D^2)*FVD[k1, \
+mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, k1]^3 + 32*(1 - \
+D)*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*SPD[k1, k1]^3 + 4*D*(-1 + D^2)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, \
+nu]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^3 + 4*D*(-1 + D^2)*FVD[k1, \
+nu]*FVD[k1, si]*MTD[mu, rho]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^3 + \
+4*D*(-1 + D^2)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*(m^2 - 3*SPD[k1, \
+k1])*SPD[k1, k1]^3 + 4*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^3 + 4*D*(-1 + D^2)*FVD[k1, \
+mu]*FVD[k1, rho]*MTD[nu, si]*(m^2 - 3*SPD[k1, k1])*SPD[k1, k1]^3 + \
+4*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*(m^2 - 3*SPD[k1, \
+k1])*SPD[k1, k1]^3 - 16*D*(-1 + D^2)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, \
+nu]*SPD[k1, k1]^4 - 16*D*(-1 + D^2)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*SPD[k1, k1]^4 - 16*D*(-1 + D^2)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, \
+si]*SPD[k1, k1]^4 - 16*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1]^4 - 16*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*SPD[k1, k1]^4 - 16*D*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, \
+si]*SPD[k1, k1]^4 - 48*(1 - D)*D*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, \
+rho]*FVD[k1, si]*SPD[k1, k1]^2*(m^2 + SPD[k1, k1]) + 16*(1 - \
+D)*D*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]^3*(m^2 + \
+SPD[k1, k1]) + 16*(1 - D)*D*FVD[k1, nu]*FVD[k1, si]*MTD[mu, \
+rho]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) + 16*(1 - D)*D*FVD[k1, \
+nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) + \
+16*(1 - D)*D*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, k1]^3*(m^2 \
++ SPD[k1, k1]) + 16*(1 - D)*D*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, \
+si]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) + 16*(1 - D)*D*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]^3*(m^2 + SPD[k1, k1]) - \
+16*(1 - D)*D*MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^4*(m^2 + SPD[k1, \
+k1]) - 16*(1 - D)*D*MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^4*(m^2 + \
+SPD[k1, k1]) - 16*(1 - D)*D*MTD[mu, nu]*MTD[rho, si]*SPD[k1, \
+k1]^4*(m^2 + SPD[k1, k1]) + 96*(1 - D)*(2 + D)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, k1]^2*(m^2 + D*SPD[k1, k1]) - \
+16*(1 - D)*(3 + D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, \
+k1]^3*(m^2 + D*SPD[k1, k1]) - 16*(1 - D)*(3 + D)*FVD[k1, nu]*FVD[k1, \
+si]*MTD[mu, rho]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) - 16*(1 - D)*(3 \
++ D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, k1]^3*(m^2 + \
+D*SPD[k1, k1]) - 16*(1 - D)*(3 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, \
+rho]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) - 16*(1 - D)*(3 + D)*FVD[k1, \
+mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]^3*(m^2 + D*SPD[k1, k1]) - \
+16*(1 - D)*(3 + D)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, \
+k1]^3*(m^2 + D*SPD[k1, k1]) + 32*(1 - D)*MTD[mu, si]*MTD[nu, \
+rho]*SPD[k1, k1]^4*(m^2 + D*SPD[k1, k1]) + 32*(1 - D)*MTD[mu, \
+rho]*MTD[nu, si]*SPD[k1, k1]^4*(m^2 + D*SPD[k1, k1]) + 32*(1 - \
+D)*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^4*(m^2 + D*SPD[k1, k1]) + (1 \
+- D)*(2 + D)*(4 + D)*FVD[k1, mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, \
+si]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, \
+k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + (-2 - D)*(1 - \
+D)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, k1]*(4*m^2*(m^2 - \
+7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - \
+2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + (-2 - D)*(1 - D)*FVD[k1, \
+nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, \
+k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + \
+5*SPD[k1, k1]^2)) + (-2 - D)*(1 - D)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, \
+si]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - \
+3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - (1 - \
+D)*(2 + D)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, \
+k1]*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, \
+k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - (1 - D)*(2 + \
+D)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, k1]*(4*m^2*(m^2 - \
+7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - \
+2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - (1 - D)*(2 + D)*FVD[k1, \
+mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, k1]*(4*m^2*(m^2 - 7*SPD[k1, \
+k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + \
+5*SPD[k1, k1]^2)) + (1 - D)*MTD[mu, si]*MTD[nu, rho]*SPD[k1, \
+k1]^2*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, \
+k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) + (1 - D)*MTD[mu, \
+rho]*MTD[nu, si]*SPD[k1, k1]^2*(4*m^2*(m^2 - 7*SPD[k1, k1])*SPD[k1, \
+k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - 2*m^2*SPD[k1, k1] + 5*SPD[k1, \
+k1]^2)) + (1 - D)*MTD[mu, nu]*MTD[rho, si]*SPD[k1, k1]^2*(4*m^2*(m^2 \
+- 7*SPD[k1, k1])*SPD[k1, k1] + D*(m^2 - 3*SPD[k1, k1])*(m^4 - \
+2*m^2*SPD[k1, k1] + 5*SPD[k1, k1]^2)) - 8*(2 + D)*(-1 + D^2)*FVD[k1, \
+mu]*FVD[k1, nu]*FVD[k1, rho]*FVD[k1, si]*SPD[k1, k1]*(4*m^2*SPD[k1, \
+k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, k1]^2)) + 4*(-1 + \
+D^2)*FVD[k1, rho]*FVD[k1, si]*MTD[mu, nu]*SPD[k1, \
+k1]^2*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) + 4*(-1 + D^2)*FVD[k1, nu]*FVD[k1, si]*MTD[mu, rho]*SPD[k1, \
+k1]^2*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) + 4*(-1 + D^2)*FVD[k1, nu]*FVD[k1, rho]*MTD[mu, si]*SPD[k1, \
+k1]^2*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) + 4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, si]*MTD[nu, rho]*SPD[k1, \
+k1]^2*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) + 4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, rho]*MTD[nu, si]*SPD[k1, \
+k1]^2*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2)) + 4*(-1 + D^2)*FVD[k1, mu]*FVD[k1, nu]*MTD[rho, si]*SPD[k1, \
+k1]^2*(4*m^2*SPD[k1, k1] + D*(m^4 - 4*m^2*SPD[k1, k1] + 7*SPD[k1, \
+k1]^2))))/(16*(1 - D)*D*(-1 + D^2)*SPD[k1, k1]^4)"},
+{"fcitTIDFullRedB-ID56",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m},{p,0}],p]\
+//FCE", "(m^2*FAD[{p, m}]*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, \
+rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si]))/(D*(2 + D))"},
+{"fcitTIDFullRedB-ID57",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,m},{p+k1z,0}],p]\
+//FCE", "(6*I)*Pi^2*B11[0, 0, m^2]*FVD[k1z, mu]*FVD[k1z, nu]*FVD[k1z, \
+rho]*FVD[k1z, si] + FAD[p, {-k1z + p, m}]*FVD[k1z, mu]*FVD[k1z, \
+nu]*FVD[k1z, rho]*FVD[k1z, si] + I*Pi^2*(4*(1/4 - B0[0, 0, \
+m^2]/2)*FVD[k1z, mu]*FVD[k1z, nu]*FVD[k1z, rho]*FVD[k1z, si] + (m^2/6 \
++ (A0[m^2] - m^2*(1/4 - B0[0, 0, m^2]/2))/6)*FVD[k1z, rho]*FVD[k1z, \
+si]*MTD[mu, nu] + (m^2/6 + (A0[m^2] - m^2*(1/4 - B0[0, 0, \
+m^2]/2))/6)*FVD[k1z, nu]*FVD[k1z, si]*MTD[mu, rho] + (m^2/6 + \
+(A0[m^2] - m^2*(1/4 - B0[0, 0, m^2]/2))/6)*FVD[k1z, nu]*FVD[k1z, \
+rho]*MTD[mu, si] + (m^2/6 + (A0[m^2] - m^2*(1/4 - B0[0, 0, \
+m^2]/2))/6)*FVD[k1z, mu]*FVD[k1z, si]*MTD[nu, rho] + (m^2/6 + \
+(A0[m^2] - m^2*(1/4 - B0[0, 0, m^2]/2))/6)*FVD[k1z, mu]*FVD[k1z, \
+rho]*MTD[nu, si] + (m^2/6 + (A0[m^2] - m^2*(1/4 - B0[0, 0, \
+m^2]/2))/6)*FVD[k1z, mu]*FVD[k1z, nu]*MTD[rho, si]) + \
+(2*I)*Pi^2*(FVD[k1z, rho]*FVD[k1z, si]*MTD[mu, nu] + FVD[k1z, \
+nu]*FVD[k1z, si]*MTD[mu, rho] + FVD[k1z, nu]*FVD[k1z, rho]*MTD[mu, \
+si] + FVD[k1z, mu]*FVD[k1z, si]*MTD[nu, rho] + FVD[k1z, mu]*FVD[k1z, \
+rho]*MTD[nu, si] + FVD[k1z, mu]*FVD[k1z, nu]*MTD[rho, si])*PaVe[0, 0, \
+1, {0}, {0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] + \
+(4*I)*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*FVD[k1z, rho]*FVD[k1z, \
+si]*PaVe[1, 1, 1, {0}, {0, m^2}, PaVeAutoOrder -> True, \
+PaVeAutoReduce -> True] + I*Pi^2*(MTD[mu, si]*MTD[nu, rho] + MTD[mu, \
+rho]*MTD[nu, si] + MTD[mu, nu]*MTD[rho, si])*PaVe[0, 0, 0, 0, {0}, \
+{0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] + \
+I*Pi^2*(FVD[k1z, rho]*FVD[k1z, si]*MTD[mu, nu] + FVD[k1z, \
+nu]*FVD[k1z, si]*MTD[mu, rho] + FVD[k1z, nu]*FVD[k1z, rho]*MTD[mu, \
+si] + FVD[k1z, mu]*FVD[k1z, si]*MTD[nu, rho] + FVD[k1z, mu]*FVD[k1z, \
+rho]*MTD[nu, si] + FVD[k1z, mu]*FVD[k1z, nu]*MTD[rho, si])*PaVe[0, 0, \
+1, 1, {0}, {0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] + \
+I*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*FVD[k1z, rho]*FVD[k1z, si]*PaVe[1, \
+1, 1, 1, {0}, {0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> \
+True]"},
+{"fcitTIDFullRedB-ID58",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,0},{p+k1,0}],p]\
+//FCE", "(FAD[p, -k1 + p]*((2 + D)*(4 + D)*FVD[k1, mu]*FVD[k1, \
+nu]*FVD[k1, rho]*FVD[k1, si] + (-2 - D)*FVD[k1, rho]*FVD[k1, \
+si]*MTD[mu, nu]*SPD[k1, k1] + (-2 - D)*FVD[k1, nu]*FVD[k1, \
+si]*MTD[mu, rho]*SPD[k1, k1] + (-2 - D)*FVD[k1, nu]*FVD[k1, \
+rho]*MTD[mu, si]*SPD[k1, k1] - (2 + D)*FVD[k1, mu]*FVD[k1, \
+si]*MTD[nu, rho]*SPD[k1, k1] - (2 + D)*FVD[k1, mu]*FVD[k1, \
+rho]*MTD[nu, si]*SPD[k1, k1] - (2 + D)*FVD[k1, mu]*FVD[k1, \
+nu]*MTD[rho, si]*SPD[k1, k1] + MTD[mu, si]*MTD[nu, rho]*SPD[k1, k1]^2 \
++ MTD[mu, rho]*MTD[nu, si]*SPD[k1, k1]^2 + MTD[mu, nu]*MTD[rho, \
+si]*SPD[k1, k1]^2))/(16*(-1 + D^2))"},
+{"fcitTIDFullRedB-ID59",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,0},{p,0}],p]\
+//FCE", "0"},
+{"fcitTIDFullRedB-ID60",
+"TID[FVD[p,mu]FVD[p,nu]FVD[p,rho]FVD[p,si]FAD[{p,0},{p+k1z,0}],p]\
+//FCE", "0"}
+})

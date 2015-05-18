@@ -13,7 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`LoopIntegrals`FCLoopSolutionList = {
+Tests`LoopIntegrals`fcstFCLoopSolutionList = {
 
 {"fcstFCLoopSolutionList-ID1","li = FCLoopCanonicalize[
 	FCL[FVD[q, i1] FVD[q, i2] FAD[q, {q + p, m}]] +

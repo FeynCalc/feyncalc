@@ -1,0 +1,25 @@
+
+
+(* :Title: PaVeOrder.test                                  		            *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PaVeOrder				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstPaVeOrder = {
+
+{"fcstPaveOrder-ID1",
+	"PaVeOrder[D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],PaVeOrderList->{me2,me2,0,0}]",
+	"D0[me2,s,mw2,t,mw2,me2,me2,0,0,me2]"},
+{"fcstPaveOrder-ID2",
+	"PaVeOrder[D0[a,b,c,d,e,f,m12,m22,m32,m42]+D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],
+	PaVeOrderList->{{me2,me2,0,0},{f,e}}]",
+	"D0[a,d,c,b,f,e,m22,m12,m42,m32]+D0[me2,s,mw2,t,mw2,me2,me2,0,0,me2]"}
+}

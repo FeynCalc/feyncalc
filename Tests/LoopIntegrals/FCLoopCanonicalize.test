@@ -13,7 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`LoopIntegrals`FCLoopCanonicalize = {
+Tests`LoopIntegrals`fcstFCLoopCanonicalize = {
 {"fcstFCLoopCanonicalize-ID1","FCLoopCanonicalize[0, q, FCL]","{{},{},{},{}}"},
 {"fcstFCLoopCanonicalize-ID2","FCLoopCanonicalize[1, q, FCL]","{{},{},{},{}}"},
 {"fcstFCLoopCanonicalize-ID3","FCLoopCanonicalize[q, q, FCL]","{{},{},{},{}}"},

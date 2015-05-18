@@ -1,0 +1,19 @@
+
+
+(* :Title: ToTFI.test                                          	    	*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToTFI			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`ToTFI = {
+{"fcstToTFI-ID1","ToTFI[FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2], q1, q2, p]",
+	"TFI[D, SPD[p, p], {{1, 0}, {1, M}, {1, 0}, {1, m}, {1, 0}}]"}
+};

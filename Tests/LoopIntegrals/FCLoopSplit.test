@@ -13,7 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`LoopIntegrals`FCLoopSplit = {
+Tests`LoopIntegrals`fcstFCLoopSplit = {
 {"fcstFCLoopSplit-ID1","FCLoopSplit[0, {q}] // FCE",
 	"{0, 0, 0, 0}"},
 {"fcstFCLoopSplit-ID2","FCLoopSplit[c, {q}] // FCE",

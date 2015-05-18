@@ -17,51 +17,27 @@ Tests`LoopIntegrals`fcstSPC={
 
 {"fcstSPC-ID1",
 	"SPC[SPD[q,p]FAD[{q,m},{q-p,0}],q,FDS->True]//FCE",
-	"-FAD[{q,m}]/2+FAD[q,{p+q,m}]*(m^2/2+SPD[p,p]/2)"},
+	"-FAD[{q, m}]/2 + (FAD[q, {p + q, m}]*(m^2 + SPD[p, p]))/2"},
 {"fcstSPC-ID2",
 	"SPC[SPD[q2,p]SPD[q1,p]FAD[{q1,m},{q2,m},q1-p,q2-p,
 	q2-q1],q1,q2,FDS->True]//FCE",
-	"-FAD[p+q1,-q1+q2,{q2,m}]/2+FAD[-q1+q2,{q1,m},
-	{q2,m}]/4+FAD[p+q1,-q1+q2,{q1,m},{q2,m}]*(-m^2/2-
-	SPD[p,p]/2)+FAD[q1,q2,-q1+q2,{p+q1,m}]*(m^2/2+
-	SPD[p,p]/2)+FAD[p+q1,p+q2,-q1+q2,{q1,m},
-	{q2,m}]*(m^4/4+(m^2*SPD[p,p])/2+SPD[p,p]^2/4)"},
+	"-FAD[p + q1, -q1 + q2, {q2, m}]/2 + FAD[-q1 + q2, {q1, m}, {q2, m}]/4 + (FAD[q1, q2, -q1 + q2, {p + q1, m}]*(m^2 + SPD[p, p]))/2 - (FAD[p + q1, -q1 + q2, {q1, m}, {q2, m}]*(m^2 + SPD[p, p]))/2 + (FAD[p + q1, p + q2, -q1 + q2, {q1, m}, {q2, m}]*(m^2 + SPD[p, p])^2)/4"},
 {"fcstSPC-ID3",
 	"SPC[SPD[l,-p1+p3+p2]FAD[{l,m1},{l-p1+p3+p2,m3},
 	l-p1+p2,l-k1],l]//FCE",
-	"-(1/2)FAD[-k1+l,l-p1+p2,{l-p1+p2+p3,m3}]+
-	1/2FAD[l-p1+p2,{l,m1},-k1+l]+
-	FAD[{l,m1},-k1+l,{l-p1+p2+p3,m3},
-		l-p1+p2](-(m1^2/2)+m3^2/2+
-	1/2(-SPD[p1,p1]+2SPD[p1,p2]+2SPD[p1,p3]-SPD[p2,p2]-
-	2SPD[p2,p3]-SPD[p3,p3]))"},
+	"FAD[l, -k1 + l + p1 - p2, {l + p1 - p2, m1}]/2 - FAD[l, -k1 + l + p1 - p2, {-k1 + l + p1 - p2 - p3, m3}]/2 - (FAD[l, -k1 + l + p1 - p2, {-k1 + l, m1}, {-k1 + l + p1 - p2 - p3, m3}]*(m1^2 - m3^2 + SPD[p1, p1] - 2*SPD[p1, p2] - 2*SPD[p1, p3] + SPD[p2, p2] + 2*SPD[p2, p3] + SPD[p3, p3]))/2"},
 {"fcstSPC-ID4",
 	"SPC[SPD[l,-p1+p3+p2]FAD[{l,m1},{l-p1+p3+p2,m3},
 	l-p1+p2,l-k1],l,FDS->True]//FCE",
-	"1/2FAD[l,-k1+l+p1-p2,{l+p1-p2,m1}]-
-	1/2FAD[l,-k1+l+p1-p2,{-k1+l+p1-p2-p3,m3}]+
-	FAD[l,-k1+l+p1-p2,{-k1+l,m1},{-k1+l+p1-p2-p3,
-	m3}](-(m1^2/2)+m3^2/2+
-	1/2(-SPD[p1,p1]+2SPD[p1,p2]+2SPD[p1,p3]-SPD[p2,p2]-
-	2SPD[p2,p3]-SPD[p3,p3]))"},
+	"FAD[l, -k1 + l + p1 - p2, {l + p1 - p2, m1}]/2 - FAD[l, -k1 + l + p1 - p2, {-k1 + l + p1 - p2 - p3, m3}]/2 - (FAD[l, -k1 + l + p1 - p2, {-k1 + l, m1}, {-k1 + l + p1 - p2 - p3, m3}]*(m1^2 - m3^2 + SPD[p1, p1] - 2*SPD[p1, p2] - 2*SPD[p1, p3] + SPD[p2, p2] + 2*SPD[p2, p3] + SPD[p3, p3]))/2"},
 {"fcstSPC-ID5",
 	"SPC[SPD[l,p1-p3-p2]FAD[{l,m1},{l-p1+p3+p2,m3},
 	l-p1+p2,l-k1],l]//FCE",
-	"1/2FAD[-k1+l,l-p1+p2,{l-p1+p2+p3,m3}]-
-	1/2FAD[l-p1+p2,{l,m1},-k1+l]+
-	FAD[{l,m1},-k1+l,{l-p1+p2+p3,m3},
-	l-p1+p2](m1^2/2-m3^2/2+
-	1/2(SPD[p1,p1]-2SPD[p1,p2]-2SPD[p1,p3]+SPD[p2,p2]+
-	2SPD[p2,p3]+SPD[p3,p3]))"},
+	"-FAD[l, -k1 + l + p1 - p2, {l + p1 - p2, m1}]/2 + FAD[l, -k1 + l + p1 - p2, {-k1 + l + p1 - p2 - p3, m3}]/2 + (FAD[l, -k1 + l + p1 - p2, {-k1 + l, m1}, {-k1 + l + p1 - p2 - p3, m3}]*(m1^2 - m3^2 + SPD[p1, p1] - 2*SPD[p1, p2] - 2*SPD[p1, p3] + SPD[p2, p2] + 2*SPD[p2, p3] + SPD[p3, p3]))/2"},
 {"fcstSPC-ID6",
 	"SPC[SPD[l,p1-p3-p2]FAD[{l,m1},{l-p1+p3+p2,m3},
 	l-p1+p2,l-k1],l,FDS->True]//FCE",
-	"-(1/2)FAD[l,-k1+l+p1-p2,{l+p1-p2,m1}]+
-	1/2FAD[l,-k1+l+p1-p2,{-k1+l+p1-p2-p3,m3}]+
-	FAD[l,-k1+l+p1-p2,{-k1+l,m1},{-k1+l+p1-p2-p3,
-	m3}](m1^2/2-m3^2/2+
-	1/2(SPD[p1,p1]-2SPD[p1,p2]-2SPD[p1,p3]+SPD[p2,p2]+
-	2SPD[p2,p3]+SPD[p3,p3]))"},
+	"-FAD[l, -k1 + l + p1 - p2, {l + p1 - p2, m1}]/2 + FAD[l, -k1 + l + p1 - p2, {-k1 + l + p1 - p2 - p3, m3}]/2 + (FAD[l, -k1 + l + p1 - p2, {-k1 + l, m1}, {-k1 + l + p1 - p2 - p3, m3}]*(m1^2 - m3^2 + SPD[p1, p1] - 2*SPD[p1, p2] - 2*SPD[p1, p3] + SPD[p2, p2] + 2*SPD[p2, p3] + SPD[p3, p3]))/2"},
 {"fcstSPC-ID7",
 	"SPC[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[k1,l],
 	l,FDS->True]//Simplify//FCE",

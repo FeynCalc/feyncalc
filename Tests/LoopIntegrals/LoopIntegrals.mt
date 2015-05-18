@@ -12,31 +12,16 @@
 (* ------------------------------------------------------------------------ *)
 
 Needs["FeynCalc`"];
-
+$FCAdvice = False;
 ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]]
 Get/@tests;
 
 ClearScalarProducts;
-
 SetOptions[Tdec,UseParallelization->False];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Select[Names["Tests`LoopIntegrals`*"],
-	!StringMatchQ[#, "*fcstTID*"] &])];
+	Join@@(ToExpression/@Names["Tests`LoopIntegrals`*"])];
 
-
-ClearScalarProducts;
-
-$LimitTo4 = False;
-ScalarProduct[q1, q1] = 0;
-ScalarProduct[q2, q2] = 0;
-ScalarProduct[q1, q2] = 0;
-
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcstTID*"])];
-
-ClearScalarProducts;
-
-$LimitTo4 = True;
+$FCAdvice = True;
 

@@ -15,6 +15,121 @@
 
 Tests`LoopIntegrals`fcstPaVeReduce = {
 
-{"fcstPaVeReduce-ID1","PaVeReduce[PaVe[2, {SmallVariable[me2], mw2, t}, {SmallVariable[me2], 0, mw2}]]","B0[mw2, 0, mw2]/(mw2 - t) - B0[t, mw2, SmallVariable[me2]]/(mw2 - t)"}
+{"fcstPaVeReduce-ID1",
+	"PaVeReduce[PaVe[2, {SmallVariable[me2], mw2, t}, {SmallVariable[me2], 0, mw2}]]",
+	"B0[mw2, 0, mw2]/(mw2 - t) - B0[t, mw2, SmallVariable[me2]]/(mw2 - t)"},
+{"fcstPaVeReduce-ID2","PaVeReduce[PaVe[1,2,2,{se,MW2,MW2,se,S,T},{0,se,0,se}],Mandelstam->{S,T,U,2 MW2},IsolateNames->F]//FRH",
+	"-((MW2^3 - MW2^2 S - MW2 S^2 + S^3 - 3 MW2^2 se + 2 MW2 S se -
+S^2 se + 3 MW2 se^2 + 3 S se^2 - se^3 + 2 S se U)/(
+2 (MW2^2 - 2 MW2 S + S^2 - 2 MW2 se - 2 S se + se^2) (4 MW2 -
+	T) (MW2^2 - 2 MW2 se - 2 S se + se^2 -
+	S U))) - (se (MW2^3 + MW2^2 S - 2 MW2 S^2 - 3 MW2^2 se -
+	2 S^2 se + 3 MW2 se^2 + 3 S se^2 - se^3 + MW2 S U - S^2 U +
+	S se U) B0[0, 0,
+	se])/(2 MW2 (MW2^2 - 2 MW2 S + S^2 - 2 MW2 se - 2 S se +
+	se^2) (4 MW2 - T) (MW2^2 - 2 MW2 se - 2 S se + se^2 -
+	S U)) - ((4 MW2^9 - 17 MW2^8 S + 11 MW2^7 S^2 + 33 MW2^6 S^3 -
+	51 MW2^5 S^4 + 16 MW2^4 S^5 + 8 MW2^3 S^6 - 4 MW2^2 S^7 -
+	36 MW2^8 se + 110 MW2^7 S se - 9 MW2^6 S^2 se -
+	70 MW2^5 S^3 se - 11 MW2^4 S^4 se + 24 MW2^3 S^5 se -
+	8 MW2^2 S^6 se + 140 MW2^7 se^2 - 230 MW2^6 S se^2 -
+	145 MW2^5 S^2 se^2 + MW2^4 S^3 se^2 + 100 MW2^3 S^4 se^2 +
+	60 MW2^2 S^5 se^2 - 4 MW2 S^6 se^2 - 280 MW2^6 se^3 +
+	622 MW2^5 S se^3 + 152 MW2^4 S^2 se^3 - 204 MW2^3 S^3 se^3 +
+	560 MW2^2 S^4 se^3 - 210 MW2 S^5 se^3 + 420 MW2^5 se^4 -
+	238 MW2^4 S se^4 - 162 MW2^3 S^2 se^4 - 210 MW2^2 S^3 se^4 +
+	350 MW2 S^4 se^4 - 392 MW2^4 se^5 - 254 MW2^3 S se^5 -
+	252 MW2^2 S^2 se^5 - 350 MW2 S^3 se^5 + 224 MW2^3 se^6 +
+	266 MW2^2 S se^6 + 210 MW2 S^2 se^6 - 72 MW2^2 se^7 -
+	70 MW2 S se^7 + 10 MW2 se^8 - 14 MW2^5 se^3 T -
+	251 MW2^4 S se^3 T + 4 MW2^3 S^2 se^3 T +
+	182 MW2^2 S^3 se^3 T - 310 MW2 S^4 se^3 T + 21 S^5 se^3 T +
+	279 MW2^3 S se^4 T + 221 MW2^2 S^2 se^4 T +
+	275 MW2 S^3 se^4 T - 35 S^4 se^4 T + 14 MW2^3 se^5 T -
+	117 MW2^2 S se^5 T - 106 MW2 S^2 se^5 T + 35 S^3 se^5 T -
+	14 MW2^2 se^6 T + 3 MW2 S se^6 T - 21 S^2 se^6 T +
+	6 MW2 se^7 T + 7 S se^7 T - se^8 T - 8 MW2^3 S se^3 T^2 -
+	50 MW2^2 S^2 se^3 T^2 - 74 MW2 S^3 se^3 T^2 + 20 S^4 se^3 T^2 -
+	8 MW2^2 S se^4 T^2 + 8 MW2 S^2 se^4 T^2 - 20 S^3 se^4 T^2 +
+	8 MW2 S se^5 T^2 + 10 S^2 se^5 T^2 - 2 S se^6 T^2 +
+	2 MW2 S^2 se^3 T^3 + 3 S^3 se^3 T^3 - S^2 se^4 T^3 - MW2^8 U +
+	3 MW2^7 S U - 7 MW2^6 S^2 U + 21 MW2^5 S^3 U - 36 MW2^4 S^4 U +
+	28 MW2^3 S^5 U - 8 MW2^2 S^6 U + 6 MW2^7 se U +
+	23 MW2^6 S se U - 30 MW2^5 S^2 se U - 43 MW2^4 S^3 se U +
+	20 MW2^3 S^4 se U + 28 MW2^2 S^5 se U - 4 MW2 S^6 se U -
+	14 MW2^6 se^2 U - 145 MW2^5 S se^2 U + 39 MW2^4 S^2 se^2 U -
+	14 MW2^3 S^3 se^2 U + 130 MW2^2 S^4 se^2 U + 2 MW2 S^5 se^2 U -
+	4 S^6 se^2 U + 4 MW2^6 S U^2 - 12 MW2^5 S^2 U^2 +
+	13 MW2^4 S^3 U^2 - 7 MW2^3 S^4 U^2 + 3 MW2^2 S^5 U^2 -
+	MW2 S^6 U^2 - 16 MW2^5 S se U^2 + 20 MW2^4 S^2 se U^2 -
+	46 MW2^3 S^3 se U^2 + 45 MW2^2 S^4 se U^2 - 2 MW2 S^5 se U^2 -
+	S^6 se U^2 + 22 MW2^4 S se^2 U^2 + 18 MW2^3 S^2 se^2 U^2 -
+	8 MW2^2 S^3 se^2 U^2 + 55 MW2 S^4 se^2 U^2 - S^5 se^2 U^2 +
+	MW2^4 S^2 U^3 - 3 MW2^3 S^3 U^3 + 3 MW2^2 S^4 U^3 -
+	MW2 S^5 U^3 - 2 MW2^3 S^2 se U^3 - 7 MW2^2 S^3 se U^3 +
+	10 MW2 S^4 se U^3 - S^5 se U^3 + 2 MW2^2 S^2 se^2 U^3 -
+	7 MW2 S^3 se^2 U^3 + 3 S^4 se^2 U^3) B0[MW2, 0,
+	se])/(2 MW2 (MW2^2 - 2 MW2 S + S^2 - 2 MW2 se - 2 S se +
+	se^2)^2 (4 MW2 - T)^2 (MW2^2 - 2 MW2 se - 2 S se + se^2 -
+	S U)^2) + (S (MW2 - S - se) (MW2^4 - 6 MW2^3 S + 11 MW2^2 S^2 -
+	8 MW2 S^3 + 2 S^4 - 4 MW2^3 se + 22 MW2^2 S se -
+	10 MW2 S^2 se + 2 S^3 se + 6 MW2^2 se^2 - 26 MW2 S se^2 -
+	21 S^2 se^2 - 4 MW2 se^3 + 10 S se^3 + se^4 + MW2^2 S U -
+	2 MW2 S^2 U + S^3 U - 2 MW2 S se U - 8 S^2 se U + S se^2 U) B0[
+	S, 0, 0])/(2 (MW2^2 - 2 MW2 S + S^2 - 2 MW2 se - 2 S se +
+	se^2)^2 (MW2^2 - 2 MW2 se - 2 S se + se^2 -
+	S U)^2) + (2 S se (MW2^4 - 4 MW2^3 S + 6 MW2^2 S^2 - 4 MW2 S^3 +
+	S^4 - 4 MW2^3 se + 11 MW2^2 S se - 4 MW2 S^2 se +
+	6 MW2^2 se^2 - 10 MW2 S se^2 - 8 S^2 se^2 - 4 MW2 se^3 +
+	3 S se^3 + se^4 - 3 S^2 se U) B0[se, 0,
+	se])/((MW2^2 - 2 MW2 S + S^2 - 2 MW2 se - 2 S se +
+	se^2)^2 (MW2^2 - 2 MW2 se - 2 S se + se^2 - S U)^2) + ((MW2 +
+	S - se) (4 MW2^3 - 9 MW2^2 S + 2 S^3 - 14 MW2^2 se +
+	10 MW2 S se + 10 S^2 se + 38 MW2 se^2 - 6 se^3 - 11 se^2 T -
+	MW2^2 U - 4 MW2 S U + 5 S^2 U + 2 MW2 se U + 16 S se U -
+	12 se^2 U + 3 S U^2) B0[T, se,
+	se])/(2 (4 MW2 - T)^2 (MW2^2 - 2 MW2 se - 2 S se + se^2 -
+	S U)^2) - ((MW2 + S - se) (2 MW2^6 - 8 MW2^5 S + 12 MW2^4 S^2 -
+	8 MW2^3 S^3 + 2 MW2^2 S^4 - 4 MW2^5 se - 40 MW2^4 S se +
+	96 MW2^3 S^2 se - 56 MW2^2 S^3 se + 4 MW2 S^4 se -
+	50 MW2^4 se^2 + 44 MW2^3 S se^2 + 24 MW2^2 S^2 se^2 -
+	46 MW2 S^3 se^2 - 20 S^4 se^2 + 80 MW2^3 se^3 +
+	20 MW2^2 S se^3 - 48 MW2 S^2 se^3 - 22 S^3 se^3 -
+	70 MW2^2 se^4 - 54 MW2 S se^4 - 8 S^2 se^4 + 76 MW2 se^5 -
+	6 se^6 - 2 MW2^5 T + 20 MW2^4 S T - 36 MW2^3 S^2 T +
+	20 MW2^2 S^3 T - 2 MW2 S^4 T + 10 MW2^4 se T -
+	32 MW2^3 S se T + 60 MW2^2 S^2 se T + 8 MW2 S^3 se T +
+	2 S^4 se T - 22 se^5 T - 6 MW2^3 S T^2 + 6 MW2^2 S^2 T^2 -
+	6 MW2 S^3 T^2 + 18 MW2^2 S se T^2 - 60 MW2 S^2 se T^2 +
+	6 S^3 se T^2 + 4 MW2 S^2 T^3 + 12 S^2 se T^3 - S^2 T^4 +
+	20 MW2^3 se^2 U + 96 MW2^2 S se^2 U - 48 MW2 S^2 se^2 U -
+	56 S^3 se^2 U - 20 MW2^2 se^3 U - 88 MW2 S se^3 U -
+	40 S^2 se^3 U + 10 MW2 se^4 U + 28 S se^4 U - 24 se^5 U -
+	18 MW2 S se^2 U^2 - 42 S^2 se^2 U^2 + 6 S se^3 U^2) C0[MW2, MW2,
+	T, se, 0,
+	se])/(2 (4 MW2 - T)^2 (MW2^2 - 2 MW2 se - 2 S se + se^2 -
+	S U)^3) - (S^2 (18 MW2^6 se - 82 MW2^5 S se +
+	150 MW2^4 S^2 se - 140 MW2^3 S^3 se + 70 MW2^2 S^4 se -
+	18 MW2 S^5 se + 2 S^6 se - 66 MW2^5 se^2 + 193 MW2^4 S se^2 -
+	176 MW2^3 S^2 se^2 + 42 MW2^2 S^3 se^2 + 26 MW2 S^4 se^2 -
+	13 S^5 se^2 + 130 MW2^4 se^3 - 212 MW2^3 S se^3 +
+	12 MW2^2 S^2 se^3 + 20 MW2 S^3 se^3 + 2 S^4 se^3 -
+	150 MW2^3 se^4 + 103 MW2^2 S se^4 + 84 MW2 S^2 se^4 +
+	47 S^3 se^4 + 102 MW2^2 se^5 - 10 MW2 S se^5 - 34 S^2 se^5 -
+	48 MW2 se^6 + 6 se^7 - MW2^6 T + 6 MW2^5 S T - 15 MW2^4 S^2 T +
+	20 MW2^3 S^3 T - 15 MW2^2 S^4 T + 6 MW2 S^5 T - S^6 T +
+	5 se^6 T - 6 MW2^5 se U + 20 MW2^4 S se U - 20 MW2^3 S^2 se U +
+	10 MW2 S^4 se U - 4 S^5 se U + 15 MW2^4 se^2 U -
+	20 MW2^3 S se^2 U - 18 MW2^2 S^2 se^2 U + 12 MW2 S^3 se^2 U -
+	S^4 se^2 U - 20 MW2^3 se^3 U + 36 MW2 S^2 se^3 U +
+	32 S^3 se^3 U + 15 MW2^2 se^4 U + 10 MW2 S se^4 U -
+	13 S^2 se^4 U - 6 MW2 se^5 U - 4 S se^5 U + 6 se^6 U +
+	6 S^3 se^2 U^2) C0[MW2, S, se, se, 0,
+	0])/((MW2^2 - 2 MW2 S + S^2 - 2 MW2 se - 2 S se +
+	se^2)^2 (MW2^2 - 2 MW2 se - 2 S se + se^2 - S U)^3) - (
+S^2 (MW2 - S - se) (4 se - T)^2 C0[se, se, T, se, 0, se])/(
+2 (MW2^2 - 2 MW2 se - 2 S se + se^2 - S U)^3) + (
+S^3 (MW2 - S - se) (4 se - T)^2 D0[MW2, MW2, se, se, T, S, se, 0, se,
+	0])/(2 (MW2^2 - 2 MW2 se - 2 S se + se^2 - S U)^3)"}
 
 };

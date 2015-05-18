@@ -104,11 +104,7 @@ p1,p2,p3}]]", "True"},
 {"fcstTdecNegativeMomenta-ID15",
 "ExpandScalarProduct[(Tdec[{{q,mu},{q,nu},{q,rho}},{-p1,-p2}]/.{p1\
 \[Rule]-p1,p2\[Rule]-p2})]===FCI[Tdec[{{q,mu},{q,nu},{q,rho}},{p1,p2}]\
-]", "True"},
-{"fcstTdecNegativeMomenta-ID16",
-"ExpandScalarProduct[(Tdec[{{q,mu},{q,nu},{q,rho}},{-p1,-p2,p3}]/.{\
-p1\[Rule]-p1,p2\[Rule]-p2})]===FCI[Tdec[{{q,mu},{q,nu},{q,rho}},{p1,\
-p2,p3}]]", "True"}
+]", "True"}
 });
 
 
