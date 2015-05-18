@@ -1,0 +1,37 @@
+
+
+(* :Title: FCLoopIsolate.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopIsolate	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FCLoopIsolate = {
+
+{"fcstFCLoopIsolate-ID1","FCLoopIsolate[x, {q}]","x"},
+{"fcstFCLoopIsolate-ID2","FCLoopIsolate[x+y, {q}]","x+y"},
+{"fcstFCLoopIsolate-ID3","FCLoopIsolate[q , {q}]",
+	"FCGV[\"LoopInt\"][q]"},
+{"fcstFCLoopIsolate-ID4","FCLoopIsolate[x q , {q}]",
+	"x*FCGV[\"LoopInt\"][q]"},
+{"fcstFCLoopIsolate-ID5","FCLoopIsolate[q x + y, {q}]",
+	"y + x*FCGV[\"LoopInt\"][q]"},
+{"fcstFCLoopIsolate-ID6","FCLoopIsolate[q x + z (q + y), {q}]",
+	"y*z + (x + z)*FCGV[\"LoopInt\"][q]"},
+{"fcstFCLoopIsolate-ID7","FCLoopIsolate[q x + z (q + y) + GS[q], {q}]",
+	"y*z + (x + z)*FCGV[\"LoopInt\"][q] + FCGV[\"LoopInt\"][DiracGamma[Momentum[q]]]"},
+{"fcstFCLoopIsolate-ID8","FCLoopIsolate[q x + z (q + y) + d GS[q], {q}, ExceptHeads -> {GS}]",
+	"y*z + (x + z)*FCGV[\"LoopInt\"][q] + d*FCGV[\"LoopInt\"][DiracGamma[Momentum[q]]]"},
+{"fcstFCLoopIsolate-ID9","FCLoopIsolate[FCLoopIsolate[q x + z (q + y) + d GS[q], {q},
+ExceptHeads -> {GS}], {q}, Head -> ll]",
+	"y*z + (x + z)*ll[q] + d*ll[DiracGamma[Momentum[q]]]"},
+{"fcstFCLoopIsolate-ID10","MatchQ[FCLoopIsolate[q (x + y), {q}, Head -> ll, Isolate -> True],
+HoldForm[KK[_]] ll[q]]","True"}
+};

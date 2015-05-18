@@ -1,0 +1,39 @@
+
+
+(* :Title: FCLoopSplit.test                                          	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopSplit		  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FCLoopSplit = {
+{"fcstFCLoopSplit-ID1","FCLoopSplit[0, {q}] // FCE",
+	"{0, 0, 0, 0}"},
+{"fcstFCLoopSplit-ID2","FCLoopSplit[c, {q}] // FCE",
+	"{c, 0, 0, 0}"},
+{"fcstFCLoopSplit-ID3","FCLoopSplit[c FAD[{q, m}], {q}] // FCE",
+	"{0, c*FAD[{q, m}], 0, 0}1"},
+{"fcstFCLoopSplit-ID4",
+	"FCLoopSplit[ SPD[q, p] FAD[{q, m}], {q}] // FCE",
+	"{0, 0, FAD[{q, m}]*SPD[p, q], 0}"},
+{"fcstFCLoopSplit-ID5",
+	"FCLoopSplit[c SPD[q, p] FAD[{q, m}], {q}] // FCE",
+	"{0, 0, c*FAD[{q, m}]*SPD[p, q], 0}"},
+{"fcstFCLoopSplit-ID6",
+	"FCLoopSplit[ FVD[q, mu] FAD[{q, m}], {q}] // FCE",
+	"{0, 0, 0, FAD[{q, m}]*FVD[q, mu]}"},
+{"fcstFCLoopSplit-ID7","FCLoopSplit[c FVD[q, mu] FAD[{q, m}], {q}] // FCE",
+	"{0, 0, 0, c*FAD[{q, m}]*FVD[q, mu]}"},
+{"fcstFCLoopSplit-ID8","FCLoopSplit[c + b FAD[{q, mu}] +
+	SPD[q, k] SPD[q, l] FAD[{q, m}] + b FVD[q, mu] SPD[q, l]
+	FAD[{q, m}], {q}] // FCE","{c, b*FAD[{q, mu}],
+	FAD[{q, m}]*SPD[k, q]*SPD[l, q],
+	b*FAD[{q, m}]*FVD[q, mu]*SPD[l, q]}"}
+};
