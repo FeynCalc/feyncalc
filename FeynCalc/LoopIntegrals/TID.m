@@ -788,7 +788,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 				True,
 					Message[TID::failmsg, "n-point functions with n>5 are not implemented yet!"];
 					Abort[]
-		])/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && np<=4;
+		])/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np;
 
 		qrule =	{
 			(* General reduction for integrals with non-vanishing Gram determinants *)
