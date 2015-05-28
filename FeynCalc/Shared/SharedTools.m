@@ -43,6 +43,12 @@ FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect
 to the variables a1, a2, ... ";
 
+FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
+that are free of any occurence of v1, v2, ... and pieces that contain \
+those variables. This works both on sums and products. The output \
+is provided in the form of a two element list. One can recover the \
+original expression by applying Total to that list";
+
 FCSymmetrize::usage=
 "FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect
 to the variables a1, a2, ... .";
@@ -141,6 +147,8 @@ appends the subset of remaining unmatched elements.";
 XYT::usage=
 "XYT[exp, x,y] transforms  (x y)^m away ..."
 
+FCSplit::fail = "Error! Splitting `1` w.r.t `2` failed!";
+
 Begin["`Package`"]
 End[]
 
@@ -167,6 +175,10 @@ Options[MemSet] = {
 };
 Options[MLimit] = {
 	Limit -> Limit
+};
+
+Options[FCSplit] = {
+	Expanding -> True
 };
 
 Options[FRH] = {
@@ -262,6 +274,22 @@ FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
+	];
+
+FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
+	Block[ {free, notfree, tmp, null1, null2},
+		If[ OptionValue[Expanding],
+			tmp = Expand2[expr, vars],
+			tmp = expr
+		];
+		free = SelectFree[tmp + null1 + null2, vars] /. null1 | null2 -> 0;
+		notfree =
+		SelectNotFree[tmp + null1 + null2, vars] /. null1 | null2 -> 0;
+		If[ free + notfree =!= tmp || ! FreeQ2[free, vars],
+			Message[FCSplit::fail, expr, vars];
+			Abort[]
+		];
+		{free, notfree}
 	];
 
 FCSymmetrize[x_,v_List] :=

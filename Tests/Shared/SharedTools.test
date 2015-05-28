@@ -64,6 +64,18 @@ Tests`Shared`fcstSharedToolsFCAntiSymmetrize = {
 	f[d, b, a, c] - f[d, b, c, a] - f[d, c, a, b] + f[d, c, b, a])"}
 };
 
+Tests`Shared`fcstSharedToolsFCSplit = {
+{"fcstSharedToolsFCSplit-ID1","FCSplit[0, {z}]","{0,0}"},
+{"fcstSharedToolsFCSplit-ID2","FCSplit[1, {z}]","{1,0}"},
+{"fcstSharedToolsFCSplit-ID3","FCSplit[z, {z}]","{0,z}"},
+{"fcstSharedToolsFCSplit-ID4","FCSplit[a, {z}]","{a,0}"},
+{"fcstSharedToolsFCSplit-ID5","FCSplit[a+b, {z}]","{a+b,0}"},
+{"fcstSharedToolsFCSplit-ID6","FCSplit[a+z, {z}]","{a,z}"},
+{"fcstSharedToolsFCSplit-ID7","FCSplit[1/(z + a), {z}]","{0,1/(a+z)}"},
+{"fcstSharedToolsFCSplit-ID8","FCSplit[(z + a)^2, {z}]","{a^2,2 a z+z^2}"},
+{"fcstSharedToolsFCSplit-ID9","FCSplit[(z + a)^2, {z}, Expanding -> False]","{0,(a+z)^2}"}
+};
+
 Tests`Shared`fcstSharedToolsFCSymmetrize = {
 {"fcstSharedToolsFCSymmetrize-ID1","FCSymmetrize[f[a, b], {a, b}]","1/2 (f[a, b] + f[b, a])"},
 {"fcstSharedToolsFCSymmetrize-ID2","FCSymmetrize[f[a, b, c], {a, b, c}]",
