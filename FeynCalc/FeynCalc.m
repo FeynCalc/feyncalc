@@ -431,7 +431,7 @@ DOT = Dot;
 	{"System`", "FeynCalc`"}.
 	*)
 
-SetAttributes[FCPrint, HoldAll];
+SetAttributes[FCPrint, HoldRest];
 
 Options[FCPrint] = {
 		FCDoControl :> $VeryVerbose,
@@ -439,7 +439,7 @@ Options[FCPrint] = {
 		WriteStringOutput ->"stdout"
 }
 
-FCPrint[level_, x:Except[_?OptionQ].. , OptionsPattern[]] :=
+FCPrint[level_, x__ /;!OptionQ[{x}] , OptionsPattern[]] :=
 	Block[{flowcontrol=OptionValue[FCDoControl]},
 		If[ flowcontrol >= level,
 			If[ OptionValue[UseWriteString],
