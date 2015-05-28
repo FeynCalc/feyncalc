@@ -353,14 +353,6 @@ TID[am_ , q_, OptionsPattern[]] :=
 		(*	The final result is a sum of the reduced tensor part and the original scalar part *)
 		res = res+irrelevant;
 
-		If [OptionValue[ExpandScalarProduct],
-			FCMonitor[
-				res = ExpandScalarProduct[res],
-				Grid[{{"Expanding scalar products in the final result",
-				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
-			]
-		];
-
 		If[ OptionValue[FeynAmpDenominatorCombine] &&
 			!FreeQ2[res, (FeynAmpDenominator[xxx__]^_.) *(FeynAmpDenominator[yyy__]^_.)],
 			res = FeynAmpDenominatorCombine[res]
@@ -397,6 +389,14 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 		If[ dimred,
 			res = res /. Momentum[aa_,n] :> Momentum[aa]
+		];
+
+		If [OptionValue[ExpandScalarProduct],
+			FCMonitor[
+				res = ExpandScalarProduct[res],
+				Grid[{{"Expanding scalar products in the final result",
+				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
+			]
 		];
 
 
