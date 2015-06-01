@@ -1,0 +1,47 @@
+
+
+(* :Title: FCLoopSolutionList.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopSolutionList	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FCLoopSolutionList = {
+
+{"fcstFCLoopSolutionList-ID1","li = FCLoopCanonicalize[
+	FCL[FVD[q, i1] FVD[q, i2] FAD[q, {q + p, m}]] +
+	FCL[FVD[q, i3] FVD[q, i4] FAD[q, {q + p, m}]], q,
+	FCL] \n FCLoopSolutionList[li,
+	xxx ( li[[4]] /. FCL -> Identity /. q -> p), Dispatch -> False]","{FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[i1, D], Momentum[q, D]] Pair[LorentzIndex[i2, D],
+	Momentum[q, D]]] ->
+	xxx FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0],
+	PropagatorDenominator[2 Momentum[p, D], m]] Pair[
+	LorentzIndex[i1, D], Momentum[p, D]] Pair[LorentzIndex[i2, D],
+	Momentum[p, D]],
+	FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[i3, D], Momentum[q, D]] Pair[LorentzIndex[i4, D],
+	Momentum[q, D]]] ->
+	xxx FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0],
+	PropagatorDenominator[2 Momentum[p, D], m]] Pair[
+	LorentzIndex[i3, D], Momentum[p, D]] Pair[LorentzIndex[i4, D],
+	Momentum[p, D]]}"},
+{"fcstFCLoopSolutionList-ID2","FCLoopSolutionList[li, 0 ( li[[4]] /. q -> p), Dispatch -> False]","{FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[i1, D], Momentum[q, D]] Pair[LorentzIndex[i2, D],
+	Momentum[q, D]]] -> 0,
+	FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[i3, D], Momentum[q, D]] Pair[LorentzIndex[i4, D],
+	Momentum[q, D]]] -> 0}"}
+
+};

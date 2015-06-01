@@ -1,0 +1,102 @@
+
+
+(* :Title: FCLoopCanonicalize.test                                          	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopCanonicalize		  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FCLoopCanonicalize = {
+{"fcstFCLoopCanonicalize-ID1","FCLoopCanonicalize[0, q, FCL]","{{},{},{},{}}"},
+{"fcstFCLoopCanonicalize-ID2","FCLoopCanonicalize[1, q, FCL]","{{},{},{},{}}"},
+{"fcstFCLoopCanonicalize-ID3","FCLoopCanonicalize[q, q, FCL]","{{},{},{},{}}"},
+{"fcstFCLoopCanonicalize-ID4","FCLoopCanonicalize[FCL[FAD[{q, m}]], q, FCL] // FCE",
+	"{{FCL[FAD[{q, m}]]}, {{}}, {FCL[FAD[{q, m}]]}, {FCL[FAD[{q, m}]]}}"},
+{"fcstFCLoopCanonicalize-ID5","MatchQ[FCLoopCanonicalize[FCL[FVD[q, mu]], q,
+	FCL], {{FCL[
+	Pair[LorentzIndex[mu, D],
+	Momentum[q, D]]]}, {{LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[mu, D]}}, {FCL[
+	Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}, {FCL[
+	Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID6","MatchQ[FCLoopCanonicalize[
+	FCL[FVD[q, mu]] + FCL[FVD[q, nu]] + FCL[FVD[q, rho]], q,
+	FCL], {{FCL[Pair[LorentzIndex[mu, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[nu, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[rho, D],
+	Momentum[q, D]]]}, {{LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[mu, D]}, {LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[nu, D]}, {LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[rho, D]}}, {FCL[
+	Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}, {FCL[
+	Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID8","MatchQ[FCLoopCanonicalize[
+	a FCL[FVD[q, mu]] + b FCL[FVD[q, nu]] +
+	c FCL[FVD[q, rho]], q, FCL],
+	{{FCL[Pair[LorentzIndex[mu, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[nu, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[rho, D],
+	Momentum[q, D]]]}, {{LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[mu, D]}, {LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[nu, D]}, {LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[rho, D]}}, {FCL[
+	Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]],
+	FCL[Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}, {FCL[
+	Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID9","MatchQ[FCLoopCanonicalize[a
+	FCL[Pair[Momentum[q], LorentzIndex[mu]]],
+	q, FCL], {{FCL[Pair[LorentzIndex[mu], Momentum[q]]]},
+	{{LorentzIndex[x_FCGV] -> LorentzIndex[mu]}}, {FCL[
+	Pair[LorentzIndex[x_FCGV], Momentum[q]]]}, {FCL[
+	Pair[LorentzIndex[x_FCGV], Momentum[q]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID10","MatchQ[FCLoopCanonicalize[
+	a FCL[Pair[Momentum[q, D - 4], LorentzIndex[mu, D - 4]]] +
+	b FCL[Pair[Momentum[q, D], LorentzIndex[mu, D]]], q,
+	FCL], {{FCL[Pair[LorentzIndex[mu, -4 + D], Momentum[q, -4 + D]]],
+	FCL[Pair[LorentzIndex[mu, D],
+	Momentum[q, D]]]}, {{LorentzIndex[x_FCGV, -4 + D] ->
+	LorentzIndex[mu, -4 + D]}, {LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[mu, D]}}, {FCL[
+	Pair[LorentzIndex[x_FCGV, -4 + D], Momentum[q, -4 + D]]],
+	FCL[Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}, {FCL[
+	Pair[LorentzIndex[x_FCGV, -4 + D], Momentum[q, -4 + D]]],
+	FCL[Pair[LorentzIndex[x_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID11","MatchQ[FCLoopCanonicalize[
+	FCL[FVD[q, i1] FVD[q, i2] FAD[q, {q + p, m}]] +
+	FCL[FVD[q, i3] FVD[q, i4] FAD[q, {q + p, m}]], q,
+	FCL], {{FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[i1, D], Momentum[q, D]] Pair[LorentzIndex[i2, D],
+	Momentum[q, D]]],
+	FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[i3, D], Momentum[q, D]] Pair[LorentzIndex[i4, D],
+	Momentum[q, D]]]}, {{LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[i1, D],
+	LorentzIndex[y_FCGV, D] ->
+	LorentzIndex[i2, D]}, {LorentzIndex[x_FCGV, D] ->
+	LorentzIndex[i3, D],
+	LorentzIndex[y_FCGV, D] -> LorentzIndex[i4, D]}}, {FCL[
+	FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[x_FCGV, D], Momentum[q, D]] Pair[
+	LorentzIndex[y_FCGV, D], Momentum[q, D]]],
+	FCL[FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[x_FCGV, D], Momentum[q, D]] Pair[
+	LorentzIndex[y_FCGV, D], Momentum[q, D]]]}, {FCL[
+	FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], 0],
+	PropagatorDenominator[Momentum[p, D] + Momentum[q, D], m]] Pair[
+	LorentzIndex[x_FCGV, D], Momentum[q, D]] Pair[
+	LorentzIndex[y_FCGV, D], Momentum[q, D]]]}}]","True"}
+};
