@@ -11,30 +11,37 @@
 	Copyright (C) 2014-2015 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Computes tensor integral decompositions						*)
+(* :Summary:	Computes tensor decompositions for multiloop integrals
+				using projection methods			 						*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tdec::usage = "Tdec[{q,mu}, {p}];
-Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or
-Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}]
-calculates the tensorial decomposition formulas.
+Tdec::usage = "Tdec[{q,mu}, {p}]; \
+Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or \
+Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] \
+calculates the tensorial decomposition formulas. \
 The more common ones are saved in TIDL.";
 
-NumberOfMetricTensors::usage =
-"NumberOfMetricTensors is an option of Tdec.";
-
 UseParallelization::usage =
-"UseParallelization is an option of Tdec. When set to True,
-tensor decomposition formulas are computed using parallelization, which
-results in a speed up of roughly 30-40%. This feature requires using
+"UseParallelization is an option of Tdec. When set to True, \
+tensor decomposition formulas are computed using parallelization, which \
+results in a speed up of roughly 30-40%. This feature requires using \
 additional Mathematica kernels.";
 
 UseTIDL::usage =
-"UseTIDL is an option of Tdec. When set to True, Tdec will check
-if the integral you want to decompose is already stored in TIDL, the
-built-in Tensor Integral Decomposition Library. If yes, then the result
+"UseTIDL is an option of Tdec. When set to True, Tdec will check \
+if the integral you want to decompose is already stored in TIDL, the \
+built-in Tensor Integral Decomposition Library. If yes, then the result \
 will be fetched immediately.";
+
+Tdec::basis =
+"Tdec failed to generate the tensor basis. Evaluation aborted!";
+
+Tdec::slow =
+"Tdec is computing a decomposition that is not available in TIDL. This \
+might take quite some time. If this integral often appears in your computations, \
+it is recommended to compute it once and then save the result to the TIDL \
+directory.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -48,80 +55,183 @@ End[]
 
 Begin["`Tdec`Private`"]
 
-Options[Tdec] =
-	{
-		Dimension -> D,
-		Factoring -> Factor2,
-		FeynCalcExternal -> True,
-		List -> True,
-		NumberOfMetricTensors -> Infinity,
-		UseParallelization -> True,
-		UseTIDL -> True,
-		BasisOnly -> False
-	};
+Options[Tdec] =	{
+	BasisOnly -> False,
+	Dimension -> D,
+	FCVerbose -> False,
+	Factoring -> Factor2,
+	FeynCalcExternal -> True,
+	List -> True,
+	UseParallelization -> True,
+	UseTIDL -> True
+};
 
+(* 	gPart generates the "metric" piece of the tensor decomposition, i.e. terms
+	that are proportional only to the products of metric tensors	*)
+gPart[lis_List /; OddQ[Length[lis]], _] :=
+	0;
+gPart[lis_List /; EvenQ[Length[lis]] && Length[lis] == 2, dim_] :=
+	Pair[LorentzIndex[lis[[1]],dim], LorentzIndex[lis[[2]],dim]] CC[{0, 0}, {lis[[1]], lis[[2]]}];
 
-
-getsymmetries[Equal[bb_ , aa_]] :=
-	(FCPrint[1,"No symmetries in ", aa];
-	{})/;Head[aa]=!=Plus || Head[bb]=!=Times;
-
-getsymmetries[Equal[x_Times ,aa_Plus]] :=
-	Block[ {t1,t2,t3,t4},
-	(* "For now use symmetries only for 1-loop integrals" *)
-		If[ Length[Cases[x, Momentum[a_, ___] :> a, Infinity] // Union]===1,
-			FCPrint[1, "working out the symmetries of ", aa];
-			t1 = Cases2[aa, LorentzIndex];
-			t2 = Union[Map[Sort,Map[Take[#,2]&,Permutations[t1]]]];
-			t3 = Map[{Apply[RuleDelayed,{#[[1]], #[[2]]}],
-					Apply[RuleDelayed,{#[[2]], #[[1]]}]}&, t2];
-			t4 = {};
-			For[i = 1, i <= Length[t3], i++,
-				If[ aa === (aa /. t3[[i]]),
-					AppendTo[t4, t3[[i]]]
-				]
-			];
-			t4,
-			{}
-		]
+gPart[lis_List /; EvenQ[Length[lis]] && Length[lis] > 2, dim_:4] :=
+	Block[ {ii, tmp, cs, rep, gPerms2, gPerms, TTT, rl1, rl2, res, cpref},
+		(*	This is the id of the "purely metric" coefficient CC, i.e.
+			0000000... in the PaVe notation	*)
+		cpref = Table[0, {i, 1, Length[lis]}];
+		(*	gPerms are functions for generating permutations of the
+			given list. The point is that we are generating all permutations
+			1 <-> 2, ... 1<->n which give us a list of n-1 entries. Then we cut the first two
+			indices and from each element and repeat the same procedure with the permutations.
+			This gives us a big nested list of type {{{a,b},{sublists}},{{a,c},{sublists}},...}
+			that contains all inequivalent permutations of the indices taking into account the
+			symmetry of the metric tensor	*)
+		gPerms[lis2_List] :=
+			Join[{lis2}, Table[Permute[lis2, Cycles[{{2, i}}]], {i, 3, Length[lis2]}]];
+		gPerms2[lis2_List] :=
+			Map[{Take[#, 2], TTT[gPerms[Drop[#, 2]]]} &, lis2];
+		(* 	these replacements are needed to convert the nested list into a plain list of  lists
+			of inidces	*)
+		rl1 = Dispatch[{lii : {{_, _}, TTT[_]} :>
+			TTT[Map[Join[lii[[1]], #] &, (lii[[2]] /. TTT -> Identity)]]}];
+		rl2 = Dispatch[{x : {__TTT} :>
+			TTT @@ (Reap[(x /. TTT[y__] :> TTT[Sow /@ y])][[2]])}];
+		(*	first application of gPerms *)
+		tmp = gPerms2[gPerms[lis]];
+		(* now we run this N/2-2 times which gives us a big fat nested list *)
+		For[ii = 1, ii < Length[lis]/2 - 2, ii++,
+			cs = Cases[tmp, TTT[x_] :> x, Infinity];
+			rep = Map[Rule[#, (gPerms2[#])] &, cs] // Dispatch;
+			tmp = tmp /. TTT -> Identity /. rep;
+		];
+		(* 	here we convert the nested list into a proper list of lists of
+			indices. Note that we start from the most inner lists (marked with TTT)
+			and then work our way outside until we hit the external boundaries of
+			the list. Using Reap and Sow speeds up the whole a bit.  *)
+		res = (FixedPoint[(# /. rl1 /. rl2) &, tmp, Length[lis]/2 - 1] /.
+			TTT -> Identity);
+		(* small cross-check to ensure that nothing went wrong *)
+		If[ Length[res] =!= (Length[lis] - 1)!! ||
+			Signature[res] === 0 || ! FreeQ[res, TTT],
+			Message[Tdec::basis];
+			Abort[]
+		];
+		(* 	finally, each list of indices must be converted into products
+			of metric tensors times	tensor coefficients CC *)
+		(TTT @@ res) /. List[x__] :> Partition[{x}, 2] /. {a_, b_} /;
+		FreeQ[a, List] && FreeQ[b, List] :> Pair[LorentzIndex[a,dim], LorentzIndex[b,dim]] /.
+		List[x__] :>
+		Times[x, CC[cpref, {x} /. Pair[LorentzIndex[a_,dim], LorentzIndex[b_,dim]] :> Sequence[a, b]]] /.
+		TTT -> Plus
 	];
 
-solvesymms[xx_] :=
-	Block[ {s1,s2,s3,res,var,du,nx = xx,ff,vv,titi,ij},
-		If[ Head[nx] === List,
-			nx = Sum[Expand[nx[[iji]] du[iji],LorentzIndex],{iji,Length[nx]}]
-		];
-		FCPrint[1,"collecting in solvesymms ", Length[nx]];
-		nx = Map[(SelectFree[#, {du, LorentzIndex}] ff[SelectNotFree[#,
-			{du, LorentzIndex}]])&, nx];
-		vv = Cases2[nx, ff];
-		FCPrint[1,"collecting in solvesymms ", Length[vv], "terms" ];
-		titi = TimeUsed[];
-		s2 = Table[If[ IntegerQ[ij/1000],
-					FCPrint[1,ij]
-				];
-				D[nx,vv[[ij]]],
-				{ij,Length[vv]}];
-		FCPrint[1,"time for collect in solvesymms = ", TimeUsed[] - titi];
-		ij = 0;
-		res = {};
-		While[(nx =!= 0)&& (ij < Length[s2]), ij ++;
-											var = Variables[s2[[ij]]];
-											If[ var =!= {},
-												s3 = Solve[s2[[ij]]==0,    var//First, VerifySolutions -> False]//First//First;
-												If[ !MemberQ[res,s3],
-													AppendTo[res,s3];
-													nx = nx /. s3
-												];
-											];
+(* 	pPart generates the "momentum" piece of the tensor decomposition, i.e. terms
+	that are proportional only to the external momenta	*)
+pPart[lis_List, moms_List, dim_] :=
+	Block[{rep, tups, LS, TTT,seed},
+		seed = Unique[];
+		rep = Table[Rule[seed[i], moms[[i]]], {i, 1, Length[moms]}];
+		(* 	since each momentum is a vector, the generation of all the unique
+			index lists (via Tuples) is much simpler, as compared to the metric
+			part of the basis	*)
+		tups = Tuples[Table[seed[i], {i, 1, Length[moms]}], {Length[lis]}];
+		(* again, the tensors should be dressed with the corresponding coefficients	*)
+		(TTT@@Map[{{ Thread[FVD[#, lis]]} /. rep, CC[LS @@ #, LS @@ lis]} &,
+				tups] /. List -> Times /. TTT -> Plus /. LS -> List /.
+				FVD[x_,y_]:>Pair[Momentum[x,dim], LorentzIndex[y,dim]])/.seed->Identity
+	];
+
+(* 	mPart generates the "mixed" piece of the tensor decomposition, i.e. terms
+	that are proportional to both the external momenta and metric tensors	*)
+mPart[_List, {}, _] :=
+	0;
+
+mPart[lis_List, moms_List /; Length[moms] > 0, dim_] :=
+	Block[ {aux, mpp},
+		(*mpp splits index lists into metric and momentum pieces *)
+		mpp[liis_List, n_Integer /; EvenQ[n]] :=
+			{#, Complement[liis, #]}&/@Subsets[liis, {n}]/; n < Length[liis];
+
+		(* 	aux applied gPart and pPart to the index list and splices CCs to
+			from both functions into one correct CC  *)
+		aux[xx_] :=
+			Total@((Expand[Thread[Times[#[[1]], #[[2]]]], CC] /.
+				CC[a_, b_] CC[c_, d_] :>
+				CC[Join[a, c], Join[b, d]]) & /@ (Map[{gPart[#[[1]],dim],
+				pPart[#[[2]], moms, dim]} &, xx]));
+		(* 	A rank N integral can have up to N-2 metric tensors in the mixed piece
+			of the tensor basis *)
+		Total[aux/@(Map[mpp[lis, #] &, Range[2, If[EvenQ[Length[lis]],Length[lis]-2,Length[lis]-1], 2]])]
+	];
+
+
+(*	convets 1-loop tensor coefficients into Lorentz structures that will be contracted with the
+	tensor decomposition	*)
+ccProjOneLoop[exp_, li_List, moms_List, dim_:4] :=
+	Block[{fvd,mtd,TTT},
+		Times @@ (Thread[fvd[Map[If[# === 0, TTT, moms[[#]]] &, exp], li]] //.
+		{a___,fvd [TTT, x_], fvd [TTT, y_], b___} :> {a, mtd[x, y], b} /.
+		{fvd[x_,y_]:>Pair[Momentum[x,dim], LorentzIndex[y,dim]],
+		mtd[x_,y_]:>Pair[LorentzIndex[x,dim], LorentzIndex[y,dim]]})
+	];
+
+(*	convets multiloop tensor coefficients (starting with 2-loop) into Lorentz structures that will
+	be contracted with the tensor decomposition. Again, the 1-loop case is treated specially, since
+	there the overall situation is much simpler	*)
+ccProjMultiLoop[exp_, moms_List, dim_: 4] :=
+	Block[{fvd, mtd, TTT, lis = {}, mlis = {}},
+		Map[{AppendTo[mlis, #[[1]]], AppendTo[lis, #[[2]]]}; &, exp];
+		ccProjOneLoop[Total@mlis, Total@lis, moms, dim]
+	];
+
+
+(* 	This returns us the full (unsymmetrized) tensor basis for the given combination of indices
+	and external momenta	*)
+fullBasis[lis_List, moms_List, dim_] :=
+	Block[{res},
+		res = gPart[lis,dim] + mPart[lis, moms,dim] + pPart[lis, moms,dim];
+		If[	!FreeQ2[res,{mPart,gPart,pPart}],
+			Message[Tdec::basis];
+			Abort[]
 		];
 		res
+	];
+
+
+(* 	CCSymmetrize symmetrizes the tensor basis for multiloop (starting with 2 loops) tensor integrals.
+	We start with 2 loops since for 1-loop integrals the symmetrization is much simpler and can be done
+	inside TID	*)
+CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
+	Block[ {gg, detPos, detPos2, nonsymPart, symPart},
+		(* small cross check *)
+		If[ Signature[Flatten[syms]] === 0 || Complement[Flatten[syms], li] =!= {},
+			Message[Tdec::basis];
+			Abort[]
+		];
+		detPos[x_] :=
+			First@Position[li, #] & /@ x;
+		detPos2[x_] :=
+			detPos /@ x;
+		gg = detPos2[syms];
+		(* 	nonsymPart contains all the indices that do not exhibit
+			any symmetries	*)
+		nonsymPart = {{Delete[ins, List /@ Flatten[gg]],
+			Delete[li, List /@ Flatten[gg]]}};
+		(* 	symPart gives us list of indices that are symmetric under
+			pairwise exchange i <->j	*)
+		symPart =
+		Thread[List[Sort /@ (Extract[ins, #] & /@ gg),
+			Extract[li, #] & /@ gg]];
+
+		If[ nonsymPart =!= {{{}, {}}},
+			Join[symPart, nonsymPart],
+			symPart
+		]
 	];
 
 (*    Loop integrals without external vectors and with an odd
 	tensor rank are zero    *)
 Tdec[_:1, li : {{_, _} ..}, {}, OptionsPattern[]] :=
-	If[ OptionValue[List],
+	If[ OptionValue[List] && !OptionValue[BasisOnly],
 		{0,0},
 		0
 	]/; OddQ[Length[li]];
@@ -131,23 +241,52 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 	opt:OptionsPattern[]] :=
 	Tdec[exp, {{a,b}}, pli, opt];
 
-Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], opt:OptionsPattern[]] :=
-	Block[ {tt,fv,  factor, dim, pe, proj, proli, nccli, ccli, ctt, pli,
-			nullccli, kli, eqli, neqli,  nttt,listlabel, fce,
-			veqli, seqli, scqli, solu, xy, ce, byby, symms, sy,
-			cfix,pcfix,liS,cc,ccfix,ccf,gfix,ccjoin,ccj,gfixx,newcc,extMom,basisonly},
+Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]] :=
+	Block[ {tt, factor, dim, proli, nccli, ccli, pli,
+			eqli, neqli,  nttt,listlabel, fce,
+			veqli, seqli, scqli, solu,ii,ex,ce,xy,tdecVerbose,
+			extMom,basisonly,multiLoop=False,lis,mlis,basis,multiLoopSyms={}},
+
 		dim         = OptionValue[Dimension];
-		listlabel     = OptionValue[List];
-		fce         = OptionValue[FeynCalcExternal];
-		factor         = OptionValue[Factoring];
-		basisonly         = OptionValue[BasisOnly];
+		listlabel	= OptionValue[List];
+		fce			= OptionValue[FeynCalcExternal];
+		factor		= OptionValue[Factoring];
+		basisonly	= OptionValue[BasisOnly];
+
+		If [!OptionValue[FCVerbose],
+			tdecVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				tdecVerbose=OptionValue[FCVerbose]
+			]
+		];
+
+		xy[xp_] := ToExpression["X" <> ToString[xp]];
+		ce[xp_] := ToExpression["cC" <> ToString[xp]];
+
+		(* list of indices *)
+		lis = (# /. {_, a_} :> a) & /@ Sort[li];
+		(* list of loop momenta *)
+		mlis = (# /. {a_, _} :> a) & /@ Sort[li];
+		(* Encode the given external momenta *)
+		pli = extMom/@ppli;
+
+		(*TODO Sort zero momenta out *)
+		(*If[!FreeQ[pli,extMom[0]],
+			Print["pli:",pli]
+		];*)
+
+		(* detect if we are dealing with a multiloop integral	*)
+		If[ Length@Union[mlis]=!=1,
+			multiLoop=True;
+			multiLoopSyms = Map[Cases[Sort[li], {#, x_} :> x, Infinity] &, Union[mlis]] //Cases[#, {x__} /; Length[{x}] > 1] &
+		];
 
 		(* Abort decomposition if there are vanishing Gram determinants, unless
 		we have a 1-point function or were requested just to provide the tensor basis *)
 		If[!basisonly && ppli=!={},
-			FCPrint[1, "Tdec: Checking Gram determinant..."];
+			FCPrint[1, "Tdec: Checking Gram determinant...", FCDoControl->tdecVerbose];
 			If[ExpandScalarProduct[Det[ppli//Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
-				FCPrint[1,"Tensor decomposition with Tdec is not possible due to vanishing Gram determinants"];
+				FCPrint[1, "Tensor decomposition with Tdec is not possible due to vanishing Gram determinants", FCDoControl->tdecVerbose];
 				tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
 				seqli={};
 				If[ fce,
@@ -160,179 +299,114 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], opt:OptionsPatter
 					Return[{Map[Reverse, seqli], tt}],
 					Return[tt]
 				],
-				FCPrint[1, "Tdec: Gram determinant is non-vanishing."];
+				FCPrint[1, "Tdec: Gram determinant is non-vanishing.", FCDoControl->tdecVerbose];
 			];
 		];
 
-		(* Encode the given external momenta *)
-		pli = extMom/@ppli;
-		cc[a__] :=
-			0 /; OddQ[Count[{a}, 0, Infinity]];
-		(* ccfix is NECESSARY, since otherwise multiloop decompositions are wrong *)
-		ccfix[ex_] :=
-			cfix[Expand[ex]];
-		ccf[xx__,1] :=
-			ccf[xx];
-		(* aa is always a sum of terms with coefficient 1 *)
-		cfix[aa_Plus] :=
-			Map[cfix, aa];
-		pcfix[___,Momentum[__],___] :=
-			1;
-		pcfix[LorentzIndex[ax__], LorentzIndex[b__]] :=
-			Sort[liS[0,0,LorentzIndex[ax], LorentzIndex[b]]];
-		cfix[cc[a__] pairs_] :=
-			Block[ {nix},
-				pairs Join[(cc[a]/.{0,__} -> nix[]) /. nix -> Sequence,
-				(ccf @@ (Flatten[{pairs /. Pair-> pcfix} /. Times ->
-				List]) /. liS -> List) /. ccf -> cc]
-			];
-		gfix[ w_Times] :=
-			0 /; OddQ[Count[w, pe[0,_]]];
-		gfix[ w_Times] :=
-			0 /; Count[w, pe[0,_]] > 2 (OptionValue[Tdec,{opt},NumberOfMetricTensors]);
-		gfix[0] =
-			0;
-		gfix[ff_] :=
-			ff /; FreeQ[ff, pe[0,_]];
-		HoldPattern[gfix[pe[0, mu_] pe[0, nu_] cc[c:{0, _}..]]] :=
-			(Pair[mu, nu] cc[{0, mu}, {0,nu}])/;Length[{c}] === 2;
-		HoldPattern[gfix[pe[0, mu_] pe[0, nu_] cc[v___, {0, mu_}, w___,
-			{0, nu_}, z___] f_.]] :=
-			(f Pair[mu, nu] cc[v, {0,mu}, w, {0,nu}, z])/;FreeQ[f, pe[0, _]];
-		ccjoin /: ccjoin[a__] ccjoin[b__] := ccjoin[a, b];
-		ccj[xx_] :=
-			xx /. (cc[aa__]^_Integer) :> cc[aa] /. cc -> ccjoin /. ccjoin -> cc;
-		HoldPattern[gfix[pe[0, mu_] cc[v___, {0, mu_}, w___, {0, nu_}, z___] f_Times]] :=
-			(FixedPoint[ccj, Sum[gfix[pe[0,mu] f[[i]] cc[v,{0,mu},w,
-			{0,nu},z]] gfix[Drop[f,{i,i}] cc[v,{0,mu},w,{0,nu},z]],{i, Length[f]}], 100])/;
-			(!FreeQ[f, pe[0, _]]) && (!FreeQ[{v, w, z}, 0]);
-		proj[] =
-			1;
-		proj[{0, 0, m_, n_}, bb___] :=
-			(PairContract[LorentzIndex[m,dim], LorentzIndex[n,
-			dim]] proj[bb]) /; (Head[m] =!= LorentzIndex) && (Head[n] =!= LorentzIndex);
-		proj[{j_ /; j > 0, r_}, jh___] :=
-			(pe[j, LorentzIndex[r,dim]] proj[jh]) /; Head[r] =!= LorentzIndex;
-		newcc[ii__] :=
-			cc[ii] /. LorentzIndex[w_,_:4] :> w;
-		xy[ii_] :=
-			ToExpression["X" <> ToString[ii]];
-		ce[ii_] :=
-			ToExpression["cC" <> ToString[ii]];
-		kli = Union[Map[First,li]];
-		fv[x_,y_] :=
-			Pair[Momentum[x,dim], LorentzIndex[y, dim]];
-		pe[j_ /; j>0, muu_] :=
-			Pair[Momentum[pli[[j]], dim], muu];
-		tt = Product[fv@@li[[i]],
-								{i,Length[li]}
-								] ==
-		FixedPoint[ccj,
-			ccfix[(Sum @@ Join[{ gfixx[ Product[pe[j[ij], LorentzIndex[li[[ij,2]], dim]],
-			{ij, Length[li]}] Apply[cc, Table[{j[iji], LorentzIndex[li[[iji,2]],
-			dim]},{iji, Length[li]}]]]}, Array[{j[#],0,Length[pli]}&, Length[li]]]) /. gfixx -> gfix],
-		100];
-		If[ !FreeQ[tt, gfix],
-			Print["MIST"];
-			tt>>"ttdec.s";
-			Quit[];
-		];
-		tt = tt /. cc -> ccf /. ccf -> cc;
-		(* build in later maybe more symmetries among the cc's *)
-		ccli = Cases2[tt, cc];
-		If[ Length[pli] === 0 && Length[kli] === 1,
-			For[ic = 2, ic <= Length[ccli], ic++,
-				Apply[Set, {ccli[[ic]], ccli//First}]
-			];
-			ccli = Union[ccli]
-		];
-		tt = tt /. cc -> newcc;
-		symms = getsymmetries[(tt/.cc[___]:>1)];
-		FCPrint[1,"symms", FullForm[symms]];
-		FCPrint[1,Length[ccli]];
-		If[ symms =!=  False,
-			sy = solvesymms[tt[[2]] - (tt[[2]]/.symms)],
-			sy = {}
-		];
-		FCPrint[1,"symmetries ", sy ];
-		ccli = ccli /. cc -> newcc;
-		ccli = Union[ccli//.sy];
-		tt = tt //. sy;
-		proli = ccli /. cc -> proj;
-		If[ Length[pli] === 0 && Length[kli]===1,
-			proli = {First[proli]}
-		];
-		FCPrint[1,"tt ", tt];
-		If[basisonly,
-			Return[(tt/.Equal[_,xx_]:>xx/.extMom->Identity/.cc[xx__]:>
-				FCGV["PaVe"][Sort[Flatten[Map[(#/.{aa_,_}:>{aa}/.{0,0,_,_}:>{0,0})&,{xx}]]]])];
-		];
-			FCPrint[1,"contracting with ", proli];
-			eqli = Table[
-						EpsEvaluate[ExpandScalarProduct[FCPrint[1,"il = ",il];
-														(tt proli[[il]]) /. Pair->PairContract /. PairContract -> Pair]],
-						{il, Length[proli]}
-					];
-			FCPrint[1,"Length of eqli = ",Length[eqli]];
-			FCPrint[1,"eqli = ",TableForm[eqli]];
-			FCPrint[1,"solving ", Length[ccli]];
-			veqli = Union[Join @@ Map[Variables, Flatten[eqli /. Equal -> List]]];
-			veqli = SelectFree[veqli, ccli];
-			seqli = Table[
-						veqli[[ij]] -> xy[ij],
-						{ij, Length[veqli]}
-					];
-			scqli = Table[
-						ccli[[ji]] -> ce[ji],
-						{ji, Length[ccli]}
-					];
-			neqli = eqli /. seqli /. scqli;
-			ccli = ccli /. scqli;
 
-
-			(*Before computing the decomposition formula, check if the result
-			is already available in the TIDL database *)
-			If[ OptionValue[UseTIDL] &&    TIDL[li,pli,Dimension->dim]=!=Apply[Times,
-					Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
-				FCPrint[1,"This decomposition formula is available in TIDL, skipping
-			calculation."];
-				tt = TIDL[li,pli,Dimension->dim];
-				FCPrint[1,"Result from TIDL: ", tt];
-				If[ listlabel === True,
-					tt = FeynCalcInternal[FeynCalcExternal[tt] /. Dispatch[FeynCalcExternal[seqli]]];
-				],
-				FCPrint[1,"Unfortunately, this decomposition formula is not available in TIDL."];
-				solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
-				FCPrint[1,"solve3 done ",MemoryInUse[]];
-				FCPrint[1,"SOLVE3 Bytecount", byby = ByteCount[solu]];
-				nttt = Collect[tt[[2]], Map[First, scqli]];
-				If[ fce,
-					nttt = FeynCalcExternal[nttt]
-				];
-				If[ listlabel =!= True,
-					solu = solu /. Map[Reverse, seqli];
-				];
-				solu = solu /. Dispatch[Map[Reverse, scqli]];
-				tt = nttt /. Dispatch[solu];
-			];
-			FCPrint[1,"after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ",
-				TimeUsed[]//FeynCalcForm];
-			FCPrint[2,"tt: ", tt];
-			FCPrint[2,"seqli: ", seqli];
-			tt = tt/.extMom->Identity;
-			seqli = seqli/.extMom->Identity;
-			If[ fce,
-				tt = FeynCalcExternal[tt];
-				seqli = FeynCalcExternal[seqli];
-			];
-			If[ exp =!= 1,
-				tt = Contract[exp tt, EpsContract -> False]
-			];
-			If[ listlabel === True,
-				{Map[Reverse, seqli], tt},
-				tt
+		(* generate (non-symmetric) tensor basis *)
+		basis = fullBasis[lis,pli,dim];
+		FCPrint[2, "Tdec: non-symmetric tensor basis ",basis, FCDoControl->tdecVerbose];
+		(* symmetrize the tensor basis *)
+		If[!multiLoop,
+			(* symmetrizing the basis for 1-loop is really trivial...	*)
+			basis = (basis /. CC[a_, _] :> CC[Sort[a]]) // Collect[#, CC[__]] &,
+			If[multiLoopSyms=!={},
+				basis = (basis/. CC[x__] :> CC@@CCSymmetrize[x, multiLoopSyms])// Collect[#, CC[__]] &,
+				(*	a general multiloop integral doesn't necessarily has to have any symmetrices
+					in the indices	*)
+				basis = (basis/. CC[x__] :> CC[{{x}}])// Collect[#, CC[__]] &
 			]
+		];
+		(* if we were requested to provide only the symmetric tensor basis, we stop here *)
+		If[	basisonly,
+			Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["PaVe"][xx])]
+		];
+		FCPrint[1, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
+		(* list of tensor coefficients for which we need to solve our linear equations *)
+		ccli =  Cases[basis,CC[__],Infinity];
+
+		(* 	out of the tensor coefficients we create tensor structures that will be contracted
+			with the original tensor equations to get a system of linear (scalar) equations *)
+		If[!multiLoop,
+			proli= ccli /. CC[x__] :> ccProjOneLoop[x, lis, pli, dim],
+			proli= ccli /. CC[x__] :> ccProjMultiLoop[x, pli, dim]
+		];
+		proli = Sort[proli];
+
+		(* tt is the actual tensor equation that has to be solved *)
+		tt = Equal[Times @@ (Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]] & /@ li),basis];
+
+		FCPrint[1, "Tdec: tt is ", tt, FCDoControl->tdecVerbose];
+		FCPrint[1, "contracting with ", proli, FCDoControl->tdecVerbose];
+		(* 	eqli is the linear system that is built out of tt after contractions with
+			the elements of proli *)
+		eqli = 	Table[FCPrint[1, "ii = ", ii, FCDoControl->tdecVerbose];
+				Equal[Expand[(tt[[1]] proli[[ii]]),Pair]/.Pair->PairContract/.PairContract->Pair,(tt[[2]] proli[[ii]])]/.Pair->PairContract/.PairContract->Pair,
+					{ii, Length[proli]}];
+
+
+		FCPrint[1, "Length of eqli = ", Length[eqli], FCDoControl->tdecVerbose];
+		FCPrint[1, "eqli = ", TableForm[eqli], FCDoControl->tdecVerbose];
+		FCPrint[1, "solving ", Length[ccli], FCDoControl->tdecVerbose];
+
+		(*	introduce abbreviations to simplify the solving process	*)
+		veqli = Union[Join @@ Map[Variables, Flatten[eqli /. Equal -> List]]];
+		veqli = SelectFree[veqli, ccli];
+		seqli = Table[veqli[[ii]] -> xy[ii], {ii, Length[veqli]}];
+		scqli = Table[ccli[[ii]] -> ce[ii],	{ii, Length[ccli]}];
+		neqli = eqli /. seqli /. scqli;
+		ccli = ccli /. scqli;
+		(* Let us collect common coefficients in each equation to make solving even faster	*)
+		neqli = Map[Replace[#,Equal[a_, b_] :> Equal[a, Collect[b, ccli]]] &, neqli];
+		FCPrint[1, "neqli = ", TableForm[neqli], FCDoControl->tdecVerbose];
+		(*Before computing the decomposition formula, check if the result
+		is already available in the TIDL database *)
+		If[ OptionValue[UseTIDL] && TIDL[li,pli,Dimension->dim]=!=Apply[Times,
+			Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
+			FCPrint[1, "This decomposition formula is available in TIDL, skipping
+				calculation.", FCDoControl->tdecVerbose];
+			tt = TIDL[li,pli,Dimension->dim];
+			FCPrint[1, "Result from TIDL: ", tt, FCDoControl->tdecVerbose];
+			If[ listlabel,
+				tt = FeynCalcInternal[FeynCalcExternal[tt] /. Dispatch[FeynCalcExternal[seqli]]];
+			],
+
+			FCPrint[1, "Unfortunately, this decomposition formula is not available in TIDL.", FCDoControl->tdecVerbose];
+			If[ $FCAdvice,
+				Message[Tdec::slow]
+			];
+			solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
+			FCPrint[1, "solve3 done ", MemoryInUse[], FCDoControl->tdecVerbose];
+			FCPrint[1, "SOLVE3 Bytecount", ByteCount[solu], FCDoControl->tdecVerbose];
+			nttt = Collect[tt[[2]], Map[First, scqli]];
+			If[ fce,
+				nttt = FeynCalcExternal[nttt]
+			];
+			If[ listlabel =!= True,
+				solu = solu /. Map[Reverse, seqli];
+			];
+			solu = solu /. Dispatch[Map[Reverse, scqli]];
+			tt = nttt /. Dispatch[solu];
+		];
+
+		FCPrint[1, "after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ", TimeUsed[]//FeynCalcForm, FCDoControl->tdecVerbose];
+		FCPrint[2, "tt: ", tt, FCDoControl->tdecVerbose];
+		FCPrint[2, "seqli: ", seqli, FCDoControl->tdecVerbose];
+		tt = tt/.extMom->Identity;
+		seqli = seqli/.extMom->Identity;
+		If[ fce,
+			tt = FeynCalcExternal[tt];
+			seqli = FeynCalcExternal[seqli];
+		];
+		If[ exp =!= 1,
+			tt = Contract[exp tt, EpsContract -> False]
+		];
+		If[ listlabel === True,
+			{Map[Reverse, seqli], tt},
+			tt
+		]
 	];
 
-FCPrint[1,"Tdec.m loaded."];
+FCPrint[1, "Tdec.m loaded.", FCDoControl->tdecVerbose];
 End[]
