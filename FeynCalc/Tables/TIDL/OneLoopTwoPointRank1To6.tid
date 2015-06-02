@@ -1,0 +1,132 @@
+{
+(* B_{mu} *)
+tidl[{{q_,mu_}},{p_},n_]/; ExpandScalarProduct[Pair[Momentum[p, n], Momentum[p, n]]] =!= 0 :>
+        ChangeDimension[ExpandScalarProduct[(FV[p, mu] SP[p, q])/SP[p, p]],n]
+,
+(* B_{mu,nu} *)
+tidl[{{q_,mu_},{q_,nu_}},{p_},n_]/; ExpandScalarProduct[Pair[Momentum[p, n], Momentum[p, n]]] =!= 0 :>
+Block[{s1,s2,s3,t1,t2,t3,v1,v2,m1,encli},
+                encli=
+        {(m1*s2)/(s1*t1)-(s3*v1*v2)/(s1*t1^2),{s1->1-n,s2->t2^2-t1*t3,
+        s3->n*t2^2-t1*t3},{t1->SP[p,p],t2->SP[p,q],t3->SP[q,q],
+        v1->FV[p,mu],v2->FV[p,nu],m1->MT[mu,nu]}};
+        scpexp[encli,n]
+]
+,
+(* B_{mu,nu,rho} *)
+tidl[{{q_,mu_},{q_,nu_},{q_,rho_}},{p_},n_]/;ExpandScalarProduct[Pair[Momentum[p, n], Momentum[p, n]]] =!= 0 :>
+Block[{s1,s2,s3,t1,t2,t3,v1,v2,v3,m1,m2,m3,encli},
+        encli=
+        {(m3*s2*t2*v1)/(s3*t1^2)+(m2*s2*t2*v2)/(s3*t1^2)+
+        (m1*s2*t2*v3)/(s3*t1^2)-(t2*(s1*t2^2-3*t1*t3)*v1*v2*v3)/(s3*t1^3),
+        {s1->2+n,s2->t2^2-t1*t3,s3->1-n},
+        {t1->SP[p,p],t2->SP[p,q],t3->SP[q,q],v1->FV[p,mu],
+        v2->FV[p,nu],v3->FV[p,rho],m1->MT[mu,nu],m2->MT[mu,rho],
+        m3->MT[nu,rho]}};
+        scpexp[encli,n]
+]
+,
+(* B_{mu,nu,rho,sigma} *)
+tidl[{{q_,mu_},{q_,nu_},{q_,rho_},{q_,si_}},{p_},n_]/; ExpandScalarProduct[Pair[Momentum[p, n], Momentum[p, n]]] =!= 0 :>
+Block[{s1,s2,s3,s4,s5,s6,s7,s8,t1,t2,t3,v1,v2,v3,v4,m1,m2,encli},
+        encli=
+        {(s2*t1*(s2*s5*t1+s4*(s3*t2^2-t1*t3)*v3+m1*(s3*t2^2-t1*t3)*v2*v4)+
+        v1*(-(s6*s7*t1*(s3*t2^2-t1*t3))-v2*(m2*s7*t1*(s3*t2^2-t1*t3)+
+        (-(s3*s8*t2^4)+6*s3*t1*t2^2*t3-3*t1^2*t3^2)*v3*v4)))/(s1*t1^4),
+        {s1->-1+n^2,s2->-t2^2+t1*t3,s3->2+n,
+        s4->v4*MT[mu,nu]+v2*MT[mu,si],
+        s5->m2*MT[mu,nu]+MT[mu,si]*MT[nu,rho]+m1*MT[nu,si],
+        s6->v4*MT[nu,rho]+v3*MT[nu,si],s7->t2^2-t1*t3,s8->4+n},
+        {t1->SP[p,p],t2->SP[p,q],t3->SP[q,q],v1->FV[p,mu],
+        v2->FV[p,nu],v3->FV[p,rho],v4->FV[p,si],m1->MT[mu,rho],
+        m2->MT[rho,si]}};
+        scpexp[encli,n]
+]
+,
+(* B_{mu,nu,rho,sigma,tau} *)
+tidl[{{q_,mu_},{q_,nu_},{q_,rho_},{q_,sigma_},{q_,tau_}},{p_},n_]/; ExpandScalarProduct[Pair[Momentum[p, n], Momentum[p, n]]] =!= 0 :>
+Block[{s1,s2,s3,s4,t1,t2,t3,v1,v2,v3,v4,v5,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,encli},
+        encli=
+        {-((m10*m5*s3^2*t2*v1)/(s1*t1^3))-(m7*m8*s3^2*t2*v1)/(s1*t1^3)-
+        (m6*m9*s3^2*t2*v1)/(s1*t1^3)-(m10*m2*s3^2*t2*v2)/(s1*t1^3)-
+        (m4*m8*s3^2*t2*v2)/(s1*t1^3)-(m3*m9*s3^2*t2*v2)/(s1*t1^3)-
+        (m1*m10*s3^2*t2*v3)/(s1*t1^3)-(m4*m6*s3^2*t2*v3)/(s1*t1^3)-
+        (m3*m7*s3^2*t2*v3)/(s1*t1^3)+(m10*s2*s3*t2*v1*v2*v3)/(s1*t1^4)-
+        (m4*m5*s3^2*t2*v4)/(s1*t1^3)-(m2*m7*s3^2*t2*v4)/(s1*t1^3)-
+        (m1*m9*s3^2*t2*v4)/(s1*t1^3)+(m9*s2*s3*t2*v1*v2*v4)/(s1*t1^4)+
+        (m7*s2*s3*t2*v1*v3*v4)/(s1*t1^4)+(m4*s2*s3*t2*v2*v3*v4)/(s1*t1^4)-
+        (m3*m5*s3^2*t2*v5)/(s1*t1^3)-(m2*m6*s3^2*t2*v5)/(s1*t1^3)-
+        (m1*m8*s3^2*t2*v5)/(s1*t1^3)+(m8*s2*s3*t2*v1*v2*v5)/(s1*t1^4)+
+        (m6*s2*s3*t2*v1*v3*v5)/(s1*t1^4)+(m3*s2*s3*t2*v2*v3*v5)/(s1*t1^4)+
+        (m5*s2*s3*t2*v1*v4*v5)/(s1*t1^4)+(m2*s2*s3*t2*v2*v4*v5)/(s1*t1^4)+
+        (m1*s2*s3*t2*v3*v4*v5)/(s1*t1^4)-(s4*t2*v1*v2*v3*v4*v5)/(s1*t1^5),
+        {s1->1-n^2,s2->4*t2^2+n*t2^2-3*t1*t3,s3->t2^2-t1*t3,
+        s4->24*t2^4+10*n*t2^4+n^2*t2^4-40*t1*t2^2*t3-10*n*t1*t2^2*t3+
+        15*t1^2*t3^2},{t1->SP[p,p],t2->SP[p,q],t3->SP[q,q],
+        v1->FV[p,mu],v2->FV[p,nu],v3->FV[p,rho],v4->FV[p,sigma],
+        v5->FV[p,tau],m1->MT[mu,nu],m2->MT[mu,rho],m3->MT[mu,sigma],
+        m4->MT[mu,tau],m5->MT[nu,rho],m6->MT[nu,sigma],
+        m7->MT[nu,tau],m8->MT[rho,sigma],m9->MT[rho,tau],
+        m10->MT[sigma,tau]}};
+        scpexp[encli,n]
+]
+,
+(* B_{mu,nu,rho,sigma,tau,ka} *)
+tidl[{{q_,mu_},{q_,nu_},{q_,rho_},{q_,sigma_},{q_,tau_},{q_,ka_}},{p_},n_]/; ExpandScalarProduct[Pair[Momentum[p, n], Momentum[p, n]]] =!= 0 :>
+Block[{s1,s2,s3,s4,s5,s6,t1,t2,t3,v1,v2,v3,v4,v5,v6,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,encli},
+        encli=
+        {(m1*m12*m13*s2^3)/(s1*s3*t1^3)+(m1*m11*m14*s2^3)/(s1*s3*t1^3)+
+        (m1*m10*m15*s2^3)/(s1*s3*t1^3)+(m15*m3*m6*s2^3)/(s1*s3*t1^3)+
+        (m14*m4*m6*s2^3)/(s1*s3*t1^3)+(m13*m5*m6*s2^3)/(s1*s3*t1^3)+
+        (m15*m2*m7*s2^3)/(s1*s3*t1^3)+(m12*m4*m7*s2^3)/(s1*s3*t1^3)+
+        (m11*m5*m7*s2^3)/(s1*s3*t1^3)+(m14*m2*m8*s2^3)/(s1*s3*t1^3)+
+        (m12*m3*m8*s2^3)/(s1*s3*t1^3)+(m10*m5*m8*s2^3)/(s1*s3*t1^3)+
+        (m13*m2*m9*s2^3)/(s1*s3*t1^3)+(m11*m3*m9*s2^3)/(s1*s3*t1^3)+
+        (m10*m4*m9*s2^3)/(s1*s3*t1^3)-(m12*m13*s2^2*s4*v1*v2)/(s1*s3*t1^4)-
+        (m11*m14*s2^2*s4*v1*v2)/(s1*s3*t1^4)-(m10*m15*s2^2*s4*v1*v2)/
+        (s1*s3*t1^4)-(m15*m7*s2^2*s4*v1*v3)/(s1*s3*t1^4)-
+        (m14*m8*s2^2*s4*v1*v3)/(s1*s3*t1^4)-(m13*m9*s2^2*s4*v1*v3)/(s1*s3*t1^4)-
+        (m15*m3*s2^2*s4*v2*v3)/(s1*s3*t1^4)-(m14*m4*s2^2*s4*v2*v3)/(s1*s3*t1^4)-
+        (m13*m5*s2^2*s4*v2*v3)/(s1*s3*t1^4)-(m15*m6*s2^2*s4*v1*v4)/(s1*s3*t1^4)-
+        (m12*m8*s2^2*s4*v1*v4)/(s1*s3*t1^4)-(m11*m9*s2^2*s4*v1*v4)/(s1*s3*t1^4)-
+        (m15*m2*s2^2*s4*v2*v4)/(s1*s3*t1^4)-(m12*m4*s2^2*s4*v2*v4)/(s1*s3*t1^4)-
+        (m11*m5*s2^2*s4*v2*v4)/(s1*s3*t1^4)-(m1*m15*s2^2*s4*v3*v4)/(s1*s3*t1^4)-
+        (m5*m8*s2^2*s4*v3*v4)/(s1*s3*t1^4)-(m4*m9*s2^2*s4*v3*v4)/(s1*s3*t1^4)+
+        (m15*s2*s5*v1*v2*v3*v4)/(s1*s3*t1^5)-(m14*m6*s2^2*s4*v1*v5)/
+        (s1*s3*t1^4)-(m12*m7*s2^2*s4*v1*v5)/(s1*s3*t1^4)-
+        (m10*m9*s2^2*s4*v1*v5)/(s1*s3*t1^4)-(m14*m2*s2^2*s4*v2*v5)/(s1*s3*t1^4)-
+        (m12*m3*s2^2*s4*v2*v5)/(s1*s3*t1^4)-(m10*m5*s2^2*s4*v2*v5)/(s1*s3*t1^4)-
+        (m1*m14*s2^2*s4*v3*v5)/(s1*s3*t1^4)-(m5*m7*s2^2*s4*v3*v5)/(s1*s3*t1^4)-
+        (m3*m9*s2^2*s4*v3*v5)/(s1*s3*t1^4)+(m14*s2*s5*v1*v2*v3*v5)/(s1*s3*t1^5)-
+        (m1*m12*s2^2*s4*v4*v5)/(s1*s3*t1^4)-(m5*m6*s2^2*s4*v4*v5)/(s1*s3*t1^4)-
+        (m2*m9*s2^2*s4*v4*v5)/(s1*s3*t1^4)+(m12*s2*s5*v1*v2*v4*v5)/(s1*s3*t1^5)+
+        (m9*s2*s5*v1*v3*v4*v5)/(s1*s3*t1^5)+(m5*s2*s5*v2*v3*v4*v5)/(s1*s3*t1^5)-
+        (m13*m6*s2^2*s4*v1*v6)/(s1*s3*t1^4)-(m11*m7*s2^2*s4*v1*v6)/(s1*s3*t1^4)-
+        (m10*m8*s2^2*s4*v1*v6)/(s1*s3*t1^4)-(m13*m2*s2^2*s4*v2*v6)/(s1*s3*t1^4)-
+        (m11*m3*s2^2*s4*v2*v6)/(s1*s3*t1^4)-(m10*m4*s2^2*s4*v2*v6)/(s1*s3*t1^4)-
+        (m1*m13*s2^2*s4*v3*v6)/(s1*s3*t1^4)-(m4*m7*s2^2*s4*v3*v6)/(s1*s3*t1^4)-
+        (m3*m8*s2^2*s4*v3*v6)/(s1*s3*t1^4)+(m13*s2*s5*v1*v2*v3*v6)/(s1*s3*t1^5)-
+        (m1*m11*s2^2*s4*v4*v6)/(s1*s3*t1^4)-(m4*m6*s2^2*s4*v4*v6)/(s1*s3*t1^4)-
+        (m2*m8*s2^2*s4*v4*v6)/(s1*s3*t1^4)+(m11*s2*s5*v1*v2*v4*v6)/(s1*s3*t1^5)+
+        (m8*s2*s5*v1*v3*v4*v6)/(s1*s3*t1^5)+(m4*s2*s5*v2*v3*v4*v6)/(s1*s3*t1^5)-
+        (m1*m10*s2^2*s4*v5*v6)/(s1*s3*t1^4)-(m3*m6*s2^2*s4*v5*v6)/(s1*s3*t1^4)-
+        (m2*m7*s2^2*s4*v5*v6)/(s1*s3*t1^4)+(m10*s2*s5*v1*v2*v5*v6)/(s1*s3*t1^5)+
+        (m7*s2*s5*v1*v3*v5*v6)/(s1*s3*t1^5)+(m3*s2*s5*v2*v3*v5*v6)/(s1*s3*t1^5)+
+        (m6*s2*s5*v1*v4*v5*v6)/(s1*s3*t1^5)+(m2*s2*s5*v2*v4*v5*v6)/(s1*s3*t1^5)+
+        (m1*s2*s5*v3*v4*v5*v6)/(s1*s3*t1^5)-(s6*v1*v2*v3*v4*v5*v6)/(s1*s3*t1^6),
+        {s1->1-n^2,s2->t2^2-t1*t3,s3->3+n,
+        s4->4*t2^2+n*t2^2-t1*t3,s5->24*t2^4+10*n*t2^4+n^2*t2^4-
+        24*t1*t2^2*t3-6*n*t1*t2^2*t3+3*t1^2*t3^2,
+        s6->192*t2^6+104*n*t2^6+18*n^2*t2^6+n^3*t2^6-360*t1*t2^4*t3-
+        150*n*t1*t2^4*t3-15*n^2*t1*t2^4*t3+180*t1^2*t2^2*t3^2+
+        45*n*t1^2*t2^2*t3^2-15*t1^3*t3^3},{t1->SP[p,p],t2->SP[p,q],
+        t3->SP[q,q],v1->FV[p,ka],v2->FV[p,mu],v3->FV[p,nu],
+        v4->FV[p,rho],v5->FV[p,sigma],v6->FV[p,tau],m1->MT[ka,mu],
+        m2->MT[ka,nu],m3->MT[ka,rho],m4->MT[ka,sigma],
+        m5->MT[ka,tau],m6->MT[mu,nu],m7->MT[mu,rho],
+        m8->MT[mu,sigma],m9->MT[mu,tau],m10->MT[nu,rho],
+        m11->MT[nu,sigma],m12->MT[nu,tau],m13->MT[rho,sigma],
+        m14->MT[rho,tau],m15->MT[sigma,tau]}};
+        scpexp[encli,n]
+]
+}

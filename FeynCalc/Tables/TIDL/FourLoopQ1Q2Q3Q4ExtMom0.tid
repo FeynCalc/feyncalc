@@ -1,0 +1,15 @@
+{
+tidl[{{q1_,mu_},{q2_,nu_},{q3_,rho_},{q4_,si_}},{},n_]/; q1=!=q2 && q1=!=q3 && q1=!=q4
+        && q2=!=q3 && q2=!=q4 && q3=!=q4 :>
+        Block[{s1,s2,s3,s4,s5,s6,s7,t1,t2,t3,t4,t5,t6,m1,m2,m3,m4,m5,m6,encli},
+        encli=
+        {-((m3*m4*s3)/(n*s1*s2))+(m2*m5*s4*s6)/(n*s1*s5)+(m1*m6*s4*s7)/(n*s1*s5),
+        {s1->2+n,s2->1-n,s3->t3*t4+n*t3*t4-t2*t5-t1*t6,
+        s4->1+n,s5->1-n^2,s6->t3*t4-t2*t5-n*t2*t5+t1*t6,
+        s7->t3*t4+t2*t5-t1*t6-n*t1*t6},{t1->SP[q1,q2],
+        t2->SP[q1,q3],t3->SP[q1,q4],t4->SP[q2,q3],t5->SP[q2,q4],
+        t6->SP[q3,q4],m1->MT[mu,nu],m2->MT[mu,rho],m3->MT[mu,si],
+        m4->MT[nu,rho],m5->MT[nu,si],m6->MT[rho,si]}};
+        scpexp[encli,n]
+        ]
+}
