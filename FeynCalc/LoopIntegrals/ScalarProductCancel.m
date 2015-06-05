@@ -77,6 +77,7 @@ ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt:OptionsPatte
 				!FreeQ[#,PropagatorDenominator[w_Plus /; Length[w]>1,_]]&];
 			FCPrint[2, "prp: ", prp, FCDoControl->spcVerbose];
 			prp = (*SelectNotFree[*)Map[SelectFree[#/. PropagatorDenominator[a_, _] :> a, {qs,qlast}]&, prp] /. Momentum[a_,___] :> a(*, Plus]*);
+			prp = prp /. 0 -> Sequence[];
 			FCPrint[2, "prp: ", prp, FCDoControl->spcVerbose];
 			pqs = SelectFree[SelectNotFree[Cases2[ex,Pair], {qs, qlast}],OPEDelta]/. Pair[a_, b_] :> {a, b} /. Momentum[a_, _ : 4] :> a;
 			(*prp = Reverse[prp];*)
@@ -111,11 +112,25 @@ ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt:OptionsPatte
 
 						texp = Isolate[Collect2[texp, {qs, qlast,FeynAmpDenominator}], {qs, qlast,FeynAmpDenominator}, IsolateNames->spcIsolate] /.
 						Pair[x__] /; !FreeQ2[{x}, {qs,qlast}] :> FRH[Pair[x], IsolateNames->spcIsolate];
-						pexp = (ScalarProductCancel/@(texp+null))/.null->0
+						FCPrint[3, "SPC: texp  ", texp, FCDoControl->spcVerbose];
+						pexp = (ScalarProductCancel/@(texp+null))/.null->0;
+						FCPrint[3, "SPC: pexp  ", pexp, FCDoControl->spcVerbose]
 					];
-					nexp + Expand2[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 2],{qs,qlast}]
+					nexp + Expand2[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 3],{qs,qlast}]
 				];
+			(* This will cancel remaining terms that are of the form q^2/(q^2-m^2)*)
+
+			re = Isolate[Collect2[re, {qs, qlast,FeynAmpDenominator}], {qs, qlast,FeynAmpDenominator}, IsolateNames->spcIsolate2] /.
+					Pair[x__] /; !FreeQ2[{x}, {qs,qlast}] :> FRH[Pair[x], IsolateNames->spcIsolate2];
+			re = FDS[re,qs,qlast];
+			re = FRH[re,IsolateNames->spcIsolate2];
 			re = FRH[re,IsolateNames->spcIsolate];
+			(*
+			If [MatchQ[re, Pair[Momentum[q_, dim_: 4], Momentum[q_, dim_: 4]] FeynAmpDenominator[___,PropagatorDenominator[Momentum[q_, dim_], _], ___]],
+				Print["SPC failed to perform some cancellations, please examine the output carefully!"],
+				Print[re];
+			];*)
+
 			If[ prp =!= {},
 				re = ExpandScalarProduct[re /. prulb]
 			];
