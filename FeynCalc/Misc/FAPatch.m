@@ -31,29 +31,30 @@ End[]
 
 Begin["`FAPatch`Private`"]
 
+(*	Grab FeynArts files that we want to patch	*)
+part1 = FileNames[{"*.m"}, FileNameJoin[{$FeynArtsDirectory}]];
+part2 = FileNames[{"*.mod", "*.gen"},FileNameJoin[{$FeynArtsDirectory, "Models"}], Infinity];
+part3 = FileNames[{"*.m", "*.m-ok"},  FileNameJoin[{$FeynArtsDirectory, "FeynArts"}]];
+
+(*	Drop symlinks, otherwise we would patch the same file twice	*)
+
+part1 = Map[If[FileNameTake[FileInformation[#, "AbsoluteFileName"]] ===
+		FileNameTake[#], #, Unevaluated@Sequence[]] &, part1];
+part2 = Map[If[FileNameTake[FileInformation[#, "AbsoluteFileName"]] ===
+		FileNameTake[#], #, Unevaluated@Sequence[]] &, part2];
+part3 = Map[If[FileNameTake[FileInformation[#, "AbsoluteFileName"]] ===
+		FileNameTake[#], #, Unevaluated@Sequence[]] &, part3];
+
+(*	Create the final list of files to be patched	*)
+mods = Flatten[Join[{
+			FileNameTake/@part1,
+			Map[("Models" <> $PathnameSeparator <> #)&,FileNameTake /@ part2],
+			Map[("FeynArts" <> $PathnameSeparator <> #) &,FileNameTake /@ part3]
+		}]];
+
 (*The list of files to be modified*)
 Options[FAPatch] = {
-	File -> {"FeynArts.m", "FeynArts39.m" , "Setup.m",
-			"FeynArts" <> $PathnameSeparator <> "Analytic.m",
-			"FeynArts" <> $PathnameSeparator <> "Graphics.m",
-			"FeynArts" <> $PathnameSeparator <> "Initialize.m",
-			"FeynArts" <> $PathnameSeparator <> "Insert.m",
-			"FeynArts" <> $PathnameSeparator <> "Topology.m",
-			"FeynArts" <> $PathnameSeparator <> "Utilities.m",
-
-			"Models" <> $PathnameSeparator <> "SMQCD.mod",
-			"Models" <> $PathnameSeparator <> "SMc.mod",
-			"Models" <> $PathnameSeparator <> "SMbgf.mod",
-			"Models" <> $PathnameSeparator <> "SM.mod",
-			"Models" <> $PathnameSeparator <> "QED.mod",
-			"Models" <> $PathnameSeparator <> "MSSMQCD.mod",
-			"Models" <> $PathnameSeparator <> "MSSM.mod",
-			"Models" <> $PathnameSeparator <> "QED.gen",
-			"Models" <> $PathnameSeparator <> "Lorentzbgf.gen",
-			"Models" <> $PathnameSeparator <> "Lorentz.gen",
-			"Models" <> $PathnameSeparator <> "Dirac.gen",
-			"Models" <> $PathnameSeparator <> "DiracU.gen"
-},
+	File -> mods,
 
 	(*The list of replacements*)
 	(*Some regular expression utilities would be VERY nice...*)
