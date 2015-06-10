@@ -31,7 +31,7 @@ Begin["`Anti5`Private`"]
 Anti5[expr_Plus, n_] :=
 	Map[Anti5[#,n]&,expr];
 Anti5[expr_, _] :=
-	expr /; FreeQ[FeynCalcInternal[expr], DiracGamma[5]];
+	expr /; FreeQ2[FeynCalcInternal[expr], {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 Anti5[expr_, Infinity] :=
 	FixedPoint[Anti5, expr, $RecursionLimit];
 Anti5[expr_, -Infinity] :=
@@ -44,13 +44,44 @@ Anti5[expr_] :=
 	Anti5[expr, 1];
 
 Anti5[xx_, n_] :=
-	Block[ {HoldDOT, ruleBMHVRight, ruleAnticommute, ruleNaiveRight, ruleBMHVLeft, ruleNaiveLeft, temp, result},
-		temp = FeynCalcInternal[xx] /. DOT -> HoldDOT;
+	Block[ {HoldDOT, ruleBMHVRight, ruleAnticommute, ruleNaiveRight,
+			ruleBMHVLeft, ruleNaiveLeft, temp, result},
+		temp = FeynCalcInternal[xx] /. {1/2+DiracGamma[5]/2:>DiracGamma[6],1/2-DiracGamma[5]/2:>DiracGamma[7]} /. DOT -> HoldDOT;
 		HoldDOT[] :=
 			1;
 		HoldDOT[a___, DiracGamma[5], DiracGamma[5], b___ ] :=
 			HoldDOT[a,b];
-		FCPrint[3,"Entering Anti5 with  ", temp];
+		HoldDOT[a___, DiracGamma[6], DiracGamma[6], b___ ] :=
+			HoldDOT[a,b];
+		HoldDOT[a___, DiracGamma[7], DiracGamma[7], b___ ] :=
+			HoldDOT[a,b];
+
+		HoldDOT[a___, DiracGamma[6], b___]:=
+			HoldDOT[a, DiracGamma[5], b] + (1/2)*HoldDOT[a, b]/;
+			!MatchQ[{b},{DiracGamma[5],___}|{DiracGamma[6],___}|{DiracGamma[7],___}] &&
+			!MatchQ[{a},{___,DiracGamma[5]}|{___,DiracGamma[6]}|{___,DiracGamma[7]}];
+		HoldDOT[a___, DiracGamma[7], b___]:=
+			HoldDOT[a, DiracGamma[5], b] - (1/2)*HoldDOT[a, b]/;
+			!MatchQ[{b},{DiracGamma[5],___}|{DiracGamma[6],___}|{DiracGamma[7],___}] &&
+			!MatchQ[{a},{___,DiracGamma[5]}|{___,DiracGamma[6]}|{___,DiracGamma[7]}];
+
+		HoldDOT[a___, DiracGamma[5], DiracGamma[6],	b___]:=
+			HoldDOT[a, DiracGamma[6], b];
+		HoldDOT[a___, DiracGamma[5], DiracGamma[7],	b___]:=
+			-HoldDOT[a, DiracGamma[7], b];
+		HoldDOT[a___, DiracGamma[6], DiracGamma[5],	b___]:=
+			-HoldDOT[a, DiracGamma[6], b];
+		HoldDOT[a___, DiracGamma[7], DiracGamma[5],	b___]:=
+			-HoldDOT[a, DiracGamma[5], b];
+		HoldDOT[a___, DiracGamma[6], DiracGamma[6],	b___]:=
+			HoldDOT[a, DiracGamma[6], b];
+		HoldDOT[a___, DiracGamma[6], DiracGamma[7],	b___]:=
+			0;
+		HoldDOT[a___, DiracGamma[7], DiracGamma[7],	b___]:=
+			HoldDOT[a, DiracGamma[7], b];
+		HoldDOT[a___, DiracGamma[7], DiracGamma[6],	b___]:=
+			0;
+		FCPrint[3,"Entering Anti5 with  ", FeynCalcInternal[xx]];
 		ruleAnticommute = {
 
 			(* Every scheme, 4 dimensions, move gamma^5 to the right *)

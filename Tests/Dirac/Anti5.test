@@ -223,7 +223,40 @@ Tests`Dirac`fcstAnti5EvenGamma5 = {
 
 
 
-
+Tests`Dirac`fcstAnti5Gamma567 = {
+{"fcstAnti5Gamma567-ID1","$BreitMaison=False;\nAnti5[x.GA[5].GA[6].GA[i]]//FCE","1/2 x.GA[i] - x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID2","Anti5[x.GA[5].GA[7].GA[i]] // FCE","1/2 x.GA[i] + x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID3","Anti5[x.GA[6].GA[5].GA[i]] // FCE","-(1/2) x.GA[i] + x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID4","Anti5[x.GA[6].GA[6].GA[i]] // FCE","1/2 x.GA[i] - x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID5","Anti5[x.GA[6].GA[7].GA[i]] // FCE","0"},
+{"fcstAnti5Gamma567-ID6","Anti5[x.GA[7].GA[5].GA[i]] // FCE","x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID7","Anti5[x.GA[7].GA[6].GA[i]] // FCE","0"},
+{"fcstAnti5Gamma567-ID8","Anti5[x.GA[7].GA[7].GA[i]] // FCE","-(1/2) x.GA[i] - x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID9","Anti5[GA[i].GA[5].GA[6].y] // FCE","1/2 GA[i].y + GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID10","Anti5[GA[i].GA[5].GA[7].y] // FCE","1/2 GA[i].y - GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID11","Anti5[GA[i].GA[6].GA[5].y] // FCE","-(1/2) GA[i].y - GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID12","Anti5[GA[i].GA[6].GA[6].y] // FCE","1/2 GA[i].y + GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID13","Anti5[GA[i].GA[6].GA[7].y] // FCE","0"},
+{"fcstAnti5Gamma567-ID14","Anti5[GA[i].GA[7].GA[5].y] // FCE","-GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID15","Anti5[GA[i].GA[7].GA[6].y] // FCE","0"},
+{"fcstAnti5Gamma567-ID16","Anti5[GA[i].GA[7].GA[7].y] // FCE","-(1/2) GA[i].y + GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID17","$BreitMaison=True;\nAnti5[x.GA[5].GA[6].GA[i]]//FCE","1/2 x.GA[i] - x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID18","Anti5[x.GA[5].GA[7].GA[i]] // FCE","1/2 x.GA[i] + x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID19","Anti5[x.GA[6].GA[5].GA[i]] // FCE","-(1/2) x.GA[i] + x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID20","Anti5[x.GA[6].GA[6].GA[i]] // FCE","1/2 x.GA[i] - x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID21","Anti5[x.GA[6].GA[7].GA[i]] // FCE","0"},
+{"fcstAnti5Gamma567-ID22","Anti5[x.GA[7].GA[5].GA[i]] // FCE","x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID23","Anti5[x.GA[7].GA[6].GA[i]] // FCE","0"},
+{"fcstAnti5Gamma567-ID24","Anti5[x.GA[7].GA[7].GA[i]] // FCE","-(1/2) x.GA[i] - x.GA[i].GA[5]"},
+{"fcstAnti5Gamma567-ID25","Anti5[GA[i].GA[5].GA[6].y] // FCE","1/2 GA[i].y + GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID26","Anti5[GA[i].GA[5].GA[7].y] // FCE","1/2 GA[i].y - GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID27","Anti5[GA[i].GA[6].GA[5].y] // FCE","-(1/2) GA[i].y - GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID28","Anti5[GA[i].GA[6].GA[6].y] // FCE","1/2 GA[i].y + GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID29","Anti5[GA[i].GA[6].GA[7].y] // FCE","0"},
+{"fcstAnti5Gamma567-ID30","Anti5[GA[i].GA[7].GA[5].y] // FCE","-GA[i].GA[5].y"},
+{"fcstAnti5Gamma567-ID31","Anti5[GA[i].GA[7].GA[6].y] // FCE","0"},
+{"fcstAnti5Gamma567-ID32","Anti5[GA[i].GA[7].GA[7].y] // FCE","-(1/2) GA[i].y + GA[i].GA[5].y"}
+};
 
 
 
