@@ -58,5 +58,8 @@ Epsevantilin[a:(_Integer|(LorentzIndex|ExplicitLorentzIndex)[_Integer]),
 Epsevantilin[a__] :=
 	Signature[{a}] Eps@@Sort[{a}];
 
+Epsevlin[___,0,___] :=
+	0;
+
 FCPrint[1,"EpsEvaluate.m loaded."];
 End[]

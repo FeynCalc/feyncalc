@@ -33,5 +33,7 @@ Tests`Lorentz`fcstEpsEvaluate = {
 	"x*Eps[LorentzIndex[mu], LorentzIndex[nu], Momentum[p1], Momentum[p2]]"},
 {"fcstEpsEvaluate-ID6","Eps[LorentzIndex[mu], x LorentzIndex[nu], Momentum[p1],
 	Momentum[p2]] // EpsEvaluate","x*Eps[LorentzIndex[mu],
-	LorentzIndex[nu], Momentum[p1], Momentum[p2]]"}
+	LorentzIndex[nu], Momentum[p1], Momentum[p2]]"},
+{"fcstEpsEvaluate-ID7","Eps[LorentzIndex[mu], x LorentzIndex[nu], Momentum[p1],
+0] // EpsEvaluate","0"}
 }
