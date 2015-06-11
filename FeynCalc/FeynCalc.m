@@ -131,6 +131,11 @@ $Covariant::usage =
 lorentz indices are displayed as lower indices (True) or as \
 upper ones (False).";
 
+$DisableMemSet::usage=
+"The boolean setting of $DisableMemSet allows to disable \
+memoizaion that is activated via MemSet. This can be \
+useful for debugging purposes";
+
 DOT::usage =
 "DOT[a, b, ...] is the FeynCalc function for non-commutative \
 multiplication. By default it is set to the Mathematica Dot \
@@ -350,7 +355,9 @@ $BreitMaison			= False;
 $Color					= False;
 $Containers				= {};
 $Covariant				= False;
+$DisableMemSet 			= False;
 $DistributiveFunctions	= {Conjugate, Transpose};
+
 
 $FCS = {
 	"CDr",

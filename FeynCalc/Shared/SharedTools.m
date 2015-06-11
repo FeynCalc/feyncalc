@@ -352,7 +352,7 @@ Map2[f_, exp_] :=
 	];
 
 MemSet[x_,y_, OptionsPattern[]] :=
-	If[(OptionValue[MemoryAvailable] - MemoryInUse[]/1000000.) <1.,
+	If[(OptionValue[MemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
 		y,
 		Set[x, y]
 	];
