@@ -54,19 +54,19 @@ PaVe[1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
 	B1[pp, mm1, mm2]/; OptionValue[PaVeAutoReduce];
 
 (*The number of 0's, i.e. indices of the metric tensors must be even *)
-PaVe[0, x: 0..,{moms___},{masses___}]:=
+PaVe[0, x: 0..,{moms___},{masses___}, OptionsPattern[]]:=
 	(Message[PaVe::nonexistent, "PaVe[" <> (ToString[{0,x}]//StringReplace[#, {"{" | "}" -> ""}] &)
 		<> ", " <> ToString[{moms}] <> ", " <> ToString[{masses}] <>"]"];
 	Abort[];)/; EvenQ[Length[{x}]];
 
 (* there are no tensorial 1-point function *)
-PaVe[x: 1..,{},{m_}] :=
+PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 	(Message[PaVe::nonexistent, "PaVe[" <> (ToString[{x}]//StringReplace[#, {"{" | "}" -> ""}] &)
 		<> ", {}, " <> ToString[{m}] <> "]"];
 	Abort[];)
 
-(* scaleless 2-point functions*)
-PaVe[__,{0},{0,0}, OptionsPattern[]] :=
+(* scaleless n-point functions vanish in DR	*)
+PaVe[__,{0..},{0..}, OptionsPattern[]] :=
 	0/; OptionValue[PaVeAutoReduce];
 
 (* but a non-zero coefficient of g_munu *)
