@@ -158,6 +158,12 @@ FC::usage =
 "FC changes the output format to FeynCalcForm. \
 To change to InputForm use FI.";
 
+$FCCheckProgress::usage =
+"If set to True, some selected functions will display a progress monitor
+during their evaluation. While this can be useful for long computations,
+on short expressions the progress bars make evaluating slightly slower.
+By default $FCCheckProgress is set to False.";
+
 FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
 is larger than level.";
@@ -357,7 +363,7 @@ $Containers				= {};
 $Covariant				= False;
 $DisableMemSet 			= False;
 $DistributiveFunctions	= {Conjugate, Transpose};
-
+$FCCheckProgress		= False;
 
 $FCS = {
 	"CDr",
@@ -457,7 +463,7 @@ FCPrint[level_, x__ /;!OptionQ[{x}] , OptionsPattern[]] :=
 	];
 
 FCMonitor:=
-	If[$Notebooks, Monitor, FCMonitorStub];
+	If[$Notebooks && $FCCheckProgress, Monitor, FCMonitorStub];
 
 FCMonitorStub[x_,__]:=
 	x;
