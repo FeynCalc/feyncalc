@@ -61,7 +61,7 @@ DoPolarizationSum[expr_,k_, n:Except[_?OptionQ], OptionsPattern[]] :=
 			Count[expr, Polarization[k,__], Infinity, Heads -> True] === 0,
 				If[ k=!=0 && n=!=0,
 					2 expr,
-					4 expr
+					2 expr
 				],
 			Count[expr, Polarization[k,__], Infinity, Heads -> True] // EvenQ,
 				temp = (expr /. Pair[LorentzIndex[rho1_, dim_:4],
