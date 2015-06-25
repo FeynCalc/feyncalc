@@ -75,27 +75,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
 		res,nres,irrelevant = 0,
 		contractlabel, diditlabel, famp,chd,fds,tid, tidinternal,
-	dimred,	limitto4=$LimitTo4,iter,sp,tp,
+	dimred,	(*limitto4=$LimitTo4,*)iter,sp,tp,
 
 	loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 	solsList, repSolList, reversedRepIndexList,reducedLoopList,
 	finalRepList,isoContract
 	},
-		If[	OptionValue[FCI],
-			t0 = am,
-			t0 = FCI[am]
-		];
-
-		FCPrint[1,"TID: Entering TID with: ", t0, FCDoControl->tidVerbose];
-
-		dimred			= OptionValue[DimensionalReduction];
-		n 				= OptionValue[Dimension];
-		contractlabel	= OptionValue[Contract];
-		fds 			= OptionValue[FeynAmpDenominatorSimplify];
-		chd 			= OptionValue[ChangeDimension];
-		paveao 			= OptionValue[PaVeAutoOrder];
-		pavear 			= OptionValue[PaVeAutoReduce];
-
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -104,6 +89,26 @@ TID[am_ , q_, OptionsPattern[]] :=
 			];
 		];
 
+		FCPrint[1,"TID: Entering TID with: ", t0, FCDoControl->tidVerbose];
+
+		If[	OptionValue[FCI],
+			t0 = am,
+			t0 = FCI[am]
+		];
+
+
+
+		dimred			= OptionValue[DimensionalReduction];
+		n 				= OptionValue[Dimension];
+		contractlabel	= OptionValue[Contract];
+		fds 			= OptionValue[FDS];
+		chd 			= OptionValue[ChangeDimension];
+		paveao 			= OptionValue[PaVeAutoOrder];
+		pavear 			= OptionValue[PaVeAutoReduce];
+
+
+
+
 		If[ t0 === 0,
 			Return[0]
 		];
@@ -111,7 +116,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		If[ dimred =!= True,
 			FCMonitor[
 				t0 = ChangeDimension[t0, chd];
-				$LimitTo4=False;
+				(*$LimitTo4=False;*)
 				Grid[{{"Applying ChangeDimension",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
@@ -148,7 +153,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 
 		];
-
+		t0 = FDS[t0];
 		t0 = FRH[t0,IsolateNames->tempIsolate];
 
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
@@ -163,7 +168,32 @@ TID[am_ , q_, OptionsPattern[]] :=
 			IsolateNames->tempIsolate]//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},q]:>FRH[Pair[pp]]]&;
 		(* Before doing the reduction let us try  to cancel scalar products first, note
 		that we need to sort out terms slashes like GSD[q] since SPC will not work there *)
+
 		If[	OptionValue[SPC],
+			{rest1,rest2,sTerms1,sTerms2} = FCLoopSplit[t0,{q}];
+			sTerms1  = FCLoopIsolate[sTerms1, {q}, ExceptHeads -> {DiracGamma}];
+			sTerms2  = FCLoopIsolate[sTerms2, {q}, ExceptHeads -> {DiracGamma}];
+			sTerms1Can = FCLoopCanonicalize[sTerms1,q,FCGV["LoopInt"]];
+			sTerms2Can = FCLoopCanonicalize[sTerms2,q,FCGV["LoopInt"]];
+			sTermsUnique = Join[sTerms1Can[[4]],sTerms2Can[[4]]];
+			FCMonitor[
+				sTermsSols1=MapIndexed[(iter=Total[#2]; FCGV["LoopInt"]@Collect2[SPC[#1/.FCGV["LoopInt"]->Identity,q,FDS->True],{q,FeynAmpDenominator}])&,sTerms1Can[[4]]];
+				iter=Length[sTerms1Can[[4]]]+1,
+				Grid[{{"Cancelling scalar products in the original expression (", Length[sTerms1Can[[4]]], "unique integrals)",
+				ProgressIndicator[iter, {1, Length[sTerms1Can[[4]]]+1}]}}]
+			];
+			FCMonitor[
+				sTermsSols2=MapIndexed[(iter=Total[#2]; FCGV["LoopInt"]@Collect2[SPC[#1/.FCGV["LoopInt"]->Identity,q,FDS->True],{q,FeynAmpDenominator}])&,sTerms2Can[[4]]];
+				iter=Length[sTerms2Can[[4]]]+1,
+				Grid[{{"Cancelling scalar products in the original expression (", Length[sTerms2Can[[4]]], "unique integrals)",
+				ProgressIndicator[iter, {1, Length[sTerms2Can[[4]]]+1}]}}]
+			];
+			sTerms1RRule=FCLoopSolutionList[sTerms1Can,sTermsSols1];
+			sTerms2RRule=FCLoopSolutionList[sTerms2Can,sTermsSols2];
+			t0 = rest1+rest2+(sTerms1/.sTerms1RRule/.FCGV["LoopInt"]->Identity)+
+				(sTerms2/.sTerms2RRule/.FCGV["LoopInt"]->Identity)
+
+(*
 			iList1 = (Map[(tmp1=SelectFree[#, {DiracGamma}];
 				SelectNotFree[#, {DiracGamma}]* (* Dirac stuff goes here *)
 				SelectFree[tmp1, {q}]* (* Dirac-free stuff goes here *)
@@ -190,9 +220,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 			sList1 = Collect2[#,{q,FeynAmpDenominator}]&/@sList1;
 			sList1 = removeNonloop[#, q]&/@sList1;
 			rList1 = MapIndexed[(Rule[loopIntegral[#1], First[sList1[[#2]]]]) &,uList1];
-			t0 = iList1/.rList1/.loopIntegral->Identity;
+			t0 = iList1/.rList1/.loopIntegral->Identity;*)
 		];
-
 
 		(* Uncontract first *)
 		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0], q, Pair -> All, DimensionalReduction -> dimred,
@@ -366,11 +395,13 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 		];
 
+		res = Apart2[res];
+
 		(*	Since the large prefactors are isolated, collecting w.r.t to the scalar loop integrals
 			should not be too expensive. *)
 		If[	OptionValue[Collecting],
 			FCMonitor[
-				res= Collect[res,FeynAmpDenominator[__]],
+				res= Collect2[res,Join[{FeynAmpDenominator},PaVeHeadsList]],
 				Grid[{{"Collecting w.r.t the scalar loop integrals",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
@@ -400,7 +431,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 
-		$LimitTo4=limitto4;
+		(*$LimitTo4=limitto4;*)
 		res
 
 	];
@@ -665,7 +696,10 @@ tidConvert[expr_, q_]:=
 			!FreeQ[SelectNotFree[f,q], OPEDelta] && (getfdp[any]=!=1); (* avoid tadpoles *)
 		temp = qQQprepare[ex];
 		res = temp/. ffdp[0,r___]:>ffdp[r];
-		If[!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
+		If[	!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
+			Print[!FreeQ[res,qQQprepare]];
+			Print[FreeQ[res,qQQ]];
+			Print[MatchQ[temp, _ qQQ[ffdp[0,___] _ ]]];
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
@@ -708,6 +742,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 				the integral " <> ToString[int, InputForm]];
 		Abort[]
 	];
+	FCPrint[2,"TID: tidReduce: we are dealing with a ", nPoint, "-point function" FCDoControl->tidVerbose];
 
 
 	If[Length[masses]=!=nPoint,
@@ -735,8 +770,8 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 		{{vecs} /. {Pair[LorentzIndex[aa_, nn_], Momentum[bb_, nn_]] :> {bb, aa}}, {moms}};
 
 	(* TODO: Outsource this into a separate function *)
-	pavePrepare[ex_,np_Integer?Positive,{moms__},{ms__}]:=
-		(
+	pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}]:=
+		(FCPrint[3,"TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
 		Which[	(* A and B functions*)
 				np===1 || np===2,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
@@ -804,6 +839,11 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 				FeynCalcExternal->False]/.FCGV["PaVe"][xx_]:>tidPaVe[pavePrepare[FCGV["PaVe"][xx],nPoint,{moms},masses]])
 		};
 	res = int /. qrule;
+	If[	!FreeQ[res,pavePrepare],
+		Message[TID::failmsg, "tidReduce failed to convert the" <> ToString[res,InputForm] <> "to Passarino-Veltman coefficient
+		functions."];
+		Abort[]
+	];
 	If[	!FreeQ2[res,{qQQ,Pair[Momentum[q, _ : 4], LorentzIndex[_, _ : 4]]}],
 		Message[TID::failmsg, "tidReduce failed to reduce the integral " <> ToString[int,InputForm]];
 		Abort[]
