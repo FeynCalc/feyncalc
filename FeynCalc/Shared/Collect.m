@@ -136,6 +136,7 @@ Collect2[ expr_, vv_List,r___Rule ] :=
 						x,
 						t1 = Select[x t2, !FreeQ2[#, v]&];
 						If[!MemberQ[tv, mp2[t1]],
+							(*TODO* AppendTo is probably too slow here for large expression...*)
 							AppendTo[tv, mp2[t1]]
 						];
 						(Select[x t2, FreeQ2[#, v]&]/t2) mp2[t1]
