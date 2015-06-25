@@ -1736,7 +1736,7 @@ OneLoopSum[ex_, ops___] :=
 				pavit[xXX_PaVe, dir_, prev_:False] :=
 					Block[ {nx, file, temp, set,xxxa,abbs},
 						paV[xy__, p_List, m_List] :=
-							PaVe[xy,C,p,C,m, PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder];
+							PaVe[xy,C,p,C,m, PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce];
 						xxx = paV@@xXX;
 						(*Changed 18/9-2000, F.Orellana*)
 						abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /.
@@ -2515,8 +2515,8 @@ pavremember[x__] :=
 					];
 			(* if the option DenominatorOrder is True, then order here again *)
 					If[ denomOrder === True,
-						pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder]],
-						pav0 = PaVe[0,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder]
+						pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]],
+						pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
 					];
 					tdecr = add[ tdecr, pav0, tdecnew ];
 					FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
@@ -2529,7 +2529,7 @@ pavremember[x__] :=
 						tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
 					];
 					For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
-						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder],
+						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
 										tdecnew[[tdectj]]
 						]            ];
 					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
@@ -2554,7 +2554,7 @@ pavremember[x__] :=
 											tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
 							]
 					];
-					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder], tdecnew ];
+					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew ];
 					tdecnew = Table[{Sort[{tdecti,tdectj}],
 							tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/.
 									LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]
@@ -2566,7 +2566,7 @@ pavremember[x__] :=
 					];
 					For[ tdectj = 1,tdectj<=Length[tdecnew],tdectj++,
 						tdecr = add[ tdecr,
-								PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder}],
+								PaVe@@Join[tdecnew[[tdectj,1]],{tensps},{tdecml},{PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce}],
 									tdecnew[[tdectj,2]]
 									];
 						If[ $LimitTo4 === True,
@@ -2599,7 +2599,7 @@ pavremember[x__] :=
 						tdecr = epst[ tdecr,tdecnew[[2]], tdi,-1/6 ]
 					];
 					For[ tdec0j = 1, tdec0j <= tdeclpl, tdec0j++,
-						tdecr = add[  tdecr, PaVe[0,0,tdec0j,tensps,tdecml,PaVeAutoReduce->paveautoreduce,PaVeAutoOrder->paveautoorder],
+						tdecr = add[  tdecr, PaVe[0,0,tdec0j,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
 										tdecnew[[tdec0j]]  ]
 						];
 					For[ tdecti = 1, tdecti <= tdeclpl, tdecti++,
