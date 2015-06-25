@@ -18,7 +18,7 @@ Tests`NonCommAlgebra`fcstDotSimplify = {
 {"fcstDotSimplify-ID2","DotSimplify[GA[mu].(a GS[p] - b GS[q]).GS[q].GA[nu],
 Expanding -> True]","a*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[p]] . DiracGamma[Momentum[q]] . DiracGamma[LorentzIndex[nu]] -
 b*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[q]] . DiracGamma[Momentum[q]] . DiracGamma[LorentzIndex[nu]]"},
-{"fcstDotSimplify-ID3","DotSimplify[GS[p].GS[p], DotPower -> True]","DiracGamma[Momentum[p]]^2"},
+{"fcstDotSimplify-ID3","DotSimplify[xxx.xxx, DotPower -> True]","xxx^2"},
 
 {"fcstDotSimplify-ID4","DeclareNonCommutative[anc, bnc, cnc]\nCommutator[anc, cnc] = 1;\nDotSimplify[anc.anc, DotPower -> True]","anc^2"},
 {"fcstDotSimplify-ID5","DotSimplify[anc.(bnc - z cnc).anc]","anc . bnc . anc - z*(anc + cnc . anc . anc)"},
