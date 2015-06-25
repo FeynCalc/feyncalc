@@ -56,7 +56,7 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 			Abort[]
 		];
 		loopList = Union[Cases[ex + null, head[_] , Infinity]];
-		If[ Cases[loopList, head[x_]/;FreeQ[x,q] , Infinity]=!={},
+		If[ Cases[loopList, head[x_]/;FreeQ2[x,Join[{q},PaVeHeadsList]] , Infinity]=!={},
 			Message[FCLoopCanonicalize::nonloop, expr, head];
 			Abort[]
 		];

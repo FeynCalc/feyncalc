@@ -54,8 +54,9 @@ Options[FCLoopIsolate] = {
 	FCI -> False
 };
 
-FCLoopIsolate[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex},
+FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
+	Block[ {res, null1, null2, ex,lmoms},
+		lmoms = Join[lmoms0,PaVeHeadsList];
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
 			ex = FCI[expr]/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]])

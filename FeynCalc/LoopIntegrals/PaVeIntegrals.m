@@ -81,10 +81,14 @@ DB1::usage =
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+PaVeHeadsList;
+
 End[]
 
 Begin["`PaVeIntegrals`Private`"]
 
+PaVeHeadsList  = {PaVe,A0,B0,B00,B1,B11,DB1,C0,D0};
 ClearAttributes[B0, ReadProtectecd];
 ClearAttributes[B00, ReadProtectecd];
 ClearAttributes[B1, ReadProtectecd];

@@ -42,7 +42,9 @@ Options[FCLoopSplit] = {
 
 FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 	Block[{	null1, null2, ex, loopFree, loopScalar,
-			loopTensorQP, loopTensorFreeInd},
+			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
+			addToLoopScalar},
+
 		If[OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
@@ -62,13 +64,21 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 				Pair[Momentum[a_,_:4],Momentum[b_,_:4]]/;!FreeQ2[{a,b},lmoms] :> 1}, lmoms]) &]/. {null1|null2 -> 0};
 		loopTensorFreeInd = ex - loopFree - loopScalar - loopTensorQP;
 
+		{oldLoopFree,oldLoopScalar}={loopFree,loopScalar};
+		{loopFree,addToLoopScalar} = FCSplit[loopFree,PaVeHeadsList];
+		loopScalar = loopScalar + addToLoopScalar;
+		If[	Together[(loopScalar+loopFree)-(oldLoopFree+oldLoopScalar)]=!=0,
+			Message[FCLoopSplit::fail, ex];
+			Abort[]
+		];
+
 		(*Check that different pieces are what they should be	*)
 		If[!FreeQ2[loopFree,{lmoms}] ||
 			!FreeQ2[loopScalar/. FeynAmpDenominator[__] :> Unique[],{lmoms}] ||
 			!FreeQ2[loopTensorQP/.Pair[Momentum[a_,_:4],Momentum[b_,_:4]]/;!FreeQ2[{a,b},lmoms] :> 0,{lmoms}] ||
 			!FreeQ2[loopTensorFreeInd/.Pair[Momentum[a_,_:4],LorentzIndex[_,_:4]]/;!FreeQ2[a,lmoms] :> 0,{lmoms}] ||
-			loopFree+loopScalar+loopTensorQP+loopTensorFreeInd =!= ex,
-			Message[FCLoopSlit:fail, ex];
+			Together[loopFree+loopScalar+loopTensorQP+loopTensorFreeInd - ex]=!=0,
+			Message[FCLoopSplit::fail, ex];
 			Abort[]
 		];
 		{loopFree,loopScalar,loopTensorQP,loopTensorFreeInd}
