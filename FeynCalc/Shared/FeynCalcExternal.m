@@ -51,24 +51,24 @@ FeynCalcExternal[x_,opts___Rule] :=
 
 		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
-		ru =  Join[
-		{DiracGamma :> diracback},
-		{DiracSigma :> dirsig},
-		{Eps :> eps},
-		{FeynAmpDenominator :> feynampback},
-		{MetricTensor :> metricmul},
-		{Pair :> pairback},
-		{PropagatorDenominator :> propagatordback},
-		{SUND :> sundback},
-		{SUNDelta :> sundeltanoi},
-		{SUNFDelta :> sunfdeltanoi},
-		{SUNF :> SUNFback},
-		{SUNT :> suntback},
-		{SUNTF :> suntfback},
-		{SUNDeltaContract :> sundeltanoi},
-		{SUNFDeltaContract :> sunfdeltanoi},
-		{ScalarProduct :> scalarmul},
-		{Power2 :> Power}] /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
+		ru = {
+			DiracGamma :> diracback,
+			DiracSigma :> dirsig,
+			Eps :> eps,
+			FeynAmpDenominator :> feynampback,
+			MetricTensor :> metricmul,
+			Pair :> pairback,
+			PropagatorDenominator :> propagatordback,
+			SUND :> sundback,
+			SUNDelta :> sundeltanoi,
+			SUNFDelta :> sunfdeltanoi,
+			SUNF :> SUNFback,
+			SUNT :> suntback,
+			SUNTF :> suntfback,
+			SUNDeltaContract :> sundeltanoi,
+			SUNFDeltaContract :> sunfdeltanoi,
+			ScalarProduct :> scalarmul,
+			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
 		vv = Cases2[x, Join[{},
 			{	DiracGamma,
