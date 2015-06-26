@@ -528,7 +528,5 @@ Tests`Shared`fcstFeynCalcInternalTriple = {
 	{"fcstFeynCalcInternalTriple-ID84.1", "FCI[FCE[FCI[SPE[a, b]]]]", "Pair[Momentum[a, D-4], Momentum[b, D-4]]"},
 	{"fcstFeynCalcInternalTriple-ID85", "FCI[FCE[FCI[SO[a]]]]", "Pair[Momentum[a], Momentum[OPEDelta]]"},
 	{"fcstFeynCalcInternalTriple-ID86", "FCI[FCE[FCI[SOD[a]]]]", "Pair[Momentum[a, D], Momentum[OPEDelta, D]]"},
-	{"fcstFeynCalcInternalTriple-ID87", "FCI[FCE[FCI[PropagatorDenominator[p, m]]]]", "PropagatorDenominator[Momentum[p, D], m]"},
-	{"fcstFeynCalcInternalTriple-ID88", "FCI[FCE[FCI[PropagatorDenominator[Momentum[p + q], m]]]]", "PropagatorDenominator[Momentum[p,D] + Momentum[q,D], m]"}
-
+	{"fcstFeynCalcInternalTriple-ID87", "FCI[FCE[FCI[PropagatorDenominator[p, m]]]]", "PropagatorDenominator[Momentum[p, D], m]"}
 };

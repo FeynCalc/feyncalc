@@ -58,7 +58,6 @@ FeynCalcExternal[x_,opts___Rule] :=
 			FeynAmpDenominator :> feynampback,
 			MetricTensor :> metricmul,
 			Pair :> pairback,
-			PropagatorDenominator :> propagatordback,
 			SUND :> sundback,
 			SUNDelta :> sundeltanoi,
 			SUNFDelta :> sunfdeltanoi,
@@ -70,8 +69,8 @@ FeynCalcExternal[x_,opts___Rule] :=
 			ScalarProduct :> scalarmul,
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
-		vv = Cases2[x, Join[{},
-			{	DiracGamma,
+		vv = Cases2[x, {
+				DiracGamma,
 				DiracSigma,
 				Eps,
 				FeynAmpDenominator,
@@ -88,7 +87,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 				SUNFDeltaContract,
 				ScalarProduct,
 				Power2
-			}] /. sequence -> Sequence];
+			} /. sequence -> Sequence];
 
 		rv = Map[(# ->  ((MomentumCombine[#,LeafCount -> 1000])/.ru ) )&, vv]//Dispatch;
 		x /. rv
@@ -191,8 +190,6 @@ suntfback[{a__},b_,c_] :=
 	b /. SUNFIndex|ExplicitSUNFIndex -> Identity,
 	c /. SUNFIndex|ExplicitSUNFIndex -> Identity];
 
-propagatordback[a_,b_] :=
-	PropagatorDenominator[a/.Momentum->iDent, b];
 propd[a_, 0] :=
 	a /. Momentum->iDent;
 propd[a_, b_/;b=!=0] :=
