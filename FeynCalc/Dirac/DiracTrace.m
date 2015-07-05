@@ -141,7 +141,8 @@ DiracTrace[x_,op___?OptionQ] := fcex[op][
 *)
 
 DiracTrace[x:Except[_HoldAll], op___?OptionQ] :=
-	Block[ {diTres, globalstartops = Options[DiracTrace] },
+	Block[ {diTres  },
+		globalstartops = Options[DiracTrace];
 		SetOptions[DiracTrace,FilterRules[{op},Options[DiracTrace]]];
 		diTres = (fcex[op][( diractraceevsimple[fcit[x] ,Flatten[{op}]] /.
 			diractraceevsimple -> diractraceev /. diractraceev -> diractraceev2)]);
@@ -666,7 +667,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 									(* Apply West's formula (c.f. Eq 3.10 of T. H. West,
 										Comp. Phys. Commun., 77 (1993) ) *)
 									FCPrint[3,"The chiral trace", spx, "is computed using West's formula in NDR" ];
-									temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) scev[spx[[i]], spx[[j]]]*
+									temp2 = Expand[2/(Length[spx]-5) Sum[ (-1)^(i+j+1) scev[spx[[i]], spx[[j]]]*
 									spt@@Delete[spx,{{j},{i}}], {i,2,Length[spx]-1},{j,1,i-1}]],
 									(*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm,
 									A. Denner. Comp. Phys. Commun., 64 (1991)) *)
@@ -681,6 +682,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 								(* Otherwise abort the computation, since NDR cannot handle anomalous traces without an
 								additional prescription*)
 								Message[DiracTrace::ndranomaly, InputForm[DOT[y]]];
+								SetOptions[DiracTrace, Sequence@@globalstartops];
 								Abort[];
 							],
 						(* Larin *)
