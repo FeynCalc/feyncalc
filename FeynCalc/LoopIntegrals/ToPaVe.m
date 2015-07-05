@@ -57,6 +57,9 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		(rel/.repList) + irrel
 	];
 
+toPaVe[x_,_,_,_]:=
+	x/; !FreeQ2[Head[x],PaVeHeadsList];
+
 (* A0 *)
 toPaVe[FeynAmpDenominator[PropagatorDenominator[Momentum[q_,_],m_]],q_,paveao_,pavear_]:=
 	I Pi^2 PaVe[0,{},{m^2}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear];

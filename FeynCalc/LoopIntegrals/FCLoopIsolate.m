@@ -72,7 +72,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 				ex + null1 + null2] /. {null1 | null2 -> 0} /.
 			OptionValue[Head][1] -> 1);
 		res = res /. {OptionValue[Head][x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
-		If[ (res /. OptionValue[Head] -> Identity) =!= ex,
+		If[ Together[(res /. OptionValue[Head] -> Identity)-ex] =!= 0,
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
 		];

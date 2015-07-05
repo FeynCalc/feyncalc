@@ -34,7 +34,6 @@ Tests`LoopIntegrals`ToPaVe = {
 {"fcstToPaVe-ID9","ToPaVe[FVD[q, mu] FAD[{q + m1}, {q + p1, m2}], q] // FCE",
 	"FAD[m1 + q, {p1 + q, m2}]*FVD[q, mu]"},
 {"fcstToPaVe-ID10","ToPaVe[FAD[{q}, {q + p1, m2}], q, OtherLoopMomenta -> {p1}] // FCE","FAD[q, {p1 + q, m2}]"},
-{"fcstToPaVe-ID11","ToPaVe[a + b FAD[{q, m1}, {q + p1, m2}], q] // FCE","a + I*b*Pi^2*B0[SPD[p1, p1], m1^2, m2^2]"}
-
-
+{"fcstToPaVe-ID11","ToPaVe[a + b FAD[{q, m1}, {q + p1, m2}], q] // FCE","a + I*b*Pi^2*B0[SPD[p1, p1], m1^2, m2^2]"},
+{"fcstToPaVe-ID12","ToPaVe[A0[m], p]","A0[m]"}
 };
