@@ -703,7 +703,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 							(dirsign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
 							DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))),
 						(* BMHV West's trace formula *)
-						!$Larin && $BreitMaison && !West,
+						!$Larin && $BreitMaison && $West,
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula" ];
 							temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
 							scev[spx[[i]], spx[[j]]] spt@@Delete[spx,{{j},{i}}],
