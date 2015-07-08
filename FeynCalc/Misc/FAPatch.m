@@ -251,8 +251,9 @@ FAPatch[opts___Rule] :=
 		(* ------------------------------------------------------------------------------ *)
 		(* Make it known that the FA code has been patched, change context and
 			change to formatting in TraditionalForm only *)
-		FeynArtsChanges = {"Print[*\"last revis*\"]" ->
-		"$1;\nPrint[\"patched for use with FeynCalc\"];\n\n$1"};
+		FeynArtsChanges = {
+		"Print[\"by Hagen Eck, Sepp Kueblbeck, and Thomas Hahn\"]"->
+		"$1;\nPrint[\"(patched for use with FeynCalc)\"];\n\n$1"};
 		FilePatch["FeynArts.m", FeynArtsChanges];
 		FilePatch["FeynArts39.m", FeynArtsChanges];
 
