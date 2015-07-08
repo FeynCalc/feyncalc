@@ -1,14 +1,21 @@
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+(* ::Package:: *)
 
-(* :Title: ScalarProductCancel*)
 
-(* :Author: Rolf Mertig *)
+
+(* :Title: SPC                                                       		*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	Cancels loop-momentum dependent scalar products in the
+				numerators of loop integrals								*)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 3 July '98 at 15:45 *)
-(* ------------------------------------------------------------------------ *)
 
-(* ------------------------------------------------------------------------ *)
 
 ScalarProductCancel::usage =
 "ScalarProductCancel[exp, q1, q2, ...] cancels scalar products \
@@ -17,6 +24,9 @@ with propagators. ScalarProductCancel[exp] cancels simple cases.";
 SPC::usage =
 "SPC is an abbreviation for ScalarProductCancel.";
 
+SPC::failmsg = "Error! ScalarProductCancel has encountered a fatal problem and must abort the computation. The problem
+reads: `1`";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -24,233 +34,391 @@ End[]
 
 Begin["`ScalarProductCancel`Private`"]
 
+spcVerbose::usage="";
+
 SPC = ScalarProductCancel;
 
-Options[ScalarProductCancel] =
-{ChangeDimension -> D,
-Collecting -> True,
-FCVerbose -> False,
-FeynAmpDenominatorSimplify -> False,
-FeynAmpDenominatorCombine -> True};
+Options[ScalarProductCancel] = {
+	ChangeDimension -> D,
+	FCI -> False,
+	FCVerbose -> False,
+	FDS -> True,
+	FeynAmpDenominatorCombine -> True
+};
 
 
-cd[z_,op___Rule] :=
+
+changeMomDim[z_, dim_/;dim=!=False] :=
 	Block[ {nd, moms, momr},
-		If[ FreeQ[z, Momentum[_]],
-			z,
-			If[ (nd = (ChangeDimension/.{op}/.Options[ScalarProductCancel]))=!=False,
-				If[ nd === True,
-					nd = D
-				];
-				moms = SelectNotFree[Cases2[z, Momentum], Momentum[_]];
-				momr = Map[(# -> ChangeDimension[#,nd])&, moms];
-				z /. momr,
-				z
-			]
-		]
+		If [dim===True || dim===D,
+			nd = D,
+			nd = dim
+		];
+		moms =	Cases[z,Momentum[_,_:4],Infinity];
+		momr = Map[Rule[# ,ChangeDimension[#,nd]]&, moms];
+		(z /. momr)
 	];
 
-ScalarProductCancel[iexp_,opt___Rule] :=
-	Block[ {sim,exp = cd[FCI[iexp],opt]},
-		sim =
-			Cases2[	SelectNotFree[Cases2[exp,PropagatorDenominator],
-					PropagatorDenominator[Momentum[__],_]], Momentum];
-		If[ sim === {},
-			exp,
-			sim = Sequence @@ Map[First, sim];
-			IFPDOff[Expand2[IFPDOn[exp, sim], IFPD], sim]//FeynAmpDenominatorCombine
-		]
+
+ScalarProductCancel[int_, qs___, qlast_, OptionsPattern[]]:=
+	int/; FreeQ2[int,{qs,qlast}];
+
+ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
+	Block[{exp,rank,tmp,tmpHead,null1,null2,res, maxRank},
+
+		If [OptionValue[FCVerbose]===False,
+			spcVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				spcVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+
+		If[	OptionValue[FCI],
+			exp = int,
+			exp = FCI[int]
+		];
+
+
+		If [OptionValue[ChangeDimension]=!=False,
+			exp = changeMomDim[exp,OptionValue[ChangeDimension]]
+		];
+
+		If[	OptionValue[FeynAmpDenominatorCombine],
+			exp = FeynAmpDenominatorCombine[exp]
+		];
+
+		FCPrint[3, "SPC: Entering with ", exp, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: Loop momenta are ", {qs,qlast}, FCDoControl->spcVerbose];
+
+		(* 	Here we determine the maximal number of iterations needed to knock off
+			all the scalar products that can be cancelled	*)
+
+		(* TODO: We should better add an independent function that determines the highest ranks
+			in the expression
+			FCLoopRank -> {HighestScalarRank,HighestTensorRank}
+		*)
+
+		tmp = FCLoopSplit[exp,{qs,qlast}];
+		tmp = FCLoopIsolate[tmp[[3]]+tmp[[4]], {qs,qlast}, FCI->True, Head->tmpHead];
+
+		If[tmp===0,
+			Return[exp]
+		];
+
+		tmp = (Cases[tmp+null1+null2,tmpHead[z___]:>z,Infinity]/.null1|null2->0)//Union;
+
+		rank = Map[Length[Cases[(#/. Power[a_, b_] :> Table[a, {i, 1, b}]),Pair[x__]/;!FreeQ2[{x},{qs,qlast}]:> Pair[x],Infinity]]&,tmp];
+		If [rank=!={},
+			maxRank = Max[rank],
+			maxRank = 0
+		];
+		FCPrint[3, "SPC: Highest scalar rank is ", maxRank, FCDoControl->spcVerbose];
+
+		(* 	First run is without FDS, since the latter might spoil some cancellations
+			by expanding scalar products	*)
+
+		res = FixedPoint[cancelQP[#,{qs,qlast}]&,exp,maxRank+1];
+
+		FCPrint[3, "SPC: After first run ", res, FCDoControl->spcVerbose];
+
+		(* Now second attempt with scalar products expanded *)
+		If [OptionValue[FDS],
+			res = FDS[res,qs,qlast]//ExpandScalarProduct,
+			res = res//ExpandScalarProduct
+		];
+
+		tmp = FCLoopSplit[res,{qs,qlast}];
+		tmp = FCLoopIsolate[tmp[[3]]+tmp[[4]], {qs,qlast}, FCI->True, Head->tmpHead];
+
+		If[tmp===0,
+			Return[res]
+		];
+
+		tmp = (Cases[tmp+null1+null2,tmpHead[z___]:>z,Infinity]/.null1|null2->0)//Union;
+
+		rank = Map[Length[Cases[(#/. Power[a_, b_] :> Table[a, {i, 1, b}]),Pair[x__]/;!FreeQ2[{x},{qs,qlast}]:> Pair[x],Infinity]]&,tmp];
+		If [rank=!={},
+			maxRank = Max[rank],
+			maxRank = 0
+		];
+
+		res = FixedPoint[cancelQP[#,{qs,qlast}]&,res,maxRank+1];
+
+		FCPrint[3, "SPC: After second run ", res, FCDoControl->spcVerbose];
+
+
+		res = Collect2[ExpandScalarProduct[res],{qs,qlast,FeynAmpDenominator}];
+		(*TODO need to check that all the possibel QPs have indeed been cancelled*)
+		FCPrint[3, "SPC: Leaving with ", res, FCDoControl->spcVerbose];
+		res
+	]/; !FreeQ2[int,{qs,qlast}];
+
+
+cancelQP[0, _List]:=
+	0;
+
+cancelQP[expr_/;expr=!=0, qs_List]:=
+	Block[{int,	fclsOutput,intsQP,intsQPUnique,null1,null2,
+			spcLoopIntegral, intsRemoveQP, solsList,isoExtMoms,
+			intsRest,repRule, res,intsRemoveQP2},
+		(* 	It's always good to bring the propagators to a canonical form first *)
+		FCPrint[3, "SPC: cancelQP: Entering with ", expr, FCDoControl->spcVerbose];
+
+		int = expr;
+
+		(*	Let us first extract all the loop integrals with a scalar product
+			in the numerator	*)
+		fclsOutput = FCLoopSplit[int,qs];
+		intsRest = fclsOutput[[1]]+fclsOutput[[2]];
+		intsQP = FCLoopIsolate[fclsOutput[[3]]+fclsOutput[[4]], qs, FCI->True, Head->spcLoopIntegral];
+		(*	Now we extract all the unique loop integrals *)
+		intsQPUnique = (Cases[intsQP+null1+null2,spcLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
+		(*	and pick out those, where we can cancel something	*)
+		intsRemoveQP = Map[If[x=canCancelQP[#/.spcLoopIntegral->Identity,qs]; Length[x]=!=0,{#,x},
+			Unevaluated@Sequence[]]&,intsQPUnique];
+
+		FCPrint[3, "SPC: cancelQP: Terms to be ignored ", intsRest, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: cancelQP: Terms to be simplified ", intsQP, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: cancelQP: Unique integrals that could be relevant ", intsQPUnique, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: cancelQP: Unique integrals that are relevant ", intsRemoveQP, FCDoControl->spcVerbose];
+
+		If[intsRemoveQP === 0,
+			Return[int]
+		];
+
+		(* The QPs that we give to cancelWithIFPD must not have an overall sign	*)
+		intsRemoveQP2 = Map[{#[[1]]/.#[[2]],Union[(#[[2]]/.Rule[_,b_]:>(Abs[b]/.Abs->Identity))]}&, intsRemoveQP];
+
+		FCPrint[3, "SPC: cancelQP: Unique integrals that are relevant (interm version) ", intsRemoveQP2, FCDoControl->spcVerbose];
+
+		intsRemoveQP2 = Map[ReplaceAll[#,{
+						PropagatorDenominator[a_, b_] :> PropagatorDenominator[Total@Isolate[  FCSplit[a, qs]/. {x_,y_}:>{MomentumCombine[x],MomentumCombine[y]}, Join[qs,{Momentum}],IsolateNames->isoExtMoms], b],
+						Pair[a__] :> Isolate[MomentumCombine[Pair[a]],Join[qs,{Momentum}],IsolateNames->isoExtMoms]}
+						]&,intsRemoveQP2];
+
+		(*	now we need to be careful about QPs that appear to powers. Suppose that we have
+			l1.l2^2 / [l1^2-m^2.l2^2-m^2,(l1+l2)^2,...]. Then we can cancel only one l1.l2 via
+			l1.l2 = 1/2 [(l1+l2)^2-l1^2-l2^2]. However, IFPDon will insert
+			l1.l2^2 -> 1/4 [(l1+l2)^2-l1^2-l2^2]^2 which is not whe want.
+			To avoid this issue, we need to specify which QPs we actually want to cancel	*)
+
+		FCPrint[3, "SPC: cancelQP: Unique integrals that are relevant (final version) ", intsRemoveQP2, FCDoControl->spcVerbose];
+
+
+
+		solsList = Map[FRH[cancelWithIFPD[#[[1]],qs,#[[2]]],IsolateNames->isoExtMoms]&,(intsRemoveQP2/.spcLoopIntegral->Identity)];
+
+		FCPrint[3, "SPC: cancelQP: Solutions list ", solsList, FCDoControl->spcVerbose];
+
+		If[Length[solsList]=!=Length[intsRemoveQP],
+			Message[SPC::failmsg,"cancelQP can't create the solution list"];
+			Abort[]
+		];
+
+		repRule = MapIndexed[(Rule[#1[[1]], First[solsList[[#2]]]]) &, intsRemoveQP];
+		FCPrint[3, "SPC: cancelQP: Final replacement rule ", repRule, FCDoControl->spcVerbose];
+
+		res = intsRest + (intsQP/.repRule/.spcLoopIntegral->Identity);
+
+		FCPrint[3, "SPC: cancelQP: Leaving with ", res, FCDoControl->spcVerbose];
+		res
+
 	];
 
-ScalarProductCancel[iex_,qs___, qlast_ /; Head[qlast] =!= Rule, opt:OptionsPattern[]] :=
-	MemSet[ScalarProductCancel[iex,qs,qlast,opt],
-		Block[ {prp, exp,pqs, pexp, nexp, prule,P1,re,ex,prt,texp},
-			If [OptionValue[FCVerbose]===False,
-				spcVerbose=$VeryVerbose,
-				If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-					spcVerbose=OptionValue[FCVerbose]
-				];
-			];
-			ex = cd[FCI[iex],opt];
-			(* translate eventually *)
-			prp = Select[Cases2[ex, PropagatorDenominator]//MomentumExpand,
-				!FreeQ[#,PropagatorDenominator[w_Plus /; Length[w]>1,_]]&];
-			FCPrint[2, "prp: ", prp, FCDoControl->spcVerbose];
-			prp = (*SelectNotFree[*)Map[SelectFree[#/. PropagatorDenominator[a_, _] :> a, {qs,qlast}]&, prp] /. Momentum[a_,___] :> a(*, Plus]*);
-			prp = prp /. 0 -> Sequence[];
-			FCPrint[2, "prp: ", prp, FCDoControl->spcVerbose];
-			pqs = SelectFree[SelectNotFree[Cases2[ex,Pair], {qs, qlast}],OPEDelta]/. Pair[a_, b_] :> {a, b} /. Momentum[a_, _ : 4] :> a;
-			(*prp = Reverse[prp];*)
-			FCPrint[2, "pqs: ", pqs, FCDoControl->spcVerbose];
-			If[ prp === {},
-				exp = ex,
-				(*changemaybelater*)
-				prt = Select[prp, (Cases[pqs, {_, # | -#}] =!= {}) &];
-				FCPrint[2, "prt: ", prt, FCDoControl->spcVerbose];
-				If[prt==={},
-					prp  = First[prp],
-					prp = First[prt]
-				];
-				psol = First[Variables[prp]];
-				prul  = Solve[prp == P1, psol][[1,1]];
-				prulb = P1 -> prp;
-				exp = ExpandScalarProduct[ex /. prul];
-			];
-			pqs = SelectFree[SelectNotFree[Cases2[exp,Pair], {qs, qlast}],OPEDelta];
-			FCPrint[2, "pqs: ", pqs, FCDoControl->spcVerbose];
-			re =
-				If[ pqs === {},
-					exp,
-					If[ Head[exp]=!=Plus,
-						nexp = 0;
-						pexp = exp,
-						nexp = SelectFree[exp, pqs];
-						FCPrint[3, "SPC: Will apply cancelling to  ", exp - nexp, FCDoControl->spcVerbose];
-						FCPrint[3, "SPC: Will not apply cancelling to  ", nexp, FCDoControl->spcVerbose];
+cancelWithIFPD[int_,_List,{},_:True] :=
+	int;
 
-						texp = exp - nexp;
+(* 	Intelligent cancellation of scalar products that gets applied only for QPs listed in the qps list.	*)
+cancelWithIFPD[int_,qs_List,qps_List/;Length[qps]=!=0] :=
+	Block[ {rest,forIFPD,doIFPD,afterIFPD,res,
+		afterIFPDDrop1,afterIFPDDrop2,afterIFPDDrop3},
 
-						texp = Isolate[Collect2[texp, {qs, qlast,FeynAmpDenominator}], {qs, qlast,FeynAmpDenominator}, IsolateNames->spcIsolate] /.
-						Pair[x__] /; !FreeQ2[{x}, {qs,qlast}] :> FRH[Pair[x], IsolateNames->spcIsolate];
-						FCPrint[3, "SPC: texp  ", texp, FCDoControl->spcVerbose];
-						pexp = (ScalarProductCancel/@(texp+null))/.null->0;
-						FCPrint[3, "SPC: pexp  ", pexp, FCDoControl->spcVerbose]
-					];
-					nexp + Expand2[FixedPoint[sp[#, qs, qlast, opt]&, pexp, 3],{qs,qlast}]
-				];
-			(* This will cancel remaining terms that are of the form q^2/(q^2-m^2)*)
+		FCPrint[3, "SPC: cancelWithIFPD: Entering with ", int, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: cancelWithIFPD: Loop momenta are ", qs, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: cancelWithIFPD: Need to cancel ", qps, FCDoControl->spcVerbose];
 
-			re = Isolate[Collect2[re, {qs, qlast,FeynAmpDenominator}], {qs, qlast,FeynAmpDenominator}, IsolateNames->spcIsolate2] /.
-					Pair[x__] /; !FreeQ2[{x}, {qs,qlast}] :> FRH[Pair[x], IsolateNames->spcIsolate2];
-			re = FDS[re,qs,qlast];
-			re = FRH[re,IsolateNames->spcIsolate2];
-			re = FRH[re,IsolateNames->spcIsolate];
-			(*
-			If [MatchQ[re, Pair[Momentum[q_, dim_: 4], Momentum[q_, dim_: 4]] FeynAmpDenominator[___,PropagatorDenominator[Momentum[q_, dim_], _], ___]],
-				Print["SPC failed to perform some cancellations, please examine the output carefully!"],
-				Print[re];
-			];*)
+		(* 	First of all let us check that the QPs that we want to cancel are indeed
+			present in the integral	*)
+		If[!MatchQ[(int/.Power[x_,p_]/;p>0:>x),_. (FeynAmpDenominator[y__] /; !FreeQ2[{y}, qs]) Times@@qps],
+			Message[SPC::failmsg,"The input of cancelWithIFPD doesn't contain QPs that are to be cancelled."];
+			Abort[];
+		];
 
-			If[ prp =!= {},
-				re = ExpandScalarProduct[re /. prulb]
-			];
-			FCPrint[1, "SPC: Leaving with  ", re, FCDoControl->spcVerbose];
-			re
-		]
+		(*	Now let us factor out the uncancellable QPs  *)
+		rest = Cancel[(int/Times@@qps)]/.FeynAmpDenominator[___]:>1;
+		forIFPD = Cancel[int/rest];
+
+		(* Check that our decomposition is valid *)
+		If[rest*forIFPD=!=int,
+			Message[SPC::failmsg,"cancelWithIFPD failed to extract the relevent part of the integral."];
+
+			Abort[]
+		];
+
+		FCPrint[3, "SPC: cancelWithIFPD: QPs that won't go into IFPDOn ", rest, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: cancelWithIFPD: This enters IFPDOn ", forIFPD, FCDoControl->spcVerbose];
+
+		doIFPD = IFPDOn[forIFPD, Sequence@@qs];
+		doIFPD = Expand2[doIFPD,IFPD];
+		afterIFPD = Expand2[rest*FeynAmpDenominatorCombine[IFPDOff[doIFPD, Sequence@@qs]],qs];
+
+		FCPrint[3, "SPC: cancelWithIFPD: Full integral after IFPDOn ", afterIFPD, FCDoControl->spcVerbose];
+		(* 	Since we are under the integral sign here, we should drop
+			all the terms that are zero in DR.
+			These are terms free of any loop momenta	*)
+		afterIFPDDrop1 = FCSplit[afterIFPD, qs][[2]];
+		FCPrint[3, "SPC: cancelWithIFPD: Result with non-loop terms dropped ", afterIFPDDrop1, FCDoControl->spcVerbose];
+		(* 	But also those that have no scale	*)
+		afterIFPDDrop2 = Collect2[FCSplit[afterIFPDDrop1, {FeynAmpDenominator}][[2]],Join[qs,{FeynAmpDenominator}]];
+		FCPrint[3, "SPC: cancelWithIFPD: Some scaleless terms dropped as well ", afterIFPDDrop2, FCDoControl->spcVerbose];
+		(* 	Finally, terms of type q.p/q^2 are removed by FDS	*)
+		(* 	TODO: Again, it would have been better to have a separate function
+			FCLoopRemoveScaleless for doing this	*)
+		afterIFPDDrop3 = FDS[afterIFPDDrop2, Sequence@@qs];
+		FCPrint[3, "SPC: cancelWithIFPD: All scaleless terms removed ", afterIFPDDrop3, FCDoControl->spcVerbose];
+
+		(* Looks like now we are done *)
+		res = Collect2[afterIFPDDrop3,Join[qs,{FeynAmpDenominator}]];
+		FCPrint[3, "SPC: cancelWithIFPD: Leaving with ", res, FCDoControl->spcVerbose];
+		res
 	];
 
-SetAttributes[holdf, HoldAll];
-holdf[spi[i_]] :=
-	FixedPoint[ReleaseHold, spi[i]];
+(* 	Checks if the given scalar product can be cancelled,
+	provided that a propagator that matches qp is present *)
+checkAdditionalProps[qp_,props_List,qs_List]:=
+	Block[{f,pureLoop,null1,null2},
 
-checkpair[x_Plus,qu__] :=
-	Map[checkpair[#,qu]&,x];
-
-checkpair[y_ /; Head[y] =!= Plus,qu__] :=
-	Block[ {c1,dc, aliens, pas, sub},
-		If[ Head[y] =!= Times,
-			y,
-			pas = Cases2[SelectFree[SelectNotFree[y,{qu}], OPEDelta], Pair];
-			If[ pas === {},
-				y /. Pair -> noPair,
-				c1 = SelectFree[Variables[Cases2[pas ,Momentum]/.Momentum[a_,___]:>a], {qu}];
-				dc = SelectFree[Variables[Cases2[SelectNotFree[y,FeynAmpDenominator],
-					Momentum ]/.Momentum[a_,___]:>a],{qu}];
-				aliens = SelectNotFree[pas, SelectFree[c1,dc]];
-				sub = Table[aliens[[ij]] -> (aliens[[ij]] /. Pair->noPair),    {ij,Length[aliens]}];
-				FCPrint[3, "SPC: checkpair: sub = ", sub, FCDoControl->spcVerbose];
-				If[ sub === {},
-					y,
-					y/.sub
-				]
-			]
-		]
+		(*	This gives us the list of all the additional propagators
+			(i.e. q1^2, q2^2 etc. ) that are also needed to cancel qp
+			in addition to the propagator that contains qp *)
+		pureLoop = Last[FCSplit[Expand[qp^2], qs^2]];
+		pureLoop = Sort[List@@(pureLoop+null1+null2)/.{null1|null2->Unevaluated@Sequence[]}];
+		(* 	if all the additional propagators are present, then
+			qp can be completely cancelled, otherwise we shouldn't bother *)
+		(Sort[Intersection[pureLoop,props^2]]===pureLoop)
 	];
 
-sp[exp_,qq___, ql_ /; Head[ql] =!= Rule, opt___Rule] :=
-(*
-sp[exp,qq,q,opt] =
-*)
-	Block[ {t1 = exp,t2,t3,t4,t5,fads,facs,col},
-		col  = Collecting /. {opt} /. Options[ScalarProductCancel];
-		fads = FeynAmpDenominatorSimplify /. {opt} /. Options[ScalarProductCancel];
-		facs = FeynAmpDenominatorCombine /. {opt} /. Options[ScalarProductCancel];
-		FCPrint[3, "SPC: sp: Entering with  ", t1, FCDoControl->spcVerbose];
-		If[ FreeQ[exp, FeynAmpDenominator] || FreeQ[exp, Pair],
-			exp,
-			t4 = Catch[
-				If[ col === True,
-					t1 = Collect2[t1,{qq,ql}, Factoring -> False];
-				];
-				FCPrint[3, "SPC: sp: t1 after collecting  ", t1, FCDoControl->spcVerbose];
-				t1 = checkpair[t1,qq,ql];
-				FCPrint[3, "SPC: sp: t1 after checkpair  ", t1, FCDoControl->spcVerbose];
-				If[ FreeQ[t1, Pair],
-					Throw[t1 /. noPair -> Pair]
-				];
-				t1 = IFPDOn[t1, qq, ql];
-				FCPrint[3, "SPC: sp: t1 after IFPDOn  ", t1, FCDoControl->spcVerbose];
-				FCPrint[2, "IFPDOn done in ScalarProductCancel", FCDoControl->spcVerbose];
-				If[ LeafCount[t1]<200 &&
-					FreeQ[t1, a_^(pp_ /;Head[pp]=!=Integer)],
-					t2 = Expand[t1],
-					t2 = Expand2[t1, IFPD]
-				];
-				FCPrint[3, "SPC: sp: after expanding w.r.t IFPD  ", t2, FCDoControl->spcVerbose];
-				(* if q^2/q^2 occured then now there are terms without ifpd *)
-				(* in dim. reg. these are 0 *)
-				If[ FreeQ[t2, IFPD],
-					t2 = 0
-				];
-				If[ Head[t2] === Plus,
-					SelectFree[t2,IFPD];
-					t2 = SelectNotFree[t2, IFPD]
-				];
-				FCPrint[3, "SPC: sp: after dropping terms free of IFPD  ", t2, FCDoControl->spcVerbose];
-				FCPrint[2, "cancelling done in ScalarProductCancel", FCDoControl->spcVerbose];
-				t3 = IFPDOff[t2, qq, ql];
-				If[ FreeQ[t3, Pair],
-					Throw[t3 /. noPair -> Pair]
-				];
-				t3  = t3 /. noPair -> Pair;
-				FCPrint[3, "SPC: sp: after IFPDOff  ", t3, FCDoControl->spcVerbose];
-				FCPrint[2, "IFPDOff done in ScalarProductCancel", FCDoControl->spcVerbose];
-				(* Dialog[Length[t3]]; *)
-				pex[a_,b_] :=
-					pex[a,b] = ExpandScalarProduct[a,b];
-				t4 = Expand2[t3 /. Pair -> pex, {qq,ql}];
-				FCPrint[2, "ExpandScalarProduct done in ScalarProductCancel", FCDoControl->spcVerbose];
-				FCPrint[3, "SPC: sp: after expanding scalar products  ", t4, FCDoControl->spcVerbose];
-				t4 = IFPDOff[IFPDOn[t4,qq,ql],qq,ql] /. noPair->Pair;
-				FCPrint[3, "SPC: sp: after another IFPD", t4, FCDoControl->spcVerbose];
-				FCPrint[2, "IFPD again, done", FCDoControl->spcVerbose];
-				t4
-			];
-			If[ facs===True,
-				FCPrint[3, "combining in SPC", FCDoControl->spcVerbose];
-				t4 = FeynAmpDenominatorCombine[t4];
-				FCPrint[3, "combining in SPC done ", FCDoControl->spcVerbose];
-				(* this is dangerous ........  COMMENTED out 04/95
-					can be done by FDS
-									tadfeyn[qu_][a___,PropagatorDenominator[Momentum[qu_,___],0]..,
-															b___ ] := 0 /; FreeQ[{a,b},qu];
-									tadfeyn[qu_,uq_][a___,PropagatorDenominator[Momentum[qu_,___],0]..,
-															b___ ] := 0 /; FreeQ[{a,b},qu];
-									tadfeyn[qu_,uq_][a___,PropagatorDenominator[Momentum[uq_,___],0]..,
-															b___ ] := 0 /; FreeQ[{a,b},uq];
-									t4 = t4/. FeynAmpDenominator -> tadfeyn[qq,ql] /.
-											tadfeyn[qq,ql] -> FeynAmpDenominator;
-				*)
-				FCPrint[2, "FeynAmpDenominatorCombine done in ScalarProductCancel", FCDoControl->spcVerbose];
-			];
-			If[ fads===True,
-				FCPrint[2, "FeynAmpDenominatorSimplify starting on: ", StandardForm[t4], FCDoControl->spcVerbose];
-				t4 = FeynAmpDenominatorSimplify[t4,qq,ql];
-				FCPrint[2, "FeynAmpDenominatorSimplify done in ScalarProductCancel: ", t4, FCDoControl->spcVerbose];
-			];
-			t4
-		]
+(* 	Checks if scalar products in the given integral can be cancelled against
+	propagators. The integral is expected to contain at least one scalar product *)
+
+
+fixFactorInQP[qp_,props_List]:=
+	Block[{res,rep,qpNew,pair,xa,xb,xam,xbm,xao,xbo,xamo,xbmo},
+		qpNew = qp /. Pair -> pair;
+
+		xao = qpNew /. pair[x_,_] :> MomentumExpand[x];
+		xbo = qpNew /. pair[_,x_] :> MomentumExpand[x];
+		xamo = MomentumExpand[-xao];
+		xbmo = MomentumExpand[-xbo];
+		{xa,xb,xam,xbm} = {xao,xbo,xamo,xbmo}/. Momentum[y_, _ : 4] :> y;
+		Which[
+			xa === xb && !FreeQ[props,xa],
+				rep = qp,
+			xa === xb && !FreeQ[props,xam],
+				rep = Pair[xamo,xamo],
+
+			xa =!= xb && xa+xb === 0 && !FreeQ[props,xa],
+				rep = -Pair[xao,xao],
+			xa =!= xb && xa+xb === 0 && !FreeQ[props,xb],
+				rep = -Pair[xbo,xbo],
+
+			xa =!= xb && xa+xb =!= 0 && !FreeQ[props,xa+xb],
+				rep = qp,
+			xa =!= xb && xa+xb =!= 0 && !FreeQ[props,xa+xbm],
+				rep = -Pair[xao,xbmo],
+			xa =!= xb && xa+xb =!= 0 && !FreeQ[props,xam+xb],
+				rep = -Pair[xamo,xbo],
+			xa =!= xb && xa+xb =!= 0 && !FreeQ[props,xam+xbm],
+				rep = Pair[xamo,xbmo],
+			True,
+				Message[SPC::failmsg,"fixFactorInQP can't fix the sign of the QP"];
+				Abort[];
+		];
+
+		If[ExpandScalarProduct[qp-rep]=!=0,
+			Message[SPC::failmsg,"fixFactorInQP failed to create a proper replacement rule"];
+			Print["Error fixing sign!"];
+			Abort[];
+		];
+
+		FCPrint[3, "SPC: fixFactorInQP: Leaving with ", Rule[qp,rep], FCDoControl->spcVerbose];
+		Rule[qp,rep]
 	];
+
+canCancelQP[int_,qs_List]:=
+	Block[{ex=int,props,qps,common,res,qpsOrig,finalRes,pair,mRule},
+		mRule = Momentum[x_, _ : 4] :> x;
+		FCPrint[3, "SPC: canCancelQP: Entering with ", ex, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: canCancelQP: Loop momenta ", qs, FCDoControl->spcVerbose];
+		(* List of all the unique propagators in the integral. Since propagators
+			that differ only in the mass are equivalent for our purposes, we set
+			all masses to zero, to avoid duplicates. Furthermore, we ignore all
+			the propagators that do not depend on any of the loop momenta from the qs List	*)
+		props = Union[Cases[ex, PropagatorDenominator[moms_, _]/;!FreeQ2[moms,qs] :> (Expand[moms] /. Momentum[x_, _ : 4] :> x),Infinity]];
+
+		(* 	List of all the unique propagators that depend on the loop momentum and are
+			written such that they match the propagators in props. Note that here we account
+			for different signs, i.e. q.p could cancel not only against 1/(p+q)^2 but also 1/(p-q)^2
+			In more complicataed cases we could also have l1.l3-l4 that can cancel against
+			1/(l1+l3-l4)^2, 1/(l1-l3+l4)^2, 1/(-l1-l3+l4)^2, 1/(-l1+l3-l4)^2	*)
+
+		qpsOrig = Cases[ex, Pair[a_, b_] /; ! FreeQ2[{a, b}, qs] :>	pair[a,b], Infinity];
+
+		qps = (Union[qpsOrig] /. {pair[a_,b_]/;a=!=b && Expand[a-b]=!=0 :> Expand[({a+b,a-b,-a+b,-a-b}/. Momentum[x_, _ : 4] :> x )],
+			(* For cases like (l1+l2).(-l1-l2) *)
+			pair[a_,b_]/;a=!=b && Expand[a+b]===0 :> Expand[({a,-a}/. Momentum[x_, _ : 4] :> x)],
+			(* For cases like l1^2 *)
+			pair[a_,a_]:> Expand[({a,-a}/. Momentum[x_, _ : 4] :> x)]
+
+			});
+
+		qpsOrig = MapIndexed[Flatten[{(qpsOrig[[#2]]/.pair->Pair),#1}]&,qps]//Union;
+
+		qps = qps//Flatten//Union;
+
+
+		FCPrint[3, "SPC: canCancelQP: Propagators ", props, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: canCancelQP: Sclar products (original) ", qpsOrig, FCDoControl->spcVerbose];
+		FCPrint[3, "SPC: canCancelQP: Sclar products as propagators ", qps, FCDoControl->spcVerbose];
+
+
+		(* Now we need to check that there is a non-zero overlap between props and qps *)
+		common = Intersection[props,qps];
+
+
+		(*	TODO: Should work also for things like q.p/(q+3p)^2-m^2.
+			But: one has to loop through all the propagators to determine
+			the suitable one and then use Solve to find out the coefficients
+			This might be quite expensive ....
+
+		qpsRes = Complement[qps,common];
+		Print[propsRest];
+		Print[qpsRest];
+
+		*)
+
+		(* 	Even if a element of qps appears in props, this is not enough for the reduction.
+			We must also ensure that the pure loop-momentum part of this element also appears
+			as a separate propagator. *)
+		res = Map[If[checkAdditionalProps[#,props,qs],#,Unevaluated@Sequence[]]&,common];
+
+		(* This gives us the final list of scalar products that can be cancelled *)
+		finalRes=Map[Part[qpsOrig,(Sequence@@(Position[qpsOrig, #]//First//First))][[1]]&,res];
+
+
+		FCPrint[3, "SPC: canCancelQP: List of scalar products that can be cancelled ", finalRes, FCDoControl->spcVerbose];
+
+		(* Now let us adjust the signs in QPs *)
+		finalRes = Map[fixFactorInQP[#,common]&,finalRes];
+
+
+		FCPrint[3, "SPC: canCancelQP: Final list of scalar products that can be cancelled (fixed factors) ", finalRes, FCDoControl->spcVerbose];
+
+		finalRes
+
+	]/; !FreeQ2[(int/. FeynAmpDenominator[__]:>1),qs];
+
 
 FCPrint[1, "ScalarProductCancel.m loaded.", FCDoControl->spcVerbose];
 End[]

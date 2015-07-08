@@ -89,7 +89,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			];
 		];
 
-		FCPrint[1,"TID: Entering TID with: ", t0, FCDoControl->tidVerbose];
+		FCPrint[1,"TID: Entering TID with: ", am, FCDoControl->tidVerbose];
 
 		If[	OptionValue[FCI],
 			t0 = am,
@@ -153,7 +153,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 
 		];
-		t0 = FDS[t0];
+		t0 = FDS[t0,q];
 		t0 = FRH[t0,IsolateNames->tempIsolate];
 
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
@@ -166,62 +166,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator},
 			IsolateNames->tempIsolate]//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},q]:>FRH[Pair[pp]]]&;
-		(* Before doing the reduction let us try  to cancel scalar products first, note
-		that we need to sort out terms slashes like GSD[q] since SPC will not work there *)
-
+		(* Before doing the reduction let us try  to cancel scalar products first *)
+		FCPrint[2,"TID: Before first SPC: ", t0, FCDoControl->tidVerbose];
 		If[	OptionValue[SPC],
-			{rest1,rest2,sTerms1,sTerms2} = FCLoopSplit[t0,{q}];
-			sTerms1  = FCLoopIsolate[sTerms1, {q}, ExceptHeads -> {DiracGamma}];
-			sTerms2  = FCLoopIsolate[sTerms2, {q}, ExceptHeads -> {DiracGamma}];
-			sTerms1Can = FCLoopCanonicalize[sTerms1,q,FCGV["LoopInt"]];
-			sTerms2Can = FCLoopCanonicalize[sTerms2,q,FCGV["LoopInt"]];
-			sTermsUnique = Join[sTerms1Can[[4]],sTerms2Can[[4]]];
-			FCMonitor[
-				sTermsSols1=MapIndexed[(iter=Total[#2]; FCGV["LoopInt"]@Collect2[SPC[#1/.FCGV["LoopInt"]->Identity,q,FDS->True],{q,FeynAmpDenominator}])&,sTerms1Can[[4]]];
-				iter=Length[sTerms1Can[[4]]]+1,
-				Grid[{{"Cancelling scalar products in the original expression (", Length[sTerms1Can[[4]]], "unique integrals)",
-				ProgressIndicator[iter, {1, Length[sTerms1Can[[4]]]+1}]}}]
-			];
-			FCMonitor[
-				sTermsSols2=MapIndexed[(iter=Total[#2]; FCGV["LoopInt"]@Collect2[SPC[#1/.FCGV["LoopInt"]->Identity,q,FDS->True],{q,FeynAmpDenominator}])&,sTerms2Can[[4]]];
-				iter=Length[sTerms2Can[[4]]]+1,
-				Grid[{{"Cancelling scalar products in the original expression (", Length[sTerms2Can[[4]]], "unique integrals)",
-				ProgressIndicator[iter, {1, Length[sTerms2Can[[4]]]+1}]}}]
-			];
-			sTerms1RRule=FCLoopSolutionList[sTerms1Can,sTermsSols1];
-			sTerms2RRule=FCLoopSolutionList[sTerms2Can,sTermsSols2];
-			t0 = rest1+rest2+(sTerms1/.sTerms1RRule/.FCGV["LoopInt"]->Identity)+
-				(sTerms2/.sTerms2RRule/.FCGV["LoopInt"]->Identity)
-
-(*
-			iList1 = (Map[(tmp1=SelectFree[#, {DiracGamma}];
-				SelectNotFree[#, {DiracGamma}]* (* Dirac stuff goes here *)
-				SelectFree[tmp1, {q}]* (* Dirac-free stuff goes here *)
-				loopIntegral[SelectNotFree[tmp1, {q}]])&,
-			Expand2[t0, LorentzIndex] + null1+null2] /. null1|null2 -> 0);
-			(* Create a list of unique loopIntegrate pieces from the previous list *)
-			If [(iList1/.loopIntegral->Identity)=!=t0,
-				Message[TID::failmsg, "Something went wrong during first SPC on "
-					<> ToString[t0,InputForm]];
-				Abort[]
-			];
-			iList1 = iList1 /. loopIntegral[1]:>1;
-
-			uList1 = iList1 //Union[Cases[{#}, _. loopIntegral[x_]/;
-				!FreeQ[(x/.FeynAmpDenominator[___]:>Unique),q] :> x, Infinity]] & //
-			DeleteDuplicates;
-
-			FCMonitor[
-				sList1=MapIndexed[(iter=Total[#2]; SPC[#1,q,FDS->True])&,uList1];
-				iter=Length[uniqueCanIndexList]+1,
-				Grid[{{"Cancelling scalar products in the original expression (", Length[uList1], "unique integrals)",
-				ProgressIndicator[iter, {1, Length[uList1]+1}]}}]
-			];
-			sList1 = Collect2[#,{q,FeynAmpDenominator}]&/@sList1;
-			sList1 = removeNonloop[#, q]&/@sList1;
-			rList1 = MapIndexed[(Rule[loopIntegral[#1], First[sList1[[#2]]]]) &,uList1];
-			t0 = iList1/.rList1/.loopIntegral->Identity;*)
+			t0 = SPC[t0,q,FDS->True,FCI->True];
 		];
+		FCPrint[2,"TID: After first SPC: ", t0, FCDoControl->tidVerbose];
 
 		(* Uncontract first *)
 		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0], q, Pair -> All, DimensionalReduction -> dimred,
@@ -544,17 +494,20 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 		FCPrint[2,"TID: tidFullReduce: Scalar parts sp", sp, FCDoControl->tidVerbose];
 
 		(* List of unique integrals in the tensor part	*)
-		uList = (Map[SelectFree[#, {q}] loopIntegral[SelectNotFree[#, {q}]] &,
-		tp + null1+null2] /. null1|null2 -> 0) // Union[Cases[{#}, _. loopIntegral[x_] :> x, Infinity]]&//
-		DeleteDuplicates;
+		tp = FCLoopIsolate[tp,{q},Head->loopIntegral,FCI->True];
+		uList = (Cases[tp+null1+null2,loopIntegral[__],Infinity]/.null1|null2->Unevaluated@Sequence[])//Union;
+		(*uList = (Map[SelectFree[#, {q}] loopIntegral[SelectNotFree[#, {q}]] &,
+		tp + null1+null2] /. null1|null2 -> 0) // Union[Cases[{#}, loopIntegral[x_], Infinity]]&//
+		DeleteDuplicates;*)
 
-		FCPrint[2,"TID: tidFullReduce: Entering SPC with ", uList, FCDoControl->tidVerbose];
+		FCPrint[2,"TID: tidFullReduce: Entering SPC with ", (uList/.loopIntegral->Identity), FCDoControl->tidVerbose];
 
 		(*	Try to cancel all the scalar products in the denominators. This shouldn't
 			require more than rank+1 iterations. However, it is not always possible to
 			cancel all the scalar products without doing additional reductions	*)
 		time=AbsoluteTime[];
-		sList = FixedPoint[(Apart2[SPC[#1, q, FDS -> True]] & /@ #) &, uList, rank+2];
+
+		sList = FixedPoint[(Apart2[SPC[(#1/.loopIntegral->Identity), q, FDS -> True, FCI->True]] & /@ #) &, uList, rank+2];
 		FCPrint[2,"TID: tidFullReduce: List of unique integrals after cancelling scalar products ", sList,
 			FCDoControl->tidVerbose];
 
@@ -595,14 +548,16 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 		If[tpTP=!=0,
 			FCPrint[2,"TID: tidFullReduce: Looks like we need another tensor reduction for ", tpTP, FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-
+			tpTP = FCLoopIsolate[tpTP,{q},Head->loopIntegral,FCI->True];
 			(* 	Doing the brute force tensor reduction of the whole new tensor part might take a lot of
 				time. Instead, we identify only unique integrals, reduce them separately and substitute the
 				results into the original expression.	*)
-			uList = (Map[SelectFree[#, {q}] loopIntegral[SelectNotFree[#, {q}]] &,
-			tpTP + null] /. null -> 0)// Union[Cases[{#}, _. loopIntegral[x_] :> x, Infinity]]& // DeleteDuplicates;
+			uList  = (Cases[tpTP+null1+null2,loopIntegral[__],Infinity]/.null1|null2->Unevaluated@Sequence[])//Union;
+			(* uList = (Map[SelectFree[#, {q}] loopIntegral[SelectNotFree[#, {q}]] &,
+
+			tpTP + null] /. null -> 0)// Union[Cases[{#}, loopIntegral[x_], Infinity]]& // DeleteDuplicates;*)
 			(* Uncontract is done with the same options as in the beginning of TID *)
-			sList = (Uncontract[#, q, Pair -> All, DimensionalReduction -> dimred, Dimension -> n]&)/@uList;
+			sList = (Uncontract[(#/.loopIntegral->Identity), q, Pair -> All, DimensionalReduction -> dimred, Dimension -> n]&)/@uList;
 			sList = SelectFree[#,{q}] tidReduce[tidConvert[SelectNotFree[#,{q}],q],q,n,pavebasis]&/@sList;
 			rList = MapIndexed[(Rule[#1, First[sList[[#2]]]]) &, uList];
 			tpTP = tpTP/.rList;
@@ -612,9 +567,8 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 				" in tidFullReduce failed."];
 				Abort[]
 			];
-			FCPrint[2,"TID: tidFullReduce: Time to perform another tensor reduction ", N[AbsoluteTime[] - time, 4]];
-			FCPrint[2,"TID: tidFullReduce: Tensor part after another tensor reduction ", tpTP];
-
+			FCPrint[2,"TID: tidFullReduce: Time to perform another tensor reduction ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[2,"TID: tidFullReduce: Tensor part after another tensor reduction ", tpTP, FCDoControl->tidVerbose];
 			(* 	To perform the tensor reduction on unique integrals in the tensor part we had to uncontract all the
 				loop momenta. Now we contract existing dummy Lorentz indices *)
 			time=AbsoluteTime[];
@@ -698,9 +652,6 @@ tidConvert[expr_, q_]:=
 		temp = qQQprepare[ex];
 		res = temp/. ffdp[0,r___]:>ffdp[r];
 		If[	!FreeQ[res,qQQprepare] || FreeQ[res,qQQ] || !MatchQ[temp, _ qQQ[ffdp[0,___] _ ]],
-			Print[!FreeQ[res,qQQprepare]];
-			Print[FreeQ[res,qQQ]];
-			Print[MatchQ[temp, _ qQQ[ffdp[0,___] _ ]]];
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
