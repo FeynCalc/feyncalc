@@ -458,7 +458,7 @@ tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 		(*	This wraps loop-momentum dependent pieces in the output of tidReduce into
 			"loopIntegrate". This is important to preserve the original Lorentz structure of the
 			output such that at the end we can quickly contract all the Lorentz indices instead
-			of fishing them out from huge prefactors. Note that we neet some special care to
+			of fishing them out from huge prefactors. Note that we need some special care to
 			protect the PaVe functions if they appear in the final result	*)
 		iList1 = (Map[SelectFree[#, {q,tidPaVe}] loopIntegral[SelectNotFree[#, {q,tidPaVe}]] &,
 			Expand2[ex, LorentzIndex] + null] /. null -> 0);
@@ -492,13 +492,14 @@ tidSingleIntegral[int_, q_ , n_, dimred_, pavebasis_] :=
 		is wrapped in tidPaVe, which means that it comes from the PaVe functions*)
 		FCPrint[2,"TID: tidSingleIntegral: List of solutions before dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
 		sList2 = removeNonloop[#,q]&/@sList2;
-		FCPrint[2,"TID: tidSingleIntegral: List of solutions before dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
+		FCPrint[2,"TID: tidSingleIntegral: List of solutions after dropping non-loop terms ", sList2, FCDoControl->tidVerbose];
 
 		If[	!FreeQ[sList2/. FeynAmpDenominator[__] :> Unique[], q],
 			Message[TID::failmsg, "tidSingleIntegral failed to achieve full tensor reduction in " <> ToString[sList2,InputForm]];
 			Abort[]
 		];
-
+		FCPrint[2,"TID: tidSingleIntegral: uList1 ", uList1, FCDoControl->tidVerbose];
+		FCPrint[2,"TID: tidSingleIntegral: uList2 ", uList2, FCDoControl->tidVerbose];
 		rList2 = MapIndexed[(Rule[loopIntegral[#1], First[sList2[[#2]]]]) &,uList2];
 		rList1 = MapIndexed[(Rule[loopIntegral[#1], First[(iList2 /. rList2)[[#2]]]]) &, uList1];
 
