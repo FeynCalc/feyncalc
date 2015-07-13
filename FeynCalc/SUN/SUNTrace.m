@@ -206,7 +206,7 @@ fixgell[x_] :=
 	(fixgell[x] =
 	FixedPoint[cvit, ( gellm1[ExpandAll[x/.SUNTrace->gellex/.
 	DOT->gm2lambdaT/.SUNF->f2tr]]
-	)/.gellm1->gellm2, 19]/.lambdaT->SUNT);
+	)/.gellm1->gellm2, 19]/.lambdaT->SUNT)/; FreeQ2[x, {Pattern, Blank, BlankSequence, BlankNullSequence}];
 
 externQ[xx_] :=
 	If[ !FreeQ[xx, Pattern],

@@ -64,6 +64,11 @@ Tests`SUN`fcstSUNSimplify = {
 	SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[d]] . SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]] +
 	SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[d]] . SUNT[SUNIndex[c]] . SUNT[SUNIndex[b]]])^2/(36*(-1 +
 	SUNN^2))// SUNSimplify[#, Explicit -> True, SUNNToCACF -> False] & // Simplify",
-	"(18 - 6*SUNN^2 + SUNN^4)/(96*SUNN^2)"}
+	"(18 - 6*SUNN^2 + SUNN^4)/(96*SUNN^2)"},
+{"fcstSUNSimplify-ID24","SUNSimplify[SUND[i, a, b] SUND[j, b, c] SUND[k, c, a],
+	Explicit -> True, SUNNToCACF -> False] //ReplaceAll[#,
+	SUNTrace[a_] :> SUNTrace[a, Explicit -> True]] & // Simplify",
+	"((-12 + SUNN^2) SUND[SUNIndex[i], SUNIndex[j], SUNIndex[k]])/(2 SUNN)"},
+
 };
 
