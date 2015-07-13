@@ -23,6 +23,97 @@ Begin["`SUNTrace`Private`"]
 
 Options[SUNTrace] = {Explicit -> False};
 
+HoldPattern[SUNTrace[n_, ___Rule]] :=
+	SUNN n /; FreeQ2[n, {SUNT, Pattern, Blank, BlankSequence, BlankNullSequence}];
+
+(* this is the function which puts everything together ********* *)
+SUNTrace[expr_Plus, op___Rule] :=
+	Map[SUNTrace[#, op]&, expr];
+
+(*new; suggested by Frederik Orellana *)
+SUNTrace[expr_Times,op___Rule] :=
+	(Select[expr, FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&] *
+	SUNTrace[Select[expr, !FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&], op])/;
+	(expr === fcis[expr]) &&
+	(Select[expr, !FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&] =!= 1) &&
+	(*To avoid infinite recursion. 3/9-2002. Frederik Orellana*)
+	(Select[expr, FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&] =!= 1);
+
+HoldPattern[SUNTrace[1 .., ___Rule]] =
+	SUNN;
+
+HoldPattern[SUNTrace[a_, ___Rule]] :=
+	0 /; MatchQ[a, SUNT[SUNIndex[_]]] && nopat[a] && (fcis[a] === a);
+
+HoldPattern[SUNTrace[a_, o___Rule]] :=
+	SUNTrace[fcis[a],o] /; (fcis[a]=!=a) && nopat[a];
+
+SUNTrace[DOT[SUNT[x_SUNIndex] , SUNT[y_SUNIndex]], ___Rule] :=
+	SUNDelta[x, y]/2;
+
+SUNTrace[DOT[SUNT[a_SUNIndex] , SUNT[b_SUNIndex] , SUNT[c_SUNIndex]], opt___Rule] :=
+	(SUND[a, b, c]/4 + I SUNF[a,b,c]/4) /; Length[Union[{a,b,c}]]===3 &&
+	(Explicit /. {opt} /. Options[SUNTrace]) === True;
+
+(* recursion suggested by Peter Cho *)
+SUNTrace[DOT[SUNT[a_] , SUNT[b_] , SUNT[c_] , SUNT[d_] , (more__SUNT)],	opt___Rule] :=
+	Block[ {f},
+		f = Unique["c"];
+		SUNDelta[a,b]/2/SUNN SUNTrace[DOT[SUNT[c],SUNT[d],more],opt] +
+			1/2 SUND[a,b,f] SUNTrace[DOT[SUNT[f],SUNT[c],SUNT[d],more],opt] +
+			I/2 SUNF[a,b,f] SUNTrace[DOT[SUNT[f],SUNT[c],SUNT[d],more],opt]
+	]/;
+	(Union[Head /@ {a,b,c,d}] === {SUNIndex}) &&
+	((Explicit /. {opt} /. Options[SUNTrace]) === True );
+
+SUNTrace[DOT[SUNT[a_], SUNT[b_], SUNT[c_], SUNT[d_]], opt___Rule] :=
+	Block[ {e},
+		If[ ValueQ[Global`e] || !FreeQ[{a,b,c,d}, Global`e],
+			e = Unique["c"],
+			e = FCGV["e"]
+		];
+		Expand[1/4/SUNN(SUNDelta[a, b] SUNDelta[c, d] -
+						SUNDelta[a, c] SUNDelta[b, d] +
+						SUNDelta[a, d] SUNDelta[b, c]) +
+				1/8(SUND[a,b,e] SUND[c,d,e] -
+					SUND[a,c,e] SUND[b,d,e] +
+					SUND[a,d,e] SUND[b,c,e]
+					) +
+				I/8(SUND[a,d,e] SUNF[b,c,e] -
+					SUNF[a,d,e] SUND[b,c,e])
+		]
+	] /; (Union[Head /@ {a,b,c,d}] === {SUNIndex}) &&
+				(Explicit /. {opt} /. Options[SUNTrace]) === True;
+
+HoldPattern[SUNTrace[ SUNTrace[x__] y_., op___Rule ]] :=
+	SUNTrace[x] SUNTrace[y, op];
+
+SUNTrace/:  SUNTrace[DOT[(A___), SUNT[x_SUNIndex], B___],___Rule] *
+			SUNTrace[DOT[(a___), SUNT[x_SUNIndex], b___],___Rule] :=
+		FixedPoint[cvit,  (gmcyc[DOT[A,SUNT[x],B]] gmcyc[DOT[a,SUNT[x],b]])/.
+		SUNTrace->gellm1/. DOT->gm2lambdaT/.gellm1->gellm2/. SUNF->f2tr
+		]/.lambdaT->SUNT/.gellm2->SUNTrace;
+
+SUNTrace /: HoldPattern[SUNTrace[x_,o___Rule]^2] :=
+	SUNTrace[x,o] * SUNTrace[x,o];
+
+SUNTrace[ a_, ___Rule ] :=
+	fixgell[a]/; NumberQ[fixgell[a]] &&	FreeQ[a, Pattern] && (fcis[a] === a);
+
+SUNTrace[ expr_, OptionsPattern[] ] :=
+	(fixgell[expr]/. gellm2->SUNTrace)/;
+	((Head[expr] =!= Times) || (Select[expr, !FreeQ[#, SUNT]&] ===1 )) &&
+	(expr=!=(fixgell[expr] /. gellm2->Identity)) && FreeQ2[expr,{Pattern, Blank, BlankSequence, BlankNullSequence}] &&
+	(fcis[expr]===expr);
+
+SUNTrace[x_?externQ] :=
+	SUNTrace[fcis[x]];
+
+(*	typesetting	*)
+SUNTrace /:
+	MakeBoxes[SUNTrace[a_,___Rule], TraditionalForm] :=
+	TBox["tr","(",a,")"];
+
 fcis[z_ /; FreeQ[z, Pattern]] :=
 	(fcis[z] = DotSimplify[FeynCalcInternal[z]]);
 (* change SUNT' which are multiplied with each other to lambdaT's *)
@@ -91,107 +182,12 @@ cvit[x_Plus] :=
 cvit[x_] :=
 	(cvit[x] = ExpandAll[ x /. gellm1 -> gellm2 ]);
 
-(* this is the function which puts everything together ********* *)
-SUNTrace[expr_Plus, op___Rule] :=
-	Map[SUNTrace[#, op]&, expr];
+
 
 nopat[x_] :=
 	FreeQ2[x, {Pattern, Blank, BlankSequence, BlankNullSequence}];
 
-HoldPattern[SUNTrace[n_, ___Rule]] :=
-	SUNN n /; FreeQ2[n, {SUNT, Pattern, Blank, BlankSequence, BlankNullSequence}];
 
-(*new; suggested by Frederik Orellana *)
-SUNTrace[expr_Times,op___Rule] :=
-	(Select[expr, FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&] *
-	SUNTrace[Select[expr, !FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&], op])/;
-	(expr === fcis[expr]) &&
-	(Select[expr, !FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&] =!= 1) &&
-	(*To avoid infinite recursion. 3/9-2002. Frederik Orellana*)
-	(Select[expr, FreeQ2[#, {SUNT,SUNF,SUND,SUNDelta}]&] =!= 1);
-
-
-(*Dropped ComplexIndex. F.Orellana, 20/2-2003*)
-(*HoldPattern[SUNTrace[a_, ___Rule]] :=
-	(SUNTrace[DOT @@ Reverse[a/.complexindex->Identity]
-			] (*/. Dot -> DOT*)) /;
-	MatchQ[a, Apply[HoldPattern,
-					{dddot[SUNT[SUNIndex[complexindex[_]]]..]}
-					] /. dddot -> DOT] && (fcis[a] === a);*)
-
-HoldPattern[SUNTrace[1 .., ___Rule]] =
-	SUNN;
-
-HoldPattern[SUNTrace[a_, ___Rule]] :=
-	0 /; MatchQ[a, SUNT[SUNIndex[_]]] && nopat[a] && (fcis[a] === a);
-
-HoldPattern[SUNTrace[a_, o___Rule]] :=
-	SUNTrace[fcis[a],o] /; (fcis[a]=!=a) && nopat[a];
-
-SUNTrace[DOT[SUNT[x_SUNIndex] , SUNT[y_SUNIndex]], ___Rule] :=
-	SUNDelta[x, y]/2;
-
-SUNTrace[DOT[SUNT[a_SUNIndex] , SUNT[b_SUNIndex] , SUNT[c_SUNIndex]], opt___Rule] :=
-	(SUND[a, b, c]/4 + I SUNF[a,b,c]/4) /; Length[Union[{a,b,c}]]===3 &&
-	(Explicit /. {opt} /. Options[SUNTrace]) === True;
-
-(* recursion suggested by Peter Cho *)
-SUNTrace[DOT[SUNT[a_] , SUNT[b_] , SUNT[c_] , SUNT[d_] , (more__SUNT)],	opt___Rule] :=
-	Block[ {f},
-		f = Unique["c"];
-		SUNDelta[a,b]/2/SUNN SUNTrace[DOT[SUNT[c],SUNT[d],more],opt] +
-			1/2 SUND[a,b,f] SUNTrace[DOT[SUNT[f],SUNT[c],SUNT[d],more],opt] +
-			I/2 SUNF[a,b,f] SUNTrace[DOT[SUNT[f],SUNT[c],SUNT[d],more],opt]
-	]/;
-	(Union[Head /@ {a,b,c,d}] === {SUNIndex}) &&
-	((Explicit /. {opt} /. Options[SUNTrace]) === True );
-
-SUNTrace[DOT[SUNT[a_] , SUNT[b_] , SUNT[c_] , SUNT[d_]], opt___Rule] :=
-	Block[ {e},
-		If[ ValueQ[Global`e] || !FreeQ[{a,b,c,d}, Global`e],
-			e = Unique["c"],
-			e = FCGV["e"]
-		];
-		Expand[1/4/SUNN(SUNDelta[a, b] SUNDelta[c, d] -
-						SUNDelta[a, c] SUNDelta[b, d] +
-						SUNDelta[a, d] SUNDelta[b, c]) +
-				1/8(SUND[a,b,e] SUND[c,d,e] -
-					SUND[a,c,e] SUND[b,d,e] +
-					SUND[a,d,e] SUND[b,c,e]
-					) +
-				I/8(SUND[a,d,e] SUNF[b,c,e] -
-					SUNF[a,d,e] SUND[b,c,e])
-		]
-	] /; (Union[Head /@ {a,b,c,d}] === {SUNIndex}) &&
-				(Explicit /. {opt} /. Options[SUNTrace]) === True;
-
-HoldPattern[SUNTrace[ SUNTrace[x__] y_., op___Rule ]] :=
-	SUNTrace[x] SUNTrace[y, op];
-
-SUNTrace/:  SUNTrace[DOT[(A___), SUNT[x_SUNIndex], B___],___Rule] *
-			SUNTrace[DOT[(a___), SUNT[x_SUNIndex], b___],___Rule] :=
-		FixedPoint[cvit,  (gmcyc[DOT[A,SUNT[x],B]] gmcyc[DOT[a,SUNT[x],b]])/.
-		SUNTrace->gellm1/. DOT->gm2lambdaT/.gellm1->gellm2/. SUNF->f2tr
-		]/.lambdaT->SUNT/.gellm2->SUNTrace(*/. Dot -> DOT*)(*Shouldn't be necessary.F.Orellana. 23/2-2003*);
-
-SUNTrace /: HoldPattern[SUNTrace[x_,o___Rule]^2] :=
-	SUNTrace[x,o] * SUNTrace[x,o];
-
-SUNTrace[ a_, ___Rule ] :=
-	fixgell[a (*/. DOT -> Dot*)]/;
-	NumberQ[fixgell[a (*/. DOT -> Dot*)]] &&
-	FreeQ[a, Pattern] && (fcis[a] === a);
-
-SUNTrace[ expr_, ___Rule ] :=
-	(fixgell[expr (*/. DOT -> Dot*) (*/.SUNT[1]->1*) ]/.
-	gellm2->SUNTrace (*/. Dot -> DOT*))/;
-	((Head[expr] =!= Times) ||
-	(Select[expr, !FreeQ[#, SUNT]&] ===1 )
-	) &&
-	(expr=!=(fixgell[expr(*/. DOT -> Dot*)] /.
-	gellm2->Identity(*/.Dot -> DOT*)))&&
-	FreeQ[expr, Pattern] &&
-	(fcis[expr]===expr);
 
 gellm1[x_Plus] :=
 	gellm1 /@ x;
@@ -220,13 +216,6 @@ externQ[xx_] :=
 			True
 		]
 	];
-
-SUNTrace[x_?externQ] :=
-	SUNTrace[fcis[x]];
-
-SUNTrace /:
-	MakeBoxes[SUNTrace[a_,___Rule], TraditionalForm] :=
-	TBox["tr","(",a,")"];
 
 FCPrint[1,"SUNTrace.m loaded."];
 End[]
