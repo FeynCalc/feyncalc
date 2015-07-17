@@ -62,10 +62,10 @@ fc5[y_] :=
 		Block[{te},
 			If[Head[y] === Power,
 				fc5[y[[1]]]^y[[2]],
-				FCPrint[3,"factoring ", Length[te], " terms in Factor2 " ];
+				(*FCPrint[3,"factoring ", Length[te], " terms in Factor2 " ];*)
 				te = Factor[Expand[y]];
 				(* te = Factor[y]; *)
-				FCPrint[3,"factoring in Factor2  done "];
+				(*FCPrint[3,"factoring in Factor2  done "];*)
 				te
 			]
 		](*]*)
