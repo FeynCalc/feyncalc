@@ -16,6 +16,9 @@ self energy type integrals into the TFI notatation, which can be used as
 input for the function TarcerRecurse from the TARCER package.
 See TFI for details on the conventions.";
 
+ToTFI::failmsg = "Error! ToTFi has encountered a fatal problem and must abort the computation. The problem
+reads: `1`";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -23,13 +26,21 @@ End[]
 
 Begin["`ToTFI`Private`"]
 
-Options[ToTFI] = {Dimension -> D, Method -> Automatic};
+toTFIVerbose::usage="";
 
-ToTFI[z_Plus,qqp___, pe_/;Head[pe]=!=Rule, opts___Rule] :=
-	ToTFI[#, qqp, pe, opts]& /@ z;
+Options[ToTFI] = {
+	Dimension -> D,
+	FCVerbose->False,
+	Method -> Automatic
+};
+
+
 
 (* 1-loop *)
-ToTFI[a_,q_,p_/;Head[p]=!=Rule,opts___Rule] :=
+ToTFI[z_Plus, qqp_, pe_, opts:OptionsPattern[]] :=
+	Map[ToTFI[#, qqp, pe, opts]&, z];
+
+ToTFI[a_/;Head[a]=!=Plus,q_,p_/;Head[p]=!=Rule,opts___Rule] :=
 	(ToExpression["TFIRecurse"][
 	FeynCalcExternal[
 		ToTFI[
@@ -42,11 +53,78 @@ ToTFI[a_,q_,p_/;Head[p]=!=Rule,opts___Rule] :=
 												] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
 	) /; MemberQ[$ContextPath, "Tarcer`"];
 
+(* 2-loops *)
+ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
+	Block[{int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFIUnique,tmp,
+			intsTFIUnique2,solsList,tfiLoopIntegral,repRule,null1,null2,res},
+
+		If [OptionValue[FCVerbose]===False,
+			toTFIVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				toTFIVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		(*	Let us first extract all the scalar loop integrals	*)
+		fclsOutput = FCLoopSplit[expr,{q1,q2}];
+		intsRest = fclsOutput[[1]]+fclsOutput[[4]];
+		intsTFI = fclsOutput[[2]]+fclsOutput[[3]];
+
+		FCPrint[3, "ToTFI: Terms to be ignored ", intsRest, FCDoControl->toTFIVerbose];
+		FCPrint[3, "ToTFI: Relevant terms ", intsTFI, FCDoControl->toTFIVerbose];
+
+		(*	Nothing to do	*)
+		If[ intsTFI === 0,
+			Return[expr]
+		];
+
+		intsTFI = FeynAmpDenominatorSplit[intsTFI];
+		intsTFI2 = FCLoopIsolate[intsTFI, {q1,q2}, FCI->True, Head->tfiLoopIntegral];
+
+		(*	Now we extract all the unique loop integrals *)
+		intsTFIUnique = (Cases[intsTFI2+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
+		(*	Put the FADs in unique integrals back together *)
+		intsTFIUnique2 = intsTFIUnique/.tfiLoopIntegral[x__]:> tfiLoopIntegral[FCE[FeynAmpDenominatorCombine[x]]];
+
+		FCPrint[3, "ToTFI: Unique 2-loop integrals to be converted ", intsTFIUnique2, FCDoControl->toTFIVerbose];
+
+		(* Note that we fish out only 2-loop propagator type integrals, while all the others are left untouched *)
+		solsList = Map[
+			If [ (tmp=Sort[Variables[Flatten[Cases[FCE[FeynAmpDenominatorSplit[#]],FAD[x__]:>(x/.{a_,_}:>a),Infinity]]]]; tmp===Sort[{q1,q2,p}] || tmp===Sort[{q1,q2}]),
+				saveToTFI[#,q1,q2,p,opts],
+				#
+			]&,(intsTFIUnique2/.tfiLoopIntegral->Identity)];
+
+		FCPrint[3, "ToTFI: Converted integrals ", solsList, FCDoControl->toTFIVerbose];
+
+		If[Length[solsList]=!=Length[intsTFIUnique],
+			Message[ToTFI::failmsg,"ToTFI can't create the solution list."];
+			Abort[]
+		];
+
+		repRule = MapIndexed[(Rule[#1, First[solsList[[#2]]]]) &, intsTFIUnique];
+
+
+		res = FCE[FeynAmpDenominatorCombine[intsRest + (intsTFI2/.repRule)]];
+		FCPrint[3, "ToTFI: Leaving with ", res, FCDoControl->toTFIVerbose];
+
+		If[!FreeQ[res,tfiLoopIntegral],
+			Message[ToTFI::failmsg,"ToTFI failed to convert all the relevant loop integrals into TARCER notation."];
+			Abort[]
+		];
+
+		res
+
+	]/; (q1=!=q2) && (q1=!=p) && (q2=!=p) && (q1=!=0) && (q2=!=0) && (p=!=0);
+
+
+(*
 ToTFI[z_Times, q1_,q2_,p_,opts___Rule] :=
 	FeynCalcExternal[SelectFree[z, {q1, q2}] saveToTFI[SelectNotFree[z, {q1, q2}], q1, q2, p, opts]];
 
 ToTFI[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
 	saveToTFI[h, m];
+*)
 
 saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 	(saveToTFI[SelectNotFree[z,{q1,q2}], q1,q2, p, opts] SelectFree[z,{q1,q2}] )/;
