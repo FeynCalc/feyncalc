@@ -48,14 +48,11 @@ ToTFI[z_Times, q1_,q2_,p_,opts___Rule] :=
 ToTFI[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
 	saveToTFI[h, m];
 
-(*
-*)
-
 saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 	(saveToTFI[SelectNotFree[z,{q1,q2}], q1,q2, p, opts] SelectFree[z,{q1,q2}] )/;
 		SelectFree[z,{q1,q2}] =!= 1;
 
-saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] :=
+saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 	saveToTFI[z, q1,q2,p,opts] =
 	Catch[
 	Module[ {dim, et0, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
@@ -105,12 +102,28 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] :=
 					];
 					prtoci[a_, b_] :=
 						prtoci[a, b] =
-						Module[ {na = a /. Momentum[em_, ___]:> em,r },
-							r = Which[na ===  q1,   c1[b], na === -q1,   c1[b],
-											na ===  q2,   c2[b], na === -q2,   c2[b],
-											na ===  q1-p, c3[b], na === -q1+p, c3[b],
-											na ===  q2-p, c4[b], na === -q2+p, c4[b],
-											na ===  q1-q2,c5[b], na === -q1+q2,c5[b]
+						Module[ {na = a /. Momentum[em_, _:4]:> em,r },
+							r = Which[
+									na ===  q1,
+										c1[b],
+									na === -q1,
+										c1[b],
+									na ===  q2,
+										c2[b],
+									na === -q2,
+										c2[b],
+									na ===  q1-p,
+										c3[b],
+									na === -q1+p,
+										c3[b],
+									na ===  q2-p,
+										c4[b],
+									na === -q2+p,
+										c4[b],
+									na ===  q1-q2,
+										c5[b],
+									na === -q1+q2,
+										c5[b]
 										];
 							If[ r === Null,
 								$Failed,
@@ -148,10 +161,8 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] :=
 					t2 =
 					Select[t1,FreeQ[#,c1|c2|c3|c4|c5| dq1|dq2| pq1|pq2|q1q1|q1q2|q2q2]&]*
 					((*CC = *)
-					(Dot @@ ( ( (dq1^a1*dq2^a2*pq1^s3*pq2^s4*q1q1^s1*q1q2^s5*q2q2^s2)
-					)*
-					Select[t1, !FreeQ[#, c1| c2| c3| c4| c5|
-															dq1| dq2| pq1| pq2| q1q1| q1q2| q2q2]&] /.
+					(Dot @@ ( ( (dq1^a1*dq2^a2*pq1^s3*pq2^s4*q1q1^s1*q1q2^s5*q2q2^s2))*
+					Select[t1, !FreeQ[#, c1| c2| c3| c4| c5| dq1| dq2| pq1| pq2| q1q1| q1q2| q2q2]&] /.
 											{c1[cm1_]^in1_. :> c1[cm1]^(in1+n1),
 											c2[cm2_]^in2_. :> c2[cm2]^(in2+n2),
 											c3[cm3_]^in3_. :> c3[cm3]^(in3+n3),
@@ -167,14 +178,11 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts___Rule] :=
 							{{-n1+nu1,em1},{-n2+nu2,em2},{-n3+nu3,em3},{-n4+nu4,em4},{-n5+nu5,em5}}/.
 															{_,FakeMass} :> {0,0} ]
 								};
-					t3 =
-					t2 /. tfi[d_,pep_, {0,0}, re__]           :> tfi[d, pep, re] /.
-								tfi[d_,pep_, {0,0,0,0,0}, re_List]  :> tfi[d, pep, re] /.
-								tfi[d_,pep_, {a_,b_}, {0,0,0,0,0}, re_List]  :>
-								tfi[d, pep, {a,b}, re] /.
-								{tfi[d_,pep_, {a_, b_}, re__]      :>
-								tfi[d, pep, deltap, {a,b}, re] /; ((a^2 + b^2) =!=0)}/.
-							tfi->ToExpression["TFI"];
+					t3 = t2 /.  tfi[d_,pep_, {0,0}, re__] :> tfi[d, pep, re] /.
+								tfi[d_,pep_, {0,0,0,0,0}, re_List] :> tfi[d, pep, re] /.
+								tfi[d_,pep_, {a_,b_}, {0,0,0,0,0}, re_List]  :> tfi[d, pep, {a,b}, re] /.
+								{tfi[d_,pep_, {a_, b_}, re__] :> tfi[d, pep, deltap, {a,b}, re] /; ((a^2 + b^2) =!=0)} /.
+								tfi->ToExpression["TFI"];
 					If[ dummytag,
 						t3 = t3 /. dummyterm->1
 					];
