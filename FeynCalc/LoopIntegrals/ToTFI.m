@@ -55,7 +55,7 @@ saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 	saveToTFI[z, q1,q2,p,opts] =
 	Catch[
-	Module[ {dim, et0, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs},
+	Module[ {dim, et0, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs,tmp},
 		dim = Dimension /. {opts} /. Options[ToTFI];
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
@@ -86,6 +86,13 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 					If[ !FreeQ[et0 = FeynCalcExternal[t0], FAD[ p - q1 + q2]],
 						Throw[ saveToTFI[et0 /. q2 -> (-q2+q1)]]
 					];
+
+					(* TODO This should be actually done by FDS, not ToTFI *)
+					tmp = FCE[FeynAmpDenominatorSplit[t0]]/.FAD[{x_,_}]:>FAD[x];
+					If[ !FreeQ[tmp, FAD[ p + q1]] || !FreeQ[tmp, FAD[ p + q2]],
+						Throw[ saveToTFI[FCE[t0] /. {q1 -> q1-p, q2->q2-p},q1,q2,p,opts]]
+					];
+
 					pairs = Cases2[t0, Pair];
 					If[ !FreeQ[pairs, Plus],
 						pairs = Thread[pairs -> Map[ExpandScalarProduct, pairs]];
