@@ -1024,6 +1024,8 @@ trach[a_,b_,c_] :=
 trachit[x_, q1_, q2_] :=
 	MemSet[trachit[x, q1, q2],
 		Block[ {nx, dufa, qqq, q1pw, q2pw},
+			FCPrint[3,"FDS: trachit: Entering with ", x];
+			FCPrint[3,"FDS: trachit: Loop momenta are ", q1," " ,q2];
 			nx = x /.( (n_. Pair[Momentum[q1, dim___], any_
 								] + more_. )^(w_ /; Head[w]=!=Integer)
 						) :> (q1pw[n Pair[Momentum[q1, dim], any] + more,w]);
@@ -1036,38 +1038,26 @@ trachit[x_, q1_, q2_] :=
 				nx = (SelectFree[nx, {q1, q2}]/.dufa -> 1) *
 						( qqq[SelectNotFree[nx, {q1, q2}]] /.
 							{
-				(* special stuff *)
+							(* special stuff *)
 							(* f42 *)
-							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q1, dim___] +
-							Momentum[pe_ /; pe =!= q2, dim___], m_], bb___PD]] :>
-								tran[fa FeynAmpDenominator[aa, PD[-Momentum[q1, dim] -
-								Momentum[pe, dim], m], bb],	q1, -q1, q2, q2],
+							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q1, dim___] + Momentum[pe_ /; pe =!= q2, dim___], m_], bb___PD]] :>
+								tran[fa FeynAmpDenominator[aa, PD[-Momentum[q1, dim] - Momentum[pe, dim], m], bb],	q1, -q1, q2, q2],
 
-							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] +
-							Momentum[pe_ /; pe =!= q1, dim___], m_], bb___PD]] :>
-								tran[fa FeynAmpDenominator[aa, PD[-Momentum[q2, dim] -
-								Momentum[pe, dim], m], bb], q1, q1, q2, -q2]
+							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] + Momentum[pe_ /; pe =!= q1, dim___], m_], bb___PD]] :>
+								tran[fa FeynAmpDenominator[aa, PD[-Momentum[q2, dim] - Momentum[pe, dim], m], bb], q1, q1, q2, -q2]
 							}/.
 							{
-							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q1, dim___] -
-							Momentum[pe_ /; pe =!= q2, dim___], m_], bb___PD]]:>
-								((tran[fa FeynAmpDenominator[aa, PD[Momentum[q1, dim] -
-								Momentum[pe, dim], m], bb], q1, -q1 + pe, q2, -q2 + pe])/; (
+							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q1, dim___] - Momentum[pe_ /; pe =!= q2, dim___], m_], bb___PD]]:>
+								((tran[fa FeynAmpDenominator[aa, PD[Momentum[q1, dim] - Momentum[pe, dim], m], bb], q1, -q1 + pe, q2, -q2 + pe])/;(
 								MatchQ[(Times@@Union[{aa, PD[Momentum[q1, dim] - Momentum[pe, dim],m],	bb}]),
-								PD[Momentum[q1, dim], _] PD[Momentum[q1, dim] -
-								Momentum[pe, dim], m] PD[Momentum[q1, dim] -
-								Momentum[q2, dim], _] PD[Momentum[q2, dim] -
-								Momentum[pe, dim], _]] ||
+								PD[Momentum[q1, dim], _] PD[Momentum[q1, dim] - Momentum[pe, dim], m] PD[Momentum[q1, dim] -
+								Momentum[q2, dim], _] PD[Momentum[q2, dim] - Momentum[pe, dim], _]] ||
 								MatchQ[(Times@@Union[{aa, PD[Momentum[q1, dim] - Momentum[pe, dim],m], bb}]),
-								PD[Momentum[q1, dim], _] PD[Momentum[q1, dim] -
-								Momentum[pe, dim], m] PD[Momentum[q2, dim] -
-								Momentum[q1, dim], _] PD[Momentum[q2, dim] -
-								Momentum[pe, dim], _]])),
+								PD[Momentum[q1, dim], _] PD[Momentum[q1, dim] -	Momentum[pe, dim], m] PD[Momentum[q2, dim] -
+								Momentum[q1, dim], _] PD[Momentum[q2, dim] - Momentum[pe, dim], _]])),
 							(* f41 *)
-							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] -
-							Momentum[pe_ /; pe =!= q1, dim___], m_], bb___PD]]:>
-								((tran[fa FeynAmpDenominator[aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],m], bb], q2, -q2 + pe, q1, -q1 + pe])/;(
+							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] - Momentum[pe_ /; pe =!= q1, dim___], m_], bb___PD]]:>
+								((tran[fa FeynAmpDenominator[aa, PD[Momentum[q2, dim] - Momentum[pe, dim],m], bb], q2, -q2 + pe, q1, -q1 + pe])/;(
 								MatchQ[(Times@@Union[{aa, PD[Momentum[q2, dim] - Momentum[pe, dim],m], bb}]),
 								PD[Momentum[q2, dim], _] PD[Momentum[q2, dim] -
 								Momentum[pe, dim], m] PD[Momentum[q2, dim] -
@@ -1216,7 +1206,7 @@ translat[x_, q1_, q2_] :=
 	MemSet[translat[x,q1,q2],
 	Block[ {nuLlL1, nuLlL2},
 		Map[ trach[#, q1, q2]&,
-		(FCPrint[1,"in translat"]; Expand2[x, FeynAmpDenominator] + nuLlL1 + nuLlL2)] /. {nuLlL1:>0, nuLlL2:>0}
+		(FCPrint[1,"in translat" , x, "|", q1, "|" ,q2]; Expand2[x, FeynAmpDenominator] + nuLlL1 + nuLlL2)] /. {nuLlL1:>0, nuLlL2:>0}
 	]];
 
 
