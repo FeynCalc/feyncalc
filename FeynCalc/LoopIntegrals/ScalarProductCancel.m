@@ -46,7 +46,7 @@ Options[ScalarProductCancel] = {
 	FeynAmpDenominatorCombine -> True
 };
 
-
+SetAttributes[ScalarProductCancel, Listable];
 
 changeMomDim[z_, dim_/;dim=!=False] :=
 	Block[ {nd, moms, momr},
