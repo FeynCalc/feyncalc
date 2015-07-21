@@ -29,47 +29,51 @@ Options[ TR ] = {
 	FeynCalcExternal   -> False,
 	LeviCivitaSign     :> $LeviCivitaSign,
 	Mandelstam         -> {},
-	PairCollect        -> False,
-	Schouten           -> 442,
+	PairCollect			-> False,
+	SUNNToCACF			-> False,
 	SUNTrace           -> False,
-	TraceOfOne         -> 4,
-	SUNNToCACF -> False
+	Schouten           -> 442,
+	TraceOfOne         -> 4
 };
 
 
-TR[x_, rul___?OptionQ] :=
-	Block[{tt=FeynCalcInternal[x], doot, diractr, dit, fcex, diractrev, sunntocacf},
-		diractrev = DiracTraceEvaluate /. {rul} /. Options[TR];
-		sunntocacf = SUNNToCACF/. {rul} /. Options[TR];
+TR[x_, rul:OptionsPattern[]] :=
+	Block[{tt=FeynCalcInternal[x], doot, diractr, dit, fcex, diractrev, sunntocacf,
+		diracTraceOpts,sunTraceOpts,trOpts},
+
+
+		diractrev = OptionValue[DiracTraceEvaluate];
+		sunntocacf = OptionValue[SUNNToCACF];
+		trOpts = Flatten[Join[{rul}, FilterRules[Options[TR], Except[{rul}]]]];
+		diracTraceOpts = Flatten[FilterRules[Options[trOpts], Options[DiracTrace]]];
+		sunTraceOpts = Flatten[FilterRules[Options[trOpts], Options[SUNTrace]]];
+
 		If[!FreeQ[x,CF|CA],
 			sunntocacf = True
 		];
-		If[(Explicit /. {rul} /. Options[TR])=== True,
+		If[OptionValue[Explicit],
 			tt = Explicit[tt]
 		];
 
-		If[(SUNTrace /. {rul} /. Options[TR])=== True && (!FreeQ[tt, SUNIndex|ExplicitSUNIndex]),
-			tt = DiracTrace[tt,
-				Sequence@@Join[FilterRules[Join[FilterRules[Options[TR], Except[{rul}]], {rul}],
-				Except[{DiracTraceEvaluate -> False}]], {DiracTraceEvaluate -> False}]];
+		If[OptionValue[SUNTrace] && !FreeQ2[tt, {SUNIndex,ExplicitSUNIndex}],
+			tt = DiracTrace[tt,diracTraceOpts];
 			tt = SUNSimplify[tt, SUNNToCACF -> sunntocacf, SUNTrace -> True, Explicit -> False];
 			tt = tt /. (DiracTraceEvaluate -> False) :>	(DiracTraceEvaluate -> diractrev) //
 			SUNSimplify[#, SUNTrace -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
 
 			If[FreeQ[tt, SUNIndex|ExplicitSUNIndex],
-				tt = DiracTrace[tt, Sequence@@Join[FilterRules[Join[FilterRules[Options[TR], Except[{rul}]], {rul}],
-						Except[{DiracTraceEvaluate -> False}]], {DiracTraceEvaluate -> False}]] //
-							(*Added 27/8-2002, F.Orellana*)
-						If[(SUNTrace /. {rul} /. Options[TR])=== True,
-							SUNSimplify[#, SUNTrace -> True, SUNNToCACF -> sunntocacf, Explicit -> False], #]&;
+				tt = DiracTrace[tt, diracTraceOpts];
+				If[	OptionValue[SUNTrace],
+					tt = SUNSimplify[tt, SUNTrace -> True, SUNNToCACF -> sunntocacf, Explicit -> False]
+				];
 						tt = tt /. (DiracTraceEvaluate -> False) :> (DiracTraceEvaluate -> diractrev) //
 						SUNSimplify[#, SUNTrace -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
 						(*!FreeQ[tt, SUNIndex|ExplicitSUNIndex] -> !SUNTrace*)
 						tt = DiracTrace[Trick[tt]// SUNSimplify[#, SUNNToCACF -> sunntocacf,
-						SUNTrace -> (SUNTrace /. {rul} /. Options[TR]),	Explicit -> (Explicit /. {rul} /. Options[TR])]&,
-						Sequence@@Join[FilterRules[Options[TR], Except[{rul}]], {rul}]]
+						SUNTrace -> OptionValue[SUNTrace],	Explicit -> OptionValue[Explicit]]&, diracTraceOpts]
 			]
 		];
+
 		If[!FreeQ[tt, SUNIndex|ExplicitSUNIndex],
 			tt = tt /. (*Added 23/1-2003. F.Orellana.
 			If a spursav is left from DiracTrace it means
@@ -80,9 +84,9 @@ TR[x_, rul___?OptionQ] :=
 			FreeQ[{b}, SUNIndex|ExplicitSUNIndex]} /. doot -> DOT /. dit -> DiracTrace;
 		];
 		diractr[y__] := (DiracTrace @@
-			Join[{y}, Join[FilterRules[Options[TR], Except[{rul}]], {rul}]]);
+			Join[{y}, diracTraceOpts]);
 		tt = tt /. DiracTrace -> diractr;
-		If[FeynCalcExternal /. {rul} /. Options[TR],
+		If[	OptionValue[FeynCalcExternal],
 			tt = FeynCalcExternal[tt]
 		];
 		tt

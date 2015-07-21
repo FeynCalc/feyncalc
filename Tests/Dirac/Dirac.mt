@@ -59,3 +59,10 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 		Join[	Tests`Dirac`fcstTr,
 				Tests`Dirac`fcstTrAllFreeNoGamma5,
 				Tests`Dirac`fcstTrAllFreeOneGamma5NDR]];
+
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrace*"])];
+
+
+
+

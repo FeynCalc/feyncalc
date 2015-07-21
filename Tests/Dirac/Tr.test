@@ -80,13 +80,11 @@ Tests`Dirac`fcstTr = {
 	Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
 	Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[
 	Momentum[p2]] /. D -> 4, PairCollect -> True]",
-	"4*(-32*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1],
-	Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p2]] +
-	16*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
-	Momentum[p3]]*Pair[Momentum[p2], Momentum[p2]]*
-	Pair[Momentum[p2], Momentum[p3]] + 8*Pair[Momentum[p1],
-	Momentum[p1]]*Pair[Momentum[p1], Momentum[p2]]*
-	Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
+	"-32*Pair[Momentum[p2], Momentum[p2]]*(4*Pair[Momentum[p1],
+	Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]^2 - 2*Pair[Momentum[p1],
+	Momentum[p1]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] -
+	Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
+	Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
 {"fcstTr-ID8",
 	"Contract[DiracTrace[DiracMatrix[a, b, rho,
 	sigma]] MetricTensor[a,b]] /. DiracTrace -> Tr",
@@ -1424,46 +1422,117 @@ Tests`Dirac`fcstTrAllFreeOneGamma5NDR = {
 {"fcstTrAllFreeOneGamma5NDR-ID5","Tr[GA[i1,i2,i3,i4,5]]",
 	"(-4*I)*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i4]]"},
 {"fcstTrAllFreeOneGamma5NDR-ID6","Tr[GA[i1,i2,i3,i4,i5,5]]","0"},
-{"fcstTrAllFreeOneGamma5NDR-ID7","Tr[GA[i1,i2,i3,i4,i5,i6,5]]","4*((-I)*Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i1], LorentzIndex[i2]] +
-	I*Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i1], LorentzIndex[i3]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i2], LorentzIndex[i3]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i4]]*Pair[LorentzIndex[i5], LorentzIndex[i6]])"},
+{"fcstTrAllFreeOneGamma5NDR-ID7","Tr[GA[i1,i2,i3,i4,i5,i6,5]]",
+	"(-4*I)*(Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i6]]*Pair[LorentzIndex[i1], LorentzIndex[i2]] - Eps[LorentzIndex[i2], LorentzIndex[i4],
+	LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i1], LorentzIndex[i3]] +
+	Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i2],
+	LorentzIndex[i3]] + Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] - Eps[LorentzIndex[i1],
+	LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i5]]*Pair[LorentzIndex[i4],
+	LorentzIndex[i6]] + Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i4]]*Pair[LorentzIndex[i5], LorentzIndex[i6]])"},
 {"fcstTrAllFreeOneGamma5NDR-ID8","Tr[GA[i1,i2,i3,i4,i5,i6,i7,5]]","0"},
-{"fcstTrAllFreeOneGamma5NDR-ID9","Tr[GA[i1,i2,i3,i4,i5,i6,i7,i8,5]]","4*((-I)*Eps[LorentzIndex[i5], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i4]]*Pair[LorentzIndex[i2], LorentzIndex[i3]] +
-	I*Eps[LorentzIndex[i4], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], LorentzIndex[i3]] +
-	I*Eps[LorentzIndex[i5], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i3]]*Pair[LorentzIndex[i2], LorentzIndex[i4]] -
-	I*Eps[LorentzIndex[i3], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], LorentzIndex[i4]] -
-	I*Eps[LorentzIndex[i4], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i3]]*Pair[LorentzIndex[i2], LorentzIndex[i5]] +
-	I*Eps[LorentzIndex[i3], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i4]]*Pair[LorentzIndex[i2], LorentzIndex[i5]] -
-	I*Eps[LorentzIndex[i5], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i2]]*Pair[LorentzIndex[i3], LorentzIndex[i4]] +
-	I*Eps[LorentzIndex[i2], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i3], LorentzIndex[i4]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i2], LorentzIndex[i5]]*Pair[LorentzIndex[i3], LorentzIndex[i4]] +
-	I*Eps[LorentzIndex[i4], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i2]]*Pair[LorentzIndex[i3], LorentzIndex[i5]] -
-	I*Eps[LorentzIndex[i2], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i4]]*Pair[LorentzIndex[i3], LorentzIndex[i5]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i2], LorentzIndex[i4]]*Pair[LorentzIndex[i3], LorentzIndex[i5]] -
-	I*Eps[LorentzIndex[i3], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i2]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] +
-	I*Eps[LorentzIndex[i2], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i3]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i6], LorentzIndex[i7], LorentzIndex[i8]]*Pair[LorentzIndex[i2], LorentzIndex[i3]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] -
-	I*Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i2]]*Pair[LorentzIndex[i6], LorentzIndex[i7]] +
-	I*Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i8]]*Pair[LorentzIndex[i1], LorentzIndex[i3]]*Pair[LorentzIndex[i6], LorentzIndex[i7]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i8]]*Pair[LorentzIndex[i2], LorentzIndex[i3]]*Pair[LorentzIndex[i6], LorentzIndex[i7]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i5]]*Pair[LorentzIndex[i6], LorentzIndex[i7]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i8]]*Pair[LorentzIndex[i6], LorentzIndex[i7]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i4]]*Pair[LorentzIndex[i5], LorentzIndex[i8]]*Pair[LorentzIndex[i6], LorentzIndex[i7]] +
-	I*Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i7]]*Pair[LorentzIndex[i1], LorentzIndex[i2]]*Pair[LorentzIndex[i6], LorentzIndex[i8]] -
-	I*Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i7]]*Pair[LorentzIndex[i1], LorentzIndex[i3]]*Pair[LorentzIndex[i6], LorentzIndex[i8]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i7]]*Pair[LorentzIndex[i2], LorentzIndex[i3]]*Pair[LorentzIndex[i6], LorentzIndex[i8]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i5]]*Pair[LorentzIndex[i6], LorentzIndex[i8]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i7]]*Pair[LorentzIndex[i6], LorentzIndex[i8]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i4]]*Pair[LorentzIndex[i5], LorentzIndex[i7]]*Pair[LorentzIndex[i6], LorentzIndex[i8]] -
-	I*Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i1], LorentzIndex[i2]]*Pair[LorentzIndex[i7], LorentzIndex[i8]] +
-	I*Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i1], LorentzIndex[i3]]*Pair[LorentzIndex[i7], LorentzIndex[i8]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i2], LorentzIndex[i3]]*Pair[LorentzIndex[i7], LorentzIndex[i8]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i5]]*Pair[LorentzIndex[i7], LorentzIndex[i8]] +
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i6]]*Pair[LorentzIndex[i7], LorentzIndex[i8]] -
-	I*Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3], LorentzIndex[i4]]*Pair[LorentzIndex[i5], LorentzIndex[i6]]*Pair[LorentzIndex[i7], LorentzIndex[i8]])"}
+{"fcstTrAllFreeOneGamma5NDR-ID9","Tr[GA[i1,i2,i3,i4,i5,i6,i7,i8,5]]","
+-4 I (Eps[LorentzIndex[i5], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i4]] Pair[
+	LorentzIndex[i2], LorentzIndex[i3]] -
+Eps[LorentzIndex[i4], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i5]] Pair[
+	LorentzIndex[i2], LorentzIndex[i3]] -
+Eps[LorentzIndex[i5], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i3]] Pair[
+	LorentzIndex[i2], LorentzIndex[i4]] +
+Eps[LorentzIndex[i3], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i5]] Pair[
+	LorentzIndex[i2], LorentzIndex[i4]] +
+Eps[LorentzIndex[i4], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i3]] Pair[
+	LorentzIndex[i2], LorentzIndex[i5]] -
+Eps[LorentzIndex[i3], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i4]] Pair[
+	LorentzIndex[i2], LorentzIndex[i5]] +
+Eps[LorentzIndex[i5], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i2]] Pair[
+	LorentzIndex[i3], LorentzIndex[i4]] -
+Eps[LorentzIndex[i2], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i5]] Pair[
+	LorentzIndex[i3], LorentzIndex[i4]] +
+Eps[LorentzIndex[i1], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i2], LorentzIndex[i5]] Pair[
+	LorentzIndex[i3], LorentzIndex[i4]] -
+Eps[LorentzIndex[i4], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i2]] Pair[
+	LorentzIndex[i3], LorentzIndex[i5]] +
+Eps[LorentzIndex[i2], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i4]] Pair[
+	LorentzIndex[i3], LorentzIndex[i5]] -
+Eps[LorentzIndex[i1], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i2], LorentzIndex[i4]] Pair[
+	LorentzIndex[i3], LorentzIndex[i5]] +
+Eps[LorentzIndex[i3], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i2]] Pair[
+	LorentzIndex[i4], LorentzIndex[i5]] -
+Eps[LorentzIndex[i2], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i3]] Pair[
+	LorentzIndex[i4], LorentzIndex[i5]] +
+Eps[LorentzIndex[i1], LorentzIndex[i6], LorentzIndex[i7],
+	LorentzIndex[i8]] Pair[LorentzIndex[i2], LorentzIndex[i3]] Pair[
+	LorentzIndex[i4], LorentzIndex[i5]] +
+Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i2]] Pair[
+	LorentzIndex[i6], LorentzIndex[i7]] -
+Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i8]] Pair[LorentzIndex[i1], LorentzIndex[i3]] Pair[
+	LorentzIndex[i6], LorentzIndex[i7]] +
+Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i8]] Pair[LorentzIndex[i2], LorentzIndex[i3]] Pair[
+	LorentzIndex[i6], LorentzIndex[i7]] +
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i8]] Pair[LorentzIndex[i4], LorentzIndex[i5]] Pair[
+	LorentzIndex[i6], LorentzIndex[i7]] -
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i5]] Pair[LorentzIndex[i4], LorentzIndex[i8]] Pair[
+	LorentzIndex[i6], LorentzIndex[i7]] +
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i4]] Pair[LorentzIndex[i5], LorentzIndex[i8]] Pair[
+	LorentzIndex[i6], LorentzIndex[i7]] -
+Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i7]] Pair[LorentzIndex[i1], LorentzIndex[i2]] Pair[
+	LorentzIndex[i6], LorentzIndex[i8]] +
+Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i7]] Pair[LorentzIndex[i1], LorentzIndex[i3]] Pair[
+	LorentzIndex[i6], LorentzIndex[i8]] -
+Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i7]] Pair[LorentzIndex[i2], LorentzIndex[i3]] Pair[
+	LorentzIndex[i6], LorentzIndex[i8]] -
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i7]] Pair[LorentzIndex[i4], LorentzIndex[i5]] Pair[
+	LorentzIndex[i6], LorentzIndex[i8]] +
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i5]] Pair[LorentzIndex[i4], LorentzIndex[i7]] Pair[
+	LorentzIndex[i6], LorentzIndex[i8]] -
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i4]] Pair[LorentzIndex[i5], LorentzIndex[i7]] Pair[
+	LorentzIndex[i6], LorentzIndex[i8]] +
+Eps[LorentzIndex[i3], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i6]] Pair[LorentzIndex[i1], LorentzIndex[i2]] Pair[
+	LorentzIndex[i7], LorentzIndex[i8]] -
+Eps[LorentzIndex[i2], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i6]] Pair[LorentzIndex[i1], LorentzIndex[i3]] Pair[
+	LorentzIndex[i7], LorentzIndex[i8]] +
+Eps[LorentzIndex[i1], LorentzIndex[i4], LorentzIndex[i5],
+	LorentzIndex[i6]] Pair[LorentzIndex[i2], LorentzIndex[i3]] Pair[
+	LorentzIndex[i7], LorentzIndex[i8]] +
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i6]] Pair[LorentzIndex[i4], LorentzIndex[i5]] Pair[
+	LorentzIndex[i7], LorentzIndex[i8]] -
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i5]] Pair[LorentzIndex[i4], LorentzIndex[i6]] Pair[
+	LorentzIndex[i7], LorentzIndex[i8]] +
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+	LorentzIndex[i4]] Pair[LorentzIndex[i5], LorentzIndex[i6]] Pair[
+	LorentzIndex[i7], LorentzIndex[i8]])"}
 
 
 }

@@ -266,8 +266,7 @@ Contract[x_, y_Times, OptionsPattern[]] :=
 *)
 
 	Contract[a_, b_ /; ((Head[b]=!=Times) && (Head[b] =!= Plus) &&
-						(Head[b] =!= Rule)), c___?OptionQ
-			] :=
+			(Head[b] =!= Rule)), c___?OptionQ] :=
 		Contract[ a b, c ];
 
 	Contract[a_, b_Plus, ops___Rule] :=

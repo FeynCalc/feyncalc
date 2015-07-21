@@ -1,0 +1,77 @@
+
+
+(* :Title: DiracTrace.test                                               *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracTrace  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracTrace = ({
+{"fcstDiracTrace-ID1", "DiracTrace[1]", "DiracTrace[1]"},
+{"fcstDiracTrace-ID2", "DiracTrace[GA[i]]", "DiracTrace[GA[i]]"},
+{"fcstDiracTrace-ID3", "DiracTrace[GS[p+q]]",
+"DiracTrace[GS[p + q]]"},
+{"fcstDiracTrace-ID4", "DiracTrace[GA[5]]", "DiracTrace[GA[5]]"},
+{"fcstDiracTrace-ID5", "DiracTrace[GA[6]]", "DiracTrace[GA[6]]"},
+{"fcstDiracTrace-ID6", "DiracTrace[GA[7]]", "DiracTrace[GA[7]]"},
+{"fcstDiracTrace-ID7", 4, "4"},
+{"fcstDiracTrace-ID8",
+"DiracTrace[1,DiracTraceEvaluate\[Rule]True,TraceOfOne\[Rule]D]",
+"D"},
+{"fcstDiracTrace-ID9",
+"DiracTrace[GA[i],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID10",
+"DiracTrace[GS[p+q],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID11",
+"DiracTrace[GA[5],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID12",
+"DiracTrace[GA[6],DiracTraceEvaluate\[Rule]True]", "2"},
+{"fcstDiracTrace-ID13",
+"DiracTrace[GA[7],DiracTraceEvaluate\[Rule]True]", "2"},
+{"fcstDiracTrace-ID14",
+"DiracTrace[a \
+GS[p+q2].GS[-p].GA[6],DiracTraceEvaluate\[Rule]True]",
+"-2*a*(Pair[Momentum[p], Momentum[p]] + Pair[Momentum[p], \
+Momentum[q2]])"},
+{"fcstDiracTrace-ID15",
+"DiracTrace[a \
+GS[p+q2].GS[-p].(1/2+GA[5]),DiracTraceEvaluate\[Rule]True]",
+"-2*a*(Pair[Momentum[p], Momentum[p]] + Pair[Momentum[p], \
+Momentum[q2]])"},
+{"fcstDiracTrace-ID16",
+"DiracTrace[GS[p+q].(1+GA[l,m]),DiracTraceEvaluate\[Rule]True]",
+"0"},
+{"fcstDiracTrace-ID17",
+"DiracTrace[GA[i,5],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID18",
+"DiracTrace[GA[i,j,5],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID19",
+"DiracTrace[GA[i,j,k,5],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID20",
+"DiracTrace[GA[i,j,k,5,l,m],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID21",
+"DiracTrace[GA[i,6],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID22",
+"DiracTrace[GA[i,j,6],DiracTraceEvaluate\[Rule]True]",
+"2*Pair[LorentzIndex[i], LorentzIndex[j]]"},
+{"fcstDiracTrace-ID23",
+"DiracTrace[GA[i,j,k,6],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID24",
+"DiracTrace[GA[i,j,k,6,l,m],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID25",
+"DiracTrace[GA[i,7],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID26",
+"DiracTrace[GA[i,j,7],DiracTraceEvaluate\[Rule]True]",
+"2*Pair[LorentzIndex[i], LorentzIndex[j]]"},
+{"fcstDiracTrace-ID27",
+"DiracTrace[GA[i,j,k,7],DiracTraceEvaluate\[Rule]True]", "0"},
+{"fcstDiracTrace-ID28",
+"DiracTrace[GA[i,j,k,7,l,m],DiracTraceEvaluate\[Rule]True]", "0"}
+});
