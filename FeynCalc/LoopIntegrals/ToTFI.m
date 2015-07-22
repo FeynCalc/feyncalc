@@ -89,7 +89,7 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 
 		FCPrint[3, "ToTFI: Unique 2-loop integrals to be converted ", intsTFIUnique2, FCDoControl->toTFIVerbose];
 
-		If [OptionValue[FDS],
+		If [OptionValue[FDS] && FreeQ2[intsTFIUnique2,{qq,mM}],
 			intsTFIUnique2 = intsTFIUnique2/.tfiLoopIntegral[x__]:>
 				tfiLoopIntegral[(x//FDS[#,q1,q2,p]&//FDS[#,q2,q1,p]&)];
 			FCPrint[3, "ToTFI: Unique 2-loop integrals after double FDS ", intsTFIUnique2, FCDoControl->toTFIVerbose];
