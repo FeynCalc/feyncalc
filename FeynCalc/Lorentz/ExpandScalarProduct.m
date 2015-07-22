@@ -27,15 +27,18 @@ Begin["`ExpandScalarProduct`Private`"]
 
 ScalarProductExpand = ExpandScalarProduct;
 
-Options[ExpandScalarProduct] = {FCI -> True};
+Options[ExpandScalarProduct] = {
+	FCI -> True,
+	Momentum -> {}
+	};
 
 (* since one never can remember this function  ...*)
 (* well, not used, so commented out. F.Orellana, 8/11-2002. *)
 (*FRH = FixedPoint[ReleaseHold, #]&;*)
 
 ExpandScalarProduct[x_, OptionsPattern[]] :=
-	Block[ {nx = x, pali},
-
+	Block[ {nx = x, pali,moms},
+		moms = OptionValue[Momentum];
 		If[ OptionValue[FCI],
 			nx = FCI[nx]
 		];
@@ -49,8 +52,10 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 		switch for smaller ones to not use this?
 		Changed Nov 2003, RM
 		 *)
-
-		pali = Select[Cases2[nx, Pair], !FreeQ[#, LorentzIndex|Momentum]&];
+		If [moms==={},
+			pali = Select[Cases2[nx, Pair], !FreeQ[#, LorentzIndex|Momentum]&],
+			pali = Select[Cases2[nx, Pair], (!FreeQ[#, LorentzIndex|Momentum] && !FreeQ2[#, moms])&]
+		];
 
 		If[ pali =!= {},
 			nx = nx /. Dispatch[Thread[pali -> oldExpandScalarProduct[pali]]]

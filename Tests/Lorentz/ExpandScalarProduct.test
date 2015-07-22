@@ -15,5 +15,10 @@
 
 Tests`Lorentz`fcstExpandScalarProduct = {
 {"fcstExpandScalarProduct-ID1","ExpandScalarProduct[FourVector[a + b, mu]]",
-"Pair[LorentzIndex[mu], Momentum[a]] + Pair[LorentzIndex[mu], Momentum[b]]"}
+"Pair[LorentzIndex[mu], Momentum[a]] + Pair[LorentzIndex[mu], Momentum[b]]"},
+{"fcstExpandScalarProduct-ID2","ExpandScalarProduct[SP[a + b, c + d] + SP[a + l, c + d]]//FCE",
+"2 SP[a, c] + 2 SP[a, d] + SP[b, c] + SP[b, d] + SP[c, l] + SP[d, l]"},
+{"fcstExpandScalarProduct-ID3","ExpandScalarProduct[SP[a + b, c + d] + SP[a + l, c + d],
+Momentum -> {l}] // FCE",
+"SP[a, c] + SP[a, d] + SP[a + b, c + d] + SP[c, l] + SP[d, l]"}
 }
