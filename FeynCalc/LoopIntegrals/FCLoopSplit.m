@@ -36,6 +36,8 @@ Begin["`FCLoopSplit`Private`"]
 
 Options[FCLoopSplit] = {
 	Collecting -> True,
+	DotSimplify -> True,
+	DiracGammaExpand -> True,
 	Expanding -> True,
 	FCI -> False
 };
@@ -43,7 +45,7 @@ Options[FCLoopSplit] = {
 FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 	Block[{	null1, null2, ex, loopFree, loopScalar,
 			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
-			addToLoopScalar},
+			addToLoopScalar,tmp},
 
 		If[OptionValue[FCI],
 			ex = expr,
@@ -52,6 +54,22 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 		If[	OptionValue[Expanding],
 			ex = Expand2[ex, lmoms];
 		];
+
+		(* Here we pull loop momenta out of Dirac slashes  *)
+		If[	OptionValue[DiracGammaExpand] && !FreeQ[ex,DiracGamma],
+			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
+			ex = tmp[[1]]+ tmp[[2]]/. DiracGamma[x_,dim_:4]/;!FreeQ2[x,lmoms] :> DiracGammaExpand[DiracGamma[x,dim]]
+		];
+
+		(*	and out of the DOTs	*)
+		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
+			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
+			ex = tmp[[1]]+ DotSimplify[tmp[[2]]]
+		];
+
+
+
+
 		If[	OptionValue[Collecting],
 			ex = Collect2[ex,lmoms];
 		];

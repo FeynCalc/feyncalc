@@ -33,5 +33,20 @@ Tests`LoopIntegrals`fcstFCLoopIsolate = {
 ExceptHeads -> {GS}], {q}, Head -> ll]",
 	"y*z + (x + z)*ll[q] + d*ll[DiracGamma[Momentum[q]]]"},
 {"fcstFCLoopIsolate-ID10","MatchQ[FCLoopIsolate[q (x + y), {q}, Head -> ll, Isolate -> True],
-HoldForm[KK[_]] ll[q]]","True"}
+HoldForm[KK[_]] ll[q]]","True"},
+{"fcstFCLoopIsolate-ID11","FCLoopIsolate[
+	GA[j].(GSD[i].FVD[q, i] + GSD[p]).GA[5] FAD[{q, m}], {q}] // FCE","GA[j].GSD[p].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}]] +
+	GA[j].GSD[i].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}] FVD[q, i]]"},
+{"fcstFCLoopIsolate-ID12","FCLoopIsolate[ SUNT[i].(x + y).SUNT[j] +
+	(GS[x] + GA[j].(GSD[i] FVD[q, i] + GSD[p]).GA[5]).SUNT[a] FAD[{q, m}], {q}] // FCE",
+	"SUNT[i].(x + y).SUNT[j] + (SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5]) FCGV[\"LoopInt\"][
+	FAD[{q, m}]] +SUNT[a].GA[j].GSD[i].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}] FVD[q, i]]"},
+{"fcstFCLoopIsolate-ID12","FCLoopIsolate[(GS[x] +
+	GA[j].(GSD[i] FVD[q, i] + GSD[p] + GSD[q + x]).GA[5]).SUNT[
+	a] FAD[{q, m}], {q}] // FCE","(SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5] +
+	SUNT[a].GA[j].GSD[x].GA[5]) FCGV[\"LoopInt\"][FAD[{q, m}]] +
+	FCGV[\"LoopInt\"][SUNT[a].GA[j].GSD[q].GA[5] FAD[{q, m}]] +
+	SUNT[a].GA[j].GSD[i].GA[5] FCGV[\"LoopInt\"][FAD[{q, m}] FVD[q, i]]"},
+{"fcstFCLoopIsolate-ID13","FCLoopIsolate[GSD[p + q] FAD[{q, m}], {q}] // FCE",
+	"GSD[p] FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] GSD[q]]"}
 };

@@ -35,5 +35,17 @@ Tests`LoopIntegrals`fcstFCLoopSplit = {
 	SPD[q, k] SPD[q, l] FAD[{q, m}] + b FVD[q, mu] SPD[q, l]
 	FAD[{q, m}], {q}] // FCE","{c, b*FAD[{q, mu}],
 	FAD[{q, m}]*SPD[k, q]*SPD[l, q],
-	b*FAD[{q, m}]*FVD[q, mu]*SPD[l, q]}"}
+	b*FAD[{q, m}]*FVD[q, mu]*SPD[l, q]}"},
+{"fcstFCLoopSplit-ID9","FCLoopSplit[(GS[x] + GA[j].(GSD[i] FVD[q, i] +
+	GSD[p]).GA[5]).SUNT[a] FAD[{q, m}], {q}] // FCE",
+	"{0, (SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5]) FAD[{q, m}], 0,
+	SUNT[a].GA[j].GSD[i].GA[5] FAD[{q, m}] FVD[q, i]}"},
+{"fcstFCLoopSplit-ID10","FCLoopSplit[(GS[x] +
+	GA[j].(GSD[i] FVD[q, i] + GSD[p] + GSD[q + x]).GA[5]).SUNT[
+	a] FAD[{q, m}], {q}] // FCE","{0, (SUNT[a].GS[x] + SUNT[a].GA[j].GSD[p].GA[5] +
+	SUNT[a].GA[j].GSD[x].GA[5]) FAD[{q, m}], 0,
+	SUNT[a].GA[j].GSD[q].GA[5] FAD[{q, m}] +
+	SUNT[a].GA[j].GSD[i].GA[5] FAD[{q, m}] FVD[q, i]}"},
+{"fcstFCLoopSplit-ID11","FCLoopSplit[GSD[p + q] FAD[{q, m}], {q}]//FCE",
+"{0, FAD[{q, m}] GSD[p], 0, FAD[{q, m}] GSD[q]}"}
 };
