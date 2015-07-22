@@ -17,12 +17,22 @@ Tests`LoopIntegrals`ToTFI = {
 
 {"fcstToTFI-ID1","ToTFI[0, q1, q2, p]", "0"},
 {"fcstToTFI-ID2","ToTFI[FAD[q1, q2, q1 - q2, q1 - q2], q1, q2, p]",
-	"TFI[D, SPD[p, p], {{1, 0}, {1, 0}, {0, 0}, {0, 0}, {2, 0}}]"},
+	"0"},
 {"fcstToTFI-ID3","ToTFI[FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2], q1, q2, p]",
 	"TFI[D, SPD[p, p], {{1, 0}, {1, M}, {1, 0}, {1, m}, {1, 0}}]"},
 {"fcstToTFI-ID4","ToTFI[FAD[q1, q2, q1 - q2, q1 - q2], q1, q3, p]",
-	"FAD[q2] FAD[q1, q1 - q2, q1 - q2]"},
+	"0"},
 {"fcstToTFI-ID5","ToTFI[FAD[{q1, M1}, {q2, M2}, {q2 - q1, M3}, {p + q1, M4}, {p,
 M5}], q1, q2, p]",
-"FAD[{p, M5}] TFI[D, SPD[p, p], {{1, M4}, {0, 0}, {1, M1}, {1, M2}, {1, M3}}]"}
+"FAD[{p, M5}]*TFI[D, SPD[p, p], {{1, M1}, {1, M2}, {1, M4}, {0, 0}, {1, M3}}]"},
+
+{"fcstToTFI-ID6","ToTFI[FAD[{q1, M1}, {q2, M2}, {p, M3}, {q2 - q1, M3}, {p + q1,
+M3}], q1, q2, p]",
+"FAD[{p, M3}]*TFI[D, SPD[p, p], {{1, M1}, {1, M2}, {1, M3}, {0, 0}, {1, M3}}]"},
+{"fcstToTFI-ID7","ToTFI[FAD[{q1, M1}, {q2, M2}, {q2 + q1, M3}, {p + q1, M4}, {p,
+M5}], q1, q2, p]","FAD[{p, M5}] TFI[D,
+SPD[p, p], {{1, M1}, {1, M2}, {1, M4}, {0, 0}, {1, M3}}]"},
+{"fcstToTFI-ID8","ToTFI[FAD[{q1, M1}, {q2 - p, M2}, {q2 + q1, M3}, {q2, M4}, {p,
+M5}], q1, q2, p]","FAD[{p, M5}] TFI[D,
+SPD[p, p], {{1, M1}, {1, M4}, {0, 0}, {1, M2}, {1, M3}}]"}
 };

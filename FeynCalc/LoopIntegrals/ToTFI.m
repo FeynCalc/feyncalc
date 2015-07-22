@@ -31,7 +31,8 @@ toTFIVerbose::usage="";
 Options[ToTFI] = {
 	Dimension -> D,
 	FCVerbose->False,
-	Method -> Automatic
+	Method -> Automatic,
+	FDS -> True
 };
 
 
@@ -87,6 +88,14 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		intsTFIUnique2 = intsTFIUnique/.tfiLoopIntegral[x__]:> tfiLoopIntegral[FCE[FeynAmpDenominatorCombine[x]]];
 
 		FCPrint[3, "ToTFI: Unique 2-loop integrals to be converted ", intsTFIUnique2, FCDoControl->toTFIVerbose];
+
+		If [OptionValue[FDS],
+			intsTFIUnique2 = intsTFIUnique2/.tfiLoopIntegral[x__]:>
+				tfiLoopIntegral[(x//FDS[#,q1,q2,p]&//FDS[#,q2,q1,p]&)];
+			FCPrint[3, "ToTFI: Unique 2-loop integrals after double FDS ", intsTFIUnique2, FCDoControl->toTFIVerbose];
+		];
+
+
 
 		(* Note that we fish out only 2-loop propagator type integrals, while all the others are left untouched *)
 		solsList = Map[
