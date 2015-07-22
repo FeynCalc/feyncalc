@@ -79,7 +79,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 	loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 	solsList, repSolList, reversedRepIndexList,reducedLoopList,
-	finalRepList,isoContract
+	finalRepList,isoContract,tmp
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -164,34 +164,23 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 
-		t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator},
-			IsolateNames->tempIsolate]//ReplaceAll[#,Pair[pp__]/;!FreeQ[{pp},q]:>FRH[Pair[pp]]]&;
-		(* Before doing the reduction let us try  to cancel scalar products first *)
 		FCPrint[2,"TID: Before first SPC: ", t0, FCDoControl->tidVerbose];
 		If[	OptionValue[SPC],
 			t0 = SPC[t0,q,FDS->True,FCI->True];
 		];
 		FCPrint[2,"TID: After first SPC: ", t0, FCDoControl->tidVerbose];
-
+		(*
 		If[	!FreeQ2[t0,DiracGamma],
 			t0 = DiracGammaExpand[t0];
 			FCPrint[2,"TID: After expanding Dirac slashes: ", t0, FCDoControl->tidVerbose]
 		];
-
+		*)
 		(* Uncontract first *)
-		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0], q, Pair -> All, DimensionalReduction -> dimred,
+		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0,Momentum->{q}], q, Pair -> All, DimensionalReduction -> dimred,
 						Dimension -> n] /. PropagatorDenominator -> procanonical[q];,
 				Grid[{{"Uncontracting loop momenta",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			];
-
-		FCMonitor[t1 = Collect2[t1,{q,FeynAmpDenominator}];
-				t1 = FRH[t1,IsolateNames->tempIsolate],
-				Grid[{{"Collecting w.r.t the loop momentum ",
-				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
-			];
-
-
 
 		FCMonitor[
 			(* Check if user disables DiracSimplify but the given
@@ -203,17 +192,9 @@ TID[am_ , q_, OptionsPattern[]] :=
 				Abort[]
 			];
 
-			irrelevant = Select[t1+ null1+ null2, FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &]/. {null1|null2 -> 0};
-			tp = Select[t1+ null1+ null2, !FreeQ[# /. FeynAmpDenominator[__] :> Unique[], q] &] /. {null1|null2 -> 0};
-			If[irrelevant + tp =!= t1 || !FreeQ[tp /. FeynAmpDenominator[__] :> Unique[], q] &,
-				Message[TID::failmsg, "Splitting the loop integral " <> ToString[t1,InputForm] <>
-					"into tensor and scalar pieces in TID failed."];
-				Abort[]
-			];
-			If[	!FreeQ[FRH[irrelevant]/. FeynAmpDenominator[__] :> Unique[], q],
-					Message[TID::failmsg, "Problem with the scalar piece", irrelevant];
-					Abort[]
-			];
+			tmp = FCLoopSplit[t1,{q},FCI->True];
+			irrelevant = tmp[[1]]+tmp[[2]]+tmp[[3]];
+			tp = tmp[[4]];
 
 			(* tp can still contain scaleless integrals like q^2, q.p etc.
 				We need to get rid of them here	*)
@@ -232,11 +213,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 			FCMonitor[
 				t1 = Collect2[t1,{q,FeynAmpDenominator}];
 				(* wrap all loop-momentum dependent pieces in loopIntegral *)
-				wrapped=Map[SelectFree[#,{q}] loopIntegral[SelectNotFree[#,{q}]]&,t1+null1+null2]/.null1|null2->0;
-				If [ !FreeQ[wrapped/. loopIntegral[__] :> 1, q] & ,
-					Message[TID::failmsg, "TID failed to identify loop integrals in the input expression."];
-					Abort[]
-				];
+				wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral];
+
 				(*	This is the list of all the tensor loop integrals in the expression.	*)
 				loopList=Union[Cases[{wrapped},_. loopIntegral[x_]:>x,Infinity]];
 				(*	Here we collect the tensor indices of each integral from the
@@ -264,7 +242,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 				Grid[{{"Reducing unique tensor integrals",
 				ProgressIndicator[iter, {1, Length[uniqueCanIndexList]+1}]}}]
 			];
-
+			FCPrint[1,"TID: List of the reduced integrals ", solsList, FCDoControl->tidVerbose];
 			(* Make sure that the reduction worked out correctly *)
 			If[	!FreeQ2[FRH[solsList]/. FeynAmpDenominator[__] :> Unique[], {q,tidSingleIntegral,tidReduce,tidConvert}],
 				Message[TID::failmsg, "Running tidSingleIntegral failed to achieve full tensor reduction of the unique integrals in", solsList];
@@ -286,7 +264,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 			];
 			FCMonitor[
 				FCPrint[1,"TID: Final list of replacements: ", finalRepList, FCDoControl->tidVerbose];
-				FCPrint[1,"TID: To be applied on: ", t1, FCDoControl->tidVerbose];
+				FCPrint[1,"TID: To be applied on: ", wrapped, FCDoControl->tidVerbose];
 				(* And this is the final result *)
 				res = wrapped/.finalRepList/.tidPaVe->Identity,
 				Grid[{{"Substituting the reductions of the tensor part",

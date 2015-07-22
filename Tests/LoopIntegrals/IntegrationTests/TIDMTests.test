@@ -185,5 +185,63 @@ pp])*(SPD[k, k] + 2*SPD[k, p] - 2*SPD[k, pp] + SPD[p, p] - 2*SPD[p, \
 pp] + SPD[pp, pp])) + (SPD[k, k] + SPD[k, p] - 2*SPD[k, pp] - SPD[p, \
 pp] + SPD[pp, pp])^2)*(-(SPD[pp, pp]*(SPD[k, k] + 2*SPD[k, p] - \
 2*SPD[k, pp] + SPD[p, p] - 2*SPD[p, pp] + SPD[pp, pp])) + (-SPD[k, \
-pp] - SPD[p, pp] + SPD[pp, pp])^2))"}
-});
+pp] - SPD[p, pp] + SPD[pp, pp])^2))"},
+{"fcitTIDMTests-ID2",
+"TID[GSD[z].GA[5] FAD[{z,M},{k+z,M},{-k+pp-z,MD}] \
+SPD[k,z],z]//FCE",
+"GSD[k] . GA[5]*FAD[{z, M}, {-k + z, M}, {-pp + z, MD}]*SPD[k, k] \
++ (FAD[{z, M}]*(GSD[pp] . GA[5]*SPD[k, k] - 2*GSD[pp] . GA[5]*SPD[k, \
+pp] + GSD[pp] . GA[5]*SPD[pp, pp] - GSD[-k + pp] . GA[5]*SPD[pp, \
+pp]))/(4*SPD[pp, pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - \
+(FAD[{z, MD}]*(GSD[pp] . GA[5]*SPD[k, k] - 2*GSD[pp] . GA[5]*SPD[k, \
+pp] + GSD[pp] . GA[5]*SPD[pp, pp] - GSD[-k + pp] . GA[5]*SPD[pp, \
+pp]))/(4*SPD[pp, pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - \
+(FAD[{z, MD}, {-pp + z, M}]*SPD[k, k]*(GSD[-k + pp] . GA[5]*SPD[pp, \
+pp] - GSD[pp] . GA[5]*(-SPD[k, pp] + SPD[pp, pp])))/(4*(-(SPD[pp, \
+pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + (-SPD[k, pp] + \
+SPD[pp, pp])^2)) + (FAD[{z, MD}, {-k + pp + z, M}]*SPD[k, \
+k]*(-(GSD[pp] . GA[5]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
+GSD[-k + pp] . GA[5]*(-SPD[k, pp] + SPD[pp, pp])))/(4*(-(SPD[pp, \
+pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + (-SPD[k, pp] + \
+SPD[pp, pp])^2)) + (FAD[{z, MD}, {-pp + z, M}, {k - pp + z, \
+M}]*SPD[k, k]*(-(GSD[-k + pp] . GA[5]*(M^2 - MD^2 - SPD[k, k] + \
+2*SPD[k, pp] - SPD[pp, pp])*SPD[pp, pp]) - GSD[pp] . GA[5]*(M^2 - \
+MD^2 - SPD[pp, pp])*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) + GSD[-k \
++ pp] . GA[5]*(M^2 - MD^2 - SPD[pp, pp])*(-SPD[k, pp] + SPD[pp, pp]) \
++ GSD[pp] . GA[5]*(M^2 - MD^2 - SPD[k, k] + 2*SPD[k, pp] - SPD[pp, \
+pp])*(-SPD[k, pp] + SPD[pp, pp])))/(4*(-(SPD[pp, pp]*(SPD[k, k] - \
+2*SPD[k, pp] + SPD[pp, pp])) + (-SPD[k, pp] + SPD[pp, pp])^2)) + \
+(FAD[{z, MD}, {pp + z, M}, {-k + pp + z, M}]*SPD[k, k]*(-(GSD[pp] . \
+GA[5]*SPD[k, k]*SPD[k, pp]) + GSD[k] . GA[5]*SPD[k, k]*SPD[pp, pp] + \
+GSD[pp] . GA[5]*SPD[k, k]*(M^2 - MD^2 + SPD[pp, pp]) - GSD[k] . \
+GA[5]*SPD[k, pp]*(M^2 - MD^2 + SPD[pp, pp]) - GSD[k] . GA[5]*(SPD[k, \
+pp]^2 - SPD[k, k]*SPD[pp, pp]) + GSD[pp] . GA[5]*(SPD[k, pp]^2 - \
+SPD[k, k]*SPD[pp, pp])))/(2*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp])) - \
+(FAD[{z, M}, {-pp + z, MD}]*(-2*GSD[pp] . GA[5]*SPD[k, k]*SPD[k, \
+pp]*SPD[pp, pp] + 2*GSD[k] . GA[5]*SPD[k, k]*SPD[pp, pp]^2 - 2*GSD[k] \
+. GA[5]*SPD[pp, pp]*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp]) + GSD[pp] \
+. GA[5]*(M^2 - MD^2 + SPD[pp, pp])*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, \
+pp])))/(4*SPD[pp, pp]*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp])) + \
+(FAD[{z, M}, {-k + pp + z, MD}]*(2*GSD[pp] . GA[5]*SPD[k, k]^3 - \
+2*GSD[k] . GA[5]*SPD[k, k]^2*SPD[k, pp] - 6*GSD[pp] . GA[5]*SPD[k, \
+k]^2*SPD[k, pp] + 4*GSD[k] . GA[5]*SPD[k, k]*SPD[k, pp]^2 + 4*GSD[pp] \
+. GA[5]*SPD[k, k]*SPD[k, pp]^2 + 2*GSD[k] . GA[5]*SPD[k, k]^2*SPD[pp, \
+pp] + 2*GSD[pp] . GA[5]*SPD[k, k]^2*SPD[pp, pp] - 6*GSD[k] . \
+GA[5]*SPD[k, k]*SPD[k, pp]*SPD[pp, pp] - 2*GSD[pp] . GA[5]*SPD[k, \
+k]*SPD[k, pp]*SPD[pp, pp] + 2*GSD[k] . GA[5]*SPD[k, k]*SPD[pp, pp]^2 \
++ GSD[-k + pp] . GA[5]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + \
+SPD[pp, pp])*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp])))/(4*(SPD[k, k] - \
+2*SPD[k, pp] + SPD[pp, pp])*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp])) - \
+(FAD[{z, M}, {-k + z, M}]*SPD[k, k]*(-(GSD[-k + pp] . GA[5]*SPD[pp, \
+pp]*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp])) - GSD[pp] . GA[5]*(SPD[k, \
+k] - 2*SPD[k, pp] + SPD[pp, pp])*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, \
+pp]) + GSD[pp] . GA[5]*(-SPD[k, pp] + SPD[pp, pp])*(SPD[k, pp]^2 - \
+SPD[k, k]*SPD[pp, pp]) + GSD[-k + pp] . GA[5]*(-SPD[k, pp] + SPD[pp, \
+pp])*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp]) + 2*GSD[pp] . \
+GA[5]*SPD[k, k]*(-(SPD[pp, pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
+pp])) + (-SPD[k, pp] + SPD[pp, pp])^2) - 2*GSD[k] . GA[5]*SPD[k, \
+pp]*(-(SPD[pp, pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
+(-SPD[k, pp] + SPD[pp, pp])^2)))/(4*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, \
+pp])*(-(SPD[pp, pp]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
+(-SPD[k, pp] + SPD[pp, pp])^2))"}
+})
