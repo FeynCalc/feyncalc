@@ -42,5 +42,7 @@ Tests`Lorentz`fcstUncontract = {
 {"fcstUncontract-ID9","MatchQ[-Eps[LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si],
 	Momentum[Polarization[p, I]]] // Uncontract[#,p] &,
 	-(Eps[LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si], LorentzIndex[a_]]*
-	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]])]","True"}
+	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]])]","True"},
+{"fcstUncontract-ID10","MatchQ[Uncontract[FCI[GS[p + q + l]], l, Pair -> All] // FCE,
+	GS[p] + GS[q] + DiracGamma[LorentzIndex[x_]] Pair[LorentzIndex[x_], Momentum[l]]]","True"}
 };

@@ -39,14 +39,14 @@ Uncontract[x_, q1__, q2:Except[_?OptionQ], opt:OptionsPattern[]
 Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]
 				] :=
 	Block[ {exp,eeps,nex,li,li1,li2,dim,par,dre,dummy,inc,
-					   a$AL,dr, lidr,seq},
+					a$AL,dr, lidr,seq},
 		dre = OptionValue[DimensionalReduction];
 		par = OptionValue[Pair];
 		lidr[z_] :=
 			If[ dre === True,
 				z/.{LorentzIndex[aa_,_]:>LorentzIndex[aa]/.
-													   Momentum[bb_,_]  :> Momentum[bb]
-												   },
+													Momentum[bb_,_]  :> Momentum[bb]
+												},
 				z
 			];
 		exp = FeynCalcInternal[ex];
@@ -72,32 +72,34 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]
 				nex = nex //. {eeps[a___,Momentum[(c: q | Polarization[q,__]),d___],b___] :>
 											(*Changed dim to If[...]. F.Orellana. 6/10-2002*)
 											(li = LorentzIndex[a$AL[inc = inc+1],If[ dim===Automatic,
-																					 seq[d],
-																					 dim
-																				 ](*dim*)];
-											 Pair[Momentum[c,If[ dim===Automatic,
-																 seq[d],
-																 dim
-															 ](*dim*)], li] *
-											 eeps[a,lidr[li],b]
+																					seq[d],
+																					dim
+																				](*dim*)];
+											Pair[Momentum[c,If[ dim===Automatic,
+																seq[d],
+																dim
+															](*dim*)], li] *
+											eeps[a,lidr[li],b]
 											)
 											} /. eeps -> Eps /. TIMES -> Times;
 			];
 			If[ !FreeQ[nex, DiracGamma],
+				(* The momentum that we want to uncontract might be inside a slash like GS[a+b+c]!	*)
+				nex = nex /. DiracGamma[xxx_, dd_:4]/;!FreeQ2[xxx,{q}] :> DiracGammaExpand[DiracGamma[xxx,dd]];
 				nex = nex /. DiracGamma -> dirg;
 				nex = nex //. dirg[Momentum[(c: q | Polarization[q,__]),d___],___] :>
 											(li = LorentzIndex[a$AL[inc = inc+1],If[ dim===Automatic,
-																					 seq[d],
-																					 dim
-																				 ]];
-											 Pair[Momentum[c,If[ dim===Automatic,
-																 seq[d],
-																 dim
-															 ]], li] *
-											 dirg[lidr[li],If[ dim===Automatic,
-															   seq[d],
-															   dim
-														   ]]
+																					seq[d],
+																					dim
+																				]];
+											Pair[Momentum[c,If[ dim===Automatic,
+																seq[d],
+																dim
+															]], li] *
+											dirg[lidr[li],If[ dim===Automatic,
+															seq[d],
+															dim
+														]]
 											) /. dirg -> DiracGamma;
 				nex = DotSimplify[nex,Expanding -> False];
 			];
@@ -110,51 +112,51 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]
 				If[ MemberQ[par, q],
 					nex = nex //. Pair[Momentum[(c1: q | Polarization[q,__]),d___], Momentum[(c2: q | Polarization[q,__]),___]] :>
 												(li1 = LorentzIndex[a$AL[inc = inc+1], If[ dim===Automatic,
-																						   seq[d],
-																						   dim
-																					   ]];
-												 li2 = LorentzIndex[a$AL[inc = inc+1], If[ dim===Automatic,
-																						   seq[d],
-																						   dim
-																					   ]];
-												 Pair[Momentum[c1, If[ dim===Automatic,
-																	   seq[d],
-																	   dim
-																   ]], li1] *
-												 (* das ist vielleicht ein Bloedsinn mit dieser dimensionalen Reduktion:
-												 HIER darf man li1 und li2 nicht 4-dimensional setzen
+																						seq[d],
+																						dim
+																					]];
+												li2 = LorentzIndex[a$AL[inc = inc+1], If[ dim===Automatic,
+																						seq[d],
+																						dim
+																					]];
+												Pair[Momentum[c1, If[ dim===Automatic,
+																	seq[d],
+																	dim
+																]], li1] *
+												(* das ist vielleicht ein Bloedsinn mit dieser dimensionalen Reduktion:
+												HIER darf man li1 und li2 nicht 4-dimensional setzen
 												 *)
-												 Pair[Momentum[c2, If[ dim===Automatic,
-																	   seq[d],
-																	   dim
-																   ]], li2] *Pair[li1, li2]
+												Pair[Momentum[c2, If[ dim===Automatic,
+																	seq[d],
+																	dim
+																]], li2] *Pair[li1, li2]
 												);
 					par = SelectFree[par, q];
 				];
 				nex = nex //.{Pair[Momentum[(c: q | Polarization[q,__]),d___], Momentum[pe_,___]
 													] :> (li = LorentzIndex[a$AL[inc = inc+1],If[ dim===Automatic,
-																								  seq[d],
-																								  dim
-																							  ]];
-														  Pair[Momentum[c,If[ dim===Automatic,
-																			  seq[d],
-																			  dim
-																		  ]], li] *
-														  Pair[Momentum[pe,If[ dim===Automatic,
-																			   seq[d],
-																			   dim
-																		   ]],lidr[li]])/;MemberQ[par,pe]
+																								seq[d],
+																								dim
+																							]];
+														Pair[Momentum[c,If[ dim===Automatic,
+																			seq[d],
+																			dim
+																		]], li] *
+														Pair[Momentum[pe,If[ dim===Automatic,
+																			seq[d],
+																			dim
+																		]],lidr[li]])/;MemberQ[par,pe]
 										} /. times -> Times;
 				If[ !FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[(q | Polarization[q,__]),___],___]],
 					nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[(c: q | Polarization[q,__]),d___],b___] :>
 													(li = LorentzIndex[a$AL[inc = inc+1],If[ dim===Automatic,
-																							 seq[d],
-																							 dim
-																						 ]];
-													 tf[a, li, b] Pair[Momentum[c,If[ dim===Automatic,
-																					  seq[d],
-																					  dim
-																				  ]],lidr[li]]
+																							seq[d],
+																							dim
+																						]];
+													tf[a, li, b] Pair[Momentum[c,If[ dim===Automatic,
+																					seq[d],
+																					dim
+																				]],lidr[li]]
 													)
 												}
 				];
