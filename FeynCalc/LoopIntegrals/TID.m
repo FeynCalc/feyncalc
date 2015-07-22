@@ -173,6 +173,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 		FCPrint[2,"TID: After first SPC: ", t0, FCDoControl->tidVerbose];
 
+		If[	!FreeQ2[t0,DiracGamma],
+			t0 = DiracGammaExpand[t0];
+			FCPrint[2,"TID: After expanding Dirac slashes: ", t0, FCDoControl->tidVerbose]
+		];
+
 		(* Uncontract first *)
 		FCMonitor[t1 = Uncontract[ExpandScalarProduct[t0], q, Pair -> All, DimensionalReduction -> dimred,
 						Dimension -> n] /. PropagatorDenominator -> procanonical[q];,

@@ -49,4 +49,7 @@ Map[Test[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]
 
 ClearScalarProducts;
 
-
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+	Join[
+		Tests`LoopIntegrals`fcitTIDMTests
+		]];
