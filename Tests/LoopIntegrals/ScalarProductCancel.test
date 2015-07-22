@@ -62,7 +62,6 @@ Tests`LoopIntegrals`fcstSPC={
 	"SPC[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[l,k1+k2-p2],
 	l,FDS->True]//Simplify//FCE",
 	"(FAD[l, {-k1 + l, MC}] - FAD[{l, MC}, {-k2 + l + p2, MC}] +
-	FAD[l, {-k1 + l, MC}, {-k1 - k2 + l + p2, MC}]*(MC^2 - SPD[k1, k1] -
-	2*SPD[k1, k2] + 2*SPD[k1, p2] - SPD[k2, k2] +
-	2*SPD[k2, p2] - SPD[p2, p2]))/2"}
+	FAD[l, {-k1 + l, MC}, {-k1 - k2 + l + p2, MC}]*(MC^2 -
+	SPD[k1 + k2 - p2, k1 + k2 - p2]))/2"}
 };

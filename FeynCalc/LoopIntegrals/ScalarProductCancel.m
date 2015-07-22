@@ -129,8 +129,8 @@ ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 
 		(* Now second attempt with scalar products expanded *)
 		If [OptionValue[FDS],
-			res = FDS[res,qs,qlast]//ExpandScalarProduct,
-			res = res//ExpandScalarProduct
+			res = FDS[res,qs,qlast]//ExpandScalarProduct[#,Momentum->{qs,qlast}]&,
+			res = res//ExpandScalarProduct[#,Momentum->{qs,qlast}]&
 		];
 
 		tmp = FCLoopSplit[res,{qs,qlast}];
@@ -152,8 +152,7 @@ ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 
 		FCPrint[3, "SPC: After second run ", res, FCDoControl->spcVerbose];
 
-
-		res = Collect2[ExpandScalarProduct[res],{qs,qlast,FeynAmpDenominator}];
+		res = Collect2[ExpandScalarProduct[res,Momentum->{qs,qlast}],{qs,qlast,FeynAmpDenominator}];
 		(*TODO need to check that all the possibel QPs have indeed been cancelled*)
 		FCPrint[3, "SPC: Leaving with ", res, FCDoControl->spcVerbose];
 		res
