@@ -34,9 +34,15 @@ FCLoopIsolate again to pull out the master integrals out of the
 old heads. By default ClearHeads is set to {FCGV[\"LoopInt\"]}
 ";
 
+MultiLoop::usage =
+"MultiLoop is an option for FCLoopIsolate. When set to True,
+FCLoopIsolate will isolate only such loop integrals, that
+depend on all of the given loop momenta. Integrals
+that depend only on some of the loop momenta will be treated
+as non-loop terms and remain non-isolated"
+
 FCLoopIsolate::fail =
 "FCLoopIsolate failed to isolate loop integrals in `1`!";
-
 
 Begin["`Package`"]
 End[]
@@ -53,8 +59,12 @@ Options[FCLoopIsolate] = {
 	Expanding -> True,
 	Isolate -> False,
 	IsolateNames -> KK,
-	FCI -> False
+	FCI -> False,
+	MultiLoop -> False
 };
+
+fullDep[z_,lmoms_]:=
+	(Union[Cases[z, Momentum[x_, _ : 4]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 	Block[ {res, null1, null2, ex,lmoms,tmp},
@@ -103,6 +113,10 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		If [ !FreeQ[res/. OptionValue[Head][__] :> 1, {lmoms}] & ,
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
+		];
+
+		If [ OptionValue[MultiLoop],
+			res = res /. OptionValue[Head][z__]/; !fullDep[z,lmoms0] :> z;
 		];
 
 		res
