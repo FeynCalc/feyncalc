@@ -33,7 +33,8 @@ Options[ToTFI] = {
 	FCVerbose->False,
 	Method -> Automatic,
 	FDS -> True,
-	Collecting -> True
+	Collecting -> True,
+	SPC -> True
 };
 
 
@@ -91,7 +92,8 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		(* Before the conversion run FDS (and SPC) on true 2-loop integrals *)
 		If [OptionValue[FDS],
 			intsTFI2 = intsTFI2/.
-			tfiLoopIntegral[x__]/;FreeQ2[x,{qq,mM}]:> (x//FDS[#,q1,q2]&//FDS[#,q2,q1]&//SPC[#,q1,q2,FDS->False]&) /. tfiLoopIntegral -> Identity;
+			tfiLoopIntegral[x__]/;FreeQ2[x,{qq,mM}]:>
+				(x//FDS[#,q1,q2]&//FDS[#,q2,q1]&//If[OptionValue[SPC],SPC[#,q1,q2,FDS->False],#]&) /. tfiLoopIntegral -> Identity;
 			FCPrint[3, "ToTFI: Relevant 2-loop integrals after double FDS ", intsTFI2, FCDoControl->toTFIVerbose]
 		];
 
