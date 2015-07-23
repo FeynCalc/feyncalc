@@ -32,7 +32,8 @@ Options[ToTFI] = {
 	Dimension -> D,
 	FCVerbose->False,
 	Method -> Automatic,
-	FDS -> True
+	FDS -> True,
+	Collecting -> True
 };
 
 
@@ -56,8 +57,8 @@ ToTFI[a_/;Head[a]=!=Plus,q_,p_/;Head[p]=!=Rule,opts___Rule] :=
 
 (* 2-loops *)
 ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
-	Block[{int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFIUnique,tmp,
-			intsTFIUnique2,solsList,tfiLoopIntegral,repRule,null1,null2,res},
+	Block[{int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFI3,intsTFIUnique,tmp,
+			solsList,tfiLoopIntegral,repRule,null1,null2,res},
 
 		If [OptionValue[FCVerbose]===False,
 			toTFIVerbose=$VeryVerbose,
@@ -72,7 +73,7 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		intsTFI = fclsOutput[[2]]+fclsOutput[[3]];
 
 		FCPrint[3, "ToTFI: Terms to be ignored ", intsRest, FCDoControl->toTFIVerbose];
-		FCPrint[3, "ToTFI: Relevant terms ", intsTFI, FCDoControl->toTFIVerbose];
+		FCPrint[3, "ToTFI: Possibly relevant terms ", intsTFI, FCDoControl->toTFIVerbose];
 
 		(*	Nothing to do	*)
 		If[ intsTFI === 0,
@@ -80,29 +81,31 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		];
 
 		intsTFI = FeynAmpDenominatorSplit[intsTFI];
-		intsTFI2 = FCLoopIsolate[intsTFI, {q1,q2}, FCI->True, Head->tfiLoopIntegral];
 
-		(*	Now we extract all the unique loop integrals *)
-		intsTFIUnique = (Cases[intsTFI2+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
-		(*	Put the FADs in unique integrals back together *)
-		intsTFIUnique2 = intsTFIUnique/.tfiLoopIntegral[x__]:> tfiLoopIntegral[FCE[FeynAmpDenominatorCombine[x]]];
+		(* Let us now isolate all the 2-loop integrals that depend on q1,q2 *)
+		intsTFI2 = FCLoopIsolate[intsTFI, {q1,q2}, FCI->True, MultiLoop->True, Head->tfiLoopIntegral];
 
-		FCPrint[3, "ToTFI: Unique 2-loop integrals to be converted ", intsTFIUnique2, FCDoControl->toTFIVerbose];
+		(*	Put the FADs back together *)
+		intsTFI2 = intsTFI2/. tfiLoopIntegral[x__]:> tfiLoopIntegral[FeynAmpDenominatorCombine[x]];
 
-		If [OptionValue[FDS] && FreeQ2[intsTFIUnique2,{qq,mM}],
-			intsTFIUnique2 = intsTFIUnique2/.tfiLoopIntegral[x__]:>
-				tfiLoopIntegral[(x//FDS[#,q1,q2,p]&//FDS[#,q2,q1,p]&)];
-			FCPrint[3, "ToTFI: Unique 2-loop integrals after double FDS ", intsTFIUnique2, FCDoControl->toTFIVerbose];
+		(* Before the conversion run FDS (and SPC) on true 2-loop integrals *)
+		If [OptionValue[FDS],
+			intsTFI2 = intsTFI2/.
+			tfiLoopIntegral[x__]/;FreeQ2[x,{qq,mM}]:> (x//FDS[#,q1,q2]&//FDS[#,q2,q1]&//SPC[#,q1,q2,FDS->False]&) /. tfiLoopIntegral -> Identity;
+			FCPrint[3, "ToTFI: Relevant 2-loop integrals after double FDS ", intsTFI2, FCDoControl->toTFIVerbose]
 		];
 
+		(* Final isolation *)
+		intsTFI3 = FCLoopIsolate[intsTFI2, {q1,q2}, MultiLoop->True, Head->tfiLoopIntegral];
+
+		(*	Now we extract all the unique loop integrals *)
+		intsTFIUnique = (Cases[intsTFI3+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
 
 
-		(* Note that we fish out only 2-loop propagator type integrals, while all the others are left untouched *)
-		solsList = Map[
-			If [ (tmp=Sort[Variables[Flatten[Cases[FCE[FeynAmpDenominatorSplit[#]],FAD[x__]:>(x/.{a_,_}:>a),Infinity]]]]; tmp===Sort[{q1,q2,p}] || tmp===Sort[{q1,q2}]),
-				saveToTFI[#,q1,q2,p,opts],
-				#
-			]&,(intsTFIUnique2/.tfiLoopIntegral->Identity)];
+		FCPrint[3, "ToTFI: Unique 2-loop integrals to be converted ", intsTFIUnique, FCDoControl->toTFIVerbose];
+
+		(* Do the conversion *)
+		solsList = Map[saveToTFI[FCE[#],q1,q2,p,opts]&,(intsTFIUnique/.tfiLoopIntegral->Identity)];
 
 		FCPrint[3, "ToTFI: Converted integrals ", solsList, FCDoControl->toTFIVerbose];
 
@@ -114,12 +117,16 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		repRule = MapIndexed[(Rule[#1, First[solsList[[#2]]]]) &, intsTFIUnique];
 
 
-		res = FCE[FeynAmpDenominatorCombine[intsRest + (intsTFI2/.repRule)]];
+		res = FCE[FeynAmpDenominatorCombine[intsRest + (intsTFI3/.repRule)]];
 		FCPrint[3, "ToTFI: Leaving with ", res, FCDoControl->toTFIVerbose];
 
 		If[!FreeQ[res,tfiLoopIntegral],
 			Message[ToTFI::failmsg,"ToTFI failed to convert all the relevant loop integrals into TARCER notation."];
 			Abort[]
+		];
+
+		If[OptionValue[Collecting],
+			res = Collect2[res,{ToExpression["TFI"]}]
 		];
 
 		res
