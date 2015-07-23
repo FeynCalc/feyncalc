@@ -30,6 +30,12 @@ Spinor[Momentum[p2], m, 1] . DiracGamma[LorentzIndex[a]] . Spinor[Momentum[p1], 
 	Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k2]]"},
 {"fcstFourDivergence-ID7","FourDivergence[FV[k1, a] FV[k1, b] (SP[k1, q] + SP[k2, q]), FV[q, c]]",
 	"Pair[LorentzIndex[a], Momentum[k1]]*Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k1]] +
-	Pair[LorentzIndex[a], Momentum[k1]]*Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k2]]"}
-
+	Pair[LorentzIndex[a], Momentum[k1]]*Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k2]]"},
+{"fcstFourDivergence-ID8","FourDivergence[ScalarProduct[p - k, q + b], FV[k, mu]]",
+	"-Pair[LorentzIndex[mu], Momentum[b]] - Pair[LorentzIndex[mu], Momentum[q]]"},
+{"fcstFourDivergence-ID9","FourDivergence[FAD[p - k], FV[k, mu]]","0"},
+{"fcstFourDivergence-ID10","FourDivergence[FAD[p - k], FVD[k, mu]]",
+	"2 FeynAmpDenominator[PropagatorDenominator[-Momentum[k, D] + Momentum[p, D], 0],
+	PropagatorDenominator[-Momentum[k, D] + Momentum[p, D],	0]] (-Pair[LorentzIndex[mu, D], Momentum[k, D]] +
+	Pair[LorentzIndex[mu, D], Momentum[p, D]])"}
 };
