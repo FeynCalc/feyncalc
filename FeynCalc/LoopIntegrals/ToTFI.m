@@ -96,7 +96,7 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		];
 
 		(* Final isolation *)
-		intsTFI3 = FCLoopIsolate[intsTFI2, {q1,q2}, MultiLoop->True, Head->tfiLoopIntegral];
+		intsTFI3 = FCLoopIsolate[intsTFI2, {q1,q2}, MultiLoop->True, Head->tfiLoopIntegral,ClearHeads->{tfiLoopIntegral}];
 
 		(*	Now we extract all the unique loop integrals *)
 		intsTFIUnique = (Cases[intsTFI3+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
