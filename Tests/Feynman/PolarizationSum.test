@@ -57,5 +57,6 @@ Tests`Feynman`fcstPolarizationSum = {
 	Pair[Momentum[k1], Momentum[n2]] + Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2],
 	Momentum[n2]])^2 - (Pair[LorentzIndex[mu], Momentum[k1 + k2]]*Pair[LorentzIndex[nu], Momentum[k1 + k2]]*
 	Pair[Momentum[n2], Momentum[n2]])/(Pair[Momentum[k1], Momentum[n1]] + Pair[Momentum[k1], Momentum[n2]] +
-	Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2], Momentum[n2]])^2"}
+	Pair[Momentum[k2], Momentum[n1]] + Pair[Momentum[k2], Momentum[n2]])^2"},
+{"fcstPolarizationSum-ID8","PolarizationSum[mu, nu, x1,0,VirtualBoson->True]//FCE","-MT[mu, nu]"}
 };

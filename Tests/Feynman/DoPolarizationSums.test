@@ -358,5 +358,9 @@ Tests`Feynman`fcstDoPolarizationSums = {
 	Momentum[p], Momentum[p]] +  Pair[Momentum[k1],
 	Momentum[k2]] (-Pair[Momentum[k1], Momentum[k2]] + (
 	Pair[Momentum[k1], Momentum[p]] Pair[Momentum[k2], Momentum[p]])/
-	Pair[Momentum[p], Momentum[p]]) Pair[Momentum[p], Momentum[p]]]","True"}
+	Pair[Momentum[p], Momentum[p]]) Pair[Momentum[p], Momentum[p]]]","True"},
+{"fcstDoPolarizationSums-ID35",
+	"DoPolarizationSums[Pair[Momentum[p1],Momentum[Polarization[x1,I]]]Pair[Momentum[p2],
+	Momentum[Polarization[x1,-I]]]+1,x1,0,GaugeTrickN->4,VirtualBoson->True]//FCE",
+	"4 - SP[p1, p2]"}
 };

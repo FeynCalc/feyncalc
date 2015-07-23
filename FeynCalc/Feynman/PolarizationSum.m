@@ -51,7 +51,10 @@ End[]
 
 Begin["`PolarizationSum`Private`"]
 
-Options[PolarizationSum] = {Dimension -> 4};
+Options[PolarizationSum] = {
+	Dimension -> 4,
+	VirtualBoson -> False
+};
 
 (*    Polarization sum for massless vector bosons with gauge terms omitted,
 	e.g. for photons in QED.     *)
@@ -60,8 +63,8 @@ PolarizationSum[mu_,nu_, OptionsPattern[]] :=
 
 (*	Same as above. Putting the auxiliary vector n^mu to zero essentially
 	omits the gauge terms.  *)
-PolarizationSum[mu_,nu_, k_, 0, OptionsPattern[]] :=
-	(If[ScalarProduct[k,k]=!=0,
+PolarizationSum[mu_,nu_, k_, 0, opts:OptionsPattern[]] :=
+	(If[ScalarProduct[k,k]=!=0 && !OptionValue[VirtualBoson],
 			Message[PolarizationSum::notmassless, k]
 	];
 	-Pair[LorentzIndex[mu,OptionValue[Dimension]],LorentzIndex[nu,OptionValue[Dimension]]])/; k=!=0;

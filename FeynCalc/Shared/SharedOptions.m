@@ -196,6 +196,13 @@ TraceOfOne::usage =
 "TraceOfOne is an option for Tr and DiracTrace.
 Its setting determines the value of the unit trace.";
 
+VirtualBoson::usage =
+"VirtualBoson is an option for PolarizationSum and DoPolarizationSums.
+If set to True, FeynCalc will not complain when you apply the gauge
+trick (i.e. replace the polarization sum by - MT[mu,nu]) for a particle
+that is not massless. This is usueful when computing processes
+that involve a virtual photon as an external state."
+
 WriteOut::usage =
 "WriteOut is an option for OneLoop and SquareAmplitude.
 If set to True, the result of OneLoop will be written to a
