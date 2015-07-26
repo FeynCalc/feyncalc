@@ -343,10 +343,15 @@ TID[am_ , q_, OptionsPattern[]] :=
 		(* The result with isolated prefactors is naturally more compact, but unless
 		the user wants it explicitly, we will return him the full result with everything
 		written out	*)
-		If[	!OptionValue[Isolate],
+		If[	OptionValue[Isolate]===False,
 			res = FRH[res, IsolateNames->tidIsolate],
 			FCMonitor[
-				res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex}, IsolateNames->tidIsolate],
+				Which[	OptionValue[Isolate]===All,
+							res = Isolate[res,{q,FeynAmpDenominator}, IsolateNames->tidIsolate]/.
+								FeynAmpDenominator[x__]/;!FreeQ[{x},q] :> FRH[FeynAmpDenominator[x], IsolateNames->tidIsolate],
+						True,
+							res = Isolate[res,{q,FeynAmpDenominator,LorentzIndex}, IsolateNames->tidIsolate]
+				],
 				Grid[{{"Isolating non-loop prefactors in the final result",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
