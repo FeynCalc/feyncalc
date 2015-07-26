@@ -27,12 +27,25 @@ FDS::usage =
 $NoShifts::usage =
 "$NoShifts is an option of FeynAmpDenominatorSimplify.";
 
+FDS::twoloopsefail =
+"FDS detected a fatal error while converting the 2-loop self energy integral `1`
+into canonicla form. Evaluation aborted!"
+
+FDS::failmsg = "Error! FDS has encountered a fatal problem and must abort the computation. The problem
+reads: `1`";
+
+DetectLoopTopologies::usage=
+"DetectLoopTopologies is an option for FDS. If set to True, FDS will try to recognize some
+special multiloop topologies and apply appropriate simplifications";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]
 
 Begin["`FeynAmpDenominatorSimplify`Private`"]
+
+fdsVerbose::usage="";
 
 $NoShifts=False;
 FDS = FeynAmpDenominatorSimplify;
@@ -41,10 +54,13 @@ FDS = FeynAmpDenominatorSimplify;
 $Power2 = True;
 
 Options[FeynAmpDenominatorSimplify] = {
+	FCI -> False,
+	FeynAmpDenominatorCombine -> True,
 	FCVerbose -> False,
 	FC2RHI -> False,
 	IntegralTable -> {},
-	IncludePair -> False
+	IncludePair -> False,
+	DetectLoopTopologies -> True
 };
 
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
@@ -102,9 +118,149 @@ FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
 		FCPrint[1, "FeynAmpDenominatorSimplify: Entering with ", exp];
 		FixedPoint[efdes[#, q1]&, exp, 6]
 	];
+
 (*	FDS for 2-loop integrals	*)
 FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]] :=
-	Block[ {exp, ot, pot,topi, topi2, bas, basic,res,pru,oneONE,fadalll,fadallq1q2,amucheck},
+	Block[ {exp, res, null1, null2, fclsOutput, intsRest, intsFDS, intsFDS2, intsFDS3, intsFDS4,
+			fds2Loops,fds1LoopQ1,fds1LoopQ2, intsFDSUnique, intsTops, intsTops2,
+			intsFDSUniqueFromSols, intsFDSUniqueFromSols2, intsFDSUniqueNested, solsListNested,
+			repRuleNested, fds2LoopsNested,
+			solsList, repRule
+			},
+
+		If [OptionValue[FCVerbose]===False,
+			fdsVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				fdsVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"FDS: Entering 2-loop FDS with", ex, FCDoControl->fdsVerbose];
+
+		If[ !OptionValue[FCI],
+			exp = FeynCalcInternal[ex],
+			exp = ex
+		];
+
+		If [ OptionValue[FeynAmpDenominatorCombine],
+			exp = FeynAmpDenominatorCombine[exp]
+		];
+
+
+		(*	Let us first extract all the scalar loop integrals	*)
+		fclsOutput = FCLoopSplit[ex,{q1,q2},FCI->False];
+		intsRest = fclsOutput[[1]];
+		intsFDS = fclsOutput[[2]]+fclsOutput[[3]]+fclsOutput[[4]];
+
+		FCPrint[3, "FDS: Terms to be ignored ", intsRest, FCDoControl->fdsVerbose];
+		FCPrint[3, "FDS: Possibly relevant terms ", intsFDS, FCDoControl->fdsVerbose];
+
+		(*	Nothing to do	*)
+		If[ intsFDS === 0,
+			Return[ex]
+		];
+
+		(*	Split FADs to extract only loop momenta dependent pieces *)
+		intsFDS = FeynAmpDenominatorSplit[intsFDS];
+
+		(* Let us now isolate all the 2-loop and 1-loop integrals that depend on q1,q2 *)
+		intsFDS2 = FCLoopIsolate[intsFDS, {q1,q2}, FCI->True, MultiLoop->True, Head->fds2Loops];
+		intsFDS3 = FCLoopIsolate[intsFDS2, {q1}, FCI->True, MultiLoop->True, Head->fds1LoopQ1, ExceptHeads->{fds2Loops}];
+		intsFDS4 = FCLoopIsolate[intsFDS3, {q2}, FCI->True, MultiLoop->True, Head->fds1LoopQ2, ExceptHeads->{fds2Loops}];
+		(*	Put the FADs back together *)
+		intsFDS4 = intsFDS4/. (h:fds2Loops|fds1LoopQ1|fds1LoopQ2)[x__]:> h[FeynAmpDenominatorCombine[x]];
+
+		FCPrint[3, "FDS: Isolated terms ", intsFDS4, FCDoControl->fdsVerbose];
+
+		(* Extract all the unique integrals *)
+		intsFDSUnique = Cases[intsFDS4+null1+null2,(fds2Loops|fds1LoopQ1|fds1LoopQ2)[x__],Infinity]//Union;
+		FCPrint[3, "FDS: Unique terms ", intsFDSUnique, FCDoControl->fdsVerbose];
+
+
+		(* Apply standard simplifications *)
+		solsList = MapIndexed[
+								Which [	Head[#]===fds2Loops,
+										fds2Loops[oldFeynAmpDenominatorSimplify[(#/. fds2Loops->Identity),q1,q2,opt]],
+										Head[#]===fds1LoopQ1,
+										FeynAmpDenominatorSimplify[(#/. fds1LoopQ1->Identity),q1,opt],
+										Head[#]===fds1LoopQ2,
+										FeynAmpDenominatorSimplify[(#/. fds1LoopQ2->Identity),q2,opt],
+										True,
+										Message[FDS::failmsg,"Unknown integral type!"];
+								]&,intsFDSUnique];
+
+
+
+		(*	Tailored simplifications for speical 2-loop topologies	*)
+		If[ OptionValue[DetectLoopTopologies],
+			FCPrint[3, "FDS: Simplifying special topologies.", FCDoControl->fdsVerbose];
+
+
+			(* Isolate single loop integrals in every solution *)
+			intsFDSUniqueFromSols2 = solsList/.
+										{fds2Loops[x__]:> Map[fds2LoopsNested,Expand2[x,FeynAmpDenominator]+null1+null2]}/.
+										fds2LoopsNested[null1|null2] -> 0;
+
+
+			(* Extract unique nested integrals *)
+			intsFDSUniqueNested = Cases[intsFDSUniqueFromSols2,fds2LoopsNested[x__],Infinity]//Union;
+			FCPrint[3, "FDS: Unique terms ", intsFDSUniqueNested, FCDoControl->fdsVerbose];
+
+
+			intsTops=getTopology[#,{q1,q2}]&/@(intsFDSUniqueNested/.fds2LoopsNested->Identity);
+			FCPrint[3, "FDS: Topologies ", intsTops, FCDoControl->fdsVerbose];
+
+			intsTops2 = checkTopology/@intsTops;
+			FCPrint[3, "FDS: Checked topologies ", intsTops2, FCDoControl->fdsVerbose];
+
+
+			solsListNested = MapIndexed[
+					(* Here one could add more topologies if needed *)
+					Which[	#1==="2-loop-self-energy",
+								(fds2LoopsSE[(First[intsFDSUniqueNested[[#2]]]/.fds2LoopsNested->Identity),q1,q2,(Total[intsTops[[#2]]])[[3]][[1]]]/. FeynAmpDenominator -> feyncan),
+							#1==="generic",
+								(First[intsFDSUniqueNested[[#2]]]/. fds2LoopsNested->Identity),
+							True,
+								Message[FDS::failmsg,"Unknown 2-loop topology!"];
+								Abort[]
+
+					]&,intsTops2];
+
+			If[Length[intsFDSUniqueNested]=!=Length[solsListNested] || !FreeQ2[solsListNested,{fds2Loops,fds1LoopQ1,fds1LoopQ2,fds2LoopsNested}],
+				Message[FDS::failmsg,"FDS can't create the solution list."];
+				Abort[]
+			];
+			repRuleNested = MapIndexed[(Rule[#1, First[solsListNested[[#2]]]]) &, intsFDSUniqueNested];
+
+			solsList = intsFDSUniqueFromSols2/.repRuleNested,
+			(* Otherwise just remove the fds2Loops heads *)
+			solsList = solsList/.fds2Loops->Identity
+		];
+
+
+		If[Length[solsList]=!=Length[intsFDSUnique] || !FreeQ2[solsList,{fds2Loops,fds1LoopQ1,fds1LoopQ2,fds2LoopsNested}],
+			Message[FDS::failmsg,"FDS can't create the solution list."];
+			Abort[]
+		];
+		(* Final replacement rule *)
+		repRule = MapIndexed[(Rule[#1, First[solsList[[#2]]]]) &, intsFDSUnique];
+
+		res = intsRest + (intsFDS4/.repRule);
+
+		If[ !FreeQ2[res,{fds2Loops,fds1LoopQ1,fds1LoopQ2}],
+				Message[FDS::failmsg,"Some subroutines in FDS didn't work properly."];
+				Abort[]
+		];
+
+		FCPrint[1,"FDS: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
+		res
+	];
+
+
+oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]] :=
+	Block[ {exp=ex, ot, pot,topi, topi2, bas, basic,res,pru,oneONE,fadalll,fadallq1q2,amucheck},
+
+		ot = Flatten[OptionValue[Options[FDS],{opt},IntegralTable]];
 
 		pru = (a_Plus)^(w_/;Head[w] =!= Integer) :>
 		(PowerExpand[Factor2[oneONE*a]^w] /. oneONE -> 1);
@@ -122,6 +278,7 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			If[ !FreeQ[zexp, OPESum],
 				(* to improve speed *)
 				zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /.	amucheck ->  nopcheck,
+				(* normal procedure *)
 				translat[ zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /.
 									amucheck ->  nopcheck,  zq1, zq2] /.
 				FeynAmpDenominator -> feynsimp[zq1] /. FeynAmpDenominator -> feynsimp[zq2] /.
@@ -143,23 +300,6 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 		amucheck[k1_, k2_][PD[aa_. Momentum[k2_,dii___] + bb_. ,0].., b___] :=
 			0 /; FreeQ[{b}, k2];
 
-		If [OptionValue[FCVerbose]===False,
-			fdsVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				fdsVerbose=OptionValue[FCVerbose]
-			];
-		];
-
-		FCPrint[1,"FDS: Entering 2-loop FDS with", ex, FCDoControl->fdsVerbose];
-		If[ !FreeQ[exp, FeynAmpDenominator[bb__] FeynAmpDenominator[aa__]] ||
-			!FreeQ[exp, FeynAmpDenominator[bb__]^n_],
-			exp = FeynAmpDenominatorCombine[exp];
-		];
-		If[ !FreeQ2[ex,{FAD,SPD}],
-			exp = FeynCalcInternal[ex],
-			exp = ex
-		];
-		ot = Flatten[IntegralTable /. {opt} /. Options[FDS]];
 		pe[qu1_,qu2_, prop_] :=
 			Block[ {pet = SelectFree[Cases2[prop//MomentumExpand,Momentum]/.
 			Momentum[a_,___]:>a, {qu1,qu2} ]},
@@ -168,6 +308,7 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 					pet
 				]
 			];
+
 		basic = {
 			FCIntegral[anyf_[a___, Momentum[q1,di_], b___]*
 			FeynAmpDenominator[c___,pro:PD[Momentum[q2,di_]-Momentum[q1,di_],_].., d___]] :>
@@ -212,15 +353,22 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			) /. q1->q1-q2] /;
 			FreeQ[{a,b}, PD[_. Momentum[q1,_] + _. Momentum[pe,_],_]]
 		};
+
+
+
 		ot = Join[ot, basic];
+
+
 		If[ ot =!= {},
 			pot = ot /. Power2->Power;
 			topi[y_ /; FreeQ2[y,{q1,q2,Pattern}]] :=
 				y;
+
 			topi[y_Plus] :=
 				Map[topi,y];
 			topi[y_Times] :=
 				SelectFree[y,{q1,q2}] topi2[SelectNotFree[y,{q1,q2}]];
+
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
 			exp = exp /. basic /. FCIntegral -> Identity;
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :>
@@ -228,8 +376,9 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :>
 					FeynCalcInternal[ChangeDimension[b, D]];
 		];
+
 		If[ Head[exp] =!= Plus,
-			If[ (FC2RHI /. {opt} /. Options[FDS]),
+			If[	OptionValue[Options[FDS],{opt},FC2RHI],
 				(* This is OPE related stuff with FC2RHI *)
 				res = FC2RHI[FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru, q1, q2,
 				IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
@@ -245,9 +394,270 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 				FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru
 			]
 		];
-		FCPrint[1,"FDS: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
+
+		FCPrint[1,"FDS: oldFeynAmpDenominatorSimplify: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
 		res
 	];
+
+
+(* extracts the number of unique propagators, as well as the dependence on the loop and external momenta *)
+getTopology[_. FeynAmpDenominator[props__],	lmoms_List] :=
+	{Length[Union[{props}]], Select[lmoms,!FreeQ[{props},#]&], Union[Cases[MomentumExpand[{props}], Momentum[x_, _ : 4] /;
+		FreeQ2[x, lmoms] :> x, Infinity]]} /; Length[Union[lmoms]] === Length[lmoms];
+
+(* for some special topologies, where the outcome is known, one may use different simplification rules  *)
+checkTopology[{prnum_, lmoms_List, emoms_List}] :=
+	Which[	2 <= prnum <= 5 && Length[lmoms] === 2 && Length[emoms] === 1,
+			"2-loop-self-energy",
+			True,
+			"generic"
+	]
+
+(* 	2-loop self-energy integrals can have at most 5 unique independent propagators, hence
+	not more than 5 shifts are needed *)
+
+fds2LoopsSE[expr_,q1_,q2_,_]:=
+	expr/; FreeQ[expr,q1] || FreeQ[expr,q2];
+
+fds2LoopsSE[expr_,q1_,q2_,p_]:=
+	(MomentumExpand[FixedPoint[fds2LoopsSE2[#,q1,q2,p]&,expr,5]]/. {
+		PropagatorDenominator[-Momentum[q1,dim_:4], m_]:>PropagatorDenominator[Momentum[q1,dim], m],
+		PropagatorDenominator[-Momentum[q2,dim_:4], m_]:>PropagatorDenominator[Momentum[q2,dim], m],
+		PropagatorDenominator[Momentum[p, dim1_:4]-Momentum[q1, dim2_:4], m_]:>PropagatorDenominator[Momentum[q1, dim2]-Momentum[p, dim1],m],
+		PropagatorDenominator[Momentum[p, dim1_:4]-Momentum[q2, dim2_:4], m_]:>PropagatorDenominator[Momentum[q2, dim2]-Momentum[p, dim1],m],
+		PropagatorDenominator[Momentum[q2, dim1_:4]-Momentum[q1, dim2_:4], m_]:>PropagatorDenominator[Momentum[q1, dim2]-Momentum[q2, dim1],m]
+	})/;!FreeQ[expr,q1] && !FreeQ[expr,q2];
+
+(* 	special iterative algorithm tailored for 2-loop self-energy integrals that determines the correct shifts
+	to bring each integral to the canonical form *)
+fds2LoopsSE2[expr : (_. FeynAmpDenominator[props__]), q1_, q2_, p_] :=
+	Block[ {tmp, prs, needShift, newL, lcs, check, noShift, rep, P, checkShift, reps,  signFix},
+
+		(* Checks if the given propagator is already in the canonical form *)
+		check[x_] :=
+			MatchQ[x, q1 | q2 | -q1 | -q2 | q1 - q2 | q2 - q1 | q1 - p | p - q1 |q2 - p | p - q2];
+
+		(* Fixes the absolute sign in the propagators *)
+		signFix[z_List] :=
+			FixedPoint[Replace[#, {-q1 -> q1, -q2 -> q2, q2 - q1 -> q1 - q2, p - q1 -> q1 - p}, 1]&,z,5];
+
+		(* Checks if the given shift increases the number of propagators in the canonical form *)
+		checkShift[rrule_] :=
+			(newL =Sort[signFix[Select[(prs /. rrule), check]]];
+			lcs = LongestCommonSequence[signFix[noShift],newL];
+			FCPrint[4,"FDS: fds2LoopsSE2: checkShift: Shifting rule ", rrule, "|",  FCDoControl->fdsVerbose];
+			FCPrint[4,"FDS: fds2LoopsSE2: checkShift: Already canonical propagators ", signFix[noShift], "|",  FCDoControl->fdsVerbose];
+			FCPrint[4,"FDS: fds2LoopsSE2: checkShift: Propagators before the shift ", prs, "|",  FCDoControl->fdsVerbose];
+			FCPrint[4,"FDS: fds2LoopsSE2: checkShift: Canonical propagators after the shift ", newL, "|",  FCDoControl->fdsVerbose];
+			((( Complement[signFix[noShift],lcs]==={} && Complement[newL,lcs]=!={}) ||
+				Select[Sort[signFix[(prs /. rrule)]], (! check[#]) &]==={}) && Sort[signFix[Select[(prs /. rrule), check]]]=!={}));
+
+		(* List of unique propagators in the integral *)
+		prs = Union[{props} /. PropagatorDenominator[z_, _: 0] :> (z /. Momentum[a_, _ : 4] :> a)];
+		prs = Expand/@prs;
+
+		(* List of propagators where we need a shift *)
+		needShift = Select[prs, (! check[#]) &];
+
+		(* List of propagators that are already in the canonical form *)
+		noShift = Select[prs, check];
+
+		FCPrint[4,"FDS: fds2LoopsSE2: Entering with ", expr,  FCDoControl->fdsVerbose];
+
+		(* If all the propagators are already in the canonical form, there is nothing to do	*)
+		If[ needShift === {},
+			Return[expr]
+		];
+
+		(* If the integral misses a q1^2-mi^2 propagator, do the appropriate shift  *)
+		If[ !MemberQ[noShift, q1] && !MemberQ[noShift, -q1],
+			FCPrint[4,"FDS: fds2LoopsSE2: Entering q1 ",  FCDoControl->fdsVerbose];
+			(* Extract suitable propagators *)
+			tmp = Select[needShift, !FreeQ[#, q1] &];
+			reps = {};
+			If[ tmp=!={},
+				(* Generate possibly acceptable replacement rules *)
+				reps = Join[reps, Map[(rep = (Solve[(# /. q1 -> P) == q1, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				reps = Join[reps, Map[(rep = (Solve[(# /. q1 -> P) == -q1, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				(* Apply the first suitable replacement rule *)
+				If[ reps=!={},
+					FCPrint[4,"FDS: fds2LoopsSE2: Shifting ", expr, " to ", reps[[1]],  FCDoControl->fdsVerbose];
+					Return[MomentumExpand[expr /. reps[[1]]]]
+				]
+			]
+		];
+
+
+		(* If the integral misses a q2^2-mi^2 propagator, do the appropriate shift  *)
+		If[ !MemberQ[noShift, q2] && !MemberQ[noShift, -q2],
+			FCPrint[4,"FDS: fds2LoopsSE2: Entering q2 ",  FCDoControl->fdsVerbose];
+			(* Extract suitable propagators *)
+			tmp = Select[needShift, !FreeQ[#, q2] &];
+			reps = {};
+			If[ tmp=!={},
+				(* Generate possibly acceptable replacement rules *)
+				reps = Join[reps, Map[(rep = (Solve[(# /. q2 -> P) == q2, P] /. P -> q2);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				reps = Join[reps, Map[(rep = (Solve[(# /. q2 -> P) == -q2, P] /. P -> q2);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				(* Apply the first suitable replacement rule *)
+				If[ reps=!={},
+					FCPrint[4,"FDS: fds2LoopsSE2: Shifting ", expr, " to ", reps[[1]],  FCDoControl->fdsVerbose];
+					Return[MomentumExpand[expr /. reps[[1]]]]
+				]
+			]
+		];
+
+		(* If the integral misses a (q1-p)^2-mi^2 propagator, do the appropriate shift  *)
+		If[ !MemberQ[noShift, q1 - p] && !MemberQ[noShift, p - q1],
+			FCPrint[4,"FDS: fds2LoopsSE2: Entering q1-p",  FCDoControl->fdsVerbose];
+			(* Extract suitable propagators *)
+			tmp = Select[needShift, !FreeQ[#, q1] &];
+			reps = {};
+			If[ tmp=!={},
+				(* Generate possibly acceptable replacement rules *)
+				reps = Join[reps, Map[(rep = (Solve[(# /. q1 -> P) == q1-p, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				reps = Join[reps, Map[(rep = (Solve[(# /. q1 -> P) == p-q1, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				(* Sometimes a simple sign change is more effective then a real shift, check if this is the case *)
+				If[ checkShift[q1 -> -q1] &&
+					(MemberQ[(needShift /. q1 -> -q1), q1 - p] || MemberQ[(needShift /. q1 -> -q1), p - q1]),
+					PrependTo[reps, q1 -> -q1]
+				];
+				If[ checkShift[{q1 -> -q1, q2 -> -q2}] &&
+					(MemberQ[(needShift /. {q1 -> -q1, q2 -> -q2}), q1 - p] || MemberQ[(needShift /. {q1 -> -q1, q2 -> -q2}), p - q1]),
+					Flatten[PrependTo[reps, {q1 -> -q1, q2 -> -q2}]]
+				];
+
+
+				(* Apply the first suitable replacement rule *)
+				If[ reps=!={},
+					FCPrint[4,"FDS: fds2LoopsSE2: Shifting ", expr, " to ", reps[[1]],  FCDoControl->fdsVerbose];
+					Return[MomentumExpand[expr /. reps[[1]]]]
+				]
+			]
+		];
+
+		(* If the integral misses a (q2-p)^2-mi^2 propagator, do the appropriate shift  *)
+		If[ !MemberQ[noShift, q2 - p] && !MemberQ[noShift, p - q2],
+			FCPrint[4,"FDS: fds2LoopsSE2: Entering q2-p",  FCDoControl->fdsVerbose];
+			(* Extract suitable propagators *)
+			tmp = Select[needShift, !FreeQ[#, q2] &];
+			reps = {};
+			If[ tmp=!={},
+				(* Generate possibly acceptable replacement rules *)
+				reps = Join[reps, Map[(rep = (Solve[(# /. q2 -> P) == q2-p, P] /. P -> q2);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				reps = Join[reps, Map[(rep = (Solve[(# /. q2 -> P) == p-q2, P] /. P -> q2);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				(* Sometimes a simple sign change is more effective then a real shift, check if this is the case *)
+				If[ checkShift[q2 -> -q2] &&
+					(MemberQ[(needShift /. q2 -> -q2), q2 - p] || MemberQ[(needShift /. q2 -> -q2), p - q2]),
+					PrependTo[reps, q2 -> -q2]
+				];
+				If[ checkShift[{q1 -> -q1, q2 -> -q2}] &&
+					(MemberQ[(needShift /. {q1 -> -q1, q2 -> -q2}), q2 - p] || MemberQ[(needShift /. {q1 -> -q1, q2 -> -q2}), p - q2]),
+					Flatten[PrependTo[reps, {q1 -> -q1, q2 -> -q2}]]
+				];
+
+				(* Apply the first suitable replacement rule *)
+				If[ reps=!={},
+					FCPrint[4,"FDS: fds2LoopsSE2: Shifting ", expr, " to ", reps[[1]],  FCDoControl->fdsVerbose];
+					Return[MomentumExpand[expr /. reps[[1]]]]
+				]
+			];
+		];
+
+		(* Finally, if the q1-q2 propagator is missing  *)
+		If[ ! MemberQ[noShift, q2 - q1] && ! MemberQ[noShift, q1 - q2],
+			FCPrint[4,"FDS: fds2LoopsSE2: Entering q1-q2",  FCDoControl->fdsVerbose];
+			(* Extract suitable propagators *)
+			tmp = Select[needShift, ! FreeQ[#, q1] &];
+			reps = {};
+			If[tmp=!={},
+				(* Generate possibly acceptable replacement rules *)
+				reps = Join[reps,Map[(rep = (Solve[(# /. q1 -> P) == q1-q2, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				reps = Join[Map[(rep = (Solve[(# /. q1 -> P) == q2-q1, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+			];
+
+			tmp = Select[needShift, ! FreeQ[#, q2] &];
+			If[tmp=!={},
+				reps = Join[reps,
+				Map[(rep = (Solve[(# /. q1 -> P) == q1-q2, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+				reps = Join[reps,
+				Map[(rep = (Solve[(# /. q1 -> P) == q2-q1, P] /. P -> q1);
+					If[Flatten[rep]=!={} && checkShift[rep[[1]]],
+						rep[[1]],
+						Unevaluated[Sequence[]]
+					]) &, tmp]];
+			];
+
+			(* Sometimes a simple sign change is more effective then a real shift, check if this is the case *)
+			If[ checkShift[q1 -> -q1] &&
+				(MemberQ[(needShift /. q1 -> -q1), q1 - q2] ||	MemberQ[(needShift /. q1 -> -q1), q1 - q2]),
+				PrependTo[reps, q1 -> -q1]
+			];
+
+			If[ checkShift[q2 -> -q2] &&
+				(MemberQ[(needShift /. q2 -> -q2), q1 - q2] || MemberQ[(needShift /. q2 -> -q2), q1 - q2]),
+				PrependTo[reps, q2 -> -q2]
+			];
+			If[ checkShift[{q1 -> -q1, q2 -> -q2}] &&
+					(MemberQ[(needShift /. {q1 -> -q1, q2 -> -q2}), q1 - q2] || MemberQ[(needShift /. {q1 -> -q1, q2 -> -q2}), q2 - q1]),
+					Flatten[PrependTo[reps, {q1 -> -q1, q2 -> -q2}]]
+			];
+
+			(* Apply the first suitable replacement rule *)
+			If[ reps=!={},
+				FCPrint[4,"FDS: fds2LoopsSE2: Shifting ", expr, " to ", reps[[1]],  FCDoControl->fdsVerbose];
+				Return[MomentumExpand[expr /. reps[[1]]]]
+			];
+
+		];
+
+		FCPrint[4,"FDS: fds2LoopsSE2:  No shifts possible, leaving with ", expr,  FCDoControl->fdsVerbose];
+		expr
+	];
+
 
 procan[a_, m_] :=
 	Block[ {tt , one},
