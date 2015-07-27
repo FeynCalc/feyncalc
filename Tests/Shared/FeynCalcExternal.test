@@ -86,6 +86,9 @@ Tests`Shared`fcstFeynCalcExternal = {
 	{"fcstFeynCalcExternal-ID39", "FCE[Pair[Momentum[k], Momentum[p]]]", "SP[k, p]"},
 	{"fcstFeynCalcExternal-ID40", "FCE[Pair[Momentum[k, D], Momentum[p, D]]]", "SPD[k, p]"},
 	{"fcstFeynCalcExternal-ID41", "FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]", "SPE[k,p]"},
+
+	{"fcstFeynCalcExternal-ID41.1", "FCE[Pair[Momentum[p, D], -Momentum[q1, D] + Momentum[q2, D]]]", "SPD[p, -q1 + q2]"},
+
 	{"fcstFeynCalcExternal-ID43", "FCE[SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]]", "SUND[a, b, c]"},
 	{"fcstFeynCalcExternal-ID44", "FCE[SUNDelta[a, b]]", "SD[a, b]"},
 	{"fcstFeynCalcExternal-ID44-1", "FCE[SUNFDelta[a, b]]", "SDF[a, b]"},
@@ -183,6 +186,7 @@ Tests`Shared`fcstFeynCalcExternalDouble = {
 	{"fcstFeynCalcExternalDouble-ID39", "FCE[FCE[Pair[Momentum[k], Momentum[p]]]]", "SP[k, p]"},
 	{"fcstFeynCalcExternalDouble-ID40", "FCE[FCE[Pair[Momentum[k, D], Momentum[p, D]]]]", "SPD[k, p]"},
 	{"fcstFeynCalcExternalDouble-ID41", "FCE[FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]]", "SPE[k,p]"},
+	{"fcstFeynCalcExternalDouble-ID41.1", "FCE[FCE[Pair[Momentum[p, D], -Momentum[q1, D] + Momentum[q2, D]]]]", "SPD[p, -q1 + q2]"},
 	{"fcstFeynCalcExternalDouble-ID43", "FCE[FCE[SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]]]", "SUND[a, b, c]"},
 	{"fcstFeynCalcExternalDouble-ID44", "FCE[FCE[SUNDelta[a, b]]]", "SD[a, b]"},
 	{"fcstFeynCalcExternalDouble-ID44-1", "FCE[FCE[SUNFDelta[a, b]]]", "SDF[a, b]"},
@@ -281,6 +285,7 @@ Tests`Shared`fcstFeynCalcExternalTriple = {
 	{"fcstFeynCalcExternalTriple-ID39", "FCE[FCI[FCE[Pair[Momentum[k], Momentum[p]]]]]", "SP[k, p]"},
 	{"fcstFeynCalcExternalTriple-ID40", "FCE[FCI[FCE[Pair[Momentum[k, D], Momentum[p, D]]]]]", "SPD[k, p]"},
 	{"fcstFeynCalcExternalTriple-ID41", "FCE[FCI[FCE[Pair[Momentum[k, -4 + D], Momentum[p, -4 + D]]]]]", "SPE[k,p]"},
+	{"fcstFeynCalcExternalTriple-ID41.1", "FCE[FCI[FCE[Pair[Momentum[p, D], -Momentum[q1, D] + Momentum[q2, D]]]]]", "SPD[p, -q1 + q2]"},
 	{"fcstFeynCalcExternalTriple-ID43", "FCE[FCI[FCE[SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]]]]", "SUND[a, b, c]"},
 	{"fcstFeynCalcExternalTriple-ID44", "FCE[FCI[FCE[SUNDelta[a, b]]]]", "SD[a, b]"},
 	{"fcstFeynCalcExternalTriple-ID44-1", "FCE[FCI[FCE[SUNFDelta[a, b]]]]", "SDF[a, b]"},

@@ -89,7 +89,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 				Power2
 			} /. sequence -> Sequence];
 
-		rv = Map[(# ->  ((MomentumCombine[#,LeafCount -> 1000])/.ru ) )&, vv]//Dispatch;
+		rv = Map[(# ->  ((MomentumCombine[#])/.ru ) )&, vv]//Dispatch;
 		x /. rv
 	];
 
