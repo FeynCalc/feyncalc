@@ -37,43 +37,15 @@ SPD[p, p], {{1, M1}, {1, M2}, {1, M4}, {0, 0}, {1, M3}}]"},
 M5}], q1, q2, p]","FAD[{p, M5}] TFI[D,
 SPD[p, p], {{1, M1}, {1, M4}, {0, 0}, {1, M2}, {1, M3}}]"},
 {"fcstToTFI-ID10","ToTFI[FAD[q1 - q2, {q1, MB}, {-p + q1, MW}, {-p + q1, MW}, {-p + q1,
-MW}, {q1 - q2, MW}, {-p + q2, MZ}] SPD[p, q1] SPD[p, q2], q1, q2, p] // FCE","-((SPD[p, p]^2*
-	TFI[D, SPD[p, p], {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, 0}}])/
-	MW^2) + (SPD[p, p]^2*
-	TFI[D, SPD[p, p], {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, MW}}])/
-MW^2 + (SPD[p, p]*
-	TFI[D, SPD[p, p], {0, 0, 0, 1,
-	0}, {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, 0}}])/
-MW^2 - (SPD[p, p]*
-	TFI[D, SPD[p, p], {0, 0, 0, 1,
-	0}, {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, MW}}])/
-MW^2 + (SPD[p, p]*
-	TFI[D, SPD[p, p], {0, 0, 1, 0,
-	0}, {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, 0}}])/
-MW^2 - (SPD[p, p]*
-	TFI[D, SPD[p, p], {0, 0, 1, 0,
-	0}, {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, MW}}])/MW^2 -
-TFI[D, SPD[p, p], {0, 0, 1, 1,
-	0}, {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, 0}}]/MW^2 +
-TFI[D, SPD[p, p], {0, 0, 1, 1,
-	0}, {{3, MW}, {1, MZ}, {1, MB}, {0, 0}, {1, MW}}]/MW^2"},
+MW}, {q1 - q2, MW}, {-p + q2, MZ}] SPD[p, q1] SPD[p, q2], q1, q2, p] // FCE","
+-(TFI[D, SPD[p, p], {0, 0, 1, 1, 0}, {{1, MB}, {0, 0}, {3, MW}, {1, MZ},
+{1, 0}}]/MW^2) + TFI[D, SPD[p, p], {0, 0, 1, 1, 0}, {{1, MB}, {0, 0}, {3, MW}, {1, MZ}, {1, MW}}]/MW^2
+"},
 {"fcstToTFI-ID11","ToTFI[FAD[
 q1 - q2, {q2, MB}, {p - q1, MZ}, {p - q2, MW}, {q1 - q2, MW}]*
 SPD[q1, q1], q1, q2, p] // FCE",
-"-((SPD[p, p]*
-TFI[D, SPD[p, p], {{1, MZ}, {1, MW}, {0, 0}, {1, MB}, {1, 0}}])/
-MW^2) + (SPD[p, p]*
-TFI[D, SPD[p, p], {{1, MZ}, {1, MW}, {0, 0}, {1, MB}, {1, MW}}])/
-MW^2 + (2*
-TFI[D, SPD[p, p], {0, 0, 1, 0,
-0}, {{1, MZ}, {1, MW}, {0, 0}, {1, MB}, {1, 0}}])/
-MW^2 - (2*
-TFI[D, SPD[p, p], {0, 0, 1, 0,
-0}, {{1, MZ}, {1, MW}, {0, 0}, {1, MB}, {1, MW}}])/MW^2 -
-TFI[D, SPD[p, p], {1, 0, 0, 0,
-0}, {{1, MZ}, {1, MW}, {0, 0}, {1, MB}, {1, 0}}]/MW^2 +
-TFI[D, SPD[p, p], {1, 0, 0, 0,
-0}, {{1, MZ}, {1, MW}, {0, 0}, {1, MB}, {1, MW}}]/MW^2"},
+"-(TFI[D, SPD[p, p], {1, 0, 0, 0, 0}, {{0, 0}, {1, MB}, {1, MZ}, {1, MW}, {1, 0}}]/MW^2) +
+TFI[D, SPD[p, p], {1, 0, 0, 0, 0}, {{0, 0}, {1, MB}, {1, MZ}, {1, MW}, {1, MW}}]/MW^2"},
 {"fcstToTFI-ID12","ToTFI[FAD[-q1 + q2, -q1 + q2, {q1, M1}, {q2, M2}, {q2, M3}, {q2,
 M4}, {-p + q2, MS}] + FAD[{q1, m}, {q1, p}], q1, q2, p] // FCE",
 "TFI[D, SPD[p,

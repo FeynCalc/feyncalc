@@ -43,17 +43,10 @@ Options[ToTFI] = {
 ToTFI[z_Plus, qqp_, pe_, opts:OptionsPattern[]] :=
 	Map[ToTFI[#, qqp, pe, opts]&, z];
 
-ToTFI[a_/;Head[a]=!=Plus,q_,p_/;Head[p]=!=Rule,opts___Rule] :=
+ToTFI[a_/;Head[a]=!=Plus,q_,p_/;Head[p]=!=Rule,opts:OptionsPattern[]] :=
 	(ToExpression["TFIRecurse"][
-	FeynCalcExternal[
-		ToTFI[
-	FeynAmpDenominatorCombine[
-	FeynCalcInternal[ Expand[ FAD[{qq, mM}]  *
-	FixedPoint[Expand[ScalarProductCancel[#, q, FeynAmpDenominatorSimplify -> True], q]&, a, 10]
-	] ]],
-											q, qq, p, opts]
-								]/.ToExpression["TFI"]:>ToExpression["TFR"]
-												] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
+	FCE[ToTFI[FeynAmpDenominatorCombine[FCI[Expand[FAD[{qq, mM}] Expand[SPC[a, q], q]]]], q, qq, p, opts]]/.
+		ToExpression["TFI"]:>ToExpression["TFR"]] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
 	) /; MemberQ[$ContextPath, "Tarcer`"];
 
 (* 2-loops *)
@@ -61,6 +54,8 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 	Block[{int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFI3,intsTFIUnique,tmp,
 			solsList,tfiLoopIntegral,repRule,null1,null2,res,
 			tfi1LoopQ1,tfi1LoopQ2},
+
+		FCPrint[3, "ToTFI: Entering with ", expr, FCDoControl->toTFIVerbose];
 
 		If [OptionValue[FCVerbose]===False,
 			toTFIVerbose=$VeryVerbose,
@@ -86,12 +81,6 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 
 		(* Let us now isolate all the 2-loop integrals that depend on q1,q2 *)
 		intsTFI2 = FCLoopIsolate[intsTFI, {q1,q2}, FCI->True, MultiLoop->True, Head->tfiLoopIntegral];
-		(* But also 1-loop integrals *)
-		intsTFI2 = FCLoopIsolate[intsTFI2, {q1}, FCI->True, MultiLoop->True, Head->tfi1LoopQ1, ExceptHeads->{tfiLoopIntegral}];
-		intsTFI2 = FCLoopIsolate[intsTFI2, {q2}, FCI->True, MultiLoop->True, Head->tfi1LoopQ2, ExceptHeads->{tfiLoopIntegral}];
-
-		(* Quick and dirty way to get rid of the  1-loop integrals here *)
-		intsTFI2 = intsTFI2/.{tfi1LoopQ1[xy_]:>ToTFI[xy,q1,p],tfi1LoopQ2[xy_]:>ToTFI[xy,q2,p]};
 
 		(*	Put the FADs back together *)
 		intsTFI2 = intsTFI2/. tfiLoopIntegral[x__]:> tfiLoopIntegral[FeynAmpDenominatorCombine[x]];
@@ -100,12 +89,21 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		If [OptionValue[FDS],
 			intsTFI2 = intsTFI2/.
 			tfiLoopIntegral[x__]/;FreeQ2[x,{qq,mM}]:>
-				(x//FDS[#,q1,q2]&//If[OptionValue[SPC],SPC[#,q1,q2,FDS->False],#]&) /. tfiLoopIntegral -> Identity;
+				(x//FDS[#,q1,q2]&//Apart2//If[OptionValue[SPC],SPC[#,q1,q2,FDS->False],#]&) /. tfiLoopIntegral -> Identity;
 			FCPrint[3, "ToTFI: Relevant 2-loop integrals after double FDS ", intsTFI2, FCDoControl->toTFIVerbose]
 		];
 
 		(* Final isolation *)
 		intsTFI3 = FCLoopIsolate[intsTFI2, {q1,q2}, MultiLoop->True, Head->tfiLoopIntegral,ClearHeads->{tfiLoopIntegral}];
+		(* But also 1-loop integrals *)
+		intsTFI3 = FCLoopIsolate[intsTFI3, {q1}, FCI->True, MultiLoop->True, Head->tfi1LoopQ1, ExceptHeads->{tfiLoopIntegral}];
+		intsTFI3 = FCLoopIsolate[intsTFI3, {q2}, FCI->True, MultiLoop->True, Head->tfi1LoopQ2, ExceptHeads->{tfiLoopIntegral}];
+
+		FCPrint[3, "ToTFI: Isolated integrals ", intsTFI3, FCDoControl->toTFIVerbose];
+
+		(* Quick and dirty way to get rid of the  1-loop integrals here *)
+
+		intsTFI3 = intsTFI3/.{tfi1LoopQ1[xy_]:>ToTFI[xy,q1,p],tfi1LoopQ2[xy_]:>ToTFI[xy,q2,p]};
 
 		(*	Now we extract all the unique loop integrals *)
 		intsTFIUnique = (Cases[intsTFI3+null1+null2,tfiLoopIntegral[___],Infinity]/.null1|null2->0)//Union;
