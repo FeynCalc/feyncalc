@@ -579,13 +579,10 @@ Conjugate[x_Pair] :=
 	Polarization[k, Conjugate[a], opts]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
-SetAttributes[DiracGamma, Constant];
 SetAttributes[ExplicitLorentzIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[ExplicitSUNFIndex, {Constant, Flat, OneIdentity}];
-(*SetAttributes[FCGV, HoldAll];*)
 SetAttributes[LorentzIndex, Constant];
-SetAttributes[Momentum, Constant];
 SetAttributes[Pair, Orderless];
 SetAttributes[SD, Orderless];
 SetAttributes[SDF, Orderless];
