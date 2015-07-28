@@ -197,6 +197,10 @@ propd[a_, b_/;b=!=0] :=
 feynampback[a__] :=
 	FAD @@ ({a} /. PropagatorDenominator -> propd);
 
+
+eps[a_, b_, c_, d_, opts:OptionsPattern[Eps]] :=
+	Signature[{a,b,c,d}] eps@@ Join[Sort[{a,b,c,d}],{opts}] /; !OrderedQ[{a,b,c,d}];
+
 eps[Momentum[a_],Momentum[b_],Momentum[c_],Momentum[d_],
 opt:OptionsPattern[Eps]]:=
 	LC[][a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
