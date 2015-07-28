@@ -54,6 +54,7 @@ FDS = FeynAmpDenominatorSimplify;
 $Power2 = True;
 
 Options[FeynAmpDenominatorSimplify] = {
+	Apart2 -> True,
 	FCI -> False,
 	FeynAmpDenominatorCombine -> True,
 	FCVerbose -> False,
@@ -393,6 +394,10 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 				(* This is the usual routine *)
 				FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru
 			]
+		];
+
+		If[ (Apart2 /. {opt} /. Options[FDS]),
+			res = Apart2[res]
 		];
 
 		FCPrint[1,"FDS: oldFeynAmpDenominatorSimplify: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
