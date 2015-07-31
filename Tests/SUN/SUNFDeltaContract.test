@@ -45,6 +45,7 @@ Tests`SUN`fcstSUNFDeltaContract = {
 	{"fcstSUNFDeltaContract-ID30","SUNFDeltaContract[SUNFDelta[SUNFIndex[a], SUNFIndex[b]] SUNFDelta[SUNFIndex[a],SUNFIndex[c]]]","SUNFDelta[SUNFIndex[b], SUNFIndex[c]]"},
 	{"fcstSUNFDeltaContract-ID31","SUNFDeltaContract[SUNFDelta[a, 2] SUNFDelta[a, c]]","SUNFDelta[ExplicitSUNFIndex[2], SUNFIndex[c]]"},
 	{"fcstSUNFDeltaContract-ID32","SUNFDeltaContract[SUNFDelta[a, 2] SUNFDelta[a, 3]]","SUNFDelta[ExplicitSUNFIndex[2], ExplicitSUNFIndex[3]]"},
-	{"fcstSUNFDeltaContract-ID33","SUNFDeltaContract[SUNFDelta[a, ExplicitSUNFIndex[2]] SUNFDelta[a, 3]]","SUNFDelta[ExplicitSUNFIndex[2], ExplicitSUNFIndex[3]]"}
+	{"fcstSUNFDeltaContract-ID33","SUNFDeltaContract[SUNFDelta[a, ExplicitSUNFIndex[2]] SUNFDelta[a, 3]]","SUNFDelta[ExplicitSUNFIndex[2], ExplicitSUNFIndex[3]]"},
+	{"fcstSUNFDeltaContract-ID34","SUNFDeltaContract[x]","x"}
 };
 

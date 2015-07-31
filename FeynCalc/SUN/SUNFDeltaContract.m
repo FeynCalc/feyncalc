@@ -33,6 +33,10 @@ Begin["`SUNFDeltaContract`Private`"];
 
 SetAttributes[SUNFDeltaContract, Orderless];
 
+
+SUNFDeltaContract[expr_] :=
+	expr/;FreeQ2[expr,{SUNTF,SUNFIndex,ExplicitSUNFIndex,SUNFDelta,Pattern,Sequence,BlankSequence,BlankNullSequence}];
+
 SUNFDeltaContract[expr_] :=
 	(expr //. SUNFDelta -> SUNFDeltaContract /. SUNFDeltaContract -> SUNFDelta)/; !FreeQ[expr,SUNFDelta];
 
