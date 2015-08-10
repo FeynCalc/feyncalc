@@ -1,0 +1,30 @@
+
+
+(* :Title: DiracGammaExpand.test											*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracGammaExpand			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracGammaExpand = {
+{"fcstDiracGammaExpand-ID1","DiracGammaExpand[GS[q].GS[p - q]] // FCE",
+	"GS[q].(GS[p] - GS[q])"},
+{"fcstDiracGammaExpand-ID2","DiracGammaExpand[GS[a + b].GS[c + d], Momentum -> {a}] // FCE",
+	"(GS[a] + GS[b]).GS[c + d]"},
+{"fcstDiracGammaExpand-ID3","DiracGammaExpand[GS[a + b].GS[c + d], Momentum -> {c}] // FCE",
+	"GS[a + b].(GS[c] + GS[d])"},
+{"fcstDiracGammaExpand-ID4","DiracGammaExpand[GS[a + b].GS[c + d], Momentum -> All] // FCE",
+	"(GS[a] + GS[b]).(GS[c] + GS[d])"},
+{"fcstDiracGammaExpand-ID5","DiracGammaExpand[
+  DiracGamma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 GS[a] + c (GS[b] + GS[d]) + GS[e]"},
+{"fcstDiracGammaExpand-ID1","DiracGammaExpand[DiracGamma[5 Momentum[a, D] + 
+	c Momentum[b + d, D] + Momentum[e, D], D]] // FCE",
+	"5 GSD[a] + c GSD[b] + c GSD[d] + GSD[e]"}  
+ };
