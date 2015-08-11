@@ -1,20 +1,26 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: EpsEvaluate *)
+(* :Title: EpsEvaluate														*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:58 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: simplification of Eps *)
+(* :Summary: Simplification of epsilon tensors								*)
 
 (* ------------------------------------------------------------------------ *)
 
 EpsEvaluate::usage =
 "EpsEvaluate[expr] applies total antisymmetry and
 linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
+
+EpsEvaluate::fail =
+"Something went while simplifying epsilon tensors. Evaluation aborted! "
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,43 +29,65 @@ End[]
 
 Begin["`EpsEvaluate`Private`"]
 
-EpsEvaluate[x_] :=
-	x /; FreeQ2[x,{LeviCivita, LC,LCD,Eps}];     (*EpsEvaluatedef*)
-EpsEvaluate[ix_] :=
-	Block[ {x = ix, nx,cx, tx, rud},
-		x = FeynCalcInternal[ix];
-		If[ LeafCount[x] < 1000,
-			x//.Eps->Epsev,
-			cx = Cases2[x, Eps];
-			tx = Dispatch[Thread[rud[cx, cx//.Eps->Epsev]] /. rud->RuleDelayed];
-			x/.tx
-		]
+Options[EpsEvaluate] = {
+	FCI -> False,
+	Momentum -> All
+	};
+
+EpsEvaluate[expr_, OptionsPattern[]]:=
+	Block[{x,momList,uniqList,rud,repRule,null1,null2},
+
+		momList = OptionValue[Momentum];
+
+		If[ !OptionValue[FCI],
+			x = FCI[expr],
+			x = expr
+		];
+
+		(*	Nothing to do...	*)
+		If[	FreeQ[x,Eps],
+			Return[x]
+		];
+
+
+		(* List of all the unique Epsilon tensors	*)
+		uniqList = Cases[x+null1+null2,Eps[__],Infinity]//Union;
+
+		(*	If the user specified to perform expansion only for some
+			special momenta, let's do it	*)
+		If[ momList=!=All && Head[momList]===List,
+			uniqList = Select[uniqList, !FreeQ2[#, momList]&]
+		];
+
+		(* List of the expanded epsilons	*)
+
+		repRule = Thread[rud[uniqList, uniqList/.Eps->epsEval]] /. rud->RuleDelayed;
+
+		(* Simple cross check	*)
+		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSym}],
+			Message[EpsEvaluate::fail];
+			Abort[]
+		];
+		x/.Dispatch[repRule]
+
 	];
 
+epsEval[a_,b_,c_,d_, opts:OptionsPattern[Eps]] :=
+	(Expand/@(Distribute[DOT[a,b,c,d]//MomentumExpand]))/.
+	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm[z__]:>Eps[z,opts]
 
-Epsev[A__] :=
-	( Expand /@ (Distribute[DOT[A]]//ExpandScalarProduct // MomentumExpand) )/.
-				DOT->Epsevlin/.Epsevlin->Epsevantilin;
-Epsevlin[a___,b_ c_Momentum,d___] :=
-	b Epsevlin[a,c,d];
-Epsevlin[a___,b_ c_LorentzIndex,d___] :=
-	b Epsevlin[a,c,d];
-(*Added 21/9-2002. F.Orellana. We're assuming that the Lorentz indices run from 1 to 4,
-	not 0 to 3...*)
-Epsevantilin[a:(_Integer|(LorentzIndex|ExplicitLorentzIndex)[_Integer]),
-						b:(_Integer|(LorentzIndex|ExplicitLorentzIndex)[_Integer]),
-						c:(_Integer|(LorentzIndex|ExplicitLorentzIndex)[_Integer]),
-						d_] :=
-	Signature[{a,b,c,d} /. d :> (dd = Complement[{1,2,3,4},{a,b,c} /.
-		(LorentzIndex|ExplicitLorentzIndex)[x__]:>{x}[[1]]][[1]]) /.
-		(LorentzIndex|ExplicitLorentzIndex)[x__]:>{x}[[1]]]*
-		Pair[LorentzIndex[d], LorentzIndex[dd]];
-(**)
-Epsevantilin[a__] :=
-	Signature[{a}] Eps@@Sort[{a}];
 
-Epsevlin[___,0,___] :=
+epsEvalLinearity[a___,b_ (c : (LorentzIndex | ExplicitLorentzIndex | Momentum)[_,_: 4]),d___] :=
+	b epsEvalLinearity[a,c,d];
+
+epsEvalLinearity[___,0,___] :=
 	0;
+
+epsEvalAntiSymm[x__] :=
+	0/; Signature[{x}]===0 && Length[{x}]===4;
+
+epsEvalAntiSymm[x__] :=
+	Signature[{x}] epsEvalAntiSymm@@Sort[{x}] /; !OrderedQ[{x}] && Length[{x}]===4;
 
 FCPrint[1,"EpsEvaluate.m loaded."];
 End[]
