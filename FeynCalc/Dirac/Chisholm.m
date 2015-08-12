@@ -24,7 +24,7 @@ End[]
 Begin["`Chisholm`Private`"]
 
 Chisholm[x_] :=
-	Contract[DiracSimplify[FCI[x] //. chish1 //. chish2, Rename->True]];
+	Contract[DiracSimplify[FCI[x] //. chish1 //. chish2]];
 
 chish1 = (f_. DOT[a_DiracGamma, b_DiracGamma, c_DiracGamma,
 		d_DiracGamma, e_DiracGamma, f_DiracGamma,
