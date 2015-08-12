@@ -29,15 +29,28 @@ Begin["`DiracEquation`Private`"]
 
 HoldDOT;
 
-scev[a__] :=
-	scev[a] = ExpandScalarProduct[a];
+Options[DiracEquation] = {
+	FeynCalcInternal -> False
+};
 
-DiracEquation[x_] := (*DiracEquation[x]=*)
-	DotSimplify[diraceq[x//FeynCalcInternal], Expanding -> False];
+DiracEquation[ex_, OptionsPattern[]] :=
+	Block[{expr,res},
 
-(* for only internal use *)
-DiracEquation[x_,I] := (*DiracEquation[x]=*)
-	DotSimplify[diraceq[x], Expanding -> False];
+		If[	!OptionValue[FCI],
+			expr  = FCI[ex],
+			expr  = ex
+		];
+
+		(* If there are no spinors or no Dirac matrices, then we can't apply the Dirac equation	*)
+		If[	FreeQ[expr,Spinor] || FreeQ[expr,DiracGamma],
+			Return[expr];
+		];
+
+		res  = DotSimplify[diraceq[expr], Expanding->False];
+
+		res
+
+	];
 
 last[_. Momentum[pe__]] :=
 	Momentum[pe];
@@ -76,7 +89,7 @@ spCDieqRules = {
 		]) /; last[n Momentum[p]+k]===Momentum[p],
 
 	HoldDOT[ a___,DiracGamma[Momentum[y_,dim_:4],dim_:4], DiracGamma[Momentum[y_,dim_:4],dim_:4],b___] :>
-		scev[Momentum[y,dim],Momentum[y,dim]] HoldDOT[a,b],
+		ExpandScalarProduct[Momentum[y,dim],Momentum[y,dim]] HoldDOT[a,b],
 
 (* 	Here the situation is more complicated since we need to move the slash through a certain number
 	of other Dirac matrices before we reach the spinor. Note that the matrices
