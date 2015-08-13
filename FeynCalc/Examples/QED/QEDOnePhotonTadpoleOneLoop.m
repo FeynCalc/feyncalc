@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QEDOnePhotonTadpoleOneLoop                                       *)
 
 (*
@@ -58,14 +56,14 @@ amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 (*We obtain three tadpole diagrams. Having performed the Dirac algebra we clearly see that these diagrams must vanish because the loop integrals are antisymmetric under q^mu -> - q^mu.*)
 
 
-ampsEval=(ChangeDimension[amps,D]//Contract//DiracSimplify)/.{DiracTrace->Tr}
+ampsEval=(ChangeDimension[Total@amps,D]//Contract//DiracSimplify)/.{DiracTrace->Tr}
 
 
 (* ::Text:: *)
 (*FeynCalc's tensor integral decomposition function TID can recognize that.*)
 
 
-onePhotonTadpoleFinal = Total[ampsEval]//TID[#,q]&
+onePhotonTadpoleFinal = ampsEval//TID[#,q]&
 
 
 Print["The 1-photon tadpole diagrams in QED vanish: ",
