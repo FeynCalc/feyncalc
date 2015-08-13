@@ -96,7 +96,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			OptionValue[Head][x_] :> OptionValue[Head][FRH[x]]
 		];
 
-		If [ !FreeQ[res/. OptionValue[Head][__] :> 1, {lmoms}] & ,
+		If [ !FreeQ[res/. OptionValue[Head][__] :> 1, lmoms] & ,
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
 		];

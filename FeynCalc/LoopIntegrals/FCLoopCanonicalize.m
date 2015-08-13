@@ -44,7 +44,7 @@ Options[FCLoopCanonicalize] = {
 
 FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 	Block[ {ex, loopList, repIndexList, reversedRepIndexList,
-	canIndexList, uniqueCanIndexList, null, seed,res},
+	canIndexList, uniqueCanIndexList, null1, null2, seed,res},
 		seed = ToString[Unique["li"]];
 		(*This is the list of all the loop integrals in the expression.*)
 		If[ OptionValue[FCI],
@@ -55,7 +55,7 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 			Message[FCLoopCanonicalize::notunique];
 			Abort[]
 		];
-		loopList = Union[Cases[ex + null, head[_] , Infinity]];
+		loopList = Union[Cases[ex + null1 + null2, head[_] , Infinity]];
 		If[ Cases[loopList, head[x_]/;FreeQ2[x,Join[{q},PaVeHeadsList]] , Infinity]=!={},
 			Message[FCLoopCanonicalize::nonloop, expr, head];
 			Abort[]
