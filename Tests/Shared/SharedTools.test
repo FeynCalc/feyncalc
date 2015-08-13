@@ -73,7 +73,9 @@ Tests`Shared`fcstSharedToolsFCSplit = {
 {"fcstSharedToolsFCSplit-ID6","FCSplit[a+z, {z}]","{a,z}"},
 {"fcstSharedToolsFCSplit-ID7","FCSplit[1/(z + a), {z}]","{0,1/(a+z)}"},
 {"fcstSharedToolsFCSplit-ID8","FCSplit[(z + a)^2, {z}]","{a^2,2 a z+z^2}"},
-{"fcstSharedToolsFCSplit-ID9","FCSplit[(z + a)^2, {z}, Expanding -> False]","{0,(a+z)^2}"}
+{"fcstSharedToolsFCSplit-ID9","FCSplit[(z + a)^2, {z}, Expanding -> False]","{0,(a+z)^2}"},
+{"fcstSharedToolsFCSplit-ID11","FCSplit[{(a + b)^2, (a + d)^2}, {a}]",
+	"{{b^2, a^2 + 2 a b}, {d^2, a^2 + 2 a d}}"}
 };
 
 Tests`Shared`fcstSharedToolsFCSymmetrize = {

@@ -290,7 +290,11 @@ FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 			Abort[]
 		];
 		{free, notfree}
-	];
+	]/; Head[expr]=!=List;
+
+FCSplit[expr_List, vars_List /; vars =!= {}, opts:OptionsPattern[]]:=
+	Map[FCSplit[#, vars, opts]&, expr];
+
 
 FCSymmetrize[x_,v_List] :=
 	Block[{su},
