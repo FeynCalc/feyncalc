@@ -20,20 +20,6 @@ loop integrals into heads specified by the user. This is useful
 when you want to know which loop integrals appear appear in the
 given expression.";
 
-ExceptHeads::usage = "ExceptHeads is an option of FCLoopIsolate. It
-takes a list of heads that are not allowed to appear inside isolated
-integrals. For example, ExceptHeads -> {DiracGamma} blocks loop
-integrals where loop momenta are contracted with Dirac matrices";
-
-ClearHeads::usage = "ClearHeads is an option of FCLoopIsolate. It
-takes a list of heads that will be replaced by Identity in
-FCLoopIsolate. This is useful for cases when we first apply
-FCLoopIsolate to an expression, then simplify the isolated loop
-integrals into master integrals and finally want to apply
-FCLoopIsolate again to pull out the master integrals out of the
-old heads. By default ClearHeads is set to {FCGV[\"LoopInt\"]}
-";
-
 MultiLoop::usage =
 "MultiLoop is an option for FCLoopIsolate. When set to True,
 FCLoopIsolate will isolate only such loop integrals, that

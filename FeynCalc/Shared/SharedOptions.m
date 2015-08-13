@@ -15,6 +15,13 @@
 
 (* ------------------------------------------------------------------------ *)
 
+ClearHeads::usage = "ClearHeads is an option of FCLoopIsolate, FCDiracIsolate \
+and other functions. It takes a list of heads that will be replaced by Identity in \
+the isolating function. This is useful for cases when we first apply \
+the isolating function to an expression, then simplify the isolated expression and \
+finally want to apply the isolating function again to pull out the simplified expressions \
+out of the old heads.";
+
 Collecting::usage =
 "Collecting is an option of Contract2, ScalarProductCancel, SquareAmplitude, \
 Series2, TID and related functions. Setting it to True will trigger \
@@ -53,8 +60,14 @@ If set to True all
 Levi-Civita tensors are replaced by 0 after contraction.";
 
 EpsilonOrder::usage =
-"EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting
+"EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting \
 determines the order n (Epsilon^n) which should be kept.";
+
+ExceptHeads::usage = "ExceptHeads is an option of FCLoopIsolate, \
+FCDiracIsolate and other functions. It takes a list of heads that  \
+are not allowed to appear inside isolated expression. For example, \
+ExceptHeads -> {DiracGamma} in FCLoopIsolate blocks loop integrals \
+where loop momenta are contracted with Dirac matrices";
 
 Expanding::usage =
 "Expanding is an option for DotSimplify, Calc, Contract, DiracSimplify, SUNSimplify, etc.
