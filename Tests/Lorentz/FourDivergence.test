@@ -37,5 +37,9 @@ Spinor[Momentum[p2], m, 1] . DiracGamma[LorentzIndex[a]] . Spinor[Momentum[p1], 
 {"fcstFourDivergence-ID10","FourDivergence[FAD[p - k], FVD[k, mu]]",
 	"2 FeynAmpDenominator[PropagatorDenominator[-Momentum[k, D] + Momentum[p, D], 0],
 	PropagatorDenominator[-Momentum[k, D] + Momentum[p, D],	0]] (-Pair[LorentzIndex[mu, D], Momentum[k, D]] +
-	Pair[LorentzIndex[mu, D], Momentum[p, D]])"}
+	Pair[LorentzIndex[mu, D], Momentum[p, D]])"},
+{"fcstFourDivergence-ID11","FourDivergence[FAD[{p + q, m}], FVD[p, mu]] // FCE",
+	"-2 FAD[{p + q, m}, {p + q, m}] (FVD[p, mu] + FVD[q, mu])"},
+{"fcstFourDivergence-ID12","FourDivergence[FAD[{p + k, m}, {k - l, m}], FVD[k, mu]] // FCE",
+	"-2 FAD[{k - l, m}, {k - l, m}] (FVD[k, mu] - FVD[l, mu]) -2 FAD[{k + p, m}, {k + p, m}] (FVD[k, mu] + FVD[p, mu])"}
 };

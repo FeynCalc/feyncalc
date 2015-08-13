@@ -154,7 +154,7 @@ fourDerivative[x_, ve_]:=
 		nx = D[nx, p] /. Derivative -> deriv;
 		uList = Cases[nx+null1+null2,deriv[a___][b___][c___],Infinity]//Union;
 
-		sList = uList /. (deriv[1][FeynAmpDenominator][_]) :> 1 /. {
+		sList = uList /. (deriv[__][FeynAmpDenominator][__]) :> 1 /. {
 			deriv[1,0][PD][pe_,b_] :> (-2 Pair[pe,mu] FeynAmpDenominator[PD[pe, b], PD[pe, b]]),
 			deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
 			deriv[0, 1][Pair][a_, p] :> Pair[a, mu] ,
