@@ -715,13 +715,13 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 		Which[	(* A and B functions*)
 				np===1 || np===2,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-					ExpandScalarProduct /@ (ScalarProduct[#,Dimension->n]& /@ {moms}), {ms},
+					ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {moms}), {ms},
 					PaVeAutoOrder->paveao,
 					PaVeAutoReduce->pavear],
 				(* C functions*)
 				np===3,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-						ExpandScalarProduct /@ (ScalarProduct[#,Dimension->n]& /@ {
+						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
 							{moms}[[1]],
 							{moms}[[1]]-{moms}[[2]],
 							{moms}[[2]]
@@ -732,7 +732,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 					p1, p1+p2, p1+p2+p3*)
 				np===4,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-						ExpandScalarProduct /@ (ScalarProduct[#,Dimension->n]& /@ {
+						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
 							{moms}[[1]], (*p1^2*)
 							{moms}[[1]]-{moms}[[2]], (*p2^2*)
 							{moms}[[2]]-{moms}[[3]], (*p3^2*)
@@ -746,7 +746,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 					p1, p1+p2, p1+p2+p3, p1+p2+p3+p4*)
 				np===5,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
-						ExpandScalarProduct /@ (ScalarProduct[#,Dimension->n]& /@ {
+						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
 							{moms}[[1]], (*p1^2*)
 							{moms}[[1]]-{moms}[[2]], (*p2^2*)
 							{moms}[[2]]-{moms}[[3]], (*p3^2*)
