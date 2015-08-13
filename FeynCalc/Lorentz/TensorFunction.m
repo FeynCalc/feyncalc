@@ -20,6 +20,9 @@ TensorFunction[{t, \"S\"}, mu, nu, ...],
 and an antisymmteric one by
 TensorFunction[{t, \"A\"}, mu, nu, ...].";
 
+TensorFunction::usym =
+"Unknown symmetry specification `1`. Evaluation aborted!"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -30,21 +33,35 @@ Begin["`TensorFunction`Private`"]
 Options[TensorFunction] = {Dimension -> 4};
 
 TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule, OptionsPattern[]] :=
-	Block[ {f, dim, at},
+	Block[ {f, dim, at="", patt},
 		dim = OptionValue[Dimension];
+		patt = {Pattern,Sequence,BlankSequence,BlankNullSequence};
+
 		If[ Head[ef] === List && Length[ef] === 2,
 			f  = First[ef];
 			at = Last[ef],
 			f = ef
 		];
 		With[ {tf = f},
-			Which[
-				at === "S",
-				SetAttributes@@{tf, Orderless},
-				at === "A",
-				Evaluate[tf[a__LorentzIndex]] :=
-					Condition[Signature[{a}] Apply[tf, Sort[{a}]],{a} =!= Sort[{a}]]
+			If [at=!="",
+				Which[
+					at === "S",
+					SetAttributes@@{tf, Orderless},
+					at === "A",
+					Evaluate[tf[a__]] :=
+						Condition[Signature[{a}] Apply[tf, Sort[{a}]],!OrderedQ[{a}] && FreeQ2[{a},patt]];
+					Evaluate[tf[a__]] :=
+						Condition[0,Signature[{a}]===0 && FreeQ2[{a},patt]],
+					True,
+					Message[TensorFunction::usym,at];
+					Abort[]
+				]
 			];
+
+			(* Any tensor function contracted with a null vector is zero *)
+			Evaluate[tf[a___,0,b___]] :=
+				Condition[0,FreeQ2[{a,b},patt]];
+
 			tf@@(Map[LorentzIndex[#, dim]&, {munu,last}])
 		]
 	];

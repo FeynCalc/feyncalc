@@ -20,5 +20,12 @@ Tests`Lorentz`fcstTensorFunction = {
 {"fcstTensorFunction-ID4","TensorFunction[{f,\"S\"},\[Beta],\[Alpha]]","f[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"},
 {"fcstTensorFunction-ID5","Attributes[f]","{Orderless}"},
 {"fcstTensorFunction-ID6","TensorFunction[{g,\"A\"},\[Alpha],\[Beta]]","g[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"},
-{"fcstTensorFunction-ID7","TensorFunction[{g,\"A\"},\[Beta],\[Alpha]]","-g[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"}
+{"fcstTensorFunction-ID7","TensorFunction[{g,\"A\"},\[Beta],\[Alpha]]","-g[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]"},
+{"fcstTensorFunction-ID8","TensorFunction[f, 0, y]","f[ExplicitLorentzIndex[0], LorentzIndex[y]]"},
+{"fcstTensorFunction-ID9","(Contract[TensorFunction[f, x, y] FV[p, y]] /. p -> 0)","0"},
+{"fcstTensorFunction-ID10","Contract[(TensorFunction[{g, \"A\"}, a, b] FV[p, a] FV[q, b] -
+TensorFunction[{g, \"A\"}, a, b] FV[p, b] FV[q, a])]","2 g[Momentum[p], Momentum[q]]"},
+{"fcstTensorFunction-ID11","Contract[TensorFunction[{g, \"A\"}, a, b] MT[a, b]]","0"},
+{"fcstTensorFunction-ID12","Contract[TensorFunction[{g, \"A\"}, a, b] TensorFunction[{f, \"S\"}, a,
+	b] - TensorFunction[{g, \"A\"}, a, b] TensorFunction[{f, \"S\"}, b,a]]","0"}
 };
