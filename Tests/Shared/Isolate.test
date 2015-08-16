@@ -19,5 +19,20 @@ Tests`Shared`fcstIsolate = {
 IsolateNames -> F], a[z] HoldForm[F[i_]] + d[z] HoldForm[F[j_]]]",
 	"True"},
 {"fcstIsolate-ID4","MatchQ[Isolate[a - b - c - d - e, IsolateNames -> L,
-IsolateSplit -> 15], HoldForm[L[_]]]", "True"}
+IsolateSplit -> 15], HoldForm[L[_]]]", "True"},
+{"fcstIsolate-ID5","MatchQ[Isolate[a + b + c + d, d, IsolatePlus -> True],
+HoldForm[KK[_]] + d]", "True"},
+{"fcstIsolate-ID6","MatchQ[Isolate[a*b*c*d, d, IsolateTimes -> True], HoldForm[KK[_]]*d]", "True"},
+{"fcstIsolate-ID7","MatchQ[Isolate[(e f d (a + b))/((a + b + c + d) (b + c)) + (
+g f d (a + b))/((a + b + h + d) (j + c)), d, IsolateTimes -> True,
+IsolatePlus -> True], (d*HoldForm[KK[a_]]*HoldForm[KK[y3_]])/((d + HoldForm[KK[y2_]])*
+HoldForm[KK[y1_]]) + (d*HoldForm[KK[a_]]*
+HoldForm[KK[x3_]])/((d + HoldForm[KK[x2_]])*HoldForm[KK[x1_]])]", "True"},
+{"fcstIsolate-ID8","Isolate[1/
+2 FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], MQ],
+PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], MQ]] Pair[
+Momentum[p, D], Momentum[p, D]], {q, FeynAmpDenominator, tidPaVe},
+IsolateNames -> tidIsolate]", "1/2 FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], MQ],
+PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], MQ]] Pair[
+Momentum[p, D], Momentum[p, D]]"}
 };
