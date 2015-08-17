@@ -20,5 +20,28 @@ Tests`Lorentz`fcstExpandScalarProduct = {
 "2 SP[a, c] + 2 SP[a, d] + SP[b, c] + SP[b, d] + SP[c, l] + SP[d, l]"},
 {"fcstExpandScalarProduct-ID3","ExpandScalarProduct[SP[a + b, c + d] + SP[a + l, c + d],
 Momentum -> {l}] // FCE",
-"SP[a, c] + SP[a, d] + SP[a + b, c + d] + SP[c, l] + SP[d, l]"}
+"SP[a, c] + SP[a, d] + SP[a + b, c + d] + SP[c, l] + SP[d, l]"},
+{"fcstExpandScalarProduct-ID4","ExpandScalarProduct[Pair[LorentzIndex[mu], Momentum[a] + 2 Momentum[b + 3 c]]]",
+"Pair[LorentzIndex[mu], Momentum[a]] +
+2 Pair[LorentzIndex[mu], Momentum[b]] +
+6 Pair[LorentzIndex[mu], Momentum[c]]"},
+{"fcstExpandScalarProduct-ID5","ExpandScalarProduct[Pair[Momentum[a] + 2 Momentum[b + 3 c],
+Momentum[e] + 5 Momentum[f + 2 g]]]","Pair[Momentum[a], Momentum[e]] + 5 Pair[Momentum[a], Momentum[f]] +
+10 Pair[Momentum[a], Momentum[g]] +
+2 Pair[Momentum[b], Momentum[e]] +
+10 Pair[Momentum[b], Momentum[f]] +
+20 Pair[Momentum[b], Momentum[g]] +
+6 Pair[Momentum[c], Momentum[e]] +
+30 Pair[Momentum[c], Momentum[f]] + 60 Pair[Momentum[c], Momentum[g]]"},
+{"fcstExpandScalarProduct-ID6","ExpandScalarProduct[Pair[Momentum[a, D - 4] + 2 Momentum[b + 3 c] + Momentum[aa, D],
+Momentum[e, D - 4] + 5 Momentum[f + 2 g, D]]]","10 Pair[Momentum[b], Momentum[f]] +
+20 Pair[Momentum[b], Momentum[g]] +
+30 Pair[Momentum[c], Momentum[f]] +
+60 Pair[Momentum[c], Momentum[g]] +
+Pair[Momentum[a, -4 + D], Momentum[e, -4 + D]] +
+5 Pair[Momentum[a, -4 + D], Momentum[f, -4 + D]] +
+10 Pair[Momentum[a, -4 + D], Momentum[g, -4 + D]] +
+Pair[Momentum[aa, -4 + D], Momentum[e, -4 + D]] +
+5 Pair[Momentum[aa, D], Momentum[f, D]] +
+10 Pair[Momentum[aa, D], Momentum[g, D]]"}
 }
