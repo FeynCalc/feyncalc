@@ -149,19 +149,25 @@ ScalarProduct/:
 			DownValues[Pair] = downv;
 
 			(*	 for SP	*)
-			downv = DownValues[SP];
-			downv = Complement[downv,ruleClearFCESP];
-			DownValues[SP] = downv;
+			If[	!FreeQ[dims,4],
+				downv = DownValues[SP];
+				downv = Complement[downv,ruleClearFCESP];
+				DownValues[SP] = downv
+			];
 
 			(*	 for SPD	*)
-			downv = DownValues[SPD];
-			downv = Complement[downv,ruleClearFCESPD];
-			DownValues[SPD] = downv;
+			If[	!FreeQ[dims,D],
+				downv = DownValues[SPD];
+				downv = Complement[downv,ruleClearFCESPD];
+				DownValues[SPD] = downv;
+			];
 
 			(*	 for SPE	*)
 			downv = DownValues[SPE];
-			downv = Complement[downv,ruleClearFCESPE];
-			DownValues[SPE] = downv;
+			If[	!FreeQ[dims,D-4],
+				downv = Complement[downv,ruleClearFCESPE];
+				DownValues[SPE] = downv;
+			];
 
 			FCPrint[3,"ScalarProduct: Downvalues for ScalarProduct after removal ", DownValues[ScalarProduct]];
 			FCPrint[3,"ScalarProduct: Downvalues for Pair after removal ", DownValues[Pair]];
