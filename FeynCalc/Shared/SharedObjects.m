@@ -1860,6 +1860,15 @@ SPE/:
 	Set[SPE[a_, b_] , c_]:=
 		(ScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
 
+SP[0,_]:=
+	0;
+
+SPD[0,_]:=
+	0;
+
+SPE[0,_]:=
+	0;
+
 SP[a_] :=
 	SP[a,a];
 SPD[a_] :=
