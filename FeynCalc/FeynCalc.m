@@ -741,15 +741,11 @@ If[ $LoadTARCER,
 	If[FreeQ[$ContextPath,"Tarcer`"],PrependTo[$ContextPath,"Tarcer`"]];
 ];
 
+
+BeginPackage["FeynCalc`"];
 If[ Global`$LoadAddOns=!={},
-
 	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns];
-	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns];
-
-	FCDeclareHeader/@Flatten[Map[FileNames[{"*.m"},
-	ToFileName[{$FeynCalcDirectory,  "AddOns", #}],Infinity] &, Global`$LoadAddOns]];
-
-	Get/@Flatten[Map[FileNames[{"*.m"},
-	ToFileName[{$FeynCalcDirectory,  "AddOns", #}],Infinity] &, Global`$LoadAddOns]]
+	Get/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns]
 ];
+EndPackage[];
 
