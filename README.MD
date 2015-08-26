@@ -13,10 +13,8 @@ Visit our [wiki](https://github.com/FeynCalc/feyncalc/wiki) to learn more about 
 
 FeynCalc is covered by the GNU Lesser General Public License 3.
 
-Copyright (C) 1990-2015 Rolf Mertig
-
-Copyright (C) 1997-2015 Frederik Orellana
-
+Copyright (C) 1990-2015 Rolf Mertig 
+Copyright (C) 1997-2015 Frederik Orellana 
 Copyright (C) 2014-2015 Vladyslav Shtabovenko
 
 FeynCalc is free software: you can redistribute it and/or modify
@@ -27,7 +25,7 @@ the License, or (at your option) any later version.
 FeynCalc is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with FeynCalc.  If not, see <http://www.gnu.org/licenses/>.
