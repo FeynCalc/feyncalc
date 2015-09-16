@@ -1,4 +1,8 @@
 *.test linguist-language=Mathematica
 *.m linguist-language=Mathematica
 *.mt linguist-language=Mathematica
+*.Mod linguist-language=Mathematica
+*.Gen linguist-language=Mathematica
+*.conf linguist-language=Mathematica
+*.Fac linguist-language=Mathematica
 
