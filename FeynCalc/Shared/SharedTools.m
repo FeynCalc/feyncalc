@@ -185,6 +185,10 @@ Options[FRH] = {
 	IsolateNames->All
 };
 
+Options[PowerSimplify] = {
+	Assumptions->True
+};
+
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
 	Cases2 @@ Prepend[{f,opts}, expr];
 
@@ -477,43 +481,44 @@ PowerFactor[exp_] :=
 		Power] //. {x_^a_ y_^a_ :> (x y)^a})
 	];
 
-PowerSimplify[x_] :=
-	Block[{nx, qcdsub = False, power3},
+PowerSimplify[x_, OptionsPattern[]] :=
+	Block[{nx, qcdsub = False, power3, assumpts},
+		assumpts = OptionValue[Assumptions];
 		If[!FreeQ[x, ScaleMu],
 			qcdsub = True;
 			nx = x /. pow_[any_ /ScaleMu^2,exp_]:> power3[pow][any/ScaleMu^2,exp],
 			nx = x
 		];
-		nx = nx /. {
-			(a_/;Head[a]===Plus || Head[a] === Times)^(w_) :>
-				(PowerExpand[Factor2[one*a]^w, Assumptions->True] /. one -> 1),
-			Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)] :>
-				(PowerExpand[Factor2[one*a]^w, Assumptions->True] /. (ab_Plus)^v_ :> Power2[ab, v] /.
-				one -> 1)/.(-1)^vv_ :> Power2[-1,vv]} /.
-			{(-1)^(a_Plus) :> Expand[(-1)^a]} /.
+		nx = nx /.
+			{	(a_/;Head[a]===Plus || Head[a] === Times)^(w_) :>
+					(PowerExpand[Factor2[one*a]^w, Assumptions->assumpts] /. one -> 1),
+				Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)] :>
+					(PowerExpand[Factor2[one*a]^w, Assumptions->assumpts] /.
+						(ab_Plus)^v_ :> Power2[ab, v] /. one -> 1)/.(-1)^vv_ :> Power2[-1,vv]	} /.
+			{	(-1)^(a_Plus) :> Expand[(-1)^a]	}/.
 			{(n_Integer?Negative)^m_ :> (-1)^m (-n)^m}/.
-			{((-1)^OPEm (1+(-1)^OPEm)) :> (1+(-1)^OPEm),
+			{	((-1)^OPEm (1+(-1)^OPEm)) :> (1+(-1)^OPEm),
 				((1-(-1)^OPEm)(1+(-1)^OPEm)) :> 0,
 				((1+(-1)^OPEm)(1+(-1)^OPEm)) :> (2(1+(-1)^OPEm)),
 				(-1)^OPEm (1-(-1)^OPEm) :> (-1+(-1)^OPEm),
-				bbb_^(c_/;!FreeQ[c,Plus]) :> bbb^Expand[c]}//.
-			{(-1)^(_Integer?EvenQ _) :> 1,
-			(-1)^(_Integer?OddQ m_) :> (-1)^m,
-			(-1)^(_Integer?EvenQ _. + i_) :> (-1)^i,
-			(-1)^(n_Integer?OddQ m_. + i_) :> (-1)^(m+i) /; n=!=(-1),
-			(-1)^(-n_) :> (-1)^n,
-			I^(2 m_+i_.) :> (I)^i (-1)^m,
-			(I/2)^(m_) I^m_ :> (-1)^m/2^m,
-			I^(a_Plus) :> Expand[I^a],
-			Exp[I Pi OPEi] :> (-1)^OPEi,
-			Exp[I Pi OPEj] :> (-1)^OPEj,
-			Exp[I Pi OPEm] :> (-1)^OPEm,
-			HoldPattern[E^(em_ + Complex[0,n_] Pi)]  :> (-1)^n Exp[em],
-			Power2[I, 2 m_ + i_.] :> I^i (-1)^m,
-			Power2[I,(a_Plus)] :> Expand[I^a],
-			Power2[(-1),(a_Plus)] :> Expand[(-1)^a]};
-			If[qcdsub === True,
-					nx = nx /. power3[poww_] :> poww
+				bbb_^(c_/;!FreeQ[c,Plus]) :> bbb^Expand[c]	}//.
+			{	(-1)^(_Integer?EvenQ _) :> 1,
+				(-1)^(_Integer?OddQ m_) :> (-1)^m,
+				(-1)^(_Integer?EvenQ _. + i_) :> (-1)^i,
+				(-1)^(n_Integer?OddQ m_. + i_) :> (-1)^(m+i) /; n=!=(-1),
+				(-1)^(-n_) :> (-1)^n,
+				I^(2 m_+i_.) :> (I)^i (-1)^m,
+				(I/2)^(m_) I^m_ :> (-1)^m/2^m,
+				I^(a_Plus) :> Expand[I^a],
+				Exp[I Pi OPEi] :> (-1)^OPEi,
+				Exp[I Pi OPEj] :> (-1)^OPEj,
+				Exp[I Pi OPEm] :> (-1)^OPEm,
+				HoldPattern[E^(em_ + Complex[0,n_] Pi)]  :> (-1)^n Exp[em],
+				Power2[I, 2 m_ + i_.] :> I^i (-1)^m,
+				Power2[I,(a_Plus)] :> Expand[I^a],
+				Power2[(-1),(a_Plus)] :> Expand[(-1)^a]	};
+			If[	qcdsub === True,
+				nx = nx /. power3[poww_] :> poww
 			];
 		nx
 	];

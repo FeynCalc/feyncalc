@@ -207,7 +207,15 @@ Tests`Shared`fcstSharedToolsPowerSimplify = {
 {"fcstSharedToolsPowerSimplify-ID8","PowerSimplify[(-1)^(2 OPEm)]",
 	"1"},
 {"fcstSharedToolsPowerSimplify-ID9","PowerSimplify[(-SO[q])^OPEm]",
-	"E^(I OPEm \[Pi] + 2 I OPEm \[Pi] Floor[-(Arg[SO[q]]/(2 \[Pi]))])*SO[q]^OPEm"}
+	"E^(I OPEm \[Pi] + 2 I OPEm \[Pi] Floor[-(Arg[SO[q]]/(2 \[Pi]))])*SO[q]^OPEm"},
+{"fcstSharedToolsPowerSimplify-ID10","Calc[Sqrt[x - 1], Assumptions -> x > 1]",
+	"Sqrt[x-1]"},
+{"fcstSharedToolsPowerSimplify-ID11","Calc[Sqrt[x - 1]]",
+	"I E^(I \[Pi] Floor[-(Arg[1 - x]/(2 \[Pi]))] +
+	9 I \[Pi] Floor[1/2 - Arg[1 - x]/(2 \[Pi])]) Sqrt[1 - x]"},
+{"fcstSharedToolsPowerSimplify-ID12","Calc[Sqrt[x - 1], Assumptions -> Automatic]",
+	"I Sqrt[1 - x]"}
+
 };
 
 Tests`Shared`fcstSharedToolsSelectFree = {
