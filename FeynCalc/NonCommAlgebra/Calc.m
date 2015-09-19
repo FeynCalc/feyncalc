@@ -34,7 +34,7 @@ Options[Calc] = {
 Calc[expr_, OptionsPattern[]] :=
 	Block[{calc,assumpts},
 		assumpts = OptionValue[Assumptions];
-		calc[exp_] :=calc[exp] =
+		calc[exp_]:=
 			exp//Trick//PowerSimplify[#,Assumptions->assumpts]&//SUNSimplify[#,Explicit->False]&//Explicit//Contract//DiracSimplify//Contract//
 			EpsEvaluate//DiracSimplify//DotSimplify//ExpandScalarProduct//PowerSimplify[#,Assumptions->assumpts]&//Expand2;
 		FixedPoint[calc,expr, 5]
