@@ -27,11 +27,16 @@ End[]
 
 Begin["`Private`"]
 
-Calc[expr_] :=
-	Block[{calc},
+Options[Calc] = {
+	Assumptions->True
+};
+
+Calc[expr_, OptionsPattern[]] :=
+	Block[{calc,assumpts},
+		assumpts = OptionValue[Assumptions];
 		calc[exp_] :=calc[exp] =
-			exp//Trick//PowerSimplify//SUNSimplify[#,Explicit->False]&//Explicit//Contract//DiracSimplify//Contract//
-			EpsEvaluate//DiracSimplify//DotSimplify//ExpandScalarProduct//PowerSimplify//Expand2;
+			exp//Trick//PowerSimplify[#,Assumptions->assumpts]&//SUNSimplify[#,Explicit->False]&//Explicit//Contract//DiracSimplify//Contract//
+			EpsEvaluate//DiracSimplify//DotSimplify//ExpandScalarProduct//PowerSimplify[#,Assumptions->assumpts]&//Expand2;
 		FixedPoint[calc,expr, 5]
 	];
 FCPrint[1,"Calc.m loaded"];
