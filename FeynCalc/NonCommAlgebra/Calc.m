@@ -1,22 +1,24 @@
+(* Wolfram Language package *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Calc*)
+(* :Title: Calc																*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: changed slightly September 2003                                *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Calc does a lot *)
+(* :Summary:  A lot of simplifications in one command					    *)
 
 (* ------------------------------------------------------------------------ *)
 
 Calc::usage =
-"Calc[exp] performs several simplifications.
-Calc[exp] is the same as
-DotSimplify[DiracSimplify[EpsEvaluate[Contract[DiracSimplify[Contract[Explicit[SUNSimplify[PowerSimplify[Trick[exp]],
-Explicit -> False]]]]]]]].";
+"Calc[exp] performs several simplifications that involve Contract, DiracSimplify \
+SUNSimplify, DotSimplify, EpsEvaluate, ExpandScalarProduct, PowerSimplify, Expand2 \
+and Trick.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,9 +30,8 @@ Begin["`Private`"]
 Calc[expr_] :=
 	Block[{calc},
 		calc[exp_] :=calc[exp] =
-			Expand2[ExpandScalarProduct[ DotSimplify[DiracSimplify[EpsEvaluate[Contract[DiracSimplify[
-			Contract[Explicit[ SUNSimplify[Trick[exp]//PowerSimplify, Explicit -> False] ]]]]]]]]//PowerSimplify
-		];
+			exp//Trick//PowerSimplify//SUNSimplify[#,Explicit->False]&//Explicit//Contract//DiracSimplify//Contract//
+			EpsEvaluate//DiracSimplify//DotSimplify//ExpandScalarProduct//PowerSimplify//Expand2;
 		FixedPoint[calc,expr, 5]
 	];
 FCPrint[1,"Calc.m loaded"];
