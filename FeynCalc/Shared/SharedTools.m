@@ -186,7 +186,8 @@ Options[FRH] = {
 };
 
 Options[PowerSimplify] = {
-	Assumptions->True
+	Assumptions->True,
+	PowerExpand->True
 };
 
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
@@ -482,17 +483,18 @@ PowerFactor[exp_] :=
 	];
 
 PowerSimplify[x_, OptionsPattern[]] :=
-	Block[{nx, qcdsub = False, power3, assumpts},
+	Block[{nx, qcdsub = False, power3, assumpts,usePowerExpand},
 		assumpts = OptionValue[Assumptions];
+		usePowerExpand = OptionValue[PowerExpand];
 		If[!FreeQ[x, ScaleMu],
 			qcdsub = True;
 			nx = x /. pow_[any_ /ScaleMu^2,exp_]:> power3[pow][any/ScaleMu^2,exp],
 			nx = x
 		];
 		nx = nx /.
-			{	(a_/;Head[a]===Plus || Head[a] === Times)^(w_) :>
+			{	(a_/;Head[a]===Plus || Head[a] === Times)^(w_)/;usePowerExpand :>
 					(PowerExpand[Factor2[one*a]^w, Assumptions->assumpts] /. one -> 1),
-				Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)] :>
+				Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)]/;usePowerExpand :>
 					(PowerExpand[Factor2[one*a]^w, Assumptions->assumpts] /.
 						(ab_Plus)^v_ :> Power2[ab, v] /. one -> 1)/.(-1)^vv_ :> Power2[-1,vv]	} /.
 			{	(-1)^(a_Plus) :> Expand[(-1)^a]	}/.

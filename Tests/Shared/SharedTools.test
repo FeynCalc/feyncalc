@@ -214,8 +214,11 @@ Tests`Shared`fcstSharedToolsPowerSimplify = {
 	"I E^(I \[Pi] Floor[-(Arg[1 - x]/(2 \[Pi]))] +
 	9 I \[Pi] Floor[1/2 - Arg[1 - x]/(2 \[Pi])]) Sqrt[1 - x]"},
 {"fcstSharedToolsPowerSimplify-ID12","Calc[Sqrt[x - 1], Assumptions -> Automatic]",
-	"I Sqrt[1 - x]"}
-
+	"I Sqrt[1 - x]"},
+{"fcstSharedToolsPowerSimplify-ID13","Calc[Sqrt[x - 1], PowerExpand -> False]",
+	"Sqrt[x - 1]"},
+{"fcstSharedToolsPowerSimplify-ID14","PowerSimplify[Sqrt[x - 1], PowerExpand -> False]",
+	"Sqrt[x - 1]"}
 };
 
 Tests`Shared`fcstSharedToolsSelectFree = {
