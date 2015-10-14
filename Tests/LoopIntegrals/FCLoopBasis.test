@@ -1,0 +1,100 @@
+
+
+(* :Title: FCLoopBasis.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopBasis	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopBasisIncompleteQ =
+({
+{"fcstFCLoopBasisIncompleteQ-ID1",
+"FCLoopBasisIncompleteQ[FAD[{q1,m1}],{q1}]", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID2",
+"FCLoopBasisIncompleteQ[FAD[q1,{q1,m1}],{q1}]", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID3",
+"FCLoopBasisIncompleteQ[FAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"True"},
+{"fcstFCLoopBasisIncompleteQ-ID4",
+"FCLoopBasisIncompleteQ[SPD[q1,l]FAD[{q1,m1},{q1-l+p,m}],{q1}]", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID5",
+"FCLoopBasisIncompleteQ[FAD[{q1,m1},{q2,m2}],{q1,q2}]",
+"True"},
+{"fcstFCLoopBasisIncompleteQ-ID6",
+"FCLoopBasisIncompleteQ[SPD[q1,q2]FAD[{q1,m1},{q2,m2}],{q1,q2}]\
+", "False"},
+{"fcstFCLoopBasisIncompleteQ-ID7",
+"FCLoopBasisIncompleteQ[FAD[{q1,m1},{q2,m2},q1-q2],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisIncompleteQ-ID8",
+"FCLoopBasisIncompleteQ[FAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "True"},
+{"fcstFCLoopBasisIncompleteQ-ID9",
+"FCLoopBasisIncompleteQ[SPD[q1,q2]SPD[q1,l2]SPD[q2,l1]FAD[q1,q2,{\
+q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"}
+});
+
+Tests`LoopIntegrals`fcstFCLoopBasisOverdeterminedQ =
+({
+{"fcstFCLoopBasisOverdeterminedQ-ID1",
+"FCLoopBasisOverdeterminedQ[FAD[{q1,m1}],{q1},{}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID2",
+"FCLoopBasisOverdeterminedQ[FAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID3",
+"FCLoopBasisOverdeterminedQ[SPD[q1,l]FAD[{q1,m1},{q1-l+p,m}],{q1}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID4",
+"FCLoopBasisOverdeterminedQ[FAD[{q1,m1},{q2,m2}],{q1,q2}]",
+"False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID5",
+"FCLoopBasisOverdeterminedQ[SPD[q1,q2]FAD[{q1,m1},{q2,m2}],{q1,q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID6",
+"FCLoopBasisOverdeterminedQ[FAD[{q1,m1},{q2,m2},q1-q2],{q1,q2}]\
+", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID7",
+"FCLoopBasisOverdeterminedQ[FAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,\
+q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID8",
+"FCLoopBasisOverdeterminedQ[SPD[q1,q2]SPD[q1,l2]SPD[q2,l1]FAD[q1,\
+q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]", "False"},
+{"fcstFCLoopBasisOverdeterminedQ-ID9",
+"FCLoopBasisOverdeterminedQ[FAD[q1,{q1,m1}],{q1}]", "True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID10",
+"FCLoopBasisOverdeterminedQ[FAD[q1,{q1+l,m1},{q1-l,m2}],{q1}]",
+	"True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID11",
+"FCLoopBasisOverdeterminedQ[SPD[q1,l]FAD[q1,{q1+l,m1}],{q1}]",
+"True"},
+{"fcstFCLoopBasisOverdeterminedQ-ID12",
+"FCLoopBasisOverdeterminedQ[FAD[q1,q2,{q1+l,m1},{q1-l,m1},{q2+l,m1}\
+,{q2-l,m1}],{q1,q2}]", "True"}
+});
+
+Tests`LoopIntegrals`fcstFCLoopBasisFindCompletion =
+({
+{"fcstFCLoopBasisFindCompletion-ID1",
+"FCLoopBasisFindCompletion[FAD[{q1,m1},{q1-l+p,m}],{q1}]",
+"{FeynAmpDenominator[PropagatorDenominator[Momentum[q1, D], m1], \
+PropagatorDenominator[-Momentum[l, D] + Momentum[p, D] + Momentum[q1, \
+D], m]], {Pair[Momentum[l, D], Momentum[q1, D]] + Pair[Momentum[p, \
+D], Momentum[q1, D]]}}"},
+{"fcstFCLoopBasisFindCompletion-ID2",
+"FCLoopBasisFindCompletion[FAD[{q1,m1},{q2,m2}],{q1,q2}]",
+"{FeynAmpDenominator[PropagatorDenominator[Momentum[q1, D], m1], \
+PropagatorDenominator[Momentum[q2, D], m2]], {Pair[Momentum[q1, D], \
+Momentum[q2, D]]}}"},
+{"fcstFCLoopBasisFindCompletion-ID3",
+"FCLoopBasisFindCompletion[FAD[q1,q2,{q1-l1,m1},{q2-l2,m2}],{q1,q2}]",
+"{FeynAmpDenominator[PropagatorDenominator[Momentum[q1, D], 0], \
+PropagatorDenominator[Momentum[q2, D], 0], \
+PropagatorDenominator[-Momentum[l1, D] + Momentum[q1, D], m1], \
+PropagatorDenominator[-Momentum[l2, D] + Momentum[q2, D], m2]], \
+{Pair[Momentum[q1, D], Momentum[q2, D]], Pair[Momentum[l2, D], \
+Momentum[q1, D]], Pair[Momentum[l1, D], Momentum[q2, D]]}}"}
+});
