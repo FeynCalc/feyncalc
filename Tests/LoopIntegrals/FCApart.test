@@ -1,0 +1,72 @@
+
+
+(* :Title: FCApart.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCApart			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCApart =
+({
+{"fcstFCApart-ID1", "FCApart[0,{}]", "FCApart[0, {}]"},
+{"fcstFCApart-ID2", "FCApart[1,{}]", "FCApart[1, {}]"},
+{"fcstFCApart-ID3", "FCApart[FAD[{q,m}],{q}]",
+"FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m]]"},
+{"fcstFCApart-ID4", "FCApart[FAD[{q,m}],{}]",
+"FCApart[FAD[{q, m}], {}]"},
+{"fcstFCApart-ID5", "FCApart[FVD[q, mu] FVD[q, nu] FAD[q, q + l, q - l, k + p], {q}] // FCE",
+	"-((FAD[k + p]*FAD[q, -2*l + q]*FVD[l, mu]*FVD[l, nu])/SPD[l, l]) +
+	(FAD[k + p]*FAD[q, -2*l + q]*FVD[l, nu]*FVD[q, mu])/SPD[l, l] +
+	(FAD[k + p]*FAD[q, -2*l + q]*FVD[l, mu]*FVD[q, nu])/SPD[l, l] -
+	(FAD[k + p]*FAD[q, -2*l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l] +
+	(FAD[k + p]*FAD[q, -l + q]*FVD[q, mu]*FVD[q, nu])/SPD[l, l]"},
+{"fcstFCApart-ID6", "FCApart[FVD[q,mu]FVD[q,nu]FAD[q,q+l,q-l],{q}]//FCE",
+"-((FAD[q, -2 l + q] FVD[l, mu] FVD[l, nu])/SPD[l, l]) + (
+FAD[q, -2 l + q] FVD[l, nu] FVD[q, mu])/SPD[l, l] + (
+FAD[q, -2 l + q] FVD[l, mu] FVD[q, nu])/SPD[l, l] - (
+FAD[q, -2 l + q] FVD[q, mu] FVD[q, nu])/SPD[l, l] + (
+FAD[q, -l + q] FVD[q, mu] FVD[q, nu])/SPD[l, l]"},
+{"fcstFCApart-ID7", "FCApart[FAD[q,q+l,q-l],{q}]//FCE",
+"-(FAD[q, -2*l + q]/SPD[l, l]) + FAD[q, -l + q]/SPD[l, l]"},
+{"fcstFCApart-ID8",
+"FCApart[SPD[q,r]^2*FAD[q,{q+l,m},{q-l,m}],{q}]//FCE",
+"(FAD[{q, m}, {-2 l + q, m}] SPD[l, r]^2)/(m^2 - SPD[l, l]) - (
+2 FAD[{q, m}, {-2 l + q, m}] SPD[l, r] SPD[q, r])/(
+m^2 - SPD[l, l]) - (FAD[q, {-l + q, m}] SPD[q, r]^2)/(
+m^2 - SPD[l, l]) + (FAD[{q, m}, {-2 l + q, m}] SPD[q, r]^2)/(
+m^2 - SPD[l, l])"},
+{"fcstFCApart-ID9",
+"FCApart[SPD[q,l]^2FAD[q,{q+l,m},{q-l,m}],{q}]//FCE",
+"FAD[{q, m}]/4 - (FAD[q, {-l + q, m}]*(m^2 - SPD[l, l]))/4"},
+{"fcstFCApart-ID10",
+"FCApart[SPD[q,l]^2SPD[q,r]^2FAD[q,{q+l,m},{q-l,m}],{q}]//FCE",
+"1/4 FAD[{q, m}] SPD[l, r]^2 + 1/4 FAD[{q, m}] SPD[q, r]^2 -
+1/4 FAD[q, {-l + q, m}] (m^2 - SPD[l, l]) SPD[q, r]^2"},
+{"fcstFCApart-ID11",
+"FCApart[ \
+(SPD[k,p1]SPD[k,p2])FAD[k,{k+p1,m},{k+p2,m},{k+p2,m}],{k}]//FCE",
+"FAD[k, {k - p2, m}]/4 - FAD[{k, m}, {k, m}]/4 + (FAD[{k, m}, {k, m},
+{k - p1 + p2, m}]*SPD[k, p2])/2 + (FAD[k, {k - p1, m}, {k - p2, m}]*(m^2 -
+SPD[p1, p1]))/4 - (FAD[{k, m}, {k, m}, {k - p1 + p2, m}]*(m^2 - SPD[p1, p1] -
+2*SPD[p2, p2]))/4 + (FAD[k, {k - p2, m}, {k - p2, m}]*(m^2 - SPD[p2, p2]))/4 +
+(FAD[k, {k - p1, m}, {k - p2, m}, {k - p2, m}]*(m^2 - SPD[p1, p1])*(m^2 -
+SPD[p2, p2]))/4"},
+{"fcstFCApart-ID12",
+"FCApart[ \
+(SPD[q1,p1]SPD[q2,p2])FAD[q1,q2,{q1+p1,m},{q2+p2,m},{q2+p2,m}],{q1,q2}\
+]//FCE", "-FAD[q1, {-p2 + q1, m}, {-p1 + q2, m}]/4 + FAD[{-p1 + q1, \
+m}, {-p2 + q2, m}, {-p2 + q2, m}]/4 + (FAD[q1, q2, {-p1 + q1, m}, \
+{-p2 + q2, m}]*(m^2 - SPD[p1, p1]))/4 - (FAD[q1, {-p1 + q1, m}, {-p2 \
++ q2, m}, {-p2 + q2, m}]*(m^2 - SPD[p1, p1]))/4 + (FAD[q1, q2, {-p2 + \
+q1, m}, {-p2 + q1, m}]*(m^2 - SPD[p2, p2]))/4 - (FAD[q1, {-p2 + q1, \
+m}, {-p2 + q1, m}, {-p1 + q2, m}]*(m^2 - SPD[p2, p2]))/4 + (FAD[q1, \
+q2, {-p1 + q1, m}, {-p2 + q2, m}, {-p2 + q2, m}]*(m^2 - SPD[p1, \
+p1])*(m^2 - SPD[p2, p2]))/4"}
+});
