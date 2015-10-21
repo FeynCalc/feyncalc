@@ -44,28 +44,12 @@ OPE2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 	Block[ {temp},
 		If[ FreeQ2[exp,{k1,k2}],
 			exp,
-			temp = ScalarProductCancel[ope2TID[exp, k1, k2, p, opt]];
+			temp = ApartFF[ope2TID[exp, k1, k2, p, opt],{k1,k2}];
 			If[ !FreeQ2[temp, {k1,k2}],
 				temp = ope2TID[temp, k1,k2,p,opt];
 			];
-			temp = ScalarProductCancel[OPE1Loop[{k1,k2}, temp], k1,k2,
-																	FeynAmpDenominatorSimplify -> True];
-			If[ !FreeQ2[temp, {k1,k2}],
-				If[ (Head[temp] === Plus) && (!FreeQ[temp,
-											PropagatorDenominator[_, em_ /; em =!=0]
-																					]),
-					temp = Map[ScalarProductCancel, temp],
-					temp = ScalarProductCancel[temp];
-				];
-				temp = FeynAmpDenominatorSimplify[temp,k1,k2];
-			];
-			(*
-			If[!FreeQ2[temp, {k1,k2}],
-				temp = Collect2[temp, k1, k2];
-				temp = ope2TID[temp, k1,k2,p,opt];
-				temp = FeynAmpDenominatorSimplify[ScalarProductCancel[temp],k1,k2];
-				];
-			*)
+			temp = ApartFF[OPE1Loop[{k1,k2}, temp], {k1,k2}];
+
 			If[ FreeQ2[temp,{k1,k2}] && !FreeQ[temp,LorentzIndex] && !FreeQ[temp, RHI],
 				temp = Collect2[temp, LorentzIndex];
 				If[ Head[temp] === Plus,
@@ -225,13 +209,13 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 				];
 				If[ k12shift =!= {},
 					FCPrint[2,"shifting ",k12shift[[1]]];
-					temp = Collect2[ScalarProductCancel[EpsEvaluate[ExpandScalarProduct[
-									(temp /. k12shift)/.DiracTrace->Tr2]//diracsimp],k1,k2
+					temp = Collect2[ApartFF[EpsEvaluate[ExpandScalarProduct[
+									(temp /. k12shift)/.DiracTrace->Tr2]//diracsimp],{k1,k2}
 																	],{k1,k2}
 													],
 					If[ !FreeQ[temp,DiracGamma],
-						temp = Collect2[ScalarProductCancel[
-											diracsimp[temp]//EpsEvaluate,k1,k2],k1,k2],
+						temp = Collect2[ApartFF[
+											diracsimp[temp]//EpsEvaluate,{k1,k2}],k1,k2],
 						temp = EpsEvaluate[temp] /. Pair -> ExpandScalarProduct
 					]
 				];
@@ -248,10 +232,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 					];
 					temp = EpsEvaluate[temp]//diracsimp2;
 					FCPrint[2,"collect in OPE2TID"];
-					temp = Collect2[temp, {k1,k2}, Factoring -> False];(*
-					FCPrint[2,"ScalarProductCancel again"];
-						temp = ScalarProductCancel[temp,k1,k2,Collecting->False]
-					*)
+					temp = Collect2[temp, {k1,k2}, Factoring -> False];
 						,
 
 					(*  "amputate" DiracTrace ... *)
@@ -2344,25 +2325,19 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 									];
 								];
 								If[ FreeQ[temp, qQQ],
-									FCPrint[2,"ScalarProductCancel in OPE2TID"];
-									temp = ScalarProductCancel[temp /. Power2 -> Power/.
-																							Power[a_, b_ /; Head[b] =!= Integer] :>
-																							Power2[a, b], k1, k2
-																						];
-									FCPrint[2,"ScalarProductCancel in OPE2TID done"];
+									FCPrint[2,"ApartFF in OPE2TID"];
+									temp = ApartFF[temp /.
+										Power2 -> Power/. Power[a_, b_ /; Head[b] =!= Integer] :> Power2[a, b], {k1, k2}];
+									FCPrint[2,"ApartFF in OPE2TID done"];
 									temp = FeynAmpDenominatorSimplify[Collect2[temp, k1,k2], k1, k2];
-									FCPrint[2,"collect after ScalarProductCancel in OPE2TID done"];
+									FCPrint[2,"collect after ApartFF in OPE2TID done"];
 
 									(* ZZZ*)
 									If[ !FreeQ2[kape = SelectFree[Cases2[temp,Pair], OPEDelta], {k1,k2}],
 										If[ Head[temp] =!= Plus,
-											temp = ScalarProductCancel[OPE1Loop[{k1,k2},temp],k1,k2,
-																								Collecting->False],
+											temp = ApartFF[OPE1Loop[{k1,k2},temp],{k1,k2},Collecting->False],
 											temp = SelectFree[temp,kape] +
-														ScalarProductCancel[ OPE1Loop[{k1,k2},
-																									SelectNotFree[temp, kape]], k1, k2,
-																									Collecting->False
-																								]
+											ApartFF[ OPE1Loop[{k1,k2},SelectNotFree[temp, kape]], {k1, k2},Collecting->False]
 										]
 									];
 									temp = PowerSimplify[temp];
@@ -2606,10 +2581,10 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 													Power2[aa, ha];
 									];
 								*)
-								temp = Collect2[ScalarProductCancel[temp,k1,k2],k1,k2];
+								temp = Collect2[ApartFF[temp,k1,k2],{k1,k2}];
 								temp = temp /. Power2 -> Power;
 								If[ !FreeQ2[Cases2[temp,Pair], {k1,k2}],
-									temp = ScalarProductCancel[OPE1Loop[{k1,k2},temp],k1,k2];
+									temp = ApartFF[OPE1Loop[{k1,k2},temp],{k1,k2}];
 								];
 								temp = Collect2[FeynAmpDenominatorSimplify[temp,k1,k2,FC2RHI->True,
 																IncludePair -> True

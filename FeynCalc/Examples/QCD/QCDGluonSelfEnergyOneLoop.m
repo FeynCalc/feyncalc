@@ -112,7 +112,7 @@ Contract[FVD[p,Lor1]FVD[p,Lor2]ampGhostLoopEval]//Simplify
 
 
 ampGluonLoop = amps[[4]]//ChangeDimension[#,D]&//SUNSimplify[#,Explicit->True]&//
-		Contract//ScalarProductCancel//TID[#,q]&//ToTFI[#,q,p]&//Simplify
+		Contract//TID[#,q]&//ToTFI[#,q,p]&//Simplify
 
 
 ampGluonLoopEval=((ampGluonLoop/.{GaugeXi->-OneMinusGaugeXi+1})//Expand//

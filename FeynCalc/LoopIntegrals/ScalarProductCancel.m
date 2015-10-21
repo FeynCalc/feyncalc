@@ -59,12 +59,6 @@ changeMomDim[z_, dim_/;dim=!=False] :=
 		(z /. momr)
 	];
 
-
-(* Stub for functions that use SPC without specifying loop momenta *)
-ScalarProductCancel[int_,  OptionsPattern[]]:=
-	int;
-
-
 ScalarProductCancel[int_, qs___, qlast_, OptionsPattern[]]:=
 	int/; FreeQ2[int,{qs,qlast}];
 

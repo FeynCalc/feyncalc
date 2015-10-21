@@ -140,9 +140,7 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 		];
 		t5 = PowerSimplify[t5];
 		FCPrint[1,"cancel scalar products"];
-		t6 = ScalarProductCancel[t5//EpsEvaluate, k,
-								FeynAmpDenominatorSimplify -> True
-								] /. Power2->Power /.
+		t6 = ApartFF[t5//EpsEvaluate, {k}] /. Power2->Power /.
 			Power[a_, b_/;Head[b]=!=Integer] :> Power2[a, b];
 		t6 = Collect2[ChangeDimension[t6,4], k];
 		pow2 = SelectNotFree[SelectNotFree[Cases2[t6, Power2],k], Power2[_Plus,_]];
@@ -158,7 +156,7 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 				doc[y] = Chisholm[DOT[y]];
 			t6 = Contract[t6 /. DOT -> doc];
 			t6 = Contract[t6,EpsContract->False, Rename -> True];
-			t6 = ScalarProductCancel[t6,k];
+			t6 = ApartFF[t6,{k}];
 		];
 		FCPrint[1,"collect w.r.t. integration momentum"];
 		t7 = Collect2[ChangeDimension[t6/.Power2->Power,4],
@@ -174,11 +172,7 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 		*)
 		nt7 = 0;
 		If[ Head[t7] =!= Plus,
-			nt7 = ChangeDimension[
-				TID[t7, k, Collecting -> False, Isolate -> True,
-							ScalarProductCancel -> True,
-							FeynAmpDenominatorSimplify -> True
-					], 4        ],
+			nt7 = ChangeDimension[TID[t7, k, Isolate -> True], 4],
 			lnt7 =  Length[t7];
 			For[ijn = 1, ijn <= lnt7, ijn++,
 				FCPrint[2,"ijn = ",ijn,"  out of", lnt7,
@@ -189,11 +183,8 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 					ChangeDimension[
 					FixedPoint[ReleaseHold,
 					TID[SelectNotFree[dummy t7[[ijn]],k], k,
-										Collecting -> False,
 										Contract -> True,
-										Isolate -> True,
-										ScalarProductCancel -> True,
-										FeynAmpDenominatorSimplify -> True
+										Isolate -> True
 						]     ], 4]
 							)
 				]

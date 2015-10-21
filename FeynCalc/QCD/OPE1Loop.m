@@ -135,7 +135,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 				tdec[w_, ka_] :=
 					Block[ {tem},
 						tem =
-						TID[w, ka,ScalarProductCancel -> False,
+						TID[w, ka,ApartFF -> False,
 							Collecting -> False, Contract->True
 							];
 						tem = tem /. fscrule;
@@ -244,8 +244,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 						SelectFree[x, k] qp1[SelectNotFree[x, k]]
 					];
 				qp1[x_] :=
-					fds1[ ScalarProductCancel[x,k]
-									];
+					fds1[ ApartFF[x,{k}]];
 				rli = {};
 				nn = 0;
 				nn = qup1[amp];

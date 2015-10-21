@@ -101,12 +101,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 		];
 		FCPrint[1,"cancel scalar products"];
 
-	(*S SCALARPRODUCTCANCEL *)
-		t4 = ScalarProductCancel[ExpandScalarProduct[t3]];
-		t5 = ScalarProductCancel[t4, q1, q2,
-								Collecting -> True,
-								FeynAmpDenominatorSimplify -> True
-								];
+		t5 = ApartFF[t3, {q1, q2}];
 		FCPrint[1,"collecting "];
 		t6 = Collect2[t5, {q1, q2, FCIntegral, RHI}];
 
@@ -161,7 +156,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 			t8 = con[t8]//DiracSimplify;
 		];
 		t9 = t8 /. Pair->PairContract/.PairContract->Pair;
-		t9 = ScalarProductCancel[t9, q1, q2, Collecting -> False];
+		t9 = ApartFF[t9, {q1, q2}];
 		If[ (!FreeQ[t9,DiracTrace]) && Head[t9]===Plus,
 			t9 = SelectFree[t9, DiracTrace] +
 				Tr2[SelectNotFree[t9,DiracTrace]/.DiracTrace->DiracOrder];
@@ -227,9 +222,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 		];
 		t14 = Expand2[t13] /. Pair -> PairContract /. PairContract -> Pair /.
 				Power2[a_,b_] :> Power[a,b//ReleaseHold];
-		t15 = ScalarProductCancel[t14, q1, q2, Collecting -> False,
-									FeynAmpDenominatorSimplify -> False
-								];
+		t15 = ApartFF[t14, {q1, q2}, Collecting -> False,FeynAmpDenominatorSimplify -> False];
 		t15 = Collect2[t15,{q1,q2, FCIntegral,RHI}, Factoring -> False]//fdsimp;
 		t15 = Collect2[t15,{q1,q2,FCIntegral,RHI},Factoring ->True];
 		(* if IntegralTable -> SpecialTableBla *)

@@ -66,7 +66,7 @@ Options[TID] = {
 	FDS -> True,
 	PaVeAutoOrder -> True,
 	PaVeAutoReduce -> True,
-	SPC -> True,
+	ApartFF -> True,
 	Isolate -> False,
 	UsePaVeBasis -> False
 };
@@ -147,7 +147,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		If[ fds,
 			FCMonitor[
-				t0 = FeynAmpDenominatorSimplify[t0, q]//Apart2;
+				t0 = FeynAmpDenominatorSimplify[t0, q];
 				Grid[{{"Simplifying denominators and doing partial fractioning",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
@@ -164,11 +164,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 		];
 
 
-		FCPrint[2,"TID: Before first SPC: ", t0, FCDoControl->tidVerbose];
-		If[	OptionValue[SPC],
-			t0 = SPC[t0,q,FDS->True,FCI->True];
+		FCPrint[2,"TID: Before first ApartFF: ", t0, FCDoControl->tidVerbose];
+		If[	OptionValue[ApartFF],
+			t0 = ApartFF[t0,{q},FCI->True];
 		];
-		FCPrint[2,"TID: After first SPC: ", t0, FCDoControl->tidVerbose];
+		FCPrint[2,"TID: After first ApartFF: ", t0, FCDoControl->tidVerbose];
 		(*
 		If[	!FreeQ2[t0,DiracGamma],
 			t0 = DiracGammaExpand[t0];
@@ -328,13 +328,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 		];
 
-		res = Apart2[res];
-
 		(*	Since the large prefactors are isolated, collecting w.r.t to the scalar loop integrals
 			should not be too expensive. *)
 		If[	OptionValue[Collecting],
 			FCMonitor[
-				res= Collect2[res,Join[{FeynAmpDenominator},PaVeHeadsList]],
+				res= Collect2[res,Join[{FeynAmpDenominator},PaVeHeadsList],Factoring->Factor2],
 				Grid[{{"Collecting w.r.t the scalar loop integrals",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 			]
@@ -488,14 +486,15 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 		tp + null1+null2] /. null1|null2 -> 0) // Union[Cases[{#}, loopIntegral[x_], Infinity]]&//
 		DeleteDuplicates;*)
 
-		FCPrint[2,"TID: tidFullReduce: Entering SPC with ", (uList/.loopIntegral->Identity), FCDoControl->tidVerbose];
+		FCPrint[2,"TID: tidFullReduce: Entering FCApart with ", (uList/.loopIntegral->Identity), FCDoControl->tidVerbose];
 
 		(*	Try to cancel all the scalar products in the denominators. This shouldn't
 			require more than rank+1 iterations. However, it is not always possible to
 			cancel all the scalar products without doing additional reductions	*)
 		time=AbsoluteTime[];
 
-		sList = FixedPoint[(Apart2[SPC[(#1/.loopIntegral->Identity), q, FDS -> True, FCI->True]] & /@ #) &, uList, rank+2];
+		sList = Map[ApartFF[(#/.loopIntegral->Identity),{q},FCI->True,FeynAmpDenominatorCombine->False]&,uList];
+
 		FCPrint[2,"TID: tidFullReduce: List of unique integrals after cancelling scalar products ", sList,
 			FCDoControl->tidVerbose];
 
@@ -505,9 +504,9 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 		(* Substitute simplified integrals back into the tensor part	*)
 		tp = tp/.rList;
 
-		FCPrint[2,"TID: tidFullReduce: SPC time: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
-		FCPrint[2,"TID: tidFullReduce: After SPC: ", tp, FCDoControl->tidVerbose];
-		(* 	After SPC our original tensor part contains both tensor and scalar pieces. Separate
+		FCPrint[2,"TID: tidFullReduce: FCApart time: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+		FCPrint[2,"TID: tidFullReduce: After FCApart: ", tp, FCDoControl->tidVerbose];
+		(* 	After FCApart our original tensor part contains both tensor and scalar pieces. Separate
 			them again	*)
 		time=AbsoluteTime[];
 		tp = Collect2[tp,{q,FeynAmpDenominator}] + null3 + null4;
@@ -518,7 +517,7 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 				"into tensor and scalar pieces in tidFullReduce failed."];
 			Abort[]
 		];
-		FCPrint[2,"TID: tidFullReduce: Time to sort w.r.t to the loop momentum after SPC ",
+		FCPrint[2,"TID: tidFullReduce: Time to sort w.r.t to the loop momentum after FCApart ",
 			N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		FCPrint[2,"TID: tidFullReduce: Tensor piece ", tpTP, FCDoControl->tidVerbose];
 		FCPrint[2,"TID: tidFullReduce: Scalar piece ", tpSP, FCDoControl->tidVerbose];
@@ -531,7 +530,7 @@ tidFullReduce[expr_,q_,rank_,n_, dimred_,pavebasis_]:=
 			Abort[]
 		];
 		(* 	If the new tensor part is not zero, then it contains integrals where the scalar
-			products can't be cancelled by SPC. To get rid of those we need to perform
+			products can't be cancelled by FCApart. To get rid of those we need to perform
 			another tensor decomposition on those integrals	*)
 		If[tpTP=!=0,
 			FCPrint[2,"TID: tidFullReduce: Looks like we need another tensor reduction for ", tpTP, FCDoControl->tidVerbose];

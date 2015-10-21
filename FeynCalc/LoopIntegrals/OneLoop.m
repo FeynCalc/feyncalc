@@ -10,10 +10,6 @@
 
 (* ------------------------------------------------------------------------ *)
 
-CancelQP::usage =
-"CancelQP is an option for OneLoop. If set to True, cancelation of
-all q.p's and q^2 is performed.";
-
 CombineGraphs::usage =
 "CombineGraphs is an option for OneLoopSum.";
 
@@ -173,8 +169,6 @@ collin[ expr_, varh_, expa_] :=
 
 
 Options[OneLoop] = {
-					Apart2                     -> True,
-					CancelQP                   -> True,
 					DenominatorOrder           -> False,
 					Dimension                  -> D,
 					FinalSubstitutions         -> {},
@@ -241,7 +235,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		];
 		( oneopt    = Join[ options,Options[OneLoop] ];
 		onemandel  = Mandelstam/.oneopt;
-		apart2     = Apart2 /.oneopt;
+		apart2     = True;
 		denorder   = DenominatorOrder/.oneopt;
 		dim        = Dimension/.oneopt;
 		If[ dim===True,
@@ -251,7 +245,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 		isolatehead = IsolateNames/.oneopt;
 		oneloopsimplify = OneLoopSimplify/.oneopt;
 		prefactor  =  Prefactor/.oneopt;
-		qpcancel   = CancelQP /. oneopt;
+		qpcancel   = True;
 		smallv     =  Flatten[{ SmallVariables/.oneopt }];
 		inisubs    =  InitialSubstitutions/.oneopt;
 		finsubst   = FinalSubstitutions/.oneopt;
@@ -400,7 +394,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			];
 			FCPrint[2, "length of oneamp = ", Length[oneamp], FCDoControl->oneloopVerbose];
 			If[ apart2 === True,
-				oneamp = Expand[Apart2[oneamp], FeynAmpDenominator];
+				oneamp = Expand[ApartFF[oneamp,{q}], FeynAmpDenominator];
 			];
 
 			(* reduce N-point to 4-point,  still temporary  *)
@@ -941,8 +935,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 					FCPrint[1, "cancelling qp's", FCDoControl->oneloopVerbose];
 					qpcanc[b_,qu_] :=
 						Select[null1 + null2 +
-						Collect2[ScalarProductCancel[b,qu,
-						FeynAmpDenominatorSimplify->True ]//smalld, qu],
+						Collect2[ApartFF[b,{qu}]//smalld, qu],
 						!FreeQ[#,FeynAmpDenominator]&];
 					oneamp = qpcanc[qpcanc[oneamp, q],q];
 					FCPrint[1, "OneLoop: cancelling qp's done, oneamp= ",oneamp, FCDoControl->oneloopVerbose];

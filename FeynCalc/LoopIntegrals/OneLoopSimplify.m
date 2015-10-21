@@ -42,7 +42,7 @@ Options[OneLoopSimplify] = {Collecting -> False,
 							FinalSubstitutions -> {},
 							IntegralTable -> {},
 							OPE1Loop -> False,
-							ScalarProductCancel -> True,
+							ApartFF -> True,
 							SUNNToCACF -> True,
 							SUNTrace -> False
 							};
@@ -71,7 +71,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			suntrace = SUNTrace /. {opt} /. Options[OneLoopSimplify];
 			ope1loop = OPE1Loop /. {opt} /. Options[OneLoopSimplify];
 			substis = FinalSubstitutions /. {opt} /. Options[OneLoopSimplify];
-			spc = ScalarProductCancel /. {opt} /. Options[OneLoopSimplify];
+			spc = ApartFF /. {opt} /. Options[OneLoopSimplify];
 			integraltable = IntegralTable /. {opt} /. Options[OneLoopSimplify];
 			FCPrint[2,"Using dimension ",dim];
 			If[ dimred =!= True,
@@ -149,8 +149,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 			FCPrint[1,"t4=", t4];
 			If[ spc =!= True,
 				t5 = t4,
-				t5 = ScalarProductCancel[t4, q, FeynAmpDenominatorSimplify->True];
-				t5 = ScalarProductCancel[t5, q, FeynAmpDenominatorSimplify->True];
+				t5 = ApartFF[t4, {q}];
 				If[ !FreeQ[t5, DiracGamma],
 					dirsimp[z__] :=
 						dirsimp[z] = If[ !FreeQ[{z}, DiracGamma],
@@ -272,7 +271,7 @@ OneLoopSimplify[amp_, qu_, opt___Rule] :=
 					t6 = Map[ExpandScalarProduct[DiracOrder[DiracSimplify[#]]]&,
 						t6];
 					t6 = Collect2[t6, q];
-					t6 = ScalarProductCancel[t6, q]
+					t6 = ApartFF[t6, {q}]
 				];
 				FCPrint[1,"OneLoopSimplify: Time spent on Dirac algebra: ", N[AbsoluteTime[] - time, 4]];
 				t6 = FRH[t6,IsolateNames->loopisolate];

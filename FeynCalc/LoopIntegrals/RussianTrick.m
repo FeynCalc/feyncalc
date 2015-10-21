@@ -38,12 +38,11 @@ RussianTrick[ex_, p_,k_, {q1_, q2_, pe_}, opt___Rule] :=
 		dim = Dimension /. {opt} /. Options[RussianTrick];
 		fv  = ExpandScalarProduct[FourVector[##, Dimension -> dim]]&;
 		t1  = FourDivergence[exp fv[p,mu], fv[k, mu]];
-		t1  = FixedPoint[Apart2,t1,5];
-		t2  = ScalarProductCancel[t1, q1, q2];
+		t2  = ApartFF[t1, {q1, q2}];
 		t2  = Collect2[FeynAmpDenominatorSimplify[t2, q1,q2], q1,q2];
 		If[ Head[t2] === Plus,
-			t2  = ScalarProductCancel[#, q1, q2]& /@ t2;
-			t2  = ScalarProductCancel[t1, q1, q2]
+			t2  = ApartFF[#, {q1, q2}]& /@ t2;
+			t2  = ApartFF[t1, {q1, q2}]
 		];
 		t3  = Collect2[t2,q1,q2];
 		If[ (FC2TLI/.{opt} /. Options[RussianTrick]) === True,

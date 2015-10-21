@@ -34,7 +34,7 @@ Options[ToTFI] = {
 	Method -> Automatic,
 	FDS -> True,
 	Collecting -> True,
-	SPC -> False
+	ApartFF -> False
 };
 
 
@@ -45,7 +45,7 @@ ToTFI[z_Plus, qqp_, pe_, opts:OptionsPattern[]] :=
 
 ToTFI[a_/;Head[a]=!=Plus,q_,p_/;Head[p]=!=Rule,opts:OptionsPattern[]] :=
 	(ToExpression["TFIRecurse"][
-	FCE[ToTFI[FeynAmpDenominatorCombine[FCI[Expand[FAD[{qq, mM}] Expand[SPC[a, q], q]]]], q, qq, p, opts]]/.
+	FCE[ToTFI[FDS[FCI[Expand[FAD[{qq, mM}] Expand[ApartFF[a, {q}], q]]],q], q, qq, p, opts]]/.
 		ToExpression["TFI"]:>ToExpression["TFR"]] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
 	) /; MemberQ[$ContextPath, "Tarcer`"];
 
@@ -85,11 +85,11 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		(*	Put the FADs back together *)
 		intsTFI2 = intsTFI2/. tfiLoopIntegral[x__]:> tfiLoopIntegral[FeynAmpDenominatorCombine[x]];
 
-		(* Before the conversion run FDS (and SPC) on true 2-loop integrals *)
+		(* Before the conversion run FDS (and ApartFF) on true 2-loop integrals *)
 		If [OptionValue[FDS],
 			intsTFI2 = intsTFI2/.
 			tfiLoopIntegral[x__]/;FreeQ2[x,{qq,mM}]:>
-				(x//FDS[#,q1,q2]&//Apart2//If[OptionValue[SPC],SPC[#,q1,q2,FDS->False],#]&) /. tfiLoopIntegral -> Identity;
+				(x//FDS[#,q1,q2]&//Apart2//If[OptionValue[ApartFF],ApartFF[#,{q1,q2}],#]&) /. tfiLoopIntegral -> Identity;
 			FCPrint[3, "ToTFI: Relevant 2-loop integrals after double FDS ", intsTFI2, FCDoControl->toTFIVerbose]
 		];
 
@@ -154,7 +154,7 @@ saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 	saveToTFI[z, q1,q2,p,opts] =
 	Catch[
-	Module[ {dim, et0, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs,tmp},
+	Module[ {dim, met, pp, deltap, t0, t1,t2,t3, dummyterm, result, pairs,tmp},
 		dim = Dimension /. {opts} /. Options[ToTFI];
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
@@ -177,21 +177,6 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 					If[ !FreeQ[t0, TLI],
 						t0 = FeynAmpDenominatorSimplify[TLI2FC[t0],FC2RHI->False]
 					];
-
-				(* added RM 20110819 *)
-					(*
-					If[ !FreeQ[et0 = FeynCalcExternal[t0], FAD[-p + q1 - q2]],
-						Throw[ saveToTFI[et0 /. q2 -> (-q2+q1)]]
-					];
-					If[ !FreeQ[et0 = FeynCalcExternal[t0], FAD[ p - q1 + q2]],
-						Throw[ saveToTFI[et0 /. q2 -> (-q2+q1)]]
-					];
-
-					(* TODO This should be actually done by FDS, not ToTFI *)
-					tmp = FCE[FeynAmpDenominatorSplit[t0]]/.FAD[{x_,_}]:>FAD[x];
-					If[ !FreeQ[tmp, FAD[ p + q1]] || !FreeQ[tmp, FAD[ p + q2]],
-						Throw[ saveToTFI[FCE[t0] /. {q1 -> q1-p, q2->q2-p},q1,q2,p,opts]]
-					];*)
 
 					pairs = Cases2[t0, Pair];
 					If[ !FreeQ[pairs, Plus],
