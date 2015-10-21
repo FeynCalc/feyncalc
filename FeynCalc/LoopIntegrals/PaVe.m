@@ -67,7 +67,7 @@ PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 
 (* scaleless n-point functions vanish in DR	*)
 PaVe[__,{0..},{0..}, OptionsPattern[]] :=
-	0/; OptionValue[PaVeAutoReduce];
+	0;
 
 (* but a non-zero coefficient of g_munu *)
 PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
