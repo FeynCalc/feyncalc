@@ -27,6 +27,12 @@ depend on all of the given loop momenta. Integrals
 that depend only on some of the loop momenta will be treated
 as non-loop terms and remain non-isolated"
 
+DropScaleless::usage =
+"DropScaleless is an option for FCLoopIsolate. When set to True,
+all the loop integrals that do not contain FeynAmpDenominator,
+i.e. contain only scalar products but no denominators, are set
+to zero.";
+
 FCLoopIsolate::fail =
 "FCLoopIsolate failed to isolate loop integrals in `1`!";
 
@@ -42,6 +48,7 @@ Options[FCLoopIsolate] = {
 	Collecting -> True,
 	DotSimplify -> True,
 	DiracGammaExpand -> True,
+	DropScaleless -> False,
 	Expanding -> True,
 	Isolate -> False,
 	IsolateNames -> KK,
@@ -91,6 +98,11 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			Message[FCLoopIsolate::fail, ex];
 			Abort[]
 		];
+
+		If[ OptionValue[DropScaleless],
+			res  = res /. OptionValue[Head][z__]/; FreeQ2[z,Join[{FeynAmpDenominator},PaVeHeadsList]] :> 0;
+		];
+
 		If[	OptionValue[Isolate],
 			res = Isolate[res,OptionValue[Head],IsolateNames->OptionValue[IsolateNames]]/.
 			OptionValue[Head][x_] :> OptionValue[Head][FRH[x]]
