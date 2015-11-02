@@ -1,0 +1,65 @@
+
+
+(* :Title: ApartFF.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ApartFF			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstApartFF =
+({
+{"fcstApartFF-ID1", "ApartFF[0,{}]", "0"},
+{"fcstApartFF-ID2", "ApartFF[1,{}]", "1"},
+{"fcstApartFF-ID3", "ApartFF[FAD[{q,m}],{}]//FCE", "FAD[{q, m}]"},
+{"fcstApartFF-ID4", "ApartFF[FAD[{q,m}],{q}]//FCE", "FAD[{q, m}]"},
+{"fcstApartFF-ID5", "ApartFF[FAD[q,{q,m}],{q}]//FCE",
+"FAD[{q, m}]/m^2"},
+{"fcstApartFF-ID6", "ApartFF[1+FAD[q,{q,m}],{q}]//FCE",
+"1 + FAD[{q, m}]/m^2"},
+{"fcstApartFF-ID7", "ApartFF[x+FAD[q,{q,m}],{q}]//FCE",
+"x + FAD[{q, m}]/m^2"},
+{"fcstApartFF-ID8", "ApartFF[x+y FAD[q,{q,m}],{q}]//FCE",
+"x + (y*FAD[{q, m}])/m^2"},
+{"fcstApartFF-ID9",
+"ApartFF[x+y FVD[q,mu]FVD[q,nu]FAD[q,{q,m}],{q}]//FCE",
+"x + (y*FAD[{q, m}]*FVD[q, mu]*FVD[q, nu])/m^2"},
+{"fcstApartFF-ID10", "ApartFF[SPD[q,p]FAD[{q,m},{q-p,0}],{q}]//FCE",
+	"-FAD[{q, m}]/2 + (FAD[q, {-p + q, m}]*(m^2 + SPD[p, p]))/2"},
+{"fcstApartFF-ID11",
+"ApartFF[SPD[q2,p]SPD[q1,p]FAD[{q1,m},{q2,m},q1-p,q2-p,q2-q1],{q1,\
+q2}]//FCE",
+"-FAD[{q1, m}, -p + q2, q1 - q2]/2 + FAD[{q1, m}, {q2, m}, -q1 + q2]/4 +
+(FAD[q2, q1, {-p + q1, m}, q1 - q2]*(m^2 + SPD[p, p]))/2 -
+(FAD[{q1, m}, {q2, m}, q1 - q2, -p + q1]*(m^2 + SPD[p, p]))/2 +
+(FAD[{q1, m}, {q2, m}, -p + q2, q1 - q2, -p + q1]*(m^2 + SPD[p, p])^2)/4"},
+{"fcstApartFF-ID12",
+"ApartFF[SPD[l,-p1+p3+p2]FAD[{l,m1},{l-p1+p3+p2,m3},l-p1+p2,l-k1],{\
+l}]//FCE",
+"-FAD[l, {l - p3, m3}, k1 + l - p1 + p2]/2 + FAD[{l, m1}, -k1 + l, l - p1 + p2]/2 -
+(FAD[{l, m1}, -k1 + l, l - p1 + p2, {l - p1 + p2 + p3, m3}]*(m1^2 - m3^2 + SPD[p1, p1] -
+2*SPD[p1, p2] - 2*SPD[p1, p3] + SPD[p2, p2] + 2*SPD[p2, p3] + SPD[p3, p3]))/2"},
+{"fcstApartFF-ID13",
+"ApartFF[SPD[l,p1-p3-p2]FAD[{l,m1},{l-p1+p3+p2,m3},l-p1+p2,l-k1],{\
+l}]//FCE",
+"FAD[l, {l - p3, m3}, k1 + l - p1 + p2]/2 - FAD[{l, m1}, -k1 + l, l - p1 + p2]/2 +
+(FAD[{l, m1}, -k1 + l, l - p1 + p2, {l - p1 + p2 + p3, m3}]*(m1^2 - m3^2 + SPD[p1, p1] -
+2*SPD[p1, p2] - 2*SPD[p1, p3] + SPD[p2, p2] + 2*SPD[p2, p3] + SPD[p3, p3]))/2"},
+{"fcstApartFF-ID14",
+"ApartFF[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[k1,l],{l}]//FCE",
+"FAD[{l, MC}, -k1 - k2 + l + p2]/2 - FAD[{l, MC}, {-k2 + l + p2, MC}]/2 +
+(FAD[{l, MC}, k1 + l, {-k2 + l + p2, MC}]*(MC^2 - SPD[k1, k1]))/2"},
+{"fcstApartFF-ID15",
+"ApartFF[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[l,k1+k2-p2],{l},\
+ExpandScalarProduct\[Rule]False]//FCE",
+"FAD[l, {-k1 + l, MC}]/2 - FAD[{l, MC}, {-k2 + l + p2, MC}]/2 + (FAD[{l, MC}, k1 + l,
+{-k2 + l + p2, MC}]*(MC^2 - SPD[k1, k1] - 2*SPD[k1, k2] + 2*SPD[k1, p2] - SPD[k2, k2] +
+2*SPD[k2, p2] - SPD[p2, p2]))/2"},
+{"fcstApartFF-ID16","ApartFF[SPD[p, l], {l}]","0"}
+})
