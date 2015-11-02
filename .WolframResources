@@ -1,5 +1,8 @@
 Resources[
     Version[1],
+    Sources[
+        Directory["~"]
+    ],
     ExecutionBuildCommand["<<FeynCalc`"],
     Paclet[
         PacletFolder["FeynCalc"],
