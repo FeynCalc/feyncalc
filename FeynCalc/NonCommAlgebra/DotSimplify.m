@@ -46,6 +46,9 @@ occure in amplitudes produced by FeynArts.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+dootpow;
+
 End[]
 
 Begin["`DotSimplify`Private`"]
@@ -72,7 +75,7 @@ Options[DotSimplify] = {Expanding -> True,
 
 DotSimplify[xxx_, opts___Rule] :=
 	Block[ {pid, ex, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
-	sdoot,simpf, actorules, ctorules, acomall, comall, simrel, dootpow,
+	sdoot,simpf, actorules, ctorules, acomall, comall, simrel,
 	dotpower,tic, dodot, commonTrace
 	},
 
@@ -389,15 +392,16 @@ DotSimplify[xxx_, opts___Rule] :=
 
 		(* If the same non-commutative object is multiplied with itself multiple times, write this as a power,i.e.
 			f.f.f.g.h.k -> f^3.g.h.k *)
-		dootpow[a__] :=
-			If[ FreeQ2[{a}, {DiracGamma,SUNT}],
-				Apply[DOT, (#[[1]]^Length[#])& /@ Split[{a}]],
-				DOT[a]
-			];
 		If[ dotpower === True,
 			x = x /. DOT -> dootpow /. dootpow -> DOT
 		];
 		x
+	];
+
+dootpow[a__] :=
+	If[ FreeQ2[{a}, {DiracGamma,SUNT}],
+		Apply[DOT, (#[[1]]^Length[#])& /@ Split[{a}]],
+		DOT[a]
 	];
 
 FCPrint[1,"DotSimplify.m loaded."];
