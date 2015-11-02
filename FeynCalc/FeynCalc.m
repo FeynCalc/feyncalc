@@ -72,6 +72,13 @@ If[ !ValueQ[Global`$LoadAddOns],
 	Global`$LoadAddOns = {}
 ];
 
+If[ !ValueQ[Global`$FCCloudTraditionalForm],
+	FeynCalc`$FCCloudTraditionalForm = True;
+	Remove[Global`$FCCloudTraditionalForm],
+	FeynCalc`$FCCloudTraditionalForm = Global`$FCCloudTraditionalForm;
+	Remove[Global`$FCCloudTraditionalForm]
+];
+
 If[ !ValueQ[FeynCalc`$FeynArtsDirectory],
 	FeynCalc`$FeynArtsDirectory = FileNameJoin[{FeynCalc`$FeynCalcDirectory, "FeynArts"}]
 ];
@@ -163,6 +170,11 @@ $FCCheckProgress::usage =
 during their evaluation. While this can be useful for long computations,
 on short expressions the progress bars make evaluating slightly slower.
 By default $FCCheckProgress is set to False.";
+
+$FCCloudTraditionalForm::usage=
+"$FCCloudTraditionalFormetermines whether the the cell output will be done \
+in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting
+$Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
 
 FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose
@@ -609,6 +621,7 @@ DiracSlash, GA, GAD, GAE, GS, GSD or GAE are present in expression.";
 Tr/:Options[Tr]:=Options[TR];
 Protect[Tr];
 
+
 If[ !$Notebooks && Global`$FeynCalcStartupMessages,
 	$PrePrint = FeynCalcForm;
 	WriteString["stdout",
@@ -741,7 +754,6 @@ If[ $LoadTARCER,
 	If[FreeQ[$ContextPath,"Tarcer`"],PrependTo[$ContextPath,"Tarcer`"]];
 ];
 
-
 BeginPackage["FeynCalc`"];
 If[ Global`$LoadAddOns=!={},
 	FCDeclareHeader/@Map[ToFileName[{$FeynCalcDirectory,  "AddOns",#},#<>".m"] &, Global`$LoadAddOns];
@@ -749,3 +761,7 @@ If[ Global`$LoadAddOns=!={},
 ];
 EndPackage[];
 
+
+If[	$CloudEvaluation && $FCCloudTraditionalForm,
+	$Post = TraditionalForm;
+];
