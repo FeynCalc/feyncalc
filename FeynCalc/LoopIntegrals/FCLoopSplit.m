@@ -47,6 +47,11 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
 			addToLoopScalar,tmp},
 
+		If[	MatchQ[lmoms,{{___}}],
+			Message[FCLoopSplit::fail, ex];
+			Abort[]
+		];
+
 		If[OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
