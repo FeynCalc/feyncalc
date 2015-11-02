@@ -62,7 +62,7 @@ fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z], Momentum[x_, _ : 4]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,lmoms,tmp, fd},
+	Block[ {res, null1, null2, ex,lmoms,tmp},
 
 		If[	MatchQ[lmoms0,{{___}}],
 			Message[FCLoopIsolate::fail, ex];
@@ -101,9 +101,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[FeynAmpDenominatorSplit],
-			ex = ex /. FeynAmpDenominator[props__]/; !FreeQ2[{props},lmoms] :>
-				fd[SelectFree[{props},Sequence@@lmoms]]*FeynAmpDenominator@@SelectNotFree[{props},Sequence@@lmoms] /.
-				fd[{}]:>1 /. fd[{pr__}]:>FeynAmpDenominator[pr]
+			ex = FeynAmpDenominatorSplit[ex,Momentum->lmoms]
 		];
 
 		res = (Map[(SelectFree[#, lmoms]*

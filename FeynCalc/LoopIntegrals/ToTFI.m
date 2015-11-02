@@ -77,7 +77,7 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 			Return[expr]
 		];
 
-		intsTFI = FeynAmpDenominatorSplit[intsTFI];
+		intsTFI = FeynAmpDenominatorSplit[intsTFI,Momentum->{q1,q2}];
 
 		(* Let us now isolate all the 2-loop integrals that depend on q1,q2 *)
 		intsTFI2 = FCLoopIsolate[intsTFI, {q1,q2}, FCI->True, MultiLoop->True, Head->tfiLoopIntegral];

@@ -19,5 +19,9 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorSplit = {
 	"FeynAmpDenominatorSplit[FCI[FAD[q1, q1 - p, q1 - q2, q2, q2 - p]]] // FCE",
 	"FAD[q1] FAD[-p + q1] FAD[q1 - q2] FAD[q2] FAD[-p + q2]"},
 {"fcstFeynAmpDenominatorSplit-ID2","FeynAmpDenominatorSplit[FCI[FAD[q1, q1 - p,
-	q1 - q2, q2, q2 - p]], q1]//FCE", "FAD[q2, -p + q2] FAD[q1, -p + q1, q1 - q2]"}
+	q1 - q2, q2, q2 - p]], Momentum->{q1}]//FCE", "FAD[q2, -p + q2] FAD[q1, -p + q1, q1 - q2]"},
+{"fcstFeynAmpDenominatorSplit-ID3",
+	"FeynAmpDenominatorSplit[FAD[q1, q2, p + k, q1 - p, p - k, q1, l, q3],Momentum -> {q1, q2, q3}] // FCE",
+	"FAD[k + p, -k + p, l] FAD[q1, q2, -p + q1, q1, q3]"
+}
 }

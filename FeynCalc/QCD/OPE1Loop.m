@@ -255,7 +255,7 @@ OPE1Loop[grname_,k_ /; Head[k] =!= List,
 				amp = Collect2[amp, k, Factoring -> False];
 				subfactor = 1(* Else *)
 				,
-				amp = FeynAmpDenominatorSplit[integ, k];
+				amp = FeynAmpDenominatorSplit[integ, Momentum->{k}];
 				If[ (Head[amp] === Times) || (Head[amp] === FeynAmpDenominator),
 					subfactor = SelectFree[amp, k];
 					FCPrint[2,"subfactor = ",subfactor//InputForm];

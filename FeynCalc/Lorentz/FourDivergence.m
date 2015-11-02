@@ -146,7 +146,7 @@ fourDerivative[x_, ve_]:=
 		nx = ExpandScalarProduct[nx, Momentum->{p/.Momentum[a_,_:4]:> a}, FCI->True];
 
 		If[ !FreeQ[nx, FeynAmpDenominator],
-			nx = FeynAmpDenominatorSplit[nx,p]
+			nx = FeynAmpDenominatorSplit[nx,Momentum->{p}]
 		];
 
 		(* This is the main part	*)

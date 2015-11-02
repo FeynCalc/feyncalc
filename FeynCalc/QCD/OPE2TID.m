@@ -366,7 +366,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 						Contract[Eps[yy]^2, EpsContract->True];
 					epsc[xy__] :=
 						If[ (EpsContract /. {opt} ) === False ||
-										  !FreeQ2[{xy}, {k1,k2}],
+										!FreeQ2[{xy}, {k1,k2}],
 							Eps[xy],
 							ChangeDimension[eeeps[xy], EpsContract /. {opt} /.
 							Options[OPE2TID]] /. {eeeps[w__]^2 :> eepcsa[w]} /.
@@ -2383,8 +2383,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 								];
 								fcheck[ka_, aa__] :=
 									Block[ {ww},
-										ww = SelectNotFree[FeynAmpDenominatorSplit[
-																				FeynAmpDenominator[aa], ka], ka];
+										ww = SelectNotFree[FeynAmpDenominatorSplit[FeynAmpDenominator[aa], Momentum->{ka}], ka];
 										If[ (!FreeQ[{aa}, p])(* not necessary; CHANGE 11/94
 											&& (!FreeQ[ww, SelectFree[{k1,k2},ka][[1]]])
 										*),

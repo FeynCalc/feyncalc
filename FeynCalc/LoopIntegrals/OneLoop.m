@@ -387,8 +387,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				$fourfermion = True
 			];
 			oneamp00 = oneamp;
-			oneamp = FeynAmpDenominatorSplit[
-			oneamp//Trick//FeynAmpDenominatorCombine, q];
+			oneamp = FeynAmpDenominatorSplit[oneamp//Trick//FeynAmpDenominatorCombine, Momentum->{q}];
 			oneamp = oneamp /. FeynAmpDenominator[xyz__] :>
 						PropagatorDenominatorExplicit[FeynAmpDenominator[xyz]] /;
 						FreeQ[{xyz}, q];

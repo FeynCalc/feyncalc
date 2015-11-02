@@ -32,10 +32,8 @@ IFPDOn[exp_,qu__] :=
 		exp,
 		Block[ {int,qq,sub,t0,t1,t2,t3,t4,MyHold,feynsub,ifnu,
 			condition,pa,unsameq, checkm, checkp, thr,t0r,bb},
-			If[ !FreeQ2[exp,{SP,SPD,FAD}],
-				int = FeynAmpDenominatorSplit[FeynCalcInternal[exp]],
-				int = FeynAmpDenominatorSplit[exp]
-			];
+
+			int = FeynAmpDenominatorSplit[exp];
 			t0 = Cases2[int, FeynAmpDenominator];
 			FCPrint[3,"t0: ",t0];
 			(* Replace things like 1/[(-p-q)^2-m^2] with 1/[(p+q)^2-m^2]*)

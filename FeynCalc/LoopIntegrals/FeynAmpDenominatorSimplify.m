@@ -54,7 +54,7 @@ fdsVerbose::usage="";
 FDS = FeynAmpDenominatorSimplify;
 
 Options[FeynAmpDenominatorSimplify] = {
-	Apart2 -> True,
+	ApartFF -> True,
 	Collecting -> True,
 	ExpandScalarProduct -> True,
 	FCI -> False,
@@ -561,7 +561,7 @@ FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]]
 		];
 
 		(*	Split FADs to extract only loop momenta dependent pieces *)
-		intsFDS = FeynAmpDenominatorSplit[intsFDS];
+		intsFDS = FeynAmpDenominatorSplit[intsFDS,Momentum->{q1,q2}];
 
 		(* Let us now isolate all the 2-loop and 1-loop integrals that depend on q1,q2 *)
 		intsFDS2 = FCLoopIsolate[intsFDS, {q1,q2}, FCI->True, MultiLoop->True, Head->fds2Loops];
@@ -795,8 +795,8 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 			]
 		];
 
-		If[ (Apart2 /. {opt} /. Options[FDS]),
-			res = Apart2[res]
+		If[ (ApartFF /. {opt} /. Options[FDS]),
+			res = ApartFF[res,{q1,q2}]
 		];
 
 		FCPrint[1,"FDS: oldFeynAmpDenominatorSimplify: Leaving 2-loop FDS with", res, FCDoControl->fdsVerbose];
