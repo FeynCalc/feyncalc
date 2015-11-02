@@ -8,6 +8,8 @@ cd $DIR
 
 if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 
+#ToTFI
+$MATH -nopromt -script Checks/CheckToTFI.m &&
 #Tensor decompositions
 $MATH -nopromt -script ../FeynCalc/Examples/TID/VerifyTIDLOneLoop.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/TID/VerifyTIDLTwoLoop.m &&
