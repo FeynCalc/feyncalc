@@ -29,8 +29,8 @@ Tests`LoopIntegrals`fcstTID =
 	D*FVD[q, mu]*FVD[q, nu] - MTD[mu, nu]*SPD[p, p] -
 	2*MTD[mu, nu]*SPD[p, q] - MTD[mu, nu]*SPD[q, q]))/(4*(1 - D))"},
 {"fcstTID-ID11", "TID[SP[a + b, c + d] + FVD[l, mu] FVD[l, nu] FAD[{l, m}], l,
-	ExpandScalarProduct -> False] // FCE","(m^2*FAD[{l, m}]*
-	MTD[mu, nu])/D + SPD[a + b, c + d]"},
+	ExpandScalarProduct -> False] // FCE",
+	"(m^2*FAD[{l, m}]*MTD[mu, nu])/D + SPD[a, c] + SPD[a, d] + SPD[b, c] + SPD[b, d]"},
 {"fcstTID-ID12", "MatchQ[TID[SP[a + b, c + d] FVD[l, mu] FVD[l, nu] FAD[l, {l + p + q}],
 	l, Isolate -> All] //FCE, -(1/4) (FAD[l, l - p - q]*HoldForm[ax_]*HoldForm[bx_]*
 	HoldForm[cx_]^(-1))]","True"}

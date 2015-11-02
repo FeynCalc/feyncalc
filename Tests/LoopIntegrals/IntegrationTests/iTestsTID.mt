@@ -34,6 +34,7 @@ ScalarProduct[qst, pst] = (m^2)/2;
 	the results we get from TID can have slightly different form depending on the
 	integrals that TID had to work out before. Of course all those are exactly the
 	same (just written in a different way) and we use Simplify to check the equivalence	*)
+
 Map[Test[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]]]&,
 	Join[
 		Tests`LoopIntegrals`fcitTIDUsePaVeBasisA,

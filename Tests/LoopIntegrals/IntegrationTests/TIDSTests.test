@@ -4,7 +4,7 @@ Tests`LoopIntegrals`fcitTIDSTests =
 "TID[FVD[kst+pst-qst,\[Mu]]FAD[{kst,m},kst-qst,kst-qst+pst],kst]\
 //FCE", "FAD[kst, kst - pst, {kst - qst, m}]*(2*FVD[pst, \[Mu]] - \
 3*FVD[qst, \[Mu]]) + (FAD[kst, kst - pst]*(FVD[pst, \[Mu]] - \
-2*FVD[qst, \[Mu]]))/m^2 - (FAD[kst, {kst - pst + qst, m}]*(FVD[pst, \
+2*FVD[qst, \[Mu]]))/m^2 - (FAD[{kst, m}, kst - pst + qst]*(FVD[pst, \
 \[Mu]] - FVD[qst, \[Mu]]))/m^2 + (FAD[kst, {kst - qst, m}]*FVD[qst, \
 \[Mu]])/m^2"},
 {"fcitTIDSTests-ID2",
@@ -17,47 +17,44 @@ FVD[kst+pst,\[Alpha]]FAD[kst+pst,kst+qst,kst,kst],kst]//FCE",
 "-(((-2 + D)*FAD[kst, kst, kst - qst]*(FVD[pst, \[Alpha]] - \
 FVD[qst, \[Alpha]])*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/((2 - D)*m^2)) + \
 ((-2 + D)*FAD[kst, kst, kst - pst, kst - qst]*(FVD[pst, \[Alpha]] - \
-FVD[qst, \[Alpha]])*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/(2 - D) + \
-(FAD[kst, kst - pst, kst - qst]*(-2*FVD[pst, \[Alpha]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Mu]] + D*FVD[pst, \[Alpha]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Mu]] + 4*FVD[pst, \[Nu]]*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Mu]] - 2*FVD[pst, \[Alpha]]*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] + D*FVD[pst, \[Alpha]]*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] + 4*FVD[pst, \[Mu]]*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \[Mu]]*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Nu]] + 8*FVD[pst, \[Alpha]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] + 2*(-2 + D)*FVD[pst, \[Alpha]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] - 4*(-1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \[Alpha]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] - 12*FVD[qst, \[Alpha]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] - 3*(-2 + D)*FVD[qst, \[Alpha]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] + 6*D*FVD[qst, \[Alpha]]*FVD[qst, \
+FVD[qst, \[Alpha]])*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/(2 - D) - \
+(FAD[kst, kst - pst, kst - qst]*(2*FVD[pst, \[Alpha]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Mu]] - D*FVD[pst, \[Alpha]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Mu]] - 4*FVD[pst, \[Nu]]*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Mu]] + (2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Mu]] + 2*FVD[pst, \[Alpha]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - D*FVD[pst, \[Alpha]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 4*FVD[pst, \[Mu]]*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Nu]] - 8*FVD[pst, \[Alpha]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*(-2 + D)*FVD[pst, \[Alpha]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 4*(-1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \[Alpha]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 12*FVD[qst, \[Alpha]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 3*(-2 + D)*FVD[qst, \[Alpha]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - 6*D*FVD[qst, \[Alpha]]*FVD[qst, \
 \[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^2) + (FAD[kst, kst - pst + \
-qst]*(4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] + \
-2*D*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] - 2*(2 + \
+qst]*((-2 + D)*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + \
+4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] - (2 + \
 D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] + 4*FVD[pst, \
 \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*(-1 + D)*FVD[pst, \
-\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 3*D*FVD[pst, \
-\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*(2 + D)*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + D*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \
 \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 8*FVD[pst, \
-\[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] - 4*(1 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] + 5*(2 + D)*FVD[pst, \
+\[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] + 2*(2 + D)*FVD[pst, \
 \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] + 4*FVD[pst, \
 \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*(-1 + D)*FVD[pst, \
-\[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 3*D*FVD[pst, \
-\[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*(2 + D)*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + D*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \
 \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 8*FVD[pst, \
-\[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] - 4*(1 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] + 2*(2 + D)*FVD[pst, \
 \[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] - 8*FVD[pst, \
 \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + (-2 + D)*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 4*(1 + D)*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \
+\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(2 + D)*FVD[pst, \
 \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 4*(-2 + D)*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 18*D*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 16*(1 + D)*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 3*(-2 + D)*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*D*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 12*(1 + D)*FVD[qst, \
 \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^4) + (FAD[kst, \
 kst - qst]*(-(D*FVD[pst, \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]]) - \
 4*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] + (2 + \
@@ -72,37 +69,38 @@ D)*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] - D*FVD[pst, \
 \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(-2 + D)*FVD[qst, \
 \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 6*D*FVD[qst, \
 \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + m^2*FVD[pst, \
-\[Alpha]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^4) - (FAD[kst, kst, kst - \
-pst]*(2*(-2 + D)*(-1 + D)*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]] - (-2 + D)*D*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]] + 2*D^2*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] - \
-2*(-1 + D)*(2 + D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] \
-- 4*(-1 + D)^2*FVD[pst, \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + \
-4*(-1 + D)*D*FVD[pst, \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + \
-2*D^2*FVD[pst, \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*(-1 + \
-D)*(2 + D)*FVD[pst, \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
-4*D*(1 + D)*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] + \
-4*(-1 + D)*(2 + D)*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] \
-- 4*(-1 + D)^2*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + \
-4*(-1 + D)*D*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + \
-2*D^2*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*(-1 + \
-D)*(2 + D)*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
-4*D*(1 + D)*FVD[pst, \[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] + \
+\[Alpha]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^4) + (FAD[kst, kst, kst - \
+pst]*(-2*(-2 + D)*(-1 + D)*FVD[pst, \[Alpha]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]] + (-2 + D)*D*FVD[pst, \[Alpha]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]] - 2*D^2*FVD[pst, \[Mu]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Alpha]] + 2*(-1 + D)*(2 + D)*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]] + 4*(-1 + D)^2*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 4*(-1 + D)*D*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*D^2*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 2*(-1 + D)*(2 + \
+D)*FVD[pst, \[Alpha]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 4*D*(1 + \
+D)*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] - 4*(-1 + D)*(2 \
++ D)*FVD[pst, \[Nu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]] + 4*(-1 + \
+D)^2*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 4*(-1 + \
+D)*D*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
+2*D^2*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 2*(-1 + \
+D)*(2 + D)*FVD[pst, \[Alpha]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + \
+4*D*(1 + D)*FVD[pst, \[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] - \
 4*(-1 + D)*(2 + D)*FVD[pst, \[Mu]]*FVD[qst, \[Alpha]]*FVD[qst, \[Nu]] \
-- 8*(-1 + D)^2*FVD[pst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - \
-4*D*(1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
++ 8*(-1 + D)^2*FVD[pst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
+4*D*(1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - \
 4*(-1 + D)*(2 + D)*FVD[pst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] \
-+ 24*(-1 + D)*D*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - \
+- 24*(-1 + D)*D*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
 24*(-1 + D)*(1 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] + 8*D*(1 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] + 2*(-1 + D)*m^2*FVD[pst, \[Nu]]*MTD[\[Alpha], \[Mu]] - \
-D*m^2*FVD[pst, \[Nu]]*MTD[\[Alpha], \[Mu]] - 2*(-1 + D)*m^2*FVD[qst, \
-\[Nu]]*MTD[\[Alpha], \[Mu]] + 2*D*m^2*FVD[qst, \[Nu]]*MTD[\[Alpha], \
-\[Mu]] + 2*(-1 + D)*m^2*FVD[pst, \[Mu]]*MTD[\[Alpha], \[Nu]] - \
-D*m^2*FVD[pst, \[Mu]]*MTD[\[Alpha], \[Nu]] - 2*(-1 + D)*m^2*FVD[qst, \
-\[Mu]]*MTD[\[Alpha], \[Nu]] + 2*D*m^2*FVD[qst, \[Mu]]*MTD[\[Alpha], \
-\[Nu]] - D*m^2*FVD[pst, \[Alpha]]*MTD[\[Mu], \[Nu]] - 2*(-1 + \
-D)*m^2*FVD[qst, \[Alpha]]*MTD[\[Mu], \[Nu]] + 2*D*m^2*FVD[qst, \
+\[Nu]] - 8*D*(1 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Mu]]*FVD[qst, \
+\[Nu]] - 2*(-1 + D)*m^2*FVD[pst, \[Nu]]*MTD[\[Alpha], \[Mu]] + \
+D*m^2*FVD[pst, \[Nu]]*MTD[\[Alpha], \[Mu]] + 2*(-1 + D)*m^2*FVD[qst, \
+\[Nu]]*MTD[\[Alpha], \[Mu]] - 2*D*m^2*FVD[qst, \[Nu]]*MTD[\[Alpha], \
+\[Mu]] - 2*(-1 + D)*m^2*FVD[pst, \[Mu]]*MTD[\[Alpha], \[Nu]] + \
+D*m^2*FVD[pst, \[Mu]]*MTD[\[Alpha], \[Nu]] + 2*(-1 + D)*m^2*FVD[qst, \
+\[Mu]]*MTD[\[Alpha], \[Nu]] - 2*D*m^2*FVD[qst, \[Mu]]*MTD[\[Alpha], \
+\[Nu]] + D*m^2*FVD[pst, \[Alpha]]*MTD[\[Mu], \[Nu]] + 2*(-1 + \
+D)*m^2*FVD[qst, \[Alpha]]*MTD[\[Mu], \[Nu]] - 2*D*m^2*FVD[qst, \
 \[Alpha]]*MTD[\[Mu], \[Nu]]))/(4*(2 - D)*(-1 + D)*m^2) - (FAD[kst, \
 kst - pst]*(3*(-2 + D)*(-1 + D)*FVD[pst, \[Alpha]]*FVD[pst, \
 \[Mu]]*FVD[pst, \[Nu]] - (-2 + D)*(-3 + 2*D)*FVD[pst, \
@@ -150,12 +148,12 @@ D)*m^4)"},
 {"fcitTIDSTests-ID4",
 "TID[FVD[kst,\[Beta]]FAD[kst+qst,{kst+qst,m},kst,kst+pst],kst]\
 //FCE", "(FAD[kst, kst - pst, {kst - qst, m}]*(FVD[pst, \[Beta]] - \
-3*FVD[qst, \[Beta]]))/m^2 - (FAD[kst, {kst - pst + qst, m}]*(FVD[pst, \
-\[Beta]] - FVD[qst, \[Beta]]))/m^4 - (FAD[kst, kst - qst]*FVD[qst, \
-\[Beta]])/m^4 + (FAD[kst, {kst - qst, m}]*FVD[qst, \[Beta]])/m^4 + \
-(FAD[kst, kst - qst, kst + pst - qst]*FVD[qst, \[Beta]])/m^2 + \
-(FAD[kst, kst - pst + qst]*(m^2*FVD[pst, \[Beta]] - m^2*FVD[qst, \
-\[Beta]]))/m^6"},
+3*FVD[qst, \[Beta]]))/m^2 + (FAD[kst, kst - pst + qst]*(FVD[pst, \
+\[Beta]] - FVD[qst, \[Beta]]))/m^4 - (FAD[{kst, m}, kst - pst + \
+qst]*(FVD[pst, \[Beta]] - FVD[qst, \[Beta]]))/m^4 - (FAD[kst, kst - \
+qst]*FVD[qst, \[Beta]])/m^4 + (FAD[kst, {kst - qst, m}]*FVD[qst, \
+\[Beta]])/m^4 + (FAD[kst, kst - pst, kst - qst]*FVD[qst, \
+\[Beta]])/m^2"},
 {"fcitTIDSTests-ID5",
 "TID[FVD[kst+pst-qst,\[Mu]]FAD[{kst,m},kst-qst,kst-qst,kst-qst+pst]\
 ,kst]//FCE",
@@ -168,530 +166,489 @@ qst, m}]*FVD[qst, \[Mu]])/m^2"},
 "TID[FVD[kst,\[Beta]]FVD[kst+pst,\[Mu]] \
 FVD[kst+pst,\[Nu]]FAD[kst+qst,{kst+qst,m},kst,kst+pst],kst,\
 PaVeAutoReduce\[Rule]False]//FCE",
-"(FAD[kst, kst - qst, kst + pst - qst]*FVD[qst, \[Beta]]*(FVD[pst, \
-\[Mu]] - FVD[qst, \[Mu]])*(FVD[pst, \[Nu]] - FVD[qst, \[Nu]]))/m^2 - \
-(FAD[kst, kst - qst]*FVD[qst, \[Beta]]*(FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]] - 2*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] + 3*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/m^4 + \
-(FAD[kst, kst - pst + qst]*(m^2*FVD[pst, \[Beta]]*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]] - 3*m^2*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]] - m^2*FVD[pst, \[Beta]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Mu]] + 3*m^2*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]] - m^2*FVD[pst, \[Beta]]*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] + 3*m^2*FVD[pst, \[Mu]]*FVD[qst, \
-\[Beta]]*FVD[qst, \[Nu]] + m^2*FVD[pst, \[Beta]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] - 3*m^2*FVD[qst, \[Beta]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]]))/m^6 - (FAD[kst, kst - pst, {kst - qst, \
-m}]*(-((2 - D)*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]) + \
-3*(-2 + D)*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + 3*(2 - \
-D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 4*(-1 + \
-D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 4*D*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - (2 + D)*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 2*(-1 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 3*D*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + (-2 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 8*(-1 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 4*(1 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 5*(2 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 2*(-1 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 3*D*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (-2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 8*(-1 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(1 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(1 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*FVD[qst, \
+"-((FAD[kst, kst - qst]*FVD[qst, \[Beta]]*((2 - D)*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]] + (-2 + D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + \
+(-2 + D)*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^4)) + (FAD[kst, kst - pst, kst - \
+qst]*FVD[qst, \[Beta]]*((2 - D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + (-2 \
++ D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + (-2 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*FVD[qst, \[Mu]]*FVD[qst, \
+\[Nu]]))/((2 - D)*m^2) - (FAD[kst, kst - pst + qst]*(-((2 - \
+D)*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]) + 4*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + (2 - D)*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 2*D*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 2*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - D*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 8*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] - 2*(-2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 4*(-1 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + (2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 2*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - D*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \
+\[Nu]] - 8*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 2*(-2 \
++ D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(-1 + \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + (2 + \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*FVD[pst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 3*(-2 + D)*FVD[qst, \
 \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 6*D*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 20*(1 + D)*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 4*m^2*FVD[pst, \[Nu]]*MTD[\
-\[Beta], \[Mu]] - 6*m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + \
-4*m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] - 6*m^2*FVD[qst, \
-\[Mu]]*MTD[\[Beta], \[Nu]] + 2*m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \
-\[Nu]] - 6*m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^2) + \
-(FAD[kst, {kst - pst + qst, m}]*(-((2 - D)*FVD[pst, \[Beta]]*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]) + (-2 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^4) + (FAD[{kst, \
+m}, kst - pst + qst]*(-((2 - D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]) + 3*(-2 + D)*FVD[pst, \[Beta]]*FVD[pst, \
 \[Mu]]*FVD[pst, \[Nu]] + 4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
 \[Beta]] + (2 - D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] \
-- 4*D*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 3*D*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 12*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 3*(-2 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 4*(-1 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 4*(1 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + (2 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 3*D*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 12*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 3*(-2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(-1 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(1 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 8*FVD[pst, \
+- 4*(-1 + D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - \
+2*D*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 2*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*(-1 + D)*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*D*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 8*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] - 2*(-2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 4*(-1 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 4*(1 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 2*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*(-1 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*D*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 8*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \
+\[Nu]] - 2*(-2 + D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] \
++ 4*(-1 + D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(1 \
++ D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - (2 + \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*FVD[pst, \
 \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 4*(1 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 24*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 7*(-2 + D)*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 6*D*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 3*(-2 + D)*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 6*D*FVD[qst, \
 \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 8*(1 + D)*FVD[qst, \
 \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + m^2*FVD[pst, \[Nu]]*MTD[\
-\[Beta], \[Mu]] - m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + \
-m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] - m^2*FVD[qst, \[Mu]]*MTD[\
-\[Beta], \[Nu]] + m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] - \
-m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^4) + (FAD[{kst, \
-m}]*(-4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + (2 + \
-D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 4*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 12*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 4*(2 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 4*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 12*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*(2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 12*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 4*(2 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 24*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*(1 + D)*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + m^2*FVD[qst, \[Nu]]*MTD[\
-\[Beta], \[Mu]] + m^2*FVD[qst, \[Mu]]*MTD[\[Beta], \[Nu]] + \
-m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^6) - (FAD[kst, \
-{kst - qst, m}]*(-((2 - D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]]) + 2*D*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + \
-(2 + D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + \
-D*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + (2 + \
-D)*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (-2 + \
-D)*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 4*(-1 + \
-D)*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 5*(2 + \
-D)*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + D*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*(-1 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 5*(2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 5*(2 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + (-2 + D)*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 6*D*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*(1 + D)*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 2*m^2*FVD[pst, \[Nu]]*MTD[\
-\[Beta], \[Mu]] + 4*m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] - \
-2*m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] + 4*m^2*FVD[qst, \
-\[Mu]]*MTD[\[Beta], \[Nu]] - m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] \
-+ 4*m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^4) - \
-(FAD[kst, kst - pst]*(8*(-2 + D)*(-1 + D)*m^8*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] - (-2 + D)*D*m^8*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + (-2 + D)*(2*(-1 + D) + \
-D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + 8*(-1 + \
-D)*m^8*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 8*(2 - \
-D)*(-1 + D)*m^8*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - \
-6*(-2 + D)*(-1 + D)*m^8*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]] - 8*(-1 + D)^2*m^8*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]] + (-2 + D)*D*m^8*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]] - 12*(-1 + D)*D*m^8*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]] - 2*(-1 + D)*(2 + D)*m^8*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]] + D*(2 + D)*m^8*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]] - 2*D*(2*(-1 + D) + D)*m^8*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 4*(2 - D)*(-1 + \
-D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 4*(-2 + \
-D)*(-1 + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
-4*(-1 + D)^2*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + \
-(-2 + D)*D*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
-6*(-1 + D)*D*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
-2*(-1 + D)*(2 + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Mu]] + D*(2 + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Mu]] - 2*D*(2*(-1 + D) + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Mu]] - 8*(-1 + D)*m^8*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]] + 20*(2 - D)*(-1 + D)*m^8*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 8*(-2 + D)*(-1 + \
-D)*m^8*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 24*(-1 + \
-D)^2*m^8*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - (-2 + \
-D)*D*m^8*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 8*(-1 + \
-D)*D*m^8*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 12*(-1 + \
-D)*(2 + D)*m^8*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - \
-3*D*(2 + D)*m^8*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + \
-4*(1 + D)*(2*(-1 + D) + D)*m^8*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]] - 4*(2 - D)*(-1 + D)*m^8*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 4*(-2 + D)*(-1 + \
-D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 4*(-1 + \
-D)^2*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (-2 + \
-D)*D*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 6*(-1 + \
-D)*D*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*(-1 + \
-D)*(2 + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + \
-D*(2 + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
-2*D*(2*(-1 + D) + D)*m^8*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \
-\[Nu]] - 8*(-1 + D)*m^8*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \
-\[Nu]] + 20*(2 - D)*(-1 + D)*m^8*FVD[pst, \[Mu]]*FVD[qst, \
-\[Beta]]*FVD[qst, \[Nu]] + 8*(-2 + D)*(-1 + D)*m^8*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 24*(-1 + D)^2*m^8*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - (-2 + D)*D*m^8*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 8*(-1 + D)*D*m^8*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 12*(-1 + D)*(2 + \
-D)*m^8*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 3*D*(2 + \
-D)*m^8*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(1 + \
-D)*(2*(-1 + D) + D)*m^8*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \
-\[Nu]] + 8*(-1 + D)*m^8*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] + 4*(2 - D)*(-1 + D)*m^8*FVD[pst, \[Beta]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] + 4*(-2 + D)*(-1 + D)*m^8*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*D*m^8*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 4*(-1 + D)*D*m^8*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*(-1 + D)*(2 + \
-D)*m^8*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 3*D*(2 + \
-D)*m^8*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 4*(1 + \
-D)*(2*(-1 + D) + D)*m^8*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] - 24*(2 - D)*(-1 + D)*m^8*FVD[qst, \[Beta]]*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] - 12*(-2 + D)*(-1 + D)*m^8*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(-2 + D)*D*m^8*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 36*(-1 + D)*D*m^8*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 24*(-1 + D)*(1 + \
-D)*m^8*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 6*D*(2 + \
-D)*m^8*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 8*(1 + \
-D)*(2*(-1 + D) + D)*m^8*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] + 8*(-1 + D)*m^10*FVD[pst, \[Nu]]*MTD[\[Beta], \[Mu]] - \
-D*m^10*FVD[pst, \[Nu]]*MTD[\[Beta], \[Mu]] + (2*(-1 + D) + \
-D)*m^10*FVD[pst, \[Nu]]*MTD[\[Beta], \[Mu]] - 12*(-1 + \
-D)*m^10*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + 2*D*m^10*FVD[qst, \
-\[Nu]]*MTD[\[Beta], \[Mu]] - 2*(2*(-1 + D) + D)*m^10*FVD[qst, \
-\[Nu]]*MTD[\[Beta], \[Mu]] + 8*(-1 + D)*m^10*FVD[pst, \[Mu]]*MTD[\
-\[Beta], \[Nu]] - D*m^10*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] + (2*(-1 \
-+ D) + D)*m^10*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] - 12*(-1 + \
-D)*m^10*FVD[qst, \[Mu]]*MTD[\[Beta], \[Nu]] + 2*D*m^10*FVD[qst, \
-\[Mu]]*MTD[\[Beta], \[Nu]] - 2*(2*(-1 + D) + D)*m^10*FVD[qst, \
-\[Mu]]*MTD[\[Beta], \[Nu]] + 4*(-1 + D)*m^10*FVD[pst, \[Beta]]*MTD[\
-\[Mu], \[Nu]] - D*m^10*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] + (2*(-1 + \
-D) + D)*m^10*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] - 12*(-1 + \
-D)*m^10*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]] + 2*D*m^10*FVD[qst, \
-\[Beta]]*MTD[\[Mu], \[Nu]] - 2*(2*(-1 + D) + D)*m^10*FVD[qst, \
-\[Beta]]*MTD[\[Mu], \[Nu]]))/(4*(2 - D)*(-1 + D)*m^12) - \
-((2*I)*Pi^2*((-2 + D)*m^6*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]] - (3*(-2 + D)*m^6*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Beta]])/2 - (-2 + D)*m^6*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \
-\[Mu]] + 2*(-2 + D)*m^6*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \
-\[Mu]] - (-2 + D)*m^6*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \
-\[Nu]] + 2*(-2 + D)*m^6*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \
-\[Nu]] + (-2 + D)*m^6*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] - 3*(-2 + D)*m^6*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]])*PaVe[1, {0}, {0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> \
-False])/((2 - D)*m^10) - (I*Pi^2*((-2 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + 4*m^2*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 4*(-1 + D)*m^2*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 4*D*m^2*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 2*(2 + D)*m^2*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 4*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*(-1 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 3*D*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*(2 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 8*m^2*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 2*(-2 + D)*m^2*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - 4*(1 + D)*m^2*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 6*(2 + D)*m^2*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 4*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*(-1 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 3*D*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*(2 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 8*m^2*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 2*(-2 + D)*m^2*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*(1 + D)*m^2*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 6*(2 + D)*m^2*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 8*m^2*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 4*(1 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 6*(2 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*m^2*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 6*(-2 + D)*m^2*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*D*m^2*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 16*(1 + D)*m^2*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - m^4*FVD[qst, \[Nu]]*MTD[\
-\[Beta], \[Mu]] - m^4*FVD[qst, \[Mu]]*MTD[\[Beta], \[Nu]] - \
-m^4*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]])*PaVe[1, {0}, {0, m^2}, \
-PaVeAutoOrder -> True, PaVeAutoReduce -> False])/((2 - D)*m^6) + \
-((4*I)*(-2 + D)*Pi^2*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]]*PaVe[0, 0, {0}, {0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> \
-False])/((2 - D)*m^6) - ((2*I)*Pi^2*(-((2 + D)*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]) - (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 2*(2 + D)*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 2*(2 + D)*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 2*(2 + D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*D*FVD[qst, \
+\[Beta], \[Mu]] + m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] + \
+m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^4) - (FAD[kst, \
+kst - pst, {kst - qst, m}]*(-((2 - D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]) + 3*(-2 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]] + 3*(2 - D)*FVD[pst, \[Mu]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]] - 4*(-1 + D)*FVD[pst, \[Mu]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]] - 4*D*FVD[pst, \[Mu]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]] - (2 + D)*FVD[pst, \[Mu]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]] - 2*(-1 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Mu]] - 3*D*FVD[pst, \[Beta]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Nu]]*FVD[qst, \[Mu]] + (-2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 8*(-1 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 4*(1 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] + 5*(2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] - 2*(-1 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 3*D*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] + (-2 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Nu]] + 8*(-1 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Nu]] + 4*(1 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Nu]] + 4*(1 + D)*FVD[pst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - 6*D*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - 20*(1 + D)*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 4*m^2*FVD[pst, \[Nu]]*MTD[\[Beta], \[Mu]] - \
+6*m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + 4*m^2*FVD[pst, \
+\[Mu]]*MTD[\[Beta], \[Nu]] - 6*m^2*FVD[qst, \[Mu]]*MTD[\[Beta], \
+\[Nu]] + 2*m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] - 6*m^2*FVD[qst, \
+\[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^2) + (FAD[kst, {kst - qst, \
+m}]*((2 - D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - \
+2*D*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - (2 + \
+D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - D*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (2 + D)*FVD[pst, \
+\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + (-2 + D)*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 4*(-1 + D)*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 5*(2 + D)*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - D*FVD[pst, \
+\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \
+\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (-2 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*(-1 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 5*(2 + D)*FVD[pst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 6*D*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 12*(1 + D)*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*m^2*FVD[pst, \[Nu]]*MTD[\
+\[Beta], \[Mu]] - 4*m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + \
+2*m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] - 4*m^2*FVD[qst, \
+\[Mu]]*MTD[\[Beta], \[Nu]] + m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] \
+- 4*m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]]))/((2 - D)*m^4) + \
+(FAD[kst, kst - pst]*(-8*(-2 + D)*(-1 + D)*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]] + (-2 + D)*D*FVD[pst, \[Beta]]*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]] - (-2 + D)*(2*(-1 + D) + D)*FVD[pst, \
+\[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + 16*(-1 + D)^2*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 2*D^2*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 4*(-1 + D)*(2 + \
+D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 2*D*(2*(-1 + \
+D) + D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + 8*(-1 + \
+D)^2*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
+2*D^2*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 4*(-1 + \
+D)*(2 + D)*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + \
+2*D*(2*(-1 + D) + D)*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \
+\[Mu]] - 16*(-1 + D)^2*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]] + 4*D*(1 + D)*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]] - 16*(-1 + D)*(2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] - 4*(1 + D)*(2*(-1 + D) + D)*FVD[pst, \
+\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 8*(-1 + D)^2*FVD[pst, \
+\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*D^2*FVD[pst, \
+\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 4*(-1 + D)*(2 + \
+D)*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 2*D*(2*(-1 + \
+D) + D)*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 16*(-1 + \
+D)^2*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 4*D*(1 + \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 16*(-1 + D)*(2 \
++ D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*(1 + \
+D)*(2*(-1 + D) + D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] \
++ 4*D*(1 + D)*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - \
+16*(-1 + D)*(2 + D)*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] \
+- 4*(1 + D)*(2*(-1 + D) + D)*FVD[pst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 48*(-1 + D)*(1 + D)*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 8*D*(1 + D)*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 8*(1 + D)*(2*(-1 + D) + \
+D)*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 8*(-1 + \
+D)*m^2*FVD[pst, \[Nu]]*MTD[\[Beta], \[Mu]] + D*m^2*FVD[pst, \
+\[Nu]]*MTD[\[Beta], \[Mu]] - (2*(-1 + D) + D)*m^2*FVD[pst, \
+\[Nu]]*MTD[\[Beta], \[Mu]] + 12*(-1 + D)*m^2*FVD[qst, \[Nu]]*MTD[\
+\[Beta], \[Mu]] - 2*D*m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + \
+2*(2*(-1 + D) + D)*m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] - 8*(-1 + \
+D)*m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] + D*m^2*FVD[pst, \
+\[Mu]]*MTD[\[Beta], \[Nu]] - (2*(-1 + D) + D)*m^2*FVD[pst, \
+\[Mu]]*MTD[\[Beta], \[Nu]] + 12*(-1 + D)*m^2*FVD[qst, \[Mu]]*MTD[\
+\[Beta], \[Nu]] - 2*D*m^2*FVD[qst, \[Mu]]*MTD[\[Beta], \[Nu]] + \
+2*(2*(-1 + D) + D)*m^2*FVD[qst, \[Mu]]*MTD[\[Beta], \[Nu]] - 4*(-1 + \
+D)*m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] + D*m^2*FVD[pst, \
+\[Beta]]*MTD[\[Mu], \[Nu]] - (2*(-1 + D) + D)*m^2*FVD[pst, \
+\[Beta]]*MTD[\[Mu], \[Nu]] + 12*(-1 + D)*m^2*FVD[qst, \[Beta]]*MTD[\
+\[Mu], \[Nu]] - 2*D*m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]] + \
+2*(2*(-1 + D) + D)*m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]]))/(4*(2 - \
+D)*(-1 + D)*m^4) + (I*Pi^2*(-((-2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]]) - (2 + D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Mu]] - (-2 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \[Mu]]*FVD[qst, \
+\[Beta]]*FVD[qst, \[Nu]] - (2 + D)*FVD[pst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + (-2 + D)*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + 6*D*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] + m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + \
+m^2*FVD[qst, \[Mu]]*MTD[\[Beta], \[Nu]] + m^2*FVD[qst, \[Beta]]*MTD[\
+\[Mu], \[Nu]])*PaVe[1, {0}, {0, m^2}, PaVeAutoOrder -> True, \
+PaVeAutoReduce -> False])/((2 - D)*m^4) + ((2*I)*Pi^2*((3*(-2 + \
+D)*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]])/2 + \
+2*m^2*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - 2*(-1 + \
+D)*m^2*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + \
+2*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (-1 + \
+D)*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
+(D*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]])/2 - \
+4*m^2*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + ((-2 + \
+D)*m^2*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]])/2 + 2*(1 + \
+D)*m^2*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - ((2 + \
+D)*m^2*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]])/2 + \
+2*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (-1 + \
+D)*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
+(D*m^2*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]])/2 - \
+4*m^2*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + ((-2 + \
+D)*m^2*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]])/2 + 2*(1 + \
+D)*m^2*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - ((2 + \
+D)*m^2*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]])/2 - \
+4*m^2*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(1 + \
+D)*m^2*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - ((2 + \
+D)*m^2*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/2 + \
+6*m^2*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - (3*(-2 + \
+D)*m^2*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/2 + \
+3*D*m^2*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 4*(1 + \
+D)*m^2*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])*PaVe[1, \
+{0}, {m^2, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False])/((2 - \
+D)*m^6) - ((4*I)*(-2 + D)*Pi^2*FVD[qst, \[Beta]]*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]]*PaVe[0, 0, {0}, {0, m^2}, PaVeAutoOrder -> \
+True, PaVeAutoReduce -> False])/((2 - D)*m^6) - ((2*I)*Pi^2*(-((2 + \
+D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]) - (2 + \
+D)*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 2*(2 + \
+D)*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] - (2 + \
+D)*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 2*(2 + \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 2*(2 + \
+D)*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 2*(-2 + \
+D)*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 12*D*FVD[qst, \
 \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 12*(1 + D)*FVD[qst, \
 \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + m^2*FVD[pst, \[Nu]]*MTD[\
 \[Beta], \[Mu]] - m^2*FVD[qst, \[Nu]]*MTD[\[Beta], \[Mu]] + \
 m^2*FVD[pst, \[Mu]]*MTD[\[Beta], \[Nu]] - m^2*FVD[qst, \[Mu]]*MTD[\
 \[Beta], \[Nu]] + m^2*FVD[pst, \[Beta]]*MTD[\[Mu], \[Nu]] - \
-m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]])*PaVe[0, 0, {0}, {0, m^2}, \
+m^2*FVD[qst, \[Beta]]*MTD[\[Mu], \[Nu]])*PaVe[0, 0, {0}, {m^2, 0}, \
 PaVeAutoOrder -> True, PaVeAutoReduce -> False])/((2 - D)*m^6) - \
-((4*I)*Pi^2*(((-2 + D)*m^10*FVD[pst, \[Beta]]*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]])/4 - ((-2 + D)*m^10*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]])/4 - ((-2 + D)*m^10*FVD[pst, \
-\[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]])/4 + ((-2 + D)*m^10*FVD[pst, \
-\[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]])/4 - ((-2 + D)*m^10*FVD[pst, \
-\[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]])/4 + ((-2 + D)*m^10*FVD[pst, \
-\[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]])/4 + ((-2 + D)*m^10*FVD[pst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/4 - ((-2 + D)*m^10*FVD[qst, \
-\[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/2)*PaVe[1, 1, {0}, {0, 0}, \
-PaVeAutoOrder -> True, PaVeAutoReduce -> False])/((2 - D)*m^14) - \
-(I*Pi^2*(-((-2 + D)*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \
-\[Nu]]) + 2*D*m^4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] - \
-(2 + D)*m^4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]] + \
-2*D*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (2 + \
-D)*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 4*(1 + \
-D)*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + 3*(2 + \
-D)*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + \
-2*D*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (2 + \
-D)*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 4*(1 + \
-D)*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + 3*(2 + \
-D)*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] - 4*(1 + \
-D)*m^4*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 3*(2 + \
-D)*m^4*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
-6*D*m^4*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - 4*(1 + \
+(I*(-2 + D)*Pi^2*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \
+\[Nu]]*PaVe[1, 1, {0}, {0, m^2}, PaVeAutoOrder -> True, \
+PaVeAutoReduce -> False])/((2 - D)*m^4) - ((4*I)*Pi^2*(-((-2 + \
+D)*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[pst, \[Nu]])/4 + \
+(D*m^4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]])/2 - ((2 + \
+D)*m^4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]*FVD[qst, \[Beta]])/4 + \
+(D*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]])/2 - ((2 + \
+D)*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Nu]]*FVD[qst, \[Mu]])/4 - (1 + \
+D)*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]] + (3*(2 + \
+D)*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Beta]]*FVD[qst, \[Mu]])/4 + \
+(D*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]])/2 - ((2 + \
+D)*m^4*FVD[pst, \[Beta]]*FVD[pst, \[Mu]]*FVD[qst, \[Nu]])/4 - (1 + \
+D)*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]] + (3*(2 + \
+D)*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Beta]]*FVD[qst, \[Nu]])/4 - (1 + \
+D)*m^4*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + (3*(2 + \
+D)*m^4*FVD[pst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/4 - ((-2 + \
+D)*m^4*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/4 + \
+(3*D*m^4*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/2 - (1 + \
 D)*m^4*FVD[qst, \[Beta]]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])*PaVe[1, 1, \
-{0}, {0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> False])/((2 - \
+{0}, {m^2, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False])/((2 - \
 D)*m^8)"},
 {"fcitTIDSTests-ID7",
 "TID[FVD[kst+pst-qst,\[Alpha]]FVD[pst+kst,\[Beta]]FAD[kst+pst-qst,{\
 kst+pst-qst,m},kst+pst,kst],kst]//FCE",
-"(FAD[kst, kst - qst]*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]])/m^4 - \
-(FAD[kst, kst - pst + qst]*(m^2*FVD[pst, \[Alpha]] - m^2*FVD[qst, \
-\[Alpha]])*FVD[qst, \[Beta]])/m^6 - (FAD[kst, {kst - pst + qst, \
-m}]*(-2*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] + (2 - D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Alpha]] + D*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] \
-- 2*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] + D*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Beta]] + 4*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] \
-- (2 - D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 3*(-2 + D)*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Beta]] - 4*(-1 + D)*FVD[qst, \[Alpha]]*FVD[qst, \
-\[Beta]]))/((2 - D)*m^4) - (I*Pi^2*(1/4 - B0[0, 0, m^2]/2)*((-2 + \
-D)*m^2*FVD[pst, \[Alpha]]*FVD[pst, \[Beta]] - 2*(-1 + D)*m^2*FVD[pst, \
-\[Beta]]*FVD[qst, \[Alpha]] + D*m^2*FVD[pst, \[Beta]]*FVD[qst, \
-\[Alpha]] - 2*(-1 + D)*m^2*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] + \
-D*m^2*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] + 2*(-2 + D)*m^2*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Beta]]))/((2 - D)*m^6) + (FAD[kst, {kst - qst, \
-m}]*(-(D*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]]) - D*FVD[pst, \
+"(FAD[{kst, m}, kst - pst + qst]*((-2 + D)*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Beta]] + 2*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] \
+- (2 - D)*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - 2*(-1 + D)*FVD[pst, \
+\[Beta]]*FVD[qst, \[Alpha]] + 2*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] \
+- 2*(-1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] - 4*FVD[qst, \
 \[Alpha]]*FVD[qst, \[Beta]] + (2 - D)*FVD[qst, \[Alpha]]*FVD[qst, \
-\[Beta]] + (-2 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 4*(-1 + \
+\[Beta]] - 2*(-2 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 4*(-1 + \
+D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]]))/((2 - D)*m^4) - (FAD[kst, \
+kst - pst + qst]*(2*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - (2 - \
+D)*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - D*FVD[pst, \
+\[Beta]]*FVD[qst, \[Alpha]] + 2*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] \
+- D*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] - 4*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Beta]] + (2 - D)*FVD[qst, \[Alpha]]*FVD[qst, \
+\[Beta]] - 2*(-2 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 4*(-1 + \
+D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]]))/((2 - D)*m^4) + \
+(I*Pi^2*((-2 + D)*m^2*(-1/4 - B0[0, 0, m^2]/2)*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Beta]] - 2*(-1 + D)*m^2*(-1/4 - B0[0, 0, \
+m^2]/2)*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] + D*m^2*(-1/4 - B0[0, 0, \
+m^2]/2)*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - 2*(-1 + D)*m^2*(-1/4 - \
+B0[0, 0, m^2]/2)*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] + D*m^2*(-1/4 - \
+B0[0, 0, m^2]/2)*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] + (-2 + \
+D)*m^2*(-1/4 - B0[0, 0, m^2]/2)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] \
+- (-2 + D)*m^2*(1/4 - B0[0, 0, m^2]/2)*FVD[qst, \[Alpha]]*FVD[qst, \
+\[Beta]]))/((2 - D)*m^6) - (FAD[kst, kst - pst]*((-2 + D)*FVD[pst, \
+\[Alpha]]*FVD[pst, \[Beta]] - 2*(-1 + D)*FVD[pst, \[Beta]]*FVD[qst, \
+\[Alpha]] - 2*(-1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] + 4*(-1 + \
 D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + m^2*MTD[\[Alpha], \
-\[Beta]]))/((2 - D)*m^4) - (FAD[kst, kst - pst, {kst - qst, m}]*((-2 \
-+ D)*FVD[pst, \[Alpha]]*FVD[pst, \[Beta]] - (2 - D)*FVD[pst, \
-\[Beta]]*FVD[qst, \[Alpha]] - 2*(-1 + D)*FVD[pst, \[Beta]]*FVD[qst, \
-\[Alpha]] - D*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - 2*(-1 + \
-D)*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] - D*FVD[pst, \
+\[Beta]]))/((2 - D)*m^4) + (FAD[kst, {kst - qst, m}]*(-(D*FVD[pst, \
+\[Beta]]*FVD[qst, \[Alpha]]) - D*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] \
++ (2 - D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + (-2 + D)*FVD[qst, \
+\[Alpha]]*FVD[qst, \[Beta]] + 4*(-1 + D)*FVD[qst, \[Alpha]]*FVD[qst, \
+\[Beta]] + m^2*MTD[\[Alpha], \[Beta]]))/((2 - D)*m^4) - (FAD[kst, kst \
+- pst, {kst - qst, m}]*((-2 + D)*FVD[pst, \[Alpha]]*FVD[pst, \[Beta]] \
+- (2 - D)*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - 2*(-1 + D)*FVD[pst, \
+\[Beta]]*FVD[qst, \[Alpha]] - D*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] \
+- 2*(-1 + D)*FVD[pst, \[Alpha]]*FVD[qst, \[Beta]] - D*FVD[pst, \
 \[Alpha]]*FVD[qst, \[Beta]] + 3*(2 - D)*FVD[qst, \[Alpha]]*FVD[qst, \
 \[Beta]] + (-2 + D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 8*(-1 + \
 D)*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 2*m^2*MTD[\[Alpha], \
-\[Beta]]))/((2 - D)*m^2) - (FAD[kst, kst - pst]*(2*(-2 + \
-D)*m^6*FVD[pst, \[Alpha]]*FVD[pst, \[Beta]] + 4*m^6*FVD[pst, \
-\[Beta]]*FVD[qst, \[Alpha]] - 2*(2 - D)*m^6*FVD[pst, \
-\[Beta]]*FVD[qst, \[Alpha]] - (-2 + D)*m^6*FVD[pst, \[Beta]]*FVD[qst, \
-\[Alpha]] - 2*(-1 + D)*m^6*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] - \
-3*D*m^6*FVD[pst, \[Beta]]*FVD[qst, \[Alpha]] + 4*m^6*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Beta]] - 2*(2 - D)*m^6*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Beta]] - (-2 + D)*m^6*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Beta]] - 2*(-1 + D)*m^6*FVD[pst, \
-\[Alpha]]*FVD[qst, \[Beta]] - 3*D*m^6*FVD[pst, \[Alpha]]*FVD[qst, \
-\[Beta]] - 8*m^6*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 8*(2 - \
-D)*m^6*FVD[qst, \[Alpha]]*FVD[qst, \[Beta]] + 2*(-2 + D)*m^6*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Beta]] + 12*(-1 + D)*m^6*FVD[qst, \
-\[Alpha]]*FVD[qst, \[Beta]] + 2*D*m^6*FVD[qst, \[Alpha]]*FVD[qst, \
-\[Beta]] + 2*m^8*MTD[\[Alpha], \[Beta]]))/(2*(2 - D)*m^10)"},
+\[Beta]]))/((2 - D)*m^2)"},
 {"fcitTIDSTests-ID8",
 "TID[FVD[kst+pst-qst,\[Alpha]]FVD[kst,j]FAD[kst+pst-qst,{kst+pst-\
 qst,m},kst-qst,kst],kst]//FCE",
-"(FAD[kst, kst - qst, {kst - pst, m}]*FVD[pst, \[Alpha]]*FVD[qst, \
-j])/m^2 + (FAD[kst, {kst - pst, m}]*(FVD[pst, j]*FVD[pst, \[Alpha]] - \
-FVD[pst, \[Alpha]]*FVD[qst, j] - 2*FVD[qst, j]*FVD[qst, \
-\[Alpha]]))/m^4 - ((2*I)*Pi^2*(1/4 - B0[0, 0, m^2]/2)*(-((-2 + \
-D)*m^2*FVD[pst, j]*FVD[pst, \[Alpha]])/2 + (-1 + D)*m^2*FVD[pst, \
-\[Alpha]]*FVD[qst, j] - (D*m^2*FVD[pst, \[Alpha]]*FVD[qst, j])/2 + \
-(-1 + D)*m^2*FVD[pst, j]*FVD[qst, \[Alpha]] - (D*m^2*FVD[pst, \
-j]*FVD[qst, \[Alpha]])/2 - ((-2 + D)*m^2*FVD[qst, j]*FVD[qst, \
-\[Alpha]])/2))/((2 - D)*m^6) - (4*FAD[kst, kst - pst + qst]*(((2 - \
-D)*m^6*FVD[pst, j]*FVD[pst, \[Alpha]])/4 - m^2*(m^4/2 - \
-(D*m^4)/4)*FVD[pst, j]*FVD[pst, \[Alpha]] - ((2 - D)*m^6*FVD[pst, \
-\[Alpha]]*FVD[qst, j])/4 + m^2*(m^4/2 - (D*m^4)/4)*FVD[pst, \
-\[Alpha]]*FVD[qst, j] - ((2 - D)*m^6*FVD[pst, j]*FVD[qst, \
-\[Alpha]])/4 + m^2*(m^4/2 - (D*m^4)/4)*FVD[pst, j]*FVD[qst, \[Alpha]] \
-+ ((2 - D)*m^6*FVD[qst, j]*FVD[qst, \[Alpha]])/4 - m^2*(m^4/2 - \
-(D*m^4)/4)*FVD[qst, j]*FVD[qst, \[Alpha]]))/((2 - D)*m^10) + \
-(4*FAD[kst, kst - pst, kst - pst + qst]*(((2 - D)*m^6*FVD[pst, \
-j]*FVD[pst, \[Alpha]])/4 - m^2*(m^4/2 - (D*m^4)/4)*FVD[pst, \
-j]*FVD[pst, \[Alpha]] - ((2 - D)*m^6*FVD[pst, \[Alpha]]*FVD[qst, \
-j])/4 + m^2*(m^4/2 - (D*m^4)/4)*FVD[pst, \[Alpha]]*FVD[qst, j] - ((2 \
-- D)*m^6*FVD[pst, j]*FVD[qst, \[Alpha]])/4 + m^2*(m^4/2 - \
-(D*m^4)/4)*FVD[pst, j]*FVD[qst, \[Alpha]] + ((2 - D)*m^6*FVD[qst, \
-j]*FVD[qst, \[Alpha]])/4 - m^2*(m^4/2 - (D*m^4)/4)*FVD[qst, \
-j]*FVD[qst, \[Alpha]]))/((2 - D)*m^8) - (4*FAD[kst, kst - qst]*(2*(-1 \
-+ D)*m^8*FVD[pst, j]*FVD[pst, \[Alpha]] - D*m^8*FVD[pst, j]*FVD[pst, \
-\[Alpha]] + 4*m^4*(m^4/2 - (D*m^4)/4)*FVD[pst, j]*FVD[pst, \[Alpha]] \
-+ (m^8*FVD[pst, \[Alpha]]*FVD[qst, j])/2 - ((2 - D)*m^8*FVD[pst, \
-\[Alpha]]*FVD[qst, j])/4 - (3*(-1 + D)*m^8*FVD[pst, \
-\[Alpha]]*FVD[qst, j])/2 + (D*m^8*FVD[pst, \[Alpha]]*FVD[qst, j])/2 - \
-3*m^4*(m^4/2 - (D*m^4)/4)*FVD[pst, \[Alpha]]*FVD[qst, j] + \
-(m^8*FVD[pst, j]*FVD[qst, \[Alpha]])/2 - ((2 - D)*m^8*FVD[pst, \
-j]*FVD[qst, \[Alpha]])/4 - (3*(-1 + D)*m^8*FVD[pst, j]*FVD[qst, \
-\[Alpha]])/2 + (D*m^8*FVD[pst, j]*FVD[qst, \[Alpha]])/2 - \
-3*m^4*(m^4/2 - (D*m^4)/4)*FVD[pst, j]*FVD[qst, \[Alpha]] - \
-m^8*FVD[qst, j]*FVD[qst, \[Alpha]] + (-1 + D)*m^8*FVD[qst, \
-j]*FVD[qst, \[Alpha]] + 3*m^4*(m^4/2 - (D*m^4)/4)*FVD[qst, \
-j]*FVD[qst, \[Alpha]]))/((2 - D)*m^12) - (FAD[kst, {kst - pst + qst, \
-m}]*((2 - D)*FVD[pst, j]*FVD[pst, \[Alpha]] - 2*FVD[pst, \
-\[Alpha]]*FVD[qst, j] - 2*FVD[pst, j]*FVD[qst, \[Alpha]] + 4*FVD[qst, \
-j]*FVD[qst, \[Alpha]] - (2 - D)*FVD[qst, j]*FVD[qst, \[Alpha]] + (-2 \
-+ D)*FVD[qst, j]*FVD[qst, \[Alpha]] + m^2*MTD[j, \[Alpha]]))/((2 - \
-D)*m^4) + (FAD[{kst, m}]*((-2 + D)*FVD[pst, j]*FVD[pst, \[Alpha]] - \
-2*(-1 + D)*FVD[pst, \[Alpha]]*FVD[qst, j] - 2*(-1 + D)*FVD[pst, \
-j]*FVD[qst, \[Alpha]] + 4*(-1 + D)*FVD[qst, j]*FVD[qst, \[Alpha]] + \
-m^2*MTD[j, \[Alpha]]))/(2*(2 - D)*m^6) - (2*FAD[kst, kst - pst]*(-((2 \
-- D)*m^6*FVD[pst, j]*FVD[pst, \[Alpha]])/2 - 2*(-1 + D)*m^6*FVD[pst, \
-j]*FVD[pst, \[Alpha]] + D*m^6*FVD[pst, j]*FVD[pst, \[Alpha]] - \
-m^2*(m^4/2 - (D*m^4)/4)*FVD[pst, j]*FVD[pst, \[Alpha]] + ((2 - \
-D)*m^6*FVD[pst, \[Alpha]]*FVD[qst, j])/2 + (3*(-1 + D)*m^6*FVD[pst, \
-\[Alpha]]*FVD[qst, j])/2 - (D*m^6*FVD[pst, \[Alpha]]*FVD[qst, j])/2 + \
-(2 - D)*m^6*FVD[pst, j]*FVD[qst, \[Alpha]] + (3*(-1 + D)*m^6*FVD[pst, \
-j]*FVD[qst, \[Alpha]])/2 - (D*m^6*FVD[pst, j]*FVD[qst, \[Alpha]])/2 - \
-(2 - D)*m^6*FVD[qst, j]*FVD[qst, \[Alpha]] - (-1 + D)*m^6*FVD[qst, \
-j]*FVD[qst, \[Alpha]] - (m^8*MTD[j, \[Alpha]])/4))/((2 - D)*m^10)"},
+"(FAD[kst, {kst - pst, m}, kst - qst]*FVD[pst, \[Alpha]]*FVD[qst, \
+j])/m^2 - ((-2 + D)*FAD[kst, kst - qst]*FVD[qst, j]*FVD[qst, \
+\[Alpha]])/((2 - D)*m^4) + (FAD[kst, {kst - pst, m}]*(FVD[pst, \
+j]*FVD[pst, \[Alpha]] - FVD[pst, \[Alpha]]*FVD[qst, j] - 2*FVD[qst, \
+j]*FVD[qst, \[Alpha]]))/m^4 + (FAD[{kst, m}, kst - pst + qst]*(-((2 - \
+D)*FVD[pst, j]*FVD[pst, \[Alpha]]) - (-2 + D)*FVD[pst, j]*FVD[pst, \
+\[Alpha]] + 2*FVD[pst, \[Alpha]]*FVD[qst, j] + 2*(-1 + D)*FVD[pst, \
+\[Alpha]]*FVD[qst, j] - 2*D*FVD[pst, \[Alpha]]*FVD[qst, j] + \
+2*FVD[pst, j]*FVD[qst, \[Alpha]] + 2*(-1 + D)*FVD[pst, j]*FVD[qst, \
+\[Alpha]] - 2*D*FVD[pst, j]*FVD[qst, \[Alpha]] - 4*FVD[qst, \
+j]*FVD[qst, \[Alpha]] + (2 - D)*FVD[qst, j]*FVD[qst, \[Alpha]] - \
+2*(-2 + D)*FVD[qst, j]*FVD[qst, \[Alpha]] + 4*(-1 + D)*FVD[qst, \
+j]*FVD[qst, \[Alpha]]))/((2 - D)*m^4) - (FAD[kst, kst - pst + \
+qst]*(-((2 - D)*FVD[pst, j]*FVD[pst, \[Alpha]]) + 2*FVD[pst, \
+\[Alpha]]*FVD[qst, j] - D*FVD[pst, \[Alpha]]*FVD[qst, j] + 2*FVD[pst, \
+j]*FVD[qst, \[Alpha]] - D*FVD[pst, j]*FVD[qst, \[Alpha]] - 4*FVD[qst, \
+j]*FVD[qst, \[Alpha]] + (2 - D)*FVD[qst, j]*FVD[qst, \[Alpha]] - \
+2*(-2 + D)*FVD[qst, j]*FVD[qst, \[Alpha]] + 4*(-1 + D)*FVD[qst, \
+j]*FVD[qst, \[Alpha]]))/((2 - D)*m^4) - ((2*I)*Pi^2*(-1/4 - B0[0, 0, \
+m^2]/2)*(((-2 + D)*m^2*FVD[pst, j]*FVD[pst, \[Alpha]])/2 - (-1 + \
+D)*m^2*FVD[pst, \[Alpha]]*FVD[qst, j] + (D*m^2*FVD[pst, \
+\[Alpha]]*FVD[qst, j])/2 - (-1 + D)*m^2*FVD[pst, j]*FVD[qst, \
+\[Alpha]] + (D*m^2*FVD[pst, j]*FVD[qst, \[Alpha]])/2 + ((-2 + \
+D)*m^2*FVD[qst, j]*FVD[qst, \[Alpha]])/2))/((2 - D)*m^6) - (FAD[{kst, \
+m}]*(-((-2 + D)*FVD[pst, j]*FVD[pst, \[Alpha]]) + 2*(-1 + D)*FVD[pst, \
+\[Alpha]]*FVD[qst, j] - 2*D*FVD[pst, \[Alpha]]*FVD[qst, j] + 2*(-1 + \
+D)*FVD[pst, j]*FVD[qst, \[Alpha]] - 2*D*FVD[pst, j]*FVD[qst, \
+\[Alpha]] + 4*(-1 + D)*FVD[qst, j]*FVD[qst, \[Alpha]] + m^2*MTD[j, \
+\[Alpha]]))/(2*(2 - D)*m^6) + (FAD[kst, kst - pst]*(-2*(2 - \
+D)*FVD[pst, j]*FVD[pst, \[Alpha]] - (-2 + D)*FVD[pst, j]*FVD[pst, \
+\[Alpha]] + 2*(2 - D)*FVD[pst, \[Alpha]]*FVD[qst, j] + 2*(-1 + \
+D)*FVD[pst, \[Alpha]]*FVD[qst, j] - 2*D*FVD[pst, \[Alpha]]*FVD[qst, \
+j] + 2*(-1 + D)*FVD[pst, j]*FVD[qst, \[Alpha]] - 2*D*FVD[pst, \
+j]*FVD[qst, \[Alpha]] + 4*(2 - D)*FVD[qst, j]*FVD[qst, \[Alpha]] + \
+4*(-1 + D)*FVD[qst, j]*FVD[qst, \[Alpha]] + m^2*MTD[j, \
+\[Alpha]]))/(2*(2 - D)*m^4)"},
 {"fcitTIDSTests-ID9",
 "TID[FVD[kst+pst-qst,\[Mu]]FAD[{kst,m},kst-qst,kst-qst+pst],kst]\
 //FCE", "FAD[kst, kst - pst, {kst - qst, m}]*(2*FVD[pst, \[Mu]] - \
 3*FVD[qst, \[Mu]]) + (FAD[kst, kst - pst]*(FVD[pst, \[Mu]] - \
-2*FVD[qst, \[Mu]]))/m^2 - (FAD[kst, {kst - pst + qst, m}]*(FVD[pst, \
+2*FVD[qst, \[Mu]]))/m^2 - (FAD[{kst, m}, kst - pst + qst]*(FVD[pst, \
 \[Mu]] - FVD[qst, \[Mu]]))/m^2 + (FAD[kst, {kst - qst, m}]*FVD[qst, \
 \[Mu]])/m^2"},
 {"fcitTIDSTests-ID10",
 "TID[GA[7].GSD[p-q].GAD[\[Nu]].GAD[\[Alpha]]FVD[q,\[Mu]] \
 FVD[pst-qst-kst,\[Alpha]]FVD[kst,\[Mu]]FVD[kst,\[Nu]]FAD[pst-qst-kst,\
 kst+qst,kst,kst],kst]//FCE",
-"-((FAD[kst, kst - qst, kst + pst - qst]*(m^4*GSD[p] . GSD[q] . \
-GSD[pst] . GA[6] - m^4*GSD[p] . GSD[q] . GSD[qst] . GA[6] - \
-m^4*GSD[q] . GSD[q] . GSD[pst] . GA[6] + m^4*GSD[q] . GSD[q] . \
-GSD[qst] . GA[6] - 2*m^2*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + 2*m^2*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[pst, q] + 2*m^2*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - 2*m^2*GSD[q] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[pst, q] + 2*m^2*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, \
-qst] - 2*m^2*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
-2*m^2*GSD[p] . GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] - \
-2*m^2*GSD[p] . GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst] - \
-2*m^2*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + 2*m^2*GSD[q] \
-. GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 2*m^2*GSD[q] . GSD[-pst + \
-qst] . GSD[pst] . GA[6]*SPD[q, qst] + 2*m^2*GSD[q] . GSD[-pst + qst] \
-. GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^4)) - (FAD[kst, kst - pst \
-+ qst]*(-(m^6*GSD[p] . GSD[q] . GSD[pst] . GA[6]) + m^6*GSD[p] . \
-GSD[q] . GSD[qst] . GA[6] + m^6*GSD[q] . GSD[q] . GSD[pst] . GA[6] - \
-m^6*GSD[q] . GSD[q] . GSD[qst] . GA[6] + (2 - D)*m^6*GSD[p] . \
-GA[6]*SPD[pst, q] - (2 - D)*m^6*GSD[q] . GA[6]*SPD[pst, q] + \
-D*m^4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*m^4*GSD[p] \
-. GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + (-2 + D)*m^4*GSD[p] . \
-GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[pst, q] - (-2 + D)*m^4*GSD[p] \
-. GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[pst, q] - D*m^4*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*m^4*GSD[q] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[pst, q] - (-2 + D)*m^4*GSD[q] . GSD[-pst + qst] \
-. GSD[pst] . GA[6]*SPD[pst, q] + (-2 + D)*m^4*GSD[q] . GSD[-pst + \
-qst] . GSD[qst] . GA[6]*SPD[pst, q] - (2 - D)*m^6*GSD[p] . \
-GA[6]*SPD[q, qst] + (2 - D)*m^6*GSD[q] . GA[6]*SPD[q, qst] - \
-D*m^4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + D*m^4*GSD[p] \
-. GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - (-2 + D)*m^4*GSD[p] . \
-GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] - D*m^4*GSD[p] . \
-GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] + (-2 + D)*m^4*GSD[p] \
-. GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst] + D*m^4*GSD[p] . \
-GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst] + D*m^4*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - D*m^4*GSD[q] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[q, qst] + (-2 + D)*m^4*GSD[q] . GSD[-pst + qst] \
-. GSD[pst] . GA[6]*SPD[q, qst] + D*m^4*GSD[q] . GSD[-pst + qst] . \
-GSD[pst] . GA[6]*SPD[q, qst] - (-2 + D)*m^4*GSD[q] . GSD[-pst + qst] \
-. GSD[qst] . GA[6]*SPD[q, qst] - D*m^4*GSD[q] . GSD[-pst + qst] . \
-GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^8) + (FAD[kst, kst - \
-pst]*(-(m^6*GSD[p] . GSD[q] . GSD[pst] . GA[6]) + m^6*GSD[p] . GSD[q] \
-. GSD[qst] . GA[6] + m^6*GSD[q] . GSD[q] . GSD[pst] . GA[6] - \
-m^6*GSD[q] . GSD[q] . GSD[qst] . GA[6] + (2 - D)*m^6*GSD[p] . \
-GA[6]*SPD[pst, q] - (2 - D)*m^6*GSD[q] . GA[6]*SPD[pst, q] + \
-D*m^4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*m^4*GSD[p] \
-. GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + (-2 + D)*m^4*GSD[p] . \
-GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[pst, q] - (-2 + D)*m^4*GSD[p] \
-. GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[pst, q] - D*m^4*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*m^4*GSD[q] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[pst, q] - (-2 + D)*m^4*GSD[q] . GSD[-pst + qst] \
-. GSD[pst] . GA[6]*SPD[pst, q] + (-2 + D)*m^4*GSD[q] . GSD[-pst + \
-qst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*(2 - D)*m^6*GSD[p] . \
-GA[6]*SPD[q, qst] + 2*(2 - D)*m^6*GSD[q] . GA[6]*SPD[q, qst] - (-2 + \
-D)*m^4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - \
-D*m^4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + (-2 + \
-D)*m^4*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
-D*m^4*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - (-2 + \
-D)*m^4*GSD[p] . GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] - \
-D*m^4*GSD[p] . GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] + (-2 + \
-D)*m^4*GSD[p] . GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
-D*m^4*GSD[p] . GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst] + (-2 + \
-D)*m^4*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + \
-D*m^4*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - (-2 + \
-D)*m^4*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - \
-D*m^4*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + (-2 + \
-D)*m^4*GSD[q] . GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] + \
-D*m^4*GSD[q] . GSD[-pst + qst] . GSD[pst] . GA[6]*SPD[q, qst] - (-2 + \
-D)*m^4*GSD[q] . GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst] - \
-D*m^4*GSD[q] . GSD[-pst + qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - \
-D)*m^8) + (2*FAD[kst, kst - qst]*((m^6*GSD[p] . GSD[q] . GSD[pst] . \
-GA[6])/2 - (m^6*GSD[p] . GSD[q] . GSD[qst] . GA[6])/2 - (m^6*GSD[q] . \
-GSD[q] . GSD[pst] . GA[6])/2 + (m^6*GSD[q] . GSD[q] . GSD[qst] . \
-GA[6])/2 - (D*m^4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q])/2 \
-+ (D*m^4*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q])/2 + \
-(D*m^4*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q])/2 - \
-(D*m^4*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q])/2 + ((2 - \
-D)*m^6*GSD[p] . GA[6]*SPD[q, qst])/2 - ((2 - D)*m^6*GSD[q] . \
-GA[6]*SPD[q, qst])/2 + (-2 + D)*m^4*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + (D*m^4*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst])/2 - (-2 + D)*m^4*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] - (D*m^4*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst])/2 + (D*m^4*GSD[p] . GSD[-pst + qst] . GSD[pst] . \
-GA[6]*SPD[q, qst])/2 - (D*m^4*GSD[p] . GSD[-pst + qst] . GSD[qst] . \
-GA[6]*SPD[q, qst])/2 - (-2 + D)*m^4*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] - (D*m^4*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst])/2 + (-2 + D)*m^4*GSD[q] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] + (D*m^4*GSD[q] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst])/2 - (D*m^4*GSD[q] . GSD[-pst + qst] . GSD[pst] . \
-GA[6]*SPD[q, qst])/2 + (D*m^4*GSD[q] . GSD[-pst + qst] . GSD[qst] . \
-GA[6]*SPD[q, qst])/2))/((2 - D)*m^8)"},
+"((2*(2 - D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6] + 2*(-2 + \
+D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6] + (2 - D)*GSD[p] . GSD[qst] . \
+GSD[qst] . GA[6] + 2*(-2 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6] - \
+2*(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6] - 2*(-2 + D)*GSD[q] . \
+GSD[qst] . GSD[pst] . GA[6] - (2 - D)*GSD[q] . GSD[qst] . GSD[qst] . \
+GA[6] - 2*(-2 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6])*FAD[kst, \
+kst, kst - qst]*SPD[q, qst])/((2 - D)*m^2) + (FAD[kst, kst - pst + \
+qst]*((-2 + D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[pst, q] + (-2 \
++ D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - 2*(-1 + \
+D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[p] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . \
+GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[p] . GSD[qst] . \
+GSD[qst] . GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[pst] . GSD[pst] \
+. GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] - D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
+q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - \
+D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*(-1 + \
+D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[p] . \
+GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(-1 + D)*GSD[p] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[p] . GSD[qst] . \
+GSD[pst] . GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[pst] . \
+GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[q] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[q, qst] - D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, \
+qst]))/((2 - D)*m^4) - (FAD[kst, kst - pst]*(m^2*GSD[p] . GSD[q] . \
+GSD[pst] . GA[6] + m^2*GSD[p] . GSD[qst] . GSD[q] . GA[6] - \
+m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[q] . GSD[qst] . \
+GSD[q] . GA[6] + (-2 + D)*GSD[p] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[pst, q] + (-2 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[q, qst] - 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst]))/((2 - D)*m^4) + (FAD[kst, kst - qst]*(m^2*GSD[p] \
+. GSD[q] . GSD[pst] . GA[6] + m^2*GSD[p] . GSD[qst] . GSD[q] . GA[6] \
+- m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[q] . GSD[qst] . \
+GSD[q] . GA[6] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - \
+D*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[q] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . \
+GSD[qst] . GA[6]*SPD[pst, q] - D*GSD[p] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[q, qst] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, \
+qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
+D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + \
+D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[q] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . \
+GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^4) - (FAD[kst, \
+kst - pst, kst - qst]*(m^2*GSD[p] . GSD[q] . GSD[pst] . GA[6] + \
+m^2*GSD[p] . GSD[qst] . GSD[q] . GA[6] - m^2*GSD[q] . GSD[q] . \
+GSD[pst] . GA[6] - m^2*GSD[q] . GSD[qst] . GSD[q] . GA[6] - (2 - \
+D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[p] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[p] . GSD[qst] . \
+GSD[qst] . GA[6]*SPD[pst, q] + (2 - D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
+q] + D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - (2 - \
+D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[p] . \
+GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + 3*(2 - D)*GSD[p] . GSD[qst] \
+. GSD[pst] . GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . \
+GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + 2*(2 - D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst] + (2 - D)*GSD[q] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, \
+qst] - 3*(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - \
+4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + \
+D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(2 - D)*GSD[q] \
+. GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . \
+GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^2) + (FAD[kst, \
+kst, kst - pst + qst]*(2*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] - (2 - D)*GSD[p] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
+q] + 2*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - D*GSD[p] . \
+GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*GSD[q] . GSD[qst] . \
+GSD[pst] . GA[6]*SPD[pst, q] + (2 - D)*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
+q] - 2*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[q] . \
+GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + 2*GSD[p] . GSD[pst] . \
+GSD[pst] . GA[6]*SPD[q, qst] - (2 - D)*GSD[p] . GSD[pst] . GSD[pst] . \
+GA[6]*SPD[q, qst] - D*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, \
+qst] - 2*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + (2 - \
+D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(-2 + \
+D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + 4*(-1 + \
+D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[p] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*GSD[p] . GSD[qst] . \
+GSD[qst] . GA[6]*SPD[q, qst] + (2 - D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst] - 2*(-2 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
+GA[6]*SPD[q, qst] - 2*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, \
+qst] + (2 - D)*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + \
+D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + 2*GSD[q] . \
+GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - (2 - D)*GSD[q] . GSD[qst] . \
+GSD[pst] . GA[6]*SPD[q, qst] + 2*(-2 + D)*GSD[q] . GSD[qst] . \
+GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . \
+GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[q] . GSD[qst] . GSD[pst] . \
+GA[6]*SPD[q, qst] + 4*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, \
+qst] - (2 - D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
+2*(-2 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*(-1 + \
+D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - \
+D)*m^2)"},
 {"fcitTIDSTests-ID11",
 "TID[FVD[pst-qst-kst,\[Alpha]]FAD[pst-qst-kst,{pst-qst-kst,m},kst+\
 qst,kst],kst]//FCE",
-"(FAD[kst, kst - qst, {kst + pst - qst, m}]*FVD[pst, \
-\[Alpha]])/m^2 - (FAD[kst, kst - qst, kst + pst - qst]*(FVD[pst, \
-\[Alpha]] - FVD[qst, \[Alpha]]))/m^2 - (FAD[kst, kst - \
-pst]*(m^2*FVD[pst, \[Alpha]] - 2*m^2*FVD[qst, \[Alpha]]))/m^6 + \
-(FAD[kst, {kst - pst, m}]*(m^2*FVD[pst, \[Alpha]] - 2*m^2*FVD[qst, \
-\[Alpha]]))/m^6 + (FAD[kst, kst - pst + qst]*(m^2*FVD[pst, \[Alpha]] \
-- m^2*FVD[qst, \[Alpha]]))/m^6 - (FAD[kst, {kst - pst + qst, \
-m}]*(m^2*FVD[pst, \[Alpha]] - m^2*FVD[qst, \[Alpha]]))/m^6"},
+"(FAD[kst, {kst - pst, m}, kst - qst]*FVD[pst, \[Alpha]])/m^2 - \
+(FAD[kst, kst - pst]*(FVD[pst, \[Alpha]] - 2*FVD[qst, \[Alpha]]))/m^4 \
++ (FAD[kst, {kst - pst, m}]*(FVD[pst, \[Alpha]] - 2*FVD[qst, \
+\[Alpha]]))/m^4 + (FAD[kst, kst - pst + qst]*(FVD[pst, \[Alpha]] - \
+FVD[qst, \[Alpha]]))/m^4 - (FAD[{kst, m}, kst - pst + qst]*(FVD[pst, \
+\[Alpha]] - FVD[qst, \[Alpha]]))/m^4 - (FAD[kst, kst - pst, kst - \
+qst]*(FVD[pst, \[Alpha]] - FVD[qst, \[Alpha]]))/m^2"},
 {"fcitTIDSTests-ID12",
 "TID[FVD[kst,\[Mu]]FVD[kst,\[Nu]]FAD[pst-qst-kst,{pst-qst-kst,m},\
 kst+qst,kst],kst]//FCE",
 "-(((-2 + D)*FAD[kst, kst - qst]*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]])/((2 - D)*m^4)) - ((-2 + D)*FAD[kst, kst - qst, {kst + pst - \
-qst, m}]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/((2 - D)*m^2) + \
-(I*Pi^2*(1/4 - B0[0, 0, m^2]/2)*((-2 + D)*m^4*FVD[pst, \
-\[Mu]]*FVD[pst, \[Nu]] - (-2 + D)*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] \
-- (-2 + D)*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (-2 + \
-D)*m^4*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^8) + (FAD[kst, \
-{kst - pst, m}]*(2*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - \
-D*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 2*m^4*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] - D*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
-4*m^4*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(-2 + D)*m^4*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] + 2*D*m^4*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]]))/((2 - D)*m^8) - (FAD[kst, {kst - pst + qst, \
-m}]*(-(D*m^2*FVD[pst, \[Nu]]*FVD[qst, \[Mu]]) - D*m^2*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] + 2*D*m^2*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
-m^4*MTD[\[Mu], \[Nu]]))/((2 - D)*m^6) + (FAD[{kst, m}]*((-2 + \
-D)*m^4*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] - (-2 + D)*m^4*FVD[pst, \
-\[Nu]]*FVD[qst, \[Mu]] - D*m^4*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (-2 \
-+ D)*m^4*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - D*m^4*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] + 2*D*m^4*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
-m^6*MTD[\[Mu], \[Nu]]))/(2*(2 - D)*m^10) - (FAD[kst, kst - pst]*((-2 \
-+ D)*m^6*FVD[pst, \[Mu]]*FVD[pst, \[Nu]] + 4*m^6*FVD[pst, \
-\[Nu]]*FVD[qst, \[Mu]] - (-2 + D)*m^6*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] \
-- D*m^6*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 4*m^6*FVD[pst, \
-\[Mu]]*FVD[qst, \[Nu]] - (-2 + D)*m^6*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] \
-- D*m^6*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 8*m^6*FVD[qst, \
-\[Mu]]*FVD[qst, \[Nu]] + 2*(-2 + D)*m^6*FVD[qst, \[Mu]]*FVD[qst, \
-\[Nu]] + 2*D*m^6*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] - m^8*MTD[\[Mu], \
-\[Nu]]))/(2*(2 - D)*m^10)"},
+\[Nu]])/((2 - D)*m^4)) + (FAD[kst, {kst - pst, m}, kst - \
+qst]*FVD[qst, \[Mu]]*FVD[qst, \[Nu]])/m^2 + (FAD[kst, {kst - pst, \
+m}]*(FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + FVD[pst, \[Mu]]*FVD[qst, \
+\[Nu]] - 4*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/m^4 + (FAD[{kst, m}, kst \
+- pst + qst]*(-((-2 + D)*FVD[pst, \[Mu]]*FVD[pst, \[Nu]]) + \
+2*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (2 - D)*FVD[pst, \[Nu]]*FVD[qst, \
+\[Mu]] + 2*(-1 + D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*D*FVD[pst, \
+\[Nu]]*FVD[qst, \[Mu]] + 2*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (2 - \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 2*(-1 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*D*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
+4*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(2 - D)*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*(-2 + D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
+4*(-1 + D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^4) - \
+(FAD[kst, kst - pst + qst]*(2*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - (2 - \
+D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - D*FVD[pst, \[Nu]]*FVD[qst, \
+\[Mu]] + 2*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - (2 - D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - D*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - \
+4*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 2*(2 - D)*FVD[qst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*(-2 + D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + \
+4*(-1 + D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]]))/((2 - D)*m^4) - \
+((2*I)*Pi^2*(-1/4 - B0[0, 0, m^2]/2)*(((-2 + D)*m^2*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]])/2 - (-1 + D)*m^2*FVD[pst, \[Nu]]*FVD[qst, \
+\[Mu]] + (D*m^2*FVD[pst, \[Nu]]*FVD[qst, \[Mu]])/2 - (-1 + \
+D)*m^2*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + (D*m^2*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]])/2 + ((-2 + D)*m^2*FVD[qst, \[Mu]]*FVD[qst, \
+\[Nu]])/2))/((2 - D)*m^6) - (FAD[{kst, m}]*(-((-2 + D)*FVD[pst, \
+\[Mu]]*FVD[pst, \[Nu]]) + 2*(-1 + D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] \
+- 2*D*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 2*(-1 + D)*FVD[pst, \
+\[Mu]]*FVD[qst, \[Nu]] - 2*D*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 4*(-1 \
++ D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + m^2*MTD[\[Mu], \[Nu]]))/(2*(2 \
+- D)*m^6) + (FAD[kst, kst - pst]*(-((-2 + D)*FVD[pst, \[Mu]]*FVD[pst, \
+\[Nu]]) - 2*(2 - D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] + 2*(-1 + \
+D)*FVD[pst, \[Nu]]*FVD[qst, \[Mu]] - 2*D*FVD[pst, \[Nu]]*FVD[qst, \
+\[Mu]] - 2*(2 - D)*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] + 2*(-1 + \
+D)*FVD[pst, \[Mu]]*FVD[qst, \[Nu]] - 2*D*FVD[pst, \[Mu]]*FVD[qst, \
+\[Nu]] + 8*(2 - D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + 4*(-1 + \
+D)*FVD[qst, \[Mu]]*FVD[qst, \[Nu]] + m^2*MTD[\[Mu], \[Nu]]))/(2*(2 - \
+D)*m^4)"},
 {"fcitTIDSTests-ID13",
 "TID[FVD[kst,\[Alpha]]FAD[{kst,m},kst,kst-pst],kst]//FCE",
 "-(FAD[{kst, m}]*FVD[pst, \[Alpha]])/(2*m^4) - (FAD[kst, kst - \
@@ -701,7 +658,7 @@ pst]*FVD[pst, \[Alpha]])/(2*m^2) + (FAD[kst, {kst - pst, m}]*FVD[pst, \
 "TID[FVD[kst+pst-qst,\[Mu]]FAD[{kst,m},kst-qst,kst-qst+pst],kst]\
 //FCE", "FAD[kst, kst - pst, {kst - qst, m}]*(2*FVD[pst, \[Mu]] - \
 3*FVD[qst, \[Mu]]) + (FAD[kst, kst - pst]*(FVD[pst, \[Mu]] - \
-2*FVD[qst, \[Mu]]))/m^2 - (FAD[kst, {kst - pst + qst, m}]*(FVD[pst, \
+2*FVD[qst, \[Mu]]))/m^2 - (FAD[{kst, m}, kst - pst + qst]*(FVD[pst, \
 \[Mu]] - FVD[qst, \[Mu]]))/m^2 + (FAD[kst, {kst - qst, m}]*FVD[qst, \
 \[Mu]])/m^2"}
 })
