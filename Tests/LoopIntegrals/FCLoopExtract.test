@@ -1,0 +1,56 @@
+
+
+(* :Title: FCLoopExtract.test                                              	    *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopExtract	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopExtract =
+({
+{"fcstFCLoopExtract-ID1", "FCLoopExtract[0,{q1,q2},loopInt]//FCE",
+"{0, 0, {}}"},
+{"fcstFCLoopExtract-ID2", "FCLoopExtract[x,{q1,q2},loopInt]//FCE",
+"{x, 0, {}}"},
+{"fcstFCLoopExtract-ID3",
+"FCLoopExtract[FAD[{q,m}],{q1,q2},loopInt]//FCE",
+"{FAD[{q, m}], 0, {}}"},
+{"fcstFCLoopExtract-ID4",
+"FCLoopExtract[FAD[{q1,m}],{q1,q2},loopInt]//FCE",
+"{0, loopInt[FAD[{q1, m}]], {loopInt[FAD[{q1, m}]]}}"},
+{"fcstFCLoopExtract-ID5",
+"FCLoopExtract[FVD[q1,mu]FAD[{q1,m}]+FVD[p,mu]FAD[q1,{q1+p,m}],{q1,\
+q2},loopInt]//FCE",
+"{0, FVD[p, mu]*loopInt[FAD[q1, {p + q1, m}]] + loopInt[FAD[{q1, \
+m}]*FVD[q1, mu]], {loopInt[FAD[q1, {p + q1, m}]], loopInt[FAD[{q1, \
+m}]*FVD[q1, mu]]}}"},
+{"fcstFCLoopExtract-ID6",
+"FCLoopExtract[FVD[q1,mu]FVD[q2,nu]FAD[{q1,m}]+GAD[mu].(GSD[q1]+M).\
+GAD[nu]FAD[q1,{q1+p,m}],{q1,q2},loopInt]//FCE",
+"{0, M*GAD[mu] . GAD[nu]*loopInt[FAD[q1, {p + q1, m}]] + \
+loopInt[GAD[mu] . GSD[q1] . GAD[nu]*FAD[q1, {p + q1, m}]] + \
+loopInt[FAD[{q1, m}]*FVD[q1, mu]*FVD[q2, nu]], {loopInt[FAD[q1, {p + \
+q1, m}]], loopInt[GAD[mu] . GSD[q1] . GAD[nu]*FAD[q1, {p + q1, m}]], \
+loopInt[FAD[{q1, m}]*FVD[q1, mu]*FVD[q2, nu]]}}"},
+{"fcstFCLoopExtract-ID7",
+"FCLoopExtract[FAD[{q1,m}]+SPD[q1,q2],{q1,q2},loopInt,\
+DropScaleless\[Rule]True]//FCE",
+"{0, loopInt[FAD[{q1, m}]], {loopInt[FAD[{q1, m}]]}}"},
+{"fcstFCLoopExtract-ID8",
+"FCLoopExtract[FAD[{q1,m}]+A0[m],{q1,q2},loopInt,DropScaleless\
+\[Rule]True]//FCE",
+"{0, loopInt[A0[m]] + loopInt[FAD[{q1, m}]], {loopInt[A0[m]], \
+loopInt[FAD[{q1, m}]]}}"},
+{"fcstFCLoopExtract-ID9",
+"FCLoopExtract[FVD[q1,mu]FAD[{q1,m}]+A0[m],{q1,q2},loopInt,\
+DropScaleless\[Rule]True,FCLoopSplit\[Rule]{3,4}]//FCE",
+"{A0[m], loopInt[FAD[{q1, m}]*FVD[q1, mu]], {loopInt[FAD[{q1, \
+m}]*FVD[q1, mu]]}}"}
+});
