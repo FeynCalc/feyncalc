@@ -5,7 +5,7 @@ updating unit tests for FeynCalc.
 
 # Some examples
 
-## Create unit tests from the give list
+## Create unit tests from the given list
 
 ```
 li = {
@@ -26,6 +26,6 @@ in the corresponing test file.
 
 ```
 CreateUnitTestsTypesetting["fcstSharedObjectsTypesetting",
- ExtractUnitTests[{"Shared", "SharedObjects"}, 
-  "fcstSharedObjectsTypesetting"], AddMakeBoxes -> False]
-``` 
+ExtractUnitTests[{"Shared", "SharedObjects"},
+"fcstSharedObjectsTypesetting"], AddMakeBoxes -> False]
+```

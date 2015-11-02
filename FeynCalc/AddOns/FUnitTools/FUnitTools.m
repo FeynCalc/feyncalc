@@ -17,11 +17,10 @@
 
 
 ExtractUnitTests::usage = \
-"ExtractUnitTests[{Directory,TestFile},TestName] extracts texting \
-expressions from existing unit tests for FeynCalc. This is often \
-useful, if the existing tests need and their correct restults to be \
-modified or updated. For example, \
-ExtractUnitTests[{\"Shared\",\"SharedObjects"
+"ExtractUnitTests[{Directory,TestFile},TestName] extracts testing \
+expressions from existing unit tests for FeynCalc. This very \
+useful to quickly update the correct results of existing tests. Exampe: \
+ExtractUnitTests[{\"Shared\",\"SharedObjects\"},\"fcstSharedObjectsOwnValues\"]"
 
 CreateUnitTests::usage =
 "CreateUnitTests[TestName,Tests] creates a list of unit tests for \
@@ -70,10 +69,10 @@ CreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
 			],
 		InputForm, CharacterEncoding -> "Unicode"]} &, l];
 
-ExtractUnitTests[{dir_, file_}, testVar_] :=
+ExtractUnitTests[{dir__, file_}, testVar_] :=
 	Module[{li},
 		Get[FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", dir,	file <> ".test"}]];
-		li = "Tests`" <> dir <> "`" <> testVar;
+		li = "Tests`" <> First[{dir}] <> "`" <> testVar;
 		li = ToExpression[li];
 		Map[#[[2]] &, li]
 	];
