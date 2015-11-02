@@ -904,6 +904,12 @@ ExplicitSUNFIndex /:
 ff[{y_,z_}] :=
 	SequenceForm["[",y^2, "-", z^2,"]"];
 
+ff[{y_,0}] :=
+	ff[y];
+
+ff[{y_}] :=
+	ff[y];
+
 ff[y_/;Head[y]=!=List] :=
 	SequenceForm["[",y^2,"]"];
 
