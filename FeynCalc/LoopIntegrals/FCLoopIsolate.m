@@ -50,18 +50,30 @@ Options[FCLoopIsolate] = {
 	DiracGammaExpand -> True,
 	DropScaleless -> False,
 	Expanding -> True,
+	FeynAmpDenominatorSplit -> True,
 	Isolate -> False,
 	IsolateNames -> KK,
 	FCI -> False,
-	MultiLoop -> False
+	MultiLoop -> False,
+	PaVe->True
 };
 
 fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z], Momentum[x_, _ : 4]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,lmoms,tmp},
-		lmoms = Join[lmoms0,PaVeHeadsList];
+	Block[ {res, null1, null2, ex,lmoms,tmp, fd},
+
+		If[	MatchQ[lmoms0,{{___}}],
+			Message[FCLoopIsolate::fail, ex];
+			Abort[]
+		];
+
+		If[OptionValue[PaVe],
+			lmoms = Join[lmoms0,PaVeHeadsList],
+			lmoms = lmoms0
+		];
+
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
 			ex = FCI[expr]/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]])
@@ -86,6 +98,12 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 
 		If[	OptionValue[Collecting],
 			ex = Collect2[ex,lmoms];
+		];
+
+		If[	OptionValue[FeynAmpDenominatorSplit],
+			ex = ex /. FeynAmpDenominator[props__]/; !FreeQ2[{props},lmoms] :>
+				fd[SelectFree[{props},Sequence@@lmoms]]*FeynAmpDenominator@@SelectNotFree[{props},Sequence@@lmoms] /.
+				fd[{}]:>1 /. fd[{pr__}]:>FeynAmpDenominator[pr]
 		];
 
 		res = (Map[(SelectFree[#, lmoms]*

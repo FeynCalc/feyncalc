@@ -52,12 +52,12 @@ HoldForm[KK[_]] ll[q]]","True"},
 {"fcstFCLoopIsolate-ID14","FCLoopIsolate[
 	a FAD[{q1, m}, {q3, m}] + b FAD[{q1, m1}, {q1 - q2, m2}] +
 	c FAD[{q1, m}] + d FAD[{q2, m}], {q1, q2}, MultiLoop -> True,
-	Head -> TT]//FCE","c FAD[{q1, m}] + d FAD[{q2, m}] + a FAD[{q1, m}, {q3, m}] +
-	b TT[FAD[{q1, m1}, {q1 - q2, m2}]]"},
+	Head -> TT]//FCE","c*FAD[{q1, m}] + d*FAD[{q2, m}] + a*FAD[{q1, m}]*FAD[{q3, m}] + b*TT[FAD[{q1, m1}, {q1 - q2, m2}]]"},
 {"fcstFCLoopIsolate-ID15","FCLoopIsolate[
 	FCLoopIsolate[a FAD[{q1, m}, {q3, m}] +
 	b FAD[{q1, m1}, {q1 - q2, m2}] + c FAD[{q1, m}] +
 	d FAD[{q2, m}], {q1, q2}, MultiLoop -> True, Head -> TT], {q1, q3},
-	MultiLoop -> True, Head -> TT2]//FCE","c FAD[{q1, m}] + d FAD[{q2, m}] + b TT[FAD[{q1, m1}, {q1 - q2, m2}]] +
-	a TT2[FAD[{q1, m}, {q3, m}]]"}
+	MultiLoop -> True, Head -> TT2]//FCE","c*FAD[{q1, m}] + d*FAD[{q2, m}] + b*TT[FAD[{q1, m1}, {q1 - q2, m2}]] + a*TT2[FAD[{q1, m}]*FAD[{q3, m}]]"},
+{"fcstFCLoopIsolate-ID16","FCLoopIsolate[x*A0[m^2], {q}, PaVe -> False]","x*A0[m^2]"},
+{"fcstFCLoopIsolate-ID17","FCLoopIsolate[x*A0[m^2], {q}]","x FCGV[\"LoopInt\"][A0[m^2]]"}
 };
