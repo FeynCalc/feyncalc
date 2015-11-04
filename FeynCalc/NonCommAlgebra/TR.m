@@ -24,6 +24,7 @@ Begin["`TR`Private`"]
 
 Options[ TR ] = {
 	DiracTraceEvaluate -> True,
+	EpsContract           -> True,
 	Explicit           -> True,
 	Factoring          -> False,
 	FeynCalcExternal   -> False,
