@@ -1,14 +1,18 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FeynAmpDenominatorSimplify *)
+(* :Title: FeynAmpDenominatorSimplify										*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 7 February '99 at 18:32 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: simplification *)
+(* :Summary:	Simplifies loop integrals by doing shifts and detects
+				integrals that vanish by symmetry.							*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -24,9 +28,6 @@ removes 2-loop integrals with no mass scale.";
 FDS::usage =
 "FDS is shorthand for FeynAmpDenominatorSimplify.";
 
-$NoShifts::usage =
-"$NoShifts is an option of FeynAmpDenominatorSimplify.";
-
 FDS::twoloopsefail =
 "FDS detected a fatal error while converting the 2-loop self energy integral `1`
 into canonicla form. Evaluation aborted!"
@@ -41,20 +42,21 @@ special multiloop topologies and apply appropriate simplifications";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+lenso
+
 End[]
 
 Begin["`FeynAmpDenominatorSimplify`Private`"]
 
 fdsVerbose::usage="";
 
-$NoShifts=False;
 FDS = FeynAmpDenominatorSimplify;
-
-(* new 10/95 *)
-$Power2 = True;
 
 Options[FeynAmpDenominatorSimplify] = {
 	Apart2 -> True,
+	Collecting -> True,
+	ExpandScalarProduct -> True,
 	FCI -> False,
 	FeynAmpDenominatorCombine -> True,
 	FCVerbose -> False,
@@ -83,42 +85,439 @@ FeynAmpDenominatorSimplify[exp_, OptionsPattern[]] :=
 	exp /. PD -> procan /. procan ->
 	PD /. FeynAmpDenominator -> feyncan;
 
+procan[a_, m_] :=
+	Block[ {tt , one},
+		tt = Factor2[one MomentumExpand[a]];
+		If[ NumericalFactor[tt] === -1,
+			PD[-tt/.one->1, m],
+			PD[tt/.one->1, m]
+		]
+	];
+
 (*	Handling general multiloop integrals with more than 2 loop momenta	*)
 FeynAmpDenominatorSimplify[exp_, qmore__,
 	q1_/;Head[q1] =!= Rule, q2_ /;Head[q2] =!= Rule,opts:OptionsPattern[]] :=
 	FeynAmpDenominatorSimplify[exp /. FeynAmpDenominator -> feynsimp[q2], qmore, q1,opts];
 
 (*	FDS for 1-loop integrals	*)
-FeynAmpDenominatorSimplify[exp_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
-	Block[ {efdes,aMu,aMu2,aMu3},
-		aMu[zq_, zexp_] :=
-			If[ Head[zexp] === Plus,
-				zexp,
-				SelectFree[zexp, zq] aMu2[zq, SelectNotFree[zexp,zq]]
-			] /. aMu2 -> aMu3;
+FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
+	Block[ {exp,rest,loopInts,intsUnique,null1,null2,solsList,res,repRule},
 
-		aMu2[zq_, anyf_[a___,Momentum[zq_,___], b___]*
-			FeynAmpDenominator[ PD[Momentum[zq_,___],_]..]] :=
-			0 /; FreeQ[{a,anyf,b},zq];
+		If [OptionValue[FCVerbose]===False,
+			fdsVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				fdsVerbose=OptionValue[FCVerbose]
+			];
+		];
 
-		aMu3[_,xx_] :=
-			xx;
+		FCPrint[1,"FDS: Entering 1-loop FDS with: ", ex, FCDoControl->fdsVerbose];
 
-		efdes[zexp_, zq1_] :=
-			If[ Head[zexp] === Plus,
-				Map[efdes[#, zq1]&, zexp],
-				aMu[zq1,((sumtra[FeynAmpDenominatorCombine[ zexp ] /.{
-				FeynAmpDenominator[PD[Momentum[zq1,___]+pe_. ,0]..]:>0/;
-				FreeQ[pe,zq1]
-											},
-				zq1 ]) /. FeynAmpDenominator -> feynsimp[zq1] /.
-					FeynAmpDenominator -> feynord[zq1]
-				)
+
+		(*	Extract unique loop integrals	*)
+		{rest,loopInts,intsUnique} = FCLoopExtract[ex, {q1},loopHead, DropScaleless->True,FCI->OptionValue[FCI], PaVe->False];
+
+		FCPrint[3, "FDS: List of unique integrals ", intsUnique, FCDoControl->fdsVerbose];
+
+		(*	Apply fdsOneLoop to each of the unique loop integrals	*)
+		solsList = Map[fdsOneLoop[#,q1]&,(intsUnique/.loopHead->Identity)];
+
+		If[!FreeQ[solsList,fdsOneLoop],
+			Message[FDS::failmsg,"fdsOneLoop couldn't be applied to some of the unique integrals."];
+			Abort[]
+		];
+
+		repRule = MapThread[Rule[#1,#2]&,{intsUnique,solsList}];
+		FCPrint[3, "FDS: Replacement rule: ", repRule, FCDoControl->fdsVerbose];
+
+		(*	Substitute the simplified integrals back into the original expression	*)
+		res = rest + (loopInts/.repRule);
+
+		If [OptionValue[ExpandScalarProduct],
+			res = ExpandScalarProduct[res]
+		];
+
+		If[	OptionValue[Collecting],
+			res = Collect2[res,FeynAmpDenominator]
+		];
+
+		FCPrint[3, "FDS: Leaving with: ", res, FCDoControl->fdsVerbose];
+		res
+	];
+
+fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
+	Block[{tmp,res,tmpNew,solsList,repRule},
+
+		(*	The input of fdsOneLoop is guaranteed to contain
+			only a signle 1-loop integral. This makes many things simpler.	*)
+
+		FCPrint[3, "fdsOneLoop: Entering with: ", loopInt, FCDoControl->fdsVerbose];
+
+		(* 	Order the propagators such, that the massless propagator with the smalles
+			number of the external momenta goes first. This is not the standard ordering,
+			but it is useful as the first step to bring the integral into canonical form	*)
+		tmp = loopInt /. FeynAmpDenominator -> feynsimp[q] /. FeynAmpDenominator -> feynord2[q];
+		FCPrint[3, "fdsOneLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
+
+		(*	Integrals that are antisymmetric under q->-q are removed	*)
+		tmp = removeAnitsymmetricIntegrals[tmp,q];
+		FCPrint[3, "fdsOneLoop: After removing antisymmetric integrals: ", tmp, FCDoControl->fdsVerbose];
+
+
+		(* Special trick for massless propagators to avoid terms like 1/q^2 [(q-p)^2]^3 instead of
+			1/[q^2]^3 [(q-p)^2] *)
+		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],0]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,0]..),rest___]/;
+			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
+					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - pe)} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
+					FeynAmpDenominator -> feynsimp[q] /. FeynAmpDenominator -> feynord2[q];
+
+
+		(*	Perform a shift to make the very first propagator free of external momenta	*)
+		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q,dim_:4]+pe_, m_],rest___]/; FreeQ[pe,q] :>
+					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - pe)} /.
+					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
+
+		FCPrint[3, "fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
+
+		(*	Remove massless tadpoles (vanish in DR)	*)
+		tmp = tmp /. {_. FeynAmpDenominator[PD[Momentum[q,_:4], 0]..] :> 0};
+		FCPrint[3, "FDS: fdsOneLoop: After removing massless tadpoles:  ", tmp, FCDoControl->fdsVerbose];
+
+		(*	If the integral topology is more complicated than a massive tadpole, then
+			we possibly need to do some shifts *)
+		If[ Length[Union[{props}]]>1,
+			FCPrint[3, "fdsOneLoop: The integral is at least a bubble:  ", tmp, FCDoControl->fdsVerbose];
+			tmp=fdsOneLoopsGeneric[tmp,q]
+		];
+
+		FCPrint[3, "fdsOneLoop: After doing additional shifts: ", tmp, FCDoControl->fdsVerbose];
+
+		If[	tmp===0,
+			Return[0],
+			res = tmp
+		];
+
+		(* 	After the shifts our single integral usually turns into a sum of
+			integrals with different numerators. Some of them might vanish by symmetry	*)
+		res = Expand2[EpsEvaluate[ExpandScalarProduct[res,Momentum->{q}],Momentum->{q}],q];
+		tmpNew = FCLoopExtract[res, {q},loopHead, DropScaleless->True,FCI->True, PaVe->False];
+		solsList = Map[removeAnitsymmetricIntegrals[#,q]&,(tmpNew[[3]]/.loopHead->Identity)];
+		repRule = MapThread[Rule[#1,#2]&,{tmpNew[[3]],solsList}];
+		res = tmpNew[[1]] + (tmpNew[[2]]/.repRule);
+
+		(*	Finally, order all the propagators canonically	*)
+		res = res /. FeynAmpDenominator :> feynord[q];
+		FCPrint[3, "fdsOneLoop: Final ordering: ", res, FCDoControl->fdsVerbose];
+		FCPrint[3, "fdsOneLoop: Leaving with: ", res, FCDoControl->fdsVerbose];
+
+		res
+	]/; !FreeQ[{props},q];
+
+
+(* 	Iterative algorithm tailored for 1-loop integrals that tries to determine the correct shifts
+	to bring each integral to the "canonical" form. Pure heuristics, since without knowing the
+	precise topology, there is no way to guess the true canonical form of the given integral.	*)
+fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
+	Block[ {prs, prs2, canonicalProps,shiftList,res,null1,null2},
+
+		FCPrint[3, "FDS: fdsOneLoop: fdsOneLoopsGeneric: Entering with ", expr, FCDoControl->fdsVerbose];
+
+		(*	Convert the integral to a more suitable form, i.e. 1/[q^2-m1^2][(q+p)^2-m2^2]
+			becomes  {q,q+p}	*)
+		prs = Expand/@({props} /. PropagatorDenominator[z_, _ : 0] :> (z /. Momentum[a_, _ : 4] :> a));
+
+		(* List of possible canonical propagators *)
+		canonicalProps = createOneLoopCanonicalPropsList[prs,q,True];
+
+		(* The number of shifts is limited to the number of independent propagators reduced by 1 *)
+		shiftList = FixedPoint[fdsOneLoopsShiftMaker[#[[1]],q,canonicalProps,#[[2]]]&,{prs,{}},Length[prs]-1][[2]];
+
+		FCPrint[3, "fdsOneLoopsGeneric: List of the shifts to be applied: ", shiftList, FCDoControl->fdsVerbose];
+
+		(* Apply the shifts succesively *)
+		res = expr;
+		If[	shiftList=!={},
+			Do[res=MomentumExpand[res/.shiftList[[i]]/. FeynAmpDenominator :> feynsimp[q]],{i,Length[shiftList]}]
+		];
+
+		(*	After that, order all the propagators canonically	*)
+		res = res /. FeynAmpDenominator :> feynord[q];
+
+		(*	This is for cases where some of the external momenta have negative signs, such that we end up
+			with sth like 1/[q^2(q-p1)^2(q-p2)^2(q+p3)^2(q+p4)^2]. In this case we have some freedom
+			to chose whether we want to do the q->-q shift or not. Here we try to decide, if such a shift
+			makes things look simpler	*)
+		prs2=Cases[res+null1+null2,FeynAmpDenominator[pros__]:>
+			Expand/@Union[{pros} /. PropagatorDenominator[z_, _ : 0] :>
+				(z /. Momentum[a_, _ : 4] :> a)/.q->0 /. 0->Unevaluated[Sequence[]]],Infinity]//First;
+
+		If[prs2=!={},
+
+			(* Do the shift, if the number of "+"-terms is larger than the number of the "-" terms *)
+			If[Length[Select[prs2,nufaQ]]>Length[Complement[prs2,Select[prs2,nufaQ]]],
+				res=MomentumExpand[res/.q->-q/. FeynAmpDenominator :> feynsimp[q]]
+			];
+
+			(* If both numbers are equal, the relative sign in the second propagator decides *)
+			If[Length[Select[prs2,nufaQ]]===Length[Complement[prs2,Select[prs2,nufaQ]]] && Length[prs2]>=2,
+				If[nufaQ[prs2[[2]]],
+					res=MomentumExpand[res/.q->-q/. FeynAmpDenominator :> feynsimp[q]]
+				]
+			]
+		];
+
+		FCPrint[3, "FDS: fdsOneLoop: fdsOneLoopsGeneric: Leaving with ", res, FCDoControl->fdsVerbose];
+		res
+	];
+
+
+(*	Chooses useful shifts to simplify the integral. Safe for memoization.	*)
+fdsOneLoopsShiftMaker[prs_List, q_, canonicalProps_List, acceptedShifts_List] :=
+	fdsOneLoopsShiftMaker[prs, q, canonicalProps, acceptedShifts]=
+		Block[{needShift, newCanonicalProps, P, allShifts,goodShifts,shift,res,betterForm,weightedShifts,weightedShift},
+
+			FCPrint[3, "fdsOneLoopsShiftMaker: Entering with ", prs, " ", FCDoControl->fdsVerbose];
+			FCPrint[3, "fdsOneLoopsShiftMaker: Already accepted shifts ", acceptedShifts, " ", FCDoControl->fdsVerbose];
+
+			needShift = Select[prs, (! checkOneLoopProp[#,canonicalProps]) &];
+			FCPrint[3, "fdsOneLoopsShiftMaker: Propagators that might need a shift ", needShift, FCDoControl->fdsVerbose];
+
+			newCanonicalProps = Union[canonicalProps,createOneLoopCanonicalPropsList[prs,q,False]];
+			allShifts = Flatten[Map[createOneLoopShiftingList[#,q,newCanonicalProps] &, needShift]];
+			weightedShifts=Map[checkOneLoopShift[prs, #,q, Union[canonicalProps,newCanonicalProps]]&,allShifts]//Union;
+
+			FCPrint[3, "fdsOneLoopsShiftMaker: List of all shifts that produce canonical propagators (weighted) ",
+				weightedShifts, FCDoControl->fdsVerbose];
+
+			(* This is again pure heuristics. We always accept shifts that increase the number of canonical
+			propagators. If this number remains unchanged, we still might accept the shift, provided that
+			it makes the integral look more simple	*)
+			goodShifts=Cases[Sort[Select[Map[checkOneLoopShift[prs, #,q, newCanonicalProps]&,allShifts],
+				(#[[2]]>=0 && #[[4]] && If[#[[2]]===0,#[[3]]>=0,True] && (#[[2]]+#[[3]]>=0) )&],
+				sortWeightedShifts],{x_,_,_,_}:>x];
+
+
+			FCPrint[3, "fdsOneLoopsShiftMaker: List of shifts that increase the number of canonical propagators ",
+				goodShifts, FCDoControl->fdsVerbose];
+
+			(* Avoid redoing the same shifts multiple times or undoing the previous shift *)
+			If[acceptedShifts=!={},
+				goodShifts = Complement[goodShifts,{Last[acceptedShifts],
+					Last[acceptedShifts]/.Rule[q,q+b_]:>Rule[q,q-Expand[b]]}];
+			];
+
+			(*	The list of shifts is custom sorted, so the first shift is supposed to be the best one	*)
+			If[goodShifts=!={},
+				shift = First[goodShifts],
+				shift = {}
+			];
+
+			(* If there are no useful shifts, a sign change might also help *)
+			If[	shift==={},
+				weightedShift=checkOneLoopShift[prs, {q->-q},q, newCanonicalProps];
+				If[	weightedShift[[2]]+weightedShift[[3]]>0 && weightedShift[[4]],
+					shift = q->-q
 				]
 			];
-		FCPrint[1, "FeynAmpDenominatorSimplify: Entering with ", exp];
-		FixedPoint[efdes[#, q1]&, exp, 6]
+
+			FCPrint[3, "fdsOneLoopsShiftMaker: Chosen shift: ", shift, FCDoControl->fdsVerbose];
+
+			res = {signFixOneLoop[Expand[prs/.shift],q],Flatten[Join[acceptedShifts,{shift}]]};
+			FCPrint[3, "fdsOneLoopsShiftMaker: Leaving with ", res, FCDoControl->fdsVerbose];
+
+			res
+		];
+
+(*	Checks if the given propagator is in the canonical form.
+	Safe for memoization.	*)
+checkOneLoopProp[x_, canonicalProps_]:=
+	checkOneLoopProp[x, canonicalProps]=
+		MatchQ[x, Alternatives @@ canonicalProps];
+
+(*	Generate some posssible canonical propagators out of the given
+	list of all momenta and their prefactors. This is of course
+	pure heuristics, since a priori we don't know how the momenta
+	realy flow through the diagram...
+	Safe for memoization.	*)
+createOneLoopCanonicalPropsList[prs_,q_,ext_]:=
+	createOneLoopCanonicalPropsList[prs,q,ext]=
+		Block[{moms,extra,fu,res},
+			fu[x_]:=
+				Map[{q - #[[2]], q + #[[2]], q - Abs[#[[1]]] #[[2]], q + Abs[#[[1]]] #[[2]]} &, x];
+
+			If[ext===True,
+				extra=Map[{#[[1]] + #[[2]], #[[1]] - #[[2]]} &,
+					Subsets[(prs/.q->0/. 0->Unevaluated[Sequence[]]), {2}]]//Flatten//Union;
+				extra=Map[{q-#,q+#}&,extra]//Flatten,
+				extra = {}
+			];
+			moms = Map[(Thread[List[CoefficientArrays[#]//Normal//Rest//Total,Variables[#]]]) &, Rest[prs/.q->0]];
+			res = Map[fu[#]&, moms]//Flatten;
+			res = Join[{q},Union[Join[extra,res]]]
+		];
+
+
+(*	Determines the sign of the 1st external momentum in each propagator. Safe for memoization.	*)
+nufaQ[_Momentum | _Symbol] :=
+	True;
+
+nufaQ[xx_Times]:=
+	nufaQ[xx]=
+		NumericalFactor[xx] > 0;
+
+nufaQ[xx_Plus]:=
+	nufaQ[xx]=
+		NumericalFactor[xx[[1]]] > 0;
+
+
+(* Fixes (-q+p)^2 to (q-p)^2. Safe for memoization.	*)
+signFixOneLoop[prs_List,q_]:=signFixOneLoop[prs,q]=
+	Map[If[!FreeQ[#,-q],Expand[-#],#]&,prs];
+
+(*	Tries to quantify shits according to the way how they make the integral simpler.
+
+	First quantifier is the diference between the number of propagators in the canonical form
+	after and before the shift. The larger this value is, the better. Negative value means that
+	the shift makes things only worse by decreasing the number of canonical propagators
+
+
+	Second quantifier is the diference between the total number of external momenta in all the propagators
+	before and after the shift. The larger this value is, the better. Negative value means that
+	the shift makes things only worse by increasing the total number of external momenta, such that
+	the integral looks more complicated than it actually is.
+
+	The last quantifier is a check, whether after the shift the integral still contains a propagator
+	of type 1/(q^2-m^2). If it evaluates to False, the shift is apriori not useful.
+
+	Safe for memoization.
+*)
+checkOneLoopShift[prs_List,shift_,q_, canonicalProps_]:=
+	checkOneLoopShift[prs,shift,q, canonicalProps]=
+		Block[{before,after,qPropAvailable,nCanProps,propComplexity},
+			before = Select[prs, (checkOneLoopProp[#,canonicalProps]) &];
+			after = Select[signFixOneLoop[prs /. shift,q], (checkOneLoopProp[#,canonicalProps]) &];
+			nCanProps = Length[after]-Length[before];
+			qPropAvailable = MemberQ[Expand[signFixOneLoop[prs /. shift,q]], q];
+			propComplexity = Total[NTerms/@prs] - Total[NTerms/@signFixOneLoop[prs /. shift,q]];
+			{shift,nCanProps,propComplexity,qPropAvailable}
+		];
+
+(* Determines the shift needed to arrive to the particular propagator. Safe for memoization.	*)
+createOneLoopShiftingList[xx_, q_, canonicalProps_] :=
+	createOneLoopShiftingList[xx, q, canonicalProps]=
+		Block[{dummyP},
+			Map[Solve[(xx /. q -> dummyP) == #, dummyP] &, canonicalProps] /. dummyP -> q
+		];
+
+(* Sorts the list of possible shifts according the the given criteria	*)
+sortWeightedShifts[{x1_,a1_,b1_,x2_},{y1_,a2_,b2_,y2_}]:=
+	sortWeightedShifts[{x1,a1,b1,x2},{y1,a2,b2,y2}]=
+		Which[
+
+			x2===True && y2===False,
+				True,
+			x2===False && y2===True,
+				False,
+			x2===y2,
+				If[	a1+b1=!=a2+b2,
+					a1+b1>a2+b2,
+					b1>b2
+				],
+			True,
+			Message[FDS::failmsg,"Can't sort the list of shifts."];
+			Abort[]
+		];
+
+
+(*	Checks if the integral vanishes by symmetry. Memoization should be done via
+	FCUseCache	*)
+removeAnitsymmetricIntegrals[int_,q_]:=
+	If[	Expand[(MomentumExpand[EpsEvaluate[int/.q->-q]] /.
+		FeynAmpDenominator -> feynsimp[q] /. FeynAmpDenominator -> feynord[q])+int]===0,
+		0,
+		int
 	];
+
+(*	Sort propagators in a FeynAmpDenominator.
+	Propagators with the smallest number of momenta go first. If the number of
+	momenta is the same, do the lexicographic ordering of the momenta. If the
+	momenta are the same, do the lexicographic ordering of the masses.
+
+	Safe for memoization.
+*)
+lenso[PD[x_, m1_], PD[y_, m2_]]:=
+	lenso[PD[x, m1], PD[y, m2]]=
+		Which[
+			NTerms[x] =!= NTerms[y],
+				NTerms[x] < NTerms[y],
+			NTerms[x] === NTerms[y],
+				If[	x=!=y,
+					OrderedQ[{x,y}],
+					OrderedQ[{m1,m2}]
+				],
+			True,
+			Message[FDS::failmsg,"Can't sort the list of propagators."];
+			Abort[]
+		];
+
+
+(*	Special sorting for fdsOneLoopGeneral. The massless propagator with the
+	smallest number of external momenta is put first.
+
+	Safe for memoization.
+*)
+
+lenso2[PD[x_, m1_], PD[y_, m2_]]:=
+	lenso2[PD[x, m1], PD[y, m2]]=
+		Which[
+			m1=!=0 && m2=!=0,
+				OrderedQ[{m1,m2}],
+			m1===0 && m2=!=0,
+				True,
+			m1=!=0 && m2===0,
+				False,
+			m1===0 && m2===0,
+				If[ NTerms[x] < NTerms[y],
+						True,
+						If[ NTerms[x] === NTerms[y],
+							OrderedQ[{x,y}],
+							False
+						],
+						False
+				],
+			True,
+			Message[FDS::failmsg,"Can't sort the list of propagators."];
+			Abort[]
+		];
+
+(* Sort the propagators into some canonical order. Safe for memoization	*)
+feynord[a__PD] :=
+	MemSet[feynord[a],
+		FeynAmpDenominator @@ Sort[{a}, lenso]
+	];
+
+feynord[q_][a__] :=
+	MemSet[feynord[q][a],
+		FeynAmpDenominator @@
+		Join[Sort[SelectNotFree[{a}, q], lenso], Sort[SelectFree[{a}, q], lenso]]
+	];
+
+feynord2[q_][a__] :=
+	MemSet[feynord2[q][a],
+		FeynAmpDenominator @@
+		Join[Sort[SelectNotFree[{a}, q], lenso2], Sort[SelectFree[{a}, q], lenso2]]
+	];
+
+(* 	Replaces 1/[(-q+x)^2-m^2] by 1/[(q-x)^2-m^2].
+
+	Safe for memoization despite MomentumExpand, since it is applied only
+	inside FeynAmpDenominator, where there are no Pair's	*)
+feynsimp[q_][a__PD] :=
+	MemSet[feynsimp[q][a],
+		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //.
+		PD[-Momentum[q,di_:4] + pe_:0, m_] :> PD[Momentum[q,di] - pe, m])
+	];
+
 
 (*	FDS for 2-loop integrals	*)
 FeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern[]] :=
@@ -664,14 +1063,7 @@ fds2LoopsSE2[expr : (_. FeynAmpDenominator[props__]), q1_, q2_, p_] :=
 	];
 
 
-procan[a_, m_] :=
-	Block[ {tt , one},
-		tt = Factor2[one MomentumExpand[a]];
-		If[ NumericalFactor[tt] === -1,
-			PD[-tt/.one->1, m],
-			PD[tt/.one->1, m]
-		]
-	];
+
 
 feyncan[a__] :=
 	Apply[FeynAmpDenominator, Sort[Sort[{a}], lenso]];
@@ -735,143 +1127,14 @@ tran[a_, x_, y_] :=
 		]
 	];
 
-(*
-nufaQ[xx_Times] := NumericalFactor[xx] < 0;
-nufaQ[xx_Plus] := NumericalFactor[xx[[1]]] < 0;
-*)
-nufaQ[_Momentum] :=
-	True;
-nufaQ[xx_Times] :=
-	NumericalFactor[xx] > 0;
-nufaQ[xx_Plus] :=
-	NumericalFactor[xx[[1]]] > 0;
 
-ftr[xx_Plus,q1_] :=
-	Map[ftr[#,q1]&, xx];
-
-(* This is just a simple shift for 3-point functions
-	1/[(q1^2-m1^2)((q1-p)^2-m2^2)((q1-p)^2-m3^2)] ->
-	1/[((p-q1)^2-m1^2)(q1^2-m2^2)(q1^2-m3^2)] *)
-ftr[a_. FeynAmpDenominator[
-		PD[Momentum[q1_,di_:4], m1_],
-		PD[Momentum[q1_,di_:4] - Momentum[pe_,di_:4], m2_],
-		PD[Momentum[q1_,di_:4] - Momentum[pe_,di_:4], m3_]], q1_] :=
-	Expand2[EpsEvaluate[ExpandScalarProduct[(a FeynAmpDenominator[
-			PD[Momentum[q1,di] - Momentum[pe,di],m2],
-			PD[Momentum[q1,di] - Momentum[pe,di],m3],
-			PD[Momentum[q1,di],m1]]) /. q1 -> (-q1 + pe),
-			FeynCalcInternal -> False]], q1] && !$NoShifts;
-		(* /; {m2,m3} =!= Sort[{m2,m3}];*) (*should not be necessary, changed Oct. 2003 *)
 
 qtr[xx_Plus,q1_] :=
 	Map[qtr[#,q1]&, xx];
 
-mtr[xx_Plus,q1_] :=
-	Map[mtr[#,q1]&, xx];
-
-(*	Scaleless 1-loop integral of type 1/(q+p)^2*)
-mtr[a_. FeynAmpDenominator[PD[pe_. + Momentum[q1_,___], 0]], q1_] :=
-	0 /; FreeQ[{a,pe}, q1];
-
-(* Same, but now with OPEDelta^2 (the only scale is OPEDelta^2)	*)
-mtr[a_. (Power2[_. + _. Pair[Momentum[q1_,___], Momentum[OPEDelta,___]], (vv_/; Head[vv] =!= Integer)]) *
-	FeynAmpDenominator[PD[pe_. + Momentum[q1_, _:4], 0]],	q1_] :=
-	0 /; FreeQ[{a, pe}, q1](* && !FreeQ[w, q1]*);
-
-(* Same, but now with OPEDelta^2 (the only scale is OPEDelta^2)	*)
-mtr[a_. ((_. + _. Pair[Momentum[q1_,___], Momentum[OPEDelta,___]])^(vv_/; Head[vv] =!= Integer))*
-	FeynAmpDenominator[PD[pe_. + Momentum[q1_,_:4], 0]], q1_] :=
-	0 /; FreeQ[{a,pe}, q1](* && !FreeQ[w,q1]*);
-
-(* 	Shift q->-q-p from 	(...)/[(q+p)^2-m^2)...] to
-						(...)/[q^2-m^2)...]  and then
-	send this again to FDS	*)
-mtr[a_. FeynAmpDenominator[PD[pe_ + Momentum[q1_,di___],m1_], anymore___], q1_] :=
-	Expand2[EpsEvaluate[FDS[
-	ExpandScalarProduct[(a FeynAmpDenominator[PD[pe + Momentum[q1,di], m1],anymore]) /.
-	q1 -> (-q1-(pe/.Momentum[bla_,___]:>bla)),
-	FeynCalcInternal -> False]]], q1] /; $Power2 === True && !$NoShifts;
-
-(* 	Shift q->-q-p from (...)/[(q+p)^2-m^2)^n] to (...)/[(q^2-m^2)^n]	*)
-mtr[a_. FeynAmpDenominator[b:PD[pe_ + Momentum[q1_,_:4], _]..]] :=
-	Expand2[EpsEvaluate[ExpandScalarProduct[(a FeynAmpDenominator[b]) /.
-	q1 -> (q1-pe), FeynCalcInternal -> False]],q1]  && !$NoShifts
-
-(* 	needs to work also for more than 1-loop ... *)
-(* 	n-point function,	Shift q->-q from
-	(...)/[(q^2-m0^2)...(q+p)^2-mi^2)...] to
-	(...)/[(q^2-m0^2)...(q-p)^2-mi^2)...]  and then
-	send this again to FDS	*)
-mtr[a_. FeynAmpDenominator[b:PD[Momentum[q1_,di___], _].., c___PD,
-	d:PD[pe_ + Momentum[q1_,di___], _].., z___], q1_] :=
-	FDS[EpsEvaluate[ExpandScalarProduct[
-	(a FeynAmpDenominator[ b, c, d, z]) /. q1 -> (-q1),
-	FeynCalcInternal -> False]]] /; nufaQ[pe]  && !$NoShifts
-		(* this would give + signs *)
-		(*    ] /; !nufaQ[pe]; *)
-
-(* 	n-point function,	Ordering from	(...)/[(q^2-..^2)...(q+p2)^2-..^2)...(q+p1)^2-..^2)] to
-					(...)/[(q^2-..^2)...(q+p1)^2-..^2)...(q+p2)^2-..^2)] and
-	then send this again to FDS	*)
-mtr[a_. FeynAmpDenominator[	b:PD[Momentum[q1_,di___], _].., d:PD[pe1_ + Momentum[q1_,di___], _]..,
-			e___, f:PD[pe2_ + Momentum[q1_,di___], _].., g___], q1_] :=
-	FDS[EpsEvaluate[ExpandScalarProduct[(a FeynAmpDenominator[ b,f,e,d,g ]),
-	FeynCalcInternal -> False]]] /; !OrderedQ[{pe1^2,pe2^2}];
-
-(* 	2-point function,	Shift q->q-p from 	(...)/[(x*q+y)^2-m^2)(q+p)^2-m^2)] to
-											(...)/[q^2-m^2)(x*(q-p)+y)^2-m^2)].	*)
-mtr[a_. FeynAmpDenominator[ PD[pa_ + fa_. Momentum[q1_,di___], m1_],
-	PD[pe_ + Momentum[q1_,di___], m1_]],q1_] :=
-	Expand2[EpsEvaluate[ExpandScalarProduct[(a FeynAmpDenominator[PD[pe + Momentum[q1,di], m1],
-	PD[pa + fa Momentum[q1,di],m1]]) /.	q1 -> (q1-pe), FeynCalcInternal -> False]],q1] /;
-	nufaQ[pe] && $Power2 === True  && !$NoShifts
-
-(* 	reducible to 2-point functions,
-	Shift q->q-p1 from 	(...)/[q^2-(x*m)^2)^n (q+p)^2-m^2)^m] to
-						(...)/[q^2-m^2)^m (q-p)^2-(x*m)^2)^n].	*)
-mmtr[a_.FeynAmpDenominator[
-			b:PD[Momentum[q1_,di___], xi_ m1_]..,
-			c:PD[pe_ + Momentum[q1_,di___], m1_]..], q1_] :=
-	Expand2[EpsEvaluate[ExpandScalarProduct[(a FeynAmpDenominator[c, b]) /.
-	q1 -> (q1-(pe/.Momentum[bla_,___]:>bla)), FeynCalcInternal -> False]],
-	q1] && !$NoShifts
 
 
-(* 	reducible 3-point functions,
-	Shift q->-q+p1 from 	(...)/[q^2-m1^2)^n (q-p1)^2-m2^2)^m (q-p1+p2)^2-m3^2)^l] to
-						(...)/[q^2-m2^2)^m (-q+p)^2-m1^2)^n (-q+p2)^2-m3^2)^l].
-	then send this again to FDS	*)
-mmtr[a_.FeynAmpDenominator[
-			b:PD[Momentum[q1_,di___], m1_]..,
-			c:PD[Momentum[q1_,di___]-Momentum[pe1_,___],_]..,
-			d:PD[Momentum[q1_,di___]-Momentum[pe1_,___] + Momentum[_,___], _]..
-		], q1_] :=
-	FDS[Expand2[EpsEvaluate[ExpandScalarProduct[
-	(a FeynAmpDenominator[ c, b, d ]) /. q1 -> (-q1+pe1),
-	FCI -> False]], q1]]/; m1=!=0  && !$NoShifts;
 
-(* 	reducible  3-point functions,
-	Shift q->-q+p1 from 	(...)/[q^2-m1^2)^n (q-p1+p2)^2-m2^2)^m (q-p1)^2-m3^2)^l] to
-							(...)/[q^2-m3^2)^l (-q+p1)^2-m1^2)^n (-q+p2)^2-m2^2)^m ].
-	then send this again to FDS	*)
-mmtr[a_.FeynAmpDenominator[
-			b:PD[Momentum[q1_,di___], m1_]..,
-			d:PD[Momentum[q1_,di___]-Momentum[pe1_,___] + Momentum[_,___],_]..,
-			c:PD[Momentum[q1_,di___]-Momentum[pe1_,___], _]..], q1_] :=
-	FDS[Expand2[EpsEvaluate[ExpandScalarProduct[
-	(a FeynAmpDenominator[ c, b, d ]) /. q1 -> (-q1+pe1), FCI -> False]],
-	q1]]/; m1=!=0  && !$NoShifts
-
-(* 	reducible  3-point functions,
-	Shift q->q-p2 from 	(...)/[q^2-m1^2)^n (q+p2)^2-m2^2)^m (q-p1+p2)^2-m3^2)^l] to
-							(...)/[q^2-m2^2)^m (q-p2)^2-m1^2)^n  (q-p1)^2-m3^2)^l].
-	then send this again to FDS	*)
-mmtr[a_.FeynAmpDenominator[
-			b:PD[Momentum[q1_,di___], m1_]..,
-			c:PD[Momentum[q1_,di___]+Momentum[pe2_,___],_]..,
-			d:PD[Momentum[q1_,di___]-Momentum[_,___] + Momentum[pe2_,___],_]..], q1_] :=
-	FDS[Expand2[EpsEvaluate[ExpandScalarProduct[
-	(a FeynAmpDenominator[ c,b,d ]) /. q1 -> (q1-pe2), FCI -> False]], q1 ]]/; m1=!=0  && !$NoShifts;
 
 qtr[a_ OPESum[xx_,yy_], q1_] :=
 	(a OPESum[qtr[xx, q1],yy]) /; FreeQ[a, q1];
@@ -939,31 +1202,6 @@ qtr[fa_  (powe_ /; (powe === Power2 || powe === Power))[(
 		];
 		tt
 	];
-
-qid[xx_,_] :=
-	xx;
-sumtra[xx_,q1_] :=
-	Block[{tmp},
-		If[ !FreeQ[xx, PD[_,m_/;m=!=0]],
-			tmp =  mtr[xx,q1] /. mtr -> qid,
-			If[	FreeQ[xx, (pow_ /; (pow === Power2 || pow === Power))[_.Pair[_,Momentum[q1,_]]+_. ,
-				w_/;(Head[w]=!=Integer)]],
-				If[ FreeQ[xx, FeynAmpDenominator[
-					PD[Momentum[q1,___],_],
-					PD[Momentum[q1,___]- Momentum[_,___],_],
-					PD[Momentum[q1,___]- Momentum[_,___],_]]],
-					tmp = mtr[xx,q1] /. mtr -> qid,
-					tmp = ftr[xx, q1] /.ftr -> qid
-				],
-				tmp = PowerSimplify[mtr[mtr[Expand2[xx, q1],q1] /. mtr -> qid, q1] /. mtr -> qid]
-			]
-		];
-		mmtr[tmp,q1]/.mmtr->qid
-	];
-
-
-getmomenta[aa__PD] :=
-	Variables[{aa}/. PD[w_,0] :> w];
 
 (* check if via simple translations a tadpole appears *)
 pro1[x_, 0] :=
@@ -1209,54 +1447,6 @@ translat[x_, q1_, q2_] :=
 		(FCPrint[1,"in translat" , x, "|", q1, "|" ,q2]; Expand2[x, FeynAmpDenominator] + nuLlL1 + nuLlL2)] /. {nuLlL1:>0, nuLlL2:>0}
 	]];
 
-
-lenso[PD[x_, m1_], PD[y_, m2_]] :=
-	Which[
-		m1=!=0 && m2=!=0,
-			If[ NTerms[x] < NTerms[y],
-				True,
-				If[ NTerms[x] === NTerms[y],
-					OrderedQ[{x,y}],
-					False
-				],
-				False
-			],
-		m1===0 && m2=!=0,
-			True,
-		m1=!=0 && m2===0,
-			False,
-		m1===0 && m2===0,
-			If[ NTerms[x] < NTerms[y],
-					True,
-					If[ NTerms[x] === NTerms[y],
-						OrderedQ[{x,y}],
-						False
-					],
-					False
-			],
-		True,
-		FCPrint[0,"Problem in FDS!"];
-		Abort[]
-	]
-
-
-feynord[a__PD] :=
-	MemSet[feynord[a],
-		FeynAmpDenominator @@ Sort[{a}, lenso]
-	];
-feynord[q_][a__] :=
-	MemSet[feynord[q][a],
-		FeynAmpDenominator @@
-		Join[Sort[SelectNotFree[{a}, q], lenso], Sort[SelectFree[{a}, q], lenso]]
-	];
-
-feynsimp[q_][a__PD] :=
-	MemSet[feynsimp[q][a],
-			Apply[FeynAmpDenominator,
-				Expand[MomentumExpand[{a}]] //.
-				PD[-Momentum[q,di___] + pe_.,m_] :>
-					PD[Momentum[q,di] - pe, m]]
-			];
 
 FCPrint[1,"FeynAmpDenominatorSimplify.m loaded."];
 End[]
