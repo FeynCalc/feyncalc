@@ -68,7 +68,8 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms, FCI->True, Head->loopHead,
 									DropScaleless-> OptionValue[DropScaleless],
 									MultiLoop-> OptionValue[MultiLoop],
-									PaVe-> OptionValue[PaVe]];
+									PaVe-> OptionValue[PaVe],
+									ExpandScalarProduct -> False];
 
 
 		(*	Extract unique loop integrals	*)

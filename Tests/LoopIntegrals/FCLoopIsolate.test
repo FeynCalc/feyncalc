@@ -59,5 +59,8 @@ HoldForm[KK[_]] ll[q]]","True"},
 	d FAD[{q2, m}], {q1, q2}, MultiLoop -> True, Head -> TT], {q1, q3},
 	MultiLoop -> True, Head -> TT2]//FCE","c*FAD[{q1, m}] + d*FAD[{q2, m}] + b*TT[FAD[{q1, m1}, {q1 - q2, m2}]] + a*TT2[FAD[{q1, m}]*FAD[{q3, m}]]"},
 {"fcstFCLoopIsolate-ID16","FCLoopIsolate[x*A0[m^2], {q}, PaVe -> False]","x*A0[m^2]"},
-{"fcstFCLoopIsolate-ID17","FCLoopIsolate[x*A0[m^2], {q}]","x FCGV[\"LoopInt\"][A0[m^2]]"}
+{"fcstFCLoopIsolate-ID17","FCLoopIsolate[x*A0[m^2], {q}]","x FCGV[\"LoopInt\"][A0[m^2]]"},
+{"fcstFCLoopIsolate-ID17","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q}] // FCE","FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l + p, k + q]]"},
+{"fcstFCLoopIsolate-ID18","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q},ExpandScalarProduct -> True] // FCE",
+"(SPD[k, l] + SPD[k, p]) FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l, q]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[p, q]]"}
 };

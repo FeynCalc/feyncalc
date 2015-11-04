@@ -43,6 +43,7 @@ Begin["`FCLoopIsolate`Private`"]
 
 Options[FCLoopIsolate] = {
 	ExceptHeads -> {},
+	ExpandScalarProduct -> False,
 	Head -> FCGV["LoopInt"],
 	ClearHeads -> {FCGV["LoopInt"]},
 	Collecting -> True,
@@ -82,6 +83,12 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 
 		If[	OptionValue[Expanding],
 			ex = Expand2[ex, lmoms];
+		];
+
+		(* Here we pull loop momenta out of Dirac slashes  *)
+		If[	OptionValue[ExpandScalarProduct],
+			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
+			ex = tmp[[1]]+ ExpandScalarProduct[tmp[[2]],Momentum->lmoms]
 		];
 
 		(* Here we pull loop momenta out of Dirac slashes  *)
