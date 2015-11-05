@@ -17,6 +17,10 @@ OPE1Loop::usage =
 "OPE1Loop[q1, amp].  OPE1Loop[{q1,q2}, amp] does sub-loop
 decomposition.";
 
+SubLoop::usage =
+"SubLoop is an option for OPE1Loop. If set to True,
+sub 1-loop tensorintegral decomposition is performed."
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]

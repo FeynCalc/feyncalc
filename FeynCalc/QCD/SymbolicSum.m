@@ -1,6 +1,6 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SymbolicSum2 *)
+(* :Title: SymbolicSum *)
 
 (* :Author: Rolf Mertig *)
 
@@ -11,14 +11,22 @@
 (* ------------------------------------------------------------------------ *)
 
 SymbolicSum2::usage =
-"SymbolicSum2 is similar to SymbolicSum (Algebra`SymbolicSum`SymbolicSum was a function to do symbolic summation. It was obsolete from version 3 - all functionality is now autoloaded by Sum), but extended to several double sums.";
+"SymbolicSum2 is similar to SymbolicSum
+(Algebra`SymbolicSum`SymbolicSum was a function to do symbolic summation.
+It was obsolete from version 3 - all functionality is now autoloaded by Sum),
+but extended to several double sums.";
+
+SymbolicSum3::usage = "SymbolicSymbolicSum3 is similar to SymbolicSum
+(Algebra`SymbolicSum`SymbolicSum was a function to do symbolic summation.
+It was obsolete from version 3 - all functionality is now autoloaded by Sum),
+but extended to several double sums.";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]
 
-Begin["`SymbolicSum2`Private`"]
+Begin["`SymbolicSum`Private`"]
 
 SymbolicSum2[a__] :=
 	summ2[a] /. summ2->symbolics2/.
@@ -47,21 +55,21 @@ Sum3[a_^OPEj b_^(OPEi - OPEj) / (c_^OPEi),
 		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
 	] :=
 	c^(4-OPEm) a^(OPEm-2)/((a-b) (a-c)) +
-		   c^(4-OPEm) b^(OPEm-2)/((b-a) (b-c)) +
-		   c^2 / ((c-a) (c-b));
+		c^(4-OPEm) b^(OPEm-2)/((b-a) (b-c)) +
+		c^2 / ((c-a) (c-b));
 
 (* R.Hamberg, (3A.18) *)
 Sum3[a_^OPEj b_^(OPEi - OPEj) c_^(OPEm-4-OPEi),
 		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
 	] :=
 	a^(OPEm-2)/((a-b) (a-c)) + b^(OPEm-2)/((b-a) (b-c)) +
-		   c^(OPEm-2)/((c-a) (c-b));
+		c^(OPEm-2)/((c-a) (c-b));
 
 Sum3[a_^OPEj b_^(OPEi - OPEj) c_^(OPEm-3-OPEi),
 		{OPEj, 0, OPEi}, {OPEi, 0, -3 + OPEm}
 	] :=
 	a^(OPEm-1)/((a-b) (a-c)) + b^(OPEm-1)/((b-a) (b-c)) +
-		   c^(OPEm-1)/((c-a) (c-b));
+		c^(OPEm-1)/((c-a) (c-b));
 
 symbolics2[a_ /; ((NumericalFactor[a] =!= 1) &&
 						IntegerQ[a]), b__] :=
@@ -99,29 +107,70 @@ symbolics2[(-1)^OPEi a_^OPEj b_^(OPEi - OPEj) c_^xx_,
 		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
 	] :=
 	symbolics2[(-a)^OPEj (-b)^(OPEi-OPEj) c^xx,
-				   {OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
-			   ];
+				{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
+			];
 
 symbolics2[(-1)^OPEj a_^OPEj b_^(OPEi - OPEj) c_^xx_,
 		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
 	] :=
 	symbolics2[(-a)^OPEj b^(OPEi-OPEj) c^xx,
-				   {OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
-			   ];
+				{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
+			];
 
 symbolics2[(-1)^(OPEi-OPEj) a_^OPEj b_^(OPEi - OPEj) c_^xx_,
 		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
 	] :=
 	symbolics2[a^OPEj (-b)^(OPEi-OPEj) c^xx,
-				   {OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
-			   ];
+				{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
+			];
 
 symbolics2[(-1)^(OPEj-OPEi) a_^OPEj b_^(OPEi - OPEj) c_^xx_,
 		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
 	] :=
 	symbolics2[a^OPEj (-b)^(OPEi-OPEj) c^xx,
-				   {OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
-			   ];
+				{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
+			];
 
-FCPrint[1,"SymbolicSum2.m loaded"];
+SymbolicSum3[a_^OPEj b_^(OPEi - OPEj) / (c_^OPEi),
+		{OPEj, 0, OPEi}, {OPEi, 0, -4 + OPEm}
+	] :=
+	c^(4-OPEm) a^(OPEm-2)/((a-b) (a-c)) +
+		c^(4-OPEm) b^(OPEm-2)/((b-a) (b-c)) +
+		c^2 / ((c-a) (c-b));
+
+(* R.Hamberg, (3A.18) *)
+SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),
+		{OPEi, 0, opem4_}, {OPEj, 0, OPEi}
+	] :=
+	b^(any)*(
+			(a^(opem4+2)/((a-b) (a-c)) + b^(opem4+2)/((b-a) (b-c)) +
+			c^(opem4+2)/((c-a) (c-b)) )
+						) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
+
+SymbolicSum3[a_^OPEj b_^(- OPEi + OPEj) c_^(opem4_ -OPEi),
+		{OPEi, 0, opem4_}, {OPEj, 0, OPEi}
+	] :=
+	(
+			(a^(opem4+2)/((a-(1/b)) (a-c)) + b^(-opem4-2)/(
+			((1/b)-a) ((1/b)-c)) +
+			c^(opem4+2)/((c-a) (c-(1/b))) )
+						) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
+
+SymbolicSum3[a_^OPEj b_^(any_. + OPEi - OPEj) c_^(opem4_ -OPEi),
+			{OPEi, 0, opem4_}, {OPEj, 0, OPEi}
+	] :=
+	b^(any)*(
+			(a^(opem4+2)/((a-b) (a-c)) + b^(opem4+2)/((b-a) (b-c)) +
+			c^(opem4+2)/((c-a) (c-b)) )
+						) /; FreeQ2[{any,opem4},{OPEi,OPEj}];
+
+SymbolicSum3[a_^OPEi b_^(any_. + OPEj - OPEi) c_^(opem4_ -OPEj),
+		{OPEi, 0, OPEj}, {OPEj, 0, opem4_}
+	] :=
+	b^(any)*(
+		(a^(opem4+2)/((a-b) (a-c)) + b^(opem4+2)/((b-a) (b-c)) +
+		c^(opem4+2)/((c-a) (c-b)) )
+						) /; FreeQ2[{opem4,any},{OPEi,OPEj}];
+
+FCPrint[1,"SymbolicSum.m loaded"];
 End[]
