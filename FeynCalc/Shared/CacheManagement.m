@@ -70,9 +70,21 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 
 		Which[
 			fcFunc === ExpandScalarProduct,
-				depArgs = cachedToString[{DownValues[Pair], DownValues[ScalarProduct], $BreitMaison ,$Larin}],
+				depArgs = cachedToString[{	DownValues[Pair],
+											DownValues[ScalarProduct],
+											DownValues[SP],
+											DownValues[SPD],
+											DownValues[SPE],
+											$BreitMaison,
+											$Larin}],
 			fcFunc === PairContract,
-				depArgs = cachedToString[{DownValues[Pair], DownValues[ScalarProduct], $BreitMaison ,$Larin}],
+				depArgs = cachedToString[{	DownValues[Pair],
+											DownValues[ScalarProduct],
+											DownValues[SP],
+											DownValues[SPD],
+											DownValues[SPE],
+											$BreitMaison,
+											$Larin}],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]
