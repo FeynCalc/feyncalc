@@ -103,7 +103,8 @@ Tests`Shared`fcstSharedObjectsOwnValues =  {
 {"fcstSharedObjectsOwnValues-ID81", "OwnValues[SUNFDelta]", "{}"},
 {"fcstSharedObjectsOwnValues-ID82", "OwnValues[SUNTF]", "{}"},
 {"fcstSharedObjectsOwnValues-ID83", "OwnValues[SUNFIndex]", "{}"},
-{"fcstSharedObjectsOwnValues-ID84", "OwnValues[ExplicitSUNFIndex]", "{}"}
+{"fcstSharedObjectsOwnValues-ID84", "OwnValues[ExplicitSUNFIndex]", "{}"},
+{"fcstSharedObjectsOwnValues-ID85", "OwnValues[Zeta2]", "{}"}
 };
 
 
@@ -203,8 +204,12 @@ DiracGamma[FeynCalc`SharedObjects`Private`a]}"},
 {"fcstSharedObjectsUpValues-ID83", "UpValues[SUNFIndex]", "{}"},
 {"fcstSharedObjectsUpValues-ID84", "UpValues[ExplicitSUNFIndex]",
 	"{HoldPattern[SUNFIndex[FeynCalc`SharedObjects`Private`i_ExplicitSUNFIndex]] :>
-	ExplicitSUNFIndex[FeynCalc`SharedObjects`Private`i]}"}
+	ExplicitSUNFIndex[FeynCalc`SharedObjects`Private`i]}"},
+{"fcstSharedObjectsUpValues-ID85", "UpValues[Zeta2]", "{}"}
 }
+
+
+
 
 Tests`Shared`fcstSharedObjectsMessages = {
 {"fcstSharedObjectsMessages-I1", "DiracGamma[5, D]", "Null", "{Message[DiracGamma::gamma5fail, DiracGamma[5, D]]}"},

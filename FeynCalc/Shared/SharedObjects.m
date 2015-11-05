@@ -505,6 +505,11 @@ the physical behavior of those objects."
 Upper::usage = "Upper may be used inside LorentzIndex to indicate an
 contravariant LorentzIndex.";
 
+
+Zeta2::usage =
+"Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in \
+OPEIntegrateDelta is replaced by (6 Zeta2).";
+
 $FCMomentumSubHeads::usage = "$FCMomentumSubHeads is a pattern that
 contains Heads which may appear inside Momentum and need special treatment."
 
@@ -2059,6 +2064,16 @@ SUNTF /:
 
 SUNTF[a_,b_,c_] :=
 	SUNTF[{a},b,c]/;Head[a]=!=List;
+
+
+Zeta2 /:
+	N[Zeta2] = N[Zeta[2]];
+Zeta2 /:
+	N[Zeta2, prec_] := N[Zeta[2], prec];
+
+Zeta2 /:
+	MakeBoxes[Zeta2, TraditionalForm] :=
+		RowBox[{"\[Zeta]","(",2,")"}];
 
 initialPairDownValues = DownValues[Pair];
 initialSPDownValues = DownValues[SP];
