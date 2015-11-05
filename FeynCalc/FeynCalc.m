@@ -122,10 +122,6 @@ the Dirac algebra functions. Use Tracer if you need it.";
 				Reversion during a session is not possible.";
 *)
 
-$Color::usage =
-"$Color is False by default. If set to True, some special variables \
-will be colored.";
-
 $Containers::usage =
 "$FieldContainers is a set of heads over which FieldDerivative should
 distribute, in the following sense: Let c be a member of $Containers. Then
@@ -256,7 +252,7 @@ FeynCalc`Private`val.";
 $MemoryAvailable::usage =
 "$MemoryAvailable is  a global variable which is set to an integer \
 n, where n is the available amount of main memory in MB. \
-The default is 1024. It should be increased if possible. \
+The default is 4096. It should be increased if possible. \
 The higher $MemoryAvailable can be, the more intermediate \
 steps do not have to be repeated by FeynCalc.";
 
@@ -370,7 +366,6 @@ $Abbreviations = {
 };
 
 $BreitMaison			= False;
-$Color					= False;
 $Containers				= {};
 $Covariant				= False;
 $DisableMemSet 			= False;
