@@ -50,6 +50,9 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]
 				z
 			];
 		exp = FeynCalcInternal[ex];
+
+		exp = Expand2[ExpandScalarProduct[exp,Momentum->{q}],q];
+
 		If[ OptionValue[Unique] === True,
 			a$AL = Unique[$AL],
 			a$AL = $AL
