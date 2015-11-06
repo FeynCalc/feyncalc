@@ -100,7 +100,7 @@ fourDerivative[x_, a_, b__] :=
 
 fourDerivative[x_, ve_]:=
 	Block[{	nx = x,p ,mu,linCombHide={},linCombShow={},
-			uList,sList,repRule, deriv,null1,null2},
+			uList,sList,repRule, deriv,null1,null2,un},
 			(* check the we are differentiating w.r.t a vector	*)
 		If [!MatchQ[ve,Pair[_. Momentum[_,_:4]+ _:0,_:4]],
 			Message[FourDivergence::notvec, ve];
@@ -124,8 +124,9 @@ fourDerivative[x_, ve_]:=
 			returning a wrong result
 		*)
 		If[	!MatchQ[p,Momentum[m_/;FreeQ2[m,{Plus,Times}],_:4]],
-			linCombHide = Rule[p,Unique[]];
-			linCombShow = Reverse[linCombHide];
+			un=Unique[];
+			linCombHide = {Rule[p,un],Rule[MomentumCombine[MomentumExpand[-p]],-un]};
+			linCombShow = Reverse/@linCombHide;
 
 			If[ FreeQ2[nx/.linCombHide, Variables[p/.Momentum[a_,_:4]:>a]],
 				nx = nx/.linCombHide;
