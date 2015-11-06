@@ -1,0 +1,582 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15314,        572]
+NotebookOptionsPosition[     10352,        405]
+NotebookOutlinePosition[     13629,        503]
+CellTagsIndexPosition[     13522,        497]
+WindowTitle->GAD
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GAD\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GAD"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/GAD.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$71156], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/GAD", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GAD", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GAD", "[", "mu", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "can be used as input for a D-dimensional ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["\[Gamma]", 
+        RowBox[{"\[Mu]", " "}]], TraditionalForm]]],
+     "and is transformed into DiracGamma[LorentzIndex[",
+     Cell[BoxData[
+      FormBox["\[Mu]", TraditionalForm]]],
+     ",D],D] by FeynCalcInternal (=FCI).GAD[",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{"\[Mu]", ",", "\[Nu]", ",", " ", "..."}], TraditionalForm]]],
+     "] is a short form for GAD[",
+     Cell[BoxData[
+      FormBox["\[Mu]", TraditionalForm]]],
+     "].GAD[",
+     Cell[BoxData[
+      FormBox["\[Nu]", TraditionalForm]]],
+     "]. ... ."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1524591724],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->326004408],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GAD", "[", "\[Mu]", "]"}]], "Input",
+ CellTags->"GAD",
+ CellLabel->"In[1]:=",
+ CellID->617064291],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["\[Gamma]", 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{22, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GAD",
+ CellLabel->"Out[1]=",
+ CellID->1066808251]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GAD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "-", 
+  RowBox[{"GAD", "[", 
+   RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
+ CellTags->"GAD",
+ CellLabel->"In[2]:=",
+ CellID->1166403079],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{97, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GAD",
+ CellLabel->"Out[2]=",
+ CellID->1547742824]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"FCI", "[", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], "]"}], "]"}]], "Input",
+ CellTags->"GAD",
+ CellLabel->"In[3]:=",
+ CellID->1483888506],
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", "D"}], "]"}]], "Output",
+ ImageSize->{271, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GAD",
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->129946086]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GAD", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+  "]"}]], "Input",
+ CellTags->"GAD",
+ CellLabel->"In[4]:=",
+ CellID->193869943],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{89, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GAD",
+ CellLabel->"Out[4]=",
+ CellID->1706461221]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"GAD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+  "]"}]], "Input",
+ CellTags->"GAD",
+ CellLabel->"In[5]:=",
+ CellID->488289901],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"GAD", "[", "\[Nu]", "]"}], ".", 
+  RowBox[{"GAD", "[", "\[Rho]", "]"}], ".", 
+  RowBox[{"GAD", "[", "\[Sigma]", "]"}]}]], "Output",
+ ImageSize->{227, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GAD",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->20038506]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GAD", "[", "\[Alpha]", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GSD", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+  RowBox[{"GAD", "[", "\[Beta]", "]"}]}]], "Input",
+ CellTags->"GAD",
+ CellLabel->"In[6]:=",
+ CellID->1528585205],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    RowBox[{"m", "+", 
+     FormBox[
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}],
+      TraditionalForm]}], ")"}], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{118, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GAD",
+ CellLabel->"Out[6]=",
+ CellID->1687383827]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracMatrix",
+  ButtonNote->"DiracMatrix"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GS",
+  ButtonNote->"GS"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GAD",
+ CellID->127950767]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GAD",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 0, 54.903305}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GAD[mu] can be used as input for a D-dimensional \\[Gamma] \\[Mu] and is \
+transformed into DiracGamma[LorentzIndex[\\[Mu],D],D] by FeynCalcInternal \
+(=FCI).GAD[\\[Mu], \\[Nu], ...] is a short form for GAD[\\[Mu]].GAD[\\[Nu]]. \
+... .", "synonyms" -> {}, "title" -> "GAD", "titlemodifier" -> "", 
+    "windowtitle" -> "GAD", "type" -> "Symbol", "uri" -> "FeynCalc/ref/GAD"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3857, 112, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1524591724]},
+ "GAD"->{
+  Cell[4490, 141, 121, 4, 27, "Input",
+   CellTags->"GAD",
+   CellID->617064291],
+  Cell[4614, 147, 310, 12, 38, "Output",
+   CellTags->"GAD",
+   CellID->1066808251],
+  Cell[4961, 164, 235, 8, 27, "Input",
+   CellTags->"GAD",
+   CellID->1166403079],
+  Cell[5199, 174, 900, 38, 38, "Output",
+   CellTags->"GAD",
+   CellID->1547742824],
+  Cell[6136, 217, 192, 6, 27, "Input",
+   CellTags->"GAD",
+   CellID->1483888506],
+  Cell[6331, 225, 319, 10, 36, "Output",
+   CellTags->"GAD",
+   CellID->129946086],
+  Cell[6687, 240, 183, 6, 27, "Input",
+   CellTags->"GAD",
+   CellID->193869943],
+  Cell[6873, 248, 848, 36, 39, "Output",
+   CellTags->"GAD",
+   CellID->1706461221],
+  Cell[7758, 289, 223, 7, 27, "Input",
+   CellTags->"GAD",
+   CellID->488289901],
+  Cell[7984, 298, 372, 11, 36, "Output",
+   CellTags->"GAD",
+   CellID->20038506],
+  Cell[8393, 314, 273, 9, 27, "Input",
+   CellTags->"GAD",
+   CellID->1528585205],
+  Cell[8669, 325, 760, 31, 42, "Output",
+   CellTags->"GAD",
+   CellID->1687383827],
+  Cell[9797, 379, 513, 21, 70, "Text",
+   CellTags->"GAD",
+   CellID->127950767]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12283, 450},
+ {"GAD", 12414, 454}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2815, 75, 46, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2864, 78, 968, 30, 103, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3857, 112, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1524591724],
+Cell[CellGroupData[{
+Cell[4270, 131, 195, 6, 25, "ExampleSection",
+ CellID->326004408],
+Cell[CellGroupData[{
+Cell[4490, 141, 121, 4, 27, "Input",
+ CellTags->"GAD",
+ CellID->617064291],
+Cell[4614, 147, 310, 12, 38, "Output",
+ CellTags->"GAD",
+ CellID->1066808251]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4961, 164, 235, 8, 27, "Input",
+ CellTags->"GAD",
+ CellID->1166403079],
+Cell[5199, 174, 900, 38, 38, "Output",
+ CellTags->"GAD",
+ CellID->1547742824]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6136, 217, 192, 6, 27, "Input",
+ CellTags->"GAD",
+ CellID->1483888506],
+Cell[6331, 225, 319, 10, 36, "Output",
+ CellTags->"GAD",
+ CellID->129946086]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6687, 240, 183, 6, 27, "Input",
+ CellTags->"GAD",
+ CellID->193869943],
+Cell[6873, 248, 848, 36, 39, "Output",
+ CellTags->"GAD",
+ CellID->1706461221]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7758, 289, 223, 7, 27, "Input",
+ CellTags->"GAD",
+ CellID->488289901],
+Cell[7984, 298, 372, 11, 36, "Output",
+ CellTags->"GAD",
+ CellID->20038506]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8393, 314, 273, 9, 27, "Input",
+ CellTags->"GAD",
+ CellID->1528585205],
+Cell[8669, 325, 760, 31, 42, "Output",
+ CellTags->"GAD",
+ CellID->1687383827]
+}, Open  ]]
+}, Open  ]],
+Cell[9456, 360, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9524, 365, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9797, 379, 513, 21, 70, "Text",
+ CellTags->"GAD",
+ CellID->127950767]
+}, Open  ]],
+Cell[10325, 403, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

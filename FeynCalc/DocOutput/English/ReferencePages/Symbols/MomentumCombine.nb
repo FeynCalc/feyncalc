@@ -1,0 +1,621 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16835,        611]
+NotebookOptionsPosition[     11001,        425]
+NotebookOutlinePosition[     14694,        531]
+CellTagsIndexPosition[     14575,        525]
+WindowTitle->MomentumCombine
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/MomentumCombine\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/MomentumCombine"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+MomentumCombine.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$97045], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/MomentumCombine", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["MomentumCombine", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"MomentumCombine", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is the inverse operation to MomentumExpand and ExpandScalarProduct. \
+MomentumCombine combines also Pair`s."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->480864913],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->47131202],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "MomentumCombine", "]"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[1]:=",
+ CellID->1545747738],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"LeafCount", "\[Rule]", "1"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{110, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[1]=",
+ CellID->1201680776]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Momentum", "[", "p", "]"}], "-", 
+    RowBox[{"2", " ", 
+     RowBox[{"Momentum", "[", "q", "]"}]}]}], " ", "//", " ", 
+   "MomentumCombine"}], " ", "//", " ", "StandardForm"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[2]:=",
+ CellID->607844623],
+
+Cell[BoxData[
+ RowBox[{"Momentum", "[", 
+  RowBox[{"p", "-", 
+   RowBox[{"2", " ", "q"}]}], "]"}]], "Output",
+ ImageSize->{132, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->683220670]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", "=", 
+  RowBox[{
+   RowBox[{"FV", "[", 
+    RowBox[{"p", ",", "\[Mu]"}], "]"}], " ", "+", " ", 
+   RowBox[{"2", " ", 
+    RowBox[{"FV", "[", 
+     RowBox[{"q", ",", "\[Mu]"}], "]"}]}], " "}]}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[3]:=",
+ CellID->199069763],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], "+", 
+   RowBox[{"2", " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{69, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[3]=",
+ CellID->1701893288]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MomentumCombine", "[", "t1", "]"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[4]:=",
+ CellID->316549312],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     FormBox[
+      RowBox[{
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"], "+", 
+       RowBox[{"2", " ", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}]}],
+      TraditionalForm],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{73, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[4]=",
+ CellID->1410863957]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MomentumCombine", "[", "t1", "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[5]:=",
+ CellID->1834428785],
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", "+", 
+     RowBox[{"2", " ", "q"}]}], "]"}]}], "]"}]], "Output",
+ ImageSize->{317, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->1690546936]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MomentumCombine", "[", "t1", "]"}], "//", 
+  "ExpandScalarProduct"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[6]:=",
+ CellID->1175875424],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], "+", 
+   RowBox[{"2", " ", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{69, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[6]=",
+ CellID->130248016]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[7]:=",
+ CellID->1928655829],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Pair", "[", 
+   RowBox[{
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]}]}]], "Output",
+ ImageSize->{302, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MomentumCombine",
+ CellLabel->"Out[7]//StandardForm=",
+ CellID->547997503]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "t1", "]"}]], "Input",
+ CellTags->"MomentumCombine",
+ CellLabel->"In[8]:=",
+ CellID->1041568760]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["ExpandScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandScalarProduct",
+  ButtonNote->"ExpandScalarProduct"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Momentum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Momentum",
+  ButtonNote->"Momentum"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MomentumExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumExpand",
+  ButtonNote->"MomentumExpand"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MomentumCombine2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumCombine2",
+  ButtonNote->"MomentumCombine2"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"MomentumCombine",
+ CellID->2131461260]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"MomentumCombine",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 3, 10.404075}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "MomentumCombine[expr] is the inverse operation to MomentumExpand and \
+ExpandScalarProduct. MomentumCombine combines also Pair`s.", "synonyms" -> {},
+     "title" -> "MomentumCombine", "titlemodifier" -> "", "windowtitle" -> 
+    "MomentumCombine", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/MomentumCombine"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3409, 95, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->480864913]},
+ "MomentumCombine"->{
+  Cell[4040, 124, 148, 4, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->1545747738],
+  Cell[4191, 130, 279, 9, 36, "Output",
+   CellTags->"MomentumCombine",
+   CellID->1201680776],
+  Cell[4507, 144, 320, 10, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->607844623],
+  Cell[4830, 156, 284, 9, 36, "Output",
+   CellTags->"MomentumCombine",
+   CellID->683220670],
+  Cell[5151, 170, 305, 10, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->199069763],
+  Cell[5459, 182, 958, 41, 40, "Output",
+   CellTags->"MomentumCombine",
+   CellID->1701893288],
+  Cell[6454, 228, 142, 4, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->316549312],
+  Cell[6599, 234, 653, 27, 41, "Output",
+   CellTags->"MomentumCombine",
+   CellID->1410863957],
+  Cell[7289, 266, 181, 6, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->1834428785],
+  Cell[7473, 274, 388, 12, 36, "Output",
+   CellTags->"MomentumCombine",
+   CellID->1690546936],
+  Cell[7898, 291, 188, 6, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->1175875424],
+  Cell[8089, 299, 859, 37, 40, "Output",
+   CellTags->"MomentumCombine",
+   CellID->130248016],
+  Cell[8985, 341, 139, 4, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->1928655829],
+  Cell[9127, 347, 526, 16, 54, "Output",
+   CellTags->"MomentumCombine",
+   CellID->547997503],
+  Cell[9668, 366, 133, 4, 27, "Input",
+   CellTags->"MomentumCombine",
+   CellID->1041568760],
+  Cell[10157, 392, 802, 28, 32, "Text",
+   CellTags->"MomentumCombine",
+   CellID->2131461260]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12881, 469},
+ {"MomentumCombine", 13022, 473}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2273, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2863, 75, 58, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2924, 78, 460, 13, 97, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3409, 95, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->480864913],
+Cell[CellGroupData[{
+Cell[3821, 114, 194, 6, 25, "ExampleSection",
+ CellID->47131202],
+Cell[CellGroupData[{
+Cell[4040, 124, 148, 4, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->1545747738],
+Cell[4191, 130, 279, 9, 36, "Output",
+ CellTags->"MomentumCombine",
+ CellID->1201680776]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4507, 144, 320, 10, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->607844623],
+Cell[4830, 156, 284, 9, 36, "Output",
+ CellTags->"MomentumCombine",
+ CellID->683220670]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5151, 170, 305, 10, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->199069763],
+Cell[5459, 182, 958, 41, 40, "Output",
+ CellTags->"MomentumCombine",
+ CellID->1701893288]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6454, 228, 142, 4, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->316549312],
+Cell[6599, 234, 653, 27, 41, "Output",
+ CellTags->"MomentumCombine",
+ CellID->1410863957]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7289, 266, 181, 6, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->1834428785],
+Cell[7473, 274, 388, 12, 36, "Output",
+ CellTags->"MomentumCombine",
+ CellID->1690546936]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7898, 291, 188, 6, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->1175875424],
+Cell[8089, 299, 859, 37, 40, "Output",
+ CellTags->"MomentumCombine",
+ CellID->130248016]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8985, 341, 139, 4, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->1928655829],
+Cell[9127, 347, 526, 16, 54, "Output",
+ CellTags->"MomentumCombine",
+ CellID->547997503]
+}, Open  ]],
+Cell[9668, 366, 133, 4, 27, "Input",
+ CellTags->"MomentumCombine",
+ CellID->1041568760]
+}, Open  ]],
+Cell[9816, 373, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9884, 378, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10157, 392, 802, 28, 32, "Text",
+ CellTags->"MomentumCombine",
+ CellID->2131461260]
+}, Open  ]],
+Cell[10974, 423, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

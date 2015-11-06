@@ -1,0 +1,406 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11645,        396]
+NotebookOptionsPosition[      7217,        258]
+NotebookOutlinePosition[     10230,        343]
+CellTagsIndexPosition[     10113,        337]
+WindowTitle->QuarkPropagator
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/QuarkPropagator\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/QuarkPropagator"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+QuarkPropagator.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120100], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/QuarkPropagator", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["QuarkPropagator", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"QuarkPropagator", "[", "p", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is the massless quark propagator. QuarkPropagator[{p,m}] or gives the \
+quark propagator with mass m."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1652090047],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->263949949],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "QuarkPropagator", "]"}]], "Input",
+ CellTags->"QuarkPropagator",
+ CellLabel->"In[1]:=",
+ CellID->1137505588],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"Loop", "\[Rule]", "0"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{419, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"QuarkPropagator",
+ CellLabel->"Out[1]=",
+ CellID->2001213382]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuarkPropagator", "[", "p", "]"}]], "Input",
+ CellTags->"QuarkPropagator",
+ CellLabel->"In[2]:=",
+ CellID->1589814930],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[CapitalPi]", "q"], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{44, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"QuarkPropagator",
+ CellLabel->"Out[2]=",
+ CellID->626430268]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuarkPropagator", "[", 
+  RowBox[{"{", 
+   RowBox[{"p", ",", "m"}], "}"}], "]"}]], "Input",
+ CellTags->"QuarkPropagator",
+ CellLabel->"In[3]:=",
+ CellID->1965811029],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[CapitalPi]", "q"], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{44, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"QuarkPropagator",
+ CellLabel->"Out[3]=",
+ CellID->1513622738]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuarkPropagator", "[", 
+  RowBox[{"p", ",", "1", ",", "2"}], "]"}]], "Input",
+ CellTags->"QuarkPropagator",
+ CellLabel->"In[4]:=",
+ CellID->1524661938],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"QuarkPropagator", "(", 
+   RowBox[{"p", ",", "1", ",", "2"}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{163, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"QuarkPropagator",
+ CellLabel->"Out[4]=",
+ CellID->396206492]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["GluonPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonPropagator",
+  ButtonNote->"GluonPropagator"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["QuarkGluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkGluonVertex",
+  ButtonNote->"QuarkGluonVertex"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"QuarkPropagator",
+ CellID->704256164]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"QuarkPropagator",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 5, 12.873639}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "QuarkPropagator[p] is the massless quark propagator. \
+QuarkPropagator[{p,m}] or gives the quark propagator with mass m.", 
+    "synonyms" -> {}, "title" -> "QuarkPropagator", "titlemodifier" -> "", 
+    "windowtitle" -> "QuarkPropagator", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/QuarkPropagator"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3401, 95, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1652090047]},
+ "QuarkPropagator"->{
+  Cell[4034, 124, 148, 4, 27, "Input",
+   CellTags->"QuarkPropagator",
+   CellID->1137505588],
+  Cell[4185, 130, 640, 18, 56, "Output",
+   CellTags->"QuarkPropagator",
+   CellID->2001213382],
+  Cell[4862, 153, 142, 4, 27, "Input",
+   CellTags->"QuarkPropagator",
+   CellID->1589814930],
+  Cell[5007, 159, 312, 11, 40, "Output",
+   CellTags->"QuarkPropagator",
+   CellID->626430268],
+  Cell[5356, 175, 189, 6, 27, "Input",
+   CellTags->"QuarkPropagator",
+   CellID->1965811029],
+  Cell[5548, 183, 313, 11, 40, "Output",
+   CellTags->"QuarkPropagator",
+   CellID->1513622738],
+  Cell[5898, 199, 175, 5, 27, "Input",
+   CellTags->"QuarkPropagator",
+   CellID->1524661938],
+  Cell[6076, 206, 293, 9, 38, "Output",
+   CellTags->"QuarkPropagator",
+   CellID->396206492],
+  Cell[6737, 238, 438, 15, 32, "Text",
+   CellTags->"QuarkPropagator",
+   CellID->704256164]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9088, 302},
+ {"QuarkPropagator", 9230, 306}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2274, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2864, 75, 58, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2925, 78, 451, 13, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3401, 95, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1652090047],
+Cell[CellGroupData[{
+Cell[3814, 114, 195, 6, 25, "ExampleSection",
+ CellID->263949949],
+Cell[CellGroupData[{
+Cell[4034, 124, 148, 4, 27, "Input",
+ CellTags->"QuarkPropagator",
+ CellID->1137505588],
+Cell[4185, 130, 640, 18, 56, "Output",
+ CellTags->"QuarkPropagator",
+ CellID->2001213382]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4862, 153, 142, 4, 27, "Input",
+ CellTags->"QuarkPropagator",
+ CellID->1589814930],
+Cell[5007, 159, 312, 11, 40, "Output",
+ CellTags->"QuarkPropagator",
+ CellID->626430268]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5356, 175, 189, 6, 27, "Input",
+ CellTags->"QuarkPropagator",
+ CellID->1965811029],
+Cell[5548, 183, 313, 11, 40, "Output",
+ CellTags->"QuarkPropagator",
+ CellID->1513622738]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5898, 199, 175, 5, 27, "Input",
+ CellTags->"QuarkPropagator",
+ CellID->1524661938],
+Cell[6076, 206, 293, 9, 38, "Output",
+ CellTags->"QuarkPropagator",
+ CellID->396206492]
+}, Open  ]]
+}, Open  ]],
+Cell[6396, 219, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6464, 224, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6737, 238, 438, 15, 32, "Text",
+ CellTags->"QuarkPropagator",
+ CellID->704256164]
+}, Open  ]],
+Cell[7190, 256, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

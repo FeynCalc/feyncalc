@@ -1,0 +1,501 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14196,        491]
+NotebookOptionsPosition[      9715,        353]
+NotebookOutlinePosition[     12770,        438]
+CellTagsIndexPosition[     12650,        432]
+WindowTitle->ToHypergeometric
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ToHypergeometric\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ToHypergeometric"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+ToHypergeometric.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151140], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ToHypergeometric", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ToHypergeometric", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ToHypergeometric", "[", 
+       RowBox[{
+        RowBox[{"t", "^", "b"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "t"}], ")"}], "^", "c"}]}]}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "(1+tz)^a,t] returns ",
+     Cell[BoxData[
+      FormBox["Null", TraditionalForm]]],
+     ". Remember that Re ",
+     StyleBox["b",
+      FontSlant->"Italic"],
+     " >0 and Re (",
+     StyleBox["c",
+      FontSlant->"Italic"],
+     "-",
+     StyleBox["b",
+      FontSlant->"Italic"],
+     ") > 0 should hold (need not be set in ",
+     StyleBox["Mathematica",
+      FontSlant->"Italic"],
+     ")."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1252316525],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->796036632],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToHypergeometric", "[", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["t", "b"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "t"}], ")"}], "c"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       RowBox[{"t", " ", "z"}]}], ")"}], "a"]}], ",", "t"}], "]"}]], "Input",
+ CellTags->"ToHypergeometric",
+ CellLabel->"In[1]:=",
+ CellID->1435030479],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    TemplateBox[{RowBox[{"b", "+", "1"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "+", "1"}]},
+     "Gamma"], " ", 
+    TemplateBox[{
+     RowBox[{"-", "a"}],RowBox[{"b", "+", "1"}],
+      RowBox[{"b", "+", "c", "+", "2"}],RowBox[{"-", "z"}]},
+     "Hypergeometric2F1"]}], 
+   TemplateBox[{RowBox[{"b", "+", "c", "+", "2"}]},
+    "Gamma"]], TraditionalForm]], "Output",
+ ImageSize->{302, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToHypergeometric",
+ CellLabel->"Out[1]=",
+ CellID->309474484]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToHypergeometric", "[", 
+  RowBox[{
+   RowBox[{"w", " ", 
+    SuperscriptBox["t", 
+     RowBox[{"b", "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "t"}], ")"}], 
+     RowBox[{"c", "-", "b", "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"t", " ", "z"}]}], ")"}], 
+     RowBox[{"-", "a"}]]}], ",", "t"}], "]"}]], "Input",
+ CellTags->"ToHypergeometric",
+ CellLabel->"In[2]:=",
+ CellID->26355220],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"w", " ", 
+    TemplateBox[{"b"},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "-", "b"}]},
+     "Gamma"], " ", 
+    TemplateBox[{"a","b","c","z"},
+     "Hypergeometric2F1"]}], 
+   TemplateBox[{"c"},
+    "Gamma"]], TraditionalForm]], "Output",
+ ImageSize->{208, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToHypergeometric",
+ CellLabel->"Out[2]=",
+ CellID->730361964]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToHypergeometric", "[", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["t", "b"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "t"}], ")"}], "c"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"u", "+", 
+       RowBox[{"t", " ", "z"}]}], ")"}], "a"]}], ",", "t"}], "]"}]], "Input",
+ CellTags->"ToHypergeometric",
+ CellLabel->"In[3]:=",
+ CellID->994646256],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["u", "a"], " ", 
+    TemplateBox[{RowBox[{"b", "+", "1"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "+", "1"}]},
+     "Gamma"], " ", 
+    TemplateBox[{
+     RowBox[{"-", "a"}],RowBox[{"b", "+", "1"}],
+      RowBox[{"b", "+", "c", "+", "2"}],RowBox[{"-", 
+        FractionBox["z", "u"]}]},
+     "Hypergeometric2F1"]}], 
+   TemplateBox[{RowBox[{"b", "+", "c", "+", "2"}]},
+    "Gamma"]], TraditionalForm]], "Output",
+ ImageSize->{327, 57},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToHypergeometric",
+ CellLabel->"Out[3]=",
+ CellID->602855066]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToHypergeometric", "[", 
+  RowBox[{
+   RowBox[{"w", " ", 
+    SuperscriptBox["t", 
+     RowBox[{"b", "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "t"}], ")"}], 
+     RowBox[{"c", "-", "b", "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"u", "-", 
+       RowBox[{"t", " ", "z"}]}], ")"}], 
+     RowBox[{"-", "a"}]]}], ",", "t"}], "]"}]], "Input",
+ CellTags->"ToHypergeometric",
+ CellLabel->"In[4]:=",
+ CellID->1770257143],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"w", " ", 
+    SuperscriptBox["u", 
+     RowBox[{"-", "a"}]], " ", 
+    TemplateBox[{"b"},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "-", "b"}]},
+     "Gamma"], " ", 
+    TemplateBox[{"a","b","c",FractionBox["z", "u"]},
+     "Hypergeometric2F1"]}], 
+   TemplateBox[{"c"},
+    "Gamma"]], TraditionalForm]], "Output",
+ ImageSize->{241, 57},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToHypergeometric",
+ CellLabel->"Out[4]=",
+ CellID->1693879110]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["HypergeometricAC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricAC",
+  ButtonNote->"HypergeometricAC"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["HypergeometricIR",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricIR",
+  ButtonNote->"HypergeometricIR"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["HypergeometricSE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricSE",
+  ButtonNote->"HypergeometricSE"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"ToHypergeometric",
+ CellID->811059910]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ToHypergeometric",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 8, 10.847422}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ToHypergeometric[t^b (1 - t)^c (1+tz)^a,t] returns Null. Remember that \
+Re b >0 and Re (c-b) > 0 should hold (need not be set in Mathematica).", 
+    "synonyms" -> {}, "title" -> "ToHypergeometric", "titlemodifier" -> "", 
+    "windowtitle" -> "ToHypergeometric", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/ToHypergeometric"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3840, 114, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1252316525]},
+ "ToHypergeometric"->{
+  Cell[4473, 143, 413, 14, 31, "Input",
+   CellTags->"ToHypergeometric",
+   CellID->1435030479],
+  Cell[4889, 159, 594, 19, 66, "Output",
+   CellTags->"ToHypergeometric",
+   CellID->309474484],
+  Cell[5520, 183, 504, 17, 31, "Input",
+   CellTags->"ToHypergeometric",
+   CellID->26355220],
+  Cell[6027, 202, 461, 17, 66, "Output",
+   CellTags->"ToHypergeometric",
+   CellID->730361964],
+  Cell[6525, 224, 412, 14, 31, "Input",
+   CellTags->"ToHypergeometric",
+   CellID->994646256],
+  Cell[6940, 240, 657, 21, 78, "Output",
+   CellTags->"ToHypergeometric",
+   CellID->602855066],
+  Cell[7634, 266, 506, 17, 31, "Input",
+   CellTags->"ToHypergeometric",
+   CellID->1770257143],
+  Cell[8143, 285, 537, 19, 78, "Output",
+   CellTags->"ToHypergeometric",
+   CellID->1693879110],
+  Cell[9048, 327, 625, 21, 70, "Text",
+   CellTags->"ToHypergeometric",
+   CellID->811059910]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11613, 397},
+ {"ToHypergeometric", 11757, 401}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[588, 21, 2278, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2869, 75, 59, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2931, 78, 884, 32, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3840, 114, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1252316525],
+Cell[CellGroupData[{
+Cell[4253, 133, 195, 6, 25, "ExampleSection",
+ CellID->796036632],
+Cell[CellGroupData[{
+Cell[4473, 143, 413, 14, 31, "Input",
+ CellTags->"ToHypergeometric",
+ CellID->1435030479],
+Cell[4889, 159, 594, 19, 66, "Output",
+ CellTags->"ToHypergeometric",
+ CellID->309474484]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5520, 183, 504, 17, 31, "Input",
+ CellTags->"ToHypergeometric",
+ CellID->26355220],
+Cell[6027, 202, 461, 17, 66, "Output",
+ CellTags->"ToHypergeometric",
+ CellID->730361964]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6525, 224, 412, 14, 31, "Input",
+ CellTags->"ToHypergeometric",
+ CellID->994646256],
+Cell[6940, 240, 657, 21, 78, "Output",
+ CellTags->"ToHypergeometric",
+ CellID->602855066]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7634, 266, 506, 17, 31, "Input",
+ CellTags->"ToHypergeometric",
+ CellID->1770257143],
+Cell[8143, 285, 537, 19, 78, "Output",
+ CellTags->"ToHypergeometric",
+ CellID->1693879110]
+}, Open  ]]
+}, Open  ]],
+Cell[8707, 308, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8775, 313, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9048, 327, 625, 21, 70, "Text",
+ CellTags->"ToHypergeometric",
+ CellID->811059910]
+}, Open  ]],
+Cell[9688, 351, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

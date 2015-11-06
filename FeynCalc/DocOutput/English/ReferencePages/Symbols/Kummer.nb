@@ -1,0 +1,2376 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     66701,       2366]
+NotebookOptionsPosition[     50365,       1779]
+NotebookOutlinePosition[     59015,       2057]
+CellTagsIndexPosition[     58903,       2051]
+WindowTitle->Kummer
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Kummer\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Kummer"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Kummer.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$89795], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Kummer",
+             ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Kummer", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       RowBox[{"Kummer", "[", "i", "]"}], "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "applies Kummer relation number i (i =1, ... 24, 94,95,96) to all \
+Hypergeometric2F1 in exp. i = 94 corresponds to eq. 9.131.2, i = 95 to eq. \
+9.132.1 and i = 96 to eq. 9.132.2 in Gradsteyn & Ryzhik."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1968221543],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1540095762],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "2", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[1]:=",
+ CellID->318247247],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c","z"},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{357, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[1]=",
+ CellID->780995976]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "3", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[2]:=",
+ CellID->1547382498],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",RowBox[{"-", 
+        FractionBox["z", 
+         RowBox[{"1", "-", "z"}]]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{342, 39},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[2]=",
+ CellID->334128730]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "4", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[3]:=",
+ CellID->87779889],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "b"}]], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",RowBox[{"-", 
+        FractionBox["z", 
+         RowBox[{"1", "-", "z"}]]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{342, 39},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[3]=",
+ CellID->1379521301]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "6", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[4]:=",
+ CellID->196494184],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",
+      RowBox[{"1", "-", "z"}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{367, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[4]=",
+ CellID->1681078809]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", 
+    RowBox[{"a", "+", "b", "+", "1", "-", "c"}], ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "6", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", 
+     RowBox[{"a", "+", "b", "+", "1", "-", "c"}], ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[5]:=",
+ CellID->793293677],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    "a","b",RowBox[{"a", "+", "b", "-", "c", "+", "1"}],
+     RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"1", "-", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"b", "-", "c", "+", "1"}],
+      RowBox[{"a", "+", "b", "-", "c", "+", "1"}],RowBox[{"1", "-", "z"}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{526, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[5]=",
+ CellID->583730114]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "7", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[6]:=",
+ CellID->39664086],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"-", "a"}]], " ", 
+    TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",RowBox[{"-", 
+        FractionBox[
+         RowBox[{"1", "-", "z"}], "z"]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{330, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[6]=",
+ CellID->282378053]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", 
+    RowBox[{"a", "+", "b", "+", "1", "-", "c"}], ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "7", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", 
+     RowBox[{"a", "+", "b", "+", "1", "-", "c"}], ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[7]:=",
+ CellID->326626360],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    "a","b",RowBox[{"a", "+", "b", "-", "c", "+", "1"}],
+     RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"-", "a"}]], " ", 
+    TemplateBox[{
+     "a",RowBox[{"a", "-", "c", "+", "1"}],
+      RowBox[{"a", "+", "b", "-", "c", "+", "1"}],RowBox[{"-", 
+        FractionBox[
+         RowBox[{"1", "-", "z"}], "z"]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{492, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[7]=",
+ CellID->593894309]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "8", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[8]:=",
+ CellID->2096680953],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"-", "b"}]], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",RowBox[{"-", 
+        FractionBox[
+         RowBox[{"1", "-", "z"}], "z"]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{330, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[8]=",
+ CellID->658206917]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", 
+    RowBox[{"a", "+", "b", "+", "1", "-", "c"}], ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "8", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", 
+     RowBox[{"a", "+", "b", "+", "1", "-", "c"}], ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[9]:=",
+ CellID->1606284055],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    "a","b",RowBox[{"a", "+", "b", "-", "c", "+", "1"}],
+     RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"-", "b"}]], " ", 
+    TemplateBox[{
+     "b",RowBox[{"b", "-", "c", "+", "1"}],
+      RowBox[{"a", "+", "b", "-", "c", "+", "1"}],RowBox[{"-", 
+        FractionBox[
+         RowBox[{"1", "-", "z"}], "z"]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{492, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[9]=",
+ CellID->884891760]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "10", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[10]:=",
+ CellID->1495083835],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"a", "+", "b", "-", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",FractionBox[
+      "1", "z"]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{444, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[10]=",
+ CellID->1201929686]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", 
+    RowBox[{"a", "+", "1", "-", "c"}], ",", 
+    RowBox[{"a", "+", "1", "-", "b"}], ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "10", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", 
+     RowBox[{"a", "+", "1", "-", "c"}], ",", 
+     RowBox[{"a", "+", "1", "-", "b"}], ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[11]:=",
+ CellID->2086065203],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    "a",RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"a", "-", "b", "+", "1"}],
+     FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"a", "+", "b", "-", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"1", "-", "b"}],RowBox[{"c", "-", "b"}],
+      RowBox[{"a", "-", "b", "+", "1"}],FractionBox["1", "z"]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{380, 93},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[11]=",
+ CellID->1407407771]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "11", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[12]:=",
+ CellID->764355789],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"1", "-", "z"}], "z"]}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], "a"], " ", 
+    TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{397, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[12]=",
+ CellID->171828604]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", 
+    RowBox[{"a", "+", "1", "-", "c"}], ",", 
+    RowBox[{"a", "+", "1", "-", "b"}], ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "11", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", 
+     RowBox[{"a", "+", "1", "-", "c"}], ",", 
+     RowBox[{"a", "+", "1", "-", "b"}], ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[13]:=",
+ CellID->1556461178],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    "a",RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"a", "-", "b", "+", "1"}],
+     FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"1", "-", "z"}], "z"]}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], "a"], " ", 
+    TemplateBox[{
+     "a",RowBox[{"c", "-", "b"}],RowBox[{"a", "-", "b", "+", "1"}],
+      FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{536, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[13]=",
+ CellID->1340266483]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "12", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[14]:=",
+ CellID->487619941],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "b"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"b", "-", "a"}]], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{397, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[14]=",
+ CellID->1878402139]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", 
+    RowBox[{"a", "+", "1", "-", "c"}], ",", 
+    RowBox[{"a", "+", "1", "-", "b"}], ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "12", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", 
+     RowBox[{"a", "+", "1", "-", "c"}], ",", 
+     RowBox[{"a", "+", "1", "-", "b"}], ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[15]:=",
+ CellID->1099088563],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    "a",RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"a", "-", "b", "+", "1"}],
+     FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"1", "-", "c"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "c", "-", "1"}]], " ", 
+    TemplateBox[{
+     RowBox[{"1", "-", "b"}],RowBox[{"a", "-", "c", "+", "1"}],
+      RowBox[{"a", "-", "b", "+", "1"}],FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{406, 93},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[15]=",
+ CellID->1646537872]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "14", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[16]:=",
+ CellID->598392912],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"a", "+", "b", "-", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",FractionBox[
+      "1", "z"]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{444, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[16]=",
+ CellID->976219709]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"b", "+", "1", "-", "c"}], ",", "b", ",", 
+    RowBox[{"b", "+", "1", "-", "a"}], ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "14", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"b", "+", "1", "-", "c"}], ",", "b", ",", 
+     RowBox[{"b", "+", "1", "-", "a"}], ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[17]:=",
+ CellID->1367394877],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"b",RowBox[{"b", "-", "c", "+", "1"}],RowBox[{
+       RowBox[{"-", 
+         RowBox[{"a"}]}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"a", "+", "b", "-", "c"}]], " ", 
+    TemplateBox[{RowBox[{"1", "-", "a"}],RowBox[{"c", "-", "a"}],RowBox[{
+        RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{390, 93},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[17]=",
+ CellID->922572585]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "15", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[18]:=",
+ CellID->2076771032],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "b"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], "b"], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{381, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[18]=",
+ CellID->1393980026]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"b", "+", "1", "-", "c"}], ",", "b", ",", 
+    RowBox[{"b", "+", "1", "-", "a"}], ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "15", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"b", "+", "1", "-", "c"}], ",", "b", ",", 
+     RowBox[{"b", "+", "1", "-", "a"}], ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[19]:=",
+ CellID->860912097],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"b",RowBox[{"b", "-", "c", "+", "1"}],RowBox[{
+       RowBox[{"-", 
+         RowBox[{"a"}]}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "b"}], "+", "c", "-", "1"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], 
+     RowBox[{"b", "-", "c", "+", "1"}]], " ", 
+    TemplateBox[{
+     RowBox[{"1", "-", "a"}],RowBox[{"b", "-", "c", "+", "1"}],RowBox[{
+        RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{432, 93},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[19]=",
+ CellID->1288498782]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "16", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[20]:=",
+ CellID->1768264658],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], "a"], " ", 
+    TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{381, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[20]=",
+ CellID->2121590638]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"b", "+", "1", "-", "c"}], ",", "b", ",", 
+    RowBox[{"b", "+", "1", "-", "a"}], ",", 
+    RowBox[{"z", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}]}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "16", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"b", "+", "1", "-", "c"}], ",", "b", ",", 
+     RowBox[{"b", "+", "1", "-", "a"}], ",", 
+     RowBox[{"z", "^", 
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}]}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[21]:=",
+ CellID->1824141612],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"b",RowBox[{"b", "-", "c", "+", "1"}],RowBox[{
+       RowBox[{"-", 
+         RowBox[{"a"}]}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "b"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "z"}], ")"}], "b"], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],RowBox[{
+        RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", 
+       RowBox[{"1", "-", "z"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{540, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[21]=",
+ CellID->1992183596]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"a", "+", "1", "-", "c"}], ",", 
+    RowBox[{"b", "+", "1", "-", "c"}], ",", 
+    RowBox[{"2", "-", "c"}], ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "18", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"a", "+", "1", "-", "c"}], ",", 
+     RowBox[{"b", "+", "1", "-", "c"}], ",", 
+     RowBox[{"2", "-", "c"}], ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[22]:=",
+ CellID->748421164],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"b", "-", "c", "+", "1"}],
+     RowBox[{"2", "-", "c"}],"z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"1", "-", "a"}],RowBox[{"1", "-", "b"}],RowBox[{"2", "-", "c"}],
+      "z"},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{491, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[22]=",
+ CellID->652936361]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "18", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[23]:=",
+ CellID->1906183256],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c","z"},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{357, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[23]=",
+ CellID->1706021647]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"a", "+", "1", "-", "c"}], ",", 
+    RowBox[{"b", "+", "1", "-", "c"}], ",", 
+    RowBox[{"2", "-", "c"}], ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "19", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"a", "+", "1", "-", "c"}], ",", 
+     RowBox[{"b", "+", "1", "-", "c"}], ",", 
+     RowBox[{"2", "-", "c"}], ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[24]:=",
+ CellID->151044707],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"b", "-", "c", "+", "1"}],
+     RowBox[{"2", "-", "c"}],"z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "a"}], "+", "c", "-", "1"}]], " ", 
+    TemplateBox[{
+     RowBox[{"1", "-", "b"}],RowBox[{"a", "-", "c", "+", "1"}],
+      RowBox[{"2", "-", "c"}],FractionBox["z", 
+       RowBox[{"z", "-", "1"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{542, 39},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[24]=",
+ CellID->378032271]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "19", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[25]:=",
+ CellID->1217870653],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",FractionBox["z", 
+       RowBox[{"z", "-", "1"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{332, 39},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[25]=",
+ CellID->2057626251]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"a", "+", "1", "-", "c"}], ",", 
+    RowBox[{"b", "+", "1", "-", "c"}], ",", 
+    RowBox[{"2", "-", "c"}], ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "20", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"a", "+", "1", "-", "c"}], ",", 
+     RowBox[{"b", "+", "1", "-", "c"}], ",", 
+     RowBox[{"2", "-", "c"}], ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[26]:=",
+ CellID->1953071601],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+    RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"b", "-", "c", "+", "1"}],
+     RowBox[{"2", "-", "c"}],"z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "b"}], "+", "c", "-", "1"}]], " ", 
+    TemplateBox[{
+     RowBox[{"1", "-", "a"}],RowBox[{"b", "-", "c", "+", "1"}],
+      RowBox[{"2", "-", "c"}],FractionBox["z", 
+       RowBox[{"z", "-", "1"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{542, 39},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[26]=",
+ CellID->129109138]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "20", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[27]:=",
+ CellID->1999495516],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "b"}]], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",FractionBox["z", 
+       RowBox[{"z", "-", "1"}]]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{332, 39},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[27]=",
+ CellID->149180370]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"c", "-", "a"}], ",", 
+    RowBox[{"c", "-", "b"}], ",", 
+    RowBox[{"c", "+", "1", "-", "a", "-", "b"}], ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "22", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"c", "-", "a"}], ",", 
+     RowBox[{"c", "-", "b"}], ",", 
+     RowBox[{"c", "+", "1", "-", "a", "-", "b"}], ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[28]:=",
+ CellID->834381322],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],RowBox[{
+       RowBox[{"-", 
+         RowBox[{"a"}]}], "-", "b", "+", "c", "+", "1"}],
+     RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"1", "-", "c"}]], " ", 
+    TemplateBox[{RowBox[{"1", "-", "a"}],RowBox[{"1", "-", "b"}],RowBox[{
+        RowBox[{"-", "a"}], "-", "b", "+", "c", "+", "1"}],
+      RowBox[{"1", "-", "z"}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{546, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[28]=",
+ CellID->1291617006]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "22", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[29]:=",
+ CellID->2015364677],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{
+      RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+    TemplateBox[{
+     RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",
+      RowBox[{"1", "-", "z"}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{367, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[29]=",
+ CellID->467825582]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"c", "-", "a"}], ",", 
+    RowBox[{"c", "-", "b"}], ",", 
+    RowBox[{"c", "+", "1", "-", "a", "-", "b"}], ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "23", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"c", "-", "a"}], ",", 
+     RowBox[{"c", "-", "b"}], ",", 
+     RowBox[{"c", "+", "1", "-", "a", "-", "b"}], ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[30]:=",
+ CellID->71156327],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],RowBox[{
+       RowBox[{"-", 
+         RowBox[{"a"}]}], "-", "b", "+", "c", "+", "1"}],
+     RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"a", "-", "c"}]], " ", 
+    TemplateBox[{RowBox[{"1", "-", "a"}],RowBox[{"c", "-", "a"}],RowBox[{
+        RowBox[{"-", "a"}], "-", "b", "+", "c", "+", "1"}],RowBox[{"1", "-", 
+        FractionBox["1", 
+         RowBox[{"1", "-", "z"}]]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{359, 63},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[30]=",
+ CellID->1418885380]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "23", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[31]:=",
+ CellID->899498003],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "z"}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",RowBox[{"1", "-", 
+        FractionBox["1", 
+         RowBox[{"1", "-", "z"}]]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{376, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[31]=",
+ CellID->1820473911]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{
+    RowBox[{"c", "-", "a"}], ",", 
+    RowBox[{"c", "-", "b"}], ",", 
+    RowBox[{"c", "+", "1", "-", "a", "-", "b"}], ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "24", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{
+     RowBox[{"c", "-", "a"}], ",", 
+     RowBox[{"c", "-", "b"}], ",", 
+     RowBox[{"c", "+", "1", "-", "a", "-", "b"}], ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[32]:=",
+ CellID->735406262],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],RowBox[{
+       RowBox[{"-", 
+         RowBox[{"a"}]}], "-", "b", "+", "c", "+", "1"}],
+     RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"b", "-", "c"}]], " ", 
+    TemplateBox[{RowBox[{"1", "-", "b"}],RowBox[{"c", "-", "b"}],RowBox[{
+        RowBox[{"-", "a"}], "-", "b", "+", "c", "+", "1"}],RowBox[{"-", 
+        FractionBox[
+         RowBox[{"1", "-", "z"}], "z"]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{565, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[32]=",
+ CellID->1271802490]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", 
+    RowBox[{"1", "-", "z"}]}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "24", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", 
+     RowBox[{"1", "-", "z"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[33]:=",
+ CellID->812767727],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c",RowBox[{"1", "-", "z"}]},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    SuperscriptBox["z", 
+     RowBox[{"-", "b"}]], " ", 
+    TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",RowBox[{"-", 
+        FractionBox[
+         RowBox[{"1", "-", "z"}], "z"]}]},
+     "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
+ ImageSize->{330, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[33]=",
+ CellID->1670296832]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "94", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[34]:=",
+ CellID->1807092891],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      TemplateBox[{"c"},
+       "Gamma"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", "z"}], ")"}], 
+       RowBox[{
+        RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
+      TemplateBox[{RowBox[{"a", "+", "b", "-", "c"}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],RowBox[{
+          RowBox[{"-", "a"}], "-", "b", "+", "c", "+", "1"}],
+        RowBox[{"1", "-", "z"}]},
+       "Hypergeometric2F1"]}], 
+     RowBox[{
+      TemplateBox[{"a"},
+       "Gamma"], " ", 
+      TemplateBox[{"b"},
+       "Gamma"]}]], "+", 
+    FractionBox[
+     RowBox[{
+      TemplateBox[{"c"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{
+          RowBox[{"-", "a"}], "-", "b", "+", "c"}]},
+       "Gamma"], " ", 
+      TemplateBox[{
+       "a","b",RowBox[{"a", "+", "b", "-", "c", "+", "1"}],
+        RowBox[{"1", "-", "z"}]},
+       "Hypergeometric2F1"]}], 
+     RowBox[{
+      TemplateBox[{RowBox[{"c", "-", "a"}]},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"c", "-", "b"}]},
+       "Gamma"]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{482, 125},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[34]=",
+ CellID->1552242027]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "95", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[35]:=",
+ CellID->434139577],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", "z"}], ")"}], 
+       RowBox[{"-", "a"}]], " ", 
+      TemplateBox[{"c"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"b", "-", "a"}]},
+       "Gamma"], " ", 
+      TemplateBox[{
+       "a",RowBox[{"c", "-", "b"}],RowBox[{"a", "-", "b", "+", "1"}],
+        FractionBox["1", 
+         RowBox[{"1", "-", "z"}]]},
+       "Hypergeometric2F1"]}], 
+     RowBox[{
+      TemplateBox[{"b"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"c", "-", "a"}]},
+       "Gamma"]}]], "+", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", "z"}], ")"}], 
+       RowBox[{"-", "b"}]], " ", 
+      TemplateBox[{"c"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"a", "-", "b"}]},
+       "Gamma"], " ", 
+      TemplateBox[{"b",RowBox[{"c", "-", "a"}],RowBox[{
+          RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", 
+         RowBox[{"1", "-", "z"}]]},
+       "Hypergeometric2F1"]}], 
+     RowBox[{
+      TemplateBox[{"a"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"c", "-", "b"}]},
+       "Gamma"]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{472, 125},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[35]=",
+ CellID->449279839]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hypergeometric2F1", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "==", 
+  RowBox[{
+   RowBox[{"Kummer", "[", "96", "]"}], "[", 
+   RowBox[{"Hypergeometric2F1", "[", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}], "]"}]}]], "Input",
+ CellTags->"Kummer",
+ CellLabel->"In[36]:=",
+ CellID->467969472],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"a","b","c","z"},
+    "Hypergeometric2F1"], "\[LongEqual]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "a"], " ", 
+      SuperscriptBox["z", 
+       RowBox[{"-", "a"}]], " ", 
+      TemplateBox[{"c"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"b", "-", "a"}]},
+       "Gamma"], " ", 
+      TemplateBox[{
+       "a",RowBox[{"a", "-", "c", "+", "1"}],
+        RowBox[{"a", "-", "b", "+", "1"}],FractionBox["1", "z"]},
+       "Hypergeometric2F1"]}], 
+     RowBox[{
+      TemplateBox[{"b"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"c", "-", "a"}]},
+       "Gamma"]}]], "+", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "b"], " ", 
+      SuperscriptBox["z", 
+       RowBox[{"-", "b"}]], " ", 
+      TemplateBox[{"c"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"a", "-", "b"}]},
+       "Gamma"], " ", 
+      TemplateBox[{"b",RowBox[{"b", "-", "c", "+", "1"}],RowBox[{
+          RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
+       "Hypergeometric2F1"]}], 
+     RowBox[{
+      TemplateBox[{"a"},
+       "Gamma"], " ", 
+      TemplateBox[{RowBox[{"c", "-", "b"}]},
+       "Gamma"]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{486, 125},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Kummer",
+ CellLabel->"Out[36]=",
+ CellID->1951010163]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["HypergeometricAC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricAC",
+  ButtonNote->"HypergeometricAC"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Kummer",
+ CellID->1248445733]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Kummer",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 2, 31.369580}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Kummer[i][exp] applies Kummer relation number i (i =1, ... 24, 94,95,96) \
+to all Hypergeometric2F1 in exp. i = 94 corresponds to eq. 9.131.2, i = 95 to \
+eq. 9.132.1 and i = 96 to eq. 9.132.2 in Gradsteyn & Ryzhik.", 
+    "synonyms" -> {}, "title" -> "Kummer", "titlemodifier" -> "", 
+    "windowtitle" -> "Kummer", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Kummer"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3470, 97, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1968221543]},
+ "Kummer"->{
+  Cell[4104, 126, 354, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->318247247],
+  Cell[4461, 138, 557, 18, 40, "Output",
+   CellTags->"Kummer",
+   CellID->780995976],
+  Cell[5055, 161, 355, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1547382498],
+  Cell[5413, 173, 572, 19, 60, "Output",
+   CellTags->"Kummer",
+   CellID->334128730],
+  Cell[6022, 197, 353, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->87779889],
+  Cell[6378, 209, 573, 19, 60, "Output",
+   CellTags->"Kummer",
+   CellID->1379521301],
+  Cell[6988, 233, 405, 12, 45, "Input",
+   CellTags->"Kummer",
+   CellID->196494184],
+  Cell[7396, 247, 558, 18, 40, "Output",
+   CellTags->"Kummer",
+   CellID->1681078809],
+  Cell[7991, 270, 496, 14, 45, "Input",
+   CellTags->"Kummer",
+   CellID->793293677],
+  Cell[8490, 286, 636, 19, 39, "Output",
+   CellTags->"Kummer",
+   CellID->583730114],
+  Cell[9163, 310, 404, 12, 45, "Input",
+   CellTags->"Kummer",
+   CellID->39664086],
+  Cell[9570, 324, 539, 17, 64, "Output",
+   CellTags->"Kummer",
+   CellID->282378053],
+  Cell[10146, 346, 496, 14, 45, "Input",
+   CellTags->"Kummer",
+   CellID->326626360],
+  Cell[10645, 362, 653, 21, 64, "Output",
+   CellTags->"Kummer",
+   CellID->593894309],
+  Cell[11335, 388, 406, 12, 45, "Input",
+   CellTags->"Kummer",
+   CellID->2096680953],
+  Cell[11744, 402, 539, 17, 64, "Output",
+   CellTags->"Kummer",
+   CellID->658206917],
+  Cell[12320, 424, 497, 14, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1606284055],
+  Cell[12820, 440, 653, 21, 64, "Output",
+   CellTags->"Kummer",
+   CellID->884891760],
+  Cell[13510, 466, 506, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1495083835],
+  Cell[14019, 484, 728, 24, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1201929686],
+  Cell[14784, 513, 648, 20, 45, "Input",
+   CellTags->"Kummer",
+   CellID->2086065203],
+  Cell[15435, 535, 829, 26, 114, "Output",
+   CellTags->"Kummer",
+   CellID->1407407771],
+  Cell[16301, 566, 505, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->764355789],
+  Cell[16809, 584, 699, 23, 63, "Output",
+   CellTags->"Kummer",
+   CellID->171828604],
+  Cell[17545, 612, 648, 20, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1556461178],
+  Cell[18196, 634, 814, 27, 63, "Output",
+   CellTags->"Kummer",
+   CellID->1340266483],
+  Cell[19047, 666, 505, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->487619941],
+  Cell[19555, 684, 676, 22, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1878402139],
+  Cell[20268, 711, 648, 20, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1099088563],
+  Cell[20919, 733, 857, 27, 114, "Output",
+   CellTags->"Kummer",
+   CellID->1646537872],
+  Cell[21813, 765, 505, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->598392912],
+  Cell[22321, 783, 727, 24, 64, "Output",
+   CellTags->"Kummer",
+   CellID->976219709],
+  Cell[23085, 812, 648, 20, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1367394877],
+  Cell[23736, 834, 871, 25, 114, "Output",
+   CellTags->"Kummer",
+   CellID->922572585],
+  Cell[24644, 864, 506, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->2076771032],
+  Cell[25153, 882, 650, 21, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1393980026],
+  Cell[25840, 908, 647, 20, 45, "Input",
+   CellTags->"Kummer",
+   CellID->860912097],
+  Cell[26490, 930, 916, 27, 114, "Output",
+   CellTags->"Kummer",
+   CellID->1288498782],
+  Cell[27443, 962, 506, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1768264658],
+  Cell[27952, 980, 650, 21, 64, "Output",
+   CellTags->"Kummer",
+   CellID->2121590638],
+  Cell[28639, 1006, 648, 20, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1824141612],
+  Cell[29290, 1028, 807, 24, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1992183596],
+  Cell[30134, 1057, 549, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->748421164],
+  Cell[30686, 1075, 682, 22, 40, "Output",
+   CellTags->"Kummer",
+   CellID->652936361],
+  Cell[31405, 1102, 357, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1906183256],
+  Cell[31765, 1114, 559, 18, 40, "Output",
+   CellTags->"Kummer",
+   CellID->1706021647],
+  Cell[32361, 1137, 549, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->151044707],
+  Cell[32913, 1155, 738, 23, 60, "Output",
+   CellTags->"Kummer",
+   CellID->378032271],
+  Cell[33688, 1183, 357, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1217870653],
+  Cell[34048, 1195, 548, 18, 60, "Output",
+   CellTags->"Kummer",
+   CellID->2057626251],
+  Cell[34633, 1218, 550, 16, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1953071601],
+  Cell[35186, 1236, 738, 23, 60, "Output",
+   CellTags->"Kummer",
+   CellID->129109138],
+  Cell[35961, 1264, 357, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1999495516],
+  Cell[36321, 1276, 547, 18, 60, "Output",
+   CellTags->"Kummer",
+   CellID->149180370],
+  Cell[36905, 1299, 600, 18, 45, "Input",
+   CellTags->"Kummer",
+   CellID->834381322],
+  Cell[37508, 1319, 714, 20, 39, "Output",
+   CellTags->"Kummer",
+   CellID->1291617006],
+  Cell[38259, 1344, 408, 12, 45, "Input",
+   CellTags->"Kummer",
+   CellID->2015364677],
+  Cell[38670, 1358, 558, 18, 40, "Output",
+   CellTags->"Kummer",
+   CellID->467825582],
+  Cell[39265, 1381, 599, 18, 45, "Input",
+   CellTags->"Kummer",
+   CellID->71156327],
+  Cell[39867, 1401, 817, 23, 84, "Output",
+   CellTags->"Kummer",
+   CellID->1418885380],
+  Cell[40721, 1429, 407, 12, 45, "Input",
+   CellTags->"Kummer",
+   CellID->899498003],
+  Cell[41131, 1443, 599, 19, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1820473911],
+  Cell[41767, 1467, 600, 18, 45, "Input",
+   CellTags->"Kummer",
+   CellID->735406262],
+  Cell[42370, 1487, 759, 21, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1271802490],
+  Cell[43166, 1513, 407, 12, 45, "Input",
+   CellTags->"Kummer",
+   CellID->812767727],
+  Cell[43576, 1527, 541, 17, 64, "Output",
+   CellTags->"Kummer",
+   CellID->1670296832],
+  Cell[44154, 1549, 357, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->1807092891],
+  Cell[44514, 1561, 1418, 47, 146, "Output",
+   CellTags->"Kummer",
+   CellID->1552242027],
+  Cell[45969, 1613, 356, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->434139577],
+  Cell[46328, 1625, 1477, 50, 146, "Output",
+   CellTags->"Kummer",
+   CellID->449279839],
+  Cell[47842, 1680, 356, 10, 45, "Input",
+   CellTags->"Kummer",
+   CellID->467969472],
+  Cell[48201, 1692, 1504, 50, 146, "Output",
+   CellTags->"Kummer",
+   CellID->1951010163],
+  Cell[50073, 1765, 250, 9, 32, "Text",
+   CellTags->"Kummer",
+   CellID->1248445733]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 52295, 1824},
+ {"Kummer", 52428, 1828}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2817, 75, 49, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2869, 78, 576, 15, 98, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3470, 97, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1968221543],
+Cell[CellGroupData[{
+Cell[3883, 116, 196, 6, 25, "ExampleSection",
+ CellID->1540095762],
+Cell[CellGroupData[{
+Cell[4104, 126, 354, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->318247247],
+Cell[4461, 138, 557, 18, 40, "Output",
+ CellTags->"Kummer",
+ CellID->780995976]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5055, 161, 355, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1547382498],
+Cell[5413, 173, 572, 19, 60, "Output",
+ CellTags->"Kummer",
+ CellID->334128730]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6022, 197, 353, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->87779889],
+Cell[6378, 209, 573, 19, 60, "Output",
+ CellTags->"Kummer",
+ CellID->1379521301]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6988, 233, 405, 12, 45, "Input",
+ CellTags->"Kummer",
+ CellID->196494184],
+Cell[7396, 247, 558, 18, 40, "Output",
+ CellTags->"Kummer",
+ CellID->1681078809]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7991, 270, 496, 14, 45, "Input",
+ CellTags->"Kummer",
+ CellID->793293677],
+Cell[8490, 286, 636, 19, 39, "Output",
+ CellTags->"Kummer",
+ CellID->583730114]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9163, 310, 404, 12, 45, "Input",
+ CellTags->"Kummer",
+ CellID->39664086],
+Cell[9570, 324, 539, 17, 64, "Output",
+ CellTags->"Kummer",
+ CellID->282378053]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10146, 346, 496, 14, 45, "Input",
+ CellTags->"Kummer",
+ CellID->326626360],
+Cell[10645, 362, 653, 21, 64, "Output",
+ CellTags->"Kummer",
+ CellID->593894309]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11335, 388, 406, 12, 45, "Input",
+ CellTags->"Kummer",
+ CellID->2096680953],
+Cell[11744, 402, 539, 17, 64, "Output",
+ CellTags->"Kummer",
+ CellID->658206917]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12320, 424, 497, 14, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1606284055],
+Cell[12820, 440, 653, 21, 64, "Output",
+ CellTags->"Kummer",
+ CellID->884891760]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13510, 466, 506, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1495083835],
+Cell[14019, 484, 728, 24, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1201929686]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14784, 513, 648, 20, 45, "Input",
+ CellTags->"Kummer",
+ CellID->2086065203],
+Cell[15435, 535, 829, 26, 114, "Output",
+ CellTags->"Kummer",
+ CellID->1407407771]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16301, 566, 505, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->764355789],
+Cell[16809, 584, 699, 23, 63, "Output",
+ CellTags->"Kummer",
+ CellID->171828604]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17545, 612, 648, 20, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1556461178],
+Cell[18196, 634, 814, 27, 63, "Output",
+ CellTags->"Kummer",
+ CellID->1340266483]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19047, 666, 505, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->487619941],
+Cell[19555, 684, 676, 22, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1878402139]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20268, 711, 648, 20, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1099088563],
+Cell[20919, 733, 857, 27, 114, "Output",
+ CellTags->"Kummer",
+ CellID->1646537872]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21813, 765, 505, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->598392912],
+Cell[22321, 783, 727, 24, 64, "Output",
+ CellTags->"Kummer",
+ CellID->976219709]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23085, 812, 648, 20, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1367394877],
+Cell[23736, 834, 871, 25, 114, "Output",
+ CellTags->"Kummer",
+ CellID->922572585]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24644, 864, 506, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->2076771032],
+Cell[25153, 882, 650, 21, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1393980026]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25840, 908, 647, 20, 45, "Input",
+ CellTags->"Kummer",
+ CellID->860912097],
+Cell[26490, 930, 916, 27, 114, "Output",
+ CellTags->"Kummer",
+ CellID->1288498782]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27443, 962, 506, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1768264658],
+Cell[27952, 980, 650, 21, 64, "Output",
+ CellTags->"Kummer",
+ CellID->2121590638]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28639, 1006, 648, 20, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1824141612],
+Cell[29290, 1028, 807, 24, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1992183596]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30134, 1057, 549, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->748421164],
+Cell[30686, 1075, 682, 22, 40, "Output",
+ CellTags->"Kummer",
+ CellID->652936361]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31405, 1102, 357, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1906183256],
+Cell[31765, 1114, 559, 18, 40, "Output",
+ CellTags->"Kummer",
+ CellID->1706021647]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32361, 1137, 549, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->151044707],
+Cell[32913, 1155, 738, 23, 60, "Output",
+ CellTags->"Kummer",
+ CellID->378032271]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33688, 1183, 357, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1217870653],
+Cell[34048, 1195, 548, 18, 60, "Output",
+ CellTags->"Kummer",
+ CellID->2057626251]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34633, 1218, 550, 16, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1953071601],
+Cell[35186, 1236, 738, 23, 60, "Output",
+ CellTags->"Kummer",
+ CellID->129109138]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35961, 1264, 357, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1999495516],
+Cell[36321, 1276, 547, 18, 60, "Output",
+ CellTags->"Kummer",
+ CellID->149180370]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36905, 1299, 600, 18, 45, "Input",
+ CellTags->"Kummer",
+ CellID->834381322],
+Cell[37508, 1319, 714, 20, 39, "Output",
+ CellTags->"Kummer",
+ CellID->1291617006]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38259, 1344, 408, 12, 45, "Input",
+ CellTags->"Kummer",
+ CellID->2015364677],
+Cell[38670, 1358, 558, 18, 40, "Output",
+ CellTags->"Kummer",
+ CellID->467825582]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39265, 1381, 599, 18, 45, "Input",
+ CellTags->"Kummer",
+ CellID->71156327],
+Cell[39867, 1401, 817, 23, 84, "Output",
+ CellTags->"Kummer",
+ CellID->1418885380]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40721, 1429, 407, 12, 45, "Input",
+ CellTags->"Kummer",
+ CellID->899498003],
+Cell[41131, 1443, 599, 19, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1820473911]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41767, 1467, 600, 18, 45, "Input",
+ CellTags->"Kummer",
+ CellID->735406262],
+Cell[42370, 1487, 759, 21, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1271802490]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43166, 1513, 407, 12, 45, "Input",
+ CellTags->"Kummer",
+ CellID->812767727],
+Cell[43576, 1527, 541, 17, 64, "Output",
+ CellTags->"Kummer",
+ CellID->1670296832]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44154, 1549, 357, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->1807092891],
+Cell[44514, 1561, 1418, 47, 146, "Output",
+ CellTags->"Kummer",
+ CellID->1552242027]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45969, 1613, 356, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->434139577],
+Cell[46328, 1625, 1477, 50, 146, "Output",
+ CellTags->"Kummer",
+ CellID->449279839]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47842, 1680, 356, 10, 45, "Input",
+ CellTags->"Kummer",
+ CellID->467969472],
+Cell[48201, 1692, 1504, 50, 146, "Output",
+ CellTags->"Kummer",
+ CellID->1951010163]
+}, Open  ]]
+}, Open  ]],
+Cell[49732, 1746, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49800, 1751, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[50073, 1765, 250, 9, 32, "Text",
+ CellTags->"Kummer",
+ CellID->1248445733]
+}, Open  ]],
+Cell[50338, 1777, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,731 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/DiracGamma", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["DiracGamma", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"x", ",", " ", "dim"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "is the head of all Dirac matrices and slashes (in the internal \
+representation). Use DiracMatrix (or GA, GAD) and DiracSlash (or GS, GSD) for \
+manual (short) input. DiracGamma[x, 4] simplifies to DiracGamma[x]. \
+DiracGamma[5] is ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+ ". DiracGamma[6] is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      SuperscriptBox["\[Gamma]", "5"]}], ")"}], "/", "2."}], 
+   TraditionalForm]]],
+ " DiracGamma[7] is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      SuperscriptBox["\[Gamma]", "5"]}], ")"}], "/", "2."}], TraditionalForm]]]
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["DiracGammaExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
+  ButtonNote->"DiracGammaExpand"],
+ ", ",
+ ButtonBox["DiracMatrix",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
+  ButtonNote->"DiracMatrix"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ ", ",
+ ButtonBox["DiracSlash",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSlash",
+  ButtonNote->"DiracSlash"],
+ ", ",
+ ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"],
+ "."
+}], "Text",
+ CellTags->"DiracGamma",
+ CellID->1692507192]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", "5", "]"}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[1]:=",
+ CellID->1046278698],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox["5",
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[1]=",
+ CellID->842552946]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], "]"}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[2]:=",
+ CellID->1161111346],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox[
+    FormBox["\[Alpha]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[2]=",
+ CellID->1687472527]
+}, Open  ]],
+
+Cell[TextData[{
+ "A Dirac-slash, i.e., ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "\[Mu]"], 
+    SubscriptBox["q", "\[Mu]"]}], TraditionalForm]]],
+ ", is displayed as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Gamma]", "\[CenterDot]", "q"}], TraditionalForm]]],
+ "."
+}], "Text",
+ CellTags->"DiracGamma",
+ CellID->299092642],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"Momentum", "[", "q", "]"}], "]"}], " "}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[3]:=",
+ CellID->1887452273],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+   FormBox[
+    OverscriptBox[
+     FormBox["q",
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[3]=",
+ CellID->1138458552]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"Momentum", "[", "q", "]"}], "]"}], " ", ".", " ", 
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[4]:=",
+ CellID->1345474698],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+     FormBox[
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "-", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}],
+       TraditionalForm],
+      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[4]=",
+ CellID->1631372749]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{
+    RowBox[{"Momentum", "[", 
+     RowBox[{"q", ",", "D"}], "]"}], ",", "D"}], "]"}], " "}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[5]:=",
+ CellID->38879465],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Gamma]", "\[CenterDot]", 
+   FormBox[
+    FormBox["q",
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[5]=",
+ CellID->567019698]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a1", "=", 
+  RowBox[{
+   RowBox[{"GS", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], ".", 
+   RowBox[{"GS", "[", "p", "]"}]}]}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[6]:=",
+ CellID->294479801],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[6]=",
+ CellID->445474776]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a2", "=", 
+  RowBox[{"DiracGammaExpand", "[", "a1", "]"}]}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[7]:=",
+ CellID->324312499],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], "-", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[7]=",
+ CellID->754251999]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a3", "=", 
+  RowBox[{
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+   RowBox[{"GSD", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], ".", 
+   RowBox[{"GSD", "[", "q", "]"}], ".", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}]}]}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[8]:=",
+ CellID->667969280],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         FormBox["p",
+          TraditionalForm], "-", 
+         FormBox["q",
+          TraditionalForm]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   FormBox[
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[8]=",
+ CellID->712838090]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a4", "=", 
+  RowBox[{"DiracTrick", "[", "a3", "]"}]}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[9]:=",
+ CellID->1907296195],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        FormBox["p",
+         TraditionalForm], "-", 
+        FormBox["q",
+         TraditionalForm]}],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}], ")"}]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"D", "-", "4"}], ")"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["p",
+           TraditionalForm], "-", 
+          FormBox["q",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[9]=",
+ CellID->1654426864]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a5", "=", 
+  RowBox[{"DiracSimplify", "[", "a4", "]"}]}]], "Input",
+ CellTags->"DiracGamma",
+ CellLabel->"In[10]:=",
+ CellID->41068363],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"D", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}]}], "-", 
+   RowBox[{"D", " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], "2"]}], "-", 
+   RowBox[{"4", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}]}], "+", 
+   RowBox[{"4", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"DiracGamma",
+ CellLabel->"Out[10]=",
+ CellID->1950498776]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"a1", ",", "a2", ",", "a3", ",", "a4", ",", "a5"}], "]"}]], "Input",
+ 
+ CellTags->"DiracGamma",
+ CellLabel->"In[11]:=",
+ CellID->2054807508]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

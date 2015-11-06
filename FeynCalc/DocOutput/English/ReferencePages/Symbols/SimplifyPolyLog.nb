@@ -1,0 +1,1322 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35722,       1312]
+NotebookOptionsPosition[     25175,        966]
+NotebookOutlinePosition[     31119,       1141]
+CellTagsIndexPosition[     30998,       1135]
+WindowTitle->SimplifyPolyLog
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/SimplifyPolyLog\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/SimplifyPolyLog"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+SimplifyPolyLog.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130761], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/SimplifyPolyLog", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["SimplifyPolyLog", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SimplifyPolyLog", "[", "y", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "performs several simplifications assuming that the variables occuring \
+in the Log and PolyLog functions are between 0 and 1. "
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->962896735],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1497677518],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sip", "[", "y_", "]"}], " ", ":=", " ", 
+  RowBox[{"y", " ", "==", " ", 
+   RowBox[{"SimplifyPolyLog", "[", "y", "]"}]}]}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[1]:=",
+ CellID->258376485],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"1", "/", "x"}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[2]:=",
+ CellID->312810151],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"2",FractionBox["1", "x"]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"\[Zeta]", "(", "2", ")"}], "+", 
+    TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+     "PolyLog"], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "+", 
+    RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", 
+     RowBox[{"log", "(", "x", ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{472, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[2]=",
+ CellID->2071359595]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", "x"}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[3]:=",
+ CellID->533586750],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"2","x"},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"\[Zeta]", "(", "2", ")"}], "-", 
+    TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+     "PolyLog"], "-", 
+    RowBox[{
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{301, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[3]=",
+ CellID->669626223]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"1", "-", 
+     RowBox[{"x", "^", "2"}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[4]:=",
+ CellID->1083087116],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"2",RowBox[{"1", "-", 
+       SuperscriptBox["x", "2"]}]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], "+", 
+    RowBox[{"2", " ", 
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"]}], "-", 
+    RowBox[{"2", " ", 
+     TemplateBox[{"2",RowBox[{"-", "x"}]},
+      "PolyLog"]}], "-", 
+    RowBox[{"2", " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"x", "+", "1"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{442, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[4]=",
+ CellID->1110979124]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"x", "^", "2"}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[5]:=",
+ CellID->273399044],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"2",SuperscriptBox["x", "2"]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"2", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], "-", 
+    RowBox[{"2", " ", 
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"]}], "+", 
+    RowBox[{"2", " ", 
+     TemplateBox[{"2",RowBox[{"-", "x"}]},
+      "PolyLog"]}], "-", 
+    RowBox[{"2", " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{421, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[5]=",
+ CellID->2004136203]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"-", 
+     RowBox[{"x", "/", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}]}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[6]:=",
+ CellID->1780815312],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"2",RowBox[{"-", 
+       FractionBox["x", 
+        RowBox[{"1", "-", "x"}]]}]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], "+", 
+    TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+     "PolyLog"], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{451, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[6]=",
+ CellID->746814688]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"x", "/", 
+     RowBox[{"(", 
+      RowBox[{"x", "-", "1"}], ")"}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[7]:=",
+ CellID->189309767],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"2",FractionBox["x", 
+      RowBox[{"x", "-", "1"}]]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}]}], "+", 
+    TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+     "PolyLog"], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{441, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[7]=",
+ CellID->965485175]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"Nielsen", "[", 
+   RowBox[{"1", ",", "2", ",", 
+    RowBox[{"-", 
+     RowBox[{"x", "/", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}]}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[8]:=",
+ CellID->1734664877],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", 
+     RowBox[{
+      FormBox["1",
+       TraditionalForm], 
+      FormBox["2",
+       TraditionalForm]}]], "(", 
+    FormBox[
+     RowBox[{"-", 
+      FractionBox["x", 
+       RowBox[{"1", "-", "x"}]]}],
+     TraditionalForm], ")"}], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{
+       FormBox["1",
+        TraditionalForm], 
+       FormBox["2",
+        TraditionalForm]}]], "(", 
+     FormBox["x",
+      TraditionalForm], ")"}], "-", 
+    RowBox[{
+     FractionBox["1", "6"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "3"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{252, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[8]=",
+ CellID->350232376]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"3", ",", 
+    RowBox[{"-", 
+     RowBox[{"1", "/", "x"}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[9]:=",
+ CellID->128811971],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"3",RowBox[{"-", 
+       FractionBox["1", "x"]}]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    TemplateBox[{"3",RowBox[{"-", "x"}]},
+     "PolyLog"], "+", 
+    RowBox[{
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "+", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["log", "3"], "(", "x", ")"}], "6"]}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{294, 47},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[9]=",
+ CellID->1378986370]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"3", ",", 
+    RowBox[{"1", "-", "x"}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[10]:=",
+ CellID->919109136],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ ImageSize->{33, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[10]=",
+ CellID->1264404285]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"3", ",", 
+    RowBox[{"x", "^", "2"}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[11]:=",
+ CellID->418960340],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"3",SuperscriptBox["x", "2"]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"4", " ", 
+     TemplateBox[{"3",RowBox[{"-", "x"}]},
+      "PolyLog"]}], "-", 
+    RowBox[{"4", " ", 
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "-", 
+    RowBox[{"4", " ", 
+     RowBox[{
+      SubscriptBox["S", 
+       RowBox[{
+        FormBox["1",
+         TraditionalForm], 
+        FormBox["2",
+         TraditionalForm]}]], "(", 
+      FormBox[
+       RowBox[{"1", "-", "x"}],
+       TraditionalForm], ")"}]}], "+", 
+    RowBox[{"4", " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "-", 
+    RowBox[{"2", " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}]}], "+", 
+    RowBox[{"4", " ", 
+     TemplateBox[{"3"},
+      "Zeta"]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{413, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[11]=",
+ CellID->1217956432]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"3", ",", 
+    RowBox[{"-", 
+     RowBox[{"x", "/", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}]}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[12]:=",
+ CellID->1663942518],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"3",RowBox[{"-", 
+       FractionBox["x", 
+        RowBox[{"1", "-", "x"}]]}]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"-", 
+     TemplateBox[{"3",RowBox[{"1", "-", "x"}]},
+      "PolyLog"]}], "+", 
+    RowBox[{
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "+", 
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{
+       FormBox["1",
+        TraditionalForm], 
+       FormBox["2",
+        TraditionalForm]}]], "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}], "+", 
+    RowBox[{
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "6"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "3"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{511, 87},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[12]=",
+ CellID->1165745994]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"3", ",", 
+    RowBox[{"1", "-", 
+     RowBox[{"1", "/", "x"}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[13]:=",
+ CellID->1897345533],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"3",RowBox[{"1", "-", 
+       FractionBox["1", "x"]}]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "-", 
+    RowBox[{
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{
+       FormBox["1",
+        TraditionalForm], 
+       FormBox["2",
+        TraditionalForm]}]], "(", 
+     FormBox[
+      RowBox[{"1", "-", "x"}],
+      TraditionalForm], ")"}], "+", 
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{
+       FormBox["1",
+        TraditionalForm], 
+       FormBox["2",
+        TraditionalForm]}]], "(", 
+     FormBox["x",
+      TraditionalForm], ")"}], "+", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["log", "3"], "(", "x", ")"}], "6"], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}]}], "-", 
+    TemplateBox[{"3"},
+     "Zeta"]}]}], TraditionalForm]], "Output",
+ ImageSize->{418, 96},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[13]=",
+ CellID->1811068047]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"4", ",", 
+    RowBox[{"-", 
+     RowBox[{"x", "/", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}]}]}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[14]:=",
+ CellID->2143666635],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"4",RowBox[{"-", 
+       FractionBox["x", 
+        RowBox[{"1", "-", "x"}]]}]},
+    "PolyLog"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"-", 
+     TemplateBox[{"4","x"},
+      "PolyLog"]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+      "PolyLog"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{
+       FormBox["1",
+        TraditionalForm], 
+       FormBox["3",
+        TraditionalForm]}]], "(", 
+     FormBox["x",
+      TraditionalForm], ")"}], "+", 
+    RowBox[{
+     SubscriptBox["S", 
+      RowBox[{
+       FormBox["2",
+        TraditionalForm], 
+       FormBox["2",
+        TraditionalForm]}]], "(", 
+     FormBox["x",
+      TraditionalForm], ")"}], "-", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["S", 
+       RowBox[{
+        FormBox["1",
+         TraditionalForm], 
+        FormBox["2",
+         TraditionalForm]}]], "(", 
+      FormBox[
+       RowBox[{"1", "-", "x"}],
+       TraditionalForm], ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["S", 
+       RowBox[{
+        FormBox["1",
+         TraditionalForm], 
+        FormBox["2",
+         TraditionalForm]}]], "(", 
+      FormBox["x",
+       TraditionalForm], ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     TemplateBox[{"3"},
+      "Zeta"], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "24"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "4"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["log", "3"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "x", ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", 
+      RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
+ ImageSize->{539, 158},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[14]=",
+ CellID->2000726501]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"Log", "[", 
+   RowBox[{"a", "+", 
+    RowBox[{"b", "/", "c"}]}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[15]:=",
+ CellID->1854005981],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"log", "(", 
+    RowBox[{"a", "+", 
+     FractionBox["b", "c"]}], ")"}], "\[LongEqual]", 
+   RowBox[{"log", "(", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"a", " ", "c"}], "+", "b"}], "c"], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{181, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[15]=",
+ CellID->352084172]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"Log", "[", 
+   RowBox[{"1", "/", "x"}], "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[16]:=",
+ CellID->1150742435],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"log", "(", 
+    FractionBox["1", "x"], ")"}], "\[LongEqual]", 
+   RowBox[{"-", 
+    RowBox[{"log", "(", "x", ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{126, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[16]=",
+ CellID->1162064393]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"ArcTanh", "[", "x", "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[17]:=",
+ CellID->1515894413],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["tanh", 
+     RowBox[{"-", "1"}]], "(", "x", ")"}], "\[LongEqual]", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"x", "+", "1"}], 
+       RowBox[{"1", "-", "x"}]]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{186, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[17]=",
+ CellID->1326650152]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"ArcSinh", "[", "x", "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[18]:=",
+ CellID->1072815012],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["sinh", 
+     RowBox[{"-", "1"}]], "(", "x", ")"}], "\[LongEqual]", 
+   RowBox[{"log", "(", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", "1"}]], "+", "x"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{207, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[18]=",
+ CellID->580053978]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sip", "[", 
+  RowBox[{"ArcCosh", "[", "x", "]"}], "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[19]:=",
+ CellID->1622675607],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["cosh", 
+     RowBox[{"-", "1"}]], "(", "x", ")"}], "\[LongEqual]", 
+   RowBox[{"log", "(", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{
+       SuperscriptBox["x", "2"], "-", "1"}]], "+", "x"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{210, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"Out[19]=",
+ CellID->654978590]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "sip", "]"}]], "Input",
+ CellTags->"SimplifyPolyLog",
+ CellLabel->"In[20]:=",
+ CellID->1270078266]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Nielsen",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Nielsen",
+  ButtonNote->"Nielsen"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"SimplifyPolyLog",
+ CellID->1770209649]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"SimplifyPolyLog",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 6, 14.150066}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "SimplifyPolyLog[y] performs several simplifications assuming that the \
+variables occuring in the Log and PolyLog functions are between 0 and 1. ", 
+    "synonyms" -> {}, "title" -> "SimplifyPolyLog", "titlemodifier" -> "", 
+    "windowtitle" -> "SimplifyPolyLog", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/SimplifyPolyLog"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3426, 95, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->962896735]},
+ "SimplifyPolyLog"->{
+  Cell[4037, 122, 241, 7, 29, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->258376485],
+  Cell[4303, 133, 212, 7, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->312810151],
+  Cell[4518, 142, 770, 24, 64, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->2071359595],
+  Cell[5325, 171, 187, 6, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->533586750],
+  Cell[5515, 179, 537, 18, 36, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->669626223],
+  Cell[6089, 202, 239, 8, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1083087116],
+  Cell[6331, 212, 737, 24, 42, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1110979124],
+  Cell[7105, 241, 212, 7, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->273399044],
+  Cell[7320, 250, 714, 23, 42, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->2004136203],
+  Cell[8071, 278, 289, 10, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1780815312],
+  Cell[8363, 290, 775, 26, 62, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->746814688],
+  Cell[9175, 321, 265, 9, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->189309767],
+  Cell[9443, 332, 750, 25, 62, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->965485175],
+  Cell[10230, 362, 299, 10, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1734664877],
+  Cell[10532, 374, 875, 35, 62, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->350232376],
+  Cell[11444, 414, 233, 8, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->128811971],
+  Cell[11680, 424, 602, 21, 68, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1378986370],
+  Cell[12319, 450, 213, 7, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->919109136],
+  Cell[12535, 459, 221, 7, 36, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1264404285],
+  Cell[12793, 471, 213, 7, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->418960340],
+  Cell[13009, 480, 1170, 40, 64, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1217956432],
+  Cell[14216, 525, 290, 10, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1663942518],
+  Cell[14509, 537, 1587, 54, 108, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1165745994],
+  Cell[16133, 596, 240, 8, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1897345533],
+  Cell[16376, 606, 1400, 51, 117, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1811068047],
+  Cell[17813, 662, 290, 10, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->2143666635],
+  Cell[18106, 674, 2964, 106, 179, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->2000726501],
+  Cell[21107, 785, 210, 7, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1854005981],
+  Cell[21320, 794, 442, 16, 65, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->352084172],
+  Cell[21799, 815, 185, 6, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1150742435],
+  Cell[21987, 823, 358, 12, 64, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1162064393],
+  Cell[22382, 840, 165, 5, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1515894413],
+  Cell[22550, 847, 513, 18, 64, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->1326650152],
+  Cell[23100, 870, 165, 5, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1072815012],
+  Cell[23268, 877, 461, 17, 58, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->580053978],
+  Cell[23766, 899, 165, 5, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1622675607],
+  Cell[23934, 906, 461, 17, 58, "Output",
+   CellTags->"SimplifyPolyLog",
+   CellID->654978590],
+  Cell[24410, 926, 135, 4, 27, "Input",
+   CellTags->"SimplifyPolyLog",
+   CellID->1270078266],
+  Cell[24901, 952, 232, 9, 31, "Text",
+   CellTags->"SimplifyPolyLog",
+   CellID->1770209649]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 27071, 1010},
+ {"SimplifyPolyLog", 27212, 1014}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2274, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2864, 75, 58, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2925, 78, 476, 13, 97, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3426, 95, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->962896735],
+Cell[CellGroupData[{
+Cell[3838, 114, 196, 6, 25, "ExampleSection",
+ CellID->1497677518],
+Cell[4037, 122, 241, 7, 29, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->258376485],
+Cell[CellGroupData[{
+Cell[4303, 133, 212, 7, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->312810151],
+Cell[4518, 142, 770, 24, 64, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->2071359595]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5325, 171, 187, 6, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->533586750],
+Cell[5515, 179, 537, 18, 36, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->669626223]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6089, 202, 239, 8, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1083087116],
+Cell[6331, 212, 737, 24, 42, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1110979124]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7105, 241, 212, 7, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->273399044],
+Cell[7320, 250, 714, 23, 42, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->2004136203]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8071, 278, 289, 10, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1780815312],
+Cell[8363, 290, 775, 26, 62, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->746814688]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9175, 321, 265, 9, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->189309767],
+Cell[9443, 332, 750, 25, 62, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->965485175]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10230, 362, 299, 10, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1734664877],
+Cell[10532, 374, 875, 35, 62, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->350232376]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11444, 414, 233, 8, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->128811971],
+Cell[11680, 424, 602, 21, 68, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1378986370]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12319, 450, 213, 7, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->919109136],
+Cell[12535, 459, 221, 7, 36, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1264404285]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12793, 471, 213, 7, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->418960340],
+Cell[13009, 480, 1170, 40, 64, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1217956432]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14216, 525, 290, 10, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1663942518],
+Cell[14509, 537, 1587, 54, 108, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1165745994]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16133, 596, 240, 8, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1897345533],
+Cell[16376, 606, 1400, 51, 117, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1811068047]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17813, 662, 290, 10, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->2143666635],
+Cell[18106, 674, 2964, 106, 179, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->2000726501]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21107, 785, 210, 7, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1854005981],
+Cell[21320, 794, 442, 16, 65, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->352084172]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21799, 815, 185, 6, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1150742435],
+Cell[21987, 823, 358, 12, 64, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1162064393]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22382, 840, 165, 5, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1515894413],
+Cell[22550, 847, 513, 18, 64, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->1326650152]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23100, 870, 165, 5, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1072815012],
+Cell[23268, 877, 461, 17, 58, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->580053978]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23766, 899, 165, 5, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1622675607],
+Cell[23934, 906, 461, 17, 58, "Output",
+ CellTags->"SimplifyPolyLog",
+ CellID->654978590]
+}, Open  ]],
+Cell[24410, 926, 135, 4, 27, "Input",
+ CellTags->"SimplifyPolyLog",
+ CellID->1270078266]
+}, Open  ]],
+Cell[24560, 933, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24628, 938, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[24901, 952, 232, 9, 31, "Text",
+ CellTags->"SimplifyPolyLog",
+ CellID->1770209649]
+}, Open  ]],
+Cell[25148, 964, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

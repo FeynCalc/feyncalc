@@ -1,0 +1,779 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20428,        769]
+NotebookOptionsPosition[     14744,        570]
+NotebookOutlinePosition[     18298,        681]
+CellTagsIndexPosition[     18192,        675]
+WindowTitle->B1
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/B1\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/B1"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/B1.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$18439], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/B1", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["B1", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"B1", "[", 
+       RowBox[{"pp", ",", " ", 
+        RowBox[{"ma", "^", "2"}], ",", " ", 
+        RowBox[{"mb", "^", "2"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "the Passarino-Veltman ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["B", "1"], TraditionalForm]]],
+     "-function. All arguments are scalars and have dimension mass^2."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->935050898],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1296755206],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "B1", "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[1]:=",
+ CellID->1893937597],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"BReduce", "\[Rule]", "True"}], "}"}], TraditionalForm]], "Output",\
+
+ ImageSize->{123, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[1]=",
+ CellID->1980658046]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{
+   RowBox[{"SP", "[", "p", "]"}], ",", 
+   SuperscriptBox["m", "2"], ",", 
+   SuperscriptBox["M", "2"]}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[2]:=",
+ CellID->1808836307],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["M", "2"], "-", 
+       SuperscriptBox["m", "2"]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{
+            FormBox[
+             SuperscriptBox[
+              FormBox[
+               OverscriptBox[
+                FormBox["p",
+                 TraditionalForm], "_"],
+               TraditionalForm], "2"],
+             TraditionalForm], ",", 
+            SuperscriptBox["m", "2"], ",", 
+            SuperscriptBox["M", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm], "-", 
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{"0", ",", 
+            SuperscriptBox["m", "2"], ",", 
+            SuperscriptBox["M", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm]}], ")"}]}], 
+    RowBox[{"2", " ", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], "2"],
+      TraditionalForm]}]], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            OverscriptBox[
+             FormBox["p",
+              TraditionalForm], "_"],
+            TraditionalForm], "2"],
+          TraditionalForm], ",", 
+         SuperscriptBox["m", "2"], ",", 
+         SuperscriptBox["M", "2"]}], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{468, 51},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[2]=",
+ CellID->1988092032]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{
+   RowBox[{"SP", "[", "p", "]"}], ",", 
+   SuperscriptBox["m", "2"], ",", 
+   SuperscriptBox["M", "2"], ",", 
+   RowBox[{"BReduce", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[3]:=",
+ CellID->1461354182],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"B1", "(", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], "2"],
+     TraditionalForm], ",", 
+    SuperscriptBox["m", "2"], ",", 
+    SuperscriptBox["M", "2"], ",", 
+    RowBox[{"BReduce", "\[Rule]", "False"}]}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{233, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[3]=",
+ CellID->406770555]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"B1", ",", 
+    RowBox[{"BReduce", "\[Rule]", "True"}]}], "]"}], ";"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[4]:=",
+ CellID->630039750],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{
+   RowBox[{"SP", "[", "p", "]"}], ",", 
+   SuperscriptBox["m", "2"], ",", 
+   SuperscriptBox["m", "2"]}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[5]:=",
+ CellID->300888921],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], " ", 
+   FormBox[
+    TagBox[
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"],
+           TraditionalForm], "2"],
+         TraditionalForm], ",", 
+        SuperscriptBox["m", "2"], ",", 
+        SuperscriptBox["m", "2"]}], ")"}],
+      TraditionalForm],
+     HoldForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{140, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[5]=",
+ CellID->1554458660]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{
+   SuperscriptBox["m", "2"], ",", 
+   SuperscriptBox["m", "2"], ",", "0"}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[6]:=",
+ CellID->313475676],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{"0", ",", 
+            SuperscriptBox["m", "2"], ",", 
+            SuperscriptBox["m", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm]}], "-", "2"}], ")"}]}], "-", 
+   FractionBox["1", "2"]}], TraditionalForm]], "Output",
+ ImageSize->{191, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[6]=",
+ CellID->363524267]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{"0", ",", "0", ",", 
+   SuperscriptBox["m", "2"]}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[7]:=",
+ CellID->241881109],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{"0", ",", 
+            SuperscriptBox["m", "2"], ",", 
+            SuperscriptBox["m", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm]}], "-", "1"}], ")"}]}], "+", 
+   FractionBox["1", "4"]}], TraditionalForm]], "Output",
+ ImageSize->{191, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[7]=",
+ CellID->1652463561]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{"pp", ",", 
+   RowBox[{"SmallVariable", "[", 
+    SubsuperscriptBox["m", "e", "2"], "]"}], ",", 
+   SubsuperscriptBox["m", "2", "2"]}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[8]:=",
+ CellID->2089704958],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubsuperscriptBox["m", "2", "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{"pp", ",", 
+            SubsuperscriptBox["m", "e", "2"], ",", 
+            SubsuperscriptBox["m", "2", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm], "-", 
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{"0", ",", 
+            SubsuperscriptBox["m", "e", "2"], ",", 
+            SubsuperscriptBox["m", "2", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm]}], ")"}]}], 
+    RowBox[{"2", " ", "pp"}]], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{"pp", ",", 
+         SubsuperscriptBox["m", "e", "2"], ",", 
+         SubsuperscriptBox["m", "2", "2"]}], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{406, 49},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[8]=",
+ CellID->94888417]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B1", "[", 
+  RowBox[{
+   RowBox[{"SmallVariable", "[", 
+    SubsuperscriptBox["m", "e", "2"], "]"}], ",", 
+   RowBox[{"SmallVariable", "[", 
+    SubsuperscriptBox["m", "e", "2"], "]"}], ",", "0"}], "]"}]], "Input",
+ CellTags->"B1",
+ CellLabel->"In[9]:=",
+ CellID->2075391288],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FormBox[
+        TagBox[
+         FormBox[
+          RowBox[{
+           SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+           RowBox[{"0", ",", 
+            SubsuperscriptBox["m", "e", "2"], ",", 
+            SubsuperscriptBox["m", "e", "2"]}], ")"}],
+          TraditionalForm],
+         HoldForm],
+        TraditionalForm]}], "-", "2"}], ")"}]}], "-", 
+   FractionBox["1", "2"]}], TraditionalForm]], "Output",
+ ImageSize->{191, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"B1",
+ CellLabel->"Out[9]=",
+ CellID->1940611723]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["B0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B0",
+  ButtonNote->"B0"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["B00",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B00",
+  ButtonNote->"B00"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["B11",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B11",
+  ButtonNote->"B11"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["PaVe",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVe",
+  ButtonNote->"PaVe"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["PaVeReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVeReduce",
+  ButtonNote->"PaVeReduce"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"B1",
+ CellID->1961153968]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"B1",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 56, 15.028010}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "B1[pp, ma^2, mb^2] the Passarino-Veltman B1-function. All arguments are \
+scalars and have dimension mass^2.", "synonyms" -> {}, "title" -> "B1", 
+    "titlemodifier" -> "", "windowtitle" -> "B1", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/B1"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3508, 101, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->935050898]},
+ "B1"->{
+  Cell[4141, 130, 122, 4, 27, "Input",
+   CellTags->"B1",
+   CellID->1893937597],
+  Cell[4266, 136, 269, 10, 36, "Output",
+   CellTags->"B1",
+   CellID->1980658046],
+  Cell[4572, 151, 229, 8, 31, "Input",
+   CellTags->"B1",
+   CellID->1808836307],
+  Cell[4804, 161, 2066, 76, 72, "Output",
+   CellTags->"B1",
+   CellID->1988092032],
+  Cell[6907, 242, 279, 9, 31, "Input",
+   CellTags->"B1",
+   CellID->1461354182],
+  Cell[7189, 253, 548, 21, 42, "Output",
+   CellTags->"B1",
+   CellID->406770555],
+  Cell[7752, 277, 206, 7, 27, "Input",
+   CellTags->"B1",
+   CellID->630039750],
+  Cell[7983, 288, 228, 8, 31, "Input",
+   CellTags->"B1",
+   CellID->300888921],
+  Cell[8214, 298, 750, 29, 62, "Output",
+   CellTags->"B1",
+   CellID->1554458660],
+  Cell[9001, 332, 198, 7, 31, "Input",
+   CellTags->"B1",
+   CellID->313475676],
+  Cell[9202, 341, 686, 25, 62, "Output",
+   CellTags->"B1",
+   CellID->363524267],
+  Cell[9925, 371, 173, 6, 31, "Input",
+   CellTags->"B1",
+   CellID->241881109],
+  Cell[10101, 379, 687, 25, 62, "Output",
+   CellTags->"B1",
+   CellID->1652463561],
+  Cell[10825, 409, 258, 8, 31, "Input",
+   CellTags->"B1",
+   CellID->2089704958],
+  Cell[11086, 419, 1402, 49, 70, "Output",
+   CellTags->"B1",
+   CellID->94888417],
+  Cell[12525, 473, 299, 9, 31, "Input",
+   CellTags->"B1",
+   CellID->2075391288],
+  Cell[12827, 484, 703, 25, 62, "Output",
+   CellTags->"B1",
+   CellID->1940611723],
+  Cell[13898, 532, 804, 33, 31, "Text",
+   CellTags->"B1",
+   CellID->1961153968]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 16547, 613},
+ {"B1", 16676, 617}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2233, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2810, 75, 45, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 625, 19, 84, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3508, 101, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->935050898],
+Cell[CellGroupData[{
+Cell[3920, 120, 196, 6, 25, "ExampleSection",
+ CellID->1296755206],
+Cell[CellGroupData[{
+Cell[4141, 130, 122, 4, 27, "Input",
+ CellTags->"B1",
+ CellID->1893937597],
+Cell[4266, 136, 269, 10, 36, "Output",
+ CellTags->"B1",
+ CellID->1980658046]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4572, 151, 229, 8, 31, "Input",
+ CellTags->"B1",
+ CellID->1808836307],
+Cell[4804, 161, 2066, 76, 72, "Output",
+ CellTags->"B1",
+ CellID->1988092032]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6907, 242, 279, 9, 31, "Input",
+ CellTags->"B1",
+ CellID->1461354182],
+Cell[7189, 253, 548, 21, 42, "Output",
+ CellTags->"B1",
+ CellID->406770555]
+}, Open  ]],
+Cell[7752, 277, 206, 7, 27, "Input",
+ CellTags->"B1",
+ CellID->630039750],
+Cell[CellGroupData[{
+Cell[7983, 288, 228, 8, 31, "Input",
+ CellTags->"B1",
+ CellID->300888921],
+Cell[8214, 298, 750, 29, 62, "Output",
+ CellTags->"B1",
+ CellID->1554458660]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9001, 332, 198, 7, 31, "Input",
+ CellTags->"B1",
+ CellID->313475676],
+Cell[9202, 341, 686, 25, 62, "Output",
+ CellTags->"B1",
+ CellID->363524267]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9925, 371, 173, 6, 31, "Input",
+ CellTags->"B1",
+ CellID->241881109],
+Cell[10101, 379, 687, 25, 62, "Output",
+ CellTags->"B1",
+ CellID->1652463561]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10825, 409, 258, 8, 31, "Input",
+ CellTags->"B1",
+ CellID->2089704958],
+Cell[11086, 419, 1402, 49, 70, "Output",
+ CellTags->"B1",
+ CellID->94888417]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12525, 473, 299, 9, 31, "Input",
+ CellTags->"B1",
+ CellID->2075391288],
+Cell[12827, 484, 703, 25, 62, "Output",
+ CellTags->"B1",
+ CellID->1940611723]
+}, Open  ]]
+}, Open  ]],
+Cell[13557, 513, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13625, 518, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[13898, 532, 804, 33, 31, "Text",
+ CellTags->"B1",
+ CellID->1961153968]
+}, Open  ]],
+Cell[14717, 568, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

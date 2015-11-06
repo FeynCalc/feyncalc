@@ -1,0 +1,303 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8852,        293]
+NotebookOptionsPosition[      5652,        197]
+NotebookOutlinePosition[      8090,        264]
+CellTagsIndexPosition[      7978,        258]
+WindowTitle->DotProduct
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/DotProduct\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/DotProduct"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/DotProduct.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44639], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/DotProduct", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["DotProduct", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"DotProduct", "[", 
+       RowBox[{"x", ",", " ", "y"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "denotes the three-dimensional dot-product. If x and y have Head List, \
+DotProduct[x, a] (where a is a vector) performs Sum[ x[[k]] a[[k]], {k, 0, \
+3}]."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->927730568],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->587383509],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DotProduct", "[", 
+  RowBox[{
+   RowBox[{"ThreeVector", "[", "a", "]"}], ",", 
+   RowBox[{"3", 
+    RowBox[{"ThreeVector", "[", "b", "]"}]}]}], "]"}]], "Input",
+ CellTags->"DotProduct",
+ CellLabel->"In[1]:=",
+ CellID->1589628961],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"3", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      OverscriptBox["a", "\[RightVector]"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox["b", "\[RightVector]"],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{61, 27},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DotProduct",
+ CellLabel->"Out[1]=",
+ CellID->114728018]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["CrossProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CrossProduct",
+  ButtonNote->"CrossProduct"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ThreeVector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ThreeVector",
+  ButtonNote->"ThreeVector"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"DotProduct",
+ CellID->712758366]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DotProduct",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 58, 34.400756}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "DotProduct[x, y] denotes the three-dimensional dot-product. If x and y \
+have Head List, DotProduct[x, a] (where a is a vector) performs Sum[x[[k]] \
+a[[k]], {k, 0, 3}].", "synonyms" -> {}, "title" -> "DotProduct", 
+    "titlemodifier" -> "", "windowtitle" -> "DotProduct", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/DotProduct"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3449, 97, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->927730568]},
+ "DotProduct"->{
+  Cell[4081, 126, 253, 8, 27, "Input",
+   CellTags->"DotProduct",
+   CellID->1589628961],
+  Cell[4337, 136, 496, 18, 48, "Output",
+   CellTags->"DotProduct",
+   CellID->114728018],
+  Cell[5201, 177, 409, 15, 31, "Text",
+   CellTags->"DotProduct",
+   CellID->712758366]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7548, 241},
+ {"DotProduct", 7684, 245}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2837, 75, 53, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2893, 78, 531, 15, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3449, 97, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->927730568],
+Cell[CellGroupData[{
+Cell[3861, 116, 195, 6, 25, "ExampleSection",
+ CellID->587383509],
+Cell[CellGroupData[{
+Cell[4081, 126, 253, 8, 27, "Input",
+ CellTags->"DotProduct",
+ CellID->1589628961],
+Cell[4337, 136, 496, 18, 48, "Output",
+ CellTags->"DotProduct",
+ CellID->114728018]
+}, Open  ]]
+}, Open  ]],
+Cell[4860, 158, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4928, 163, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5201, 177, 409, 15, 31, "Text",
+ CellTags->"DotProduct",
+ CellID->712758366]
+}, Open  ]],
+Cell[5625, 195, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

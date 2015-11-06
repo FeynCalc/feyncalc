@@ -1,0 +1,401 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10701,        391]
+NotebookOptionsPosition[      6639,        254]
+NotebookOutlinePosition[      9406,        338]
+CellTagsIndexPosition[      9302,        332]
+WindowTitle->CF
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/CF\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/CF"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/CF.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$21859], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/CF", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["CF", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["CF"], "InlineFormula"],
+     " \[LineSeparator]",
+     "is one of the Casimir operator eigenvalues of SU(",
+     StyleBox["N",
+      FontSlant->"Italic"],
+     ") (CF = (",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox["N", "2"], TraditionalForm]]],
+     "-1)/(2 ",
+     StyleBox["N",
+      FontSlant->"Italic"],
+     "))."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1304574227],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->834383793],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["CF"], "Input",
+ CellTags->"CF",
+ CellLabel->"In[1]:=",
+ CellID->606616156],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["C", "F"], TraditionalForm]], "Output",
+ ImageSize->{24, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CF",
+ CellLabel->"Out[1]=",
+ CellID->1771246704]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNSimplify", "[", 
+  RowBox[{"CF", ",", " ", 
+   RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellTags->"CF",
+ CellLabel->"In[2]:=",
+ CellID->943993167],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["N", "2"], "-", "1"}], 
+   RowBox[{"2", " ", "N"}]], TraditionalForm]], "Output",
+ ImageSize->{54, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CF",
+ CellLabel->"Out[2]=",
+ CellID->1827752058]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["SUNN"], "Input",
+ CellTags->"CF",
+ CellLabel->"In[3]:=",
+ CellID->721736691],
+
+Cell[BoxData[
+ FormBox["N", TraditionalForm]], "Output",
+ ImageSize->{19, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CF",
+ CellLabel->"Out[3]=",
+ CellID->2104582203]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNSimplify", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SUNN", "^", "2"}], "-", "1"}], ",", " ", 
+   RowBox[{"SUNNToCACF", " ", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"CF",
+ CellLabel->"In[4]:=",
+ CellID->1669593560],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"2", " ", 
+   SubscriptBox["C", "A"], " ", 
+   SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
+ ImageSize->{57, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CF",
+ CellLabel->"Out[4]=",
+ CellID->2114118582]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["CA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CA",
+  ButtonNote->"CA"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SUNSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNSimplify",
+  ButtonNote->"SUNSimplify"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"CF",
+ CellID->856648073]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"CF",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 56, 33.282189}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "CF is one of the Casimir operator eigenvalues of SU(N) (CF = (N^2-1)/(2 \
+N)).", "synonyms" -> {}, "title" -> "CF", "titlemodifier" -> "", 
+    "windowtitle" -> "CF", "type" -> "Symbol", "uri" -> "FeynCalc/ref/CF"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3464, 103, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1304574227]},
+ "CF"->{
+  Cell[4097, 132, 88, 3, 27, "Input",
+   CellTags->"CF",
+   CellID->606616156],
+  Cell[4188, 137, 226, 8, 36, "Output",
+   CellTags->"CF",
+   CellID->1771246704],
+  Cell[4451, 150, 196, 6, 27, "Input",
+   CellTags->"CF",
+   CellID->943993167],
+  Cell[4650, 158, 299, 11, 66, "Output",
+   CellTags->"CF",
+   CellID->1827752058],
+  Cell[4986, 174, 90, 3, 27, "Input",
+   CellTags->"CF",
+   CellID->721736691],
+  Cell[5079, 179, 204, 7, 36, "Output",
+   CellTags->"CF",
+   CellID->2104582203],
+  Cell[5320, 191, 252, 8, 27, "Input",
+   CellTags->"CF",
+   CellID->1669593560],
+  Cell[5575, 201, 283, 10, 36, "Output",
+   CellTags->"CF",
+   CellID->2114118582],
+  Cell[6226, 234, 371, 15, 32, "Text",
+   CellTags->"CF",
+   CellID->856648073]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8410, 297},
+ {"CF", 8540, 301}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2233, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2810, 75, 45, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 581, 21, 85, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3464, 103, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1304574227],
+Cell[CellGroupData[{
+Cell[3877, 122, 195, 6, 25, "ExampleSection",
+ CellID->834383793],
+Cell[CellGroupData[{
+Cell[4097, 132, 88, 3, 27, "Input",
+ CellTags->"CF",
+ CellID->606616156],
+Cell[4188, 137, 226, 8, 36, "Output",
+ CellTags->"CF",
+ CellID->1771246704]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4451, 150, 196, 6, 27, "Input",
+ CellTags->"CF",
+ CellID->943993167],
+Cell[4650, 158, 299, 11, 66, "Output",
+ CellTags->"CF",
+ CellID->1827752058]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4986, 174, 90, 3, 27, "Input",
+ CellTags->"CF",
+ CellID->721736691],
+Cell[5079, 179, 204, 7, 36, "Output",
+ CellTags->"CF",
+ CellID->2104582203]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5320, 191, 252, 8, 27, "Input",
+ CellTags->"CF",
+ CellID->1669593560],
+Cell[5575, 201, 283, 10, 36, "Output",
+ CellTags->"CF",
+ CellID->2114118582]
+}, Open  ]]
+}, Open  ]],
+Cell[5885, 215, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5953, 220, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6226, 234, 371, 15, 32, "Text",
+ CellTags->"CF",
+ CellID->856648073]
+}, Open  ]],
+Cell[6612, 252, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

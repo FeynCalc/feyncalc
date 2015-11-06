@@ -1,0 +1,1100 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30415,       1090]
+NotebookOptionsPosition[     20811,        789]
+NotebookOutlinePosition[     26445,        950]
+CellTagsIndexPosition[     26323,        944]
+WindowTitle->DoPolarizationSums
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/DoPolarizationSums\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/DoPolarizationSums"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+DoPolarizationSums.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$43253], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/DoPolarizationSums", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["DoPolarizationSums", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"DoPolarizationSums", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "sums over vector polarizations for expressions with a factor of the \
+form\nPair[LorentzIndex[rho1_], Momentum[Polarization[p_, -I]]]*\n\
+Pair[LorentzIndex[rho2_], Momentum[Polarization[p_, I]]]."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1507567602],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->279441373],
+
+Cell["\<\
+In the following (and indeed everywhere else within FeynCalc), notice that \
+Lorentz indices written as super or subscripts are not to be taken as such. \
+Instead, by convention, when two indices are contracted one is always lower \
+and the other upper.\
+\>", "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1284060336],
+
+Cell["\<\
+FeynCalc uses the following normalization of Polarization vectors:\
+\>", "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->714795038],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Pair", "[", 
+   RowBox[{
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"p4", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], "]"}]}], "]"}], " ", 
+  RowBox[{"Pair", "[", 
+   RowBox[{
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"Momentum", "[", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"p4", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], "]"}]}]], "Input",\
+
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[1]:=",
+ CellID->492835519],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    RowBox[{
+     SuperscriptBox[
+      SuperscriptBox[
+       OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]], "(", 
+     FormBox["p4",
+      TraditionalForm], ")"}],
+    TraditionalForm], " ", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["\[CurlyEpsilon]", "_"], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]], "(", 
+     FormBox["p4",
+      TraditionalForm], ")"}],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{110, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[1]=",
+ CellID->1142913811]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "Contract"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[2]:=",
+ CellID->771272059],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "1"}], TraditionalForm]], "Output",
+ ImageSize->{21, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[2]=",
+ CellID->1791104588]
+}, Open  ]],
+
+Cell[TextData[{
+ "DoPolarizationSums is chosen in such a way as to be consistent with this \
+normalization and with ",
+ Cell[BoxData[
+  FormBox[
+   UnderscriptBox["\[Sum]", "Polarizations"], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[CurlyEpsilon]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], "(", 
+     FormBox[
+      SubscriptBox[
+       TagBox[
+        StyleBox["\"\<p\>\"",
+         FontSlant->"Italic"],
+        StyleForm[#, FontSlant -> "Italic"]& ], "4"],
+      TraditionalForm], ")"}], " ", 
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox["\[CurlyEpsilon]", "\[Nu]"], ")"}], 
+      FormBox["",
+       TraditionalForm]], "(", 
+     FormBox[
+      SubscriptBox[
+       TagBox[
+        StyleBox["\"\<p\>\"",
+         FontSlant->"Italic"],
+        StyleForm[#, FontSlant -> "Italic"]& ], "4"],
+      TraditionalForm], ")"}]}], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox["Null", TraditionalForm]]],
+ ":"
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->504712587],
+
+Cell[TextData[{
+ "We can choose e.g. the following polarization vectors, labeled with a \
+subscript, {",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["e", "1"], TraditionalForm]]],
+ ",",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["e", "2"], TraditionalForm]]],
+ ",",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["e", "3"], TraditionalForm]]],
+ ",",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["e", "4"], TraditionalForm]]],
+ "} = {(\[ImaginaryI],0,0,0), (0,\[ImaginaryI],0,0), (0,0,\[ImaginaryI],0), \
+(0,0,0,\[ImaginaryI])}."
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1216514784],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"ee", ",", "tt"}], "]"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[3]:=",
+ CellID->243887081],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ev", "[", "i_", "]"}], ":=", 
+   RowBox[{"ReplacePart", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", "I", ",", 
+     "i"}], "]"}]}], ";"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[4]:=",
+ CellID->1289026175],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"ev", "[", "1", "]"}], ",", 
+   RowBox[{"ev", "[", "2", "]"}], ",", 
+   RowBox[{"ev", "[", "3", "]"}], ",", 
+   RowBox[{"ev", "[", "4", "]"}]}], "}"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[5]:=",
+ CellID->654636595],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\[ImaginaryI]", "0", "0", "0"},
+     {"0", "\[ImaginaryI]", "0", "0"},
+     {"0", "0", "\[ImaginaryI]", "0"},
+     {"0", "0", "0", "\[ImaginaryI]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{80, 69},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[5]=",
+ CellID->635199725]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["ee[i][\[Mu]]", "Input"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    SubscriptBox["e", "i"], "\[Mu]"], TraditionalForm]]],
+ ":"
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->883749055],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ee", "[", "i_", "]"}], "[", "mu_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"ev", "[", "i", "]"}], "[", 
+    RowBox[{"[", "mu", "]"}], "]"}]}], ";"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[6]:=",
+ CellID->1065974135],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tt", "[", 
+   RowBox[{"i_", ",", "j_", ",", "mu_", ",", "nu_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ee", "[", "i", "]"}], "[", "mu", "]"}], 
+   RowBox[{
+    RowBox[{"ee", "[", "j", "]"}], "[", "nu", "]"}]}]}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[7]:=",
+ CellID->1862975452],
+
+Cell[TextData[{
+ StyleBox["tt[i,j,\[Mu],\[Nu]]", "Input"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    SubscriptBox["e", "i"], "\[Mu]"], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    SubscriptBox["e", "j"], "\[Nu]"], TraditionalForm]]],
+ ":"
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1445508132],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   UnderscriptBox["\[Sum]", 
+    RowBox[{"i", ",", "j"}]], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    FormBox["Null",
+     TraditionalForm]}], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox["Null", TraditionalForm]]],
+ ":"
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1899952175],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "4"], 
+    RowBox[{"tt", "[", 
+     RowBox[{"i", ",", "i", ",", "mu", ",", "nu"}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"mu", ",", "1", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"nu", ",", "1", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[8]:=",
+ CellID->522265467],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "0", "0", "0"},
+     {"0", 
+      RowBox[{"-", "1"}], "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "0"},
+     {"0", "0", "0", 
+      RowBox[{"-", "1"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{116, 69},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[8]=",
+ CellID->438599116]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   UnderscriptBox["\[Sum]", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}]], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    FormBox["Null",
+     TraditionalForm]}], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox["Null", TraditionalForm]]],
+ ":"
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->631136558],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"mu", "=", "1"}], "4"], 
+    RowBox[{"tt", "[", 
+     RowBox[{"i", ",", "j", ",", "mu", ",", "mu"}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "1", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[9]:=",
+ CellID->1912639269],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "0", "0", "0"},
+     {"0", 
+      RowBox[{"-", "1"}], "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "0"},
+     {"0", "0", "0", 
+      RowBox[{"-", "1"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{116, 69},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[9]=",
+ CellID->584196470]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ptest", "=", 
+  RowBox[{
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"LorentzIndex", "[", 
+      RowBox[{"ComplexIndex", "[", "\[Mu]", "]"}], "]"}]}], "]"}], " ", 
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"Momentum", "[", 
+      RowBox[{"Polarization", "[", 
+       RowBox[{"p4", ",", 
+        RowBox[{"-", "\[ImaginaryI]"}]}], "]"}], "]"}]}], "]"}], " ", 
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", 
+      RowBox[{"ComplexIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
+     RowBox[{"Momentum", "[", 
+      RowBox[{"Polarization", "[", 
+       RowBox[{"p4", ",", "\[ImaginaryI]"}], "]"}], "]"}]}], 
+    "]"}]}]}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[10]:=",
+ CellID->1927925269],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm], " ", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox[
+      SuperscriptBox[
+       OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]], "(", 
+     FormBox["p4",
+      TraditionalForm], ")"}],
+    TraditionalForm], " ", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["\[CurlyEpsilon]", "_"], 
+      FormBox[
+       FormBox[
+        FormBox[
+         RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]], "(", 
+     FormBox["p4",
+      TraditionalForm], ")"}],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{305, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[10]=",
+ CellID->289002701]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ptest", "//", "DoPolarizationSums"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[11]:=",
+ CellID->683494559],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DoPolarizationSums", "(", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    FormBox[
+     RowBox[{
+      SuperscriptBox[
+       SuperscriptBox[
+        OverscriptBox["\[CurlyEpsilon]", "_"], "*"], 
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]], "(", 
+      FormBox["p4",
+       TraditionalForm], ")"}],
+     TraditionalForm], " ", 
+    FormBox[
+     RowBox[{
+      SuperscriptBox[
+       OverscriptBox["\[CurlyEpsilon]", "_"], 
+       FormBox[
+        FormBox[
+         FormBox[
+          RowBox[{"ComplexIndex", "(", "\[Mu]", ")"}],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]], "(", 
+      FormBox["p4",
+       TraditionalForm], ")"}],
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{444, 26},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[11]=",
+ CellID->1187724286]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "Contract"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[12]:=",
+ CellID->1480522060],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DoPolarizationSums", "(", 
+   RowBox[{"-", "1"}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{160, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[12]=",
+ CellID->1321184712]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ptest", "//", "Contract"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[13]:=",
+ CellID->1260436699],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "1"}], TraditionalForm]], "Output",
+ ImageSize->{21, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[13]=",
+ CellID->1626281081]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "DoPolarizationSums"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[14]:=",
+ CellID->1965173944],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DoPolarizationSums", "(", 
+   RowBox[{"-", "1"}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{160, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DoPolarizationSums",
+ CellLabel->"Out[14]=",
+ CellID->170747363]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"ee", ",", "tt", ",", "ev", ",", "ptest"}], "]"}]], "Input",
+ CellTags->"DoPolarizationSums",
+ CellLabel->"In[15]:=",
+ CellID->1673171946]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Polarization",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Polarization",
+  ButtonNote->"Polarization"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Uncontract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Uncontract",
+  ButtonNote->"Uncontract"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1363268460]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DoPolarizationSums",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 58, 27.577332}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "DoPolarizationSums[exp] sums over vector polarizations for expressions \
+with a factor of the form Pair[LorentzIndex[rho1_], Momentum[Polarization[p_, \
+-I]]]* Pair[LorentzIndex[rho2_], Momentum[Polarization[p_, I]]].", 
+    "synonyms" -> {}, "title" -> "DoPolarizationSums", "titlemodifier" -> "", 
+    "windowtitle" -> "DoPolarizationSums", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/DoPolarizationSums"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3517, 96, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1507567602]},
+ "DoPolarizationSums"->{
+  Cell[4128, 123, 331, 7, 72, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->1284060336],
+  Cell[4462, 132, 143, 4, 32, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->714795038],
+  Cell[4630, 140, 588, 18, 45, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->492835519],
+  Cell[5221, 160, 875, 35, 38, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->1142913811],
+  Cell[6133, 200, 133, 4, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->771272059],
+  Cell[6269, 206, 238, 8, 36, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->1791104588],
+  Cell[6522, 217, 1104, 41, 56, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->504712587],
+  Cell[7629, 260, 583, 22, 54, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->1216514784],
+  Cell[8215, 284, 159, 5, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->243887081],
+  Cell[8377, 291, 329, 11, 29, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1289026175],
+  Cell[8731, 306, 288, 9, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->654636595],
+  Cell[9022, 317, 839, 24, 90, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->635199725],
+  Cell[9876, 344, 233, 10, 33, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->883749055],
+  Cell[10112, 356, 294, 10, 29, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1065974135],
+  Cell[10409, 368, 346, 11, 29, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1862975452],
+  Cell[10758, 381, 344, 14, 35, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->1445508132],
+  Cell[11105, 397, 358, 16, 36, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->1899952175],
+  Cell[11488, 417, 451, 14, 56, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->522265467],
+  Cell[11942, 433, 880, 28, 90, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->438599116],
+  Cell[12837, 464, 365, 16, 36, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->631136558],
+  Cell[13227, 484, 451, 14, 55, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1912639269],
+  Cell[13681, 500, 880, 28, 90, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->584196470],
+  Cell[14598, 533, 878, 25, 62, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1927925269],
+  Cell[15479, 560, 1344, 54, 41, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->289002701],
+  Cell[16860, 619, 148, 4, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->683494559],
+  Cell[17011, 625, 1437, 55, 47, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->1187724286],
+  Cell[18485, 685, 135, 4, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1480522060],
+  Cell[18623, 691, 286, 9, 36, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->1321184712],
+  Cell[18946, 705, 139, 4, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1260436699],
+  Cell[19088, 711, 239, 8, 36, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->1626281081],
+  Cell[19364, 724, 145, 4, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1965173944],
+  Cell[19512, 730, 285, 9, 36, "Output",
+   CellTags->"DoPolarizationSums",
+   CellID->170747363],
+  Cell[19812, 742, 186, 5, 27, "Input",
+   CellTags->"DoPolarizationSums",
+   CellID->1673171946],
+  Cell[20354, 769, 415, 15, 31, "Text",
+   CellTags->"DoPolarizationSums",
+   CellID->1363268460]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 22792, 834},
+ {"DoPolarizationSums", 22937, 838}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[590, 21, 2285, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2878, 75, 61, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2942, 78, 550, 14, 132, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3517, 96, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1507567602],
+Cell[CellGroupData[{
+Cell[3930, 115, 195, 6, 25, "ExampleSection",
+ CellID->279441373],
+Cell[4128, 123, 331, 7, 72, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1284060336],
+Cell[4462, 132, 143, 4, 32, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->714795038],
+Cell[CellGroupData[{
+Cell[4630, 140, 588, 18, 45, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->492835519],
+Cell[5221, 160, 875, 35, 38, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->1142913811]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6133, 200, 133, 4, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->771272059],
+Cell[6269, 206, 238, 8, 36, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->1791104588]
+}, Open  ]],
+Cell[6522, 217, 1104, 41, 56, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->504712587],
+Cell[7629, 260, 583, 22, 54, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1216514784],
+Cell[8215, 284, 159, 5, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->243887081],
+Cell[8377, 291, 329, 11, 29, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1289026175],
+Cell[CellGroupData[{
+Cell[8731, 306, 288, 9, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->654636595],
+Cell[9022, 317, 839, 24, 90, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->635199725]
+}, Open  ]],
+Cell[9876, 344, 233, 10, 33, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->883749055],
+Cell[10112, 356, 294, 10, 29, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1065974135],
+Cell[10409, 368, 346, 11, 29, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1862975452],
+Cell[10758, 381, 344, 14, 35, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1445508132],
+Cell[11105, 397, 358, 16, 36, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1899952175],
+Cell[CellGroupData[{
+Cell[11488, 417, 451, 14, 56, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->522265467],
+Cell[11942, 433, 880, 28, 90, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->438599116]
+}, Open  ]],
+Cell[12837, 464, 365, 16, 36, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->631136558],
+Cell[CellGroupData[{
+Cell[13227, 484, 451, 14, 55, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1912639269],
+Cell[13681, 500, 880, 28, 90, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->584196470]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14598, 533, 878, 25, 62, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1927925269],
+Cell[15479, 560, 1344, 54, 41, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->289002701]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16860, 619, 148, 4, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->683494559],
+Cell[17011, 625, 1437, 55, 47, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->1187724286]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18485, 685, 135, 4, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1480522060],
+Cell[18623, 691, 286, 9, 36, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->1321184712]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18946, 705, 139, 4, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1260436699],
+Cell[19088, 711, 239, 8, 36, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->1626281081]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19364, 724, 145, 4, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1965173944],
+Cell[19512, 730, 285, 9, 36, "Output",
+ CellTags->"DoPolarizationSums",
+ CellID->170747363]
+}, Open  ]],
+Cell[19812, 742, 186, 5, 27, "Input",
+ CellTags->"DoPolarizationSums",
+ CellID->1673171946]
+}, Open  ]],
+Cell[20013, 750, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20081, 755, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[20354, 769, 415, 15, 31, "Text",
+ CellTags->"DoPolarizationSums",
+ CellID->1363268460]
+}, Open  ]],
+Cell[20784, 787, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

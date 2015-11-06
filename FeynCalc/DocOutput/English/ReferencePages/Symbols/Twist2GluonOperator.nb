@@ -1,0 +1,319 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10613,        310]
+NotebookOptionsPosition[      6466,        199]
+NotebookOutlinePosition[      9781,        280]
+CellTagsIndexPosition[      9660,        274]
+WindowTitle->Twist2GluonOperator
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Twist2GluonOperator\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Twist2GluonOperator"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+Twist2GluonOperator.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$155217], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Twist2GluonOperator", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Twist2GluonOperator", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Twist2GluonOperator", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"p", ",", " ", "mu", ",", " ", "a"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"nu", ",", " ", "b"}], "}"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "or Twist2GluonOperator[p, {mu, a}, {nu, b}] or Twist2GluonOperator[p, \
+mu,a, nu,b] yields the 2-gluon operator (p is ingoing momentum corresponding \
+to Lorentz index mu). Twist2GluonOperator[{p,mu,a}, {q,nu,b}, {k,la,c}] or \
+Twist2GluonOperator[ p,mu,a , q,nu,b , k,la,c ] gives the 3-gluon operator. \
+Twist2GluonOperator[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] or \
+Twist2GluonOperator[p,mu,a , q,nu,b , k,la,c , s,si,d] yields the 4-Gluon \
+operator. The dimension is determined by the option and Dimension. The \
+setting of the option Polarization (unpolarized: 0; polarized: 1) determines \
+whether the unpolarized or polarized feynman rule is returned. With the \
+setting Explicit to False the color-structure and the (1+(-1)^OPEm) (for \
+polarized: (1-(-1)^OPEm)) is extracted and the color indices are omitted in \
+the arguments of Twist2GluonOperator."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1],
+
+Cell["The setting All for Explicit performs the sums.", "Text",
+ CellTags->"Twist2GluonOperator",
+ CellID->820989411],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"Twist2GluonOperator", ",", " ", 
+    RowBox[{"Polarization", " ", "\[Rule]", " ", "1"}], ",", " ", 
+    RowBox[{"Explicit", "\[Rule]", "All"}]}], "]"}], ";"}]], "Input",
+ CellTags->"Twist2GluonOperator",
+ CellLabel->"In[1]:=",
+ CellID->1824993691],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Twist2GluonOperator", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}], ";"}]], "Input",
+ CellTags->"Twist2GluonOperator",
+ CellLabel->"In[2]:=",
+ CellID->1893252067]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SectionFooterSpacer"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Twist2QuarkOperator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Twist2QuarkOperator",
+  ButtonNote->"Twist2QuarkOperator"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Twist2GluonOperator",
+ CellID->171220448]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Twist2GluonOperator",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 8, 34.604694}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Twist2GluonOperator[{p, mu, a}, {nu, b}] or Twist2GluonOperator[p, {mu, \
+a}, {nu, b}] or Twist2GluonOperator[p, mu,a, nu,b] yields the 2-gluon \
+operator (p is ingoing momentum corresponding to Lorentz index mu). \
+Twist2GluonOperator[{p,mu,a}, {q,nu,b}, {k,la,c}] or \
+Twist2GluonOperator[p,mu,a , q,nu,b , k,la,c ] gives the 3-gluon operator. \
+Twist2GluonOperator[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] or \
+Twist2GluonOperator[p,mu,a , q,nu,b , k,la,c , s,si,d] yields the 4-Gluon \
+operator. The dimension is determined by the option and Dimension. The \
+setting of the option Polarization (unpolarized: 0; polarized: 1) determines \
+whether the unpolarized or polarized feynman rule is returned. With the \
+setting Explicit to False the color-structure and the (1+(-1)^OPEm) (for \
+polarized: (1-(-1)^OPEm)) is extracted and the color indices are omitted in \
+the arguments of Twist2GluonOperator.", "synonyms" -> {}, "title" -> 
+    "Twist2GluonOperator", "titlemodifier" -> "", "windowtitle" -> 
+    "Twist2GluonOperator", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Twist2GluonOperator"}},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4369, 110, 379, 15, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1]},
+ "Twist2GluonOperator"->{
+  Cell[4963, 137, 117, 2, 70, "Text",
+   CellTags->"Twist2GluonOperator",
+   CellID->820989411],
+  Cell[5083, 141, 313, 8, 70, "Input",
+   CellTags->"Twist2GluonOperator",
+   CellID->1824993691],
+  Cell[5399, 151, 398, 12, 70, "Input",
+   CellTags->"Twist2GluonOperator",
+   CellID->1893252067],
+  Cell[6153, 185, 271, 9, 70, "Text",
+   CellTags->"Twist2GluonOperator",
+   CellID->171220448]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9105, 254},
+ {"Twist2GluonOperator", 9243, 258}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[591, 21, 2290, 52, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[2884, 75, 62, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[2949, 78, 1395, 28, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4369, 110, 379, 15, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4773, 129, 187, 6, 70, "ExampleSection",
+ CellID->1],
+Cell[4963, 137, 117, 2, 70, "Text",
+ CellTags->"Twist2GluonOperator",
+ CellID->820989411],
+Cell[5083, 141, 313, 8, 70, "Input",
+ CellTags->"Twist2GluonOperator",
+ CellID->1824993691],
+Cell[5399, 151, 398, 12, 70, "Input",
+ CellTags->"Twist2GluonOperator",
+ CellID->1893252067]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5846, 169, 31, 0, 70, "SectionFooterSpacer"],
+Cell[5880, 171, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6153, 185, 271, 9, 70, "Text",
+ CellTags->"Twist2GluonOperator",
+ CellID->171220448]
+}, Open  ]],
+Cell[6439, 197, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)

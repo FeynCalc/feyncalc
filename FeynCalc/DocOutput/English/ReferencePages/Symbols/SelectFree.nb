@@ -1,0 +1,499 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13691,        489]
+NotebookOptionsPosition[      8122,        308]
+NotebookOutlinePosition[     11719,        412]
+CellTagsIndexPosition[     11605,        406]
+WindowTitle->SelectFree
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/SelectFree\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/SelectFree"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/SelectFree.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$127357], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/SelectFree", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["SelectFree", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SelectFree", "[", 
+       RowBox[{"expr", ",", " ", "a", ",", " ", "b", ",", " ", "..."}], 
+       "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is equivalent to Select[expr, FreeQ2[#, {a,b, ...}]&], except the \
+special cases: SelectFree[a, b] returns a and SelectFree[a,a] returns 1 \
+(where a is not a product or a sum).\n\nSelectFree is equivalent to Select1."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1635330056],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1979201585],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{
+   RowBox[{"a", "+", "b", "+", 
+    RowBox[{"f", "[", "a", "]"}], "+", "d"}], ",", "a"}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[1]:=",
+ CellID->2065686659],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"b", "+", "d"}], TraditionalForm]], "Output",
+ ImageSize->{38, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[1]=",
+ CellID->818540084]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{
+   RowBox[{"x", " ", "y"}], ",", " ", "x"}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[2]:=",
+ CellID->1360286962],
+
+Cell[BoxData[
+ FormBox["y", TraditionalForm]], "Output",
+ ImageSize->{13, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[2]=",
+ CellID->1323839729]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{
+   RowBox[{"2", " ", "x", " ", "y", " ", "z", " ", 
+    RowBox[{"f", "[", "x", "]"}]}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[3]:=",
+ CellID->205266173],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"2", " ", "z"}], TraditionalForm]], "Output",
+ ImageSize->{24, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[3]=",
+ CellID->912675516]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[4]:=",
+ CellID->374408699],
+
+Cell[BoxData[
+ FormBox["a", TraditionalForm]], "Output",
+ ImageSize->{13, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[4]=",
+ CellID->1001842240]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{"a", ",", "a"}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[5]:=",
+ CellID->776099426],
+
+Cell[BoxData[
+ FormBox["1", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[5]=",
+ CellID->1438478141]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{"1", ",", "c"}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[6]:=",
+ CellID->836509757],
+
+Cell[BoxData[
+ FormBox["1", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[6]=",
+ CellID->1251533165]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SelectFree", "[", 
+  RowBox[{
+   RowBox[{"f", "[", "x", "]"}], ",", "x"}], "]"}]], "Input",
+ CellTags->"SelectFree",
+ CellLabel->"In[7]:=",
+ CellID->1631800392],
+
+Cell[BoxData[
+ FormBox["1", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SelectFree",
+ CellLabel->"Out[7]=",
+ CellID->1673614830]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FreeQ2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FreeQ2",
+  ButtonNote->"FreeQ2"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SelectNotFree",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SelectNotFree",
+  ButtonNote->"SelectNotFree"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"SelectFree",
+ CellID->1096848115]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"SelectFree",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 5, 53.802709}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "SelectFree[expr, a, b, ...] is equivalent to Select[expr, FreeQ2[#, \
+{a,b, ...}]&], except the special cases: SelectFree[a, b] returns a and \
+SelectFree[a,a] returns 1 (where a is not a product or a sum). SelectFree is \
+equivalent to Select1.", "synonyms" -> {}, "title" -> "SelectFree", 
+    "titlemodifier" -> "", "windowtitle" -> "SelectFree", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/SelectFree"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3558, 98, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1635330056]},
+ "SelectFree"->{
+  Cell[4192, 127, 229, 7, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->2065686659],
+  Cell[4424, 136, 234, 8, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->818540084],
+  Cell[4695, 149, 184, 6, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->1360286962],
+  Cell[4882, 157, 212, 7, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->1323839729],
+  Cell[5131, 169, 292, 9, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->205266173],
+  Cell[5426, 180, 234, 8, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->912675516],
+  Cell[5697, 193, 154, 5, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->374408699],
+  Cell[5854, 200, 212, 7, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->1001842240],
+  Cell[6103, 212, 154, 5, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->776099426],
+  Cell[6260, 219, 212, 7, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->1438478141],
+  Cell[6509, 231, 154, 5, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->836509757],
+  Cell[6666, 238, 212, 7, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->1251533165],
+  Cell[6915, 250, 184, 6, 27, "Input",
+   CellTags->"SelectFree",
+   CellID->1631800392],
+  Cell[7102, 258, 212, 7, 36, "Output",
+   CellTags->"SelectFree",
+   CellID->1673614830],
+  Cell[7682, 288, 398, 15, 31, "Text",
+   CellTags->"SelectFree",
+   CellID->1096848115]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10093, 353},
+ {"SelectFree", 10230, 357}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[582, 21, 2253, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2838, 75, 53, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2894, 78, 639, 16, 147, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3558, 98, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1635330056],
+Cell[CellGroupData[{
+Cell[3971, 117, 196, 6, 25, "ExampleSection",
+ CellID->1979201585],
+Cell[CellGroupData[{
+Cell[4192, 127, 229, 7, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->2065686659],
+Cell[4424, 136, 234, 8, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->818540084]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4695, 149, 184, 6, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->1360286962],
+Cell[4882, 157, 212, 7, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->1323839729]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5131, 169, 292, 9, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->205266173],
+Cell[5426, 180, 234, 8, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->912675516]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5697, 193, 154, 5, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->374408699],
+Cell[5854, 200, 212, 7, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->1001842240]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6103, 212, 154, 5, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->776099426],
+Cell[6260, 219, 212, 7, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->1438478141]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6509, 231, 154, 5, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->836509757],
+Cell[6666, 238, 212, 7, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->1251533165]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6915, 250, 184, 6, 27, "Input",
+ CellTags->"SelectFree",
+ CellID->1631800392],
+Cell[7102, 258, 212, 7, 36, "Output",
+ CellTags->"SelectFree",
+ CellID->1673614830]
+}, Open  ]]
+}, Open  ]],
+Cell[7341, 269, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7409, 274, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[7682, 288, 398, 15, 31, "Text",
+ CellTags->"SelectFree",
+ CellID->1096848115]
+}, Open  ]],
+Cell[8095, 306, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,422 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11315,        412]
+NotebookOptionsPosition[      7055,        269]
+NotebookOutlinePosition[      9935,        356]
+CellTagsIndexPosition[      9830,        350]
+WindowTitle->FRH
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FRH\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FRH"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/FRH.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68692], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/FRH", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FRH", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FRH", "[", "exp_", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     ":= FixedPoint[ReleaseHold, exp], i.e., FRH removes all HoldForm and \
+Hold in exp."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1266334822],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->53230250],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"1", "-", "1", " ", "-", " ", 
+   RowBox[{"Hold", "[", 
+    RowBox[{"2", "-", "2"}], "]"}]}], "]"}]], "Input",
+ CellTags->"FRH",
+ CellLabel->"In[1]:=",
+ CellID->1505003969],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"Hold", "[", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"Hold", "[", 
+      RowBox[{"2", "-", "2"}], "]"}]}], "+", "1", "-", "1"}], "]"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{177, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FRH",
+ CellLabel->"Out[1]=",
+ CellID->1110463745]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FRH", "[", "%", "]"}]], "Input",
+ CellTags->"FRH",
+ CellLabel->"In[2]:=",
+ CellID->1714875295],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FRH",
+ CellLabel->"Out[2]=",
+ CellID->313757423]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Isolate", "[", 
+  RowBox[{
+   RowBox[{"Solve", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", "x", "-", "1"}], "==", "0"}], "]"}], ",", 
+   "x", ",", 
+   RowBox[{"IsolateNames", "\[Rule]", "hh"}]}], "]"}]], "Input",
+ CellTags->"FRH",
+ CellLabel->"In[3]:=",
+ CellID->971664034],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      TagBox[
+       RowBox[{"hh", "(", "670", ")"}],
+       HoldForm]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      TagBox[
+       RowBox[{"hh", "(", "673", ")"}],
+       HoldForm]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      TagBox[
+       RowBox[{"hh", "(", "674", ")"}],
+       HoldForm]}], "}"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{316, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FRH",
+ CellLabel->"Out[3]=",
+ CellID->529538815]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FRH", "[", 
+  RowBox[{"hh", "[", "3", "]"}], "]"}]], "Input",
+ CellTags->"FRH",
+ CellLabel->"In[4]:=",
+ CellID->866394763],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"hh", "(", "3", ")"}], TraditionalForm]], "Output",
+ ImageSize->{42, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FRH",
+ CellLabel->"Out[4]=",
+ CellID->166257414]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "hh", "]"}]], "Input",
+ CellTags->"FRH",
+ CellLabel->"In[5]:=",
+ CellID->1669049321]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Isolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Isolate",
+  ButtonNote->"Isolate"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FRH",
+ CellID->1874942431]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FRH",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 0, 40.414815}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FRH[exp_] := FixedPoint[ReleaseHold, exp], i.e., FRH removes all \
+HoldForm and Hold in exp.", "synonyms" -> {}, "title" -> "FRH", 
+    "titlemodifier" -> "", "windowtitle" -> "FRH", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FRH"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3312, 95, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1266334822]},
+ "FRH"->{
+  Cell[3944, 124, 219, 7, 27, "Input",
+   CellTags->"FRH",
+   CellID->1505003969],
+  Cell[4166, 133, 355, 13, 36, "Output",
+   CellTags->"FRH",
+   CellID->1110463745],
+  Cell[4558, 151, 118, 4, 27, "Input",
+   CellTags->"FRH",
+   CellID->1714875295],
+  Cell[4679, 157, 204, 7, 36, "Output",
+   CellTags->"FRH",
+   CellID->313757423],
+  Cell[4920, 169, 322, 11, 27, "Input",
+   CellTags->"FRH",
+   CellID->971664034],
+  Cell[5245, 182, 637, 24, 36, "Output",
+   CellTags->"FRH",
+   CellID->529538815],
+  Cell[5919, 211, 146, 5, 27, "Input",
+   CellTags->"FRH",
+   CellID->866394763],
+  Cell[6068, 218, 233, 8, 36, "Output",
+   CellTags->"FRH",
+   CellID->166257414],
+  Cell[6316, 229, 121, 4, 27, "Input",
+   CellTags->"FRH",
+   CellID->1669049321],
+  Cell[6793, 255, 220, 9, 31, "Text",
+   CellTags->"FRH",
+   CellID->1874942431]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8845, 312},
+ {"FRH", 8975, 316}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2815, 75, 46, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2864, 78, 423, 13, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3312, 95, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1266334822],
+Cell[CellGroupData[{
+Cell[3725, 114, 194, 6, 25, "ExampleSection",
+ CellID->53230250],
+Cell[CellGroupData[{
+Cell[3944, 124, 219, 7, 27, "Input",
+ CellTags->"FRH",
+ CellID->1505003969],
+Cell[4166, 133, 355, 13, 36, "Output",
+ CellTags->"FRH",
+ CellID->1110463745]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4558, 151, 118, 4, 27, "Input",
+ CellTags->"FRH",
+ CellID->1714875295],
+Cell[4679, 157, 204, 7, 36, "Output",
+ CellTags->"FRH",
+ CellID->313757423]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4920, 169, 322, 11, 27, "Input",
+ CellTags->"FRH",
+ CellID->971664034],
+Cell[5245, 182, 637, 24, 36, "Output",
+ CellTags->"FRH",
+ CellID->529538815]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5919, 211, 146, 5, 27, "Input",
+ CellTags->"FRH",
+ CellID->866394763],
+Cell[6068, 218, 233, 8, 36, "Output",
+ CellTags->"FRH",
+ CellID->166257414]
+}, Open  ]],
+Cell[6316, 229, 121, 4, 27, "Input",
+ CellTags->"FRH",
+ CellID->1669049321]
+}, Open  ]],
+Cell[6452, 236, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6520, 241, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6793, 255, 220, 9, 31, "Text",
+ CellTags->"FRH",
+ CellID->1874942431]
+}, Open  ]],
+Cell[7028, 267, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

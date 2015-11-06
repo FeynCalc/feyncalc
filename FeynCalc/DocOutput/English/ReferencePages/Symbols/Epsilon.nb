@@ -1,0 +1,348 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9754,        338]
+NotebookOptionsPosition[      6122,        223]
+NotebookOutlinePosition[      8725,        298]
+CellTagsIndexPosition[      8616,        292]
+WindowTitle->Epsilon
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Epsilon\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Epsilon"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Epsilon.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47373], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Epsilon", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Epsilon", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["Epsilon"], "InlineFormula"],
+     " \[LineSeparator]",
+     "is (",
+     StyleBox["n",
+      FontSlant->"Italic"],
+     "-4), where ",
+     StyleBox["n",
+      FontSlant->"Italic"],
+     " is the space-time dimension. Epsilon stands for a small positive \
+number."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1603437855],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->936697408],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Epsilon"], "Input",
+ CellTags->"Epsilon",
+ CellLabel->"In[1]:=",
+ CellID->777209644],
+
+Cell[BoxData[
+ FormBox[
+  TagBox["\[CurlyEpsilon]",
+   TraditionalForm], TraditionalForm]], "Output",
+ ImageSize->{13, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Epsilon",
+ CellLabel->"Out[1]=",
+ CellID->750039629]
+}, Open  ]],
+
+Cell["\<\
+Epsilon has no functional properties, but some upvalues are changed:\
+\>", "Text",
+ CellTags->"Epsilon",
+ CellID->568077555],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Re", "[", "Epsilon", "]"}], " ", ">", " ", 
+    RowBox[{"-", "4"}]}], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", "Epsilon", "]"}], " ", ">", " ", 
+    RowBox[{"-", "3"}]}], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", "Epsilon", "]"}], " ", ">", " ", 
+    RowBox[{"-", "2"}]}], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", "Epsilon", "]"}], " ", ">", " ", 
+    RowBox[{"-", "1"}]}], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", "Epsilon", "]"}], " ", ">", " ", "0"}]}], 
+  "}"}]], "Input",
+ CellTags->"Epsilon",
+ CellLabel->"In[2]:=",
+ CellID->2127471490],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+   "}"}], TraditionalForm]], "Output",
+ ImageSize->{194, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Epsilon",
+ CellLabel->"Out[2]=",
+ CellID->1912563910]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Series2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Series2",
+  ButtonNote->"Series2"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Epsilon",
+ CellID->2095009444]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Epsilon",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 58, 48.029952}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Epsilon is (n-4), where n is the space-time dimension. Epsilon stands \
+for a small positive number.", "synonyms" -> {}, "title" -> "Epsilon", 
+    "titlemodifier" -> "", "windowtitle" -> "Epsilon", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Epsilon"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3412, 100, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1603437855]},
+ "Epsilon"->{
+  Cell[4045, 129, 98, 3, 27, "Input",
+   CellTags->"Epsilon",
+   CellID->777209644],
+  Cell[4146, 134, 253, 9, 36, "Output",
+   CellTags->"Epsilon",
+   CellID->750039629],
+  Cell[4414, 146, 134, 4, 32, "Text",
+   CellTags->"Epsilon",
+   CellID->568077555],
+  Cell[4573, 154, 606, 20, 45, "Input",
+   CellTags->"Epsilon",
+   CellID->2127471490],
+  Cell[5182, 176, 306, 10, 36, "Output",
+   CellTags->"Epsilon",
+   CellID->1912563910],
+  Cell[5856, 209, 224, 9, 31, "Text",
+   CellTags->"Epsilon",
+   CellID->2095009444]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7937, 266},
+ {"Epsilon", 8072, 270}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2822, 75, 50, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2875, 78, 512, 18, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3412, 100, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1603437855],
+Cell[CellGroupData[{
+Cell[3825, 119, 195, 6, 25, "ExampleSection",
+ CellID->936697408],
+Cell[CellGroupData[{
+Cell[4045, 129, 98, 3, 27, "Input",
+ CellTags->"Epsilon",
+ CellID->777209644],
+Cell[4146, 134, 253, 9, 36, "Output",
+ CellTags->"Epsilon",
+ CellID->750039629]
+}, Open  ]],
+Cell[4414, 146, 134, 4, 32, "Text",
+ CellTags->"Epsilon",
+ CellID->568077555],
+Cell[CellGroupData[{
+Cell[4573, 154, 606, 20, 45, "Input",
+ CellTags->"Epsilon",
+ CellID->2127471490],
+Cell[5182, 176, 306, 10, 36, "Output",
+ CellTags->"Epsilon",
+ CellID->1912563910]
+}, Open  ]]
+}, Open  ]],
+Cell[5515, 190, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5583, 195, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5856, 209, 224, 9, 31, "Text",
+ CellTags->"Epsilon",
+ CellID->2095009444]
+}, Open  ]],
+Cell[6095, 221, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

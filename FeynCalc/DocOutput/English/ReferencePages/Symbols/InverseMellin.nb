@@ -1,0 +1,1654 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     43916,       1644]
+NotebookOptionsPosition[     30661,       1201]
+NotebookOutlinePosition[     37994,       1421]
+CellTagsIndexPosition[     37875,       1415]
+WindowTitle->InverseMellin
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/InverseMellin\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/InverseMellin"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+InverseMellin.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$87702], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/InverseMellin", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["InverseMellin", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"InverseMellin", "[", 
+       RowBox[{"exp", ",", " ", "y"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "performs the inverse Mellin transform of polynomials in OPEm. The \
+inverse transforms are not calculated but a table-lookup is done. WARNING: do \
+not \"trust\" the results for the inverse Mellin transform involving SumT's; \
+there is an unresolved inconsistency here (related to ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"-", "1"}], ")"}], "^", "m"}], ")"}], "."}], 
+       TraditionalForm]]]
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->2781356],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->122360564],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InverseMellin", "[", 
+  RowBox[{
+   RowBox[{"1", "/", "OPEm"}], ",", "y"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[1]:=",
+ CellID->1487905241],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["y", 
+   RowBox[{"m", "-", "1"}]], TraditionalForm]], "Output",
+ ImageSize->{41, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[1]=",
+ CellID->883502595]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InverseMellin", "[", 
+  RowBox[{
+   RowBox[{"1", "/", 
+    RowBox[{"(", 
+     RowBox[{"OPEm", "+", "3"}], ")"}]}], ",", "y"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[2]:=",
+ CellID->1769575859],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["y", 
+   RowBox[{"m", "+", "2"}]], TraditionalForm]], "Output",
+ ImageSize->{41, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[2]=",
+ CellID->886851930]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InverseMellin", "[", 
+  RowBox[{"1", ",", "y"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[3]:=",
+ CellID->795107064],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["y", 
+    RowBox[{"m", "-", "1"}]], " ", 
+   RowBox[{"\[Delta]", "(", 
+    FormBox[
+     RowBox[{"1", "-", "y"}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{97, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[3]=",
+ CellID->933445894]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InverseMellin", "[", 
+  RowBox[{
+   RowBox[{"1", "/", 
+    RowBox[{"OPEm", "^", "4"}]}], ",", "y"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[4]:=",
+ CellID->1138973234],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "6"]}], " ", 
+   SuperscriptBox["y", 
+    RowBox[{"m", "-", "1"}]], " ", 
+   RowBox[{
+    SuperscriptBox["log", "3"], "(", "y", ")"}]}], TraditionalForm]], "Output",\
+
+ ImageSize->{118, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[4]=",
+ CellID->321524707]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InverseMellin", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"1", "/", "OPEm"}], "+", "1"}], ",", "y"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[5]:=",
+ CellID->634260831],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["y", 
+     RowBox[{"m", "-", "1"}]], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "y"}],
+      TraditionalForm], ")"}]}], "+", 
+   SuperscriptBox["y", 
+    RowBox[{"m", "-", "1"}]]}], TraditionalForm]], "Output",
+ ImageSize->{149, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[5]=",
+ CellID->306464887]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InverseMellin", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"1", "/", "i"}], "+", "1"}], ",", "y", ",", "i"}], "]"}]], "Input",\
+
+ CellTags->"InverseMellin",
+ CellLabel->"In[6]:=",
+ CellID->323775439],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["y", 
+     RowBox[{"i", "-", "1"}]], " ", 
+    RowBox[{"\[Delta]", "(", 
+     FormBox[
+      RowBox[{"1", "-", "y"}],
+      TraditionalForm], ")"}]}], "+", 
+   SuperscriptBox["y", 
+    RowBox[{"i", "-", "1"}]]}], TraditionalForm]], "Output",
+ ImageSize->{133, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[6]=",
+ CellID->908783993]
+}, Open  ]],
+
+Cell["\<\
+The inverse operation to InverseMellin is done by Integrate2.\
+\>", "Text",
+ CellTags->"InverseMellin",
+ CellID->823482436],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate2", "[", 
+  RowBox[{
+   RowBox[{"InverseMellin", "[", 
+    RowBox[{
+     RowBox[{"1", "/", "OPEm"}], ",", "y"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[7]:=",
+ CellID->1105681850],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", "m"], TraditionalForm]], "Output",
+ ImageSize->{23, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[7]=",
+ CellID->575593932]
+}, Open  ]],
+
+Cell["\<\
+Below is a list of all built-in basic inverse Mellin transforms .\
+\>", "Text",
+ CellTags->"InverseMellin",
+ CellID->1975947579],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"list", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     FractionBox["1", 
+      RowBox[{"OPEm", "+", "n"}]], ",", 
+     FractionBox["1", 
+      RowBox[{
+       RowBox[{"-", "OPEm"}], "+", "n"}]], ",", 
+     RowBox[{"PolyGamma", "[", 
+      RowBox[{"0", ",", "OPEm"}], "]"}], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"1", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], ",", 
+     FractionBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], 
+      RowBox[{"OPEm", "-", "1"}]], ",", 
+     FractionBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], 
+      RowBox[{"1", "-", "OPEm"}]], ",", 
+     FractionBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], 
+      RowBox[{"OPEm", "+", "1"}]], ",", 
+     FractionBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], 
+      SuperscriptBox["OPEm", "2"]], ",", 
+     FractionBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "OPEm"], ",", 
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"SumS", "[", 
+        RowBox[{"1", ",", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "2"], "OPEm"], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"2", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], ",", 
+     FractionBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"2", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "OPEm"], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"3", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"1", ",", "1", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], ",", 
+     SuperscriptBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"OPEm", "-", "1"}]}], "]"}], "2"], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"1", ",", "2", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"2", ",", "1", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], ",", 
+     SuperscriptBox[
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "3"], ",", 
+     RowBox[{
+      RowBox[{"SumS", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], " ", 
+      RowBox[{"SumS", "[", 
+       RowBox[{"2", ",", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}]}], ",", 
+     RowBox[{"SumS", "[", 
+      RowBox[{"1", ",", "1", ",", "1", ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}]}], "}"}]}], ";"}]], "Input",\
+
+ CellTags->"InverseMellin",
+ CellLabel->"In[8]:=",
+ CellID->988000997],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"im", "[", "z_", "]"}], ":=", 
+  RowBox[{"z", " ", "\[LongRightArrow]", 
+   RowBox[{"InverseMellin", "[", 
+    RowBox[{"z", ",", "y"}], "]"}]}]}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[9]:=",
+ CellID->478330132],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"OPEm", "^", 
+   RowBox[{"(", 
+    RowBox[{"-", "3"}], ")"}]}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[10]:=",
+ CellID->1863843750],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox["m", "3"]], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{
+      SuperscriptBox["log", "2"], "(", "y", ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{171, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[10]=",
+ CellID->808010767]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"OPEm", "^", 
+   RowBox[{"(", 
+    RowBox[{"-", "2"}], ")"}]}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[11]:=",
+ CellID->1662530554],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    SuperscriptBox["m", "2"]], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["y", 
+       RowBox[{"m", "-", "1"}]]}], " ", 
+     RowBox[{"log", "(", "y", ")"}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{159, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[11]=",
+ CellID->1524372587]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"PolyGamma", "[", 
+   RowBox[{"0", ",", "OPEm"}], "]"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[12]:=",
+ CellID->1349819643],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"0","m"},
+    "PolyGamma2"], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{
+       TagBox["\[DoubledGamma]",
+        Function[{}, EulerGamma]], " ", 
+       SuperscriptBox["y", 
+        RowBox[{"m", "-", "1"}]], " ", 
+       RowBox[{"\[Delta]", "(", 
+        FormBox[
+         RowBox[{"1", "-", "y"}],
+         TraditionalForm], ")"}]}]}], "-", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox["1", 
+         RowBox[{"1", "-", "y"}]], ")"}], "+"], " ", 
+      SuperscriptBox["y", 
+       RowBox[{"m", "-", "1"}]]}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{327, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[12]=",
+ CellID->1429383971]
+}, Open  ]],
+
+Cell[BoxData[" "], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[13]:=",
+ CellID->558376463],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"SumS", "[", 
+   RowBox[{"1", ",", 
+    RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[14]:=",
+ CellID->209318413],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "1"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox["1", 
+        RowBox[{"1", "-", "y"}]], ")"}], "+"], " ", 
+     RowBox[{"(", 
+      RowBox[{"-", 
+       SuperscriptBox["y", 
+        RowBox[{"m", "-", "1"}]]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{224, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[14]=",
+ CellID->412047871]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{
+   RowBox[{"SumS", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"OPEm", "-", "1"}]}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"OPEm", "-", "1"}], ")"}]}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[15]:=",
+ CellID->108977754],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox[
+      RowBox[{"m", "-", "1"}],
+      TraditionalForm], ")"}], 
+    RowBox[{"m", "-", "1"}]], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["y", 
+       RowBox[{"m", "-", "2"}]]}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "y"}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{222, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[15]=",
+ CellID->416733591]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{
+   RowBox[{"SumS", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{"OPEm", "-", "1"}]}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"OPEm", "+", "1"}], ")"}]}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[16]:=",
+ CellID->1588128285],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox[
+      RowBox[{"m", "-", "1"}],
+      TraditionalForm], ")"}], 
+    RowBox[{"m", "+", "1"}]], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["y", 
+       RowBox[{"m", "-", "1"}]]}], "+", 
+     SuperscriptBox["y", "m"], "-", 
+     RowBox[{
+      SuperscriptBox["y", "m"], " ", 
+      RowBox[{"log", "(", 
+       RowBox[{"1", "-", "y"}], ")"}]}], "+", 
+     RowBox[{
+      SuperscriptBox["y", "m"], " ", 
+      RowBox[{"log", "(", "y", ")"}]}]}], ")"}]}], TraditionalForm]], "Output",\
+
+ ImageSize->{379, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[16]=",
+ CellID->1157098436]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{
+   RowBox[{"SumS", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "/", 
+   RowBox[{"OPEm", "^", "2"}]}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[17]:=",
+ CellID->1038982726],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox[
+      RowBox[{"m", "-", "1"}],
+      TraditionalForm], ")"}], 
+    SuperscriptBox["m", "2"]], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"\[Zeta]", "(", "2", ")"}], "-", 
+       TemplateBox[{"2","y"},
+        "PolyLog"], "-", 
+       RowBox[{
+        FractionBox["1", "2"], " ", 
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", "y", ")"}]}]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{329, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[17]=",
+ CellID->408982504]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{
+   RowBox[{"SumS", "[", 
+    RowBox[{"1", ",", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "/", "OPEm"}], 
+  "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[18]:=",
+ CellID->1975519554],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox[
+      RowBox[{"m", "-", "1"}],
+      TraditionalForm], ")"}], "m"], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"log", "(", "y", ")"}], "-", 
+       RowBox[{"log", "(", 
+        RowBox[{"1", "-", "y"}], ")"}]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{282, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[18]=",
+ CellID->2023526209]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SumS", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", "OPEm"}]}], "]"}], "^", "2"}], "/", "OPEm"}], 
+  "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[19]:=",
+ CellID->1312317430],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubsuperscriptBox["S", "1", "2"], "(", 
+     FormBox[
+      RowBox[{"m", "-", "1"}],
+      TraditionalForm], ")"}], "m"], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"3", " ", 
+         RowBox[{"\[Zeta]", "(", "2", ")"}]}]}], "+", 
+       TemplateBox[{"2",RowBox[{"1", "-", "y"}]},
+        "PolyLog"], "+", 
+       RowBox[{"2", " ", 
+        TemplateBox[{"2","y"},
+         "PolyLog"]}], "+", 
+       RowBox[{
+        SuperscriptBox["log", "2"], "(", 
+        RowBox[{"1", "-", "y"}], ")"}], "+", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", "y", ")"}], "2"]}], ")"}]}], 
+    ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{517, 48},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[19]=",
+ CellID->1387073931]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"SumS", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[20]:=",
+ CellID->1086751012],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "2"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+        RowBox[{"\[Delta]", "(", 
+         FormBox[
+          RowBox[{"1", "-", "y"}],
+          TraditionalForm], ")"}]}], "+", 
+       FractionBox[
+        RowBox[{"log", "(", "y", ")"}], 
+        RowBox[{"1", "-", "y"}]]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{307, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[20]=",
+ CellID->229974260]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{
+   RowBox[{"SumS", "[", 
+    RowBox[{"2", ",", 
+     RowBox[{"OPEm", "-", "1"}]}], "]"}], "/", "OPEm"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[21]:=",
+ CellID->410476681],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SubscriptBox["S", "2"], "(", 
+     FormBox[
+      RowBox[{"m", "-", "1"}],
+      TraditionalForm], ")"}], "m"], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"\[Zeta]", "(", "2", ")"}], "-", 
+       TemplateBox[{"2",RowBox[{"1", "-", "y"}]},
+        "PolyLog"], "-", 
+       RowBox[{
+        FractionBox["1", "2"], " ", 
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", "y", ")"}]}]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{351, 44},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[21]=",
+ CellID->1435522619]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"SumS", "[", 
+   RowBox[{"3", ",", 
+    RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[22]:=",
+ CellID->1961481381],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "3"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        TemplateBox[{"3"},
+         "Zeta"], " ", 
+        RowBox[{"\[Delta]", "(", 
+         FormBox[
+          RowBox[{"1", "-", "y"}],
+          TraditionalForm], ")"}]}], "-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", "y", ")"}], 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", "y"}], ")"}]}]]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{318, 49},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[22]=",
+ CellID->1258335869]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"SumS", "[", 
+   RowBox[{"1", ",", "1", ",", 
+    RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[23]:=",
+ CellID->617286063],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "11"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"log", "(", 
+         RowBox[{"1", "-", "y"}], ")"}], 
+        RowBox[{"1", "-", "y"}]], ")"}], "+"]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{240, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[23]=",
+ CellID->1509334069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"im", "[", 
+   RowBox[{"SumS", "[", 
+    RowBox[{"1", ",", "2", ",", 
+     RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[24]:=",
+ CellID->1098001734],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "12"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        TemplateBox[{"2",RowBox[{"1", "-", "y"}]},
+         "PolyLog"], 
+        RowBox[{"1", "-", "y"}]], "-", 
+       RowBox[{
+        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox["1", 
+           RowBox[{"1", "-", "y"}]], ")"}], "+"]}], "-", 
+       RowBox[{
+        TemplateBox[{"3"},
+         "Zeta"], " ", 
+        RowBox[{"\[Delta]", "(", 
+         FormBox[
+          RowBox[{"1", "-", "y"}],
+          TraditionalForm], ")"}]}]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{440, 46},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[24]=",
+ CellID->1548339288]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"im", "[", 
+   RowBox[{"SumS", "[", 
+    RowBox[{"2", ",", "1", ",", 
+     RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[25]:=",
+ CellID->1981996384],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "21"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        TemplateBox[{"2","y"},
+         "PolyLog"], 
+        RowBox[{"1", "-", "y"}]], "-", 
+       RowBox[{
+        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox["1", 
+           RowBox[{"1", "-", "y"}]], ")"}], "+"]}], "+", 
+       RowBox[{"2", " ", 
+        TemplateBox[{"3"},
+         "Zeta"], " ", 
+        RowBox[{"\[Delta]", "(", 
+         FormBox[
+          RowBox[{"1", "-", "y"}],
+          TraditionalForm], ")"}]}]}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{429, 46},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[25]=",
+ CellID->422280001]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"im", "[", 
+  RowBox[{"SumS", "[", 
+   RowBox[{"1", ",", "1", ",", "1", ",", 
+    RowBox[{"OPEm", "-", "1"}]}], "]"}], "]"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[26]:=",
+ CellID->371125491],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["S", "111"], "(", 
+    FormBox[
+     RowBox[{"m", "-", "1"}],
+     TraditionalForm], ")"}], "\[LongRightArrow]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], " ", 
+     SuperscriptBox["y", 
+      RowBox[{"m", "-", "1"}]], " ", 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["log", "2"], "(", 
+         RowBox[{"1", "-", "y"}], ")"}], 
+        RowBox[{"1", "-", "y"}]], ")"}], "+"]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{277, 49},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"InverseMellin",
+ CellLabel->"Out[26]=",
+ CellID->1490949014]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{"im", ",", "list"}], "]"}], ";"}]], "Input",
+ CellTags->"InverseMellin",
+ CellLabel->"In[27]:=",
+ CellID->941829466]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DeltaFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunction",
+  ButtonNote->"DeltaFunction"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Integrate2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate2",
+  ButtonNote->"Integrate2"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["OPEm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OPEi",
+  ButtonNote->"SumS"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SumS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumS",
+  ButtonNote->"SumS"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SumT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumT",
+  ButtonNote->"SumT"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"InverseMellin",
+ CellID->344948900]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"InverseMellin",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 2, 20.773062}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "InverseMellin[exp, y] performs the inverse Mellin transform of \
+polynomials in OPEm. The inverse transforms are not calculated but a \
+table-lookup is done. WARNING: do not \"trust\" the results for the inverse \
+Mellin transform involving SumT's; there is an unresolved inconsistency here \
+(related to (-1)^m).", "synonyms" -> {}, "title" -> "InverseMellin", 
+    "titlemodifier" -> "", "windowtitle" -> "InverseMellin", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/InverseMellin"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3802, 106, 385, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->2781356]},
+ "InverseMellin"->{
+  Cell[4432, 135, 188, 6, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1487905241],
+  Cell[4623, 143, 262, 9, 39, "Output",
+   CellTags->"InverseMellin",
+   CellID->883502595],
+  Cell[4922, 157, 239, 8, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1769575859],
+  Cell[5164, 167, 262, 9, 39, "Output",
+   CellTags->"InverseMellin",
+   CellID->886851930],
+  Cell[5463, 181, 160, 5, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->795107064],
+  Cell[5626, 188, 385, 14, 39, "Output",
+   CellTags->"InverseMellin",
+   CellID->933445894],
+  Cell[6048, 207, 213, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1138973234],
+  Cell[6264, 216, 399, 15, 62, "Output",
+   CellTags->"InverseMellin",
+   CellID->321524707],
+  Cell[6700, 236, 212, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->634260831],
+  Cell[6915, 245, 466, 17, 39, "Output",
+   CellTags->"InverseMellin",
+   CellID->306464887],
+  Cell[7418, 267, 221, 8, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->323775439],
+  Cell[7642, 277, 466, 17, 40, "Output",
+   CellTags->"InverseMellin",
+   CellID->908783993],
+  Cell[8123, 297, 133, 4, 32, "Text",
+   CellTags->"InverseMellin",
+   CellID->823482436],
+  Cell[8281, 305, 312, 10, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1105681850],
+  Cell[8596, 317, 235, 8, 62, "Output",
+   CellTags->"InverseMellin",
+   CellID->575593932],
+  Cell[8846, 328, 138, 4, 31, "Text",
+   CellTags->"InverseMellin",
+   CellID->1975947579],
+  Cell[8987, 334, 3149, 101, 233, "Input",
+   CellTags->"InverseMellin",
+   CellID->988000997],
+  Cell[12139, 437, 261, 8, 29, "Input",
+   CellTags->"InverseMellin",
+   CellID->478330132],
+  Cell[12425, 449, 198, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1863843750],
+  Cell[12626, 458, 504, 18, 64, "Output",
+   CellTags->"InverseMellin",
+   CellID->808010767],
+  Cell[13167, 481, 198, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1662530554],
+  Cell[13368, 490, 463, 16, 64, "Output",
+   CellTags->"InverseMellin",
+   CellID->1524372587],
+  Cell[13868, 511, 191, 6, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1349819643],
+  Cell[14062, 519, 833, 29, 65, "Output",
+   CellTags->"InverseMellin",
+   CellID->1429383971],
+  Cell[14910, 551, 99, 3, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->558376463],
+  Cell[15034, 558, 210, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->209318413],
+  Cell[15247, 567, 635, 24, 65, "Output",
+   CellTags->"InverseMellin",
+   CellID->412047871],
+  Cell[15919, 596, 288, 10, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->108977754],
+  Cell[16210, 608, 608, 22, 63, "Output",
+   CellTags->"InverseMellin",
+   CellID->416733591],
+  Cell[16855, 635, 289, 10, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1588128285],
+  Cell[17147, 647, 802, 29, 63, "Output",
+   CellTags->"InverseMellin",
+   CellID->1157098436],
+  Cell[17986, 681, 286, 10, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1038982726],
+  Cell[18275, 693, 799, 29, 65, "Output",
+   CellTags->"InverseMellin",
+   CellID->408982504],
+  Cell[19111, 727, 265, 10, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1975519554],
+  Cell[19379, 739, 656, 24, 63, "Output",
+   CellTags->"InverseMellin",
+   CellID->2023526209],
+  Cell[20072, 768, 293, 11, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1312317430],
+  Cell[20368, 781, 1021, 35, 69, "Output",
+   CellTags->"InverseMellin",
+   CellID->1387073931],
+  Cell[21426, 821, 211, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1086751012],
+  Cell[21640, 830, 806, 29, 66, "Output",
+   CellTags->"InverseMellin",
+   CellID->229974260],
+  Cell[22483, 864, 239, 8, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->410476681],
+  Cell[22725, 874, 794, 28, 65, "Output",
+   CellTags->"InverseMellin",
+   CellID->1435522619],
+  Cell[23556, 907, 211, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1961481381],
+  Cell[23770, 916, 900, 33, 70, "Output",
+   CellTags->"InverseMellin",
+   CellID->1258335869],
+  Cell[24707, 954, 220, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->617286063],
+  Cell[24930, 963, 651, 24, 66, "Output",
+   CellTags->"InverseMellin",
+   CellID->1509334069],
+  Cell[25618, 992, 242, 8, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1098001734],
+  Cell[25863, 1002, 1038, 37, 67, "Output",
+   CellTags->"InverseMellin",
+   CellID->1548339288],
+  Cell[26938, 1044, 242, 8, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->1981996384],
+  Cell[27183, 1054, 1027, 37, 67, "Output",
+   CellTags->"InverseMellin",
+   CellID->422280001],
+  Cell[28247, 1096, 230, 7, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->371125491],
+  Cell[28480, 1105, 739, 27, 70, "Output",
+   CellTags->"InverseMellin",
+   CellID->1490949014],
+  Cell[29234, 1135, 176, 6, 27, "Input",
+   CellTags->"InverseMellin",
+   CellID->941829466],
+  Cell[29766, 1163, 853, 33, 32, "Text",
+   CellTags->"InverseMellin",
+   CellID->344948900]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 32715, 1248},
+ {"InverseMellin", 32853, 1252}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[585, 21, 2265, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2853, 75, 56, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2912, 78, 865, 24, 116, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3802, 106, 385, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->2781356],
+Cell[CellGroupData[{
+Cell[4212, 125, 195, 6, 25, "ExampleSection",
+ CellID->122360564],
+Cell[CellGroupData[{
+Cell[4432, 135, 188, 6, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1487905241],
+Cell[4623, 143, 262, 9, 39, "Output",
+ CellTags->"InverseMellin",
+ CellID->883502595]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4922, 157, 239, 8, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1769575859],
+Cell[5164, 167, 262, 9, 39, "Output",
+ CellTags->"InverseMellin",
+ CellID->886851930]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5463, 181, 160, 5, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->795107064],
+Cell[5626, 188, 385, 14, 39, "Output",
+ CellTags->"InverseMellin",
+ CellID->933445894]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6048, 207, 213, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1138973234],
+Cell[6264, 216, 399, 15, 62, "Output",
+ CellTags->"InverseMellin",
+ CellID->321524707]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6700, 236, 212, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->634260831],
+Cell[6915, 245, 466, 17, 39, "Output",
+ CellTags->"InverseMellin",
+ CellID->306464887]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7418, 267, 221, 8, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->323775439],
+Cell[7642, 277, 466, 17, 40, "Output",
+ CellTags->"InverseMellin",
+ CellID->908783993]
+}, Open  ]],
+Cell[8123, 297, 133, 4, 32, "Text",
+ CellTags->"InverseMellin",
+ CellID->823482436],
+Cell[CellGroupData[{
+Cell[8281, 305, 312, 10, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1105681850],
+Cell[8596, 317, 235, 8, 62, "Output",
+ CellTags->"InverseMellin",
+ CellID->575593932]
+}, Open  ]],
+Cell[8846, 328, 138, 4, 31, "Text",
+ CellTags->"InverseMellin",
+ CellID->1975947579],
+Cell[8987, 334, 3149, 101, 233, "Input",
+ CellTags->"InverseMellin",
+ CellID->988000997],
+Cell[12139, 437, 261, 8, 29, "Input",
+ CellTags->"InverseMellin",
+ CellID->478330132],
+Cell[CellGroupData[{
+Cell[12425, 449, 198, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1863843750],
+Cell[12626, 458, 504, 18, 64, "Output",
+ CellTags->"InverseMellin",
+ CellID->808010767]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13167, 481, 198, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1662530554],
+Cell[13368, 490, 463, 16, 64, "Output",
+ CellTags->"InverseMellin",
+ CellID->1524372587]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13868, 511, 191, 6, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1349819643],
+Cell[14062, 519, 833, 29, 65, "Output",
+ CellTags->"InverseMellin",
+ CellID->1429383971]
+}, Open  ]],
+Cell[14910, 551, 99, 3, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->558376463],
+Cell[CellGroupData[{
+Cell[15034, 558, 210, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->209318413],
+Cell[15247, 567, 635, 24, 65, "Output",
+ CellTags->"InverseMellin",
+ CellID->412047871]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15919, 596, 288, 10, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->108977754],
+Cell[16210, 608, 608, 22, 63, "Output",
+ CellTags->"InverseMellin",
+ CellID->416733591]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16855, 635, 289, 10, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1588128285],
+Cell[17147, 647, 802, 29, 63, "Output",
+ CellTags->"InverseMellin",
+ CellID->1157098436]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17986, 681, 286, 10, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1038982726],
+Cell[18275, 693, 799, 29, 65, "Output",
+ CellTags->"InverseMellin",
+ CellID->408982504]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19111, 727, 265, 10, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1975519554],
+Cell[19379, 739, 656, 24, 63, "Output",
+ CellTags->"InverseMellin",
+ CellID->2023526209]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20072, 768, 293, 11, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1312317430],
+Cell[20368, 781, 1021, 35, 69, "Output",
+ CellTags->"InverseMellin",
+ CellID->1387073931]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21426, 821, 211, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1086751012],
+Cell[21640, 830, 806, 29, 66, "Output",
+ CellTags->"InverseMellin",
+ CellID->229974260]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22483, 864, 239, 8, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->410476681],
+Cell[22725, 874, 794, 28, 65, "Output",
+ CellTags->"InverseMellin",
+ CellID->1435522619]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23556, 907, 211, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1961481381],
+Cell[23770, 916, 900, 33, 70, "Output",
+ CellTags->"InverseMellin",
+ CellID->1258335869]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24707, 954, 220, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->617286063],
+Cell[24930, 963, 651, 24, 66, "Output",
+ CellTags->"InverseMellin",
+ CellID->1509334069]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25618, 992, 242, 8, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1098001734],
+Cell[25863, 1002, 1038, 37, 67, "Output",
+ CellTags->"InverseMellin",
+ CellID->1548339288]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26938, 1044, 242, 8, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->1981996384],
+Cell[27183, 1054, 1027, 37, 67, "Output",
+ CellTags->"InverseMellin",
+ CellID->422280001]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28247, 1096, 230, 7, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->371125491],
+Cell[28480, 1105, 739, 27, 70, "Output",
+ CellTags->"InverseMellin",
+ CellID->1490949014]
+}, Open  ]],
+Cell[29234, 1135, 176, 6, 27, "Input",
+ CellTags->"InverseMellin",
+ CellID->941829466]
+}, Open  ]],
+Cell[29425, 1144, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29493, 1149, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[29766, 1163, 853, 33, 32, "Text",
+ CellTags->"InverseMellin",
+ CellID->344948900]
+}, Open  ]],
+Cell[30634, 1199, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

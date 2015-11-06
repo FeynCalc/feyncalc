@@ -1,0 +1,452 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12843,        442]
+NotebookOptionsPosition[      8674,        308]
+NotebookOutlinePosition[     11517,        391]
+CellTagsIndexPosition[     11404,        385]
+WindowTitle->DotExpand
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/DotExpand\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/DotExpand"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/DotExpand.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$43604], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/DotExpand", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["DotExpand", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"DotExpand", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "expands DOT products in expr."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->600167501],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1058792656],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DotExpand", "[", 
+  RowBox[{"DOT", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", " ", "x"}], "+", 
+     RowBox[{"b", " ", "y"}], "+", 
+     RowBox[{"c", " ", "z"}]}], ",", 
+    RowBox[{"d", "+", "e", "+", "f"}]}], "]"}], "]"}]], "Input",
+ CellTags->"DotExpand",
+ CellLabel->"In[1]:=",
+ CellID->407288908],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"a", " ", "d", " ", "x"}], "+", 
+   RowBox[{"a", " ", "e", " ", "x"}], "+", 
+   RowBox[{"a", " ", "f", " ", "x"}], "+", 
+   RowBox[{"b", " ", "d", " ", "y"}], "+", 
+   RowBox[{"b", " ", "e", " ", "y"}], "+", 
+   RowBox[{"b", " ", "f", " ", "y"}], "+", 
+   RowBox[{"c", " ", "d", " ", "z"}], "+", 
+   RowBox[{"c", " ", "e", " ", "z"}], "+", 
+   RowBox[{"c", " ", "f", " ", "z"}]}], TraditionalForm]], "Output",
+ ImageSize->{421, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DotExpand",
+ CellLabel->"Out[1]=",
+ CellID->887725401]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DeclareNonCommutative", "/@", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f"}], "}"}]}], 
+  ";"}]], "Input",
+ CellTags->"DotExpand",
+ CellLabel->"In[2]:=",
+ CellID->1021626920],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DotExpand", "[", 
+  RowBox[{"DOT", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", " ", "x"}], "+", 
+     RowBox[{"b", " ", "y"}], "+", 
+     RowBox[{"c", " ", "z"}]}], ",", 
+    RowBox[{"d", "+", "e", "+", "f"}]}], "]"}], "]"}]], "Input",
+ CellTags->"DotExpand",
+ CellLabel->"In[3]:=",
+ CellID->587871772],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"x", " ", 
+    RowBox[{"a", ".", "d"}]}], "+", 
+   RowBox[{"x", " ", 
+    RowBox[{"a", ".", "e"}]}], "+", 
+   RowBox[{"x", " ", 
+    RowBox[{"a", ".", "f"}]}], "+", 
+   RowBox[{"y", " ", 
+    RowBox[{"b", ".", "d"}]}], "+", 
+   RowBox[{"y", " ", 
+    RowBox[{"b", ".", "e"}]}], "+", 
+   RowBox[{"y", " ", 
+    RowBox[{"b", ".", "f"}]}], "+", 
+   RowBox[{"z", " ", 
+    RowBox[{"c", ".", "d"}]}], "+", 
+   RowBox[{"z", " ", 
+    RowBox[{"c", ".", "e"}]}], "+", 
+   RowBox[{"z", " ", 
+    RowBox[{"c", ".", "f"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{430, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DotExpand",
+ CellLabel->"Out[3]=",
+ CellID->70533327]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"UnDeclareNonCommutative", "/@", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f"}], "}"}]}], 
+  ";"}]], "Input",
+ CellTags->"DotExpand",
+ CellLabel->"In[4]:=",
+ CellID->1926968700],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DotExpand", "[", 
+  RowBox[{"DOT", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", " ", "x"}], "+", 
+     RowBox[{"b", " ", "y"}], "+", 
+     RowBox[{"c", " ", "z"}]}], ",", 
+    RowBox[{"d", "+", "e", "+", "f"}]}], "]"}], "]"}]], "Input",
+ CellTags->"DotExpand",
+ CellLabel->"In[5]:=",
+ CellID->1551070412],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"a", " ", "d", " ", "x"}], "+", 
+   RowBox[{"a", " ", "e", " ", "x"}], "+", 
+   RowBox[{"a", " ", "f", " ", "x"}], "+", 
+   RowBox[{"b", " ", "d", " ", "y"}], "+", 
+   RowBox[{"b", " ", "e", " ", "y"}], "+", 
+   RowBox[{"b", " ", "f", " ", "y"}], "+", 
+   RowBox[{"c", " ", "d", " ", "z"}], "+", 
+   RowBox[{"c", " ", "e", " ", "z"}], "+", 
+   RowBox[{"c", " ", "f", " ", "z"}]}], TraditionalForm]], "Output",
+ ImageSize->{421, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DotExpand",
+ CellLabel->"Out[5]=",
+ CellID->283503340]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["DOT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DOT",
+  ButtonNote->"DOT"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DotSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DotSimplify",
+  ButtonNote->"DotSimplify"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DeclareNonCommutative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeclareNonCommutative",
+  ButtonNote->"DeclareNonCommutative"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["UnDeclareNonCommutative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UnDeclareNonCommutative",
+  ButtonNote->"UnDeclareNonCommutative"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"DotExpand",
+ CellID->631413415]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DotExpand",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 58, 29.500225}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> "DotExpand[expr] expands DOT products in expr.", 
+    "synonyms" -> {}, "title" -> "DotExpand", "titlemodifier" -> "", 
+    "windowtitle" -> "DotExpand", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/DotExpand"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3288, 94, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->600167501]},
+ "DotExpand"->{
+  Cell[3921, 123, 331, 11, 27, "Input",
+   CellTags->"DotExpand",
+   CellID->407288908],
+  Cell[4255, 136, 610, 17, 36, "Output",
+   CellTags->"DotExpand",
+   CellID->887725401],
+  Cell[4880, 156, 248, 8, 27, "Input",
+   CellTags->"DotExpand",
+   CellID->1021626920],
+  Cell[5153, 168, 331, 11, 27, "Input",
+   CellTags->"DotExpand",
+   CellID->587871772],
+  Cell[5487, 181, 744, 26, 36, "Output",
+   CellTags->"DotExpand",
+   CellID->70533327],
+  Cell[6246, 210, 250, 8, 27, "Input",
+   CellTags->"DotExpand",
+   CellID->1926968700],
+  Cell[6521, 222, 332, 11, 27, "Input",
+   CellTags->"DotExpand",
+   CellID->1551070412],
+  Cell[6856, 235, 610, 17, 36, "Output",
+   CellTags->"DotExpand",
+   CellID->283503340],
+  Cell[7834, 275, 798, 28, 32, "Text",
+   CellTags->"DotExpand",
+   CellID->631413415]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10442, 350},
+ {"DotExpand", 10577, 354}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[581, 21, 2248, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2832, 75, 52, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2887, 78, 376, 12, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3288, 94, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->600167501],
+Cell[CellGroupData[{
+Cell[3700, 113, 196, 6, 25, "ExampleSection",
+ CellID->1058792656],
+Cell[CellGroupData[{
+Cell[3921, 123, 331, 11, 27, "Input",
+ CellTags->"DotExpand",
+ CellID->407288908],
+Cell[4255, 136, 610, 17, 36, "Output",
+ CellTags->"DotExpand",
+ CellID->887725401]
+}, Open  ]],
+Cell[4880, 156, 248, 8, 27, "Input",
+ CellTags->"DotExpand",
+ CellID->1021626920],
+Cell[CellGroupData[{
+Cell[5153, 168, 331, 11, 27, "Input",
+ CellTags->"DotExpand",
+ CellID->587871772],
+Cell[5487, 181, 744, 26, 36, "Output",
+ CellTags->"DotExpand",
+ CellID->70533327]
+}, Open  ]],
+Cell[6246, 210, 250, 8, 27, "Input",
+ CellTags->"DotExpand",
+ CellID->1926968700],
+Cell[CellGroupData[{
+Cell[6521, 222, 332, 11, 27, "Input",
+ CellTags->"DotExpand",
+ CellID->1551070412],
+Cell[6856, 235, 610, 17, 36, "Output",
+ CellTags->"DotExpand",
+ CellID->283503340]
+}, Open  ]]
+}, Open  ]],
+Cell[7493, 256, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7561, 261, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[7834, 275, 798, 28, 32, "Text",
+ CellTags->"DotExpand",
+ CellID->631413415]
+}, Open  ]],
+Cell[8647, 306, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

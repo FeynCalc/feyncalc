@@ -1,0 +1,612 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16413,        602]
+NotebookOptionsPosition[     11908,        450]
+NotebookOutlinePosition[     14910,        541]
+CellTagsIndexPosition[     14803,        535]
+WindowTitle->FCI
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FCI\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FCI"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/FCI.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$55286], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/FCI", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FCI", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCI", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "translates exp into the internal FeynCalc (datatype-)representation.FCI \
+is equivalent to FeynCalcInternal."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->2102697123],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1211628508],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"GAD", "[", "\[Rho]", "]"}], ",", 
+   RowBox[{"GS", "[", "p", "]"}], ",", 
+   RowBox[{"SP", "[", 
+    RowBox[{"p", ",", "q"}], "]"}], ",", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
+   RowBox[{"FV", "[", 
+    RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Input",
+ CellTags->"FCI",
+ CellLabel->"In[1]:=",
+ CellID->714358706],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ",", 
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ",", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["\[Alpha]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["\[Beta]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm], ",", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm],
+     TraditionalForm]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{213, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCI",
+ CellLabel->"Out[1]=",
+ CellID->290735342]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"FCI",
+ CellLabel->"In[2]:=",
+ CellID->384617007],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"GAD", "[", "\[Rho]", "]"}], ",", 
+   RowBox[{"GS", "[", "p", "]"}], ",", 
+   RowBox[{"SP", "[", 
+    RowBox[{"p", ",", "q"}], "]"}], ",", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
+   RowBox[{"FV", "[", 
+    RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
+ ImageSize->{416, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCI",
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->1941338896]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "FCI"}]], "Input",
+ CellTags->"FCI",
+ CellLabel->"In[3]:=",
+ CellID->808180913],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ",", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]], ",", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ",", 
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ",", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Alpha]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Beta]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], ",", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{213, 25},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCI",
+ CellLabel->"Out[3]=",
+ CellID->1585911965]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"FCI",
+ CellLabel->"In[4]:=",
+ CellID->986821422],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"DiracGamma", "[", 
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", 
+   RowBox[{"DiracGamma", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", 
+      RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", "D"}], "]"}], ",", 
+   RowBox[{"DiracGamma", "[", 
+    RowBox[{"Momentum", "[", "p", "]"}], "]"}], ",", 
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"Momentum", "[", "p", "]"}], ",", 
+     RowBox[{"Momentum", "[", "q", "]"}]}], "]"}], ",", 
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], ",", 
+     RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}], ",", 
+   RowBox[{"Pair", "[", 
+    RowBox[{
+     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}], "}"}]], "Output",
+ ImageSize->{521, 67},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCI",
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->653246170]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCE", "[", "%", "]"}], "//", "StandardForm"}]], "Input",
+ CellTags->"FCI",
+ CellLabel->"In[5]:=",
+ CellID->1427781639],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"GAD", "[", "\[Rho]", "]"}], ",", 
+   RowBox[{"GS", "[", "p", "]"}], ",", 
+   RowBox[{"SP", "[", 
+    RowBox[{"p", ",", "q"}], "]"}], ",", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], ",", 
+   RowBox[{"FV", "[", 
+    RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
+ ImageSize->{416, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCI",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->2132613884]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FeynCalcExternal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcExternal",
+  ButtonNote->"FeynCalcExternal"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FeynCalcInternal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcInternal",
+  ButtonNote->"FeynCalcInternal"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCE",
+  ButtonNote->"FCE"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FCI",
+ CellID->794130940]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCI",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 59, 28.838919}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCI[exp] translates exp into the internal FeynCalc \
+(datatype-)representation.FCI is equivalent to FeynCalcInternal.", 
+    "synonyms" -> {}, "title" -> "FCI", "titlemodifier" -> "", "windowtitle" -> 
+    "FCI", "type" -> "Symbol", "uri" -> "FeynCalc/ref/FCI"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3337, 95, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->2102697123]},
+ "FCI"->{
+  Cell[3971, 124, 455, 14, 27, "Input",
+   CellTags->"FCI",
+   CellID->714358706],
+  Cell[4429, 140, 1993, 83, 46, "Output",
+   CellTags->"FCI",
+   CellID->290735342],
+  Cell[6459, 228, 122, 4, 27, "Input",
+   CellTags->"FCI",
+   CellID->384617007],
+  Cell[6584, 234, 559, 17, 36, "Output",
+   CellTags->"FCI",
+   CellID->1941338896],
+  Cell[7180, 256, 113, 4, 27, "Input",
+   CellTags->"FCI",
+   CellID->808180913],
+  Cell[7296, 262, 1716, 71, 46, "Output",
+   CellTags->"FCI",
+   CellID->1585911965],
+  Cell[9049, 338, 122, 4, 27, "Input",
+   CellTags->"FCI",
+   CellID->986821422],
+  Cell[9174, 344, 999, 28, 88, "Output",
+   CellTags->"FCI",
+   CellID->653246170],
+  Cell[10210, 377, 153, 5, 27, "Input",
+   CellTags->"FCI",
+   CellID->1427781639],
+  Cell[10366, 384, 559, 17, 36, "Output",
+   CellTags->"FCI",
+   CellID->2132613884],
+  Cell[11293, 424, 573, 21, 70, "Text",
+   CellTags->"FCI",
+   CellID->794130940]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 13727, 494},
+ {"FCI", 13857, 498}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2815, 75, 46, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2864, 78, 448, 13, 98, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3337, 95, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->2102697123],
+Cell[CellGroupData[{
+Cell[3750, 114, 196, 6, 25, "ExampleSection",
+ CellID->1211628508],
+Cell[CellGroupData[{
+Cell[3971, 124, 455, 14, 27, "Input",
+ CellTags->"FCI",
+ CellID->714358706],
+Cell[4429, 140, 1993, 83, 46, "Output",
+ CellTags->"FCI",
+ CellID->290735342]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6459, 228, 122, 4, 27, "Input",
+ CellTags->"FCI",
+ CellID->384617007],
+Cell[6584, 234, 559, 17, 36, "Output",
+ CellTags->"FCI",
+ CellID->1941338896]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7180, 256, 113, 4, 27, "Input",
+ CellTags->"FCI",
+ CellID->808180913],
+Cell[7296, 262, 1716, 71, 46, "Output",
+ CellTags->"FCI",
+ CellID->1585911965]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9049, 338, 122, 4, 27, "Input",
+ CellTags->"FCI",
+ CellID->986821422],
+Cell[9174, 344, 999, 28, 88, "Output",
+ CellTags->"FCI",
+ CellID->653246170]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10210, 377, 153, 5, 27, "Input",
+ CellTags->"FCI",
+ CellID->1427781639],
+Cell[10366, 384, 559, 17, 36, "Output",
+ CellTags->"FCI",
+ CellID->2132613884]
+}, Open  ]]
+}, Open  ]],
+Cell[10952, 405, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11020, 410, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[11293, 424, 573, 21, 70, "Text",
+ CellTags->"FCI",
+ CellID->794130940]
+}, Open  ]],
+Cell[11881, 448, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,496 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13710,        486]
+NotebookOptionsPosition[      8734,        323]
+NotebookOutlinePosition[     12138,        422]
+CellTagsIndexPosition[     12028,        416]
+WindowTitle->Solve2
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Solve2\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Solve2"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Solve2.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$134196], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Solve2",
+             ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Solve2", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["Solve2"], "InlineFormula"],
+     " \[LineSeparator]",
+     "is equivalent to Solve, except that it works only for linear equations \
+(and returns just a list) and accepts the options Factoring and \
+FinalSubstitutions. Solve2 uses the \"high school algorithm\" and factors \
+intermediate results. Therefore it can be drastically more useful than \
+Solve."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1971165592],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->233044819],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Solve2", "]"}]], "Input",
+ CellTags->"Solve2",
+ CellLabel->"In[1]:=",
+ CellID->1980966786],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factoring", "\[Rule]", "Factor2"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{305, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve2",
+ CellLabel->"Out[1]=",
+ CellID->549167872]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve2", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", " ", "x"}], "==", 
+      RowBox[{"b", "-", 
+       RowBox[{"w", "/", "2"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"y", "-", "d"}], "==", "p"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellTags->"Solve2",
+ CellLabel->"In[2]:=",
+ CellID->1039333426],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "4"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", " ", "b"}], "-", "w"}], ")"}]}]}], ",", 
+    RowBox[{"y", "\[Rule]", 
+     RowBox[{"d", "+", "p"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{201, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve2",
+ CellLabel->"Out[2]=",
+ CellID->1123970589]
+}, Open  ]],
+
+Cell["\<\
+If no equation sign is given the polynomials are supposed to be 0.\
+\>", "Text",
+ CellTags->"Solve2",
+ CellID->599967125],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve2", "[", 
+  RowBox[{
+   RowBox[{"x", "+", "y"}], ",", "x"}], "]"}]], "Input",
+ CellTags->"Solve2",
+ CellLabel->"In[3]:=",
+ CellID->1138368341],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "y"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{66, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve2",
+ CellLabel->"Out[3]=",
+ CellID->1865369573]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve2", "[", 
+  RowBox[{
+   RowBox[{"x", "+", "y"}], ",", "x", ",", 
+   RowBox[{"FinalSubstitutions", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"y", "\[Rule]", "h"}], "}"}]}]}], "]"}]], "Input",
+ CellTags->"Solve2",
+ CellLabel->"In[4]:=",
+ CellID->455409208],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"x", "\[Rule]", 
+    RowBox[{"-", "h"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{68, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve2",
+ CellLabel->"Out[4]=",
+ CellID->1227314769]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve2", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", " ", "x"}], "==", 
+      RowBox[{"b", "-", 
+       RowBox[{"w", "/", "2"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"y", "-", "d"}], "==", "p"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", 
+   RowBox[{"Factoring", "\[Rule]", "Expand"}]}], "]"}]], "Input",
+ CellTags->"Solve2",
+ CellLabel->"In[5]:=",
+ CellID->881839558],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "\[Rule]", 
+     RowBox[{
+      FractionBox["b", "2"], "-", 
+      FractionBox["w", "4"]}]}], ",", 
+    RowBox[{"y", "\[Rule]", 
+     RowBox[{"d", "+", "p"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{170, 42},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve2",
+ CellLabel->"Out[5]=",
+ CellID->950466968]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", " ", "x"}], "==", 
+      RowBox[{"b", "-", 
+       RowBox[{"w", "/", "2"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"y", "-", "d"}], "==", "p"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellTags->"Solve2",
+ CellLabel->"In[6]:=",
+ CellID->564833870],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", "4"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", " ", "b"}], "-", "w"}], ")"}]}]}], ",", 
+     RowBox[{"y", "\[Rule]", 
+      RowBox[{"d", "+", "p"}]}]}], "}"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{219, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Solve2",
+ CellLabel->"Out[6]=",
+ CellID->1055420746]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Solve2",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 6, 32.564561}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Solve2 is equivalent to Solve, except that it works only for linear \
+equations (and returns just a list) and accepts the options Factoring and \
+FinalSubstitutions. Solve2 uses the \"high school algorithm\" and factors \
+intermediate results. Therefore it can be drastically more useful than \
+Solve.", "synonyms" -> {}, "title" -> "Solve2", "titlemodifier" -> "", 
+    "windowtitle" -> "Solve2", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Solve2"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3498, 97, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1971165592]},
+ "Solve2"->{
+  Cell[4131, 126, 130, 4, 27, "Input",
+   CellTags->"Solve2",
+   CellID->1980966786],
+  Cell[4264, 132, 369, 12, 36, "Output",
+   CellTags->"Solve2",
+   CellID->549167872],
+  Cell[4670, 149, 408, 15, 27, "Input",
+   CellTags->"Solve2",
+   CellID->1039333426],
+  Cell[5081, 166, 479, 17, 62, "Output",
+   CellTags->"Solve2",
+   CellID->1123970589],
+  Cell[5575, 186, 131, 4, 32, "Text",
+   CellTags->"Solve2",
+   CellID->599967125],
+  Cell[5731, 194, 171, 6, 27, "Input",
+   CellTags->"Solve2",
+   CellID->1138368341],
+  Cell[5905, 202, 281, 10, 36, "Output",
+   CellTags->"Solve2",
+   CellID->1865369573],
+  Cell[6223, 217, 284, 9, 27, "Input",
+   CellTags->"Solve2",
+   CellID->455409208],
+  Cell[6510, 228, 281, 10, 36, "Output",
+   CellTags->"Solve2",
+   CellID->1227314769],
+  Cell[6828, 243, 460, 16, 27, "Input",
+   CellTags->"Solve2",
+   CellID->881839558],
+  Cell[7291, 261, 419, 15, 63, "Output",
+   CellTags->"Solve2",
+   CellID->950466968],
+  Cell[7747, 281, 406, 15, 27, "Input",
+   CellTags->"Solve2",
+   CellID->564833870],
+  Cell[8156, 298, 512, 18, 62, "Output",
+   CellTags->"Solve2",
+   CellID->1055420746]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10745, 369},
+ {"Solve2", 10878, 373}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2818, 75, 49, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2870, 78, 603, 15, 113, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3498, 97, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1971165592],
+Cell[CellGroupData[{
+Cell[3911, 116, 195, 6, 25, "ExampleSection",
+ CellID->233044819],
+Cell[CellGroupData[{
+Cell[4131, 126, 130, 4, 27, "Input",
+ CellTags->"Solve2",
+ CellID->1980966786],
+Cell[4264, 132, 369, 12, 36, "Output",
+ CellTags->"Solve2",
+ CellID->549167872]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4670, 149, 408, 15, 27, "Input",
+ CellTags->"Solve2",
+ CellID->1039333426],
+Cell[5081, 166, 479, 17, 62, "Output",
+ CellTags->"Solve2",
+ CellID->1123970589]
+}, Open  ]],
+Cell[5575, 186, 131, 4, 32, "Text",
+ CellTags->"Solve2",
+ CellID->599967125],
+Cell[CellGroupData[{
+Cell[5731, 194, 171, 6, 27, "Input",
+ CellTags->"Solve2",
+ CellID->1138368341],
+Cell[5905, 202, 281, 10, 36, "Output",
+ CellTags->"Solve2",
+ CellID->1865369573]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6223, 217, 284, 9, 27, "Input",
+ CellTags->"Solve2",
+ CellID->455409208],
+Cell[6510, 228, 281, 10, 36, "Output",
+ CellTags->"Solve2",
+ CellID->1227314769]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6828, 243, 460, 16, 27, "Input",
+ CellTags->"Solve2",
+ CellID->881839558],
+Cell[7291, 261, 419, 15, 63, "Output",
+ CellTags->"Solve2",
+ CellID->950466968]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7747, 281, 406, 15, 27, "Input",
+ CellTags->"Solve2",
+ CellID->564833870],
+Cell[8156, 298, 512, 18, 62, "Output",
+ CellTags->"Solve2",
+ CellID->1055420746]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[8707, 321, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

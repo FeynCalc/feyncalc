@@ -1,0 +1,546 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14735,        536]
+NotebookOptionsPosition[      8998,        347]
+NotebookOutlinePosition[     12729,        456]
+CellTagsIndexPosition[     12618,        450]
+WindowTitle->Factor2
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Factor2\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Factor2"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Factor2.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52520], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Factor2", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Factor2", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Factor2", "[", "poly", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "factors a polynomial in a standard way. Factor2 works sometimes better \
+than Factor on polynomials involving rationals with sums in the denominator. \
+Factor2 uses Factor internally and is in general slower than Factor. There \
+are four possible settings of the option Method (0,1,2,3). In general Factor \
+will work faster than Factor2."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->92714444],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->113226137],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Factor2", "]"}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[1]:=",
+ CellID->1016935483],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FactorFull", "\[Rule]", "False"}], ",", 
+    RowBox[{"Method", "\[Rule]", "3"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{225, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[1]=",
+ CellID->607387604]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "-", "x"}], ")"}], 
+   RowBox[{"(", 
+    RowBox[{"b", "-", "x"}], ")"}]}]}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[2]:=",
+ CellID->1709627606],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "-", "x"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"b", "-", "x"}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{97, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[2]=",
+ CellID->309712518]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t2", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factor2", "[", "t1", "]"}], ",", " ", 
+    RowBox[{"Factor", "[", "t1", "]"}]}], "}"}]}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[3]:=",
+ CellID->1823984490],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"a", "-", "x"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"b", "-", "x"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{"a", "-", "x"}], ")"}]}], " ", 
+     RowBox[{"(", 
+      RowBox[{"x", "-", "b"}], ")"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{221, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[3]=",
+ CellID->136738799]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t3", "=", 
+  RowBox[{"Expand", "[", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"a", "-", "b"}], ")"}], 
+    RowBox[{"(", 
+     RowBox[{"a", "+", "b"}], ")"}]}], "]"}]}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[4]:=",
+ CellID->3094581],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["a", "2"], "-", 
+   SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
+ ImageSize->{53, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[4]=",
+ CellID->470899621]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Factor", "[", "t3", "]"}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[5]:=",
+ CellID->791609042],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "-", "b"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"a", "+", "b"}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{97, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[5]=",
+ CellID->2074352994]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Factor2", "[", "t3", "]"}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[6]:=",
+ CellID->880415397],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["a", "2"], "-", 
+   SuperscriptBox["b", "2"]}], TraditionalForm]], "Output",
+ ImageSize->{53, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[6]=",
+ CellID->611482702]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Factor2", "[", 
+  RowBox[{"t3", ",", 
+   RowBox[{"FactorFull", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[7]:=",
+ CellID->17862753],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"a", "-", "b"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"a", "+", "b"}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{97, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Factor2",
+ CellLabel->"Out[7]=",
+ CellID->1886805891]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"t1", ",", "t2", ",", "t3"}], "]"}]], "Input",
+ CellTags->"Factor2",
+ CellLabel->"In[8]:=",
+ CellID->2010909365]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Collect2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Collect2",
+  ButtonNote->"Collect2"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Factor2",
+ CellID->1336134208]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Factor2",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 59, 14.903207}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Factor2[poly] factors a polynomial in a standard way. Factor2 works \
+sometimes better than Factor on polynomials involving rationals with sums in \
+the denominator. Factor2 uses Factor internally and is in general slower than \
+Factor. There are four possible settings of the option Method (0,1,2,3). In \
+general Factor will work faster than Factor2.", "synonyms" -> {}, "title" -> 
+    "Factor2", "titlemodifier" -> "", "windowtitle" -> "Factor2", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Factor2"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3583, 98, 386, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->92714444]},
+ "Factor2"->{
+  Cell[4214, 127, 132, 4, 27, "Input",
+   CellTags->"Factor2",
+   CellID->1016935483],
+  Cell[4349, 133, 336, 11, 36, "Output",
+   CellTags->"Factor2",
+   CellID->607387604],
+  Cell[4722, 149, 232, 9, 27, "Input",
+   CellTags->"Factor2",
+   CellID->1709627606],
+  Cell[4957, 160, 329, 12, 36, "Output",
+   CellTags->"Factor2",
+   CellID->309712518],
+  Cell[5323, 177, 241, 8, 27, "Input",
+   CellTags->"Factor2",
+   CellID->1823984490],
+  Cell[5567, 187, 541, 20, 36, "Output",
+   CellTags->"Factor2",
+   CellID->136738799],
+  Cell[6145, 212, 267, 10, 27, "Input",
+   CellTags->"Factor2",
+   CellID->3094581],
+  Cell[6415, 224, 281, 10, 39, "Output",
+   CellTags->"Factor2",
+   CellID->470899621],
+  Cell[6733, 239, 125, 4, 27, "Input",
+   CellTags->"Factor2",
+   CellID->791609042],
+  Cell[6861, 245, 330, 12, 36, "Output",
+   CellTags->"Factor2",
+   CellID->2074352994],
+  Cell[7228, 262, 126, 4, 27, "Input",
+   CellTags->"Factor2",
+   CellID->880415397],
+  Cell[7357, 268, 281, 10, 39, "Output",
+   CellTags->"Factor2",
+   CellID->611482702],
+  Cell[7675, 283, 190, 6, 27, "Input",
+   CellTags->"Factor2",
+   CellID->17862753],
+  Cell[7868, 291, 330, 12, 36, "Output",
+   CellTags->"Factor2",
+   CellID->1886805891],
+  Cell[8213, 306, 160, 5, 27, "Input",
+   CellTags->"Factor2",
+   CellID->2010909365],
+  Cell[8729, 333, 227, 9, 31, "Text",
+   CellTags->"Factor2",
+   CellID->1336134208]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11068, 394},
+ {"Factor2", 11200, 398}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2822, 75, 50, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2875, 78, 683, 16, 130, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3583, 98, 386, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->92714444],
+Cell[CellGroupData[{
+Cell[3994, 117, 195, 6, 25, "ExampleSection",
+ CellID->113226137],
+Cell[CellGroupData[{
+Cell[4214, 127, 132, 4, 27, "Input",
+ CellTags->"Factor2",
+ CellID->1016935483],
+Cell[4349, 133, 336, 11, 36, "Output",
+ CellTags->"Factor2",
+ CellID->607387604]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4722, 149, 232, 9, 27, "Input",
+ CellTags->"Factor2",
+ CellID->1709627606],
+Cell[4957, 160, 329, 12, 36, "Output",
+ CellTags->"Factor2",
+ CellID->309712518]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5323, 177, 241, 8, 27, "Input",
+ CellTags->"Factor2",
+ CellID->1823984490],
+Cell[5567, 187, 541, 20, 36, "Output",
+ CellTags->"Factor2",
+ CellID->136738799]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6145, 212, 267, 10, 27, "Input",
+ CellTags->"Factor2",
+ CellID->3094581],
+Cell[6415, 224, 281, 10, 39, "Output",
+ CellTags->"Factor2",
+ CellID->470899621]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6733, 239, 125, 4, 27, "Input",
+ CellTags->"Factor2",
+ CellID->791609042],
+Cell[6861, 245, 330, 12, 36, "Output",
+ CellTags->"Factor2",
+ CellID->2074352994]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7228, 262, 126, 4, 27, "Input",
+ CellTags->"Factor2",
+ CellID->880415397],
+Cell[7357, 268, 281, 10, 39, "Output",
+ CellTags->"Factor2",
+ CellID->611482702]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7675, 283, 190, 6, 27, "Input",
+ CellTags->"Factor2",
+ CellID->17862753],
+Cell[7868, 291, 330, 12, 36, "Output",
+ CellTags->"Factor2",
+ CellID->1886805891]
+}, Open  ]],
+Cell[8213, 306, 160, 5, 27, "Input",
+ CellTags->"Factor2",
+ CellID->2010909365]
+}, Open  ]],
+Cell[8388, 314, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8456, 319, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8729, 333, 227, 9, 31, "Text",
+ CellTags->"Factor2",
+ CellID->1336134208]
+}, Open  ]],
+Cell[8971, 345, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,593 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15525,        583]
+NotebookOptionsPosition[     10602,        416]
+NotebookOutlinePosition[     13850,        514]
+CellTagsIndexPosition[     13744,        508]
+WindowTitle->GA
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GA\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GA"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/GA.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73219], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/GA", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GA", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GA", "[", "mu", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "can be used as input for a 4-dimensional ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["\[Gamma]", 
+        RowBox[{"\[Mu]", " "}]], TraditionalForm]]],
+     "and is transformed into DiracGamma[LorentzIndex[",
+     Cell[BoxData[
+      FormBox["\[Mu]", TraditionalForm]]],
+     "]] by FeynCalcInternal (=FCI).GA[",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{"\[Mu]", ",", "\[Nu]", ","}], TraditionalForm]]],
+     " ...] is a short form for GA[",
+     Cell[BoxData[
+      FormBox["\[Mu]", TraditionalForm]]],
+     "].GA[",
+     Cell[BoxData[
+      FormBox["\[Nu]", TraditionalForm]]],
+     "]."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1231603674],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1592047911],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", "\[Mu]", "]"}]], "Input",
+ CellTags->"GA",
+ CellLabel->"In[1]:=",
+ CellID->192317475],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{23, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GA",
+ CellLabel->"Out[1]=",
+ CellID->1620727253]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "-", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
+ CellTags->"GA",
+ CellLabel->"In[2]:=",
+ CellID->950175955],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{101, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GA",
+ CellLabel->"Out[2]=",
+ CellID->751580324]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"FCI", "[", 
+   RowBox[{"GA", "[", "\[Mu]", "]"}], "]"}], "]"}]], "Input",
+ CellTags->"GA",
+ CellLabel->"In[3]:=",
+ CellID->872281918],
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}]], "Output",
+ ImageSize->{225, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GA",
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->1671355959]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+  "]"}]], "Input",
+ CellTags->"GA",
+ CellLabel->"In[4]:=",
+ CellID->1064432869],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{93, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GA",
+ CellLabel->"Out[4]=",
+ CellID->973003462]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+  "]"}]], "Input",
+ CellTags->"GA",
+ CellLabel->"In[5]:=",
+ CellID->1945449635],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"GA", "[", "\[Nu]", "]"}], ".", 
+  RowBox[{"GA", "[", "\[Rho]", "]"}], ".", 
+  RowBox[{"GA", "[", "\[Sigma]", "]"}]}]], "Output",
+ ImageSize->{199, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GA",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->390738149]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GA", "[", "\[Alpha]", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GS", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+  RowBox[{"GA", "[", "\[Beta]", "]"}]}]], "Input",
+ CellTags->"GA",
+ CellLabel->"In[6]:=",
+ CellID->1527316325],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], "+", "m"}], ")"}], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{123, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GA",
+ CellLabel->"Out[6]=",
+ CellID->1420363209]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracMatrix",
+  ButtonNote->"DiracMatrix"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GAD",
+  ButtonNote->"GAD"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GS",
+  ButtonNote->"GS"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GA",
+ CellID->1423338362]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GA",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 5.915507}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GA[mu] can be used as input for a 4-dimensional \\[Gamma] \\[Mu] and is \
+transformed into DiracGamma[LorentzIndex[\\[Mu]]] by FeynCalcInternal \
+(=FCI).GA[\\[Mu], \\[Nu], ...] is a short form for GA[\\[Mu]].GA[\\[Nu]].", 
+    "synonyms" -> {}, "title" -> "GA", "titlemodifier" -> "", "windowtitle" -> 
+    "GA", "type" -> "Symbol", "uri" -> "FeynCalc/ref/GA"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3829, 112, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1231603674]},
+ "GA"->{
+  Cell[4463, 141, 119, 4, 27, "Input",
+   CellTags->"GA",
+   CellID->192317475],
+  Cell[4585, 147, 333, 13, 38, "Output",
+   CellTags->"GA",
+   CellID->1620727253],
+  Cell[4955, 165, 231, 8, 27, "Input",
+   CellTags->"GA",
+   CellID->950175955],
+  Cell[5189, 175, 1007, 42, 38, "Output",
+   CellTags->"GA",
+   CellID->751580324],
+  Cell[6233, 222, 189, 6, 27, "Input",
+   CellTags->"GA",
+   CellID->872281918],
+  Cell[6425, 230, 270, 8, 36, "Output",
+   CellTags->"GA",
+   CellID->1671355959],
+  Cell[6732, 243, 182, 6, 27, "Input",
+   CellTags->"GA",
+   CellID->1064432869],
+  Cell[6917, 251, 950, 40, 39, "Output",
+   CellTags->"GA",
+   CellID->973003462],
+  Cell[7904, 296, 222, 7, 27, "Input",
+   CellTags->"GA",
+   CellID->1945449635],
+  Cell[8129, 305, 368, 11, 36, "Output",
+   CellTags->"GA",
+   CellID->390738149],
+  Cell[8534, 321, 269, 9, 27, "Input",
+   CellTags->"GA",
+   CellID->1527316325],
+  Cell[8806, 332, 870, 35, 43, "Output",
+   CellTags->"GA",
+   CellID->1420363209],
+  Cell[10044, 390, 516, 21, 70, "Text",
+   CellTags->"GA",
+   CellID->1423338362]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12517, 461},
+ {"GA", 12647, 465}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2233, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2810, 75, 45, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 946, 30, 103, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3829, 112, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1231603674],
+Cell[CellGroupData[{
+Cell[4242, 131, 196, 6, 25, "ExampleSection",
+ CellID->1592047911],
+Cell[CellGroupData[{
+Cell[4463, 141, 119, 4, 27, "Input",
+ CellTags->"GA",
+ CellID->192317475],
+Cell[4585, 147, 333, 13, 38, "Output",
+ CellTags->"GA",
+ CellID->1620727253]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4955, 165, 231, 8, 27, "Input",
+ CellTags->"GA",
+ CellID->950175955],
+Cell[5189, 175, 1007, 42, 38, "Output",
+ CellTags->"GA",
+ CellID->751580324]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6233, 222, 189, 6, 27, "Input",
+ CellTags->"GA",
+ CellID->872281918],
+Cell[6425, 230, 270, 8, 36, "Output",
+ CellTags->"GA",
+ CellID->1671355959]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6732, 243, 182, 6, 27, "Input",
+ CellTags->"GA",
+ CellID->1064432869],
+Cell[6917, 251, 950, 40, 39, "Output",
+ CellTags->"GA",
+ CellID->973003462]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7904, 296, 222, 7, 27, "Input",
+ CellTags->"GA",
+ CellID->1945449635],
+Cell[8129, 305, 368, 11, 36, "Output",
+ CellTags->"GA",
+ CellID->390738149]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8534, 321, 269, 9, 27, "Input",
+ CellTags->"GA",
+ CellID->1527316325],
+Cell[8806, 332, 870, 35, 43, "Output",
+ CellTags->"GA",
+ CellID->1420363209]
+}, Open  ]]
+}, Open  ]],
+Cell[9703, 371, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9771, 376, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10044, 390, 516, 21, 70, "Text",
+ CellTags->"GA",
+ CellID->1423338362]
+}, Open  ]],
+Cell[10575, 414, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

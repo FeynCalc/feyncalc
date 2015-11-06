@@ -1,0 +1,379 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10692,        369]
+NotebookOptionsPosition[      6805,        246]
+NotebookOutlinePosition[      9520,        324]
+CellTagsIndexPosition[      9407,        318]
+WindowTitle->GammaExpand
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GammaExpand\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GammaExpand"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+GammaExpand.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$72876], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/GammaExpand", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GammaExpand", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GammaExpand", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "rewrites Gamma[n + m] in exp (where n has Head Integer)."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1241802823],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1076812123],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GammaExpand", "[", 
+  RowBox[{"Gamma", "[", 
+   RowBox[{"2", " ", "+", " ", "Epsilon"}], "]"}], "]"}]], "Input",
+ CellTags->"GammaExpand",
+ CellLabel->"In[1]:=",
+ CellID->53996644],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], "+", "1"}], ")"}], " ", 
+   TemplateBox[{RowBox[{
+       TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}]},
+    "Gamma"]}], TraditionalForm]], "Output",
+ ImageSize->{101, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GammaExpand",
+ CellLabel->"Out[1]=",
+ CellID->388026766]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GammaExpand", "[", 
+  RowBox[{"Gamma", "[", 
+   RowBox[{
+    RowBox[{"-", "3"}], "+", "Epsilon"}], "]"}], "]"}]], "Input",
+ CellTags->"GammaExpand",
+ CellLabel->"In[2]:=",
+ CellID->1712828018],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   TemplateBox[{RowBox[{
+       TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}]},
+    "Gamma"], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "-", "3"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "-", "2"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "-", "1"}], ")"}], " ", 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{158, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GammaExpand",
+ CellLabel->"Out[2]=",
+ CellID->842543076]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GammaExpand", "[", 
+  RowBox[{"Gamma", "[", 
+   RowBox[{"1", " ", "+", " ", "Epsilon"}], "]"}], "]"}]], "Input",
+ CellTags->"GammaExpand",
+ CellLabel->"In[3]:=",
+ CellID->509676592],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{RowBox[{
+      TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}]},
+   "Gamma"], TraditionalForm]], "Output",
+ ImageSize->{55, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GammaExpand",
+ CellLabel->"Out[3]=",
+ CellID->861147229]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["GammaEpsilon",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GammaEpsilon",
+  ButtonNote->"GammaEpsilon"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GammaExpand",
+ CellID->1346477755]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GammaExpand",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 3.928049}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GammaExpand[exp] rewrites Gamma[n + m] in exp (where n has Head \
+Integer).", "synonyms" -> {}, "title" -> "GammaExpand", "titlemodifier" -> "",
+     "windowtitle" -> "GammaExpand", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/GammaExpand"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3329, 94, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1241802823]},
+ "GammaExpand"->{
+  Cell[3963, 123, 204, 6, 27, "Input",
+   CellTags->"GammaExpand",
+   CellID->53996644],
+  Cell[4170, 131, 435, 15, 36, "Output",
+   CellTags->"GammaExpand",
+   CellID->388026766],
+  Cell[4642, 151, 216, 7, 27, "Input",
+   CellTags->"GammaExpand",
+   CellID->1712828018],
+  Cell[4861, 160, 738, 26, 66, "Output",
+   CellTags->"GammaExpand",
+   CellID->842543076],
+  Cell[5636, 191, 205, 6, 27, "Input",
+   CellTags->"GammaExpand",
+   CellID->509676592],
+  Cell[5844, 199, 308, 10, 36, "Output",
+   CellTags->"GammaExpand",
+   CellID->861147229],
+  Cell[6520, 232, 243, 9, 32, "Text",
+   CellTags->"GammaExpand",
+   CellID->1346477755]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8609, 289},
+ {"GammaExpand", 8747, 293}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2843, 75, 54, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2900, 78, 404, 12, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3329, 94, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1241802823],
+Cell[CellGroupData[{
+Cell[3742, 113, 196, 6, 25, "ExampleSection",
+ CellID->1076812123],
+Cell[CellGroupData[{
+Cell[3963, 123, 204, 6, 27, "Input",
+ CellTags->"GammaExpand",
+ CellID->53996644],
+Cell[4170, 131, 435, 15, 36, "Output",
+ CellTags->"GammaExpand",
+ CellID->388026766]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4642, 151, 216, 7, 27, "Input",
+ CellTags->"GammaExpand",
+ CellID->1712828018],
+Cell[4861, 160, 738, 26, 66, "Output",
+ CellTags->"GammaExpand",
+ CellID->842543076]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5636, 191, 205, 6, 27, "Input",
+ CellTags->"GammaExpand",
+ CellID->509676592],
+Cell[5844, 199, 308, 10, 36, "Output",
+ CellTags->"GammaExpand",
+ CellID->861147229]
+}, Open  ]]
+}, Open  ]],
+Cell[6179, 213, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6247, 218, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6520, 232, 243, 9, 32, "Text",
+ CellTags->"GammaExpand",
+ CellID->1346477755]
+}, Open  ]],
+Cell[6778, 244, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

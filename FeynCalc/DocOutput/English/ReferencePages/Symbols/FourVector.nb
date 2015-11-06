@@ -1,0 +1,552 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14863,        542]
+NotebookOptionsPosition[      9570,        370]
+NotebookOutlinePosition[     13006,        470]
+CellTagsIndexPosition[     12892,        464]
+WindowTitle->FourVector
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FourVector\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FourVector"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/FourVector.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67662], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FourVector", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FourVector", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FourVector", "[", 
+       RowBox[{"p", ",", "mu"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is the four-dimensional vector p with Lorentz index ",
+     Cell[BoxData[
+      FormBox["\[Mu]", TraditionalForm]]],
+     ". A vector with space-time Dimension D is obtained by supplying the \
+option Dimension \[Rule] D."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->413985141],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->831057080],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourVector", "[", 
+  RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Input",
+ CellTags->"FourVector",
+ CellLabel->"In[1]:=",
+ CellID->1607662272],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox[
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{24, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourVector",
+ CellLabel->"Out[1]=",
+ CellID->1688325660]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourVector", "[", 
+  RowBox[{
+   RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}]], "Input",
+ CellTags->"FourVector",
+ CellLabel->"In[2]:=",
+ CellID->1944995744],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{"(", 
+    FormBox[
+     FormBox[
+      RowBox[{
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"], "-", 
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"]}],
+      TraditionalForm],
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{62, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourVector",
+ CellLabel->"Out[2]=",
+ CellID->1086738867]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{"p", ",", "\[Mu]"}], "]"}], "]"}]], "Input",
+ CellTags->"FourVector",
+ CellLabel->"In[3]:=",
+ CellID->1554251701],
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Output",
+ ImageSize->{281, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourVector",
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->1875964060]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], "]"}]], "Input",
+ CellTags->"FourVector",
+ CellLabel->"In[4]:=",
+ CellID->438982417],
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", 
+    RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", ",", "D"}], "]"}]}], "]"}]], "Output",
+ ImageSize->{327, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourVector",
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->1059556719]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"FCE", "[", 
+   RowBox[{"FourVector", "[", 
+    RowBox[{"p", ",", "\[Mu]"}], "]"}], "]"}], "]"}]], "Input",
+ CellTags->"FourVector",
+ CellLabel->"In[5]:=",
+ CellID->757794355],
+
+Cell[BoxData[
+ RowBox[{"FV", "[", 
+  RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Output",
+ ImageSize->{70, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourVector",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->1053929233]
+}, Open  ]],
+
+Cell["\<\
+There is no special function to expand momenta in FourVector. Since \
+FourVector is turned into Pair internally ExpandScalarProduct may be used.\
+\>", "Text",
+ CellTags->"FourVector",
+ CellID->600723667],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExpandScalarProduct", "[", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{
+    RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}], "]"}]], "Input",
+ CellTags->"FourVector",
+ CellLabel->"In[6]:=",
+ CellID->1761121824],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], "-", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{58, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourVector",
+ CellLabel->"Out[6]=",
+ CellID->2088241188]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FV",
+  ButtonNote->"FV"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FVD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FVD",
+  ButtonNote->"FVD"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Pair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Pair",
+  ButtonNote->"Pair"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FourVector",
+ CellID->570089667]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FourVector",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 0, 34.724274}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FourVector[p, mu] is the four-dimensional vector p with Lorentz index \
+\\[Mu]. A vector with space-time Dimension D is obtained by supplying the \
+option Dimension -> D.", "synonyms" -> {}, "title" -> "FourVector", 
+    "titlemodifier" -> "", "windowtitle" -> "FourVector", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/FourVector"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3512, 99, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->413985141]},
+ "FourVector"->{
+  Cell[4144, 128, 159, 5, 27, "Input",
+   CellTags->"FourVector",
+   CellID->1607662272],
+  Cell[4306, 135, 445, 19, 40, "Output",
+   CellTags->"FourVector",
+   CellID->1688325660],
+  Cell[4788, 159, 183, 6, 27, "Input",
+   CellTags->"FourVector",
+   CellID->1944995744],
+  Cell[4974, 167, 617, 26, 41, "Output",
+   CellTags->"FourVector",
+   CellID->1086738867],
+  Cell[5628, 198, 199, 6, 27, "Input",
+   CellTags->"FourVector",
+   CellID->1554251701],
+  Cell[5830, 206, 332, 10, 36, "Output",
+   CellTags->"FourVector",
+   CellID->1875964060],
+  Cell[6199, 221, 247, 7, 27, "Input",
+   CellTags->"FourVector",
+   CellID->438982417],
+  Cell[6449, 230, 382, 12, 36, "Output",
+   CellTags->"FourVector",
+   CellID->1059556719],
+  Cell[6868, 247, 230, 7, 27, "Input",
+   CellTags->"FourVector",
+   CellID->757794355],
+  Cell[7101, 256, 253, 8, 36, "Output",
+   CellTags->"FourVector",
+   CellID->1053929233],
+  Cell[7369, 267, 213, 5, 52, "Text",
+   CellTags->"FourVector",
+   CellID->600723667],
+  Cell[7607, 276, 231, 7, 27, "Input",
+   CellTags->"FourVector",
+   CellID->1761121824],
+  Cell[7841, 285, 817, 36, 40, "Output",
+   CellTags->"FourVector",
+   CellID->2088241188],
+  Cell[9026, 344, 502, 21, 31, "Text",
+   CellTags->"FourVector",
+   CellID->570089667]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11466, 414},
+ {"FourVector", 11602, 418}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2837, 75, 53, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2893, 78, 594, 17, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3512, 99, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->413985141],
+Cell[CellGroupData[{
+Cell[3924, 118, 195, 6, 25, "ExampleSection",
+ CellID->831057080],
+Cell[CellGroupData[{
+Cell[4144, 128, 159, 5, 27, "Input",
+ CellTags->"FourVector",
+ CellID->1607662272],
+Cell[4306, 135, 445, 19, 40, "Output",
+ CellTags->"FourVector",
+ CellID->1688325660]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4788, 159, 183, 6, 27, "Input",
+ CellTags->"FourVector",
+ CellID->1944995744],
+Cell[4974, 167, 617, 26, 41, "Output",
+ CellTags->"FourVector",
+ CellID->1086738867]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5628, 198, 199, 6, 27, "Input",
+ CellTags->"FourVector",
+ CellID->1554251701],
+Cell[5830, 206, 332, 10, 36, "Output",
+ CellTags->"FourVector",
+ CellID->1875964060]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6199, 221, 247, 7, 27, "Input",
+ CellTags->"FourVector",
+ CellID->438982417],
+Cell[6449, 230, 382, 12, 36, "Output",
+ CellTags->"FourVector",
+ CellID->1059556719]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6868, 247, 230, 7, 27, "Input",
+ CellTags->"FourVector",
+ CellID->757794355],
+Cell[7101, 256, 253, 8, 36, "Output",
+ CellTags->"FourVector",
+ CellID->1053929233]
+}, Open  ]],
+Cell[7369, 267, 213, 5, 52, "Text",
+ CellTags->"FourVector",
+ CellID->600723667],
+Cell[CellGroupData[{
+Cell[7607, 276, 231, 7, 27, "Input",
+ CellTags->"FourVector",
+ CellID->1761121824],
+Cell[7841, 285, 817, 36, 40, "Output",
+ CellTags->"FourVector",
+ CellID->2088241188]
+}, Open  ]]
+}, Open  ]],
+Cell[8685, 325, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8753, 330, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9026, 344, 502, 21, 31, "Text",
+ CellTags->"FourVector",
+ CellID->570089667]
+}, Open  ]],
+Cell[9543, 368, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

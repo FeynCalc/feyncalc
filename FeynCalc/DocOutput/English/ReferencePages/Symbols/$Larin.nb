@@ -1,0 +1,333 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10207,        323]
+NotebookOptionsPosition[      6341,        214]
+NotebookOutlinePosition[      9367,        291]
+CellTagsIndexPosition[      9259,        285]
+WindowTitle->$Larin
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/$Larin\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/$Larin"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/$Larin.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$164164], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/$Larin",
+             ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["$Larin", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["$Larin"], "InlineFormula"],
+     " \[LineSeparator]",
+     "If set to True, the Larin-Gorishny-Atkyampo-DelBurgo-scheme for ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+     " in ",
+     StyleBox["D",
+      FontSlant->"Italic"],
+     "-dimensions is used, i.e. before evaluating traces (but after moving ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+     " anticommuting in all dimensions to the right of the Dirac string) a \
+product  gamma[mu].gamma5 is substituted to  -I/6 Eps[mu,al,be,si] \
+gamma[al,be,si], where all indices live in ",
+     StyleBox["D",
+      FontSlant->"Italic"],
+     "-dimensions now. Especially the Levic-Civita tensor is taken to be ",
+     StyleBox["D",
+      FontSlant->"Italic"],
+     "-dimensional, i.e., contraction of two Eps's results in ",
+     StyleBox["D",
+      FontSlant->"Italic"],
+     "'s. This has (FOR ONE AXIAL-VECTOR-CURRENT ONLY, it is not so clear if \
+this scheme also works for more than one fermion line involving ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+     ") the same effect as the Breitenlohner-Maison-'t Hooft-Veltman scheme."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->253947234],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1706085204],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Subsubsection",
+ CellTags->"$Larin",
+ CellID->1690224764],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$Larin"], "Input",
+ CellTags->"$Larin",
+ CellLabel->"In[1]:=",
+ CellID->1245299015],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ ImageSize->{33, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"$Larin",
+ CellLabel->"Out[1]=",
+ CellID->1660409352]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Tr",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Tr",
+  ButtonNote->"Tr"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["$BreitMaison",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/$BreitMaison",
+  ButtonNote->"$BreitMaison"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["$West",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/$West",
+  ButtonNote->"$West"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"$Larin",
+ CellID->181403197]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"$Larin",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 9, 20.634059}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "$Larin If set to True, the Larin-Gorishny-Atkyampo-DelBurgo-scheme for \
+\\[Gamma]5 in D-dimensions is used, i.e. before evaluating traces (but after \
+moving \\[Gamma]5 anticommuting in all dimensions to the right of the Dirac \
+string) a product gamma[mu].gamma5 is substituted to -I/6 Eps[mu,al,be,si] \
+gamma[al,be,si], where all indices live in D-dimensions now. Especially the \
+Levic-Civita tensor is taken to be D-dimensional, i.e., contraction of two \
+Eps's results in D's. This has (FOR ONE AXIAL-VECTOR-CURRENT ONLY, it is not \
+so clear if this scheme also works for more than one fermion line involving \
+\\[Gamma]5) the same effect as the Breitenlohner-Maison-'t Hooft-Veltman \
+scheme.", "synonyms" -> {}, "title" -> "$Larin", "titlemodifier" -> "", 
+    "windowtitle" -> "$Larin", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/$Larin"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4381, 120, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->253947234]},
+ "$Larin"->{
+  Cell[4992, 147, 75, 2, 35, "Subsubsection",
+   CellTags->"$Larin",
+   CellID->1690224764],
+  Cell[5092, 153, 97, 3, 27, "Input",
+   CellTags->"$Larin",
+   CellID->1245299015],
+  Cell[5192, 158, 211, 7, 36, "Output",
+   CellTags->"$Larin",
+   CellID->1660409352],
+  Cell[5771, 188, 528, 21, 31, "Text",
+   CellTags->"$Larin",
+   CellID->181403197]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8752, 265},
+ {"$Larin", 8885, 269}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2818, 75, 49, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2870, 78, 1486, 38, 180, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4381, 120, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->253947234],
+Cell[4771, 137, 196, 6, 25, "ExampleSection",
+ CellID->1706085204],
+Cell[CellGroupData[{
+Cell[4992, 147, 75, 2, 35, "Subsubsection",
+ CellTags->"$Larin",
+ CellID->1690224764],
+Cell[CellGroupData[{
+Cell[5092, 153, 97, 3, 27, "Input",
+ CellTags->"$Larin",
+ CellID->1245299015],
+Cell[5192, 158, 211, 7, 36, "Output",
+ CellTags->"$Larin",
+ CellID->1660409352]
+}, Open  ]],
+Cell[5418, 168, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5498, 174, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5771, 188, 528, 21, 31, "Text",
+ CellTags->"$Larin",
+ CellID->181403197]
+}, Open  ]],
+Cell[6314, 212, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

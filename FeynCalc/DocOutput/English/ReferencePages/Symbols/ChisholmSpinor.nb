@@ -1,0 +1,634 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17428,        624]
+NotebookOptionsPosition[     13683,        512]
+NotebookOutlinePosition[     16432,        587]
+CellTagsIndexPosition[     16314,        581]
+WindowTitle->ChisholmSpinor
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ChisholmSpinor\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ChisholmSpinor"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+ChisholmSpinor.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24272], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ChisholmSpinor", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ChisholmSpinor", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ChisholmSpinor", "[", "x", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "uses the Chisholm identity on a DiraGamma between spinors. As an \
+optional second argument 1 or 2 may be given, indicating that ChisholmSpinor \
+should only act on the first resp. second part of a product of spinor \
+chains."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1590701907],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2007592840],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Spinor", "[", 
+   RowBox[{"p1", ",", "m1"}], "]"}], ".", 
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ".", 
+  RowBox[{"Spinor", "[", 
+   RowBox[{"p2", ",", "m2"}], "]"}]}]], "Input",
+ CellTags->"ChisholmSpinor",
+ CellLabel->"In[1]:=",
+ CellID->30249209],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m1",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m2",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{211, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ChisholmSpinor",
+ CellLabel->"Out[1]=",
+ CellID->2055976112]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "ChisholmSpinor"}]], "Input",
+ CellTags->"ChisholmSpinor",
+ CellLabel->"In[2]:=",
+ CellID->970486194],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SuperscriptBox["\[Epsilon]", 
+      RowBox[{
+       FormBox[
+        FormBox["alpha42",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p1",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p2",
+          TraditionalForm], "_"],
+        TraditionalForm]}]], " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m1",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["alpha42",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p2",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m2",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}]}]}], 
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm]}]], "-", 
+   FractionBox[
+    RowBox[{"m1", " ", "m2", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m1",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p2",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m2",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}]}]}], 
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm]}]], "+", 
+   FractionBox[
+    RowBox[{"m2", " ", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p1",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m1",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p2",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m2",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}]}]}], 
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm]}]], "+", 
+   FractionBox[
+    RowBox[{"m1", " ", 
+     FormBox[
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["p2",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m1",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CurlyPhi]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p2",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\",\"\>",
+         TraditionalForm], 
+        FormBox["m2",
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}]}]}], 
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p1",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p2",
+        TraditionalForm], "_"],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{511, 182},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ChisholmSpinor",
+ CellLabel->"Out[2]=",
+ CellID->1051632452]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["EpsChisholm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsChisholm",
+  ButtonNote->"EpsChisholm"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Chisholm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Chisholm",
+  ButtonNote->"Chisholm"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"ChisholmSpinor",
+ CellID->2143743981]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ChisholmSpinor",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 56, 46.678689}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ChisholmSpinor[x] uses the Chisholm identity on a DiraGamma between \
+spinors. As an optional second argument 1 or 2 may be given, indicating that \
+ChisholmSpinor should only act on the first resp. second part of a product of \
+spinor chains.", "synonyms" -> {}, "title" -> "ChisholmSpinor", 
+    "titlemodifier" -> "", "windowtitle" -> "ChisholmSpinor", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/ChisholmSpinor"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3517, 97, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1590701907]},
+ "ChisholmSpinor"->{
+  Cell[4151, 126, 329, 10, 27, "Input",
+   CellTags->"ChisholmSpinor",
+   CellID->30249209],
+  Cell[4483, 138, 1195, 48, 42, "Output",
+   CellTags->"ChisholmSpinor",
+   CellID->2055976112],
+  Cell[5715, 191, 135, 4, 27, "Input",
+   CellTags->"ChisholmSpinor",
+   CellID->970486194],
+  Cell[5853, 197, 7018, 272, 203, "Output",
+   CellTags->"ChisholmSpinor",
+   CellID->1051632452],
+  Cell[13239, 492, 402, 15, 32, "Text",
+   CellTags->"ChisholmSpinor",
+   CellID->2143743981]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 15672, 558},
+ {"ChisholmSpinor", 15813, 562}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2269, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2858, 75, 57, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2918, 78, 574, 15, 112, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3517, 97, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1590701907],
+Cell[CellGroupData[{
+Cell[3930, 116, 196, 6, 25, "ExampleSection",
+ CellID->2007592840],
+Cell[CellGroupData[{
+Cell[4151, 126, 329, 10, 27, "Input",
+ CellTags->"ChisholmSpinor",
+ CellID->30249209],
+Cell[4483, 138, 1195, 48, 42, "Output",
+ CellTags->"ChisholmSpinor",
+ CellID->2055976112]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5715, 191, 135, 4, 27, "Input",
+ CellTags->"ChisholmSpinor",
+ CellID->970486194],
+Cell[5853, 197, 7018, 272, 203, "Output",
+ CellTags->"ChisholmSpinor",
+ CellID->1051632452]
+}, Open  ]]
+}, Open  ]],
+Cell[12898, 473, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12966, 478, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[13239, 492, 402, 15, 32, "Text",
+ CellTags->"ChisholmSpinor",
+ CellID->2143743981]
+}, Open  ]],
+Cell[13656, 510, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

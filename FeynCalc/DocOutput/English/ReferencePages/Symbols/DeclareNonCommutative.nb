@@ -1,0 +1,413 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12129,        403]
+NotebookOptionsPosition[      7199,        255]
+NotebookOutlinePosition[     10510,        346]
+CellTagsIndexPosition[     10387,        340]
+WindowTitle->DeclareNonCommutative
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/DeclareNonCommutative\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/DeclareNonCommutative"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+DeclareNonCommutative.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$33235], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/DeclareNonCommutative", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["DeclareNonCommutative", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"DeclareNonCommutative", "[", 
+       RowBox[{"a", ",", " ", "b", ",", " ", "..."}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "declares a,b, ... to be non-commutative, i.e., DataType[a,b, ..., \
+NonCommutative] is set to True."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->745671396],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->549941497],
+
+Cell[BoxData[
+ RowBox[{"DeclareNonCommutative", "[", "x", "]"}]], "Input",
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"In[1]:=",
+ CellID->1748012038],
+
+Cell["\<\
+As a side effect of DeclareNonCommutative x is declared to be of data type \
+NonCommutative.\
+\>", "Text",
+ CellTags->"DeclareNonCommutative",
+ CellID->836055796],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DataType", "[", 
+  RowBox[{"x", ",", "NonCommutative"}], "]"}]], "Input",
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"In[2]:=",
+ CellID->903276535],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ ImageSize->{33, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"Out[2]=",
+ CellID->2100185008]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"DeclareNonCommutative", "[", 
+  RowBox[{"y", ",", "z"}], "]"}]], "Input",
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"In[3]:=",
+ CellID->429692038],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DataType", "[", 
+  RowBox[{"a", ",", "x", ",", "y", ",", "z", ",", "NonCommutative"}], 
+  "]"}]], "Input",
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"In[4]:=",
+ CellID->498899039],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"False", ",", "True", ",", "True", ",", "True"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{161, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"Out[4]=",
+ CellID->1479757554]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"UnDeclareNonCommutative", "[", 
+  RowBox[{"x", ",", "y", ",", "z"}], "]"}]], "Input",
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"In[5]:=",
+ CellID->660830730],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DataType", "[", 
+  RowBox[{"a", ",", "x", ",", "y", ",", "z", ",", "NonCommutative"}], 
+  "]"}]], "Input",
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"In[6]:=",
+ CellID->1927435284],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"False", ",", "False", ",", "False", ",", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{173, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DeclareNonCommutative",
+ CellLabel->"Out[6]=",
+ CellID->1909095440]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DataType",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DataType",
+  ButtonNote->"DataType"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["UnDeclareNonCommutative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UnDeclareNonCommutative",
+  ButtonNote->"UnDeclareNonCommutative"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"DeclareNonCommutative",
+ CellID->716831943]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DeclareNonCommutative",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 57, 34.198526}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "DeclareNonCommutative[a, b, ...] declares a,b, ... to be \
+non-commutative, i.e., DataType[a,b, ..., NonCommutative] is set to True.", 
+    "synonyms" -> {}, "title" -> "DeclareNonCommutative", "titlemodifier" -> 
+    "", "windowtitle" -> "DeclareNonCommutative", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/DeclareNonCommutative"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3490, 96, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->745671396]},
+ "DeclareNonCommutative"->{
+  Cell[4100, 123, 154, 4, 27, "Input",
+   CellTags->"DeclareNonCommutative",
+   CellID->1748012038],
+  Cell[4257, 129, 172, 5, 51, "Text",
+   CellTags->"DeclareNonCommutative",
+   CellID->836055796],
+  Cell[4454, 138, 176, 5, 27, "Input",
+   CellTags->"DeclareNonCommutative",
+   CellID->903276535],
+  Cell[4633, 145, 226, 7, 36, "Output",
+   CellTags->"DeclareNonCommutative",
+   CellID->2100185008],
+  Cell[4874, 155, 176, 5, 27, "Input",
+   CellTags->"DeclareNonCommutative",
+   CellID->429692038],
+  Cell[5075, 164, 209, 6, 27, "Input",
+   CellTags->"DeclareNonCommutative",
+   CellID->498899039],
+  Cell[5287, 172, 307, 10, 36, "Output",
+   CellTags->"DeclareNonCommutative",
+   CellID->1479757554],
+  Cell[5609, 185, 188, 5, 27, "Input",
+   CellTags->"DeclareNonCommutative",
+   CellID->660830730],
+  Cell[5822, 194, 210, 6, 27, "Input",
+   CellTags->"DeclareNonCommutative",
+   CellID->1927435284],
+  Cell[6035, 202, 310, 10, 36, "Output",
+   CellTags->"DeclareNonCommutative",
+   CellID->1909095440],
+  Cell[6713, 235, 444, 15, 32, "Text",
+   CellTags->"DeclareNonCommutative",
+   CellID->716831943]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9107, 299},
+ {"DeclareNonCommutative", 9254, 303}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[593, 21, 2297, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2893, 75, 64, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2960, 78, 505, 14, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3490, 96, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->745671396],
+Cell[CellGroupData[{
+Cell[3902, 115, 195, 6, 25, "ExampleSection",
+ CellID->549941497],
+Cell[4100, 123, 154, 4, 27, "Input",
+ CellTags->"DeclareNonCommutative",
+ CellID->1748012038],
+Cell[4257, 129, 172, 5, 51, "Text",
+ CellTags->"DeclareNonCommutative",
+ CellID->836055796],
+Cell[CellGroupData[{
+Cell[4454, 138, 176, 5, 27, "Input",
+ CellTags->"DeclareNonCommutative",
+ CellID->903276535],
+Cell[4633, 145, 226, 7, 36, "Output",
+ CellTags->"DeclareNonCommutative",
+ CellID->2100185008]
+}, Open  ]],
+Cell[4874, 155, 176, 5, 27, "Input",
+ CellTags->"DeclareNonCommutative",
+ CellID->429692038],
+Cell[CellGroupData[{
+Cell[5075, 164, 209, 6, 27, "Input",
+ CellTags->"DeclareNonCommutative",
+ CellID->498899039],
+Cell[5287, 172, 307, 10, 36, "Output",
+ CellTags->"DeclareNonCommutative",
+ CellID->1479757554]
+}, Open  ]],
+Cell[5609, 185, 188, 5, 27, "Input",
+ CellTags->"DeclareNonCommutative",
+ CellID->660830730],
+Cell[CellGroupData[{
+Cell[5822, 194, 210, 6, 27, "Input",
+ CellTags->"DeclareNonCommutative",
+ CellID->1927435284],
+Cell[6035, 202, 310, 10, 36, "Output",
+ CellTags->"DeclareNonCommutative",
+ CellID->1909095440]
+}, Open  ]]
+}, Open  ]],
+Cell[6372, 216, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6440, 221, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6713, 235, 444, 15, 32, "Text",
+ CellTags->"DeclareNonCommutative",
+ CellID->716831943]
+}, Open  ]],
+Cell[7172, 253, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

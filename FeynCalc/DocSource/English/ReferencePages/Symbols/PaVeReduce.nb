@@ -1,0 +1,971 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/PaVeReduce", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PaVeReduce", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"PaVeReduce", "[", "expr", "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "reduces all Passarino-Veltman integrals (i.e. all PaVe's) in expr down to \
+scalar A0, B0, C0 and D0."
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["FRH",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FRH",
+  ButtonNote->"FRH"],
+ ", ",
+ ButtonBox["PaVeOrder",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/PaVeOrder",
+  ButtonNote->"PaVeOrder"],
+ "."
+}], "Text",
+ CellTags->"PaVeReduce",
+ CellID->1234185302]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PaVeReduce", "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[1]:=",
+ CellID->1685498711],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "True"}], ",", 
+    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
+    RowBox[{"Mandelstam", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"PaVeOrderList", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"WriteOutPaVe", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[1]=",
+ CellID->1380007374]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVeReduce", "[", 
+  RowBox[{
+   RowBox[{"PaVe", "[", 
+    RowBox[{"1", ",", "2", ",", 
+     RowBox[{"{", 
+      RowBox[{"s", ",", 
+       RowBox[{"m", "^", "2"}], ",", 
+       RowBox[{"m", "^", "2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"m", "^", "2"}], ",", 
+       RowBox[{"m", "^", "2"}], ",", 
+       RowBox[{"M", "^", "2"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"IsolateNames", "\[Rule]", "FF"}]}], "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[2]:=",
+ CellID->311139632],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   RowBox[{"FF", "(", "981", ")"}],
+   HoldForm], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[2]=",
+ CellID->1665481194]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FF", "[", "10", "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[3]:=",
+ CellID->469470556],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"FF", "(", "10", ")"}], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[3]=",
+ CellID->111861120]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FRH", "[", "%", "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[4]:=",
+ CellID->927282004],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"FF", "(", "10", ")"}], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[4]=",
+ CellID->1785054415]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVeReduce", "[", 
+  RowBox[{
+   RowBox[{"PaVe", "[", 
+    RowBox[{"2", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"SmallVariable", "[", "me2", "]"}], ",", "mw2", ",", "t"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"SmallVariable", "[", "me2", "]"}], ",", "0", ",", "mw2"}], 
+      "}"}]}], "]"}], ",", 
+   RowBox[{"WriteOutPaVe", "\[Rule]", "\"\<p\>\""}]}], "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[5]:=",
+ CellID->1031771651],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{"t", ",", "mw2", ",", "me2"}], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm], 
+     RowBox[{"mw2", "-", "t"}]]}], "+", 
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{"0", ",", "mw2", ",", "mw2"}], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"mw2", "-", "t"}]], "+", 
+   FractionBox["2", 
+    RowBox[{"mw2", "-", "t"}]]}], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[5]=",
+ CellID->795683657]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{"ReadList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"$OperatingSystem", "===", "\"\<MacOS\>\""}], ",", "\"\<:\>\"",
+        ",", "\"\<\>\""}], "]"}], "<>", 
+     "\"\<pPaVe2Csmame2mw2tCsmame20mw2.s\>\""}], ",", "String"}], "]"}], 
+  "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[6]:=",
+ CellID->2052937684],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   TagBox[GridBox[{
+      {"\<\"( 2/(mw2 - t) + B0[0, mw2, mw2]/(mw2 - t) - B0[t, mw2, \
+SmallVariable[me2]]/\"\>"},
+      {"\<\"  (mw2 - t)\"\>"},
+      {"\<\"  ) \"\>"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[6]//TableForm=",
+ CellID->1465048226]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DeleteFile", "/@", 
+   RowBox[{
+   "FileNames", "[", "\"\<pPaVe2Csmame2mw2tCsmame20mw2.s\>\"", "]"}]}], 
+  ";"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[7]:=",
+ CellID->1002068234],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"se", "=", 
+   RowBox[{"SmallVariable", "[", "ME2", "]"}]}], ";"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[8]:=",
+ CellID->175960789],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"d122", "=", 
+  RowBox[{
+   RowBox[{"PaVeReduce", "[", 
+    RowBox[{
+     RowBox[{"PaVe", "[", 
+      RowBox[{"1", ",", "2", ",", "2", ",", 
+       RowBox[{"{", 
+        RowBox[{"se", ",", "MW2", ",", "MW2", ",", "se", ",", "S", ",", "T"}],
+         "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "se", ",", "0", ",", "se"}], "}"}]}], "]"}], ",", 
+     RowBox[{"Mandelstam", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"S", ",", "T", ",", "U", ",", 
+        RowBox[{"2", " ", "MW2"}]}], "}"}]}], ",", 
+     RowBox[{"IsolateNames", "\[Rule]", "F"}]}], "]"}], "//", 
+   "FRH"}]}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[9]:=",
+ CellID->1868254708],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"MW2", "+", "S"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"4", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"9", " ", 
+         SuperscriptBox["MW2", "2"], " ", "S"}], "-", 
+        RowBox[{
+         SuperscriptBox["MW2", "2"], " ", "U"}], "-", 
+        RowBox[{"4", " ", "MW2", " ", "S", " ", "U"}], "+", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["S", "3"]}], "+", 
+        RowBox[{"5", " ", 
+         SuperscriptBox["S", "2"], " ", "U"}], "+", 
+        RowBox[{"3", " ", "S", " ", 
+         SuperscriptBox["U", "2"]}]}], ")"}], " ", 
+      FormBox[
+       TagBox[
+        FormBox[
+         RowBox[{
+          SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+          RowBox[{"T", ",", "ME2", ",", "ME2"}], ")"}],
+         TraditionalForm],
+        HoldForm],
+       TraditionalForm]}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"2", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"4", " ", "MW2"}], "-", "T"}], ")"}], "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["MW2", "2"], "-", 
+         RowBox[{"S", " ", "U"}]}], ")"}], "2"]}], ")"}]}], "-", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"4", " ", 
+         SuperscriptBox["MW2", "5"]}], "-", 
+        RowBox[{"5", " ", 
+         SuperscriptBox["MW2", "4"], " ", "S"}], "-", 
+        RowBox[{
+         SuperscriptBox["MW2", "4"], " ", "U"}], "-", 
+        RowBox[{"16", " ", 
+         SuperscriptBox["MW2", "3"], " ", 
+         SuperscriptBox["S", "2"]}], "+", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["MW2", "2"], " ", 
+         SuperscriptBox["S", "3"]}], "-", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["MW2", "2"], " ", 
+         SuperscriptBox["S", "2"], " ", "U"}], "+", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["MW2", "2"], " ", "S", " ", 
+         SuperscriptBox["U", "2"]}], "+", 
+        RowBox[{"4", " ", "MW2", " ", 
+         SuperscriptBox["S", "4"]}], "+", 
+        RowBox[{"8", " ", "MW2", " ", 
+         SuperscriptBox["S", "3"], " ", "U"}], "+", 
+        RowBox[{
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["U", "2"]}], "+", 
+        RowBox[{
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "3"]}]}], ")"}], " ", 
+      FormBox[
+       TagBox[
+        FormBox[
+         RowBox[{
+          SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+          RowBox[{"MW2", ",", "0", ",", "ME2"}], ")"}],
+         TraditionalForm],
+        HoldForm],
+       TraditionalForm]}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"2", " ", 
+      RowBox[{"(", 
+       RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"4", " ", "MW2"}], "-", "T"}], ")"}], "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["MW2", "2"], "-", 
+         RowBox[{"S", " ", "U"}]}], ")"}], "2"]}], ")"}]}], "+", 
+   FractionBox[
+    RowBox[{"S", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["MW2", "2"], "-", 
+       RowBox[{"4", " ", "MW2", " ", "S"}], "+", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["S", "2"]}], "+", 
+       RowBox[{"S", " ", "U"}]}], ")"}], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{"S", ",", "0", ",", "0"}], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["MW2", "2"], "-", 
+        RowBox[{"S", " ", "U"}]}], ")"}], "2"]}]], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["S", "2"], " ", 
+     SuperscriptBox["T", "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{
+         "T", ",", "ME2", ",", "ME2", ",", "ME2", ",", "ME2", ",", "0"}], 
+         ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["MW2", "2"], "-", 
+        RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["S", "2"], " ", "T", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"MW2", "-", "S"}], ")"}], "2"], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{
+         "MW2", ",", "S", ",", "ME2", ",", "ME2", ",", "0", ",", "0"}], ")"}],
+        
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["MW2", "2"], "-", 
+       RowBox[{"S", " ", "U"}]}], ")"}], "3"]], "-", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"MW2", "+", "S"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", " ", 
+         SuperscriptBox["MW2", "6"]}], "-", 
+        RowBox[{"8", " ", 
+         SuperscriptBox["MW2", "5"], " ", "S"}], "-", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["MW2", "5"], " ", "T"}], "+", 
+        RowBox[{"12", " ", 
+         SuperscriptBox["MW2", "4"], " ", 
+         SuperscriptBox["S", "2"]}], "+", 
+        RowBox[{"20", " ", 
+         SuperscriptBox["MW2", "4"], " ", "S", " ", "T"}], "-", 
+        RowBox[{"8", " ", 
+         SuperscriptBox["MW2", "3"], " ", 
+         SuperscriptBox["S", "3"]}], "-", 
+        RowBox[{"36", " ", 
+         SuperscriptBox["MW2", "3"], " ", 
+         SuperscriptBox["S", "2"], " ", "T"}], "-", 
+        RowBox[{"6", " ", 
+         SuperscriptBox["MW2", "3"], " ", "S", " ", 
+         SuperscriptBox["T", "2"]}], "+", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["MW2", "2"], " ", 
+         SuperscriptBox["S", "4"]}], "+", 
+        RowBox[{"20", " ", 
+         SuperscriptBox["MW2", "2"], " ", 
+         SuperscriptBox["S", "3"], " ", "T"}], "+", 
+        RowBox[{"6", " ", 
+         SuperscriptBox["MW2", "2"], " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["T", "2"]}], "-", 
+        RowBox[{"2", " ", "MW2", " ", 
+         SuperscriptBox["S", "4"], " ", "T"}], "-", 
+        RowBox[{"6", " ", "MW2", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["T", "2"]}], "+", 
+        RowBox[{"4", " ", "MW2", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["T", "3"]}], "-", 
+        RowBox[{
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["T", "4"]}]}], ")"}], " ", 
+      FormBox[
+       TagBox[
+        FormBox[
+         RowBox[{
+          SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+          RowBox[{
+          "MW2", ",", "MW2", ",", "T", ",", "ME2", ",", "0", ",", "ME2"}], 
+          ")"}],
+         TraditionalForm],
+        HoldForm],
+       TraditionalForm]}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"2", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"4", " ", "MW2"}], "-", "T"}], ")"}], "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["MW2", "2"], "-", 
+         RowBox[{"S", " ", "U"}]}], ")"}], "3"]}], ")"}]}], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["S", "3"], " ", 
+     SuperscriptBox["T", "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{
+         "MW2", ",", "MW2", ",", "ME2", ",", "ME2", ",", "T", ",", "S", ",", 
+          "ME2", ",", "0", ",", "ME2", ",", "0"}], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["MW2", "2"], "-", 
+        RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]], "-", 
+   FractionBox[
+    RowBox[{"MW2", "+", "S"}], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"4", " ", "MW2"}], "-", "T"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["MW2", "2"], "-", 
+       RowBox[{"S", " ", "U"}]}], ")"}]}]]}], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[9]=",
+ CellID->2007769481]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write2", "[", 
+   RowBox[{"\"\<fctd122.for\>\"", ",", 
+    RowBox[{"d122res", "==", "d122"}], ",", 
+    RowBox[{"FormatType", "\[Rule]", "FortranForm"}]}], "]"}], ";"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[10]:=",
+ CellID->1848976065],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "1", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "2"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 1, " and ", 2],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->166843212],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "3", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "4"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 3, " and ", 4],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->698332942],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "7", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "8"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 7, " and ", 8],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->1548805099],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "11", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "12"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 11, " and ", 12],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->1669457698],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "13", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "14"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 13, " and ", 14],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->1662947713],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "15", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "16"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 15, " and ", 16],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->481089128],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
+with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "17", 
+    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "18"}],
+   SequenceForm[
+   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
+characters. Check line ", 17, " and ", 18],
+   Editable->False], TraditionalForm]], "Print",
+ CellTags->"PaVeReduce",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->2099280721]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{"ReadList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"$OperatingSystem", "===", "\"\<MacOS\>\""}], ",", "\"\<:\>\"",
+        ",", "\"\<\>\""}], "]"}], "<>", "\"\<fctd122.for\>\""}], ",", 
+    "String"}], "]"}], "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[11]:=",
+ CellID->193852328],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   TagBox[GridBox[{
+      {"\<\"        d122res = (-0.5*(MW2 + S))/((4.*MW2 - 1.*T)*(MW2^2 - \
+1.*S*U)) - \"\>"},
+      {"\<\" (0.5*(4.*MW2^5 - 5.*MW2^4*S - 16.*MW2^3*S^2 + 4.*MW2^2*S^3 + \
+4.*MW2*S^4 - \"\>"},
+      {"\<\"    1.*MW2^4*U - 4.*MW2^2*S^2*U + 8.*MW2*S^3*U + 4.*MW2^2*S*U^2 + \
+S^3*U^2 + \"\>"},
+      {"\<\"    S^2*U^3)*B0[MW2, 0., ME2])/((MW2 - 1.*S)*(4.*MW2 - 1.*T)^2*\"\
+\>"},
+      {"\<\"   (MW2^2 - 1.*S*U)^2) + (0.5*S*(MW2^2 - 4.*MW2*S + 2.*S^2 + \
+S*U)*\"\>"},
+      {"\<\"   B0[S, 0., 0.])/((MW2 - 1.*S)*(MW2^2 - 1.*S*U)^2) + \"\>"},
+      {"\<\" (0.5*(MW2 + S)*(4.*MW2^3 - 9.*MW2^2*S + 2.*S^3 - 1.*MW2^2*U - \
+4.*MW2*S*U + \"\>"},
+      {"\<\"    5.*S^2*U + 3.*S*U^2)*B0[T, ME2, ME2])/((4.*MW2 - \
+1.*T)^2*\"\>"},
+      {"\<\"   (MW2^2 - 1.*S*U)^2) - \"\>"},
+      {"\<\" (0.5*(MW2 + S)*(2.*MW2^6 - 8.*MW2^5*S + 12.*MW2^4*S^2 - \
+8.*MW2^3*S^3 + \"\>"},
+      {"\<\"    2.*MW2^2*S^4 - 2.*MW2^5*T + 20.*MW2^4*S*T - 36.*MW2^3*S^2*T + \
+\"\>"},
+      {"\<\"    20.*MW2^2*S^3*T - 2.*MW2*S^4*T - 6.*MW2^3*S*T^2 + \
+6.*MW2^2*S^2*T^2 - \"\>"},
+      {"\<\"    6.*MW2*S^3*T^2 + 4.*MW2*S^2*T^3 - 1.*S^2*T^4)*\"\>"},
+      {"\<\"   C0[MW2, MW2, T, ME2, 0., ME2])/((4.*MW2 - 1.*T)^2*(MW2^2 - \
+1.*S*U)^3) + \"\>"},
+      {"\<\" ((MW2 & 1.*S)^2*S^2*T*C0[MW2, S, ME2, ME2, 0., 0.])/(MW2^2 - \
+1.*S*U)^3 - \"\>"},
+      {"\<\" (0.5*(MW2 - 1.*S)*S^2*T^2*C0[T, ME2, ME2, ME2, ME2, 0.])/\"\>"},
+      {"\<\"  (MW2^2 - 1.*S*U)^3 + (0.5*(MW2 - 1.*S)*S^3*T^2*D0[MW2, MW2, \
+ME2, ME2, T, S, \"\>"},
+      {"\<\"    ME2, 0., ME2, 0.])/(MW2^2 - 1.*S*U)^3\"\>"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[11]//TableForm=",
+ CellID->273826743]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DeleteFile", "/@", 
+   RowBox[{"FileNames", "[", "\"\<fctd122.for\>\"", "]"}]}], ";", 
+  RowBox[{"Clear", "[", 
+   RowBox[{"d122", ",", "se"}], "]"}], ";"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[12]:=",
+ CellID->793776799]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

@@ -1,0 +1,479 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13216,        469]
+NotebookOptionsPosition[      8620,        327]
+NotebookOutlinePosition[     11855,        416]
+CellTagsIndexPosition[     11742,        410]
+WindowTitle->Contract1
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Contract1\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Contract1"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Contract1.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28035], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Contract1", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Contract1", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Contract1", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "For covariant calculations it is not necessary to distinguish between \
+co- and contravariant indices (except for the Levi-Civita tensor).\nTherefore \
+normally no distinction is made between upper and lower indices.\nHowere, if \
+needed, one can use Upper and Lower and then a distuction is made:\n\
+Contract1[exp] contracts Upper and Lower indices. Neither Upper and Upper nor \
+Lower and Lower indices are contracted."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->2146905672],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->787893422],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FV", "[", 
+     RowBox[{"p", ",", 
+      RowBox[{"Lower", "[", "\[Mu]", "]"}]}], "]"}], 
+    RowBox[{"FV", "[", 
+     RowBox[{"q", ",", 
+      RowBox[{"Upper", "[", "\[Mu]", "]"}]}], "]"}]}], "//", "FCI"}], "//", 
+  "Contract1"}]], "Input",
+ CellTags->"Contract1",
+ CellLabel->"In[1]:=",
+ CellID->1540146054],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox[
+    OverscriptBox[
+     FormBox["q",
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{35, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Contract1",
+ CellLabel->"Out[1]=",
+ CellID->1390492923]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FV", "[", 
+     RowBox[{"p", ",", 
+      RowBox[{"Upper", "[", "\[Mu]", "]"}]}], "]"}], 
+    RowBox[{"FV", "[", 
+     RowBox[{"q", ",", 
+      RowBox[{"Upper", "[", "\[Mu]", "]"}]}], "]"}]}], "//", "FCI"}], "//", 
+  "Contract1"}]], "Input",
+ CellTags->"Contract1",
+ CellLabel->"In[2]:=",
+ CellID->1717156274],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{46, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Contract1",
+ CellLabel->"Out[2]=",
+ CellID->1102943132]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MT", "[", 
+    RowBox[{
+     RowBox[{"Lower", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"Upper", "[", "\[Mu]", "]"}]}], "]"}], "//", "FCI"}], "//", 
+  "Contract1"}]], "Input",
+ CellTags->"Contract1",
+ CellLabel->"In[3]:=",
+ CellID->2955950],
+
+Cell[BoxData[
+ FormBox["4", TraditionalForm]], "Output",
+ ImageSize->{13, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Contract1",
+ CellLabel->"Out[3]=",
+ CellID->118522025]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MT", "[", 
+    RowBox[{
+     RowBox[{"Upper", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"Upper", "[", "\[Mu]", "]"}]}], "]"}], "//", "FCI"}], "//", 
+  "Contract1"}]], "Input",
+ CellTags->"Contract1",
+ CellLabel->"In[4]:=",
+ CellID->492376431],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["g", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{36, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Contract1",
+ CellLabel->"Out[4]=",
+ CellID->49419999]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["LorentzIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LorentzIndex",
+  ButtonNote->"LorentzIndex"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Lower",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Lower",
+  ButtonNote->"Lower"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Upper",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Upper",
+  ButtonNote->"Upper"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Contract1",
+ CellID->758167385]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Contract1",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 57, 6.722156}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Contract1[expr] For covariant calculations it is not necessary to \
+distinguish between co- and contravariant indices (except for the Levi-Civita \
+tensor). Therefore normally no distinction is made between upper and lower \
+indices. Howere, if needed, one can use Upper and Lower and then a distuction \
+is made: Contract1[exp] contracts Upper and Lower indices. Neither Upper and \
+Upper nor Lower and Lower indices are contracted.", "synonyms" -> {}, "title" -> 
+    "Contract1", "titlemodifier" -> "", "windowtitle" -> "Contract1", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Contract1"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3679, 99, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->2146905672]},
+ "Contract1"->{
+  Cell[4312, 128, 368, 13, 27, "Input",
+   CellTags->"Contract1",
+   CellID->1540146054],
+  Cell[4683, 143, 481, 20, 38, "Output",
+   CellTags->"Contract1",
+   CellID->1390492923],
+  Cell[5201, 168, 368, 13, 27, "Input",
+   CellTags->"Contract1",
+   CellID->1717156274],
+  Cell[5572, 183, 724, 32, 40, "Output",
+   CellTags->"Contract1",
+   CellID->1102943132],
+  Cell[6333, 220, 285, 10, 27, "Input",
+   CellTags->"Contract1",
+   CellID->2955950],
+  Cell[6621, 232, 210, 7, 36, "Output",
+   CellTags->"Contract1",
+   CellID->118522025],
+  Cell[6868, 244, 287, 10, 27, "Input",
+   CellTags->"Contract1",
+   CellID->492376431],
+  Cell[7158, 256, 512, 22, 38, "Output",
+   CellTags->"Contract1",
+   CellID->49419999],
+  Cell[8038, 301, 540, 21, 28, "Text",
+   CellTags->"Contract1",
+   CellID->758167385]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10778, 375},
+ {"Contract1", 10914, 379}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[581, 21, 2248, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2832, 75, 52, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2887, 78, 767, 17, 187, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3679, 99, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->2146905672],
+Cell[CellGroupData[{
+Cell[4092, 118, 195, 6, 25, "ExampleSection",
+ CellID->787893422],
+Cell[CellGroupData[{
+Cell[4312, 128, 368, 13, 27, "Input",
+ CellTags->"Contract1",
+ CellID->1540146054],
+Cell[4683, 143, 481, 20, 38, "Output",
+ CellTags->"Contract1",
+ CellID->1390492923]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5201, 168, 368, 13, 27, "Input",
+ CellTags->"Contract1",
+ CellID->1717156274],
+Cell[5572, 183, 724, 32, 40, "Output",
+ CellTags->"Contract1",
+ CellID->1102943132]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6333, 220, 285, 10, 27, "Input",
+ CellTags->"Contract1",
+ CellID->2955950],
+Cell[6621, 232, 210, 7, 36, "Output",
+ CellTags->"Contract1",
+ CellID->118522025]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6868, 244, 287, 10, 27, "Input",
+ CellTags->"Contract1",
+ CellID->492376431],
+Cell[7158, 256, 512, 22, 38, "Output",
+ CellTags->"Contract1",
+ CellID->49419999]
+}, Open  ]]
+}, Open  ]],
+Cell[7697, 282, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7765, 287, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8038, 301, 540, 21, 28, "Text",
+ CellTags->"Contract1",
+ CellID->758167385]
+}, Open  ]],
+Cell[8593, 325, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

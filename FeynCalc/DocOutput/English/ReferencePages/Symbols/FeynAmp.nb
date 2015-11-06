@@ -1,0 +1,510 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14275,        500]
+NotebookOptionsPosition[     10241,        376]
+NotebookOutlinePosition[     13160,        457]
+CellTagsIndexPosition[     13049,        451]
+WindowTitle->FeynAmp
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FeynAmp\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FeynAmp"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/FeynAmp.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59415], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FeynAmp", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FeynAmp", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FeynAmp", "[", 
+       RowBox[{"q", ",", " ", "amp"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is the head of a Feynman amplitude, where amp denotes the analytical \
+expression for the amplitude and q is the integration variable. FeynAmp[q1, \
+q2, amp] denotes a two-loop amplitude.\n\nFeynAmp has no functional \
+properties and serves just as a head. There are however special typesetting \
+rules attached."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1183432829],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1998717726],
+
+Cell["\<\
+This is a 1-loop gluon self-energy amplitude (ignoring factors of (2 \[Pi])).\
+\
+\>", "Text",
+ CellTags->"FeynAmp",
+ CellID->1803940715],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmp", "[", 
+  RowBox[{"q", ",", 
+   RowBox[{
+    RowBox[{"GV", "[", 
+     RowBox[{"p", ",", "\[Mu]", ",", "a", ",", " ", 
+      RowBox[{"q", "-", "p"}], ",", "\[Alpha]", ",", "c", ",", " ", 
+      RowBox[{"-", "q"}], ",", "\[Beta]", ",", "e"}], "]"}], " ", 
+    RowBox[{"GP", "[", 
+     RowBox[{
+      RowBox[{"p", "-", "q"}], ",", " ", "\[Alpha]", ",", "c", ",", " ", 
+      "\[Rho]", ",", "d"}], "]"}], 
+    RowBox[{"GV", "[", 
+     RowBox[{
+      RowBox[{"-", "p"}], ",", "\[Nu]", ",", "b", ",", " ", 
+      RowBox[{"p", "-", "q"}], ",", "\[Rho]", ",", "d", ",", " ", "q", ",", 
+      "\[Sigma]", ",", "f"}], "]"}], " ", 
+    RowBox[{"GP", "[", 
+     RowBox[{
+     "q", ",", " ", "\[Beta]", ",", "e", ",", " ", "\[Sigma]", ",", "f"}], 
+     "]"}]}]}], "]"}]], "Input",
+ CellTags->"FeynAmp",
+ CellLabel->"In[1]:=",
+ CellID->772375685],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     SuperscriptBox["\[DifferentialD]", "D"], 
+     FormBox["q",
+      TraditionalForm]}]}], "(", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["f",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{
+      SubsuperscriptBox["\[CapitalPi]", 
+       RowBox[{
+        FormBox["e",
+         TraditionalForm], 
+        FormBox["f",
+         TraditionalForm]}], 
+       RowBox[{
+        FormBox["\[Beta]",
+         TraditionalForm], 
+        FormBox["\[Sigma]",
+         TraditionalForm]}]], "(", 
+      FormBox["q",
+       TraditionalForm], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["V", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Alpha]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Beta]",
+          TraditionalForm],
+         TraditionalForm]}]], "(", 
+      RowBox[{
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\", \"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\", \"\>",
+        TraditionalForm], 
+       FormBox[
+        RowBox[{"-", 
+         FormBox["q",
+          TraditionalForm]}],
+        TraditionalForm]}], ")"}], " ", 
+     RowBox[{
+      SuperscriptBox["V", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm]}]], "(", 
+      RowBox[{
+       FormBox[
+        RowBox[{"-", 
+         FormBox["p",
+          TraditionalForm]}],
+        TraditionalForm], 
+       FormBox["\<\", \"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["p",
+           TraditionalForm], "-", 
+          FormBox["q",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\", \"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm]}], ")"}], " ", 
+     RowBox[{
+      SubsuperscriptBox["\[CapitalPi]", 
+       RowBox[{
+        FormBox["c",
+         TraditionalForm], 
+        FormBox["d",
+         TraditionalForm]}], 
+       RowBox[{
+        FormBox["\[Alpha]",
+         TraditionalForm], 
+        FormBox["\[Rho]",
+         TraditionalForm]}]], "(", 
+      FormBox[
+       RowBox[{"p", "-", "q"}],
+       TraditionalForm], ")"}]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{574, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FeynAmp",
+ CellLabel->"Out[1]=",
+ CellID->1301141355]
+}, Open  ]],
+
+Cell["This is a generic 2-loop amplitude.", "Text",
+ CellTags->"FeynAmp",
+ CellID->311938840],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmp", "[", 
+  RowBox[{
+   SubscriptBox["q", "1"], ",", 
+   SubscriptBox["q", "2"], ",", "anyexpression"}], "]"}]], "Input",
+ CellTags->"FeynAmp",
+ CellLabel->"In[2]:=",
+ CellID->1547526680],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"FeynAmp", "(", 
+   RowBox[{
+    SubscriptBox["q", "1"], ",", 
+    SubscriptBox["q", "2"], ",", "anyexpression"}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{209, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FeynAmp",
+ CellLabel->"Out[2]=",
+ CellID->1833982253]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Amplitude",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Amplitude",
+  ButtonNote->"Amplitude"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FeynAmp",
+ CellID->1771618737]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FeynAmp",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 59, 49.540167}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FeynAmp[q, amp] is the head of a Feynman amplitude, where amp denotes \
+the analytical expression for the amplitude and q is the integration \
+variable. FeynAmp[q1, q2, amp] denotes a two-loop amplitude. FeynAmp has no \
+functional properties and serves just as a head. There are however special \
+typesetting rules attached.", "synonyms" -> {}, "title" -> "FeynAmp", 
+    "titlemodifier" -> "", "windowtitle" -> "FeynAmp", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/FeynAmp"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3589, 99, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1183432829]},
+ "FeynAmp"->{
+  Cell[4201, 126, 146, 5, 32, "Text",
+   CellTags->"FeynAmp",
+   CellID->1803940715],
+  Cell[4372, 135, 864, 23, 45, "Input",
+   CellTags->"FeynAmp",
+   CellID->772375685],
+  Cell[5239, 160, 3668, 149, 54, "Output",
+   CellTags->"FeynAmp",
+   CellID->1301141355],
+  Cell[8922, 312, 93, 2, 32, "Text",
+   CellTags->"FeynAmp",
+   CellID->311938840],
+  Cell[9040, 318, 217, 7, 27, "Input",
+   CellTags->"FeynAmp",
+   CellID->1547526680],
+  Cell[9260, 327, 341, 12, 38, "Output",
+   CellTags->"FeynAmp",
+   CellID->1833982253],
+  Cell[9969, 362, 230, 9, 32, "Text",
+   CellTags->"FeynAmp",
+   CellID->1771618737]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12281, 422},
+ {"FeynAmp", 12415, 426}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2822, 75, 50, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2875, 78, 689, 17, 162, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3589, 99, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1183432829],
+Cell[CellGroupData[{
+Cell[4002, 118, 196, 6, 25, "ExampleSection",
+ CellID->1998717726],
+Cell[4201, 126, 146, 5, 32, "Text",
+ CellTags->"FeynAmp",
+ CellID->1803940715],
+Cell[CellGroupData[{
+Cell[4372, 135, 864, 23, 45, "Input",
+ CellTags->"FeynAmp",
+ CellID->772375685],
+Cell[5239, 160, 3668, 149, 54, "Output",
+ CellTags->"FeynAmp",
+ CellID->1301141355]
+}, Open  ]],
+Cell[8922, 312, 93, 2, 32, "Text",
+ CellTags->"FeynAmp",
+ CellID->311938840],
+Cell[CellGroupData[{
+Cell[9040, 318, 217, 7, 27, "Input",
+ CellTags->"FeynAmp",
+ CellID->1547526680],
+Cell[9260, 327, 341, 12, 38, "Output",
+ CellTags->"FeynAmp",
+ CellID->1833982253]
+}, Open  ]]
+}, Open  ]],
+Cell[9628, 343, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9696, 348, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9969, 362, 230, 9, 32, "Text",
+ CellTags->"FeynAmp",
+ CellID->1771618737]
+}, Open  ]],
+Cell[10214, 374, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

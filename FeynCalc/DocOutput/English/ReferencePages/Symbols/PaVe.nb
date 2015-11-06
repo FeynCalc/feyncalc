@@ -1,0 +1,439 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12829,        429]
+NotebookOptionsPosition[      8956,        310]
+NotebookOutlinePosition[     11813,        389]
+CellTagsIndexPosition[     11705,        383]
+WindowTitle->PaVe
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/PaVe\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/PaVe"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/PaVe.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$110826], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/PaVe", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["PaVe", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"PaVe", "[", 
+       RowBox[{"i", ",", "j", ",", "..."}]}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "{p10,p12,...},{m1^2, mw^2, ...}] denotes the invariant (and scalar) \
+Passarino-Veltman integrals, i.e. the coefficient functions of the tensor \
+integral decomposition. Joining plist and mlist gives the same conventions as \
+for A0, B0, C0, D0. Automatic simlifications are performed for the \
+coefficient functions of two-point integrals and for the scalar integrals."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->974921596],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1393510423],
+
+Cell["Some of the PaVe's reduce to special cases.", "Text",
+ CellTags->"PaVe",
+ CellID->1877067255],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVe", "[", 
+  RowBox[{"0", ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"m1", ",", "m2", ",", "m3", ",", "m4"}], "}"}]}], "]"}]], "Input",\
+
+ CellTags->"PaVe",
+ CellLabel->"In[1]:=",
+ CellID->200539338],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   FormBox[
+    RowBox[{
+     SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+     RowBox[{
+     "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "m1", ",", 
+      "m2", ",", "m3", ",", "m4"}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
+ ImageSize->{242, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PaVe",
+ CellLabel->"Out[1]=",
+ CellID->1799689194]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVe", "[", 
+  RowBox[{"0", ",", "0", ",", 
+   RowBox[{"{", "pp", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"m", "^", "2"}], ",", 
+     RowBox[{"M", "^", "2"}]}], "}"}]}], "]"}]], "Input",
+ CellTags->"PaVe",
+ CellLabel->"In[2]:=",
+ CellID->378525516],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "6"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["m", "2"], "-", 
+         SuperscriptBox["M", "2"], "+", "pp"}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox["M", "2"], "-", 
+             SuperscriptBox["m", "2"]}], ")"}], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             FormBox[
+              TagBox[
+               FormBox[
+                RowBox[{
+                 SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+                 RowBox[{"pp", ",", 
+                  SuperscriptBox["m", "2"], ",", 
+                  SuperscriptBox["M", "2"]}], ")"}],
+                TraditionalForm],
+               HoldForm],
+              TraditionalForm], "-", 
+             FormBox[
+              TagBox[
+               FormBox[
+                RowBox[{
+                 SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+                 RowBox[{"0", ",", 
+                  SuperscriptBox["m", "2"], ",", 
+                  SuperscriptBox["M", "2"]}], ")"}],
+                TraditionalForm],
+               HoldForm],
+              TraditionalForm]}], ")"}]}], 
+          RowBox[{"2", " ", "pp"}]], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", 
+          FormBox[
+           TagBox[
+            FormBox[
+             RowBox[{
+              SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+              RowBox[{"pp", ",", 
+               SuperscriptBox["m", "2"], ",", 
+               SuperscriptBox["M", "2"]}], ")"}],
+             TraditionalForm],
+            HoldForm],
+           TraditionalForm]}]}], ")"}]}], "+", 
+      FormBox[
+       TagBox[
+        FormBox[
+         RowBox[{
+          SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+          SuperscriptBox["M", "2"], ")"}],
+         TraditionalForm],
+        HoldForm],
+       TraditionalForm]}], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "3"], " ", 
+    SuperscriptBox["m", "2"], " ", 
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{"pp", ",", 
+         SuperscriptBox["m", "2"], ",", 
+         SuperscriptBox["M", "2"]}], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FractionBox["1", "18"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3", " ", 
+       SuperscriptBox["m", "2"]}], "+", 
+      RowBox[{"3", " ", 
+       SuperscriptBox["M", "2"]}], "-", "pp"}], ")"}]}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{553, 166},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PaVe",
+ CellLabel->"Out[2]=",
+ CellID->1156896528]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["PaVeReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVeReduce",
+  ButtonNote->"PaVeReduce"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"PaVe",
+ CellID->1153293303]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"PaVe",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 4, 23.425184}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "PaVe[i, j, ... {p10,p12,...},{m1^2, mw^2, ...}] denotes the invariant \
+(and scalar) Passarino-Veltman integrals, i.e. the coefficient functions of \
+the tensor integral decomposition. Joining plist and mlist gives the same \
+conventions as for A0, B0, C0, D0. Automatic simlifications are performed for \
+the coefficient functions of two-point integrals and for the scalar \
+integrals.", "synonyms" -> {}, "title" -> "PaVe", "titlemodifier" -> "", 
+    "windowtitle" -> "PaVe", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/PaVe"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3626, 99, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->974921596]},
+ "PaVe"->{
+  Cell[4237, 126, 99, 2, 32, "Text",
+   CellTags->"PaVe",
+   CellID->1877067255],
+  Cell[4361, 132, 320, 11, 27, "Input",
+   CellTags->"PaVe",
+   CellID->200539338],
+  Cell[4684, 145, 459, 16, 36, "Output",
+   CellTags->"PaVe",
+   CellID->1799689194],
+  Cell[5180, 166, 288, 10, 27, "Input",
+   CellTags->"PaVe",
+   CellID->378525516],
+  Cell[5471, 178, 2845, 95, 187, "Output",
+   CellTags->"PaVe",
+   CellID->1156896528],
+  Cell[8684, 296, 230, 9, 31, "Text",
+   CellTags->"PaVe",
+   CellID->1153293303]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11044, 357},
+ {"PaVe", 11174, 361}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2808, 75, 47, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 743, 17, 128, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3626, 99, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->974921596],
+Cell[CellGroupData[{
+Cell[4038, 118, 196, 6, 25, "ExampleSection",
+ CellID->1393510423],
+Cell[4237, 126, 99, 2, 32, "Text",
+ CellTags->"PaVe",
+ CellID->1877067255],
+Cell[CellGroupData[{
+Cell[4361, 132, 320, 11, 27, "Input",
+ CellTags->"PaVe",
+ CellID->200539338],
+Cell[4684, 145, 459, 16, 36, "Output",
+ CellTags->"PaVe",
+ CellID->1799689194]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5180, 166, 288, 10, 27, "Input",
+ CellTags->"PaVe",
+ CellID->378525516],
+Cell[5471, 178, 2845, 95, 187, "Output",
+ CellTags->"PaVe",
+ CellID->1156896528]
+}, Open  ]]
+}, Open  ]],
+Cell[8343, 277, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8411, 282, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8684, 296, 230, 9, 31, "Text",
+ CellTags->"PaVe",
+ CellID->1153293303]
+}, Open  ]],
+Cell[8929, 308, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,1833 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     52063,       1823]
+NotebookOptionsPosition[     41494,       1487]
+NotebookOutlinePosition[     47509,       1662]
+CellTagsIndexPosition[     47385,       1656]
+WindowTitle->AnomalousDimension
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/AnomalousDimension\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/AnomalousDimension"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+AnomalousDimension.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$13953], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/AnomalousDimension", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["AnomalousDimension", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"AnomalousDimension", "[", "name", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is a database of anomalous dimensions of twist 2 operators."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->533212965],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1788169946],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "AnomalousDimension", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[1]:=",
+ CellID->1953214619],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Polarization", "\[Rule]", "1"}], ",", 
+    RowBox[{"Simplify", "\[Rule]", "FullSimplify"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{277, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[1]=",
+ CellID->1686866166]
+}, Open  ]],
+
+Cell["Polarized case:", "Text",
+ CellTags->"AnomalousDimension",
+ CellID->2007063734],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetOptions", "[", " ", 
+  RowBox[{"AnomalousDimension", ",", 
+   RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[2]:=",
+ CellID->1676073016],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Polarization", "\[Rule]", "1"}], ",", 
+    RowBox[{"Simplify", "\[Rule]", "FullSimplify"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{277, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[2]=",
+ CellID->455353582]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"NS", ",", "qq", " "}], 
+    RowBox[{
+     RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1291876789],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gnsqq0", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[3]:=",
+ CellID->146201031],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["C", "F"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"8", " ", 
+      RowBox[{
+       SubscriptBox["S", "1"], "(", 
+       FormBox[
+        RowBox[{"m", "-", "1"}],
+        TraditionalForm], ")"}]}], "+", 
+     FractionBox["4", "m"], "+", 
+     FractionBox["4", 
+      RowBox[{"m", "+", "1"}]], "-", "6"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{225, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[3]=",
+ CellID->615808229]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "qg", " "}], 
+    RowBox[{
+     RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1792202903],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gsqg0", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[4]:=",
+ CellID->1170655896],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox["8", "m"], "-", 
+     FractionBox["16", 
+      RowBox[{"m", "+", "1"}]]}], ")"}], " ", 
+   SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
+ ImageSize->{112, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[4]=",
+ CellID->2056489351]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "gq", " "}], 
+    RowBox[{
+     RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1242785256],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gsgq0", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[5]:=",
+ CellID->1302484886],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox["4", 
+      RowBox[{"m", "+", "1"}]], "-", 
+     FractionBox["8", "m"]}], ")"}], " ", 
+   SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
+ ImageSize->{115, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[5]=",
+ CellID->339795493]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "gg", " "}], 
+    RowBox[{
+     RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->102826276],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gsgg0", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[6]:=",
+ CellID->255541888],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["C", "A"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"8", " ", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      FractionBox["8", "m"], "+", 
+      FractionBox["16", 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox["22", "3"]}], ")"}]}], "+", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SubscriptBox["T", "f"]}], "3"]}], TraditionalForm]], "Output",
+ ImageSize->{283, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[6]=",
+ CellID->724940306]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"PS", ",", "qq", " "}], 
+    RowBox[{
+     RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1117022044],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gpsqq1", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[7]:=",
+ CellID->1738556670],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"16", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox["2", 
+      SuperscriptBox["m", "3"]], "-", 
+     FractionBox["1", 
+      SuperscriptBox["m", "2"]], "+", 
+     FractionBox["1", 
+      RowBox[{"m", "+", "1"}]], "+", 
+     FractionBox["3", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+     FractionBox["2", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"m", "+", "1"}], ")"}], "3"]], "-", 
+     FractionBox["1", "m"]}], ")"}], " ", 
+   SubscriptBox["C", "F"], " ", 
+   SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
+ ImageSize->{385, 46},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[7]=",
+ CellID->297175504]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"NS", ",", "qq", " "}], 
+    RowBox[{
+     RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1509439590],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gnsqq1", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[8]:=",
+ CellID->1025475425],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SubscriptBox["C", "A"], " ", 
+     SubscriptBox["C", "F"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox[
+         RowBox[{"16", " ", 
+          RowBox[{
+           SubscriptBox[
+            OverscriptBox["S", "~"], "2"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], "m"]}], "-", 
+       FractionBox[
+        RowBox[{"16", " ", 
+         RowBox[{
+          SubscriptBox[
+           OverscriptBox["S", "~"], "2"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], 
+        RowBox[{"m", "+", "1"}]], "+", 
+       RowBox[{"16", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "3"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "-", 
+       RowBox[{"32", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "12"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "+", 
+       FractionBox["44", 
+        RowBox[{"3", " ", 
+         SuperscriptBox["m", "2"]}]], "-", 
+       RowBox[{
+        FractionBox["536", "9"], " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "+", 
+       RowBox[{
+        FractionBox["88", "3"], " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "-", 
+       RowBox[{"16", " ", 
+        RowBox[{
+         SubscriptBox["S", "3"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "+", 
+       FractionBox["212", 
+        RowBox[{"9", " ", "m"}]], "-", 
+       FractionBox["748", 
+        RowBox[{"9", " ", 
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}]}]], "-", 
+       FractionBox["4", 
+        RowBox[{"3", " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "-", 
+       FractionBox["16", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "3"]], "+", 
+       FractionBox["17", "3"]}], ")"}]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"32", " ", 
+          RowBox[{
+           SubscriptBox[
+            OverscriptBox["S", "~"], "2"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], "m"], "+", 
+        FractionBox[
+         RowBox[{"32", " ", 
+          RowBox[{
+           SubscriptBox[
+            OverscriptBox["S", "~"], "2"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], 
+         RowBox[{"m", "+", "1"}]], "-", 
+        RowBox[{"32", " ", 
+         RowBox[{
+          SubscriptBox[
+           OverscriptBox["S", "~"], "3"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], "+", 
+        RowBox[{"64", " ", 
+         RowBox[{
+          SubscriptBox[
+           OverscriptBox["S", "~"], "12"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], "+", 
+        FractionBox["8", 
+         SuperscriptBox["m", "3"]], "+", 
+        FractionBox[
+         RowBox[{"16", " ", 
+          RowBox[{
+           SubscriptBox["S", "1"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], 
+         SuperscriptBox["m", "2"]], "+", 
+        FractionBox[
+         RowBox[{"16", " ", 
+          RowBox[{
+           SubscriptBox["S", "1"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+        FractionBox[
+         RowBox[{"16", " ", 
+          RowBox[{
+           SubscriptBox["S", "2"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], "m"], "+", 
+        FractionBox[
+         RowBox[{"16", " ", 
+          RowBox[{
+           SubscriptBox["S", "2"], "(", 
+           FormBox[
+            RowBox[{"m", "-", "1"}],
+            TraditionalForm], ")"}]}], 
+         RowBox[{"m", "+", "1"}]], "-", 
+        RowBox[{"24", " ", 
+         RowBox[{
+          SubscriptBox["S", "2"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], "+", 
+        RowBox[{"32", " ", 
+         RowBox[{
+          SubscriptBox["S", "12"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], "+", 
+        RowBox[{"32", " ", 
+         RowBox[{
+          SubscriptBox["S", "21"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], "-", 
+        FractionBox["40", "m"], "+", 
+        FractionBox["40", 
+         RowBox[{"m", "+", "1"}]], "+", 
+        FractionBox["16", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+        FractionBox["40", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"m", "+", "1"}], ")"}], "3"]], "+", "3"}], ")"}]}], 
+     ")"}]}], "-", 
+   RowBox[{
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["N", "f"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["8", 
+        RowBox[{"3", " ", 
+         SuperscriptBox["m", "2"]}]]}], "+", 
+      RowBox[{
+       FractionBox["80", "9"], " ", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      RowBox[{
+       FractionBox["16", "3"], " ", 
+       RowBox[{
+        SubscriptBox["S", "2"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      FractionBox["8", 
+       RowBox[{"9", " ", "m"}]], "+", 
+      FractionBox["88", 
+       RowBox[{"9", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "-", 
+      FractionBox["8", 
+       RowBox[{"3", " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "-", 
+      FractionBox["2", "3"]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{571, 389},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[8]=",
+ CellID->1707320400]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "qg", " "}], 
+    RowBox[{
+     RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->26937910],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gsqg1", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[9]:=",
+ CellID->1790656955],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"16", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["T", "f"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"2", " ", 
+         RowBox[{
+          SubscriptBox[
+           OverscriptBox["S", "~"], "2"], "(", 
+          FormBox[
+           RowBox[{"m", "-", "1"}],
+           TraditionalForm], ")"}]}], "m"]}], "+", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox["2", 
+       SuperscriptBox["m", "3"]], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       SuperscriptBox["m", "2"]], "-", 
+      FractionBox["3", 
+       SuperscriptBox["m", "2"]], "-", 
+      FractionBox[
+       RowBox[{
+        SubsuperscriptBox["S", "1", "2"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}], "m"], "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "1", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "-", 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["S", "2"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}], "m"], "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox["4", "m"], "+", 
+      FractionBox["3", 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox["8", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+      FractionBox["12", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "3"]]}], ")"}]}], "+", 
+   RowBox[{"8", " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["T", "f"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["2", 
+        SuperscriptBox["m", "3"]]}], "-", 
+      FractionBox["1", 
+       SuperscriptBox["m", "2"]], "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "1", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "1", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "+", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox["14", "m"], "-", 
+      FractionBox["19", 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox["8", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+      FractionBox["4", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "3"]]}], ")"}]}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{473, 283},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[9]=",
+ CellID->578210880]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "gq", " "}], 
+    RowBox[{
+     RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1644657872],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gsgq1", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[10]:=",
+ CellID->1820360375],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"8", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["C", "F"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox["4", 
+       SuperscriptBox["m", "3"]], "+", 
+      FractionBox["28", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["m", "2"]}]], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "1", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "+", 
+      FractionBox[
+       RowBox[{
+        SubsuperscriptBox["S", "1", "2"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox[
+       RowBox[{"16", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"3", " ", "m"}]], "-", 
+      FractionBox[
+       RowBox[{"5", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"3", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["S", "2"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}], 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox["56", 
+       RowBox[{"9", " ", "m"}]], "-", 
+      FractionBox["20", 
+       RowBox[{"9", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "-", 
+      FractionBox["38", 
+       RowBox[{"3", " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "-", 
+      FractionBox["6", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "3"]]}], ")"}]}], "+", 
+   RowBox[{"32", " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["T", "f"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["2", 
+        RowBox[{"3", " ", 
+         SuperscriptBox["m", "2"]}]]}], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"3", " ", "m"}]], "+", 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}], 
+       RowBox[{"3", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "+", 
+      FractionBox["7", 
+       RowBox[{"9", " ", "m"}]], "-", 
+      FractionBox["2", 
+       RowBox[{"9", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "+", 
+      FractionBox["1", 
+       RowBox[{"3", " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]]}], ")"}]}], "+", 
+   RowBox[{"4", " ", 
+    SubsuperscriptBox["C", "F", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["4", 
+       SuperscriptBox["m", "3"]], "+", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       SuperscriptBox["m", "2"]], "-", 
+      FractionBox["12", 
+       SuperscriptBox["m", "2"]], "+", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "1", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "1", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox["15", "m"], "-", 
+      FractionBox["6", 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox["3", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "-", 
+      FractionBox["2", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "3"]]}], ")"}]}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{534, 397},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[10]=",
+ CellID->1694165204]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "gg", " "}], 
+    RowBox[{
+     RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
+ "polarized:"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->462099557],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "gsgg1", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[11]:=",
+ CellID->1613754345],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SubsuperscriptBox["C", "A", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"8", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{"16", " ", 
+        RowBox[{
+         SubscriptBox[
+          OverscriptBox["S", "~"], "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      RowBox[{"4", " ", 
+       RowBox[{
+        SubscriptBox[
+         OverscriptBox["S", "~"], "3"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      RowBox[{"8", " ", 
+       RowBox[{
+        SubscriptBox[
+         OverscriptBox["S", "~"], "12"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      FractionBox["8", 
+       SuperscriptBox["m", "3"]], "+", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       SuperscriptBox["m", "2"]], "+", 
+      FractionBox["58", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["m", "2"]}]], "-", 
+      FractionBox[
+       RowBox[{"16", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+      RowBox[{
+       FractionBox["134", "9"], " ", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "+", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], "m"], "-", 
+      FractionBox[
+       RowBox[{"16", " ", 
+        RowBox[{
+         SubscriptBox["S", "2"], "(", 
+         FormBox[
+          RowBox[{"m", "-", "1"}],
+          TraditionalForm], ")"}]}], 
+       RowBox[{"m", "+", "1"}]], "+", 
+      RowBox[{"4", " ", 
+       RowBox[{
+        SubscriptBox["S", "3"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      RowBox[{"8", " ", 
+       RowBox[{
+        SubscriptBox["S", "12"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      RowBox[{"8", " ", 
+       RowBox[{
+        SubscriptBox["S", "21"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "-", 
+      FractionBox["107", 
+       RowBox[{"9", " ", "m"}]], "+", 
+      FractionBox["241", 
+       RowBox[{"9", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "-", 
+      FractionBox["86", 
+       RowBox[{"3", " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "-", 
+      FractionBox["48", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "3"]], "-", 
+      FractionBox["16", "3"]}], ")"}]}], "+", 
+   RowBox[{"32", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["T", "f"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", 
+        RowBox[{"3", " ", 
+         SuperscriptBox["m", "2"]}]]}], "-", 
+      RowBox[{
+       FractionBox["5", "9"], " ", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox[
+         RowBox[{"m", "-", "1"}],
+         TraditionalForm], ")"}]}], "+", 
+      FractionBox["14", 
+       RowBox[{"9", " ", "m"}]], "-", 
+      FractionBox["19", 
+       RowBox[{"9", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "-", 
+      FractionBox["1", 
+       RowBox[{"3", " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "+", 
+      FractionBox["1", "3"]}], ")"}]}], "+", 
+   RowBox[{"8", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["4", 
+       SuperscriptBox["m", "3"]], "-", 
+      FractionBox["10", 
+       SuperscriptBox["m", "2"]], "-", 
+      FractionBox["10", 
+       RowBox[{"m", "+", "1"}]], "+", 
+      FractionBox["2", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "2"]], "+", 
+      FractionBox["4", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}], "3"]], "+", 
+      FractionBox["10", "m"], "+", "1"}], ")"}], " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubscriptBox["T", "f"]}]}], TraditionalForm]], "Output",
+ ImageSize->{478, 326},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[11]=",
+ CellID->1244918806]
+}, Open  ]],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "gg", " "}], 
+    RowBox[{
+     RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
+ "polarized (different representation):"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->721182810],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AnomalousDimension", "[", "GSGG1", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[12]:=",
+ CellID->889064365],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", 
+    SubsuperscriptBox["C", "A", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"8", " ", 
+       RowBox[{
+        OverscriptBox["S", "~"], "(", 
+        FormBox["m",
+         TraditionalForm], ")"}]}], "+", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        RowBox[{
+         SubsuperscriptBox["S", "2", "'"], "\[NoBreak]", "(", "\[NoBreak]", 
+         FormBox[
+          FractionBox["m", "2"],
+          TraditionalForm], "\[NoBreak]", ")"}]}], 
+       RowBox[{"m", " ", 
+        RowBox[{"(", 
+         RowBox[{"m", "+", "1"}], ")"}]}]], "-", 
+      RowBox[{
+       SubsuperscriptBox["S", "3", "'"], "\[NoBreak]", "(", "\[NoBreak]", 
+       FormBox[
+        FractionBox["m", "2"],
+        TraditionalForm], "\[NoBreak]", ")"}], "-", 
+      RowBox[{"4", " ", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox["m",
+         TraditionalForm], ")"}], " ", 
+       RowBox[{
+        SubsuperscriptBox["S", "2", "'"], "\[NoBreak]", "(", "\[NoBreak]", 
+        FormBox[
+         FractionBox["m", "2"],
+         TraditionalForm], "\[NoBreak]", ")"}]}], "-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"m", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"m", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"m", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"m", " ", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"48", " ", "m", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"m", "+", "3"}], ")"}]}], "+", "469"}], ")"}]}], 
+                 "+", "698"}], ")"}]}], "+", "7"}], ")"}]}], "+", "258"}], 
+          ")"}]}], "+", "144"}], 
+       RowBox[{"9", " ", 
+        SuperscriptBox["m", "3"], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "3"]}]], "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"m", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"67", " ", "m", " ", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{"m", "+", "1"}], ")"}], "2"]}], "+", "144"}], ")"}]}],
+           "+", "72"}], ")"}], " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox["m",
+          TraditionalForm], ")"}]}], 
+       RowBox[{"9", " ", 
+        SuperscriptBox["m", "2"], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]]}], ")"}]}], "+", 
+   RowBox[{"32", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubscriptBox["T", "f"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{"m", " ", 
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"3", " ", "m", " ", 
+            RowBox[{"(", 
+             RowBox[{"m", "+", "1"}], ")"}]}], "+", "13"}], ")"}]}], "-", 
+        "3"}], 
+       RowBox[{"9", " ", 
+        SuperscriptBox["m", "2"], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "-", 
+      FractionBox[
+       RowBox[{"5", " ", 
+        RowBox[{
+         SubscriptBox["S", "1"], "(", 
+         FormBox["m",
+          TraditionalForm], ")"}]}], "9"]}], ")"}]}], "+", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"m", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"m", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"m", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"m", " ", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"m", " ", 
+                    RowBox[{"(", 
+                    RowBox[{"m", "+", "3"}], ")"}]}], "+", "5"}], ")"}]}], 
+                "+", "1"}], ")"}]}], "-", "8"}], ")"}]}], "+", "2"}], ")"}]}],
+        "+", "4"}], ")"}], " ", 
+     SubscriptBox["C", "F"], " ", 
+     SubscriptBox["T", "f"]}], 
+    RowBox[{
+     SuperscriptBox["m", "3"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"m", "+", "1"}], ")"}], "3"]}]]}], TraditionalForm]], "Output",\
+
+ ImageSize->{441, 316},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[12]=",
+ CellID->1840404969]
+}, Open  ]],
+
+Cell[TextData[{
+ "Check that all odd moments give the same for the two representations of ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Gamma]", 
+    RowBox[{"S", ",", "gg", " "}], 
+    RowBox[{
+     RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
+ ":"
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1805318835],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"%", "-", "%%"}], "/.", 
+    RowBox[{"OPEm", "\[Rule]", "ij"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"ij", ",", "1", ",", "17", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[13]:=",
+ CellID->621534472],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+    ",", "0"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{144, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[13]=",
+ CellID->494342750]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["SplittingFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SplittingFunction",
+  ButtonNote->"SplittingFunction"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SumS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumS",
+  ButtonNote->"SumS"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SumT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumT",
+  ButtonNote->"SumT"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1774979938]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"AnomalousDimension",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 55, 50.779506}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "AnomalousDimension[name] is a database of anomalous dimensions of twist \
+2 operators.", "synonyms" -> {}, "title" -> "AnomalousDimension", 
+    "titlemodifier" -> "", "windowtitle" -> "AnomalousDimension", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/AnomalousDimension"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3382, 94, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->533212965]},
+ "AnomalousDimension"->{
+  Cell[4015, 123, 154, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1953214619],
+  Cell[4172, 129, 362, 12, 36, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->1686866166],
+  Cell[4549, 144, 85, 2, 31, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->2007063734],
+  Cell[4659, 150, 226, 6, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1676073016],
+  Cell[4888, 158, 361, 12, 36, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->455353582],
+  Cell[5264, 173, 263, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1291876789],
+  Cell[5552, 187, 152, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->146201031],
+  Cell[5707, 193, 569, 21, 64, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->615808229],
+  Cell[6291, 217, 262, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1792202903],
+  Cell[6578, 231, 152, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1170655896],
+  Cell[6733, 237, 392, 14, 64, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->2056489351],
+  Cell[7140, 254, 262, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1242785256],
+  Cell[7427, 268, 152, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1302484886],
+  Cell[7582, 274, 390, 14, 64, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->339795493],
+  Cell[7987, 291, 261, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->102826276],
+  Cell[8273, 305, 151, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->255541888],
+  Cell[8427, 311, 701, 25, 64, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->724940306],
+  Cell[9143, 339, 263, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1117022044],
+  Cell[9431, 353, 153, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1738556670],
+  Cell[9587, 359, 796, 27, 67, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->297175504],
+  Cell[10398, 389, 263, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1509439590],
+  Cell[10686, 403, 153, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1025475425],
+  Cell[10842, 409, 6715, 222, 410, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->1707320400],
+  Cell[17572, 634, 260, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->26937910],
+  Cell[17857, 648, 152, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1790656955],
+  Cell[18012, 654, 4224, 144, 304, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->578210880],
+  Cell[22251, 801, 262, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1644657872],
+  Cell[22538, 815, 153, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1820360375],
+  Cell[22694, 821, 6332, 216, 418, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->1694165204],
+  Cell[29041, 1040, 261, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->462099557],
+  Cell[29327, 1054, 153, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->1613754345],
+  Cell[29483, 1060, 5020, 170, 347, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->1244918806],
+  Cell[34518, 1233, 288, 10, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->721182810],
+  Cell[34831, 1247, 152, 4, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->889064365],
+  Cell[34986, 1253, 4489, 143, 337, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->1840404969],
+  Cell[39490, 1399, 330, 11, 42, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1805318835],
+  Cell[39845, 1414, 315, 10, 27, "Input",
+   CellTags->"AnomalousDimension",
+   CellID->621534472],
+  Cell[40163, 1426, 347, 11, 36, "Output",
+   CellTags->"AnomalousDimension",
+   CellID->494342750],
+  Cell[40878, 1460, 574, 22, 32, "Text",
+   CellTags->"AnomalousDimension",
+   CellID->1774979938]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 43342, 1531},
+ {"AnomalousDimension", 43486, 1535}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[590, 21, 2285, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2878, 75, 61, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2942, 78, 415, 12, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3382, 94, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->533212965],
+Cell[CellGroupData[{
+Cell[3794, 113, 196, 6, 25, "ExampleSection",
+ CellID->1788169946],
+Cell[CellGroupData[{
+Cell[4015, 123, 154, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1953214619],
+Cell[4172, 129, 362, 12, 36, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->1686866166]
+}, Open  ]],
+Cell[4549, 144, 85, 2, 31, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->2007063734],
+Cell[CellGroupData[{
+Cell[4659, 150, 226, 6, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1676073016],
+Cell[4888, 158, 361, 12, 36, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->455353582]
+}, Open  ]],
+Cell[5264, 173, 263, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1291876789],
+Cell[CellGroupData[{
+Cell[5552, 187, 152, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->146201031],
+Cell[5707, 193, 569, 21, 64, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->615808229]
+}, Open  ]],
+Cell[6291, 217, 262, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1792202903],
+Cell[CellGroupData[{
+Cell[6578, 231, 152, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1170655896],
+Cell[6733, 237, 392, 14, 64, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->2056489351]
+}, Open  ]],
+Cell[7140, 254, 262, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1242785256],
+Cell[CellGroupData[{
+Cell[7427, 268, 152, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1302484886],
+Cell[7582, 274, 390, 14, 64, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->339795493]
+}, Open  ]],
+Cell[7987, 291, 261, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->102826276],
+Cell[CellGroupData[{
+Cell[8273, 305, 151, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->255541888],
+Cell[8427, 311, 701, 25, 64, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->724940306]
+}, Open  ]],
+Cell[9143, 339, 263, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1117022044],
+Cell[CellGroupData[{
+Cell[9431, 353, 153, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1738556670],
+Cell[9587, 359, 796, 27, 67, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->297175504]
+}, Open  ]],
+Cell[10398, 389, 263, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1509439590],
+Cell[CellGroupData[{
+Cell[10686, 403, 153, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1025475425],
+Cell[10842, 409, 6715, 222, 410, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->1707320400]
+}, Open  ]],
+Cell[17572, 634, 260, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->26937910],
+Cell[CellGroupData[{
+Cell[17857, 648, 152, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1790656955],
+Cell[18012, 654, 4224, 144, 304, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->578210880]
+}, Open  ]],
+Cell[22251, 801, 262, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1644657872],
+Cell[CellGroupData[{
+Cell[22538, 815, 153, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1820360375],
+Cell[22694, 821, 6332, 216, 418, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->1694165204]
+}, Open  ]],
+Cell[29041, 1040, 261, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->462099557],
+Cell[CellGroupData[{
+Cell[29327, 1054, 153, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->1613754345],
+Cell[29483, 1060, 5020, 170, 347, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->1244918806]
+}, Open  ]],
+Cell[34518, 1233, 288, 10, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->721182810],
+Cell[CellGroupData[{
+Cell[34831, 1247, 152, 4, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->889064365],
+Cell[34986, 1253, 4489, 143, 337, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->1840404969]
+}, Open  ]],
+Cell[39490, 1399, 330, 11, 42, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1805318835],
+Cell[CellGroupData[{
+Cell[39845, 1414, 315, 10, 27, "Input",
+ CellTags->"AnomalousDimension",
+ CellID->621534472],
+Cell[40163, 1426, 347, 11, 36, "Output",
+ CellTags->"AnomalousDimension",
+ CellID->494342750]
+}, Open  ]]
+}, Open  ]],
+Cell[40537, 1441, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40605, 1446, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[40878, 1460, 574, 22, 32, "Text",
+ CellTags->"AnomalousDimension",
+ CellID->1774979938]
+}, Open  ]],
+Cell[41467, 1485, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

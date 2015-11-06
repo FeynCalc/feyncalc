@@ -1,0 +1,459 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13703,        449]
+NotebookOptionsPosition[     10342,        350]
+NotebookOutlinePosition[     12935,        420]
+CellTagsIndexPosition[     12812,        414]
+WindowTitle->Twist2AlienOperator
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Twist2AlienOperator\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Twist2AlienOperator"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+Twist2AlienOperator.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$154549], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Twist2AlienOperator", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Twist2AlienOperator", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Twist2AlienOperator", "[", 
+       RowBox[{"p", ",", " ", "0"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     ": (7);   Twist2AlienOperator[p1,p2,{p3,mu,a}, 0] (p1: incoming quark \
+momentum, p3: incoming gluon (count1))."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->161689005],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1602310557],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Twist2AlienOperator", "[", 
+  RowBox[{"p", ",", " ", "0"}], "]"}]], "Input",
+ CellTags->"Twist2AlienOperator",
+ CellLabel->"In[1]:=",
+ CellID->902933513],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox["2", "m"], "-", 
+      FractionBox["1", 
+       RowBox[{"m", "+", "1"}]], "-", 
+      FractionBox["2", 
+       RowBox[{"m", "-", "1"}]]}], ")"}], " ", 
+    SubscriptBox["C", "F"], " ", 
+    SubsuperscriptBox["g", "s", "2"], " ", 
+    SubscriptBox["S", "n"], " ", 
+    RowBox[{"\[Gamma]", "\[CenterDot]", 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm]}], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}], ")"}], 
+     RowBox[{"m", "-", "1"}]]}], 
+   TagBox["\[CurlyEpsilon]",
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{311, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Twist2AlienOperator",
+ CellLabel->"Out[1]=",
+ CellID->891789414]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Twist2AlienOperator", "[", 
+  RowBox[{"p1", ",", "p2", ",", 
+   RowBox[{"{", 
+    RowBox[{"p3", ",", "mu", ",", "a"}], "}"}], ",", " ", "0"}], 
+  "]"}]], "Input",
+ CellTags->"Twist2AlienOperator",
+ CellLabel->"In[2]:=",
+ CellID->581588333],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]], 
+   RowBox[{"\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "m"], "+", "1"}], ")"}], " ", 
+    SubsuperscriptBox["g", "s", "3"], " ", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["mu",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    SubscriptBox["S", "n"], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm]}], ")"}]}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox["2", "m"], "-", 
+         FractionBox["1", 
+          RowBox[{"m", "+", "1"}]], "-", 
+         FractionBox["2", 
+          RowBox[{"m", "-", "1"}]]}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             FormBox[
+              FormBox["\[CapitalDelta]",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox["\<\"\[CenterDot]\"\>",
+              TraditionalForm], 
+             FormBox[
+              FormBox["p1",
+               TraditionalForm],
+              TraditionalForm]}], ")"}], 
+           RowBox[{"m", "-", "1"}]], 
+          RowBox[{
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p1",
+              TraditionalForm],
+             TraditionalForm]}], "+", 
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p3",
+              TraditionalForm],
+             TraditionalForm]}]}]], "-", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"-", 
+             RowBox[{"(", 
+              RowBox[{
+               FormBox[
+                FormBox["\[CapitalDelta]",
+                 TraditionalForm],
+                TraditionalForm], 
+               FormBox["\<\"\[CenterDot]\"\>",
+                TraditionalForm], 
+               FormBox[
+                FormBox["p3",
+                 TraditionalForm],
+                TraditionalForm]}], ")"}]}], ")"}], 
+           RowBox[{"m", "-", "1"}]], 
+          RowBox[{
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p1",
+              TraditionalForm],
+             TraditionalForm]}], "+", 
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p3",
+              TraditionalForm],
+             TraditionalForm]}]}]]}], ")"}]}], "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"m", "-", "1"}]], "-", 
+         FractionBox["1", "m"]}], ")"}], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p3",
+              TraditionalForm],
+             TraditionalForm]}], ")"}]}], ")"}], 
+        RowBox[{"m", "-", "2"}]]}]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{420, 154},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Twist2AlienOperator",
+ CellLabel->"Out[2]=",
+ CellID->589738199]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Twist2AlienOperator",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 8, 30.622407}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Twist2AlienOperator[p, 0] : (7); Twist2AlienOperator[p1,p2,{p3,mu,a}, 0] \
+(p1: incoming quark momentum, p3: incoming gluon (count1)).", 
+    "synonyms" -> {}, "title" -> "Twist2AlienOperator", "titlemodifier" -> "",
+     "windowtitle" -> "Twist2AlienOperator", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Twist2AlienOperator"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3471, 96, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->161689005]},
+ "Twist2AlienOperator"->{
+  Cell[4104, 125, 177, 5, 27, "Input",
+   CellTags->"Twist2AlienOperator",
+   CellID->902933513],
+  Cell[4284, 132, 1124, 40, 75, "Output",
+   CellTags->"Twist2AlienOperator",
+   CellID->891789414],
+  Cell[5445, 177, 263, 8, 27, "Input",
+   CellTags->"Twist2AlienOperator",
+   CellID->581588333],
+  Cell[5711, 187, 4565, 156, 175, "Output",
+   CellTags->"Twist2AlienOperator",
+   CellID->589738199]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12243, 394},
+ {"Twist2AlienOperator", 12388, 398}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[591, 21, 2290, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2884, 75, 62, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2949, 78, 497, 14, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3471, 96, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->161689005],
+Cell[CellGroupData[{
+Cell[3883, 115, 196, 6, 25, "ExampleSection",
+ CellID->1602310557],
+Cell[CellGroupData[{
+Cell[4104, 125, 177, 5, 27, "Input",
+ CellTags->"Twist2AlienOperator",
+ CellID->902933513],
+Cell[4284, 132, 1124, 40, 75, "Output",
+ CellTags->"Twist2AlienOperator",
+ CellID->891789414]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5445, 177, 263, 8, 27, "Input",
+ CellTags->"Twist2AlienOperator",
+ CellID->581588333],
+Cell[5711, 187, 4565, 156, 175, "Output",
+ CellTags->"Twist2AlienOperator",
+ CellID->589738199]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[10315, 348, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

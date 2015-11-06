@@ -1,0 +1,6397 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/FunctionalD", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FunctionalD", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FunctionalD", "[", 
+   RowBox[{"expr", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"QuantumField", "[", 
+        RowBox[{"name", ",", " ", 
+         RowBox[{"{", "mu", "}"}], ",", " ", 
+         RowBox[{"{", "a", "}"}]}], "]"}], "[", "p", "]"}], ",", " ", "..."}],
+      "}"}]}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "calculates the functional derivative of expr with respect to the field list \
+(with incoming momenta p etc.) and does the fourier transform. \
+FunctionalD[expr, {QuantumField[name, {mu},{a}], ...}] calculates the \
+functional derivative and does partial integration but omits the x-space \
+delta functions.\n\nFunctionalD is a low level function used in FeynRule."
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["FeynRule",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FeynRule",
+  ButtonNote->"FeynRule"],
+ ", ",
+ ButtonBox["QuantumField",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/QuantumField",
+  ButtonNote->"QuantumField"],
+ "."
+}], "Text",
+ CellTags->"FunctionalD",
+ CellID->2077547280]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[TextData[{
+ "Instead of the usual ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Delta]\[Phi]", "(", "x", ")"}], "/", 
+     RowBox[{"\[Delta]\[Phi]", "(", "y", ")"}]}], "=", 
+    RowBox[{
+     SuperscriptBox["\[Delta]", 
+      RowBox[{"(", "D", ")"}]], "(", 
+     RowBox[{"x", "-", "y"}], ")"}]}], TraditionalForm]]],
+ " the arguments and the \[Delta] function are omitted, i.e., for the program \
+for simplicity: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Delta]\[Phi]", "/", "\[Delta]\[Phi]"}], "=", "1"}], 
+   TraditionalForm]]]
+}], "Text",
+ CellTags->"FunctionalD",
+ CellID->2064540691],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionalD", "[", 
+  RowBox[{
+   RowBox[{"QuantumField", "[", "\[Phi]", "]"}], ",", 
+   RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}], "]"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[1]:=",
+ CellID->622999086],
+
+Cell[BoxData[
+ FormBox["1", TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[1]=",
+ CellID->1374465660]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionalD", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"QuantumField", "[", "\[Phi]", "]"}], "^", "2"}], ",", 
+   RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}], "]"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[2]:=",
+ CellID->272557122],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"2", " ", 
+   FormBox["\[Phi]",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[2]=",
+ CellID->1081798185]
+}, Open  ]],
+
+Cell[TextData[{
+ "Instead of the usual ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Delta]", " ", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[Mu]"], 
+        RowBox[{"\[Phi]", "(", "x", ")"}]}]}], ")"}], "/", 
+     RowBox[{"\[Delta]\[Phi]", "(", "y", ")"}]}], "=", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", "\[Mu]"], 
+     RowBox[{
+      SuperscriptBox["\[Delta]", 
+       RowBox[{"(", "D", ")"}]], "(", 
+      RowBox[{"x", "-", "y"}], ")"}]}]}], TraditionalForm]]],
+ " the arguments are omitted, and the ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[PartialD]", "\[Mu]"], TraditionalForm]]],
+ "operator is specified by default to be an integration by parts operator, \
+i.e., the right hand side will be just ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Null", ","}], TraditionalForm]]],
+ " or, more precisely (by default) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"-", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}], TraditionalForm]]],
+ "."
+}], "Text",
+ ZeroWidthTimes->True,
+ CellTags->"FunctionalD",
+ CellID->412822781],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionalD", "[", 
+  RowBox[{
+   RowBox[{"QuantumField", "[", 
+    RowBox[{
+     RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ",", 
+   RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}], "]"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[3]:=",
+ CellID->1655052767],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{
+     RowBox[{"QuantumField", "(", 
+      RowBox[{
+       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], "(", 
+     ")"}], "\[Prime]",
+    MultilineFunction->None], "\[InvisibleApplication]", 
+   RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[3]=",
+ CellID->463777256]
+}, Open  ]],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"S", "[", "\[Phi]", "]"}], " ", "=", 
+   RowBox[{
+    RowBox[{"1", "/", "2"}], 
+    RowBox[{"\[Integral]", " ", 
+     RowBox[{
+      SuperscriptBox["d", "D"], 
+      RowBox[{"x", " ", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[PartialD]", "\[Mu]"], 
+          RowBox[{"\[Phi]", "(", "x", ")"}]}], " ", 
+         RowBox[{
+          SuperscriptBox["\[PartialD]", "\[Mu]"], 
+          RowBox[{"\[Phi]", "(", "x", ")"}]}]}], "-", 
+        RowBox[{
+         SuperscriptBox["m", "2"], 
+         RowBox[{"\[Phi]", "(", "x", ")"}], " ", 
+         RowBox[{"\[Phi]", "(", "y", ")"}]}]}], "]"}]}]}]}]}], 
+  TraditionalForm]]]], "Text",
+ ZeroWidthTimes->True,
+ CellTags->"FunctionalD",
+ CellID->726694991],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"s", "[", "\[Phi]", "]"}], "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"QuantumField", "[", 
+       RowBox[{
+        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ".", 
+      
+      RowBox[{"QuantumField", "[", 
+       RowBox[{
+        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}]}], 
+     "-", 
+     RowBox[{
+      RowBox[{"m", "^", "2"}], " ", 
+      RowBox[{
+       RowBox[{"QuantumField", "[", "\[Phi]", "]"}], ".", 
+       RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}]}]}], ")"}], "/", 
+   "2"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[4]:=",
+ CellID->593299923],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"QuantumField", "(", 
+       RowBox[{
+        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], ".", 
+      
+      RowBox[{"QuantumField", "(", 
+       RowBox[{
+        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}]}], 
+     "-", 
+     RowBox[{
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       FormBox["\[Phi]",
+        TraditionalForm], ".", 
+       FormBox["\[Phi]",
+        TraditionalForm]}]}]}], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[4]=",
+ CellID->1061632244]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionalD", "[", 
+  RowBox[{
+   RowBox[{"s", "[", "\[Phi]", "]"}], ",", 
+   RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}], "]"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[5]:=",
+ CellID->1102630385],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     RowBox[{"QuantumField", "(", 
+      RowBox[{
+       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], ".", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{
+        RowBox[{"QuantumField", "(", 
+         RowBox[{
+          RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], 
+        "(", ")"}], "\[Prime]",
+       MultilineFunction->None], "\[InvisibleApplication]", 
+      RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{
+        RowBox[{"QuantumField", "(", 
+         RowBox[{
+          RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], 
+        "(", ")"}], "\[Prime]",
+       MultilineFunction->None], "\[InvisibleApplication]", 
+      RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}], ".", 
+     RowBox[{"QuantumField", "(", 
+      RowBox[{
+       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}]}]}], 
+   "+", 
+   RowBox[{
+    SuperscriptBox["m", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      FormBox["\[Phi]",
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[5]=",
+ CellID->435021757]
+}, Open  ]],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"S", "[", "A", "]"}], " ", "=", " ", 
+   RowBox[{"-", 
+    RowBox[{"\[Integral]", " ", 
+     RowBox[{
+      SuperscriptBox["d", "D"], "x", " ", 
+      FractionBox["1", "4"], " ", 
+      RowBox[{
+       SubsuperscriptBox["F", "a", "\[Mu]\[Nu]"], "(", "x", ")"}], " ", 
+      RowBox[{
+       SubscriptBox["F", "\[Mu]\[Nu]a"], "(", "x", ")"}]}]}]}]}], 
+  TraditionalForm]]]], "Text",
+ ZeroWidthTimes->True,
+ CellTags->"FunctionalD",
+ CellID->820504742],
+
+Cell[TextData[StyleBox["First approach",
+ FontWeight->"Bold"]], "Text",
+ CellTags->"FunctionalD",
+ CellID->883647128],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"F1", "=", 
+  RowBox[{"FieldStrength", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "a", ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "b", ",", "c"}], "}"}], ",", "1", ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[6]:=",
+ CellID->575936469],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox["b",
+       TraditionalForm], 
+      FormBox["c",
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[6]=",
+ CellID->1111705641]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"F2", "=", 
+  RowBox[{"FieldStrength", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "a", ",", 
+    RowBox[{"{", 
+     RowBox[{"A", ",", "d", ",", "e"}], "}"}], ",", "1", ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[7]:=",
+ CellID->1966798854],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox["d",
+       TraditionalForm], 
+      FormBox["e",
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[7]=",
+ CellID->1390438184]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "[", "A", "]"}], "=", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"1", "/", "4"}]}], 
+   RowBox[{"F1", ".", "F2"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[8]:=",
+ CellID->733226876],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "4"]}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", 
+        RowBox[{
+         FormBox["a",
+          TraditionalForm], 
+         FormBox["b",
+          TraditionalForm], 
+         FormBox["c",
+          TraditionalForm]}]], " ", 
+       RowBox[{
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["b",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["c",
+           TraditionalForm],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", 
+        RowBox[{
+         FormBox["a",
+          TraditionalForm], 
+         FormBox["d",
+          TraditionalForm], 
+         FormBox["e",
+          TraditionalForm]}]], " ", 
+       RowBox[{
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["d",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["e",
+           TraditionalForm],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[8]=",
+ CellID->62460432]
+}, Open  ]],
+
+Cell[TextData[{
+ "In order to derive the equation of motion the functional derivative of ",
+ Cell[BoxData[
+  FormBox["S", TraditionalForm]]],
+ " with respect to ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["A", "\[Sigma]", "g"], TraditionalForm]]],
+ "has to be set to zero. Bearing in mind that for FeynCalc we have to be \
+precise as to where which operators (coming from the substitution of the \
+derivative of the \[Delta] function) act:, act with the functional derivative \
+operator on the first field strength:"
+}], "Text",
+ CellTags->"FunctionalD",
+ CellID->1999439773],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FormBox[
+     RowBox[{
+      FormBox[
+       RowBox[{
+        FormBox[
+         RowBox[{
+          RowBox[{"0", " ", "=", " ", 
+           FormBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", "\[Delta]S", ")"}], "/", 
+              RowBox[{"(", 
+               RowBox[{"\[Delta]", 
+                RowBox[{
+                 SubsuperscriptBox["A", "\[Sigma]", "g"], "(", "y", ")"}]}], 
+               ")"}]}], "=", 
+             RowBox[{"-", 
+              RowBox[{"2", "/", "4"}]}]}],
+            TraditionalForm]}], 
+          RowBox[{"\[Integral]", 
+           RowBox[{
+            SuperscriptBox["d", "D"], "x"}]}]}],
+         TraditionalForm], " ", 
+        RowBox[{"(", 
+         RowBox[{"\[Delta]", "/", 
+          RowBox[{"(", 
+           RowBox[{"\[Delta]", 
+            RowBox[{
+             SubsuperscriptBox["A", "\[Sigma]", "g"], "(", "y", ")"}]}], 
+           ")"}]}]}]}],
+       TraditionalForm], " ", 
+      RowBox[{
+       SubscriptBox["F", "\[Mu]\[Nu]a"], "(", "x", ")"}]}],
+     TraditionalForm], ")"}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FormBox[
+     RowBox[{" ", 
+      SubsuperscriptBox["F", "a", 
+       RowBox[{",", "\[Mu]\[Nu]"}]]}],
+     TraditionalForm], 
+    RowBox[{"(", "x", ")"}]}], TraditionalForm]]]
+}], "Text",
+ ZeroWidthTimes->True,
+ CellTags->"FunctionalD",
+ CellID->1758153070],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{"See", " ", "what", " ", "happens", " ", "with", " ", "just", 
+   FormBox[
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Delta]", 
+        RowBox[{"S", "[", "A", "]"}]}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"\[Delta]", 
+        SubsuperscriptBox["A", "\[Sigma]", "g"]}], ")"}]}], "."}],
+    TraditionalForm]}], TraditionalForm]]]], "Text",
+ CellTags->"FunctionalD",
+ CellID->833531771],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Ag", "=", 
+  RowBox[{"QuantumField", "[", 
+   RowBox[{"A", ",", 
+    RowBox[{"{", "\[Sigma]", "}"}], ",", 
+    RowBox[{"{", "g", "}"}]}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[9]:=",
+ CellID->371171043],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox[
+   FormBox["A",
+    TraditionalForm], 
+   FormBox[
+    FormBox["\[Sigma]",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox[
+    FormBox["g",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[9]=",
+ CellID->991172064]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", "=", 
+  RowBox[{"FunctionalD", "[", 
+   RowBox[{"F1", ",", "Ag"}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[10]:=",
+ CellID->2041925168],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["g", "_"], 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Sigma]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], ")"}]}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[10]=",
+ CellID->2102523013]
+}, Open  ]],
+
+Cell["\<\
+In order to minimize the number of dummy indices, replace b \[Rule] c.\
+\>", "Text",
+ CellTags->"FunctionalD",
+ CellID->133774632],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", " ", "=", " ", 
+  RowBox[{"t1", " ", "/.", " ", 
+   RowBox[{"b", "\[Rule]", "c"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[11]:=",
+ CellID->1339957551],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["g", "_"], 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Sigma]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], ")"}]}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[11]=",
+ CellID->1221262706]
+}, Open  ]],
+
+Cell[TextData[{
+ "Instead of inserting the definition for the second ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["F", "a", "\[Mu]\[Nu]"], TraditionalForm]]],
+ ", introduce a QuantumField object with antisymmetry built into the Lorentz \
+indices:"
+}], "Text",
+ CellTags->"FunctionalD",
+ CellID->1685160773],
+
+Cell[BoxData[
+ RowBox[{"F", "/:", " ", 
+  RowBox[{"QuantumField", "[", 
+   RowBox[{
+   "pard___", ",", "F", ",", "\[Beta]_", ",", "\[Alpha]_", ",", "s_"}], "]"}],
+   ":=", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"QuantumField", "[", 
+     RowBox[{"pard", ",", "F", ",", "\[Alpha]", ",", "\[Beta]", ",", "s"}], 
+     "]"}]}], "/;", 
+   RowBox[{"!", 
+    RowBox[{"OrderedQ", "[", 
+     RowBox[{"{", 
+      RowBox[{"\[Beta]", ",", "\[Alpha]"}], "}"}], "]"}]}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[12]:=",
+ CellID->324247296],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumField", "[", 
+  RowBox[{"F", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}], ",", 
+   RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[13]:=",
+ CellID->659226066],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox[
+   FormBox["F",
+    TraditionalForm], 
+   RowBox[{
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]}], 
+   FormBox[
+    FormBox["a",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[13]=",
+ CellID->2038446867]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "/.", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\[Mu]", "\[RuleDelayed]", "\[Nu]"}], ",", 
+    RowBox[{"\[Nu]", "\[RuleDelayed]", "\[Mu]"}]}], "}"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[14]:=",
+ CellID->2097130638],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   SubsuperscriptBox[
+    FormBox["F",
+     TraditionalForm], 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]}], 
+    FormBox[
+     FormBox["a",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[14]=",
+ CellID->1307472319]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t2", "=", 
+  RowBox[{
+   RowBox[{"Contract", "[", 
+    RowBox[{"ExpandPartialD", "[", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"1", "/", "2"}]}], " ", 
+      RowBox[{"t1", ".", 
+       RowBox[{"QuantumField", "[", 
+        RowBox[{"F", ",", 
+         RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+         RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+         RowBox[{"SUNIndex", "[", "a", "]"}]}], "]"}]}]}], "]"}], "]"}], "/.", 
+   RowBox[{"Dot", "\[Rule]", "Times"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[15]:=",
+ CellID->1711609273],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SubsuperscriptBox[
+      FormBox["F",
+       TraditionalForm], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]}], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["F",
+       TraditionalForm], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]}], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["F",
+       TraditionalForm], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]}], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]]}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[15]=",
+ CellID->2123805888]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t3", " ", "=", " ", 
+  RowBox[{"t2", " ", "/.", " ", 
+   RowBox[{"\[Nu]", "\[Rule]", "\[Mu]"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[16]:=",
+ CellID->1021322617],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[16]=",
+ CellID->1482322562]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t4", "=", 
+  RowBox[{
+   RowBox[{"FCE", "[", "t3", "]"}], "/.", " ", 
+   RowBox[{
+    RowBox[{"SUNF", "[", 
+     RowBox[{"a", ",", "c", ",", "g"}], "]"}], "\[Rule]", 
+    RowBox[{"-", 
+     RowBox[{"SUNF", "[", 
+      RowBox[{"g", ",", "c", ",", "a"}], "]"}]}]}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[17]:=",
+ CellID->2111632726],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["g",
+       TraditionalForm], 
+      FormBox["c",
+       TraditionalForm], 
+      FormBox["a",
+       TraditionalForm]}]], " ", 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[17]=",
+ CellID->1614884083]
+}, Open  ]],
+
+Cell[TextData[{
+ "Since the variational derivative vanishes t4 implies that 0 = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["D", "\[Mu]"], 
+    SubsuperscriptBox["F", "g", "\[Mu]\[Sigma]"]}], TraditionalForm]]],
+ " ."
+}], "Text",
+ CellTags->"FunctionalD",
+ CellID->1366711149],
+
+Cell[TextData[StyleBox["Second approach",
+ FontWeight->"Bold"]], "Text",
+ CellTags->"FunctionalD",
+ CellID->1672341951],
+
+Cell["\<\
+It is of course also possible to do the functional deriviate on the S[A] with \
+both field strength tensors inserted.\
+\>", "Text",
+ CellTags->"FunctionalD",
+ CellID->680079191],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", "[", "A", "]"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[18]:=",
+ CellID->1996431184],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "4"]}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", 
+        RowBox[{
+         FormBox["a",
+          TraditionalForm], 
+         FormBox["b",
+          TraditionalForm], 
+         FormBox["c",
+          TraditionalForm]}]], " ", 
+       RowBox[{
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["b",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["c",
+           TraditionalForm],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", 
+        RowBox[{
+         FormBox["a",
+          TraditionalForm], 
+         FormBox["d",
+          TraditionalForm], 
+         FormBox["e",
+          TraditionalForm]}]], " ", 
+       RowBox[{
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["d",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["e",
+           TraditionalForm],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[18]=",
+ CellID->933013372]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"r1", "=", 
+  RowBox[{"FunctionalD", "[", 
+   RowBox[{
+    RowBox[{"S", "[", "A", "]"}], ",", "Ag"}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[19]:=",
+ CellID->1238326201],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]]}]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm]]}], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Sigma]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Sigma]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[19]=",
+ CellID->1632031614]
+}, Open  ]],
+
+Cell["\<\
+This is just funcional derivation and partial integration and simple \
+contraction of indices. No attempt is made to rename dummy indices (since \
+this is difficult in general).\
+\>", "Text",
+ CellTags->"FunctionalD",
+ CellID->1367707502],
+
+Cell["\<\
+With a general replacement rule only valid for commuting fields the color \
+indices can be canonicalized a bit more. The idea is to use the commutative \
+properties of the vector fields, and canonicalize the color indices by a \
+trick. This function will work on any commuting product of fields.\
+\>", "Text",
+ CellTags->"FunctionalD",
+ CellID->1173793345],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "symfun", "]"}], ";"}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[20]:=",
+ CellID->62943147],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"symfun", "[", 
+   RowBox[{"z_", ",", "fieldname_Symbol"}], "]"}], ":=", 
+  RowBox[{"Expand", "[", 
+   RowBox[{"SUNSimplify", "[", 
+    RowBox[{"FixedPoint", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Collect2", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"DotSimplify", "[", 
+            RowBox[{"#1", "/.", 
+             RowBox[{"Times", "\[Rule]", "Dot"}]}], "]"}], "/.", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", "qi___", ")"}], ".", 
+                RowBox[{"QuantumField", "[", 
+                 RowBox[{
+                 "par1___", ",", "fieldname", ",", "li1_", ",", "sui1_"}], 
+                 "]"}], ".", 
+                RowBox[{"QuantumField", "[", 
+                 RowBox[{
+                 "par2___", ",", "fieldname", ",", "li2_", ",", "sui2_"}], 
+                 "]"}], ".", "qf___"}], " ", ")"}], "any_"}], ")"}], 
+            "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"qi", ".", 
+                 RowBox[{"QuantumField", "[", 
+                  RowBox[{"par1", ",", "A", ",", "li1", ",", "sui2"}], "]"}], 
+                 ".", 
+                 RowBox[{"QuantumField", "[", 
+                  RowBox[{"par2", ",", "fieldname", ",", "li2", ",", "sui1"}],
+                   "]"}], ".", "qf"}], " ", ")"}], 
+               RowBox[{"(", 
+                RowBox[{"any", "/.", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"sui1", "\[RuleDelayed]", "sui2"}], ",", 
+                   RowBox[{"sui2", "\[RuleDelayed]", "sui1"}]}], "}"}]}], 
+                ")"}]}], ")"}], "/;", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"!", 
+                RowBox[{"(", 
+                 RowBox[{"FreeQ2", "[", 
+                  RowBox[{"any", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"sui1", ",", "su2"}], "}"}]}], "]"}], ")"}]}], 
+               ")"}], "&&", 
+              RowBox[{"!", 
+               RowBox[{"(", 
+                RowBox[{"OrderedQ", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"sui1", ",", "sui2"}], "}"}], "]"}], 
+                ")"}]}]}]}]}]}], "/.", 
+          RowBox[{"Dot", "\[Rule]", "Times"}]}], ",", "QuantumField"}], "]"}],
+        "&"}], ",", "z", ",", "42"}], "]"}], "]"}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[21]:=",
+ CellID->915301036],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"r2", " ", "=", " ", 
+  RowBox[{"symfun", "[", 
+   RowBox[{"r1", ",", "A"}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[22]:=",
+ CellID->832685091],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Sigma]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}], "-", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], 
+       FormBox[
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[Sigma]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[22]=",
+ CellID->981302323]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"r3", "=", 
+  RowBox[{"r2", "/.", 
+   RowBox[{"\[Nu]", "\[Rule]", "\[Mu]"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[23]:=",
+ CellID->706809486],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     FractionBox["3", "4"], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"2", " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[23]=",
+ CellID->885707787]
+}, Open  ]],
+
+Cell[TextData[{
+ "Inspection reveals that still terms are the same. Gather the terms with two \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", " "}], TraditionalForm]]],
+ "'s:"
+}], "Text",
+ CellTags->"FunctionalD",
+ CellID->2140946790],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"twof", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{"r3", ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Count", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"SUNF", "[", "__", "]"}]}], "]"}], "===", "2"}], "&"}]}], 
+   "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[24]:=",
+ CellID->1693929986],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     FractionBox["3", "4"], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "-", 
+   RowBox[{
+    FractionBox["1", "4"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[24]=",
+ CellID->836856627]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"twofnew", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"twof", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+     "+", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"twof", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "/.", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"b", "\[RuleDelayed]", "c"}], ",", 
+         RowBox[{"c", "\[RuleDelayed]", "b"}]}], "}"}]}], ")"}]}], ")"}], "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", "\[RuleDelayed]", "c"}], ",", 
+     RowBox[{"c", "\[RuleDelayed]", "a"}]}], "}"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[25]:=",
+ CellID->1865190780],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}], " ", 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["b",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Sigma]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["e",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[25]=",
+ CellID->221243946]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"r4", " ", "=", " ", 
+  RowBox[{"r3", "-", "twof", "+", "twofnew"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[26]:=",
+ CellID->1416466041],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"2", " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[26]=",
+ CellID->1936806332]
+}, Open  ]],
+
+Cell["\<\
+Check that this is now indeed the same as the t4 result from the first \
+attempt.\
+\>", "Text",
+ CellTags->"FunctionalD",
+ CellID->1808944377],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["t4"], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[27]:=",
+ CellID->819260412],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["g",
+       TraditionalForm], 
+      FormBox["c",
+       TraditionalForm], 
+      FormBox["a",
+       TraditionalForm]}]], " ", 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], 
+    SubsuperscriptBox[
+     FormBox["F",
+      TraditionalForm], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[27]=",
+ CellID->596397790]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"w0", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"RightPartialD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"FieldStrength", "[", 
+     RowBox[{"\[Mu]", ",", "\[Sigma]", ",", "g", ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "a", ",", "b"}], "}"}], ",", "1"}], "]"}]}], "+", 
+   RowBox[{
+    RowBox[{"QuantumField", "[", 
+     RowBox[{"A", ",", 
+      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+      RowBox[{"SUNIndex", "[", "c", "]"}]}], "]"}], 
+    RowBox[{"FieldStrength", "[", 
+     RowBox[{"\[Mu]", ",", "\[Sigma]", ",", "a", ",", 
+      RowBox[{"{", 
+       RowBox[{"A", ",", "b", ",", "d"}], "}"}], ",", "1"}], "]"}], 
+    RowBox[{"SUNF", "[", 
+     RowBox[{"g", ",", "c", ",", "a"}], "]"}]}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[28]:=",
+ CellID->611111290],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["g",
+       TraditionalForm], 
+      FormBox["c",
+       TraditionalForm], 
+      FormBox["a",
+       TraditionalForm]}]], " ", 
+    SubsuperscriptBox["F", 
+     RowBox[{
+      FormBox["\[Mu]",
+       TraditionalForm], 
+      FormBox["\[Sigma]",
+       TraditionalForm]}], 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{"{", 
+        RowBox[{"A", ",", "b", ",", "d"}], "}"}],
+       TraditionalForm], 
+      FormBox["1",
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SubsuperscriptBox["F", 
+     RowBox[{
+      FormBox["\[Mu]",
+       TraditionalForm], 
+      FormBox["\[Sigma]",
+       TraditionalForm]}], 
+     RowBox[{
+      FormBox["g",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{"{", 
+        RowBox[{"A", ",", "a", ",", "b"}], "}"}],
+       TraditionalForm], 
+      FormBox["1",
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[28]=",
+ CellID->343042273]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"w1", "=", 
+  RowBox[{"Explicit", "[", "w0", "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[29]:=",
+ CellID->1841998165],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", 
+        RowBox[{
+         FormBox[
+          FormBox["a",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["b",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["g",
+           TraditionalForm],
+          TraditionalForm]}]], " ", 
+       RowBox[{
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["a",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Sigma]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["b",
+           TraditionalForm],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["g",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["g",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["f", 
+        RowBox[{
+         FormBox[
+          FormBox["a",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["b",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["d",
+           TraditionalForm],
+          TraditionalForm]}]], " ", 
+       RowBox[{
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["b",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Sigma]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["d",
+           TraditionalForm],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["a",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[29]=",
+ CellID->617664029]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"w2", "=", 
+  RowBox[{
+   RowBox[{"ExpandPartialD", "[", "w1", "]"}], "/.", 
+   RowBox[{"Dot", "\[Rule]", "Times"}]}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[30]:=",
+ CellID->256131363],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[30]=",
+ CellID->736049104]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dif1", " ", "=", " ", 
+  RowBox[{"w2", "-", "r4"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[31]:=",
+ CellID->1098654926],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["d",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox["f", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["c",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["g",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["e",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"2", " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FormBox[
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]]}], ")"}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[31]=",
+ CellID->44009684]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dif2", "=", 
+  RowBox[{"symfun", "[", 
+   RowBox[{"dif1", ",", "A"}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[32]:=",
+ CellID->2122973606],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["d",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["d",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["d",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"2", " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"2", " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{
+     SubscriptBox["\[PartialD]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FormBox[
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]],
+       TraditionalForm]}], 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["g",
+        TraditionalForm],
+       TraditionalForm]]}], ")"}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["g",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellTags->"FunctionalD",
+ CellLabel->"Out[32]=",
+ CellID->1507048221]
+}, Open  ]],
+
+Cell["quod erat demonstrandum.", "Text",
+ CellTags->"FunctionalD",
+ CellID->927805887],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Unset", "[", 
+   RowBox[{"s", "[", "\[Phi]", "]"}], "]"}], ";", 
+  RowBox[{"Unset", "[", 
+   RowBox[{"S", "[", "A", "]"}], "]"}], ";", 
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "Ag", ",", "F1", ",", "F2", ",", "t1", ",", "t2", ",", "t3", ",", "t4", 
+    ",", "F", ",", "r1", ",", "r2", ",", "r3", ",", "r4", ",", "symfun", ",", 
+    "twof", ",", "twofnew", ",", "w0", ",", "w1", ",", "w2", ",", "dif1", ",",
+     "dif2", ",", "dif3"}], "]"}]}]], "Input",
+ CellTags->"FunctionalD",
+ CellLabel->"In[33]:=",
+ CellID->1348622684]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

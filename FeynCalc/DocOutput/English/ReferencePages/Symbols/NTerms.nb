@@ -1,0 +1,336 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9406,        326]
+NotebookOptionsPosition[      5539,        200]
+NotebookOutlinePosition[      8307,        281]
+CellTagsIndexPosition[      8199,        275]
+WindowTitle->NTerms
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/NTerms\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/NTerms"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/NTerms.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100873], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/NTerms",
+             ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["NTerms", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"NTerms", "[", "x", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is equivalent to Length if x is a sum; otherwise NTerms[x] returns 1, \
+except NTerms[0] \[Rule] 0."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1449713771],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1081234905],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NTerms", "[", 
+  RowBox[{"a", "-", "b"}], "]"}]], "Input",
+ CellTags->"NTerms",
+ CellLabel->"In[1]:=",
+ CellID->1306328315],
+
+Cell[BoxData[
+ FormBox["2", TraditionalForm]], "Output",
+ ImageSize->{12, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"NTerms",
+ CellLabel->"Out[1]=",
+ CellID->306409458]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NTerms", "[", 
+  RowBox[{"a", " ", "b", " ", "c"}], "]"}]], "Input",
+ CellTags->"NTerms",
+ CellLabel->"In[2]:=",
+ CellID->1734949005],
+
+Cell[BoxData[
+ FormBox["1", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"NTerms",
+ CellLabel->"Out[2]=",
+ CellID->730102974]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NTerms", "[", "9", "]"}]], "Input",
+ CellTags->"NTerms",
+ CellLabel->"In[3]:=",
+ CellID->2035037256],
+
+Cell[BoxData[
+ FormBox["1", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"NTerms",
+ CellLabel->"Out[3]=",
+ CellID->313925848]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NTerms", "[", "0", "]"}]], "Input",
+ CellTags->"NTerms",
+ CellLabel->"In[4]:=",
+ CellID->1695654423],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"NTerms",
+ CellLabel->"Out[4]=",
+ CellID->2111597694]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"NTerms",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 3, 30.338405}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "NTerms[x] is equivalent to Length if x is a sum; otherwise NTerms[x] \
+returns 1, except NTerms[0] -> 0.", "synonyms" -> {}, "title" -> "NTerms", 
+    "titlemodifier" -> "", "windowtitle" -> "NTerms", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/NTerms"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3335, 95, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1449713771]},
+ "NTerms"->{
+  Cell[3969, 124, 147, 5, 27, "Input",
+   CellTags->"NTerms",
+   CellID->1306328315],
+  Cell[4119, 131, 207, 7, 36, "Output",
+   CellTags->"NTerms",
+   CellID->306409458],
+  Cell[4363, 143, 157, 5, 27, "Input",
+   CellTags->"NTerms",
+   CellID->1734949005],
+  Cell[4523, 150, 207, 7, 36, "Output",
+   CellTags->"NTerms",
+   CellID->730102974],
+  Cell[4767, 162, 124, 4, 27, "Input",
+   CellTags->"NTerms",
+   CellID->2035037256],
+  Cell[4894, 168, 207, 7, 36, "Output",
+   CellTags->"NTerms",
+   CellID->313925848],
+  Cell[5138, 180, 124, 4, 27, "Input",
+   CellTags->"NTerms",
+   CellID->1695654423],
+  Cell[5265, 186, 208, 7, 36, "Output",
+   CellTags->"NTerms",
+   CellID->2111597694]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7353, 243},
+ {"NTerms", 7486, 247}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2818, 75, 49, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2870, 78, 440, 13, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3335, 95, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1449713771],
+Cell[CellGroupData[{
+Cell[3748, 114, 196, 6, 25, "ExampleSection",
+ CellID->1081234905],
+Cell[CellGroupData[{
+Cell[3969, 124, 147, 5, 27, "Input",
+ CellTags->"NTerms",
+ CellID->1306328315],
+Cell[4119, 131, 207, 7, 36, "Output",
+ CellTags->"NTerms",
+ CellID->306409458]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4363, 143, 157, 5, 27, "Input",
+ CellTags->"NTerms",
+ CellID->1734949005],
+Cell[4523, 150, 207, 7, 36, "Output",
+ CellTags->"NTerms",
+ CellID->730102974]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4767, 162, 124, 4, 27, "Input",
+ CellTags->"NTerms",
+ CellID->2035037256],
+Cell[4894, 168, 207, 7, 36, "Output",
+ CellTags->"NTerms",
+ CellID->313925848]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5138, 180, 124, 4, 27, "Input",
+ CellTags->"NTerms",
+ CellID->1695654423],
+Cell[5265, 186, 208, 7, 36, "Output",
+ CellTags->"NTerms",
+ CellID->2111597694]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[5512, 198, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

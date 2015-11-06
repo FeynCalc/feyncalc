@@ -1,0 +1,595 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17296,        585]
+NotebookOptionsPosition[     12787,        451]
+NotebookOutlinePosition[     15988,        537]
+CellTagsIndexPosition[     15869,        531]
+WindowTitle->CalcColorFactor
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/CalcColorFactor\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/CalcColorFactor"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+CalcColorFactor.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20156], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/CalcColorFactor", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["CalcColorFactor", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"CalcColorFactor", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "calculates the color factor of expr.  CalcColorFactor is useful for \
+application on FeynArts produced amplitudes. CalcColorFactor is just a macro \
+function for CalcColorFactor[x_] := \nIf[FreeQ2[FeynCalcInternal[x], \
+SUNIndex],  x, \n                    SUNSimplify[SUNSimplify[  (If[ \
+!FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[  SUNSimplify[x]], Explicit \
+-> False], Explicit -> True]]."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1790511816],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->665912056],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Examples"], "Subsubsection",
+ CellTags->"CalcColorFactor",
+ CellID->86935840],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CalcColorFactor", "[", 
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "d"}], "]"}]}], "]"}]], "Input",
+ CellTags->"CalcColorFactor",
+ CellLabel->"In[1]:=",
+ CellID->1491586567],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["C", "A"], " ", 
+   SuperscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["d",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{54, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CalcColorFactor",
+ CellLabel->"Out[1]=",
+ CellID->1436200004]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Amplitude", "[", "\"\<q2se2\>\"", "]"}]], "Input",
+ CellTags->"CalcColorFactor",
+ CellLabel->"In[2]:=",
+ CellID->1818256691],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"SUNDeltaContract", "(", 
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[CapitalPi]", 
+      RowBox[{
+       FormBox["ci1",
+        TraditionalForm], 
+       FormBox["ci3",
+        TraditionalForm]}], 
+      RowBox[{
+       FormBox["li1",
+        TraditionalForm], 
+       FormBox["li3",
+        TraditionalForm]}]], "(", 
+     FormBox[
+      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+      TraditionalForm], ")"}], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[CapitalPi]", 
+      RowBox[{
+       FormBox["ci9",
+        TraditionalForm], 
+       FormBox["ci11",
+        TraditionalForm]}], 
+      RowBox[{
+       FormBox["li9",
+        TraditionalForm], 
+       FormBox["li11",
+        TraditionalForm]}]], "(", 
+     FormBox[
+      RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+      TraditionalForm], ")"}], " ", 
+    RowBox[{
+     SubsuperscriptBox["Q", 
+      FormBox["ci11",
+       TraditionalForm], 
+      FormBox["li11",
+       TraditionalForm]], ".", 
+     RowBox[{
+      SubscriptBox["\[CapitalPi]", "q"], "(", 
+      FormBox[
+       RowBox[{
+        RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}], "-", 
+        RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}]}],
+       TraditionalForm], ")"}], ".", 
+     SubsuperscriptBox["Q", 
+      FormBox["ci1",
+       TraditionalForm], 
+      FormBox["li1",
+       TraditionalForm]]}], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      RowBox[{"tr", "(", 
+       FormBox[
+        RowBox[{"2", " ", 
+         SubscriptBox["T", "f"], " ", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[CapitalPi]", "q"], "(", 
+           FormBox[
+            RowBox[{"-", 
+             RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}]}],
+            TraditionalForm], ")"}], ".", 
+          SubsuperscriptBox["Q", 
+           FormBox["ci9",
+            TraditionalForm], 
+           FormBox["li9",
+            TraditionalForm]], ".", 
+          RowBox[{
+           SubscriptBox["\[CapitalPi]", "q"], "(", 
+           FormBox[
+            RowBox[{
+             RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}], "-", 
+             RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}]}],
+            TraditionalForm], ")"}], ".", 
+          SubsuperscriptBox["Q", 
+           FormBox["ci3",
+            TraditionalForm], 
+           FormBox["li3",
+            TraditionalForm]]}]}],
+        TraditionalForm], ")"}]}], ")"}]}], ")"}], TraditionalForm]], "Output",\
+
+ ImageSize->{503, 81},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CalcColorFactor",
+ CellLabel->"Out[2]=",
+ CellID->1553911339]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CalcColorFactor", "@", 
+  RowBox[{"Explicit", "@", "%"}]}]], "Input",
+ CellTags->"CalcColorFactor",
+ CellLabel->"In[3]:=",
+ CellID->361683152],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["C", "F"], " ", 
+     SubscriptBox["T", "f"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["1", 
+        SuperscriptBox[
+         FormBox[
+          RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+          TraditionalForm], "2"]], ")"}], "2"], " ", 
+     SubsuperscriptBox["g", "s", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["C", "A"], "-", 
+       RowBox[{"2", " ", 
+        SubscriptBox["C", "F"]}]}], ")"}], " ", 
+     FormBox[
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["li1",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["li3",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm], " ", 
+     FormBox[
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["li11",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["li9",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm], " ", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["li11",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox[
+            RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+            TraditionalForm], "-", 
+           FormBox[
+            RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], ")"}], ")"}], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["li1",
+         TraditionalForm],
+        TraditionalForm]]}], " ", 
+     RowBox[{"tr", "(", 
+      FormBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"\[Gamma]", "\[CenterDot]", 
+          FormBox[
+           FormBox[
+            RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+            TraditionalForm],
+           TraditionalForm]}], ")"}], ".", 
+        SuperscriptBox["\[Gamma]", 
+         FormBox[
+          FormBox["li9",
+           TraditionalForm],
+          TraditionalForm]], ".", 
+        RowBox[{"(", 
+         RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox[
+              RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+              TraditionalForm], "-", 
+             FormBox[
+              RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], ")"}], ")"}], ".", 
+        SuperscriptBox["\[Gamma]", 
+         FormBox[
+          FormBox["li3",
+           TraditionalForm],
+          TraditionalForm]]}],
+       TraditionalForm], ")"}]}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+       TraditionalForm], "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+         TraditionalForm], "-", 
+        FormBox[
+         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+         TraditionalForm]}], ")"}], "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}],
+         TraditionalForm], "-", 
+        FormBox[
+         RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}],
+         TraditionalForm]}], ")"}], "2"]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{433, 149},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CalcColorFactor",
+ CellLabel->"Out[3]=",
+ CellID->1233692379]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["SUNSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNSimplify",
+  ButtonNote->"SUNSimplify"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"CalcColorFactor",
+ CellID->1899752684]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"CalcColorFactor",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 56, 24.036593}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "CalcColorFactor[expr] calculates the color factor of expr. \
+CalcColorFactor is useful for application on FeynArts produced amplitudes. \
+CalcColorFactor is just a macro function for CalcColorFactor[x_] := \
+If[FreeQ2[FeynCalcInternal[x], SUNIndex], x, SUNSimplify[SUNSimplify[ (If[ \
+!FreeQ[#1, DiracGamma], DiracTrick[#1], #1] & )[SUNSimplify[x]], Explicit -> \
+False], Explicit -> True]].", "synonyms" -> {}, "title" -> "CalcColorFactor", 
+    "titlemodifier" -> "", "windowtitle" -> "CalcColorFactor", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/CalcColorFactor"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3700, 99, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1790511816]},
+ "CalcColorFactor"->{
+  Cell[4311, 126, 91, 2, 35, "Subsubsection",
+   CellTags->"CalcColorFactor",
+   CellID->86935840],
+  Cell[4427, 132, 299, 9, 27, "Input",
+   CellTags->"CalcColorFactor",
+   CellID->1491586567],
+  Cell[4729, 143, 471, 19, 40, "Output",
+   CellTags->"CalcColorFactor",
+   CellID->1436200004],
+  Cell[5237, 167, 148, 4, 27, "Input",
+   CellTags->"CalcColorFactor",
+   CellID->1818256691],
+  Cell[5388, 173, 2564, 89, 102, "Output",
+   CellTags->"CalcColorFactor",
+   CellID->1553911339],
+  Cell[7989, 267, 166, 5, 27, "Input",
+   CellTags->"CalcColorFactor",
+   CellID->361683152],
+  Cell[8158, 274, 3975, 140, 170, "Output",
+   CellTags->"CalcColorFactor",
+   CellID->1233692379],
+  Cell[12501, 437, 244, 9, 70, "Text",
+   CellTags->"CalcColorFactor",
+   CellID->1899752684]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 14928, 499},
+ {"CalcColorFactor", 15070, 503}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2273, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2863, 75, 58, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2924, 78, 751, 17, 165, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3700, 99, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1790511816],
+Cell[4091, 116, 195, 6, 25, "ExampleSection",
+ CellID->665912056],
+Cell[CellGroupData[{
+Cell[4311, 126, 91, 2, 35, "Subsubsection",
+ CellTags->"CalcColorFactor",
+ CellID->86935840],
+Cell[CellGroupData[{
+Cell[4427, 132, 299, 9, 27, "Input",
+ CellTags->"CalcColorFactor",
+ CellID->1491586567],
+Cell[4729, 143, 471, 19, 40, "Output",
+ CellTags->"CalcColorFactor",
+ CellID->1436200004]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5237, 167, 148, 4, 27, "Input",
+ CellTags->"CalcColorFactor",
+ CellID->1818256691],
+Cell[5388, 173, 2564, 89, 102, "Output",
+ CellTags->"CalcColorFactor",
+ CellID->1553911339]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7989, 267, 166, 5, 27, "Input",
+ CellTags->"CalcColorFactor",
+ CellID->361683152],
+Cell[8158, 274, 3975, 140, 170, "Output",
+ CellTags->"CalcColorFactor",
+ CellID->1233692379]
+}, Open  ]],
+Cell[12148, 417, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12228, 423, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[12501, 437, 244, 9, 70, "Text",
+ CellTags->"CalcColorFactor",
+ CellID->1899752684]
+}, Open  ]],
+Cell[12760, 449, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

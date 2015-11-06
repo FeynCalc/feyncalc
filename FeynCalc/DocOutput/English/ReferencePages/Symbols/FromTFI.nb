@@ -1,0 +1,496 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14150,        486]
+NotebookOptionsPosition[     10212,        362]
+NotebookOutlinePosition[     12994,        441]
+CellTagsIndexPosition[     12883,        435]
+WindowTitle->FromTFI
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FromTFI\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FromTFI"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/FromTFI.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69032], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FromTFI", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FromTFI", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FromTFI", "[", 
+       RowBox[{"expr", ",", " ", "q1", ",", " ", "q2", ",", " ", "p"}], 
+       "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "translates the TFI notation from the TARCER package to the usual \
+FeynCalc notation. See the TARCER documentation on TFI for details on the \
+conventions."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1038230819],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1111061964],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToTFI", "[", 
+  RowBox[{
+   RowBox[{"FAD", "[", 
+    RowBox[{"q1", ",", 
+     RowBox[{"q1", "-", "p"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q2", ",", "M"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"q2", "-", "p"}], ",", "m"}], "}"}], ",", 
+     RowBox[{"q1", "-", "q2"}]}], "]"}], ",", "q1", ",", "q2", ",", "p"}], 
+  "]"}]], "Input",
+ CellTags->"FromTFI",
+ CellLabel->"In[1]:=",
+ CellID->546580717],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"TFI", "(", 
+   RowBox[{"D", ",", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     TraditionalForm], ",", 
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0"},
+       {"1", "M"},
+       {"1", "0"},
+       {"1", "m"},
+       {"1", "0"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{138, 87},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FromTFI",
+ CellLabel->"Out[1]=",
+ CellID->569801456]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FromTFI", "[", 
+  RowBox[{
+   RowBox[{"TFI", "[", 
+    RowBox[{"D", ",", 
+     RowBox[{"SPD", "[", 
+      RowBox[{"p", ",", "p"}], "]"}], ",", 
+     RowBox[{"SOD", "[", "p", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "M"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "m"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], "]"}], ",", "q1", ",", 
+   "q2", ",", "p"}], "]"}]], "Input",
+ CellTags->"FromTFI",
+ CellLabel->"In[2]:=",
+ CellID->764654490],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"TFI", "(", 
+   RowBox[{"D", ",", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     TraditionalForm], ",", 
+    RowBox[{
+     FormBox["\<\"\[CapitalDelta]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox["p",
+      TraditionalForm]}], ",", 
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0"},
+       {"1", "M"},
+       {"1", "0"},
+       {"1", "m"},
+       {"1", "0"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{177, 87},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FromTFI",
+ CellLabel->"Out[2]=",
+ CellID->306530383]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FromTFI", "[", 
+  RowBox[{
+   RowBox[{"TFI", "[", 
+    RowBox[{"D", ",", 
+     RowBox[{"SPD", "[", 
+      RowBox[{"p", ",", "p"}], "]"}], ",", 
+     RowBox[{"SOD", "[", "p", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "m"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "M"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "m"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], "]"}], ",", "q1", ",", 
+   "q2", ",", "p"}], "]"}]], "Input",
+ CellTags->"FromTFI",
+ CellLabel->"In[3]:=",
+ CellID->309007545],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"TFI", "(", 
+   RowBox[{"D", ",", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     TraditionalForm], ",", 
+    RowBox[{
+     FormBox["\<\"\[CapitalDelta]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox["p",
+      TraditionalForm]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}], ",", 
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "m"},
+       {"1", "M"},
+       {"1", "0"},
+       {"1", "m"},
+       {"1", "0"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{220, 87},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FromTFI",
+ CellLabel->"Out[3]=",
+ CellID->1419230577]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["ToTFI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToTFI",
+  ButtonNote->"ToTFI"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FromTFI",
+ CellID->1628456210]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FromTFI",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 0, 42.273403}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FromTFI[expr, q1, q2, p] translates the TFI notation from the TARCER \
+package to the usual FeynCalc notation. See the TARCER documentation on TFI \
+for details on the conventions.", "synonyms" -> {}, "title" -> "FromTFI", 
+    "titlemodifier" -> "", "windowtitle" -> "FromTFI", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/FromTFI"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3473, 98, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1038230819]},
+ "FromTFI"->{
+  Cell[4107, 127, 449, 15, 27, "Input",
+   CellTags->"FromTFI",
+   CellID->546580717],
+  Cell[4559, 144, 1001, 34, 108, "Output",
+   CellTags->"FromTFI",
+   CellID->569801456],
+  Cell[5597, 183, 711, 23, 45, "Input",
+   CellTags->"FromTFI",
+   CellID->764654490],
+  Cell[6311, 208, 1191, 41, 108, "Output",
+   CellTags->"FromTFI",
+   CellID->306530383],
+  Cell[7539, 254, 774, 25, 45, "Input",
+   CellTags->"FromTFI",
+   CellID->309007545],
+  Cell[8316, 281, 1253, 43, 108, "Output",
+   CellTags->"FromTFI",
+   CellID->1419230577],
+  Cell[9937, 347, 233, 10, 70, "Text",
+   CellTags->"FromTFI",
+   CellID->1628456210]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12106, 406},
+ {"FromTFI", 12240, 410}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2822, 75, 50, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2875, 78, 573, 16, 97, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3473, 98, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1038230819],
+Cell[CellGroupData[{
+Cell[3886, 117, 196, 6, 25, "ExampleSection",
+ CellID->1111061964],
+Cell[CellGroupData[{
+Cell[4107, 127, 449, 15, 27, "Input",
+ CellTags->"FromTFI",
+ CellID->546580717],
+Cell[4559, 144, 1001, 34, 108, "Output",
+ CellTags->"FromTFI",
+ CellID->569801456]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5597, 183, 711, 23, 45, "Input",
+ CellTags->"FromTFI",
+ CellID->764654490],
+Cell[6311, 208, 1191, 41, 108, "Output",
+ CellTags->"FromTFI",
+ CellID->306530383]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7539, 254, 774, 25, 45, "Input",
+ CellTags->"FromTFI",
+ CellID->309007545],
+Cell[8316, 281, 1253, 43, 108, "Output",
+ CellTags->"FromTFI",
+ CellID->1419230577]
+}, Open  ]]
+}, Open  ]],
+Cell[9596, 328, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9664, 333, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9937, 347, 233, 10, 70, "Text",
+ CellTags->"FromTFI",
+ CellID->1628456210]
+}, Open  ]],
+Cell[10185, 360, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,365 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10278,        355]
+NotebookOptionsPosition[      6724,        244]
+NotebookOutlinePosition[      9330,        318]
+CellTagsIndexPosition[      9221,        312]
+WindowTitle->ToLarin
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ToLarin\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ToLarin"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/ToLarin.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151477], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ToLarin", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ToLarin", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ToLarin", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "translates all ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+        SuperscriptBox["\[Gamma]", "\[Mu]"], " ", 
+        SuperscriptBox["\[Gamma]", "5"]}], TraditionalForm]]],
+     " in exp into ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], "/", "6"}], " ", 
+        SuperscriptBox["\[CurlyEpsilon]", "\[Mu]\[Nu]\[Lambda]\[Sigma]"], 
+        SuperscriptBox["\[Gamma]", "\[Nu]"], " ", 
+        SuperscriptBox["\[Gamma]", "\[Lambda]"], " ", 
+        RowBox[{
+         SuperscriptBox["\[Gamma]", "\[Sigma]"], "."}]}], TraditionalForm]]]
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->142634621],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->638551667],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracMatrix", "[", "\[Nu]", "]"}], ".", 
+  RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"DiracMatrix", "[", "5", "]"}]}]], "Input",
+ CellTags->"ToLarin",
+ CellLabel->"In[1]:=",
+ CellID->975355057],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox["5",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{67, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToLarin",
+ CellLabel->"Out[1]=",
+ CellID->1694360393]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToLarin", "[", "%", "]"}]], "Input",
+ CellTags->"ToLarin",
+ CellLabel->"In[2]:=",
+ CellID->24926200],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], ".", 
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox["5",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{67, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToLarin",
+ CellLabel->"Out[2]=",
+ CellID->758627970]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Eps",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"ToLarin",
+ CellID->2133763221]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ToLarin",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 8, 12.960794}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ToLarin[exp] translates all \\[Gamma]^\\[Mu] \\[Gamma]^5 in exp into \
+-I/6 \\[CurlyEpsilon]^\\[Mu]\\[Nu]\\[Lambda]\\[Sigma] \\[Gamma]^\\[Nu] \\ \
+\\[Gamma]^\\[Lambda] \\[Gamma]^\\[Sigma].", "synonyms" -> {}, "title" -> 
+    "ToLarin", "titlemodifier" -> "", "windowtitle" -> "ToLarin", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/ToLarin"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3848, 110, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->142634621]},
+ "ToLarin"->{
+  Cell[4480, 139, 246, 7, 27, "Input",
+   CellTags->"ToLarin",
+   CellID->975355057],
+  Cell[4729, 148, 605, 24, 39, "Output",
+   CellTags->"ToLarin",
+   CellID->1694360393],
+  Cell[5371, 177, 124, 4, 27, "Input",
+   CellTags->"ToLarin",
+   CellID->24926200],
+  Cell[5498, 183, 604, 24, 39, "Output",
+   CellTags->"ToLarin",
+   CellID->758627970],
+  Cell[6470, 230, 212, 9, 32, "Text",
+   CellTags->"ToLarin",
+   CellID->2133763221]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8629, 289},
+ {"ToLarin", 8763, 293}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 2241, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2823, 75, 50, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2876, 78, 947, 28, 87, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3848, 110, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->142634621],
+Cell[CellGroupData[{
+Cell[4260, 129, 195, 6, 25, "ExampleSection",
+ CellID->638551667],
+Cell[CellGroupData[{
+Cell[4480, 139, 246, 7, 27, "Input",
+ CellTags->"ToLarin",
+ CellID->975355057],
+Cell[4729, 148, 605, 24, 39, "Output",
+ CellTags->"ToLarin",
+ CellID->1694360393]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5371, 177, 124, 4, 27, "Input",
+ CellTags->"ToLarin",
+ CellID->24926200],
+Cell[5498, 183, 604, 24, 39, "Output",
+ CellTags->"ToLarin",
+ CellID->758627970]
+}, Open  ]]
+}, Open  ]],
+Cell[6129, 211, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6197, 216, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6470, 230, 212, 9, 32, "Text",
+ CellTags->"ToLarin",
+ CellID->2133763221]
+}, Open  ]],
+Cell[6697, 242, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

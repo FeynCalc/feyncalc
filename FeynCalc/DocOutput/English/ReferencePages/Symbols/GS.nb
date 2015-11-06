@@ -1,0 +1,539 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14519,        529]
+NotebookOptionsPosition[      9845,        375]
+NotebookOutlinePosition[     13031,        468]
+CellTagsIndexPosition[     12925,        462]
+WindowTitle->GS
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GS\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GS"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/GS.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78741], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/GS", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GS", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GS", "[", "p", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "can be used as input for a 4-dimensional ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+       "p", " \[NegativeMediumSpace]", 
+        "\[NegativeMediumSpace]\[NegativeMediumSpace]", 
+        "\[NegativeMediumSpace]", "/", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"=", 
+           RowBox[{"\[Gamma]", ".", "p"}]}], " ", "=", " ", 
+          RowBox[{
+           SubscriptBox["\[Gamma]", "\[Mu]"], 
+           SuperscriptBox["p", "\[Mu]"]}]}], ")"}]}], TraditionalForm]]],
+     " and is transformed into DiracGamma[Momentum[p]] by FeynCalcInternal \
+(=FCI). GS[p,q, ...] is a short form for GS[p].GS[q]. ... ."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->608524796],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1456702802],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GS", "[", "p", "]"}]], "Input",
+ CellTags->"GS",
+ CellLabel->"In[1]:=",
+ CellID->1176675883],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{33, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GS",
+ CellLabel->"Out[1]=",
+ CellID->682141754]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GS", "[", "p", "]"}], "//", "FCI"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"GS",
+ CellLabel->"In[2]:=",
+ CellID->1027241244],
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{"Momentum", "[", "p", "]"}], "]"}]], "Output",
+ ImageSize->{195, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GS",
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->1007084382]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GS", "[", 
+  RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}]], "Input",
+ CellTags->"GS",
+ CellLabel->"In[3]:=",
+ CellID->1339265647],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["r",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["s",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{179, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GS",
+ CellLabel->"Out[3]=",
+ CellID->1827181467]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", 
+   RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"GS",
+ CellLabel->"In[4]:=",
+ CellID->837744205],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", "q", "]"}], ".", 
+  RowBox[{"GS", "[", "r", "]"}], ".", 
+  RowBox[{"GS", "[", "s", "]"}]}]], "Output",
+ ImageSize->{194, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GS",
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->451922065]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", "q", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GS", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+  RowBox[{"GS", "[", "q", "]"}]}]], "Input",
+ CellTags->"GS",
+ CellLabel->"In[5]:=",
+ CellID->2143558790],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], "+", "m"}], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{165, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GS",
+ CellLabel->"Out[5]=",
+ CellID->373152039]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracSlash",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSlash",
+  ButtonNote->"DiracSlash"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GAD",
+  ButtonNote->"GAD"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GS",
+ CellID->1515784011]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GS",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 35.103191}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GS[p] can be used as input for a 4-dimensional p \\[NegativeMediumSpace]\
+\\[NegativeMediumSpace]\\[NegativeMediumSpace]\\ \\[NegativeMediumSpace]/ (= \
+\\[Gamma].p = \\[Gamma]\\[Mu] p^\\[Mu]) and is transformed into \
+DiracGamma[Momentum[p]] by FeynCalcInternal (=FCI). GS[p,q, ...] is a short \
+form for GS[p].GS[q]. ... .", "synonyms" -> {}, "title" -> "GS", 
+    "titlemodifier" -> "", "windowtitle" -> "GS", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/GS"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3857, 109, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->608524796]},
+ "GS"->{
+  Cell[4490, 138, 116, 4, 27, "Input",
+   CellTags->"GS",
+   CellID->1176675883],
+  Cell[4609, 144, 365, 14, 38, "Output",
+   CellTags->"GS",
+   CellID->682141754],
+  Cell[5011, 163, 181, 7, 27, "Input",
+   CellTags->"GS",
+   CellID->1027241244],
+  Cell[5195, 172, 262, 8, 36, "Output",
+   CellTags->"GS",
+   CellID->1007084382],
+  Cell[5494, 185, 159, 5, 27, "Input",
+   CellTags->"GS",
+   CellID->1339265647],
+  Cell[5656, 192, 1220, 48, 39, "Output",
+   CellTags->"GS",
+   CellID->1827181467],
+  Cell[6913, 245, 197, 7, 27, "Input",
+   CellTags->"GS",
+   CellID->837744205],
+  Cell[7113, 254, 348, 11, 36, "Output",
+   CellTags->"GS",
+   CellID->451922065],
+  Cell[7498, 270, 256, 9, 27, "Input",
+   CellTags->"GS",
+   CellID->2143558790],
+  Cell[7757, 281, 1000, 39, 39, "Output",
+   CellTags->"GS",
+   CellID->373152039],
+  Cell[9125, 343, 678, 27, 31, "Text",
+   CellTags->"GS",
+   CellID->1515784011]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11863, 421},
+ {"GS", 11992, 425}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2233, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2810, 75, 45, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 974, 27, 102, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3857, 109, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->608524796],
+Cell[CellGroupData[{
+Cell[4269, 128, 196, 6, 25, "ExampleSection",
+ CellID->1456702802],
+Cell[CellGroupData[{
+Cell[4490, 138, 116, 4, 27, "Input",
+ CellTags->"GS",
+ CellID->1176675883],
+Cell[4609, 144, 365, 14, 38, "Output",
+ CellTags->"GS",
+ CellID->682141754]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5011, 163, 181, 7, 27, "Input",
+ CellTags->"GS",
+ CellID->1027241244],
+Cell[5195, 172, 262, 8, 36, "Output",
+ CellTags->"GS",
+ CellID->1007084382]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5494, 185, 159, 5, 27, "Input",
+ CellTags->"GS",
+ CellID->1339265647],
+Cell[5656, 192, 1220, 48, 39, "Output",
+ CellTags->"GS",
+ CellID->1827181467]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6913, 245, 197, 7, 27, "Input",
+ CellTags->"GS",
+ CellID->837744205],
+Cell[7113, 254, 348, 11, 36, "Output",
+ CellTags->"GS",
+ CellID->451922065]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7498, 270, 256, 9, 27, "Input",
+ CellTags->"GS",
+ CellID->2143558790],
+Cell[7757, 281, 1000, 39, 39, "Output",
+ CellTags->"GS",
+ CellID->373152039]
+}, Open  ]]
+}, Open  ]],
+Cell[8784, 324, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8852, 329, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9125, 343, 678, 27, 31, "Text",
+ CellTags->"GS",
+ CellID->1515784011]
+}, Open  ]],
+Cell[9818, 373, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

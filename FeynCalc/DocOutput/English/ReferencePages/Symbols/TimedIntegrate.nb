@@ -1,0 +1,361 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10702,        351]
+NotebookOptionsPosition[      6627,        225]
+NotebookOutlinePosition[      9575,        308]
+CellTagsIndexPosition[      9459,        302]
+WindowTitle->TimedIntegrate
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/TimedIntegrate\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/TimedIntegrate"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+TimedIntegrate.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$148754], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/TimedIntegrate", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["TimedIntegrate", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"TimedIntegrate", "[", 
+       RowBox[{"exp", ",", " ", "vars"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is like Integrate, but stops after the number of seconds specified by \
+the option Timing. Options of Integrate can be given and are passed on."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->857331981],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->908900622],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "TimedIntegrate", "]"}]], "Input",
+ CellTags->"TimedIntegrate",
+ CellLabel->"In[1]:=",
+ CellID->92169636],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Timing", "\[Rule]", "10"}], ",", 
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], ">", "0"}]}], ",", 
+    RowBox[{"Integrate", "\[Rule]", "Integrate"}], ",", 
+    RowBox[{"Expand", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{489, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"TimedIntegrate",
+ CellLabel->"Out[1]=",
+ CellID->1160941869]
+}, Open  ]],
+
+Cell["This should reach to be done", "Text",
+ CellTags->"TimedIntegrate",
+ CellID->2077974742],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TimedIntegrate", "[", 
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{"x", "^", "5"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"Timing", "\[Rule]", "1"}]}], "]"}]], "Input",
+ CellTags->"TimedIntegrate",
+ CellLabel->"In[2]:=",
+ CellID->2109784600],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "5"}], TraditionalForm]], "Output",
+ ImageSize->{22, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"TimedIntegrate",
+ CellLabel->"Out[2]=",
+ CellID->2016361212]
+}, Open  ]],
+
+Cell["This shouldn't", "Text",
+ CellTags->"TimedIntegrate",
+ CellID->1118158911],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TimedIntegrate", "[", 
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{"Cos", "[", 
+     RowBox[{"x", "^", "5"}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"Timing", "\[Rule]", "10"}], ",", 
+   RowBox[{"Integrate", "\[Rule]", "int"}]}], "]"}]], "Input",
+ CellTags->"TimedIntegrate",
+ CellLabel->"In[3]:=",
+ CellID->2007698884],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"int", "(", 
+   RowBox[{
+    RowBox[{"log", "(", 
+     RowBox[{"cos", "(", 
+      SuperscriptBox["x", "5"], ")"}], ")"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], ">", "0"}]}]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{325, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"TimedIntegrate",
+ CellLabel->"Out[3]=",
+ CellID->176617232]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"TimedIntegrate",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 7, 57.310161}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "TimedIntegrate[exp, vars] is like Integrate, but stops after the number \
+of seconds specified by the option Timing. Options of Integrate can be given \
+and are passed on.", "synonyms" -> {}, "title" -> "TimedIntegrate", 
+    "titlemodifier" -> "", "windowtitle" -> "TimedIntegrate", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/TimedIntegrate"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3474, 96, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->857331981]},
+ "TimedIntegrate"->{
+  Cell[4106, 125, 144, 4, 27, "Input",
+   CellTags->"TimedIntegrate",
+   CellID->92169636],
+  Cell[4253, 131, 530, 17, 36, "Output",
+   CellTags->"TimedIntegrate",
+   CellID->1160941869],
+  Cell[4798, 151, 94, 2, 31, "Text",
+   CellTags->"TimedIntegrate",
+   CellID->2077974742],
+  Cell[4917, 157, 323, 10, 27, "Input",
+   CellTags->"TimedIntegrate",
+   CellID->2109784600],
+  Cell[5243, 169, 234, 8, 36, "Output",
+   CellTags->"TimedIntegrate",
+   CellID->2016361212],
+  Cell[5492, 180, 80, 2, 31, "Text",
+   CellTags->"TimedIntegrate",
+   CellID->1118158911],
+  Cell[5597, 186, 407, 12, 27, "Input",
+   CellTags->"TimedIntegrate",
+   CellID->2007698884],
+  Cell[6007, 200, 554, 18, 42, "Output",
+   CellTags->"TimedIntegrate",
+   CellID->176617232]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8543, 270},
+ {"TimedIntegrate", 8683, 274}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2859, 75, 57, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2919, 78, 530, 14, 97, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3474, 96, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->857331981],
+Cell[CellGroupData[{
+Cell[3886, 115, 195, 6, 25, "ExampleSection",
+ CellID->908900622],
+Cell[CellGroupData[{
+Cell[4106, 125, 144, 4, 27, "Input",
+ CellTags->"TimedIntegrate",
+ CellID->92169636],
+Cell[4253, 131, 530, 17, 36, "Output",
+ CellTags->"TimedIntegrate",
+ CellID->1160941869]
+}, Open  ]],
+Cell[4798, 151, 94, 2, 31, "Text",
+ CellTags->"TimedIntegrate",
+ CellID->2077974742],
+Cell[CellGroupData[{
+Cell[4917, 157, 323, 10, 27, "Input",
+ CellTags->"TimedIntegrate",
+ CellID->2109784600],
+Cell[5243, 169, 234, 8, 36, "Output",
+ CellTags->"TimedIntegrate",
+ CellID->2016361212]
+}, Open  ]],
+Cell[5492, 180, 80, 2, 31, "Text",
+ CellTags->"TimedIntegrate",
+ CellID->1118158911],
+Cell[CellGroupData[{
+Cell[5597, 186, 407, 12, 27, "Input",
+ CellTags->"TimedIntegrate",
+ CellID->2007698884],
+Cell[6007, 200, 554, 18, 42, "Output",
+ CellTags->"TimedIntegrate",
+ CellID->176617232]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[6600, 223, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

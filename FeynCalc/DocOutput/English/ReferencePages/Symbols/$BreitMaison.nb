@@ -1,0 +1,215 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6701,        206]
+NotebookOptionsPosition[      4356,        139]
+NotebookOutlinePosition[      6435,        195]
+CellTagsIndexPosition[      6361,        190]
+WindowTitle->$BreitMaison
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/$BreitMaison\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/$BreitMaison"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/$\
+BreitMaison.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161437], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/$BreitMaison", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["$BreitMaison", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["$BreitMaison"], "InlineFormula"],
+     " \[LineSeparator]",
+     "The Breitenlohner-Maison ",
+     Cell[BoxData[
+      FormBox[
+       SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
+     " scheme is currently not supported by the Dirac algebra functions.Use \
+Tracer if you need it (PHI supplies the functions FCToTracer and \
+TracerToFC)."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Tr",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Tr",
+  ButtonNote->"Tr"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["$Larin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/$Larin",
+  ButtonNote->"$Larin"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["$West",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/$West",
+  ButtonNote->"$West"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"$BreitMaison",
+ CellID->1928344928]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"$BreitMaison",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 9, 6.969696}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "$BreitMaison The Breitenlohner-Maison \\[Gamma]5 scheme is currently not \
+supported by the Dirac algebra functions.Use Tracer if you need it (PHI \
+supplies the functions FCToTracer and TracerToFC).", "synonyms" -> {}, 
+    "title" -> "$BreitMaison", "titlemodifier" -> "", "windowtitle" -> 
+    "$BreitMaison", "type" -> "Symbol", "uri" -> "FeynCalc/ref/$BreitMaison"}},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "$BreitMaison"->{
+  Cell[3797, 113, 517, 21, 70, "Text",
+   CellTags->"$BreitMaison",
+   CellID->1928344928]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"$BreitMaison", 6245, 183}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[584, 21, 2262, 52, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[2849, 75, 55, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[2907, 78, 592, 17, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3524, 99, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[3797, 113, 517, 21, 70, "Text",
+ CellTags->"$BreitMaison",
+ CellID->1928344928]
+}, Open  ]],
+Cell[4329, 137, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)

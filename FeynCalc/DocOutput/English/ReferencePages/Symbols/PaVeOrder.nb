@@ -1,0 +1,434 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12631,        424]
+NotebookOptionsPosition[      8536,        298]
+NotebookOutlinePosition[     11466,        379]
+CellTagsIndexPosition[     11353,        373]
+WindowTitle->PaVeOrder
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/PaVeOrder\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/PaVeOrder"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/PaVeOrder.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$111510], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/PaVeOrder", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["PaVeOrder", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"PaVeOrder", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "orders the arguments of all D0 in expr in a standard way. \
+PaVeOrder[expr, PaVeOrderList \[Rule] { {..., s, u, ...}, {... ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        SubscriptBox["m", "1"], "2"], TraditionalForm]]],
+     ", ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        SubscriptBox["m", "2"], "2"], TraditionalForm]]],
+     " ...}, ...}] orders the arguments of all D0 in expr according to the \
+specified ordering lists. The lists may contain only a subsequence of the \
+D0-variables."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1521741131],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->447321571],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVeOrder", "[", 
+  RowBox[{
+   RowBox[{"D0", "[", 
+    RowBox[{
+    "me2", ",", "me2", ",", "mw2", ",", "mw2", ",", "t", ",", "s", ",", "me2",
+      ",", "0", ",", "me2", ",", "0"}], "]"}], ",", 
+   RowBox[{"PaVeOrderList", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellTags->"PaVeOrder",
+ CellLabel->"In[1]:=",
+ CellID->641538627],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   FormBox[
+    RowBox[{
+     SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+     RowBox[{
+     "me2", ",", "s", ",", "mw2", ",", "t", ",", "mw2", ",", "me2", ",", 
+      "me2", ",", "0", ",", "0", ",", "me2"}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
+ ImageSize->{305, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PaVeOrder",
+ CellLabel->"Out[1]=",
+ CellID->1082848295]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVeOrder", "[", 
+  RowBox[{
+   RowBox[{"D0", "[", 
+    RowBox[{
+    "me2", ",", "me2", ",", "mw2", ",", "mw2", ",", "t", ",", "s", ",", "me2",
+      ",", "0", ",", "me2", ",", "0"}], "]"}], ",", 
+   RowBox[{"PaVeOrderList", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellTags->"PaVeOrder",
+ CellLabel->"In[2]:=",
+ CellID->490694983],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   FormBox[
+    RowBox[{
+     SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+     RowBox[{
+     "me2", ",", "s", ",", "mw2", ",", "t", ",", "mw2", ",", "me2", ",", 
+      "me2", ",", "0", ",", "0", ",", "me2"}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
+ ImageSize->{305, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PaVeOrder",
+ CellLabel->"Out[2]=",
+ CellID->1266309668]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PaVeOrder", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"D0", "[", 
+     RowBox[{
+     "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "m12", ",", 
+      "m22", ",", "m32", ",", "m42"}], "]"}], "+", 
+    RowBox[{"D0", "[", 
+     RowBox[{
+     "me2", ",", "me2", ",", "mw2", ",", "mw2", ",", "t", ",", "s", ",", 
+      "me2", ",", "0", ",", "me2", ",", "0"}], "]"}]}], ",", 
+   RowBox[{"PaVeOrderList", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"f", ",", "e"}], "}"}]}], "}"}]}]}], "]"}]], "Input",
+ CellTags->"PaVeOrder",
+ CellLabel->"In[3]:=",
+ CellID->1444685309],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    TagBox[
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+       RowBox[{
+       "a", ",", "d", ",", "c", ",", "b", ",", "f", ",", "e", ",", "m22", ",",
+         "m12", ",", "m42", ",", "m32"}], ")"}],
+      TraditionalForm],
+     HoldForm],
+    TraditionalForm], "+", 
+   FormBox[
+    TagBox[
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+       RowBox[{
+       "me2", ",", "s", ",", "mw2", ",", "t", ",", "mw2", ",", "me2", ",", 
+        "me2", ",", "0", ",", "0", ",", "me2"}], ")"}],
+      TraditionalForm],
+     HoldForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{318, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PaVeOrder",
+ CellLabel->"Out[3]=",
+ CellID->1493961476]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["PaVeReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVeReduce",
+  ButtonNote->"PaVeReduce"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"PaVeOrder",
+ CellID->776510000]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"PaVeOrder",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 4, 26.974381}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "PaVeOrder[expr] orders the arguments of all D0 in expr in a standard \
+way. PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... m1 2, m2 2 \
+...}, ...}] orders the arguments of all D0 in expr according to the specified \
+ordering lists. The lists may contain only a subsequence of the \
+D0-variables.", "synonyms" -> {}, "title" -> "PaVeOrder", "titlemodifier" -> 
+    "", "windowtitle" -> "PaVeOrder", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/PaVeOrder"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3793, 107, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1521741131]},
+ "PaVeOrder"->{
+  Cell[4426, 136, 430, 13, 45, "Input",
+   CellTags->"PaVeOrder",
+   CellID->641538627],
+  Cell[4859, 151, 472, 16, 36, "Output",
+   CellTags->"PaVeOrder",
+   CellID->1082848295],
+  Cell[5368, 172, 430, 13, 45, "Input",
+   CellTags->"PaVeOrder",
+   CellID->490694983],
+  Cell[5801, 187, 472, 16, 36, "Output",
+   CellTags->"PaVeOrder",
+   CellID->1266309668],
+  Cell[6310, 208, 724, 21, 62, "Input",
+   CellTags->"PaVeOrder",
+   CellID->1444685309],
+  Cell[7037, 231, 855, 30, 56, "Output",
+   CellTags->"PaVeOrder",
+   CellID->1493961476],
+  Cell[8260, 284, 234, 9, 31, "Text",
+   CellTags->"PaVeOrder",
+   CellID->776510000]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10564, 344},
+ {"PaVeOrder", 10701, 348}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[581, 21, 2249, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2833, 75, 52, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2888, 78, 880, 25, 117, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3793, 107, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1521741131],
+Cell[CellGroupData[{
+Cell[4206, 126, 195, 6, 25, "ExampleSection",
+ CellID->447321571],
+Cell[CellGroupData[{
+Cell[4426, 136, 430, 13, 45, "Input",
+ CellTags->"PaVeOrder",
+ CellID->641538627],
+Cell[4859, 151, 472, 16, 36, "Output",
+ CellTags->"PaVeOrder",
+ CellID->1082848295]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5368, 172, 430, 13, 45, "Input",
+ CellTags->"PaVeOrder",
+ CellID->490694983],
+Cell[5801, 187, 472, 16, 36, "Output",
+ CellTags->"PaVeOrder",
+ CellID->1266309668]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6310, 208, 724, 21, 62, "Input",
+ CellTags->"PaVeOrder",
+ CellID->1444685309],
+Cell[7037, 231, 855, 30, 56, "Output",
+ CellTags->"PaVeOrder",
+ CellID->1493961476]
+}, Open  ]]
+}, Open  ]],
+Cell[7919, 265, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7987, 270, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8260, 284, 234, 9, 31, "Text",
+ CellTags->"PaVeOrder",
+ CellID->776510000]
+}, Open  ]],
+Cell[8509, 296, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

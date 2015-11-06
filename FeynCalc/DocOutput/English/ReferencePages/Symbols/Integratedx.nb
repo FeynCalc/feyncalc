@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7115,        221]
+NotebookOptionsPosition[      4870,        155]
+NotebookOutlinePosition[      6849,        210]
+CellTagsIndexPosition[      6776,        205]
+WindowTitle->Integratedx
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Integratedx\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Integratedx"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+Integratedx.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$87002], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Integratedx", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Integratedx", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Integratedx", "[", 
+       RowBox[{"x", ",", " ", "low", ",", " ", "up"}], "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]",
+     "is a variable representing the integration operator Integrate[#, \
+{x,low,up}]&."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FeynmanParametrize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynmanParametrize",
+  ButtonNote->"FeynmanParametrize"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["CalculateCounterTerm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CalculateCounterTerm",
+  ButtonNote->"CalculateCounterTerm"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["TimedIntegrate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TimedIntegrate",
+  ButtonNote->"TimedIntegrate"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["HypergeometricIR",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricIR",
+  ButtonNote->"HypergeometricIR"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["HypInt",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypInt",
+  ButtonNote->"HypInt"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["TimedIntegrate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TimedIntegrate",
+  ButtonNote->"TimedIntegrate"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Integratedx",
+ CellID->2008789767]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Integratedx",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 2, 17.579115}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Integratedx[x, low, up] is a variable representing the integration \
+operator Integrate[#, {x,low,up}]&.", "synonyms" -> {}, "title" -> 
+    "Integratedx", "titlemodifier" -> "", "windowtitle" -> "Integratedx", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/Integratedx"}},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Integratedx"->{
+  Cell[3682, 111, 1146, 39, 70, "Text",
+   CellTags->"Integratedx",
+   CellID->2008789767]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Integratedx", 6660, 198}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2257, 52, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[2843, 75, 54, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[2900, 78, 484, 15, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3409, 97, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[3682, 111, 1146, 39, 70, "Text",
+ CellTags->"Integratedx",
+ CellID->2008789767]
+}, Open  ]],
+Cell[4843, 153, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)

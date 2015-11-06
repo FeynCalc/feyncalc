@@ -1,0 +1,339 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9798,        329]
+NotebookOptionsPosition[      6143,        219]
+NotebookOutlinePosition[      8785,        292]
+CellTagsIndexPosition[      8663,        286]
+WindowTitle->ExplicitLorentzIndex
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ExplicitLorentzIndex\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ExplicitLorentzIndex"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+ExplicitLorentzIndex.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$50137], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ExplicitLorentzIndex", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ExplicitLorentzIndex", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ExplicitLorentzIndex", "[", "ind", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is an explicit Lorentz index, i.e., ind is an integer."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->463348388],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1262496088],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "1", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
+ CellTags->"ExplicitLorentzIndex",
+ CellLabel->"In[1]:=",
+ CellID->537373072],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["g", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox[
+      FormBox["1",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{35, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ExplicitLorentzIndex",
+ CellLabel->"Out[1]=",
+ CellID->1531481784]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"ExplicitLorentzIndex",
+ CellLabel->"In[2]:=",
+ CellID->93969146],
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"ExplicitLorentzIndex", "[", "1", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Output",
+ ImageSize->{375, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ExplicitLorentzIndex",
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->551395089]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["LorentzIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LorentzIndex",
+  ButtonNote->"LorentzIndex"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Pair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Pair",
+  ButtonNote->"Pair"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"ExplicitLorentzIndex",
+ CellID->617137688]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ExplicitLorentzIndex",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 59, 2.285582}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is an \
+integer.", "synonyms" -> {}, "title" -> "ExplicitLorentzIndex", 
+    "titlemodifier" -> "", "windowtitle" -> "ExplicitLorentzIndex", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/ExplicitLorentzIndex"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3390, 94, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->463348388]},
+ "ExplicitLorentzIndex"->{
+  Cell[4023, 123, 242, 7, 27, "Input",
+   CellTags->"ExplicitLorentzIndex",
+   CellID->537373072],
+  Cell[4268, 132, 521, 22, 39, "Output",
+   CellTags->"ExplicitLorentzIndex",
+   CellID->1531481784],
+  Cell[4826, 159, 138, 4, 27, "Input",
+   CellTags->"ExplicitLorentzIndex",
+   CellID->93969146],
+  Cell[4967, 165, 353, 10, 36, "Output",
+   CellTags->"ExplicitLorentzIndex",
+   CellID->551395089],
+  Cell[5688, 198, 413, 16, 31, "Text",
+   CellTags->"ExplicitLorentzIndex",
+   CellID->617137688]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7994, 263},
+ {"ExplicitLorentzIndex", 8140, 267}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[592, 21, 2293, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2888, 75, 63, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2954, 78, 411, 12, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3390, 94, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->463348388],
+Cell[CellGroupData[{
+Cell[3802, 113, 196, 6, 25, "ExampleSection",
+ CellID->1262496088],
+Cell[CellGroupData[{
+Cell[4023, 123, 242, 7, 27, "Input",
+ CellTags->"ExplicitLorentzIndex",
+ CellID->537373072],
+Cell[4268, 132, 521, 22, 39, "Output",
+ CellTags->"ExplicitLorentzIndex",
+ CellID->1531481784]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4826, 159, 138, 4, 27, "Input",
+ CellTags->"ExplicitLorentzIndex",
+ CellID->93969146],
+Cell[4967, 165, 353, 10, 36, "Output",
+ CellTags->"ExplicitLorentzIndex",
+ CellID->551395089]
+}, Open  ]]
+}, Open  ]],
+Cell[5347, 179, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5415, 184, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5688, 198, 413, 16, 31, "Text",
+ CellTags->"ExplicitLorentzIndex",
+ CellID->617137688]
+}, Open  ]],
+Cell[6116, 217, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

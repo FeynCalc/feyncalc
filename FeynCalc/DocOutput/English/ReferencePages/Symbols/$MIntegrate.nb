@@ -1,0 +1,308 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8809,        298]
+NotebookOptionsPosition[      5321,        191]
+NotebookOutlinePosition[      7869,        263]
+CellTagsIndexPosition[      7756,        257]
+WindowTitle->$MIntegrate
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/$MIntegrate\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/$MIntegrate"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/$\
+MIntegrate.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$165512], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/$MIntegrate", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["$MIntegrate", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["$MIntegrate"], "InlineFormula"],
+     " \[LineSeparator]",
+     "is a list of integrations done by ",
+     StyleBox["Mathematica",
+      FontSlant->"Italic"],
+     " inside OPEIntegrateDelta."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->442358889],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1683823874],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Subsubsection",
+ CellTags->"$MIntegrate",
+ CellID->896374065],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$MIntegrate"], "Input",
+ CellTags->"$MIntegrate",
+ CellLabel->"In[1]:=",
+ CellID->1439168966],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "}"}], TraditionalForm]], "Output",
+ ImageSize->{17, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"$MIntegrate",
+ CellLabel->"Out[1]=",
+ CellID->1034422222]
+}, Open  ]],
+
+Cell[TextData[{
+ "See also: ",
+ " ",
+ ButtonBox["OPEIntegrateDelta",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"OPEIntegrateDelta",
+  ButtonNote->"OPEIntegrateDelta"],
+ "."
+}], "Text",
+ CellTags->"$MIntegrate",
+ CellID->404160805],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["OPEIntegrateDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OPEIntegrateDelta",
+  ButtonNote->"OPEIntegrateDelta"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"$MIntegrate",
+ CellID->193164279]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"$MIntegrate",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 9, 28.492512}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "$MIntegrate is a list of integrations done by Mathematica inside \
+OPEIntegrateDelta.", "synonyms" -> {}, "title" -> "$MIntegrate", 
+    "titlemodifier" -> "", "windowtitle" -> "$MIntegrate", "type" -> "Symbol",
+     "uri" -> "FeynCalc/ref/$MIntegrate"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3366, 96, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->442358889]},
+ "$MIntegrate"->{
+  Cell[3977, 123, 79, 2, 35, "Subsubsection",
+   CellTags->"$MIntegrate",
+   CellID->896374065],
+  Cell[4081, 129, 107, 3, 27, "Input",
+   CellTags->"$MIntegrate",
+   CellID->1439168966],
+  Cell[4191, 134, 231, 8, 36, "Output",
+   CellTags->"$MIntegrate",
+   CellID->1034422222],
+  Cell[4437, 145, 229, 10, 32, "Text",
+   CellTags->"$MIntegrate",
+   CellID->404160805],
+  Cell[5022, 177, 257, 9, 32, "Text",
+   CellTags->"$MIntegrate",
+   CellID->193164279]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7136, 234},
+ {"$MIntegrate", 7273, 238}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2258, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2844, 75, 54, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2901, 78, 440, 14, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3366, 96, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->442358889],
+Cell[3756, 113, 196, 6, 25, "ExampleSection",
+ CellID->1683823874],
+Cell[CellGroupData[{
+Cell[3977, 123, 79, 2, 35, "Subsubsection",
+ CellTags->"$MIntegrate",
+ CellID->896374065],
+Cell[CellGroupData[{
+Cell[4081, 129, 107, 3, 27, "Input",
+ CellTags->"$MIntegrate",
+ CellID->1439168966],
+Cell[4191, 134, 231, 8, 36, "Output",
+ CellTags->"$MIntegrate",
+ CellID->1034422222]
+}, Open  ]],
+Cell[4437, 145, 229, 10, 32, "Text",
+ CellTags->"$MIntegrate",
+ CellID->404160805],
+Cell[4669, 157, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4749, 163, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5022, 177, 257, 9, 32, "Text",
+ CellTags->"$MIntegrate",
+ CellID->193164279]
+}, Open  ]],
+Cell[5294, 189, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

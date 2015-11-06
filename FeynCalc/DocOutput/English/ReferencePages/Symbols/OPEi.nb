@@ -1,0 +1,542 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14749,        532]
+NotebookOptionsPosition[     10013,        372]
+NotebookOutlinePosition[     13205,        468]
+CellTagsIndexPosition[     13097,        462]
+WindowTitle->OPEi
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/OPEi\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/OPEi"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/OPEi.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$103948], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/OPEi", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["OPEi", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["OPEi"], "InlineFormula"],
+     " \[LineSeparator]",
+     "etc. are variables with DataType PositiveInteger which are used in \
+functions relating to the operator product expansion."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1295096707],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->66750309],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["OPEi"], "Input",
+ CellTags->"OPEi",
+ CellLabel->"In[1]:=",
+ CellID->1513541744],
+
+Cell[BoxData[
+ FormBox["i", TraditionalForm]], "Output",
+ ImageSize->{9, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPEi",
+ CellLabel->"Out[1]=",
+ CellID->1058262689]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DataType", "[", 
+  RowBox[{
+  "OPEi", ",", " ", "OPEj", ",", "OPEk", ",", "OPEl", ",", " ", "OPEm", ",", 
+   " ", "OPEn", ",", " ", "OPEo", ",", " ", "PositiveInteger"}], 
+  "]"}]], "Input",
+ CellTags->"OPEi",
+ CellLabel->"In[2]:=",
+ CellID->1628297296],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+   "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
+    ",", "True"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{268, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPEi",
+ CellLabel->"Out[2]=",
+ CellID->1847732928]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PowerSimplify", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEi"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEj"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEk"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEl"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEm"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEn"}], ")"}]}], ",", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], "^", 
+     RowBox[{"(", 
+      RowBox[{"2", "OPEo"}], ")"}]}]}], "}"}], "]"}]], "Input",
+ CellTags->"OPEi",
+ CellLabel->"In[3]:=",
+ CellID->233448399],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1"}], 
+   "}"}], TraditionalForm]], "Output",
+ ImageSize->{114, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPEi",
+ CellLabel->"Out[3]=",
+ CellID->1115714619]
+}, Open  ]],
+
+Cell["Re has been changed:", "Text",
+ CellTags->"OPEi",
+ CellID->920512070],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Re", "[", "OPEi", "]"}], ">", 
+    RowBox[{"-", "3"}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEi", "]"}], ">", 
+    RowBox[{"-", "2"}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEi", "]"}], ">", 
+    RowBox[{"-", "1"}]}], ",", "   ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEi", "]"}], ">", "0"}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEi", "]"}], ">", "1"}]}], "}"}]], "Input",
+ CellTags->"OPEi",
+ CellLabel->"In[4]:=",
+ CellID->631981450],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Re", "(", "i", ")"}], ">", 
+     RowBox[{"-", "3"}]}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "i", ")"}], ">", 
+     RowBox[{"-", "2"}]}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "i", ")"}], ">", 
+     RowBox[{"-", "1"}]}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "i", ")"}], ">", "0"}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "i", ")"}], ">", "1"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{371, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPEi",
+ CellLabel->"Out[4]=",
+ CellID->1830261914]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Re", "[", 
+     RowBox[{
+      RowBox[{"-", "OPEi"}], " ", "+", " ", "OPEm"}], "]"}], " ", ">", " ", 
+    "0"}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", 
+     RowBox[{
+      RowBox[{"-", "OPEi"}], " ", "+", " ", "OPEm"}], "]"}], " ", ">", " ", 
+    "1"}], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", 
+     RowBox[{
+      RowBox[{"-", "OPEi"}], " ", "+", " ", "OPEm"}], "]"}], " ", ">", " ", 
+    "2"}]}], "}"}]], "Input",
+ CellTags->"OPEi",
+ CellLabel->"In[5]:=",
+ CellID->1153963056],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Re", "(", 
+      RowBox[{"m", "-", "i"}], ")"}], ">", "0"}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", 
+      RowBox[{"m", "-", "i"}], ")"}], ">", "1"}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", 
+      RowBox[{"m", "-", "i"}], ")"}], ">", "2"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{295, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPEi",
+ CellLabel->"Out[5]=",
+ CellID->480392578]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Re", "[", "OPEm", "]"}], ">", 
+    RowBox[{"-", "3"}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEm", "]"}], ">", 
+    RowBox[{"-", "2"}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEm", "]"}], ">", 
+    RowBox[{"-", "1"}]}], ",", "   ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEm", "]"}], ">", "0"}], ",", " ", 
+   RowBox[{
+    RowBox[{"Re", "[", "OPEm", "]"}], ">", "1"}]}], "}"}]], "Input",
+ CellTags->"OPEi",
+ CellLabel->"In[6]:=",
+ CellID->1255237485],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Re", "(", "m", ")"}], ">", 
+     RowBox[{"-", "3"}]}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "m", ")"}], ">", 
+     RowBox[{"-", "2"}]}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "m", ")"}], ">", 
+     RowBox[{"-", "1"}]}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "m", ")"}], ">", "0"}], ",", 
+    RowBox[{
+     RowBox[{"Re", "(", "m", ")"}], ">", "1"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{416, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPEi",
+ CellLabel->"Out[6]=",
+ CellID->718023073]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"OPEi",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 3, 47.239502}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "OPEi etc. are variables with DataType PositiveInteger which are used in \
+functions relating to the operator product expansion.", "synonyms" -> {}, 
+    "title" -> "OPEi", "titlemodifier" -> "", "windowtitle" -> "OPEi", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/OPEi"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3312, 94, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1295096707]},
+ "OPEi"->{
+  Cell[3944, 123, 93, 3, 27, "Input",
+   CellTags->"OPEi",
+   CellID->1513541744],
+  Cell[4040, 128, 205, 7, 36, "Output",
+   CellTags->"OPEi",
+   CellID->1058262689],
+  Cell[4282, 140, 277, 8, 27, "Input",
+   CellTags->"OPEi",
+   CellID->1628297296],
+  Cell[4562, 150, 334, 11, 36, "Output",
+   CellTags->"OPEi",
+   CellID->1847732928],
+  Cell[4933, 166, 1093, 41, 45, "Input",
+   CellTags->"OPEi",
+   CellID->233448399],
+  Cell[6029, 209, 308, 10, 36, "Output",
+   CellTags->"OPEi",
+   CellID->1115714619],
+  Cell[6352, 222, 75, 2, 32, "Text",
+   CellTags->"OPEi",
+   CellID->920512070],
+  Cell[6452, 228, 536, 18, 45, "Input",
+   CellTags->"OPEi",
+   CellID->631981450],
+  Cell[6991, 248, 635, 23, 36, "Output",
+   CellTags->"OPEi",
+   CellID->1830261914],
+  Cell[7663, 276, 552, 20, 27, "Input",
+   CellTags->"OPEi",
+   CellID->1153963056],
+  Cell[8218, 298, 518, 19, 36, "Output",
+   CellTags->"OPEi",
+   CellID->480392578],
+  Cell[8773, 322, 537, 18, 45, "Input",
+   CellTags->"OPEi",
+   CellID->1255237485],
+  Cell[9313, 342, 634, 23, 36, "Output",
+   CellTags->"OPEi",
+   CellID->718023073]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11842, 415},
+ {"OPEi", 11973, 419}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2808, 75, 47, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 429, 12, 97, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3312, 94, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1295096707],
+Cell[CellGroupData[{
+Cell[3725, 113, 194, 6, 25, "ExampleSection",
+ CellID->66750309],
+Cell[CellGroupData[{
+Cell[3944, 123, 93, 3, 27, "Input",
+ CellTags->"OPEi",
+ CellID->1513541744],
+Cell[4040, 128, 205, 7, 36, "Output",
+ CellTags->"OPEi",
+ CellID->1058262689]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4282, 140, 277, 8, 27, "Input",
+ CellTags->"OPEi",
+ CellID->1628297296],
+Cell[4562, 150, 334, 11, 36, "Output",
+ CellTags->"OPEi",
+ CellID->1847732928]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4933, 166, 1093, 41, 45, "Input",
+ CellTags->"OPEi",
+ CellID->233448399],
+Cell[6029, 209, 308, 10, 36, "Output",
+ CellTags->"OPEi",
+ CellID->1115714619]
+}, Open  ]],
+Cell[6352, 222, 75, 2, 32, "Text",
+ CellTags->"OPEi",
+ CellID->920512070],
+Cell[CellGroupData[{
+Cell[6452, 228, 536, 18, 45, "Input",
+ CellTags->"OPEi",
+ CellID->631981450],
+Cell[6991, 248, 635, 23, 36, "Output",
+ CellTags->"OPEi",
+ CellID->1830261914]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7663, 276, 552, 20, 27, "Input",
+ CellTags->"OPEi",
+ CellID->1153963056],
+Cell[8218, 298, 518, 19, 36, "Output",
+ CellTags->"OPEi",
+ CellID->480392578]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8773, 322, 537, 18, 45, "Input",
+ CellTags->"OPEi",
+ CellID->1255237485],
+Cell[9313, 342, 634, 23, 36, "Output",
+ CellTags->"OPEi",
+ CellID->718023073]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[9986, 370, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

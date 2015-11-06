@@ -1,0 +1,958 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27348,        948]
+NotebookOptionsPosition[     16861,        671]
+NotebookOutlinePosition[     24178,        852]
+CellTagsIndexPosition[     24017,        845]
+WindowTitle->ExpandScalarProduct
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ExpandScalarProduct\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ExpandScalarProduct"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+ExpandScalarProduct.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49793], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ExpandScalarProduct", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ExpandScalarProduct", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ExpandScalarProduct", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "expands scalar products of sums of momenta in expr. ExpandScalarProduct \
+does not use Expand on expr.\nScalarProductExpand=ExpandScalarProduct."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->482382213],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1546205656],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Subsubsection",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->2116782470],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ExpandScalarProduct", "]"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[1]:=",
+ CellID->668026966],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", 
+     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{292, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[1]=",
+ CellID->4871317]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"SP", "[", 
+   RowBox[{
+    RowBox[{"p1", "+", "p2", "+", "p3"}], ",", 
+    RowBox[{"p4", "+", "p5", "+", "p6"}]}], "]"}]}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[2]:=",
+ CellID->1575091533],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     OverscriptBox[
+      FormBox["p1",
+       TraditionalForm], "_"], "+", 
+     OverscriptBox[
+      FormBox["p2",
+       TraditionalForm], "_"], "+", 
+     OverscriptBox[
+      FormBox["p3",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     OverscriptBox[
+      FormBox["p4",
+       TraditionalForm], "_"], "+", 
+     OverscriptBox[
+      FormBox["p5",
+       TraditionalForm], "_"], "+", 
+     OverscriptBox[
+      FormBox["p6",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{208, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[2]=",
+ CellID->831714443]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "ScalarProductExpand"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[3]:=",
+ CellID->1729317327],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p1",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p4",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p1",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p5",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p1",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p6",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p2",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p4",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p2",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p5",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p2",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p6",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p3",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p4",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p3",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p5",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p3",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p6",
+       TraditionalForm], "_"],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{508, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[3]=",
+ CellID->1718079082]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SP", "[", 
+  RowBox[{"p", ",", 
+   RowBox[{"p", "-", "q"}]}], "]"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[4]:=",
+ CellID->790525557],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], "-", 
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{79, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[4]=",
+ CellID->1472369643]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExpandScalarProduct", "[", "%", "]"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[5]:=",
+ CellID->171112254],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], "2"], "-", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{69, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[5]=",
+ CellID->638310365]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FV", "[", 
+  RowBox[{
+   RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[6]:=",
+ CellID->1175495192],
+
+Cell[BoxData[
+ FormBox[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "-", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}],
+       TraditionalForm],
+      TraditionalForm], ")"}], 
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm]],
+   TraditionalForm], TraditionalForm]], "Output",
+ ImageSize->{62, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[6]=",
+ CellID->323139512]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExpandScalarProduct", "[", "%", "]"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[7]:=",
+ CellID->2071711528],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], "-", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{58, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[7]=",
+ CellID->1585657038]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SP", "[", 
+   RowBox[{
+    RowBox[{"p", "-", "q"}], ",", 
+    RowBox[{"q", "-", "r"}]}], "]"}], "//", "FCI"}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[8]:=",
+ CellID->1361432400],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], "-", 
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"], "-", 
+     OverscriptBox[
+      FormBox["r",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{120, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[8]=",
+ CellID->1532584134]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "/.", 
+  RowBox[{"Pair", "\[Rule]", "ExpandScalarProduct"}]}]], "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"In[9]:=",
+ CellID->1825158757],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["r",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["r",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], "2"]}], TraditionalForm]], "Output",
+ ImageSize->{157, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellLabel->"Out[9]=",
+ CellID->334851798]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Calc",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Calc",
+  ButtonNote->"Calc"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MomentumExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumExpand",
+  ButtonNote->"MomentumExpand"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MomentumCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumCombine",
+  ButtonNote->"MomentumCombine"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->2118240248]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ExpandScalarProduct",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 59, 0.225169}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ExpandScalarProduct[expr] expands scalar products of sums of momenta in \
+expr. ExpandScalarProduct does not use Expand on expr. \
+ScalarProductExpand=ExpandScalarProduct.", "synonyms" -> {}, "title" -> 
+    "ExpandScalarProduct", "titlemodifier" -> "", "windowtitle" -> 
+    "ExpandScalarProduct", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/ExpandScalarProduct"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3474, 95, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->482382213]},
+ "ExpandScalarProduct"->{
+  Cell[4085, 122, 113, 2, 35, "Subsubsection",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->2116782470],
+  Cell[4223, 128, 180, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->668026966],
+  Cell[4406, 134, 399, 12, 36, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->4871317],
+  Cell[4842, 151, 276, 8, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1575091533],
+  Cell[5121, 161, 1050, 42, 39, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->831714443],
+  Cell[6208, 208, 171, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1729317327],
+  Cell[6382, 214, 2905, 125, 39, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1718079082],
+  Cell[9324, 344, 204, 6, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->790525557],
+  Cell[9531, 352, 704, 28, 38, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1472369643],
+  Cell[10272, 385, 174, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->171112254],
+  Cell[10449, 391, 678, 27, 41, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->638310365],
+  Cell[11164, 423, 209, 6, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1175495192],
+  Cell[11376, 431, 701, 28, 41, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->323139512],
+  Cell[12114, 464, 175, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->2071711528],
+  Cell[12292, 470, 851, 36, 40, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1585657038],
+  Cell[13180, 511, 258, 8, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1361432400],
+  Cell[13441, 521, 893, 36, 38, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1532584134],
+  Cell[14371, 562, 203, 5, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1825158757],
+  Cell[14577, 569, 1265, 53, 41, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->334851798],
+  Cell[16210, 645, 609, 21, 32, "Text",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->2118240248]},
+ "ScalarProductExpand"->{
+  Cell[4085, 122, 113, 2, 35, "Subsubsection",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->2116782470],
+  Cell[4223, 128, 180, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->668026966],
+  Cell[4406, 134, 399, 12, 36, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->4871317],
+  Cell[4842, 151, 276, 8, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1575091533],
+  Cell[5121, 161, 1050, 42, 39, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->831714443],
+  Cell[6208, 208, 171, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1729317327],
+  Cell[6382, 214, 2905, 125, 39, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1718079082],
+  Cell[9324, 344, 204, 6, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->790525557],
+  Cell[9531, 352, 704, 28, 38, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1472369643],
+  Cell[10272, 385, 174, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->171112254],
+  Cell[10449, 391, 678, 27, 41, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->638310365],
+  Cell[11164, 423, 209, 6, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1175495192],
+  Cell[11376, 431, 701, 28, 41, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->323139512],
+  Cell[12114, 464, 175, 4, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->2071711528],
+  Cell[12292, 470, 851, 36, 40, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1585657038],
+  Cell[13180, 511, 258, 8, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1361432400],
+  Cell[13441, 521, 893, 36, 38, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1532584134],
+  Cell[14371, 562, 203, 5, 27, "Input",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->1825158757],
+  Cell[14577, 569, 1265, 53, 41, "Output",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->334851798],
+  Cell[16210, 645, 609, 21, 32, "Text",
+   CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+   CellID->2118240248]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 18799, 716},
+ {"ExpandScalarProduct", 18944, 720},
+ {"ScalarProductExpand", 21482, 781}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[591, 21, 2289, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2883, 75, 62, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2948, 78, 501, 13, 121, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3474, 95, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->482382213],
+Cell[3864, 112, 196, 6, 25, "ExampleSection",
+ CellID->1546205656],
+Cell[CellGroupData[{
+Cell[4085, 122, 113, 2, 35, "Subsubsection",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->2116782470],
+Cell[CellGroupData[{
+Cell[4223, 128, 180, 4, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->668026966],
+Cell[4406, 134, 399, 12, 36, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->4871317]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4842, 151, 276, 8, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1575091533],
+Cell[5121, 161, 1050, 42, 39, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->831714443]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6208, 208, 171, 4, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1729317327],
+Cell[6382, 214, 2905, 125, 39, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1718079082]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9324, 344, 204, 6, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->790525557],
+Cell[9531, 352, 704, 28, 38, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1472369643]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10272, 385, 174, 4, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->171112254],
+Cell[10449, 391, 678, 27, 41, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->638310365]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11164, 423, 209, 6, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1175495192],
+Cell[11376, 431, 701, 28, 41, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->323139512]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12114, 464, 175, 4, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->2071711528],
+Cell[12292, 470, 851, 36, 40, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1585657038]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13180, 511, 258, 8, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1361432400],
+Cell[13441, 521, 893, 36, 38, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1532584134]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14371, 562, 203, 5, 27, "Input",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->1825158757],
+Cell[14577, 569, 1265, 53, 41, "Output",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->334851798]
+}, Open  ]],
+Cell[15857, 625, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15937, 631, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[16210, 645, 609, 21, 32, "Text",
+ CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
+ CellID->2118240248]
+}, Open  ]],
+Cell[16834, 669, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

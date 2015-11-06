@@ -1,0 +1,714 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18250,        704]
+NotebookOptionsPosition[     12794,        520]
+NotebookOutlinePosition[     16305,        626]
+CellTagsIndexPosition[     16197,        620]
+WindowTitle->Calc
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Calc\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Calc"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Calc.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20493], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Calc", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Calc", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Calc", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "performs several basic simplifications. Calc[exp] is the same as \
+DotSimplify[DiracSimplify[Contract[DiracSimplify[Explicit[ \
+SUNSimplify[Trick[exp], Explicit\[Rule]False] ]]]]]."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->543612860],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1390801157],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Examples"], "Subsubsection",
+ CellTags->"Calc",
+ CellID->115873599],
+
+Cell[TextData[{
+ "This calculates ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "\[Mu]"], 
+    SubscriptBox["\[Gamma]", "\[Mu]"]}], TraditionalForm]]],
+ " in 4 dimensions and ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["g", "\[Nu]", "\[Nu]"], TraditionalForm]]],
+ " in D dimensions."
+}], "Text",
+ CellTags->"Calc",
+ CellID->117745359],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"GA", "[", 
+     RowBox[{"\[Mu]", ",", "\[Mu]"}], "]"}], ",", " ", 
+    RowBox[{"MTD", "[", 
+     RowBox[{"\[Nu]", ",", "\[Nu]"}], "]"}]}], "}"}], "]"}]], "Input",
+ CellTags->"Calc",
+ CellLabel->"In[1]:=",
+ CellID->781527999],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"4", ",", "D"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{46, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Calc",
+ CellLabel->"Out[1]=",
+ CellID->1798215567]
+}, Open  ]],
+
+Cell[TextData[{
+ "This simplifies ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["f", "abc"], " ", 
+    RowBox[{
+     SubscriptBox["f", "abe"], "."}]}], TraditionalForm]]]
+}], "Text",
+ CellTags->"Calc",
+ CellID->1416000027],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", 
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "e"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Calc",
+ CellLabel->"In[2]:=",
+ CellID->779661922],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["C", "A"], " ", 
+   SuperscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ ImageSize->{52, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Calc",
+ CellLabel->"Out[2]=",
+ CellID->1521159153]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FV", "[", 
+   RowBox[{
+    RowBox[{"p", "+", "r"}], ",", "\[Mu]"}], "]"}], " ", 
+  RowBox[{"MT", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], " ", 
+  RowBox[{"FV", "[", 
+   RowBox[{
+    RowBox[{"q", "-", "p"}], ",", "\[Nu]"}], "]"}]}]], "Input",
+ CellTags->"Calc",
+ CellLabel->"In[3]:=",
+ CellID->281198835],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox["q",
+            TraditionalForm], "_"], "-", 
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], 
+      FormBox[
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"], "+", 
+          OverscriptBox[
+           FormBox["r",
+            TraditionalForm], "_"]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{155, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Calc",
+ CellLabel->"Out[3]=",
+ CellID->481463556]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", "%", "]"}]], "Input",
+ CellTags->"Calc",
+ CellLabel->"In[4]:=",
+ CellID->1838519780],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["r",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], "2"], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["r",
+       TraditionalForm], "_"],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{158, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Calc",
+ CellLabel->"Out[4]=",
+ CellID->1244287531]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonVertex", "[", 
+  RowBox[{"p", ",", "1", ",", "q", ",", "2", ",", 
+   RowBox[{
+    RowBox[{"-", "p"}], "-", "q"}], ",", "3"}], "]"}]], "Input",
+ CellTags->"Calc",
+ CellLabel->"In[5]:=",
+ CellID->1589340964],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["ci1",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["ci2",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["ci3",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{
+    SuperscriptBox["V", 
+     RowBox[{
+      FormBox[
+       FormBox["li1",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["li2",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["li3",
+        TraditionalForm],
+       TraditionalForm]}]], "(", 
+    RowBox[{
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\", \"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\", \"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       RowBox[{
+        RowBox[{"-", 
+         FormBox["p",
+          TraditionalForm]}], "-", 
+        FormBox["q",
+         TraditionalForm]}],
+       TraditionalForm],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{226, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Calc",
+ CellLabel->"Out[5]=",
+ CellID->706901544]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", 
+  RowBox[{
+   RowBox[{"%", " ", 
+    RowBox[{"FVD", "[", 
+     RowBox[{"p", ",", "li1"}], "]"}]}], " ", 
+   RowBox[{"FVD", "[", 
+    RowBox[{"q", ",", "li2"}], "]"}], " ", 
+   RowBox[{"FVD", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "p"}], "-", "q"}], ",", "li3"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Calc",
+ CellLabel->"In[6]:=",
+ CellID->1411490249],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Calc",
+ CellLabel->"Out[6]=",
+ CellID->1029776951]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrick",
+  ButtonNote->"DiracTrick"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Trick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Trick",
+  ButtonNote->"Trick"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"Calc",
+ CellID->573489970]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Calc",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 56, 25.973821}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Calc[exp] performs several basic simplifications. Calc[exp] is the same \
+as DotSimplify[DiracSimplify[Contract[DiracSimplify[Explicit[SUNSimplify[\
+Trick[exp], Explicit->False] ]]]]].", "synonyms" -> {}, "title" -> "Calc", 
+    "titlemodifier" -> "", "windowtitle" -> "Calc", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Calc"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3403, 96, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->543612860]},
+ "Calc"->{
+  Cell[4014, 123, 81, 2, 35, "Subsubsection",
+   CellTags->"Calc",
+   CellID->115873599],
+  Cell[4098, 127, 366, 14, 35, "Text",
+   CellTags->"Calc",
+   CellID->117745359],
+  Cell[4489, 145, 302, 10, 27, "Input",
+   CellTags->"Calc",
+   CellID->781527999],
+  Cell[4794, 157, 253, 9, 36, "Output",
+   CellTags->"Calc",
+   CellID->1798215567],
+  Cell[5062, 169, 234, 10, 33, "Text",
+   CellTags->"Calc",
+   CellID->1416000027],
+  Cell[5321, 183, 276, 9, 27, "Input",
+   CellTags->"Calc",
+   CellID->779661922],
+  Cell[5600, 194, 460, 19, 36, "Output",
+   CellTags->"Calc",
+   CellID->1521159153],
+  Cell[6097, 218, 346, 12, 27, "Input",
+   CellTags->"Calc",
+   CellID->281198835],
+  Cell[6446, 232, 1721, 73, 41, "Output",
+   CellTags->"Calc",
+   CellID->481463556],
+  Cell[8204, 310, 120, 4, 27, "Input",
+   CellTags->"Calc",
+   CellID->1838519780],
+  Cell[8327, 316, 1226, 53, 41, "Output",
+   CellTags->"Calc",
+   CellID->1244287531],
+  Cell[9590, 374, 234, 7, 27, "Input",
+   CellTags->"Calc",
+   CellID->1589340964],
+  Cell[9827, 383, 1357, 60, 42, "Output",
+   CellTags->"Calc",
+   CellID->706901544],
+  Cell[11221, 448, 401, 14, 27, "Input",
+   CellTags->"Calc",
+   CellID->1411490249],
+  Cell[11625, 464, 206, 7, 36, "Output",
+   CellTags->"Calc",
+   CellID->1029776951],
+  Cell[12199, 494, 553, 21, 32, "Text",
+   CellTags->"Calc",
+   CellID->573489970]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 14681, 564},
+ {"Calc", 14811, 568}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[576, 21, 2228, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2807, 75, 47, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2857, 78, 521, 14, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3403, 96, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->543612860],
+Cell[3793, 113, 196, 6, 25, "ExampleSection",
+ CellID->1390801157],
+Cell[CellGroupData[{
+Cell[4014, 123, 81, 2, 35, "Subsubsection",
+ CellTags->"Calc",
+ CellID->115873599],
+Cell[4098, 127, 366, 14, 35, "Text",
+ CellTags->"Calc",
+ CellID->117745359],
+Cell[CellGroupData[{
+Cell[4489, 145, 302, 10, 27, "Input",
+ CellTags->"Calc",
+ CellID->781527999],
+Cell[4794, 157, 253, 9, 36, "Output",
+ CellTags->"Calc",
+ CellID->1798215567]
+}, Open  ]],
+Cell[5062, 169, 234, 10, 33, "Text",
+ CellTags->"Calc",
+ CellID->1416000027],
+Cell[CellGroupData[{
+Cell[5321, 183, 276, 9, 27, "Input",
+ CellTags->"Calc",
+ CellID->779661922],
+Cell[5600, 194, 460, 19, 36, "Output",
+ CellTags->"Calc",
+ CellID->1521159153]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6097, 218, 346, 12, 27, "Input",
+ CellTags->"Calc",
+ CellID->281198835],
+Cell[6446, 232, 1721, 73, 41, "Output",
+ CellTags->"Calc",
+ CellID->481463556]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8204, 310, 120, 4, 27, "Input",
+ CellTags->"Calc",
+ CellID->1838519780],
+Cell[8327, 316, 1226, 53, 41, "Output",
+ CellTags->"Calc",
+ CellID->1244287531]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9590, 374, 234, 7, 27, "Input",
+ CellTags->"Calc",
+ CellID->1589340964],
+Cell[9827, 383, 1357, 60, 42, "Output",
+ CellTags->"Calc",
+ CellID->706901544]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11221, 448, 401, 14, 27, "Input",
+ CellTags->"Calc",
+ CellID->1411490249],
+Cell[11625, 464, 206, 7, 36, "Output",
+ CellTags->"Calc",
+ CellID->1029776951]
+}, Open  ]],
+Cell[11846, 474, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11926, 480, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[12199, 494, 553, 21, 32, "Text",
+ CellTags->"Calc",
+ CellID->573489970]
+}, Open  ]],
+Cell[12767, 518, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

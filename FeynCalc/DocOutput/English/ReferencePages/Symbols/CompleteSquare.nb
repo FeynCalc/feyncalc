@@ -1,0 +1,362 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10480,        352]
+NotebookOptionsPosition[      6574,        232]
+NotebookOutlinePosition[      9433,        312]
+CellTagsIndexPosition[      9317,        306]
+WindowTitle->Completes
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/Completes\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/Completes"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/Completes.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27351], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/Completes", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["Completes", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["Completes"], "InlineFormula"],
+     " \[LineSeparator]",
+     "the square of a second order polynomial in the momentum x. \
+CompleteSquare[a ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        StyleBox["p",
+         FontSlant->"Plain"], "2"], TraditionalForm]]],
+     "+b p+c, p] \[Rule] -",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        StyleBox["b",
+         FontSlant->"Plain"], "2"], TraditionalForm]]],
+     "/(4 a)+c+a (b/(2 a)+x)^2. CompleteSquare[a ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        StyleBox["p",
+         FontSlant->"Plain"], "2"], TraditionalForm]]],
+     "+b p+c, p, q] \[Rule] {-",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        StyleBox["b",
+         FontSlant->"Plain"], "2"], TraditionalForm]]],
+     "/(4 a)+c+a ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        StyleBox["q",
+         FontSlant->"Plain"], "2"], TraditionalForm]]],
+     ", q\[Rule]b/(2 a)+p}."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->908639191],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->937009211],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t2", "=", 
+  RowBox[{"CompleteSquare", "[", 
+   RowBox[{"t1", ",", "p"}], "]"}]}]], "Input",
+ CellTags->"CompleteSquare",
+ CellLabel->"In[1]:=",
+ CellID->1825124248],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+  "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{387, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CompleteSquare",
+ CellLabel->"Out[1]=",
+ CellID->1183822476]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"t1", "-", "t2"}], "//", "ScalarProductExpand"}], "//", 
+  "Expand"}]], "Input",
+ CellTags->"CompleteSquare",
+ CellLabel->"In[2]:=",
+ CellID->1768514898],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"t1", "-", 
+   RowBox[{
+   "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{415, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CompleteSquare",
+ CellLabel->"Out[2]=",
+ CellID->1343668443]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CompleteSquare", "[", 
+  RowBox[{"t1", ",", "p", ",", "q"}], "]"}]], "Input",
+ CellTags->"CompleteSquare",
+ CellLabel->"In[3]:=",
+ CellID->1850431752],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+  "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{387, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CompleteSquare",
+ CellLabel->"Out[3]=",
+ CellID->237327102]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
+ CellTags->"CompleteSquare",
+ CellLabel->"In[4]:=",
+ CellID->1021144564]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"Completes",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Wolfram Language", ButtonData -> "paclet:guide/WolframRoot", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 57, 3.018729}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "Completes the square of a second order polynomial in the momentum x. \
+CompleteSquare[a p^2+b p+c, p] -> -b^2/(4 a)+c+a (b/(2 a)+x)^2. \
+CompleteSquare[a p^2+b p+c, p, q] -> {-b^2/(4 a)+c+a q^2, q->b/(2 a)+p}.", 
+    "synonyms" -> {}, "title" -> "Completes", "titlemodifier" -> "", 
+    "windowtitle" -> "Completes", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Completes"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4141, 124, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->908639191]},
+ "CompleteSquare"->{
+  Cell[4773, 153, 189, 6, 27, "Input",
+   CellTags->"CompleteSquare",
+   CellID->1825124248],
+  Cell[4965, 161, 302, 10, 36, "Output",
+   CellTags->"CompleteSquare",
+   CellID->1183822476],
+  Cell[5304, 176, 199, 7, 27, "Input",
+   CellTags->"CompleteSquare",
+   CellID->1768514898],
+  Cell[5506, 185, 328, 11, 36, "Output",
+   CellTags->"CompleteSquare",
+   CellID->1343668443],
+  Cell[5871, 201, 174, 5, 27, "Input",
+   CellTags->"CompleteSquare",
+   CellID->1850431752],
+  Cell[6048, 208, 301, 10, 36, "Output",
+   CellTags->"CompleteSquare",
+   CellID->237327102],
+  Cell[6364, 221, 156, 5, 27, "Input",
+   CellTags->"CompleteSquare",
+   CellID->1021144564]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8489, 277},
+ {"CompleteSquare", 8630, 281}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[581, 21, 2248, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2832, 75, 52, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2887, 78, 1229, 42, 103, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4141, 124, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->908639191],
+Cell[CellGroupData[{
+Cell[4553, 143, 195, 6, 25, "ExampleSection",
+ CellID->937009211],
+Cell[CellGroupData[{
+Cell[4773, 153, 189, 6, 27, "Input",
+ CellTags->"CompleteSquare",
+ CellID->1825124248],
+Cell[4965, 161, 302, 10, 36, "Output",
+ CellTags->"CompleteSquare",
+ CellID->1183822476]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5304, 176, 199, 7, 27, "Input",
+ CellTags->"CompleteSquare",
+ CellID->1768514898],
+Cell[5506, 185, 328, 11, 36, "Output",
+ CellTags->"CompleteSquare",
+ CellID->1343668443]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5871, 201, 174, 5, 27, "Input",
+ CellTags->"CompleteSquare",
+ CellID->1850431752],
+Cell[6048, 208, 301, 10, 36, "Output",
+ CellTags->"CompleteSquare",
+ CellID->237327102]
+}, Open  ]],
+Cell[6364, 221, 156, 5, 27, "Input",
+ CellTags->"CompleteSquare",
+ CellID->1021144564]
+}, Open  ]]
+}, Open  ]],
+Cell[6547, 230, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

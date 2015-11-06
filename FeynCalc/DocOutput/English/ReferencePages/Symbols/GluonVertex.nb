@@ -1,0 +1,1182 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31383,       1172]
+NotebookOptionsPosition[     23567,        923]
+NotebookOutlinePosition[     28466,       1060]
+CellTagsIndexPosition[     28351,       1054]
+WindowTitle->GluonVertex
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GluonVertex\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GluonVertex"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+GluonVertex.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76995], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/GluonVertex", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GluonVertex", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GluonVertex", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"p", ",", "mu", ",", "a"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"q", ",", "nu", ",", "b"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "la", ",", "c"}], "}"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "or GluonVertex[p,mu,a , q,nu,b , k,la,c ] yields the 3-gluon vertex. \
+GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the 3-gluon vertex without color \
+structure and the coupling constant. GluonVertex[{p,mu,a}, {q,nu,b}, \
+{k,la,c}, {s,si,d}] or GluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or \
+GluonVertex[p,mu,a , q,nu,b , k,la,c , s,si,d] or GluonVertex[ mu,a , nu,b , \
+la,c , si,d ] yields the 4-gluon vertex. The dimension and the name of the \
+coupling constant are determined by the options Dimension and \
+CouplingConstant.\n\nNote: All momenta are flowing into the vertex.\n\nGV can \
+be used as an abbreviation of GluonVertex."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->832191073],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->405958110],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["GV"], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[1]:=",
+ CellID->1626723090],
+
+Cell[BoxData[
+ FormBox["GluonVertex", TraditionalForm]], "Output",
+ ImageSize->{82, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[1]=",
+ CellID->507844949]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "GluonVertex", "]"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[2]:=",
+ CellID->970529707],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{459, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[2]=",
+ CellID->133998091]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonVertex", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[3]:=",
+ CellID->824487557],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{
+    SuperscriptBox["V", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]], "(", 
+    RowBox[{
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\", \"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\", \"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{152, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[3]=",
+ CellID->345350606]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonVertex", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[4]:=",
+ CellID->1236447463],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["g", "s"], " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Rho]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], "-", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Rho]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], ")"}]}], "+", 
+     RowBox[{
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Rho]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["r",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], "-", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], ")"}]}], "+", 
+     RowBox[{
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Rho]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], "-", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["r",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{394, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[4]=",
+ CellID->459073088]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonVertex", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "\[Mu]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "\[Nu]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Rho]"}], "}"}]}], "]"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[5]:=",
+ CellID->1094321460],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["V", 
+    RowBox[{
+     FormBox["\[Mu]",
+      TraditionalForm], 
+     FormBox["\[Nu]",
+      TraditionalForm], 
+     FormBox["\[Rho]",
+      TraditionalForm]}]], "(", 
+   RowBox[{
+    FormBox["p",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox["q",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox["r",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{111, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[5]=",
+ CellID->1163684898]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonVertex", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "\[Mu]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "\[Nu]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Rho]"}], "}"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[6]:=",
+ CellID->238279967],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["g", "s"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Rho]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], "-", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Rho]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], ")"}]}], "+", 
+     RowBox[{
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Rho]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["r",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], "-", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], ")"}]}], "+", 
+     RowBox[{
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Rho]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], "-", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["r",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{353, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[6]=",
+ CellID->888214799]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonVertex", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Rho]", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"s", ",", "\[Sigma]", ",", "d"}], "}"}]}], "]"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[7]:=",
+ CellID->410547695],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["V", 
+    RowBox[{
+     FormBox["a",
+      TraditionalForm], 
+     FormBox["b",
+      TraditionalForm], 
+     FormBox["c",
+      TraditionalForm], 
+     FormBox["d",
+      TraditionalForm]}], 
+    RowBox[{
+     FormBox["\[Mu]",
+      TraditionalForm], 
+     FormBox["\[Nu]",
+      TraditionalForm], 
+     FormBox["\[Rho]",
+      TraditionalForm], 
+     FormBox["\[Sigma]",
+      TraditionalForm]}]], "(", 
+   RowBox[{
+    FormBox["p",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox["q",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox["r",
+     TraditionalForm], 
+    FormBox["\<\", \"\>",
+     TraditionalForm], 
+    FormBox["s",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{145, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[7]=",
+ CellID->376491878]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonVertex", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "a"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Nu]", ",", "b"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Sigma]", ",", "d"}], "}"}]}], "]"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[8]:=",
+ CellID->1809122983],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["W", 
+   RowBox[{
+    FormBox["a",
+     TraditionalForm], 
+    FormBox["b",
+     TraditionalForm], 
+    FormBox["c",
+     TraditionalForm], 
+    FormBox["d",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{58, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[8]=",
+ CellID->613369162]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonVertex", "[", 
+   RowBox[{
+   "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", "\[Rho]", ",", "c", ",", 
+    "\[Sigma]", ",", "d"}], "]"}], "//", "Explicit"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[9]:=",
+ CellID->581429220],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"GluonVertex", "(", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\[Mu]", ",", "a"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Nu]", ",", "b"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Rho]", ",", "c"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Sigma]", ",", "d"}], "}"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}], ",", 
+    RowBox[{"{", "}"}]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{404, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[9]=",
+ CellID->2081703941]
+}, Open  ]],
+
+Cell["\<\
+A very convenient way to enter diagrams by hand is to label each line hitting \
+a vertex by a number and put this number after the inflowing momentum.\
+\>", "Text",
+ CellTags->"GluonVertex",
+ CellID->606211454],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GV", "[", 
+  RowBox[{"p", ",", "1", ",", "q", ",", "2", ",", "r", ",", "3"}], 
+  "]"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[10]:=",
+ CellID->1320893353],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["ci1",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["ci2",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["ci3",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{
+    SuperscriptBox["V", 
+     RowBox[{
+      FormBox[
+       FormBox["li1",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["li2",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["li3",
+        TraditionalForm],
+       TraditionalForm]}]], "(", 
+    RowBox[{
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\", \"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\", \"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{190, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[10]=",
+ CellID->112855876]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GV", "[", 
+   RowBox[{
+   "p", ",", "1", ",", "q", ",", "2", ",", "r", ",", "3", ",", "s", ",", 
+    "4"}], "]"}], "//", "Explicit"}]], "Input",
+ CellTags->"GluonVertex",
+ CellLabel->"In[11]:=",
+ CellID->997671247],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"GluonVertex", "(", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"li1", ",", "ci1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"li2", ",", "ci2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"li3", ",", "ci3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"li4", ",", "ci4"}], "}"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}], ",", 
+    RowBox[{"{", "}"}]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{466, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonVertex",
+ CellLabel->"Out[11]=",
+ CellID->1764898636]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["GluonGhostVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex",
+  ButtonNote->"GluonGhostVertex"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GluonPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonPropagator",
+  ButtonNote->"GluonPropagator"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GluonVertex",
+ CellID->731094773]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GluonVertex",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 26.440115}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GluonVertex[{p, mu, a}, {q, nu, b}, {k, la, c}] or GluonVertex[p,mu,a , \
+q,nu,b , k,la,c ] yields the 3-gluon vertex. GluonVertex[{p,mu}, {q,nu}, \
+{k,la}] yields the 3-gluon vertex without color structure and the coupling \
+constant. GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] or \
+GluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or GluonVertex[p,mu,a , q,nu,b , \
+k,la,c , s,si,d] or GluonVertex[mu,a , nu,b , la,c , si,d ] yields the \
+4-gluon vertex. The dimension and the name of the coupling constant are \
+determined by the options Dimension and CouplingConstant. Note: All momenta \
+are flowing into the vertex. GV can be used as an abbreviation of \
+GluonVertex.", "synonyms" -> {}, "title" -> "GluonVertex", "titlemodifier" -> 
+    "", "windowtitle" -> "GluonVertex", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/GluonVertex"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4163, 109, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->832191073]},
+ "GluonVertex"->{
+  Cell[4795, 138, 98, 3, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->1626723090],
+  Cell[4896, 143, 222, 7, 36, "Output",
+   CellTags->"GluonVertex",
+   CellID->507844949],
+  Cell[5155, 155, 139, 4, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->970529707],
+  Cell[5297, 161, 484, 15, 36, "Output",
+   CellTags->"GluonVertex",
+   CellID->133998091],
+  Cell[5818, 181, 356, 11, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->824487557],
+  Cell[6177, 194, 1223, 54, 42, "Output",
+   CellTags->"GluonVertex",
+   CellID->345350606],
+  Cell[7437, 253, 398, 13, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->1236447463],
+  Cell[7838, 268, 3988, 160, 43, "Output",
+   CellTags->"GluonVertex",
+   CellID->459073088],
+  Cell[11863, 433, 327, 11, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->1094321460],
+  Cell[12193, 446, 651, 27, 40, "Output",
+   CellTags->"GluonVertex",
+   CellID->1163684898],
+  Cell[12881, 478, 367, 13, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->238279967],
+  Cell[13251, 493, 3694, 146, 41, "Output",
+   CellTags->"GluonVertex",
+   CellID->888214799],
+  Cell[16982, 644, 432, 13, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->410547695],
+  Cell[17417, 659, 981, 42, 43, "Output",
+   CellTags->"GluonVertex",
+   CellID->376491878],
+  Cell[18435, 706, 393, 13, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->1809122983],
+  Cell[18831, 721, 409, 17, 40, "Output",
+   CellTags->"GluonVertex",
+   CellID->613369162],
+  Cell[19277, 743, 277, 8, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->581429220],
+  Cell[19557, 753, 601, 19, 36, "Output",
+   CellTags->"GluonVertex",
+   CellID->2081703941],
+  Cell[20173, 775, 220, 5, 52, "Text",
+   CellTags->"GluonVertex",
+   CellID->606211454],
+  Cell[20418, 784, 192, 6, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->1320893353],
+  Cell[20613, 792, 1223, 54, 42, "Output",
+   CellTags->"GluonVertex",
+   CellID->112855876],
+  Cell[21873, 851, 249, 8, 27, "Input",
+   CellTags->"GluonVertex",
+   CellID->997671247],
+  Cell[22125, 861, 598, 19, 36, "Output",
+   CellTags->"GluonVertex",
+   CellID->1764898636],
+  Cell[23091, 903, 434, 15, 32, "Text",
+   CellTags->"GluonVertex",
+   CellID->731094773]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 25974, 974},
+ {"GluonVertex", 26112, 978}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2843, 75, 54, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2900, 78, 1238, 27, 243, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4163, 109, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->832191073],
+Cell[CellGroupData[{
+Cell[4575, 128, 195, 6, 25, "ExampleSection",
+ CellID->405958110],
+Cell[CellGroupData[{
+Cell[4795, 138, 98, 3, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->1626723090],
+Cell[4896, 143, 222, 7, 36, "Output",
+ CellTags->"GluonVertex",
+ CellID->507844949]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5155, 155, 139, 4, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->970529707],
+Cell[5297, 161, 484, 15, 36, "Output",
+ CellTags->"GluonVertex",
+ CellID->133998091]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5818, 181, 356, 11, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->824487557],
+Cell[6177, 194, 1223, 54, 42, "Output",
+ CellTags->"GluonVertex",
+ CellID->345350606]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7437, 253, 398, 13, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->1236447463],
+Cell[7838, 268, 3988, 160, 43, "Output",
+ CellTags->"GluonVertex",
+ CellID->459073088]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11863, 433, 327, 11, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->1094321460],
+Cell[12193, 446, 651, 27, 40, "Output",
+ CellTags->"GluonVertex",
+ CellID->1163684898]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12881, 478, 367, 13, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->238279967],
+Cell[13251, 493, 3694, 146, 41, "Output",
+ CellTags->"GluonVertex",
+ CellID->888214799]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16982, 644, 432, 13, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->410547695],
+Cell[17417, 659, 981, 42, 43, "Output",
+ CellTags->"GluonVertex",
+ CellID->376491878]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18435, 706, 393, 13, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->1809122983],
+Cell[18831, 721, 409, 17, 40, "Output",
+ CellTags->"GluonVertex",
+ CellID->613369162]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19277, 743, 277, 8, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->581429220],
+Cell[19557, 753, 601, 19, 36, "Output",
+ CellTags->"GluonVertex",
+ CellID->2081703941]
+}, Open  ]],
+Cell[20173, 775, 220, 5, 52, "Text",
+ CellTags->"GluonVertex",
+ CellID->606211454],
+Cell[CellGroupData[{
+Cell[20418, 784, 192, 6, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->1320893353],
+Cell[20613, 792, 1223, 54, 42, "Output",
+ CellTags->"GluonVertex",
+ CellID->112855876]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21873, 851, 249, 8, 27, "Input",
+ CellTags->"GluonVertex",
+ CellID->997671247],
+Cell[22125, 861, 598, 19, 36, "Output",
+ CellTags->"GluonVertex",
+ CellID->1764898636]
+}, Open  ]]
+}, Open  ]],
+Cell[22750, 884, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22818, 889, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[23091, 903, 434, 15, 32, "Text",
+ CellTags->"GluonVertex",
+ CellID->731094773]
+}, Open  ]],
+Cell[23540, 921, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

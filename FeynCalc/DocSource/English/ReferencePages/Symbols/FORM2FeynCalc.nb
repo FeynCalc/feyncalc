@@ -1,0 +1,603 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/FORM2FeynCalc", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FORM2FeynCalc", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FORM2FeynCalc", "[", "expr", "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "translates the FORM expr into FeynCalc notation. FORM2FeynCalc[file] \
+translates the FORM expresssions in file into FeynCalcnotation. \
+FORM2FeynCalc[file, x1, x2, ...] reads in a file in FORM-format and \
+translates the assignments for the variables a, b, ... into FeynCalc syntax. \
+If the option Set is True, the variables x1, x2 are assigned to the right \
+hand sides defined in the FORM-file."
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["FeynCalc2FORM",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FeynCalc2FORM",
+  ButtonNote->"FeynCalc2FORM"],
+ "."
+}], "Text",
+ CellTags->"FORM2FeynCalc",
+ CellID->1782635377]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FORM2FeynCalc", "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[1]:=",
+ CellID->1139385107],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Dot", "\[Rule]", "Dot"}], ",", 
+    RowBox[{"HoldForm", "\[Rule]", "True"}], ",", 
+    RowBox[{"LorentzIndex", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FCGV", "(", "\<\"mu\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"nu\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"al\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"be\"\>", ")"}]}], "}"}]}], ",", 
+    RowBox[{"Set", "\[Rule]", "False"}], ",", 
+    RowBox[{"Replace", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Vectors", "\[Rule]", "Automatic"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[1]=",
+ CellID->1509057543]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FORM2FeynCalc", "[", "\"\<p.q + 2*x m^2\>\"", "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[2]:=",
+ CellID->1971183578],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}],
+    TraditionalForm], "+", 
+   RowBox[{"2", " ", 
+    RowBox[{"x", ".", 
+     SuperscriptBox["m", "2"]}]}]}], TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[2]=",
+ CellID->437204044]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[3]:=",
+ CellID->1292875249],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", " ", 
+   RowBox[{"x", ".", 
+    SuperscriptBox["m", "2"]}]}], "+", 
+  RowBox[{"SP", "[", 
+   RowBox[{"p", ",", "q"}], "]"}]}]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->1525941930]
+}, Open  ]],
+
+Cell["\<\
+Functions are automatically converted right, but bracketed expressions need \
+to be substituted explicitly.\
+\>", "Text",
+ CellTags->"FORM2FeynCalc",
+ CellID->1823304465],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FORM2FeynCalc", "[", 
+  RowBox[{"\"\<x +f(z)+ log(x)^2+[li2(1-x)]\>\"", ",", 
+   RowBox[{"Replace", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<[li2(1-x)]\>\"", "\[Rule]", "\"\<PolyLog[2,1-x]\>\""}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[4]:=",
+ CellID->1620741920],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"f", "(", "z", ")"}], "+", 
+   TemplateBox[{"2",RowBox[{"1", "-", "x"}]},
+    "PolyLog"], "+", "x", "+", 
+   RowBox[{
+    SuperscriptBox["log", "2"], "(", "x", ")"}]}], TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[4]=",
+ CellID->827693663]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[5]:=",
+ CellID->1897584456],
+
+Cell[BoxData[
+ RowBox[{"x", "+", 
+  RowBox[{"f", "[", "z", "]"}], "+", 
+  SuperscriptBox[
+   RowBox[{"Log", "[", "x", "]"}], "2"], "+", 
+  RowBox[{"PolyLog", "[", 
+   RowBox[{"2", ",", 
+    RowBox[{"1", "-", "x"}]}], "]"}]}]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->879638641]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FORM2FeynCalc", "[", "\"\<x + [(1)]*y -[(-1)^m]\>\"", 
+  "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[6]:=",
+ CellID->1533060910],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Hold", "[", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}], "m"], "]"}]}], "+", 
+   RowBox[{
+    RowBox[{"Hold", "[", "1", "]"}], ".", "y"}], "+", "x"}], 
+  TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[6]=",
+ CellID->1027470118]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ReleaseHold", "[", "%", "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[7]:=",
+ CellID->1512515442],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"-", "1"}], ")"}], 
+    RowBox[{"m", "+", "1"}]], "+", "x", "+", 
+   RowBox[{"1", ".", "y"}]}], TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[7]=",
+ CellID->1640354437]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FORM2FeynCalc", "[", "\"\<p(mu)*q(nu)+d_(mu,nu)\>\"", 
+  "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[8]:=",
+ CellID->2089442701],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["mu",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["nu",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm], "+", 
+   RowBox[{
+    RowBox[{"p", "(", "mu", ")"}], ".", 
+    RowBox[{"q", "(", "nu", ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[8]=",
+ CellID->758219802]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[9]:=",
+ CellID->1054646204],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", "mu", "]"}], ".", 
+   RowBox[{"q", "[", "nu", "]"}]}], "+", 
+  RowBox[{"MT", "[", 
+   RowBox[{"mu", ",", "nu"}], "]"}]}]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[9]//StandardForm=",
+ CellID->11165984]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FORM2FeynCalc", "[", 
+  RowBox[{"\"\<p(mu)*q(nu)+d_(mu,nu)\>\"", ",", 
+   RowBox[{"Replace", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"mu", "\[Rule]", "\[Mu]"}], ",", 
+      RowBox[{"nu", "\[Rule]", "\[Nu]"}]}], "}"}]}]}], "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[10]:=",
+ CellID->1352382070],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm], "+", 
+   RowBox[{
+    RowBox[{"p", "(", "\[Mu]", ")"}], ".", 
+    RowBox[{"q", "(", "\[Nu]", ")"}]}]}], TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[10]=",
+ CellID->291792517]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FORM2FeynCalc", "[", 
+  "\"\<i_*az*bz*aM^2*D1*[(1)]*b_G1 * ( 4*eperp(mu,nu)*avec.bvec*blam )\>\"", 
+  "]"}]], "Input",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"In[11]:=",
+ CellID->476542838],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"4", " ", "\[ImaginaryI]"}], ")"}], ".", "az", ".", "bz", ".", 
+   SuperscriptBox["aM", "2"], ".", "D1", ".", 
+   RowBox[{"Hold", "[", "1", "]"}], ".", "b$G1", ".", 
+   RowBox[{"eperp", "(", 
+    RowBox[{"mu", ",", "nu"}], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["avec",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["bvec",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", "blam"}], TraditionalForm]], "Output",
+ CellTags->"FORM2FeynCalc",
+ CellLabel->"Out[11]=",
+ CellID->276944378]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

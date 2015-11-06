@@ -1,0 +1,330 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9298,        320]
+NotebookOptionsPosition[      5823,        212]
+NotebookOutlinePosition[      8329,        283]
+CellTagsIndexPosition[      8216,        277]
+WindowTitle->PowerFactor
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/PowerFactor\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/PowerFactor"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+PowerFactor.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115623], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/PowerFactor", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["PowerFactor", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"PowerFactor", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "replaces ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox["x", "a"], TraditionalForm]]],
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox["y", "a"], TraditionalForm]]],
+     "with ",
+     Cell[BoxData[
+      FormBox[
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"x", " ", "y"}], ")"}], "a"], TraditionalForm]]],
+     "."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1389576433],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->76921222],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["x", "a"], 
+  SuperscriptBox["y", "a"]}]], "Input",
+ CellTags->"PowerFactor",
+ CellLabel->"In[1]:=",
+ CellID->1163522766],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["x", "a"], " ", 
+   SuperscriptBox["y", "a"]}], TraditionalForm]], "Output",
+ ImageSize->{43, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PowerFactor",
+ CellLabel->"Out[1]=",
+ CellID->160369455]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PowerFactor", "[", "%", "]"}]], "Input",
+ CellTags->"PowerFactor",
+ CellLabel->"In[2]:=",
+ CellID->485962359],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"x", " ", "y"}], ")"}], "a"], TraditionalForm]], "Output",
+ ImageSize->{46, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PowerFactor",
+ CellLabel->"Out[2]=",
+ CellID->783402888]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["PowerSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PowerSimplify",
+  ButtonNote->"PowerSimplify"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"PowerFactor",
+ CellID->2043225141]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"PowerFactor",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 4, 49.568619}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> "PowerFactor[exp] replaces x^ay^awith (x y) a.", 
+    "synonyms" -> {}, "title" -> "PowerFactor", "titlemodifier" -> "", 
+    "windowtitle" -> "PowerFactor", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/PowerFactor"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3627, 107, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1389576433]},
+ "PowerFactor"->{
+  Cell[4259, 136, 162, 6, 27, "Input",
+   CellTags->"PowerFactor",
+   CellID->1163522766],
+  Cell[4424, 144, 285, 10, 36, "Output",
+   CellTags->"PowerFactor",
+   CellID->160369455],
+  Cell[4746, 159, 133, 4, 27, "Input",
+   CellTags->"PowerFactor",
+   CellID->485962359],
+  Cell[4882, 165, 285, 10, 36, "Output",
+   CellTags->"PowerFactor",
+   CellID->783402888],
+  Cell[5535, 198, 246, 9, 32, "Text",
+   CellTags->"PowerFactor",
+   CellID->2043225141]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7598, 254},
+ {"PowerFactor", 7737, 258}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2258, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2844, 75, 54, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2901, 78, 701, 25, 84, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3627, 107, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1389576433],
+Cell[CellGroupData[{
+Cell[4040, 126, 194, 6, 25, "ExampleSection",
+ CellID->76921222],
+Cell[CellGroupData[{
+Cell[4259, 136, 162, 6, 27, "Input",
+ CellTags->"PowerFactor",
+ CellID->1163522766],
+Cell[4424, 144, 285, 10, 36, "Output",
+ CellTags->"PowerFactor",
+ CellID->160369455]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4746, 159, 133, 4, 27, "Input",
+ CellTags->"PowerFactor",
+ CellID->485962359],
+Cell[4882, 165, 285, 10, 36, "Output",
+ CellTags->"PowerFactor",
+ CellID->783402888]
+}, Open  ]]
+}, Open  ]],
+Cell[5194, 179, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5262, 184, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5535, 198, 246, 9, 32, "Text",
+ CellTags->"PowerFactor",
+ CellID->2043225141]
+}, Open  ]],
+Cell[5796, 210, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

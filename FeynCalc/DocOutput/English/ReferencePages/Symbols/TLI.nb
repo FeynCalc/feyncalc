@@ -1,0 +1,307 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9391,        297]
+NotebookOptionsPosition[      5855,        195]
+NotebookOutlinePosition[      8645,        268]
+CellTagsIndexPosition[      8540,        262]
+WindowTitle->TLI
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/TLI\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/TLI"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/TLI.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$150465], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/TLI", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["TLI", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"TLI", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"v", ",", "w", ",", "x", ",", "y", ",", "z"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "e"}], "}"}], ",", 
+        " ", 
+        RowBox[{"{", 
+         RowBox[{"al", ",", "be", ",", "ga", ",", "de", ",", "ep"}], "}"}]}], 
+       "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "the exponents of the numerator scalar product are (dl = OPEDelta):  v: \
+k1.k1, w: k2.k2,  x: p.k1, y: p.k2, z: k1.k2.  a: dl.k1, b: dl.k2,  c: \
+dl.(p-k1), d: dl.(p-k2), e: dl.(k1-k2).\nTLI[{mu1, ...}, {nu1, \
+...}][{v,w,x,y,z},{a,b,c,d,e}, {al,be,ga,de,ep}] is a tensor integral, where \
+mu1 belongs to k1 and nu1 to k2.\nTLI[any___,{a,b,c,d,e,0,0}, \
+{al,be,ga,de,ep}] simplifies to  TLI[any, {a,b,c,d,e}, {al,be,ga,de,ep}].\n\
+TLI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to  \
+TLI[{a,b,c,d,e}, {al,be,ga,de,ep}]."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1058349922],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->894546880],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "TLI", "]"}]], "Input",
+ CellTags->"TLI",
+ CellLabel->"In[1]:=",
+ CellID->1958640232],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"EpsilonOrder", "\[Rule]", "0"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", 
+     RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{292, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"TLI",
+ CellLabel->"Out[1]=",
+ CellID->1974374076]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["TLI2FC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TLI2FC",
+  ButtonNote->"TLI2FC"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"TLI",
+ CellID->1589173280]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"TLI",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 8, 6.734227}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "TLI[{v, w, x, y, z}, {a, b, c, d, e}, {al, be, ga, de, ep}] the \
+exponents of the numerator scalar product are (dl = OPEDelta): v: k1.k1, w: \
+k2.k2, x: p.k1, y: p.k2, z: k1.k2. a: dl.k1, b: dl.k2, c: dl.(p-k1), d: \
+dl.(p-k2), e: dl.(k1-k2). TLI[{mu1, ...}, {nu1, \
+...}][{v,w,x,y,z},{a,b,c,d,e}, {al,be,ga,de,ep}] is a tensor integral, where \
+mu1 belongs to k1 and nu1 to k2. TLI[any___,{a,b,c,d,e,0,0}, \
+{al,be,ga,de,ep}] simplifies to TLI[any, {a,b,c,d,e}, {al,be,ga,de,ep}]. \
+TLI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to TLI[{a,b,c,d,e}, \
+{al,be,ga,de,ep}].", "synonyms" -> {}, "title" -> "TLI", "titlemodifier" -> 
+    "", "windowtitle" -> "TLI", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/TLI"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4090, 110, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1058349922]},
+ "TLI"->{
+  Cell[4723, 139, 124, 4, 27, "Input",
+   CellTags->"TLI",
+   CellID->1958640232],
+  Cell[4850, 145, 378, 13, 36, "Output",
+   CellTags->"TLI",
+   CellID->1974374076],
+  Cell[5596, 181, 217, 9, 31, "Text",
+   CellTags->"TLI",
+   CellID->1589173280]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8135, 245},
+ {"TLI", 8266, 249}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 2238, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2816, 75, 46, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2865, 78, 1200, 28, 189, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4090, 110, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1058349922],
+Cell[CellGroupData[{
+Cell[4503, 129, 195, 6, 25, "ExampleSection",
+ CellID->894546880],
+Cell[CellGroupData[{
+Cell[4723, 139, 124, 4, 27, "Input",
+ CellTags->"TLI",
+ CellID->1958640232],
+Cell[4850, 145, 378, 13, 36, "Output",
+ CellTags->"TLI",
+ CellID->1974374076]
+}, Open  ]]
+}, Open  ]],
+Cell[5255, 162, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5323, 167, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5596, 181, 217, 9, 31, "Text",
+ CellTags->"TLI",
+ CellID->1589173280]
+}, Open  ]],
+Cell[5828, 193, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

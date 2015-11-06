@@ -1,0 +1,526 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14179,        516]
+NotebookOptionsPosition[      9477,        362]
+NotebookOutlinePosition[     12684,        455]
+CellTagsIndexPosition[     12577,        449]
+WindowTitle->GSD
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GSD\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GSD"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/GSD.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78392], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/GSD", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GSD", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GSD", "[", "p", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "can be used as input for a D-dimensional ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+       "p", " \[NegativeMediumSpace]", 
+        "\[NegativeMediumSpace]\[NegativeMediumSpace]", 
+        "\[NegativeMediumSpace]", "/", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"=", 
+           RowBox[{"\[Gamma]", ".", "p"}]}], " ", "=", " ", 
+          RowBox[{
+           SubscriptBox["\[Gamma]", "\[Mu]"], 
+           SuperscriptBox["p", "\[Mu]"]}]}], ")"}]}], TraditionalForm]]],
+     " and is transformed into DiracGamma[Momentum[p,D],D] by \
+FeynCalcInternal (=FCI). GSD[p,q, ...] is a short form for GSD[p].GSD[q]. ... \
+."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1149024578],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1473688840],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GSD", "[", "p", "]"}]], "Input",
+ CellTags->"GSD",
+ CellLabel->"In[1]:=",
+ CellID->4519520],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Gamma]", "\[CenterDot]", 
+   FormBox[
+    FormBox["p",
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{31, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GSD",
+ CellLabel->"Out[1]=",
+ CellID->69860572]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GSD", "[", "p", "]"}], "//", "FCI"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"GSD",
+ CellLabel->"In[2]:=",
+ CellID->714510926],
+
+Cell[BoxData[
+ RowBox[{"DiracGamma", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", ",", "D"}], "]"}], ",", "D"}], "]"}]], "Output",
+ ImageSize->{241, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GSD",
+ CellLabel->"Out[2]//StandardForm=",
+ CellID->2038587686]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GSD", "[", 
+  RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}]], "Input",
+ CellTags->"GSD",
+ CellLabel->"In[3]:=",
+ CellID->1291429952],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["r",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["s",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{167, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GSD",
+ CellLabel->"Out[3]=",
+ CellID->136445387]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GSD", "[", 
+   RowBox[{"p", ",", "q", ",", "r", ",", "s"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"GSD",
+ CellLabel->"In[4]:=",
+ CellID->1183068674],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GSD", "[", "p", "]"}], ".", 
+  RowBox[{"GSD", "[", "q", "]"}], ".", 
+  RowBox[{"GSD", "[", "r", "]"}], ".", 
+  RowBox[{"GSD", "[", "s", "]"}]}]], "Output",
+ ImageSize->{226, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GSD",
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->1638135688]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GSD", "[", "q", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GSD", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
+  RowBox[{"GSD", "[", "q", "]"}]}]], "Input",
+ CellTags->"GSD",
+ CellLabel->"In[5]:=",
+ CellID->957956427],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{"m", "+", 
+     FormBox[
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{156, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GSD",
+ CellLabel->"Out[5]=",
+ CellID->1243501677]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracSlash",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSlash",
+  ButtonNote->"DiracSlash"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GAD",
+  ButtonNote->"GAD"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GSD",
+ CellID->1911106257]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GSD",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 33.166546}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GSD[p] can be used as input for a D-dimensional p \
+\\[NegativeMediumSpace]\\[NegativeMediumSpace]\\[NegativeMediumSpace]\\ \
+\\[NegativeMediumSpace]/ (= \\[Gamma].p = \\[Gamma]\\[Mu] p^\\[Mu]) and is \
+transformed into DiracGamma[Momentum[p,D],D] by FeynCalcInternal (=FCI). \
+GSD[p,q, ...] is a short form for GSD[p].GSD[q]. ... .", "synonyms" -> {}, 
+    "title" -> "GSD", "titlemodifier" -> "", "windowtitle" -> "GSD", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/GSD"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3873, 110, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1149024578]},
+ "GSD"->{
+  Cell[4507, 139, 115, 4, 27, "Input",
+   CellTags->"GSD",
+   CellID->4519520],
+  Cell[4625, 145, 314, 12, 38, "Output",
+   CellTags->"GSD",
+   CellID->69860572],
+  Cell[4976, 162, 182, 7, 27, "Input",
+   CellTags->"GSD",
+   CellID->714510926],
+  Cell[5161, 171, 312, 10, 36, "Output",
+   CellTags->"GSD",
+   CellID->2038587686],
+  Cell[5510, 186, 161, 5, 27, "Input",
+   CellTags->"GSD",
+   CellID->1291429952],
+  Cell[5674, 193, 992, 40, 38, "Output",
+   CellTags->"GSD",
+   CellID->136445387],
+  Cell[6703, 238, 200, 7, 27, "Input",
+   CellTags->"GSD",
+   CellID->1183068674],
+  Cell[6906, 247, 354, 11, 36, "Output",
+   CellTags->"GSD",
+   CellID->1638135688],
+  Cell[7297, 263, 259, 9, 27, "Input",
+   CellTags->"GSD",
+   CellID->957956427],
+  Cell[7559, 274, 829, 33, 38, "Output",
+   CellTags->"GSD",
+   CellID->1243501677],
+  Cell[8756, 330, 679, 27, 31, "Text",
+   CellTags->"GSD",
+   CellID->1911106257]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11507, 408},
+ {"GSD", 11638, 412}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2815, 75, 46, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2864, 78, 984, 28, 117, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3873, 110, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1149024578],
+Cell[CellGroupData[{
+Cell[4286, 129, 196, 6, 25, "ExampleSection",
+ CellID->1473688840],
+Cell[CellGroupData[{
+Cell[4507, 139, 115, 4, 27, "Input",
+ CellTags->"GSD",
+ CellID->4519520],
+Cell[4625, 145, 314, 12, 38, "Output",
+ CellTags->"GSD",
+ CellID->69860572]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4976, 162, 182, 7, 27, "Input",
+ CellTags->"GSD",
+ CellID->714510926],
+Cell[5161, 171, 312, 10, 36, "Output",
+ CellTags->"GSD",
+ CellID->2038587686]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5510, 186, 161, 5, 27, "Input",
+ CellTags->"GSD",
+ CellID->1291429952],
+Cell[5674, 193, 992, 40, 38, "Output",
+ CellTags->"GSD",
+ CellID->136445387]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6703, 238, 200, 7, 27, "Input",
+ CellTags->"GSD",
+ CellID->1183068674],
+Cell[6906, 247, 354, 11, 36, "Output",
+ CellTags->"GSD",
+ CellID->1638135688]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7297, 263, 259, 9, 27, "Input",
+ CellTags->"GSD",
+ CellID->957956427],
+Cell[7559, 274, 829, 33, 38, "Output",
+ CellTags->"GSD",
+ CellID->1243501677]
+}, Open  ]]
+}, Open  ]],
+Cell[8415, 311, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8483, 316, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8756, 330, 679, 27, 31, "Text",
+ CellTags->"GSD",
+ CellID->1911106257]
+}, Open  ]],
+Cell[9450, 360, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

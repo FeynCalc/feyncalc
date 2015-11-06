@@ -1,0 +1,834 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24810,        824]
+NotebookOptionsPosition[     17629,        599]
+NotebookOutlinePosition[     22287,        728]
+CellTagsIndexPosition[     22137,        721]
+WindowTitle->DiracReduce
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/DiracReduce\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/DiracReduce"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+DiracReduce.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38757], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/DiracReduce", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["DiracReduce", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"DiracReduce", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "reduces all four-dimensional Dirac matrices in exp to the standard \
+basis (S,P,V,A,T) using the Chisholm identity (see Chisholm). In the result \
+the basic Dirac structures are wrapped with a head DiracBasis. I.e., S \
+corresponds to DiracBasis[1], P : DiracBasis[DiracMatrix[5]], V: \
+DiracBasis[DiracMatrix[mu]], A: DiracBasis[DiracMatrix[mu, 5]], T: \
+DiracBasis[DiracSigma[DiracMatrix[mu, nu]]]. By default DiracBasis is \
+substituted to Identity. Notice that the result of DiracReduce is given in \
+the FeynCalcExternal-way, i.e.,evtl. you may have to use FeynCalcInternal on \
+the result."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1020909186],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->514984972],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracReduce", "]"}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[1]:=",
+ CellID->646521382],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"DiracBasis", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{429, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[1]=",
+ CellID->1909713385]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", " ", "=", " ", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[2]:=",
+ CellID->176343206],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{45, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[2]=",
+ CellID->1169679224]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracReduce", "[", "t1", "]"}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[3]:=",
+ CellID->1863378816],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Sigma]", 
+     RowBox[{
+      FormBox["\[Mu]",
+       TraditionalForm], 
+      FormBox["\[Nu]",
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{90, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[3]=",
+ CellID->1304770013]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t2", "=", 
+  RowBox[{"DiracMatrix", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}]}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[4]:=",
+ CellID->1405125223],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DiracMatrix", "(", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{137, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[4]=",
+ CellID->971985531]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracReduce", "[", "t2", "]"}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[5]:=",
+ CellID->1093135858],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[ImaginaryI]", " ", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox[
+        FormBox[
+         RowBox[{"$AL", "\[InvisibleApplication]", 
+          RowBox[{"(", "$102", ")"}]}],
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]],
+      TraditionalForm]}], " ", 
+    FormBox[
+     SuperscriptBox["\[Epsilon]", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{"$AL", "\[InvisibleApplication]", 
+          RowBox[{"(", "$102", ")"}]}],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["\[Rho]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["\[Rho]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{399, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[5]=",
+ CellID->1278508135]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t3", "=", 
+  RowBox[{"DiracMatrix", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+   "]"}]}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[6]:=",
+ CellID->1144474685],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DiracMatrix", "(", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], ")"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{156, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[6]=",
+ CellID->2001677937]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t4", "=", 
+  RowBox[{"DiracReduce", "[", "t3", "]"}]}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[7]:=",
+ CellID->654035869],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+    "], {{0, 41}, {
+    472, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  BaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{472, 41},
+  PlotRange->{{0, 472}, {0, 41}}]], "Output",
+ ImageSize->{476, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->{"DiracReduce", "RasterizedOutput"},
+ CellLabel->"Out[7]=",
+ CellID->524730989]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t5", " ", "=", 
+  RowBox[{"Calc", "[", 
+   RowBox[{"DiracSimplify", "[", 
+    RowBox[{"DiracSigmaExplicit", "[", 
+     RowBox[{"t4", ".", "t4"}], "]"}], "]"}], "]"}]}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[8]:=",
+ CellID->1302843775],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "128"}], TraditionalForm]], "Output",
+ ImageSize->{35, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[8]=",
+ CellID->2142207150]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", 
+  RowBox[{"t4", ".", "t4"}], "]"}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[9]:=",
+ CellID->1419075428],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "128"}], TraditionalForm]], "Output",
+ ImageSize->{35, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"DiracReduce",
+ CellLabel->"Out[9]=",
+ CellID->474875609]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "]"}]], "Input",
+ CellTags->"DiracReduce",
+ CellLabel->"In[10]:=",
+ CellID->156497246]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"DiracReduce",
+ CellID->2097841964]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"DiracReduce",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 58, 3.793037}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "DiracReduce[exp] reduces all four-dimensional Dirac matrices in exp to \
+the standard basis (S,P,V,A,T) using the Chisholm identity (see Chisholm). In \
+the result the basic Dirac structures are wrapped with a head DiracBasis. \
+I.e., S corresponds to DiracBasis[1], P : DiracBasis[DiracMatrix[5]], V: \
+DiracBasis[DiracMatrix[mu]], A: DiracBasis[DiracMatrix[mu, 5]], T: \
+DiracBasis[DiracSigma[DiracMatrix[mu, nu]]]. By default DiracBasis is \
+substituted to Identity. Notice that the result of DiracReduce is given in \
+the FeynCalcExternal-way, i.e.,evtl. you may have to use FeynCalcInternal on \
+the result.", "synonyms" -> {}, "title" -> "DiracReduce", "titlemodifier" -> 
+    "", "windowtitle" -> "DiracReduce", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/DiracReduce"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3868, 102, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1020909186]},
+ "DiracReduce"->{
+  Cell[4501, 131, 139, 4, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->646521382],
+  Cell[4643, 137, 430, 14, 36, "Output",
+   CellTags->"DiracReduce",
+   CellID->1909713385],
+  Cell[5110, 156, 190, 6, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->176343206],
+  Cell[5303, 164, 586, 24, 38, "Output",
+   CellTags->"DiracReduce",
+   CellID->1169679224],
+  Cell[5926, 193, 135, 4, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->1863378816],
+  Cell[6064, 199, 832, 34, 38, "Output",
+   CellTags->"DiracReduce",
+   CellID->1304770013],
+  Cell[6933, 238, 205, 6, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->1405125223],
+  Cell[7141, 246, 301, 10, 36, "Output",
+   CellTags->"DiracReduce",
+   CellID->971985531],
+  Cell[7479, 261, 135, 4, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->1093135858],
+  Cell[7617, 267, 3230, 132, 41, "Output",
+   CellTags->"DiracReduce",
+   CellID->1278508135],
+  Cell[10884, 404, 226, 7, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->1144474685],
+  Cell[11113, 413, 319, 10, 36, "Output",
+   CellTags->"DiracReduce",
+   CellID->2001677937],
+  Cell[11469, 428, 158, 5, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->654035869],
+  Cell[11630, 435, 4196, 77, 62, "Output",
+   CellTags->{"DiracReduce", "RasterizedOutput"},
+   CellID->524730989],
+  Cell[15863, 517, 272, 8, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->1302843775],
+  Cell[16138, 527, 233, 8, 36, "Output",
+   CellTags->"DiracReduce",
+   CellID->2142207150],
+  Cell[16408, 540, 152, 5, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->1419075428],
+  Cell[16563, 547, 232, 8, 36, "Output",
+   CellTags->"DiracReduce",
+   CellID->474875609],
+  Cell[16810, 558, 175, 5, 27, "Input",
+   CellTags->"DiracReduce",
+   CellID->156497246],
+  Cell[17341, 585, 246, 9, 32, "Text",
+   CellTags->"DiracReduce",
+   CellID->2097841964]},
+ "RasterizedOutput"->{
+  Cell[11630, 435, 4196, 77, 62, "Output",
+   CellTags->{"DiracReduce", "RasterizedOutput"},
+   CellID->524730989]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 19971, 649},
+ {"DiracReduce", 20110, 653},
+ {"RasterizedOutput", 21997, 714}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2843, 75, 54, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2900, 78, 943, 20, 161, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3868, 102, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1020909186],
+Cell[CellGroupData[{
+Cell[4281, 121, 195, 6, 25, "ExampleSection",
+ CellID->514984972],
+Cell[CellGroupData[{
+Cell[4501, 131, 139, 4, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->646521382],
+Cell[4643, 137, 430, 14, 36, "Output",
+ CellTags->"DiracReduce",
+ CellID->1909713385]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5110, 156, 190, 6, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->176343206],
+Cell[5303, 164, 586, 24, 38, "Output",
+ CellTags->"DiracReduce",
+ CellID->1169679224]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5926, 193, 135, 4, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->1863378816],
+Cell[6064, 199, 832, 34, 38, "Output",
+ CellTags->"DiracReduce",
+ CellID->1304770013]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6933, 238, 205, 6, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->1405125223],
+Cell[7141, 246, 301, 10, 36, "Output",
+ CellTags->"DiracReduce",
+ CellID->971985531]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7479, 261, 135, 4, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->1093135858],
+Cell[7617, 267, 3230, 132, 41, "Output",
+ CellTags->"DiracReduce",
+ CellID->1278508135]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10884, 404, 226, 7, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->1144474685],
+Cell[11113, 413, 319, 10, 36, "Output",
+ CellTags->"DiracReduce",
+ CellID->2001677937]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11469, 428, 158, 5, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->654035869],
+Cell[11630, 435, 4196, 77, 62, "Output",
+ CellTags->{"DiracReduce", "RasterizedOutput"},
+ CellID->524730989]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15863, 517, 272, 8, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->1302843775],
+Cell[16138, 527, 233, 8, 36, "Output",
+ CellTags->"DiracReduce",
+ CellID->2142207150]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16408, 540, 152, 5, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->1419075428],
+Cell[16563, 547, 232, 8, 36, "Output",
+ CellTags->"DiracReduce",
+ CellID->474875609]
+}, Open  ]],
+Cell[16810, 558, 175, 5, 27, "Input",
+ CellTags->"DiracReduce",
+ CellID->156497246]
+}, Open  ]],
+Cell[17000, 566, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17068, 571, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[17341, 585, 246, 9, 32, "Text",
+ CellTags->"DiracReduce",
+ CellID->2097841964]
+}, Open  ]],
+Cell[17602, 597, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

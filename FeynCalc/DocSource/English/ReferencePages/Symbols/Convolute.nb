@@ -1,0 +1,999 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/Convolute", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Convolute", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"Convolute", "[", 
+   RowBox[{"f", ",", " ", "g", ",", " ", "x"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "convolutes ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ "(",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ") and ",
+ StyleBox["g",
+  FontSlant->"Italic"],
+ "(",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ "), i.e., ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", "1"], 
+    RowBox[{
+     SubscriptBox[
+      StyleBox[
+       RowBox[{
+        StyleBox["d",
+         FontSlant->"Plain"], 
+        StyleBox["x",
+         FontSlant->"Italic"]}]], "1"], " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{
+       SubscriptBox[
+        StyleBox[
+         RowBox[{
+          StyleBox["d",
+           FontSlant->"Plain"], "x"}]], "2"], " ", 
+       RowBox[{"\[Delta]", "(", 
+        RowBox[{"x", " ", "-", " ", 
+         RowBox[{
+          SubscriptBox["x", "1"], " ", 
+          SubscriptBox["x", "2"]}]}], ")"}], " ", 
+       RowBox[{"f", "(", 
+        SubscriptBox["x", "1"], ")"}], " ", 
+       RowBox[{
+        RowBox[{"g", "(", 
+         SubscriptBox["x", "2"], ")"}], " ", "."}]}]}]}]}], TraditionalForm]]],
+ " Convolute[f, g] is equivalent to Convolute[f, g, x]. Convolute[exp, {x1, \
+x2}] assumes that exp is polynomial in x1 and x2. Convolute uses \
+table-look-up and does not do any integral calculations, only linear \
+algebra."
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["PlusDistribution",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/PlusDistribution",
+  ButtonNote->"PlusDistribution"],
+ ", ",
+ ButtonBox["ConvoluteTable",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ConvoluteTable",
+  ButtonNote->"ConvoluteTable"],
+ "."
+}], "Text",
+ CellTags->"Convolute",
+ CellID->573828711]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Convolute", "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[1]:=",
+ CellID->846637972],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Bracket", "\[Rule]", 
+     RowBox[{"{", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "}"}]}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[1]=",
+ CellID->487844073]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", "1"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[2]:=",
+ CellID->1183792130],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[2]=",
+ CellID->2333332]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"x", ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[3]:=",
+ CellID->566730399],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["x", "2"]}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[3]=",
+ CellID->866957207]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[4]:=",
+ CellID->1354290721],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "x"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[4]=",
+ CellID->1705056571]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[5]:=",
+ CellID->694658515],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[5]=",
+ CellID->212763543]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"PlusDistribution", "[", 
+    FractionBox["1", 
+     RowBox[{"1", "-", "x"}]], "]"}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[6]:=",
+ CellID->1694510014],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[6]=",
+ CellID->527227095]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[7]:=",
+ CellID->640655392],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"x", " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[7]=",
+ CellID->1663091308]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[8]:=",
+ CellID->440037844],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"x", "-", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[8]=",
+ CellID->1364104380]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"Log", "[", 
+    RowBox[{"1", "-", "x"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[9]:=",
+ CellID->151808165],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"log", "(", 
+     RowBox[{"1", "-", "x"}], ")"}]}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[9]=",
+ CellID->461576513]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", 
+     RowBox[{"1", "-", "x"}], "]"}]}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[10]:=",
+ CellID->1563371513],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "x"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"1", "-", "x"}], ")"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[10]=",
+ CellID->535701029]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   RowBox[{"Log", "[", 
+    RowBox[{"1", "-", "x"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[11]:=",
+ CellID->1082077962],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    RowBox[{"log", "(", 
+     RowBox[{"1", "-", "x"}], ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[11]=",
+ CellID->1354192503]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", 
+     RowBox[{"1", "-", "x"}], "]"}]}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[12]:=",
+ CellID->1247483115],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"x", " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"1", "-", "x"}], ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[12]=",
+ CellID->1318550208]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"Log", "[", 
+     RowBox[{"1", "-", "x"}], "]"}], 
+    RowBox[{"1", "-", "x"}]], ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[13]:=",
+ CellID->2055743895],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"x", " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"1", "-", "x"}], ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[13]=",
+ CellID->539579261]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", "x", "]"}]}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[14]:=",
+ CellID->1292595425],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "x"}], " ", 
+   RowBox[{"log", "(", "x", ")"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[14]=",
+ CellID->278611380]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{"1", "-", "x"}], "]"}], ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[15]:=",
+ CellID->342391696],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "x"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"1", "-", "x"}], ")"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[15]=",
+ CellID->1414596566]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   FractionBox[
+    RowBox[{"Log", "[", "x", "]"}], 
+    RowBox[{"1", "-", "x"}]]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[16]:=",
+ CellID->1164478774],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"log", "(", "x", ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"x", "-", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[16]=",
+ CellID->1346944538]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"Log", "[", "x", "]"}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[17]:=",
+ CellID->260971955],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"log", "(", "x", ")"}]}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[17]=",
+ CellID->552984683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"x", ",", " ", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", "x", "]"}]}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[18]:=",
+ CellID->935305016],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["x", "2"]}], " ", 
+   RowBox[{"log", "(", "x", ")"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[18]=",
+ CellID->1685360392]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   RowBox[{"Log", "[", "x", "]"}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[19]:=",
+ CellID->63581574],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    RowBox[{"log", "(", "x", ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[19]=",
+ CellID->1099451359]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   FractionBox[
+    RowBox[{"Log", "[", "x", "]"}], 
+    RowBox[{"1", "-", "x"}]]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[20]:=",
+ CellID->1271585721],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    RowBox[{"log", "(", "x", ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[20]=",
+ CellID->2099236631]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", "x", "]"}]}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[21]:=",
+ CellID->1377475961],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"x", " ", 
+    RowBox[{"log", "(", "x", ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[21]=",
+ CellID->1161095845]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"Log", "[", "x", "]"}], 
+    RowBox[{"1", "-", "x"}]], ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[22]:=",
+ CellID->2045548358],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"x", " ", 
+    RowBox[{"log", "(", "x", ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[22]=",
+ CellID->1817134078]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", "x", "]"}]}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[23]:=",
+ CellID->1793379008],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "x"}], " ", 
+   RowBox[{"log", "(", "x", ")"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[23]=",
+ CellID->1394422583]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   RowBox[{"Log", "[", "x", "]"}], ",", "x"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[24]:=",
+ CellID->1760428538],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "x"}], " ", 
+   RowBox[{"log", "(", "x", ")"}], " ", 
+   RowBox[{"log", "(", 
+    RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[24]=",
+ CellID->395731069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"1", "-", "x"}]], ",", 
+   FractionBox[
+    RowBox[{"Log", "[", 
+     RowBox[{"1", "-", "x"}], "]"}], 
+    RowBox[{"1", "-", "x"}]]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[25]:=",
+ CellID->379553048],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], " ", 
+     RowBox[{"log", "(", 
+      RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"x", "-", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[25]=",
+ CellID->1955426678]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convolute", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"Log", "[", 
+     RowBox[{"1", "-", "x"}], "]"}], 
+    RowBox[{"1", "-", "x"}]], ",", 
+   RowBox[{"Log", "[", 
+    RowBox[{"1", "-", "x"}], "]"}]}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[26]:=",
+ CellID->1743318528],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["log", "2"], "(", 
+     RowBox[{"1", "-", "x"}], ")"}], " ", 
+    RowBox[{"log", "(", 
+     RowBox[{"FCGV", "(", "\<\"x\"\>", ")"}], ")"}]}], 
+   RowBox[{"x", "-", "1"}]], TraditionalForm]], "Output",
+ CellTags->"Convolute",
+ CellLabel->"Out[26]=",
+ CellID->2109333521]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConvoluteTable", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"Log", "[", 
+     RowBox[{"1", "-", "x"}], "]"}], 
+    RowBox[{"1", "-", "x"}]], ",", "1"}], "]"}]], "Input",
+ CellTags->"Convolute",
+ CellLabel->"In[27]:=",
+ CellID->1987067231],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"False", "[", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"log", "(", 
+      RowBox[{"1", "-", "x"}], ")"}], 
+     RowBox[{"1", "-", "x"}]], ",", "1"}], "]"}], TraditionalForm]], "Output",
+ 
+ CellTags->"Convolute",
+ CellLabel->"Out[27]=",
+ CellID->1326268935]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

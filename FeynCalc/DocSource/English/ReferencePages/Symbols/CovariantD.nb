@@ -1,0 +1,1268 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/CovariantD", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["CovariantD", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"CovariantD", "[", "mu", "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "is a generic covariant derivative with Lorentz index mu. With the \
+option-setting Explicit \[Rule] True, an explicit expression for a fermionic \
+field is returned, depending on the setting on the other options.\n\
+CovariantD[x, mu] is a generic covariant derivative with respect to x^mu.\n\
+CovariantD[mu, a, b] is a covariant derivative for a bosonic field; acting on \
+QuantumField[f,{},{a,b}], where f is some field name and a and b are two \
+SU(N) indices. Again, with the option-setting Explicit \[Rule] True, an \
+explicit expression is returned, depending on the setting on the other \
+options.\nCovariantD[OPEDelta, a, b] is a short form for  \
+CovariantD[mu,a,b]*FourVector[OPEDelta, mu]. CovariantD[{OPEDelta, a, b}, \
+{n}] yields the product of n operators, where n is an integer.  \
+CovariantD[OPEDelta, a, b, {m, n}]  gives the expanded form of \
+CovariantD[OPEDelta, a, b]^m up to order g^n for the gluon, where n is an \
+integer and g the coupling constant  indicated by the setting of the option \
+CouplingConstant. CovariantD[OPEDelta, {m, n}] gives the expanded form of  \
+CovariantD[OPEDelta]^m up to order g^n of the fermionic field.\n\n Possible \
+settings of PartialD are: LeftPartialD, LeftRigthPartialD, RightPartialD. The \
+default setting of QuantumField is GaugeField."
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["LeftPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftPartialD",
+  ButtonNote->"LeftPartialD"],
+ ", ",
+ ButtonBox["LeftRightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD",
+  ButtonNote->"LeftRightPartialD"],
+ ", ",
+ ButtonBox["RightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/RightPartialD",
+  ButtonNote->"RightPartialD"],
+ "."
+}], "Text",
+ CellTags->"CovariantD",
+ CellID->2075533712]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "CovariantD", "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[1]:=",
+ CellID->1136125130],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"DummyIndex", "\[Rule]", "Automatic"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCPartialD", "\[Rule]", "RightPartialD"}], ",", 
+    RowBox[{"QuantumField", "\[Rule]", "A"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[1]=",
+ CellID->580865857]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", "\[Mu]", "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[2]:=",
+ CellID->691762283],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["D", 
+   FormBox["\[Mu]",
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[2]=",
+ CellID->1727860547]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"\[Mu]", ",", "a", ",", "b"}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[3]:=",
+ CellID->631235757],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox["D", 
+   FormBox["\[Mu]",
+    TraditionalForm], 
+   RowBox[{
+    FormBox["a",
+     TraditionalForm], 
+    FormBox["b",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[3]=",
+ CellID->78914476]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"\[Mu]", ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[4]:=",
+ CellID->1730385129],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox[
+    OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["c48",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c48",
+        TraditionalForm],
+       TraditionalForm]]}]}]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[4]=",
+ CellID->606796247]
+}, Open  ]],
+
+Cell["\<\
+The first argument of CovariantD is intepreted as type LorentzIndex, except \
+for OPEDelta, which is type Momentum.\
+\>", "Text",
+ CellTags->"CovariantD",
+ CellID->1590488263],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", "OPEDelta", "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[5]:=",
+ CellID->1980257576],
+
+Cell[BoxData[
+ FormBox[
+  SubscriptBox["D", 
+   FormBox["\[CapitalDelta]",
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[5]=",
+ CellID->855697737]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", "a", ",", "b"}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[6]:=",
+ CellID->840690314],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox["D", 
+   FormBox["\[CapitalDelta]",
+    TraditionalForm], 
+   RowBox[{
+    FormBox["a",
+     TraditionalForm], 
+    FormBox["b",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[6]=",
+ CellID->1737264679]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", "a", ",", "b", ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[7]:=",
+ CellID->82457380],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox["b",
+       TraditionalForm]}]], " ", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    SubscriptBox["g", "s"], " ", 
+    SubsuperscriptBox[
+     FormBox["A",
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["c49",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox["b",
+       TraditionalForm], 
+      FormBox["c49",
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[7]=",
+ CellID->1504792083]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[8]:=",
+ CellID->570341066],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox[
+    OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+    FormBox[
+     FormBox["\[CapitalDelta]",
+      TraditionalForm],
+     TraditionalForm]], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["c50",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c50",
+        TraditionalForm],
+       TraditionalForm]]}]}]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[8]=",
+ CellID->1269153146]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", "a", ",", "b", ",", 
+   RowBox[{"{", "2", "}"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[9]:=",
+ CellID->1557639505],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Delta]", 
+       RowBox[{
+        FormBox["a",
+         TraditionalForm], 
+        FormBox["c51",
+         TraditionalForm]}]], " ", 
+      SubscriptBox[
+       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm]]}], "-", 
+     RowBox[{
+      SubscriptBox["g", "s"], " ", 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e52",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      SuperscriptBox["f", 
+       RowBox[{
+        FormBox["a",
+         TraditionalForm], 
+        FormBox["c51",
+         TraditionalForm], 
+        FormBox["e52",
+         TraditionalForm]}]]}]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Delta]", 
+       RowBox[{
+        FormBox["b",
+         TraditionalForm], 
+        FormBox["c51",
+         TraditionalForm]}]], " ", 
+      SubscriptBox[
+       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm]]}], "-", 
+     RowBox[{
+      SubscriptBox["g", "s"], " ", 
+      SubsuperscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["e53",
+         TraditionalForm],
+        TraditionalForm]], " ", 
+      SuperscriptBox["f", 
+       RowBox[{
+        FormBox["c51",
+         TraditionalForm], 
+        FormBox["b",
+         TraditionalForm], 
+        FormBox["e53",
+         TraditionalForm]}]]}]}], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[9]=",
+ CellID->835776136]
+}, Open  ]],
+
+Cell[TextData[{
+ "This gives",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"m", " ", "times", " ", 
+      SubscriptBox[
+       OverscriptBox["\[PartialD]", "\[RightArrow]"], "\[CapitalDelta]"]}], 
+     ",", " "}]}], TraditionalForm]]],
+ "the partial derivative ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+    RowBox[{"\[Mu]", " "}]], TraditionalForm]]],
+ "contracted with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[CapitalDelta]", "\[Mu]"], "."}], TraditionalForm]]]
+}], "Text",
+ CellTags->"CovariantD",
+ CellID->35437719],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", "a", ",", "b", ",", 
+   RowBox[{"{", 
+    RowBox[{"OPEm", ",", "0"}], "}"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[10]:=",
+ CellID->1826343413],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm]], ")"}], "m"]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[10]=",
+ CellID->985234851]
+}, Open  ]],
+
+Cell[TextData[{
+ "The expansion up to first order in the coupling constant ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     RowBox[{"(", "thesumistheFeynCalcOPESum", ")"}], "."}]}], 
+   TraditionalForm]]]
+}], "Text",
+ CellTags->"CovariantD",
+ CellID->745433336],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", "a", ",", "b", ",", 
+   RowBox[{"{", 
+    RowBox[{"OPEm", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[11]:=",
+ CellID->1721350899],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SubscriptBox[
+       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm]], ")"}], "m"]}], "-", 
+   RowBox[{
+    SubscriptBox["g", "s"], " ", 
+    FormBox[
+     TagBox[
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "0"}], 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "m"}]], 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           SubscriptBox[
+            OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm]], ")"}], "i"], ".", 
+         SubsuperscriptBox[
+          FormBox["A",
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            SubscriptBox["c63", "1"],
+            TraditionalForm],
+           TraditionalForm]], ".", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           SubscriptBox[
+            OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm]], ")"}], 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "i", "+", "m"}]]}], " ", 
+        SuperscriptBox["f", 
+         RowBox[{
+          FormBox[
+           FormBox["a",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["b",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            SubscriptBox["c63", "1"],
+            TraditionalForm],
+           TraditionalForm]}]]}]}],
+      HoldForm],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[11]=",
+ CellID->1135690031]
+}, Open  ]],
+
+Cell[TextData[{
+ "The expansion up to second order in the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["g", "s"], "."}], TraditionalForm]]]
+}], "Text",
+ CellTags->"CovariantD",
+ CellID->972705137],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", "a", ",", "b", ",", 
+   RowBox[{"{", 
+    RowBox[{"OPEm", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[12]:=",
+ CellID->1002319987],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SubscriptBox["g", "s"], " ", 
+     FormBox[
+      TagBox[
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "0"}], 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "m"}]], 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            SubscriptBox[
+             OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+             FormBox[
+              FormBox["\[CapitalDelta]",
+               TraditionalForm],
+              TraditionalForm]], ")"}], "i"], ".", 
+          SubsuperscriptBox[
+           FormBox["A",
+            TraditionalForm], 
+           FormBox[
+            FormBox["\[CapitalDelta]",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             SubscriptBox["c71", "1"],
+             TraditionalForm],
+            TraditionalForm]], ".", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            SubscriptBox[
+             OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+             FormBox[
+              FormBox["\[CapitalDelta]",
+               TraditionalForm],
+              TraditionalForm]], ")"}], 
+           RowBox[{
+            RowBox[{"-", "1"}], "-", "i", "+", "m"}]]}], " ", 
+         SuperscriptBox["f", 
+          RowBox[{
+           FormBox[
+            FormBox["a",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox["b",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             SubscriptBox["c71", "1"],
+             TraditionalForm],
+            TraditionalForm]}]]}]}],
+       HoldForm],
+      TraditionalForm]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox["g", "s", "2"], " ", 
+    FormBox[
+     TagBox[
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"j", "=", "0"}], 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "m"}]], 
+       RowBox[{"(", 
+        FormBox[
+         TagBox[
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "0"}], "j"], 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               SubscriptBox[
+                OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+                FormBox[
+                 FormBox["\[CapitalDelta]",
+                  TraditionalForm],
+                 TraditionalForm]], ")"}], "i"], ".", 
+             SubsuperscriptBox[
+              FormBox["A",
+               TraditionalForm], 
+              FormBox[
+               FormBox["\[CapitalDelta]",
+                TraditionalForm],
+               TraditionalForm], 
+              FormBox[
+               FormBox[
+                SubscriptBox["c75", "1"],
+                TraditionalForm],
+               TraditionalForm]], ".", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               SubscriptBox[
+                OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+                FormBox[
+                 FormBox["\[CapitalDelta]",
+                  TraditionalForm],
+                 TraditionalForm]], ")"}], 
+              RowBox[{
+               RowBox[{"-", "i"}], "+", "j"}]], ".", 
+             SubsuperscriptBox[
+              FormBox["A",
+               TraditionalForm], 
+              FormBox[
+               FormBox["\[CapitalDelta]",
+                TraditionalForm],
+               TraditionalForm], 
+              FormBox[
+               FormBox[
+                SubscriptBox["c75", "2"],
+                TraditionalForm],
+               TraditionalForm]], ".", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               SubscriptBox[
+                OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+                FormBox[
+                 FormBox["\[CapitalDelta]",
+                  TraditionalForm],
+                 TraditionalForm]], ")"}], 
+              RowBox[{
+               RowBox[{"-", "2"}], "-", "j", "+", "m"}]]}], " ", 
+            SuperscriptBox["f", 
+             RowBox[{
+              FormBox[
+               FormBox["a",
+                TraditionalForm],
+               TraditionalForm], 
+              FormBox[
+               FormBox[
+                SubscriptBox["c75", "1"],
+                TraditionalForm],
+               TraditionalForm], 
+              FormBox[
+               FormBox[
+                SubscriptBox["e74", "1"],
+                TraditionalForm],
+               TraditionalForm]}]], " ", 
+            SuperscriptBox["f", 
+             RowBox[{
+              FormBox[
+               FormBox["b",
+                TraditionalForm],
+               TraditionalForm], 
+              FormBox[
+               FormBox[
+                SubscriptBox["c75", "2"],
+                TraditionalForm],
+               TraditionalForm], 
+              FormBox[
+               FormBox[
+                SubscriptBox["e74", "1"],
+                TraditionalForm],
+               TraditionalForm]}]]}]}],
+          HoldForm],
+         TraditionalForm], ")"}]}],
+      HoldForm],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SubscriptBox[
+       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm]], ")"}], "m"]}]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[12]=",
+ CellID->483146070]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ SuperscriptBox[
+  RowBox[{"CovariantD", "[", 
+   RowBox[{"OPEDelta", ",", "a", ",", "b"}], "]"}], "OPEm"]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[13]:=",
+ CellID->608320512],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{"(", 
+    SubsuperscriptBox["D", 
+     FormBox["\[CapitalDelta]",
+      TraditionalForm], 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox["b",
+       TraditionalForm]}]], ")"}], "m"], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[13]=",
+ CellID->260858844]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CovariantD", "[", 
+  RowBox[{"OPEDelta", ",", 
+   RowBox[{"{", 
+    RowBox[{"OPEm", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[14]:=",
+ CellID->512528140],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["g", "s"], " ", 
+     FormBox[
+      TagBox[
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "0"}], 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "m"}]], 
+        RowBox[{
+         SuperscriptBox["T", 
+          FormBox[
+           FormBox[
+            SubscriptBox["c84", "1"],
+            TraditionalForm],
+           TraditionalForm]], ".", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           SubscriptBox[
+            OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm]], ")"}], "i"], ".", 
+         SubsuperscriptBox[
+          FormBox["A",
+           TraditionalForm], 
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            SubscriptBox["c84", "1"],
+            TraditionalForm],
+           TraditionalForm]], ".", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           SubscriptBox[
+            OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm]], ")"}], 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", "i", "+", "m"}]]}]}],
+       HoldForm],
+      TraditionalForm]}]}], "-", 
+   RowBox[{
+    SubsuperscriptBox["g", "s", "2"], " ", 
+    FormBox[
+     TagBox[
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"j", "=", "0"}], 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "m"}]], 
+       RowBox[{"(", 
+        FormBox[
+         TagBox[
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "0"}], "j"], 
+           RowBox[{
+            SuperscriptBox["T", 
+             FormBox[
+              FormBox[
+               SubscriptBox["c88", "1"],
+               TraditionalForm],
+              TraditionalForm]], ".", 
+            SuperscriptBox["T", 
+             FormBox[
+              FormBox[
+               SubscriptBox["c88", "2"],
+               TraditionalForm],
+              TraditionalForm]], ".", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              SubscriptBox[
+               OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+               FormBox[
+                FormBox["\[CapitalDelta]",
+                 TraditionalForm],
+                TraditionalForm]], ")"}], "i"], ".", 
+            SubsuperscriptBox[
+             FormBox["A",
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[CapitalDelta]",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               SubscriptBox["c88", "1"],
+               TraditionalForm],
+              TraditionalForm]], ".", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              SubscriptBox[
+               OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+               FormBox[
+                FormBox["\[CapitalDelta]",
+                 TraditionalForm],
+                TraditionalForm]], ")"}], 
+             RowBox[{
+              RowBox[{"-", "i"}], "+", "j"}]], ".", 
+            SubsuperscriptBox[
+             FormBox["A",
+              TraditionalForm], 
+             FormBox[
+              FormBox["\[CapitalDelta]",
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               SubscriptBox["c88", "2"],
+               TraditionalForm],
+              TraditionalForm]], ".", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              SubscriptBox[
+               OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+               FormBox[
+                FormBox["\[CapitalDelta]",
+                 TraditionalForm],
+                TraditionalForm]], ")"}], 
+             RowBox[{
+              RowBox[{"-", "2"}], "-", "j", "+", "m"}]]}]}],
+          HoldForm],
+         TraditionalForm], ")"}]}],
+      HoldForm],
+     TraditionalForm]}], "+", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm]], ")"}], "m"]}], TraditionalForm]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[14]=",
+ CellID->2021495246]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CovariantD", "[", 
+   RowBox[{"OPEDelta", ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[15]:=",
+ CellID->790160491],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "Gstrong", " ", 
+   RowBox[{
+    RowBox[{"SUNT", "[", 
+     RowBox[{"SUNIndex", "[", "c91", "]"}], "]"}], ".", 
+    RowBox[{"QuantumField", "[", 
+     RowBox[{"GaugeField", ",", 
+      RowBox[{"Momentum", "[", "OPEDelta", "]"}], ",", 
+      RowBox[{"SUNIndex", "[", "c91", "]"}]}], "]"}]}]}], "+", 
+  RowBox[{"RightPartialD", "[", 
+   RowBox[{"Momentum", "[", "OPEDelta", "]"}], "]"}]}]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[15]//StandardForm=",
+ CellID->1789369971]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CovariantD", "[", 
+   RowBox[{"\[Mu]", ",", "a", ",", "b", ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"CovariantD",
+ CellLabel->"In[16]:=",
+ CellID->160329117],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"RightPartialD", "[", 
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], " ", 
+   RowBox[{"SUNDelta", "[", 
+    RowBox[{"a", ",", "b"}], "]"}]}], "-", 
+  RowBox[{"Gstrong", " ", 
+   RowBox[{"QuantumField", "[", 
+    RowBox[{"GaugeField", ",", 
+     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+     RowBox[{"SUNIndex", "[", "c92", "]"}]}], "]"}], " ", 
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c92"}], "]"}]}]}]], "Output",
+ CellTags->"CovariantD",
+ CellLabel->"Out[16]//StandardForm=",
+ CellID->772324772]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

@@ -1,0 +1,1563 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     42551,       1553]
+NotebookOptionsPosition[     33687,       1272]
+NotebookOutlinePosition[     39007,       1422]
+CellTagsIndexPosition[     38886,       1416]
+WindowTitle->GluonPropagator
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GluonPropagator\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GluonPropagator"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+GluonPropagator.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76303], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/GluonPropagator", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GluonPropagator", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GluonPropagator", "[", 
+       RowBox[{"p", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"mu", ",", " ", "a"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"nu", ",", " ", "b"}], "}"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "or GluonPropagator[p, mu, a , nu, b ] yields the gluon propagator. \
+GluonPropagator[p, {mu}, {nu}] or GluonPropagator[p, mu, nu] omits the \
+SUNDelta. The gauge and the dimension is determined by the option Gauge and \
+Dimension. The following settings of Gauge are possible: 1 for the Feynman \
+gauge; ",
+     Cell[BoxData[
+      FormBox["\[Alpha]", TraditionalForm]]],
+     " for the general covariant gauge; {Momentum[n] ,1} for the axial gauge.\
+\n\nGP can be used as an abbreviation of GluonPropagator."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->396961212],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->766305613],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Examples"], "Subsubsection",
+ CellTags->"GluonPropagator",
+ CellID->1676340970],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["GP"], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[1]:=",
+ CellID->730734970],
+
+Cell[BoxData[
+ FormBox["GluonPropagator", TraditionalForm]], "Output",
+ ImageSize->{111, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[1]=",
+ CellID->9606294]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "GluonPropagator", "]"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[2]:=",
+ CellID->1962710719],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"Gauge", "\[Rule]", "1"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{383, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[2]=",
+ CellID->2023427444]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GluonPropagator", "[", 
+  RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b"}], 
+  "]"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[3]:=",
+ CellID->1432103581],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["\[CapitalPi]", 
+    RowBox[{
+     FormBox["a",
+      TraditionalForm], 
+     FormBox["b",
+      TraditionalForm]}], 
+    RowBox[{
+     FormBox["\[Mu]",
+      TraditionalForm], 
+     FormBox["\[Nu]",
+      TraditionalForm]}]], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{54, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[3]=",
+ CellID->879390685]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"Gauge", "\[Rule]", "\[Alpha]"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[4]:=",
+ CellID->922890899],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Alpha]"}], ")"}], " ", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], " ", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], 
+       SuperscriptBox[
+        FormBox["p",
+         TraditionalForm], "2"]], "-", 
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], ")"}]}], 
+   SuperscriptBox[
+    FormBox["p",
+     TraditionalForm], "2"]], TraditionalForm]], "Output",
+ ImageSize->{185, 66},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[4]=",
+ CellID->1278353242]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"Gauge", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Momentum", "[", "n", "]"}], ",", "1"}], "}"}]}]}], "]"}], "//",
+   "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[5]:=",
+ CellID->617351725],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["n",
+             TraditionalForm],
+            TraditionalForm], "2"], " ", 
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm], " ", 
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm]}], "-", 
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], "2"], " ", 
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             FormBox["n",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm], " ", 
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             FormBox["n",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm]}]}], 
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           RowBox[{
+            FormBox[
+             FormBox["n",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm]}],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"]]}], "-", 
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Mu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Nu]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm], "+", 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["n",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}], "+", 
+        RowBox[{
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["n",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}]}], 
+       RowBox[{
+        FormBox[
+         FormBox["n",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm]}]]}], ")"}]}], 
+   SuperscriptBox[
+    FormBox["p",
+     TraditionalForm], "2"]], TraditionalForm]], "Output",
+ ImageSize->{341, 67},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[5]=",
+ CellID->780926605]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "\[Nu]"}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[6]:=",
+ CellID->1065132203],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     FormBox[
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm]}], 
+    SuperscriptBox[
+     FormBox["p",
+      TraditionalForm], "2"]]}], TraditionalForm]], "Output",
+ ImageSize->{59, 50},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[6]=",
+ CellID->315989703]
+}, Open  ]],
+
+Cell["\<\
+This is a convenient way to enter amplitudes by hand (GP is an abbreviation \
+GluonPropagator).\
+\>", "Text",
+ CellTags->"GluonPropagator",
+ CellID->688757709],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Explicit", "[", 
+  RowBox[{
+   RowBox[{"GP", "[", 
+    RowBox[{"p", ",", "1", ",", "2"}], "]"}], ",", 
+   RowBox[{"Gauge", "\[Rule]", "\[Xi]"}]}], "]"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[7]:=",
+ CellID->629708898],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Delta]", 
+     RowBox[{
+      FormBox[
+       FormBox["ci1",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["ci2",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Xi]"}], ")"}], " ", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["li1",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], " ", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["li2",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}], 
+       SuperscriptBox[
+        FormBox["p",
+         TraditionalForm], "2"]], "-", 
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["li1",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["li2",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], ")"}]}], 
+   SuperscriptBox[
+    FormBox["p",
+     TraditionalForm], "2"]], TraditionalForm]], "Output",
+ ImageSize->{220, 68},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[7]=",
+ CellID->1689747408]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"GP", "[", 
+     RowBox[{
+      RowBox[{"-", "k"}], ",", "3", ",", "4"}], "]"}], "//", "Explicit"}], "//",
+    "FCE"}], "//", "StandardForm"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[8]:=",
+ CellID->1462464756],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "\[ImaginaryI]"}], " ", 
+  RowBox[{"FAD", "[", "k", "]"}], " ", 
+  RowBox[{"MTD", "[", 
+   RowBox[{"li3", ",", "li4"}], "]"}], " ", 
+  RowBox[{"SD", "[", 
+   RowBox[{"ci3", ",", "ci4"}], "]"}]}]], "Output",
+ ImageSize->{279, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[8]//StandardForm=",
+ CellID->1893476356]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"CounterTerm", "\[Rule]", " ", "1"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[9]:=",
+ CellID->739433365],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubsuperscriptBox["g", "s", "2"], " ", 
+     SubscriptBox["S", "n"], " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"11", " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}], "3"], "-", 
+       RowBox[{
+        FractionBox["19", "6"], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"], " ", 
+        FormBox[
+         SuperscriptBox["g", 
+          RowBox[{
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]}]],
+         TraditionalForm]}]}], ")"}]}], 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{278, 59},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[9]=",
+ CellID->417079749]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"CounterTerm", "\[Rule]", " ", "2"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[10]:=",
+ CellID->493368144],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubsuperscriptBox["g", "s", "2"], " ", 
+     SubscriptBox["S", "n"], " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{
+         FractionBox["1", "6"], " ", 
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], "2"], " ", 
+         FormBox[
+          SuperscriptBox["g", 
+           RowBox[{
+            FormBox[
+             FormBox[
+              FormBox["\[Mu]",
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox["\[Nu]",
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]}]],
+          TraditionalForm]}]}], "-", 
+       RowBox[{
+        FractionBox["1", "3"], " ", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Mu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm], " ", 
+        FormBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["p",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox["\[Nu]",
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]],
+         TraditionalForm]}]}], ")"}]}], 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{282, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[10]=",
+ CellID->1754648571]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"CounterTerm", "\[Rule]", " ", "3"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[11]:=",
+ CellID->2062559987],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+     SubscriptBox["T", "f"], " ", 
+     SubsuperscriptBox["g", "s", "2"], " ", 
+     SubscriptBox["S", "n"], " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        FractionBox["4", "3"], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"], " ", 
+        FormBox[
+         SuperscriptBox["g", 
+          RowBox[{
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]}]],
+         TraditionalForm]}], "-", 
+       FractionBox[
+        RowBox[{"4", " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}], "3"]}], ")"}]}], 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{279, 59},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[11]=",
+ CellID->674017829]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"CounterTerm", "\[Rule]", " ", "4"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[12]:=",
+ CellID->807671915],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubsuperscriptBox["g", "s", "2"], " ", 
+     SubscriptBox["S", "n"], " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"10", " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}], "3"], "-", 
+       RowBox[{
+        FractionBox["10", "3"], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"], " ", 
+        FormBox[
+         SuperscriptBox["g", 
+          RowBox[{
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]}]],
+         TraditionalForm]}]}], ")"}]}], 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{278, 59},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[12]=",
+ CellID->2094855988]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GluonPropagator", "[", 
+   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b", ",", 
+    RowBox[{"CounterTerm", "\[Rule]", " ", "5"}]}], "]"}], "//", 
+  "Explicit"}]], "Input",
+ CellTags->"GluonPropagator",
+ CellLabel->"In[13]:=",
+ CellID->1621125251],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["C", "A"], " ", 
+     SubsuperscriptBox["g", "s", "2"], " ", 
+     SubscriptBox["S", "n"], " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"10", " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}], "3"], "-", 
+       RowBox[{
+        FractionBox["10", "3"], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"], " ", 
+        FormBox[
+         SuperscriptBox["g", 
+          RowBox[{
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]}]],
+         TraditionalForm]}]}], ")"}]}], 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]], "+", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SubscriptBox["T", "f"], " ", 
+     SubsuperscriptBox["g", "s", "2"], " ", 
+     SubscriptBox["S", "n"], " ", 
+     SuperscriptBox["\[Delta]", 
+      RowBox[{
+       FormBox[
+        FormBox["a",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["b",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        FractionBox["4", "3"], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], "2"], " ", 
+        FormBox[
+         SuperscriptBox["g", 
+          RowBox[{
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]}]],
+         TraditionalForm]}], "-", 
+       FractionBox[
+        RowBox[{"4", " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Mu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm], " ", 
+         FormBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             FormBox["\[Nu]",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm]],
+          TraditionalForm]}], "3"]}], ")"}]}], 
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{536, 59},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonPropagator",
+ CellLabel->"Out[13]=",
+ CellID->1304358400]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["GluonSelfEnergy",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonSelfEnergy",
+  ButtonNote->"GluonSelfEnergy"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonVertex",
+  ButtonNote->"GluonVertex"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GhostPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GhostPropagator",
+  ButtonNote->"GhostPropagator"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GluonGhostVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex",
+  ButtonNote->"GluonGhostVertex"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GluonPropagator",
+ CellID->1661110705]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GluonPropagator",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 22.319590}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GluonPropagator[p, {mu, a}, {nu, b}] or GluonPropagator[p, mu, a , nu, b \
+] yields the gluon propagator. GluonPropagator[p, {mu}, {nu}] or \
+GluonPropagator[p, mu, nu] omits the SUNDelta. The gauge and the dimension is \
+determined by the option Gauge and Dimension. The following settings of Gauge \
+are possible: 1 for the Feynman gauge; \\[Alpha] for the general covariant \
+gauge; {Momentum[n] ,1} for the axial gauge. GP can be used as an \
+abbreviation of GluonPropagator.", "synonyms" -> {}, "title" -> 
+    "GluonPropagator", "titlemodifier" -> "", "windowtitle" -> 
+    "GluonPropagator", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/GluonPropagator"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3985, 107, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->396961212]},
+ "GluonPropagator"->{
+  Cell[4595, 134, 93, 2, 35, "Subsubsection",
+   CellTags->"GluonPropagator",
+   CellID->1676340970],
+  Cell[4713, 140, 101, 3, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->730734970],
+  Cell[4817, 145, 229, 7, 36, "Output",
+   CellTags->"GluonPropagator",
+   CellID->9606294],
+  Cell[5083, 157, 148, 4, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->1962710719],
+  Cell[5234, 163, 589, 17, 56, "Output",
+   CellTags->"GluonPropagator",
+   CellID->2023427444],
+  Cell[5860, 185, 206, 6, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->1432103581],
+  Cell[6069, 193, 522, 21, 42, "Output",
+   CellTags->"GluonPropagator",
+   CellID->879390685],
+  Cell[6628, 219, 289, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->922890899],
+  Cell[6920, 229, 1860, 73, 87, "Output",
+   CellTags->"GluonPropagator",
+   CellID->1278353242],
+  Cell[8817, 307, 375, 11, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->617351725],
+  Cell[9195, 320, 5127, 193, 88, "Output",
+   CellTags->"GluonPropagator",
+   CellID->780926605],
+  Cell[14359, 518, 218, 7, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->1065132203],
+  Cell[14580, 527, 730, 29, 71, "Output",
+   CellTags->"GluonPropagator",
+   CellID->315989703],
+  Cell[15325, 559, 169, 5, 52, "Text",
+   CellTags->"GluonPropagator",
+   CellID->688757709],
+  Cell[15519, 568, 260, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->629708898],
+  Cell[15782, 578, 1853, 73, 89, "Output",
+   CellTags->"GluonPropagator",
+   CellID->1689747408],
+  Cell[17672, 656, 286, 10, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->1462464756],
+  Cell[17961, 668, 421, 13, 36, "Output",
+   CellTags->"GluonPropagator",
+   CellID->1893476356],
+  Cell[18419, 686, 293, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->739433365],
+  Cell[18715, 696, 2106, 78, 80, "Output",
+   CellTags->"GluonPropagator",
+   CellID->417079749],
+  Cell[20858, 779, 294, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->493368144],
+  Cell[21155, 789, 2126, 79, 75, "Output",
+   CellTags->"GluonPropagator",
+   CellID->1754648571],
+  Cell[23318, 873, 295, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->2062559987],
+  Cell[23616, 883, 2115, 78, 80, "Output",
+   CellTags->"GluonPropagator",
+   CellID->674017829],
+  Cell[25768, 966, 294, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->807671915],
+  Cell[26065, 976, 2108, 78, 80, "Output",
+   CellTags->"GluonPropagator",
+   CellID->2094855988],
+  Cell[28210, 1059, 295, 8, 27, "Input",
+   CellTags->"GluonPropagator",
+   CellID->1621125251],
+  Cell[28508, 1069, 3982, 148, 80, "Output",
+   CellTags->"GluonPropagator",
+   CellID->1304358400],
+  Cell[32858, 1240, 787, 27, 32, "Text",
+   CellTags->"GluonPropagator",
+   CellID->1661110705]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 35917, 1321},
+ {"GluonPropagator", 36059, 1325}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[587, 21, 2273, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2863, 75, 58, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2924, 78, 1036, 25, 178, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3985, 107, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->396961212],
+Cell[4375, 124, 195, 6, 25, "ExampleSection",
+ CellID->766305613],
+Cell[CellGroupData[{
+Cell[4595, 134, 93, 2, 35, "Subsubsection",
+ CellTags->"GluonPropagator",
+ CellID->1676340970],
+Cell[CellGroupData[{
+Cell[4713, 140, 101, 3, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->730734970],
+Cell[4817, 145, 229, 7, 36, "Output",
+ CellTags->"GluonPropagator",
+ CellID->9606294]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5083, 157, 148, 4, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->1962710719],
+Cell[5234, 163, 589, 17, 56, "Output",
+ CellTags->"GluonPropagator",
+ CellID->2023427444]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5860, 185, 206, 6, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->1432103581],
+Cell[6069, 193, 522, 21, 42, "Output",
+ CellTags->"GluonPropagator",
+ CellID->879390685]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6628, 219, 289, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->922890899],
+Cell[6920, 229, 1860, 73, 87, "Output",
+ CellTags->"GluonPropagator",
+ CellID->1278353242]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8817, 307, 375, 11, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->617351725],
+Cell[9195, 320, 5127, 193, 88, "Output",
+ CellTags->"GluonPropagator",
+ CellID->780926605]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14359, 518, 218, 7, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->1065132203],
+Cell[14580, 527, 730, 29, 71, "Output",
+ CellTags->"GluonPropagator",
+ CellID->315989703]
+}, Open  ]],
+Cell[15325, 559, 169, 5, 52, "Text",
+ CellTags->"GluonPropagator",
+ CellID->688757709],
+Cell[CellGroupData[{
+Cell[15519, 568, 260, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->629708898],
+Cell[15782, 578, 1853, 73, 89, "Output",
+ CellTags->"GluonPropagator",
+ CellID->1689747408]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17672, 656, 286, 10, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->1462464756],
+Cell[17961, 668, 421, 13, 36, "Output",
+ CellTags->"GluonPropagator",
+ CellID->1893476356]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18419, 686, 293, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->739433365],
+Cell[18715, 696, 2106, 78, 80, "Output",
+ CellTags->"GluonPropagator",
+ CellID->417079749]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20858, 779, 294, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->493368144],
+Cell[21155, 789, 2126, 79, 75, "Output",
+ CellTags->"GluonPropagator",
+ CellID->1754648571]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23318, 873, 295, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->2062559987],
+Cell[23616, 883, 2115, 78, 80, "Output",
+ CellTags->"GluonPropagator",
+ CellID->674017829]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25768, 966, 294, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->807671915],
+Cell[26065, 976, 2108, 78, 80, "Output",
+ CellTags->"GluonPropagator",
+ CellID->2094855988]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28210, 1059, 295, 8, 27, "Input",
+ CellTags->"GluonPropagator",
+ CellID->1621125251],
+Cell[28508, 1069, 3982, 148, 80, "Output",
+ CellTags->"GluonPropagator",
+ CellID->1304358400]
+}, Open  ]],
+Cell[32505, 1220, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32585, 1226, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[32858, 1240, 787, 27, 32, "Text",
+ CellTags->"GluonPropagator",
+ CellID->1661110705]
+}, Open  ]],
+Cell[33660, 1270, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

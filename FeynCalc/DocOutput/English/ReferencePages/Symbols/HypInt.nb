@@ -1,0 +1,310 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8993,        300]
+NotebookOptionsPosition[      5798,        201]
+NotebookOutlinePosition[      8278,        271]
+CellTagsIndexPosition[      8170,        265]
+WindowTitle->HypInt
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/HypInt\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/HypInt"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/HypInt.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81813], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/HypInt",
+             ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["HypInt", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"HypInt", "[", 
+       RowBox[{"exp", ",", " ", "t"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     " substitutes for all  Hypergeometric2F1[a,b,c,z] in exp \
+Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1]  t^(b-1) (1-t)^(c-b-1) (1-t \
+z)^(-a)."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1262465437],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1115568351],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hypergeometric2F1", "[", 
+  RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}]], "Input",
+ CellTags->"HypInt",
+ CellLabel->"In[1]:=",
+ CellID->204607872],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{"a","b","c","z"},
+   "Hypergeometric2F1"], TraditionalForm]], "Output",
+ ImageSize->{101, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"HypInt",
+ CellLabel->"Out[1]=",
+ CellID->1455067917]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"HypInt", "[", 
+  RowBox[{"%", ",", "t"}], "]"}]], "Input",
+ CellTags->"HypInt",
+ CellLabel->"In[2]:=",
+ CellID->1185900959],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["t", 
+     RowBox[{"b", "-", "1"}]], " ", 
+    TemplateBox[{"c"},
+     "Gamma"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"t", " ", "z"}]}], ")"}], 
+     RowBox[{"-", "a"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "t"}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "b"}], "+", "c", "-", "1"}]], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", 
+      FormBox["0",
+       TraditionalForm], 
+      FormBox["1",
+       TraditionalForm]], 
+     RowBox[{"\[DifferentialD]", 
+      TagBox[
+       FormBox["t",
+        TraditionalForm],
+       TraditionalForm,
+       Editable->True], "\[VeryThinSpace]"}]}]}], 
+   RowBox[{
+    TemplateBox[{"b"},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "-", "b"}]},
+     "Gamma"]}]], TraditionalForm]], "Output",
+ ImageSize->{280, 52},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"HypInt",
+ CellLabel->"Out[2]=",
+ CellID->1838289676]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"HypInt",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 51.711204}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "HypInt[exp, t] substitutes for all Hypergeometric2F1[a,b,c,z] in exp \
+Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] t^(b-1) (1-t)^(c-b-1) (1-t \
+z)^(-a).", "synonyms" -> {}, "title" -> "HypInt", "titlemodifier" -> "", 
+    "windowtitle" -> "HypInt", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/HypInt"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3416, 97, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1262465437]},
+ "HypInt"->{
+  Cell[4050, 126, 177, 5, 27, "Input",
+   CellTags->"HypInt",
+   CellID->204607872],
+  Cell[4230, 133, 263, 9, 36, "Output",
+   CellTags->"HypInt",
+   CellID->1455067917],
+  Cell[4530, 147, 147, 5, 27, "Input",
+   CellTags->"HypInt",
+   CellID->1185900959],
+  Cell[4680, 154, 1052, 40, 73, "Output",
+   CellTags->"HypInt",
+   CellID->1838289676]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7666, 245},
+ {"HypInt", 7799, 249}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2817, 75, 49, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2869, 78, 522, 15, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3416, 97, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1262465437],
+Cell[CellGroupData[{
+Cell[3829, 116, 196, 6, 25, "ExampleSection",
+ CellID->1115568351],
+Cell[CellGroupData[{
+Cell[4050, 126, 177, 5, 27, "Input",
+ CellTags->"HypInt",
+ CellID->204607872],
+Cell[4230, 133, 263, 9, 36, "Output",
+ CellTags->"HypInt",
+ CellID->1455067917]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4530, 147, 147, 5, 27, "Input",
+ CellTags->"HypInt",
+ CellID->1185900959],
+Cell[4680, 154, 1052, 40, 73, "Output",
+ CellTags->"HypInt",
+ CellID->1838289676]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[5771, 199, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

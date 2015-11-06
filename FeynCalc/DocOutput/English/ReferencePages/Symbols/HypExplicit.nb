@@ -1,0 +1,483 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13479,        473]
+NotebookOptionsPosition[      9113,        335]
+NotebookOutlinePosition[     12099,        420]
+CellTagsIndexPosition[     11984,        414]
+WindowTitle->HypExplicit
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/HypExplicit\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/HypExplicit"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+HypExplicit.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81478], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/HypExplicit", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["HypExplicit", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"HypExplicit", "[", 
+       RowBox[{"exp", ",", " ", "nu"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "expresses Hypergeometric functions in exp by their definition in terms \
+of a sum (the Sum is omitted and nu is the summation index)."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1909025168],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1340258463],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hypergeometric2F1", "[", 
+  RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}]], "Input",
+ CellTags->"HypExplicit",
+ CellLabel->"In[1]:=",
+ CellID->713088732],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{"a","b","c","z"},
+   "Hypergeometric2F1"], TraditionalForm]], "Output",
+ ImageSize->{101, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"HypExplicit",
+ CellLabel->"Out[1]=",
+ CellID->2050064924]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"HypExplicit", "[", 
+  RowBox[{"%", ",", "\[Nu]"}], "]"}]], "Input",
+ CellTags->"HypExplicit",
+ CellLabel->"In[2]:=",
+ CellID->335460950],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    TemplateBox[{"c"},
+     "Gamma"], " ", 
+    SuperscriptBox["z", "\[Nu]"], " ", 
+    TemplateBox[{RowBox[{"a", "+", "\[Nu]"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"b", "+", "\[Nu]"}]},
+     "Gamma"]}], 
+   RowBox[{
+    TemplateBox[{"a"},
+     "Gamma"], " ", 
+    TemplateBox[{"b"},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"\[Nu]", "+", "1"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "+", "\[Nu]"}]},
+     "Gamma"]}]], TraditionalForm]], "Output",
+ ImageSize->{179, 47},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"HypExplicit",
+ CellLabel->"Out[2]=",
+ CellID->1212116493]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"HypergeometricPFQ", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"d", ",", "e"}], "}"}], ",", "z"}], "]"}]], "Input",
+ CellTags->"HypExplicit",
+ CellLabel->"In[3]:=",
+ CellID->1980165795],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   TagBox[
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[InvisiblePrefixScriptBase]", "3"], 
+      SubscriptBox["F", "2"]}], "\[InvisibleApplication]", 
+     RowBox[{"(", 
+      RowBox[{
+       TagBox[
+        TagBox[
+         RowBox[{
+          TagBox["a",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True], ",", 
+          TagBox["b",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True], ",", 
+          TagBox["c",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True]}],
+         InterpretTemplate[{
+           SlotSequence[1]}& ]],
+        HypergeometricPFQ,
+        Editable->False,
+        Selectable->False], ";", 
+       TagBox[
+        TagBox[
+         RowBox[{
+          TagBox["d",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True], ",", 
+          TagBox["e",
+           HypergeometricPFQ,
+           Editable->True,
+           Selectable->True]}],
+         InterpretTemplate[{
+           SlotSequence[1]}& ]],
+        HypergeometricPFQ,
+        Editable->False,
+        Selectable->False], ";", 
+       TagBox["z",
+        HypergeometricPFQ,
+        Editable->True,
+        Selectable->True]}], ")"}]}],
+    InterpretTemplate[HypergeometricPFQ[#, #2, #3]& ],
+    Editable->False,
+    Selectable->False],
+   HypergeometricPFQ], TraditionalForm]], "Output",
+ ImageSize->{135, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"HypExplicit",
+ CellLabel->"Out[3]=",
+ CellID->1891206830]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"HypExplicit", "[", 
+  RowBox[{"%", ",", "\[Nu]"}], "]"}]], "Input",
+ CellTags->"HypExplicit",
+ CellLabel->"In[4]:=",
+ CellID->1855078663],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    TemplateBox[{"d"},
+     "Gamma"], " ", 
+    TemplateBox[{"e"},
+     "Gamma"], " ", 
+    SuperscriptBox["z", "\[Nu]"], " ", 
+    TemplateBox[{RowBox[{"a", "+", "\[Nu]"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"b", "+", "\[Nu]"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"c", "+", "\[Nu]"}]},
+     "Gamma"]}], 
+   RowBox[{
+    TemplateBox[{"a"},
+     "Gamma"], " ", 
+    TemplateBox[{"b"},
+     "Gamma"], " ", 
+    TemplateBox[{"c"},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"\[Nu]", "+", "1"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"d", "+", "\[Nu]"}]},
+     "Gamma"], " ", 
+    TemplateBox[{RowBox[{"e", "+", "\[Nu]"}]},
+     "Gamma"]}]], TraditionalForm]], "Output",
+ ImageSize->{267, 47},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"HypExplicit",
+ CellLabel->"Out[4]=",
+ CellID->1089581291]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["HypergeometricIR",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricIR",
+  ButtonNote->"HypergeometricIR"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"HypExplicit",
+ CellID->762625741]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"HypExplicit",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 49.803153}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "HypExplicit[exp, nu] expresses Hypergeometric functions in exp by their \
+definition in terms of a sum (the Sum is omitted and nu is the summation \
+index).", "synonyms" -> {}, "title" -> "HypExplicit", "titlemodifier" -> "", 
+    "windowtitle" -> "HypExplicit", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/HypExplicit"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3440, 96, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1909025168]},
+ "HypExplicit"->{
+  Cell[4074, 125, 182, 5, 27, "Input",
+   CellTags->"HypExplicit",
+   CellID->713088732],
+  Cell[4259, 132, 268, 9, 36, "Output",
+   CellTags->"HypExplicit",
+   CellID->2050064924],
+  Cell[4564, 146, 160, 5, 27, "Input",
+   CellTags->"HypExplicit",
+   CellID->335460950],
+  Cell[4727, 153, 687, 25, 68, "Output",
+   CellTags->"HypExplicit",
+   CellID->1212116493],
+  Cell[5451, 183, 281, 9, 27, "Input",
+   CellTags->"HypExplicit",
+   CellID->1980165795],
+  Cell[5735, 194, 1602, 59, 36, "Output",
+   CellTags->"HypExplicit",
+   CellID->1891206830],
+  Cell[7374, 258, 161, 5, 27, "Input",
+   CellTags->"HypExplicit",
+   CellID->1855078663],
+  Cell[7538, 265, 911, 33, 68, "Output",
+   CellTags->"HypExplicit",
+   CellID->1089581291],
+  Cell[8817, 321, 254, 9, 32, "Text",
+   CellTags->"HypExplicit",
+   CellID->762625741]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 10999, 379},
+ {"HypExplicit", 11137, 383}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2843, 75, 54, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2900, 78, 515, 14, 99, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3440, 96, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1909025168],
+Cell[CellGroupData[{
+Cell[3853, 115, 196, 6, 25, "ExampleSection",
+ CellID->1340258463],
+Cell[CellGroupData[{
+Cell[4074, 125, 182, 5, 27, "Input",
+ CellTags->"HypExplicit",
+ CellID->713088732],
+Cell[4259, 132, 268, 9, 36, "Output",
+ CellTags->"HypExplicit",
+ CellID->2050064924]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4564, 146, 160, 5, 27, "Input",
+ CellTags->"HypExplicit",
+ CellID->335460950],
+Cell[4727, 153, 687, 25, 68, "Output",
+ CellTags->"HypExplicit",
+ CellID->1212116493]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5451, 183, 281, 9, 27, "Input",
+ CellTags->"HypExplicit",
+ CellID->1980165795],
+Cell[5735, 194, 1602, 59, 36, "Output",
+ CellTags->"HypExplicit",
+ CellID->1891206830]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7374, 258, 161, 5, 27, "Input",
+ CellTags->"HypExplicit",
+ CellID->1855078663],
+Cell[7538, 265, 911, 33, 68, "Output",
+ CellTags->"HypExplicit",
+ CellID->1089581291]
+}, Open  ]]
+}, Open  ]],
+Cell[8476, 302, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8544, 307, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[8817, 321, 254, 9, 32, "Text",
+ CellTags->"HypExplicit",
+ CellID->762625741]
+}, Open  ]],
+Cell[9086, 333, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

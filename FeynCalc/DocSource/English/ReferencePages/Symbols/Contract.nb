@@ -1,0 +1,1186 @@
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["FeynCalc/ref/Contract", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->477174294],
+
+Cell["XXXX", "Keywords",
+ CellID->1164421360]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->1872225408],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->1562036412],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->158391909],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->1360575930],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->793782254]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["XXXX", "Details",
+ CellLabel->"Lead",
+ CellID->670882175],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors",
+ CellID->8391405],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->3610269],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->401364205],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->350204745],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->732958810],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->222905350],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Contract", "ObjectName",
+ CellID->1224892054],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"Contract", "[", "expr", "]"}]], "InlineFormula"],
+ " \[LineSeparator]",
+ "contracts pairs of Lorentz indices of metric tensors, four-vectors and \
+(depending on the optionEpsContract) of Levi-Civita tensors in expr. For the \
+contraction of Dirac matrices with each other use DiracSimplify. \
+Contract[exp1, exp2] contracts (exp1*exp2), where exp1 and exp2 may be larger \
+products of sums of metric tensors and 4-vectors. "
+}], "Usage",
+ CellID->982511436],
+
+Cell["XXXX", "Notes",
+ CellID->1067943069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->250839057],
+
+Cell["XXXX", "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Demonstrations", "RelatedDemonstrationsSection",
+ CellID->1268215905],
+
+Cell["XXXX", "RelatedDemonstrations",
+ CellID->1129518860]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ ButtonBox["Pair",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Pair",
+  ButtonNote->"Pair"],
+ ", ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ ", ",
+ ButtonBox["MomentumCombine",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/MomentumCombine",
+  ButtonNote->"MomentumCombine"],
+ "."
+}], "Text",
+ CellTags->"Contract",
+ CellID->1189900625]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->38303248],
+
+Cell["XXXX", "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->880084151],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Contract", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[1]:=",
+ CellID->269618302],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"Contract3", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsContract", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"MomentumCombine", "\[Rule]", "True"}], ",", 
+    RowBox[{"Rename", "\[Rule]", "False"}], ",", 
+    RowBox[{"Schouten", "\[Rule]", "0"}]}], "}"}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[1]=",
+ CellID->833332161]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MetricTensor", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], " ", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{"p", ",", "\[Mu]"}], "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[2]:=",
+ CellID->2011968461],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[2]=",
+ CellID->2005708503]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[3]:=",
+ CellID->26500400],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox[
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[3]=",
+ CellID->246386443]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FourVector", "[", 
+   RowBox[{"p", ",", "\[Mu]"}], "]"}], 
+  RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[4]:=",
+ CellID->2005973076],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    OverscriptBox["\[Gamma]", "_"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[4]=",
+ CellID->163860977]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[5]:=",
+ CellID->1342373134],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[5]=",
+ CellID->1083734914]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MetricTensor", "[", 
+  RowBox[{"\[Mu]", ",", "\[Mu]"}], "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[6]:=",
+ CellID->2121383633],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["g", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[6]=",
+ CellID->165921051]
+}, Open  ]],
+
+Cell["The default dimension for MetricTensor is 4.", "Text",
+ CellTags->"Contract",
+ CellID->1017368063],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[7]:=",
+ CellID->1110085557],
+
+Cell[BoxData[
+ FormBox["4", TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[7]=",
+ CellID->1413622880]
+}, Open  ]],
+
+Cell["\<\
+A short way to enter D-dimensional metric tensors is given by MTD. The \".\" \
+as multiplication operator is not necessary but just convenient for \
+typesetting.\
+\>", "Text",
+ CellTags->"Contract",
+ CellID->607767486],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MTD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], " ", ".", " ", 
+  RowBox[{"MTD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[8]:=",
+ CellID->1404498417],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm], ".", 
+   FormBox[
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[8]=",
+ CellID->1257189010]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[9]:=",
+ CellID->587791315],
+
+Cell[BoxData[
+ FormBox["D", TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[9]=",
+ CellID->1587031926]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MTD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], " ", ".", " ", 
+  RowBox[{"MTD", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[10]:=",
+ CellID->1551578654],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm], ".", 
+   FormBox[
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[10]=",
+ CellID->698535686]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FourVector", "[", 
+   RowBox[{"p", ",", "\[Mu]"}], "]"}], " ", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{"q", ",", "\[Mu]"}], "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[11]:=",
+ CellID->1721182838],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[11]=",
+ CellID->320652273]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", " ", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[12]:=",
+ CellID->460754742],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox[
+    OverscriptBox[
+     FormBox["q",
+      TraditionalForm], "_"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[12]=",
+ CellID->1322929815]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FourVector", "[", 
+   RowBox[{
+    RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}], " ", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{
+    RowBox[{"a", "-", "b"}], ",", "\[Mu]"}], "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[13]:=",
+ CellID->1283410538],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["a",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["b",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   FormBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[13]=",
+ CellID->1638933986]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[14]:=",
+ CellID->803101401],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["a",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["a",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "-", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["b",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    FormBox[
+     OverscriptBox[
+      FormBox["b",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[14]=",
+ CellID->2042392818]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LeviCivita", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Alpha]", ",", "\[Sigma]"}], "]"}], 
+  " ", 
+  RowBox[{"FourVector", "[", 
+   RowBox[{"p", ",", "\[Sigma]"}], "]"}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[15]:=",
+ CellID->1720608034],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], " ", 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[15]=",
+ CellID->1740152652]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[16]:=",
+ CellID->634794036],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["\[Epsilon]", 
+   RowBox[{
+    FormBox[
+     FormBox["\[Alpha]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[16]=",
+ CellID->1349165270]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LeviCivita", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Alpha]", ",", "\[Beta]"}], "]"}], 
+  " ", 
+  RowBox[{"LeviCivita", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Alpha]", ",", "\[Sigma]"}], "]"}], 
+  " "}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[17]:=",
+ CellID->1343624460],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Beta]",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Alpha]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[17]=",
+ CellID->595150790]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", "%", "]"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[18]:=",
+ CellID->530322977],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["D", "3"], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      FormBox[
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           FormBox["\[Beta]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["\[Sigma]",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]}]],
+       TraditionalForm]}], ")"}]}], "+", 
+   RowBox[{"6", " ", 
+    SuperscriptBox["D", "2"], " ", 
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Beta]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}], "-", 
+   RowBox[{"11", " ", "D", " ", 
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Beta]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}], "+", 
+   RowBox[{"6", " ", 
+    FormBox[
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["\[Beta]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox["\[Sigma]",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[18]=",
+ CellID->130923848]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"Eps", ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], ";", 
+  RowBox[{
+   RowBox[{"LCD", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Alpha]", ",", "\[Beta]"}], "]"}], 
+   " ", 
+   RowBox[{"LCD", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Alpha]", ",", "\[Sigma]"}], 
+    "]"}]}]}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[19]:=",
+ CellID->730363468],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox["\[Epsilon]", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm], " ", 
+   FormBox[
+    SuperscriptBox["\[Epsilon]", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[19]=",
+ CellID->1753720306]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Contract", "[", "%", "]"}], "//", "Factor2"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[20]:=",
+ CellID->1284270864],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"2", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"3", "-", "D"}], ")"}], " ", 
+   FormBox[
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        FormBox["\[Beta]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellTags->"Contract",
+ CellLabel->"Out[20]=",
+ CellID->1474380358]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"Eps", ",", 
+    RowBox[{"Dimension", "\[Rule]", "4"}]}], "]"}], ";"}]], "Input",
+ CellTags->"Contract",
+ CellLabel->"In[21]:=",
+ CellID->476845114]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->1854448968],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1020263627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2061341341],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1757724783],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1295379749]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1653164318],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+Visible->True,
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+CellContext->"Global`",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
+]

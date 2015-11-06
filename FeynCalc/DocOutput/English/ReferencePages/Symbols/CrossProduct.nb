@@ -1,0 +1,318 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9251,        308]
+NotebookOptionsPosition[      6090,        212]
+NotebookOutlinePosition[      8478,        279]
+CellTagsIndexPosition[      8364,        273]
+WindowTitle->CrossProduct
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/CrossProduct\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/CrossProduct"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+CrossProduct.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31149], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/CrossProduct", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["CrossProduct", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"CrossProduct", "[", 
+       RowBox[{"a", ",", " ", "b"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "denotes the three-dimensional cross-product of the three-vectors a and \
+b."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1267778666],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1421500275],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CrossProduct", "[", 
+  RowBox[{
+   RowBox[{"ThreeVector", "[", "a", "]"}], ",", 
+   RowBox[{"CrossProduct", "[", 
+    RowBox[{
+     RowBox[{"ThreeVector", "[", "b", "]"}], ",", 
+     RowBox[{"ThreeVector", "[", "c", "]"}]}], "]"}]}], "]"}]], "Input",
+ CellTags->"CrossProduct",
+ CellLabel->"In[1]:=",
+ CellID->1337031083],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["b", "\[RightVector]"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox["a", "\[RightVector]"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox["c", "\[RightVector]"],
+       TraditionalForm]}], ")"}]}], "-", 
+   RowBox[{
+    OverscriptBox["c", "\[RightVector]"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox["a", "\[RightVector]"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox["b", "\[RightVector]"],
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{142, 27},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CrossProduct",
+ CellLabel->"Out[1]=",
+ CellID->2076700373]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DotProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DotProduct",
+  ButtonNote->"DotProduct"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ThreeVector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ThreeVector",
+  ButtonNote->"ThreeVector"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"CrossProduct",
+ CellID->1152724432]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"CrossProduct",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 57, 23.451155}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "CrossProduct[a, b] denotes the three-dimensional cross-product of the \
+three-vectors a and b.", "synonyms" -> {}, "title" -> "CrossProduct", 
+    "titlemodifier" -> "", "windowtitle" -> "CrossProduct", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/CrossProduct"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3386, 96, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1267778666]},
+ "CrossProduct"->{
+  Cell[4020, 125, 345, 10, 45, "Input",
+   CellTags->"CrossProduct",
+   CellID->1337031083],
+  Cell[4368, 137, 906, 32, 48, "Output",
+   CellTags->"CrossProduct",
+   CellID->2076700373],
+  Cell[5642, 192, 406, 15, 31, "Text",
+   CellTags->"CrossProduct",
+   CellID->1152724432]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7922, 256},
+ {"CrossProduct", 8061, 260}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[584, 21, 2261, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2848, 75, 55, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2906, 78, 455, 14, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3386, 96, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1267778666],
+Cell[CellGroupData[{
+Cell[3799, 115, 196, 6, 25, "ExampleSection",
+ CellID->1421500275],
+Cell[CellGroupData[{
+Cell[4020, 125, 345, 10, 45, "Input",
+ CellTags->"CrossProduct",
+ CellID->1337031083],
+Cell[4368, 137, 906, 32, 48, "Output",
+ CellTags->"CrossProduct",
+ CellID->2076700373]
+}, Open  ]]
+}, Open  ]],
+Cell[5301, 173, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5369, 178, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5642, 192, 406, 15, 31, "Text",
+ CellTags->"CrossProduct",
+ CellID->1152724432]
+}, Open  ]],
+Cell[6063, 210, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

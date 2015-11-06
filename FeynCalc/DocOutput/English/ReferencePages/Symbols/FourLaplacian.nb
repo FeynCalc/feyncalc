@@ -1,0 +1,718 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19306,        708]
+NotebookOptionsPosition[     14541,        556]
+NotebookOutlinePosition[     17694,        647]
+CellTagsIndexPosition[     17577,        641]
+WindowTitle->FourLaplacian
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FourLaplacian\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FourLaplacian"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+FourLaplacian.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67320], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FourLaplacian", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FourLaplacian", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FourLaplacian", "[", 
+       RowBox[{"exp", ",", " ", "p", ",", " ", "q"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{"\[PartialD]", 
+        RowBox[{"/", 
+         RowBox[{"\[PartialD]", 
+          SubscriptBox["p", "\[Mu]"]}]}], " "}], TraditionalForm]]],
+     Cell[BoxData[
+      FormBox[
+       RowBox[{"\[PartialD]", 
+        RowBox[{"/", 
+         RowBox[{"\[PartialD]", 
+          SubscriptBox["q", "\[Mu]"]}]}], " "}], TraditionalForm]]],
+     "exp."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->895094448],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1919802511],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FourLaplacian", "]"}]], "Input",
+ CellTags->"FourLaplacian",
+ CellLabel->"In[1]:=",
+ CellID->244662667],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Dimension", "\[Rule]", "D"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{119, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourLaplacian",
+ CellLabel->"Out[1]=",
+ CellID->1107918748]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SP", "[", 
+  RowBox[{"q", ",", "q"}], "]"}]], "Input",
+ CellTags->"FourLaplacian",
+ CellLabel->"In[2]:=",
+ CellID->678691277],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["q",
+      TraditionalForm], "_"],
+    TraditionalForm], "2"], TraditionalForm]], "Output",
+ ImageSize->{22, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourLaplacian",
+ CellLabel->"Out[2]=",
+ CellID->614689358]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourLaplacian", "[", 
+  RowBox[{"%", ",", "q", ",", "q"}], "]"}]], "Input",
+ CellTags->"FourLaplacian",
+ CellLabel->"In[3]:=",
+ CellID->1086572094],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"2", " ", "D"}], TraditionalForm]], "Output",
+ ImageSize->{27, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourLaplacian",
+ CellLabel->"Out[3]=",
+ CellID->1928361141]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SOD", "[", "q", "]"}], "^", "OPEm"}], 
+   RowBox[{"FAD", "[", 
+    RowBox[{"q", ",", 
+     RowBox[{"q", "-", "p"}]}], "]"}]}], "//", "FCI"}]], "Input",
+ CellTags->"FourLaplacian",
+ CellLabel->"In[4]:=",
+ CellID->1385775268],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}], ")"}], "m"], 
+   RowBox[{
+    SuperscriptBox[
+     FormBox["q",
+      TraditionalForm], "2"], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["q",
+        TraditionalForm], "-", 
+       FormBox["p",
+        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
+ ImageSize->{84, 48},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourLaplacian",
+ CellLabel->"Out[4]=",
+ CellID->1120525938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourLaplacian", "[", 
+  RowBox[{"%", ",", "q", ",", " ", "q"}], "]"}]], "Input",
+ CellTags->"FourLaplacian",
+ CellLabel->"In[5]:=",
+ CellID->1428791386],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"2", " ", "D", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], "m"]}], 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q",
+          TraditionalForm], "-", 
+         FormBox["p",
+          TraditionalForm]}], ")"}], "2"], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q",
+          TraditionalForm], "-", 
+         FormBox["p",
+          TraditionalForm]}], ")"}], "2"]}]]}], "-", 
+   FractionBox[
+    RowBox[{"2", " ", "D", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], "m"]}], 
+    RowBox[{
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"], ".", 
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{"m", "-", "1"}], ")"}], " ", "m", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], 
+      RowBox[{"m", "-", "2"}]]}], 
+    RowBox[{
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"], ".", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["q",
+         TraditionalForm], "-", 
+        FormBox["p",
+         TraditionalForm]}], ")"}], "2"]}]], "-", 
+   FractionBox[
+    RowBox[{"4", " ", "m", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], 
+      RowBox[{"m", "-", "1"}]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], "-", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm]}]}], ")"}]}], 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["q",
+         TraditionalForm], "-", 
+        FormBox["p",
+         TraditionalForm]}], ")"}], "2"], ".", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["q",
+         TraditionalForm], "-", 
+        FormBox["p",
+         TraditionalForm]}], ")"}], "2"]}]], "+", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FormBox[
+            FormBox["p",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox["\<\"\[CenterDot]\"\>",
+            TraditionalForm], 
+           FormBox[
+            FormBox["q",
+             TraditionalForm],
+            TraditionalForm]}], ")"}]}]}], "+", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"], "+", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"]}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], "m"]}], 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["q",
+         TraditionalForm], "-", 
+        FormBox["p",
+         TraditionalForm]}], ")"}], "2"], ".", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["q",
+         TraditionalForm], "-", 
+        FormBox["p",
+         TraditionalForm]}], ")"}], "2"]}]], "-", 
+   FractionBox[
+    RowBox[{"4", " ", "m", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], "m"]}], 
+    RowBox[{
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"], ".", 
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"]}]], "+", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], "2"], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         FormBox["\[CapitalDelta]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], "m"]}], 
+    RowBox[{
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"], ".", 
+     SuperscriptBox[
+      FormBox["q",
+       TraditionalForm], "2"]}]]}], TraditionalForm]], "Output",
+ ImageSize->{437, 170},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FourLaplacian",
+ CellLabel->"Out[5]=",
+ CellID->290457260]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FourDivergence",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FourDivergence",
+  ButtonNote->"FourDivergence"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["RussianTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/RussianTrick",
+  ButtonNote->"RussianTrick"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FourLaplacian",
+ CellID->736385282]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FourLaplacian",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 0, 32.757808}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FourLaplacian[exp, p, q] is \\[PartialD]/\\[PartialD]p\\[Mu] \
+\\[PartialD]/\\[PartialD]q\\[Mu] exp.", "synonyms" -> {}, "title" -> 
+    "FourLaplacian", "titlemodifier" -> "", "windowtitle" -> "FourLaplacian", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/FourLaplacian"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3729, 108, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->895094448]},
+ "FourLaplacian"->{
+  Cell[4362, 137, 143, 4, 27, "Input",
+   CellTags->"FourLaplacian",
+   CellID->244662667],
+  Cell[4508, 143, 277, 9, 36, "Output",
+   CellTags->"FourLaplacian",
+   CellID->1107918748],
+  Cell[4822, 157, 149, 5, 27, "Input",
+   CellTags->"FourLaplacian",
+   CellID->678691277],
+  Cell[4974, 164, 335, 13, 41, "Output",
+   CellTags->"FourLaplacian",
+   CellID->614689358],
+  Cell[5346, 182, 171, 5, 27, "Input",
+   CellTags->"FourLaplacian",
+   CellID->1086572094],
+  Cell[5520, 189, 238, 8, 36, "Output",
+   CellTags->"FourLaplacian",
+   CellID->1928361141],
+  Cell[5795, 202, 283, 10, 27, "Input",
+   CellTags->"FourLaplacian",
+   CellID->1385775268],
+  Cell[6081, 214, 800, 32, 69, "Output",
+   CellTags->"FourLaplacian",
+   CellID->1120525938],
+  Cell[6918, 251, 176, 5, 27, "Input",
+   CellTags->"FourLaplacian",
+   CellID->1428791386],
+  Cell[7097, 258, 6613, 255, 191, "Output",
+   CellTags->"FourLaplacian",
+   CellID->290457260],
+  Cell[14078, 536, 421, 15, 70, "Text",
+   CellTags->"FourLaplacian",
+   CellID->736385282]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 16382, 600},
+ {"FourLaplacian", 16522, 604}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[585, 21, 2265, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2853, 75, 56, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2912, 78, 792, 26, 86, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3729, 108, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->895094448],
+Cell[CellGroupData[{
+Cell[4141, 127, 196, 6, 25, "ExampleSection",
+ CellID->1919802511],
+Cell[CellGroupData[{
+Cell[4362, 137, 143, 4, 27, "Input",
+ CellTags->"FourLaplacian",
+ CellID->244662667],
+Cell[4508, 143, 277, 9, 36, "Output",
+ CellTags->"FourLaplacian",
+ CellID->1107918748]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4822, 157, 149, 5, 27, "Input",
+ CellTags->"FourLaplacian",
+ CellID->678691277],
+Cell[4974, 164, 335, 13, 41, "Output",
+ CellTags->"FourLaplacian",
+ CellID->614689358]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5346, 182, 171, 5, 27, "Input",
+ CellTags->"FourLaplacian",
+ CellID->1086572094],
+Cell[5520, 189, 238, 8, 36, "Output",
+ CellTags->"FourLaplacian",
+ CellID->1928361141]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5795, 202, 283, 10, 27, "Input",
+ CellTags->"FourLaplacian",
+ CellID->1385775268],
+Cell[6081, 214, 800, 32, 69, "Output",
+ CellTags->"FourLaplacian",
+ CellID->1120525938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6918, 251, 176, 5, 27, "Input",
+ CellTags->"FourLaplacian",
+ CellID->1428791386],
+Cell[7097, 258, 6613, 255, 191, "Output",
+ CellTags->"FourLaplacian",
+ CellID->290457260]
+}, Open  ]]
+}, Open  ]],
+Cell[13737, 517, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13805, 522, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[14078, 536, 421, 15, 70, "Text",
+ CellTags->"FourLaplacian",
+ CellID->736385282]
+}, Open  ]],
+Cell[14514, 554, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

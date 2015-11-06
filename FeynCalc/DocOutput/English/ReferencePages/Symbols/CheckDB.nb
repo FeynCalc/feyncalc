@@ -1,0 +1,508 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15273,        498]
+NotebookOptionsPosition[      9050,        309]
+NotebookOutlinePosition[     13479,        427]
+CellTagsIndexPosition[     13368,        421]
+WindowTitle->CheckDB
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/CheckDB\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/CheckDB"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/CheckDB.\
+html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23244], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/CheckDB", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["CheckDB", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"CheckDB", "[", 
+       RowBox[{"exp", ",", " ", "fil"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "saves [with Put] or retrieves [with Get] exp from a file fil. It checks \
+if the setting of the option Directory is a valid directory name and if fil \
+is a valid file name and does exist. If it does, Get[fil] is executed. If fil \
+does not exist, exp gets evaluated and saved to  fil. Saving and evaluating \
+can be further controlled with the options ForceSave and NoSave. If the \
+option Check is set to False  the return value is what is evaluated [see \
+above]. If Check is set to True the return value is True or False depending \
+on whether the evaluation of exp agrees with what is loaded from fil or fil \
+does not exist.  Default value of Check : False.\nNOTICE : If fil ends with \
+\".Gen\" or \".Mod\", the   setting of Directory is ignored and fil is  saved \
+in the \"CouplingVectors\"  subdirectory of \"Phi\". If fil ends with  \".Fac\
+\", the setting of Directory is  ignored and fil is saved in the \"Factors\" \
+subdirectory of \"Phi\". If fil is a file   name with full path, the setting \
+of  Directory is also ignored."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1667770908],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2129383259],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Subsubsection",
+ CellTags->"CheckDB",
+ CellID->647730640],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "CheckDB", "]"}]], "Input",
+ CellTags->"CheckDB",
+ CellLabel->"In[1]:=",
+ CellID->2004487562],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Directory", "\[RuleDelayed]", 
+     RowBox[{"ToFileName", "[", 
+      RowBox[{
+       RowBox[{"{", "$FeynCalcDirectory", "}"}], ",", "\<\"Database\"\>"}], 
+      "]"}]}], ",", 
+    RowBox[{"ForceSave", "\[Rule]", "False"}], ",", 
+    RowBox[{"NoSave", "\[Rule]", "False"}], ",", 
+    RowBox[{"Check", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{384, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CheckDB",
+ CellLabel->"Out[1]=",
+ CellID->1735070400]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Attributes", "[", "CheckDB", "]"}]], "Input",
+ CellTags->"CheckDB",
+ CellLabel->"In[2]:=",
+ CellID->62116505],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "HoldFirst", "}"}], TraditionalForm]], "Output",
+ ImageSize->{77, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CheckDB",
+ CellLabel->"Out[2]=",
+ CellID->393414258]
+}, Open  ]],
+
+Cell["\<\
+The first time the Table function is evaluated and the result saved into the \
+test.s file.\
+\>", "Text",
+ CellTags->"CheckDB",
+ CellID->1632453918],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CheckDB", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"WriteString", "[", 
+       RowBox[{"\"\<stdout\>\"", ",", "\"\<test \>\""}], "]"}], ";", "i"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "2"}], "}"}]}], "]"}], ",", "\"\<test.s\>\""}], 
+  "]"}]], "Input",
+ CellTags->"CheckDB",
+ CellLabel->"In[3]:=",
+ CellID->1433287094],
+
+Cell["test test ", "Print",
+ CellTags->"CheckDB",
+ CellLabel->"During evaluation of In[3]:=",
+ CellID->670482458],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{40, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CheckDB",
+ CellLabel->"Out[3]=",
+ CellID->1976770700]
+}, Open  ]],
+
+Cell["\<\
+Executing the same a second time will just load the result from test.s and \
+not evaluate the Table function.\
+\>", "Text",
+ CellTags->"CheckDB",
+ CellID->342347170],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CheckDB", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"WriteString", "[", 
+       RowBox[{"\"\<stdout\>\"", ",", "\"\<test \>\""}], "]"}], ";", "i"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "2"}], "}"}]}], "]"}], ",", "\"\<test.s\>\""}], 
+  "]"}]], "Input",
+ CellTags->"CheckDB",
+ CellLabel->"In[4]:=",
+ CellID->1024102984],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{40, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CheckDB",
+ CellLabel->"Out[4]=",
+ CellID->129097795]
+}, Open  ]],
+
+Cell["This shows the actual saved value of test.s.", "Text",
+ CellTags->"CheckDB",
+ CellID->277506706],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Import", "[", 
+  RowBox[{
+   RowBox[{"ToFileName", "[", 
+    RowBox[{
+     RowBox[{"Directory", "/.", 
+      RowBox[{"Options", "[", "CheckDB", "]"}]}], ",", "\"\<test.s\>\""}], 
+    "]"}], ",", "\"\<Text\>\""}], "]"}]], "Input",
+ CellTags->"CheckDB",
+ CellLabel->"In[5]:=",
+ CellID->1578936180],
+
+Cell[BoxData[
+ FormBox["\<\"{1, 2}\"\>", TraditionalForm]], "Output",
+ ImageSize->{40, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"CheckDB",
+ CellLabel->"Out[5]=",
+ CellID->796644611]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"DeleteFile", "[", 
+  RowBox[{"ToFileName", "[", 
+   RowBox[{
+    RowBox[{"Directory", "/.", 
+     RowBox[{"Options", "[", "CheckDB", "]"}]}], ",", "\"\<test.s\>\""}], 
+   "]"}], "]"}]], "Input",
+ CellTags->"CheckDB",
+ CellLabel->"In[6]:=",
+ CellID->1720430951]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"CheckDB",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 22, 56, 40.775029}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "CheckDB[exp, fil] saves [with Put] or retrieves [with Get] exp from a \
+file fil. It checks if the setting of the option Directory is a valid \
+directory name and if fil is a valid file name and does exist. If it does, \
+Get[fil] is executed. If fil does not exist, exp gets evaluated and saved to \
+fil. Saving and evaluating can be further controlled with the options \
+ForceSave and NoSave. If the option Check is set to False the return value is \
+what is evaluated [see above]. If Check is set to True the return value is \
+True or False depending on whether the evaluation of exp agrees with what is \
+loaded from fil or fil does not exist. Default value of Check : False. NOTICE \
+: If fil ends with \".Gen\" or \".Mod\", the setting of Directory is ignored \
+and fil is saved in the \"CouplingVectors\" subdirectory of \"Phi\". If fil \
+ends with \".Fac\", the setting of Directory is ignored and fil is saved in \
+the \"Factors\" subdirectory of \"Phi\". If fil is a file name with full \
+path, the setting of Directory is also ignored.", "synonyms" -> {}, "title" -> 
+    "CheckDB", "titlemodifier" -> "", "windowtitle" -> "CheckDB", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/CheckDB"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4319, 108, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1667770908]},
+ "CheckDB"->{
+  Cell[4931, 135, 75, 2, 35, "Subsubsection",
+   CellTags->"CheckDB",
+   CellID->647730640],
+  Cell[5031, 141, 132, 4, 27, "Input",
+   CellTags->"CheckDB",
+   CellID->2004487562],
+  Cell[5166, 147, 582, 18, 56, "Output",
+   CellTags->"CheckDB",
+   CellID->1735070400],
+  Cell[5785, 170, 133, 4, 27, "Input",
+   CellTags->"CheckDB",
+   CellID->62116505],
+  Cell[5921, 176, 239, 8, 36, "Output",
+   CellTags->"CheckDB",
+   CellID->393414258],
+  Cell[6175, 187, 158, 5, 31, "Text",
+   CellTags->"CheckDB",
+   CellID->1632453918],
+  Cell[6358, 196, 403, 14, 45, "Input",
+   CellTags->"CheckDB",
+   CellID->1433287094],
+  Cell[6764, 212, 113, 3, 23, "Print",
+   CellTags->"CheckDB",
+   CellID->670482458],
+  Cell[6880, 217, 256, 9, 36, "Output",
+   CellTags->"CheckDB",
+   CellID->1976770700],
+  Cell[7151, 229, 175, 5, 51, "Text",
+   CellTags->"CheckDB",
+   CellID->342347170],
+  Cell[7351, 238, 403, 14, 45, "Input",
+   CellTags->"CheckDB",
+   CellID->1024102984],
+  Cell[7757, 254, 255, 9, 36, "Output",
+   CellTags->"CheckDB",
+   CellID->129097795],
+  Cell[8027, 266, 102, 2, 31, "Text",
+   CellTags->"CheckDB",
+   CellID->277506706],
+  Cell[8154, 272, 319, 10, 27, "Input",
+   CellTags->"CheckDB",
+   CellID->1578936180],
+  Cell[8476, 284, 221, 7, 36, "Output",
+   CellTags->"CheckDB",
+   CellID->796644611],
+  Cell[8712, 294, 284, 9, 27, "Input",
+   CellTags->"CheckDB",
+   CellID->1720430951]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11813, 365},
+ {"CheckDB", 11948, 369}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2822, 75, 50, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2875, 78, 1419, 26, 247, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4319, 108, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1667770908],
+Cell[4710, 125, 196, 6, 25, "ExampleSection",
+ CellID->2129383259],
+Cell[CellGroupData[{
+Cell[4931, 135, 75, 2, 35, "Subsubsection",
+ CellTags->"CheckDB",
+ CellID->647730640],
+Cell[CellGroupData[{
+Cell[5031, 141, 132, 4, 27, "Input",
+ CellTags->"CheckDB",
+ CellID->2004487562],
+Cell[5166, 147, 582, 18, 56, "Output",
+ CellTags->"CheckDB",
+ CellID->1735070400]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5785, 170, 133, 4, 27, "Input",
+ CellTags->"CheckDB",
+ CellID->62116505],
+Cell[5921, 176, 239, 8, 36, "Output",
+ CellTags->"CheckDB",
+ CellID->393414258]
+}, Open  ]],
+Cell[6175, 187, 158, 5, 31, "Text",
+ CellTags->"CheckDB",
+ CellID->1632453918],
+Cell[CellGroupData[{
+Cell[6358, 196, 403, 14, 45, "Input",
+ CellTags->"CheckDB",
+ CellID->1433287094],
+Cell[6764, 212, 113, 3, 23, "Print",
+ CellTags->"CheckDB",
+ CellID->670482458],
+Cell[6880, 217, 256, 9, 36, "Output",
+ CellTags->"CheckDB",
+ CellID->1976770700]
+}, Open  ]],
+Cell[7151, 229, 175, 5, 51, "Text",
+ CellTags->"CheckDB",
+ CellID->342347170],
+Cell[CellGroupData[{
+Cell[7351, 238, 403, 14, 45, "Input",
+ CellTags->"CheckDB",
+ CellID->1024102984],
+Cell[7757, 254, 255, 9, 36, "Output",
+ CellTags->"CheckDB",
+ CellID->129097795]
+}, Open  ]],
+Cell[8027, 266, 102, 2, 31, "Text",
+ CellTags->"CheckDB",
+ CellID->277506706],
+Cell[CellGroupData[{
+Cell[8154, 272, 319, 10, 27, "Input",
+ CellTags->"CheckDB",
+ CellID->1578936180],
+Cell[8476, 284, 221, 7, 36, "Output",
+ CellTags->"CheckDB",
+ CellID->796644611]
+}, Open  ]],
+Cell[8712, 294, 284, 9, 27, "Input",
+ CellTags->"CheckDB",
+ CellID->1720430951]
+}, Open  ]]
+}, Open  ]],
+Cell[9023, 307, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

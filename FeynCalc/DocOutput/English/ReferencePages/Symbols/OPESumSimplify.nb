@@ -1,0 +1,559 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15438,        549]
+NotebookOptionsPosition[     10714,        399]
+NotebookOutlinePosition[     13823,        488]
+CellTagsIndexPosition[     13705,        482]
+WindowTitle->OPESumSimplify
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/OPESumSimplify\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/OPESumSimplify"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+OPESumSimplify.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$106353], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/OPESumSimplify", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["OPESumSimplify", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"OPESumSimplify", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "simplifies OPESum's in exp."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->875678452],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->528724571],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+OPESum[(-SOD[p])^(OPEi+1) SOD[p-q]^(OPEm-OPEi-2),{OPEi,0,OPEm}]\
+\>", "Input",
+ CellTags->"OPESumSimplify",
+ CellLabel->"In[1]:=",
+ CellID->301700583],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "0"}], "m"], 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{
+          FormBox["\<\"\[CapitalDelta]\"\>",
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox["p",
+           TraditionalForm]}], ")"}]}], ")"}], 
+      RowBox[{"1", "+", "i"}]], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FormBox["\<\"\[CapitalDelta]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         RowBox[{"p", "-", "q"}],
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], ")"}], 
+      RowBox[{
+       RowBox[{"-", "2"}], "-", "i", "+", "m"}]]}]}],
+   HoldForm], TraditionalForm]], "Output",
+ ImageSize->{247, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPESumSimplify",
+ CellLabel->"Out[1]=",
+ CellID->843585068]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["OPESumSimplify[%]", "Input",
+ CellTags->"OPESumSimplify",
+ CellLabel->"In[2]:=",
+ CellID->603012719],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"-", 
+     FormBox[
+      TagBox[
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "0"}], "m"], 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"-", "1"}], ")"}], "i"], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm]}], ")"}], "i"], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             RowBox[{
+              FormBox["p",
+               TraditionalForm], "-", 
+              FormBox["q",
+               TraditionalForm]}],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], ")"}], 
+          RowBox[{
+           RowBox[{"-", "2"}], "-", "i", "+", "m"}]]}]}],
+       HoldForm],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{317, 46},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPESumSimplify",
+ CellLabel->"Out[2]=",
+ CellID->276666428]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OPESumSimplify", "[", 
+  RowBox[{
+   RowBox[{"OPESum", "[", 
+    RowBox[{"{", 
+     RowBox[{"OPEi", ",", "0", ",", "OPEm"}], "}"}], "]"}], " ", 
+   RowBox[{"a", "^", "OPEi"}]}], "]"}]], "Input",
+ CellTags->"OPESumSimplify",
+ CellLabel->"In[3]:=",
+ CellID->341981151],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "0"}], "m"], 
+    FormBox[
+     SuperscriptBox["a", "i"],
+     TraditionalForm]}],
+   HoldForm], TraditionalForm]], "Output",
+ ImageSize->{40, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPESumSimplify",
+ CellLabel->"Out[3]=",
+ CellID->956192019]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OPESumSimplify", "[", 
+  RowBox[{
+   RowBox[{"OPESum", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"j", ",", "0", ",", "i"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "m"}], "}"}]}], "]"}], " ", 
+   RowBox[{"a", "^", 
+    RowBox[{"(", 
+     RowBox[{"j", "-", "i"}], ")"}]}], " ", 
+   RowBox[{"b", "^", "i"}]}], "]"}]], "Input",
+ CellTags->"OPESumSimplify",
+ CellLabel->"In[4]:=",
+ CellID->445474412],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    TagBox[
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "0"}], "m"], "\<\"\"\>"}],
+     HoldForm],
+    TraditionalForm], 
+   FormBox[
+    RowBox[{"\<\"\"\>", " ", 
+     RowBox[{"(", 
+      RowBox[{"i", "+", "1"}], ")"}]}],
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["b", "i"], " ", 
+     SuperscriptBox["a", 
+      RowBox[{"j", "-", "i"}]]}],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{119, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPESumSimplify",
+ CellLabel->"Out[4]=",
+ CellID->630874009]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellTags->"OPESumSimplify",
+ CellLabel->"In[5]:=",
+ CellID->1811258609],
+
+Cell[BoxData[
+ RowBox[{"OPESum", "[", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["a", 
+     RowBox[{
+      RowBox[{"-", "i"}], "+", "j"}]], " ", 
+    SuperscriptBox["b", "i"]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "0", ",", "m"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "0", ",", "i"}], "}"}]}], "]"}]], "Output",
+ ImageSize->{291, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"OPESumSimplify",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->899717952]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["OPESum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OPESum",
+  ButtonNote->"OPESum"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["OPESumExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OPESumExplicit",
+  ButtonNote->"OPESumExplicit"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"OPESumSimplify",
+ CellID->189414120]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"OPESumSimplify",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 3, 59.611721}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> "OPESumSimplify[exp] simplifies OPESum's in exp.", 
+    "synonyms" -> {}, "title" -> "OPESumSimplify", "titlemodifier" -> "", 
+    "windowtitle" -> "OPESumSimplify", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/OPESumSimplify"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3322, 94, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->875678452]},
+ "OPESumSimplify"->{
+  Cell[3954, 123, 160, 5, 27, "Input",
+   CellTags->"OPESumSimplify",
+   CellID->301700583],
+  Cell[4117, 130, 1157, 41, 66, "Output",
+   CellTags->"OPESumSimplify",
+   CellID->843585068],
+  Cell[5311, 176, 106, 3, 27, "Input",
+   CellTags->"OPESumSimplify",
+   CellID->603012719],
+  Cell[5420, 181, 1926, 68, 67, "Output",
+   CellTags->"OPESumSimplify",
+   CellID->276666428],
+  Cell[7383, 254, 290, 9, 27, "Input",
+   CellTags->"OPESumSimplify",
+   CellID->341981151],
+  Cell[7676, 265, 387, 15, 66, "Output",
+   CellTags->"OPESumSimplify",
+   CellID->956192019],
+  Cell[8100, 285, 456, 15, 27, "Input",
+   CellTags->"OPESumSimplify",
+   CellID->445474412],
+  Cell[8559, 302, 658, 26, 66, "Output",
+   CellTags->"OPESumSimplify",
+   CellID->630874009],
+  Cell[9254, 333, 134, 4, 27, "Input",
+   CellTags->"OPESumSimplify",
+   CellID->1811258609],
+  Cell[9391, 339, 509, 17, 41, "Output",
+   CellTags->"OPESumSimplify",
+   CellID->899717952],
+  Cell[10268, 379, 404, 15, 70, "Text",
+   CellTags->"OPESumSimplify",
+   CellID->189414120]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12503, 441},
+ {"OPESumSimplify", 12643, 445}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2859, 75, 57, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2919, 78, 378, 12, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3322, 94, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->875678452],
+Cell[CellGroupData[{
+Cell[3734, 113, 195, 6, 25, "ExampleSection",
+ CellID->528724571],
+Cell[CellGroupData[{
+Cell[3954, 123, 160, 5, 27, "Input",
+ CellTags->"OPESumSimplify",
+ CellID->301700583],
+Cell[4117, 130, 1157, 41, 66, "Output",
+ CellTags->"OPESumSimplify",
+ CellID->843585068]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5311, 176, 106, 3, 27, "Input",
+ CellTags->"OPESumSimplify",
+ CellID->603012719],
+Cell[5420, 181, 1926, 68, 67, "Output",
+ CellTags->"OPESumSimplify",
+ CellID->276666428]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7383, 254, 290, 9, 27, "Input",
+ CellTags->"OPESumSimplify",
+ CellID->341981151],
+Cell[7676, 265, 387, 15, 66, "Output",
+ CellTags->"OPESumSimplify",
+ CellID->956192019]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8100, 285, 456, 15, 27, "Input",
+ CellTags->"OPESumSimplify",
+ CellID->445474412],
+Cell[8559, 302, 658, 26, 66, "Output",
+ CellTags->"OPESumSimplify",
+ CellID->630874009]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9254, 333, 134, 4, 27, "Input",
+ CellTags->"OPESumSimplify",
+ CellID->1811258609],
+Cell[9391, 339, 509, 17, 41, "Output",
+ CellTags->"OPESumSimplify",
+ CellID->899717952]
+}, Open  ]]
+}, Open  ]],
+Cell[9927, 360, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9995, 365, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10268, 379, 404, 15, 70, "Text",
+ CellTags->"OPESumSimplify",
+ CellID->189414120]
+}, Open  ]],
+Cell[10687, 397, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

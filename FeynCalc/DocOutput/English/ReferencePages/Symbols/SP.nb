@@ -1,0 +1,632 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16188,        622]
+NotebookOptionsPosition[     10983,        442]
+NotebookOutlinePosition[     14332,        545]
+CellTagsIndexPosition[     14226,        539]
+WindowTitle->SP
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/SP\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/SP"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/SP.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139059], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/SP", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["SP", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SP", "[", 
+       RowBox[{"a", ",", " ", "b"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "denotes a four-dimensional scalar product. SP[a, b] is transformed into \
+ScalarProduct[a, b] by FeynCalcInternal. SP[p] is the same as SP[p, p] ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{"(", 
+        RowBox[{"=", 
+         SuperscriptBox["p", "2"]}]}], TraditionalForm]]],
+     ")."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1659438167],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->991177583],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SP", "[", 
+   RowBox[{"p", ",", "q"}], "]"}], " ", "+", " ", 
+  RowBox[{"SP", "[", "q", "]"}]}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[1]:=",
+ CellID->1327327216],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}],
+    TraditionalForm], "+", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{68, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[1]=",
+ CellID->1148967332]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SP", "[", 
+  RowBox[{
+   RowBox[{"p", "-", "q"}], ",", 
+   RowBox[{"q", "+", 
+    RowBox[{"2", "p"}]}]}], "]"}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[2]:=",
+ CellID->903181536],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"], "-", 
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     RowBox[{"2", " ", 
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"]}], "+", 
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{133, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[2]=",
+ CellID->53518921]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Calc", "[", " ", 
+  RowBox[{"SP", "[", 
+   RowBox[{
+    RowBox[{"p", "-", "q"}], ",", 
+    RowBox[{"q", "+", 
+     RowBox[{"2", "p"}]}]}], "]"}], " ", "]"}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[3]:=",
+ CellID->1760867040],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}]}], "+", 
+   RowBox[{"2", " ", 
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], "2"]}], "-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], "2"]}], TraditionalForm]], "Output",
+ ImageSize->{123, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[3]=",
+ CellID->21872907]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExpandScalarProduct", "[", 
+  RowBox[{"SP", "[", 
+   RowBox[{"p", "-", "q"}], "]"}], "]"}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[4]:=",
+ CellID->1518821322],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}]}]}], "+", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], "2"], "+", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], "2"]}], TraditionalForm]], "Output",
+ ImageSize->{136, 21},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[4]=",
+ CellID->988669305]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SP", "[", 
+   RowBox[{"a", ",", "b"}], "]"}], "//", "StandardForm"}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[5]:=",
+ CellID->1767436480],
+
+Cell[BoxData[
+ RowBox[{"SP", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Output",
+ ImageSize->{68, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->591158186]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SP", "[", 
+    RowBox[{"a", ",", "b"}], "]"}], "//", "FCI"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[6]:=",
+ CellID->736982087],
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", "a", "]"}], ",", 
+   RowBox[{"Momentum", "[", "b", "]"}]}], "]"}]], "Output",
+ ImageSize->{250, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[6]//StandardForm=",
+ CellID->504879117]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SP", "[", 
+     RowBox[{"a", ",", "b"}], "]"}], "//", "FCI"}], "//", "FCE"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"SP",
+ CellLabel->"In[7]:=",
+ CellID->355867518],
+
+Cell[BoxData[
+ RowBox[{"SP", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Output",
+ ImageSize->{68, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SP",
+ CellLabel->"Out[7]//StandardForm=",
+ CellID->1698640474]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Calc",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Calc",
+  ButtonNote->"Calc"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ExpandScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandScalarProduct",
+  ButtonNote->"ExpandScalarProduct"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScalarProduct",
+  ButtonNote->"ScalarProduct"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"SP",
+ CellID->468161499]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"SP",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 7, 1.041000}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "SP[a, b] denotes a four-dimensional scalar product. SP[a, b] is \
+transformed into ScalarProduct[a, b] by FeynCalcInternal. SP[p] is the same \
+as SP[p, p] (= p^2).", "synonyms" -> {}, "title" -> "SP", "titlemodifier" -> 
+    "", "windowtitle" -> "SP", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/SP"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3546, 102, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1659438167]},
+ "SP"->{
+  Cell[4179, 131, 202, 7, 27, "Input",
+   CellTags->"SP",
+   CellID->1327327216],
+  Cell[4384, 140, 724, 31, 41, "Output",
+   CellTags->"SP",
+   CellID->1148967332],
+  Cell[5145, 176, 206, 8, 27, "Input",
+   CellTags->"SP",
+   CellID->903181536],
+  Cell[5354, 186, 878, 37, 38, "Output",
+   CellTags->"SP",
+   CellID->53518921],
+  Cell[6269, 228, 252, 9, 27, "Input",
+   CellTags->"SP",
+   CellID->1760867040],
+  Cell[6524, 239, 835, 35, 41, "Output",
+   CellTags->"SP",
+   CellID->21872907],
+  Cell[7396, 279, 186, 6, 27, "Input",
+   CellTags->"SP",
+   CellID->1518821322],
+  Cell[7585, 287, 883, 36, 42, "Output",
+   CellTags->"SP",
+   CellID->988669305],
+  Cell[8505, 328, 175, 6, 27, "Input",
+   CellTags->"SP",
+   CellID->1767436480],
+  Cell[8683, 336, 240, 8, 36, "Output",
+   CellTags->"SP",
+   CellID->591158186],
+  Cell[8960, 349, 205, 8, 27, "Input",
+   CellTags->"SP",
+   CellID->736982087],
+  Cell[9168, 359, 315, 10, 36, "Output",
+   CellTags->"SP",
+   CellID->504879117],
+  Cell[9520, 374, 234, 9, 27, "Input",
+   CellTags->"SP",
+   CellID->355867518],
+  Cell[9757, 385, 241, 8, 36, "Output",
+   CellTags->"SP",
+   CellID->1698640474],
+  Cell[10366, 416, 575, 21, 32, "Text",
+   CellTags->"SP",
+   CellID->468161499]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12840, 486},
+ {"SP", 12970, 490}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2234, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2811, 75, 45, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2859, 78, 662, 20, 104, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3546, 102, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1659438167],
+Cell[CellGroupData[{
+Cell[3959, 121, 195, 6, 25, "ExampleSection",
+ CellID->991177583],
+Cell[CellGroupData[{
+Cell[4179, 131, 202, 7, 27, "Input",
+ CellTags->"SP",
+ CellID->1327327216],
+Cell[4384, 140, 724, 31, 41, "Output",
+ CellTags->"SP",
+ CellID->1148967332]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5145, 176, 206, 8, 27, "Input",
+ CellTags->"SP",
+ CellID->903181536],
+Cell[5354, 186, 878, 37, 38, "Output",
+ CellTags->"SP",
+ CellID->53518921]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6269, 228, 252, 9, 27, "Input",
+ CellTags->"SP",
+ CellID->1760867040],
+Cell[6524, 239, 835, 35, 41, "Output",
+ CellTags->"SP",
+ CellID->21872907]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7396, 279, 186, 6, 27, "Input",
+ CellTags->"SP",
+ CellID->1518821322],
+Cell[7585, 287, 883, 36, 42, "Output",
+ CellTags->"SP",
+ CellID->988669305]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8505, 328, 175, 6, 27, "Input",
+ CellTags->"SP",
+ CellID->1767436480],
+Cell[8683, 336, 240, 8, 36, "Output",
+ CellTags->"SP",
+ CellID->591158186]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8960, 349, 205, 8, 27, "Input",
+ CellTags->"SP",
+ CellID->736982087],
+Cell[9168, 359, 315, 10, 36, "Output",
+ CellTags->"SP",
+ CellID->504879117]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9520, 374, 234, 9, 27, "Input",
+ CellTags->"SP",
+ CellID->355867518],
+Cell[9757, 385, 241, 8, 36, "Output",
+ CellTags->"SP",
+ CellID->1698640474]
+}, Open  ]]
+}, Open  ]],
+Cell[10025, 397, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10093, 402, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10366, 416, 575, 21, 32, "Text",
+ CellTags->"SP",
+ CellID->468161499]
+}, Open  ]],
+Cell[10956, 440, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

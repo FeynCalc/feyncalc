@@ -1,0 +1,568 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14843,        558]
+NotebookOptionsPosition[      9663,        379]
+NotebookOutlinePosition[     12954,        481]
+CellTagsIndexPosition[     12846,        475]
+WindowTitle->SumP
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/SumP\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/SumP"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/SumP.html"]\
+, StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
+           False]]; SelectionMove[
+        DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140088], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/SumP", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["SumP", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SumP", "[", 
+       RowBox[{"k", ",", " ", "m"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+        SuperscriptBox["2", 
+         RowBox[{
+          StyleBox["k",
+           FontSlant->"Plain"], "-", "1"}]], 
+        RowBox[{
+         SubsuperscriptBox["\[Sum]", 
+          RowBox[{
+           StyleBox["i",
+            FontSlant->"Plain"], "=", "1"}], 
+          RowBox[{"2", 
+           StyleBox["m",
+            FontSlant->"Plain"]}]], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"-", "1"}], ")"}], 
+             StyleBox["i",
+              FontSlant->"Plain"]]}], ")"}], "/", 
+          SuperscriptBox[
+           StyleBox["i",
+            FontSlant->"Plain"], 
+           StyleBox["k",
+            FontSlant->"Plain"]]}]}]}], TraditionalForm]]]
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1284919412],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->664260577],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SumP", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"m", "-", "1"}]}], "]"}]], "Input",
+ CellTags->"SumP",
+ CellLabel->"In[1]:=",
+ CellID->2064705419],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["S", "1", "'"], "\[NoBreak]", "(", "\[NoBreak]", 
+   FormBox[
+    RowBox[{"m", "-", "1"}],
+    TraditionalForm], "\[NoBreak]", ")"}], TraditionalForm]], "Output",
+ ImageSize->{67, 23},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[1]=",
+ CellID->850869174]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SumP", "[", 
+  RowBox[{"2", ",", 
+   RowBox[{"m", "-", "1"}]}], "]"}]], "Input",
+ CellTags->"SumP",
+ CellLabel->"In[2]:=",
+ CellID->1846990318],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["S", "2", "'"], "\[NoBreak]", "(", "\[NoBreak]", 
+   FormBox[
+    RowBox[{"m", "-", "1"}],
+    TraditionalForm], "\[NoBreak]", ")"}], TraditionalForm]], "Output",
+ ImageSize->{67, 23},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[2]=",
+ CellID->1599542692]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SumP", "[", 
+  RowBox[{"1", ",", "m"}], "]"}]], "Input",
+ CellTags->"SumP",
+ CellLabel->"In[3]:=",
+ CellID->1164731188],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubsuperscriptBox["S", "1", "'"], "\[NoBreak]", "(", "\[NoBreak]", 
+   FormBox["m",
+    TraditionalForm], "\[NoBreak]", ")"}], TraditionalForm]], "Output",
+ ImageSize->{45, 23},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[3]=",
+ CellID->440466816]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SumP", "[", 
+  RowBox[{"1", ",", "4"}], "]"}]], "Input",
+ CellTags->"SumP",
+ CellLabel->"In[4]:=",
+ CellID->1167358521],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["25", "12"], TraditionalForm]], "Output",
+ ImageSize->{24, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[4]=",
+ CellID->1429863848]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", 
+   RowBox[{"i", "=", "1"}], "8"], 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"-", "1"}], ")"}], "^", "i"}]}], ")"}], "/", "i"}]}]], "Input",\
+
+ CellTags->"SumP",
+ CellLabel->"In[5]:=",
+ CellID->1893183879],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["25", "12"], TraditionalForm]], "Output",
+ ImageSize->{24, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[5]=",
+ CellID->1088247533]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Explicit", "[", 
+  RowBox[{"SumP", "[", 
+   RowBox[{"1", ",", 
+    RowBox[{"n", "/", "2"}]}], "]"}], "]"}]], "Input",
+ CellTags->"SumP",
+ CellLabel->"In[6]:=",
+ CellID->1686985952],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], 
+       RowBox[{"n", "+", "1"}]], "+", "1"}], ")"}], " ", 
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox[
+      FractionBox[
+       RowBox[{"n", "-", "1"}], "2"],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "n"], "+", "1"}], ")"}], " ", 
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox[
+      FractionBox["n", "2"],
+      TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{328, 43},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[6]=",
+ CellID->703036669]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "/.", 
+  RowBox[{"n", "\[Rule]", "8"}]}]], "Input",
+ CellTags->"SumP",
+ CellLabel->"In[7]:=",
+ CellID->1663422834],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["25", "12"], TraditionalForm]], "Output",
+ ImageSize->{24, 41},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SumP",
+ CellLabel->"Out[7]=",
+ CellID->454708211]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["SumS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumS",
+  ButtonNote->"SumS"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SumT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumT",
+  ButtonNote->"SumT"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"SumP",
+ CellID->1699670739]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"SumP",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 7, 6.715713}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "SumP[k, m] is 2 k - 1 \\[Sum]_i = 1^2 m(1 + (-1) i)/i^k", 
+    "synonyms" -> {}, "title" -> "SumP", "titlemodifier" -> "", "windowtitle" -> 
+    "SumP", "type" -> "Symbol", "uri" -> "FeynCalc/ref/SumP"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4073, 123, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1284919412]},
+ "SumP"->{
+  Cell[4706, 152, 167, 6, 27, "Input",
+   CellTags->"SumP",
+   CellID->2064705419],
+  Cell[4876, 160, 367, 12, 44, "Output",
+   CellTags->"SumP",
+   CellID->850869174],
+  Cell[5280, 177, 167, 6, 27, "Input",
+   CellTags->"SumP",
+   CellID->1846990318],
+  Cell[5450, 185, 368, 12, 44, "Output",
+   CellTags->"SumP",
+   CellID->1599542692],
+  Cell[5855, 202, 143, 5, 27, "Input",
+   CellTags->"SumP",
+   CellID->1164731188],
+  Cell[6001, 209, 342, 11, 44, "Output",
+   CellTags->"SumP",
+   CellID->440466816],
+  Cell[6380, 225, 143, 5, 27, "Input",
+   CellTags->"SumP",
+   CellID->1167358521],
+  Cell[6526, 232, 229, 8, 62, "Output",
+   CellTags->"SumP",
+   CellID->1429863848],
+  Cell[6792, 245, 319, 13, 56, "Input",
+   CellTags->"SumP",
+   CellID->1893183879],
+  Cell[7114, 260, 229, 8, 62, "Output",
+   CellTags->"SumP",
+   CellID->1088247533],
+  Cell[7380, 273, 204, 7, 27, "Input",
+   CellTags->"SumP",
+   CellID->1686985952],
+  Cell[7587, 282, 897, 34, 64, "Output",
+   CellTags->"SumP",
+   CellID->703036669],
+  Cell[8521, 321, 142, 5, 27, "Input",
+   CellTags->"SumP",
+   CellID->1663422834],
+  Cell[8666, 328, 228, 8, 62, "Output",
+   CellTags->"SumP",
+   CellID->454708211],
+  Cell[9262, 359, 359, 15, 31, "Text",
+   CellTags->"SumP",
+   CellID->1699670739]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 11422, 422},
+ {"SumP", 11554, 426}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2808, 75, 47, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 1190, 41, 89, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4073, 123, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1284919412],
+Cell[CellGroupData[{
+Cell[4486, 142, 195, 6, 25, "ExampleSection",
+ CellID->664260577],
+Cell[CellGroupData[{
+Cell[4706, 152, 167, 6, 27, "Input",
+ CellTags->"SumP",
+ CellID->2064705419],
+Cell[4876, 160, 367, 12, 44, "Output",
+ CellTags->"SumP",
+ CellID->850869174]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5280, 177, 167, 6, 27, "Input",
+ CellTags->"SumP",
+ CellID->1846990318],
+Cell[5450, 185, 368, 12, 44, "Output",
+ CellTags->"SumP",
+ CellID->1599542692]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5855, 202, 143, 5, 27, "Input",
+ CellTags->"SumP",
+ CellID->1164731188],
+Cell[6001, 209, 342, 11, 44, "Output",
+ CellTags->"SumP",
+ CellID->440466816]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6380, 225, 143, 5, 27, "Input",
+ CellTags->"SumP",
+ CellID->1167358521],
+Cell[6526, 232, 229, 8, 62, "Output",
+ CellTags->"SumP",
+ CellID->1429863848]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6792, 245, 319, 13, 56, "Input",
+ CellTags->"SumP",
+ CellID->1893183879],
+Cell[7114, 260, 229, 8, 62, "Output",
+ CellTags->"SumP",
+ CellID->1088247533]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7380, 273, 204, 7, 27, "Input",
+ CellTags->"SumP",
+ CellID->1686985952],
+Cell[7587, 282, 897, 34, 64, "Output",
+ CellTags->"SumP",
+ CellID->703036669]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8521, 321, 142, 5, 27, "Input",
+ CellTags->"SumP",
+ CellID->1663422834],
+Cell[8666, 328, 228, 8, 62, "Output",
+ CellTags->"SumP",
+ CellID->454708211]
+}, Open  ]]
+}, Open  ]],
+Cell[8921, 340, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8989, 345, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[9262, 359, 359, 15, 31, "Text",
+ CellTags->"SumP",
+ CellID->1699670739]
+}, Open  ]],
+Cell[9636, 377, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

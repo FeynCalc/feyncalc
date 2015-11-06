@@ -1,0 +1,945 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25658,        935]
+NotebookOptionsPosition[     19263,        737]
+NotebookOutlinePosition[     23252,        849]
+CellTagsIndexPosition[     23129,        843]
+WindowTitle->ScalarProductCancel
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/ScalarProductCancel\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/ScalarProductCancel"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+ScalarProductCancel.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$124600], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/ScalarProductCancel", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["ScalarProductCancel", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ScalarProductCancel", "[", 
+       RowBox[{"exp", ",", " ", "q1", ",", " ", "q2", ",", " ", "..."}], 
+       "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "cancels scalar products with propagators. ScalarProductCancel[exp] \
+cancels simple cases."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1489577872],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2011162975],
+
+Cell[TextData[{
+ "See also: ",
+ " ",
+ ButtonBox["FeynAmpDenominatorSimplify",
+  BaseStyle->"AddOnsLink",
+  ButtonData:>"FeynAmpDenominatorSimplify",
+  ButtonNote->"FeynAmpDenominatorSimplify"],
+ "."
+}], "Text",
+ CellTags->"ScalarProductCancel",
+ CellID->1850483039],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ScalarProductCancel", "]"}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[1]:=",
+ CellID->183152643],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ChangeDimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynAmpDenominatorSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynAmpDenominatorCombine", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{520, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[1]=",
+ CellID->55006305]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SPD", "[", 
+     RowBox[{"q", ",", "p"}], "]"}], " ", 
+    RowBox[{"FAD", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"q", ",", "m"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"q", "-", "p"}], ",", "0"}], "}"}]}], "]"}]}], "//", 
+   "FCI"}]}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[2]:=",
+ CellID->2001963960],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm]}], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q",
+        TraditionalForm], "2"], "-", 
+      SuperscriptBox["m", "2"]}], ")"}], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["q",
+        TraditionalForm], "-", 
+       FormBox["p",
+        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
+ ImageSize->{134, 45},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[2]=",
+ CellID->1206303830]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ScalarProductCancel", "[", 
+  RowBox[{"t1", ",", "q"}], "]"}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[3]:=",
+ CellID->704586696],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["m", "2"], "+", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"]}], 
+    RowBox[{"2", " ", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q",
+        TraditionalForm], "2"], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}], ")"}], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}]}]}]], "-", 
+   FractionBox["1", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox[
+        FormBox["q",
+         TraditionalForm], "2"], "-", 
+       SuperscriptBox["m", "2"]}], ")"}]}]]}], TraditionalForm]], "Output",
+ ImageSize->{242, 51},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[3]=",
+ CellID->2107806960]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FeynAmpDenominatorSimplify", "[", 
+  RowBox[{"%", ",", "q"}], "]"}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[4]:=",
+ CellID->559110996],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["m", "2"], "+", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"]}], 
+    RowBox[{"2", " ", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q",
+        TraditionalForm], "2"], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}], ")"}], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}]}]}]], "-", 
+   FractionBox["1", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox[
+        FormBox["q",
+         TraditionalForm], "2"], "-", 
+       SuperscriptBox["m", "2"]}], ")"}]}]]}], TraditionalForm]], "Output",
+ ImageSize->{242, 51},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[4]=",
+ CellID->988137131]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SPC", "[", 
+  RowBox[{"t1", ",", "q", ",", 
+   RowBox[{"FDS", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[5]:=",
+ CellID->2094061205],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["m", "2"], "+", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"]}], 
+    RowBox[{"2", " ", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q",
+        TraditionalForm], "2"], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox["q",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}], ")"}], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}]}]}]], "-", 
+   FractionBox["1", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox[
+        FormBox["q",
+         TraditionalForm], "2"], "-", 
+       SuperscriptBox["m", "2"]}], ")"}]}]]}], TraditionalForm]], "Output",
+ ImageSize->{242, 51},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[5]=",
+ CellID->889330047]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t2", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SPD", "[", 
+     RowBox[{"q2", ",", "p"}], "]"}], 
+    RowBox[{"SPD", "[", 
+     RowBox[{"q1", ",", "p"}], "]"}], " ", 
+    RowBox[{"FAD", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"q1", ",", "m"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"q2", ",", "m"}], "}"}], ",", 
+      RowBox[{"q1", "-", "p"}], ",", 
+      RowBox[{"q2", "-", "p"}], ",", 
+      RowBox[{"q2", "-", "q1"}]}], "]"}]}], "//", "FCI"}]}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[6]:=",
+ CellID->360584001],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q1",
+        TraditionalForm],
+       TraditionalForm]}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["q2",
+        TraditionalForm],
+       TraditionalForm]}], ")"}]}], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q1",
+        TraditionalForm], "2"], "-", 
+      SuperscriptBox["m", "2"]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q2",
+        TraditionalForm], "2"], "-", 
+      SuperscriptBox["m", "2"]}], ")"}], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["q1",
+        TraditionalForm], "-", 
+       FormBox["p",
+        TraditionalForm]}], ")"}], "2"], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["q2",
+        TraditionalForm], "-", 
+       FormBox["p",
+        TraditionalForm]}], ")"}], "2"], ".", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       FormBox["q2",
+        TraditionalForm], "-", 
+       FormBox["q1",
+        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
+ ImageSize->{356, 48},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[6]=",
+ CellID->1994571177]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SPC", "[", 
+  RowBox[{"t2", ",", "q1", ",", "q2", ",", 
+   RowBox[{"FDS", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[7]:=",
+ CellID->1734687931],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["m", "2"], "+", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"]}], ")"}], "2"], 
+    RowBox[{"4", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q1",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q2",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q1",
+          TraditionalForm], "-", 
+         FormBox["p",
+          TraditionalForm]}], ")"}], "2"], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q1",
+          TraditionalForm], "-", 
+         FormBox["q2",
+          TraditionalForm]}], ")"}], "2"], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q2",
+          TraditionalForm], "-", 
+         FormBox["p",
+          TraditionalForm]}], ")"}], "2"]}]}]], "+", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["m", "2"], "+", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"]}], 
+    RowBox[{"2", " ", 
+     RowBox[{
+      SuperscriptBox[
+       FormBox["q1",
+        TraditionalForm], "2"], ".", 
+      SuperscriptBox[
+       FormBox["q2",
+        TraditionalForm], "2"], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox["q1",
+            TraditionalForm], "-", 
+           FormBox["p",
+            TraditionalForm]}], ")"}], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q1",
+          TraditionalForm], "-", 
+         FormBox["q2",
+          TraditionalForm]}], ")"}], "2"]}]}]], "-", 
+   FractionBox["1", 
+    RowBox[{"2", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q1",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q1",
+          TraditionalForm], "-", 
+         FormBox["q2",
+          TraditionalForm]}], ")"}], "2"], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q2",
+          TraditionalForm], "-", 
+         FormBox["p",
+          TraditionalForm]}], ")"}], "2"]}]}]], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["m", "2"]}], "-", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"]}], 
+    RowBox[{"2", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q1",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q2",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q1",
+          TraditionalForm], "-", 
+         FormBox["p",
+          TraditionalForm]}], ")"}], "2"], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q1",
+          TraditionalForm], "-", 
+         FormBox["q2",
+          TraditionalForm]}], ")"}], "2"]}]}]], "+", 
+   FractionBox["1", 
+    RowBox[{"4", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q1",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         FormBox["q2",
+          TraditionalForm], "2"], "-", 
+        SuperscriptBox["m", "2"]}], ")"}], ".", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         FormBox["q2",
+          TraditionalForm], "-", 
+         FormBox["q1",
+          TraditionalForm]}], ")"}], "2"]}]}]]}], TraditionalForm]], "Output",\
+
+ ImageSize->{566, 176},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ScalarProductCancel",
+ CellLabel->"Out[7]=",
+ CellID->690872055]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{"t1", ",", "t2"}], "]"}], ";"}]], "Input",
+ CellTags->"ScalarProductCancel",
+ CellLabel->"In[8]:=",
+ CellID->1734716984]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["Calc",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Calc",
+  ButtonNote->"Calc"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ClearScalarProducts",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ClearScalarProducts",
+  ButtonNote->"ClearScalarProducts"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ExpandScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandScalarProduct",
+  ButtonNote->"ExpandScalarProduct"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Pair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Pair",
+  ButtonNote->"Pair"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SP",
+  ButtonNote->"SP"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SPC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SPC",
+  ButtonNote->"SPC"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SPD",
+  ButtonNote->"SPD"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"ScalarProductCancel",
+ CellID->48437716],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FeynAmpDenominatorSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorSimplify",
+  ButtonNote->"FeynAmpDenominatorSimplify"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"ScalarProductCancel",
+ CellID->1547440041]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ScalarProductCancel",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 5, 36.331827}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ScalarProductCancel[exp, q1, q2, ...] cancels scalar products with \
+propagators. ScalarProductCancel[exp] cancels simple cases.", 
+    "synonyms" -> {}, "title" -> "ScalarProductCancel", "titlemodifier" -> "",
+     "windowtitle" -> "ScalarProductCancel", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/ScalarProductCancel"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3495, 97, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1489577872]},
+ "ScalarProductCancel"->{
+  Cell[4107, 124, 265, 10, 32, "Text",
+   CellTags->"ScalarProductCancel",
+   CellID->1850483039],
+  Cell[4397, 138, 155, 4, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->183152643],
+  Cell[4555, 144, 555, 15, 56, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->55006305],
+  Cell[5147, 164, 447, 16, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->2001963960],
+  Cell[5597, 182, 806, 33, 66, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->1206303830],
+  Cell[6440, 220, 173, 5, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->704586696],
+  Cell[6616, 227, 1027, 39, 72, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->2107806960],
+  Cell[7680, 271, 179, 5, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->559110996],
+  Cell[7862, 278, 1026, 39, 72, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->988137131],
+  Cell[8925, 322, 203, 6, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->2094061205],
+  Cell[9131, 330, 1026, 39, 72, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->889330047],
+  Cell[10194, 374, 595, 19, 45, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->360584001],
+  Cell[10792, 395, 1664, 67, 69, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->1994571177],
+  Cell[12493, 467, 215, 6, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->1734687931],
+  Cell[12711, 475, 4463, 169, 197, "Output",
+   CellTags->"ScalarProductCancel",
+   CellID->690872055],
+  Cell[17189, 647, 180, 6, 27, "Input",
+   CellTags->"ScalarProductCancel",
+   CellID->1734716984],
+  Cell[17725, 675, 1200, 46, 32, "Text",
+   CellTags->"ScalarProductCancel",
+   CellID->48437716],
+  Cell[18928, 723, 293, 9, 32, "Text",
+   CellTags->"ScalarProductCancel",
+   CellID->1547440041]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 21158, 781},
+ {"ScalarProductCancel", 21304, 785}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[591, 21, 2290, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2884, 75, 62, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2949, 78, 521, 15, 83, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3495, 97, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1489577872],
+Cell[CellGroupData[{
+Cell[3908, 116, 196, 6, 25, "ExampleSection",
+ CellID->2011162975],
+Cell[4107, 124, 265, 10, 32, "Text",
+ CellTags->"ScalarProductCancel",
+ CellID->1850483039],
+Cell[CellGroupData[{
+Cell[4397, 138, 155, 4, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->183152643],
+Cell[4555, 144, 555, 15, 56, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->55006305]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5147, 164, 447, 16, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->2001963960],
+Cell[5597, 182, 806, 33, 66, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->1206303830]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6440, 220, 173, 5, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->704586696],
+Cell[6616, 227, 1027, 39, 72, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->2107806960]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7680, 271, 179, 5, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->559110996],
+Cell[7862, 278, 1026, 39, 72, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->988137131]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8925, 322, 203, 6, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->2094061205],
+Cell[9131, 330, 1026, 39, 72, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->889330047]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10194, 374, 595, 19, 45, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->360584001],
+Cell[10792, 395, 1664, 67, 69, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->1994571177]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12493, 467, 215, 6, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->1734687931],
+Cell[12711, 475, 4463, 169, 197, "Output",
+ CellTags->"ScalarProductCancel",
+ CellID->690872055]
+}, Open  ]],
+Cell[17189, 647, 180, 6, 27, "Input",
+ CellTags->"ScalarProductCancel",
+ CellID->1734716984]
+}, Open  ]],
+Cell[17384, 656, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17452, 661, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[17725, 675, 1200, 46, 32, "Text",
+ CellTags->"ScalarProductCancel",
+ CellID->48437716],
+Cell[18928, 723, 293, 9, 32, "Text",
+ CellTags->"ScalarProductCancel",
+ CellID->1547440041]
+}, Open  ]],
+Cell[19236, 735, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,427 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11580,        417]
+NotebookOptionsPosition[      7444,        280]
+NotebookOutlinePosition[     10271,        364]
+CellTagsIndexPosition[     10166,        358]
+WindowTitle->GHP
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/GHP\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/GHP"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/GHP.html"],
+                StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75284], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/GHP", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["GHP", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"GHP", "[", 
+       RowBox[{"p", ",", " ", "a", ",", " ", "b"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "gives the ghost propagator where \"a\" and \"b\" are the color indices. \
+GHP[p] omits the ",
+     Cell[BoxData[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\[Delta]", 
+         RowBox[{"a", "\[NoBreak]", "b"}]], "."}], TraditionalForm]]]
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1365839346],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->164738253],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GHP", "[", 
+  RowBox[{"p", ",", "a", ",", "b"}], "]"}]], "Input",
+ CellTags->"GHP",
+ CellLabel->"In[1]:=",
+ CellID->1087938540],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[CapitalPi]", 
+    RowBox[{
+     FormBox["a",
+      TraditionalForm], 
+     FormBox["b",
+      TraditionalForm]}]], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{54, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GHP",
+ CellLabel->"Out[1]=",
+ CellID->798549713]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GHP", "[", "p", "]"}], "//", "Explicit"}]], "Input",
+ CellTags->"GHP",
+ CellLabel->"In[2]:=",
+ CellID->16593768],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["\[ImaginaryI]", 
+   SuperscriptBox[
+    FormBox["p",
+     TraditionalForm], "2"]], TraditionalForm]], "Output",
+ ImageSize->{27, 48},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GHP",
+ CellLabel->"Out[2]=",
+ CellID->1879723497]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GHP", "[", 
+  RowBox[{"p", ",", "1", ",", "2"}], "]"}]], "Input",
+ CellTags->"GHP",
+ CellLabel->"In[3]:=",
+ CellID->1429235603],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[CapitalPi]", 
+    RowBox[{
+     FormBox["ci1",
+      TraditionalForm], 
+     FormBox["ci2",
+      TraditionalForm]}]], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{68, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GHP",
+ CellLabel->"Out[3]=",
+ CellID->1586595147]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", 
+  RowBox[{"FCE", "[", 
+   RowBox[{
+    RowBox[{"GHP", "[", 
+     RowBox[{
+      RowBox[{"-", "k"}], ",", "3", ",", "4"}], "]"}], "//", "Explicit"}], 
+   "]"}], "]"}]], "Input",
+ CellTags->"GHP",
+ CellLabel->"In[4]:=",
+ CellID->1957617706],
+
+Cell[BoxData[
+ RowBox[{"\[ImaginaryI]", " ", 
+  RowBox[{"FAD", "[", "k", "]"}], " ", 
+  RowBox[{"SD", "[", 
+   RowBox[{"ci3", ",", "ci4"}], "]"}]}]], "Output",
+ ImageSize->{164, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GHP",
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->1550998879]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["GhostPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GhostPropagator",
+  ButtonNote->"GhostPropagator"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GluonPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonPropagator",
+  ButtonNote->"GluonPropagator"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GluonGhostVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex",
+  ButtonNote->"GluonGhostVertex"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"GHP",
+ CellID->269539325]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"GHP",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 1, 16.673956}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "GHP[p, a, b] gives the ghost propagator where \"a\" and \"b\" are the \
+color indices. GHP[p] omits the \\[Delta] ab.", "synonyms" -> {}, "title" -> 
+    "GHP", "titlemodifier" -> "", "windowtitle" -> "GHP", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/GHP"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3521, 101, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1365839346]},
+ "GHP"->{
+  Cell[4154, 130, 151, 5, 27, "Input",
+   CellTags->"GHP",
+   CellID->1087938540],
+  Cell[4308, 137, 396, 16, 38, "Output",
+   CellTags->"GHP",
+   CellID->798549713],
+  Cell[4741, 158, 147, 5, 27, "Input",
+   CellTags->"GHP",
+   CellID->16593768],
+  Cell[4891, 165, 299, 11, 69, "Output",
+   CellTags->"GHP",
+   CellID->1879723497],
+  Cell[5227, 181, 151, 5, 27, "Input",
+   CellTags->"GHP",
+   CellID->1429235603],
+  Cell[5381, 188, 401, 16, 38, "Output",
+   CellTags->"GHP",
+   CellID->1586595147],
+  Cell[5819, 209, 283, 10, 27, "Input",
+   CellTags->"GHP",
+   CellID->1957617706],
+  Cell[6105, 221, 323, 10, 36, "Output",
+   CellTags->"GHP",
+   CellID->1550998879],
+  Cell[6796, 254, 606, 21, 32, "Text",
+   CellTags->"GHP",
+   CellID->269539325]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9259, 323},
+ {"GHP", 9390, 327}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[575, 21, 2237, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2815, 75, 46, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2864, 78, 632, 19, 84, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3521, 101, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1365839346],
+Cell[CellGroupData[{
+Cell[3934, 120, 195, 6, 25, "ExampleSection",
+ CellID->164738253],
+Cell[CellGroupData[{
+Cell[4154, 130, 151, 5, 27, "Input",
+ CellTags->"GHP",
+ CellID->1087938540],
+Cell[4308, 137, 396, 16, 38, "Output",
+ CellTags->"GHP",
+ CellID->798549713]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4741, 158, 147, 5, 27, "Input",
+ CellTags->"GHP",
+ CellID->16593768],
+Cell[4891, 165, 299, 11, 69, "Output",
+ CellTags->"GHP",
+ CellID->1879723497]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5227, 181, 151, 5, 27, "Input",
+ CellTags->"GHP",
+ CellID->1429235603],
+Cell[5381, 188, 401, 16, 38, "Output",
+ CellTags->"GHP",
+ CellID->1586595147]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5819, 209, 283, 10, 27, "Input",
+ CellTags->"GHP",
+ CellID->1957617706],
+Cell[6105, 221, 323, 10, 36, "Output",
+ CellTags->"GHP",
+ CellID->1550998879]
+}, Open  ]]
+}, Open  ]],
+Cell[6455, 235, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6523, 240, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6796, 254, 606, 21, 32, "Text",
+ CellTags->"GHP",
+ CellID->269539325]
+}, Open  ]],
+Cell[7417, 278, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

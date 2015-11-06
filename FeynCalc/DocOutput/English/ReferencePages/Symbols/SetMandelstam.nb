@@ -1,0 +1,306 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9342,        296]
+NotebookOptionsPosition[      5684,        190]
+NotebookOutlinePosition[      8477,        264]
+CellTagsIndexPosition[      8362,        258]
+WindowTitle->SetMandelstam
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/SetMandelstam\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/SetMandelstam"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+SetMandelstam.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129394], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/SetMandelstam", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["SetMandelstam", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SetMandelstam", "[", 
+       RowBox[{
+       "s", ",", " ", "t", ",", " ", "u", ",", " ", "p1", ",", " ", "p2", ",",
+         " ", "p3", ",", " ", "p4", ",", " ", "m1", ",", " ", "m2", ",", " ", 
+        "m3", ",", " ", "m4"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "defines the Mandelstam variables  s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 \
+and sets the momenta on-shell: p1^2=m1^2, p2^2=m2^2, p3^2=m3^2, p4^2=m4^2. \
+Notice that p1+p2+p3+p4 = 0 is assumed.\nSetMandelstam[x, {p1, p2, p3, p4, \
+p5}, {m1, m2, m3, m4, m5}] defines x[i, j] = (pi+pj)^2 and sets the momenta \
+on-shell. p1+p2+p3+p4 = 0 is assumed."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->499339473],
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->2067054040],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Subsubsection",
+ CellTags->"SetMandelstam",
+ CellID->162667150],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SetMandelstam", "]"}]], "Input",
+ CellTags->"SetMandelstam",
+ CellLabel->"In[1]:=",
+ CellID->412090873],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Dimension", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"4", ",", "D", ",", "___"}], "}"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{180, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"SetMandelstam",
+ CellLabel->"Out[1]=",
+ CellID->926226480]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["Mandelstam",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Mandelstam",
+  ButtonNote->"Mandelstam"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"SetMandelstam",
+ CellID->122883106]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"SetMandelstam",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 6, 6.392686}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "SetMandelstam[s, t, u, p1, p2, p3, p4, m1, m2, m3, m4] defines the \
+Mandelstam variables s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 and sets the \
+momenta on-shell: p1^2=m1^2, p2^2=m2^2, p3^2=m3^2, p4^2=m4^2. Notice that \
+p1+p2+p3+p4 = 0 is assumed. SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, \
+m3, m4, m5}] defines x[i, j] = (pi+pj)^2 and sets the momenta on-shell. \
+p1+p2+p3+p4 = 0 is assumed.", "synonyms" -> {}, "title" -> "SetMandelstam", 
+    "titlemodifier" -> "", "windowtitle" -> "SetMandelstam", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/SetMandelstam"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3831, 102, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->499339473]},
+ "SetMandelstam"->{
+  Cell[4442, 129, 81, 2, 35, "Subsubsection",
+   CellTags->"SetMandelstam",
+   CellID->162667150],
+  Cell[4548, 135, 143, 4, 27, "Input",
+   CellTags->"SetMandelstam",
+   CellID->412090873],
+  Cell[4694, 141, 342, 12, 36, "Output",
+   CellTags->"SetMandelstam",
+   CellID->926226480],
+  Cell[5404, 176, 238, 9, 31, "Text",
+   CellTags->"SetMandelstam",
+   CellID->122883106]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 7822, 238},
+ {"SetMandelstam", 7962, 242}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[585, 21, 2266, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2854, 75, 56, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2913, 78, 893, 20, 138, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3831, 102, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->499339473],
+Cell[4221, 119, 196, 6, 25, "ExampleSection",
+ CellID->2067054040],
+Cell[CellGroupData[{
+Cell[4442, 129, 81, 2, 35, "Subsubsection",
+ CellTags->"SetMandelstam",
+ CellID->162667150],
+Cell[CellGroupData[{
+Cell[4548, 135, 143, 4, 27, "Input",
+ CellTags->"SetMandelstam",
+ CellID->412090873],
+Cell[4694, 141, 342, 12, 36, "Output",
+ CellTags->"SetMandelstam",
+ CellID->926226480]
+}, Open  ]],
+Cell[5051, 156, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5131, 162, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[5404, 176, 238, 9, 31, "Text",
+ CellTags->"SetMandelstam",
+ CellID->122883106]
+}, Open  ]],
+Cell[5657, 188, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

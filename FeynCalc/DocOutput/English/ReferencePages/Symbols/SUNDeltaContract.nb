@@ -1,0 +1,212 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6815,        203]
+NotebookOptionsPosition[      4343,        134]
+NotebookOutlinePosition[      6545,        192]
+CellTagsIndexPosition[      6467,        187]
+WindowTitle->SUNDeltaContract
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/SUNDeltaContract\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/SUNDeltaContract"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+SUNDeltaContract.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$141127], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/SUNDeltaContract", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["SUNDeltaContract", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"SUNDeltaContract", "[", "expr", "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "substitues for all SUNDelta in expr SUNDeltaContract, contracts the \
+SUN(N) indices and resubstitutes SUNDelta. SUNDeltaContract[i, j] is the \
+Kronecker-delta for SU(",
+     StyleBox["N",
+      FontSlant->"Italic"],
+     ") with contraction properties. SUNDeltaContract wraps also the head \
+SUNIndex around its arguments."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["SUNDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNDelta",
+  ButtonNote->"SUNDelta"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SUNIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNIndex",
+  ButtonNote->"SUNIndex"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"SUNDeltaContract",
+ CellID->332681775]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"SUNDeltaContract",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 7, 13.467623}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "SUNDeltaContract[expr] substitues for all SUNDelta in expr \
+SUNDeltaContract, contracts the SUN(N) indices and resubstitutes SUNDelta. \
+SUNDeltaContract[i, j] is the Kronecker-delta for SU(N) with contraction \
+properties. SUNDeltaContract wraps also the head SUNIndex around its \
+arguments.", "synonyms" -> {}, "title" -> "SUNDeltaContract", "titlemodifier" -> 
+    "", "windowtitle" -> "SUNDeltaContract", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/SUNDeltaContract"}},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SUNDeltaContract"->{
+  Cell[3907, 114, 394, 15, 70, "Text",
+   CellTags->"SUNDeltaContract",
+   CellID->332681775]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SUNDeltaContract", 6348, 180}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[588, 21, 2278, 52, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[2869, 75, 59, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[2931, 78, 678, 18, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3634, 100, 270, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[3907, 114, 394, 15, 70, "Text",
+ CellTags->"SUNDeltaContract",
+ CellID->332681775]
+}, Open  ]],
+Cell[4316, 132, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,468 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12338,        458]
+NotebookOptionsPosition[      7961,        308]
+NotebookOutlinePosition[     10860,        397]
+CellTagsIndexPosition[     10756,        391]
+WindowTitle->MT
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/MT\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/MT"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/MT.html"], 
+               StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+           Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$98446], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], "FeynCalc/ref/MT", 
+            ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["MT", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"MT", "[", 
+       RowBox[{"mu", ",", "nu"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]",
+     "is the metric tensor in 4 dimensions."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->2147399702],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->65764907],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MT", "[", 
+  RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
+ CellTags->"MT",
+ CellLabel->"In[1]:=",
+ CellID->2071184026],
+
+Cell[BoxData[
+ FormBox[
+  FormBox[
+   SuperscriptBox[
+    OverscriptBox["g", "_"], 
+    RowBox[{
+     FormBox[
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]}]],
+   TraditionalForm], TraditionalForm]], "Output",
+ ImageSize->{38, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MT",
+ CellLabel->"Out[1]=",
+ CellID->839261192]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", 
+  RowBox[{
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], " ", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
+ CellTags->"MT",
+ CellLabel->"In[2]:=",
+ CellID->828510540],
+
+Cell[BoxData[
+ FormBox["4", TraditionalForm]], "Output",
+ ImageSize->{13, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MT",
+ CellLabel->"Out[2]=",
+ CellID->1733599790]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MT", "[", 
+   RowBox[{"a", ",", "b"}], "]"}], "//", "StandardForm"}]], "Input",
+ CellTags->"MT",
+ CellLabel->"In[3]:=",
+ CellID->493237874],
+
+Cell[BoxData[
+ RowBox[{"MT", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Output",
+ ImageSize->{70, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MT",
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->2108634469]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", 
+   RowBox[{"MT", "[", 
+    RowBox[{"a", ",", "b"}], "]"}], "]"}], "//", "StandardForm"}]], "Input",
+ CellTags->"MT",
+ CellLabel->"In[4]:=",
+ CellID->2090805972],
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "a", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "b", "]"}]}], "]"}]], "Output",
+ ImageSize->{312, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MT",
+ CellLabel->"Out[4]//StandardForm=",
+ CellID->1337434264]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCE", "[", 
+   RowBox[{"FCI", "[", 
+    RowBox[{"MT", "[", 
+     RowBox[{"a", ",", "b"}], "]"}], "]"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
+ CellTags->"MT",
+ CellLabel->"In[5]:=",
+ CellID->921483723],
+
+Cell[BoxData[
+ RowBox[{"MT", "[", 
+  RowBox[{"a", ",", "b"}], "]"}]], "Output",
+ ImageSize->{70, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"MT",
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->62630223]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FeynCalcExternal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcExternal",
+  ButtonNote->"FeynCalcExternal"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCE",
+  ButtonNote->"FCE"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["FCI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCI",
+  ButtonNote->"FCI"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MetricTensor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MetricTensor",
+  ButtonNote->"MetricTensor"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["MTD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MTD",
+  ButtonNote->"MTD"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"MT",
+ CellID->897903284]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"MT",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2015, 11, 6, 23, 3, 18.277744}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> "MT[mu, nu] is the metric tensor in 4 dimensions.", 
+    "synonyms" -> {}, "title" -> "MT", "titlemodifier" -> "", "windowtitle" -> 
+    "MT", "type" -> "Symbol", "uri" -> "FeynCalc/ref/MT"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3287, 95, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->2147399702]},
+ "MT"->{
+  Cell[3919, 124, 152, 5, 27, "Input",
+   CellTags->"MT",
+   CellID->2071184026],
+  Cell[4074, 131, 558, 24, 40, "Output",
+   CellTags->"MT",
+   CellID->839261192],
+  Cell[4669, 160, 280, 9, 27, "Input",
+   CellTags->"MT",
+   CellID->828510540],
+  Cell[4952, 171, 204, 7, 36, "Output",
+   CellTags->"MT",
+   CellID->1733599790],
+  Cell[5193, 183, 174, 6, 27, "Input",
+   CellTags->"MT",
+   CellID->493237874],
+  Cell[5370, 191, 241, 8, 36, "Output",
+   CellTags->"MT",
+   CellID->2108634469],
+  Cell[5648, 204, 207, 7, 27, "Input",
+   CellTags->"MT",
+   CellID->2090805972],
+  Cell[5858, 213, 324, 10, 36, "Output",
+   CellTags->"MT",
+   CellID->1337434264],
+  Cell[6219, 228, 242, 9, 27, "Input",
+   CellTags->"MT",
+   CellID->921483723],
+  Cell[6464, 239, 239, 8, 36, "Output",
+   CellTags->"MT",
+   CellID->62630223],
+  Cell[7071, 270, 848, 33, 32, "Text",
+   CellTags->"MT",
+   CellID->897903284]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9701, 350},
+ {"MT", 9830, 354}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[574, 21, 2233, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2810, 75, 45, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2858, 78, 404, 13, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3287, 95, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->2147399702],
+Cell[CellGroupData[{
+Cell[3700, 114, 194, 6, 25, "ExampleSection",
+ CellID->65764907],
+Cell[CellGroupData[{
+Cell[3919, 124, 152, 5, 27, "Input",
+ CellTags->"MT",
+ CellID->2071184026],
+Cell[4074, 131, 558, 24, 40, "Output",
+ CellTags->"MT",
+ CellID->839261192]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4669, 160, 280, 9, 27, "Input",
+ CellTags->"MT",
+ CellID->828510540],
+Cell[4952, 171, 204, 7, 36, "Output",
+ CellTags->"MT",
+ CellID->1733599790]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5193, 183, 174, 6, 27, "Input",
+ CellTags->"MT",
+ CellID->493237874],
+Cell[5370, 191, 241, 8, 36, "Output",
+ CellTags->"MT",
+ CellID->2108634469]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5648, 204, 207, 7, 27, "Input",
+ CellTags->"MT",
+ CellID->2090805972],
+Cell[5858, 213, 324, 10, 36, "Output",
+ CellTags->"MT",
+ CellID->1337434264]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6219, 228, 242, 9, 27, "Input",
+ CellTags->"MT",
+ CellID->921483723],
+Cell[6464, 239, 239, 8, 36, "Output",
+ CellTags->"MT",
+ CellID->62630223]
+}, Open  ]]
+}, Open  ]],
+Cell[6730, 251, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6798, 256, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[7071, 270, 848, 33, 32, "Text",
+ CellTags->"MT",
+ CellID->897903284]
+}, Open  ]],
+Cell[7934, 306, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
