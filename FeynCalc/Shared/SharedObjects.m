@@ -1342,15 +1342,15 @@ MT[Momentum[a_, D-4], Momentum[b_, D-4]] :=
 	SPE[a,b];
 
 MT /:
-	MakeBoxes[ MT[x_,y__], TraditionalForm ]:=
+	MakeBoxes[ MT[x_,y_], TraditionalForm ]:=
 		ToBoxes[FCI[MT[x,y]], TraditionalForm];
 
 MTE /:
-	MakeBoxes[ MTE[x_,y__], TraditionalForm ]:=
+	MakeBoxes[ MTE[x_,y_], TraditionalForm ]:=
 		ToBoxes[FCI[MTE[x,y]], TraditionalForm];
 
 MTD /:
-	MakeBoxes[ MTD[x_,y__], TraditionalForm ]:=
+	MakeBoxes[ MTD[x_,y_], TraditionalForm ]:=
 		ToBoxes[FCI[MTD[x,y]], TraditionalForm];
 
 Nf /:
