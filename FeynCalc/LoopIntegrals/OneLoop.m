@@ -202,11 +202,11 @@ OneLoop[_, FeynAmp[name_, k_, expr_], opts___] :=
 	OneLoop[name, k, expr, opts];
 
 OneLoop[qq_,amp_] :=
-	OneLoop[False, qq,amp];
+	OneLoop[False, qq,amp]/; qq=!=False;
 
-OneLoop[qq_,amp_,opt1_,opt___] :=
-	OneLoop[False, qq,amp,opt1,opt]/;
-	!FreeQ[opt1,Rule];
+OneLoop[qq_,amp_, opts:OptionsPattern[]] :=
+	OneLoop[False, qq,amp,opts]/;
+	qq=!=False;
 
 OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	Block[ {oneamp = FeynCalcInternal[integ],iv,onemandel,
@@ -924,7 +924,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				nonLoopTerms = Select[oneamp+ null1+ null2, FreeQ[#, q]&]/. {null1|null2 -> 0};
 				loopTerms = Select[oneamp+ null1+ null2, !FreeQ[#, q]&]/. {null1|null2 -> 0};
 				If[loopTerms+nonLoopTerms=!=oneamp,
-					FCPrint[0,"Splitting the expression " <> ToString[oneamp,InputForm] <>
+					FCPrint[1,"Splitting the expression " <> ToString[oneamp,InputForm] <>
 					"into loop and non-loop pieces in OneLoop failed."];
 					Abort[]
 				];

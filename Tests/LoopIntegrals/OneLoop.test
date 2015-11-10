@@ -23,5 +23,40 @@ Tests`LoopIntegrals`fcstOneLoop = {
 		mu].(mf + DiracSlash[q]).DiracMatrix[mu]],
 	Factoring -> True] /. ScalarProduct[k, k] -> k2 /.
 	mf^2 -> mf2 // Simplify","(el^2*(-k2 + 6*mf2 - 6*A0[mf2] + 3*(k2 + 2*mf2)*B0[k2, mf2, mf2]))/(36*Pi^2)"},
-{"fcstOneLoop-ID3","OneLoop[q, xxx + FAD[{q,m}]]","xxx + I \[Pi]^2 A0[m^2]"}
+{"fcstOneLoop-ID3","OneLoop[q, xxx + FAD[{q,m}]]","xxx + I \[Pi]^2 A0[m^2]"},
+{"fcstOneLoop-ID4","OneLoop[k,
+32 M FeynAmpDenominator[PropagatorDenominator[k, M],
+PropagatorDenominator[k - q1 - q2, M],
+PropagatorDenominator[k - q1, M]] Pair[Momentum[k],
+Momentum[Polarization[q1, I, Transversality -> True]]] Pair[
+Momentum[k],
+Momentum[Polarization[q2, I, Transversality -> True]]]]","32 I M \[Pi]^2 (Pair[
+	Momentum[Polarization[q1, I, Transversality -> True]],
+	Momentum[Polarization[q2, I, Transversality -> True]]] PaVe[0,
+	0, {Pair[Momentum[q1], Momentum[q1]] +
+	2 Pair[Momentum[q1], Momentum[q2]] +
+	Pair[Momentum[q2], Momentum[q2]],
+	Pair[Momentum[q2], Momentum[q2]],
+	Pair[Momentum[q1], Momentum[q1]]}, {M^2, M^2, M^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+Pair[Momentum[q1],
+	Momentum[Polarization[q2, I, Transversality -> True]]] Pair[
+	Momentum[q2],
+	Momentum[Polarization[q1, I, Transversality -> True]]] PaVe[1,
+	1, {Pair[Momentum[q1], Momentum[q1]] +
+	2 Pair[Momentum[q1], Momentum[q2]] +
+	Pair[Momentum[q2], Momentum[q2]],
+	Pair[Momentum[q2], Momentum[q2]],
+	Pair[Momentum[q1], Momentum[q1]]}, {M^2, M^2, M^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+Pair[Momentum[q1],
+	Momentum[Polarization[q2, I, Transversality -> True]]] Pair[
+	Momentum[q2],
+	Momentum[Polarization[q1, I, Transversality -> True]]] PaVe[1,
+	2, {Pair[Momentum[q1], Momentum[q1]] +
+	2 Pair[Momentum[q1], Momentum[q2]] +
+	Pair[Momentum[q2], Momentum[q2]],
+	Pair[Momentum[q2], Momentum[q2]],
+	Pair[Momentum[q1], Momentum[q1]]}, {M^2, M^2, M^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])"}
 }
