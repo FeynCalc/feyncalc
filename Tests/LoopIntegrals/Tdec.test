@@ -139,7 +139,63 @@ Tdec[{{q,mu}},{p3,p4}]", "{{}, FVD[q, mu]}"},
 });
 
 
-
+Tests`LoopIntegrals`fcstTdecVanishingMultiLoop =({
+{"fcstTdecVanishingMultiLoop-ID1",
+"Tdec[{{q1,mu},{q2,nu},{q2,rho}},{p},List\[Rule]False,UseTIDL\
+\[Rule]False]//FCE",
+"((FVD[p, rho]*MTD[mu, nu] + FVD[p, nu]*MTD[mu, rho])*SPD[p, \
+q2]*(SPD[p, q1]*SPD[p, q2] - SPD[p, p]*SPD[q1, q2]))/((1 - D)*SPD[p, \
+p]^2) + (FVD[p, mu]*MTD[nu, rho]*SPD[p, q1]*(SPD[p, q2]^2 - SPD[p, \
+p]*SPD[q2, q2]))/((1 - D)*SPD[p, p]^2) - (FVD[p, mu]*FVD[p, \
+nu]*FVD[p, rho]*(2*SPD[p, q1]*SPD[p, q2]^2 + D*SPD[p, q1]*SPD[p, \
+q2]^2 - 2*SPD[p, p]*SPD[p, q2]*SPD[q1, q2] - SPD[p, p]*SPD[p, \
+q1]*SPD[q2, q2]))/((1 - D)*SPD[p, p]^3)"},
+{"fcstTdecVanishingMultiLoop-ID2",
+"Tdec[{{q1,mu},{q2,nu},{q3,rho}},{p},List\[Rule]False,UseTIDL\
+\[Rule]False]//FCE",
+"(FVD[p, rho]*MTD[mu, nu]*SPD[p, q3]*(SPD[p, q1]*SPD[p, q2] - \
+SPD[p, p]*SPD[q1, q2]))/((1 - D)*SPD[p, p]^2) + (FVD[p, nu]*MTD[mu, \
+rho]*SPD[p, q2]*(SPD[p, q1]*SPD[p, q3] - SPD[p, p]*SPD[q1, q3]))/((1 \
+- D)*SPD[p, p]^2) + (FVD[p, mu]*MTD[nu, rho]*SPD[p, q1]*(SPD[p, \
+q2]*SPD[p, q3] - SPD[p, p]*SPD[q2, q3]))/((1 - D)*SPD[p, p]^2) - \
+(FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*(2*SPD[p, q1]*SPD[p, q2]*SPD[p, \
+q3] + D*SPD[p, q1]*SPD[p, q2]*SPD[p, q3] - SPD[p, p]*SPD[p, \
+q3]*SPD[q1, q2] - SPD[p, p]*SPD[p, q2]*SPD[q1, q3] - SPD[p, p]*SPD[p, \
+q1]*SPD[q2, q3]))/((1 - D)*SPD[p, p]^3)"},
+{"fcstTdecVanishingMultiLoop-ID3",
+"Tdec[{{q1,mu},{q2,nu},{q3,rho},{q3,si}},{p},List\[Rule]False,\
+UseTIDL\[Rule]False]//FCE",
+"-(((MTD[mu, si]*MTD[nu, rho] + MTD[mu, rho]*MTD[nu, si] + MTD[mu, \
+nu]*MTD[rho, si])*(SPD[p, q1]*SPD[p, q2] - SPD[p, p]*SPD[q1, \
+q2])*(SPD[p, q3]^2 - SPD[p, p]*SPD[q3, q3]))/((1 - D^2)*SPD[p, p]^2)) \
++ (FVD[p, mu]*FVD[p, nu]*MTD[rho, si]*(2*SPD[p, q1]*SPD[p, q2] + \
+D*SPD[p, q1]*SPD[p, q2] - SPD[p, p]*SPD[q1, q2])*(SPD[p, q3]^2 - \
+SPD[p, p]*SPD[q3, q3]))/((1 - D^2)*SPD[p, p]^3) + (FVD[p, rho]*FVD[p, \
+si]*MTD[mu, nu]*(SPD[p, q1]*SPD[p, q2] - SPD[p, p]*SPD[q1, \
+q2])*(2*SPD[p, q3]^2 + D*SPD[p, q3]^2 - SPD[p, p]*SPD[q3, q3]))/((1 - \
+D^2)*SPD[p, p]^3) + ((FVD[p, nu]*FVD[p, si]*MTD[mu, rho] + FVD[p, \
+nu]*FVD[p, rho]*MTD[mu, si])*(2*SPD[p, q1]*SPD[p, q2]*SPD[p, q3]^2 + \
+D*SPD[p, q1]*SPD[p, q2]*SPD[p, q3]^2 - SPD[p, p]*SPD[p, q3]^2*SPD[q1, \
+q2] - SPD[p, p]*SPD[p, q2]*SPD[p, q3]*SPD[q1, q3] - D*SPD[p, \
+p]*SPD[p, q2]*SPD[p, q3]*SPD[q1, q3] - SPD[p, p]*SPD[p, q1]*SPD[p, \
+q2]*SPD[q3, q3] + SPD[p, p]^2*SPD[q1, q2]*SPD[q3, q3]))/((1 - \
+D^2)*SPD[p, p]^3) + ((FVD[p, mu]*FVD[p, si]*MTD[nu, rho] + FVD[p, \
+mu]*FVD[p, rho]*MTD[nu, si])*(2*SPD[p, q1]*SPD[p, q2]*SPD[p, q3]^2 + \
+D*SPD[p, q1]*SPD[p, q2]*SPD[p, q3]^2 - SPD[p, p]*SPD[p, q3]^2*SPD[q1, \
+q2] - SPD[p, p]*SPD[p, q1]*SPD[p, q3]*SPD[q2, q3] - D*SPD[p, \
+p]*SPD[p, q1]*SPD[p, q3]*SPD[q2, q3] - SPD[p, p]*SPD[p, q1]*SPD[p, \
+q2]*SPD[q3, q3] + SPD[p, p]^2*SPD[q1, q2]*SPD[q3, q3]))/((1 - \
+D^2)*SPD[p, p]^3) - (FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*FVD[p, \
+si]*(8*SPD[p, q1]*SPD[p, q2]*SPD[p, q3]^2 + 6*D*SPD[p, q1]*SPD[p, \
+q2]*SPD[p, q3]^2 + D^2*SPD[p, q1]*SPD[p, q2]*SPD[p, q3]^2 - 4*SPD[p, \
+p]*SPD[p, q3]^2*SPD[q1, q2] - D*SPD[p, p]*SPD[p, q3]^2*SPD[q1, q2] - \
+2*SPD[p, p]*SPD[p, q2]*SPD[p, q3]*SPD[q1, q3] - 2*D*SPD[p, p]*SPD[p, \
+q2]*SPD[p, q3]*SPD[q1, q3] - 2*SPD[p, p]*SPD[p, q1]*SPD[p, \
+q3]*SPD[q2, q3] - 2*D*SPD[p, p]*SPD[p, q1]*SPD[p, q3]*SPD[q2, q3] - \
+4*SPD[p, p]*SPD[p, q1]*SPD[p, q2]*SPD[q3, q3] - D*SPD[p, p]*SPD[p, \
+q1]*SPD[p, q2]*SPD[q3, q3] + 3*SPD[p, p]^2*SPD[q1, q2]*SPD[q3, \
+q3]))/((1 - D^2)*SPD[p, p]^4)"}
+})
 
 
 

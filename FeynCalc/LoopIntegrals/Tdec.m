@@ -43,6 +43,14 @@ might take quite some time. If this integral often appears in your computations,
 it is recommended to compute it once and then save the result to the TIDL \
 directory.";
 
+Tdec::tencon =
+"Tdec failed to generate the list of tensors to convert the tensor equation into a \
+linear system. Evaluation aborted!";
+
+Tdec::indices =
+"Tdec has detected that the integral contains loop momenta with idential Lorentz indices. \
+Evaluation aborted!";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -50,6 +58,7 @@ Begin["`Package`"]
 (*	Just write down the most general decomposition, without solving any linear
 	equations. This is meant to be called from TID	*)
 BasisOnly
+tdecVerbose::usage="";
 
 End[]
 
@@ -166,8 +175,10 @@ mPart[lis_List, moms_List /; Length[moms] > 0, dim_] :=
 
 (*	convets 1-loop tensor coefficients into Lorentz structures that will be contracted with the
 	tensor decomposition	*)
-ccProjOneLoop[exp_, li_List, moms_List, dim_:4] :=
+ccProjOneLoop[exp_List, li_List, moms_List, dim_:4] :=
 	Block[{fvd,mtd,TTT},
+		(* exp is a list of numbers, e.g {0,0,1,1,0,0,3,3}*)
+		(* fvd[TTT, x] is a piece of the metric *)
 		Times @@ (Thread[fvd[Map[If[# === 0, TTT, moms[[#]]] &, exp], li]] //.
 		{a___,fvd [TTT, x_], fvd [TTT, y_], b___} :> {a, mtd[x, y], b} /.
 		{fvd[x_,y_]:>Pair[Momentum[x,dim], LorentzIndex[y,dim]],
@@ -177,10 +188,14 @@ ccProjOneLoop[exp_, li_List, moms_List, dim_:4] :=
 (*	convets multiloop tensor coefficients (starting with 2-loop) into Lorentz structures that will
 	be contracted with the tensor decomposition. Again, the 1-loop case is treated specially, since
 	there the overall situation is much simpler	*)
-ccProjMultiLoop[exp_, moms_List, dim_: 4] :=
+ccProjMultiLoop[exp_List, moms_List, dim_: 4] :=
 	Block[{fvd, mtd, TTT, lis = {}, mlis = {}},
+		(* exp looks like {{0,mu}, {0,nu} ,{1,rho}, {1,si},...  }*)
+		FCPrint[4, "Tdec: ccProjMultiLoop: Entering with ", exp, "", FCDoControl->tdecVerbose];
 		Map[{AppendTo[mlis, #[[1]]], AppendTo[lis, #[[2]]]}; &, exp];
-		ccProjOneLoop[Total@mlis, Total@lis, moms, dim]
+		FCPrint[4, "Tdec: ccProjMultiLoop: mlis ", mlis, "", FCDoControl->tdecVerbose];
+		FCPrint[4, "Tdec: ccProjMultiLoop: plis ", lis, "", FCDoControl->tdecVerbose];
+		ccProjOneLoop[mlis, lis, moms, dim]
 	];
 
 
@@ -196,6 +211,18 @@ fullBasis[lis_List, moms_List, dim_] :=
 		res
 	];
 
+
+CCSort[{i1_,j1_},{i2_,j2_}]:=
+	Which[	i1<i2,
+			True,
+			i1>i2,
+			False,
+			i1===i2,
+			OrderedQ[{j1,j2}],
+			True,
+			Print["Error!"];
+			Abort[]
+	];
 
 (* 	CCSymmetrize symmetrizes the tensor basis for multiloop (starting with 2 loops) tensor integrals.
 	We start with 2 loops since for 1-loop integrals the symmetrization is much simpler and can be done
@@ -219,7 +246,7 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 		(* 	symPart gives us list of indices that are symmetric under
 			pairwise exchange i <->j	*)
 		symPart =
-		Thread[List[Sort /@ (Extract[ins, #] & /@ gg),
+		Thread[List[ Sort /@ (Extract[ins, #] & /@ gg),
 			Extract[li, #] & /@ gg]];
 
 		If[ nonsymPart =!= {{{}, {}}},
@@ -260,6 +287,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			]
 		];
 
+		FCPrint[1, "Tdec: Entering with ", exp, li, ppli, "" , FCDoControl->tdecVerbose];
+
 		xy[xp_] := ToExpression["X" <> ToString[xp]];
 		ce[xp_] := ToExpression["cC" <> ToString[xp]];
 
@@ -270,10 +299,10 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		(* Encode the given external momenta *)
 		pli = extMom/@ppli;
 
-		(*TODO Sort zero momenta out *)
-		(*If[!FreeQ[pli,extMom[0]],
-			Print["pli:",pli]
-		];*)
+		If[Sort[lis]=!=Union[lis],
+			Message[Tdec::indices];
+			Abort[]
+		];
 
 		(* detect if we are dealing with a multiloop integral	*)
 		If[ Length@Union[mlis]=!=1,
@@ -285,7 +314,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		we have a 1-point function or were requested just to provide the tensor basis *)
 		If[!basisonly && ppli=!={},
 			FCPrint[1, "Tdec: Checking Gram determinant...", FCDoControl->tdecVerbose];
-			If[ExpandScalarProduct[Det[ppli//Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
+			If[ExpandScalarProduct[Det[ppli//Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->dim], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
 				FCPrint[1, "Tensor decomposition with Tdec is not possible due to vanishing Gram determinants", FCDoControl->tdecVerbose];
 				tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
 				seqli={};
@@ -312,15 +341,20 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			(* symmetrizing the basis for 1-loop is really trivial...	*)
 			basis = (basis /. CC[a_, _] :> CC[Sort[a]]) // Collect[#, CC[__]] &,
 			If[multiLoopSyms=!={},
-				basis = (basis/. CC[x__] :> CC@@CCSymmetrize[x, multiLoopSyms])// Collect[#, CC[__]] &,
+				basis = (basis/. CC[x__] :> CC[Sort[Join @@ (Transpose /@ CCSymmetrize[x, multiLoopSyms]),CCSort]])// Collect[#, CC[__]] &,
 				(*	a general multiloop integral doesn't necessarily has to have any symmetrices
 					in the indices	*)
-				basis = (basis/. CC[x__] :> CC[{{x}}])// Collect[#, CC[__]] &
+				basis = (basis/. CC[x__] :> CC[Sort[Transpose[{x}],CCSort]])// Collect[#, CC[__]] &
 			]
 		];
+
 		(* if we were requested to provide only the symmetric tensor basis, we stop here *)
 		If[	basisonly,
-			Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["PaVe"][xx])]
+			If[multiLoop,
+				(* for multiloop coefficient functions some more infos can be useful	*)
+				Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["GCF"][xx,li,ppli])],
+				Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["PaVe"][xx])]
+			]
 		];
 		FCPrint[1, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
 		(* list of tensor coefficients for which we need to solve our linear equations *)
@@ -334,11 +368,16 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		];
 		proli = Sort[proli];
 
+		If[!FreeQ2[proli,{ccProjOneLoop,ccProjMultiLoop}],
+			Message[Tdec::tencon];
+			Abort[]
+		];
+
 		(* tt is the actual tensor equation that has to be solved *)
 		tt = Equal[Times @@ (Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]] & /@ li),basis];
 
 		FCPrint[1, "Tdec: tt is ", tt, FCDoControl->tdecVerbose];
-		FCPrint[1, "contracting with ", proli, FCDoControl->tdecVerbose];
+		FCPrint[1, "Tdec: contracting tt with ", proli, FCDoControl->tdecVerbose];
 		(* 	eqli is the linear system that is built out of tt after contractions with
 			the elements of proli *)
 		eqli = 	Table[FCPrint[1, "ii = ", ii, FCDoControl->tdecVerbose];
