@@ -772,10 +772,12 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :> FCIntegral[a];
 			exp = exp /. basic /. FCIntegral -> Identity;
 			exp = topi[exp] /. topi -> topi2 /. topi2[a_] :>
-					FCIntegral[ChangeDimension[a,4]//FeynCalcExternal];
+					FCIntegral[a//FeynCalcExternal];
 			exp = exp /. ot /. ot /. pot /. pot /. FCIntegral[b_] :>
-					FeynCalcInternal[ChangeDimension[b, D]];
+					FeynCalcInternal[b];
 		];
+
+		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before fadall", exp, "", FCDoControl->fdsVerbose];
 
 		If[ Head[exp] =!= Plus,
 			If[	OptionValue[Options[FDS],{opt},FC2RHI],
@@ -794,6 +796,8 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 				FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru
 			]
 		];
+
+		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before ApartFF", res, "", FCDoControl->fdsVerbose];
 
 		If[ (ApartFF /. {opt} /. Options[FDS]),
 			res = ApartFF[res,{q1,q2}]
