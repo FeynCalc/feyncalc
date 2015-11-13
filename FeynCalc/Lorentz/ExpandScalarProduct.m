@@ -25,7 +25,7 @@ ScalarProductExpand = ExpandScalarProduct;
 
 Options[ExpandScalarProduct] = {
 	FCI -> True,
-	Momentum -> {}
+	Momentum -> All
 };
 
 ExpandScalarProduct[x_, OptionsPattern[]] :=
@@ -41,7 +41,7 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 			Return[nx]
 		];
 
-		If [moms==={},
+		If [moms===All,
 			pali = Select[Cases2[nx, Pair], !FreeQ[#, LorentzIndex|Momentum]&],
 			pali = Select[Cases2[nx, Pair], (!FreeQ[#, LorentzIndex|Momentum] && !FreeQ2[#, moms])&]
 		];
