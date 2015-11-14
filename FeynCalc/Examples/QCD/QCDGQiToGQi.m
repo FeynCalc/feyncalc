@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QCDGQiToQGiTree                                                  *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for the g q_i -> g q_i scattering in QCD at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,17 +38,15 @@ topGQiToQGi = CreateTopologies[0, 2 -> 2];
 diagsGQiToQGi = InsertFields[topGQiToQGi,  {F[3, {1}],V[5]}-> {F[3,
 		{1}],V[5]}, InsertionLevel -> {Classes},
 		Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
-Paint[diagsGQiToQGi, ColumnsXRows -> {3, 1}, Numbering -> None];
+Paint[diagsGQiToQGi, ColumnsXRows -> {3, 1}, Numbering -> None, SheetHeader->None,ImageSize->{768,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampGQiToQGi = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsGQiToQGi,
-		Truncated -> False],UndoChiralSplittings->True]]]/.{SumOver[__]:>1,Polarization[x_,y_]:>Polarization[x, y,
-		Transversality->True]}/.{InMom1->p1,InMom2->k1,OutMom1->p2,OutMom2->k2}
+ampGQiToQGi = FCFAConvert[CreateFeynAmp[diagsGQiToQGi,Truncated -> False],IncomingMomenta->{p1,k1},OutgoingMomenta->{p2,k2},
+DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False,TransversePolarizationVectors->{k1,k2}];
 
 
 (* ::Section:: *)
@@ -59,8 +54,8 @@ ampGQiToQGi = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 
 
 SetMandelstam[s, t, u, p1, k1, -p2, -k2, MU, 0, MU, 0];
-sqAmpGQiToQGi =(1/(3*8))(Total[ampGQiToQGi] Total[(ComplexConjugate[ampGQiToQGi]//
-		FCRenameDummyIndices)])//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
+sqAmpGQiToQGi =(1/(3*8))(ampGQiToQGi (ComplexConjugate[ampGQiToQGi]//
+		FCRenameDummyIndices))//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 		SUNNToCACF->False]&//FermionSpinSum[#,  ExtraFactor->1/2]&//Contract//ReplaceAll[#,{DiracTrace->Tr,
 		SUNN->3}]&//DoPolarizationSums[#,k1,k2,ExtraFactor->1/2]&//DoPolarizationSums[#,k2,k1]&//Simplify
 

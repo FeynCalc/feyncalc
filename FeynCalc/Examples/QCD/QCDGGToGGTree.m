@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QCDGGToGGTree                                                    *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for the g g -> g g scattering in QCD at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,18 +38,16 @@ topGGToGG = CreateTopologies[0, 2 -> 2];
 diagsGGToGG = InsertFields[topGGToGG,  {V[5],V[5]}-> {V[5],V[5]},
 		InsertionLevel -> {Classes},
 		Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
-Paint[diagsGGToGG, ColumnsXRows -> {2, 2}, Numbering -> None];
+Paint[diagsGGToGG, ColumnsXRows -> {2, 2}, Numbering -> None,SheetHeader->None,ImageSize->{512,512}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampGGToGG = (Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsGGToGG,
-		Truncated -> False]]]]/.{SumOver[__]:>1,Polarization[x_,y_]:>Polarization[x, y,
-		Transversality->True]}/.{InMom1->k1,InMom2->k2,OutMom1->k3,OutMom2->k4})//Contract//
-		SUNFSimplify[#, Explicit->True,SUNNToCACF->False]&;
+ampGGToGG = FCFAConvert[CreateFeynAmp[diagsGGToGG,Truncated -> False],IncomingMomenta->{k1,k2},
+OutgoingMomenta->{k3,k4},TransversePolarizationVectors->{k1,k2,k3,k4},DropSumOver->True,
+ChangeDimension->4]//Contract//SUNFSimplify[#, Explicit->True,SUNNToCACF->False]&;
 
 
 (* The calculation becomes easier if energy momentum conservation is applied *)

@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QCDGGToQiQBariTree                                               *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for the g g -> q_i qbar_i scattering in QCD at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,18 +38,16 @@ topGGToQiQBari = CreateTopologies[0, 2 -> 2];
 diagsGGToQiQBari = InsertFields[topGGToQiQBari,  {V[5],V[5]}-> {F[3, {1}],
 		-F[3, {1}]}, InsertionLevel -> {Classes},
 		Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
-Paint[diagsGGToQiQBari, ColumnsXRows -> {3, 1}, Numbering -> None];
+Paint[diagsGGToQiQBari, ColumnsXRows -> {3, 1}, Numbering -> None,SheetHeader->None,ImageSize->{768,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampGGToQiQBari = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsGGToQiQBari,
-		Truncated -> False],UndoChiralSplittings->True]]]/.{SumOver[__]:>1,
-		Polarization[x_,y_]:>Polarization[x, y,
-		Transversality->True]}/.{InMom1->k1,InMom2->k2,OutMom1->p1,OutMom2->p2};
+ampGGToQiQBari = FCFAConvert[CreateFeynAmp[diagsGGToQiQBari,Truncated -> False],IncomingMomenta->{k1,k2},
+OutgoingMomenta->{p1,p2},UndoChiralSplittings->True,TransversePolarizationVectors->{k1,k2},
+DropSumOver->True,ChangeDimension->4]
 
 
 (* ::Section:: *)

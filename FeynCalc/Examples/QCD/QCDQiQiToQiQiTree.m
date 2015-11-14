@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QCDQiQiToQiQiTree                                                *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for the q_i q_i -> q_i q_i scattering in QCD at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts=True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,16 +38,15 @@ topQiQiToQiQi = CreateTopologies[0, 2 -> 2];
 diagsQiQiToQiQi = InsertFields[topQiQiToQiQi, {F[3, {1}], F[3, {1}]} -> {F[
 		3, {1}], F[3, {1}]}, InsertionLevel -> {Classes},
 		Model -> "SMQCD", ExcludeParticles -> {S[1], S[2], V[1],V[2]}];
-Paint[diagsQiQiToQiQi, ColumnsXRows -> {2, 1}, Numbering -> None];
+Paint[diagsQiQiToQiQi, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampQiQiToQiQi = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-	 Apply[List,    FCPrepareFAAmp[CreateFeynAmp[diagsQiQiToQiQi,
-		 Truncated -> False],UndoChiralSplittings->True]]]/.{SumOver[__]:>1}/.{InMom1->p1,InMom2->p2,OutMom1->p3,OutMom2->p4};
+ampQiQiToQiQi=FCFAConvert[CreateFeynAmp[diagsQiQiToQiQi,Truncated -> False],IncomingMomenta->{p1,p2},OutgoingMomenta->{p3,p4},
+DropSumOver->True,ChangeDimension->4,UndoChiralSplittings->True,List->False];
 
 
 (* ::Section:: *)
@@ -58,7 +54,7 @@ ampQiQiToQiQi = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 
 
 SetMandelstam[s, t, u, p1, p2, -p3, -p4, MU, MU, MU, MU];
-sqAmpQiQiToQiQi =(1/3^2)*(Total[ampQiQiToQiQi] Total[(ComplexConjugate[ampQiQiToQiQi]//FCRenameDummyIndices)])//
+sqAmpQiQiToQiQi =(1/3^2)*(ampQiQiToQiQi (ComplexConjugate[ampQiQiToQiQi]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		SUNSimplify[#,Explicit->True,SUNNToCACF->False]&//
 		ReplaceAll[#,{DiracTrace->Tr,SUNN->3}]&//Contract//Simplify

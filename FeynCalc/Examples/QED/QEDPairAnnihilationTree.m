@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QEDPairAnnihilationTree                                          *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for electron postiron annihilation into two photons in QED at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts=True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,18 +38,15 @@ topPairAnnihilation = CreateTopologies[0, 2 -> 2];
 diagsPairAnnihilation = InsertFields[topPairAnnihilation, {F[2, {1}],
 		-F[2, {1}]} -> {V[1], V[1]}, InsertionLevel -> {Classes},
 		Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
-Paint[diagsPairAnnihilation, ColumnsXRows -> {2, 1}, Numbering -> None];
+Paint[diagsPairAnnihilation, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampPairAnnihilation = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsPairAnnihilation,
-		Truncated -> False],UndoChiralSplittings->True]]]/.{Polarization[x_,
-		y_]:>Polarization[x,y,Transversality->True]}/.{InMom1->p1,InMom2->p2,
-		OutMom1->k1,OutMom2->k2}
+ampPairAnnihilation=FCFAConvert[CreateFeynAmp[diagsPairAnnihilation, Truncated -> False],
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False]
 
 
 (* ::Section:: *)
@@ -60,8 +54,8 @@ ampPairAnnihilation = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, 0, 0];
-sqAmpPairAnnihilation = (Total[ampPairAnnihilation] Total[(ComplexConjugate[ampPairAnnihilation]//
-		FCRenameDummyIndices)])//PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,
+sqAmpPairAnnihilation = (ampPairAnnihilation (ComplexConjugate[ampPairAnnihilation]//
+		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,
 		0]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace -> Tr] & // Contract//Simplify//TrickMandelstam[#,
 		{s,t,u,2ME^2}]&//Simplify

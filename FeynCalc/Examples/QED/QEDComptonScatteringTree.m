@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QEDComptonScatteringTree                                         *)
 
 (*
@@ -26,8 +24,7 @@ If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
 		Print["Computation of the matrix element squared for Compton scattering in QED at tree level"];
 ];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -40,17 +37,17 @@ topCompton = CreateTopologies[0, 2 -> 2];
 diagsCompton = InsertFields[topCompton, {F[2, {1}], V[1]} ->
 		{F[2, {1}], V[1]}, InsertionLevel -> {Classes},
 		Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
-Paint[diagsCompton, ColumnsXRows -> {2, 1}, Numbering -> None];
+Paint[diagsCompton, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHeader->None,
+ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampCompton =Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsCompton, Truncated -> False],
-		UndoChiralSplittings->True]]]/.{Polarization[x_,y_]:>Polarization[x, y,
-		Transversality->True]}/.{InMom1->p1,InMom2->k1,OutMom1->p2,OutMom2->k2}
+ampCompton=FCFAConvert[CreateFeynAmp[diagsCompton, Truncated -> False],
+IncomingMomenta->{p1,k1},OutgoingMomenta->{p2,k2},TransversePolarizationVectors->{k1,k2},
+UndoChiralSplittings->True,ChangeDimension->4,List->False]
 
 
 (* ::Section:: *)
@@ -58,7 +55,7 @@ ampCompton =Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 
 
 SetMandelstam[s, t, u, p1, k1, -p2, -k2, ME, 0, ME, 0];
-sqAmpCompton = (Total[ampCompton] Total[(ComplexConjugate[ampCompton]//FCRenameDummyIndices)])//
+sqAmpCompton = (ampCompton (ComplexConjugate[ampCompton]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,0,ExtraFactor ->
 		1/2]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2]&//
 		ReplaceAll[#, DiracTrace :> Tr] & // Contract//Simplify//TrickMandelstam[#,{s,t,u,2ME^2}]&//Simplify

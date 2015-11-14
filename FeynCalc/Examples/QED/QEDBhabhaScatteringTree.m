@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QEDBhabhaScatteringTree                                          *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for Bhabha scattering in QED at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,17 +38,15 @@ topBhabha = CreateTopologies[0, 2 -> 2];
 diagsBhabha = InsertFields[topBhabha, {F[2, {1}], -F[2, {1}]} ->
 		{F[ 2, {1}], -F[2, {1}]}, InsertionLevel -> {Classes},
 		Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
-Paint[diagsBhabha, ColumnsXRows -> {2, 1}, Numbering -> None];
+Paint[diagsBhabha, ColumnsXRows -> {2, 1}, Numbering -> None,SheetHeader->None,ImageSize->{512,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampBhabha = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List,FCPrepareFAAmp[CreateFeynAmp[diagsBhabha,
-		Truncated -> False],UndoChiralSplittings->True]]]/.{
-		InMom1->p1,InMom2->p2,OutMom1->k1,OutMom2->k2}
+ampBhabha=FCFAConvert[CreateFeynAmp[diagsBhabha, Truncated -> False],
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False]
 
 
 (* ::Section:: *)
@@ -60,8 +55,14 @@ ampBhabha = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, ME, ME];
 sqAmpBhabha =
-		(Total[ampBhabha] Total[(ComplexConjugate[ampBhabha]//FCRenameDummyIndices)])//PropagatorDenominatorExplicit//
+		(ampBhabha (ComplexConjugate[ampBhabha]//FCRenameDummyIndices))//PropagatorDenominatorExplicit//
 		Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2] & //ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 
 
 masslessSqAmpBhabha = (sqAmpBhabha /. {ME -> 0})//Simplify
+
+
+masslessSqAmpBhabhaLiterature = 
+(2 EL^4 (s^2+u^2)/t^2 + 4  EL^4 u^2/(s t) + 2 EL^4 (t^2+u^2)/s^2);
+Print["Check with the known result: ",
+			If[Simplify[(masslessSqAmpBhabhaLiterature-masslessSqAmpBhabha)]===0, "Correct.", "Mistake!"]];

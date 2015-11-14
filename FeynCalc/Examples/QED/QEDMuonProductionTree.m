@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QEDMuonProductionTree                                            *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for muon production in QED at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts=True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -42,25 +39,26 @@ diagsMuonProd =
 		InsertFields[topMuonProd, {F[2, {1}], -F[2, {1}]} -> {F[2,
 		{2}], -F[2, {2}]}, InsertionLevel -> {Classes}, Model -> "SM",
 		ExcludeParticles -> {S[1], S[2], V[2]}];
-Paint[diagsMuonProd, ColumnsXRows -> {1, 1}, Numbering -> None];
+Paint[diagsMuonProd, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->None,ImageSize->{256,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampMuonProd = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
-		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsMuonProd,
-		Truncated -> False],UndoChiralSplittings->True]]]/.{FAMass["Muon"]->MMu,
-		InMom1->p1, InMom2->p2,OutMom1->k1,OutMom2->k2}
+ampMuonProd = FCFAConvert[CreateFeynAmp[diagsMuonProd, Truncated -> False],
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False]/.{FAMass["Muon"]->MMu};
 
 
 (* ::Section:: *)
 (*Unpolarized process  e^- e^+ -> mu^- mu^+ *)
 
 
+$ProcessID
+
+
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, MMu, MMu];
-sqAmpMuonProd = (Total[ampMuonProd] Total[(ComplexConjugate[ampMuonProd]//FCRenameDummyIndices)])//
+sqAmpMuonProd = (ampMuonProd (ComplexConjugate[ampMuonProd]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr] &//Contract//Simplify
 
@@ -91,8 +89,8 @@ ampMuonProdElRPosLMuRAntiMuL=ampMuonProd/.{Spinor[-Momentum[k2],MMu,1]->GA[6].Sp
 		Spinor[Momentum[p1],ME,1]->GA[6].Spinor[Momentum[p1],ME,1]}
 
 
-sqAmpMuonProdElRPosLMuRAntiMuL = ((((Total[ampMuonProdElRPosLMuRAntiMuL] Total[ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//
-		FCRenameDummyIndices]))//PropagatorDenominatorExplicit//Contract//FermionSpinSum[#,
+sqAmpMuonProdElRPosLMuRAntiMuL = (((ampMuonProdElRPosLMuRAntiMuL (ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//
+		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Contract//FermionSpinSum[#,
 		SpinorCollect -> True]&//ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{ME->0,MMu->0})//Simplify
 
 

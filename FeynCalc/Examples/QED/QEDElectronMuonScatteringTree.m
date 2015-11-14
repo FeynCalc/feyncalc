@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QEDElectronMuonScatteringTree                                    *)
 
 (*
@@ -27,8 +25,7 @@ If[ $FrontEnd === Null,
 		Print["Computation of the matrix element squared for electron muon scattering in QED at tree level"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadTARCER = False;
-$LoadPhi =$LoadFeynArts= True;
+$LoadFeynArts= True;
 <<FeynCalc`
 $FAVerbose = 0;
 
@@ -41,17 +38,17 @@ topElMuScat = CreateTopologies[0, 2 -> 2];
 diagsElMuScat = InsertFields[topElMuScat, {F[2, {1}], F[2, {2}]} ->
 		{F[2, {1}], F[2, {2}]}, InsertionLevel -> {Classes},
 		Model -> "SM", ExcludeParticles -> {S[1], S[2], V[2]}];
-Paint[diagsElMuScat, ColumnsXRows -> {1, 1}, Numbering -> None];
+Paint[diagsElMuScat, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->None,ImageSize->{256,256}];
 
 
 (* ::Section:: *)
 (*Obtain corresponding amplitudes*)
 
 
-ampElMuScat = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &, Apply[List,
-		FCPrepareFAAmp[CreateFeynAmp[diagsElMuScat,
-		Truncated -> False]]]]/.{FAMass["Muon"]->MMu,InMom1->p1,
-		InMom2->p2,OutMom1->k1,OutMom2->k2}
+
+ampElMuScat = FCFAConvert[CreateFeynAmp[diagsElMuScat, Truncated -> False],
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,
+ChangeDimension->4,List->False]/.FAMass["Muon"]->MMu
 
 
 (* ::Section:: *)
@@ -59,7 +56,7 @@ ampElMuScat = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &, Apply[List,
 
 
 SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, MMu, ME, MMu];
-sqAmpElMuScat = (Total[ampElMuScat] Total[(ComplexConjugate[ampElMuScat]//FCRenameDummyIndices)])//
+sqAmpElMuScat = (ampElMuScat (ComplexConjugate[ampElMuScat]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 

@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QCDQuarkSelfEnergyOneLoop                                        *)
 
 (*
@@ -28,7 +26,6 @@ If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
 		Print["Computation of the quark self-energy in QCD at 1-loop"];
 ];
-$LoadPhi = False;
 $LoadFeynArts = $LoadTARCER  = True;
 <<FeynCalc`
 $FAVerbose=0;
@@ -42,19 +39,18 @@ Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1,
 		ExcludeTopologies -> {Tadpoles}], {F[3,{1}]} -> {F[3,{1}]},
 		InsertionLevel -> {Classes}, GenericModel -> "Lorentz",
 		Model -> "SMQCD",ExcludeParticles->{S[1],S[2],S[3],V[1],V[2],V[3]}], ColumnsXRows -> {1, 1},
-		SheetHeader -> False,   Numbering -> None];
+		SheetHeader -> False,SheetHeader->None,Numbering -> None,ImageSize->{256,256}];
 
 
 (* ::Text:: *)
 (*Notice that we choose the prefactor to be 1/(2^D)*(Pi)^(D/2). This is because the 1/Pi^(D/2) piece of the general prefactor 1/(2Pi)^D goes into the definition of the loop integrals using Tarcer's notation. Furthermore, we do not fix the gauge but let the gauge parameter GaugeXi take arbitrary values.*)
 
 
-amps = Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &, Apply[List,
-		FCPrepareFAAmp[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},
-		PreFactor->1/((2^D)*(Pi)^(D/2))],UndoChiralSplittings->True]]]/.{SumOver[__]:>1,MU->M,GaugeXi[g]->GaugeXi}/.{OutMom1->p,LoopMom1->q}
+amps=FCFAConvert[CreateFeynAmp[diags, Truncated -> True,GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],IncomingMomenta->{p},
+OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,UndoChiralSplittings->True,ChangeDimension->D,List->False]/.{MU->M,GaugeXi[g]->GaugeXi}
 
 
-ampsEval=ChangeDimension[amps[[1]],D]//Contract//SUNSimplify//DiracSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse//FCI
+ampsEval=amps//Contract//SUNSimplify//TID[#,q]&//ToTFI[#,q,p]&//TarcerRecurse//FCI
 
 
 (* ::Text:: *)
@@ -64,7 +60,7 @@ ampsEval=ChangeDimension[amps[[1]],D]//Contract//SUNSimplify//DiracSimplify//TID
 
 prefactor=(I*(Pi)^(2-D/2) (2Pi)^(D-4));
 ampsSing=(ampsEval/.{TBI[x___]:>(-2)/(D-4)*prefactor,TAI[x___]:>-2 M^2/(D-4)*prefactor})//
-ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&
+ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,Epsilon]&//Factor2
 
 
 (* ::Text:: *)
