@@ -89,7 +89,7 @@ ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
 		If [OptionValue[FDS],
 			intsTFI2 = intsTFI2/.
 			tfiLoopIntegral[x__]/;FreeQ2[x,{qq,mM}]:>
-				(x//FDS[#,q1,q2]&//Apart2//If[OptionValue[ApartFF],ApartFF[#,{q1,q2}],#]&) /. tfiLoopIntegral -> Identity;
+				(x//Apart2//FDS[#,q1,q2,ApartFF->OptionValue[ApartFF]]&//Apart2//If[OptionValue[ApartFF],ApartFF[#,{q1,q2}],#]&) /. tfiLoopIntegral -> Identity;
 			FCPrint[3, "ToTFI: Relevant 2-loop integrals after double FDS ", intsTFI2, FCDoControl->toTFIVerbose]
 		];
 

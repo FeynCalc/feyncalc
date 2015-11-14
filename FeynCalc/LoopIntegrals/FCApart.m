@@ -75,7 +75,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCApart: Entering with ", ex, FCDoControl->fcaVerbose];
 
 		If[	!MatchQ[ExpandAll[ex], _. FeynAmpDenominator[y__] /; ! FreeQ2[{y}, lmoms]] ||
-			SelectFree[ExpandAll[ex],lmoms]=!=1,
+			SelectFree[ExpandAll[ex],Sequence@@lmoms]=!=1,
 			Message[FCLoopBasis::fail,ToString[ex,InputForm]];
 			Abort[]
 		];
@@ -86,9 +86,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
-		If[	!FreeQ[ex,LorentzIndex],
-			scalarTerm = SelectFree[ex, {LorentzIndex,Eps,DiracGamma}];
-			vectorTerm = SelectNotFree[ex, {LorentzIndex,Eps,DiracGamma}];
+		If[	!FreeQ2[ex,{LorentzIndex,Eps,DiracGamma}],
+			scalarTerm = SelectFree[ex, LorentzIndex,Eps,DiracGamma];
+			vectorTerm = SelectNotFree[ex, LorentzIndex,Eps,DiracGamma];
 
 			If[	scalarTerm*vectorTerm =!= ex || !FreeQ[scalarTerm,LorentzIndex],
 				Message[FCApart::error, ex];
@@ -96,6 +96,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			],
 			scalarTerm = ex
 		];
+		FCPrint[3,"FCApart: Vector term ", vectorTerm, FCDoControl->fcaVerbose];
+		FCPrint[3,"FCApart: Scalar term ", scalarTerm, FCDoControl->fcaVerbose];
+
 
 		(* If the integral can't be partial fractioned any further, then we have nothing to do here *)
 		If[	!FCLoopBasisOverdeterminedQ[scalarTerm,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],

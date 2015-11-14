@@ -127,6 +127,8 @@ ApartFF[int_, lmoms_ , OptionsPattern[]]:=
 		(*	Split loop integrals from the rest	*)
 		intsUnique = (Cases[loopInts+null1+null2,loopHead[___],Infinity]/.null1|null2->0)//Union;
 
+		FCPrint[3,"ApartFF: List of the unique integrals: ", intsUnique, FCDoControl->affVerbose];
+
 		(*	Apply FCApart to each of the unique loop integrals	*)
 		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS]]&,(intsUnique/.loopHead->Identity)];
 
