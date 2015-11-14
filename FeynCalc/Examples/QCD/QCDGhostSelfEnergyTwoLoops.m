@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: QCDGhostSelfEnergyTwoLoops                                       *)
 
 (*
@@ -28,7 +26,6 @@ If[ $FrontEnd === Null,
 		$FeynCalcStartupMessages = False;
 		Print["Computation of the ghost self-energy in QCD at 2-loops"];
 ];
-$LoadPhi = False;
 $LoadFeynArts = $LoadTARCER  = True;
 <<FeynCalc`
 $FAVerbose=0;
@@ -38,11 +35,9 @@ $FAVerbose=0;
 (*Generate Feynman diagrams*)
 
 
-Paint[inserts = InsertFields[Rest@CreateTopologies[2, 1 -> 1,
-		ExcludeTopologies -> {Tadpoles}], {U[5]} -> {U[5]},
-		InsertionLevel -> Classes, GenericModel -> "FCQCDLorentz",
-		Model -> "FCQCD"], ColumnsXRows -> {4, 2}, SheetHeader -> False,
-	PaintLevel -> {Generic}, Numbering -> None];
+tops=CreateTopologies[2, 1 -> 1,ExcludeTopologies -> {Tadpoles}];
+diags=InsertFields[tops, {U[5]} -> {U[5]},InsertionLevel -> {Classes}, GenericModel -> "Lorentz",Model -> "SMQCD"];
+Paint[diags,SheetHeader -> False,   Numbering -> None,ImageSize->{512,512}];
 
 
 (* ::Subsection:: *)
@@ -50,70 +45,68 @@ Paint[inserts = InsertFields[Rest@CreateTopologies[2, 1 -> 1,
 
 
 (* ::Text:: *)
-(*The computation is performed with massless quarks. Furthermore, we choose to abbreviate square of the ingoing (and outgoing) momentum p by pp. For convenience, wherever it appears alone in FeynAmpDenominator, we just replace it by pp.*)
+(*The computation is performed with massless quarks. Furthermore, we choose to abbreviate square of the ingoing (and outgoing) momentum p by pp.*)
 
 
-QuarkMass = 0;
-ScalarProduct[p, p] = pp;
-FeynAmpDenominator[p] = 1/pp;
-FeynAmpDenominator[PropagatorDenominator[-p,0]]=1/pp;
-FeynAmpDenominator[PropagatorDenominator[p,0]]=1/pp;
+ScalarProduct[p,p]=pp;
 
 
 (* ::Text:: *)
-(*Now we obtain the corresponding amplitudes. Notice that we need to put the AmplitudeLevel setting to Classes here. The prefactor 1/(2Pi)^(2D) for the loop integrals is understood.*)
+(*Now we obtain the corresponding amplitudes. The prefactor 1/(2Pi)^(2D) for the loop integrals is understood. Notice that we ignore the first diagram (zero in DR) and the the fifth diagram, since*)
+(*its contribution is identical to that of the fourth diagram.*)
 
 
-amps=FCPrepareFAAmp[CreateFeynAmp[inserts, Truncated -> True,PreFactor->-I,
-				AmplitudeLevel -> {Classes}]] /. p1 :> p /. {li1 :> \[Mu],
-				li2 :> \[Nu]} /. FAFeynAmpList[__] :> List /.
-		FeynAmp[_, _, x_] :> x;
-
-
-(* ::Text:: *)
-(*Let us simplify the color algebra now.*)
-
-
-SetOptions[DotSimplify,CommonTrace->True];
-(ampsSimpl= CalcColorFactor[amps]);// Timing
-ampsSimpl // TableForm
+amps=FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{2,3,4,6,7,8,9}],Truncated -> True,GaugeRules->{},PreFactor->-I],
+IncomingMomenta->{p},OutgoingMomenta->{p},LoopMomenta->{q1,q2},UndoChiralSplittings->True,DropSumOver->True,
+ChangeDimension->D]/.{MQU[Index[Generation, 3]]->0,GaugeXi[_]->GaugeXi}/.GaugeXi->1-GaugeXi;
 
 
 (* ::Text:: *)
-(*Now we define two substitution rules that effectively perform tensor decomposition of integrals with one or two free Lorentz indices*)
+(*We simplify the color and Dirac algebra, do some partial fractioning and convert the integrals to the TRACER notation. To do  this we define the following helper function*)
 
 
-tsub1 = FCI[FVD[qu1 : (q1 | q2), mu] FVD[qu2 : (q1 | q2), nu]] :>
-	TIDL[{{qu1, mu}, {qu2, nu}}, {p}];
-tsub2 = FCI[FVD[qu : (q1 | q2), al_]] :> TIDL[{{qu, al}}, {p}];
+RepRuleCancelQP={
+x_. Power[Pair[Momentum[q_,dim_:4],Momentum[q_,dim_:4]],n_] *
+FeynAmpDenominator[a___,PD[Momentum[q_,dim_:4],0],b___]:>x Power[Pair[Momentum[q,dim],Momentum[q,dim]],n-1] FeynAmpDenominator[a,b],
 
+x_. Pair[Momentum[q_,dim_:4],Momentum[q_,dim_:4]] *
+FeynAmpDenominator[a___,PD[Momentum[q_,dim_:4],0],b___]:>x FeynAmpDenominator[a,b],
 
-(* ::Text:: *)
-(*Nexts steps are to insert explicit expressions for the vertirces and propagators, simplify the remaining color and Dirac algebra, contract all indices, perform tensor integral decompositions and prepare the remaining scalar integrals, such that they can be handed over to Tarcer. To do  this we define the following helper function*)
+x_. Pair[Momentum[p_,dim_:4],Momentum[q_,dim_:4]] *
+FeynAmpDenominator[a___,PD[Momentum[q_,dim_:4]-Momentum[p_,dim_:4],0],b___]:>
+-(1/2)x FeynAmpDenominator[a,b]
++(1/2)x Pair[Momentum[p,dim],Momentum[p,dim]]FeynAmpDenominator[a,PD[Momentum[q,dim]-Momentum[p,dim],0],b]
++(1/2)x Pair[Momentum[q,dim],Momentum[q,dim]]FeynAmpDenominator[a,PD[Momentum[q,dim]-Momentum[p,dim],0],b],
 
-
-do2self1[expr_] :=Explicit[expr, Dimension -> D, Gauge -> 1 - GaugeXi]//SUNSimplify[#,Explicit->True]&//
-ReplaceAll[#,DiracTrace -> TR]&//Contract//Expand[#, q1 | q2]&//ReplaceAll[#,tsub1]&//
-ReplaceAll[#,tsub2]&//ToFI[#,{q1, q2}, {p}]&//FCE;
+x_. Power[Pair[Momentum[p_,dim_:4],Momentum[q_,dim_:4]],n_] *
+FeynAmpDenominator[a___,PD[Momentum[q_,dim_:4]-Momentum[p_,dim_:4],0],b___]:>
+-(1/2)x Power[Pair[Momentum[p,dim],Momentum[q,dim]],n-1]  FeynAmpDenominator[a,b]
++(1/2)x Power[Pair[Momentum[p,dim],Momentum[q,dim]],n-1] Pair[Momentum[p,dim],Momentum[p,dim]]FeynAmpDenominator[a,PD[Momentum[q,dim]-Momentum[p,dim],0],b]
++(1/2)x Power[Pair[Momentum[p,dim],Momentum[q,dim]],n-1] Pair[Momentum[q,dim],Momentum[q,dim]]FeynAmpDenominator[a,PD[Momentum[q,dim]-Momentum[p,dim],0],b]
+};
+ClearAll[diagCompute];
+diagCompute[ex_]:=
+ex//SUNSimplify[#,Explicit->True,SUNTrace->True]&//
+ReplaceAll[#,DiracTrace[x__]:>DiracTrace[x,DiracTraceEvaluate->True]]&//
+Contract//FCLoopIsolate[#,{q1,q2},Head->loopHead]&//ReplaceRepeated[#,RepRuleCancelQP]&//
+ReplaceAll[#,loopHead->Identity]&//ToTFI[#,q1,q2,p]&;
 
 
 (* ::Text:: *)
 (*and apply it to every single amplitude.*)
 
 
-Timing[res1 =
-	Table[Print["calculating ", i, "  time = ",
-		Timing[re[i] = do2self1[(amps[[i]])]][[1]],
-		", number of integrals to calculate = ", Length[re[i]]];
-		re[i], {i, Length[amps]}];]
+tmp=AbsoluteTiming[diagCompute/@amps];
+Print["Needed ",AccountingForm[tmp[[1]],3]," s for the algebraic simplifications"];
+res=tmp[[2]];
 
 
-allints = Cases2[res1, TFI];
+allints = Cases2[res, TFI];
 allints // Length
 
 
 (* ::Text:: *)
-(*There are 651 integrals to be done for the ghost self energy. There are several possibilities how to proceed. One possibility is to calculate the integrals one by one and save them to a file in the fcdb directory. This can be conveniently done using the CheckDB function. If the file "IntegralsQCDTwoLoopGhostSelfEnergy.db" does not exist the first argument of CheckDB is evaluated, otherwise the list is loaded and assigned to inttable. A machine with one i7-3770 CPU running Mathematica 9 on Ubuntu 12.04 needs about 90 seconds to generate the file.*)
+(*There are 272 integrals to be done for the ghost self energy. There are several possibilities how to proceed. One possibility is to calculate the integrals one by one and save them to a file in the Database directory. This can be conveniently done using the CheckDB function. If the file "IntegralsQCDTwoLoopGhostSelfEnergy.db" does not exist the first argument of CheckDB is evaluated, otherwise the list is loaded and assigned to inttable. A laptop with one i5-560m CPU running Mathematica 10 on Fedora 22 needs about 15 seconds to generate the file.*)
 
 
 Timing[inttable =
@@ -129,8 +122,8 @@ Timing[inttable =
 
 
 Timing[result =
-	FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@ (res1 /.
-			inttable))];]
+	PropagatorDenominatorExplicit[FCI[(Collect2[#, {TAI, TBI, TJI}, Factoring -> Factor2] & /@ (res /.
+			inttable))]];]
 
 
 (* ::Text:: *)
@@ -156,7 +149,7 @@ G2q=result[[3]]
 
 
 G2qEval= -1/(4Pi)^D TarcerExpand[G2q, D -> 4 - 2 Epsilon, 0]//
-ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,Nf*Tf->T}]&
+ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,CA^2->2T*CA}]&
 
 
 (* ::Text:: *)
@@ -178,7 +171,7 @@ Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.13: ",
 
 G2xiRed=result[[7]];
 G2xiRedEval= -1/(4Pi)^D TarcerExpand[G2xiRed, D -> 4 - 2 Epsilon, 0]//
-ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,Nf*Tf->T}]&;
+ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1}]&;
 G2xiRedFinal=G2xiRedEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//
 ReplaceAll[#,SEpsilon[4 - 2*Epsilon]^2->eta^2]&
 
