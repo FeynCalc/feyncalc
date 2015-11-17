@@ -129,13 +129,16 @@ TID[am_ , q_, OptionsPattern[]] :=
 		*)
 
 		(*	The input expression can be potentially very large,
-			so it's better to take some measures here	*)
+			so it's better to take some measures here. Non-commutative
+			products are not isolated!	*)
 		FCMonitor[
 				t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator},
-				IsolateNames->tempIsolate];
+				IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x]];
 				Grid[{{"Isolating loop integrals in the input expression",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 		];
+
+		FCPrint[2,"TID: After Isolate: ", t0, FCDoControl->tidVerbose];
 
 		If[ OptionValue[FeynAmpDenominatorCombine],
 			FCMonitor[
@@ -154,7 +157,12 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		];
 		t0 = FDS[t0,q];
+
+		FCPrint[2,"TID: After FDS: ", t0, FCDoControl->tidVerbose];
+
 		t0 = FRH[t0,IsolateNames->tempIsolate];
+
+		FCPrint[2,"TID: Before DiracSimplify: ", t0, FCDoControl->tidVerbose];
 
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
 			FCMonitor[t0 = DiracSimplify[t0],
