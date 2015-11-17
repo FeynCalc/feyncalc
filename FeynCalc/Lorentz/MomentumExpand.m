@@ -37,7 +37,7 @@ fourvecev[y_,dim_:4] :=
 		];
 
 MomentumExpand[expr_] :=
-	expr /. Momentum -> fourvecev /. fourvecevlin -> Momentum;
+	expr /.Spinor -> spinor /. Momentum -> fourvecev /. fourvecevlin -> Momentum /. spinor ->Spinor;
 
 FCPrint[1,"MomentumExpand.m loaded."];
 End[]
