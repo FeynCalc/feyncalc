@@ -106,9 +106,9 @@ doPolarizationSum[expr_,k:Except[_?OptionQ], OptionsPattern[]] :=
 				3 expr,
 			Count[expr, Polarization[k,__], Infinity, Heads -> True] // EvenQ,
 				temp = (expr //. Pair[LorentzIndex[rho1_, dim_:4],
-				Momentum[Polarization[p_, -I, OptionsPattern[]], dim_:4]] Pair[
+				Momentum[Polarization[k, -I, OptionsPattern[]], dim_:4]] Pair[
 				LorentzIndex[rho2_, dim_:4],
-				Momentum[Polarization[p_, I, OptionsPattern[]], dim_:4]] :>
+				Momentum[Polarization[k, I, OptionsPattern[]], dim_:4]] :>
 				PolarizationSum[rho1,rho2,k, Dimension->dim]);
 				If[ OptionValue[Contract],
 					Contract[temp],

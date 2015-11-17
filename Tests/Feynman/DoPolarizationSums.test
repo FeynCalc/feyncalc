@@ -362,5 +362,23 @@ Tests`Feynman`fcstDoPolarizationSums = {
 {"fcstDoPolarizationSums-ID35",
 	"DoPolarizationSums[Pair[Momentum[p1],Momentum[Polarization[x1,I]]]Pair[Momentum[p2],
 	Momentum[Polarization[x1,-I]]]+1,x1,0,GaugeTrickN->4,VirtualBoson->True]//FCE",
-	"4 - SP[p1, p2]"}
+	"4 - SP[p1, p2]"},
+{"fcstDoPolarizationSums-ID36",
+	"DoPolarizationSums[
+Pair[LorentzIndex[mu], Momentum[Polarization[k, -I]]] Pair[
+	LorentzIndex[nu], Momentum[Polarization[k, I]]] Pair[
+	LorentzIndex[ka], Momentum[Polarization[p, -I]]] Pair[
+	LorentzIndex[la], Momentum[Polarization[p, I]]], k] // FCE",
+	"-FV[Polarization[p, -I], ka] FV[Polarization[p, I], la] MT[mu, nu] + (
+FV[k, mu] FV[k, nu] FV[Polarization[p, -I], ka] FV[
+Polarization[p, I], la])/SP[k, k]"},
+{"fcstDoPolarizationSums-ID37",
+	"Pair[LorentzIndex[mu], Momentum[Polarization[k, -I]]] Pair[
+	LorentzIndex[nu], Momentum[Polarization[k, I]]] Pair[
+	LorentzIndex[ka], Momentum[Polarization[p, -I]]] Pair[
+	LorentzIndex[la], Momentum[Polarization[p, I]]] //
+DoPolarizationSums[#, k] & // DoPolarizationSums[#, p] & // FCE",
+	"MT[ka, la] MT[mu, nu] - (FV[k, mu] FV[k, nu] MT[ka, la])/SP[k, k] - (
+FV[p, ka] FV[p, la] MT[mu, nu])/SP[p, p] + (
+FV[k, mu] FV[k, nu] FV[p, ka] FV[p, la])/(SP[k, k] SP[p, p])"}
 };
