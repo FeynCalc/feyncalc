@@ -12,6 +12,13 @@
 
 (* ------------------------------------------------------------------------ *)
 
+GenPaVe::usage =
+"PaVe[ i,j,..., {{0,m0},{Momentum[p1],m1},{Momentum[p2],m2},...} denotes the invariant \
+(and scalar) Passarino-Veltman integrals, i.e. the coefficient functions of \
+the tensor integral decomposition. In contrast to PaVe which uses the LoopTools
+convention,  masses and external momenta in GenPaVe are written in the same order as
+they appear in the original tensor integral, i.e. FAD[{q,m0},{q-p1,m1},{q-p2,m2},...].";
+
 PaVe::usage =
 "PaVe[ i,j,... {p10,p12,...},{m1^2, mw^2, ...} ] denotes the invariant
 (and scalar)

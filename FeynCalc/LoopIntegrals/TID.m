@@ -46,6 +46,9 @@ Begin["`TID`Private`"]
 tidVerbose::usage="";
 tidPaVe::usage="";
 tidIsolate::usage="";
+genpave::usage="";
+paveao::usage="";
+pavear::usage="";
 
 procanonical[l_][y_,m_] :=
 	PropagatorDenominator[y /.
@@ -64,6 +67,7 @@ Options[TID] = {
 	FCVerbose -> False,
 	FeynAmpDenominatorCombine -> True,
 	FDS -> True,
+	GenPaVe->False,
 	PaVeAutoOrder -> True,
 	PaVeAutoReduce -> True,
 	ApartFF -> True,
@@ -79,7 +83,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 	loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 	solsList, repSolList, reversedRepIndexList,reducedLoopList,
-	finalRepList,isoContract,tmp
+	finalRepList,isoContract,tmp,tempIsolate
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -105,6 +109,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 		chd 			= OptionValue[ChangeDimension];
 		paveao 			= OptionValue[PaVeAutoOrder];
 		pavear 			= OptionValue[PaVeAutoReduce];
+		genpave 		= OptionValue[GenPaVe];
+
 
 
 
@@ -702,7 +708,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 		then there is no point to check the Gram determinant *)
 	If[(int/. _ qQQ[_ ffdp[xx___]]:>List@@fdp[xx])=!={},
 			gramMatrix = (int/. _ qQQ[_ ffdp[xx___]]:>List@@fdp[xx])//
-			Table[2 ScalarProduct[#[[i]], #[[j]]], {i, 1, Length[#]}, {j, 1, Length[#]}] &;
+			Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->n], {i, 1, Length[#]}, {j, 1, Length[#]}] &;
 		If[!MatrixQ[gramMatrix] || !FreeQ2[gramMatrix,{FeynAmpDenominator,PropagatorDenominator}],
 			Message[TID::failmsg, "tidReduce failed to write down the Gram matrix of the integral" <>
 				ToString[int, InputForm]];
@@ -720,13 +726,13 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 	pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}]:=
 		(FCPrint[3,"TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
 		Which[	(* A and B functions*)
-				np===1 || np===2,
+				(np===1 || np===2) && !genpave,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
 					ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {moms}), {ms},
 					PaVeAutoOrder->paveao,
 					PaVeAutoReduce->pavear],
 				(* C functions*)
-				np===3,
+				np===3  && !genpave,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
 						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
 							{moms}[[1]],
@@ -737,7 +743,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 						PaVeAutoReduce->pavear],
 				(* 	D functions, external momenta are
 					p1, p1+p2, p1+p2+p3*)
-				np===4,
+				np===4 && !genpave,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
 						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
 							{moms}[[1]], (*p1^2*)
@@ -751,7 +757,7 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 						PaVeAutoReduce->pavear],
 				(* 	E functions, external momenta are
 					p1, p1+p2, p1+p2+p3, p1+p2+p3+p4*)
-				np===5,
+				np===5 && !genpave,
 					ex/.FCGV["PaVe"][{nums__}]:>(*PaVeReduce@*)(I Pi^2)PaVe[nums,
 						ExpandScalarProduct /@ (ScalarProduct[#,#,Dimension->n]& /@ {
 							{moms}[[1]], (*p1^2*)
@@ -766,9 +772,11 @@ Block[{massless=False,masses,nPoint,tdeclist,pavePrepare,time,qrule,
 						}), {ms},
 						PaVeAutoOrder->paveao,
 						PaVeAutoReduce->pavear],
-				(* TODO: Generalize the algo for general higher point functions *)
+				np>5 || (np<=5 && genpave),
+					ex/.FCGV["PaVe"][{nums__}]:>(I Pi^2)GenPaVe[{nums},
+						Thread[List[Flatten[-{0, moms}, 1], (PowerExpand/@Sqrt/@{ms})]]],
 				True,
-					Message[TID::failmsg, "n-point functions with n>5 are not implemented yet!"];
+					Message[TID::failmsg, "Unknown n-point function"];
 					Abort[]
 		])/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np;
 
