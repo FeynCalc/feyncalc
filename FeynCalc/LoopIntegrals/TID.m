@@ -62,6 +62,7 @@ Options[TID] = {
 	Dimension -> D,
 	DimensionalReduction -> False,
 	DiracSimplify -> True,
+	DiracTrace -> True,
 	ExpandScalarProduct -> True,
 	FCI -> False,
 	FCVerbose -> False,
@@ -138,8 +139,8 @@ TID[am_ , q_, OptionsPattern[]] :=
 			so it's better to take some measures here. Non-commutative
 			products are not isolated!	*)
 		FCMonitor[
-				t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator},
-				IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x]];
+				t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator,Dot},
+				IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x],IsolateNames->tempIsolate];
 				Grid[{{"Isolating loop integrals in the input expression",
 				ProgressIndicator[Dynamic[Clock[Infinity]], Indeterminate]}}]
 		];
@@ -177,6 +178,11 @@ TID[am_ , q_, OptionsPattern[]] :=
 			]
 		];
 
+		FCPrint[2,"TID: Before DiracTrace: ", t0, FCDoControl->tidVerbose];
+
+		If[	OptionValue[DiracTrace] && !FreeQ[t0,DiracTrace],
+			t0 = t0 /. DiracTrace[x__]/; !FreeQ[{x},q]:>DiracTrace[x,DiracTraceEvaluate->True]
+		];
 
 		FCPrint[2,"TID: Before first ApartFF: ", t0, FCDoControl->tidVerbose];
 		If[	OptionValue[ApartFF],
