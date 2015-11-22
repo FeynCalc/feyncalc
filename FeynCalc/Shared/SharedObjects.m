@@ -468,7 +468,7 @@ SUNT::usage =
 the fundamental representation. The fundamental indices are implicit"
 
 SUNTF::usage =
-"SUNT[{a},i,j] is the SU(N) T^a_ij generator in
+"SUNTF[{a},i,j] is the SU(N) T^a_ij generator in
 the fundamental representation. The fundamental indices i and j are explicit"
 
 Tf::usage =
