@@ -71,7 +71,8 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 		replist3 = {FeynArts`FAPropagatorDenominator[x__] :> FeynAmpDenominator[PropagatorDenominator[x]]};
 		temp = expr /. replist1 /. replist2 /. replist3;
 		If[ OptionValue[UndoChiralSplittings],
-			temp = temp/.{(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :> a1 DiracGamma[x] a2}
+			temp = temp/.{(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :> a1 DiracGamma[x] a2,
+			(a1__ DiracGamma[6] a2__ + a1__ DiracGamma[7] a2__) :> a1 a2}
 		];
 		temp
 	];
