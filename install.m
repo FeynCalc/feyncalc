@@ -1,240 +1,231 @@
- (* Author: Rolf Mertig, GluonVision GmbH *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* This is an installation file to be called once from within a Mathematica Kernel or FrontEnd like this:
-
- Import["http://www.feyncalc.org/install.m"]
-
-By default the installation will be done to FileNameJoin[{$UserBaseDirectory,"Applications"}] ,
-however,this can be changed by uncommenting e.g.:
-
-$installdirectory = FileNameJoin[{$BaseDirectory,"Applications"}] ];
-
-*)
-
-
-If[ ("AllowInternetUse" /. SystemInformation["Network"]) === False,
-    Print["You have configured Mathematica not to access the internet. Too bad.
-	Please check the \"Allow Mathematica to use the Internet\" box in the
-    Help \[FilledRightTriangle] Internet Connectivity dialog. Exiting now."];
-    Quit[]
-];
-
-$ZipFile = "http://www.feyncalc.org/download/fclatest.zip";
-
-If[ !ValueQ[$installdirectory],
-    $installdirectory = FileNameJoin[{$UserBaseDirectory,"Applications"}]
-];
-
-(* Executing
-
-Import["http://www.feyncalc.org/download/FeynCalcInstall.m"]
-    will automatically download the latest version of Feyncalc and
-    unzip fclatest.zip to
-    FileNameJoin[{$UserBaseDirectory, "Applications"}]
-
-*) BeginPackage["Unzip`",{"JLink`"}] (* Exported symbols added here with SymbolName::usage *)
-
-
-CopyRemote::usage = "CopyRemote[url, localfilename] copies a file from
-an http location to localfilename.";
-
-Unzip::usage = "Unzip[file] unzips file.";
-
-URLFileByteSize::usage = "gives the remote file size in Byte."
-
-Verbose::usage = "Verbose is an option to Unzip."
-
-Begin["`Private`"]
-
-InstallJava[];
-
-Options[Unzip]  =  {Verbose -> True};
-
-Unzip[zipfilein_String?FileExistsQ, dir_: Directory[], OptionsPattern[]] :=
-    JavaBlock[
-    Module[ {enum, saveEntry, startdir, zf, buf, zipfile, comments, targets, target, len, dirs},
-        zipfile = If[ DirectoryName[zipfilein] === "",
-                      FileNameJoin[{Directory[],zipfilein}],
-                      zipfilein
-                  ];
-        buf = JavaNew["[B", 10000]; (* ] *)
-        If[ startdir =!= dir,
-            If[ !DirectoryQ[dir],
-                mkdirs[dir]
-            ];
-            SetDirectory[dir]
-        ];
-        saveEntry[zipfi_, zipentry_] :=
-            JavaBlock[
-             Block[ {bos, fi, fos, numRead, stream, outStream, fromcharcode, topdirle},
-                 fi = zipentry[getName[]];
-                 If[ zipentry[isDirectory[]],
-                     mkdirs[FileNameJoin[{dir, fi}]],
-                     stream = JavaNew["java.io.BufferedInputStream",
-                       zipfi[getInputStream[zipentry]]];
-                     outStream =
-                      JavaNew["java.io.BufferedOutputStream",
-                       JavaNew["java.io.FileOutputStream", FileNameJoin[{dir, fi}]]];
-                     While[(numRead = stream[read[buf]]) > 0, outStream[write[buf, 0, numRead]]];
-                     stream[close[]];
-                     outStream[close[]];
-                 ]
-             ]];
-        zf = JavaNew["java.util.zip.ZipFile", zipfile];
-        len = zf[size[]];
-        enum = zf[entries[]];
-        comments = OptionValue[Verbose] /. Options[Unzip];
-        targets = Table[enum[nextElement[]],{len}];
-        dirs = Function[x, If[ !DirectoryQ[x],
-                               CreateDirectory[x, CreateIntermediateDirectories -> True]
-                           ]] /@ (Union[DirectoryName[#[getName[]]]& /@ targets]/."":>Sequence[]);
-        Do[
-               If[ comments,
-                   Print[StringJoin["extracting: ", FileNameJoin[{dir, StringReplace[target[getName[]], "/" -> $PathnameSeparator]}]]]
-               ];
-               saveEntry[zf, target],
-           {target, targets}
-        ];
-        zf @ close[];
-        dir
-    ]];
-
+(* :Title: install															*)
 
 (*
-Example usage:
-CopyRemote["http://www.mertig.com/mathdepot/buttons/ButtonTools.nb",
-ToFileName[{$UserAddOnsDirectory,"SystemFiles","FrontEnd","Palettes"},
-"ButtonTools.nb"]]
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
 *)
 
-(* You need JLink 2.0 or higher.
- this code is based on the GetRemote example in the JLink
- documentation *)
+(* :Summary:  Installs FeynCalc and FeynArts *)
 
-Options[CopyRemote] = {ProxyHost :> None, ProxyPort :> None};
+(* ------------------------------------------------------------------------ *)
 
-CopyRemote[url_String /; StringMatchQ[url, "http://*.*", IgnoreCase-> True],
-localfile_:Automatic, opts___?OptionQ] :=
-    (
-    Needs["JLink`"];
-    JLink`JavaBlock[
-        Module[ {u, stream, numRead, outFile, buf, prxyHost, prxyPort},
-            {prxyHost, prxyPort} = {ProxyHost, ProxyPort} /.
-            Flatten[{opts}] /. Options[CopyRemote];
-            JLink`InstallJava[];
-            If[ StringQ[prxyHost],
-                (* Set properties to force use of proxy. *)
-                JLink`SetInternetProxy[prxyHost, prxyPort]
-            ];
-            u = JLink`JavaNew["java.net.URL", url];
-            (* This is where the error will show up if the URL is not valid.
-               A Java exception will be thrown during openStream, which
-               causes the method to return $Failed.
-            *)
-            stream = u@openStream[];
-            If[ stream === $Failed,
-                Return[$Failed]
-            ];
-            buf = JLink`JavaNew["[B", 5000];
-            (* 5000 is an arbitrary buffer size *)
-            If[ StringQ[localfile],
-                outFile = OpenWrite[localfile, DOSTextFormat -> False],
-                outFile = OpenTemporary[DOSTextFormat->False];
-            ];
-            While[(numRead = stream@read[buf]) > 0,
-             WriteString[outFile, FromCharacterCode[If[ # < 0,
-                                                        #+256,
-                                                        #
-                                                    ]& /@ Take[JLink`Val[buf], numRead]]]
-            ];
-            stream@close[];
-            Close[outFile]
-        (* Close returns the filename *)
-        ]
-    ] );
+InstallFeynCalc::notcomp =
+"Your Mathematica version is too old. FeynCalc requires at least Mathematica 8. Installation aborted!";
+InstallFeynCalc::failed =
+"Download of `1` failed. Installation aborted!";
+
+AutoOverwriteFeynCalcDirectory::usage="AutoOverwriteFeynCalcDirectory is an option of InstallFeynCalc. If \
+set to True, the existing FeynCalc directory will be deleted without any further notice. The default
+value None means that the user will be asked by a dialog. False means that the directory will be overwritten.";
+
+AutoDisableInsufficientVersionWarning::usage="AutoDisableInsufficientVersionWarning is an option of InstallFeynCalc. If \
+set to True, warning messages for notebooks that were created with a newer Mathematica version will be silently disabled. \
+This is needed to use FeynCalc documentation in Mathematica 8 and 9, since otherwise the warning message will appear every \
+time one opens a help page for a FeynCalc function. The default value None means that the user will be asked by a dialog. \
+False means that the warning will not be disabled.";
+
+FeynArtsMirrorLink::usage="FeynArtsMirrorLink is an option of InstallFeynCalc. It specifies the url \
+to the mirror repository of FeynArts. This repository is maintained by FeynCalc developers and tries to follow \
+the development of FeynArts using git. It is also used to install FeynArts with InstallFeynCalc.";
+
+AutoInstallFeynArts::usage="AutoInstallFeynArts is an option of InstallFeynCalc. If \
+set to True, FeynArts will be installed automatically.";
+
+FeynCalcDevelopmentVersionLink::usage="FeynCalcDevelopmentVersionLink is an option of InstallFeynCalc. It specifies the url \
+to the main repository of FeynCalc. This repository is used to install the development version of FeynCalc.";
+
+FeynCalcStableVersionLink::usage="FeynCalcStableVersionLink is an option of InstallFeynCalc. It specifies the url \
+to the latest stable release of FeynCalc.";
+
+InstallFeynCalcDevelopmentVersion::usage="InstallFeynCalcDevelopmentVersion is an option of InstallFeynCalc. If \
+set to True, the installer will download the latest development version of FeynCalc from the git repository. \
+Otherwise it will install the latest stable version.";
+
+InstallFeynCalcTo::usage="InstallFeynCalcTo is an option of InstallFeynCalc. It specifies, the full path \
+to the directory where FeynCalc will be installed.";
+
+InstallFeynArtsTo::usage="InstallArtsCalcTo is an option of InstallFeynArts. It specifies, the full path \
+to the directory where FeynArts will be installed.";
+
+If[  $VersionNumber == 8,
+(*To use FetchURL in MMA8 we need to load URLTools first *)
+Needs["Utilities`URLTools`"];
+];
+
+Options[InstallFeynCalc]={
+	AutoDisableInsufficientVersionWarning->None,
+	AutoInstallFeynArts->None,
+	AutoOverwriteFeynCalcDirectory->None,
+	FeynCalcDevelopmentVersionLink->"https://github.com/FeynCalc/feyncalc/archive/master.zip",
+	(* TODO: change this to https://github.com/FeynCalc/feyncalc/archive/Release-9_0_0_0.zip
+	as soon as FeynCalc 9 is released	 *)
+	FeynCalcStableVersionLink->"https://github.com/FeynCalc/feyncalc/archive/master.zip",
+	InstallFeynCalcDevelopmentVersion->False,
+	InstallFeynCalcTo->FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc"}]
+};
+
+Options[InstallFeynArts]={
+	FeynArtsMirrorLink->"https://github.com/FeynCalc/feynarts-mirror/archive/master.zip",
+	InstallFeynArtsTo->FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc","FeynArts"}]
+};
+
+InstallFeynArts[OptionsPattern[]]:=
+	Module[{tmpzip,fazip,FCGetUrl,unzipDir,faDir},
+		(* Install FeynArts	*)
+
+		faDir=OptionValue[InstallFeynArtsTo];
+		fazip = OptionValue[FeynArtsMirrorLink];
+
+		If[$VersionNumber == 8,
+			(*To use FetchURL in MMA8 we need to load URLTools first *)
+			FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
+			FCGetUrl[x_]:= URLSave[x,CreateTemporary[]]
+		];
 
 
+		WriteString["stdout", "Downloading FeynArts from ", fazip," ..."];
+		tmpzip=FCGetUrl[fazip];
+		unzipDir= tmpzip<>".dir";
+		WriteString["stdout", "done! \n"];
 
-URLFileByteSize[link_String] :=
-    URLFileByteSize[link] =
-    Module[ {url, urlcon, len},
-        url = JavaNew["java.net.URL", link];
-        urlcon = url@openConnection[];
-        len = urlcon@getContentLength[];
-        urlcon@getInputStream[]@close[];
-        len
-    ];
+		(* Extract to the content	*)
+		WriteString["stdout", "FeynArts zip file was saved to ", tmpzip,".\n"];
+		WriteString["stdout", "Extracting FeynArts zip file to ", faDir, " ..."];
+		ExtractArchive[tmpzip, unzipDir];
+		WriteString["stdout", "done! \n"];
 
-End[]
+		(* Move the files to the final destination	*)
+		WriteString["stdout", "Copying FeynArts to ", faDir, " ..."];
+		CopyDirectory[FileNameJoin[{unzipDir,"feynarts-mirror-master"}],faDir];
+		WriteString["stdout", "done! \n"];
 
-EndPackage[]
+		(* Delete the downloaded file	*)
+		Quiet@DeleteFile[tmpzip];
 
-Module[ {ziplocal, fcfilesize},
-    If[ !DirectoryQ[$installdirectory],
-        CreateDirectory[$installdirectory]
-    ];
-    Print["downloading ", $ZipFile,"   please wait "];
-    ziplocal = FileNameJoin[{ $installdirectory, FileNameTake @ $ZipFile}];
+		(* Delete the extracted archive *)
+		Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
 
-    (* get rid of previous download *)
-    If[ FileExistsQ[ziplocal],
-        DeleteFile@ziplocal
-    ];
-    fcfilesize = Unzip`URLFileByteSize[$ZipFile];
-    If[ (Head[$FrontEnd]===System`FrontEndObject)  && (Global`$FCProgressDisplay =!= False),
-        PrintTemporary @  (* this way it does not get saved which is good *)
-        Dynamic@Row[{"Downloading ", Round[fcfilesize/1024^2]," MB from ",
-        If[ StringQ[Setting@#],
-            #,
-            " "
-        ] &@$ZipFile, " ",
-        ProgressIndicator[
-         Quiet[If[ ! NumberQ[#],
-                   0,
-                   #
-               ] &@( Refresh[FileByteCount[ziplocal],
-                     UpdateInterval -> .01]/fcfilesize )]],
-        " ", If[ ! NumberQ[Setting@#],
-                 0,
-                 #
-             ] &@
-         Refresh[FileByteCount[ziplocal]/1024.^2, UpdateInterval -> .02],
-        " MByte"
-        }],
-        Print["Downloading ", Round[fcfilesize/1024^2]," MB from ", $ZipFile]
-    ];
-    CopyRemote[$ZipFile, ziplocal];
-    Print["Downloading done, installing FeynCalc to ", Style[$installdirectory, FontWeight -> "Bold"]];
-    Unzip[ziplocal, $installdirectory, Verbose -> False];
-    Print["installation of FeynCalc ready."];
-    Print["loading FeynCalc "];
+	];
 
-    (*
-    $LoadFeynArts=True; $LoadPhi = True; $LoadTARCER = False;
-    *)
-    (* for the moment: do not care about patching FeynArts *)
-    If[ !ValueQ[$LoadFeynArts],
-        $LoadFeynArts = False
-    ];
-    If[ !ValueQ[$LoadPhi],
-        $LoadPhi = False
-    ];
-    If[ !ValueQ[$LoadTARCER],
-        $LoadTARCER = False
-    ];
 
-	(* Clear the help index *)
-	helpIndexFiles = FileNames[FileNameJoin[{$UserBaseDirectory,
-		"FrontEnd", "*", "*",   "SystemFiles", "FrontEnd", "TextResources",   "HelpBrowserSetup.pbf"}]];
-	DeleteFile /@ helpIndexFiles;
+InstallFeynCalc[OptionsPattern[]]:=
+	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir,
+				strDisableWarning,strFeynArts,FCGetUrl,
+				strOverwriteFCdit, faInstalled},
 
-    (* check if FeynCalc is installed. If not, install it *)
-    Which [
-           FindFile["FeynCalc`"] =!= $Failed, (* for FC 9 *)
-           Needs["FeynCalc`"],
-           FindFile["FeynCalc`"] =!= $Failed,
-           Needs["FeynCalc`"],
-           True,
-           Print["Installation of FeynCalc failed!, please try again."]
-    ];
+	If[OptionValue[InstallFeynCalcDevelopmentVersion],
+		gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
+		gitzip = OptionValue[FeynCalcStableVersionLink]
+	];
+	faInstalled=False;
+
+	packageName = "FeynCalc";
+	packageDir = OptionValue[InstallFeynCalcTo];
+
+strDisableWarning="To make the documentation work, we need to disable the warning that appears \
+when you open a notebook that was created with a newer Mathematica version. Otherwise this \
+warning will pop up every time you use the Documentation Center to read info on FeynCalc functions \
+in Mathematica 8 and 9. This setting is harmless and can be always undone via \
+\"SetOptions[$FrontEnd, MessageOptions -> {\"InsufficientVersionWarning\" -> True}]\". Should we do this now?";
+
+strFeynArts="Do you want to install FeynArts from "<> OptionValue[InstallFeynArts,FeynArtsMirrorLink] <> "? FeynArts is a Feynman diagram \
+generator which is currently developed by Thomas Hahn (www.feynarts.de). It is not a part of FeynCalc but it \
+can be used together with FeynCalc after some patching. The patched version will be located in the directory \"FeynArts\"
+inside your FeynCalc installation.";
+
+strOverwriteFCdit="Looks like FeynCalc is already installed. Do you want to replace the content \
+of " <> packageDir <> " with the downloaded version of FeynCalc? If you are using any custom configuration \
+files or add-ons that are located in that directory, please backup them in advance.";
+
+	If[$VersionNumber < 8,
+		Message[InstallFeynCalc::notcomp];
+		Abort[]
+	];
+
+	If[$VersionNumber == 8,
+		(*To use FetchURL in MMA8 we need to load URLTools first *)
+		FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
+		FCGetUrl[x_]:= URLSave[x,CreateTemporary[]]
+	];
+
+
+	(* If the package directory already exists, ask the user about overwriting *)
+	If[ DirectoryQ[packageDir],
+
+		If[ OptionValue[AutoOverwriteFeynCalcDirectory],
+
+			Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+
+			Null,
+			If[ ChoiceDialog[strOverwriteFCdit,{"Yes, overwrite the " <> packageName <>" directory"->True,
+				"No! I need to do a backup first."->False}],
+				Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+				Abort[]
+			]
+		]
+	];
+
+	(* Download FeynCalc tarball	*)
+	WriteString["stdout", "Downloading FeynCalc from ", gitzip," ..."];
+	tmpzip=FCGetUrl[gitzip];
+	unzipDir= tmpzip<>".dir";
+	WriteString["stdout", "done! \n"];
+
+	(* Extract to the content	*)
+	WriteString["stdout", "FeynCalc zip file was saved to ", tmpzip,".\n"];
+	WriteString["stdout", "Extracting FeynCalc zip file to ", unzipDir, " ..."];
+	ExtractArchive[tmpzip, unzipDir];
+	WriteString["stdout", "done! \n"];
+
+	(* Delete the downloaded file	*)
+	Quiet@DeleteFile[tmpzip];
+
+	(* Move the files to the final destination	*)
+	WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];
+	CopyDirectory[FileNameJoin[{unzipDir,"feyncalc-master","FeynCalc"}],packageDir];
+	WriteString["stdout", "done! \n"];
+	(* Delete the extracted archive *)
+	Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
+
+	(* Activate the documentation	*)
+	WriteString["stdout", "Setting up the help system... "];
+	RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
+	Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
+
+	If[ OptionValue[AutoDisableInsufficientVersionWarning],
+
+		SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
+
+		Null,
+		If[ ChoiceDialog[strDisableWarning],
+			SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
+		]
+	];
+
+
+	WriteString["stdout", "done! \n"];
+
+	If[ OptionValue[AutoInstallFeynArts],
+
+		faInstalled=True;
+		InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]],
+		Null,
+		If[ ChoiceDialog[strFeynArts],
+			faInstalled=True;
+			InstallFeynArts[InstallFeynArtsTo->FileNameJoin[{packageDir,"FeynArts"}]]
+		]
+	];
+
+
+	WriteString["stdout", "\nInstallation complete! Loading FeynCalc... \n"];
+
+	If[	faInstalled,
+		Global`$LoadFeynArts=True;
+	];
+	Get["FeynCalc`"];
+
 ];
