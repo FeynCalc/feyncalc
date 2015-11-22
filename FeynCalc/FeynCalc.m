@@ -630,13 +630,16 @@ If[ !$Notebooks && Global`$FeynCalcStartupMessages,
 
 (* Print FeynCalc's startup message *)
 If[ Global`$FeynCalcStartupMessages =!= False,
-	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> ". For help, type ?FeynCalc, use the ",
+	Print[	Style["FeynCalc ", "Text", Bold], Style[$FeynCalcVersion <> ". For help, use the ",
 				"Text"],
-			Style[DisplayForm@ButtonBox["help browser",ButtonData :> {"Short Overview", "intro"}, BaseStyle -> "AddOnsLink",
-				ButtonNote -> "FeynCalc"], "Text"],
-			Style[" or visit ", "Text"],
-			Style[DisplayForm@ButtonBox["www.feyncalc.org.",ButtonData :> {URL["http://www.feyncalc.org/"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "http://www.feyncalc.org/"],"Text"]]
+			Style[DisplayForm@ButtonBox["documentation center", BaseStyle->"Link", ButtonData :> "paclet:FeynCalc/",
+				ButtonNote -> "paclet:FeynCalc/"], "Text"],
+			Style[", check out the ", "Text"],
+			Style[DisplayForm@ButtonBox["wiki",ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/wiki"], None},BaseStyle -> "Hyperlink",
+				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"],
+			Style[" or write to the ", "Text"],
+			Style[DisplayForm@ButtonBox["mailing list.",ButtonData :> {URL["http://www.feyncalc.org/forum/"], None},BaseStyle -> "Hyperlink",
+				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]]
 ];
 
 (* Load PHI... *)
