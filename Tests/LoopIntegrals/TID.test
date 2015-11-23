@@ -33,5 +33,162 @@ Tests`LoopIntegrals`fcstTID =
 	"(m^2*FAD[{l, m}]*MTD[mu, nu])/D + SPD[a, c] + SPD[a, d] + SPD[b, c] + SPD[b, d]"},
 {"fcstTID-ID12", "MatchQ[TID[SP[a + b, c + d] FVD[l, mu] FVD[l, nu] FAD[l, {l + p + q}],
 	l, Isolate -> All] //FCE, -(1/4) (FAD[l, l - p - q]*HoldForm[ax_]*HoldForm[bx_]*
-	HoldForm[cx_]^(-1))]","True"}
+	HoldForm[cx_]^(-1))]","True"},
+
+
+{"fcstTID-ID13", "TID[FCI[FVD[q, mu] FVD[q,nu] FAD[{q, m0},
+{q + p1, m1}, {q + p2, m2}, {q + p3,
+	m3}, {q + p4, m4}, {q + p5, m5}, {q + p6, m6}]]/(I*Pi^2), q,
+UsePaVeBasis -> True] // FCE","FVD[p1, mu] FVD[p1,
+nu] GenPaVe[{1,
+	1}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p2, mu] +
+	FVD[p1, mu] FVD[p2, nu]) GenPaVe[{1,
+	2}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p3, mu] +
+	FVD[p1, mu] FVD[p3, nu]) GenPaVe[{1,
+	3}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p4, mu] +
+	FVD[p1, mu] FVD[p4, nu]) GenPaVe[{1,
+	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p5, mu] +
+	FVD[p1, mu] FVD[p5, nu]) GenPaVe[{1,
+	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p1, nu] FVD[p6, mu] +
+	FVD[p1, mu] FVD[p6, nu]) GenPaVe[{1,
+	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] +
+FVD[p2, mu] FVD[p2,
+nu] GenPaVe[{2,
+	2}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p3, mu] +
+	FVD[p2, mu] FVD[p3, nu]) GenPaVe[{2,
+	3}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p4, mu] +
+	FVD[p2, mu] FVD[p4, nu]) GenPaVe[{2,
+	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p5, mu] +
+	FVD[p2, mu] FVD[p5, nu]) GenPaVe[{2,
+	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p2, nu] FVD[p6, mu] +
+	FVD[p2, mu] FVD[p6, nu]) GenPaVe[{2,
+	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] +
+FVD[p3, mu] FVD[p3,
+nu] GenPaVe[{3,
+	3}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p3, nu] FVD[p4, mu] +
+	FVD[p3, mu] FVD[p4, nu]) GenPaVe[{3,
+	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p3, nu] FVD[p5, mu] +
+	FVD[p3, mu] FVD[p5, nu]) GenPaVe[{3,
+	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p3, nu] FVD[p6, mu] +
+	FVD[p3, mu] FVD[p6, nu]) GenPaVe[{3,
+	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] +
+FVD[p4, mu] FVD[p4,
+nu] GenPaVe[{4,
+	4}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p4, nu] FVD[p5, mu] +
+	FVD[p4, mu] FVD[p5, nu]) GenPaVe[{4,
+	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p4, nu] FVD[p6, mu] +
+	FVD[p4, mu] FVD[p6, nu]) GenPaVe[{4,
+	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] +
+FVD[p5, mu] FVD[p5,
+nu] GenPaVe[{5,
+	5}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] + (FVD[p5, nu] FVD[p6, mu] +
+	FVD[p5, mu] FVD[p6, nu]) GenPaVe[{5,
+	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] +
+FVD[p6, mu] FVD[p6,
+nu] GenPaVe[{6,
+	6}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] +
+GenPaVe[{0,
+	0}, {{0, m0}, {p1, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5,
+	m5}, {p6, m6}}] MTD[mu, nu]"},
+{"fcstTID-ID14", "TID[FCI[FVD[q, mu] FVD[q,
+	nu] FAD[{q, m0}, {q, m1}, {q + p2, m2}, {q + p3, m3}, {q + p4,
+	m4}, {q + p5, 0}, {q + p6, m6}]]/(I*Pi^2), q, UsePaVeBasis -> True] // FCE",
+"(FVD[p2, mu]*FVD[p2, nu]*GenPaVe[{1, 1}, {{0, m0}, {p2, m2}, {p3, m3}, {p4, m4},
+{p5, 0}, {p6, m6}}])/(m0^2 - m1^2) - (FVD[p2, mu]*FVD[p2, nu]*GenPaVe[{1, 1},
+{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p3, mu] + FVD[p2, mu]*FVD[p3, nu])*GenPaVe[{1, 2}, {{0, m0},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p3, mu] + FVD[p2, mu]*FVD[p3, nu])*GenPaVe[{1, 2},
+{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p4, mu] + FVD[p2, mu]*FVD[p4, nu])*GenPaVe[{1, 3}, {{0, m0},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p4, mu] + FVD[p2, mu]*FVD[p4, nu])*GenPaVe[{1, 3},
+{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p5, mu] + FVD[p2, mu]*FVD[p5, nu])*GenPaVe[{1, 4}, {{0, m0},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p5, mu] + FVD[p2, mu]*FVD[p5, nu])*GenPaVe[{1, 4},
+{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p2, nu]*FVD[p6, mu] + FVD[p2, mu]*FVD[p6, nu])*GenPaVe[{1, 5}, {{0, m0},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p2, nu]*FVD[p6, mu] + FVD[p2, mu]*FVD[p6, nu])*GenPaVe[{1, 5},
+{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+(FVD[p3, mu]*FVD[p3, nu]*GenPaVe[{2, 2}, {{0, m0}, {p2, m2}, {p3, m3},
+{p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+(FVD[p3, mu]*FVD[p3, nu]*GenPaVe[{2, 2}, {{0, m1}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p3, nu]*FVD[p4, mu] + FVD[p3, mu]*FVD[p4, nu])*GenPaVe[{2, 3},
+{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p3, nu]*FVD[p4, mu] + FVD[p3, mu]*FVD[p4, nu])*GenPaVe[{2, 3}, {{0, m1},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p3, nu]*FVD[p5, mu] + FVD[p3, mu]*FVD[p5, nu])*GenPaVe[{2, 4},
+{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p3, nu]*FVD[p5, mu] + FVD[p3, mu]*FVD[p5, nu])*GenPaVe[{2, 4},
+{{0, m1}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 -
+m1^2) + ((FVD[p3, nu]*FVD[p6, mu] + FVD[p3, mu]*FVD[p6, nu])*GenPaVe[{2, 5},
+{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+((FVD[p3, nu]*FVD[p6, mu] + FVD[p3, mu]*FVD[p6, nu])*GenPaVe[{2, 5}, {{0, m1},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+(FVD[p4, mu]*FVD[p4, nu]*GenPaVe[{3, 3}, {{0, m0}, {p2, m2}, {p3, m3},
+{p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+(FVD[p4, mu]*FVD[p4, nu]*GenPaVe[{3, 3}, {{0, m1},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p4, nu]*FVD[p5, mu] + FVD[p4, mu]*FVD[p5, nu])*GenPaVe[{3, 4},
+{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
+{p6, m6}}])/(m0^2 - m1^2) - ((FVD[p4, nu]*FVD[p5, mu] +
+FVD[p4, mu]*FVD[p5, nu])*GenPaVe[{3, 4}, {{0, m1}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p4, nu]*FVD[p6, mu] + FVD[p4, mu]*FVD[p6, nu])*GenPaVe[{3, 5},
+{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
+{p6, m6}}])/(m0^2 - m1^2) - ((FVD[p4, nu]*FVD[p6, mu] +
+FVD[p4, mu]*FVD[p6, nu])*GenPaVe[{3, 5}, {{0, m1}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+(FVD[p5, mu]*FVD[p5, nu]*GenPaVe[{4, 4}, {{0, m0}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+(FVD[p5, mu]*FVD[p5, nu]*GenPaVe[{4, 4}, {{0, m1}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+((FVD[p5, nu]*FVD[p6, mu] + FVD[p5, mu]*FVD[p6, nu])*GenPaVe[{4, 5},
+{{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
+{p6, m6}}])/(m0^2 - m1^2) - ((FVD[p5, nu]*FVD[p6, mu] +
+FVD[p5, mu]*FVD[p6, nu])*GenPaVe[{4, 5}, {{0, m1}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+(FVD[p6, mu]*FVD[p6, nu]*GenPaVe[{5, 5}, {{0, m0}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) -
+(FVD[p6, mu]*FVD[p6, nu]*GenPaVe[{5, 5}, {{0, m1}, {p2, m2},
+{p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}])/(m0^2 - m1^2) +
+(GenPaVe[{0, 0}, {{0, m0}, {p2, m2}, {p3, m3}, {p4, m4}, {p5, 0},
+{p6, m6}}]*MTD[mu, nu])/(m0^2 - m1^2) - (GenPaVe[{0, 0}, {{0, m1},
+{p2, m2}, {p3, m3}, {p4, m4}, {p5, 0}, {p6, m6}}]*MTD[mu, nu])/(m0^2 - m1^2)"},
+{"fcstTID-ID16", "TID[FCI[FVD[q, mu] FVD[q,
+	nu] FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}]]/(I*Pi^2), q,
+UsePaVeBasis -> True, GenPaVe -> True] // FCE","FVD[p1, mu] FVD[p1,
+nu] GenPaVe[{1,
+	1}, {{0, m0}, {p1, m1}, {p2, m2}}] + (FVD[p1, nu] FVD[p2, mu] +
+	FVD[p1, mu] FVD[p2, nu]) GenPaVe[{1,
+	2}, {{0, m0}, {p1, m1}, {p2, m2}}] +
+FVD[p2, mu] FVD[p2,
+nu] GenPaVe[{2, 2}, {{0, m0}, {p1, m1}, {p2, m2}}] +
+GenPaVe[{0, 0}, {{0, m0}, {p1, m1}, {p2, m2}}] MTD[mu, nu]"},
+{"fcstTID-ID17", "TID[DiracTrace[GS[q].GS[p1] + GS[q].GS[p2]] FAD[q, q - p], q] // FCE",
+"2 FAD[q, -p + q] (SPD[p, p1] + SPD[p, p2])"}
 };
