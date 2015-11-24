@@ -253,7 +253,7 @@ bb1[pp:Except[_SmallVariable | 0], ma0_, ma1_] :=
 	B0[0,ma0,ma1]) - 1/2 B0[pp,ma0,ma1])/; $LimitTo4;
 
 B1 /:
-	MakeBoxes[B1[p10_,m02_,m12_ OptionsPattern[]]  ,TraditionalForm] :=
+	MakeBoxes[B1[p10_,m02_,m12_, OptionsPattern[]]  ,TraditionalForm] :=
 		ToBoxes[HoldForm[PaVe[1,{p10},{m02,m12}]],TraditionalForm];
 
 B11[pe_, mm1_, mm2_,  OptionsPattern[]] :=
