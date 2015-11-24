@@ -40,17 +40,26 @@ Options[ToTFI] = {
 
 
 (* 1-loop *)
-ToTFI[z_Plus, qqp_, pe_, opts:OptionsPattern[]] :=
-	Map[ToTFI[#, qqp, pe, opts]&, z];
+ToTFI[z_Plus, {q_}, {p_}, opts:OptionsPattern[]] :=
+	Map[ToTFI[#, q, p, opts]&, z]/; !OptionQ[{p}];
 
-ToTFI[a_/;Head[a]=!=Plus,q_,p_/;Head[p]=!=Rule,opts:OptionsPattern[]] :=
+ToTFI[z_Plus, q_/;Head[q]=!=List, p_/;Head[p]=!=List, opts:OptionsPattern[]] :=
+	Map[ToTFI[#, q, p, opts]&, z]/; !OptionQ[p];
+
+ToTFI[a_/;Head[a]=!=Plus,{q_},{p_},opts:OptionsPattern[]] :=
+	ToTFI[a,q,p,opts]/; !OptionQ[{p}];
+
+ToTFI[a_/;Head[a]=!=Plus,q_/;Head[q]=!=List,p_/;Head[p]=!=List,opts:OptionsPattern[]] :=
 	(ToExpression["TFIRecurse"][
 	FCE[ToTFI[FDS[FCI[Expand[FAD[{qq, mM}] Expand[ApartFF[a, {q}], q]]],q], q, qq, p, opts]]/.
 		ToExpression["TFI"]:>ToExpression["TFR"]] /. ToExpression["TAI"][_, 0, {{1, mM}}] :> 1
-	) /; MemberQ[$ContextPath, "Tarcer`"];
+	) /; MemberQ[$ContextPath, "Tarcer`"] && !OptionQ[p];
 
 (* 2-loops *)
-ToTFI[expr_, q1_,q2_,p_,opts:OptionsPattern[]] :=
+ToTFI[expr_, {q1_,q2_},{p_},opts:OptionsPattern[]] :=
+	ToTFI[expr, q1,q2,p,opts]/; !OptionQ[{p}];
+
+ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:OptionsPattern[]] :=
 	Block[{int,fclsOutput,intsTFI,intsRest,intsTFI2,intsTFI3,intsTFIUnique,tmp,
 			solsList,tfiLoopIntegral,repRule,null1,null2,res,
 			tfi1LoopQ1,tfi1LoopQ2},
