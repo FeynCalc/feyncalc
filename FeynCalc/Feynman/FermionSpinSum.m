@@ -65,15 +65,7 @@ dirtracesep[xy_] :=
 								{DiracGamma, LorentzIndex, Eps}]&]//cOL]
 	];
 
-
-epSimp[expr_] :=
-	DiracSimplify[DiracOrder[expr] /. DOT -> doT /.
-	{doT[a__, DiracGamma[5]] :> 0 /; Length[{a}] < 4,
-	doT[DiracGamma[5]] :> 0,
-	doT[a__DiracGamma] :> 0 /; FreeQ2[{a}, {DiracGamma[5], DiracGamma[6],
-	DiracGamma[7]}] && OddQ[Length[{a}]]
-	} /. doT -> DOT, Expanding -> False    ];
-
+epSimp[expr_] := DiracOrder[expr];
 
 FermionSpinSum[expr_Plus, opts:OptionsPattern[]] :=
 	Map[FermionSpinSum[#,opts]&,expr];
