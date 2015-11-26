@@ -29,6 +29,20 @@ QuantumField[FCPartialD[LorentzIndex[b]], GaugeField, LorentzIndex[a],
 	QuantumField[GaugeField, {mu2}, {i2}][p2]}]","((-I)*Pair[LorentzIndex[a], LorentzIndex[mu1]]*Pair[LorentzIndex[b], Momentum[p1]]*SUNDelta[SUNIndex[a], SUNIndex[i1]]) .
 	((-I)*Pair[LorentzIndex[a], LorentzIndex[mu2]]*Pair[LorentzIndex[b], Momentum[p2]]*SUNDelta[SUNIndex[a], SUNIndex[i2]]) +
 ((-I)*Pair[LorentzIndex[a], LorentzIndex[mu2]]*Pair[LorentzIndex[b], Momentum[p2]]*SUNDelta[SUNIndex[a], SUNIndex[i2]]) .
-	((-I)*Pair[LorentzIndex[a], LorentzIndex[mu1]]*Pair[LorentzIndex[b], Momentum[p1]]*SUNDelta[SUNIndex[a], SUNIndex[i1]])"}
-
+	((-I)*Pair[LorentzIndex[a], LorentzIndex[mu1]]*Pair[LorentzIndex[b], Momentum[p1]]*SUNDelta[SUNIndex[a], SUNIndex[i1]])"},
+{"fcstFunctionalD-ID3","FunctionalD[
+QuantumField[FCPartialD[LorentzIndex[b]], GaugeField,
+LorentzIndex[a], SUNIndex[a]].QuantumField[
+FCPartialD[LorentzIndex[b]], GaugeField, LorentzIndex[a],
+SUNIndex[a]], QuantumField[GaugeField, {mu2}, {i2}],
+QuantumField[GaugeField, {mu1}, {i1}]]","-2 RightPartialD[LorentzIndex[b]].RightPartialD[LorentzIndex[b]] Pair[
+LorentzIndex[mu1], LorentzIndex[mu2]] SUNDelta[SUNIndex[i1],
+SUNIndex[i2]]"},
+{"fcstFunctionalD-ID4","FunctionalD[(QuantumField[FCPartialD[mu], phi].QuantumField[
+	FCPartialD[mu], phi] - m^2 QuantumField[phi].QuantumField[phi])/
+2, QuantumField[phi]]","-m^2 QuantumField[phi] -
+QuantumField[FCPartialD[LorentzIndex[mu]],
+FCPartialD[LorentzIndex[mu]], phi]"},
+{"fcstFunctionalD-ID5","FunctionalD[QuantumField[phi], QuantumField[phi]]","1"},
+{"fcstFunctionalD-ID6","FunctionalD[QuantumField[phi]^2, QuantumField[phi]]","2*QuantumField[phi]"}
 }
