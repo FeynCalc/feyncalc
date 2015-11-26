@@ -56,13 +56,15 @@ sununique[a_] :=
 frex[nl_] :=
 	frex[nl] = Block[ {nla = DotSimplify[nl],sdum, flag, ff, fm,ff1, cli,tem,
 	nlafirst, newlorlist, lorindlist, sunindlist, newsunlist},
-				sdum = SUNIndex[ToExpression[StringJoin @@         (
-								ToString /@ {Unique[System`D], "k"})]
-							];
+
+
+				FCPrint[1,"FeynRule: frex: Entering with ", nla];
+
+				sdum = SUNIndex[ToExpression[StringJoin@@(ToString /@ {Unique[System`D], "k"})]];
 				flag = Select[Expand2[Select[nla, FreeQ[#, DOT]&], SUNF] + null1 + null2,
 							(Count[#, SUNF[__]] === 2)&
 							] /. null1 ->1 /. null2 ->0;
-				If[ flag =!= 0,
+							If[ flag =!= 0,
 					If[ Head[flag] === Times,
 						ff = Select[flag, !FreeQ[#, SUNF]&],
 						If[ Head[flag] === Plus,
@@ -77,7 +79,8 @@ frex[nl_] :=
 							sdum = cli[[1]]
 						];
 					];
-				];
+							];
+				FCPrint[1,"FeynRule: frex: flag ", flag];
 			(* change 05/94 *)
 				nlafirst = If[ Head[nla]===Plus,
 								nla[[1]],
@@ -93,12 +96,15 @@ frex[nl_] :=
 					If[ EvenQ[Length[Position[nlafirst, lorindlist[[iij]]]]],
 						AppendTo[newlorlist, lorindlist[[iij]]]
 					];
-	];
+				];
 				For[iij = 1, iij <= Length[sunindlist], iij++,
 					If[ EvenQ[Length[Position[nlafirst, sunindlist[[iij]]]]],
 						AppendTo[newsunlist, sunindlist[[iij]]]
 					]
 					];
+				FCPrint[1,"FeynRule: frex: newlorlist ", newlorlist];
+				FCPrint[1,"FeynRule: frex: newsunlist ", newsunlist];
+
 				uniquelist = Join[Table[newlorlist[[ij]] ->
 										(newlorlist[[ij]]/.LorentzIndex -> lorunique),
 										{ij, Length[newlorlist]}
@@ -108,11 +114,14 @@ frex[nl_] :=
 										{jj, Length[newsunlist]}
 										]
 								];
-				FCPrint[1,"uniquelist = ", uniquelist];
+				FCPrint[1,"FeynRule: frex: uniquelist = ", uniquelist];
 				nla = nla /. uniquelist;
 				nla = DotSimplify[nla, Expanding -> True];
-				tem = Contract[Expand2[nla /. QuantumField ->
-					(QuantumField[##][]&) ]] + null1;
+				FCPrint[1,"FeynRule: frex: nla = ", nla];
+				tem = Contract[Expand2[nla /. QuantumField -> (QuantumField[##][]&) ]] + null1;
+
+				FCPrint[1,"FeynRule: frex: tem = ", tem];
+
 				fm/: (fm[aa___][bb___] * fm[xx___][yy___] )   := fm[aa][bb]**fm[xx][yy];
 				fm/: fm[aa___][bb___]^n_Integer?Positive :=
 					(fm[aa][bb]^(n-1))**fm[aa][bb];
@@ -399,6 +408,10 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 				leib,coup,cdp,cedepe,opexbin,
 				zeromomentum,partiald
 				},
+
+
+			FCPrint[1,"FeynRule: Entering with ", lag];
+
 			nlag = nlag /. SUND -> localSUND /. SUNF -> localSUNF;
 			anti5    = Anti5 /. {ru} /. Options[FeynRule];
 			subs     = FinalSubstitutions /. {ru} /. Options[FeynRule];
@@ -432,6 +445,10 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 			If[ !FreeQ[nlag, OPESum],
 				nlag = opsum[nlag]
 			];
+
+
+
+
 			If[ !FreeQ[nlag, OPEDelta],
 				nlag = nlag /. FCPartialD[Momentum[OPEDelta]]^(mm_/; Head[mm]=!=Integer):>
 								FCPartialD[Momentum[OPEDelta]^mm]
@@ -441,6 +458,8 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 								FieldStrength[a, Explicit->True];
 			];
 			(* CHANGE 28.6.94 *)
+
+
 			If[ False,
 				nlag = DotSimplify[nlag],
 				If[ !FreeQ[nlag, CovariantD[w__/;FreeQ[{w}, Rule]
@@ -456,35 +475,60 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					nlag = DotSimplify[nlag];
 				]
 			];
+
+			FCPrint[1,"FeynRule: After DotSimplify ", nlag];
+
 			If[ !FreeQ[nlag, SUNDelta],
 				nlag = Expand2[nlag, SUNIndex|ExplicitSUNIndex]/.SUNDelta-> SUNDeltaContract/.
 				SUNDeltaContract->SUNDelta
 			];
-			FCPrint[1,"Leibniz rule"];
+
+			FCPrint[1,"FeynRule: After SUNDeltaContract ", nlag];
+
 			nlag = ExpandPartialD[nlag](* /. DOT -> dotsunt /. dotsunt -> DOT*);
-			FCPrint[1,"Leibniz rule done "];
+
+			FCPrint[1,"FeynRule: After applying Leibniz rule ", nlag];
 
 			(* check for Leibniz - sums *) (* trick17 *)
 			If[ !FreeQ[nlag, Binomial],
 				nlag  = leib[nlag]//opsum
 			];
 			nlag = ExpandPartialD[nlag];
+
+			FCPrint[1,"FeynRule: After ExpandPartialD: ", nlag];
+
 			temp1 = frex[nlag];
+
+			FCPrint[1,"FeynRule: After frex: ", temp1];
+
 			temp = temp1[[1]];
 			sdummy = temp1[[2]];
+
+
+
 			vert = Select[temp, (Length[Position[#, QuantumField]]===
 								Length[fields]) &];
+
+			FCPrint[1,"FeynRule: temp: ", temp];
+			FCPrint[1,"FeynRule: sdummy: ", sdummy];
+			FCPrint[1,"FeynRule: 1st vert: ", vert];
+
 			tfields = fields;
 			vert = vert + null1 + null2;
 			While[(Length[tfields] > 0) && (Head[vert] === Plus),
 					vert = Select[vert, !FreeQ[#, First[tfields]]&];
 					tfields = Rest[tfields];
 				];
+			FCPrint[1,"FeynRule: 2nd vert: ", vert];
+
+			FCPrint[1,"FeynRule: vert: ", vert/.QuantumField->qfi];
+
+
 			(* there might be still a sum ... *)
 			If[ Head[vert] === Plus,
-				qfi[___FCPartialD, fiii_, ___lorind, ___SUNIndex|___ExplicitSUNIndex][___] :=
+				qfi[___FCPartialD, fiii_, ___LorentzIndex, ___SUNIndex|___ExplicitSUNIndex][___] :=
 					qqq[fiii];
-				qfi[___FCPartialD, fiii_, ___mom, ___SUNIndex|___ExplicitSUNIndex][___] :=
+				qfi[___FCPartialD, fiii_, ___Momentum, ___SUNIndex|___ExplicitSUNIndex][___] :=
 					qqq[fiii];
 				qfi[___BlankNullSequence, fiii_, ___Pattern][___] :=
 					qqq[fiii];
@@ -492,8 +536,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 															(*Plus-> List /.*)
 															{OPESum[aaa_,__]:>aaa} /.
 															DOT -> Times /.
-															NonCommutativeMultiply ->
-															Times
+															NonCommutativeMultiply -> Times
 												]//Flatten//Union,
 													Head[#]===qqq&
 										]      ] ===
@@ -501,8 +544,10 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 									)&;
 				vert = Select[vert, puref];
 			];
+			FCPrint[1,"FeynRule: vert: ", vert];
 			If[ vert === 0,
 				result = 0,
+				FCPrint[1,"FeynRule: vert is not zero!"];
 				vert = vert /. NonCommutativeMultiply -> Times;
 				vert = Expand[ SUNSimplify[dirdot[vert],Explicit->False] ];
 				FCPrint[1,"functional differentiation "];
@@ -698,6 +743,9 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					];
 				];
 			];
+
+			FCPrint[1,"FeynRule: Preliminary result ", result];
+
 			If[ LeafCount[result]<10^4,
 				result//PowerSimplify//OPESumSimplify,
 				result
