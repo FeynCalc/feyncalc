@@ -3881,11 +3881,11 @@ TLRComment[s_String] :=
 applytlrules[y_, fun_] :=
 	fun[y /. TFI -> TLR /. TLRules /. TLR -> TFI];
 TFIRecurse[z_, f_: Identity] :=
-	FixedPoint[applytlrules[#1, f] & , z, 1000];
+	(FixedPoint[applytlrules[#1, f] & , z, 1000] /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list]);
 applytlrules2[y_, fun_] :=
 	fun[y /. TFI -> TLR /. TLRules2 /. TLR -> TFI];
 TFISimplify[z_, f_: Identity] :=
-	FixedPoint[applytlrules2[#1, f] & , z, 1000];
+	(FixedPoint[applytlrules2[#1, f] & , z, 1000]/. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list]);
 ExpandMaybe = Identity;
 fN[li_List] := fN[li] = li /. {0, _} :> {0, 0};
 TLR[depp__, {a___, b_Integer, c___}] := TLR[depp, {a, {b, 0}, c}];
@@ -4379,7 +4379,11 @@ $TarcerRecursed = {};
 		If[$Comment,
 		FEPrint["the result has ",
 			ToString[Length[t0 + dummm1 + dummm2] - 2], " terms"]];
-		If[$Notebooks, SetSelectedNotebook[EvaluationNotebook[]]]; t0]];
+		If[$Notebooks, SetSelectedNotebook[EvaluationNotebook[]]];
+		t0 = t0 /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list];
+		t0
+		]
+		];
 Options[TarcerExpand] = {TarcerReduce :> $BasisIntegrals,
 	TarcerRecurse -> False, Zeta -> True,
 	Replace -> {Prefactor1 -> Identity, EulerGamma -> 0}};
