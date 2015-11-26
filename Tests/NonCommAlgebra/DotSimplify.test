@@ -22,10 +22,17 @@ b*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[q]] . DiracGamma[Momentum[q
 
 {"fcstDotSimplify-ID4","DeclareNonCommutative[anc, bnc, cnc]\nCommutator[anc, cnc] = 1;\nDotSimplify[anc.anc, DotPower -> True]","anc^2"},
 {"fcstDotSimplify-ID5","DotSimplify[anc.(bnc - z cnc).anc]","anc . bnc . anc - z*(anc + cnc . anc . anc)"},
-{"fcstDotSimplify-ID6","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]],CommonTrace->True]","DiracTrace[
-	DiracGamma[LorentzIndex[c]].DiracGamma[LorentzIndex[d]]] SUNTrace[
-	SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[
-	SUNIndex[f]]]"},
+{"fcstDotSimplify-ID6","DotSimplify[QuantumField[A, LorentzIndex[mu]] .
+((-LeftPartialD[Momentum[OPEDelta]] + RightPartialD[Momentum[OPEDelta]])^2/4) . QuantumField[A, LorentzIndex[rho]]]",
+"1/4 (QuantumField[A, LorentzIndex[mu]].LeftPartialD[
+	Momentum[OPEDelta]].LeftPartialD[
+	Momentum[OPEDelta]].QuantumField[A, LorentzIndex[rho]] -
+2 QuantumField[A, LorentzIndex[mu]].LeftPartialD[
+	Momentum[OPEDelta]].RightPartialD[
+	Momentum[OPEDelta]].QuantumField[A, LorentzIndex[rho]] +
+QuantumField[A, LorentzIndex[mu]].RightPartialD[
+	Momentum[OPEDelta]].RightPartialD[
+	Momentum[OPEDelta]].QuantumField[A, LorentzIndex[rho]])"},
 {"fcstDotSimplify-ID7","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]]]","DiracTrace[
 	DiracGamma[LorentzIndex[c]].DiracGamma[LorentzIndex[d]]] SUNT[
 	SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[SUNIndex[f]]"}

@@ -18,5 +18,5 @@ Tests`NonCommAlgebra`fcstCommutator = {
 "-(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"},
 {"Commutator-ID3", "Do[Commutator[a, b] = 1, {i, 1, 5}] \n DownValues[Commutator]",
 "{HoldPattern[Commutator[a, b]] :> 1,
-	HoldPattern[Commutator[RightPartialD[_], LeftPartialD[_]]] :> 0}"}
+HoldPattern[Commutator[RightPartialD[FeynCalc`SharedObjects`Private`x_], LeftPartialD[FeynCalc`SharedObjects`Private`y_]]] :> 0}"}
 };

@@ -1144,7 +1144,9 @@ LeftPartialD[x_LorentzIndex, y__LorentzIndex] :=
 LeftPartialD[x_Momentum, y__Momentum] :=
 	DOT @@ Map[LeftPartialD, {x, y}];
 
-Commutator[RightPartialD[_], LeftPartialD[_]] =
+(* 	Here one must use named blanks, since otherwise DotSimplify
+	is not able to convert this into rules... *)
+Commutator[RightPartialD[x_], LeftPartialD[y_]] =
 	0;
 
 LeftPartialD/:
