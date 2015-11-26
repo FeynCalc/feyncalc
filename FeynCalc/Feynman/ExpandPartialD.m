@@ -189,24 +189,36 @@ Options[quanf] = {fcdot->DOT};
 Options[epskill] = {fcdot->DOT};
 
 ExpandPartialD1[x_, dot_, opts___Rule] :=
-	If[ FreeQ2[x, {FCPartialD, LeftPartialD,
-	RightPartialD, LeftRightPartialD,
-	FieldStrength,
-	QuantumField}
-	],
-		x,
+
+	Block[{res},
+		If[	FreeQ2[x, {FCPartialD, LeftPartialD, RightPartialD, LeftRightPartialD, FieldStrength, QuantumField}],
+			Return[x]
+		];
+
+		FCPrint[3,"ExpandPartialD: ExpandPartialD1: Entering with ", x];
+
 		SetOptions[quanf, fcdot->dot];
 		SetOptions[epskill, fcdot->dot];
-		epskill[Expand[
-					Expand[FixedPoint[qfe[dot,#]&,FCI[x],3],
-				SUNIndex] // sunsi,Eps]
-				] /. epskill -> Identity //.
+
+		res = Expand[Expand[FixedPoint[qfe[dot,#]&,FCI[x],3],SUNIndex] // sunsi, Eps];
+
+		FCPrint[3,"ExpandPartialD: ExpandPartialD1: After qfe ", res];
+
+		res = epskill[res] /. epskill -> Identity;
+
+		FCPrint[3,"ExpandPartialD: ExpandPartialD1: After epskill ", res];
+
 		(*Allow for other products through setting
 		of PartialDRelations. This will of course
 		manipulate these products only by applying
 		PartialDRelations. Still...
 		F.Orellana, 22/2-2003.*)
-		(PartialDRelations/.{opts}/.Options[ExpandPartialD])
+		res = res //. (PartialDRelations/.{opts}/.Options[ExpandPartialD]);
+
+		FCPrint[3,"ExpandPartialD: ExpandPartialD1: Leaving with ", res];
+
+		res
+
 	] /; Head[x] =!= Plus;
 
 fcovcheck[y_] :=

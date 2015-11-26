@@ -1,0 +1,61 @@
+
+
+(* :Title: ExpandPartialD.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ExpandPartialD  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstExpandPartialD = ({
+{"fcstExpandPartialD-ID1",
+"ExpandPartialD[LeftRightPartialD[mu].QuantumField[A,LorentzIndex[\
+nu]]]", "(-LeftPartialD[LorentzIndex[mu]] . QuantumField[A, \
+LorentzIndex[nu]] + QuantumField[FCPartialD[LorentzIndex[mu]], A, \
+LorentzIndex[nu]])/2"},
+{"fcstExpandPartialD-ID2",
+"ExpandPartialD[QuantumField[A,LorentzIndex[mu]].LeftRightPartialD[\
+nu].QuantumField[A,LorentzIndex[rho]]]",
+"(QuantumField[A, LorentzIndex[mu]] . \
+QuantumField[FCPartialD[LorentzIndex[nu]], A, LorentzIndex[rho]] - \
+QuantumField[FCPartialD[LorentzIndex[nu]], A, LorentzIndex[mu]] . \
+QuantumField[A, LorentzIndex[rho]])/2"},
+{"fcstExpandPartialD-ID3",
+"ExpandPartialD[RightPartialD[mu].QuantumField[A,LorentzIndex[mu]].\
+QuantumField[A,LorentzIndex[nu]]]",
+"QuantumField[A, LorentzIndex[mu]] . \
+QuantumField[FCPartialD[LorentzIndex[mu]], A, LorentzIndex[nu]] + \
+QuantumField[FCPartialD[LorentzIndex[mu]], A, LorentzIndex[mu]] . \
+QuantumField[A, LorentzIndex[nu]]"},
+{"fcstExpandPartialD-ID4",
+"ExpandPartialD[QuantumField[A,LorentzIndex[mu]].(\
+LeftRightPartialD[OPEDelta]^2).QuantumField[A,LorentzIndex[rho]]]",
+"(QuantumField[A, LorentzIndex[mu]] . \
+QuantumField[FCPartialD[Momentum[OPEDelta]], \
+FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[rho]] - \
+2*QuantumField[FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[mu]] . \
+QuantumField[FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[rho]] + \
+QuantumField[FCPartialD[Momentum[OPEDelta]], \
+FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[mu]] . \
+QuantumField[A, LorentzIndex[rho]])/4"},
+{"fcstExpandPartialD-ID5",
+"ExpandPartialD[LeftRightPartialD[OPEDelta]^3]",
+"(-LeftPartialD[Momentum[OPEDelta]] . \
+LeftPartialD[Momentum[OPEDelta]] . LeftPartialD[Momentum[OPEDelta]] + \
+3*LeftPartialD[Momentum[OPEDelta]] . LeftPartialD[Momentum[OPEDelta]] \
+. RightPartialD[Momentum[OPEDelta]] - \
+3*LeftPartialD[Momentum[OPEDelta]] . \
+RightPartialD[Momentum[OPEDelta]] . RightPartialD[Momentum[OPEDelta]] \
++ RightPartialD[Momentum[OPEDelta]] . \
+RightPartialD[Momentum[OPEDelta]] . \
+RightPartialD[Momentum[OPEDelta]])/8"},
+{"fcstExpandPartialD-ID6",
+"ExpandPartialD[LC[mu,nu,rho,tau]RightPartialD[al,mu,be,nu]]", "0"}
+
+});
