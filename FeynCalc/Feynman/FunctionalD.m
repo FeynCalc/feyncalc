@@ -44,32 +44,32 @@ d[{x__} ,{y__}] :=
 	d[{x}, {y}] =
 		(SUNDeltaContract[{x}[[1]], {y}[[1]]] d[Rest[{x}], Rest[{y}]]);
 
-ddl[FCPartialD[Momentum[OPEDelta]^m_]][p_] :=
-	(-1)^m I^m Pair[Momentum[p], Momentum[OPEDelta]]^m;
+ddl[FCPartialD[Momentum[OPEDelta,dim_:4]^m_]][p_] :=
+	(-1)^m I^m Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^m;
 
 ddl[][_] :=
 	1;
 
-ddl[pa:FCPartialD[Momentum[OPEDelta]..]][p_] :=
-	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p], Momentum[OPEDelta]]^Length[{pa}];
+ddl[pa:FCPartialD[Momentum[OPEDelta,dim_:4]..]][p_] :=
+	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^Length[{pa}];
 
-ddl[pa:FCPartialD[Momentum[OPEDelta]]..][p_] :=
-	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p], Momentum[OPEDelta]]^Length[{pa}];
+ddl[pa:FCPartialD[Momentum[OPEDelta,dim_:4]]..][p_] :=
+	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^Length[{pa}];
 
-ddl[FCPartialD[LorentzIndex[m_]]][p_] :=
-	(-I) dDelta[Momentum[p], LorentzIndex[m]];
+ddl[FCPartialD[LorentzIndex[m_,dim_:4]]][p_] :=
+	(-I) dDelta[Momentum[p,dim], LorentzIndex[m,dim]];
 
-ddl[a___,FCPartialD[LorentzIndex[m_]], x___][p_] :=
-	(-I) dDelta[Momentum[p], LorentzIndex[m]] ddl[a, x][p];
+ddl[a___,FCPartialD[LorentzIndex[m_,dim_:4]], x___][p_] :=
+	(-I) dDelta[Momentum[p,dim], LorentzIndex[m,dim]] ddl[a, x][p];
 
-ddl[FCPartialD[Momentum[m_]]][p_] :=
-	(-I) dDelta[Momentum[p], Momentum[m]];
+ddl[FCPartialD[Momentum[m_,dim_:4]]][p_] :=
+	(-I) dDelta[Momentum[p,dim], Momentum[m,dim]];
 
-ddl[a___,FCPartialD[Momentum[m_]], x___][p_] :=
-	(-I) dDelta[Momentum[p], Momentum[m]] ddl[a, x][p];
+ddl[a___,FCPartialD[Momentum[m_,dim_:4]], x___][p_] :=
+	(-I) dDelta[Momentum[p,dim], Momentum[m,dim]] ddl[a, x][p];
 
-ddl[a___,FCPartialD[Momentum[OPEDelta]^m_], x___][p_] :=
-	(-1)^m I^m Pair[Momentum[p], Momentum[OPEDelta]]^m  ddl[a, x][p];
+ddl[a___,FCPartialD[Momentum[OPEDelta,dim_:4]^m_], x___][p_] :=
+	(-1)^m I^m Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^m  ddl[a, x][p];
 
 dot2[___,0,___] :=
 	0;
@@ -111,7 +111,7 @@ FunctionalD[y_/;!FreeQ[y,QuantumField[__][___]],
 			] * g[{lor}, {li}] d[{sun}, {col}]
 		} /. {	QuantumField[aa___, nam, bb___][pee___][xX] :> QuantumField[aa, nam, bb][pee],
 				SUNDelta  :> SUNDeltaContract,
-				Pair :> PairContract3 } /. DOT -> dot2 /. dot2 -> DOT /.
+				Pair -> PairContract3 } /. DOT -> dot2 /. dot2 -> DOT /.
 				dDelta -> PairContract3 /. {SUNDeltaContract :> SUNDelta,  PairContract3 :> Pair}
 	];
 
