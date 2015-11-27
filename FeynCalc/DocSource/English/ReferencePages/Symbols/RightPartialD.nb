@@ -163,23 +163,27 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
+Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox["ExpandPartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
-  ButtonNote->"ExpandPartialD"],
- ", ",
- ButtonBox["PartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/PartialD",
-  ButtonNote->"PartialD"],
- ", ",
- ButtonBox["LeftPartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeftPartialD",
-  ButtonNote->"LeftPartialD"],
- "."
-}], "Text",
+ ButtonBox[\"ExpandPartialD\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/ExpandPartialD\",
+  ButtonNote->\"ExpandPartialD\"],
+ \", \",
+ ButtonBox[\"FCPartialD\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/PartialD\",
+  ButtonNote->\"FCPartialD\"],
+ \", \",
+ ButtonBox[\"LeftPartialD\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/LeftPartialD\",
+  ButtonNote->\"LeftPartialD\"],
+ \".\"
+}], \"Text\",
+ CellTags->\"RightPartialD\",
+ CellID->1409903491]\
+\>"], "Text",
  CellTags->"RightPartialD",
  CellID->1409903491]
 }, Open  ]],
@@ -396,3 +400,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

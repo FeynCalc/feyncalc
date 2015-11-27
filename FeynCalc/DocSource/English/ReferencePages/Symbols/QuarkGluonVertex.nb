@@ -217,28 +217,37 @@ Cell[BoxData[
   TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[1]=",
- CellID->1048418199]
+ CellID->1237177013]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"QuarkGluonVertex", "[", 
-  RowBox[{"\[Mu]", ",", "a"}], "]"}]], "Input",
+  RowBox[{"\[Mu]", ",", "a", ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
  CellLabel->"In[2]:=",
  CellID->158944719],
 
 Cell[BoxData[
  FormBox[
-  SubsuperscriptBox["Q", 
-   FormBox["a",
-    TraditionalForm], 
-   FormBox["\[Mu]",
-    TraditionalForm]], TraditionalForm]], "Output",
+  RowBox[{"\[ImaginaryI]", " ", 
+   SubscriptBox["g", "s"], " ", 
+   RowBox[{
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[2]=",
- CellID->493626421]
+ CellID->1997015232]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,21 +255,39 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuarkGluonVertex", "[", 
   RowBox[{"\[Mu]", ",", "a", ",", 
-   RowBox[{"CounterTerm", " ", "\[Rule]", "1"}]}], "]"}]], "Input",
+   RowBox[{"CounterTerm", " ", "\[Rule]", "1"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
  CellLabel->"In[3]:=",
  CellID->196044183],
 
 Cell[BoxData[
  FormBox[
-  SubsuperscriptBox["Q", 
-   FormBox["a",
-    TraditionalForm], 
-   FormBox["\[Mu]",
+  FractionBox[
+   RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+    SubsuperscriptBox["g", "s", "3"], " ", 
+    SubscriptBox["S", "n"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["C", "F"], "-", 
+      FractionBox[
+       SubscriptBox["C", "A"], "2"]}], ")"}], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}]}], 
+   TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[3]=",
- CellID->1316630151]
+ CellID->1493367329]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -268,21 +295,35 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuarkGluonVertex", "[", 
   RowBox[{"\[Mu]", ",", "a", ",", 
-   RowBox[{"CounterTerm", " ", "\[Rule]", "2"}]}], "]"}]], "Input",
+   RowBox[{"CounterTerm", " ", "\[Rule]", "2"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
  CellLabel->"In[4]:=",
  CellID->1947570088],
 
 Cell[BoxData[
  FormBox[
-  SubsuperscriptBox["Q", 
-   FormBox["a",
-    TraditionalForm], 
-   FormBox["\[Mu]",
+  FractionBox[
+   RowBox[{"3", " ", "\[ImaginaryI]", " ", 
+    SubscriptBox["C", "A"], " ", 
+    SubsuperscriptBox["g", "s", "3"], " ", 
+    SubscriptBox["S", "n"], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}]}], 
+   TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[4]=",
- CellID->347315114]
+ CellID->559873087]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -290,21 +331,38 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuarkGluonVertex", "[", 
   RowBox[{"\[Mu]", ",", "a", ",", 
-   RowBox[{"CounterTerm", " ", "\[Rule]", "3"}]}], "]"}]], "Input",
+   RowBox[{"CounterTerm", " ", "\[Rule]", "3"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
  CellLabel->"In[5]:=",
  CellID->339282308],
 
 Cell[BoxData[
  FormBox[
-  SubsuperscriptBox["Q", 
-   FormBox["a",
-    TraditionalForm], 
-   FormBox["\[Mu]",
+  FractionBox[
+   RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+    SubsuperscriptBox["g", "s", "3"], " ", 
+    SubscriptBox["S", "n"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["C", "A"], "+", 
+      SubscriptBox["C", "F"]}], ")"}], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}]}], 
+   TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[5]=",
- CellID->1054719519]
+ CellID->1688386600]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -316,24 +374,100 @@ Cell[BoxData[
     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
    RowBox[{"{", "q", "}"}], ",", 
    RowBox[{"{", "k", "}"}], ",", 
-   RowBox[{"OPE", "\[Rule]", "True"}]}], "]"}]], "Input",
+   RowBox[{"OPE", "\[Rule]", "True"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
  CellLabel->"In[6]:=",
  CellID->2017937273],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuarkGluonVertex", "(", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
-    RowBox[{"{", "q", "}"}], ",", 
-    RowBox[{"{", "k", "}"}], ",", 
-    RowBox[{"\[CapitalOmega]", "\[Rule]", "True"}]}], ")"}], 
-  TraditionalForm]], "Output",
+  RowBox[{
+   RowBox[{"\[CapitalOmega]", " ", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["\[CapitalDelta]",
+         TraditionalForm],
+        TraditionalForm]}], ")"}], ".", 
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]]}], " ", 
+    RowBox[{"(", 
+     FormBox[
+      TagBox[
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "0"}], 
+         RowBox[{
+          RowBox[{"-", "2"}], "+", "m"}]], 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"-", "1"}], ")"}], "i"], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            FormBox[
+             FormBox["k",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm]}], ")"}], "i"], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\"\[CenterDot]\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox["q",
+              TraditionalForm],
+             TraditionalForm]}], ")"}], 
+          RowBox[{
+           RowBox[{"-", "2"}], "-", "i", "+", "m"}]]}]}],
+       HoldForm],
+      TraditionalForm], ")"}]}], "+", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}]}]}], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[6]=",
- CellID->1054288897]
+ CellID->389181480]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -345,24 +479,30 @@ Cell[BoxData[
     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
    RowBox[{"{", "q", "}"}], ",", 
    RowBox[{"{", "k", "}"}], ",", 
-   RowBox[{"OPE", "\[Rule]", "False"}]}], "]"}]], "Input",
+   RowBox[{"OPE", "\[Rule]", "False"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
  CellLabel->"In[7]:=",
  CellID->729288779],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuarkGluonVertex", "(", 
+  RowBox[{"\[ImaginaryI]", " ", 
+   SubscriptBox["g", "s"], " ", 
    RowBox[{
-    RowBox[{"{", 
-     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
-    RowBox[{"{", "q", "}"}], ",", 
-    RowBox[{"{", "k", "}"}], ",", 
-    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}]}], ")"}], 
-  TraditionalForm]], "Output",
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"QuarkGluonVertex",
  CellLabel->"Out[7]=",
- CellID->1835787474]
+ CellID->1936603618]
 }, Open  ]]
 }, Open  ]],
 
@@ -427,7 +567,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{446, Automatic}, {Automatic, 104}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
@@ -436,3 +576,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

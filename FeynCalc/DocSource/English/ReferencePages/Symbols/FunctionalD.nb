@@ -250,7 +250,7 @@ Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[1]=",
- CellID->1374465660]
+ CellID->149077150]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -272,7 +272,7 @@ Cell[BoxData[
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[2]=",
- CellID->1081798185]
+ CellID->85429466]
 }, Open  ]],
 
 Cell[TextData[{
@@ -325,7 +325,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"QuantumField", "[", 
     RowBox[{
-     RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ",", 
+     RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ",", 
    RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}], "]"}]], "Input",
  CellTags->"FunctionalD",
  CellLabel->"In[3]:=",
@@ -333,19 +333,16 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   SuperscriptBox[
-    RowBox[{
-     RowBox[{"QuantumField", "(", 
-      RowBox[{
-       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], "(", 
-     ")"}], "\[Prime]",
-    MultilineFunction->None], "\[InvisibleApplication]", 
-   RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}], 
-  TraditionalForm]], "Output",
+  RowBox[{"-", 
+   SubscriptBox[
+    OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[3]=",
- CellID->463777256]
+ CellID->1642735326]
 }, Open  ]],
 
 Cell[TextData[Cell[BoxData[
@@ -386,11 +383,11 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"QuantumField", "[", 
        RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ".", 
-      
+        RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], 
+      ".", 
       RowBox[{"QuantumField", "[", 
        RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}]}], 
+        RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}]}], 
      "-", 
      RowBox[{
       RowBox[{"m", "^", "2"}], " ", 
@@ -409,14 +406,24 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      RowBox[{"QuantumField", "(", 
-       RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], ".", 
-      
-      RowBox[{"QuantumField", "(", 
-       RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}]}], 
-     "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["\[Phi]",
+         TraditionalForm], "\[Null]", "\[Null]"]}], ".", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["\[Phi]",
+         TraditionalForm], "\[Null]", "\[Null]"]}]}], "-", 
      RowBox[{
       SuperscriptBox["m", "2"], " ", 
       RowBox[{
@@ -426,7 +433,7 @@ Cell[BoxData[
         TraditionalForm]}]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[4]=",
- CellID->1061632244]
+ CellID->423622231]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -444,45 +451,33 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{
-    FractionBox["1", "2"], " ", 
-    RowBox[{
-     RowBox[{"QuantumField", "(", 
-      RowBox[{
-       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], ".", 
-     RowBox[{
-      SuperscriptBox[
-       RowBox[{
-        RowBox[{"QuantumField", "(", 
-         RowBox[{
-          RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], 
-        "(", ")"}], "\[Prime]",
-       MultilineFunction->None], "\[InvisibleApplication]", 
-      RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}]}]}], "+", 
-   RowBox[{
-    FractionBox["1", "2"], " ", 
-    RowBox[{
-     RowBox[{
-      SuperscriptBox[
-       RowBox[{
-        RowBox[{"QuantumField", "(", 
-         RowBox[{
-          RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], 
-        "(", ")"}], "\[Prime]",
-       MultilineFunction->None], "\[InvisibleApplication]", 
-      RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}], ".", 
-     RowBox[{"QuantumField", "(", 
-      RowBox[{
-       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}]}]}], 
-   "+", 
-   RowBox[{
     SuperscriptBox["m", "2"], " ", 
     RowBox[{"(", 
      RowBox[{"-", 
       FormBox["\[Phi]",
-       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+       TraditionalForm]}], ")"}]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["\[Phi]",
+      TraditionalForm], "\[Null]", "\[Null]"]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[5]=",
- CellID->435021757]
+ CellID->264301886]
 }, Open  ]],
 
 Cell[TextData[Cell[BoxData[
@@ -592,7 +587,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[6]=",
- CellID->1111705641]
+ CellID->1550678993]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -679,7 +674,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[7]=",
- CellID->1390438184]
+ CellID->1803724780]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -839,7 +834,7 @@ Cell[BoxData[
          TraditionalForm]]}]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[8]=",
- CellID->62460432]
+ CellID->1499967078]
 }, Open  ]],
 
 Cell[TextData[{
@@ -953,7 +948,7 @@ Cell[BoxData[
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[9]=",
- CellID->991172064]
+ CellID->2026389295]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1127,7 +1122,7 @@ Cell[BoxData[
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[10]=",
- CellID->2102523013]
+ CellID->930168027]
 }, Open  ]],
 
 Cell["\<\
@@ -1307,7 +1302,7 @@ Cell[BoxData[
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[11]=",
- CellID->1221262706]
+ CellID->22832846]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1372,7 +1367,7 @@ Cell[BoxData[
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[13]=",
- CellID->2038446867]
+ CellID->1252480273]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1408,7 +1403,7 @@ Cell[BoxData[
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[14]=",
- CellID->1307472319]
+ CellID->122288557]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1572,7 +1567,7 @@ Cell[BoxData[
        TraditionalForm]]}]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[15]=",
- CellID->2123805888]
+ CellID->325352248]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1654,7 +1649,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[16]=",
- CellID->1482322562]
+ CellID->1748319521]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1736,7 +1731,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[17]=",
- CellID->1614884083]
+ CellID->1369525226]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1915,7 +1910,7 @@ Cell[BoxData[
          TraditionalForm]]}]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[18]=",
- CellID->933013372]
+ CellID->745422332]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3031,7 +3026,7 @@ Cell[BoxData[
         TraditionalForm]]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[19]=",
- CellID->1632031614]
+ CellID->1475699650]
 }, Open  ]],
 
 Cell["\<\
@@ -3715,7 +3710,7 @@ Cell[BoxData[
         TraditionalForm]]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[22]=",
- CellID->981302323]
+ CellID->1392722087]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4043,7 +4038,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[23]=",
- CellID->885707787]
+ CellID->333585110]
 }, Open  ]],
 
 Cell[TextData[{
@@ -4205,7 +4200,7 @@ Cell[BoxData[
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[24]=",
- CellID->836856627]
+ CellID->115691573]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4300,7 +4295,7 @@ Cell[BoxData[
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[25]=",
- CellID->221243946]
+ CellID->602569188]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4563,7 +4558,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[26]=",
- CellID->1936806332]
+ CellID->725934738]
 }, Open  ]],
 
 Cell["\<\
@@ -4643,7 +4638,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[27]=",
- CellID->596397790]
+ CellID->908387761]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4734,7 +4729,7 @@ Cell[BoxData[
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[28]=",
- CellID->343042273]
+ CellID->849746209]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4932,7 +4927,7 @@ Cell[BoxData[
          TraditionalForm]]}]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[29]=",
- CellID->617664029]
+ CellID->421326563]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5240,7 +5235,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[30]=",
- CellID->736049104]
+ CellID->1487296991]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5792,7 +5787,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[31]=",
- CellID->44009684]
+ CellID->214263675]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6301,7 +6296,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"FunctionalD",
  CellLabel->"Out[32]=",
- CellID->1507048221]
+ CellID->594909875]
 }, Open  ]],
 
 Cell["quod erat demonstrandum.", "Text",
@@ -6386,7 +6381,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{-10, Automatic}, {Automatic, 2}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
@@ -6395,3 +6390,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

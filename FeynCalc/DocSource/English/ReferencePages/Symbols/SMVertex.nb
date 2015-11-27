@@ -197,7 +197,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "SMVertex", "]"}]], "Input",
  CellTags->"SMVertex",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->537549751],
 
 Cell[BoxData[
@@ -208,8 +208,8 @@ Cell[BoxData[
     RowBox[{"Explicit", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"SMVertex",
- CellLabel->"Out[1]=",
- CellID->1568723703]
+ CellLabel->"Out[2]=",
+ CellID->1369889380]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,7 +220,7 @@ Cell[BoxData[
   "\"\<AWW\>\"", ",", "p", ",", "\[Mu]", ",", " ", "q", ",", "\[Nu]", ",", 
    " ", "k", ",", "\[Rho]"}], "]"}]], "Input",
  CellTags->"SMVertex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->1911879451],
 
 Cell[BoxData[
@@ -348,8 +348,8 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SMVertex",
- CellLabel->"Out[2]=",
- CellID->1650025042]
+ CellLabel->"Out[3]=",
+ CellID->2094425959]
 }, Open  ]]
 }, Open  ]],
 
@@ -414,7 +414,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{371, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
@@ -423,3 +423,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

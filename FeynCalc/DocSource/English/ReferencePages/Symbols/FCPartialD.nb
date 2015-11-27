@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/AntiSymmetrize", "Categorization",
+Cell["FeynCalc/ref/FCPartialD", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,19 +111,44 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["AntiSymmetrize", "ObjectName",
+Cell["FCPartialD", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"AntiSymmetrize", "[", 
-   RowBox[{"expr", ",", " ", 
-    RowBox[{"{", 
-     RowBox[{"a1", ",", " ", "a2", ",", " ", "..."}], "}"}]}], "]"}]], 
-  "InlineFormula"],
- " \[LineSeparator]",
- "antisymmetrizes expr with respect to the variables a1,a2, ... "
+  RowBox[{"FCPartialD", "[", "mu", "]"}]], "InlineFormula"],
+ " \[LineSeparator]denotes the four-dimensional ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "."}], TraditionalForm]]],
+ " FCPartialD is used to denote derivative fields. ",
+ "FCPartialD",
+ "[LorentzIndex[",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Mu]", ",", 
+    StyleBox["D",
+     FontSlant->"Plain"]}], TraditionalForm]]],
+ "]] denotes the ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox["D",
+    FontSlant->"Plain"], TraditionalForm]]],
+ "-dimensional ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], "."}], TraditionalForm]]]
 }], "Usage",
  CellID->982511436],
 
@@ -164,15 +189,29 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
- ButtonBox["Symmetrize",
+ ButtonBox["ExpandPartialD",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Symmetrize",
-  ButtonNote->"Symmetrize"],
+  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
+  ButtonNote->"ExpandPartialD"],
+ ", ",
+ ButtonBox["LeftPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftPartialD",
+  ButtonNote->"LeftPartialD"],
+ ", ",
+ ButtonBox["LeftRightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD",
+  ButtonNote->"LeftRightPartialD"],
+ ", ",
+ ButtonBox["RightPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/RightPartialD",
+  ButtonNote->"RightPartialD"],
  "."
 }], "Text",
- CellTags->"AntiSymmetrize",
- CellID->145979915]
+ CellTags->"PartialD",
+ CellID->1527820766]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -199,57 +238,86 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
+Cell[BoxData["Examples"], "Subsubsection",
+ CellTags->"PartialD",
+ CellID->521788538],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"AntiSymmetrize", "[", 
-  RowBox[{
-   RowBox[{"f", "[", 
-    RowBox[{"a", ",", "b"}], "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"a", ",", "b"}], "}"}]}], "]"}]], "Input",
- CellTags->"AntiSymmetrize",
+ RowBox[{
+  RowBox[{"QuantumField", "[", 
+   RowBox[{"A", ",", 
+    RowBox[{"{", "\[Mu]", "}"}]}], "]"}], ".", 
+  RowBox[{"LeftPartialD", "[", "\[Nu]", "]"}]}]], "Input",
+ CellTags->"PartialD",
  CellLabel->"In[1]:=",
- CellID->74722925],
+ CellID->426841837],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"AntiSymmetrize", "(", 
-   RowBox[{
-    RowBox[{"f", "(", 
-     RowBox[{"a", ",", "b"}], ")"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"a", ",", "b"}], "}"}]}], ")"}], TraditionalForm]], "Output",
- CellTags->"AntiSymmetrize",
+  RowBox[{
+   SubscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox["\[Mu]",
+     TraditionalForm]], ".", 
+   SubscriptBox[
+    OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellTags->"PartialD",
  CellLabel->"Out[1]=",
- CellID->1137948626]
+ CellID->1113557239]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"AntiSymmetrize", "[", 
-  RowBox[{
-   RowBox[{"f", "[", 
-    RowBox[{"x", ",", "y", ",", "z"}], "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]], "Input",
- CellTags->"AntiSymmetrize",
+ RowBox[{"ExpandPartialD", "[", "%", "]"}]], "Input",
+ CellTags->"PartialD",
  CellLabel->"In[2]:=",
- CellID->685327648],
+ CellID->820901076],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"AntiSymmetrize", "(", 
-   RowBox[{
-    RowBox[{"f", "(", 
-     RowBox[{"x", ",", "y", ",", "z"}], ")"}], ",", 
-    RowBox[{"{", 
-     RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ")"}], 
-  TraditionalForm]], "Output",
- CellTags->"AntiSymmetrize",
+  RowBox[{
+   SubscriptBox["\[PartialD]", 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]], 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], "\[Null]"]}], TraditionalForm]], "Output",
+ CellTags->"PartialD",
  CellLabel->"Out[2]=",
- CellID->275948597]
+ CellID->1344586855]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
+ CellTags->"PartialD",
+ CellLabel->"In[3]:=",
+ CellID->820708648],
+
+Cell[BoxData[
+ RowBox[{"QuantumField", "[", 
+  RowBox[{
+   RowBox[{"FCPartialD", "[", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", "A", ",", 
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Output",
+ CellTags->"PartialD",
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->74553335]
 }, Open  ]]
 }, Open  ]],
 
@@ -313,7 +381,7 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
+WindowSize->{700, 684},
 WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},

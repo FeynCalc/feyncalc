@@ -169,10 +169,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["PartialD",
+ ButtonBox["FCPartialD",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/PartialD",
-  ButtonNote->"PartialD"],
+  ButtonData:>"paclet:FeynCalc/ref/FCPartialD",
+  ButtonNote->"FCPartialD"],
  ", ",
  ButtonBox["ExpandPartialD",
   BaseStyle->"Link",
@@ -623,3 +623,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -164,23 +164,27 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
+Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox["FeynRule",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FeynRule",
-  ButtonNote->"FeynRule"],
- ", ",
- ButtonBox["PartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/PartialD",
-  ButtonNote->"PartialD"],
- ", ",
- ButtonBox["ExpandPartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
-  ButtonNote->"ExpandPartialD"],
- "."
-}], "Text",
+ ButtonBox[\"FeynRule\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/FeynRule\",
+  ButtonNote->\"FeynRule\"],
+ \", \",
+ ButtonBox[\"FCPartialD\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/FCPartialD\",
+  ButtonNote->\"FCPartialD\"],
+ \", \",
+ ButtonBox[\"ExpandPartialD\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/ExpandPartialD\",
+  ButtonNote->\"ExpandPartialD\"],
+ \".\"
+}], \"Text\",
+ CellTags->\"QuantumField\",
+ CellID->231016079]\
+\>"], "Text",
  CellTags->"QuantumField",
  CellID->231016079]
 }, Open  ]],
@@ -419,7 +423,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
-   RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
+   RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
    RowBox[{"{", "\[Mu]", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
  CellLabel->"In[9]:=",
@@ -442,7 +446,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
-   RowBox[{"PartialD", "[", "OPEDelta", "]"}], ",", "S"}], "]"}]], "Input",
+   RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], ",", "S"}], "]"}]], "Input",
  CellTags->"QuantumField",
  CellLabel->"In[10]:=",
  CellID->1485590656],
@@ -463,7 +467,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
-   RowBox[{"PartialD", "[", "OPEDelta", "]"}], ",", "A", ",", 
+   RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], ",", "A", ",", 
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
@@ -490,8 +494,8 @@ Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
    RowBox[{
-    RowBox[{"PartialD", "[", "OPEDelta", "]"}], "^", "OPEm"}], ",", "A", ",", 
-   
+    RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], "^", "OPEm"}], ",", "A", 
+   ",", 
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
@@ -602,3 +606,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

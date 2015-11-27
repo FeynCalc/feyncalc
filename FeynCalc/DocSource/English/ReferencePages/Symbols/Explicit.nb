@@ -211,7 +211,7 @@ Cell[BoxData[
   "p", ",", "\[Mu]", ",", "a", ",", " ", "q", ",", "\[Nu]", ",", "b", ",", 
    "r", ",", "\[Rho]", ",", "c"}], "]"}]], "Input",
  CellTags->"Explicit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->672712555],
 
 Cell[BoxData[
@@ -264,8 +264,8 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Explicit",
- CellLabel->"Out[1]=",
- CellID->1053835765]
+ CellLabel->"Out[2]=",
+ CellID->1698625354]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -273,7 +273,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Explicit", "[", "%", "]"}]], "Input",
  CellTags->"Explicit",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->1603275034],
 
 Cell[BoxData[
@@ -432,8 +432,8 @@ Cell[BoxData[
            TraditionalForm]],
          TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Explicit",
- CellLabel->"Out[2]=",
- CellID->124237354]
+ CellLabel->"Out[3]=",
+ CellID->1578200832]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -443,19 +443,20 @@ Cell[BoxData[
   RowBox[{"p", ",", "\[Mu]", ",", "a", ",", "\[Nu]", ",", "b"}], 
   "]"}]], "Input",
  CellTags->"Explicit",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->221852196],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"\[ImaginaryI]", " ", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
    RowBox[{"(", 
-    RowBox[{"1", "-", 
+    RowBox[{
      FormBox[
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{"-", "1"}], ")"}], "m"],
-      TraditionalForm]}], ")"}], " ", 
+      TraditionalForm], "+", "1"}], ")"}], " ", 
    SuperscriptBox["\[Delta]", 
     RowBox[{
      FormBox[
@@ -479,16 +480,12 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm]}], "G2"], "(", 
      FormBox[
-      SubscriptBox[
-       FormBox["p",
-        TraditionalForm], 
-       FormBox[
-        RowBox[{"OptionValue", "[", "Dimension", "]"}],
-        TraditionalForm]],
+      FormBox["p",
+       TraditionalForm],
       TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Explicit",
- CellLabel->"Out[3]=",
- CellID->1040670789]
+ CellLabel->"Out[4]=",
+ CellID->524953586]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -496,19 +493,20 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Explicit", "[", "%", "]"}]], "Input",
  CellTags->"Explicit",
- CellLabel->"In[4]:=",
+ CellLabel->"In[5]:=",
  CellID->441966106],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"\[ImaginaryI]", " ", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
    RowBox[{"(", 
-    RowBox[{"1", "-", 
+    RowBox[{
      FormBox[
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{"-", "1"}], ")"}], "m"],
-      TraditionalForm]}], ")"}], " ", 
+      TraditionalForm], "+", "1"}], ")"}], " ", 
    SuperscriptBox["\[Delta]", 
     RowBox[{
      FormBox[
@@ -676,8 +674,8 @@ Cell[BoxData[
           TraditionalForm]}]}], ")"}]}]}], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"Explicit",
- CellLabel->"Out[4]=",
- CellID->2107434671]
+ CellLabel->"Out[5]=",
+ CellID->993425694]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -686,7 +684,7 @@ Cell[BoxData[
  RowBox[{"FieldStrength", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "a"}], "]"}]], "Input",
  CellTags->"Explicit",
- CellLabel->"In[5]:=",
+ CellLabel->"In[6]:=",
  CellID->3454152],
 
 Cell[BoxData[
@@ -700,8 +698,8 @@ Cell[BoxData[
    FormBox["a",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"Explicit",
- CellLabel->"Out[5]=",
- CellID->312929547]
+ CellLabel->"Out[6]=",
+ CellID->342672291]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -709,7 +707,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Explicit", "[", "%", "]"}]], "Input",
  CellTags->"Explicit",
- CellLabel->"In[6]:=",
+ CellLabel->"In[7]:=",
  CellID->1217375686],
 
 Cell[BoxData[
@@ -724,11 +722,11 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["b103",
+       FormBox["b24",
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["c104",
+       FormBox["c25",
         TraditionalForm],
        TraditionalForm]}]], " ", 
     RowBox[{
@@ -740,7 +738,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["b103",
+       FormBox["b24",
         TraditionalForm],
        TraditionalForm]], ".", 
      SubsuperscriptBox[
@@ -751,7 +749,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["c104",
+       FormBox["c25",
         TraditionalForm],
        TraditionalForm]]}]}], "+", 
    RowBox[{
@@ -789,8 +787,8 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Explicit",
- CellLabel->"Out[6]=",
- CellID->459737999]
+ CellLabel->"Out[7]=",
+ CellID->559853350]
 }, Open  ]]
 }, Open  ]],
 
@@ -864,3 +862,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -123,11 +123,10 @@ Cell[TextData[{
     RowBox[{"{", "q", "}"}], ",", " ", 
     RowBox[{"{", 
      RowBox[{"mu", ",", "a"}], "}"}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "or ScalarGluonVertex[ p,  q,  mu, a ] yields the scalar-scalar-gluon vertex \
-(p and q are incoming momenta).\nScalarGluonVertex[{mu,a}, {nu,b}] yields the \
-scalar-scalar-gluon-gluon vertex (p and q are incoming momenta).\nThe \
-dimension  and the name of the coupling constant are determined by the \
+ " \n\tor ScalarGluonVertex[ p,  q,  mu, a ] yields the scalar-scalar-gluon \
+vertex (p and q are incoming momenta). ScalarGluonVertex[{mu,a}, {nu,b}] \
+yields the scalar-scalar-gluon-gluon vertex (p and q are incoming momenta).\n\
+\tThe dimension  and the name of the coupling constant are determined by the \
 options Dimension and CouplingConstant."
 }], "Usage",
  CellID->982511436],
@@ -334,3 +333,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

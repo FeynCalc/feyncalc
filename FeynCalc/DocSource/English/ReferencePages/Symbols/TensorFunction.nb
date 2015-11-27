@@ -165,10 +165,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Symmetrize",
+ ButtonBox["FCSymmetrize",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Symmetrize",
-  ButtonNote->"Symmetrize"],
+  ButtonData:>"paclet:FeynCalc/ref/FCSymmetrize",
+  ButtonNote->"FCSymmetrize"],
  "."
 }], "Text",
  CellTags->"TensorFunction",
@@ -202,20 +202,25 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"TensorFunction", "[", 
   RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], "]"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->1402713189],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"Tensorfunction", "(", 
-   RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], ")"}], 
-  TraditionalForm]], "Output",
+  RowBox[{"t", "(", 
+   RowBox[{
+    FormBox["\[Mu]",
+     TraditionalForm], ",", 
+    FormBox["\[Nu]",
+     TraditionalForm], ",", 
+    FormBox["\[Tau]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[1]=",
- CellID->607465039]
+ CellLabel->"Out[2]=",
+ CellID->221028640]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,15 +228,18 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->608128480],
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
-  RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], "]"}]], "Output",
+ RowBox[{"t", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Tau]", "]"}]}], "]"}]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[2]//StandardForm=",
- CellID->323525426]
+ CellLabel->"Out[3]//StandardForm=",
+ CellID->2056952905]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,32 +250,23 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}], " ", "%"}], "]"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->1580634540],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   RowBox[{"Tensorfunction", "(", 
-    RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], ")"}]}], 
-  TraditionalForm]], "Output",
+  RowBox[{"t", "(", 
+   RowBox[{
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"], ",", 
+    FormBox["\[Nu]",
+     TraditionalForm], ",", 
+    FormBox["\[Tau]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[3]=",
- CellID->713415380]
+ CellLabel->"Out[4]=",
+ CellID->974516100]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -275,69 +274,68 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[4]:=",
+ CellLabel->"In[5]:=",
  CellID->1813534641],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], " ", 
-  RowBox[{"Tensorfunction", "[", 
-   RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], 
-   "]"}]}]], "Output",
+ RowBox[{"t", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", "p", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Tau]", "]"}]}], "]"}]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[4]//StandardForm=",
- CellID->884564336]
+ CellLabel->"Out[5]//StandardForm=",
+ CellID->1570637008]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"TensorFunction", "[", 
   RowBox[{
    RowBox[{"{", 
     RowBox[{"f", ",", "\"\<S\>\""}], "}"}], ",", "\[Alpha]", ",", "\[Beta]"}],
    "]"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[5]:=",
+ CellLabel->"In[6]:=",
  CellID->1404961078],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"Tensorfunction", "(", 
+  RowBox[{"f", "(", 
    RowBox[{
-    RowBox[{"{", 
-     RowBox[{"f", ",", "\<\"S\"\>"}], "}"}], ",", "\[Alpha]", ",", 
-    "\[Beta]"}], ")"}], TraditionalForm]], "Output",
+    FormBox["\[Alpha]",
+     TraditionalForm], ",", 
+    FormBox["\[Beta]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[5]=",
- CellID->1876216582]
+ CellLabel->"Out[6]=",
+ CellID->1735854485]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"TensorFunction", "[", 
   RowBox[{
    RowBox[{"{", 
     RowBox[{"f", ",", "\"\<S\>\""}], "}"}], ",", "\[Beta]", ",", "\[Alpha]"}],
    "]"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[6]:=",
+ CellLabel->"In[7]:=",
  CellID->65548372],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"Tensorfunction", "(", 
+  RowBox[{"f", "(", 
    RowBox[{
-    RowBox[{"{", 
-     RowBox[{"f", ",", "\<\"S\"\>"}], "}"}], ",", "\[Beta]", ",", 
-    "\[Alpha]"}], ")"}], TraditionalForm]], "Output",
+    FormBox["\[Alpha]",
+     TraditionalForm], ",", 
+    FormBox["\[Beta]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[6]=",
- CellID->590483088]
+ CellLabel->"Out[7]=",
+ CellID->1376266618]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -345,18 +343,17 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[7]:=",
+ CellLabel->"In[8]:=",
  CellID->645212918],
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"f", "[", 
   RowBox[{
-   RowBox[{"{", 
-    RowBox[{"f", ",", "\<\"S\"\>"}], "}"}], ",", "\[Beta]", ",", "\[Alpha]"}],
-   "]"}]], "Output",
+   RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[7]//StandardForm=",
- CellID->588616323]
+ CellLabel->"Out[8]//StandardForm=",
+ CellID->1120370784]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -364,22 +361,22 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Attributes", "[", "f", "]"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[8]:=",
+ CellLabel->"In[9]:=",
  CellID->1446205961],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"{", "}"}], TraditionalForm]], "Output",
+  RowBox[{"{", "Orderless", "}"}], TraditionalForm]], "Output",
  CellTags->"TensorFunction",
- CellLabel->"Out[8]=",
- CellID->1715265830]
+ CellLabel->"Out[9]=",
+ CellID->1209640957]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"ClearAttributes", "[", 
   RowBox[{"f", ",", "Orderless"}], "]"}]], "Input",
  CellTags->"TensorFunction",
- CellLabel->"In[9]:=",
+ CellLabel->"In[10]:=",
  CellID->682846608]
 }, Open  ]],
 
@@ -453,3 +450,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

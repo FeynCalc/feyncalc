@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/PartialD", "Categorization",
+Cell["FeynCalc/ref/FCSymmetrize", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,43 +111,19 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["PartialD", "ObjectName",
+Cell["FCSymmetrize", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"PartialD", "[", "mu", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "denotes the four-dimensional ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{
-    SubscriptBox["\[PartialD]", 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]], "."}], TraditionalForm]]],
- " PartialD is used to denote derivative fields. PartialD[LorentzIndex[",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"\[Mu]", ",", 
-    StyleBox["D",
-     FontSlant->"Plain"]}], TraditionalForm]]],
- "]] denotes the ",
- Cell[BoxData[
-  FormBox[
-   StyleBox["D",
-    FontSlant->"Plain"], TraditionalForm]]],
- "-dimensional ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{
-    SubscriptBox["\[PartialD]", 
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm]], "."}], TraditionalForm]]]
+  RowBox[{"FCSymmetrize", "[", 
+   RowBox[{"expr", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"a1", ",", " ", "a2", ",", " ", "..."}], "}"}]}], "]"}]], 
+  "InlineFormula"],
+ " \[LineSeparator]symmetrizes expr with respect to the variables a1,a2, ... \
+"
 }], "Usage",
  CellID->982511436],
 
@@ -188,29 +164,15 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["ExpandPartialD",
+ "See also: ",
+ ButtonBox["FCAntiSymmetrize",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
-  ButtonNote->"ExpandPartialD"],
- ", ",
- ButtonBox["LeftPartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeftPartialD",
-  ButtonNote->"LeftPartialD"],
- ", ",
- ButtonBox["LeftRightPartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeftRightPartialD",
-  ButtonNote->"LeftRightPartialD"],
- ", ",
- ButtonBox["RightPartialD",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/RightPartialD",
-  ButtonNote->"RightPartialD"],
+  ButtonData:>"paclet:FeynCalc/ref/FCAntiSymmetrize",
+  ButtonNote->"FCAntiSymmetrize"],
  "."
 }], "Text",
- CellTags->"PartialD",
- CellID->1527820766]
+ CellTags->"FCSymmetrize",
+ CellID->714962705]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,86 +199,69 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"PartialD",
- CellID->521788538],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"QuantumField", "[", 
-   RowBox[{"A", ",", 
-    RowBox[{"{", "\[Mu]", "}"}]}], "]"}], ".", 
-  RowBox[{"LeftPartialD", "[", "\[Nu]", "]"}]}]], "Input",
- CellTags->"PartialD",
- CellLabel->"In[1]:=",
- CellID->426841837],
-
-Cell[BoxData[
- FormBox[
+ RowBox[{"FCSymmetrize", "[", 
   RowBox[{
-   SubscriptBox[
-    FormBox["A",
-     TraditionalForm], 
-    FormBox["\[Mu]",
-     TraditionalForm]], ".", 
-   SubscriptBox[
-    OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]]}], TraditionalForm]], "Output",
- CellTags->"PartialD",
- CellLabel->"Out[1]=",
- CellID->1113557239]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ExpandPartialD", "[", "%", "]"}]], "Input",
- CellTags->"PartialD",
+   RowBox[{"f", "[", 
+    RowBox[{"a", ",", "b"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b"}], "}"}]}], "]"}]], "Input",
+ CellTags->"Symmetrize",
  CellLabel->"In[2]:=",
- CellID->820901076],
+ CellID->848650980],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SubscriptBox["\[PartialD]", 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm]], 
-   SubsuperscriptBox[
-    FormBox["A",
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm], "\[Null]"]}], TraditionalForm]], "Output",
- CellTags->"PartialD",
+   FractionBox["1", "2"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"f", "(", 
+      RowBox[{"a", ",", "b"}], ")"}], "+", 
+     RowBox[{"f", "(", 
+      RowBox[{"b", ",", "a"}], ")"}]}], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"Symmetrize",
  CellLabel->"Out[2]=",
- CellID->1344586855]
+ CellID->371734059]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
- CellTags->"PartialD",
+ RowBox[{"FCSymmetrize", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"x", ",", "y", ",", "z"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]], "Input",
+ CellTags->"Symmetrize",
  CellLabel->"In[3]:=",
- CellID->820708648],
+ CellID->1287424961],
 
 Cell[BoxData[
- RowBox[{"QuantumField", "[", 
+ FormBox[
   RowBox[{
-   RowBox[{"FCPartialD", "[", 
-    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", "A", ",", 
-   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Output",
- CellTags->"PartialD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->74553335]
+   FractionBox["1", "6"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"f", "(", 
+      RowBox[{"x", ",", "y", ",", "z"}], ")"}], "+", 
+     RowBox[{"f", "(", 
+      RowBox[{"x", ",", "z", ",", "y"}], ")"}], "+", 
+     RowBox[{"f", "(", 
+      RowBox[{"y", ",", "x", ",", "z"}], ")"}], "+", 
+     RowBox[{"f", "(", 
+      RowBox[{"y", ",", "z", ",", "x"}], ")"}], "+", 
+     RowBox[{"f", "(", 
+      RowBox[{"z", ",", "x", ",", "y"}], ")"}], "+", 
+     RowBox[{"f", "(", 
+      RowBox[{"z", ",", "y", ",", "x"}], ")"}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellTags->"Symmetrize",
+ CellLabel->"Out[3]=",
+ CellID->125642352]
 }, Open  ]]
 }, Open  ]],
 
@@ -390,3 +335,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

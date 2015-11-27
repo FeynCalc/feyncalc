@@ -205,7 +205,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "QuarkPropagator", "]"}]], "Input",
  CellTags->"QuarkPropagator",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->1137505588],
 
 Cell[BoxData[
@@ -222,66 +222,68 @@ Cell[BoxData[
     RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"QuarkPropagator",
- CellLabel->"Out[1]=",
- CellID->2001213382]
+ CellLabel->"Out[2]=",
+ CellID->759410596]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"QuarkPropagator", "[", "p", "]"}]], "Input",
+ RowBox[{"QuarkPropagator", "[", 
+  RowBox[{"p", ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkPropagator",
- CellLabel->"In[2]:=",
+ CellLabel->"In[5]:=",
  CellID->1589814930],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   SubscriptBox["\[CapitalPi]", "q"], "(", 
-   FormBox["p",
-    TraditionalForm], ")"}], TraditionalForm]], "Output",
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    RowBox[{"\[Gamma]", "\[CenterDot]", 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm]}]}], 
+   SuperscriptBox[
+    FormBox["p",
+     TraditionalForm], "2"]], TraditionalForm]], "Output",
  CellTags->"QuarkPropagator",
- CellLabel->"Out[2]=",
- CellID->626430268]
+ CellLabel->"Out[5]=",
+ CellID->1709152205]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"QuarkPropagator", "[", 
-  RowBox[{"{", 
-   RowBox[{"p", ",", "m"}], "}"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"p", ",", "m"}], "}"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkPropagator",
- CellLabel->"In[3]:=",
+ CellLabel->"In[6]:=",
  CellID->1965811029],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   SubscriptBox["\[CapitalPi]", "q"], "(", 
-   FormBox["p",
-    TraditionalForm], ")"}], TraditionalForm]], "Output",
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{"m", "+", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}]}], ")"}]}], 
+   RowBox[{
+    SuperscriptBox[
+     FormBox["p",
+      TraditionalForm], "2"], "-", 
+    SuperscriptBox["m", "2"]}]], TraditionalForm]], "Output",
  CellTags->"QuarkPropagator",
- CellLabel->"Out[3]=",
- CellID->1513622738]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"QuarkPropagator", "[", 
-  RowBox[{"p", ",", "1", ",", "2"}], "]"}]], "Input",
- CellTags->"QuarkPropagator",
- CellLabel->"In[4]:=",
- CellID->1524661938],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"QuarkPropagator", "(", 
-   RowBox[{"p", ",", "1", ",", "2"}], ")"}], TraditionalForm]], "Output",
- CellTags->"QuarkPropagator",
- CellLabel->"Out[4]=",
- CellID->396206492]
+ CellLabel->"Out[6]=",
+ CellID->545226998]
 }, Open  ]]
 }, Open  ]],
 
@@ -355,3 +357,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -189,10 +189,10 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
   ButtonNote->"ExpandPartialD"],
  ", ",
- ButtonBox["PartialD",
+ ButtonBox["FCPartialD",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/PartialD",
-  ButtonNote->"PartialD"],
+  ButtonData:>"paclet:FeynCalc/ref/FCPartialD",
+  ButtonNote->"FCPartialD"],
  ", ",
  ButtonBox["LeftPartialD",
   BaseStyle->"Link",
@@ -532,3 +532,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

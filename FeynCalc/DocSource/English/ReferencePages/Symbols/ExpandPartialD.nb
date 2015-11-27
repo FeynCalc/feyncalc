@@ -252,7 +252,7 @@ Cell[BoxData[
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[1]=",
- CellID->802823001]
+ CellID->1621713620]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,7 +306,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[2]=",
- CellID->170351014]
+ CellID->230800562]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -339,7 +339,7 @@ Cell[BoxData[
      RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}]}], "]"}]}]}]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[3]//StandardForm=",
- CellID->933570859]
+ CellID->1224930561]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,7 +370,7 @@ Cell[BoxData[
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[4]=",
- CellID->569215181]
+ CellID->1551249324]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -414,7 +414,7 @@ Cell[BoxData[
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[5]=",
- CellID->2145735672]
+ CellID->656546598]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -456,7 +456,7 @@ Cell[BoxData[
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[6]=",
- CellID->1566265962]
+ CellID->526046948]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -473,31 +473,6 @@ Cell[BoxData[
    FractionBox["1", "4"], " ", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"-", 
-      RowBox[{"2", " ", 
-       RowBox[{
-        RowBox[{
-         SubscriptBox["\[PartialD]", 
-          FormBox["_",
-           TraditionalForm]], 
-         SubsuperscriptBox[
-          FormBox["A",
-           TraditionalForm], 
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm], "\[Null]"]}], ".", 
-        RowBox[{
-         SubscriptBox["\[PartialD]", 
-          FormBox["_",
-           TraditionalForm]], 
-         SubsuperscriptBox[
-          FormBox["A",
-           TraditionalForm], 
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
-           TraditionalForm], "\[Null]"]}]}]}]}], "+", 
      RowBox[{
       SubscriptBox[
        FormBox["A",
@@ -527,7 +502,35 @@ Cell[BoxData[
          FormBox[
           FormBox["\[Rho]",
            TraditionalForm],
-          TraditionalForm], "\[Null]"]}], ")"}]}], "+", 
+          TraditionalForm], "\[Null]"]}], ")"}]}], "-", 
+     RowBox[{"2", " ", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm]], 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], "\[Null]"]}], ".", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", 
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm]], 
+        SubsuperscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Rho]",
+           TraditionalForm],
+          TraditionalForm], "\[Null]"]}]}]}], "+", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
@@ -560,7 +563,7 @@ Cell[BoxData[
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[7]=",
- CellID->619471436]
+ CellID->1958358113]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -584,7 +587,7 @@ Cell[BoxData[
      TraditionalForm], "3"]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[8]=",
- CellID->1654778520]
+ CellID->1536350589]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -614,7 +617,7 @@ Cell[BoxData[
        TraditionalForm]]}], ")"}], "3"], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[9]=",
- CellID->540908854]
+ CellID->1037199372]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -628,53 +631,66 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
    RowBox[{"3", " ", 
     RowBox[{
      SubscriptBox[
       OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-      FormBox["_",
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
        TraditionalForm]], ".", 
      SubscriptBox[
       OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-      FormBox["_",
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
        TraditionalForm]], ".", 
      SubscriptBox[
       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
-      FormBox["_",
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
        TraditionalForm]]}]}], "-", 
    RowBox[{"3", " ", 
     RowBox[{
      SubscriptBox[
       OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-      FormBox["_",
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
        TraditionalForm]], ".", 
      SubscriptBox[
       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
-      FormBox["_",
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
        TraditionalForm]], ".", 
      SubscriptBox[
       OverscriptBox["\[PartialD]", "\[RightArrow]"], 
-      FormBox["_",
-       TraditionalForm]]}]}], "-", 
-   RowBox[{
-    SubscriptBox[
-     OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-     FormBox[
-      FormBox["\[CapitalDelta]",
-       TraditionalForm],
-      TraditionalForm]], ".", 
-    SubscriptBox[
-     OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-     FormBox[
-      FormBox["\[CapitalDelta]",
-       TraditionalForm],
-      TraditionalForm]], ".", 
-    SubscriptBox[
-     OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
-     FormBox[
-      FormBox["\[CapitalDelta]",
-       TraditionalForm],
-      TraditionalForm]]}], "+", 
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
    RowBox[{
     SubscriptBox[
      OverscriptBox["\[PartialD]", "\[RightArrow]"], 
@@ -696,7 +712,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[10]=",
- CellID->1833520885]
+ CellID->1175162542]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -761,7 +777,7 @@ Cell[BoxData[
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[11]=",
- CellID->476137073]
+ CellID->1270626]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -776,7 +792,7 @@ Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"ExpandPartialD",
  CellLabel->"Out[12]=",
- CellID->803154312]
+ CellID->1503936453]
 }, Open  ]]
 }, Open  ]],
 
@@ -850,3 +866,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

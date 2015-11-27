@@ -220,21 +220,116 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ RowBox[{"t1", "=", 
+  RowBox[{
+   RowBox[{"5", 
+    RowBox[{"SP", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", "p"}], "+", 
+       RowBox[{"3", "r"}]}], ",", 
+      RowBox[{"p", "+", "r"}]}], "]"}]}], "//", "FCI"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->42990982],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"5", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"], "+", 
+       OverscriptBox[
+        FormBox["r",
+         TraditionalForm], "_"]}],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{
+       RowBox[{"2", " ", 
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"]}], "+", 
+       RowBox[{"3", " ", 
+        OverscriptBox[
+         FormBox["r",
+          TraditionalForm], "_"]}]}],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->1644370118]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"t2", "=", 
   RowBox[{"CompleteSquare", "[", 
    RowBox[{"t1", ",", "p"}], "]"}]}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[1]:=",
+ CellLabel->"In[3]:=",
  CellID->1825124248],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-  "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}], 
-  TraditionalForm]], "Output",
+   RowBox[{"10", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "+", 
+        FractionBox[
+         RowBox[{"5", " ", 
+          OverscriptBox[
+           FormBox["r",
+            TraditionalForm], "_"]}], "4"]}],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "+", 
+        FractionBox[
+         RowBox[{"5", " ", 
+          OverscriptBox[
+           FormBox["r",
+            TraditionalForm], "_"]}], "4"]}],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}], "-", 
+   FractionBox[
+    RowBox[{"5", " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["r",
+         TraditionalForm], "_"],
+       TraditionalForm], "2"]}], "8"]}], TraditionalForm]], "Output",
  CellTags->"CompleteSquare",
- CellLabel->"Out[1]=",
- CellID->1183822476]
+ CellLabel->"Out[3]=",
+ CellID->332224925]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -245,18 +340,14 @@ Cell[BoxData[
    RowBox[{"t1", "-", "t2"}], "//", "ScalarProductExpand"}], "//", 
   "Expand"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[2]:=",
+ CellLabel->"In[4]:=",
  CellID->1768514898],
 
 Cell[BoxData[
- FormBox[
-  RowBox[{"t1", "-", 
-   RowBox[{
-   "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}]}], 
-  TraditionalForm]], "Output",
+ FormBox["0", TraditionalForm]], "Output",
  CellTags->"CompleteSquare",
- CellLabel->"Out[2]=",
- CellID->1343668443]
+ CellLabel->"Out[4]=",
+ CellID->2142949469]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -265,24 +356,53 @@ Cell[BoxData[
  RowBox[{"CompleteSquare", "[", 
   RowBox[{"t1", ",", "p", ",", "q"}], "]"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[3]:=",
+ CellLabel->"In[5]:=",
  CellID->1850431752],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-  "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}], 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"10", " ", 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm], "2"]}], "-", 
+     FractionBox[
+      RowBox[{"5", " ", 
+       SuperscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["r",
+           TraditionalForm], "_"],
+         TraditionalForm], "2"]}], "8"]}], ",", 
+    RowBox[{
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"], "\[Rule]", 
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "+", 
+      FractionBox[
+       RowBox[{"5", " ", 
+        OverscriptBox[
+         FormBox["r",
+          TraditionalForm], "_"]}], "4"]}]}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"CompleteSquare",
- CellLabel->"Out[3]=",
- CellID->237327102]
+ CellLabel->"Out[5]=",
+ CellID->468779431]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[4]:=",
+ CellLabel->"In[6]:=",
  CellID->1021144564]
 }, Open  ]],
 
@@ -356,3 +476,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+
