@@ -1,0 +1,32 @@
+
+
+(* :Title: CovariantD.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for CovariantD	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstCovariantD = {
+
+{"fcstCovariantD-ID1","MatchQ[CovariantD[mu, Explicit -> True]//FCE,
+-I Gstrong SUNT[SUNIndex[x_]].QuantumField[GaugeField,LorentzIndex[mu], SUNIndex[x_]] +
+RightPartialD[LorentzIndex[mu]]]","True"},
+{"fcstCovariantD-ID2","MatchQ[CovariantD[OPEDelta, a, b, Explicit -> True] // FCE,
+RightPartialD[Momentum[OPEDelta]] SD[a, b] -
+Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
+	SUNIndex[x_]] SUNF[a, b, x_]]","True"},
+{"fcstCovariantD-ID3","MatchQ[CovariantD[OPEDelta, a, b, {2}] //
+FCE, (RightPartialD[Momentum[OPEDelta]] SUNDelta[a, x_] -
+	Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
+	SUNIndex[z_]] SUNF[a, x_, z_]).(RightPartialD[
+	Momentum[OPEDelta]] SUNDelta[b, x_] -
+	Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
+	SUNIndex[y_]] SUNF[x_, b, y_])]","True"}
+};

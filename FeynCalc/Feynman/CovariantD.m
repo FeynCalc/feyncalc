@@ -118,9 +118,7 @@ CovariantD[al_, ru___Rule ] :=
 		g = CouplingConstant /. {ru}  /. Options[CovariantD];
 		du = DummyIndex /. {ru}  /. Options[CovariantD];
 		If[ du === Automatic,
-			If[ $Notebooks,
-				cC = Unique["c"]
-			],
+			cC = Unique["c"],
 			cC = du
 		];
 		(*
@@ -144,9 +142,7 @@ CovariantD[al_, a_, b_, ru___Rule ] :=
 		partial = FCPartialD /. {ru} /. Options[CovariantD];
 		du = DummyIndex /. {ru}  /. Options[CovariantD];
 		If[ du === Automatic,
-			If[ $Notebooks,
-				cC = Unique["c"]
-			],
+			cC = Unique["c"],
 			cC = du
 		];
 		SUNDelta[a, b] partial[al] -
@@ -175,19 +171,10 @@ CovariantD[OPEDelta, a___,
 gen[ruli_List][o_, m_, aA_, g_] :=
 	Block[ {partiaL},
 		partiaL = FCPartialD /. ruli;
-		(
-			If[ $Notebooks,
-				e = Unique2["e"]
-			];
-			If[ $Notebooks,
-				c = Unique2["c"]
-			];
-			If[ $Notebooks,
-				i = Unique2["i"]
-			];
-			If[ $Notebooks,
-				j = Unique2["j"]
-			];
+		( 	e = Unique2["e"];
+			c = Unique2["c"];
+			i = Unique2["i"];
+			j = Unique2["j"];
 			g^o Expand[Trick[
 				If[ o=!=0,
 					0,
@@ -239,19 +226,10 @@ opesum[a_, b__] :=
 gen[ruli_List][o_, m_, a_, b_, aA_, g_] :=
 	Block[ {partiaL},
 		partiaL = FCPartialD /. ruli;
-		(
-			If[ $Notebooks,
-				e = Unique2["e"]
-			];
-			If[ $Notebooks,
-				c = Unique2["c"]
-			];
-			If[ $Notebooks,
-				i = Unique2["i"]
-			];
-			If[ $Notebooks,
-				j = Unique2["j"]
-			];
+	(		e = Unique2["e"];
+			c = Unique2["c"];
+			i = Unique2["i"];
+			j = Unique2["j"];
 			g^o Expand[Trick[
 				If[ o=!=0,
 					0,
