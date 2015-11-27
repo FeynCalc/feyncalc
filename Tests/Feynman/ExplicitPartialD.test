@@ -1,0 +1,34 @@
+
+
+(* :Title: ExplicitPartialD.test											*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ExplicitPartialD  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstExplicitPartialD =
+({
+{"fcstExplicitPartialD-ID1",
+"ExplicitPartialD[ LeftRightPartialD[mu]]//FCE",
+"(-LeftPartialD[LorentzIndex[mu]] + \
+RightPartialD[LorentzIndex[mu]])/2"},
+{"fcstExplicitPartialD-ID2",
+"ExplicitPartialD[ LeftRightPartialD[mu]]//FCE",
+"(-LeftPartialD[LorentzIndex[mu]] + \
+RightPartialD[LorentzIndex[mu]])/2"},
+{"fcstExplicitPartialD-ID3",
+"ExplicitPartialD[ LeftRightPartialD[OPEDelta] ]//FCE",
+"(-LeftPartialD[Momentum[OPEDelta]] + \
+RightPartialD[Momentum[OPEDelta]])/2"},
+{"fcstExplicitPartialD-ID4",
+"ExplicitPartialD[16 LeftRightPartialD[OPEDelta]^4]//FCE",
+"(-LeftPartialD[Momentum[OPEDelta]] + \
+RightPartialD[Momentum[OPEDelta]])^4"}
+});
