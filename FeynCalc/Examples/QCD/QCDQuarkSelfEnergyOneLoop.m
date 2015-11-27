@@ -77,7 +77,7 @@ quarSelfEnergy=I*ampsSing//Collect[#,M,Simplify]&
 quarSelfEnergyMuta=-(-Gstrong^2/(4Pi)^2 CF*(3+GaugeXi)(1/Epsilon)*M+GS[p]*Gstrong^2/(4Pi)^2*
 		CF*GaugeXi*(1/Epsilon))SDF[Col1,Col2]//FCI;
 Print["Check with Muta, Eq 2.5.138: ",
-			If[Simplify[quarSelfEnergy-FCI[quarSelfEnergyMuta]]===0, "Correct.", "Mistake!"]];
+			If[Simplify[quarSelfEnergy-FCI[quarSelfEnergyMuta]]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
@@ -90,4 +90,4 @@ ReplaceAll[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//SelectNotFree[#,
 
 ampsSingMasslessPeskin=I*Gstrong^2/(4Pi)^2*GS[p]*CF*(1/Epsilon)SDF[Col1,Col2]//FCI;
 Print["Check with Peskin and Schroeder, Eq 16.76: ",
-			If[Simplify[ampsSingMassless-FCI[ampsSingMasslessPeskin]]===0, "Correct.", "Mistake!"]];
+			If[Simplify[ampsSingMassless-FCI[ampsSingMasslessPeskin]]===0, "CORRECT.", "!!! WRONG !!!"]];

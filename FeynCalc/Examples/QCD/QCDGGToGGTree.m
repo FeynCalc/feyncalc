@@ -88,4 +88,4 @@ masslesssqAmpGGToGG=TrickMandelstam[sqAmpGGToGG,{s,t,u,0}]
 
 masslesssqAmpGGToGGEllis=(9/2)Gstrong^4 (3 - t u/s^2 - s u/t^2 - s t/u^2);
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
-			If[TrickMandelstam[Simplify[masslesssqAmpGGToGGEllis-masslesssqAmpGGToGG],{s,t,u,0}]===0, "Correct.", "Mistake!"]];
+			If[TrickMandelstam[Simplify[masslesssqAmpGGToGGEllis-masslesssqAmpGGToGG],{s,t,u,0}]===0, "CORRECT.", "!!! WRONG !!!"]];

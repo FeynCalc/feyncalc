@@ -66,4 +66,4 @@ masslessSqAmpMoeller = (sqAmpMoeller /. {ME -> 0})//Simplify
 masslessSqAmpMoellerLiterature = 
 2 EL^4 (s^2/t^2+ u^2/t^2   + s^2/u^2 + t^2/u^2   ) + 4 EL^4 s^2/(t u);
 Print["Check with the known result: ",
-			If[Simplify[(masslessSqAmpMoellerLiterature-masslessSqAmpMoeller)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[(masslessSqAmpMoellerLiterature-masslessSqAmpMoeller)]===0, "CORRECT.", "!!! WRONG !!!"]];

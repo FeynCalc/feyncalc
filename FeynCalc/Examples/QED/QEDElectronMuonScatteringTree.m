@@ -69,7 +69,7 @@ masslessElectronsSqAmpElMuScatPeskin= (8EL^4 (SP[p1,k2]SP[p2,k1]+SP[p1,p2]SP[k1,
 		MMu^2 SP[p1,k1]))/(SP[k1-p1])^2// ReplaceAll[#,ME->0]&//FCI//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.61: ",
 		If[(masslessElectronsSqAmpElMuScatPeskin-masslessElectronsSqAmpElMuScat)===0,
-		"Correct.", "Mistake!"]];
+		"CORRECT.", "!!! WRONG !!!"]];
 
 
 masslessElectronsMuonsSqAmpElMuScat = (masslessElectronsSqAmpElMuScat /. {MMu -> 0})//Simplify
@@ -78,4 +78,4 @@ masslessElectronsMuonsSqAmpElMuScat = (masslessElectronsSqAmpElMuScat /. {MMu ->
 mmasslessElectronsMuonsSqAmpElMuScatPeskin=((8EL^4/t^2)((s/2)^2+(u/2)^2))//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.71: ",
 		If[(mmasslessElectronsMuonsSqAmpElMuScatPeskin-masslessElectronsMuonsSqAmpElMuScat)===0,
-		"Correct.", "Mistake!"]];
+		"CORRECT.", "!!! WRONG !!!"]];

@@ -70,7 +70,7 @@ masslessElectronsMuonsSqAmpMuonProdPeskin = (8EL^4 (SP[p1,k1]SP[p2,k2]+SP[p1,k2]
 		ReplaceAll[#,ME->0]&//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.10: ",
 		If[(masslessElectronsMuonsSqAmpMuonProdPeskin-masslessElectronsSqAmpMuonProd)===0,
-		"Correct.", "Mistake!"]];
+		"CORRECT.", "!!! WRONG !!!"]];
 
 
 masslessElectronsMuonsSqAmpMuonProd = (masslessElectronsSqAmpMuonProd /. {MMu -> 0})//Simplify
@@ -78,7 +78,7 @@ masslessElectronsMuonsSqAmpMuonProd = (masslessElectronsSqAmpMuonProd /. {MMu ->
 
 masslessElectronsMuonsSqAmpMuonProdPeskinMandelstam=((8EL^4/s^2)((t/2)^2+(u/2)^2))//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.70: ",
-			If[(masslessElectronsMuonsSqAmpMuonProdPeskinMandelstam-masslessElectronsMuonsSqAmpMuonProd)===0, "Correct.", "Mistake!"]];
+			If[(masslessElectronsMuonsSqAmpMuonProdPeskinMandelstam-masslessElectronsMuonsSqAmpMuonProd)===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Section:: *)
@@ -97,4 +97,4 @@ sqAmpMuonProdElRPosLMuRAntiMuL = (((ampMuonProdElRPosLMuRAntiMuL (ComplexConjuga
 sqAmpMuonProdElRPosLMuRAntiMuLPeskin=(16EL^4 (SP[p1,k2]SP[p2,k1]))/(SP[p1+p2])^2//
 		ReplaceAll[#,{ME->0,MMu->0}]&//FCI//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.21: ",
-			If[(sqAmpMuonProdElRPosLMuRAntiMuLPeskin-sqAmpMuonProdElRPosLMuRAntiMuL)===0, "Correct.", "Mistake!"]];
+			If[(sqAmpMuonProdElRPosLMuRAntiMuLPeskin-sqAmpMuonProdElRPosLMuRAntiMuL)===0, "CORRECT.", "!!! WRONG !!!"]];

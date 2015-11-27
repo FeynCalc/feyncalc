@@ -65,4 +65,4 @@ onePhotonTadpoleFinal = ampsEval//TID[#,q]&
 
 
 Print["The 1-photon tadpole diagrams in QED vanish: ",
-			If[Simplify[onePhotonTadpoleFinal]===0, "Correct.", "Mistake!"]];
+			If[Simplify[onePhotonTadpoleFinal]===0, "CORRECT.", "!!! WRONG !!!"]];

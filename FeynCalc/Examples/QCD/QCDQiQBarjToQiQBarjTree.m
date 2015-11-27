@@ -64,4 +64,4 @@ masslesssqAmpQiQBarjToQiQBarj = (sqAmpQiQBarjToQiQBarj /. {MU -> 0,MC->0})//Simp
 
 masslesssqAmpQiQBarjToQiQBarjEllis=((4/9)Gstrong^4 (s^2+u^2)/t^2);
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
-			If[(masslesssqAmpQiQBarjToQiQBarjEllis-masslesssqAmpQiQBarjToQiQBarj)===0, "Correct.", "Mistake!"]];
+			If[(masslesssqAmpQiQBarjToQiQBarjEllis-masslesssqAmpQiQBarjToQiQBarj)===0, "CORRECT.", "!!! WRONG !!!"]];

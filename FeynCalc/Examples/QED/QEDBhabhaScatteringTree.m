@@ -65,4 +65,4 @@ masslessSqAmpBhabha = (sqAmpBhabha /. {ME -> 0})//Simplify
 masslessSqAmpBhabhaLiterature = 
 (2 EL^4 (s^2+u^2)/t^2 + 4  EL^4 u^2/(s t) + 2 EL^4 (t^2+u^2)/s^2);
 Print["Check with the known result: ",
-			If[Simplify[(masslessSqAmpBhabhaLiterature-masslessSqAmpBhabha)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[(masslessSqAmpBhabhaLiterature-masslessSqAmpBhabha)]===0, "CORRECT.", "!!! WRONG !!!"]];

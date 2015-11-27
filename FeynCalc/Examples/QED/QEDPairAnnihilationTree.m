@@ -64,7 +64,7 @@ sqAmpPairAnnihilation = (ampPairAnnihilation (ComplexConjugate[ampPairAnnihilati
 sqAmpPairAnnihilationPeskin = (2EL^4(SP[p1,k2]/SP[p1,k1]+SP[p1,k1]/SP[p1,k2]+
 		2ME^2 (1/SP[p1,k1]+1/SP[p1,k2])-ME^4 (1/SP[p1,k1]+1/SP[p1,k2])^2))//FCI//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.105: ",
-			If[(sqAmpPairAnnihilationPeskin-sqAmpPairAnnihilation)===0, "Correct.", "Mistake!"]];
+			If[(sqAmpPairAnnihilationPeskin-sqAmpPairAnnihilation)===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 sqMasslessAmpPairAnnihilation=sqAmpPairAnnihilation//ReplaceAll[#,ME->0]&

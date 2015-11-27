@@ -73,5 +73,5 @@ approxSqAmpMuonDecayTree = (sqAmpMuonDecayTree /. {ME -> 0,ScalarProduct[p1,p2]:
 
 approxSqAmpMuonDecayTreeKnown=64GF^2ScalarProduct[p,p2]ScalarProduct[p1,p3];
 Print["Check with the literature: ",
-			If[Simplify[approxSqAmpMuonDecayTree-approxSqAmpMuonDecayTreeKnown]===0, "Correct.", "Mistake!"]];
+			If[Simplify[approxSqAmpMuonDecayTree-approxSqAmpMuonDecayTreeKnown]===0, "CORRECT.", "!!! WRONG !!!"]];
 

@@ -64,7 +64,7 @@ sqAmpCompton = (ampCompton (ComplexConjugate[ampCompton]//FCRenameDummyIndices))
 sqAmpComptonPeskin = (2EL^4(SP[p1,k2]/SP[p1,k1]+SP[p1,k1]/SP[p1,k2]+
 		2ME^2 (1/SP[p1,k1]-1/SP[p1,k2])+ME^4 (1/SP[p1,k1]-1/SP[p1,k2])^2))//FCI//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.87: ", If[(sqAmpComptonPeskin-sqAmpCompton)===0,
-		"Correct.", "Mistake!"]];
+		"CORRECT.", "!!! WRONG !!!"]];
 
 
 masslessSqAmpCompton = (sqAmpCompton /. {ME -> 0})//Simplify

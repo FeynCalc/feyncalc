@@ -59,4 +59,4 @@ threePhotonFinal=Simplify[(amps/.{DiracTrace->Tr})]
 
 
 Print["The 3-photon diagrams in QED vanish: ",
-			If[Simplify[threePhotonFinal]===0, "Correct.", "Mistake!"]];
+			If[Simplify[threePhotonFinal]===0, "CORRECT.", "!!! WRONG !!!"]];

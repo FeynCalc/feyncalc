@@ -65,4 +65,4 @@ masslesssqAmpGQiToQGi = TrickMandelstam[(sqAmpGQiToQGi /. {MU -> 0})//Simplify,{
 
 masslesssqAmpGQiToQGiEllis=-(4/9)Gstrong^4 (s^2+u^2)/(s u)+Gstrong^4 (u^2+s^2)/(t^2);
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
-			If[TrickMandelstam[Simplify[masslesssqAmpGQiToQGiEllis-masslesssqAmpGQiToQGi],{s,t,u,0}]===0, "Correct.", "Mistake!"]];
+			If[TrickMandelstam[Simplify[masslesssqAmpGQiToQGiEllis-masslesssqAmpGQiToQGi],{s,t,u,0}]===0, "CORRECT.", "!!! WRONG !!!"]];

@@ -162,7 +162,7 @@ ReplaceAll[#,SEpsilon[4 - 2*Epsilon]^2->eta^2]&
 
 G2qFinalPaper = (((CA*eta^2*Gstrong^4*T)/(-pp)^(2*Epsilon))(-53/8 - 1/(2*Epsilon^2) - 7/(4*Epsilon))/(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.13: ",
-			If[Simplify[((G2qFinal/.{Dot->Times})-G2qFinalPaper)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[((G2qFinal/.{Dot->Times})-G2qFinalPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
@@ -179,7 +179,7 @@ ReplaceAll[#,SEpsilon[4 - 2*Epsilon]^2->eta^2]&
 G2xiRedPaper=(((CA^2*eta^2*Gstrong^4)/(-pp)^(2*Epsilon)) *( 3 + (1 + GaugeXi/2)/Epsilon + GaugeXi +
 		(4 + 4*GaugeXi + GaugeXi^2)/(16*Epsilon^2))/(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.14: ",
-			If[Simplify[((G2xiRedFinal/.{Dot->Times})-G2xiRedPaper)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[((G2xiRedFinal/.{Dot->Times})-G2xiRedPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
@@ -199,7 +199,7 @@ G2xiIrredPaper=(((CA^2*eta^2*Gstrong^4)/(-pp)^(2*Epsilon)) (  1/Epsilon(67/16 - 
 		(1 + (3*GaugeXi)/16 - (3*GaugeXi^2)/32)/Epsilon^2 + 503/32 +(-73*GaugeXi)/64 +
 (3*GaugeXi^2)/8 - (3*Zeta[3])/4 - (3*GaugeXi^2*Zeta[3])/16)/(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.12: ",
-			If[Simplify[((G2xiIrredFinal/.{Dot->Times})-G2xiIrredPaper)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[((G2xiIrredFinal/.{Dot->Times})-G2xiIrredPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
 
 
 (* ::Text:: *)
@@ -213,4 +213,4 @@ G2xPaper=(((CA^2*eta^2*Gstrong^4)/(-pp)^(2*Epsilon)) * ((83/16 + 7/32*GaugeXi)/E
 		(5/4 + 7/16*GaugeXi - 1/32 GaugeXi^2)/Epsilon^2 + 599/32 - 3/4 Zeta[3] - 9/64 GaugeXi + 3/8 GaugeXi^2 - 3/16 GaugeXi^2 Zeta[3] )/
 	(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.15: ",
-			If[Simplify[((G2xFinal/.{Dot->Times})-G2xPaper)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[((G2xFinal/.{Dot->Times})-G2xPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];

@@ -65,4 +65,4 @@ masslesssqAmpQiQiToQiQi = (sqAmpQiQiToQiQi /. {MU -> 0})//Simplify
 
 masslesssqAmpQiQiToQiQiEllis=((4/9)Gstrong^4 ((s^2+u^2)/t^2+(s^2+t^2)/u^2)-(8/27)Gstrong^4 s^2/(t u));
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
-			If[Simplify[(masslesssqAmpQiQiToQiQiEllis-masslesssqAmpQiQiToQiQi)]===0, "Correct.", "Mistake!"]];
+			If[Simplify[(masslesssqAmpQiQiToQiQiEllis-masslesssqAmpQiQiToQiQi)]===0, "CORRECT.", "!!! WRONG !!!"]];
