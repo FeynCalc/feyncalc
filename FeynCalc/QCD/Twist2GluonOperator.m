@@ -77,7 +77,7 @@ Mo[a_,b_] :=
 		Expand[Momentum[a, b]// MomentumExpand]
 	];
 
-Twist2GluonOperator[pi_, {mui_,  ai_}, {nui_, bi_},    opt___Rule] :=
+Twist2GluonOperator[pi_, {mui_,  ai_}, {nui_, bi_},    opt:OptionsPattern[]] :=
 	Block[ {re,pol,a,b, zmi, so,p1,p2, dim},
 		dim = OptionValue[Dimension];
 		pol = OptionValue[Polarization];
@@ -825,7 +825,7 @@ o415[l1_, l2_, l3_, l4_, p1_, p2_, p3_, p4_, del_
 	Pair[del, l2]*Pair[del, l4]*Pair[p2, p4])
 	) /. { ((-1)^OPEi a_^OPEi) :> (-a)^OPEi,
 	((-1)^OPEj a_^(OPEj-OPEi) b_^OPEi) :>
-	   ((-a)^(OPEj-OPEi) (-b)^OPEi)
+	((-a)^(OPEj-OPEi) (-b)^OPEi)
 	};
 
 (*4GLUON*)

@@ -105,7 +105,7 @@ GluonVertex[_,x1_,x2_,_, x3_,x4_,_, x5_,x6_,_, x7_,x8_,    opts:OptionsPattern[]
 	GluonVertex[{x1,x2}, {x3,x4}, {x5,x6}, {x7,x8}, opts] /;
 	FreeQ2[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8}]], {Integer, Rule, RuleDelayed}];
 
-GluonVertex[{p___, mui_, ai_}, {q___, nui_, bi_}, {r___, lai_, ci_}, {s___, sii_, di_}, OptionsPattern] :=
+GluonVertex[{p___, mui_, ai_}, {q___, nui_, bi_}, {r___, lai_, ci_}, {s___, sii_, di_}, OptionsPattern[]] :=
 	Block[ {gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope, coup},
 		coup  = OptionValue[CouplingConstant];
 		dim   = OptionValue[Dimension];
