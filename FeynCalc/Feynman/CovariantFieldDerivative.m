@@ -1,12 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: CovariantFieldDerivative *)
+(* :Title: CovariantFieldDerivative											*)
 
-(* :Author: Frederik Orellana *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 20 February 2003 at 22:01 *)
-(* ------------------------------------------------------------------------ *)
+(* :Summary: Gauge covariant field derivative								*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -18,9 +23,7 @@ definitions by default. The user is must supply his/her own \
 definition of the actual function.";
 
 CDr::usage =
-"CDr is the shorthand notation for
-CovariantFieldDerivative";
-
+"CDr is the shorthand notation for CovariantFieldDerivative";
 
 Begin["`Package`"]
 End[]
@@ -34,54 +37,40 @@ CDr = CovariantFieldDerivative;
 Options[CovariantFieldDerivative] = {};
 
 CovariantFieldDerivative /:
-	MakeBoxes[CovariantFieldDerivative[a_, lis___FCPartialD,
-___Rule], TraditionalForm] :=
-RowBox[{SubscriptBox[
-MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
-	RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
-	MakeBoxes[TraditionalForm[a]], ")"}];
+	MakeBoxes[CovariantFieldDerivative[a_, lis___FCPartialD, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubscriptBox[MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
+		RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
+		MakeBoxes[TraditionalForm[a]], ")"}];
 
 CovariantFieldDerivative /:
-MakeBoxes[CovariantFieldDerivative[a_, _, {lis___}, ___Rule],
-TraditionalForm] :=
-RowBox[{SubscriptBox[
-MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
-	RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
-	MakeBoxes[TraditionalForm[a]], ")"}];
+	MakeBoxes[CovariantFieldDerivative[a_, _, {lis___}, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubscriptBox[MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
+		RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
+		MakeBoxes[TraditionalForm[a]], ")"}];
 
 CovariantFieldDerivative /:
-MakeBoxes[CovariantFieldDerivative[a_, {lis___}, ___Rule],
-TraditionalForm] :=
-RowBox[{SubscriptBox[
-MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
-	RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
-	MakeBoxes[TraditionalForm[a]], ")"}];
+	MakeBoxes[CovariantFieldDerivative[a_, {lis___}, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubscriptBox[MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
+		RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
+		MakeBoxes[TraditionalForm[a]], ")"}];
 
 CovariantFieldDerivative /:
-MakeBoxes[CovariantFieldDerivative[a_, _,
-lis___LorentzIndex,
-___Rule],
-TraditionalForm] :=
-RowBox[{SubscriptBox[
-MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
-	RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
-	MakeBoxes[TraditionalForm[a]], ")"}];
+	MakeBoxes[CovariantFieldDerivative[a_, _, lis___LorentzIndex, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubscriptBox[MakeBoxes[ StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
+		RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
+		MakeBoxes[TraditionalForm[a]], ")"}];
 
 CovariantFieldDerivative /:
-	MakeBoxes[CovariantFieldDerivative[a_, lis___FCPartialD],
-TraditionalForm] :=
-RowBox[{SubscriptBox[
-MakeBoxes[StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
-RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
-MakeBoxes[TraditionalForm[a]], ")"}];
+	MakeBoxes[CovariantFieldDerivative[a_, lis___FCPartialD], TraditionalForm] :=
+		RowBox[{SubscriptBox[MakeBoxes[StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
+		RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
+		MakeBoxes[TraditionalForm[a]], ")"}];
 
 CovariantFieldDerivative /:
-	MakeBoxes[CovariantFieldDerivative[a_, lis___List],
-TraditionalForm] :=
-RowBox[{SubscriptBox[
-MakeBoxes[StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
-RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
-MakeBoxes[TraditionalForm[a]], ")"}];
+	MakeBoxes[CovariantFieldDerivative[a_, lis___List], TraditionalForm] :=
+		RowBox[{SubscriptBox[MakeBoxes[StyleForm["\[ScriptCapitalD]", FontSlant -> "Italic"]],
+		RowBox[MakeBoxes[TraditionalForm[#]] & /@ {lis}]], "(",
+		MakeBoxes[TraditionalForm[a]], ")"}];
 
 
 FCPrint[1,"CovariantFieldDerivative.m loaded."];
