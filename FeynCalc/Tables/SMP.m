@@ -10,18 +10,16 @@
 
 (* ------------------------------------------------------------------------ *)
 
-SMP::usage= "SMP[par] substitutes a symbol for the
-Standard Model parameter par.
-SMP[] gives the list of substitutions.
-par should be a string; e.g., MP[\"SW\"] gives
-sw (in the Global` context).";
+SMP::usage= "SMP[par] substitutes a symbol for the Standard Model parameter par. \
+SMP[] gives the list of substitutions. par should be a string; e.g., MP[\"SW\"] gives \
+FCGV[\"sw\"].";
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]
 
-Begin["`fctables`Private`"]
+Begin["`SMP`Private`"]
 
 
 SMP[] := SMP[] =
