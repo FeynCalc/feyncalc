@@ -1,32 +1,34 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FieldStrength *)
+(* :Title: FieldStrength													*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 16 March '98 at 11:52 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: F_{\mu \nu}^a *)
+(* :Summary: Field strength tensor											*)
 
 (* ------------------------------------------------------------------------ *)
 
 FieldStrength::usage =
-"FieldStrength[mu,nu,a] is the field strength tensor
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu^a +
-g f^{abc} A_mu^b A_nu^c.
-FieldStrength[mu,nu] is the field strength tensor
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu.
-The name of the field (A) and the coupling constant (g)
-can be set through the options or by additional arguments:
-FieldStrength[mu,nu,a, A, g] or, specifying the dummy
+"FieldStrength[mu,nu,a] is the field strength tensor \
+F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu^a + \
+g f^{abc} A_mu^b A_nu^c. \
+
+FieldStrength[mu,nu] is the field strength tensor \
+F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu. \
+The name of the field (A) and the coupling constant (g) \
+can be set through the options or by additional arguments: \
+FieldStrength[mu,nu,a, A, g] or, specifying the dummy \
 color indices: FieldStrength[mu,nu,a, {A,b,c}, g].";
 
 IndexPosition::usage =
 "IndexPosition is an option for FieldStrength.";
-
-(* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]
@@ -49,7 +51,6 @@ FieldStrength[mu___, OPEDelta, nu___] :=
 FieldStrength[mu_, nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
 	(QuantumField[FCPartialD[LorentzIndex[mu]],aA, LorentzIndex[nu], SUNIndex[a]] -
 	QuantumField[FCPartialD[LorentzIndex[nu]],aA,    LorentzIndex[mu], SUNIndex[a]] +
-	(* dat is hEEEEEl belangrijk .... *)
 	g SUNF[a, b, c] DOT[QuantumField[aA, LorentzIndex[mu], SUNIndex[b]],
 	QuantumField[aA, LorentzIndex[nu], SUNIndex[c]]]) /;
 	FreeQ2[{mu,nu}, {Momentum, OPEDelta}] && OptionValue[Explicit];
@@ -57,7 +58,6 @@ FieldStrength[mu_, nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPatter
 FieldStrength[mu_, Momentum[OPEDelta], a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
 	(QuantumField[FCPartialD[LorentzIndex[mu]], aA, Momentum[OPEDelta], SUNIndex[a]] -
 	QuantumField[FCPartialD[Momentum[OPEDelta]],aA, LorentzIndex[mu], SUNIndex[a]] +
-	(* dat is hEEEEEl belangrijk .... *)
 	g SUNF[a, b, c] DOT[QuantumField[aA, LorentzIndex[mu], SUNIndex[b]],
 	QuantumField[aA, Momentum[OPEDelta], SUNIndex[c]]]) /;
 	FreeQ2[{mu}, {Momentum, OPEDelta}] && OptionValue[Explicit];
@@ -66,7 +66,6 @@ FieldStrength[mu_, Momentum[OPEDelta], a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule
 FieldStrength[Momentum[OPEDelta], nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
 	(QuantumField[FCPartialD[Momentum[OPEDelta]], aA, LorentzIndex[nu], SUNIndex[a]] -
 	QuantumField[FCPartialD[LorentzIndex[nu]],aA, Momentum[OPEDelta], SUNIndex[a]] +
-	(* dat is hEEEEEl belangrijk .... *)
 	g SUNF[a, b, c] DOT[QuantumField[aA, Momentum[OPEDelta], SUNIndex[b]],
 	QuantumField[aA, LorentzIndex[nu], SUNIndex[c]]]) /;
 	FreeQ2[{nu}, {Momentum, OPEDelta}] && OptionValue[Explicit];

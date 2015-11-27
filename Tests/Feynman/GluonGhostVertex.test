@@ -1,0 +1,23 @@
+
+
+(* :Title: GluonGhostVertex.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for GluonGhostVertex	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstGluonGhostVertex = {
+
+{"fcstGluonGhostVertex-ID1","GluonGhostVertex[{p, mu, a}, {q, nu, b}, {k, rho, c}]//FCE",
+"GluonGhostVertex[k, mu] SUNF[a, b, c]"},
+{"fcstGluonGhostVertex-ID2","GluonGhostVertex[{p, mu, a}, {q, nu, b}, {k, rho, c}, Explicit -> True] // FCE",
+"-Gstrong FVD[k, mu] SUNF[a, b, c]"}
+
+};

@@ -1,0 +1,30 @@
+
+
+(* :Title: GluonSelfEnergy.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for GluonSelfEnergy	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstGluonSelfEnergy = ({
+{"fcstGluonSelfEnergy-ID1", "GluonSelfEnergy[{mu,a},{nu,b}]//FCE",
+"(I/2)*CA*(-62/9 + 20/(3*Epsilon))*Gstrong^2*SD[a, \
+b]*(FVD[FCGV[\"p\"], mu]*FVD[FCGV[\"p\"], nu] - MTD[mu, nu]*SPD[FCGV[\
+\"p\"], FCGV[\"p\"]]) + I*(20/9 - 8/(3*Epsilon))*Gstrong^2*Tf*SD[a, \
+b]*(FVD[FCGV[\"p\"], mu]*FVD[FCGV[\"p\"], nu] - MTD[mu, nu]*SPD[FCGV[\
+\"p\"], FCGV[\"p\"]])"},
+{"fcstGluonSelfEnergy-ID2",
+"GluonSelfEnergy[{mu,a},{nu,b},Gauge\[Rule]\[Xi]]//FCE",
+"I*(20/9 - 8/(3*Epsilon))*Gstrong^2*Tf*SD[a, b]*(FVD[FCGV[\"p\"], \
+mu]*FVD[FCGV[\"p\"], nu] - MTD[mu, nu]*SPD[FCGV[\"p\"], FCGV[\"p\"]]) \
++ (I/2)*CA*Gstrong^2*(-62/9 + 2*(1 - \[Xi]) - (1 - \[Xi])^2/2 + \
+(2*(13/3 - \[Xi]))/Epsilon)*SD[a, b]*(FVD[FCGV[\"p\"], \
+mu]*FVD[FCGV[\"p\"], nu] - MTD[mu, nu]*SPD[FCGV[\"p\"], FCGV[\"p\"]])"}
+});

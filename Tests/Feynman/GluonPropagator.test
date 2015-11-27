@@ -1,0 +1,67 @@
+
+
+(* :Title: GluonPropagator.test                                             *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for GluonPropagator	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstGluonPropagator = ({
+{"fcstGluonPropagator-ID1",
+"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]al]//Explicit//FCE",
+"I*FAD[p]*((1 - al)*FAD[p]*FVD[p, mu]*FVD[p, nu] - MTD[mu, \
+nu])*SD[a, b]"},
+{"fcstGluonPropagator-ID2",
+"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{Momentum[n],1}]\
+//Explicit//FCE",
+"I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
+mu]*FVD[p, nu])/SPD[n, p] - (FVD[p, mu]*FVD[p, nu]*SPD[n, n] - FVD[n, \
+mu]*FVD[n, nu]*SPD[p, p])/SPD[n, p]^2)"},
+{"fcstGluonPropagator-ID3",
+"GluonPropagator[p,mu,nu]//Explicit//FCE",
+"(-I)*FAD[p]*MTD[mu, nu]"},
+{"fcstGluonPropagator-ID4",
+"Explicit[GP[p,1,2],Gauge\[Rule]xi]//FCE",
+"I*FAD[p]*((1 - xi)*FAD[p]*FVD[p, li1]*FVD[p, li2] - MTD[li1, \
+li2])*SD[ci1, ci2]"},
+{"fcstGluonPropagator-ID5",
+"GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule] 1]//Explicit//FCE",
+	"((-I)*CA*Gstrong^2*Sn*SD[a, b]*((11*FVD[p, mu]*FVD[p, nu])/3 - \
+(19*MTD[mu, nu]*SPD[p, p])/6))/Epsilon"},
+{"fcstGluonPropagator-ID6",
+"GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule]2]//Explicit//FCE",
+"((-I)*CA*Gstrong^2*Sn*SD[a, b]*(-(FVD[p, mu]*FVD[p, nu])/3 - \
+(MTD[mu, nu]*SPD[p, p])/6))/Epsilon"},
+{"fcstGluonPropagator-ID7",
+"GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule]3]//Explicit//FCE",
+"((-2*I)*Gstrong^2*Sn*Tf*SD[a, b]*((-4*FVD[p, mu]*FVD[p, nu])/3 + \
+(4*MTD[mu, nu]*SPD[p, p])/3))/Epsilon"},
+{"fcstGluonPropagator-ID8",
+"GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule]4]//Explicit//FCE",
+"((-I)*CA*Gstrong^2*Sn*SD[a, b]*((10*FVD[p, mu]*FVD[p, nu])/3 - \
+(10*MTD[mu, nu]*SPD[p, p])/3))/Epsilon"},
+{"fcstGluonPropagator-ID9",
+"GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule]5]//Explicit//FCE",
+"(I*CA*Gstrong^2*Sn*SD[a, b]*((10*FVD[p, mu]*FVD[p, nu])/3 - \
+(10*MTD[mu, nu]*SPD[p, p])/3))/Epsilon + (I*Gstrong^2*Sn*Tf*SD[a, \
+b]*((-4*FVD[p, mu]*FVD[p, nu])/3 + (4*MTD[mu, nu]*SPD[p, \
+p])/3))/Epsilon"},
+{"fcstGluonPropagator-ID10",
+"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{n,0},Explicit\[Rule]True]\
+//FCE", "I*FAD[p]*SD[a, b]*(-MTD[mu, nu] - (FVD[p, mu]*FVD[p, \
+nu]*SPD[n, n])/SPD[n, p]^2 + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
+mu]*FVD[p, nu])/SPD[n, p])"},
+{"fcstGluonPropagator-ID11",
+"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{n,alpha},Explicit\[Rule]\
+True]//FCE",
+"I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
+mu]*FVD[p, nu])/SPD[n, p] - (FVD[p, mu]*FVD[p, nu]*SPD[n, n] - \
+alpha*FVD[n, mu]*FVD[n, nu]*SPD[p, p])/SPD[n, p]^2)"}
+});

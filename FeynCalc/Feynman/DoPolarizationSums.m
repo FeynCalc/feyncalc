@@ -14,14 +14,16 @@
 (* ------------------------------------------------------------------------ *)
 
 DoPolarizationSums::usage =
-"DoPolarizationSums[exp,k,n] sums over physical (transverse)
-polarizations of external massless vector bosons with momentum k. Here, n is an auxiliary four
-vector that goes into the gauge-dependent polarization sum to ensure that we are
-summing only over physical polarizations. \n\n
-DoPolarizationSums[exp,k,0] replaces the polarization sum of external massless vector
-bosons with momentum k by -g(mu,nu). This corresponds to summing over all four
-physical and unphysical polarizations. \n\n
-DoPolarizationSums[exp,k] sums over polarizations
+"DoPolarizationSums[exp,k,n] sums over physical (transverse) \
+polarizations of external massless vector bosons with momentum k. \
+Here, n is an auxiliary four vector that goes into the gauge-dependent \
+polarization sum to ensure that we are summing only over physical polarizations.
+
+DoPolarizationSums[exp,k,0] replaces the polarization sum of external massless vector \
+bosons with momentum k by -g(mu,nu). This corresponds to summing over all four \
+physical and unphysical polarizations.
+
+DoPolarizationSums[exp,k] sums over polarizations \
 of external massive vector bosons with momentum k and mass k^2.
 ";
 
@@ -30,10 +32,10 @@ PolarizationUncontract::usage =
 on scalar products involving polarization vectors that depend on k.";
 
 GaugeTrickN::usage =
-"GaugeTrickN is an option for DoPolarizationSums. It specifies the number
-of polarizations over which you are summing when you do the gauge trick,
-(i.e. replace the polarization sum by - MT[mu,nu]). The default value is 2,
-which is correct e.g. for real photons as external states. However, if the
+"GaugeTrickN is an option for DoPolarizationSums. It specifies the number \
+of polarizations over which you are summing when you do the gauge trick, \
+(i.e. replace the polarization sum by - MT[mu,nu]). The default value is 2, \
+which is correct e.g. for real photons as external states. However, if the \
 external states are virtual photons, then GaugeTrickN should be set to 4.
 "
 

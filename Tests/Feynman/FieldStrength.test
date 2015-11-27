@@ -1,0 +1,29 @@
+
+
+(* :Title: FieldStrength.test											*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FieldStrength  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFieldStrength = ({
+{"fcstFieldDerivative-ID1",
+"FieldStrength[mu,nu,Explicit\[Rule]True]",
+"QuantumField[FCPartialD[LorentzIndex[mu]], GaugeField, \
+LorentzIndex[nu]] - QuantumField[FCPartialD[LorentzIndex[nu]], \
+GaugeField, LorentzIndex[mu]]"},
+{"fcstFieldDerivative-ID2",
+"MatchQ[FieldStrength[mu,nu,a,Explicit\[Rule]True],QuantumField[\
+FCPartialD[LorentzIndex[mu]],GaugeField,LorentzIndex[nu],SUNIndex[a]]-\
+QuantumField[FCPartialD[LorentzIndex[nu]],GaugeField,LorentzIndex[mu],\
+SUNIndex[a]]+Gstrong \
+QuantumField[GaugeField,LorentzIndex[mu],SUNIndex[x_]].QuantumField[\
+GaugeField,LorentzIndex[nu],SUNIndex[y_]] SUNF[a,x_,y_]]", "True"}
+});

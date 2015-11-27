@@ -1,0 +1,20 @@
+
+
+(* :Title: SMVertex.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SMVertex	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstSMVertex = ({
+{"fcstSMVertex-ID1", "SMVertex[\"AWW\",p,mu, q,nu, k,rho]//FCE",
+"(-I)*FCGV[\"e\"]*(FV[-p + q, rho]*MT[mu, nu] + FV[-k + p, \
+nu]*MT[mu, rho] + FV[k - q, mu]*MT[nu, rho])"}
+});

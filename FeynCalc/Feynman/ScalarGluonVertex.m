@@ -1,28 +1,29 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: ScalarGluonVertex *)
+(* :Title: ScalarGluonVertex												*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: ScalarGluonVertex *)
+(* :Summary: Scalar gluon vertex											*)
 
 (* ------------------------------------------------------------------------ *)
 
 ScalarGluonVertex::usage =
-"ScalarGluonVertex[{p}, {q}, {mu,a}] or
-ScalarGluonVertex[ p,  q,  mu, a ] yields the
-scalar-scalar-gluon vertex (p and q are incoming momenta).\n\n
+"ScalarGluonVertex[{p}, {q}, {mu,a}] or ScalarGluonVertex[ p,  q,  mu, a ] yields \
+the scalar-scalar-gluon vertex (p and q are incoming momenta).
 
-ScalarGluonVertex[{mu,a}, {nu,b}]
-yields the scalar-scalar-gluon-gluon vertex
-(p and q are incoming momenta).\n\n
+ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex \
+(p and q are incoming momenta).
 
-The dimension  and the name of the coupling constant
-are determined by the options Dimension and CouplingConstant.";
+The dimension  and the name of the coupling constant are determined by the \
+options Dimension and CouplingConstant.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -60,7 +61,7 @@ ScalarGluonVertex[{pi_}, {qi_}, {mui_, ai_}, OptionsPattern[]] :=
 
 (* 4 - vertex *)
 ScalarGluonVertex[{mui_, ai_}, {nui_, bi_}, OptionsPattern[]] :=
-	Block[ {alpha, dim, mu, nu, a, b, gl3v},
+	Block[ {alpha, dim, mu, nu, a, b, gl4v},
 		dim   = OptionValue[Dimension];
 		{mu,nu} = Map[LorentzIndex[#, dim]&, {mui,nui}];
 		{a,b}  = Map[SUNIndex[#]&, {ai,bi}];

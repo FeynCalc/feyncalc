@@ -1,14 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: GluonPropagator *)
+(* :Title: GluonPropagator													*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: fixed bug in axial gauge on Sept. 15th 2003 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: GluonPropagator *)
+(* :Summary: Gluon propagator												*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -16,21 +19,16 @@ GP::usage =
 "GP is equivalent to GluonPropagator.";
 
 GluonPropagator::usage =
-"GluonPropagator[p, {mu, a}, {nu, b}] or
-GluonPropagator[p,  mu, a ,  nu, b ] or
+"GluonPropagator[p, {mu, a}, {nu, b}] or GluonPropagator[p,  mu, a ,  nu, b ] \
 yields the gluon propagator.
-GluonPropagator[p, {mu}, {nu}] or
-GluonPropagator[p, mu, nu] omits the SUNDelta.
-Using {p,M} instead of p as the first argument gives the Gluon a mass.
-The gauge and the dimension
-is determined by the option Gauge and Dimension.
-The following settings of Gauge are possible:
-1 :  the Feynman gauge;
-alpha : the general covariant gauge;
-{Momentum[n],alpha} : axial gauge.
-";
 
-(* ------------------------------------------------------------------------ *)
+GluonPropagator[p, {mu}, {nu}] or GluonPropagator[p, mu, nu] omits the SUNDelta. \
+Using {p,M} instead of p as the first argument gives the Gluon a mass. \
+The gauge and the dimension is determined by the option Gauge and Dimension. \
+The following settings of Gauge are possible: \
+1 :  the Feynman gauge; \
+alpha : the general covariant gauge; \
+{Momentum[n],alpha} : axial gauge.";
 
 Begin["`Package`"]
 End[]
@@ -124,13 +122,13 @@ GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt:OptionsPattern[]] :=
 					If[ FreeQ[n, Momentum],
 						n = Momentum[n, dim]
 					];
-					glp = I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
+					glp = I FeynAmpDenominator[PD[p, gluemass]] *
 					sundelta (- Pair[mu, nu] + (Pair[n, mu] Pair[p,nu] + Pair[p, mu] Pair[n,nu]) / Pair[n, p] -
 					(Pair[n, n] Pair[p,mu] Pair[p,nu]- gauge[[2]] Pair[p,p] Pair[n,mu] *
 					Pair[n,nu]) /Pair[n,p]^2),
-					glp  = I FeynAmpDenominator[PropagatorDenominator[p, gluemass]] *
+					glp  = I FeynAmpDenominator[PD[p, gluemass]] *
 					sundelta (- Pair[mu, nu] + (1-gauge) Pair[p, mu] Pair[p, nu] *
-					MomentumExpand[FeynAmpDenominator[PropagatorDenominator[p, gluemass]]]);
+					MomentumExpand[FeynAmpDenominator[PD[p, gluemass]]]);
 				];
 			]
 		];
@@ -138,16 +136,12 @@ GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt:OptionsPattern[]] :=
 	]/; OptionValue[Explicit];
 
 GluonPropagator /:
-	MakeBoxes[GluonPropagator[p_,{mu_,a_},{nu_,b_}, OptionsPattern[]],
-	TraditionalForm] :=
-		RowBox[{SubsuperscriptBox["\[CapitalPi]",TBox[a,b], TBox[mu,nu]],
-		"(", TBox[p], ")"}];
+	MakeBoxes[GluonPropagator[p_,{mu_,a_},{nu_,b_}, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubsuperscriptBox["\[CapitalPi]",TBox[a,b], TBox[mu,nu]], "(", TBox[p], ")"}];
 
 GluonPropagator /:
-	MakeBoxes[GluonPropagator[p_,{mu_},{nu_}, OptionsPattern[]],
-	TraditionalForm] :=
-		RowBox[{SubsuperscriptBox["\[CapitalPi]", "g", TBox[mu,nu]],
-		"(", TBox[p], ")"}];
+	MakeBoxes[GluonPropagator[p_,{mu_},{nu_}, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubsuperscriptBox["\[CapitalPi]", "g", TBox[mu,nu]], "(", TBox[p], ")"}];
 
 FCPrint[1,"GluonPropagator.m loaded"];
 End[]

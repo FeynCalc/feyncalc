@@ -1,25 +1,26 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SMVertex *)
+(* :Title: SMVertex											*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: SMVertex *)
+(* :Summary: Some Standard model vertices									*)
 
 (* ------------------------------------------------------------------------ *)
 
 SMVertex::usage =
-"SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives
-the photon-W-W vertex (p,mu correspond to the photon,
-q,nu to the (incoming) W+ and k,rho to the (incoming) W-.
-All momenta are flowing into the vertex.
+"SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives the photon-W-W vertex \
+(p,mu correspond to the photon, q,nu to the (incoming) W+ and k,rho \
+to the (incoming) W-. All momenta are flowing into the vertex.
 
-SMVertex[\"HHH\", ___] give the three-higgs coupling.
-";
+SMVertex[\"HHH\", ___] give the three-higgs coupling.";
 
 (* ------------------------------------------------------------------------ *)
 

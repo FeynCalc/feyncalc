@@ -19,8 +19,8 @@ FCPrepareFAAmp::usage =
 "FCPrepareFAAmp[exp] converts a FeynArts amplitude to FeynCalc.";
 
 UndoChiralSplittings::usage =
-"UndoChiralSplittings is an option of FCPrepareFAAmp. When set to True, it attempts
-to undo splittings of couplings into left and right handed pieces, e.g
+"UndoChiralSplittings is an option of FCPrepareFAAmp. When set to True, it attempts \
+to undo splittings of couplings into left and right handed pieces, e.g \
 (a*GA[6].GA[mu] + a*GA[7].GA[mu]) will be converted back to a*GA[mu]";
 
 (* ------------------------------------------------------------------------ *)

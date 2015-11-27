@@ -1,14 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: GluonGhostVertex *)
+(* :Title: GluonGhostVertex													*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 6 May '98 at 0:37 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: GluonGhostVertex *)
+(* :Summary: Gluon propagator												*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -18,13 +21,11 @@ GGV::usage =
 
 GluonGhostVertex::usage =
 "
-GluonGhostVertex[{mu,a}, {b}, {k,c}] or
-GluonGhostVertex[{p,mu,a}, {q,b}, {k,c}] or
-GluonGhostVertex[ p,mu,a ,  q,nu,b ,  k,rho,c ]
-gives the  Gluon-Ghost vertex.
-The first argument represents the gluon and the third
-argument the outgoing ghost field (but incoming four-momentum).
-The dimension  and the name of the coupling constant
+GluonGhostVertex[{mu,a}, {b}, {k,c}] or GluonGhostVertex[{p,mu,a}, {q,b}, {k,c}] or \
+GluonGhostVertex[ p,mu,a ,  q,nu,b ,  k,rho,c ] gives the  Gluon-Ghost vertex.
+
+The first argument represents the gluon and the third argument the outgoing ghost \
+field (but incoming four-momentum). The dimension  and the name of the coupling constant \
 are determined by the options Dimension and CouplingConstant.";
 
 (* ------------------------------------------------------------------------ *)

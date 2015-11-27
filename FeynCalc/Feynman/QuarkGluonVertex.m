@@ -1,14 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: QuarkGluonVertex *)
+(* :Title: QuarkGluonVertex													*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: modified Oct. 2003 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: QuarkGluonVertex *)
+(* :Summary: Quark gluon vertex												*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -16,16 +19,13 @@ QGV::usage =
 "QGV is equivalent to QuarkGluonVertex.";
 
 QuarkGluonVertex::usage =
-"QuarkGluonVertex[mu, a] or
-QuarkGluonVertex[{_,mu,a},  {_,_,_} ,  {_,_,_}]  or
-QuarkGluonVertex[{p,mu,a},  {k,___} ,  {q,___}]  or
+"QuarkGluonVertex[mu, a] or QuarkGluonVertex[{_,mu,a},  {_,_,_} ,  {_,_,_}]  or \
+QuarkGluonVertex[{p,mu,a},  {k,___} ,  {q,___}]  or \
 QuarkGluonVertex[ p,mu,a ,   _,_,_,     _,_,_] gives the  quark-gluon vertex.
-\n
-The dimension  and the name of the coupling constant
-are determined by the options Dimension and CouplingConstant.
-For explicit expressions use the function Explicit or modify the option Explicit.";
 
-(* ------------------------------------------------------------------------ *)
+The dimension  and the name of the coupling constant are determined by the \
+options Dimension and CouplingConstant. For explicit expressions use the \
+function Explicit or modify the option Explicit.";
 
 Begin["`Package`"]
 End[]
@@ -117,8 +117,7 @@ QuarkGluonVertex /:
 		SuperscriptBox["Q", TBox[mu1] ]
 
 QuarkGluonVertex /:
-	MakeBoxes[QuarkGluonVertex[{_,mu1_, a_},{_,_,_},{_,_,_}, ___],
-	TraditionalForm] :=
+	MakeBoxes[QuarkGluonVertex[{_,mu1_, a_},{__},{__}, OptionsPattern[]], TraditionalForm] :=
 		SubsuperscriptBox["Q",TBox[a], TBox[mu1] ]
 
 FCPrint[1,"QuarkGluonVertex.m loaded"];

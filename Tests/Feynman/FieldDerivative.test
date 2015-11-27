@@ -1,0 +1,37 @@
+
+
+(* :Title: FieldDerivative.test											*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FieldDerivative  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFieldDerivative =
+({
+{"fcstFieldDerivative-ID1",
+"FieldDerivative[QuantumField[A,{mu}][x].QuantumField[B,{nu}][y].\
+QuantumField[C,{rho}][x].QuantumField[D,{si}][y],x,{mu}]//DotExpand",
+"QuantumField[A, LorentzIndex[mu]][x] . QuantumField[B, \
+LorentzIndex[nu]][y] . QuantumField[FCPartialD[LorentzIndex[mu]], C, \
+LorentzIndex[rho]][x] . QuantumField[D, LorentzIndex[si]][y] + \
+QuantumField[FCPartialD[LorentzIndex[mu]], A, LorentzIndex[mu]][x] . \
+QuantumField[B, LorentzIndex[nu]][y] . QuantumField[C, \
+LorentzIndex[rho]][x] . QuantumField[D, LorentzIndex[si]][y]"},
+{"fcstFieldDerivative-ID2",
+"FieldDerivative[QuantumField[A,{mu}][x].QuantumField[B,{nu}][y].\
+QuantumField[C,{rho}][x].QuantumField[D,{si}][y],y,{nu}]//DotExpand",
+"QuantumField[A, LorentzIndex[mu]][x] . QuantumField[B, \
+LorentzIndex[nu]][y] . QuantumField[C, LorentzIndex[rho]][x] . \
+QuantumField[FCPartialD[LorentzIndex[nu]], D, LorentzIndex[si]][y] + \
+QuantumField[A, LorentzIndex[mu]][x] . \
+QuantumField[FCPartialD[LorentzIndex[nu]], B, LorentzIndex[nu]][y] . \
+QuantumField[C, LorentzIndex[rho]][x] . QuantumField[D, \
+LorentzIndex[si]][y]"}
+})

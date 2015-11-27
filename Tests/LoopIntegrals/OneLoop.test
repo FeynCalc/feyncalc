@@ -58,5 +58,10 @@ Pair[Momentum[q1],
 	Pair[Momentum[q2], Momentum[q2]],
 	Pair[Momentum[q2], Momentum[q2]],
 	Pair[Momentum[q1], Momentum[q1]]}, {M^2, M^2, M^2},
-	PaVeAutoOrder -> True, PaVeAutoReduce -> True])"}
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])"},
+
+
+
+{"fcstOneLoop-ID5","OneLoop[q, FAD[q, q - p1]]","I Pi^2 B0[Pair[Momentum[p1], Momentum[p1]], 0, 0]"}
+
 }

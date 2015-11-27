@@ -63,7 +63,7 @@ PolarizationSum[mu_,nu_, OptionsPattern[]] :=
 
 (*	Same as above. Putting the auxiliary vector n^mu to zero essentially
 	omits the gauge terms.  *)
-PolarizationSum[mu_,nu_, k_, 0, opts:OptionsPattern[]] :=
+PolarizationSum[mu_,nu_, k_, 0, OptionsPattern[]] :=
 	(If[ScalarProduct[k,k]=!=0 && !OptionValue[VirtualBoson],
 			Message[PolarizationSum::notmassless, k]
 	];

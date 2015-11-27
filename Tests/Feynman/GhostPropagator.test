@@ -1,0 +1,26 @@
+
+
+(* :Title: GhostPropagator.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for GhostPropagator	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstGhostPropagator = ({
+{"fcstGhostPropagator-ID1", "GhostPropagator[p,a,b]",
+"GhostPropagator[p, a, b]"},
+{"fcstGhostPropagator-ID2",
+"GhostPropagator[p,a,b,Explicit\[Rule]True]",
+"I*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], \
+0]]*SUNDelta[SUNIndex[a], SUNIndex[b]]"},
+{"fcstGhostPropagator-ID3", "GhostPropagator[p,1,2]//Explicit",
+"I*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], \
+0]]*SUNDelta[SUNIndex[ci1], SUNIndex[ci2]]"}
+});

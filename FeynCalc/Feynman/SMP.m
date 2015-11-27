@@ -1,20 +1,23 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SMP *)
+(* :Title: SMP																*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
+(* :Summary: Some Standard Model parameters									*)
 
 (* ------------------------------------------------------------------------ *)
 
 SMP::usage= "SMP[par] substitutes a symbol for the Standard Model parameter par. \
 SMP[] gives the list of substitutions. par should be a string; e.g., MP[\"SW\"] gives \
 FCGV[\"sw\"].";
-
-(* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 End[]

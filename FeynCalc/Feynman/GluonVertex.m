@@ -1,34 +1,38 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: GluonVertex *)
+(* :Title: GluonVertex														*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :Summary: GluonVertex *)
+(* :Summary: Gluon vertices													*)
+
 (* ------------------------------------------------------------------------ *)
 
 GV::usage =
 "GV is equivalent to GluonVertex.";
 
 GluonVertex::usage =
-"GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or
-GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the
+"GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the
 3-gluon vertex.
-\n
-GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the
-3-gluon vertex without color structure and the
+
+GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the 3-gluon vertex without color structure and the \
 coupling constant.
-\n
-GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}]
-or GluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or
-GluonVertex[p,mu,a ,  q,nu,b ,  k,la,c ,  s,si,d]
-or GluonVertex[ mu,a ,  nu,b ,  la,c ,  si,d ]
+
+GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] or GluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or \
+GluonVertex[p,mu,a ,  q,nu,b ,  k,la,c ,  s,si,d] or GluonVertex[ mu,a ,  nu,b ,  la,c ,  si,d ] \
 yields the  4-gluon vertex.
-\n
-The dimension  and the name of the coupling constant
-are determined by the options Dimension and CouplingConstant. \n
-The Option setting Explicit determines whether the explicit Feynman rule
+
+The dimension  and the name of the coupling constant are determined by the options
+Dimension and CouplingConstant.
+
+The Option setting Explicit determines whether the explicit Feynman rule \
 is returned or whether it is left as an operator.";
 
 (* ------------------------------------------------------------------------ *)

@@ -20,7 +20,7 @@ FermionSpinSum::usage =
 "FermionSpinSum[x] constructs Traces out of squared ampliudes in x.";
 
 SpinorCollect::usage =
-"SpinorCollect is an option for FermionSpinSum. If set to False the
+"SpinorCollect is an option for FermionSpinSum. If set to False the \
 argument of FermionSpinSum has to be already collected w.r.t. Spinor.";
 
 (* ------------------------------------------------------------------------ *)

@@ -1,14 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: GluonSelfEnergy *)
+(* :Title: GluonSelfEnergy													*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:59 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: GluonSelfEnergy *)
+(* :Summary: Gluon self energy												*)
 
 (* ------------------------------------------------------------------------ *)
 

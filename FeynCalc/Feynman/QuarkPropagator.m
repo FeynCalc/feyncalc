@@ -1,22 +1,30 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: QuarkPropagator *)
+(* :Title: QuarkPropagator													*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: QuarkPropagator *)
+(* :Summary: QuarkPropagator												*)
 
 (* ------------------------------------------------------------------------ *)
 
 QP::usage =
 "QP is an alias for QuarkPropagator.
+
 QP[p] is the massless quark propagator.
+
 QP[{p,m}] gives the  quark propagator with mass m.";
 
 QuarkPropagator::usage =
 "QuarkPropagator[p] is the massless quark propagator.
+
 QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 
 (* ------------------------------------------------------------------------ *)
@@ -41,9 +49,6 @@ Options[QuarkPropagator] = {
 QP = QuarkPropagator;
 Abbreviation[QuarkPropagator] = HoldForm[QP];
 
-(*QuarkPropagator[a_, __, b_/;Head[b]=!=Rule, opt:OptionsPattern[]] :=
-QuarkPropagator[a, opt];*)
-
 QuarkPropagator[pi:Except[_?OptionQ], opt:OptionsPattern[]] :=
 	QuarkPropagator[{pi,0}, opt]/; Head[pi]=!=List;
 
@@ -66,17 +71,15 @@ QuarkPropagator[{pi_, m_},  opt:OptionsPattern[]] :=
 					QuarkPropagator[{pi, m}, OPE -> False, opt]]
 			];
 			If[ (cou =!= False) && m === 0,
-				Which[(cou === True) || ( cou === 1),
-							re = re + I cop^2 Sn CF 2/Epsilon *
-												DiracGamma[Momentum[pi,dim]],
-							cou === All,
-							re = re + CounterT Sn I cop^2 CF 2/Epsilon*
-												DiracGamma[Momentum[pi,dim]]
+				Which[
+					(cou === True) || ( cou === 1),
+						re = re + I cop^2 Sn CF 2/Epsilon DiracGamma[Momentum[pi,dim]],
+					cou === All,
+						re = re + CounterT Sn I cop^2 CF 2/Epsilon DiracGamma[Momentum[pi,dim]]
 				]
 			];
 			If[ !cou,
-				re = re +
-				I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[
+				re = re + I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[
 				MomentumExpand[PropagatorDenominator[Momentum[pi,dim], m]]]
 			];
 			re
@@ -85,18 +88,8 @@ QuarkPropagator[{pi_, m_},  opt:OptionsPattern[]] :=
 
 
 QuarkPropagator /:
-	MakeBoxes[QuarkPropagator[{p_,_}, OptionsPattern[]],
-	TraditionalForm] :=
-		RowBox[{SubscriptBox["\[CapitalPi]","q"],
-		"(", TBox[p], ")"}];
+	MakeBoxes[QuarkPropagator[{p_,_}, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubscriptBox["\[CapitalPi]","q"],"(", TBox[p], ")"}];
 
-
-(*
-QuarkPropagator[{pi_, m_}, opt___Rule] :=  Block[{dim},
-dim    = Dimension /. {opt} /. Options[QuarkPropagator];
-	I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[
-		MomentumExpand[
-		PropagatorDenominator[Momentum[pi,dim], m]]]];
-*)
 FCPrint[1,"QuarkPropagator.m loaded"];
 End[]

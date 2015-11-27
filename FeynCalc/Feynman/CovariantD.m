@@ -13,28 +13,28 @@
 (* ------------------------------------------------------------------------ *)
 
 CovariantD::usage =
-"CovariantD[mu] is a generic covariant derivative with
-Lorentz index mu. With the option-setting Explicit -> True,
-an explicit expression for a fermionic field is returned,
-depending on the setting on the other options.\n\n
-CovariantD[x, mu] is a generic covariant derivative with respect to
-x^mu.\n\n
-CovariantD[mu, a, b] is a covariant derivative for a bosonic field;
-acting on QuantumField[f,{},{a,b}], where f is some field name and
+"CovariantD[mu] is a generic covariant derivative with \
+Lorentz index mu. With the option-setting Explicit -> True,  \
+an explicit expression for a fermionic field is returned,  \
+depending on the setting on the other options.
+
+CovariantD[x, mu] is a generic covariant derivative with respect to x^mu. \
+
+CovariantD[mu, a, b] is a covariant derivative for a bosonic field; \
+acting on QuantumField[f,{},{a,b}], where f is some field name and \
 a and b are two SU(N) indices.
-Again, with the option-setting Explicit -> True, an explicit expression
-is returned, depending on the setting on the other options.\n\n
-CovariantD[OPEDelta, a, b] is a short form for
-CovariantD[mu,a,b]*FourVector[OPEDelta, mu].
-CovariantD[{OPEDelta, a, b}, {n}] yields
-the product of n operators, where n is an integer.
-CovariantD[OPEDelta, a, b, {m, n}]
-gives the expanded form of CovariantD[OPEDelta, a, b]^m up to order
-g^n for the gluon, where n is an integer and g the coupling constant
-indicated by the setting of the option CouplingConstant.
-CovariantD[OPEDelta, {m, n}] gives the expanded form of
-CovariantD[OPEDelta]^m up to order g^n of the fermionic field.
-";
+
+Again, with the option-setting Explicit -> True, an explicit expression \
+is returned, depending on the setting on the other options.
+
+CovariantD[OPEDelta, a, b] is a short form for CovariantD[mu,a,b]*FourVector[OPEDelta, mu]. \
+
+CovariantD[{OPEDelta, a, b}, {n}] yields the product of n operators, where n is an integer. \
+
+CovariantD[OPEDelta, a, b, {m, n}] gives the expanded form of CovariantD[OPEDelta, a, b]^m \
+up to order g^n for the gluon, where n is an integer and g the coupling constant indicated \
+by the setting of the option CouplingConstant. CovariantD[OPEDelta, {m, n}] gives the expanded \
+form of CovariantD[OPEDelta]^m up to order g^n of the fermionic field.";
 
 DummyIndex::usage =
 "DummyIndex is an option of CovariantD specifying an index to use as \
@@ -121,19 +121,13 @@ CovariantD[al_, ru___Rule ] :=
 			cC = Unique["c"],
 			cC = du
 		];
-		(*
-		PartialDExplicit[
-		*)
 		(
 			partial[al] - g I (DOT[SUNT[SUNIndex[cC]] ,
 		If[ (al === OPEDelta) || (Head[al]=== Momentum),
 			QuantumField[aA, Momentum[al], SUNIndex[cC]],
 			QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
 		]]                 )
-		)
-	(* ]*)
-											] /;
-	(Explicit /. {ru} /. Options[CovariantD]);
+		)] /;(Explicit /. {ru} /. Options[CovariantD]);
 
 CovariantD[al_, a_, b_, ru___Rule ] :=
 	Block[ {aA, cC, du, partial},
@@ -275,20 +269,17 @@ gen[ruli_List][o_, m_, a_, b_, aA_, g_] :=
 				]   ] /. summ -> opesum       ])
 	];
 
-	CovariantD /:
+CovariantD /:
 	MakeBoxes[CovariantD[mud_], TraditionalForm] :=
-	RowBox[{SubscriptBox["D",TBox[mud]]}];
+		RowBox[{SubscriptBox["D",TBox[mud]]}];
 
-	CovariantD /:
+CovariantD /:
 	MakeBoxes[CovariantD[mud_, a_, b_], TraditionalForm] :=
-	SubsuperscriptBox["D", TBox[mud], TBox[a, b]]/; Head[mud] =!= List;
+		SubsuperscriptBox["D", TBox[mud], TBox[a, b]]/; Head[mud] =!= List;
 
-	CovariantD /:
-	MakeBoxes[CovariantD[x_, LorentzIndex[mu__]],
-			TraditionalForm] :=
-	RowBox[{"\[PartialD]", "/", "D",
-			SuperscriptBox[ToBoxes[x,TraditionalForm], ToBoxes[LorentzIndex[mu],TraditionalForm]]
-			}];
+CovariantD /:
+	MakeBoxes[CovariantD[x_, LorentzIndex[mu__]], TraditionalForm] :=
+		RowBox[{"\[PartialD]", "/", "D", SuperscriptBox[ToBoxes[x,TraditionalForm], ToBoxes[LorentzIndex[mu],TraditionalForm]]}];
 
 FCPrint[1,"CovariantD.m loaded."];
 End[]

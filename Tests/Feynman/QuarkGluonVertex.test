@@ -1,0 +1,23 @@
+
+
+(* :Title: QuarkGluonVertex.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for QuarkGluonVertex	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstQuarkGluonVertex = {
+
+{"fcstQuarkGluonVertex-ID1","QuarkGluonVertex[mu, a]",
+"QuarkGluonVertex[{Null, mu, a}, {Null, Null, Null}, {Null, Null, Null}]"},
+{"fcstQuarkGluonVertex-ID2","QuarkGluonVertex[mu, a, Explicit -> True]",
+"I Gstrong SUNT[SUNIndex[a]].DiracGamma[LorentzIndex[mu, D], D]"}
+
+};
