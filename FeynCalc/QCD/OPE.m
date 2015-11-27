@@ -36,8 +36,20 @@ DataType[OPEm, PositiveInteger] = True;
 DataType[OPEn, PositiveInteger] = True;
 DataType[OPEo, PositiveInteger] = True;
 
-ScalarProduct[OPEDelta, OPEDelta, ___Rule] = 0;
-Pair[Momentum[OPEDelta,___], Momentum[OPEDelta,___]] = 0;
+ScalarProduct[OPEDelta, OPEDelta] = 0;
+
+(* Since we set a new permanent SP here, we need to update
+all the saved DownValues to ensure that this setting will
+not be lost after ClearScalarProducts *)
+
+(* 	TODO There should be a dedicated function for that. This
+	functionality will be often needed by add-ons*)
+
+initialPairDownValues = DownValues[Pair];
+initialScalarProductDownValues = DownValues[ScalarProduct];
+initialScalarProductUpValues = UpValues[ScalarProduct];
+initialSPDownValues = DownValues[SP];
+initialSPDDownValues = DownValues[SPD];
 
 (* that is only for Partial* stuff *)
 LorentzIndex[Momentum[OPEDelta]^p_.] := Momentum[OPEDelta]^p;

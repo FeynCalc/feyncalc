@@ -1,0 +1,25 @@
+
+
+(* :Title: FourLaplacian.test											*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FourLaplacian  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFourLaplacian = ({
+{"fcstFourLaplacian-ID1", "FourLaplacian[SP[q,q],q,q]", "2*D"},
+{"fcstFourLaplacian-ID2",
+"FourLaplacian[SOD[q]^OPEm FAD[q,q-p]//FCI,q,q]//FCE//FCI//FCE",
+"-2*D*FAD[q, q]*SOD[q]^OPEm - 4*OPEm*FAD[q, q]*SOD[q]^OPEm - \
+2*D*FAD[-p + q, -p + q]*SOD[q]^OPEm - 4*OPEm*FAD[-p + q, -p + \
+q]*SOD[q]^(-1 + OPEm)*(-SOD[p] + SOD[q]) + 8*FAD[q, \
+q]*SOD[q]^OPEm*SPD[q, q] + 8*FAD[-p + q, -p + q]*SOD[q]^OPEm*(SPD[p, \
+p] - 2*SPD[p, q] + SPD[q, q])"}
+})
