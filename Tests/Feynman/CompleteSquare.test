@@ -1,0 +1,20 @@
+
+
+(* :Title: CompleteSquare.test                                                 *)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for CompleteSquare	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstCompleteSquare = ({
+{"fcstCompleteSquare-ID1", "CompleteSquare[5SP[2p+3r,p+r],p]",
+"(-5*Pair[Momentum[r], Momentum[r]])/8 + 10*Pair[Momentum[p] + \
+(5*Momentum[r])/4, Momentum[p] + (5*Momentum[r])/4]"}
+})

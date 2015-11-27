@@ -22,7 +22,7 @@ End[]
 Begin["`CompleteSquare`Private`"]
 
 CompleteSquare[e_, x_ ,y_:Null] :=
-	Module[ {a, b, c, xx, ex, exp, dims, dim, rul, pa,p},
+	Module[ {a, b, c, xx, ex, exp, dims, dim, rul, pa},
 
 		(* Make sure all momenta have the same dimension *)
 		dims = Union[Cases[e, (Dimension->_)|(Momentum[_,_]),Infinity]];
@@ -45,7 +45,7 @@ CompleteSquare[e_, x_ ,y_:Null] :=
 		{dims, Table[dim,{Length[dims]}]}]);
 		ex = e //. rul;
 		];
-		exp = Expand[ExpandProductExpand[Contract[ex]]]/.
+		exp = Expand[ExpandScalarProduct[Contract[ex]]]/.
 		{Pair[pp:Momentum[x,___],p:Momentum[_?(FreeQ[#,x]&),___]]:>p*pp,
 		Pair[p:Momentum[_?(FreeQ[#,x]&),___],pp:Momentum[x,___]]:>p*pp};
 		pa = Pair[xx,xx];
