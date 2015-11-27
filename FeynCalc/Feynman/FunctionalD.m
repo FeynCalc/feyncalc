@@ -50,26 +50,26 @@ ddl[FCPartialD[Momentum[OPEDelta,dim_:4]^m_]][p_] :=
 ddl[][_] :=
 	1;
 
-ddl[pa:FCPartialD[Momentum[OPEDelta,dim_:4]..]][p_] :=
-	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^Length[{pa}];
+ddl[pa:FCPartialD[Momentum[OPEDelta,_:4]..]][p_] :=
+	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p], Momentum[OPEDelta]]^Length[{pa}];
 
-ddl[pa:FCPartialD[Momentum[OPEDelta,dim_:4]]..][p_] :=
-	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^Length[{pa}];
+ddl[pa:FCPartialD[Momentum[OPEDelta,_:4]]..][p_] :=
+	(-1)^Length[{pa}] I^Length[{pa}] Pair[Momentum[p], Momentum[OPEDelta]]^Length[{pa}];
 
-ddl[FCPartialD[LorentzIndex[m_,dim_:4]]][p_] :=
-	(-I) dDelta[Momentum[p,dim], LorentzIndex[m,dim]];
+ddl[FCPartialD[LorentzIndex[m_,_:4]]][p_] :=
+	(-I) dDelta[Momentum[p], LorentzIndex[m]];
 
-ddl[a___,FCPartialD[LorentzIndex[m_,dim_:4]], x___][p_] :=
-	(-I) dDelta[Momentum[p,dim], LorentzIndex[m,dim]] ddl[a, x][p];
+ddl[a___,FCPartialD[LorentzIndex[m_,_:4]], x___][p_] :=
+	(-I) dDelta[Momentum[p], LorentzIndex[m]] ddl[a, x][p];
 
-ddl[FCPartialD[Momentum[m_,dim_:4]]][p_] :=
-	(-I) dDelta[Momentum[p,dim], Momentum[m,dim]];
+ddl[FCPartialD[Momentum[m_,_:4]]][p_] :=
+	(-I) dDelta[Momentum[p], Momentum[m]];
 
-ddl[a___,FCPartialD[Momentum[m_,dim_:4]], x___][p_] :=
-	(-I) dDelta[Momentum[p,dim], Momentum[m,dim]] ddl[a, x][p];
+ddl[a___,FCPartialD[Momentum[m_,_:4]], x___][p_] :=
+	(-I) dDelta[Momentum[p], Momentum[m]] ddl[a, x][p];
 
-ddl[a___,FCPartialD[Momentum[OPEDelta,dim_:4]^m_], x___][p_] :=
-	(-1)^m I^m Pair[Momentum[p,dim], Momentum[OPEDelta,dim]]^m  ddl[a, x][p];
+ddl[a___,FCPartialD[Momentum[OPEDelta,_:4]^m_], x___][p_] :=
+	(-1)^m I^m Pair[Momentum[p], Momentum[OPEDelta]]^m  ddl[a, x][p];
 
 dot2[___,0,___] :=
 	0;
