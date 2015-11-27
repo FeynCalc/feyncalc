@@ -21,7 +21,11 @@ End[]
 
 Begin["`OPESumExplicit`Private`"]
 
-OPESumExplicit[ex_] :=
+Options[OPESumExplicit]= {
+	Assumptions -> True
+};
+
+OPESumExplicit[ex_, OptionsPattern[]] :=
 	If[ FreeQ[ex,OPESum],
 		ex,
 		Block[ {symbolicsum, te},
@@ -38,7 +42,7 @@ OPESumExplicit[ex_] :=
 			];
 			te = te /. summ -> symbolicsum/. symbolicsum -> Sum /.
 					Sum -> OPESum;
-			te = te//PowerSimplify;
+			te = te//PowerSimplify[#, Assumptions->OptionValue[Assumptions]]&;
 			te = te /. Power[a_, b_/;Head[b] =!= Integer] :> Power2[a,b];
 			te = Expand2[te, Power2] /. Power2 -> Power;
 			te = te /. Power[a_, b_/;Head[b] =!= Integer] :> Power2[a,b];

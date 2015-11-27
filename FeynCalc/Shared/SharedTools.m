@@ -190,6 +190,10 @@ Options[PowerSimplify] = {
 	PowerExpand->True
 };
 
+Options[Power2] = {
+	Assumptions->True
+};
+
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
 	Cases2 @@ Prepend[{f,opts}, expr];
 
@@ -454,22 +458,22 @@ PartitHead[x_Times,y_] :=
 	{x/#, #}& @ Select[x,If[Head[#]===y,True]&];
 
 Power2 /:
-	Power2[-1,OPEm]^2 :=
+	Power2[-1,OPEm, OptionsPattern[]]^2 :=
 		1;
-Power2[n_Integer?Positive, em_] :=
+Power2[n_Integer?Positive, em_, OptionsPattern[]] :=
 	n^em;
-Power2[n_, em_Integer] :=
+Power2[n_, em_Integer, OptionsPattern[]] :=
 	n^em;
-Power2[-1,OPEm-2] =
-	Power2[-1,OPEm];
-Power2[-a_,b_/;FreeQ2[b, {Epsilon,Epsilon2}]] :=
-	PowerSimplify[(-1)^b] Power2[a,b];
+Power2[-1,OPEm-2, opts:OptionsPattern[]] =
+	Power2[-1,OPEm, opts];
+Power2[-a_,b_/;FreeQ2[b, {Epsilon,Epsilon2}], opts:OptionsPattern[]] :=
+	PowerSimplify[(-1)^b,Assumptions->OptionValue[Assumptions]] Power2[a,b,opts];
 
-Format[Power2[a_, b_ /; b]] :=
+Format[Power2[a_, b_ /; b, OptionsPattern[]]] :=
 	a^b;
 
 Power2 /:
-	MakeBoxes[Power2[a_, b_] , TraditionalForm] :=
+	MakeBoxes[Power2[a_, b_, OptionsPattern[]] , TraditionalForm] :=
 		ToBoxes[a^b, TraditionalForm];
 
 PowerFactor[exp_Plus] :=

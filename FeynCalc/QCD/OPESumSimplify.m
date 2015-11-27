@@ -28,7 +28,11 @@ powexp[x_] :=
 				(-1)^(e1_. - 2 _ ) :> ((-1)^e1)
 			};
 
-OPESumSimplify[exp_] :=
+Options[OPESumSimplify]= {
+	Assumptions -> True
+};
+
+OPESumSimplify[exp_, OptionsPattern[]] :=
 	Block[ {nx, proex, sumex, suma, csum, psum, lsum,
 	lsum1,lsum4,lsum4s,lsum6, power7, nonu},
 		psum[a_, b__] :=
@@ -82,7 +86,7 @@ OPESumSimplify[exp_] :=
 							},   b];
 		csum /: x_^n_. csum[ x_^j_ fa_., b__] := csum[ fa x^(j+n), b] /; n =!= OPEm;
 		csum /: x_^(n_ /;Head[n]=!=Integer)*
-			csum[a_, b__] := csum[PowerSimplify[a x^n], b] /; n=!=OPEm;
+			csum[a_, b__] := csum[PowerSimplify[a x^n, Assumptions->OptionValue[Assumptions]], b] /; n=!=OPEm;
 		csum /: x_^n_. csum[ Power2[x_,j_] fa_., b__] :=
 											csum[ fa Power2[x,(j+n)], b ];
 		lsum8[a_,b__] :=
@@ -131,7 +135,7 @@ OPESumSimplify[exp_] :=
 		nx = nx /. lsum3 -> lsum4 /. lsum4 -> OPESum /.
 								psum -> OPESum /. csum -> OPESum /. sumex -> OPESum /.
 						power7 -> Power;
-		nx = PowerSimplify[nx] /. OPESum -> lsum5 /. lsum5->OPESum /.
+		nx = PowerSimplify[nx, Assumptions->OptionValue[Assumptions]] /. OPESum -> lsum5 /. lsum5->OPESum /.
 					OPESum -> lsum6 /.  lsum6 -> OPESum /. OPESum -> lsum7 /.
 					lsum7 -> OPESum /. OPESum -> lsum8;
 		nx
