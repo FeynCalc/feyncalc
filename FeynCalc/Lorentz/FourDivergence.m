@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FourDivergence::usage =
-"FourDivergence[exp, FourVector[p, mu]]
-calculates the partial derivative of exp w.r.t. p(mu).
-FourDivergence[exp, FourVector[p, mu], FourVector[p,nu], ...]
-gives the multiple derivative.";
+"FourDivergence[exp, FourVector[p, mu]] calculates the partial derivative of exp w.r.t. p(mu). \
+FourDivergence[exp, FourVector[p, mu], FourVector[p,nu], ...] gives the multiple derivative.";
 
 PartialFourVector::usage=
 "PartialFourVector is equivalent to FourDivergence";
@@ -31,7 +29,7 @@ FourDivergence::extfail=
 "Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!"
 
 FourDivergence::toocompl=
-"The structure `1` w.r.t which you are trying to differentiate is too complicated
+"The structure `1` w.r.t which you are trying to differentiate is too complicated \
 to ensure the correct result. Evaluation aborted!"
 
 (* ------------------------------------------------------------------------ *)
