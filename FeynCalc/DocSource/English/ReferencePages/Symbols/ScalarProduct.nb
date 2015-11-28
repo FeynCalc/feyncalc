@@ -185,10 +185,10 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Calc",
   ButtonNote->"Calc"],
  ", ",
- ButtonBox["ClearScalarProducts",
+ ButtonBox["FCClearScalarProducts",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/ClearScalarProducts",
-  ButtonNote->"ClearScalarProducts"],
+  ButtonData:>"paclet:FeynCalc/ref/FCClearScalarProducts",
+  ButtonNote->"FCClearScalarProducts"],
  ", ",
  ButtonBox["ExpandScalarProduct",
   BaseStyle->"Link",
@@ -568,7 +568,8 @@ Cell[BoxData[
  CellID->1175433176]
 }, Open  ]],
 
-Cell[BoxData["ClearScalarProducts"], "Input",
+Cell[BoxData[
+ RowBox[{"FCClearScalarProducts", "[", "]"}]], "Input",
  CellTags->"ScalarProduct",
  CellLabel->"In[10]:=",
  CellID->1715327028]
@@ -634,7 +635,7 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
+WindowSize->{700, 684},
 WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
@@ -644,3 +645,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -110,7 +110,7 @@ p1,p2,p3}]]", "True"},
 
 Tests`LoopIntegrals`fcstTdecVanishingGD = ({
 {"fcstTdecVanishingGD-ID1",
-"ClearScalarProducts;ScalarProduct[p1,p1]=0;ScalarProduct[p2,p2]=0;\
+"FCClearScalarProducts[];ScalarProduct[p1,p1]=0;ScalarProduct[p2,p2]=0;\
 ScalarProduct[p1,p2]=0;Tdec[{{q,mu}},{p1}]", "{{}, FVD[q, mu]}"},
 {"fcstTdecVanishingGD-ID2", "Tdec[{{q,mu}},{p1},List\[Rule]False]",
 	"FVD[q, mu]"},
@@ -129,7 +129,7 @@ ScalarProduct[p1,p2]=0;Tdec[{{q,mu}},{p1}]", "{{}, FVD[q, mu]}"},
 "Tdec[{{q,mu},{q,nu}},{p1,p2},List\[Rule]False]",
 "FVD[q, mu]*FVD[q, nu]"},
 {"fcstTdecVanishingGD-ID9",
-"ClearScalarProducts; ScalarProduct[p3,p3]=m^2; \
+"FCClearScalarProducts[]; ScalarProduct[p3,p3]=m^2; \
 ScalarProduct[p4,p4]=m^2; ScalarProduct[p3,p4]=m^2; \
 Tdec[{{q,mu}},{p3,p4}]", "{{}, FVD[q, mu]}"},
 {"fcstTdecVanishingGD-ID10",

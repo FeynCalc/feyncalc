@@ -59,7 +59,7 @@ Tests`Lorentz`fcstContractContractionsIn4dims = {
 	"Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
 {"fcstContractContractionsIn4dims-ID21", "ScalarProduct[q, q] = 0\nContract[FourVector[q,a]*
 		FourVector[p - q, a]]","Pair[Momentum[p], Momentum[q]]"},
-{"fcstContractContractionsIn4dims-ID22", "ClearScalarProducts\nContract[FourVector[q, a]*
+{"fcstContractContractionsIn4dims-ID22", "FCClearScalarProducts[]\nContract[FourVector[q, a]*
 		FourVector[p - q, a]]","Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
 {"fcstContractContractionsIn4dims-ID23","Contract[DiracSimplify[DiracReduce[DiracMatrix[mu, nu,
 	rho, sigma]].DiracReduce[DiracMatrix[mu, nu, rho, sigma]]]]","-128"}

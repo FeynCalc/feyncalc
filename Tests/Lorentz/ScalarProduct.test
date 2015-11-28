@@ -44,7 +44,7 @@ Tests`Lorentz`fcstScalarProduct = {
 
 
 Tests`Lorentz`fcstScalarProductSet = ({
-{"fcstScalarProductSet-ID1", "ClearScalarProducts; \n
+{"fcstScalarProductSet-ID1", "FCClearScalarProducts[]; \n
 	ScalarProduct[a,b]=abval; \n
 	ScalarProduct[a,b]", "abval"},
 {"fcstScalarProductSet-ID2", "ScalarProduct[a,-b]", "-abval"},
@@ -176,7 +176,7 @@ Tests`Lorentz`fcstScalarProductSet = ({
 {"fcstScalarProductSet-ID71", "SPE[-a,b]", "SPE[-a, b]"},
 {"fcstScalarProductSet-ID72", "SPE[-a,-b]", "SPE[-a, -b]"},
 {"fcstScalarProductSet-ID73", "abval", "abval"},
-{"fcstScalarProductSet-ID74", "ClearScalarProducts
+{"fcstScalarProductSet-ID74", "FCClearScalarProducts[]
 	ScalarProduct[a,b]", "Pair[Momentum[a], Momentum[b]]"},
 {"fcstScalarProductSet-ID75", "ScalarProduct[a,-b]",
 "-Pair[Momentum[a], Momentum[b]]"},
@@ -338,7 +338,7 @@ Tests`Lorentz`fcstScalarProductSet = ({
 {"fcstScalarProductSet-ID151", "SPE[a,-b]", "SPE[a, -b]"},
 {"fcstScalarProductSet-ID152", "SPE[-a,b]", "SPE[-a, b]"},
 {"fcstScalarProductSet-ID153", "SPE[-a,-b]", "SPE[-a, -b]"},
-{"fcstScalarProductSet-ID154", "ClearScalarProducts \n
+{"fcstScalarProductSet-ID154", "FCClearScalarProducts[] \n
 	ScalarProduct[a1+a2,b1+b2]=abval \n
 	ScalarProduct[a1+a2,b1+b2,FCI\[Rule]False]",
 "ScalarProduct[a1 + a2, b1 + b2, FeynCalcInternal -> False]"},
@@ -485,7 +485,7 @@ Tests`Lorentz`fcstScalarProductSet = ({
 {"fcstScalarProductSet-ID225", "SPE[-a1-a2,-b1-b2]",
 "SPE[-a1 - a2, -b1 - b2]"},
 {"fcstScalarProductSet-ID226", "abval", "abval"},
-{"fcstScalarProductSet-ID227", "ClearScalarProducts \n
+{"fcstScalarProductSet-ID227", "FCClearScalarProducts[] \n
 	ScalarProduct[a1+a2,b1+b2,FCI\[Rule]False]",
 "ScalarProduct[a1 + a2, b1 + b2, FeynCalcInternal -> False]"},
 {"fcstScalarProductSet-ID228", "ScalarProduct[a1+a2,-b1-b2]",
@@ -578,7 +578,7 @@ Tests`Lorentz`fcstScalarProductSet = ({
 "SPE[-a1 - a2, b1 + b2]"},
 {"fcstScalarProductSet-ID262", "SPE[-a1-a2,-b1-b2]",
 "SPE[-a1 - a2, -b1 - b2]"},
-{"fcstScalarProductSet-ID263", "ClearScalarProducts \n
+{"fcstScalarProductSet-ID263", "FCClearScalarProducts[] \n
 	ScalarProduct[a1+a2,b1+b2,SetDimensions\[Rule]{X}]=abval3 \n
 	ScalarProduct[a1+a2,b1+b2]",
 "Pair[Momentum[a1 + a2], Momentum[b1 + b2]]"},
@@ -691,7 +691,7 @@ Tests`Lorentz`fcstScalarProductSet = ({
 });
 
 Tests`Lorentz`fsctSPSet = ({
-{"fsctSPSet-ID1", "ClearScalarProducts
+{"fsctSPSet-ID1", "FCClearScalarProducts[]
 	SP[a+b,c+d]=abval", "abval"},
 {"fsctSPSet-ID2", "SP[a+b,c+d]", "abval"},
 {"fsctSPSet-ID3", "SP[-a-b,c+d]", "-abval"},
@@ -725,7 +725,7 @@ Tests`Lorentz`fsctSPSet = ({
 "Pair[Momentum[a + b, -4 + D], Momentum[-c - d, -4 + D]]"},
 {"fsctSPSet-ID25", "SPE[-a-b,-c-d]//FCI",
 "Pair[Momentum[-a - b, -4 + D], Momentum[-c - d, -4 + D]]"},
-{"fsctSPSet-ID26", "ClearScalarProducts
+{"fsctSPSet-ID26", "FCClearScalarProducts[]
 	SP[a+b,c+d]=abval2", "abval2"},
 {"fsctSPSet-ID27", "SP[-a-b,c+d]", "-abval2"},
 {"fsctSPSet-ID28", "SP[a+b,-c-d]", "-abval2"},
@@ -758,7 +758,7 @@ Tests`Lorentz`fsctSPSet = ({
 "Pair[Momentum[a + b, -4 + D], Momentum[-c - d, -4 + D]]"},
 {"fsctSPSet-ID49", "SPE[-a-b,-c-d]//FCI",
 "Pair[Momentum[-a - b, -4 + D], Momentum[-c - d, -4 + D]]"},
-{"fsctSPSet-ID50", "ClearScalarProducts;
+{"fsctSPSet-ID50", "FCClearScalarProducts[];
 	SPD[a+b,c+d]=abval", "abval"},
 {"fsctSPSet-ID51", "SP[a+b,c+d]", "SP[a + b, c + d]"},
 {"fsctSPSet-ID52", "SP[-a-b,c+d]", "SP[-a - b, c + d]"},
@@ -792,7 +792,7 @@ Tests`Lorentz`fsctSPSet = ({
 "Pair[Momentum[a + b, -4 + D], Momentum[-c - d, -4 + D]]"},
 {"fsctSPSet-ID74", "SPE[-a-b,-c-d]//FCI",
 "Pair[Momentum[-a - b, -4 + D], Momentum[-c - d, -4 + D]]"},
-{"fsctSPSet-ID75", "ClearScalarProducts;
+{"fsctSPSet-ID75", "FCClearScalarProducts[];
 	SPE[a+b,c+d]=abval", "abval"},
 {"fsctSPSet-ID76", "SP[a+b,c+d]", "SP[a + b, c + d]"},
 {"fsctSPSet-ID77", "SP[-a-b,c+d]", "SP[-a - b, c + d]"},

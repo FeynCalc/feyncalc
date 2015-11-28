@@ -14,7 +14,7 @@
 (* ------------------------------------------------------------------------ *)
 
 Tests`LoopIntegrals`ToPaVe = {
-{"fcstToPaVe-ID1","ClearScalarProducts \n ToPaVe[x, q]","x"},
+{"fcstToPaVe-ID1","FCClearScalarProducts[] \n ToPaVe[x, q]","x"},
 {"fcstToPaVe-ID2","ToPaVe[0, q]","0"},
 {"fcstToPaVe-ID3","ToPaVe[FAD[{q, m1}], q]","I*Pi^2*A0[m1^2]"},
 {"fcstToPaVe-ID4","ToPaVe[FAD[{q, m1}, {q + p1, m2}], q]//FCE",

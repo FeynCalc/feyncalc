@@ -40,7 +40,7 @@ ScalarProduct[OPEDelta, OPEDelta] = 0;
 
 (* Since we set a new permanent SP here, we need to update
 all the saved DownValues to ensure that this setting will
-not be lost after ClearScalarProducts *)
+not be lost after FCClearScalarProducts[] *)
 
 (* 	TODO There should be a dedicated function for that. This
 	functionality will be often needed by add-ons*)

@@ -19,7 +19,7 @@ ClearAll[itests];
 itests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals", "IntegrationTests"}]]
 Get/@itests;
 ClearAll[p,k1,k2,k3,m0,m1,m2,m3,k1z,k2z,k1g,k2g,kst,qst,pst,m];
-ClearScalarProducts;
+FCClearScalarProducts[];
 ScalarProduct[k1z, k1z] = 0;
 ScalarProduct[k2z, k2z] = 0;
 ScalarProduct[k1g, k2g] = 0;
@@ -48,7 +48,7 @@ Map[Test[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],0,TestID->#[[1]
 		Tests`LoopIntegrals`fcitTIDSTests
 		]];
 
-ClearScalarProducts;
+FCClearScalarProducts[];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join[

@@ -17,10 +17,10 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Lorentz"}]]
 Get/@tests;
 
-ClearScalarProducts;
+FCClearScalarProducts[];
 ClearAll[xsp1,xsp2,ysp,zsp,X,abval,abval2,abval3,a,b,a1,a2,b1,b2];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Lorentz`*"])];
 
-ClearScalarProducts;
+FCClearScalarProducts[];

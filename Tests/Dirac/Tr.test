@@ -108,7 +108,7 @@ Tests`Dirac`fcstTr = {
 	m*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] -
 	2*m*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
 {"fcST-TR-ID11",
-	"ClearScalarProducts\n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
+	"FCClearScalarProducts[]\n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].
 	DiracMatrix[a[4], Dimension -> (d - 4)].DiracMatrix[a[5],
 	Dimension -> (d - 4)].DiracMatrix[a[6],

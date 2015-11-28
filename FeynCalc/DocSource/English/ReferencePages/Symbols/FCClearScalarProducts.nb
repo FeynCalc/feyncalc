@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/ClearScalarProducts", "Categorization",
+Cell["FeynCalc/ref/FCClearScalarProducts", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,14 +111,15 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["ClearScalarProducts", "ObjectName",
+Cell["FCClearScalarProducts[]", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["ClearScalarProducts"], "InlineFormula"],
- " \[LineSeparator]",
- "removes all user-performed specific settings for ScalarProduct's."
+ Cell[BoxData[
+  RowBox[{"FCClearScalarProducts", "[", "]"}]], "InlineFormula"],
+ " \[LineSeparator]removes all user-performed specific settings for \
+ScalarProduct's."
 }], "Usage",
  CellID->982511436],
 
@@ -181,7 +182,7 @@ Cell[TextData[{
   ButtonNote->"SPD"],
  "."
 }], "Text",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellID->958310312]
 }, Open  ]],
 
@@ -216,16 +217,16 @@ Cell[BoxData[
   RowBox[{"ScalarProduct", "[", 
    RowBox[{"p", ",", "p"}], "]"}], "=", 
   RowBox[{"m", "^", "2"}]}]], "Input",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"In[1]:=",
  CellID->1785698530],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox["m", "2"], TraditionalForm]], "Output",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"Out[1]=",
- CellID->1805188526]
+ CellID->29501459]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -235,20 +236,21 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"In[2]:=",
  CellID->1559478391],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox["m", "2"], TraditionalForm]], "Output",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"Out[2]=",
- CellID->1792259305]
+ CellID->988927941]
 }, Open  ]],
 
-Cell[BoxData["ClearScalarProducts"], "Input",
- CellTags->"ClearScalarProducts",
+Cell[BoxData[
+ RowBox[{"FCClearScalarProducts", "[", "]"}]], "Input",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"In[3]:=",
  CellID->368473440],
 
@@ -259,7 +261,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"In[4]:=",
  CellID->1776453168],
 
@@ -271,9 +273,9 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"Out[4]=",
- CellID->949899192]
+ CellID->975498131]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -281,7 +283,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ScalarProduct", "[", 
   RowBox[{"p", ",", "p"}], "]"}]], "Input",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"In[5]:=",
  CellID->1861458856],
 
@@ -293,13 +295,10 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- CellTags->"ClearScalarProducts",
+ CellTags->"FCClearScalarProducts",
  CellLabel->"Out[5]=",
- CellID->940105441]
-}, Open  ]]
+ CellID->1717895412]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell["More Examples", "ExtendedExamplesSection",
  CellTags->"ExtendedExamples",
@@ -315,8 +314,6 @@ Cell[BoxData[
   $Line = 0; Null]], "ExampleSection",
  CellID->1020263627],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  InterpretationBox[Cell["Options", "ExampleSection"],
   $Line = 0; Null]], "ExampleSection",
@@ -330,8 +327,7 @@ Cell[BoxData[
 Cell[BoxData[
  InterpretationBox[Cell["XXXX", "ExampleSubsection"],
   $Line = 0; Null]], "ExampleSubsection",
- CellID->1295379749]
-}, Closed]],
+ CellID->1295379749],
 
 Cell[BoxData[
  InterpretationBox[Cell["Applications", "ExampleSection"],
@@ -359,7 +355,7 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
+WindowSize->{700, 684},
 WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
@@ -369,3 +365,4 @@ FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

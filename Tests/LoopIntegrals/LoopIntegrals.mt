@@ -17,7 +17,7 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]]
 Get/@tests;
 
-ClearScalarProducts;
+FCClearScalarProducts[];
 SetOptions[Tdec,UseParallelization->False];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,

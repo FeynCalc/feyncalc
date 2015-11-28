@@ -12,15 +12,15 @@
 (* ------------------------------------------------------------------------ *)
 
 Tests`Shared`fcstCacheManagement = {
-{"fcstCacheManagement-ID1","ClearScalarProducts \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]}] // FCE",
+{"fcstCacheManagement-ID1","FCClearScalarProducts[] \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]}] // FCE",
 	"SP[a, c] + SP[a, d] + SP[b, c] + SP[b, d]"},
 {"fcstCacheManagement-ID2","ScalarProduct[a, c] = 0 \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]}] //FCE",
 	"SP[a, d] + SP[b, c] + SP[b, d]"},
-{"fcstCacheManagement-ID3","ClearScalarProducts \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]}] // FCE",
+{"fcstCacheManagement-ID3","FCClearScalarProducts[] \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]}] // FCE",
 	"SP[a, c] + SP[a, d] + SP[b, c] + SP[b, d]"},
-{"fcstCacheManagement-ID4","ClearScalarProducts \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]},
+{"fcstCacheManagement-ID4","FCClearScalarProducts[] \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]},
 	{Momentum -> {e}}] // FCE",	"SP[a + b, c + d]"},
-{"fcstCacheManagement-ID5","ClearScalarProducts \n (Table[FCUseCache[
+{"fcstCacheManagement-ID5","FCClearScalarProducts[] \n (Table[FCUseCache[
 	ExpandScalarProduct, {SP[a + b + c (d + e), c + e + 2 (h + j)]}], {i, 1, 15000}] //	AbsoluteTiming)[[1]] < 1.0",	"True"},
 {"fcstCacheManagement-ID6","FCClearCache[ExpandScalarProduct] \n FCShowCache[ExpandScalarProduct]",	"{}"}
 
