@@ -27,5 +27,8 @@ IsolateNames -> L] // ReleaseHold",
 	"a^5-5 a^4 (b+c+d)+10 a^3 (b+c+d)^2-10 a^2 (b+c+d)^3+5 a (b+c+d)^4-(b+c+d)^5"},
 {"fcstCollect2-ID6","Collect2[Expand[(a - b - c)^3], a, Factoring -> fun] /.
 fun -> FactorTerms",
-	"a^3-3 a^2 (b+c)+3 a (b^2+2 b c+c^2)-b^3-3 b^2 c-3 b c^2-c^3"}
+	"a^3-3 a^2 (b+c)+3 a (b^2+2 b c+c^2)-b^3-3 b^2 c-3 b c^2-c^3"},
+{"fcstCollect2-ID7","Collect2[(Hold[a*b] + Hold[c*d]) (e + f) + (Hold[a*b] +
+	Hold[c*d]) (e + 3 f), {e, f}]",
+	"2*e*(Hold[a*b] + Hold[c*d]) + 4*f*(Hold[a*b] + Hold[c*d])"}
 };

@@ -53,10 +53,8 @@ Options[Collect3] = {
 	Head -> Plus
 };
 
-(* for the CCollect stuff *)
-If[!ValueQ[$FeynC],
-	$FeynC = True
-];
+
+SetAttributes[holdForm,HoldAll];
 
 Collect2[a_ == b_, y__] :=
 	Collect2[a,y] == Collect2[b,y];
@@ -108,15 +106,15 @@ Collect2[ expr_, vv_List,r___Rule ] :=
 					v = v /. ComplexConjugate -> compCON;
 				];
 
-				nx = nx/. HoldForm[k_[ii_]] -> lk[k][ii];
+				nx = nx/. holdForm[k_[ii_]] -> lk[k][ii];
 
 				If[ fa === False,
-					tog[x_] := FixedPoint[ReleaseHold, x] (*/. Power2->Power*),
+					tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->ih],
 					fr0[x__] := Plus[x] /; !FreeQ2[{x}, v];
 					tog[x_]  :=
-						factor[FixedPoint[ReleaseHold, x]](* /. Power2->Power*);
+						factor[FRH[x/.holdForm->Identity, IsolateNames->ih]];
 					frx[x__] :=
-						HoldForm[Plus[x]];
+						holdForm[Plus[x]];
 					nx = nx /. Plus -> fr0 /. fr0 -> frx
 				];
 				If[ exo =!= False,
@@ -160,19 +158,19 @@ Collect2[ expr_, vv_List,r___Rule ] :=
 					nx = nx /. tv[[i]] -> 0;
 					If[ ih =!= False,
 						co = Isolate[co /. {einss:>1, lk[ka_][j_] :>
-						HoldForm[ka[j]]},ara , IsolateNames -> ih];
+						holdForm[ka[j]]},ara , IsolateNames -> ih];
 						If[dde =!= True,
-							new = new + ( times[ Isolate[FixedPoint[ReleaseHold, tv[[i]] /.
-							lk[ka_][j_] -> HoldForm[ka[j]]] /. mp2 -> Identity,
+							new = new + ( times[ Isolate[FRH[ tv[[i]]  /.
+							lk[ka_][j_] -> holdForm[ka[j]] , IsolateNames->ih] /. mp2 -> Identity,
 							v, IsolateNames -> ih], co ] /. einss -> 1),
-							new = new + ( times[ Isolate[FixedPoint[ReleaseHold, tv[[i]] /.
-							lk[ka_][j_] -> HoldForm[ka[j]]] /. mp2 -> cd /.
+							new = new + ( times[ Isolate[FRH[ tv[[i]] /.
+							lk[ka_][j_] -> holdForm[ka[j]], IsolateNames->ih] /. mp2 -> cd /.
 							cd -> Identity, v, IsolateNames -> ih], co]) /. einss -> 1
 						],
 						If[dde =!= True,
-							new = new + (times[ FixedPoint[ReleaseHold, tv[[i]]] /.
+							new = new + (times[ FRH[tv[[i]]/.holdForm->Identity, IsolateNames->ih] /.
 							mp2 -> cd /. cd -> Identity,co] /. einss->1),
-							new = new + (times[ FixedPoint[ReleaseHold, tv[[i]]] /.
+							new = new + (times[ FRH[tv[[i]]/.holdForm->Identity, IsolateNames->ih] /.
 							mp2 -> cd /. cd -> Identity,co] /. einss->1)
 						]
 					]
@@ -183,9 +181,9 @@ Collect2[ expr_, vv_List,r___Rule ] :=
 				FCPrint[2, "collected. time needed = ", tim //FeynCalcForm];
 			];
 			If[ ih =!= False,
-				lin = Isolate[ FixedPoint[ReleaseHold, lin], v, IsolateNames->ih ],
-				lin = FixedPoint[ReleaseHold, lin]];
-				re = ((nx + new + lin) /. lk[ka_][j_] -> HoldForm[ka[j]] /.	frx->Plus);
+				lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->ih], v, IsolateNames->ih ],
+				lin = FRH[lin/.holdForm->Identity, IsolateNames->ih]];
+				re = ((nx + new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
 			If[ccflag, re = re /. compCON -> ComplexConjugate];
 		];
 		einss=1;
