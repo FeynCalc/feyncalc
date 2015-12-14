@@ -24,5 +24,13 @@ Tests`LoopIntegrals`fcstPropagatorDenominatorExplicit = {
 {"fcstPropagatorDenominatorExplicit-ID3","PropagatorDenominatorExplicit[
 	FAD[{q, m}, {q - p, 0}] // FCI // FeynAmpDenominatorSplit,
 	PDEHead -> dummy] // FCE","dummy[1/(-m^2 + SPD[q, q])] dummy[1/(
-	SPD[p, p] - 2 SPD[p, q] + SPD[q, q])]"}
+	SPD[p, p] - 2 SPD[p, q] + SPD[q, q])]"},
+{"fcstPropagatorDenominatorExplicit-ID4",
+	"PropagatorDenominatorExplicit[FAD[{q, m}, {q + p}]] // FCE",
+	"1/((-m^2 + SPD[q, q]) (SPD[p, p] + 2 SPD[p, q] + SPD[q, q]))"
+},
+{"fcstPropagatorDenominatorExplicit-ID5",
+	"PropagatorDenominatorExplicit[FAD[{q, m}, {q + p}], Dimension -> 4]//FCE",
+	"1/((-m^2 + SP[q, q]) (SP[p, p] + 2 SP[p, q] + SP[q, q]))"
+}
 }
