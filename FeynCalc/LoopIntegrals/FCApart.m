@@ -142,6 +142,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		If [OptionValue[Check],
 			If[	check=Together[PropagatorDenominatorExplicit[ex] - Together[PropagatorDenominatorExplicit[res]]]; check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
+				FCPrint[0, StandardForm[check]];
 				Abort[]
 			]
 		];
