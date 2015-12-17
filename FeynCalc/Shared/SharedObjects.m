@@ -962,8 +962,18 @@ FourVector /:
 
 FV[p_ /; Head[p]=!=Momentum, Momentum[b_]] :=
 	SP[p,b];
+
 FV[Momentum[p_], Momentum[b_]] :=
 	SP[p,b];
+
+FV[0,_] :=
+	0;
+
+FVD[0,_] :=
+	0;
+
+FVE[0,_] :=
+	0;
 
 (*    Typesetting for vectors in the FCE notation.    *)
 (* ------------------------------------------------------------------------ *)
