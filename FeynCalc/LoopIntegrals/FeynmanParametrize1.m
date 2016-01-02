@@ -29,15 +29,17 @@ End[]
 
 Begin["`FeynmanParametrize1`Private`"]
 
-Options[FeynmanParametrize1] =
-{FeynmanParameterNames -> {FCGV["a"], FCGV["b"], FCGV["c"], FCGV["d"], FCGV["e"]},
-Method -> Denominator, Integrate -> True, Flatten -> True, CompleteSquare -> True};
+Options[FeynmanParametrize1] = {
+	FeynmanParameterNames -> {FCGV["a"], FCGV["b"], FCGV["c"], FCGV["d"], FCGV["e"]},
+	Method -> Denominator,
+	Integrate -> True,
+	Flatten -> True,
+	CompleteSquare -> True
+};
 
-FeynmanParametrize1::"noint" = "Could not integrate out `1` in
-`2`. Got `3`.";
+FeynmanParametrize1::"noint" = "Could not integrate out `1` in `2`. Got `3`.";
 
-fpar[{par__}][k_][
-		f:FeynAmpDenominator[PropagatorDenominator[_,___]..], opts___Rule] :=
+fpar[{par__}][k_][f:FeynAmpDenominator[PropagatorDenominator[_,___]..], opts___Rule] :=
 	Block[ {i, n = Length[f], dum, pars = dum@@{par}},
 		pars = ReplacePart[pars,0,n];
 		(n-1)! * Dot[(DOT@@Table[Integratedx[pars[[i]],0,pars[[i-1]]],{i,n-1}]),

@@ -68,21 +68,21 @@ toPaVe[x_,_,_,_]:=
 	x/; !FreeQ2[Head[x],PaVeHeadsList];
 
 (* A0 *)
-toPaVe[FeynAmpDenominator[PropagatorDenominator[Momentum[q_,_],m_]],q_,paveao_,pavear_]:=
+toPaVe[FeynAmpDenominator[PD[Momentum[q_,_],m_]],q_,paveao_,pavear_]:=
 	I Pi^2 PaVe[0,{},{m^2}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]/; !genpave;
 
 (* B0 *)
-toPaVe[FeynAmpDenominator[PropagatorDenominator[Momentum[q_,dim_],m1_],
-	PropagatorDenominator[Momentum[q_,dim_]+p_:0,m2_]],q_,paveao_,pavear_]:=
+toPaVe[FeynAmpDenominator[PD[Momentum[q_,dim_],m1_],
+	PD[Momentum[q_,dim_]+p_:0,m2_]],q_,paveao_,pavear_]:=
 		I Pi^2 PaVeOrder[PaVe[0,{ExpandScalarProduct[Pair[p,p]]},{m1^2,m2^2},
 			PaVeAutoOrder->paveao,
 			PaVeAutoReduce->pavear]]/; !genpave;
 
 (* C0 *)
 toPaVe[	FeynAmpDenominator[
-			PropagatorDenominator[Momentum[q_,dim_],m1_],
-			PropagatorDenominator[Momentum[q_,dim_]+p1_:0,m2_],
-			PropagatorDenominator[Momentum[q_,dim_]+p2_:0,m3_]],q_,
+			PD[Momentum[q_,dim_],m1_],
+			PD[Momentum[q_,dim_]+p1_:0,m2_],
+			PD[Momentum[q_,dim_]+p2_:0,m3_]],q_,
 			paveao_,pavear_]:=
 	I Pi^2 PaVeOrder[PaVe[0,{ExpandScalarProduct[Pair[p1,p1]],
 		ExpandScalarProduct[Pair[p1-p2,p1-p2]],
@@ -92,10 +92,10 @@ toPaVe[	FeynAmpDenominator[
 
 (* D0 *)
 toPaVe[	FeynAmpDenominator[
-			PropagatorDenominator[Momentum[q_,dim_],m1_],
-			PropagatorDenominator[Momentum[q_,dim_]+p1_:0,m2_],
-			PropagatorDenominator[Momentum[q_,dim_]+p2_:0,m3_],
-			PropagatorDenominator[Momentum[q_,dim_]+p3_:0,m4_]],q_,
+			PD[Momentum[q_,dim_],m1_],
+			PD[Momentum[q_,dim_]+p1_:0,m2_],
+			PD[Momentum[q_,dim_]+p2_:0,m3_],
+			PD[Momentum[q_,dim_]+p3_:0,m4_]],q_,
 			paveao_,pavear_
 	]:=
 	I Pi^2 PaVeOrder[PaVe[0,
@@ -112,11 +112,11 @@ toPaVe[	FeynAmpDenominator[
 
 (* E0 *)
 toPaVe[	FeynAmpDenominator[
-			PropagatorDenominator[Momentum[q_,dim_],m1_],
-			PropagatorDenominator[Momentum[q_,dim_]+p1_:0,m2_],
-			PropagatorDenominator[Momentum[q_,dim_]+p2_:0,m3_],
-			PropagatorDenominator[Momentum[q_,dim_]+p3_:0,m4_],
-			PropagatorDenominator[Momentum[q_,dim_]+p4_:0,m5_]],q_,
+			PD[Momentum[q_,dim_],m1_],
+			PD[Momentum[q_,dim_]+p1_:0,m2_],
+			PD[Momentum[q_,dim_]+p2_:0,m3_],
+			PD[Momentum[q_,dim_]+p3_:0,m4_],
+			PD[Momentum[q_,dim_]+p4_:0,m5_]],q_,
 			paveao_,pavear_
 	]:=
 	I Pi^2 PaVeOrder[PaVe[0,
@@ -136,11 +136,11 @@ toPaVe[	FeynAmpDenominator[
 
 (* Even Higher multiplicities*)
 toPaVe[	FeynAmpDenominator[
-			(prs:PropagatorDenominator[Momentum[_,_:4]+_:0,_]..)],q_,
+			(prs:PD[Momentum[_,_:4]+_:0,_]..)],q_,
 			_,_
 	]:=
 	I Pi^2 GenPaVe[{0},	((MomentumExpand/@{prs})/.
-			PropagatorDenominator[Momentum[q, _:4] +p_:0, m_:0] :> {p, m})]/;
+			PD[Momentum[q, _:4] +p_:0, m_:0] :> {p, m})]/;
 			Length[{prs}]>5 || genpave;
 
 

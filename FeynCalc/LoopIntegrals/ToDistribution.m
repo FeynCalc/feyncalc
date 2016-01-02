@@ -24,7 +24,9 @@ End[]
 
 Begin["`ToDistribution`Private`"]
 
-Options[ToDistribution] = {PlusDistribution->Identity};
+Options[ToDistribution] = {
+	PlusDistribution->Identity
+};
 
 ToDistribution[exp_, x_, opt___Rule] :=
 	Apart3[exp,x] /. { (1-x)^(a_. Epsilon -1) :>
@@ -42,8 +44,7 @@ ToDistribution[exp_, x_, opt___Rule] :=
 				(a Epsilon ) PlusDistribution[Log[1-x]/(1-x)^2] +
 				a^2 Epsilon^2/2 PlusDistribution[Log[1-x]^2/(1-x)^2] +
 				a^3 Epsilon^3/6 PlusDistribution[Log[1-x]^3/(1-x)^2]
-			)
-	,
+			),
 			(1-x)^(a_. Epsilon -3) :>
 				DeltaFunctionDoublePrime[1-x]/2/Epsilon +
 				PlusDistribution[(1 - x)^(-3)] +

@@ -91,6 +91,7 @@ End[]
 
 Begin["`OneLoop`Private`"]
 
+oneloopVerbose::usage="";
 
 StandardMatrixElement /:
 MakeBoxes[StandardMatrixElement[x_], TraditionalForm
@@ -222,7 +223,8 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 	newoneamp,ip,lenneu, lenneu2, neuamp,paone,paone2,oneselect,fsub,
 	intermedsubst,writeoutrecover = False, oldfile, ftemp,
 	writeoutpav, uvpart,to4dim, oneampresult, null1, null2,
-	oneloopVerbose,nonLoopTerms,loopTerms
+	oneloopVerbose,nonLoopTerms,loopTerms, oneloopsimplify,inisubs,
+	reducegamma67,oneopt,tim,smav, smdaemon, smalldirac
 	},
 		options = {opts};
 		(* for FA2.0 *)
@@ -315,7 +317,6 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			]
 		];
 		oneamp = ChangeDimension[FeynCalcInternal[oneamp],dim];
-		oneampstart = oneamp;
 
 		(* in case oneamp has no FeynAmpDenominator: write oneamp out *)
 		If[ FreeQ2[ oneamp , {FeynAmpDenominator,FAD}],
@@ -352,11 +353,14 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						{iv,1,Length[smallv]} ];
 		(* do the initial substitutions *)
 			oneamp = ( oneamp/.smav )/.inisubs;
-		(* neglect any small variable in the numerators of the fermion
-		propagators  *)
-			smalldirac /: smalldirac[_] + DiracGamma[a__] := DiracGamma[a];
+		(* neglect any small variable in the numerators of the fermion propagators  *)
+			smalldirac /: smalldirac[_] + DiracGamma[a__]:=
+				DiracGamma[a];
+
 		(* and in the spinors *)
-			smalldirac /: Spinor[ pe_, smalldirac[_], op___] := Spinor[pe,0,op];
+			smalldirac /: Spinor[ pe_, smalldirac[_], op___]:=
+				Spinor[pe,0,op];
+
 			oneamp = oneamp /. SmallVariable -> smalldirac /.
 								smalldirac -> SmallVariable;
 		(* put heads on the momenta in the denominators *)
@@ -379,15 +383,13 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 						] =!= {},
 				$fourfermion = True
 			];
-			oneamp00 = oneamp;
+
 			oneamp = FeynAmpDenominatorSplit[oneamp//Trick//FeynAmpDenominatorCombine, Momentum->{q}];
-			oneamp = oneamp /. FeynAmpDenominator[xyz__] :>
-						PropagatorDenominatorExplicit[FeynAmpDenominator[xyz]] /;
-						FreeQ[{xyz}, q];
-			oneamp01 = oneamp;
+			oneamp = oneamp /. FeynAmpDenominator[xyz__] :> PropagatorDenominatorExplicit[FeynAmpDenominator[xyz]] /;FreeQ[{xyz}, q];
+
 			oneamp = oneamp/.PropagatorDenominator -> denf /.
 					denprop -> PropagatorDenominator;
-			oneamp02 = oneamp;
+
 			If[ oneloopsimplify=== True,
 				oneamp = OneLoopSimplify[oneamp, q, Dimension -> dim]
 			];
@@ -403,11 +405,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			smdaemon[x_] :=
 				x/.SmallVariable->smn;
 			Y[{pi_, mi_}, {pj_, mj_}] :=
-				Expand[smdaemon[ mi^2 + mj^2 -
-						ScalarProduct[pi - pj, pi - pj]//
-									ExpandScalarProduct
-								]
-					];
+				Expand[smdaemon[ mi^2 + mj^2 -ScalarProduct[pi - pj, pi - pj]//ExpandScalarProduct]];
 
 			(* pli is the list of momenta (without q), being one less than mli *)
 
