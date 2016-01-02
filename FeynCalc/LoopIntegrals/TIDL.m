@@ -22,9 +22,8 @@ of rederiving the decompositions over and over and thus loosing time.
 
 
 
-TIDL::usage = "TIDL[{q,mu}, {p}];
-TIDL[{{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] or
-TIDL[exp, {{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] .";
+TIDL::usage = "TIDL[{q,mu}, {p}]; TIDL[{{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] \
+or TIDL[exp, {{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}].";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -61,8 +60,8 @@ MemSet[scpexp[x,n],
 
 (*To add new (long) formulas the following compression mechanism is quite effective:
 
-exp = Tdec[{{q, mu}, {q, nu}, {q, ru}}, {p1, p2, p3},
-UseTIDL -> False, List -> False];
+exp = Tdec[{{q, i1}, {q, i2}, {q, i3}, {q, i4}, {q, i5}, {q, i6}, {q,
+	i7}, {q, i8}}, {}, UseTIDL -> False, List -> False];
 exp2 = Collect2[exp, {q, FVD, MTD}];
 exp2 = Map[Isolate[#, HoldForm, IsolateNames -> ISO] &,
 exp2 // ChangeDimension[#, 4] & // FCE //
@@ -100,7 +99,8 @@ reru2 = Join[reru2, reru3, reru4];
 reru21 = Join[reru21, reru31, reru41];
 Put[{Collect2[z1 /. reru /. reru2, l], z2 /. reru21 /. reru2,
 Map[Reverse, Join[reru21, reru2]]}, "formula.m"];
-bli = Flatten[{(Join[reru, reru2] /. {Rule[_, a_] :> a}), encli}]
+bli = Union@Flatten[{(Join[reru, reru2, reru3, reru4, reru21, reru31,
+	reru41] /. {Rule[_, a_] :> a}), encli}]
 
 
 Then edit formula.m and remove all spaces. Use following skeleton for Block
