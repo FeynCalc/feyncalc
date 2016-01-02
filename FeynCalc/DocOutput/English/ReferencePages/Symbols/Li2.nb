@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9590,        344]
+NotebookDataLength[      9600,        344]
 NotebookOptionsPosition[      5870,        221]
-NotebookOutlinePosition[      8478,        299]
-CellTagsIndexPosition[      8373,        293]
+NotebookOutlinePosition[      8488,        299]
+CellTagsIndexPosition[      8383,        293]
 WindowTitle->Li2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92932], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$98310], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Li2", 
             ".html"]], None}]}]},
@@ -106,7 +106,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1450309076],
+ CellID->2107633418],
 
 Cell[CellGroupData[{
 
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->237743912],
+ CellID->425919476],
 
 Cell[CellGroupData[{
 
@@ -234,7 +234,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 2, 49.459861}", 
+   "built" -> "{2016, 1, 2, 15, 13, 54.949037}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -245,7 +245,7 @@ TaggingRules->{
     "windowtitle" -> "Li2", "type" -> "Symbol", "uri" -> "FeynCalc/ref/Li2"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -254,7 +254,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -265,7 +265,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3265, 93, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1450309076]},
+   CellID->2107633418]},
  "Li2"->{
   Cell[3898, 122, 117, 4, 27, "Input",
    CellTags->"Li2",
@@ -276,7 +276,7 @@ CellTagsIndex->{
   Cell[4295, 142, 125, 4, 27, "Input",
    CellTags->"Li2",
    CellID->1201153887],
-  Cell[4423, 148, 267, 9, 36, "Output",
+  Cell[4423, 148, 267, 9, 49, "Output",
    CellTags->"Li2",
    CellID->798709898],
   Cell[4727, 162, 269, 10, 52, "Input",
@@ -292,8 +292,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7642, 264},
- {"Li2", 7772, 268}
+ {"PrimaryExamplesSection", 7652, 264},
+ {"Li2", 7782, 268}
  }
 *)
 (*NotebookFileOutline
@@ -307,10 +307,10 @@ Cell[2864, 78, 376, 11, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3265, 93, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1450309076],
+ CellID->2107633418],
 Cell[CellGroupData[{
 Cell[3678, 112, 195, 6, 25, "ExampleSection",
- CellID->237743912],
+ CellID->425919476],
 Cell[CellGroupData[{
 Cell[3898, 122, 117, 4, 27, "Input",
  CellTags->"Li2",
@@ -323,7 +323,7 @@ Cell[CellGroupData[{
 Cell[4295, 142, 125, 4, 27, "Input",
  CellTags->"Li2",
  CellID->1201153887],
-Cell[4423, 148, 267, 9, 36, "Output",
+Cell[4423, 148, 267, 9, 49, "Output",
  CellTags->"Li2",
  CellID->798709898]
 }, Open  ]],

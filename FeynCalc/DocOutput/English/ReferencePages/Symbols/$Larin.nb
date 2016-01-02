@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10207,        323]
-NotebookOptionsPosition[      6341,        214]
-NotebookOutlinePosition[      9367,        291]
-CellTagsIndexPosition[      9259,        285]
+NotebookDataLength[     10220,        323]
+NotebookOptionsPosition[      6342,        214]
+NotebookOutlinePosition[      9379,        291]
+CellTagsIndexPosition[      9271,        285]
 WindowTitle->$Larin
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$164164], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170352], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$Larin",
              ".html"]], None}]}]},
@@ -133,7 +133,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->253947234],
+ CellID->1587745140],
 
 Cell[TextData[{
  "Basic Examples",
@@ -141,7 +141,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1706085204],
+ CellID->1341170645],
 
 Cell[CellGroupData[{
 
@@ -227,7 +227,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 9, 20.634059}", 
+   "built" -> "{2016, 1, 2, 15, 20, 12.975920}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -246,7 +246,7 @@ scheme.", "synonyms" -> {}, "title" -> "$Larin", "titlemodifier" -> "",
     "windowtitle" -> "$Larin", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/$Larin"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -255,7 +255,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -264,28 +264,28 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4381, 120, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4381, 120, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->253947234]},
+   CellID->1587745140]},
  "$Larin"->{
-  Cell[4992, 147, 75, 2, 35, "Subsubsection",
+  Cell[4993, 147, 75, 2, 35, "Subsubsection",
    CellTags->"$Larin",
    CellID->1690224764],
-  Cell[5092, 153, 97, 3, 27, "Input",
+  Cell[5093, 153, 97, 3, 27, "Input",
    CellTags->"$Larin",
    CellID->1245299015],
-  Cell[5192, 158, 211, 7, 36, "Output",
+  Cell[5193, 158, 211, 7, 36, "Output",
    CellTags->"$Larin",
    CellID->1660409352],
-  Cell[5771, 188, 528, 21, 31, "Text",
+  Cell[5772, 188, 528, 21, 31, "Text",
    CellTags->"$Larin",
    CellID->181403197]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8752, 265},
- {"$Larin", 8885, 269}
+ {"PrimaryExamplesSection", 8763, 265},
+ {"$Larin", 8897, 269}
  }
 *)
 (*NotebookFileOutline
@@ -297,34 +297,34 @@ Cell[2818, 75, 49, 1, 42, "ObjectName",
 Cell[2870, 78, 1486, 38, 180, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4381, 120, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4381, 120, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->253947234],
-Cell[4771, 137, 196, 6, 25, "ExampleSection",
- CellID->1706085204],
+ CellID->1587745140],
+Cell[4772, 137, 196, 6, 25, "ExampleSection",
+ CellID->1341170645],
 Cell[CellGroupData[{
-Cell[4992, 147, 75, 2, 35, "Subsubsection",
+Cell[4993, 147, 75, 2, 35, "Subsubsection",
  CellTags->"$Larin",
  CellID->1690224764],
 Cell[CellGroupData[{
-Cell[5092, 153, 97, 3, 27, "Input",
+Cell[5093, 153, 97, 3, 27, "Input",
  CellTags->"$Larin",
  CellID->1245299015],
-Cell[5192, 158, 211, 7, 36, "Output",
+Cell[5193, 158, 211, 7, 36, "Output",
  CellTags->"$Larin",
  CellID->1660409352]
 }, Open  ]],
-Cell[5418, 168, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5419, 168, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5498, 174, 270, 12, 31, "SeeAlsoSection",
+Cell[5499, 174, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5771, 188, 528, 21, 31, "Text",
+Cell[5772, 188, 528, 21, 31, "Text",
  CellTags->"$Larin",
  CellID->181403197]
 }, Open  ]],
-Cell[6314, 212, 23, 0, 42, "FooterCell"]
+Cell[6315, 212, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

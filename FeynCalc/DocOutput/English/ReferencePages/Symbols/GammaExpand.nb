@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10692,        369]
+NotebookDataLength[     10703,        369]
 NotebookOptionsPosition[      6805,        246]
-NotebookOutlinePosition[      9520,        324]
-CellTagsIndexPosition[      9407,        318]
+NotebookOutlinePosition[      9531,        324]
+CellTagsIndexPosition[      9418,        318]
 WindowTitle->GammaExpand
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ GammaExpand.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$72876], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$77518], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GammaExpand", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1241802823],
+ CellID->1912243656],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1076812123],
+ CellID->1727781996],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 3.928049}", 
+   "built" -> "{2016, 1, 2, 15, 11, 56.702043}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -270,7 +270,7 @@ Integer).", "synonyms" -> {}, "title" -> "GammaExpand", "titlemodifier" -> "",
      "windowtitle" -> "GammaExpand", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/GammaExpand"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -279,7 +279,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -290,7 +290,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3329, 94, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1241802823]},
+   CellID->1912243656]},
  "GammaExpand"->{
   Cell[3963, 123, 204, 6, 27, "Input",
    CellTags->"GammaExpand",
@@ -317,8 +317,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8609, 289},
- {"GammaExpand", 8747, 293}
+ {"PrimaryExamplesSection", 8620, 289},
+ {"GammaExpand", 8758, 293}
  }
 *)
 (*NotebookFileOutline
@@ -332,10 +332,10 @@ Cell[2900, 78, 404, 12, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3329, 94, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1241802823],
+ CellID->1912243656],
 Cell[CellGroupData[{
 Cell[3742, 113, 196, 6, 25, "ExampleSection",
- CellID->1076812123],
+ CellID->1727781996],
 Cell[CellGroupData[{
 Cell[3963, 123, 204, 6, 27, "Input",
  CellTags->"GammaExpand",

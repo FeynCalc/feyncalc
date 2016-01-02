@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22694,        839]
-NotebookOptionsPosition[     15168,        594]
-NotebookOutlinePosition[     19839,        729]
-CellTagsIndexPosition[     19725,        723]
+NotebookDataLength[     22702,        839]
+NotebookOptionsPosition[     15167,        594]
+NotebookOutlinePosition[     19848,        729]
+CellTagsIndexPosition[     19734,        723]
 WindowTitle->LeviCivita
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92238], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$97616], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/LeviCivita", ".html"]], None}]}]},
@@ -131,7 +131,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1993946701],
+ CellID->2117755191],
 
 Cell[CellGroupData[{
 
@@ -141,7 +141,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1717638664],
+ CellID->903723994],
 
 Cell[CellGroupData[{
 
@@ -607,7 +607,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 2, 45.865922}", 
+   "built" -> "{2016, 1, 2, 15, 13, 52.144186}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -624,7 +624,7 @@ LorentzIndex[\\[Nu]], ..., Momentum[p], ...].", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/LeviCivita"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -633,7 +633,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -644,86 +644,86 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4187, 118, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1993946701]},
+   CellID->2117755191]},
  "LeviCivita"->{
-  Cell[4821, 147, 138, 4, 27, "Input",
+  Cell[4820, 147, 138, 4, 27, "Input",
    CellTags->"LeviCivita",
    CellID->2141079579],
-  Cell[4962, 153, 351, 12, 36, "Output",
+  Cell[4961, 153, 351, 12, 36, "Output",
    CellTags->"LeviCivita",
    CellID->1665927785],
-  Cell[5350, 170, 204, 6, 27, "Input",
+  Cell[5349, 170, 204, 6, 27, "Input",
    CellTags->"LeviCivita",
    CellID->970809287],
-  Cell[5557, 178, 597, 25, 40, "Output",
+  Cell[5556, 178, 597, 25, 40, "Output",
    CellTags->"LeviCivita",
    CellID->1096309803],
-  Cell[6191, 208, 221, 7, 27, "Input",
+  Cell[6190, 208, 221, 7, 27, "Input",
    CellTags->"LeviCivita",
    CellID->972968542],
-  Cell[6415, 217, 591, 25, 40, "Output",
+  Cell[6414, 217, 591, 25, 40, "Output",
    CellTags->"LeviCivita",
    CellID->657040186],
-  Cell[7043, 247, 198, 6, 27, "Input",
+  Cell[7042, 247, 198, 6, 27, "Input",
    CellTags->"LeviCivita",
    CellID->1735126440],
-  Cell[7244, 255, 569, 25, 36, "Output",
+  Cell[7243, 255, 569, 25, 36, "Output",
    CellTags->"LeviCivita",
    CellID->986206459],
-  Cell[7850, 285, 204, 6, 27, "Input",
+  Cell[7849, 285, 204, 6, 27, "Input",
    CellTags->"LeviCivita",
    CellID->1409243674],
-  Cell[8057, 293, 596, 25, 40, "Output",
+  Cell[8056, 293, 596, 25, 40, "Output",
    CellTags->"LeviCivita",
    CellID->1898302846],
-  Cell[8690, 323, 259, 8, 27, "Input",
+  Cell[8689, 323, 259, 8, 27, "Input",
    CellTags->"LeviCivita",
    CellID->851260878],
-  Cell[8952, 333, 586, 17, 54, "Output",
+  Cell[8951, 333, 586, 17, 67, "Output",
    CellTags->"LeviCivita",
    CellID->2076139317],
-  Cell[9575, 355, 383, 11, 27, "Input",
+  Cell[9574, 355, 383, 11, 27, "Input",
    CellTags->"LeviCivita",
    CellID->1953796449],
-  Cell[9961, 368, 1038, 44, 40, "Output",
+  Cell[9960, 368, 1038, 44, 40, "Output",
    CellTags->"LeviCivita",
    CellID->1617820485],
-  Cell[11036, 417, 131, 4, 27, "Input",
+  Cell[11035, 417, 131, 4, 27, "Input",
    CellTags->"LeviCivita",
    CellID->1087595628],
-  Cell[11170, 423, 425, 15, 39, "Output",
+  Cell[11169, 423, 425, 15, 39, "Output",
    CellTags->"LeviCivita",
    CellID->168636471],
-  Cell[11610, 441, 333, 10, 27, "Input",
+  Cell[11609, 441, 333, 10, 27, "Input",
    CellTags->"LeviCivita",
    CellID->391796206],
-  Cell[11968, 455, 421, 12, 27, "Input",
+  Cell[11967, 455, 421, 12, 27, "Input",
    CellTags->"LeviCivita",
    CellID->132983157],
-  Cell[12392, 469, 404, 14, 36, "Output",
+  Cell[12391, 469, 404, 14, 36, "Output",
    CellTags->"LeviCivita",
    CellID->1319312223],
-  Cell[12811, 486, 334, 10, 27, "Input",
+  Cell[12810, 486, 334, 10, 27, "Input",
    CellTags->"LeviCivita",
    CellID->506638236],
-  Cell[13170, 500, 198, 6, 27, "Input",
+  Cell[13169, 500, 198, 6, 27, "Input",
    CellTags->"LeviCivita",
    CellID->1005970568],
-  Cell[13371, 508, 598, 25, 40, "Output",
+  Cell[13370, 508, 598, 25, 40, "Output",
    CellTags->"LeviCivita",
    CellID->1506614030],
-  Cell[13984, 536, 128, 4, 27, "Input",
+  Cell[13983, 536, 128, 4, 27, "Input",
    CellTags->"LeviCivita",
    CellID->839583368],
-  Cell[14468, 562, 658, 27, 32, "Text",
+  Cell[14467, 562, 658, 27, 32, "Text",
    CellTags->"LeviCivita",
    CellID->236168083]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17379, 643},
- {"LeviCivita", 17517, 647}
+ {"PrimaryExamplesSection", 17388, 643},
+ {"LeviCivita", 17526, 647}
  }
 *)
 (*NotebookFileOutline
@@ -737,110 +737,110 @@ Cell[2893, 78, 1269, 36, 148, "Usage",
 Cell[CellGroupData[{
 Cell[4187, 118, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1993946701],
+ CellID->2117755191],
 Cell[CellGroupData[{
-Cell[4600, 137, 196, 6, 25, "ExampleSection",
- CellID->1717638664],
+Cell[4600, 137, 195, 6, 25, "ExampleSection",
+ CellID->903723994],
 Cell[CellGroupData[{
-Cell[4821, 147, 138, 4, 27, "Input",
+Cell[4820, 147, 138, 4, 27, "Input",
  CellTags->"LeviCivita",
  CellID->2141079579],
-Cell[4962, 153, 351, 12, 36, "Output",
+Cell[4961, 153, 351, 12, 36, "Output",
  CellTags->"LeviCivita",
  CellID->1665927785]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5350, 170, 204, 6, 27, "Input",
+Cell[5349, 170, 204, 6, 27, "Input",
  CellTags->"LeviCivita",
  CellID->970809287],
-Cell[5557, 178, 597, 25, 40, "Output",
+Cell[5556, 178, 597, 25, 40, "Output",
  CellTags->"LeviCivita",
  CellID->1096309803]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6191, 208, 221, 7, 27, "Input",
+Cell[6190, 208, 221, 7, 27, "Input",
  CellTags->"LeviCivita",
  CellID->972968542],
-Cell[6415, 217, 591, 25, 40, "Output",
+Cell[6414, 217, 591, 25, 40, "Output",
  CellTags->"LeviCivita",
  CellID->657040186]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7043, 247, 198, 6, 27, "Input",
+Cell[7042, 247, 198, 6, 27, "Input",
  CellTags->"LeviCivita",
  CellID->1735126440],
-Cell[7244, 255, 569, 25, 36, "Output",
+Cell[7243, 255, 569, 25, 36, "Output",
  CellTags->"LeviCivita",
  CellID->986206459]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7850, 285, 204, 6, 27, "Input",
+Cell[7849, 285, 204, 6, 27, "Input",
  CellTags->"LeviCivita",
  CellID->1409243674],
-Cell[8057, 293, 596, 25, 40, "Output",
+Cell[8056, 293, 596, 25, 40, "Output",
  CellTags->"LeviCivita",
  CellID->1898302846]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8690, 323, 259, 8, 27, "Input",
+Cell[8689, 323, 259, 8, 27, "Input",
  CellTags->"LeviCivita",
  CellID->851260878],
-Cell[8952, 333, 586, 17, 54, "Output",
+Cell[8951, 333, 586, 17, 67, "Output",
  CellTags->"LeviCivita",
  CellID->2076139317]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9575, 355, 383, 11, 27, "Input",
+Cell[9574, 355, 383, 11, 27, "Input",
  CellTags->"LeviCivita",
  CellID->1953796449],
-Cell[9961, 368, 1038, 44, 40, "Output",
+Cell[9960, 368, 1038, 44, 40, "Output",
  CellTags->"LeviCivita",
  CellID->1617820485]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11036, 417, 131, 4, 27, "Input",
+Cell[11035, 417, 131, 4, 27, "Input",
  CellTags->"LeviCivita",
  CellID->1087595628],
-Cell[11170, 423, 425, 15, 39, "Output",
+Cell[11169, 423, 425, 15, 39, "Output",
  CellTags->"LeviCivita",
  CellID->168636471]
 }, Open  ]],
-Cell[11610, 441, 333, 10, 27, "Input",
+Cell[11609, 441, 333, 10, 27, "Input",
  CellTags->"LeviCivita",
  CellID->391796206],
 Cell[CellGroupData[{
-Cell[11968, 455, 421, 12, 27, "Input",
+Cell[11967, 455, 421, 12, 27, "Input",
  CellTags->"LeviCivita",
  CellID->132983157],
-Cell[12392, 469, 404, 14, 36, "Output",
+Cell[12391, 469, 404, 14, 36, "Output",
  CellTags->"LeviCivita",
  CellID->1319312223]
 }, Open  ]],
-Cell[12811, 486, 334, 10, 27, "Input",
+Cell[12810, 486, 334, 10, 27, "Input",
  CellTags->"LeviCivita",
  CellID->506638236],
 Cell[CellGroupData[{
-Cell[13170, 500, 198, 6, 27, "Input",
+Cell[13169, 500, 198, 6, 27, "Input",
  CellTags->"LeviCivita",
  CellID->1005970568],
-Cell[13371, 508, 598, 25, 40, "Output",
+Cell[13370, 508, 598, 25, 40, "Output",
  CellTags->"LeviCivita",
  CellID->1506614030]
 }, Open  ]],
-Cell[13984, 536, 128, 4, 27, "Input",
+Cell[13983, 536, 128, 4, 27, "Input",
  CellTags->"LeviCivita",
  CellID->839583368]
 }, Open  ]],
-Cell[14127, 543, 31, 0, 29, "SectionFooterSpacer"]
+Cell[14126, 543, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14195, 548, 270, 12, 31, "SeeAlsoSection",
+Cell[14194, 548, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[14468, 562, 658, 27, 32, "Text",
+Cell[14467, 562, 658, 27, 32, "Text",
  CellTags->"LeviCivita",
  CellID->236168083]
 }, Open  ]],
-Cell[15141, 592, 23, 0, 42, "FooterCell"]
+Cell[15140, 592, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

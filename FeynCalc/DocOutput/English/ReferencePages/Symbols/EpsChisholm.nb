@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12809,        461]
+NotebookDataLength[     12816,        461]
 NotebookOptionsPosition[      9250,        351]
-NotebookOutlinePosition[     11836,        424]
-CellTagsIndexPosition[     11721,        418]
+NotebookOutlinePosition[     11843,        424]
+CellTagsIndexPosition[     11728,        418]
 WindowTitle->EpsChisholm
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ EpsChisholm.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46015], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48112], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/EpsChisholm", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1538999492],
+ CellID->1060868426],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->434972884],
+ CellID->378451299],
 
 Cell[CellGroupData[{
 
@@ -364,7 +364,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 58, 41.110809}", 
+   "built" -> "{2016, 1, 2, 15, 9, 5.486106}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -376,7 +376,7 @@ Levi-Civita tensor (Eps) the Chisholm identity.", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/EpsChisholm"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -385,7 +385,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -396,7 +396,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3372, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1538999492]},
+   CellID->1060868426]},
  "EpsChisholm"->{
   Cell[4005, 124, 227, 7, 27, "Input",
    CellTags->"EpsChisholm",
@@ -417,8 +417,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11100, 395},
- {"EpsChisholm", 11238, 399}
+ {"PrimaryExamplesSection", 11107, 395},
+ {"EpsChisholm", 11245, 399}
  }
 *)
 (*NotebookFileOutline
@@ -432,10 +432,10 @@ Cell[2900, 78, 447, 13, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3372, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1538999492],
+ CellID->1060868426],
 Cell[CellGroupData[{
 Cell[3785, 114, 195, 6, 25, "ExampleSection",
- CellID->434972884],
+ CellID->378451299],
 Cell[CellGroupData[{
 Cell[4005, 124, 227, 7, 27, "Input",
  CellTags->"EpsChisholm",

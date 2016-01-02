@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11420,        386]
-NotebookOptionsPosition[      7365,        262]
-NotebookOutlinePosition[     10194,        341]
-CellTagsIndexPosition[     10074,        335]
+NotebookDataLength[     11429,        386]
+NotebookOptionsPosition[      7366,        262]
+NotebookOutlinePosition[     10202,        341]
+CellTagsIndexPosition[     10082,        335]
 WindowTitle->DeltaFunctionPrime
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ DeltaFunctionPrime.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$34265], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36086], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DeltaFunctionPrime", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->169475631],
+ CellID->693057089],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->572278826],
+ CellID->1165418985],
 
 Cell[CellGroupData[{
 
@@ -275,7 +275,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 57, 39.432155}", 
+   "built" -> "{2016, 1, 2, 15, 8, 4.877711}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -287,7 +287,7 @@ TaggingRules->{
     "Symbol", "uri" -> "FeynCalc/ref/DeltaFunctionPrime"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -296,7 +296,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -307,35 +307,35 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3502, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->169475631]},
+   CellID->693057089]},
  "DeltaFunctionPrime"->{
-  Cell[4134, 128, 170, 5, 27, "Input",
+  Cell[4135, 128, 170, 5, 27, "Input",
    CellTags->"DeltaFunctionPrime",
    CellID->677883424],
-  Cell[4307, 135, 346, 12, 36, "Output",
+  Cell[4308, 135, 346, 12, 36, "Output",
    CellTags->"DeltaFunctionPrime",
    CellID->1329619670],
-  Cell[4690, 152, 348, 11, 27, "Input",
+  Cell[4691, 152, 348, 11, 27, "Input",
    CellTags->"DeltaFunctionPrime",
    CellID->666771914],
-  Cell[5041, 165, 309, 10, 36, "Output",
+  Cell[5042, 165, 309, 10, 36, "Output",
    CellTags->"DeltaFunctionPrime",
    CellID->1211576646],
-  Cell[5387, 180, 345, 11, 31, "Input",
+  Cell[5388, 180, 345, 11, 31, "Input",
    CellTags->"DeltaFunctionPrime",
    CellID->1722060708],
-  Cell[5735, 193, 220, 7, 36, "Output",
+  Cell[5736, 193, 220, 7, 36, "Output",
    CellTags->"DeltaFunctionPrime",
    CellID->1114808117],
-  Cell[6323, 223, 1000, 34, 52, "Text",
+  Cell[6324, 223, 1000, 34, 52, "Text",
    CellTags->"DeltaFunctionPrime",
    CellID->1121609320]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9214, 306},
- {"DeltaFunctionPrime", 9358, 310}
+ {"PrimaryExamplesSection", 9222, 306},
+ {"DeltaFunctionPrime", 9366, 310}
  }
 *)
 (*NotebookFileOutline
@@ -349,45 +349,45 @@ Cell[2942, 78, 535, 17, 84, "Usage",
 Cell[CellGroupData[{
 Cell[3502, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->169475631],
+ CellID->693057089],
 Cell[CellGroupData[{
-Cell[3914, 118, 195, 6, 25, "ExampleSection",
- CellID->572278826],
+Cell[3914, 118, 196, 6, 25, "ExampleSection",
+ CellID->1165418985],
 Cell[CellGroupData[{
-Cell[4134, 128, 170, 5, 27, "Input",
+Cell[4135, 128, 170, 5, 27, "Input",
  CellTags->"DeltaFunctionPrime",
  CellID->677883424],
-Cell[4307, 135, 346, 12, 36, "Output",
+Cell[4308, 135, 346, 12, 36, "Output",
  CellTags->"DeltaFunctionPrime",
  CellID->1329619670]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4690, 152, 348, 11, 27, "Input",
+Cell[4691, 152, 348, 11, 27, "Input",
  CellTags->"DeltaFunctionPrime",
  CellID->666771914],
-Cell[5041, 165, 309, 10, 36, "Output",
+Cell[5042, 165, 309, 10, 36, "Output",
  CellTags->"DeltaFunctionPrime",
  CellID->1211576646]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5387, 180, 345, 11, 31, "Input",
+Cell[5388, 180, 345, 11, 31, "Input",
  CellTags->"DeltaFunctionPrime",
  CellID->1722060708],
-Cell[5735, 193, 220, 7, 36, "Output",
+Cell[5736, 193, 220, 7, 36, "Output",
  CellTags->"DeltaFunctionPrime",
  CellID->1114808117]
 }, Open  ]]
 }, Open  ]],
-Cell[5982, 204, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5983, 204, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6050, 209, 270, 12, 31, "SeeAlsoSection",
+Cell[6051, 209, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6323, 223, 1000, 34, 52, "Text",
+Cell[6324, 223, 1000, 34, 52, "Text",
  CellTags->"DeltaFunctionPrime",
  CellID->1121609320]
 }, Open  ]],
-Cell[7338, 260, 23, 0, 42, "FooterCell"]
+Cell[7339, 260, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

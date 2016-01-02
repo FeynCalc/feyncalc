@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12631,        424]
-NotebookOptionsPosition[      8536,        298]
-NotebookOutlinePosition[     11466,        379]
-CellTagsIndexPosition[     11353,        373]
+NotebookDataLength[     12643,        424]
+NotebookOptionsPosition[      8537,        298]
+NotebookOutlinePosition[     11477,        379]
+CellTagsIndexPosition[     11364,        373]
 WindowTitle->PaVeOrder
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$111510], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$116718], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PaVeOrder", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1521741131],
+ CellID->2131321460],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->447321571],
+ CellID->1760086381],
 
 Cell[CellGroupData[{
 
@@ -311,7 +311,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 4, 26.974381}", 
+   "built" -> "{2016, 1, 2, 15, 15, 19.029067}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -325,7 +325,7 @@ D0-variables.", "synonyms" -> {}, "title" -> "PaVeOrder", "titlemodifier" ->
     "", "windowtitle" -> "PaVeOrder", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/PaVeOrder"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -334,7 +334,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -345,35 +345,35 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3793, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1521741131]},
+   CellID->2131321460]},
  "PaVeOrder"->{
-  Cell[4426, 136, 430, 13, 45, "Input",
+  Cell[4427, 136, 430, 13, 45, "Input",
    CellTags->"PaVeOrder",
    CellID->641538627],
-  Cell[4859, 151, 472, 16, 36, "Output",
+  Cell[4860, 151, 472, 16, 36, "Output",
    CellTags->"PaVeOrder",
    CellID->1082848295],
-  Cell[5368, 172, 430, 13, 45, "Input",
+  Cell[5369, 172, 430, 13, 45, "Input",
    CellTags->"PaVeOrder",
    CellID->490694983],
-  Cell[5801, 187, 472, 16, 36, "Output",
+  Cell[5802, 187, 472, 16, 36, "Output",
    CellTags->"PaVeOrder",
    CellID->1266309668],
-  Cell[6310, 208, 724, 21, 62, "Input",
+  Cell[6311, 208, 724, 21, 62, "Input",
    CellTags->"PaVeOrder",
    CellID->1444685309],
-  Cell[7037, 231, 855, 30, 56, "Output",
+  Cell[7038, 231, 855, 30, 56, "Output",
    CellTags->"PaVeOrder",
    CellID->1493961476],
-  Cell[8260, 284, 234, 9, 31, "Text",
+  Cell[8261, 284, 234, 9, 31, "Text",
    CellTags->"PaVeOrder",
    CellID->776510000]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10564, 344},
- {"PaVeOrder", 10701, 348}
+ {"PrimaryExamplesSection", 10575, 344},
+ {"PaVeOrder", 10712, 348}
  }
 *)
 (*NotebookFileOutline
@@ -387,45 +387,45 @@ Cell[2888, 78, 880, 25, 117, "Usage",
 Cell[CellGroupData[{
 Cell[3793, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1521741131],
+ CellID->2131321460],
 Cell[CellGroupData[{
-Cell[4206, 126, 195, 6, 25, "ExampleSection",
- CellID->447321571],
+Cell[4206, 126, 196, 6, 25, "ExampleSection",
+ CellID->1760086381],
 Cell[CellGroupData[{
-Cell[4426, 136, 430, 13, 45, "Input",
+Cell[4427, 136, 430, 13, 45, "Input",
  CellTags->"PaVeOrder",
  CellID->641538627],
-Cell[4859, 151, 472, 16, 36, "Output",
+Cell[4860, 151, 472, 16, 36, "Output",
  CellTags->"PaVeOrder",
  CellID->1082848295]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5368, 172, 430, 13, 45, "Input",
+Cell[5369, 172, 430, 13, 45, "Input",
  CellTags->"PaVeOrder",
  CellID->490694983],
-Cell[5801, 187, 472, 16, 36, "Output",
+Cell[5802, 187, 472, 16, 36, "Output",
  CellTags->"PaVeOrder",
  CellID->1266309668]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6310, 208, 724, 21, 62, "Input",
+Cell[6311, 208, 724, 21, 62, "Input",
  CellTags->"PaVeOrder",
  CellID->1444685309],
-Cell[7037, 231, 855, 30, 56, "Output",
+Cell[7038, 231, 855, 30, 56, "Output",
  CellTags->"PaVeOrder",
  CellID->1493961476]
 }, Open  ]]
 }, Open  ]],
-Cell[7919, 265, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7920, 265, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7987, 270, 270, 12, 31, "SeeAlsoSection",
+Cell[7988, 270, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8260, 284, 234, 9, 31, "Text",
+Cell[8261, 284, 234, 9, 31, "Text",
  CellTags->"PaVeOrder",
  CellID->776510000]
 }, Open  ]],
-Cell[8509, 296, 23, 0, 42, "FooterCell"]
+Cell[8510, 296, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

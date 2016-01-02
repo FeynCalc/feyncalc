@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15696,        573]
+NotebookDataLength[     15705,        573]
 NotebookOptionsPosition[      9834,        380]
-NotebookOutlinePosition[     13488,        488]
-CellTagsIndexPosition[     13372,        482]
+NotebookOutlinePosition[     13498,        488]
+CellTagsIndexPosition[     13382,        482]
 WindowTitle->MetricTensor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ MetricTensor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$96027], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$101401], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/MetricTensor", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->344558396],
+ CellID->570896732],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1218683506],
+ CellID->423081529],
 
 Cell[CellGroupData[{
 
@@ -393,7 +393,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 3, 4.866389}", 
+   "built" -> "{2016, 1, 2, 15, 14, 7.324679}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -404,7 +404,7 @@ TaggingRules->{
     "windowtitle" -> "MetricTensor", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/MetricTensor"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -413,7 +413,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -422,9 +422,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3357, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3358, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->344558396]},
+   CellID->570896732]},
  "MetricTensor"->{
   Cell[3990, 124, 171, 5, 27, "Input",
    CellTags->"MetricTensor",
@@ -453,25 +453,25 @@ CellTagsIndex->{
   Cell[6295, 230, 199, 6, 27, "Input",
    CellTags->"MetricTensor",
    CellID->1318549517],
-  Cell[6497, 238, 334, 10, 36, "Output",
+  Cell[6497, 238, 334, 10, 49, "Output",
    CellTags->"MetricTensor",
    CellID->1708064740],
   Cell[6868, 253, 248, 7, 27, "Input",
    CellTags->"MetricTensor",
    CellID->1544242781],
-  Cell[7119, 262, 384, 12, 36, "Output",
+  Cell[7119, 262, 384, 12, 49, "Output",
    CellTags->"MetricTensor",
    CellID->2135349923],
   Cell[7540, 279, 230, 7, 27, "Input",
    CellTags->"MetricTensor",
    CellID->912797684],
-  Cell[7773, 288, 250, 8, 36, "Output",
+  Cell[7773, 288, 250, 8, 49, "Output",
    CellTags->"MetricTensor",
    CellID->489293900],
   Cell[8060, 301, 281, 8, 27, "Input",
    CellTags->"MetricTensor",
    CellID->1275057625],
-  Cell[8344, 311, 252, 8, 36, "Output",
+  Cell[8344, 311, 252, 8, 49, "Output",
    CellTags->"MetricTensor",
    CellID->1657208619],
   Cell[8964, 342, 828, 33, 32, "Text",
@@ -481,25 +481,25 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11642, 423},
- {"MetricTensor", 11780, 427}
+ {"PrimaryExamplesSection", 11652, 423},
+ {"MetricTensor", 11790, 427}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2261, 52, 51, "AnchorBarGrid",
+Cell[584, 21, 2262, 52, 51, "AnchorBarGrid",
  CellID->1],
-Cell[2848, 75, 55, 1, 42, "ObjectName",
+Cell[2849, 75, 55, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2906, 78, 426, 13, 82, "Usage",
+Cell[2907, 78, 426, 13, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3357, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3358, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->344558396],
+ CellID->570896732],
 Cell[CellGroupData[{
-Cell[3769, 114, 196, 6, 25, "ExampleSection",
- CellID->1218683506],
+Cell[3770, 114, 195, 6, 25, "ExampleSection",
+ CellID->423081529],
 Cell[CellGroupData[{
 Cell[3990, 124, 171, 5, 27, "Input",
  CellTags->"MetricTensor",
@@ -536,7 +536,7 @@ Cell[CellGroupData[{
 Cell[6295, 230, 199, 6, 27, "Input",
  CellTags->"MetricTensor",
  CellID->1318549517],
-Cell[6497, 238, 334, 10, 36, "Output",
+Cell[6497, 238, 334, 10, 49, "Output",
  CellTags->"MetricTensor",
  CellID->1708064740]
 }, Open  ]],
@@ -544,7 +544,7 @@ Cell[CellGroupData[{
 Cell[6868, 253, 248, 7, 27, "Input",
  CellTags->"MetricTensor",
  CellID->1544242781],
-Cell[7119, 262, 384, 12, 36, "Output",
+Cell[7119, 262, 384, 12, 49, "Output",
  CellTags->"MetricTensor",
  CellID->2135349923]
 }, Open  ]],
@@ -552,7 +552,7 @@ Cell[CellGroupData[{
 Cell[7540, 279, 230, 7, 27, "Input",
  CellTags->"MetricTensor",
  CellID->912797684],
-Cell[7773, 288, 250, 8, 36, "Output",
+Cell[7773, 288, 250, 8, 49, "Output",
  CellTags->"MetricTensor",
  CellID->489293900]
 }, Open  ]],
@@ -560,7 +560,7 @@ Cell[CellGroupData[{
 Cell[8060, 301, 281, 8, 27, "Input",
  CellTags->"MetricTensor",
  CellID->1275057625],
-Cell[8344, 311, 252, 8, 36, "Output",
+Cell[8344, 311, 252, 8, 49, "Output",
  CellTags->"MetricTensor",
  CellID->1657208619]
 }, Open  ]]

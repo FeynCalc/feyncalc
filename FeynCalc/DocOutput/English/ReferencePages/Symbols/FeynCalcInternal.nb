@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21427,        768]
+NotebookDataLength[     21438,        768]
 NotebookOptionsPosition[     15739,        588]
-NotebookOutlinePosition[     19344,        691]
-CellTagsIndexPosition[     19224,        685]
+NotebookOutlinePosition[     19354,        691]
+CellTagsIndexPosition[     19234,        685]
 WindowTitle->FeynCalcInternal
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynCalcInternal.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$60795], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$64885], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynCalcInternal", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1135921423],
+ CellID->1352122557],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1723601356],
+ CellID->1288226866],
 
 Cell[CellGroupData[{
 
@@ -601,7 +601,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 57.312515}", 
+   "built" -> "{2016, 1, 2, 15, 10, 40.832187}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -613,7 +613,7 @@ TaggingRules->{
     "FeynCalcInternal", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FeynCalcInternal"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -622,7 +622,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -633,7 +633,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3388, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1135921423]},
+   CellID->1352122557]},
  "FeynCalcInternal"->{
   Cell[4022, 124, 469, 14, 27, "Input",
    CellTags->"FeynCalcInternal",
@@ -644,7 +644,7 @@ CellTagsIndex->{
   Cell[6538, 228, 136, 4, 27, "Input",
    CellTags->"FeynCalcInternal",
    CellID->1982442552],
-  Cell[6677, 234, 571, 17, 36, "Output",
+  Cell[6677, 234, 571, 17, 49, "Output",
    CellTags->"FeynCalcInternal",
    CellID->603554670],
   Cell[7285, 256, 140, 4, 27, "Input",
@@ -656,13 +656,13 @@ CellTagsIndex->{
   Cell[9193, 338, 136, 4, 27, "Input",
    CellTags->"FeynCalcInternal",
    CellID->1783117065],
-  Cell[9332, 344, 1013, 28, 88, "Output",
+  Cell[9332, 344, 1013, 28, 101, "Output",
    CellTags->"FeynCalcInternal",
    CellID->1678932419],
   Cell[10382, 377, 180, 6, 27, "Input",
    CellTags->"FeynCalcInternal",
    CellID->53564155],
-  Cell[10565, 385, 570, 17, 36, "Output",
+  Cell[10565, 385, 570, 17, 49, "Output",
    CellTags->"FeynCalcInternal",
    CellID->44863235],
   Cell[11172, 407, 536, 16, 27, "Input",
@@ -674,7 +674,7 @@ CellTagsIndex->{
   Cell[13361, 499, 135, 4, 27, "Input",
    CellTags->"FeynCalcInternal",
    CellID->438838711],
-  Cell[13499, 505, 1282, 34, 122, "Output",
+  Cell[13499, 505, 1282, 34, 135, "Output",
    CellTags->"FeynCalcInternal",
    CellID->700854959],
   Cell[15149, 562, 548, 21, 32, "Text",
@@ -684,8 +684,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17597, 632},
- {"FeynCalcInternal", 17740, 636}
+ {"PrimaryExamplesSection", 17606, 632},
+ {"FeynCalcInternal", 17749, 636}
  }
 *)
 (*NotebookFileOutline
@@ -699,10 +699,10 @@ Cell[2930, 78, 433, 13, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3388, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1135921423],
+ CellID->1352122557],
 Cell[CellGroupData[{
 Cell[3801, 114, 196, 6, 25, "ExampleSection",
- CellID->1723601356],
+ CellID->1288226866],
 Cell[CellGroupData[{
 Cell[4022, 124, 469, 14, 27, "Input",
  CellTags->"FeynCalcInternal",
@@ -715,7 +715,7 @@ Cell[CellGroupData[{
 Cell[6538, 228, 136, 4, 27, "Input",
  CellTags->"FeynCalcInternal",
  CellID->1982442552],
-Cell[6677, 234, 571, 17, 36, "Output",
+Cell[6677, 234, 571, 17, 49, "Output",
  CellTags->"FeynCalcInternal",
  CellID->603554670]
 }, Open  ]],
@@ -731,7 +731,7 @@ Cell[CellGroupData[{
 Cell[9193, 338, 136, 4, 27, "Input",
  CellTags->"FeynCalcInternal",
  CellID->1783117065],
-Cell[9332, 344, 1013, 28, 88, "Output",
+Cell[9332, 344, 1013, 28, 101, "Output",
  CellTags->"FeynCalcInternal",
  CellID->1678932419]
 }, Open  ]],
@@ -739,7 +739,7 @@ Cell[CellGroupData[{
 Cell[10382, 377, 180, 6, 27, "Input",
  CellTags->"FeynCalcInternal",
  CellID->53564155],
-Cell[10565, 385, 570, 17, 36, "Output",
+Cell[10565, 385, 570, 17, 49, "Output",
  CellTags->"FeynCalcInternal",
  CellID->44863235]
 }, Open  ]],
@@ -755,7 +755,7 @@ Cell[CellGroupData[{
 Cell[13361, 499, 135, 4, 27, "Input",
  CellTags->"FeynCalcInternal",
  CellID->438838711],
-Cell[13499, 505, 1282, 34, 122, "Output",
+Cell[13499, 505, 1282, 34, 135, "Output",
  CellTags->"FeynCalcInternal",
  CellID->700854959]
 }, Open  ]]

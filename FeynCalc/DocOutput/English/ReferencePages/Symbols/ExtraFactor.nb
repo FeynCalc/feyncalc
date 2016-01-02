@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6242,        190]
+NotebookDataLength[      6251,        190]
 NotebookOptionsPosition[      3955,        123]
-NotebookOutlinePosition[      5977,        179]
-CellTagsIndexPosition[      5904,        174]
+NotebookOutlinePosition[      5986,        179]
+CellTagsIndexPosition[      5913,        174]
 WindowTitle->ExtraFactor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ExtraFactor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$51492], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$53865], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ExtraFactor", ".html"]], None}]}]},
@@ -136,7 +136,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 9.997499}", 
+   "built" -> "{2016, 1, 2, 15, 9, 40.929410}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -148,7 +148,7 @@ fa multiplies the whole amplitude with the factor fa before squaring.",
     "windowtitle" -> "ExtraFactor", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ExtraFactor"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -157,7 +157,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -173,7 +173,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtraFactor", 5789, 167}
+ {"ExtraFactor", 5798, 167}
  }
 *)
 (*NotebookFileOutline

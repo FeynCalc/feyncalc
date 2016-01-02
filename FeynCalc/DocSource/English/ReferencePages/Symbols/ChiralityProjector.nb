@@ -231,7 +231,7 @@ Cell[BoxData[
    RowBox[{"ChiralityProjector", "[", 
     RowBox[{"-", "1"}], "]"}]}], "}"}]], "Input",
  CellTags->"ChiralityProjector",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->336937517],
 
 Cell[BoxData[
@@ -247,25 +247,41 @@ Cell[BoxData[
      FormBox["7",
       TraditionalForm]]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChiralityProjector",
- CellLabel->"Out[1]=",
- CellID->101790273]
+ CellLabel->"Out[2]=",
+ CellID->1252517379]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSimplify", "[", 
-  RowBox[{"%%", ",", 
+  RowBox[{"%", ",", 
    RowBox[{"DiracSubstitute67", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"ChiralityProjector",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->2102778570],
 
 Cell[BoxData[
- FormBox["0", TraditionalForm]], "Output",
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]], "2"], "+", 
+     FractionBox["1", "2"]}], ",", 
+    RowBox[{
+     FractionBox["1", "2"], "-", 
+     FractionBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]], "2"]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChiralityProjector",
- CellLabel->"Out[2]=",
- CellID->1614381922]
+ CellLabel->"Out[3]=",
+ CellID->1744568026]
 }, Open  ]]
 }, Open  ]],
 
@@ -335,7 +351,8 @@ Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

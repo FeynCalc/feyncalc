@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    161318,       5896]
-NotebookOptionsPosition[    142063,       5258]
-NotebookOutlinePosition[    152697,       5577]
-CellTagsIndexPosition[    152541,       5570]
+NotebookDataLength[    160820,       5892]
+NotebookOptionsPosition[    141559,       5254]
+NotebookOutlinePosition[    152201,       5573]
+CellTagsIndexPosition[    152045,       5566]
 WindowTitle->FunctionalD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FunctionalD.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69380], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73838], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FunctionalD", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2081346037],
+ CellID->274613547],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->24732291],
+ CellID->2056155500],
 
 Cell[TextData[{
  "Instead of the usual ",
@@ -173,7 +173,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[1]=",
- CellID->1374465660]
+ CellID->149077150]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,7 +198,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[2]=",
- CellID->1081798185]
+ CellID->85429466]
 }, Open  ]],
 
 Cell[TextData[{
@@ -251,7 +251,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"QuantumField", "[", 
     RowBox[{
-     RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ",", 
+     RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ",", 
    RowBox[{"QuantumField", "[", "\[Phi]", "]"}]}], "]"}]], "Input",
  CellTags->"FunctionalD",
  CellLabel->"In[3]:=",
@@ -259,22 +259,19 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   SuperscriptBox[
-    RowBox[{
-     RowBox[{"QuantumField", "(", 
-      RowBox[{
-       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], "(", 
-     ")"}], "\[Prime]",
-    MultilineFunction->None], "\[InvisibleApplication]", 
-   RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}], 
-  TraditionalForm]], "Output",
- ImageSize->{439, 15},
+  RowBox[{"-", 
+   SubscriptBox[
+    OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{34, 27},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[3]=",
- CellID->463777256]
+ CellID->1642735326]
 }, Open  ]],
 
 Cell[TextData[Cell[BoxData[
@@ -315,11 +312,11 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"QuantumField", "[", 
        RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], ".", 
-      
+        RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}], 
+      ".", 
       RowBox[{"QuantumField", "[", 
        RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}]}], 
+        RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], "]"}]}], 
      "-", 
      RowBox[{
       RowBox[{"m", "^", "2"}], " ", 
@@ -338,14 +335,24 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      RowBox[{"QuantumField", "(", 
-       RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], ".", 
-      
-      RowBox[{"QuantumField", "(", 
-       RowBox[{
-        RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}]}], 
-     "-", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["\[Phi]",
+         TraditionalForm], "\[Null]", "\[Null]"]}], ".", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], 
+       SubsuperscriptBox[
+        FormBox["\[Phi]",
+         TraditionalForm], "\[Null]", "\[Null]"]}]}], "-", 
      RowBox[{
       SuperscriptBox["m", "2"], " ", 
       RowBox[{
@@ -353,12 +360,12 @@ Cell[BoxData[
         TraditionalForm], ".", 
        FormBox["\[Phi]",
         TraditionalForm]}]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{489, 41},
+ ImageSize->{163, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[4]=",
- CellID->1061632244]
+ CellID->423622231]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -376,48 +383,37 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{
-    FractionBox["1", "2"], " ", 
-    RowBox[{
-     RowBox[{"QuantumField", "(", 
-      RowBox[{
-       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], ".", 
-     RowBox[{
-      SuperscriptBox[
-       RowBox[{
-        RowBox[{"QuantumField", "(", 
-         RowBox[{
-          RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], 
-        "(", ")"}], "\[Prime]",
-       MultilineFunction->None], "\[InvisibleApplication]", 
-      RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}]}]}], "+", 
-   RowBox[{
-    FractionBox["1", "2"], " ", 
-    RowBox[{
-     RowBox[{
-      SuperscriptBox[
-       RowBox[{
-        RowBox[{"QuantumField", "(", 
-         RowBox[{
-          RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}], 
-        "(", ")"}], "\[Prime]",
-       MultilineFunction->None], "\[InvisibleApplication]", 
-      RowBox[{"(", "FeynCalc`FunctionalD`Private`xX", ")"}]}], ".", 
-     RowBox[{"QuantumField", "(", 
-      RowBox[{
-       RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "\[Phi]"}], ")"}]}]}], 
-   "+", 
-   RowBox[{
     SuperscriptBox["m", "2"], " ", 
     RowBox[{"(", 
      RowBox[{"-", 
       FormBox["\[Phi]",
-       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{489, 134},
+       TraditionalForm]}], ")"}]}], "-", 
+   RowBox[{
+    RowBox[{
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], 
+     FormBox[
+      SubscriptBox["\[PartialD]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}], 
+    SubsuperscriptBox[
+     FormBox["\[Phi]",
+      TraditionalForm], "\[Null]", "\[Null]"]}]}], TraditionalForm]], "Output",\
+
+ ImageSize->{127, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[5]=",
- CellID->435021757]
+ CellID->264301886]
 }, Open  ]],
 
 Cell[TextData[Cell[BoxData[
@@ -530,7 +526,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[6]=",
- CellID->1111705641]
+ CellID->1550678993]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -620,7 +616,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[7]=",
- CellID->1390438184]
+ CellID->1803724780]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -783,7 +779,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[8]=",
- CellID->62460432]
+ CellID->1499967078]
 }, Open  ]],
 
 Cell[TextData[{
@@ -900,7 +896,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[9]=",
- CellID->991172064]
+ CellID->2026389295]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1077,7 +1073,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[10]=",
- CellID->2102523013]
+ CellID->930168027]
 }, Open  ]],
 
 Cell["\<\
@@ -1260,7 +1256,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[11]=",
- CellID->1221262706]
+ CellID->22832846]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1328,7 +1324,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[13]=",
- CellID->2038446867]
+ CellID->1252480273]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1367,7 +1363,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[14]=",
- CellID->1307472319]
+ CellID->122288557]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1534,7 +1530,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[15]=",
- CellID->2123805888]
+ CellID->325352248]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1619,7 +1615,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[16]=",
- CellID->1482322562]
+ CellID->1748319521]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1704,7 +1700,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[17]=",
- CellID->1614884083]
+ CellID->1369525226]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1886,7 +1882,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[18]=",
- CellID->933013372]
+ CellID->745422332]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3005,7 +3001,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[19]=",
- CellID->1632031614]
+ CellID->1475699650]
 }, Open  ]],
 
 Cell["\<\
@@ -3692,7 +3688,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[22]=",
- CellID->981302323]
+ CellID->1392722087]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4023,7 +4019,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[23]=",
- CellID->885707787]
+ CellID->333585110]
 }, Open  ]],
 
 Cell[TextData[{
@@ -4188,7 +4184,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[24]=",
- CellID->836856627]
+ CellID->115691573]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4286,7 +4282,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[25]=",
- CellID->221243946]
+ CellID->602569188]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4376,7 +4372,7 @@ ZpNkwehyokecxsgrbOTyOQ3sHQQCgUAgEAgF/A8M9PTv
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[26]=",
- CellID->1955596034]
+ CellID->1530633941]
 }, Open  ]],
 
 Cell["\<\
@@ -4459,7 +4455,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[27]=",
- CellID->596397790]
+ CellID->908387761]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4553,7 +4549,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[28]=",
- CellID->343042273]
+ CellID->849746209]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4754,7 +4750,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FunctionalD",
  CellLabel->"Out[29]=",
- CellID->617664029]
+ CellID->421326563]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4848,7 +4844,7 @@ YGzwJim1oZVEQyWK2WprtoWPAEjvCAQCgUAgEMyA/wKU8anW
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[30]=",
- CellID->1650437996]
+ CellID->1412104678]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5023,7 +5019,7 @@ IBDG8v//qjde
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[31]=",
- CellID->948151744]
+ CellID->1204186971]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5193,7 +5189,7 @@ wmnpJjXovXeGg07Um/pQg3x4gJn69dlnOvmlwZL+27t35pL6TivaYeAVrtMA
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"FunctionalD", "RasterizedOutput"},
  CellLabel->"Out[32]=",
- CellID->427585770]
+ CellID->1698625354]
 }, Open  ]],
 
 Cell["quod erat demonstrandum.", "Text",
@@ -5271,7 +5267,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 44.560152}", 
+   "built" -> "{2016, 1, 2, 15, 11, 33.651342}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -5287,7 +5283,7 @@ is a low level function used in FeynRule.", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/FunctionalD"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -5296,7 +5292,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -5305,273 +5301,273 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3956, 107, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3956, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2081346037]},
+   CellID->274613547]},
  "FunctionalD"->{
-  Cell[4566, 134, 631, 21, 57, "Text",
+  Cell[4567, 134, 631, 21, 57, "Text",
    CellTags->"FunctionalD",
    CellID->2064540691],
-  Cell[5222, 159, 246, 7, 27, "Input",
+  Cell[5223, 159, 246, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->622999086],
-  Cell[5471, 168, 213, 7, 36, "Output",
+  Cell[5472, 168, 212, 7, 36, "Output",
    CellTags->"FunctionalD",
-   CellID->1374465660],
+   CellID->149077150],
   Cell[5721, 180, 271, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->272557122],
-  Cell[5995, 190, 275, 10, 36, "Output",
+  Cell[5995, 190, 273, 10, 36, "Output",
    CellTags->"FunctionalD",
-   CellID->1081798185],
-  Cell[6285, 203, 1194, 41, 92, "Text",
+   CellID->85429466],
+  Cell[6283, 203, 1194, 41, 92, "Text",
    CellTags->"FunctionalD",
    CellID->412822781],
-  Cell[7504, 248, 314, 9, 27, "Input",
+  Cell[7502, 248, 316, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1655052767],
-  Cell[7821, 259, 525, 17, 36, "Output",
+  Cell[7821, 259, 379, 14, 48, "Output",
    CellTags->"FunctionalD",
-   CellID->463777256],
-  Cell[8361, 279, 798, 25, 36, "Text",
+   CellID->1642735326],
+  Cell[8215, 276, 798, 25, 36, "Text",
    CellTags->"FunctionalD",
    CellID->726694991],
-  Cell[9184, 308, 686, 23, 45, "Input",
+  Cell[9038, 305, 690, 23, 45, "Input",
    CellTags->"FunctionalD",
    CellID->593299923],
-  Cell[9873, 333, 764, 27, 62, "Output",
+  Cell[9731, 330, 1010, 37, 62, "Output",
    CellTags->"FunctionalD",
-   CellID->1061632244],
-  Cell[10674, 365, 236, 7, 27, "Input",
+   CellID->423622231],
+  Cell[10778, 372, 236, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1102630385],
-  Cell[10913, 374, 1444, 45, 155, "Output",
+  Cell[11017, 381, 835, 34, 42, "Output",
    CellTags->"FunctionalD",
-   CellID->435021757],
-  Cell[12372, 422, 509, 16, 44, "Text",
+   CellID->264301886],
+  Cell[11867, 418, 509, 16, 44, "Text",
    CellTags->"FunctionalD",
    CellID->820504742],
-  Cell[12884, 440, 117, 3, 32, "Text",
+  Cell[12379, 436, 117, 3, 32, "Text",
    CellTags->"FunctionalD",
    CellID->883647128],
-  Cell[13026, 447, 333, 9, 27, "Input",
+  Cell[12521, 443, 333, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->575936469],
-  Cell[13362, 458, 1688, 74, 44, "Output",
+  Cell[12857, 454, 1688, 74, 44, "Output",
    CellTags->"FunctionalD",
-   CellID->1111705641],
-  Cell[15087, 537, 334, 9, 27, "Input",
+   CellID->1550678993],
+  Cell[14582, 533, 334, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1966798854],
-  Cell[15424, 548, 1688, 74, 44, "Output",
+  Cell[14919, 544, 1688, 74, 44, "Output",
    CellTags->"FunctionalD",
-   CellID->1390438184],
-  Cell[17149, 627, 234, 9, 27, "Input",
+   CellID->1803724780],
+  Cell[16644, 623, 234, 9, 27, "Input",
    CellTags->"FunctionalD",
    CellID->733226876],
-  Cell[17386, 638, 3701, 147, 62, "Output",
+  Cell[16881, 634, 3703, 147, 62, "Output",
    CellTags->"FunctionalD",
-   CellID->62460432],
-  Cell[21102, 788, 581, 14, 96, "Text",
+   CellID->1499967078],
+  Cell[20599, 784, 581, 14, 96, "Text",
    CellTags->"FunctionalD",
    CellID->1999439773],
-  Cell[21686, 804, 1425, 50, 36, "Text",
+  Cell[21183, 800, 1425, 50, 36, "Text",
    CellTags->"FunctionalD",
    CellID->1758153070],
-  Cell[23114, 856, 464, 14, 35, "Text",
+  Cell[22611, 852, 464, 14, 35, "Text",
    CellTags->"FunctionalD",
    CellID->833531771],
-  Cell[23603, 874, 249, 8, 27, "Input",
+  Cell[23100, 870, 249, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->371171043],
-  Cell[23855, 884, 425, 18, 41, "Output",
+  Cell[23352, 880, 426, 18, 41, "Output",
    CellTags->"FunctionalD",
-   CellID->991172064],
-  Cell[24317, 907, 185, 6, 27, "Input",
+   CellID->2026389295],
+  Cell[23815, 903, 185, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2041925168],
-  Cell[24505, 915, 3826, 164, 49, "Output",
+  Cell[24003, 911, 3825, 164, 49, "Output",
    CellTags->"FunctionalD",
-   CellID->2102523013],
-  Cell[28346, 1082, 140, 4, 32, "Text",
+   CellID->930168027],
+  Cell[27843, 1078, 140, 4, 32, "Text",
    CellTags->"FunctionalD",
    CellID->133774632],
-  Cell[28511, 1090, 196, 6, 27, "Input",
+  Cell[28008, 1086, 196, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1339957551],
-  Cell[28710, 1098, 3826, 164, 49, "Output",
+  Cell[28207, 1094, 3824, 164, 49, "Output",
    CellTags->"FunctionalD",
-   CellID->1221262706],
-  Cell[32551, 1265, 311, 9, 54, "Text",
+   CellID->22832846],
+  Cell[32046, 1261, 311, 9, 54, "Text",
    CellTags->"FunctionalD",
    CellID->1685160773],
-  Cell[32865, 1276, 542, 17, 46, "Input",
+  Cell[32360, 1272, 542, 17, 46, "Input",
    CellTags->"FunctionalD",
    CellID->324247296],
-  Cell[33432, 1297, 249, 8, 27, "Input",
+  Cell[32927, 1293, 249, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->659226066],
-  Cell[33684, 1307, 525, 23, 40, "Output",
+  Cell[33179, 1303, 525, 23, 40, "Output",
    CellTags->"FunctionalD",
-   CellID->2038446867],
-  Cell[34246, 1335, 260, 8, 27, "Input",
+   CellID->1252480273],
+  Cell[33741, 1331, 260, 8, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2097130638],
-  Cell[34509, 1345, 559, 24, 40, "Output",
+  Cell[34004, 1341, 558, 24, 40, "Output",
    CellTags->"FunctionalD",
-   CellID->1307472319],
-  Cell[35105, 1374, 599, 17, 45, "Input",
+   CellID->122288557],
+  Cell[34599, 1370, 599, 17, 45, "Input",
    CellTags->"FunctionalD",
    CellID->1711609273],
-  Cell[35707, 1393, 3306, 143, 62, "Output",
+  Cell[35201, 1389, 3305, 143, 62, "Output",
    CellTags->"FunctionalD",
-   CellID->2123805888],
-  Cell[39050, 1541, 204, 6, 27, "Input",
+   CellID->325352248],
+  Cell[38543, 1537, 204, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1021322617],
-  Cell[39257, 1549, 1629, 72, 43, "Output",
+  Cell[38750, 1545, 1629, 72, 43, "Output",
    CellTags->"FunctionalD",
-   CellID->1482322562],
-  Cell[40923, 1626, 372, 12, 27, "Input",
+   CellID->1748319521],
+  Cell[40416, 1622, 372, 12, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2111632726],
-  Cell[41298, 1640, 1503, 66, 43, "Output",
+  Cell[40791, 1636, 1503, 66, 43, "Output",
    CellTags->"FunctionalD",
-   CellID->1614884083],
-  Cell[42816, 1709, 290, 10, 36, "Text",
+   CellID->1369525226],
+  Cell[42309, 1705, 290, 10, 36, "Text",
    CellTags->"FunctionalD",
    CellID->1366711149],
-  Cell[43109, 1721, 119, 3, 32, "Text",
+  Cell[42602, 1717, 119, 3, 32, "Text",
    CellTags->"FunctionalD",
    CellID->1672341951],
-  Cell[43231, 1726, 187, 5, 52, "Text",
+  Cell[42724, 1722, 187, 5, 52, "Text",
    CellTags->"FunctionalD",
    CellID->680079191],
-  Cell[43443, 1735, 125, 4, 27, "Input",
+  Cell[42936, 1731, 125, 4, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1996431184],
-  Cell[43571, 1741, 3703, 147, 62, "Output",
+  Cell[43064, 1737, 3703, 147, 62, "Output",
    CellTags->"FunctionalD",
-   CellID->933013372],
-  Cell[47311, 1893, 214, 7, 27, "Input",
+   CellID->745422332],
+  Cell[46804, 1889, 214, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1238326201],
-  Cell[47528, 1902, 25606, 1105, 356, "Output",
+  Cell[47021, 1898, 25606, 1105, 356, "Output",
    CellTags->"FunctionalD",
-   CellID->1632031614],
-  Cell[73149, 3010, 248, 6, 52, "Text",
+   CellID->1475699650],
+  Cell[72642, 3006, 248, 6, 52, "Text",
    CellTags->"FunctionalD",
    CellID->1367707502],
-  Cell[73400, 3018, 366, 7, 92, "Text",
+  Cell[72893, 3014, 366, 7, 92, "Text",
    CellTags->"FunctionalD",
    CellID->1173793345],
-  Cell[73769, 3027, 150, 5, 27, "Input",
+  Cell[73262, 3023, 150, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->62943147],
-  Cell[73922, 3034, 2602, 68, 168, "Input",
+  Cell[73415, 3030, 2602, 68, 168, "Input",
    CellTags->"FunctionalD",
    CellID->915301036],
-  Cell[76549, 3106, 188, 6, 27, "Input",
+  Cell[76042, 3102, 188, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->832685091],
-  Cell[76740, 3114, 13326, 580, 209, "Output",
+  Cell[76233, 3110, 13327, 580, 209, "Output",
    CellTags->"FunctionalD",
-   CellID->981302323],
-  Cell[90103, 3699, 183, 6, 27, "Input",
+   CellID->1392722087],
+  Cell[89597, 3695, 183, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->706809486],
-  Cell[90289, 3707, 7200, 318, 92, "Output",
+  Cell[89783, 3703, 7200, 318, 92, "Output",
    CellTags->"FunctionalD",
-   CellID->885707787],
-  Cell[97504, 4028, 233, 9, 32, "Text",
+   CellID->333585110],
+  Cell[96998, 4024, 233, 9, 32, "Text",
    CellTags->"FunctionalD",
    CellID->2140946790],
-  Cell[97762, 4041, 335, 12, 29, "Input",
+  Cell[97256, 4037, 335, 12, 29, "Input",
    CellTags->"FunctionalD",
    CellID->1693929986],
-  Cell[98100, 4055, 3083, 135, 62, "Output",
+  Cell[97594, 4051, 3083, 135, 62, "Output",
    CellTags->"FunctionalD",
-   CellID->836856627],
-  Cell[101220, 4195, 667, 21, 27, "Input",
+   CellID->115691573],
+  Cell[100714, 4191, 667, 21, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1865190780],
-  Cell[101890, 4218, 1531, 70, 44, "Output",
+  Cell[101384, 4214, 1531, 70, 44, "Output",
    CellTags->"FunctionalD",
-   CellID->221243946],
-  Cell[103458, 4293, 174, 5, 27, "Input",
+   CellID->602569188],
+  Cell[102952, 4289, 174, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1416466041],
-  Cell[103635, 4300, 4247, 78, 71, "Output",
+  Cell[103129, 4296, 4247, 78, 71, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1955596034],
-  Cell[107897, 4381, 152, 5, 32, "Text",
+   CellID->1530633941],
+  Cell[107391, 4377, 152, 5, 32, "Text",
    CellTags->"FunctionalD",
    CellID->1808944377],
-  Cell[108074, 4390, 98, 3, 27, "Input",
+  Cell[107568, 4386, 98, 3, 27, "Input",
    CellTags->"FunctionalD",
    CellID->819260412],
-  Cell[108175, 4395, 1502, 66, 43, "Output",
+  Cell[107669, 4391, 1502, 66, 43, "Output",
    CellTags->"FunctionalD",
-   CellID->596397790],
-  Cell[109714, 4466, 817, 22, 62, "Input",
+   CellID->908387761],
+  Cell[109208, 4462, 817, 22, 62, "Input",
    CellTags->"FunctionalD",
    CellID->611111290],
-  Cell[110534, 4490, 1571, 65, 49, "Output",
+  Cell[110028, 4486, 1571, 65, 49, "Output",
    CellTags->"FunctionalD",
-   CellID->343042273],
-  Cell[112142, 4560, 157, 5, 27, "Input",
+   CellID->849746209],
+  Cell[111636, 4556, 157, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1841998165],
-  Cell[112302, 4567, 4685, 189, 51, "Output",
+  Cell[111796, 4563, 4685, 189, 51, "Output",
    CellTags->"FunctionalD",
-   CellID->617664029],
-  Cell[117024, 4761, 223, 7, 27, "Input",
+   CellID->421326563],
+  Cell[116518, 4757, 223, 7, 27, "Input",
    CellTags->"FunctionalD",
    CellID->256131363],
-  Cell[117250, 4770, 4373, 80, 70, "Output",
+  Cell[116744, 4766, 4373, 80, 70, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1650437996],
-  Cell[121660, 4855, 158, 5, 27, "Input",
+   CellID->1412104678],
+  Cell[121154, 4851, 158, 5, 27, "Input",
    CellTags->"FunctionalD",
    CellID->1098654926],
-  Cell[121821, 4862, 9455, 163, 93, "Output",
+  Cell[121315, 4858, 9456, 163, 93, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->948151744],
-  Cell[131313, 5030, 183, 6, 27, "Input",
+   CellID->1204186971],
+  Cell[130808, 5026, 183, 6, 27, "Input",
    CellTags->"FunctionalD",
    CellID->2122973606],
-  Cell[131499, 5038, 9101, 157, 98, "Output",
+  Cell[130994, 5034, 9102, 157, 98, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->427585770],
-  Cell[140615, 5198, 86, 2, 32, "Text",
+   CellID->1698625354],
+  Cell[140111, 5194, 86, 2, 32, "Text",
    CellTags->"FunctionalD",
    CellID->927805887],
-  Cell[140704, 5202, 559, 14, 45, "Input",
+  Cell[140200, 5198, 559, 14, 45, "Input",
    CellTags->"FunctionalD",
    CellID->1348622684],
-  Cell[141619, 5238, 402, 15, 32, "Text",
+  Cell[141115, 5234, 402, 15, 32, "Text",
    CellTags->"FunctionalD",
    CellID->2077547280]},
  "RasterizedOutput"->{
-  Cell[103635, 4300, 4247, 78, 71, "Output",
+  Cell[103129, 4296, 4247, 78, 71, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1955596034],
-  Cell[117250, 4770, 4373, 80, 70, "Output",
+   CellID->1530633941],
+  Cell[116744, 4766, 4373, 80, 70, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->1650437996],
-  Cell[121821, 4862, 9455, 163, 93, "Output",
+   CellID->1412104678],
+  Cell[121315, 4858, 9456, 163, 93, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->948151744],
-  Cell[131499, 5038, 9101, 157, 98, "Output",
+   CellID->1204186971],
+  Cell[130994, 5034, 9102, 157, 98, "Output",
    CellTags->{"FunctionalD", "RasterizedOutput"},
-   CellID->427585770]}
+   CellID->1698625354]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 144217, 5306},
- {"FunctionalD", 144356, 5310},
- {"RasterizedOutput", 152041, 5554}
+ {"PrimaryExamplesSection", 143723, 5302},
+ {"FunctionalD", 143861, 5306},
+ {"RasterizedOutput", 151543, 5550}
  }
 *)
 (*NotebookFileOutline
@@ -5583,321 +5579,321 @@ Cell[2843, 75, 54, 1, 42, "ObjectName",
 Cell[2900, 78, 1031, 25, 162, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3956, 107, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3956, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2081346037],
+ CellID->274613547],
 Cell[CellGroupData[{
-Cell[4369, 126, 194, 6, 25, "ExampleSection",
- CellID->24732291],
-Cell[4566, 134, 631, 21, 57, "Text",
+Cell[4368, 126, 196, 6, 25, "ExampleSection",
+ CellID->2056155500],
+Cell[4567, 134, 631, 21, 57, "Text",
  CellTags->"FunctionalD",
  CellID->2064540691],
 Cell[CellGroupData[{
-Cell[5222, 159, 246, 7, 27, "Input",
+Cell[5223, 159, 246, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->622999086],
-Cell[5471, 168, 213, 7, 36, "Output",
+Cell[5472, 168, 212, 7, 36, "Output",
  CellTags->"FunctionalD",
- CellID->1374465660]
+ CellID->149077150]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5721, 180, 271, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->272557122],
-Cell[5995, 190, 275, 10, 36, "Output",
+Cell[5995, 190, 273, 10, 36, "Output",
  CellTags->"FunctionalD",
- CellID->1081798185]
+ CellID->85429466]
 }, Open  ]],
-Cell[6285, 203, 1194, 41, 92, "Text",
+Cell[6283, 203, 1194, 41, 92, "Text",
  CellTags->"FunctionalD",
  CellID->412822781],
 Cell[CellGroupData[{
-Cell[7504, 248, 314, 9, 27, "Input",
+Cell[7502, 248, 316, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1655052767],
-Cell[7821, 259, 525, 17, 36, "Output",
+Cell[7821, 259, 379, 14, 48, "Output",
  CellTags->"FunctionalD",
- CellID->463777256]
+ CellID->1642735326]
 }, Open  ]],
-Cell[8361, 279, 798, 25, 36, "Text",
+Cell[8215, 276, 798, 25, 36, "Text",
  CellTags->"FunctionalD",
  CellID->726694991],
 Cell[CellGroupData[{
-Cell[9184, 308, 686, 23, 45, "Input",
+Cell[9038, 305, 690, 23, 45, "Input",
  CellTags->"FunctionalD",
  CellID->593299923],
-Cell[9873, 333, 764, 27, 62, "Output",
+Cell[9731, 330, 1010, 37, 62, "Output",
  CellTags->"FunctionalD",
- CellID->1061632244]
+ CellID->423622231]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10674, 365, 236, 7, 27, "Input",
+Cell[10778, 372, 236, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1102630385],
-Cell[10913, 374, 1444, 45, 155, "Output",
+Cell[11017, 381, 835, 34, 42, "Output",
  CellTags->"FunctionalD",
- CellID->435021757]
+ CellID->264301886]
 }, Open  ]],
-Cell[12372, 422, 509, 16, 44, "Text",
+Cell[11867, 418, 509, 16, 44, "Text",
  CellTags->"FunctionalD",
  CellID->820504742],
-Cell[12884, 440, 117, 3, 32, "Text",
+Cell[12379, 436, 117, 3, 32, "Text",
  CellTags->"FunctionalD",
  CellID->883647128],
 Cell[CellGroupData[{
-Cell[13026, 447, 333, 9, 27, "Input",
+Cell[12521, 443, 333, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->575936469],
-Cell[13362, 458, 1688, 74, 44, "Output",
+Cell[12857, 454, 1688, 74, 44, "Output",
  CellTags->"FunctionalD",
- CellID->1111705641]
+ CellID->1550678993]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15087, 537, 334, 9, 27, "Input",
+Cell[14582, 533, 334, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1966798854],
-Cell[15424, 548, 1688, 74, 44, "Output",
+Cell[14919, 544, 1688, 74, 44, "Output",
  CellTags->"FunctionalD",
- CellID->1390438184]
+ CellID->1803724780]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17149, 627, 234, 9, 27, "Input",
+Cell[16644, 623, 234, 9, 27, "Input",
  CellTags->"FunctionalD",
  CellID->733226876],
-Cell[17386, 638, 3701, 147, 62, "Output",
+Cell[16881, 634, 3703, 147, 62, "Output",
  CellTags->"FunctionalD",
- CellID->62460432]
+ CellID->1499967078]
 }, Open  ]],
-Cell[21102, 788, 581, 14, 96, "Text",
+Cell[20599, 784, 581, 14, 96, "Text",
  CellTags->"FunctionalD",
  CellID->1999439773],
-Cell[21686, 804, 1425, 50, 36, "Text",
+Cell[21183, 800, 1425, 50, 36, "Text",
  CellTags->"FunctionalD",
  CellID->1758153070],
-Cell[23114, 856, 464, 14, 35, "Text",
+Cell[22611, 852, 464, 14, 35, "Text",
  CellTags->"FunctionalD",
  CellID->833531771],
 Cell[CellGroupData[{
-Cell[23603, 874, 249, 8, 27, "Input",
+Cell[23100, 870, 249, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->371171043],
-Cell[23855, 884, 425, 18, 41, "Output",
+Cell[23352, 880, 426, 18, 41, "Output",
  CellTags->"FunctionalD",
- CellID->991172064]
+ CellID->2026389295]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24317, 907, 185, 6, 27, "Input",
+Cell[23815, 903, 185, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2041925168],
-Cell[24505, 915, 3826, 164, 49, "Output",
+Cell[24003, 911, 3825, 164, 49, "Output",
  CellTags->"FunctionalD",
- CellID->2102523013]
+ CellID->930168027]
 }, Open  ]],
-Cell[28346, 1082, 140, 4, 32, "Text",
+Cell[27843, 1078, 140, 4, 32, "Text",
  CellTags->"FunctionalD",
  CellID->133774632],
 Cell[CellGroupData[{
-Cell[28511, 1090, 196, 6, 27, "Input",
+Cell[28008, 1086, 196, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1339957551],
-Cell[28710, 1098, 3826, 164, 49, "Output",
+Cell[28207, 1094, 3824, 164, 49, "Output",
  CellTags->"FunctionalD",
- CellID->1221262706]
+ CellID->22832846]
 }, Open  ]],
-Cell[32551, 1265, 311, 9, 54, "Text",
+Cell[32046, 1261, 311, 9, 54, "Text",
  CellTags->"FunctionalD",
  CellID->1685160773],
-Cell[32865, 1276, 542, 17, 46, "Input",
+Cell[32360, 1272, 542, 17, 46, "Input",
  CellTags->"FunctionalD",
  CellID->324247296],
 Cell[CellGroupData[{
-Cell[33432, 1297, 249, 8, 27, "Input",
+Cell[32927, 1293, 249, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->659226066],
-Cell[33684, 1307, 525, 23, 40, "Output",
+Cell[33179, 1303, 525, 23, 40, "Output",
  CellTags->"FunctionalD",
- CellID->2038446867]
+ CellID->1252480273]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34246, 1335, 260, 8, 27, "Input",
+Cell[33741, 1331, 260, 8, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2097130638],
-Cell[34509, 1345, 559, 24, 40, "Output",
+Cell[34004, 1341, 558, 24, 40, "Output",
  CellTags->"FunctionalD",
- CellID->1307472319]
+ CellID->122288557]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35105, 1374, 599, 17, 45, "Input",
+Cell[34599, 1370, 599, 17, 45, "Input",
  CellTags->"FunctionalD",
  CellID->1711609273],
-Cell[35707, 1393, 3306, 143, 62, "Output",
+Cell[35201, 1389, 3305, 143, 62, "Output",
  CellTags->"FunctionalD",
- CellID->2123805888]
+ CellID->325352248]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[39050, 1541, 204, 6, 27, "Input",
+Cell[38543, 1537, 204, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1021322617],
-Cell[39257, 1549, 1629, 72, 43, "Output",
+Cell[38750, 1545, 1629, 72, 43, "Output",
  CellTags->"FunctionalD",
- CellID->1482322562]
+ CellID->1748319521]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40923, 1626, 372, 12, 27, "Input",
+Cell[40416, 1622, 372, 12, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2111632726],
-Cell[41298, 1640, 1503, 66, 43, "Output",
+Cell[40791, 1636, 1503, 66, 43, "Output",
  CellTags->"FunctionalD",
- CellID->1614884083]
+ CellID->1369525226]
 }, Open  ]],
-Cell[42816, 1709, 290, 10, 36, "Text",
+Cell[42309, 1705, 290, 10, 36, "Text",
  CellTags->"FunctionalD",
  CellID->1366711149],
-Cell[43109, 1721, 119, 3, 32, "Text",
+Cell[42602, 1717, 119, 3, 32, "Text",
  CellTags->"FunctionalD",
  CellID->1672341951],
-Cell[43231, 1726, 187, 5, 52, "Text",
+Cell[42724, 1722, 187, 5, 52, "Text",
  CellTags->"FunctionalD",
  CellID->680079191],
 Cell[CellGroupData[{
-Cell[43443, 1735, 125, 4, 27, "Input",
+Cell[42936, 1731, 125, 4, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1996431184],
-Cell[43571, 1741, 3703, 147, 62, "Output",
+Cell[43064, 1737, 3703, 147, 62, "Output",
  CellTags->"FunctionalD",
- CellID->933013372]
+ CellID->745422332]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47311, 1893, 214, 7, 27, "Input",
+Cell[46804, 1889, 214, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1238326201],
-Cell[47528, 1902, 25606, 1105, 356, "Output",
+Cell[47021, 1898, 25606, 1105, 356, "Output",
  CellTags->"FunctionalD",
- CellID->1632031614]
+ CellID->1475699650]
 }, Open  ]],
-Cell[73149, 3010, 248, 6, 52, "Text",
+Cell[72642, 3006, 248, 6, 52, "Text",
  CellTags->"FunctionalD",
  CellID->1367707502],
-Cell[73400, 3018, 366, 7, 92, "Text",
+Cell[72893, 3014, 366, 7, 92, "Text",
  CellTags->"FunctionalD",
  CellID->1173793345],
-Cell[73769, 3027, 150, 5, 27, "Input",
+Cell[73262, 3023, 150, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->62943147],
-Cell[73922, 3034, 2602, 68, 168, "Input",
+Cell[73415, 3030, 2602, 68, 168, "Input",
  CellTags->"FunctionalD",
  CellID->915301036],
 Cell[CellGroupData[{
-Cell[76549, 3106, 188, 6, 27, "Input",
+Cell[76042, 3102, 188, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->832685091],
-Cell[76740, 3114, 13326, 580, 209, "Output",
+Cell[76233, 3110, 13327, 580, 209, "Output",
  CellTags->"FunctionalD",
- CellID->981302323]
+ CellID->1392722087]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[90103, 3699, 183, 6, 27, "Input",
+Cell[89597, 3695, 183, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->706809486],
-Cell[90289, 3707, 7200, 318, 92, "Output",
+Cell[89783, 3703, 7200, 318, 92, "Output",
  CellTags->"FunctionalD",
- CellID->885707787]
+ CellID->333585110]
 }, Open  ]],
-Cell[97504, 4028, 233, 9, 32, "Text",
+Cell[96998, 4024, 233, 9, 32, "Text",
  CellTags->"FunctionalD",
  CellID->2140946790],
 Cell[CellGroupData[{
-Cell[97762, 4041, 335, 12, 29, "Input",
+Cell[97256, 4037, 335, 12, 29, "Input",
  CellTags->"FunctionalD",
  CellID->1693929986],
-Cell[98100, 4055, 3083, 135, 62, "Output",
+Cell[97594, 4051, 3083, 135, 62, "Output",
  CellTags->"FunctionalD",
- CellID->836856627]
+ CellID->115691573]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[101220, 4195, 667, 21, 27, "Input",
+Cell[100714, 4191, 667, 21, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1865190780],
-Cell[101890, 4218, 1531, 70, 44, "Output",
+Cell[101384, 4214, 1531, 70, 44, "Output",
  CellTags->"FunctionalD",
- CellID->221243946]
+ CellID->602569188]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[103458, 4293, 174, 5, 27, "Input",
+Cell[102952, 4289, 174, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1416466041],
-Cell[103635, 4300, 4247, 78, 71, "Output",
+Cell[103129, 4296, 4247, 78, 71, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->1955596034]
+ CellID->1530633941]
 }, Open  ]],
-Cell[107897, 4381, 152, 5, 32, "Text",
+Cell[107391, 4377, 152, 5, 32, "Text",
  CellTags->"FunctionalD",
  CellID->1808944377],
 Cell[CellGroupData[{
-Cell[108074, 4390, 98, 3, 27, "Input",
+Cell[107568, 4386, 98, 3, 27, "Input",
  CellTags->"FunctionalD",
  CellID->819260412],
-Cell[108175, 4395, 1502, 66, 43, "Output",
+Cell[107669, 4391, 1502, 66, 43, "Output",
  CellTags->"FunctionalD",
- CellID->596397790]
+ CellID->908387761]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[109714, 4466, 817, 22, 62, "Input",
+Cell[109208, 4462, 817, 22, 62, "Input",
  CellTags->"FunctionalD",
  CellID->611111290],
-Cell[110534, 4490, 1571, 65, 49, "Output",
+Cell[110028, 4486, 1571, 65, 49, "Output",
  CellTags->"FunctionalD",
- CellID->343042273]
+ CellID->849746209]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[112142, 4560, 157, 5, 27, "Input",
+Cell[111636, 4556, 157, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1841998165],
-Cell[112302, 4567, 4685, 189, 51, "Output",
+Cell[111796, 4563, 4685, 189, 51, "Output",
  CellTags->"FunctionalD",
- CellID->617664029]
+ CellID->421326563]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[117024, 4761, 223, 7, 27, "Input",
+Cell[116518, 4757, 223, 7, 27, "Input",
  CellTags->"FunctionalD",
  CellID->256131363],
-Cell[117250, 4770, 4373, 80, 70, "Output",
+Cell[116744, 4766, 4373, 80, 70, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->1650437996]
+ CellID->1412104678]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[121660, 4855, 158, 5, 27, "Input",
+Cell[121154, 4851, 158, 5, 27, "Input",
  CellTags->"FunctionalD",
  CellID->1098654926],
-Cell[121821, 4862, 9455, 163, 93, "Output",
+Cell[121315, 4858, 9456, 163, 93, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->948151744]
+ CellID->1204186971]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[131313, 5030, 183, 6, 27, "Input",
+Cell[130808, 5026, 183, 6, 27, "Input",
  CellTags->"FunctionalD",
  CellID->2122973606],
-Cell[131499, 5038, 9101, 157, 98, "Output",
+Cell[130994, 5034, 9102, 157, 98, "Output",
  CellTags->{"FunctionalD", "RasterizedOutput"},
- CellID->427585770]
+ CellID->1698625354]
 }, Open  ]],
-Cell[140615, 5198, 86, 2, 32, "Text",
+Cell[140111, 5194, 86, 2, 32, "Text",
  CellTags->"FunctionalD",
  CellID->927805887],
-Cell[140704, 5202, 559, 14, 45, "Input",
+Cell[140200, 5198, 559, 14, 45, "Input",
  CellTags->"FunctionalD",
  CellID->1348622684]
 }, Open  ]],
-Cell[141278, 5219, 31, 0, 29, "SectionFooterSpacer"]
+Cell[140774, 5215, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[141346, 5224, 270, 12, 31, "SeeAlsoSection",
+Cell[140842, 5220, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[141619, 5238, 402, 15, 32, "Text",
+Cell[141115, 5234, 402, 15, 32, "Text",
  CellTags->"FunctionalD",
  CellID->2077547280]
 }, Open  ]],
-Cell[142036, 5256, 23, 0, 42, "FooterCell"]
+Cell[141532, 5252, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

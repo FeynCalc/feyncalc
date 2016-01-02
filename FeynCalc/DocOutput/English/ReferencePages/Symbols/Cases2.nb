@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11966,        409]
+NotebookDataLength[     11973,        409]
 NotebookOptionsPosition[      7758,        275]
-NotebookOutlinePosition[     10772,        361]
-CellTagsIndexPosition[     10664,        355]
+NotebookOutlinePosition[     10779,        361]
+CellTagsIndexPosition[     10671,        355]
 WindowTitle->Cases2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$21517], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$23404], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Cases2",
              ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1962291972],
+ CellID->308641009],
 
 Cell[TextData[{
  "Basic Examples",
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->764375662],
+ CellID->1044013159],
 
 Cell[CellGroupData[{
 
@@ -288,7 +288,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 31.368712}", 
+   "built" -> "{2016, 1, 2, 15, 6, 59.264936}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -301,7 +301,7 @@ Cases[{expr},f[___] | g[___] ...] .", "synonyms" -> {}, "title" -> "Cases2",
     "titlemodifier" -> "", "windowtitle" -> "Cases2", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Cases2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -310,7 +310,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -319,9 +319,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3503, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3503, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1962291972]},
+   CellID->308641009]},
  "Cases2"->{
   Cell[4114, 125, 83, 2, 35, "Subsubsection",
    CellTags->"Cases2",
@@ -354,8 +354,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9717, 320},
- {"Cases2", 9850, 324}
+ {"PrimaryExamplesSection", 9725, 320},
+ {"Cases2", 9857, 324}
  }
 *)
 (*NotebookFileOutline
@@ -367,11 +367,11 @@ Cell[2817, 75, 49, 1, 42, "ObjectName",
 Cell[2869, 78, 609, 16, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3503, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3503, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1962291972],
-Cell[3894, 115, 195, 6, 25, "ExampleSection",
- CellID->764375662],
+ CellID->308641009],
+Cell[3893, 115, 196, 6, 25, "ExampleSection",
+ CellID->1044013159],
 Cell[CellGroupData[{
 Cell[4114, 125, 83, 2, 35, "Subsubsection",
  CellTags->"Cases2",

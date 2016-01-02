@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8549,        280]
-NotebookOptionsPosition[      5305,        183]
-NotebookOutlinePosition[      7797,        251]
-CellTagsIndexPosition[      7689,        245]
+NotebookDataLength[      8555,        280]
+NotebookOptionsPosition[      5304,        183]
+NotebookOutlinePosition[      7804,        251]
+CellTagsIndexPosition[      7696,        245]
 WindowTitle->FC2RHI
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$54257], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56722], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/FC2RHI",
              ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2082942800],
+ CellID->1776549739],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1059061408],
+ CellID->279009291],
 
 Cell[CellGroupData[{
 
@@ -196,7 +196,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 23.310525}", 
+   "built" -> "{2016, 1, 2, 15, 9, 54.828656}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -209,7 +209,7 @@ products p.k1, p.k2 and k1.k2 (setting True).", "synonyms" -> {}, "title" ->
     "FC2RHI", "titlemodifier" -> "", "windowtitle" -> "FC2RHI", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/FC2RHI"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -218,7 +218,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -229,23 +229,23 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3535, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2082942800]},
+   CellID->1776549739]},
  "FC2RHI"->{
-  Cell[4169, 128, 129, 4, 27, "Input",
+  Cell[4168, 128, 129, 4, 27, "Input",
    CellTags->"FC2RHI",
    CellID->744239659],
-  Cell[4301, 134, 383, 12, 36, "Output",
+  Cell[4300, 134, 383, 12, 36, "Output",
    CellTags->"FC2RHI",
    CellID->283717471],
-  Cell[5052, 169, 211, 9, 31, "Text",
+  Cell[5051, 169, 211, 9, 31, "Text",
    CellTags->"FC2RHI",
    CellID->2109849659]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7275, 228},
- {"FC2RHI", 7408, 232}
+ {"PrimaryExamplesSection", 7282, 228},
+ {"FC2RHI", 7415, 232}
  }
 *)
 (*NotebookFileOutline
@@ -259,29 +259,29 @@ Cell[2869, 78, 641, 17, 115, "Usage",
 Cell[CellGroupData[{
 Cell[3535, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2082942800],
+ CellID->1776549739],
 Cell[CellGroupData[{
-Cell[3948, 118, 196, 6, 25, "ExampleSection",
- CellID->1059061408],
+Cell[3948, 118, 195, 6, 25, "ExampleSection",
+ CellID->279009291],
 Cell[CellGroupData[{
-Cell[4169, 128, 129, 4, 27, "Input",
+Cell[4168, 128, 129, 4, 27, "Input",
  CellTags->"FC2RHI",
  CellID->744239659],
-Cell[4301, 134, 383, 12, 36, "Output",
+Cell[4300, 134, 383, 12, 36, "Output",
  CellTags->"FC2RHI",
  CellID->283717471]
 }, Open  ]]
 }, Open  ]],
-Cell[4711, 150, 31, 0, 29, "SectionFooterSpacer"]
+Cell[4710, 150, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4779, 155, 270, 12, 31, "SeeAlsoSection",
+Cell[4778, 155, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5052, 169, 211, 9, 31, "Text",
+Cell[5051, 169, 211, 9, 31, "Text",
  CellTags->"FC2RHI",
  CellID->2109849659]
 }, Open  ]],
-Cell[5278, 181, 23, 0, 42, "FooterCell"]
+Cell[5277, 181, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

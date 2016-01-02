@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10480,        352]
-NotebookOptionsPosition[      6574,        232]
-NotebookOutlinePosition[      9433,        312]
-CellTagsIndexPosition[      9317,        306]
+NotebookDataLength[     13584,        481]
+NotebookOptionsPosition[      9514,        355]
+NotebookOutlinePosition[     12384,        435]
+CellTagsIndexPosition[     12266,        429]
 WindowTitle->Completes
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27351], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28987], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Completes", ".html"]], None}]}]},
@@ -137,7 +137,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->908639191],
+ CellID->1852072543],
 
 Cell[CellGroupData[{
 
@@ -147,7 +147,64 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->937009211],
+ CellID->791491222],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"t1", "=", 
+  RowBox[{
+   RowBox[{"5", 
+    RowBox[{"SP", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", "p"}], "+", 
+       RowBox[{"3", "r"}]}], ",", 
+      RowBox[{"p", "+", "r"}]}], "]"}]}], "//", "FCI"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->42990982],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"5", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"], "+", 
+       OverscriptBox[
+        FormBox["r",
+         TraditionalForm], "_"]}],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      RowBox[{
+       RowBox[{"2", " ", 
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"]}], "+", 
+       RowBox[{"3", " ", 
+        OverscriptBox[
+         FormBox["r",
+          TraditionalForm], "_"]}]}],
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{166, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1644370118]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -156,20 +213,61 @@ Cell[BoxData[
   RowBox[{"CompleteSquare", "[", 
    RowBox[{"t1", ",", "p"}], "]"}]}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[1]:=",
+ CellLabel->"In[2]:=",
  CellID->1825124248],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-  "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}], 
-  TraditionalForm]], "Output",
- ImageSize->{387, 15},
+   RowBox[{"10", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "+", 
+        FractionBox[
+         RowBox[{"5", " ", 
+          OverscriptBox[
+           FormBox["r",
+            TraditionalForm], "_"]}], "4"]}],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "+", 
+        FractionBox[
+         RowBox[{"5", " ", 
+          OverscriptBox[
+           FormBox["r",
+            TraditionalForm], "_"]}], "4"]}],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}], "-", 
+   FractionBox[
+    RowBox[{"5", " ", 
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["r",
+         TraditionalForm], "_"],
+       TraditionalForm], "2"]}], "8"]}], TraditionalForm]], "Output",
+ ImageSize->{229, 48},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CompleteSquare",
- CellLabel->"Out[1]=",
- CellID->1183822476]
+ CellLabel->"Out[2]=",
+ CellID->332224925]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -180,21 +278,17 @@ Cell[BoxData[
    RowBox[{"t1", "-", "t2"}], "//", "ScalarProductExpand"}], "//", 
   "Expand"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[2]:=",
+ CellLabel->"In[3]:=",
  CellID->1768514898],
 
 Cell[BoxData[
- FormBox[
-  RowBox[{"t1", "-", 
-   RowBox[{
-   "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}]}], 
-  TraditionalForm]], "Output",
- ImageSize->{415, 15},
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{11, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CompleteSquare",
- CellLabel->"Out[2]=",
- CellID->1343668443]
+ CellLabel->"Out[3]=",
+ CellID->2142949469]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,27 +297,56 @@ Cell[BoxData[
  RowBox[{"CompleteSquare", "[", 
   RowBox[{"t1", ",", "p", ",", "q"}], "]"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[3]:=",
+ CellLabel->"In[4]:=",
  CellID->1850431752],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-  "FeynCalc`CompleteSquare`Private`ExpandProductExpand", "(", "t1", ")"}], 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"10", " ", 
+      SuperscriptBox[
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm], "2"]}], "-", 
+     FractionBox[
+      RowBox[{"5", " ", 
+       SuperscriptBox[
+        FormBox[
+         OverscriptBox[
+          FormBox["r",
+           TraditionalForm], "_"],
+         TraditionalForm], "2"]}], "8"]}], ",", 
+    RowBox[{
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"], "\[Rule]", 
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "+", 
+      FractionBox[
+       RowBox[{"5", " ", 
+        OverscriptBox[
+         FormBox["r",
+          TraditionalForm], "_"]}], "4"]}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{387, 15},
+ ImageSize->{194, 45},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CompleteSquare",
- CellLabel->"Out[3]=",
- CellID->237327102]
+ CellLabel->"Out[4]=",
+ CellID->468779431]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[4]:=",
+ CellLabel->"In[5]:=",
  CellID->1021144564]
 }, Open  ]]
 }, Open  ]],
@@ -245,7 +368,7 @@ TaggingRules->{
     Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 57, 3.018729}", 
+   "built" -> "{2016, 1, 2, 15, 7, 27.447129}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -258,7 +381,7 @@ CompleteSquare[a p^2+b p+c, p, q] -> {-b^2/(4 a)+c+a q^2, q->b/(2 a)+p}.",
     "windowtitle" -> "Completes", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Completes"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -267,7 +390,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -276,37 +399,37 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4141, 124, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4141, 124, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->908639191]},
+   CellID->1852072543]},
  "CompleteSquare"->{
-  Cell[4773, 153, 189, 6, 27, "Input",
+  Cell[6109, 210, 189, 6, 27, "Input",
    CellTags->"CompleteSquare",
    CellID->1825124248],
-  Cell[4965, 161, 302, 10, 36, "Output",
+  Cell[6301, 218, 1334, 51, 69, "Output",
    CellTags->"CompleteSquare",
-   CellID->1183822476],
-  Cell[5304, 176, 199, 7, 27, "Input",
+   CellID->332224925],
+  Cell[7672, 274, 199, 7, 27, "Input",
    CellTags->"CompleteSquare",
    CellID->1768514898],
-  Cell[5506, 185, 328, 11, 36, "Output",
+  Cell[7874, 283, 216, 7, 36, "Output",
    CellTags->"CompleteSquare",
-   CellID->1343668443],
-  Cell[5871, 201, 174, 5, 27, "Input",
+   CellID->2142949469],
+  Cell[8127, 295, 174, 5, 27, "Input",
    CellTags->"CompleteSquare",
    CellID->1850431752],
-  Cell[6048, 208, 301, 10, 36, "Output",
+  Cell[8304, 302, 985, 39, 66, "Output",
    CellTags->"CompleteSquare",
-   CellID->237327102],
-  Cell[6364, 221, 156, 5, 27, "Input",
+   CellID->468779431],
+  Cell[9304, 344, 156, 5, 27, "Input",
    CellTags->"CompleteSquare",
    CellID->1021144564]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8489, 277},
- {"CompleteSquare", 8630, 281}
+ {"PrimaryExamplesSection", 11438, 400},
+ {"CompleteSquare", 11580, 404}
  }
 *)
 (*NotebookFileOutline
@@ -318,42 +441,48 @@ Cell[2832, 75, 52, 1, 42, "ObjectName",
 Cell[2887, 78, 1229, 42, 103, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4141, 124, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4141, 124, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->908639191],
+ CellID->1852072543],
 Cell[CellGroupData[{
-Cell[4553, 143, 195, 6, 25, "ExampleSection",
- CellID->937009211],
+Cell[4554, 143, 195, 6, 25, "ExampleSection",
+ CellID->791491222],
 Cell[CellGroupData[{
-Cell[4773, 153, 189, 6, 27, "Input",
+Cell[4774, 153, 294, 11, 27, "Input",
+ CellID->42990982],
+Cell[5071, 166, 1001, 39, 39, "Output",
+ CellID->1644370118]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6109, 210, 189, 6, 27, "Input",
  CellTags->"CompleteSquare",
  CellID->1825124248],
-Cell[4965, 161, 302, 10, 36, "Output",
+Cell[6301, 218, 1334, 51, 69, "Output",
  CellTags->"CompleteSquare",
- CellID->1183822476]
+ CellID->332224925]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5304, 176, 199, 7, 27, "Input",
+Cell[7672, 274, 199, 7, 27, "Input",
  CellTags->"CompleteSquare",
  CellID->1768514898],
-Cell[5506, 185, 328, 11, 36, "Output",
+Cell[7874, 283, 216, 7, 36, "Output",
  CellTags->"CompleteSquare",
- CellID->1343668443]
+ CellID->2142949469]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5871, 201, 174, 5, 27, "Input",
+Cell[8127, 295, 174, 5, 27, "Input",
  CellTags->"CompleteSquare",
  CellID->1850431752],
-Cell[6048, 208, 301, 10, 36, "Output",
+Cell[8304, 302, 985, 39, 66, "Output",
  CellTags->"CompleteSquare",
- CellID->237327102]
+ CellID->468779431]
 }, Open  ]],
-Cell[6364, 221, 156, 5, 27, "Input",
+Cell[9304, 344, 156, 5, 27, "Input",
  CellTags->"CompleteSquare",
  CellID->1021144564]
 }, Open  ]]
 }, Open  ]],
-Cell[6547, 230, 23, 0, 42, "FooterCell"]
+Cell[9487, 353, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

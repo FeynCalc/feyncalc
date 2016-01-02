@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7690,        238]
-NotebookOptionsPosition[      4783,        153]
-NotebookOutlinePosition[      7149,        217]
-CellTagsIndexPosition[      7029,        211]
+NotebookDataLength[      7709,        238]
+NotebookOptionsPosition[      4786,        153]
+NotebookOutlinePosition[      7165,        217]
+CellTagsIndexPosition[      7045,        211]
 WindowTitle->FeynmanParametrize
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynmanParametrize.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62832], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67014], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynmanParametrize", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->74360293],
+ CellID->1872702429],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->556844875],
+ CellID->1517893975],
 
 Cell[CellGroupData[{
 
@@ -166,7 +166,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 8.019283}", 
+   "built" -> "{2016, 1, 2, 15, 10, 52.654916}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -178,7 +178,7 @@ one-loop integrals in exp (k = integration momentum).", "synonyms" -> {},
     "FeynmanParametrize", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FeynmanParametrize"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -187,7 +187,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -196,22 +196,22 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3443, 96, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[3443, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->74360293]},
+   CellID->1872702429]},
  "FeynmanParametrize"->{
-  Cell[4074, 125, 154, 4, 27, "Input",
+  Cell[4077, 125, 154, 4, 27, "Input",
    CellTags->"FeynmanParametrize",
    CellID->1392922438],
-  Cell[4231, 131, 486, 15, 36, "Output",
+  Cell[4234, 131, 486, 15, 36, "Output",
    CellTags->"FeynmanParametrize",
    CellID->600789752]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6665, 197},
- {"FeynmanParametrize", 6808, 201}
+ {"PrimaryExamplesSection", 6679, 197},
+ {"FeynmanParametrize", 6824, 201}
  }
 *)
 (*NotebookFileOutline
@@ -223,23 +223,23 @@ Cell[2878, 75, 61, 1, 42, "ObjectName",
 Cell[2942, 78, 476, 14, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3443, 96, 386, 15, 31, "PrimaryExamplesSection",
+Cell[3443, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->74360293],
+ CellID->1872702429],
 Cell[CellGroupData[{
-Cell[3854, 115, 195, 6, 25, "ExampleSection",
- CellID->556844875],
+Cell[3856, 115, 196, 6, 25, "ExampleSection",
+ CellID->1517893975],
 Cell[CellGroupData[{
-Cell[4074, 125, 154, 4, 27, "Input",
+Cell[4077, 125, 154, 4, 27, "Input",
  CellTags->"FeynmanParametrize",
  CellID->1392922438],
-Cell[4231, 131, 486, 15, 36, "Output",
+Cell[4234, 131, 486, 15, 36, "Output",
  CellTags->"FeynmanParametrize",
  CellID->600789752]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[4756, 151, 23, 0, 42, "FooterCell"]
+Cell[4759, 151, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

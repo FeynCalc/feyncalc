@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21565,        771]
-NotebookOptionsPosition[     13923,        525]
-NotebookOutlinePosition[     18613,        659]
-CellTagsIndexPosition[     18496,        653]
+NotebookDataLength[     21578,        771]
+NotebookOptionsPosition[     13924,        525]
+NotebookOutlinePosition[     18625,        659]
+CellTagsIndexPosition[     18508,        653]
 WindowTitle->FORM2FeynCalc
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FORM2FeynCalc.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$65595], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69961], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FORM2FeynCalc", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->704747045],
+ CellID->1087233587],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1954982048],
+ CellID->2031592441],
 
 Cell[CellGroupData[{
 
@@ -538,7 +538,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 23.588333}", 
+   "built" -> "{2016, 1, 2, 15, 11, 13.523011}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -554,7 +554,7 @@ to the right hand sides defined in the FORM-file.", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/FORM2FeynCalc"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -563,7 +563,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -572,88 +572,88 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3686, 99, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3686, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->704747045]},
+   CellID->1087233587]},
  "FORM2FeynCalc"->{
-  Cell[4319, 128, 144, 4, 27, "Input",
+  Cell[4320, 128, 144, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1139385107],
-  Cell[4466, 134, 945, 26, 75, "Output",
+  Cell[4467, 134, 945, 26, 75, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->1509057543],
-  Cell[5448, 165, 158, 4, 27, "Input",
+  Cell[5449, 165, 158, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1971183578],
-  Cell[5609, 171, 643, 26, 41, "Output",
+  Cell[5610, 171, 643, 26, 41, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->437204044],
-  Cell[6289, 202, 133, 4, 27, "Input",
+  Cell[6290, 202, 133, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1292875249],
-  Cell[6425, 208, 350, 12, 36, "Output",
+  Cell[6426, 208, 350, 12, 49, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->1525941930],
-  Cell[6790, 223, 180, 5, 52, "Text",
+  Cell[6791, 223, 180, 5, 52, "Text",
    CellTags->"FORM2FeynCalc",
    CellID->1823304465],
-  Cell[6995, 232, 333, 9, 45, "Input",
+  Cell[6996, 232, 333, 9, 45, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1620741920],
-  Cell[7331, 243, 404, 14, 39, "Output",
+  Cell[7332, 243, 404, 14, 39, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->827693663],
-  Cell[7772, 262, 133, 4, 27, "Input",
+  Cell[7773, 262, 133, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1897584456],
-  Cell[7908, 268, 409, 13, 36, "Output",
+  Cell[7909, 268, 409, 13, 49, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->879638641],
-  Cell[8354, 286, 169, 5, 27, "Input",
+  Cell[8355, 286, 169, 5, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1533060910],
-  Cell[8526, 293, 438, 16, 39, "Output",
+  Cell[8527, 293, 438, 16, 39, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->1027470118],
-  Cell[9001, 314, 136, 4, 27, "Input",
+  Cell[9002, 314, 136, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1512515442],
-  Cell[9140, 320, 369, 13, 39, "Output",
+  Cell[9141, 320, 369, 13, 39, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->1640354437],
-  Cell[9546, 338, 169, 5, 29, "Input",
+  Cell[9547, 338, 169, 5, 29, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->2089442701],
-  Cell[9718, 345, 736, 30, 40, "Output",
+  Cell[9719, 345, 736, 30, 40, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->758219802],
-  Cell[10491, 380, 133, 4, 27, "Input",
+  Cell[10492, 380, 133, 4, 27, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1054646204],
-  Cell[10627, 386, 360, 12, 36, "Output",
+  Cell[10628, 386, 360, 12, 49, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->11165984],
-  Cell[11024, 403, 353, 10, 29, "Input",
+  Cell[11025, 403, 353, 10, 29, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->1352382070],
-  Cell[11380, 415, 749, 30, 40, "Output",
+  Cell[11381, 415, 749, 30, 40, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->291792517],
-  Cell[12166, 450, 214, 6, 46, "Input",
+  Cell[12167, 450, 214, 6, 46, "Input",
    CellTags->"FORM2FeynCalc",
    CellID->476542838],
-  Cell[12383, 458, 882, 30, 46, "Output",
+  Cell[12384, 458, 882, 30, 46, "Output",
    CellTags->"FORM2FeynCalc",
    CellID->276944378],
-  Cell[13633, 511, 248, 9, 32, "Text",
+  Cell[13634, 511, 248, 9, 32, "Text",
    CellTags->"FORM2FeynCalc",
    CellID->1782635377]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16082, 573},
- {"FORM2FeynCalc", 16221, 577}
+ {"PrimaryExamplesSection", 16093, 573},
+ {"FORM2FeynCalc", 16233, 577}
  }
 *)
 (*NotebookFileOutline
@@ -665,114 +665,114 @@ Cell[2853, 75, 56, 1, 42, "ObjectName",
 Cell[2912, 78, 749, 17, 129, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3686, 99, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3686, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->704747045],
+ CellID->1087233587],
 Cell[CellGroupData[{
-Cell[4098, 118, 196, 6, 25, "ExampleSection",
- CellID->1954982048],
+Cell[4099, 118, 196, 6, 25, "ExampleSection",
+ CellID->2031592441],
 Cell[CellGroupData[{
-Cell[4319, 128, 144, 4, 27, "Input",
+Cell[4320, 128, 144, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1139385107],
-Cell[4466, 134, 945, 26, 75, "Output",
+Cell[4467, 134, 945, 26, 75, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->1509057543]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5448, 165, 158, 4, 27, "Input",
+Cell[5449, 165, 158, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1971183578],
-Cell[5609, 171, 643, 26, 41, "Output",
+Cell[5610, 171, 643, 26, 41, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->437204044]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6289, 202, 133, 4, 27, "Input",
+Cell[6290, 202, 133, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1292875249],
-Cell[6425, 208, 350, 12, 36, "Output",
+Cell[6426, 208, 350, 12, 49, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->1525941930]
 }, Open  ]],
-Cell[6790, 223, 180, 5, 52, "Text",
+Cell[6791, 223, 180, 5, 52, "Text",
  CellTags->"FORM2FeynCalc",
  CellID->1823304465],
 Cell[CellGroupData[{
-Cell[6995, 232, 333, 9, 45, "Input",
+Cell[6996, 232, 333, 9, 45, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1620741920],
-Cell[7331, 243, 404, 14, 39, "Output",
+Cell[7332, 243, 404, 14, 39, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->827693663]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7772, 262, 133, 4, 27, "Input",
+Cell[7773, 262, 133, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1897584456],
-Cell[7908, 268, 409, 13, 36, "Output",
+Cell[7909, 268, 409, 13, 49, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->879638641]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8354, 286, 169, 5, 27, "Input",
+Cell[8355, 286, 169, 5, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1533060910],
-Cell[8526, 293, 438, 16, 39, "Output",
+Cell[8527, 293, 438, 16, 39, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->1027470118]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9001, 314, 136, 4, 27, "Input",
+Cell[9002, 314, 136, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1512515442],
-Cell[9140, 320, 369, 13, 39, "Output",
+Cell[9141, 320, 369, 13, 39, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->1640354437]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9546, 338, 169, 5, 29, "Input",
+Cell[9547, 338, 169, 5, 29, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->2089442701],
-Cell[9718, 345, 736, 30, 40, "Output",
+Cell[9719, 345, 736, 30, 40, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->758219802]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10491, 380, 133, 4, 27, "Input",
+Cell[10492, 380, 133, 4, 27, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1054646204],
-Cell[10627, 386, 360, 12, 36, "Output",
+Cell[10628, 386, 360, 12, 49, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->11165984]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11024, 403, 353, 10, 29, "Input",
+Cell[11025, 403, 353, 10, 29, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->1352382070],
-Cell[11380, 415, 749, 30, 40, "Output",
+Cell[11381, 415, 749, 30, 40, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->291792517]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12166, 450, 214, 6, 46, "Input",
+Cell[12167, 450, 214, 6, 46, "Input",
  CellTags->"FORM2FeynCalc",
  CellID->476542838],
-Cell[12383, 458, 882, 30, 46, "Output",
+Cell[12384, 458, 882, 30, 46, "Output",
  CellTags->"FORM2FeynCalc",
  CellID->276944378]
 }, Open  ]]
 }, Open  ]],
-Cell[13292, 492, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13293, 492, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13360, 497, 270, 12, 31, "SeeAlsoSection",
+Cell[13361, 497, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13633, 511, 248, 9, 32, "Text",
+Cell[13634, 511, 248, 9, 32, "Text",
  CellTags->"FORM2FeynCalc",
  CellID->1782635377]
 }, Open  ]],
-Cell[13896, 523, 23, 0, 42, "FooterCell"]
+Cell[13897, 523, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

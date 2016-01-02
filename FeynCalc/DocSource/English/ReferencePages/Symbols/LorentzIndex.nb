@@ -244,22 +244,6 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["LorentzIndex[ComplexIndex[\[Alpha]]]", "Input",
- CellTags->"LorentzIndex",
- CellLabel->"In[3]:=",
- CellID->1705968776],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"ComplexIndex", "(", "\[Alpha]", ")"}], TraditionalForm]], "Output",
- 
- CellTags->"LorentzIndex",
- CellLabel->"Out[3]=",
- CellID->1620787186]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"ComplexConjugate", "[", 
   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}]], "Input",
@@ -272,24 +256,6 @@ Cell[BoxData[
  CellTags->"LorentzIndex",
  CellLabel->"Out[4]=",
  CellID->225253784]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ComplexConjugate", "[", 
-  RowBox[{"LorentzIndex", "[", 
-   RowBox[{"ComplexIndex", "[", "\[Beta]", "]"}], "]"}], "]"}]], "Input",
- CellTags->"LorentzIndex",
- CellLabel->"In[5]:=",
- CellID->1854345608],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"ComplexIndex", "(", "\[Beta]", ")"}], TraditionalForm]], "Output",
- CellTags->"LorentzIndex",
- CellLabel->"Out[5]=",
- CellID->2120586106]
 }, Open  ]],
 
 Cell["\<\
@@ -419,7 +385,8 @@ Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

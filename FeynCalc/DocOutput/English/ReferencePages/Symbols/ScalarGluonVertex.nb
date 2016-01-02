@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9804,        309]
-NotebookOptionsPosition[      6235,        207]
-NotebookOutlinePosition[      9045,        280]
-CellTagsIndexPosition[      8926,        274]
+NotebookDataLength[      9793,        309]
+NotebookOptionsPosition[      6216,        207]
+NotebookOutlinePosition[      9035,        280]
+CellTagsIndexPosition[      8916,        274]
 WindowTitle->ScalarGluonVertex
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ScalarGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$124259], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129400], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ScalarGluonVertex", ".html"]], None}]}]},
@@ -85,12 +85,12 @@ Cell[BoxData[GridBox[{
         RowBox[{"{", "q", "}"}], ",", " ", 
         RowBox[{"{", 
          RowBox[{"mu", ",", "a"}], "}"}]}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "or ScalarGluonVertex[ p,  q,  mu, a ] yields the scalar-scalar-gluon \
-vertex (p and q are incoming momenta).\nScalarGluonVertex[{mu,a}, {nu,b}] \
-yields the scalar-scalar-gluon-gluon vertex (p and q are incoming momenta).\n\
-The dimension  and the name of the coupling constant are determined by the \
-options Dimension and CouplingConstant."
+     " \n\tor ScalarGluonVertex[ p,  q,  mu, a ] yields the \
+scalar-scalar-gluon vertex (p and q are incoming momenta). \
+ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex \
+(p and q are incoming momenta).\n\tThe dimension  and the name of the \
+coupling constant are determined by the options Dimension and \
+CouplingConstant."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1520764402],
+ CellID->951626803],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->797349696],
+ CellID->812312776],
 
 Cell[CellGroupData[{
 
@@ -220,7 +220,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 5, 33.991515}", 
+   "built" -> "{2016, 1, 2, 15, 16, 20.791618}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -235,7 +235,7 @@ constant are determined by the options Dimension and CouplingConstant.",
     "windowtitle" -> "ScalarGluonVertex", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ScalarGluonVertex"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,7 +244,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -253,28 +253,28 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3822, 103, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3804, 103, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1520764402]},
+   CellID->951626803]},
  "ScalarGluonVertex"->{
-  Cell[4455, 132, 152, 4, 27, "Input",
+  Cell[4436, 132, 152, 4, 27, "Input",
    CellTags->"ScalarGluonVertex",
    CellID->1577288725],
-  Cell[4610, 138, 422, 13, 36, "Output",
+  Cell[4591, 138, 422, 13, 36, "Output",
    CellTags->"ScalarGluonVertex",
    CellID->1150833543],
-  Cell[5069, 156, 291, 9, 27, "Input",
+  Cell[5050, 156, 291, 9, 27, "Input",
    CellTags->"ScalarGluonVertex",
    CellID->581447761],
-  Cell[5363, 167, 806, 33, 38, "Output",
+  Cell[5344, 167, 806, 33, 38, "Output",
    CellTags->"ScalarGluonVertex",
    CellID->260312021]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8367, 254},
- {"ScalarGluonVertex", 8512, 258}
+ {"PrimaryExamplesSection", 8358, 254},
+ {"ScalarGluonVertex", 8502, 258}
  }
 *)
 (*NotebookFileOutline
@@ -283,34 +283,34 @@ Cell[589, 21, 2282, 52, 51, "AnchorBarGrid",
  CellID->1],
 Cell[2874, 75, 60, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2937, 78, 860, 21, 179, "Usage",
+Cell[2937, 78, 842, 21, 163, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3822, 103, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3804, 103, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1520764402],
+ CellID->951626803],
 Cell[CellGroupData[{
-Cell[4235, 122, 195, 6, 25, "ExampleSection",
- CellID->797349696],
+Cell[4216, 122, 195, 6, 25, "ExampleSection",
+ CellID->812312776],
 Cell[CellGroupData[{
-Cell[4455, 132, 152, 4, 27, "Input",
+Cell[4436, 132, 152, 4, 27, "Input",
  CellTags->"ScalarGluonVertex",
  CellID->1577288725],
-Cell[4610, 138, 422, 13, 36, "Output",
+Cell[4591, 138, 422, 13, 36, "Output",
  CellTags->"ScalarGluonVertex",
  CellID->1150833543]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5069, 156, 291, 9, 27, "Input",
+Cell[5050, 156, 291, 9, 27, "Input",
  CellTags->"ScalarGluonVertex",
  CellID->581447761],
-Cell[5363, 167, 806, 33, 38, "Output",
+Cell[5344, 167, 806, 33, 38, "Output",
  CellTags->"ScalarGluonVertex",
  CellID->260312021]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6208, 205, 23, 0, 42, "FooterCell"]
+Cell[6189, 205, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

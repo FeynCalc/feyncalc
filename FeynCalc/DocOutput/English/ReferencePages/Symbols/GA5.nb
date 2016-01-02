@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8889,        314]
+NotebookDataLength[      8898,        314]
 NotebookOptionsPosition[      5539,        205]
-NotebookOutlinePosition[      7964,        277]
-CellTagsIndexPosition[      7859,        271]
+NotebookOutlinePosition[      7973,        277]
+CellTagsIndexPosition[      7868,        271]
 WindowTitle->GA5
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$70812], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75270], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/GA5", 
             ".html"]], None}]}]},
@@ -106,7 +106,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1398418770],
+ CellID->559853350],
 
 Cell[CellGroupData[{
 
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->801103788],
+ CellID->1751590004],
 
 Cell[CellGroupData[{
 
@@ -218,7 +218,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 53.010721}", 
+   "built" -> "{2016, 1, 2, 15, 11, 39.787388}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -229,7 +229,7 @@ TaggingRules->{
     "GA5", "type" -> "Symbol", "uri" -> "FeynCalc/ref/GA5"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -238,7 +238,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -247,9 +247,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3245, 93, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3245, 93, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1398418770]},
+   CellID->559853350]},
  "GA5"->{
   Cell[3878, 122, 89, 3, 27, "Input",
    CellTags->"GA5",
@@ -270,8 +270,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7294, 248},
- {"GA5", 7424, 252}
+ {"PrimaryExamplesSection", 7304, 248},
+ {"GA5", 7433, 252}
  }
 *)
 (*NotebookFileOutline
@@ -283,12 +283,12 @@ Cell[2815, 75, 46, 1, 42, "ObjectName",
 Cell[2864, 78, 356, 11, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3245, 93, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3245, 93, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1398418770],
+ CellID->559853350],
 Cell[CellGroupData[{
-Cell[3658, 112, 195, 6, 25, "ExampleSection",
- CellID->801103788],
+Cell[3657, 112, 196, 6, 25, "ExampleSection",
+ CellID->1751590004],
 Cell[CellGroupData[{
 Cell[3878, 122, 89, 3, 27, "Input",
  CellTags->"GA5",

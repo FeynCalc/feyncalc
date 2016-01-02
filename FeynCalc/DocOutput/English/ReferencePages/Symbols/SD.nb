@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9950,        351]
+NotebookDataLength[      9960,        351]
 NotebookOptionsPosition[      6140,        227]
-NotebookOutlinePosition[      8841,        306]
-CellTagsIndexPosition[      8737,        300]
+NotebookOutlinePosition[      8851,        306]
+CellTagsIndexPosition[      8747,        300]
 WindowTitle->SD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$126333], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$131568], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SD", 
             ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1221756061],
+ CellID->1693349608],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->272836135],
+ CellID->230423179],
 
 Cell[CellGroupData[{
 
@@ -240,7 +240,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 5, 47.640950}", 
+   "built" -> "{2016, 1, 2, 15, 16, 33.392653}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -252,7 +252,7 @@ SUNDelta[SUNIndex[i],SUNIndex[j]] by FeynCalcInternal.", "synonyms" -> {},
     "title" -> "SD", "titlemodifier" -> "", "windowtitle" -> "SD", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/SD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -261,7 +261,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -272,7 +272,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3474, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1221756061]},
+   CellID->1693349608]},
  "SD"->{
   Cell[4107, 128, 138, 5, 27, "Input",
    CellTags->"SD",
@@ -283,13 +283,13 @@ CellTagsIndex->{
   Cell[4610, 153, 148, 5, 27, "Input",
    CellTags->"SD",
    CellID->1096492812],
-  Cell[4761, 160, 320, 10, 36, "Output",
+  Cell[4761, 160, 320, 10, 49, "Output",
    CellTags->"SD",
    CellID->2135323799],
   Cell[5118, 175, 147, 5, 27, "Input",
    CellTags->"SD",
    CellID->315527863],
-  Cell[5268, 182, 240, 8, 36, "Output",
+  Cell[5268, 182, 240, 8, 49, "Output",
    CellTags->"SD",
    CellID->850743885],
   Cell[5876, 213, 222, 9, 31, "Text",
@@ -299,8 +299,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8010, 271},
- {"SD", 8139, 275}
+ {"PrimaryExamplesSection", 8020, 271},
+ {"SD", 8149, 275}
  }
 *)
 (*NotebookFileOutline
@@ -314,10 +314,10 @@ Cell[2859, 78, 590, 17, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3474, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1221756061],
+ CellID->1693349608],
 Cell[CellGroupData[{
 Cell[3887, 118, 195, 6, 25, "ExampleSection",
- CellID->272836135],
+ CellID->230423179],
 Cell[CellGroupData[{
 Cell[4107, 128, 138, 5, 27, "Input",
  CellTags->"SD",
@@ -330,7 +330,7 @@ Cell[CellGroupData[{
 Cell[4610, 153, 148, 5, 27, "Input",
  CellTags->"SD",
  CellID->1096492812],
-Cell[4761, 160, 320, 10, 36, "Output",
+Cell[4761, 160, 320, 10, 49, "Output",
  CellTags->"SD",
  CellID->2135323799]
 }, Open  ]],
@@ -338,7 +338,7 @@ Cell[CellGroupData[{
 Cell[5118, 175, 147, 5, 27, "Input",
  CellTags->"SD",
  CellID->315527863],
-Cell[5268, 182, 240, 8, 36, "Output",
+Cell[5268, 182, 240, 8, 49, "Output",
  CellTags->"SD",
  CellID->850743885]
 }, Open  ]]

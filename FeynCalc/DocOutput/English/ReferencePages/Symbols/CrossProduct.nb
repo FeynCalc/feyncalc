@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9251,        308]
-NotebookOptionsPosition[      6090,        212]
-NotebookOutlinePosition[      8478,        279]
-CellTagsIndexPosition[      8364,        273]
+NotebookDataLength[      9254,        308]
+NotebookOptionsPosition[      6088,        212]
+NotebookOutlinePosition[      8483,        279]
+CellTagsIndexPosition[      8369,        273]
 WindowTitle->CrossProduct
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ CrossProduct.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31149], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32786], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CrossProduct", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1267778666],
+ CellID->452646198],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1421500275],
+ CellID->914784341],
 
 Cell[CellGroupData[{
 
@@ -225,7 +225,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 57, 23.451155}", 
+   "built" -> "{2016, 1, 2, 15, 7, 43.587962}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -237,7 +237,7 @@ three-vectors a and b.", "synonyms" -> {}, "title" -> "CrossProduct",
     "Symbol", "uri" -> "FeynCalc/ref/CrossProduct"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -246,7 +246,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -255,25 +255,25 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3386, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3386, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1267778666]},
+   CellID->452646198]},
  "CrossProduct"->{
-  Cell[4020, 125, 345, 10, 45, "Input",
+  Cell[4018, 125, 345, 10, 45, "Input",
    CellTags->"CrossProduct",
    CellID->1337031083],
-  Cell[4368, 137, 906, 32, 48, "Output",
+  Cell[4366, 137, 906, 32, 48, "Output",
    CellTags->"CrossProduct",
    CellID->2076700373],
-  Cell[5642, 192, 406, 15, 31, "Text",
+  Cell[5640, 192, 406, 15, 31, "Text",
    CellTags->"CrossProduct",
    CellID->1152724432]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7922, 256},
- {"CrossProduct", 8061, 260}
+ {"PrimaryExamplesSection", 7928, 256},
+ {"CrossProduct", 8066, 260}
  }
 *)
 (*NotebookFileOutline
@@ -285,31 +285,31 @@ Cell[2848, 75, 55, 1, 42, "ObjectName",
 Cell[2906, 78, 455, 14, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3386, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3386, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1267778666],
+ CellID->452646198],
 Cell[CellGroupData[{
-Cell[3799, 115, 196, 6, 25, "ExampleSection",
- CellID->1421500275],
+Cell[3798, 115, 195, 6, 25, "ExampleSection",
+ CellID->914784341],
 Cell[CellGroupData[{
-Cell[4020, 125, 345, 10, 45, "Input",
+Cell[4018, 125, 345, 10, 45, "Input",
  CellTags->"CrossProduct",
  CellID->1337031083],
-Cell[4368, 137, 906, 32, 48, "Output",
+Cell[4366, 137, 906, 32, 48, "Output",
  CellTags->"CrossProduct",
  CellID->2076700373]
 }, Open  ]]
 }, Open  ]],
-Cell[5301, 173, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5299, 173, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5369, 178, 270, 12, 31, "SeeAlsoSection",
+Cell[5367, 178, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5642, 192, 406, 15, 31, "Text",
+Cell[5640, 192, 406, 15, 31, "Text",
  CellTags->"CrossProduct",
  CellID->1152724432]
 }, Open  ]],
-Cell[6063, 210, 23, 0, 42, "FooterCell"]
+Cell[6061, 210, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

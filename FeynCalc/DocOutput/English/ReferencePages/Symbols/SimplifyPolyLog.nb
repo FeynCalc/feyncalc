@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35722,       1312]
+NotebookDataLength[     35733,       1312]
 NotebookOptionsPosition[     25175,        966]
-NotebookOutlinePosition[     31119,       1141]
-CellTagsIndexPosition[     30998,       1135]
+NotebookOutlinePosition[     31130,       1141]
+CellTagsIndexPosition[     31009,       1135]
 WindowTitle->SimplifyPolyLog
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SimplifyPolyLog.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130761], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136088], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SimplifyPolyLog", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->962896735],
+ CellID->2045888347],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1497677518],
+ CellID->883913030],
 
 Cell[BoxData[
  RowBox[{
@@ -979,7 +979,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 6, 14.150066}", 
+   "built" -> "{2016, 1, 2, 15, 16, 55.264321}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -991,7 +991,7 @@ variables occuring in the Log and PolyLog functions are between 0 and 1. ",
     "windowtitle" -> "SimplifyPolyLog", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SimplifyPolyLog"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1000,7 +1000,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1009,9 +1009,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3426, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3426, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->962896735]},
+   CellID->2045888347]},
  "SimplifyPolyLog"->{
   Cell[4037, 122, 241, 7, 29, "Input",
    CellTags->"SimplifyPolyLog",
@@ -1134,8 +1134,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 27071, 1010},
- {"SimplifyPolyLog", 27212, 1014}
+ {"PrimaryExamplesSection", 27081, 1010},
+ {"SimplifyPolyLog", 27223, 1014}
  }
 *)
 (*NotebookFileOutline
@@ -1147,12 +1147,12 @@ Cell[2864, 75, 58, 1, 42, "ObjectName",
 Cell[2925, 78, 476, 13, 97, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3426, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3426, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->962896735],
+ CellID->2045888347],
 Cell[CellGroupData[{
-Cell[3838, 114, 196, 6, 25, "ExampleSection",
- CellID->1497677518],
+Cell[3839, 114, 195, 6, 25, "ExampleSection",
+ CellID->883913030],
 Cell[4037, 122, 241, 7, 29, "Input",
  CellTags->"SimplifyPolyLog",
  CellID->258376485],

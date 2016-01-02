@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8028,        249]
-NotebookOptionsPosition[      5111,        159]
-NotebookOutlinePosition[      7430,        225]
-CellTagsIndexPosition[      7324,        219]
+NotebookDataLength[      8036,        249]
+NotebookOptionsPosition[      5110,        159]
+NotebookOutlinePosition[      7439,        225]
+CellTagsIndexPosition[      7333,        219]
 WindowTitle->$FCS
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162132], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168136], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$FCS", 
             ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->225251235],
+ CellID->328253159],
 
 Cell[TextData[{
  "Basic Examples",
@@ -115,7 +115,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1356917263],
+ CellID->724822582],
 
 Cell[CellGroupData[{
 
@@ -172,7 +172,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 9, 10.177833}", 
+   "built" -> "{2016, 1, 2, 15, 19, 56.468650}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -183,7 +183,7 @@ instead of DiracGamma[nu].", "synonyms" -> {}, "title" -> "$FCS",
     "titlemodifier" -> "", "windowtitle" -> "$FCS", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/$FCS"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -192,7 +192,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -203,23 +203,23 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3284, 94, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->225251235]},
+   CellID->328253159]},
  "$FCS"->{
-  Cell[3895, 121, 73, 2, 35, "Subsubsection",
+  Cell[3894, 121, 73, 2, 35, "Subsubsection",
    CellTags->"$FCS",
    CellID->1728378026],
-  Cell[3993, 127, 92, 3, 27, "Input",
+  Cell[3992, 127, 92, 3, 27, "Input",
    CellTags->"$FCS",
    CellID->376757099],
-  Cell[4088, 132, 957, 20, 75, "Output",
+  Cell[4087, 132, 957, 20, 75, "Output",
    CellTags->"$FCS",
    CellID->194077646]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6912, 202},
- {"$FCS", 7042, 206}
+ {"PrimaryExamplesSection", 6921, 202},
+ {"$FCS", 7051, 206}
  }
 *)
 (*NotebookFileOutline
@@ -233,24 +233,24 @@ Cell[2858, 78, 401, 12, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3284, 94, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->225251235],
-Cell[3674, 111, 196, 6, 25, "ExampleSection",
- CellID->1356917263],
+ CellID->328253159],
+Cell[3674, 111, 195, 6, 25, "ExampleSection",
+ CellID->724822582],
 Cell[CellGroupData[{
-Cell[3895, 121, 73, 2, 35, "Subsubsection",
+Cell[3894, 121, 73, 2, 35, "Subsubsection",
  CellTags->"$FCS",
  CellID->1728378026],
 Cell[CellGroupData[{
-Cell[3993, 127, 92, 3, 27, "Input",
+Cell[3992, 127, 92, 3, 27, "Input",
  CellTags->"$FCS",
  CellID->376757099],
-Cell[4088, 132, 957, 20, 75, "Output",
+Cell[4087, 132, 957, 20, 75, "Output",
  CellTags->"$FCS",
  CellID->194077646]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5084, 157, 23, 0, 42, "FooterCell"]
+Cell[5083, 157, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

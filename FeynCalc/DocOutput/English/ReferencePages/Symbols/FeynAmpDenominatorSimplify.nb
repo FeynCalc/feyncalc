@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26183,        947]
+NotebookDataLength[     26191,        947]
 NotebookOptionsPosition[     18356,        717]
-NotebookOutlinePosition[     23180,        845]
-CellTagsIndexPosition[     23050,        839]
+NotebookOutlinePosition[     23188,        845]
+CellTagsIndexPosition[     23058,        839]
 WindowTitle->FeynAmpDenominatorSimplify
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ FeynAmpDenominatorSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58386], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62476], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynAmpDenominatorSimplify", ".html"]], None}]}]},
@@ -114,7 +114,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1386285054],
+ CellID->155629472],
 
 Cell[CellGroupData[{
 
@@ -124,7 +124,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->644058747],
+ CellID->1187166959],
 
 Cell[CellGroupData[{
 
@@ -730,7 +730,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 44.215798}", 
+   "built" -> "{2016, 1, 2, 15, 10, 30.125548}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -746,7 +746,7 @@ removes integrals with no mass scale. FDS can be used as an alias.",
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/FeynAmpDenominatorSimplify"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -755,7 +755,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -764,9 +764,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3740, 101, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3740, 101, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1386285054]},
+   CellID->155629472]},
  "FeynAmpDenominatorSimplify"->{
   Cell[4373, 130, 113, 3, 27, "Input",
    CellTags->"FeynAmpDenominatorSimplify",
@@ -838,8 +838,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 20517, 765},
- {"FeynAmpDenominatorSimplify", 20671, 769}
+ {"PrimaryExamplesSection", 20526, 765},
+ {"FeynAmpDenominatorSimplify", 20679, 769}
  }
 *)
 (*NotebookFileOutline
@@ -851,12 +851,12 @@ Cell[2940, 77, 69, 1, 42, "ObjectName",
 Cell[3012, 80, 703, 17, 163, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3740, 101, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3740, 101, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1386285054],
+ CellID->155629472],
 Cell[CellGroupData[{
-Cell[4153, 120, 195, 6, 25, "ExampleSection",
- CellID->644058747],
+Cell[4152, 120, 196, 6, 25, "ExampleSection",
+ CellID->1187166959],
 Cell[CellGroupData[{
 Cell[4373, 130, 113, 3, 27, "Input",
  CellTags->"FeynAmpDenominatorSimplify",

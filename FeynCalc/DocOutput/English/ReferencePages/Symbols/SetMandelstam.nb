@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9342,        296]
+NotebookDataLength[      9353,        296]
 NotebookOptionsPosition[      5684,        190]
-NotebookOutlinePosition[      8477,        264]
-CellTagsIndexPosition[      8362,        258]
+NotebookOutlinePosition[      8488,        264]
+CellTagsIndexPosition[      8373,        258]
 WindowTitle->SetMandelstam
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SetMandelstam.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129394], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$134721], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SetMandelstam", ".html"]], None}]}]},
@@ -115,7 +115,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->499339473],
+ CellID->792005353],
 
 Cell[TextData[{
  "Basic Examples",
@@ -123,7 +123,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2067054040],
+ CellID->1259034569],
 
 Cell[CellGroupData[{
 
@@ -203,7 +203,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 6, 6.392686}", 
+   "built" -> "{2016, 1, 2, 15, 16, 49.602081}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -219,7 +219,7 @@ p1+p2+p3+p4 = 0 is assumed.", "synonyms" -> {}, "title" -> "SetMandelstam",
     "Symbol", "uri" -> "FeynCalc/ref/SetMandelstam"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -228,7 +228,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -239,7 +239,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3831, 102, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->499339473]},
+   CellID->792005353]},
  "SetMandelstam"->{
   Cell[4442, 129, 81, 2, 35, "Subsubsection",
    CellTags->"SetMandelstam",
@@ -257,8 +257,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7822, 238},
- {"SetMandelstam", 7962, 242}
+ {"PrimaryExamplesSection", 7833, 238},
+ {"SetMandelstam", 7973, 242}
  }
 *)
 (*NotebookFileOutline
@@ -272,9 +272,9 @@ Cell[2913, 78, 893, 20, 138, "Usage",
 Cell[CellGroupData[{
 Cell[3831, 102, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->499339473],
+ CellID->792005353],
 Cell[4221, 119, 196, 6, 25, "ExampleSection",
- CellID->2067054040],
+ CellID->1259034569],
 Cell[CellGroupData[{
 Cell[4442, 129, 81, 2, 35, "Subsubsection",
  CellTags->"SetMandelstam",

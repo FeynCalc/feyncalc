@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21795,        718]
+NotebookDataLength[     21805,        718]
 NotebookOptionsPosition[     15525,        527]
-NotebookOutlinePosition[     19621,        638]
-CellTagsIndexPosition[     19501,        632]
+NotebookOutlinePosition[     19631,        638]
+CellTagsIndexPosition[     19511,        632]
 WindowTitle->HypergeometricAC
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ HypergeometricAC.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$80461], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$85379], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/HypergeometricAC", ".html"]], None}]}]},
@@ -115,7 +115,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1909913947],
+ CellID->1707775991],
 
 Cell[CellGroupData[{
 
@@ -125,7 +125,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1892060429],
+ CellID->1352460181],
 
 Cell[CellGroupData[{
 
@@ -540,7 +540,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 43.936347}", 
+   "built" -> "{2016, 1, 2, 15, 12, 41.916828}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -557,7 +557,7 @@ Functions & their Applications\" by N.N.Lebedev).", "synonyms" -> {}, "title" ->
     "HypergeometricAC", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/HypergeometricAC"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -566,7 +566,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -577,7 +577,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3821, 102, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1909913947]},
+   CellID->1707775991]},
  "HypergeometricAC"->{
   Cell[4455, 131, 149, 4, 27, "Input",
    CellTags->"HypergeometricAC",
@@ -631,8 +631,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17778, 576},
- {"HypergeometricAC", 17922, 580}
+ {"PrimaryExamplesSection", 17788, 576},
+ {"HypergeometricAC", 17932, 580}
  }
 *)
 (*NotebookFileOutline
@@ -646,10 +646,10 @@ Cell[2930, 78, 866, 20, 147, "Usage",
 Cell[CellGroupData[{
 Cell[3821, 102, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1909913947],
+ CellID->1707775991],
 Cell[CellGroupData[{
 Cell[4234, 121, 196, 6, 25, "ExampleSection",
- CellID->1892060429],
+ CellID->1352460181],
 Cell[CellGroupData[{
 Cell[4455, 131, 149, 4, 27, "Input",
  CellTags->"HypergeometricAC",

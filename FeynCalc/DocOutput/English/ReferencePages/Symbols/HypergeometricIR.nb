@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12943,        443]
-NotebookOptionsPosition[      8398,        304]
-NotebookOutlinePosition[     11518,        390]
-CellTagsIndexPosition[     11398,        384]
+NotebookDataLength[     12950,        443]
+NotebookOptionsPosition[      8397,        304]
+NotebookOutlinePosition[     11526,        390]
+CellTagsIndexPosition[     11406,        384]
 WindowTitle->HypergeometricIR
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ HypergeometricIR.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$80805], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$85723], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/HypergeometricIR", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1910811705],
+ CellID->182527341],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->242024143],
+ CellID->801644800],
 
 Cell[CellGroupData[{
 
@@ -317,7 +317,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 45.984619}", 
+   "built" -> "{2016, 1, 2, 15, 12, 43.508150}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -330,7 +330,7 @@ can be omitted by setting the option Integratedx -> False.", "synonyms" -> {},
     "HypergeometricIR", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/HypergeometricIR"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -339,7 +339,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -348,43 +348,43 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3530, 97, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3530, 97, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1910811705]},
+   CellID->182527341]},
  "HypergeometricIR"->{
-  Cell[4163, 126, 149, 4, 27, "Input",
+  Cell[4162, 126, 149, 4, 27, "Input",
    CellTags->"HypergeometricIR",
    CellID->384078315],
-  Cell[4315, 132, 287, 10, 36, "Output",
+  Cell[4314, 132, 287, 10, 36, "Output",
    CellTags->"HypergeometricIR",
    CellID->43106065],
-  Cell[4639, 147, 260, 8, 27, "Input",
+  Cell[4638, 147, 260, 8, 27, "Input",
    CellTags->"HypergeometricIR",
    CellID->1374832181],
-  Cell[4902, 157, 747, 28, 70, "Output",
+  Cell[4901, 157, 747, 28, 70, "Output",
    CellTags->"HypergeometricIR",
    CellID->1433332384],
-  Cell[5686, 190, 412, 15, 27, "Input",
+  Cell[5685, 190, 412, 15, 27, "Input",
    CellTags->"HypergeometricIR",
    CellID->907804769],
-  Cell[6101, 207, 595, 19, 66, "Output",
+  Cell[6100, 207, 595, 19, 66, "Output",
    CellTags->"HypergeometricIR",
    CellID->1119784034],
-  Cell[6733, 231, 167, 5, 27, "Input",
+  Cell[6732, 231, 167, 5, 27, "Input",
    CellTags->"HypergeometricIR",
    CellID->1094444131],
-  Cell[6903, 238, 459, 17, 40, "Output",
+  Cell[6902, 238, 459, 17, 40, "Output",
    CellTags->"HypergeometricIR",
    CellID->1637166476],
-  Cell[7730, 278, 626, 21, 32, "Text",
+  Cell[7729, 278, 626, 21, 32, "Text",
    CellTags->"HypergeometricIR",
    CellID->1403310516]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10362, 349},
- {"HypergeometricIR", 10505, 353}
+ {"PrimaryExamplesSection", 10371, 349},
+ {"HypergeometricIR", 10513, 353}
  }
 *)
 (*NotebookFileOutline
@@ -396,55 +396,55 @@ Cell[2868, 75, 59, 1, 42, "ObjectName",
 Cell[2930, 78, 575, 15, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3530, 97, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3530, 97, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1910811705],
+ CellID->182527341],
 Cell[CellGroupData[{
-Cell[3943, 116, 195, 6, 25, "ExampleSection",
- CellID->242024143],
+Cell[3942, 116, 195, 6, 25, "ExampleSection",
+ CellID->801644800],
 Cell[CellGroupData[{
-Cell[4163, 126, 149, 4, 27, "Input",
+Cell[4162, 126, 149, 4, 27, "Input",
  CellTags->"HypergeometricIR",
  CellID->384078315],
-Cell[4315, 132, 287, 10, 36, "Output",
+Cell[4314, 132, 287, 10, 36, "Output",
  CellTags->"HypergeometricIR",
  CellID->43106065]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4639, 147, 260, 8, 27, "Input",
+Cell[4638, 147, 260, 8, 27, "Input",
  CellTags->"HypergeometricIR",
  CellID->1374832181],
-Cell[4902, 157, 747, 28, 70, "Output",
+Cell[4901, 157, 747, 28, 70, "Output",
  CellTags->"HypergeometricIR",
  CellID->1433332384]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5686, 190, 412, 15, 27, "Input",
+Cell[5685, 190, 412, 15, 27, "Input",
  CellTags->"HypergeometricIR",
  CellID->907804769],
-Cell[6101, 207, 595, 19, 66, "Output",
+Cell[6100, 207, 595, 19, 66, "Output",
  CellTags->"HypergeometricIR",
  CellID->1119784034]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6733, 231, 167, 5, 27, "Input",
+Cell[6732, 231, 167, 5, 27, "Input",
  CellTags->"HypergeometricIR",
  CellID->1094444131],
-Cell[6903, 238, 459, 17, 40, "Output",
+Cell[6902, 238, 459, 17, 40, "Output",
  CellTags->"HypergeometricIR",
  CellID->1637166476]
 }, Open  ]]
 }, Open  ]],
-Cell[7389, 259, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7388, 259, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7457, 264, 270, 12, 31, "SeeAlsoSection",
+Cell[7456, 264, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7730, 278, 626, 21, 32, "Text",
+Cell[7729, 278, 626, 21, 32, "Text",
  CellTags->"HypergeometricIR",
  CellID->1403310516]
 }, Open  ]],
-Cell[8371, 302, 23, 0, 42, "FooterCell"]
+Cell[8370, 302, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11926,        419]
-NotebookOptionsPosition[      8002,        295]
-NotebookOutlinePosition[     10771,        374]
-CellTagsIndexPosition[     10660,        368]
+NotebookDataLength[     11932,        419]
+NotebookOptionsPosition[      8001,        295]
+NotebookOutlinePosition[     10778,        374]
+CellTagsIndexPosition[     10667,        368]
 WindowTitle->Amputate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$13610], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15739], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Amputate", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1710513263],
+ CellID->1396288829],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1877359267],
+ CellID->737978449],
 
 Cell[CellGroupData[{
 
@@ -308,7 +308,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 55, 48.826972}", 
+   "built" -> "{2016, 1, 2, 15, 6, 22.741306}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -320,7 +320,7 @@ amputates all except OPEDelta.", "synonyms" -> {}, "title" -> "Amputate",
     "titlemodifier" -> "", "windowtitle" -> "Amputate", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Amputate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -329,7 +329,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -340,35 +340,35 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3452, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1710513263]},
+   CellID->1396288829]},
  "Amputate"->{
-  Cell[4086, 126, 134, 4, 27, "Input",
+  Cell[4085, 126, 134, 4, 27, "Input",
    CellTags->"Amputate",
    CellID->1884550851],
-  Cell[4223, 132, 403, 14, 36, "Output",
+  Cell[4222, 132, 403, 14, 36, "Output",
    CellTags->"Amputate",
    CellID->697719830],
-  Cell[4663, 151, 189, 6, 27, "Input",
+  Cell[4662, 151, 189, 6, 27, "Input",
    CellTags->"Amputate",
    CellID->479729855],
-  Cell[4855, 159, 633, 24, 39, "Output",
+  Cell[4854, 159, 633, 24, 39, "Output",
    CellTags->"Amputate",
    CellID->1732499360],
-  Cell[5525, 188, 151, 5, 27, "Input",
+  Cell[5524, 188, 151, 5, 27, "Input",
    CellTags->"Amputate",
    CellID->1612122659],
-  Cell[5679, 195, 1007, 39, 44, "Output",
+  Cell[5678, 195, 1007, 39, 44, "Output",
    CellTags->"Amputate",
    CellID->42958207],
-  Cell[7054, 257, 906, 33, 32, "Text",
+  Cell[7053, 257, 906, 33, 32, "Text",
    CellTags->"Amputate",
    CellID->1266124166]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9882, 339},
- {"Amputate", 10017, 343}
+ {"PrimaryExamplesSection", 9889, 339},
+ {"Amputate", 10024, 343}
  }
 *)
 (*NotebookFileOutline
@@ -382,45 +382,45 @@ Cell[2881, 78, 546, 15, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3452, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1710513263],
+ CellID->1396288829],
 Cell[CellGroupData[{
-Cell[3865, 116, 196, 6, 25, "ExampleSection",
- CellID->1877359267],
+Cell[3865, 116, 195, 6, 25, "ExampleSection",
+ CellID->737978449],
 Cell[CellGroupData[{
-Cell[4086, 126, 134, 4, 27, "Input",
+Cell[4085, 126, 134, 4, 27, "Input",
  CellTags->"Amputate",
  CellID->1884550851],
-Cell[4223, 132, 403, 14, 36, "Output",
+Cell[4222, 132, 403, 14, 36, "Output",
  CellTags->"Amputate",
  CellID->697719830]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4663, 151, 189, 6, 27, "Input",
+Cell[4662, 151, 189, 6, 27, "Input",
  CellTags->"Amputate",
  CellID->479729855],
-Cell[4855, 159, 633, 24, 39, "Output",
+Cell[4854, 159, 633, 24, 39, "Output",
  CellTags->"Amputate",
  CellID->1732499360]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5525, 188, 151, 5, 27, "Input",
+Cell[5524, 188, 151, 5, 27, "Input",
  CellTags->"Amputate",
  CellID->1612122659],
-Cell[5679, 195, 1007, 39, 44, "Output",
+Cell[5678, 195, 1007, 39, 44, "Output",
  CellTags->"Amputate",
  CellID->42958207]
 }, Open  ]]
 }, Open  ]],
-Cell[6713, 238, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6712, 238, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6781, 243, 270, 12, 31, "SeeAlsoSection",
+Cell[6780, 243, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7054, 257, 906, 33, 32, "Text",
+Cell[7053, 257, 906, 33, 32, "Text",
  CellTags->"Amputate",
  CellID->1266124166]
 }, Open  ]],
-Cell[7975, 293, 23, 0, 42, "FooterCell"]
+Cell[7974, 293, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

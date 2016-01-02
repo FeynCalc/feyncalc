@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6374,        197]
+NotebookDataLength[      6384,        197]
 NotebookOptionsPosition[      4113,        130]
-NotebookOutlinePosition[      6118,        186]
-CellTagsIndexPosition[      6054,        181]
+NotebookOutlinePosition[      6128,        186]
+CellTagsIndexPosition[      6064,        181]
 WindowTitle->KK
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$89450], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$94736], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/KK", 
             ".html"]], None}]}]},
@@ -143,7 +143,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 2, 29.690252}", 
+   "built" -> "{2016, 1, 2, 15, 13, 34.330940}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -155,7 +155,7 @@ HoldForm and can be recovered by ReleaseHold[KK[i]].", "synonyms" -> {},
     "title" -> "KK", "titlemodifier" -> "", "windowtitle" -> "KK", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/KK"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -164,7 +164,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -180,7 +180,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"KK", 5948, 174}
+ {"KK", 5958, 174}
  }
 *)
 (*NotebookFileOutline

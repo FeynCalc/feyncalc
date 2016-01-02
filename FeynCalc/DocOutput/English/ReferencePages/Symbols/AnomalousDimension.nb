@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     52063,       1823]
-NotebookOptionsPosition[     41494,       1487]
-NotebookOutlinePosition[     47509,       1662]
-CellTagsIndexPosition[     47385,       1656]
+NotebookDataLength[     52074,       1823]
+NotebookOptionsPosition[     41495,       1487]
+NotebookOutlinePosition[     47519,       1662]
+CellTagsIndexPosition[     47395,       1656]
 WindowTitle->AnomalousDimension
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ AnomalousDimension.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$13953], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16082], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/AnomalousDimension", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->533212965],
+ CellID->1214703242],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1788169946],
+ CellID->1502748354],
 
 Cell[CellGroupData[{
 
@@ -1500,7 +1500,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 55, 50.779506}", 
+   "built" -> "{2016, 1, 2, 15, 6, 24.376791}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1512,7 +1512,7 @@ TaggingRules->{
     "Symbol", "uri" -> "FeynCalc/ref/AnomalousDimension"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1521,7 +1521,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1530,133 +1530,133 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3382, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3382, 94, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->533212965]},
+   CellID->1214703242]},
  "AnomalousDimension"->{
-  Cell[4015, 123, 154, 4, 27, "Input",
+  Cell[4016, 123, 154, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1953214619],
-  Cell[4172, 129, 362, 12, 36, "Output",
+  Cell[4173, 129, 362, 12, 36, "Output",
    CellTags->"AnomalousDimension",
    CellID->1686866166],
-  Cell[4549, 144, 85, 2, 31, "Text",
+  Cell[4550, 144, 85, 2, 31, "Text",
    CellTags->"AnomalousDimension",
    CellID->2007063734],
-  Cell[4659, 150, 226, 6, 27, "Input",
+  Cell[4660, 150, 226, 6, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1676073016],
-  Cell[4888, 158, 361, 12, 36, "Output",
+  Cell[4889, 158, 361, 12, 36, "Output",
    CellTags->"AnomalousDimension",
    CellID->455353582],
-  Cell[5264, 173, 263, 10, 42, "Text",
+  Cell[5265, 173, 263, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1291876789],
-  Cell[5552, 187, 152, 4, 27, "Input",
+  Cell[5553, 187, 152, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->146201031],
-  Cell[5707, 193, 569, 21, 64, "Output",
+  Cell[5708, 193, 569, 21, 64, "Output",
    CellTags->"AnomalousDimension",
    CellID->615808229],
-  Cell[6291, 217, 262, 10, 42, "Text",
+  Cell[6292, 217, 262, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1792202903],
-  Cell[6578, 231, 152, 4, 27, "Input",
+  Cell[6579, 231, 152, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1170655896],
-  Cell[6733, 237, 392, 14, 64, "Output",
+  Cell[6734, 237, 392, 14, 64, "Output",
    CellTags->"AnomalousDimension",
    CellID->2056489351],
-  Cell[7140, 254, 262, 10, 42, "Text",
+  Cell[7141, 254, 262, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1242785256],
-  Cell[7427, 268, 152, 4, 27, "Input",
+  Cell[7428, 268, 152, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1302484886],
-  Cell[7582, 274, 390, 14, 64, "Output",
+  Cell[7583, 274, 390, 14, 64, "Output",
    CellTags->"AnomalousDimension",
    CellID->339795493],
-  Cell[7987, 291, 261, 10, 42, "Text",
+  Cell[7988, 291, 261, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->102826276],
-  Cell[8273, 305, 151, 4, 27, "Input",
+  Cell[8274, 305, 151, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->255541888],
-  Cell[8427, 311, 701, 25, 64, "Output",
+  Cell[8428, 311, 701, 25, 64, "Output",
    CellTags->"AnomalousDimension",
    CellID->724940306],
-  Cell[9143, 339, 263, 10, 42, "Text",
+  Cell[9144, 339, 263, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1117022044],
-  Cell[9431, 353, 153, 4, 27, "Input",
+  Cell[9432, 353, 153, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1738556670],
-  Cell[9587, 359, 796, 27, 67, "Output",
+  Cell[9588, 359, 796, 27, 67, "Output",
    CellTags->"AnomalousDimension",
    CellID->297175504],
-  Cell[10398, 389, 263, 10, 42, "Text",
+  Cell[10399, 389, 263, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1509439590],
-  Cell[10686, 403, 153, 4, 27, "Input",
+  Cell[10687, 403, 153, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1025475425],
-  Cell[10842, 409, 6715, 222, 410, "Output",
+  Cell[10843, 409, 6715, 222, 410, "Output",
    CellTags->"AnomalousDimension",
    CellID->1707320400],
-  Cell[17572, 634, 260, 10, 42, "Text",
+  Cell[17573, 634, 260, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->26937910],
-  Cell[17857, 648, 152, 4, 27, "Input",
+  Cell[17858, 648, 152, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1790656955],
-  Cell[18012, 654, 4224, 144, 304, "Output",
+  Cell[18013, 654, 4224, 144, 304, "Output",
    CellTags->"AnomalousDimension",
    CellID->578210880],
-  Cell[22251, 801, 262, 10, 42, "Text",
+  Cell[22252, 801, 262, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1644657872],
-  Cell[22538, 815, 153, 4, 27, "Input",
+  Cell[22539, 815, 153, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1820360375],
-  Cell[22694, 821, 6332, 216, 418, "Output",
+  Cell[22695, 821, 6332, 216, 418, "Output",
    CellTags->"AnomalousDimension",
    CellID->1694165204],
-  Cell[29041, 1040, 261, 10, 42, "Text",
+  Cell[29042, 1040, 261, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->462099557],
-  Cell[29327, 1054, 153, 4, 27, "Input",
+  Cell[29328, 1054, 153, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->1613754345],
-  Cell[29483, 1060, 5020, 170, 347, "Output",
+  Cell[29484, 1060, 5020, 170, 347, "Output",
    CellTags->"AnomalousDimension",
    CellID->1244918806],
-  Cell[34518, 1233, 288, 10, 42, "Text",
+  Cell[34519, 1233, 288, 10, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->721182810],
-  Cell[34831, 1247, 152, 4, 27, "Input",
+  Cell[34832, 1247, 152, 4, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->889064365],
-  Cell[34986, 1253, 4489, 143, 337, "Output",
+  Cell[34987, 1253, 4489, 143, 337, "Output",
    CellTags->"AnomalousDimension",
    CellID->1840404969],
-  Cell[39490, 1399, 330, 11, 42, "Text",
+  Cell[39491, 1399, 330, 11, 42, "Text",
    CellTags->"AnomalousDimension",
    CellID->1805318835],
-  Cell[39845, 1414, 315, 10, 27, "Input",
+  Cell[39846, 1414, 315, 10, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->621534472],
-  Cell[40163, 1426, 347, 11, 36, "Output",
+  Cell[40164, 1426, 347, 11, 36, "Output",
    CellTags->"AnomalousDimension",
    CellID->494342750],
-  Cell[40878, 1460, 574, 22, 32, "Text",
+  Cell[40879, 1460, 574, 22, 32, "Text",
    CellTags->"AnomalousDimension",
    CellID->1774979938]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 43342, 1531},
- {"AnomalousDimension", 43486, 1535}
+ {"PrimaryExamplesSection", 43351, 1531},
+ {"AnomalousDimension", 43496, 1535}
  }
 *)
 (*NotebookFileOutline
@@ -1668,163 +1668,163 @@ Cell[2878, 75, 61, 1, 42, "ObjectName",
 Cell[2942, 78, 415, 12, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3382, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3382, 94, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->533212965],
+ CellID->1214703242],
 Cell[CellGroupData[{
-Cell[3794, 113, 196, 6, 25, "ExampleSection",
- CellID->1788169946],
+Cell[3795, 113, 196, 6, 25, "ExampleSection",
+ CellID->1502748354],
 Cell[CellGroupData[{
-Cell[4015, 123, 154, 4, 27, "Input",
+Cell[4016, 123, 154, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1953214619],
-Cell[4172, 129, 362, 12, 36, "Output",
+Cell[4173, 129, 362, 12, 36, "Output",
  CellTags->"AnomalousDimension",
  CellID->1686866166]
 }, Open  ]],
-Cell[4549, 144, 85, 2, 31, "Text",
+Cell[4550, 144, 85, 2, 31, "Text",
  CellTags->"AnomalousDimension",
  CellID->2007063734],
 Cell[CellGroupData[{
-Cell[4659, 150, 226, 6, 27, "Input",
+Cell[4660, 150, 226, 6, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1676073016],
-Cell[4888, 158, 361, 12, 36, "Output",
+Cell[4889, 158, 361, 12, 36, "Output",
  CellTags->"AnomalousDimension",
  CellID->455353582]
 }, Open  ]],
-Cell[5264, 173, 263, 10, 42, "Text",
+Cell[5265, 173, 263, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1291876789],
 Cell[CellGroupData[{
-Cell[5552, 187, 152, 4, 27, "Input",
+Cell[5553, 187, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->146201031],
-Cell[5707, 193, 569, 21, 64, "Output",
+Cell[5708, 193, 569, 21, 64, "Output",
  CellTags->"AnomalousDimension",
  CellID->615808229]
 }, Open  ]],
-Cell[6291, 217, 262, 10, 42, "Text",
+Cell[6292, 217, 262, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1792202903],
 Cell[CellGroupData[{
-Cell[6578, 231, 152, 4, 27, "Input",
+Cell[6579, 231, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1170655896],
-Cell[6733, 237, 392, 14, 64, "Output",
+Cell[6734, 237, 392, 14, 64, "Output",
  CellTags->"AnomalousDimension",
  CellID->2056489351]
 }, Open  ]],
-Cell[7140, 254, 262, 10, 42, "Text",
+Cell[7141, 254, 262, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1242785256],
 Cell[CellGroupData[{
-Cell[7427, 268, 152, 4, 27, "Input",
+Cell[7428, 268, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1302484886],
-Cell[7582, 274, 390, 14, 64, "Output",
+Cell[7583, 274, 390, 14, 64, "Output",
  CellTags->"AnomalousDimension",
  CellID->339795493]
 }, Open  ]],
-Cell[7987, 291, 261, 10, 42, "Text",
+Cell[7988, 291, 261, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->102826276],
 Cell[CellGroupData[{
-Cell[8273, 305, 151, 4, 27, "Input",
+Cell[8274, 305, 151, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->255541888],
-Cell[8427, 311, 701, 25, 64, "Output",
+Cell[8428, 311, 701, 25, 64, "Output",
  CellTags->"AnomalousDimension",
  CellID->724940306]
 }, Open  ]],
-Cell[9143, 339, 263, 10, 42, "Text",
+Cell[9144, 339, 263, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1117022044],
 Cell[CellGroupData[{
-Cell[9431, 353, 153, 4, 27, "Input",
+Cell[9432, 353, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1738556670],
-Cell[9587, 359, 796, 27, 67, "Output",
+Cell[9588, 359, 796, 27, 67, "Output",
  CellTags->"AnomalousDimension",
  CellID->297175504]
 }, Open  ]],
-Cell[10398, 389, 263, 10, 42, "Text",
+Cell[10399, 389, 263, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1509439590],
 Cell[CellGroupData[{
-Cell[10686, 403, 153, 4, 27, "Input",
+Cell[10687, 403, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1025475425],
-Cell[10842, 409, 6715, 222, 410, "Output",
+Cell[10843, 409, 6715, 222, 410, "Output",
  CellTags->"AnomalousDimension",
  CellID->1707320400]
 }, Open  ]],
-Cell[17572, 634, 260, 10, 42, "Text",
+Cell[17573, 634, 260, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->26937910],
 Cell[CellGroupData[{
-Cell[17857, 648, 152, 4, 27, "Input",
+Cell[17858, 648, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1790656955],
-Cell[18012, 654, 4224, 144, 304, "Output",
+Cell[18013, 654, 4224, 144, 304, "Output",
  CellTags->"AnomalousDimension",
  CellID->578210880]
 }, Open  ]],
-Cell[22251, 801, 262, 10, 42, "Text",
+Cell[22252, 801, 262, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1644657872],
 Cell[CellGroupData[{
-Cell[22538, 815, 153, 4, 27, "Input",
+Cell[22539, 815, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1820360375],
-Cell[22694, 821, 6332, 216, 418, "Output",
+Cell[22695, 821, 6332, 216, 418, "Output",
  CellTags->"AnomalousDimension",
  CellID->1694165204]
 }, Open  ]],
-Cell[29041, 1040, 261, 10, 42, "Text",
+Cell[29042, 1040, 261, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->462099557],
 Cell[CellGroupData[{
-Cell[29327, 1054, 153, 4, 27, "Input",
+Cell[29328, 1054, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->1613754345],
-Cell[29483, 1060, 5020, 170, 347, "Output",
+Cell[29484, 1060, 5020, 170, 347, "Output",
  CellTags->"AnomalousDimension",
  CellID->1244918806]
 }, Open  ]],
-Cell[34518, 1233, 288, 10, 42, "Text",
+Cell[34519, 1233, 288, 10, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->721182810],
 Cell[CellGroupData[{
-Cell[34831, 1247, 152, 4, 27, "Input",
+Cell[34832, 1247, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->889064365],
-Cell[34986, 1253, 4489, 143, 337, "Output",
+Cell[34987, 1253, 4489, 143, 337, "Output",
  CellTags->"AnomalousDimension",
  CellID->1840404969]
 }, Open  ]],
-Cell[39490, 1399, 330, 11, 42, "Text",
+Cell[39491, 1399, 330, 11, 42, "Text",
  CellTags->"AnomalousDimension",
  CellID->1805318835],
 Cell[CellGroupData[{
-Cell[39845, 1414, 315, 10, 27, "Input",
+Cell[39846, 1414, 315, 10, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->621534472],
-Cell[40163, 1426, 347, 11, 36, "Output",
+Cell[40164, 1426, 347, 11, 36, "Output",
  CellTags->"AnomalousDimension",
  CellID->494342750]
 }, Open  ]]
 }, Open  ]],
-Cell[40537, 1441, 31, 0, 29, "SectionFooterSpacer"]
+Cell[40538, 1441, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40605, 1446, 270, 12, 31, "SeeAlsoSection",
+Cell[40606, 1446, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[40878, 1460, 574, 22, 32, "Text",
+Cell[40879, 1460, 574, 22, 32, "Text",
  CellTags->"AnomalousDimension",
  CellID->1774979938]
 }, Open  ]],
-Cell[41467, 1485, 23, 0, 42, "FooterCell"]
+Cell[41468, 1485, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

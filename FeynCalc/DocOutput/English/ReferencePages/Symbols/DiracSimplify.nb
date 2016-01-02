@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     48289,       1682]
+NotebookDataLength[     48298,       1682]
 NotebookOptionsPosition[     36205,       1284]
-NotebookOutlinePosition[     43096,       1488]
-CellTagsIndexPosition[     42941,       1481]
+NotebookOutlinePosition[     43105,       1488]
+CellTagsIndexPosition[     42950,       1481]
 WindowTitle->DiracSimplify
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ DiracSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$40461], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42466], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracSimplify", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1360194878],
+ CellID->530074450],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2062790323],
+ CellID->1750446998],
 
 Cell[CellGroupData[{
 
@@ -1007,7 +1007,7 @@ eqjLNEJNj1jv9QSBHuoyw6BmiBhoV1ebeQFi1ep8QA+1mRegp4enPC8jPauI
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"DiracSimplify", "RasterizedOutput"},
  CellLabel->"Out[16]=",
- CellID->541191354]
+ CellID->2090241581]
 }, Open  ]],
 
 Cell["\<\
@@ -1297,7 +1297,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 58, 12.942357}", 
+   "built" -> "{2016, 1, 2, 15, 8, 39.067653}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1312,7 +1312,7 @@ matrices is not changed.", "synonyms" -> {}, "title" -> "DiracSimplify",
     "Symbol", "uri" -> "FeynCalc/ref/DiracSimplify"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1321,7 +1321,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1330,118 +1330,118 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3598, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3598, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1360194878]},
+   CellID->530074450]},
  "DiracSimplify"->{
-  Cell[4232, 127, 144, 4, 27, "Input",
+  Cell[4231, 127, 144, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->2098245619],
-  Cell[4379, 133, 769, 19, 75, "Output",
+  Cell[4378, 133, 769, 19, 75, "Output",
    CellTags->"DiracSimplify",
    CellID->1444421220],
-  Cell[5163, 155, 120, 2, 32, "Text",
+  Cell[5162, 155, 120, 2, 32, "Text",
    CellTags->"DiracSimplify",
    CellID->1154366536],
-  Cell[5308, 161, 196, 6, 27, "Input",
+  Cell[5307, 161, 196, 6, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->201005194],
-  Cell[5507, 169, 772, 32, 38, "Output",
+  Cell[5506, 169, 772, 32, 38, "Output",
    CellTags->"DiracSimplify",
    CellID->642203150],
-  Cell[6316, 206, 137, 4, 27, "Input",
+  Cell[6315, 206, 137, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->28604534],
-  Cell[6456, 212, 392, 15, 38, "Output",
+  Cell[6455, 212, 392, 15, 38, "Output",
    CellTags->"DiracSimplify",
    CellID->1608459635],
-  Cell[6863, 230, 116, 2, 32, "Text",
+  Cell[6862, 230, 116, 2, 32, "Text",
    CellTags->"DiracSimplify",
    CellID->321850317],
-  Cell[7004, 236, 197, 6, 27, "Input",
+  Cell[7003, 236, 197, 6, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->149362799],
-  Cell[7204, 244, 694, 29, 38, "Output",
+  Cell[7203, 244, 694, 29, 38, "Output",
    CellTags->"DiracSimplify",
    CellID->786634532],
-  Cell[7935, 278, 139, 4, 27, "Input",
+  Cell[7934, 278, 139, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1129253480],
-  Cell[8077, 284, 391, 15, 38, "Output",
+  Cell[8076, 284, 391, 15, 38, "Output",
    CellTags->"DiracSimplify",
    CellID->120098280],
-  Cell[8505, 304, 192, 6, 27, "Input",
+  Cell[8504, 304, 192, 6, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->570896083],
-  Cell[8700, 312, 728, 30, 39, "Output",
+  Cell[8699, 312, 728, 30, 39, "Output",
    CellTags->"DiracSimplify",
    CellID->333412029],
-  Cell[9443, 345, 199, 8, 33, "Text",
+  Cell[9442, 345, 199, 8, 33, "Text",
    CellTags->"DiracSimplify",
    CellID->766299813],
-  Cell[9667, 357, 138, 4, 27, "Input",
+  Cell[9666, 357, 138, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->264425668],
-  Cell[9808, 363, 611, 24, 39, "Output",
+  Cell[9807, 363, 611, 24, 39, "Output",
    CellTags->"DiracSimplify",
    CellID->1845106993],
-  Cell[10456, 392, 189, 6, 27, "Input",
+  Cell[10455, 392, 189, 6, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1307415504],
-  Cell[10648, 400, 685, 28, 39, "Output",
+  Cell[10647, 400, 685, 28, 39, "Output",
    CellTags->"DiracSimplify",
    CellID->1842675018],
-  Cell[11370, 433, 139, 4, 27, "Input",
+  Cell[11369, 433, 139, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1923692276],
-  Cell[11512, 439, 465, 18, 39, "Output",
+  Cell[11511, 439, 465, 18, 39, "Output",
    CellTags->"DiracSimplify",
    CellID->312699584],
-  Cell[12014, 462, 346, 11, 27, "Input",
+  Cell[12013, 462, 346, 11, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1879344534],
-  Cell[12363, 475, 1562, 60, 47, "Output",
+  Cell[12362, 475, 1562, 60, 47, "Output",
    CellTags->"DiracSimplify",
    CellID->1520402677],
-  Cell[13940, 538, 141, 4, 32, "Text",
+  Cell[13939, 538, 141, 4, 32, "Text",
    CellTags->"DiracSimplify",
    CellID->1032130436],
-  Cell[14106, 546, 139, 4, 27, "Input",
+  Cell[14105, 546, 139, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->697887732],
-  Cell[14248, 552, 2715, 104, 47, "Output",
+  Cell[14247, 552, 2715, 104, 47, "Output",
    CellTags->"DiracSimplify",
    CellID->865972170],
-  Cell[17000, 661, 137, 4, 27, "Input",
+  Cell[16999, 661, 137, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1805591394],
-  Cell[17140, 667, 1137, 43, 47, "Output",
+  Cell[17139, 667, 1137, 43, 47, "Output",
    CellTags->"DiracSimplify",
    CellID->1568743885],
-  Cell[18314, 715, 291, 8, 27, "Input",
+  Cell[18313, 715, 291, 8, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->106324036],
-  Cell[18608, 725, 672, 26, 39, "Output",
+  Cell[18607, 725, 672, 26, 39, "Output",
    CellTags->"DiracSimplify",
    CellID->759706260],
-  Cell[19317, 756, 140, 4, 27, "Input",
+  Cell[19316, 756, 140, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1935005981],
-  Cell[19460, 762, 216, 7, 36, "Output",
+  Cell[19459, 762, 216, 7, 36, "Output",
    CellTags->"DiracSimplify",
    CellID->1632860123],
-  Cell[19713, 774, 393, 13, 27, "Input",
+  Cell[19712, 774, 393, 13, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->1949590828],
-  Cell[20109, 789, 1653, 70, 38, "Output",
+  Cell[20108, 789, 1653, 70, 38, "Output",
    CellTags->"DiracSimplify",
    CellID->376958677],
-  Cell[21799, 864, 138, 4, 27, "Input",
+  Cell[21798, 864, 138, 4, 27, "Input",
    CellTags->"DiracSimplify",
    CellID->789913816],
-  Cell[21940, 870, 7985, 139, 131, "Output",
+  Cell[21939, 870, 7986, 139, 131, "Output",
    CellTags->{"DiracSimplify", "RasterizedOutput"},
-   CellID->541191354],
+   CellID->2090241581],
   Cell[29940, 1012, 136, 4, 32, "Text",
    CellTags->"DiracSimplify",
    CellID->1099320763],
@@ -1473,16 +1473,16 @@ CellTagsIndex->{
    CellTags->"DiracSimplify",
    CellID->1981859865]},
  "RasterizedOutput"->{
-  Cell[21940, 870, 7985, 139, 131, "Output",
+  Cell[21939, 870, 7986, 139, 131, "Output",
    CellTags->{"DiracSimplify", "RasterizedOutput"},
-   CellID->541191354]}
+   CellID->2090241581]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 38277, 1331},
- {"DiracSimplify", 38417, 1335},
- {"RasterizedOutput", 42797, 1474}
+ {"PrimaryExamplesSection", 38285, 1331},
+ {"DiracSimplify", 38424, 1335},
+ {"RasterizedOutput", 42805, 1474}
  }
 *)
 (*NotebookFileOutline
@@ -1494,151 +1494,151 @@ Cell[2853, 75, 56, 1, 42, "ObjectName",
 Cell[2912, 78, 661, 16, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3598, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3598, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1360194878],
+ CellID->530074450],
 Cell[CellGroupData[{
-Cell[4011, 117, 196, 6, 25, "ExampleSection",
- CellID->2062790323],
+Cell[4010, 117, 196, 6, 25, "ExampleSection",
+ CellID->1750446998],
 Cell[CellGroupData[{
-Cell[4232, 127, 144, 4, 27, "Input",
+Cell[4231, 127, 144, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->2098245619],
-Cell[4379, 133, 769, 19, 75, "Output",
+Cell[4378, 133, 769, 19, 75, "Output",
  CellTags->"DiracSimplify",
  CellID->1444421220]
 }, Open  ]],
-Cell[5163, 155, 120, 2, 32, "Text",
+Cell[5162, 155, 120, 2, 32, "Text",
  CellTags->"DiracSimplify",
  CellID->1154366536],
 Cell[CellGroupData[{
-Cell[5308, 161, 196, 6, 27, "Input",
+Cell[5307, 161, 196, 6, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->201005194],
-Cell[5507, 169, 772, 32, 38, "Output",
+Cell[5506, 169, 772, 32, 38, "Output",
  CellTags->"DiracSimplify",
  CellID->642203150]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6316, 206, 137, 4, 27, "Input",
+Cell[6315, 206, 137, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->28604534],
-Cell[6456, 212, 392, 15, 38, "Output",
+Cell[6455, 212, 392, 15, 38, "Output",
  CellTags->"DiracSimplify",
  CellID->1608459635]
 }, Open  ]],
-Cell[6863, 230, 116, 2, 32, "Text",
+Cell[6862, 230, 116, 2, 32, "Text",
  CellTags->"DiracSimplify",
  CellID->321850317],
 Cell[CellGroupData[{
-Cell[7004, 236, 197, 6, 27, "Input",
+Cell[7003, 236, 197, 6, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->149362799],
-Cell[7204, 244, 694, 29, 38, "Output",
+Cell[7203, 244, 694, 29, 38, "Output",
  CellTags->"DiracSimplify",
  CellID->786634532]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7935, 278, 139, 4, 27, "Input",
+Cell[7934, 278, 139, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1129253480],
-Cell[8077, 284, 391, 15, 38, "Output",
+Cell[8076, 284, 391, 15, 38, "Output",
  CellTags->"DiracSimplify",
  CellID->120098280]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8505, 304, 192, 6, 27, "Input",
+Cell[8504, 304, 192, 6, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->570896083],
-Cell[8700, 312, 728, 30, 39, "Output",
+Cell[8699, 312, 728, 30, 39, "Output",
  CellTags->"DiracSimplify",
  CellID->333412029]
 }, Open  ]],
-Cell[9443, 345, 199, 8, 33, "Text",
+Cell[9442, 345, 199, 8, 33, "Text",
  CellTags->"DiracSimplify",
  CellID->766299813],
 Cell[CellGroupData[{
-Cell[9667, 357, 138, 4, 27, "Input",
+Cell[9666, 357, 138, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->264425668],
-Cell[9808, 363, 611, 24, 39, "Output",
+Cell[9807, 363, 611, 24, 39, "Output",
  CellTags->"DiracSimplify",
  CellID->1845106993]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10456, 392, 189, 6, 27, "Input",
+Cell[10455, 392, 189, 6, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1307415504],
-Cell[10648, 400, 685, 28, 39, "Output",
+Cell[10647, 400, 685, 28, 39, "Output",
  CellTags->"DiracSimplify",
  CellID->1842675018]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11370, 433, 139, 4, 27, "Input",
+Cell[11369, 433, 139, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1923692276],
-Cell[11512, 439, 465, 18, 39, "Output",
+Cell[11511, 439, 465, 18, 39, "Output",
  CellTags->"DiracSimplify",
  CellID->312699584]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12014, 462, 346, 11, 27, "Input",
+Cell[12013, 462, 346, 11, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1879344534],
-Cell[12363, 475, 1562, 60, 47, "Output",
+Cell[12362, 475, 1562, 60, 47, "Output",
  CellTags->"DiracSimplify",
  CellID->1520402677]
 }, Open  ]],
-Cell[13940, 538, 141, 4, 32, "Text",
+Cell[13939, 538, 141, 4, 32, "Text",
  CellTags->"DiracSimplify",
  CellID->1032130436],
 Cell[CellGroupData[{
-Cell[14106, 546, 139, 4, 27, "Input",
+Cell[14105, 546, 139, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->697887732],
-Cell[14248, 552, 2715, 104, 47, "Output",
+Cell[14247, 552, 2715, 104, 47, "Output",
  CellTags->"DiracSimplify",
  CellID->865972170]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17000, 661, 137, 4, 27, "Input",
+Cell[16999, 661, 137, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1805591394],
-Cell[17140, 667, 1137, 43, 47, "Output",
+Cell[17139, 667, 1137, 43, 47, "Output",
  CellTags->"DiracSimplify",
  CellID->1568743885]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18314, 715, 291, 8, 27, "Input",
+Cell[18313, 715, 291, 8, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->106324036],
-Cell[18608, 725, 672, 26, 39, "Output",
+Cell[18607, 725, 672, 26, 39, "Output",
  CellTags->"DiracSimplify",
  CellID->759706260]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19317, 756, 140, 4, 27, "Input",
+Cell[19316, 756, 140, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1935005981],
-Cell[19460, 762, 216, 7, 36, "Output",
+Cell[19459, 762, 216, 7, 36, "Output",
  CellTags->"DiracSimplify",
  CellID->1632860123]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19713, 774, 393, 13, 27, "Input",
+Cell[19712, 774, 393, 13, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->1949590828],
-Cell[20109, 789, 1653, 70, 38, "Output",
+Cell[20108, 789, 1653, 70, 38, "Output",
  CellTags->"DiracSimplify",
  CellID->376958677]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21799, 864, 138, 4, 27, "Input",
+Cell[21798, 864, 138, 4, 27, "Input",
  CellTags->"DiracSimplify",
  CellID->789913816],
-Cell[21940, 870, 7985, 139, 131, "Output",
+Cell[21939, 870, 7986, 139, 131, "Output",
  CellTags->{"DiracSimplify", "RasterizedOutput"},
- CellID->541191354]
+ CellID->2090241581]
 }, Open  ]],
 Cell[29940, 1012, 136, 4, 32, "Text",
  CellTags->"DiracSimplify",

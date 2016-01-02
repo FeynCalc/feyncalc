@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41948,       1355]
-NotebookOptionsPosition[     32967,       1054]
-NotebookOutlinePosition[     38259,       1213]
-CellTagsIndexPosition[     38107,       1206]
+NotebookDataLength[     41951,       1355]
+NotebookOptionsPosition[     32966,       1054]
+NotebookOutlinePosition[     38263,       1213]
+CellTagsIndexPosition[     38111,       1206]
 WindowTitle->DiracTrick
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42551], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44648], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracTrick", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1500038335],
+ CellID->183315870],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->54909681],
+ CellID->951626803],
 
 Cell[CellGroupData[{
 
@@ -1003,7 +1003,7 @@ D3UAAAAAc4OouRi+Lq0UTnwAAAAAvvH/1gUW/Q==
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"DiracTrick", "RasterizedOutput"},
  CellLabel->"Out[14]=",
- CellID->1018719688]
+ CellID->812312776]
 }, Open  ]]
 }, Open  ]],
 
@@ -1067,7 +1067,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 58, 23.880440}", 
+   "built" -> "{2016, 1, 2, 15, 8, 51.606060}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1079,7 +1079,7 @@ non-commutative expansion.", "synonyms" -> {}, "title" -> "DiracTrick",
     "titlemodifier" -> "", "windowtitle" -> "DiracTrick", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/DiracTrick"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1088,7 +1088,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1097,9 +1097,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3422, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3422, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1500038335]},
+   CellID->183315870]},
  "DiracTrick"->{
   Cell[4054, 125, 138, 4, 27, "Input",
    CellTags->"DiracTrick",
@@ -1191,23 +1191,23 @@ CellTagsIndex->{
   Cell[19488, 788, 133, 4, 27, "Input",
    CellTags->"DiracTrick",
    CellID->1243868217],
-  Cell[19624, 794, 12359, 211, 137, "Output",
+  Cell[19624, 794, 12358, 211, 137, "Output",
    CellTags->{"DiracTrick", "RasterizedOutput"},
-   CellID->1018719688],
-  Cell[32351, 1028, 574, 21, 32, "Text",
+   CellID->812312776],
+  Cell[32350, 1028, 574, 21, 32, "Text",
    CellTags->"DiracTrick",
    CellID->505712200]},
  "RasterizedOutput"->{
-  Cell[19624, 794, 12359, 211, 137, "Output",
+  Cell[19624, 794, 12358, 211, 137, "Output",
    CellTags->{"DiracTrick", "RasterizedOutput"},
-   CellID->1018719688]}
+   CellID->812312776]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 34867, 1098},
- {"DiracTrick", 35004, 1102},
- {"RasterizedOutput", 37964, 1199}
+ {"PrimaryExamplesSection", 34874, 1098},
+ {"DiracTrick", 35010, 1102},
+ {"RasterizedOutput", 37969, 1199}
  }
 *)
 (*NotebookFileOutline
@@ -1219,12 +1219,12 @@ Cell[2837, 75, 53, 1, 42, "ObjectName",
 Cell[2893, 78, 504, 14, 97, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3422, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3422, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1500038335],
+ CellID->183315870],
 Cell[CellGroupData[{
-Cell[3835, 115, 194, 6, 25, "ExampleSection",
- CellID->54909681],
+Cell[3834, 115, 195, 6, 25, "ExampleSection",
+ CellID->951626803],
 Cell[CellGroupData[{
 Cell[4054, 125, 138, 4, 27, "Input",
  CellTags->"DiracTrick",
@@ -1342,21 +1342,21 @@ Cell[CellGroupData[{
 Cell[19488, 788, 133, 4, 27, "Input",
  CellTags->"DiracTrick",
  CellID->1243868217],
-Cell[19624, 794, 12359, 211, 137, "Output",
+Cell[19624, 794, 12358, 211, 137, "Output",
  CellTags->{"DiracTrick", "RasterizedOutput"},
- CellID->1018719688]
+ CellID->812312776]
 }, Open  ]]
 }, Open  ]],
-Cell[32010, 1009, 31, 0, 29, "SectionFooterSpacer"]
+Cell[32009, 1009, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32078, 1014, 270, 12, 31, "SeeAlsoSection",
+Cell[32077, 1014, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[32351, 1028, 574, 21, 32, "Text",
+Cell[32350, 1028, 574, 21, 32, "Text",
  CellTags->"DiracTrick",
  CellID->505712200]
 }, Open  ]],
-Cell[32940, 1052, 23, 0, 42, "FooterCell"]
+Cell[32939, 1052, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

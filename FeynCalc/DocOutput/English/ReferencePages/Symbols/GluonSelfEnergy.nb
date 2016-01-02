@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20013,        708]
-NotebookOptionsPosition[     15826,        579]
-NotebookOutlinePosition[     18706,        660]
-CellTagsIndexPosition[     18587,        654]
+NotebookDataLength[     20026,        708]
+NotebookOptionsPosition[     15827,        579]
+NotebookOutlinePosition[     18718,        660]
+CellTagsIndexPosition[     18599,        654]
 WindowTitle->GluonSelfEnergy
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ GluonSelfEnergy.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$76654], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81572], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GluonSelfEnergy", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->535203488],
+ CellID->1658871887],
 
 Cell[TextData[{
  "Basic Examples",
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->612610979],
+ CellID->837595594],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "\[Rule]", 
      RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{362, 64},
+ ImageSize->{360, 64},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonSelfEnergy",
@@ -592,7 +592,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 24.395458}", 
+   "built" -> "{2016, 1, 2, 15, 12, 26.351835}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -603,7 +603,7 @@ TaggingRules->{
     "windowtitle" -> "GluonSelfEnergy", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/GluonSelfEnergy"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -612,7 +612,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -621,40 +621,40 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3492, 99, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3492, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->535203488]},
+   CellID->1658871887]},
  "GluonSelfEnergy"->{
-  Cell[4102, 126, 92, 2, 35, "Subsubsection",
+  Cell[4103, 126, 92, 2, 35, "Subsubsection",
    CellTags->"GluonSelfEnergy",
    CellID->115800890],
-  Cell[4219, 132, 148, 4, 27, "Input",
+  Cell[4220, 132, 148, 4, 27, "Input",
    CellTags->"GluonSelfEnergy",
    CellID->1632878111],
-  Cell[4370, 138, 942, 28, 85, "Output",
+  Cell[4371, 138, 942, 28, 85, "Output",
    CellTags->"GluonSelfEnergy",
    CellID->22082021],
-  Cell[5349, 171, 270, 9, 27, "Input",
+  Cell[5350, 171, 270, 9, 27, "Input",
    CellTags->"GluonSelfEnergy",
    CellID->407959539],
-  Cell[5622, 182, 4152, 157, 114, "Output",
+  Cell[5623, 182, 4152, 157, 114, "Output",
    CellTags->"GluonSelfEnergy",
    CellID->793043844],
-  Cell[9811, 344, 319, 10, 27, "Input",
+  Cell[9812, 344, 319, 10, 27, "Input",
    CellTags->"GluonSelfEnergy",
    CellID->1914387770],
-  Cell[10133, 356, 4496, 168, 165, "Output",
+  Cell[10134, 356, 4496, 168, 165, "Output",
    CellTags->"GluonSelfEnergy",
    CellID->722359513],
-  Cell[14997, 547, 787, 27, 70, "Text",
+  Cell[14998, 547, 787, 27, 70, "Text",
    CellTags->"GluonSelfEnergy",
    CellID->1505167912]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17646, 622},
- {"GluonSelfEnergy", 17787, 626}
+ {"PrimaryExamplesSection", 17657, 622},
+ {"GluonSelfEnergy", 17799, 626}
  }
 *)
 (*NotebookFileOutline
@@ -666,50 +666,50 @@ Cell[2863, 75, 58, 1, 42, "ObjectName",
 Cell[2924, 78, 543, 17, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3492, 99, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3492, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->535203488],
-Cell[3882, 116, 195, 6, 25, "ExampleSection",
- CellID->612610979],
+ CellID->1658871887],
+Cell[3883, 116, 195, 6, 25, "ExampleSection",
+ CellID->837595594],
 Cell[CellGroupData[{
-Cell[4102, 126, 92, 2, 35, "Subsubsection",
+Cell[4103, 126, 92, 2, 35, "Subsubsection",
  CellTags->"GluonSelfEnergy",
  CellID->115800890],
 Cell[CellGroupData[{
-Cell[4219, 132, 148, 4, 27, "Input",
+Cell[4220, 132, 148, 4, 27, "Input",
  CellTags->"GluonSelfEnergy",
  CellID->1632878111],
-Cell[4370, 138, 942, 28, 85, "Output",
+Cell[4371, 138, 942, 28, 85, "Output",
  CellTags->"GluonSelfEnergy",
  CellID->22082021]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5349, 171, 270, 9, 27, "Input",
+Cell[5350, 171, 270, 9, 27, "Input",
  CellTags->"GluonSelfEnergy",
  CellID->407959539],
-Cell[5622, 182, 4152, 157, 114, "Output",
+Cell[5623, 182, 4152, 157, 114, "Output",
  CellTags->"GluonSelfEnergy",
  CellID->793043844]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9811, 344, 319, 10, 27, "Input",
+Cell[9812, 344, 319, 10, 27, "Input",
  CellTags->"GluonSelfEnergy",
  CellID->1914387770],
-Cell[10133, 356, 4496, 168, 165, "Output",
+Cell[10134, 356, 4496, 168, 165, "Output",
  CellTags->"GluonSelfEnergy",
  CellID->722359513]
 }, Open  ]],
-Cell[14644, 527, 31, 0, 70, "SectionFooterSpacer"]
+Cell[14645, 527, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14724, 533, 270, 12, 70, "SeeAlsoSection",
+Cell[14725, 533, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[14997, 547, 787, 27, 70, "Text",
+Cell[14998, 547, 787, 27, 70, "Text",
  CellTags->"GluonSelfEnergy",
  CellID->1505167912]
 }, Open  ]],
-Cell[15799, 577, 23, 0, 70, "FooterCell"]
+Cell[15800, 577, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

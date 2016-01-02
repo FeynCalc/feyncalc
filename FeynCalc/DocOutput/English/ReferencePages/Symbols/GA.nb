@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15525,        583]
+NotebookDataLength[     15535,        583]
 NotebookOptionsPosition[     10602,        416]
-NotebookOutlinePosition[     13850,        514]
-CellTagsIndexPosition[     13744,        508]
+NotebookOutlinePosition[     13860,        514]
+CellTagsIndexPosition[     13754,        508]
 WindowTitle->GA
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$73219], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$77953], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/GA", 
             ".html"]], None}]}]},
@@ -125,7 +125,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1231603674],
+ CellID->1912243656],
 
 Cell[CellGroupData[{
 
@@ -135,7 +135,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1592047911],
+ CellID->1727781996],
 
 Cell[CellGroupData[{
 
@@ -429,7 +429,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 5.915507}", 
+   "built" -> "{2016, 1, 2, 15, 12, 2.575446}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -442,7 +442,7 @@ transformed into DiracGamma[LorentzIndex[\\[Mu]]] by FeynCalcInternal \
     "GA", "type" -> "Symbol", "uri" -> "FeynCalc/ref/GA"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -451,7 +451,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -462,7 +462,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3829, 112, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1231603674]},
+   CellID->1912243656]},
  "GA"->{
   Cell[4463, 141, 119, 4, 27, "Input",
    CellTags->"GA",
@@ -479,7 +479,7 @@ CellTagsIndex->{
   Cell[6233, 222, 189, 6, 27, "Input",
    CellTags->"GA",
    CellID->872281918],
-  Cell[6425, 230, 270, 8, 36, "Output",
+  Cell[6425, 230, 270, 8, 49, "Output",
    CellTags->"GA",
    CellID->1671355959],
   Cell[6732, 243, 182, 6, 27, "Input",
@@ -491,7 +491,7 @@ CellTagsIndex->{
   Cell[7904, 296, 222, 7, 27, "Input",
    CellTags->"GA",
    CellID->1945449635],
-  Cell[8129, 305, 368, 11, 36, "Output",
+  Cell[8129, 305, 368, 11, 49, "Output",
    CellTags->"GA",
    CellID->390738149],
   Cell[8534, 321, 269, 9, 27, "Input",
@@ -507,8 +507,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12517, 461},
- {"GA", 12647, 465}
+ {"PrimaryExamplesSection", 12527, 461},
+ {"GA", 12657, 465}
  }
 *)
 (*NotebookFileOutline
@@ -522,10 +522,10 @@ Cell[2858, 78, 946, 30, 103, "Usage",
 Cell[CellGroupData[{
 Cell[3829, 112, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1231603674],
+ CellID->1912243656],
 Cell[CellGroupData[{
 Cell[4242, 131, 196, 6, 25, "ExampleSection",
- CellID->1592047911],
+ CellID->1727781996],
 Cell[CellGroupData[{
 Cell[4463, 141, 119, 4, 27, "Input",
  CellTags->"GA",
@@ -546,7 +546,7 @@ Cell[CellGroupData[{
 Cell[6233, 222, 189, 6, 27, "Input",
  CellTags->"GA",
  CellID->872281918],
-Cell[6425, 230, 270, 8, 36, "Output",
+Cell[6425, 230, 270, 8, 49, "Output",
  CellTags->"GA",
  CellID->1671355959]
 }, Open  ]],
@@ -562,7 +562,7 @@ Cell[CellGroupData[{
 Cell[7904, 296, 222, 7, 27, "Input",
  CellTags->"GA",
  CellID->1945449635],
-Cell[8129, 305, 368, 11, 36, "Output",
+Cell[8129, 305, 368, 11, 49, "Output",
  CellTags->"GA",
  CellID->390738149]
 }, Open  ]],
@@ -575,7 +575,7 @@ Cell[8806, 332, 870, 35, 43, "Output",
  CellID->1420363209]
 }, Open  ]]
 }, Open  ]],
-Cell[9703, 371, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9703, 371, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[9771, 376, 270, 12, 70, "SeeAlsoSection",

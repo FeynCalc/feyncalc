@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17296,        585]
+NotebookDataLength[     17303,        585]
 NotebookOptionsPosition[     12787,        451]
-NotebookOutlinePosition[     15988,        537]
-CellTagsIndexPosition[     15869,        531]
+NotebookOutlinePosition[     15995,        537]
+CellTagsIndexPosition[     15876,        531]
 WindowTitle->CalcColorFactor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ CalcColorFactor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20156], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22043], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CalcColorFactor", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1790511816],
+ CellID->559445284],
 
 Cell[TextData[{
  "Basic Examples",
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->665912056],
+ CellID->1567191296],
 
 Cell[CellGroupData[{
 
@@ -464,7 +464,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 24.036593}", 
+   "built" -> "{2016, 1, 2, 15, 6, 53.485968}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -480,7 +480,7 @@ False], Explicit -> True]].", "synonyms" -> {}, "title" -> "CalcColorFactor",
     "Symbol", "uri" -> "FeynCalc/ref/CalcColorFactor"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -489,7 +489,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -498,9 +498,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3700, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3700, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1790511816]},
+   CellID->559445284]},
  "CalcColorFactor"->{
   Cell[4311, 126, 91, 2, 35, "Subsubsection",
    CellTags->"CalcColorFactor",
@@ -530,8 +530,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14928, 499},
- {"CalcColorFactor", 15070, 503}
+ {"PrimaryExamplesSection", 14936, 499},
+ {"CalcColorFactor", 15077, 503}
  }
 *)
 (*NotebookFileOutline
@@ -543,11 +543,11 @@ Cell[2863, 75, 58, 1, 42, "ObjectName",
 Cell[2924, 78, 751, 17, 165, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3700, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3700, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1790511816],
-Cell[4091, 116, 195, 6, 25, "ExampleSection",
- CellID->665912056],
+ CellID->559445284],
+Cell[4090, 116, 196, 6, 25, "ExampleSection",
+ CellID->1567191296],
 Cell[CellGroupData[{
 Cell[4311, 126, 91, 2, 35, "Subsubsection",
  CellTags->"CalcColorFactor",

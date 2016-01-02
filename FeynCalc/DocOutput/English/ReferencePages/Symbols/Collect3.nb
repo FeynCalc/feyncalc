@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16599,        536]
+NotebookDataLength[     16606,        536]
 NotebookOptionsPosition[     12515,        410]
-NotebookOutlinePosition[     15434,        491]
-CellTagsIndexPosition[     15322,        485]
+NotebookOutlinePosition[     15441,        491]
+CellTagsIndexPosition[     15329,        485]
 WindowTitle->Collect3
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$25293], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26929], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Collect3", ".html"]], None}]}]},
@@ -130,7 +130,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1113668565],
+ CellID->602186379],
 
 Cell[CellGroupData[{
 
@@ -140,7 +140,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->259180469],
+ CellID->1647796881],
 
 Cell[CellGroupData[{
 
@@ -423,7 +423,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 52.397570}", 
+   "built" -> "{2016, 1, 2, 15, 7, 18.673543}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -437,7 +437,7 @@ applied function to the list of monomials mulitplied by their coefficients.",
     "windowtitle" -> "Collect3", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Collect3"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -446,7 +446,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -455,9 +455,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4076, 117, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4076, 117, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1113668565]},
+   CellID->602186379]},
  "Collect3"->{
   Cell[4709, 146, 134, 4, 27, "Input",
    CellTags->"Collect3",
@@ -484,8 +484,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14538, 456},
- {"Collect3", 14674, 460}
+ {"PrimaryExamplesSection", 14546, 456},
+ {"Collect3", 14681, 460}
  }
 *)
 (*NotebookFileOutline
@@ -497,12 +497,12 @@ Cell[2827, 75, 51, 1, 42, "ObjectName",
 Cell[2881, 78, 1170, 35, 114, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4076, 117, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4076, 117, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1113668565],
+ CellID->602186379],
 Cell[CellGroupData[{
-Cell[4489, 136, 195, 6, 25, "ExampleSection",
- CellID->259180469],
+Cell[4488, 136, 196, 6, 25, "ExampleSection",
+ CellID->1647796881],
 Cell[CellGroupData[{
 Cell[4709, 146, 134, 4, 27, "Input",
  CellTags->"Collect3",

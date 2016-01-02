@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6198,        189]
+NotebookDataLength[      6207,        189]
 NotebookOptionsPosition[      3914,        122]
-NotebookOutlinePosition[      5935,        178]
-CellTagsIndexPosition[      5862,        173]
+NotebookOutlinePosition[      5944,        178]
+CellTagsIndexPosition[      5871,        173]
 WindowTitle->ReduceGamma
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ReduceGamma.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120437], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$125584], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ReduceGamma", ".html"]], None}]}]},
@@ -135,7 +135,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 5, 14.889333}", 
+   "built" -> "{2016, 1, 2, 15, 16, 5.669791}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -147,7 +147,7 @@ and DiracMatrix[7] (i.e. all ChiralityProjector) are reduced to Gamma5.",
     "windowtitle" -> "ReduceGamma", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ReduceGamma"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -156,7 +156,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -172,7 +172,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ReduceGamma", 5749, 166}
+ {"ReduceGamma", 5758, 166}
  }
 *)
 (*NotebookFileOutline

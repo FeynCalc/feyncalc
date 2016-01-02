@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18732,        706]
-NotebookOptionsPosition[     12096,        479]
-NotebookOutlinePosition[     16107,        602]
-CellTagsIndexPosition[     15995,        596]
+NotebookDataLength[     18737,        706]
+NotebookOptionsPosition[     12094,        479]
+NotebookOutlinePosition[     16114,        602]
+CellTagsIndexPosition[     16002,        596]
 WindowTitle->SUNDelta
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$141479], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$146990], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SUNDelta", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1679750917],
+ CellID->220006378],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1549537355],
+ CellID->289785373],
 
 Cell[CellGroupData[{
 
@@ -492,7 +492,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 7, 15.361678}", 
+   "built" -> "{2016, 1, 2, 15, 17, 49.032026}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -503,7 +503,7 @@ b.", "synonyms" -> {}, "title" -> "SUNDelta", "titlemodifier" -> "",
     "windowtitle" -> "SUNDelta", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SUNDelta"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -512,7 +512,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -521,82 +521,82 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3398, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3398, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1679750917]},
+   CellID->220006378]},
  "SUNDelta"->{
-  Cell[4032, 127, 150, 5, 27, "Input",
+  Cell[4030, 127, 150, 5, 27, "Input",
    CellTags->"SUNDelta",
    CellID->582133429],
-  Cell[4185, 134, 331, 13, 40, "Output",
+  Cell[4183, 134, 331, 13, 40, "Output",
    CellTags->"SUNDelta",
    CellID->718384624],
-  Cell[4553, 152, 279, 9, 27, "Input",
+  Cell[4551, 152, 279, 9, 27, "Input",
    CellTags->"SUNDelta",
    CellID->223165993],
-  Cell[4835, 163, 408, 17, 36, "Output",
+  Cell[4833, 163, 408, 17, 36, "Output",
    CellTags->"SUNDelta",
    CellID->1779629564],
-  Cell[5280, 185, 223, 7, 27, "Input",
+  Cell[5278, 185, 223, 7, 27, "Input",
    CellTags->"SUNDelta",
    CellID->2091383946],
-  Cell[5506, 194, 407, 17, 40, "Output",
+  Cell[5504, 194, 407, 17, 40, "Output",
    CellTags->"SUNDelta",
    CellID->791346519],
-  Cell[5950, 216, 187, 6, 27, "Input",
+  Cell[5948, 216, 187, 6, 27, "Input",
    CellTags->"SUNDelta",
    CellID->2066302871],
-  Cell[6140, 224, 254, 8, 36, "Output",
+  Cell[6138, 224, 254, 8, 49, "Output",
    CellTags->"SUNDelta",
    CellID->1680727312],
-  Cell[6431, 237, 216, 8, 27, "Input",
+  Cell[6429, 237, 216, 8, 27, "Input",
    CellTags->"SUNDelta",
    CellID->76062746],
-  Cell[6650, 247, 326, 10, 36, "Output",
+  Cell[6648, 247, 326, 10, 49, "Output",
    CellTags->"SUNDelta",
    CellID->1303706973],
-  Cell[7013, 262, 247, 9, 27, "Input",
+  Cell[7011, 262, 247, 9, 27, "Input",
    CellTags->"SUNDelta",
    CellID->1106151471],
-  Cell[7263, 273, 247, 8, 36, "Output",
+  Cell[7261, 273, 247, 8, 49, "Output",
    CellTags->"SUNDelta",
    CellID->1065622125],
-  Cell[7547, 286, 211, 8, 27, "Input",
+  Cell[7545, 286, 211, 8, 27, "Input",
    CellTags->"SUNDelta",
    CellID->892399657],
-  Cell[7761, 296, 325, 10, 36, "Output",
+  Cell[7759, 296, 325, 10, 49, "Output",
    CellTags->"SUNDelta",
    CellID->708863202],
-  Cell[8101, 309, 277, 6, 72, "Text",
+  Cell[8099, 309, 277, 6, 72, "Text",
    CellTags->"SUNDelta",
    CellID->1535277851],
-  Cell[8403, 319, 331, 11, 27, "Input",
+  Cell[8401, 319, 331, 11, 27, "Input",
    CellTags->"SUNDelta",
    CellID->69005829],
-  Cell[8737, 332, 649, 28, 40, "Output",
+  Cell[8735, 332, 649, 28, 40, "Output",
    CellTags->"SUNDelta",
    CellID->1797928550],
-  Cell[9423, 365, 127, 4, 27, "Input",
+  Cell[9421, 365, 127, 4, 27, "Input",
    CellTags->"SUNDelta",
    CellID->965204507],
-  Cell[9553, 371, 500, 15, 54, "Output",
+  Cell[9551, 371, 500, 15, 67, "Output",
    CellTags->"SUNDelta",
    CellID->391311139],
-  Cell[10090, 391, 219, 8, 27, "Input",
+  Cell[10088, 391, 219, 8, 27, "Input",
    CellTags->"SUNDelta",
    CellID->1853160304],
-  Cell[10312, 401, 342, 10, 36, "Output",
+  Cell[10310, 401, 342, 10, 49, "Output",
    CellTags->"SUNDelta",
    CellID->432360453],
-  Cell[11022, 434, 1032, 40, 32, "Text",
+  Cell[11020, 434, 1032, 40, 32, "Text",
    CellTags->"SUNDelta",
    CellID->1124087961]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13891, 522},
- {"SUNDelta", 14026, 526}
+ {"PrimaryExamplesSection", 13899, 522},
+ {"SUNDelta", 14033, 526}
  }
 *)
 (*NotebookFileOutline
@@ -608,106 +608,106 @@ Cell[2828, 75, 51, 1, 42, "ObjectName",
 Cell[2882, 78, 491, 16, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3398, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3398, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1679750917],
+ CellID->220006378],
 Cell[CellGroupData[{
-Cell[3811, 117, 196, 6, 25, "ExampleSection",
- CellID->1549537355],
+Cell[3810, 117, 195, 6, 25, "ExampleSection",
+ CellID->289785373],
 Cell[CellGroupData[{
-Cell[4032, 127, 150, 5, 27, "Input",
+Cell[4030, 127, 150, 5, 27, "Input",
  CellTags->"SUNDelta",
  CellID->582133429],
-Cell[4185, 134, 331, 13, 40, "Output",
+Cell[4183, 134, 331, 13, 40, "Output",
  CellTags->"SUNDelta",
  CellID->718384624]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4553, 152, 279, 9, 27, "Input",
+Cell[4551, 152, 279, 9, 27, "Input",
  CellTags->"SUNDelta",
  CellID->223165993],
-Cell[4835, 163, 408, 17, 36, "Output",
+Cell[4833, 163, 408, 17, 36, "Output",
  CellTags->"SUNDelta",
  CellID->1779629564]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5280, 185, 223, 7, 27, "Input",
+Cell[5278, 185, 223, 7, 27, "Input",
  CellTags->"SUNDelta",
  CellID->2091383946],
-Cell[5506, 194, 407, 17, 40, "Output",
+Cell[5504, 194, 407, 17, 40, "Output",
  CellTags->"SUNDelta",
  CellID->791346519]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5950, 216, 187, 6, 27, "Input",
+Cell[5948, 216, 187, 6, 27, "Input",
  CellTags->"SUNDelta",
  CellID->2066302871],
-Cell[6140, 224, 254, 8, 36, "Output",
+Cell[6138, 224, 254, 8, 49, "Output",
  CellTags->"SUNDelta",
  CellID->1680727312]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6431, 237, 216, 8, 27, "Input",
+Cell[6429, 237, 216, 8, 27, "Input",
  CellTags->"SUNDelta",
  CellID->76062746],
-Cell[6650, 247, 326, 10, 36, "Output",
+Cell[6648, 247, 326, 10, 49, "Output",
  CellTags->"SUNDelta",
  CellID->1303706973]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7013, 262, 247, 9, 27, "Input",
+Cell[7011, 262, 247, 9, 27, "Input",
  CellTags->"SUNDelta",
  CellID->1106151471],
-Cell[7263, 273, 247, 8, 36, "Output",
+Cell[7261, 273, 247, 8, 49, "Output",
  CellTags->"SUNDelta",
  CellID->1065622125]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7547, 286, 211, 8, 27, "Input",
+Cell[7545, 286, 211, 8, 27, "Input",
  CellTags->"SUNDelta",
  CellID->892399657],
-Cell[7761, 296, 325, 10, 36, "Output",
+Cell[7759, 296, 325, 10, 49, "Output",
  CellTags->"SUNDelta",
  CellID->708863202]
 }, Open  ]],
-Cell[8101, 309, 277, 6, 72, "Text",
+Cell[8099, 309, 277, 6, 72, "Text",
  CellTags->"SUNDelta",
  CellID->1535277851],
 Cell[CellGroupData[{
-Cell[8403, 319, 331, 11, 27, "Input",
+Cell[8401, 319, 331, 11, 27, "Input",
  CellTags->"SUNDelta",
  CellID->69005829],
-Cell[8737, 332, 649, 28, 40, "Output",
+Cell[8735, 332, 649, 28, 40, "Output",
  CellTags->"SUNDelta",
  CellID->1797928550]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9423, 365, 127, 4, 27, "Input",
+Cell[9421, 365, 127, 4, 27, "Input",
  CellTags->"SUNDelta",
  CellID->965204507],
-Cell[9553, 371, 500, 15, 54, "Output",
+Cell[9551, 371, 500, 15, 67, "Output",
  CellTags->"SUNDelta",
  CellID->391311139]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10090, 391, 219, 8, 27, "Input",
+Cell[10088, 391, 219, 8, 27, "Input",
  CellTags->"SUNDelta",
  CellID->1853160304],
-Cell[10312, 401, 342, 10, 36, "Output",
+Cell[10310, 401, 342, 10, 49, "Output",
  CellTags->"SUNDelta",
  CellID->432360453]
 }, Open  ]]
 }, Open  ]],
-Cell[10681, 415, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10679, 415, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10749, 420, 270, 12, 31, "SeeAlsoSection",
+Cell[10747, 420, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11022, 434, 1032, 40, 32, "Text",
+Cell[11020, 434, 1032, 40, 32, "Text",
  CellTags->"SUNDelta",
  CellID->1124087961]
 }, Open  ]],
-Cell[12069, 477, 23, 0, 42, "FooterCell"]
+Cell[12067, 477, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

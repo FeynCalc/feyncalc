@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6230,        188]
+NotebookDataLength[      6241,        188]
 NotebookOptionsPosition[      3941,        122]
-NotebookOutlinePosition[      5957,        177]
-CellTagsIndexPosition[      5874,        172]
+NotebookOutlinePosition[      5968,        177]
+CellTagsIndexPosition[      5885,        172]
 WindowTitle->StandardMatrixElement
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ StandardMatrixElement.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139400], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$144911], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/StandardMatrixElement", ".html"]], None}]}]},
@@ -135,7 +135,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 7, 3.377167}", 
+   "built" -> "{2016, 1, 2, 15, 17, 40.418782}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -146,7 +146,7 @@ abbreviations.", "synonyms" -> {}, "title" -> "StandardMatrixElement",
     "titlemodifier" -> "", "windowtitle" -> "StandardMatrixElement", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/StandardMatrixElement"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -155,7 +155,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -171,7 +171,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"StandardMatrixElement", 5751, 165}
+ {"StandardMatrixElement", 5762, 165}
  }
 *)
 (*NotebookFileOutline

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9798,        329]
-NotebookOptionsPosition[      6143,        219]
-NotebookOutlinePosition[      8785,        292]
-CellTagsIndexPosition[      8663,        286]
+NotebookDataLength[      9805,        329]
+NotebookOptionsPosition[      6142,        219]
+NotebookOutlinePosition[      8793,        292]
+CellTagsIndexPosition[      8671,        286]
 WindowTitle->ExplicitLorentzIndex
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ExplicitLorentzIndex.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$50137], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52510], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ExplicitLorentzIndex", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->463348388],
+ CellID->951626803],
 
 Cell[CellGroupData[{
 
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1262496088],
+ CellID->812312776],
 
 Cell[CellGroupData[{
 
@@ -232,7 +232,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 2.285582}", 
+   "built" -> "{2016, 1, 2, 15, 9, 34.707940}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -244,7 +244,7 @@ integer.", "synonyms" -> {}, "title" -> "ExplicitLorentzIndex",
     "Symbol", "uri" -> "FeynCalc/ref/ExplicitLorentzIndex"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -253,7 +253,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -264,29 +264,29 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3390, 94, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->463348388]},
+   CellID->951626803]},
  "ExplicitLorentzIndex"->{
-  Cell[4023, 123, 242, 7, 27, "Input",
+  Cell[4022, 123, 242, 7, 27, "Input",
    CellTags->"ExplicitLorentzIndex",
    CellID->537373072],
-  Cell[4268, 132, 521, 22, 39, "Output",
+  Cell[4267, 132, 521, 22, 39, "Output",
    CellTags->"ExplicitLorentzIndex",
    CellID->1531481784],
-  Cell[4826, 159, 138, 4, 27, "Input",
+  Cell[4825, 159, 138, 4, 27, "Input",
    CellTags->"ExplicitLorentzIndex",
    CellID->93969146],
-  Cell[4967, 165, 353, 10, 36, "Output",
+  Cell[4966, 165, 353, 10, 49, "Output",
    CellTags->"ExplicitLorentzIndex",
    CellID->551395089],
-  Cell[5688, 198, 413, 16, 31, "Text",
+  Cell[5687, 198, 413, 16, 31, "Text",
    CellTags->"ExplicitLorentzIndex",
    CellID->617137688]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7994, 263},
- {"ExplicitLorentzIndex", 8140, 267}
+ {"PrimaryExamplesSection", 8002, 263},
+ {"ExplicitLorentzIndex", 8148, 267}
  }
 *)
 (*NotebookFileOutline
@@ -300,37 +300,37 @@ Cell[2954, 78, 411, 12, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3390, 94, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->463348388],
+ CellID->951626803],
 Cell[CellGroupData[{
-Cell[3802, 113, 196, 6, 25, "ExampleSection",
- CellID->1262496088],
+Cell[3802, 113, 195, 6, 25, "ExampleSection",
+ CellID->812312776],
 Cell[CellGroupData[{
-Cell[4023, 123, 242, 7, 27, "Input",
+Cell[4022, 123, 242, 7, 27, "Input",
  CellTags->"ExplicitLorentzIndex",
  CellID->537373072],
-Cell[4268, 132, 521, 22, 39, "Output",
+Cell[4267, 132, 521, 22, 39, "Output",
  CellTags->"ExplicitLorentzIndex",
  CellID->1531481784]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4826, 159, 138, 4, 27, "Input",
+Cell[4825, 159, 138, 4, 27, "Input",
  CellTags->"ExplicitLorentzIndex",
  CellID->93969146],
-Cell[4967, 165, 353, 10, 36, "Output",
+Cell[4966, 165, 353, 10, 49, "Output",
  CellTags->"ExplicitLorentzIndex",
  CellID->551395089]
 }, Open  ]]
 }, Open  ]],
-Cell[5347, 179, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5346, 179, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5415, 184, 270, 12, 31, "SeeAlsoSection",
+Cell[5414, 184, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5688, 198, 413, 16, 31, "Text",
+Cell[5687, 198, 413, 16, 31, "Text",
  CellTags->"ExplicitLorentzIndex",
  CellID->617137688]
 }, Open  ]],
-Cell[6116, 217, 23, 0, 42, "FooterCell"]
+Cell[6115, 217, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

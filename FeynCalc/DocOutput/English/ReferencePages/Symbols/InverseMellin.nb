@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     43916,       1644]
-NotebookOptionsPosition[     30661,       1201]
-NotebookOutlinePosition[     37994,       1421]
-CellTagsIndexPosition[     37875,       1415]
+NotebookDataLength[     43937,       1644]
+NotebookOptionsPosition[     30665,       1201]
+NotebookOutlinePosition[     38011,       1421]
+CellTagsIndexPosition[     37892,       1415]
 WindowTitle->InverseMellin
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ InverseMellin.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$87702], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$92896], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/InverseMellin", ".html"]], None}]}]},
@@ -119,7 +119,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2781356],
+ CellID->1912243656],
 
 Cell[CellGroupData[{
 
@@ -129,7 +129,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->122360564],
+ CellID->1727781996],
 
 Cell[CellGroupData[{
 
@@ -1214,7 +1214,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 2, 20.773062}", 
+   "built" -> "{2016, 1, 2, 15, 13, 22.350733}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1229,7 +1229,7 @@ Mellin transform involving SumT's; there is an unresolved inconsistency here \
     "Symbol", "uri" -> "FeynCalc/ref/InverseMellin"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1238,7 +1238,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1247,175 +1247,175 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3802, 106, 385, 15, 31, "PrimaryExamplesSection",
+  Cell[3802, 106, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2781356]},
+   CellID->1912243656]},
  "InverseMellin"->{
-  Cell[4432, 135, 188, 6, 27, "Input",
+  Cell[4436, 135, 188, 6, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1487905241],
-  Cell[4623, 143, 262, 9, 39, "Output",
+  Cell[4627, 143, 262, 9, 39, "Output",
    CellTags->"InverseMellin",
    CellID->883502595],
-  Cell[4922, 157, 239, 8, 27, "Input",
+  Cell[4926, 157, 239, 8, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1769575859],
-  Cell[5164, 167, 262, 9, 39, "Output",
+  Cell[5168, 167, 262, 9, 39, "Output",
    CellTags->"InverseMellin",
    CellID->886851930],
-  Cell[5463, 181, 160, 5, 27, "Input",
+  Cell[5467, 181, 160, 5, 27, "Input",
    CellTags->"InverseMellin",
    CellID->795107064],
-  Cell[5626, 188, 385, 14, 39, "Output",
+  Cell[5630, 188, 385, 14, 39, "Output",
    CellTags->"InverseMellin",
    CellID->933445894],
-  Cell[6048, 207, 213, 7, 27, "Input",
+  Cell[6052, 207, 213, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1138973234],
-  Cell[6264, 216, 399, 15, 62, "Output",
+  Cell[6268, 216, 399, 15, 62, "Output",
    CellTags->"InverseMellin",
    CellID->321524707],
-  Cell[6700, 236, 212, 7, 27, "Input",
+  Cell[6704, 236, 212, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->634260831],
-  Cell[6915, 245, 466, 17, 39, "Output",
+  Cell[6919, 245, 466, 17, 39, "Output",
    CellTags->"InverseMellin",
    CellID->306464887],
-  Cell[7418, 267, 221, 8, 27, "Input",
+  Cell[7422, 267, 221, 8, 27, "Input",
    CellTags->"InverseMellin",
    CellID->323775439],
-  Cell[7642, 277, 466, 17, 40, "Output",
+  Cell[7646, 277, 466, 17, 40, "Output",
    CellTags->"InverseMellin",
    CellID->908783993],
-  Cell[8123, 297, 133, 4, 32, "Text",
+  Cell[8127, 297, 133, 4, 32, "Text",
    CellTags->"InverseMellin",
    CellID->823482436],
-  Cell[8281, 305, 312, 10, 27, "Input",
+  Cell[8285, 305, 312, 10, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1105681850],
-  Cell[8596, 317, 235, 8, 62, "Output",
+  Cell[8600, 317, 235, 8, 62, "Output",
    CellTags->"InverseMellin",
    CellID->575593932],
-  Cell[8846, 328, 138, 4, 31, "Text",
+  Cell[8850, 328, 138, 4, 31, "Text",
    CellTags->"InverseMellin",
    CellID->1975947579],
-  Cell[8987, 334, 3149, 101, 233, "Input",
+  Cell[8991, 334, 3149, 101, 233, "Input",
    CellTags->"InverseMellin",
    CellID->988000997],
-  Cell[12139, 437, 261, 8, 29, "Input",
+  Cell[12143, 437, 261, 8, 29, "Input",
    CellTags->"InverseMellin",
    CellID->478330132],
-  Cell[12425, 449, 198, 7, 27, "Input",
+  Cell[12429, 449, 198, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1863843750],
-  Cell[12626, 458, 504, 18, 64, "Output",
+  Cell[12630, 458, 504, 18, 64, "Output",
    CellTags->"InverseMellin",
    CellID->808010767],
-  Cell[13167, 481, 198, 7, 27, "Input",
+  Cell[13171, 481, 198, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1662530554],
-  Cell[13368, 490, 463, 16, 64, "Output",
+  Cell[13372, 490, 463, 16, 64, "Output",
    CellTags->"InverseMellin",
    CellID->1524372587],
-  Cell[13868, 511, 191, 6, 27, "Input",
+  Cell[13872, 511, 191, 6, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1349819643],
-  Cell[14062, 519, 833, 29, 65, "Output",
+  Cell[14066, 519, 833, 29, 65, "Output",
    CellTags->"InverseMellin",
    CellID->1429383971],
-  Cell[14910, 551, 99, 3, 27, "Input",
+  Cell[14914, 551, 99, 3, 27, "Input",
    CellTags->"InverseMellin",
    CellID->558376463],
-  Cell[15034, 558, 210, 7, 27, "Input",
+  Cell[15038, 558, 210, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->209318413],
-  Cell[15247, 567, 635, 24, 65, "Output",
+  Cell[15251, 567, 635, 24, 65, "Output",
    CellTags->"InverseMellin",
    CellID->412047871],
-  Cell[15919, 596, 288, 10, 27, "Input",
+  Cell[15923, 596, 288, 10, 27, "Input",
    CellTags->"InverseMellin",
    CellID->108977754],
-  Cell[16210, 608, 608, 22, 63, "Output",
+  Cell[16214, 608, 608, 22, 63, "Output",
    CellTags->"InverseMellin",
    CellID->416733591],
-  Cell[16855, 635, 289, 10, 27, "Input",
+  Cell[16859, 635, 289, 10, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1588128285],
-  Cell[17147, 647, 802, 29, 63, "Output",
+  Cell[17151, 647, 802, 29, 63, "Output",
    CellTags->"InverseMellin",
    CellID->1157098436],
-  Cell[17986, 681, 286, 10, 27, "Input",
+  Cell[17990, 681, 286, 10, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1038982726],
-  Cell[18275, 693, 799, 29, 65, "Output",
+  Cell[18279, 693, 799, 29, 65, "Output",
    CellTags->"InverseMellin",
    CellID->408982504],
-  Cell[19111, 727, 265, 10, 27, "Input",
+  Cell[19115, 727, 265, 10, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1975519554],
-  Cell[19379, 739, 656, 24, 63, "Output",
+  Cell[19383, 739, 656, 24, 63, "Output",
    CellTags->"InverseMellin",
    CellID->2023526209],
-  Cell[20072, 768, 293, 11, 27, "Input",
+  Cell[20076, 768, 293, 11, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1312317430],
-  Cell[20368, 781, 1021, 35, 69, "Output",
+  Cell[20372, 781, 1021, 35, 69, "Output",
    CellTags->"InverseMellin",
    CellID->1387073931],
-  Cell[21426, 821, 211, 7, 27, "Input",
+  Cell[21430, 821, 211, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1086751012],
-  Cell[21640, 830, 806, 29, 66, "Output",
+  Cell[21644, 830, 806, 29, 66, "Output",
    CellTags->"InverseMellin",
    CellID->229974260],
-  Cell[22483, 864, 239, 8, 27, "Input",
+  Cell[22487, 864, 239, 8, 27, "Input",
    CellTags->"InverseMellin",
    CellID->410476681],
-  Cell[22725, 874, 794, 28, 65, "Output",
+  Cell[22729, 874, 794, 28, 65, "Output",
    CellTags->"InverseMellin",
    CellID->1435522619],
-  Cell[23556, 907, 211, 7, 27, "Input",
+  Cell[23560, 907, 211, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1961481381],
-  Cell[23770, 916, 900, 33, 70, "Output",
+  Cell[23774, 916, 900, 33, 70, "Output",
    CellTags->"InverseMellin",
    CellID->1258335869],
-  Cell[24707, 954, 220, 7, 27, "Input",
+  Cell[24711, 954, 220, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->617286063],
-  Cell[24930, 963, 651, 24, 66, "Output",
+  Cell[24934, 963, 651, 24, 66, "Output",
    CellTags->"InverseMellin",
    CellID->1509334069],
-  Cell[25618, 992, 242, 8, 27, "Input",
+  Cell[25622, 992, 242, 8, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1098001734],
-  Cell[25863, 1002, 1038, 37, 67, "Output",
+  Cell[25867, 1002, 1038, 37, 67, "Output",
    CellTags->"InverseMellin",
    CellID->1548339288],
-  Cell[26938, 1044, 242, 8, 27, "Input",
+  Cell[26942, 1044, 242, 8, 27, "Input",
    CellTags->"InverseMellin",
    CellID->1981996384],
-  Cell[27183, 1054, 1027, 37, 67, "Output",
+  Cell[27187, 1054, 1027, 37, 67, "Output",
    CellTags->"InverseMellin",
    CellID->422280001],
-  Cell[28247, 1096, 230, 7, 27, "Input",
+  Cell[28251, 1096, 230, 7, 27, "Input",
    CellTags->"InverseMellin",
    CellID->371125491],
-  Cell[28480, 1105, 739, 27, 70, "Output",
+  Cell[28484, 1105, 739, 27, 70, "Output",
    CellTags->"InverseMellin",
    CellID->1490949014],
-  Cell[29234, 1135, 176, 6, 27, "Input",
+  Cell[29238, 1135, 176, 6, 27, "Input",
    CellTags->"InverseMellin",
    CellID->941829466],
-  Cell[29766, 1163, 853, 33, 32, "Text",
+  Cell[29770, 1163, 853, 33, 32, "Text",
    CellTags->"InverseMellin",
    CellID->344948900]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 32715, 1248},
- {"InverseMellin", 32853, 1252}
+ {"PrimaryExamplesSection", 32729, 1248},
+ {"InverseMellin", 32870, 1252}
  }
 *)
 (*NotebookFileOutline
@@ -1427,225 +1427,225 @@ Cell[2853, 75, 56, 1, 42, "ObjectName",
 Cell[2912, 78, 865, 24, 116, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3802, 106, 385, 15, 31, "PrimaryExamplesSection",
+Cell[3802, 106, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2781356],
+ CellID->1912243656],
 Cell[CellGroupData[{
-Cell[4212, 125, 195, 6, 25, "ExampleSection",
- CellID->122360564],
+Cell[4215, 125, 196, 6, 25, "ExampleSection",
+ CellID->1727781996],
 Cell[CellGroupData[{
-Cell[4432, 135, 188, 6, 27, "Input",
+Cell[4436, 135, 188, 6, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1487905241],
-Cell[4623, 143, 262, 9, 39, "Output",
+Cell[4627, 143, 262, 9, 39, "Output",
  CellTags->"InverseMellin",
  CellID->883502595]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4922, 157, 239, 8, 27, "Input",
+Cell[4926, 157, 239, 8, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1769575859],
-Cell[5164, 167, 262, 9, 39, "Output",
+Cell[5168, 167, 262, 9, 39, "Output",
  CellTags->"InverseMellin",
  CellID->886851930]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5463, 181, 160, 5, 27, "Input",
+Cell[5467, 181, 160, 5, 27, "Input",
  CellTags->"InverseMellin",
  CellID->795107064],
-Cell[5626, 188, 385, 14, 39, "Output",
+Cell[5630, 188, 385, 14, 39, "Output",
  CellTags->"InverseMellin",
  CellID->933445894]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6048, 207, 213, 7, 27, "Input",
+Cell[6052, 207, 213, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1138973234],
-Cell[6264, 216, 399, 15, 62, "Output",
+Cell[6268, 216, 399, 15, 62, "Output",
  CellTags->"InverseMellin",
  CellID->321524707]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6700, 236, 212, 7, 27, "Input",
+Cell[6704, 236, 212, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->634260831],
-Cell[6915, 245, 466, 17, 39, "Output",
+Cell[6919, 245, 466, 17, 39, "Output",
  CellTags->"InverseMellin",
  CellID->306464887]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7418, 267, 221, 8, 27, "Input",
+Cell[7422, 267, 221, 8, 27, "Input",
  CellTags->"InverseMellin",
  CellID->323775439],
-Cell[7642, 277, 466, 17, 40, "Output",
+Cell[7646, 277, 466, 17, 40, "Output",
  CellTags->"InverseMellin",
  CellID->908783993]
 }, Open  ]],
-Cell[8123, 297, 133, 4, 32, "Text",
+Cell[8127, 297, 133, 4, 32, "Text",
  CellTags->"InverseMellin",
  CellID->823482436],
 Cell[CellGroupData[{
-Cell[8281, 305, 312, 10, 27, "Input",
+Cell[8285, 305, 312, 10, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1105681850],
-Cell[8596, 317, 235, 8, 62, "Output",
+Cell[8600, 317, 235, 8, 62, "Output",
  CellTags->"InverseMellin",
  CellID->575593932]
 }, Open  ]],
-Cell[8846, 328, 138, 4, 31, "Text",
+Cell[8850, 328, 138, 4, 31, "Text",
  CellTags->"InverseMellin",
  CellID->1975947579],
-Cell[8987, 334, 3149, 101, 233, "Input",
+Cell[8991, 334, 3149, 101, 233, "Input",
  CellTags->"InverseMellin",
  CellID->988000997],
-Cell[12139, 437, 261, 8, 29, "Input",
+Cell[12143, 437, 261, 8, 29, "Input",
  CellTags->"InverseMellin",
  CellID->478330132],
 Cell[CellGroupData[{
-Cell[12425, 449, 198, 7, 27, "Input",
+Cell[12429, 449, 198, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1863843750],
-Cell[12626, 458, 504, 18, 64, "Output",
+Cell[12630, 458, 504, 18, 64, "Output",
  CellTags->"InverseMellin",
  CellID->808010767]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13167, 481, 198, 7, 27, "Input",
+Cell[13171, 481, 198, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1662530554],
-Cell[13368, 490, 463, 16, 64, "Output",
+Cell[13372, 490, 463, 16, 64, "Output",
  CellTags->"InverseMellin",
  CellID->1524372587]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13868, 511, 191, 6, 27, "Input",
+Cell[13872, 511, 191, 6, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1349819643],
-Cell[14062, 519, 833, 29, 65, "Output",
+Cell[14066, 519, 833, 29, 65, "Output",
  CellTags->"InverseMellin",
  CellID->1429383971]
 }, Open  ]],
-Cell[14910, 551, 99, 3, 27, "Input",
+Cell[14914, 551, 99, 3, 27, "Input",
  CellTags->"InverseMellin",
  CellID->558376463],
 Cell[CellGroupData[{
-Cell[15034, 558, 210, 7, 27, "Input",
+Cell[15038, 558, 210, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->209318413],
-Cell[15247, 567, 635, 24, 65, "Output",
+Cell[15251, 567, 635, 24, 65, "Output",
  CellTags->"InverseMellin",
  CellID->412047871]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15919, 596, 288, 10, 27, "Input",
+Cell[15923, 596, 288, 10, 27, "Input",
  CellTags->"InverseMellin",
  CellID->108977754],
-Cell[16210, 608, 608, 22, 63, "Output",
+Cell[16214, 608, 608, 22, 63, "Output",
  CellTags->"InverseMellin",
  CellID->416733591]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16855, 635, 289, 10, 27, "Input",
+Cell[16859, 635, 289, 10, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1588128285],
-Cell[17147, 647, 802, 29, 63, "Output",
+Cell[17151, 647, 802, 29, 63, "Output",
  CellTags->"InverseMellin",
  CellID->1157098436]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17986, 681, 286, 10, 27, "Input",
+Cell[17990, 681, 286, 10, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1038982726],
-Cell[18275, 693, 799, 29, 65, "Output",
+Cell[18279, 693, 799, 29, 65, "Output",
  CellTags->"InverseMellin",
  CellID->408982504]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19111, 727, 265, 10, 27, "Input",
+Cell[19115, 727, 265, 10, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1975519554],
-Cell[19379, 739, 656, 24, 63, "Output",
+Cell[19383, 739, 656, 24, 63, "Output",
  CellTags->"InverseMellin",
  CellID->2023526209]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20072, 768, 293, 11, 27, "Input",
+Cell[20076, 768, 293, 11, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1312317430],
-Cell[20368, 781, 1021, 35, 69, "Output",
+Cell[20372, 781, 1021, 35, 69, "Output",
  CellTags->"InverseMellin",
  CellID->1387073931]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21426, 821, 211, 7, 27, "Input",
+Cell[21430, 821, 211, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1086751012],
-Cell[21640, 830, 806, 29, 66, "Output",
+Cell[21644, 830, 806, 29, 66, "Output",
  CellTags->"InverseMellin",
  CellID->229974260]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22483, 864, 239, 8, 27, "Input",
+Cell[22487, 864, 239, 8, 27, "Input",
  CellTags->"InverseMellin",
  CellID->410476681],
-Cell[22725, 874, 794, 28, 65, "Output",
+Cell[22729, 874, 794, 28, 65, "Output",
  CellTags->"InverseMellin",
  CellID->1435522619]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23556, 907, 211, 7, 27, "Input",
+Cell[23560, 907, 211, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1961481381],
-Cell[23770, 916, 900, 33, 70, "Output",
+Cell[23774, 916, 900, 33, 70, "Output",
  CellTags->"InverseMellin",
  CellID->1258335869]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24707, 954, 220, 7, 27, "Input",
+Cell[24711, 954, 220, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->617286063],
-Cell[24930, 963, 651, 24, 66, "Output",
+Cell[24934, 963, 651, 24, 66, "Output",
  CellTags->"InverseMellin",
  CellID->1509334069]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25618, 992, 242, 8, 27, "Input",
+Cell[25622, 992, 242, 8, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1098001734],
-Cell[25863, 1002, 1038, 37, 67, "Output",
+Cell[25867, 1002, 1038, 37, 67, "Output",
  CellTags->"InverseMellin",
  CellID->1548339288]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26938, 1044, 242, 8, 27, "Input",
+Cell[26942, 1044, 242, 8, 27, "Input",
  CellTags->"InverseMellin",
  CellID->1981996384],
-Cell[27183, 1054, 1027, 37, 67, "Output",
+Cell[27187, 1054, 1027, 37, 67, "Output",
  CellTags->"InverseMellin",
  CellID->422280001]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28247, 1096, 230, 7, 27, "Input",
+Cell[28251, 1096, 230, 7, 27, "Input",
  CellTags->"InverseMellin",
  CellID->371125491],
-Cell[28480, 1105, 739, 27, 70, "Output",
+Cell[28484, 1105, 739, 27, 70, "Output",
  CellTags->"InverseMellin",
  CellID->1490949014]
 }, Open  ]],
-Cell[29234, 1135, 176, 6, 27, "Input",
+Cell[29238, 1135, 176, 6, 27, "Input",
  CellTags->"InverseMellin",
  CellID->941829466]
 }, Open  ]],
-Cell[29425, 1144, 31, 0, 29, "SectionFooterSpacer"]
+Cell[29429, 1144, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29493, 1149, 270, 12, 31, "SeeAlsoSection",
+Cell[29497, 1149, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[29766, 1163, 853, 33, 32, "Text",
+Cell[29770, 1163, 853, 33, 32, "Text",
  CellTags->"InverseMellin",
  CellID->344948900]
 }, Open  ]],
-Cell[30634, 1199, 23, 0, 42, "FooterCell"]
+Cell[30638, 1199, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

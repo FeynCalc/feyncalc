@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18798,        653]
-NotebookOptionsPosition[     14376,        523]
-NotebookOutlinePosition[     17585,        608]
-CellTagsIndexPosition[     17466,        602]
+NotebookDataLength[     18815,        653]
+NotebookOptionsPosition[     14383,        523]
+NotebookOutlinePosition[     17601,        608]
+CellTagsIndexPosition[     17482,        602]
 WindowTitle->FieldDerivative
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FieldDerivative.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63869], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68143], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FieldDerivative", ".html"]], None}]}]},
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1836375958],
+ CellID->1131719452],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->372290561],
+ CellID->2004621375],
 
 Cell[CellGroupData[{
 
@@ -502,10 +502,10 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- StyleBox[ButtonBox["PartialD",
+ StyleBox[ButtonBox["FCPartialD",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/PartialD",
-  ButtonNote->"PartialD"],
+  ButtonData->"paclet:FeynCalc/ref/FCPartialD",
+  ButtonNote->"FCPartialD"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["ExpandPartialD",
@@ -536,7 +536,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 14.944932}", 
+   "built" -> "{2016, 1, 2, 15, 11, 1.879814}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -554,7 +554,7 @@ must be specified.", "synonyms" -> {}, "title" -> "FieldDerivative",
     "Symbol", "uri" -> "FeynCalc/ref/FieldDerivative"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -563,7 +563,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -574,35 +574,35 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3865, 103, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1836375958]},
+   CellID->1131719452]},
  "FieldDerivative"->{
-  Cell[4498, 132, 639, 20, 45, "Input",
+  Cell[4499, 132, 639, 20, 45, "Input",
    CellTags->"FieldDerivative",
    CellID->1922686463],
-  Cell[5140, 154, 796, 32, 39, "Output",
+  Cell[5141, 154, 796, 32, 39, "Output",
    CellTags->"FieldDerivative",
    CellID->841917756],
-  Cell[5973, 191, 236, 7, 27, "Input",
+  Cell[5974, 191, 236, 7, 27, "Input",
    CellTags->"FieldDerivative",
    CellID->626008050],
-  Cell[6212, 200, 2037, 78, 40, "Output",
+  Cell[6213, 200, 2037, 78, 40, "Output",
    CellTags->"FieldDerivative",
    CellID->1663127681],
-  Cell[8286, 283, 237, 7, 27, "Input",
+  Cell[8287, 283, 237, 7, 27, "Input",
    CellTags->"FieldDerivative",
    CellID->1996069937],
-  Cell[8526, 292, 5028, 188, 63, "Output",
+  Cell[8527, 292, 5028, 188, 63, "Output",
    CellTags->"FieldDerivative",
    CellID->785636748],
-  Cell[13922, 503, 412, 15, 32, "Text",
+  Cell[13923, 503, 418, 15, 32, "Text",
    CellTags->"FieldDerivative",
    CellID->1023535536]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16626, 573},
- {"FieldDerivative", 16769, 577}
+ {"PrimaryExamplesSection", 16642, 573},
+ {"FieldDerivative", 16785, 577}
  }
 *)
 (*NotebookFileOutline
@@ -616,45 +616,45 @@ Cell[2924, 78, 916, 21, 146, "Usage",
 Cell[CellGroupData[{
 Cell[3865, 103, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1836375958],
+ CellID->1131719452],
 Cell[CellGroupData[{
-Cell[4278, 122, 195, 6, 25, "ExampleSection",
- CellID->372290561],
+Cell[4278, 122, 196, 6, 25, "ExampleSection",
+ CellID->2004621375],
 Cell[CellGroupData[{
-Cell[4498, 132, 639, 20, 45, "Input",
+Cell[4499, 132, 639, 20, 45, "Input",
  CellTags->"FieldDerivative",
  CellID->1922686463],
-Cell[5140, 154, 796, 32, 39, "Output",
+Cell[5141, 154, 796, 32, 39, "Output",
  CellTags->"FieldDerivative",
  CellID->841917756]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5973, 191, 236, 7, 27, "Input",
+Cell[5974, 191, 236, 7, 27, "Input",
  CellTags->"FieldDerivative",
  CellID->626008050],
-Cell[6212, 200, 2037, 78, 40, "Output",
+Cell[6213, 200, 2037, 78, 40, "Output",
  CellTags->"FieldDerivative",
  CellID->1663127681]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8286, 283, 237, 7, 27, "Input",
+Cell[8287, 283, 237, 7, 27, "Input",
  CellTags->"FieldDerivative",
  CellID->1996069937],
-Cell[8526, 292, 5028, 188, 63, "Output",
+Cell[8527, 292, 5028, 188, 63, "Output",
  CellTags->"FieldDerivative",
  CellID->785636748]
 }, Open  ]]
 }, Open  ]],
-Cell[13581, 484, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13582, 484, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13649, 489, 270, 12, 31, "SeeAlsoSection",
+Cell[13650, 489, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13922, 503, 412, 15, 32, "Text",
+Cell[13923, 503, 418, 15, 32, "Text",
  CellTags->"FieldDerivative",
  CellID->1023535536]
 }, Open  ]],
-Cell[14349, 521, 23, 0, 42, "FooterCell"]
+Cell[14356, 521, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

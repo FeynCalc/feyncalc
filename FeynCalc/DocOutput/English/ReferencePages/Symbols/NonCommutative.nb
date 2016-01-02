@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6346,        194]
+NotebookDataLength[      6356,        194]
 NotebookOptionsPosition[      4089,        128]
-NotebookOutlinePosition[      6079,        183]
-CellTagsIndexPosition[      6003,        178]
+NotebookOutlinePosition[      6089,        183]
+CellTagsIndexPosition[      6013,        178]
 WindowTitle->NonCommutative
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ NonCommutative.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100529], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$105903], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/NonCommutative", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 3, 28.638434}", 
+   "built" -> "{2016, 1, 2, 15, 14, 26.562138}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -152,7 +152,7 @@ NonCommutative] = True.", "synonyms" -> {}, "title" -> "NonCommutative",
     "titlemodifier" -> "", "windowtitle" -> "NonCommutative", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/NonCommutative"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -161,7 +161,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -177,7 +177,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"NonCommutative", 5886, 171}
+ {"NonCommutative", 5896, 171}
  }
 *)
 (*NotebookFileOutline

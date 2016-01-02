@@ -1,0 +1,430 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12188,        420]
+NotebookOptionsPosition[      7444,        276]
+NotebookOutlinePosition[     10628,        364]
+CellTagsIndexPosition[     10505,        358]
+WindowTitle->FCClearScalarProducts[]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/FCClearScalarProducts\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/FCClearScalarProducts"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCClearScalarProducts.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$57823], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/FCClearScalarProducts", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["FCClearScalarProducts[]", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCClearScalarProducts", "[", "]"}]], "InlineFormula"],
+     " \[LineSeparator]removes all user-performed specific settings for \
+ScalarProduct's."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1776549739],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->279009291],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ScalarProduct", "[", 
+   RowBox[{"p", ",", "p"}], "]"}], "=", 
+  RowBox[{"m", "^", "2"}]}]], "Input",
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"In[1]:=",
+ CellID->1785698530],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["m", "2"], TraditionalForm]], "Output",
+ ImageSize->{26, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"Out[1]=",
+ CellID->29501459]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", "p", "]"}], ",", 
+   RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"In[2]:=",
+ CellID->1559478391],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["m", "2"], TraditionalForm]], "Output",
+ ImageSize->{26, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"Out[2]=",
+ CellID->988927941]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"FCClearScalarProducts", "[", "]"}]], "Input",
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"In[3]:=",
+ CellID->368473440],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", "p", "]"}], ",", 
+   RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Input",
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"In[4]:=",
+ CellID->1776453168],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], "2"], TraditionalForm]], "Output",
+ ImageSize->{23, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"Out[4]=",
+ CellID->975498131]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ScalarProduct", "[", 
+  RowBox[{"p", ",", "p"}], "]"}]], "Input",
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"In[5]:=",
+ CellID->1861458856],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], "2"], TraditionalForm]], "Output",
+ ImageSize->{23, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"FCClearScalarProducts",
+ CellLabel->"Out[5]=",
+ CellID->1717895412]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ "See also: ",
+ StyleBox[ButtonBox["ScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScalarProduct",
+  ButtonNote->"ScalarProduct"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Pair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Pair",
+  ButtonNote->"Pair"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SP",
+  ButtonNote->"SP"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["SPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SPD",
+  ButtonNote->"SPD"],
+  FontFamily->"Verdana"],
+ "."
+}], "Text",
+ CellTags->"FCClearScalarProducts",
+ CellID->958310312]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCClearScalarProducts[]",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
+  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2016, 1, 2, 15, 10, 2.957291}", 
+    "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCClearScalarProducts[] removes all user-performed specific settings for \
+ScalarProduct's.", "synonyms" -> {}, "title" -> "FCClearScalarProducts[]", 
+    "titlemodifier" -> "", "windowtitle" -> "FCClearScalarProducts[]", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/FCClearScalarProducts"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3398, 94, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1776549739]},
+ "FCClearScalarProducts"->{
+  Cell[4031, 123, 216, 7, 27, "Input",
+   CellTags->"FCClearScalarProducts",
+   CellID->1785698530],
+  Cell[4250, 132, 245, 8, 39, "Output",
+   CellTags->"FCClearScalarProducts",
+   CellID->29501459],
+  Cell[4532, 145, 232, 7, 27, "Input",
+   CellTags->"FCClearScalarProducts",
+   CellID->1559478391],
+  Cell[4767, 154, 246, 8, 39, "Output",
+   CellTags->"FCClearScalarProducts",
+   CellID->988927941],
+  Cell[5028, 165, 148, 4, 27, "Input",
+   CellTags->"FCClearScalarProducts",
+   CellID->368473440],
+  Cell[5201, 173, 232, 7, 27, "Input",
+   CellTags->"FCClearScalarProducts",
+   CellID->1776453168],
+  Cell[5436, 182, 343, 13, 41, "Output",
+   CellTags->"FCClearScalarProducts",
+   CellID->975498131],
+  Cell[5816, 200, 169, 5, 27, "Input",
+   CellTags->"FCClearScalarProducts",
+   CellID->1861458856],
+  Cell[5988, 207, 344, 13, 41, "Output",
+   CellTags->"FCClearScalarProducts",
+   CellID->1717895412],
+  Cell[6700, 243, 702, 28, 31, "Text",
+   CellTags->"FCClearScalarProducts",
+   CellID->958310312]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 9323, 320},
+ {"FCClearScalarProducts", 9471, 324}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[595, 21, 2297, 52, 51, "AnchorBarGrid",
+ CellID->1],
+Cell[2895, 75, 66, 1, 42, "ObjectName",
+ CellID->1224892054],
+Cell[2964, 78, 409, 12, 82, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3398, 94, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1776549739],
+Cell[CellGroupData[{
+Cell[3811, 113, 195, 6, 25, "ExampleSection",
+ CellID->279009291],
+Cell[CellGroupData[{
+Cell[4031, 123, 216, 7, 27, "Input",
+ CellTags->"FCClearScalarProducts",
+ CellID->1785698530],
+Cell[4250, 132, 245, 8, 39, "Output",
+ CellTags->"FCClearScalarProducts",
+ CellID->29501459]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4532, 145, 232, 7, 27, "Input",
+ CellTags->"FCClearScalarProducts",
+ CellID->1559478391],
+Cell[4767, 154, 246, 8, 39, "Output",
+ CellTags->"FCClearScalarProducts",
+ CellID->988927941]
+}, Open  ]],
+Cell[5028, 165, 148, 4, 27, "Input",
+ CellTags->"FCClearScalarProducts",
+ CellID->368473440],
+Cell[CellGroupData[{
+Cell[5201, 173, 232, 7, 27, "Input",
+ CellTags->"FCClearScalarProducts",
+ CellID->1776453168],
+Cell[5436, 182, 343, 13, 41, "Output",
+ CellTags->"FCClearScalarProducts",
+ CellID->975498131]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5816, 200, 169, 5, 27, "Input",
+ CellTags->"FCClearScalarProducts",
+ CellID->1861458856],
+Cell[5988, 207, 344, 13, 41, "Output",
+ CellTags->"FCClearScalarProducts",
+ CellID->1717895412]
+}, Open  ]]
+}, Open  ]],
+Cell[6359, 224, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6427, 229, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6700, 243, 702, 28, 31, "Text",
+ CellTags->"FCClearScalarProducts",
+ CellID->958310312]
+}, Open  ]],
+Cell[7417, 274, 23, 0, 42, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

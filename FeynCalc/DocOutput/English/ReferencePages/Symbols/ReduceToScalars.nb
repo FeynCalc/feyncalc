@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6444,        195]
+NotebookDataLength[      6453,        195]
 NotebookOptionsPosition[      4118,        128]
-NotebookOutlinePosition[      6175,        184]
-CellTagsIndexPosition[      6098,        179]
+NotebookOutlinePosition[      6184,        184]
+CellTagsIndexPosition[      6107,        179]
 WindowTitle->ReduceToScalars
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ReduceToScalars.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120782], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$125929], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ReduceToScalars", ".html"]], None}]}]},
@@ -141,7 +141,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 5, 16.519821}", 
+   "built" -> "{2016, 1, 2, 15, 16, 7.083517}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -153,7 +153,7 @@ integrals.", "synonyms" -> {}, "title" -> "ReduceToScalars", "titlemodifier" ->
     "", "windowtitle" -> "ReduceToScalars", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ReduceToScalars"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -162,7 +162,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -178,7 +178,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ReduceToScalars", 5979, 172}
+ {"ReduceToScalars", 5988, 172}
  }
 *)
 (*NotebookFileOutline

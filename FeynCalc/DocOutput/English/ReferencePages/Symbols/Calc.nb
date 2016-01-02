@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18250,        704]
+NotebookDataLength[     18259,        704]
 NotebookOptionsPosition[     12794,        520]
-NotebookOutlinePosition[     16305,        626]
-CellTagsIndexPosition[     16197,        620]
+NotebookOutlinePosition[     16314,        626]
+CellTagsIndexPosition[     16206,        620]
 WindowTitle->Calc
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$20493], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22380], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Calc", 
             ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->543612860],
+ CellID->1564216896],
 
 Cell[TextData[{
  "Basic Examples",
@@ -117,7 +117,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1390801157],
+ CellID->837535436],
 
 Cell[CellGroupData[{
 
@@ -533,7 +533,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 25.973821}", 
+   "built" -> "{2016, 1, 2, 15, 6, 55.061947}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -545,7 +545,7 @@ Trick[exp], Explicit->False] ]]]]].", "synonyms" -> {}, "title" -> "Calc",
     "titlemodifier" -> "", "windowtitle" -> "Calc", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Calc"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -554,7 +554,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -563,9 +563,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3403, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3403, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->543612860]},
+   CellID->1564216896]},
  "Calc"->{
   Cell[4014, 123, 81, 2, 35, "Subsubsection",
    CellTags->"Calc",
@@ -619,8 +619,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14681, 564},
- {"Calc", 14811, 568}
+ {"PrimaryExamplesSection", 14689, 564},
+ {"Calc", 14820, 568}
  }
 *)
 (*NotebookFileOutline
@@ -632,11 +632,11 @@ Cell[2807, 75, 47, 1, 42, "ObjectName",
 Cell[2857, 78, 521, 14, 99, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3403, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3403, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->543612860],
-Cell[3793, 113, 196, 6, 25, "ExampleSection",
- CellID->1390801157],
+ CellID->1564216896],
+Cell[3794, 113, 195, 6, 25, "ExampleSection",
+ CellID->837535436],
 Cell[CellGroupData[{
 Cell[4014, 123, 81, 2, 35, "Subsubsection",
  CellTags->"Calc",

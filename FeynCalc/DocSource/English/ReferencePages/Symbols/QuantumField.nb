@@ -164,27 +164,23 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox[\"FeynRule\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/FeynRule\",
-  ButtonNote->\"FeynRule\"],
- \", \",
- ButtonBox[\"FCPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/FCPartialD\",
-  ButtonNote->\"FCPartialD\"],
- \", \",
- ButtonBox[\"ExpandPartialD\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/ExpandPartialD\",
-  ButtonNote->\"ExpandPartialD\"],
- \".\"
-}], \"Text\",
- CellTags->\"QuantumField\",
- CellID->231016079]\
-\>"], "Text",
+ ButtonBox["FeynRule",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FeynRule",
+  ButtonNote->"FeynRule"],
+ ", ",
+ ButtonBox["FCPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCPartialD",
+  ButtonNote->"FCPartialD"],
+ ", ",
+ ButtonBox["ExpandPartialD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
+  ButtonNote->"ExpandPartialD"],
+ "."
+}], "Text",
  CellTags->"QuantumField",
  CellID->231016079]
 }, Open  ]],
@@ -222,14 +218,14 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", "S", "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[1]:=",
+ CellLabel->"In[17]:=",
  CellID->1327076480],
 
 Cell[BoxData[
  FormBox["S", TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[1]=",
- CellID->2033411608]
+ CellLabel->"Out[17]=",
+ CellID->2038740597]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,15 +233,15 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", "AntiQuarkField", "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[2]:=",
+ CellLabel->"In[18]:=",
  CellID->1661786669],
 
 Cell[BoxData[
  FormBox[
   OverscriptBox["\[Psi]", "_"], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[2]=",
- CellID->795101918]
+ CellLabel->"Out[18]=",
+ CellID->2083488651]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,14 +249,14 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", "QuarkField", "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[3]:=",
+ CellLabel->"In[19]:=",
  CellID->377089919],
 
 Cell[BoxData[
  FormBox["\[Psi]", TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[3]=",
- CellID->123729835]
+ CellLabel->"Out[19]=",
+ CellID->1186167697]
 }, Open  ]],
 
 Cell["This is a field with a Lorentz index.", "Text",
@@ -274,7 +270,7 @@ Cell[BoxData[
   RowBox[{"B", ",", 
    RowBox[{"{", "\[Mu]", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[4]:=",
+ CellLabel->"In[20]:=",
  CellID->776002298],
 
 Cell[BoxData[
@@ -285,8 +281,8 @@ Cell[BoxData[
    FormBox["\[Mu]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[4]=",
- CellID->979513178]
+ CellLabel->"Out[20]=",
+ CellID->188307989]
 }, Open  ]],
 
 Cell["Color indices should be put after the Lorentz ones.", "Text",
@@ -301,7 +297,7 @@ Cell[BoxData[
    RowBox[{"{", "\[Mu]", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[5]:=",
+ CellLabel->"In[21]:=",
  CellID->674687696],
 
 Cell[BoxData[
@@ -318,8 +314,8 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[5]=",
- CellID->1552535862]
+ CellLabel->"Out[21]=",
+ CellID->568800193]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -327,7 +323,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[6]:=",
+ CellLabel->"In[22]:=",
  CellID->1682950318],
 
 Cell[BoxData[
@@ -336,8 +332,8 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "a", "]"}]}], "]"}]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[6]//StandardForm=",
- CellID->939938731]
+ CellLabel->"Out[22]//StandardForm=",
+ CellID->232650919]
 }, Open  ]],
 
 Cell[TextData[{
@@ -348,7 +344,7 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    RowBox[{
-    RowBox[{"\[CapitalDelta]", "^", "\[Mu]"}], " ", 
+    SuperscriptBox["\[CapitalDelta]", "\[Mu]"], " ", 
     RowBox[{
      SubsuperscriptBox["A", "\[Mu]", "a"], "."}]}], TraditionalForm]]],
  " "
@@ -364,7 +360,7 @@ Cell[BoxData[
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[7]:=",
+ CellLabel->"In[23]:=",
  CellID->503486981],
 
 Cell[BoxData[
@@ -381,8 +377,8 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[7]=",
- CellID->1467175230]
+ CellLabel->"Out[23]=",
+ CellID->1323752020]
 }, Open  ]],
 
 Cell["\<\
@@ -401,7 +397,7 @@ Cell[BoxData[
     RowBox[{"{", "OPEDelta", "}"}], ",", 
     RowBox[{"{", "a", "}"}]}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[8]:=",
+ CellLabel->"In[24]:=",
  CellID->511543671],
 
 Cell[BoxData[
@@ -410,8 +406,8 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "OPEDelta", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "a", "]"}]}], "]"}]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[8]//StandardForm=",
- CellID->323215161]
+ CellLabel->"Out[24]//StandardForm=",
+ CellID->517587533]
 }, Open  ]],
 
 Cell["Derivatives of fields are denoted as follows.", "Text",
@@ -426,19 +422,27 @@ Cell[BoxData[
    RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
    RowBox[{"{", "\[Mu]", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[9]:=",
+ CellLabel->"In[25]:=",
  CellID->737122763],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuantumField", "(", 
-   RowBox[{
-    RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
-    FormBox["\[Mu]",
-     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+  RowBox[{
+   SubscriptBox["\[PartialD]", 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], "\[Null]"]}], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[9]=",
- CellID->1388568803]
+ CellLabel->"Out[25]=",
+ CellID->407944783]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -448,18 +452,23 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], ",", "S"}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[10]:=",
+ CellLabel->"In[26]:=",
  CellID->1485590656],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuantumField", "(", 
-   RowBox[{
-    RowBox[{"PartialD", "[", "\[CapitalDelta]", "]"}], ",", "S"}], ")"}], 
-  TraditionalForm]], "Output",
+  RowBox[{
+   SubscriptBox["\[PartialD]", 
+    FormBox[
+     FormBox["\[CapitalDelta]",
+      TraditionalForm],
+     TraditionalForm]], 
+   SubsuperscriptBox[
+    FormBox["S",
+     TraditionalForm], "\[Null]", "\[Null]"]}], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[10]=",
- CellID->273811257]
+ CellLabel->"Out[26]=",
+ CellID->57451832]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -471,21 +480,33 @@ Cell[BoxData[
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[11]:=",
+ CellLabel->"In[27]:=",
  CellID->1178067453],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuantumField", "(", 
-   RowBox[{
-    RowBox[{"PartialD", "[", "\[CapitalDelta]", "]"}], ",", "A", ",", 
-    FormBox["\[CapitalDelta]",
-     TraditionalForm], ",", 
-    FormBox["a",
-     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+  RowBox[{
+   FormBox[
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[CapitalDelta]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["a",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[11]=",
- CellID->489492377]
+ CellLabel->"Out[27]=",
+ CellID->1175747409]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -499,22 +520,25 @@ Cell[BoxData[
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[12]:=",
+ CellLabel->"In[28]:=",
  CellID->1296308546],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"QuantumField", "(", 
    RowBox[{
-    SuperscriptBox[
-     RowBox[{"PartialD", "[", "\[CapitalDelta]", "]"}], "m"], ",", "A", ",", 
+    SubsuperscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], "m"], ",", "A", ",", 
     FormBox["\[CapitalDelta]",
      TraditionalForm], ",", 
     FormBox["a",
      TraditionalForm]}], ")"}], TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[12]=",
- CellID->2013038040]
+ CellLabel->"Out[28]=",
+ CellID->2017233085]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -525,14 +549,14 @@ Cell[BoxData[
    RowBox[{"QuantumField", "[", "A", "]"}], "]"}], " ", "===", " ", 
   RowBox[{"QuantumField", "[", "A", "]"}]}]], "Input",
  CellTags->"QuantumField",
- CellLabel->"In[13]:=",
+ CellLabel->"In[29]:=",
  CellID->1498512634],
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
  CellTags->"QuantumField",
- CellLabel->"Out[13]=",
- CellID->1042365445]
+ CellLabel->"Out[29]=",
+ CellID->1933229370]
 }, Open  ]]
 }, Open  ]],
 
@@ -602,7 +626,7 @@ Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

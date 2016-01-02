@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13710,        486]
+NotebookDataLength[     13719,        486]
 NotebookOptionsPosition[      8734,        323]
-NotebookOutlinePosition[     12138,        422]
-CellTagsIndexPosition[     12028,        416]
+NotebookOutlinePosition[     12147,        422]
+CellTagsIndexPosition[     12037,        416]
 WindowTitle->Solve2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$134196], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139523], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Solve2",
              ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1971165592],
+ CellID->1721673093],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->233044819],
+ CellID->892742902],
 
 Cell[CellGroupData[{
 
@@ -336,7 +336,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 6, 32.564561}", 
+   "built" -> "{2016, 1, 2, 15, 17, 8.729095}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -350,7 +350,7 @@ Solve.", "synonyms" -> {}, "title" -> "Solve2", "titlemodifier" -> "",
     "windowtitle" -> "Solve2", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Solve2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -359,7 +359,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -370,7 +370,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3498, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1971165592]},
+   CellID->1721673093]},
  "Solve2"->{
   Cell[4131, 126, 130, 4, 27, "Input",
    CellTags->"Solve2",
@@ -415,8 +415,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10745, 369},
- {"Solve2", 10878, 373}
+ {"PrimaryExamplesSection", 10754, 369},
+ {"Solve2", 10887, 373}
  }
 *)
 (*NotebookFileOutline
@@ -430,10 +430,10 @@ Cell[2870, 78, 603, 15, 113, "Usage",
 Cell[CellGroupData[{
 Cell[3498, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1971165592],
+ CellID->1721673093],
 Cell[CellGroupData[{
 Cell[3911, 116, 195, 6, 25, "ExampleSection",
- CellID->233044819],
+ CellID->892742902],
 Cell[CellGroupData[{
 Cell[4131, 126, 130, 4, 27, "Input",
  CellTags->"Solve2",

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14275,        500]
-NotebookOptionsPosition[     10241,        376]
-NotebookOutlinePosition[     13160,        457]
-CellTagsIndexPosition[     13049,        451]
+NotebookDataLength[     14281,        500]
+NotebookOptionsPosition[     10240,        376]
+NotebookOutlinePosition[     13167,        457]
+CellTagsIndexPosition[     13056,        451]
 WindowTitle->FeynAmp
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59415], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63505], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynAmp", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1183432829],
+ CellID->984140994],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1998717726],
+ CellID->1128437011],
 
 Cell["\<\
 This is a 1-loop gluon self-energy amplitude (ignoring factors of (2 \[Pi])).\
@@ -389,7 +389,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 49.540167}", 
+   "built" -> "{2016, 1, 2, 15, 10, 34.509250}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -403,7 +403,7 @@ typesetting rules attached.", "synonyms" -> {}, "title" -> "FeynAmp",
     "titlemodifier" -> "", "windowtitle" -> "FeynAmp", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/FeynAmp"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -412,7 +412,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -421,37 +421,37 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3589, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3589, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1183432829]},
+   CellID->984140994]},
  "FeynAmp"->{
-  Cell[4201, 126, 146, 5, 32, "Text",
+  Cell[4200, 126, 146, 5, 32, "Text",
    CellTags->"FeynAmp",
    CellID->1803940715],
-  Cell[4372, 135, 864, 23, 45, "Input",
+  Cell[4371, 135, 864, 23, 45, "Input",
    CellTags->"FeynAmp",
    CellID->772375685],
-  Cell[5239, 160, 3668, 149, 54, "Output",
+  Cell[5238, 160, 3668, 149, 54, "Output",
    CellTags->"FeynAmp",
    CellID->1301141355],
-  Cell[8922, 312, 93, 2, 32, "Text",
+  Cell[8921, 312, 93, 2, 32, "Text",
    CellTags->"FeynAmp",
    CellID->311938840],
-  Cell[9040, 318, 217, 7, 27, "Input",
+  Cell[9039, 318, 217, 7, 27, "Input",
    CellTags->"FeynAmp",
    CellID->1547526680],
-  Cell[9260, 327, 341, 12, 38, "Output",
+  Cell[9259, 327, 341, 12, 38, "Output",
    CellTags->"FeynAmp",
    CellID->1833982253],
-  Cell[9969, 362, 230, 9, 32, "Text",
+  Cell[9968, 362, 230, 9, 32, "Text",
    CellTags->"FeynAmp",
    CellID->1771618737]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12281, 422},
- {"FeynAmp", 12415, 426}
+ {"PrimaryExamplesSection", 12289, 422},
+ {"FeynAmp", 12422, 426}
  }
 *)
 (*NotebookFileOutline
@@ -463,45 +463,45 @@ Cell[2822, 75, 50, 1, 42, "ObjectName",
 Cell[2875, 78, 689, 17, 162, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3589, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3589, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1183432829],
+ CellID->984140994],
 Cell[CellGroupData[{
-Cell[4002, 118, 196, 6, 25, "ExampleSection",
- CellID->1998717726],
-Cell[4201, 126, 146, 5, 32, "Text",
+Cell[4001, 118, 196, 6, 25, "ExampleSection",
+ CellID->1128437011],
+Cell[4200, 126, 146, 5, 32, "Text",
  CellTags->"FeynAmp",
  CellID->1803940715],
 Cell[CellGroupData[{
-Cell[4372, 135, 864, 23, 45, "Input",
+Cell[4371, 135, 864, 23, 45, "Input",
  CellTags->"FeynAmp",
  CellID->772375685],
-Cell[5239, 160, 3668, 149, 54, "Output",
+Cell[5238, 160, 3668, 149, 54, "Output",
  CellTags->"FeynAmp",
  CellID->1301141355]
 }, Open  ]],
-Cell[8922, 312, 93, 2, 32, "Text",
+Cell[8921, 312, 93, 2, 32, "Text",
  CellTags->"FeynAmp",
  CellID->311938840],
 Cell[CellGroupData[{
-Cell[9040, 318, 217, 7, 27, "Input",
+Cell[9039, 318, 217, 7, 27, "Input",
  CellTags->"FeynAmp",
  CellID->1547526680],
-Cell[9260, 327, 341, 12, 38, "Output",
+Cell[9259, 327, 341, 12, 38, "Output",
  CellTags->"FeynAmp",
  CellID->1833982253]
 }, Open  ]]
 }, Open  ]],
-Cell[9628, 343, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9627, 343, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9696, 348, 270, 12, 31, "SeeAlsoSection",
+Cell[9695, 348, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9969, 362, 230, 9, 32, "Text",
+Cell[9968, 362, 230, 9, 32, "Text",
  CellTags->"FeynAmp",
  CellID->1771618737]
 }, Open  ]],
-Cell[10214, 374, 23, 0, 42, "FooterCell"]
+Cell[10213, 374, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

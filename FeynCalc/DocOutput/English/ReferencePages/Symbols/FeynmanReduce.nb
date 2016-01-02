@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8576,        250]
-NotebookOptionsPosition[      5183,        158]
-NotebookOutlinePosition[      8041,        229]
-CellTagsIndexPosition[      7926,        223]
+NotebookDataLength[      8582,        250]
+NotebookOptionsPosition[      5181,        158]
+NotebookOutlinePosition[      8049,        229]
+CellTagsIndexPosition[      7934,        223]
 WindowTitle->FeynmanReduce
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynmanReduce.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$63163], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67345], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynmanReduce", ".html"]], None}]}]},
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1931949269],
+ CellID->890203386],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->110890748],
+ CellID->17914931],
 
 Cell[CellGroupData[{
 
@@ -171,7 +171,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 9.827932}", 
+   "built" -> "{2016, 1, 2, 15, 10, 54.105313}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -190,7 +190,7 @@ terms and operate on the terms one by one.", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/FeynmanReduce"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -199,7 +199,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -208,22 +208,22 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3945, 103, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3945, 103, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1931949269]},
+   CellID->890203386]},
  "FeynmanReduce"->{
-  Cell[4578, 132, 143, 4, 27, "Input",
+  Cell[4576, 132, 143, 4, 27, "Input",
    CellTags->"FeynmanReduce",
    CellID->160646569],
-  Cell[4724, 138, 393, 13, 36, "Output",
+  Cell[4722, 138, 393, 13, 36, "Output",
    CellTags->"FeynmanReduce",
    CellID->968892063]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7575, 209},
- {"FeynmanReduce", 7716, 213}
+ {"PrimaryExamplesSection", 7584, 209},
+ {"FeynmanReduce", 7724, 213}
  }
 *)
 (*NotebookFileOutline
@@ -235,23 +235,23 @@ Cell[2853, 75, 56, 1, 42, "ObjectName",
 Cell[2912, 78, 1008, 21, 176, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3945, 103, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3945, 103, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1931949269],
+ CellID->890203386],
 Cell[CellGroupData[{
-Cell[4358, 122, 195, 6, 25, "ExampleSection",
- CellID->110890748],
+Cell[4357, 122, 194, 6, 25, "ExampleSection",
+ CellID->17914931],
 Cell[CellGroupData[{
-Cell[4578, 132, 143, 4, 27, "Input",
+Cell[4576, 132, 143, 4, 27, "Input",
  CellTags->"FeynmanReduce",
  CellID->160646569],
-Cell[4724, 138, 393, 13, 36, "Output",
+Cell[4722, 138, 393, 13, 36, "Output",
  CellTags->"FeynmanReduce",
  CellID->968892063]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5156, 156, 23, 0, 42, "FooterCell"]
+Cell[5154, 156, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

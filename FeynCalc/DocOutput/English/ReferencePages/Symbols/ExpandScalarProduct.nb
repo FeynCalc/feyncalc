@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     27348,        948]
-NotebookOptionsPosition[     16861,        671]
-NotebookOutlinePosition[     24178,        852]
-CellTagsIndexPosition[     24017,        845]
+NotebookDataLength[     27352,        948]
+NotebookOptionsPosition[     16859,        671]
+NotebookOutlinePosition[     24184,        852]
+CellTagsIndexPosition[     24023,        845]
 WindowTitle->ExpandScalarProduct
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ExpandScalarProduct.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49793], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$52166], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ExpandScalarProduct", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->482382213],
+ CellID->93449681],
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1546205656],
+ CellID->183315870],
 
 Cell[CellGroupData[{
 
@@ -684,7 +684,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 0.225169}", 
+   "built" -> "{2016, 1, 2, 15, 9, 33.058290}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -697,7 +697,7 @@ ScalarProductExpand=ExpandScalarProduct.", "synonyms" -> {}, "title" ->
     "ExpandScalarProduct", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ExpandScalarProduct"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -706,7 +706,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -715,138 +715,138 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3474, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3474, 95, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->482382213]},
+   CellID->93449681]},
  "ExpandScalarProduct"->{
-  Cell[4085, 122, 113, 2, 35, "Subsubsection",
+  Cell[4083, 122, 113, 2, 35, "Subsubsection",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->2116782470],
-  Cell[4223, 128, 180, 4, 27, "Input",
+  Cell[4221, 128, 180, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->668026966],
-  Cell[4406, 134, 399, 12, 36, "Output",
+  Cell[4404, 134, 399, 12, 36, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->4871317],
-  Cell[4842, 151, 276, 8, 27, "Input",
+  Cell[4840, 151, 276, 8, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1575091533],
-  Cell[5121, 161, 1050, 42, 39, "Output",
+  Cell[5119, 161, 1050, 42, 39, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->831714443],
-  Cell[6208, 208, 171, 4, 27, "Input",
+  Cell[6206, 208, 171, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1729317327],
-  Cell[6382, 214, 2905, 125, 39, "Output",
+  Cell[6380, 214, 2905, 125, 39, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1718079082],
-  Cell[9324, 344, 204, 6, 27, "Input",
+  Cell[9322, 344, 204, 6, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->790525557],
-  Cell[9531, 352, 704, 28, 38, "Output",
+  Cell[9529, 352, 704, 28, 38, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1472369643],
-  Cell[10272, 385, 174, 4, 27, "Input",
+  Cell[10270, 385, 174, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->171112254],
-  Cell[10449, 391, 678, 27, 41, "Output",
+  Cell[10447, 391, 678, 27, 41, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->638310365],
-  Cell[11164, 423, 209, 6, 27, "Input",
+  Cell[11162, 423, 209, 6, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1175495192],
-  Cell[11376, 431, 701, 28, 41, "Output",
+  Cell[11374, 431, 701, 28, 41, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->323139512],
-  Cell[12114, 464, 175, 4, 27, "Input",
+  Cell[12112, 464, 175, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->2071711528],
-  Cell[12292, 470, 851, 36, 40, "Output",
+  Cell[12290, 470, 851, 36, 40, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1585657038],
-  Cell[13180, 511, 258, 8, 27, "Input",
+  Cell[13178, 511, 258, 8, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1361432400],
-  Cell[13441, 521, 893, 36, 38, "Output",
+  Cell[13439, 521, 893, 36, 38, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1532584134],
-  Cell[14371, 562, 203, 5, 27, "Input",
+  Cell[14369, 562, 203, 5, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1825158757],
-  Cell[14577, 569, 1265, 53, 41, "Output",
+  Cell[14575, 569, 1265, 53, 41, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->334851798],
-  Cell[16210, 645, 609, 21, 32, "Text",
+  Cell[16208, 645, 609, 21, 32, "Text",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->2118240248]},
  "ScalarProductExpand"->{
-  Cell[4085, 122, 113, 2, 35, "Subsubsection",
+  Cell[4083, 122, 113, 2, 35, "Subsubsection",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->2116782470],
-  Cell[4223, 128, 180, 4, 27, "Input",
+  Cell[4221, 128, 180, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->668026966],
-  Cell[4406, 134, 399, 12, 36, "Output",
+  Cell[4404, 134, 399, 12, 36, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->4871317],
-  Cell[4842, 151, 276, 8, 27, "Input",
+  Cell[4840, 151, 276, 8, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1575091533],
-  Cell[5121, 161, 1050, 42, 39, "Output",
+  Cell[5119, 161, 1050, 42, 39, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->831714443],
-  Cell[6208, 208, 171, 4, 27, "Input",
+  Cell[6206, 208, 171, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1729317327],
-  Cell[6382, 214, 2905, 125, 39, "Output",
+  Cell[6380, 214, 2905, 125, 39, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1718079082],
-  Cell[9324, 344, 204, 6, 27, "Input",
+  Cell[9322, 344, 204, 6, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->790525557],
-  Cell[9531, 352, 704, 28, 38, "Output",
+  Cell[9529, 352, 704, 28, 38, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1472369643],
-  Cell[10272, 385, 174, 4, 27, "Input",
+  Cell[10270, 385, 174, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->171112254],
-  Cell[10449, 391, 678, 27, 41, "Output",
+  Cell[10447, 391, 678, 27, 41, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->638310365],
-  Cell[11164, 423, 209, 6, 27, "Input",
+  Cell[11162, 423, 209, 6, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1175495192],
-  Cell[11376, 431, 701, 28, 41, "Output",
+  Cell[11374, 431, 701, 28, 41, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->323139512],
-  Cell[12114, 464, 175, 4, 27, "Input",
+  Cell[12112, 464, 175, 4, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->2071711528],
-  Cell[12292, 470, 851, 36, 40, "Output",
+  Cell[12290, 470, 851, 36, 40, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1585657038],
-  Cell[13180, 511, 258, 8, 27, "Input",
+  Cell[13178, 511, 258, 8, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1361432400],
-  Cell[13441, 521, 893, 36, 38, "Output",
+  Cell[13439, 521, 893, 36, 38, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1532584134],
-  Cell[14371, 562, 203, 5, 27, "Input",
+  Cell[14369, 562, 203, 5, 27, "Input",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->1825158757],
-  Cell[14577, 569, 1265, 53, 41, "Output",
+  Cell[14575, 569, 1265, 53, 41, "Output",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->334851798],
-  Cell[16210, 645, 609, 21, 32, "Text",
+  Cell[16208, 645, 609, 21, 32, "Text",
    CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
    CellID->2118240248]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18799, 716},
- {"ExpandScalarProduct", 18944, 720},
- {"ScalarProductExpand", 21482, 781}
+ {"PrimaryExamplesSection", 18806, 716},
+ {"ExpandScalarProduct", 18950, 720},
+ {"ScalarProductExpand", 21488, 781}
  }
 *)
 (*NotebookFileOutline
@@ -858,98 +858,98 @@ Cell[2883, 75, 62, 1, 42, "ObjectName",
 Cell[2948, 78, 501, 13, 121, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3474, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3474, 95, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->482382213],
-Cell[3864, 112, 196, 6, 25, "ExampleSection",
- CellID->1546205656],
+ CellID->93449681],
+Cell[3863, 112, 195, 6, 25, "ExampleSection",
+ CellID->183315870],
 Cell[CellGroupData[{
-Cell[4085, 122, 113, 2, 35, "Subsubsection",
+Cell[4083, 122, 113, 2, 35, "Subsubsection",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->2116782470],
 Cell[CellGroupData[{
-Cell[4223, 128, 180, 4, 27, "Input",
+Cell[4221, 128, 180, 4, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->668026966],
-Cell[4406, 134, 399, 12, 36, "Output",
+Cell[4404, 134, 399, 12, 36, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->4871317]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4842, 151, 276, 8, 27, "Input",
+Cell[4840, 151, 276, 8, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1575091533],
-Cell[5121, 161, 1050, 42, 39, "Output",
+Cell[5119, 161, 1050, 42, 39, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->831714443]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6208, 208, 171, 4, 27, "Input",
+Cell[6206, 208, 171, 4, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1729317327],
-Cell[6382, 214, 2905, 125, 39, "Output",
+Cell[6380, 214, 2905, 125, 39, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1718079082]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9324, 344, 204, 6, 27, "Input",
+Cell[9322, 344, 204, 6, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->790525557],
-Cell[9531, 352, 704, 28, 38, "Output",
+Cell[9529, 352, 704, 28, 38, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1472369643]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10272, 385, 174, 4, 27, "Input",
+Cell[10270, 385, 174, 4, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->171112254],
-Cell[10449, 391, 678, 27, 41, "Output",
+Cell[10447, 391, 678, 27, 41, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->638310365]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11164, 423, 209, 6, 27, "Input",
+Cell[11162, 423, 209, 6, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1175495192],
-Cell[11376, 431, 701, 28, 41, "Output",
+Cell[11374, 431, 701, 28, 41, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->323139512]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12114, 464, 175, 4, 27, "Input",
+Cell[12112, 464, 175, 4, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->2071711528],
-Cell[12292, 470, 851, 36, 40, "Output",
+Cell[12290, 470, 851, 36, 40, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1585657038]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13180, 511, 258, 8, 27, "Input",
+Cell[13178, 511, 258, 8, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1361432400],
-Cell[13441, 521, 893, 36, 38, "Output",
+Cell[13439, 521, 893, 36, 38, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1532584134]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14371, 562, 203, 5, 27, "Input",
+Cell[14369, 562, 203, 5, 27, "Input",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->1825158757],
-Cell[14577, 569, 1265, 53, 41, "Output",
+Cell[14575, 569, 1265, 53, 41, "Output",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->334851798]
 }, Open  ]],
-Cell[15857, 625, 31, 0, 29, "SectionFooterSpacer"]
+Cell[15855, 625, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15937, 631, 270, 12, 31, "SeeAlsoSection",
+Cell[15935, 631, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[16210, 645, 609, 21, 32, "Text",
+Cell[16208, 645, 609, 21, 32, "Text",
  CellTags->{"ExpandScalarProduct", "ScalarProductExpand"},
  CellID->2118240248]
 }, Open  ]],
-Cell[16834, 669, 23, 0, 42, "FooterCell"]
+Cell[16832, 669, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8993,        300]
+NotebookDataLength[      9003,        300]
 NotebookOptionsPosition[      5798,        201]
-NotebookOutlinePosition[      8278,        271]
-CellTagsIndexPosition[      8170,        265]
+NotebookOutlinePosition[      8288,        271]
+CellTagsIndexPosition[      8180,        265]
 WindowTitle->HypInt
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81813], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86823], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/HypInt",
              ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1262465437],
+ CellID->1587745140],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1115568351],
+ CellID->1341170645],
 
 Cell[CellGroupData[{
 
@@ -214,7 +214,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 51.711204}", 
+   "built" -> "{2016, 1, 2, 15, 12, 50.668347}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -226,7 +226,7 @@ z)^(-a).", "synonyms" -> {}, "title" -> "HypInt", "titlemodifier" -> "",
     "windowtitle" -> "HypInt", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/HypInt"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -235,7 +235,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -246,7 +246,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3416, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1262465437]},
+   CellID->1587745140]},
  "HypInt"->{
   Cell[4050, 126, 177, 5, 27, "Input",
    CellTags->"HypInt",
@@ -264,8 +264,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7666, 245},
- {"HypInt", 7799, 249}
+ {"PrimaryExamplesSection", 7676, 245},
+ {"HypInt", 7809, 249}
  }
 *)
 (*NotebookFileOutline
@@ -279,10 +279,10 @@ Cell[2869, 78, 522, 15, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3416, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1262465437],
+ CellID->1587745140],
 Cell[CellGroupData[{
 Cell[3829, 116, 196, 6, 25, "ExampleSection",
- CellID->1115568351],
+ CellID->1341170645],
 Cell[CellGroupData[{
 Cell[4050, 126, 177, 5, 27, "Input",
  CellTags->"HypInt",

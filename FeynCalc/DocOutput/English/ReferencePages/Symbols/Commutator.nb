@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15793,        559]
+NotebookDataLength[     15802,        559]
 NotebookOptionsPosition[     10090,        372]
-NotebookOutlinePosition[     13716,        480]
-CellTagsIndexPosition[     13602,        474]
+NotebookOutlinePosition[     13725,        480]
+CellTagsIndexPosition[     13611,        474]
 WindowTitle->Commutator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27007], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28643], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Commutator", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1080742338],
+ CellID->2034436796],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1524177249],
+ CellID->1140245474],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
@@ -385,7 +385,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 57, 1.123837}", 
+   "built" -> "{2016, 1, 2, 15, 7, 25.861301}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -396,7 +396,7 @@ objects x and y. ", "synonyms" -> {}, "title" -> "Commutator",
     "titlemodifier" -> "", "windowtitle" -> "Commutator", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Commutator"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -405,7 +405,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -416,7 +416,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3368, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1080742338]},
+   CellID->2034436796]},
  "Commutator"->{
   Cell[3980, 122, 186, 5, 27, "Input",
    CellTags->"Commutator",
@@ -473,8 +473,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11907, 415},
- {"Commutator", 12044, 419}
+ {"PrimaryExamplesSection", 11916, 415},
+ {"Commutator", 12053, 419}
  }
 *)
 (*NotebookFileOutline
@@ -488,10 +488,10 @@ Cell[2893, 78, 450, 13, 83, "Usage",
 Cell[CellGroupData[{
 Cell[3368, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1080742338],
+ CellID->2034436796],
 Cell[CellGroupData[{
 Cell[3781, 114, 196, 6, 25, "ExampleSection",
- CellID->1524177249],
+ CellID->1140245474],
 Cell[3980, 122, 186, 5, 27, "Input",
  CellTags->"Commutator",
  CellID->2000059968],

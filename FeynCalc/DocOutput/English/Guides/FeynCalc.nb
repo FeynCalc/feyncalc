@@ -3,69 +3,586 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4976,        151]
-NotebookOptionsPosition[      3335,        104]
-NotebookOutlinePosition[      4730,        141]
-CellTagsIndexPosition[      4687,        138]
+NotebookDataLength[    145246,       4712]
+NotebookOptionsPosition[    127789,       4180]
+NotebookOutlinePosition[    129332,       4220]
+CellTagsIndexPosition[    129289,       4217]
 WindowTitle->FeynCalc
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC GUIDE", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/guide/FeynCalc\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/guide/FeynCalc"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/guide/FeynCalc.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$11828], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/guide/FeynCalc", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC GUIDE", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Functions",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Functions", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"A0\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/A0"], "\<\"Abbreviation\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Abbreviation"], "\<\"Amplitude\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Amplitude"], "\<\"Amputate\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Amputate"], "\<\"AnomalousDimension\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/AnomalousDimension"], "\<\"Anti5\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Anti5"], "\<\"AntiCommutator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/AntiCommutator"], "\<\"AntiQuarkField\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/AntiQuarkField"], "\<\"Apart2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Apart2"], "\<\"B0\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/B0"], "\<\"B00\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/B00"], "\<\"B1\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/B1"], "\<\"B11\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/B11"], "\<\"BackgroundGluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/BackgroundGluonVertex"], "\<\"C0\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/C0"], "\<\"CA\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/CA"], "\<\"Calc\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Calc"], "\<\"CalcColorFactor\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CalcColorFactor"], "\<\"Cases\"\>":>
+       Documentation`HelpLookup["paclet:ref/Cases"], "\<\"Cases2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Cases2"], "\<\"CF\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CF"], "\<\"ChangeDimension\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ChangeDimension"], "\<\"ChargeConjugationMatrix\"\
+\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ChargeConjugationMatrix"], \
+"\<\"ChargeConjugationMatrixInv\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ChargeConjugationMatrixInv"], "\<\"CheckDB\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CheckDB"], "\<\"ChiralityProjector\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ChiralityProjector"], "\<\"Chisholm\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Chisholm"], "\<\"Collect\"\>":>
+       Documentation`HelpLookup["paclet:ref/Collect"], "\<\"Collect2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Collect2"], "\<\"Collect3\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Collect3"], "\<\"Combine\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Combine"], "\<\"Commutator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Commutator"], "\<\"CommutatorExplicit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CommutatorExplicit"], "\<\"Complement\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/Complement"], "\<\"CompleteSquare\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CompleteSquare"], "\<\"ComplexConjugate\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ComplexConjugate"], "\<\"Contract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Contract"], "\<\"Convolute\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Convolute"], "\<\"ConvoluteTable\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ConvoluteTable"], "\<\"CounterTerm\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CounterTerm"], "\<\"CovariantD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CovariantD"], "\<\"CovariantFieldDerivative\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CovariantFieldDerivative"], "\<\"D0\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/D0"], "\<\"DataType\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DataType"], "\<\"DB0\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DB0"], "\<\"DB1\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DB1"], "\<\"DeclareNonCommutative\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DeclareNonCommutative"], "\<\"DeltaFunction\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DeltaFunction"], \
+"\<\"DeltaFunctionDoublePrime\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DeltaFunctionDoublePrime"], \
+"\<\"DeltaFunctionPrime\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DeltaFunctionPrime"], "\<\"DiracEquation\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracEquation"], "\<\"DiracGamma\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGamma"], "\<\"DiracGammaCombine\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGammaCombine"], "\<\"DiracGammaExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGammaExpand"], "\<\"DiracGammaT\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGammaT"], "\<\"DiracMatrix\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracMatrix"], "\<\"DiracOrder\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracOrder"], "\<\"DiracReduce\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracReduce"], "\<\"DiracSigma\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSigma"], "\<\"DiracSigmaExplicit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSigmaExplicit"], "\<\"DiracSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSimplify"], "\<\"DiracSlash\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSlash"], "\<\"DiracSpinor\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSpinor"], "\<\"DiracTrace\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracTrace"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracTrick"], "\<\"DoPolarizationSums\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DoPolarizationSums"], "\<\"Dot\"\>":>
+       Documentation`HelpLookup["paclet:ref/Dot"], "\<\"DotExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DotExpand"], "\<\"DotSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DotSimplify"], "\<\"Eps\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Eps"], "\<\"EpsChisholm\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/EpsChisholm"], "\<\"EpsEvaluate\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/EpsEvaluate"], "\<\"Epsilon\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Epsilon"], "\<\"Expand\"\>":>
+       Documentation`HelpLookup["paclet:ref/Expand"], "\<\"Expand2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Expand2"], "\<\"ExpandPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExpandPartialD"], "\<\"ExpandScalarProduct\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExpandScalarProduct"], "\<\"Explicit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Explicit"], "\<\"ExplicitLorentzIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExplicitLorentzIndex"], \
+"\<\"ExplicitPartialD\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExplicitPartialD"], "\<\"ExplicitSUNIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExplicitSUNIndex"], "\<\"Factor\"\>":>
+       Documentation`HelpLookup["paclet:ref/Factor"], "\<\"Factor1\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Factor1"], "\<\"Factor2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Factor2"], "\<\"FAD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FAD"], "\<\"FCAntiSymmetrize\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCAntiSymmetrize"], \
+"\<\"FCClearScalarProducts\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCClearScalarProducts"], "\<\"FCE\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FCE"], "\<\"FCI\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCI"], "\<\"FCIntegral\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCIntegral"], "\<\"FCPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCPartialD"], "\<\"FCSymmetrize\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCSymmetrize"], "\<\"FermionSpinSum\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FermionSpinSum"], "\<\"FeynAmpDenominator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominator"], \
+"\<\"FeynAmpDenominatorCombine\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominatorCombine"], \
+"\<\"FeynAmpDenominatorSimplify\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominatorSimplify"], \
+"\<\"FeynAmpDenominatorSplit\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynAmpDenominatorSplit"], \
+"\<\"FeynCalc2FORM\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynCalc2FORM"], "\<\"FeynCalcExternal\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynCalcExternal"], "\<\"FeynCalcForm\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynCalcForm"], "\<\"FeynCalcInternal\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynCalcInternal"], "\<\"FeynCalcToLaTeX\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynCalcToLaTeX"], "\<\"FeynmanParametrize\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynmanParametrize"], "\<\"FeynRule\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FeynRule"], "\<\"FieldDerivative\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FieldDerivative"], "\<\"FieldStrength\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FieldStrength"], "\<\"FORM2FeynCalc\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FORM2FeynCalc"], "\<\"FourDivergence\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FourDivergence"], "\<\"FourLaplacian\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FourLaplacian"], "\<\"FourVector\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FourVector"], "\<\"FreeQ\"\>":>
+       Documentation`HelpLookup["paclet:ref/FreeQ"], "\<\"FreeQ2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FreeQ2"], "\<\"FRH\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FRH"], "\<\"FromTFI\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FromTFI"], "\<\"FunctionalD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FunctionalD"], "\<\"FV\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FV"], "\<\"FVD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FVD"], "\<\"GA\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GA"], "\<\"GA5\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GA5"], "\<\"GAD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GAD"], "\<\"Gamma\"\>":>
+       Documentation`HelpLookup["paclet:ref/Gamma"], "\<\"Gamma1\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Gamma1"], "\<\"Gamma2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Gamma2"], "\<\"Gamma3\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Gamma3"], "\<\"GammaEpsilon\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GammaEpsilon"], "\<\"GammaExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GammaExpand"], "\<\"GaugeField\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GaugeField"], "\<\"GaugeXi\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GaugeXi"], "\<\"GhostPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GhostPropagator"], "\<\"GluonField\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonField"], "\<\"GluonGhostVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonGhostVertex"], "\<\"GluonPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonPropagator"], "\<\"GluonSelfEnergy\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonSelfEnergy"], "\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonVertex"], "\<\"GS\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GS"], "\<\"GSD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GSD"], "\<\"Gstrong\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Gstrong"], "\<\"Hill\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Hill"], "\<\"HoldForm\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/HoldForm"], "\<\"Hypergeometric2F1\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/Hypergeometric2F1"], "\<\"HypergeometricAC\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/HypergeometricAC"], "\<\"HypergeometricIR\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/HypergeometricIR"], "\<\"HypergeometricSE\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/HypergeometricSE"], "\<\"HypExplicit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/HypExplicit"], "\<\"HypInt\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/HypInt"], "\<\"IFPD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/IFPD"], "\<\"IFPDOff\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/IFPDOff"], "\<\"IFPDOn\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/IFPDOn"], "\<\"Integrate2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate2"], "\<\"Integrate3\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate3"], "\<\"Integrate4\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate4"], "\<\"Integrate5\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Integrate5"], "\<\"IntegrateByParts\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/IntegrateByParts"], "\<\"InverseMellin\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/InverseMellin"], "\<\"Isolate\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Isolate"], "\<\"Kummer\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Kummer"], "\<\"Lagrangian\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Lagrangian"], "\<\"LC\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/LC"], "\<\"LCD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LCD"], "\<\"LeftPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LeftPartialD"], "\<\"LeftRightPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LeftRightPartialD"], "\<\"LeftRightPartialD2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LeftRightPartialD2"], "\<\"Length\"\>":>
+       Documentation`HelpLookup["paclet:ref/Length"], "\<\"LeviCivita\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LeviCivita"], "\<\"Li2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Li2"], "\<\"Li3\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Li3"], "\<\"Log\"\>":>
+       Documentation`HelpLookup["paclet:ref/Log"], "\<\"LorentzIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LorentzIndex"], "\<\"Map\"\>":>
+       Documentation`HelpLookup["paclet:ref/Map"], "\<\"Map2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Map2"], "\<\"MemSet\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/MemSet"], "\<\"MetricTensor\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/MetricTensor"], "\<\"Momentum\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Momentum"], "\<\"MomentumCombine\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/MomentumCombine"], "\<\"MomentumExpand\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/MomentumExpand"], "\<\"MT\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/MT"], "\<\"MTD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/MTD"], "\<\"Nf\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Nf"], "\<\"Nielsen\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Nielsen"], "\<\"NonCommFreeQ\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/NonCommFreeQ"], "\<\"NonCommQ\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/NonCommQ"], "\<\"NTerms\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/NTerms"], "\<\"NumericalFactor\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/NumericalFactor"], "\<\"NumericQ\"\>":>
+       Documentation`HelpLookup["paclet:ref/NumericQ"], "\<\"NumericQ1\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/NumericQ1"], "\<\"OneLoop\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OneLoop"], "\<\"OneLoopSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/OneLoopSimplify"], "\<\"Pair\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Pair"], "\<\"PairContract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PairContract"], "\<\"PairContract2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PairContract2"], "\<\"PairContract3\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PairContract3"], "\<\"PartialIntegrate\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PartialIntegrate"], "\<\"PartitHead\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PartitHead"], "\<\"PaVe\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PaVe"], "\<\"PaVeReduce\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PaVeReduce"], "\<\"PD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PD"], "\<\"PlusDistribution\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PlusDistribution"], "\<\"Polarization\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Polarization"], "\<\"PolarizationSum\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PolarizationSum"], "\<\"PolarizationVector\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PolarizationVector"], "\<\"PolyLog\"\>":>
+       Documentation`HelpLookup["paclet:ref/PolyLog"], "\<\"Power\"\>":>
+       Documentation`HelpLookup["paclet:ref/Power"], "\<\"Power2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Power2"], "\<\"PowerFactor\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PowerFactor"], "\<\"PowerSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PowerSimplify"], "\<\"PropagatorDenominator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PropagatorDenominator"], \
+"\<\"PropagatorDenominatorExplicit\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PropagatorDenominatorExplicit"], \
+"\<\"QuantumField\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/QuantumField"], "\<\"QuarkField\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/QuarkField"], "\<\"QuarkGluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/QuarkGluonVertex"], "\<\"QuarkPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/QuarkPropagator"], "\<\"ReleaseHold\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/ReleaseHold"], "\<\"RightPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/RightPartialD"], "\<\"RussianTrick\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/RussianTrick"], "\<\"ScalarGluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScalarGluonVertex"], "\<\"ScalarProduct\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScalarProduct"], "\<\"ScalarProductCancel\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScalarProductCancel"], "\<\"ScaleMu\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScaleMu"], "\<\"Schouten\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Schouten"], "\<\"SD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SD"], "\<\"Select\"\>":>
+       Documentation`HelpLookup["paclet:ref/Select"], "\<\"SelectFree\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SelectFree"], "\<\"SelectNotFree\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SelectNotFree"], "\<\"Series\"\>":>
+       Documentation`HelpLookup["paclet:ref/Series"], "\<\"Series2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Series2"], "\<\"Series3\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Series3"], "\<\"SetMandelstam\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SetMandelstam"], "\<\"SimplifyDeltaFunction\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SimplifyDeltaFunction"], \
+"\<\"SimplifyPolyLog\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SimplifyPolyLog"], "\<\"SmallDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SmallDelta"], "\<\"SmallEpsilon\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SmallEpsilon"], "\<\"SmallVariable\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SmallVariable"], "\<\"SMP\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SMP"], "\<\"SMVertex\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SMVertex"], "\<\"Sn\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Sn"], "\<\"Solve\"\>":>
+       Documentation`HelpLookup["paclet:ref/Solve"], "\<\"Solve2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Solve2"], "\<\"Solve3\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Solve3"], "\<\"SP\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SP"], "\<\"SPD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SPD"], "\<\"Spinor\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Spinor"], "\<\"SpinorU\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorU"], "\<\"SpinorUBar\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorUBar"], "\<\"SpinorV\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorV"], "\<\"SpinorVBar\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorVBar"], "\<\"SplittingFunction\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SplittingFunction"], "\<\"SumP\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SumP"], "\<\"SumS\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SumS"], "\<\"SumT\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SumT"], "\<\"SUND\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUND"], "\<\"SUNDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNDelta"], "\<\"SUNDeltaContract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNDeltaContract"], "\<\"SUNF\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNF"], "\<\"SUNFDeltaContract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNDeltaContract"], "\<\"SUNIndex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNIndex"], "\<\"SUNN\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNN"], "\<\"SUNSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNSimplify"], "\<\"SUNT\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNT"], "\<\"SUNTrace\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNTrace"], "\<\"Tdec\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Tdec"], "\<\"TensorFunction\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/TensorFunction"], "\<\"Tf\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Tf"], "\<\"TID\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/TID"], "\<\"TIDL\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/TIDL"], "\<\"ToDistribution\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ToDistribution"], "\<\"Together\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/Together"], "\<\"ToHypergeometric\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ToHypergeometric"], "\<\"ToLarin\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ToLarin"], "\<\"ToTFI\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/ToTFI"], "\<\"TR\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/TR"], "\<\"Tr2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Tr2"], "\<\"Trick\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Trick"], "\<\"TrickIntegrate\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/TrickIntegrate"], "\<\"TrickMandelstam\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/TrickMandelstam"], "\<\"Uncontract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Uncontract"], "\<\"UnDeclareNonCommutative\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/UnDeclareNonCommutative"], "\<\"UVPart\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/UVPart"], "\<\"Write2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Write2"], "\<\"Zeta2\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Zeta2"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"GuideFunction"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/guide/FeynCalc\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/guide/FeynCalc"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/guide/\
+FeynCalc.html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$12282], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/guide/FeynCalc", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -78,8 +595,14 @@ Cell[CellGroupData[{
 Cell["FeynCalc", "GuideTitle",
  CellID->942062912],
 
-Cell["\[NonBreakingSpace]", "GuideAbstract",
- CellID->1]
+Cell[TextData[{
+ "FeynCalc is a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package for algebraic calculation in Quantum Field Theory and \
+semi-automatic evaluation of Feynman Diagrams"
+}], "GuideAbstract",
+ CellID->2001916300]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -97,7 +620,3560 @@ Cell[TextData[{
 }], "GuideReferenceSection",
  WholeCellGroupOpener->True],
 
-Cell["", "SectionHeaderSpacer"]
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell["Basic objects", "GuideFunctionsSubsection",
+ CellID->1344981135],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Abbreviation"]],"paclet:FeynCalc/ref/Abbreviation"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gives a shortname for name (in ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["HoldForm"]],"paclet:ref/HoldForm"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ")"
+}], "GuideText",
+ CellID->552658513],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["AlphaStrong"]],"paclet:FeynCalc/ref/AlphaStrong"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ Cell[BoxData[
+  SubscriptBox["\[Alpha]", "s"]], "InlineFormula"],
+ " in QCD"
+}], "GuideText",
+ CellID->1235023741],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["AlphaFS"]],"paclet:FeynCalc/ref/AlphaFS"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " fine-strucutre constant"
+}], "GuideText",
+ CellID->1076523595],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["AntiQuarkField"]],"paclet:FeynCalc/ref/AntiQuarkField"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["QuarkField"]],"paclet:FeynCalc/ref/QuarkField"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "name of a fermionic field"
+}], "GuideText",
+ CellID->917048888],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CA"]],"paclet:FeynCalc/ref/CA"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CF"]],"paclet:FeynCalc/ref/CF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "Casimir operator eigenvalues of SU(N)"
+}], "GuideText",
+ CellID->1033282217],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ChiralityProjector"]],"paclet:FeynCalc/ref/ChiralityProjector"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  SubscriptBox["P", "L"]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  SubscriptBox["P", "R"]], "InlineFormula"]
+}], "GuideText",
+ CellID->745071340],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeltaFunction"]],"paclet:FeynCalc/ref/DeltaFunction"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeltaFunctionPrime"]],"paclet:FeynCalc/ref/DeltaFunctionPrime"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeltaFunctionDoublePrime"]],
+    "paclet:FeynCalc/ref/DeltaFunctionDoublePrime"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Dirac delta function and its derivatives"
+}], "GuideText",
+ CellID->1851196232],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracGamma"]],"paclet:FeynCalc/ref/DiracGamma"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracMatrix"]],"paclet:FeynCalc/ref/DiracMatrix"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracSlash"]],"paclet:FeynCalc/ref/DiracSlash"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GA"]],"paclet:FeynCalc/ref/GA"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GA5"]],"paclet:FeynCalc/ref/GA5"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GS"]],"paclet:FeynCalc/ref/GS"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GAD"]],"paclet:FeynCalc/ref/GAD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GSD"]],"paclet:FeynCalc/ref/GSD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GAE"]],"paclet:FeynCalc/ref/GAE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GSE"]],"paclet:FeynCalc/ref/GSE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of Dirac matrices and slashes"
+}], "GuideText",
+ CellID->1686448459],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracGammaT"]],"paclet:FeynCalc/ref/DiracGammaT"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " tranpose of a Dirac matrix"
+}], "GuideText",
+ CellID->264840152],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracSigma"]],"paclet:FeynCalc/ref/DiracSigma"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  RowBox[{
+   FractionBox["I", "2"], "[", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "\[Mu]"], ",", 
+    SuperscriptBox["\[Gamma]", "\[Nu]"]}], "]"}]], "InlineFormula"]
+}], "GuideText",
+ CellID->1624859494],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracSpinor"]],"paclet:FeynCalc/ref/DiracSpinor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Spinor"]],"paclet:FeynCalc/ref/Spinor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SpinorU"]],"paclet:FeynCalc/ref/SpinorU"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SpinorUBar"]],"paclet:FeynCalc/ref/SpinorUBar"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SpinorV"]],"paclet:FeynCalc/ref/SpinorV"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SpinorVBar"]],"paclet:FeynCalc/ref/SpinorVBar"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes spinors"
+}], "GuideText",
+ CellID->307637975],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Eps"]],"paclet:FeynCalc/ref/Eps"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LC"]],"paclet:FeynCalc/ref/LC"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LCD"]],"paclet:FeynCalc/ref/LCD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LeviCivita"]],"paclet:FeynCalc/ref/LeviCivita"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "totally antisymmetric epsilon (Levi-Civita) tensor"
+}], "GuideText",
+ CellID->1680708588],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Epsilon"]],"paclet:FeynCalc/ref/Epsilon"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " \[Epsilon] from dimensional regularization"
+}], "GuideText",
+ CellID->1891570253],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExplicitLorentzIndex"]],
+    "paclet:FeynCalc/ref/ExplicitLorentzIndex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LorentzIndex"]],"paclet:FeynCalc/ref/LorentzIndex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Lorentz index"
+}], "GuideText",
+ CellID->1483552361],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExplicitSUNIndex"]],"paclet:FeynCalc/ref/ExplicitSUNIndex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNIndex"]],"paclet:FeynCalc/ref/SUNIndex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "SU(N) adjoint index"
+}], "GuideText",
+ CellID->476236246],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExplicitSUNFIndex"]],"paclet:FeynCalc/ref/ExplicitSUNFIndex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNFIndex"]],"paclet:FeynCalc/ref/SUNFIndex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "SU(N) fundamental index"
+}], "GuideText",
+ CellID->2139347147],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FAD"]],"paclet:FeynCalc/ref/FAD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominator"]],"paclet:FeynCalc/ref/FeynAmpDenominator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denominator of Feynman amplitudes "
+}], "GuideText",
+ CellID->1131303773],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCPartialD"]],"paclet:FeynCalc/ref/FCPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LeftPartialD"]],"paclet:FeynCalc/ref/LeftPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LeftRightPartialD"]],"paclet:FeynCalc/ref/LeftRightPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LeftRightPartialD2"]],"paclet:FeynCalc/ref/LeftRightPartialD2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ",  ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["RightPartialD"]],"paclet:FeynCalc/ref/RightPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " partial derivatives acting on operators"
+}], "GuideText",
+ CellID->1476055339],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FourVector"]],"paclet:FeynCalc/ref/FourVector"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FV"]],"paclet:FeynCalc/ref/FV"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FVD"]],"paclet:FeynCalc/ref/FVD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FVE"]],"paclet:FeynCalc/ref/FVE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of 4-vectors"
+}], "GuideText",
+ CellID->495428205],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GaugeField"]],"paclet:FeynCalc/ref/GaugeField"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " name of a gauge field"
+}], "GuideText",
+ CellID->1403563110],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GaugeXi"]],"paclet:FeynCalc/ref/GaugeXi"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gauge parameter \[Xi]"
+}], "GuideText",
+ CellID->1275284258],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GluonField"]],"paclet:FeynCalc/ref/GluonField"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "name of a gluon field"
+}], "GuideText",
+ CellID->1257907745],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Gstrong"]],"paclet:FeynCalc/ref/Gstrong"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " QCD coupling constant"
+}], "GuideText",
+ CellID->1005983702],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Li2"]],"paclet:FeynCalc/ref/Li2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " dilog function"
+}], "GuideText",
+ CellID->832103768],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Li3"]],"paclet:FeynCalc/ref/Li3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " trilog function"
+}], "GuideText",
+ CellID->431072089],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Momentum"]],"paclet:FeynCalc/ref/Momentum"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of momenta"
+}], "GuideText",
+ CellID->316776695],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MetricTensor"]],"paclet:FeynCalc/ref/MetricTensor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MT"]],"paclet:FeynCalc/ref/MT"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MTD"]],"paclet:FeynCalc/ref/MTD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MTE"]],"paclet:FeynCalc/ref/MTE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of the metric tensor"
+}], "GuideText",
+ CellID->651468345],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Nf"]],"paclet:FeynCalc/ref/Nf"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes the number of flavors"
+}], "GuideText",
+ CellID->1386416972],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Pair"]],"paclet:FeynCalc/ref/Pair"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " special pairing used in the internal representation to represent the \
+metric, 4-vectors or scalar products"
+}], "GuideText",
+ CellID->1889374617],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Polarization"]],"paclet:FeynCalc/ref/Polarization"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of polarizations"
+}], "GuideText",
+ CellID->1384558840],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PolarizationVector"]],"paclet:FeynCalc/ref/PolarizationVector"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " polarization vector"
+}], "GuideText",
+ CellID->2003827822],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PlusDistribution"]],"paclet:FeynCalc/ref/PlusDistribution"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " a special distribution"
+}], "GuideText",
+ CellID->827330458],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PropagatorDenominator"]],
+    "paclet:FeynCalc/ref/PropagatorDenominator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PD"]],"paclet:FeynCalc/ref/PD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of propagator denominators"
+}], "GuideText",
+ CellID->1486910634],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["QuantumField"]],"paclet:FeynCalc/ref/QuantumField"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generic name of a quantum field"
+}], "GuideText",
+ CellID->1015009742],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ScaleMu"]],"paclet:FeynCalc/ref/ScaleMu"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " \[Mu] scale in dimensional regularization"
+}], "GuideText",
+ CellID->146220986],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SD"]],"paclet:FeynCalc/ref/SD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNDelta"]],"paclet:FeynCalc/ref/SUNDelta"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Kronecker delta for adjoint SU(N) indices"
+}], "GuideText",
+ CellID->522984542],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SDF"]],"paclet:FeynCalc/ref/SDF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNFDelta"]],"paclet:FeynCalc/ref/SUNFDelta"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Kronecker delta for fundamental SU(N) indices"
+}], "GuideText",
+ CellID->1059337536],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SmallDelta"]],"paclet:FeynCalc/ref/SmallDelta"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SmallEpsilon"]],"paclet:FeynCalc/ref/SmallEpsilon"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes some small positive numbers"
+}], "GuideText",
+ CellID->137238398],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SmallVariable"]],"paclet:FeynCalc/ref/SmallVariable"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " small variable to be used as a regulator in PaVe functions"
+}], "GuideText",
+ CellID->590785021],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SP"]],"paclet:FeynCalc/ref/SP"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SPD"]],"paclet:FeynCalc/ref/SPD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SPE"]],"paclet:FeynCalc/ref/SPE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes scalar products of 4-momenta"
+}], "GuideText",
+ CellID->305275299],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUND"]],"paclet:FeynCalc/ref/SUND"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] totally symmetric", "GuideEmDash"],
+ " structure constant ",
+ Cell[BoxData[
+  SubscriptBox["d", "abc"]], "InlineFormula"],
+ " in SU(N)"
+}], "GuideText",
+ CellID->1136659773],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNF"]],"paclet:FeynCalc/ref/SUNF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] totally antisymmetric", "GuideEmDash"],
+ " structure constant ",
+ Cell[BoxData[
+  SubscriptBox["f", "abc"]], "InlineFormula"],
+ " in SU(N)"
+}], "GuideText",
+ CellID->920034572],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNN"]],"paclet:FeynCalc/ref/SUNN"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] number of colors ", "GuideEmDash"],
+ Cell[BoxData[
+  SubscriptBox["N", "c"]], "InlineFormula"],
+ "in SU(N)"
+}], "GuideText",
+ CellID->1328328343],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNT"]],"paclet:FeynCalc/ref/SUNT"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNTF"]],"paclet:FeynCalc/ref/SUNTF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ Cell[BoxData[
+  SubscriptBox[
+   SuperscriptBox["T", "a"], "ij"]], "InlineFormula"],
+ StyleBox["  generator ", "GuideEmDash"],
+ "of SU(N) in the fundamental representation"
+}], "GuideText",
+ CellID->1428923217],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Tf"]],"paclet:FeynCalc/ref/Tf"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ Cell[BoxData[
+  SubscriptBox["T", "F"]], "InlineFormula"],
+ " group constant ",
+ StyleBox["i", "GuideEmDash"],
+ "n SU(N)"
+}], "GuideText",
+ CellID->1763987334],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Zeta2"]],"paclet:FeynCalc/ref/Zeta2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  SubscriptBox["\[Zeta]", "2"]], "InlineFormula"]
+}], "GuideText",
+ CellID->1924638314]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Basic functions", "GuideFunctionsSubsection",
+ CellID->218620916],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Cases2"]],"paclet:FeynCalc/ref/Cases2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Cases"]],"paclet:ref/Cases"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1010301503],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Combine"]],"paclet:FeynCalc/ref/Combine"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Together"]],"paclet:ref/Together"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1271388718],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Complement1"]],"paclet:FeynCalc/ref/Complement1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Complement"]],"paclet:ref/Complement"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1736502128],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Collect2"]],"paclet:FeynCalc/ref/Collect2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Collect3"]],"paclet:FeynCalc/ref/Collect3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Collect"]],"paclet:ref/Collect"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1287756566],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DataType"]],"paclet:FeynCalc/ref/DataType"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines data types"
+}], "GuideText",
+ CellID->1747124358],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Expand2"]],"paclet:FeynCalc/ref/Expand2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Expand"]],"paclet:ref/Expand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1504394922],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Explicit"]],"paclet:FeynCalc/ref/Explicit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts explicit expressions for certain objects"
+}], "GuideText",
+ CellID->1596546686],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Factor1"]],"paclet:FeynCalc/ref/Factor1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Factor2"]],"paclet:FeynCalc/ref/Factor2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Factor"]],"paclet:ref/Factor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->187460383],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCAntiSymmetrize"]],"paclet:FeynCalc/ref/FCAntiSymmetrize"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " antisymmetrizes with respect to the given variables"
+}], "GuideText",
+ CellID->333715746],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCE"]],"paclet:FeynCalc/ref/FCE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynCalcExternal"]],"paclet:FeynCalc/ref/FeynCalcExternal"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "converts the expression to the external FeynCalc representation"
+}], "GuideText",
+ CellID->27396530],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCF"]],"paclet:FeynCalc/ref/FCF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynCalcForm"]],"paclet:FeynCalc/ref/FeynCalcForm"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes the printed output to an easy to read form."
+}], "GuideText",
+ CellID->1283386980],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCI"]],"paclet:FeynCalc/ref/FCI"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynCalcInternal"]],"paclet:FeynCalc/ref/FeynCalcInternal"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "converts the expression to the internal FeynCalc representation"
+}], "GuideText",
+ CellID->2100021916],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCSplit"]],"paclet:FeynCalc/ref/FCSplit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PartitHead"]],"paclet:FeynCalc/ref/PartitHead"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SelectFree"]],"paclet:FeynCalc/ref/SelectFree"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SelectNotFree"]],"paclet:FeynCalc/ref/SelectNotFree"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Select"]],"paclet:ref/Select"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->898863791],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCSymmetrize"]],"paclet:FeynCalc/ref/FCSymmetrize"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " symmetrizes with respect to the given variables"
+}], "GuideText",
+ CellID->1647672763],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FreeQ2"]],"paclet:FeynCalc/ref/FreeQ2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FreeQ"]],"paclet:ref/FreeQ"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->683465492],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FRH"]],"paclet:FeynCalc/ref/FRH"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ReleaseHold"]],"paclet:ref/ReleaseHold"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1650215271],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Isolate"]],"paclet:FeynCalc/ref/Isolate"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " replaces expressions by abbreviations"
+}], "GuideText",
+ CellID->1498216592],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Map2"]],"paclet:FeynCalc/ref/Map2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Map"]],"paclet:ref/Map"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->253353205],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MemSet"]],"paclet:FeynCalc/ref/MemSet"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " memoization depending on the amount of free RAM"
+}], "GuideText",
+ CellID->1212078011],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["NTerms"]],"paclet:FeynCalc/ref/NTerms"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Length"]],"paclet:ref/Length"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->178528196],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["NumericalFactor"]],"paclet:FeynCalc/ref/NumericalFactor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gives overall numerical factor"
+}], "GuideText",
+ CellID->1298957094],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["NumericQ1"]],"paclet:FeynCalc/ref/NumericQ1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["NumericQ"]],"paclet:ref/NumericQ"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1374272511],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Power2"]],"paclet:FeynCalc/ref/Power2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Power"]],"paclet:ref/Power"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1627933292],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PowerFactor"]],"paclet:FeynCalc/ref/PowerFactor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PowerSimplify"]],"paclet:FeynCalc/ref/PowerSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "simplification of expressions with exponents"
+}], "GuideText",
+ CellID->1708462303],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Series2"]],"paclet:FeynCalc/ref/Series2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Series3"]],"paclet:FeynCalc/ref/Series3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Series"]],"paclet:ref/Series"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1659205566],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Solve2"]],"paclet:FeynCalc/ref/Solve2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Solve3"]],"paclet:FeynCalc/ref/Solve3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Solve"]],"paclet:ref/Solve"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1809157918],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SumP"]],"paclet:FeynCalc/ref/SumP"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SumS"]],"paclet:FeynCalc/ref/SumS"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SumT"]],"paclet:FeynCalc/ref/SumT"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " different summations"
+}], "GuideText",
+ CellID->869117662]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Lorentz tensors", "GuideFunctionsSubsection",
+ CellID->385817707],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Amputate"]],"paclet:FeynCalc/ref/Amputate"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " amputates 4-vectors, Dirac matrices or Levi-Civita tensors"
+}], "GuideText",
+ CellID->2009629793],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ChangeDimension"]],"paclet:FeynCalc/ref/ChangeDimension"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes dimension of Lorentz indices and momenta"
+}], "GuideText",
+ CellID->512359346],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CompleteSquare"]],"paclet:FeynCalc/ref/CompleteSquare"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " completes the square of a second order polynomial in the momentum x"
+}], "GuideText",
+ CellID->1524292158],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Contract"]],"paclet:FeynCalc/ref/Contract"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Lorentz indices of tensors and Dirac matrices"
+}], "GuideText",
+ CellID->231212511],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["EpsEvaluate"]],"paclet:FeynCalc/ref/EpsEvaluate"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies total antisymmetry and linearity to all Levi-Civita tensors"
+}], "GuideText",
+ CellID->1913592904],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExpandScalarProduct"]],
+    "paclet:FeynCalc/ref/ExpandScalarProduct"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands scalar products of sums of momenta"
+}], "GuideText",
+ CellID->693139341],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCClearScalarProducts"]],
+    "paclet:FeynCalc/ref/FCClearScalarProducts"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " removes all user-specific specific definitions of scalar products"
+}], "GuideText",
+ CellID->343872275],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCRenameDummyIndices"]],
+    "paclet:FeynCalc/ref/FCRenameDummyIndices"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " renames dummy Lorentz and SU(N) indices"
+}], "GuideText",
+ CellID->548161550],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FourDivergence"]],"paclet:FeynCalc/ref/FourDivergence"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates partial derivative with respect to a 4-vector"
+}], "GuideText",
+ CellID->987343741],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FourLaplacian"]],"paclet:FeynCalc/ref/FourLaplacian"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates the Laplacian"
+}], "GuideText",
+ CellID->1285601191],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MomentumCombine"]],"paclet:FeynCalc/ref/MomentumCombine"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ",",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData[" MomentumCombine2"]],"paclet:FeynCalc/ref/MomentumCombine"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse operations to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MomentumExpand"]],"paclet:FeynCalc/ref/MomentumExpand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " and ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExpandScalarProduct"]],
+    "paclet:FeynCalc/ref/ExpandScalarProduct"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1809925827],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MomentumExpand"]],"paclet:FeynCalc/ref/MomentumExpand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands ",
+ ButtonBox["Momentum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Momentum"],
+ "[a+b+ ...]"
+}], "GuideText",
+ CellID->344422616],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PairContract"]],"paclet:FeynCalc/ref/PairContract"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PairContract2"]],"paclet:FeynCalc/ref/PairContract2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PairContract3"]],"paclet:FeynCalc/ref/PairContract3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " like Pair but with local contraction properties"
+}], "GuideText",
+ CellID->2009219923],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ScalarProduct"]],"paclet:FeynCalc/ref/ScalarProduct"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines scalar products of 4-vectors"
+}], "GuideText",
+ CellID->874103215],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SetMandelstam"]],"paclet:FeynCalc/ref/SetMandelstam"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines the Mandelstam variables"
+}], "GuideText",
+ CellID->579030092],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TensorFunction"]],"paclet:FeynCalc/ref/TensorFunction"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines an unspecified Lorentz tensor"
+}], "GuideText",
+ CellID->1156270314],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TrickMandelstam"]],"paclet:FeynCalc/ref/TrickMandelstam"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies the expression by eliminating one of the Mandelstam variables"
+}], "GuideText",
+ CellID->629389521],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Uncontract"]],"paclet:FeynCalc/ref/Uncontract"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " uncontracts Lorentz indices of tensors and Dirac matrices"
+}], "GuideText",
+ CellID->715481727]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Dirac algebra", "GuideFunctionsSubsection",
+ CellID->46643246],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Anti5"]],"paclet:FeynCalc/ref/Anti5"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " anticommutes all ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " matrices to the left or to the right"
+}], "GuideText",
+ CellID->2131819227],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Chisholm"]],"paclet:FeynCalc/ref/Chisholm"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes products of 3 Dirac matrices by the Chisholm identity"
+}], "GuideText",
+ CellID->1211971239],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracEquation"]],"paclet:FeynCalc/ref/DiracEquation"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies the Dirac equation"
+}], "GuideText",
+ CellID->333117850],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracGammaCombine"]],"paclet:FeynCalc/ref/DiracGammaCombine"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse operation to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracGammaExpand"]],"paclet:FeynCalc/ref/DiracGammaExpand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->615769661],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracGammaExpand"]],"paclet:FeynCalc/ref/DiracGammaExpand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands sums of momenta contracted with Dirac matrices"
+}], "GuideText",
+ CellID->1531032786],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracOrder"]],"paclet:FeynCalc/ref/DiracOrder"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the Dirac matrices in expression alphabetically"
+}], "GuideText",
+ CellID->688938496],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracReduce"]],"paclet:FeynCalc/ref/DiracReduce"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " reduces all 4-dimensional Dirac matrices to the standard basis \
+(SPVAT-decomposition) "
+}], "GuideText",
+ CellID->1740429042],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracSigmaExplicit"]],"paclet:FeynCalc/ref/DiracSigmaExplicit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts the explicit definition of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracSigma"]],"paclet:FeynCalc/ref/DiracSigma"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->297775359],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracSimplify"]],"paclet:FeynCalc/ref/DiracSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies products of Dirac matrices and expands non-commutative \
+products"
+}], "GuideText",
+ CellID->255459663],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracTrace"]],"paclet:FeynCalc/ref/DiracTrace"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " computes traces of Dirac matrices"
+}], "GuideText",
+ CellID->1463755561],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DiracTrick"]],"paclet:FeynCalc/ref/DiracTrick"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Dirac matrices with each other and performs several \
+simplifications but no expansions"
+}], "GuideText",
+ CellID->1334035786],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["EpsChisholm"]],"paclet:FeynCalc/ref/EpsChisholm"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes Chisholm identity for a Dirac matrix contracted with a \
+Levi-Civita tensor"
+}], "GuideText",
+ CellID->525715973],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Schouten"]],"paclet:FeynCalc/ref/Schouten"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies Schouten identity"
+}], "GuideText",
+ CellID->218430270],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ToLarin"]],"paclet:FeynCalc/ref/ToLarin"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Gamma]", "\[Mu]"], 
+   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula"],
+ " according to the Larin scheme"
+}], "GuideText",
+ CellID->1707494307]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Algebra of non-commutative objects", "GuideFunctionsSubsection",
+ CellID->1113739100],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["AntiCommutator"]],"paclet:FeynCalc/ref/AntiCommutator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines an anti-commutator"
+}], "GuideText",
+ CellID->1482543113],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Calc"]],"paclet:FeynCalc/ref/Calc"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Trick"]],"paclet:FeynCalc/ref/Trick"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " multiple simplifications for Dirac and SU(N) algebra"
+}], "GuideText",
+ CellID->1937939922],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Commutator"]],"paclet:FeynCalc/ref/Commutator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines a commutator"
+}], "GuideText",
+ CellID->526201837],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CommutatorExplicit"]],"paclet:FeynCalc/ref/CommutatorExplicit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes explicit definitions of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Commutator"]],"paclet:FeynCalc/ref/Commutator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " and ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["AntiCommutator"]],"paclet:FeynCalc/ref/AntiCommutator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->369276061],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeclareNonCommutative"]],
+    "paclet:FeynCalc/ref/DeclareNonCommutative"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "declares non-commutative objects"
+}], "GuideText",
+ CellID->795497081],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DotExpand"]],"paclet:FeynCalc/ref/DotExpand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Dot"]],"paclet:ref/Dot"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " products"
+}], "GuideText",
+ CellID->284457576],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DotSimplify"]],"paclet:FeynCalc/ref/DotSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "expands and reorders noncommutative terms "
+}], "GuideText",
+ CellID->1861924278],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["NonCommFreeQ"]],"paclet:FeynCalc/ref/NonCommFreeQ"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["NonCommQ"]],"paclet:FeynCalc/ref/NonCommQ"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the expression contains non-commutative quantities"
+}], "GuideText",
+ CellID->1355907511],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TR"]],"paclet:FeynCalc/ref/TR"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Tr2"]],"paclet:FeynCalc/ref/Tr2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates Dirac  and possibly also SU(N) traces"
+}], "GuideText",
+ CellID->1719074274],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["UnDeclareNonCommutative"]],
+    "paclet:FeynCalc/ref/UnDeclareNonCommutative"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " undeclares non-commutative objects"
+}], "GuideText",
+ CellID->1309406098]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["SU(N) algebra", "GuideFunctionsSubsection",
+ CellID->121380019],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CalcColorFactor"]],"paclet:FeynCalc/ref/CalcColorFactor"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates the color factor"
+}], "GuideText",
+ CellID->821249197],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNDeltaContract"]],"paclet:FeynCalc/ref/SUNDeltaContract"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Kronecker deltas with adjoint color indices"
+}], "GuideText",
+ CellID->1593535902],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNFDeltaContract"]],"paclet:FeynCalc/ref/SUNDeltaContract"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Kronecker deltas with fundamental color indices"
+}], "GuideText",
+ CellID->210505242],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNSimplify"]],"paclet:FeynCalc/ref/SUNSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNFSimplify"]],"paclet:FeynCalc/ref/SUNFSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "simplifies expressions that contain SU(N) matrices "
+}], "GuideText",
+ CellID->1595578132],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SUNTrace"]],"paclet:FeynCalc/ref/SUNTrace"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " computes traces over SU(N) matrices"
+}], "GuideText",
+ CellID->1561361899]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Loop integrals", "GuideFunctionsSubsection",
+ CellID->1137355821],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["A0"]],"paclet:FeynCalc/ref/A0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 1-point integral (tadpole)"
+}], "GuideText",
+ CellID->484191528],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Apart2"]],"paclet:FeynCalc/ref/Apart2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " partial fractions loop integrals (only very simple cases)"
+}], "GuideText",
+ CellID->1364110476],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ApartFF"]],"paclet:FeynCalc/ref/ApartFF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " partial fractions arbitrary loop integrals"
+}], "GuideText",
+ CellID->863977560],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B0"]],"paclet:FeynCalc/ref/B0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B00"]],"paclet:FeynCalc/ref/B00"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B1"]],"paclet:FeynCalc/ref/B1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B11"]],"paclet:FeynCalc/ref/B11"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 2-point integrals (bubbles)"
+}], "GuideText",
+ CellID->512824359],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["C0"]],"paclet:FeynCalc/ref/C0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 3-point integrals (triangles)"
+}], "GuideText",
+ CellID->1115857362],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["D0"]],"paclet:FeynCalc/ref/D0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 4-point integrals (boxes)"
+}], "GuideText",
+ CellID->143835829],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DB0"]],"paclet:FeynCalc/ref/DB0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " derivative of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B0"]],"paclet:FeynCalc/ref/B0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " with respect to the external momentum"
+}], "GuideText",
+ CellID->883206687],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DB1"]],"paclet:FeynCalc/ref/DB1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " derivative of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B1"]],"paclet:FeynCalc/ref/B1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " with respect to the external momentum"
+}], "GuideText",
+ CellID->439407944],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCApart"]],"paclet:FeynCalc/ref/FCApart"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " backend of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ApartFF"]],"paclet:FeynCalc/ref/ApartFF"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", works only on single loop integrals"
+}], "GuideText",
+ CellID->1595882694],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCIntegral"]],"paclet:FeynCalc/ref/FCIntegral"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " head of loop integrals"
+}], "GuideText",
+ CellID->333845561],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopBasisIncompleteQ"]],
+    "paclet:FeynCalc/ref/FCLoopBasisIncompleteQ"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the propagators of a loop integral do not form a basis"
+}], "GuideText",
+ CellID->1110841143],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopBasisOverdeterminedQ"]],
+    "paclet:FeynCalc/ref/FCLoopBasisOverdeterminedQ"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the propagators of a loop integral are linearly dependent"
+}], "GuideText",
+ CellID->714568367],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopBasisFindCompletion"]],
+    "paclet:FeynCalc/ref/FCLoopBasisFindCompletion"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " determines propagators that need to be included in the loop integral to \
+ensure that its propagators form a basis"
+}], "GuideText",
+ CellID->251142308],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopCanonicalize"]],"paclet:FeynCalc/ref/FCLoopCanonicalize"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that canonicalizes free Lorentz indices of 1-loop \
+integrals"
+}], "GuideText",
+ CellID->1336937891],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopExtract"]],"paclet:FeynCalc/ref/FCLoopExtract"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " extracts loop integrals"
+}], "GuideText",
+ CellID->1906541245],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopIsolate"]],"paclet:FeynCalc/ref/FCLoopIsolate"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " wraps loop integrals into specified heads"
+}], "GuideText",
+ CellID->757005022],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopSolutionList"]],"paclet:FeynCalc/ref/FCLoopSolutionList"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that processes the output of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopCanonicalize"]],"paclet:FeynCalc/ref/FCLoopCanonicalize"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " "
+}], "GuideText",
+ CellID->284159366],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCLoopSplit"]],"paclet:FeynCalc/ref/FCLoopSplit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " splits the expressions into pieces that contain different types of loop \
+integrals"
+}], "GuideText",
+ CellID->1711785091],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCMultiLoopTID"]],"paclet:FeynCalc/ref/FCMultiLoopTID"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " tensor reduction of multi-loop integrals (only for non-zero Gram \
+determinants)"
+}], "GuideText",
+ CellID->777565246],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominatorCombine"]],
+    "paclet:FeynCalc/ref/FeynAmpDenominatorCombine"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " combines products of propagators"
+}], "GuideText",
+ CellID->127777310],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominatorSimplify"]],
+    "paclet:FeynCalc/ref/FeynAmpDenominatorSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies loop integrals by doing shifts and detects integrals that \
+vanish by symmetry."
+}], "GuideText",
+ CellID->164601953],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominatorSplit"]],
+    "paclet:FeynCalc/ref/FeynAmpDenominatorSplit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " splits all ",
+ ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"],
+ "'s into products of single propagators"
+}], "GuideText",
+ CellID->1822975320],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynmanParametrize"]],"paclet:FeynCalc/ref/FeynmanParametrize"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces Feynman parametrization for some 1-loop integrals"
+}], "GuideText",
+ CellID->727371440],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FromTFI"]],"paclet:FeynCalc/ref/FromTFI"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ranslates TFI, TVI and TJI Tarcer-notation to FeynCalc notation"
+}], "GuideText",
+ CellID->1377966861],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GammaExpand"]],"paclet:FeynCalc/ref/GammaExpand"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites ",
+ Cell[BoxData[{
+  TemplateBox[{Cell[
+     TextData["Gamma"]],"paclet:ref/Gamma"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"], "\n", 
+  RowBox[{"[", 
+   RowBox[{"n", " ", "+", " ", "m"}], "]"}]}], "InlineFunctionSans"],
+ " where n is an integer"
+}], "GuideText",
+ CellID->1684971587],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GenPaVe"]],"paclet:FeynCalc/ref/GenPaVe"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PaVe"]],"paclet:FeynCalc/ref/PaVe"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denote invariant Passarino-Veltman integrals"
+}], "GuideText",
+ CellID->1716225519],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Hill"]],"paclet:FeynCalc/ref/Hill"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gives the Hill identity"
+}], "GuideText",
+ CellID->671837658],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["HypergeometricAC"]],"paclet:FeynCalc/ref/HypergeometricAC"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " analytically continues ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Hypergeometric2F1"]],"paclet:ref/Hypergeometric2F1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " functions"
+}], "GuideText",
+ CellID->1636252055],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["HypergeometricIR"]],"paclet:FeynCalc/ref/HypergeometricIR"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes a particular integral represenetation for all ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Hypergeometric2F1"]],"paclet:ref/Hypergeometric2F1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "[a,b,c,d]"
+}], "GuideText",
+ CellID->1675333030],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["HypergeometricSE"]],"paclet:FeynCalc/ref/HypergeometricSE"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] expresses hypergeometric functions by their series \
+expansion", "GuideEmDash"]
+}], "GuideText",
+ CellID->373844893],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["HypExplicit"]],"paclet:FeynCalc/ref/HypExplicit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expresses ",
+ StyleBox[" hypergeometric functions by their definition in terms of a sum", 
+  "GuideEmDash"]
+}], "GuideText",
+ CellID->1693861457],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["HypInt"]],"paclet:FeynCalc/ref/HypInt"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Hypergeometric2F1"]],"paclet:ref/Hypergeometric2F1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " functions by their integral definition"
+}], "GuideText",
+ CellID->305598727],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["IFPDOff"]],"paclet:FeynCalc/ref/IFPDOff"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes from ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["IFPD"]],"paclet:FeynCalc/ref/IFPD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " representation to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominator"]],"paclet:FeynCalc/ref/FeynAmpDenominator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->554636843],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["IFPDOn"]],"paclet:FeynCalc/ref/IFPDOn"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes from ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominator"]],"paclet:FeynCalc/ref/FeynAmpDenominator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " representation to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["IFPD"]],"paclet:FeynCalc/ref/IFPD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1378134869],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["IntegrateByParts"]],"paclet:FeynCalc/ref/IntegrateByParts"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ ButtonBox["PartialIntegrate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PartialIntegrate"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " integration by parts for particular Feynman parameter integrals"
+}], "GuideText",
+ CellID->136967693],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["OneLoop"]],"paclet:FeynCalc/ref/OneLoop"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates  1-loop Feynman diagram amplitudes"
+}], "GuideText",
+ CellID->965355169],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["OneLoopSimplify"]],"paclet:FeynCalc/ref/OneLoopSimplify"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies  1-loop Feynman diagram amplitudes"
+}], "GuideText",
+ CellID->479804421],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ToHypergeometric"]],"paclet:FeynCalc/ref/ToHypergeometric"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Hypergeometric2F1"]],"paclet:ref/Hypergeometric2F1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->932281504],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PaveOrder"]],"paclet:FeynCalc/ref/PaveOrder"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the arguments of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["D0"]],"paclet:FeynCalc/ref/D0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " in a standard way"
+}], "GuideText",
+ CellID->200996743],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PaVeReduce"]],"paclet:FeynCalc/ref/PaVeReduce"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " reduces Passarino-Veltman integrals down to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["A0"]],"paclet:FeynCalc/ref/A0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["B0"]],"paclet:FeynCalc/ref/B0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["C0"]],"paclet:FeynCalc/ref/C0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " and ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["D0"]],"paclet:FeynCalc/ref/D0"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1268052330],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PropagatorDenominatorExplicit"]],
+    "paclet:FeynCalc/ref/PropagatorDenominatorExplicit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynAmpDenominator"]],"paclet:FeynCalc/ref/FeynAmpDenominator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " in terms of scalar products and masses"
+}], "GuideText",
+ CellID->2037908586],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["RussianTrick"]],"paclet:FeynCalc/ref/RussianTrick"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " derives IBP relations for 2-loop self-energy integrals"
+}], "GuideText",
+ CellID->334277431],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ScalarProductCancel"]],
+    "paclet:FeynCalc/ref/ScalarProductCancel"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " cancels scalar products with propagators"
+}], "GuideText",
+ CellID->839585187],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SimplifyDeltaFunction"]],
+    "paclet:FeynCalc/ref/SimplifyDeltaFunction"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies some simplifications to ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeltaFunction"]],"paclet:FeynCalc/ref/DeltaFunction"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->1574102580],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Sn"]],"paclet:FeynCalc/ref/Sn"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Pi]", 
+    FractionBox["n", "2"]], "/", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"2", "\[Pi]"}], ")"}], "n"]}]], "InlineFormula"]
+}], "GuideText",
+ CellID->1554094936],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Tdec"]],"paclet:FeynCalc/ref/Tdec"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates tensor decomposition formulas for loop integrals"
+}], "GuideText",
+ CellID->1979909722],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TFIOrder"]],"paclet:FeynCalc/ref/TFIOrder"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the arguments of some TFI functions in a standard way"
+}], "GuideText",
+ CellID->613914279],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TID"]],"paclet:FeynCalc/ref/TID"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "does a 1-loop tensor integral decomposition"
+}], "GuideText",
+ CellID->1765084008],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TIDL"]],"paclet:FeynCalc/ref/TIDL"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " library of tensor integral decomposition formulas"
+}], "GuideText",
+ CellID->982645341],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ToDistribution"]],"paclet:FeynCalc/ref/ToDistribution"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeltaFunction"]],"paclet:FeynCalc/ref/DeltaFunction"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeltaFunctionPrime"]],"paclet:FeynCalc/ref/DeltaFunctionPrime"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " and ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PlusDistribution"]],"paclet:FeynCalc/ref/PlusDistribution"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->2096516005],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ToFI"]],"paclet:FeynCalc/ref/ToFI"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ToTFI"]],"paclet:FeynCalc/ref/ToTFI"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " converts 1- and 2-loop scalar self-energy integrals to the Tarcer \
+notation"
+}], "GuideText",
+ CellID->1860467462],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ToPaVe"]],"paclet:FeynCalc/ref/ToPaVe"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " converts scalar 1-loop integrals to Passarino Veltman scalar functions "
+}], "GuideText",
+ CellID->242380689],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["TrickIntegrate"]],"paclet:FeynCalc/ref/TrickIntegrate"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " integration of some special distributions"
+}], "GuideText",
+ CellID->485753619],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["UVPart"]],"paclet:FeynCalc/ref/UVPart"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " discards UV-finite integrals"
+}], "GuideText",
+ CellID->91877457]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Export and import", "GuideFunctionsSubsection",
+ CellID->198236928],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynCalc2FORM"]],"paclet:FeynCalc/ref/FeynCalc2FORM"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " displays expression in FORM syntax"
+}], "GuideText",
+ CellID->1077126346],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynCalcToLaTeX"]],"paclet:FeynCalc/ref/FeynCalcToLaTeX"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generates LaTeX"
+}], "GuideText",
+ CellID->1438938037],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FORM2FeynCalc"]],"paclet:FeynCalc/ref/FORM2FeynCalc"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " translates teh FORM expression in file into FeynCalc notation"
+}], "GuideText",
+ CellID->1856631784],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["StringChomp"]],"paclet:FeynCalc/ref/StringChomp"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " chops initial and final white space of a string"
+}], "GuideText",
+ CellID->440214481],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Write2"]],"paclet:FeynCalc/ref/Write2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " writes the given settings in sequence followed by a newline to the \
+specified output file"
+}], "GuideText",
+ CellID->390527761]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Feynman rules and amplitudes", "GuideFunctionsSubsection",
+ CellID->1448855878],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["BackgroundGluonVertex"]],
+    "paclet:FeynCalc/ref/BackgroundGluonVertex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "3-gluon vertex in the background field gauge"
+}], "GuideText",
+ CellID->594655451],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ChargeConjugationMatrix"]],
+    "paclet:FeynCalc/ref/ChargeConjugationMatrix"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " charge conjugation matrix"
+}], "GuideText",
+ CellID->231184642],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ChargeConjugationMatrixInv"]],
+    "paclet:FeynCalc/ref/ChargeConjugationMatrixInv"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ChargeConjugationMatrix"]],
+    "paclet:FeynCalc/ref/ChargeConjugationMatrix"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->2057902261],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ComplexConjugate"]],"paclet:FeynCalc/ref/ComplexConjugate"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " complex conjugates Feynman amplitudes"
+}], "GuideText",
+ CellID->1847839027],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CovariantD"]],"paclet:FeynCalc/ref/CovariantD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generic covariant derivative"
+}], "GuideText",
+ CellID->2013380245],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CovariantFieldDerivative"]],
+    "paclet:FeynCalc/ref/CovariantFieldDerivative"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " covariant field derivative"
+}], "GuideText",
+ CellID->2016043479],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DoPolarizationSums"]],"paclet:FeynCalc/ref/DoPolarizationSums"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " sums over physical polarizations of external massless vector bosons"
+}], "GuideText",
+ CellID->397456419],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExpandPartialD"]],"paclet:FeynCalc/ref/ExpandPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands DOT products of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["QuantumField"]],"paclet:FeynCalc/ref/QuantumField"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "'s using the Leibniz rule"
+}], "GuideText",
+ CellID->747107785],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ExplicitPartialD"]],"paclet:FeynCalc/ref/ExplicitPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts the definition for ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LeftRightPartialD"]],"paclet:FeynCalc/ref/LeftRightPartialD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "and ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["LeftRightPartialD2"]],"paclet:FeynCalc/ref/LeftRightPartialD2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellID->599890035],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FAPatch"]],"paclet:FeynCalc/ref/FAPatch"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " patches FeynArts to be compatible with FeynCalc"
+}], "GuideText",
+ CellID->593077025],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCFAConvert"]],"paclet:FeynCalc/ref/FCFAConvert"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "converts a FeynArts amplitude to FeynCalc"
+}], "GuideText",
+ CellID->1711779075],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FCPrepareFAAmp"]],"paclet:FeynCalc/ref/FCPrepareFAAmp"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function for a partial conversion of a FeynArts amplitude to \
+FeynCalc."
+}], "GuideText",
+ CellID->1327458149],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FermionSpinSum"]],"paclet:FeynCalc/ref/FermionSpinSum"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " constructs Dirac traces out of squared ampliudes with external Dirac \
+fermions."
+}], "GuideText",
+ CellID->2002786353],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FeynRule"]],"paclet:FeynCalc/ref/FeynRule"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " determines Feynman rules from Lagrangians"
+}], "GuideText",
+ CellID->1230786365],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FieldDerivative"]],"paclet:FeynCalc/ref/FieldDerivative"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " field derivative"
+}], "GuideText",
+ CellID->837206947],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FieldStrength"]],"paclet:FeynCalc/ref/FieldStrength"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " field strength tensor ",
+ Cell[BoxData[
+  SuperscriptBox["F", "\[Mu]\[Nu]"]], "InlineFormula"]
+}], "GuideText",
+ CellID->1427392211],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["FunctionalD"]],"paclet:FeynCalc/ref/FunctionalD"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "functional derivative"
+}], "GuideText",
+ CellID->866592844],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GhostPropagator"]],"paclet:FeynCalc/ref/GhostPropagator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ghost propagator"
+}], "GuideText",
+ CellID->30813872],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GluonGhostVertex"]],"paclet:FeynCalc/ref/GluonGhostVertex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gluon ghost vertex"
+}], "GuideText",
+ CellID->660953776],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GluonPropagator"]],"paclet:FeynCalc/ref/GluonPropagator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gluon propagator"
+}], "GuideText",
+ CellID->183769818],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GluonSelfEnergy"]],"paclet:FeynCalc/ref/GluonSelfEnergy"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " 1-loop gluon self-energy"
+}], "GuideText",
+ CellID->2139004592],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GluonVertex"]],"paclet:FeynCalc/ref/GluonVertex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " 3- and 4-gluon vertices"
+}], "GuideText",
+ CellID->819406206],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PolarizationSum"]],"paclet:FeynCalc/ref/PolarizationSum"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " sums over polarizations of vector bosons"
+}], "GuideText",
+ CellID->202849658],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["QCDFeynmanRuleConvention"]],
+    "paclet:FeynCalc/ref/QCDFeynmanRuleConvention"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " sign convention for QCD Feynman rules"
+}], "GuideText",
+ CellID->1044703852],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["QuarkGluonVertex"]],"paclet:FeynCalc/ref/QuarkGluonVertex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " quark gluon vertex"
+}], "GuideText",
+ CellID->1894290270],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["QuarkPropagator"]],"paclet:FeynCalc/ref/QuarkPropagator"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " quark propagator"
+}], "GuideText",
+ CellID->1081498198],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ScalarGluonVertex"]],"paclet:FeynCalc/ref/ScalarGluonVertex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "scalar-scalar-gluon vertex"
+}], "GuideText",
+ CellID->1449625308],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SMP"]],"paclet:FeynCalc/ref/SMP"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes symbols for various SM paremeters"
+}], "GuideText",
+ CellID->1907820234],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SMVertex"]],"paclet:FeynCalc/ref/SMVertex"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " some SM vertices"
+}], "GuideText",
+ CellID->1716995820]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Tables", "GuideFunctionsSubsection",
+ CellID->16428002],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Amplitude"]],"paclet:FeynCalc/ref/Amplitude"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of Feynman amplitudes"
+}], "GuideText",
+ CellID->573273780],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["AnomalousDimension"]],"paclet:FeynCalc/ref/AnomalousDimension"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " non-singlet one-loop contribution to the anomalous dimension in the ",
+ Cell[BoxData[
+  OverscriptBox["MS", "_"]], "InlineFormula"],
+ " scheme"
+}], "GuideText",
+ CellID->58857743],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CheckDB"]],"paclet:FeynCalc/ref/CheckDB"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " saves or retrieves expressions from the database"
+}], "GuideText",
+ CellID->2085845974],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Convolute"]],"paclet:FeynCalc/ref/Convolute"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ConvoluteTable"]],"paclet:FeynCalc/ref/ConvoluteTable"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " convolution of functions"
+}], "GuideText",
+ CellID->113893828],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CounterTerm"]],"paclet:FeynCalc/ref/CounterTerm"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of counter terms."
+}], "GuideText",
+ CellID->398578851],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Gamma1"]],"paclet:FeynCalc/ref/Gamma1"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Gamma2"]],"paclet:FeynCalc/ref/Gamma2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Gamma3"]],"paclet:FeynCalc/ref/Gamma3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["GammaEpsilon"]],"paclet:FeynCalc/ref/GammaEpsilon"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " special products and expansions of ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Gamma"]],"paclet:ref/Gamma"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " functions"
+}], "GuideText",
+ CellID->1016459733],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Integrate2"]],"paclet:FeynCalc/ref/Integrate2"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Integrate3"]],"paclet:FeynCalc/ref/Integrate3"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Integrate4"]],"paclet:FeynCalc/ref/Integrate4"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ ", ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Integrate5"]],"paclet:FeynCalc/ref/Integrate5"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " some integrals"
+}], "GuideText",
+ CellID->1266157],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["InverseMellin"]],"paclet:FeynCalc/ref/InverseMellin"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse Mellin transform for some polynomials"
+}], "GuideText",
+ CellID->1817035294],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Kummer"]],"paclet:FeynCalc/ref/Kummer"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies Kummer relations"
+}], "GuideText",
+ CellID->1052156503],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Lagrangian"]],"paclet:FeynCalc/ref/Lagrangian"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of Lagrangians"
+}], "GuideText",
+ CellID->1278270450],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Nielsen"]],"paclet:FeynCalc/ref/Nielsen"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "denotes Nielsen's polylogarithm"
+}], "GuideText",
+ CellID->1690213129],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SimplifyPolyLog"]],"paclet:FeynCalc/ref/SimplifyPolyLog"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " several simplifications for ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Log"]],"paclet:ref/Log"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " and ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["PolyLog"]],"paclet:ref/PolyLog"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " functions under certain assumptions"
+}], "GuideText",
+ CellID->1901226625],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SplittingFunction"]],"paclet:FeynCalc/ref/SplittingFunction"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of splitting functiosn"
+}], "GuideText",
+ CellID->2052229439]
+}, Closed]]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -117,15 +4193,18 @@ TaggingRules->{
     Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 55, 38.548237}", 
+   "built" -> "{2016, 1, 2, 15, 6, 11.247727}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Guide", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
-    "None", "summary" -> "", "synonyms" -> {}, "title" -> "FeynCalc", 
-    "titlemodifier" -> "", "windowtitle" -> "FeynCalc", "type" -> "Guide", 
-    "uri" -> "FeynCalc/guide/FeynCalc"}},
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+    "None", "summary" -> 
+    "FeynCalc is a Mathematica package for algebraic calculation in Quantum \
+Field Theory and semi-automatic evaluation of Feynman Diagrams", 
+    "synonyms" -> {}, "title" -> "FeynCalc", "titlemodifier" -> "", 
+    "windowtitle" -> "FeynCalc", "type" -> "Guide", "uri" -> 
+    "FeynCalc/guide/FeynCalc"}},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
@@ -140,19 +4219,501 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2251, 52, 70, "AnchorBarGrid",
+Cell[580, 21, 29480, 569, 70, "AnchorBarGrid",
  CellID->1],
 Cell[CellGroupData[{
-Cell[2856, 77, 50, 1, 70, "GuideTitle",
+Cell[30085, 594, 50, 1, 70, "GuideTitle",
  CellID->942062912],
-Cell[2909, 80, 56, 1, 70, "GuideAbstract",
- CellID->1]
+Cell[30138, 597, 239, 7, 70, "GuideAbstract",
+ CellID->2001916300]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3002, 86, 257, 11, 70, "GuideReferenceSection"],
-Cell[3262, 99, 31, 0, 70, "SectionHeaderSpacer"]
+Cell[30414, 609, 257, 11, 70, "GuideReferenceSection"],
+Cell[30674, 622, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[30730, 626, 70, 1, 70, "GuideFunctionsSubsection",
+ CellID->1344981135],
+Cell[30803, 629, 482, 16, 70, "GuideText",
+ CellID->552658513],
+Cell[31288, 647, 361, 13, 70, "GuideText",
+ CellID->1235023741],
+Cell[31652, 662, 297, 10, 70, "GuideText",
+ CellID->1076523595],
+Cell[31952, 674, 494, 16, 70, "GuideText",
+ CellID->917048888],
+Cell[32449, 692, 466, 16, 70, "GuideText",
+ CellID->1033282217],
+Cell[32918, 710, 432, 15, 70, "GuideText",
+ CellID->745071340],
+Cell[33353, 727, 739, 23, 70, "GuideText",
+ CellID->1851196232],
+Cell[34095, 752, 1863, 64, 70, "GuideText",
+ CellID->1686448459],
+Cell[35961, 818, 307, 10, 70, "GuideText",
+ CellID->264840152],
+Cell[36271, 830, 474, 16, 70, "GuideText",
+ CellID->1624859494],
+Cell[36748, 848, 1186, 40, 70, "GuideText",
+ CellID->307637975],
+Cell[37937, 890, 832, 28, 70, "GuideText",
+ CellID->1680708588],
+Cell[38772, 920, 316, 10, 70, "GuideText",
+ CellID->1891570253],
+Cell[39091, 932, 504, 17, 70, "GuideText",
+ CellID->1483552361],
+Cell[39598, 951, 488, 16, 70, "GuideText",
+ CellID->476236246],
+Cell[40089, 969, 497, 16, 70, "GuideText",
+ CellID->2139347147],
+Cell[40589, 987, 498, 16, 70, "GuideText",
+ CellID->1131303773],
+Cell[41090, 1005, 1088, 34, 70, "GuideText",
+ CellID->1476055339],
+Cell[42181, 1041, 808, 28, 70, "GuideText",
+ CellID->495428205],
+Cell[42992, 1071, 301, 10, 70, "GuideText",
+ CellID->1403563110],
+Cell[43296, 1083, 295, 10, 70, "GuideText",
+ CellID->1275284258],
+Cell[43594, 1095, 301, 10, 70, "GuideText",
+ CellID->1257907745],
+Cell[43898, 1107, 295, 10, 70, "GuideText",
+ CellID->1005983702],
+Cell[44196, 1119, 279, 10, 70, "GuideText",
+ CellID->832103768],
+Cell[44478, 1131, 280, 10, 70, "GuideText",
+ CellID->431072089],
+Cell[44761, 1143, 309, 10, 70, "GuideText",
+ CellID->316776695],
+Cell[45073, 1155, 820, 28, 70, "GuideText",
+ CellID->651468345],
+Cell[45896, 1185, 293, 10, 70, "GuideText",
+ CellID->1386416972],
+Cell[46192, 1197, 375, 11, 70, "GuideText",
+ CellID->1889374617],
+Cell[46570, 1210, 324, 10, 70, "GuideText",
+ CellID->1384558840],
+Cell[46897, 1222, 315, 10, 70, "GuideText",
+ CellID->2003827822],
+Cell[47215, 1234, 313, 10, 70, "GuideText",
+ CellID->827330458],
+Cell[47531, 1246, 523, 17, 70, "GuideText",
+ CellID->1486910634],
+Cell[48057, 1265, 315, 10, 70, "GuideText",
+ CellID->1015009742],
+Cell[48375, 1277, 314, 10, 70, "GuideText",
+ CellID->146220986],
+Cell[48692, 1289, 482, 16, 70, "GuideText",
+ CellID->522984542],
+Cell[49177, 1307, 491, 16, 70, "GuideText",
+ CellID->1059337536],
+Cell[49671, 1325, 500, 16, 70, "GuideText",
+ CellID->137238398],
+Cell[50174, 1343, 343, 10, 70, "GuideText",
+ CellID->590785021],
+Cell[50520, 1355, 635, 22, 70, "GuideText",
+ CellID->305275299],
+Cell[51158, 1379, 381, 13, 70, "GuideText",
+ CellID->1136659773],
+Cell[51542, 1394, 384, 13, 70, "GuideText",
+ CellID->920034572],
+Cell[51929, 1409, 353, 12, 70, "GuideText",
+ CellID->1328328343],
+Cell[52285, 1423, 610, 20, 70, "GuideText",
+ CellID->1428923217],
+Cell[52898, 1445, 383, 14, 70, "GuideText",
+ CellID->1763987334],
+Cell[53284, 1461, 344, 12, 70, "GuideText",
+ CellID->1924638314]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[53665, 1478, 71, 1, 70, "GuideFunctionsSubsection",
+ CellID->218620916],
+Cell[53739, 1481, 437, 14, 70, "GuideText",
+ CellID->1010301503],
+Cell[54179, 1497, 445, 14, 70, "GuideText",
+ CellID->1271388718],
+Cell[54627, 1513, 457, 14, 70, "GuideText",
+ CellID->1736502128],
+Cell[55087, 1529, 630, 21, 70, "GuideText",
+ CellID->1287756566],
+Cell[55720, 1552, 294, 10, 70, "GuideText",
+ CellID->1747124358],
+Cell[56017, 1564, 441, 14, 70, "GuideText",
+ CellID->1504394922],
+Cell[56461, 1580, 324, 10, 70, "GuideText",
+ CellID->1596546686],
+Cell[56788, 1592, 623, 21, 70, "GuideText",
+ CellID->187460383],
+Cell[57414, 1615, 336, 9, 70, "GuideText",
+ CellID->333715746],
+Cell[57753, 1626, 521, 16, 70, "GuideText",
+ CellID->27396530],
+Cell[58277, 1644, 503, 16, 70, "GuideText",
+ CellID->1283386980],
+Cell[58783, 1662, 523, 16, 70, "GuideText",
+ CellID->2100021916],
+Cell[59309, 1680, 998, 33, 70, "GuideText",
+ CellID->898863791],
+Cell[60310, 1715, 325, 9, 70, "GuideText",
+ CellID->1647672763],
+Cell[60638, 1726, 442, 15, 70, "GuideText",
+ CellID->683465492],
+Cell[61083, 1743, 449, 15, 70, "GuideText",
+ CellID->1650215271],
+Cell[61535, 1760, 311, 10, 70, "GuideText",
+ CellID->1498216592],
+Cell[61849, 1772, 434, 15, 70, "GuideText",
+ CellID->253353205],
+Cell[62286, 1789, 319, 10, 70, "GuideText",
+ CellID->1212078011],
+Cell[62608, 1801, 444, 15, 70, "GuideText",
+ CellID->178528196],
+Cell[63055, 1818, 320, 10, 70, "GuideText",
+ CellID->1298957094],
+Cell[63378, 1830, 455, 15, 70, "GuideText",
+ CellID->1374272511],
+Cell[63836, 1847, 443, 15, 70, "GuideText",
+ CellID->1627933292],
+Cell[64282, 1864, 514, 16, 70, "GuideText",
+ CellID->1708462303],
+Cell[64799, 1882, 624, 21, 70, "GuideText",
+ CellID->1659205566],
+Cell[65426, 1905, 619, 21, 70, "GuideText",
+ CellID->1809157918],
+Cell[66048, 1928, 627, 22, 70, "GuideText",
+ CellID->869117662]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[66712, 1955, 71, 1, 70, "GuideFunctionsSubsection",
+ CellID->385817707],
+Cell[66786, 1958, 334, 10, 70, "GuideText",
+ CellID->2009629793],
+Cell[67123, 1970, 337, 10, 70, "GuideText",
+ CellID->512359346],
+Cell[67463, 1982, 355, 10, 70, "GuideText",
+ CellID->1524292158],
+Cell[67821, 1994, 330, 10, 70, "GuideText",
+ CellID->231212511],
+Cell[68154, 2006, 349, 10, 70, "GuideText",
+ CellID->1913592904],
+Cell[68506, 2018, 344, 11, 70, "GuideText",
+ CellID->693139341],
+Cell[68853, 2031, 371, 11, 70, "GuideText",
+ CellID->343872275],
+Cell[69227, 2044, 343, 11, 70, "GuideText",
+ CellID->548161550],
+Cell[69573, 2057, 343, 10, 70, "GuideText",
+ CellID->987343741],
+Cell[69919, 2069, 310, 10, 70, "GuideText",
+ CellID->1285601191],
+Cell[70232, 2081, 896, 28, 70, "GuideText",
+ CellID->1809925827],
+Cell[71131, 2111, 401, 14, 70, "GuideText",
+ CellID->344422616],
+Cell[71535, 2127, 707, 22, 70, "GuideText",
+ CellID->2009219923],
+Cell[72245, 2151, 321, 10, 70, "GuideText",
+ CellID->874103215],
+Cell[72569, 2163, 317, 10, 70, "GuideText",
+ CellID->579030092],
+Cell[72889, 2175, 325, 10, 70, "GuideText",
+ CellID->1156270314],
+Cell[73217, 2187, 361, 10, 70, "GuideText",
+ CellID->629389521],
+Cell[73581, 2199, 336, 10, 70, "GuideText",
+ CellID->715481727]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[73954, 2214, 68, 1, 70, "GuideFunctionsSubsection",
+ CellID->46643246],
+Cell[74025, 2217, 398, 13, 70, "GuideText",
+ CellID->2131819227],
+Cell[74426, 2232, 341, 10, 70, "GuideText",
+ CellID->1211971239],
+Cell[74770, 2244, 311, 10, 70, "GuideText",
+ CellID->333117850],
+Cell[75084, 2256, 501, 15, 70, "GuideText",
+ CellID->615769661],
+Cell[75588, 2273, 346, 10, 70, "GuideText",
+ CellID->1531032786],
+Cell[75937, 2285, 333, 10, 70, "GuideText",
+ CellID->688938496],
+Cell[76273, 2297, 369, 11, 70, "GuideText",
+ CellID->1740429042],
+Cell[76645, 2310, 505, 15, 70, "GuideText",
+ CellID->297775359],
+Cell[77153, 2327, 361, 11, 70, "GuideText",
+ CellID->255459663],
+Cell[77517, 2340, 313, 10, 70, "GuideText",
+ CellID->1463755561],
+Cell[77833, 2352, 377, 11, 70, "GuideText",
+ CellID->1334035786],
+Cell[78213, 2365, 368, 11, 70, "GuideText",
+ CellID->525715973],
+Cell[78584, 2378, 300, 10, 70, "GuideText",
+ CellID->218430270],
+Cell[78887, 2390, 445, 15, 70, "GuideText",
+ CellID->1707494307]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[79369, 2410, 91, 1, 70, "GuideFunctionsSubsection",
+ CellID->1113739100],
+Cell[79463, 2413, 314, 10, 70, "GuideText",
+ CellID->1482543113],
+Cell[79780, 2425, 492, 16, 70, "GuideText",
+ CellID->1937939922],
+Cell[80275, 2443, 299, 10, 70, "GuideText",
+ CellID->526201837],
+Cell[80577, 2455, 699, 21, 70, "GuideText",
+ CellID->369276061],
+Cell[81279, 2478, 338, 11, 70, "GuideText",
+ CellID->795497081],
+Cell[81620, 2491, 451, 16, 70, "GuideText",
+ CellID->284457576],
+Cell[82074, 2509, 329, 11, 70, "GuideText",
+ CellID->1861924278],
+Cell[82406, 2522, 523, 16, 70, "GuideText",
+ CellID->1355907511],
+Cell[82932, 2540, 481, 16, 70, "GuideText",
+ CellID->1719074274],
+Cell[83416, 2558, 345, 11, 70, "GuideText",
+ CellID->1309406098]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[83798, 2574, 69, 1, 70, "GuideFunctionsSubsection",
+ CellID->121380019],
+Cell[83870, 2577, 316, 10, 70, "GuideText",
+ CellID->821249197],
+Cell[84189, 2589, 345, 10, 70, "GuideText",
+ CellID->1593535902],
+Cell[84537, 2601, 349, 10, 70, "GuideText",
+ CellID->210505242],
+Cell[84889, 2613, 519, 16, 70, "GuideText",
+ CellID->1595578132],
+Cell[85411, 2631, 311, 10, 70, "GuideText",
+ CellID->1561361899]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[85759, 2646, 71, 1, 70, "GuideFunctionsSubsection",
+ CellID->1137355821],
+Cell[85833, 2649, 307, 10, 70, "GuideText",
+ CellID->484191528],
+Cell[86143, 2661, 329, 10, 70, "GuideText",
+ CellID->1364110476],
+Cell[86475, 2673, 315, 10, 70, "GuideText",
+ CellID->863977560],
+Cell[86793, 2685, 810, 28, 70, "GuideText",
+ CellID->512824359],
+Cell[87606, 2715, 311, 10, 70, "GuideText",
+ CellID->1115857362],
+Cell[87920, 2727, 306, 10, 70, "GuideText",
+ CellID->143835829],
+Cell[88229, 2739, 481, 16, 70, "GuideText",
+ CellID->883206687],
+Cell[88713, 2757, 481, 16, 70, "GuideText",
+ CellID->439407944],
+Cell[89197, 2775, 496, 16, 70, "GuideText",
+ CellID->1595882694],
+Cell[89696, 2793, 301, 10, 70, "GuideText",
+ CellID->333845561],
+Cell[90000, 2805, 373, 11, 70, "GuideText",
+ CellID->1110841143],
+Cell[90376, 2818, 383, 11, 70, "GuideText",
+ CellID->714568367],
+Cell[90762, 2831, 428, 12, 70, "GuideText",
+ CellID->251142308],
+Cell[91193, 2845, 376, 11, 70, "GuideText",
+ CellID->1336937891],
+Cell[91572, 2858, 309, 10, 70, "GuideText",
+ CellID->1906541245],
+Cell[91884, 2870, 326, 10, 70, "GuideText",
+ CellID->757005022],
+Cell[92213, 2882, 540, 16, 70, "GuideText",
+ CellID->284159366],
+Cell[92756, 2900, 365, 11, 70, "GuideText",
+ CellID->1711785091],
+Cell[93124, 2913, 367, 11, 70, "GuideText",
+ CellID->777565246],
+Cell[93494, 2926, 346, 11, 70, "GuideText",
+ CellID->127777310],
+Cell[93843, 2939, 406, 12, 70, "GuideText",
+ CellID->164601953],
+Cell[94252, 2953, 476, 15, 70, "GuideText",
+ CellID->1822975320],
+Cell[94731, 2970, 355, 10, 70, "GuideText",
+ CellID->727371440],
+Cell[95089, 2982, 337, 10, 70, "GuideText",
+ CellID->1377966861],
+Cell[95429, 2994, 544, 18, 70, "GuideText",
+ CellID->1684971587],
+Cell[95976, 3014, 488, 16, 70, "GuideText",
+ CellID->1716225519],
+Cell[96467, 3032, 290, 10, 70, "GuideText",
+ CellID->671837658],
+Cell[96760, 3044, 510, 16, 70, "GuideText",
+ CellID->1636252055],
+Cell[97273, 3062, 544, 16, 70, "GuideText",
+ CellID->1675333030],
+Cell[97820, 3080, 348, 10, 70, "GuideText",
+ CellID->373844893],
+Cell[98171, 3092, 388, 12, 70, "GuideText",
+ CellID->1693861457],
+Cell[98562, 3106, 507, 16, 70, "GuideText",
+ CellID->305598727],
+Cell[99072, 3124, 664, 21, 70, "GuideText",
+ CellID->554636843],
+Cell[99739, 3147, 663, 21, 70, "GuideText",
+ CellID->1378134869],
+Cell[100405, 3170, 468, 14, 70, "GuideText",
+ CellID->136967693],
+Cell[100876, 3186, 318, 10, 70, "GuideText",
+ CellID->965355169],
+Cell[101197, 3198, 334, 10, 70, "GuideText",
+ CellID->479804421],
+Cell[101534, 3210, 482, 15, 70, "GuideText",
+ CellID->932281504],
+Cell[102019, 3227, 483, 16, 70, "GuideText",
+ CellID->200996743],
+Cell[102505, 3245, 984, 33, 70, "GuideText",
+ CellID->1268052330],
+Cell[103492, 3280, 567, 17, 70, "GuideText",
+ CellID->2037908586],
+Cell[104062, 3299, 337, 10, 70, "GuideText",
+ CellID->334277431],
+Cell[104402, 3311, 342, 11, 70, "GuideText",
+ CellID->839585187],
+Cell[104747, 3324, 520, 16, 70, "GuideText",
+ CellID->1574102580],
+Cell[105270, 3342, 460, 17, 70, "GuideText",
+ CellID->1554094936],
+Cell[105733, 3361, 327, 10, 70, "GuideText",
+ CellID->1979909722],
+Cell[106063, 3373, 335, 10, 70, "GuideText",
+ CellID->613914279],
+Cell[106401, 3385, 314, 11, 70, "GuideText",
+ CellID->1765084008],
+Cell[106718, 3398, 316, 10, 70, "GuideText",
+ CellID->982645341],
+Cell[107037, 3410, 875, 27, 70, "GuideText",
+ CellID->2096516005],
+Cell[107915, 3439, 516, 17, 70, "GuideText",
+ CellID->1860467462],
+Cell[108434, 3458, 342, 10, 70, "GuideText",
+ CellID->242380689],
+Cell[108779, 3470, 328, 10, 70, "GuideText",
+ CellID->485753619],
+Cell[109110, 3482, 298, 10, 70, "GuideText",
+ CellID->91877457]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[109445, 3497, 73, 1, 70, "GuideFunctionsSubsection",
+ CellID->198236928],
+Cell[109521, 3500, 320, 10, 70, "GuideText",
+ CellID->1077126346],
+Cell[109844, 3512, 305, 10, 70, "GuideText",
+ CellID->1438938037],
+Cell[110152, 3524, 347, 10, 70, "GuideText",
+ CellID->1856631784],
+Cell[110502, 3536, 328, 10, 70, "GuideText",
+ CellID->440214481],
+Cell[110833, 3548, 361, 11, 70, "GuideText",
+ CellID->390527761]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[111231, 3564, 85, 1, 70, "GuideFunctionsSubsection",
+ CellID->1448855878],
+Cell[111319, 3567, 355, 12, 70, "GuideText",
+ CellID->594655451],
+Cell[111677, 3581, 335, 11, 70, "GuideText",
+ CellID->231184642],
+Cell[112015, 3594, 534, 17, 70, "GuideText",
+ CellID->2057902261],
+Cell[112552, 3613, 329, 10, 70, "GuideText",
+ CellID->1847839027],
+Cell[112884, 3625, 308, 10, 70, "GuideText",
+ CellID->2013380245],
+Cell[113195, 3637, 339, 11, 70, "GuideText",
+ CellID->2016043479],
+Cell[113537, 3650, 362, 10, 70, "GuideText",
+ CellID->397456419],
+Cell[113902, 3662, 520, 16, 70, "GuideText",
+ CellID->747107785],
+Cell[114425, 3680, 707, 21, 70, "GuideText",
+ CellID->599890035],
+Cell[115135, 3703, 320, 10, 70, "GuideText",
+ CellID->593077025],
+Cell[115458, 3715, 328, 11, 70, "GuideText",
+ CellID->1711779075],
+Cell[115789, 3728, 370, 11, 70, "GuideText",
+ CellID->1327458149],
+Cell[116162, 3741, 368, 11, 70, "GuideText",
+ CellID->2002786353],
+Cell[116533, 3754, 317, 10, 70, "GuideText",
+ CellID->1230786365],
+Cell[116853, 3766, 305, 10, 70, "GuideText",
+ CellID->837206947],
+Cell[117161, 3778, 379, 12, 70, "GuideText",
+ CellID->1427392211],
+Cell[117543, 3792, 301, 10, 70, "GuideText",
+ CellID->866592844],
+Cell[117847, 3804, 304, 10, 70, "GuideText",
+ CellID->30813872],
+Cell[118154, 3816, 309, 10, 70, "GuideText",
+ CellID->660953776],
+Cell[118466, 3828, 305, 10, 70, "GuideText",
+ CellID->183769818],
+Cell[118774, 3840, 314, 10, 70, "GuideText",
+ CellID->2139004592],
+Cell[119091, 3852, 304, 10, 70, "GuideText",
+ CellID->819406206],
+Cell[119398, 3864, 329, 10, 70, "GuideText",
+ CellID->202849658],
+Cell[119730, 3876, 350, 11, 70, "GuideText",
+ CellID->1044703852],
+Cell[120083, 3889, 310, 10, 70, "GuideText",
+ CellID->1894290270],
+Cell[120396, 3901, 306, 10, 70, "GuideText",
+ CellID->1081498198],
+Cell[120705, 3913, 325, 11, 70, "GuideText",
+ CellID->1449625308],
+Cell[121033, 3926, 311, 10, 70, "GuideText",
+ CellID->1907820234],
+Cell[121347, 3938, 292, 10, 70, "GuideText",
+ CellID->1716995820]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[121676, 3953, 61, 1, 70, "GuideFunctionsSubsection",
+ CellID->16428002],
+Cell[121740, 3956, 307, 10, 70, "GuideText",
+ CellID->573273780],
+Cell[122050, 3968, 436, 13, 70, "GuideText",
+ CellID->58857743],
+Cell[122489, 3983, 322, 10, 70, "GuideText",
+ CellID->2085845974],
+Cell[122814, 3995, 491, 16, 70, "GuideText",
+ CellID->113893828],
+Cell[123308, 4013, 307, 10, 70, "GuideText",
+ CellID->398578851],
+Cell[123618, 4025, 1013, 34, 70, "GuideText",
+ CellID->1016459733],
+Cell[124634, 4061, 837, 28, 70, "GuideText",
+ CellID->1266157],
+Cell[125474, 4091, 331, 10, 70, "GuideText",
+ CellID->1817035294],
+Cell[125808, 4103, 296, 10, 70, "GuideText",
+ CellID->1052156503],
+Cell[126107, 4115, 303, 10, 70, "GuideText",
+ CellID->1278270450],
+Cell[126413, 4127, 310, 11, 70, "GuideText",
+ CellID->1690213129],
+Cell[126726, 4140, 681, 22, 70, "GuideText",
+ CellID->1901226625],
+Cell[127410, 4164, 325, 10, 70, "GuideText",
+ CellID->2052229439]
+}, Closed]]
 }, Open  ]],
-Cell[3308, 102, 23, 0, 70, "FooterCell"]
+Cell[127762, 4178, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

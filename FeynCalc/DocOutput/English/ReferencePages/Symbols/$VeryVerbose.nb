@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13743,        465]
-NotebookOptionsPosition[      8115,        285]
-NotebookOutlinePosition[     11861,        395]
-CellTagsIndexPosition[     11745,        389]
+NotebookDataLength[     13750,        465]
+NotebookOptionsPosition[      8114,        285]
+NotebookOutlinePosition[     11869,        395]
+CellTagsIndexPosition[     11753,        389]
 WindowTitle->$VeryVerbose
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ VeryVerbose.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$167216], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173588], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$VeryVerbose", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1675593247],
+ CellID->951626803],
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->539490151],
+ CellID->812312776],
 
 Cell[CellGroupData[{
 
@@ -298,7 +298,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 9, 37.781899}", 
+   "built" -> "{2016, 1, 2, 15, 20, 35.301570}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -311,7 +311,7 @@ during calculations.", "synonyms" -> {}, "title" -> "$VeryVerbose",
     "Symbol", "uri" -> "FeynCalc/ref/$VeryVerbose"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -320,7 +320,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -329,67 +329,67 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3404, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3404, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1675593247]},
+   CellID->951626803]},
  "$VeryVerbose"->{
-  Cell[4015, 122, 79, 2, 35, "Subsubsection",
+  Cell[4014, 122, 79, 2, 35, "Subsubsection",
    CellTags->"$VeryVerbose",
    CellID->61376549],
-  Cell[4119, 128, 107, 3, 27, "Input",
+  Cell[4118, 128, 107, 3, 27, "Input",
    CellTags->"$VeryVerbose",
    CellID->32384538],
-  Cell[4229, 133, 213, 7, 36, "Output",
+  Cell[4228, 133, 213, 7, 36, "Output",
    CellTags->"$VeryVerbose",
    CellID->108969208],
-  Cell[4457, 143, 159, 5, 27, "Input",
+  Cell[4456, 143, 159, 5, 27, "Input",
    CellTags->"$VeryVerbose",
    CellID->1791846668],
-  Cell[4641, 152, 304, 11, 27, "Input",
+  Cell[4640, 152, 304, 11, 27, "Input",
    CellTags->"$VeryVerbose",
    CellID->836037655],
-  Cell[4970, 167, 164, 4, 23, "Print",
+  Cell[4969, 167, 164, 4, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->862952163],
-  Cell[5137, 173, 331, 9, 23, "Print",
+  Cell[5136, 173, 331, 9, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->1766474446],
-  Cell[5471, 184, 165, 4, 23, "Print",
+  Cell[5470, 184, 165, 4, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->213277068],
-  Cell[5639, 190, 320, 9, 23, "Print",
+  Cell[5638, 190, 320, 9, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->1505382833],
-  Cell[5962, 201, 337, 9, 23, "Print",
+  Cell[5961, 201, 337, 9, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->314971425],
-  Cell[6302, 212, 261, 8, 23, "Print",
+  Cell[6301, 212, 261, 8, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->396106533],
-  Cell[6566, 222, 261, 8, 23, "Print",
+  Cell[6565, 222, 261, 8, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->398041849],
-  Cell[6830, 232, 262, 8, 23, "Print",
+  Cell[6829, 232, 262, 8, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->2061966610],
-  Cell[7095, 242, 261, 8, 23, "Print",
+  Cell[7094, 242, 261, 8, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->341728577],
-  Cell[7359, 252, 262, 8, 23, "Print",
+  Cell[7358, 252, 262, 8, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->1928467842],
-  Cell[7624, 262, 262, 8, 23, "Print",
+  Cell[7623, 262, 262, 8, 23, "Print",
    CellTags->"$VeryVerbose",
    CellID->1801016605],
-  Cell[7913, 274, 148, 5, 27, "Input",
+  Cell[7912, 274, 148, 5, 27, "Input",
    CellTags->"$VeryVerbose",
    CellID->153803702]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10022, 330},
- {"$VeryVerbose", 10161, 334}
+ {"PrimaryExamplesSection", 10031, 330},
+ {"$VeryVerbose", 10169, 334}
  }
 *)
 (*NotebookFileOutline
@@ -401,72 +401,72 @@ Cell[2849, 75, 55, 1, 42, "ObjectName",
 Cell[2907, 78, 472, 13, 97, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3404, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3404, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1675593247],
-Cell[3795, 112, 195, 6, 25, "ExampleSection",
- CellID->539490151],
+ CellID->951626803],
+Cell[3794, 112, 195, 6, 25, "ExampleSection",
+ CellID->812312776],
 Cell[CellGroupData[{
-Cell[4015, 122, 79, 2, 35, "Subsubsection",
+Cell[4014, 122, 79, 2, 35, "Subsubsection",
  CellTags->"$VeryVerbose",
  CellID->61376549],
 Cell[CellGroupData[{
-Cell[4119, 128, 107, 3, 27, "Input",
+Cell[4118, 128, 107, 3, 27, "Input",
  CellTags->"$VeryVerbose",
  CellID->32384538],
-Cell[4229, 133, 213, 7, 36, "Output",
+Cell[4228, 133, 213, 7, 36, "Output",
  CellTags->"$VeryVerbose",
  CellID->108969208]
 }, Open  ]],
-Cell[4457, 143, 159, 5, 27, "Input",
+Cell[4456, 143, 159, 5, 27, "Input",
  CellTags->"$VeryVerbose",
  CellID->1791846668],
 Cell[CellGroupData[{
-Cell[4641, 152, 304, 11, 27, "Input",
+Cell[4640, 152, 304, 11, 27, "Input",
  CellTags->"$VeryVerbose",
  CellID->836037655],
 Cell[CellGroupData[{
-Cell[4970, 167, 164, 4, 23, "Print",
+Cell[4969, 167, 164, 4, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->862952163],
-Cell[5137, 173, 331, 9, 23, "Print",
+Cell[5136, 173, 331, 9, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->1766474446],
-Cell[5471, 184, 165, 4, 23, "Print",
+Cell[5470, 184, 165, 4, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->213277068],
-Cell[5639, 190, 320, 9, 23, "Print",
+Cell[5638, 190, 320, 9, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->1505382833],
-Cell[5962, 201, 337, 9, 23, "Print",
+Cell[5961, 201, 337, 9, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->314971425],
-Cell[6302, 212, 261, 8, 23, "Print",
+Cell[6301, 212, 261, 8, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->396106533],
-Cell[6566, 222, 261, 8, 23, "Print",
+Cell[6565, 222, 261, 8, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->398041849],
-Cell[6830, 232, 262, 8, 23, "Print",
+Cell[6829, 232, 262, 8, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->2061966610],
-Cell[7095, 242, 261, 8, 23, "Print",
+Cell[7094, 242, 261, 8, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->341728577],
-Cell[7359, 252, 262, 8, 23, "Print",
+Cell[7358, 252, 262, 8, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->1928467842],
-Cell[7624, 262, 262, 8, 23, "Print",
+Cell[7623, 262, 262, 8, 23, "Print",
  CellTags->"$VeryVerbose",
  CellID->1801016605]
 }, Open  ]]
 }, Open  ]],
-Cell[7913, 274, 148, 5, 27, "Input",
+Cell[7912, 274, 148, 5, 27, "Input",
  CellTags->"$VeryVerbose",
  CellID->153803702]
 }, Open  ]]
 }, Open  ]],
-Cell[8088, 283, 23, 0, 70, "FooterCell"]
+Cell[8087, 283, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16177,        569]
-NotebookOptionsPosition[      9847,        367]
-NotebookOutlinePosition[     13850,        481]
-CellTagsIndexPosition[     13732,        475]
+NotebookDataLength[     16077,        566]
+NotebookOptionsPosition[      9726,        364]
+NotebookOutlinePosition[     13744,        478]
+CellTagsIndexPosition[     13626,        472]
 WindowTitle->Tensorfunction
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Tensorfunction.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$147021], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152382], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Tensorfunction", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->804321979],
+ CellID->522440856],
 
 Cell[CellGroupData[{
 
@@ -122,12 +122,12 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->858241466],
+ CellID->1100401291],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"TensorFunction", "[", 
   RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], "]"}]], "Input",
  CellTags->"TensorFunction",
  CellLabel->"In[1]:=",
@@ -135,15 +135,20 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"Tensorfunction", "(", 
-   RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], ")"}], 
-  TraditionalForm]], "Output",
- ImageSize->{171, 15},
+  RowBox[{"t", "(", 
+   RowBox[{
+    FormBox["\[Mu]",
+     TraditionalForm], ",", 
+    FormBox["\[Nu]",
+     TraditionalForm], ",", 
+    FormBox["\[Tau]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{67, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[1]=",
- CellID->607465039]
+ CellID->221028640]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -155,14 +160,17 @@ Cell[BoxData[
  CellID->608128480],
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
-  RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], "]"}]], "Output",
- ImageSize->{209, 15},
+ RowBox[{"t", "[", 
+  RowBox[{
+   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Tau]", "]"}]}], "]"}]], "Output",
+ ImageSize->{421, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[2]//StandardForm=",
- CellID->323525426]
+ CellID->2056952905]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -178,30 +186,21 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   RowBox[{"Tensorfunction", "(", 
-    RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], ")"}]}], 
-  TraditionalForm]], "Output",
- ImageSize->{194, 19},
+  RowBox[{"t", "(", 
+   RowBox[{
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"], ",", 
+    FormBox["\[Nu]",
+     TraditionalForm], ",", 
+    FormBox["\[Tau]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{69, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[3]=",
- CellID->713415380]
+ CellID->974516100]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -213,26 +212,23 @@ Cell[BoxData[
  CellID->1813534641],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], " ", 
-  RowBox[{"Tensorfunction", "[", 
-   RowBox[{"t", ",", "\[Mu]", ",", "\[Nu]", ",", "\[Tau]"}], 
-   "]"}]}]], "Output",
- ImageSize->{490, 15},
+ RowBox[{"t", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", "p", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Tau]", "]"}]}], "]"}]], "Output",
+ ImageSize->{391, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[4]//StandardForm=",
- CellID->884564336]
+ CellID->1570637008]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"TensorFunction", "[", 
   RowBox[{
    RowBox[{"{", 
     RowBox[{"f", ",", "\"\<S\>\""}], "}"}], ",", "\[Alpha]", ",", "\[Beta]"}],
@@ -243,23 +239,24 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"Tensorfunction", "(", 
+  RowBox[{"f", "(", 
    RowBox[{
-    RowBox[{"{", 
-     RowBox[{"f", ",", "\<\"S\"\>"}], "}"}], ",", "\[Alpha]", ",", 
-    "\[Beta]"}], ")"}], TraditionalForm]], "Output",
- ImageSize->{186, 15},
+    FormBox["\[Alpha]",
+     TraditionalForm], ",", 
+    FormBox["\[Beta]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{54, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[5]=",
- CellID->1876216582]
+ CellID->1735854485]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"TensorFunction", "[", 
   RowBox[{
    RowBox[{"{", 
     RowBox[{"f", ",", "\"\<S\>\""}], "}"}], ",", "\[Beta]", ",", "\[Alpha]"}],
@@ -270,17 +267,18 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"Tensorfunction", "(", 
+  RowBox[{"f", "(", 
    RowBox[{
-    RowBox[{"{", 
-     RowBox[{"f", ",", "\<\"S\"\>"}], "}"}], ",", "\[Beta]", ",", 
-    "\[Alpha]"}], ")"}], TraditionalForm]], "Output",
- ImageSize->{186, 15},
+    FormBox["\[Alpha]",
+     TraditionalForm], ",", 
+    FormBox["\[Beta]",
+     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
+ ImageSize->{54, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[6]=",
- CellID->590483088]
+ CellID->1376266618]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -292,17 +290,16 @@ Cell[BoxData[
  CellID->645212918],
 
 Cell[BoxData[
- RowBox[{"Tensorfunction", "[", 
+ RowBox[{"f", "[", 
   RowBox[{
-   RowBox[{"{", 
-    RowBox[{"f", ",", "\<\"S\"\>"}], "}"}], ",", "\[Beta]", ",", "\[Alpha]"}],
-   "]"}]], "Output",
- ImageSize->{226, 15},
+   RowBox[{"LorentzIndex", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"LorentzIndex", "[", "\[Beta]", "]"}]}], "]"}]], "Output",
+ ImageSize->{288, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[7]//StandardForm=",
- CellID->588616323]
+ CellID->1120370784]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -315,13 +312,13 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"{", "}"}], TraditionalForm]], "Output",
- ImageSize->{17, 15},
+  RowBox[{"{", "Orderless", "}"}], TraditionalForm]], "Output",
+ ImageSize->{76, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TensorFunction",
  CellLabel->"Out[8]=",
- CellID->1715265830]
+ CellID->1209640957]
 }, Open  ]],
 
 Cell[BoxData[
@@ -352,10 +349,10 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- StyleBox[ButtonBox["Symmetrize",
+ StyleBox[ButtonBox["FCSymmetrize",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/Symmetrize",
-  ButtonNote->"Symmetrize"],
+  ButtonData->"paclet:FeynCalc/ref/FCSymmetrize",
+  ButtonNote->"FCSymmetrize"],
   FontFamily->"Verdana"],
  "."
 }], "Text",
@@ -380,7 +377,7 @@ TaggingRules->{
     Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 7, 47.962751}", 
+   "built" -> "{2016, 1, 2, 15, 18, 19.501383}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -394,7 +391,7 @@ mu, nu, ...], and an antisymmteric one by Tensorfunction[{t, \"A\"}, mu, nu, \
     "windowtitle" -> "Tensorfunction", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Tensorfunction"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -403,7 +400,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -414,68 +411,68 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3641, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->804321979]},
+   CellID->522440856]},
  "TensorFunction"->{
-  Cell[4273, 128, 196, 5, 27, "Input",
+  Cell[4274, 128, 196, 5, 27, "Input",
    CellTags->"TensorFunction",
    CellID->1402713189],
-  Cell[4472, 135, 317, 10, 36, "Output",
+  Cell[4473, 135, 398, 15, 36, "Output",
    CellTags->"TensorFunction",
-   CellID->607465039],
-  Cell[4826, 150, 133, 4, 27, "Input",
+   CellID->221028640],
+  Cell[4908, 155, 133, 4, 27, "Input",
    CellTags->"TensorFunction",
    CellID->608128480],
-  Cell[4962, 156, 298, 8, 36, "Output",
+  Cell[5044, 161, 396, 11, 49, "Output",
    CellTags->"TensorFunction",
-   CellID->323525426],
-  Cell[5297, 169, 216, 7, 27, "Input",
+   CellID->2056952905],
+  Cell[5477, 177, 216, 7, 27, "Input",
    CellTags->"TensorFunction",
    CellID->1580634540],
-  Cell[5516, 178, 633, 25, 40, "Output",
+  Cell[5696, 186, 421, 16, 39, "Output",
    CellTags->"TensorFunction",
-   CellID->713415380],
-  Cell[6186, 208, 134, 4, 27, "Input",
+   CellID->974516100],
+  Cell[6154, 207, 134, 4, 27, "Input",
    CellTags->"TensorFunction",
    CellID->1813534641],
-  Cell[6323, 214, 463, 14, 36, "Output",
+  Cell[6291, 213, 388, 11, 49, "Output",
    CellTags->"TensorFunction",
-   CellID->884564336],
-  Cell[6823, 233, 246, 8, 27, "Input",
+   CellID->1570637008],
+  Cell[6716, 229, 246, 8, 27, "Input",
    CellTags->"TensorFunction",
    CellID->1404961078],
-  Cell[7072, 243, 369, 12, 36, "Output",
+  Cell[6965, 239, 353, 13, 36, "Output",
    CellTags->"TensorFunction",
-   CellID->1876216582],
-  Cell[7478, 260, 244, 8, 27, "Input",
+   CellID->1735854485],
+  Cell[7355, 257, 244, 8, 27, "Input",
    CellTags->"TensorFunction",
    CellID->65548372],
-  Cell[7725, 270, 368, 12, 36, "Output",
+  Cell[7602, 267, 353, 13, 36, "Output",
    CellTags->"TensorFunction",
-   CellID->590483088],
-  Cell[8130, 287, 133, 4, 27, "Input",
+   CellID->1376266618],
+  Cell[7992, 285, 133, 4, 27, "Input",
    CellTags->"TensorFunction",
    CellID->645212918],
-  Cell[8266, 293, 348, 11, 36, "Output",
+  Cell[8128, 291, 346, 10, 49, "Output",
    CellTags->"TensorFunction",
-   CellID->588616323],
-  Cell[8651, 309, 136, 4, 27, "Input",
+   CellID->1120370784],
+  Cell[8511, 306, 136, 4, 27, "Input",
    CellTags->"TensorFunction",
    CellID->1446205961],
-  Cell[8790, 315, 234, 8, 36, "Output",
+  Cell[8650, 312, 247, 8, 36, "Output",
    CellTags->"TensorFunction",
-   CellID->1715265830],
-  Cell[9039, 326, 171, 5, 27, "Input",
+   CellID->1209640957],
+  Cell[8912, 323, 171, 5, 27, "Input",
    CellTags->"TensorFunction",
    CellID->682846608],
-  Cell[9566, 353, 239, 9, 32, "Text",
+  Cell[9439, 350, 245, 9, 32, "Text",
    CellTags->"TensorFunction",
    CellID->323898927]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11875, 413},
- {"TensorFunction", 12015, 417}
+ {"PrimaryExamplesSection", 11764, 410},
+ {"TensorFunction", 11904, 414}
  }
 *)
 (*NotebookFileOutline
@@ -489,88 +486,88 @@ Cell[2919, 78, 697, 17, 115, "Usage",
 Cell[CellGroupData[{
 Cell[3641, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->804321979],
+ CellID->522440856],
 Cell[CellGroupData[{
-Cell[4053, 118, 195, 6, 25, "ExampleSection",
- CellID->858241466],
+Cell[4053, 118, 196, 6, 25, "ExampleSection",
+ CellID->1100401291],
 Cell[CellGroupData[{
-Cell[4273, 128, 196, 5, 27, "Input",
+Cell[4274, 128, 196, 5, 27, "Input",
  CellTags->"TensorFunction",
  CellID->1402713189],
-Cell[4472, 135, 317, 10, 36, "Output",
+Cell[4473, 135, 398, 15, 36, "Output",
  CellTags->"TensorFunction",
- CellID->607465039]
+ CellID->221028640]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4826, 150, 133, 4, 27, "Input",
+Cell[4908, 155, 133, 4, 27, "Input",
  CellTags->"TensorFunction",
  CellID->608128480],
-Cell[4962, 156, 298, 8, 36, "Output",
+Cell[5044, 161, 396, 11, 49, "Output",
  CellTags->"TensorFunction",
- CellID->323525426]
+ CellID->2056952905]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5297, 169, 216, 7, 27, "Input",
+Cell[5477, 177, 216, 7, 27, "Input",
  CellTags->"TensorFunction",
  CellID->1580634540],
-Cell[5516, 178, 633, 25, 40, "Output",
+Cell[5696, 186, 421, 16, 39, "Output",
  CellTags->"TensorFunction",
- CellID->713415380]
+ CellID->974516100]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6186, 208, 134, 4, 27, "Input",
+Cell[6154, 207, 134, 4, 27, "Input",
  CellTags->"TensorFunction",
  CellID->1813534641],
-Cell[6323, 214, 463, 14, 36, "Output",
+Cell[6291, 213, 388, 11, 49, "Output",
  CellTags->"TensorFunction",
- CellID->884564336]
+ CellID->1570637008]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6823, 233, 246, 8, 27, "Input",
+Cell[6716, 229, 246, 8, 27, "Input",
  CellTags->"TensorFunction",
  CellID->1404961078],
-Cell[7072, 243, 369, 12, 36, "Output",
+Cell[6965, 239, 353, 13, 36, "Output",
  CellTags->"TensorFunction",
- CellID->1876216582]
+ CellID->1735854485]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7478, 260, 244, 8, 27, "Input",
+Cell[7355, 257, 244, 8, 27, "Input",
  CellTags->"TensorFunction",
  CellID->65548372],
-Cell[7725, 270, 368, 12, 36, "Output",
+Cell[7602, 267, 353, 13, 36, "Output",
  CellTags->"TensorFunction",
- CellID->590483088]
+ CellID->1376266618]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8130, 287, 133, 4, 27, "Input",
+Cell[7992, 285, 133, 4, 27, "Input",
  CellTags->"TensorFunction",
  CellID->645212918],
-Cell[8266, 293, 348, 11, 36, "Output",
+Cell[8128, 291, 346, 10, 49, "Output",
  CellTags->"TensorFunction",
- CellID->588616323]
+ CellID->1120370784]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8651, 309, 136, 4, 27, "Input",
+Cell[8511, 306, 136, 4, 27, "Input",
  CellTags->"TensorFunction",
  CellID->1446205961],
-Cell[8790, 315, 234, 8, 36, "Output",
+Cell[8650, 312, 247, 8, 36, "Output",
  CellTags->"TensorFunction",
- CellID->1715265830]
+ CellID->1209640957]
 }, Open  ]],
-Cell[9039, 326, 171, 5, 27, "Input",
+Cell[8912, 323, 171, 5, 27, "Input",
  CellTags->"TensorFunction",
  CellID->682846608]
 }, Open  ]],
-Cell[9225, 334, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9098, 331, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9293, 339, 270, 12, 31, "SeeAlsoSection",
+Cell[9166, 336, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9566, 353, 239, 9, 32, "Text",
+Cell[9439, 350, 245, 9, 32, "Text",
  CellTags->"TensorFunction",
  CellID->323898927]
 }, Open  ]],
-Cell[9820, 365, 23, 0, 42, "FooterCell"]
+Cell[9699, 362, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

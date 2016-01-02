@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19087,        691]
-NotebookOptionsPosition[     11850,        455]
-NotebookOutlinePosition[     16228,        585]
-CellTagsIndexPosition[     16110,        579]
+NotebookDataLength[     19092,        691]
+NotebookOptionsPosition[     11849,        455]
+NotebookOutlinePosition[     16234,        585]
+CellTagsIndexPosition[     16116,        579]
 WindowTitle->AntiCommutator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ AntiCommutator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$14650], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16779], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/AntiCommutator", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1876292209],
+ CellID->522440856],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1007843076],
+ CellID->1100401291],
 
 Cell[TextData[{
  "This declares ",
@@ -468,7 +468,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 55, 55.085150}", 
+   "built" -> "{2016, 1, 2, 15, 6, 27.787895}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -480,7 +480,7 @@ commuting objects x and y.", "synonyms" -> {}, "title" -> "AntiCommutator",
     "Symbol", "uri" -> "FeynCalc/ref/AntiCommutator"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -489,7 +489,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -498,88 +498,88 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3394, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3394, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1876292209]},
+   CellID->522440856]},
  "AntiCommutator"->{
-  Cell[4006, 122, 221, 10, 32, "Text",
+  Cell[4005, 122, 221, 10, 32, "Text",
    CellTags->"AntiCommutator",
    CellID->1525212065],
-  Cell[4230, 134, 169, 5, 27, "Input",
+  Cell[4229, 134, 169, 5, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->756062925],
-  Cell[4424, 143, 163, 5, 27, "Input",
+  Cell[4423, 143, 163, 5, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->1726378547],
-  Cell[4590, 150, 502, 20, 36, "Output",
+  Cell[4589, 150, 502, 20, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->479481037],
-  Cell[5129, 175, 143, 4, 27, "Input",
+  Cell[5128, 175, 143, 4, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->693384404],
-  Cell[5275, 181, 286, 10, 36, "Output",
+  Cell[5274, 181, 286, 10, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->147684859],
-  Cell[5598, 196, 285, 9, 27, "Input",
+  Cell[5597, 196, 285, 9, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->1495920503],
-  Cell[5886, 207, 546, 20, 36, "Output",
+  Cell[5885, 207, 546, 20, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->1027223948],
-  Cell[6469, 232, 277, 9, 27, "Input",
+  Cell[6468, 232, 277, 9, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->871283752],
-  Cell[6749, 243, 545, 20, 36, "Output",
+  Cell[6748, 243, 545, 20, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->980600157],
-  Cell[7309, 266, 237, 7, 38, "Input",
+  Cell[7308, 266, 237, 7, 38, "Input",
    CellTags->"AntiCommutator",
    CellID->422937377],
-  Cell[7549, 275, 124, 2, 32, "Text",
+  Cell[7548, 275, 124, 2, 32, "Text",
    CellTags->"AntiCommutator",
    CellID->405748459],
-  Cell[7698, 281, 197, 6, 27, "Input",
+  Cell[7697, 281, 197, 6, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->1154888291],
-  Cell[7898, 289, 216, 7, 36, "Output",
+  Cell[7897, 289, 216, 7, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->1400406202],
-  Cell[8151, 301, 201, 6, 27, "Input",
+  Cell[8150, 301, 201, 6, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->400792382],
-  Cell[8355, 309, 297, 10, 36, "Output",
+  Cell[8354, 309, 297, 10, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->1500489599],
-  Cell[8689, 324, 269, 9, 38, "Input",
+  Cell[8688, 324, 269, 9, 38, "Input",
    CellTags->"AntiCommutator",
    CellID->392638266],
-  Cell[8961, 335, 238, 8, 36, "Output",
+  Cell[8960, 335, 238, 8, 36, "Output",
    CellTags->"AntiCommutator",
    CellID->225220528],
-  Cell[9236, 348, 272, 8, 38, "Input",
+  Cell[9235, 348, 272, 8, 38, "Input",
    CellTags->"AntiCommutator",
    CellID->598753128],
-  Cell[9511, 358, 423, 15, 41, "Output",
+  Cell[9510, 358, 423, 15, 41, "Output",
    CellTags->"AntiCommutator",
    CellID->1740531218],
-  Cell[9949, 376, 260, 7, 38, "Input",
+  Cell[9948, 376, 260, 7, 38, "Input",
    CellTags->"AntiCommutator",
    CellID->108727372],
-  Cell[10212, 385, 196, 6, 27, "Input",
+  Cell[10211, 385, 196, 6, 27, "Input",
    CellTags->"AntiCommutator",
    CellID->873286670],
-  Cell[10411, 393, 246, 8, 38, "Input",
+  Cell[10410, 393, 246, 8, 38, "Input",
    CellTags->"AntiCommutator",
    CellID->702830390],
-  Cell[11013, 423, 795, 27, 32, "Text",
+  Cell[11012, 423, 795, 27, 32, "Text",
    CellTags->"AntiCommutator",
    CellID->1793111208]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13688, 499},
- {"AntiCommutator", 13829, 503}
+ {"PrimaryExamplesSection", 13695, 499},
+ {"AntiCommutator", 13835, 503}
  }
 *)
 (*NotebookFileOutline
@@ -591,108 +591,108 @@ Cell[2858, 75, 57, 1, 42, "ObjectName",
 Cell[2918, 78, 451, 13, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3394, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3394, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1876292209],
+ CellID->522440856],
 Cell[CellGroupData[{
-Cell[3807, 114, 196, 6, 25, "ExampleSection",
- CellID->1007843076],
-Cell[4006, 122, 221, 10, 32, "Text",
+Cell[3806, 114, 196, 6, 25, "ExampleSection",
+ CellID->1100401291],
+Cell[4005, 122, 221, 10, 32, "Text",
  CellTags->"AntiCommutator",
  CellID->1525212065],
-Cell[4230, 134, 169, 5, 27, "Input",
+Cell[4229, 134, 169, 5, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->756062925],
 Cell[CellGroupData[{
-Cell[4424, 143, 163, 5, 27, "Input",
+Cell[4423, 143, 163, 5, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->1726378547],
-Cell[4590, 150, 502, 20, 36, "Output",
+Cell[4589, 150, 502, 20, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->479481037]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5129, 175, 143, 4, 27, "Input",
+Cell[5128, 175, 143, 4, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->693384404],
-Cell[5275, 181, 286, 10, 36, "Output",
+Cell[5274, 181, 286, 10, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->147684859]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5598, 196, 285, 9, 27, "Input",
+Cell[5597, 196, 285, 9, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->1495920503],
-Cell[5886, 207, 546, 20, 36, "Output",
+Cell[5885, 207, 546, 20, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->1027223948]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6469, 232, 277, 9, 27, "Input",
+Cell[6468, 232, 277, 9, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->871283752],
-Cell[6749, 243, 545, 20, 36, "Output",
+Cell[6748, 243, 545, 20, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->980600157]
 }, Open  ]],
-Cell[7309, 266, 237, 7, 38, "Input",
+Cell[7308, 266, 237, 7, 38, "Input",
  CellTags->"AntiCommutator",
  CellID->422937377],
-Cell[7549, 275, 124, 2, 32, "Text",
+Cell[7548, 275, 124, 2, 32, "Text",
  CellTags->"AntiCommutator",
  CellID->405748459],
 Cell[CellGroupData[{
-Cell[7698, 281, 197, 6, 27, "Input",
+Cell[7697, 281, 197, 6, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->1154888291],
-Cell[7898, 289, 216, 7, 36, "Output",
+Cell[7897, 289, 216, 7, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->1400406202]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8151, 301, 201, 6, 27, "Input",
+Cell[8150, 301, 201, 6, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->400792382],
-Cell[8355, 309, 297, 10, 36, "Output",
+Cell[8354, 309, 297, 10, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->1500489599]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8689, 324, 269, 9, 38, "Input",
+Cell[8688, 324, 269, 9, 38, "Input",
  CellTags->"AntiCommutator",
  CellID->392638266],
-Cell[8961, 335, 238, 8, 36, "Output",
+Cell[8960, 335, 238, 8, 36, "Output",
  CellTags->"AntiCommutator",
  CellID->225220528]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9236, 348, 272, 8, 38, "Input",
+Cell[9235, 348, 272, 8, 38, "Input",
  CellTags->"AntiCommutator",
  CellID->598753128],
-Cell[9511, 358, 423, 15, 41, "Output",
+Cell[9510, 358, 423, 15, 41, "Output",
  CellTags->"AntiCommutator",
  CellID->1740531218]
 }, Open  ]],
-Cell[9949, 376, 260, 7, 38, "Input",
+Cell[9948, 376, 260, 7, 38, "Input",
  CellTags->"AntiCommutator",
  CellID->108727372],
-Cell[10212, 385, 196, 6, 27, "Input",
+Cell[10211, 385, 196, 6, 27, "Input",
  CellTags->"AntiCommutator",
  CellID->873286670],
-Cell[10411, 393, 246, 8, 38, "Input",
+Cell[10410, 393, 246, 8, 38, "Input",
  CellTags->"AntiCommutator",
  CellID->702830390]
 }, Open  ]],
-Cell[10672, 404, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10671, 404, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10740, 409, 270, 12, 31, "SeeAlsoSection",
+Cell[10739, 409, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11013, 423, 795, 27, 32, "Text",
+Cell[11012, 423, 795, 27, 32, "Text",
  CellTags->"AntiCommutator",
  CellID->1793111208]
 }, Open  ]],
-Cell[11823, 453, 23, 0, 42, "FooterCell"]
+Cell[11822, 453, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

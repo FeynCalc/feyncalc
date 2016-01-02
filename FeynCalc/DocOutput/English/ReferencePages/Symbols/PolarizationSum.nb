@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     28918,        858]
-NotebookOptionsPosition[     23359,        687]
-NotebookOutlinePosition[     27074,        791]
-CellTagsIndexPosition[     26920,        784]
+NotebookDataLength[     28925,        858]
+NotebookOptionsPosition[     23358,        687]
+NotebookOutlinePosition[     27082,        791]
+CellTagsIndexPosition[     26928,        784]
 WindowTitle->PolarizationSum
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PolarizationSum.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$113226], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$118096], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PolarizationSum", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1397804892],
+ CellID->204661031],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1331511075],
+ CellID->1089057632],
 
 Cell[CellGroupData[{
 
@@ -648,7 +648,7 @@ H/e6rxY=
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"PolarizationSum", "RasterizedOutput"},
  CellLabel->"Out[5]=",
- CellID->693534299]
+ CellID->860313562]
 }, Open  ]]
 }, Open  ]],
 
@@ -700,7 +700,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 4, 36.925285}", 
+   "built" -> "{2016, 1, 2, 15, 15, 25.314024}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -714,7 +714,7 @@ calculations.", "synonyms" -> {}, "title" -> "PolarizationSum",
     "Symbol", "uri" -> "FeynCalc/ref/PolarizationSum"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -723,7 +723,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -732,60 +732,60 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3552, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3552, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1397804892]},
+   CellID->204661031]},
  "PolarizationSum"->{
-  Cell[4186, 127, 148, 4, 27, "Input",
+  Cell[4185, 127, 148, 4, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->2045558864],
-  Cell[4337, 133, 352, 12, 36, "Output",
+  Cell[4336, 133, 352, 12, 36, "Output",
    CellTags->"PolarizationSum",
    CellID->993421841],
-  Cell[4726, 150, 173, 5, 27, "Input",
+  Cell[4725, 150, 173, 5, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->1305140513],
-  Cell[4902, 157, 601, 25, 38, "Output",
+  Cell[4901, 157, 601, 25, 38, "Output",
    CellTags->"PolarizationSum",
    CellID->430115432],
-  Cell[5540, 187, 182, 5, 27, "Input",
+  Cell[5539, 187, 182, 5, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->225444567],
-  Cell[5725, 194, 1425, 61, 72, "Output",
+  Cell[5724, 194, 1425, 61, 72, "Output",
    CellTags->"PolarizationSum",
    CellID->1457144102],
-  Cell[7187, 260, 192, 5, 27, "Input",
+  Cell[7186, 260, 192, 5, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->697709473],
-  Cell[7382, 267, 886, 18, 73, "Message",
+  Cell[7381, 267, 886, 18, 73, "Message",
    CellTags->"PolarizationSum",
    CellID->268895154],
-  Cell[8271, 287, 4023, 169, 75, "Output",
+  Cell[8270, 287, 4023, 169, 75, "Output",
    CellTags->"PolarizationSum",
    CellID->1315646059],
-  Cell[12331, 461, 265, 8, 27, "Input",
+  Cell[12330, 461, 265, 8, 27, "Input",
    CellTags->"PolarizationSum",
    CellID->1841435515],
-  Cell[12599, 471, 887, 18, 73, "Message",
+  Cell[12598, 471, 887, 18, 73, "Message",
    CellTags->"PolarizationSum",
    CellID->1845572420],
-  Cell[13489, 491, 9214, 159, 152, "Output",
+  Cell[13488, 491, 9214, 159, 152, "Output",
    CellTags->{"PolarizationSum", "RasterizedOutput"},
-   CellID->693534299],
-  Cell[23071, 673, 246, 9, 31, "Text",
+   CellID->860313562],
+  Cell[23070, 673, 246, 9, 31, "Text",
    CellTags->"PolarizationSum",
    CellID->986230835]},
  "RasterizedOutput"->{
-  Cell[13489, 491, 9214, 159, 152, "Output",
+  Cell[13488, 491, 9214, 159, 152, "Output",
    CellTags->{"PolarizationSum", "RasterizedOutput"},
-   CellID->693534299]}
+   CellID->860313562]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 25333, 733},
- {"PolarizationSum", 25475, 737},
- {"RasterizedOutput", 26774, 777}
+ {"PrimaryExamplesSection", 25342, 733},
+ {"PolarizationSum", 25483, 737},
+ {"RasterizedOutput", 26782, 777}
  }
 *)
 (*NotebookFileOutline
@@ -797,69 +797,69 @@ Cell[2864, 75, 58, 1, 42, "ObjectName",
 Cell[2925, 78, 602, 16, 98, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3552, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3552, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1397804892],
+ CellID->204661031],
 Cell[CellGroupData[{
-Cell[3965, 117, 196, 6, 25, "ExampleSection",
- CellID->1331511075],
+Cell[3964, 117, 196, 6, 25, "ExampleSection",
+ CellID->1089057632],
 Cell[CellGroupData[{
-Cell[4186, 127, 148, 4, 27, "Input",
+Cell[4185, 127, 148, 4, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->2045558864],
-Cell[4337, 133, 352, 12, 36, "Output",
+Cell[4336, 133, 352, 12, 36, "Output",
  CellTags->"PolarizationSum",
  CellID->993421841]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4726, 150, 173, 5, 27, "Input",
+Cell[4725, 150, 173, 5, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->1305140513],
-Cell[4902, 157, 601, 25, 38, "Output",
+Cell[4901, 157, 601, 25, 38, "Output",
  CellTags->"PolarizationSum",
  CellID->430115432]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5540, 187, 182, 5, 27, "Input",
+Cell[5539, 187, 182, 5, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->225444567],
-Cell[5725, 194, 1425, 61, 72, "Output",
+Cell[5724, 194, 1425, 61, 72, "Output",
  CellTags->"PolarizationSum",
  CellID->1457144102]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7187, 260, 192, 5, 27, "Input",
+Cell[7186, 260, 192, 5, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->697709473],
-Cell[7382, 267, 886, 18, 73, "Message",
+Cell[7381, 267, 886, 18, 73, "Message",
  CellTags->"PolarizationSum",
  CellID->268895154],
-Cell[8271, 287, 4023, 169, 75, "Output",
+Cell[8270, 287, 4023, 169, 75, "Output",
  CellTags->"PolarizationSum",
  CellID->1315646059]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12331, 461, 265, 8, 27, "Input",
+Cell[12330, 461, 265, 8, 27, "Input",
  CellTags->"PolarizationSum",
  CellID->1841435515],
-Cell[12599, 471, 887, 18, 73, "Message",
+Cell[12598, 471, 887, 18, 73, "Message",
  CellTags->"PolarizationSum",
  CellID->1845572420],
-Cell[13489, 491, 9214, 159, 152, "Output",
+Cell[13488, 491, 9214, 159, 152, "Output",
  CellTags->{"PolarizationSum", "RasterizedOutput"},
- CellID->693534299]
+ CellID->860313562]
 }, Open  ]]
 }, Open  ]],
-Cell[22730, 654, 31, 0, 29, "SectionFooterSpacer"]
+Cell[22729, 654, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22798, 659, 270, 12, 31, "SeeAlsoSection",
+Cell[22797, 659, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[23071, 673, 246, 9, 31, "Text",
+Cell[23070, 673, 246, 9, 31, "Text",
  CellTags->"PolarizationSum",
  CellID->986230835]
 }, Open  ]],
-Cell[23332, 685, 23, 0, 42, "FooterCell"]
+Cell[23331, 685, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

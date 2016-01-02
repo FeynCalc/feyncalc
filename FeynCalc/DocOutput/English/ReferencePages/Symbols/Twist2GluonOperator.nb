@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10613,        310]
+NotebookDataLength[     10623,        310]
 NotebookOptionsPosition[      6466,        199]
-NotebookOutlinePosition[      9781,        280]
-CellTagsIndexPosition[      9660,        274]
+NotebookOutlinePosition[      9791,        280]
+CellTagsIndexPosition[      9670,        274]
 WindowTitle->Twist2GluonOperator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Twist2GluonOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$155217], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161038], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2GluonOperator", ".html"]], None}]}]},
@@ -212,7 +212,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 8, 34.604694}", 
+   "built" -> "{2016, 1, 2, 15, 19, 18.456016}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -235,7 +235,7 @@ the arguments of Twist2GluonOperator.", "synonyms" -> {}, "title" ->
     "Twist2GluonOperator", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Twist2GluonOperator"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,7 +244,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -273,8 +273,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9105, 254},
- {"Twist2GluonOperator", 9243, 258}
+ {"PrimaryExamplesSection", 9115, 254},
+ {"Twist2GluonOperator", 9253, 258}
  }
 *)
 (*NotebookFileOutline

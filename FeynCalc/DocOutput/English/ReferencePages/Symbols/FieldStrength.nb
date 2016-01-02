@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21405,        764]
+NotebookDataLength[     21413,        764]
 NotebookOptionsPosition[     14991,        564]
-NotebookOutlinePosition[     19163,        679]
-CellTagsIndexPosition[     19046,        673]
+NotebookOutlinePosition[     19171,        679]
+CellTagsIndexPosition[     19054,        673]
 WindowTitle->FieldStrength
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FieldStrength.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$64205], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68479], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FieldStrength", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1548609132],
+ CellID->145771540],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->495051532],
+ CellID->1292274396],
 
 Cell[CellGroupData[{
 
@@ -577,7 +577,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 0, 16.837862}", 
+   "built" -> "{2016, 1, 2, 15, 11, 3.623780}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -595,7 +595,7 @@ converted to Momentum[OPEDelta].", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/FieldStrength"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -604,7 +604,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -613,9 +613,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4667, 130, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4667, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1548609132]},
+   CellID->145771540]},
  "FieldStrength"->{
   Cell[5300, 159, 144, 4, 27, "Input",
    CellTags->"FieldStrength",
@@ -650,13 +650,13 @@ CellTagsIndex->{
   Cell[10323, 375, 260, 7, 27, "Input",
    CellTags->"FieldStrength",
    CellID->2102395759],
-  Cell[10586, 384, 656, 19, 71, "Output",
+  Cell[10586, 384, 656, 19, 84, "Output",
    CellTags->"FieldStrength",
    CellID->66342321],
   Cell[11279, 408, 262, 7, 27, "Input",
    CellTags->"FieldStrength",
    CellID->481183730],
-  Cell[11544, 417, 656, 19, 71, "Output",
+  Cell[11544, 417, 656, 19, 84, "Output",
    CellTags->"FieldStrength",
    CellID->1631615995],
   Cell[12237, 441, 310, 8, 27, "Input",
@@ -672,8 +672,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17285, 614},
- {"FieldStrength", 17426, 618}
+ {"PrimaryExamplesSection", 17294, 614},
+ {"FieldStrength", 17434, 618}
  }
 *)
 (*NotebookFileOutline
@@ -685,12 +685,12 @@ Cell[2853, 75, 56, 1, 42, "ObjectName",
 Cell[2912, 78, 1730, 48, 142, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4667, 130, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4667, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1548609132],
+ CellID->145771540],
 Cell[CellGroupData[{
-Cell[5080, 149, 195, 6, 25, "ExampleSection",
- CellID->495051532],
+Cell[5079, 149, 196, 6, 25, "ExampleSection",
+ CellID->1292274396],
 Cell[CellGroupData[{
 Cell[5300, 159, 144, 4, 27, "Input",
  CellTags->"FieldStrength",
@@ -735,7 +735,7 @@ Cell[CellGroupData[{
 Cell[10323, 375, 260, 7, 27, "Input",
  CellTags->"FieldStrength",
  CellID->2102395759],
-Cell[10586, 384, 656, 19, 71, "Output",
+Cell[10586, 384, 656, 19, 84, "Output",
  CellTags->"FieldStrength",
  CellID->66342321]
 }, Open  ]],
@@ -743,7 +743,7 @@ Cell[CellGroupData[{
 Cell[11279, 408, 262, 7, 27, "Input",
  CellTags->"FieldStrength",
  CellID->481183730],
-Cell[11544, 417, 656, 19, 71, "Output",
+Cell[11544, 417, 656, 19, 84, "Output",
  CellTags->"FieldStrength",
  CellID->1631615995]
 }, Open  ]],

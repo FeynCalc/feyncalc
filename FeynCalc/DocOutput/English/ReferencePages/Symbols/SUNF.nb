@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25207,        999]
-NotebookOptionsPosition[     17286,        716]
-NotebookOutlinePosition[     21898,        863]
-CellTagsIndexPosition[     21790,        857]
+NotebookDataLength[     25214,        999]
+NotebookOptionsPosition[     17285,        716]
+NotebookOutlinePosition[     21906,        863]
+CellTagsIndexPosition[     21798,        857]
 WindowTitle->SUNF
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$142525], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$148036], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/SUNF", 
             ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1462763391],
+ CellID->710867645],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->607836101],
+ CellID->641731143],
 
 Cell[CellGroupData[{
 
@@ -729,7 +729,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 7, 21.768104}", 
+   "built" -> "{2016, 1, 2, 15, 17, 53.723699}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -740,7 +740,7 @@ should be of symbolic type.", "synonyms" -> {}, "title" -> "SUNF",
     "titlemodifier" -> "", "windowtitle" -> "SUNF", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/SUNF"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -749,7 +749,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -758,106 +758,106 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3400, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3400, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1462763391]},
+   CellID->710867645]},
  "SUNF"->{
-  Cell[4033, 127, 125, 4, 27, "Input",
+  Cell[4032, 127, 125, 4, 27, "Input",
    CellTags->"SUNF",
    CellID->121887364],
-  Cell[4161, 133, 273, 10, 36, "Output",
+  Cell[4160, 133, 273, 10, 36, "Output",
    CellTags->"SUNF",
    CellID->788322241],
-  Cell[4471, 148, 312, 11, 27, "Input",
+  Cell[4470, 148, 312, 11, 27, "Input",
    CellTags->"SUNF",
    CellID->1766434801],
-  Cell[4786, 161, 622, 26, 40, "Output",
+  Cell[4785, 161, 622, 26, 40, "Output",
    CellTags->"SUNF",
    CellID->1741928660],
-  Cell[5445, 192, 120, 4, 27, "Input",
+  Cell[5444, 192, 120, 4, 27, "Input",
    CellTags->"SUNF",
    CellID->139383085],
-  Cell[5568, 198, 874, 38, 40, "Output",
+  Cell[5567, 198, 874, 38, 40, "Output",
    CellTags->"SUNF",
    CellID->1893375491],
-  Cell[6479, 241, 127, 4, 27, "Input",
+  Cell[6478, 241, 127, 4, 27, "Input",
    CellTags->"SUNF",
    CellID->479451850],
-  Cell[6609, 247, 561, 24, 40, "Output",
+  Cell[6608, 247, 561, 24, 40, "Output",
    CellTags->"SUNF",
    CellID->622570571],
-  Cell[7207, 276, 153, 5, 27, "Input",
+  Cell[7206, 276, 153, 5, 27, "Input",
    CellTags->"SUNF",
    CellID->1757637776],
-  Cell[7363, 283, 361, 15, 40, "Output",
+  Cell[7362, 283, 361, 15, 40, "Output",
    CellTags->"SUNF",
    CellID->752391067],
-  Cell[7761, 303, 180, 6, 27, "Input",
+  Cell[7760, 303, 180, 6, 27, "Input",
    CellTags->"SUNF",
    CellID->169262538],
-  Cell[7944, 311, 206, 7, 36, "Output",
+  Cell[7943, 311, 206, 7, 36, "Output",
    CellTags->"SUNF",
    CellID->1205699996],
-  Cell[8165, 321, 339, 11, 49, "Text",
+  Cell[8164, 321, 339, 11, 49, "Text",
    CellTags->"SUNF",
    CellID->565916861],
-  Cell[8529, 336, 203, 6, 27, "Input",
+  Cell[8528, 336, 203, 6, 27, "Input",
    CellTags->"SUNF",
    CellID->2026232239],
-  Cell[8735, 344, 1552, 60, 46, "Output",
+  Cell[8734, 344, 1552, 60, 46, "Output",
    CellTags->"SUNF",
    CellID->621120740],
-  Cell[10324, 409, 283, 9, 27, "Input",
+  Cell[10323, 409, 283, 9, 27, "Input",
    CellTags->"SUNF",
    CellID->386944916],
-  Cell[10610, 420, 459, 19, 40, "Output",
+  Cell[10609, 420, 459, 19, 40, "Output",
    CellTags->"SUNF",
    CellID->631419441],
-  Cell[11106, 444, 256, 8, 27, "Input",
+  Cell[11105, 444, 256, 8, 27, "Input",
    CellTags->"SUNF",
    CellID->963311023],
-  Cell[11365, 454, 1571, 61, 46, "Output",
+  Cell[11364, 454, 1571, 61, 46, "Output",
    CellTags->"SUNF",
    CellID->215339899],
-  Cell[12973, 520, 192, 7, 27, "Input",
+  Cell[12972, 520, 192, 7, 27, "Input",
    CellTags->"SUNF",
    CellID->1003312113],
-  Cell[13168, 529, 256, 8, 36, "Output",
+  Cell[13167, 529, 256, 8, 49, "Output",
    CellTags->"SUNF",
    CellID->792790909],
-  Cell[13461, 542, 221, 8, 27, "Input",
+  Cell[13460, 542, 221, 8, 27, "Input",
    CellTags->"SUNF",
    CellID->2081826967],
-  Cell[13685, 552, 365, 11, 36, "Output",
+  Cell[13684, 552, 365, 11, 49, "Output",
    CellTags->"SUNF",
    CellID->1149570291],
-  Cell[14087, 568, 250, 9, 27, "Input",
+  Cell[14086, 568, 250, 9, 27, "Input",
    CellTags->"SUNF",
    CellID->1938677300],
-  Cell[14340, 579, 257, 8, 36, "Output",
+  Cell[14339, 579, 257, 8, 49, "Output",
    CellTags->"SUNF",
    CellID->1462891621],
-  Cell[14634, 592, 153, 5, 27, "Input",
+  Cell[14633, 592, 153, 5, 27, "Input",
    CellTags->"SUNF",
    CellID->334638901],
-  Cell[14790, 599, 362, 15, 40, "Output",
+  Cell[14789, 599, 362, 15, 40, "Output",
    CellTags->"SUNF",
    CellID->532100486],
-  Cell[15189, 619, 181, 6, 27, "Input",
+  Cell[15188, 619, 181, 6, 27, "Input",
    CellTags->"SUNF",
    CellID->1328454294],
-  Cell[15373, 627, 509, 22, 40, "Output",
+  Cell[15372, 627, 509, 22, 40, "Output",
    CellTags->"SUNF",
    CellID->1815424467],
-  Cell[16250, 672, 994, 39, 32, "Text",
+  Cell[16249, 672, 994, 39, 32, "Text",
    CellTags->"SUNF",
    CellID->639373109]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19089, 759},
- {"SUNF", 19220, 763}
+ {"PrimaryExamplesSection", 19098, 759},
+ {"SUNF", 19228, 763}
  }
 *)
 (*NotebookFileOutline
@@ -869,138 +869,138 @@ Cell[2808, 75, 47, 1, 42, "ObjectName",
 Cell[2858, 78, 517, 16, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3400, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3400, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1462763391],
+ CellID->710867645],
 Cell[CellGroupData[{
-Cell[3813, 117, 195, 6, 25, "ExampleSection",
- CellID->607836101],
+Cell[3812, 117, 195, 6, 25, "ExampleSection",
+ CellID->641731143],
 Cell[CellGroupData[{
-Cell[4033, 127, 125, 4, 27, "Input",
+Cell[4032, 127, 125, 4, 27, "Input",
  CellTags->"SUNF",
  CellID->121887364],
-Cell[4161, 133, 273, 10, 36, "Output",
+Cell[4160, 133, 273, 10, 36, "Output",
  CellTags->"SUNF",
  CellID->788322241]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4471, 148, 312, 11, 27, "Input",
+Cell[4470, 148, 312, 11, 27, "Input",
  CellTags->"SUNF",
  CellID->1766434801],
-Cell[4786, 161, 622, 26, 40, "Output",
+Cell[4785, 161, 622, 26, 40, "Output",
  CellTags->"SUNF",
  CellID->1741928660]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5445, 192, 120, 4, 27, "Input",
+Cell[5444, 192, 120, 4, 27, "Input",
  CellTags->"SUNF",
  CellID->139383085],
-Cell[5568, 198, 874, 38, 40, "Output",
+Cell[5567, 198, 874, 38, 40, "Output",
  CellTags->"SUNF",
  CellID->1893375491]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6479, 241, 127, 4, 27, "Input",
+Cell[6478, 241, 127, 4, 27, "Input",
  CellTags->"SUNF",
  CellID->479451850],
-Cell[6609, 247, 561, 24, 40, "Output",
+Cell[6608, 247, 561, 24, 40, "Output",
  CellTags->"SUNF",
  CellID->622570571]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7207, 276, 153, 5, 27, "Input",
+Cell[7206, 276, 153, 5, 27, "Input",
  CellTags->"SUNF",
  CellID->1757637776],
-Cell[7363, 283, 361, 15, 40, "Output",
+Cell[7362, 283, 361, 15, 40, "Output",
  CellTags->"SUNF",
  CellID->752391067]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7761, 303, 180, 6, 27, "Input",
+Cell[7760, 303, 180, 6, 27, "Input",
  CellTags->"SUNF",
  CellID->169262538],
-Cell[7944, 311, 206, 7, 36, "Output",
+Cell[7943, 311, 206, 7, 36, "Output",
  CellTags->"SUNF",
  CellID->1205699996]
 }, Open  ]],
-Cell[8165, 321, 339, 11, 49, "Text",
+Cell[8164, 321, 339, 11, 49, "Text",
  CellTags->"SUNF",
  CellID->565916861],
 Cell[CellGroupData[{
-Cell[8529, 336, 203, 6, 27, "Input",
+Cell[8528, 336, 203, 6, 27, "Input",
  CellTags->"SUNF",
  CellID->2026232239],
-Cell[8735, 344, 1552, 60, 46, "Output",
+Cell[8734, 344, 1552, 60, 46, "Output",
  CellTags->"SUNF",
  CellID->621120740]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10324, 409, 283, 9, 27, "Input",
+Cell[10323, 409, 283, 9, 27, "Input",
  CellTags->"SUNF",
  CellID->386944916],
-Cell[10610, 420, 459, 19, 40, "Output",
+Cell[10609, 420, 459, 19, 40, "Output",
  CellTags->"SUNF",
  CellID->631419441]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11106, 444, 256, 8, 27, "Input",
+Cell[11105, 444, 256, 8, 27, "Input",
  CellTags->"SUNF",
  CellID->963311023],
-Cell[11365, 454, 1571, 61, 46, "Output",
+Cell[11364, 454, 1571, 61, 46, "Output",
  CellTags->"SUNF",
  CellID->215339899]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12973, 520, 192, 7, 27, "Input",
+Cell[12972, 520, 192, 7, 27, "Input",
  CellTags->"SUNF",
  CellID->1003312113],
-Cell[13168, 529, 256, 8, 36, "Output",
+Cell[13167, 529, 256, 8, 49, "Output",
  CellTags->"SUNF",
  CellID->792790909]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13461, 542, 221, 8, 27, "Input",
+Cell[13460, 542, 221, 8, 27, "Input",
  CellTags->"SUNF",
  CellID->2081826967],
-Cell[13685, 552, 365, 11, 36, "Output",
+Cell[13684, 552, 365, 11, 49, "Output",
  CellTags->"SUNF",
  CellID->1149570291]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14087, 568, 250, 9, 27, "Input",
+Cell[14086, 568, 250, 9, 27, "Input",
  CellTags->"SUNF",
  CellID->1938677300],
-Cell[14340, 579, 257, 8, 36, "Output",
+Cell[14339, 579, 257, 8, 49, "Output",
  CellTags->"SUNF",
  CellID->1462891621]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14634, 592, 153, 5, 27, "Input",
+Cell[14633, 592, 153, 5, 27, "Input",
  CellTags->"SUNF",
  CellID->334638901],
-Cell[14790, 599, 362, 15, 40, "Output",
+Cell[14789, 599, 362, 15, 40, "Output",
  CellTags->"SUNF",
  CellID->532100486]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15189, 619, 181, 6, 27, "Input",
+Cell[15188, 619, 181, 6, 27, "Input",
  CellTags->"SUNF",
  CellID->1328454294],
-Cell[15373, 627, 509, 22, 40, "Output",
+Cell[15372, 627, 509, 22, 40, "Output",
  CellTags->"SUNF",
  CellID->1815424467]
 }, Open  ]]
 }, Open  ]],
-Cell[15909, 653, 31, 0, 29, "SectionFooterSpacer"]
+Cell[15908, 653, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15977, 658, 270, 12, 31, "SeeAlsoSection",
+Cell[15976, 658, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[16250, 672, 994, 39, 32, "Text",
+Cell[16249, 672, 994, 39, 32, "Text",
  CellTags->"SUNF",
  CellID->639373109]
 }, Open  ]],
-Cell[17259, 714, 23, 0, 42, "FooterCell"]
+Cell[17258, 714, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

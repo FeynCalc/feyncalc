@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13729,        479]
+NotebookDataLength[     13736,        479]
 NotebookOptionsPosition[      8453,        315]
-NotebookOutlinePosition[     11885,        412]
-CellTagsIndexPosition[     11763,        406]
+NotebookOutlinePosition[     11892,        412]
+CellTagsIndexPosition[     11770,        406]
 WindowTitle->CommutatorExplicit
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ CommutatorExplicit.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26662], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28298], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CommutatorExplicit", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1732140561],
+ CellID->693057089],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->237621735],
+ CellID->1165418985],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
@@ -328,7 +328,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 59.212391}", 
+   "built" -> "{2016, 1, 2, 15, 7, 24.274643}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -340,7 +340,7 @@ exp by their definitions.", "synonyms" -> {}, "title" -> "CommutatorExplicit",
     "Symbol", "uri" -> "FeynCalc/ref/CommutatorExplicit"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -349,7 +349,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -358,9 +358,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3398, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3398, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1732140561]},
+   CellID->693057089]},
  "CommutatorExplicit"->{
   Cell[4009, 122, 193, 5, 27, "Input",
    CellTags->"CommutatorExplicit",
@@ -405,8 +405,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10315, 359},
- {"CommutatorExplicit", 10460, 363}
+ {"PrimaryExamplesSection", 10323, 359},
+ {"CommutatorExplicit", 10467, 363}
  }
 *)
 (*NotebookFileOutline
@@ -418,12 +418,12 @@ Cell[2878, 75, 61, 1, 42, "ObjectName",
 Cell[2942, 78, 431, 13, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3398, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3398, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1732140561],
+ CellID->693057089],
 Cell[CellGroupData[{
-Cell[3811, 114, 195, 6, 25, "ExampleSection",
- CellID->237621735],
+Cell[3810, 114, 196, 6, 25, "ExampleSection",
+ CellID->1165418985],
 Cell[4009, 122, 193, 5, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->596826267],

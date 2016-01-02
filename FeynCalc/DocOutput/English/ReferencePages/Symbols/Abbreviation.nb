@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10130,        334]
-NotebookOptionsPosition[      6789,        236]
-NotebookOutlinePosition[      9359,        305]
-CellTagsIndexPosition[      9245,        299]
+NotebookDataLength[     10135,        334]
+NotebookOptionsPosition[      6788,        236]
+NotebookOutlinePosition[      9365,        305]
+CellTagsIndexPosition[      9251,        299]
 WindowTitle->Abbreviation
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Abbreviation.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$12928], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$14965], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Abbreviation", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1005993829],
+ CellID->944806425],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->766799548],
+ CellID->966899492],
 
 Cell[CellGroupData[{
 
@@ -249,7 +249,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 55, 44.611172}", 
+   "built" -> "{2016, 1, 2, 15, 6, 16.550649}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -263,7 +263,7 @@ Abbreviation[GluonPropagator] = HoldForm[GP].", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/Abbreviation"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -272,7 +272,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -281,25 +281,25 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3511, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3511, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1005993829]},
+   CellID->944806425]},
  "Abbreviation"->{
-  Cell[4144, 125, 284, 9, 27, "Input",
+  Cell[4143, 125, 284, 9, 27, "Input",
    CellTags->"Abbreviation",
    CellID->333600762],
-  Cell[4431, 136, 519, 21, 42, "Output",
+  Cell[4430, 136, 519, 21, 42, "Output",
    CellTags->"Abbreviation",
    CellID->908274881],
-  Cell[5318, 180, 1429, 51, 52, "Text",
+  Cell[5317, 180, 1429, 51, 52, "Text",
    CellTags->"Abbreviation",
    CellID->1098399815]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8805, 282},
- {"Abbreviation", 8944, 286}
+ {"PrimaryExamplesSection", 8812, 282},
+ {"Abbreviation", 8950, 286}
  }
 *)
 (*NotebookFileOutline
@@ -311,31 +311,31 @@ Cell[2848, 75, 55, 1, 42, "ObjectName",
 Cell[2906, 78, 580, 14, 115, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3511, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3511, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1005993829],
+ CellID->944806425],
 Cell[CellGroupData[{
-Cell[3924, 115, 195, 6, 25, "ExampleSection",
- CellID->766799548],
+Cell[3923, 115, 195, 6, 25, "ExampleSection",
+ CellID->966899492],
 Cell[CellGroupData[{
-Cell[4144, 125, 284, 9, 27, "Input",
+Cell[4143, 125, 284, 9, 27, "Input",
  CellTags->"Abbreviation",
  CellID->333600762],
-Cell[4431, 136, 519, 21, 42, "Output",
+Cell[4430, 136, 519, 21, 42, "Output",
  CellTags->"Abbreviation",
  CellID->908274881]
 }, Open  ]]
 }, Open  ]],
-Cell[4977, 161, 31, 0, 29, "SectionFooterSpacer"]
+Cell[4976, 161, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5045, 166, 270, 12, 31, "SeeAlsoSection",
+Cell[5044, 166, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5318, 180, 1429, 51, 52, "Text",
+Cell[5317, 180, 1429, 51, 52, "Text",
  CellTags->"Abbreviation",
  CellID->1098399815]
 }, Open  ]],
-Cell[6762, 234, 23, 0, 42, "FooterCell"]
+Cell[6761, 234, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

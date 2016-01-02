@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     31191,        975]
+NotebookDataLength[     31198,        975]
 NotebookOptionsPosition[     24494,        759]
-NotebookOutlinePosition[     28776,        882]
-CellTagsIndexPosition[     28627,        875]
+NotebookOutlinePosition[     28783,        882]
+CellTagsIndexPosition[     28634,        875]
 WindowTitle->DiracTrace
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42203], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44300], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/DiracTrace", ".html"]], None}]}]},
@@ -119,7 +119,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->930970002],
+ CellID->1715818784],
 
 Cell[CellGroupData[{
 
@@ -129,7 +129,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1955808721],
+ CellID->1946395404],
 
 Cell[CellGroupData[{
 
@@ -593,7 +593,7 @@ P3V9KVaPEgEAAABsnf8HVTKwuA==
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->{"DiracTrace", "RasterizedOutput"},
  CellLabel->"Out[6]=",
- CellID->536857049]
+ CellID->93449681]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -772,7 +772,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 58, 21.797754}", 
+   "built" -> "{2016, 1, 2, 15, 8, 49.661322}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -787,7 +787,7 @@ regarding \\[Gamma]^5schemes see the notes for TR.", "synonyms" -> {},
     "DiracTrace", "type" -> "Symbol", "uri" -> "FeynCalc/ref/DiracTrace"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -796,7 +796,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -805,46 +805,46 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3803, 106, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3803, 106, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->930970002]},
+   CellID->1715818784]},
  "DiracTrace"->{
-  Cell[4436, 135, 138, 4, 27, "Input",
+  Cell[4437, 135, 138, 4, 27, "Input",
    CellTags->"DiracTrace",
    CellID->1024967943],
-  Cell[4577, 141, 827, 21, 75, "Output",
+  Cell[4578, 141, 827, 21, 75, "Output",
    CellTags->"DiracTrace",
    CellID->149501732],
-  Cell[5441, 167, 191, 6, 27, "Input",
+  Cell[5442, 167, 191, 6, 27, "Input",
    CellTags->"DiracTrace",
    CellID->60676203],
-  Cell[5635, 175, 680, 27, 41, "Output",
+  Cell[5636, 175, 680, 27, 41, "Output",
    CellTags->"DiracTrace",
    CellID->47904170],
-  Cell[6352, 207, 228, 7, 27, "Input",
+  Cell[6353, 207, 228, 7, 27, "Input",
    CellTags->"DiracTrace",
    CellID->1088537337],
-  Cell[6583, 216, 1088, 43, 42, "Output",
+  Cell[6584, 216, 1088, 43, 42, "Output",
    CellTags->"DiracTrace",
    CellID->206648847],
-  Cell[7708, 264, 167, 5, 27, "Input",
+  Cell[7709, 264, 167, 5, 27, "Input",
    CellTags->"DiracTrace",
    CellID->710007181],
-  Cell[7878, 271, 2892, 115, 42, "Output",
+  Cell[7879, 271, 2892, 115, 42, "Output",
    CellTags->"DiracTrace",
    CellID->697793381],
-  Cell[10807, 391, 314, 9, 27, "Input",
+  Cell[10808, 391, 314, 9, 27, "Input",
    CellTags->"DiracTrace",
    CellID->196468068],
-  Cell[11124, 402, 670, 27, 39, "Output",
+  Cell[11125, 402, 670, 27, 39, "Output",
    CellTags->"DiracTrace",
    CellID->72676319],
-  Cell[11831, 434, 352, 10, 27, "Input",
+  Cell[11832, 434, 352, 10, 27, "Input",
    CellTags->"DiracTrace",
    CellID->261281630],
-  Cell[12186, 446, 8615, 149, 97, "Output",
+  Cell[12187, 446, 8614, 149, 97, "Output",
    CellTags->{"DiracTrace", "RasterizedOutput"},
-   CellID->536857049],
+   CellID->93449681],
   Cell[20838, 600, 204, 6, 27, "Input",
    CellTags->"DiracTrace",
    CellID->825892025],
@@ -860,23 +860,23 @@ CellTagsIndex->{
   Cell[23460, 707, 128, 4, 27, "Input",
    CellTags->"DiracTrace",
    CellID->29438835],
-  Cell[23591, 713, 281, 9, 36, "Output",
+  Cell[23591, 713, 281, 9, 49, "Output",
    CellTags->"DiracTrace",
    CellID->1663310583],
   Cell[24240, 745, 212, 9, 31, "Text",
    CellTags->"DiracTrace",
    CellID->2123270018]},
  "RasterizedOutput"->{
-  Cell[12186, 446, 8615, 149, 97, "Output",
+  Cell[12187, 446, 8614, 149, 97, "Output",
    CellTags->{"DiracTrace", "RasterizedOutput"},
-   CellID->536857049]}
+   CellID->93449681]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 26577, 806},
- {"DiracTrace", 26714, 810},
- {"RasterizedOutput", 28487, 868}
+ {"PrimaryExamplesSection", 26585, 806},
+ {"DiracTrace", 26723, 810},
+ {"RasterizedOutput", 28495, 868}
  }
 *)
 (*NotebookFileOutline
@@ -888,59 +888,59 @@ Cell[2837, 75, 53, 1, 42, "ObjectName",
 Cell[2893, 78, 885, 24, 165, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3803, 106, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3803, 106, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->930970002],
+ CellID->1715818784],
 Cell[CellGroupData[{
-Cell[4215, 125, 196, 6, 25, "ExampleSection",
- CellID->1955808721],
+Cell[4216, 125, 196, 6, 25, "ExampleSection",
+ CellID->1946395404],
 Cell[CellGroupData[{
-Cell[4436, 135, 138, 4, 27, "Input",
+Cell[4437, 135, 138, 4, 27, "Input",
  CellTags->"DiracTrace",
  CellID->1024967943],
-Cell[4577, 141, 827, 21, 75, "Output",
+Cell[4578, 141, 827, 21, 75, "Output",
  CellTags->"DiracTrace",
  CellID->149501732]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5441, 167, 191, 6, 27, "Input",
+Cell[5442, 167, 191, 6, 27, "Input",
  CellTags->"DiracTrace",
  CellID->60676203],
-Cell[5635, 175, 680, 27, 41, "Output",
+Cell[5636, 175, 680, 27, 41, "Output",
  CellTags->"DiracTrace",
  CellID->47904170]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6352, 207, 228, 7, 27, "Input",
+Cell[6353, 207, 228, 7, 27, "Input",
  CellTags->"DiracTrace",
  CellID->1088537337],
-Cell[6583, 216, 1088, 43, 42, "Output",
+Cell[6584, 216, 1088, 43, 42, "Output",
  CellTags->"DiracTrace",
  CellID->206648847]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7708, 264, 167, 5, 27, "Input",
+Cell[7709, 264, 167, 5, 27, "Input",
  CellTags->"DiracTrace",
  CellID->710007181],
-Cell[7878, 271, 2892, 115, 42, "Output",
+Cell[7879, 271, 2892, 115, 42, "Output",
  CellTags->"DiracTrace",
  CellID->697793381]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10807, 391, 314, 9, 27, "Input",
+Cell[10808, 391, 314, 9, 27, "Input",
  CellTags->"DiracTrace",
  CellID->196468068],
-Cell[11124, 402, 670, 27, 39, "Output",
+Cell[11125, 402, 670, 27, 39, "Output",
  CellTags->"DiracTrace",
  CellID->72676319]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11831, 434, 352, 10, 27, "Input",
+Cell[11832, 434, 352, 10, 27, "Input",
  CellTags->"DiracTrace",
  CellID->261281630],
-Cell[12186, 446, 8615, 149, 97, "Output",
+Cell[12187, 446, 8614, 149, 97, "Output",
  CellTags->{"DiracTrace", "RasterizedOutput"},
- CellID->536857049]
+ CellID->93449681]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[20838, 600, 204, 6, 27, "Input",
@@ -962,7 +962,7 @@ Cell[CellGroupData[{
 Cell[23460, 707, 128, 4, 27, "Input",
  CellTags->"DiracTrace",
  CellID->29438835],
-Cell[23591, 713, 281, 9, 36, "Output",
+Cell[23591, 713, 281, 9, 49, "Output",
  CellTags->"DiracTrace",
  CellID->1663310583]
 }, Open  ]]

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     53340,       1772]
-NotebookOptionsPosition[     48339,       1618]
-NotebookOutlinePosition[     51796,       1713]
-CellTagsIndexPosition[     51681,       1707]
+NotebookDataLength[     53350,       1772]
+NotebookOptionsPosition[     48340,       1618]
+NotebookOutlinePosition[     51805,       1713]
+CellTagsIndexPosition[     51690,       1707]
 WindowTitle->Amplitude
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$13270], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$15399], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Amplitude", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1190819684],
+ CellID->1587745140],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->469746284],
+ CellID->1341170645],
 
 Cell[CellGroupData[{
 
@@ -1631,7 +1631,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 55, 46.628132}", 
+   "built" -> "{2016, 1, 2, 15, 6, 20.601846}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1647,7 +1647,7 @@ the polarized ones.", "synonyms" -> {}, "title" -> "Amplitude",
     "titlemodifier" -> "", "windowtitle" -> "Amplitude", "type" -> "Symbol", 
     "uri" -> "FeynCalc/ref/Amplitude"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1656,7 +1656,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1667,47 +1667,47 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3695, 99, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1190819684]},
+   CellID->1587745140]},
  "Amplitude"->{
-  Cell[4328, 128, 154, 5, 27, "Input",
+  Cell[4329, 128, 154, 5, 27, "Input",
    CellTags->"Amplitude",
    CellID->1213293963],
-  Cell[4485, 135, 211, 7, 36, "Output",
+  Cell[4486, 135, 211, 7, 36, "Output",
    CellTags->"Amplitude",
    CellID->680936529],
-  Cell[4711, 145, 114, 2, 32, "Text",
+  Cell[4712, 145, 114, 2, 32, "Text",
    CellTags->"Amplitude",
    CellID->1145607079],
-  Cell[4850, 151, 140, 4, 27, "Input",
+  Cell[4851, 151, 140, 4, 27, "Input",
    CellTags->"Amplitude",
    CellID->69921964],
-  Cell[4993, 157, 4796, 173, 169, "Output",
+  Cell[4994, 157, 4796, 173, 169, "Output",
    CellTags->"Amplitude",
    CellID->1321530464],
-  Cell[9826, 335, 128, 4, 27, "Input",
+  Cell[9827, 335, 128, 4, 27, "Input",
    CellTags->"Amplitude",
    CellID->863772966],
-  Cell[9957, 341, 13010, 414, 281, "Output",
+  Cell[9958, 341, 13010, 414, 281, "Output",
    CellTags->"Amplitude",
    CellID->377476222],
-  Cell[22982, 758, 195, 7, 32, "Text",
+  Cell[22983, 758, 195, 7, 32, "Text",
    CellTags->"Amplitude",
    CellID->1089097550],
-  Cell[23202, 769, 326, 10, 27, "Input",
+  Cell[23203, 769, 326, 10, 27, "Input",
    CellTags->"Amplitude",
    CellID->657797482],
-  Cell[23531, 781, 24173, 800, 506, "Output",
+  Cell[23532, 781, 24173, 800, 506, "Output",
    CellTags->"Amplitude",
    CellID->1560610372],
-  Cell[48072, 1604, 225, 9, 32, "Text",
+  Cell[48073, 1604, 225, 9, 32, "Text",
    CellTags->"Amplitude",
    CellID->587564717]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 50528, 1666},
- {"Amplitude", 50664, 1670}
+ {"PrimaryExamplesSection", 50537, 1666},
+ {"Amplitude", 50673, 1670}
  }
 *)
 (*NotebookFileOutline
@@ -1721,59 +1721,59 @@ Cell[2887, 78, 783, 17, 144, "Usage",
 Cell[CellGroupData[{
 Cell[3695, 99, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1190819684],
+ CellID->1587745140],
 Cell[CellGroupData[{
-Cell[4108, 118, 195, 6, 25, "ExampleSection",
- CellID->469746284],
+Cell[4108, 118, 196, 6, 25, "ExampleSection",
+ CellID->1341170645],
 Cell[CellGroupData[{
-Cell[4328, 128, 154, 5, 27, "Input",
+Cell[4329, 128, 154, 5, 27, "Input",
  CellTags->"Amplitude",
  CellID->1213293963],
-Cell[4485, 135, 211, 7, 36, "Output",
+Cell[4486, 135, 211, 7, 36, "Output",
  CellTags->"Amplitude",
  CellID->680936529]
 }, Open  ]],
-Cell[4711, 145, 114, 2, 32, "Text",
+Cell[4712, 145, 114, 2, 32, "Text",
  CellTags->"Amplitude",
  CellID->1145607079],
 Cell[CellGroupData[{
-Cell[4850, 151, 140, 4, 27, "Input",
+Cell[4851, 151, 140, 4, 27, "Input",
  CellTags->"Amplitude",
  CellID->69921964],
-Cell[4993, 157, 4796, 173, 169, "Output",
+Cell[4994, 157, 4796, 173, 169, "Output",
  CellTags->"Amplitude",
  CellID->1321530464]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9826, 335, 128, 4, 27, "Input",
+Cell[9827, 335, 128, 4, 27, "Input",
  CellTags->"Amplitude",
  CellID->863772966],
-Cell[9957, 341, 13010, 414, 281, "Output",
+Cell[9958, 341, 13010, 414, 281, "Output",
  CellTags->"Amplitude",
  CellID->377476222]
 }, Open  ]],
-Cell[22982, 758, 195, 7, 32, "Text",
+Cell[22983, 758, 195, 7, 32, "Text",
  CellTags->"Amplitude",
  CellID->1089097550],
 Cell[CellGroupData[{
-Cell[23202, 769, 326, 10, 27, "Input",
+Cell[23203, 769, 326, 10, 27, "Input",
  CellTags->"Amplitude",
  CellID->657797482],
-Cell[23531, 781, 24173, 800, 506, "Output",
+Cell[23532, 781, 24173, 800, 506, "Output",
  CellTags->"Amplitude",
  CellID->1560610372]
 }, Open  ]]
 }, Open  ]],
-Cell[47731, 1585, 31, 0, 29, "SectionFooterSpacer"]
+Cell[47732, 1585, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47799, 1590, 270, 12, 31, "SeeAlsoSection",
+Cell[47800, 1590, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[48072, 1604, 225, 9, 32, "Text",
+Cell[48073, 1604, 225, 9, 32, "Text",
  CellTags->"Amplitude",
  CellID->587564717]
 }, Open  ]],
-Cell[48312, 1616, 23, 0, 42, "FooterCell"]
+Cell[48313, 1616, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

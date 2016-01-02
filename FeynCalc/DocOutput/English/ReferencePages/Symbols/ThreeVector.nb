@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6229,        194]
+NotebookDataLength[      6239,        194]
 NotebookOptionsPosition[      4043,        129]
-NotebookOutlinePosition[      5965,        183]
-CellTagsIndexPosition[      5892,        178]
+NotebookOutlinePosition[      5975,        183]
+CellTagsIndexPosition[      5902,        178]
 WindowTitle->ThreeVector
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ThreeVector.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$147710], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$153071], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ThreeVector", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 7, 51.687385}", 
+   "built" -> "{2016, 1, 2, 15, 18, 22.356504}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -152,7 +152,7 @@ TaggingRules->{
     "windowtitle" -> "ThreeVector", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ThreeVector"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -161,7 +161,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -177,7 +177,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ThreeVector", 5778, 171}
+ {"ThreeVector", 5788, 171}
  }
 *)
 (*NotebookFileOutline

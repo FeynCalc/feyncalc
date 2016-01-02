@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9253,        319]
+NotebookDataLength[      9263,        319]
 NotebookOptionsPosition[      5788,        211]
-NotebookOutlinePosition[      8354,        284]
-CellTagsIndexPosition[      8249,        278]
+NotebookOutlinePosition[      8364,        284]
+CellTagsIndexPosition[      8259,        278]
 WindowTitle->$MU
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$165859], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$172139], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/$MU", 
             ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1966792661],
+ CellID->1289444967],
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,7 +116,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1005205598],
+ CellID->1738411291],
 
 Cell[CellGroupData[{
 
@@ -224,7 +224,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 9, 30.359332}", 
+   "built" -> "{2016, 1, 2, 15, 20, 25.051771}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -236,7 +236,7 @@ it is unset, but can be set to anything.", "synonyms" -> {}, "title" -> "$MU",
      "titlemodifier" -> "", "windowtitle" -> "$MU", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/$MU"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -245,7 +245,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -256,7 +256,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3384, 95, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1966792661]},
+   CellID->1289444967]},
  "$MU"->{
   Cell[3996, 122, 72, 2, 35, "Subsubsection",
    CellTags->"$MU",
@@ -277,8 +277,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7678, 255},
- {"$MU", 7808, 259}
+ {"PrimaryExamplesSection", 7688, 255},
+ {"$MU", 7818, 259}
  }
 *)
 (*NotebookFileOutline
@@ -292,9 +292,9 @@ Cell[2865, 78, 494, 13, 97, "Usage",
 Cell[CellGroupData[{
 Cell[3384, 95, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1966792661],
+ CellID->1289444967],
 Cell[3775, 112, 196, 6, 25, "ExampleSection",
- CellID->1005205598],
+ CellID->1738411291],
 Cell[CellGroupData[{
 Cell[3996, 122, 72, 2, 35, "Subsubsection",
  CellTags->"$MU",

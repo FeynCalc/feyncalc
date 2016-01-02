@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6560,        207]
-NotebookOptionsPosition[      4075,        131]
-NotebookOutlinePosition[      6174,        191]
-CellTagsIndexPosition[      6066,        185]
+NotebookDataLength[      5225,        147]
+NotebookOptionsPosition[      3342,         95]
+NotebookOutlinePosition[      5147,        143]
+CellTagsIndexPosition[      5104,        140]
 WindowTitle->UVPart
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157966], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$163879], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/UVPart",
              ".html"]], None}]}]},
@@ -91,42 +91,6 @@ Cell[BoxData[GridBox[{
    "RowsIndexed" -> {}}},
  CellID->982511436],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
- WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1],
-
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1],
-
-Cell[BoxData[""], "Input",
- CellTags->"UVPart",
- CellLabel->"In[1]:=",
- CellID->742781484]
-}, Open  ]]
-}, Open  ]],
-
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
@@ -144,7 +108,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 8, 49.877753}", 
+   "built" -> "{2016, 1, 2, 15, 19, 35.233951}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -155,7 +119,7 @@ momentum).", "synonyms" -> {}, "title" -> "UVPart", "titlemodifier" -> "",
     "windowtitle" -> "UVPart", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/UVPart"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -164,29 +128,17 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3337, 95, 379, 15, 70, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1]},
- "UVPart"->{
-  Cell[3931, 122, 90, 3, 70, "Input",
-   CellTags->"UVPart",
-   CellID->742781484]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"PrimaryExamplesSection", 5834, 174},
- {"UVPart", 5958, 178}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
@@ -196,19 +148,7 @@ Cell[2818, 75, 49, 1, 70, "ObjectName",
  CellID->1224892054],
 Cell[2870, 78, 442, 13, 70, "Usage",
  CellID->982511436],
-Cell[CellGroupData[{
-Cell[3337, 95, 379, 15, 70, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1],
-Cell[CellGroupData[{
-Cell[3741, 114, 187, 6, 70, "ExampleSection",
- CellID->1],
-Cell[3931, 122, 90, 3, 70, "Input",
- CellTags->"UVPart",
- CellID->742781484]
-}, Open  ]]
-}, Open  ]],
-Cell[4048, 129, 23, 0, 70, "FooterCell"]
+Cell[3315, 93, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8095,        256]
+NotebookDataLength[      8105,        256]
 NotebookOptionsPosition[      4991,        166]
-NotebookOutlinePosition[      7456,        232]
-CellTagsIndexPosition[      7339,        226]
+NotebookOutlinePosition[      7466,        232]
+CellTagsIndexPosition[      7349,        226]
 WindowTitle->TwoLoopSimplify
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ TwoLoopSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$156580], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162401], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TwoLoopSimplify", ".html"]], None}]}]},
@@ -179,7 +179,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 8, 42.538878}", 
+   "built" -> "{2016, 1, 2, 15, 19, 24.788622}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -193,7 +193,7 @@ integration momenta in amplitude must be named q1 and q2.", "synonyms" -> {},
     "TwoLoopSimplify", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/TwoLoopSimplify"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -202,7 +202,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -225,8 +225,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6992, 212},
- {"TwoLoopSimplify", 7126, 216}
+ {"PrimaryExamplesSection", 7002, 212},
+ {"TwoLoopSimplify", 7136, 216}
  }
 *)
 (*NotebookFileOutline

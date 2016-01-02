@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13479,        473]
-NotebookOptionsPosition[      9113,        335]
-NotebookOutlinePosition[     12099,        420]
-CellTagsIndexPosition[     11984,        414]
+NotebookDataLength[     13487,        473]
+NotebookOptionsPosition[      9112,        335]
+NotebookOutlinePosition[     12108,        420]
+CellTagsIndexPosition[     11993,        414]
 WindowTitle->HypExplicit
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ HypExplicit.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$81478], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86396], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/HypExplicit", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1909025168],
+ CellID->1589947632],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1340258463],
+ CellID->431479096],
 
 Cell[CellGroupData[{
 
@@ -348,7 +348,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 49.803153}", 
+   "built" -> "{2016, 1, 2, 15, 12, 46.521772}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -360,7 +360,7 @@ index).", "synonyms" -> {}, "title" -> "HypExplicit", "titlemodifier" -> "",
     "windowtitle" -> "HypExplicit", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/HypExplicit"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -369,7 +369,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -380,41 +380,41 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3440, 96, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1909025168]},
+   CellID->1589947632]},
  "HypExplicit"->{
-  Cell[4074, 125, 182, 5, 27, "Input",
+  Cell[4073, 125, 182, 5, 27, "Input",
    CellTags->"HypExplicit",
    CellID->713088732],
-  Cell[4259, 132, 268, 9, 36, "Output",
+  Cell[4258, 132, 268, 9, 36, "Output",
    CellTags->"HypExplicit",
    CellID->2050064924],
-  Cell[4564, 146, 160, 5, 27, "Input",
+  Cell[4563, 146, 160, 5, 27, "Input",
    CellTags->"HypExplicit",
    CellID->335460950],
-  Cell[4727, 153, 687, 25, 68, "Output",
+  Cell[4726, 153, 687, 25, 68, "Output",
    CellTags->"HypExplicit",
    CellID->1212116493],
-  Cell[5451, 183, 281, 9, 27, "Input",
+  Cell[5450, 183, 281, 9, 27, "Input",
    CellTags->"HypExplicit",
    CellID->1980165795],
-  Cell[5735, 194, 1602, 59, 36, "Output",
+  Cell[5734, 194, 1602, 59, 36, "Output",
    CellTags->"HypExplicit",
    CellID->1891206830],
-  Cell[7374, 258, 161, 5, 27, "Input",
+  Cell[7373, 258, 161, 5, 27, "Input",
    CellTags->"HypExplicit",
    CellID->1855078663],
-  Cell[7538, 265, 911, 33, 68, "Output",
+  Cell[7537, 265, 911, 33, 68, "Output",
    CellTags->"HypExplicit",
    CellID->1089581291],
-  Cell[8817, 321, 254, 9, 32, "Text",
+  Cell[8816, 321, 254, 9, 32, "Text",
    CellTags->"HypExplicit",
    CellID->762625741]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10999, 379},
- {"HypExplicit", 11137, 383}
+ {"PrimaryExamplesSection", 11008, 379},
+ {"HypExplicit", 11146, 383}
  }
 *)
 (*NotebookFileOutline
@@ -428,53 +428,53 @@ Cell[2900, 78, 515, 14, 99, "Usage",
 Cell[CellGroupData[{
 Cell[3440, 96, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1909025168],
+ CellID->1589947632],
 Cell[CellGroupData[{
-Cell[3853, 115, 196, 6, 25, "ExampleSection",
- CellID->1340258463],
+Cell[3853, 115, 195, 6, 25, "ExampleSection",
+ CellID->431479096],
 Cell[CellGroupData[{
-Cell[4074, 125, 182, 5, 27, "Input",
+Cell[4073, 125, 182, 5, 27, "Input",
  CellTags->"HypExplicit",
  CellID->713088732],
-Cell[4259, 132, 268, 9, 36, "Output",
+Cell[4258, 132, 268, 9, 36, "Output",
  CellTags->"HypExplicit",
  CellID->2050064924]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4564, 146, 160, 5, 27, "Input",
+Cell[4563, 146, 160, 5, 27, "Input",
  CellTags->"HypExplicit",
  CellID->335460950],
-Cell[4727, 153, 687, 25, 68, "Output",
+Cell[4726, 153, 687, 25, 68, "Output",
  CellTags->"HypExplicit",
  CellID->1212116493]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5451, 183, 281, 9, 27, "Input",
+Cell[5450, 183, 281, 9, 27, "Input",
  CellTags->"HypExplicit",
  CellID->1980165795],
-Cell[5735, 194, 1602, 59, 36, "Output",
+Cell[5734, 194, 1602, 59, 36, "Output",
  CellTags->"HypExplicit",
  CellID->1891206830]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7374, 258, 161, 5, 27, "Input",
+Cell[7373, 258, 161, 5, 27, "Input",
  CellTags->"HypExplicit",
  CellID->1855078663],
-Cell[7538, 265, 911, 33, 68, "Output",
+Cell[7537, 265, 911, 33, 68, "Output",
  CellTags->"HypExplicit",
  CellID->1089581291]
 }, Open  ]]
 }, Open  ]],
-Cell[8476, 302, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8475, 302, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8544, 307, 270, 12, 31, "SeeAlsoSection",
+Cell[8543, 307, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8817, 321, 254, 9, 32, "Text",
+Cell[8816, 321, 254, 9, 32, "Text",
  CellTags->"HypExplicit",
  CellID->762625741]
 }, Open  ]],
-Cell[9086, 333, 23, 0, 42, "FooterCell"]
+Cell[9085, 333, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

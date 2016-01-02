@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9298,        320]
-NotebookOptionsPosition[      5823,        212]
-NotebookOutlinePosition[      8329,        283]
-CellTagsIndexPosition[      8216,        277]
+NotebookDataLength[      9310,        320]
+NotebookOptionsPosition[      5824,        212]
+NotebookOutlinePosition[      8340,        283]
+CellTagsIndexPosition[      8227,        277]
 WindowTitle->PowerFactor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PowerFactor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$115623], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$120495], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PowerFactor", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1389576433],
+ CellID->1287848128],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->76921222],
+ CellID->442974793],
 
 Cell[CellGroupData[{
 
@@ -225,7 +225,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 4, 49.568619}", 
+   "built" -> "{2016, 1, 2, 15, 15, 35.116833}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -235,7 +235,7 @@ TaggingRules->{
     "windowtitle" -> "PowerFactor", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/PowerFactor"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,7 +244,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -255,29 +255,29 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3627, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1389576433]},
+   CellID->1287848128]},
  "PowerFactor"->{
-  Cell[4259, 136, 162, 6, 27, "Input",
+  Cell[4260, 136, 162, 6, 27, "Input",
    CellTags->"PowerFactor",
    CellID->1163522766],
-  Cell[4424, 144, 285, 10, 36, "Output",
+  Cell[4425, 144, 285, 10, 36, "Output",
    CellTags->"PowerFactor",
    CellID->160369455],
-  Cell[4746, 159, 133, 4, 27, "Input",
+  Cell[4747, 159, 133, 4, 27, "Input",
    CellTags->"PowerFactor",
    CellID->485962359],
-  Cell[4882, 165, 285, 10, 36, "Output",
+  Cell[4883, 165, 285, 10, 36, "Output",
    CellTags->"PowerFactor",
    CellID->783402888],
-  Cell[5535, 198, 246, 9, 32, "Text",
+  Cell[5536, 198, 246, 9, 32, "Text",
    CellTags->"PowerFactor",
    CellID->2043225141]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7598, 254},
- {"PowerFactor", 7737, 258}
+ {"PrimaryExamplesSection", 7609, 254},
+ {"PowerFactor", 7748, 258}
  }
 *)
 (*NotebookFileOutline
@@ -291,37 +291,37 @@ Cell[2901, 78, 701, 25, 84, "Usage",
 Cell[CellGroupData[{
 Cell[3627, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1389576433],
+ CellID->1287848128],
 Cell[CellGroupData[{
-Cell[4040, 126, 194, 6, 25, "ExampleSection",
- CellID->76921222],
+Cell[4040, 126, 195, 6, 25, "ExampleSection",
+ CellID->442974793],
 Cell[CellGroupData[{
-Cell[4259, 136, 162, 6, 27, "Input",
+Cell[4260, 136, 162, 6, 27, "Input",
  CellTags->"PowerFactor",
  CellID->1163522766],
-Cell[4424, 144, 285, 10, 36, "Output",
+Cell[4425, 144, 285, 10, 36, "Output",
  CellTags->"PowerFactor",
  CellID->160369455]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4746, 159, 133, 4, 27, "Input",
+Cell[4747, 159, 133, 4, 27, "Input",
  CellTags->"PowerFactor",
  CellID->485962359],
-Cell[4882, 165, 285, 10, 36, "Output",
+Cell[4883, 165, 285, 10, 36, "Output",
  CellTags->"PowerFactor",
  CellID->783402888]
 }, Open  ]]
 }, Open  ]],
-Cell[5194, 179, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5195, 179, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5262, 184, 270, 12, 31, "SeeAlsoSection",
+Cell[5263, 184, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5535, 198, 246, 9, 32, "Text",
+Cell[5536, 198, 246, 9, 32, "Text",
  CellTags->"PowerFactor",
  CellID->2043225141]
 }, Open  ]],
-Cell[5796, 210, 23, 0, 42, "FooterCell"]
+Cell[5797, 210, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

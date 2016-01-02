@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10065,        321]
+NotebookDataLength[     10073,        321]
 NotebookOptionsPosition[      6535,        222]
-NotebookOutlinePosition[      9254,        292]
-CellTagsIndexPosition[      9128,        286]
+NotebookOutlinePosition[      9262,        292]
+CellTagsIndexPosition[      9136,        286]
 WindowTitle->CovariantFieldDerivative
 WindowFrame->Normal*)
 
@@ -60,7 +60,7 @@ CovariantFieldDerivative.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30813], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32450], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CovariantFieldDerivative", ".html"]], None}]}]},
@@ -116,7 +116,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1093621218],
+ CellID->2048724429],
 
 Cell[CellGroupData[{
 
@@ -126,7 +126,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1946090169],
+ CellID->1930242849],
 
 Cell[CellGroupData[{
 
@@ -235,7 +235,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 57, 21.709703}", 
+   "built" -> "{2016, 1, 2, 15, 7, 42.180775}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -250,7 +250,7 @@ actual function.", "synonyms" -> {}, "title" -> "CovariantFieldDerivative",
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/CovariantFieldDerivative"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -259,7 +259,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -270,7 +270,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3800, 103, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1093621218]},
+   CellID->2048724429]},
  "CovariantFieldDerivative"->{
   Cell[4434, 132, 348, 10, 27, "Input",
    CellTags->"CovariantFieldDerivative",
@@ -285,8 +285,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8637, 269},
- {"CovariantFieldDerivative", 8789, 273}
+ {"PrimaryExamplesSection", 8645, 269},
+ {"CovariantFieldDerivative", 8797, 273}
  }
 *)
 (*NotebookFileOutline
@@ -300,10 +300,10 @@ Cell[2991, 79, 784, 20, 113, "Usage",
 Cell[CellGroupData[{
 Cell[3800, 103, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1093621218],
+ CellID->2048724429],
 Cell[CellGroupData[{
 Cell[4213, 122, 196, 6, 25, "ExampleSection",
- CellID->1946090169],
+ CellID->1930242849],
 Cell[CellGroupData[{
 Cell[4434, 132, 348, 10, 27, "Input",
  CellTags->"CovariantFieldDerivative",

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13458,        473]
+NotebookDataLength[     13467,        473]
 NotebookOptionsPosition[      8606,        321]
-NotebookOutlinePosition[     11832,        412]
-CellTagsIndexPosition[     11713,        406]
+NotebookOutlinePosition[     11841,        412]
+CellTagsIndexPosition[     11722,        406]
 WindowTitle->GhostPropagator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ GhostPropagator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$74938], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$79764], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/GhostPropagator", ".html"]], None}]}]},
@@ -114,7 +114,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1897377819],
+ CellID->498292120],
 
 Cell[CellGroupData[{
 
@@ -124,7 +124,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->198287813],
+ CellID->1588876130],
 
 Cell[CellGroupData[{
 
@@ -334,7 +334,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 1, 14.742237}", 
+   "built" -> "{2016, 1, 2, 15, 12, 14.075951}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -346,7 +346,7 @@ TaggingRules->{
     "windowtitle" -> "GhostPropagator", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/GhostPropagator"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -355,7 +355,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -364,9 +364,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3605, 101, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3605, 101, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1897377819]},
+   CellID->498292120]},
  "GhostPropagator"->{
   Cell[4238, 130, 174, 5, 27, "Input",
    CellTags->"GhostPropagator",
@@ -395,7 +395,7 @@ CellTagsIndex->{
   Cell[6974, 250, 303, 10, 27, "Input",
    CellTags->"GhostPropagator",
    CellID->160188204],
-  Cell[7280, 262, 334, 10, 36, "Output",
+  Cell[7280, 262, 334, 10, 49, "Output",
    CellTags->"GhostPropagator",
    CellID->657761817],
   Cell[7982, 295, 582, 21, 70, "Text",
@@ -405,8 +405,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10498, 365},
- {"GhostPropagator", 10641, 369}
+ {"PrimaryExamplesSection", 10508, 365},
+ {"GhostPropagator", 10650, 369}
  }
 *)
 (*NotebookFileOutline
@@ -418,12 +418,12 @@ Cell[2863, 75, 58, 1, 42, "ObjectName",
 Cell[2924, 78, 656, 19, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3605, 101, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3605, 101, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1897377819],
+ CellID->498292120],
 Cell[CellGroupData[{
-Cell[4018, 120, 195, 6, 25, "ExampleSection",
- CellID->198287813],
+Cell[4017, 120, 196, 6, 25, "ExampleSection",
+ CellID->1588876130],
 Cell[CellGroupData[{
 Cell[4238, 130, 174, 5, 27, "Input",
  CellTags->"GhostPropagator",
@@ -460,7 +460,7 @@ Cell[CellGroupData[{
 Cell[6974, 250, 303, 10, 27, "Input",
  CellTags->"GhostPropagator",
  CellID->160188204],
-Cell[7280, 262, 334, 10, 36, "Output",
+Cell[7280, 262, 334, 10, 49, "Output",
  CellTags->"GhostPropagator",
  CellID->657761817]
 }, Open  ]]
@@ -468,7 +468,7 @@ Cell[7280, 262, 334, 10, 36, "Output",
 Cell[7641, 276, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7709, 281, 270, 12, 31, "SeeAlsoSection",
+Cell[7709, 281, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
 Cell[7982, 295, 582, 21, 70, "Text",
  CellTags->"GhostPropagator",

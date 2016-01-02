@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42144,       1649]
+NotebookDataLength[     42153,       1649]
 NotebookOptionsPosition[     28805,       1195]
-NotebookOutlinePosition[     36132,       1417]
-CellTagsIndexPosition[     36015,       1411]
+NotebookOutlinePosition[     36141,       1417]
+CellTagsIndexPosition[     36024,       1411]
 WindowTitle->SUNSimplify
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ SUNSimplify.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$144252], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$149947], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/SUNSimplify", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1175096586],
+ CellID->1587745140],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1097289714],
+ CellID->1341170645],
 
 Cell[CellGroupData[{
 
@@ -1208,7 +1208,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 7, 31.614468}", 
+   "built" -> "{2016, 1, 2, 15, 18, 8.718593}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1222,7 +1222,7 @@ in front of DiracTrace[...].", "synonyms" -> {}, "title" -> "SUNSimplify",
     "titlemodifier" -> "", "windowtitle" -> "SUNSimplify", "type" -> "Symbol",
      "uri" -> "FeynCalc/ref/SUNSimplify"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1231,7 +1231,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1242,7 +1242,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3554, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1175096586]},
+   CellID->1587745140]},
  "SUNSimplify"->{
   Cell[4188, 126, 139, 4, 27, "Input",
    CellTags->"SUNSimplify",
@@ -1410,8 +1410,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 30861, 1241},
- {"SUNSimplify", 30999, 1245}
+ {"PrimaryExamplesSection", 30870, 1241},
+ {"SUNSimplify", 31008, 1245}
  }
 *)
 (*NotebookFileOutline
@@ -1425,10 +1425,10 @@ Cell[2901, 78, 628, 15, 115, "Usage",
 Cell[CellGroupData[{
 Cell[3554, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1175096586],
+ CellID->1587745140],
 Cell[CellGroupData[{
 Cell[3967, 116, 196, 6, 25, "ExampleSection",
- CellID->1097289714],
+ CellID->1341170645],
 Cell[CellGroupData[{
 Cell[4188, 126, 139, 4, 27, "Input",
  CellTags->"SUNSimplify",

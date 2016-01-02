@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14862,        510]
-NotebookOptionsPosition[      8820,        329]
-NotebookOutlinePosition[     12649,        433]
-CellTagsIndexPosition[     12519,        427]
+NotebookDataLength[     14867,        510]
+NotebookOptionsPosition[      8819,        329]
+NotebookOutlinePosition[     12655,        433]
+CellTagsIndexPosition[     12525,        427]
 WindowTitle->ChargeConjugationMatrixInv
 WindowFrame->Normal*)
 
@@ -61,7 +61,7 @@ ChargeConjugationMatrixInv.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22559], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24446], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ChargeConjugationMatrixInv", ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->171470191],
+ CellID->127616075],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2145739352],
+ CellID->538791097],
 
 Cell[CellGroupData[{
 
@@ -342,7 +342,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 37.072535}", 
+   "built" -> "{2016, 1, 2, 15, 7, 4.024235}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -355,7 +355,7 @@ is substituted immediately by -ChargeConjugationMatrix.", "synonyms" -> {},
     "FeynCalc/ref/ChargeConjugationMatrixInv"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -364,7 +364,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -375,59 +375,59 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3469, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->171470191]},
+   CellID->127616075]},
  "ChargeConjugationMatrixInv"->{
-  Cell[4102, 125, 236, 6, 27, "Input",
+  Cell[4101, 125, 236, 6, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1140927721],
-  Cell[4341, 133, 440, 16, 38, "Output",
+  Cell[4340, 133, 440, 16, 38, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1029197353],
-  Cell[4818, 154, 142, 4, 27, "Input",
+  Cell[4817, 154, 142, 4, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1785990666],
-  Cell[4963, 160, 486, 18, 39, "Output",
+  Cell[4962, 160, 486, 18, 39, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->168936533],
-  Cell[5486, 183, 231, 6, 27, "Input",
+  Cell[5485, 183, 231, 6, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1805130692],
-  Cell[5720, 191, 397, 14, 39, "Output",
+  Cell[5719, 191, 397, 14, 39, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->923388841],
-  Cell[6154, 210, 141, 4, 27, "Input",
+  Cell[6153, 210, 141, 4, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->520085018],
-  Cell[6298, 216, 413, 15, 39, "Output",
+  Cell[6297, 216, 413, 15, 39, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1835032853],
-  Cell[6748, 236, 183, 5, 27, "Input",
+  Cell[6747, 236, 183, 5, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->742166059],
-  Cell[6934, 243, 295, 10, 36, "Output",
+  Cell[6933, 243, 295, 10, 36, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1205242066],
-  Cell[7266, 258, 137, 4, 27, "Input",
+  Cell[7265, 258, 137, 4, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->812819391],
-  Cell[7406, 264, 270, 9, 36, "Output",
+  Cell[7405, 264, 270, 9, 36, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1846536639],
-  Cell[7713, 278, 159, 4, 27, "Input",
+  Cell[7712, 278, 159, 4, 27, "Input",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->1102040166],
-  Cell[7875, 284, 245, 8, 36, "Output",
+  Cell[7874, 284, 245, 8, 36, "Output",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->209662305],
-  Cell[8488, 315, 290, 9, 70, "Text",
+  Cell[8487, 315, 290, 9, 70, "Text",
    CellTags->"ChargeConjugationMatrixInv",
    CellID->276945689]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10749, 374},
- {"ChargeConjugationMatrixInv", 10901, 378}
+ {"PrimaryExamplesSection", 10755, 374},
+ {"ChargeConjugationMatrixInv", 10907, 378}
  }
 *)
 (*NotebookFileOutline
@@ -441,77 +441,77 @@ Cell[3012, 80, 432, 12, 82, "Usage",
 Cell[CellGroupData[{
 Cell[3469, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->171470191],
+ CellID->127616075],
 Cell[CellGroupData[{
-Cell[3881, 115, 196, 6, 25, "ExampleSection",
- CellID->2145739352],
+Cell[3881, 115, 195, 6, 25, "ExampleSection",
+ CellID->538791097],
 Cell[CellGroupData[{
-Cell[4102, 125, 236, 6, 27, "Input",
+Cell[4101, 125, 236, 6, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1140927721],
-Cell[4341, 133, 440, 16, 38, "Output",
+Cell[4340, 133, 440, 16, 38, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1029197353]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4818, 154, 142, 4, 27, "Input",
+Cell[4817, 154, 142, 4, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1785990666],
-Cell[4963, 160, 486, 18, 39, "Output",
+Cell[4962, 160, 486, 18, 39, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->168936533]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5486, 183, 231, 6, 27, "Input",
+Cell[5485, 183, 231, 6, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1805130692],
-Cell[5720, 191, 397, 14, 39, "Output",
+Cell[5719, 191, 397, 14, 39, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->923388841]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6154, 210, 141, 4, 27, "Input",
+Cell[6153, 210, 141, 4, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->520085018],
-Cell[6298, 216, 413, 15, 39, "Output",
+Cell[6297, 216, 413, 15, 39, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1835032853]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6748, 236, 183, 5, 27, "Input",
+Cell[6747, 236, 183, 5, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->742166059],
-Cell[6934, 243, 295, 10, 36, "Output",
+Cell[6933, 243, 295, 10, 36, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1205242066]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7266, 258, 137, 4, 27, "Input",
+Cell[7265, 258, 137, 4, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->812819391],
-Cell[7406, 264, 270, 9, 36, "Output",
+Cell[7405, 264, 270, 9, 36, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1846536639]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7713, 278, 159, 4, 27, "Input",
+Cell[7712, 278, 159, 4, 27, "Input",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->1102040166],
-Cell[7875, 284, 245, 8, 36, "Output",
+Cell[7874, 284, 245, 8, 36, "Output",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->209662305]
 }, Open  ]]
 }, Open  ]],
-Cell[8147, 296, 31, 0, 70, "SectionFooterSpacer"]
+Cell[8146, 296, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8215, 301, 270, 12, 70, "SeeAlsoSection",
+Cell[8214, 301, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8488, 315, 290, 9, 70, "Text",
+Cell[8487, 315, 290, 9, 70, "Text",
  CellTags->"ChargeConjugationMatrixInv",
  CellID->276945689]
 }, Open  ]],
-Cell[8793, 327, 23, 0, 70, "FooterCell"]
+Cell[8792, 327, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

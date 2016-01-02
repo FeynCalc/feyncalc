@@ -1,7 +1,27 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    188705,       4880]
+NotebookOptionsPosition[    170561,       4310]
+NotebookOutlinePosition[    170973,       4326]
+CellTagsIndexPosition[    170930,       4323]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
 Notebook[{
 Cell[TextData[{
  "New in: ",
- Cell["9.0", "HistoryData", CellTags -> "New"],
+ Cell["9.0", "HistoryData",
+  CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
   CellTags->"Modified"],
@@ -23,12 +43,17 @@ Cell["Guide", "Categorization",
  CellLabel->"Entity Type",
  CellID->686433507],
 
-Cell["FeynCalc", "Categorization", CellLabel->"Paclet Name", CellID->605800465],
+Cell["FeynCalc", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->605800465],
 
-Cell["FeynCalc`", "Categorization", CellLabel->"Context", CellID->468444828],
+Cell["FeynCalc`", "Categorization",
+ CellLabel->"Context",
+ CellID->468444828],
 
-Cell["FeynCalc/guide/FeynCalc", "Categorization", CellLabel->"URI"]
-}, Closed]],
+Cell["FeynCalc/guide/FeynCalc", "Categorization",
+ CellLabel->"URI"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -48,11 +73,13 @@ Cell["XXXX", "Details",
  CellLabel->"Lead",
  CellID->795394057],
 
-Cell["XXXX", "Details",
+Cell["Rolf Mertig, Frederik Orellana and Vladyslav Shtabovenko", "Details",
+ CellChangeTimes->{{3.6591077670693293`*^9, 3.6591077814455*^9}},
  CellLabel->"Developers",
  CellID->350963985],
 
-Cell["XXXX", "Details",
+Cell["Rolf Mertig, Frederik Orellana and Vladyslav Shtabovenko", "Details",
+ CellChangeTimes->{{3.6591077587895947`*^9, 3.659107783367198*^9}},
  CellLabel->"Authors",
  CellID->802101],
 
@@ -79,32 +106,4170 @@ Cell["XXXX", "Details",
 Cell["XXXX", "Details",
  CellLabel->"Comments",
  CellID->240026365]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["FeynCalc", "GuideTitle",CellID->942062912],
+Cell["FeynCalc", "GuideTitle",
+ CellID->942062912],
 
-Cell["XXXX", "GuideAbstract",
+Cell[TextData[{
+ "FeynCalc is a ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package for algebraic calculation in Quantum Field Theory and \
+semi-automatic evaluation of Feynman Diagrams"
+}], "GuideAbstract",
+ CellChangeTimes->{{3.6591077391094418`*^9, 3.65910774261277*^9}, {
+  3.6591077924053907`*^9, 3.659107798572674*^9}, {3.6591159775573263`*^9, 
+  3.6591160017335377`*^9}},
  CellID->2001916300]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["", "GuideFunctionsSection",
+ CellChangeTimes->{3.6591160671690817`*^9},
  CellID->1866139230],
 
-Cell[TextData[{
- Cell[BoxData["XXXX"], "InlineGuideFunction"],
- " \[LongDash] XXXX"
-}], "GuideText",
- CellID->203374175],
+Cell[CellGroupData[{
+
+Cell["Basic objects", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6600619749746017`*^9, 3.660061996697213*^9}, {3.6600675568660383`*^9, 
+   3.6600675730380583`*^9}},
+ CellID->1344981135],
 
 Cell[TextData[{
- Cell[BoxData["XXXX"], "InlineGuideFunction"],
- " \[LongDash] XXXX"
+ Cell[TextData[ButtonBox["Abbreviation",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Abbreviation"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gives a shortname for name (in ",
+ Cell[TextData[ButtonBox["HoldForm",
+  BaseStyle->"Link",
+  ButtonData->"/ref/HoldForm"]], "InlineFunctionSans"],
+ ")"
 }], "GuideText",
- CellID->1463276848],
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+  3.6600621794763527`*^9}, {3.660685293123752*^9, 3.660685315489977*^9}},
+ CellID->552658513],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AlphaStrong",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AlphaStrong"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ Cell[BoxData[
+  SubscriptBox["\[Alpha]", "s"]], "InlineFormula"],
+ " in QCD"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685412672666*^9}},
+ CellID->1235023741],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AlphaFS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AlphaFS"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " fine-strucutre constant"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.66068542376897*^9, 3.6606854414408503`*^9}},
+ CellID->1076523595],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AntiQuarkField",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AntiQuarkField"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["QuarkField",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkField"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "name of a fermionic field"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, 3.660685460952847*^9, {3.660726126286809*^9, 
+   3.660726135218418*^9}},
+ CellID->917048888],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CA"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["CF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CF"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "Casimir operator eigenvalues of SU(N)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606854821871233`*^9, 3.6606854950361967`*^9}},
+ CellID->1033282217],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ChiralityProjector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ChiralityProjector"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  SubscriptBox["P", "L"]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  SubscriptBox["P", "R"]], "InlineFormula"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660685523680896*^9, 3.660685541121378*^9}},
+ CellID->745071340],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DeltaFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunction"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DeltaFunctionPrime",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunctionPrime"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DeltaFunctionDoublePrime",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunctionDoublePrime"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Dirac delta function and its derivatives"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660685567648719*^9, 3.660685589681037*^9}},
+ CellID->1851196232],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracMatrix"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DiracSlash",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSlash"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GA",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GA"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GA5",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GA5"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GS"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GAD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GSD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GSD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GAE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GAE"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GSE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GSE"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of Dirac matrices and slashes"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660685614200405*^9, 3.660685623255899*^9}, {
+   3.660685665735458*^9, 3.660685675387671*^9}, 3.6606859897924767`*^9, {
+   3.660686045398682*^9, 3.660686054055194*^9}, {3.660724886983316*^9, 
+   3.660724889800495*^9}},
+ CellID->1686448459],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracGammaT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGammaT"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " tranpose of a Dirac matrix"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.66068564001637*^9, 3.66068564547943*^9}},
+ CellID->264840152],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSigma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSigma"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  RowBox[{
+   FractionBox["I", "2"], "[", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "\[Mu]"], ",", 
+    SuperscriptBox["\[Gamma]", "\[Nu]"]}], "]"}]], "InlineFormula"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660685930503107*^9, 3.660685958751593*^9}},
+ CellID->1624859494],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSpinor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSpinor"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Spinor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Spinor"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorU",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorU"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorUBar",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorUBar"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorV"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SpinorVBar",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorVBar"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes spinors"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660686021686049*^9, 3.660686036373721*^9}, {
+   3.6607265092680893`*^9, 3.66072651202944*^9}},
+ CellID->307637975],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Eps",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Eps"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LC"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LCD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LCD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LeviCivita",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeviCivita"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "totally antisymmetric epsilon (Levi-Civita) tensor"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606861221227837`*^9, 3.6606861459183187`*^9}, {
+   3.660686466916157*^9, 3.660686468639553*^9}},
+ CellID->1680708588],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Epsilon",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Epsilon"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " \[Epsilon] from dimensional regularization"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660686174501232*^9, 3.6606861888609867`*^9}},
+ CellID->1891570253],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExplicitLorentzIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExplicitLorentzIndex"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LorentzIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LorentzIndex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Lorentz index"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606862270926743`*^9, 3.660686287476725*^9}, {
+   3.660686341308567*^9, 3.660686344212399*^9}},
+ CellID->1483552361],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExplicitSUNIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExplicitSUNIndex"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SUNIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNIndex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "SU(N) adjoint index"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606862270926743`*^9, 3.660686287476725*^9}, {
+   3.660686341308567*^9, 3.660686344212399*^9}, {3.660686389300864*^9, 
+   3.66068639708391*^9}},
+ CellID->476236246],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExplicitSUNFIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExplicitSUNFIndex"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SUNFIndex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNFIndex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "SU(N) fundamental index"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606862270926743`*^9, 3.660686287476725*^9}, {
+   3.660686341308567*^9, 3.660686344212399*^9}, {3.660686389300864*^9, 
+   3.660686407020059*^9}},
+ CellID->2139347147],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FAD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FAD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denominator of Feynman amplitudes "
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606862270926743`*^9, 3.660686287476725*^9}},
+ CellID->1131303773],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCPartialD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LeftPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeftPartialD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LeftRightPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeftRightPartialD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["LeftRightPartialD2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeftRightPartialD2"]], 
+  "InlineFunctionSans"],
+ ",  ",
+ Cell[TextData[ButtonBox["RightPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/RightPartialD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " partial derivatives acting on operators"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725010662611*^9, 3.6607250380876093`*^9}, {
+   3.660725099856341*^9, 3.6607251010066547`*^9}, {3.660725225590807*^9, 
+   3.660725240637322*^9}},
+ CellID->1476055339],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FourVector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FourVector"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FV",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FV"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FVD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FVD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FVE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FVE"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of 4-vectors"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6606864407889433`*^9, 3.660686446580234*^9}, {
+   3.660724813728554*^9, 3.660724828264448*^9}},
+ CellID->495428205],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GaugeField",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GaugeField"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " name of a gauge field"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607249357351027`*^9, 3.660724938238369*^9}},
+ CellID->1403563110],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GaugeXi",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GaugeXi"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gauge parameter \[Xi]"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660724945254963*^9, 3.660724950974524*^9}},
+ CellID->1275284258],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GluonField",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonField"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "name of a gluon field"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607249644923267`*^9, 3.6607249686222153`*^9}},
+ CellID->1257907745],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Gstrong",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Gstrong"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " QCD coupling constant"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660724982078603*^9, 3.6607249882013474`*^9}},
+ CellID->1005983702],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Li2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Li2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " dilog function"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725253149151*^9, 3.660725255508046*^9}},
+ CellID->832103768],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Li3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Li3"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " trilog function"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725253149151*^9, 3.660725271236425*^9}},
+ CellID->431072089],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Momentum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Momentum"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of momenta"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725253149151*^9, 3.660725271236425*^9}, {
+   3.6607259941678667`*^9, 3.660725998575553*^9}},
+ CellID->316776695],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["MetricTensor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MetricTensor"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["MT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MT"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["MTD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MTD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["MTE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MTE"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " representation of the metric tensor"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725291180572*^9, 3.66072532572503*^9}, {
+   3.660725847785334*^9, 3.6607258486573753`*^9}},
+ CellID->651468345],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Nf",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Nf"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes the number of flavors"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725253149151*^9, 3.660725271236425*^9}, {
+   3.6607259941678667`*^9, 3.660725998575553*^9}, {3.660726042319613*^9, 
+   3.660726048567294*^9}, {3.660727642549692*^9, 3.6607276431732903`*^9}},
+ CellID->1386416972],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Pair",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Pair"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " special pairing used in the internal representation to represent the \
+metric, 4-vectors or scalar products"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.66072586362116*^9, 3.660725876880106*^9}},
+ CellID->1889374617],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Polarization",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Polarization"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of polarizations"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725253149151*^9, 3.660725271236425*^9}, {
+   3.6607259941678667`*^9, 3.660726007343363*^9}},
+ CellID->1384558840],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PolarizationVector",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PolarizationVector"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " polarization vector"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725910144628*^9, 3.660725913351838*^9}},
+ CellID->2003827822],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PlusDistribution",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PlusDistribution"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " a special distribution"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725943160453*^9, 3.6607259467357273`*^9}},
+ CellID->827330458],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PropagatorDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PropagatorDenominator"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " internal representation of propagator denominators"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660725910144628*^9, 3.660725913351838*^9}, {
+   3.660726072743157*^9, 3.660726102723506*^9}},
+ CellID->1486910634],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["QuantumField",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuantumField"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generic name of a quantum field"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726151887074*^9, 3.660726159094552*^9}},
+ CellID->1015009742],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ScaleMu",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScaleMu"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " \[Mu] scale in dimensional regularization"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726151887074*^9, 3.660726159094552*^9}, {
+   3.6607262415343113`*^9, 3.660726256054014*^9}},
+ CellID->146220986],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SUNDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNDelta"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Kronecker delta for adjoint SU(N) indices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726291813901*^9, 3.660726305293376*^9}, {
+   3.660726618931054*^9, 3.660726619432239*^9}},
+ CellID->522984542],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SDF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SDF"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SUNFDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNFDelta"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Kronecker delta for fundamental SU(N) indices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726291813901*^9, 3.660726320205372*^9}, 
+   3.6607267359325247`*^9},
+ CellID->1059337536],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SmallDelta",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SmallDelta"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SmallEpsilon",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SmallEpsilon"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes some small positive numbers"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726361989624*^9, 3.660726372753294*^9}},
+ CellID->137238398],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SmallVariable",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SmallVariable"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " small variable to be used as a regulator in PaVe functions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726393293583*^9, 3.660726413708804*^9}},
+ CellID->590785021],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SP"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SPD"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SPE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SPE"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes scalar products of 4-momenta"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.660726440933383*^9, 3.6607264587968273`*^9}, {
+   3.660726489197226*^9, 3.6607264901649857`*^9}},
+ CellID->305275299],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUND",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUND"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] totally symmetric", "GuideEmDash"],
+ " structure constant ",
+ Cell[BoxData[
+  SubscriptBox["d", "abc"]], "InlineFormula"],
+ " in SU(N)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607265588125277`*^9, 3.66072660645157*^9}, {
+   3.6607266404116087`*^9, 3.660726644619417*^9}, {3.6607267080678473`*^9, 
+   3.660726710854051*^9}},
+ CellID->1136659773],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNF"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] totally antisymmetric", "GuideEmDash"],
+ " structure constant ",
+ Cell[BoxData[
+  SubscriptBox["f", "abc"]], "InlineFormula"],
+ " in SU(N)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607265588125277`*^9, 3.660726603299541*^9}, {
+   3.660726694826408*^9, 3.660726717300178*^9}},
+ CellID->920034572],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNN",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNN"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] number of colors ", "GuideEmDash"],
+ Cell[BoxData[
+  SubscriptBox["N", "c"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ "in SU(N)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607265588125277`*^9, 3.660726603299541*^9}, {
+   3.660726694826408*^9, 3.660726717300178*^9}, {3.660726780979018*^9, 
+   3.6607267894109287`*^9}},
+ CellID->1328328343],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNT"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SUNTF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNTF"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ Cell[BoxData[
+  SubscriptBox[
+   SuperscriptBox["T", "a"], "ij"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ StyleBox["  generator ", "GuideEmDash"],
+ "of SU(N) in the fundamental representation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607265588125277`*^9, 3.660726603299541*^9}, {
+   3.660726694826408*^9, 3.660726717300178*^9}, {3.660726780979018*^9, 
+   3.6607268583220787`*^9}},
+ CellID->1428923217],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Tf",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Tf"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ Cell[BoxData[
+  SubscriptBox["T", "F"]], "InlineFormula",
+  FormatType->"StandardForm"],
+ " group constant ",
+ StyleBox["i", "GuideEmDash"],
+ "n SU(N)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607265588125277`*^9, 3.660726603299541*^9}, {
+   3.660726694826408*^9, 3.660726717300178*^9}, {3.660726780979018*^9, 
+   3.6607267894109287`*^9}, {3.660726924697864*^9, 3.660726933137542*^9}, {
+   3.660726966850278*^9, 3.660726966850363*^9}},
+ CellID->1763987334],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Zeta2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Zeta2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  SubscriptBox["\[Zeta]", "2"]], "InlineFormula"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660685343945683*^9, 
+   3.660685344785533*^9}, {3.6607269893537188`*^9, 3.660726994258456*^9}},
+ CellID->1924638314]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Basic functions", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6600619749746017`*^9, 3.660061996697213*^9}, {3.6600675568660383`*^9, 
+   3.66006757837396*^9}},
+ CellID->218620916],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Cases2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Cases2"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Cases",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Cases"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9, {3.660324220219956*^9, 
+   3.660324225812112*^9}},
+ CellID->1010301503],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Combine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Combine"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Together",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Together"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9, {3.660324220219956*^9, 
+   3.660324225812112*^9}},
+ CellID->1271388718],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Complement1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Complement1"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Complement",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Complement"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9, {3.660324220219956*^9, 
+   3.660324225812112*^9}},
+ CellID->1736502128],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Collect2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Collect2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Collect3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Collect3"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[TextData[ButtonBox["Collect",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Collect"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9},
+ CellID->1287756566],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DataType",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DataType"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines data types"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.660062035212628*^9, 3.660062050048617*^9}, {
+  3.660067132787849*^9, 3.660067138053027*^9}, {3.660323545576874*^9, 
+  3.66032355704276*^9}},
+ CellID->1747124358],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Expand2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Expand2"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Expand",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Expand"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9, {3.660324220219956*^9, 
+   3.660324225812112*^9}},
+ CellID->1504394922],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Explicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Explicit"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts explicit expressions for certain objects"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.6603236053468523`*^9, 
+   3.660323609838052*^9}, {3.6603236651025763`*^9, 3.660323668789824*^9}},
+ CellID->1596546686],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Factor1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Factor1"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Factor2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Factor2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[TextData[ButtonBox["Factor",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Factor"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, {3.660323704340766*^9, 3.660323705075439*^9}, 
+   3.660323757888474*^9},
+ CellID->187460383],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCAntiSymmetrize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCAntiSymmetrize"]], 
+  "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " antisymmetrizes with respect to the given variables"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9, {3.660324220219956*^9, 
+   3.660324225812112*^9}, {3.660324434962124*^9, 3.660324448186789*^9}, 
+   3.660683675969205*^9},
+ CellID->333715746],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCE"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FeynCalcExternal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcExternal"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "converts the expression to the external FeynCalc representation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591170990744333`*^9, 
+  3.6591171071001472`*^9}, {3.6593761334711313`*^9, 3.659376168159514*^9}, {
+  3.660066773892817*^9, 3.660066784205843*^9}, {3.660323819957704*^9, 
+  3.660323823212842*^9}, {3.6603238539304953`*^9, 3.660323869830174*^9}},
+ CellID->27396530],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCF"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FeynCalcForm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcForm"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes the printed output to an easy to read form."
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.65937583456279*^9, 3.6593758612790728`*^9}, {
+  3.659376087242784*^9, 3.659376088016487*^9}, {3.660062077144836*^9, 
+  3.660062093950714*^9}, {3.660323955497254*^9, 3.6603239884760227`*^9}},
+ CellID->1283386980],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCI"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FeynCalcInternal",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcInternal"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "converts the expression to the internal FeynCalc representation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591170990744333`*^9, 
+  3.6591171071001472`*^9}, {3.6593761334711313`*^9, 3.659376168159514*^9}, {
+  3.660066773892817*^9, 3.660066784205843*^9}, {3.660323819957704*^9, 
+  3.660323823212842*^9}, {3.6603238539304953`*^9, 3.660323869830174*^9}, {
+  3.660324039284524*^9, 3.660324040363975*^9}},
+ CellID->2100021916],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCSplit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSplit"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PartitHead",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PartitHead"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SelectFree",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SelectFree"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SelectNotFree",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SelectNotFree"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Select",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Select"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, {3.660684150727318*^9, 
+   3.660684176743204*^9}, {3.660684215166634*^9, 3.660684237399208*^9}, 
+   3.660730109741976*^9},
+ CellID->898863791],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCSymmetrize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCSymmetrize"]], "InlineFunctionSans"],
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " symmetrizes with respect to the given variables"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9, {3.660324220219956*^9, 
+   3.660324225812112*^9}, {3.660324434962124*^9, 3.660324448186789*^9}, {
+   3.660683664466333*^9, 3.660683681441082*^9}},
+ CellID->1647672763],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FreeQ2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FreeQ2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["FreeQ",
+  BaseStyle->"Link",
+  ButtonData->"/ref/FreeQ"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9},
+ CellID->683465492],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FRH",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FRH"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["ReleaseHold",
+  BaseStyle->"Link",
+  ButtonData->"/ref/ReleaseHold"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9},
+ CellID->1650215271],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Isolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Isolate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " replaces expressions by abbreviations"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+   3.6593758921047897`*^9}, 3.660062130444875*^9, {3.660324099280199*^9, 
+   3.6603241076473618`*^9}},
+ CellID->1498216592],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Map2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Map2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Map",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Map"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9},
+ CellID->253353205],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["MemSet",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MemSet"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " memoization depending on the amount of free RAM"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+  3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+  3.6600669661363287`*^9, 3.660066969747725*^9}, {3.660683867368712*^9, 
+  3.660683878168182*^9}},
+ CellID->1212078011],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["NTerms",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/NTerms"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Length",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Length"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9},
+ CellID->178528196],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["NumericalFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/NumericalFactor"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gives overall numerical factor"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+  3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+  3.6600669661363287`*^9, 3.660066969747725*^9}, {3.660683939160241*^9, 
+  3.660683943103567*^9}},
+ CellID->1298957094],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["NumericQ1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/NumericQ1"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["NumericQ",
+  BaseStyle->"Link",
+  ButtonData->"/ref/NumericQ"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9},
+ CellID->1374272511],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Power2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Power2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternative to ",
+ Cell[TextData[ButtonBox["Power",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Power"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9},
+ CellID->1627933292],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PowerFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PowerFactor"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PowerSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PowerSimplify"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "simplification of expressions with exponents"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, {3.66068407583892*^9, 
+   3.6606840762588663`*^9}, {3.6606841082865458`*^9, 3.660684118103298*^9}, 
+   3.660730025712138*^9},
+ CellID->1708462303],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Series2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Series2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Series3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Series3"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[TextData[ButtonBox["Series",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Series"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+   3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+   3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+   3.6600621794763527`*^9}, {3.660323432819963*^9, 3.660323461133366*^9}, 
+   3.660323506133806*^9, 3.660323734597391*^9},
+ CellID->1659205566],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Solve2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Solve2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Solve3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Solve3"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " alternatives to ",
+ Cell[TextData[ButtonBox["Solve",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Solve"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+   3.6600669661363287`*^9, 3.660066969747725*^9}, 3.6606837482982693`*^9, {
+   3.660684295118382*^9, 3.660684317517757*^9}},
+ CellID->1809157918],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SumP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumP"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SumS",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumS"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SumT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SumT"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " different summations"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+  3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+  3.6600669661363287`*^9, 3.660066969747725*^9}, {3.660684272542748*^9, 
+  3.660684273110468*^9}, {3.660684334422124*^9, 3.660684353614984*^9}},
+ CellID->869117662]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Lorentz tensors", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9},
+ CellID->385817707],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Amputate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Amputate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " amputates 4-vectors, Dirac matrices or Levi-Civita tensors"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}},
+ CellID->2009629793],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ChangeDimension",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ChangeDimension"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes dimension of Lorentz indices and momenta"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}},
+ CellID->512359346],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CompleteSquare",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CompleteSquare"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " completes the square of a second order polynomial in the momentum x"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.659966060005329*^9, 3.659966116423707*^9}},
+ CellID->1524292158],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Contract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Contract"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Lorentz indices of tensors and Dirac matrices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}},
+ CellID->231212511],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EpsEvaluate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsEvaluate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies total antisymmetry and linearity to all Levi-Civita tensors"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}},
+ CellID->1913592904],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExpandScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandScalarProduct"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands scalar products of sums of momenta"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+  3.659116933740312*^9}},
+ CellID->693139341],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCClearScalarProducts",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCClearScalarProducts"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " removes all user-specific specific definitions of scalar products"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}},
+ CellID->343872275],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCRenameDummyIndices",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCRenameDummyIndices"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " renames dummy Lorentz and SU(N) indices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591170990744333`*^9, 
+  3.6591171071001472`*^9}},
+ CellID->548161550],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FourDivergence",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FourDivergence"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates partial derivative with respect to a 4-vector"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117185121663*^9, 
+  3.659117210145059*^9}, {3.65937540009513*^9, 3.6593754009545593`*^9}},
+ CellID->987343741],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FourLaplacian",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FourLaplacian"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates the Laplacian"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+  3.659117301800735*^9}},
+ CellID->1285601191],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["MomentumCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumCombine"]], "InlineFunctionSans"],
+ ",",
+ Cell[TextData[ButtonBox[" MomentumCombine2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumCombine"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse operations to ",
+ Cell[TextData[ButtonBox["MomentumExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumExpand"]], "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["ExpandScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandScalarProduct"]], 
+  "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.659117430209364*^9, 3.659117491089279*^9}, {
+  3.659117549748453*^9, 3.659117561333036*^9}},
+ CellID->1809925827],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["MomentumExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/MomentumExpand"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands ",
+ ButtonBox["Momentum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Momentum"],
+ "[a+b+ ...]"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}},
+ CellID->344422616],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PairContract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PairContract"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PairContract2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PairContract2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PairContract3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PairContract3"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " like Pair but with local contraction properties"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591177169687862`*^9, 
+  3.6591177344417343`*^9}},
+ CellID->2009219923],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ScalarProduct",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScalarProduct"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines scalar products of 4-vectors"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117800085536*^9, 
+  3.659117820572358*^9}, {3.6593754082122793`*^9, 3.659375408890279*^9}},
+ CellID->874103215],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SetMandelstam",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SetMandelstam"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines the Mandelstam variables"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375432416728*^9, 
+  3.659375438172764*^9}},
+ CellID->579030092],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TensorFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TensorFunction"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines an unspecified Lorentz tensor"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375465747943*^9, 
+  3.659375472105674*^9}},
+ CellID->1156270314],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TrickMandelstam",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TrickMandelstam"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies the expression by eliminating one of the Mandelstam variables"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6593755318507633`*^9, 
+  3.659375548904402*^9}},
+ CellID->629389521],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Uncontract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Uncontract"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " uncontracts Lorentz indices of tensors and Dirac matrices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6593755601464*^9, 
+  3.6593755610647087`*^9}},
+ CellID->715481727]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Dirac algebra", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}},
+ CellID->46643246],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Anti5",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Anti5"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " anticommutes all ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " matrices to the left or to the right"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}},
+ CellID->2131819227],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Chisholm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Chisholm"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes products of 3 Dirac matrices by the Chisholm identity"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.65937583456279*^9, 3.6593758612790728`*^9}, {
+  3.659376087242784*^9, 3.659376088016487*^9}},
+ CellID->1211971239],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracEquation",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracEquation"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies the Dirac equation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+  3.6593758921047897`*^9}},
+ CellID->333117850],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracGammaCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGammaCombine"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse operation to ",
+ Cell[TextData[ButtonBox["DiracGammaExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGammaExpand"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}},
+ CellID->615769661],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracGammaExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGammaExpand"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands sums of momenta contracted with Dirac matrices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9},
+ CellID->1531032786],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracOrder",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracOrder"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the Dirac matrices in expression alphabetically"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}},
+ CellID->688938496],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracReduce"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " reduces all 4-dimensional Dirac matrices to the standard basis \
+(SPVAT-decomposition) "
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591170990744333`*^9, 
+  3.6591171071001472`*^9}, {3.6593761334711313`*^9, 3.659376168159514*^9}},
+ CellID->1740429042],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSigmaExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSigmaExplicit"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts the explicit definition of ",
+ Cell[TextData[ButtonBox["DiracSigma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSigma"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117185121663*^9, 
+  3.659117210145059*^9}, {3.65937540009513*^9, 3.6593754009545593`*^9}, {
+  3.659376188832139*^9, 3.659376207898769*^9}},
+ CellID->297775359],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSimplify"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies products of Dirac matrices and expands non-commutative \
+products"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+  3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}},
+ CellID->255459663],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrace"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " computes traces of Dirac matrices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.659117430209364*^9, 3.659117491089279*^9}, {
+  3.659117549748453*^9, 3.659117561333036*^9}, {3.659376330987714*^9, 
+  3.6593763440561047`*^9}},
+ CellID->1463755561],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DiracTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrick"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Dirac matrices with each other and performs several \
+simplifications but no expansions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}, {
+  3.659376369131332*^9, 3.659376386735157*^9}},
+ CellID->1334035786],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EpsChisholm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/EpsChisholm"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes Chisholm identity for a Dirac matrix contracted with a \
+Levi-Civita tensor"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591177169687862`*^9, 
+  3.6591177344417343`*^9}, {3.659376401427566*^9, 3.659376441905574*^9}},
+ CellID->525715973],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Schouten",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Schouten"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies Schouten identity"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117800085536*^9, 
+  3.659117820572358*^9}, {3.6593754082122793`*^9, 3.659375408890279*^9}, {
+  3.6593764610027122`*^9, 3.6593764651450033`*^9}},
+ CellID->218430270],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToLarin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToLarin"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Gamma]", "\[Mu]"], 
+   SuperscriptBox["\[Gamma]", "5"]}]], "InlineFormula"],
+ " according to the Larin scheme"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375432416728*^9, 
+  3.659375438172764*^9}, {3.659376487947612*^9, 3.659376529721629*^9}},
+ CellID->1707494307]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Algebra of non-commutative objects", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6600619749746017`*^9, 3.660061996697213*^9}, 3.660727136976419*^9},
+ CellID->1113739100],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AntiCommutator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AntiCommutator"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines an anti-commutator"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+  3.6600621794763527`*^9}},
+ CellID->1482543113],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Calc",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Calc"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Trick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Trick"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " multiple simplifications for Dirac and SU(N) algebra"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.660062035212628*^9, 3.660062050048617*^9}, {
+  3.660067132787849*^9, 3.660067138053027*^9}},
+ CellID->1937939922],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Commutator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Commutator"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " defines a commutator"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}},
+ CellID->526201837],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CommutatorExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CommutatorExplicit"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes explicit definitions of ",
+ Cell[TextData[ButtonBox["Commutator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Commutator"]], "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["AntiCommutator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AntiCommutator"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}},
+ CellID->369276061],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DeclareNonCommutative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeclareNonCommutative"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "declares non-commutative objects"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591170990744333`*^9, 
+  3.6591171071001472`*^9}, {3.6593761334711313`*^9, 3.659376168159514*^9}, {
+  3.660066773892817*^9, 3.660066784205843*^9}},
+ CellID->795497081],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DotExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DotExpand"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands ",
+ Cell[TextData[ButtonBox["Dot",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Dot"]], "InlineFunctionSans"],
+ " products"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.65937583456279*^9, 3.6593758612790728`*^9}, {
+  3.659376087242784*^9, 3.659376088016487*^9}, {3.660062077144836*^9, 
+  3.660062093950714*^9}},
+ CellID->284457576],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DotSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DotSimplify"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "expands and reorders noncommutative terms "
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+   3.6593758921047897`*^9}, 3.660062130444875*^9},
+ CellID->1861924278],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["NonCommFreeQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/NonCommFreeQ"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["NonCommQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/NonCommQ"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the expression contains non-commutative quantities"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117185121663*^9, 
+  3.659117210145059*^9}, {3.65937540009513*^9, 3.6593754009545593`*^9}, {
+  3.659376188832139*^9, 3.659376207898769*^9}, {3.660066817156439*^9, 
+  3.660066833146699*^9}, {3.660066873675291*^9, 3.660066876567691*^9}},
+ CellID->1355907511],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TR",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TR"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Tr2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Tr2"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates Dirac  and possibly also SU(N) traces"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.659117430209364*^9, 3.659117491089279*^9}, {
+  3.659117549748453*^9, 3.659117561333036*^9}, {3.659376330987714*^9, 
+  3.6593763440561047`*^9}, {3.660067074332703*^9, 3.660067108393858*^9}},
+ CellID->1719074274],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["UnDeclareNonCommutative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UnDeclareNonCommutative"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " undeclares non-commutative objects"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+  3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, {
+  3.6600669661363287`*^9, 3.660066969747725*^9}},
+ CellID->1309406098]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["SU(N) algebra", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6600619749746017`*^9, 3.660061996697213*^9}, {3.6600675568660383`*^9, 
+   3.660067564032303*^9}},
+ CellID->121380019],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CalcColorFactor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CalcColorFactor"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates the color factor"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+  3.6600621794763527`*^9}, {3.660067621677038*^9, 3.6600676279841413`*^9}},
+ CellID->821249197],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNDeltaContract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNDeltaContract"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Kronecker deltas with adjoint color indices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.660062035212628*^9, 3.660062050048617*^9}, {
+  3.660067132787849*^9, 3.660067138053027*^9}, {3.660067643683642*^9, 
+  3.660067681191443*^9}},
+ CellID->1593535902],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNFDeltaContract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNDeltaContract"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " contracts Kronecker deltas with fundamental color indices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.660062035212628*^9, 3.660062050048617*^9}, {
+  3.660067132787849*^9, 3.660067138053027*^9}, {3.660067643683642*^9, 
+  3.6600676970555143`*^9}},
+ CellID->210505242],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNSimplify"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["SUNFSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNFSimplify"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] ", "GuideEmDash"],
+ "simplifies expressions that contain SU(N) matrices "
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.6600677309090767`*^9, 3.6600677604289227`*^9}},
+ CellID->1595578132],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SUNTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SUNTrace"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " computes traces over SU(N) matrices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.660066657669406*^9, 3.66006672725428*^9}, {
+   3.6600671961004333`*^9, 3.660067196739399*^9}, {3.660067785195331*^9, 
+   3.660067797284644*^9}},
+ CellID->1561361899]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Loop integrals", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6593765631678143`*^9, 3.659376567623287*^9}, {3.659979662542192*^9, 
+   3.6599796660962763`*^9}},
+ CellID->1137355821],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["A0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/A0"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 1-point integral (tadpole)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660041171291065*^9, 3.660041181235921*^9}},
+ CellID->484191528],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Apart2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Apart2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " partial fractions loop integrals (only very simple cases)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.659376585640555*^9, 3.659376592208912*^9}, {
+  3.659979723181094*^9, 3.659979735284017*^9}},
+ CellID->1364110476],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ApartFF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ApartFF"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " partial fractions arbitrary loop integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.65937583456279*^9, 3.6593758612790728`*^9}, {
+  3.659376087242784*^9, 3.659376088016487*^9}, {3.6593766108640747`*^9, 
+  3.659376623777948*^9}, {3.659979752939345*^9, 3.659979760178582*^9}},
+ CellID->863977560],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["B0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B0"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B00",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B00"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B1"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B11",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B11"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 2-point integrals (bubbles)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660041171291065*^9, 3.660041231060339*^9}},
+ CellID->512824359],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["C0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/C0"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 3-point integrals (triangles)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660060476425185*^9, 3.660060485072611*^9}},
+ CellID->1115857362],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["D0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/D0"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " Passarino-Veltman 4-point integrals (boxes)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 3.6600605112875967`*^9}},
+ 
+ CellID->143835829],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DB0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DB0"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " derivative of ",
+ Cell[TextData[ButtonBox["B0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B0"]], "InlineFunctionSans"],
+ " with respect to the external momentum"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605723946743`*^9, 3.660060612935883*^9}},
+ CellID->883206687],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DB1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DB1"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " derivative of ",
+ Cell[TextData[ButtonBox["B1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B1"]], "InlineFunctionSans"],
+ " with respect to the external momentum"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605723946743`*^9, 3.660060612935883*^9}},
+ CellID->439407944],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCApart",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCApart"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " backend of ",
+ Cell[TextData[ButtonBox["ApartFF",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ApartFF"]], "InlineFunctionSans"],
+ ", works only on single loop integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+  3.6593758921047897`*^9}, {3.659376640775605*^9, 3.659376654967103*^9}, {
+  3.6599798849230413`*^9, 3.659979904850588*^9}},
+ CellID->1595882694],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCIntegral",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCIntegral"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " head of loop integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.659376680753563*^9, 
+  3.659376698052153*^9}, {3.65997995068524*^9, 3.6599799541141577`*^9}},
+ CellID->333845561],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisIncompleteQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisIncompleteQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the propagators of a loop integral do not form a basis"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}},
+ CellID->1110841143],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisOverdeterminedQ",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisOverdeterminedQ"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " checks if the propagators of a loop integral are linearly dependent"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980067346792*^9, 
+   3.6599800704770117`*^9}},
+ CellID->714568367],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopBasisFindCompletion",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopBasisFindCompletion"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " determines propagators that need to be included in the loop integral to \
+ensure that its propagators form a basis"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980104077729*^9, 
+   3.6599801281915216`*^9}},
+ CellID->251142308],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopCanonicalize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopCanonicalize"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that canonicalizes free Lorentz indices of 1-loop \
+integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980170138186*^9, 
+   3.659980189247121*^9}},
+ CellID->1336937891],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopExtract",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopExtract"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " extracts loop integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.65998022089809*^9, 
+   3.65998022544014*^9}},
+ CellID->1906541245],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopIsolate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopIsolate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " wraps loop integrals into specified heads"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980248369177*^9, 
+   3.659980257176857*^9}},
+ CellID->757005022],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopSolutionList",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopSolutionList"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function that processes the output of ",
+ Cell[TextData[ButtonBox["FCLoopCanonicalize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopCanonicalize"]], 
+  "InlineFunctionSans"],
+ " "
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.6599802871381483`*^9, 
+   3.659980302970479*^9}},
+ CellID->284159366],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCLoopSplit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCLoopSplit"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " splits the expressions into pieces that contain different types of loop \
+integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.6599803326602783`*^9, 
+   3.659980350076234*^9}},
+ CellID->1711785091],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCMultiLoopTID",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCMultiLoopTID"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " tensor reduction of multi-loop integrals (only for non-zero Gram \
+determinants)"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980377752409*^9, 
+   3.6599803980313168`*^9}},
+ CellID->777565246],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynAmpDenominatorCombine",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorCombine"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " combines products of propagators"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980437279376*^9, 
+   3.659980452504985*^9}, {3.659980587860775*^9, 3.659980627296444*^9}},
+ CellID->127777310],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynAmpDenominatorSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorSimplify"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies loop integrals by doing shifts and detects integrals that \
+vanish by symmetry."
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980510377067*^9, 
+   3.659980527783904*^9}},
+ CellID->164601953],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynAmpDenominatorSplit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominatorSplit"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " splits all ",
+ ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"],
+ "'s into products of single propagators"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.659980574556958*^9, 
+   3.6599806368237762`*^9}},
+ CellID->1822975320],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynmanParametrize",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynmanParametrize"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces Feynman parametrization for some 1-loop integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.6599807008079348`*^9, 
+   3.6599807114362793`*^9}, {3.660040006447524*^9, 3.660040007733903*^9}},
+ CellID->727371440],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FromTFI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FromTFI"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ranslates TFI, TVI and TJI Tarcer-notation to FeynCalc notation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040060937771*^9, 
+   3.660040077231886*^9}},
+ CellID->1377966861],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GammaExpand",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GammaExpand"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites ",
+ Cell[TextData[{
+  ButtonBox["Gamma",
+   BaseStyle->"Link",
+   ButtonData->"/ref/Gamma"],
+  "[n + m]"
+ }], "InlineFunctionSans"],
+ " where n is an integer"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.6600401446765337`*^9, 
+   3.660040156668858*^9}, {3.660040367409254*^9, 3.660040369535551*^9}, 
+   3.660061895137766*^9},
+ CellID->1684971587],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GenPaVe",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GenPaVe"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["PaVe",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVe"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denote invariant Passarino-Veltman integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660041084022374*^9, 3.660041124974852*^9}},
+ CellID->1716225519],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Hill",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Hill"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gives the Hill identity"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040194367309*^9, 
+   3.660040197854924*^9}},
+ CellID->671837658],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["HypergeometricAC",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricAC"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " analytically continues ",
+ Cell[TextData[ButtonBox["Hypergeometric2F1",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Hypergeometric2F1"]], "InlineFunctionSans"],
+ " functions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}},
+ CellID->1636252055],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["HypergeometricIR",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricIR"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes a particular integral represenetation for all ",
+ Cell[TextData[ButtonBox["Hypergeometric2F1",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Hypergeometric2F1"]], "InlineFunctionSans"],
+ "[a,b,c,d]"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040332361073*^9, 3.660040384407106*^9}},
+ CellID->1675333030],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["HypergeometricSE",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypergeometricSE"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash] expresses hypergeometric functions by their series \
+expansion", "GuideEmDash"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.6600404141372013`*^9, 
+   3.660040439218997*^9}, {3.660040488559249*^9, 3.660040488720935*^9}},
+ CellID->373844893],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["HypExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypExplicit"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expresses ",
+ StyleBox[" hypergeometric functions by their definition in terms of a sum", 
+  "GuideEmDash"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.66004048170944*^9, 3.660040509206464*^9}},
+ CellID->1693861457],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["HypInt",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/HypInt"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes ",
+ Cell[TextData[ButtonBox["Hypergeometric2F1",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Hypergeometric2F1"]], "InlineFunctionSans"],
+ " functions by their integral definition"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040605296949*^9, 3.660040621708107*^9}},
+ CellID->305598727],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["IFPDOff",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPDOff"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes from ",
+ Cell[TextData[ButtonBox["IFPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPD"]], "InlineFunctionSans"],
+ " representation to ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040684343672*^9, 3.660040722660904*^9}, {
+   3.660040767937501*^9, 3.660040771890275*^9}},
+ CellID->554636843],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["IFPDOn",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPDOn"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " changes from ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
+  "InlineFunctionSans"],
+ " representation to ",
+ Cell[TextData[ButtonBox["IFPD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IFPD"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040684343672*^9, 3.660040722660904*^9}, {
+   3.660040767937501*^9, 3.660040771890275*^9}, {3.660040825575098*^9, 
+   3.660040832823546*^9}},
+ CellID->1378134869],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["IntegrateByParts",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/IntegrateByParts"]], 
+  "InlineFunctionSans"],
+ ", ",
+ ButtonBox["PartialIntegrate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PartialIntegrate"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " integration by parts for particular Feynman parameter integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040884769636*^9, 3.6600408952571163`*^9}, {
+   3.6600410247758417`*^9, 3.660041053259265*^9}},
+ CellID->136967693],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["OneLoop",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OneLoop"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates  1-loop Feynman diagram amplitudes"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600409393882713`*^9, 3.660040964570401*^9}},
+ CellID->965355169],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["OneLoopSimplify",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/OneLoopSimplify"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " simplifies  1-loop Feynman diagram amplitudes"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040974943404*^9, 3.66004097827907*^9}},
+ CellID->479804421],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToHypergeometric",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToHypergeometric"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces ",
+ Cell[TextData[ButtonBox["Hypergeometric2F1",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Hypergeometric2F1"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.660040645466316*^9, 3.6600406517801037`*^9}},
+ CellID->932281504],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PaveOrder",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaveOrder"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the arguments of ",
+ Cell[TextData[ButtonBox["D0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/D0"]], "InlineFunctionSans"],
+ " in a standard way"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660060671316168*^9, 3.660060697485465*^9}},
+ CellID->200996743],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PaVeReduce",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PaVeReduce"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " reduces Passarino-Veltman integrals down to ",
+ Cell[TextData[ButtonBox["A0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/A0"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["B0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/B0"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["C0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/C0"]], "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["D0",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/D0"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660060734300934*^9, 3.660060778213792*^9}},
+ CellID->1268052330],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PropagatorDenominatorExplicit",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PropagatorDenominatorExplicit"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " rewrites ",
+ Cell[TextData[ButtonBox["FeynAmpDenominator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynAmpDenominator"]], 
+  "InlineFunctionSans"],
+ " in terms of scalar products and masses"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660060823069096*^9, 3.660060867999896*^9}},
+ CellID->2037908586],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["RussianTrick",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/RussianTrick"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " derives IBP relations for 2-loop self-energy integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660060901480198*^9, 3.660060921284019*^9}},
+ CellID->334277431],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ScalarProductCancel",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScalarProductCancel"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " cancels scalar products with propagators"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660060953460239*^9, 3.660060960263939*^9}},
+ CellID->839585187],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SimplifyDeltaFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SimplifyDeltaFunction"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies some simplifications to ",
+ Cell[TextData[ButtonBox["DeltaFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunction"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660061008261033*^9, 3.660061013347975*^9}, {
+   3.6600610436437263`*^9, 3.660061044864787*^9}, {3.6600611021211653`*^9, 
+   3.6600611088896017`*^9}},
+ CellID->1574102580],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Sn",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Sn"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " denotes ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Pi]", 
+    FractionBox["n", "2"]], "/", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"2", "\[Pi]"}], ")"}], "n"]}]], "InlineFormula"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.66006106778195*^9, 3.660061099802722*^9}, {
+   3.660061149197035*^9, 3.6600611938285513`*^9}, {3.660061236980442*^9, 
+   3.6600612801744013`*^9}},
+ CellID->1554094936],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Tdec",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Tdec"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " calculates tensor decomposition formulas for loop integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660061314176797*^9, 3.660061324814345*^9}},
+ CellID->1979909722],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TFIOrder",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TFIOrder"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " orders the arguments of some TFI functions in a standard way"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.66006133845433*^9, 3.660061340637938*^9}},
+ CellID->613914279],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TID",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TID"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "does a 1-loop tensor integral decomposition"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 3.6600605112875967`*^9}, 
+   3.660061385736773*^9},
+ CellID->1765084008],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TIDL",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TIDL"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " library of tensor integral decomposition formulas"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.6600614134359922`*^9, 3.660061416879509*^9}},
+ CellID->982645341],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToDistribution",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToDistribution"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " introduces ",
+ Cell[TextData[ButtonBox["DeltaFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunction"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["DeltaFunctionPrime",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DeltaFunctionPrime"]], 
+  "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["PlusDistribution",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PlusDistribution"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660061472042507*^9, 3.660061490629407*^9}, {
+   3.660061531919285*^9, 3.660061563452361*^9}},
+ CellID->2096516005],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToFI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToFI"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["ToTFI",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToTFI"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " converts 1- and 2-loop scalar self-energy integrals to the Tarcer \
+notation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 
+   3.6600605112875967`*^9}, {3.660061605057825*^9, 3.6600616555127563`*^9}},
+ CellID->1860467462],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ToPaVe",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToPaVe"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " converts scalar 1-loop integrals to Passarino Veltman scalar functions "
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 3.6600605112875967`*^9}, 
+   3.660061385736773*^9, {3.660061686091832*^9, 3.660061697306765*^9}},
+ CellID->242380689],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["TrickIntegrate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/TrickIntegrate"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " integration of some special distributions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 3.6600605112875967`*^9}, 
+   3.660061385736773*^9, {3.6600617757981033`*^9, 3.6600617886552353`*^9}},
+ CellID->485753619],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["UVPart",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/UVPart"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " discards UV-finite integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}, {
+   3.6599799944523706`*^9, 3.659980017615363*^9}, {3.660040228563959*^9, 
+   3.6600402399076147`*^9}, {3.6600605042571507`*^9, 3.6600605112875967`*^9}, 
+   3.660061385736773*^9, {3.660061832105694*^9, 3.66006184897401*^9}},
+ CellID->91877457]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Export and import", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6593765631678143`*^9, 3.659376567623287*^9}},
+ CellID->198236928],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynCalc2FORM",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalc2FORM"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " displays expression in FORM syntax"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.659376585640555*^9, 3.659376592208912*^9}},
+ CellID->1077126346],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynCalcToLaTeX",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynCalcToLaTeX"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generates LaTeX"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.65937583456279*^9, 3.6593758612790728`*^9}, {
+  3.659376087242784*^9, 3.659376088016487*^9}, {3.6593766108640747`*^9, 
+  3.659376623777948*^9}},
+ CellID->1438938037],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FORM2FeynCalc",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FORM2FeynCalc"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " translates teh FORM expression in file into FeynCalc notation"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+  3.6593758921047897`*^9}, {3.659376640775605*^9, 3.659376654967103*^9}},
+ CellID->1856631784],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["StringChomp",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/StringChomp"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " chops initial and final white space of a string"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.659376680753563*^9, 
+  3.659376698052153*^9}},
+ CellID->440214481],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Write2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Write2"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " writes the given settings in sequence followed by a newline to the \
+specified output file"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.659376751718225*^9, 3.659376778189101*^9}},
+ CellID->390527761]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Feynman rules and amplitudes", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.659376806948522*^9, 3.659376809302905*^9}, {3.65996637945457*^9, 
+   3.659966390466487*^9}},
+ CellID->1448855878],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["BackgroundGluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/BackgroundGluonVertex"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "3-gluon vertex in the background field gauge"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+   3.6593758921047897`*^9}, 3.659377024668138*^9},
+ CellID->594655451],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ChargeConjugationMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ChargeConjugationMatrix"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " charge conjugation matrix"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+   3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+   3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+   3.659375853476532*^9}, 3.659376836398978*^9, {3.659376938083646*^9, 
+   3.6593769432399197`*^9}, {3.659966173244042*^9, 3.659966174165619*^9}},
+ CellID->231184642],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ChargeConjugationMatrixInv",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ChargeConjugationMatrixInv"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse of ",
+ Cell[TextData[ButtonBox["ChargeConjugationMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ChargeConjugationMatrix"]], 
+  "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.659116584247678*^9, 3.659116635885686*^9}, {3.6591167945737467`*^9, 
+  3.659116797583357*^9}, {3.65937583456279*^9, 3.6593758612790728`*^9}, {
+  3.659376087242784*^9, 3.659376088016487*^9}, {3.6593769777940893`*^9, 
+  3.659376986217664*^9}},
+ CellID->2057902261],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ComplexConjugate",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ComplexConjugate"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " complex conjugates Feynman amplitudes"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375887903363*^9, 
+  3.6593758921047897`*^9}, {3.6599662223023157`*^9, 3.659966233278023*^9}},
+ CellID->1847839027],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CovariantD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CovariantD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " generic covariant derivative"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.659966267800029*^9, 
+  3.65996627285061*^9}},
+ CellID->2013380245],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CovariantFieldDerivative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CovariantFieldDerivative"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " covariant field derivative"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.6599663032131767`*^9, 3.6599663082244263`*^9}},
+ CellID->2016043479],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["DoPolarizationSums",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DoPolarizationSums"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " sums over physical polarizations of external massless vector bosons"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, 3.65911700607797*^9, {
+   3.659117038521891*^9, 3.659117057896707*^9}, {3.659376071051255*^9, 
+   3.6593760976017523`*^9}, {3.65996635970056*^9, 3.6599663674189043`*^9}},
+ CellID->397456419],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExpandPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExpandPartialD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " expands DOT products of ",
+ Cell[TextData[ButtonBox["QuantumField",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuantumField"]], "InlineFunctionSans"],
+ "'s using the Leibniz rule"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591170990744333`*^9, 
+   3.6591171071001472`*^9}, {3.6593761334711313`*^9, 3.659376168159514*^9}, {
+   3.659966431157195*^9, 3.659966454851845*^9}, 3.659966599707499*^9},
+ CellID->747107785],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ExplicitPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ExplicitPartialD"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inserts the definition for ",
+ Cell[TextData[ButtonBox["LeftRightPartialD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeftRightPartialD"]], "InlineFunctionSans"],
+ "and ",
+ Cell[TextData[ButtonBox["LeftRightPartialD2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/LeftRightPartialD2"]], "InlineFunctionSans"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117185121663*^9, 
+  3.659117210145059*^9}, {3.65937540009513*^9, 3.6593754009545593`*^9}, {
+  3.659376188832139*^9, 3.659376207898769*^9}, {3.659966524513445*^9, 
+  3.659966595586412*^9}},
+ CellID->599890035],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FAPatch",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FAPatch"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " patches FeynArts to be compatible with FeynCalc"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, 
+   3.659966653640254*^9, {3.659984425462306*^9, 3.659984434757062*^9}},
+ CellID->593077025],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCFAConvert",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCFAConvert"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "converts a FeynArts amplitude to FeynCalc"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117295534918*^9, 
+   3.659117301800735*^9}, {3.659376279332294*^9, 3.6593762972447147`*^9}, 
+   3.659966653640254*^9},
+ CellID->1711779075],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FCPrepareFAAmp",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCPrepareFAAmp"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " auxiliary function for a partial conversion of a FeynArts amplitude to \
+FeynCalc."
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.659117430209364*^9, 3.659117491089279*^9}, {
+  3.659117549748453*^9, 3.659117561333036*^9}, {3.659376330987714*^9, 
+  3.6593763440561047`*^9}, {3.659966731003573*^9, 3.659966747511581*^9}},
+ CellID->1327458149],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FermionSpinSum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FermionSpinSum"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " constructs Dirac traces out of squared ampliudes with external Dirac \
+fermions."
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}, {
+  3.659376369131332*^9, 3.659376386735157*^9}, {3.659966800042688*^9, 
+  3.659966820660865*^9}},
+ CellID->2002786353],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FeynRule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FeynRule"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " determines Feynman rules from Lagrangians"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591177169687862`*^9, 
+  3.6591177344417343`*^9}, {3.659376401427566*^9, 3.659376441905574*^9}, {
+  3.659966870599478*^9, 3.659966895977743*^9}},
+ CellID->1230786365],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FieldDerivative",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FieldDerivative"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " field derivative"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117800085536*^9, 
+  3.659117820572358*^9}, {3.6593754082122793`*^9, 3.659375408890279*^9}, {
+  3.6593764610027122`*^9, 3.6593764651450033`*^9}, {3.659979003056191*^9, 
+  3.6599790153438187`*^9}},
+ CellID->837206947],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FieldStrength",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FieldStrength"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " field strength tensor ",
+ Cell[BoxData[
+  SuperscriptBox["F", "\[Mu]\[Nu]"]], "InlineFormula"]
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375432416728*^9, 
+  3.659375438172764*^9}, {3.659376487947612*^9, 3.659376529721629*^9}, {
+  3.659979050429055*^9, 3.659979058381625*^9}},
+ CellID->1427392211],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["FunctionalD",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FunctionalD"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "functional derivative"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+   3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}, {
+   3.659376369131332*^9, 3.659376386735157*^9}, {3.659966800042688*^9, 
+   3.659966820660865*^9}, 3.659979111009007*^9},
+ CellID->866592844],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GhostPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GhostPropagator"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ghost propagator"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591177169687862`*^9, 
+  3.6591177344417343`*^9}, {3.659376401427566*^9, 3.659376441905574*^9}, {
+  3.659966870599478*^9, 3.659966895977743*^9}, {3.659979139613963*^9, 
+  3.659979142703264*^9}},
+ CellID->30813872],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GluonGhostVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gluon ghost vertex"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117800085536*^9, 
+  3.659117820572358*^9}, {3.6593754082122793`*^9, 3.659375408890279*^9}, {
+  3.6593764610027122`*^9, 3.6593764651450033`*^9}, {3.659979183024323*^9, 
+  3.659979186617907*^9}},
+ CellID->660953776],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GluonPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonPropagator"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " gluon propagator"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375432416728*^9, 
+  3.659375438172764*^9}, {3.659376487947612*^9, 3.659376529721629*^9}, {
+  3.659979210556514*^9, 3.659979214077533*^9}},
+ CellID->183769818],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GluonSelfEnergy",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonSelfEnergy"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " 1-loop gluon self-energy"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+   3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}, {
+   3.659376369131332*^9, 3.659376386735157*^9}, {3.659966800042688*^9, 
+   3.659966820660865*^9}, {3.659979230580275*^9, 3.6599792352604513`*^9}, 
+   3.659979399110828*^9},
+ CellID->2139004592],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["GluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonVertex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " 3- and 4-gluon vertices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591177169687862`*^9, 
+  3.6591177344417343`*^9}, {3.659376401427566*^9, 3.659376441905574*^9}, {
+  3.659966870599478*^9, 3.659966895977743*^9}, {3.659979270838559*^9, 
+  3.6599792799447737`*^9}},
+ CellID->819406206],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["PolarizationSum",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/PolarizationSum"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " sums over polarizations of vector bosons"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117800085536*^9, 
+  3.659117820572358*^9}, {3.6593754082122793`*^9, 3.659375408890279*^9}, {
+  3.6593764610027122`*^9, 3.6593764651450033`*^9}, {3.6599793264488497`*^9, 
+  3.659979334925282*^9}},
+ CellID->202849658],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["QCDFeynmanRuleConvention",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QCDFeynmanRuleConvention"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " sign convention for QCD Feynman rules"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375432416728*^9, 
+  3.659375438172764*^9}, {3.659376487947612*^9, 3.659376529721629*^9}, {
+  3.6599793661038303`*^9, 3.6599793726319923`*^9}},
+ CellID->1044703852],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["QuarkGluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkGluonVertex"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " quark gluon vertex"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}, {
+  3.659376369131332*^9, 3.659376386735157*^9}, {3.659966800042688*^9, 
+  3.659966820660865*^9}, {3.659979392349732*^9, 3.659979396764011*^9}},
+ CellID->1894290270],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["QuarkPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkPropagator"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " quark propagator"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591177169687862`*^9, 
+  3.6591177344417343`*^9}, {3.659376401427566*^9, 3.659376441905574*^9}, {
+  3.659966870599478*^9, 3.659966895977743*^9}, {3.659979428281844*^9, 
+  3.659979430410935*^9}},
+ CellID->1081498198],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ScalarGluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ScalarGluonVertex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "scalar-scalar-gluon vertex"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117800085536*^9, 
+   3.659117820572358*^9}, {3.6593754082122793`*^9, 3.659375408890279*^9}, {
+   3.6593764610027122`*^9, 3.6593764651450033`*^9}, 3.65997946073678*^9},
+ CellID->1449625308],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SMP",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SMP"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " substitutes symbols for various SM paremeters"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375432416728*^9, 
+  3.659375438172764*^9}, {3.659376487947612*^9, 3.659376529721629*^9}, {
+  3.659979491596233*^9, 3.65997950026755*^9}},
+ CellID->1907820234],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SMVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SMVertex"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " some SM vertices"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659117395010775*^9, 
+  3.659117396645508*^9}, {3.6591176541678667`*^9, 3.659117678614196*^9}, {
+  3.659376369131332*^9, 3.659376386735157*^9}, {3.659966800042688*^9, 
+  3.659966820660865*^9}, {3.6599795280331383`*^9, 3.659979530420363*^9}},
+ CellID->1716995820]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Tables", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.659116089530608*^9, 3.659116104448001*^9}, 
+   3.659116246619213*^9, {3.65937566684091*^9, 3.6593756701709137`*^9}, {
+   3.6600619749746017`*^9, 3.660061996697213*^9}, {3.6600675568660383`*^9, 
+   3.660067592285407*^9}},
+ CellID->16428002],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Amplitude",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Amplitude"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of Feynman amplitudes"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.6591168244907846`*^9, 
+  3.6591168286235943`*^9}, {3.659116858979171*^9, 3.659116872853922*^9}, {
+  3.659375925668168*^9, 3.659375966992425*^9}, {3.660062175001932*^9, 
+  3.6600621794763527`*^9}, {3.660067866365831*^9, 3.660067872841845*^9}},
+ CellID->573273780],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["AnomalousDimension",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/AnomalousDimension"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " non-singlet one-loop contribution to the anomalous dimension in the ",
+ Cell[BoxData[
+  OverscriptBox["MS", "_"]], "InlineFormula"],
+ " scheme"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+  3.6591166592136993`*^9, 3.65911672980119*^9}, {3.659375694499777*^9, 
+  3.659375697868294*^9}, {3.659375746049945*^9, 3.659375749947781*^9}, {
+  3.659375785318116*^9, 3.659375789501054*^9}, {3.659375852430387*^9, 
+  3.659375853476532*^9}, {3.660062035212628*^9, 3.660062050048617*^9}, {
+  3.660067132787849*^9, 3.660067138053027*^9}, {3.660067898456408*^9, 
+  3.660067945283762*^9}},
+ CellID->58857743],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CheckDB",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CheckDB"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " saves or retrieves expressions from the database"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660067994396201*^9, 3.66006800692446*^9}},
+ CellID->2085845974],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Convolute",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Convolute"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["ConvoluteTable",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ConvoluteTable"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " convolution of functions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660684676508939*^9, 3.660684712135565*^9}},
+ CellID->113893828],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["CounterTerm",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CounterTerm"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of counter terms."
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.6606847419313793`*^9, 3.660684749364154*^9}},
+ CellID->398578851],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Gamma1",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Gamma1"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Gamma2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Gamma2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Gamma3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Gamma3"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["GammaEpsilon",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GammaEpsilon"]], "InlineFunctionSans"],
+ "  ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " special products and expansions of ",
+ Cell[TextData[ButtonBox["Gamma",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Gamma"]], "InlineFunctionSans"],
+ " functions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660684781540256*^9, 3.660684821348604*^9}, {3.660684851795927*^9, 
+   3.660684864039056*^9}},
+ CellID->1016459733],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Integrate2",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate2"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Integrate3",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate3"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Integrate4",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate4"]], "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["Integrate5",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Integrate5"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " some integrals"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660684898003284*^9, 3.660684931755934*^9}},
+ CellID->1266157],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["InverseMellin",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/InverseMellin"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " inverse Mellin transform for some polynomials"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660684989850149*^9, 3.660684998554537*^9}},
+ CellID->1817035294],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Kummer",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Kummer"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " applies Kummer relations"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.66068503373899*^9, 3.6606850372380667`*^9}},
+ CellID->1052156503],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Lagrangian",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Lagrangian"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of Lagrangians"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.6606850692268476`*^9, 3.660685075498158*^9}},
+ CellID->1278270450],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["Nielsen",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Nielsen"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " ",
+ "denotes Nielsen's polylogarithm"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, 
+   3.660685100725348*^9},
+ CellID->1690213129],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SimplifyPolyLog",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SimplifyPolyLog"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " several simplifications for ",
+ Cell[TextData[ButtonBox["Log",
+  BaseStyle->"Link",
+  ButtonData->"/ref/Log"]], "InlineFunctionSans"],
+ " and ",
+ Cell[TextData[ButtonBox["PolyLog",
+  BaseStyle->"Link",
+  ButtonData->"/ref/PolyLog"]], "InlineFunctionSans"],
+ " functions under certain assumptions"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660685148938139*^9, 3.660685196393509*^9}},
+ CellID->1901226625],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["SplittingFunction",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SplittingFunction"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " database of splitting functiosn"
+}], "GuideText",
+ CellChangeTimes->{{3.659116526647481*^9, 3.659116531948105*^9}, {
+   3.6591166592136993`*^9, 3.65911672980119*^9}, {3.65911690315954*^9, 
+   3.659116933740312*^9}, {3.659376018036332*^9, 3.659376045485579*^9}, 
+   3.659376094878495*^9, {3.660066608886417*^9, 3.6600666121454372`*^9}, {
+   3.660685213290331*^9, 3.660685218220524*^9}},
+ CellID->2052229439]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -143,7 +4308,582 @@ Cell["XXXX", "GuideMoreAbout",
 Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
-WindowSize->{700, 770},
-WindowMargins->{{4, Automatic}, {Automatic, 0}},
-StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb"]
+WindowSize->{700, 684},
+WindowMargins->{{Automatic, 357}, {Automatic, 60}},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
+  CharacterEncoding -> "UTF-8"]
 ]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 14, 23, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[908, 38, 68, 1, 28, "CategorizationSection",
+ CellID->1122911449],
+Cell[979, 41, 78, 2, 32, "Categorization",
+ CellID->686433507],
+Cell[1060, 45, 81, 2, 32, "Categorization",
+ CellID->605800465],
+Cell[1144, 49, 78, 2, 32, "Categorization",
+ CellID->468444828],
+Cell[1225, 53, 68, 1, 32, "Categorization"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1330, 59, 56, 1, 28, "KeywordsSection",
+ CellID->1427428552],
+Cell[1389, 62, 45, 1, 18, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1471, 68, 53, 1, 18, "DetailsSection",
+ CellID->307771771],
+Cell[1527, 71, 63, 2, 32, "Details",
+ CellID->795394057],
+Cell[1593, 75, 187, 3, 32, "Details",
+ CellID->350963985],
+Cell[1783, 80, 183, 3, 32, "Details",
+ CellID->802101],
+Cell[1969, 85, 71, 2, 32, "Details",
+ CellID->509823116],
+Cell[2043, 89, 61, 2, 32, "Details",
+ CellID->199884516],
+Cell[2107, 93, 61, 2, 32, "Details",
+ CellID->463951815],
+Cell[2171, 97, 61, 2, 32, "Details",
+ CellID->8237523],
+Cell[2235, 101, 78, 2, 32, "Details",
+ CellID->813936640],
+Cell[2316, 105, 67, 2, 32, "Details",
+ CellID->240026365]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2420, 112, 50, 1, 77, "GuideTitle",
+ CellID->942062912],
+Cell[2473, 115, 410, 10, 41, "GuideAbstract",
+ CellID->2001916300]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2920, 130, 98, 2, 69, "GuideFunctionsSection",
+ CellID->1866139230],
+Cell[CellGroupData[{
+Cell[3043, 136, 315, 5, 34, "GuideFunctionsSubsection",
+ CellID->1344981135],
+Cell[3361, 143, 753, 17, 21, "GuideText",
+ CellID->552658513],
+Cell[4117, 162, 706, 17, 22, "GuideText",
+ CellID->1235023741],
+Cell[4826, 181, 689, 14, 21, "GuideText",
+ CellID->1076523595],
+Cell[5518, 197, 869, 19, 21, "GuideText",
+ CellID->917048888],
+Cell[6390, 218, 819, 18, 21, "GuideText",
+ CellID->1033282217],
+Cell[7212, 238, 826, 20, 22, "GuideText",
+ CellID->745071340],
+Cell[8041, 260, 1047, 24, 36, "GuideText",
+ CellID->1851196232],
+Cell[9091, 286, 2050, 53, 36, "GuideText",
+ CellID->1686448459],
+Cell[11144, 341, 696, 14, 21, "GuideText",
+ CellID->264840152],
+Cell[11843, 357, 865, 20, 33, "GuideText",
+ CellID->1624859494],
+Cell[12711, 379, 1418, 35, 21, "GuideText",
+ CellID->307637975],
+Cell[14132, 416, 1151, 27, 21, "GuideText",
+ CellID->1680708588],
+Cell[15286, 445, 709, 14, 21, "GuideText",
+ CellID->1891570253],
+Cell[15998, 461, 903, 20, 21, "GuideText",
+ CellID->1483552361],
+Cell[16904, 483, 941, 21, 21, "GuideText",
+ CellID->476236246],
+Cell[17848, 506, 948, 20, 21, "GuideText",
+ CellID->2139347147],
+Cell[18799, 528, 852, 19, 21, "GuideText",
+ CellID->1131303773],
+Cell[19654, 549, 1418, 33, 36, "GuideText",
+ CellID->1476055339],
+Cell[21075, 584, 1125, 27, 21, "GuideText",
+ CellID->495428205],
+Cell[22203, 613, 694, 14, 21, "GuideText",
+ CellID->1403563110],
+Cell[22900, 629, 686, 14, 22, "GuideText",
+ CellID->1275284258],
+Cell[23589, 645, 696, 14, 21, "GuideText",
+ CellID->1257907745],
+Cell[24288, 661, 688, 14, 21, "GuideText",
+ CellID->1005983702],
+Cell[24979, 677, 670, 14, 21, "GuideText",
+ CellID->832103768],
+Cell[25652, 693, 671, 14, 21, "GuideText",
+ CellID->431072089],
+Cell[26326, 709, 752, 15, 21, "GuideText",
+ CellID->316776695],
+Cell[27081, 726, 1136, 27, 21, "GuideText",
+ CellID->651468345],
+Cell[28220, 755, 834, 16, 21, "GuideText",
+ CellID->1386416972],
+Cell[29057, 773, 765, 15, 36, "GuideText",
+ CellID->1889374617],
+Cell[29825, 790, 767, 15, 21, "GuideText",
+ CellID->1384558840],
+Cell[30595, 807, 709, 15, 21, "GuideText",
+ CellID->2003827822],
+Cell[31307, 824, 709, 15, 21, "GuideText",
+ CellID->827330458],
+Cell[32019, 841, 920, 20, 36, "GuideText",
+ CellID->1486910634],
+Cell[32942, 863, 706, 14, 21, "GuideText",
+ CellID->1015009742],
+Cell[33651, 879, 757, 15, 22, "GuideText",
+ CellID->146220986],
+Cell[34411, 896, 881, 19, 21, "GuideText",
+ CellID->522984542],
+Cell[35295, 917, 868, 19, 21, "GuideText",
+ CellID->1059337536],
+Cell[36166, 938, 849, 18, 21, "GuideText",
+ CellID->137238398],
+Cell[37018, 958, 734, 14, 21, "GuideText",
+ CellID->590785021],
+Cell[37755, 974, 996, 23, 21, "GuideText",
+ CellID->305275299],
+Cell[38754, 999, 877, 19, 22, "GuideText",
+ CellID->1136659773],
+Cell[39634, 1020, 827, 18, 22, "GuideText",
+ CellID->920034572],
+Cell[40464, 1040, 878, 19, 22, "GuideText",
+ CellID->1328328343],
+Cell[41345, 1061, 1093, 25, 25, "GuideText",
+ CellID->1428923217],
+Cell[42441, 1088, 1004, 22, 22, "GuideText",
+ CellID->1763987334],
+Cell[43448, 1112, 737, 16, 22, "GuideText",
+ CellID->1924638314]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[44222, 1133, 313, 5, 34, "GuideFunctionsSubsection",
+ CellID->218620916],
+Cell[44538, 1140, 810, 17, 21, "GuideText",
+ CellID->1010301503],
+Cell[45351, 1159, 818, 17, 21, "GuideText",
+ CellID->1271388718],
+Cell[46172, 1178, 830, 17, 21, "GuideText",
+ CellID->1736502128],
+Cell[47005, 1197, 911, 21, 21, "GuideText",
+ CellID->1287756566],
+Cell[47919, 1220, 704, 15, 21, "GuideText",
+ CellID->1747124358],
+Cell[48626, 1237, 814, 17, 21, "GuideText",
+ CellID->1504394922],
+Cell[49443, 1256, 719, 14, 21, "GuideText",
+ CellID->1596546686],
+Cell[50165, 1272, 954, 22, 21, "GuideText",
+ CellID->187460383],
+Cell[51122, 1296, 832, 16, 21, "GuideText",
+ CellID->333715746],
+Cell[51957, 1314, 803, 18, 36, "GuideText",
+ CellID->27396530],
+Cell[52763, 1334, 778, 17, 21, "GuideText",
+ CellID->1283386980],
+Cell[53544, 1353, 854, 19, 36, "GuideText",
+ CellID->2100021916],
+Cell[54401, 1374, 1171, 29, 21, "GuideText",
+ CellID->898863791],
+Cell[55575, 1405, 842, 15, 21, "GuideText",
+ CellID->1647672763],
+Cell[56420, 1422, 643, 15, 21, "GuideText",
+ CellID->683465492],
+Cell[57066, 1439, 650, 15, 21, "GuideText",
+ CellID->1650215271],
+Cell[57719, 1456, 512, 12, 21, "GuideText",
+ CellID->1498216592],
+Cell[58234, 1470, 635, 15, 21, "GuideText",
+ CellID->253353205],
+Cell[58872, 1487, 590, 13, 21, "GuideText",
+ CellID->1212078011],
+Cell[59465, 1502, 645, 15, 21, "GuideText",
+ CellID->178528196],
+Cell[60113, 1519, 591, 13, 21, "GuideText",
+ CellID->1298957094],
+Cell[60707, 1534, 656, 15, 21, "GuideText",
+ CellID->1374272511],
+Cell[61366, 1551, 644, 15, 21, "GuideText",
+ CellID->1627933292],
+Cell[62013, 1568, 822, 18, 21, "GuideText",
+ CellID->1708462303],
+Cell[62838, 1588, 905, 21, 21, "GuideText",
+ CellID->1659205566],
+Cell[63746, 1611, 828, 20, 21, "GuideText",
+ CellID->1809157918],
+Cell[64577, 1633, 860, 21, 21, "GuideText",
+ CellID->869117662]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[65474, 1659, 163, 3, 34, "GuideFunctionsSubsection",
+ CellID->385817707],
+Cell[65640, 1664, 408, 10, 21, "GuideText",
+ CellID->2009629793],
+Cell[66051, 1676, 461, 11, 21, "GuideText",
+ CellID->512359346],
+Cell[66515, 1689, 525, 11, 36, "GuideText",
+ CellID->1524292158],
+Cell[67043, 1702, 404, 10, 21, "GuideText",
+ CellID->231212511],
+Cell[67450, 1714, 522, 11, 21, "GuideText",
+ CellID->1913592904],
+Cell[67975, 1727, 464, 12, 21, "GuideText",
+ CellID->693139341],
+Cell[68442, 1741, 515, 12, 36, "GuideText",
+ CellID->343872275],
+Cell[68960, 1755, 468, 12, 21, "GuideText",
+ CellID->548161550],
+Cell[69431, 1769, 513, 11, 21, "GuideText",
+ CellID->987343741],
+Cell[69947, 1782, 433, 11, 21, "GuideText",
+ CellID->1285601191],
+Cell[70383, 1795, 986, 24, 36, "GuideText",
+ CellID->1809925827],
+Cell[71372, 1821, 572, 15, 21, "GuideText",
+ CellID->344422616],
+Cell[71947, 1838, 750, 19, 36, "GuideText",
+ CellID->2009219923],
+Cell[72700, 1859, 492, 11, 21, "GuideText",
+ CellID->874103215],
+Cell[73195, 1872, 440, 11, 21, "GuideText",
+ CellID->579030092],
+Cell[73638, 1885, 448, 11, 21, "GuideText",
+ CellID->1156270314],
+Cell[74089, 1898, 486, 11, 36, "GuideText",
+ CellID->629389521],
+Cell[74578, 1911, 459, 11, 21, "GuideText",
+ CellID->715481727]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[75074, 1927, 207, 3, 34, "GuideFunctionsSubsection",
+ CellID->46643246],
+Cell[75284, 1932, 665, 16, 22, "GuideText",
+ CellID->2131819227],
+Cell[75952, 1950, 561, 12, 21, "GuideText",
+ CellID->1211971239],
+Cell[76516, 1964, 436, 11, 21, "GuideText",
+ CellID->333117850],
+Cell[76955, 1977, 681, 15, 21, "GuideText",
+ CellID->615769661],
+Cell[77639, 1994, 545, 13, 21, "GuideText",
+ CellID->1531032786],
+Cell[78187, 2009, 531, 12, 21, "GuideText",
+ CellID->688938496],
+Cell[78721, 2023, 544, 12, 36, "GuideText",
+ CellID->1740429042],
+Cell[79268, 2037, 685, 16, 21, "GuideText",
+ CellID->297775359],
+Cell[79956, 2055, 532, 12, 36, "GuideText",
+ CellID->255459663],
+Cell[80491, 2069, 582, 13, 21, "GuideText",
+ CellID->1463755561],
+Cell[81076, 2084, 597, 13, 36, "GuideText",
+ CellID->1334035786],
+Cell[81676, 2099, 541, 12, 36, "GuideText",
+ CellID->525715973],
+Cell[82220, 2113, 524, 12, 21, "GuideText",
+ CellID->218430270],
+Cell[82747, 2127, 614, 16, 22, "GuideText",
+ CellID->1707494307]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[83398, 2148, 304, 4, 34, "GuideFunctionsSubsection",
+ CellID->1113739100],
+Cell[83705, 2154, 587, 13, 21, "GuideText",
+ CellID->1482543113],
+Cell[84295, 2169, 812, 18, 21, "GuideText",
+ CellID->1937939922],
+Cell[85110, 2189, 543, 12, 21, "GuideText",
+ CellID->526201837],
+Cell[85656, 2203, 913, 21, 35, "GuideText",
+ CellID->369276061],
+Cell[86572, 2226, 560, 13, 21, "GuideText",
+ CellID->795497081],
+Cell[87135, 2241, 672, 17, 21, "GuideText",
+ CellID->284457576],
+Cell[87810, 2260, 478, 12, 21, "GuideText",
+ CellID->1861924278],
+Cell[88291, 2274, 795, 17, 36, "GuideText",
+ CellID->1355907511],
+Cell[89089, 2293, 754, 17, 21, "GuideText",
+ CellID->1719074274],
+Cell[89846, 2312, 565, 13, 21, "GuideText",
+ CellID->1309406098]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[90448, 2330, 312, 5, 34, "GuideFunctionsSubsection",
+ CellID->121380019],
+Cell[90763, 2337, 637, 13, 21, "GuideText",
+ CellID->821249197],
+Cell[91403, 2352, 759, 16, 21, "GuideText",
+ CellID->1593535902],
+Cell[92165, 2370, 765, 16, 21, "GuideText",
+ CellID->210505242],
+Cell[92933, 2388, 775, 17, 21, "GuideText",
+ CellID->1595578132],
+Cell[93711, 2407, 656, 14, 21, "GuideText",
+ CellID->1561361899]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[94404, 2426, 314, 5, 34, "GuideFunctionsSubsection",
+ CellID->1137355821],
+Cell[94721, 2433, 701, 14, 21, "GuideText",
+ CellID->484191528],
+Cell[95425, 2449, 691, 14, 21, "GuideText",
+ CellID->1364110476],
+Cell[96119, 2465, 632, 13, 21, "GuideText",
+ CellID->863977560],
+Cell[96754, 2480, 1078, 26, 21, "GuideText",
+ CellID->512824359],
+Cell[97835, 2508, 705, 14, 21, "GuideText",
+ CellID->1115857362],
+Cell[98543, 2524, 706, 15, 21, "GuideText",
+ CellID->143835829],
+Cell[99252, 2541, 835, 18, 21, "GuideText",
+ CellID->883206687],
+Cell[100090, 2561, 835, 18, 21, "GuideText",
+ CellID->439407944],
+Cell[100928, 2581, 676, 16, 21, "GuideText",
+ CellID->1595882694],
+Cell[101607, 2599, 619, 13, 21, "GuideText",
+ CellID->333845561],
+Cell[102229, 2614, 667, 14, 36, "GuideText",
+ CellID->1110841143],
+Cell[102899, 2630, 729, 15, 36, "GuideText",
+ CellID->714568367],
+Cell[103631, 2647, 774, 16, 36, "GuideText",
+ CellID->251142308],
+Cell[104408, 2665, 725, 16, 36, "GuideText",
+ CellID->1336937891],
+Cell[105136, 2683, 653, 14, 21, "GuideText",
+ CellID->1906541245],
+Cell[105792, 2699, 672, 14, 21, "GuideText",
+ CellID->757005022],
+Cell[106467, 2715, 852, 20, 36, "GuideText",
+ CellID->284159366],
+Cell[107322, 2737, 713, 15, 36, "GuideText",
+ CellID->1711785091],
+Cell[108038, 2754, 715, 15, 36, "GuideText",
+ CellID->777565246],
+Cell[108756, 2771, 736, 15, 21, "GuideText",
+ CellID->127777310],
+Cell[109495, 2788, 750, 16, 36, "GuideText",
+ CellID->164601953],
+Cell[110248, 2806, 822, 19, 36, "GuideText",
+ CellID->1822975320],
+Cell[111073, 2827, 754, 15, 36, "GuideText",
+ CellID->727371440],
+Cell[111830, 2844, 683, 14, 21, "GuideText",
+ CellID->1377966861],
+Cell[112516, 2860, 868, 22, 21, "GuideText",
+ CellID->1684971587],
+Cell[113387, 2884, 840, 18, 21, "GuideText",
+ CellID->1716225519],
+Cell[114230, 2904, 636, 14, 21, "GuideText",
+ CellID->671837658],
+Cell[114869, 2920, 813, 19, 21, "GuideText",
+ CellID->1636252055],
+Cell[115685, 2941, 893, 19, 36, "GuideText",
+ CellID->1675333030],
+Cell[116581, 2962, 745, 15, 36, "GuideText",
+ CellID->373844893],
+Cell[117329, 2979, 781, 16, 36, "GuideText",
+ CellID->1693861457],
+Cell[118113, 2997, 853, 18, 21, "GuideText",
+ CellID->305598727],
+Cell[118969, 3017, 1024, 22, 21, "GuideText",
+ CellID->554636843],
+Cell[119996, 3041, 1076, 24, 21, "GuideText",
+ CellID->1378134869],
+Cell[121075, 3067, 919, 20, 36, "GuideText",
+ CellID->136967693],
+Cell[121997, 3089, 714, 14, 21, "GuideText",
+ CellID->965355169],
+Cell[122714, 3105, 727, 14, 21, "GuideText",
+ CellID->479804421],
+Cell[123444, 3121, 833, 18, 21, "GuideText",
+ CellID->932281504],
+Cell[124280, 3141, 889, 19, 21, "GuideText",
+ CellID->200996743],
+Cell[125172, 3162, 1264, 30, 21, "GuideText",
+ CellID->1268052330],
+Cell[126439, 3194, 974, 21, 36, "GuideText",
+ CellID->2037908586],
+Cell[127416, 3217, 785, 15, 21, "GuideText",
+ CellID->334277431],
+Cell[128204, 3234, 788, 16, 21, "GuideText",
+ CellID->839585187],
+Cell[128995, 3252, 1030, 21, 21, "GuideText",
+ CellID->1574102580],
+Cell[130028, 3275, 1011, 24, 28, "GuideText",
+ CellID->1554094936],
+Cell[131042, 3301, 775, 15, 21, "GuideText",
+ CellID->1979909722],
+Cell[131820, 3318, 782, 15, 21, "GuideText",
+ CellID->613914279],
+Cell[132605, 3335, 738, 16, 21, "GuideText",
+ CellID->1765084008],
+Cell[133346, 3353, 766, 15, 21, "GuideText",
+ CellID->982645341],
+Cell[134115, 3370, 1250, 28, 35, "GuideText",
+ CellID->2096516005],
+Cell[135368, 3400, 924, 20, 36, "GuideText",
+ CellID->1860467462],
+Cell[136295, 3422, 812, 15, 21, "GuideText",
+ CellID->242380689],
+Cell[137110, 3439, 802, 15, 21, "GuideText",
+ CellID->485753619],
+Cell[137915, 3456, 767, 15, 21, "GuideText",
+ CellID->91877457]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[138719, 3476, 264, 4, 34, "GuideFunctionsSubsection",
+ CellID->198236928],
+Cell[138986, 3482, 633, 13, 21, "GuideText",
+ CellID->1077126346],
+Cell[139622, 3497, 576, 13, 21, "GuideText",
+ CellID->1438938037],
+Cell[140201, 3512, 518, 11, 21, "GuideText",
+ CellID->1856631784],
+Cell[140722, 3525, 599, 13, 21, "GuideText",
+ CellID->440214481],
+Cell[141324, 3540, 605, 13, 36, "GuideText",
+ CellID->390527761]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[141966, 3558, 323, 5, 34, "GuideFunctionsSubsection",
+ CellID->1448855878],
+Cell[142292, 3565, 502, 13, 21, "GuideText",
+ CellID->594655451],
+Cell[142797, 3580, 724, 15, 21, "GuideText",
+ CellID->231184642],
+Cell[143524, 3597, 759, 18, 21, "GuideText",
+ CellID->2057902261],
+Cell[144286, 3617, 505, 12, 21, "GuideText",
+ CellID->1847839027],
+Cell[144794, 3631, 578, 13, 21, "GuideText",
+ CellID->2013380245],
+Cell[145375, 3646, 583, 13, 21, "GuideText",
+ CellID->2016043479],
+Cell[145961, 3661, 610, 13, 36, "GuideText",
+ CellID->397456419],
+Cell[146574, 3676, 727, 16, 21, "GuideText",
+ CellID->747107785],
+Cell[147304, 3694, 894, 21, 21, "GuideText",
+ CellID->599890035],
+Cell[148201, 3717, 565, 12, 21, "GuideText",
+ CellID->593077025],
+Cell[148769, 3731, 527, 13, 21, "GuideText",
+ CellID->1711779075],
+Cell[149299, 3746, 685, 14, 36, "GuideText",
+ CellID->1327458149],
+Cell[149987, 3762, 637, 14, 36, "GuideText",
+ CellID->2002786353],
+Cell[150627, 3778, 539, 12, 21, "GuideText",
+ CellID->1230786365],
+Cell[151169, 3792, 580, 13, 21, "GuideText",
+ CellID->837206947],
+Cell[151752, 3807, 597, 14, 22, "GuideText",
+ CellID->1427392211],
+Cell[152352, 3823, 596, 13, 21, "GuideText",
+ CellID->866592844],
+Cell[152951, 3838, 575, 13, 21, "GuideText",
+ CellID->30813872],
+Cell[153529, 3853, 585, 14, 21, "GuideText",
+ CellID->660953776],
+Cell[154117, 3869, 523, 12, 21, "GuideText",
+ CellID->183769818],
+Cell[154643, 3883, 661, 14, 21, "GuideText",
+ CellID->2139004592],
+Cell[155307, 3899, 577, 13, 21, "GuideText",
+ CellID->819406206],
+Cell[155887, 3914, 604, 13, 21, "GuideText",
+ CellID->202849658],
+Cell[156494, 3929, 570, 13, 21, "GuideText",
+ CellID->1044703852],
+Cell[157067, 3944, 628, 14, 21, "GuideText",
+ CellID->1894290270],
+Cell[157698, 3960, 577, 13, 21, "GuideText",
+ CellID->1081498198],
+Cell[158278, 3975, 573, 13, 21, "GuideText",
+ CellID->1449625308],
+Cell[158854, 3990, 528, 12, 21, "GuideText",
+ CellID->1907820234],
+Cell[159385, 4004, 609, 13, 21, "GuideText",
+ CellID->1716995820]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[160031, 4022, 304, 5, 34, "GuideFunctionsSubsection",
+ CellID->16428002],
+Cell[160338, 4029, 626, 13, 21, "GuideText",
+ CellID->573273780],
+Cell[160967, 4044, 850, 19, 39, "GuideText",
+ CellID->58857743],
+Cell[161820, 4065, 615, 13, 21, "GuideText",
+ CellID->2085845974],
+Cell[162438, 4080, 743, 17, 21, "GuideText",
+ CellID->113893828],
+Cell[163184, 4099, 603, 13, 21, "GuideText",
+ CellID->398578851],
+Cell[163790, 4114, 1183, 30, 36, "GuideText",
+ CellID->1016459733],
+Cell[164976, 4146, 1005, 25, 21, "GuideText",
+ CellID->1266157],
+Cell[165984, 4173, 625, 13, 21, "GuideText",
+ CellID->1817035294],
+Cell[166612, 4188, 591, 13, 21, "GuideText",
+ CellID->1052156503],
+Cell[167206, 4203, 599, 13, 21, "GuideText",
+ CellID->1278270450],
+Cell[167808, 4218, 580, 14, 21, "GuideText",
+ CellID->1690213129],
+Cell[168391, 4234, 879, 21, 36, "GuideText",
+ CellID->1901226625],
+Cell[169273, 4257, 619, 13, 21, "GuideText",
+ CellID->2052229439]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[169929, 4275, 48, 1, 26, "GuideDelimiter",
+ CellID->311258892],
+Cell[169980, 4278, 71, 1, 22, "InlineGuideFunctionListing",
+ CellID->58033752]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[170100, 4285, 62, 1, 71, "GuideTutorialsSection",
+ CellID->415694126],
+Cell[170165, 4288, 49, 1, 21, "GuideTutorial",
+ CellID->806871991],
+Cell[170217, 4291, 50, 1, 21, "GuideTutorial",
+ CellID->1885805579]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[170304, 4297, 62, 1, 71, "GuideMoreAboutSection",
+ CellID->23220180],
+Cell[170369, 4300, 51, 1, 21, "GuideMoreAbout",
+ CellID->1567025153],
+Cell[170423, 4303, 50, 1, 21, "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+Cell[170488, 4307, 69, 1, 71, "GuideRelatedLinksSection",
+ CellID->415694148]
+}
+]
+*)
+
+(* End of internal cache information *)

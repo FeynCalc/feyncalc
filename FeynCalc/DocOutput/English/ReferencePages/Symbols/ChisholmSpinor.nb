@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17428,        624]
-NotebookOptionsPosition[     13683,        512]
-NotebookOutlinePosition[     16432,        587]
-CellTagsIndexPosition[     16314,        581]
+NotebookDataLength[     17432,        624]
+NotebookOptionsPosition[     13681,        512]
+NotebookOutlinePosition[     16438,        587]
+CellTagsIndexPosition[     16320,        581]
 WindowTitle->ChisholmSpinor
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ ChisholmSpinor.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24272], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$26159], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/ChisholmSpinor", ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1590701907],
+ CellID->1203315517],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2007592840],
+ CellID->74984818],
 
 Cell[CellGroupData[{
 
@@ -525,7 +525,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 56, 46.678689}", 
+   "built" -> "{2016, 1, 2, 15, 7, 11.668490}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -539,7 +539,7 @@ spinor chains.", "synonyms" -> {}, "title" -> "ChisholmSpinor",
     "Symbol", "uri" -> "FeynCalc/ref/ChisholmSpinor"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -548,7 +548,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -559,29 +559,29 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3517, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1590701907]},
+   CellID->1203315517]},
  "ChisholmSpinor"->{
-  Cell[4151, 126, 329, 10, 27, "Input",
+  Cell[4149, 126, 329, 10, 27, "Input",
    CellTags->"ChisholmSpinor",
    CellID->30249209],
-  Cell[4483, 138, 1195, 48, 42, "Output",
+  Cell[4481, 138, 1195, 48, 42, "Output",
    CellTags->"ChisholmSpinor",
    CellID->2055976112],
-  Cell[5715, 191, 135, 4, 27, "Input",
+  Cell[5713, 191, 135, 4, 27, "Input",
    CellTags->"ChisholmSpinor",
    CellID->970486194],
-  Cell[5853, 197, 7018, 272, 203, "Output",
+  Cell[5851, 197, 7018, 272, 203, "Output",
    CellTags->"ChisholmSpinor",
    CellID->1051632452],
-  Cell[13239, 492, 402, 15, 32, "Text",
+  Cell[13237, 492, 402, 15, 32, "Text",
    CellTags->"ChisholmSpinor",
    CellID->2143743981]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15672, 558},
- {"ChisholmSpinor", 15813, 562}
+ {"PrimaryExamplesSection", 15678, 558},
+ {"ChisholmSpinor", 15819, 562}
  }
 *)
 (*NotebookFileOutline
@@ -595,37 +595,37 @@ Cell[2918, 78, 574, 15, 112, "Usage",
 Cell[CellGroupData[{
 Cell[3517, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1590701907],
+ CellID->1203315517],
 Cell[CellGroupData[{
-Cell[3930, 116, 196, 6, 25, "ExampleSection",
- CellID->2007592840],
+Cell[3930, 116, 194, 6, 25, "ExampleSection",
+ CellID->74984818],
 Cell[CellGroupData[{
-Cell[4151, 126, 329, 10, 27, "Input",
+Cell[4149, 126, 329, 10, 27, "Input",
  CellTags->"ChisholmSpinor",
  CellID->30249209],
-Cell[4483, 138, 1195, 48, 42, "Output",
+Cell[4481, 138, 1195, 48, 42, "Output",
  CellTags->"ChisholmSpinor",
  CellID->2055976112]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5715, 191, 135, 4, 27, "Input",
+Cell[5713, 191, 135, 4, 27, "Input",
  CellTags->"ChisholmSpinor",
  CellID->970486194],
-Cell[5853, 197, 7018, 272, 203, "Output",
+Cell[5851, 197, 7018, 272, 203, "Output",
  CellTags->"ChisholmSpinor",
  CellID->1051632452]
 }, Open  ]]
 }, Open  ]],
-Cell[12898, 473, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12896, 473, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12966, 478, 270, 12, 31, "SeeAlsoSection",
+Cell[12964, 478, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13239, 492, 402, 15, 32, "Text",
+Cell[13237, 492, 402, 15, 32, "Text",
  CellTags->"ChisholmSpinor",
  CellID->2143743981]
 }, Open  ]],
-Cell[13656, 510, 23, 0, 42, "FooterCell"]
+Cell[13654, 510, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22924,        835]
-NotebookOptionsPosition[     13805,        533]
-NotebookOutlinePosition[     19166,        692]
-CellTagsIndexPosition[     19050,        686]
+NotebookDataLength[     23422,        863]
+NotebookOptionsPosition[     14294,        561]
+NotebookOutlinePosition[     19665,        720]
+CellTagsIndexPosition[     19549,        714]
 WindowTitle->QuantumField
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ QuantumField.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$118730], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$123694], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/QuantumField", ".html"]], None}]}]},
@@ -112,7 +112,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1020810829],
+ CellID->252612378],
 
 Cell[CellGroupData[{
 
@@ -122,7 +122,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1871187223],
+ CellID->1076353105],
 
 Cell["This denotes a scalar field.", "Text",
  CellTags->"QuantumField",
@@ -143,7 +143,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[1]=",
- CellID->2033411608]
+ CellID->2038740597]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -162,7 +162,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[2]=",
- CellID->795101918]
+ CellID->2083488651]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -180,7 +180,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[3]=",
- CellID->123729835]
+ CellID->1186167697]
 }, Open  ]],
 
 Cell["This is a field with a Lorentz index.", "Text",
@@ -209,7 +209,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[4]=",
- CellID->979513178]
+ CellID->188307989]
 }, Open  ]],
 
 Cell["Color indices should be put after the Lorentz ones.", "Text",
@@ -245,7 +245,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[5]=",
- CellID->1552535862]
+ CellID->568800193]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -266,7 +266,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[6]//StandardForm=",
- CellID->939938731]
+ CellID->232650919]
 }, Open  ]],
 
 Cell[TextData[{
@@ -277,7 +277,7 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    RowBox[{
-    RowBox[{"\[CapitalDelta]", "^", "\[Mu]"}], " ", 
+    SuperscriptBox["\[CapitalDelta]", "\[Mu]"], " ", 
     RowBox[{
      SubsuperscriptBox["A", "\[Mu]", "a"], "."}]}], TraditionalForm]]],
  " "
@@ -314,7 +314,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[7]=",
- CellID->1467175230]
+ CellID->1323752020]
 }, Open  ]],
 
 Cell["\<\
@@ -346,7 +346,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[8]//StandardForm=",
- CellID->323215161]
+ CellID->517587533]
 }, Open  ]],
 
 Cell["Derivatives of fields are denoted as follows.", "Text",
@@ -358,7 +358,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
-   RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
+   RowBox[{"FCPartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
    RowBox[{"{", "\[Mu]", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
  CellLabel->"In[9]:=",
@@ -366,17 +366,25 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuantumField", "(", 
-   RowBox[{
-    RowBox[{"PartialD", "[", "\[Mu]", "]"}], ",", "A", ",", 
-    FormBox["\[Mu]",
-     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{215, 15},
+  RowBox[{
+   SubscriptBox["\[PartialD]", 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], "\[Null]"]}], TraditionalForm]], "Output",
+ ImageSize->{40, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[9]=",
- CellID->1388568803]
+ CellID->407944783]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -384,23 +392,28 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
-   RowBox[{"PartialD", "[", "OPEDelta", "]"}], ",", "S"}], "]"}]], "Input",
+   RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], ",", "S"}], "]"}]], "Input",
  CellTags->"QuantumField",
  CellLabel->"In[10]:=",
  CellID->1485590656],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuantumField", "(", 
-   RowBox[{
-    RowBox[{"PartialD", "[", "\[CapitalDelta]", "]"}], ",", "S"}], ")"}], 
-  TraditionalForm]], "Output",
- ImageSize->{196, 15},
+  RowBox[{
+   SubscriptBox["\[PartialD]", 
+    FormBox[
+     FormBox["\[CapitalDelta]",
+      TraditionalForm],
+     TraditionalForm]], 
+   SubsuperscriptBox[
+    FormBox["S",
+     TraditionalForm], "\[Null]", "\[Null]"]}], TraditionalForm]], "Output",
+ ImageSize->{33, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[10]=",
- CellID->273811257]
+ CellID->57451832]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -408,7 +421,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
-   RowBox[{"PartialD", "[", "OPEDelta", "]"}], ",", "A", ",", 
+   RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], ",", "A", ",", 
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
@@ -417,19 +430,31 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"QuantumField", "(", 
-   RowBox[{
-    RowBox[{"PartialD", "[", "\[CapitalDelta]", "]"}], ",", "A", ",", 
-    FormBox["\[CapitalDelta]",
-     TraditionalForm], ",", 
-    FormBox["a",
-     TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{234, 15},
+  RowBox[{
+   FormBox[
+    SubscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], 
+   SubsuperscriptBox[
+    FormBox["A",
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[CapitalDelta]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["a",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{43, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[11]=",
- CellID->489492377]
+ CellID->1175747409]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -438,8 +463,8 @@ Cell[BoxData[
  RowBox[{"QuantumField", "[", 
   RowBox[{
    RowBox[{
-    RowBox[{"PartialD", "[", "OPEDelta", "]"}], "^", "OPEm"}], ",", "A", ",", 
-   
+    RowBox[{"FCPartialD", "[", "OPEDelta", "]"}], "^", "OPEm"}], ",", "A", 
+   ",", 
    RowBox[{"{", "OPEDelta", "}"}], ",", 
    RowBox[{"{", "a", "}"}]}], "]"}]], "Input",
  CellTags->"QuantumField",
@@ -450,18 +475,21 @@ Cell[BoxData[
  FormBox[
   RowBox[{"QuantumField", "(", 
    RowBox[{
-    SuperscriptBox[
-     RowBox[{"PartialD", "[", "\[CapitalDelta]", "]"}], "m"], ",", "A", ",", 
+    SubsuperscriptBox["\[PartialD]", 
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], "m"], ",", "A", ",", 
     FormBox["\[CapitalDelta]",
      TraditionalForm], ",", 
     FormBox["a",
      TraditionalForm]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{248, 18},
+ ImageSize->{185, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[12]=",
- CellID->2013038040]
+ CellID->2017233085]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -482,7 +510,7 @@ Cell[BoxData[
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuantumField",
  CellLabel->"Out[13]=",
- CellID->1042365445]
+ CellID->1933229370]
 }, Open  ]]
 }, Open  ]],
 
@@ -512,10 +540,10 @@ Cell[TextData[{
   ButtonNote->"FeynRule"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["PartialD",
+ StyleBox[ButtonBox["FCPartialD",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/PartialD",
-  ButtonNote->"PartialD"],
+  ButtonData->"paclet:FeynCalc/ref/FCPartialD",
+  ButtonNote->"FCPartialD"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["ExpandPartialD",
@@ -546,7 +574,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 5, 5.473768}", 
+   "built" -> "{2016, 1, 2, 15, 15, 51.339863}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -560,7 +588,7 @@ field.", "synonyms" -> {}, "title" -> "QuantumField", "titlemodifier" -> "",
     "windowtitle" -> "QuantumField", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/QuantumField"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -569,7 +597,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -578,115 +606,115 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3592, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3592, 99, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1020810829]},
+   CellID->252612378]},
  "QuantumField"->{
-  Cell[4204, 126, 91, 2, 31, "Text",
+  Cell[4203, 126, 91, 2, 31, "Text",
    CellTags->"QuantumField",
    CellID->173552947],
-  Cell[4320, 132, 136, 4, 27, "Input",
+  Cell[4319, 132, 136, 4, 27, "Input",
    CellTags->"QuantumField",
    CellID->1327076480],
-  Cell[4459, 138, 214, 7, 36, "Output",
+  Cell[4458, 138, 214, 7, 36, "Output",
    CellTags->"QuantumField",
-   CellID->2033411608],
-  Cell[4710, 150, 149, 4, 27, "Input",
+   CellID->2038740597],
+  Cell[4709, 150, 149, 4, 27, "Input",
    CellTags->"QuantumField",
    CellID->1661786669],
-  Cell[4862, 156, 241, 8, 36, "Output",
+  Cell[4861, 156, 242, 8, 36, "Output",
    CellTags->"QuantumField",
-   CellID->795101918],
+   CellID->2083488651],
   Cell[5140, 169, 144, 4, 27, "Input",
    CellTags->"QuantumField",
    CellID->377089919],
-  Cell[5287, 175, 218, 7, 36, "Output",
+  Cell[5287, 175, 219, 7, 36, "Output",
    CellTags->"QuantumField",
-   CellID->123729835],
-  Cell[5520, 185, 101, 2, 31, "Text",
+   CellID->1186167697],
+  Cell[5521, 185, 101, 2, 31, "Text",
    CellTags->"QuantumField",
    CellID->1204193660],
-  Cell[5646, 191, 186, 6, 27, "Input",
+  Cell[5647, 191, 186, 6, 27, "Input",
    CellTags->"QuantumField",
    CellID->776002298],
-  Cell[5835, 199, 307, 12, 39, "Output",
+  Cell[5836, 199, 307, 12, 39, "Output",
    CellTags->"QuantumField",
-   CellID->979513178],
-  Cell[6157, 214, 115, 2, 32, "Text",
+   CellID->188307989],
+  Cell[6158, 214, 115, 2, 32, "Text",
    CellTags->"QuantumField",
    CellID->1363299018],
-  Cell[6297, 220, 229, 7, 27, "Input",
+  Cell[6298, 220, 229, 7, 27, "Input",
    CellTags->"QuantumField",
    CellID->674687696],
-  Cell[6529, 229, 424, 18, 40, "Output",
+  Cell[6530, 229, 423, 18, 40, "Output",
    CellTags->"QuantumField",
-   CellID->1552535862],
+   CellID->568800193],
   Cell[6990, 252, 132, 4, 27, "Input",
    CellTags->"QuantumField",
    CellID->1682950318],
-  Cell[7125, 258, 360, 10, 36, "Output",
+  Cell[7125, 258, 360, 10, 49, "Output",
    CellTags->"QuantumField",
-   CellID->939938731],
-  Cell[7500, 271, 378, 14, 36, "Text",
+   CellID->232650919],
+  Cell[7500, 271, 379, 14, 36, "Text",
    CellTags->"QuantumField",
    CellID->508873038],
-  Cell[7903, 289, 223, 7, 27, "Input",
+  Cell[7904, 289, 223, 7, 27, "Input",
    CellTags->"QuantumField",
    CellID->503486981],
-  Cell[8129, 298, 434, 18, 38, "Output",
+  Cell[8130, 298, 434, 18, 38, "Output",
    CellTags->"QuantumField",
-   CellID->1467175230],
-  Cell[8578, 319, 205, 5, 52, "Text",
+   CellID->1323752020],
+  Cell[8579, 319, 205, 5, 52, "Text",
    CellTags->"QuantumField",
    CellID->708047350],
-  Cell[8808, 328, 261, 8, 27, "Input",
+  Cell[8809, 328, 261, 8, 27, "Input",
    CellTags->"QuantumField",
    CellID->511543671],
-  Cell[9072, 338, 350, 10, 36, "Output",
+  Cell[9073, 338, 350, 10, 49, "Output",
    CellTags->"QuantumField",
-   CellID->323215161],
-  Cell[9437, 351, 108, 2, 31, "Text",
+   CellID->517587533],
+  Cell[9438, 351, 108, 2, 31, "Text",
    CellTags->"QuantumField",
    CellID->162225984],
-  Cell[9570, 357, 236, 7, 27, "Input",
+  Cell[9571, 357, 238, 7, 27, "Input",
    CellTags->"QuantumField",
    CellID->737122763],
-  Cell[9809, 366, 369, 12, 36, "Output",
+  Cell[9812, 366, 495, 20, 40, "Output",
    CellTags->"QuantumField",
-   CellID->1388568803],
-  Cell[10215, 383, 203, 6, 27, "Input",
+   CellID->407944783],
+  Cell[10344, 391, 205, 6, 27, "Input",
    CellTags->"QuantumField",
    CellID->1485590656],
-  Cell[10421, 391, 332, 11, 36, "Output",
+  Cell[10552, 399, 433, 16, 38, "Output",
    CellTags->"QuantumField",
-   CellID->273811257],
-  Cell[10790, 407, 278, 8, 27, "Input",
+   CellID->57451832],
+  Cell[11022, 420, 280, 8, 27, "Input",
    CellTags->"QuantumField",
    CellID->1178067453],
-  Cell[11071, 417, 435, 14, 36, "Output",
+  Cell[11305, 430, 624, 26, 38, "Output",
    CellTags->"QuantumField",
-   CellID->489492377],
-  Cell[11543, 436, 310, 10, 27, "Input",
+   CellID->1175747409],
+  Cell[11966, 461, 312, 10, 27, "Input",
    CellTags->"QuantumField",
    CellID->1296308546],
-  Cell[11856, 448, 463, 15, 39, "Output",
+  Cell[12281, 473, 521, 18, 39, "Output",
    CellTags->"QuantumField",
-   CellID->2013038040],
-  Cell[12356, 468, 251, 7, 27, "Input",
+   CellID->2017233085],
+  Cell[12839, 496, 251, 7, 27, "Input",
    CellTags->"QuantumField",
    CellID->1498512634],
-  Cell[12610, 477, 218, 7, 36, "Output",
+  Cell[13093, 505, 218, 7, 36, "Output",
    CellTags->"QuantumField",
-   CellID->1042365445],
-  Cell[13196, 507, 567, 21, 32, "Text",
+   CellID->1933229370],
+  Cell[13679, 535, 573, 21, 32, "Text",
    CellTags->"QuantumField",
    CellID->231016079]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15843, 579},
- {"QuantumField", 15982, 583}
+ {"PrimaryExamplesSection", 16343, 607},
+ {"QuantumField", 16481, 611}
  }
 *)
 (*NotebookFileOutline
@@ -698,145 +726,145 @@ Cell[2849, 75, 55, 1, 42, "ObjectName",
 Cell[2907, 78, 660, 17, 114, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3592, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3592, 99, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1020810829],
+ CellID->252612378],
 Cell[CellGroupData[{
-Cell[4005, 118, 196, 6, 25, "ExampleSection",
- CellID->1871187223],
-Cell[4204, 126, 91, 2, 31, "Text",
+Cell[4004, 118, 196, 6, 25, "ExampleSection",
+ CellID->1076353105],
+Cell[4203, 126, 91, 2, 31, "Text",
  CellTags->"QuantumField",
  CellID->173552947],
 Cell[CellGroupData[{
-Cell[4320, 132, 136, 4, 27, "Input",
+Cell[4319, 132, 136, 4, 27, "Input",
  CellTags->"QuantumField",
  CellID->1327076480],
-Cell[4459, 138, 214, 7, 36, "Output",
+Cell[4458, 138, 214, 7, 36, "Output",
  CellTags->"QuantumField",
- CellID->2033411608]
+ CellID->2038740597]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4710, 150, 149, 4, 27, "Input",
+Cell[4709, 150, 149, 4, 27, "Input",
  CellTags->"QuantumField",
  CellID->1661786669],
-Cell[4862, 156, 241, 8, 36, "Output",
+Cell[4861, 156, 242, 8, 36, "Output",
  CellTags->"QuantumField",
- CellID->795101918]
+ CellID->2083488651]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5140, 169, 144, 4, 27, "Input",
  CellTags->"QuantumField",
  CellID->377089919],
-Cell[5287, 175, 218, 7, 36, "Output",
+Cell[5287, 175, 219, 7, 36, "Output",
  CellTags->"QuantumField",
- CellID->123729835]
+ CellID->1186167697]
 }, Open  ]],
-Cell[5520, 185, 101, 2, 31, "Text",
+Cell[5521, 185, 101, 2, 31, "Text",
  CellTags->"QuantumField",
  CellID->1204193660],
 Cell[CellGroupData[{
-Cell[5646, 191, 186, 6, 27, "Input",
+Cell[5647, 191, 186, 6, 27, "Input",
  CellTags->"QuantumField",
  CellID->776002298],
-Cell[5835, 199, 307, 12, 39, "Output",
+Cell[5836, 199, 307, 12, 39, "Output",
  CellTags->"QuantumField",
- CellID->979513178]
+ CellID->188307989]
 }, Open  ]],
-Cell[6157, 214, 115, 2, 32, "Text",
+Cell[6158, 214, 115, 2, 32, "Text",
  CellTags->"QuantumField",
  CellID->1363299018],
 Cell[CellGroupData[{
-Cell[6297, 220, 229, 7, 27, "Input",
+Cell[6298, 220, 229, 7, 27, "Input",
  CellTags->"QuantumField",
  CellID->674687696],
-Cell[6529, 229, 424, 18, 40, "Output",
+Cell[6530, 229, 423, 18, 40, "Output",
  CellTags->"QuantumField",
- CellID->1552535862]
+ CellID->568800193]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6990, 252, 132, 4, 27, "Input",
  CellTags->"QuantumField",
  CellID->1682950318],
-Cell[7125, 258, 360, 10, 36, "Output",
+Cell[7125, 258, 360, 10, 49, "Output",
  CellTags->"QuantumField",
- CellID->939938731]
+ CellID->232650919]
 }, Open  ]],
-Cell[7500, 271, 378, 14, 36, "Text",
+Cell[7500, 271, 379, 14, 36, "Text",
  CellTags->"QuantumField",
  CellID->508873038],
 Cell[CellGroupData[{
-Cell[7903, 289, 223, 7, 27, "Input",
+Cell[7904, 289, 223, 7, 27, "Input",
  CellTags->"QuantumField",
  CellID->503486981],
-Cell[8129, 298, 434, 18, 38, "Output",
+Cell[8130, 298, 434, 18, 38, "Output",
  CellTags->"QuantumField",
- CellID->1467175230]
+ CellID->1323752020]
 }, Open  ]],
-Cell[8578, 319, 205, 5, 52, "Text",
+Cell[8579, 319, 205, 5, 52, "Text",
  CellTags->"QuantumField",
  CellID->708047350],
 Cell[CellGroupData[{
-Cell[8808, 328, 261, 8, 27, "Input",
+Cell[8809, 328, 261, 8, 27, "Input",
  CellTags->"QuantumField",
  CellID->511543671],
-Cell[9072, 338, 350, 10, 36, "Output",
+Cell[9073, 338, 350, 10, 49, "Output",
  CellTags->"QuantumField",
- CellID->323215161]
+ CellID->517587533]
 }, Open  ]],
-Cell[9437, 351, 108, 2, 31, "Text",
+Cell[9438, 351, 108, 2, 31, "Text",
  CellTags->"QuantumField",
  CellID->162225984],
 Cell[CellGroupData[{
-Cell[9570, 357, 236, 7, 27, "Input",
+Cell[9571, 357, 238, 7, 27, "Input",
  CellTags->"QuantumField",
  CellID->737122763],
-Cell[9809, 366, 369, 12, 36, "Output",
+Cell[9812, 366, 495, 20, 40, "Output",
  CellTags->"QuantumField",
- CellID->1388568803]
+ CellID->407944783]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10215, 383, 203, 6, 27, "Input",
+Cell[10344, 391, 205, 6, 27, "Input",
  CellTags->"QuantumField",
  CellID->1485590656],
-Cell[10421, 391, 332, 11, 36, "Output",
+Cell[10552, 399, 433, 16, 38, "Output",
  CellTags->"QuantumField",
- CellID->273811257]
+ CellID->57451832]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10790, 407, 278, 8, 27, "Input",
+Cell[11022, 420, 280, 8, 27, "Input",
  CellTags->"QuantumField",
  CellID->1178067453],
-Cell[11071, 417, 435, 14, 36, "Output",
+Cell[11305, 430, 624, 26, 38, "Output",
  CellTags->"QuantumField",
- CellID->489492377]
+ CellID->1175747409]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11543, 436, 310, 10, 27, "Input",
+Cell[11966, 461, 312, 10, 27, "Input",
  CellTags->"QuantumField",
  CellID->1296308546],
-Cell[11856, 448, 463, 15, 39, "Output",
+Cell[12281, 473, 521, 18, 39, "Output",
  CellTags->"QuantumField",
- CellID->2013038040]
+ CellID->2017233085]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12356, 468, 251, 7, 27, "Input",
+Cell[12839, 496, 251, 7, 27, "Input",
  CellTags->"QuantumField",
  CellID->1498512634],
-Cell[12610, 477, 218, 7, 36, "Output",
+Cell[13093, 505, 218, 7, 36, "Output",
  CellTags->"QuantumField",
- CellID->1042365445]
+ CellID->1933229370]
 }, Open  ]]
 }, Open  ]],
-Cell[12855, 488, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13338, 516, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12923, 493, 270, 12, 31, "SeeAlsoSection",
+Cell[13406, 521, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13196, 507, 567, 21, 32, "Text",
+Cell[13679, 535, 573, 21, 32, "Text",
  CellTags->"QuantumField",
  CellID->231016079]
 }, Open  ]],
-Cell[13778, 531, 23, 0, 42, "FooterCell"]
+Cell[14267, 559, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12535,        447]
-NotebookOptionsPosition[      7930,        300]
-NotebookOutlinePosition[     11082,        391]
-CellTagsIndexPosition[     10967,        385]
+NotebookDataLength[     12542,        447]
+NotebookOptionsPosition[      7929,        300]
+NotebookOutlinePosition[     11090,        391]
+CellTagsIndexPosition[     10975,        385]
 WindowTitle->$PairBrackets
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PairBrackets.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166535], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$172907], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$PairBrackets", ".html"]], None}]}]},
@@ -107,7 +107,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->997524077],
+ CellID->93449681],
 
 Cell[TextData[{
  "Basic Examples",
@@ -115,7 +115,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->365249936],
+ CellID->183315870],
 
 Cell[CellGroupData[{
 
@@ -313,7 +313,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 9, 34.148879}", 
+   "built" -> "{2016, 1, 2, 15, 20, 32.604463}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -325,7 +325,7 @@ products in the notebook interface.", "synonyms" -> {}, "title" ->
     "type" -> "Symbol", "uri" -> "FeynCalc/ref/$PairBrackets"}, 
   "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -334,7 +334,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -343,49 +343,49 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3343, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3343, 94, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->997524077]},
+   CellID->93449681]},
  "$PairBrackets"->{
-  Cell[3953, 121, 82, 2, 35, "Subsubsection",
+  Cell[3952, 121, 82, 2, 35, "Subsubsection",
    CellTags->"$PairBrackets",
    CellID->1808422763],
-  Cell[4060, 127, 111, 3, 27, "Input",
+  Cell[4059, 127, 111, 3, 27, "Input",
    CellTags->"$PairBrackets",
    CellID->1003413520],
-  Cell[4174, 132, 218, 7, 36, "Output",
+  Cell[4173, 132, 218, 7, 36, "Output",
    CellTags->"$PairBrackets",
    CellID->639679557],
-  Cell[4429, 144, 221, 8, 27, "Input",
+  Cell[4428, 144, 221, 8, 27, "Input",
    CellTags->"$PairBrackets",
    CellID->768283968],
-  Cell[4653, 154, 975, 40, 39, "Output",
+  Cell[4652, 154, 975, 40, 39, "Output",
    CellTags->"$PairBrackets",
    CellID->150154476],
-  Cell[5665, 199, 136, 4, 27, "Input",
+  Cell[5664, 199, 136, 4, 27, "Input",
    CellTags->"$PairBrackets",
    CellID->2050781191],
-  Cell[5804, 205, 218, 7, 36, "Output",
+  Cell[5803, 205, 218, 7, 36, "Output",
    CellTags->"$PairBrackets",
    CellID->1935357180],
-  Cell[6059, 217, 221, 8, 27, "Input",
+  Cell[6058, 217, 221, 8, 27, "Input",
    CellTags->"$PairBrackets",
    CellID->759242831],
-  Cell[6283, 227, 1188, 48, 39, "Output",
+  Cell[6282, 227, 1188, 48, 39, "Output",
    CellTags->"$PairBrackets",
    CellID->251865328],
-  Cell[7508, 280, 137, 4, 27, "Input",
+  Cell[7507, 280, 137, 4, 27, "Input",
    CellTags->"$PairBrackets",
    CellID->1858587379],
-  Cell[7648, 286, 216, 7, 36, "Output",
+  Cell[7647, 286, 216, 7, 36, "Output",
    CellTags->"$PairBrackets",
    CellID->8691638]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9774, 344},
- {"$PairBrackets", 9913, 348}
+ {"PrimaryExamplesSection", 9783, 344},
+ {"$PairBrackets", 9921, 348}
  }
 *)
 (*NotebookFileOutline
@@ -397,58 +397,58 @@ Cell[2854, 75, 56, 1, 42, "ObjectName",
 Cell[2913, 78, 405, 12, 82, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3343, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3343, 94, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->997524077],
-Cell[3733, 111, 195, 6, 25, "ExampleSection",
- CellID->365249936],
+ CellID->93449681],
+Cell[3732, 111, 195, 6, 25, "ExampleSection",
+ CellID->183315870],
 Cell[CellGroupData[{
-Cell[3953, 121, 82, 2, 35, "Subsubsection",
+Cell[3952, 121, 82, 2, 35, "Subsubsection",
  CellTags->"$PairBrackets",
  CellID->1808422763],
 Cell[CellGroupData[{
-Cell[4060, 127, 111, 3, 27, "Input",
+Cell[4059, 127, 111, 3, 27, "Input",
  CellTags->"$PairBrackets",
  CellID->1003413520],
-Cell[4174, 132, 218, 7, 36, "Output",
+Cell[4173, 132, 218, 7, 36, "Output",
  CellTags->"$PairBrackets",
  CellID->639679557]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4429, 144, 221, 8, 27, "Input",
+Cell[4428, 144, 221, 8, 27, "Input",
  CellTags->"$PairBrackets",
  CellID->768283968],
-Cell[4653, 154, 975, 40, 39, "Output",
+Cell[4652, 154, 975, 40, 39, "Output",
  CellTags->"$PairBrackets",
  CellID->150154476]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5665, 199, 136, 4, 27, "Input",
+Cell[5664, 199, 136, 4, 27, "Input",
  CellTags->"$PairBrackets",
  CellID->2050781191],
-Cell[5804, 205, 218, 7, 36, "Output",
+Cell[5803, 205, 218, 7, 36, "Output",
  CellTags->"$PairBrackets",
  CellID->1935357180]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6059, 217, 221, 8, 27, "Input",
+Cell[6058, 217, 221, 8, 27, "Input",
  CellTags->"$PairBrackets",
  CellID->759242831],
-Cell[6283, 227, 1188, 48, 39, "Output",
+Cell[6282, 227, 1188, 48, 39, "Output",
  CellTags->"$PairBrackets",
  CellID->251865328]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7508, 280, 137, 4, 27, "Input",
+Cell[7507, 280, 137, 4, 27, "Input",
  CellTags->"$PairBrackets",
  CellID->1858587379],
-Cell[7648, 286, 216, 7, 36, "Output",
+Cell[7647, 286, 216, 7, 36, "Output",
  CellTags->"$PairBrackets",
  CellID->8691638]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7903, 298, 23, 0, 42, "FooterCell"]
+Cell[7902, 298, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

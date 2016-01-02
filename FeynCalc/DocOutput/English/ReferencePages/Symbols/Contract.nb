@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38010,       1520]
+NotebookDataLength[     38018,       1520]
 NotebookOptionsPosition[     26909,       1137]
-NotebookOutlinePosition[     33199,       1330]
-CellTagsIndexPosition[     33085,       1324]
+NotebookOutlinePosition[     33207,       1330]
+CellTagsIndexPosition[     33093,       1324]
 WindowTitle->Contract
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$28379], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$30016], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Contract", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1021909694],
+ CellID->695145631],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->818102184],
+ CellID->1321678611],
 
 Cell[CellGroupData[{
 
@@ -1150,7 +1150,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 57, 8.569187}", 
+   "built" -> "{2016, 1, 2, 15, 7, 31.954977}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1165,7 +1165,7 @@ exp2 may be larger products of sums of metric tensors and 4-vectors. ",
     "windowtitle" -> "Contract", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Contract"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1174,7 +1174,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1183,9 +1183,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3601, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3601, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1021909694]},
+   CellID->695145631]},
  "Contract"->{
   Cell[4234, 127, 133, 4, 27, "Input",
    CellTags->"Contract",
@@ -1323,8 +1323,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 28996, 1184},
- {"Contract", 29131, 1188}
+ {"PrimaryExamplesSection", 29005, 1184},
+ {"Contract", 29139, 1188}
  }
 *)
 (*NotebookFileOutline
@@ -1336,12 +1336,12 @@ Cell[2827, 75, 51, 1, 42, "ObjectName",
 Cell[2881, 78, 695, 16, 130, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3601, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3601, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1021909694],
+ CellID->695145631],
 Cell[CellGroupData[{
-Cell[4014, 117, 195, 6, 25, "ExampleSection",
- CellID->818102184],
+Cell[4013, 117, 196, 6, 25, "ExampleSection",
+ CellID->1321678611],
 Cell[CellGroupData[{
 Cell[4234, 127, 133, 4, 27, "Input",
  CellTags->"Contract",

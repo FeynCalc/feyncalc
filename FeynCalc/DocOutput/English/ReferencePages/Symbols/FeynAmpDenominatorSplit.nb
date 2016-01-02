@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16047,        547]
-NotebookOptionsPosition[     10187,        373]
-NotebookOutlinePosition[     14007,        475]
-CellTagsIndexPosition[     13880,        469]
+NotebookDataLength[     16051,        547]
+NotebookOptionsPosition[     10185,        373]
+NotebookOutlinePosition[     14013,        475]
+CellTagsIndexPosition[     13886,        469]
 WindowTitle->FeynAmpDenominatorSplit
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynAmpDenominatorSplit.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$58728], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$62818], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynAmpDenominatorSplit", ".html"]], None}]}]},
@@ -111,7 +111,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1132549274],
+ CellID->211802266],
 
 Cell[CellGroupData[{
 
@@ -121,7 +121,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1873592169],
+ CellID->718535142],
 
 Cell[CellGroupData[{
 
@@ -386,7 +386,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 22, 59, 46.139704}", 
+   "built" -> "{2016, 1, 2, 15, 10, 31.763507}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -400,7 +400,7 @@ q1.", "synonyms" -> {}, "title" -> "FeynAmpDenominatorSplit", "titlemodifier" ->
     "", "windowtitle" -> "FeynAmpDenominatorSplit", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/FeynAmpDenominatorSplit"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -409,7 +409,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -418,58 +418,58 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3623, 98, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3623, 98, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1132549274]},
+   CellID->211802266]},
  "FeynAmpDenominatorSplit"->{
-  Cell[4257, 127, 326, 10, 27, "Input",
+  Cell[4255, 127, 326, 10, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->403484877],
-  Cell[4586, 139, 923, 36, 68, "Output",
+  Cell[4584, 139, 923, 36, 68, "Output",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->305665918],
-  Cell[5546, 180, 134, 4, 27, "Input",
+  Cell[5544, 180, 134, 4, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->388100450],
-  Cell[5683, 186, 242, 7, 36, "Output",
+  Cell[5681, 186, 242, 7, 36, "Output",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->818053302],
-  Cell[5962, 198, 157, 4, 27, "Input",
+  Cell[5960, 198, 157, 4, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->922049966],
-  Cell[6122, 204, 923, 36, 68, "Output",
+  Cell[6120, 204, 923, 36, 68, "Output",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->810343253],
-  Cell[7082, 245, 169, 5, 27, "Input",
+  Cell[7080, 245, 169, 5, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->1536194379],
-  Cell[7254, 252, 532, 17, 36, "Output",
+  Cell[7252, 252, 532, 17, 49, "Output",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->1693985591],
-  Cell[7823, 274, 249, 8, 27, "Input",
+  Cell[7821, 274, 249, 8, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->1257504819],
-  Cell[8075, 284, 500, 16, 36, "Output",
+  Cell[8073, 284, 500, 16, 49, "Output",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->863883694],
-  Cell[8612, 305, 225, 7, 27, "Input",
+  Cell[8610, 305, 225, 7, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->1174376888],
-  Cell[8840, 314, 501, 16, 36, "Output",
+  Cell[8838, 314, 501, 16, 49, "Output",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->1033440679],
-  Cell[9356, 333, 139, 4, 27, "Input",
+  Cell[9354, 333, 139, 4, 27, "Input",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->616885004],
-  Cell[9851, 359, 294, 9, 32, "Text",
+  Cell[9849, 359, 294, 9, 32, "Text",
    CellTags->"FeynAmpDenominatorSplit",
    CellID->1583918878]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12261, 419},
- {"FeynAmpDenominatorSplit", 12411, 423}
+ {"PrimaryExamplesSection", 12268, 419},
+ {"FeynAmpDenominatorSplit", 12417, 423}
  }
 *)
 (*NotebookFileOutline
@@ -481,74 +481,74 @@ Cell[2903, 75, 66, 1, 42, "ObjectName",
 Cell[2972, 78, 626, 16, 114, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3623, 98, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3623, 98, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1132549274],
+ CellID->211802266],
 Cell[CellGroupData[{
-Cell[4036, 117, 196, 6, 25, "ExampleSection",
- CellID->1873592169],
+Cell[4035, 117, 195, 6, 25, "ExampleSection",
+ CellID->718535142],
 Cell[CellGroupData[{
-Cell[4257, 127, 326, 10, 27, "Input",
+Cell[4255, 127, 326, 10, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->403484877],
-Cell[4586, 139, 923, 36, 68, "Output",
+Cell[4584, 139, 923, 36, 68, "Output",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->305665918]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5546, 180, 134, 4, 27, "Input",
+Cell[5544, 180, 134, 4, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->388100450],
-Cell[5683, 186, 242, 7, 36, "Output",
+Cell[5681, 186, 242, 7, 36, "Output",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->818053302]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5962, 198, 157, 4, 27, "Input",
+Cell[5960, 198, 157, 4, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->922049966],
-Cell[6122, 204, 923, 36, 68, "Output",
+Cell[6120, 204, 923, 36, 68, "Output",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->810343253]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7082, 245, 169, 5, 27, "Input",
+Cell[7080, 245, 169, 5, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->1536194379],
-Cell[7254, 252, 532, 17, 36, "Output",
+Cell[7252, 252, 532, 17, 49, "Output",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->1693985591]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7823, 274, 249, 8, 27, "Input",
+Cell[7821, 274, 249, 8, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->1257504819],
-Cell[8075, 284, 500, 16, 36, "Output",
+Cell[8073, 284, 500, 16, 49, "Output",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->863883694]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8612, 305, 225, 7, 27, "Input",
+Cell[8610, 305, 225, 7, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->1174376888],
-Cell[8840, 314, 501, 16, 36, "Output",
+Cell[8838, 314, 501, 16, 49, "Output",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->1033440679]
 }, Open  ]],
-Cell[9356, 333, 139, 4, 27, "Input",
+Cell[9354, 333, 139, 4, 27, "Input",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->616885004]
 }, Open  ]],
-Cell[9510, 340, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9508, 340, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9578, 345, 270, 12, 31, "SeeAlsoSection",
+Cell[9576, 345, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9851, 359, 294, 9, 32, "Text",
+Cell[9849, 359, 294, 9, 32, "Text",
  CellTags->"FeynAmpDenominatorSplit",
  CellID->1583918878]
 }, Open  ]],
-Cell[10160, 371, 23, 0, 42, "FooterCell"]
+Cell[10158, 371, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

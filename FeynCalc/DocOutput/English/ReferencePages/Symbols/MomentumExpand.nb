@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17530,        649]
+NotebookDataLength[     17539,        649]
 NotebookOptionsPosition[     11558,        455]
-NotebookOutlinePosition[     15284,        564]
-CellTagsIndexPosition[     15166,        558]
+NotebookOutlinePosition[     15294,        564]
+CellTagsIndexPosition[     15176,        558]
 WindowTitle->MomentumExpand
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ MomentumExpand.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$97389], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$102763], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/MomentumExpand", ".html"]], None}]}]},
@@ -108,7 +108,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->622039805],
+ CellID->976758802],
 
 Cell[CellGroupData[{
 
@@ -118,7 +118,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1272697354],
+ CellID->293984952],
 
 Cell[CellGroupData[{
 
@@ -468,7 +468,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 3, 12.395266}", 
+   "built" -> "{2016, 1, 2, 15, 14, 13.573887}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -480,7 +480,7 @@ TaggingRules->{
     "Symbol", "uri" -> "FeynCalc/ref/MomentumExpand"}, "SearchTextTranslated" -> 
   ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -489,7 +489,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -498,14 +498,14 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3370, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3371, 95, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->622039805]},
+   CellID->976758802]},
  "MomentumExpand"->{
   Cell[4003, 124, 236, 7, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->2119019213],
-  Cell[4242, 133, 295, 9, 36, "Output",
+  Cell[4242, 133, 295, 9, 49, "Output",
    CellTags->"MomentumExpand",
    CellID->1133313171],
   Cell[4574, 147, 185, 6, 27, "Input",
@@ -517,7 +517,7 @@ CellTagsIndex->{
   Cell[5471, 188, 133, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->422127778],
-  Cell[5607, 194, 352, 11, 36, "Output",
+  Cell[5607, 194, 352, 11, 49, "Output",
    CellTags->"MomentumExpand",
    CellID->581832414],
   Cell[5996, 210, 229, 7, 27, "Input",
@@ -529,7 +529,7 @@ CellTagsIndex->{
   Cell[6938, 252, 134, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->1059717092],
-  Cell[7075, 258, 390, 12, 36, "Output",
+  Cell[7075, 258, 390, 12, 49, "Output",
    CellTags->"MomentumExpand",
    CellID->1334904373],
   Cell[7502, 275, 253, 8, 27, "Input",
@@ -541,7 +541,7 @@ CellTagsIndex->{
   Cell[8657, 326, 133, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->277317176],
-  Cell[8793, 332, 473, 15, 36, "Output",
+  Cell[8793, 332, 473, 15, 49, "Output",
    CellTags->"MomentumExpand",
    CellID->1535384153],
   Cell[9303, 352, 129, 4, 27, "Input",
@@ -557,30 +557,30 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13399, 499},
- {"MomentumExpand", 13539, 503}
+ {"PrimaryExamplesSection", 13409, 499},
+ {"MomentumExpand", 13549, 503}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2269, 52, 51, "AnchorBarGrid",
+Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
  CellID->1],
-Cell[2858, 75, 57, 1, 42, "ObjectName",
+Cell[2859, 75, 57, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2918, 78, 427, 13, 83, "Usage",
+Cell[2919, 78, 427, 13, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3370, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3371, 95, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->622039805],
+ CellID->976758802],
 Cell[CellGroupData[{
-Cell[3782, 114, 196, 6, 25, "ExampleSection",
- CellID->1272697354],
+Cell[3783, 114, 195, 6, 25, "ExampleSection",
+ CellID->293984952],
 Cell[CellGroupData[{
 Cell[4003, 124, 236, 7, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->2119019213],
-Cell[4242, 133, 295, 9, 36, "Output",
+Cell[4242, 133, 295, 9, 49, "Output",
  CellTags->"MomentumExpand",
  CellID->1133313171]
 }, Open  ]],
@@ -596,7 +596,7 @@ Cell[CellGroupData[{
 Cell[5471, 188, 133, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->422127778],
-Cell[5607, 194, 352, 11, 36, "Output",
+Cell[5607, 194, 352, 11, 49, "Output",
  CellTags->"MomentumExpand",
  CellID->581832414]
 }, Open  ]],
@@ -612,7 +612,7 @@ Cell[CellGroupData[{
 Cell[6938, 252, 134, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->1059717092],
-Cell[7075, 258, 390, 12, 36, "Output",
+Cell[7075, 258, 390, 12, 49, "Output",
  CellTags->"MomentumExpand",
  CellID->1334904373]
 }, Open  ]],
@@ -628,7 +628,7 @@ Cell[CellGroupData[{
 Cell[8657, 326, 133, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->277317176],
-Cell[8793, 332, 473, 15, 36, "Output",
+Cell[8793, 332, 473, 15, 49, "Output",
  CellTags->"MomentumExpand",
  CellID->1535384153]
 }, Open  ]],

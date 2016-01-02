@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6555,        209]
-NotebookOptionsPosition[      4462,        145]
-NotebookOutlinePosition[      6300,        198]
-CellTagsIndexPosition[      6236,        193]
+NotebookDataLength[      6566,        209]
+NotebookOptionsPosition[      4463,        145]
+NotebookOutlinePosition[      6311,        198]
+CellTagsIndexPosition[      6247,        193]
 WindowTitle->Nf
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$99135], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$104509], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Nf", 
             ".html"]], None}]}]},
@@ -158,7 +158,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 3, 21.795812}", 
+   "built" -> "{2016, 1, 2, 15, 14, 21.139838}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -167,7 +167,7 @@ TaggingRules->{
     "synonyms" -> {}, "title" -> "Nf", "titlemodifier" -> "", "windowtitle" -> 
     "Nf", "type" -> "Symbol", "uri" -> "FeynCalc/ref/Nf"}},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -176,7 +176,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -185,32 +185,32 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Nf"->{
-  Cell[3491, 107, 929, 33, 70, "Text",
+  Cell[3492, 107, 929, 33, 70, "Text",
    CellTags->"Nf",
    CellID->822571614]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Nf", 6131, 186}
+ {"Nf", 6142, 186}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[574, 21, 2233, 52, 70, "AnchorBarGrid",
+Cell[574, 21, 2234, 52, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2810, 75, 45, 1, 70, "ObjectName",
+Cell[2811, 75, 45, 1, 70, "ObjectName",
  CellID->1224892054],
-Cell[2858, 78, 335, 11, 70, "Usage",
+Cell[2859, 78, 335, 11, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3218, 93, 270, 12, 70, "SeeAlsoSection",
+Cell[3219, 93, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[3491, 107, 929, 33, 70, "Text",
+Cell[3492, 107, 929, 33, 70, "Text",
  CellTags->"Nf",
  CellID->822571614]
 }, Open  ]],
-Cell[4435, 143, 23, 0, 70, "FooterCell"]
+Cell[4436, 143, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10568,        383]
-NotebookOptionsPosition[      6442,        246]
-NotebookOutlinePosition[      9254,        330]
-CellTagsIndexPosition[      9148,        324]
+NotebookDataLength[     10573,        383]
+NotebookOptionsPosition[      6441,        246]
+NotebookOutlinePosition[      9261,        330]
+CellTagsIndexPosition[      9155,        324]
 WindowTitle->Map2
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Cell[BoxData[GridBox[{
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$94997], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100371], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Map2", 
             ".html"]], None}]}]},
@@ -109,7 +109,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->2004513721],
+ CellID->315675582],
 
 Cell[CellGroupData[{
 
@@ -119,7 +119,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1034110358],
+ CellID->927735443],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 2, 59.903070}", 
+   "built" -> "{2016, 1, 2, 15, 14, 3.348428}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -270,7 +270,7 @@ exp] gives f[exp].", "synonyms" -> {}, "title" -> "Map2", "titlemodifier" ->
     "", "windowtitle" -> "Map2", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Map2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -279,7 +279,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -288,103 +288,103 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3335, 96, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3336, 96, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2004513721]},
+   CellID->315675582]},
  "Map2"->{
-  Cell[3969, 125, 166, 6, 27, "Input",
+  Cell[3968, 125, 166, 6, 27, "Input",
    CellTags->"Map2",
    CellID->194230717],
-  Cell[4138, 133, 306, 11, 36, "Output",
+  Cell[4137, 133, 306, 11, 36, "Output",
    CellTags->"Map2",
    CellID->979511779],
-  Cell[4481, 149, 143, 5, 27, "Input",
+  Cell[4480, 149, 143, 5, 27, "Input",
    CellTags->"Map2",
    CellID->1407522381],
-  Cell[4627, 156, 234, 8, 36, "Output",
+  Cell[4626, 156, 234, 8, 36, "Output",
    CellTags->"Map2",
    CellID->1491769424],
-  Cell[4898, 169, 202, 7, 27, "Input",
+  Cell[4897, 169, 202, 7, 27, "Input",
    CellTags->"Map2",
    CellID->1867340703],
-  Cell[5103, 178, 296, 11, 36, "Output",
+  Cell[5102, 178, 296, 11, 36, "Output",
    CellTags->"Map2",
    CellID->1614084211],
-  Cell[5436, 194, 142, 5, 27, "Input",
+  Cell[5435, 194, 142, 5, 27, "Input",
    CellTags->"Map2",
    CellID->722460655],
-  Cell[5581, 201, 234, 8, 36, "Output",
+  Cell[5580, 201, 234, 8, 36, "Output",
    CellTags->"Map2",
    CellID->1998194589],
-  Cell[6183, 232, 217, 9, 31, "Text",
+  Cell[6182, 232, 217, 9, 31, "Text",
    CellTags->"Map2",
    CellID->435233862]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8236, 289},
- {"Map2", 8367, 293}
+ {"PrimaryExamplesSection", 8244, 289},
+ {"Map2", 8374, 293}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[576, 21, 2228, 52, 51, "AnchorBarGrid",
+Cell[576, 21, 2229, 52, 51, "AnchorBarGrid",
  CellID->1],
-Cell[2807, 75, 47, 1, 42, "ObjectName",
+Cell[2808, 75, 47, 1, 42, "ObjectName",
  CellID->1224892054],
-Cell[2857, 78, 453, 14, 83, "Usage",
+Cell[2858, 78, 453, 14, 83, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3335, 96, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3336, 96, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->2004513721],
+ CellID->315675582],
 Cell[CellGroupData[{
-Cell[3748, 115, 196, 6, 25, "ExampleSection",
- CellID->1034110358],
+Cell[3748, 115, 195, 6, 25, "ExampleSection",
+ CellID->927735443],
 Cell[CellGroupData[{
-Cell[3969, 125, 166, 6, 27, "Input",
+Cell[3968, 125, 166, 6, 27, "Input",
  CellTags->"Map2",
  CellID->194230717],
-Cell[4138, 133, 306, 11, 36, "Output",
+Cell[4137, 133, 306, 11, 36, "Output",
  CellTags->"Map2",
  CellID->979511779]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4481, 149, 143, 5, 27, "Input",
+Cell[4480, 149, 143, 5, 27, "Input",
  CellTags->"Map2",
  CellID->1407522381],
-Cell[4627, 156, 234, 8, 36, "Output",
+Cell[4626, 156, 234, 8, 36, "Output",
  CellTags->"Map2",
  CellID->1491769424]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4898, 169, 202, 7, 27, "Input",
+Cell[4897, 169, 202, 7, 27, "Input",
  CellTags->"Map2",
  CellID->1867340703],
-Cell[5103, 178, 296, 11, 36, "Output",
+Cell[5102, 178, 296, 11, 36, "Output",
  CellTags->"Map2",
  CellID->1614084211]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5436, 194, 142, 5, 27, "Input",
+Cell[5435, 194, 142, 5, 27, "Input",
  CellTags->"Map2",
  CellID->722460655],
-Cell[5581, 201, 234, 8, 36, "Output",
+Cell[5580, 201, 234, 8, 36, "Output",
  CellTags->"Map2",
  CellID->1998194589]
 }, Open  ]]
 }, Open  ]],
-Cell[5842, 213, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5841, 213, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5910, 218, 270, 12, 31, "SeeAlsoSection",
+Cell[5909, 218, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6183, 232, 217, 9, 31, "Text",
+Cell[6182, 232, 217, 9, 31, "Text",
  CellTags->"Map2",
  CellID->435233862]
 }, Open  ]],
-Cell[6415, 244, 23, 0, 42, "FooterCell"]
+Cell[6414, 244, 23, 0, 42, "FooterCell"]
 }
 ]
 *)

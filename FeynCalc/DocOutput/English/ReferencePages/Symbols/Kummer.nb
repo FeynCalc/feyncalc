@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     66701,       2366]
+NotebookDataLength[     66711,       2366]
 NotebookOptionsPosition[     50365,       1779]
-NotebookOutlinePosition[     59015,       2057]
-CellTagsIndexPosition[     58903,       2051]
+NotebookOutlinePosition[     59025,       2057]
+CellTagsIndexPosition[     58913,       2051]
 WindowTitle->Kummer
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$89795], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$95081], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Kummer",
              ".html"]], None}]}]},
@@ -110,7 +110,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1968221543],
+ CellID->1587745140],
 
 Cell[CellGroupData[{
 
@@ -120,7 +120,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1540095762],
+ CellID->1341170645],
 
 Cell[CellGroupData[{
 
@@ -1792,7 +1792,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
   "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 2, 31.369580}", 
+   "built" -> "{2016, 1, 2, 15, 13, 35.744983}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1805,7 +1805,7 @@ eq. 9.132.1 and i = 96 to eq. 9.132.2 in Gradsteyn & Ryzhik.",
     "windowtitle" -> "Kummer", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Kummer"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1814,7 +1814,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1825,7 +1825,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3470, 97, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1968221543]},
+   CellID->1587745140]},
  "Kummer"->{
   Cell[4104, 126, 354, 10, 45, "Input",
    CellTags->"Kummer",
@@ -2050,8 +2050,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 52295, 1824},
- {"Kummer", 52428, 1828}
+ {"PrimaryExamplesSection", 52305, 1824},
+ {"Kummer", 52438, 1828}
  }
 *)
 (*NotebookFileOutline
@@ -2065,10 +2065,10 @@ Cell[2869, 78, 576, 15, 98, "Usage",
 Cell[CellGroupData[{
 Cell[3470, 97, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1968221543],
+ CellID->1587745140],
 Cell[CellGroupData[{
 Cell[3883, 116, 196, 6, 25, "ExampleSection",
- CellID->1540095762],
+ CellID->1341170645],
 Cell[CellGroupData[{
 Cell[4104, 126, 354, 10, 45, "Input",
  CellTags->"Kummer",
