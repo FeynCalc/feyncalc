@@ -15,10 +15,10 @@
 (* ------------------------------------------------------------------------ *)
 
 Series2::usage=
-"Series2 performs a series expansion around 0.
-Series2 is similar to Series, except that it applies Normal
-on the result and that some Series bugs are fixed.
-Series2[f, e, n] is equivalent to
+"Series2 performs a series expansion around 0. \
+Series2 is similar to Series, except that it applies Normal \
+on the result and that some Series bugs are fixed. \
+Series2[f, e, n] is equivalent to \
 Series2[f, {e, 0, n}] is equivalent to Series[f, {e, 0, n}].";
 
 (* ------------------------------------------------------------------------ *)

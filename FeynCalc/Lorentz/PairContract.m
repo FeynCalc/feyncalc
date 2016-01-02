@@ -9,11 +9,11 @@ PairContract::usage =
 "PairContract is like Pair, but with (local) contraction properties.";
 
 PairContract2::usage =
-"PairContract2 is like Pair, but with local contraction properties
+"PairContract2 is like Pair, but with local contraction properties \
 among PairContract2's.";
 
 PairContract3::usage =
-"PairContract3 is like Pair, but with local contraction properties
+"PairContract3 is like Pair, but with local contraction properties \
 among PairContract3's.";
 
 (* ------------------------------------------------------------------------ *)
@@ -79,8 +79,8 @@ scev[x_,y_] :=
 	scevdoit[x,y];
 scevdoit[x_,y_] :=
 	Distribute[ sceins@@
-											 ( Expand[ MomentumExpand/@{x,y} ] )
-						 ]/.sceins->sczwei/.sczwei->PairContract/.PairContract->Pair;
+											( Expand[ MomentumExpand/@{x,y} ] )
+						]/.sceins->sczwei/.sczwei->PairContract/.PairContract->Pair;
 
 PairContract[ LorentzIndex[a_,di___], epsmu_ LorentzIndex[mu_, dimen___] ] :=
 	( epsmu /. LorentzIndex[mu,dimen]->LorentzIndex[a,di] ) /;
@@ -179,23 +179,23 @@ sczwei[ w_[y_,_Symbol],v_[x_] ] :=
 	sczwei[ v[x],w[y] ];
 sce[x_,y_] :=
 	MemSet[sce[x, y],      (*scedef*)
-				  If[ (Factoring /. Options[PairContract]) === True,
-					  Factor2[
-					  Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])
-										  ]/.sceins->sczwei/.sczwei->Pair
-								  ],
-					  Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])
-									  ]/.sceins->sczwei/.sczwei->Pair
-				  ]   ];
+				If[ (Factoring /. Options[PairContract]) === True,
+					Factor2[
+					Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])
+										]/.sceins->sczwei/.sczwei->Pair
+								],
+					Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])
+									]/.sceins->sczwei/.sczwei->Pair
+				]   ];
 PairContract[x_,y_] :=
 	MemSet[ PairContract[x,y],
-						 Block[ {sCOt = sce[x,y]},
-							 If[ FreeQ[ sCOt, Pair ] ||
-										 (Head[sCOt]=!=Plus),
-								 sCOt,
-								 Pair[x,y]
-							 ]
-						 ] ]/;FreeQ[{x,y},LorentzIndex];
+						Block[ {sCOt = sce[x,y]},
+							If[ FreeQ[ sCOt, Pair ] ||
+										(Head[sCOt]=!=Plus),
+								sCOt,
+								Pair[x,y]
+							]
+						] ]/;FreeQ[{x,y},LorentzIndex];
 
 FCPrint[1,"PairContract.m loaded."];
 End[]

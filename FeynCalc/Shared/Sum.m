@@ -11,18 +11,18 @@
 (* ------------------------------------------------------------------------ *)
 
 SumP::usage=
-"SumP[k, n/2] is 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,n}].
+"SumP[k, n/2] is 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,n}]. \
 (or SumP[k,m] = 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,2 m}].";
 
 SumS::usage=
-"SumS[r, n] denotes Sum[Sign[r]^i/i^Abs[r], {i, 1, n}],
+"SumS[r, n] denotes Sum[Sign[r]^i/i^Abs[r], {i, 1, n}], \
 SumS[r,s, n] is Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s],
 {k, 1, n}, {j, 1, k}], etc.";
 
 SumT::usage=
-"SumT[r, n] represents Sum[(-1)^i/i^r, {i,1,n}],
-SumT[r,s, n] is Sum[1/k^r (-1)^j/j^s, {k, 1, n}, {j, 1, k}],
-SumT[n] is Sum[(-1)^j/j^2 SumS[1,j],{j,1,n}].
+"SumT[r, n] represents Sum[(-1)^i/i^r, {i,1,n}], \
+SumT[r,s, n] is Sum[1/k^r (-1)^j/j^s, {k, 1, n}, {j, 1, k}], \
+SumT[n] is Sum[(-1)^j/j^2 SumS[1,j],{j,1,n}]. \
 For purely integer arguments SumT is evaluated.";
 
 (* ------------------------------------------------------------------------ *)

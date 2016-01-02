@@ -6,12 +6,12 @@
 (* ------------------------------------------------------------------------ *)
 
 Explicit::usage =
-"Explicit is an option for FieldStrength, GluonVertex,
-SUNF, CovariantFieldDerivative, Twist2GluonOperator and others functions.
-If set to True the full form of the operator is inserted.
-Explicit[exp] inserts explicit expressions of FieldStrength,
+"Explicit is an option for FieldStrength, GluonVertex, \
+SUNF, CovariantFieldDerivative, Twist2GluonOperator and others functions. \
+If set to True the full form of the operator is inserted. \
+Explicit[exp] inserts explicit expressions of FieldStrength, \
 GluonVertex, etc. in exp. \n
-The dimension of the objects is changed according to the setting of the
+The dimension of the objects is changed according to the setting of the \
 option Dimension. SUNF's are replaced by SUNTrace objects.";
 
 (* ------------------------------------------------------------------------ *)

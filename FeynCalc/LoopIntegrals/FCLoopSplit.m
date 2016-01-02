@@ -16,14 +16,15 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopSplit::usage = "FCLoopSplit[expr,{q1,q2,...}] separates expr
-into following four pieces:
-1) 	terms that are free of loop integrals
-2) 	terms with scalar loop integrals
-3) 	terms with tensor loop integrals, where all loop momenta
-	are contracted
-4) 	terms with tensor loop integrals, where at least some
-	loop momenta have free indices
+FCLoopSplit::usage =
+"FCLoopSplit[expr,{q1,q2,...}] separates expr \
+into following four pieces: \n
+1) 	terms that are free of loop integrals \n
+2) 	terms with scalar loop integrals \n
+3) 	terms with tensor loop integrals, where all loop momenta \
+	are contracted \n
+4) 	terms with tensor loop integrals, where at least some \
+	loop momenta have free indices \n
 The result is returned as a list with the 4 above elements";
 
 FCLoopSplit::fail =

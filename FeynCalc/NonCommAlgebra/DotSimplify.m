@@ -15,25 +15,25 @@
 (* ------------------------------------------------------------------------ *)
 
 DotSimplify::usage =
-"DotSimplify[expr] expands and reorders noncommutative terms in expr.
-Simplifying relations may be specified by the option
-DotSimplifyRelations or by Commutator and AntiCommutator definitions.
+"DotSimplify[expr] expands and reorders noncommutative terms in expr. \
+Simplifying relations may be specified by the option \
+DotSimplifyRelations or by Commutator and AntiCommutator definitions. \
 Whether expr is expanded noncommutatively depends
 on the option Expanding.";
 
 DotSimplifyRelations::usage =
-"DotSimplifyRelations is an option for DotSimplify.
-Its setting should be a list of substitution rules of the form
-DotSimplifyRelations -> {a . b -> c, b^2 -> 0, ...}. In the
-rules, Condition should not be used and patterns should
+"DotSimplifyRelations is an option for DotSimplify. \
+Its setting should be a list of substitution rules of the form \
+DotSimplifyRelations -> {a . b -> c, b^2 -> 0, ...}. In the \
+rules, Condition should not be used and patterns should \
 be avoided on the right-hand sides.\n\n
-NOTICE: The performance of DotSimplify scales
-very badly with the complexity of DotSimplifyRelations
+NOTICE: The performance of DotSimplify scales \
+very badly with the complexity of DotSimplifyRelations \
 and the number of terms of the expression.";
 
 DotPower::usage =
-"DotPower is an option for DotSimplify. It determines whether
-non-commutative powers are represented by successive multiplication
+"DotPower is an option for DotSimplify. It determines whether \
+non-commutative powers are represented by successive multiplication \
 or by Power.";
 
 (* ------------------------------------------------------------------------ *)

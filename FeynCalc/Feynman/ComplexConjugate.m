@@ -19,10 +19,9 @@
 (* ------------------------------------------------------------------------ *)
 
 ComplexConjugate::usage =
-"ComplexConjugate[expr] complex conjugates expr. It operates on  Fermion-lines, i.e., products \
-of Spinor[..] .DiracMatrix[..] . Spinor[..]. For taking the spin sum (i.e. constructing the traces) \
-use FermionSpinSum.
-
+"ComplexConjugate[expr] complex conjugates expr. It operates on \
+Fermion-lines, i.e., products of Spinor[..] .DiracMatrix[..] . Spinor[..]. \
+For taking the spin sum (i.e. constructing the traces) use FermionSpinSum. \n \n
 WARNING: In expr should be NO explicit I in denominators!";
 
 (* ------------------------------------------------------------------------ *)

@@ -15,9 +15,9 @@ http://www.feyncalc.org/forum/0013.html
 (* ------------------------------------------------------------------------ *)
 
 SimplifyPolyLog::usage =
-"SimplifyPolyLog[y] performs several simplifications assuming
-that the variables  occuring in the Log and PolyLog functions
-are between 0 and 1. The simplifications will in general not
+"SimplifyPolyLog[y] performs several simplifications assuming \
+that the variables  occuring in the Log and PolyLog functions \
+are between 0 and 1. The simplifications will in general not \
 be valid if the arguments are complex or outside the range between 0 and 1.";
 
 SPL::usage=

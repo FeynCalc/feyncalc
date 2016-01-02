@@ -16,14 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 MomentumCombine::usage =
-"MomentumCombine[expr] combines momenta and Pairs with the same
-LorentzIndexentz indices and momenta.";
+"MomentumCombine[expr] combines momenta and Pairs with the same LorentzIndexentz \
+indices and momenta.";
 
 MomentumCombine2::usage =
-"MomentumCombine2[expr]  is the inverse operation to
-MomentumExpand and ExpandScalarProduct.
-MomentumCombine2 combines also
-FourVectors.";
+"MomentumCombine2[expr]  is the inverse operation to MomentumExpand and \
+ExpandScalarProduct. MomentumCombine2 combines also FourVectors.";
 
 (* ------------------------------------------------------------------------ *)
 

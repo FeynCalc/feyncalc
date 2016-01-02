@@ -11,8 +11,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCIntegral::usage =
-"FCIntegral is the head of integrals in a setting of the
-option IntegralTable of FeynAmpDenominatorSimplify.
+"FCIntegral is the head of integrals in a setting of the \
+option IntegralTable of FeynAmpDenominatorSimplify. \
 Currently only implemented for 2-loop integrals.";
 
 (* ------------------------------------------------------------------------ *)

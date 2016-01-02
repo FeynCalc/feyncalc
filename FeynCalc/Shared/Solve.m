@@ -13,15 +13,13 @@
 (* ------------------------------------------------------------------------ *)
 
 Solve2::usage=
-"Solve2 is equivalent to Solve, except that it works only for
-linear equations (and returns just a list)
-and accepts the options Factoring and FinalSubstitutions.";
+"Solve2 is equivalent to Solve, except that it works only for linear equations \
+(and returns just a list) and accepts the options Factoring and FinalSubstitutions.";
 
 Solve3::usage=
-"Solve3 is equivalent to Solve, except that it works only for
-linear equations (and returns just a list)
-and uses the \"high school algorithm\" and is sometimes better than
-Solve for systems involving rational polynomials.";
+"Solve3 is equivalent to Solve, except that it works only for linear equations \
+(and returns just a list) and uses the \"high school algorithm\" and is \
+sometimes better than Solve for systems involving rational polynomials.";
 
 (* ------------------------------------------------------------------------ *)
 

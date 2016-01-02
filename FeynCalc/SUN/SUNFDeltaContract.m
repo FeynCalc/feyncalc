@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SUNFDeltaContract                                                      *)
+(* :Title: SUNFDeltaContract												*)
 
 (*
 	This software is covered by the GNU Lesser General Public License 3.
@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNFDeltaContract::usage=
-"SUNFDeltaContract[expr] substitues for all
-SUNFDelta in expr SUNFDeltaContract, contracts
-the SU(N) fundamental indices and resubstitutes SUNFDelta.
+"SUNFDeltaContract[expr] substitues for all \
+SUNFDelta in expr SUNFDeltaContract, contracts \
+the SU(N) fundamental indices and resubstitutes SUNFDelta. \
 \n
-SUNFDeltaContract[i, j] is the Kronecker-delta for SU(N) in the
-fundamental representation with contraction properties.
+SUNFDeltaContract[i, j] is the Kronecker-delta for SU(N) in the \
+fundamental representation with contraction properties. \
 SUNFDeltaContract wraps also the head SUNFIndex around its arguments.";
 
 (* ------------------------------------------------------------------------ *)

@@ -21,10 +21,10 @@ Whether the trace is  evaluated depends on the option \
 DiracTraceEvaluate. See also TR. \
 The argument expr may be a product of Dirac matrices or slashes \
 separated by the Mathematica Dot \".\" (assuming DOT has been set to Dot).
-The option Factoring determines the final function to be applied. If
-it is set to False no simplification is done.
-It might be set to, e.g., Factor or Factor2 to get simpler results.
-With the default setting Factoring -> Automatic factorization is performed on
+The option Factoring determines the final function to be applied. If \
+it is set to False no simplification is done. \
+It might be set to, e.g., Factor or Factor2 to get simpler results. \
+With the default setting Factoring -> Automatic factorization is performed on \
 not too long (LeafCount[ ] < 5000 ) expressions.
 ";
 
@@ -42,14 +42,15 @@ odd number of gamma^5 unambiguously. The trace of `1` is illegal in NDR. \
 Evaluation aborted!";
 
 DiracTrace::ilsch =
-"The settings $BreitMaison=`1`, $Larin=`2` and $West=`3` do not describe a valid scheme for treating gamma^5 \
-in D dimensions. Evaluation aborted!.";
+"The settings $BreitMaison=`1`, $Larin=`2` and $West=`3` do not describe a valid \
+scheme for treating gamma^5 in D dimensions. Evaluation aborted!.";
 
 DiracTrace::fail =
 "DiracTrace failed to compute the trace of `1`. Evaluation aborted!.";
 
 DiracTrace::rem =
-"Error! The trace of the original expression still contains Dirac matrices. Evaluation aborted!.";
+"Error! The trace of the original expression still contains Dirac matrices. \
+Evaluation aborted!.";
 
 (* ------------------------------------------------------------------------ *)
 

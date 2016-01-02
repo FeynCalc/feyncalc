@@ -11,13 +11,13 @@
 (* ------------------------------------------------------------------------ *)
 
 SetMandelstam::usage =
-"SetMandelstam[s, t, u, p1, p2, p3, p4, m1, m2, m3, m4] defines the
-Mandelstam variables  s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 and sets
-the pi on-shell: p1^2=m1^2, p2^2=m2^2, p3^2=m3^2, p4^2=m4^2.
+"SetMandelstam[s, t, u, p1, p2, p3, p4, m1, m2, m3, m4] defines the \
+Mandelstam variables  s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 and sets \
+the pi on-shell: p1^2=m1^2, p2^2=m2^2, p3^2=m3^2, p4^2=m4^2. \
 Note that p1 +  p2 + p3 + p4 = 0 is assumed.\n\n
 
-SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}]
-defines x[i, j] = (pi+pj)^2 and sets the pi on-shell.
+SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}] \
+defines x[i, j] = (pi+pj)^2 and sets the pi on-shell. \
 The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";
 
 
@@ -40,7 +40,7 @@ small4[x_^m_] :=
 		x/;FreeQ[x,SmallVariable];
 	sma[x_] :=
 		x/.SmallVariable->small2/.small2->small3/.
-										   small3->small4/.small4->SmallVariable;
+										small3->small4/.small4->SmallVariable;
 
 
 setit[a_,b_,___] :=

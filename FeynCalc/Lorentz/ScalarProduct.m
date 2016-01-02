@@ -16,15 +16,15 @@
 (* ------------------------------------------------------------------------ *)
 
 ScalarProduct::usage =
-"ScalarProduct[p, q] is the input for scalar product.
-ScalarProduct[p] is equivalent to ScalarProduct[p, p].
-Expansion of sums of momenta in ScalarProduct is done with
-ExpandScalarProduct. Scalar products may be set, e.g.
-ScalarProduct[a, b] = m^2; but a and b may not contain sums.
-Note that ScalarProduct[a, b] = m^2 actually sets also:
-Pair[Momentum[a, ___], Momentum[b, ___]] = m^2 and
-SPD[a,b] = m^2 and SP[a,b]=m^2.
-It is enouraged to always set ScalarProduct's BEFORE any
+"ScalarProduct[p, q] is the input for scalar product. \
+ScalarProduct[p] is equivalent to ScalarProduct[p, p]. \
+Expansion of sums of momenta in ScalarProduct is done with \
+ExpandScalarProduct. Scalar products may be set, e.g. \
+ScalarProduct[a, b] = m^2; but a and b may not contain sums. \
+Note that ScalarProduct[a, b] = m^2 actually sets also: \
+Pair[Momentum[a, ___], Momentum[b, ___]] = m^2 and \
+SPD[a,b] = m^2 and SP[a,b]=m^2. \
+It is enouraged to always set ScalarProduct's BEFORE any \
 calculation. This improves the performance of FeynCalc .";
 
 SetDimensions::usage =
@@ -35,13 +35,12 @@ scalar products are set for 4 and D dimensions. By changing this option \
 the user can add other dimensions or delete the exising ones.";
 
 ScalarProduct::emptydim =
-"If you want to set scalar products via ScalarProduct[a, b] = m^2, you must
-specify at least one dimension via the option SetDimensions->{dims...}! Evaluation
+"If you want to set scalar products via ScalarProduct[a, b] = m^2, you must \
+specify at least one dimension via the option SetDimensions->{dims...}! Evaluation \
 aborted."
 
 ScalarProduct::fail =
-"Something went wrong while setting scalar products! Evaluation
-aborted."
+"Something went wrong while setting scalar products! Evaluation aborted."
 
 (* ------------------------------------------------------------------------ *)
 

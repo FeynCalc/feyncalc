@@ -23,10 +23,10 @@ Cases2[expr, {f1, f2, ...}] is equivalent to \
 Cases[{expr}, f1[___] | f2[___] ..., Infinity]//Union.";
 
 Combine::usage=
-"Combine[expr] puts terms in a sum over a common denominator, and
-cancels factors in the result. Combine is similar to Together,
-but accepts the option Expanding and works usually
-better than Together on polynomials involving rationals with
+"Combine[expr] puts terms in a sum over a common denominator, and \
+cancels factors in the result. Combine is similar to Together, \
+but accepts the option Expanding and works usually \
+better than Together on polynomials involving rationals with \
 sums in the denominator.";
 
 Complement1::usage=
@@ -36,11 +36,11 @@ kept and multiple occurences of an element in l2 are dropped multiply if \
 present in l1";
 
 Expand2::usage=
-"Expand2[exp, x] expands all sums containing x.
+"Expand2[exp, x] expands all sums containing x. \
 Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
 FCAntiSymmetrize::usage=
-"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect
+"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
 FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
@@ -50,16 +50,16 @@ is provided in the form of a two element list. One can recover the \
 original expression by applying Total to that list";
 
 FCSymmetrize::usage=
-"FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect
+"FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect \
 to the variables a1, a2, ... .";
 
 FreeQ2::usage =
-"FreeQ2[expr, {form1, form2, ...}] yields True if expr does not
-contain any occurence of form1, form2, ... and False otherwise.
+"FreeQ2[expr, {form1, form2, ...}] yields True if expr does not \
+contain any occurence of form1, form2, ... and False otherwise. \
 FreeQ2[expr, form] is the same as FreeQ[expr, form].";
 
 FRH::usage =
-"FRH[exp_] := FixedPoint[ReleaseHold, exp], i.e., FRH removes all
+"FRH[exp_] := FixedPoint[ReleaseHold, exp], i.e., FRH removes all \
 HoldForm and Hold in exp.";
 
 FunctionLimits::usage = "FunctionLimits is an option of ILimit, specifying which \
@@ -75,26 +75,25 @@ elements both in l1 and l2. Multiple occurences of an element are \
 kept the minimum number of times it occures in l1 or l2";
 
 Map2::usage=
-"Map2[f, exp] is equivalent to Map if NTerms[exp] > 1,
+"Map2[f, exp] is equivalent to Map if NTerms[exp] > 1, \
 otherwise Map2[f, exp] gives f[exp].";
 
 MemSet::usage =
-"MemSet[f[x_], body] is like f[x_] := f[x] = body,
-but dependend on the value of the setting of MemoryAvailable ->
-memorycut (memorycut - MemoryInUse[]/10.^6)
+"MemSet[f[x_], body] is like f[x_] := f[x] = body, \
+but dependend on the value of the setting of MemoryAvailable -> \
+memorycut (memorycut - MemoryInUse[]/10.^6) \
 MemSet[f[x_], body] may evaluate as f[x_] := body."
 
 MemoryAvailable::usage =
-"MemoryAvailable is an option of MemSet.
-It can be set to an integer n,
-where n is the available amount of main memory in Mega Byte.
+"MemoryAvailable is an option of MemSet. It can be set to an integer n, \
+where n is the available amount of main memory in Mega Byte. \
 The default setting is $MemoryAvailable.";
 
 MLimit::usage=
 "MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";
 
 NTerms::usage=
-"NTerms[x] is equivalent to Length if x is a sum; otherwise
+"NTerms[x] is equivalent to Length if x is a sum; otherwise \
 NTerms[x] returns 1, except NTerms[0] -> 0."
 
 NumericalFactor::usage =
@@ -105,38 +104,38 @@ NumericQ1::usage=
 numeric quantities.";
 
 PartitHead::usage=
-"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of
+"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of \
 expressions with head h, and h[ex2] having head h.";
 
 Power2::usage=
-"Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the
-Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b]
+"Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the \
+Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b] \
 (if no Epsilon is in b ...).";
 
 PowerFactor::usage=
 "PowerFactor[exp] replaces x^a y^a with (x y)^a.";
 
 PowerSimplify::usage=
-"PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and
-(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is
-an integer (even if it is symbolic). Furthermore
-(-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and
-(-1)^(n_Integer?EvenQ m) -> 1 and
-(-1)^(n_Integer?OddQ m) -> (-1)^m and
+"PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and \
+(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is \
+an integer (even if it is symbolic). Furthermore \
+(-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and \
+(-1)^(n_Integer?EvenQ m) -> 1 and \
+(-1)^(n_Integer?OddQ m) -> (-1)^m and \
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 SelectFree::usage=
-"SelectFree[expr, a, b, ...] is equivalent to
-Select[expr, FreeQ2[#, {a,b, ...}]&], except the
-special cases: SelectFree[a, b] returns a and
-SelectFree[a,a] returns 1 (where a is not a product or
+"SelectFree[expr, a, b, ...] is equivalent to \
+Select[expr, FreeQ2[#, {a,b, ...}]&], except the \
+special cases: SelectFree[a, b] returns a and \
+SelectFree[a,a] returns 1 (where a is not a product or \
 a sum).";
 
 SelectNotFree::usage=
-"SelectNotFree[expr, a, b, ...] is equivalent to
-Select[expr, !FreeQ2[#, {a,b, ...}]&], except the
-special cases: SelectNotFree[a, b] returns 1 and
-SelectNotFree[a,a] returns a (where a is not a product or
+"SelectNotFree[expr, a, b, ...] is equivalent to \
+Select[expr, !FreeQ2[#, {a,b, ...}]&], except the \
+special cases: SelectNotFree[a, b] returns 1 and \
+SelectNotFree[a,a] returns a (where a is not a product or \
 a sum).";
 
 SelectSplit::usage=

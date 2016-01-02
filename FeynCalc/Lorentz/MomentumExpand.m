@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 MomentumExpand::usage =
-"MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into
+"MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into \
 Momentum[a] + Momentum[b] + ... .";
 
 (* ------------------------------------------------------------------------ *)

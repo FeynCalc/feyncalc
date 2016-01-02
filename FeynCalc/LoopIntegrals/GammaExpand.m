@@ -3,8 +3,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-GammaExpand::usage = "GammaExpand[exp] rewrites
-Gamma[n + m] (where n has Head Integer).";
+GammaExpand::usage =
+"GammaExpand[exp] rewrites Gamma[n + m] (where n has Head Integer).";
 
 
 (* ------------------------------------------------------------------------ *)

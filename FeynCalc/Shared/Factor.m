@@ -13,20 +13,20 @@
 (* ------------------------------------------------------------------------ *)
 
 Factor1::usage=
-"Factor1[poly] factorizes common terms  in the summands of poly.
+"Factor1[poly] factorizes common terms  in the summands of poly. \
 It uses basically PolynomialGCD.";
 
 Factor2::usage =
-"Factor2[poly] factors a polynomial in a standard
-way. Factor2 works (sometimes) better than Factor on polynomials
-involving rationals with sums in the denominator.
-Factor2 uses Factor internally and is in general slower than Factor.
+"Factor2[poly] factors a polynomial in a standard \
+way. Factor2 works (sometimes) better than Factor on polynomials \
+involving rationals with sums in the denominator. \
+Factor2 uses Factor internally and is in general slower than Factor. \
 There are four possible settings of the option Method (0,1,2,3).
 ";
 
 FactorFull::usage=
-"FactorFull is an option of Factor2 (default False).
-If set to False, products like
+"FactorFull is an option of Factor2 (default False). \
+If set to False, products like \
 (a-b) (a+b) will be replaced by (a^2-b^2).";
 
 (* ------------------------------------------------------------------------ *)

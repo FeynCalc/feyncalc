@@ -11,8 +11,8 @@
 (* ------------------------------------------------------------------------ *)
 
 TR::usage=
-"TR[exp] calculates the Dirac trace of exp. Depending on the setting of
-the option SUNTrace also a trace over SU(N) objects is performed.
+"TR[exp] calculates the Dirac trace of exp. Depending on the setting of \
+the option SUNTrace also a trace over SU(N) objects is performed. \
 TR is identical to DiracTrace, up to the default setting of DiracTraceEvaluate.";
 
 (* ------------------------------------------------------------------------ *)

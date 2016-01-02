@@ -6,23 +6,23 @@
 (* ------------------------------------------------------------------------ *)
 
 FreeIndex::usage =
-"FreeIndex is a datatype which is recognized by Contract.
+"FreeIndex is a datatype which is recognized by Contract. \
 Possible use: DataType[mu, FreeIndex] = True.";
 
 GrassmannParity::usage =
-"GrassmannParity is a datatype. E.g. DataType[F, GrassmannParity] = 1
+"GrassmannParity is a datatype. E.g. DataType[F, GrassmannParity] = 1 \
 declares F to be of bosonic type and DataType[F, GrassmannParity] = -1
 of fermionic one.";
 
 NegativeInteger::usage =
-"NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can
+"NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can \
 be set to True.";
 
 PositiveInteger::usage =
-"PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger]
+"PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] \
 gives True.";
 
-PositiveNumber::usage =  "PositiveNumber is a data type. E.g.
+PositiveNumber::usage =  "PositiveNumber is a data type. E.g. \
 DataType[Epsilon, PositiveNumber] = True (by default). ";
 
 DataType::usage =

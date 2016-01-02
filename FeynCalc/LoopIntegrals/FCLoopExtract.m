@@ -15,7 +15,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopExtract::usage = "FCLoopExtract[expr,{q1,q2,...},loopHead] exctracts loop integrals \
+FCLoopExtract::usage =
+"FCLoopExtract[expr,{q1,q2,...},loopHead] exctracts loop integrals \
 that depend on q1,q2,... from the given expression. The output is given as a list \
 of three entries. The first one contains part of the original expression that consists of \
 irrelevant loop integrals and terms that are free of any loop integrals. The second entry \

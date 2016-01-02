@@ -18,9 +18,9 @@ FCE::usage=
 "FCE is just an abbreviation of FeynCalcExternal.";
 
 FeynCalcExternal::usage=
-"FeynCalcExternal[exp] translates exp from the internal FeynCalc
-representation to the simpler external one
-(i.e., FV, GA, GS, etc.). User defined rules can be given
+"FeynCalcExternal[exp] translates exp from the internal FeynCalc \
+representation to the simpler external one \
+(i.e., FV, GA, GS, etc.). User defined rules can be given \
 by the option FinalSubstitutions. ";
 
 (* ------------------------------------------------------------------------ *)

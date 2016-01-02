@@ -11,20 +11,17 @@
 	Copyright (C) 2014-2015 Vladyslav Shtabovenko
 *)
 
-(* :Summary: QuarkPropagator												*)
+(* :Summary: Quark propagator												*)
 
 (* ------------------------------------------------------------------------ *)
 
 QP::usage =
-"QP is an alias for QuarkPropagator.
-
-QP[p] is the massless quark propagator.
-
+"QP is an alias for QuarkPropagator. \n
+QP[p] is the massless quark propagator. \n
 QP[{p,m}] gives the  quark propagator with mass m.";
 
 QuarkPropagator::usage =
-"QuarkPropagator[p] is the massless quark propagator.
-
+"QuarkPropagator[p] is the massless quark propagator. \n
 QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
 
 (* ------------------------------------------------------------------------ *)

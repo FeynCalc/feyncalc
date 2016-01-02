@@ -16,7 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCPrepareFAAmp::usage =
-"FCPrepareFAAmp[exp] converts a FeynArts amplitude to FeynCalc.";
+"FCPrepareFAAmp[exp] is an auxiliary function for a partial conversion of a \
+FeynArts amplitude to FeynCalc.";
 
 UndoChiralSplittings::usage =
 "UndoChiralSplittings is an option of FCPrepareFAAmp. When set to True, it attempts \

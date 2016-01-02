@@ -11,8 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 UVPart::usage =
-"UVPart[exp, q] discards ultraviolet finite integrals
-(q = integration momentum).";
+"UVPart[exp, q] discards ultraviolet finite integrals (q = integration momentum).";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 EpsChisholm::usage =
-"EpsChisholm[expr] substitutes for a gamma matrix contracted with
+"EpsChisholm[expr] substitutes for a gamma matrix contracted with \
 a Levi Civita tensor (Eps) the Chisholm identity.";
 
 (* ------------------------------------------------------------------------ *)

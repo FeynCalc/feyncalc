@@ -28,14 +28,14 @@ If set to True DiracSimplify uses the function DiracOrder \
 internally.";
 
 InsideDiracTrace::usage =
-"InsideDiracTrace is an option of DiracSimplify.
-If set to True, DiracSimplify assumes to operate
-inside a DiracTrace, i.e., products of an odd number
-of Dirac matrices are discarded. Furthermore simple
-traces are calculated (but divided by a factor 4,
-i.e. :  DiracSimplify[DiracMatrix[a,b], InsideDiracTrace->True]
+"InsideDiracTrace is an option of DiracSimplify. \
+If set to True, DiracSimplify assumes to operate \
+inside a DiracTrace, i.e., products of an odd number \
+of Dirac matrices are discarded. Furthermore simple \
+traces are calculated (but divided by a factor 4, \
+i.e. :  DiracSimplify[DiracMatrix[a,b], InsideDiracTrace->True] \
 yields  ScalarProduct[a,b]) \n
-Traces involving more than
+Traces involving more than \
 four DiracGammas and DiracGamma[5] are not performed.";
 
 DiracSimplify::usage =

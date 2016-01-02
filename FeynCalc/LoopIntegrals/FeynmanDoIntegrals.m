@@ -9,7 +9,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FeynmanDoIntegrals::usage = "***EXPERIMENTAL***\n
+FeynmanDoIntegrals::usage =
+"***EXPERIMENTAL***\n
 FeynmanDoIntegrals[exp, moms, vars] \
 attempts to evaluate integrals over Feynman parameters vars in an \
 expression exp as produced e.g. with FeynmanReduce. The variables \

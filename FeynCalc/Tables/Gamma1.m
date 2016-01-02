@@ -10,7 +10,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Gamma1::usage= "Gamma1[al,ga, be,de] is a special product of
+Gamma1::usage= "Gamma1[al,ga, be,de] is a special product of \
 Gamma functions expanded up to order Epsilon^2.";
 
 (* ------------------------------------------------------------------------ *)

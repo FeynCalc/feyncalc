@@ -11,12 +11,12 @@
 	Copyright (C) 2014-2015 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Gluon self energy												*)
+(* :Summary: Gluon self-energy												*)
 
 (* ------------------------------------------------------------------------ *)
 
 GluonSelfEnergy::usage =
-"GluonSelfEnergy[{mu, a}, {nu,b}] yields the 1-loop Gluon selfenergy."
+"GluonSelfEnergy[{mu, a}, {nu,b}] yields the 1-loop Gluon self-energy."
 
 (* ------------------------------------------------------------------------ *)
 

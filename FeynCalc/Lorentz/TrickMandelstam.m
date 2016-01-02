@@ -14,11 +14,11 @@
 (* ------------------------------------------------------------------------ *)
 
 TrickMandelstam::usage =
-"TrickMandelstam[expr, {s, t, u, m1^2 + m2^2 + m3^2 + m4^2}]
-simplifies all sums in expr so that one of the
-Mandelstam variables s, t or u is eliminated by the
-relation s + t + u = m1^2 + m2^2 + m3^2 + m4^2.
-The trick is that the resulting sum has the most short number of
+"TrickMandelstam[expr, {s, t, u, m1^2 + m2^2 + m3^2 + m4^2}] \
+simplifies all sums in expr so that one of the \
+Mandelstam variables s, t or u is eliminated by the \
+relation s + t + u = m1^2 + m2^2 + m3^2 + m4^2. \
+The trick is that the resulting sum has the most short number of \
 terms.";
 
 (* ------------------------------------------------------------------------ *)
@@ -95,7 +95,7 @@ trickmandelstam[y_, args_List] :=
 
 	short1[x_,__] :=
 		x/;(Head[x]=!=Plus) && (Head[x]=!=Times) &&
-							 (Head[x]=!=Power);
+							(Head[x]=!=Power);
 trickmandelstam[x_Plus,man_List] :=
 	Block[ {tricktemp,merk,nx = x,plusch, plusch0},
 		merk[y_] :=
@@ -108,7 +108,7 @@ trickmandelstam[x_Plus,man_List] :=
 			(Length[{z}]===(Length[Plus@@man]-1))&& FreeQ[{z},Plus];
 		plusch[z__] :=
 			(factor3 /@ Collect2[ Plus[z], Take[man, 3] ] ) /;
-						   Length[{z}]=!=(Length[Plus@@man]-1);
+						Length[{z}]=!=(Length[Plus@@man]-1);
 		tricktemp = merk[ nx ];
 		(tricktemp/.Plus->plusch0/.plusch0->plusch /.
 		plusch->Plus)

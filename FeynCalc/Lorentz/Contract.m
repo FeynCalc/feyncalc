@@ -13,18 +13,18 @@
 (* ------------------------------------------------------------------------ *)
 
 Contract::usage =
-"Contract[expr] contracts pairs of Lorentz indices of metric tensors,
-four-vectors and (depending on the option EpsContract) of
-Levi-Civita tensors in expr. For the contraction of Dirac matrices
+"Contract[expr] contracts pairs of Lorentz indices of metric tensors, \
+four-vectors and (depending on the option EpsContract) of \
+Levi-Civita tensors in expr. For the contraction of Dirac matrices \
 with each other use DiracSimplify. \n \n
-Contract[exp1, exp2] contracts (exp1*exp2), where exp1 and exp2 may be
-larger products of sums of  metric tensors and 4-vectors.
-Contract[exp1, exp2] should be used for polarization sums, where
-exp2 should be the product (or expanded sum) of the polarization
+Contract[exp1, exp2] contracts (exp1*exp2), where exp1 and exp2 may be \
+larger products of sums of  metric tensors and 4-vectors. \
+Contract[exp1, exp2] should be used for polarization sums, where \
+exp2 should be the product (or expanded sum) of the polarization \
 sums for the vector bosons. \n \n
-Contract is also an option for DoPolarizationSums. When set to True,
-Contract is applied to the amplitude immediately after replacing
-polarization vectors by the corresponding sum. This usually improves
+Contract is also an option for DoPolarizationSums. When set to True, \
+Contract is applied to the amplitude immediately after replacing \
+polarization vectors by the corresponding sum. This usually improves \
 performance.";
 
 

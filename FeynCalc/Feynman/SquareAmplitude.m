@@ -16,7 +16,7 @@ EnergyMomentumConservation::usage =
 "EnergyMomentumConservation is an option of SquareAmplitude (experimental).";
 
 SquareAmplitude::usage =
-"SquareAmplitude[amp] squares the amplitude amp. EXPERIMENTAL!!!
+"SquareAmplitude[amp] squares the amplitude amp. EXPERIMENTAL!!! \
 Don't rely on it.";
 
 SpinSumExternalMomentum::usage =

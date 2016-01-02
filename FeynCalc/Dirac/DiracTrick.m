@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracTrick::usage =
-"DiracTrick[exp] contracts gamma matrices with each other and
+"DiracTrick[exp] contracts gamma matrices with each other and \
 performs several simplifications (no expansion, use DiracSimplify for this).";
 
 (* ------------------------------------------------------------------------ *)

@@ -14,74 +14,73 @@ CombineGraphs::usage =
 "CombineGraphs is an option for OneLoopSum.";
 
 DenominatorOrder::usage =
-"DenominatorOrder is an option for OneLoop, if set to True the
+"DenominatorOrder is an option for OneLoop, if set to True the \
 PropagatorDenominator will be ordered in a standard way.";
 
 FinalFunction::usage = "FinalFunction is an option for OneLoopSum.";
 
 ExtraVariables::usage =
-"ExtraVariables is an option for OneLoopSum; it may be set
-to a list of variables which are also bracketed out in the result,
+"ExtraVariables is an option for OneLoopSum; it may be set \
+to a list of variables which are also bracketed out in the result, \
 just like B0, C0, D0 and  PaVe.";
 
 OneLoop::usage =
-"OneLoop[q, amplitude] calculates the one-loop Feynman diagram
-amplitude (n-point, where n<=4 and the highest tensor rank of the
-integration momenta (after cancellation of scalar products) may be 3;
-unless OneLoopSimplify is used).
-The argument q denotes the integration variable, i.e.,
+"OneLoop[q, amplitude] calculates the one-loop Feynman diagram \
+amplitude (n-point, where n<=4 and the highest tensor rank of the \
+integration momenta (after cancellation of scalar products) may be 3; \
+unless OneLoopSimplify is used). \n
+The argument q denotes the integration variable, i.e., \
 the loop momentum. \n
-OneLoop[name, q, amplitude] has as first argument a name of
-the amplitude. If the second argument has head FeynAmp then
-OneLoop[q, FeynAmp[name, k, expr]] and
-OneLoop[FeynAmp[name, k, expr]] tranform to
-OneLoop[name, k, expr].";
+OneLoop[name, q, amplitude] has as first argument a name of \
+the amplitude. If the second argument has head FeynAmp then \
+OneLoop[q, FeynAmp[name, k, expr]] and \
+OneLoop[FeynAmp[name, k, expr]] tranform to OneLoop[name, k, expr].";
 
 OneLoopSum::usage =
-"OneLoopSum[ FeynAmp[ ... ], FeynAmp[ ... ] , ...]
-will calculate a list of Feynman amplitudes by replacing
+"OneLoopSum[ FeynAmp[ ... ], FeynAmp[ ... ] , ...] \
+will calculate a list of Feynman amplitudes by replacing \
 FeynAmp step by step by OneLoop.";
 
 Prefactor::usage =
-"Prefactor is an option for OneLoop and OneLoopSum.
-If set as option of OneLoop, the amplitude is multiplied by
-Prefactor before calculation; if specified as option of OneLoopSum,
+"Prefactor is an option for OneLoop and OneLoopSum. \
+If set as option of OneLoop, the amplitude is multiplied by \
+Prefactor before calculation; if specified as option of OneLoopSum, \
 after calculation in the final result as a global factor.";
 
 SelectGraphs::usage =
-"SelectGraphs is an option for OneLoopSum indicating that only a
-slected set of graphs of the list provided to OneLoopSum is to
-be calculated.
-Possible settings are: SelectGraphs -> { i, j,  ... }
-or SelectGraphs -> { a, {b, c}, ...  }
-which indicates the graphs to be taken from the list provided
-to OneLoopSum. In the second setting the list {b, c} indicates that
+"SelectGraphs is an option for OneLoopSum indicating that only a \
+slected set of graphs of the list provided to OneLoopSum is to \
+be calculated. \
+Possible settings are: SelectGraphs -> { i, j,  ... } \
+or SelectGraphs -> { a, {b, c}, ...  } \
+which indicates the graphs to be taken from the list provided \
+to OneLoopSum. In the second setting the list {b, c} indicates that \
 all amplitudes from b to c should be taken.";
 
 ReduceGamma::usage =
-"ReduceGamma is an option of OneLoop. If set to True all
-DiracMatrix[6] and DiracMatrix[7] (i.e. all ChiralityProjector)
+"ReduceGamma is an option of OneLoop. If set to True all \
+DiracMatrix[6] and DiracMatrix[7] (i.e. all ChiralityProjector) \
 are reduced to Gamma5.";
 
 ReduceToScalars::usage =
-"ReduceToScalars is an option for OneLoop  and OneLoopSum that
-specifies whether the result will be reduced to scalar A0, B0, C0
+"ReduceToScalars is an option for OneLoop  and OneLoopSum that \
+specifies whether the result will be reduced to scalar A0, B0, C0 \
 and D0 scalar integrals.";
 
 SmallVariables::usage =
-"SmallVariables is an option for OneLoop.
-\"SmallVariables->{Melectron}\" i.e. will
-substitute \"SmallVariable[Melectron]\"
+"SmallVariables is an option for OneLoop. \
+\"SmallVariables->{Melectron}\" i.e. will \
+substitute \"SmallVariable[Melectron]\" \
 for all Melectron's in the calculation.";
 
 StandardMatrixElement::usage =
 "StandardMatrixElement[ ... ] is the head for matrix element abbreviations.";
 
 SetStandardMatrixElements::usage =
-"SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ...]. Set abbreviations
-abb1, abb2, ... for matrix elements sm1, sm2, ... \\
-SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ..., cons]. Set abbreviations
-abb1, abb2, ... for matrix elements sm1, sm2, ... using energy-momentum conservation cons,
+"SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ...]. Set abbreviations \
+abb1, abb2, ... for matrix elements sm1, sm2, ... \\ \
+SetStandardMatrixElements[{sm1 -> abb1}, {sm2 -> abb2}, ..., cons]. Set abbreviations \
+abb1, abb2, ... for matrix elements sm1, sm2, ... using energy-momentum conservation cons, \
 e.g. k2 -> p1 + p2 - k1";
 
 (* ------------------------------------------------------------------------ *)

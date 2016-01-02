@@ -11,7 +11,7 @@
 (* ------------------------------------------------------------------------ *)
 
 IntegrateByParts::usage = "
-IntegrateByParts[exp, ap, t] does an integration by parts
+IntegrateByParts[exp, ap, t] does an integration by parts \
 of the definite integral Integrate[exp,{t,0,1}].";
 
 (* ------------------------------------------------------------------------ *)

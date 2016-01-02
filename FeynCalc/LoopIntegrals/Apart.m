@@ -21,15 +21,14 @@ into simpler integrals that contain only linearly independent propagators. It \
 uses FCApart as a backend and works and is suitable also for multiloop integrals.";
 
 Apart3::usage =
-"Apart3[expr, x] is equivalent to
-Map2[Factor2, Collect2[Apart1[expr,x],x]].";
+"Apart3[expr, x] is equivalent to Map2[Factor2, Collect2[Apart1[expr,x],x]].";
 
 ExcludeMasses::usage =
-"ExcludeMasses is an option of Apart2. It allows to specify masses for
+"ExcludeMasses is an option of Apart2. It allows to specify masses for \
 which partional fractioning should not be performed,e.g. ExcludeMasses->{m1,m2,3}"
 
-ApartFF::failmsg = "Error! ScalApartFF has encountered a fatal problem and must abort the computation. The problem
-reads: `1`";
+ApartFF::failmsg = "Error! ScalApartFF has encountered a fatal problem and must abort \
+the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

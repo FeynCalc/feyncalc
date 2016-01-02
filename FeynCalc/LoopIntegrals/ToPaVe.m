@@ -17,15 +17,16 @@
 (* ------------------------------------------------------------------------ *)
 
 
-ToPaVe::usage = "ToPaVe[expr,q] converts all the scalar 1-loop integrals that
+ToPaVe::usage = "ToPaVe[expr,q] converts all the scalar 1-loop integrals that \
 depend on the momentum q to scalar Passarino Veltman functions
 A0, B0, C0, D0 etc.";
 
-OtherLoopMomenta::usage = "OtherLoopMomenta is an option of ToPaVe. It takes
-a list of loop momenta other than q that appear in the expression. Knowing
-about these momenta prevents ToPaVe from erroneously converting multiloop
-integrals into PaVe scalar functions. This is of course relevant only for multiloop
-calculations. For 1-loop you don't need to specify this option explicitly.";
+OtherLoopMomenta::usage = "OtherLoopMomenta is an option of ToPaVe. It takes \
+a list of loop momenta other than q that appear in the expression. Knowing \
+about these momenta prevents ToPaVe from erroneously converting multiloop \
+integrals into PaVe scalar functions. This is of course relevant only for \
+multiloop calculations. For 1-loop you don't need to specify this option \
+explicitly.";
 
 (* ------------------------------------------------------------------------ *)
 

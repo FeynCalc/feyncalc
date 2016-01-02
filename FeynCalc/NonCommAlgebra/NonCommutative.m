@@ -35,12 +35,12 @@ NonCommQ::usage =
 DiracTrace's or SUNTrace's.";
 
 NonCommutative::usage=
-"NonCommutative is a data type which may be used, e.g.,  as:
+"NonCommutative is a data type which may be used, e.g.,  as: \
 DataType[x, NonCommutative] = True.";
 
 UnDeclareNonCommutative::usage =
-"UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be
-noncommutative, i.e., DataType[a,b, ..., NonCommutative] = False
+"UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be \
+noncommutative, i.e., DataType[a,b, ..., NonCommutative] = False \
 is performed.";
 
 

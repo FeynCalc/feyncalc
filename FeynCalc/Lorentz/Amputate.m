@@ -12,10 +12,9 @@
 
 
 
-Amputate::usage = "Amputate[exp,q1,q2, ...] amputates Eps
-and DiracGamma. Amputate[exp,q1,q2, Pair->{p}] amputates
-also p.q1 and p.q2; Pair -> All amputates all except
-OPEDelta.";
+Amputate::usage = "Amputate[exp,q1,q2, ...] amputates Eps and DiracGamma. \
+Amputate[exp,q1,q2, Pair->{p}] amputates also p.q1 and p.q2; \
+Pair -> All amputates all except OPEDelta.";
 
 
 (* ------------------------------------------------------------------------ *)
@@ -73,7 +72,7 @@ Amputate[ex_, qi:Except[_?OptionQ], opt:OptionsPattern[]] :=
 				nex = nex /. Eps -> eeps;
 				nex = nex /. eeps[aaa__]^2 :> TIMES[eeps[aaa],eeps[aaa]];
 				nex = nex //. {eeps[a___,Momentum[q,___],b___] :> (li = LorentzIndex[a$AL[inc = inc+1],dim];
-																   Pair[Momentum[q,dim], li] eeps[a,li,b])} /. eeps -> Eps /. TIMES -> Times;
+																Pair[Momentum[q,dim], li] eeps[a,li,b])} /. eeps -> Eps /. TIMES -> Times;
 			];
 			If[ par=!={} && Length[par]>0 && Head[par]===List,
 				nex = nex /. Pair[aa__/;!FreeQ2[{aa}, par]]^n_Integer?Positive :>
@@ -81,18 +80,18 @@ Amputate[ex_, qi:Except[_?OptionQ], opt:OptionsPattern[]] :=
 				If[ MemberQ[par, q],
 					nex = nex //. Pair[Momentum[q,dim], Momentum[q,dim]] :>
 					(li1 = LorentzIndex[a$AL[inc = inc+1], dim];
-					 li2 = LorentzIndex[a$AL[inc = inc+1], dim];
-					 Pair[Momentum[q, dim], li1] Pair[Momentum[q, dim], li2] *Pair[li1, li2]);
+					li2 = LorentzIndex[a$AL[inc = inc+1], dim];
+					Pair[Momentum[q, dim], li1] Pair[Momentum[q, dim], li2] *Pair[li1, li2]);
 					par = SelectFree[par, q];
 				];
 				nex = nex //.{Pair[Momentum[q,___], Momentum[pe_,___]] :> (li = LorentzIndex[a$AL[inc = inc+1],dim];
-																		   Pair[Momentum[q,dim], li] Pair[Momentum[pe,dim],li])/;MemberQ[par,pe]} /. times -> Times;
+																		Pair[Momentum[q,dim], li] Pair[Momentum[pe,dim],li])/;MemberQ[par,pe]} /. times -> Times;
 			];
 			If[ !FreeQ[nex, DiracGamma],
 				nex = nex /. DiracGamma -> dirg;
 				nex = nex //. dirg[Momentum[q,___],___] :>
 				(li = LorentzIndex[a$AL[inc = inc+1],dim];
-				 Pair[Momentum[q,dim], li] dirg[li,dim]) /. dirg -> DiracGamma;
+				Pair[Momentum[q,dim], li] dirg[li,dim]) /. dirg -> DiracGamma;
 				nex = DotSimplify[nex,Expanding -> False];
 			];
 			nex/.dummy->1

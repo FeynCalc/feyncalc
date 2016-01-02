@@ -11,11 +11,10 @@
 (* ------------------------------------------------------------------------ *)
 
 RussianTrick::usage =
-"RussianTrick[exp, k, {q1,q2,p}] (=RussianTrick[exp,p,p,{q1,q2,p}])
-does the russian trick where p is the external momentum.
-RussianTrick[exp, k,l, {q1,q2,p}] (=RussianTrick[exp,k,l])
-does the russian trick where
-l is the momentum to be differentiated.";
+"RussianTrick[exp, k, {q1,q2,p}] (=RussianTrick[exp,p,p,{q1,q2,p}]) \
+does the russian trick where p is the external momentum. \
+RussianTrick[exp, k,l, {q1,q2,p}] (=RussianTrick[exp,k,l]) \
+does the russian trick where l is the momentum to be differentiated.";
 
 (* ------------------------------------------------------------------------ *)
 

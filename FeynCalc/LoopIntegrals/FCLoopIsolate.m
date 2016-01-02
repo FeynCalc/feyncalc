@@ -15,22 +15,23 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopIsolate::usage = "FCLoopIsolate[expr,{q1,q2,...}] wraps
-loop integrals into heads specified by the user. This is useful
-when you want to know which loop integrals appear appear in the
+FCLoopIsolate::usage =
+"FCLoopIsolate[expr,{q1,q2,...}] wraps \
+loop integrals into heads specified by the user. This is useful \
+when you want to know which loop integrals appear appear in the \
 given expression.";
 
 MultiLoop::usage =
-"MultiLoop is an option for FCLoopIsolate. When set to True,
-FCLoopIsolate will isolate only such loop integrals, that
-depend on all of the given loop momenta. Integrals
-that depend only on some of the loop momenta will be treated
+"MultiLoop is an option for FCLoopIsolate. When set to True, \
+FCLoopIsolate will isolate only such loop integrals, that \
+depend on all of the given loop momenta. Integrals \
+that depend only on some of the loop momenta will be treated \
 as non-loop terms and remain non-isolated"
 
 DropScaleless::usage =
-"DropScaleless is an option for FCLoopIsolate. When set to True,
-all the loop integrals that do not contain FeynAmpDenominator,
-i.e. contain only scalar products but no denominators, are set
+"DropScaleless is an option for FCLoopIsolate. When set to True, \
+all the loop integrals that do not contain FeynAmpDenominator, \
+i.e. contain only scalar products but no denominators, are set \
 to zero.";
 
 FCLoopIsolate::fail =

@@ -18,7 +18,7 @@
 
 FCLoopBasisIncompleteQ::usage =
 "FCLoopBasisIncompleteQ[int, {q1,q2,...}] checks if the propagators of the loop \
-integral int( that depends on the loop momenta q1,q2,...) form a basis.";
+integral int( that depends on the loop momenta q1,q2,...) do not form a basis.";
 
 FCLoopBasisOverdeterminedQ::usage =
 "FCLoopBasisOverdeterminedQ[int, {q1,q2,...}] checks if the propagators of the \
@@ -45,7 +45,8 @@ FCLoopBasisFindCompletion::fail=
 Evaluation aborted."
 
 FCLoopBasisFindCompletion::notcomplete=
-"The propagators determined by FCLoopBasisFindCompletion for `1` do not lead to a complete basis! Evaluation aborted."
+"The propagators determined by FCLoopBasisFindCompletion for `1` do not lead to a complete basis! \
+Evaluation aborted."
 
 FCLoopBasisFindCompletion::basisoverdet=
 "The integral `1` contains linearly dependent propagators. You need to rewrite it as a sum of integrals \

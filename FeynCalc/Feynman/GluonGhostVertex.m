@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2015 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Gluon propagator												*)
+(* :Summary: Gluon ghost vertex												*)
 
 (* ------------------------------------------------------------------------ *)
 

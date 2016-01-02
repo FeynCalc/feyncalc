@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 ToLarin::usage =
-"ToLarin[exp] translates gamma[mu].gamma[5] into
+"ToLarin[exp] translates gamma[mu].gamma[5] into \
 -I/6 Eps[mu,nu,la,si] gamma[nu,la,si].";
 
 (* ------------------------------------------------------------------------ *)

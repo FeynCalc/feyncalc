@@ -11,9 +11,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ChargeConjugationMatrixInv::usage =
-"ChargeConjugationMatrixInv is the inverse of
-ChargeConjugationMatrix. It is substituted immediately by
--ChargeConjugationMatrix.";
+"ChargeConjugationMatrixInv is the inverse of ChargeConjugationMatrix. \
+It is substituted immediately by -ChargeConjugationMatrix.";
 
 (* ------------------------------------------------------------------------ *)
 

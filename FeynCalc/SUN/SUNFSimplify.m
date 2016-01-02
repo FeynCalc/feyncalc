@@ -10,12 +10,12 @@
 *)
 
 (* :Summary:  Simplifies expressions that contain SU(N) indices in the
-							fundamental representation                                    *)
+							fundamental representation						*)
 
 (* ------------------------------------------------------------------------ *)
 
 SUNFSimplify::usage = "
-SUNFSimplify[expr] simplifies expression that contain SU(N) indices in the
+SUNFSimplify[expr] simplifies expression that contain SU(N) indices in the \
 fundamental representation";
 
 (* ------------------------------------------------------------------------ *)

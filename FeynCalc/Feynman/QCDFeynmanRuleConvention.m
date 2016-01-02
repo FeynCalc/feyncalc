@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 QCDFeynmanRuleConvention::usage =
-"QCDFeynmanRuleConvention[GluonPropagator],
+"QCDFeynmanRuleConvention[GluonPropagator], \
 QCDFeynmanRuleConvention[GluonGhostVertex], etc. can be set to \
 different values. The default is the Itzykson-Zuber convention. ";
 

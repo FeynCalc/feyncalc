@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 Chisholm::usage =
-"Chisholm[x] substitutes products of three Dirac matrices or
+"Chisholm[x] substitutes products of three Dirac matrices or \
 slashes by the Chisholm identity.";
 
 (* ------------------------------------------------------------------------ *)

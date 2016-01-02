@@ -12,11 +12,11 @@ FCF::usage=
 "FCF is a short form for FeynCalcForm.";
 
 FeynCalcForm::usage=
-"FeynCalcForm[expr] changes the printed output to a an easy to read
-form. Whether the result of FeynCalcForm[expr] is displayed
-or not, depends on the setting of $PrePrint.
-$PrePrint = FeynCalcForm forces displaying everything
-after applying FeynCalcForm. In order to change to the normal
+"FeynCalcForm[expr] changes the printed output to an easy to read \
+form. Whether the result of FeynCalcForm[expr] is displayed \
+or not, depends on the setting of $PrePrint. \
+$PrePrint = FeynCalcForm forces displaying everything \
+after applying FeynCalcForm. In order to change to the normal \
 (internal) Mathematica OutputForm, do: ($PrePrint=.).";
 
 (* ------------------------------------------------------------------------ *)

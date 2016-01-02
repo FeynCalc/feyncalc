@@ -13,10 +13,9 @@
 (* ------------------------------------------------------------------------ *)
 
 Convolute::usage=
-"Convolute[f[x], g[x], x] convolutes f[x] and g[x], i.e.,
-Integrate2[ DeltaFunction[x - x1 x2] f[x1] g[x2],
-												{x1, 0, 1}, {x2, 0, 1}
-					].
+"Convolute[f[x], g[x], x] convolutes f[x] and g[x], i.e., \
+Integrate2[ DeltaFunction[x - x1 x2] f[x1] g[x2], \
+{x1, 0, 1}, {x2, 0, 1}]. \
 Convolute[exp, {x1, x2}] assumes that exp is polynomial in x1 and x2.";
 
 Bracket::usage= "Bracket is an option for Convolute.";

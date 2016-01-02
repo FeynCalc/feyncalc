@@ -9,9 +9,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynCalcToLaTeX::usage =
-"FeynCalcToLaTeX[expr] generates LaTeX with line-breaking for expr.
-FeynCalcToLaTeX[expr, 500] generates LaTeX for expr with 500 being the Window width
-setting for the Mathematica frontend. Increasing its value will generate less
+"FeynCalcToLaTeX[expr] generates LaTeX with line-breaking for expr. \
+FeynCalcToLaTeX[expr, 500] generates LaTeX for expr with 500 being the Window width \
+setting for the Mathematica frontend. Increasing its value will generate less \
 line breaks.";
 
 F2L::usage =

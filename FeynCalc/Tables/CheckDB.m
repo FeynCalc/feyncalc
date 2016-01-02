@@ -9,7 +9,7 @@
 (* ------------------------------------------------------------------------ *)
 
 CheckDB::usage =
-"CheckDB[exp, fil] saves (with Put) or retrieves (with Get) exp to/from a file fil.
+"CheckDB[exp, fil] saves (with Put) or retrieves (with Get) exp to/from a file fil. \
 It checks if the setting of the option Directory \
 is a valid directory name and if fil is a valid file name and does exist. \
 If it does, Get[fil] is executed. \
@@ -38,11 +38,10 @@ It is there to allow evaluating notebooks using CheckDB without having to worry 
 overwriting old results (SetOptions[CheckDB,NoSave->True]).  Default value : False.";
 
 CheckDB::"nostring" =
-		"`1` is not a string.  Please give the file name as a string.";
+"`1` is not a string.  Please give the file name as a string.";
 
 CheckDB::"baddir" =
-		"`1` is not a valid directory.  Please set the option Directory \
-correctly.";
+"`1` is not a valid directory.  Please set the option Directory correctly.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -26,8 +26,8 @@
 FCApart::usage =
 "FCApart[expr,{q1,q2,...}] partial fractions a loop integral (that depends on q1,q2,...) \
 into integrals that contain only linearly independent propagators. The algorithm is largely \
-based on the work and code of F. Feng (arXiv:1204.2314). FCApart is meant to be applied to
-single loop integrals only. If you need to perform partial fractioning on an expression that
+based on the work and code of F. Feng (arXiv:1204.2314). FCApart is meant to be applied to \
+single loop integrals only. If you need to perform partial fractioning on an expression that \
 contains multiple loop integrals, use Apart2";
 
 FCApart::checkfail="
@@ -35,7 +35,8 @@ Error! Partial fractioning of the loop integral `1` by FCApart has produced an i
 Evaluation aborted";
 
 FCApart::error="
-Error! Something went wrong while partial fractioning the loop integral `1` by FCApart. Evaluation aborted";
+Error! Something went wrong while partial fractioning the loop integral `1` by FCApart. \
+Evaluation aborted";
 
 (* ------------------------------------------------------------------------ *)
 

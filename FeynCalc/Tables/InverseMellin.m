@@ -11,9 +11,9 @@
 (* ------------------------------------------------------------------------ *)
 
 InverseMellin::usage=
-"InverseMellin[exp, y] performs the inverse Mellin transform of
-polynomials in OPEm.
-InverseMellin[exp, y, m] performs the inverse Mellin transform of
+"InverseMellin[exp, y] performs the inverse Mellin transform of polynomials \
+in OPEm. \
+InverseMellin[exp, y, m] performs the inverse Mellin transform of \
 polynomials in m.";
 
 (* ------------------------------------------------------------------------ *)

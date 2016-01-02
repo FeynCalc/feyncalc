@@ -18,8 +18,8 @@ FCI::usage=
 "FCI is just an abbreviation of FeynCalcInternal.";
 
 FeynCalcInternal::usage=
-"FeynCalcInternal[exp] translates exp into the internal FeynCalc
-representation. User defined rules can be given
+"FeynCalcInternal[exp] translates exp into the internal FeynCalc \
+representation. User defined rules can be given \
 by the option FinalSubstitutions.";
 
 (* ------------------------------------------------------------------------ *)

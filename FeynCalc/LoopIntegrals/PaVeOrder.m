@@ -11,10 +11,10 @@
 (* ------------------------------------------------------------------------ *)
 
 PaVeOrder::usage =
-"PaVeOrder[expr] orders the arguments of all D0 in expr in a standard way.
-PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...},
-{... m1^2, m2^2, ...}, ...}] orders the arguments of all D0 in expr
-according to the specified ordering lists.
+"PaVeOrder[expr] orders the arguments of all D0 in expr in a standard way. \
+PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, \
+{... m1^2, m2^2, ...}, ...}] orders the arguments of all D0 in expr \
+according to the specified ordering lists. \
 The lists may contain only a subsequence of the D0-variables.";
 
 

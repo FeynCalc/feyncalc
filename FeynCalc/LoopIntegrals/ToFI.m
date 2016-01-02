@@ -11,8 +11,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-ToFI::usage = "ToFI[expr, {q1, q2}, {p}] translates all non-tensorial
-loop integrals in expr into TFI notation from Tarcer.
+ToFI::usage = "ToFI[expr, {q1, q2}, {p}] translates all non-tensorial \
+loop integrals in expr into TFI notation from Tarcer. \
 ToFI[expr, {q}, {p}] introduces TBI B0-like integrals. \
 ToFI can be extended to more external particles and more loops if needed.";
 
@@ -26,8 +26,9 @@ Begin["`ToFI`Private`"]
 (*TODO ToFI should be generalized *)
 
 ToFI[x_,y_List, z_List] :=
-	tofi[x,y,z] /. {FeynmanIntegral[expr_, {q_}, {p_}] :> ToTFI[expr, q, p],
-					FeynmanIntegral[expr_, {q1_, q2_}, {p_}] :> ToTFI[expr, q1, q2, p]
+	tofi[x,y,z] /. {
+		FeynmanIntegral[expr_, {q_}, {p_}] :> ToTFI[expr, q, p],
+		FeynmanIntegral[expr_, {q1_, q2_}, {p_}] :> ToTFI[expr, q1, q2, p]
 	};
 
 tofi[a_, {q__},__] :=
@@ -43,6 +44,7 @@ tofi[expr_Times, {q__}, {ps__}] :=
 
 ToFI[e_,{q_},{p_}] :=
 	ToTFI[e, q, p];
+
 ToFI[e_,{q1_, q2_},{p_}] :=
 	ToTFI[e, q1, q2, p];
 

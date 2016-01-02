@@ -24,8 +24,9 @@ with propagators. ScalarProductCancel[exp] cancels simple cases.";
 SPC::usage =
 "SPC is an abbreviation for ScalarProductCancel.";
 
-SPC::failmsg = "Error! ScalarProductCancel has encountered a fatal problem and must abort the computation. The problem
-reads: `1`";
+SPC::failmsg =
+"Error! ScalarProductCancel has encountered a fatal \
+problem and must abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

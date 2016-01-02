@@ -11,20 +11,20 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynCalc2FORM::usage =
-"FeynCalc2FORM[expr] displays expr in FORM syntax.
-FeynCalc2FORM[file, x] writes x in FORM syntax to a file.
+"FeynCalc2FORM[expr] displays expr in FORM syntax. \n
+FeynCalc2FORM[file, x] writes x in FORM syntax to a file. \n
 FeynCalc2FORM[file, x==y] writes x=y to a file in FORM syntax.";
 
 FORMEpilog::usage =
-"FORMEpilog is an option for FeynCalc2FORM. It may be set
+"FORMEpilog is an option for FeynCalc2FORM. It may be set \
 to a string which is put at the end of the FORM-file.";
 
 FORMProlog::usage =
-"FORMProlog is an option for FeynCalc2FORM. It may be set
+"FORMProlog is an option for FeynCalc2FORM. It may be set \
 to a string which is put after the type declarations of the FORM-file.";
 
 TraceDimension::usage =
-"TraceDimension is an option for FeynCalc2FORM.
+"TraceDimension is an option for FeynCalc2FORM. \
 If set to 4: trace, if set to n: tracen.";
 
 (* ------------------------------------------------------------------------ *)

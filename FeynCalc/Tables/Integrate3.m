@@ -13,14 +13,12 @@
 (* ------------------------------------------------------------------------ *)
 
 Integrate3::usage=
-"Integrate3 is like Integrate, but for some integrals
-which cannot be done directly by Integrate.
-All variables occuring in Integrate3 are supposed to be
-between 0 and 1. Integrate3 accepts an option Table which can be
-set to a list of integrals. The format should be
-{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]
-}
-";
+"Integrate3 is like Integrate, but for some integrals \
+which cannot be done directly by Integrate. \
+All variables occuring in Integrate3 are supposed to be \
+between 0 and 1. Integrate3 accepts an option Table which can be \
+set to a list of integrals. The format should be \
+{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]}";
 
 (* ------------------------------------------------------------------------ *)
 

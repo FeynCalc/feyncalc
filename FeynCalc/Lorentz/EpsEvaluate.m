@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 EpsEvaluate::usage =
-"EpsEvaluate[expr] applies total antisymmetry and
+"EpsEvaluate[expr] applies total antisymmetry and \
 linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
 
 EpsEvaluate::fail =

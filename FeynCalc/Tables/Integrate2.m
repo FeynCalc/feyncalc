@@ -13,16 +13,14 @@
 (* ------------------------------------------------------------------------ *)
 
 Integrate2::usage=
-"Integrate2 is like Integrate, but, schematically,
-Integrate2[a_Plus, b__] := Map[Integrate2[#, b]&, a]  and
-Integrate[f[x] DeltaFunction[1-x], {x,0,1}] --> f[1].
-Integrate2[1/(1-y),{y,x,1}] is intepreted as distribution, i.e. as
-Integrate2[1/(1-y),{y,x,1}] --> Log[1-x]. \n
-Integrate2 accepts an option Table which can be
-set to a list of integrals. The format should be
-{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]
-}
-";
+"Integrate2 is like Integrate, but, schematically, \
+Integrate2[a_Plus, b__] := Map[Integrate2[#, b]&, a]  and \
+Integrate[f[x] DeltaFunction[1-x], {x,0,1}] --> f[1]. \
+Integrate2[1/(1-y),{y,x,1}] is intepreted as distribution, i.e. as \
+Integrate2[1/(1-y),{y,x,1}] --> Log[1-x]. \
+Integrate2 accepts an option Table which can be \
+set to a list of integrals. The format should be \
+{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]}";
 
 (* ------------------------------------------------------------------------ *)
 

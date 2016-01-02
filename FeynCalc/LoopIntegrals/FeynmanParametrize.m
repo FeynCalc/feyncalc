@@ -10,8 +10,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynmanParametrize::usage =
-"FeynmanParametrize[exp,k] introduces feynman parameters for
+"FeynmanParametrize[exp,k] introduces Feynman parameters for \
 all one-loop integrals in exp (k = integration momentum).";
+
 
 (* ------------------------------------------------------------------------ *)
 

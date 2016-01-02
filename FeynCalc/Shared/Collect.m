@@ -13,24 +13,24 @@
 (* ------------------------------------------------------------------------ *)
 
 Collect2::usage=
-"Collect2[expr, x] collects together terms which are not free of any
-occurrence of x.
-Collect2[expr, {x1, x2, ...}]  (or also Collect2[expr, x1, x2,  ...])
-collects together terms which are not free of any occurrence of
-x1, x2, ... .
-The coefficients are put over a common denominator.
-If expr is expanded before collecting depends on the option  Factoring,
-which may be set to Factor, Factor2, or any other function,
-which is applied to the coefficients.
-If expr is already expanded with respect to x, the
+"Collect2[expr, x] collects together terms which are not free of any  \
+occurrence of x. \
+Collect2[expr, {x1, x2, ...}]  (or also Collect2[expr, x1, x2,  ...]) \
+collects together terms which are not free of any occurrence of \
+x1, x2, ... . \
+The coefficients are put over a common denominator. \
+If expr is expanded before collecting depends on the option  Factoring, \
+which may be set to Factor, Factor2, or any other function, \
+which is applied to the coefficients. \
+If expr is already expanded with respect to x, the \
 option Expanding can be set to False.";
 
 Collect3::usage=
-"Collect3[expr, head] collects all monomials of the form head[..]*head[..]*..
+"Collect3[expr, head] collects all monomials of the form head[..]*head[..]*.. \
 in expr. \n
-Collect3[expr, {x, y, ...}] collects terms involving the same powers
-of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, True or Factor2;
-the latter two of these cause the coefficients to be factored. The option Head (default Plus)
+Collect3[expr, {x, y, ...}] collects terms involving the same powers \
+of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, True or Factor2; \
+the latter two of these cause the coefficients to be factored. The option Head (default Plus) \
 specified the function applied to the list of monomials multiplied by their coefficients.";
 
 (* ------------------------------------------------------------------------ *)
