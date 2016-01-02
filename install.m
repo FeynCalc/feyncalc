@@ -48,7 +48,7 @@ Otherwise it will install the latest stable version.";
 InstallFeynCalcTo::usage="InstallFeynCalcTo is an option of InstallFeynCalc. It specifies, the full path \
 to the directory where FeynCalc will be installed.";
 
-InstallFeynArtsTo::usage="InstallArtsCalcTo is an option of InstallFeynArts. It specifies, the full path \
+InstallFeynArtsTo::usage="InstallFeynArtsTo is an option of InstallFeynArts. It specifies, the full path \
 to the directory where FeynArts will be installed.";
 
 If[  $VersionNumber == 8,
@@ -113,11 +113,13 @@ InstallFeynArts[OptionsPattern[]]:=
 InstallFeynCalc[OptionsPattern[]]:=
 	Module[{	unzipDir, tmpzip, gitzip, packageName, packageDir,
 				strDisableWarning,strFeynArts,FCGetUrl,
-				strOverwriteFCdit, faInstalled},
+				strOverwriteFCdit, faInstalled, zipDir},
 
 	If[OptionValue[InstallFeynCalcDevelopmentVersion],
-		gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
-		gitzip = OptionValue[FeynCalcStableVersionLink]
+		gitzip = OptionValue[FeynCalcDevelopmentVersionLink];
+		zipDir = "feyncalc-master",
+		gitzip = OptionValue[FeynCalcStableVersionLink];
+		zipDir = "feyncalc-hotfix-stable"
 	];
 	faInstalled=False;
 
@@ -184,7 +186,7 @@ files or add-ons that are located in that directory, please backup them in advan
 
 	(* Move the files to the final destination	*)
 	WriteString["stdout", "Copying "<>packageName<>" to ", packageDir, " ..."];
-	CopyDirectory[FileNameJoin[{unzipDir,"feyncalc-master","FeynCalc"}],packageDir];
+	CopyDirectory[FileNameJoin[{unzipDir,zipDir,"FeynCalc"}],packageDir];
 	WriteString["stdout", "done! \n"];
 	(* Delete the extracted archive *)
 	Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
