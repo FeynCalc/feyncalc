@@ -61,9 +61,7 @@ Options[InstallFeynCalc]={
 	AutoInstallFeynArts->None,
 	AutoOverwriteFeynCalcDirectory->None,
 	FeynCalcDevelopmentVersionLink->"https://github.com/FeynCalc/feyncalc/archive/master.zip",
-	(* TODO: change this to https://github.com/FeynCalc/feyncalc/archive/Release-9_0_0_0.zip
-	as soon as FeynCalc 9 is released	 *)
-	FeynCalcStableVersionLink->"https://github.com/FeynCalc/feyncalc/archive/master.zip",
+	FeynCalcStableVersionLink->"https://github.com/FeynCalc/feyncalc/archive/hotfix-stable.zip",
 	InstallFeynCalcDevelopmentVersion->False,
 	InstallFeynCalcTo->FileNameJoin[{$UserBaseDirectory, "Applications","FeynCalc"}]
 };
