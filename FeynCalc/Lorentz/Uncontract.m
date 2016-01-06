@@ -122,8 +122,8 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 						Pair[Momentum[c,dimSelect[d]], li] Pair[Momentum[pe,dimSelect[d]],lidr[li]])/;MemberQ[par,pe]} /. times -> Times;
 
 				(* Uncontract tensor functions *)
-				If[ !FreeQ[nex, (tf_/;Context[tf]==="Global`")[___,Momentum[(q | Polarization[q,__]),___],___]],
-					nex = nex //. { (tf_/;Context[tf]==="Global`")[a___,Momentum[(c: q | Polarization[q,__]),d_:4],b___] :>
+				If[ !FreeQ[nex, (tf_/;DataType[tf,FCTensor])[___,Momentum[(q | Polarization[q,__]),___],___]],
+					nex = nex //. { (tf_/;DataType[tf,FCTensor])[a___,Momentum[(c: q | Polarization[q,__]),d_:4],b___] :>
 						(li = LorentzIndex[a$AL[inc = inc+1],dimSelect[d]];
 						tf[a, li, b] Pair[Momentum[c,dimSelect[d]],lidr[li]])}
 				];

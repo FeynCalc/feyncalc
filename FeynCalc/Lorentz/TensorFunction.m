@@ -40,6 +40,8 @@ TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule, OptionsPattern[]] :=
 			at = Last[ef],
 			f = ef
 		];
+		DataType[ef,FCTensor]=True;
+
 		With[ {tf = f},
 			If [at=!="",
 				Which[

@@ -25,6 +25,9 @@ gives True.";
 PositiveNumber::usage =  "PositiveNumber is a data type. E.g. \
 DataType[Epsilon, PositiveNumber] = True (by default). ";
 
+FCTensor::usage =  "FCTensor is a data type. E.g. \
+DataType[R, FCTensor] = True. ";
+
 DataType::usage =
 "DataType[exp, type] = True   defines the object exp to have datatype type. \
 DataType[exp1, exp2, ..., type] defines the objects exp1, exp2, ... to \
