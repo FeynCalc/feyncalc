@@ -1,7 +1,9 @@
-﻿# FeynCalc
+# FeynCalc
 
 [![license: LGPLv3](https://img.shields.io/badge/license-LGPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/LICENSE.md)
 [![latest release](https://img.shields.io/github/release/FeynCalc/feyncalc.svg)](https://github.com/FeynCalc/feyncalc/releases)
+![compatibility](https://img.shields.io/badge/Mathematica-8.x_9.x_10.x-brightgreen.svg)
+![total downloads](https://img.shields.io/github/downloads/feyncalc/feyncalc/total.svg)
 
 
 [FeynCalc](http://www.feyncalc.org/) is a Mathematica package for symbolic evaluation of Feynman diagrams and 
@@ -9,13 +11,25 @@ algebraic calculations in quantum field theory and elementary particle physics.
 
 Visit our [wiki](https://github.com/FeynCalc/feyncalc/wiki) to learn more about FeynCalc!
 
+# Using FeynCalc in your research
+
+Development of FeynCalc costs of a lot of effort and is done on a largely voluntarily basis. 
+To support the developers and increase their academic visibility, please acknowledge our work 
+when you use FeynCalc in your research. You can do so by citing the two FeynCalc papers:
+
+
+* V. Shtabovenko, R. Mertig and F. Orellana, "New Developments in FeynCalc 9.0", TUM-EFT 71/15, arXiv:1601.01167.
+
+* R. Mertig, M. Böhm, and A. Denner, "Feyn Calc - Computer-algebraic calculation of Feynman amplitudes", 
+  Comput. Phys. Commun., 64, 345--359, 1991.
+
 # License
 
 FeynCalc is covered by the GNU Lesser General Public License 3.
 
-Copyright (C) 1990-2015 Rolf Mertig 
-Copyright (C) 1997-2015 Frederik Orellana 
-Copyright (C) 2014-2015 Vladyslav Shtabovenko
+Copyright (C) 1990-2016 Rolf Mertig 
+Copyright (C) 1997-2016 Frederik Orellana 
+Copyright (C) 2014-2016 Vladyslav Shtabovenko
 
 FeynCalc is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as
