@@ -85,6 +85,15 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = ExpandScalarProduct[ex]
 		];
 
+		(* To bring the propagators into a proper form *)
+		ex = ex /. FeynAmpDenominator -> feynsimp[lmoms];
+
+		If [ FreeQ2[ex,lmoms],
+			FCPrint[3,"FCApart: The intermediate expression contains no loop integrals ", ex, FCDoControl->fcaVerbose];
+			Return[ex];
+		];
+
+
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
 		If[	!FreeQ2[ex,{LorentzIndex,Eps,DiracGamma}],

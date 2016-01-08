@@ -68,5 +68,8 @@ m}, {-p2 + q2, m}, {-p2 + q2, m}]/4 + (FAD[q1, q2, {-p1 + q1, m}, \
 q1, m}, {-p2 + q1, m}]*(m^2 - SPD[p2, p2]))/4 - (FAD[q1, {-p2 + q1, \
 m}, {-p2 + q1, m}, {-p1 + q2, m}]*(m^2 - SPD[p2, p2]))/4 + (FAD[q1, \
 q2, {-p1 + q1, m}, {-p2 + q2, m}, {-p2 + q2, m}]*(m^2 - SPD[p1, \
-p1])*(m^2 - SPD[p2, p2]))/4"}
+p1])*(m^2 - SPD[p2, p2]))/4"},
+{"fcstFCApart-ID13", "ApartFF[FVD[q1, mu] FVD[q2, nu] FAD[q1,
+q2, {p1 - q2}, {q1 - p1}, {q2 - p1}], {q1, q2}] // FCE",
+"FAD[q1, q2, -p1 + q2, -p1 + q1, -p1 + q2] FVD[q1, mu] FVD[q2, nu]"}
 });

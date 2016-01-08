@@ -44,6 +44,7 @@ special multiloop topologies and apply appropriate simplifications";
 Begin["`Package`"]
 
 lenso
+feynsimp
 
 End[]
 
@@ -97,7 +98,7 @@ procan[a_, m_] :=
 (*	Handling general multiloop integrals with more than 2 loop momenta	*)
 FeynAmpDenominatorSimplify[exp_, qmore__,
 	q1_/;Head[q1] =!= Rule, q2_ /;Head[q2] =!= Rule,opts:OptionsPattern[]] :=
-	FeynAmpDenominatorSimplify[exp /. FeynAmpDenominator -> feynsimp[q2], qmore, q1,opts];
+	FeynAmpDenominatorSimplify[exp /. FeynAmpDenominator -> feynsimp[{q2}], qmore, q1,opts];
 
 (*	FDS for 1-loop integrals	*)
 FeynAmpDenominatorSimplify[ex_, q1_/;Head[q1]=!=Momentum, OptionsPattern[]] :=
@@ -155,7 +156,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		(* 	Order the propagators such, that the massless propagator with the smalles
 			number of the external momenta goes first. This is not the standard ordering,
 			but it is useful as the first step to bring the integral into canonical form	*)
-		tmp = loopInt /. FeynAmpDenominator -> feynsimp[q] /. FeynAmpDenominator -> feynord2[q];
+		tmp = loopInt /. FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 		FCPrint[3, "fdsOneLoop: After first ordering of the propagators: ", tmp, FCDoControl->fdsVerbose];
 
 		(*	Integrals that are antisymmetric under q->-q are removed	*)
@@ -169,7 +170,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
 					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - pe)} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
-					FeynAmpDenominator -> feynsimp[q] /. FeynAmpDenominator -> feynord2[q];
+					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 
 
 		(*	Perform a shift to make the very first propagator free of external momenta	*)
@@ -206,7 +207,7 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 		res = tmpNew[[1]] + (tmpNew[[2]]/.repRule);
 
 		(*	Finally, order all the propagators canonically	*)
-		res = res /. FeynAmpDenominator :> feynord[q];
+		res = res /. FeynAmpDenominator :> feynord[{q}];
 		FCPrint[3, "fdsOneLoop: Final ordering: ", res, FCDoControl->fdsVerbose];
 		FCPrint[3, "fdsOneLoop: Leaving with: ", res, FCDoControl->fdsVerbose];
 
@@ -237,11 +238,11 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 		(* Apply the shifts succesively *)
 		res = expr;
 		If[	shiftList=!={},
-			Do[res=MomentumExpand[res/.shiftList[[i]]/. FeynAmpDenominator :> feynsimp[q]],{i,Length[shiftList]}]
+			Do[res=MomentumExpand[res/.shiftList[[i]]/. FeynAmpDenominator :> feynsimp[{q}]],{i,Length[shiftList]}]
 		];
 
 		(*	After that, order all the propagators canonically	*)
-		res = res /. FeynAmpDenominator :> feynord[q];
+		res = res /. FeynAmpDenominator :> feynord[{q}];
 
 		(*	This is for cases where some of the external momenta have negative signs, such that we end up
 			with sth like 1/[q^2(q-p1)^2(q-p2)^2(q+p3)^2(q+p4)^2]. In this case we have some freedom
@@ -255,13 +256,13 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 
 			(* Do the shift, if the number of "+"-terms is larger than the number of the "-" terms *)
 			If[Length[Select[prs2,nufaQ]]>Length[Complement[prs2,Select[prs2,nufaQ]]],
-				res=MomentumExpand[res/.q->-q/. FeynAmpDenominator :> feynsimp[q]]
+				res=MomentumExpand[res/.q->-q/. FeynAmpDenominator :> feynsimp[{q}]]
 			];
 
 			(* If both numbers are equal, the relative sign in the second propagator decides *)
 			If[Length[Select[prs2,nufaQ]]===Length[Complement[prs2,Select[prs2,nufaQ]]] && Length[prs2]>=2,
 				If[nufaQ[prs2[[2]]],
-					res=MomentumExpand[res/.q->-q/. FeynAmpDenominator :> feynsimp[q]]
+					res=MomentumExpand[res/.q->-q/. FeynAmpDenominator :> feynsimp[{q}]]
 				]
 			]
 		];
@@ -433,7 +434,7 @@ sortWeightedShifts[{x1_,a1_,b1_,x2_},{y1_,a2_,b2_,y2_}]:=
 	FCUseCache	*)
 removeAnitsymmetricIntegrals[int_,q_]:=
 	If[	Expand[(MomentumExpand[EpsEvaluate[int/.q->-q]] /.
-		FeynAmpDenominator -> feynsimp[q] /. FeynAmpDenominator -> feynord[q])+int]===0,
+		FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord[{q}])+int]===0,
 		0,
 		int
 	];
@@ -496,26 +497,27 @@ feynord[a__PD] :=
 		FeynAmpDenominator @@ Sort[{a}, lenso]
 	];
 
-feynord[q_][a__] :=
-	MemSet[feynord[q][a],
+feynord[qs_List][a__] :=
+	MemSet[feynord[qs][a],
 		FeynAmpDenominator @@
-		Join[Sort[SelectNotFree[{a}, q], lenso], Sort[SelectFree[{a}, q], lenso]]
+		Join[Sort[SelectNotFree[{a}, Sequence@@qs], lenso], Sort[SelectFree[{a}, Sequence@@qs], lenso]]
 	];
 
-feynord2[q_][a__] :=
-	MemSet[feynord2[q][a],
+feynord2[qs_List][a__] :=
+	MemSet[feynord2[qs][a],
 		FeynAmpDenominator @@
-		Join[Sort[SelectNotFree[{a}, q], lenso2], Sort[SelectFree[{a}, q], lenso2]]
+		Join[Sort[SelectNotFree[{a}, Sequence@@qs], lenso2], Sort[SelectFree[{a}, Sequence@@qs], lenso2]]
 	];
 
-(* 	Replaces 1/[(-q+x)^2-m^2] by 1/[(q-x)^2-m^2].
+
+(* 	Replaces 1/[(-q+x)^2-m^2] by 1/[(q-x)^2-m^2] (multiloop version).
 
 	Safe for memoization despite MomentumExpand, since it is applied only
-	inside FeynAmpDenominator, where there are no Pair's	*)
-feynsimp[q_][a__PD] :=
-	MemSet[feynsimp[q][a],
+	inside FeynAmpDenominator, where feynsimpthere are no Pair's	*)
+feynsimp[lmoms_List][a__PD] :=
+	MemSet[feynsimp[lmoms][a],
 		FeynAmpDenominator@@(Expand[MomentumExpand[{a}]] //.
-		PD[-Momentum[q,di_:4] + pe_:0, m_] :> PD[Momentum[q,di] - pe, m])
+		PD[-Momentum[q_,di_:4] + pe_:0, m_]/; MemberQ[lmoms,q] && FreeQ2[pe,lmoms] :> PD[Momentum[q,di] - pe, m])
 	];
 
 
@@ -681,7 +683,7 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 				(* normal procedure *)
 				translat[ zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /.
 									amucheck ->  nopcheck,  zq1, zq2] /.
-				FeynAmpDenominator -> feynsimp[zq1] /. FeynAmpDenominator -> feynsimp[zq2] /.
+				FeynAmpDenominator -> feynsimp[{zq1}] /. FeynAmpDenominator -> feynsimp[{zq2}] /.
 				FeynAmpDenominator -> feynord
 			]  /. {
 				((_. + _. Pair[Momentum[zq1,___],Momentum[OPEDelta,___]])^(vv_/; Head[vv] =!= Integer)) *
