@@ -62,7 +62,37 @@ Tests`Lorentz`fcstContractContractionsIn4dims = {
 {"fcstContractContractionsIn4dims-ID22", "FCClearScalarProducts[]\nContract[FourVector[q, a]*
 		FourVector[p - q, a]]","Pair[Momentum[p], Momentum[q]] - Pair[Momentum[q], Momentum[q]]"},
 {"fcstContractContractionsIn4dims-ID23","Contract[DiracSimplify[DiracReduce[DiracMatrix[mu, nu,
-	rho, sigma]].DiracReduce[DiracMatrix[mu, nu, rho, sigma]]]]","-128"}
+	rho, sigma]].DiracReduce[DiracMatrix[mu, nu, rho, sigma]]]]","-128"},
+{"fcstContractContractionsIn4dims-ID24","LC[][a, b, c, d]^3 // Contract //FCE",
+	"(-SP[a, d]^2 SP[b, c]^2 + 2 SP[a, c] SP[a, d] SP[b, c] SP[b, d] -
+SP[a, c]^2 SP[b, d]^2 + SP[a, d]^2 SP[b, b] SP[c, c] -
+2 SP[a, b] SP[a, d] SP[b, d] SP[c, c] +
+SP[a, a] SP[b, d]^2 SP[c, c] -
+2 SP[a, c] SP[a, d] SP[b, b] SP[c, d] +
+2 SP[a, b] SP[a, d] SP[b, c] SP[c, d] +
+2 SP[a, b] SP[a, c] SP[b, d] SP[c, d] -
+2 SP[a, a] SP[b, c] SP[b, d] SP[c, d] - SP[a, b]^2 SP[c, d]^2 +
+SP[a, a] SP[b, b] SP[c, d]^2 + SP[a, c]^2 SP[b, b] SP[d, d] -
+2 SP[a, b] SP[a, c] SP[b, c] SP[d, d] +
+SP[a, a] SP[b, c]^2 SP[d, d] + SP[a, b]^2 SP[c, c] SP[d, d] -
+SP[a, a] SP[b, b] SP[c, c] SP[d, d]) LC[][a, b, c, d]"},
+{"fcstContractContractionsIn4dims-ID25","LC[][a, b, c, d]^4 // Contract //FCE","
+(-SP[a, d]^2 SP[b, c]^2 + 2 SP[a, c] SP[a, d] SP[b, c] SP[b, d] -
+SP[a, c]^2 SP[b, d]^2 + SP[a, d]^2 SP[b, b] SP[c, c] -
+2 SP[a, b] SP[a, d] SP[b, d] SP[c, c] +
+SP[a, a] SP[b, d]^2 SP[c, c] -
+2 SP[a, c] SP[a, d] SP[b, b] SP[c, d] +
+2 SP[a, b] SP[a, d] SP[b, c] SP[c, d] +
+2 SP[a, b] SP[a, c] SP[b, d] SP[c, d] -
+2 SP[a, a] SP[b, c] SP[b, d] SP[c, d] - SP[a, b]^2 SP[c, d]^2 +
+SP[a, a] SP[b, b] SP[c, d]^2 + SP[a, c]^2 SP[b, b] SP[d, d] -
+2 SP[a, b] SP[a, c] SP[b, c] SP[d, d] +
+SP[a, a] SP[b, c]^2 SP[d, d] + SP[a, b]^2 SP[c, c] SP[d, d] -
+SP[a, a] SP[b, b] SP[c, c] SP[d, d])^2"},
+{"fcstContractContractionsIn4dims-ID25", "LCD[a, b, c, d]^3 // Contract // FCE",
+"LCD[a, b, c, d]^3"},
+{"fcstContractContractionsIn4dims-ID26", "LCD[a, b, c, d]^4 // Contract // FCE",
+"LCD[a, b, c, d]^4"}
 };
 
 Tests`Lorentz`fcstContractDDims = {

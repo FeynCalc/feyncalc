@@ -508,13 +508,19 @@ dosi[x_, z___] :=
 		dosi[fci[y], z];
 
 (*epscondef*)
-	epscon/: epscon[a1_,a2_,a3_,a4_,OptionsPattern[Eps]]^n_Integer?Positive :=  (   (
+	epscon/: epscon[a1_,a2_,a3_,a4_,OptionsPattern[Eps]]^2 :=  (   (
 			( - ($LeviCivitaSign)^2 Det[{{PairContract[a1,a1],PairContract[a1,a2],PairContract[a1,a3],PairContract[a1,a4]},
 					{PairContract[a2,a1],PairContract[a2,a2],PairContract[a2,a3],PairContract[a2,a4]},
 					{PairContract[a3,a1],PairContract[a3,a2],PairContract[a3,a3],PairContract[a3,a4]},
 					{PairContract[a4,a1],PairContract[a4,a2],PairContract[a4,a3],PairContract[a4,a4]}}
 					]//Expand
-			)/.PairContract->Pair ) epscon[a1,a2,a3,a4,OptionsPattern[Eps]]^(n-2) );
+			)/.PairContract->Pair ));
+
+(*epscondef*)
+	epscon/: epscon[a1_,a2_,a3_,a4_,opts:OptionsPattern[Eps]]^n_Integer?Positive :=
+		((hold[epscon[a1,a2,a3,a4,opts]^2]*epscon[a1,a2,a3,a4,opts]^(n-2))/.
+		hold->Identity )/; n>=3 && FreeQ[{a1,a2,a3,a4},LorentzIndex];
+
 	epscon/: epscon[a1_,a2_,a3_,a4_,OptionsPattern[Eps]] epscon[b1_,b2_,b3_,b4_,OptionsPattern[Eps]] :=
 			( - ($LeviCivitaSign)^2 Det[{{PairContract[a1,b1],PairContract[a1,b2],PairContract[a1,b3],PairContract[a1,b4]},
 					{PairContract[a2,b1],PairContract[a2,b2],PairContract[a2,b3],PairContract[a2,b4]},
