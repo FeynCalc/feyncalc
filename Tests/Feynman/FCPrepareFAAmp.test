@@ -1,0 +1,25 @@
+
+
+(* :Title: FCPrepareFAAmp.test												*)
+
+(*
+	This software is covered by the GNU Lesser General Public License 3.
+	Copyright (C) 1990-2015 Rolf Mertig
+	Copyright (C) 1997-2015 Frederik Orellana
+	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCPrepareFAAmp 			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFCPrepareFAAmp = {
+
+{"fcstFCPrepareFAAmp-ID1","FeynArts`FAFeynAmpDenominator[
+FeynArts`FAPropagatorDenominator[Momentum[P, D],
+MW Sqrt[FeynArts`FAGaugeXi[W]]],
+FeynArts`FAPropagatorDenominator[Momentum[k, D],
+m]] // FCPrepareFAAmp","FeynAmpDenominator[
+PropagatorDenominator[Momentum[P, D], MW Sqrt[GaugeXi[W]]],
+PropagatorDenominator[Momentum[k, D], m]]"}
+};
