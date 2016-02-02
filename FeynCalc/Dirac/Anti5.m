@@ -57,11 +57,11 @@ Anti5[xx_, n_] :=
 			HoldDOT[a,b];
 
 		HoldDOT[a___, DiracGamma[6], b___]:=
-			HoldDOT[a, DiracGamma[5], b] + (1/2)*HoldDOT[a, b]/;
+			(1/2)HoldDOT[a, DiracGamma[5], b] + (1/2)*HoldDOT[a, b]/;
 			!MatchQ[{b},{DiracGamma[5],___}|{DiracGamma[6],___}|{DiracGamma[7],___}] &&
 			!MatchQ[{a},{___,DiracGamma[5]}|{___,DiracGamma[6]}|{___,DiracGamma[7]}];
 		HoldDOT[a___, DiracGamma[7], b___]:=
-			HoldDOT[a, DiracGamma[5], b] - (1/2)*HoldDOT[a, b]/;
+			-(1/2)HoldDOT[a, DiracGamma[5], b] + (1/2)*HoldDOT[a, b]/;
 			!MatchQ[{b},{DiracGamma[5],___}|{DiracGamma[6],___}|{DiracGamma[7],___}] &&
 			!MatchQ[{a},{___,DiracGamma[5]}|{___,DiracGamma[6]}|{___,DiracGamma[7]}];
 
@@ -70,7 +70,7 @@ Anti5[xx_, n_] :=
 		HoldDOT[a___, DiracGamma[5], DiracGamma[7],	b___]:=
 			-HoldDOT[a, DiracGamma[7], b];
 		HoldDOT[a___, DiracGamma[6], DiracGamma[5],	b___]:=
-			-HoldDOT[a, DiracGamma[6], b];
+			HoldDOT[a, DiracGamma[6], b];
 		HoldDOT[a___, DiracGamma[7], DiracGamma[5],	b___]:=
 			-HoldDOT[a, DiracGamma[5], b];
 		HoldDOT[a___, DiracGamma[6], DiracGamma[6],	b___]:=
