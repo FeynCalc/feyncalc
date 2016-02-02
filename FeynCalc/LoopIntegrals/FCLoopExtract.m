@@ -38,6 +38,7 @@ Options[FCLoopExtract] = {
 	FCI -> False,
 	FCLoopSplit -> {2,3,4},
 	FeynAmpDenominatorCombine -> True,
+	Factoring -> Factor,
 	MultiLoop -> False,
 	PaVe -> True
 };
@@ -70,7 +71,8 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 									DropScaleless-> OptionValue[DropScaleless],
 									MultiLoop-> OptionValue[MultiLoop],
 									PaVe-> OptionValue[PaVe],
-									ExpandScalarProduct -> False];
+									ExpandScalarProduct -> False,
+									Factoring->OptionValue[Factoring]];
 
 
 		(*	Extract unique loop integrals	*)

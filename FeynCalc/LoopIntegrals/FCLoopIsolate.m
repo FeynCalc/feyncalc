@@ -53,6 +53,7 @@ Options[FCLoopIsolate] = {
 	DropScaleless -> False,
 	Expanding -> True,
 	FeynAmpDenominatorSplit -> True,
+	Factoring -> Factor,
 	Isolate -> False,
 	IsolateNames -> KK,
 	FCI -> False,
@@ -105,7 +106,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,lmoms];
+			ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]];
 		];
 
 		If[	OptionValue[FeynAmpDenominatorSplit],
