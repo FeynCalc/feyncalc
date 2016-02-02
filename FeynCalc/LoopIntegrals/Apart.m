@@ -117,10 +117,10 @@ ApartFF[int_, lmoms_ , OptionsPattern[]]:=
 
 		If[	OptionValue[FeynAmpDenominator],
 			rest  = tmp[[1]];
-			loopInts = FCLoopIsolate[Plus@@tmp[[2;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True],
+			loopInts = FCLoopIsolate[Plus@@tmp[[2;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True, PaVe->False],
 
 			rest  = tmp[[1]]+tmp[[2]];
-			loopInts = FCLoopIsolate[Plus@@tmp[[3;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True]
+			loopInts = FCLoopIsolate[Plus@@tmp[[3;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True, PaVe->False]
 		];
 
 		(*	Split loop integrals from the rest	*)

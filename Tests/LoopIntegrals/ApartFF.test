@@ -61,5 +61,6 @@ ExpandScalarProduct\[Rule]False]//FCE",
 "FAD[l, {-k1 + l, MC}]/2 - FAD[{l, MC}, {-k2 + l + p2, MC}]/2 + (FAD[{l, MC}, k1 + l,
 {-k2 + l + p2, MC}]*(MC^2 - SPD[k1, k1] - 2*SPD[k1, k2] + 2*SPD[k1, p2] - SPD[k2, k2] +
 2*SPD[k2, p2] - SPD[p2, p2]))/2"},
-{"fcstApartFF-ID16","ApartFF[SPD[p, l], {l}]","0"}
+{"fcstApartFF-ID16","ApartFF[SPD[p, l], {l}]","0"},
+{"fcstApartFF-ID17","ApartFF[A0[m^2], {k}, FCI -> True]","A0[m^2]"}
 })
