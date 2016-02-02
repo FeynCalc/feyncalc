@@ -82,7 +82,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 		(* Here a different convention for FCI is used, False means that FCI is needed*)
 		If[ OptionValue[FCI] =!= True,
 			xx = xxx,
-			xx = xxx /. (Thread[# -> FeynCalcInternal[#]]&[Variables[xxx]]);
+			xx = FCI[xxx];
 		];
 
 		FCPrint[1, "DotSimplify: Entering with", dsVerbose];
