@@ -85,6 +85,8 @@ End[]
 
 Begin["`DiracSimplify`Private`"]
 
+dsVerbose::usage="";
+
 DiracSimplify2[exp_] :=
 	Block[ {nn,tt},
 		If[ FreeQ[exp,DOT],
@@ -113,21 +115,107 @@ DiracSimplify2[exp_] :=
 
 
 Options[DiracSimplify] = {
-	DiracCanonical        -> False,
-	DiracSigmaExplicit    -> True,
-	DiracSimpCombine    -> False,
-	DiracSubstitute67     -> False,
-	Expanding             -> True,
-	Factoring             -> False,
-	SirlinRelations        -> True,
+	DiracCanonical		-> False,
+	DiracEquation		-> True,
+	DiracSigmaExplicit	-> True,
+	DiracSimpCombine	-> False,
+	DiracSubstitute67	-> False,
+	Expanding			-> True,
+	FCVerbose			-> True,
+	Factoring			-> False,
 	FeynCalcInternal    -> False,
-	InsideDiracTrace    -> False
+	InsideDiracTrace    -> False,
+	SirlinRelations		-> True
 };
 
-fcinter[x_] :=
-	If[ (FeynCalcInternal /. Options[DiracSimplify]) === True,
-		x,
-		FeynCalcInternal[x]
+
+
+(*TODO: This syntax is really bad and should be blacklisted! *)
+DiracSimplify[x_,y__, z___?OptionQ] :=
+	DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] && FreeQ[{x,y}, RuleDelayed];
+
+
+DiracSimplify[expr_, opts:OptionsPattern[]] :=
+	Block[{ex,res},
+
+
+		If[	OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		If [OptionValue[FCVerbose]===False,
+			dsVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				dsVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "DiracSimplify: Entering DiracSimplify", FCDoControl->dsVerbose];
+
+		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
+
+		FCPrint[1, "DiracSimplify: Checking the syntax", FCDoControl->dsVerbose];
+
+		If[	!FreeQ2[DotExpand[Expand2[DiracSigmaExplicit[ex],{DiracGamma,Spinor,SUNT}]],{
+			DiracGamma[a__]*DiracGamma[b__],
+			DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*
+				DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
+			DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DiracGamma[d__],
+			SUNT[a__]*SUNT[b__],
+			DOT[a:Except[_Spinor]...,SUNT[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,SUNT[e__],f:Except[_Spinor]...],
+			DOT[a___,SUNT[b__],c___]*SUNT[d__]
+			}],
+			Block[{$MessagePrePrint},
+			Message[DiracSimplify::noncom, ToString[expr,FormatType->InputForm]]];
+			Abort[]
+		];
+
+
+		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
+
+		If[	FreeQ2[ex,{DiracGamma,DiracGammaT,Spinor}],
+			Return[ex]
+		];
+
+		If[ !OptionValue[Expanding],
+			(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify.*)
+			If[ OptionValue[DiracSigmaExplicit],
+				ex = DiracSigmaExplicit[ex]
+			];
+			ex = dotLin[ex];
+			If[ OptionValue[DiracEquation] && !FreeQ[ex,Spinor],
+				ex = diracEq[ex]
+			],
+			(*If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.*)
+			FCPrint[2, "DiracSimplify: Contractions", FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: Doing contractions on ", ex, FCDoControl->dsVerbose];
+			ex = ex /. Pair -> PairContract;
+			If[ OptionValue[DiracSigmaExplicit],
+				ex = DiracSigmaExplicit[ex]
+			];
+			FCPrint[2, "DiracSimplify: Starting oldDiracSimplify", FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: Doing oldDiracSimplify on ", ex, FCDoControl->dsVerbose];
+			ex = oldDiracSimplify[ex,Flatten[Join[{opts}, FilterRules[Options[DiracSimplify], Except[{opts}]]]]]/. PairContract -> Pair;
+		];
+
+
+
+		(* 	Covariant normalization of ubar.u or vbar.v (as in Peskin and Schroeder).
+			The combinations ubar.v and vbar.u are orthogonal and hence vanish *)
+		If[	!FreeQ[ex,Spinor],
+			FCPrint[2,"DiracSimplify: Applying spinor normalization on ", ex, FCDoControl->dsVerbose];
+
+			ex = ex/. DOT->holdDOT //.
+			{	holdDOT[Spinor[s_. Momentum[p_],m_, 1],Spinor[s_. Momentum[p_],m_, 1]] -> s 2 m,
+				holdDOT[Spinor[- Momentum[p_],m_, 1],Spinor[Momentum[p_],m_, 1]] -> 0,
+				holdDOT[Spinor[Momentum[p_],m_, 1],Spinor[- Momentum[p_],m_, 1]] -> 0} /.
+			holdDOT -> DOT
+		];
+
+		res = ex;
+		FCPrint[3,"DiracSimplify: Leaving with ", res, FCDoControl->dsVerbose];
+		res
 	];
 
 (*if the expression contains non-commutative objects, apply DotSimplify*)
@@ -148,33 +236,8 @@ dit[x_,ops___Rule] :=
 	Flatten[Prepend[{Options[DiracSimplify]},
 	InsideDiracTrace -> True]]]
 					];
-(* DiracSimplifydef*)
-(* Change RM 20070509 *)
-(*
-DiracSimplify[x_,y__, z___Rule]:=DiracSimplify[DOT[x,y], z];
-*)
 
-(*DiracSimplify[x:Except[_HoldAll].., OptionsPattern[]]:=AAA;*)
-
-
-DiracSimplify[x__, OptionsPattern[]] :=
-	(Block[{$MessagePrePrint},
-		Message[DiracSimplify::noncom, ToString[x,FormatType->InputForm]]
-	];
-	Abort[]	)/;
-	!FreeQ2[DotExpand[Expand[DiracSigmaExplicit[FeynCalcInternal[x]]]], {DiracGamma[a__]*DiracGamma[b__],
-	DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
-	DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DiracGamma[d__],
-	SUNT[a__]*SUNT[b__],
-	DOT[a:Except[_Spinor]...,SUNT[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,SUNT[e__],f:Except[_Spinor]...],
-	DOT[a___,SUNT[b__],c___]*SUNT[d__]
-	}];
-
-
-DiracSimplify[x_,y__, z___?OptionQ] :=
-	DiracSimplify[DOT[x,y], z] /; FreeQ[{x,y}, Rule] && FreeQ[{x,y}, RuleDelayed];
-
-diracSimplify[z_, ___Rule] :=
+diracSimplify[z_, OptionsPattern[]] :=
 	(Contract[z]/.DiracTrace->dit)/;!FreeQ[z,DiracTrace];
 
 dS[x___] :=
@@ -189,86 +252,63 @@ dSNV[x___] :=
 	MemSet[dSNV[x], DiracTrick[x]];
 
 
-(* ****************************************************************** *)
-(*Added 19/9-2002. F.Orellana. Covariant normalization convention
-	NOT Bjorken&Drell convention*)
-DiracSimplify[a_, ___Rule] :=
-	(a /. DOT[xx___,y_Spinor,y_Spinor,z___] :> 2 y[[2]] rdot[xx,z] /. rdot[]:>Sequence[] /. rdot -> DOT)/;
-	FreeQ2[a, {DiracGamma,DiracSlash,DiracMatrix, GA[__],GS[__],GAD[__],GAE[__],GSD[__],GSE[__]}];
 
-	(* If Expanding is set to False, just use the Dirac equation and apply DotSimplify.
-	If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.
-	In both cases, the value of DiracSigmaExplicit specifies, whether the explicit form of
-	DiracSigma is inserted or not  *)
-DiracSimplify[a_, opts___Rule] :=
-	If[ (Expanding /. {opts} /. Options[DiracSimplify]) === False,
-		If[ (DiracSigmaExplicit /. {opts} /. Options[DiracSimplify]) === True,
-		(* extra change on 9/8-2003 by Rolf, due to missed copying from 27/3-2003 *)
-			DiracSigmaExplicit[diracEq[dotLin[a // fcinter]]],
-			diracEq[dotLin[a // fcinter]]
-		],
-		FCPrint[2,"doing oldDiracSimplify on ", StandardForm[a]];
-		oldDiracSimplify[
-			If[ (DiracSigmaExplicit /. {opts} /. Options[DiracSimplify]) === True,
-				DiracSigmaExplicit[    fcinter[a] /. Pair -> PairContract (*/. DOT -> dS*)
-				(*27/3-2003. Fix by Rolf in response to bug report by
-				Francesco Tramontano. See http://www.feyncalc.org/forum/0126.html *)],
-				fcinter[a] /. Pair -> PairContract
-			(*/. DOT -> dS*)
-			], opts] /. PairContract -> Pair
-	];
 (* ****************************************************************** *)
 
 (*this is oldDiracSimplify for spinor free expressions*)
-oldDiracSimplify[x_,y___Rule] :=
-	diracSimplify[x,y] /; FreeQ[x, Spinor];
+oldDiracSimplify[x_, opts:OptionsPattern[]] :=
+	diracSimplify[x, opts] /; FreeQ[x, Spinor];
 
 (*this is oldDiracSimplify for expressions that contain spinors*)
-oldDiracSimplify[x_,yy___Rule] :=
-	Block[ {dre, factoring},
-		FCPrint[2,"entering oldDiracSimplify", x];
-		factoring = Factoring /. {yy} /. Options[DiracSimplify];
+oldDiracSimplify[x_,opts:OptionsPattern[]] :=
+	Block[ {dre, factoring,dooo},
+		FCPrint[2,"DiracSimplify: oldDiracSimplify: Entering with ", x, FCDoControl->dsVerbose];
+
+		factoring = OptionValue[DiracSimplify,{opts},Factoring];
 		If[ factoring === True,
 			factoring = Factor2
 		];
-		(*NEW0796*)
+
 		dre = Collect[DotSimplify[DiracTrick[DiracGammaCombine[x]]]/.
 		DOT->dooo,dooo[__]]/.dooo->DOT;
-		dre =  FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142];
+		dre =  FixedPoint[ SpinorChainEvaluate[#,opts]&, dre, 142];
 		If[ !FreeQ[dre, Eps],
 			dre = Contract[dre, EpsContract -> True];
-			dre = FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142],
+			dre = FixedPoint[ SpinorChainEvaluate[#,opts]&, dre, 142],
 			If[ !FreeQ[dre, LorentzIndex],
 				dre = Contract[dre, Expanding -> False]
 			];
-			dre = FixedPoint[ SpinorChainEvaluate[#,yy]&, dre, 142];
+			dre = FixedPoint[ SpinorChainEvaluate[#,opts]&, dre, 142];
 		];
+
+		FCPrint[2,"DiracSimplify: oldDiracSimplify: Doing contractions in ", dre, FCDoControl->dsVerbose];
+
 		If[ !FreeQ[dre, LorentzIndex],
 			FCPrint[2,"contracting in oldDiracSimpify"];
 			dre = Contract[dre];
 			FCPrint[2,"contracting in oldDiracSimpify done"]
 		];
+
 		If[ Length[DownValues[SpinorsandPairs]] > 1,
 			dre = (dre /. DOT -> SpinorsandPairs/. SpinorsandPairs->DOT)//dotLin
 		];
+
 		If[ !FreeQ[dre, DiracGamma],
 			dre = Expand2[dre, DiracGamma]
 		];
+
 		If[ factoring =!= False,
 			dre = factoring[dre]
 		];
+
+		FCPrint[2,"DiracSimplify: oldDiracSimplify: Leaving with ", dre, FCDoControl->dsVerbose];
+
 		dre
 	]/; !FreeQ[x,Spinor];
 
-collone[x_,y_] :=
-	Collect2[x,y, Factoring -> False];
-
-gamma67back[x_] :=
+DiracSubstitute67[x_] :=
 	x/. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2),
 		DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
-
-DiracSubstitute67[x_] :=
-	gamma67back[x];
 
 contractli[x_] :=
 	MemSet[contractli[x],
@@ -276,38 +316,47 @@ contractli[x_] :=
 	];
 
 (*if the expression doesn't contain any non-commutative objects, return it unevaluated*)
-diracSimplify[x_,___] :=
+diracSimplify[x_, OptionsPattern[]] :=
 	x /; NonCommFreeQ[x];
 
 (*CHANGE 1298 *)
 
-diracSimplify[x_,in___Rule] :=
+diracSimplify[x_, in:OptionsPattern[]] :=
 	If[ $BreitMaison === True,
 		diracSimplifyBM[x,in],
 		diracSimplifyNV[x,in]
 	];
 
-diracSimplifyBM[x_,in___Rule] :=
+diracSimplifyBM[x_,in:OptionsPattern[]] :=
 	MemSet[diracSimplifyBM[x,in], diracSimplifyGEN[x,in]];
-diracSimplifyNV[x_,in___Rule] :=
+diracSimplifyNV[x_,in:OptionsPattern[]] :=
 	MemSet[diracSimplifyNV[x,in], diracSimplifyGEN[x,in]];
 
-diracSimplifyGEN[x_,in___Rule] :=
+diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 	If[ FreeQ[x, DiracGamma],
 		x,
 		Block[ {diracopt,diracdt,diracndt = 0,diraccanopt,diracpdt,diracgasu,
 			diracldt,diracjj = 0,diractrlabel,diracga67,diracsirlin,diracsifac,
 			diracpag,colle, dooT},
 			(* There are several options *)
-			diracopt     = Join[FilterRules[Options[DiracSimplify], Except[{in}]], {in}];
-			diraccanopt  = DiracCanonical/.diracopt;
-			diractrlabel = InsideDiracTrace/.diracopt;
-			diracga67    = DiracSubstitute67/.diracopt;
-			diracsirlin  = SirlinRelations/.diracopt;
-			diracgasu    = DiracSimpCombine/.diracopt;
-			diracsifac   = Factoring/.diracopt;
+
+
+			diraccanopt  = OptionValue[DiracSimplify,{opts},DiracCanonical];
+			diractrlabel = OptionValue[DiracSimplify,{opts},InsideDiracTrace];
+			diracga67    = OptionValue[DiracSimplify,{opts},DiracSubstitute67];
+			diracsirlin  = OptionValue[DiracSimplify,{opts},SirlinRelations];
+			diracgasu    = OptionValue[DiracSimplify,{opts},DiracSimpCombine];
+			diracsifac   = OptionValue[DiracSimplify,{opts},Factoring];
+
+
+
+			FCPrint[2,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify.", FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify to  ", x, FCDoControl->dsVerbose];
 			diracdt = dotLin[ x//DiracGammaExpand ];
-			FCPrint[2,"dir1, diracdt=", FullForm[diracdt]];
+
+
+			FCPrint[2,"DiracSimplify: diracSimplifyGEN: Contractions.", FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Contract indices in  ", diracdt, FCDoControl->dsVerbose];
 			If[ diracgasu === True,
 				diracdt = contractli[DiracGammaCombine[diracdt/.Pair->PairContract]](*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
 				diracdt = contractli[ diracdt ]
@@ -315,7 +364,12 @@ diracSimplifyGEN[x_,in___Rule] :=
 			];
 			(* Commented out Sept. 9 203 by RM, in order to fix the 27/3 2003 bug
 			diracdt = Expand2[ ExpandScalarProduct[diracdt//fEx], {Pair, DOT}]; *)
+
 			If[ diractrlabel===True,
+				FCPrint[2,"DiracSimplify: diracSimplifyGEN: Simplifications inside a Dirac trace.", FCDoControl->dsVerbose];
+				FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying simplifications that are valid only inside a Dirac trace", FCDoControl->dsVerbose];
+
+
 			(* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
 			(*    diracdt = diracdt/.DOT->trIC/. *)
 			(*  only do cyclicity simplification if there is a simple structure of Dirac matrices *)
@@ -324,6 +378,7 @@ diracSimplifyGEN[x_,in___Rule] :=
 					(* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
 					{trI:>dS, spursav:> dS};
 				];
+
 				(* optimization *)
 				colle[a_] :=
 					If[ (Length[a]<200(*0*))||(Head[a]=!=Plus),
@@ -351,13 +406,17 @@ diracSimplifyGEN[x_,in___Rule] :=
 			(* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
 			FCPrint[2,"dir2a, diracdt=", FullForm[diracdt]];
 			(* diracdt = Expand2[ ExpandScalarProduct[diracdt//fEx], {Pair, DOT}]; *)
+
+			FCPrint[2,"DiracSimplify: diracSimplifyGEN: Expanding scalar products", FCDoControl->dsVerbose];
 			diracdt =
 				Expand[ ExpandScalarProduct[diracdt//fEx], DOT | Pair];
+
+
 			FCPrint[2,"dir3, diracdt=", FullForm[diracdt]];
 			If[ FreeQ[diracdt,DOT],
 				diracndt = Expand[(diracdt/.PairContract->ExpandScalarProduct)//DiracGammaExpand];
 				If[ diracga67 === True,
-					diracndt = Expand[diracndt//gamma67back]
+					diracndt = Expand[diracndt//DiracSubstitute67]
 				],
 				FCPrint[2,"dir3 expanding "];
 				(* diracdt = Expand[ diracdt ]; *)
@@ -370,59 +429,72 @@ diracSimplifyGEN[x_,in___Rule] :=
 						diracldt = 1
 					]
 				];
-				FCPrint[2,"in diracSimplify: working with ",diracldt," terms"];
-				While[    diracjj<diracldt,diracjj++;
-										If[ diracldt==1,
-											diracpdt = diracdt,
-											diracpdt = diracdt[[diracjj]]
-										];
-										If[ diractrlabel===True,
-										(* change 2005-02-05
-										diracpdt = diracpdt/.DOT->trIC/.trI->dS//. DOT -> trIC/.trI->dS;
-										 *)
-											diracpdt = diracpdt//.DOT -> dS
-										];
-										(* maybe insert some TimeConstrained here later *)
-										FCPrint[2,"in diracSimplify: contraction done, expand now."];
-										diracpdt =
-											ExpandScalarProduct[ diracpdt ]//Expand;
-										If[ diractrlabel===True,
-											diracpdt = fEx[(diracpdt//DiracGammaExpand)//.DOT->dS](*/.
-															DOT->trIC/.trI->dS//.DOT->dS/.
-															DOT->trIC/.trI->dS *) ,
-											diracpdt = fEx[DiracGammaExpand[diracpdt]/.DOT->dS]//. DOT->dS
-										];
-										If[ diracga67===True,
-											diracpdt = gamma67back[ diracpdt/.DOT->dr67 ],
-											diracpdt = fEx[ diracpdt ]
-										];
-										diracndt = diracndt + Expand2[diracpdt, DOT];
-										FCPrint[2,"# ",diracjj," / ",diracldt," = ", Length[diracndt]];
-				];
-				If[ diracga67===True,
-					If[ !FreeQ[diracndt, DiracGamma[6]|DiracGamma[7]],
-						diracndt = gamma67back[ diracndt/.DOT->dr67 ],
-						diracndt = fEx[diracndt]
+
+				diracpdt = diracdt;
+
+				(* TODO: Here we would need cyclicity simplifications *)
+				(*If[ diractrlabel,
+					(* change 2005-02-05
+					diracpdt = diracpdt/.DOT->trIC/.trI->dS//. DOT -> trIC/.trI->dS; *)
+					diracpdt = DiracTrick[diracpdt]
+				];*)
+(*
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Expanding scalar products", FCDoControl->dsVerbose];
+				diracpdt = ExpandScalarProduct[diracpdt]//Expand;*)
+
+
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Subsituting chiral projectors", FCDoControl->dsVerbose];
+				If[ diracga67,
+					If[!FreeQ2[diracpdt,{DiracGamma[6],DiracGamma[7]}],
+						diracpdt = DiracSubstitute67[diracpdt]
+					];
+					If[!FreeQ2[diracndt,{DiracGamma[6],DiracGamma[7]}],
+						diracndt = DiracSubstitute67[diracndt]
 					]
 				];
-				diracndt = diracndt/.dr->DOT/.PairContract->ExpandScalarProduct;
+
+
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DiracTrick", FCDoControl->dsVerbose];
+				diracpdt = fEx[DiracGammaExpand[diracpdt]]//DiracTrick;
+
+				(*If[ diractrlabel,
+					diracpdt = fEx[(diracpdt//DiracGammaExpand)//DiracTrick](*/.
+									DOT->trIC/.trI->dS//.DOT->dS/.
+									DOT->trIC/.trI->dS *) ,
+					diracpdt = fEx[DiracGammaExpand[diracpdt]//DiracTrick]//DiracTrick
+				];*)
+
+				(*FCPrint[1,"DiracSimplify: diracSimplifyGEN: Subsituting chiral projectors", FCDoControl->dsVerbose];
+				If[ diracga67,
+					diracpdt = DiracSubstitute67[ diracpdt/.DOT->dr67 ],
+					diracpdt = fEx[ diracpdt ]
+				];*)
+
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Expanding scalar products and other things", FCDoControl->dsVerbose];
+				diracndt = diracndt + Expand2[ExpandScalarProduct[diracpdt], DOT];
+
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Doing contractions", FCDoControl->dsVerbose];
+				diracndt = diracndt /. PairContract->ExpandScalarProduct;
+
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify", FCDoControl->dsVerbose];
 				diracndt = Expand[dotLin[diracndt]];
+
+
 				If[ diraccanopt===True,
-					FCPrint[3,"diracordering in diracSimplify"];
+					FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying canonical ordering", FCDoControl->dsVerbose];
 					diracndt = DiracOrder[ diracndt ];
 					diracndt = Expand[dotLin[diracndt]]
 				];
 			];
-			FCPrint[2,"dir4 ",diracdt];
-			FCPrint[3,"diracdt = ", diracdt ];
-			diracndt =
-				dotLin[diracndt];
-			FCPrint[2,"dir5"];
-			If[ diracsifac === True,
+
+
+			If[ diracsifac,
+				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Factoring the result", FCDoControl->dsVerbose];
 				diracndt = Factor2[ diracndt ]
 			];
-			FCPrint[2,"dir6 ", diracndt];
-			FCPrint[3,"exiting diracSimplify"];
+
+			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Leaving DiracSimplify", FCDoControl->dsVerbose];
+
 			diracndt/.spursav:> DOT
 		]
 	];  (* end of diracSimplify *)
@@ -521,24 +593,25 @@ spinlin[a_] :=
 		ddot[x_Spinor,b___,c_Spinor,d_Spinor,e___,f_Spinor,g___]:> ddot[x,b,c] ddot[d,e,f,g]
 	})/.ddot[]->1/.ddot->DOT;
 
-SetAttributes[ SpinorChainEvaluate, Listable ];
+(*SetAttributes[ SpinorChainEvaluate, Listable ];*)
 
-SpinorChainEvaluate[y_, ___Rule] :=
+SpinorChainEvaluate[y_, OptionsPattern[]] :=
 	y /; FreeQ[y,Spinor];
 
 (* #################################################################### *)
 (*                             Main44                                   *)
 (* #################################################################### *)
 
-SpinorChainEvaluate[z_Plus,opts___Rule] :=
+SpinorChainEvaluate[z_Plus,opts:OptionsPattern[]] :=
 	Block[ {nz,useSirlin},
-		useSirlin = SirlinRelations/.{opts}/.Options[DiracSimplify];
+		useSirlin = OptionValue[DiracSimplify,{opts},SirlinRelations];
+		FCPrint[3,"DiracSimplify: SpinorChainEvaluate: Entering with ", z, FCDoControl->dsVerbose];
 		nz = DotSimplify[z];
 		If[ Length[nz]>20,
 			nz = Collect2[ nz, Spinor,Factoring -> False]
 		];
 		If[ Head[nz]=!=Plus,
-			nz = SpinorChainEvaluate[nz],
+			nz = SpinorChainEvaluate[nz,opts],
 			If[ !useSirlin,
 				nz = Map[ spcev0, nz ],
 				If[ FreeQ[nz, DOT[Spinor[p1__], (a__ /; FreeQ[{a}, DiracGamma[_,_]]),
@@ -550,13 +623,14 @@ SpinorChainEvaluate[z_Plus,opts___Rule] :=
 				]
 			]
 		];
+		FCPrint[3,"DiracSimplify: SpinorChainEvaluate: Leaving with ", nz, FCDoControl->dsVerbose];
 		nz
 	];
 
-SpinorChainEvaluate[x_,opts___Rule] :=
+SpinorChainEvaluate[x_,opts:OptionsPattern[]] :=
 	Block[ {nz,useSirlin},
-		useSirlin = SirlinRelations/.{opts}/.Options[DiracSimplify];
-		FCPrint[3,"Entering sirlin," useSirlin];
+		useSirlin = OptionValue[DiracSimplify,{opts},SirlinRelations];
+		FCPrint[3,"DiracSimplify: SpinorChainEvaluate: Entering with ", x, FCDoControl->dsVerbose];
 		If[ !useSirlin,
 			nz = Expand[spcev0[x],
 				Spinor
@@ -570,8 +644,9 @@ SpinorChainEvaluate[x_,opts___Rule] :=
 				nz = sirlin00[ Expand[FixedPoint[spcev0, x//sirlin0, 3 ], Spinor]];
 			]
 		];
+		FCPrint[3,"DiracSimplify: SpinorChainEvaluate: Leaving with ", FullForm[nz], FCDoControl->dsVerbose];
 		nz
-	]/; !Head[x]===Plus;
+	]/; !Head[x]===Plus && Head[x]=!=List;
 (* #################################################################### *)
 (*                             Main45                                   *)
 (* #################################################################### *)
@@ -618,7 +693,7 @@ spcev[x___,Spinor[a__],b___,Spinor[c__],y___] :=
 	Block[ {spcevdi,spcevre,spcevj},
 		FCPrint[2,"entering spcev with ", InputForm[DOT@@{x,Spinor[a],b,Spinor[c],y}]];
 		spcevdi = diracSimplify[DOT[Spinor[a],b,Spinor[c]],    InsideDiracTrace->False,
-			DiracCanonical->False, diracInfo->False, Factoring->False, DiracSimpCombine->True];
+			DiracCanonical->False, Factoring->False, DiracSimpCombine->True];
 		spcevdi = Expand[ExpandScalarProduct[spcevdi]];
 		spcevdi = Expand[spcevdi];
 		If[ !(Head[spcevdi]===Plus),
