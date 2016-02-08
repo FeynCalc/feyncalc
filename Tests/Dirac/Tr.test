@@ -54,23 +54,17 @@ Tests`Dirac`fcstTr = {
 	Momentum[p1]].DiracMatrix[nu, Dimension -> D].DiracGamma[
 	Momentum[p3]].DiracGamma[Momentum[p1]].DiracGamma[Momentum[p2]],
 	PairCollect -> True]",
-	"4*((-288 + 224*D - 56*D^2 + 4*D^3)*Pair[Momentum[p1],
-	Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]^2*
-	Pair[Momentum[p2], Momentum[p2]] + (256 - 128*D +
-	16*D^2)*Pair[Momentum[p1], Momentum[p2]]^2*
-	Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2],
-	Momentum[p3]] + (112 - 104*D + 28*D^2 - 2*D^3)*
-	Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
-	Momentum[p3]]*Pair[Momentum[p2], Momentum[p2]]*
-	Pair[Momentum[p2], Momentum[p3]] + (-128 + 64*D -
-	8*D^2)*Pair[Momentum[p1],
-	Momentum[p1]]*Pair[Momentum[p1], Momentum[p2]]*
-	Pair[Momentum[p2], Momentum[p3]]^2 + (-128 + 64*D -
-	8*D^2)*Pair[Momentum[p1], Momentum[p2]]^3*
-	Pair[Momentum[p3], Momentum[p3]] + (168 - 104*D +
-	20*D^2 - D^3)*Pair[Momentum[p1], Momentum[p1]]*
-	Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p2],
-	Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]])"},
+	"-4*((288 - 224*D + 56*D^2 - 4*D^3)*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1],
+	Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p2]] + (-256 + 128*D - 16*D^2)*Pair[Momentum[p1],
+	Momentum[p2]]^2*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]] +
+	(-112 + 104*D - 28*D^2 + 2*D^3)*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
+	Momentum[p3]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p2], Momentum[p3]] +
+	(128 - 64*D + 8*D^2)*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
+	Momentum[p2]]*Pair[Momentum[p2], Momentum[p3]]^2 + (128 - 64*D + 8*D^2)*Pair[Momentum[p1],
+	Momentum[p2]]^3*Pair[Momentum[p3], Momentum[p3]] + (-168 + 104*D -
+	20*D^2 + D^3)*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p1],
+	Momentum[p2]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3],
+	Momentum[p3]])"},
 {"fcstTr-ID7",
 	"Tr[DiracMatrix[b, Dimension -> D].DiracMatrix[a,
 	Dimension -> D].DiracGamma[Momentum[p1]].DiracGamma[
@@ -99,14 +93,13 @@ Tests`Dirac`fcstTr = {
 {"fcstTr-ID10",
 	"Tr[DiracMatrix[sigma].(DiracSlash[k1] - DiracSlash[p1] -
 	m).DiracMatrix[rho].(DiracSlash[p1] + m).(DiracSlash[p2] - m),
-	PairCollect -> True]","4*((-(m*t)/2 + (m*u)/2)*Pair[LorentzIndex[rho],
-	LorentzIndex[sigma]] - m*Pair[LorentzIndex[rho], Momentum[p1]]*
-	Pair[LorentzIndex[sigma], Momentum[k1]] + m*Pair[LorentzIndex[rho],
-	Momentum[p2]]*Pair[LorentzIndex[sigma], Momentum[k1]] -
-	m*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p1]] +
-	2*m*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p1]] +
-	m*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] -
-	2*m*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
+	PairCollect -> True]","-2*m*((t - u)*Pair[LorentzIndex[rho], LorentzIndex[sigma]] +
+	2*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[k1]] -
+	2*Pair[LorentzIndex[rho], Momentum[p2]]*Pair[LorentzIndex[sigma], Momentum[k1]] +
+	2*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p1]] -
+	4*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p1]] -
+	2*Pair[LorentzIndex[rho], Momentum[k1]]*Pair[LorentzIndex[sigma], Momentum[p2]] +
+	4*Pair[LorentzIndex[rho], Momentum[p1]]*Pair[LorentzIndex[sigma], Momentum[p2]])"},
 {"fcST-TR-ID11",
 	"FCClearScalarProducts[]\n Tr[DiracMatrix[a[1], Dimension -> (d - 4)].DiracMatrix[a[2],
 	Dimension -> (d - 4)].DiracMatrix[a[3], Dimension -> (d - 4)].

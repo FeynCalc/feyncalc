@@ -73,7 +73,7 @@ Options[DiracTrace] = {
 	Factoring -> Automatic,
 	FeynCalcExternal -> False,
 	Mandelstam    -> {},
-	PairCollect    -> True,
+	PairCollect    -> False,
 	DiracTraceEvaluate-> False,
 	Schouten-> 0,
 	LeviCivitaSign:> $LeviCivitaSign,
@@ -173,17 +173,18 @@ diractraceevsimple[y_ DOT[x_,z__], opts:OptionsPattern[]] :=
 diractraceevsimple[x_Plus , opts:OptionsPattern[]] :=
 	Map[diractraceevsimple[#,{opts}]&, x];
 
-diractraceevsimple[DOT[x___], OptionsPattern[]] :=
+diractraceevsimple[DOT[x___], opts:OptionsPattern[]] :=
 	(If[ FreeQ[#,LorentzIndex],
 		#,
 		#/.Pair->PairContract/.PairContract->Pair
-	]&[diractraceev@@DOT[x]])/;
+	]&[diractraceev[Sequence@@DOT[x],opts]])/;
 	(MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..}] ||
 	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..}] ||
 	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_,_],_]..,
 		DiracGamma[5 | 6 | 7]} ] ||
 	MatchQ[List@@DOT[x], { DiracGamma[(LorentzIndex | Momentum)[_]]..,
 		DiracGamma[5 | 6 | 7]}]);
+
 
 dirli[LorentzIndex[xx_, ___],___] :=
 	xx;
@@ -268,8 +269,8 @@ diractraceev[x_, opts:OptionsPattern[]] :=
 diractraceev2[x_,opts:OptionsPattern[]] :=
 	(OptionValue[DiracTrace,{opts},TraceOfOne]) * x /; FreeQ[x,DiracGamma];
 
-diractraceev2[a_DiracGamma,b__DiracGamma, OptionsPattern[]] :=
-	diractraceev2[ DOT @@ {a,b} ];
+diractraceev2[a_DiracGamma,b__DiracGamma, opts:OptionsPattern[]] :=
+	diractraceev2[ DOT @@ {a,b}, opts];
 
 diractraceev2[nnx_,opts:OptionsPattern[]] :=
 	Block[ {diractrjj, diractrlnx, diractrres, diractrny = 0, mand, diractrfact, nx,
@@ -293,6 +294,10 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 		];
 		nx = Collect2[coneins[nnx], DOT, Factoring -> False];
 		nx = DiracGammaCombine[nx];
+
+
+		FCPrint[2,"DiracTrace: diractraceev2: Entering the main loop. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
+
 		If[ Head[nx]===Plus && Length[nx] > 142,
 			(*Long sums of traces*)
 			diractrlnx = Length[nx];
@@ -356,6 +361,7 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			]
 		];
 		(* Apply DiracSimplify one more time *)
+		FCPrint[2,"DiracTrace: diractraceev2: Applying DiracSimplify again. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
 		If[ !FreeQ[diractrny, DiracGamma],
 			diractrny = DiracSimplify[ diractrny, InsideDiracTrace->True,
 			Factoring->False, FeynCalcInternal -> True, DiracCanonical->False]
@@ -367,26 +373,30 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			Message[DiracTrace::rem];
 			Abort[]
 		];
-		FCPrint[2,"CH2 ", TimeUsed[], FCDoControl->diTrVerbose];
+		FCPrint[2,"DiracTrace: diractraceev2: Contracting Lorentz indices. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
 		(* If the output of the second DiracSimplify contains Lorentz indices, try
 		to contract them *)
+
 		If[ !FreeQ[diractrny, LorentzIndex],
+			diractrny=Contract[diractrny];
 			(* Special contractions for expressions that contain Levi-Civita tensors*)
-			If[ !FreeQ[diractrny, Eps],
+			(*If[ !FreeQ[diractrny, Eps],
 				diractrny = diractrny //. {
 					Pair[LorentzIndex[a_,D], b_] Eps[c___,LorentzIndex[a_],d___] :> Eps[c,b,d],
 					Pair[LorentzIndex[a_,D], b_]  Eps[c___,LorentzIndex[a_,D],d___] :> Eps[c,b,d]
 				}
 			];
-			diractrny = diractrny /. Pair -> PairContract /. PairContract -> scev
+			diractrny = diractrny /. Pair -> PairContract /. PairContract -> scev*)
 		];
-		FCPrint[2,"CH3", TimeUsed[], FCDoControl->diTrVerbose];
+		FCPrint[2,"DiracTrace: diractraceev2: Treating Eps tensors. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
 		(* Special expansion for expressions that contain Levi-Civita tensors*)
 		If[ !FreeQ[diractrny, Eps],
 			diractrny = EpsEvaluate[diractrny]//Expand;
 			diractrny = Contract[ diractrny, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract],
 								Schouten->schoutenopt, Expanding -> False ];
 		];
+
+		FCPrint[2,"DiracTrace: diractraceev2: Factoring the result. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
 		(* Factor the result, if requested *)
 		If[ diractrfact===True,
 			diractrres = Factor2[traceofone diractrny],
@@ -395,6 +405,8 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 				diractrres = diractrfact[traceofone diractrny]
 			]
 		];
+
+		FCPrint[2,"DiracTrace: diractraceev2: Applying TrickMandelstam. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
 		(* If the result should contain 2 -> 2 Mandelstam variable *)
 		If[ Length[mand] > 0,
 			diractrres = TrickMandelstam @@ Prepend[{mand}, diractrres]
@@ -403,10 +415,14 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 			Plus[x]/;FreeQ[{x},Pair];
 		(* If the result should be collected w.r.t Pairs *)
 		If[ diractrcoll===True,
+			FCPrint[2,"DiracTrace: diractraceev2: Collecting the result w.r.t Pairs. Time used: ", TimeUsed[], FCDoControl->diTrVerbose];
 			diractrpc[x__] :=
 				Collect2[ Plus[x],Pair ,Factoring -> False];
 			diractrres = diractrres/. Plus -> diractrpc
 		];
+
+		FCPrint[2,"DiracTrace: diractraceev2: Leaving. Time used: ",TimeUsed[], FCDoControl->diTrVerbose];
+
 		diractrres
 	]/; !FreeQ2[nnx,{DOT,DiracGamma}];
 
@@ -669,7 +685,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 			scx[a_,b_] :=
 				scev[spx[[a]],spx[[b]]];
 			temp2 = Hold[spur][spx];
-			FCPrint[1, "Entering spur with ", FullForm[spx], FCDoControl->diTrVerbose];
+			FCPrint[3, "Entering spur with ", spx, FCDoControl->diTrVerbose];
 			resp =
 			Which[
 				(*Trace of an odd number of Dirac matrices without gamma^5 *)

@@ -22,18 +22,21 @@ End[]
 
 Begin["`TR`Private`"]
 
+trVerbose::usage="";
+
 Options[ TR ] = {
 	DiracTraceEvaluate -> True,
 	EpsContract           -> True,
 	Explicit           -> True,
-	Factoring          -> False,
+	Factoring          -> Automatic,
+	FCVerbose			-> True,
 	FeynCalcExternal   -> False,
 	LeviCivitaSign     :> $LeviCivitaSign,
 	Mandelstam         -> {},
 	PairCollect			-> False,
 	SUNNToCACF			-> False,
 	SUNTrace           -> False,
-	Schouten           -> 442,
+	Schouten           -> 0,
 	TraceOfOne         -> 4
 };
 
@@ -42,6 +45,14 @@ TR[x_, rul:OptionsPattern[]] :=
 	Block[{tt=FeynCalcInternal[x], doot, diractr, dit, fcex, diractrev, sunntocacf,
 		diracTraceOpts,sunTraceOpts,trOpts},
 
+		If [OptionValue[FCVerbose]===False,
+			trVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				trVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"TR: Entering with: ", tt, FCDoControl->trVerbose];
 
 		diractrev = OptionValue[DiracTraceEvaluate];
 		sunntocacf = OptionValue[SUNNToCACF];
@@ -52,11 +63,13 @@ TR[x_, rul:OptionsPattern[]] :=
 		If[!FreeQ[x,CF|CA],
 			sunntocacf = True
 		];
+
 		If[OptionValue[Explicit],
 			tt = Explicit[tt]
 		];
 
 		If[OptionValue[SUNTrace] && !FreeQ2[tt, {SUNIndex,ExplicitSUNIndex}],
+			FCPrint[1,"TR: Computing the SU(N) trace.", FCDoControl->trVerbose];
 			tt = DiracTrace[tt,diracTraceOpts];
 			tt = SUNSimplify[tt, SUNNToCACF -> sunntocacf, SUNTrace -> True, Explicit -> False];
 			tt = tt /. (DiracTraceEvaluate -> False) :>	(DiracTraceEvaluate -> diractrev) //
@@ -84,12 +97,18 @@ TR[x_, rul:OptionsPattern[]] :=
 			tt = tt /. {doot[a__SUNT, b__] :> (doot[a] doot[b]) /;
 			FreeQ[{b}, SUNIndex|ExplicitSUNIndex]} /. doot -> DOT /. dit -> DiracTrace;
 		];
-		diractr[y__] := (DiracTrace @@
-			Join[{y}, diracTraceOpts]);
+
+		FCPrint[1,"TR: Computing the Dirac trace.", FCDoControl->trVerbose];
+		FCPrint[4,"TR: Options for Dirac trace: ", {diracTraceOpts}, FCDoControl->trVerbose];
+		diractr[y__] :=
+			(DiracTrace @@ Join[{y}, diracTraceOpts]);
 		tt = tt /. DiracTrace -> diractr;
+
 		If[	OptionValue[FeynCalcExternal],
 			tt = FeynCalcExternal[tt]
 		];
+
+		FCPrint[1,"TR: Leaving with: ",tt, FCDoControl->trVerbose];
 		tt
 	];
 
