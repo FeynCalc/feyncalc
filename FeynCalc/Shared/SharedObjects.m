@@ -514,6 +514,12 @@ DiracGamma::gamma5fail =
 This is fine for all dimensional regularization schemes supported by FeynCalc including NDR. \
 Evaluation aborted!";
 
+Momentum::lorentzhead =
+"`1` is forbidden in FeynCalc. Momentum cannot be the head of a LorentzIndex!";
+
+LorentzIndex::momentumhead =
+"`1` is forbidden in FeynCalc. LorentzIndex cannot be the head of a Momentum !";
+
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
 
@@ -1239,6 +1245,10 @@ Li3 =
 Li2 =
 	PolyLog[2,#]&;
 
+LorentzIndex[Momentum[x_], dim_:4]:=
+	(Message[LorentzIndex::momentumhead,ToString[LorentzIndex[FCGV["Momentum"][x],dim],InputForm]];
+	LorentzIndex[FCGV["Momentum"][x],dim]);
+
 (* expanded because of CreateFCAmp's strange results  ... *)
 LorentzIndex[LorentzIndex[in_, dim_ :4], dim_ :4] :=
 	LorentzIndex[in,dim];
@@ -1287,6 +1297,10 @@ Momentum[0, _:4] :=
 
 Momentum[_, 0] :=
 	0;
+
+Momentum[LorentzIndex[x_], dim_:4]:=
+	(Message[Momentum::lorentzhead,ToString[Momentum[FCGV["LorentzIndex"][x],dim],InputForm]];
+	Momentum[FCGV["LorentzIndex"][x],dim]);
 
 Momentum[Momentum[x_, dim1_:4], dim2_:4] :=
 	If[ dim1===dim2,
