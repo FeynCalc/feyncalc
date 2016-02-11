@@ -45,7 +45,7 @@ Uncontract[x_, q1__, q2:Except[_?OptionQ], opt:OptionsPattern[]] :=
 
 Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 	Block[{	exp,eeps,nex,li,li1,li2,dim,par,dummy,inc,
-			a$AL,dr, lidr,seq,dimSelect},
+			a$AL,dr, lidr,seq,dimSelect,times},
 
 		par = OptionValue[Pair];
 		dim = OptionValue[Dimension];
@@ -85,11 +85,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 			If[ !FreeQ[nex,Eps],
 				nex = nex /. Eps -> eeps;
-				nex = nex /. eeps[aaa__]^2 :> TIMES[eeps[aaa],eeps[aaa]];
+				nex = nex /. eeps[aa__]^n_Integer?Positive  :>
+					Apply[times, Table[eeps[aa], {j,Abs[n]}]]^Sign[n];
 
 				nex = nex //. {eeps[a___,Momentum[(c: q | Polarization[q,__]),d_:4],b___] :>
 					(li = LorentzIndex[a$AL[inc = inc+1], dimSelect[d]];
-					Pair[Momentum[c, dimSelect[d]], li] eeps[a,lidr[li],b])} /. eeps -> Eps /. TIMES -> Times;
+					Pair[Momentum[c, dimSelect[d]], li] eeps[a,lidr[li],b])} /. eeps -> Eps /. times -> Times;
 			];
 			If[ !FreeQ[nex, DiracGamma],
 				(* The momentum that we want to uncontract might be inside a slash like GS[a+b+c]!	*)
@@ -107,8 +108,8 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				(*Uncontract denominators also. Change by F.Orellana. 3/11-2002*)
 				(*Reverted, RM 06/22-2011 *)
 
-				nex = nex /. Pair[aa__/;!FreeQ2[{aa}, par]]^n_Integer?Positive :>
-					Apply[times, Table[Pair[aa], {j,Abs[n]}]]^Sign[n];
+				nex = nex /. tf_[aa__/;!FreeQ2[{aa}, par]]^n_Integer?Positive/; (tf===Pair || DataType[tf,FCTensor]===True)  :>
+					Apply[times, Table[tf[aa], {j,Abs[n]}]]^Sign[n];
 
 				If[ MemberQ[par, q],
 					nex = nex //. Pair[Momentum[(c1: q | Polarization[q,__]),d_:4], Momentum[(c2: q | Polarization[q,__]),d_:4]] :>
@@ -119,7 +120,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				];
 				nex = nex //.{Pair[Momentum[(c: q | Polarization[q,__]),d_:4], Momentum[pe_,___]] :>
 						(li = LorentzIndex[a$AL[inc = inc+1],dimSelect[d]];
-						Pair[Momentum[c,dimSelect[d]], li] Pair[Momentum[pe,dimSelect[d]],lidr[li]])/;MemberQ[par,pe]} /. times -> Times;
+						Pair[Momentum[c,dimSelect[d]], li] Pair[Momentum[pe,dimSelect[d]],lidr[li]])/;MemberQ[par,pe]} ;
 
 				(* Uncontract tensor functions *)
 				If[ !FreeQ[nex, (tf_/;DataType[tf,FCTensor])[___,Momentum[(q | Polarization[q,__]),___],___]],
@@ -129,7 +130,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				];
 
 			];
-			nex/.dummy->1/.seq:>Sequence
+			nex/. times -> Times/.dummy->1/.seq:>Sequence
 		]
 	];
 

@@ -1,0 +1,10 @@
+Tests`Lorentz`fcitUncontract =
+({
+{"fcitContract-ID1",
+"MatchQ[Uncontract[LC[][a, b, c, d]^3, a, b, c, d, Pair -> All],
+FCI[FV[a, i1_] FV[a, i2_] FV[a, i3_] FV[b, j1_] FV[b, j2_] FV[b,
+	j3_] FV[c, k1_] FV[c, k2_] FV[c, k3_] FV[d, l1_] FV[d, l2_] FV[d,
+	l3_] LC[i1_, j1_, k1_, l1_]
+LC[i2_, j2_, k2_, l2_] LC[i3_, j3_, k3_, l3_]]]",
+"True"}
+});

@@ -50,5 +50,17 @@ Pair -> All] // FCE,
 Pair[LorentzIndex[x_], Momentum[a]] Pair[LorentzIndex[x_],
 	Momentum[q]] +
 Pair[LorentzIndex[y_], Momentum[b]] Pair[LorentzIndex[y_],
-	Momentum[q]] + SP[a, p] + SP[b, p]]","True"}
+	Momentum[q]] + SP[a, p] + SP[b, p]]","True"},
+{"fcstUncontract-ID11","DataType[mytensor, FCTensor] = True; \n
+MatchQ[Uncontract[mytensor[Momentum[x], Momentum[y]]^3, x, y,
+Pair -> All],
+FCI[FV[x, i1_] FV[x, i2_]] FCI[FV[x, i3_]] FCI[
+	FV[y, j1_] FV[y, j2_]] FCI[FV[y, j3_]]
+mytensor[LorentzIndex[i1_], LorentzIndex[j1_]] mytensor[
+	LorentzIndex[i2_], LorentzIndex[j2_]]
+mytensor[LorentzIndex[i3_], LorentzIndex[j3_]] /;
+i1 =!= i2 && i2 =!= i3 && j1 =!= j2 && j2 =!= j3]","True"},
+{"fcstUncontract-ID12","MatchQ[Uncontract[SP[x, y]^3, x, y, Pair -> All],
+FCI[FV[x, i1_] FV[x, i2_]] FCI[FV[x, i3_]] FCI[
+	FV[y, i1_] FV[y, i2_]] FCI[FV[y, i3_]] /; i1 =!= i2 && i2 =!= i3]","True"}
 };
