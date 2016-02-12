@@ -79,20 +79,29 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		simrel = OptionValue[DotSimplifyRelations];
 
+		FCPrint[1, "DotSimplify: Entering1.", FCDoControl->dsVerbose];
+
 		(* Here a different convention for FCI is used, False means that FCI is needed*)
 		If[ OptionValue[FCI] =!= True,
 			xx = xxx,
 			xx = FCI[xxx];
 		];
 
-		FCPrint[1, "DotSimplify: Entering with", dsVerbose];
+		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
+		FCPrint[3, "DotSimplify: Entering with", FCDoControl->dsVerbose];
 
 		(* this speeds things up, however, I'd really like to get rid of it ..., RM*)
 		momf[x_] :=
 			momf[x] = Momentum[FactorTerms[x]];
-		xx = xx /. (*Added to have example from guide work again*) (*  which one ?? (RM)*)
-								Momentum[p_] :> momf[p] /.  simrel;
+
+		xx = xx /. Momentum[p_] :> momf[p] /.  simrel;
+
+
+		FCPrint[1, "DotSimplify: Entering the main loop.", FCDoControl->dsVerbose];
 		x = Catch[
+
+
+			FCPrint[1, "DotSimplify: Applying DotSimplifyRelations.", FCDoControl->dsVerbose];
 			If[ simrel =!= {},
 				(*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
 				sru[aa_ :> bb_] :=
@@ -106,18 +115,17 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				simrel = Map[sru, simrel];
 			];
 
+			FCPrint[1, "DotSimplify: Writing out commutators and anticommutators.", FCDoControl->dsVerbose];
 			(*If the expression contains commutators or anticommutators, write them out explicitly, i.e. [a,b] -> ab-ba etc.*)
-			If[ True || True,
-				If[ (!FreeQ[xx, Commutator]) || (!FreeQ[xx, AntiCommutator]),
-					x = CommutatorExplicit[xx],
-					x = xx
-				],
+			If[ (!FreeQ[xx, Commutator]) || (!FreeQ[xx, AntiCommutator]),
+				x = CommutatorExplicit[xx],
 				x = xx
 			];
 
 			(* CHANGE 07/26/94 *)
 
 			(*If the expression contains SU(N) matrices, put Dot on hold*)
+			FCPrint[1, "DotSimplify: Putting Dot on hold.", FCDoControl->dsVerbose];
 			If[ !FreeQ[x, SUNT],
 				SetAttributes[TimesDot, HoldAll];
 				TimesDot[a__] :=
@@ -128,13 +136,15 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				x = x /. Times -> TimesDot
 			];
 
+
+			FCPrint[1, "DotSimplify: Writing out non-commutative objects explicitly.", FCDoControl->dsVerbose];
 			(*If the expression contains powers of non-commutative objects, write them out explicitly, i.e. a.(b^4).c -> a.b.b.b.b.c *)
 			(*  maybe this is somewhat slow;  use FORM then ... *)
 			If[ !FreeQ[x, (a_/;NonCommQ[a])^n_Integer?Positive],
 				x = x /. {(a_/;NonCommQ[a])^n_Integer?Positive :> DOT @@ Table[a, {n}]};
 			];
 
-			FCPrint[3, "DotSimplify: After writing out non-commutuative objects",x, dsVerbose];
+			FCPrint[3, "DotSimplify: After writing out non-commutuative objects",x, FCDoControl->dsVerbose];
 
 			(* check special case *)
 
@@ -142,6 +152,8 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				check if the expression consists only of user defined noncommutative objects.
 				If this is so, and there no commutators or anticommuators inside, expand the
 				expression and return it *)
+
+			FCPrint[1, "DotSimplify: Working out user-defined non-commutatuve objects.", FCDoControl->dsVerbose];
 			If[ simrel === {},
 				vars = Union[Variables[Cases[xx, _, Infinity] ]];
 				If[ Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
@@ -154,7 +166,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				]
 			];
 
-			FCPrint[2, "DotSimplify: After checking simrel", x,dsVerbose];
+			FCPrint[2, "DotSimplify: After checking simrel", x, FCDoControl->dsVerbose];
 
 			pid[u_,_] :=
 				u;
@@ -215,6 +227,9 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 				to be inserted, or use: comall, acomall to make use of DownValues.
 			*)
 			Off[Rule::rhs];
+
+
+			FCPrint[1, "DotSimplify: Working out commutators and anti-commutators.", FCDoControl->dsVerbose];
 			If[ simrel === {},
 				DOTcomm[xy__] :=
 					FixedPoint[acomall, FixedPoint[comall, DOT[xy], 242], 242],
@@ -229,6 +244,9 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 					(Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
 			];
 
+
+
+			FCPrint[1, "DotSimplify: Non-commutative expansion. Time used:", TimeUsed[],  FCDoControl->dsVerbose];
 			dlin[] = 1;
 
 			dlin1[{ok___}, b_/;DataType[b, NonCommutative], c___] :=
@@ -266,32 +284,34 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			x
 		];
 
-		FCPrint[2, "DotSimplify: After catch", x, dsVerbose];
+		FCPrint[2, "DotSimplify: After catch", x, FCDoControl->dsVerbose];
 
 		(*Pull out all SU(N) Traces out of the expression*)
+
+		FCPrint[1, "DotSimplify: Pulling out SU(N) traces. Time used: ", TimeUsed[], FCDoControl->dsVerbose];
 		If[ !FreeQ[x, SUNTrace],
 			x = x  /. {	DOT[a___,b_SUNTrace,c___] :> (b  DOT[a,c]) ,
 						DOT[a___,b1_SUNTrace - b2_SUNTrace, c___] :> (b1 DOT[a,c] - b2 DOT[a,c])}
 		];
 
-		FCPrint[3, "DotSimplify: After pulling out  commutators and anticommutators", x,dsVerbose];
-
+		FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
 		If[ !FreeQ[x, SUNT],
 			x  = x //. {DOT[a__,b__SUNT, c___]:> DOT[b, a, c] /; FreeQ[{a}, SUNT],
 						(* SUNT's in a DiracTrace are pulled out but NOT summed over *)
 						DiracTrace[f_. DOT[b__SUNT,c__] ] :> f DOT[b] DiracTrace[DOT[c]] /; NonCommFreeQ[f] && FreeQ[{f,c}, SUNT]}
 		];
 
-		FCPrint[3, "DotSimplify: After factoring out SUNTs", x, dsVerbose];
+		FCPrint[3, "DotSimplify: After factoring out SUNTs", x, FCDoControl->dsVerbose];
 
 
 		(* if the expression contains a QuantumField, factor it out*)
+		FCPrint[1, "DotSimplify: Factoring out QuantumField's", FCDoControl->dsVerbose];
 		If[ !FreeQ[x, QuantumField],
 			x = x /. DOT->dodot //. {dodot[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :> dodot[a,c,b,d]} /. dodot->DOT;
 			x = x /. DOT[a__SUNT, b__QuantumField] :> (DOT[a]*DOT[b])
 		];
 
-		FCPrint[3, "DotSimplify: After factoring out QuantumFields", x, dsVerbose];
+		FCPrint[3, "DotSimplify: After factoring out QuantumFields", x, FCDoControl->dsVerbose];
 
 		(*
 		If[!FreeQ[x, SUNT],
@@ -304,12 +324,14 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 
 		(* If the same non-commutative object is multiplied with itself multiple times, write this as a power,i.e.
 			f.f.f.g.h.k -> f^3.g.h.k *)
+		FCPrint[1, "DotSimplify: Working out DotPower.", FCDoControl->dsVerbose];
 		If[ OptionValue[DotPower],
 			x = x /. DOT -> dootpow /. dootpow -> DOT;
-			FCPrint[3, "DotSimplify: After applying DotPower: ", x, dsVerbose]
+			FCPrint[3, "DotSimplify: After applying DotPower: ", x, FCDoControl->dsVerbose]
 		];
 
-		FCPrint[1, "DotSimplify: Leaving with: ", x, dsVerbose];
+		FCPrint[1, "DotSimplify: Leaving.", FCDoControl->dsVerbose];
+		FCPrint[3, "DotSimplify: Leaving with: ", x, FCDoControl->dsVerbose];
 		x
 	];
 
