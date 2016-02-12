@@ -55,7 +55,7 @@ Options[FCApart] = {
 	FCI -> False,
 	FCVerbose -> False,
 	FDS -> True,
-	SetDimensions-> {D}
+	SetDimensions-> {4,D}
 };
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
