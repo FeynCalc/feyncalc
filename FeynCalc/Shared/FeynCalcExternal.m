@@ -23,6 +23,10 @@ representation to the simpler external one \
 (i.e., FV, GA, GS, etc.). User defined rules can be given \
 by the option FinalSubstitutions. ";
 
+FCE::feynamp=
+"Warning! FeynAmpDenominator `1` contains momenta with different dimensions and thus cannot be \
+converted to the FCE form."
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -194,8 +198,21 @@ propd[a_, 0] :=
 	a /. Momentum->iDent;
 propd[a_, b_/;b=!=0] :=
 	{a/.Momentum->iDent, b};
+
 feynampback[a__] :=
-	FAD @@ ({a} /. PropagatorDenominator -> propd);
+	Switch [
+		Union[Cases[{a}, Momentum[_, dim_: 4] :> dim, Infinity]],
+		{D},
+		FAD @@ ({a} /. PropagatorDenominator -> propd),
+		{4},
+		FAD[Sequence @@ ({a} /. PropagatorDenominator -> propd),Dimension->4],
+		_,
+		Message[FCE::feynamp,ToString[{a},InputForm]];
+		FeynAmpDenominator[a]
+	];
+
+
+
 
 
 eps[a_, b_, c_, d_, opts:OptionsPattern[Eps]] :=

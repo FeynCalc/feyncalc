@@ -911,14 +911,14 @@ ff[{y_}] :=
 ff[y_/;Head[y]=!=List] :=
 	SequenceForm["[",y^2,"]"];
 
-FAD[-p_] :=
-	FAD[p];
+FAD[-p_, opts:OptionsPattern[]] :=
+	FAD[p,opts];
 
-FAD[a___,{x_,y_,n_Integer?Positive},b___]:=
-	FAD[a,Sequence @@ Table[{x,y}, {i, 1, n}],b]
+FAD[a___,{x_,y_,n_Integer?Positive},b___, opts:OptionsPattern[]]:=
+	FAD[a,Sequence @@ Table[{x,y}, {i, 1, n}],b,opts]
 
 FAD/:
-	MakeBoxes[FAD[a__], TraditionalForm]/; !MemberQ[{a},{_,_,_}]:=
+	MakeBoxes[FAD[a__,OptionsPattern[]], TraditionalForm]/; !MemberQ[{a},{_,_,_}]:=
 		ToBoxes[1/ (Apply[Dot,Map[ff, {a}]]/. Dot -> dootpow /. dootpow -> DOT), TraditionalForm];
 
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=
