@@ -35,5 +35,8 @@ QuantumField[A, LorentzIndex[mu]].RightPartialD[
 	Momentum[OPEDelta]].QuantumField[A, LorentzIndex[rho]])"},
 {"fcstDotSimplify-ID7","DotSimplify[DiracTrace[SUNT[a,b]GA[c,d]SUNT[e,f]]]","DiracTrace[
 	DiracGamma[LorentzIndex[c]].DiracGamma[LorentzIndex[d]]] SUNT[
-	SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[SUNIndex[f]]"}
+	SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[SUNIndex[f]]"},
+{"fcstDotSimplify-ID8","DotSimplify[
+RightPartialD[Momentum[OPEDelta]].LeftPartialD[Momentum[OPEDelta]]]",
+"LeftPartialD[Momentum[OPEDelta]].RightPartialD[Momentum[OPEDelta]]"}
 }

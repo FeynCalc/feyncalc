@@ -171,7 +171,7 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					condition[cdoot[xxX, ww, yyY] + cdoot[xxX, b/.Pattern -> pid, a/.Pattern -> pid,yyY],
 						(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid}])]} /.  cdoot[]-> 1 /. cdoot -> DOT
-				) /. {orderedQ :> OrderedQ, condition :> Condition};
+				) /. condition :> Condition /. orderedQ :> OrderedQ;
 
 			aru[{acommm[a_ /; FreeQ[a, Pattern], b_ /; FreeQ[b, Pattern]], ww_}] :=
 				(RuleDelayed @@ {
@@ -186,22 +186,29 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 					(RuleDelayed @@ {cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
 					condition[cdoot[xxX, ww, yyY] - cdoot[xxX, b/.Pattern -> pid, a/.Pattern -> pid ,  yyY],
 					(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid}])]} /.  cdoot[]-> 1 /. cdoot -> DOT) /.
-					{orderedQ :> OrderedQ, condition :> Condition}};
+					condition :> Condition /. orderedQ :> OrderedQ};
 
 			cotorules[{}] = {};
 			cotorules[a__List] :=
-				(cotorules[a] = Select[Map[cru,	a /. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, cru]&])/;
+				(cotorules[a] =
+					Select[Map[cru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+						/. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List
+						], FreeQ[#, cru]&]
+
+
+				)/;
 				a=!={};
 
 			actorules[{}] = {};
 			actorules[a__List] :=
-				(actorules[a] = Select[Map[aru,	a /. Commutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&])/;
+				(actorules[a] = Select[Map[aru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+					/. Commutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&])/;
 				a=!={};
 
 			comall[ yy__ ] :=
-				yy //. Flatten[cotorules[DownValues@@{Commutator}]];
+				yy //. (Flatten[cotorules[DownValues@@{Commutator}]] //. hold[h_]:> h);
 			acomall[ yy__ ] :=
-				yy //. Flatten[actorules[DownValues@@{AntiCommutator}]];
+				yy //. (Flatten[actorules[DownValues@@{AntiCommutator}]] //. hold[h_]:> h);
 
 			DOTcomm[] = 1;
 			(* there might be either explicit commutators or anticommutators
