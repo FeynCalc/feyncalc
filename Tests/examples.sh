@@ -8,6 +8,9 @@ cd $DIR
 
 if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 
+#Misc Examples
+$MATH -nopromt -script ../FeynCalc/Examples/Misc/Integrate2.m &&
+
 #QED Examples
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDBhabhaScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDComptonScatteringTree.m &&
