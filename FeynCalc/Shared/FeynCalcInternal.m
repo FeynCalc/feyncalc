@@ -29,6 +29,9 @@ End[]
 
 Begin["`FeynCalcInternal`Private`"]
 
+fadim::usage="";
+repeated::usage="";
+
 FCI = FeynCalcInternal;
 
 Options[FeynCalcInternal] = {FinalSubstitutions -> {}};
@@ -276,18 +279,19 @@ scalarP[ x_, y_,opt___BlankNullSequence] :=
 		Pair[x, y]
 	];
 
-fadint[a__] :=
-	fadint2 @@ Map[Flatten[{#}]&, {a}];
+fadint[a__, opts:OptionsPattern[]] :=
+	(fadim = OptionValue[FAD,{opts},Dimension];
+	fadint2 @@ Map[Flatten[{#}]&, {a}]);
 
 propp[{x_}]:=
-	PropagatorDenominator[Momentum[x, OptionValue[FAD, Dimension]],0]//MomentumExpand;
+	PropagatorDenominator[Momentum[x, fadim],0]//MomentumExpand;
 
 propp[{repeated[{x_, m_}]}]:=
-	Repeated[PropagatorDenominator[Momentum[x, OptionValue[FAD, Dimension]],
+	Repeated[PropagatorDenominator[Momentum[x, fadim],
 	m] // MomentumExpand];
 
 propp[{x_, m_}]:=
-	PropagatorDenominator[Momentum[x, OptionValue[FAD, Dimension]],
+	PropagatorDenominator[Momentum[x, fadim],
 	m] // MomentumExpand;
 
 fadint2[b__List] :=
