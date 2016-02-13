@@ -5,11 +5,11 @@
 (* :Title: TARCER															*)
 
 (*
-	This software is covered by the GNU Lesser General Public License 3.
+	This software is covered by the GNU General Public License 3.
 	Copyright (C) 1998-2015 Rolf Mertig
 	Copyright (C) 1998-2015 Rainer Scharf
 	Copyright (C) 1998-2015 Frederik Orellana
-	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	TARCER is a Mathematica program for the reduction

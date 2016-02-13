@@ -5,10 +5,10 @@
 (* :Title: FVProjection														*)
 
 (*
-	This software is covered by the GNU Lesser General Public License 3.
-	Copyright (C) 1990-2015 Rolf Mertig
-	Copyright (C) 1997-2015 Frederik Orellana
-	Copyright (C) 2014-2015 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Toy add-on for FeynCalc for obtaining transverse and

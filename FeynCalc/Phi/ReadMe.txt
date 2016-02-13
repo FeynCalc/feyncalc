@@ -192,7 +192,7 @@ Comments and suggestions are also welcome.
 
 LICENSE:
 
-PHI is covered by the GNU Lesser General Public License which can be found
+PHI is covered by the GNU General Public License which can be found
 at http://www.feyncalc.org/license.txt.
 
 This roughly means:
