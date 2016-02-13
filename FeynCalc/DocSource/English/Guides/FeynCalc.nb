@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    188705,       4880]
-NotebookOptionsPosition[    170561,       4310]
-NotebookOutlinePosition[    170973,       4326]
-CellTagsIndexPosition[    170930,       4323]
+NotebookDataLength[    188911,       4884]
+NotebookOptionsPosition[    170765,       4314]
+NotebookOutlinePosition[    171178,       4330]
+CellTagsIndexPosition[    171135,       4327]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -4286,7 +4286,11 @@ Cell[CellGroupData[{
 Cell["Tutorials", "GuideTutorialsSection",
  CellID->415694126],
 
-Cell["XXXX", "GuideTutorial",
+Cell[TextData[Cell[TextData[ButtonBox["Short introduction",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:FeynCalc/ref/Intro"]], "InlineFunctionSans"]], "GuideTutorial",
+ CellChangeTimes->{{3.664359733384458*^9, 3.664359780479166*^9}},
  CellID->806871991],
 
 Cell["XXXX", "GuideTutorial",
@@ -4308,8 +4312,8 @@ Cell["XXXX", "GuideMoreAbout",
 Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
-WindowSize->{700, 684},
-WindowMargins->{{Automatic, 357}, {Automatic, 60}},
+WindowSize->{1117, 889},
+WindowMargins->{{Automatic, 337}, {Automatic, -8}},
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
@@ -4867,20 +4871,20 @@ Cell[169980, 4278, 71, 1, 22, "InlineGuideFunctionListing",
 Cell[CellGroupData[{
 Cell[170100, 4285, 62, 1, 71, "GuideTutorialsSection",
  CellID->415694126],
-Cell[170165, 4288, 49, 1, 21, "GuideTutorial",
+Cell[170165, 4288, 253, 5, 21, "GuideTutorial",
  CellID->806871991],
-Cell[170217, 4291, 50, 1, 21, "GuideTutorial",
+Cell[170421, 4295, 50, 1, 21, "GuideTutorial",
  CellID->1885805579]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[170304, 4297, 62, 1, 71, "GuideMoreAboutSection",
+Cell[170508, 4301, 62, 1, 71, "GuideMoreAboutSection",
  CellID->23220180],
-Cell[170369, 4300, 51, 1, 21, "GuideMoreAbout",
+Cell[170573, 4304, 51, 1, 21, "GuideMoreAbout",
  CellID->1567025153],
-Cell[170423, 4303, 50, 1, 21, "GuideMoreAbout",
+Cell[170627, 4307, 50, 1, 21, "GuideMoreAbout",
  CellID->252299663]
 }, Open  ]],
-Cell[170488, 4307, 69, 1, 71, "GuideRelatedLinksSection",
+Cell[170692, 4311, 69, 1, 71, "GuideRelatedLinksSection",
  CellID->415694148]
 }
 ]
