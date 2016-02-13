@@ -778,14 +778,14 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 
 (*I138I*)
 (*X*)iT[(x_^n_?mcheck) PlusDistribution[1/(1-x_)], {x_,0,1}] :>
-	- S[1, n],
+	- SumS[1, n],
 (*X*)iT[(x_^n_?mcheck) 1/(1-x_), {x_,0,1}] :>
-	- S[1, n],
+	- SumS[1, n],
 
 (* w3 *)
 (*I139I*)
 (*X*)iT[(x_^n_ /; mcheck[n]) 1/(1+x_), {x_,0,1}] :>
-	-(-1)^(n+1) (ST[1,n] + Log[2]),
+	-(-1)^(n+1) (SumT[1,n] + Log[2]),
 
 (* w4 *)
 (*I140I*)
@@ -795,25 +795,25 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 (* w5 *)
 (*I141I*)
 (*X*)iT[(x_^n_ /; mcheck[n]) Log[x_]/(1-x_), {x_,0,1}] :>
-	-Zeta2 + S[2, n],
+	-Zeta2 + SumS[2, n],
 (*X*)iT[(x_^n_ /; mcheck[n]) Log[x_] PlusDistribution[1/(1-x_)],
 				{x_,0,1}
 			] :>
-	-Zeta2 + S[2, n],
+	-Zeta2 + SumS[2, n],
 
 (* w6 *)
 (*I142I*)
-(*X*)iT[x_^n_?mcheck Log[1-x_], {x_,0,1}] :> - 1/(n+1)^2 - S[1,n]/(n+1),
+(*X*)iT[x_^n_?mcheck Log[1-x_], {x_,0,1}] :> - 1/(n+1)^2 - SumS[1,n]/(n+1),
 
 (* w7 *)
 (*I143I*)
 (*X*)iT[x_^n_?mcheck PlusDistribution[Log[1-x_]/(1-x_)], {x_, 0, 1}] :>
-	S[1,1,n],
+	SumS[1,1,n],
 
 (* w7n *)
 (*I143aI*)
 (*X*)iT[x_^n_?mcheck Log[1-x_]/(1-x_), {x_, 0, 1}] :>
-	S[1,1,n],
+	SumS[1,1,n],
 
 (* w7v *)
 (*I143bI*)
@@ -826,19 +826,19 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 (* w8 *)
 (*I144I*)
 (*X*)iT[x_^n_?mcheck Log[1-x_]^2, {x_, 0, 1}] :>
-		1/(n+1) S[1,n+1]^2 + 1/(n+1) S[2, n+1],
+		1/(n+1) SumS[1,n+1]^2 + 1/(n+1) SumS[2, n+1],
 
 (* r80 *)
 (*I144aI*)
 (*X*)iT[x_^n_?mcheck Log[1-x_]^2 Log[x_], {x_, 0, 1}] :>
 	-4/n^3 - 6/(1 + n)^4 + 4/(1 + n)^3 + (2*Zeta2)/n +
 (2*Zeta2)/(1 + n)^2 -
-	(2*S[1, -1 + n])/n^2 - (4*S[1, -1 + n])/(1 + n)^3 +
-	(2*S[1, -1 + n])/(1 + n)^2 + (2*Zeta2*S[1, -1 + n])/(1 + n) -
-	S[1, -1 + n]^2/(1 + n)^2 - (2*S[2, -1 + n])/n -
-	(3*S[2, -1 + n])/(1 + n)^2 + (2*S[2, -1 + n])/(1 + n) -
-	(2*S[1, -1 + n]*S[2, -1 + n])/(1 + n) -
-	(2*S[3, -1 + n])/(1 + n) - (2*(Zeta2 - Zeta[3]))/(1 + n)
+	(2*SumS[1, -1 + n])/n^2 - (4*SumS[1, -1 + n])/(1 + n)^3 +
+	(2*SumS[1, -1 + n])/(1 + n)^2 + (2*Zeta2*SumS[1, -1 + n])/(1 + n) -
+	SumS[1, -1 + n]^2/(1 + n)^2 - (2*SumS[2, -1 + n])/n -
+	(3*SumS[2, -1 + n])/(1 + n)^2 + (2*SumS[2, -1 + n])/(1 + n) -
+	(2*SumS[1, -1 + n]*SumS[2, -1 + n])/(1 + n) -
+	(2*SumS[3, -1 + n])/(1 + n) - (2*(Zeta2 - Zeta[3]))/(1 + n)
 ,
 (*
 -(6*EulerGamma^2 + Pi^2 -
@@ -881,7 +881,7 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 (*I145I*)
 (*X*)iT[x_^n_?mcheck PlusDistribution[Log[1-x_]^2/(1-x_)],
 				{x_, 0, 1}] :>
-	-2 S[1,1,1,n],
+	-2 SumS[1,1,1,n],
 
 (* w10 *)
 (*I146I*)
@@ -891,69 +891,69 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 (* w11 *)
 (*I147I*)
 (*X*)iT[x_^n_?mcheck Log[x_]^2/(1-x_), {x_, 0, 1}] :>
-				2 Zeta[3] - 2 S[3, n],
+				2 Zeta[3] - 2 SumS[3, n],
 (*I148I*)
 (*X*)iT[x_^n_?mcheck Log[x_]^2 PlusDistribution[1/(1-x_)],
-		{x_, 0, 1}] :> 2 Zeta[3] - 2 S[3, n],
+		{x_, 0, 1}] :> 2 Zeta[3] - 2 SumS[3, n],
 
 (* w12 *)
 (*I149I*)
 (*X*)iT[x_^n_?mcheck Log[x_]^2/(1+x_), {x_, 0, 1}] :> - (-1)^(n+1) *
-		(2 ST[3, n] + 3/2 Zeta[3]),
+		(2 SumT[3, n] + 3/2 Zeta[3]),
 
 (* w13 *)
 (*I150I*)
 (*X*)iT[x_^n_?mcheck Log[x_] Log[1+x_], {x_, 0, 1}] :>
 			(-1)^(n+1) * (
-		1/(n+1)^2 ST[1,n+1] + 1/(n+1) ST[2,n+1] + 1/(2 (n+1)) Zeta2 +
+		1/(n+1)^2 SumT[1,n+1] + 1/(n+1) SumT[2,n+1] + 1/(2 (n+1)) Zeta2 +
 		1/(n+1)^2 Log[2] ) - 1/(n+1)^2 Log[2],
 
 (*  w14 *)
 (*I151I*)
 (*X*)iT[x_^n_?mcheck Log[x_] Log[1+x_]/(1+x_), {x_, 0, 1}] :>
 			- (-1)^(n+1) * (
-		Log[2] (S[2,n] - ST[2,n]) + ST[2,1,n] + ST[1,2,n] +
-		1/2 Zeta2 S[1,n] - 1/8 Zeta[3]),
+		Log[2] (SumS[2,n] - SumT[2,n]) + SumT[2,1,n] + SumT[1,2,n] +
+		1/2 Zeta2 SumS[1,n] - 1/8 Zeta[3]),
 
 (* w15 *)
 (*I152I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, x_], {x_, 0, 1}] :>
-		1/(n+1) Zeta2 - 1/(n+1)^2 S[1,n+1],
+		1/(n+1) Zeta2 - 1/(n+1)^2 SumS[1,n+1],
 
 (* w16 *)
 (*I153I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, x_]/(1-x_), {x_, 0, 1}] :>
-		S[2,1,n] - Zeta2 S[1,n] - 2 Zeta[3],
+		SumS[2,1,n] - Zeta2 SumS[1,n] - 2 Zeta[3],
 
 (* w17 *)
 (*I154I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, 1-x_], {x_, 0, 1}] :>
-		1/(n+1) Zeta2 -1/(n+1) S[2,n+1],
+		1/(n+1) Zeta2 -1/(n+1) SumS[2,n+1],
 
 (* w18 *)
 (*I155I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, 1-x_]/(1-x_), {x_, 0, 1}] :>
-		S[1,2,n] - Zeta2 S[1,n] + Zeta[3],
+		SumS[1,2,n] - Zeta2 SumS[1,n] + Zeta[3],
 (*I156I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, 1-x_] PlusDistribution[1/(1-x_)],
-		{x_, 0, 1}] :> S[1,2,n] - Zeta2 S[1,n] + Zeta[3],
+		{x_, 0, 1}] :> SumS[1,2,n] - Zeta2 SumS[1,n] + Zeta[3],
 
 (* w19 *)
 (*I157I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, -x_], {x_, 0, 1}] :>
-		(-1)^(n+1) ( - 1/(n+1)^2 Log[2] - 1/(n+1)^2 ST[1,n+1] ) -
+		(-1)^(n+1) ( - 1/(n+1)^2 Log[2] - 1/(n+1)^2 SumT[1,n+1] ) -
 		1/(2 (n+1)) Zeta2 + 1/(n+1)^2 Log[2],
 
 (* w20 *)
 (*I158I*)
 (*X*)iT[x_^n_?mcheck PolyLog[2, -x_]/(1+x_), {x_, 0, 1}] :>
-		- (-1)^(n+1) ( -1/2 Zeta2 ST[1,n] - Log[2] (S[2,n] - ST[2,n]) -
-			ST[2,1,n] + 1/4 Zeta[3] - 1/2 Zeta2 Log[2]),
+		- (-1)^(n+1) ( -1/2 Zeta2 SumT[1,n] - Log[2] (SumS[2,n] - SumT[2,n]) -
+			SumT[2,1,n] + 1/4 Zeta[3] - 1/2 Zeta2 Log[2]),
 
 (* w21 *)
 (*I159I*)
 (*X*)iT[x_^n_?mcheck Log[x_] Log[1-x_], {x_, 0, 1}] :>
-		-1/(n+1) Zeta2 + 1/(n+1) S[2,n+1] + 1/(n+1)^2 S[1,n+1],
+		-1/(n+1) Zeta2 + 1/(n+1) SumS[2,n+1] + 1/(n+1)^2 SumS[1,n+1],
 
 (* special case of w22 *)
 (*I160I*)
@@ -964,28 +964,28 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 (* w22 *)
 (*I162I*)
 (*X*)iT[x_^n_?mcheck Log[x_] Log[1-x_]/(1-x_), {x_, 0, 1}] :>
-		Zeta2 S[1,n] - S[1,2,n] - S[2,1,n] + Zeta[3],
+		Zeta2 SumS[1,n] - SumS[1,2,n] - SumS[2,1,n] + Zeta[3],
 (*I163I*)
 (*X*)iT[x_^n_?mcheck Log[x_] Log[1-x_] PlusDistribution[1/(1-x_)],
 		{x_, 0, 1}] :>
-		Zeta2 S[1,n] - S[1,2,n] - S[2,1,n] + Zeta[3],
+		Zeta2 SumS[1,n] - SumS[1,2,n] - SumS[2,1,n] + Zeta[3],
 
 (* w23 *)
 (*I164I*)
 (*X*)iT[x_^n_?mcheck Log[x_]/(1+x_), {x_, 0, 1}] :>
-		(-1)^(n+1) ( 1/2 Zeta2 + ST[2, n]),
+		(-1)^(n+1) ( 1/2 Zeta2 + SumT[2, n]),
 
 (* w24, done by M. *)
 (*I164aI*)
 (*X*)iT[x_^n_?mcheck PolyLog[3,x_], {x_,0,1}]:>
 n^(-1) + (1 + n)^(-4) - (1 + n)^(-3) - (1 + n)^(-2) - (1 + n)^(-1) -
-	Zeta2/(1 + n)^2 + S[1, -1 + n]/(1 + n)^3 + Zeta[3]/(1 + n),
+	Zeta2/(1 + n)^2 + SumS[1, -1 + n]/(1 + n)^3 + Zeta[3]/(1 + n),
 
 (* w25, done by R.M. *)
 (*I164bI*)
 (*X*)iT[x_^n_?mcheck PolyLog[3,1-x_],{x_,0,1}]:>
 (Zeta[3]/(n+1)-Zeta2 (n^(-1)+(1+n)^(-2)-(1+n)^(-1)+
-S[1,-1+n]/(1+n)) +(S[1,2,n+1]/(n+1) )),
+SumS[1,-1+n]/(1+n)) +(SumS[1,2,n+1]/(n+1) )),
 (* =
 (Gamma[1 + n]*HypergeometricPFQ[{1, 1, 1, 1}, {2, 2, 3 + n}, 1]
 )/Gamma[3 + n]
@@ -998,33 +998,33 @@ S[1,-1+n]/(1+n)) +(S[1,2,n+1]/(n+1) )),
 
 (*NN*)(* w28  (4.2.11) of Devoto & Duke*)
 (*X*)iT[x_^n_?mcheck Log[x_]^2 Log[1-x_], {x_,0,1}]:>
-2/(n+1)(Zeta[3] + Zeta2/(n+1)-S[1,n+1]/(n+1)^2-
-S[2,n+1]/(n+1)-S[3,n+1])
+2/(n+1)(Zeta[3] + Zeta2/(n+1)-SumS[1,n+1]/(n+1)^2-
+SumS[2,n+1]/(n+1)-SumS[3,n+1])
 ,
 (*NN*)(* w29  (4.3.3) of Devoto & Duke*)
 (*X*)iT[x_^n_?mcheck Log[x_] PolyLog[2,x_], {x_,0,1}]:>
-1/(n+1)^2 (-2 Zeta2+2 S[1,n+1]/(n+1)+S[2,n+1])
+1/(n+1)^2 (-2 Zeta2+2 SumS[1,n+1]/(n+1)+SumS[2,n+1])
 ,
 (*NN*)(* w30  (4.3.4) of Devoto & Duke*)
 (*X*)iT[x_^n_?mcheck Log[1-x_] PolyLog[2,x_], {x_,0,1}]:>
-1/(n+1)(1-2Zeta[3]-Zeta2 S[1,n+1]+2/(n+1)S[1,1,n+1]+
-S[2,1,n+1]-1)
+1/(n+1)(1-2Zeta[3]-Zeta2 SumS[1,n+1]+2/(n+1)SumS[1,1,n+1]+
+SumS[2,1,n+1]-1)
 ,
 (*NN*)(*w31 *)
 (*X*)iT[Log[1 - (x_)]*(x_)^n_?mcheck*PolyLog[2, 1 - (x_)], {x_, 0, 1}] :>
 	4/n^3 + 6/(1 + n)^4 - 4/(1 + n)^3 - (2*Zeta2)/n - (3*Zeta2)/(1 + n)^2 +
-	(2*Zeta2)/(1 + n) + (2*S[1, -1 + n])/n^2 + (4*S[1, -1 + n])/(1 + n)^3 -
-	(2*S[1, -1 + n])/(1 + n)^2 - (2*Zeta2*S[1, -1 + n])/(1 + n) +
-	S[1, -1 + n]^2/(1 + n)^2 - (Zeta2*S[1, n])/(1 + n) +
-	(Zeta2*S[1, 1 + n])/(1 + n) + (2*S[2, -1 + n])/n +
-	(3*S[2, -1 + n])/(1 + n)^2 - (2*S[2, -1 + n])/(1 + n) +
-	(2*S[1, -1 + n]*S[2, -1 + n])/(1 + n) + (2*S[3, -1 + n])/(1 + n) -
-	(2*S[1, 1, 1 + n])/(1 + n)^2 - S[2, 1, 1 + n]/(1 + n)
+	(2*Zeta2)/(1 + n) + (2*SumS[1, -1 + n])/n^2 + (4*SumS[1, -1 + n])/(1 + n)^3 -
+	(2*SumS[1, -1 + n])/(1 + n)^2 - (2*Zeta2*SumS[1, -1 + n])/(1 + n) +
+	SumS[1, -1 + n]^2/(1 + n)^2 - (Zeta2*SumS[1, n])/(1 + n) +
+	(Zeta2*SumS[1, 1 + n])/(1 + n) + (2*SumS[2, -1 + n])/n +
+	(3*SumS[2, -1 + n])/(1 + n)^2 - (2*SumS[2, -1 + n])/(1 + n) +
+	(2*SumS[1, -1 + n]*SumS[2, -1 + n])/(1 + n) + (2*SumS[3, -1 + n])/(1 + n) -
+	(2*SumS[1, 1, 1 + n])/(1 + n)^2 - SumS[2, 1, 1 + n]/(1 + n)
 ,
 (*NN*)(*w31 *)
 (*X*)iT[Log[x_]*(x_)^n_?mcheck*PolyLog[2, 1 - (x_)], {x_, 0, 1}] :>
-	-(Zeta2/(1 + n)^2) + S[2, 1 + n]/(1 + n)^2 +
-	(2*S[3, 1 + n])/(1 + n) - (2*Zeta[3])/(1 + n)
+	-(Zeta2/(1 + n)^2) + SumS[2, 1 + n]/(1 + n)^2 +
+	(2*SumS[3, 1 + n])/(1 + n) - (2*Zeta[3])/(1 + n)
 ,
 (*I165I*)
 (*X*)iT[(Log[1-z_/x_] - Log[1-z_])/(1-x_), {x_, z_/;!NumberQ[z], 1}] :>
@@ -2682,7 +2682,7 @@ FreeQ[y,x]
 (* this is only for connaiseurs ... *)
 (*X*)iT[x_^(m_?mcheck)/(1-x_) Hypergeometric2F1[1,em1_,em2_,x_],
 				{x_,0,1}
-			] :> (-(m+1)(-Zeta2-S[1,1,m]+S[2,m]))/;
+			] :> (-(m+1)(-Zeta2-SumS[1,1,m]+SumS[2,m]))/;
 						((em1-1===m) && (em2-2===m))
 ,
 (*X*)iT[Log[1 - x_ + x_*y_]/(1 - y_), {y_, 0, 1}] :>
@@ -4102,7 +4102,7 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 	(x*Log[1 - x])/((1 + m)^2*(-1 + x)) +
 (Log[1 - x]*(-1/(m+1)))/
 		(1 + m) - (1 + Zeta2 + 2*m*Zeta2 + m^2*Zeta2 -
-			S[2, 1 + m] - 2*m*S[2, 1 + m] - m^2*S[2, 1 + m]
+			SumS[2, 1 + m] - 2*m*SumS[2, 1 + m] - m^2*SumS[2, 1 + m]
 )/(1 + m)^3]],x] /; FreeQ[x,y]
 ,
 (*X*)iT[(Log[1 - (u_)]*Log[(u_) (1 - x_) + (x_)])/(u_),
@@ -4328,8 +4328,8 @@ Zeta2/(1 + k) - (I*Pi*x*Integrate[y^k/(x + (1 - x)*y), {y, 0, 1},
 		(1 + k) + (I*Pi*Log[x])/(1 + k) +
 	(x*Integrate[y^k/(x + (1 - x)*y), {y, 0, 1},
 								GenerateConditions->False]*Log[x])/(1 + k) -
-	Log[x]^2/(2*(1 + k)) - (I*Pi*S[1, k])/(1 + k) + (Log[x]*S[1, k])/(1 + k) +
-	S[2, k]/(1 + k) - S[1, 1, k]/(1 + k)   /; FreeQ[x,y]
+	Log[x]^2/(2*(1 + k)) - (I*Pi*SumS[1, k])/(1 + k) + (Log[x]*SumS[1, k])/(1 + k) +
+	SumS[2, k]/(1 + k) - SumS[1, 1, k]/(1 + k)   /; FreeQ[x,y]
 ,
 (*X*)iT[(1-x_)^n_Integer?Negative,{x_,0,1}] :> 1/(1+n) /; n < -1
 ,
@@ -4339,10 +4339,10 @@ Zeta2/(1 + k) - (I*Pi*x*Integrate[y^k/(x + (1 - x)*y), {y, 0, 1},
 (*X*)iT[Log[x_] x_^n_Integer?Negative,{x_,0,1}] :> (-1/(1+n)^2) /; n < -1
 ,
 (*X*)iT[Log[x_] (1-x_)^n_Integer?Negative,{x_,0,1}] :>
-			(-1/(-n-1) ( -S[1,-n-2]+1/(-n-1) )) /; n < -1
+			(-1/(-n-1) ( -SumS[1,-n-2]+1/(-n-1) )) /; n < -1
 ,
 (*X*)iT[Log[1-x_] x_^n_Integer?Negative,{x_,0,1}] :>
-			(-1/(-n-1) ( -S[1,-n-2]+1/(-n-1) )) /; n < -1
+			(-1/(-n-1) ( -SumS[1,-n-2]+1/(-n-1) )) /; n < -1
 ,
 (*X*)iT[Log[x_] Log[1-x_](1-x_)^n_Integer?Negative,{x_,0,1}] :>
 (1 + n)^(-3) - Zeta2/(1 + n) + SumS[1, -2 - n]/(1 + n)^2 -
