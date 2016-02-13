@@ -1,5 +1,10 @@
 ### NightlyCalc (development version)
 
+### Version 9.0.1 (2016)
+ * For publishing reasons, the license has been changed from LGPL 3 to GPL 3
+ * Fixed bugs that were discovered since the relese of FeynCalc 9.0.0
+ * Converted an example of using Integrate2 from FeynCalcManual.nb to a proper .m file
+
 ### Version 9.0.0 (2016)
 
  * Introduced `FCFAConvert` for automatic conversion of the CreateFeynAmp
