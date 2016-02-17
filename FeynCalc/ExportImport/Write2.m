@@ -52,11 +52,14 @@ End[]
 
 Begin["`Write2`Private`"]
 
+ffDP::usage="";
+
 Options[Write2] = {
 					D0Convention -> 0,
 					FinalSubstitutions -> {},
 					FormatType -> InputForm,
-			FortranFormatDoublePrecision -> True,
+					FortranFormatDoublePrecision -> True,
+					Precision -> Floor[$MachinePrecision],
 					PageWidth    -> 62,
 					PostFortranFile -> "",
 					PreFortranFile -> "",
@@ -71,9 +74,9 @@ Write2[f_String, x___, l_] :=
 	Write2[f, Hold[x, l], dummyrule->False ]/; FreeQ[Hold[l], Rule];
 
 Write2[file_String, eeq__, opts___Rule] :=
-	Block[ {j,vhf,vv,eq,k2str,
-	ops,ide, aa0, be00, be11,be0, db0, ce0, de0, ansg,d0convention,
-	oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep},
+	Block[ {j,vhf,vv,eq,k2str,tmp,
+	ops,ide, aa0, be00, be11,be0,be1, db0, ce0, de0, ansg,d0convention,finsubst,
+	oldopenops,pww,prefortran, postfortran, pagewidth,prerec,tostring,flag,strep,prec},
 		ops         = Join[{opts}, Options[Write2]];
 		{finsubst, pagewidth } = {FinalSubstitutions, PageWidth} /. ops;
 		{prefortran, postfortran}  = Flatten /@ {{PreFortranFile},
@@ -81,15 +84,15 @@ Write2[file_String, eeq__, opts___Rule] :=
 		strep = StringReplace/.ops/.Options[Write2];
 		(* a modified Power function, for avoiding Fortran-Complications *)
 		pww[x_?NumberQ, 1/2] :=
-			Sqrt[N[x]];
+			(Sqrt[N[x]]/. xxx_Real/; ffDP :> fhead[xxx]);
 		pww[x_?NumberQ, rat_Rational] :=
-			Power[N[x], N[rat]];
+			((Power[N[x], N[rat]])/. xxx_Real/; ffDP -> fhead[xxx]);
 		pww[x_,1/2] :=
-			Sqrt[x];
+			(Sqrt[x]/. xxx_Real/; ffDP :> fhead[xxx]);
 		pww[x_, rat_Rational] :=
-			Power[x,N[rat]];
+			(Power[x,N[rat]]/. xxx_Real/; ffDP :> fhead[xxx]);
 		pww[x_, he_] :=
-			(x^he) /; Head[he]=!=Rational;
+			((x^he)/. xxx_Real/; ffDP :> fhead[xxx]) /; Head[he]=!=Rational;
 		{aa0,be0,be1,be00,be11,db0,ce0,de0} = {A0,B0,B1,B00,B11,DB0,C0,D0}/.finsubst;
 		(* allvar gives all Variables in HoldForm,( KK[i] ) *)
 		allvar[y_] :=
@@ -101,6 +104,10 @@ Write2[file_String, eeq__, opts___Rule] :=
 					] ];
 				arr
 			];
+
+		ffDP = OptionValue[Options[Write2], ops,FortranFormatDoublePrecision];
+		prec = OptionValue[Options[Write2], ops,Precision];
+
 		ide = {##}&;
 		eq = Flatten[{Hold[{eeq}]} /. Set -> Equal /. Hold -> ide];
 		FCPrint[1,"Write2: eq= ", eq];
@@ -132,22 +139,21 @@ Write2[file_String, eeq__, opts___Rule] :=
 			eq = eq /. HoldForm[x_[y_String]] :> With[{z = ToExpression[y]}, HoldForm[x[z]]];
 			FCPrint[2,"Write2: N[eq] = ", eq];
 			oldopenops = Options[OpenWrite];
-			togglerule  = False;
-			Unprotect[Real];
-			Real /: Format[r_Real, FortranForm] :=
-						({mantissa, exponent} = MantissaExponent[r];
-						If[ r === 0.,
+
+			If[	ffDP,
+				eq = eq  /. xxx_Real :> fhead[xxx];
+					(* Define a custom formatter that will generate Fortran's DOUBLE PRECISION format*)
+					fhead /: Format[fhead[r_Real], FortranForm] := (
+						{mantissa, exponent} = MantissaExponent[r];
+						If[	r === 0.,
 							exponent = 1
 						];
-						If[ Abs[r] < 10^16 && Chop[FractionalPart[r]] === 0,
-							togglerule = False;
-							SequenceForm[r//Floor, D, exponent-1],
-							SequenceForm[10. mantissa,D,exponent-1]
-						]
-						) /; (togglerule = !  togglerule
-							) && ((FortranFormatDoublePrecision/.{opts}/.Options[Write2])===True);
-			SetOptions[OpenWrite, FormatType->FortranForm,
-								PageWidth-> pagewidth ];
+						If[	Abs[r] < 10 && Chop[FractionalPart[r]] === 0,
+							SequenceForm[ToExpression[ToString[NumberForm[r // Floor, prec]]], D, exponent - 1],
+							SequenceForm[ToExpression[ToString[NumberForm[10. mantissa, prec]]], D,	exponent - 1]
+						])
+			];
+			SetOptions[OpenWrite, FormatType->FortranForm, PageWidth-> pagewidth ];
 		(*
 								WriteString[file,
 			"C  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *"];
@@ -314,7 +320,7 @@ Write2[file_String, eeq__, opts___Rule] :=
 						];
 						If[ (!FreeQ[ eqj2, HoldForm ]) && (j===1),
 							For[iv = 1, iv<=Length[vv], iv++,
-							(*XXXX *)
+
 								WriteString[file, "        ", (vv[[iv]])//FortranForm,"= "];
 								If[ !FreeQ2[{ be0, be1, be00, be11, db0, ce0, de0 },
 											Map[Head, Select[ Variables[ReleaseHold[ vv[[iv]] ]
@@ -338,11 +344,14 @@ Write2[file_String, eeq__, opts___Rule] :=
 								]
 						];
 						WriteString[file, "        ",FortranForm[eqj1]," = "];
-					(*
-						WriteString[file, FortranForm[eqj1]," = "];
-					*)
-						Write[file, ansg[(eqj2/.SmallVariable-> Identity/. Power->pww )/.finsubst
-										] /. ansg -> Identity];
+						(* 	Seems that the internal behavior of Write has changed in MMA 10, which is
+							why we need this trick with tmp...	*)
+						tmp = ansg[(eqj2/.SmallVariable-> Identity/. Power->pww )/.finsubst]
+							/. ansg -> Identity;
+						If [$VersionNumber >= 10,
+							tmp = FortranForm[tmp]
+						];
+						Write[file, tmp];
 						SetOptions @@ Prepend[oldopenops, OpenWrite]
 					](* endWhich *)
 			]; (* end j - loop *)
@@ -415,9 +424,8 @@ Write2[file_String, eeq__, opts___Rule] :=
 			Close @@ {file};
 
 			(* reestablish old FortranForm format behaviour *)
-			If[ (FormatType/.ops/.Options[Write2]) === FortranForm,
-				Unset[FormatValues[Real]];
-				Protect[Real];
+			If[ ffDP,
+				Unset[FormatValues[fhead]];
 			]
 		];
 		If[ ValueQ[oldopenops],
@@ -425,6 +433,9 @@ Write2[file_String, eeq__, opts___Rule] :=
 		];
 		file
 	];
+
+fhead[x_]:=
+	x/; Head[x]=!=Real && FreeQ2[{x},{Pattern,Blank}];
 
 FCPrint[1,"Write2.m loaded."];
 End[]
