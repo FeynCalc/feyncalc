@@ -1,0 +1,32 @@
+
+
+(* :Title: FCGetDimensions.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCGetDimensions  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorenz`fcstFCGetDimensions =
+({
+{"fcstFCGetDimensions-ID1", "FCGetDimensions[0]", "{}"},
+{"fcstFCGetDimensions-ID2", "FCGetDimensions[x]", "{}"},
+{"fcstFCGetDimensions-ID3", "FCGetDimensions[FV[p,mu]]", "{4}"},
+{"fcstFCGetDimensions-ID4", "FCGetDimensions[FVD[p,mu]]", "{D}"},
+{"fcstFCGetDimensions-ID5", "FCGetDimensions[FVE[p,mu]]",
+"{-4 + D}"},
+{"fcstFCGetDimensions-ID6",
+"FCGetDimensions[FV[p,mu]+FVD[l,mu]+FVE[q,mu]]",
+"{4, -4 + D, D}"},
+{"fcstFCGetDimensions-ID7", "FCGetDimensions[GA[x]]", "{4}"},
+{"fcstFCGetDimensions-ID8", "FCGetDimensions[GAD[p]]", "{D}"},
+{"fcstFCGetDimensions-ID9", "FCGetDimensions[GAE[p]]", "{-4 + D}"},
+{"fcstFCGetDimensions-ID10", "FCGetDimensions[GSD[p]+GA[x]]",
+"{4, D}"}
+});
