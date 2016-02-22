@@ -13,7 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Feynman`fcstFourLaplacian = ({
+Tests`Lorentz`fcstFourLaplacian = ({
 {"fcstFourLaplacian-ID1", "FourLaplacian[SP[q,q],q,q]", "2*D"},
 {"fcstFourLaplacian-ID2",
 "FourLaplacian[SOD[q]^OPEm FAD[q,q-p]//FCI,q,q]//FCE//FCI//FCE",
