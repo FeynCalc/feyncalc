@@ -33,9 +33,8 @@ Tests`Lorentz`fcstContractContractionsIn4dims = {
 		"-6*Pair[LorentzIndex[a], LorentzIndex[b]]"},
 {"fcstContractContractionsIn4dims-ID11", "Contract[MetricTensor[a, sigma]*FourVector[p, a]
 	FourVector[p,sigma]*(FourVector[q, b] + FourVector[r, b])*(FourVector[p, b]
-	-FourVector[q, b]), Expanding -> False]", "(Pair[LorentzIndex[b], Momentum[p]] -
-	Pair[LorentzIndex[b], Momentum[q]])*(Pair[LorentzIndex[b],
-	Momentum[q]] + Pair[LorentzIndex[b], Momentum[r]])*Pair[Momentum[p], Momentum[p]]"},
+	-FourVector[q, b]), Expanding -> False]", "Pair[Momentum[p], Momentum[p]]*(Pair[Momentum[p], Momentum[q]] +
+	Pair[Momentum[p], Momentum[r]] - Pair[Momentum[q], Momentum[q]] - Pair[Momentum[q], Momentum[r]])"},
 {"fcstContractContractionsIn4dims-ID12", "Contract[FourVector[k, mu] PolarizationVector[k, mu]]",
 	"Contract[FourVector[k, mu] PolarizationVector[k, mu]]"},
 {"fcstContractContractionsIn4dims-ID13", "Contract[FourVector[k, mu]
@@ -88,11 +87,7 @@ SP[a, a] SP[b, d]^2 SP[c, c] -
 SP[a, a] SP[b, b] SP[c, d]^2 + SP[a, c]^2 SP[b, b] SP[d, d] -
 2 SP[a, b] SP[a, c] SP[b, c] SP[d, d] +
 SP[a, a] SP[b, c]^2 SP[d, d] + SP[a, b]^2 SP[c, c] SP[d, d] -
-SP[a, a] SP[b, b] SP[c, c] SP[d, d])^2"},
-{"fcstContractContractionsIn4dims-ID25", "LCD[a, b, c, d]^3 // Contract // FCE",
-"LCD[a, b, c, d]^3"},
-{"fcstContractContractionsIn4dims-ID26", "LCD[a, b, c, d]^4 // Contract // FCE",
-"LCD[a, b, c, d]^4"}
+SP[a, a] SP[b, b] SP[c, c] SP[d, d])^2"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
@@ -103,19 +98,13 @@ Tests`Lorentz`fcstContractDDims = {
 {"fcstContractDDims-ID3","LCD[i1, i2, i3, i4] LC[i1, i2, i3, j4] // Contract[#, Factoring -> True] &",
 	"-6 Pair[LorentzIndex[i4], LorentzIndex[j4]]"},
 {"fcstContractDDims-ID4","LCD[i1, i2, i3, i4] LCD[i1, i2, i3, j4] // Contract[#, Factoring -> True] &",
-	"6 Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]] -11 D Pair[LorentzIndex[i4, D],
-	LorentzIndex[j4, D]] + 6 D^2 Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]] -
-	D^3 Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]]"},
+	"(1 - D)*(2 - D)*(3 - D)*Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]]"},
 {"fcstContractDDims-ID5","LCD[i1, i2, i3, i4] LC[i1, i2, j3, j4] // Contract[#, Factoring -> True] &","
-	2 Pair[LorentzIndex[i3], LorentzIndex[j4]] Pair[LorentzIndex[i4], LorentzIndex[j3]] -
-	2 Pair[LorentzIndex[i3], LorentzIndex[j3]] Pair[LorentzIndex[i4], LorentzIndex[j4]]"},
+	2*(Pair[LorentzIndex[i3], LorentzIndex[j4]]*Pair[LorentzIndex[i4], LorentzIndex[j3]] -
+	Pair[LorentzIndex[i3], LorentzIndex[j3]]*Pair[LorentzIndex[i4], LorentzIndex[j4]])"},
 {"fcstContractDDims-ID6","LCD[i1, i2, i3, i4] LCD[i1, i2, j3, j4] // Contract[#, Factoring -> True] &",
-"6 Pair[LorentzIndex[i3, D], LorentzIndex[j4, D]] Pair[ LorentzIndex[i4, D], LorentzIndex[j3, D]] -
-5 D Pair[LorentzIndex[i3, D], LorentzIndex[j4, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j3, D]] +
-D^2 Pair[LorentzIndex[i3, D], LorentzIndex[j4, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j3, D]] -
-6 Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]] +
-5 D Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]] -
-D^2 Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]]"},
+"(2 - D)*(3 - D)*(Pair[LorentzIndex[i3, D], LorentzIndex[j4, D]]*Pair[LorentzIndex[i4, D], LorentzIndex[j3, D]] -
+Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]]*Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]])"},
 {"fcstContractDDims-ID7","LCD[i1, i2, i3, i4] LC[i1, j2, j3, j4] // Contract[#, Factoring -> True] &","
 	Pair[LorentzIndex[i2], LorentzIndex[j4]] Pair[LorentzIndex[i3], LorentzIndex[j3]] Pair[LorentzIndex[i4],
 	LorentzIndex[j2]] -Pair[LorentzIndex[i2], LorentzIndex[j3]] Pair[LorentzIndex[i3],
@@ -126,25 +115,15 @@ D^2 Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D], Lor
 	LorentzIndex[j2]] Pair[LorentzIndex[i4], LorentzIndex[j4]] - Pair[LorentzIndex[i2],
 	LorentzIndex[j2]] Pair[LorentzIndex[i3], LorentzIndex[j3]] Pair[LorentzIndex[i4], LorentzIndex[j4]]"},
 {"fcstContractDDims-ID8","LCD[i1, i2, i3, i4] LCD[i1, j2, j3, j4] //Contract[#, Factoring -> True]&",
-	"-3 Pair[LorentzIndex[i2, D], LorentzIndex[j4, D]] Pair[LorentzIndex[i3, D],
-	LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j2, D]] + D Pair[LorentzIndex[i2, D],
-	LorentzIndex[j4, D]] Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D],
-		LorentzIndex[j2, D]] + 3 Pair[LorentzIndex[i2, D], LorentzIndex[j3, D]] Pair[ LorentzIndex[i3,
-		D], LorentzIndex[j4, D]] Pair[LorentzIndex[i4, D], LorentzIndex[j2, D]] - D Pair[LorentzIndex[i2,
-		D], LorentzIndex[j3, D]] Pair[LorentzIndex[i3, D], LorentzIndex[j4, D]] Pair[LorentzIndex[i4, D],
-		LorentzIndex[j2, D]] + 3 Pair[LorentzIndex[i2, D], LorentzIndex[j4, D]] Pair[LorentzIndex[i3, D],
-		LorentzIndex[j2, D]] Pair[LorentzIndex[i4, D],LorentzIndex[j3, D]] -D Pair[LorentzIndex[i2, D],
-		LorentzIndex[j4, D]] Pair[LorentzIndex[i3, D], LorentzIndex[j2, D]] Pair[LorentzIndex[i4, D],
-		LorentzIndex[j3, D]] - 3 Pair[LorentzIndex[i2, D], LorentzIndex[j2, D]] Pair[LorentzIndex[i3,
-		D], LorentzIndex[j4, D]] Pair[LorentzIndex[i4, D],LorentzIndex[j3, D]] +D Pair[LorentzIndex[i2, D],
-		LorentzIndex[j2, D]] Pair[LorentzIndex[i3, D], LorentzIndex[j4, D]] Pair[LorentzIndex[i4, D],
-		LorentzIndex[j3, D]] - 3 Pair[LorentzIndex[i2, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i3, D],
-		LorentzIndex[j2, D]] Pair[LorentzIndex[i4, D],LorentzIndex[j4, D]] +D Pair[LorentzIndex[i2, D],
-		LorentzIndex[j3, D]] Pair[LorentzIndex[i3, D], LorentzIndex[j2, D]] Pair[LorentzIndex[i4, D],
-		LorentzIndex[j4, D]] + 3 Pair[LorentzIndex[i2, D], LorentzIndex[j2, D]] Pair[LorentzIndex[i3, D],
-		LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D],  LorentzIndex[j4, D]] -D Pair[LorentzIndex[i2, D],
-		LorentzIndex[j2, D]] Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]] Pair[LorentzIndex[i4, D],
-		LorentzIndex[j4, D]]"},
+	"-((3 - D)*(Pair[LorentzIndex[i2, D], LorentzIndex[j4, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[j3, D]]*Pair[LorentzIndex[i4, D],
+	LorentzIndex[j2, D]] - Pair[LorentzIndex[i2, D], LorentzIndex[j3, D]]*Pair[LorentzIndex[i3, D],
+	LorentzIndex[j4, D]]*Pair[LorentzIndex[i4, D], LorentzIndex[j2, D]] - Pair[LorentzIndex[i2, D],
+	LorentzIndex[j4, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[j2, D]]*Pair[LorentzIndex[i4, D],
+	LorentzIndex[j3, D]] + Pair[LorentzIndex[i2, D], LorentzIndex[j2, D]]*Pair[LorentzIndex[i3, D],
+	LorentzIndex[j4, D]]*Pair[LorentzIndex[i4, D], LorentzIndex[j3, D]] + Pair[LorentzIndex[i2, D],
+	LorentzIndex[j3, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[j2, D]]*Pair[LorentzIndex[i4, D],
+	LorentzIndex[j4, D]] - Pair[LorentzIndex[i2, D], LorentzIndex[j2, D]]*Pair[LorentzIndex[i3, D],
+	LorentzIndex[j3, D]]*Pair[LorentzIndex[i4, D], LorentzIndex[j4, D]]))"},
 {"fcstContractDDims-ID9","LCD[i1, i2, i3, i4] LC[j1, j2, j3, j4] //Contract[#, Factoring -> True] &",
 	"-(Pair[LorentzIndex[i1], LorentzIndex[j4]]*Pair[LorentzIndex[i2], LorentzIndex[j3]]*Pair[LorentzIndex[i3], LorentzIndex[j2]]*
 	Pair[LorentzIndex[i4], LorentzIndex[j1]]) + Pair[LorentzIndex[i1], LorentzIndex[j3]]*
