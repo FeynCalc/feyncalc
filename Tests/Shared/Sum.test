@@ -20,7 +20,7 @@ Tests`Shared`fcstSumP = {
 	"SumP[1,m]"},
 {"fcstSumP-ID4","SumP[1,4]",
 	"25/12"},
-{"fcstSumP-ID5","Explicit[SumP[1,n/2]]",
+{"fcstSumP-ID5","Explicit[SumP[1,n/2]]/. {-(-1)^n -> (-1)^(n + 1)}",
 	"1/2 (1+(-1)^(1+n)) SumS[1,1/2 (-1+n)]+1/2 (1+(-1)^n) SumS[1,n/2]"},
 {"fcstSumP-ID6","Explicit[SumP[1,n/2]]/.n->8",	"25/12"}
 };

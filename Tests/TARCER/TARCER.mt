@@ -1,4 +1,4 @@
-(* :Title: LoopIntegrals.mt													*)
+(* :Title: SUN.mt															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -7,21 +7,15 @@
 	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Unit tests for functions in the "LoopIntegrals" directory		*)
+(* :Summary:  Unit tests for functions in the "SUN" directory				*)
 
 (* ------------------------------------------------------------------------ *)
 
 Needs["FeynCalc`"];
-$FCAdvice = False;
+
 ClearAll[tests];
-tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]];
+tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "TARCER"}]]
 Get/@tests;
 
-FCClearScalarProducts[];
-SetOptions[Tdec,UseParallelization->False];
-
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`LoopIntegrals`*"])];
-
-$FCAdvice = True;
-
+	Join@@(ToExpression/@Names["Tests`TARCER`*"])];

@@ -24,10 +24,10 @@ stingCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 Map[Test[InputForm[ToExpression[(#[[2]])]],InputForm[ToExpression[(#[[3]])]],(#[[4]]),TestID->#[[1]],
 	MessagesEquivalenceFunction->stingCompare]&,
 	Join[Tests`Shared`fcstSharedObjectsMessages]];
-
+If [$VersionNumber >= 10,
 Map[Test[StringReplace[ToString[(ToExpression[#[[2]]]),InputForm, CharacterEncoding -> "Unicode"]," " ->""],StringReplace[(#[[3]])," " ->""],TestID->#[[1]]]&,
 	Join[Tests`Shared`fcstSharedObjectsTypesetting]];
-
+];
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Select[Names["Tests`Shared`*"],
 	!StringMatchQ[#, "*fcstSharedObjectsMessages" | "*fcstSharedObjectsTypesetting"] &])];
