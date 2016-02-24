@@ -55,6 +55,7 @@ Options[FCApart] = {
 	FCI -> False,
 	FCVerbose -> False,
 	FDS -> True,
+	MaxIterations -> Infinity,
 	SetDimensions-> {4,D}
 };
 
@@ -72,6 +73,8 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = FCI[expr],
 			ex = expr
 		];
+
+		counter = OptionValue[MaxIterations];
 
 		FCPrint[3,"FCApart: Entering with ", ex, FCDoControl->fcaVerbose];
 
@@ -135,6 +138,12 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(* All the partial fractioning is done by pfrac *)
 		res = pref*vectorTerm*pfrac[vectorSet];
 
+		(*pfrac can appear in the final result if MaxIterations is not Infinity	*)
+		res = res/.pfrac -> pfracOut;
+
+		(*	propagators with zero exponents are unity	*)
+		res = res /. pfracOut[{_, _, {}, _}]->1 /. pfracOut[{_, _, {0..}, _}]->1;
+
 		If [OptionValue[Collecting],
 			res = Collect2[res,pfracOut]
 		];
@@ -177,7 +186,10 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 pfrac[inputVectorSet_List]:=
 	Block[{	vectorSet,removalList,f,v,ca,M,expCounts,spIndices,
-			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos},
+			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos,tmpNS,tmp},
+
+		counter--;
+		FCPrint[3,"FCApart: pfrac: Counter is ", counter, FCDoControl->fcaVerbose];
 
 		(*	We need to determine f_i and f from Eq. 10 in arXiv:1204.2314.
 		This can be done by computing the nullspace basis of the matrix M
@@ -191,42 +203,64 @@ pfrac[inputVectorSet_List]:=
 		(* 	If a propagator/scalar product has zero exponent, it should be removed
 			from the set *)
 		removalList = Position[inputVectorSet[[3]], 0];
-		vectorSet = {	Delete[inputVectorSet[[1]],removalList],inputVectorSet[[2]],
-					Delete[inputVectorSet[[3]],removalList],Delete[inputVectorSet[[4]],removalList]};
+
+		vectorSet = {
+			Delete[inputVectorSet[[1]],removalList],
+			inputVectorSet[[2]],
+			Delete[inputVectorSet[[3]],removalList],
+			Delete[inputVectorSet[[4]],removalList]};
 
 		FCPrint[3,"FCApart: pfrac: Basis with zero exponents removed ", vectorSet, FCDoControl->fcaVerbose];
 
 		expCounts=vectorSet[[3]];
 
 		If [expCounts==={},
-			Return[1]
+			FCPrint[3,"FCApart: pfrac: The propagator is unity: ", vectorSet, FCDoControl->fcaVerbose];
+			Return[pfracOut[vectorSet]]
 		];
 
 		(* Now we compute M and check linear independence of the propagators and scalar products*)
 		ca = Normal[CoefficientArrays@@(vectorSet[[1;;2]])];
 		M = Transpose[ca[[2]]];
+		tmpNS = Sort[NullSpace[M]];
 
-		If[	NullSpace[M] === {},
+		If[	tmpNS === {},
 			(*Dimensions[M][[2]] <= Length[inputVectorSet[[2]]],*)
 			FCPrint[3,"FCApart: pfrac: ", vectorSet," contains only linearly independent polynomial. Done!",FCDoControl->fcaVerbose];
 			(* pfracOut is a head that indicates that the given integral cannot be further decomposed *)
 			Return[pfracOut[vectorSet]];
 		];
 
-		(* 	If the integral can be decomposed, it means that the dimensions of the nullspace of M
-			is not zero. Hence we define v as the first basis vector of N(M) and use it to compute
-			f	*)
-		v = Sort[NullSpace[M]][[1]];
-		f = Dot[vectorSet[[1]],v];
-
 		(*	If the integral contains scalar products, we need to handle them separately. Let us
 			first pick up the first scalar product in the list *)
 		spIndices = Position[expCounts, _Integer?Negative];
 
+		(* 	If the integral can be decomposed, it means that the dimensions of the nullspace of M
+			is not zero. Now it is up to us to pick the right basis vector of N(M), define it as v
+			and use it to compute f
+		*)
+
 		If [spIndices=!={},
 
-			(* Now we need to check the value of the coefficient fi (spfCoeff) of that scalar product *)
 			spPosition = spIndices[[1]][[1]];
+			(*	The first basis vector might not be the best choice, if the corresponding
+				coefficient fi vanishes. It is better to go through all the vectors and
+				check if we can find one for which fi is not zero *)
+			v =
+				If[	Length[tmpNS]>1 || (First[tmpNS])[[spPosition]]=!=0,
+					(*	The first basis vector might not be the best choice, if the corresponding
+						coefficient fi vanishes. It is better to go through all the vectors and
+						check if we can find one for which fi is not zero *)
+					tmp=MapIndexed[{First[#2],#1[[spPosition]]}&,tmpNS]/.{_,0}->Unevaluated[Sequence[]];
+					If[Length[tmp]=!=0,
+						tmpNS[[First[tmp][[1]]]],
+						First[tmpNS]
+					],
+					tmpNS[[1]]
+				];
+			f = Dot[vectorSet[[1]],v];
+
+			(* Now we need to check the value of the coefficient fi (spfCoeff) of that scalar product *)
 			spType = vectorSet[[1]][[spPosition]];
 			spExponent = expCounts[[spPosition]];
 			spfCoeff = v[[spPosition]];
@@ -241,8 +275,8 @@ pfrac[inputVectorSet_List]:=
 				FCPrint[3,"FCApart: pfrac: The coefficient of ", spType, " is zero",FCDoControl->fcaVerbose];
 				res = pfrac[{Delete[vectorSet[[1]],{spPosition}],vectorSet[[2]],Delete[expCounts,{spPosition}],Delete[vectorSet[[4]],{spPosition}]}];
 				(* Here we reinsert the factored out scalar product *)
-				FCPrint[3,"FCApart: pfrac: Output after treating the vanishing coefficient f_i", res,FCDoControl->fcaVerbose];
-				res = res/.pfracOut[{b1_,b2_,b3_,b4_}]:>pfracOut[{Join[b1,{spType}],b2,Join[b3,{spExponent}],
+				FCPrint[3,"FCApart: pfrac: Output after treating the vanishing coefficient f_i", res," ",FCDoControl->fcaVerbose];
+				res = res/.(h:pfrac|pfracOut)[{b1_,b2_,b3_,b4_}]:>h[{Join[b1,{spType}],b2,Join[b3,{spExponent}],
 					Join[b4,{spType}]}];
 				Return[res],
 
@@ -265,7 +299,10 @@ pfrac[inputVectorSet_List]:=
 					pfrac[{vectorSet[[1]],vectorSet[[2]],dummy,vectorSet[[4]]}],{i,iterList}];
 				FCPrint[3,"FCApart: pfrac: Output after treating the non-vanishing coefficient f_i", res,FCDoControl->fcaVerbose];
 				Return[res]
-			];
+			],
+			(* If there are no scalar products to cancel, we just pick the first basis vector *)
+			v = First[tmpNS];
+			f = Dot[vectorSet[[1]],v]
 		];
 
 		(*	If we are here, this means that the integral does not contain any scalar produts, only propagators
@@ -290,7 +327,7 @@ pfrac[inputVectorSet_List]:=
 
 		FCPrint[3,"FCApart: pfrac: Leaving pfrac with", res,FCDoControl->fcaVerbose];
 		res
-];
+]/; counter=!=0;
 
 
 FCPrint[1,"FCApart.m loaded."];
