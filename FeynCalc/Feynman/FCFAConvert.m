@@ -65,6 +65,7 @@ Options[FCFAConvert] = {
 	DropSumOver -> False,
 	UndoChiralSplittings -> False,
 	ChangeDimension -> False,
+	FinalSubstitutions->{},
 	IncomingMomenta->{},
 	OutgoingMomenta->{},
 	LoopMomenta->{},
@@ -121,6 +122,10 @@ FCFAConvert[FeynArts`FAFeynAmpList[__][diags__], OptionsPattern[]] :=
 
 		If[	!OptionValue[List],
 			diagsConverted = Total[diagsConverted]
+		];
+
+		If[	OptionValue[FinalSubstitutions]=!={},
+			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
 		];
 
 		Return[diagsConverted]
