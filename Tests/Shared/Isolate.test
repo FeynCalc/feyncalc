@@ -34,5 +34,6 @@ PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], MQ]] Pair[
 Momentum[p, D], Momentum[p, D]], {q, FeynAmpDenominator, tidPaVe},
 IsolateNames -> tidIsolate]", "1/2 FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], MQ],
 PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], MQ]] Pair[
-Momentum[p, D], Momentum[p, D]]"}
+Momentum[p, D], Momentum[p, D]]"},
+{"fcstIsolate-ID9","Isolate[-1 x]","-x"}
 };

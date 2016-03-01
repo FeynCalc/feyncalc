@@ -82,9 +82,8 @@ Isolate[x_?NumberQ, _, OptionsPattern[]] :=
 Isolate[x_Symbol, _, OptionsPattern[]] :=
 	x;
 
-Isolate[x_ /; NumericalFactor[x] =!=1, z:Except[_?OptionQ], opts:OptionsPattern[]] :=
-	(NumericalFactor[x] Isolate[x/NumericalFactor[x], z, opts]) /; x=!=0;
-
+Isolate[x_ /; NumericalFactor[x] =!=1, z_, opts:OptionsPattern[]] :=
+	(NumericalFactor[x] Isolate[x/NumericalFactor[x], z, opts]) /; x=!=0 && (!OptionQ[z] || z==={})
 
 Isolate[ex_, (opts:OptionsPattern[])/;opts=!={}] :=
 	Isolate[ex, {}, opts];
