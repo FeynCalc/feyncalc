@@ -35,5 +35,8 @@ Momentum[p, D], Momentum[p, D]], {q, FeynAmpDenominator, tidPaVe},
 IsolateNames -> tidIsolate]", "1/2 FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], MQ],
 PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], MQ]] Pair[
 Momentum[p, D], Momentum[p, D]]"},
-{"fcstIsolate-ID9","Isolate[-1 x]","-x"}
+{"fcstIsolate-ID9","Isolate[-1 x]","-x"},
+{"fcstIsolate-ID10","MatchQ[Isolate[Total[Table[Sqrt[TZ[i] + 2 ZZ[i]]/
+HH[ToString[i] + ToString[i + 2] + ToString[i + 4]], {i, 1,
+10000}]], IsolateFast -> True], HoldForm[KK[_]]]","True"}
 };

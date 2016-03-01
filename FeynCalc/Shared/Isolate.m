@@ -24,6 +24,13 @@ in expr which are free of any occurence of a member of the \
 list varlist. Instead of KK any other head or a list of names \
 of the abbreviations may be specified with the option IsolateNames.";
 
+IsolateFast::usage =
+"IsolateFast is an option of Isolate. When set to True, }
+and when varlist is empty, Isolate will not attempt to recognize \
+existing abbreviations, but will immediately abbreviate the whole expression \
+instead. This is useful for very large expressions or prefactors, where
+Isolate would otherwise require a lot of time to finish.";
+
 IsolatePrint::usage =
 "IsolatePrint is an option of Isolate. If it is set to OutputForm \
 (or any other *Form) the definitions of the abbreviations are \
@@ -62,6 +69,7 @@ Begin["`Isolate`Private`"]
 Options[Isolate] = {
 	IsolateNames -> KK,
 	IsolatePrint -> False,
+	IsolateFast	 -> False,
 	IsolateSplit -> Infinity,
 	IsolateTimes -> False,
 	IsolatePlus -> False
@@ -154,8 +162,10 @@ Isolate[ exp_ /; Apply[Or[#===1, #===0]&, {NumericalFactor[exp]}], vars_List, op
 				]
 			);
 
-		res = exp /. Plus -> plush /. plush -> Plus;
-
+		If[	!OptionValue[IsolateFast] || vlist =!={},
+			res = exp /. Plus -> plush /. plush -> Plus,
+			res = exp
+		];
 
 		If [OptionValue[IsolateTimes],
 			(* 	we don't want to touch products in existing abbreviations, this is why we need to hide
