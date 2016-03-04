@@ -23,12 +23,16 @@ Factoring -> Factor]",
 {"fcstCollect2-ID4","Collect2[2 a (b - a) (h - 1) - b^2 (e a - c) + b^2, {a, b}]",
 	"-2 a^2 (h-1)-a b^2 e+2 a b (h-1)+b^2 (c+1)"},
 {"fcstCollect2-ID5","Collect2[Expand[(a - b - c - d)^5], a,
-IsolateNames -> L] // ReleaseHold",
+IsolateNames -> L] // FRH",
 	"a^5-5 a^4 (b+c+d)+10 a^3 (b+c+d)^2-10 a^2 (b+c+d)^3+5 a (b+c+d)^4-(b+c+d)^5"},
 {"fcstCollect2-ID6","Collect2[Expand[(a - b - c)^3], a, Factoring -> fun] /.
 fun -> FactorTerms",
 	"a^3-3 a^2 (b+c)+3 a (b^2+2 b c+c^2)-b^3-3 b^2 c-3 b c^2-c^3"},
 {"fcstCollect2-ID7","Collect2[(Hold[a*b] + Hold[c*d]) (e + f) + (Hold[a*b] +
 	Hold[c*d]) (e + 3 f), {e, f}]",
-	"2*e*(Hold[a*b] + Hold[c*d]) + 4*f*(Hold[a*b] + Hold[c*d])"}
+	"2*e*(Hold[a*b] + Hold[c*d]) + 4*f*(Hold[a*b] + Hold[c*d])"},
+{"fcstCollect2-ID8","Collect2[1/(x + t (x + c)^2 + d) + x + a (x + d), x,Denominator -> True]",
+	"a d + (1 + a) x + 1/(d + c^2 t + (1 + 2 c t) x + t x^2)"},
+{"fcstCollect2-ID9","Collect2[a (-m^2 - p^2) + b + c, {a, b, c}]",
+	"b + c - a (m^2 + p^2)"}
 };
