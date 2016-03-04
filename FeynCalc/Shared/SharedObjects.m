@@ -99,6 +99,14 @@ Epsilon::usage =
 "Epsilon is (D-4), where D is the number of space-time dimensions. Epsilon \
 stands for a small positive number.";
 
+EpsilonUV::usage =
+"EpsilonUV denotes (D-4), where D is the number of space-time dimensions. EpsilonUV \
+stands for a small positive number that explicitly regulates only UV divergences.";
+
+EpsilonIR::usage =
+"EpsilonIR denotes (D-4), where D is the number of space-time dimensions. EpsilonIR \
+stands for a small negative number that explicitly regulates only IR divergences.";
+
 ExplicitLorentzIndex::usage =
 "ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is \
 an integer.";
@@ -878,6 +886,14 @@ Eps /:
 Epsilon /:
 	MakeBoxes[Epsilon, TraditionalForm]:=
 		TagBox["\[CurlyEpsilon]", TraditionalForm];
+
+EpsilonUV /:
+	MakeBoxes[EpsilonUV, TraditionalForm] :=
+		SubscriptBox["\[CurlyEpsilon]", "UV"];
+
+EpsilonIR /:
+	MakeBoxes[EpsilonIR, TraditionalForm] :=
+		SubscriptBox["\[CurlyEpsilon]", "IR"];
 
 ExplicitLorentzIndex[x_, 4] :=
 	ExplicitLorentzIndex[x, 4] = ExplicitLorentzIndex[x];
