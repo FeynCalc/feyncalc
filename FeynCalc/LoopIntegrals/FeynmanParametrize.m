@@ -31,7 +31,7 @@ FeynmanParametrize[exp_, Momentum[q_,_:4], opt:OptionsPattern[]] :=
 FeynmanParametrize[exp_,q_, OptionsPattern[]] :=
 	Block[ {},
 		FeynAmpDenominatorCombine[exp] /. FeynAmpDenominator[aa__] :>
-			Apply[fpar[OptionsValue[FeynmanParameterNames]][q//nomom],{FCI[FeynAmpDenominator[aa]]}]
+			Apply[fpar[OptionValue[FeynmanParameterNames]][q//nomom],{FCI[FeynAmpDenominator[aa]]}]
 	];
 
 nomom[y_] :=
