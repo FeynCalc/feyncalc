@@ -37,7 +37,8 @@ Options[ TR ] = {
 	SUNNToCACF			-> False,
 	SUNTrace           -> False,
 	Schouten           -> 0,
-	TraceOfOne         -> 4
+	TraceOfOne         -> 4,
+	West				-> True
 };
 
 

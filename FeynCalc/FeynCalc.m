@@ -293,13 +293,6 @@ $FCAdvice::usage =
 "If $FCAdvice is set to True, FeynCalc will display some
 advices on optimal Mathematica configuration for using FeynCalc."
 
-$West::usage =
-"If $West is set to True (which is the default), \
-traces involving more than 4 Dirac matrices \
-and gamma5 are calculated recursively according to formula (A.5) from \
-Comp. Phys. Comm 77 (1993) 286-298, which is based on the Breitenlohner \
-Maison gamma5 - scheme.";
-
 WriteStringOutput::usage =
 "UseWriteStringOutput an option for FCPrint. It specifies, to which
 stream WriteString should output the expression";
@@ -420,10 +413,6 @@ $OPEWard			= False;
 
 If[ !ValueQ[$VeryVerbose],
 	$VeryVerbose   = 0
-];
-
-If[ !ValueQ[$West],
-	$West = True
 ];
 
 If[ !ValueQ[$NonComm],

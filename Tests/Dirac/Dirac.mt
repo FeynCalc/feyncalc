@@ -56,7 +56,6 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 
 $BreitMaison=False;
 $Larin=False;
-$West=False;
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 		Join[	Tests`Dirac`fcstTr,

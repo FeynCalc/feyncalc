@@ -185,23 +185,27 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
+Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox["Tr",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Tr",
-  ButtonNote->"Tr"],
- ", ",
- ButtonBox["$BreitMaison",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/$BreitMaison",
-  ButtonNote->"$BreitMaison"],
- ", ",
- ButtonBox["$West",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/$West",
-  ButtonNote->"$West"],
- "."
-}], "Text",
+ ButtonBox[\"Tr\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/Tr\",
+  ButtonNote->\"Tr\"],
+ \", \",
+ ButtonBox[\"$BreitMaison\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/$BreitMaison\",
+  ButtonNote->\"$BreitMaison\"],
+ \", \",
+ ButtonBox[\"West\",
+  BaseStyle->\"Link\",
+  ButtonData:>\"paclet:FeynCalc/ref/West\",
+  ButtonNote->\"West\"],
+ \".\"
+}], \"Text\",
+ CellTags->\"$Larin\",
+ CellID->181403197]\
+\>"], "Text",
  CellTags->"$Larin",
  CellID->181403197]
 }, Open  ]],
@@ -309,13 +313,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 741},
+WindowMargins->{{Automatic, 943}, {Automatic, 79}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

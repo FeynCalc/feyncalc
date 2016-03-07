@@ -42,7 +42,7 @@ odd number of gamma^5 unambiguously. The trace of `1` is illegal in NDR. \
 Evaluation aborted!";
 
 DiracTrace::ilsch =
-"The settings $BreitMaison=`1`, $Larin=`2` and $West=`3` do not describe a valid \
+"The settings $BreitMaison=`1`, $Larin=`2` do not describe a valid \
 scheme for treating gamma^5 in D dimensions. Evaluation aborted!.";
 
 DiracTrace::fail =
@@ -64,6 +64,7 @@ End[]
 Begin["`DiracTrace`Private`"]
 
 diTrVerbose::usage="";
+west::usage="";
 
 scev[a__] :=
 	scev[a] = ExpandScalarProduct[a];
@@ -79,7 +80,8 @@ Options[DiracTrace] = {
 	Schouten-> 0,
 	LeviCivitaSign:> $LeviCivitaSign,
 	TraceOfOne -> 4,
-	FCVerbose -> False
+	FCVerbose -> False,
+	West -> True
 };
 
 
@@ -305,6 +307,7 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 		schoutenopt = OptionValue[DiracTrace,{opts},Schouten];
 		traceofone 	= OptionValue[DiracTrace,{opts},TraceOfOne];
 		contract  	= OptionValue[DiracTrace,{opts},Contract];
+		west		= OptionValue[DiracTrace,{opts},West];
 
 		If[ diractrfact === Automatic,
 			diractrfact = Function[x, If[ LeafCount[x] <  5000,
@@ -724,21 +727,14 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 						!$Larin && !$BreitMaison,
 							If[ MatchQ[SelectFree[spx,{(LorentzIndex | Momentum)[_],DiracGamma[5]}], {} ],
 								(* If the trace is purely four dimensional, NDR is ok here. *)
-								If[ $West,
-									(* Apply West's formula (c.f. Eq 3.10 of T. H. West,
-										Comp. Phys. Commun., 77 (1993) ) *)
-									FCPrint[3,"The chiral trace", spx, "is computed using West's formula in NDR", FCDoControl->diTrVerbose ];
-									temp2 = Expand[2/(Length[spx]-5) Sum[ (-1)^(i+j+1) scev[spx[[i]], spx[[j]]]*
-									spt@@Delete[spx,{{j},{i}}], {i,2,Length[spx]-1},{j,1,i-1}]],
-									(*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm,
-									A. Denner. Comp. Phys. Commun., 64 (1991)) *)
-									FCPrint[3,"The chiral trace", spx, "is computed using standard recursion formula in NDR", FCDoControl->diTrVerbose];
-									fi = LorentzIndex[Unique[]];
-									temp2 = scev[spx[[le-3]],spx[[le-2]]] spt@@Append[Drop[Drop[spx,{le-3,le-2}], -1 ],
-									DiracGamma[5]]- scev[spx[[le-3]],spx[[le-1]]] spt@@Append[Drop[Drop[spx,{le-3,le-3}], -2],
-									DiracGamma[5]]+ scev[spx[[le-2]],spx[[le-1]]] spt@@Append[Drop[spx,-3], DiracGamma[5]] +
-									( I Eps[spx[[le-3]],spx[[le-2]],spx[[le-1]],fi] *spt @@ Append[Drop[spx,-4],fi]);
-								];
+								(*Apply the standard anomalous trace formula (c.f. Eq 2.18 of R. Mertig, M. Boehm,
+								A. Denner. Comp. Phys. Commun., 64 (1991)) *)
+								FCPrint[3,"The chiral trace", spx, "is computed using standard recursion formula in NDR", FCDoControl->diTrVerbose];
+								fi = LorentzIndex[Unique[]];
+								temp2 = scev[spx[[le-3]],spx[[le-2]]] spt@@Append[Drop[Drop[spx,{le-3,le-2}], -1 ],
+								DiracGamma[5]]- scev[spx[[le-3]],spx[[le-1]]] spt@@Append[Drop[Drop[spx,{le-3,le-3}], -2],
+								DiracGamma[5]]+ scev[spx[[le-2]],spx[[le-1]]] spt@@Append[Drop[spx,-3], DiracGamma[5]] +
+								( I Eps[spx[[le-3]],spx[[le-2]],spx[[le-1]],fi] *spt @@ Append[Drop[spx,-4],fi]);
 								temp2/.spt->spursavg/.spursavg->spug,
 								(* Otherwise abort the computation, since NDR cannot handle anomalous traces without an
 								additional prescription*)
@@ -746,7 +742,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 								Abort[];
 							],
 						(* Larin *)
-						$Larin && !$BreitMaison && !$West,
+						$Larin && !$BreitMaison,
 							FCPrint[3,"The chiral trace", spx, "is computed in Larin's scheme", FCDoControl->diTrVerbose];
 							{fi1, fi2, fi3} = LorentzIndex[#,D]& /@ Unique[{"a","b","c"}];
 							drsi = LeviCivitaSign /. Options[DiracTrace];
@@ -757,7 +753,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 							DOT @@ Map[DiracGamma[#,D]&, {a,fi1,fi2,fi3}], EpsContract->True];
 							temp2/.spt->spursavg/.spursavg->spug,
 						(* BMHV, standard (slow!) trace formula *)
-						!$Larin && $BreitMaison && !$West,
+						!$Larin && $BreitMaison && !west,
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using the slow formula", FCDoControl->diTrVerbose];
 							dirsign = LeviCivitaSign /. Options[DiracTrace];
 							fi = Table[LorentzIndex[ Unique[] ],{spurjj,1,4}];
@@ -765,16 +761,16 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 							(dirsign I/24 (DOT[DiracGamma[fi[[1]]],DiracGamma[fi[[2]]],
 							DiracGamma[fi[[3]]],DiracGamma[fi[[4]]]]) (Eps@@fi))),
 						(* BMHV West's trace formula *)
-						!$Larin && $BreitMaison && $West,
+						!$Larin && $BreitMaison && !west,
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula", FCDoControl->diTrVerbose];
 							temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
 							scev[spx[[i]], spx[[j]]] spt@@Delete[spx,{{j},{i}}],
 								{i,2,Length[spx]-1},{j,1,i-1}]];
 							temp2/.spt->spursavg/.spursavg->spug,
-							(* Any other combination of $Larin, $BreitMaison and $West doesn't describe
+							(* Any other combination of $Larin, $BreitMaison doesn't describe
 							a valid scheme *)
 						True,
-							Message[DiracTrace::ilsch, $BreitMaison,$Larin,$West]
+							Message[DiracTrace::ilsch, $BreitMaison,$Larin]
 					],
 			True,
 			Message[DiracTrace::fail, FullForm[spx]]

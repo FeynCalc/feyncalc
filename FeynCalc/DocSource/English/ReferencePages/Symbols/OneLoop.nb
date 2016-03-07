@@ -119,8 +119,7 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"OneLoop", "[", 
    RowBox[{"q", ",", " ", "amplitude"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "calculates the one-loop Feynman diagram amplitude (",
+ " \[LineSeparator]calculates the one-loop Feynman diagram amplitude (",
  StyleBox["n",
   FontSlant->"Italic"],
  "-point, where ",
@@ -139,7 +138,7 @@ Feynman gauge, the function ",
   ButtonData:>"OneLoopSimplify",
   ButtonNote->"OneLoopSimplify"],
  " does not have this restriction (but is usually slower).\n\nWARNING: If you \
-encounter anomalies: The default setting of $West is True, i.e., the way ",
+encounter anomalies: The default setting of West is True, i.e., the way ",
  Cell[BoxData[
   FormBox[
    RowBox[{" ", 
@@ -1002,13 +1001,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 741},
+WindowMargins->{{Automatic, 938}, {97, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

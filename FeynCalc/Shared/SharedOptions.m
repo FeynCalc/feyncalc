@@ -215,6 +215,14 @@ trick (i.e. replace the polarization sum by - MT[mu,nu]) for a particle \
 that is not massless. This is usueful when computing processes \
 that involve a virtual photon as an external state."
 
+West::usage =
+"West is an option for DiracTrace, TR and other functions that deal \
+with traces of Dirac matrices. It applies only to the computation of \
+D-dimensional chiral traces (i.e. those that involve one gamma5) in the \
+Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to True, such \
+traces will be computed according to formula  (A.5) from \
+Comp. Phys. Comm 77 (1993) 286-298, which is also known as West's formula.";
+
 WriteOut::usage =
 "WriteOut is an option for OneLoop and SquareAmplitude. \
 If set to True, the result of OneLoop will be written to a \
