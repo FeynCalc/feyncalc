@@ -59,8 +59,9 @@ $Larin=False;
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 		Join[	Tests`Dirac`fcstTr,
-				Tests`Dirac`fcstTrAllFreeNoGamma5,
-				Tests`Dirac`fcstTrAllFreeOneGamma5NDR]];
+				Tests`Dirac`fcstTr4AllFreeNoGamma5,
+				Tests`Dirac`fcstTrDAllFreeNoGamma5,
+				Tests`Dirac`fcstTr4AllFreeOneGamma5]];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrace*"])];

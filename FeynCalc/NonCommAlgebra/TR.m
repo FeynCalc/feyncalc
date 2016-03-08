@@ -25,6 +25,7 @@ Begin["`TR`Private`"]
 trVerbose::usage="";
 
 Options[ TR ] = {
+	Contract -> 400000,
 	DiracTraceEvaluate -> True,
 	EpsContract           -> True,
 	Explicit           -> True,
