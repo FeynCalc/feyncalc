@@ -21,7 +21,7 @@ Tests`NonCommAlgebra`fcstFCTraceExpand = ({
 DiracTrace[DiracGamma[LorentzIndex[j]]]"},
 {"fcstFCTraceExpand-ID5", "FCTraceExpand[DiracTrace[GS[p]]]",
 "DiracTrace[DiracGamma[Momentum[p]]]"},
-{"fcstFCTraceExpand-ID6", "FCTraceExpand[DiracTrace[GS[p+b]]]",
+{"fcstFCTraceExpand-ID6", "FCTraceExpand[DiracTrace[GS[p+b]],DiracGammaExpand->False]",
 "DiracTrace[DiracGamma[Momentum[b + p]]]"},
 {"fcstFCTraceExpand-ID7",
 "FCTraceExpand[DiracTrace[GA[i,i]+GA[j,j]]]",
@@ -77,16 +77,15 @@ DiracTrace[DiracGamma[Momentum[x]] + DiracGamma[Momentum[y]]] + \
 DiracTrace[DiracGamma[Momentum[z]]]"},
 {"fcstFCTraceExpand-ID14",
 "FCTraceExpand[DiracTrace[GS[x] + GS[y]], DiracTrace -> False]",
-"DiracTrace[DiracGamma[Momentum[x]] + DiracGamma[Momentum[y]]]"}
-
-
-
-
-
-
-
-
-
-
-
+"DiracTrace[DiracGamma[Momentum[x]] + DiracGamma[Momentum[y]]]"},
+{"fcstFCTraceExpand-ID15",
+"DiracTrace[GSD[k+p].GA[5].GSD[l-p].GAD[nu].GSD[l].GAD[la].GSD[k+l]]//FCTraceExpand//FCE",
+"DiracTrace[GSD[k].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[k]] +
+DiracTrace[GSD[k].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[l]] -
+DiracTrace[GSD[k].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[k]] -
+DiracTrace[GSD[k].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]] +
+DiracTrace[GSD[p].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[k]] +
+DiracTrace[GSD[p].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[l]] -
+DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[k]] -
+DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]]"}
 })

@@ -30,15 +30,17 @@ Begin["`FCTraceExpand`Private`"]
 dotSimp::usage="";
 
 Options[FCTraceExpand] = {
-	FCI -> False,
-	Momentum -> All,
+	DiracGammaExpand -> True,
 	DiracTrace -> True,
-	SUNTrace -> True,
-	DotSimplify -> True
+	DotSimplify -> True,
+	FCI -> False,
+	FCTraceFactor -> True,
+	Momentum -> All,
+	SUNTrace -> True
 };
 
 FCTraceExpand[expr_, OptionsPattern[]] :=
-	Block[ {ex, moms,res, diracTraces, sunTraces},
+	Block[ {ex, moms,res, diracTraces,diracTraces2, sunTraces,sunTraces2},
 
 		moms = OptionValue[Momentum];
 		dotSimp = OptionValue[DotSimplify];
@@ -54,8 +56,14 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 
 		If[	OptionValue[SUNTrace],
 			sunTraces = Cases2[ex, SUNTrace];
+			sunTraces2 = sunTraces;
+
+			If[	OptionValue[FCTraceFactor],
+				sunTraces2 = FCTraceFactor/@sunTraces2
+			];
+
 			If[ sunTraces =!= {},
-				ex = ex /. Dispatch[Thread[sunTraces -> traceexpand[sunTraces]]]
+				ex = ex /. Dispatch[Thread[sunTraces -> traceexpand[sunTraces2]]]
 			];
 		];
 
@@ -65,9 +73,23 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 				diracTraces = Select[Cases2[ex, DiracTrace], !FreeQ2[#, moms]&]
 			];
 
+			diracTraces2 = diracTraces;
+
+			If [OptionValue[DiracGammaExpand],
+				diracTraces2 = DiracGammaExpand/@diracTraces2
+			];
+
+			If[	OptionValue[FCTraceFactor],
+				diracTraces2 = FCTraceFactor/@diracTraces2
+			];
+
 			If[ diracTraces =!= {},
-				ex = ex /. Dispatch[Thread[diracTraces -> traceexpand[diracTraces]]]
-			]
+				ex = ex /. Dispatch[Thread[diracTraces -> traceexpand[diracTraces2]]]
+			];
+		];
+
+		If[	OptionValue[FCTraceFactor],
+			ex = FCTraceFactor[ex]
 		];
 
 		res = ex;
