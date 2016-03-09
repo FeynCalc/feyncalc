@@ -168,14 +168,13 @@ fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 			1/[q^2]^3 [(q-p)^2] *)
 		tmp = tmp/. {a_. FeynAmpDenominator[(ch1: PD[Momentum[q,dim_:4],0]..),(ch2: PD[Momentum[q,dim_:4]+ pe_,0]..),rest___]/;
 			FreeQ[pe,q] && pe=!=0 && Length[{ch1}] < Length[{ch2}] :>
-					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - pe)} /.
+					((a FeynAmpDenominator[ch1,ch2,rest])/. q :> - q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]] /.
 					FeynAmpDenominator -> feynsimp[{q}] /. FeynAmpDenominator -> feynord2[{q}];
 
-
 		(*	Perform a shift to make the very first propagator free of external momenta	*)
 		tmp = tmp/. {a_. FeynAmpDenominator[PD[Momentum[q,dim_:4]+pe_, m_],rest___]/; FreeQ[pe,q] :>
-					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - pe)} /.
+					((a FeynAmpDenominator[PD[Momentum[q,dim]+pe, m],rest])/. q :> q - (pe/.Momentum->extractm))} /.
 					FeynAmpDenominator[a__]:>MomentumExpand[FeynAmpDenominator[a]];
 
 		FCPrint[3, "fdsOneLoop: After shifting the very first propagator:  ", tmp, FCDoControl->fdsVerbose];
@@ -232,6 +231,7 @@ fdsOneLoopsGeneric[expr : (_. FeynAmpDenominator[props__]), q_] :=
 
 		(* The number of shifts is limited to the number of independent propagators reduced by 1 *)
 		shiftList = FixedPoint[fdsOneLoopsShiftMaker[#[[1]],q,canonicalProps,#[[2]]]&,{prs,{}},Length[prs]-1][[2]];
+		shiftList = shiftList/.Momentum->extractm;
 
 		FCPrint[3, "fdsOneLoopsGeneric: List of the shifts to be applied: ", shiftList, FCDoControl->fdsVerbose];
 
