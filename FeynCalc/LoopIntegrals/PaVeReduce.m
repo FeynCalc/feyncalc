@@ -33,7 +33,8 @@ Options[ PaVeReduce ] = {
 	IsolateNames->False,
 	Mandelstam->{},
 	PaVeOrderList -> {},
-	WriteOutPaVe -> False
+	WriteOutPaVe -> False,
+	BReduce -> False
 };
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
@@ -52,12 +53,18 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 
 
 		If[ !FreeQ[nnx, StandardMatrixElement],
-			res = Expand2[nnx, StandardMatrixElement];
+			nnx = Expand2[nnx, StandardMatrixElement];
 		];
+
 
 		If[ StringQ[wriout] && (Head[x] === PaVe),
 			res  = pavitp@@Join[{nnx, wriout}, op],
 			res = pavereduce[nnx, op]
+		];
+
+		If[ OptionValue[BReduce],
+			FCPrint[1,"PaVeReduce: Setting the BReduce option to all B-functions", FCDoControl->pvrVerbose];
+			res = res /. (h:B0|B00|B1|B11)[a_,b_,c_,ops___]:> h[a,b,c,BReduce->True,ops]
 		];
 
 		FCPrint[1,"PaVeReduce: Leaving with: ", nnx, FCDoControl->pvrVerbose];
