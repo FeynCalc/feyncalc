@@ -19,9 +19,9 @@ Get/@tests;
 
 FCClearScalarProducts[];
 SetOptions[Tdec,UseParallelization->False];
-
+$LimitTo4=True;
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`LoopIntegrals`*"])];
-
+$LimitTo4=False;
 $FCAdvice = True;
 

@@ -29,7 +29,7 @@ ScalarProduct[k2g, k2g] = 0;
 ScalarProduct[qst, qst] = 0;
 ScalarProduct[pst, pst] = m^2;
 ScalarProduct[qst, pst] = (m^2)/2;
-
+$LimitTo4=True;
 (*	Isolate checks DownValues before generating new abbreviations, which is why
 	the results we get from TID can have slightly different form depending on the
 	integrals that TID had to work out before. Of course all those are exactly the
@@ -60,3 +60,4 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join[
 		Tests`LoopIntegrals`fcitTIDMTests
 		]];
+$LimitTo4=False;
