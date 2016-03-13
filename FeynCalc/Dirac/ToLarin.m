@@ -1,14 +1,17 @@
+(* ::Package:: *)
 
 
-(* :Title: ToLarin *)
 
-(* :Author: Rolf Mertig *)
+(* :Title: ToLarin															*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:01 *)
-(* ------------------------------------------------------------------------ *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
 
-(* :Summary: Dirac trace calculation  (see also DiracToLarinace) *)
+(* :Summary:	Rewrites chiral traces according to Larin's prescription	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,19 +26,30 @@ End[]
 
 Begin["`ToLarin`Private`"]
 
-Options[ToLarin] = {Dimension -> D};
+Options[ToLarin] = {
+	Dimension -> D,
+	FCI -> False
+};
 
-ToLarin[x_, ru___Rule] :=
-	Block[ {tt,fi1,fi2,fi3,drsi,temp2, doot, dim},
-		dim = Dimension /. {ru} /. Options[ToLarin];
-		drsi = LeviCivitaSign /. Options[TR];
+ToLarin[expr_, OptionsPattern[]] :=
+	Block[ {ex,fi1,fi2,fi3,drsi,res, dotHold, dim},
+
+		dim = OptionValue[Dimension];
+		drsi = $LeviCivitaSign;
 		(*drsi is usually -1 *)
-		tt = FeynCalcInternal[x] /. DOT -> doot;
-		temp2 = tt //. doot[a___, DiracGamma[mUU_, _Symbol], DiracGamma[5], b___] :>
-		({fi1, fi2, fi3} = LorentzIndex[#,dim]& /@ Unique[{"du","du","du"}];
-		(drsi I/6 Eps[mUU, fi1, fi2, fi3] doot @@ Join[{a},
-		Map[DiracGamma[#,dim]&, {fi1,fi2,fi3}], {b}]));
-		temp2 = temp2 /. doot -> DOT
+
+		If[	OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		ex = ex /. DOT->dotHold;
+		ex = ex //. dotHold[a___, DiracGamma[mUU_, dim], DiracGamma[5], b___] :>
+			({fi1, fi2, fi3} = LorentzIndex[#,dim]& /@ Unique[{"du","du","du"}];
+			(drsi I/6 Eps[mUU, fi1, fi2, fi3, Dimension->dim] dotHold[a,DiracGamma[fi1,dim],DiracGamma[fi2,dim],DiracGamma[fi3,dim],b]));
+
+		res = ex /. dotHold -> DOT;
+		res
 	];
 
 FCPrint[1,"ToLarin.m loaded."];
