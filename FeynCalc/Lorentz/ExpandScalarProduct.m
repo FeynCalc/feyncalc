@@ -53,7 +53,7 @@ ExpandScalarProduct[x_, OptionsPattern[]] :=
 		nx
 	];
 
-ExpandScalarProduct[x_, y:Except[_?OptionQ]] :=
+ExpandScalarProduct[x_, y:Except[_?OptionQ], OptionsPattern[]] :=
 	scevdoit[x, y];
 
 pairexpand[x_] :=

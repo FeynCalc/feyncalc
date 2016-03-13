@@ -70,9 +70,6 @@ unitMatrixTrace::usage="";
 traceNo5Fun::usage="";
 trace5Fun::usage="";
 
-scev[a__] :=
-	scev[a] = ExpandScalarProduct[a];
-
 Options[DiracTrace] = {
 	Contract -> 400000,
 	EpsContract -> False,
@@ -231,7 +228,7 @@ diractraceev[DiracGamma[LorentzIndex[a1_,dii_],dii_],
 	{a1,a2,a3}, {a4}/.DiracGamma->dirli];
 
 dcs[dim_][x___] :=
-	dcs[dim][x] = (dics[dim][x] /. dics->dc);
+	(dics[dim][x] /. dics->dc);
 
 dc[_][] =
 	1;
@@ -260,7 +257,7 @@ dics[dI_][a___, n_, mu_, nu_, ro_, si_, de_, n_, b___] :=
 	2 dics[dI][a, mu,si,ro,nu,de, b] + 2 dics[dI][a, nu,ro,si,de,mu, b];
 
 dicsav[dd_][x___] :=
-	dicsav[dd][x] = dics[dd][x];
+	dics[dd][x];
 
 dc[di_][a___, mu_, lim__, mu_, b___] :=
 	Expand[
@@ -281,9 +278,6 @@ conall[ x_,opts:OptionsPattern[]] :=
 
 fr567[x__] :=
 	FreeQ2[FixedPoint[ReleaseHold,{x}], {DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-
-coneins[x_ ] :=
-	MemSet[coneins[x], x/.Pair->PairContract/.PairContract->Pair ];
 
 diractraceev[x_, opts:OptionsPattern[]] :=
 	Block[ {trfa = 1, enx = x},
@@ -328,7 +322,7 @@ diractraceev2[nnx_,opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 
 		FCPrint[1,"DiracTrace: diractraceev2: Applying Collect2 and DiracGammaCombine.", FCDoControl->diTrVerbose];
-		nx = Collect2[coneins[nnx], DOT, Factoring -> False];
+		nx = Collect2[(nnx/.Pair->PairContract/.PairContract->Pair), DOT, Factoring -> False];
 		nx = DiracGammaCombine[nx];
 
 		FCPrint[1,"DiracTrace: diractraceev2: Collect2 and DiracGammaCombine done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->diTrVerbose];
@@ -512,7 +506,7 @@ spursav[x__DiracGamma] :=
 	(*Added 28/2-2001 by F.Orellana. Fix to bug reported by A.Kyrielei*)
 
 spursav[x : ((DiracGamma[__] | HoldPattern[Plus[__DiracGamma]]) ..)] :=
-	MemSet[spursav[x], spur[x]];
+	spur[x];
 
 spursavg[x___, LorentzIndex[a_, dim_ : 4], LorentzIndex[a_, dim_ : 4], y___] :=
 	(dim spursavg[x, y]) /. spursavg -> spug;
@@ -698,10 +692,8 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 
 	spur[y__] :=
 		Block[ {spx,le = Length[{y}],tempres,i,spurjj,tempr,
-			temp2 = 0, fi,spt, resp,scx,dirsign,time},
+			temp2 = 0, fi,spt, resp,dirsign,time,fi1,fi2,fi3,drsi},
 			spx = ( {y}//DiracGammaExpand )/.DiracGamma->gach;
-			scx[a_,b_] :=
-				scev[spx[[a]],spx[[b]]];
 			temp2 = Hold[spur][spx];
 			time = AbsoluteTime[];
 			FCPrint[1, "DiracTrace: spur: Entering.", FCDoControl->diTrVerbose];
@@ -755,7 +747,7 @@ spur[w1_,w2_,w3_,w4_,w5_,w6_,w7_,w8_,DiracGamma[5]] :=
 						!$Larin && $BreitMaison && west,
 							FCPrint[3,"The chiral trace", spx, "is computed in the BMHV scheme using West's formula", FCDoControl->diTrVerbose];
 							temp2 = Expand[2/(Length[spx]-5) Sum[(-1)^(i+j+1) *
-							scev[spx[[i]], spx[[j]]] spt@@Delete[spx,{{j},{i}}],
+							FCUseCache[ExpandScalarProduct,{spx[[i]],spx[[j]]},{}] spt@@Delete[spx,{{j},{i}}],
 								{i,2,Length[spx]-1},{j,1,i-1}]];
 							temp2/.spt->spursavg/.spursavg->spug,
 							(* Any other combination of $Larin, $BreitMaison doesn't describe
