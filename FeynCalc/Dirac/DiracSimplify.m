@@ -261,15 +261,20 @@ oldDiracSimplify[x_, opts:OptionsPattern[]] :=
 
 (*this is oldDiracSimplify for expressions that contain spinors*)
 oldDiracSimplify[x_,opts:OptionsPattern[]] :=
-	Block[ {dre, factoring,dooo},
-		FCPrint[2,"DiracSimplify: oldDiracSimplify: Entering with ", x, FCDoControl->dsVerbose];
+	Block[ {ex=x,dre, factoring,dooo,diracga67},
+		FCPrint[2,"DiracSimplify: oldDiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
 
 		factoring = OptionValue[DiracSimplify,{opts},Factoring];
+		diracga67    = OptionValue[DiracSimplify,{opts},DiracSubstitute67];
 		If[ factoring === True,
 			factoring = Factor2
 		];
 
-		dre = Collect[DotSimplify[DiracTrick[DiracGammaCombine[x]]]/.
+		If[ diracga67,
+			ex = DiracSubstitute67[ex];
+		];
+
+		dre = Collect[DotSimplify[DiracTrick[DiracGammaCombine[ex]]]/.
 		DOT->dooo,dooo[__]]/.dooo->DOT;
 		dre =  FixedPoint[ SpinorChainEvaluate[#,opts]&, dre, 142];
 		If[ !FreeQ[dre, Eps],
@@ -336,7 +341,7 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 	If[ FreeQ[x, DiracGamma],
 		x,
 		Block[ {diracopt,diracdt,diracndt = 0,diraccanopt,diracpdt,diracgasu,
-			diracldt,diracjj = 0,diractrlabel,diracga67,diracsirlin,diracsifac,
+			diracldt,diracjj = 0,diractrlabel,diracga67,diracsifac,
 			diracpag,colle, dooT},
 			(* There are several options *)
 
@@ -344,7 +349,6 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 			diraccanopt  = OptionValue[DiracSimplify,{opts},DiracCanonical];
 			diractrlabel = OptionValue[DiracSimplify,{opts},InsideDiracTrace];
 			diracga67    = OptionValue[DiracSimplify,{opts},DiracSubstitute67];
-			diracsirlin  = OptionValue[DiracSimplify,{opts},SirlinRelations];
 			diracgasu    = OptionValue[DiracSimplify,{opts},DiracSimpCombine];
 			diracsifac   = OptionValue[DiracSimplify,{opts},Factoring];
 
