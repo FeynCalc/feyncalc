@@ -2106,6 +2106,9 @@ SUNTF /:
 SUNTF[a_,b_,c_] :=
 	SUNTF[{a},b,c]/;Head[a]=!=List;
 
+(* Tr[T^a] = 0 *)
+SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=
+	0;
 
 Zeta2 /:
 	N[Zeta2] = N[Zeta[2]];

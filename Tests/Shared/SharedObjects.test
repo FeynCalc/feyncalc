@@ -596,5 +596,6 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 	" SUNF[i, j, SUNIndex[s1]] SUNF[SUNIndex[s1], k, l]"},
 {"fcstSharedObjectsBehavior-ID215", "SUNIndex[4]", "ExplicitSUNIndex[4]"},
 {"fcstSharedObjectsBehavior-ID216", "SUNFIndex[4]", "ExplicitSUNFIndex[4]"},
-{"fcstSharedObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"}
+{"fcstSharedObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"},
+{"fcstSharedObjectsBehavior-ID218", "FCI[SUNTF[a,x,x]]", "0"}
 }
