@@ -162,9 +162,11 @@ Isolate[ exp_ /; Apply[Or[#===1, #===0]&, {NumericalFactor[exp]}], vars_List, op
 				]
 			);
 
+
+		res = exp;
+
 		If[	!OptionValue[IsolateFast] || vlist =!={},
-			res = exp /. Plus -> plush /. plush -> Plus,
-			res = exp
+			res = exp /. Plus -> plush /. plush -> Plus
 		];
 
 		If [OptionValue[IsolateTimes],
