@@ -127,85 +127,85 @@ Options[Contract2] = {
 };
 
 (* bb is assumed to be collected w.r.t. to LorentzIndex !!! *)
-	Contract2[a_, bb_, ops___Rule] :=
-		Block[ {sel, ct, rc, lco, lct, lastct, nop, b = bb, col, conT},
-			col = Collecting /. {ops} /. Options[Contract2];
-			If[ Head[a] =!= Times,
-				rc = Contract[a, b],
-				lco[x_,y_] :=
-					If[ Length[x]>Length[y],
-						True,
-						False
-					];
-				sel = Select[a, FreeQ[#, LorentzIndex]&];
-				ct  = a/sel;
-				nop = Select[ct, FreeQ[#, Plus]&];
-				ct = ct/nop;
-				If[ Head[ct] =!= Times,
-					rc = sel Contract[ct nop, b],
-					ct = Sort[List @@ ct, lco];
-					If[ nop =!= 1,
-						lastct = contract21[b, nop, ops],
-						lastct = b nop
-					];
-					lct = Length[ct];
-					If[ lct === 1,
-						rc = sel contractLColl[ct[[1]], lastct]
-					];
-					If[ lct > 1,
-						rc = sel Contract[Times @@ Take[ct, lct-1],
-										ct[[lct]], lastct ]
-					];
+Contract2[a_, bb_, ops___Rule] :=
+	Block[ {sel, ct, rc, lco, lct, lastct, nop, b = bb, col, conT},
+		col = Collecting /. {ops} /. Options[Contract2];
+		If[ Head[a] =!= Times,
+			rc = Contract[a, b],
+			lco[x_,y_] :=
+				If[ Length[x]>Length[y],
+					True,
+					False
+				];
+			sel = Select[a, FreeQ[#, LorentzIndex]&];
+			ct  = a/sel;
+			nop = Select[ct, FreeQ[#, Plus]&];
+			ct = ct/nop;
+			If[ Head[ct] =!= Times,
+				rc = sel Contract[ct nop, b],
+				ct = Sort[List @@ ct, lco];
+				If[ nop =!= 1,
+					lastct = contract21[b, nop, ops],
+					lastct = b nop
+				];
+				lct = Length[ct];
+				If[ lct === 1,
+					rc = sel contractLColl[ct[[1]], lastct]
+				];
+				If[ lct > 1,
+					rc = sel Contract[Times @@ Take[ct, lct-1],
+									ct[[lct]], lastct ]
 				];
 			];
-			FCPrint[2,"lct = ",lct];
-			If[ !FreeQ[rc, LorentzIndex],
-				rc = Contract[rc, Expanding -> False];
-			];
-			If[ !FreeQ[rc, LorentzIndex],
-				FCPrint[1,"contracting agagin at the end of Contract2 "];
-				rc = Contract[rc]
-			];
-			rc
 		];
+		FCPrint[2,"lct = ",lct];
+		If[ !FreeQ[rc, LorentzIndex],
+			rc = Contract[rc, Expanding -> False];
+		];
+		If[ !FreeQ[rc, LorentzIndex],
+			FCPrint[1,"contracting agagin at the end of Contract2 "];
+			rc = Contract[rc]
+		];
+		rc
+	];
 
-	Contract2[a_] :=
-		Block[ {sel, ct, rc, lco, lct, lastct, nop},
-			If[ Head[a] =!= Times,
-				rc = Contract[a],
-				lco[x_,y_] :=
-					If[ Length[x]>Length[y],
-						True,
-						False
-					];
-				sel = Select[a, FreeQ[#, LorentzIndex]&];
-				ct  = a/sel;
-				nop = Select[ct, FreeQ[#, Plus]&];
-				ct = ct/nop;
-				If[ Head[ct] =!= Times,
-					rc = sel Contract[ct nop],
-					ct = Sort[List @@ ct, lco];
-					If[ nop =!= 1,
-						lastct = contract21[Last[ct], nop],
-						lastct = Last[ct] nop;
-					];
-					lct = Length[ct];
-					If[ lct === 2,
-						rc = sel contractLColl[ct[[1]], lastct]
-					];
-					If[ lct > 2,
-						rc = sel Contract[Times @@ Take[ct, lct-2],
-										ct[[lct-1]], lastct ]
-					];
+Contract2[a_] :=
+	Block[ {sel, ct, rc, lco, lct, lastct, nop},
+		If[ Head[a] =!= Times,
+			rc = Contract[a],
+			lco[x_,y_] :=
+				If[ Length[x]>Length[y],
+					True,
+					False
+				];
+			sel = Select[a, FreeQ[#, LorentzIndex]&];
+			ct  = a/sel;
+			nop = Select[ct, FreeQ[#, Plus]&];
+			ct = ct/nop;
+			If[ Head[ct] =!= Times,
+				rc = sel Contract[ct nop],
+				ct = Sort[List @@ ct, lco];
+				If[ nop =!= 1,
+					lastct = contract21[Last[ct], nop],
+					lastct = Last[ct] nop;
+				];
+				lct = Length[ct];
+				If[ lct === 2,
+					rc = sel contractLColl[ct[[1]], lastct]
+				];
+				If[ lct > 2,
+					rc = sel Contract[Times @@ Take[ct, lct-2],
+									ct[[lct-1]], lastct ]
 				];
 			];
-			FCPrint[2,"lct = ",lct];
-			If[ !FreeQ[rc, LorentzIndex],
-				FCPrint[1,"contracting agagin at the end of Contract2 "];
-				rc = Contract[rc]
-			];
-			rc
 		];
+		FCPrint[2,"lct = ",lct];
+		If[ !FreeQ[rc, LorentzIndex],
+			FCPrint[1,"contracting agagin at the end of Contract2 "];
+			rc = Contract[rc]
+		];
+		rc
+	];
 
 (* ******************************************************************** *)
 
@@ -685,93 +685,79 @@ pair2/: pair2[LorentzIndex[al_,di___], z_] pair2[LorentzIndex[al_,di2___],
 	product or just Pair[  ,  ]
 *)
 
-	contra3a[xx_, {pr_, prl__}] :=
-		contra3a[contra3a[xx, {pr}], {prl}];
+contra3a[xx_, {pr_, prl__}] :=
+	contra3a[contra3a[xx, {pr}], {prl}];
 
-	contra3b[xx_, {alien_ /; Head[alien] =!= pair2}] :=
-		Expand2[xx alien, Pair];
+contra3b[xx_, {alien_ /; Head[alien] =!= pair2}] :=
+	Expand2[xx alien, Pair];
 
-	contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]} ] :=
-		Block[ {nxx},
-			If[ FreeQ[xx, LorentzIndex[mu,___]],
-				nxx = Expand2[xx Pair[LorentzIndex[mu, di], alpha], Pair],
-				(* else *)
-				FCPrint[1,"contra3c1111check"];
-				nxx = xx;
-		(*
-				If[Head[xx]===Plus, nxx = Apply[List, xx], nxx = {xx}];
-		*)
-				FCPrint[1,"contra3c2222check"];
-				FCPrint[2,"contra3c : Length of xx now ", Length[nxx]];
-				nxx = nxx /. LorentzIndex[mu, ___] -> alpha;
-				FCPrint[2,"contra3c3333check"];
-			(*
-					nxx = Apply[Plus, nxx];
-				FCPrint[2,"contra3c4check"];
-			*)
-					];
-			nxx
+contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]} ] :=
+	Block[ {nxx},
+		If[ FreeQ[xx, LorentzIndex[mu,___]],
+			nxx = Expand2[xx Pair[LorentzIndex[mu, di], alpha], Pair],
+			(* else *)
+			FCPrint[1,"contra3c1111check"];
+			nxx = xx;
+			FCPrint[1,"contra3c2222check"];
+			FCPrint[2,"contra3c : Length of xx now ", Length[nxx]];
+			nxx = nxx /. LorentzIndex[mu, ___] -> alpha;
+			FCPrint[2,"contra3c3333check"];
+
 		];
+		nxx
+	];
 
-	contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times), opts:OptionsPattern[]] :=
-		Contract[z yy, opts];
+contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times), opts:OptionsPattern[]] :=
+	Contract[z yy, opts];
 
-	contract21[xx_Plus, yy_, OptionsPattern[]] :=
-		contract22[xx, yy /. Pair -> pairsave] /.
-		contra4 -> contra3a /.  contra3a -> contra3b /.
-		Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
+contract21[xx_Plus, yy_, OptionsPattern[]] :=
+	contract22[xx, yy /. Pair -> pairsave] /.
+	contra4 -> contra3a /.  contra3a -> contra3b /.
+	Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
 
-	list2[x_] :=
-		If[ Head[x] === Times,
-			List @@ x,
-			{x}
-		];
-	contract22[_, 0] :=
-		0;
-	contract22[xx_, yy_Pair] :=
-		contra3a[xx, {yy}] /.  contra3a -> contra3b /.
-		Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
-	contract22[xx_, yy_Times] :=
-		( (yy/#) contra4[xx, list2[#]] )&[
-		Select[yy, !FreeQ[#, LorentzIndex]&]];
+list2[x_] :=
+	If[ Head[x] === Times,
+		List @@ x,
+		{x}
+	];
+
+contract22[_, 0] :=
+	0;
+
+contract22[xx_, yy_Pair] :=
+	contra3a[xx, {yy}] /.  contra3a -> contra3b /. Pair -> pairsave /.
+	contra3b -> contra3c /. pair2 -> Pair;
+
+contract22[xx_, yy_Times] :=
+	( (yy/#) contra4[xx, list2[#]] )&[Select[yy, !FreeQ[#, LorentzIndex]&]];
+
+contract21[xx_ /;(Head[xx] =!= Plus) && (Head[xx] =!= Times), yy_] :=
+	Contract[xx yy,Expanding -> False];
+
+contract21[xxx_Times, yyy_] :=
+	( (xxx/#) contit[#, yyy] )&[Select[xxx, !FreeQ[#, LorentzIndex]&] ];
 
 
-(*
-	contract21[xx_Plus, yy_] :=(iCcount=1; Apply[Plus,
-					Table[ (xx[[ii]] yy) /. Pair -> pairsave /.
-												pair2 -> Pair
-								, {ii, 1, Length[xx]}] ]);
-*)
-
-	contract21[xx_ /;(Head[xx] =!= Plus) && (Head[xx] =!= Times), yy_] :=
-		Contract[xx yy,Expanding -> False];
-
-	contract21[xxx_Times, yyy_] :=
-		( (xxx/#) contit[#, yyy] )&[
-		Select[xxx, !FreeQ[#, LorentzIndex]&] ];
-	contit[xx_ , yy_] :=
-		If[ FreeQ[xx, LorentzIndex],
-			xx Contract[yy],
-			If[ Head[xx] =!= Times,
+contit[xx_ , yy_] :=
+	If[ FreeQ[xx, LorentzIndex],
+		xx Contract[yy],
+		If[ Head[xx] =!= Times,
+			Contract[xx yy],
+			If[ Length[xx] =!= 2,
 				Contract[xx yy],
-				If[ Length[xx] =!= 2,
-					Contract[xx yy],
-					If[ (Head[xx[[1]]] === Plus) && (Head[xx[[2]]] === Plus),
-						iCcount = 1;
-						FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
-							Length[xx[[2]]], " term sum"];
+				If[ (Head[xx[[1]]] === Plus) && (Head[xx[[2]]] === Plus),
+					iCcount = 1;
+					FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
+						Length[xx[[2]]], " term sum"];
 					(* that's the common situation !! *)
-						Apply[ Plus, Flatten[Table[ (xx[[1, ii]] xx[[2, jj]] yy
-														) /. Pair -> pairsave /.
-																pair2  -> Pair
-														, {ii,1,Length[xx[[1]]]},
-															{jj,1,Length[xx[[2]]]}
-							]              ]     ],
-						Contract[xx yy]
-					]
+					Apply[ Plus, Flatten[Table[ (xx[[1, ii]] xx[[2, jj]] yy) /.
+						Pair -> pairsave /. pair2  -> Pair, {ii,1,Length[xx[[1]]]},
+						{jj,1,Length[xx[[2]]]}]]],
+					Contract[xx yy]
 				]
 			]
-		];
+		]
+	];
 
 
 (* #################################################################### *)
@@ -846,159 +832,141 @@ ident3[a_,_] :=
 		];
 
 
-	eps2rules = {Eps[LorentzIndex[a_,dia___], b_Momentum,
-					c_Momentum, d_Momentum, opts:OptionsPattern[]]^2 :>
-				Eps[LorentzIndex[$MU[1], dia], b, c, d, opts]^2,
-				Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
-					c_Momentum, d_Momentum, opts:OptionsPattern[]]^2 :>
-				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
-					c, d, opts]^2,
-				Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
-					LorentzIndex[c_,dia___], d_Momentum, opts:OptionsPattern[]]^2 :>
-				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
-					LorentzIndex[$MU[3], dia], d, opts]^2,
-				Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
-					LorentzIndex[c_,dia___], LorentzIndex[d_,dia___], opts:OptionsPattern[]]^2 :>
-				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
-					LorentzIndex[$MU[3], dia], LorentzIndex[$MU[4], dia], opts
-					]^2
-				};
+eps2rules = {Eps[LorentzIndex[a_,dia___], b_Momentum,
+				c_Momentum, d_Momentum, opts:OptionsPattern[]]^2 :>
+			Eps[LorentzIndex[$MU[1], dia], b, c, d, opts]^2,
+			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
+				c_Momentum, d_Momentum, opts:OptionsPattern[]]^2 :>
+			Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
+				c, d, opts]^2,
+			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
+				LorentzIndex[c_,dia___], d_Momentum, opts:OptionsPattern[]]^2 :>
+			Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
+				LorentzIndex[$MU[3], dia], d, opts]^2,
+			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___],
+				LorentzIndex[c_,dia___], LorentzIndex[d_,dia___], opts:OptionsPattern[]]^2 :>
+			Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia],
+				LorentzIndex[$MU[3], dia], LorentzIndex[$MU[4], dia], opts
+				]^2
+			};
 
 	(*  doubleindexdef *)
 	(* For canonizing dummy indices between Eps and other functions *)
 
-	doubleindex[0] = 0;
-	doubleindex[x_] :=
-		Block[ {xy = x, suli = {}, muUU},
-			For[ijj = 1, ijj < 7, ijj ++,
-				If[ EvenQ[Length[Position[x, $MU[ijj]]]] && !FreeQ[x, $MU[ijj]],
-					AppendTo[suli, RuleDelayed @@ {$MU[ijj], muUU[ijj]}]
-				];
-		];
-			If[ Length[suli] > 0,
-				FCPrint[1,"suli == ",suli];
-				xy = xy /. suli
+doubleindex[0] =
+	0;
+
+doubleindex[x_] :=
+	Block[ {xy = x, suli = {}, muUU},
+		For[ijj = 1, ijj < 7, ijj ++,
+			If[ EvenQ[Length[Position[x, $MU[ijj]]]] && !FreeQ[x, $MU[ijj]],
+				AppendTo[suli, RuleDelayed @@ {$MU[ijj], muUU[ijj]}]
 			];
-			xy = doubleindex0[x];
+		];
+		If[ Length[suli] > 0,
+			FCPrint[1,"suli == ",suli];
+			xy = xy /. suli
+		];
+		xy = doubleindex0[x];
 (*
 						If[!FreeQ[x, Eps] && !FreeQ[x, $MU],
 							doubleindex0[doubleindex0[x]],
 							doubleindex0[x]
 						];
 *)
-			If[ xy === 0,
-				FCPrint[1,"doubleindexTROUBLE???????????? "];
-				Print["entering with", x];
-			];
+		If[ xy === 0,
+			FCPrint[1,"doubleindexTROUBLE???????????? "];
+			Print["entering with", x];
+		];
 (*
 *)
-			xy
-		];
+		xy
+	];
 
-	doubleindex0[x_] :=
-		Block[ {double2, double3a},
-			If[ FreeQ[x, Eps],
-				x,
-				If[ Head[x] === Plus,
-					Map[doubleindex, x],
-					double2[y_] :=
-						double3a[y /. {Eps :> eepp} , 1
-								] /. double3a -> double3;
-					double3a[y_, i_] :=
-						double3a[y, i+1] /;
-						Length[Position[y, $MU[i]]] > 0;
-					double2[x] /.  eepp -> Eps /.
-					double3 -> ident3/.  eepp -> Eps
-				]
-			] /. eps2rules
-		];
-	double2[x_] :=
-		If[ Length[Position[x, $MU]] > 0,
-			double3a[x/.Eps->eepp/.$MU->FCGV[ToString[Unique["lI"]]], 1] /.
-			double3a-> double3,
-			double3a[x/.Eps->eepp, 1] /.  double3a-> double3
-		];
+doubleindex0[x_] :=
+	Block[ {double2, double3a},
+		If[ FreeQ[x, Eps],
+			x,
+			If[ Head[x] === Plus,
+				Map[doubleindex, x],
+				double2[y_] :=
+					double3a[y /. {Eps :> eepp} , 1
+							] /. double3a -> double3;
+				double3a[y_, i_] :=
+					double3a[y, i+1] /;
+					Length[Position[y, $MU[i]]] > 0;
+				double2[x] /.  eepp -> Eps /.
+				double3 -> ident3/.  eepp -> Eps
+			]
+		] /. eps2rules
+	];
 
-	double3a[x_, i_] :=
-		If[ FreeQ[x, $MU[i+1]],
-			double3a[x, i+1],
-			double3a[x, i+2]
-		] /; !FreeQ[x, $MU[i]];
+double2[x_] :=
+	If[ Length[Position[x, $MU]] > 0,
+		double3a[x/.Eps->eepp/.$MU->FCGV[ToString[Unique["lI"]]], 1] /.
+		double3a-> double3,
+		double3a[x/.Eps->eepp, 1] /.  double3a-> double3
+	];
 
-	lorhipa[a_,___] :=
-		LorentzIndex[a,  BlankNullSequence[]];
+double3a[x_, i_] :=
+	If[ FreeQ[x, $MU[i+1]],
+		double3a[x, i+1],
+		double3a[x, i+2]
+	] /; !FreeQ[x, $MU[i]];
 
-	double3[ m_. eepp[a1___, LorentzIndex[be_, di___], a2___], j_ ] :=
-		(m/.be->$MU[j]) Eps[a1,LorentzIndex[$MU[j],di],a2]/;
-		(!FreeQ[m, LorentzIndex[be, ___]]) &&
-		FreeQ2[m, Select[{a1,a2}, Head[#]===LorentzIndex&] /.
-					LorentzIndex -> lorhipa];
+lorhipa[a_,___] :=
+	LorentzIndex[a,  BlankNullSequence[]];
 
-(*XXX*)
-	double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___,
-							LorentzIndex[mu2_, di2___],a3___], j_ ] :=
-		(
-		(m/.mu1->$MU[j]/.mu2->$MU[j+1]) *
-		Eps[a1,LorentzIndex[$MU[j],di1],a2,
-				LorentzIndex[$MU[j+1],di2],a3]
-		)/;(FreeQ2[{m,a1,a2,a3}, {$MU[j], $MU[j+1]}] &&
-			(!FreeQ[m, LorentzIndex[mu1, ___]]) &&
-			(!FreeQ[m, LorentzIndex[mu2, ___]]) &&
-			(FreeQ2[m, Select[{a1,a2,a3}, Head[#]===LorentzIndex&]/.
-					LorentzIndex -> lorhipa]) &&
-			ordq[m, {mu1,mu2}]
-			);
+double3[ m_. eepp[a1___, LorentzIndex[be_, di___], a2___], j_ ] :=
+	(m/.be->$MU[j]) Eps[a1,LorentzIndex[$MU[j],di],a2]/;
+	(!FreeQ[m, LorentzIndex[be, ___]]) &&
+	FreeQ2[m, Select[{a1,a2}, Head[#]===LorentzIndex&] /. LorentzIndex -> lorhipa];
 
-	double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___,
-							LorentzIndex[mu2_, di2___],a3___], j_ ] :=
-		(
-		(m/.mu2->$MU[j]/.mu1->$MU[j+1]) *
-		Eps[a1,LorentzIndex[$MU[j+1],di1],a2,
-				LorentzIndex[$MU[j],di2],a3]
-		)/;(FreeQ2[{m,a1,a2,a3}, {$MU[j], $MU[j+1]}] &&
-			(!FreeQ[m, LorentzIndex[mu1, ___]]) &&
-			(!FreeQ[m, LorentzIndex[mu2, ___]]) &&
-			(FreeQ2[m, Select[{a1,a2,a3}, Head[#]===LorentzIndex&]/.
-					LorentzIndex -> lorhipa]) &&
-			ordq[m, {mu2,mu1}]
-			);
+double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___,  LorentzIndex[mu2_, di2___],a3___], j_ ] :=
+	((m/.mu1->$MU[j]/.mu2->$MU[j+1]) Eps[a1,LorentzIndex[$MU[j],di1],a2, LorentzIndex[$MU[j+1],di2],a3])/;
+	(	FreeQ2[{m,a1,a2,a3}, {$MU[j], $MU[j+1]}] &&
+		(!FreeQ[m, LorentzIndex[mu1, ___]]) &&
+		(!FreeQ[m, LorentzIndex[mu2, ___]]) &&
+		(FreeQ2[m, Select[{a1,a2,a3}, Head[#]===LorentzIndex&]/. LorentzIndex -> lorhipa]) && ordq[m, {mu1,mu2}]);
 
-	double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___,
-							LorentzIndex[mu2_, di2___], a3___,
-							LorentzIndex[mu3_, di3___], a4___ ], j_ ] :=
-		Block[ {dte,a,b,c},
-			dte = (  (m/.mu1->$MU[j]/.mu2->$MU[j+1]/.mu3->$MU[j+2]) *
-				Eps[a1,LorentzIndex[$MU[j],di1], a2,
-						LorentzIndex[$MU[j+1],di2],a3,
-						LorentzIndex[$MU[j+2],di3], a4]
-				);
-			a = $MU[j];
-			b = $MU[j+1];
-			c = $MU[j+2];
-			Which[ordq[m, {mu1,mu2,mu3}],
-				dte,
-				ordq[m, {mu1,mu3,mu2}],
-				dte /.  {b :>c, c:>b},
-				ordq[m, {mu2,mu1,mu3}],
-				dte /.  {a:>b,b:>a},
-				ordq[m, {mu2,mu3,mu1}],
-				dte /.  {b:>a, c:>b, a:>c},
-				ordq[m, {mu3,mu1,mu2}],
-				dte /.  {c:>a, a:>b, b:>c},
-				ordq[m, {mu3,mu2,mu1}],
-				dte /.  {c:>a, a:>c}
-				]
-		]/; FreeQ2[{m,a1,a2,a3,a4}, {$MU[j], $MU[j+1], $MU[j+2]}] &&
-				(!FreeQ2[m, LorentzIndex[mu1,___]] &&
-				!FreeQ2[m, LorentzIndex[mu2,___]] &&
-				!FreeQ2[m, LorentzIndex[mu3,___]]
-				) &&
-			FreeQ2[m, Select[{a1,a2,a3,a4}, Head[#]===LorentzIndex&]/.
-						LorentzIndex -> lorhipa];
+double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___, LorentzIndex[mu2_, di2___],a3___], j_ ] :=
+	((m/.mu2->$MU[j]/.mu1->$MU[j+1]) Eps[a1,LorentzIndex[$MU[j+1],di1],a2, LorentzIndex[$MU[j],di2],a3])/;
+	(	FreeQ2[{m,a1,a2,a3}, {$MU[j], $MU[j+1]}] &&
+		(!FreeQ[m, LorentzIndex[mu1, ___]]) &&
+		(!FreeQ[m, LorentzIndex[mu2, ___]]) &&
+		(FreeQ2[m, Select[{a1,a2,a3}, Head[#]===LorentzIndex&]/. LorentzIndex -> lorhipa]) && ordq[m, {mu2,mu1}]);
+
+double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___, LorentzIndex[mu2_, di2___], a3___,
+	LorentzIndex[mu3_, di3___], a4___ ], j_ ] :=
+	Block[ {dte,a,b,c},
+		dte = (  (m/.mu1->$MU[j]/.mu2->$MU[j+1]/.mu3->$MU[j+2]) *
+			Eps[a1,LorentzIndex[$MU[j],di1], a2,
+					LorentzIndex[$MU[j+1],di2],a3,
+					LorentzIndex[$MU[j+2],di3], a4]);
+		a = $MU[j];
+		b = $MU[j+1];
+		c = $MU[j+2];
+		Which[ordq[m, {mu1,mu2,mu3}],
+			dte,
+			ordq[m, {mu1,mu3,mu2}],
+			dte /.  {b :>c, c:>b},
+			ordq[m, {mu2,mu1,mu3}],
+			dte /.  {a:>b,b:>a},
+			ordq[m, {mu2,mu3,mu1}],
+			dte /.  {b:>a, c:>b, a:>c},
+			ordq[m, {mu3,mu1,mu2}],
+			dte /.  {c:>a, a:>b, b:>c},
+			ordq[m, {mu3,mu2,mu1}],
+			dte /.  {c:>a, a:>c}
+			]
+	]/; FreeQ2[{m,a1,a2,a3,a4}, {$MU[j], $MU[j+1], $MU[j+2]}] &&
+		(!FreeQ2[m, LorentzIndex[mu1,___]] &&
+		!FreeQ2[m, LorentzIndex[mu2,___]] &&
+		!FreeQ2[m, LorentzIndex[mu3,___]]
+		) && FreeQ2[m, Select[{a1,a2,a3,a4}, Head[#]===LorentzIndex&]/. LorentzIndex -> lorhipa];
 
 double3[ m_. eepp[LorentzIndex[mu1_,di1___],LorentzIndex[mu2_,di2___],
-					LorentzIndex[mu3_,di3___],LorentzIndex[mu4_,di4___]], _
-		] :=
+					LorentzIndex[mu3_,di3___],LorentzIndex[mu4_,di4___]], _ ] :=
 	Block[ {dte,a,b,c,d},
 		dte = (m/.mu1->$MU[1]/.mu2->$MU[2]/.mu3->$MU[3]/.mu4->$MU[4]) *
 		Eps[LorentzIndex[$MU[1],di1],  LorentzIndex[$MU[2],di2],
