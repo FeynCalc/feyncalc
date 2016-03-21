@@ -122,7 +122,9 @@ Contract3[x_Times] :=
 
 (* #################################################################### *)
 
-Options[Contract2] = {Collecting -> False};
+Options[Contract2] = {
+	Collecting -> False
+};
 
 (* bb is assumed to be collected w.r.t. to LorentzIndex !!! *)
 	Contract2[a_, bb_, ops___Rule] :=
@@ -143,7 +145,7 @@ Options[Contract2] = {Collecting -> False};
 					rc = sel Contract[ct nop, b],
 					ct = Sort[List @@ ct, lco];
 					If[ nop =!= 1,
-						lastct = contract21[b, nop],
+						lastct = contract21[b, nop, ops],
 						lastct = b nop
 					];
 					lct = Length[ct];
@@ -498,19 +500,19 @@ Contract[a_, b_ /;Head[b] =!= Rule, c_ /; Head[c] =!= Rule, ops:OptionsPattern[]
 		new
 	];
 
-Contract[x_, y_ /; Head[y]=!=Rule, c___?OptionQ] :=
+Contract[x_, y_ /; Head[y]=!=Rule, c:OptionsPattern[]] :=
 	(Contract[fci[x], c] y) /; FreeQ2[fci[y], {LorentzIndex,Eps}];
 
-Contract[x_, y_Times, OptionsPattern[]] :=
+Contract[x_, y_Times, opts:OptionsPattern[]] :=
 	Block[ {a = fci[x], b = fci[y], bb},
 		If[ MatchQ[b, Apply[HoldPattern, {Times__Pair}]],
-			contract21[ a, b ],
+			contract21[ a, b ,opts],
 			If[ MatchQ[b, HoldPattern[Times__Pair]],
-				contract21[ a, b ],
+				contract21[ a, b ,opts],
 				bb = Collect3[b, Pair, Factoring-> False];
 				If[ Head[bb] === Plus,
 					contractLColl[a, bb],
-					contract21[a, bb]
+					contract21[a, bb, opts]
 				]
 			]
 		]
@@ -518,11 +520,11 @@ Contract[x_, y_Times, OptionsPattern[]] :=
 
 
 
-Contract[a_, b_ /; ((Head[b]=!=Times) && (Head[b] =!= Plus) && (Head[b] =!= Rule)), c___?OptionQ] :=
+Contract[a_, b_ /; ((Head[b]=!=Times) && (Head[b] =!= Plus) && (Head[b] =!= Rule)), c:OptionsPattern[]] :=
 	Contract[ a b, c ];
 
-Contract[a_, b_Plus, ops___Rule] :=
-	If[ (Collecting /. {ops} /. Options[Contract]) === True,
+Contract[a_, b_Plus, OptionsPattern[]] :=
+	If[ OptionValue[Collecting] === True,
 		contractLColl[fci[a],
 			If[ FreeQ[List@@b, Plus],
 				fci[b],
@@ -543,14 +545,14 @@ hasDummyIndices[expr_] :=
 hasDummyIndices[expr_] := False/;
 	FreeQ[{expr},LorentzIndex];
 
-contracT[x_,opt___Rule] :=
+contracT[x_,opts:OptionsPattern[]] :=
 		Block[ { contractres = x,
-				contractexpandopt, es, contractopt = Join[{opt},Options[Contract]]//Flatten,
+				contractexpandopt, es,
 				contract3, schout, contractfactoring },
 
-			contractexpandopt   = Expanding/.contractopt;
-			contractfactoring   = Factoring/.contractopt;
-			contract3           = Contract3/.contractopt;
+			contractexpandopt = OptionValue[Contract,{opts},Expanding];
+			contractfactoring = OptionValue[Contract,{opts},Factoring];
+			contract3 = OptionValue[Contract,{opts},Contract3];
 
 			(* NEW: September 16th 2003: adding Contract3 directly here ... *)
 			If[ contract3 && contractexpandopt,
@@ -580,7 +582,7 @@ contracT[x_,opt___Rule] :=
 				contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
 				contractres = contractres /.
 								{((yy_Plus)  /;!FreeQ[yy, LorentzIndex])^2 :>
-								((Contract @@ {yy/.PairContract->Pair, yy/.PairContract->Pair}
+								((Contract @@ {yy/.PairContract->Pair, yy/.PairContract->Pair,opts}
 								) /. Pair -> PairContract /. PairContract -> Pair)
 								};
 			];
@@ -698,10 +700,10 @@ pair2/: pair2[LorentzIndex[al_,di___], z_] pair2[LorentzIndex[al_,di2___],
 			nxx
 		];
 
-	contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times)] :=
-		Contract[z yy];
+	contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times), opts:OptionsPattern[]] :=
+		Contract[z yy, opts];
 
-	contract21[xx_Plus, yy_] :=
+	contract21[xx_Plus, yy_, OptionsPattern[]] :=
 		contract22[xx, yy /. Pair -> pairsave] /.
 		contra4 -> contra3a /.  contra3a -> contra3b /.
 		Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
