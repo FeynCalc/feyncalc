@@ -395,10 +395,16 @@ Contract[y_, z:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Contracting epsilon tensors.", FCDoControl->cnVerbose];
 			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = EpsEvaluate[tmpFin/. Eps->epscon/.epscon->Eps];
+				tmpFin = FCLoopIsolate[EpsEvaluate[tmpFin],{Eps},Head->tmpHead,PaVe->False,FCI->True,
+					ExpandScalarProduct->False,DiracGammaExpand->False,DotSimplify->False,FeynAmpDenominatorSplit->False,
+					Factoring->False]/. tmpHead-> epsCleverCon
+
 			];
+
 			If[	!FreeQ[noDummy, Eps],
-				noDummy = EpsEvaluate[noDummy/. Eps->epscon/.epscon->Eps];
+				noDummy = FCLoopIsolate[EpsEvaluate[noDummy],{Eps},Head->tmpHead,PaVe->False,FCI->True,
+					ExpandScalarProduct->False,DiracGammaExpand->False,DotSimplify->False,FeynAmpDenominatorSplit->False,
+					Factoring->False]/. tmpHead-> epsCleverCon
 			];
 			FCPrint[1,"Contract: Epsilon contractions done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
@@ -771,6 +777,13 @@ contractli[x_] :=
 
 conall[ x_ ] :=
 	Contract[ x, Expanding->True, EpsContract->True, Factoring->False];
+
+epsCleverCon[expr_]:=
+	expr //. Power[Eps[a__],n_] :> epsHold[epscon[a]^n] //.
+	Eps[a__] Eps[b__]/; Length[Intersection[{a},{b}]]===3 :> epsHold[epscon[a]epscon[b]] //.
+	Eps[a__] Eps[b__]/; Length[Intersection[{a},{b}]]===2 :> epsHold[epscon[a]epscon[b]] //.
+	Eps[a__] Eps[b__]/; Length[Intersection[{a},{b}]]===1 :> epsHold[epscon[a]epscon[b]] /.
+	Eps -> epscon /. epscon -> Eps /. epsHold->Identity;
 
 epscon/: epscon[a1_,a2_,a3_,a4_,OptionsPattern[Eps]]^2 :=
 	((( - ($LeviCivitaSign)^2 Det[{{PairContract[a1,a1],PairContract[a1,a2],PairContract[a1,a3],PairContract[a1,a4]},

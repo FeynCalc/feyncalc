@@ -1172,179 +1172,208 @@ i8])"},
 "Tr[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9,5]]//FCE", "0"},
 {"fcstTr4AllFreeOneGamma5-ID9",
 "Tr[GA[i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,5]]//FCE",
-"4*(I*LC[i5, i6, i7, i9]*MT[i1, i4]*MT[i10, i8]*MT[i2, i3] - \
-I*LC[i4, i6, i7, i9]*MT[i1, i5]*MT[i10, i8]*MT[i2, i3] - I*LC[i5, i6, \
-i7, i8]*MT[i1, i4]*MT[i10, i9]*MT[i2, i3] + I*LC[i4, i6, i7, \
-i8]*MT[i1, i5]*MT[i10, i9]*MT[i2, i3] - I*LC[i5, i6, i7, i9]*MT[i1, \
-i3]*MT[i10, i8]*MT[i2, i4] + I*LC[i3, i6, i7, i9]*MT[i1, i5]*MT[i10, \
-i8]*MT[i2, i4] + I*LC[i5, i6, i7, i8]*MT[i1, i3]*MT[i10, i9]*MT[i2, \
-i4] - I*LC[i3, i6, i7, i8]*MT[i1, i5]*MT[i10, i9]*MT[i2, i4] + \
-I*LC[i4, i6, i7, i9]*MT[i1, i3]*MT[i10, i8]*MT[i2, i5] - I*LC[i3, i6, \
-i7, i9]*MT[i1, i4]*MT[i10, i8]*MT[i2, i5] - I*LC[i4, i6, i7, \
-i8]*MT[i1, i3]*MT[i10, i9]*MT[i2, i5] + I*LC[i3, i6, i7, i8]*MT[i1, \
-i4]*MT[i10, i9]*MT[i2, i5] + I*LC[i5, i6, i7, i9]*MT[i1, i2]*MT[i10, \
-i8]*MT[i3, i4] - I*LC[i2, i6, i7, i9]*MT[i1, i5]*MT[i10, i8]*MT[i3, \
-i4] - I*LC[i5, i6, i7, i8]*MT[i1, i2]*MT[i10, i9]*MT[i3, i4] + \
-I*LC[i2, i6, i7, i8]*MT[i1, i5]*MT[i10, i9]*MT[i3, i4] + I*LC[i10, \
-i7, i8, i9]*MT[i1, i6]*MT[i2, i5]*MT[i3, i4] - I*LC[i10, i6, i8, \
-i9]*MT[i1, i7]*MT[i2, i5]*MT[i3, i4] + I*LC[i1, i6, i7, i9]*MT[i10, \
-i8]*MT[i2, i5]*MT[i3, i4] - I*LC[i1, i6, i7, i8]*MT[i10, i9]*MT[i2, \
-i5]*MT[i3, i4] - I*LC[i10, i7, i8, i9]*MT[i1, i5]*MT[i2, i6]*MT[i3, \
-i4] + I*LC[i10, i5, i8, i9]*MT[i1, i7]*MT[i2, i6]*MT[i3, i4] + \
-I*LC[i10, i6, i8, i9]*MT[i1, i5]*MT[i2, i7]*MT[i3, i4] - I*LC[i10, \
-i5, i8, i9]*MT[i1, i6]*MT[i2, i7]*MT[i3, i4] - I*LC[i4, i6, i7, \
-i9]*MT[i1, i2]*MT[i10, i8]*MT[i3, i5] + I*LC[i2, i6, i7, i9]*MT[i1, \
-i4]*MT[i10, i8]*MT[i3, i5] + I*LC[i4, i6, i7, i8]*MT[i1, i2]*MT[i10, \
-i9]*MT[i3, i5] - I*LC[i2, i6, i7, i8]*MT[i1, i4]*MT[i10, i9]*MT[i3, \
-i5] - I*LC[i10, i7, i8, i9]*MT[i1, i6]*MT[i2, i4]*MT[i3, i5] + \
-I*LC[i10, i6, i8, i9]*MT[i1, i7]*MT[i2, i4]*MT[i3, i5] - I*LC[i1, i6, \
-i7, i9]*MT[i10, i8]*MT[i2, i4]*MT[i3, i5] + I*LC[i1, i6, i7, \
-i8]*MT[i10, i9]*MT[i2, i4]*MT[i3, i5] + I*LC[i10, i7, i8, i9]*MT[i1, \
-i4]*MT[i2, i6]*MT[i3, i5] - I*LC[i10, i4, i8, i9]*MT[i1, i7]*MT[i2, \
-i6]*MT[i3, i5] - I*LC[i10, i6, i8, i9]*MT[i1, i4]*MT[i2, i7]*MT[i3, \
-i5] + I*LC[i10, i4, i8, i9]*MT[i1, i6]*MT[i2, i7]*MT[i3, i5] + \
-I*LC[i10, i7, i8, i9]*MT[i1, i5]*MT[i2, i4]*MT[i3, i6] - I*LC[i10, \
-i5, i8, i9]*MT[i1, i7]*MT[i2, i4]*MT[i3, i6] - I*LC[i10, i7, i8, \
-i9]*MT[i1, i4]*MT[i2, i5]*MT[i3, i6] + I*LC[i10, i4, i8, i9]*MT[i1, \
-i7]*MT[i2, i5]*MT[i3, i6] + I*LC[i10, i5, i8, i9]*MT[i1, i4]*MT[i2, \
-i7]*MT[i3, i6] - I*LC[i10, i4, i8, i9]*MT[i1, i5]*MT[i2, i7]*MT[i3, \
-i6] - I*LC[i10, i6, i8, i9]*MT[i1, i5]*MT[i2, i4]*MT[i3, i7] + \
-I*LC[i10, i5, i8, i9]*MT[i1, i6]*MT[i2, i4]*MT[i3, i7] + I*LC[i10, \
-i6, i8, i9]*MT[i1, i4]*MT[i2, i5]*MT[i3, i7] - I*LC[i10, i4, i8, \
-i9]*MT[i1, i6]*MT[i2, i5]*MT[i3, i7] - I*LC[i10, i5, i8, i9]*MT[i1, \
-i4]*MT[i2, i6]*MT[i3, i7] + I*LC[i10, i4, i8, i9]*MT[i1, i5]*MT[i2, \
-i6]*MT[i3, i7] + I*LC[i3, i6, i7, i9]*MT[i1, i2]*MT[i10, i8]*MT[i4, \
-i5] - I*LC[i2, i6, i7, i9]*MT[i1, i3]*MT[i10, i8]*MT[i4, i5] - \
-I*LC[i3, i6, i7, i8]*MT[i1, i2]*MT[i10, i9]*MT[i4, i5] + I*LC[i2, i6, \
-i7, i8]*MT[i1, i3]*MT[i10, i9]*MT[i4, i5] + I*LC[i10, i7, i8, \
-i9]*MT[i1, i6]*MT[i2, i3]*MT[i4, i5] - I*LC[i10, i6, i8, i9]*MT[i1, \
-i7]*MT[i2, i3]*MT[i4, i5] + I*LC[i1, i6, i7, i9]*MT[i10, i8]*MT[i2, \
-i3]*MT[i4, i5] - I*LC[i1, i6, i7, i8]*MT[i10, i9]*MT[i2, i3]*MT[i4, \
-i5] - I*LC[i10, i7, i8, i9]*MT[i1, i3]*MT[i2, i6]*MT[i4, i5] + \
-I*LC[i10, i3, i8, i9]*MT[i1, i7]*MT[i2, i6]*MT[i4, i5] + I*LC[i10, \
-i6, i8, i9]*MT[i1, i3]*MT[i2, i7]*MT[i4, i5] - I*LC[i10, i3, i8, \
-i9]*MT[i1, i6]*MT[i2, i7]*MT[i4, i5] + I*LC[i10, i7, i8, i9]*MT[i1, \
-i2]*MT[i3, i6]*MT[i4, i5] - I*LC[i10, i2, i8, i9]*MT[i1, i7]*MT[i3, \
-i6]*MT[i4, i5] - I*LC[i1, i10, i8, i9]*MT[i2, i7]*MT[i3, i6]*MT[i4, \
-i5] - I*LC[i10, i6, i8, i9]*MT[i1, i2]*MT[i3, i7]*MT[i4, i5] + \
-I*LC[i10, i2, i8, i9]*MT[i1, i6]*MT[i3, i7]*MT[i4, i5] + I*LC[i1, \
-i10, i8, i9]*MT[i2, i6]*MT[i3, i7]*MT[i4, i5] - I*LC[i10, i7, i8, \
-i9]*MT[i1, i5]*MT[i2, i3]*MT[i4, i6] + I*LC[i10, i5, i8, i9]*MT[i1, \
-i7]*MT[i2, i3]*MT[i4, i6] + I*LC[i10, i7, i8, i9]*MT[i1, i3]*MT[i2, \
-i5]*MT[i4, i6] - I*LC[i10, i3, i8, i9]*MT[i1, i7]*MT[i2, i5]*MT[i4, \
-i6] - I*LC[i10, i5, i8, i9]*MT[i1, i3]*MT[i2, i7]*MT[i4, i6] + \
-I*LC[i10, i3, i8, i9]*MT[i1, i5]*MT[i2, i7]*MT[i4, i6] - I*LC[i10, \
-i7, i8, i9]*MT[i1, i2]*MT[i3, i5]*MT[i4, i6] + I*LC[i10, i2, i8, \
-i9]*MT[i1, i7]*MT[i3, i5]*MT[i4, i6] + I*LC[i1, i10, i8, i9]*MT[i2, \
-i7]*MT[i3, i5]*MT[i4, i6] + I*LC[i10, i5, i8, i9]*MT[i1, i2]*MT[i3, \
-i7]*MT[i4, i6] - I*LC[i10, i2, i8, i9]*MT[i1, i5]*MT[i3, i7]*MT[i4, \
-i6] - I*LC[i1, i10, i8, i9]*MT[i2, i5]*MT[i3, i7]*MT[i4, i6] + \
-I*LC[i10, i6, i8, i9]*MT[i1, i5]*MT[i2, i3]*MT[i4, i7] - I*LC[i10, \
-i5, i8, i9]*MT[i1, i6]*MT[i2, i3]*MT[i4, i7] - I*LC[i10, i6, i8, \
-i9]*MT[i1, i3]*MT[i2, i5]*MT[i4, i7] + I*LC[i10, i3, i8, i9]*MT[i1, \
-i6]*MT[i2, i5]*MT[i4, i7] + I*LC[i10, i5, i8, i9]*MT[i1, i3]*MT[i2, \
-i6]*MT[i4, i7] - I*LC[i10, i3, i8, i9]*MT[i1, i5]*MT[i2, i6]*MT[i4, \
-i7] + I*LC[i10, i6, i8, i9]*MT[i1, i2]*MT[i3, i5]*MT[i4, i7] - \
-I*LC[i10, i2, i8, i9]*MT[i1, i6]*MT[i3, i5]*MT[i4, i7] - I*LC[i1, \
-i10, i8, i9]*MT[i2, i6]*MT[i3, i5]*MT[i4, i7] - I*LC[i10, i5, i8, \
-i9]*MT[i1, i2]*MT[i3, i6]*MT[i4, i7] + I*LC[i10, i2, i8, i9]*MT[i1, \
-i5]*MT[i3, i6]*MT[i4, i7] + I*LC[i1, i10, i8, i9]*MT[i2, i5]*MT[i3, \
-i6]*MT[i4, i7] + I*LC[i10, i7, i8, i9]*MT[i1, i4]*MT[i2, i3]*MT[i5, \
-i6] - I*LC[i10, i4, i8, i9]*MT[i1, i7]*MT[i2, i3]*MT[i5, i6] - \
-I*LC[i10, i7, i8, i9]*MT[i1, i3]*MT[i2, i4]*MT[i5, i6] + I*LC[i10, \
-i3, i8, i9]*MT[i1, i7]*MT[i2, i4]*MT[i5, i6] + I*LC[i10, i4, i8, \
-i9]*MT[i1, i3]*MT[i2, i7]*MT[i5, i6] - I*LC[i10, i3, i8, i9]*MT[i1, \
-i4]*MT[i2, i7]*MT[i5, i6] + I*LC[i10, i7, i8, i9]*MT[i1, i2]*MT[i3, \
-i4]*MT[i5, i6] - I*LC[i10, i2, i8, i9]*MT[i1, i7]*MT[i3, i4]*MT[i5, \
-i6] - I*LC[i1, i10, i8, i9]*MT[i2, i7]*MT[i3, i4]*MT[i5, i6] - \
-I*LC[i10, i4, i8, i9]*MT[i1, i2]*MT[i3, i7]*MT[i5, i6] + I*LC[i10, \
-i2, i8, i9]*MT[i1, i4]*MT[i3, i7]*MT[i5, i6] + I*LC[i1, i10, i8, \
-i9]*MT[i2, i4]*MT[i3, i7]*MT[i5, i6] + I*LC[i10, i3, i8, i9]*MT[i1, \
-i2]*MT[i4, i7]*MT[i5, i6] - I*LC[i10, i2, i8, i9]*MT[i1, i3]*MT[i4, \
-i7]*MT[i5, i6] - I*LC[i1, i10, i8, i9]*MT[i2, i3]*MT[i4, i7]*MT[i5, \
-i6] - I*LC[i10, i6, i8, i9]*MT[i1, i4]*MT[i2, i3]*MT[i5, i7] + \
-I*LC[i10, i4, i8, i9]*MT[i1, i6]*MT[i2, i3]*MT[i5, i7] + I*LC[i10, \
-i6, i8, i9]*MT[i1, i3]*MT[i2, i4]*MT[i5, i7] - I*LC[i10, i3, i8, \
-i9]*MT[i1, i6]*MT[i2, i4]*MT[i5, i7] - I*LC[i10, i4, i8, i9]*MT[i1, \
-i3]*MT[i2, i6]*MT[i5, i7] + I*LC[i10, i3, i8, i9]*MT[i1, i4]*MT[i2, \
-i6]*MT[i5, i7] - I*LC[i10, i6, i8, i9]*MT[i1, i2]*MT[i3, i4]*MT[i5, \
-i7] + I*LC[i10, i2, i8, i9]*MT[i1, i6]*MT[i3, i4]*MT[i5, i7] + \
-I*LC[i1, i10, i8, i9]*MT[i2, i6]*MT[i3, i4]*MT[i5, i7] + I*LC[i10, \
-i4, i8, i9]*MT[i1, i2]*MT[i3, i6]*MT[i5, i7] - I*LC[i10, i2, i8, \
-i9]*MT[i1, i4]*MT[i3, i6]*MT[i5, i7] - I*LC[i1, i10, i8, i9]*MT[i2, \
-i4]*MT[i3, i6]*MT[i5, i7] - I*LC[i10, i3, i8, i9]*MT[i1, i2]*MT[i4, \
-i6]*MT[i5, i7] + I*LC[i10, i2, i8, i9]*MT[i1, i3]*MT[i4, i6]*MT[i5, \
-i7] + I*LC[i1, i10, i8, i9]*MT[i2, i3]*MT[i4, i6]*MT[i5, i7] + \
-I*LC[i3, i4, i5, i9]*MT[i1, i2]*MT[i10, i8]*MT[i6, i7] - I*LC[i2, i4, \
-i5, i9]*MT[i1, i3]*MT[i10, i8]*MT[i6, i7] - I*LC[i3, i4, i5, \
-i8]*MT[i1, i2]*MT[i10, i9]*MT[i6, i7] + I*LC[i2, i4, i5, i8]*MT[i1, \
-i3]*MT[i10, i9]*MT[i6, i7] + I*LC[i10, i5, i8, i9]*MT[i1, i4]*MT[i2, \
-i3]*MT[i6, i7] - I*LC[i10, i4, i8, i9]*MT[i1, i5]*MT[i2, i3]*MT[i6, \
-i7] + I*LC[i1, i4, i5, i9]*MT[i10, i8]*MT[i2, i3]*MT[i6, i7] - \
-I*LC[i1, i4, i5, i8]*MT[i10, i9]*MT[i2, i3]*MT[i6, i7] - I*LC[i10, \
-i5, i8, i9]*MT[i1, i3]*MT[i2, i4]*MT[i6, i7] + I*LC[i10, i3, i8, \
-i9]*MT[i1, i5]*MT[i2, i4]*MT[i6, i7] + I*LC[i10, i4, i8, i9]*MT[i1, \
-i3]*MT[i2, i5]*MT[i6, i7] - I*LC[i10, i3, i8, i9]*MT[i1, i4]*MT[i2, \
-i5]*MT[i6, i7] + I*LC[i10, i5, i8, i9]*MT[i1, i2]*MT[i3, i4]*MT[i6, \
-i7] - I*LC[i10, i2, i8, i9]*MT[i1, i5]*MT[i3, i4]*MT[i6, i7] - \
-I*LC[i1, i10, i8, i9]*MT[i2, i5]*MT[i3, i4]*MT[i6, i7] - I*LC[i10, \
-i4, i8, i9]*MT[i1, i2]*MT[i3, i5]*MT[i6, i7] + I*LC[i10, i2, i8, \
-i9]*MT[i1, i4]*MT[i3, i5]*MT[i6, i7] + I*LC[i1, i10, i8, i9]*MT[i2, \
-i4]*MT[i3, i5]*MT[i6, i7] + I*LC[i10, i3, i8, i9]*MT[i1, i2]*MT[i4, \
-i5]*MT[i6, i7] - I*LC[i10, i2, i8, i9]*MT[i1, i3]*MT[i4, i5]*MT[i6, \
-i7] + I*LC[i1, i2, i3, i9]*MT[i10, i8]*MT[i4, i5]*MT[i6, i7] - \
-I*LC[i1, i2, i3, i8]*MT[i10, i9]*MT[i4, i5]*MT[i6, i7] - I*LC[i1, \
-i10, i8, i9]*MT[i2, i3]*MT[i4, i5]*MT[i6, i7] + I*LC[i1, i2, i3, \
-i5]*MT[i10, i9]*MT[i4, i8]*MT[i6, i7] - I*LC[i1, i2, i3, i5]*MT[i10, \
-i8]*MT[i4, i9]*MT[i6, i7] - I*LC[i1, i2, i3, i4]*MT[i10, i9]*MT[i5, \
-i8]*MT[i6, i7] + I*LC[i1, i2, i3, i4]*MT[i10, i8]*MT[i5, i9]*MT[i6, \
-i7] + I*LC[i3, i4, i5, i7]*MT[i1, i2]*MT[i10, i9]*MT[i6, i8] - \
-I*LC[i2, i4, i5, i7]*MT[i1, i3]*MT[i10, i9]*MT[i6, i8] + I*LC[i1, i4, \
-i5, i7]*MT[i10, i9]*MT[i2, i3]*MT[i6, i8] + I*LC[i1, i2, i3, \
-i7]*MT[i10, i9]*MT[i4, i5]*MT[i6, i8] - I*LC[i1, i2, i3, i5]*MT[i10, \
-i9]*MT[i4, i7]*MT[i6, i8] + I*LC[i1, i2, i3, i4]*MT[i10, i9]*MT[i5, \
-i7]*MT[i6, i8] - I*LC[i3, i4, i5, i7]*MT[i1, i2]*MT[i10, i8]*MT[i6, \
-i9] + I*LC[i2, i4, i5, i7]*MT[i1, i3]*MT[i10, i8]*MT[i6, i9] - \
-I*LC[i1, i4, i5, i7]*MT[i10, i8]*MT[i2, i3]*MT[i6, i9] - I*LC[i1, i2, \
-i3, i7]*MT[i10, i8]*MT[i4, i5]*MT[i6, i9] + I*LC[i1, i2, i3, \
-i5]*MT[i10, i8]*MT[i4, i7]*MT[i6, i9] - I*LC[i1, i2, i3, i4]*MT[i10, \
-i8]*MT[i5, i7]*MT[i6, i9] - I*LC[i3, i4, i5, i6]*MT[i1, i2]*MT[i10, \
-i9]*MT[i7, i8] + I*LC[i2, i4, i5, i6]*MT[i1, i3]*MT[i10, i9]*MT[i7, \
-i8] - I*LC[i1, i4, i5, i6]*MT[i10, i9]*MT[i2, i3]*MT[i7, i8] - \
-I*LC[i1, i2, i3, i6]*MT[i10, i9]*MT[i4, i5]*MT[i7, i8] + I*LC[i1, i2, \
-i3, i5]*MT[i10, i9]*MT[i4, i6]*MT[i7, i8] - I*LC[i1, i2, i3, \
-i4]*MT[i10, i9]*MT[i5, i6]*MT[i7, i8] + I*LC[i3, i4, i5, i6]*MT[i1, \
-i2]*MT[i10, i8]*MT[i7, i9] - I*LC[i2, i4, i5, i6]*MT[i1, i3]*MT[i10, \
-i8]*MT[i7, i9] + I*LC[i1, i4, i5, i6]*MT[i10, i8]*MT[i2, i3]*MT[i7, \
-i9] + I*LC[i1, i2, i3, i6]*MT[i10, i8]*MT[i4, i5]*MT[i7, i9] - \
-I*LC[i1, i2, i3, i5]*MT[i10, i8]*MT[i4, i6]*MT[i7, i9] + I*LC[i1, i2, \
-i3, i4]*MT[i10, i8]*MT[i5, i6]*MT[i7, i9] + I*LC[i3, i4, i5, \
-i7]*MT[i1, i2]*MT[i10, i6]*MT[i8, i9] - I*LC[i2, i4, i5, i7]*MT[i1, \
-i3]*MT[i10, i6]*MT[i8, i9] - I*LC[i3, i4, i5, i6]*MT[i1, i2]*MT[i10, \
-i7]*MT[i8, i9] + I*LC[i2, i4, i5, i6]*MT[i1, i3]*MT[i10, i7]*MT[i8, \
-i9] + I*LC[i10, i5, i6, i7]*MT[i1, i4]*MT[i2, i3]*MT[i8, i9] - \
-I*LC[i10, i4, i6, i7]*MT[i1, i5]*MT[i2, i3]*MT[i8, i9] + I*LC[i1, i4, \
-i5, i7]*MT[i10, i6]*MT[i2, i3]*MT[i8, i9] - I*LC[i1, i4, i5, \
-i6]*MT[i10, i7]*MT[i2, i3]*MT[i8, i9] - I*LC[i10, i5, i6, i7]*MT[i1, \
-i3]*MT[i2, i4]*MT[i8, i9] + I*LC[i10, i3, i6, i7]*MT[i1, i5]*MT[i2, \
-i4]*MT[i8, i9] + I*LC[i10, i4, i6, i7]*MT[i1, i3]*MT[i2, i5]*MT[i8, \
-i9] - I*LC[i10, i3, i6, i7]*MT[i1, i4]*MT[i2, i5]*MT[i8, i9] + \
-I*LC[i10, i5, i6, i7]*MT[i1, i2]*MT[i3, i4]*MT[i8, i9] - I*LC[i10, \
-i2, i6, i7]*MT[i1, i5]*MT[i3, i4]*MT[i8, i9] - I*LC[i1, i10, i6, \
-i7]*MT[i2, i5]*MT[i3, i4]*MT[i8, i9] - I*LC[i10, i4, i6, i7]*MT[i1, \
-i2]*MT[i3, i5]*MT[i8, i9] + I*LC[i10, i2, i6, i7]*MT[i1, i4]*MT[i3, \
-i5]*MT[i8, i9] + I*LC[i1, i10, i6, i7]*MT[i2, i4]*MT[i3, i5]*MT[i8, \
-i9] + I*LC[i10, i3, i6, i7]*MT[i1, i2]*MT[i4, i5]*MT[i8, i9] - \
-I*LC[i10, i2, i6, i7]*MT[i1, i3]*MT[i4, i5]*MT[i8, i9] + I*LC[i1, i2, \
-i3, i7]*MT[i10, i6]*MT[i4, i5]*MT[i8, i9] - I*LC[i1, i2, i3, \
-i6]*MT[i10, i7]*MT[i4, i5]*MT[i8, i9] - I*LC[i1, i10, i6, i7]*MT[i2, \
-i3]*MT[i4, i5]*MT[i8, i9] + I*LC[i1, i2, i3, i5]*MT[i10, i7]*MT[i4, \
-i6]*MT[i8, i9] - I*LC[i1, i2, i3, i5]*MT[i10, i6]*MT[i4, i7]*MT[i8, \
-i9] - I*LC[i1, i2, i3, i4]*MT[i10, i7]*MT[i5, i6]*MT[i8, i9] + \
-I*LC[i1, i2, i3, i4]*MT[i10, i6]*MT[i5, i7]*MT[i8, i9] + I*LC[i10, \
-i3, i4, i5]*MT[i1, i2]*MT[i6, i7]*MT[i8, i9] - I*LC[i10, i2, i4, \
-i5]*MT[i1, i3]*MT[i6, i7]*MT[i8, i9] + I*LC[i1, i2, i3, i5]*MT[i10, \
-i4]*MT[i6, i7]*MT[i8, i9] - I*LC[i1, i2, i3, i4]*MT[i10, i5]*MT[i6, \
-i7]*MT[i8, i9] - I*LC[i1, i10, i4, i5]*MT[i2, i3]*MT[i6, i7]*MT[i8, \
-i9] - I*LC[i1, i10, i2, i3]*MT[i4, i5]*MT[i6, i7]*MT[i8, i9])"}
+"(4*I)*(LC[i5, i6, i7, i9]*MT[i1, i4]*MT[i10, i8]*MT[i2, i3] -
+LC[i4, i6, i7, i9]*MT[i1, i5]*MT[i10, i8]*MT[i2, i3] -
+LC[i5, i6, i7, i8]*MT[i1, i4]*MT[i10, i9]*MT[i2, i3] +
+LC[i4, i6, i7, i8]*MT[i1, i5]*MT[i10, i9]*MT[i2, i3] -
+LC[i5, i6, i7, i9]*MT[i1, i3]*MT[i10, i8]*MT[i2, i4] +
+LC[i3, i6, i7, i9]*MT[i1, i5]*MT[i10, i8]*MT[i2, i4] +
+LC[i5, i6, i7, i8]*MT[i1, i3]*MT[i10, i9]*MT[i2, i4] -
+LC[i3, i6, i7, i8]*MT[i1, i5]*MT[i10, i9]*MT[i2, i4] +
+LC[i4, i6, i7, i9]*MT[i1, i3]*MT[i10, i8]*MT[i2, i5] -
+LC[i3, i6, i7, i9]*MT[i1, i4]*MT[i10, i8]*MT[i2, i5] -
+LC[i4, i6, i7, i8]*MT[i1, i3]*MT[i10, i9]*MT[i2, i5] +
+LC[i3, i6, i7, i8]*MT[i1, i4]*MT[i10, i9]*MT[i2, i5] +
+LC[i5, i6, i7, i9]*MT[i1, i2]*MT[i10, i8]*MT[i3, i4] -
+LC[i2, i6, i7, i9]*MT[i1, i5]*MT[i10, i8]*MT[i3, i4] -
+LC[i5, i6, i7, i8]*MT[i1, i2]*MT[i10, i9]*MT[i3, i4] +
+LC[i2, i6, i7, i8]*MT[i1, i5]*MT[i10, i9]*MT[i3, i4] +
+LC[i10, i7, i8, i9]*MT[i1, i6]*MT[i2, i5]*MT[i3, i4] -
+LC[i10, i6, i8, i9]*MT[i1, i7]*MT[i2, i5]*MT[i3, i4] +
+LC[i1, i6, i7, i9]*MT[i10, i8]*MT[i2, i5]*MT[i3, i4] -
+LC[i1, i6, i7, i8]*MT[i10, i9]*MT[i2, i5]*MT[i3, i4] -
+LC[i10, i7, i8, i9]*MT[i1, i5]*MT[i2, i6]*MT[i3, i4] +
+LC[i10, i5, i8, i9]*MT[i1, i7]*MT[i2, i6]*MT[i3, i4] +
+LC[i10, i6, i8, i9]*MT[i1, i5]*MT[i2, i7]*MT[i3, i4] -
+LC[i10, i5, i8, i9]*MT[i1, i6]*MT[i2, i7]*MT[i3, i4] -
+LC[i4, i6, i7, i9]*MT[i1, i2]*MT[i10, i8]*MT[i3, i5] +
+LC[i2, i6, i7, i9]*MT[i1, i4]*MT[i10, i8]*MT[i3, i5] +
+LC[i4, i6, i7, i8]*MT[i1, i2]*MT[i10, i9]*MT[i3, i5] -
+LC[i2, i6, i7, i8]*MT[i1, i4]*MT[i10, i9]*MT[i3, i5] -
+LC[i10, i7, i8, i9]*MT[i1, i6]*MT[i2, i4]*MT[i3, i5] +
+LC[i10, i6, i8, i9]*MT[i1, i7]*MT[i2, i4]*MT[i3, i5] -
+LC[i1, i6, i7, i9]*MT[i10, i8]*MT[i2, i4]*MT[i3, i5] +
+LC[i1, i6, i7, i8]*MT[i10, i9]*MT[i2, i4]*MT[i3, i5] +
+LC[i10, i7, i8, i9]*MT[i1, i4]*MT[i2, i6]*MT[i3, i5] -
+LC[i10, i4, i8, i9]*MT[i1, i7]*MT[i2, i6]*MT[i3, i5] -
+LC[i10, i6, i8, i9]*MT[i1, i4]*MT[i2, i7]*MT[i3, i5] +
+LC[i10, i4, i8, i9]*MT[i1, i6]*MT[i2, i7]*MT[i3, i5] +
+LC[i10, i7, i8, i9]*MT[i1, i5]*MT[i2, i4]*MT[i3, i6] -
+LC[i10, i5, i8, i9]*MT[i1, i7]*MT[i2, i4]*MT[i3, i6] -
+LC[i10, i7, i8, i9]*MT[i1, i4]*MT[i2, i5]*MT[i3, i6] +
+LC[i10, i4, i8, i9]*MT[i1, i7]*MT[i2, i5]*MT[i3, i6] +
+LC[i10, i5, i8, i9]*MT[i1, i4]*MT[i2, i7]*MT[i3, i6] -
+LC[i10, i4, i8, i9]*MT[i1, i5]*MT[i2, i7]*MT[i3, i6] -
+LC[i10, i6, i8, i9]*MT[i1, i5]*MT[i2, i4]*MT[i3, i7] +
+LC[i10, i5, i8, i9]*MT[i1, i6]*MT[i2, i4]*MT[i3, i7] +
+LC[i10, i6, i8, i9]*MT[i1, i4]*MT[i2, i5]*MT[i3, i7] -
+LC[i10, i4, i8, i9]*MT[i1, i6]*MT[i2, i5]*MT[i3, i7] -
+LC[i10, i5, i8, i9]*MT[i1, i4]*MT[i2, i6]*MT[i3, i7] +
+LC[i10, i4, i8, i9]*MT[i1, i5]*MT[i2, i6]*MT[i3, i7] +
+LC[i3, i6, i7, i9]*MT[i1, i2]*MT[i10, i8]*MT[i4, i5] -
+LC[i2, i6, i7, i9]*MT[i1, i3]*MT[i10, i8]*MT[i4, i5] -
+LC[i3, i6, i7, i8]*MT[i1, i2]*MT[i10, i9]*MT[i4, i5] +
+LC[i2, i6, i7, i8]*MT[i1, i3]*MT[i10, i9]*MT[i4, i5] +
+LC[i10, i7, i8, i9]*MT[i1, i6]*MT[i2, i3]*MT[i4, i5] -
+LC[i10, i6, i8, i9]*MT[i1, i7]*MT[i2, i3]*MT[i4, i5] +
+LC[i1, i6, i7, i9]*MT[i10, i8]*MT[i2, i3]*MT[i4, i5] -
+LC[i1, i6, i7, i8]*MT[i10, i9]*MT[i2, i3]*MT[i4, i5] -
+LC[i10, i7, i8, i9]*MT[i1, i3]*MT[i2, i6]*MT[i4, i5] +
+LC[i10, i3, i8, i9]*MT[i1, i7]*MT[i2, i6]*MT[i4, i5] +
+LC[i10, i6, i8, i9]*MT[i1, i3]*MT[i2, i7]*MT[i4, i5] -
+LC[i10, i3, i8, i9]*MT[i1, i6]*MT[i2, i7]*MT[i4, i5] +
+LC[i10, i7, i8, i9]*MT[i1, i2]*MT[i3, i6]*MT[i4, i5] -
+LC[i10, i2, i8, i9]*MT[i1, i7]*MT[i3, i6]*MT[i4, i5] -
+LC[i1, i10, i8, i9]*MT[i2, i7]*MT[i3, i6]*MT[i4, i5] -
+LC[i10, i6, i8, i9]*MT[i1, i2]*MT[i3, i7]*MT[i4, i5] +
+LC[i10, i2, i8, i9]*MT[i1, i6]*MT[i3, i7]*MT[i4, i5] +
+LC[i1, i10, i8, i9]*MT[i2, i6]*MT[i3, i7]*MT[i4, i5] -
+LC[i10, i7, i8, i9]*MT[i1, i5]*MT[i2, i3]*MT[i4, i6] +
+LC[i10, i5, i8, i9]*MT[i1, i7]*MT[i2, i3]*MT[i4, i6] +
+LC[i10, i7, i8, i9]*MT[i1, i3]*MT[i2, i5]*MT[i4, i6] -
+LC[i10, i3, i8, i9]*MT[i1, i7]*MT[i2, i5]*MT[i4, i6] -
+LC[i10, i5, i8, i9]*MT[i1, i3]*MT[i2, i7]*MT[i4, i6] +
+LC[i10, i3, i8, i9]*MT[i1, i5]*MT[i2, i7]*MT[i4, i6] -
+LC[i10, i7, i8, i9]*MT[i1, i2]*MT[i3, i5]*MT[i4, i6] +
+LC[i10, i2, i8, i9]*MT[i1, i7]*MT[i3, i5]*MT[i4, i6] +
+LC[i1, i10, i8, i9]*MT[i2, i7]*MT[i3, i5]*MT[i4, i6] +
+LC[i10, i5, i8, i9]*MT[i1, i2]*MT[i3, i7]*MT[i4, i6] -
+LC[i10, i2, i8, i9]*MT[i1, i5]*MT[i3, i7]*MT[i4, i6] -
+LC[i1, i10, i8, i9]*MT[i2, i5]*MT[i3, i7]*MT[i4, i6] +
+LC[i10, i6, i8, i9]*MT[i1, i5]*MT[i2, i3]*MT[i4, i7] -
+LC[i10, i5, i8, i9]*MT[i1, i6]*MT[i2, i3]*MT[i4, i7] -
+LC[i10, i6, i8, i9]*MT[i1, i3]*MT[i2, i5]*MT[i4, i7] +
+LC[i10, i3, i8, i9]*MT[i1, i6]*MT[i2, i5]*MT[i4, i7] +
+LC[i10, i5, i8, i9]*MT[i1, i3]*MT[i2, i6]*MT[i4, i7] -
+LC[i10, i3, i8, i9]*MT[i1, i5]*MT[i2, i6]*MT[i4, i7] +
+LC[i10, i6, i8, i9]*MT[i1, i2]*MT[i3, i5]*MT[i4, i7] -
+LC[i10, i2, i8, i9]*MT[i1, i6]*MT[i3, i5]*MT[i4, i7] -
+LC[i1, i10, i8, i9]*MT[i2, i6]*MT[i3, i5]*MT[i4, i7] -
+LC[i10, i5, i8, i9]*MT[i1, i2]*MT[i3, i6]*MT[i4, i7] +
+LC[i10, i2, i8, i9]*MT[i1, i5]*MT[i3, i6]*MT[i4, i7] +
+LC[i1, i10, i8, i9]*MT[i2, i5]*MT[i3, i6]*MT[i4, i7] +
+LC[i10, i7, i8, i9]*MT[i1, i4]*MT[i2, i3]*MT[i5, i6] -
+LC[i10, i4, i8, i9]*MT[i1, i7]*MT[i2, i3]*MT[i5, i6] -
+LC[i10, i7, i8, i9]*MT[i1, i3]*MT[i2, i4]*MT[i5, i6] +
+LC[i10, i3, i8, i9]*MT[i1, i7]*MT[i2, i4]*MT[i5, i6] +
+LC[i10, i4, i8, i9]*MT[i1, i3]*MT[i2, i7]*MT[i5, i6] -
+LC[i10, i3, i8, i9]*MT[i1, i4]*MT[i2, i7]*MT[i5, i6] +
+LC[i10, i7, i8, i9]*MT[i1, i2]*MT[i3, i4]*MT[i5, i6] -
+LC[i10, i2, i8, i9]*MT[i1, i7]*MT[i3, i4]*MT[i5, i6] -
+LC[i1, i10, i8, i9]*MT[i2, i7]*MT[i3, i4]*MT[i5, i6] -
+LC[i10, i4, i8, i9]*MT[i1, i2]*MT[i3, i7]*MT[i5, i6] +
+LC[i10, i2, i8, i9]*MT[i1, i4]*MT[i3, i7]*MT[i5, i6] +
+LC[i1, i10, i8, i9]*MT[i2, i4]*MT[i3, i7]*MT[i5, i6] +
+LC[i10, i3, i8, i9]*MT[i1, i2]*MT[i4, i7]*MT[i5, i6] -
+LC[i10, i2, i8, i9]*MT[i1, i3]*MT[i4, i7]*MT[i5, i6] -
+LC[i1, i10, i8, i9]*MT[i2, i3]*MT[i4, i7]*MT[i5, i6] -
+LC[i10, i6, i8, i9]*MT[i1, i4]*MT[i2, i3]*MT[i5, i7] +
+LC[i10, i4, i8, i9]*MT[i1, i6]*MT[i2, i3]*MT[i5, i7] +
+LC[i10, i6, i8, i9]*MT[i1, i3]*MT[i2, i4]*MT[i5, i7] -
+LC[i10, i3, i8, i9]*MT[i1, i6]*MT[i2, i4]*MT[i5, i7] -
+LC[i10, i4, i8, i9]*MT[i1, i3]*MT[i2, i6]*MT[i5, i7] +
+LC[i10, i3, i8, i9]*MT[i1, i4]*MT[i2, i6]*MT[i5, i7] -
+LC[i10, i6, i8, i9]*MT[i1, i2]*MT[i3, i4]*MT[i5, i7] +
+LC[i10, i2, i8, i9]*MT[i1, i6]*MT[i3, i4]*MT[i5, i7] +
+LC[i1, i10, i8, i9]*MT[i2, i6]*MT[i3, i4]*MT[i5, i7] +
+LC[i10, i4, i8, i9]*MT[i1, i2]*MT[i3, i6]*MT[i5, i7] -
+LC[i10, i2, i8, i9]*MT[i1, i4]*MT[i3, i6]*MT[i5, i7] -
+LC[i1, i10, i8, i9]*MT[i2, i4]*MT[i3, i6]*MT[i5, i7] -
+LC[i10, i3, i8, i9]*MT[i1, i2]*MT[i4, i6]*MT[i5, i7] +
+LC[i10, i2, i8, i9]*MT[i1, i3]*MT[i4, i6]*MT[i5, i7] +
+LC[i1, i10, i8, i9]*MT[i2, i3]*MT[i4, i6]*MT[i5, i7] +
+LC[i3, i4, i5, i9]*MT[i1, i2]*MT[i10, i8]*MT[i6, i7] -
+LC[i2, i4, i5, i9]*MT[i1, i3]*MT[i10, i8]*MT[i6, i7] -
+LC[i3, i4, i5, i8]*MT[i1, i2]*MT[i10, i9]*MT[i6, i7] +
+LC[i2, i4, i5, i8]*MT[i1, i3]*MT[i10, i9]*MT[i6, i7] +
+LC[i10, i5, i8, i9]*MT[i1, i4]*MT[i2, i3]*MT[i6, i7] -
+LC[i10, i4, i8, i9]*MT[i1, i5]*MT[i2, i3]*MT[i6, i7] +
+LC[i1, i4, i5, i9]*MT[i10, i8]*MT[i2, i3]*MT[i6, i7] -
+LC[i1, i4, i5, i8]*MT[i10, i9]*MT[i2, i3]*MT[i6, i7] -
+LC[i10, i5, i8, i9]*MT[i1, i3]*MT[i2, i4]*MT[i6, i7] +
+LC[i10, i3, i8, i9]*MT[i1, i5]*MT[i2, i4]*MT[i6, i7] +
+LC[i10, i4, i8, i9]*MT[i1, i3]*MT[i2, i5]*MT[i6, i7] -
+LC[i10, i3, i8, i9]*MT[i1, i4]*MT[i2, i5]*MT[i6, i7] +
+LC[i10, i5, i8, i9]*MT[i1, i2]*MT[i3, i4]*MT[i6, i7] -
+LC[i10, i2, i8, i9]*MT[i1, i5]*MT[i3, i4]*MT[i6, i7] -
+LC[i1, i10, i8, i9]*MT[i2, i5]*MT[i3, i4]*MT[i6, i7] -
+LC[i10, i4, i8, i9]*MT[i1, i2]*MT[i3, i5]*MT[i6, i7] +
+LC[i10, i2, i8, i9]*MT[i1, i4]*MT[i3, i5]*MT[i6, i7] +
+LC[i1, i10, i8, i9]*MT[i2, i4]*MT[i3, i5]*MT[i6, i7] +
+LC[i10, i3, i8, i9]*MT[i1, i2]*MT[i4, i5]*MT[i6, i7] -
+LC[i10, i2, i8, i9]*MT[i1, i3]*MT[i4, i5]*MT[i6, i7] +
+LC[i1, i2, i3, i9]*MT[i10, i8]*MT[i4, i5]*MT[i6, i7] -
+LC[i1, i2, i3, i8]*MT[i10, i9]*MT[i4, i5]*MT[i6, i7] -
+LC[i1, i10, i8, i9]*MT[i2, i3]*MT[i4, i5]*MT[i6, i7] +
+LC[i1, i2, i3, i5]*MT[i10, i9]*MT[i4, i8]*MT[i6, i7] -
+LC[i1, i2, i3, i5]*MT[i10, i8]*MT[i4, i9]*MT[i6, i7] -
+LC[i1, i2, i3, i4]*MT[i10, i9]*MT[i5, i8]*MT[i6, i7] +
+LC[i1, i2, i3, i4]*MT[i10, i8]*MT[i5, i9]*MT[i6, i7] +
+LC[i3, i4, i5, i7]*MT[i1, i2]*MT[i10, i9]*MT[i6, i8] -
+LC[i2, i4, i5, i7]*MT[i1, i3]*MT[i10, i9]*MT[i6, i8] +
+LC[i1, i4, i5, i7]*MT[i10, i9]*MT[i2, i3]*MT[i6, i8] +
+LC[i1, i2, i3, i7]*MT[i10, i9]*MT[i4, i5]*MT[i6, i8] -
+LC[i1, i2, i3, i5]*MT[i10, i9]*MT[i4, i7]*MT[i6, i8] +
+LC[i1, i2, i3, i4]*MT[i10, i9]*MT[i5, i7]*MT[i6, i8] -
+LC[i3, i4, i5, i7]*MT[i1, i2]*MT[i10, i8]*MT[i6, i9] +
+LC[i2, i4, i5, i7]*MT[i1, i3]*MT[i10, i8]*MT[i6, i9] -
+LC[i1, i4, i5, i7]*MT[i10, i8]*MT[i2, i3]*MT[i6, i9] -
+LC[i1, i2, i3, i7]*MT[i10, i8]*MT[i4, i5]*MT[i6, i9] +
+LC[i1, i2, i3, i5]*MT[i10, i8]*MT[i4, i7]*MT[i6, i9] -
+LC[i1, i2, i3, i4]*MT[i10, i8]*MT[i5, i7]*MT[i6, i9] -
+LC[i3, i4, i5, i6]*MT[i1, i2]*MT[i10, i9]*MT[i7, i8] +
+LC[i2, i4, i5, i6]*MT[i1, i3]*MT[i10, i9]*MT[i7, i8] -
+LC[i1, i4, i5, i6]*MT[i10, i9]*MT[i2, i3]*MT[i7, i8] -
+LC[i1, i2, i3, i6]*MT[i10, i9]*MT[i4, i5]*MT[i7, i8] +
+LC[i1, i2, i3, i5]*MT[i10, i9]*MT[i4, i6]*MT[i7, i8] -
+LC[i1, i2, i3, i4]*MT[i10, i9]*MT[i5, i6]*MT[i7, i8] +
+LC[i3, i4, i5, i6]*MT[i1, i2]*MT[i10, i8]*MT[i7, i9] -
+LC[i2, i4, i5, i6]*MT[i1, i3]*MT[i10, i8]*MT[i7, i9] +
+LC[i1, i4, i5, i6]*MT[i10, i8]*MT[i2, i3]*MT[i7, i9] +
+LC[i1, i2, i3, i6]*MT[i10, i8]*MT[i4, i5]*MT[i7, i9] -
+LC[i1, i2, i3, i5]*MT[i10, i8]*MT[i4, i6]*MT[i7, i9] +
+LC[i1, i2, i3, i4]*MT[i10, i8]*MT[i5, i6]*MT[i7, i9] +
+LC[i3, i4, i5, i7]*MT[i1, i2]*MT[i10, i6]*MT[i8, i9] -
+LC[i2, i4, i5, i7]*MT[i1, i3]*MT[i10, i6]*MT[i8, i9] -
+LC[i3, i4, i5, i6]*MT[i1, i2]*MT[i10, i7]*MT[i8, i9] +
+LC[i2, i4, i5, i6]*MT[i1, i3]*MT[i10, i7]*MT[i8, i9] +
+LC[i10, i5, i6, i7]*MT[i1, i4]*MT[i2, i3]*MT[i8, i9] -
+LC[i10, i4, i6, i7]*MT[i1, i5]*MT[i2, i3]*MT[i8, i9] +
+LC[i1, i4, i5, i7]*MT[i10, i6]*MT[i2, i3]*MT[i8, i9] -
+LC[i1, i4, i5, i6]*MT[i10, i7]*MT[i2, i3]*MT[i8, i9] -
+LC[i10, i5, i6, i7]*MT[i1, i3]*MT[i2, i4]*MT[i8, i9] +
+LC[i10, i3, i6, i7]*MT[i1, i5]*MT[i2, i4]*MT[i8, i9] +
+LC[i10, i4, i6, i7]*MT[i1, i3]*MT[i2, i5]*MT[i8, i9] -
+LC[i10, i3, i6, i7]*MT[i1, i4]*MT[i2, i5]*MT[i8, i9] +
+LC[i10, i5, i6, i7]*MT[i1, i2]*MT[i3, i4]*MT[i8, i9] -
+LC[i10, i2, i6, i7]*MT[i1, i5]*MT[i3, i4]*MT[i8, i9] -
+LC[i1, i10, i6, i7]*MT[i2, i5]*MT[i3, i4]*MT[i8, i9] -
+LC[i10, i4, i6, i7]*MT[i1, i2]*MT[i3, i5]*MT[i8, i9] +
+LC[i10, i2, i6, i7]*MT[i1, i4]*MT[i3, i5]*MT[i8, i9] +
+LC[i1, i10, i6, i7]*MT[i2, i4]*MT[i3, i5]*MT[i8, i9] +
+LC[i10, i3, i6, i7]*MT[i1, i2]*MT[i4, i5]*MT[i8, i9] -
+LC[i10, i2, i6, i7]*MT[i1, i3]*MT[i4, i5]*MT[i8, i9] +
+LC[i1, i2, i3, i7]*MT[i10, i6]*MT[i4, i5]*MT[i8, i9] -
+LC[i1, i2, i3, i6]*MT[i10, i7]*MT[i4, i5]*MT[i8, i9] -
+LC[i1, i10, i6, i7]*MT[i2, i3]*MT[i4, i5]*MT[i8, i9] +
+LC[i1, i2, i3, i5]*MT[i10, i7]*MT[i4, i6]*MT[i8, i9] -
+LC[i1, i2, i3, i5]*MT[i10, i6]*MT[i4, i7]*MT[i8, i9] -
+LC[i1, i2, i3, i4]*MT[i10, i7]*MT[i5, i6]*MT[i8, i9] +
+LC[i1, i2, i3, i4]*MT[i10, i6]*MT[i5, i7]*MT[i8, i9] +
+LC[i10, i3, i4, i5]*MT[i1, i2]*MT[i6, i7]*MT[i8, i9] -
+LC[i10, i2, i4, i5]*MT[i1, i3]*MT[i6, i7]*MT[i8, i9] +
+LC[i1, i2, i3, i5]*MT[i10, i4]*MT[i6, i7]*MT[i8, i9] -
+LC[i1, i2, i3, i4]*MT[i10, i5]*MT[i6, i7]*MT[i8, i9] -
+LC[i1, i10, i4, i5]*MT[i2, i3]*MT[i6, i7]*MT[i8, i9] -
+LC[i1, i10, i2, i3]*MT[i4, i5]*MT[i6, i7]*MT[i8, i9])"}
 })

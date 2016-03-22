@@ -87,7 +87,62 @@ SP[a, a] SP[b, d]^2 SP[c, c] -
 SP[a, a] SP[b, b] SP[c, d]^2 + SP[a, c]^2 SP[b, b] SP[d, d] -
 2 SP[a, b] SP[a, c] SP[b, c] SP[d, d] +
 SP[a, a] SP[b, c]^2 SP[d, d] + SP[a, b]^2 SP[c, c] SP[d, d] -
-SP[a, a] SP[b, b] SP[c, c] SP[d, d])^2"}
+SP[a, a] SP[b, b] SP[c, c] SP[d, d])^2"},
+{"fcstContractContractionsIn4dims-ID26","Contract[LC[i1, i2, i3, dum1] LC[i4, i5, i6, dum1] LC[i10, i11, i12,
+	dum2] LC[i7, i8, i9, dum2]] // FCE",
+	"MT[i1, i6] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i5] MT[i3, i4] -
+MT[i1, i6] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i5] MT[i3,
+i4] - MT[i1, i6] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i5] MT[
+i3, i4] +
+MT[i1, i6] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i5] MT[i3,
+i4] + MT[i1, i6] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i5] MT[
+i3, i4] -
+MT[i1, i6] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3,
+i4] - MT[i1, i5] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i6] MT[
+i3, i4] +
+MT[i1, i5] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i6] MT[i3,
+i4] + MT[i1, i5] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i6] MT[
+i3, i4] -
+MT[i1, i5] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i6] MT[i3,
+i4] - MT[i1, i5] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i6] MT[
+i3, i4] +
+MT[i1, i5] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i6] MT[i3,
+i4] - MT[i1, i6] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i4] MT[
+i3, i5] +
+MT[i1, i6] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i4] MT[i3,
+i5] + MT[i1, i6] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i4] MT[
+i3, i5] -
+MT[i1, i6] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i4] MT[i3,
+i5] - MT[i1, i6] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i4] MT[
+i3, i5] +
+MT[i1, i6] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i4] MT[i3,
+i5] + MT[i1, i4] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i6] MT[
+i3, i5] -
+MT[i1, i4] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i6] MT[i3,
+i5] - MT[i1, i4] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i6] MT[
+i3, i5] +
+MT[i1, i4] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i6] MT[i3,
+i5] + MT[i1, i4] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i6] MT[
+i3, i5] -
+MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i6] MT[i3,
+i5] + MT[i1, i5] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i4] MT[
+i3, i6] -
+MT[i1, i5] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i4] MT[i3,
+i6] - MT[i1, i5] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i4] MT[
+i3, i6] +
+MT[i1, i5] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i4] MT[i3,
+i6] + MT[i1, i5] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i4] MT[
+i3, i6] -
+MT[i1, i5] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i4] MT[i3,
+i6] - MT[i1, i4] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i5] MT[
+i3, i6] +
+MT[i1, i4] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i5] MT[i3,
+i6] + MT[i1, i4] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i5] MT[
+i3, i6] -
+MT[i1, i4] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i5] MT[i3,
+i6] - MT[i1, i4] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i5] MT[
+i3, i6] +
+MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3, i6]"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
