@@ -691,13 +691,13 @@ pair2/: pair2[LorentzIndex[al_,di___], z_] pair2[LorentzIndex[al_,di2___],
 	product or just Pair[  ,  ]
 *)
 
-contra3a[xx_, {pr_, prl__}] :=
-	contra3a[contra3a[xx, {pr}], {prl}];
+contra3a[xx_, {pr_, prl__}, opts:OptionsPattern[]] :=
+	contra3a[contra3a[xx, {pr}], {prl}, opts];
 
-contra3b[xx_, {alien_ /; Head[alien] =!= pair2}] :=
+contra3b[xx_, {alien_ /; Head[alien] =!= pair2}, OptionsPattern[]] :=
 	Expand2[xx alien, Pair];
 
-contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]} ] :=
+contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]}, OptionsPattern[]] :=
 	Block[ {nxx},
 		If[ FreeQ[xx, LorentzIndex[mu,___]],
 			nxx = Expand2[xx Pair[LorentzIndex[mu, di], alpha], Pair],
@@ -716,8 +716,8 @@ contra3c[xx_, {Pair[LorentzIndex[mu_,di___], alpha_]} ] :=
 contract21[z_, yy_ /; ((Head[yy] =!= Pair) && Head[yy] =!= Times), opts:OptionsPattern[]] :=
 	Contract[z yy, opts];
 
-contract21[xx_Plus, yy_, OptionsPattern[]] :=
-	contract22[xx, yy /. Pair -> pairsave] /.
+contract21[xx_Plus, yy_, opts:OptionsPattern[]] :=
+	contract22[xx, yy /. Pair -> pairsave, opts] /.
 	contra4 -> contra3a /.  contra3a -> contra3b /.
 	Pair -> pairsave /.  contra3b -> contra3c /. pair2 -> Pair;
 
@@ -727,30 +727,30 @@ list2[x_] :=
 		{x}
 	];
 
-contract22[_, 0] :=
+contract22[_, 0, OptionsPattern[]] :=
 	0;
 
-contract22[xx_, yy_Pair] :=
-	contra3a[xx, {yy}] /.  contra3a -> contra3b /. Pair -> pairsave /.
+contract22[xx_, yy_Pair, opts:OptionsPattern[]] :=
+	contra3a[xx, {yy}, opts] /.  contra3a -> contra3b /. Pair -> pairsave /.
 	contra3b -> contra3c /. pair2 -> Pair;
 
-contract22[xx_, yy_Times] :=
-	( (yy/#) contra4[xx, list2[#]] )&[Select[yy, !FreeQ[#, LorentzIndex]&]];
+contract22[xx_, yy_Times, opts:OptionsPattern[]] :=
+	( (yy/#) contra4[xx, list2[#], opts] )&[Select[yy, !FreeQ[#, LorentzIndex]&]];
 
-contract21[xx_ /;(Head[xx] =!= Plus) && (Head[xx] =!= Times), yy_] :=
-	Contract[xx yy,Expanding -> False];
+contract21[xx_ /;(Head[xx] =!= Plus) && (Head[xx] =!= Times), yy_, opts:OptionsPattern[]] :=
+	Contract[xx yy,Expanding -> False, opts];
 
-contract21[xxx_Times, yyy_] :=
-	( (xxx/#) contit[#, yyy] )&[Select[xxx, !FreeQ[#, LorentzIndex]&] ];
+contract21[xxx_Times, yyy_, opts:OptionsPattern[]] :=
+	( (xxx/#) contit[#, yyy, opts] )&[Select[xxx, !FreeQ[#, LorentzIndex]&] ];
 
 
-contit[xx_ , yy_] :=
+contit[xx_ , yy_, opts:OptionsPattern[]] :=
 	If[ FreeQ[xx, LorentzIndex],
-		xx Contract[yy],
+		xx Contract[yy,opts],
 		If[ Head[xx] =!= Times,
-			Contract[xx yy],
+			Contract[xx yy,opts],
 			If[ Length[xx] =!= 2,
-				Contract[xx yy],
+				Contract[xx yy,opts],
 				If[ (Head[xx[[1]]] === Plus) && (Head[xx[[2]]] === Plus),
 					iCcount = 1;
 					FCPrint[2,"contracting a product of a ",Length[xx[[1]]], " term sum  by a",
@@ -759,7 +759,7 @@ contit[xx_ , yy_] :=
 					Apply[ Plus, Flatten[Table[ (xx[[1, ii]] xx[[2, jj]] yy) /.
 						Pair -> pairsave /. pair2  -> Pair, {ii,1,Length[xx[[1]]]},
 						{jj,1,Length[xx[[2]]]}]]],
-					Contract[xx yy]
+					Contract[xx yy,opts]
 				]
 			]
 		]
