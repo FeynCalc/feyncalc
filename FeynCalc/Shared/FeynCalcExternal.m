@@ -119,7 +119,8 @@ scalarmul[a_ b_,dim__] :=
 scalarmul[a_, b_,dim___] :=
 	ScalarProduct[a,b,dim];
 
-
+pairback[ExplicitLorentzIndex[a_?NumberQ], ExplicitLorentzIndex[b_?NumberQ]] :=
+	MT[a,b];
 pairback[LorentzIndex[a_], LorentzIndex[b_]] :=
 	MT[a,b];
 pairback[LorentzIndex[a_,D], LorentzIndex[b_,D]] :=
@@ -129,6 +130,9 @@ pairback[LorentzIndex[a_,D-4], LorentzIndex[b_,D-4]] :=
 pairback[LorentzIndex[a_,d_], LorentzIndex[b_,d_]] :=
 	MetricTensor[a,b,Dimension->d] /;(d=!=D && d=!= D-4);
 
+
+pairback[ExplicitLorentzIndex[a_?NumberQ], Momentum[b_]] :=
+	FV[b,a];
 pairback[LorentzIndex[a_], Momentum[b_]] :=
 	FV[b,a];
 pairback[LorentzIndex[a_,D], Momentum[b_,D]] :=
@@ -222,19 +226,19 @@ eps[Momentum[a_],Momentum[b_],Momentum[c_],Momentum[d_],
 opt:OptionsPattern[Eps]]:=
 	LC[][a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
 
-eps[LorentzIndex[a_],Momentum[b_],Momentum[c_],Momentum[d_],
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],Momentum[b_],Momentum[c_],Momentum[d_],
 opt:OptionsPattern[Eps]]:=
 	LC[a][b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
 
-eps[LorentzIndex[a_],LorentzIndex[b_],Momentum[c_],Momentum[d_],
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],Momentum[c_],Momentum[d_],
 opt:OptionsPattern[Eps]]:=
 	LC[a,b][c,d]/; OptionValue[Eps,{opt},Dimension]===4;
 
-eps[LorentzIndex[a_],LorentzIndex[b_],LorentzIndex[c_],Momentum[d_],
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],(LorentzIndex|ExplicitLorentzIndex)[c_],Momentum[d_],
 opt:OptionsPattern[Eps]]:=
 	LC[a,b,c][d]/; OptionValue[Eps,{opt},Dimension]===4;
 
-eps[LorentzIndex[a_],LorentzIndex[b_],LorentzIndex[c_],LorentzIndex[d_],
+eps[(LorentzIndex|ExplicitLorentzIndex)[a_],(LorentzIndex|ExplicitLorentzIndex)[b_],(LorentzIndex|ExplicitLorentzIndex)[c_],(LorentzIndex|ExplicitLorentzIndex)[d_],
 opt:OptionsPattern[Eps]]:=
 	LC[a,b,c,d]/; OptionValue[Eps,{opt},Dimension]===4;
 
@@ -281,5 +285,6 @@ opt:OptionsPattern[Eps]]:=
 eps[LorentzIndex[a_,dd_],LorentzIndex[b_,dd_], LorentzIndex[c_,dd_],LorentzIndex[d_,dd_],
 opt:OptionsPattern[Eps]]:=
 	LeviCivita[a,b,c,d,Dimension->dd]/;dd=!=D && OptionValue[Eps,{opt},Dimension]===dd;
+
 FCPrint[1,"FeynCalcExternal.m loaded"];
 End[]
