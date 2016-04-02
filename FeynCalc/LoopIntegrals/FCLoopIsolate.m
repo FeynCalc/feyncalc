@@ -109,7 +109,7 @@ FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 			ex = Collect2[ex,lmoms,Factoring->OptionValue[Factoring]];
 		];
 
-		If[	OptionValue[FeynAmpDenominatorSplit],
+		If[	OptionValue[FeynAmpDenominatorSplit] && !FreeQ[ex,FeynAmpDenominator],
 			ex = FeynAmpDenominatorSplit[ex,Momentum->lmoms]
 		];
 
