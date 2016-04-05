@@ -190,5 +190,7 @@ FVD[p2, mu] FVD[p2,
 nu] GenPaVe[{2, 2}, {{0, m0}, {p1, m1}, {p2, m2}}] +
 GenPaVe[{0, 0}, {{0, m0}, {p1, m1}, {p2, m2}}] MTD[mu, nu]"},
 {"fcstTID-ID17", "TID[DiracTrace[GS[q].GS[p1] + GS[q].GS[p2]] FAD[q, q - p], q] // FCE",
-"2 FAD[q, -p + q] (SPD[p, p1] + SPD[p, p2])"}
+"2 FAD[q, -p + q] (SPD[p, p1] + SPD[p, p2])"},
+{"fcstTID-ID18", "TID[FAD[{q, m}] FV[q, i]^2 FV[q, j] FV[q, k], q] // FCE",
+"(m^4 FAD[{q, m}] MTD[j, k])/D"}
 };

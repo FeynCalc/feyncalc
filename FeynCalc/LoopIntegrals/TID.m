@@ -135,9 +135,15 @@ TID[am_ , q_, OptionsPattern[]] :=
 						};
 		*)
 
+		(* Contract is necessary here to simplify things like FV[q,i]^2 *)
+		If[	contractlabel && !FreeQ[t0,LorentzIndex],
+			t0 = Contract[t0];
+		];
+
 		(*	The input expression can be potentially very large,
 			so it's better to take some measures here. Non-commutative
 			products are not isolated!	*)
+
 		FCMonitor[
 				t0 = Isolate[Collect2[t0,{q,FeynAmpDenominator}],{q,FeynAmpDenominator,Dot},
 				IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x],IsolateNames->tempIsolate];
