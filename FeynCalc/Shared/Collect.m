@@ -57,7 +57,8 @@ Options[Collect2] = {
 	Expanding -> True,
 	Factoring -> Factor,
 	IsolateFast -> False,
-	IsolateNames -> False
+	IsolateNames -> False,
+	Head->Identity
 };
 
 Options[Collect3] = {
@@ -201,7 +202,7 @@ Collect2[ expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Collecting the monomials.", FCDoControl->cl2Verbose];
 
-		tvm = (FRH[# /.holdForm->Identity, IsolateNames->optIsolateNames] /. mp2 -> cd /. cd -> Identity)&/@tv;
+		tvm = (FRH[# /.holdForm->Identity, IsolateNames->optIsolateNames] /. mp2 -> cd /. cd -> OptionValue[Head])&/@tv;
 
 		FCPrint[3,"Collect2: tvm: ", tvm, FCDoControl->cl2Verbose];
 
