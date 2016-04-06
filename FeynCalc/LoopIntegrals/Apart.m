@@ -89,7 +89,7 @@ Apart2[y_, OptionsPattern[]] :=
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 
-ApartFF[int_, lmoms_ , OptionsPattern[]]:=
+ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule},
 

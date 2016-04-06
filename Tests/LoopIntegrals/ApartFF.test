@@ -64,5 +64,6 @@ ExpandScalarProduct\[Rule]False]//FCE",
 {"fcstApartFF-ID16","ApartFF[SPD[p, l], {l}]","0"},
 {"fcstApartFF-ID17","ApartFF[A0[m^2], {k}, FCI -> True]","A0[m^2]"},
 {"fcstApartFF-ID18","ApartFF[ChangeDimension[FCI[FAD[{p, m}, {p - k, m}]], 4], {p}]",
-"FeynAmpDenominator[PropagatorDenominator[Momentum[p], m],PropagatorDenominator[-Momentum[k] + Momentum[p], m]]"}
+"FeynAmpDenominator[PropagatorDenominator[Momentum[p], m],PropagatorDenominator[-Momentum[k] + Momentum[p], m]]"},
+{"fcstApartFF-ID19","ApartFF[SPD[q, q] FAD[{q, m}], q]","ApartFF[SPD[q, q] FAD[{q, m}], q]"}
 })
