@@ -51,6 +51,7 @@ pfracOut::usage="";
 Options[FCApart] = {
 	Check -> True,
 	Collecting -> True,
+	DropScaleless -> True,
 	ExpandScalarProduct -> True,
 	FCI -> False,
 	FCVerbose -> False,
@@ -60,7 +61,8 @@ Options[FCApart] = {
 };
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp},
+	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
+		scaleless1=0,scaleless2=0},
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -158,6 +160,10 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		FCPrint[3,"FCApart: Preliminary result converted back to FeynCalc notation ", res, FCDoControl->fcaVerbose];
+
+
+		(* 	Check that the sum of the resulting integrals brought to the commond denominator
+			is identical to the original integral *)
 		If [OptionValue[Check],
 			If[	check=Together[PropagatorDenominatorExplicit[ex] - Together[PropagatorDenominatorExplicit[res]]]; check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
@@ -166,8 +172,6 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			]
 		];
 
-		(* 	Check that the sum of the resulting integrals brought to the commond denominator
-			is identical to the original integral *)
 		If [OptionValue[FDS],
 			res = FDS[res, Sequence@@lmoms];
 			If [OptionValue[Collecting],
@@ -176,6 +180,25 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		FCPrint[3,"FCApart: Preliminary result after FDS ", res, FCDoControl->fcaVerbose];
+
+		If [OptionValue[DropScaleless],
+			FCPrint[1,"FCApart: Dropping integrals that are scaleless in DR", res, FCDoControl->fcaVerbose];
+			tmp = res;
+			{scaleless1,res} = FCSplit[res,lmoms];
+			{scaleless2,res} = FCSplit[res,{FeynAmpDenominator}];
+			If[	Factor[Expand2[scaleless1+scaleless2+res-tmp]]=!=0,
+				Message[FCApart::checkfail,ToString[ex,InputForm]];
+				Abort[]
+			];
+			FCPrint[1,"FCApart: The following parts of the integral vanish in DR", scaleless1+scaleless2, FCDoControl->fcaVerbose];
+			FCPrint[1,"FCApart: The non-vanishing part is ", res, FCDoControl->fcaVerbose]
+		];
+
+		If [OptionValue[Collecting],
+				res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+		];
+
+
 
 		FCPrint[3,"FCApart: Leaving with ", res,FCDoControl->fcaVerbose];
 

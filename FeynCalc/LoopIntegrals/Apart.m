@@ -57,6 +57,7 @@ Options[Apart2]= {
 	i.e. block partial fractioning on loop integrals that don't contain scalar products *)
 Options[ApartFF] = {
 	Collecting -> True,
+	DropScaleless -> True,
 	ExpandScalarProduct -> True,
 	FCI -> False,
 	FCVerbose -> False,
@@ -129,7 +130,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[3,"ApartFF: List of the unique integrals: ", intsUnique, FCDoControl->affVerbose];
 
 		(*	Apply FCApart to each of the unique loop integrals	*)
-		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS]]&,(intsUnique/.loopHead->Identity)];
+		solsList = Map[FCApart[#,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless]]&,(intsUnique/.loopHead->Identity)];
 
 		If[Length[solsList]=!=Length[intsUnique],
 			Message[ApartFF::failmsg,"ApartFF can't create the solution list."];
