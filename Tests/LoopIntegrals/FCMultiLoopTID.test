@@ -148,5 +148,22 @@ SPD[p1, p1]*SPD[p2, p2])"},
 "(FAD[q2, q1, -p1 + q2, -p1 + q1, -p1 + q1]*(D*FVD[p1, mu]*FVD[p1, nu] -
 MTD[mu, nu]*SPD[p1, p1]))/(4*(-1 + D)) - (FAD[q2, q1, -p1 + q2, -p1 + q1]*(D*FVD[p1, mu]*FVD[p1, nu] -
 MTD[mu, nu]*SPD[p1, p1]))/(4*(-1 + D)*SPD[p1, p1]) + (FAD[q2, q1, -p1 + q2, -p1 + q1, -p1 + q2]*(-(FVD[p1, mu]*FVD[p1, nu]) +
-MTD[mu, nu]*SPD[p1, p1])*SPD[q1, q2])/((-1 + D)*SPD[p1, p1])"}
+MTD[mu, nu]*SPD[p1, p1])*SPD[q1, q2])/((-1 + D)*SPD[p1, p1])"},
+{"fcstFCMultiLoopTID-ID14", "FCMultiLoopTID[
+FVD[q1, mu] FVD[q2, nu] LCD[mu, nu][a,
+	b] FAD[{q1 - p1, m1}, {q2 - p2, m2}, {q1 - q2}], {q1, q2}] // FCE",
+"(FAD[{-p1 + q1, m1}, {-p2 + q2, m2}, q1 - q2] SPD[p1, q2] SPD[p2,
+	q1] LCD[][a, b, p1, p2])/(SPD[p1, p2]^2 -
+	SPD[p1, p1] SPD[p2, p2]) - (FAD[{-p1 + q1, m1}, {-p2 + q2, m2},
+	q1 - q2] SPD[p1, q1] SPD[p2, q2] LCD[][a, b, p1, p2])/(SPD[p1,
+	p2]^2 - SPD[p1, p1] SPD[p2, p2])"}
+
+
+
+
+
+
+
+
+
 })

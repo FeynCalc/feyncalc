@@ -81,6 +81,10 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 			Return[ex]
 		];
 
+		If[	OptionValue[Contract],
+			ex = Contract[ex]
+		];
+
 		If[	OptionValue[DiracSimplify] && !FreeQ2[ex,{DiracGamma,DiracSigma,Spinor}],
 			ex = DiracSimplify[ex];
 			FCPrint[3,"FCMultiLoopTID: After DiracSimplify: ", ex, FCDoControl->mltidVerbose]
