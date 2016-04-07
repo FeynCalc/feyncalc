@@ -17,9 +17,9 @@
 
 FCMultiLoopTID::usage =
 "FCMultiLoopTID[amp, {q1,q2,...}] does a multi-loop tensor integral \
-decomposition, transforming the Lorentz indices away from the loop \
-momenta q1,q2,... The decomposition is applied only to the loop \
-integrals where loop momenta are contracted with Dirac matrices or epsilon tensors.";
+decomposition "  <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCMultiLoopTID"],
+StandardForm];
 
 FCMultiLoopTID::failmsg =
 "Error! FCMultiLoopTID has encountered a fatal problem and must abort the \

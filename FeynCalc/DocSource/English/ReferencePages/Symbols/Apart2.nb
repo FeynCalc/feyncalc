@@ -118,8 +118,9 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"Apart2", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "partial fractions FeynAmpDenominators (and FAD's)."
+ " \[LineSeparator]partial fractions very simple 1-loop integrals of the form \
+1/[(q^2-m1^2)(q^2-m2^2)]. Since FeynCalc 9 this function is deprecated. \
+Please use ApartFF instead."
 }], "Usage",
  CellID->982511436],
 
@@ -169,6 +170,11 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominator",
   ButtonNote->"FeynAmpDenominator"],
+ ", ",
+ ButtonBox["ApartFF",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/ApartFF",
+  ButtonNote->"ApartFF"],
  "."
 }], "Text",
  CellTags->"Apart2",
@@ -410,13 +416,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 741},
+WindowMargins->{{Automatic, 924}, {20, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/MTD", "Categorization",
+Cell["FeynCalc/ref/MTE", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,16 +111,16 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["MTD", "ObjectName",
+Cell["MTE", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"MTD", "[", 
+  RowBox[{"MTE", "[", 
    RowBox[{"mu", ",", "nu"}], "]"}]], "InlineFormula"],
  " \[LineSeparator]",
- "is the metric tensor in D dimensions."
+ "is the metric tensor in D-4 dimensions."
 }], "Usage",
  CellID->982511436],
 
@@ -160,42 +160,38 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[RawData["\<\
 Cell[TextData[{
- ButtonBox[\"FeynCalcExternal\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/FeynCalcExternal\",
-  ButtonNote->\"FeynCalcExternal\"],
- \", \",
- ButtonBox[\"FCE\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/FCE\",
-  ButtonNote->\"FCE\"],
- \", \",
- ButtonBox[\"FCI\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/FCI\",
-  ButtonNote->\"FCI\"],
- \", \",
- ButtonBox[\"MetricTensor\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/MetricTensor\",
-  ButtonNote->\"MetricTensor\"],
- \", \",
- ButtonBox[\"MT\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/MT\",
-  ButtonNote->\"MT\"],
- \", \",
- ButtonBox[\"MTE\",
-  BaseStyle->\"Link\",
-  ButtonData:>\"paclet:FeynCalc/ref/MTE\",
-  ButtonNote->\"MTE\"],
- \".\"
-}], \"Text\",
- CellTags->\"MTD\",
- CellID->310039993]\
-\>"], "Text",
+ ButtonBox["FeynCalcExternal",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FeynCalcExternal",
+  ButtonNote->"FeynCalcExternal"],
+ ", ",
+ ButtonBox["FCE",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCE",
+  ButtonNote->"FCE"],
+ ", ",
+ ButtonBox["FCI",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FCI",
+  ButtonNote->"FCI"],
+ ", ",
+ ButtonBox["MetricTensor",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/MetricTensor",
+  ButtonNote->"MetricTensor"],
+ ", ",
+ ButtonBox["MT",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/MT",
+  ButtonNote->"MT"],
+ ", ",
+ ButtonBox["MTD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/MTD",
+  ButtonNote->"MTD"],
+ "."
+}], "Text",
  CellTags->"MTD",
  CellID->310039993]
 }, Open  ]],
@@ -227,16 +223,17 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"MTD", "[", 
+ RowBox[{"MTE", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[12]:=",
  CellID->1680977301],
 
 Cell[BoxData[
  FormBox[
   FormBox[
-   SuperscriptBox["g", 
+   SuperscriptBox[
+    OverscriptBox["g", "^"], 
     RowBox[{
      FormBox[
       FormBox[
@@ -252,8 +249,8 @@ Cell[BoxData[
       TraditionalForm]}]],
    TraditionalForm], TraditionalForm]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[1]=",
- CellID->1640321247]
+ CellLabel->"Out[12]=",
+ CellID->1958039632]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -261,38 +258,109 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{
-   RowBox[{"MTD", "[", 
+   RowBox[{"MTE", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], " ", 
-   RowBox[{"MTD", "[", 
+   RowBox[{"MTE", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[13]:=",
  CellID->2085004373],
 
 Cell[BoxData[
- FormBox["D", TraditionalForm]], "Output",
+ FormBox[
+  RowBox[{"D", "-", "4"}], TraditionalForm]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[2]=",
- CellID->366701652]
+ CellLabel->"Out[13]=",
+ CellID->558766132]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", 
+  RowBox[{
+   RowBox[{"MTE", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], " ", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[14]:=",
+ CellID->1799001225],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[14]=",
+ CellID->40801765]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Contract", "[", 
+  RowBox[{
+   RowBox[{"MTE", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], " ", 
+   RowBox[{"MTD", "[", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[15]:=",
+ CellID->1071300852],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"D", "-", "4"}], TraditionalForm]], "Output",
+ CellLabel->"Out[15]=",
+ CellID->509955041]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"MTD", "[", 
+  RowBox[{"MTE", "[", 
    RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[16]:=",
  CellID->964321899],
 
 Cell[BoxData[
- RowBox[{"MTD", "[", 
+ RowBox[{"MTE", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->842419980]
+ CellLabel->"Out[16]//StandardForm=",
+ CellID->1333611151]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MTE", "[", 
+  RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
+ CellTags->"MTD",
+ CellLabel->"In[17]:=",
+ CellID->842419980],
+
+Cell[BoxData[
+ FormBox[
+  FormBox[
+   SuperscriptBox[
+    OverscriptBox["g", "^"], 
+    RowBox[{
+     FormBox[
+      FormBox[
+       FormBox["\[Alpha]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Beta]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]}]],
+   TraditionalForm], TraditionalForm]], "Output",
+ CellTags->"MTD",
+ CellLabel->"Out[17]=",
+ CellID->869554807]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -300,23 +368,27 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"FCI", "[", 
-   RowBox[{"MTD", "[", 
+   RowBox[{"MTE", "[", 
     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[4]:=",
+ CellLabel->"In[18]:=",
  CellID->1887554420],
 
 Cell[BoxData[
  RowBox[{"Pair", "[", 
   RowBox[{
    RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Alpha]", ",", "D"}], "]"}], ",", 
+    RowBox[{"\[Alpha]", ",", 
+     RowBox[{
+      RowBox[{"-", "4"}], "+", "D"}]}], "]"}], ",", 
    RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Beta]", ",", "D"}], "]"}]}], "]"}]], "Output",
+    RowBox[{"\[Beta]", ",", 
+     RowBox[{
+      RowBox[{"-", "4"}], "+", "D"}]}], "]"}]}], "]"}]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[4]//StandardForm=",
- CellID->255141216]
+ CellLabel->"Out[18]//StandardForm=",
+ CellID->369801037]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -325,19 +397,52 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"FCE", "[", 
    RowBox[{"FCI", "[", 
-    RowBox[{"MTD", "[", 
+    RowBox[{"MTE", "[", 
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"MTD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[19]:=",
  CellID->623099946],
 
 Cell[BoxData[
- RowBox[{"MTD", "[", 
+ RowBox[{"MTE", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Output",
  CellTags->"MTD",
- CellLabel->"Out[5]//StandardForm=",
- CellID->141115701]
+ CellLabel->"Out[19]//StandardForm=",
+ CellID->1143698797]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MTE", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
+ CellTags->"MTD",
+ CellLabel->"In[20]:=",
+ CellID->141115701],
+
+Cell[BoxData[
+ FormBox[
+  FormBox[
+   SuperscriptBox[
+    OverscriptBox["g", "^"], 
+    RowBox[{
+     FormBox[
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]}]],
+   TraditionalForm], TraditionalForm]], "Output",
+ CellTags->"MTD",
+ CellLabel->"Out[20]=",
+ CellID->1588832862]
 }, Open  ]]
 }, Open  ]],
 
@@ -402,7 +507,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{2020, Automatic}, {Automatic, 99}},
+WindowMargins->{{1996, Automatic}, {Automatic, 89}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CellContext->"Global`",

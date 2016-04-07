@@ -19,12 +19,12 @@
 FCLoopSplit::usage =
 "FCLoopSplit[expr,{q1,q2,...}] separates expr \
 into following four pieces: \n
-1) 	terms that are free of loop integrals \n
-2) 	terms with scalar loop integrals \n
+1) 	terms that are free of loop integrals \
+2) 	terms with scalar loop integrals \
 3) 	terms with tensor loop integrals, where all loop momenta \
-	are contracted \n
+	are contracted \
 4) 	terms with tensor loop integrals, where at least some \
-	loop momenta have free indices \n
+	loop momenta have free indices \
 The result is returned as a list with the 4 above elements";
 
 FCLoopSplit::fail =
@@ -72,9 +72,6 @@ FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
 			tmp = FCSplit[ex, lmoms, Expanding->OptionValue[Expanding]];
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]]]
 		];
-
-
-
 
 		If[	OptionValue[Collecting],
 			ex = Collect2[ex,lmoms];

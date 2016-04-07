@@ -1,24 +1,33 @@
-(* :Title: Apart1 *)
+(* ::Package:: *)
 
-(* :Author: Rolf Mertig *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: created 4 March '97 at 14:34 *)
-(* ------------------------------------------------------------------------ *)
+(* :Title: Apart															*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	Collection of different partial fractioning routines		*)
 
 (* ------------------------------------------------------------------------ *)
 
 Apart1::usage =
-"Apart1[expr, x] is equivalent to Apart[expr, x],
+"Apart1[expr, x] is equivalent to Apart[expr, x], \
 but it fixes a Mathematica bug.";
 
 Apart2::usage =
-"Apart2[expr] partial fractions FeynAmpDenominators.";
+"Apart2[expr] partial fractions very simple 1-loop integrals " <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/Apart2"],
+StandardForm]
 
 ApartFF::usage =
-"ApartFF[amp,{q1,q2,...}] partial fractions loop integrals by decomposing them \
-into simpler integrals that contain only linearly independent propagators. It \
-uses FCApart as a backend and works and is suitable also for multiloop integrals.";
+"ApartFF[amp,{q1,q2,...}] partial fractions loop integrals " <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/ApartFF"],
+StandardForm]
 
 Apart3::usage =
 "Apart3[expr, x] is equivalent to Map2[Factor2, Collect2[Apart1[expr,x],x]].";
@@ -27,8 +36,8 @@ ExcludeMasses::usage =
 "ExcludeMasses is an option of Apart2. It allows to specify masses for \
 which partional fractioning should not be performed,e.g. ExcludeMasses->{m1,m2,3}"
 
-ApartFF::failmsg = "Error! ScalApartFF has encountered a fatal problem and must abort \
-the computation. The problem reads: `1`";
+ApartFF::failmsg = "Error! ScalApartFF has encountered a fatal problem and must \
+abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

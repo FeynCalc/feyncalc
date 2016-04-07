@@ -24,11 +24,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCApart::usage =
-"FCApart[expr,{q1,q2,...}] partial fractions a loop integral (that depends on q1,q2,...) \
-into integrals that contain only linearly independent propagators. The algorithm is largely \
-based on the work and code of F. Feng (arXiv:1204.2314). FCApart is meant to be applied to \
-single loop integrals only. If you need to perform partial fractioning on an expression that \
-contains multiple loop integrals, use Apart2";
+"FCApart[expr,{q1,q2,...}] is an internal function that partial fractions loop integrals "  <> ToString[
+Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCApart"], StandardForm];
 
 FCApart::checkfail="
 Error! Partial fractioning of the loop integral `1` by FCApart has produced an inconsistent result. \
@@ -47,6 +44,7 @@ Begin["`FCApart`Private`"]
 
 fcaVerbose::usage="";
 pfracOut::usage="";
+counter::usage="";
 
 Options[FCApart] = {
 	Check -> True,
