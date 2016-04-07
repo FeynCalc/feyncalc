@@ -849,6 +849,8 @@ DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
 		ToBoxes[FCI[DiracSlash[x,opts]],TraditionalForm]/; !OptionValue[{opts},FCI];
 
+DiracSpinor = Spinor;
+
 Eps[x__, Dimension->4] :=
 	Eps[x]/; OptionValue[Eps,Dimension]===4 && Length[{x}]===4;
 

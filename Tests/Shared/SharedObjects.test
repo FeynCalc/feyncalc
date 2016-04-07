@@ -314,6 +314,8 @@ Tests`Shared`fcstSharedObjectsBehavior = {
 {"fcstSharedObjectsBehavior-ID55", "DiracSlash[p, Dimension -> D]", "DiracGamma[Momentum[p, D], D]"},
 {"fcstSharedObjectsBehavior-ID56", "DiracSlash[p , l, k]", "DiracGamma[Momentum[p]].DiracGamma[Momentum[l]].DiracGamma[Momentum[k]]"},
 {"fcstSharedObjectsBehavior-ID57", "DiracSlash[p , l, k, Dimension -> D]", "DiracGamma[Momentum[p, D], D].DiracGamma[Momentum[l, D], D].DiracGamma[Momentum[k, D], D]"},
+{"fcstSharedObjectsBehavior-ID57.1", "DiracSpinor[p, 0]", "Spinor[Momentum[p], 0, 1]"},
+{"fcstSharedObjectsBehavior-ID57.2", "DiracSpinor[p, m]", "Spinor[Momentum[p], m, 1]"},
 {"fcstSharedObjectsBehavior-ID58", "Eps[0, 1, 2, 3]", "1"},
 {"fcstSharedObjectsBehavior-ID59", "Eps[0, 1, 3,2]", "-1"},
 {"fcstSharedObjectsBehavior-ID63", "Eps[a, a, b, c]", "0"},
