@@ -18,6 +18,7 @@ if [ -z ${MATH+x} ]; then MATH=math; else echo $MATH; fi
 $MATH -nopromt -script ../FeynCalc/Examples/Misc/Integrate2.m &&
 
 #QED Examples
+$MATH -nopromt -script ../FeynCalc/Examples/QED/QEDABJAxialAnomaly.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDBhabhaScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDComptonScatteringTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDElectronMuonScatteringTree.m &&
