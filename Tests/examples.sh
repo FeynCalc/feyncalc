@@ -32,6 +32,9 @@ $MATH -nopromt -script ../FeynCalc/Examples/QED/QEDThreePhotonDiagramsOneLoop.m 
 $MATH -nopromt -script ../FeynCalc/Examples/EW/EWMuonDecayTree.m &&
 
 #QCD Examples
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDGammaStarGToQiQBari.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiGammaStarToQiGTree.m &&
+$MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBariToGammaStarGTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQjToQiQjTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQBarjToQiQBarjTree.m &&
 $MATH -nopromt -script ../FeynCalc/Examples/QCD/QCDQiQiToQiQiTree.m &&
