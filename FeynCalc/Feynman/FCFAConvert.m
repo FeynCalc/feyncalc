@@ -74,7 +74,7 @@ Options[FCFAConvert] = {
 	List -> True
 	};
 
-FCFAConvert[FeynArts`FAFeynAmpList[__][diags__], OptionsPattern[]] :=
+FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]] :=
 	Block[ {	diagsConverted,repRuleMomenta,repRuleLorentzIndices,
 				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim},
 
