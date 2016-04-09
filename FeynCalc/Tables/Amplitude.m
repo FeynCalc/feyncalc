@@ -164,12 +164,12 @@ SUNDelta[a,b] * Tf *
 (
 DiracTrace[DOT[
 		qo[{k-p1,p2-k}, nonz] ,
-			qp[k-p1] , (I Gstrong GA[mu]) , qp[k] , (I Gstrong GA[nu]) ,
+			qp[k-p1] , (I SMP["g_s"] GA[mu]) , qp[k] , (I SMP["g_s"] GA[nu]) ,
 				qp[k-p2]
 					]] +
 DiracTrace[DOT[
 		qo[{p2-k,k-p1}, nonz] ,
-			qp[-k+p2] , (I Gstrong GA[nu]) , qp[-k] , (I Gstrong GA[mu]) ,
+			qp[-k+p2] , (I SMP["g_s"] GA[nu]) , qp[-k] , (I SMP["g_s"] GA[mu]) ,
 			qp[-k+p1]
 					]]
 ),

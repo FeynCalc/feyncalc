@@ -3,10 +3,10 @@
 (* :Title: QCDGGToQiQBariTree                                               *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -47,14 +47,14 @@ Paint[diagsGGToQiQBari, ColumnsXRows -> {3, 1}, Numbering -> None,SheetHeader->N
 
 ampGGToQiQBari = FCFAConvert[CreateFeynAmp[diagsGGToQiQBari,Truncated -> False],IncomingMomenta->{k1,k2},
 OutgoingMomenta->{p1,p2},UndoChiralSplittings->True,TransversePolarizationVectors->{k1,k2},
-DropSumOver->True,ChangeDimension->4]
+DropSumOver->True,ChangeDimension->4,SMP->True]
 
 
 (* ::Section:: *)
 (*Unpolarized process  g g -> q_i qbar_i*)
 
 
-SetMandelstam[s, t, u, k1, k2, -p1, -p2, 0, 0, MU, MU];
+SetMandelstam[s, t, u, k1, k2, -p1, -p2, 0, 0, SMP["m_u"], SMP["m_u"]];
 sqAmpGGToQiQBari =(1/8^2)(Total[ampGGToQiQBari] Total[(ComplexConjugate[ampGGToQiQBari]//
 		FCRenameDummyIndices)])//PropagatorDenominatorExplicit//SUNSimplify[#,Explicit->True,
 		SUNNToCACF->False]&//FermionSpinSum//Contract//ReplaceAll[#,{DiracTrace->Tr,
@@ -62,9 +62,9 @@ sqAmpGGToQiQBari =(1/8^2)(Total[ampGGToQiQBari] Total[(ComplexConjugate[ampGGToQ
 		k1,ExtraFactor->1/2]&//Simplify
 
 
-masslesssqAmpGGToQiQBari = TrickMandelstam[(sqAmpGGToQiQBari /. {MU -> 0})//Simplify,{s,t,u,0}]
+masslesssqAmpGGToQiQBari = TrickMandelstam[(sqAmpGGToQiQBari /. {SMP["m_u"] -> 0})//Simplify,{s,t,u,0}]
 
 
-masslesssqAmpGGToQiQBariEllis=(1/6)Gstrong^4 (t^2+u^2)/(t u)-(3/8)Gstrong^4 (t^2+u^2)/(s^2);
+masslesssqAmpGGToQiQBariEllis=(1/6)SMP["g_s"]^4 (t^2+u^2)/(t u)-(3/8)SMP["g_s"]^4 (t^2+u^2)/(s^2);
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
 			If[TrickMandelstam[Simplify[masslesssqAmpGGToQiQBariEllis-masslesssqAmpGGToQiQBari],{s,t,u,0}]===0, "CORRECT.", "!!! WRONG !!!"]];

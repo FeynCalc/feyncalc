@@ -67,7 +67,6 @@ Options[FAPatch] = {
 		"ScalarProduct" -> "FAScalarProduct",
 		"ChiralityProjector" -> "FAChiralityProjector",
 		"GS" -> "FAGS",
-		"MM" -> "FAMass[\"Muon\"]",
 		"SUNT" -> "FASUNT",
 		"SUNF" -> "FASUNF",
 		"LeviCivita" -> "FALeviCivita",
@@ -78,7 +77,22 @@ Options[FAPatch] = {
 		"PropagatorDenominator" -> "FAPropagatorDenominator",
 		"GaugeXi" -> "FAGaugeXi",
 		"FeynAmpDenominator" -> "FAFeynAmpDenominator",
-		"FeynAmpList" -> "FAFeynAmpList"
+		"FeynAmpList" -> "FAFeynAmpList",
+		"ME" -> "FCGV[\"ME\"]",
+		"MM" -> "FCGV[\"MM\"]",
+		"ML" -> "FCGV[\"ML\"]",
+		"MU" -> "FCGV[\"MU\"]",
+		"MD" -> "FCGV[\"MD\"]",
+		"MC" -> "FCGV[\"MC\"]",
+		"MS" -> "FCGV[\"MS\"]",
+		"MT" -> "FCGV[\"MT\"]",
+		"MB" -> "FCGV[\"MB\"]",
+		"MH" -> "FCGV[\"MH\"]",
+		"MZ" -> "FCGV[\"MZ\"]",
+		"MW" -> "FCGV[\"MW\"]",
+		"EL" -> "FCGV[\"EL\"]",
+		"CW" -> "FCGV[\"CW\"]",
+		"SW" -> "FCGV[\"SW\"]"
 	}
 };
 

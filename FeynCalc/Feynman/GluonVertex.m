@@ -43,7 +43,7 @@ End[]
 Begin["`GluonVertex`Private`"]
 
 Options[GluonVertex] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Explicit -> False,
 	OPE -> False

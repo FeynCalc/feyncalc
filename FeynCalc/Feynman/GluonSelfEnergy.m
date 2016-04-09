@@ -27,7 +27,7 @@ Begin["`GluonSelfEnergy`Private`"]
 
 Options[GluonSelfEnergy] = {
 	Dimension -> D,
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	FinalSubstitutions -> {Log[ScaleMu^2 _] :> 0, EulerGamma :> Log[4 Pi]},
 	Gauge -> 1,
 	Momentum -> FCGV["p"]

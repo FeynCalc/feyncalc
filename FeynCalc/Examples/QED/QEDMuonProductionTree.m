@@ -3,10 +3,10 @@
 (* :Title: QEDMuonProductionTree                                            *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for muon
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -47,7 +47,7 @@ Paint[diagsMuonProd, ColumnsXRows -> {1, 1}, Numbering -> None,SheetHeader->None
 
 
 ampMuonProd = FCFAConvert[CreateFeynAmp[diagsMuonProd, Truncated -> False],
-IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False]/.{FAMass["Muon"]->MMu};
+IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,List->False,SMP->True];
 
 
 (* ::Section:: *)
@@ -57,26 +57,26 @@ IncomingMomenta->{p1,p2},OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,Cha
 $ProcessID
 
 
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, ME, ME, MMu, MMu];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"], SMP["m_mu"], SMP["m_mu"]];
 sqAmpMuonProd = (ampMuonProd (ComplexConjugate[ampMuonProd]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Contract//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
 		ReplaceAll[#, DiracTrace :> Tr] &//Contract//Simplify
 
 
-masslessElectronsSqAmpMuonProd = (sqAmpMuonProd /. {ME -> 0})//Simplify
+masslessElectronsSqAmpMuonProd = (sqAmpMuonProd /. {SMP["m_e"] -> 0})//Simplify
 
 
-masslessElectronsMuonsSqAmpMuonProdPeskin = (8EL^4 (SP[p1,k1]SP[p2,k2]+SP[p1,k2]SP[p2,k1]+MMu^2 SP[p1,p2]))/(SP[p1+p2])^2//
-		ReplaceAll[#,ME->0]&//ExpandScalarProduct//Simplify;
+masslessElectronsMuonsSqAmpMuonProdPeskin = (8SMP["e"]^4 (SP[p1,k1]SP[p2,k2]+SP[p1,k2]SP[p2,k1]+SMP["m_mu"]^2 SP[p1,p2]))/(SP[p1+p2])^2//
+		ReplaceAll[#,SMP["m_e"]->0]&//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.10: ",
 		If[(masslessElectronsMuonsSqAmpMuonProdPeskin-masslessElectronsSqAmpMuonProd)===0,
 		"CORRECT.", "!!! WRONG !!!"]];
 
 
-masslessElectronsMuonsSqAmpMuonProd = (masslessElectronsSqAmpMuonProd /. {MMu -> 0})//Simplify
+masslessElectronsMuonsSqAmpMuonProd = (masslessElectronsSqAmpMuonProd /. {SMP["m_mu"] -> 0})//Simplify
 
 
-masslessElectronsMuonsSqAmpMuonProdPeskinMandelstam=((8EL^4/s^2)((t/2)^2+(u/2)^2))//Simplify;
+masslessElectronsMuonsSqAmpMuonProdPeskinMandelstam=((8SMP["e"]^4/s^2)((t/2)^2+(u/2)^2))//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.70: ",
 			If[(masslessElectronsMuonsSqAmpMuonProdPeskinMandelstam-masslessElectronsMuonsSqAmpMuonProd)===0, "CORRECT.", "!!! WRONG !!!"]];
 
@@ -85,16 +85,16 @@ Print["Check with Peskin and Schroeder, Eq 5.70: ",
 (*Polarized process e_R^- e_L^+ -> mu_R^- mu_L^+ *)
 
 
-ampMuonProdElRPosLMuRAntiMuL=ampMuonProd/.{Spinor[-Momentum[k2],MMu,1]->GA[6].Spinor[-Momentum[k2],MMu,1],
-		Spinor[Momentum[p1],ME,1]->GA[6].Spinor[Momentum[p1],ME,1]}
+ampMuonProdElRPosLMuRAntiMuL=ampMuonProd/.{Spinor[-Momentum[k2],SMP["m_mu"],1]->GA[6].Spinor[-Momentum[k2],SMP["m_mu"],1],
+		Spinor[Momentum[p1],SMP["m_e"],1]->GA[6].Spinor[Momentum[p1],SMP["m_e"],1]}
 
 
 sqAmpMuonProdElRPosLMuRAntiMuL = (((ampMuonProdElRPosLMuRAntiMuL (ComplexConjugate[ampMuonProdElRPosLMuRAntiMuL]//
 		FCRenameDummyIndices))//PropagatorDenominatorExplicit//Contract//FermionSpinSum[#,
-		SpinorCollect -> True]&//ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{ME->0,MMu->0})//Simplify
+		SpinorCollect -> True]&//ReplaceAll[#, DiracTrace :> Tr] &//Contract)/.{SMP["m_e"]->0,SMP["m_mu"]->0})//Simplify
 
 
-sqAmpMuonProdElRPosLMuRAntiMuLPeskin=(16EL^4 (SP[p1,k2]SP[p2,k1]))/(SP[p1+p2])^2//
-		ReplaceAll[#,{ME->0,MMu->0}]&//FCI//ExpandScalarProduct//Simplify;
+sqAmpMuonProdElRPosLMuRAntiMuLPeskin=(16SMP["e"]^4 (SP[p1,k2]SP[p2,k1]))/(SP[p1+p2])^2//
+		ReplaceAll[#,{SMP["m_e"]->0,SMP["m_mu"]->0}]&//FCI//ExpandScalarProduct//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.21: ",
 			If[(sqAmpMuonProdElRPosLMuRAntiMuLPeskin-sqAmpMuonProdElRPosLMuRAntiMuL)===0, "CORRECT.", "!!! WRONG !!!"]];

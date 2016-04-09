@@ -37,7 +37,7 @@ If[ $FrontEnd === Null,
 (*According to Peskin and Schroeder (Ch 19.2), the amplitude for the first triangle diagram reads*)
 
 
-amp1=((-1)(-I EL)^2 DiracTrace[GAD[mu].GA[5].QuarkPropagator[l-k].GAD[la].QuarkPropagator[l].GAD[nu].QuarkPropagator[l+p]])//
+amp1=((-1)(-I SMP["e"])^2 DiracTrace[GAD[mu].GA[5].QuarkPropagator[l-k].GAD[la].QuarkPropagator[l].GAD[nu].QuarkPropagator[l+p]])//
 Explicit
 
 
@@ -93,6 +93,6 @@ abjRes=Series[ChangeDimension[(ampDotted3//.loopInts),4]/.D->4-2Epsilon,{Epsilon
 (*The result should be twice Eq. 19.59 in Peskin and Schroeder*)
 
 
-abjPeskin = EL^2/(4 Pi^2)LC[al,la,be,nu]FV[k,al]FV[p,be]//Contract//FCI;
+abjPeskin = SMP["e"]^2/(4 Pi^2)LC[al,la,be,nu]FV[k,al]FV[p,be]//Contract//FCI;
 Print["Check with Peskin and Schroeder, Eq 19.59: ", If[(abjRes-2*abjPeskin)===0,
 		"CORRECT.", "!!! WRONG !!!"]];

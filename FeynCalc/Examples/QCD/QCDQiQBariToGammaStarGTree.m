@@ -3,10 +3,10 @@
 (* :Title: QiQBariToGammaStarGTree                                 *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -46,18 +46,18 @@ ImageSize->{512,256}];
 
 
 (* Note that here we set only the polarization vector of the gluon to be transverse.
-   Since the photon is virtual, it can have unphysical polarizations as well.*)
+Since the photon is virtual, it can have unphysical polarizations as well.*)
 
 
 ampQiQBariToGammaStarGTree =ampGammaStarGToQiQBari=FCFAConvert[CreateFeynAmp[diagsQiQBariToGammaStarGTree,Truncated -> False],IncomingMomenta->{p1,p2},
-OutgoingMomenta->{kGamma,kG},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False];
+OutgoingMomenta->{kGamma,kG},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False,SMP->True];
 
 
 (* ::Section:: *)
 (*Unpolarized process  q_i + qbar_i -> gamma^* + g*)
 
 
-SetMandelstam[s, t, u, p1,p2,-kGamma, -kG, MU,  MU, M,0];
+SetMandelstam[s, t, u, p1,p2,-kGamma, -kG, SMP["m_u"],  SMP["m_u"], M,0];
 
 
 (* The final result depends on the electric charge of the quarks. Since we generated the diagrams for up and anti-up, we divide
@@ -69,7 +69,7 @@ ampQiQBariToGammaStarGTree2 = ampQiQBariToGammaStarGTree/(2/3)*EQ
 
 (* Now come the usual steps, but with some special features. We don't average over the polarizations of the virtual photon,
 and we use the gauge trick for the sum over its polarizations. Of course, in this case the sum goes over all 4 unphysical
-polarizations, not just 2. Apart from that, we have the normal averaging over the 3 colors and 2 polarizations of the incoming quark and 
+polarizations, not just 2. Apart from that, we have the normal averaging over the 3 colors and 2 polarizations of the incoming quark and
 antiquark.  For the polarization sum of the gluon we use the photon momentum as the auxiliary vector *)
 
 
@@ -78,12 +78,12 @@ PropagatorDenominatorExplicit//FermionSpinSum[#,ExtraFactor->1/(2*3)^2]&//Replac
 DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&;
 
 
-ampQiQBariToGammaStarGTree4=(ampQiQBariToGammaStarGTree3/.{MU->0,SUNN->3})//Simplify
+ampQiQBariToGammaStarGTree4=(ampQiQBariToGammaStarGTree3/.{SMP["m_u"]->0,SUNN->3})//Simplify
 
 
 masslessAmpQiQBariToGammaStarGTree=(TrickMandelstam[ampQiQBariToGammaStarGTree4,{s,t,u,M^2}])//Simplify
 
 
-masslessAmpQiQBariToGammaStarGTreeField= (8/9) EL^2 EQ^2 Gstrong^2 (u/t+t/u + 2 M^2(-t-u+M^2)/(t u));
+masslessAmpQiQBariToGammaStarGTreeField= (8/9) SMP["e"]^2 EQ^2 SMP["g_s"]^2 (u/t+t/u + 2 M^2(-t-u+M^2)/(t u));
 Print["Check with R. Field, Eq 5.2.3: ",
 			If[Simplify[masslessAmpQiQBariToGammaStarGTreeField-masslessAmpQiQBariToGammaStarGTree]===0, "CORRECT.", "!!! WRONG !!!"]];

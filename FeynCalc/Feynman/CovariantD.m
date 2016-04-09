@@ -50,7 +50,7 @@ Begin["`CovariantD`Private`"]
 
 DeclareNonCommutative[CovariantD];
 
-Options[CovariantD] = { CouplingConstant -> Gstrong,
+Options[CovariantD] = { CouplingConstant -> SMP["g_s"],
 						DummyIndex -> Automatic,
 						Explicit -> False,
 						FCPartialD -> RightPartialD,

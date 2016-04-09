@@ -38,7 +38,7 @@ Begin["`FieldStrength`Private`"]
 DeclareNonCommutative[FieldStrength];
 
 Options[FieldStrength] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Explicit -> False,
 	IndexPosition -> {0,0},
 	Symbol -> "F",

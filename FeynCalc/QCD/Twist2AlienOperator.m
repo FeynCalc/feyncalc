@@ -26,7 +26,7 @@ Begin["`Twist2AlienOperator`Private`"]
 
 DeclareNonCommutative[Twist2AlienOperator];
 
-Options[Twist2AlienOperator] = { CouplingConstant -> Gstrong,
+Options[Twist2AlienOperator] = { CouplingConstant -> SMP["g_s"],
 													Dimension -> D, Polarization -> 0};
 Twist2AlienOperator[pi_, 0, opt___Rule] :=
 	Block[ {dim, p, re, pol, del},

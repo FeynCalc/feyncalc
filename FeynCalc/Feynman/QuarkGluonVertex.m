@@ -36,7 +36,7 @@ DeclareNonCommutative[QuarkGluonVertex];
 
 Options[QuarkGluonVertex] = {
 	CounterTerm -> False,
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Explicit -> False,
 	OPE -> False,

@@ -47,7 +47,7 @@ Paint[diags = InsertFields[CreateTopologies[1, 1 -> 1 ,ExcludeTopologies->{Tadpo
 
 amps =FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{},PreFactor->1/((2^D)*(Pi)^(D/2))],
 IncomingMomenta->{p},OutgoingMomenta->{p},LoopMomenta->{q},DropSumOver->True,ChangeDimension->D,UndoChiralSplittings->True,
-TransversePolarizationVectors->{k1,k2}]/. {MQU[Index[Generation, 3]]->MQ,GaugeXi[_]->GaugeXi};
+TransversePolarizationVectors->{k1,k2},SMP->True]/. {MQU[Index[Generation, 3]]->MQ,GaugeXi[_]->GaugeXi};
 
 
 (* ::Subsection:: *)
@@ -166,7 +166,7 @@ gluonSelfEnergy=-I*ampsSing
 
 gaugePrefactor=(Pair[LorentzIndex[Lor1], Momentum[p]]*Pair[LorentzIndex[Lor2], Momentum[p]] - Pair[LorentzIndex[Lor1], LorentzIndex[Lor2]]*
 		Pair[Momentum[p], Momentum[p]]);
-gluonSelfEnergyMuta=(Gstrong^2/(4Pi)^2)*(4/3*(1/2)*Nf-(1/2)CA(13/3-GaugeXi))*1/Epsilon*
+gluonSelfEnergyMuta=(SMP["g_s"]^2/(4Pi)^2)*(4/3*(1/2)*Nf-(1/2)CA(13/3-GaugeXi))*1/Epsilon*
 gaugePrefactor*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
 Print["Check with Muta, Eq 2.5.131 and Eq. 2.5.132: ",
 			If[Simplify[gluonSelfEnergy-gluonSelfEnergyMuta]===0, "CORRECT.", "!!! WRONG !!!"]];
@@ -179,6 +179,6 @@ Print["Check with Muta, Eq 2.5.131 and Eq. 2.5.132: ",
 ampsSingGluonQuarkFeynmanGauge=Simplify[ampsSing/.{GaugeXi->1,Nf->0}]
 
 
-ampsSingFeynmanGaugePeskin=I*(-gaugePrefactor)*(-Gstrong^2/(4Pi)^2*(-5/3)*CA*(1/Epsilon))*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
+ampsSingFeynmanGaugePeskin=I*(-gaugePrefactor)*(-SMP["g_s"]^2/(4Pi)^2*(-5/3)*CA*(1/Epsilon))*SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]];
 Print["Check with Peskin and Schroeder, Eq 16.71: ",
 			If[Simplify[ampsSingGluonQuarkFeynmanGauge-ampsSingFeynmanGaugePeskin]===0, "CORRECT.", "!!! WRONG !!!"]];

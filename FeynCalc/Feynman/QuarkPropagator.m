@@ -35,7 +35,7 @@ DeclareNonCommutative[QuarkPropagator];
 
 Options[QuarkPropagator] = {
 	CounterTerm -> False,
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Explicit -> False,
 	Loop -> 0,

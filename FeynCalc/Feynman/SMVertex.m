@@ -45,25 +45,20 @@ SMVertex[x___, i_Integer, y___] :=
 SMVertex["AWW", mom1_, li1_, mom2_, li2_, mom3_, li3_, OptionsPattern[]] :=
 	Block[	{dim, res},
 		res = ChangeDimension[
-			-I*SMP["EL"]*( MetricTensor[li1, li2] * FourVector[(mom2 -mom1 ),li3]+
+			-I*SMP["e"]*( MetricTensor[li1, li2] * FourVector[(mom2 -mom1 ),li3]+
 					MetricTensor[li2, li3] * FourVector[(mom3 -mom2 ),li1]+
 					MetricTensor[li3, li1] * FourVector[(mom1 -mom3 ),li2]), OptionValue[Dimension]];
 		res
 	]/; OptionValue[Explicit];
 
 
+(* directly from the SM.model file from FeynArts1.0 *)
 SMVertex["HHH", OptionsPattern[]] :=
-	Block[ {EL, MW, MH, SW},
-		{EL, MW, MH, SW} = SMP /@ {"EL", "MW", "MH", "SW"};
-		(* directly from the SM.model file from FeynArts1.0 *)
-		((-3*I)/2*EL*MH^2)/(MW*SW)
-	];
+	((-3*I)/2*SMP["e"]*SMP["m_H"]^2)/(SMP["m_W"]*SMP["sin_W"])
 
 SMVertex["eeH", OptionsPattern[]] :=
-	Block[ {EL, MW, MH, SW},
-		{EL, MW, ME, SW} = SMP /@ {"EL", "MW", "ME", "SW"};
-		-((I*EL*ME)/(2*MW*SW))
-	];
+	-((I*SMP["e"]*SMP["m_e"])/(2*SMP["m_W"]*SMP["sin_W"]))
+
 
 FCPrint[1,"SMVertex.m loaded."];
 End[]

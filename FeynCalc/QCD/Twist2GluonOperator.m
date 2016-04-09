@@ -43,7 +43,7 @@ End[]
 Begin["`Twist2GluonOperator`Private`"]
 
 Options[Twist2GluonOperator] = {
-	CouplingConstant -> Gstrong,
+	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Polarization -> 0,
 	Explicit -> False,

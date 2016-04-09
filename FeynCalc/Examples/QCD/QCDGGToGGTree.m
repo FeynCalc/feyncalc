@@ -3,10 +3,10 @@
 (* :Title: QCDGGToGGTree                                                    *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -47,7 +47,7 @@ Paint[diagsGGToGG, ColumnsXRows -> {2, 2}, Numbering -> None,SheetHeader->None,I
 
 ampGGToGG = FCFAConvert[CreateFeynAmp[diagsGGToGG,Truncated -> False],IncomingMomenta->{k1,k2},
 OutgoingMomenta->{k3,k4},TransversePolarizationVectors->{k1,k2,k3,k4},DropSumOver->True,
-ChangeDimension->4]//Contract//SUNFSimplify[#, Explicit->True,SUNNToCACF->False]&;
+ChangeDimension->4,SMP->True]//Contract//SUNFSimplify[#, Explicit->True,SUNNToCACF->False]&;
 
 
 (* The calculation becomes easier if energy momentum conservation is applied *)
@@ -86,6 +86,6 @@ sqAmpGGToGG=(1/8^2)(Sum[fpre[i,j],{i,1,4},{j,1,4}]/.{SUNN->3})//Simplify
 masslesssqAmpGGToGG=TrickMandelstam[sqAmpGGToGG,{s,t,u,0}]
 
 
-masslesssqAmpGGToGGEllis=(9/2)Gstrong^4 (3 - t u/s^2 - s u/t^2 - s t/u^2);
+masslesssqAmpGGToGGEllis=(9/2)SMP["g_s"]^4 (3 - t u/s^2 - s u/t^2 - s t/u^2);
 Print["Check with Ellis, Stirling and Weber, Table 7.1: ",
 			If[TrickMandelstam[Simplify[masslesssqAmpGGToGGEllis-masslesssqAmpGGToGG],{s,t,u,0}]===0, "CORRECT.", "!!! WRONG !!!"]];

@@ -1,7 +1,5 @@
 (* ::Package:: *)
 
-
-
 (* :Title: EWMuonDecayTree                                                  *)
 
 (*
@@ -20,7 +18,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -51,15 +49,15 @@ Paint[diagsMuonDecayTree, ColumnsXRows -> {2, 1}, Numbering -> None];
 
 ampMuonDecayTree = (Map[ReplaceAll[#, FeynAmp[_, _, amp_, ___] :> amp] &,
 		Apply[List, FCPrepareFAAmp[CreateFeynAmp[diagsMuonDecayTree,
-		Truncated -> False]]]]//ChangeDimension[#,4]&)/.{InMom1->p,
-		OutMom1->p1,OutMom2->p2,OutMom3->p3,FAMass["Muon"]->MMu}
+		Truncated -> False],SMP->True]]]//ChangeDimension[#,4]&)/.{InMom1->p,
+		OutMom1->p1,OutMom2->p2,OutMom3->p3}
 
 
 (* ::Section:: *)
 (*Unpolarized process  mu -> e^- nubar_e nu_mu*)
 
 
-ScalarProduct[p1,p1]=ME;
+ScalarProduct[p1,p1]=SMP["m_e"];
 ScalarProduct[p2,p2]=0;
 ScalarProduct[p3,p3]=0;
 sqAmpMuonDecayTree = Total[ampMuonDecayTree] (Total[ampMuonDecayTree]//ComplexConjugate//
@@ -67,11 +65,11 @@ sqAmpMuonDecayTree = Total[ampMuonDecayTree] (Total[ampMuonDecayTree]//ComplexCo
 		FermionSpinSum[#,ExtraFactor -> 1/2]&//ReplaceAll[#, DiracTrace :> Tr]&//Contract//Simplify
 
 
-approxSqAmpMuonDecayTree = (sqAmpMuonDecayTree /. {ME -> 0,ScalarProduct[p1,p2]:>0,
-		EL->Sqrt[8/Sqrt[2] GF MW^2SW^2]})//Simplify
+approxSqAmpMuonDecayTree = (sqAmpMuonDecayTree /. {SMP["m_e"] -> 0,ScalarProduct[p1,p2]:>0,
+		SMP["e"]->Sqrt[8/Sqrt[2] SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]})//Simplify
 
 
-approxSqAmpMuonDecayTreeKnown=64GF^2ScalarProduct[p,p2]ScalarProduct[p1,p3];
+approxSqAmpMuonDecayTreeKnown=64SMP["G_F"]^2ScalarProduct[p,p2]ScalarProduct[p1,p3];
 Print["Check with the literature: ",
 			If[Simplify[approxSqAmpMuonDecayTree-approxSqAmpMuonDecayTreeKnown]===0, "CORRECT.", "!!! WRONG !!!"]];
 

@@ -19,12 +19,6 @@ Abbreviation::usage =
 "Abbreviation[name] gives a shortname for name (in HoldForm). \
 E.g.: Abbreviation[QuarkPropagator] --> HoldForm[QP].";
 
-AlphaStrong::usage =
-"AlphaStrong is a head of the QCD coupling constant.";
-
-AlphaFS::usage =
-"AlphaFS is a head of the fine-structure constant.";
-
 AntiQuarkField::usage =
 "AntiQuarkField is the name of a fermionic field.";
 
@@ -206,9 +200,6 @@ GSD::usage =
 
 GSE::usage =
 "GSE[p] is transformed into DiracSlash[p,Dimension->D-4] by FeynCalcInternal.";
-
-Gstrong::usage =
-"Gstrong denotes the strong coupling constant.";
 
 IFPD::usage = "IFPD[p, m] denotes (p^2 - m^2)."
 
@@ -622,15 +613,6 @@ Options[MetricTensor] = {Dimension -> 4, FCI -> True};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
 Options[Polarization] = {Transversality -> False};
-
-
-AlphaStrong /:
-	MakeBoxes[AlphaStrong, TraditionalForm]:=
-				SubscriptBox["\[Alpha]", "s"];
-
-AlphaFS /:
-	MakeBoxes[AlphaFS, TraditionalForm]:=
-				"\[Alpha]";
 
 CA /:
 	MakeBoxes[CA, TraditionalForm]:=
@@ -1104,10 +1086,6 @@ GSE/:
 		ToBoxes[FCI[GSE[a]], TraditionalForm];
 
 (* ------------------------------------------------------------------------ *)
-
-Gstrong /:
-	MakeBoxes[Gstrong, TraditionalForm]:=
-		SubscriptBox["g","s"];
 
 IFPD[Momentum[OPEDelta,___],0] :=
 	0;

@@ -58,7 +58,7 @@ ScalarProduct[p,p]=pp;
 
 amps=FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{2,3,4,6,7,8,9}],Truncated -> True,GaugeRules->{},PreFactor->-I],
 IncomingMomenta->{p},OutgoingMomenta->{p},LoopMomenta->{q1,q2},UndoChiralSplittings->True,DropSumOver->True,
-ChangeDimension->D]/.{MQU[Index[Generation, 3]]->0,GaugeXi[_]->GaugeXi}/.GaugeXi->1-GaugeXi;
+ChangeDimension->D,SMP->True]/.{MQU[Index[Generation, 3]]->0,GaugeXi[_]->GaugeXi}/.GaugeXi->1-GaugeXi;
 
 
 (* ::Text:: *)
@@ -130,7 +130,7 @@ Timing[result =
 (*Here is the full result.*)
 
 
-result
+result=result//.SMP["g_s"]:>gs
 
 
 (* ::Text:: *)
@@ -157,10 +157,10 @@ ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,CA^2->2T*CA}]&
 
 
 G2qFinal=G2qEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//
-ReplaceAll[#,SEpsilon[4 - 2*Epsilon]^2->eta^2]&
+ReplaceAll[#,{SEpsilon[4 - 2*Epsilon]^2->eta^2,gs->SMP["g_s"]}]&
 
 
-G2qFinalPaper = (((CA*eta^2*Gstrong^4*T)/(-pp)^(2*Epsilon))(-53/8 - 1/(2*Epsilon^2) - 7/(4*Epsilon))/(4*Pi)^D);
+G2qFinalPaper = (((CA*eta^2*SMP["g_s"]^4*T)/(-pp)^(2*Epsilon))(-53/8 - 1/(2*Epsilon^2) - 7/(4*Epsilon))/(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.13: ",
 			If[Simplify[((G2qFinal/.{Dot->Times})-G2qFinalPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
 
@@ -173,10 +173,10 @@ G2xiRed=result[[7]];
 G2xiRedEval= -1/(4Pi)^D TarcerExpand[G2xiRed, D -> 4 - 2 Epsilon, 0]//
 ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1}]&;
 G2xiRedFinal=G2xiRedEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//
-ReplaceAll[#,SEpsilon[4 - 2*Epsilon]^2->eta^2]&
+ReplaceAll[#,{SEpsilon[4 - 2*Epsilon]^2->eta^2,gs->SMP["g_s"]}]&
 
 
-G2xiRedPaper=(((CA^2*eta^2*Gstrong^4)/(-pp)^(2*Epsilon)) *( 3 + (1 + GaugeXi/2)/Epsilon + GaugeXi +
+G2xiRedPaper=(((CA^2*eta^2*SMP["g_s"]^4)/(-pp)^(2*Epsilon)) *( 3 + (1 + GaugeXi/2)/Epsilon + GaugeXi +
 		(4 + 4*GaugeXi + GaugeXi^2)/(16*Epsilon^2))/(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.14: ",
 			If[Simplify[((G2xiRedFinal/.{Dot->Times})-G2xiRedPaper)]===0, "CORRECT.", "!!! WRONG !!!"]];
@@ -192,10 +192,10 @@ ReplaceRepeated[#,{pp SUNDelta[a_,b_]->1,Nf*Tf->T}]&;
 G2xiIrredFinal=G2xiIrredEval//ReplaceAll[#,Dot[a_,b_]:>Dot[a,Collect[b,{SEpsilon[_],(-pp)^(-2Epsilon)}]]]&//
 ReplaceAll[#,Dot[a_, SEpsilon[x_]^2 (-pp)^(-2Epsilon) b_]:>Dot[SEpsilon[x]^2 (-pp)^(-2Epsilon) a,b]]&//
 ReplaceAll[#,Dot[a_,b_]:>Dot[a, Normal[Series[b/(1 - Zeta2/2 Epsilon^2)^2,{Epsilon,0,0}]]]]&//
-ReplaceAll[#,SEpsilon[4 - 2*Epsilon]^2->eta^2]&
+ReplaceAll[#,{SEpsilon[4 - 2*Epsilon]^2->eta^2,gs->SMP["g_s"]}]&
 
 
-G2xiIrredPaper=(((CA^2*eta^2*Gstrong^4)/(-pp)^(2*Epsilon)) (  1/Epsilon(67/16 - (9*GaugeXi)/32) +
+G2xiIrredPaper=(((CA^2*eta^2*SMP["g_s"]^4)/(-pp)^(2*Epsilon)) (  1/Epsilon(67/16 - (9*GaugeXi)/32) +
 		(1 + (3*GaugeXi)/16 - (3*GaugeXi^2)/32)/Epsilon^2 + 503/32 +(-73*GaugeXi)/64 +
 (3*GaugeXi^2)/8 - (3*Zeta[3])/4 - (3*GaugeXi^2*Zeta[3])/16)/(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.12: ",
@@ -209,7 +209,7 @@ Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.12: ",
 G2xFinal=(G2xiIrredFinal+G2xiRedFinal)//ReplaceAll[#,f_ Dot[a_,b_]+ f_ Dot[a_,c_]:>f Dot[a,Collect[Simplify[b+c],{1/Epsilon}]]]&
 
 
-G2xPaper=(((CA^2*eta^2*Gstrong^4)/(-pp)^(2*Epsilon)) * ((83/16 + 7/32*GaugeXi)/Epsilon +
+G2xPaper=(((CA^2*eta^2*SMP["g_s"]^4)/(-pp)^(2*Epsilon)) * ((83/16 + 7/32*GaugeXi)/Epsilon +
 		(5/4 + 7/16*GaugeXi - 1/32 GaugeXi^2)/Epsilon^2 + 599/32 - 3/4 Zeta[3] - 9/64 GaugeXi + 3/8 GaugeXi^2 - 3/16 GaugeXi^2 Zeta[3] )/
 	(4*Pi)^D);
 Print["Check with Davydychev, Osland and Tarasov, hep-ph/9801380, Eq 6.15: ",

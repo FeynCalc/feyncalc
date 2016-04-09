@@ -71,7 +71,8 @@ Options[FCFAConvert] = {
 	LoopMomenta->{},
 	LorentzIndexNames->{},
 	TransversePolarizationVectors->{},
-	List -> True
+	List -> True,
+	SMP -> False
 	};
 
 FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]] :=
@@ -91,7 +92,7 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 
 		diagsConverted= Map[#[[3]]&,{diags}];
 
-		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings]];
+		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP]];
 
 		If[	OptionValue[DropSumOver],
 			diagsConverted = diagsConverted/.FeynArts`SumOver[___]:> 1

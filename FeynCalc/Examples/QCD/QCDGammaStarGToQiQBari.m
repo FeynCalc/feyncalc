@@ -3,10 +3,10 @@
 (* :Title: masslessAmpGammaStarGToQiQBari                                 *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for the
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -45,18 +45,18 @@ Paint[diagsGammaStarGToQiQBari, ColumnsXRows -> {2, 1}, Numbering -> None,SheetH
 
 
 (* Note that here we set only the polarization vector of the gluon to be transverse.
-   Since the photon is virtual, it can have unphysical polarizations as well.*)
+Since the photon is virtual, it can have unphysical polarizations as well.*)
 
 
 ampGammaStarGToQiQBari=FCFAConvert[CreateFeynAmp[diagsGammaStarGToQiQBari,Truncated -> False],IncomingMomenta->{kGamma,kG},
-OutgoingMomenta->{p1,p2},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False]
+OutgoingMomenta->{p1,p2},UndoChiralSplittings->True,TransversePolarizationVectors->{kG},DropSumOver->True,List->False,SMP->True]
 
 
 (* ::Section:: *)
 (*Unpolarized process  g  + gamma^* -> q_i qbar_i*)
 
 
-SetMandelstam[s, t, u,  kGamma, kG, -p1, -p2, qQ, 0, MU, MU];
+SetMandelstam[s, t, u,  kGamma, kG, -p1, -p2, qQ, 0, SMP["m_u"], SMP["m_u"]];
 
 
 (* The final result depends on the electric charge of the quarks. Since we generated the diagrams for up and anti-up, we divide
@@ -77,12 +77,12 @@ PropagatorDenominatorExplicit//FermionSpinSum//ReplaceAll[#,{DiracTrace->Tr}]&//
 DoPolarizationSums[#,kGamma,0,VirtualBoson->True,GaugeTrickN->4]&;
 
 
-ampGammaStarGToQiQBari4=(ampGammaStarGToQiQBari3/.{MU->0,SUNN->3})//Simplify
+ampGammaStarGToQiQBari4=(ampGammaStarGToQiQBari3/.{SMP["m_u"]->0,SUNN->3})//Simplify
 
 
 masslessAmpGammaStarGToQiQBari=(TrickMandelstam[ampGammaStarGToQiQBari4,{s,t,u,qQ^2}]/.qQ->I Q)//Simplify
 
 
-masslessAmpGammaStarGToQiQBariField= EL^2 EQ^2 Gstrong^2 2 (u/t+t/u + 2 Q^2(u+t+Q^2)/(t u));
+masslessAmpGammaStarGToQiQBariField= SMP["e"]^2 EQ^2 SMP["g_s"]^2 2 (u/t+t/u + 2 Q^2(u+t+Q^2)/(t u));
 Print["Check with R. Field, Eq 4.3.20: ",
 			If[Simplify[masslessAmpGammaStarGToQiQBariField-masslessAmpGammaStarGToQiQBari]===0, "CORRECT.", "!!! WRONG !!!"]];

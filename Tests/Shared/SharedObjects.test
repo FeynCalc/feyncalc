@@ -47,7 +47,7 @@ Tests`Shared`fcstSharedObjectsOwnValues =  {
 {"fcstSharedObjectsOwnValues-ID29", "OwnValues[GS]", "{}"},
 {"fcstSharedObjectsOwnValues-ID30", "OwnValues[GSD]", "{}"},
 {"fcstSharedObjectsOwnValues-ID30.1", "OwnValues[GSE]", "{}"},
-{"fcstSharedObjectsOwnValues-ID31", "OwnValues[Gstrong]", "{}"},
+{"fcstSharedObjectsOwnValues-ID31", "OwnValues[Gstrong]", "{HoldPattern[Gstrong] :> SMP[\"g_s\"]}"},
 {"fcstSharedObjectsOwnValues-ID32", "OwnValues[IFPD]", "{}"},
 {"fcstSharedObjectsOwnValues-ID33", "OwnValues[Integratedx]", "{}"},
 {"fcstSharedObjectsOwnValues-ID34", "OwnValues[LC]", "{}"},

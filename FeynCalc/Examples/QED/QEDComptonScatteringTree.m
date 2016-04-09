@@ -3,10 +3,10 @@
 (* :Title: QEDComptonScatteringTree                                         *)
 
 (*
-	 This software is covered by the GNU General Public License 3.
-	 Copyright (C) 1990-2016 Rolf Mertig
-	 Copyright (C) 1997-2016 Frederik Orellana
-	 Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of the matrix element squared for Compton
@@ -17,7 +17,7 @@
 
 
 (* ::Section:: *)
-(*Load FeynCalc, FeynArts and PHI*)
+(*Load FeynCalc and FeynArts*)
 
 
 If[ $FrontEnd === Null,
@@ -47,24 +47,24 @@ ImageSize->{512,256}];
 
 ampCompton=FCFAConvert[CreateFeynAmp[diagsCompton, Truncated -> False],
 IncomingMomenta->{p1,k1},OutgoingMomenta->{p2,k2},TransversePolarizationVectors->{k1,k2},
-UndoChiralSplittings->True,ChangeDimension->4,List->False]
+UndoChiralSplittings->True,ChangeDimension->4,List->False, SMP->True]
 
 
 (* ::Section:: *)
 (*Unpolarized process  e^- gamma -> e^- gamma *)
 
 
-SetMandelstam[s, t, u, p1, k1, -p2, -k2, ME, 0, ME, 0];
+SetMandelstam[s, t, u, p1, k1, -p2, -k2, SMP["m_e"], 0, SMP["m_e"], 0];
 sqAmpCompton = (ampCompton (ComplexConjugate[ampCompton]//FCRenameDummyIndices))//
 		PropagatorDenominatorExplicit//Expand//DoPolarizationSums[#,k1,0,ExtraFactor ->
 		1/2]&//DoPolarizationSums[#,k2,0]&//Contract//FermionSpinSum[#, ExtraFactor -> 1/2]&//
-		ReplaceAll[#, DiracTrace :> Tr] & // Contract//Simplify//TrickMandelstam[#,{s,t,u,2ME^2}]&//Simplify
+		ReplaceAll[#, DiracTrace :> Tr] & // Contract//Simplify//TrickMandelstam[#,{s,t,u,2SMP["m_e"]^2}]&//Simplify
 
 
-sqAmpComptonPeskin = (2EL^4(SP[p1,k2]/SP[p1,k1]+SP[p1,k1]/SP[p1,k2]+
-		2ME^2 (1/SP[p1,k1]-1/SP[p1,k2])+ME^4 (1/SP[p1,k1]-1/SP[p1,k2])^2))//FCI//Simplify;
+sqAmpComptonPeskin = (2SMP["e"]^4(SP[p1,k2]/SP[p1,k1]+SP[p1,k1]/SP[p1,k2]+
+		2SMP["m_e"]^2 (1/SP[p1,k1]-1/SP[p1,k2])+SMP["m_e"]^4 (1/SP[p1,k1]-1/SP[p1,k2])^2))//FCI//Simplify;
 Print["Check with Peskin and Schroeder, Eq 5.87: ", If[(sqAmpComptonPeskin-sqAmpCompton)===0,
 		"CORRECT.", "!!! WRONG !!!"]];
 
 
-masslessSqAmpCompton = (sqAmpCompton /. {ME -> 0})//Simplify
+masslessSqAmpCompton = (sqAmpCompton /. {SMP["m_e"] -> 0})//Simplify
