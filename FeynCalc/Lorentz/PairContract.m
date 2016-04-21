@@ -82,6 +82,9 @@ scevdoit[x_,y_] :=
 											( Expand[ MomentumExpand/@{x,y} ] )
 						]/.sceins->sczwei/.sczwei->PairContract/.PairContract->Pair;
 
+PairContract[0,_]:=
+	0;
+
 PairContract[ LorentzIndex[a_,di___], epsmu_ LorentzIndex[mu_, dimen___] ] :=
 	( epsmu /. LorentzIndex[mu,dimen]->LorentzIndex[a,di] ) /;
 	(!FreeQ2[epsmu, {Eps, LorentzIndex[mu, dimen]}]);
