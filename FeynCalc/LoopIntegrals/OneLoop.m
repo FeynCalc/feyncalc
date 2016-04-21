@@ -2253,6 +2253,7 @@ SetAttributes[eval,Listable];                            (*evaldef*)
 	eval[evy_] :=
 		MemSet[ eval[evy],
 		Block[ {evalte,nul1,nul2,ie,neval,nt},
+			FCPrint[3, "OneLoop: eval: Entering with ", evy ,FCDoControl->oneloopVerbose];
 			evalte = to4d2[ evy/.NonCommutativeMultiply->Times ];
 			If[ !FreeQ[ evalte, LorentzIndex ],
 				evalte = contractli[ evalte ];
@@ -2293,6 +2294,7 @@ SetAttributes[eval,Listable];                            (*evaldef*)
 			];
 			evalte = tempstandmat[ evalte ];
 			evalte = Expand[evalte];
+			FCPrint[3, "OneLoop: eval: Leaving with ", evalte ,FCDoControl->oneloopVerbose];
 			evalte
 		]];
 
@@ -2491,6 +2493,7 @@ pavremember[x__] :=
 					];
 			FCPrint[3, "OneLoop: tdec: tensps ", Total[tensps], FCDoControl->oneloopVerbose];
 			FCPrint[3, "OneLoop: tdec: tdecr ", tdecr, FCDoControl->oneloopVerbose];
+			FCPrint[3, "OneLoop: tdec: tdecex ", tdecex, FCDoControl->oneloopVerbose];
 			(* scalar integrals *)
 				If[ qn==0,
 
@@ -2508,25 +2511,28 @@ pavremember[x__] :=
 						pav0 = PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]
 					];
 					tdecr = add[ tdecr, pav0, tdecnew ];
-					FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
+					FCPrint[3, "OneLoop: tdec: qn==0, tdecr=", tdecr, FCDoControl->oneloopVerbose]
 				];
 				If[ qn==1,
 					tdecnew = Table[  eval[ tdecex/.LorentzIndex[mudu[1],___]->
 											tdecpl[[tdecti]] ], {tdecti,1,tdeclpl}
 									];
+					FCPrint[3, "OneLoop: tdec: qn==1, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
 					If[ ($LimitTo4 === True) && (tdeclpl === 1),   (* e B1 = -1 *)
 						tdecr = epst[ tdecr,tdecnew[[1]], tdi,-1 ]
 					];
+					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose];
 					For[ tdectj = 1,tdectj<=tdeclpl,tdectj++,
 						tdecr = add[ tdecr, PaVe[tdectj,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],
 										tdecnew[[tdectj]]
 						]            ];
-					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
+					FCPrint[3, "OneLoop: tdec: qn==1, tdecr=", tdecr, FCDoControl->oneloopVerbose]
 				];
 				If[ qn==2,
 					tdecnew = eval[ tdecex/.LorentzIndex[mudu[1],dime___]->
 											LorentzIndex[mudu[2],dime]
 								];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
 					If[ $LimitTo4 === True,
 						Which[
 							tdeclpl == 0,        (* e A00 = m^4/2 *)
@@ -2543,13 +2549,19 @@ pavremember[x__] :=
 											tdecr = epst[ tdecr, tdecnew, tdi, 1/2 ]
 							]
 					];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
 					tdecr = add[ tdecr, PaVe[0,0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce], tdecnew ];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecex=", tdecex, FCDoControl->oneloopVerbose];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdeclpl=", tdeclpl, FCDoControl->oneloopVerbose];
 					tdecnew = Table[{Sort[{tdecti,tdectj}],
 							tdecex/.LorentzIndex[mudu[1],___]->tdecpl[[tdecti]]/.
 									LorentzIndex[mudu[2],___]->tdecpl[[tdectj]]
 									},{tdectj,1,tdeclpl},{tdecti,1,tdeclpl}
 									];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", FullForm[tdecnew], FCDoControl->oneloopVerbose];
 					tdecnew = eval[ Flatten[ tdecnew,1 ] ];
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecnew=", tdecnew, FCDoControl->oneloopVerbose];
 					If[ ($LimitTo4 === True) && (tdeclpl == 1),  (* e B11 = 2/3 *)
 						tdecr = epst[ tdecr,tdecnew[[1,2]],tdi, 2/3 ]
 					];
@@ -2562,8 +2574,9 @@ pavremember[x__] :=
 							tdecr = tdecr /.tdi->4
 						];
 						];
-					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
+					FCPrint[3, "OneLoop: tdec: qn==2, tdecr=", tdecr, FCDoControl->oneloopVerbose]
 				];
+
 				If[ qn == 3,               (* The  00i - terms *)
 					tdecnew = {};
 					For[ tdectij = 1, tdectij <= tdeclpl, tdectij++,
@@ -2611,7 +2624,7 @@ pavremember[x__] :=
 										tdecr = tdecr/.tdi->4
 									]
 								]        ]                   ];
-				FCPrint[3, "OneLoop: tdec: qn==3, tdecr=", HoldComplete[tdecr], FCDoControl->oneloopVerbose]
+				FCPrint[3, "OneLoop: tdec: qn==3, tdecr=", tdecr, FCDoControl->oneloopVerbose]
 				];
 				If[ qn>3,
 					tdecr = expr
