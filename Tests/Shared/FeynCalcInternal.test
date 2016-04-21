@@ -412,7 +412,7 @@ Tests`Shared`fcstFeynCalcInternalTriple = {
 	"(2 DiracGamma[LorentzIndex[x]]) . (3 DiracGamma[LorentzIndex[y]] + 4 DiracGamma[LorentzIndex[z]])"},
 	{"fcstFeynCalcInternalTriple-ID37", "FCI[FCE[FCI[DiracMatrix[(2 x) . (4 z), 3 y]]]]",
 	"(2 DiracGamma[LorentzIndex[x]]) . (4 DiracGamma[LorentzIndex[z]]) . (3 DiracGamma[LorentzIndex[y]])"},
-	{"fcstFeynCalcInternalTriple-ID38", "FCI[FCE[FCI[DiracMatrix[1, \"+\"]]]]", "DiracGamma[1] . DiracGamma[6]"},
+	{"fcstFeynCalcInternalTriple-ID38", "FCI[FCE[FCI[DiracMatrix[1, \"+\"]]]]", "DiracGamma[ExplicitLorentzIndex[1]] . DiracGamma[6]"},
 	{"fcstFeynCalcInternalTriple-ID39", "FCI[FCE[FCI[DiracMatrix[\"-\", \"+\"]]]]", "DiracGamma[7] . DiracGamma[6]"},
 	{"fcstFeynCalcInternalTriple-ID40", "FCI[FCE[FCI[DiracMatrix[5, 6]]]]", "DiracGamma[5] . DiracGamma[6]"},
 	{"fcstFeynCalcInternalTriple-ID41", "FCI[FCE[FCI[DiracMatrix[6, 7]]]]", "DiracGamma[6] . DiracGamma[7]"},

@@ -513,6 +513,10 @@ DiracGamma::gamma5fail =
 This is fine for all dimensional regularization schemes supported by FeynCalc including NDR. \
 Evaluation aborted!";
 
+DiracGamma::noint =
+"DiracGamma[`1`] is forbidden in FeynCalc. If you want to specify an explicit Lorentz index, \
+please use DiracGamma[ExplicitLorentzIndex[`1`]]. Evaluation aborted!";
+
 Momentum::lorentzhead =
 "`1` is forbidden in FeynCalc. Momentum cannot be the head of a LorentzIndex!";
 
@@ -671,8 +675,8 @@ DiracGamma[x_ (h: LorentzIndex|ExplicitLorentzIndex|Momentum)[p_, dim1_:4], dim2
 DiracGamma[(x: LorentzIndex|ExplicitLorentzIndex|Momentum)[y_, dim_:4], 4] :=
 	DiracGamma[x[y,dim]];
 
-DiracGamma[x_Integer, dim_:4] :=
-	DiracGamma[ExplicitLorentzIndex[x],dim]/; (x=!=5 && x=!=6 && x=!=7);
+DiracGamma[x_Integer, ___] :=
+	(Message[DiracGamma::noint, x]; Abort[])/; (x=!=0 && x=!=5 && x=!=6 && x=!=7);
 
 DiracGamma[(n:5|6|7), 4] :=
 	DiracGamma[n];
@@ -682,9 +686,10 @@ DiracGamma[(n:5|6|7), dim_] :=
 
 DiracGamma[_, 0] :=
 	0;
-(*Why?? F.Orellana, 21/11-2003*)
-(*DiracGamma[0] = 0;
-DiracGamma[0, _]:= 0;*)
+
+DiracGamma[0,___]:=
+	0;
+
 DiracGamma[a_Plus] :=
 	Map[DiracGamma, a];
 
