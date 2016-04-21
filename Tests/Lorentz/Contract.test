@@ -142,7 +142,8 @@ i3, i6] -
 MT[i1, i4] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i5] MT[i3,
 i6] - MT[i1, i4] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i5] MT[
 i3, i6] +
-MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3, i6]"}
+MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3, i6]"},
+{"fcstContractContractionsIn4dims-ID27","Contract[PairContract[LorentzIndex[i], Momentum[p]]] // FCE","FV[p, i]"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
@@ -272,7 +273,8 @@ Pair[LorentzIndex[i1], LorentzIndex[j2]]*Pair[LorentzIndex[i2], LorentzIndex[j1]
 {"fcstContractDDims-ID13","LCD[i1, i2, i3, i4] FV[p, i4] // Contract",
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p], Dimension -> D]"},
 {"fcstContractDDims-ID14","LCD[i1, i2, i3, i4] FVD[p, i4] // Contract",
-	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p, D], Dimension -> D]"}
+	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p, D], Dimension -> D]"},
+{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"}
 };
 
 
