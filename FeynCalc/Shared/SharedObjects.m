@@ -1454,10 +1454,6 @@ Pair[Momentum[pi_,___], Momentum[Polarization[x_Plus, ki:Except[_?OptionQ]...,
 	Contract[ExpandScalarProduct[Pair[Momentum[pi-x,dii],
 	Momentum[Polarization[x, ki, opts],dii]]]] /; ( pi - Last[x] ) === 0;
 
-(* by convention ... *)
-Pair[Momentum[Polarization[x_,__],___], Momentum[Polarization[x_,__],___] ] :=
-	-1;
-
 (*    Typesetting for the metric tensor.    *)
 (* ------------------------------------------------------------------------ *)
 

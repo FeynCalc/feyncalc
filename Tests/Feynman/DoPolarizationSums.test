@@ -380,5 +380,30 @@ Polarization[p, I], la])/SP[k, k]"},
 DoPolarizationSums[#, k] & // DoPolarizationSums[#, p] & // FCE",
 	"MT[ka, la] MT[mu, nu] - (FV[k, mu] FV[k, nu] MT[ka, la])/SP[k, k] - (
 FV[p, ka] FV[p, la] MT[mu, nu])/SP[p, p] + (
-FV[k, mu] FV[k, nu] FV[p, ka] FV[p, la])/(SP[k, k] SP[p, p])"}
+FV[k, mu] FV[k, nu] FV[p, ka] FV[p, la])/(SP[k, k] SP[p, p])"},
+{"fcstDoPolarizationSums-ID38",
+	"FCClearScalarProduct[]; \n ScalarProduct[p1, p1] = 0; \n
+	ScalarProduct[p2, p2] = 0; \n
+	Pair[LorentzIndex[Subscript[\[Alpha], 1], D],
+	Momentum[Polarization[p1, I, Transversality -> True], D]] Pair[
+	LorentzIndex[Subscript[\[Alpha], 1], D],
+	Momentum[Polarization[p1, -I, Transversality -> True], D]] Pair[
+	LorentzIndex[Subscript[\[Alpha], 2], D],
+	Momentum[Polarization[p2, I, Transversality -> True], D]] Pair[
+	LorentzIndex[Subscript[\[Alpha], 2], D],
+	Momentum[Polarization[p2, -I, Transversality -> True], D]] //
+	DoPolarizationSums[#, p1, n] & // DoPolarizationSums[#, p2, n] &",
+	"D^2 - 4 D + 4"},
+{"fcstDoPolarizationSums-ID39",
+	"Pair[LorentzIndex[Subscript[\[Alpha], 1], D],
+	Momentum[Polarization[p1, I, Transversality -> True], D]] Pair[
+	LorentzIndex[Subscript[\[Alpha], 1], D],
+	Momentum[Polarization[p1, -I, Transversality -> True], D]] Pair[
+	LorentzIndex[Subscript[\[Alpha], 2], D],
+	Momentum[Polarization[p2, I, Transversality -> True], D]] Pair[
+	LorentzIndex[Subscript[\[Alpha], 2], D],
+	Momentum[Polarization[p2, -I, Transversality -> True], D]] //
+	DoPolarizationSums[#, p1, n, Contract -> False] & //
+	DoPolarizationSums[#, p2, n, Contract -> False] & // Contract",
+	"D^2 - 4 D + 4"}
 };
