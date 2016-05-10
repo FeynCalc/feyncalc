@@ -928,8 +928,16 @@ ff[y_/;Head[y]=!=List] :=
 FAD[-p_, opts:OptionsPattern[]] :=
 	FAD[p,opts];
 
-FAD[a___,{x_,y_,n_Integer?Positive},b___, opts:OptionsPattern[]]:=
+FAD[a___,{x_,y_,n_Integer?Positive},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
 	FAD[a,Sequence @@ Table[{x,y}, {i, 1, n}],b,opts]
+
+(* A propagator to the power 0 is unity *)
+FAD[a___,{_,_,0},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
+	FAD[a,b,opts]/;Length[{a,b}]=!=0
+
+(* A propagator to the power 0 is unity *)
+FAD[{_,_,0}, OptionsPattern[]]:=
+	1;
 
 FAD/:
 	MakeBoxes[FAD[a__,OptionsPattern[]], TraditionalForm]/; !MemberQ[{a},{_,_,_}]:=
