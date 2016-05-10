@@ -34,6 +34,8 @@ I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu4]]*Pair[LorentzIndex[mu2], 
 	FCPartialD[LorentzIndex[b]], GaugeField, LorentzIndex[a],
 	SUNIndex[a]], {QuantumField[GaugeField, {mu1}, {i1}][p1],
 	QuantumField[GaugeField, {mu2}, {i2}][p2]}]","-2 I Pair[LorentzIndex[mu1], LorentzIndex[mu2]] Pair[Momentum[p1],
-	Momentum[p2]] SUNDelta[SUNIndex[i1], SUNIndex[i2]]"}
-
+	Momentum[p2]] SUNDelta[SUNIndex[i1], SUNIndex[i2]]"},
+{"fcstFeynRule-ID3","FeynRule[2*(QuantumField[AntiQuarkField].LeftRightPartialD[
+	i1].QuantumField[QuarkField]), {QuantumField[QuarkField][p1],
+QuantumField[AntiQuarkField][p2]}] // FCE","FV[p1, i1] - FV[p2, i1]"}
 };

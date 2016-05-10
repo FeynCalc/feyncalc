@@ -402,7 +402,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 		Print["well well ", lag, " does not look like a lagrangian"],
 		Block[ {(*InitialFunction stuff added by F.Orellana 3/8-2000*)
 		initf = InitialFunction /. {ru} /. Options[FeynRule],
-		nlag = fcis[initf[lag]], temp1, temp,
+		nlag = ExpandAll[fcis[initf[lag]]], temp1, temp,
 				fili = fii, lfili, qli,specope,
 				groupindices,
 				result,fields,tfields,plist,
