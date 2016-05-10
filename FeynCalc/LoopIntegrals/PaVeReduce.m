@@ -411,7 +411,7 @@ pavitp[xXX_PaVe, dir_, opts:OptionsPattern[]] :=
 		nx = StringReplace[ ToString[InputForm[xxx/.abbs], PageWidth -> 222], $Abbreviations];
 		nx = StringJoin[dir, nx, ".s"];
 
-		FCPrint[2,"nx  =", nx];
+		FCPrint[2,"nx  =", nx,FCDoControl->pvrVerbose];
 		If[ Streams[nx] === {},
 			(*Mac fix, 18/9-2000, F.Orellana*)
 			file = FileType[nx];
@@ -427,7 +427,7 @@ pavitp[xXX_PaVe, dir_, opts:OptionsPattern[]] :=
 
 			If[ file =!= File && file =!= Directory,
 				temp = FixedPoint[ReleaseHold, PaVeReduce[xXX, WriteOutPaVe->False,opts]]//PaVeOrder;
-				FCPrint[2,"writing result to ",nx];
+				FCPrint[2,"writing result to ",nx,FCDoControl->pvrVerbose];
 				OpenWrite @@ {nx, FormatType -> InputForm };
 				WriteString @@ {nx, "( "};
 				Write @@ {nx, temp};
@@ -487,6 +487,8 @@ pavereduce[exp_, OptionsPattern[]] :=
 
 pavereduce[w_ , opts:OptionsPattern[]] :=
 	Block[	{mpa,nw,nn,pre,re = 0},
+
+			FCPrint[3,"PaVeReduce: pavereduce: Entering with: ", w, FCDoControl->pvrVerbose];
 			mpa = w/. StandardMatrixElement[__]->0;
 			nw = w - mpa;
 			re = pavereduce[mpa, opts];
@@ -508,6 +510,7 @@ pavereduce[w_ , opts:OptionsPattern[]] :=
 pavereduce[pvli_List, opts:OptionsPattern[]] :=
 	Block[ {i,set,le = Length[pvli],npvli},
 		npvli = {};
+		FCPrint[3,"PaVeReduce: pavereduce: Entering with: ", pvli, FCDoControl->pvrVerbose];
 		Do[ FCPrint[2," Working with # ",i," out of ",le];
 			npvli = Append[npvli, pavereduce[pvli[[i]],opts]],
 			{i,le}
