@@ -628,8 +628,16 @@ If[ Global`$FeynCalcStartupMessages =!= False,
 				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"],
 			Style[" or write to the ", "Text"],
 			Style[DisplayForm@ButtonBox["mailing list.",ButtonData :> {URL["http://www.feyncalc.org/forum/"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]]
-];
+				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]];
+	Print[ Style["See also the supplied ","Text"],
+
+	Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
+							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
+							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
+	Style[" If you use FeynCalc in your research, please cite","Text"]];
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, TUM-EFT 71/15, arXiv:1601.01167","Text"]];
+	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun., 64, 345-359, 1991.","Text"]]
+	];
 
 (* Load PHI... *)
 If[	$LoadPhi,
