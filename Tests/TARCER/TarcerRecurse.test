@@ -1,0 +1,26 @@
+
+
+(* :Title: TarcerRecurse.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2016 Rolf Mertig
+	Copyright (C) 1997-2016 Frederik Orellana
+	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for TarcerRecurse			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`TARCER`TarcerRecurse = {
+{"fcstToFI-ID1","TarcerRecurse[
+TFI[D, Pair[Momentum[p, D], Momentum[p, D]], {0, 0, 3, 2,
+0}, {{4, 0}, {2, 0}, {1, 0}, {0, 0}, {1, 0}}]]",
+"(-2*(-5 + D)*(2072 - 1928*D + 630*D^2 - 85*D^3 + 4*D^4)*TJI[D, Pair[Momentum[p, D], Momentum[p, D]], {{1, 0}, {1, 0}, {1, 0}}])/
+((-12 + D)*(-10 + D)*(-8 + D)*(-4 + D))"},
+{"fcstToFI-ID2","TarcerRecurse[
+TFI[d, P^2, {0, 0, 1, 3,
+0}, {{2, 0}, {1, 0}, {0, 0}, {0, 0}, {1, 0}}]]",
+"0"}
+};

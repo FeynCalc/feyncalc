@@ -4014,7 +4014,7 @@ tlrule[11] =
 			(TLRComment["tlrule11"];
 		ExpandMaybe[(pp/(d + x + y - 2))*((x - 1)*
 					TLR[d, pp, {v + 1, w, x - 2, y,
-						z}, {{n1, m1}, {n2, m2}, {0, 0}, {0, 0}, {n5, m5}}] +
+						z}, {nm1, nm2, {0, 0}, {0, 0}, {n5, m5}}] +
 
 				y*TLR[d,
 					pp, {v, w, x - 1, y - 1, z + 1}, {nm1,
@@ -4026,7 +4026,7 @@ tlrule[12] =
 			(TLRComment["tlrule12"];
 		ExpandMaybe[(pp/(d + x + y - 2))*((y - 1)*
 					TLR[d, pp, {v, w + 1, x, y - 2,
-						z}, {{n1, m1}, {n2, m2}, {0, 0}, {0, 0}, {n5, m5}}] +
+						z}, {nm1, nm2, {0, 0}, {0, 0}, {n5, m5}}] +
 
 				x*TLR[d,
 					pp, {v, w, x - 1, y - 1, z + 1}, {nm1,
