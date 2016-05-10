@@ -776,13 +776,7 @@ TarasovT[a_, b_, r_, s_, pp_,
 	Q2 = al4 al5 + al3 al5 + al1 al4 + al3 al4;
 	Q11 = -(1/4) (al2 + al4 + al5); Q22 = -(1/4) (al1 + al3 + al5);
 	Q12 = -(al5/2); new = I^(-r - s - a - b) \!\(
-\*SubscriptBox[\(\[PartialD]\), \({be1, r}, {be2, s}, {ga1, a}, {ga2,
-				b}\)]\(Exp[
-				I\ \((\((be1\ pp + ga1\ dp)\)\ Q1 + \((be2\ pp +
-							ga2\ dp)\)\ Q2 + be1\ \((be1\ pp + 2\ ga1\ dp)\)\ Q11 +
-					be2\ \((be2\ pp +
-							2\ ga2\ dp)\)\ Q22 + \((be1\ be2\ pp + \((be1\ ga2 +
-								be2\ ga1)\)\ dp)\)\ Q12)\)\ rho]\)\) /.
+\*SubscriptBox[\(\[PartialD]\), \({be1, r}, {be2, s}, {ga1, a}, {ga2, b}\)]\(Exp[I\ \((\((be1\ pp + ga1\ dp)\)\ Q1 + \((be2\ pp + ga2\ dp)\)\ Q2 + be1\ \((be1\ pp + 2\ ga1\ dp)\)\ Q11 + be2\ \((be2\ pp + 2\ ga2\ dp)\)\ Q22 + \((be1\ be2\ pp + \((be1\ ga2 + be2\ ga1)\)\ dp)\)\ Q12)\)\ rho]\)\) /.
 		Join[alrul, {be1 :> 0, be2 :> 0, ga1 :> 0, ga2 :> 0,
 			rho :> -((\[Pi]^2 DPlus)/\[Pi]^2)}]; (Select[#1,
 				FreeQ[#1, ParD] && FreeQ[#1, DPlus] &] TpD[pp,
@@ -3881,7 +3875,7 @@ TLRComment[s_String] :=
 applytlrules[y_, fun_] :=
 	fun[y /. TFI -> TLR /. TLRules /. TLR -> TFI];
 TFIRecurse[z_, f_: Identity] :=
-	(FixedPoint[applytlrules[#1, f] & , z, 1000] /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list]);
+	(FixedPoint[(applytlrules[#1, f] ) & , z, 1000] /. TAI[dim_, pp_, list_List]/;pp=!=0:>TAI[dim,0,list]);
 applytlrules2[y_, fun_] :=
 	fun[y /. TFI -> TLR /. TLRules2 /. TLR -> TFI];
 TFISimplify[z_, f_: Identity] :=
@@ -4011,9 +4005,9 @@ tlrule[9] =
 					Gamma[k + d/2 - 1/2]), {k, 0, Floor[z/2]}, {i, 0, k}, {j,
 				0, k}]]]);
 tlrule[10] =
-	TLR[d_, pp_, {v_, w_, (x_)?PNQ, (y_)?PNQ,
-		z_}, {{(n1_)?PQ, m1_}, {(n2_)?PQ, m2_}, {0, _}, {0, _},
-		nm5_}] :> (TLRComment["tlrule10"]; 0 /; OddQ[x + y]);
+	TLR[_, _, {_, _, (x_)?PNQ, (y_)?PNQ,
+		_}, {{(n1_)?PQ, _}, {(n2_)?PQ, _}, {0, _}, {0, _},
+		_}] :> (TLRComment["tlrule10"]; 0 /; OddQ[x + y]);
 tlrule[11] =
 	TLR[d_, pp_, {v_, w_, (x_)?PQ, (y_)?PQ, z_}, {nm1_,
 		nm2_, {0, _}, {0, _}, {(n5_)?PQ, m5_}}] :>
@@ -4054,12 +4048,12 @@ tlrule[14] =
 				nm5}], {i, 0, x}]);
 tlrule[15] =
 	HoldPattern[
-		TLR[d_, pp_, {v_, w_, x_, y_,
-			z_}, {{n1_, 0}, {n2_,
+		TLR[_, _, {_, _, _, _,
+			_}, {{_, 0}, {_,
 			0}, {0, _}, {0, _}, {0, _}}]] :> (TLRComment["tlrule15"]; 0);
 tlrule[16] =
-	TLR[d_, pp_, {0, 0, (x_)?PQ, (y_)?PQ,
-		0}, {{n1_, _}, {n2_, _}, {0, _}, {0, _}, {0, _}}] :> (TLRComment[
+	TLR[_, _, {0, 0, (x_)?PQ, (y_)?PQ,
+		0}, {{_, _}, {_, _}, {0, _}, {0, _}, {0, _}}] :> (TLRComment[
 		"tlrule16"]; 0 /; OddQ[x] || OddQ[y]);
 tlrule[17] =
 	TLR[d_, pp_, {(a_)?PQ, b_, 0, de_,
