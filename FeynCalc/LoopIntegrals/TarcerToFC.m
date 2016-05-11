@@ -34,6 +34,9 @@ Begin["`TarcerToFC`Private`"]
 
 Options[TarcerToFC]  = {};
 
+momconv[0]:=
+	0;
+
 momconv[p_^2]:=
 	MemSet[momconv[p^2],p];
 
@@ -41,10 +44,10 @@ momconv[Pair[Momentum[p_,d_:4],Momentum[p_,d_:4]]]:=
 	MemSet[momconv[Pair[Momentum[p,d],Momentum[p,d]]],p];
 
 momconv[SP[p_,p_]]:=
-	MemSet[SP[p,p],p]
+	MemSet[momconv[SP[p,p]],p]
 
 momconv[SPD[p_,p_]]:=
-	MemSet[SPD[p,p],p]
+	MemSet[momconv[SPD[p,p]],p]
 
 momconv[pp_Symbol]:=
 	MemSet[momconv[pp],Sqrt[pp]];
