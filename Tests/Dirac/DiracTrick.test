@@ -1062,3 +1062,7 @@ Tests`Dirac`fcstDiracTrickFiveFreeIndices = {
 		DiracGamma[LorentzIndex[tau]] . DiracGamma[LorentzIndex[ka]])"}
 };
 
+Tests`Dirac`fcstDiracTrickLarin = {
+{"fcstDiracTrickLarin-ID1","$BreitMaison=False;\n$Larin=True;\nDiracTrick[GAD[a, b, c].GA[5].GAD[b, a, m]] // FCE",
+		"-(2 - D)^2 GAD[c].GAD[m].GA[5]"}
+};
