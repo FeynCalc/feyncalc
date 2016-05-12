@@ -147,7 +147,7 @@ dr[b___,DiracGamma[5],c:DiracGamma[_[_]].. ,d___] :=
 (*In the native scheme, g^5 anticommutes with all the other gamma matrices in all dimensions*)
 dr[b___,DiracGamma[5],c:DiracGamma[_[__],_].. ,d___] :=
 	( (-1)^Length[{c}] ds[ b,c,DiracGamma[5],d ] ) /;
-		($BreitMaison =!= True && $Larin =!= True);
+		($BreitMaison =!= True);
 
 (*In the BM scheme, the anticommutator is not zero*)
 dr[b___,DiracGamma[5],DiracGamma[x_[y__],d_Symbol -4] ,f___] :=
