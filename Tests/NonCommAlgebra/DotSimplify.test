@@ -38,5 +38,17 @@ QuantumField[A, LorentzIndex[mu]].RightPartialD[
 	SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[e]].SUNT[SUNIndex[f]]"},
 {"fcstDotSimplify-ID8","DotSimplify[
 RightPartialD[Momentum[OPEDelta]].LeftPartialD[Momentum[OPEDelta]]]",
-"LeftPartialD[Momentum[OPEDelta]].RightPartialD[Momentum[OPEDelta]]"}
+"LeftPartialD[Momentum[OPEDelta]].RightPartialD[Momentum[OPEDelta]]"},
+{"fcstDotSimplify-ID9","DotSimplify[(GA[i].SUNT[a] (GS[p] + M).GA[j].GA[6].GA[k].GA[j] FAD[
+p + k, M] +  GA[i].(GS[p1] + M).GA[j].GA[7].GA[j].GA[k] FAD[p1 + k, M]).(GS[q] +
+m).(GA[l].(GS[p] + M).GA[n] + GA[n].(GS[p] + M).GA[l]),
+PreservePropagatorStructures -> True] // FCE",
+"SUNT[a].GA[i].(M + GS[p]).GA[j].GA[6].GA[k].GA[j].(m + GS[q]).GA[
+	l].(M + GS[p]).GA[n] FAD[k + p, M] +
+SUNT[a].GA[i].(M + GS[p]).GA[j].GA[6].GA[k].GA[j].(m + GS[q]).GA[
+	n].(M + GS[p]).GA[l] FAD[k + p, M] +
+GA[i].(M + GS[p1]).GA[j].GA[7].GA[j].GA[k].(m + GS[q]).GA[
+	l].(M + GS[p]).GA[n] FAD[k + p1, M] +
+GA[i].(M + GS[p1]).GA[j].GA[7].GA[j].GA[k].(m + GS[q]).GA[
+	n].(M + GS[p]).GA[l] FAD[k + p1, M]"}
 }

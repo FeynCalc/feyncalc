@@ -36,17 +36,25 @@ DotPower::usage =
 non-commutative powers are represented by successive multiplication \
 or by Power.";
 
+PreservePropagatorStructures::usage =
+"PreservePropagatorStructures is an option for DotSimplify. If set to True, \
+numerators of fermionic propagators like (GS[p]+m) that appear in \
+chains of Dirac matrices will not be expanded.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
 
 dootpow;
+dotsimpHold;
 
 End[]
 
 Begin["`DotSimplify`Private`"]
 
 dsVerbose::usage="";
+
+DeclareNonCommutative[dotsimpHold];
 
 (*Error messages for calling DotSimplify with less or more than 1 argument*)
 DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
@@ -61,13 +69,14 @@ Options[DotSimplify] = {
 	DotSimplifyRelations -> {},
 	DotPower -> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]].
 																									F.Orellana*)
-	FeynCalcInternal -> True
+	FeynCalcInternal -> True,
+	PreservePropagatorStructures -> False
 };
 
 
 DotSimplify[xxx_, OptionsPattern[]] :=
 	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
-	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot
+	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
 	},
 
 		If [OptionValue[FCVerbose]===False,
@@ -167,6 +176,12 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 			];
 
 			FCPrint[2, "DotSimplify: After checking simrel", x, FCDoControl->dsVerbose];
+
+			If[	OptionValue[PreservePropagatorStructures],
+				x = x //. DOT->holdDOT //.
+					holdDOT[a___, ee_. (c_ + d_DiracGamma), b___] /;FreeQ2[{c},{DiracGamma,holdDOT}] :> holdDOT[a, ee dotsimpHold[c + d], b] //.
+					holdDOT->DOT
+			];
 
 			pid[u_,_] :=
 				u;
@@ -328,6 +343,10 @@ DotSimplify[xxx_, OptionsPattern[]] :=
 		If[ OptionValue[DotPower],
 			x = x /. DOT -> dootpow /. dootpow -> DOT;
 			FCPrint[3, "DotSimplify: After applying DotPower: ", x, FCDoControl->dsVerbose]
+		];
+
+		If[	OptionValue[PreservePropagatorStructures],
+				x = x/.dotsimpHold->Identity
 		];
 
 		FCPrint[1, "DotSimplify: Leaving.", FCDoControl->dsVerbose];
