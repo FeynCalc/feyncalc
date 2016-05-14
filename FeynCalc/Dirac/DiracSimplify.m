@@ -137,7 +137,7 @@ DiracSimplify[x_,y__, z___?OptionQ] :=
 
 
 DiracSimplify[expr_, opts:OptionsPattern[]] :=
-	Block[{ex,res},
+	Block[{ex,res,time},
 
 
 		If[	OptionValue[FCI],
@@ -196,15 +196,19 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 				ex = diracEq[ex]
 			],
 			(*If Expanding is set to True, the main simplification function (oldDiracSimplify) is applied.*)
-			FCPrint[2, "DiracSimplify: Contractions", FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracSimplify: Applying PairContract.", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: Doing contractions on ", ex, FCDoControl->dsVerbose];
 			ex = ex /. Pair -> PairContract;
 			If[ OptionValue[DiracSigmaExplicit],
 				ex = DiracSigmaExplicit[ex]
 			];
-			FCPrint[2, "DiracSimplify: Starting oldDiracSimplify", FCDoControl->dsVerbose];
+			FCPrint[1,"DiracSimplify: Done applying PairContract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracSimplify: Starting oldDiracSimplify", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: Doing oldDiracSimplify on ", ex, FCDoControl->dsVerbose];
 			ex = oldDiracSimplify[ex,Flatten[Join[{opts}, FilterRules[Options[DiracSimplify], Except[{opts}]]]]]/. PairContract -> Pair;
+			FCPrint[1,"DiracSimplify: Done doing oldDiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 		];
 
 
@@ -345,13 +349,51 @@ diracSimplifyBM[x_,in:OptionsPattern[]] :=
 diracSimplifyNV[x_,in:OptionsPattern[]] :=
 	MemSet[diracSimplifyNV[x,in], diracSimplifyGEN[x,in]];
 
+
+dirfun[exp_] :=
+	Collect2[exp/.DOT->dS, DOT, Factoring -> False];
+
+diracSimplifyInsideTrace[ex_] :=
+	Block[{diracdt=ex,holdDOT},
+		(* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
+		(*    diracdt = diracdt/.DOT->trIC/. *)
+		(*  only do cyclicity simplification if there is a simple structure of Dirac matrices *)
+		If[ FreeQ[diracdt/. DOT -> holdDOT, holdDOT[a__/; !FreeQ[{a}, holdDOT]]],
+			diracdt = diracdt/.DOT->trIC/.
+			(* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
+			{trI:>dS, spursav:> dS};
+		];
+
+
+		(* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
+		(* even be more careful: and get rid of cyclic simplifications hrere ... *)
+		diracdt =
+			FixedPoint[dirfun, diracdt, 5](*/.DOT ->trIC/.trI->dS*);
+		FCPrint[2,"dir2done, diracdt=", FullForm[diracdt]];
+		If[ FreeQ[ diracdt, DOT ],
+			diracdt = diracdt/.DiracGamma[_[__],___]->0;
+			diracpag = PartitHead[diracdt,DiracGamma];
+			If[ diracpag[[2]] === DiracGamma[5],
+				diracdt = 0
+			];
+			If[ diracpag[[2]] === DiracGamma[6] || diracpag[[2]] === DiracGamma[7],
+				diracdt = 1/2  diracpag[[1]]
+			]
+		];
+		diracdt
+	];
+
+
 diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 	If[ FreeQ[x, DiracGamma],
 		x,
 		Block[ {diracopt,diracdt,diracndt = 0,diraccanopt,diracpdt,diracgasu,
 			diracldt,diracjj = 0,diractrlabel,diracga67,diracsifac,
-			diracpag,colle, dooT},
+			diracpag,colle, dooT,time},
 			(* There are several options *)
+
+
+			FCPrint[1, "DiracSimplify: diracSimplifyGEN: Entering", FCDoControl->dsVerbose];
 
 
 			diraccanopt  = OptionValue[DiracSimplify,{opts},DiracCanonical];
@@ -361,59 +403,31 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 			diracsifac   = OptionValue[DiracSimplify,{opts},Factoring];
 
 
-
-			FCPrint[2,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify.", FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify.", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying DotSimplify to  ", x, FCDoControl->dsVerbose];
 			diracdt = dotLin[ x//DiracGammaExpand ];
+			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 
-			FCPrint[2,"DiracSimplify: diracSimplifyGEN: Contractions.", FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Doing index contractions.", FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: diracSimplifyGEN: Contract indices in  ", diracdt, FCDoControl->dsVerbose];
 			If[ diracgasu === True,
 				diracdt = contractli[DiracGammaCombine[diracdt/.Pair->PairContract]](*/. DOT -> dS*)(*Commented out 27/3-2003, see above*),
 				diracdt = contractli[ diracdt ]
 			(*/. DOT->dS*)
 			];
+			FCPrint[1,"DiracSimplify: diracSimplifyGEN: Done doing index contractions, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+
+
 			(* Commented out Sept. 9 203 by RM, in order to fix the 27/3 2003 bug
 			diracdt = Expand2[ ExpandScalarProduct[diracdt//fEx], {Pair, DOT}]; *)
 
 			If[ diractrlabel===True,
 				FCPrint[2,"DiracSimplify: diracSimplifyGEN: Simplifications inside a Dirac trace.", FCDoControl->dsVerbose];
 				FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying simplifications that are valid only inside a Dirac trace", FCDoControl->dsVerbose];
-
-
-			(* bug fix 2005-02-05: this is a problem because of Flat and OneIdentity of Dot ... *)
-			(*    diracdt = diracdt/.DOT->trIC/. *)
-			(*  only do cyclicity simplification if there is a simple structure of Dirac matrices *)
-				If[ FreeQ[diracdt/. DOT -> dooT, dooT[a__/; !FreeQ[{a}, dooT]]],
-					diracdt = diracdt/.DOT->trIC/.
-					(* bug fix on September 25th 2003 (RM): due to earlier changes this was overseen:*)
-					{trI:>dS, spursav:> dS};
-				];
-
-				(* optimization *)
-				colle[a_] :=
-					If[ (Length[a]<200(*0*))||(Head[a]=!=Plus),
-						a,
-						Collect2[a, DOT, Factoring -> False]
-					];
-				dirfun[exp_] :=
-					colle[exp/.DOT->dS (*/.DOT -> trIC /. trI->DOT*)];
-					(* careful: can run into infinite loop ..., adding a cut in FixedPoint, 10.9.2003 *)
-					(* even be more careful: and get rid of cyclic simplifications hrere ... *)
-				diracdt =
-					FixedPoint[dirfun, diracdt, 5](*/.DOT ->trIC/.trI->dS*);
-				FCPrint[2,"dir2done, diracdt=", FullForm[diracdt]];
-				If[ FreeQ[ diracdt, DOT ],
-					diracdt = diracdt/.DiracGamma[_[__],___]->0;
-					diracpag = PartitHead[diracdt,DiracGamma];
-					If[ diracpag[[2]] === DiracGamma[5],
-						diracdt = 0
-					];
-					If[ diracpag[[2]] === DiracGamma[6] || diracpag[[2]] === DiracGamma[7],
-						diracdt = 1/2  diracpag[[1]]
-					]
-				]
+				diracdt=diracSimplifyInsideTrace[diracdt]
 			];
 			(* Change 27/3-2003 by Rolf Mertig, see above (27/3-2003)*)
 			FCPrint[2,"dir2a, diracdt=", FullForm[diracdt]];
@@ -468,6 +482,13 @@ diracSimplifyGEN[x_, opts:OptionsPattern[]] :=
 
 				FCPrint[1,"DiracSimplify: diracSimplifyGEN: Applying DiracTrick", FCDoControl->dsVerbose];
 				diracpdt = fEx[DiracGammaExpand[diracpdt]]//DiracTrick;
+
+
+				If[ diractrlabel===True,
+					FCPrint[2,"DiracSimplify: diracSimplifyGEN: Simplifications inside a Dirac trace.", FCDoControl->dsVerbose];
+					FCPrint[3,"DiracSimplify: diracSimplifyGEN: Applying simplifications that are valid only inside a Dirac trace", FCDoControl->dsVerbose];
+					diracpdt=diracSimplifyInsideTrace[diracpdt]
+				];
 
 				(*If[ diractrlabel,
 					diracpdt = fEx[(diracpdt//DiracGammaExpand)//DiracTrick](*/.

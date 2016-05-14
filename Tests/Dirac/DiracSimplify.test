@@ -41,7 +41,10 @@ DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5]/2"},
 "1/2 Spinor[-Momentum[p2], 0, 1].GS[Polarization[k1, -I]].GS[k1].GS[
 	Polarization[k2, -I]].Spinor[Momentum[p1], 0, 1] -
 1/2 Spinor[-Momentum[p2], 0, 1].GS[Polarization[k1, -I]].GS[k1].GS[
-	Polarization[k2, -I]].GA[5].Spinor[Momentum[p1], 0, 1]"}
+	Polarization[k2, -I]].GA[5].Spinor[Momentum[p1], 0, 1]"},
+{"fcstDiracSimplify-ID16",
+"DiracSimplify[GA[i].(GS[p] + M).GA[j].GA[6].GA[k].GA[j], InsideDiracTrace -> True] // FCE",
+"-M MT[i, k]"}
 }
 
 Tests`Dirac`fcstDiracSimplifyDotWarnings = {
