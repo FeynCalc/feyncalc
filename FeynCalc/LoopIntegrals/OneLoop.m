@@ -643,12 +643,11 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			consum2[x_] :=
 				smalld[ExpandScalarProduct[conall[x]]]/;Head[x]=!=Plus;
 			consum2[x_Plus] :=
-				Block[ {nx = 0,i},
+				Block[ {nx = 0},
 					For[i = 1, i<=Length[x], i++,
 						FCPrint[2, "contracting # ", i, " out of ", Length[x], FCDoControl->oneloopVerbose];
 						nx = nx + (Expand[
-							ExpandScalarProduct[conall[x[[i]]]]
-										]//smalld)
+							ExpandScalarProduct[conall[x[[i]]]]]//smalld)
 						];
 					nx
 				];
@@ -659,6 +658,7 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 			oneampc = oneamp;
 			oneamp = DiracSimplify[oneamp, Expanding -> False];
 			oneampd = oneamp;
+			FCPrint[2, "OneLoop: before collin ", oneamp, FCDoControl->oneloopVerbose];
 			oneamp = collin[ consum[oneamp]//smalld, FeynAmpDenominator, False ];
 		(* ONEAMPCHANGE : contracting Lorentz indices and expanding *)
 		(* now a canonized form is achieved *)
@@ -733,10 +733,10 @@ OneLoop[grname_,q_,integ_,opts:OptionsPattern[]] :=
 				(FCPrint[3, "checkkkk", FCDoControl->oneloopVerbose];
 				consum2[x]);
 			simpit[x_] :=
+				(FCPrint[3, "OneLoop: simpit", FCDoControl->oneloopVerbose];
 				diracorder[ Collect2[ consum2[x]//epsit, DOT,
 									Factoring->False
-								] // DiracSimplify
-						] /; !FreeQ[x, DiracGamma];
+								] // DiracSimplify]) /; !FreeQ[x, DiracGamma];
 
 		(* we want to keep the distinction in different graphs *)
 		(* ONEAMPCHANGE *)
