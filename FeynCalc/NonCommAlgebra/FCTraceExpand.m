@@ -28,6 +28,7 @@ End[]
 Begin["`FCTraceExpand`Private`"]
 
 dotSimp::usage="";
+propPres::usage="";
 
 Options[FCTraceExpand] = {
 	DiracGammaExpand -> True,
@@ -36,6 +37,7 @@ Options[FCTraceExpand] = {
 	FCI -> False,
 	FCTraceFactor -> True,
 	Momentum -> All,
+	PreservePropagatorStructures -> False,
 	SUNTrace -> True
 };
 
@@ -44,6 +46,7 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 
 		moms = OptionValue[Momentum];
 		dotSimp = OptionValue[DotSimplify];
+		propPres = OptionValue[PreservePropagatorStructures];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -102,13 +105,13 @@ traceexpand[x_] :=
 
 expandDirac[x_] :=
 	If [dotSimp,
-		Distribute[DiracTrace@(Expand[DotSimplify[x]])],
+		Distribute[DiracTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres]])],
 		Distribute[DiracTrace@(Expand[x])]
 	]
 
 expandColor[x_] :=
 	If [dotSimp,
-		Distribute[SUNTrace@(Expand[DotSimplify[x]])],
+		Distribute[SUNTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres]])],
 		Distribute[SUNTrace@(Expand[x])]
 	]
 

@@ -87,5 +87,14 @@ DiracTrace[GSD[k].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]] +
 DiracTrace[GSD[p].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[k]] +
 DiracTrace[GSD[p].GA[5].GSD[l].GAD[nu].GSD[l].GAD[la].GSD[l]] -
 DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[k]] -
-DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]]"}
+DiracTrace[GSD[p].GA[5].GSD[p].GAD[nu].GSD[l].GAD[la].GSD[l]]"},
+{"fcstFCTraceExpand-ID16",
+"DiracTrace[((GSD[k + p] + M).GA[5].GSD[l - p].GAD[nu].(GSD[l] +
+M).GAD[la].GSD[k + l] + (GSD[k1 + p1] + M).GA[6].GSD[l1 -
+p1].GAD[nu].(GSD[l] + M).GAD[la].GSD[k1 + l1]).(GSD[x] + M)] //
+FCTraceExpand[#, DiracGammaExpand -> False,
+PreservePropagatorStructures -> True] & // FCE",
+"DiracTrace[(M + GSD[k + p]).GA[5].GSD[l - p].GAD[nu].(M + GSD[l]).GAD[la].GSD[k +
+l].(M + GSD[x])] + DiracTrace[(M + GSD[k1 + p1]).GA[6].GSD[l1 - p1].GAD[nu].(M +
+GSD[l]).GAD[la].GSD[k1 + l1].(M + GSD[x])]"}
 })
