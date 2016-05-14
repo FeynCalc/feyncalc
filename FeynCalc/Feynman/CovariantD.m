@@ -146,7 +146,28 @@ CovariantD[al_, a_, b_, ru___Rule ] :=
 			QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
 		]
 	] /;
-	(Explicit /. {ru} /. Options[CovariantD]);
+	(Explicit /. {ru} /. Options[CovariantD]) && Head[a]=!=SUNFIndex;
+
+
+
+CovariantD[al_, a_SUNFIndex, b_SUNFIndex, OptionsPattern[]] :=
+	Block[ {aA, cC, du, partial,g},
+		aA = OptionValue[QuantumField];
+		g = OptionValue[CouplingConstant];
+		partial = OptionValue[FCPartialD];
+		du = OptionValue[DummyIndex];
+		If[ du === Automatic,
+			cC = Unique["c"],
+			cC = du
+		];
+		SUNFDelta[a, b] partial[al] -
+		I g SUNTF[cC,a,b] *
+		If[ (al === OPEDelta) || (Head[al]=== Momentum),
+			QuantumField[aA, Momentum[al], SUNIndex[cC]],
+			QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
+		]
+	] /; OptionValue[Explicit];
+
 
 CovariantD[OPEDelta, a___,
 			{m_ /; (Head[m] =!= Integer), n_Integer}, ru___Rule

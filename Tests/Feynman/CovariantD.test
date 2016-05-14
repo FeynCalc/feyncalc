@@ -28,5 +28,10 @@ FCE, (RightPartialD[Momentum[OPEDelta]] SUNDelta[a, x_] -
 	SUNIndex[z_]] SUNF[a, x_, z_]).(RightPartialD[
 	Momentum[OPEDelta]] SUNDelta[b, x_] -
 	Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
-	SUNIndex[y_]] SUNF[x_, b, y_])]","True"}
+	SUNIndex[y_]] SUNF[x_, b, y_])]","True"},
+{"fcstCovariantD-ID4","MatchQ[CovariantD[i, SUNFIndex[a], SUNFIndex[b], Explicit -> True],
+RightPartialD[LorentzIndex[i]] SUNFDelta[SUNFIndex[a],
+	SUNFIndex[b]] -
+I QuantumField[GaugeField, LorentzIndex[i], SUNIndex[x_]] SMP[
+	\"g_s\"] SUNTF[{x_}, SUNFIndex[a], SUNFIndex[b]]]","True"}
 };
