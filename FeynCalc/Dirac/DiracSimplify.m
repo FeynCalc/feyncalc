@@ -121,6 +121,7 @@ Options[DiracSimplify] = {
 	DiracSimpCombine	-> False,
 	DiracSubstitute67	-> False,
 	Expanding			-> True,
+	FCCheckSyntax		-> False,
 	FCVerbose			-> True,
 	Factoring			-> False,
 	FeynCalcInternal    -> False,
@@ -155,20 +156,27 @@ DiracSimplify[expr_, opts:OptionsPattern[]] :=
 
 		FCPrint[3, "DiracSimplify: Entering with ", ex, FCDoControl->dsVerbose];
 
-		FCPrint[1, "DiracSimplify: Checking the syntax", FCDoControl->dsVerbose];
 
-		If[	!FreeQ2[DotExpand[Expand2[DiracSigmaExplicit[ex],{DiracGamma,Spinor,SUNT}]],{
-			DiracGamma[a__]*DiracGamma[b__],
-			DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*
-				DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
-			DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DiracGamma[d__],
-			SUNT[a__]*SUNT[b__],
-			DOT[a:Except[_Spinor]...,SUNT[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,SUNT[e__],f:Except[_Spinor]...],
-			DOT[a___,SUNT[b__],c___]*SUNT[d__]
-			}],
-			Block[{$MessagePrePrint},
-			Message[DiracSimplify::noncom, ToString[expr,FormatType->InputForm]]];
-			Abort[]
+		If [OptionValue[FCCheckSyntax],
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracSimplify: Checking the syntax", FCDoControl->dsVerbose];
+
+			If[	!FreeQ2[DotExpand[Expand2[DiracSigmaExplicit[ex],{DiracGamma,Spinor,SUNT}]],{
+				DiracGamma[a__]*DiracGamma[b__],
+				DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*
+					DOT[d:Except[_Spinor]...,DiracGamma[e__],f:Except[_Spinor]...],
+				DOT[a:Except[_Spinor]...,DiracGamma[b__],c:Except[_Spinor]...]*DiracGamma[d__],
+				SUNT[a__]*SUNT[b__],
+				DOT[a:Except[_Spinor]...,SUNT[b__],c:Except[_Spinor]...]*DOT[d:Except[_Spinor]...,SUNT[e__],f:Except[_Spinor]...],
+				DOT[a___,SUNT[b__],c___]*SUNT[d__]
+				}],
+				Block[{$MessagePrePrint},
+				Message[DiracSimplify::noncom, ToString[expr,FormatType->InputForm]]];
+				Abort[]
+			];
+
+			FCPrint[1, "DiracSimplify: Checking the syntax done", FCDoControl->dsVerbose];
+			FCPrint[1,"DiracSimplify: Done checking the syntax, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose]
 		];
 
 
