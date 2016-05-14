@@ -14,11 +14,56 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Dirac`fcstFCCanonicalizeDummyIndices = {
-{"fcstFCCanonicalizeDummyIndices-ID1","MatchQ[tmp =
-FCCanonicalizeDummyIndices[FVD[q, mu] FVD[p, mu] + FVD[q, nu] FVD[p, nu]]; FCE[tmp],
-2 FVD[p, i_] FVD[q, i_]]","True"},
-{"fcstFCCanonicalizeDummyIndices-ID2","FCCanonicalizeDummyIndices[Uncontract[SP[q, p]^4,
-q, p, Pair -> All], LorentzIndexNames -> {mu, nu, rho, si}] // FCE",
-"FV[p, mu] FV[p, nu] FV[p, rho] FV[p, si] FV[q, mu] FV[q, nu] FV[q,rho] FV[q, si]"}
-}
+Tests`Dirac`fcstFCCanonicalizeDummyIndices =
+({
+{"fcstFCCanonicalizeDummyIndices-ID1",
+"MatchQ[tmp=FCCanonicalizeDummyIndices[FVD[q,mu] \
+FVD[p,mu]+FVD[q,nu] FVD[p,nu]];FCE[tmp],2 FVD[p,i_] FVD[q,i_]]",
+"True"},
+{"fcstFCCanonicalizeDummyIndices-ID2",
+"FCCanonicalizeDummyIndices[Uncontract[SP[q,p]^4,q,p,Pair\[Rule]\
+All],LorentzIndexNames\[Rule]{mu,nu,rho,si}]//FCE",
+"FV[p, mu]*FV[p, nu]*FV[p, rho]*FV[p, si]*FV[q, mu]*FV[q, \
+nu]*FV[q, rho]*FV[q, si]"},
+{"fcstFCCanonicalizeDummyIndices-ID3",
+"MatchQ[FCCanonicalizeDummyIndices[FV[p1,mu](FV[p2,nu]FV[p3,nu]+FV[\
+p2,rho]FV[p3,rho])]//FCE,2 FV[p1,mu] \
+Pair[LorentzIndex[a_],Momentum[p2]] \
+Pair[LorentzIndex[a_],Momentum[p3]]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID4",
+"MatchQ[FV[p1,mu](FV[p2,nu]FV[p3,nu]+FV[p2,rho]FV[p3,rho])\
+//FCCanonicalizeDummyIndices[#,LorentzIndexNames\[Rule]{al}]&//FCE,2 \
+FV[p1,mu] FV[p2,a_] FV[p3,a_]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID5",
+"MatchQ[tmp=FCE[FCCanonicalizeDummyIndices[SUNTF[a,b,c]v1[\
+SUNFIndex[b]]v1[SUNFIndex[c]]+SUNTF[a,bp,cp]v1[SUNFIndex[bp]]v1[\
+SUNFIndex[cp]]]];FCE[tmp],2 SUNTF[{a},x_,y_] v1[SUNFIndex[x_]] \
+v1[SUNFIndex[y_]]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID6",
+"FCCanonicalizeDummyIndices[SUNTF[a,b,c]v1[SUNFIndex[b]]v1[\
+SUNFIndex[c]]+SUNTF[a,bp,cp]v1[SUNFIndex[bp]]v1[SUNFIndex[cp]],\
+SUNFIndexNames\[Rule]{bb,cc}]//FCE",
+"2*SUNTF[{a}, bb, cc]*v1[SUNFIndex[bb]]*v1[SUNFIndex[cc]]"},
+{"fcstFCCanonicalizeDummyIndices-ID7",
+"MatchQ[tmp=MT[mu,nu]FV[p,nu]SUNTF[a,b1,c1]v1[SUNFIndex[b1]]v1[\
+SUNFIndex[c1]]SUNTF[a,b2,c2]v1[SUNFIndex[b2]]v2[SUNFIndex[c2]]\
+//FCCanonicalizeDummyIndices;FCE[tmp],FV[p,a_] MT[mu,a_] \
+SUNTF[{b_},c_,d_] SUNTF[{b_},e_,f_] v1[SUNFIndex[c_]] \
+v1[SUNFIndex[e_]] v1[SUNFIndex[d_]] v2[SUNFIndex[f_]]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID8",
+"MT[mu,nu]FV[p,nu]SUNTF[a,b1,c1]v1[SUNFIndex[b1]]v1[SUNFIndex[c1]]\
+SUNTF[a,b2,c2]v1[SUNFIndex[b2]]v2[SUNFIndex[c2]]\
+//FCCanonicalizeDummyIndices[#,LorentzIndexNames\[Rule]{li1},\
+SUNFIndexNames\[Rule]{sf1,sf2,sf3,sf4},SUNIndexNames\[Rule]{cf1}]&\
+//FCE", "FV[p, li1]*MT[li1, mu]*SUNTF[{cf1}, sf1, sf3]*SUNTF[{cf1}, \
+sf2, sf4]*v1[SUNFIndex[sf1]]*v1[SUNFIndex[sf2]]*v1[SUNFIndex[sf3]]*v2[\
+SUNFIndex[sf4]]"},
+{"fcstFCCanonicalizeDummyIndices-ID9",
+"MatchQ[FCCanonicalizeDummyIndices[T1[MyIndex[a],MyIndex[b]]v1[\
+MyIndex[b]]v2[MyIndex[c]],Head\[Rule]MyIndex],T1[MyIndex[a],MyIndex[x_\
+]] v1[MyIndex[x_]] v2[MyIndex[c]]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID10",
+"MatchQ[FCCanonicalizeDummyIndices[T1[MyIndex[c],MyIndex[b]]v1[\
+MyIndex[b]]v2[MyIndex[c]],Head\[Rule]MyIndex],T1[MyIndex[x_],MyIndex[\
+y_]] v1[MyIndex[y_]] v2[MyIndex[x_]]]", "True"}
+});
