@@ -310,7 +310,7 @@ FeynCalc::phierror =
 
 FeynCalc::tfadvice =
 "You are not using TraditionalForm as the default format type of new \
-output cells. Without TraditionalForm FeynCalc cannot use buil-in \
+output cells. Without TraditionalForm FeynCalc cannot use built-in \
 typeseting rules that make various objects like Lorentz vectors or \
 Dirac matrices look nicer. To change the format type go to \
 Edit->Preferences->Evaluation.";
