@@ -353,6 +353,18 @@ derivatives (PartialD) acting on the field.";
 QuarkField::usage =
 "QuarkField is the name of a fermionic field.";
 
+QuarkFieldPsi::usage =
+"QuarkFieldPsi is the name of a fermionic field.";
+
+QuarkFieldChi::usage =
+"QuarkFieldChi is the name of a fermionic field.";
+
+QuarkFieldPsiDagger::usage =
+"QuarkFieldPsiDagger is the name of a fermionic field.";
+
+QuarkFieldChiDagger::usage =
+"QuarkFieldChiDagger is the name of a fermionic field.";
+
 RightPartialD::usage =
 "RightPartialD[mu] denotes partial_mu, acting to the right.";
 
@@ -1811,6 +1823,18 @@ QuantumField /:
 
 QuarkField /:
 	MakeBoxes[QuarkField, TraditionalForm]:= "\[Psi]";
+
+QuarkFieldPsi /:
+	MakeBoxes[QuarkFieldPsi, TraditionalForm]:= "\[Psi]";
+
+QuarkFieldChi /:
+	MakeBoxes[QuarkFieldChi, TraditionalForm]:= "\[Chi]";
+
+QuarkFieldPsiDagger /:
+	MakeBoxes[QuarkFieldPsiDagger, TraditionalForm]:= SuperscriptBox["\[Psi]","\[Dagger]"];
+
+QuarkFieldChiDagger /:
+	MakeBoxes[QuarkFieldChiDagger, TraditionalForm]:= SuperscriptBox["\[Chi]","\[Dagger]"];
 
 RightPartialD[xx__] :=
 	RightPartialD @@ (LorentzIndex /@ {xx}) /;
