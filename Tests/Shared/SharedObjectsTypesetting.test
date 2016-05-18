@@ -2665,122 +2665,118 @@ TraditionalForm]], \"(\", FormBox[\"q\", TraditionalForm], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID411",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
 LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"\[PartialD]\", \
+"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
 SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
 FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]]}], \
+FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]], \")\"}], \
 \")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
 \")\"}]}]"},
 {"fcstSharedObjectsTypesetting-ID412",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
 ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"\[PartialD]\", \
+"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
 SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
 FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]]}], \
+FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]], \")\"}], \
 \")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
 \")\"}]}]"},
 {"fcstSharedObjectsTypesetting-ID413",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
 LorentzIndex[mu]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"\[PartialD]\", \
+"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \"\[Null]\
-\"]}], \")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
-\")\"}]}]"},
+SubscriptBox[FormBox[\"f\", TraditionalForm], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \")\"}], \")\"}], \"\
+\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \")\"}]}]"},
 {"fcstSharedObjectsTypesetting-ID414",
 "MakeBoxes[2 QuantumField[FCPartialD[LorentzIndex[f]], f, \
 LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
 "RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"\[PartialD]\", FormBox[FormBox[\"f\", \
+RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
 TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
 TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
 TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]]}], \")\"}], \"\[InvisibleApplication]\", \
+TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
 RowBox[{\"(\", \"q\", \")\"}]}]}]"},
 {"fcstSharedObjectsTypesetting-ID415",
 "MakeBoxes[2 QuantumField[FCPartialD[LorentzIndex[f]], f, \
 ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
 "RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"\[PartialD]\", FormBox[FormBox[\"f\", \
+RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
 TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
 TraditionalForm], FormBox[FormBox[\"2\", TraditionalForm], \
 TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]]}], \")\"}], \"\[InvisibleApplication]\", \
+TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
 RowBox[{\"(\", \"q\", \")\"}]}]}]"},
 {"fcstSharedObjectsTypesetting-ID416",
 "MakeBoxes[2 QuantumField[FCPartialD[LorentzIndex[f]], f, \
 LorentzIndex[mu]][q], TraditionalForm]",
 "RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
+RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
+TraditionalForm], TraditionalForm]], SubscriptBox[FormBox[\"f\", \
 TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
-TraditionalForm], \"\[Null]\"]}], \")\"}], \
-\"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
+RowBox[{\"(\", \"q\", \")\"}]}]}]"},
 {"fcstSharedObjectsTypesetting-ID417",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
 Momentum[p], SUNIndex[a]], TraditionalForm]",
-"RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", FormBox[FormBox[\"f\
-\", TraditionalForm], TraditionalForm]], TraditionalForm], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
-TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]]}]"},
+"RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
+TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm], FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm]], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID418",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
 Momentum[p]], TraditionalForm]",
-"RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", FormBox[FormBox[\"f\
-\", TraditionalForm], TraditionalForm]], TraditionalForm], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
-TraditionalForm], \"\[Null]\"]}]"},
+"RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
+TraditionalForm], TraditionalForm]], SubscriptBox[FormBox[\"f\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID419",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
 FCPartialD[LorentzIndex[g]], f, Momentum[p], SUNIndex[a]], \
 TraditionalForm]",
-"RowBox[{RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
+"RowBox[{\"(\", RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
 TraditionalForm], FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"g\", TraditionalForm], TraditionalForm]], \
 TraditionalForm]}], SubsuperscriptBox[FormBox[\"f\", \
 TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
 TraditionalForm], \"_\"], TraditionalForm], FormBox[FormBox[\"a\", \
-TraditionalForm], TraditionalForm]]}]"},
+TraditionalForm], TraditionalForm]], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID420",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
 FCPartialD[LorentzIndex[g]], f, Momentum[p]], TraditionalForm]",
-"RowBox[{RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
+"RowBox[{\"(\", RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
 TraditionalForm], FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"g\", TraditionalForm], TraditionalForm]], \
-TraditionalForm]}], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
-TraditionalForm], \"_\"], TraditionalForm], \"\[Null]\"]}]"},
+TraditionalForm]}], SubscriptBox[FormBox[\"f\", TraditionalForm], \
+FormBox[OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
+TraditionalForm]], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID421",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
 FCPartialD[LorentzIndex[g]], f, LorentzIndex[mu], SUNIndex[a]], \
 TraditionalForm]",
-"RowBox[{RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
+"RowBox[{\"(\", RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
 TraditionalForm], FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"g\", TraditionalForm], TraditionalForm]], \
 TraditionalForm]}], SubsuperscriptBox[FormBox[\"f\", \
 TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
 TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]]}]"},
+TraditionalForm]], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID422",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
 FCPartialD[LorentzIndex[g]], f, LorentzIndex[mu]], TraditionalForm]",
-"RowBox[{RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
+"RowBox[{\"(\", RowBox[{FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
 TraditionalForm], FormBox[SubscriptBox[\"\[PartialD]\", \
 FormBox[FormBox[\"g\", TraditionalForm], TraditionalForm]], \
-TraditionalForm]}], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
-TraditionalForm], \"\[Null]\"]}]"},
+TraditionalForm]}], SubscriptBox[FormBox[\"f\", TraditionalForm], \
+FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID423",
 "MakeBoxes[QuarkField, TraditionalForm]", "\"\[Psi]\""},
 {"fcstSharedObjectsTypesetting-ID424",
