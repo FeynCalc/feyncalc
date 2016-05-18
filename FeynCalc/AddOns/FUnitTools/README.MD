@@ -13,7 +13,7 @@ li = {
 	"DiracSimplify[GA[i,j,i]]",
 	"DiracSimplify[GA[i,j,5,i]]"
 };
-CreateUnitTests["fcstDiracSimplifyXYZ", li]
+FUnitCreateUnitTests["fcstDiracSimplifyXYZ", li]
 ```
 
 The output can be copied via Copy As -> InputText and pasted just after
@@ -25,7 +25,7 @@ in the corresponing test file.
 ## Recreate typesetting tests
 
 ```
-CreateUnitTestsTypesetting["fcstSharedObjectsTypesetting",
-ExtractUnitTests[{"Shared", "SharedObjects"},
+FUnitCreateUnitTestsTypesetting["fcstSharedObjectsTypesetting",
+FUnitExtractUnitTests[{"Shared", "SharedObjects"},
 "fcstSharedObjectsTypesetting"], AddMakeBoxes -> False]
 ```
