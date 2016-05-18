@@ -171,6 +171,11 @@ the sign in the result of a Dirac trace of four gamma matrices and gamma5.";
 Loop::usage=
 "Loop is an option indicating the number of (virtual) loops.";
 
+LorentzIndexNames::usage =
+"LorentzIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy Lorentz indices to the indices \
+in the supplied list.";
+
 Mandelstam::usage =
 "Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr \
 and TrickMandelstam.  A typical setting is \
@@ -204,6 +209,16 @@ QuarkMass::usage= "QuarkMass is an option of Amplitude.";
 SpinPolarizationSum::usage=
 "SpinPolarizationSum is an option for SquareAmplitude and \
 FermionSpinSum. The set (pure) function acts on the usual spin sum.";
+
+SUNIndexNames::usage =
+"SUNIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy SU(N) indices in the \
+adjoint representation to the indices in the supplied list.";
+
+SUNFIndexNames::usage =
+"SUNFIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy SU(N) indices in the \
+fundamental representation to the indices in the supplied list.";
 
 SUNNToCACF::usage=
 "SUNNToCACF is an option of SUNSimplify. If set to True, the Casimir \

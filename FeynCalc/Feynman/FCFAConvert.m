@@ -38,10 +38,6 @@ LoopMomenta::usage =
 momenta in the diagram should be named. The number and order of momenta in the \
 list of momenta should exactly match those in InsertFields of FeynArts.";
 
-LorentzIndexNames::usage =
-"LorentzIndexNames is an option of FCFAConvert. It renames the generic Lorentz \
-indices to the indices in the supplied list.";
-
 TransversePolarizationVectors::usage =
 "TransversePolarizationVectors is an option of FCFAConvert. It specifies which \
 polarization vectors should be defined as transverse. A particle is specified by
@@ -62,32 +58,39 @@ End[]
 Begin["`FCFAConvert`Private`"]
 
 Options[FCFAConvert] = {
-	DropSumOver -> False,
-	UndoChiralSplittings -> False,
 	ChangeDimension -> False,
+	DropSumOver -> False,
 	FinalSubstitutions->{},
 	IncomingMomenta->{},
-	OutgoingMomenta->{},
+	List -> True,
 	LoopMomenta->{},
 	LorentzIndexNames->{},
+	OutgoingMomenta->{},
+	SMP -> False,
+	SUNFIndexNames->{},
+	SUNIndexNames->{},
 	TransversePolarizationVectors->{},
-	List -> True,
-	SMP -> False
+	UndoChiralSplittings -> False
 	};
 
 FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]] :=
 	Block[ {	diagsConverted,repRuleMomenta,repRuleLorentzIndices,
-				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim},
+				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim,
+				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices},
 
 		inMoms		=	OptionValue[IncomingMomenta];
 		outMoms		=	OptionValue[OutgoingMomenta];
 		loopMoms	=	OptionValue[LoopMomenta];
 		liNames		=	OptionValue[LorentzIndexNames];
+		sunNames	=	OptionValue[SUNIndexNames];
+		sunfNames	=	OptionValue[SUNFIndexNames];
 		polVecs		=	OptionValue[TransversePolarizationVectors];
 		dim			=	OptionValue[ChangeDimension];
 
 		repRuleMomenta={};
 		repRuleLorentzIndices={};
+		repRuleSUNIndices={};
+		repRuleSUNFIndices={};
 		repRulePolVectors={};
 
 		diagsConverted= Map[#[[3]]&,{diags}];
@@ -110,12 +113,20 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 		If[	liNames=!={},
 			repRuleLorentzIndices = MapIndexed[Rule[ToExpression["Lor"<>ToString[First[#2]]],#1]&,liNames]
 		];
+		If[	sunNames=!={},
+			repRuleSUNIndices = MapIndexed[Rule[ToExpression["Glu"<>ToString[First[#2]]],#1]&,sunNames]
+		];
+		If[	sunfNames=!={},
+			repRuleSUNFIndices = MapIndexed[Rule[ToExpression["Col"<>ToString[First[#2]]],#1]&,sunfNames]
+		];
+
 		If[	polVecs=!={},
 			repRulePolVectors = Map[Rule[Polarization[#,Pattern[x,BlankNullSequence[]]],
 				Polarization[#,x,Transversality->True]]&,polVecs]
 		];
 
-		diagsConverted = diagsConverted/.repRuleMomenta/.repRuleLorentzIndices /. repRulePolVectors;
+		diagsConverted = diagsConverted/.repRuleMomenta/.repRuleLorentzIndices/.repRuleSUNIndices/.
+			repRuleSUNFIndices/. repRulePolVectors;
 
 		If[	OptionValue[ChangeDimension]=!=False,
 			diagsConverted= ChangeDimension[diagsConverted,dim]
