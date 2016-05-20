@@ -42,7 +42,7 @@ ClearAttributes[PaVe, ReadProtectecd];
 
 Options[PaVe] = {
 	PaVeAutoOrder -> True,
-	PaVeAutoReduce -> True
+	PaVeAutoReduce -> False
 };
 
 (* Symmetry in the indices *)
@@ -72,6 +72,9 @@ PaVe[x: 1..,{},{m_}, OptionsPattern[]] :=
 	Abort[];)
 
 (* scaleless n-point functions vanish in DR	*)
+PaVe[__,{},{0..}, OptionsPattern[]] :=
+	0;
+
 PaVe[__,{0..},{0..}, OptionsPattern[]] :=
 	0;
 
