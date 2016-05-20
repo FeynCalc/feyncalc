@@ -53,6 +53,9 @@ PaVe[i_,j__,  pl_List, ml_List, opts:OptionsPattern[]] :=
 PaVe[0, {}, {x_}, OptionsPattern[]] :=
 	A0[x]/; OptionValue[PaVeAutoReduce];
 
+PaVe[0,0, {}, {x_}, OptionsPattern[]] :=
+	A00[x]/; OptionValue[PaVeAutoReduce];
+
 PaVe[0, {p2_}, {x_,y_}, OptionsPattern[]] :=
 	B0[p2,x,y]/; OptionValue[PaVeAutoReduce];
 
@@ -77,14 +80,6 @@ PaVe[__,{},{0..}, OptionsPattern[]] :=
 
 PaVe[__,{0..},{0..}, OptionsPattern[]] :=
 	0;
-
-(* but a non-zero coefficient of g_munu *)
-PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
-	(m2/4 A0[m2] + m2^2/8) /; $LimitTo4 && OptionValue[PaVeAutoReduce];
-
-(* but a non-zero coefficient of g_munu *)
-PaVe[0,0,{},{m2_}, OptionsPattern[]] :=
-	(m2/D A0[m2]) /; $LimitTo4  && OptionValue[PaVeAutoReduce];
 
 PaVe[0, {p_}, {m1_, m2_}, OptionsPattern[]] :=
 	B0[p, m1, m2]/; OptionValue[PaVeAutoReduce];

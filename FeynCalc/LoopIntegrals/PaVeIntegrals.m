@@ -20,6 +20,11 @@
 A0::usage =
 "A0[m^2] is the Passarino-Veltman one point integral.";
 
+A00::usage =
+"A00[m^2] is the Passarino-Veltman A00-function, i.e. the \
+coefficient function of g(mu nu). The argument is a scalars and has \
+dimension mass^2.";
+
 A0ToB0::usage =
 "A0ToB0 is an option for A0. If set to True, A0[m^2] is expressed \
 by (1+ B0[0,m^2,m^2])*m^2.";
@@ -88,7 +93,7 @@ End[]
 
 Begin["`PaVeIntegrals`Private`"]
 
-PaVeHeadsList  = {PaVe,GenPaVe,A0,B0,B00,B1,B11,DB1,C0,D0};
+PaVeHeadsList  = {PaVe,GenPaVe,A0,A00,B0,B00,B1,B11,DB1,C0,D0};
 ClearAttributes[B0, ReadProtectecd];
 ClearAttributes[B00, ReadProtectecd];
 ClearAttributes[B1, ReadProtectecd];
@@ -124,6 +129,13 @@ A0[mm_, op___Rule] :=
 A0 /:
 	MakeBoxes[A0[m_, opts:OptionsPattern[]]  ,TraditionalForm] :=
 		ToBoxes[HoldForm[PaVe[0,{},{m}, opts]],TraditionalForm];
+
+A00 /:
+	MakeBoxes[A00[m_, opts:OptionsPattern[]]  ,TraditionalForm] :=
+		ToBoxes[HoldForm[PaVe[0,0,{},{m}, opts]],TraditionalForm];
+
+A00[mm_]:=
+	mm/4 A0[mm] + mm/8/; $LimitTo4;
 
 B0[0,0,0, OptionsPattern[]]:=
 	0;
