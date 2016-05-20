@@ -152,20 +152,9 @@ B0[0, SmallVariable[a_]^n_., SmallVariable[b_]^m_.] :=
 B0[0,0,mm:Except[_SmallVariable | 0], opt___] :=
 	( B0[0,mm,mm] + 1 ) /; ( (B0Unique/.{opt}/.Options[B0]) === True );
 
-B0[mm_,0,mm_,opt___] :=
-	( B0[0,mm,mm] + 2 ) /;
-	( (B0Unique/.{opt}/.Options[B0]) === True ) &&
-	( (B0Real/.{opt}/.Options[B0]) === True );
-(*
-??? Changed Jan 97
-B0[SmallVariable[pp_]^n_., m1_, m2_, opt___] := B0[0, m1, m2, opt
-																					]/;nos[m1]||nos[m2];
-B0[pp_, SmallVariable[m1_]^n_., m2_, opt___] := B0[pp, 0, m2, opt
-																					]/;nos[pp]||nos[m2];
-B0[pp_, m1_, SmallVariable[m2_]^n_.,opt___ ] := B0[pp, m1, 0, opt
-																					]/;nos[pp]||nos[m1];
-*)
-(* special cases *)
+B0[mm_,0,mm_,OptionsPattern[]] :=
+	( B0[0,mm,mm] + 2)/; OptionValue[B0Unique] && OptionValue[B0Real];
+
 B0[kl_, kmm_, mm:Except[_SmallVariable | 0], OptionsPattern[] ] :=
 	(A0[mm]/mm) /; OptionValue[BReduce] &&
 					(((kl E+kmm)/.SmallVariable[_]->0)===0);
@@ -180,12 +169,7 @@ B0[0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0], OptionsPatte
 (*fixed bop[opt] option Jan 1998*)
 B0[0,m1_,m2_, OptionsPattern[]] :=
 	((1/(m1-m2) A0[m1] - 1/(m1-m2) A0[m2]) /;
-		m1 =!= m2) /; OptionValue[BReduce];
-(*
-??? Changed Jan 97
-B0[SmallVariable[_]^n_.,mm_,mm_,opt___] :=
-		(A0[mm]/mm - 1)/;nos[mm] && bop[opt];
-*)
+		m1 =!= m2) && OptionValue[BReduce];
 
 B0 /:
 	MakeBoxes[B0[p10_,m02_,m12_, OptionsPattern[]]  ,TraditionalForm] :=
@@ -193,10 +177,6 @@ B0 /:
 
 B00[x__, OptionsPattern[]] :=
 	b00[x] /; ($LimitTo4 === True) && OptionValue[BReduce] && pcheck[x];
-
-
-B00[x__, OptionsPattern[]] :=
-	PaVeReduce[PaVe[0,0,{First[{x}]},Rest[{x}]]] /; ($LimitTo4 === False) && OptionValue[BReduce] && pcheck[x];
 
 b00[0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]] :=
 	mm / 2 ( B0[0,mm,mm] + 1 );
@@ -272,15 +252,9 @@ B11[pe_, mm1_, mm2_,  OptionsPattern[]] :=
 	b11[pe, mm1, mm2] /; OptionValue[BReduce] && ($LimitTo4 === True) && pcheck[pe,mm1,mm2] &&
 												(((pe =!= 0) && FreeQ[pe, SmallVariable]) || ( (!((pe =!= 0) && FreeQ[pe, SmallVariable])) && (mm1 === mm2)));
 
-(*
-B11[x:Except[_SmallVariable | 0], y:Except[_SmallVariable | 0], z:Except[_SmallVariable | 0], OptionsPattern[]] :=
-	(PaVeReduce[PaVe[1,1,{x}, {y,z} ]]) /; OptionValue[BReduce] && ($LimitTo4 === False) && pcheck[x,y,z];*)
-
 b11[ 0,mm1_,mm1_ ] :=
 	1/3 * B0[ 0,mm1,mm1 ];
-(*??
-b11[ SmallVariable[_]^n_.,mm1_,mm1_ ] := 1/3 * B0[ 0,mm1,mm1 ];
-*)
+
 b11[ SmallVariable[em_]^n_.,mm1_,mm1_ ] :=
 	1/3 * B0[ SmallVariable[em]^n,mm1,mm1 ];
 

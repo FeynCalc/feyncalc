@@ -62,6 +62,12 @@ PaVe[0, {p2_}, {x_,y_}, OptionsPattern[]] :=
 PaVe[1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
 	B1[pp, mm1, mm2]/; OptionValue[PaVeAutoReduce];
 
+PaVe[0,0,{p_},{m1_,m2_}, OptionsPattern[]] :=
+	B00[p,m1,m2]/; OptionValue[PaVeAutoReduce];
+
+PaVe[1,1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
+	B11[pp,mm1,mm2]/; OptionValue[PaVeAutoReduce];
+
 (*The number of 0's, i.e. indices of the metric tensors must be even *)
 PaVe[0, x: 0..,{moms___},{masses___}, OptionsPattern[]]:=
 	(Message[PaVe::nonexistent, "PaVe[" <> (ToString[{0,x}]//StringReplace[#, {"{" | "}" -> ""}] &)
@@ -80,15 +86,6 @@ PaVe[__,{},{0..}, OptionsPattern[]] :=
 
 PaVe[__,{0..},{0..}, OptionsPattern[]] :=
 	0;
-
-PaVe[0, {p_}, {m1_, m2_}, OptionsPattern[]] :=
-	B0[p, m1, m2]/; OptionValue[PaVeAutoReduce];
-
-PaVe[0,0,{p_},{m1_,m2_}, OptionsPattern[]] :=
-	B00[p,m1,m2]/; $LimitTo4 && OptionValue[PaVeAutoReduce];
-
-PaVe[1,1,{pp_},{mm1_,mm2_}, OptionsPattern[]] :=
-	B11[pp,mm1,mm2]/; OptionValue[PaVeAutoReduce];
 
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
@@ -139,7 +136,7 @@ PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}, OptionsPattern[]] :=
 	cord[p10, p12, p20,m1,m2,m3]/;OptionValue[PaVeAutoOrder];
 
 PaVe[0, {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}, OptionsPattern[]] :=
-	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]/;OptionValue[PaVeAutoOrder];
+	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]/;OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce];
 
 
 cord[a_,b_,c_, m1_,m2_,m3_] :=
