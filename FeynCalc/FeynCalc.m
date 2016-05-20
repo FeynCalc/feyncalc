@@ -237,9 +237,35 @@ Tr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d].
 Setting $LeviCivitaSign=I  will switch to the FORM-convention.";
 
 $LimitTo4::usage =
-"$LimitTo4 is a global variable with default setting True. \
-If set to False no limit Dimension -> 4 is \
-performed after tensor integral decomposition.";
+"$LimitTo4 is a global variable that determines whether \
+UV-divergent Passarino-Veltman functions are simplified by \
+taking the limit D-4 -> 0. A general UV-finite \
+Passarino-Veltman function can be written as \
+PaVe = a/(D-4) + b + O(Epsilon), with a being the prefactor \
+of the pole and b being the finite part. Therefore, products \
+of such functions with coefficients that are rational functions \
+of D ( f(D) = f(4) + f'(4) (D-4) + O(Epsilon^2) ) can be simplified \
+to f(D) PaVe = f(4) PaVe + a f'(4) + O(Epsilon), whenever such \
+products appear in the reduction. This relation is correct only if
+the Passarino-Veltman functions have no IR divergences, or if such \
+divergences are regulated without using dimensional regularization.
+For this reason, even when $LimitTo4 is set to True, the simplifications \
+are applied only to A and B functions. Although B functions can exhibit an \
+IR divegence, such integrals are zero in dimensional regularization, so no \
+mixing of Epsilons from IR and UV can occur. The default value of \
+$LimitTo4 is True.";
+
+$LimitTo4IRUnsafe::usage =
+"$LimitTo4IRUnsafe is a global variable that determines whether \
+the simplifications described in $LimitTo4 are applied also to \
+C and D Passarino-Veltman functions. In this case it is assumed \
+that such  functions are either IR finite, or the IR divergences \
+are regulated  without using dimensional regularization \
+(i.e. by introducing  fictitious masses). Otherwise the results \
+will be inconsistent. If this option is activated, it is the task \
+of the user to ensure that IR divergences are properly regulated, \
+such that no mixing of Epsilons from IR and UV can occur. The default \
+value of $$LimitTo4IRUnsafe is False.";
 
 $LorentzIndices::usage =
 "$LorentzIndices is a global variable. If set to True the dimension \
@@ -406,6 +432,7 @@ $IndexPrefix		= {"li","ci"};
 $Larin				= False;
 $LeviCivitaSign		= -1;
 $LimitTo4			= False;
+$LimitTo4IRUnsafe	= False;
 $LorentzIndices		= False;
 $MemoryAvailable	= 4096;
 $Multiplications	= {Times, DOT};
