@@ -67,7 +67,10 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 			res = res /. (h:B0|B00|B1|B11)[a_,b_,c_,ops___]:> h[a,b,c,BReduce->True,ops]
 		];
 
-		FCPrint[1,"PaVeReduce: Leaving with: ", nnx, FCDoControl->pvrVerbose];
+		res = Collect2[res, PaVeHeadsList,Factoring->Factor2];
+		FCPrint[3,"PaVeReduce: After Collect2: ", res, FCDoControl->pvrVerbose];
+
+		FCPrint[1,"PaVeReduce: Leaving with: ", res, FCDoControl->pvrVerbose];
 
 		res
 	];
@@ -114,17 +117,39 @@ $epsilon /:
 	$epsilon A0[mm_] :=
 		2 mm;
 $epsilon /:
+	$epsilon PaVe[0,{},{mm_}, OptionsPattern[]] :=
+		2 mm;
+
+$epsilon /:
 	$epsilon B0[_, _, _] :=
 		2;
+$epsilon /:
+	$epsilon PaVe[0,{_},{_,_}, OptionsPattern[]] :=
+		2;
+
 $epsilon /:
 	$epsilon B1[_, _, _] :=
 		-1;
 $epsilon /:
+	$epsilon PaVe[1,{_},{_,_}, OptionsPattern[]] :=
+		-1;
+
+$epsilon /:
 	$epsilon C0[__] :=
 		0;
+
+$epsilon /:
+	$epsilon PaVe[0,{_,_,_},{_,_,_}, OptionsPattern[]] :=
+		0;
+
 $epsilon /:
 	$epsilon D0[__] :=
 		0;
+
+$epsilon /:
+	$epsilon PaVe[0,{_,_,_,_,_,_},{_,_,_,_}, OptionsPattern[]] :=
+		0;
+
 $epsilon /:
 	$epsilon T[3][1][_] :=
 		0;
@@ -178,8 +203,6 @@ kinmainv[3, {p10_, p12_, p23_, p30_, p20_, p13_, _, _, _, _}] :=
 				{p1p2*p2p3 - p1p3*p20, p1p2*p1p3 - p10*p2p3, -p1p2^2 + p10*p20}}]
 	];
 
-(* Xinvdef  !!!!! No precaution is taken for 0 determinants !!!! *)
-(* Only for B1 and B11 the Xinv[1][1,1] will not be used *)
 Xinv[1][1,1][{pp_,_,_}] :=
 	1/pp;
 
@@ -213,16 +236,16 @@ T[0][][___] :=
 	0; (* in dimensional regularization *)
 
 T[1][][{mm_}] :=
-	A0[mm];
+	PaVe[0,{},{mm}];
 
 T[2][][{pp_, m12_, m22_}] :=
-	B0[pp, m12, m22];
+	PaVe[0,{pp},{m12,m22}];
 
 T[3][][{p10_,p12_,p20_, m02_,m12_,m22_}] :=
-	C0[p10,p12,p20,m02,m12,m22];
+	PaVe[0,{p10,p12,p20},{m02,m12,m22}];
 
 T[4][][{p10_, p12_, p23_, p03_, p20_, p13_, m02_, m12_, m22_, m32_}] :=
-	D0[p10,p12,p23,p03,p20,p13, m02,m12,m22,m32];
+	PaVe[0,{p10,p12,p23,p03,p20,p13},{m02,m12,m22,m32}];
 
 (* The translated argument lists obtained by canceling  *)
 
@@ -273,21 +296,41 @@ getm[{_,_,_,_,_,_,_,_,_,_}] :=
 pluep2[x__] :=
 	Plus[x]/;!FreeQ2[{x}, {tT,B0,B1,B00,B11,C0,D0,T}];
 
-(* equation  (4.18) of A. Denners review *)
+(* 	equation  (4.18) from arXiv:0709.1075, handles T integrals with at least two 0 indices *)
 tT[N_Integer][0,0, i___Integer][a_List] :=
-	Block[ {P, M, k, epsi },
+	Block[ {P, M, k, epsi,tmp },
+		FCPrint[3,"PaVeReduce: tT: Entering: $LimitTo4=True, N<3",FCDoControl->pvrVerbose];
 		P = 2 + Length[{i}];
 		M = getm[a];
-		1/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])+
+		tmp = 1/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])+
 		Expand[( 1/(2 + P - M) epsi/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])
-			)/.Plus->pluep2 ]/.epsi->$epsilon/.pluep2->Plus] /; $LimitTo4 === True;
+			)/.Plus->pluep2]/.epsi->$epsilon/.pluep2->Plus;
+		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp
+		] /; $LimitTo4 && N<3;
+
+tT[N_Integer][0,0, i___Integer][a_List] :=
+	Block[ {P, M, k, epsi,tmp},
+		FCPrint[3,"PaVeReduce: tT: Entering: $LimitTo4=True, N>3, $LimitTo4IRUnsafe=True",FCDoControl->pvrVerbose];
+		P = 2 + Length[{i}];
+		M = getm[a];
+		tmp = 1/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])+
+		Expand[( 1/(2 + P - M) epsi/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])
+			)/.Plus->pluep2]/.epsi->$epsilon/.pluep2->Plus;
+		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp
+		] /; $LimitTo4 && N>=3 && $LimitTo4IRUnsafe;
 
 (* $dIM gets defined from the option of PaVeReduce *)
 tT[N_Integer][0,0, i___Integer][a_List] :=
-	Block[ {P, M, k, epsi },
+	Block[ {P, M, k, epsi, tmpR, tmp },
 		P = 2 + Length[{i}];
 		M = getm[a];
-		1/($dIM + P -2 - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])] /; $LimitTo4 =!= True;
+		tmp = 1/($dIM + P -2 - M) (tmpR[N, 0, 0][i][a] - Sum[ tmpR[N, k][k, i][a], {k, M}]);
+		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp/.tmpR->R
+
+	] /; $LimitTo4 =!= True || ($LimitTo4 && N>=3 && !$LimitTo4IRUnsafe);
 
 (* two special cases *)
 R[n0__][j__][a_] :=
@@ -299,75 +342,85 @@ R[n0__][{}][a_] :=
 T[n0__][j__][a_] :=
 	(T[n0][Sequence @@ Sort[{j}]][a] ) /; !OrderedQ[{j}];
 
-(* special B-stuff*)
-tT[2][1][{p10_,m02_,m12_}] :=
-	B1[p10,  m02, m12];
+(*
+tT[N][mu_1,mu_2,...,mu_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}] = c*\int q^mu_1 ... q^mu_p / (D0*D1*...*D(N-1))
+with D0 = q^2-m^2, D1 = (q+p_i)-m_i^2, i=1,...,N-1
 
-(* XXX *)
-tT[2][1,1][{p10_,m02_,m12_}] :=
-	B11[p10, m02, m12] /; ($LimitTo4===True) || (p10 === 0);
+tT[N][mu_1,mu_2,...,mu_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}] = \Sum_{i_1,...,i_p=0}^{N-1} *
+tT[N][i_1,...,i_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}]* p_{i_1 mu_1} * ... * p_{i_p mu_p}
+*)
 
-tT[2][0,0,1][{p10_,0,0}] :=
-	If[ $LimitTo4,
-		p10/36 + (p10*B0[p10, 0, 0])/24,
-		-(p10*B0[p10, 0, 0])/(8*(1 - $dIM))
-	];
+(* Special cases of B functions with zero Gram determinant	*)
 
-tT[2][1,1,1][{p10_,0,0}] :=
-	If[ $LimitTo4,
-		-1/12 - B0[p10, 0, 0]/4,
-		((2 + $dIM)*B0[p10, 0, 0])/(8*(1 - $dIM))
-	];
+(* 	B1...(0,m1,m2) are not further reducible in terms of other PaVe functions *)
+tT[2][inds:1..][{0,m1_,m2_}]:=
+	PaVe[inds,{0},{m1,m2}]/; m1=!=m2;
 
-(* (4.18), *)
+(* 	B1....(0,m,m) can be reduced further *)
+tT[2][inds:1..][{0,m_,m_}]:=
+	(-1)^Length[{inds}]/(1+Length[{inds}]) PaVe[0,{0},{m,m}];
+
+(* General case, T integrals with zero Gram determinant are not evaluated	*)
 tT[N_Integer][k_Integer,i___Integer][a_List] :=
-(*tT[N][k,i][a] =*)
-	Block[ {P, M ,r, kp },
+	Block[ {P, M ,r, kp, tmp,tmpXinv,tmpR,tmpT },
+		FCPrint[3,"PaVeReduce: tT: Entering with N and a: ",N," ",a,FCDoControl->pvrVerbose];
 		P = 1 + Length[{i}];
 		M = getm[a];
-		Sum[ Xinv[M][k, kp][a]  ( R[N,kp][i][a] -
-		Sum[ delt[ kp,{i}[[r]] ] (T[N]@@Join[{0,0}, Delete[{i},r]])[a], {r, P-1}]), {kp, M}]
-	];
+		tmp = Sum[ Xinv[M][k, kp][a]  ( R[N,kp][i][a] - Sum[ delt[ kp,{i}[[r]] ] (T[N]@@Join[{0,0}, Delete[{i},r]])[a], {r, P-1}]), {kp, M}];
+		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp/.tmpR->R/.tmpT->T/.tmpXinv->Xinv
+	]/; (gramDet[Drop[a,-N]]=!=0 || N===0) && k=!=0;
 
 (* no M's in i *)
 R[N_Integer, 0, 0][i___Integer][a_List] :=
-	Block[ {q,P,M},
+	Block[ {q,P,M,tmpT,tmp},
 		q = Length[{i}];
 		P = 2 + q;
 		M = getm[a];
-		demon[a[[-N]]] T[N][i][a]  + T[N-1][i][ c[0][a] ]
+		tmp = demon[a[[-N]]] tmpT[N][i][a]  + tmpT[N-1][i][ c[0][a] ];
+		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp /. tmpT-> T
 	] /; FreeQ[{i}, getm[a]];
 
 R[N_Integer,0,0][i___Integer, mm:(_Integer)..][a_List] :=
-	Block[ {q,M,P,j,k},
+	Block[ {q,M,P,j,k,tmp,tmpT},
 		q = Length[{i}];
 		M = getm[a];
 		P = Length[{mm}] + 2 + q;
-		demon[ a[[-N]] ] T[N][i, mm][a] +
+		tmp = demon[ a[[-N]] ] T[N][i, mm][a] +
 		(* here was the tough bug found by Ralph Schuster ... *)
-		(-1)^(P - q) ( T[N - 1][i][c[0][a]] + Sum[
+		(-1)^(P - q) ( tmpT[N - 1][i][c[0][a]] + Sum[
 		Binomial[P - 2 - q, j] * Sum @@ Prepend[ Array[List[k[#], M - 1]&, j],
-		(T[N-1]@@Join[{i}, Array[k,j]])[c[0][a]]], {j,P - 2 - q}])
+		(tmpT[N-1]@@Join[{i}, Array[k,j]])[c[0][a]]], {j,P - 2 - q}]);
+		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp /. tmpT-> T
+
 	] /; ({mm}[[1]] === getm[a]);
 
 (* 4.19 , no M's*)
 R[N_Integer, k_Integer][i___Integer][a_List] :=
-	Block[ {q,P,M},
+	Block[ {q,P,M,tmp ,tmpT},
 		q = Length[{i}];
 		P = 1 + q;
 		M = getm[a];
-		1/2( (T[N - 1] @@ til[i][k])[ c[k][a] ] theta[k, i] - f[k][a] T[N][i][a] - T[N - 1][i][c[0][a]])
+		tmp = 1/2( (tmpT[N - 1] @@ til[i][k])[ c[k][a] ] theta[k, i] - f[k][a] tmpT[N][i][a] - tmpT[N - 1][i][c[0][a]]);
+		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp /. tmpT-> T
+
 	]/; FreeQ[{i}, getm[a]];
 
 R[N_Integer,k_Integer][i___Integer, mm:(_Integer)..][a_List] :=
-	Block[ {q, P, M, kk, j},
+	Block[ {q, P, M, kk, j, tmp, tmpT},
 		q = Length[{i}];
 		P = Length[{mm}] + 1 + q;
 		M = getm[a];
-		1/2( (T[N-1] @@ til[i,mm][k])[c[k][a]] theta[k, i, mm] -
-		f[k][a] T[N][i,mm][a] -(-1)^(P - 1 - q) (T[N - 1][i][c[0][a]] +
-		Sum[Binomial[P - 1 - q, j]  Sum@@Prepend[Array[List[kk[#], M -1 ]&,j], (T[N - 1]@@Join[{i},
-		Array[kk, j]])[c[0][a]]], {j, P - 1 - q} ]))
+		tmp = 1/2( (tmpT[N-1] @@ til[i,mm][k])[c[k][a]] theta[k, i, mm] -
+		f[k][a] tmpT[N][i,mm][a] -(-1)^(P - 1 - q) (tmpT[N - 1][i][c[0][a]] +
+		Sum[Binomial[P - 1 - q, j]  Sum@@Prepend[Array[List[kk[#], M -1 ]&,j], (tmpT[N - 1]@@Join[{i},
+		Array[kk, j]])[c[0][a]]], {j, P - 1 - q} ]));
+		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
+		tmp /. tmpT-> T
+
 	] /;({mm}[[1]] === getm[a]);
 
 (* 4.20 *)
@@ -388,9 +441,6 @@ til[][_] = {};
 
 til[x__][k_] :=
 	Map[tm[#,k]&, {x}];
-
-collect3[x__] :=
-	Collect2[x, Factoring -> True];
 
 (* Decomposition down to scalar integrals *)
 (* ****************************************************************** *)
@@ -483,7 +533,7 @@ gramDet[{p10_, p12_, p23_, p30_, p20_, p13_}]:=
 		1/4 p10^2 (-p20 + p23 - p30)^2 - 1/4 (-p10 + p12 - p20)^2 p30^2 + p10^2 p20^2 p30^2)];
 
 pavereduce[exp_, OptionsPattern[]] :=
-	exp /; FreeQ[exp, _PaVe, Heads -> True];
+	exp /; FreeQ2[exp, PaVeHeadsList];
 
 pavereduce[w_ , opts:OptionsPattern[]] :=
 	Block[	{mpa,nw,nn,pre,re = 0},
@@ -593,13 +643,14 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 					MatchQ[{i,j}, {Integer___}] && Length[moms]>6 :>
 						paveProtect[i,j,  moms, ml, ops]
 			};
-			(*	Check for vanishing Gram determinants in bubbles, triangles and boxes!
-				Exceptions are B0, B1, B00, B11, and B001 where alternative reduction is avaliable *)
-			breakx = breakx /. {
-				PaVe[i_,j___,  moms_List, ml_List, ops:OptionsPattern[]]/;
-					MatchQ[{i,j}, {Integer___}] && gramDet[moms]===0 && FreeQ[moms,SmallVariable] &&
-					!(Length[moms]===1 && ({i,j}==={0} || {i,j}==={1} || {i,j}==={0,0} || {i,j}==={1,1} || {i,j}==={0,0,1})) :>
-						paveProtect[i,j,  moms, ml, ops]
+
+			breakx = breakx/. {
+				A0[m_] :> PaVe[0,{},{m}],
+				A00[m_] :> PaVe[0,{},{m}],
+				B0[pp_,m1_,m2_] :> PaVe[0,{pp},{m1,m2}],
+				B1[pp_,m1_,m2_] :> PaVe[1,{pp},{m1,m2}],
+				B00[pp_,m1_,m2_] :> PaVe[0,0,{pp},{m1,m2}],
+				B11[pp_,m1_,m2_] :> PaVe[1,1,{pp},{m1,m2}]
 			};
 
 			t =  breakdown[breakx];
@@ -611,12 +662,24 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			FCPrint[3,"PaVeReduce: pavereduce: Second stage done: ", t, FCDoControl->pvrVerbose];
 
 			If[ !FreeQ[t, HoldForm],
-				t = FixedPoint[ReleaseHold,t]
+				t = FRH[t]
 			];
 
+			If[	!FreeQ[t,tT],
+				t = t//. tT[n_Integer][inds__][{a__}] :> PaVe[inds,Drop[{a},-n],Take[{a},-n]]
+			];
+
+			t = Expand2[t,Join[PaVeHeadsList,{$epsilon}]];
+
+			FCPrint[3,"PaVeReduce: pavereduce: Third stage done: ", t, FCDoControl->pvrVerbose];
+
+			t = Collect2[t,Join[PaVeHeadsList,{HoldPattern,DOT}],Factoring->Factor2];
+
+			FCPrint[3,"PaVeReduce: pavereduce: After Collect2: ", t, FCDoControl->pvrVerbose];
+(*
 			t = Collect[t, {A0[__],B0[__], B1[__], B00[__], B11[__], C0[__], D0[__], PaVe[__],
 							HoldPattern[Dot[__]], HoldPattern[DOT[__]]}, Factor2];
-
+*)
 			If[ !FreeQ[t, $epsilon],
 				t = Expand[t/.Plus->pluep]/.$epsilon->0/.pluep->Plus
 			];
@@ -638,7 +701,6 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			cofun2[yy_] :=
 				trick[yy];
 
-			FCPrint[2,"check7"];
 
 			If[ isok=!=False && Head[result]=!=PaVe,
 				result = cofun/@( result + nuLL );
@@ -655,6 +717,8 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 
 				result = (result/.nuLL->0)/.isolatefirst->isolatetri/.cofun->cofun2
 			];
+
+			FCPrint[3,"PaVeReduce: pavereduce: After isolations: ", result, FCDoControl->pvrVerbose];
 
 			If[ isok=!=False,
 				result = isolateP[ result ],
