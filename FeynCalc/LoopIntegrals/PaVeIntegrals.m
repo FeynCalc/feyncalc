@@ -161,19 +161,9 @@ B0[0,0,mm:Except[_SmallVariable | 0], OptionsPattern[]] :=
 B0[mm_,0,mm_,OptionsPattern[]] :=
 	( B0[0,mm,mm] + 2)/; OptionValue[B0Unique] && OptionValue[B0Real];
 
-
-B0[kl_, kmm_, mm:Except[_SmallVariable | 0], OptionsPattern[]] :=
-	(A0[mm]/mm) /; OptionValue[BReduce] && (((kl E+kmm)/.SmallVariable[_]->0)===0);
-
-B0[kl_, mm:Except[_SmallVariable | 0], kmm_, OptionsPattern[] ] :=
-	(A0[mm]/mm) /; OptionValue[BReduce] && (((kl E+kmm)/.SmallVariable[_]->0)===0);
-
-
-B0[0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0], OptionsPattern[]] :=
-	(A0[mm]/mm - 1)/; OptionValue[BReduce]
-
-B0[0,m1_,m2_, OptionsPattern[]] :=
-	(1/(m1-m2) A0[m1] - 1/(m1-m2) A0[m2]) /; (m1 =!= m2) && OptionValue[BReduce];
+(* further B0 reduction *)
+B0[pp_,mm1_,mm2_,OptionsPattern[]] :=
+	PaVeReduce[PaVe[0,{pp},{mm1,mm2}],BReduce->True,PaVeAutoReduce->True]/; OptionValue[BReduce];
 
 B0 /:
 	MakeBoxes[B0[p10_,m02_,m12_, OptionsPattern[]]  ,TraditionalForm] :=
