@@ -26,6 +26,7 @@ End[]
 Begin["`PaVeReduce`Private`"]
 
 pvrVerbose::usage="";
+breduce::usage="";
 
 Options[ PaVeReduce ] = {
 	Dimension -> True,
@@ -42,6 +43,8 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 	Block[ {op, wriout, nnx = x, res},
 		op=Join[FilterRules[Options[PaVeReduce], Except[{opts}]], {opts}];
 		wriout = OptionValue[WriteOutPaVe];
+
+		breduce = OptionValue[BReduce];
 
 		If [OptionValue[FCVerbose]===False,
 			pvrVerbose=$VeryVerbose,
@@ -67,11 +70,11 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 			FCPrint[1,"PaVeReduce: Setting the PaVeAutoReduce option to all PaVe-functions", FCDoControl->pvrVerbose];
 			res = res /. PaVe[a__,b_List,c_List,ops___]:> PaVe[a,b,c,PaVeAutoReduce->True,ops]
 		];
-
+		(*
 		If[ OptionValue[BReduce],
 			FCPrint[1,"PaVeReduce: Setting the BReduce option to all B-functions", FCDoControl->pvrVerbose];
 			res = res /. (h:B0|B00|B1|B11)[a_,b_,c_,ops___]:> h[a,b,c,BReduce->True,ops]
-		];
+		];*)
 
 		res = Collect2[res, PaVeHeadsList,Factoring->Factor2];
 		FCPrint[3,"PaVeReduce: After Collect2: ", res, FCDoControl->pvrVerbose];
@@ -365,6 +368,23 @@ tT[2][inds:1..][{0,m1_,m2_}]:=
 (* 	B1....(0,m,m) can be reduced further *)
 tT[2][inds:1..][{0,m_,m_}]:=
 	(-1)^Length[{inds}]/(1+Length[{inds}]) PaVe[0,{0},{m,m}];
+
+(* Special cases of B0 scalar functions	*)
+
+tT[2][0][{kl_, kmm_, mm:Except[_SmallVariable | 0]}]:=
+	(PaVe[0,{},{mm}]/mm)/; breduce && (({kl,kmm}/.SmallVariable[_]->0) === {0,0});
+
+tT[2][0][{kl_, mm:Except[_SmallVariable | 0], kmm_}]:=
+	(PaVe[0,{},{mm}]/mm)/; breduce && (({kl,kmm}/.SmallVariable[_]->0) === {0,0});
+
+tT[2][0][{0, m1_, m2_}]:=
+	(1/(m1-m2) PaVe[0,{},{m1}] - 1/(m1-m2) PaVe[0,{},{m2}])/; (m1 =!= m2) && breduce;
+
+tT[2][0][{0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]}]:=
+	(PaVe[0,{},{mm}]/mm - 1)/; breduce && $LimitTo4;
+
+tT[2][0][{0, mm:Except[_SmallVariable | 0], mm:Except[_SmallVariable | 0]}]:=
+	(($dIM-2)*PaVe[0,{},{mm}]/(2mm))/; breduce && !$LimitTo4;
 
 (* General case, T integrals with zero Gram determinant are not evaluated	*)
 tT[N_Integer][k_Integer,i___Integer][a_List] :=
