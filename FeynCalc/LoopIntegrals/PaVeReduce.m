@@ -34,7 +34,8 @@ Options[ PaVeReduce ] = {
 	Mandelstam->{},
 	PaVeOrderList -> {},
 	WriteOutPaVe -> False,
-	BReduce -> False
+	BReduce -> False,
+	PaVeAutoReduce -> False
 };
 
 PaVeReduce[x_, opts:OptionsPattern[]] :=
@@ -60,6 +61,11 @@ PaVeReduce[x_, opts:OptionsPattern[]] :=
 		If[ StringQ[wriout] && (Head[x] === PaVe),
 			res  = pavitp@@Join[{nnx, wriout}, op],
 			res = pavereduce[nnx, op]
+		];
+
+		If[ OptionValue[PaVeAutoReduce],
+			FCPrint[1,"PaVeReduce: Setting the PaVeAutoReduce option to all PaVe-functions", FCDoControl->pvrVerbose];
+			res = res /. PaVe[a__,b_List,c_List,ops___]:> PaVe[a,b,c,PaVeAutoReduce->True,ops]
 		];
 
 		If[ OptionValue[BReduce],
