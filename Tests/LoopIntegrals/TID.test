@@ -1,6 +1,6 @@
 Tests`LoopIntegrals`fcstTID =
 {
-{"fcstTID-ID1", "TID[0, l]","0"},
+{"fcstTID-ID1", "$LimitTo4=False; \n TID[0, l]","0"},
 {"fcstTID-ID2", "TID[a + b, l]","a+b"},
 {"fcstTID-ID3", "TID[SPD[p, l], l]","0"},
 {"fcstTID-ID4", "TID[FVD[l, mu], l]","0"},

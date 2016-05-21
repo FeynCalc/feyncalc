@@ -15,15 +15,15 @@
 
 Tests`LoopIntegrals`fcstPaVe = {
 
-{"fcstPave-ID1","PaVe[0, {}, {m02}]","A0[m02]"},
-{"fcstPave-ID2","SetOptions[{B1, B00, B11}, BReduce -> False];\n PaVe[0, {pp}, {m02, m12}]","B0[pp, m02, m12]"},
+{"fcstPave-ID1","PaVe[0, {}, {m02},PaVeAutoReduce->True]","A0[m02]"},
+{"fcstPave-ID2","SetOptions[{B1, B00, B11}, BReduce -> False];\n PaVe[0, {pp}, {m02, m12},PaVeAutoReduce->True]","B0[pp, m02, m12]"},
 
-{"fcstPave-ID3","PaVe[1, {pp}, {m12, m22}]","B1[pp, m12, m22]"},
-{"fcstPave-ID4","PaVe[1, 1, {p10}, {m12, m22}]","B11[p10, m12, m22]"},
+{"fcstPave-ID3","PaVe[1, {pp}, {m12, m22},PaVeAutoReduce->True]","B1[pp, m12, m22]"},
+{"fcstPave-ID4","PaVe[1, 1, {p10}, {m12, m22},PaVeAutoReduce->True]","B11[p10, m12, m22]"},
 {"fcstPave-ID5","PaVe[0, {p10, p12, p20}, {m12, m22, m32}]","C0[p10, p12, p20, m12, m22, m32]"},
-{"fcstPave-ID6","PaVe[0, {p10, p12, p23, p30, p20, p13}, {m12, m22, m32, m42}]","D0[p10, p12, p23, p30, p20, p13, m12, m22, m32, m42]"},
+{"fcstPave-ID6","PaVe[0, {p10, p12, p23, p30, p20, p13}, {m12, m22, m32, m42},PaVeAutoReduce->True]","D0[p10, p12, p23, p30, p20, p13, m12, m22, m32, m42]"},
 {"fcstPave-ID7","PaVe[0, 0, {p}, {m1, m2}]","PaVe[0, 0, {p}, {m1, m2}]"},
-{"fcstPave-ID8","SetOptions[{B1, B00, B11}, BReduce -> True];\nPaVe[0, 0, {p}, {m1, m2},PaVeAutoReduce->True]","(3*m1 + 3*m2 - p)/18 + (m1*B0[p, m1, m2])/3 +
+{"fcstPave-ID8","$LimitTo4 = True; \n SetOptions[{B1, B00, B11}, BReduce -> True];\nPaVe[0, 0, {p}, {m1, m2},PaVeAutoReduce->True]","(3*m1 + 3*m2 - p)/18 + (m1*B0[p, m1, m2])/3 +
 	(A0[m2] + (m1 - m2 + p)*(-B0[p, m1, m2]/2 + ((-m1 + m2)*(-B0[0, m1, m2] + B0[p, m1, m2]))/(2*p)))/6"},
-{"fcstPave-ID9","PaVe[0, 0, {0}, {0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False]","0"}
+{"fcstPave-ID9","$LimitTo4 = False; \n PaVe[0, 0, {0}, {0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> False]","0"}
 }
